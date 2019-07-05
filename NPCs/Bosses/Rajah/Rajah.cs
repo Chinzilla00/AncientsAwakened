@@ -821,7 +821,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 160;
+            npc.damage = 150;
             npc.defense = 130;
             npc.lifeMax = 80000;
         }
@@ -834,7 +834,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 180;
+            npc.damage = 170;
             npc.defense = 150;
             npc.lifeMax = 100000;
             npc.life = 100000;
@@ -848,7 +848,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 200;
+            npc.damage = 190;
             npc.defense = 180;
             npc.lifeMax = 200000;
             npc.life = 200000;
@@ -862,7 +862,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 250;
+            npc.damage = 220;
             npc.defense = 210;
             npc.lifeMax = 300000;
             npc.life = 300000;
@@ -876,7 +876,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 300;
+            npc.damage = 250;
             npc.defense = 230;
             npc.lifeMax = 500000;
             npc.life = 500000;
@@ -890,7 +890,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 340;
+            npc.damage = 270;
             npc.defense = 250;
             npc.lifeMax = 700000;
             npc.life = 700000;
@@ -904,7 +904,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 370;
+            npc.damage = 300;
             npc.defense = 270;
             npc.lifeMax = 900000;
             npc.life = 900000;
@@ -918,7 +918,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 400;
+            npc.damage = 320;
             npc.defense = 290;
             npc.lifeMax = 1000000;
             npc.life = 1000000;
@@ -939,7 +939,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 450;
+            npc.damage = 350;
             npc.defense = 350;
             npc.lifeMax = 4000000;
             npc.life = 4000000;

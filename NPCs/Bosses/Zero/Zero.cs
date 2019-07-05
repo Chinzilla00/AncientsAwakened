@@ -42,7 +42,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.knockBackResist = -1f;
             npc.boss = true;
             npc.friendly = false;
-            npc.npcSlots = 0f;
+            npc.npcSlots = 100;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -175,6 +175,8 @@ namespace AAMod.NPCs.Bosses.Zero
         }
 
         public int MinionTimer = 0;
+        public bool AnyArms = false;
+        public float Distance = 0;
         public float[] internalAI = new float[4];
 
         public override void SendExtraAI(BinaryWriter writer)
@@ -186,6 +188,8 @@ namespace AAMod.NPCs.Bosses.Zero
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
+                writer.Write(Distance);
+                writer.Write(AnyArms);
             }
         }
 
@@ -198,6 +202,8 @@ namespace AAMod.NPCs.Bosses.Zero
                 internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
+                Distance = reader.ReadFloat();
+                AnyArms = reader.ReadBool();
             }
         }
 
@@ -210,7 +216,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             npc.TargetClosest();
 
-            bool AnyArms = NPC.AnyNPCs(mod.NPCType<VoidStar>()) ||
+            AnyArms = NPC.AnyNPCs(mod.NPCType<VoidStar>()) ||
                 NPC.AnyNPCs(mod.NPCType<Taser>()) ||
                 NPC.AnyNPCs(mod.NPCType<RealityCannon>()) ||
                 NPC.AnyNPCs(mod.NPCType<RiftShredder>()) ||
@@ -225,26 +231,107 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             Player player = Main.player[npc.target];
 
+            Vector2 DeactivatedPoint = new Vector2(ZeroHandler.ZX, ZeroHandler.ZY);
+
             RingRoatation += 0.03f;
 
-            
+            if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            {
+                npc.TargetClosest();
+                if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+                {
+                    if (Vector2.Distance(DeactivatedPoint, npc.position) > 4000)
+                    {
+                        npc.velocity.X *= .95f;
+                        if (npc.velocity.X < 1)
+                        {
+                            npc.velocity.X = 0;
+                            npc.velocity.Y -= .2f;
+                            if (npc.position.Y < 0 && Main.netMode != 1)
+                            {
+                                npc.active = false;
+                                npc.netUpdate = true;
+                            }
+                        }
+                        else
+                        {
+                            npc.velocity.Y *= .95f;
+                        }
+                    }
+                    else
+                    {
+                        MoveToPoint(DeactivatedPoint);
+                        if (Vector2.Distance(npc.Center, DeactivatedPoint) < 16)
+                        {
+                            npc.Transform(mod.NPCType<ZeroDeactivated>());
+                        }
+                    }
+                    if (Distance > 0)
+                    {
+                        Distance -= 5f;
+                    }
+                    else
+                    {
+                        KillArms();
+                        if (Main.netMode != 1)
+                        {
+                            Distance = 0;
+                            npc.netUpdate = true;
+                        }
+                    }
+                }
+                return;
+            }
+
             if (Main.netMode != 1 && internalAI[2] != 1)
             {
-                if (internalAI[0] > 120)
+                for(int m = 0; m < WeaponCount; m++)
                 {
-                    for (int m = 0; m < WeaponCount; m++)
-                    {
-                        int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType(ArmChoice()), 0, m);
-                        Main.npc[npcID].Center = npc.Center;
-                        Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
-                        Main.npc[npcID].velocity *= 8f;
-                        Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
-                    }
-                    internalAI[2] = 1;
+                    int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType(ArmChoice()), 0, m);
+                    Main.npc[npcID].Center = npc.Center;
+                    Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
+                    Main.npc[npcID].velocity *= 8f;
+                    Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
+                }
+                internalAI[2] = 1;
+                npc.netUpdate = true;
+            }
+
+            internalAI[3]++;
+            if (internalAI[3] < 1800)
+            {
+                if (Distance < 160f)
+                {
+                    Distance += 5f;
                 }
                 else
                 {
-                    internalAI[0]++;
+                    if (Main.netMode != 1)
+                    {
+                        Distance = 160f;
+                        npc.netUpdate = true;
+                    }
+                }
+            }
+            else
+            {
+                if (Distance > 0)
+                {
+                    Distance -= 5f;
+                }
+                else
+                {
+                    KillArms();
+                    if (Main.netMode != 1)
+                    {
+                        internalAI[2] = 0;
+                        internalAI[3] = 0;
+                        npc.netUpdate = true;
+                    }
+                    else
+                    {
+                        BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
+                    }
                 }
             }
 
@@ -405,6 +492,64 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
+        public void KillArms()
+        {
+            if (Main.netMode != 1)
+            {
+                if (NPC.AnyNPCs(mod.NPCType<GenocideCannon>()))
+                {
+                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
+                    Arm.active = false;
+                    Arm.netUpdate = true;
+                }
+                if (NPC.AnyNPCs(mod.NPCType<Neutralizer>()))
+                {
+                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
+                    Arm.active = false;
+                    Arm.netUpdate = true;
+                }
+                if (NPC.AnyNPCs(mod.NPCType<NovaFocus>()))
+                {
+                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
+                    Arm.active = false;
+                    Arm.netUpdate = true;
+                }
+                if (NPC.AnyNPCs(mod.NPCType<OmegaVolley>()))
+                {
+                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
+                    Arm.active = false;
+                    Arm.netUpdate = true;
+                }
+                if (NPC.AnyNPCs(mod.NPCType<RiftShredder>()))
+                {
+                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
+                    Arm.active = false;
+                    Arm.netUpdate = true;
+                }
+                if (NPC.AnyNPCs(mod.NPCType<Taser>()))
+                {
+                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
+                    Arm.active = false;
+                    Arm.netUpdate = true;
+                }
+                if (NPC.AnyNPCs(mod.NPCType<NovaFocus>()))
+                {
+                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
+                    Arm.active = false;
+                    Arm.netUpdate = true;
+                }
+                if (NPC.AnyNPCs(mod.NPCType<TeslaHand>()))
+                {
+                    for (int i = 0; i < NPC.CountNPCS(mod.NPCType<TeslaHand>()); i++)
+                    {
+                        NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
+                        Arm.active = false;
+                        Arm.netUpdate = true;
+                    }
+                }
+            }
+        }
+
         public string ArmChoice()
         {
             string Choice = null;
@@ -445,6 +590,33 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
             }
             return Choice;
+        }
+
+        public void MoveToPoint(Vector2 point)
+        {
+            float moveSpeed = 16f;
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
         }
     }
 }

@@ -15,6 +15,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 
 		public override void SetDefaults()
 		{
+            npc.width = 26;
+            npc.height = 26;
             npc.lifeMax =  350;
             npc.defense = 20;
             npc.damage = 10;

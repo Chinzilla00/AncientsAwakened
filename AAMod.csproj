@@ -7188,6 +7188,7 @@
     <Content Include="Tiles\FulguriteBrickS.png" />
     <Content Include="Tiles\FulguritePlating.png" />
     <Content Include="Tiles\FulguritePlatingS.png" />
+    <Content Include="Tiles\FulguriteShrine.png" />
     <Content Include="Tiles\FungusBox.png" />
     <Content Include="Tiles\GlowingMushiumBar.png" />
     <Content Include="Tiles\Hotshroom.png" />

@@ -8,12 +8,10 @@ using AAMod.NPCs.Bosses.Rajah;
 using AAMod.NPCs.Enemies.Terrarium.PreHM;
 using AAMod.NPCs.Enemies.Terrarium.Hardmode;
 using AAMod.NPCs.Enemies.Terrarium.PostPlant;
-using AAMod.NPCs.Enemies.Terrarium.PostEquinox;
 using AAMod.NPCs.Bosses.Serpent;
 using AAMod.NPCs.Enemies.Snow;
 using System;
 using Terraria.Localization;
-using Terraria.GameContent.Events;
 
 
 namespace AAMod
@@ -1013,7 +1011,7 @@ namespace AAMod
                     pool.Add(mod.NPCType<PurityCrawler>(), .03f);
                     pool.Add(mod.NPCType<PuritySquid>(), .03f);
                 }
-                if (NPC.downedBoss3)
+                if (NPC.downedBoss2)
                 {
                     pool.Add(mod.NPCType<PurityWeaver>(), .05f);
                     pool.Add(mod.NPCType<PuritySphere>(), .05f);
@@ -1024,7 +1022,7 @@ namespace AAMod
 
             if (NPC.CountNPCS(mod.NPCType("StanLee")) < 1)
             {
-                pool.Add(mod.NPCType<PurityWeaver>(), .00001f);
+                pool.Add(mod.NPCType<NPCs.TownNPCs.StanLee>(), .00001f);
             }
         }
 

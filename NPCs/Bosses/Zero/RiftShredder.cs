@@ -14,7 +14,7 @@ namespace AAMod.NPCs.Bosses.Zero
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Gigataser");
+            DisplayName.SetDefault("Rift Shredder");
             Main.npcFrameCount[npc.type] = 2;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
@@ -139,17 +139,33 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (npc.ai[2] >= aiTimerFire)
             {
-                if (npc.ai[2] > 560 && Main.netMode != 1)
+                if (npc.ai[2] > 1000 && Main.netMode != 1)
                 {
-                    MoveToPoint(BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(160f, 0f), rotValue));
-                    if (Vector2.Distance(BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(160f, 0f), rotValue), npc.Center) < 32)
+                    MoveToPoint(BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(((Zero)zero.modNPC).Distance, 0f), rotValue));
+                    if (Vector2.Distance(BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(((Zero)zero.modNPC).Distance, 0f), rotValue), npc.Center) < 32 && Main.netMode != 1)
                     {
                         npc.ai[2] = 0;
+                        npc.netUpdate = true;
                     }
                 }
                 else
                 {
-                    SwordAI(player);
+                    if (Main.netMode != 1)
+                    {
+                        if (SelectPoint)
+                        {
+                            float Point = 500 * npc.direction;
+                            DashPoint = player.Center + new Vector2(Point, 500f);
+                            SelectPoint = false;
+                            npc.netUpdate = true;
+                        }
+                    }
+                    MoveToPoint(DashPoint);
+                    if (Vector2.Distance(npc.Center, DashPoint) < 16 && Main.netMode != 1)
+                    {
+                        npc.ai[2] = 1000;
+                        npc.netUpdate = true;
+                    }
                 }
             }
             else
@@ -160,7 +176,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 npc.oldPos[0] = npc.position;
 
-                npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(160f, 0f), rotValue);
+                npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(((Zero)zero.modNPC).Distance, 0f), rotValue);
 
                 Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
                 float num1 = player.position.X + (player.width / 2) - vector2.X;
@@ -169,75 +185,14 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
-        public void SwordAI(Player target)
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            if (npc.target < 0 || npc.target == 255 || target.dead)
-            {
-                npc.TargetClosest(true);
-            }
-            if (npc.ai[3] == 0f)
-            {
-                float num312 = 9f;
-                Vector2 vector32 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                float num313 = target.position.X + (float)(target.width / 2) - vector32.X;
-                float num314 = target.position.Y + (float)(target.height / 2) - vector32.Y;
-                float num315 = (float)Math.Sqrt(num313 * num313 + num314 * num314);
-                num315 = num312 / num315;
-                num313 *= num315;
-                num314 *= num315;
-                npc.velocity.X = num313 * 2;
-                npc.velocity.Y = num314 * 2;
-                npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) - 1.57f;
-                npc.ai[3] = 1f;
-                internalAI[0] = 0f;
-                npc.netUpdate = true;
-                return;
-            }
-            if (npc.ai[3] == 1f)
-            {
-                if (npc.justHit)
-                {
-                    npc.ai[3] = 2f;
-                    internalAI[0] = 0f;
-                }
-                npc.velocity *= 0.99f;
-                internalAI[0] += 1f;
-                if (internalAI[0] >= 100f)
-                {
-                    npc.netUpdate = true;
-                    npc.ai[3] = 2f;
-                    internalAI[0] = 0f;
-                    npc.velocity.X = 0f;
-                    npc.velocity.Y = 0f;
-                    return;
-                }
-            }
-            else
-            {
-                if (npc.justHit)
-                {
-                    npc.ai[3] = 2f;
-                    internalAI[0] = 0f;
-                }
-                npc.velocity *= 0.96f;
-                internalAI[0] += 1f;
-                float num316 = internalAI[0] / 120f;
-                num316 = 0.1f + num316 * 0.4f;
-                npc.rotation += num316 * npc.direction;
-                if (internalAI[0] >= 70f)
-                {
-                    npc.netUpdate = true;
-                    npc.ai[3] = 0f;
-                    internalAI[0] = 0f;
-                    return;
-                }
-            }
-        }
-
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
+            Texture2D tex = Main.npcTexture[npc.type];
             Texture2D glowTex = mod.GetTexture("Glowmasks/RiftShredderZ");
+            BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, npc, 1, 1, 6, true, 0, 0, Color.DarkRed, npc.frame, 2);
+            BaseDrawing.DrawTexture(spriteBatch, tex, 0, npc, drawColor);
             BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, AAColor.ZeroShield);
+            return false;
         }
 
         public override void BossHeadRotation(ref float rotation)

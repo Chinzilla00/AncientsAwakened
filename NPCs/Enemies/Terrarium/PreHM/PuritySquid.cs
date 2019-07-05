@@ -16,7 +16,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 
 		public override void SetDefaults()
 		{
-            npc.lifeMax =  60;
+            npc.lifeMax = 60;
             npc.defense = 20;
             npc.damage = 10;
             npc.width = 26;
@@ -37,15 +37,6 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 
         public override void AI()
         {
-            if (npc.alpha != 0)
-            {
-                for (int spawnDust = 0; spawnDust < 2; spawnDust++)
-                {
-                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 107, 0f, 0f, 100, default(Color), 2f);
-                    Main.dust[num935].noGravity = true;
-                    Main.dust[num935].noLight = true;
-                }
-            }
             BaseAI.AIElemental(npc, ref npc.ai, null, 120, false, true, 800, 400, 180, 2);
 
             if (npc.ai[0] == 2f)

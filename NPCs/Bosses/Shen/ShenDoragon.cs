@@ -261,6 +261,7 @@ namespace AAMod.NPCs.Bosses.Shen
             int Flame = mod.ProjectileType<SeekingFlame>();
 
             int InfernoCount = 0;
+            int ChargeDamage = npc.defDamage / 2;
 
             if (npc.ai[0] == .1f) //initial spawn effects
             {
@@ -335,6 +336,17 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.netUpdate = true;
                 }
             }
+
+            if (npc.ai[0] == 1f) //charge attack
+            {
+                npc.damage = ChargeDamage;
+            }
+            else
+            {
+                npc.damage = npc.defDamage;
+
+            }
+
             if (npc.ai[0] == .1f) //initial spawn effects
             {
                 npc.velocity *= 0.98f;

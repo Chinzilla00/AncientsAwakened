@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.Projectiles
 {
@@ -10,7 +11,6 @@ namespace AAMod.Projectiles
     {
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.MagicMissile);
             projectile.penetrate = 1;  
             projectile.width = 18;
             projectile.height = 18;
@@ -22,7 +22,7 @@ namespace AAMod.Projectiles
 		
 		public override void AI()
 		{
-			if (Main.rand.NextFloat() < 0.9210526f)
+			if (Main.rand.NextFloat() < 0.8f)
 			{
 				Vector2 position = projectile.position;
                 int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, 107, projectile.velocity.X * 0.2f,
@@ -31,31 +31,18 @@ namespace AAMod.Projectiles
 			}
 		}
 
-        public short customGlowMask = 0;
-        public override void SetStaticDefaults()
+        public override Color? GetAlpha(Color lightColor)
         {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-            projectile.glowMask = customGlowMask;
+            return AAColor.COLOR_WHITEFADE1;
+        }
 
-            DisplayName.SetDefault("TerraPetal");
-		}
-		
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-		{
-			target.immune[projectile.owner] = 1;
-		}
-		
-		public override void Kill(int timeLeft)
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, AAColor.COLOR_WHITEFADE1, true);
+            return false;
+        }
+
+        public override void Kill(int timeLeft)
 		{
 			Main.PlaySound(SoundID.DD2_ExplosiveTrapExplode, projectile.position);
 			Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, mod.ProjectileType("DummyExplosionTerra"), projectile.damage, 0, Main.myPlayer);

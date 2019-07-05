@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.Zero
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Gigataser");
+            DisplayName.SetDefault("Neutralizer");
             Main.npcFrameCount[npc.type] = 2;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
@@ -107,7 +107,7 @@ namespace AAMod.NPCs.Bosses.Zero
             if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
             rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
-            npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(160f, 0f), rotValue);
+            npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(((Zero)zero.modNPC).Distance, 0f), rotValue);
 
             if (Main.netMode != 1) { npc.ai[2]++; }
 
@@ -118,15 +118,24 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (Main.netMode != 1) { npc.ai[2]++; }
 
-            if (npc.ai[2] == aiTimerFire)
+            if (npc.ai[2] >= aiTimerFire)
             {
-                npc.ai[2] = 0;
+                int dustID = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.VoidDust>());
+                Main.dust[dustID].position += (npc.position - npc.oldPosition);
+                Main.dust[dustID].velocity = (npc.Center - npc.Center) * 0.10f;
+                Main.dust[dustID].alpha = 100;
+                Main.dust[dustID].noGravity = true;
                 if (Collision.CanHit(npc.position, npc.width, npc.height, player.Center, player.width, player.height))
                 {
                     Vector2 fireTarget = npc.Center;
                     float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                     fireTarget = BaseUtility.RotateVector(npc.Center, fireTarget, rot);
                     BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("NeutralizerP"), npc.damage / 2, 0f, 4f);
+                }
+                
+                if (npc.ai[2] >= aiTimerFire + 60)
+                {
+                    npc.ai[2] = 0;
                 }
             }
 
@@ -137,10 +146,14 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
         }
 
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
+            Texture2D tex = Main.npcTexture[npc.type];
             Texture2D glowTex = mod.GetTexture("Glowmasks/Neutralizer2_Glow");
+            BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, npc, 1, 1, 6, true, 0, 0, Color.DarkRed, npc.frame, 2);
+            BaseDrawing.DrawTexture(spriteBatch, tex, 0, npc, drawColor);
             BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, AAColor.ZeroShield);
+            return false;
         }
 
         public override void BossHeadRotation(ref float rotation)

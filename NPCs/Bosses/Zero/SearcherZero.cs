@@ -67,7 +67,6 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-
             Texture2D glowTex = mod.GetTexture("Glowmasks/SearcherZero_Glow");
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }

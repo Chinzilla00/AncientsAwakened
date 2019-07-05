@@ -541,17 +541,13 @@ namespace AAMod.Worldgeneration
 
             if (Terrasphere == null)
             {
-                if (worldSize == 3)
-                {
-                    Terrasphere = TerraLarge;
-                }
-                if (worldSize == 2)
-                {
-                    Terrasphere = TerraMed;
-                }
                 if (worldSize == 1)
                 {
                     Terrasphere = TerraSmall;
+                }
+                else
+                {
+                    Terrasphere = TerraMed;
                 }
             }
 
@@ -575,9 +571,9 @@ namespace AAMod.Worldgeneration
         }
         public static int GetWorldSize()
         {
-            //if (Main.maxTilesX == 4200) { return 1; }
-            //else if (Main.maxTilesX == 6400) { return 2; }
-            //else if (Main.maxTilesX == 8400) { return 3; }
+            if (Main.maxTilesX == 4200) { return 1; }
+            else if (Main.maxTilesX == 6400) { return 2; }
+            else if (Main.maxTilesX == 8400) { return 3; }
             return 1; //unknown size, assume small
         }
     }
@@ -610,31 +606,23 @@ namespace AAMod.Worldgeneration
 
             Texture2D TerraSmall = mod.GetTexture("Worldgeneration/Terrarium");
             Texture2D TerraMed = mod.GetTexture("Worldgeneration/TerrariumMed");
-            Texture2D TerraLarge = mod.GetTexture("Worldgeneration/TerrariumLarge");
 
             Texture2D WallSmall = mod.GetTexture("Worldgeneration/TerrariumWalls");
             Texture2D WallMed = mod.GetTexture("Worldgeneration/TerrariumMedWalls");
-            Texture2D WallLarge = mod.GetTexture("Worldgeneration/TerrariumLargeWalls");
 
             if (Terrasphere == null)
             {
-                if (worldSize == 3)
-                {
-                    Terrasphere = TerraLarge;
-
-                    TerraWalls = WallLarge;
-                }
-                if (worldSize == 2)
-                {
-                    Terrasphere = TerraMed;
-
-                    TerraWalls = WallMed;
-                }
                 if (worldSize == 1)
                 {
                     Terrasphere = TerraSmall;
 
                     TerraWalls = WallSmall;
+                }
+                else
+                {
+                    Terrasphere = TerraMed;
+
+                    TerraWalls = WallMed;
                 }
             }
 
@@ -658,9 +646,9 @@ namespace AAMod.Worldgeneration
         }
         public static int GetWorldSize()
         {
-            //if (Main.maxTilesX == 4200) { return 1; }
-            //else if (Main.maxTilesX == 6400) { return 2; }
-            //else if (Main.maxTilesX == 8400) { return 3; }
+            if (Main.maxTilesX == 4200) { return 1; }
+            else if (Main.maxTilesX == 6400) { return 2; }
+            else if (Main.maxTilesX == 8400) { return 3; }
             return 1; //unknown size, assume small
         }
     }
@@ -692,7 +680,7 @@ namespace AAMod.Worldgeneration
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Parthenan"), colorToTile, mod.GetTexture("Worldgeneration/ParthenanWalls"), colorToWall);
             
             gen.Generate(origin.X, origin.Y, true, true);
-            WorldGen.PlaceObject((int)(origin.X) + 34, (int)(origin.Y) + 47, (ushort)mod.TileType("DataBank"));
+            WorldGen.PlaceObject((int)(origin.X) + 34, (origin.Y) + 47, (ushort)mod.TileType("DataBank"));
             WorldGen.PlaceChest((origin.X) + 32, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
             WorldGen.PlaceChest((origin.X) + 41, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
             return true;

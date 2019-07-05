@@ -15,9 +15,10 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 			base.SendExtraAI(writer);
 			if((Main.netMode == 2 || Main.dedServ))
 			{
-				writer.Write((float)internalAI[0]);
-				writer.Write((float)internalAI[1]);
-			}
+				writer.Write(internalAI[0]);
+				writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+            }
 		}
 
 		public override void ReceiveExtraAI(BinaryReader reader)
@@ -27,7 +28,8 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 			{
 				internalAI[0] = reader.ReadFloat();
 				internalAI[1] = reader.ReadFloat();
-			}	
+                internalAI[2] = reader.ReadFloat();
+            }	
 		}	
 
         public override void SetStaticDefaults()
@@ -68,7 +70,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         }
 
         public static int AISTATE_WALK = 0, AISTATE_JUMP = 1, AISTATE_CHARGE = 2, AISTATE_FLY = 3;
-		public float[] internalAI = new float[2];
+		public float[] internalAI = new float[3];
 		
         public override void AI()
         {
@@ -171,10 +173,18 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 			}
 			if(internalAI[1] == AISTATE_WALK) //fighter
 			{
+                if (Main.netMode != 1)
+                {
+                    internalAI[2]++;
+                }
                 if (NPC.CountNPCS(mod.NPCType<RedMushling>()) < 4)
                 {
-                    int Minion = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<RedMushling>(), 0);
-                    Main.npc[Minion].netUpdate2 = true;
+                    for (int i = 0; i < 2; i++)
+                    {
+                        int Minion = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<RedMushling>(), 0);
+                        Main.npc[Minion].netUpdate = true;
+                    }
+                    internalAI[2] = 0;
                 }
                 AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, 0, 0.07f, 3f, 3, 4, 60, true, 10, 60, true, null, false);				
 			}else

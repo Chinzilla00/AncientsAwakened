@@ -285,23 +285,15 @@ namespace AAMod.NPCs.Bosses.Raider
             {
                 if (Main.netMode != 1)
                 {
-                    internalAI[2]++;
-                    if (!NPC.AnyNPCs(mod.NPCType("RaidRocket")))
+                    for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
                     {
-                        for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
-                        {
-                            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("RaidRocket"), 0);
-                        }
-                        npc.netUpdate = true;
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("RaidRocket"), 0);
                     }
-                    if (internalAI[2] > 90)
-                    {
-                        internalAI[0] = 0;
-                        internalAI[1] = 0;
-                        internalAI[2] = 0;
-                        npc.ai = new float[4];
-                        npc.netUpdate = true;
-                    }
+                    internalAI[0] = 0;
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
                 }
 
             }

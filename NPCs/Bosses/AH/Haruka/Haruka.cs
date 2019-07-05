@@ -164,6 +164,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<HarukaVanish>(), 0);
                         Main.npc[DeathAnim].velocity = npc.velocity;
                         Main.npc[DeathAnim].netUpdate = true;
+                        npc.active = false;
+                        npc.netUpdate = true;
                     }
                     return;
                 }

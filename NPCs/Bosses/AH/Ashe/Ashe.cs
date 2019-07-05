@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             bossBag = mod.ItemType("AHBag");
         }
 
-        public float[] internalAI = new float[4];
+        public float[] internalAI = new float[5];
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -55,6 +55,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
+                writer.Write(internalAI[4]);
             }
         }
 
@@ -67,6 +68,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
+                internalAI[4] = reader.ReadFloat();
             }
         }
 
@@ -170,8 +172,16 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                 }
             }
-            
 
+            if (NPC.AnyNPCs(mod.NPCType<AsheDragon>()))
+            {
+                internalAI[4] = 1200;
+            }
+
+            if (internalAI[4] > 0)
+            {
+                internalAI[4]--;
+            }
 
             if (internalAI[0] == AISTATE_HOVER || internalAI[0] == AISTATE_DRAGON) //Hovering/Summoning Dragon
             {
@@ -181,7 +191,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     if (internalAI[3] >= 90)
                     {
                         internalAI[3] = 0;
-                        if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) < 1)
+                        if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) < 1 && internalAI[4] <= 0)
                         {
                             internalAI[0] = Main.rand.Next(7);
                         }
@@ -351,7 +361,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                 }
                 MeleeMovement(MovePoint);
-                npc.netUpdate = true;
             }
             else //Anything else
             {

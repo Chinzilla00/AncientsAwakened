@@ -37,6 +37,7 @@ namespace AAMod
         public static int Darkmatter = 0;
         public static int DiscoBall = 0;
         //Worldgen
+        public static bool TerrariumEnemies;
         public static bool Luminite;
         public static bool DarkMatter;
         public static bool FulguriteOre;
@@ -176,6 +177,7 @@ namespace AAMod
             downedRajah = false;
             RabbitKills = 0;
             //World Changes
+            TerrariumEnemies = NPC.downedBoss2;
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             FulguriteOre = downedStormAny;
@@ -1299,6 +1301,14 @@ namespace AAMod
                             WorldGen.OreRunner(tilesX, tilesY, WorldGen.genRand.Next(5, 6), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("DaybreakIncineriteOre"));
                         }
                     }
+                }
+            }
+            if (NPC.downedBoss2)
+            {
+                if (!TerrariumEnemies)
+                {
+                    TerrariumEnemies = true;
+                    Main.NewText("You hear a hum of harmony from the Terrarium after the defeat of a great evil...", Color.LimeGreen);
                 }
             }
             if (NPC.downedBoss3)

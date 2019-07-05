@@ -20,7 +20,7 @@ namespace AAMod.Tiles
             name.SetDefault("Hallowed Ore");
             dustType = DustID.Gold;
             AddMapEntry(new Color(160, 160, 50), name);
-			minPick = 190;
+			minPick = 180;
         }
       
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
