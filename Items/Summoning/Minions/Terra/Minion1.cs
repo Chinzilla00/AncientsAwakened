@@ -35,19 +35,16 @@ namespace AAMod.Items.Summoning.Minions.Terra
 
         public override void AI()
         {
-            bool flag64 = projectile.type == mod.ProjectileType("Minion1");
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            if (flag64)
+            player.AddBuff(mod.BuffType("TerraSummon"), 3600);
+            if (player.dead)
             {
-                if (player.dead)
-                {
-                    modPlayer.TerraSummon = false;
-                }
-                if (modPlayer.TerraSummon)
-                {
-                    projectile.timeLeft = 2;
-                }
+                modPlayer.TerraSummon = false;
+            }
+            if (!modPlayer.TerraSummon)
+            {
+                projectile.active = false;
             }
 
             float num633 = 700f;

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Blocks
 {
 	public class DaybreakTorch : BaseAAItem
-	{
+    {
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Daybreak Torch");
@@ -27,9 +27,9 @@ namespace AAMod.Items.Blocks
 			item.consumable = true;
 			item.createTile = mod.TileType("DaybreakTorch");
 			item.flame = true;
-            AARarity = 13;
-            item.value = Item.sellPrice(0, 0, 25, 0);
-        }
+            AARarity = 14;
+            item.value = Item.sellPrice(0, 0, 50, 0);
+		}
 
 		public override void HoldItem(Player player)
 		{

@@ -134,11 +134,11 @@
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosHood.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosKabuto.cs" />
     <Compile Include="Items\Armor\PerfectChaos\PerfectChaosPlate.cs" />
+    <Compile Include="Items\Blocks\DaybreakTorch.cs" />
     <Compile Include="Items\Blocks\EventideTorch.cs" />
     <Compile Include="Items\Blocks\HydratoxinTorch.cs" />
     <Compile Include="Items\Blocks\DragonfireTorch.cs" />
     <Compile Include="Items\Blocks\DiscordianTorch.cs" />
-    <Compile Include="Items\Blocks\DaybreakTorch.cs" />
     <Compile Include="Items\Blocks\DepthsandHardened.cs" />
     <Compile Include="Items\Blocks\IndigoIce.cs" />
     <Compile Include="Items\Blocks\RajahBox.cs" />
@@ -2816,9 +2816,7 @@
     <Content Include="Backgrounds\Rock_2.png" />
     <Content Include="Backgrounds\ShenBg.png" />
     <Content Include="Backgrounds\ShenMeteor.png" />
-    <Content Include="Backgrounds\ShenMoon.png" />
     <Content Include="Backgrounds\ShenSky.png" />
-    <Content Include="Backgrounds\ShenSun.png" />
     <Content Include="Backgrounds\SkyTex.png" />
     <Content Include="Backgrounds\SSky.png" />
     <Content Include="Backgrounds\Sun.png" />
@@ -2838,6 +2836,7 @@
     <Content Include="Backgrounds\YamataRock0.png" />
     <Content Include="Backgrounds\YamataRock1.png" />
     <Content Include="Backgrounds\YamataRock2.png" />
+    <Content Include="Backgrounds\YamataStars.png" />
     <Content Include="bin\Debug\AAMod.dll" />
     <Content Include="bin\Debug\AAMod.pdb" />
     <Content Include="bin\Debug\Microsoft.Xna.Framework.dll" />
@@ -5090,6 +5089,9 @@
     <Content Include="NPCs\Bosses\AH\Haruka\HarukaSlash.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AsheA.png" />
     <Content Include="NPCs\Bosses\Akuma\Awakened\AsheA_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Djinn\DesertDjinn.png" />
+    <Content Include="NPCs\Bosses\Djinn\DesertDjinnMudaMuda.png" />
+    <Content Include="NPCs\Bosses\Djinn\DesertDjinnPunch.png" />
     <Content Include="NPCs\Bosses\Djinn\DjinnPunch.png" />
     <Content Include="NPCs\Bosses\Djinn\MudaMuda.png" />
     <Content Include="NPCs\Bosses\Equinox\Nc.png" />

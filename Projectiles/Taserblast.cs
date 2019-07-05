@@ -26,15 +26,11 @@ namespace AAMod.Projectiles
             projectile.timeLeft = 900;
             projectile.alpha = 255;
         }
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
 
         public override void AI()
         {
             projectile.ai[0]++;
-            if (projectile.ai[0] > 5)
+            if (projectile.ai[0] > 20)
             {
                 projectile.alpha = 0;
             }

@@ -31,6 +31,7 @@ namespace AAMod.NPCs.Bosses.Zero
 			npc.alpha = 0;
 			npc.dontTakeDamage = true;
 			npc.boss = false;
+            npc.npcSlots = 0;
         }
 
 		public override bool CheckActive()

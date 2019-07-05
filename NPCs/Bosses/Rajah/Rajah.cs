@@ -814,7 +814,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             else if (isSupreme)
             {
                 BaseDrawing.DrawTexture(spriteBatch, SupremeEyes, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
-                BaseDrawing.DrawAura(spriteBatch, SupremeEyes, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, -5f, Main.DiscoColor);
             }
             return false;
         }

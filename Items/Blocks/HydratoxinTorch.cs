@@ -27,7 +27,7 @@ namespace AAMod.Items.Blocks
 			item.consumable = true;
 			item.createTile = mod.TileType("HydratoxinTorch");
 			item.flame = true;
-            AARarity = 13;
+            item.rare = 3;
             item.value = Item.sellPrice(0, 0, 1, 0);
 		}
 
@@ -51,7 +51,7 @@ namespace AAMod.Items.Blocks
 
 		public override void AutoLightSelect(ref bool dryTorch, ref bool wetTorch, ref bool glowstick)
 		{
-			dryTorch = true;
+			dryTorch = false;
 		}
 
 		public override void AddRecipes()

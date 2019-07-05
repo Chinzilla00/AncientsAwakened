@@ -473,16 +473,19 @@ namespace AAMod
                 VoidSky.boltTexture = null;
                 VoidSky.flashTexture = null;
 
-                YamataSky.PlanetTexture = null;
-                YamataSky.BGTexture = null;
-                YamataSky.SkyTex = null;
-
                 ShenSky.MeteorTexture = null;
                 ShenSky.SkyTex = null;
                 ShenSky.BGTexture = null;
 
                 ShenASky.MeteorTexture = null;
-                ShenASky.SkyTex = null;            
+                ShenASky.SkyTex = null;
+                ShenASky.BGTexture = null;
+
+                YamataSky.BeamTexture = null;
+                YamataSky.BGTexture = null;
+                YamataSky.PlanetTexture = null;
+                YamataSky.RockTextures = null;
+                YamataSky.SkyTex = null;
             }
         }
 

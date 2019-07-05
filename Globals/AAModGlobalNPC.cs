@@ -1019,11 +1019,6 @@ namespace AAMod
                     pool.Add(mod.NPCType<PuritySquid>(), .05f);
                 }
             }
-
-            if (NPC.CountNPCS(mod.NPCType("StanLee")) < 1)
-            {
-                pool.Add(mod.NPCType<NPCs.TownNPCs.StanLee>(), .00001f);
-            }
         }
 
         public override void SetupShop(int type, Chest shop, ref int nextSlot)

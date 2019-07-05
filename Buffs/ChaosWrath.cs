@@ -39,7 +39,7 @@ namespace AAMod.Buffs
                     player.rangedCrit += 28;
                 }
             }
-            if (modPlayer.perfectChaosSu)
+            else if (modPlayer.perfectChaosSu)
             {
                 if (player.statLife <= player.statLifeMax2 * .2f)
                 {
@@ -58,7 +58,7 @@ namespace AAMod.Buffs
                     player.minionDamage *= 1.15f;
                 }
             }
-            if (modPlayer.perfectChaosMe)
+            else if (modPlayer.perfectChaosMe)
             {
                 if (player.statLife <= player.statLifeMax2 * .8f)
                 {
@@ -81,7 +81,7 @@ namespace AAMod.Buffs
                     player.meleeDamage *= 1.4f;
                 }
             }
-            if (modPlayer.perfectChaosMa)
+            else if (modPlayer.perfectChaosMa)
             {
                 if (player.statLife <= player.statLifeMax2 * .2f)
                 {
@@ -103,6 +103,11 @@ namespace AAMod.Buffs
                     player.manaCost *= .75f;
                     player.magicDamage *= 1.1f;
                 }
+            }
+            else
+            {
+                player.DelBuff(buffIndex);
+                buffIndex--;
             }
         }
     }

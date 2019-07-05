@@ -47,13 +47,14 @@ namespace AAMod.Items.Summoning.Minions.Terra
         {
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            player.AddBuff(mod.BuffType("TerraSummon"), 3600);
             if (player.dead)
             {
                 modPlayer.TerraSummon = false;
             }
-            if (modPlayer.TerraSummon)
+            if (!modPlayer.TerraSummon)
             {
-                projectile.timeLeft = 2;
+                projectile.active = false;
             }
             if (Main.netMode == 1 && Main.myPlayer == projectile.owner && !syncSpawn) { syncSpawn = projectile.netUpdate2 = true; }
             if (!player.active || player.dead) { projectile.Kill(); return; }

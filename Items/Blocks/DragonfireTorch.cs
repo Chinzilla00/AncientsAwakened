@@ -27,7 +27,7 @@ namespace AAMod.Items.Blocks
 			item.consumable = true;
 			item.createTile = mod.TileType("DragonfireTorch");
 			item.flame = true;
-            AARarity = 13;
+            item.rare = 3;
             item.value = Item.sellPrice(0, 0, 1, 0);
 		}
 

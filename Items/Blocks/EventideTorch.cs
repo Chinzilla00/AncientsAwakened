@@ -51,7 +51,7 @@ namespace AAMod.Items.Blocks
 
 		public override void AutoLightSelect(ref bool dryTorch, ref bool wetTorch, ref bool glowstick)
 		{
-			dryTorch = true;
+			dryTorch = false;
 		}
 
 		public override void AddRecipes()

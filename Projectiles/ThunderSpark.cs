@@ -28,7 +28,7 @@ namespace AAMod.Projectiles
 
         public override void PostAI()
         {
-
+            projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
             projectile.frameCounter++;
             if (projectile.frameCounter > 6)
             {

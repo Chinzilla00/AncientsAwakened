@@ -145,7 +145,7 @@ namespace AAMod.Projectiles
                     vector24 = mountedCenter - position;
                     Color color2 = Lighting.GetColor((int)position.X / 16, (int)(position.Y / 16.0));
                     color2 = projectile.GetAlpha(color2);
-                    Main.spriteBatch.Draw(texture, position - Main.screenPosition, sourceRectangle, Color.White, rotation, origin, 1.35f, SpriteEffects.None, 0.0f);
+                    Main.spriteBatch.Draw(texture, position - Main.screenPosition, sourceRectangle, color2, rotation, origin, 1.35f, SpriteEffects.None, 0.0f);
                 }
             }
             return true;

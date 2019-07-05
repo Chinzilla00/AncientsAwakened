@@ -27,7 +27,7 @@ namespace AAMod.Items.Blocks
 			item.consumable = true;
 			item.createTile = mod.TileType("DiscordianTorch");
 			item.flame = true;
-            AARarity = 13;
+            AARarity = 14;
             item.value = Item.sellPrice(0, 0, 50, 0);
 		}
 
