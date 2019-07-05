@@ -6723,7 +6723,7 @@
     <Content Include="Projectiles\Flasks\VoidFlask.png" />
     <Content Include="Projectiles\ForestSolution.png" />
     <Content Include="Projectiles\GhastBoom.png" />
-    <Content Include="Projectiles\GhastlySkull.png" />
+    <Content Include="Projectiles\GhastSkull.png" />
     <Content Include="Projectiles\GlacierBreaker.png" />
     <Content Include="Projectiles\GlacierBreaker_Chain.png" />
     <Content Include="Projectiles\GrimReaperScythe.png" />

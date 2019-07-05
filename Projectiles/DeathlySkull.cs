@@ -180,7 +180,7 @@ namespace AAMod.Projectiles
             for (int num91 = 0; num91 < 70; num91++)
             {
                 int num92 = Dust.NewDust(position, num84, height3, 6, 0f, 0f, 0);
-                Main.dust[num92].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation()) * =num84 / 2f);
+                Main.dust[num92].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation()) * num84 / 2f);
                 Main.dust[num92].noGravity = true;
                 Main.dust[num92].velocity *= 3f;
                 Main.dust[num92].velocity += projectile.DirectionTo(Main.dust[num92].position) * 3f;
