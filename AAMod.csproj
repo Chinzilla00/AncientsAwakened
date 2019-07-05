@@ -825,6 +825,7 @@
     <Compile Include="Items\Boss\Rajah\RabbitcopterEars.cs" />
     <Compile Include="Items\Boss\Rajah\RajahBag.cs" />
     <Compile Include="Items\Boss\Rajah\RajahSash.cs" />
+    <Compile Include="Items\Boss\Rajah\Supreme\FluffyFury.cs" />
     <Compile Include="Items\Boss\Retriever\CyberBaton.cs" />
     <Compile Include="Items\Boss\Retriever\CyberClaw.cs" />
     <Compile Include="Items\Boss\Retriever\RetrieverBag.cs" />
@@ -1961,12 +1962,17 @@
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
     <Compile Include="Projectiles\Aerodrake1.cs" />
     <Compile Include="Projectiles\ApocalypseHeal.cs" />
+    <Compile Include="Projectiles\GhastBoom.cs" />
+    <Compile Include="Projectiles\GhastSkull.cs" />
+    <Compile Include="Projectiles\DeathlySkull.cs" />
     <Compile Include="Projectiles\GrimReaperScythe.cs" />
     <Compile Include="Projectiles\GrimReaperScytheEX.cs" />
     <Compile Include="Projectiles\Hellshot.cs" />
     <Compile Include="Projectiles\CursedSickleProj.cs" />
     <Compile Include="Projectiles\ChaosChainEXSaw.cs" />
     <Compile Include="Projectiles\CursedSickle.cs" />
+    <Compile Include="Projectiles\Rajah\CarrowSplit.cs" />
+    <Compile Include="Projectiles\Rajah\Carrow.cs" />
     <Compile Include="Projectiles\ReaperHitbox.cs" />
     <Compile Include="Projectiles\Serpent\SerpentHead.cs" />
     <Compile Include="Projectiles\Shen\DiscordianInfernoF.cs" />
@@ -6690,6 +6696,7 @@
     <Content Include="Projectiles\DBP.png" />
     <Content Include="Projectiles\DBreath.png" />
     <Content Include="Projectiles\DeathDagger.png" />
+    <Content Include="Projectiles\DeathlySkull.png" />
     <Content Include="Projectiles\Demise.png" />
     <Content Include="Projectiles\DoomiteVortex.png" />
     <Content Include="Projectiles\DragonSpine.png" />
@@ -6715,6 +6722,8 @@
     <Content Include="Projectiles\Flasks\SporeSac.png" />
     <Content Include="Projectiles\Flasks\VoidFlask.png" />
     <Content Include="Projectiles\ForestSolution.png" />
+    <Content Include="Projectiles\GhastBoom.png" />
+    <Content Include="Projectiles\GhastlySkull.png" />
     <Content Include="Projectiles\GlacierBreaker.png" />
     <Content Include="Projectiles\GlacierBreaker_Chain.png" />
     <Content Include="Projectiles\GrimReaperScythe.png" />
@@ -6726,7 +6735,8 @@
     <Content Include="Projectiles\Mjolnir.png" />
     <Content Include="Projectiles\MjolnirEffect.png" />
     <Content Include="Projectiles\MjolnirEX.png" />
-    <Content Include="Projectiles\Rajah\CarrotArrowMini.png" />
+    <Content Include="Projectiles\Rajah\Carrow.png" />
+    <Content Include="Projectiles\Rajah\CarrowSplit.png" />
     <Content Include="Projectiles\Rajah\Excalihare.png" />
     <Content Include="Projectiles\ReaperHitbox.png" />
     <Content Include="Projectiles\Rogue\ThrowingCarrot.png" />

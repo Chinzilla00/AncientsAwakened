@@ -63,7 +63,7 @@ namespace AAMod.Projectiles
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
             float spread = 12f * 0.0174f;
             double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
-            double deltaAngle = spread / 4;
+            double deltaAngle = spread / 3;
             for (int i = 0; i < 3; i++)
             {
                 double offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;

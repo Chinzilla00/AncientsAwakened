@@ -103,6 +103,11 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             npc.oldPos[0] = npc.position;
 
+            if (((Zero)zero.modNPC).killArms && Main.netMode != 1)
+            {
+                npc.active = false;
+            }
+
             int probeNumber = ((Zero)zero.modNPC).WeaponCount;
             if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
             rotValue += 0.05f;
@@ -115,7 +120,6 @@ namespace AAMod.NPCs.Bosses.Zero
 
             int aiTimerFire = Main.expertMode ? 190 : 250;
 
-
             if (Main.netMode != 1) { npc.ai[2]++; }
 
             if (npc.ai[2] >= aiTimerFire)
@@ -125,12 +129,13 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.dust[dustID].velocity = (npc.Center - npc.Center) * 0.10f;
                 Main.dust[dustID].alpha = 100;
                 Main.dust[dustID].noGravity = true;
-                if (Collision.CanHit(npc.position, npc.width, npc.height, player.Center, player.width, player.height))
+                if (Collision.CanHit(npc.position, npc.width, npc.height, player.Center, player.width, player.height) && npc.ai[2] >= aiTimerFire + 50)
                 {
                     Vector2 fireTarget = npc.Center;
                     float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                     fireTarget = BaseUtility.RotateVector(npc.Center, fireTarget, rot);
                     BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("NeutralizerP"), npc.damage / 2, 0f, 4f);
+                    npc.ai[2] = 0;
                 }
                 
                 if (npc.ai[2] >= aiTimerFire + 60)
@@ -138,12 +143,15 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.ai[2] = 0;
                 }
             }
+            else
+            {
+                Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+                float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
+                float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
+                float NewRotation = (float)Math.Atan2(num2, num1) - 1.57f;
+                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
+            }
 
-            Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
-            float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
-            float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
-            float NewRotation = (float)Math.Atan2(num2, num1) - 1.57f;
-            npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)

@@ -12,8 +12,8 @@ namespace AAMod.Items.Ranged
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("True Deathly Longbow");
-            Tooltip.SetDefault("Replaces Arrows with Reaper Arrows");
-
+            Tooltip.SetDefault(@"Replaces Arrows with Reaper Arrows
+If bone arrows are used, fires an explosive ghast skull");
         }
 
         public override void SetDefaults()
@@ -49,15 +49,14 @@ namespace AAMod.Items.Ranged
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            float spread = 45f * 0.0174f;
-            float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
-            double startAngle = Math.Atan2(speedX, speedY) - .1d;
-            double deltaAngle = spread / 6f;
-            double offsetAngle;
             for (int i = 0; i < 3; i++)
             {
-                offsetAngle = startAngle + (deltaAngle * i);
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("ReaperArrow"), damage, knockBack, player.whoAmI, 0f, 0f);
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("ReaperArrow"), damage, knockBack, player.whoAmI);
+            }
+            if (type == ProjectileID.BoneArrow)
+            {
+                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("GhastSkull"), (int)(damage * 1.5), knockBack, player.whoAmI);
             }
             return false;
         }

@@ -10,7 +10,7 @@ namespace AAMod.Items.Ranged
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Deathly Longbow");
-            Tooltip.SetDefault("Replaces Wooden Arrows with Bone Arrows");
+            Tooltip.SetDefault("Replaces Bone Arrows with Flaming Skulls");
         }
 
         public override void SetDefaults()
@@ -56,17 +56,14 @@ namespace AAMod.Items.Ranged
                 recipe.AddRecipe();
             }
         }
-        /*public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-1, 0);
-        }*/
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             if (type == ProjectileID.WoodenArrowFriendly)
             {
-                type = ProjectileID.BoneArrow;
+                type = 270;
             }
-            return true; // return true to allow tmodloader to call Projectile.NewProjectile as normal
+            return true;
         }
     }
 }

@@ -123,11 +123,15 @@ namespace AAMod.NPCs.Bosses.Zero
             NPC zero = Main.npc[body];
             if (zero == null || zero.life <= 0 || !zero.active || zero.type != mod.NPCType("Zero")) { npc.active = false; return; }
 
-
             int probeNumber = ((Zero)zero.modNPC).WeaponCount;
             if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
             rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
+
+            if (((Zero)zero.modNPC).killArms && Main.netMode != 1)
+            {
+                npc.active = false;
+            }
 
             if (Main.netMode != 1) { npc.ai[2]++; }
 

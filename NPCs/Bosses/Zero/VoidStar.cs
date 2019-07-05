@@ -102,7 +102,10 @@ namespace AAMod.NPCs.Bosses.Zero
 
             int probeNumber = ((Zero)zero.modNPC).WeaponCount;
 
-            float Dist = ((Zero)zero.modNPC).WeaponCount;
+            if (((Zero)zero.modNPC).killArms && Main.netMode != 1)
+            {
+                npc.active = false;
+            }
             if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
             rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;

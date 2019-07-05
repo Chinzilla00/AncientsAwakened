@@ -107,6 +107,11 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             npc.oldPos[0] = npc.position;
 
+            if (((Zero)zero.modNPC).killArms && Main.netMode != 1)
+            {
+                npc.active = false;
+            }
+
             int probeNumber = ((Zero)zero.modNPC).WeaponCount;
             if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
             rotValue += 0.05f;
@@ -119,7 +124,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
             int aiTimerFire = Main.expertMode ? 230 : 280;
 
-            if (npc.ai[2] == aiTimerFire)
+            if (npc.ai[2] >= aiTimerFire)
             {
                 npc.ai[3]++;
                 if (npc.ai[3] >= 210)

@@ -177,7 +177,8 @@ namespace AAMod.NPCs.Bosses.Zero
         public int MinionTimer = 0;
         public bool AnyArms = false;
         public float Distance = 0;
-        public float[] internalAI = new float[4];
+        public bool killArms = false;
+        public float[] internalAI = new float[5];
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -188,8 +189,10 @@ namespace AAMod.NPCs.Bosses.Zero
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
+                writer.Write(internalAI[4]);
                 writer.Write(Distance);
                 writer.Write(AnyArms);
+                writer.Write(killArms);
             }
         }
 
@@ -202,8 +205,10 @@ namespace AAMod.NPCs.Bosses.Zero
                 internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
+                internalAI[4] = reader.ReadFloat();
                 Distance = reader.ReadFloat();
                 AnyArms = reader.ReadBool();
+                killArms = reader.ReadBool();
             }
         }
 
@@ -234,6 +239,7 @@ namespace AAMod.NPCs.Bosses.Zero
             Vector2 DeactivatedPoint = new Vector2(ZeroHandler.ZX, ZeroHandler.ZY);
 
             RingRoatation += 0.03f;
+            KillArms();
 
             if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
@@ -283,7 +289,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 return;
             }
 
-            if (Main.netMode != 1 && internalAI[2] != 1)
+            if (Main.netMode != 1 && internalAI[2] != 1 && !killArms)
             {
                 for(int m = 0; m < WeaponCount; m++)
                 {
@@ -321,11 +327,11 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 else
                 {
-                    KillArms();
                     if (Main.netMode != 1)
                     {
                         internalAI[2] = 0;
                         internalAI[3] = 0;
+                        killArms = true;
                         npc.netUpdate = true;
                     }
                     else
@@ -496,56 +502,22 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (Main.netMode != 1)
             {
-                if (NPC.AnyNPCs(mod.NPCType<GenocideCannon>()))
+                if (killArms)
                 {
-                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
-                    Arm.active = false;
-                    Arm.netUpdate = true;
-                }
-                if (NPC.AnyNPCs(mod.NPCType<Neutralizer>()))
-                {
-                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
-                    Arm.active = false;
-                    Arm.netUpdate = true;
-                }
-                if (NPC.AnyNPCs(mod.NPCType<NovaFocus>()))
-                {
-                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
-                    Arm.active = false;
-                    Arm.netUpdate = true;
-                }
-                if (NPC.AnyNPCs(mod.NPCType<OmegaVolley>()))
-                {
-                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
-                    Arm.active = false;
-                    Arm.netUpdate = true;
-                }
-                if (NPC.AnyNPCs(mod.NPCType<RiftShredder>()))
-                {
-                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
-                    Arm.active = false;
-                    Arm.netUpdate = true;
-                }
-                if (NPC.AnyNPCs(mod.NPCType<Taser>()))
-                {
-                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
-                    Arm.active = false;
-                    Arm.netUpdate = true;
-                }
-                if (NPC.AnyNPCs(mod.NPCType<NovaFocus>()))
-                {
-                    NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
-                    Arm.active = false;
-                    Arm.netUpdate = true;
-                }
-                if (NPC.AnyNPCs(mod.NPCType<TeslaHand>()))
-                {
-                    for (int i = 0; i < NPC.CountNPCS(mod.NPCType<TeslaHand>()); i++)
+                    if (internalAI[4]++ > 30)
                     {
-                        NPC Arm = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<GenocideCannon>(), -1)];
-                        Arm.active = false;
-                        Arm.netUpdate = true;
+                        killArms = false;
+                        internalAI[4] = 0;
                     }
+                    else
+                    {
+                        killArms = true;
+                        npc.netUpdate = true;
+                    }
+                }
+                else
+                {
+                    internalAI[4] = 0;
                 }
             }
         }
