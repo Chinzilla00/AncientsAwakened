@@ -159,13 +159,15 @@ namespace AAMod.NPCs.Bosses.Shen
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
             Texture2D currentTex = Main.npcTexture[npc.type];
-            Texture2D currentWingTex = mod.GetTexture("NPCs/Bosses/Shen/ShenAWings");
+            Texture2D currentWingTex1 = mod.GetTexture("NPCs/Bosses/Shen/ShenWingBack");
+            Texture2D currentWingTex2 = mod.GetTexture("NPCs/Bosses/Shen/ShenWingFront");
             Texture2D glowTex = mod.GetTexture("NPCs/Bosses/Shen/ShenA_Glow");
 
             //offset
             npc.position.Y += 130f;
 
             //draw body/charge afterimage
+            BaseDrawing.DrawTexture(sb, currentWingTex2, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);
             if (Charging)
             {
                 BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, (byte)150));
@@ -177,7 +179,7 @@ namespace AAMod.NPCs.Bosses.Shen
             BaseDrawing.DrawAfterimage(sb, glowTex, 0, npc, 0.3f, 1f, 8, false, 0f, 0f, AAColor.Shen3);
 
             //draw wings
-            BaseDrawing.DrawTexture(sb, currentWingTex, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);
+            BaseDrawing.DrawTexture(sb, currentWingTex2, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);
 
             //deoffset
             npc.position.Y -= 130f; // offsetVec;			
