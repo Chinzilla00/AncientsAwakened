@@ -71,6 +71,8 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         private Texture2D RajahTex;
         private Texture2D Glow;
+        private Texture2D SupremeGlow;
+        private Texture2D SupremeEyes;
         private Texture2D ArmTex;
         public int WeaponFrame = 0;
 
@@ -759,11 +761,15 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/" + Supreme + "Rajah" + IsRoaring + "_Fly");
                 Glow = mod.GetTexture("Glowmasks/Rajah" + IsRoaring + "_Fly_Glow");
+                SupremeGlow = mod.GetTexture("Glowmasks/SupremeRajah" + IsRoaring + "_Fly_Glow");
+                SupremeEyes = mod.GetTexture("Glowmasks/SupremeRajah" + IsRoaring + "_Fly_Eyes");
             }
             else
             {
                 RajahTex = mod.GetTexture("NPCs/Bosses/Rajah/" + Supreme + "Rajah" + IsRoaring);
                 Glow = mod.GetTexture("Glowmasks/Rajah" + IsRoaring + "_Glow");
+                SupremeGlow = mod.GetTexture("Glowmasks/SupremeRajah" + IsRoaring + "_Glow");
+                SupremeEyes = mod.GetTexture("Glowmasks/SupremeRajah" + IsRoaring + "_Eyes");
             }
         }
         public float auraPercent = 0f;
@@ -792,15 +798,23 @@ namespace AAMod.NPCs.Bosses.Rajah
             BaseDrawing.DrawTexture(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, drawColor, true);
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-            if (isSupreme)
-            {
-                BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
-                BaseDrawing.DrawAura(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, -5f, Main.DiscoColor);
-            }
             if (RageMode)
             {
                 int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
                 BaseDrawing.DrawTexture(spriteBatch, Glow, shader, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Color.White, true);
+            }
+            if (SupremeRageMode)
+            {
+                BaseDrawing.DrawTexture(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
+                BaseDrawing.DrawAura(spriteBatch, Glow, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, -5f, Main.DiscoColor);
+                BaseDrawing.DrawTexture(spriteBatch, SupremeGlow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
+                BaseDrawing.DrawAura(spriteBatch, SupremeGlow, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, -5f, Main.DiscoColor);
+                return false;
+            }
+            else if (isSupreme)
+            {
+                BaseDrawing.DrawTexture(spriteBatch, SupremeEyes, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, Main.DiscoColor, true);
+                BaseDrawing.DrawAura(spriteBatch, SupremeEyes, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, -5f, Main.DiscoColor);
             }
             return false;
         }
