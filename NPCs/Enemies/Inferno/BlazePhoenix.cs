@@ -58,7 +58,7 @@ namespace AAMod.NPCs.Enemies.Inferno
                 float num1279 = 1f - npc.localAI[0] / num1276;
                 float num1280 = num1279 * 20f;
                 int num1281 = 0;
-                while ((float)num1281 < num1280)
+                while (num1281 < num1280)
                 {
                     if (Main.rand.Next(5) == 0)
                     {
@@ -77,7 +77,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public Color GetGlowAlpha()
         {
-            return new Color(220, 150, 150) * ((float)Main.mouseTextColor / 255f);
+            return new Color(220, 150, 150) * (Main.mouseTextColor / 255f);
         }
         
         public override void NPCLoot()

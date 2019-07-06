@@ -56,7 +56,7 @@ namespace AAMod.Projectiles.Akuma
                 bool flag53 = false;
                 projectile.localAI[0] += 1f;
                 int num978 = (int)projectile.ai[1];
-                if (projectile.localAI[0] >= (float)(60 * num977))
+                if (projectile.localAI[0] >= 60 * num977)
                 {
                     flag53 = true;
                 }

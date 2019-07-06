@@ -76,11 +76,11 @@ namespace AAMod.NPCs.Bosses.Shen
             int num5 = npc.type;
             flag = true;
 
-            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || (flag && (double)Main.player[npc.target].position.Y < Main.worldSurface * 16.0))
+            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || (flag && Main.player[npc.target].position.Y < Main.worldSurface * 16.0))
             {
                 npc.TargetClosest(true);
             }
-            if (Main.player[npc.target].dead || (flag && (double)Main.player[npc.target].position.Y < Main.worldSurface * 16.0))
+            if (Main.player[npc.target].dead || (flag && Main.player[npc.target].position.Y < Main.worldSurface * 16.0))
             {
                 if (npc.timeLeft > 300)
                 {
@@ -96,7 +96,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
                 if (npc.ai[0] == 0f)
                 {
-                    npc.ai[3] = (float)npc.whoAmI;
+                    npc.ai[3] = npc.whoAmI;
                     npc.realLife = npc.whoAmI;
                     int num9 = npc.whoAmI;
                     for (int l = 0; l < 10; l++)
@@ -104,15 +104,15 @@ namespace AAMod.NPCs.Bosses.Shen
                         int Body1 = mod.NPCType<ShenlingBody1>();
                         int Body2 = mod.NPCType<ShenlingBody2>();
 
-                        int SpawnBody1 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), Body1, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                        int SpawnBody1 = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), Body1, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
                         Main.npc[SpawnBody1].ai[3] = npc.whoAmI;
                         Main.npc[SpawnBody1].realLife = npc.whoAmI;
                         Main.npc[SpawnBody1].ai[1] = num9;
-                        Main.npc[num9].ai[0] = (float)SpawnBody1;
+                        Main.npc[num9].ai[0] = SpawnBody1;
                         num9 = SpawnBody1;
                         npc.netUpdate = true;
 
-                        int SpawnBody2 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), Body2, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                        int SpawnBody2 = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), Body2, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
                         Main.npc[SpawnBody2].ai[3] = npc.whoAmI;
                         Main.npc[SpawnBody2].realLife = npc.whoAmI;
                         Main.npc[SpawnBody2].ai[1] = num9;
@@ -121,19 +121,19 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.netUpdate = true;
                     }
                     int num10 = mod.NPCType<ShenlingTail>();
-                    int num11 = NPC.NewNPC((int)(npc.position.X + (float)(npc.width / 2)), (int)(npc.position.Y + (float)npc.height), num10, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
-                    Main.npc[num11].ai[3] = (float)npc.whoAmI;
+                    int num11 = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), num10, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                    Main.npc[num11].ai[3] = npc.whoAmI;
                     Main.npc[num11].realLife = npc.whoAmI;
-                    Main.npc[num11].ai[1] = (float)num9;
-                    Main.npc[num9].ai[0] = (float)num11;
+                    Main.npc[num11].ai[1] = num9;
+                    Main.npc[num9].ai[0] = num11;
                     num9 = num11;
                     npc.netUpdate = true;
                 }
             }
             int num29 = (int)(npc.position.X / 16f) - 1;
-            int num30 = (int)((npc.position.X + (float)npc.width) / 16f) + 2;
+            int num30 = (int)((npc.position.X + npc.width) / 16f) + 2;
             int num31 = (int)(npc.position.Y / 16f) - 1;
-            int num32 = (int)((npc.position.Y + (float)npc.height) / 16f) + 2;
+            int num32 = (int)((npc.position.Y + npc.height) / 16f) + 2;
             if (num29 < 0)
             {
                 num29 = 0;
@@ -163,34 +163,34 @@ namespace AAMod.NPCs.Bosses.Shen
             num37 = 20f;
             num38 = 0.55f;
 
-            Vector2 vector2 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-            float num40 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2);
-            float num41 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2);
+            Vector2 vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+            float num40 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2;
+            float num41 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2;
 
-            num40 = (float)((int)(num40 / 16f) * 16);
-            num41 = (float)((int)(num41 / 16f) * 16);
-            vector2.X = (float)((int)(vector2.X / 16f) * 16);
-            vector2.Y = (float)((int)(vector2.Y / 16f) * 16);
+            num40 = (int)(num40 / 16f) * 16;
+            num41 = (int)(num41 / 16f) * 16;
+            vector2.X = (int)(vector2.X / 16f) * 16;
+            vector2.Y = (int)(vector2.Y / 16f) * 16;
             num40 -= vector2.X;
             num41 -= vector2.Y;
 
-            float num53 = (float)Math.Sqrt((double)(num40 * num40 + num41 * num41));
-            if (npc.ai[1] > 0f && npc.ai[1] < (float)Main.npc.Length)
+            float num53 = (float)Math.Sqrt(num40 * num40 + num41 * num41);
+            if (npc.ai[1] > 0f && npc.ai[1] < Main.npc.Length)
             {
                 try
                 {
-                    vector2 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                    num40 = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - vector2.X;
-                    num41 = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - vector2.Y;
+                    vector2 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                    num40 = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - vector2.X;
+                    num41 = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - vector2.Y;
                 }
                 catch
                 {
                 }
-                npc.rotation = (float)Math.Atan2((double)num41, (double)num40) + 1.57f;
-                num53 = (float)Math.Sqrt((double)(num40 * num40 + num41 * num41));
+                npc.rotation = (float)Math.Atan2(num41, num40) + 1.57f;
+                num53 = (float)Math.Sqrt(num40 * num40 + num41 * num41);
                 int num54 = npc.width;
                 num54 = 42;
-                num53 = (num53 - (float)num54) / num53;
+                num53 = (num53 - num54) / num53;
                 num40 *= num53;
                 num41 *= num53;
                 npc.velocity = Vector2.Zero;
@@ -209,7 +209,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else
             {
-                num53 = (float)Math.Sqrt((double)(num40 * num40 + num41 * num41));
+                num53 = (float)Math.Sqrt(num40 * num40 + num41 * num41);
                 float num56 = Math.Abs(num40);
                 float num57 = Math.Abs(num41);
                 float num58 = num37 / num53;
@@ -231,7 +231,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         if (npc.velocity.X == 0f)
                         {
-                            npc.velocity.X = npc.velocity.X - (float)npc.direction;
+                            npc.velocity.X = npc.velocity.X - npc.direction;
                         }
                         npc.velocity.X = npc.velocity.X * 1.1f;
                     }
@@ -260,7 +260,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         {
                             npc.velocity.Y = npc.velocity.Y - num38;
                         }
-                        if ((double)Math.Abs(num41) < (double)num37 * 0.2 && ((npc.velocity.X > 0f && num40 < 0f) || (npc.velocity.X < 0f && num40 > 0f)))
+                        if (Math.Abs(num41) < num37 * 0.2 && ((npc.velocity.X > 0f && num40 < 0f) || (npc.velocity.X < 0f && num40 > 0f)))
                         {
                             if (npc.velocity.Y > 0f)
                             {
@@ -271,7 +271,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 npc.velocity.Y = npc.velocity.Y - num38 * 2f;
                             }
                         }
-                        if ((double)Math.Abs(num40) < (double)num37 * 0.2 && ((npc.velocity.Y > 0f && num41 < 0f) || (npc.velocity.Y < 0f && num41 > 0f)))
+                        if (Math.Abs(num40) < num37 * 0.2 && ((npc.velocity.Y > 0f && num41 < 0f) || (npc.velocity.Y < 0f && num41 > 0f)))
                         {
                             if (npc.velocity.X > 0f)
                             {
@@ -293,7 +293,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         {
                             npc.velocity.X = npc.velocity.X - num38 * 1.1f;
                         }
-                        if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)num37 * 0.5)
+                        if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < num37 * 0.5)
                         {
                             if (npc.velocity.Y > 0f)
                             {
@@ -315,7 +315,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         {
                             npc.velocity.Y = npc.velocity.Y - num38 * 1.1f;
                         }
-                        if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)num37 * 0.5)
+                        if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < num37 * 0.5)
                         {
                             if (npc.velocity.X > 0f)
                             {
@@ -328,7 +328,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         }
                     }
                 }
-                npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 1.57f;
+                npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
 
                 float num62 = Vector2.Distance(Main.player[npc.target].Center, npc.Center);
                 int num63 = 0;
@@ -336,11 +336,11 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     num63 = 4;
                 }
-                if ((double)num63 > npc.frameCounter)
+                if (num63 > npc.frameCounter)
                 {
                     npc.frameCounter += 1.0;
                 }
-                if ((double)num63 < npc.frameCounter)
+                if (num63 < npc.frameCounter)
                 {
                     npc.frameCounter -= 1.0;
                 }
@@ -410,12 +410,12 @@ namespace AAMod.NPCs.Bosses.Shen
             if (npc.life <= 0)
             {
 
-                npc.position.X = npc.position.X + (float)(npc.width / 2);
-                npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+                npc.position.X = npc.position.X + npc.width / 2;
+                npc.position.Y = npc.position.Y + npc.height / 2;
                 npc.width = 44;
                 npc.height = 78;
-                npc.position.X = npc.position.X - (float)(npc.width / 2);
-                npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+                npc.position.X = npc.position.X - npc.width / 2;
+                npc.position.Y = npc.position.Y - npc.height / 2;
                 int dust1 = mod.DustType<Dusts.DiscordLight>();
                 int dust2 = mod.DustType<Dusts.DiscordLight>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
@@ -472,12 +472,12 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
-                Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                float dirX = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - npcCenter.X;
-                float dirY = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - npcCenter.Y;
+                Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                float dirX = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - npcCenter.X;
+                float dirY = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - npcCenter.Y;
                 npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
                 float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
-                float dist = (length - (float)npc.width) / length;
+                float dist = (length - npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
 
@@ -541,12 +541,12 @@ namespace AAMod.NPCs.Bosses.Shen
             if (npc.life <= 0)
             {
 
-                npc.position.X = npc.position.X + (float)(npc.width / 2);
-                npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+                npc.position.X = npc.position.X + npc.width / 2;
+                npc.position.Y = npc.position.Y + npc.height / 2;
                 npc.width = 44;
                 npc.height = 78;
-                npc.position.X = npc.position.X - (float)(npc.width / 2);
-                npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+                npc.position.X = npc.position.X - npc.width / 2;
+                npc.position.Y = npc.position.Y - npc.height / 2;
                 int dust1 = mod.DustType<Dusts.DiscordLight>();
                 int dust2 = mod.DustType<Dusts.DiscordLight>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
@@ -603,12 +603,12 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
-                Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                float dirX = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - npcCenter.X;
-                float dirY = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - npcCenter.Y;
+                Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                float dirX = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - npcCenter.X;
+                float dirY = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - npcCenter.Y;
                 npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
                 float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
-                float dist = (length - (float)npc.width) / length;
+                float dist = (length - npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
 
@@ -672,12 +672,12 @@ namespace AAMod.NPCs.Bosses.Shen
             if (npc.life <= 0)
             {
 
-                npc.position.X = npc.position.X + (float)(npc.width / 2);
-                npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+                npc.position.X = npc.position.X + npc.width / 2;
+                npc.position.Y = npc.position.Y + npc.height / 2;
                 npc.width = 44;
                 npc.height = 78;
-                npc.position.X = npc.position.X - (float)(npc.width / 2);
-                npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+                npc.position.X = npc.position.X - npc.width / 2;
+                npc.position.Y = npc.position.Y - npc.height / 2;
                 int dust1 = mod.DustType<Dusts.DiscordLight>();
                 int dust2 = mod.DustType<Dusts.DiscordLight>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);
@@ -734,12 +734,12 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
-                Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                float dirX = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - npcCenter.X;
-                float dirY = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - npcCenter.Y;
+                Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                float dirX = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - npcCenter.X;
+                float dirY = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - npcCenter.Y;
                 npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
                 float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
-                float dist = (length - (float)npc.width) / length;
+                float dist = (length - npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
 

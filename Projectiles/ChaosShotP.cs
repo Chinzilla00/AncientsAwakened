@@ -64,7 +64,7 @@ namespace AAMod.Projectiles
             }
             
             
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 0.785f;
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 0.785f;
             if (projectile.velocity.Y > 16f)
             {
                 projectile.velocity.Y = 16f;

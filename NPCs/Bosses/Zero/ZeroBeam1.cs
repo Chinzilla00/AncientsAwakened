@@ -20,8 +20,9 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.width = 8;
             projectile.height = 8;
             projectile.friendly = true;
-            projectile.penetrate = 4;                       //this is the projectile penetration
-            projectile.hostile = false;
+            projectile.penetrate = 4;
+            projectile.friendly = false;
+            projectile.hostile = true;
             projectile.tileCollide = false;                 //this make that the projectile does not go thru walls
             projectile.ignoreWater = false;
             projectile.alpha = 0;
@@ -33,7 +34,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void AI()
         {
             Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.7f) / 255f, ((255 - projectile.alpha) * 0.3f) / 255f, ((255 - projectile.alpha) * 0f) / 255f);
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             projectile.localAI[0] += 1f;
             projectile.alpha += 4;
             if (projectile.alpha >= 255)
@@ -47,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Zero
             for (int k = 0; k < projectile.oldPos.Length; k++)
             {
                 Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-                Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+                Color color = projectile.GetAlpha(lightColor) * ((projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
                 spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
             }
             return true;

@@ -40,7 +40,7 @@ namespace AAMod.Projectiles.Sag
 				{
 					if (projs[m] == projectile.identity) { projSlot = m; }
 				}
-				rot = rotInit * ((float)projSlot + 1f);
+				rot = rotInit * (projSlot + 1f);
 			}
 		}
 

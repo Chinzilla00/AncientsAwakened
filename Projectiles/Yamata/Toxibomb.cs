@@ -64,15 +64,15 @@ namespace AAMod.Projectiles.Yamata
                         }
                     }
                 }
-                projectile.ai[0] = (float)(num690 + 1);
+                projectile.ai[0] = num690 + 1;
                 if (projectile.ai[0] == 0f)
                 {
                     projectile.ai[0] = -15f;
                 }
                 if (projectile.ai[0] > 0f)
                 {
-                    float scaleFactor5 = (float)Main.rand.Next(35, 75) / 30f;
-                    projectile.velocity = (projectile.velocity * 20f + Vector2.Normalize(Main.npc[(int)projectile.ai[0] - 1].Center - projectile.Center + new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101))) * scaleFactor5) / 21f;
+                    float scaleFactor5 = Main.rand.Next(35, 75) / 30f;
+                    projectile.velocity = (projectile.velocity * 20f + Vector2.Normalize(Main.npc[(int)projectile.ai[0] - 1].Center - projectile.Center + new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101))) * scaleFactor5) / 21f;
                     projectile.netUpdate = true;
                 }
             }
@@ -93,7 +93,7 @@ namespace AAMod.Projectiles.Yamata
             }
             if (projectile.ai[1] == 0f)
             {
-                projectile.ai[1] = (float)Main.rand.Next(80, 121) / 100f;
+                projectile.ai[1] = Main.rand.Next(80, 121) / 100f;
                 projectile.netUpdate = true;
             }
             projectile.scale = projectile.ai[1];

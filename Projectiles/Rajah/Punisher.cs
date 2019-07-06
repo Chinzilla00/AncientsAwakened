@@ -54,7 +54,7 @@ namespace AAMod.Projectiles.Rajah
                 Main.player[projectile.owner].ChangeDir(-1);
                 projectile.direction = -1;
             }
-            Main.player[projectile.owner].itemRotation = (vector54 * -1f * (float)projectile.direction).ToRotation();
+            Main.player[projectile.owner].itemRotation = (vector54 * -1f * projectile.direction).ToRotation();
             projectile.spriteDirection = ((vector54.X > 0f) ? -1 : 1);
             if (projectile.ai[0] == 0f && vector54.Length() > 400f)
             {

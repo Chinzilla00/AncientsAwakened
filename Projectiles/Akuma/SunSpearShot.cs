@@ -53,7 +53,7 @@ namespace AAMod.Projectiles.Akuma
                 }
                 projectile.velocity.X = projectile.velocity.X * 0.995f;
             }
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             projectile.alpha -= 50;
             if (projectile.alpha < 0)
             {
@@ -73,10 +73,10 @@ namespace AAMod.Projectiles.Akuma
                             num559++;
                         }
                     }
-                    float num561 = (float)projectile.damage * 0.8f;
+                    float num561 = projectile.damage * 0.8f;
                     if (num559 > 100)
                     {
-                        float num562 = (float)(num559 - 100);
+                        float num562 = num559 - 100;
                         num562 = 1f - num562 / 100f;
                         num561 *= num562;
                     }
@@ -128,9 +128,9 @@ namespace AAMod.Projectiles.Akuma
                     {
                         projectile.localAI[0] -= 7f;
                     }
-                    if (num561 > (float)projectile.damage * 0.1f)
+                    if (num561 > projectile.damage * 0.1f)
                     {
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, mod.ProjectileType("SunSpearRain"), (int)num561, projectile.knockBack * 0.55f, projectile.owner, 0f, (float)Main.rand.Next(3));
+                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, mod.ProjectileType("SunSpearRain"), (int)num561, projectile.knockBack * 0.55f, projectile.owner, 0f, Main.rand.Next(3));
                         return;
                     }
                 }

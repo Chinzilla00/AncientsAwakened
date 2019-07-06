@@ -97,9 +97,9 @@ namespace AAMod.Tiles.Torches
 			}
 			for (int k = 0; k < 7; k++)
 			{
-				float x = (float)Utils.RandomInt(ref randSeed, -10, 11) * 0.15f;
-				float y = (float)Utils.RandomInt(ref randSeed, -10, 1) * 0.35f;
-				Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/HydraToxin_Glow"), new Vector2((float)(i * 16 - (int)Main.screenPosition.X) - (width - 16f) / 2f + x, (float)(j * 16 - (int)Main.screenPosition.Y + offsetY) + y) + zero, new Rectangle(frameX, frameY, width, height), color, 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
+				float x = Utils.RandomInt(ref randSeed, -10, 11) * 0.15f;
+				float y = Utils.RandomInt(ref randSeed, -10, 1) * 0.35f;
+				Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/HydraToxin_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X - (width - 16f) / 2f + x, j * 16 - (int)Main.screenPosition.Y + offsetY + y) + zero, new Rectangle(frameX, frameY, width, height), color, 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
 			}
 		}
 	}

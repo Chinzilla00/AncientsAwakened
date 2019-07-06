@@ -44,8 +44,8 @@ namespace AAMod.NPCs.Enemies.Mire
                 Vector2 center = npc.Center;
                 npc.width = 34;
                 npc.height = 24;
-                npc.position.X = center.X - (float)(npc.width / 2);
-                npc.position.Y = center.Y - (float)(npc.height / 2);
+                npc.position.X = center.X - npc.width / 2;
+                npc.position.Y = center.Y - npc.height / 2;
                 npc.TargetClosest(true);
                 if (npc.collideX)
                 {
@@ -76,7 +76,7 @@ namespace AAMod.NPCs.Enemies.Mire
                 {
                     num2 = 8f;
                 }
-                Vector2 value2 = new Vector2((float)npc.direction, -1f);
+                Vector2 value2 = new Vector2(npc.direction, -1f);
                 value2.Normalize();
                 value2 *= num2;
                 if (num2 < 5f)
@@ -94,8 +94,8 @@ namespace AAMod.NPCs.Enemies.Mire
                 Vector2 center2 = npc.Center;
                 npc.width = 18;
                 npc.height = 40;
-                npc.position.X = center2.X - (float)(npc.width / 2);
-                npc.position.Y = center2.Y - (float)(npc.height / 2);
+                npc.position.X = center2.X - npc.width / 2;
+                npc.position.Y = center2.Y - npc.height / 2;
                 if (npc.ai[3] == -0.10101f)
                 {
                     npc.ai[3] = 0f;
@@ -159,15 +159,15 @@ namespace AAMod.NPCs.Enemies.Mire
                 {
                     flag5 = true;
                 }
-                if (npc.position.X == npc.oldPosition.X || npc.ai[3] >= (float)num36 || flag5)
+                if (npc.position.X == npc.oldPosition.X || npc.ai[3] >= num36 || flag5)
                 {
                     npc.ai[3] += 1f;
                 }
-                else if ((double)Math.Abs(npc.velocity.X) > 0.9 && npc.ai[3] > 0f)
+                else if (Math.Abs(npc.velocity.X) > 0.9 && npc.ai[3] > 0f)
                 {
                     npc.ai[3] -= 1f;
                 }
-                if (npc.ai[3] > (float)(num36 * 10))
+                if (npc.ai[3] > num36 * 10)
                 {
                     npc.ai[3] = 0f;
                 }
@@ -175,19 +175,19 @@ namespace AAMod.NPCs.Enemies.Mire
                 {
                     npc.ai[3] = 0f;
                 }
-                if (npc.ai[3] == (float)num36)
+                if (npc.ai[3] == num36)
                 {
                     npc.netUpdate = true;
                 }
             }
-            if (npc.ai[3] < (float)num36 && (!Main.dayTime || (double)npc.position.Y > Main.worldSurface * 16.0))
+            if (npc.ai[3] < num36 && (!Main.dayTime || npc.position.Y > Main.worldSurface * 16.0))
             {
                 
                 npc.TargetClosest(true);
             }
             else if (npc.ai[2] <= 0f)
             {
-                if (Main.dayTime && (double)(npc.position.Y / 16f) < Main.worldSurface && npc.timeLeft > 10)
+                if (Main.dayTime && npc.position.Y / 16f < Main.worldSurface && npc.timeLeft > 10)
                 {
                     npc.timeLeft = 10;
                 }
@@ -270,7 +270,7 @@ namespace AAMod.NPCs.Enemies.Mire
                 {
                     float num80 = (Main.player[npc.target].Center - npc.Center).Length();
                     num80 *= 0.0025f;
-                    if ((double)num80 > 1.5)
+                    if (num80 > 1.5)
                     {
                         num80 = 1.5f;
                     }
@@ -315,16 +315,16 @@ namespace AAMod.NPCs.Enemies.Mire
             bool flag23 = false;
             if (npc.velocity.Y == 0f)
             {
-                int num167 = (int)(npc.position.Y + (float)npc.height + 7f) / 16;
+                int num167 = (int)(npc.position.Y + npc.height + 7f) / 16;
                 int num168 = (int)npc.position.X / 16;
-                int num169 = (int)(npc.position.X + (float)npc.width) / 16;
+                int num169 = (int)(npc.position.X + npc.width) / 16;
                 for (int num170 = num168; num170 <= num169; num170++)
                 {
                     if (Main.tile[num170, num167] == null)
                     {
                         return;
                     }
-                    if (Main.tile[num170, num167].nactive() && Main.tileSolid[(int)Main.tile[num170, num167].type])
+                    if (Main.tile[num170, num167].nactive() && Main.tileSolid[Main.tile[num170, num167].type])
                     {
                         flag23 = true;
                         break;
@@ -345,8 +345,8 @@ namespace AAMod.NPCs.Enemies.Mire
                 }
                 Vector2 position2 = npc.position;
                 position2.X += npc.velocity.X;
-                int num172 = (int)((position2.X + (float)(npc.width / 2) + (float)((npc.width / 2 + 1) * num171)) / 16f);
-                int num173 = (int)((position2.Y + (float)npc.height - 1f) / 16f);
+                int num172 = (int)((position2.X + npc.width / 2 + (npc.width / 2 + 1) * num171) / 16f);
+                int num173 = (int)((position2.Y + npc.height - 1f) / 16f);
                 if (Main.tile[num172, num173] == null)
                 {
                     Main.tile[num172, num173] = new Tile();
@@ -371,9 +371,9 @@ namespace AAMod.NPCs.Enemies.Mire
                 {
                     Main.tile[num172 - num171, num173 - 3] = new Tile();
                 }
-                if ((float)(num172 * 16) < position2.X + (float)npc.width && (float)(num172 * 16 + 16) > position2.X && ((Main.tile[num172, num173].nactive() && !Main.tile[num172, num173].topSlope() && !Main.tile[num172, num173 - 1].topSlope() && Main.tileSolid[(int)Main.tile[num172, num173].type] && !Main.tileSolidTop[(int)Main.tile[num172, num173].type]) || (Main.tile[num172, num173 - 1].halfBrick() && Main.tile[num172, num173 - 1].nactive())) && (!Main.tile[num172, num173 - 1].nactive() || !Main.tileSolid[(int)Main.tile[num172, num173 - 1].type] || Main.tileSolidTop[(int)Main.tile[num172, num173 - 1].type] || (Main.tile[num172, num173 - 1].halfBrick() && (!Main.tile[num172, num173 - 4].nactive() || !Main.tileSolid[(int)Main.tile[num172, num173 - 4].type] || Main.tileSolidTop[(int)Main.tile[num172, num173 - 4].type]))) && (!Main.tile[num172, num173 - 2].nactive() || !Main.tileSolid[(int)Main.tile[num172, num173 - 2].type] || Main.tileSolidTop[(int)Main.tile[num172, num173 - 2].type]) && (!Main.tile[num172, num173 - 3].nactive() || !Main.tileSolid[(int)Main.tile[num172, num173 - 3].type] || Main.tileSolidTop[(int)Main.tile[num172, num173 - 3].type]) && (!Main.tile[num172 - num171, num173 - 3].nactive() || !Main.tileSolid[(int)Main.tile[num172 - num171, num173 - 3].type]))
+                if (num172 * 16 < position2.X + npc.width && num172 * 16 + 16 > position2.X && ((Main.tile[num172, num173].nactive() && !Main.tile[num172, num173].topSlope() && !Main.tile[num172, num173 - 1].topSlope() && Main.tileSolid[Main.tile[num172, num173].type] && !Main.tileSolidTop[Main.tile[num172, num173].type]) || (Main.tile[num172, num173 - 1].halfBrick() && Main.tile[num172, num173 - 1].nactive())) && (!Main.tile[num172, num173 - 1].nactive() || !Main.tileSolid[Main.tile[num172, num173 - 1].type] || Main.tileSolidTop[Main.tile[num172, num173 - 1].type] || (Main.tile[num172, num173 - 1].halfBrick() && (!Main.tile[num172, num173 - 4].nactive() || !Main.tileSolid[Main.tile[num172, num173 - 4].type] || Main.tileSolidTop[Main.tile[num172, num173 - 4].type]))) && (!Main.tile[num172, num173 - 2].nactive() || !Main.tileSolid[Main.tile[num172, num173 - 2].type] || Main.tileSolidTop[Main.tile[num172, num173 - 2].type]) && (!Main.tile[num172, num173 - 3].nactive() || !Main.tileSolid[Main.tile[num172, num173 - 3].type] || Main.tileSolidTop[Main.tile[num172, num173 - 3].type]) && (!Main.tile[num172 - num171, num173 - 3].nactive() || !Main.tileSolid[Main.tile[num172 - num171, num173 - 3].type]))
                 {
-                    float num174 = (float)(num173 * 16);
+                    float num174 = num173 * 16;
                     if (Main.tile[num172, num173].halfBrick())
                     {
                         num174 += 8f;
@@ -382,9 +382,9 @@ namespace AAMod.NPCs.Enemies.Mire
                     {
                         num174 -= 8f;
                     }
-                    if (num174 < position2.Y + (float)npc.height)
+                    if (num174 < position2.Y + npc.height)
                     {
-                        float num175 = position2.Y + (float)npc.height - num174;
+                        float num175 = position2.Y + npc.height - num174;
                         float num176 = 16.1f;
                         if (npc.type == 163 || npc.type == 164 || npc.type == 236 || npc.type == 239 || npc.type == 530)
                         {
@@ -392,8 +392,8 @@ namespace AAMod.NPCs.Enemies.Mire
                         }
                         if (num175 <= num176)
                         {
-                            npc.gfxOffY += npc.position.Y + (float)npc.height - num174;
-                            npc.position.Y = num174 - (float)npc.height;
+                            npc.gfxOffY += npc.position.Y + npc.height - num174;
+                            npc.position.Y = num174 - npc.height;
                             if (num175 < 9f)
                             {
                                 npc.stepSpeed = 1f;
@@ -408,8 +408,8 @@ namespace AAMod.NPCs.Enemies.Mire
             }
             if (flag23)
             {
-                int num177 = (int)((npc.position.X + (float)(npc.width / 2) + (float)(15 * npc.direction)) / 16f);
-                int num178 = (int)((npc.position.Y + (float)npc.height - 15f) / 16f);
+                int num177 = (int)((npc.position.X + npc.width / 2 + 15 * npc.direction) / 16f);
+                int num178 = (int)((npc.position.Y + npc.height - 15f) / 16f);
                 
                 if (Main.tile[num177, num178] == null)
                 {
@@ -451,13 +451,13 @@ namespace AAMod.NPCs.Enemies.Mire
                     if (npc.ai[2] >= 60f)
                     {
                        
-                        npc.velocity.X = 0.5f * (float)(-(float)npc.direction);
+                        npc.velocity.X = 0.5f * -npc.direction;
                         int num179 = 5;
                         if (Main.tile[num177, num178 - 1].type == 388)
                         {
                             num179 = 2;
                         }
-                        npc.ai[1] += (float)num179;
+                        npc.ai[1] += num179;
                         
                         npc.ai[2] = 0f;
                         if (npc.ai[1] >= 10f)
@@ -472,9 +472,9 @@ namespace AAMod.NPCs.Enemies.Mire
                     int num180 = npc.spriteDirection;
                     if ((npc.velocity.X < 0f && num180 == -1) || (npc.velocity.X > 0f && num180 == 1))
                     {
-                        if (npc.height >= 32 && Main.tile[num177, num178 - 2].nactive() && Main.tileSolid[(int)Main.tile[num177, num178 - 2].type])
+                        if (npc.height >= 32 && Main.tile[num177, num178 - 2].nactive() && Main.tileSolid[Main.tile[num177, num178 - 2].type])
                         {
-                            if (Main.tile[num177, num178 - 3].nactive() && Main.tileSolid[(int)Main.tile[num177, num178 - 3].type])
+                            if (Main.tile[num177, num178 - 3].nactive() && Main.tileSolid[Main.tile[num177, num178 - 3].type])
                             {
                                 npc.velocity.Y = -8f;
                                 npc.netUpdate = true;
@@ -485,17 +485,17 @@ namespace AAMod.NPCs.Enemies.Mire
                                 npc.netUpdate = true;
                             }
                         }
-                        else if (Main.tile[num177, num178 - 1].nactive() && Main.tileSolid[(int)Main.tile[num177, num178 - 1].type])
+                        else if (Main.tile[num177, num178 - 1].nactive() && Main.tileSolid[Main.tile[num177, num178 - 1].type])
                         {
                             npc.velocity.Y = -6f;
                             npc.netUpdate = true;
                         }
-                        else if (npc.position.Y + (float)npc.height - (float)(num178 * 16) > 20f && Main.tile[num177, num178].nactive() && !Main.tile[num177, num178].topSlope() && Main.tileSolid[(int)Main.tile[num177, num178].type])
+                        else if (npc.position.Y + npc.height - num178 * 16 > 20f && Main.tile[num177, num178].nactive() && !Main.tile[num177, num178].topSlope() && Main.tileSolid[Main.tile[num177, num178].type])
                         {
                             npc.velocity.Y = -5f;
                             npc.netUpdate = true;
                         }
-                        else if (npc.directionY < 0 && npc.type != 67 && (!Main.tile[num177, num178 + 1].nactive() || !Main.tileSolid[(int)Main.tile[num177, num178 + 1].type]) && (!Main.tile[num177 + npc.direction, num178 + 1].nactive() || !Main.tileSolid[(int)Main.tile[num177 + npc.direction, num178 + 1].type]))
+                        else if (npc.directionY < 0 && npc.type != 67 && (!Main.tile[num177, num178 + 1].nactive() || !Main.tileSolid[Main.tile[num177, num178 + 1].type]) && (!Main.tile[num177 + npc.direction, num178 + 1].nactive() || !Main.tileSolid[Main.tile[num177 + npc.direction, num178 + 1].type]))
                         {
                             npc.velocity.Y = -8f;
                             npc.velocity.X = npc.velocity.X * 1.5f;

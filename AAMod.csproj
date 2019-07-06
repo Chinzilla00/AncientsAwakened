@@ -5240,6 +5240,7 @@
     <Content Include="NPCs\Bosses\Zero\Neutralizer_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\NovaFocus_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\OmegaVolley_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Zero\Protocol\ZeroTrail.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\Taser_Head_Boss.png" />

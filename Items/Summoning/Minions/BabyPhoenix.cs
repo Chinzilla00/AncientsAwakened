@@ -35,7 +35,7 @@ namespace AAMod.Items.Summoning.Minions
         {
             for (int num527 = 0; num527 < 1000; num527++)
             {
-                if (num527 != projectile.whoAmI && Main.projectile[num527].active && Main.projectile[num527].owner == projectile.owner && Main.projectile[num527].type == projectile.type && Math.Abs(projectile.position.X - Main.projectile[num527].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num527].position.Y) < (float)projectile.width)
+                if (num527 != projectile.whoAmI && Main.projectile[num527].active && Main.projectile[num527].owner == projectile.owner && Main.projectile[num527].type == projectile.type && Math.Abs(projectile.position.X - Main.projectile[num527].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num527].position.Y) < projectile.width)
                 {
                     if (projectile.position.X < Main.projectile[num527].position.X)
                     {
@@ -80,7 +80,7 @@ namespace AAMod.Items.Summoning.Minions
             {
                 num531 = 1400;
             }
-            if (Math.Abs(projectile.Center.X - Main.player[projectile.owner].Center.X) + Math.Abs(projectile.Center.Y - Main.player[projectile.owner].Center.Y) > (float)num531)
+            if (Math.Abs(projectile.Center.X - Main.player[projectile.owner].Center.X) + Math.Abs(projectile.Center.Y - Main.player[projectile.owner].Center.Y) > num531)
             {
                 projectile.ai[0] = 1f;
             }
@@ -90,9 +90,9 @@ namespace AAMod.Items.Summoning.Minions
                 NPC ownerMinionAttackTargetNPC2 = projectile.OwnerMinionAttackTargetNPC;
                 if (ownerMinionAttackTargetNPC2 != null && ownerMinionAttackTargetNPC2.CanBeChasedBy(this, false))
                 {
-                    float num532 = ownerMinionAttackTargetNPC2.position.X + (float)(ownerMinionAttackTargetNPC2.width / 2);
-                    float num533 = ownerMinionAttackTargetNPC2.position.Y + (float)(ownerMinionAttackTargetNPC2.height / 2);
-                    float num534 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num532) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num533);
+                    float num532 = ownerMinionAttackTargetNPC2.position.X + ownerMinionAttackTargetNPC2.width / 2;
+                    float num533 = ownerMinionAttackTargetNPC2.position.Y + ownerMinionAttackTargetNPC2.height / 2;
+                    float num534 = Math.Abs(projectile.position.X + projectile.width / 2 - num532) + Math.Abs(projectile.position.Y + projectile.height / 2 - num533);
                     if (num534 < num530 && Collision.CanHit(projectile.position, projectile.width, projectile.height, ownerMinionAttackTargetNPC2.position, ownerMinionAttackTargetNPC2.width, ownerMinionAttackTargetNPC2.height))
                     {
                         num530 = num534;
@@ -107,9 +107,9 @@ namespace AAMod.Items.Summoning.Minions
                     {
                         if (Main.npc[num535].CanBeChasedBy(this, false))
                         {
-                            float num536 = Main.npc[num535].position.X + (float)(Main.npc[num535].width / 2);
-                            float num537 = Main.npc[num535].position.Y + (float)(Main.npc[num535].height / 2);
-                            float num538 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num536) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num537);
+                            float num536 = Main.npc[num535].position.X + Main.npc[num535].width / 2;
+                            float num537 = Main.npc[num535].position.Y + Main.npc[num535].height / 2;
+                            float num538 = Math.Abs(projectile.position.X + projectile.width / 2 - num536) + Math.Abs(projectile.position.Y + projectile.height / 2 - num537);
                             if (num538 < num530 && Collision.CanHit(projectile.position, projectile.width, projectile.height, Main.npc[num535].position, Main.npc[num535].width, Main.npc[num535].height))
                             {
                                 num530 = num538;
@@ -133,18 +133,18 @@ namespace AAMod.Items.Summoning.Minions
                 {
                     num539 = 12f;
                 }
-                Vector2 vector38 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+                Vector2 vector38 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
                 float num540 = Main.player[projectile.owner].Center.X - vector38.X;
                 float num541 = Main.player[projectile.owner].Center.Y - vector38.Y - 60f;
-                float num542 = (float)Math.Sqrt((double)(num540 * num540 + num541 * num541));
+                float num542 = (float)Math.Sqrt(num540 * num540 + num541 * num541);
                 if (num542 < 100f && projectile.ai[0] == 1f && !Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
                 {
                     projectile.ai[0] = 0f;
                 }
                 if (num542 > 2000f)
                 {
-                    projectile.position.X = Main.player[projectile.owner].Center.X - (float)(projectile.width / 2);
-                    projectile.position.Y = Main.player[projectile.owner].Center.Y - (float)(projectile.width / 2);
+                    projectile.position.X = Main.player[projectile.owner].Center.X - projectile.width / 2;
+                    projectile.position.Y = Main.player[projectile.owner].Center.Y - projectile.width / 2;
                 }
                 if (num542 > 70f)
                 {
@@ -175,7 +175,7 @@ namespace AAMod.Items.Summoning.Minions
                 {
                     projectile.frame = 0;
                 }
-                if ((double)Math.Abs(projectile.velocity.X) > 0.2)
+                if (Math.Abs(projectile.velocity.X) > 0.2)
                 {
                     projectile.spriteDirection = -projectile.direction;
                     return;
@@ -195,10 +195,10 @@ namespace AAMod.Items.Summoning.Minions
                 {
                     projectile.friendly = true;
                     float num543 = 8f;
-                    Vector2 vector39 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+                    Vector2 vector39 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
                     float num544 = num528 - vector39.X;
                     float num545 = num529 - vector39.Y;
-                    float num546 = (float)Math.Sqrt((double)(num544 * num544 + num545 * num545));
+                    float num546 = (float)Math.Sqrt(num544 * num544 + num545 * num545);
                     if (num546 < 100f)
                     {
                         num543 = 10f;
@@ -232,7 +232,7 @@ namespace AAMod.Items.Summoning.Minions
                 {
                     projectile.frame = 4;
                 }
-                if ((double)Math.Abs(projectile.velocity.X) > 0.2)
+                if (Math.Abs(projectile.velocity.X) > 0.2)
                 {
                     projectile.spriteDirection = -projectile.direction;
                     return;

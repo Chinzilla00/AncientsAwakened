@@ -34,8 +34,8 @@ namespace AAMod.Projectiles.Thorium
 		{
 			Player player = Main.player[projectile.owner];	
 			
-			projectile.position.X = player.Center.X - ((float)projectile.width / 2f);
-			projectile.position.Y = player.Center.Y - ((float)projectile.height / 2f);
+			projectile.position.X = player.Center.X - (projectile.width / 2f);
+			projectile.position.Y = player.Center.Y - (projectile.height / 2f);
 		}
 	}
 }

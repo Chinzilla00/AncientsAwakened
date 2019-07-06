@@ -38,19 +38,19 @@ namespace AAMod.Tiles
             int num28 = -1;
             if (tile2 != null && tile2.nactive() && !tile2.bottomSlope())
             {
-                num26 = (int)tile2.type;
+                num26 = tile2.type;
             }
             if (tile3 != null && tile3.nactive() && !tile3.halfBrick() && !tile3.topSlope())
             {
-                num25 = (int)tile3.type;
+                num25 = tile3.type;
             }
             if (tile4 != null && tile4.nactive())
             {
-                num27 = (int)tile4.type;
+                num27 = tile4.type;
             }
             if (tile5 != null && tile5.nactive())
             {
-                num28 = (int)tile5.type;
+                num28 = tile5.type;
             }
             if (num25 >= 0 && Main.tileSolid[num25] && !Main.tileSolidTop[num25])
             {

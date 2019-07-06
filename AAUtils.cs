@@ -14,7 +14,7 @@ namespace AAMod
         {
             get
             {
-                return new Color(255, 255, 255) * ((float)Main.mouseTextColor / 255f);
+                return new Color(255, 255, 255) * (Main.mouseTextColor / 255f);
             }
         }
 

@@ -73,7 +73,7 @@ namespace AAMod.Projectiles
                 {
                     float num32 = projectile.rotation + 1.57079637f + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
                     float num33 = (float)Main.rand.NextDouble() * 2f + 2f;
-                    Vector2 vector2 = new Vector2((float)Math.Cos((double)num32) * num33, (float)Math.Sin((double)num32) * num33);
+                    Vector2 vector2 = new Vector2((float)Math.Cos(num32) * num33, (float)Math.Sin(num32) * num33);
                     int num34 = Dust.NewDust(projectile.oldPos[projectile.oldPos.Length - 1], 0, 0, 229, vector2.X, vector2.Y, 0, default(Color), 1f);
                     Main.dust[num34].noGravity = true;
                     Main.dust[num34].scale = 1.7f;
@@ -105,14 +105,14 @@ namespace AAMod.Projectiles
                     {
                         float num851 = projectile.rotation + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
                         float num852 = (float)Main.rand.NextDouble() * 0.8f + 1f;
-                        Vector2 vector84 = new Vector2((float)Math.Cos((double)num851) * num852, (float)Math.Sin((double)num851) * num852);
+                        Vector2 vector84 = new Vector2((float)Math.Cos(num851) * num852, (float)Math.Sin(num851) * num852);
                         int num853 = Dust.NewDust(projectile.Center, 0, 0, 226, vector84.X, vector84.Y, 0, default(Color), 1f);
                         Main.dust[num853].noGravity = true;
                         Main.dust[num853].scale = 1.2f;
                     }
                     if (Main.rand.Next(5) == 0)
                     {
-                        Vector2 value49 = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * (float)projectile.width;
+                        Vector2 value49 = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
                         int num854 = Dust.NewDust(projectile.Center + value49 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default(Color), 1.5f);
                         Main.dust[num854].velocity *= 0.5f;
                         Main.dust[num854].velocity.Y = -Math.Abs(Main.dust[num854].velocity.Y);
@@ -131,9 +131,9 @@ namespace AAMod.Projectiles
                 do
                 {
                     int num857 = unifiedRandom.Next();
-                    projectile.ai[1] = (float)num857;
+                    projectile.ai[1] = num857;
                     num857 %= 100;
-                    float f = (float)num857 / 100f * 6.28318548f;
+                    float f = num857 / 100f * 6.28318548f;
                     vector85 = f.ToRotationVector2();
                     if (vector85.Y > 0f)
                     {
@@ -144,11 +144,11 @@ namespace AAMod.Projectiles
                     {
                         flag36 = true;
                     }
-                    if (vector85.X * (float)(projectile.extraUpdates + 1) * 2f * num855 + projectile.localAI[0] > 40f)
+                    if (vector85.X * (projectile.extraUpdates + 1) * 2f * num855 + projectile.localAI[0] > 40f)
                     {
                         flag36 = true;
                     }
-                    if (vector85.X * (float)(projectile.extraUpdates + 1) * 2f * num855 + projectile.localAI[0] < -40f)
+                    if (vector85.X * (projectile.extraUpdates + 1) * 2f * num855 + projectile.localAI[0] < -40f)
                     {
                         flag36 = true;
                     }
@@ -166,8 +166,8 @@ namespace AAMod.Projectiles
             IL_230BF:
                 if (projectile.velocity != Vector2.Zero)
                 {
-                    projectile.localAI[0] += spinningpoint2.X * (float)(projectile.extraUpdates + 1) * 2f * num855;
-                    projectile.velocity = spinningpoint2.RotatedBy((double)(projectile.ai[0] + 1.57079637f), default(Vector2)) * num855;
+                    projectile.localAI[0] += spinningpoint2.X * (projectile.extraUpdates + 1) * 2f * num855;
+                    projectile.velocity = spinningpoint2.RotatedBy(projectile.ai[0] + 1.57079637f, default(Vector2)) * num855;
                     projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
                     return;
                 }
@@ -176,9 +176,9 @@ namespace AAMod.Projectiles
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Vector2 end = projectile.position + new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
+            Vector2 end = projectile.position + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
             Texture2D tex3 = Main.extraTexture[33];
-            Color color25 = Lighting.GetColor((int)((double)projectile.position.X + (double)projectile.width * 0.5) / 16, (int)(((double)projectile.position.Y + (double)projectile.height * 0.5) / 16.0));
+            Color color25 = Lighting.GetColor((int)(projectile.position.X + projectile.width * 0.5) / 16, (int)((projectile.position.Y + projectile.height * 0.5) / 16.0));
             projectile.GetAlpha(color25);
             Vector2 scale16 = new Vector2(projectile.scale) / 2f;
             for (int num291 = 0; num291 < 3; num291++)
@@ -203,15 +203,15 @@ namespace AAMod.Projectiles
                 {
                     if (!(projectile.oldPos[num292] == Vector2.Zero))
                     {
-                        Vector2 start = projectile.oldPos[num292] + new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
-                        Vector2 end2 = projectile.oldPos[num292 - 1] + new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
+                        Vector2 start = projectile.oldPos[num292] + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
+                        Vector2 end2 = projectile.oldPos[num292 - 1] + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
                         Utils.DrawLaser(Main.spriteBatch, tex3, start, end2, scale16, new Utils.LaserLineFraming(DelegateMethods.LightningLaserDraw));
                     }
                 }
                 if (projectile.oldPos[0] != Vector2.Zero)
                 {
                     DelegateMethods.f_1 = 1f;
-                    Vector2 start2 = projectile.oldPos[0] + new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
+                    Vector2 start2 = projectile.oldPos[0] + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
                     Utils.DrawLaser(Main.spriteBatch, tex3, start2, end, scale16, new Utils.LaserLineFraming(DelegateMethods.LightningLaserDraw));
                 }
             }

@@ -420,7 +420,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                     int num1470;
                     int num1471;
                     Collision.ExpandVertically(num1469, startY, out num1470, out num1471, 1, 51);
-                    if (StrayMethods.CanSpawnSandstormHostile(new Vector2((float)num1469, (float)(num1471 - 15)) * 16f, 15, 15))
+                    if (StrayMethods.CanSpawnSandstormHostile(new Vector2(num1469, num1471 - 15) * 16f, 15, 15))
                     {
                         list4.Add(new Point(num1469, num1471 - 15));
                     }
@@ -429,16 +429,16 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
             foreach (Point current2 in list4)
             {
-                Projectile.NewProjectile((float)(current2.X * 16), (float)(current2.Y * 16), 0f, 0f, 658, 0, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(current2.X * 16, current2.Y * 16, 0f, 0f, 658, 0, 0f, Main.myPlayer, 0f, 0f);
             }
         }
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            npc.position.X = npc.position.X + (float)(npc.width / 2);
-            npc.position.Y = npc.position.Y + (float)(npc.height / 2);
-            npc.position.X = npc.position.X - (float)(npc.width / 2);
-            npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+            npc.position.X = npc.position.X + npc.width / 2;
+            npc.position.Y = npc.position.Y + npc.height / 2;
+            npc.position.X = npc.position.X - npc.width / 2;
+            npc.position.Y = npc.position.Y - npc.height / 2;
             int dust = mod.DustType<Dusts.SandDust>();
             for (int Loop = 0; Loop < 5; Loop++)
             {

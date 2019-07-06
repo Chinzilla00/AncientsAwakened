@@ -41,7 +41,7 @@ namespace AAMod.Projectiles
 
 		public override void AI()
         {
-            projectile.rotation += (float)projectile.direction * 0.8f;
+            projectile.rotation += projectile.direction * 0.8f;
             projectile.ai[0] += 1f;
             if (projectile.ai[0] >= 30f)
             {

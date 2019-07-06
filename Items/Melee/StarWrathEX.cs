@@ -31,12 +31,12 @@ namespace AAMod.Items.Melee
 		
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			Vector2 vector12 = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY);
+			Vector2 vector12 = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY);
             float num75 = item.shootSpeed;
 			for (int num120 = 0; num120 < 3; num120++)
 			{
-                Vector2 vector2 = player.Center + new Vector2((float)(-(float)Main.rand.Next(0, 401) * player.direction), -600f);
-                vector2.Y -= (float)(100 * num120);
+                Vector2 vector2 = player.Center + new Vector2(-(float)Main.rand.Next(0, 401) * player.direction, -600f);
+                vector2.Y -= 100 * num120;
 				Vector2 vector13 = vector12 - vector2;
 				if (vector13.Y < 0f)
 				{
@@ -51,7 +51,7 @@ namespace AAMod.Items.Melee
 				float num82 = vector13.X;
 				float num83 = vector13.Y;
 				float speedX5 = num82;
-				float speedY6 = num83 + (float)Main.rand.Next(-40, 41) * 0.02f;
+				float speedY6 = num83 + Main.rand.Next(-40, 41) * 0.02f;
 				Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType("StarWrathEXP"), damage*3/2, knockBack, Main.myPlayer);
 			}
 			return false;

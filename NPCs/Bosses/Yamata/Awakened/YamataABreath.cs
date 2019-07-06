@@ -85,7 +85,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 projectile.ai[0] += 1f;
             }
-            projectile.rotation += 0.3f * (float)projectile.direction;
+            projectile.rotation += 0.3f * projectile.direction;
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)

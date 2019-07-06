@@ -36,12 +36,12 @@ namespace AAMod.NPCs.Enemies.Other
             if (npc.velocity.X > 0f)
             {
                 npc.spriteDirection = 1;
-                npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X);
+                npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
             }
             if (npc.velocity.X < 0f)
             {
                 npc.spriteDirection = -1;
-                npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 3.14f;
+                npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 3.14f;
             }
 
             npc.frameCounter++;

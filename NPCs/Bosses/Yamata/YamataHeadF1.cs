@@ -53,10 +53,10 @@ namespace AAMod.NPCs.Bosses.Yamata
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
-                writer.Write((float)customAI[0]);
-                writer.Write((float)customAI[1]);
-                writer.Write((float)customAI[2]);
-                writer.Write((float)customAI[3]);
+                writer.Write(customAI[0]);
+                writer.Write(customAI[1]);
+                writer.Write(customAI[2]);
+                writer.Write(customAI[3]);
             }
         }
 
@@ -89,7 +89,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void AI()
         {
             int attackpower = isAwakened ? 130 : 100;
-            int projectileDamage = 0;
             if (Body == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
@@ -110,15 +109,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             else
             {
                 npc.damage = attackpower;
-            }
-
-            if (Main.expertMode)
-            {
-                projectileDamage = attackpower / 4;
-            }
-            else
-            {
-                projectileDamage = attackpower / 2;
             }
             npc.TargetClosest();
             Player targetPlayer = Main.player[npc.target];
@@ -200,7 +190,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     npc.ai[1]++; ;
                 }
-                int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
+                int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100);
                 if (leftHead) aiTimerFire += 30;
                 if (targetPlayer != null && npc.ai[1] == aiTimerFire)
                 {

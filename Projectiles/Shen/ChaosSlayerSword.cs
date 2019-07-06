@@ -74,7 +74,7 @@ namespace AAMod.Projectiles.Shen
 				float velRot = BaseMod.BaseUtility.RotationTo(projectile.Center, projectile.Center + originalVelocity);
 				projectile.velocity = BaseMod.BaseUtility.RotateVector(default(Vector2), new Vector2(projectile.velocity.Length(), 0f), velRot + (vectorOffset * 0.5f));
 			}
-			projectile.rotation = BaseMod.BaseUtility.RotationTo(projectile.Center, projectile.Center + projectile.velocity) + 1.57f - (float)MathHelper.PiOver4;
+			projectile.rotation = BaseMod.BaseUtility.RotationTo(projectile.Center, projectile.Center + projectile.velocity) + 1.57f - MathHelper.PiOver4;
 			projectile.spriteDirection = 1;
         }
 
@@ -85,14 +85,14 @@ namespace AAMod.Projectiles.Shen
 			for(int m = 0; m < pieCut; m++)
 			{
 				int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, dustType, 0f, 0f, 100, Color.White, 1.6f);
-				Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), ((float)m / (float)pieCut) * 6.28f);
+				Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), (m / (float)pieCut) * 6.28f);
 				Main.dust[dustID].noLight = false;
 				Main.dust[dustID].noGravity = true;
 			}
 			for(int m = 0; m < pieCut; m++)
 			{
 				int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, dustType, 0f, 0f, 100, Color.White, 2f);
-				Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default(Vector2), new Vector2(9f, 0f), ((float)m / (float)pieCut) * 6.28f);
+				Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default(Vector2), new Vector2(9f, 0f), (m / (float)pieCut) * 6.28f);
 				Main.dust[dustID].noLight = false;
 				Main.dust[dustID].noGravity = true;
 			}

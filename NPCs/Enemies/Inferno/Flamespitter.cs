@@ -52,7 +52,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             Func<int, int, bool> CanTeleportTo = null;
             npc.velocity.X = npc.velocity.X * 0.93f;
 
-            if ((double)npc.velocity.X > -0.1 && (double)npc.velocity.X < 0.1)
+            if (npc.velocity.X > -0.1 && npc.velocity.X < 0.1)
             {
                 npc.velocity.X = 0f;
             }
@@ -64,8 +64,8 @@ namespace AAMod.NPCs.Enemies.Inferno
 
             if (npc.ai[2] != 0f && npc.ai[3] != 0f)
             {
-                npc.position.X = npc.ai[2] * 16f - (float)(npc.width / 2) + 8f;
-                npc.position.Y = npc.ai[3] * 16f - (float)npc.height;
+                npc.position.X = npc.ai[2] * 16f - npc.width / 2 + 8f;
+                npc.position.Y = npc.ai[3] * 16f - npc.height;
                 npc.velocity.X = 0f; npc.velocity.Y = 0f;
                 npc.ai[2] = 0f; npc.ai[3] = 0f;
             }
@@ -107,11 +107,11 @@ namespace AAMod.NPCs.Enemies.Inferno
                         {
                             if ((tpY < playerTileY - 4 || tpY > playerTileY + 4 || tpTileX < playerTileX - 4 || tpTileX > playerTileX + 4) && (tpY < tileY - 1 || tpY > tileY + 1 || tpTileX < tileX - 1 || tpTileX > tileX + 1) && (!checkGround || Main.tile[tpTileX, tpY].nactive()))
                             {
-                                if ((CanTeleportTo != null && CanTeleportTo(tpTileX, tpY)) || (!Main.tile[tpTileX, tpY - 1].lava() && (!checkGround || Main.tileSolid[(int)Main.tile[tpTileX, tpY].type]) && !Collision.SolidTiles(tpTileX - 1, tpTileX + 1, tpY - 4, tpY - 1)))
+                                if ((CanTeleportTo != null && CanTeleportTo(tpTileX, tpY)) || (!Main.tile[tpTileX, tpY - 1].lava() && (!checkGround || Main.tileSolid[Main.tile[tpTileX, tpY].type]) && !Collision.SolidTiles(tpTileX - 1, tpTileX + 1, tpY - 4, tpY - 1)))
                                 {
                                     if (attackInterval != -1) { npc.ai[1] = 20f; }
-                                    npc.ai[2] = (float)tpTileX;
-                                    npc.ai[3] = (float)tpY;
+                                    npc.ai[2] = tpTileX;
+                                    npc.ai[3] = tpY;
                                     hasTeleportPoint = true;
                                     teleport = false;
                                     digUp = true;

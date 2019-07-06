@@ -66,7 +66,7 @@ namespace AAMod.Items.Summoning.Minions
             for (int num638 = 0; num638 < 1000; num638++)
             {
                 bool flag23 = (Main.projectile[num638].type == mod.ProjectileType("SkullMinion"));
-                if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < (float)projectile.width)
+                if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < projectile.width)
                 {
                     if (projectile.position.X < Main.projectile[num638].position.X)
                     {
@@ -159,7 +159,7 @@ namespace AAMod.Items.Summoning.Minions
                         num++;
                     }
                 }
-                direction.X -= (float)((10 + num * 40) * player.direction);
+                direction.X -= (10 + num * 40) * player.direction;
                 direction.Y -= 70f;
                 float distanceTo = direction.Length();
                 if (distanceTo > 200f && speed < 9f)
@@ -234,7 +234,7 @@ namespace AAMod.Items.Summoning.Minions
                             }
                             shootVel.Normalize();
                             shootVel *= shootSpeed;
-                            int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootVel.X, shootVel.Y, shoot, (int)((float)projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, 0f);
+                            int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootVel.X, shootVel.Y, shoot, (int)(projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, 0f);
                             Main.projectile[num659].timeLeft = 300;
                             projectile.netUpdate = true;
                         }

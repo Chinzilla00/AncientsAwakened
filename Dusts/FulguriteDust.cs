@@ -8,7 +8,7 @@ namespace AAMod.Dusts
 	{
         public override bool Update(Dust dust)
         {
-            dust.velocity.Y = (float)Main.rand.Next(-10, 6) * 0.1f;
+            dust.velocity.Y = Main.rand.Next(-10, 6) * 0.1f;
             Dust expr_43F_cp_0 = dust;
             expr_43F_cp_0.velocity.X = expr_43F_cp_0.velocity.X * 0.3f;
             dust.scale *= 0.7f;

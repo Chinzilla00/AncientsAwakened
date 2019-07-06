@@ -57,7 +57,7 @@ namespace AAMod.Items.Armor.Doomite
 			for (int num638 = 0; num638 < 1000; num638++)
 			{
 				bool flag23 = (Main.projectile[num638].type == mod.ProjectileType("Searcher"));
-				if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < (float)projectile.width)
+				if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < projectile.width)
 				{
 					if (projectile.position.X < Main.projectile[num638].position.X)
 					{
@@ -161,8 +161,8 @@ namespace AAMod.Items.Armor.Doomite
 				}
 				if (num651 > 2000f)
 				{
-					projectile.position.X = Main.player[projectile.owner].Center.X - (float)(projectile.width / 2);
-					projectile.position.Y = Main.player[projectile.owner].Center.Y - (float)(projectile.height / 2);
+					projectile.position.X = Main.player[projectile.owner].Center.X - projectile.width / 2;
+					projectile.position.Y = Main.player[projectile.owner].Center.Y - projectile.height / 2;
 					projectile.netUpdate = true;
 				}
 				if (num651 > 70f)
@@ -198,7 +198,7 @@ namespace AAMod.Items.Armor.Doomite
             }
 			if (projectile.ai[1] > 0f)
             {
-                projectile.ai[1] += (float)Main.rand.Next(1, 4);
+                projectile.ai[1] += Main.rand.Next(1, 4);
             }
             if (projectile.ai[1] > 30f)
             {

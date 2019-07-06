@@ -19,6 +19,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             projectile.width = 20;
             projectile.height = 20;
+            projectile.friendly = false;
             projectile.hostile = true;
             projectile.melee = true;
             projectile.penetrate = 1;

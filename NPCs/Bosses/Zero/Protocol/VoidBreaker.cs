@@ -38,9 +38,9 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 int num693 = 6;
                 for (int num694 = 0; num694 < num693; num694++)
                 {
-                    Vector2 vector56 = Vector2.Normalize(projectile.velocity) * new Vector2((float)projectile.width, (float)projectile.height) / 2f;
-                    vector56 = vector56.RotatedBy((double)(num694 - (num693 / 2 - 1)) * 3.1415926535897931 / (double)((float)num693), default(Vector2)) + projectile.Center;
-                    Vector2 value24 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * (float)Main.rand.Next(3, 8);
+                    Vector2 vector56 = Vector2.Normalize(projectile.velocity) * new Vector2(projectile.width, projectile.height) / 2f;
+                    vector56 = vector56.RotatedBy((num694 - (num693 / 2 - 1)) * 3.1415926535897931 / (float)num693, default(Vector2)) + projectile.Center;
+                    Vector2 value24 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
                     int num695 = Dust.NewDust(vector56 + value24, 0, 0, 217, value24.X * 2f, value24.Y * 2f, mod.DustType<Dusts.VoidDust>(), default(Color), 1.4f);
                     Main.dust[num695].noGravity = true;
                     Main.dust[num695].noLight = true;
@@ -68,7 +68,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 for (int num698 = 0; num698 < 200; num698++)
                 {
                     Player player = Main.player[num698];
-                    if ((projectile.ai[0] == 0f || projectile.ai[0] == (float)(num698 + 1)))
+                    if ((projectile.ai[0] == 0f || projectile.ai[0] == num698 + 1))
                     {
                         Vector2 center4 = player.Center;
                         float num699 = Vector2.Distance(center4, vector57);
@@ -96,9 +96,9 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 int num700 = (int)(projectile.ai[0] - 1f);
                 if (Main.player[num700].active)
                 {
-                    float num701 = Main.player[num700].position.X + (float)(Main.player[num700].width / 2);
-                    float num702 = Main.player[num700].position.Y + (float)(Main.player[num700].height / 2);
-                    float num703 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num701) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num702);
+                    float num701 = Main.player[num700].position.X + Main.player[num700].width / 2;
+                    float num702 = Main.player[num700].position.Y + Main.player[num700].height / 2;
+                    float num703 = Math.Abs(projectile.position.X + projectile.width / 2 - num701) + Math.Abs(projectile.position.Y + projectile.height / 2 - num702);
                     if (num703 < 1000f)
                     {
                         flag31 = true;
@@ -117,7 +117,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 Vector2 v = vector57 - projectile.Center;
                 float num704 = projectile.velocity.ToRotation();
                 float num705 = v.ToRotation();
-                double num706 = (double)(num705 - num704);
+                double num706 = num705 - num704;
                 if (num706 > 3.1415926535897931)
                 {
                     num706 -= 6.2831853071795862;

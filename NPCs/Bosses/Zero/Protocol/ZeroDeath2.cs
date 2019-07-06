@@ -31,7 +31,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 30)
                 {
-                    AAWorld.downedZero = true;
                     projectile.Kill();
                 }
             }

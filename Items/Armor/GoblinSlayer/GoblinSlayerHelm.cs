@@ -42,8 +42,8 @@ namespace AAMod.Items.Armor.GoblinSlayer
             {
                 num = 0;
             }
-            Vector2 vector = new Vector2((float)(3 * player.direction - ((player.direction == 1) ? 1 : 0)), -11.5f * player.gravDir) + Vector2.UnitY * player.gfxOffY + player.Size / 2f + Main.OffsetsPlayerHeadgear[num];
-            Vector2 vector2 = new Vector2((float)(3 * player.shadowDirection[1] - ((player.direction == 1) ? 1 : 0)), -11.5f * player.gravDir) + player.Size / 2f + Main.OffsetsPlayerHeadgear[num];
+            Vector2 vector = new Vector2(3 * player.direction - ((player.direction == 1) ? 1 : 0), -11.5f * player.gravDir) + Vector2.UnitY * player.gfxOffY + player.Size / 2f + Main.OffsetsPlayerHeadgear[num];
+            Vector2 vector2 = new Vector2(3 * player.shadowDirection[1] - ((player.direction == 1) ? 1 : 0), -11.5f * player.gravDir) + player.Size / 2f + Main.OffsetsPlayerHeadgear[num];
             Vector2 vector3 = Vector2.Zero;
             if (player.mount.Active && player.mount.Cart)
             {
@@ -52,7 +52,7 @@ namespace AAMod.Items.Armor.GoblinSlayer
                 {
                     num2 = player.direction;
                 }
-                vector3 = new Vector2(MathHelper.Lerp(0f, -8f, player.fullRotation / 0.7853982f), MathHelper.Lerp(0f, 2f, Math.Abs(player.fullRotation / 0.7853982f))).RotatedBy((double)player.fullRotation, default(Vector2));
+                vector3 = new Vector2(MathHelper.Lerp(0f, -8f, player.fullRotation / 0.7853982f), MathHelper.Lerp(0f, 2f, Math.Abs(player.fullRotation / 0.7853982f))).RotatedBy(player.fullRotation, default(Vector2));
                 if (num2 == Math.Sign(player.fullRotation))
                 {
                     vector3 *= MathHelper.Lerp(1f, 0.6f, Math.Abs(player.fullRotation / 0.7853982f));
@@ -60,13 +60,13 @@ namespace AAMod.Items.Armor.GoblinSlayer
             }
             if (player.fullRotation != 0f)
             {
-                vector = vector.RotatedBy((double)player.fullRotation, player.fullRotationOrigin);
-                vector2 = vector2.RotatedBy((double)player.fullRotation, player.fullRotationOrigin);
+                vector = vector.RotatedBy(player.fullRotation, player.fullRotationOrigin);
+                vector2 = vector2.RotatedBy(player.fullRotation, player.fullRotationOrigin);
             }
             float num3 = 0f;
             if (player.mount.Active)
             {
-                num3 = (float)player.mount.PlayerOffset;
+                num3 = player.mount.PlayerOffset;
             }
             Vector2 vector4 = player.position + vector + vector3;
             Vector2 vector5 = player.oldPosition + vector2 + vector3;
@@ -95,10 +95,10 @@ namespace AAMod.Items.Armor.GoblinSlayer
             {
                 num5++;
             }
-            for (float num6 = 1f; num6 <= (float)num5; num6 += 1f)
+            for (float num6 = 1f; num6 <= num5; num6 += 1f)
             {
                 Dust dust = Main.dust[Dust.NewDust(player.Center, 0, 0, 182, 0f, 0f, 0, default(Color), 1f)];
-                dust.position = Vector2.Lerp(vector5, vector4, num6 / (float)num5);
+                dust.position = Vector2.Lerp(vector5, vector4, num6 / num5);
                 dust.noGravity = true;
                 dust.velocity = Vector2.Zero;
                 dust.customData = this;

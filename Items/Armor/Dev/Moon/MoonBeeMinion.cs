@@ -41,7 +41,7 @@ namespace AAMod.Items.Armor.Dev.Moon
                 projectile.timeLeft = 2;
             }
             float num8 = 0.05f;
-            float num9 = (float)projectile.width;
+            float num9 = projectile.width;
             num8 = 0.1f;
             num9 *= 2f;
             for (int j = 0; j < 1000; j++)
@@ -107,7 +107,7 @@ namespace AAMod.Items.Armor.Dev.Moon
                 num16 = 1000;
             }
             float num17 = Vector2.Distance(player.Center, projectile.Center);
-            if (num17 > (float)num16)
+            if (num17 > num16)
             {
                 projectile.ai[0] = 1f;
                 projectile.netUpdate = true;
@@ -157,15 +157,15 @@ namespace AAMod.Items.Armor.Dev.Moon
                         num23++;
                     }
                 }
-                vector6.X -= (float)(10 * Main.player[projectile.owner].direction);
-                vector6.X -= (float)(num23 * 40 * Main.player[projectile.owner].direction);
+                vector6.X -= 10 * Main.player[projectile.owner].direction;
+                vector6.X -= num23 * 40 * Main.player[projectile.owner].direction;
                 vector6.Y -= 10f;
                 float num24 = vector6.Length();
                 if (num24 > 200f && num22 < 9f)
                 {
                     num22 = 9f;
                 }
-                num22 = (float)((int)((double)num22 * 0.75));
+                num22 = (int)(num22 * 0.75);
                 if (num24 < 100f && projectile.ai[0] == 1f && !Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
                 {
                     projectile.ai[0] = 0f;
@@ -173,8 +173,8 @@ namespace AAMod.Items.Armor.Dev.Moon
                 }
                 if (num24 > 2000f)
                 {
-                    projectile.position.X = Main.player[projectile.owner].Center.X - (float)(projectile.width / 2);
-                    projectile.position.Y = Main.player[projectile.owner].Center.Y - (float)(projectile.width / 2);
+                    projectile.position.X = Main.player[projectile.owner].Center.X - projectile.width / 2;
+                    projectile.position.Y = Main.player[projectile.owner].Center.Y - projectile.width / 2;
                 }
                 if (num24 > 10f)
                 {
@@ -209,7 +209,7 @@ namespace AAMod.Items.Armor.Dev.Moon
                     projectile.ai[1] += 1f;
                 }
             }
-            if (projectile.ai[1] > (float)Main.rand.Next(180, 900))
+            if (projectile.ai[1] > Main.rand.Next(180, 900))
             {
                 projectile.ai[1] = 0f;
                 projectile.netUpdate = true;

@@ -77,7 +77,7 @@ namespace AAMod.Projectiles
                 for (int num842 = 0; num842 < num838; num842++)
                 {
                     Vector2 vector82 = array5[num842] - projectile.Center;
-                    float ai = (float)Main.rand.Next(100);
+                    float ai = Main.rand.Next(100);
                     Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.78539818525314331)) * 7f;
                     Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector83.X, vector83.Y, 466, projectile.damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
                 }
@@ -104,7 +104,7 @@ namespace AAMod.Projectiles
                     {
                         num844 = 0.5f;
                     }
-                    Vector2 value47 = new Vector2((float)(-(float)projectile.width) * 0.2f * projectile.scale, 0f).RotatedBy((double)(num844 * 6.28318548f), default(Vector2)).RotatedBy((double)projectile.velocity.ToRotation(), default(Vector2));
+                    Vector2 value47 = new Vector2(-projectile.width * 0.2f * projectile.scale, 0f).RotatedBy(num844 * 6.28318548f, default(Vector2)).RotatedBy(projectile.velocity.ToRotation(), default(Vector2));
                     int num845 = Dust.NewDust(projectile.Center - Vector2.One * 5f, 10, 10, 226, -projectile.velocity.X / 3f, -projectile.velocity.Y / 3f, 150, Color.Transparent, 0.7f);
                     Main.dust[num845].position = projectile.Center + value47;
                     Main.dust[num845].velocity = Vector2.Normalize(Main.dust[num845].position - projectile.Center) * 2f;
@@ -121,7 +121,7 @@ namespace AAMod.Projectiles
                     {
                         num847 = 0.5f;
                     }
-                    Vector2 value48 = new Vector2((float)(-(float)projectile.width) * 0.6f * projectile.scale, 0f).RotatedBy((double)(num847 * 6.28318548f), default(Vector2)).RotatedBy((double)projectile.velocity.ToRotation(), default(Vector2));
+                    Vector2 value48 = new Vector2(-projectile.width * 0.6f * projectile.scale, 0f).RotatedBy(num847 * 6.28318548f, default(Vector2)).RotatedBy(projectile.velocity.ToRotation(), default(Vector2));
                     int num848 = Dust.NewDust(projectile.Center - Vector2.One * 5f, 10, 10, 226, -projectile.velocity.X / 3f, -projectile.velocity.Y / 3f, 150, Color.Transparent, 0.7f);
                     Main.dust[num848].velocity = Vector2.Zero;
                     Main.dust[num848].position = projectile.Center + value48;

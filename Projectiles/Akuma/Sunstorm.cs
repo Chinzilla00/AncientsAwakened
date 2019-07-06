@@ -88,7 +88,7 @@ namespace AAMod.Projectiles.Akuma
                     projectile.frameCounter = 0;
                     projectile.frame++;
                 }
-                if (projectile.ai[0] >= (float)(Main.projFrames[projectile.type] * projectile.MaxUpdates * 3))
+                if (projectile.ai[0] >= Main.projFrames[projectile.type] * projectile.MaxUpdates * 3)
                 {
                     projectile.Kill();
                 }

@@ -25,11 +25,6 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.timeLeft = 180;
             projectile.aiStyle = -1;
             projectile.alpha = 0;
-            projectile.melee = false;
-            projectile.ranged = false;
-            projectile.magic = false;
-            projectile.thrown = false;
-            projectile.minion = false;
             projectile.ignoreWater = true;
         }
 

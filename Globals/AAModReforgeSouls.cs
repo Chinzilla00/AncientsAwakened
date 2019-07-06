@@ -40,22 +40,22 @@ namespace AAMod
             if (Main.mouseItem.type == mod.ItemType("Godly") && reforgable)
 			{
 				Main.mouseItem.stack--;
-				Item.NewItem((int)player.position.X, (int)player.position.Y, (int)player.width, (int)player.height, item.type, 1, false, 59);
+				Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item.type, 1, false, 59);
 			}
 			if (Main.mouseItem.type == mod.ItemType("Legendary") && reforgable && item.melee)
 			{
 				Main.mouseItem.stack--;
-				Item.NewItem((int)player.position.X, (int)player.position.Y, (int)player.width, (int)player.height, item.type, 1, false, 81);
+				Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item.type, 1, false, 81);
 			}
 			if (Main.mouseItem.type == mod.ItemType("Unreal") && reforgable && (item.ranged || item.thrown) && item.ammo == AmmoID.None)
 			{
 				Main.mouseItem.stack--;
-				Item.NewItem((int)player.position.X, (int)player.position.Y, (int)player.width, (int)player.height, item.type, 1, false, 82);
+				Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item.type, 1, false, 82);
 			}
 			if (Main.mouseItem.type == mod.ItemType("Mythical") && reforgable && (item.summon || item.magic))
 			{
 				Main.mouseItem.stack--;
-				Item.NewItem((int)player.position.X, (int)player.position.Y, (int)player.width, (int)player.height, item.type, 1, false, 83);
+				Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item.type, 1, false, 83);
 			}
             return base.ConsumeItem(item, player);
 		}

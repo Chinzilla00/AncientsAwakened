@@ -46,8 +46,8 @@ Tsunami EX");
 			float num121 = 0.314159274f;
 			int num122 = 5;
 			Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-			float num82 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
-			float num83 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+			float num82 = Main.mouseX + Main.screenPosition.X - vector2.X;
+			float num83 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
 			Vector2 vector14 = new Vector2(speedX, speedY);
 			vector14.Normalize();
 			vector14 *= 40f;
@@ -55,8 +55,8 @@ Tsunami EX");
 			int arrowtype = type;
 			for (int num123 = 0; num123 < num122; num123++)
 			{
-				float num124 = (float)num123 - ((float)num122 - 1f) / 2f;
-				Vector2 vector15 = vector14.RotatedBy((double)(num121 * num124), default(Vector2));
+				float num124 = num123 - (num122 - 1f) / 2f;
+				Vector2 vector15 = vector14.RotatedBy(num121 * num124, default(Vector2));
 				if (!flag11)
 				{
 					vector15 -= vector14;

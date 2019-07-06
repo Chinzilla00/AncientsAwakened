@@ -43,7 +43,7 @@ namespace AAMod.Projectiles.Akuma
             {
                     projectile.direction = Main.player[projectile.owner].direction;
             }
-            projectile.rotation -= (float)projectile.direction * 6.28318548f / 120f;
+            projectile.rotation -= projectile.direction * 6.28318548f / 120f;
             projectile.scale = projectile.Opacity;
             Lighting.AddLight(projectile.Center, new Vector3(0.3f, 0.9f, 0.7f) * projectile.Opacity);
             if (Main.rand.Next(2) == 0)
@@ -51,7 +51,7 @@ namespace AAMod.Projectiles.Akuma
                 Vector2 vector135 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
                 Dust dust31 = Main.dust[Dust.NewDust(projectile.Center - vector135 * 30f, 0, 0, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f)];
                 dust31.noGravity = true;
-                dust31.position = projectile.Center - vector135 * (float)Main.rand.Next(10, 21);
+                dust31.position = projectile.Center - vector135 * Main.rand.Next(10, 21);
                 dust31.velocity = vector135.RotatedBy(1.5707963705062866, default(Vector2)) * 6f;
                 dust31.scale = 0.5f + Main.rand.NextFloat();
                 dust31.fadeIn = 0.5f;
@@ -85,7 +85,7 @@ namespace AAMod.Projectiles.Akuma
             {
                 projectile.ai[0] += 1f;
                 
-                    projectile.ai[1] -= (float)projectile.direction * 0.3926991f / 50f;
+                    projectile.ai[1] -= projectile.direction * 0.3926991f / 50f;
                 
             }
             if (projectile.ai[0] == 0f)
@@ -121,7 +121,7 @@ namespace AAMod.Projectiles.Akuma
                 if (num1060 != -1)
                 {
                     projectile.ai[0] = 1f;
-                    projectile.ai[1] = (float)num1060;
+                    projectile.ai[1] = num1060;
                     projectile.netUpdate = true;
                     return;
                 }
@@ -149,11 +149,11 @@ namespace AAMod.Projectiles.Akuma
                     int num1068 = (vector137.X > 0f) ? 1 : -1;
                     projectile.direction = num1068;
                     projectile.ai[0] = -60f;
-                    projectile.ai[1] = num1067 + (float)num1068 * 3.14159274f / 16f;
+                    projectile.ai[1] = num1067 + num1068 * 3.14159274f / 16f;
                     projectile.netUpdate = true;
                     if (projectile.owner == Main.myPlayer)
                     {
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector137.X, vector137.Y, mod.ProjectileType("Sunray"), projectile.damage, projectile.knockBack, projectile.owner, 0f, (float)projectile.whoAmI);
+                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector137.X, vector137.Y, mod.ProjectileType("Sunray"), projectile.damage, projectile.knockBack, projectile.owner, 0f, projectile.whoAmI);
                     }
                     
                 }

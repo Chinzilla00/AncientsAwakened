@@ -53,7 +53,7 @@ namespace AAMod.Projectiles
             {
                 projectile.alpha = 0;
             }
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) - 1.57f;
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) - 1.57f;
             projectile.frameCounter++;
             if (projectile.frameCounter >= 6)
             {
@@ -66,8 +66,8 @@ namespace AAMod.Projectiles
             }
             for (int num363 = 0; num363 < 3; num363++)
             {
-                float num364 = projectile.velocity.X / 3f * (float)num363;
-                float num365 = projectile.velocity.Y / 3f * (float)num363;
+                float num364 = projectile.velocity.X / 3f * num363;
+                float num365 = projectile.velocity.Y / 3f * num363;
                 int num366 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 75, 0f, 0f, 0, default(Color), 1f);
                 Main.dust[num366].position.X = projectile.Center.X - num364;
                 Main.dust[num366].position.Y = projectile.Center.Y - num365;
@@ -85,9 +85,9 @@ namespace AAMod.Projectiles
                 {
                     if (Main.npc[num370].CanBeChasedBy(this, false))
                     {
-                        float num371 = Main.npc[num370].position.X + (float)(Main.npc[num370].width / 2);
-                        float num372 = Main.npc[num370].position.Y + (float)(Main.npc[num370].height / 2);
-                        float num373 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num371) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num372);
+                        float num371 = Main.npc[num370].position.X + Main.npc[num370].width / 2;
+                        float num372 = Main.npc[num370].position.Y + Main.npc[num370].height / 2;
+                        float num373 = Math.Abs(projectile.position.X + projectile.width / 2 - num371) + Math.Abs(projectile.position.Y + projectile.height / 2 - num372);
                         if (num373 < 800f && num373 < num369 && Collision.CanHit(projectile.position, projectile.width, projectile.height, Main.npc[num370].position, Main.npc[num370].width, Main.npc[num370].height))
                         {
                             num369 = num373;
@@ -100,10 +100,10 @@ namespace AAMod.Projectiles
             projectile.friendly = true;
             float num374 = 9f;
             float num375 = 0.2f;
-            Vector2 vector27 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+            Vector2 vector27 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
             float num376 = num367 - vector27.X;
             float num377 = num368 - vector27.Y;
-            float num378 = (float)Math.Sqrt((double)(num376 * num376 + num377 * num377));
+            float num378 = (float)Math.Sqrt(num376 * num376 + num377 * num377);
             num378 = num374 / num378;
             num376 *= num378;
             num377 *= num378;
@@ -188,11 +188,11 @@ namespace AAMod.Projectiles
 				}
 				for (int num627 = 0; num627 < num626; num627 = num3 + 1)
 				{
-					float num628 = (float)Main.rand.Next(-35, 36) * 0.02f;
-					float num629 = (float)Main.rand.Next(-35, 36) * 0.02f;
+					float num628 = Main.rand.Next(-35, 36) * 0.02f;
+					float num629 = Main.rand.Next(-35, 36) * 0.02f;
 					num628 *= 10f;
 					num629 *= 10f;
-					int p = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, num628, num629, mod.ProjectileType<Items.Armor.TrueNights.CursedFireball>(), projectile.damage*3, (float)((int)((double)projectile.knockBack * 0.35)), Main.myPlayer, 0f, 0f);
+					int p = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, num628, num629, mod.ProjectileType<Items.Armor.TrueNights.CursedFireball>(), projectile.damage*3, (int)(projectile.knockBack * 0.35), Main.myPlayer, 0f, 0f);
 					num3 = num627;
 					Main.projectile[p].timeLeft = 240;
 				}

@@ -48,7 +48,7 @@ namespace AAMod.Projectiles
 				projectile.Kill();
 				return;
 			}
-			float num810 = (float)((int)projectile.ai[0]) - 2.5f;
+			float num810 = (int)projectile.ai[0] - 2.5f;
 			Vector2 value36 = Vector2.Normalize(Main.projectile[(int)projectile.ai[1]].velocity);
 			Projectile projectile2 = Main.projectile[(int)projectile.ai[1]];
 			float num811 = num810 * 0.5235988f;
@@ -82,12 +82,12 @@ namespace AAMod.Projectiles
 				scaleFactor6 = -2f;
 			}
 			float num814 = (projectile2.ai[0] + num810 * num813) / (num813 * 6f) * 6.28318548f;
-			num811 = Vector2.UnitY.RotatedBy((double)num814, default(Vector2)).Y * 0.5235988f * num812;
-			value37 = (Vector2.UnitY.RotatedBy((double)num814, default(Vector2)) * new Vector2(4f, y)).RotatedBy((double)projectile2.velocity.ToRotation(), default(Vector2));
+			num811 = Vector2.UnitY.RotatedBy(num814, default(Vector2)).Y * 0.5235988f * num812;
+			value37 = (Vector2.UnitY.RotatedBy(num814, default(Vector2)) * new Vector2(4f, y)).RotatedBy(projectile2.velocity.ToRotation(), default(Vector2));
 			projectile.position = projectile2.Center + value36 * 16f - projectile.Size / 2f + new Vector2(0f, -Main.projectile[(int)projectile.ai[1]].gfxOffY);
 			projectile.position += projectile2.velocity.ToRotation().ToRotationVector2() * scaleFactor6;
 			projectile.position += value37;
-			projectile.velocity = Vector2.Normalize(projectile2.velocity).RotatedBy((double)num811, default(Vector2));
+			projectile.velocity = Vector2.Normalize(projectile2.velocity).RotatedBy(num811, default(Vector2));
 			projectile.scale = 1.8f * (1f - num812);
 			projectile.damage = projectile2.damage;
 			if (projectile2.ai[0] >= 180f) 
@@ -134,7 +134,7 @@ namespace AAMod.Projectiles
 				{
 					float num844 = projectile.velocity.ToRotation() + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
 					float num845 = (float)Main.rand.NextDouble() * 0.8f + 1f;
-					Vector2 vector81 = new Vector2((float)Math.Cos((double)num844) * num845, (float)Math.Sin((double)num844) * num845);
+					Vector2 vector81 = new Vector2((float)Math.Cos(num844) * num845, (float)Math.Sin(num844) * num845);
 					int num846 = Dust.NewDust(vector80, 0, 0, 261, vector81.X, vector81.Y, 0, new Color(255, 250, 205), 1f);
 					Main.dust[num846].color = color;
 					Main.dust[num846].scale = 1.1f;
@@ -155,20 +155,20 @@ namespace AAMod.Projectiles
 				}
 				if (Main.rand.Next(5) == 0) 
 				{
-					Vector2 value42 = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * (float)projectile.width;
+					Vector2 value42 = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
 					int num847 = Dust.NewDust(vector80 + value42 - Vector2.One * 4f, 8, 8, 261, 0f, 0f, 100, new Color(255, 250, 205), 1f);
 					Main.dust[num847].velocity *= 0.5f;
 					Main.dust[num847].velocity.Y = -Math.Abs(Main.dust[num847].velocity.Y);
 				}
 				DelegateMethods.v3_1 = color.ToVector3() * 0.3f;
-				float value43 = 0.1f * (float)Math.Sin((double)(Main.GlobalTime * 20f));
-				Vector2 size = new Vector2(projectile.velocity.Length() * projectile.localAI[1], (float)projectile.width * projectile.scale);
+				float value43 = 0.1f * (float)Math.Sin(Main.GlobalTime * 20f);
+				Vector2 size = new Vector2(projectile.velocity.Length() * projectile.localAI[1], projectile.width * projectile.scale);
 				float num848 = projectile.velocity.ToRotation();
 				if (Main.netMode != 2) 
 				{
-					((WaterShaderData)Filters.Scene["WaterDistortion"].GetShader()).QueueRipple(projectile.position + new Vector2(size.X * 0.5f, 0f).RotatedBy((double)num848, default(Vector2)), new Color(0.5f, 0.1f * (float)Math.Sign(value43) + 0.5f, 0f, 1f) * Math.Abs(value43), size, RippleShape.Square, num848);
+					((WaterShaderData)Filters.Scene["WaterDistortion"].GetShader()).QueueRipple(projectile.position + new Vector2(size.X * 0.5f, 0f).RotatedBy(num848, default(Vector2)), new Color(0.5f, 0.1f * Math.Sign(value43) + 0.5f, 0f, 1f) * Math.Abs(value43), size, RippleShape.Square, num848);
 				}
-				Utils.PlotTileLine(projectile.Center, projectile.Center + projectile.velocity * projectile.localAI[1], (float)projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CastLight));
+				Utils.PlotTileLine(projectile.Center, projectile.Center + projectile.velocity * projectile.localAI[1], projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CastLight));
 				return;
 			}
         }
@@ -190,7 +190,7 @@ namespace AAMod.Projectiles
 			DelegateMethods.f_1 = 1f;
 			DelegateMethods.c_1 = value25 * 0.75f * projectile.Opacity;
 			Vector2 projPos = projectile.oldPos[0];
-			projPos = new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
+			projPos = new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
 			Utils.DrawLaser(Main.spriteBatch, tex, value26 - Main.screenPosition, value26 + projectile.velocity * num228 - Main.screenPosition, vector29, new Utils.LaserLineFraming(DelegateMethods.RainbowLaserDraw));
 			DelegateMethods.c_1 = new Color(255, 250, 205, 127) * 0.75f * projectile.Opacity;
 			Utils.DrawLaser(Main.spriteBatch, tex, value26 - Main.screenPosition, value26 + projectile.velocity * num228 - Main.screenPosition, vector29 / 2f, new Utils.LaserLineFraming(DelegateMethods.RainbowLaserDraw));
@@ -201,7 +201,7 @@ namespace AAMod.Projectiles
 		{
 			DelegateMethods.tilecut_0 = TileCuttingContext.AttackProjectile;
 			Vector2 unit = projectile.velocity;
-			Utils.PlotTileLine(projectile.Center, projectile.Center + unit * projectile.localAI[1], (float)projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CutTiles));
+			Utils.PlotTileLine(projectile.Center, projectile.Center + unit * projectile.localAI[1], projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CutTiles));
 		}
         
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)

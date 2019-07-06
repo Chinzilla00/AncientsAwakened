@@ -49,7 +49,7 @@ namespace AAMod.Items.Armor.Doomsday
             float num623 = 0.05f;
             for (int num624 = 0; num624 < 1000; num624++)
             {
-                if (num624 != projectile.whoAmI && Main.projectile[num624].active && Main.projectile[num624].owner == projectile.owner && Math.Abs(projectile.position.X - Main.projectile[num624].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num624].position.Y) < (float)projectile.width)
+                if (num624 != projectile.whoAmI && Main.projectile[num624].active && Main.projectile[num624].owner == projectile.owner && Math.Abs(projectile.position.X - Main.projectile[num624].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num624].position.Y) < projectile.width)
                 {
                     if (projectile.position.X < Main.projectile[num624].position.X)
                     {
@@ -114,7 +114,7 @@ namespace AAMod.Items.Armor.Doomsday
                 {
                     projectile.frame = num626 - 4;
                 }
-                if (projectile.ai[1] > (float)(num625 * 8))
+                if (projectile.ai[1] > num625 * 8)
                 {
                     projectile.ai[0] -= 3f;
                     projectile.ai[1] = 0f;
@@ -148,7 +148,7 @@ namespace AAMod.Items.Armor.Doomsday
                         num627 = 30;
                         break;
                 }
-                if (projectile.ai[1] > (float)num627)
+                if (projectile.ai[1] > num627)
                 {
                     projectile.ai[1] = 1f;
                     projectile.ai[0] -= 6f;
@@ -173,7 +173,7 @@ namespace AAMod.Items.Armor.Doomsday
                         });
                         int num630 = Dust.NewDust(projectile.Center, 0, 0, num629, 0f, 0f, 0, default(Color), 1f);
                         Dust dust2 = Main.dust[num630];
-                        Vector2 value17 = Vector2.One.RotatedBy((double)((float)num628 * 1.57079637f), default(Vector2)).RotatedBy((double)projectile.rotation, default(Vector2));
+                        Vector2 value17 = Vector2.One.RotatedBy(num628 * 1.57079637f, default(Vector2)).RotatedBy(projectile.rotation, default(Vector2));
                         dust2.position = projectile.Center + value17 * 10f;
                         dust2.velocity = value17 * 1f;
                         dust2.scale = 0.6f + Main.rand.NextFloat() * 0.5f;
@@ -230,7 +230,7 @@ namespace AAMod.Items.Armor.Doomsday
             }
             if (Vector2.Distance(player.Center, projectile.Center) > num634)
             {
-                projectile.ai[0] += (float)(3 * (3 - (int)(projectile.ai[0] / 3f)));
+                projectile.ai[0] += 3 * (3 - (int)(projectile.ai[0] / 3f));
                 projectile.tileCollide = false;
                 projectile.netUpdate = true;
             }
@@ -254,8 +254,8 @@ namespace AAMod.Items.Armor.Doomsday
             }
             if (num638 > 2000f)
             {
-                projectile.position.X = Main.player[projectile.owner].Center.X - (float)(projectile.width / 2);
-                projectile.position.Y = Main.player[projectile.owner].Center.Y - (float)(projectile.height / 2);
+                projectile.position.X = Main.player[projectile.owner].Center.X - projectile.width / 2;
+                projectile.position.Y = Main.player[projectile.owner].Center.Y - projectile.height / 2;
                 projectile.netUpdate = true;
             }
             if (num638 > 70f)
@@ -277,7 +277,7 @@ namespace AAMod.Items.Armor.Doomsday
             {
                 projectile.ai[1] += 1f;
                 int num644 = 10;
-                if (projectile.ai[1] > (float)num644)
+                if (projectile.ai[1] > num644)
                 {
                     projectile.ai[1] = 0f;
                     projectile.netUpdate = true;
@@ -304,7 +304,7 @@ namespace AAMod.Items.Armor.Doomsday
                         num647 = 600;
                         break;
                 }
-                if (projectile.ai[1] == 0f && flag24 && num619 < (float)num647)
+                if (projectile.ai[1] == 0f && flag24 && num619 < num647)
                 {
                     projectile.ai[1] += 1f;
                     if (Main.myPlayer == projectile.owner)

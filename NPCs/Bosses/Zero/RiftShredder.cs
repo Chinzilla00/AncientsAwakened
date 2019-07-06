@@ -154,22 +154,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 else
                 {
-                    if (Main.netMode != 1)
-                    {
-                        if (SelectPoint)
-                        {
-                            float Point = 500 * npc.direction;
-                            DashPoint = player.Center + new Vector2(Point, 500f);
-                            SelectPoint = false;
-                            npc.netUpdate = true;
-                        }
-                    }
-                    MoveToPoint(DashPoint);
-                    if (Vector2.Distance(npc.Center, DashPoint) < 16 && Main.netMode != 1)
-                    {
-                        npc.ai[2] = 1000;
-                        npc.netUpdate = true;
-                    }
+                    BaseAI.AIWeapon(npc, ref npc.ai, ref npc.rotation, player.position, false, 120, 100, 14f, 3f, 2f);
                 }
             }
             else

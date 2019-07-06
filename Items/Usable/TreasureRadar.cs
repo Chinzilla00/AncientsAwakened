@@ -45,7 +45,7 @@ namespace AAMod.Items.Usable
                         Tile tile = Main.tile[x, y];
                         if (tile.active() && (Main.tileContainer[tile.type] == true))
                         {
-                            if (Main.Map.UpdateLighting(x, y, (byte)Math.Max(Main.Map[x, y].Light, (byte)255))) updateMap = true;
+                            if (Main.Map.UpdateLighting(x, y, Math.Max(Main.Map[x, y].Light, (byte)255))) updateMap = true;
                         }
                     }
                 }

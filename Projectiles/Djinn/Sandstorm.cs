@@ -62,7 +62,7 @@ namespace AAMod.Projectiles.Djinn
             int num3 = 160;
             for (int i = 0; i < 1; i++)
             {
-                Vector2 position = new Vector2(projectile.Center.X - (float)(num2 / 2), projectile.position.Y + (float)projectile.height - (float)num3);
+                Vector2 position = new Vector2(projectile.Center.X - num2 / 2, projectile.position.Y + projectile.height - num3);
                 if (Collision.SolidCollision(position, num2, num3) || Collision.WetCollision(position, num2, num3))
                 {
                     if (projectile.velocity.Y > 0f)

@@ -43,7 +43,7 @@ namespace AAMod.Projectiles.Akuma
 		
 		public override void AI()
 		{
-            if (WorldGen.SolidTile((int)projectile.position.X / 16, (int)(projectile.position.Y + projectile.velocity.Y) / 16 + 1) || WorldGen.SolidTile((int)(projectile.position.X + (float)projectile.width) / 16, (int)(projectile.position.Y + projectile.velocity.Y) / 16 + 1))
+            if (WorldGen.SolidTile((int)projectile.position.X / 16, (int)(projectile.position.Y + projectile.velocity.Y) / 16 + 1) || WorldGen.SolidTile((int)(projectile.position.X + projectile.width) / 16, (int)(projectile.position.Y + projectile.velocity.Y) / 16 + 1))
             {
                 projectile.Kill();
                 return;

@@ -680,7 +680,7 @@ namespace AAMod.Worldgeneration
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Parthenan"), colorToTile, mod.GetTexture("Worldgeneration/ParthenanWalls"), colorToWall);
             
             gen.Generate(origin.X, origin.Y, true, true);
-            WorldGen.PlaceObject((int)(origin.X) + 34, (origin.Y) + 47, (ushort)mod.TileType("DataBank"));
+            WorldGen.PlaceObject(origin.X + 34, (origin.Y) + 47, (ushort)mod.TileType("DataBank"));
             WorldGen.PlaceChest((origin.X) + 32, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
             WorldGen.PlaceChest((origin.X) + 41, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
             return true;
@@ -740,11 +740,11 @@ namespace AAMod.Worldgeneration
 
 		public override bool Apply(Point origin, int x, int y, params object[] args)
 		{
-			Vector2 value = new Vector2((float)origin.X + (_width / 2), (float)origin.Y);
-			Vector2 value2 = new Vector2((float)x, (float)y);
+			Vector2 value = new Vector2((float)origin.X + (_width / 2), origin.Y);
+			Vector2 value2 = new Vector2(x, y);
 			float num = Vector2.Distance(value2, value);
 			float num2 = Math.Max(0f, Math.Min(1f, (num - this._innerRadius) / (this._outerRadius - this._innerRadius)));
-			if (_random.NextDouble() > (double)num2)
+			if (_random.NextDouble() > num2)
 			{
 				return base.UnitApply(origin, x, y, args);
 			}

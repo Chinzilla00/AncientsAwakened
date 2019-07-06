@@ -38,7 +38,7 @@ namespace AAMod.Projectiles.Shen
 				if(projectile.velocity.Y <= -8f) projectile.velocity.Y = -8f;
 				if(projectile.velocity.Y >= 8f) projectile.velocity.Y = 8f;
 			}
-			projectile.rotation = (float)System.Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+			projectile.rotation = (float)System.Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
 			for (int i = 0; i < 1; i++)
 			{
 				int d = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("YamataDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
@@ -131,23 +131,23 @@ namespace AAMod.Projectiles.Shen
             for (int num85 = 0; num85 < 1; num85++)
             {
                 int num86 = Dust.NewDust(position, num84, height3, 240, 0f, 0f, 100, default(Color), 1.5f);
-                Main.dust[num86].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)num84 / 2f);
+                Main.dust[num86].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
             }
 			for (int num852 = 0; num852 < 3; num852++)
             {
                 int num862 = Dust.NewDust(position, num84, height3, 244, 0f, 0f, 100, default(Color), 1.5f);
-                Main.dust[num862].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)num84 / 2f);
+                Main.dust[num862].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
             }
             for (int num87 = 0; num87 < 10; num87++)
             {
                 int num88 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 200, default(Color), 3.7f);
-                Main.dust[num88].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)num84 / 2f);
+                Main.dust[num88].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].noGravity = true;
                 Main.dust[num88].noLight = true;
                 Main.dust[num88].velocity *= 3f;
                 Main.dust[num88].velocity += projectile.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
                 num88 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default(Color), 1.5f);
-                Main.dust[num88].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)num84 / 2f);
+                Main.dust[num88].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].velocity *= 2f;
                 Main.dust[num88].noGravity = true;
                 Main.dust[num88].fadeIn = 1f;
@@ -158,7 +158,7 @@ namespace AAMod.Projectiles.Shen
             for (int num89 = 0; num89 < 5; num89++)
             {
                 int num90 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 2.7f);
-                Main.dust[num90].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy((double)projectile.velocity.ToRotation(), default(Vector2)) * (float)num84 / 2f);
+                Main.dust[num90].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation(), default(Vector2)) * num84 / 2f);
                 Main.dust[num90].noGravity = true;
                 Main.dust[num90].noLight = true;
                 Main.dust[num90].velocity *= 3f;
@@ -167,7 +167,7 @@ namespace AAMod.Projectiles.Shen
             for (int num91 = 0; num91 < 10; num91++)
             {
                 int num92 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 0, default(Color), 1.5f);
-                Main.dust[num92].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy((double)projectile.velocity.ToRotation(), default(Vector2)) * (float)num84 / 2f);
+                Main.dust[num92].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation(), default(Vector2)) * num84 / 2f);
                 Main.dust[num92].noGravity = true;
                 Main.dust[num92].velocity *= 3f;
                 Main.dust[num92].velocity += projectile.DirectionTo(Main.dust[num92].position) * 3f;
@@ -176,7 +176,7 @@ namespace AAMod.Projectiles.Shen
     
 		public override Color? GetAlpha(Color lightColor)
 		{
-			return new Color(Math.Max((int)Main.mouseTextColor, lightColor.R), Math.Max((int)Main.mouseTextColor, lightColor.G), Math.Max((int)Main.mouseTextColor, lightColor.B), (int)Main.mouseTextColor);
+			return new Color(Math.Max((int)Main.mouseTextColor, lightColor.R), Math.Max((int)Main.mouseTextColor, lightColor.G), Math.Max((int)Main.mouseTextColor, lightColor.B), Main.mouseTextColor);
 		}
 	}
 }

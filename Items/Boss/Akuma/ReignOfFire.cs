@@ -50,7 +50,7 @@ Inflicts Daybroken");
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
 			Main.PlaySound(2, target.Center, 124);
-            Vector2 vector12 = new Vector2((float)target.Center.X, (float)target.Center.Y);
+            Vector2 vector12 = new Vector2(target.Center.X, target.Center.Y);
 			Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
 			float num75 = 20f;
 			float num119 = vector12.Y;
@@ -58,8 +58,8 @@ Inflicts Daybroken");
 			{
 				num119 = player.Center.Y - 200f;
 			}
-            vector2 = player.Center + new Vector2((float)(-(float)Main.rand.Next(0, 401) * player.direction), -600f);
-            vector2.Y -= (float)(100);
+            vector2 = player.Center + new Vector2(-(float)Main.rand.Next(0, 401) * player.direction, -600f);
+            vector2.Y -= 100;
             Vector2 vector13 = vector12 - vector2;
             if (vector13.Y < 0f)
             {
@@ -74,7 +74,7 @@ Inflicts Daybroken");
             float num82 = vector13.X;
             float num83 = vector13.Y;
             float speedX5 = num82;
-            float speedY6 = num83 + (float)Main.rand.Next(-40, 41) * 0.02f;
+            float speedY6 = num83 + Main.rand.Next(-40, 41) * 0.02f;
             Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType("FireProj"), damage, knockBack, Main.myPlayer);
             target.AddBuff(BuffID.Daybreak, 600);
         }

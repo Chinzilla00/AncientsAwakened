@@ -37,8 +37,8 @@ namespace AAMod.Items.Armor.TrueDoomite
         		int num226 = 36;
 				for (int num227 = 0; num227 < num226; num227++)
 				{
-					Vector2 vector6 = Vector2.Normalize(projectile.velocity) * new Vector2((float)projectile.width / 2f, (float)projectile.height) * 0.75f;
-					vector6 = vector6.RotatedBy((double)((float)(num227 - (num226 / 2 - 1)) * 6.28318548f / (float)num226), default(Vector2)) + projectile.Center;
+					Vector2 vector6 = Vector2.Normalize(projectile.velocity) * new Vector2(projectile.width / 2f, projectile.height) * 0.75f;
+					vector6 = vector6.RotatedBy((num227 - (num226 / 2 - 1)) * 6.28318548f / num226, default(Vector2)) + projectile.Center;
 					Vector2 vector7 = vector6 - projectile.Center;
 					int num228 = Dust.NewDust(vector6 + vector7, 0, 0, 235, vector7.X * 1.75f, vector7.Y * 1.75f, 100, default(Color), 1.1f);
 					Main.dust[num228].noGravity = true;
@@ -69,7 +69,7 @@ namespace AAMod.Items.Armor.TrueDoomite
 			for (int num638 = 0; num638 < 1000; num638++)
 			{
 				bool flag23 = (Main.projectile[num638].type == mod.ProjectileType("ScoutMinion"));
-				if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < (float)projectile.width)
+				if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < projectile.width)
 				{
 					if (projectile.position.X < Main.projectile[num638].position.X)
 					{
@@ -173,8 +173,8 @@ namespace AAMod.Items.Armor.TrueDoomite
 				}
 				if (num651 > 2000f)
 				{
-					projectile.position.X = Main.player[projectile.owner].Center.X - (float)(projectile.width / 2);
-					projectile.position.Y = Main.player[projectile.owner].Center.Y - (float)(projectile.height / 2);
+					projectile.position.X = Main.player[projectile.owner].Center.X - projectile.width / 2;
+					projectile.position.Y = Main.player[projectile.owner].Center.Y - projectile.height / 2;
 					projectile.netUpdate = true;
 				}
 				if (num651 > 70f)
@@ -209,7 +209,7 @@ namespace AAMod.Items.Armor.TrueDoomite
 			}
 			if (projectile.ai[1] > 0f)
 			{
-				projectile.ai[1] += (float)Main.rand.Next(1, 4);
+				projectile.ai[1] += Main.rand.Next(1, 4);
 			}
 			if (projectile.ai[1] > 90f)
 			{
@@ -228,7 +228,7 @@ namespace AAMod.Items.Armor.TrueDoomite
 						Vector2 value19 = vector46 - projectile.Center;
 						value19.Normalize();
 						value19 *= scaleFactor3;
-						int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, num658, (int)((float)projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, 0f);
+						int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, num658, (int)(projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, 0f);
 						Main.projectile[num659].timeLeft = 300;
 						projectile.netUpdate = true;
 					}

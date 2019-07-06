@@ -26,7 +26,7 @@ namespace AAMod.Items.Dev
 
 		public override void GetWeaponDamage(Player player, ref int damage)
 		{
-			damage = (int)((float)damage * CalcDamageMultiplierFromTimeOfDay(item.damage));
+			damage = (int)(damage * CalcDamageMultiplierFromTimeOfDay(item.damage));
 		}
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
@@ -64,7 +64,7 @@ namespace AAMod.Items.Dev
 			int minDamage = baseDamage; //this is the damage you set in SetDefaults.
 			int maxDamage = 500; //this is the damage you get at midday/midnight.
 
-			float maxMultiplier = ((float)maxDamage / (float)minDamage);		
+			float maxMultiplier = (maxDamage / (float)minDamage);		
 			float time = (int)Main.time;
 			float calcTimeMax = 0f;
 			if(Main.dayTime)

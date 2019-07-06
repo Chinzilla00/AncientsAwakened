@@ -109,9 +109,9 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
                     npc.alpha = 200;
                     npc.noTileCollide = true;
                 }
-                npc.rotation = npc.velocity.Y * 0.1f * (float)npc.direction;
+                npc.rotation = npc.velocity.Y * 0.1f * npc.direction;
                 npc.TargetClosest(true);
-                if (npc.direction == -1 && npc.velocity.X > -4f && npc.position.X > Main.player[npc.target].position.X + (float)Main.player[npc.target].width)
+                if (npc.direction == -1 && npc.velocity.X > -4f && npc.position.X > Main.player[npc.target].position.X + Main.player[npc.target].width)
                 {
                     npc.velocity.X = npc.velocity.X - 0.08f;
                     if (npc.velocity.X > 4f)
@@ -127,7 +127,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
                         npc.velocity.X = -4f;
                     }
                 }
-                else if (npc.direction == 1 && npc.velocity.X < 4f && npc.position.X + (float)npc.width < Main.player[npc.target].position.X)
+                else if (npc.direction == 1 && npc.velocity.X < 4f && npc.position.X + npc.width < Main.player[npc.target].position.X)
                 {
                     npc.velocity.X = npc.velocity.X + 0.08f;
                     if (npc.velocity.X < -4f)
@@ -143,10 +143,10 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
                         npc.velocity.X = 4f;
                     }
                 }
-                if (npc.directionY == -1 && (double)npc.velocity.Y > -2.5 && npc.position.Y > Main.player[npc.target].position.Y + (float)Main.player[npc.target].height)
+                if (npc.directionY == -1 && npc.velocity.Y > -2.5 && npc.position.Y > Main.player[npc.target].position.Y + Main.player[npc.target].height)
                 {
                     npc.velocity.Y = npc.velocity.Y - 0.1f;
-                    if ((double)npc.velocity.Y > 2.5)
+                    if (npc.velocity.Y > 2.5)
                     {
                         npc.velocity.Y = npc.velocity.Y - 0.05f;
                     }
@@ -154,15 +154,15 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
                     {
                         npc.velocity.Y = npc.velocity.Y - 0.15f;
                     }
-                    if ((double)npc.velocity.Y < -2.5)
+                    if (npc.velocity.Y < -2.5)
                     {
                         npc.velocity.Y = -2.5f;
                     }
                 }
-                else if (npc.directionY == 1 && (double)npc.velocity.Y < 2.5 && npc.position.Y + (float)npc.height < Main.player[npc.target].position.Y)
+                else if (npc.directionY == 1 && npc.velocity.Y < 2.5 && npc.position.Y + npc.height < Main.player[npc.target].position.Y)
                 {
                     npc.velocity.Y = npc.velocity.Y + 0.1f;
-                    if ((double)npc.velocity.Y < -2.5)
+                    if (npc.velocity.Y < -2.5)
                     {
                         npc.velocity.Y = npc.velocity.Y + 0.05f;
                     }
@@ -170,7 +170,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
                     {
                         npc.velocity.Y = npc.velocity.Y + 0.15f;
                     }
-                    if ((double)npc.velocity.Y > 2.5)
+                    if (npc.velocity.Y > 2.5)
                     {
                         npc.velocity.Y = 2.5f;
                     }
@@ -178,7 +178,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
             }
             else
             {
-                npc.rotation = npc.velocity.Y * 0.1f * (float)npc.direction;
+                npc.rotation = npc.velocity.Y * 0.1f * npc.direction;
                 npc.TargetClosest(true);
                 if (SelectPoint)
                 {
@@ -235,7 +235,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
             if (npc.life > 0)
             {
                 int num589 = 0;
-                while (num589 < damage / (double)npc.lifeMax * 50.0)
+                while (num589 < damage / npc.lifeMax * 50.0)
                 {
                     int num590 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, default(Color), 1.5f);
                     Main.dust[num590].velocity *= 1.5f;
@@ -252,7 +252,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
             }
             for (int num593 = 0; num593 < 4; num593++)
             {
-                int num594 = Gore.NewGore(new Vector2(npc.position.X, npc.position.Y + (float)(npc.height / 2) - 10f), new Vector2((float)hitDirection, 0f), 99, npc.scale);
+                int num594 = Gore.NewGore(new Vector2(npc.position.X, npc.position.Y + npc.height / 2 - 10f), new Vector2(hitDirection, 0f), 99, npc.scale);
                 Main.gore[num594].velocity *= 0.3f;
             }
         }

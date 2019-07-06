@@ -507,7 +507,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), Color.Green, Color.Green, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)));
+                return BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), Color.Green, Color.Green, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)));
             }
         }
 
@@ -515,7 +515,7 @@ namespace AAMod
         {
             get
             {
-                return BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Transparent, Color.White, Color.White, Color.Transparent);
+                return BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, Color.Transparent, Color.White, Color.White, Color.Transparent);
             }
         }
 
@@ -865,7 +865,7 @@ namespace AAMod
             }
             if (uraniumSet)
             {
-                Color color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), Color.Green, Color.Green, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)));
+                Color color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), Color.Green, Color.Green, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)));
                 Lighting.AddLight((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f), (color * .01f).R, (color * .01f).G, (color * .01f).B);
                 float RadiationDistance = 64f;
                 if (player.whoAmI == Main.myPlayer)
@@ -949,11 +949,11 @@ namespace AAMod
             DarkmatterSet = darkmatterSetMe || darkmatterSetRa || darkmatterSetMa || darkmatterSetSu || darkmatterSetTh;
             if (RStar)
             {
-                Lighting.AddLight((int)(player.position.X + (float)(player.width / 2)) / 16, (int)(player.position.Y + (float)(player.height / 2)) / 16, 1f, 0.95f, 0.8f);
+                Lighting.AddLight((int)(player.position.X + player.width / 2) / 16, (int)(player.position.Y + player.height / 2) / 16, 1f, 0.95f, 0.8f);
             }
             if (kindledSet || lantern)
             {
-                Lighting.AddLight((int)(player.position.X + (float)(player.width / 2)) / 16, (int)(player.position.Y + (float)(player.height / 2)) / 16, AAColor.Lantern.R / 255, (AAColor.Lantern.G / 255) * 0.95f, (AAColor.Lantern.B / 255) * 0.8f);
+                Lighting.AddLight((int)(player.position.X + player.width / 2) / 16, (int)(player.position.Y + player.height / 2) / 16, AAColor.Lantern.R / 255, (AAColor.Lantern.G / 255) * 0.95f, (AAColor.Lantern.B / 255) * 0.8f);
             }
             if (NPC.AnyNPCs(mod.NPCType<Yamata>()))
             {
@@ -1092,7 +1092,7 @@ namespace AAMod
                         Vector2 vector = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
                         Dust dust = Main.dust[Dust.NewDust(player.Center - vector * 30f, 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0)];
                         dust.noGravity = true;
-                        dust.position = player.Center - vector * (float)Main.rand.Next(5, 11);
+                        dust.position = player.Center - vector * Main.rand.Next(5, 11);
                         dust.velocity = vector.RotatedBy(1.5707963705062866) * 4f;
                         dust.scale = 0.5f + Main.rand.NextFloat();
                         dust.fadeIn = 0.5f;
@@ -1260,7 +1260,7 @@ namespace AAMod
             Player player = Main.player[Main.myPlayer];
             bool flag = Sandstorm.Happening && player.ZoneSandstorm && (Main.bgStyle == 2 || Main.bgStyle == 5) && Main.bgDelay < 50;
             Sandstorm.HandleEffectAndSky(flag && Main.UseStormEffects);
-            if (sandTiles < 100 || (double)player.position.Y > Main.worldSurface * 16.0 || player.ZoneBeach)
+            if (sandTiles < 100 || player.position.Y > Main.worldSurface * 16.0 || player.ZoneBeach)
             {
                 return;
             }
@@ -1279,46 +1279,46 @@ namespace AAMod
             {
                 return;
             }
-            float num3 = (float)num * MathHelper.Lerp(0.9f, 1f, num2);
+            float num3 = num * MathHelper.Lerp(0.9f, 1f, num2);
             float num4 = 2000f / sandTiles;
             float num5 = 3f / num4;
             num5 = MathHelper.Clamp(num5, 0.77f, 1f);
             int num6 = (int)num4;
-            float num7 = (float)Main.screenWidth / (float)Main.maxScreenW;
+            float num7 = Main.screenWidth / (float)Main.maxScreenW;
             int num8 = (int)(1000f * num7);
             float num9 = 20f * Sandstorm.Severity;
-            float num10 = (float)num8 * (Main.gfxQuality * 0.5f + 0.5f) + (float)num8 * 0.1f - (float)Dust.SandStormCount;
+            float num10 = num8 * (Main.gfxQuality * 0.5f + 0.5f) + num8 * 0.1f - Dust.SandStormCount;
             if (num10 <= 0f)
             {
                 return;
             }
-            float num11 = (float)Main.screenWidth + 1000f;
-            float num12 = (float)Main.screenHeight;
+            float num11 = Main.screenWidth + 1000f;
+            float num12 = Main.screenHeight;
             Vector2 value = Main.screenPosition + player.velocity;
             WeightedRandom<Color> weightedRandom = new WeightedRandom<Color>();
-            weightedRandom.Add(new Color(200, 160, 20, 180), (double)(Main.screenTileCounts[53] + Main.screenTileCounts[396] + Main.screenTileCounts[397]));
-            weightedRandom.Add(new Color(103, 98, 122, 180), (double)(Main.screenTileCounts[112] + Main.screenTileCounts[400] + Main.screenTileCounts[398]));
-            weightedRandom.Add(new Color(135, 43, 34, 180), (double)(Main.screenTileCounts[234] + Main.screenTileCounts[401] + Main.screenTileCounts[399]));
-            weightedRandom.Add(new Color(213, 196, 197, 180), (double)(Main.screenTileCounts[116] + Main.screenTileCounts[403] + Main.screenTileCounts[402]));
+            weightedRandom.Add(new Color(200, 160, 20, 180), Main.screenTileCounts[53] + Main.screenTileCounts[396] + Main.screenTileCounts[397]);
+            weightedRandom.Add(new Color(103, 98, 122, 180), Main.screenTileCounts[112] + Main.screenTileCounts[400] + Main.screenTileCounts[398]);
+            weightedRandom.Add(new Color(135, 43, 34, 180), Main.screenTileCounts[234] + Main.screenTileCounts[401] + Main.screenTileCounts[399]);
+            weightedRandom.Add(new Color(213, 196, 197, 180), Main.screenTileCounts[116] + Main.screenTileCounts[403] + Main.screenTileCounts[402]);
             float num13 = MathHelper.Lerp(0.2f, 0.35f, Sandstorm.Severity);
             float num14 = MathHelper.Lerp(0.5f, 0.7f, Sandstorm.Severity);
             float amount = (num5 - 0.77f) / 0.230000019f;
             int maxValue2 = (int)MathHelper.Lerp(1f, 10f, amount);
             int num15 = 0;
-            while ((float)num15 < num9)
+            while (num15 < num9)
             {
                 if (Main.rand.Next(num6 / 4) == 0)
                 {
                     Vector2 vector = new Vector2(Main.rand.NextFloat() * num11 - 500f, Main.rand.NextFloat() * -50f);
                     if (Main.rand.Next(3) == 0 && num == 1)
                     {
-                        vector.X = (float)(Main.rand.Next(500) - 500);
+                        vector.X = Main.rand.Next(500) - 500;
                     }
                     else if (Main.rand.Next(3) == 0 && num == -1)
                     {
-                        vector.X = (float)(Main.rand.Next(500) + Main.screenWidth);
+                        vector.X = Main.rand.Next(500) + Main.screenWidth;
                     }
-                    if (vector.X < 0f || vector.X > (float)Main.screenWidth)
+                    if (vector.X < 0f || vector.X > Main.screenWidth)
                     {
                         vector.Y += Main.rand.NextFloat() * num12 * 0.9f;
                     }
@@ -2259,25 +2259,25 @@ namespace AAMod
                     int num73 = 70;
                     float num74 = 1;
                     Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-                    float num78 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
-                    float num79 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+                    float num78 = Main.mouseX + Main.screenPosition.X - vector2.X;
+                    float num79 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
                     if (player.gravDir == -1f)
                     {
-                        num79 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector2.Y;
+                        num79 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector2.Y;
                     }
-                    float num80 = (float)Math.Sqrt((double)(num78 * num78 + num79 * num79));
+                    float num80 = (float)Math.Sqrt(num78 * num78 + num79 * num79);
                     float num81 = num80;
                     if ((float.IsNaN(num78) && float.IsNaN(num79)) || (num78 == 0f && num79 == 0f))
                     {
-                        num78 = (float)player.direction;
+                        num78 = player.direction;
                         num79 = 0f;
                     }
                     else
                     {
                         num80 = num72 / num80;
                     }
-                    vector2.X = (float)Main.mouseX + Main.screenPosition.X;
-                    vector2.Y = (float)Main.mouseY + Main.screenPosition.Y;
+                    vector2.X = Main.mouseX + Main.screenPosition.X;
+                    vector2.Y = Main.mouseY + Main.screenPosition.Y;
                     Projectile.NewProjectile(player.Center.X, player.Center.Y, num78, num79, mod.ProjectileType("Dynabomb"), num73, num74, i, 0f, 0f);
                 }
             }
@@ -3077,7 +3077,7 @@ namespace AAMod
             for (int j = 0; j < 7; j++)
             {
                 Color color = new Color(110 - j * 10, 110 - j * 10, 110 - j * 10, 110 - j * 10);
-                Vector2 vector = new Vector2((float)Main.rand.Next(-5, 5), (float)Main.rand.Next(-5, 5));
+                Vector2 vector = new Vector2(Main.rand.Next(-5, 5), Main.rand.Next(-5, 5));
                 vector *= 0.4f;
                 if (drawType == 2)
                 {
@@ -3086,8 +3086,8 @@ namespace AAMod
                 else
                 {
                     bool wings = drawType == 1;
-                    if (wings) { rotation = drawPlayer.bodyRotation; frame = new Rectangle(0, Main.wingsTexture[drawPlayer.wings].Height / 4 * drawPlayer.wingFrame, Main.wingsTexture[drawPlayer.wings].Width, Main.wingsTexture[drawPlayer.wings].Height / 4); framePos = new Vector2((float)(Main.wingsTexture[drawPlayer.wings].Width / 2), (float)(Main.wingsTexture[drawPlayer.wings].Height / 8)); }
-                    Vector2 pos = (wings ? new Vector2((float)((int)(edi.position.X - Main.screenPosition.X + (float)(drawPlayer.width / 2) - (float)(9 * drawPlayer.direction))), (float)((int)(edi.position.Y - Main.screenPosition.Y + (float)(drawPlayer.height / 2) + 2f * drawPlayer.gravDir))) : new Vector2((float)((int)(edi.position.X - Main.screenPosition.X - (float)(frame.Width / 2) + (float)(drawPlayer.width / 2))), (float)((int)(edi.position.Y - Main.screenPosition.Y + (float)drawPlayer.height - (float)frame.Height + 4f))));
+                    if (wings) { rotation = drawPlayer.bodyRotation; frame = new Rectangle(0, Main.wingsTexture[drawPlayer.wings].Height / 4 * drawPlayer.wingFrame, Main.wingsTexture[drawPlayer.wings].Width, Main.wingsTexture[drawPlayer.wings].Height / 4); framePos = new Vector2(Main.wingsTexture[drawPlayer.wings].Width / 2, Main.wingsTexture[drawPlayer.wings].Height / 8); }
+                    Vector2 pos = (wings ? new Vector2((int)(edi.position.X - Main.screenPosition.X + drawPlayer.width / 2 - 9 * drawPlayer.direction), (int)(edi.position.Y - Main.screenPosition.Y + drawPlayer.height / 2 + 2f * drawPlayer.gravDir)) : new Vector2((int)(edi.position.X - Main.screenPosition.X - frame.Width / 2 + drawPlayer.width / 2), (int)(edi.position.Y - Main.screenPosition.Y + drawPlayer.height - frame.Height + 4f)));
                     if (sb is List<DrawData>)
                     {
                         DrawData dd = new DrawData(tex, pos + drawPos + (wings ? default(Vector2) : framePos) + vector, new Rectangle?(frame), color, rotation, framePos, 1f, edi.spriteEffects, 0);

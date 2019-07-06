@@ -75,18 +75,18 @@ Hold up to rocket faster
                     int type = DustID.Electric;
                     float scale = 1.75f;
                     int alpha = 100;
-                    float x3 = player.position.X + (float)(player.width / 2) + 16f;
+                    float x3 = player.position.X + player.width / 2 + 16f;
                     if (player.direction > 0)
                     {
-                        x3 = player.position.X + (float)(player.width / 2) - 26f;
+                        x3 = player.position.X + player.width / 2 - 26f;
                     }
-                    float num71 = player.position.Y + (float)player.height - 18f;
+                    float num71 = player.position.Y + player.height - 18f;
                     if (num70 == 1 || num70 == 3)
                     {
-                        x3 = player.position.X + (float)(player.width / 2) + 8f;
+                        x3 = player.position.X + player.width / 2 + 8f;
                         if (player.direction > 0)
                         {
-                            x3 = player.position.X + (float)(player.width / 2) - 20f;
+                            x3 = player.position.X + player.width / 2 - 20f;
                         }
                         num71 += 6f;
                     }

@@ -29,12 +29,12 @@ namespace AAMod.Projectiles
 			if (projectile.ai[0] >= 20f)
 			{
 				projectile.alpha += 3;
-				projectile.damage = (int)((double)projectile.damage * 0.95);
-				projectile.knockBack = (float)((int)((double)projectile.knockBack * 0.95));
+				projectile.damage = (int)(projectile.damage * 0.95);
+				projectile.knockBack = (int)(projectile.knockBack * 0.95);
 			}
 			if (projectile.ai[0] < 20f)
 			{
-				projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+				projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
 			}
 			if (projectile.velocity.Y > 16f)
 			{
@@ -46,10 +46,10 @@ namespace AAMod.Projectiles
 			if (flag17)
 			{
 				float num483 = 18f;
-				Vector2 vector35 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+				Vector2 vector35 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
 				float num484 = num472 - vector35.X;
 				float num485 = num473 - vector35.Y;
-				float num486 = (float)Math.Sqrt((double)(num484 * num484 + num485 * num485));
+				float num486 = (float)Math.Sqrt(num484 * num484 + num485 * num485);
 				num486 = num483 / num486;
 				num484 *= num486;
 				num485 *= num486;
@@ -81,7 +81,7 @@ namespace AAMod.Projectiles
 			{
 				return;
 			}
-        	float num = (float)damage * 0.075f;
+        	float num = damage * 0.075f;
 			if ((int)num == 0)
 			{
 				return;
@@ -92,7 +92,7 @@ namespace AAMod.Projectiles
 			}
 			Main.player[Main.myPlayer].lifeSteal -= num;
 			int num2 = projectile.owner;
-			Projectile.NewProjectile(target.position.X, target.position.Y, 0f, 0f, mod.ProjectileType("DeathDaggerHeal"), 0, 0f, projectile.owner, (float)num2, num);
+			Projectile.NewProjectile(target.position.X, target.position.Y, 0f, 0f, mod.ProjectileType("DeathDaggerHeal"), 0, 0f, projectile.owner, num2, num);
         }
     }
 }

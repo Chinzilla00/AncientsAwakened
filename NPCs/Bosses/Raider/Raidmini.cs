@@ -79,7 +79,7 @@ namespace AAMod.NPCs.Bosses.Raider
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/Raidmini_Glow1");
             Texture2D glowTex1 = mod.GetTexture("Glowmasks/Raidmini_Glow2");
-            color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
+            color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color);
             BaseDrawing.DrawTexture(spritebatch, glowTex1, 0, npc, Color.White);
@@ -118,7 +118,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     if (num1328 != npc.whoAmI && Main.npc[num1328].active && Main.npc[num1328].type == npc.type)
                     {
                         Vector2 value55 = Main.npc[num1328].Center - npc.Center;
-                        if (value55.Length() < (float)(npc.width + npc.height))
+                        if (value55.Length() < npc.width + npc.height)
                         {
                             value55.Normalize();
                             value55 *= -0.1f;
@@ -314,7 +314,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     npc.noTileCollide = true;
                     npc.ai[1] += 1f;
                     int num1332 = 45;
-                    if (npc.ai[1] > (float)num1332)
+                    if (npc.ai[1] > num1332)
                     {
                         if (!Collision.SolidCollision(npc.position, npc.width, npc.height))
                         {
@@ -323,7 +323,7 @@ namespace AAMod.NPCs.Bosses.Raider
                             npc.ai[2] = 0f;
                             return;
                         }
-                        if (npc.ai[1] > (float)(num1332 * 2))
+                        if (npc.ai[1] > num1332 * 2)
                         {
                             npc.ai[0] = 1f;
                             npc.ai[1] = 0f;

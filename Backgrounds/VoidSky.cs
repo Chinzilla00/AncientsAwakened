@@ -82,7 +82,7 @@ namespace AAMod.Backgrounds
                         num++;
                     }
                     bolts[num].IsAlive = true;
-                    bolts[num].Position.X = random.NextFloat() * ((float)Main.maxTilesX * 16f + 4000f) - 2000f;
+                    bolts[num].Position.X = random.NextFloat() * (Main.maxTilesX * 16f + 4000f) - 2000f;
                     bolts[num].Position.Y = random.NextFloat() * 500f;
                     bolts[num].Depth = random.NextFloat() * 8f + 2f;
                     bolts[num].Life = 30;
@@ -127,11 +127,11 @@ namespace AAMod.Backgrounds
         public Color GetAlpha(Color newColor, float alph)
         {
             int alpha = 255 - (int)(255 * alph);
-            float alphaDiff = (float)(255 - alpha) / 255f;
-            int newR = (int)((float)newColor.R * alphaDiff);
-            int newG = (int)((float)newColor.G * alphaDiff);
-            int newB = (int)((float)newColor.B * alphaDiff);
-            int newA = (int)newColor.A - alpha;
+            float alphaDiff = (255 - alpha) / 255f;
+            int newR = (int)(newColor.R * alphaDiff);
+            int newG = (int)(newColor.G * alphaDiff);
+            int newB = (int)(newColor.B * alphaDiff);
+            int newA = newColor.A - alpha;
             if (newA < 0) newA = 0;
             if (newA > 255) newA = 255;
             return new Color(newR, newG, newB, newA);
@@ -165,7 +165,7 @@ namespace AAMod.Backgrounds
                 {
                     spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
                     spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
-                    float lightningIntensity = BaseUtility.MultiLerp(((float)Main.player[Main.myPlayer].miscCounter % 100f) / 100f, 0.2f, 0.8f, 0.2f);
+                    float lightningIntensity = BaseUtility.MultiLerp((Main.player[Main.myPlayer].miscCounter % 100f) / 100f, 0.2f, 0.8f, 0.2f);
                     spriteBatch.Draw(LB, planetPos, null, Color.White * 0.9f * Intensity * lightningIntensity, LBRotation, new Vector2(LB.Width >> 1, LB.Height >> 1), 1f, SpriteEffects.None, 1f);
                     if (AAWorld.downedZero)
                     {
@@ -175,14 +175,14 @@ namespace AAMod.Backgrounds
                         }
                     }
                 }
-				Color astroGlow = Color.White * MathHelper.Lerp(0.7f, 1f, (float)(Main.mouseTextColor / 255f));
+				Color astroGlow = Color.White * MathHelper.Lerp(0.7f, 1f, Main.mouseTextColor / 255f);
 				astroGlow.A = (byte)(255f * Intensity);
                 spriteBatch.Draw(Asteroids1, Asteroidpos1, null, NPC.downedMoonlord ? astroGlow : Color.White, 0f, new Vector2(Asteroids1.Width >> 1, Asteroids1.Height >> 1), 1f, SpriteEffects.None, 1f);
                 spriteBatch.Draw(Asteroids2, Asteroidpos2, null, NPC.downedMoonlord ? astroGlow : Color.White, 0f, new Vector2(Asteroids2.Width >> 1, Asteroids2.Height >> 1), 1f, SpriteEffects.None, 1f);
                 spriteBatch.Draw(Asteroids3, Asteroidpos3, null, NPC.downedMoonlord ? astroGlow : Color.White, 0f, new Vector2(Asteroids3.Width >> 1, Asteroids3.Height >> 1), 1f, SpriteEffects.None, 1f);
             }
             float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
-            Vector2 value3 = Main.screenPosition + new Vector2((float)(Main.screenWidth >> 1), (float)(Main.screenHeight >> 1));
+            Vector2 value3 = Main.screenPosition + new Vector2(Main.screenWidth >> 1, Main.screenHeight >> 1);
             Rectangle rectangle = new Rectangle(-1000, -1000, 4000, 4000);
             for (int i = 0; i < bolts.Length; i++)
             {
@@ -198,7 +198,7 @@ namespace AAMod.Backgrounds
                         {
                             texture = flashTexture;
                         }
-                        float scale2 = (float)life / 30f;
+                        float scale2 = life / 30f;
                         spriteBatch.Draw(texture, position, null, Color.White * scale * scale2 * Intensity, 0f, Vector2.Zero, value4.X * 5f, SpriteEffects.None, 0f);
                     }
                 }
