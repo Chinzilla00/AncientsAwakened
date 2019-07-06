@@ -48,6 +48,11 @@ namespace AAMod.Items.Boss.Akuma
             return false;
         }
 
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-1, 0);
+        }
+
         public override void AddRecipes()  //How to craft this sword
         {
             ModRecipe recipe = new ModRecipe(mod);

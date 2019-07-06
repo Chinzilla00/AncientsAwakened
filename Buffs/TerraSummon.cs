@@ -16,7 +16,10 @@ namespace AAMod.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            if (player.ownedProjectileCounts[mod.ProjectileType("Minion1")] + player.ownedProjectileCounts[mod.ProjectileType("Minion2")]  + player.ownedProjectileCounts[mod.ProjectileType("Minion3")]  + player.ownedProjectileCounts[mod.ProjectileType("Minion4Head")] > 0)
+            if (player.ownedProjectileCounts[mod.ProjectileType("Minion1")] > 0 ||
+                player.ownedProjectileCounts[mod.ProjectileType("Minion2")] > 0 ||
+                player.ownedProjectileCounts[mod.ProjectileType("Minion3")] > 0 ||
+                player.ownedProjectileCounts[mod.ProjectileType("Minion4Head")] > 0)
             {
                 modPlayer.TerraSummon = true;
             }
