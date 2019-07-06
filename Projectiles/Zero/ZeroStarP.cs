@@ -35,14 +35,14 @@ namespace AAMod.Projectiles.Zero
             projectile.ai[aislotHomingCooldown]++;
             if (projectile.ai[aislotHomingCooldown] > homingDelay)
             {
-                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
+                projectile.ai[aislotHomingCooldown] = homingDelay; 
 
                 int foundTarget = HomeOnTarget();
                 if (foundTarget != -1)
                 {
                     projectile.ai[aislotHomingCooldown] = 0;
                     NPC n = Main.npc[foundTarget];
-                    BaseAI.ShootPeriodic(projectile, n.position, n.width, n.height, mod.ProjectileType<Darkray>(), ref shootAI[0], 5, (int)(projectile.damage), 24f, true, projectile.Center);
+                    BaseAI.ShootPeriodic(projectile, n.position, n.width, n.height, mod.ProjectileType<Darkray>(), ref shootAI[0], 5, projectile.damage, 24f, true, projectile.Center);
                 }
             }
         }
@@ -62,7 +62,7 @@ namespace AAMod.Projectiles.Zero
                     if (distance <= homingMaximumRangeInPixels &&
                         (
                             selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) 
                     )
                         selectedTarget = i;
                 }

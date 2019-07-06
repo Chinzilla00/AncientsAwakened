@@ -163,7 +163,7 @@ namespace AAMod.Tiles
 					}
 					else
 					{
-						NetMessage.SendData(31, -1, -1, null, left, (float)top, 0f, 0f, 0, 0, 0);
+						NetMessage.SendData(31, -1, -1, null, left, top, 0f, 0f, 0, 0, 0);
 						Main.stackSplit = 600;
 					}
 				}

@@ -300,6 +300,14 @@ namespace AAMod.NPCs.Bosses.Truffle
         public void FungusAI()
         {
             AIType = true;
+            if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+            {
+                npc.noTileCollide = false;
+            }
+            else
+            {
+                npc.noTileCollide = true;
+            }
             npc.TargetClosest();
             Player player = Main.player[npc.target];
             if (Main.netMode != 1 && internalAI[1] != AISTATE_SHOOT)
@@ -473,7 +481,7 @@ namespace AAMod.NPCs.Bosses.Truffle
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/TechnoTruffle_Glow1");
             Texture2D glowTex1 = mod.GetTexture("Glowmasks/TechnoTruffle_Glow2");
-            Color color = BaseUtility.MultiLerpColor((float)(Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
+            Color color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
 
             if (internalAI[1] == AISTATE_ROCKET)
             {

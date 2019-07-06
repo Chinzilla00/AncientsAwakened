@@ -32,12 +32,12 @@ namespace AAMod.NPCs.Bosses.GripsShen
         {
             if (npc.life <= 0) //this make so when the npc has 0 life(dead) he will spawn this
             {
-                npc.position.X = npc.position.X + (float)(npc.width / 2);
-                npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+                npc.position.X = npc.position.X + npc.width / 2;
+                npc.position.Y = npc.position.Y + npc.height / 2;
                 npc.width = 44;
                 npc.height = 78;
-                npc.position.X = npc.position.X - (float)(npc.width / 2);
-                npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+                npc.position.X = npc.position.X - npc.width / 2;
+                npc.position.Y = npc.position.Y - npc.height / 2;
                 int dust1 = mod.DustType<Dusts.AkumaDust>();
                 int dust2 = mod.DustType<Dusts.AkumaDust>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);

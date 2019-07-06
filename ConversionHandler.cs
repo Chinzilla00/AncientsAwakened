@@ -146,8 +146,8 @@ namespace AAMod.Worldgen
 				{
 					if (WorldGen.InWorld(k, l, 1))
 					{
-						int type = (int)Main.tile[k, l].type;
-						int wall = (int)Main.tile[k, l].wall;
+						int type = Main.tile[k, l].type;
+						int wall = Main.tile[k, l].wall;
 						if (wallGrass != 0 && WallID.Sets.Conversion.Grass[wall] && wall != wallGrass)
 						{
 							Main.tile[k, l].wall = (ushort)wallGrass;

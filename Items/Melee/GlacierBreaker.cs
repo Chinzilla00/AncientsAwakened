@@ -10,15 +10,15 @@ namespace AAMod.Items.Melee   //where is located
         {
 			item.CloneDefaults(ItemID.SolarEruption);
 
-            item.damage = 18;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 32;              //Sword width
-            item.height = 46;             //Sword height
+            item.damage = 18;            
+            item.melee = true;            
+            item.width = 32;              
+            item.height = 46;             
 
             item.knockBack = 6;
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 3;
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.autoReuse = true;   
             item.useTurn = false;
             item.shoot = mod.ProjectileType("GlacierBreaker");
 			item.UseSound = SoundID.Item18;

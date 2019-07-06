@@ -78,16 +78,16 @@ Scythe of the Grim Reaper EX");
 				float num121 = 0.99f;
 				int num122 = 3;
 				Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-				float num82 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
-				float num83 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+				float num82 = Main.mouseX + Main.screenPosition.X - vector2.X;
+				float num83 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
 				Vector2 vector14 = new Vector2(speedX, speedY);
 				vector14.Normalize();
 				vector14 *= 40f;
 				bool flag11 = Collision.CanHit(vector2, 0, 0, vector2 + vector14, 0, 0);
 				for (int num123 = 0; num123 < num122; num123++)
 				{
-					float num124 = (float)num123 - ((float)num122 - 1f) / 2f;
-					Vector2 vector15 = vector14.RotatedBy((double)(num121 * num124), default(Vector2));
+					float num124 = num123 - (num122 - 1f) / 2f;
+					Vector2 vector15 = vector14.RotatedBy(num121 * num124, default(Vector2));
 					if (!flag11)
 					{
 						vector15 -= vector14;

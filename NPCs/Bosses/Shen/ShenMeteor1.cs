@@ -61,12 +61,12 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-            projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
+            projectile.position.X = projectile.position.X + projectile.width / 2;
+			projectile.position.Y = projectile.position.Y + projectile.height / 2;
 			projectile.width = (int)(128f * projectile.scale);
 			projectile.height = (int)(128f * projectile.scale);
-			projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+			projectile.position.X = projectile.position.X - projectile.width / 2;
+			projectile.position.Y = projectile.position.Y - projectile.height / 2;
 			for (int num336 = 0; num336 < 8; num336++)
 			{
 				Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 1.5f);
@@ -82,12 +82,12 @@ namespace AAMod.NPCs.Bosses.Shen
 			}
 			for (int num339 = 0; num339 < 2; num339++)
 			{
-				int num340 = Gore.NewGore(projectile.position + new Vector2((float)(projectile.width * Main.rand.Next(100)) / 100f, (float)(projectile.height * Main.rand.Next(100)) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
+				int num340 = Gore.NewGore(projectile.position + new Vector2(projectile.width * Main.rand.Next(100) / 100f, projectile.height * Main.rand.Next(100) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
 				Main.gore[num340].velocity *= 0.3f;
 				Gore expr_B4D2_cp_0 = Main.gore[num340];
-				expr_B4D2_cp_0.velocity.X = expr_B4D2_cp_0.velocity.X + (float)Main.rand.Next(-10, 11) * 0.05f;
+				expr_B4D2_cp_0.velocity.X = expr_B4D2_cp_0.velocity.X + Main.rand.Next(-10, 11) * 0.05f;
 				Gore expr_B502_cp_0 = Main.gore[num340];
-				expr_B502_cp_0.velocity.Y = expr_B502_cp_0.velocity.Y + (float)Main.rand.Next(-10, 11) * 0.05f;
+				expr_B502_cp_0.velocity.Y = expr_B502_cp_0.velocity.Y + Main.rand.Next(-10, 11) * 0.05f;
 			}
 			if (projectile.owner == Main.myPlayer)
 			{
@@ -102,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     mod.DustType<Dusts.AkumaADust>(),
                     mod.DustType<Dusts.YamataADust>()
                 });
-				int num343 = Dust.NewDust(projectile.position, projectile.width, projectile.height, num342, 2.5f * (float)projectile.direction, -2.5f, 0, default(Color), 1f);
+				int num343 = Dust.NewDust(projectile.position, projectile.width, projectile.height, num342, 2.5f * projectile.direction, -2.5f, 0, default(Color), 1f);
 				Main.dust[num343].alpha = 200;
 				Main.dust[num343].velocity *= 2.4f;
 				Main.dust[num343].scale += Main.rand.NextFloat();

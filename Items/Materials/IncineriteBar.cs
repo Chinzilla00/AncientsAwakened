@@ -49,7 +49,7 @@ namespace AAMod.Items.Materials
         }
 
         public override void AddRecipes()
-        {                                                   //How to craft this item
+        {                                                   
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "Incinerite", 3);
             recipe.AddTile(TileID.Furnaces);

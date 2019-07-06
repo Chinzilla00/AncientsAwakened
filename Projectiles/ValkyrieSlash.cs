@@ -58,7 +58,7 @@ namespace AAMod.Projectiles
 					vector13.Normalize();
 					if (vector13.HasNaNs())
 					{
-						vector13 = Vector2.UnitX * (float)player.direction;
+						vector13 = Vector2.UnitX * player.direction;
 					}
 					vector13 *= scaleFactor6;
 					if (vector13.X != projectile.velocity.X || vector13.Y != projectile.velocity.Y)
@@ -88,7 +88,7 @@ namespace AAMod.Projectiles
 			player.heldProj = projectile.whoAmI;
 			player.itemTime = 2;
 			player.itemAnimation = 2;
-			player.itemRotation = (float)Math.Atan2((double)(projectile.velocity.Y * (float)projectile.direction), (double)(projectile.velocity.X * (float)projectile.direction));
+			player.itemRotation = (float)Math.Atan2(projectile.velocity.Y * projectile.direction, projectile.velocity.X * projectile.direction);
         }
         
         public override Color? GetAlpha(Color lightColor)

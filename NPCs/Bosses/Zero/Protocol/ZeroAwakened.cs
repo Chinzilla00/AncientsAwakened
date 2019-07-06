@@ -16,7 +16,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public int timer;
         public static int type;
         private bool Panic = false;
-        private bool introPlayed = false;
 
         public override void SetStaticDefaults()
         {
@@ -31,8 +30,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             npc.damage = 190;
             npc.defense = 70;
             npc.knockBackResist = 0f;
-            npc.width = 78;
-            npc.height = 78;
+            npc.width = 170;
+            npc.height = 170;
             npc.friendly = false;
             npc.aiStyle = 0;
             npc.value = Item.sellPrice(2, 0, 0, 0);
@@ -69,6 +68,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     Main.NewText("Doomstone stops glowing. You can now mine it.", Color.Silver);
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("ZeroRune"));
                 }
+                AAWorld.downedZero = true;
 
                 if (Main.rand.Next(10) == 0)
                 {
@@ -123,7 +123,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             if (damage > 30)
             {
-                int TeleportChance = (int)(100 * (npc.life / npc.lifeMax));
+                int TeleportChance = 100 * (npc.life / npc.lifeMax);
                 if (TeleportChance < 5)
                 {
                     TeleportChance = 5;
@@ -274,7 +274,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             if (Main.rand.Next(5) == 0)
             {
-                int num371 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y + (npc.height * 0.25f)), npc.width, (int)(npc.height * 0.5f), 5, npc.velocity.X, 2f, 0, default(Color), 1f);
+                int num371 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y + (npc.height * 0.25f)), npc.width, (int)(npc.height * 0.5f), 5, npc.velocity.X, 2f, 0);
                 Dust expr_12582_cp_0 = Main.dust[num371];
                 expr_12582_cp_0.velocity.X = expr_12582_cp_0.velocity.X * 0.5f;
                 Dust expr_125A2_cp_0 = Main.dust[num371];

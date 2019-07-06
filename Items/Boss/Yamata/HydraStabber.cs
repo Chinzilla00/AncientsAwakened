@@ -22,18 +22,20 @@ IInflicts Moonraze");
         
         public override void SetDefaults()
         {
-            item.damage = 290;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 42;              //Sword width
-            item.height = 52;             //Sword height
-            item.useTime = 10;          //how fast 
-            item.useAnimation = 10;     
-            item.useStyle = 3;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 2f;      //Sword knockback
+            item.damage = 290;            
+            item.melee = true;            
+            item.width = 42;              
+            item.height = 52;             
+            item.useTime = 10;          
+            item.useAnimation = 30;
+            item.reuseDelay = 32;
+            item.useStyle = 3;        
+            item.knockBack = 2f;      
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.UseSound = SoundID.Item1;      //1 is the sound of the sword
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.UseSound = SoundID.Item1;      
+            item.autoReuse = true;   
             item.useTurn = true;
+            item.shoot = mod.ProjectileType<Projectiles.Yamata.AbyssLash>();
             item.rare = 9; AARarity = 13;
         }
 

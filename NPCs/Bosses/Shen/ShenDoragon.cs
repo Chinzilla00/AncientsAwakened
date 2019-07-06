@@ -407,7 +407,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 aiChoice = 0.5f;
                                 break;
                             case 3:
-                                aiChoice = (float)Main.rand.Next(2, isAwakened ? 10 : 7);
+                                aiChoice = Main.rand.Next(2, isAwakened ? 10 : 7);
                                 if (Main.rand.Next(2) == 0)
                                 {
                                     npc.ai[3] = -1f;
@@ -419,7 +419,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 break;
                             case 6:
                                 npc.ai[3] = -1f;
-                                aiChoice = (float)Main.rand.Next(2, isAwakened ? 10 : 7);
+                                aiChoice = Main.rand.Next(2, isAwakened ? 10 : 7);
                                 break;
                         }
                     }
@@ -824,29 +824,40 @@ namespace AAMod.NPCs.Bosses.Shen
                 Roar(roarTimerMax, false);
                 if (Main.netMode != 1)
                 {
-
-                    if (npc.ai[2] % 20 == 0)
+                    if (Collision.CanHit(npc.position, npc.width, npc.height, player.Center, player.width, player.height))
                     {
-                        Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
-                        Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
-
-                        if (player.active && !player.dead)
+                        int[] array4 = new int[5];
+                        Vector2[] array5 = new Vector2[5];
+                        int num838 = 0;
+                        float num839 = 2000f;
+                        for (int num840 = 0; num840 < 255; num840++)
                         {
-                            float rot = BaseUtility.RotationTo(npc.Center, player.Center);
-                            infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
-                            vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-                            vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
-                            int dir = (npc.Center.X < player.Center.X ? 1 : -1);
-                            if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
-                            vel.Y += npc.velocity.Y;
-                            infernoPos += npc.Center;
-                            infernoPos.Y -= 60;
+                            if (Main.player[num840].active && !Main.player[num840].dead)
+                            {
+                                Vector2 center9 = Main.player[num840].Center;
+                                float num841 = Vector2.Distance(center9, npc.Center);
+                                if (num841 < num839 && Collision.CanHit(npc.Center, 1, 1, center9, 1, 1))
+                                {
+                                    array4[num838] = num840;
+                                    array5[num838] = center9;
+                                    if (++num838 >= array5.Length)
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
                         }
-                        int shootThis = mod.ProjectileType<ChaosLightning>();
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 6, vel.X * 4, vel.Y * 4, shootThis, (int)(damageDiscordianFirebomb / (isAwakened ? 1.5f : 2)), 0f, Main.myPlayer, vel.ToRotation(), 0f);
-                        Main.projectile[projectile].netUpdate = true;
+                        if (Main.rand.Next(10) == 10)
+                        {
+                            for (int num842 = 0; num842 < num838; num842++)
+                            {
+                                Vector2 vector82 = array5[num842] - npc.Center;
+                                float ai = Main.rand.Next(100);
+                                Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.78539818525314331)) * 14f;
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector83.X, vector83.Y, mod.ProjectileType<ChaosLightning>(), npc.damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
+                            }
+                        }
                     }
-
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= 120)
@@ -1062,13 +1073,12 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (!AAWorld.downedShen)
                     {
                         npc.DropLoot(mod.ItemType<Items.BossSummons.ChaosRune>(), 1f / 7);
-                        AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType("ShenDeath"), false, npc.Center, "");
+                        AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType("ShenDefeat"), false, npc.Center, "");
                         Main.NewText("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     BaseAI.DropItem(npc, mod.ItemType("ShenATrophy"), 1, 1, 15, true);
                     NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenDefeat>());
                     npc.DropBossBags();
-                    AAWorld.downedShen = true;
                 }
             }
             else

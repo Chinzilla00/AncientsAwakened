@@ -29,11 +29,11 @@ namespace AAMod.Projectiles
 			projectile.velocity.X *= 1.01f;
 			projectile.velocity.Y *= 1.01f;
 			int num487 = (int)projectile.ai[0];
-			Vector2 vector36 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+			Vector2 vector36 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
 			float num489 = Main.player[num487].Center.X - vector36.X;
 			float num490 = Main.player[num487].Center.Y - vector36.Y;
-			float num491 = (float)Math.Sqrt((double)(num489 * num489 + num490 * num490));
-			if (num491 < 50f && projectile.position.X < Main.player[num487].position.X + (float)Main.player[num487].width && projectile.position.X + (float)projectile.width > Main.player[num487].position.X && projectile.position.Y < Main.player[num487].position.Y + (float)Main.player[num487].height && projectile.position.Y + (float)projectile.height > Main.player[num487].position.Y)
+			float num491 = (float)Math.Sqrt(num489 * num489 + num490 * num490);
+			if (num491 < 50f && projectile.position.X < Main.player[num487].position.X + Main.player[num487].width && projectile.position.X + projectile.width > Main.player[num487].position.X && projectile.position.Y < Main.player[num487].position.Y + Main.player[num487].height && projectile.position.Y + projectile.height > Main.player[num487].position.Y)
 			{
 				if (projectile.owner == Main.myPlayer)
 				{
@@ -55,8 +55,8 @@ namespace AAMod.Projectiles
             projectile.velocity.Y = (projectile.velocity.Y * 15f + num490) / 16f;
             for (int num493 = 0; num493 < 3; num493++)
             {
-                float num494 = projectile.velocity.X * 0.334f * (float)num493;
-                float num495 = -(projectile.velocity.Y * 0.334f) * (float)num493;
+                float num494 = projectile.velocity.X * 0.334f * num493;
+                float num495 = -(projectile.velocity.Y * 0.334f) * num493;
                 int num496 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, default(Color), 1.1f);
                 Main.dust[num496].noGravity = true;
                 Main.dust[num496].velocity *= 0f;
@@ -67,8 +67,8 @@ namespace AAMod.Projectiles
             }
             for (int num497 = 0; num497 < 5; num497++)
             {
-                float num498 = projectile.velocity.X * 0.2f * (float)num497;
-                float num499 = -(projectile.velocity.Y * 0.2f) * (float)num497;
+                float num498 = projectile.velocity.X * 0.2f * num497;
+                float num499 = -(projectile.velocity.Y * 0.2f) * num497;
                 int num500 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, default(Color), 1.3f);
                 Main.dust[num500].noGravity = true;
                 Main.dust[num500].velocity *= 0f;
@@ -82,12 +82,12 @@ namespace AAMod.Projectiles
         public override void Kill(int timeLeft)
         {
         	Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
-			projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
+			projectile.position.X = projectile.position.X + projectile.width / 2;
+			projectile.position.Y = projectile.position.Y + projectile.height / 2;
 			projectile.width = 50;
 			projectile.height = 50;
-			projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-			projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+			projectile.position.X = projectile.position.X - projectile.width / 2;
+			projectile.position.Y = projectile.position.Y - projectile.height / 2;
 			for (int num621 = 0; num621 < 10; num621++)
 			{
 				int num622 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, default(Color), 2f);
@@ -95,7 +95,7 @@ namespace AAMod.Projectiles
 				if (Main.rand.Next(2) == 0)
 				{
 					Main.dust[num622].scale = 0.5f;
-					Main.dust[num622].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+					Main.dust[num622].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
 				}
 			}
 			for (int num623 = 0; num623 < 15; num623++)

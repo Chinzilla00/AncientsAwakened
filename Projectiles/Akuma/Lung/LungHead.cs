@@ -193,11 +193,11 @@ namespace AAMod.Projectiles.Akuma.Lung
                     {
                         if (Math.Abs(center14.X - projectile.Center.X) > 20f)
                         {
-                            projectile.velocity.X = projectile.velocity.X + num1047 * (float)Math.Sign(center14.X - projectile.Center.X);
+                            projectile.velocity.X = projectile.velocity.X + num1047 * Math.Sign(center14.X - projectile.Center.X);
                         }
                         if (Math.Abs(center14.Y - projectile.Center.Y) > 10f)
                         {
-                            projectile.velocity.Y = projectile.velocity.Y + num1047 * (float)Math.Sign(center14.Y - projectile.Center.Y);
+                            projectile.velocity.Y = projectile.velocity.Y + num1047 * Math.Sign(center14.Y - projectile.Center.Y);
                         }
                     }
                     else if (projectile.velocity.Length() > 2f)
@@ -224,7 +224,7 @@ namespace AAMod.Projectiles.Akuma.Lung
                 float num1049 = MathHelper.Clamp(projectile.localAI[0], 0f, 50f);
                 projectile.position = projectile.Center;
                 projectile.scale = 1f + num1049 * 0.01f;
-                projectile.width = (projectile.height = (int)((float)num1038 * projectile.scale));
+                projectile.width = (projectile.height = (int)(num1038 * projectile.scale));
                 projectile.Center = projectile.position;
                 if (projectile.alpha > 0)
                 {

@@ -33,10 +33,10 @@ namespace AAMod.NPCs.Bosses.Yamata
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
-                writer.Write((float)internalAI[0]);
-                writer.Write((float)internalAI[1]);
-                writer.Write((float)internalAI[2]);
-                writer.Write((float)internalAI[3]);
+                writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
             }
         }
 
@@ -496,7 +496,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 else
                     if ((npc.velocity.X < 0f && npc.direction > 0) || (npc.velocity.X > 0f && npc.direction < 0)) { inRangeX = true; }
                 tileDist += 24;
-                if (npc.position.Y > ai[1] - (float)tileDist && npc.position.Y < ai[1] + (float)tileDist)
+                if (npc.position.Y > ai[1] - tileDist && npc.position.Y < ai[1] + tileDist)
                 {
                     inRangeY = true;
                 }
@@ -526,7 +526,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             else
             {
                 ai[2] += 1f;
-                if (Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) > npc.position.X + (float)(npc.width / 2))
+                if (Main.player[npc.target].position.X + Main.player[npc.target].width / 2 > npc.position.X + npc.width / 2)
                 {
                     npc.direction = -1;
                 }
@@ -537,7 +537,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
 
             int tileX = (int)(npc.Center.X / 16f) + npc.direction * 2;
-            int tileY = (int)((npc.position.Y + (float)npc.height) / 16f);
+            int tileY = (int)((npc.position.Y + npc.height) / 16f);
             bool tileBelowEmpty = true;
 
             for (int tY = tileY; tY < tileY + hoverHeight; tY++)
@@ -546,7 +546,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     Main.tile[tileX, tY] = new Tile();
                 }
-                if ((Main.tile[tileX, tY].nactive() && Main.tileSolid[(int)Main.tile[tileX, tY].type]) || Main.tile[tileX, tY].liquid > 0)
+                if ((Main.tile[tileX, tY].nactive() && Main.tileSolid[Main.tile[tileX, tY].type]) || Main.tile[tileX, tY].liquid > 0)
                 {
                     tileBelowEmpty = false;
                     break;
@@ -811,8 +811,8 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Vector2 position, oldPosition;
         public Vector2 Center
         {
-            get { return new Vector2(position.X + ((float)Hitbox.Width * 0.5f), position.Y + ((float)Hitbox.Height * 0.5f)); }
-            set { position = new Vector2(value.X - ((float)Hitbox.Width * 0.5f), value.Y - ((float)Hitbox.Height * 0.5f)); }
+            get { return new Vector2(position.X + (Hitbox.Width * 0.5f), position.Y + (Hitbox.Height * 0.5f)); }
+            set { position = new Vector2(value.X - (Hitbox.Width * 0.5f), value.Y - (Hitbox.Height * 0.5f)); }
         }
         public Rectangle Hitbox;
         public float rotation = 0f, movementRatio = 0f;
@@ -885,14 +885,14 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (velocity.Length() > velMax) { velocity.Normalize(); velocity *= velMax; }
                 if (Vector2.Distance(pointToStandOn, position) <= 15) { position = pointToStandOn; velocity = default(Vector2); }
                 position += velocity;
-                if ((position == pointToStandOn || Vector2.Distance(standOnPoint, position + new Vector2((float)Hitbox.Width * 0.5f, 0f)) > distanceToMove || Math.Abs(position.X - standOnPoint.X) > distanceToMoveX))
+                if ((position == pointToStandOn || Vector2.Distance(standOnPoint, position + new Vector2(Hitbox.Width * 0.5f, 0f)) > distanceToMove || Math.Abs(position.X - standOnPoint.X) > distanceToMoveX))
                 {
                     pointToStandOn = default(Vector2);
                 }
             }
             if (pointToStandOn == default(Vector2))
             {
-                if (Vector2.Distance(standOnPoint, position + new Vector2((float)Hitbox.Width * 0.5f, 0f)) > distanceToMove || Math.Abs(position.X - standOnPoint.X) > distanceToMoveX)
+                if (Vector2.Distance(standOnPoint, position + new Vector2(Hitbox.Width * 0.5f, 0f)) > distanceToMove || Math.Abs(position.X - standOnPoint.X) > distanceToMoveX)
                 {
                     movementRatio = 0f;
                     pointToStandOn = standOnPoint;
@@ -940,8 +940,8 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (tileY - defaultTileY > Yamata.flyingTileCount) { return default(Vector2); } //'flying' behavior
             if (!flying)
             {
-                tileY = (int)((int)((float)tileY * 16f) / 16);
-                float tilePosY = ((float)tileY * 16f);
+                tileY = (int)(tileY * 16f) / 16;
+                float tilePosY = (tileY * 16f);
                 if (Main.tile[(int)(standOnX / 16f), tileY] == null || !Main.tile[(int)(standOnX / 16f), tileY].nactive() || !Main.tileSolid[Main.tile[(int)(standOnX / 16f), tileY].type]) tilePosY += 16f;
                 return new Vector2(standOnX - (Hitbox.Width * 0.5f), tilePosY - Hitbox.Height);
             }

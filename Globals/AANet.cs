@@ -24,7 +24,7 @@ namespace AAMod
 				{
 					if(Main.netMode == 2)
 					{
-						int playerID = (int)bb.ReadByte();
+						int playerID = bb.ReadByte();
 						int bossType = bb.ReadShort();
 						bool spawnMessage = bb.ReadBool();
 						int npcCenterX = bb.ReadInt();
@@ -49,7 +49,7 @@ namespace AAMod
 
         private static void LovecraftianCount(BinaryReader reader, int fromWho)
         {
-            int whichSquidX = (int)reader.ReadByte();
+            int whichSquidX = reader.ReadByte();
             if (whichSquidX == 1)
             {
                 AAWorld.squid1 += 1;

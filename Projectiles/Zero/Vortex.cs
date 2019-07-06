@@ -37,16 +37,25 @@ namespace AAMod.Projectiles.Zero   //The directory for your .cs and .png; Exampl
             projectile.melee = true;
             ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 30f;
             ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 400f;
-            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 17f;
+            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 15f;
         }
+        int ProjTimer = 0;
 
-        public override void AI()
+        public override void PostAI()
         {
-            int NPCTarget = Target();
-
-            if (NPCTarget != -1 && AAGlobalProjectile.CountProjectiles(mod.ProjectileType<VortexProj>()) < 5)
+            if (Main.netMode != 1)
             {
-                Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<VortexProj>(), projectile.damage, projectile.knockBack, projectile.owner);
+                ProjTimer++;
+                if (ProjTimer >= 60)
+                {
+                    ProjTimer = 0;
+                    int NPCTarget = Target();
+
+                    if (NPCTarget != -1 && AAGlobalProjectile.CountProjectiles(mod.ProjectileType<VortexProj>()) < 5)
+                    {
+                        Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<VortexProj>(), projectile.damage, projectile.knockBack, projectile.owner);
+                    }
+                }
             }
         }
 
@@ -65,7 +74,7 @@ namespace AAMod.Projectiles.Zero   //The directory for your .cs and .png; Exampl
                     if (distance <= homingMaximumRangeInPixels &&
                         (
                             selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) 
                     )
                         selectedTarget = i;
                 }

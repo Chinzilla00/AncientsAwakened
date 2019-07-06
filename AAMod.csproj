@@ -2187,10 +2187,12 @@
     <Compile Include="Projectiles\Toad\ToadTongue.cs" />
     <Compile Include="Projectiles\ValkyrieSlash.cs" />
     <Compile Include="Projectiles\Volley.cs" />
+    <Compile Include="Projectiles\Yamata\AbyssLash.cs" />
     <Compile Include="Projectiles\Yamata\DarkSoul.cs" />
     <Compile Include="Projectiles\Yamata\YWSplit.cs" />
     <Compile Include="Projectiles\Ryusei.cs" />
     <Compile Include="Projectiles\Yogan.cs" />
+    <Compile Include="Projectiles\Zero\AMR.cs" />
     <Compile Include="Projectiles\Zero\VortexProj.cs" />
     <Compile Include="Projectiles\Zero\Protocol.cs" />
     <Compile Include="Projectiles\Singularity.cs" />
@@ -5238,6 +5240,7 @@
     <Content Include="NPCs\Bosses\Zero\Neutralizer_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\NovaFocus_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\OmegaVolley_Head_Boss.png" />
+    <Content Include="NPCs\Bosses\Zero\Protocol\ZeroTrail.png" />
     <Content Include="NPCs\Bosses\Zero\RealityCannon_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\RiftShredder_Head_Boss.png" />
     <Content Include="NPCs\Bosses\Zero\Taser_Head_Boss.png" />
@@ -6636,6 +6639,7 @@
     <Content Include="Projectiles\AmberArrow.png" />
     <Content Include="Projectiles\Ammo\DaybreakBullet.png" />
     <Content Include="Projectiles\Ammo\EventideBullet.png" />
+    <Content Include="Projectiles\Zero\AMR.png" />
     <Content Include="Projectiles\ApocalypseHeal.png" />
     <Content Include="Projectiles\CapShield.png" />
     <Content Include="Projectiles\ChaosBoom.png" />
@@ -7058,6 +7062,7 @@
     <Content Include="Projectiles\Yamata\AbyssArrow.png" />
     <Content Include="Projectiles\Yamata\BabyYamata\BabyYamataHead.png" />
     <Content Include="Projectiles\Yamata\BabyYamata\BabyYamataNeck.png" />
+    <Content Include="Projectiles\Yamata\AbyssLash.png" />
     <Content Include="Projectiles\Yamata\DarkSoul.png" />
     <Content Include="Projectiles\Yamata\Crescent.png" />
     <Content Include="Projectiles\Yamata\Flairdra.png" />
@@ -7142,7 +7147,7 @@
     <Content Include="Sounds\Sounds\AkumaRoar.mp3" />
     <Content Include="Sounds\Sounds\Chicken.wav" />
     <Content Include="Sounds\Sounds\FerretNote.mp3" />
-    <Content Include="Sounds\Sounds\Forge.wav" />
+    <Content Include="Sounds\Sounds\Forge.mp3" />
     <Content Include="Sounds\Sounds\Glitch.wav" />
     <Content Include="Sounds\Sounds\GONG.mp3" />
     <Content Include="Sounds\Sounds\MOARGONG.mp3" />

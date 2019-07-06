@@ -31,12 +31,12 @@ namespace AAMod.Items.Tools
             Tooltip.SetDefault("Because Blue Pickaxe was a boring name");
         }
 
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Coral, 6);   //you need 10 Wood
 			recipe.AddIngredient(ItemID.IronPickaxe, 1);
-            recipe.AddTile(TileID.WorkBenches);   //at work bench
+            recipe.AddTile(TileID.WorkBenches);   
             recipe.SetResult(this);  
             recipe.AddRecipe();
         }

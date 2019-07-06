@@ -35,11 +35,11 @@ namespace AAMod.Items.Magic
             Item.staff[item.type] = true;
     }
 
-		public override void AddRecipes()  //How to craft this item
+		public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DragonSpirit", 20);
-            recipe.AddTile(TileID.MythrilAnvil);   //at work bench
+            recipe.AddTile(TileID.MythrilAnvil);   
             recipe.SetResult(this);  
             recipe.AddRecipe();
         }

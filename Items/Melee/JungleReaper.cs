@@ -8,18 +8,18 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 13;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 78;              //Sword width
-            item.height = 60;             //Sword height
-            item.useTime = 30;          //how fast 
+            item.damage = 13;            
+            item.melee = true;            
+            item.width = 78;              
+            item.height = 60;             
+            item.useTime = 30;          
             item.useAnimation = 30;     
-            item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 3;      //Sword knockback
+            item.useStyle = 1;        
+            item.knockBack = 3;      
             item.value = Terraria.Item.sellPrice(0, 0, 50, 0);
             item.rare = 2;
-            item.UseSound = SoundID.Item1;       //1 is the sound of the sword
-            item.autoReuse = false;   //if it's capable of autoswing.
+            item.UseSound = SoundID.Item1;       
+            item.autoReuse = false;   
             item.useTurn = false;
             item.shoot = mod.ProjectileType("JungleReaperP");
             item.shootSpeed = 8f;                //projectile speed                 
@@ -35,7 +35,7 @@ namespace AAMod.Items.Melee   //where is located
         {
             ModRecipe recipe = new ModRecipe(mod);      
             recipe.AddRecipeGroup("AAMod:Gold", 15);
-            recipe.AddTile(TileID.LivingLoom);   //at work bench
+            recipe.AddTile(TileID.LivingLoom);   
             recipe.SetResult(this);
             recipe.AddRecipe();
 

@@ -52,8 +52,8 @@ namespace AAMod.Items.Boss.AH
             }
             player.itemTime = item.useTime;
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-            vector2.X = (float)Main.mouseX + Main.screenPosition.X;
-            vector2.Y = (float)Main.mouseY + Main.screenPosition.Y;
+            vector2.X = Main.mouseX + Main.screenPosition.X;
+            vector2.Y = Main.mouseY + Main.screenPosition.Y;
             Projectile.NewProjectile(vector2.X, vector2.Y, 0, 0, shootMe, damage, 5, item.owner, 0f, 0f);
             return true;
         }

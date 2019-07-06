@@ -39,7 +39,7 @@ namespace AAMod.Projectiles
 		
 		public override Color? GetAlpha(Color newColor)
 		{
-			float num6 = 1f - (float)projectile.alpha / 255f;
+			float num6 = 1f - projectile.alpha / 255f;
 			return new Color((int)(250f * num6), (int)(250f * num6), (int)(250f * num6), (int)(100f * num6));
 		}
     }

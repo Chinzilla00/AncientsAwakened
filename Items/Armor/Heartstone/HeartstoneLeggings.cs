@@ -31,7 +31,7 @@ Its forged with heart, no really");
             player.statLifeMax2 += 10;  //player movement speed incresed 0.05f = 5%
         }
 
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.LifeCrystal, 2);

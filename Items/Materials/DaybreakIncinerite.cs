@@ -24,7 +24,7 @@ namespace AAMod.Items.Materials
             item.createTile = mod.TileType("DaybreakIncineriteBar");
         }
         public override void AddRecipes()
-        {                                                   //How to craft this item
+        {                                                   
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DaybreakIncineriteOre", 5);
             recipe.AddIngredient(null, "RadiantIncinerite", 1);

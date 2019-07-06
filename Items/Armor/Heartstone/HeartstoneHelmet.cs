@@ -45,7 +45,7 @@ Its forged with heart, no really");
                 player.thrownDamage *= 2;
             }﻿
         }
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.LifeCrystal, 2);

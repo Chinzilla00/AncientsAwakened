@@ -79,7 +79,7 @@ namespace AAMod.Projectiles
             }
             Main.player[Main.myPlayer].lifeSteal -= Heal;
             int num2 = projectile.owner;
-            Projectile.NewProjectile(target.position.X, target.position.Y, 0f, 0f, mod.ProjectileType("SoulSiphonHeal"), 0, 0f, projectile.owner, (float)num2, Heal);
+            Projectile.NewProjectile(target.position.X, target.position.Y, 0f, 0f, mod.ProjectileType("SoulSiphonHeal"), 0, 0f, projectile.owner, num2, Heal);
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)

@@ -76,7 +76,7 @@ namespace AAMod.Tiles
                     SunTexture = mod.GetTexture("Tiles/DiscordianEclipse");
                 }
             }
-            Vector2 zero = new Vector2((float)Main.offScreenRange, (float)Main.offScreenRange);
+            Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
             if (Main.drawToScreen)
             {
                 zero = Vector2.Zero;
@@ -93,7 +93,7 @@ namespace AAMod.Tiles
                 Vector2 SunVector1 = new Vector2((num302 * 16) - (int)Main.screenPosition.X + (num8 / 2f), (num303 * 16) - (int)Main.screenPosition.Y - 36) + zero;
                 Rectangle source = new Rectangle(0, 0, SunTexture.Width, SunTexture.Height);
                 Color color = new Color(Main.mouseTextColor, Main.mouseTextColor, Main.mouseTextColor, 0);
-                Vector2 origin = new Vector2((float)(SunTexture.Width / 2), (float)(SunTexture.Height / 2));
+                Vector2 origin = new Vector2(SunTexture.Width / 2, SunTexture.Height / 2);
                 if (NPC.downedMoonlord && !AAWorld.downedAllAncients)
                 {
                     Main.spriteBatch.Draw(SunTexture, SunVector1, new Rectangle?(source), color, Main.sunCircle, origin, 1f, SpriteEffects.None, 0f);

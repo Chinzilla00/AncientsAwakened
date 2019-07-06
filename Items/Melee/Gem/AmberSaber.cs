@@ -8,18 +8,18 @@ namespace AAMod.Items.Melee.Gem   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 24;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 44;              //Sword width
-            item.height = 44;             //Sword height  //Item Description
-            item.useTime = 20;          //how fast 
+            item.damage = 24;            
+            item.melee = true;            
+            item.width = 44;              
+            item.height = 44;               //Item Description
+            item.useTime = 20;          
             item.useAnimation = 20;     
-            item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 5;      //Sword knockback
+            item.useStyle = 1;        
+            item.knockBack = 5;      
             item.value = 1000;        
             item.rare = 3;
-            item.UseSound = SoundID.Item1;       //1 is the sound of the sword
-            item.autoReuse = false;   //if it's capable of autoswing.
+            item.UseSound = SoundID.Item1;       
+            item.autoReuse = false;   
             item.useTurn = true;               
         }
 
@@ -32,9 +32,9 @@ namespace AAMod.Items.Melee.Gem   //where is located
         public override void AddRecipes()  //How to craft this sword
         {
             ModRecipe recipe = new ModRecipe(mod);      
-            recipe.AddIngredient(ItemID.Amber, 5);   //you need 1 DirtBlock
+            recipe.AddIngredient(ItemID.Amber, 5);   
             recipe.AddIngredient(ItemID.DesertFossil, 12);
-            recipe.AddTile(TileID.Anvils);   //at work bench
+            recipe.AddTile(TileID.Anvils);   
             recipe.SetResult(this);
             recipe.AddRecipe();
 

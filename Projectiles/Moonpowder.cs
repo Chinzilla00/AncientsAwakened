@@ -41,9 +41,9 @@ namespace AAMod.Projectiles
                 }
             }
             int num63 = (int)(projectile.position.X / 16f) - 1;
-            int num64 = (int)((projectile.position.X + (float)projectile.width) / 16f) + 2;
+            int num64 = (int)((projectile.position.X + projectile.width) / 16f) + 2;
             int num65 = (int)(projectile.position.Y / 16f) - 1;
-            int num66 = (int)((projectile.position.Y + (float)projectile.height) / 16f) + 2;
+            int num66 = (int)((projectile.position.Y + projectile.height) / 16f) + 2;
             if (num63 < 0)
             {
                 num63 = 0;
@@ -62,7 +62,7 @@ namespace AAMod.Projectiles
             }
             if (projectile.owner == Main.myPlayer)
             {
-                Convert((int)(projectile.position.X + (float)(projectile.width / 2)) / 16, (int)(projectile.position.Y + (float)(projectile.height / 2)) / 16);
+                Convert((int)(projectile.position.X + projectile.width / 2) / 16, (int)(projectile.position.Y + projectile.height / 2) / 16);
             }
         }
 

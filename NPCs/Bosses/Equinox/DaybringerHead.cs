@@ -345,7 +345,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
 		public Color GetAuraAlpha()
 		{
-			Color c = (Color.White * ((float)Main.mouseTextColor / 255f));
+			Color c = (Color.White * (Main.mouseTextColor / 255f));
 			//c.A = 255;
 			return c;
 		}
@@ -437,7 +437,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 				tex = mod.GetTexture(texName);
 				
 				int diff = (Main.player[Main.myPlayer].miscCounter % 50);
-				float diffFloat = (float)diff / 50f;
+				float diffFloat = diff / 50f;
 				float auraPercent = BaseUtility.MultiLerp(diffFloat, 0f, 1f, 0f); //did it this way so it's syncronized between all the segments
 				BaseMod.BaseDrawing.DrawAura(spritebatch, tex, 0, npc, auraPercent, 2f, 0f, 0f, GetAuraAlpha());				
 			}			

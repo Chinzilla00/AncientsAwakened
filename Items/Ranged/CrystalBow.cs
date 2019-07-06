@@ -37,7 +37,7 @@ namespace AAMod.Items.Ranged
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.PixieDust, 14);   //you need 1 DirtBlock
+            recipe.AddIngredient(ItemID.PixieDust, 14);   
 			recipe.AddIngredient(ItemID.CrystalShard, 18);
 			recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);

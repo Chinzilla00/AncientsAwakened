@@ -30,7 +30,7 @@ namespace AAMod.Projectiles.Akuma
         {
             Projectile yoyo = Main.projectile[(int)projectile.ai[0]];
             projectile.Center = yoyo.Center;
-            projectile.rotation -= (float)projectile.direction * 6.28318548f / 120f;
+            projectile.rotation -= projectile.direction * 6.28318548f / 120f;
 
         }
 

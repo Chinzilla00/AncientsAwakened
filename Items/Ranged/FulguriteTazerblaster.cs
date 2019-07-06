@@ -41,7 +41,7 @@ Slim chance to fire 2 taserblasts at once");
         }
 
         public override void AddRecipes()
-        {                                                   //How to craft this item
+        {                                                   
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "FulguriteBar", 20);              //example of how to craft with a modded item
             recipe.AddTile(TileID.MythrilAnvil);

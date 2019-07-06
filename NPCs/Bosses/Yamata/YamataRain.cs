@@ -41,12 +41,12 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (projectile.velocity.X < 0f)
             {
                 projectile.spriteDirection = -1;
-                projectile.rotation = (float)Math.Atan2((double)(-(double)projectile.velocity.Y), (double)(-(double)projectile.velocity.X));
+                projectile.rotation = (float)Math.Atan2(-projectile.velocity.Y, -projectile.velocity.X);
             }
             else
             {
                 projectile.spriteDirection = 1;
-                projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X);
+                projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X);
             }
 
             int dustId = Dust.NewDust(projectile.Center, projectile.width, projectile.height, mod.DustType<Dusts.CthulhuAuraDust>(), projectile.velocity.X * 0.2f,

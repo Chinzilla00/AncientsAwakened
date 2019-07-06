@@ -55,7 +55,7 @@ namespace AAMod.Backgrounds
                 Meteor[] expr_8E_cp_0_cp_0 = Meteors;
                 int expr_8E_cp_0_cp_1 = i;
                 expr_8E_cp_0_cp_0[expr_8E_cp_0_cp_1].Position.Y = expr_8E_cp_0_cp_0[expr_8E_cp_0_cp_1].Position.Y + 1200f * (float)gameTime.ElapsedGameTime.TotalSeconds;
-                if ((double)Meteors[i].Position.Y > Main.worldSurface * 16.0)
+                if (Meteors[i].Position.Y > Main.worldSurface * 16.0)
                 {
                     Meteors[i].Position.X = Meteors[i].StartX;
                     Meteors[i].Position.Y = -10000f;
@@ -99,9 +99,9 @@ namespace AAMod.Backgrounds
                 return;
             }
             float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
-            Vector2 value3 = Main.screenPosition + new Vector2((float)(Main.screenWidth >> 1), (float)(Main.screenHeight >> 1));
+            Vector2 value3 = Main.screenPosition + new Vector2(Main.screenWidth >> 1, Main.screenHeight >> 1);
             Rectangle rectangle = new Rectangle(-1000, -1000, 4000, 4000);
-            for (int j = (int)num; j < num2; j++)
+            for (int j = num; j < num2; j++)
             {
                 Vector2 value4 = new Vector2(1f / Meteors[j].Depth, 0.9f / Meteors[j].Depth);
                 Vector2 position = (Meteors[j].Position - value3) * value4 + value3 - Main.screenPosition;
@@ -126,7 +126,7 @@ namespace AAMod.Backgrounds
             Meteors = new Meteor[150];
             for (int i = 0; i < Meteors.Length; i++)
             {
-                float num = (float)i / (float)Meteors.Length;
+                float num = i / (float)Meteors.Length;
                 Meteors[i].Position.X = num * (Main.maxTilesX * 16f) + this._random.NextFloat() * 40f - 20f;
                 Meteors[i].Position.Y = this._random.NextFloat() * -((float)Main.worldSurface * 16f + 10000f) - 10000f;
                 if (this._random.Next(3) != 0)

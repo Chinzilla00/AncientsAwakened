@@ -8,18 +8,18 @@ namespace AAMod.Items.Melee  //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 23;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 48;              //Sword width
-            item.height = 52;             //Sword height
-            item.useTime = 22;          //how fast 
+            item.damage = 23;            
+            item.melee = true;            
+            item.width = 48;              
+            item.height = 52;             
+            item.useTime = 22;          
             item.useAnimation = 22;     
-            item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 7;      //Sword knockback
+            item.useStyle = 1;        
+            item.knockBack = 7;      
             item.value = 19000;        
             item.rare = 3;
-            item.UseSound = SoundID.Item1;                  //1 is the sound of the sword
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.UseSound = SoundID.Item1;                  
+            item.autoReuse = true;   
             item.useTurn = true;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.

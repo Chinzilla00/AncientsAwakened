@@ -145,7 +145,7 @@ namespace AAMod.Items.Armor.Witch
                 num16 = 1200;
             }
             float num17 = Vector2.Distance(player.Center, projectile.Center);
-            if (num17 > (float)num16)
+            if (num17 > num16)
             {
                 projectile.ai[0] = 1f;
                 projectile.netUpdate = true;
@@ -203,8 +203,8 @@ namespace AAMod.Items.Armor.Witch
                 }
                 if (num24 > 2000f)
                 {
-                    projectile.position.X = Main.player[projectile.owner].Center.X - (float)(projectile.width / 2);
-                    projectile.position.Y = Main.player[projectile.owner].Center.Y - (float)(projectile.width / 2);
+                    projectile.position.X = Main.player[projectile.owner].Center.X - projectile.width / 2;
+                    projectile.position.Y = Main.player[projectile.owner].Center.Y - projectile.width / 2;
                 }
                 if (Math.Abs(vector6.X) > 40f || Math.Abs(vector6.Y) > 10f)
                 {
@@ -293,7 +293,7 @@ namespace AAMod.Items.Armor.Witch
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return glowColor * ((float)Main.mouseTextColor / 255f);
+            return glowColor * (Main.mouseTextColor / 255f);
         }
 
         public void FireDamage(Player player)

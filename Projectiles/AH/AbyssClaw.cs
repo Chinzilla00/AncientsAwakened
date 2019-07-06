@@ -60,7 +60,7 @@ namespace AAMod.Projectiles.AH
             }
 			for (int whoAmI = 0; whoAmI < 1000; whoAmI++)
 			{
-				if (whoAmI != projectile.whoAmI && Main.projectile[whoAmI].active && Main.projectile[whoAmI].owner == projectile.owner && Math.Abs(projectile.position.X - Main.projectile[whoAmI].position.X) + Math.Abs(projectile.position.Y - Main.projectile[whoAmI].position.Y) < (float)projectile.width)
+				if (whoAmI != projectile.whoAmI && Main.projectile[whoAmI].active && Main.projectile[whoAmI].owner == projectile.owner && Math.Abs(projectile.position.X - Main.projectile[whoAmI].position.X) + Math.Abs(projectile.position.Y - Main.projectile[whoAmI].position.Y) < projectile.width)
 				{
 					if (projectile.position.X < Main.projectile[whoAmI].position.X)
 					{
@@ -159,8 +159,8 @@ namespace AAMod.Projectiles.AH
 				}
 				if (num651 > 2000f)
 				{
-					projectile.position.X = Main.player[projectile.owner].Center.X - (float)(projectile.width / 2);
-					projectile.position.Y = Main.player[projectile.owner].Center.Y - (float)(projectile.height / 2);
+					projectile.position.X = Main.player[projectile.owner].Center.X - projectile.width / 2;
+					projectile.position.Y = Main.player[projectile.owner].Center.Y - projectile.height / 2;
 					projectile.netUpdate = true;
 				}
 				if (num651 > 70f)
@@ -185,7 +185,7 @@ namespace AAMod.Projectiles.AH
 			}
 			if (projectile.ai[1] > 0f)
 			{
-				projectile.ai[1] += (float)Main.rand.Next(1, 4);
+				projectile.ai[1] += Main.rand.Next(1, 4);
 			}
 			if (projectile.ai[1] > 90f)
 			{
@@ -204,7 +204,7 @@ namespace AAMod.Projectiles.AH
 						Vector2 speed = position - projectile.Center;
 						speed.Normalize();
 						speed *= speedScale;
-						int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, speed.X, speed.Y, shoot, (int)((float)projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, 0f);
+						int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, speed.X, speed.Y, shoot, (int)(projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, 0f);
 						Main.projectile[num659].timeLeft = 300;
 						projectile.netUpdate = true;
 					}

@@ -143,7 +143,7 @@ namespace AAMod
 
         public static Color GetTimedColor(Color tColor, Color color, float min, float max, bool clamp)
         {
-            Color glowColor = BaseMod.BaseUtility.ColorMult(tColor, BaseMod.BaseUtility.MultiLerp((float)glowTick / (float)glowMax, min, max, min));
+            Color glowColor = BaseMod.BaseUtility.ColorMult(tColor, BaseMod.BaseUtility.MultiLerp(glowTick / (float)glowMax, min, max, min));
             if (clamp)
             {
                 if (color.R > glowColor.R) { glowColor.R = color.R; }
@@ -154,7 +154,7 @@ namespace AAMod
         }
         public static Color GetGradientColor(Color tColor1, Color tColor2, Color color, bool clamp)
         {
-            Color glowColor = Color.Lerp(tColor1, tColor2, BaseMod.BaseUtility.MultiLerp((float)glowTick / (float)glowMax, 0f, 1f, 0f));
+            Color glowColor = Color.Lerp(tColor1, tColor2, BaseMod.BaseUtility.MultiLerp(glowTick / (float)glowMax, 0f, 1f, 0f));
             if (clamp)
             {
                 if (color.R > glowColor.R) { glowColor.R = color.R; }

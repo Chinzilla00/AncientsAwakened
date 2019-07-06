@@ -32,7 +32,7 @@ namespace AAMod.Projectiles
             int dustType = mod.DustType<MushDust>();
             if (projectile.owner == Main.myPlayer)
             {
-                Convert((int)(projectile.position.X + (float)(projectile.width / 2)) / 16, (int)(projectile.position.Y + (float)(projectile.height / 2)) / 16);
+                Convert((int)(projectile.position.X + projectile.width / 2) / 16, (int)(projectile.position.Y + projectile.height / 2) / 16);
             }
             if (projectile.timeLeft > 133)
             {
@@ -73,7 +73,7 @@ namespace AAMod.Projectiles
             {
                 projectile.ai[0] += 1f;
             }
-            projectile.rotation += 0.3f * (float)projectile.direction;
+            projectile.rotation += 0.3f * projectile.direction;
         }
 
         public void Convert(int i, int j, int Size = 4)
@@ -84,7 +84,7 @@ namespace AAMod.Projectiles
                 {
                     if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < Math.Sqrt(Size * Size + Size * Size))
                     {
-                        int type = (int)Main.tile[k, l].type;
+                        int type = Main.tile[k, l].type;
                         if (TileID.Sets.Conversion.Grass[type])
                         {
                             Main.tile[k, l].type = (ushort)mod.TileType<Mycelium>();

@@ -46,9 +46,9 @@ namespace AAMod.Items.Pets
                 return;
             }
             float num146 = 3.3f;
-            Vector2 vector13 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
-            float num147 = Main.player[projectile.owner].position.X + (float)(Main.player[projectile.owner].width / 2) - vector13.X;
-            float num148 = Main.player[projectile.owner].position.Y + (float)(Main.player[projectile.owner].height / 2) - vector13.Y;
+            Vector2 vector13 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
+            float num147 = Main.player[projectile.owner].position.X + Main.player[projectile.owner].width / 2 - vector13.X;
+            float num148 = Main.player[projectile.owner].position.Y + Main.player[projectile.owner].height / 2 - vector13.Y;
             int num149 = 70;
             if (Main.player[projectile.owner].controlUp)
             {
@@ -58,15 +58,15 @@ namespace AAMod.Items.Pets
             }
             else if (Main.player[projectile.owner].controlDown)
             {
-                num148 = Main.player[projectile.owner].position.Y + (float)Main.player[projectile.owner].height + 40f - vector13.Y;
+                num148 = Main.player[projectile.owner].position.Y + Main.player[projectile.owner].height + 40f - vector13.Y;
                 num147 -= 6f;
                 num149 = 4;
             }
-            float num150 = (float)Math.Sqrt((double)(num147 * num147 + num148 * num148));
+            float num150 = (float)Math.Sqrt(num147 * num147 + num148 * num148);
             if (num150 > 800f)
             {
-                projectile.position.X = Main.player[projectile.owner].position.X + (float)(Main.player[projectile.owner].width / 2) - (float)(projectile.width / 2);
-                projectile.position.Y = Main.player[projectile.owner].position.Y + (float)(Main.player[projectile.owner].height / 2) - (float)(projectile.height / 2);
+                projectile.position.X = Main.player[projectile.owner].position.X + Main.player[projectile.owner].width / 2 - projectile.width / 2;
+                projectile.position.Y = Main.player[projectile.owner].position.Y + Main.player[projectile.owner].height / 2 - projectile.height / 2;
                 return;
             }
             if (num150 > num149)

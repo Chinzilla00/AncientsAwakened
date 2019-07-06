@@ -45,8 +45,8 @@ namespace AAMod.Projectiles.Thorium
 				projectile.spriteDirection = -1;
 			}
 			
-			projectile.position.X = player.Center.X - ((float)projectile.width / 2f);
-			projectile.position.Y = player.Center.Y - ((float)projectile.height / 2f);
+			projectile.position.X = player.Center.X - (projectile.width / 2f);
+			projectile.position.Y = player.Center.Y - (projectile.height / 2f);
 			
 			Projectile.NewProjectile(projectile.Center.X + 20, projectile.Center.Y, -15f, 0f, mod.ProjectileType("HydrasFuryDamage"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 			Projectile.NewProjectile(projectile.Center.X - 20, projectile.Center.Y, 15f, 0f, mod.ProjectileType("HydrasFuryDamage"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);

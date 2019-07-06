@@ -67,10 +67,10 @@ namespace AAMod.Projectiles.Akuma
 				{
 					float scaleFactor = player.inventory[player.selectedItem].shootSpeed * projectile.scale;
 					Vector2 vector3 = vector;
-					Vector2 value2 = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY) - vector3;
+					Vector2 value2 = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY) - vector3;
 					if (player.gravDir == -1f)
 					{
-						value2.Y = (float)(Main.screenHeight - Main.mouseY) + Main.screenPosition.Y - vector3.Y;
+						value2.Y = Main.screenHeight - Main.mouseY + Main.screenPosition.Y - vector3.Y;
 					}
 					Vector2 vector4 = Vector2.Normalize(value2);
 					if (float.IsNaN(vector4.X) || float.IsNaN(vector4.Y))
@@ -86,7 +86,7 @@ namespace AAMod.Projectiles.Akuma
 					float scaleFactor2 = 14f;
 					int num7 = 7;
 				
-					vector3 = projectile.Center + new Vector2((float)Main.rand.Next(-num7, num7 + 1), (float)Main.rand.Next(-num7, num7 + 1));
+					vector3 = projectile.Center + new Vector2(Main.rand.Next(-num7, num7 + 1), Main.rand.Next(-num7, num7 + 1));
 					Vector2 vector5 = Vector2.Normalize(projectile.velocity) * scaleFactor2;
 					vector5 = vector5.RotatedBy(Main.rand.NextDouble() * 0.19634954631328583 - 0.098174773156642914, default(Vector2));
 					if (float.IsNaN(vector5.X) || float.IsNaN(vector5.Y))
@@ -103,7 +103,7 @@ namespace AAMod.Projectiles.Akuma
 			player.heldProj = projectile.whoAmI;
 			player.itemTime = 2;
 			player.itemAnimation = 2;
-			player.itemRotation = (float)Math.Atan2((double)(projectile.velocity.Y * (float)projectile.direction), (double)(projectile.velocity.X * (float)projectile.direction));
+			player.itemRotation = (float)Math.Atan2(projectile.velocity.Y * projectile.direction, projectile.velocity.X * projectile.direction);
 
 			counter++;
 
@@ -162,19 +162,19 @@ namespace AAMod.Projectiles.Akuma
 				}
 				float num121 = 0.314159274f;
 				Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-				float num82 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
-				float num83 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+				float num82 = Main.mouseX + Main.screenPosition.X - vector2.X;
+				float num83 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
 				
-				Vector2 vector21 = new Vector2(player.position.X + (float)player.width * 0.5f, player.position.Y + (float)player.height * 0.5f);
-				float f1 = (float)Main.mouseX + Main.screenPosition.X - vector21.X;
-				float f2 = (float)Main.mouseY + Main.screenPosition.Y - vector21.Y;
-				if ((double)player.gravDir == -1.0)
-					f2 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector21.Y;
-				float num4 = (float)Math.Sqrt((double)f1 * (double)f1 + (double)f2 * (double)f2);
+				Vector2 vector21 = new Vector2(player.position.X + player.width * 0.5f, player.position.Y + player.height * 0.5f);
+				float f1 = Main.mouseX + Main.screenPosition.X - vector21.X;
+				float f2 = Main.mouseY + Main.screenPosition.Y - vector21.Y;
+				if (player.gravDir == -1.0)
+					f2 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector21.Y;
+				float num4 = (float)Math.Sqrt(f1 * (double)f1 + f2 * (double)f2);
 				float num5;
-				if (float.IsNaN(f1) && float.IsNaN(f2) || (double)f1 == 0.0 && (double)f2 == 0.0)
+				if (float.IsNaN(f1) && float.IsNaN(f2) || f1 == 0.0 && f2 == 0.0)
 				{
-					f1 = (float)player.direction;
+					f1 = player.direction;
 					f2 = 0.0f;
 					num5 = num121;
 				}
@@ -190,8 +190,8 @@ namespace AAMod.Projectiles.Akuma
 				bool flag11 = Collision.CanHit(vector2, 0, 0, vector2 + vector14, 0, 0);
 				for (int num123 = 0; num123 < num122; num123++)
 				{
-					float num124 = (float)num123 - ((float)num122 - 1f) / 2f;
-					Vector2 vector15 = vector14.RotatedBy((double)(num121 * num124), default(Vector2));
+					float num124 = num123 - (num122 - 1f) / 2f;
+					Vector2 vector15 = vector14.RotatedBy(num121 * num124, default(Vector2));
 					if (!flag11)
 					{
 						vector15 -= vector14;

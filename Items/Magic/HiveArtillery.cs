@@ -34,17 +34,17 @@ namespace AAMod.Items.Magic
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-			float num82 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
-			float num83 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+			float num82 = Main.mouseX + Main.screenPosition.X - vector2.X;
+			float num83 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
 			if (player.gravDir == -1f)
 			{
-				num83 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector2.Y;
+				num83 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector2.Y;
 			}
-			float num84 = (float)Math.Sqrt((double)(num82 * num82 + num83 * num83));
+			float num84 = (float)Math.Sqrt(num82 * num82 + num83 * num83);
 			float num85 = num84;
 			if ((float.IsNaN(num82) && float.IsNaN(num83)) || (num82 == 0f && num83 == 0f))
 			{
-				num82 = (float)player.direction;
+				num82 = player.direction;
 				num83 = 0f;
 				num84 = 11f;
 			}
@@ -71,8 +71,8 @@ namespace AAMod.Items.Magic
 			{
 				float num165 = num82;
 				float num166 = num83;
-				num165 += (float)Main.rand.Next(-35, 36) * 0.02f;
-				num166 += (float)Main.rand.Next(-35, 36) * 0.02f;
+				num165 += Main.rand.Next(-35, 36) * 0.02f;
+				num166 += Main.rand.Next(-35, 36) * 0.02f;
 				int num167 = Projectile.NewProjectile(vector2.X, vector2.Y, num165, num166, player.beeType(), player.beeDamage(damage), player.beeKB(knockBack), player.whoAmI, 0f, 0f);
 				Main.projectile[num167].magic = true;
 				Main.projectile[num167].usesLocalNPCImmunity = true;

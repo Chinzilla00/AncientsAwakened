@@ -34,12 +34,12 @@ namespace AAMod.Items.Magic
             Tooltip.SetDefault("Casts crystal shards towards your cursor");
         }
 
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "StarcloudBar", 15);   //you need 10 Wood
 			recipe.AddIngredient(ItemID.Book, 1);
-            recipe.AddTile(TileID.Bookcases);   //at work bench
+            recipe.AddTile(TileID.Bookcases);   
             recipe.SetResult(this);  
             recipe.AddRecipe();
         }

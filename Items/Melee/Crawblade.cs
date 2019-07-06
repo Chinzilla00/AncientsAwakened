@@ -9,17 +9,17 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 32;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 56;              //Sword width
-            item.height = 65;             //Sword height
-            item.useTime = 19;          //how fast 
+            item.damage = 32;            
+            item.melee = true;            
+            item.width = 56;              
+            item.height = 65;             
+            item.useTime = 19;          
             item.useAnimation = 19;     
-            item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
+            item.useStyle = 1;        
             item.knockBack = 4;       
             item.rare = 5;
-            item.UseSound = SoundID.Item1;       //1 is the sound of the sword
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.UseSound = SoundID.Item1;       
+            item.autoReuse = true;   
             item.useTurn = true;
             item.value = Item.sellPrice(0, 1, 0, 0);
         }

@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.width = 14;
 			projectile.height = 14;
 			projectile.aiStyle = -1;
-			projectile.friendly = false;
+            projectile.friendly = false;
             projectile.hostile = true;
             projectile.penetrate = 1;
             projectile.tileCollide = true;
@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.9f) / 255f, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.4f) / 255f);
 
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             projectile.localAI[1]++;
             if (projectile.localAI[1] >= 60)
             {

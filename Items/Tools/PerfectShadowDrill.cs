@@ -34,7 +34,7 @@ namespace AAMod.Items.Tools
 			item.shootSpeed = 40f;
 		}
 
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod, "ShadowDrill");

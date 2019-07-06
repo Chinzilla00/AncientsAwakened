@@ -31,12 +31,12 @@ namespace AAMod.Items.Tools
       Tooltip.SetDefault("Can mine mythril and orichalcum.");
     }
 
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.PixieDust, 12);   //you need 1 DirtBlock
+            recipe.AddIngredient(ItemID.PixieDust, 12);   
 			recipe.AddIngredient(ItemID.CrystalShard, 15);
-            recipe.AddTile(TileID.Anvils);   //at work bench
+            recipe.AddTile(TileID.Anvils);   
             recipe.SetResult(this);  
             recipe.AddRecipe();
         }

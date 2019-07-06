@@ -57,7 +57,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public Color GetGlowAlpha()
         {
-            return new Color(200, 0, 50) * ((float)Main.mouseTextColor / 255f);
+            return new Color(200, 0, 50) * (Main.mouseTextColor / 255f);
         }
         public float auraPercent = 0f;
         public bool auraDirection = true;

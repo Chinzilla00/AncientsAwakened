@@ -38,10 +38,10 @@ namespace AAMod.Projectiles.Djinn
 			projectile.velocity.Y = projectile.velocity.Y + 0.075f;
 			for (int i = 0; i < 3; i++)
 			{
-				float xPos = projectile.velocity.X / 3f * (float)i;
-				float yPos = projectile.velocity.Y / 3f * (float)i;
+				float xPos = projectile.velocity.X / 3f * i;
+				float yPos = projectile.velocity.Y / 3f * i;
 				int eggroll = 14;
-				int dustIndex = Dust.NewDust(new Vector2(projectile.position.X + (float)eggroll, projectile.position.Y + (float)eggroll), projectile.width - eggroll * 2, projectile.height - eggroll * 2, 269, 0f, 0f, 100, default(Color), 1f);
+				int dustIndex = Dust.NewDust(new Vector2(projectile.position.X + eggroll, projectile.position.Y + eggroll), projectile.width - eggroll * 2, projectile.height - eggroll * 2, 269, 0f, 0f, 100, default(Color), 1f);
 				Main.dust[dustIndex].noGravity = true;
 				Main.dust[dustIndex].velocity *= 0.1f;
 				Main.dust[dustIndex].velocity += projectile.velocity * 0.5f;
@@ -53,7 +53,7 @@ namespace AAMod.Projectiles.Djinn
 			if (Main.rand.Next(8) == 0)
 			{
 				int eggplant = 16;
-				int dustIndex2 = Dust.NewDust(new Vector2(projectile.position.X + (float)eggplant, projectile.position.Y + (float)eggplant), projectile.width - eggplant * 2, projectile.height - eggplant * 2, 269, 0f, 0f, 100, default(Color), 0.5f);
+				int dustIndex2 = Dust.NewDust(new Vector2(projectile.position.X + eggplant, projectile.position.Y + eggplant), projectile.width - eggplant * 2, projectile.height - eggplant * 2, 269, 0f, 0f, 100, default(Color), 0.5f);
 				Main.dust[dustIndex2].velocity *= 0.25f;
 				Main.dust[dustIndex2].velocity += projectile.velocity * 0.5f;
 				return;

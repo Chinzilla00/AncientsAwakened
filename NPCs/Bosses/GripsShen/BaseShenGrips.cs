@@ -114,7 +114,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
-                writer.Write((float)internalAI[0]);
+                writer.Write(internalAI[0]);
             }
         }
 

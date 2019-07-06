@@ -54,8 +54,8 @@ namespace AAMod.Projectiles.Djinn
             Collision.ExpandVertically(point8.X, point8.Y, out num1127, out num1128, (int)num1125, (int)num1126);
             num1127++;
             num1128--;
-            Vector2 value72 = new Vector2((float)point8.X, (float)num1127) * 16f + new Vector2(8f);
-            Vector2 value73 = new Vector2((float)point8.X, (float)num1128) * 16f + new Vector2(8f);
+            Vector2 value72 = new Vector2(point8.X, num1127) * 16f + new Vector2(8f);
+            Vector2 value73 = new Vector2(point8.X, num1128) * 16f + new Vector2(8f);
             Vector2 vector145 = Vector2.Lerp(value72, value73, 0.5f);
             Vector2 value74 = new Vector2(0f, value73.Y - value72.Y);
             value74.X = value74.Y * 0.2f;

@@ -47,7 +47,7 @@ namespace AAMod.Tiles
                                 damage = 0;
                             }
                             tile.ClearTile();
-                            int num77 = Projectile.NewProjectile((float)(i * 16 + 8), (float)(j * 16 + 8), 0f, 0.41f, projectileType, damage, 0f, Main.myPlayer, 0f, 0f);
+                            int num77 = Projectile.NewProjectile(i * 16 + 8, j * 16 + 8, 0f, 0.41f, projectileType, damage, 0f, Main.myPlayer, 0f, 0f);
                             Main.projectile[num77].ai[0] = 1f;
                             WorldGen.SquareTileFrame(i, j, true);
                         }
@@ -55,7 +55,7 @@ namespace AAMod.Tiles
                 }
                 else if (Main.netMode == 2 && tile3 != null && !tile3.active())
                 {
-                    bool flag19 = !(tile2.active() && (TileID.Sets.BasicChest[(int)tile2.type] || TileID.Sets.BasicChestFake[(int)tile2.type] || tile2.type == 323 || TileLoader.IsDresser(tile2.type)));
+                    bool flag19 = !(tile2.active() && (TileID.Sets.BasicChest[tile2.type] || TileID.Sets.BasicChestFake[tile2.type] || tile2.type == 323 || TileLoader.IsDresser(tile2.type)));
                     if (flag19)
                     {
                         int damage2 = 10;
@@ -70,7 +70,7 @@ namespace AAMod.Tiles
                         bool flag20 = false;
                         for (int m = 0; m < 1000; m++)
                         {
-                            if (Main.projectile[m].active && Main.projectile[m].owner == Main.myPlayer && Main.projectile[m].type == projectileType && Math.Abs(Main.projectile[m].timeLeft - 3600) < 60 && Main.projectile[m].Distance(new Vector2((float)(i * 16 + 8), (float)(j * 16 + 10))) < 4f)
+                            if (Main.projectile[m].active && Main.projectile[m].owner == Main.myPlayer && Main.projectile[m].type == projectileType && Math.Abs(Main.projectile[m].timeLeft - 3600) < 60 && Main.projectile[m].Distance(new Vector2(i * 16 + 8, j * 16 + 10)) < 4f)
                             {
                                 flag20 = true;
                                 break;
@@ -78,7 +78,7 @@ namespace AAMod.Tiles
                         }
                         if (!flag20)
                         {
-                            int num79 = Projectile.NewProjectile((float)(i * 16 + 8), (float)(j * 16 + 8), 0f, 2.5f, projectileType, damage2, 0f, Main.myPlayer, 0f, 0f);
+                            int num79 = Projectile.NewProjectile(i * 16 + 8, j * 16 + 8, 0f, 2.5f, projectileType, damage2, 0f, Main.myPlayer, 0f, 0f);
                             Main.projectile[num79].velocity.Y = 0.5f;
                             Projectile expr_7AAA_cp_0 = Main.projectile[num79];
                             expr_7AAA_cp_0.position.Y = expr_7AAA_cp_0.position.Y + 2f;

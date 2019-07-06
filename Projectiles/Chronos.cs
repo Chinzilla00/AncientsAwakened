@@ -34,9 +34,9 @@ namespace AAMod.Projectiles
             {
                 float num3 = 400f;
                 Vector2 vector = projectile.velocity;
-                Vector2 vector2 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+                Vector2 vector2 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
                 vector2.Normalize();
-                vector2 *= (float)Main.rand.Next(10, 41) * 0.1f;
+                vector2 *= Main.rand.Next(10, 41) * 0.1f;
                 if (Main.rand.Next(3) == 0)
                 {
                     vector2 *= 2f;
@@ -47,9 +47,9 @@ namespace AAMod.Projectiles
                 {
                     if (Main.npc[j].CanBeChasedBy(this, false))
                     {
-                        float num4 = Main.npc[j].position.X + (float)(Main.npc[j].width / 2);
-                        float num5 = Main.npc[j].position.Y + (float)(Main.npc[j].height / 2);
-                        float num6 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num4) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num5);
+                        float num4 = Main.npc[j].position.X + Main.npc[j].width / 2;
+                        float num5 = Main.npc[j].position.Y + Main.npc[j].height / 2;
+                        float num6 = Math.Abs(projectile.position.X + projectile.width / 2 - num4) + Math.Abs(projectile.position.Y + projectile.height / 2 - num5);
                         if (num6 < num3 && Collision.CanHit(projectile.position, projectile.width, projectile.height, Main.npc[j].position, Main.npc[j].width, Main.npc[j].height))
                         {
                             num3 = num6;

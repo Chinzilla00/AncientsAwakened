@@ -28,8 +28,8 @@ Inflicts Moonrazed");
             item.useAmmo = AmmoID.Rocket;
             item.knockBack = 8f;
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.UseSound = SoundID.Item38;      //1 is the sound of the sword
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.UseSound = SoundID.Item38;      
+            item.autoReuse = true;   
             item.shootSpeed = 20f;
             item.shoot = mod.ProjectileType("Moonblow");
             item.rare = 9; AARarity = 13;

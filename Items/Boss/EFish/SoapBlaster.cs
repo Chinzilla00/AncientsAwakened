@@ -33,12 +33,12 @@ namespace AAMod.Items.Boss.EFish
 		{
 			Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
 			float num75 = item.shootSpeed;
-			float num82 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
-			float num83 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
-			float num84 = (float)Math.Sqrt((double)(num82 * num82 + num83 * num83));
+			float num82 = Main.mouseX + Main.screenPosition.X - vector2.X;
+			float num83 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
+			float num84 = (float)Math.Sqrt(num82 * num82 + num83 * num83);
 			if ((float.IsNaN(num82) && float.IsNaN(num83)) || (num82 == 0f && num83 == 0f))
 			{
-				num82 = (float)player.direction;
+				num82 = player.direction;
 				num83 = 0f;
 				num84 = num75;
 			}
@@ -52,8 +52,8 @@ namespace AAMod.Items.Boss.EFish
 			{
 				float num180 = num82;
 				float num181 = num83;
-				num180 += (float)Main.rand.Next(-20, 20) * 0.1f;
-				num181 += (float)Main.rand.Next(-20, 20) * 0.1f;
+				num180 += Main.rand.Next(-20, 20) * 0.1f;
+				num181 += Main.rand.Next(-20, 20) * 0.1f;
 				Projectile.NewProjectile(vector2.X, vector2.Y, num180*2, num181*2, type, damage, knockBack, player.whoAmI);
 			}
 			return false;

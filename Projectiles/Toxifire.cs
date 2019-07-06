@@ -82,7 +82,7 @@ namespace AAMod.Projectiles
 			{
 				projectile.ai[0] += 1f;
 			}
-			projectile.rotation += 0.3f * (float)projectile.direction;
+			projectile.rotation += 0.3f * projectile.direction;
 			return;	
         }
 

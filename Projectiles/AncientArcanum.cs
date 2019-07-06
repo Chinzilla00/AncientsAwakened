@@ -67,7 +67,7 @@ namespace AAMod.Projectiles
 							92
 						}), 0f, 0f, 0, default(Color), 1f)];
 						dust28.noGravity = true;
-						dust28.position = projectile.Center - vector140 * (float)Main.rand.Next(10, 21);
+						dust28.position = projectile.Center - vector140 * Main.rand.Next(10, 21);
 						dust28.velocity = vector140.RotatedBy(1.5707963705062866, default(Vector2)) * 6f;
 						dust28.scale = 0.5f + Main.rand.NextFloat();
 						dust28.fadeIn = 0.5f;
@@ -113,7 +113,7 @@ namespace AAMod.Projectiles
 						Vector2 vector142 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
 						Dust dust30 = Main.dust[Dust.NewDust(projectile.Center - vector142 * 30f, 0, 0, 88, 0f, 0f, 0, default(Color), 1f)];
 						dust30.noGravity = true;
-						dust30.position = projectile.Center - vector142 * (float)Main.rand.Next(10, 21);
+						dust30.position = projectile.Center - vector142 * Main.rand.Next(10, 21);
 						dust30.velocity = vector142.RotatedBy(1.5707963705062866, default(Vector2)) * 6f;
 						dust30.scale = 0.9f + Main.rand.NextFloat();
 						dust30.fadeIn = 0.5f;
@@ -121,7 +121,7 @@ namespace AAMod.Projectiles
 						vector142 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
 						dust30 = Main.dust[Dust.NewDust(projectile.Center - vector142 * 30f, 0, 0, 92, 0f, 0f, 0, default(Color), 1f)];
 						dust30.noGravity = true;
-						dust30.position = projectile.Center - vector142 * (float)Main.rand.Next(10, 21);
+						dust30.position = projectile.Center - vector142 * Main.rand.Next(10, 21);
 						dust30.velocity = vector142.RotatedBy(1.5707963705062866, default(Vector2)) * 6f;
 						dust30.scale = 0.9f + Main.rand.NextFloat();
 						dust30.fadeIn = 0.5f;
@@ -133,7 +133,7 @@ namespace AAMod.Projectiles
 						Vector2 vector143 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
 						Dust dust31 = Main.dust[Dust.NewDust(projectile.Center - vector143 * 30f, 0, 0, 236, 0f, 0f, 0, default(Color), 1f)];
 						dust31.noGravity = true;
-						dust31.position = projectile.Center - vector143 * (float)Main.rand.Next(20, 31);
+						dust31.position = projectile.Center - vector143 * Main.rand.Next(20, 31);
 						dust31.velocity = vector143.RotatedBy(-1.5707963705062866, default(Vector2)) * 5f;
 						dust31.scale = 0.9f + Main.rand.NextFloat();
 						dust31.fadeIn = 0.5f;
@@ -144,7 +144,7 @@ namespace AAMod.Projectiles
 				if (projectile.ai[0] % 30f == 0f && projectile.ai[0] < 241f && Main.myPlayer == projectile.owner)
 				{
 					Vector2 vector144 = Vector2.UnitY.RotatedByRandom(6.2831854820251465) * 12f;
-					Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector144.X, vector144.Y, 618, projectile.damage / 2, 0f, projectile.owner, 0f, (float)projectile.whoAmI);
+					Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector144.X, vector144.Y, 618, projectile.damage / 2, 0f, projectile.owner, 0f, projectile.whoAmI);
 				}
 				Vector2 vector145 = projectile.Center;
 				float num1015 = 800f;
@@ -157,7 +157,7 @@ namespace AAMod.Projectiles
 						if (Main.npc[num1017].CanBeChasedBy(projectile, false))
 						{
 							Vector2 center13 = Main.npc[num1017].Center;
-							if (projectile.Distance(center13) < num1015 && Collision.CanHit(new Vector2(projectile.position.X + (float)(projectile.width / 2), projectile.position.Y + (float)(projectile.height / 2)), 1, 1, Main.npc[num1017].position, Main.npc[num1017].width, Main.npc[num1017].height))
+							if (projectile.Distance(center13) < num1015 && Collision.CanHit(new Vector2(projectile.position.X + projectile.width / 2, projectile.position.Y + projectile.height / 2), 1, 1, Main.npc[num1017].position, Main.npc[num1017].width, Main.npc[num1017].height))
 							{
 								num1015 = projectile.Distance(center13);
 								vector145 = center13;
@@ -169,11 +169,11 @@ namespace AAMod.Projectiles
 					}
 					if (flag59)
 					{
-						if (projectile.ai[1] != (float)(num1016 + 1))
+						if (projectile.ai[1] != num1016 + 1)
 						{
 							projectile.netUpdate = true;
 						}
-						projectile.ai[1] = (float)(num1016 + 1);
+						projectile.ai[1] = num1016 + 1;
 					}
 					flag59 = false;
 				}
@@ -194,15 +194,15 @@ namespace AAMod.Projectiles
 				{
 					float num1019 = 4f;
 					int num1020 = 8;
-					Vector2 vector146 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+					Vector2 vector146 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
 					float num1021 = vector145.X - vector146.X;
 					float num1022 = vector145.Y - vector146.Y;
-					float num1023 = (float)Math.Sqrt((double)(num1021 * num1021 + num1022 * num1022));
+					float num1023 = (float)Math.Sqrt(num1021 * num1021 + num1022 * num1022);
 					num1023 = num1019 / num1023;
 					num1021 *= num1023;
 					num1022 *= num1023;
-					projectile.velocity.X = (projectile.velocity.X * (float)(num1020 - 1) + num1021) / (float)num1020;
-					projectile.velocity.Y = (projectile.velocity.Y * (float)(num1020 - 1) + num1022) / (float)num1020;
+					projectile.velocity.X = (projectile.velocity.X * (num1020 - 1) + num1021) / num1020;
+					projectile.velocity.Y = (projectile.velocity.Y * (num1020 - 1) + num1022) / num1020;
 				}
 			}
 			if (projectile.alpha < 150)
@@ -234,18 +234,18 @@ namespace AAMod.Projectiles
 			for (int num95 = 0; num95 < 4; num95 = num3 + 1)
 			{
 				int num96 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 236, 0f, 0f, 100, default(Color), 1.5f);
-				Main.dust[num96].position = projectile.Center + Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)projectile.width / 2f;
+				Main.dust[num96].position = projectile.Center + Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * projectile.width / 2f;
 				num3 = num95;
 			}
 			for (int num97 = 0; num97 < 30; num97 = num3 + 1)
 			{
 				int num98 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 59, 0f, 0f, 200, default(Color), 3.7f);
-				Main.dust[num98].position = projectile.Center + Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)projectile.width / 2f;
+				Main.dust[num98].position = projectile.Center + Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * projectile.width / 2f;
 				Main.dust[num98].noGravity = true;
 				Dust dust = Main.dust[num98];
 				dust.velocity *= 3f;
 				num98 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 92, 0f, 0f, 100, default(Color), 1.5f);
-				Main.dust[num98].position = projectile.Center + Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)projectile.width / 2f;
+				Main.dust[num98].position = projectile.Center + Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * projectile.width / 2f;
 				dust = Main.dust[num98];
 				dust.velocity *= 2f;
 				Main.dust[num98].noGravity = true;
@@ -256,7 +256,7 @@ namespace AAMod.Projectiles
 			for (int num99 = 0; num99 < 10; num99 = num3 + 1)
 			{
 				int num100 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 59, 0f, 0f, 0, default(Color), 2.7f);
-				Main.dust[num100].position = projectile.Center + Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy((double)projectile.velocity.ToRotation(), default(Vector2)) * (float)projectile.width / 2f;
+				Main.dust[num100].position = projectile.Center + Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation(), default(Vector2)) * projectile.width / 2f;
 				Main.dust[num100].noGravity = true;
 				Dust dust = Main.dust[num100];
 				dust.velocity *= 3f;
@@ -265,7 +265,7 @@ namespace AAMod.Projectiles
 			for (int num101 = 0; num101 < 10; num101 = num3 + 1)
 			{
 				int num102 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 236, 0f, 0f, 0, default(Color), 1.5f);
-				Main.dust[num102].position = projectile.Center + Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy((double)projectile.velocity.ToRotation(), default(Vector2)) * (float)projectile.width / 2f;
+				Main.dust[num102].position = projectile.Center + Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation(), default(Vector2)) * projectile.width / 2f;
 				Main.dust[num102].noGravity = true;
 				Dust dust = Main.dust[num102];
 				dust.velocity *= 3f;
@@ -273,21 +273,21 @@ namespace AAMod.Projectiles
 			}
 			for (int num103 = 0; num103 < 2; num103 = num3 + 1)
 			{
-				int num104 = Gore.NewGore(projectile.position + new Vector2((float)(projectile.width * Main.rand.Next(100)) / 100f, (float)(projectile.height * Main.rand.Next(100)) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
-				Main.gore[num104].position = projectile.Center + Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)projectile.width / 2f;
+				int num104 = Gore.NewGore(projectile.position + new Vector2(projectile.width * Main.rand.Next(100) / 100f, projectile.height * Main.rand.Next(100) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
+				Main.gore[num104].position = projectile.Center + Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * projectile.width / 2f;
 				Gore gore = Main.gore[num104];
 				gore.velocity *= 0.3f;
 				Gore expr_3C56_cp_0_cp_0 = Main.gore[num104];
-				expr_3C56_cp_0_cp_0.velocity.X = expr_3C56_cp_0_cp_0.velocity.X + (float)Main.rand.Next(-10, 11) * 0.05f;
+				expr_3C56_cp_0_cp_0.velocity.X = expr_3C56_cp_0_cp_0.velocity.X + Main.rand.Next(-10, 11) * 0.05f;
 				Gore expr_3C81_cp_0_cp_0 = Main.gore[num104];
-				expr_3C81_cp_0_cp_0.velocity.Y = expr_3C81_cp_0_cp_0.velocity.Y + (float)Main.rand.Next(-10, 11) * 0.05f;
+				expr_3C81_cp_0_cp_0.velocity.Y = expr_3C81_cp_0_cp_0.velocity.Y + Main.rand.Next(-10, 11) * 0.05f;
 				num3 = num103;
 			}
 			if (Main.myPlayer == projectile.owner)
 			{
 				for (int num105 = 0; num105 < 1000; num105 = num3 + 1)
 				{
-					if (Main.projectile[num105].active && Main.projectile[num105].type == 618 && Main.projectile[num105].ai[1] == (float)projectile.whoAmI)
+					if (Main.projectile[num105].active && Main.projectile[num105].type == 618 && Main.projectile[num105].ai[1] == projectile.whoAmI)
 					{
 						Main.projectile[num105].Kill();
 					}
@@ -304,35 +304,35 @@ namespace AAMod.Projectiles
 				for (int num110 = 0; num110 < num106; num110 = num3 + 1)
 				{
 					Vector2 vector4 = projectile.Center + Utils.RandomVector2(Main.rand, -30f, 30f);
-					Vector2 vector5 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+					Vector2 vector5 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 					while (vector5.X == 0f && vector5.Y == 0f)
 					{
-						vector5 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+						vector5 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 					}
 					vector5.Normalize();
 					if (vector5.Y > 0.2f)
 					{
 						vector5.Y *= -1f;
 					}
-					vector5 *= (float)Main.rand.Next(70, 101) * 0.1f;
-					Projectile.NewProjectile(vector4.X, vector4.Y, vector5.X, vector5.Y, 620, (int)((double)projectile.damage * 0.65), projectile.knockBack * 0.8f, projectile.owner, (float)num108, 0f);
+					vector5 *= Main.rand.Next(70, 101) * 0.1f;
+					Projectile.NewProjectile(vector4.X, vector4.Y, vector5.X, vector5.Y, 620, (int)(projectile.damage * 0.65), projectile.knockBack * 0.8f, projectile.owner, num108, 0f);
 					num3 = num110;
 				}
 				for (int num111 = 0; num111 < num107; num111 = num3 + 1)
 				{
 					Vector2 vector6 = projectile.Center + Utils.RandomVector2(Main.rand, -30f, 30f);
-					Vector2 vector7 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+					Vector2 vector7 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 					while (vector7.X == 0f && vector7.Y == 0f)
 					{
-						vector7 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+						vector7 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 					}
 					vector7.Normalize();
 					if (vector7.Y > 0.4f)
 					{
 						vector7.Y *= -1f;
 					}
-					vector7 *= (float)Main.rand.Next(40, 81) * 0.1f;
-					Projectile.NewProjectile(vector6.X, vector6.Y, vector7.X, vector7.Y, 620, (int)((double)projectile.damage * 0.65), projectile.knockBack * 0.8f, projectile.owner, (float)num109, 0f);
+					vector7 *= Main.rand.Next(40, 81) * 0.1f;
+					Projectile.NewProjectile(vector6.X, vector6.Y, vector7.X, vector7.Y, 620, (int)(projectile.damage * 0.65), projectile.knockBack * 0.8f, projectile.owner, num109, 0f);
 					num3 = num111;
 				}
 			}
@@ -340,12 +340,12 @@ namespace AAMod.Projectiles
 
 		public override void PostDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
-			Vector2 vector53 = projectile.position + new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
+			Vector2 vector53 = projectile.position + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
 			Texture2D texture2D31 = Main.projectileTexture[projectile.type];
 			Microsoft.Xna.Framework.Color color25 = new Color(250 - 5 * 10, 250 - 5 * 10, 250 - 5 * 10, 150 - 5 * 10);
 			Color alpha4 = projectile.GetAlpha(color25);
 			SpriteEffects spriteEffects = SpriteEffects.None;
-			Vector2 origin8 = new Vector2((float)texture2D31.Width, (float)texture2D31.Height) / 2f;
+			Vector2 origin8 = new Vector2(texture2D31.Width, texture2D31.Height) / 2f;
 			Microsoft.Xna.Framework.Color color57 = alpha4 * 0.8f;
 			color57.A /= 2;
 			Color color58 = Color.Lerp(alpha4, Color.Black, 0.5f);

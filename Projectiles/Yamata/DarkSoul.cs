@@ -43,8 +43,8 @@ namespace AAMod.Projectiles.Yamata
             }
             for (int num572 = 0; num572 < 5; num572++)
             {
-                float num573 = projectile.velocity.X * 0.2f * (float)num572;
-                float num574 = -(projectile.velocity.Y * 0.2f) * (float)num572;
+                float num573 = projectile.velocity.X * 0.2f * num572;
+                float num574 = -(projectile.velocity.Y * 0.2f) * num572;
                 int num575 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDustLight>(), 0f, 0f, 100, default(Color), 1.3f);
                 Main.dust[num575].noGravity = true;
                 Main.dust[num575].velocity *= 0f;
@@ -62,7 +62,7 @@ namespace AAMod.Projectiles.Yamata
 
             if (projectile.ai[aislotHomingCooldown] > homingDelay)
             {
-                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
+                projectile.ai[aislotHomingCooldown] = homingDelay; 
 
                 int foundTarget = HomeOnTarget();
                 if (foundTarget != -1)
@@ -89,7 +89,7 @@ namespace AAMod.Projectiles.Yamata
                     if (distance <= homingMaximumRangeInPixels &&
                         (
                             selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) 
                     )
                         selectedTarget = i;
                 }

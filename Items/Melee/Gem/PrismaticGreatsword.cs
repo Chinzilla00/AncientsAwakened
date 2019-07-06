@@ -9,18 +9,18 @@ namespace AAMod.Items.Melee.Gem   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 37;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 58;              //Sword width
-            item.height = 60;             //Sword height
-            item.useTime = 16;          //how fast 
+            item.damage = 37;            
+            item.melee = true;            
+            item.width = 58;              
+            item.height = 60;             
+            item.useTime = 16;          
             item.useAnimation = 16;     
-            item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 5;      //Sword knockback
+            item.useStyle = 1;        
+            item.knockBack = 5;      
             item.value = 20000;        
             item.rare = 4;
             item.UseSound = new LegacySoundStyle(2, 8, Terraria.Audio.SoundType.Sound);
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.autoReuse = true;   
             item.useTurn = true; 
 			item.shoot = mod.ProjectileType("PrismBolt");
 			item.shootSpeed = 13f;

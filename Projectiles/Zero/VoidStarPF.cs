@@ -20,11 +20,13 @@ namespace AAMod.Projectiles.Zero
             projectile.friendly = true;
             projectile.ranged = true;
             projectile.ignoreWater = true;
-            projectile.penetrate = 100;
+            projectile.penetrate = 20;
             projectile.alpha = 130;
             projectile.scale = .01f;
             projectile.alpha = 255;
             projectile.tileCollide = false;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 5;
         }
 
         private float RingRotation = 0f;
@@ -42,17 +44,17 @@ namespace AAMod.Projectiles.Zero
                 projectile.alpha = 80;
             }
 
-            projectile.scale = projectile.penetrate / 100;
+            projectile.scale = projectile.penetrate / 20;
 
             const int aislotHomingCooldown = 0;
-            const int homingDelay = 10;
+            const int homingDelay = 30;
             const float desiredFlySpeedInPixelsPerFrame = 5;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
             if (projectile.ai[aislotHomingCooldown] > homingDelay)
             {
-                projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
+                projectile.ai[aislotHomingCooldown] = homingDelay; 
 
                 int foundTarget = HomeOnTarget();
                 if (foundTarget != -1)
@@ -79,7 +81,7 @@ namespace AAMod.Projectiles.Zero
                     if (distance <= homingMaximumRangeInPixels &&
                         (
                             selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) 
                     )
                         selectedTarget = i;
                 }

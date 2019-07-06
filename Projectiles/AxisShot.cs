@@ -53,10 +53,10 @@ namespace AAMod.Projectiles
 						}
 						num3 = num567;
 					}
-					float num568 = (float)projectile.damage * 0.8f;
+					float num568 = projectile.damage * 0.8f;
 					if (num566 > 100)
 					{
-						float num569 = (float)(num566 - 100);
+						float num569 = num566 - 100;
 						num569 = 1f - num569 / 110f;
 						num568 *= num569;
 					}
@@ -108,9 +108,9 @@ namespace AAMod.Projectiles
 					{
 						projectile.localAI[0] -= 7f;
 					}
-					if (num568 > (float)projectile.damage * 0.1f)
+					if (num568 > projectile.damage * 0.1f)
 					{
-						Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, mod.ProjectileType("AxisSnow"), (int)num568, projectile.knockBack * 0.55f, projectile.owner, 0f, (float)Main.rand.Next(3));
+						Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, mod.ProjectileType("AxisSnow"), (int)num568, projectile.knockBack * 0.55f, projectile.owner, 0f, Main.rand.Next(3));
 						return;
 					}
 				}
@@ -123,8 +123,8 @@ namespace AAMod.Projectiles
 			int num3;
 			for (int num369 = 4; num369 < 31; num369 = num3 + 1)
 			{
-				float num370 = projectile.oldVelocity.X * (30f / (float)num369);
-				float num371 = projectile.oldVelocity.Y * (30f / (float)num369);
+				float num370 = projectile.oldVelocity.X * (30f / num369);
+				float num371 = projectile.oldVelocity.Y * (30f / num369);
 				int num372 = Dust.NewDust(new Vector2(projectile.oldPosition.X - num370, projectile.oldPosition.Y - num371), 8, 8, 180, projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default(Color), 1.2f);
 				Main.dust[num372].noGravity = true;
 				Dust dust = Main.dust[num372];
@@ -169,7 +169,7 @@ namespace AAMod.Projectiles
 		
 		public override Color? GetAlpha(Color newColor)
 		{
-			float num6 = 1f - (float)projectile.alpha / 255f;
+			float num6 = 1f - projectile.alpha / 255f;
 			return new Color((int)(250f * num6), (int)(250f * num6), (int)(250f * num6), (int)(100f * num6));
 		}
     }

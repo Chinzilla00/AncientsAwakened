@@ -34,12 +34,12 @@ namespace AAMod.Items.Magic
             Item.staff[item.type] = true;
         }
 
-		public override void AddRecipes()  //How to craft this item
+		public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.WandofSparking, 1);   //you need 10 Wood
 			recipe.AddIngredient(ItemID.Gel, 20);
-            recipe.AddTile(TileID.WorkBenches);   //at work bench
+            recipe.AddTile(TileID.WorkBenches);   
             recipe.SetResult(this);  
             recipe.AddRecipe();
         }

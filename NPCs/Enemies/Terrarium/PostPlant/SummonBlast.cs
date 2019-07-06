@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             {
                 projectile.tileCollide = true;
             }
-            if ((double)projectile.position.Y < Main.worldSurface * 16.0)
+            if (projectile.position.Y < Main.worldSurface * 16.0)
             {
                 projectile.tileCollide = true;
             }

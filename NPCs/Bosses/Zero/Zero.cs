@@ -304,7 +304,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
 
             internalAI[3]++;
-            if (internalAI[3] < 1800)
+            if (internalAI[3] < 2600)
             {
                 if (Distance < 160f)
                 {

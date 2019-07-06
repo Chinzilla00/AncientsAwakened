@@ -68,10 +68,10 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
             if (npc.justHit)
             {
-                npc.ai[3] -= (float)Main.rand.Next(10, 21);
+                npc.ai[3] -= Main.rand.Next(10, 21);
                 if (!Main.expertMode)
                 {
-                    npc.ai[3] -= (float)Main.rand.Next(10, 21);
+                    npc.ai[3] -= Main.rand.Next(10, 21);
                 }
             }
             npc.ai[3] += 1f;
@@ -79,11 +79,11 @@ namespace AAMod.NPCs.Bosses.Broodmother
             {
                 npc.Transform(mod.NPCType("Broodmini"));
             }
-            if (Main.netMode != 1 && npc.velocity.Y == 0f && (double)Math.Abs(npc.velocity.X) < 0.2 && (double)npc.ai[3] >= (double)hatchTimer * 0.75)
+            if (Main.netMode != 1 && npc.velocity.Y == 0f && Math.Abs(npc.velocity.X) < 0.2 && npc.ai[3] >= hatchTimer * 0.75)
             {
-                float wiggleAmount = npc.ai[3] - ((float)hatchTimer * 0.75f);
-                wiggleAmount /= (float)hatchTimer * 0.25f;
-                if ((float)Main.rand.Next(-10, 120) < wiggleAmount * 100f)
+                float wiggleAmount = npc.ai[3] - (hatchTimer * 0.75f);
+                wiggleAmount /= hatchTimer * 0.25f;
+                if (Main.rand.Next(-10, 120) < wiggleAmount * 100f)
                 {
                     npc.velocity.Y = npc.velocity.Y - (Main.rand.Next(20, 40) * 0.025f);
                     npc.velocity.X = npc.velocity.X + (Main.rand.Next(-20, 20) * 0.025f);

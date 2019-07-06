@@ -44,7 +44,7 @@ namespace AAMod.Items.Melee
             {
                 return;
             }
-            float num = (float)damage * 0.075f;
+            float num = damage * 0.075f;
             if ((int)num == 0)
             {
                 return;
@@ -57,7 +57,7 @@ namespace AAMod.Items.Melee
             int num2 = item.owner;
             if (crit)
             {
-                Projectile.NewProjectile(target.position.X, target.position.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, item.owner, (float)num2, num);
+                Projectile.NewProjectile(target.position.X, target.position.Y, 0f, 0f, ProjectileID.VampireHeal, 0, 0f, item.owner, num2, num);
             }
         }
 		

@@ -25,18 +25,18 @@ Inflicts Discordian Inferno");
         public override void SetDefaults()
         {
             item.shoot = mod.ProjectileType("Meteor");
-            item.damage = 400;            //Sword damage
+            item.damage = 400;            
             item.magic = true;            //if it's magic
-            item.width = 32;              //Sword width
-            item.height = 36;             //Sword height
-            item.useTime = 16;          //how fast 
+            item.width = 32;              
+            item.height = 36;             
+            item.useTime = 16;          
             item.useAnimation = 16;
-            item.useStyle = 5;      //Style is how this item is used, 1 is the style of the sword
+            item.useStyle = 5;      
             item.knockBack = .5f;
             item.value = Item.sellPrice(1, 50, 0, 0);
             item.mana = 10;
             item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.autoReuse = true;   
             item.useTurn = true;
             item.shootSpeed = 16f;
         }

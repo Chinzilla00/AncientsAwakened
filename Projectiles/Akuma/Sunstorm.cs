@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
+using System.IO;
 using Terraria;
-using Terraria.ID;
+using BaseMod;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Akuma
@@ -24,23 +25,23 @@ namespace AAMod.Projectiles.Akuma
             projectile.extraUpdates = 5;
             projectile.penetrate = -1;
         }
-
-
-        private void HandleMovement(Vector2 wetVelocity, out int overrideWidth, out int overrideHeight)
+        public float[] internalAI = new float[1];
+        public override void SendExtraAI(BinaryWriter writer)
         {
-            bool flag = false;
-            overrideWidth = -1;
-            overrideHeight = -1;
-            bool? flag3 = ProjectileID.Sets.ForcePlateDetection[projectile.type];
-            bool flag4 = flag3.HasValue && !flag3.Value;
-            bool flag5 = flag3.HasValue && flag3.Value;
-            if (flag)
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
             {
-                projectile.ai[0] = 0f;
-                projectile.ai[1] = -1f;
-                projectile.netUpdate = true;
+                writer.Write(internalAI[0]);
             }
+        }
 
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+            }
         }
 
         public override void AI()
@@ -87,13 +88,26 @@ namespace AAMod.Projectiles.Akuma
                     projectile.frameCounter = 0;
                     projectile.frame++;
                 }
-                if (projectile.ai[0] >= (float)(Main.projFrames[projectile.type] * projectile.MaxUpdates * 3))
+                if (projectile.ai[0] >= Main.projFrames[projectile.type] * projectile.MaxUpdates * 3)
                 {
                     projectile.Kill();
                 }
                 return;
             }
             projectile.alpha = 255;
+            internalAI[0]++;
+            if (internalAI[0] > 20)
+            {
+                internalAI[0] = 20; 
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
+                {
+                    NPC n = Main.npc[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * 30;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / 30);
+                }
+            }
             if (projectile.numUpdates == 0)
             {
                 int num185 = -1;
@@ -119,6 +133,30 @@ namespace AAMod.Projectiles.Akuma
                     return;
                 }
             }
+        }
+
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 400;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
+                {
+                    float distance = projectile.Distance(n.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                        (
+                            selectedTarget == -1 || //there is no selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) 
+                    )
+                        selectedTarget = i;
+                }
+            }
+
+            return selectedTarget;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

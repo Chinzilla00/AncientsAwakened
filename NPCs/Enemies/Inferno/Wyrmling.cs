@@ -75,22 +75,22 @@ namespace AAMod.NPCs.Bosses.Wyrmling
                         if (segment == 0 || segment == 1)
                         {
                             latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmlingBody"), npc.whoAmI, 0, latestNPC);
-                            Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                            Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                            Main.npc[latestNPC].realLife = npc.whoAmI;
+                            Main.npc[latestNPC].ai[3] = npc.whoAmI;
                             segment += 1;
                         }
                         if (segment == 2)
                         {
                             latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmlingTail1"), npc.whoAmI, 0, latestNPC);
-                            Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                            Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                            Main.npc[latestNPC].realLife = npc.whoAmI;
+                            Main.npc[latestNPC].ai[3] = npc.whoAmI;
                             segment += 1;
                         }
                     }
 
                     latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("WyrmlingTail2"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[(int)latestNPC].realLife = npc.whoAmI;
-                    Main.npc[(int)latestNPC].ai[3] = npc.whoAmI;
+                    Main.npc[latestNPC].realLife = npc.whoAmI;
+                    Main.npc[latestNPC].ai[3] = npc.whoAmI;
 
                     npc.ai[0] = 1;
                     npc.netUpdate = true;
@@ -116,11 +116,11 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 			{
 				for (int j = minTilePosY; j < maxTilePosY; ++j)
 				{
-					if (Main.tile[i, j] != null && (Main.tile[i, j].nactive() && (Main.tileSolid[(int)Main.tile[i, j].type] || Main.tileSolidTop[(int)Main.tile[i, j].type] && (int)Main.tile[i, j].frameY == 0) || (int)Main.tile[i, j].liquid > 64))
+					if (Main.tile[i, j] != null && (Main.tile[i, j].nactive() && (Main.tileSolid[Main.tile[i, j].type] || Main.tileSolidTop[Main.tile[i, j].type] && Main.tile[i, j].frameY == 0) || Main.tile[i, j].liquid > 64))
 					{
 						Vector2 vector2;
-						vector2.X = (float)(i * 16);
-						vector2.Y = (float)(j * 16);
+						vector2.X = i * 16;
+						vector2.Y = j * 16;
 						if (npc.position.X + npc.width > vector2.X && npc.position.X < vector2.X + 16.0 && (npc.position.Y + npc.height > (double)vector2.Y && npc.position.Y < vector2.Y + 16.0))
 						{
 							collision = true;
@@ -137,10 +137,10 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 			float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
 			float targetYPos = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2);
 
-			float targetRoundedPosX = (float)((int)(targetXPos / 16.0) * 16);
-			float targetRoundedPosY = (float)((int)(targetYPos / 16.0) * 16);
-			npcCenter.X = (float)((int)(npcCenter.X / 16.0) * 16);
-			npcCenter.Y = (float)((int)(npcCenter.Y / 16.0) * 16);
+			float targetRoundedPosX = (int)(targetXPos / 16.0) * 16;
+			float targetRoundedPosY = (int)(targetYPos / 16.0) * 16;
+			npcCenter.X = (int)(npcCenter.X / 16.0) * 16;
+			npcCenter.Y = (int)(npcCenter.Y / 16.0) * 16;
 			float dirX = targetRoundedPosX - npcCenter.X;
 			float dirY = targetRoundedPosY - npcCenter.Y;
 			npc.TargetClosest(true);
@@ -209,12 +209,12 @@ namespace AAMod.NPCs.Bosses.Wyrmling
             if (Main.player[npc.target].dead)
             {
                 npc.velocity.Y = npc.velocity.Y + 1f;
-                if ((double)npc.position.Y > Main.rockLayer * 16.0)
+                if (npc.position.Y > Main.rockLayer * 16.0)
                 {
                     npc.velocity.Y = npc.velocity.Y + 1f;
                     speed = 30f;
                 }
-                if ((double)npc.position.Y > Main.rockLayer * 16.0)
+                if (npc.position.Y > Main.rockLayer * 16.0)
                 {
                     for (int num957 = 0; num957 < 200; num957++)
                     {
@@ -343,16 +343,16 @@ namespace AAMod.NPCs.Bosses.Wyrmling
             if (npc.ai[1] < (double)Main.npc.Length)
             {
                 // We're getting the center of this NPC.
-                Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
                 // Then using that center, we calculate the direction towards the 'parent NPC' of this NPC.
-                float dirX = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - npcCenter.X;
-                float dirY = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - npcCenter.Y;
+                float dirX = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - npcCenter.X;
+                float dirY = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - npcCenter.Y;
                 // We then use Atan2 to get a correct rotation towards that parent NPC.
                 npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
                 // We also get the length of the direction vector.
                 float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
                 // We calculate a new, correct distance.
-                float dist = (length - (float)npc.width) / length;
+                float dist = (length - npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
 
@@ -449,16 +449,16 @@ namespace AAMod.NPCs.Bosses.Wyrmling
             if (npc.ai[1] < (double)Main.npc.Length)
             {
                 // We're getting the center of this NPC.
-                Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
                 // Then using that center, we calculate the direction towards the 'parent NPC' of this NPC.
-                float dirX = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - npcCenter.X;
-                float dirY = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - npcCenter.Y;
+                float dirX = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - npcCenter.X;
+                float dirY = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - npcCenter.Y;
                 // We then use Atan2 to get a correct rotation towards that parent NPC.
                 npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
                 // We also get the length of the direction vector.
                 float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
                 // We calculate a new, correct distance.
-                float dist = (length - (float)npc.width) / length;
+                float dist = (length - npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
 
@@ -552,16 +552,16 @@ namespace AAMod.NPCs.Bosses.Wyrmling
             if (npc.ai[1] < (double)Main.npc.Length)
             {
                 // We're getting the center of this NPC.
-                Vector2 npcCenter = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
                 // Then using that center, we calculate the direction towards the 'parent NPC' of this NPC.
-                float dirX = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - npcCenter.X;
-                float dirY = Main.npc[(int)npc.ai[1]].position.Y + (float)(Main.npc[(int)npc.ai[1]].height / 2) - npcCenter.Y;
+                float dirX = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - npcCenter.X;
+                float dirY = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - npcCenter.Y;
                 // We then use Atan2 to get a correct rotation towards that parent NPC.
                 npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
                 // We also get the length of the direction vector.
                 float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
                 // We calculate a new, correct distance.
-                float dist = (length - (float)npc.width) / length;
+                float dist = (length - npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
 

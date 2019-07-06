@@ -40,14 +40,14 @@ namespace AAMod.Items.Melee
       Tooltip.SetDefault("");
     }
 
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "MoltenLance", 1); 
 			recipe.AddIngredient(null, "AncientPoker", 1);
 			recipe.AddIngredient(null, "GrassSpear", 1);
-			recipe.AddIngredient(ItemID.DarkLance , 1);//you need 1 DirtBlock
-            recipe.AddTile(TileID.Anvils);   //at work bench
+			recipe.AddIngredient(ItemID.DarkLance , 1);
+            recipe.AddTile(TileID.Anvils);   
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

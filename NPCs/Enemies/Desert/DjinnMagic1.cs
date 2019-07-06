@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Enemies.Desert
         public override void AI()
         {
 
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             projectile.localAI[0] += 1f;
             projectile.alpha = (int)projectile.localAI[0] * 2;
 
@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Enemies.Desert
             for (int num85 = 0; num85 < 4; num85++)
             {
                 int num86 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 100, default(Color), 1.2f);
-                Main.dust[num86].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * (float)num84 / 2f);
+                Main.dust[num86].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num86].noGravity = true;
             }
 

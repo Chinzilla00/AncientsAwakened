@@ -85,7 +85,7 @@ namespace AAMod.NPCs.Minibosses
             {
                 if (Main.rand.Next(3) < num1009)
                 {
-                    int num1012 = Dust.NewDust(npc.Center - new Vector2((float)num1010), num1010 * 2, num1010 * 2, mod.DustType<Dusts.VoidDust>(), npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f, 90, default(Color), 1.5f);
+                    int num1012 = Dust.NewDust(npc.Center - new Vector2(num1010), num1010 * 2, num1010 * 2, mod.DustType<Dusts.VoidDust>(), npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f, 90, default(Color), 1.5f);
                     Main.dust[num1012].noGravity = true;
                     Main.dust[num1012].velocity *= 0.2f;
                     Main.dust[num1012].fadeIn = 1f;
@@ -144,7 +144,7 @@ namespace AAMod.NPCs.Minibosses
                     npc.ai[0] = 2f;
                     npc.ai[1] = 0f;
                     npc.netUpdate = true;
-                    Vector2 velocity = new Vector2(npc.ai[2], npc.ai[3]) + new Vector2((float)Main.rand.Next(-num1002, num1002 + 1), (float)Main.rand.Next(-num1002, num1002 + 1)) * 0.04f;
+                    Vector2 velocity = new Vector2(npc.ai[2], npc.ai[3]) + new Vector2(Main.rand.Next(-num1002, num1002 + 1), Main.rand.Next(-num1002, num1002 + 1)) * 0.04f;
                     velocity.Normalize();
                     velocity *= scaleFactor5;
                     npc.velocity = velocity;
@@ -175,7 +175,7 @@ namespace AAMod.NPCs.Minibosses
                     vec2.Normalize();
                     if (vec2.HasNaNs())
                     {
-                        vec2 = new Vector2((float)npc.direction, 0f);
+                        vec2 = new Vector2(npc.direction, 0f);
                     }
                     npc.velocity = (npc.velocity * (num1005 - 1f) + vec2 * (npc.velocity.Length() + num1006)) / num1005;
                 }
@@ -211,8 +211,8 @@ namespace AAMod.NPCs.Minibosses
             {
                 npc.position = npc.Center;
                 npc.width = (npc.height = 192);
-                npc.position.X = npc.position.X - (float)(npc.width / 2);
-                npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+                npc.position.X = npc.position.X - npc.width / 2;
+                npc.position.Y = npc.position.Y - npc.height / 2;
                 npc.velocity = Vector2.Zero;
                 npc.damage = (int)(80f * Main.damageMultiplier);
                 npc.alpha = 255;
@@ -273,14 +273,14 @@ namespace AAMod.NPCs.Minibosses
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             float num69 = 0 * Main.npc[npc.type].scale;
-            Vector2 vector10 = new Vector2((float)(Main.npcTexture[npc.type].Width / 2), (float)(Main.npcTexture[npc.type].Height / Main.npcFrameCount[npc.type] / 2));
-            Color color9 = Lighting.GetColor((int)((double)npc.position.X + (double)npc.width * 0.5) / 16, (int)(((double)npc.position.Y + (double)npc.height * 0.5) / 16.0));
+            Vector2 vector10 = new Vector2(Main.npcTexture[npc.type].Width / 2, Main.npcTexture[npc.type].Height / Main.npcFrameCount[npc.type] / 2);
+            Color color9 = Lighting.GetColor((int)(npc.position.X + npc.width * 0.5) / 16, (int)((npc.position.Y + npc.height * 0.5) / 16.0));
             if ((npc.ai[0] == 2f || npc.ai[0] == 4f))
             {
                 Texture2D texture2D32 = mod.GetTexture("NPCs/Minibosses/ExterminatorCharge");
-                Vector2 origin16 = new Vector2((float)(texture2D32.Width / 2), (float)(texture2D32.Height / 8 + 14));
+                Vector2 origin16 = new Vector2(texture2D32.Width / 2, texture2D32.Height / 8 + 14);
                 int num210 = (int)npc.ai[1] / 2;
-                float num211 = -1.57079637f * (float)npc.spriteDirection;
+                float num211 = -1.57079637f * npc.spriteDirection;
                 float num212 = npc.ai[1] / 45f;
                 if (num212 > 1f)
                 {
@@ -291,12 +291,12 @@ namespace AAMod.NPCs.Minibosses
                 {
                     Vector2 arg_B3E4_0 = npc.oldPos[num213];
                     Color color47 = Color.Lerp(Color.Red, Color.DarkRed, num212);
-                    color47 = Color.Lerp(color47, Color.Blue, (float)num213 / 12f);
+                    color47 = Color.Lerp(color47, Color.Blue, num213 / 12f);
                     color47.A = (byte)(64f * num212);
-                    color47.R = (byte)((int)color47.R * (10 - num213) / 20);
-                    color47.G = (byte)((int)color47.G * (10 - num213) / 20);
-                    color47.B = (byte)((int)color47.B * (10 - num213) / 20);
-                    color47.A = (byte)((int)color47.A * (10 - num213) / 20);
+                    color47.R = (byte)(color47.R * (10 - num213) / 20);
+                    color47.G = (byte)(color47.G * (10 - num213) / 20);
+                    color47.B = (byte)(color47.B * (10 - num213) / 20);
+                    color47.A = (byte)(color47.A * (10 - num213) / 20);
                     color47 *= num212;
                     int num214 = (num210 - num213) % 4;
                     if (num214 < 0)
@@ -304,14 +304,14 @@ namespace AAMod.NPCs.Minibosses
                         num214 += 4;
                     }
                     Rectangle value36 = texture2D32.Frame(1, 4, 0, num214);
-                    Main.spriteBatch.Draw(texture2D32, new Vector2(npc.oldPos[num213].X - Main.screenPosition.X + (float)(npc.width / 2) - (float)Main.npcTexture[npc.type].Width * npc.scale / 2f + vector10.X * npc.scale, npc.oldPos[num213].Y - Main.screenPosition.Y + (float)npc.height - (float)Main.npcTexture[npc.type].Height * npc.scale / (float)Main.npcFrameCount[npc.type] + 4f + vector10.Y * npc.scale + num69), new Rectangle?(value36), color47, npc.oldRot[num213] + num211, origin16, MathHelper.Lerp(0.1f, 1.2f, (10f - (float)num213) / 10f), SpriteEffects.None, 0f);
+                    Main.spriteBatch.Draw(texture2D32, new Vector2(npc.oldPos[num213].X - Main.screenPosition.X + npc.width / 2 - Main.npcTexture[npc.type].Width * npc.scale / 2f + vector10.X * npc.scale, npc.oldPos[num213].Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + vector10.Y * npc.scale + num69), new Rectangle?(value36), color47, npc.oldRot[num213] + num211, origin16, MathHelper.Lerp(0.1f, 1.2f, (10f - num213) / 10f), SpriteEffects.None, 0f);
                 }
             }
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/Exterminator_Glow"), npc.Bottom - Main.screenPosition + new Vector2((float)(-(float)Main.npcTexture[npc.type].Width) * npc.scale / 2f + vector10.X * npc.scale, (float)(-(float)Main.npcTexture[npc.type].Height) * npc.scale / (float)Main.npcFrameCount[npc.type] + 4f + vector10.Y * npc.scale + num69 + npc.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Microsoft.Xna.Framework.Color(255 - npc.alpha, 255 - npc.alpha, 255 - npc.alpha, 255 - npc.alpha), npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/Exterminator_Glow"), npc.Bottom - Main.screenPosition + new Vector2(-Main.npcTexture[npc.type].Width * npc.scale / 2f + vector10.X * npc.scale, -Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + vector10.Y * npc.scale + num69 + npc.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Microsoft.Xna.Framework.Color(255 - npc.alpha, 255 - npc.alpha, 255 - npc.alpha, 255 - npc.alpha), npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
             float scaleFactor14 = 0.25f + (npc.GetAlpha(color9).ToVector3() - new Vector3(0.5f)).Length() * 0.25f;
             for (int num247 = 0; num247 < 4; num247++)
             {
-                Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/Exterminator_Glow"), npc.Bottom - Main.screenPosition + new Vector2((float)(-(float)Main.npcTexture[npc.type].Width) * npc.scale / 2f + vector10.X * npc.scale, (float)(-(float)Main.npcTexture[npc.type].Height) * npc.scale / (float)Main.npcFrameCount[npc.type] + 4f + vector10.Y * npc.scale + num69 + npc.gfxOffY) + npc.velocity.RotatedBy((double)((float)num247 * 1.57079637f), default(Vector2)) * scaleFactor14, new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Microsoft.Xna.Framework.Color(64, 64, 64, 0), npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
+                Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/Exterminator_Glow"), npc.Bottom - Main.screenPosition + new Vector2(-Main.npcTexture[npc.type].Width * npc.scale / 2f + vector10.X * npc.scale, -Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + vector10.Y * npc.scale + num69 + npc.gfxOffY) + npc.velocity.RotatedBy(num247 * 1.57079637f, default(Vector2)) * scaleFactor14, new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Microsoft.Xna.Framework.Color(64, 64, 64, 0), npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
             }
 
             return false;

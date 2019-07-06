@@ -54,10 +54,10 @@ namespace AAMod.Projectiles
                 projectile.tileCollide = false;
                 float num41 = 15f;
                 float num42 = 3f;
-                Vector2 vector2 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
-                float num43 = Main.player[projectile.owner].position.X + (float)(Main.player[projectile.owner].width / 2) - vector2.X;
-                float num44 = Main.player[projectile.owner].position.Y + (float)(Main.player[projectile.owner].height / 2) - vector2.Y;
-                float num45 = (float)Math.Sqrt((double)(num43 * num43 + num44 * num44));
+                Vector2 vector2 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
+                float num43 = Main.player[projectile.owner].position.X + Main.player[projectile.owner].width / 2 - vector2.X;
+                float num44 = Main.player[projectile.owner].position.Y + Main.player[projectile.owner].height / 2 - vector2.Y;
+                float num45 = (float)Math.Sqrt(num43 * num43 + num44 * num44);
                 if (num45 > 3000f)
                 {
                     projectile.Kill();

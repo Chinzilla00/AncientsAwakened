@@ -127,7 +127,7 @@ namespace AAMod.Backgrounds
             {
                 return;
             }
-            Vector2 value3 = Main.screenPosition + new Vector2((float)(Main.screenWidth >> 1), (float)(Main.screenHeight >> 1));
+            Vector2 value3 = Main.screenPosition + new Vector2(Main.screenWidth >> 1, Main.screenHeight >> 1);
             Rectangle rectangle = new Rectangle(-1000, -1000, 4000, 4000);
             float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
             for (int j = num; j < num2; j++)
@@ -142,8 +142,8 @@ namespace AAMod.Backgrounds
                     int num4 = 0;
                     for (float num5 = 0f; num5 <= 1f; num5 += 0.03f)
                     {
-                        float num6 = 1f - (num5 + Main.GlobalTime * 0.02f + (float)Math.Sin((double)((float)j))) % 1f;
-                        spriteBatch.Draw(RockTextures[num4], vector + new Vector2((float)Math.Sin((double)(num5 * 1582f)) * (num3 * 0.5f) + num3 * 0.5f, num6 * 2000f), null, Color.White * num6 * scale * Intensity, num6 * 20f, new Vector2((float)(RockTextures[num4].Width >> 1), (float)(RockTextures[num4].Height >> 1)), 0.9f, SpriteEffects.None, 0f);
+                        float num6 = 1f - (num5 + Main.GlobalTime * 0.02f + (float)Math.Sin((float)j)) % 1f;
+                        spriteBatch.Draw(RockTextures[num4], vector + new Vector2((float)Math.Sin(num5 * 1582f) * (num3 * 0.5f) + num3 * 0.5f, num6 * 2000f), null, Color.White * num6 * scale * Intensity, num6 * 20f, new Vector2(RockTextures[num4].Width >> 1, RockTextures[num4].Height >> 1), 0.9f, SpriteEffects.None, 0f);
                         num4 = (num4 + 1) % RockTextures.Length;
                     }
                 }
@@ -164,7 +164,7 @@ namespace AAMod.Backgrounds
             _pillars = new LightPillar[40];
             for (int i = 0; i < _pillars.Length; i++)
             {
-                _pillars[i].Position.X = (float)i / (float)_pillars.Length * ((float)Main.maxTilesX * 16f + 20000f) + _random.NextFloat() * 40f - 20f - 20000f;
+                _pillars[i].Position.X = i / (float)_pillars.Length * (Main.maxTilesX * 16f + 20000f) + _random.NextFloat() * 40f - 20f - 20000f;
                 _pillars[i].Position.Y = _random.NextFloat() * 200f - 2000f;
                 _pillars[i].Depth = _random.NextFloat() * 8f + 7f;
             }

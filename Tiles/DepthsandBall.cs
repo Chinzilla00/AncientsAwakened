@@ -80,8 +80,8 @@ namespace AAMod.Tiles
         {
             if (projectile.owner == Main.myPlayer && !projectile.noDropItem)
             {
-                int tileX = (int)(projectile.position.X + (float)(projectile.width / 2)) / 16;
-                int tileY = (int)(projectile.position.Y + (float)(projectile.width / 2)) / 16;
+                int tileX = (int)(projectile.position.X + projectile.width / 2) / 16;
+                int tileY = (int)(projectile.position.Y + projectile.width / 2) / 16;
                 if (Main.tile[tileX, tileY].halfBrick() && projectile.velocity.Y > 0f && System.Math.Abs(projectile.velocity.Y) > System.Math.Abs(projectile.velocity.X))
                 {
                     tileY--;

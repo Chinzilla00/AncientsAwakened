@@ -14,8 +14,9 @@ namespace AAMod.Items.Boss.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Anti-matter Rifle");
-            Tooltip.SetDefault(@"Fires an infinitely piercing laser that ignores tiles
-Doesn't require ammo");
+            Tooltip.SetDefault(@"Fires a laser that bounces between enemies
+Hold to charge the rifle
+the longer the rifle is charged, the more it penetrates");
         }
 
         public override void SetDefaults()
@@ -29,14 +30,13 @@ Doesn't require ammo");
             item.useTime = 65;
             item.useAnimation = 65; 
             item.useStyle = 5; 
-            item.shoot = mod.ProjectileType("Antimatter");
+            item.shoot = mod.ProjectileType("AMR");
+            item.channel = true;
             item.knockBack = 12;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 9;
-            item.UseSound = new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound);
-            item.autoReuse = true;
             item.shootSpeed = 8f;
-            item.crit = 5;
+            item.crit += 5;
             item.rare = 9; AARarity = 13;
         }
 
@@ -59,21 +59,6 @@ Doesn't require ammo");
                 SpriteEffects.None,
                 0f
             );
-        }
-
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-            Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
-            if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0))
-            {
-                position += muzzleOffset;
-            }
-            return true;
-        }
-
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-1, 0);
         }
 
         public override void AddRecipes()

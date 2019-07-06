@@ -220,15 +220,15 @@ namespace AAMod.NPCs.Bosses.Zero
 			if (stage == 1)
 			{
 				frame = new Rectangle(0, 16, 16, 16);
-				distCovered = (float)frame.Height;
-				origin = new Vector2((float)(frame.Width / 2), 0f);
+				distCovered = frame.Height;
+				origin = new Vector2(frame.Width / 2, 0f);
 				return;
 			}
 			if (stage == 2)
 			{
 				distCovered = 22f;
 				frame = new Rectangle(0, 24, 16, 16);
-				origin = new Vector2((float)(frame.Width / 2), 1f);
+				origin = new Vector2(frame.Width / 2, 1f);
 				return;
 			}
 			distCovered = projectile.velocity.Length() * 90;

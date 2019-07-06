@@ -33,12 +33,12 @@ namespace AAMod.Items.Magic
           Tooltip.SetDefault("");
         }
 
-		public override void AddRecipes()  //How to craft this item
+		public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Book, 1);
             recipe.AddIngredient(null, "IncineriteBar", 10);
-            recipe.AddTile(TileID.Bookcases);   //at work bench
+            recipe.AddTile(TileID.Bookcases);   
             recipe.SetResult(this);  
             recipe.AddRecipe();
         }

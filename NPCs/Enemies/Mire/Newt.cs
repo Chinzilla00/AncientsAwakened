@@ -165,7 +165,7 @@ namespace AAMod.NPCs.Enemies.Mire
                 Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
                 int num214 = tongueAni.Height / 4;
                 int y6 = num214 * tongueFrame;
-                Main.spriteBatch.Draw(tongueAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, tongueAni.Width, num214)), drawColor, npc.rotation, new Vector2((float)tongueAni.Width / 2f, (float)num214 / 2f), npc.scale, effects, 0f);
+                Main.spriteBatch.Draw(tongueAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, tongueAni.Width, num214)), drawColor, npc.rotation, new Vector2(tongueAni.Width / 2f, num214 / 2f), npc.scale, effects, 0f);
             }
             return false;
         }

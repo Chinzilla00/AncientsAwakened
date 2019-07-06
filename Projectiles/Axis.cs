@@ -32,7 +32,7 @@ namespace AAMod.Projectiles
 					projectile.localAI[0] = 1f;
 					if (Collision.CanHit(Main.player[projectile.owner].position, Main.player[projectile.owner].width, Main.player[projectile.owner].height, new Vector2(projectile.Center.X + projectile.velocity.X, projectile.Center.Y + projectile.velocity.Y), projectile.width, projectile.height))
 					{
-						Projectile.NewProjectile(projectile.Center.X + projectile.velocity.X, projectile.Center.Y + projectile.velocity.Y, projectile.velocity.X * 2.6f, projectile.velocity.Y * 2.6f, mod.ProjectileType("AxisShot"), (int)((double)projectile.damage * 0.8), projectile.knockBack * 0.85f, projectile.owner, 0f, 0f);
+						Projectile.NewProjectile(projectile.Center.X + projectile.velocity.X, projectile.Center.Y + projectile.velocity.Y, projectile.velocity.X * 2.6f, projectile.velocity.Y * 2.6f, mod.ProjectileType("AxisShot"), (int)(projectile.damage * 0.8), projectile.knockBack * 0.85f, projectile.owner, 0f, 0f);
 					}
 				}
 			}

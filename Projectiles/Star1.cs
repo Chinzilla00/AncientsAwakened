@@ -50,7 +50,7 @@ namespace AAMod.Projectiles
                 float num14 = projectile.position.Y + (projectile.height / 2) - vector.Y;
                 num13 += Main.rand.Next(-100, 101);
                 int num15 = 23;
-                float num16 = (float)Math.Sqrt((double)(num13 * num13 + num14 * num14));
+                float num16 = (float)Math.Sqrt(num13 * num13 + num14 * num14);
                 num16 = num15 / num16;
                 num13 *= num16;
                 num14 *= num16;

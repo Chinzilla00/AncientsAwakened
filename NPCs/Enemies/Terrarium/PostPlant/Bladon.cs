@@ -49,33 +49,33 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             }
             else
             {
-                if (npc.ai[2] < 0f && npc.ai[2] > (float)(-(float)num27))
+                if (npc.ai[2] < 0f && npc.ai[2] > -num27)
                 {
                     npc.ai[2] -= 1f;
                     npc.velocity.X = npc.velocity.X * 0.9f;
                     return;
                 }
-                if (npc.ai[2] == (float)(-(float)num27))
+                if (npc.ai[2] == -num27)
                 {
                     npc.ai[2] -= 1f;
                     npc.TargetClosest(true);
                     Vector2 vec = npc.DirectionTo(Main.player[npc.target].Top + new Vector2(0f, -30f));
                     if (vec.HasNaNs())
                     {
-                        vec = Vector2.Normalize(new Vector2((float)npc.spriteDirection, -1f));
+                        vec = Vector2.Normalize(new Vector2(npc.spriteDirection, -1f));
                     }
                     npc.velocity = vec * scaleFactor3;
                     npc.netUpdate = true;
                     return;
                 }
-                if (npc.ai[2] < (float)(-(float)num27))
+                if (npc.ai[2] < -num27)
                 {
                     npc.ai[2] -= 1f;
                     if (npc.velocity.Y == 0f)
                     {
                         npc.ai[2] = 60f;
                     }
-                    else if (npc.ai[2] < (float)(-(float)num27 - num28))
+                    else if (npc.ai[2] < -(float)num27 - num28)
                     {
                         npc.velocity.Y = npc.velocity.Y + 0.15f;
                         if (npc.velocity.Y > 24f)
@@ -109,15 +109,15 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                 {
                     flag5 = true;
                 }
-                if (npc.position.X == npc.oldPosition.X || npc.ai[3] >= (float)num36 || flag5)
+                if (npc.position.X == npc.oldPosition.X || npc.ai[3] >= num36 || flag5)
                 {
                     npc.ai[3] += 1f;
                 }
-                else if ((double)Math.Abs(npc.velocity.X) > 0.9 && npc.ai[3] > 0f)
+                else if (Math.Abs(npc.velocity.X) > 0.9 && npc.ai[3] > 0f)
                 {
                     npc.ai[3] -= 1f;
                 }
-                if (npc.ai[3] > (float)(num36 * 10))
+                if (npc.ai[3] > num36 * 10)
                 {
                     npc.ai[3] = 0f;
                 }
@@ -125,13 +125,13 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                 {
                     npc.ai[3] = 0f;
                 }
-                if (npc.ai[3] == (float)num36)
+                if (npc.ai[3] == num36)
                 {
                     npc.netUpdate = true;
                 }
             }
 
-            if (npc.ai[3] < (float)num36)
+            if (npc.ai[3] < num36)
             {
                 npc.TargetClosest(true);
             }
@@ -174,14 +174,14 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                 if (Main.netMode != 1)
                 {
                     npc.localAI[2] += 1f;
-                    if (npc.localAI[2] >= (float)(360 + Main.rand.Next(360)) && npc.Distance(Main.player[npc.target].Center) < 400f && Math.Abs(npc.DirectionTo(Main.player[npc.target].Center).Y) < 0.5f && Collision.CanHitLine(npc.Center, 0, 0, Main.player[npc.target].Center, 0, 0))
+                    if (npc.localAI[2] >= 360 + Main.rand.Next(360) && npc.Distance(Main.player[npc.target].Center) < 400f && Math.Abs(npc.DirectionTo(Main.player[npc.target].Center).Y) < 0.5f && Collision.CanHitLine(npc.Center, 0, 0, Main.player[npc.target].Center, 0, 0))
                     {
                         npc.localAI[2] = 0f;
-                        Vector2 vector13 = npc.Center + new Vector2((float)(npc.direction * 30), 2f);
+                        Vector2 vector13 = npc.Center + new Vector2(npc.direction * 30, 2f);
                         Vector2 vector14 = npc.DirectionTo(Main.player[npc.target].Center) * 7f;
                         if (vector14.HasNaNs())
                         {
-                            vector14 = new Vector2((float)(npc.direction * 8), 0f);
+                            vector14 = new Vector2(npc.direction * 8, 0f);
                         }
                         int num85 = Main.expertMode ? 50 : 75;
                         for (int num86 = 0; num86 < 4; num86++)
@@ -196,16 +196,16 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             bool flag23 = false;
             if (npc.velocity.Y == 0f)
             {
-                int num167 = (int)(npc.position.Y + (float)npc.height + 7f) / 16;
+                int num167 = (int)(npc.position.Y + npc.height + 7f) / 16;
                 int num168 = (int)npc.position.X / 16;
-                int num169 = (int)(npc.position.X + (float)npc.width) / 16;
+                int num169 = (int)(npc.position.X + npc.width) / 16;
                 for (int num170 = num168; num170 <= num169; num170++)
                 {
                     if (Main.tile[num170, num167] == null)
                     {
                         return;
                     }
-                    if (Main.tile[num170, num167].nactive() && Main.tileSolid[(int)Main.tile[num170, num167].type])
+                    if (Main.tile[num170, num167].nactive() && Main.tileSolid[Main.tile[num170, num167].type])
                     {
                         flag23 = true;
                         break;
@@ -226,8 +226,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                 }
                 Vector2 position2 = npc.position;
                 position2.X += npc.velocity.X;
-                int num172 = (int)((position2.X + (float)(npc.width / 2) + (float)((npc.width / 2 + 1) * num171)) / 16f);
-                int num173 = (int)((position2.Y + (float)npc.height - 1f) / 16f);
+                int num172 = (int)((position2.X + npc.width / 2 + (npc.width / 2 + 1) * num171) / 16f);
+                int num173 = (int)((position2.Y + npc.height - 1f) / 16f);
                 if (Main.tile[num172, num173] == null)
                 {
                     Main.tile[num172, num173] = new Tile();
@@ -252,9 +252,9 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                 {
                     Main.tile[num172 - num171, num173 - 3] = new Tile();
                 }
-                if ((float)(num172 * 16) < position2.X + (float)npc.width && (float)(num172 * 16 + 16) > position2.X && ((Main.tile[num172, num173].nactive() && !Main.tile[num172, num173].topSlope() && !Main.tile[num172, num173 - 1].topSlope() && Main.tileSolid[(int)Main.tile[num172, num173].type] && !Main.tileSolidTop[(int)Main.tile[num172, num173].type]) || (Main.tile[num172, num173 - 1].halfBrick() && Main.tile[num172, num173 - 1].nactive())) && (!Main.tile[num172, num173 - 1].nactive() || !Main.tileSolid[(int)Main.tile[num172, num173 - 1].type] || Main.tileSolidTop[(int)Main.tile[num172, num173 - 1].type] || (Main.tile[num172, num173 - 1].halfBrick() && (!Main.tile[num172, num173 - 4].nactive() || !Main.tileSolid[(int)Main.tile[num172, num173 - 4].type] || Main.tileSolidTop[(int)Main.tile[num172, num173 - 4].type]))) && (!Main.tile[num172, num173 - 2].nactive() || !Main.tileSolid[(int)Main.tile[num172, num173 - 2].type] || Main.tileSolidTop[(int)Main.tile[num172, num173 - 2].type]) && (!Main.tile[num172, num173 - 3].nactive() || !Main.tileSolid[(int)Main.tile[num172, num173 - 3].type] || Main.tileSolidTop[(int)Main.tile[num172, num173 - 3].type]) && (!Main.tile[num172 - num171, num173 - 3].nactive() || !Main.tileSolid[(int)Main.tile[num172 - num171, num173 - 3].type]))
+                if (num172 * 16 < position2.X + npc.width && num172 * 16 + 16 > position2.X && ((Main.tile[num172, num173].nactive() && !Main.tile[num172, num173].topSlope() && !Main.tile[num172, num173 - 1].topSlope() && Main.tileSolid[Main.tile[num172, num173].type] && !Main.tileSolidTop[Main.tile[num172, num173].type]) || (Main.tile[num172, num173 - 1].halfBrick() && Main.tile[num172, num173 - 1].nactive())) && (!Main.tile[num172, num173 - 1].nactive() || !Main.tileSolid[Main.tile[num172, num173 - 1].type] || Main.tileSolidTop[Main.tile[num172, num173 - 1].type] || (Main.tile[num172, num173 - 1].halfBrick() && (!Main.tile[num172, num173 - 4].nactive() || !Main.tileSolid[Main.tile[num172, num173 - 4].type] || Main.tileSolidTop[Main.tile[num172, num173 - 4].type]))) && (!Main.tile[num172, num173 - 2].nactive() || !Main.tileSolid[Main.tile[num172, num173 - 2].type] || Main.tileSolidTop[Main.tile[num172, num173 - 2].type]) && (!Main.tile[num172, num173 - 3].nactive() || !Main.tileSolid[Main.tile[num172, num173 - 3].type] || Main.tileSolidTop[Main.tile[num172, num173 - 3].type]) && (!Main.tile[num172 - num171, num173 - 3].nactive() || !Main.tileSolid[Main.tile[num172 - num171, num173 - 3].type]))
                 {
-                    float num174 = (float)(num173 * 16);
+                    float num174 = num173 * 16;
                     if (Main.tile[num172, num173].halfBrick())
                     {
                         num174 += 8f;
@@ -263,14 +263,14 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                     {
                         num174 -= 8f;
                     }
-                    if (num174 < position2.Y + (float)npc.height)
+                    if (num174 < position2.Y + npc.height)
                     {
-                        float num175 = position2.Y + (float)npc.height - num174;
+                        float num175 = position2.Y + npc.height - num174;
                         float num176 = 16.1f;
                         if (num175 <= num176)
                         {
-                            npc.gfxOffY += npc.position.Y + (float)npc.height - num174;
-                            npc.position.Y = num174 - (float)npc.height;
+                            npc.gfxOffY += npc.position.Y + npc.height - num174;
+                            npc.position.Y = num174 - npc.height;
                             if (num175 < 9f)
                             {
                                 npc.stepSpeed = 1f;
@@ -285,8 +285,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             }
             if (flag23)
             {
-                int num177 = (int)((npc.position.X + (float)(npc.width / 2) + (float)(15 * npc.direction)) / 16f);
-                int num178 = (int)((npc.position.Y + (float)npc.height - 15f) / 16f);
+                int num177 = (int)((npc.position.X + npc.width / 2 + 15 * npc.direction) / 16f);
+                int num178 = (int)((npc.position.Y + npc.height - 15f) / 16f);
                 
                 if (Main.tile[num177, num178] == null)
                 {
@@ -340,12 +340,12 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraKnightGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraKnightGore4"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/TerraKnightGore5"), 1f);
-                npc.position.X = npc.position.X + (float)(npc.width / 2);
-                npc.position.Y = npc.position.Y + (float)(npc.height / 2);
+                npc.position.X = npc.position.X + npc.width / 2;
+                npc.position.Y = npc.position.Y + npc.height / 2;
                 npc.width = 44;
                 npc.height = 78;
-                npc.position.X = npc.position.X - (float)(npc.width / 2);
-                npc.position.Y = npc.position.Y - (float)(npc.height / 2);
+                npc.position.X = npc.position.X - npc.width / 2;
+                npc.position.Y = npc.position.Y - npc.height / 2;
                 int dust1 = mod.DustType<Dusts.MeleeDust>();
                 int dust2 = mod.DustType<Dusts.MeleeDust>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0, default(Color), 1f);

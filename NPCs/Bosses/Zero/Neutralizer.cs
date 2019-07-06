@@ -9,6 +9,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
+    [AutoloadBossHead]
     public class Neutralizer: ModNPC
     {
         public override void SetStaticDefaults()

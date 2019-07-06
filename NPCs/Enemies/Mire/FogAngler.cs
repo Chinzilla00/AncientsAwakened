@@ -45,8 +45,8 @@ namespace AAMod.NPCs.Enemies.Mire
             {
                 if (npc.velocity.Y == 0f)
                 {
-                    npc.velocity.Y = (float)Main.rand.Next(-50, -20) * 0.1f;
-                    npc.velocity.X = (float)Main.rand.Next(-20, 20) * 0.1f;
+                    npc.velocity.Y = Main.rand.Next(-50, -20) * 0.1f;
+                    npc.velocity.X = Main.rand.Next(-20, 20) * 0.1f;
                     npc.netUpdate = true;
                 }
                 npc.velocity.Y = npc.velocity.Y + 0.3f;

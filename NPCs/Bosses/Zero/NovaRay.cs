@@ -22,11 +22,11 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             projectile.width = 10;
             projectile.height = 10;
-            projectile.friendly = false;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
-            projectile.hostile = true;
             projectile.hide = false;
+            projectile.friendly = false;
+            projectile.hostile = true;
         }
         // The AI of the projectile
         public bool runOnce=true;
