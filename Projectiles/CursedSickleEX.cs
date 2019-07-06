@@ -6,17 +6,17 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-    public class CursedSickle : ModProjectile
+    public class CursedSickleEX : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cursed Sickle");
+            DisplayName.SetDefault("Tartarus Reaper");
         }
 
         public override void SetDefaults()
         {
             projectile.width = 120;
-            projectile.height = 96;
+            projectile.height = 114;
             projectile.aiStyle = 0;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
@@ -77,13 +77,13 @@ namespace AAMod.Projectiles
             projectile.position.X = player.Center.X - (projectile.width / 2f);
             projectile.position.Y = player.Center.Y - (projectile.height / 2f);
 
-            Projectile.NewProjectile(projectile.Center.X + 20, projectile.Center.Y, -15f, 0f, mod.ProjectileType("CursedSickleDamage"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-            Projectile.NewProjectile(projectile.Center.X - 20, projectile.Center.Y, 15f, 0f, mod.ProjectileType("CursedSickleDamage"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.Center.X + 20, projectile.Center.Y, -15f, 0f, mod.ProjectileType("CursedSickleEXDamage"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.Center.X - 20, projectile.Center.Y, 15f, 0f, mod.ProjectileType("CursedSickleEXDamage"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 
             if (projectile.timeLeft == 13)
             {
-                Projectile.NewProjectile(projectile.Center.X + 20, projectile.Center.Y, -15f, 0f, mod.ProjectileType("CursedSickleDamage2"), (int)(projectile.damage * .35), projectile.knockBack, projectile.owner, 0f, 0f);
-                Projectile.NewProjectile(projectile.Center.X - 20, projectile.Center.Y, 15f, 0f, mod.ProjectileType("CursedSickleDamage2"), (int)(projectile.damage * .35), projectile.knockBack, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X + 20, projectile.Center.Y, -15f, 0f, mod.ProjectileType("CursedSickleEXDamage2"), (int)(projectile.damage * .35), projectile.knockBack, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X - 20, projectile.Center.Y, 15f, 0f, mod.ProjectileType("CursedSickleEXDamage2"), (int)(projectile.damage * .35), projectile.knockBack, projectile.owner, 0f, 0f);
             }
 
             if (projectile.timeLeft < 8)
@@ -92,7 +92,7 @@ namespace AAMod.Projectiles
             }
         }
     }
-    public class CursedSickleEffect : ModProjectile
+    public class CursedSickleEXEffect : ModProjectile
     {
         public override string Texture { get { return "AAMod/BlankTex"; } }
         public override void SetDefaults()
@@ -147,7 +147,7 @@ namespace AAMod.Projectiles
         }
     }
 
-    public class CursedSickleDamage : ModProjectile
+    public class CursedSickleEXDamage : ModProjectile
     {
         public override string Texture { get { return "AAMod/BlankTex"; } }
         public override void SetDefaults()
@@ -162,11 +162,13 @@ namespace AAMod.Projectiles
             projectile.penetrate = -1;
             projectile.timeLeft = 8;
             aiType = ProjectileID.Bullet;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 7;
         }
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            target.AddBuff(BuffID.CursedInferno, 210);
+            target.AddBuff(mod.BuffType<Buffs.CursedHellfire>(), 210);
         }
 
         public override void AI()
@@ -178,7 +180,7 @@ namespace AAMod.Projectiles
         }
     }
 
-    public class CursedSickleDamage2 : ModProjectile
+    public class CursedSickleEXDamage2 : ModProjectile
     {
         public override string Texture { get { return "AAMod/BlankTex"; } }
         public override void SetDefaults()
@@ -193,11 +195,13 @@ namespace AAMod.Projectiles
             projectile.penetrate = 1;
             projectile.timeLeft = 4;
             aiType = ProjectileID.Bullet;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 7;
         }
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            target.AddBuff(BuffID.CursedInferno, 210);
+            target.AddBuff(mod.BuffType<Buffs.CursedHellfire>(), 210);
         }
 
         public override void AI()

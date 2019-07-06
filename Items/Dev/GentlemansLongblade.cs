@@ -79,13 +79,11 @@ Gentleman's Rapier EX");
 
         public override void AddRecipes()
         {
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "GentlemansRapier");
-                recipe.AddIngredient(null, "EXSoul");
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "GentlemansRapier");
+            recipe.AddIngredient(null, "EXSoul");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

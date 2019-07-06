@@ -19,6 +19,7 @@ namespace AAMod
     public class AAModGlobalNPC : GlobalNPC
     {
         //debuffs
+        public bool CursedHellfire = false;
         public bool TimeFrozen = false;
         public bool infinityOverload = false;
         public bool terraBlaze = false;
@@ -48,6 +49,7 @@ namespace AAMod
 
         public override void ResetEffects(NPC npc)
         {
+            CursedHellfire = false;
             infinityOverload = false;
             terraBlaze = false;
             TimeFrozen = false;
@@ -121,6 +123,15 @@ namespace AAMod
                     }
                     npc.lifeRegen -= 20;
                 }
+            }
+
+            if (CursedHellfire)
+            {
+                if (npc.lifeRegen > 0)
+                {
+                    npc.lifeRegen = 0;
+                }
+                npc.lifeRegen -= 30;
             }
 
             if (riftBent)
@@ -615,6 +626,22 @@ namespace AAMod
         public override void DrawEffects(NPC npc, ref Color drawColor)
         {
             Rectangle hitbox = npc.Hitbox;
+            if (CursedHellfire)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    Lighting.AddLight((int)npc.Center.X / 16, (int)npc.Center.Y / 16, 0.3f, 0.8f, 1.1f);
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 75, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default(Color), 2f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.Next(4) == 0)
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+            }
             if (Electrified)
             {
                 if (Main.rand.Next(4) < 3)

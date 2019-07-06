@@ -215,6 +215,7 @@ namespace AAMod
         public bool HorseBuff;
 
         //debuffs
+        public bool CursedHellfire = false;
         public bool infinityOverload = false;
         public bool discordInferno = false;
         public bool dragonFire = false;
@@ -414,6 +415,7 @@ namespace AAMod
             RajahCape = false;
             CapShield = false;
             //Debuffs
+            CursedHellfire = false;
             infinityOverload = false;
             discordInferno = false;
             dragonFire = false;
@@ -1799,7 +1801,7 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("BlazenBoots"));
                         if (dropType >= 1)
                         {
-                            player.QuickSpawnItem(mod.ItemType("ThunderLord"));
+                            player.QuickSpawnItem(mod.ItemType("ThunderLord" + addonEX));
                             player.QuickSpawnItem(mod.ItemType("BlazenBooster"));
                         }
                         spawnedDevItems = true;
@@ -1813,6 +1815,30 @@ namespace AAMod
                         if (dropType >= 2)
                         {
                             player.QuickSpawnItem(mod.ItemType("UmbralReaper"));
+                        }
+                        spawnedDevItems = true;
+                        break;
+                    case 25:
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("FuryForger" + addonEX));
+                        }
+                        spawnedDevItems = true;
+                        break;
+                    case 26:
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("GameRaider"));
+                        }
+                        spawnedDevItems = true;
+                        break;
+                    case 27:
+                        player.QuickSpawnItem(mod.ItemType("CursedHood"));
+                        player.QuickSpawnItem(mod.ItemType("CursedRobe"));
+                        player.QuickSpawnItem(mod.ItemType("CursedPaints"));
+                        if (dropType >= 1)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("CursedSickle" + addonEX));
                         }
                         spawnedDevItems = true;
                         break;
@@ -2511,6 +2537,16 @@ namespace AAMod
                 }
             }
 
+            if (CursedHellfire)
+            {
+                if (player.lifeRegen > 0)
+                {
+                    player.lifeRegen = 0;
+                }
+                player.lifeRegenTime = 0;
+                player.lifeRegen -= 30;
+            }
+
             if (shroomed && player.velocity.Y == 0)
             {
                 player.velocity.X *= .8f;
@@ -2733,11 +2769,11 @@ namespace AAMod
                 b *= 0.2f;
                 fullBright = true;
             }
-            if (infinityOverload)
+            if (CursedHellfire)
             {
-                if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
+                if (Main.rand.Next(4) == 0)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType<Dusts.VoidDust>(), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 75, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 3f);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;

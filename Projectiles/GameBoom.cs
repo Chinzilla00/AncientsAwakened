@@ -5,11 +5,11 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-    public class ApocalypseBoom : ModProjectile
+    public class GameBoom : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Apocalypse");     //The English name of the projectile
+            DisplayName.SetDefault("Moo Boom");     //The English name of the projectile
             Main.projFrames[projectile.type] = 7;     //The recording mode
         }
 
@@ -25,7 +25,7 @@ namespace AAMod.Projectiles
             projectile.timeLeft = 600;
             projectile.melee = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 5;
+            projectile.localNPCHitCooldown = 10;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -48,11 +48,5 @@ namespace AAMod.Projectiles
             projectile.velocity.Y *= 0.00f;
 
         }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(BuffID.Daybreak, 180);
-        }
-
     }
 }

@@ -8,11 +8,11 @@ using BaseMod;
 
 namespace AAMod.Items.Dev
 {
-    public class CursedSickle : BaseAAItem
+    public class CursedSickleEX : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Cursed Sickle");
+            DisplayName.SetDefault("Tartarus Reaper");
             Tooltip.SetDefault(@"Spins a cursed scythe around you that shreds through enemies
 Right click to swing the scythe");			
 		}
@@ -28,26 +28,16 @@ Right click to swing the scythe");
             item.useStyle = 1;
             item.useAnimation = 25;
             item.useTime = 25;
-            item.damage = 70;
+            item.damage = 280;
             item.knockBack = 4;
 			item.noMelee = true;
 			item.noUseGraphic = true;
 			item.autoReuse = true;
-            item.shoot = mod.ProjectileType("CursedSickle");
+            item.shoot = mod.ProjectileType("CursedSickleEX");
             item.shootSpeed = 0.1f;
             item.melee = true;
+            item.expert = true;
 		}
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = new Color(29, 109, 124);
-                }
-            }
-        }
 
         public override bool AltFunctionUse(Player player)
         {
@@ -61,14 +51,14 @@ Right click to swing the scythe");
             {
                 item.noMelee = false;
                 item.noUseGraphic = false;
-                item.shoot = mod.ProjectileType("CursedSickleProj");
+                item.shoot = mod.ProjectileType("CursedSickleEXProj");
                 item.shootSpeed = 7f;
             }
             else
             {
                 item.noMelee = true;
                 item.noUseGraphic = true;
-                item.shoot = mod.ProjectileType("CursedSickle");
+                item.shoot = mod.ProjectileType("CursedSickleEX");
                 item.shootSpeed = 0.1f;
             }
             return base.CanUseItem(player);
@@ -86,5 +76,16 @@ Right click to swing the scythe");
 			}
 			return true;
 		}
+
+        public override void AddRecipes()
+        {
+            {
+                ModRecipe recipe = new ModRecipe(mod);
+                recipe.AddIngredient(null, "CursedSickle");
+                recipe.AddIngredient(null, "EXSoul");
+                recipe.SetResult(this);
+                recipe.AddRecipe();
+            }
+        }
     }
 }

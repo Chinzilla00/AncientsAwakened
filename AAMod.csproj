@@ -81,6 +81,7 @@
     <Compile Include="Buffs\ChaosClaw.cs" />
     <Compile Include="Buffs\ChaosWrath.cs" />
     <Compile Include="Buffs\CrowMinion.cs" />
+    <Compile Include="Buffs\CursedHellfire.cs" />
     <Compile Include="Buffs\CyberClaw.cs" />
     <Compile Include="Buffs\DapperSquirrel.cs" />
     <Compile Include="Buffs\DoomiteProbe.cs" />
@@ -925,6 +926,10 @@
     <Compile Include="Items\DevTools\Noodle.cs" />
     <Compile Include="Items\DevTools\NoodleSword.cs" />
     <Compile Include="Items\DevTools\DevRadar.cs" />
+    <Compile Include="Items\Dev\CursedSickleEX.cs" />
+    <Compile Include="Items\Dev\GameRaider.cs" />
+    <Compile Include="Items\Dev\FuryForgerEX.cs" />
+    <Compile Include="Items\Dev\FuryForger.cs" />
     <Compile Include="Items\Dev\CursedSickle.cs" />
     <Compile Include="Items\Dev\GrimReaperScythe.cs" />
     <Compile Include="Items\Dev\GrimReaperScytheEX.cs" />
@@ -1960,6 +1965,11 @@
     <Compile Include="NPCs\TownNPCs\StanLee.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
+    <Compile Include="Projectiles\CursedSickleEXProj.cs" />
+    <Compile Include="Projectiles\CursedSickleEX.cs" />
+    <Compile Include="Projectiles\GameBoom.cs" />
+    <Compile Include="Projectiles\GameRocket.cs" />
+    <Compile Include="Projectiles\SparkFury.cs" />
     <Compile Include="Projectiles\Aerodrake1.cs" />
     <Compile Include="Projectiles\ApocalypseHeal.cs" />
     <Compile Include="Projectiles\GhastBoom.cs" />
@@ -2424,10 +2434,12 @@
     <Compile Include="Projectiles\Zero\ZeroStarP.cs" />
     <Compile Include="Sounds\Sounds\AkumaRoar.cs" />
     <Compile Include="Sounds\Sounds\Chicken.cs" />
+    <Compile Include="Sounds\Sounds\Forge.cs" />
     <Compile Include="Sounds\Sounds\FerretNote.cs" />
     <Compile Include="Sounds\Sounds\Glitch.cs" />
     <Compile Include="Sounds\Sounds\GONG.cs" />
     <Compile Include="Sounds\Sounds\MOARGONG.cs" />
+    <Compile Include="Sounds\Sounds\Moo.cs" />
     <Compile Include="Sounds\Sounds\QUAK.cs" />
     <Compile Include="Sounds\Sounds\Rajah.cs" />
     <Compile Include="Sounds\Sounds\ShenRoar.cs" />
@@ -2857,6 +2869,7 @@
     <Content Include="Buffs\Clueless.png" />
     <Content Include="Buffs\CrimeraMinion.png" />
     <Content Include="Buffs\CrowMinion.png" />
+    <Content Include="Buffs\CursedHellfire.png" />
     <Content Include="Buffs\CyberClaw.png" />
     <Content Include="Buffs\DapperSquirrel.png" />
     <Content Include="Buffs\DemonBuff.png" />
@@ -4765,6 +4778,8 @@
     <Content Include="Items\Boss\Truffle\TruffleBag.png" />
     <Content Include="Items\Boss\Truffle\TruffleTrophy.png" />
     <Content Include="Items\Boss\Zero\DoomPortal.png" />
+    <Content Include="Items\Boss\Zero\GenocideCannon.png" />
+    <Content Include="Items\Boss\Zero\OmegaVolley.png" />
     <Content Include="Items\Boss\Zero\ZeroATrophy.png" />
     <Content Include="Items\Calamity\ThrowingCarrot.png" />
     <Content Include="Items\DevTools\AAUndowner.png" />
@@ -4779,6 +4794,9 @@
     <Content Include="Items\Dev\DeceivingTruthEX.png" />
     <Content Include="Items\Dev\Demise.png" />
     <Content Include="Items\Dev\Doragonburedo.png" />
+    <Content Include="Items\Dev\FuryForger.png" />
+    <Content Include="Items\Dev\FuryForgerEX.png" />
+    <Content Include="Items\Dev\GameRaider.png" />
     <Content Include="Items\Dev\GrimReaperScythe.png" />
     <Content Include="Items\Dev\GrimReaperScytheEX.png" />
     <Content Include="Items\Dev\MagicAcorn.png" />
@@ -6678,6 +6696,8 @@
     <Content Include="Projectiles\CrystalP.png" />
     <Content Include="Projectiles\CthulhuTentacle.png" />
     <Content Include="Projectiles\CursedSickle.png" />
+    <Content Include="Projectiles\CursedSickleEX.png" />
+    <Content Include="Projectiles\CursedSickleEXProj.png" />
     <Content Include="Projectiles\CursedSickleProj.png" />
     <Content Include="Projectiles\CyberBaton.png" />
     <Content Include="Projectiles\DarkArrow.png" />
@@ -6724,6 +6744,8 @@
     <Content Include="Projectiles\Flasks\SporeSac.png" />
     <Content Include="Projectiles\Flasks\VoidFlask.png" />
     <Content Include="Projectiles\ForestSolution.png" />
+    <Content Include="Projectiles\GameBoom.png" />
+    <Content Include="Projectiles\GameRocket.png" />
     <Content Include="Projectiles\GhastBoom.png" />
     <Content Include="Projectiles\GhastSkull.png" />
     <Content Include="Projectiles\GlacierBreaker.png" />
@@ -6746,6 +6768,7 @@
     <Content Include="Projectiles\Ryusei_Chain.png" />
     <Content Include="Projectiles\Shen\DiscordianInfernoF.png" />
     <Content Include="Projectiles\SoonTM.png" />
+    <Content Include="Projectiles\SparkFury.png" />
     <Content Include="Projectiles\Spark2.png" />
     <Content Include="Projectiles\Spark3.png" />
     <Content Include="Projectiles\SparkBoom2.png" />
@@ -7119,9 +7142,11 @@
     <Content Include="Sounds\Sounds\AkumaRoar.mp3" />
     <Content Include="Sounds\Sounds\Chicken.wav" />
     <Content Include="Sounds\Sounds\FerretNote.mp3" />
+    <Content Include="Sounds\Sounds\Forge.wav" />
     <Content Include="Sounds\Sounds\Glitch.wav" />
     <Content Include="Sounds\Sounds\GONG.mp3" />
     <Content Include="Sounds\Sounds\MOARGONG.mp3" />
+    <Content Include="Sounds\Sounds\Moo.mp3" />
     <Content Include="Sounds\Sounds\QUAK.wav" />
     <Content Include="Sounds\Sounds\Rajah.mp3" />
     <Content Include="Sounds\Sounds\ShenRoar.mp3" />

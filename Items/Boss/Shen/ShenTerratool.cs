@@ -43,6 +43,7 @@ You may only have a maximum of 2 tool types active");
         {
             if (player.altFunctionUse == 2)
             {
+                item.noUseGraphic = true;
                 AAMod.instance.TerratoolSState.ToggleUI(AAMod.instance.TerratoolSInterface);
                 item.pick = 0;
                 item.axe = 0;
@@ -51,6 +52,7 @@ You may only have a maximum of 2 tool types active");
             }
             else
             {
+                item.noUseGraphic = false;
                 item.pick = UI.TerratoolSUI.Pick;
                 item.axe = UI.TerratoolSUI.Axe;
                 item.hammer = UI.TerratoolSUI.Hammer;
