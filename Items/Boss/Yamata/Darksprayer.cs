@@ -37,7 +37,7 @@ Inflicts Moonrazed");
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-3, 0);
+            return new Vector2(-20, 0);
 
         }
 

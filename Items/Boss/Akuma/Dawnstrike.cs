@@ -39,6 +39,11 @@ namespace AAMod.Items.Boss.Akuma
             item.shootSpeed = 7f;
         }
 
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-8, -2);
+        }
+
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
