@@ -40,13 +40,13 @@ namespace AAMod.Items.Melee
       Tooltip.SetDefault("");
     }
 
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Everleaf", 10);   //you need 1 DirtBlock
+            recipe.AddIngredient(null, "Everleaf", 10);   
             recipe.AddIngredient(ItemID.Stinger, 4);
             recipe.AddIngredient(ItemID.JungleSpores, 4);
-            recipe.AddTile(TileID.Anvils);   //at work bench
+            recipe.AddTile(TileID.Anvils);   
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

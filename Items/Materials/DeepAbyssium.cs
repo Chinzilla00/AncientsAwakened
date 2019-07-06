@@ -29,7 +29,7 @@ namespace AAMod.Items.Materials
         }
 
 		public override void AddRecipes()
-        {                                                   //How to craft this item
+        {                                                   
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.ChlorophyteBar, 2);
             recipe.AddIngredient(null, "AbyssiumBar", 1);              //example of how to craft with a modded item

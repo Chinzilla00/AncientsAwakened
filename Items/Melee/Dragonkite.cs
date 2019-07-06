@@ -15,18 +15,18 @@ namespace AAMod.Items.Melee   //where is located
         }
         public override void SetDefaults()
         {
-            item.damage = 260;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 176;              //Sword width
-            item.height = 176;             //Sword height
-            item.useTime = 30;          //how fast 
+            item.damage = 260;            
+            item.melee = true;            
+            item.width = 176;              
+            item.height = 176;             
+            item.useTime = 30;          
             item.useAnimation = 30;     
-            item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 4;      //Sword knockback
+            item.useStyle = 1;        
+            item.knockBack = 4;      
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 9;
-            item.UseSound = SoundID.Item20;       //1 is the sound of the sword
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.UseSound = SoundID.Item20;       
+            item.autoReuse = true;   
             item.useTurn = true;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
@@ -39,8 +39,8 @@ namespace AAMod.Items.Melee   //where is located
             ModRecipe recipe = new ModRecipe(mod);      
             recipe.AddIngredient(null, "TheDragonfire", 1);
             recipe.AddIngredient(null, "RadiantIncinerite", 10);
-            recipe.AddIngredient(ItemID.Ectoplasm, 15); //you need 1 DirtBlock
-            recipe.AddTile(TileID.MythrilAnvil);   //at work bench
+            recipe.AddIngredient(ItemID.Ectoplasm, 15); 
+            recipe.AddTile(TileID.MythrilAnvil);   
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

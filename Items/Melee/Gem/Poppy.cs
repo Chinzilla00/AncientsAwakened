@@ -15,18 +15,18 @@ namespace AAMod.Items.Melee.Gem   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 32;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 44;              //Sword width
-            item.height = 44;             //Sword height
-            item.useTime = 17;          //how fast 
+            item.damage = 32;            
+            item.melee = true;            
+            item.width = 44;              
+            item.height = 44;             
+            item.useTime = 17;          
             item.useAnimation = 17;
-            item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 3;      //Sword knockback
+            item.useStyle = 1;        
+            item.knockBack = 3;      
             item.value = 5000;        
             item.rare = 4;
-            item.UseSound = SoundID.Item1;       //1 is the sound of the sword
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.UseSound = SoundID.Item1;       
+            item.autoReuse = true;   
             item.useTurn = true;
             item.shoot = mod.ProjectileType<Projectiles.GemShot.AmethystShot>();
             item.shootSpeed = 16f;
@@ -47,8 +47,8 @@ namespace AAMod.Items.Melee.Gem   //where is located
             recipe.AddIngredient(ItemID.Diamond, 1);
             recipe.AddIngredient(ItemID.Amethyst, 1);
             recipe.AddIngredient(null, "Prism", 10);
-            recipe.AddRecipeGroup("AAMod:Gold", 12);		//you need 1 DirtBlock
-            recipe.AddTile(TileID.Anvils);   //at work bench
+            recipe.AddRecipeGroup("AAMod:Gold", 12);		
+            recipe.AddTile(TileID.Anvils);   
             recipe.SetResult(this);
             recipe.AddRecipe();
 

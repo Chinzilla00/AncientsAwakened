@@ -8,18 +8,18 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 140;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 48;              //Sword width
-            item.height = 48;             //Sword height
-            item.useTime = 18;          //how fast 
+            item.damage = 140;            
+            item.melee = true;            
+            item.width = 48;              
+            item.height = 48;             
+            item.useTime = 18;          
             item.useAnimation = 18;     
-            item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
+            item.useStyle = 1;        
             item.knockBack = 5;
             item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
             item.rare = 3;
-            item.UseSound = SoundID.Item1;       //1 is the sound of the sword
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.UseSound = SoundID.Item1;       
+            item.autoReuse = true;   
             item.useTurn = true;               
         }
 
@@ -32,8 +32,8 @@ namespace AAMod.Items.Melee   //where is located
         public override void AddRecipes()  //How to craft this sword
         {
             ModRecipe recipe = new ModRecipe(mod);      
-            recipe.AddIngredient(ItemID.SpookyWood, 100);   //you need 1 DirtBlock
-            recipe.AddTile(TileID.Sawmill);   //at work bench
+            recipe.AddIngredient(ItemID.SpookyWood, 100);   
+            recipe.AddTile(TileID.Sawmill);   
             recipe.SetResult(this);
             recipe.AddRecipe();
 

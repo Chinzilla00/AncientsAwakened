@@ -43,8 +43,8 @@ Fury Forger EX");
                 for (int i = 0; i < 6; i++)
                 {
                     double offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), mod.ProjectileType("SparkFury"), item.damage, 1.25f, player.whoAmI, 0f, 1f);
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), mod.ProjectileType("SparkFury"), item.damage, 1.25f, player.whoAmI, 0f, 1f);
+                    Projectile.NewProjectile(target.Center.X, target.Center.Y, (float)(Math.Sin(offsetAngle) * 5f), (float)(Math.Cos(offsetAngle) * 5f), mod.ProjectileType("SparkFury"), item.damage, 1.25f, player.whoAmI, 0f, 1f);
+                    Projectile.NewProjectile(target.Center.X, target.Center.Y, (float)(-Math.Sin(offsetAngle) * 5f), (float)(-Math.Cos(offsetAngle) * 5f), mod.ProjectileType("SparkFury"), item.damage, 1.25f, player.whoAmI, 0f, 1f);
                 }
             }
             target.AddBuff(BuffID.Daybreak, 200);

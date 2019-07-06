@@ -24,6 +24,8 @@ namespace AAMod.Projectiles.Zero
             projectile.melee = true;
             projectile.timeLeft = 300;
             projectile.scale = .1f;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 7;
         }
         float RotValue = .1f;
         public override void AI()
@@ -31,7 +33,7 @@ namespace AAMod.Projectiles.Zero
             
             if (projectile.ai[0] == 0)
             {
-                projectile.scale += .05f;
+                projectile.scale += .02f;
                 projectile.rotation += RotValue;
                 if (projectile.scale >= 1)
                 {
@@ -41,7 +43,7 @@ namespace AAMod.Projectiles.Zero
             }
             if (projectile.ai[0] == 1)
             {
-                projectile.scale -= .05f;
+                projectile.scale -= .02f;
                 projectile.rotation -= RotValue;
                 if (projectile.scale >= 0)
                 {

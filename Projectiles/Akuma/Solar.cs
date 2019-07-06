@@ -44,34 +44,21 @@ namespace AAMod.Projectiles.Akuma   //The directory for your .cs and .png; Examp
 
         public override void AI()
         {
-            if (projectile.ai[1] == 0 && Main.netMode != 1)
-            {
-                int proj = Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<SolarSun>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
-                Main.projectile[proj].netUpdate = true;
-                projectile.ai[1]++;
-                projectile.netUpdate = true;
-            }
-            if (Main.rand.NextFloat() < 1f)
-            {
-                Dust dust1;
-                Dust dust2;
-                Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default(Color), 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f)];
-                dust1.noGravity = true;
-                dust2.noGravity = true;
-            }
+            Dust dust1;
+            Dust dust2;
+            Vector2 position = projectile.position;
+            dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default(Color), 1f)];
+            dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f)];
+            dust1.noGravity = true;
+            dust2.noGravity = true;
         }
 
 
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(BuffID.Daybreak, 600);
+            target.AddBuff(BuffID.Daybreak, 300);
+            Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
         }
-
-
-        //dust = Main.dust[Terraria.Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
-
     }
 }

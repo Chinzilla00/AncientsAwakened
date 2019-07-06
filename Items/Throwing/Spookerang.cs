@@ -31,7 +31,7 @@ namespace AAMod.Items.Throwing
 
 
         public override void AddRecipes()
-        {                                                   //How to craft this item
+        {                                                   
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.ChlorophyteBar, 10);              //exeample of how to craft with a modded item
 			recipe.AddIngredient(ItemID.SpookyWood, 50);

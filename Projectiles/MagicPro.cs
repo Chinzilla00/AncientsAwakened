@@ -46,7 +46,7 @@ namespace AAMod.Projectiles
 					if(distance <= homingMaximumRangeInPixels &&
 						(
 						selectedTarget == -1 ||  //there is no selected target
-						projectile.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+						projectile.Distance(Main.npc[selectedTarget].Center) > distance) 
 						)
 					{
 						selectedTarget = i;
@@ -66,13 +66,13 @@ namespace AAMod.Projectiles
 			
 			const int aislotHomingCooldown = 0;
 			const int homingDelay = 30;
-			const float desiredFlySpeedInPixelsPerFrame = 10; //How fast can it go once in homing mode?
-			const float amountOfFramesToLerpBy = 5; // minimum of 1, How quickly can it turn?
+			const float desiredFlySpeedInPixelsPerFrame = 10; 
+			const float amountOfFramesToLerpBy = 5; 
 
 			projectile.ai[aislotHomingCooldown]++;
 			if(projectile.ai[aislotHomingCooldown] > homingDelay)
 			{
-				projectile.ai[aislotHomingCooldown] = homingDelay; //cap this value 
+				projectile.ai[aislotHomingCooldown] = homingDelay; 
 
 				int foundTarget = HomeOnTarget();
 				if(foundTarget != -1)

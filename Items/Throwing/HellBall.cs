@@ -40,7 +40,7 @@ namespace AAMod.Items.Throwing
         }
 
         public override void AddRecipes()
-        {                                                   //How to craft this item
+        {                                                   
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.HellstoneBar, 20);              //exeample of how to craft with a modded item
 			recipe.AddIngredient(ItemID.SoulofNight, 5);

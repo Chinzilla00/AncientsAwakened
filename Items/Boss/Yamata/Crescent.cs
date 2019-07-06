@@ -21,7 +21,7 @@ Inflicts Moonraze");
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.Terrarian);
-            item.damage = 250;                            
+            item.damage = 300;                            
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 2;
             item.knockBack = 1;
@@ -52,17 +52,6 @@ Inflicts Moonraze");
                 SpriteEffects.None,
                 0f
             );
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;;
-                }
-            }
         }
 
         public override void AddRecipes()  //How to craft this sword

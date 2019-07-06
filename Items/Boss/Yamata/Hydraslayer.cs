@@ -23,17 +23,17 @@ Inflicts Moonrazed");
         public override void SetDefaults()
         {
             item.shoot = mod.ProjectileType("YWProjectile");
-            item.damage = 220;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 86;              //Sword width
-            item.height = 86;             //Sword height
-            item.useTime = 17;          //how fast 
+            item.damage = 220;            
+            item.melee = true;            
+            item.width = 86;              
+            item.height = 86;             
+            item.useTime = 17;          
             item.useAnimation = 17;     
-            item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 3f;      //Sword knockback
+            item.useStyle = 1;        
+            item.knockBack = 3f;      
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.UseSound = SoundID.Item20;      //1 is the sound of the sword
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.UseSound = SoundID.Item20;      
+            item.autoReuse = true;   
             item.useTurn = true;
             item.shootSpeed = 20f;
             item.rare = 9; AARarity = 13;

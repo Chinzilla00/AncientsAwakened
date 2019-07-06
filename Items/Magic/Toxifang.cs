@@ -41,7 +41,7 @@ namespace AAMod.Items.Magic
 			return true;
 		}
 		
-		public override void AddRecipes()  //How to craft this item
+		public override void AddRecipes()  
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.SpellTome);

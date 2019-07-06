@@ -34,7 +34,7 @@ namespace AAMod.Items.Melee   //where is located
         public override void AddRecipes()  //How to craft this sword
         {
             ModRecipe recipe = new ModRecipe(mod);      
-            recipe.AddIngredient(null, "CrystalShortsword");   //you need 1 DirtBlock
+            recipe.AddIngredient(null, "CrystalShortsword");   
 			recipe.AddIngredient(null, "TerraCrystal");
             recipe.AddTile(TileID.MythrilAnvil);  
             recipe.SetResult(this);

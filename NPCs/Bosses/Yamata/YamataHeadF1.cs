@@ -310,7 +310,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     if (distance <= homingMaximumRangeInPixels &&
                         (
                             selectedTarget == -1 || //there is no selected target
-                            npc.Distance(Main.npc[selectedTarget].Center) > distance) //or we are closer to this target than the already selected target
+                            npc.Distance(Main.npc[selectedTarget].Center) > distance) 
                     )
                         selectedTarget = i;
                 }

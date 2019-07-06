@@ -14,7 +14,6 @@ namespace AAMod.Items.Boss.Akuma
         
         public override void SetStaticDefaults()
         {
-
             DisplayName.SetDefault("Firestorm");
         }
 

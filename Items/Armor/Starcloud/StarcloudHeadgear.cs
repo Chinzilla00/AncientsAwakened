@@ -42,11 +42,11 @@ namespace AAMod.Items.Armor.Starcloud
 				player.magicDamage *= 2;
             }﻿
         }
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "StarcloudBar", 15);
-            recipe.AddTile(TileID.Anvils);   //at work bench
+            recipe.AddTile(TileID.Anvils);   
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

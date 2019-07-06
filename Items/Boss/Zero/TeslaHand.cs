@@ -18,22 +18,20 @@ namespace AAMod.Items.Boss.Zero
 
         public override void SetDefaults()
         {
-            
+            item.ranged = true;
+            item.useTime = 4;
+            item.reuseDelay = 15;
+            item.useAnimation = 12;
+            item.useStyle = 5;
+            item.noMelee = true;
+            item.knockBack = 2.5f;
+            item.autoReuse = true;
+            item.shootSpeed = 16f;
             item.width = 36;
             item.height = 42;
             item.damage = 240;
-            item.noMelee = true;
-            item.noUseGraphic = false;
-            item.channel = true;
-            item.autoReuse = true;
-            item.ranged = true;
-            item.useAnimation = 9;
-            item.useTime = 9;
-            item.useStyle = 1;
-            item.knockBack = 2f;
             item.UseSound = SoundID.Item116;
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.shootSpeed = 20f;
             item.shoot = mod.ProjectileType("Teslashock");
             item.rare = 9; AARarity = 13;
         }

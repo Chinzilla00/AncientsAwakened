@@ -40,11 +40,11 @@ namespace AAMod.Items.Melee
             Tooltip.SetDefault("Makes instant barbeque shish kebabs!");
         }
 
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.HellstoneBar, 12);   //you need 1 DirtBlock
-            recipe.AddTile(TileID.Anvils);   //at work bench
+            recipe.AddIngredient(ItemID.HellstoneBar, 12);   
+            recipe.AddTile(TileID.Anvils);   
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -14,7 +14,7 @@ namespace AAMod.Items.Boss.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Morning Glory");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("Explodes when it sticks into an enemy");
         }
 
         public override void SetDefaults()

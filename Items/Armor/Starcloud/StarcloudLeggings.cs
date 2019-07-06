@@ -31,11 +31,11 @@ namespace AAMod.Items.Armor.Starcloud
             player.statManaMax2 += 20;
         }
 
-        public override void AddRecipes()  //How to craft this item
+        public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "StarcloudBar", 15);   //you need 10 Wood
-            recipe.AddTile(TileID.Anvils);   //at work bench
+            recipe.AddTile(TileID.Anvils);   
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

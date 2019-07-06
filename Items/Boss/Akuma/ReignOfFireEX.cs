@@ -21,17 +21,17 @@ Reign of Fire EX");
         
         public override void SetDefaults()
         {
-            item.damage = 450;            //Sword damage
-            item.melee = true;            //if it's melee
-            item.width = 86;              //Sword width
-            item.height = 86;             //Sword height
-            item.useTime = 25;          //how fast 
+            item.damage = 450;            
+            item.melee = true;            
+            item.width = 86;              
+            item.height = 86;             
+            item.useTime = 25;          
             item.useAnimation = 25;     
-            item.useStyle = 1;        //Style is how this item is used, 1 is the style of the sword
-            item.knockBack = 6.5f;      //Sword knockback
+            item.useStyle = 1;        
+            item.knockBack = 6.5f;      
             item.value = Item.sellPrice(3, 0, 0, 0);
 			item.UseSound = SoundID.Item20;
-            item.autoReuse = true;   //if it's capable of autoswing.
+            item.autoReuse = true;   
             item.useTurn = true;
             item.expert = true;
             item.rare = 9;

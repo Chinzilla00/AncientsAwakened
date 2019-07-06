@@ -35,12 +35,12 @@ namespace AAMod.Items.Magic
       Tooltip.SetDefault("It shoots sparks in an even spread.");
     }
 
-		public override void AddRecipes()  //How to craft this item
+		public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "FulguriteBar", 4);   //you need 10 Wood
 			recipe.AddIngredient(ItemID.SoulofFright, 10);
-            recipe.AddTile(TileID.WorkBenches);   //at work bench
+            recipe.AddTile(TileID.WorkBenches);   
             recipe.SetResult(this);  
             recipe.AddRecipe();
         }
