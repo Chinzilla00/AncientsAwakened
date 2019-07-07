@@ -36,6 +36,7 @@ IInflicts Moonraze");
             item.autoReuse = true;   
             item.useTurn = true;
             item.shoot = mod.ProjectileType<Projectiles.Yamata.AbyssLash>();
+            item.shootSpeed = 10;
             item.rare = 9; AARarity = 13;
         }
 

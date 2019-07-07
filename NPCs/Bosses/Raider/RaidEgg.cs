@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -27,8 +28,8 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.defense = 30;
             npc.lavaImmune = true;
             npc.lifeMax = 50;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
+            npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.value = 0f;
             npc.knockBackResist = 2f;
             npc.npcSlots = 0f;
@@ -83,8 +84,9 @@ namespace AAMod.NPCs.Bosses.Raider
                 }
             }
             npc.ai[0] += 1f;
-            if (npc.ai[0] >= num1326 || npc.collideX || npc.collideY)
+            if (npc.ai[0] >= num1326 || npc.velocity.Y == 0)
             {
+                Projectile.NewProjectile((int)npc.position.X, (int)npc.position.Y, 0, 0, mod.ProjectileType<RaidStrike>(), 30, 10, Main.myPlayer, 0, 0);
                 npc.Transform(mod.NPCType("Raidmini"));
             }
             if (Main.netMode != 1 && npc.velocity.Y == 0f && Math.Abs(npc.velocity.X) < 0.2 && npc.ai[0] >= num1326 * 0.75)

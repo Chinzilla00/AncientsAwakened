@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Truffle
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 40000;
+            npc.lifeMax = 30000;
             npc.damage = 50;
             npc.defense = 40;
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
