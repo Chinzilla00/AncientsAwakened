@@ -1,5 +1,6 @@
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Ranged
 {
@@ -29,6 +30,11 @@ namespace AAMod.Items.Ranged
             item.shoot = mod.ProjectileType("Toxifire"); //idk why but all the guns in the vanilla source have this
             item.shootSpeed = 7.5f;
             item.useAmmo = 23;
+        }
+		
+		public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(2, -3);
         }
 
         public override void AddRecipes()

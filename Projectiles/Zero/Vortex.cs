@@ -28,8 +28,8 @@ namespace AAMod.Projectiles.Zero   //The directory for your .cs and .png; Exampl
         public override void SetDefaults()
         {
             projectile.extraUpdates = 0;
-            projectile.width = 36;
-            projectile.height = 36;          
+            projectile.width = 48;
+            projectile.height = 48;          
             projectile.aiStyle = 99;
             projectile.friendly = true;
             projectile.penetrate = -1;

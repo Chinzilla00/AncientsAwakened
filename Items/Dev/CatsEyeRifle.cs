@@ -52,7 +52,7 @@ Doesn't require ammo
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-1, 0);
+            return new Vector2(-10, 0);
         }
     }
 }

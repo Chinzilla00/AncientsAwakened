@@ -48,6 +48,11 @@ Cat's Eye Rifle EX");
             glowmaskDrawColor = Color.White;  //glowmask draw color
         }
 
+		
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-10, 0);
+        }
 
         public override void AddRecipes()
         {
@@ -58,11 +63,6 @@ Cat's Eye Rifle EX");
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }
-        }
-
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-1, 0);
         }
     }
 }
