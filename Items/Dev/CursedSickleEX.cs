@@ -13,7 +13,7 @@ namespace AAMod.Items.Dev
 		{
             DisplayName.SetDefault("Tartarus Reaper");
             Tooltip.SetDefault(@"Spins a cursed scythe around you that shreds through enemies
-Left click to swing the scythe");			
+Right click to swing the scythe");			
 		}
 
 		public override void SetDefaults()

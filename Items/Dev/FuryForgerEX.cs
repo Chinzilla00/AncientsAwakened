@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System;
+using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Dev
 {
@@ -30,6 +31,12 @@ Fury Forger EX");
             item.expert = true;
 		}
 
+		public override void UseStyle(Player player)
+        {
+            player.itemLocation +=
+                new Vector2(-24 * player.direction, 16 * player.gravDir).RotatedBy(player.itemRotation);
+        }
+		
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Forge"), player.Center);

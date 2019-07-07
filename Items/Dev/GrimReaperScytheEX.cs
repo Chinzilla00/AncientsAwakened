@@ -9,7 +9,7 @@ namespace AAMod.Items.Dev
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("True Scythe of the Grim Reaper");
+			DisplayName.SetDefault("Soul Shredder");
             Tooltip.SetDefault(@"Left click to swing and release homing scythe
 Right click to do dashing hit
 You are immune during the dash and deal 15x damage in true melee
