@@ -19,7 +19,6 @@ namespace AAMod.NPCs.Bosses.Raider
             projectile.height = 10;
             projectile.friendly = false;
             projectile.tileCollide = true;
-            projectile.extraUpdates = 2;
             aiType = 48;
             projectile.hostile = true;
             projectile.penetrate = 1;

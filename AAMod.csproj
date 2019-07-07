@@ -100,6 +100,7 @@
     <Compile Include="Buffs\SockPuppet.cs" />
     <Compile Include="Buffs\TerraWizard.cs" />
     <Compile Include="Buffs\TiedemiesBuff.cs" />
+    <Compile Include="Dusts\BloodyDust.cs" />
     <Compile Include="Dusts\GroviteDust.cs" />
     <Compile Include="Dusts\ShadowDust.cs" />
     <Compile Include="Dusts\SnapDust.cs" />
@@ -1108,6 +1109,7 @@
     <Compile Include="Items\Materials\vulture_feather.cs" />
     <Compile Include="Items\Materials\YtriumBar.cs" />
     <Compile Include="Items\Melee\Aerodrake.cs" />
+    <Compile Include="Items\Melee\BloodyMary.cs" />
     <Compile Include="Items\Melee\ChaosChain.cs" />
     <Compile Include="Items\Melee\ChaosYariEX.cs" />
     <Compile Include="Items\Melee\ChaosYari.cs" />
@@ -1170,7 +1172,6 @@
     <Compile Include="Items\Melee\AncientPoker.cs" />
     <Compile Include="Items\Melee\Apocalypse.cs" />
     <Compile Include="Items\Melee\BlazingDawn.cs" />
-    <Compile Include="Items\Melee\Bloody_Mary.cs" />
     <Compile Include="Items\Melee\BreakingDawn.cs" />
     <Compile Include="Items\Melee\Chaos.cs" />
     <Compile Include="Items\Melee\CloudEdge.cs" />
@@ -2193,6 +2194,8 @@
     <Compile Include="Projectiles\Ryusei.cs" />
     <Compile Include="Projectiles\Yogan.cs" />
     <Compile Include="Projectiles\Zero\AMR.cs" />
+    <Compile Include="Projectiles\Zero\DoomRay1.cs" />
+    <Compile Include="Projectiles\Zero\RiftSlash.cs" />
     <Compile Include="Projectiles\Zero\VortexProj.cs" />
     <Compile Include="Projectiles\Zero\Protocol.cs" />
     <Compile Include="Projectiles\Singularity.cs" />
@@ -2423,7 +2426,6 @@
     <Compile Include="Projectiles\YtriumHalberd.cs" />
     <Compile Include="Projectiles\Zero\Antimatter.cs" />
     <Compile Include="Projectiles\Zero\DoomRay.cs" />
-    <Compile Include="Projectiles\Zero\DoomRayHandle.cs" />
     <Compile Include="Projectiles\Zero\EventHorizon.cs" />
     <Compile Include="Projectiles\Zero\Neutralizer.cs" />
     <Compile Include="Projectiles\Zero\RealityLaser.cs" />
@@ -2979,6 +2981,7 @@
     <Content Include="Dusts\AkumaDustLight.png" />
     <Content Include="Dusts\AshRain.png" />
     <Content Include="Dusts\BinaryDust.png" />
+    <Content Include="Dusts\BloodyDust.png" />
     <Content Include="Dusts\BogleafDust.png" />
     <Content Include="Dusts\BogwoodDust.png" />
     <Content Include="Dusts\BroodmotherDust.png" />
@@ -4829,6 +4832,7 @@
     <Content Include="Items\Materials\FishronScale.png" />
     <Content Include="Items\Materials\PhantomSteel.png" />
     <Content Include="Items\Melee\Aerodrake.png" />
+    <Content Include="Items\Melee\BloodyMary.png" />
     <Content Include="Items\Melee\ScytheOfDecayOld.png" />
     <Content Include="Items\Melee\ZSaber.png" />
     <Content Include="Items\Flasks\AshJar.png" />
@@ -5770,7 +5774,6 @@
     <Content Include="Items\Melee\BackScratcher.png" />
     <Content Include="Items\Melee\BladeOfEvil.png" />
     <Content Include="Items\Melee\BlazingDawn.png" />
-    <Content Include="Items\Melee\Bloody_Mary.png" />
     <Content Include="Items\Melee\BreakingDawn.png" />
     <Content Include="Items\Melee\BugSwatter.png" />
     <Content Include="Items\Melee\CarnalCrusher.png" />
@@ -7087,13 +7090,14 @@
     <Content Include="Projectiles\YtriumHalberd.png" />
     <Content Include="Projectiles\Zero\Antimatter.png" />
     <Content Include="Projectiles\Zero\DoomRay.png" />
-    <Content Include="Projectiles\Zero\DoomRayHandle.png" />
+    <Content Include="Projectiles\Zero\DoomRay1.png" />
     <Content Include="Projectiles\Zero\EventHorizon.png" />
     <Content Include="Projectiles\Zero\Neutralizer.png" />
     <Content Include="Projectiles\Zero\Protocol.png" />
     <Content Include="Projectiles\Zero\RealityLaser.png" />
     <Content Include="Projectiles\Zero\Horizon.png" />
     <Content Include="Projectiles\Zero\Rift.png" />
+    <Content Include="Projectiles\Zero\RiftSlash.png" />
     <Content Include="Projectiles\Zero\Teslashock.png" />
     <Content Include="Projectiles\Zero\VoidStarPF.png" />
     <Content Include="Projectiles\Zero\Vortex.png" />

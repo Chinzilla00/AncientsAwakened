@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Truffle
             npc.aiStyle = -1;
             npc.lifeMax = 300;
             npc.defense = 0;
-            npc.damage = 20;
+            npc.damage = 50;
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Bosses.Truffle
 
             Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, color.R / 255, color.G / 255, color.B / 255);
 
-            BaseAI.AIEye(npc, ref npc.ai, true, true, .2f, .2f, 4, 2, 1, 1);
+            BaseAI.AIEye(npc, ref npc.ai, true, true, .2f, .2f, 4, 4, 1, 1);
 
             if (npc.frameCounter++ > 8)
             {

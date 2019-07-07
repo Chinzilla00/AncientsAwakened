@@ -1,14 +1,12 @@
-using System;
-using System.Collections.Generic;
-
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Zero
 {
-    public class DoomRay : ModProjectile
+	public class DoomRay : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -17,133 +15,172 @@ namespace AAMod.Projectiles.Zero
 
 		public override void SetDefaults()
 		{
-			projectile.width = 18;
+			projectile.width = 14;
 			projectile.height = 18;
-			projectile.hostile = false;
-			projectile.magic = true;
 			projectile.friendly = true;
-			projectile.tileCollide = false;
-
+			projectile.hostile = false;
 			projectile.penetrate = -1;
-			projectile.alpha = 255;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 10;
+			projectile.tileCollide = false;
+			projectile.magic = true;
+			projectile.ignoreWater = true;
 		}
 
-		public override bool PreAI()
-		{
-			Vector2? vector68 = null;
-			if (projectile.velocity.HasNaNs() || projectile.velocity == Vector2.Zero)
-				projectile.velocity = -Vector2.UnitY;
-
-			if (Main.projectile[(int)projectile.ai[1]].active && Main.projectile[(int)projectile.ai[1]].type == mod.ProjectileType("DoomRayHandle"))
-			{
-				projectile.Center = Main.projectile[(int)projectile.ai[1]].Center;
-				projectile.velocity = Vector2.Normalize(Main.projectile[(int)projectile.ai[1]].velocity);
-			}
-			else
-			{
-				projectile.Kill();
-			}
-
-			if (projectile.velocity.HasNaNs() || projectile.velocity == Vector2.Zero)
-				projectile.velocity = -Vector2.UnitY;
-
-			float num810 = projectile.velocity.ToRotation();
-			projectile.rotation = num810 - (float)(Math.PI / 2);
-			projectile.velocity = num810.ToRotationVector2();
-			float scaleFactor7 = 0f;
-			Vector2 value37 = projectile.Center;
-			if (vector68.HasValue)
-				value37 = vector68.Value;
-
-			int num811 = 2;
-			scaleFactor7 = 0f;
-
-			float[] array3 = new float[num811];
-			int num812 = 0;
-			while (num812 < num811)
-			{
-				float num813 = num812 / (num811 - 1f);
-				Vector2 value38 = value37 + projectile.velocity.RotatedBy(Math.PI / 2, default(Vector2)) * (num813 - 0.5f) * scaleFactor7 * projectile.scale;
-				int num814 = (int)value38.X >> 4;
-				int num815 = (int)value38.Y >> 4;
-				Vector2 vector69 = value38 + projectile.velocity * 16f * 150f;
-				int num816 = (int)vector69.X >> 4;
-				int num817 = (int)vector69.Y >> 4;
-				Tuple<int, int> tuple;
-				float num818;
-				if (!Collision.TupleHitLine(num814, num815, num816, num817, 0, 0, new List<Tuple<int, int>>(), out tuple))
-					num818 = new Vector2(Math.Abs(num814 - tuple.Item1), Math.Abs(num815 - tuple.Item2)).Length() * 16f;
-				else if (tuple.Item1 == num816 && tuple.Item2 == num817)
-					num818 = 2400f;
-				else
-					num818 = new Vector2(Math.Abs(num814 - tuple.Item1), Math.Abs(num815 - tuple.Item2)).Length() * 16f;
-
-				array3[num812] = num818;
-				num812++;
-			}
-			float num819 = 0f;
-			for (int num820 = 0; num820 < array3.Length; num820++)
-				num819 += array3[num820];
-
-			num819 /= num811;
-			float amount = 0.5f;
-			projectile.localAI[1] = MathHelper.Lerp(projectile.localAI[1], num819, amount);
-			Vector2 vector72 = projectile.Center + projectile.velocity * (projectile.localAI[1] - 14f);
-
-			for (int num826 = 0; num826 < 2; num826++)
-			{
-				float num827 = projectile.velocity.ToRotation() + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
-				float num828 = (float)Main.rand.NextDouble() * 2f + 2f;
-				Vector2 vector73 = new Vector2((float)Math.Cos(num827) * num828, (float)Math.Sin(num827) * num828);
-				int num829 = Dust.NewDust(vector72, 0, 0, 206, vector73.X, vector73.Y, 0);
-				Main.dust[num829].noGravity = true;
-				Main.dust[num829].scale = 1.7f;
-			}
-
-			if (Main.rand.Next(5) == 0)
-			{
-				Vector2 value40 = projectile.velocity.RotatedBy(Math.PI / 2, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
-				int num830 = Dust.NewDust(vector72 + value40 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default(Color), 1.5f);
-				Main.dust[num830].velocity *= 0.5f;
-				Main.dust[num830].velocity.Y = -Math.Abs(Main.dust[num830].velocity.Y);
-			}
-			DelegateMethods.v3_1 = new Vector3(0.3f, 0.65f, 0.7f);
-			Utils.PlotTileLine(projectile.Center, projectile.Center + projectile.velocity * projectile.localAI[1], projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CastLight));
-
-			return false;
-		}
-
-		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
-		{
-			float n = 0f;
-			if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), projectile.Center, projectile.Center + projectile.velocity * projectile.localAI[1], 30f * projectile.scale, ref n))
-				return true;
-
-			return false;
-		}
-
-		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-		{
-			if (projectile.velocity == Vector2.Zero)
-				return false;
-
-			Texture2D tex2 = Main.projectileTexture[projectile.type];
-			float num210 = projectile.localAI[1];
-			Color c_ = new Color(255, 255, 255, 127);
-			Vector2 value20 = projectile.Center.Floor();
-			num210 -= projectile.scale * 10.5f;
-			Vector2 vector41 = new Vector2(projectile.scale);
-			DelegateMethods.f_1 = 1f;
-			DelegateMethods.c_1 = c_;
-			DelegateMethods.i_1 = 54000 - (int)Main.time / 2;
-			Vector2 vector42 = projectile.oldPos[0] + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
-			Utils.DrawLaser(Main.spriteBatch, tex2, value20 - Main.screenPosition, value20 + projectile.velocity * num210 - Main.screenPosition, vector41, new Utils.LaserLineFraming(DelegateMethods.TurretLaserDraw));
-			DelegateMethods.c_1 = new Color(255, 255, 255, 127) * 0.75f * projectile.Opacity;
-			Utils.DrawLaser(Main.spriteBatch, tex2, value20 - Main.screenPosition, value20 + projectile.velocity * num210 - Main.screenPosition, vector41 / 2f, new Utils.LaserLineFraming(DelegateMethods.TurretLaserDraw));
-			return false;
-		}
-
-	}
+		public override void AI()
+        {
+            Player player = Main.player[projectile.owner];
+            float num = 1.57079637f;
+            Vector2 vector = player.RotatedRelativePoint(player.MountedCenter, true);
+            projectile.ai[0] += 1f;
+            int num16 = 0;
+            if (projectile.ai[0] >= 60f)
+            {
+                num16++;
+            }
+            if (projectile.ai[0] >= 180f)
+            {
+                num16++;
+            }
+            bool flag4 = false;
+            if (projectile.ai[0] == 60f || projectile.ai[0] == 180f || (projectile.ai[0] > 180f && projectile.ai[0] % 20f == 0f))
+            {
+                flag4 = true;
+            }
+            bool flag5 = projectile.ai[0] >= 180f;
+            int num17 = 10;
+            if (!flag5)
+            {
+                projectile.ai[1] += 1f;
+            }
+            bool flag6 = false;
+            if (flag5 && projectile.ai[0] % 20f == 0f)
+            {
+                flag6 = true;
+            }
+            if (projectile.ai[1] >= num17 && !flag5)
+            {
+                projectile.ai[1] = 0f;
+                flag6 = true;
+                if (!flag5)
+                {
+                    float scaleFactor3 = player.inventory[player.selectedItem].shootSpeed * projectile.scale;
+                    Vector2 value9 = vector;
+                    Vector2 value10 = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY) - value9;
+                    if (player.gravDir == -1f)
+                    {
+                        value10.Y = Main.screenHeight - Main.mouseY + Main.screenPosition.Y - value9.Y;
+                    }
+                    Vector2 vector6 = Vector2.Normalize(value10);
+                    if (float.IsNaN(vector6.X) || float.IsNaN(vector6.Y))
+                    {
+                        vector6 = -Vector2.UnitY;
+                    }
+                    vector6 *= scaleFactor3;
+                    if (vector6.X != projectile.velocity.X || vector6.Y != projectile.velocity.Y)
+                    {
+                        projectile.netUpdate = true;
+                    }
+                    projectile.velocity = vector6;
+                }
+            }
+            if (projectile.soundDelay <= 0 && !flag5)
+            {
+                projectile.soundDelay = num17 - num16;
+                projectile.soundDelay *= 2;
+                if (projectile.ai[0] != 1f)
+                {
+                    Main.PlaySound(SoundID.Item15, projectile.position);
+                }
+            }
+            if (projectile.ai[0] > 10f && !flag5)
+            {
+                Vector2 vector7 = Vector2.UnitX * 18f;
+                vector7 = vector7.RotatedBy(projectile.rotation - 1.57079637f);
+                Vector2 value11 = projectile.Center + vector7;
+                for (int k = 0; k < num16 + 1; k++)
+                {
+                    int num18 = 226;
+                    float num19 = 0.4f;
+                    if (k % 2 == 1)
+                    {
+                        num18 = 226;
+                        num19 = 0.65f;
+                    }
+                    Vector2 vector8 = value11 + ((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2() * (12f - num16 * 2);
+                    int num20 = Dust.NewDust(vector8 - Vector2.One * 8f, 16, 16, num18, projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 0);
+                    Main.dust[num20].velocity = Vector2.Normalize(value11 - vector8) * 1.5f * (10f - num16 * 2f) / 10f;
+                    Main.dust[num20].noGravity = true;
+                    Main.dust[num20].scale = num19;
+                    Main.dust[num20].customData = player;
+                }
+            }
+            if (flag6 && Main.myPlayer == projectile.owner)
+            {
+                bool flag7 = !flag4 || player.CheckMana(player.inventory[player.selectedItem].mana, true, false);
+                bool flag8 = player.channel && flag7 && !player.noItems && !player.CCed;
+                if (flag8)
+                {
+                    if (projectile.ai[0] == 180f)
+                    {
+                        Vector2 center = projectile.Center;
+                        Vector2 vector9 = Vector2.Normalize(projectile.velocity);
+                        if (float.IsNaN(vector9.X) || float.IsNaN(vector9.Y))
+                        {
+                            vector9 = -Vector2.UnitY;
+                        }
+                        int num21 = (int)(projectile.damage * 3f);
+                        int num22 = Projectile.NewProjectile(center.X, center.Y, vector9.X, vector9.Y, mod.ProjectileType<Doomray1>(), num21, projectile.knockBack, projectile.owner, 0f, projectile.whoAmI);
+                        projectile.ai[1] = num22;
+                        projectile.netUpdate = true;
+                    }
+                    else if (flag5)
+                    {
+                        Projectile Laser = Main.projectile[(int)projectile.ai[1]];
+                        if (!Laser.active || Laser.type != mod.ProjectileType<DoomRay1>())
+                        {
+                            projectile.Kill();
+                            return;
+                        }
+                    }
+                }
+                else
+                {
+                    if (!flag5)
+                    {
+                        int num23 = mod.ProjectileType<RealityLaser>();
+                        float scaleFactor4 = 10f;
+                        Vector2 center2 = projectile.Center;
+                        Vector2 vector10 = Vector2.Normalize(projectile.velocity) * scaleFactor4;
+                        if (float.IsNaN(vector10.X) || float.IsNaN(vector10.Y))
+                        {
+                            vector10 = -Vector2.UnitY;
+                        }
+                        float num24 = 0.7f + num16 * 0.3f;
+                        int num25 = (num24 < 1f) ? projectile.damage : ((int)(projectile.damage * 2f));
+                        Projectile.NewProjectile(center2.X, center2.Y, vector10.X, vector10.Y, num23, num25, projectile.knockBack, projectile.owner, 0f, num24);
+                    }
+                    projectile.Kill();
+                }
+            }
+            projectile.position = player.RotatedRelativePoint(player.MountedCenter, true) - projectile.Size / 2f;
+            projectile.rotation = projectile.velocity.ToRotation() + num;
+            projectile.spriteDirection = projectile.direction;
+            projectile.timeLeft = 2;
+            player.ChangeDir(projectile.direction);
+            player.heldProj = projectile.whoAmI;
+            player.itemTime = 2;
+            player.itemAnimation = 2;
+            player.itemRotation = (float)Math.Atan2(projectile.velocity.Y * projectile.direction, projectile.velocity.X * projectile.direction);
+            Vector2 vector24 = Main.OffsetsPlayerOnhand[player.bodyFrame.Y / 56] * 2f;
+            if (player.direction != 1)
+            {
+                vector24.X = player.bodyFrame.Width - vector24.X;
+            }
+            if (player.gravDir != 1f)
+            {
+                vector24.Y = player.bodyFrame.Height - vector24.Y;
+            }
+            vector24 -= new Vector2(player.bodyFrame.Width - player.width, player.bodyFrame.Height - 42) / 2f;
+            projectile.Center = player.RotatedRelativePoint(player.position + vector24, true) - projectile.velocity;
+        }
+    }
 }

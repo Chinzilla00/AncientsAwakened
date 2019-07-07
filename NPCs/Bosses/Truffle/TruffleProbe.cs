@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Truffle
             npc.aiStyle = -1;
             npc.lifeMax = 500;
             npc.defense = 0;
-            npc.damage = 20;
+            npc.damage = 40;
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
