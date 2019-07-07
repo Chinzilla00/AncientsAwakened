@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-	public class BloodyMary : ModItem
+	public class BloodyMary : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
