@@ -34,7 +34,7 @@ IInflicts Moonraze");
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.UseSound = SoundID.Item1;      
             item.autoReuse = true;   
-            item.useTurn = true;
+            item.useTurn = false;
             item.shoot = mod.ProjectileType<Projectiles.Yamata.AbyssLash>();
             item.shootSpeed = 10;
             item.rare = 9; AARarity = 13;
