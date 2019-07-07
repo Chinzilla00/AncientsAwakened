@@ -51,8 +51,20 @@ namespace AAMod.Items.Summoning.Minions.Terra
             return false;
         }
 
+		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+		{
+			fallThrough = true;
+			return false;
+		}
+		
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			return false;
+		}
+		
         public override void AI()
         {
+			projectile.tileCollide = false;
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
 
@@ -65,6 +77,10 @@ namespace AAMod.Items.Summoning.Minions.Terra
 
 
             int num1038 = 10;
+			if (modPlayer.TerraSummon)
+			{
+				projectile.timeLeft = 2;
+			}
             if (player.dead) modPlayer.TerraSummon = false;
             if (modPlayer.TerraSummon) projectile.timeLeft = 2;
             num1038 = 30;

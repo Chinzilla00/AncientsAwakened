@@ -15,18 +15,19 @@ namespace AAMod.Items.Summoning.Minions.Terra
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Terr Crawler");
+            DisplayName.SetDefault("Terra Crawler");
+			Main.projFrames[projectile.type] = 5;
 		}		
 		
         public override void SetDefaults()
         {
-            projectile.width = 22;
-            projectile.height = 30;
+            projectile.width = 26;
+            projectile.height = 18;
             projectile.aiStyle = -1;
             projectile.timeLeft = 300;
             projectile.friendly = true;
             projectile.hostile = false;
-            projectile.tileCollide = true;
+            projectile.tileCollide = false;
 			projectile.damage = 1;
             projectile.penetrate = -1;
             projectile.netImportant = true;
@@ -35,7 +36,7 @@ namespace AAMod.Items.Summoning.Minions.Terra
 			ProjectileID.Sets.MinionSacrificable[projectile.type] = true;		
         }
 
-        public static int frameWidth = 34, frameHeight = 40;
+        public static int frameWidth = 26, frameHeight = 18;
         public float frameSubCounter = 0f;
         public int frameCount = 0, textureAlt = -1;
         public Rectangle frame;
@@ -43,11 +44,20 @@ namespace AAMod.Items.Summoning.Minions.Terra
 
         public Entity target = null;
 
+		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+		{
+			fallThrough = false;
+			return true;
+		}
+		
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            player.AddBuff(mod.BuffType("TerraSummon"), 3600);
+			if (modPlayer.TerraSummon)
+			{
+				projectile.timeLeft = 2;
+			}
             if (player.dead)
             {
                 modPlayer.TerraSummon = false;
@@ -87,14 +97,6 @@ namespace AAMod.Items.Summoning.Minions.Terra
             {
                 projectile.frame = 0;
             }
-        }
-
-        public override bool PreDraw(SpriteBatch sb, Color dColor)
-        {
-            projectile.position.Y -= projectile.height - 3;
-            BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 5, frame, AAColor.COLOR_WHITEFADE1);
-            projectile.position.Y += projectile.height - 3;
-            return false;
         }
 
         public void Target()

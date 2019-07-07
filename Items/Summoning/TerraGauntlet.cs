@@ -19,7 +19,7 @@ namespace AAMod.Items.Summoning
             item.useAnimation = 30;
             item.useStyle = 5;
             item.shoot = mod.ProjectileType("Minion1");
-            item.buffType = mod.BuffType<Buffs.TerraSummon>();
+            item.buffType = mod.BuffType("TerraSummon");
             item.knockBack = 2;
             item.rare = 8;
             item.UseSound = SoundID.Item44;
@@ -28,6 +28,14 @@ namespace AAMod.Items.Summoning
             item.mana = 10;
         }
 
+		public override void UseStyle(Player player)
+		{
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
+			{
+				player.AddBuff(item.buffType, 3600, true);
+			}
+		}
+		
         public override void SetStaticDefaults()
         {
               DisplayName.SetDefault("Terra Gauntlet");

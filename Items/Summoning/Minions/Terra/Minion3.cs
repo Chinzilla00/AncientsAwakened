@@ -35,9 +35,13 @@ namespace AAMod.Items.Summoning.Minions.Terra
 
         public override void AI()
         {
+			projectile.tileCollide = false;
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            player.AddBuff(mod.BuffType("TerraSummon"), 3600);
+			if (modPlayer.TerraSummon)
+			{
+				projectile.timeLeft = 2;
+			}
             if (player.dead)
             {
                 modPlayer.TerraSummon = false;
