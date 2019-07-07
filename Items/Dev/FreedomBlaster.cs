@@ -1,6 +1,4 @@
-﻿using Terraria.ModLoader;
-
-namespace AAMod.Items.Dev
+﻿namespace AAMod.Items.Dev
 {
     public class FreedomBlaster : BaseAAItem
     {

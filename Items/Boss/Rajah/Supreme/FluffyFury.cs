@@ -1,8 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
-using AAMod.Projectiles.Yamata;
 
 namespace AAMod.Items.Boss.Rajah.Supreme
 {

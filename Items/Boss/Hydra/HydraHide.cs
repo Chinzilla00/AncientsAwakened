@@ -1,5 +1,3 @@
-using Terraria.ModLoader;
-
 namespace AAMod.Items.Boss.Hydra
 {
     public class HydraHide : BaseAAItem

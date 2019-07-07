@@ -1,13 +1,9 @@
-using System;
-using System.Linq;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
 
 namespace AAMod.Buffs
 {
-	public class ReaperImmune2 : ModBuff
+    public class ReaperImmune2 : ModBuff
 	{
 		public override void SetDefaults()
 		{

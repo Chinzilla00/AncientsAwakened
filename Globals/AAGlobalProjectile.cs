@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.Tiles;
-using AAMod.Walls;
 
 namespace AAMod
 {

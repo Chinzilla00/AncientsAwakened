@@ -1,12 +1,11 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 
 namespace AAMod.Projectiles
 {
-	public class GrimReaperScytheEX : ModProjectile
+    public class GrimReaperScytheEX : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

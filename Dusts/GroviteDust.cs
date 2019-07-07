@@ -1,20 +1,8 @@
 using System;
-using System.Reflection;
-using System.IO;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.GameContent;
-using Terraria.GameContent.Events;
-using Terraria.Graphics.Shaders;
-using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
 
 namespace AAMod.Dusts
 {

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -7,7 +6,7 @@ using System;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-	public class ZeroRocket : ModProjectile
+    public class ZeroRocket : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

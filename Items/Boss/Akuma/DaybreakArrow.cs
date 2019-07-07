@@ -1,11 +1,12 @@
 using Terraria;
 using Terraria.ID;
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
-using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Akuma
 {
-	public class DaybreakArrow : BaseAAItem
+    public class DaybreakArrow : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

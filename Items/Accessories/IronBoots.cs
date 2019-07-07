@@ -1,9 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Terraria.Graphics.Shaders;
 
 namespace AAMod.Items.Accessories
 {

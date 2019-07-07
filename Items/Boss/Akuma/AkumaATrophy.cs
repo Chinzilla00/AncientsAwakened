@@ -1,5 +1,3 @@
-using Terraria.ModLoader;
-
 namespace AAMod.Items.Boss.Akuma
 {
     public class AkumaATrophy : BaseAAItem

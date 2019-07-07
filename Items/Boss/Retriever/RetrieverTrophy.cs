@@ -1,10 +1,6 @@
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ModLoader;
-
 namespace AAMod.Items.Boss.Retriever
 {
-	public class RetrieverTrophy : BaseAAItem
+    public class RetrieverTrophy : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

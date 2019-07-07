@@ -1,14 +1,9 @@
-using System;
-using System.Linq;
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
-using Terraria.Localization;
 
 namespace AAMod.Buffs
 {
-	public class ReaperCD : ModBuff
+    public class ReaperCD : ModBuff
 	{
 		public override void SetDefaults()
 		{

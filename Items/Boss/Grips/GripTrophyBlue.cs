@@ -1,5 +1,3 @@
-using Terraria.ModLoader;
-
 namespace AAMod.Items.Boss.Grips
 {
     public class GripTrophyBlue : BaseAAItem

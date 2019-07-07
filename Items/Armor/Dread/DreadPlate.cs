@@ -1,6 +1,5 @@
 using Terraria;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 
 
 namespace AAMod.Items.Armor.Dread

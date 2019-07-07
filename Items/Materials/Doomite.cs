@@ -1,5 +1,3 @@
-using Terraria.ModLoader;
-
 namespace AAMod.Items.Materials
 {
     public class Doomite : BaseAAItem

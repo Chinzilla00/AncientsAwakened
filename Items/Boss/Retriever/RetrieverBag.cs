@@ -1,9 +1,9 @@
 using Terraria;
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
-
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.Items.Boss.Retriever
 {
-	public class RetrieverBag : BaseAAItem
+    public class RetrieverBag : BaseAAItem
 	{
         
         public override void SetStaticDefaults()

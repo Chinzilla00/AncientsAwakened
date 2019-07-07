@@ -1,10 +1,9 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AAMod.Items.Throwing
 {
-	public class MurkyGel : BaseAAItem
+    public class MurkyGel : BaseAAItem
 	{
 		public override void SetDefaults()
 		{

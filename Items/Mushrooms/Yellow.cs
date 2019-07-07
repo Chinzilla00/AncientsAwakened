@@ -1,5 +1,3 @@
-using Terraria.ModLoader;
-
 namespace AAMod.Items.Mushrooms
 {
     public class Yellow : BaseAAItem

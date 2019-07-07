@@ -1,8 +1,6 @@
 using Terraria;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 using System;
 
 namespace AAMod.Items.Dev

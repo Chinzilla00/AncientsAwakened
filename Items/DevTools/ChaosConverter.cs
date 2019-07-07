@@ -1,6 +1,5 @@
 
 using Terraria;
-using Terraria.ModLoader;
 using AAMod.Worldgen;
 
 namespace AAMod.Items.DevTools

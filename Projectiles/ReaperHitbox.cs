@@ -1,13 +1,9 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 
 namespace AAMod.Projectiles
 {
-	public class ReaperHitbox : ModProjectile
+    public class ReaperHitbox : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

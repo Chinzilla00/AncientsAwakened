@@ -5,7 +5,6 @@ using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using Terraria.Graphics;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
-using AAMod.NPCs.Bosses.Yamata;
 using Terraria.ModLoader;
 using BaseMod;
 
