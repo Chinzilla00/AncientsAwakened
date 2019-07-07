@@ -136,10 +136,13 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.TargetClosest(false);
                 if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
                 {
-                    npc.velocity.Y -= 0.1f;
-                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
-                    npc.rotation = 0f;
-                    if (npc.position.Y - npc.height - npc.velocity.Y >= Main.maxTilesY && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+                    if (Main.netMode != 1)
+                    {
+                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<FuryAsheVanish>(), 0);
+                        Main.npc[DeathAnim].velocity = npc.velocity;
+                        Main.npc[DeathAnim].netUpdate = true;
+                    }
+                    npc.active = false;
                 }
 
                 if ((int)internalAI[2] > 3)
@@ -532,6 +535,8 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 Main.NewText("AGH! Sorry papa..! I gotta bail!", new Color(102, 20, 48));
             }
+            int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<FuryAsheVanish>(), 0);
+            Main.npc[DeathAnim].velocity = npc.velocity;
             npc.value = 0f;
             npc.boss = false;
         }

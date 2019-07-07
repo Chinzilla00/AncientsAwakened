@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
@@ -16,13 +17,23 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void SetDefaults()
         {
-            npc.width = 98;
-            npc.height = 98;
-            npc.life = 1;
-            npc.immortal = true;
             npc.dontTakeDamage = true;
+            npc.lifeMax = 1;
+            npc.width = 90;
+            npc.height = 78;
+            npc.friendly = false;
+            npc.lifeMax = 1;
+            npc.dontTakeDamage = true;
+            npc.noGravity = true;
+            npc.aiStyle = -1;
+            npc.timeLeft = 10;
+
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
-        
+
         public override void AI()
         {
             npc.velocity.Y += .1f;
@@ -35,28 +46,51 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     npc.ai[0] = 0;
                     npc.ai[1] += 1;
-                    if (npc.velocity.Y != 0)
+                    if (npc.frame.Y > (92 * 12))
                     {
-                        if (npc.ai[1] > 3)
+                        npc.ai[2] = 1;
+                        Main.PlaySound(SoundID.Item14, npc.position);
+                        Vector2 position = npc.Center + (Vector2.One * -20f);
+                        int num84 = 40;
+                        int height3 = num84;
+                        for (int num85 = 0; num85 < 3; num85++)
                         {
-                            npc.ai[1] = 0;
-
+                            int num86 = Dust.NewDust(position, num84, height3, 240, 0f, 0f, 100, default(Color), 1.5f);
+                            Main.dust[num86].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                         }
-                    }
-                    else
-                    {
-                        if (npc.frame.Y > (92 * 12))
+                        for (int num87 = 0; num87 < 15; num87++)
                         {
-                            npc.ai[2] = 1 ;
-                            for (int Loop = 0; Loop < 20; Loop++)
-                            {
-                                int Smoke2 = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 31), npc.width, npc.height, 186, 1 * Main.rand.NextFloat(-1, 1), -1, 0, default(Color), 1f);
-                                Main.dust[Smoke2].noGravity = true;
-                                Main.dust[Smoke2].noLight = true;
-                                int Smoke = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 31), npc.width, npc.height, 186, 1 * Main.rand.NextFloat(-1, 1), -1, 0, default(Color), 2f);
-                                Main.dust[Smoke].noGravity = true;
-                                Main.dust[Smoke].noLight = true;
-                            }
+                            int num88 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 200, default(Color), 3.7f);
+                            Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                            Main.dust[num88].noGravity = true;
+                            Main.dust[num88].noLight = true;
+                            Main.dust[num88].velocity *= 3f;
+                            Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
+                            num88 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default(Color), 1.5f);
+                            Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                            Main.dust[num88].velocity *= 2f;
+                            Main.dust[num88].noGravity = true;
+                            Main.dust[num88].fadeIn = 1f;
+                            Main.dust[num88].color = Color.Crimson * 0.5f;
+                            Main.dust[num88].noLight = true;
+                            Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * 8f;
+                        }
+                        for (int num89 = 0; num89 < 10; num89++)
+                        {
+                            int num90 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, default(Color), 2.7f);
+                            Main.dust[num90].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default(Vector2)) * num84 / 2f);
+                            Main.dust[num90].noGravity = true;
+                            Main.dust[num90].noLight = true;
+                            Main.dust[num90].velocity *= 3f;
+                            Main.dust[num90].velocity += npc.DirectionTo(Main.dust[num90].position) * 2f;
+                        }
+                        for (int num91 = 0; num91 < 30; num91++)
+                        {
+                            int num92 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 0, default(Color), 1.5f);
+                            Main.dust[num92].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default(Vector2)) * num84 / 2f);
+                            Main.dust[num92].noGravity = true;
+                            Main.dust[num92].velocity *= 3f;
+                            Main.dust[num92].velocity += npc.DirectionTo(Main.dust[num92].position) * 3f;
                         }
                     }
                 }
@@ -79,7 +113,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                 }
             }
-
         }
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
