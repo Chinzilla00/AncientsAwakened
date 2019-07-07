@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ForgedMod.Items.Weapons.Melee
+namespace AAMod.Items.Melee
 {
 	public class BloodyMary : ModItem
 	{

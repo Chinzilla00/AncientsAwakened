@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ForgedMod.Dusts
+namespace AAMod.Dusts
 {
 	public class BloodyDust : ModDust
 	{
