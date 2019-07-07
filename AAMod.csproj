@@ -1960,11 +1960,13 @@
     <Compile Include="NPCs\TownNPCs\Eyeshot.cs" />
     <Compile Include="NPCs\TownNPCs\GoblinSlayer.cs" />
     <Compile Include="NPCs\TownNPCs\Lovecraftian.cs" />
+    <Compile Include="NPCs\TownNPCs\StanMjolnir.cs" />
     <Compile Include="NPCs\TownNPCs\Mushman.cs" />
     <Compile Include="NPCs\TownNPCs\Anubis.cs" />
     <Compile Include="NPCs\TownNPCs\StanLee.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
+    <Compile Include="Projectiles\Akuma\YotD.cs" />
     <Compile Include="Projectiles\Akuma\FireworkYotD.cs" />
     <Compile Include="Projectiles\CursedSickleEXProj.cs" />
     <Compile Include="Projectiles\CursedSickleEX.cs" />
@@ -2030,7 +2032,6 @@
     <Compile Include="Projectiles\Akuma\FireProjBoom.cs" />
     <Compile Include="Projectiles\Akuma\FireProjEX.cs" />
     <Compile Include="Projectiles\Akuma\FireProjEXBoom.cs" />
-    <Compile Include="Projectiles\Akuma\SolarSun.cs" />
     <Compile Include="Projectiles\Akuma\FireRain.cs" />
     <Compile Include="Projectiles\Akuma\Lung\LungFireball.cs" />
     <Compile Include="Projectiles\Akuma\Lung\LungHead.cs" />
@@ -2039,8 +2040,6 @@
     <Compile Include="Projectiles\Akuma\SunOrb.cs" />
     <Compile Include="Projectiles\Akuma\Sunray.cs" />
     <Compile Include="Projectiles\Akuma\SunSpear.cs" />
-    <Compile Include="Projectiles\Akuma\SunSpearRain.cs" />
-    <Compile Include="Projectiles\Akuma\SunSpearShot.cs" />
     <Compile Include="Projectiles\Akuma\Sunstorm.cs" />
     <Compile Include="Projectiles\AmberArrow.cs" />
     <Compile Include="Projectiles\ChaosBoomEX.cs" />
@@ -5276,6 +5275,7 @@
     <Content Include="NPCs\Enemies\Void\SagittariusMiniNew.png" />
     <Content Include="NPCs\Minibosses\Exterminator.png" />
     <Content Include="NPCs\Swarm_Thing.png" />
+    <Content Include="NPCs\TownNPCs\StanMjolnir.png" />
     <Content Include="NPCs\TownNPCs\StanLee.png" />
     <Content Include="NPCs\TownNPCs\StanLee_Head.png" />
     <Content Include="Projectiles\Aerodrake.png" />
@@ -6633,13 +6633,11 @@
     <Content Include="Projectiles\Akuma\MorningGlory.png" />
     <Content Include="Projectiles\Akuma\RadiantDawn.png" />
     <Content Include="Projectiles\Akuma\Solar.png" />
-    <Content Include="Projectiles\Akuma\SolarSun.png" />
     <Content Include="Projectiles\Akuma\SunOrb.png" />
     <Content Include="Projectiles\Akuma\Sunray.png" />
     <Content Include="Projectiles\Akuma\SunSpear.png" />
-    <Content Include="Projectiles\Akuma\SunSpearRain.png" />
-    <Content Include="Projectiles\Akuma\SunSpearShot.png" />
     <Content Include="Projectiles\Akuma\Sunstorm.png" />
+    <Content Include="Projectiles\Akuma\YotD.png" />
     <Content Include="Projectiles\AmberArrow.png" />
     <Content Include="Projectiles\Ammo\DaybreakBullet.png" />
     <Content Include="Projectiles\Ammo\EventideBullet.png" />

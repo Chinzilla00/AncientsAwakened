@@ -1,5 +1,7 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
 using System;
+using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,6 +25,24 @@ namespace AAMod.Projectiles.Akuma
             projectile.timeLeft = 45;
         }
 
+        public float[] internalAI = new float[1];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write(internalAI[0]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+            }
+        }
         public override void AI()
         {
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
@@ -33,7 +53,7 @@ namespace AAMod.Projectiles.Akuma
                 {
                     for (int num352 = 0; num352 < 8; num352++)
                     {
-                        int num353 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 1.8f);
+                        int num353 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 1.8f);
                         Main.dust[num353].noGravity = true;
                         Main.dust[num353].velocity *= 3f;
                         Main.dust[num353].fadeIn = 0.5f;
@@ -43,15 +63,15 @@ namespace AAMod.Projectiles.Akuma
                 }
                 if (projectile.ai[0] > 2f)
                 {
-                    int num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 20f), 8, 8, 6, projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.2f);
+                    int num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 20f), 8, 8, mod.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.2f);
                     Main.dust[num354].noGravity = true;
                     Main.dust[num354].velocity *= 0.2f;
                     Main.dust[num354].position = Main.dust[num354].position.RotatedBy(projectile.rotation, projectile.Center);
-                    num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 15f), 8, 8, 6, projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.2f);
+                    num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 15f), 8, 8, mod.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.2f);
                     Main.dust[num354].noGravity = true;
                     Main.dust[num354].velocity *= 0.2f;
                     Main.dust[num354].position = Main.dust[num354].position.RotatedBy(projectile.rotation, projectile.Center);
-                    num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 10f), 8, 8, 6, projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.2f);
+                    num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 10f), 8, 8, mod.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.2f);
                     Main.dust[num354].noGravity = true;
                     Main.dust[num354].velocity *= 0.2f;
                     Main.dust[num354].position = Main.dust[num354].position.RotatedBy(projectile.rotation, projectile.Center);
@@ -60,26 +80,58 @@ namespace AAMod.Projectiles.Akuma
             }
             else
             {
-                if (projectile.type < 415 || projectile.type > 418)
-                {
-                    int num355 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 20f), 8, 8, 6, projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.2f);
-                    Main.dust[num355].noGravity = true;
-                    Main.dust[num355].velocity *= 0.2f;
-                    Main.dust[num355].position = Main.dust[num355].position.RotatedBy(projectile.rotation, projectile.Center);
-                    return;
-                }
                 projectile.ai[0] += 1f;
                 if (projectile.ai[0] > 4f)
                 {
-                    int num356 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 20f), 8, 8, 6, projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.2f);
+                    int num356 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 20f), 8, 8, mod.DustType<Dusts.AkumaADust>(), projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.2f);
                     Main.dust[num356].noGravity = true;
                     Main.dust[num356].velocity *= 0.2f;
                     Main.dust[num356].position = Main.dust[num356].position.RotatedBy(projectile.rotation, projectile.Center);
                     return;
                 }
             }
+            const int homingDelay = 10;
+            const float desiredFlySpeedInPixelsPerFrame = 60;
+            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
+
+            internalAI[0]++;
+            if (internalAI[0] > homingDelay)
+            {
+                internalAI[0] = homingDelay;
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
+                {
+                    NPC n = Main.npc[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
+                }
+            }
         }
 
+        private int HomeOnTarget()
+        {
+            const bool homingCanAimAtWetEnemies = true;
+            const float homingMaximumRangeInPixels = 400;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxNPCs; i++)
+            {
+                NPC n = Main.npc[i];
+                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
+                {
+                    float distance = projectile.Distance(n.Center);
+                    if (distance <= homingMaximumRangeInPixels &&
+                        (
+                            selectedTarget == -1 || //there is no selected target
+                            projectile.Distance(Main.npc[selectedTarget].Center) > distance)
+                    )
+                        selectedTarget = i;
+                }
+            }
+
+            return selectedTarget;
+        }
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.Daybreak, 600);
@@ -87,7 +139,7 @@ namespace AAMod.Projectiles.Akuma
 
         public override void Kill(int timeLeft)
         {
-            int ExplosionType = Main.rand.Next(4);
+            int ExplosionType = Main.rand.Next(3);
 
             if (ExplosionType == 0)
             {
@@ -106,8 +158,7 @@ namespace AAMod.Projectiles.Akuma
                     {
                         num640 = 4f;
                     }
-                    int num641 = 130;
-                    int num642 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, num641, 0f, 0f, 100);
+                    int num642 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 100);
                     float num643 = Main.dust[num642].velocity.X;
                     float num644 = Main.dust[num642].velocity.Y;
                     if (num643 == 0f && num644 == 0f)
@@ -140,8 +191,7 @@ namespace AAMod.Projectiles.Akuma
                     {
                         num647 = 13f;
                     }
-                    int num648 = 131;
-                    int num649 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, num648, 0f, 0f, 100);
+                    int num649 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100);
                     float num650 = Main.dust[num649].velocity.X;
                     float num651 = Main.dust[num649].velocity.Y;
                     if (num650 == 0f && num651 == 0f)
@@ -174,74 +224,9 @@ namespace AAMod.Projectiles.Akuma
             }
             else if (ExplosionType == 2)
             {
-                Vector2 vector13 = ((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2();
-                float num653 = Main.rand.Next(5, 9);
-                float num654 = Main.rand.Next(12, 17);
-                float value26 = Main.rand.Next(3, 7);
-                float num655 = 20f;
-                for (float num656 = 0f; num656 < num653; num656 += 1f)
-                {
-                    for (int num657 = 0; num657 < 2; num657++)
-                    {
-                        Vector2 value27 = vector13.RotatedBy(((num657 == 0) ? 1f : -1f) * 6.28318548f / (num653 * 2f), default(Vector2));
-                        for (float num658 = 0f; num658 < num655; num658 += 1f)
-                        {
-                            Vector2 value28 = Vector2.Lerp(vector13, value27, num658 / num655);
-                            float scaleFactor2 = MathHelper.Lerp(num654, value26, num658 / num655);
-                            int num659 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, 133, 0f, 0f, 100, default(Color), 1.3f);
-                            Main.dust[num659].velocity *= 0.1f;
-                            Main.dust[num659].noGravity = true;
-                            Main.dust[num659].velocity += value28 * scaleFactor2;
-                        }
-                    }
-                    vector13 = vector13.RotatedBy(6.28318548f / num653, default(Vector2));
-                }
-                for (float num660 = 0f; num660 < num653; num660 += 1f)
-                {
-                    for (int num661 = 0; num661 < 2; num661++)
-                    {
-                        Vector2 value29 = vector13.RotatedBy(((num661 == 0) ? 1f : -1f) * 6.28318548f / (num653 * 2f), default(Vector2));
-                        for (float num662 = 0f; num662 < num655; num662 += 1f)
-                        {
-                            Vector2 value30 = Vector2.Lerp(vector13, value29, num662 / num655);
-                            float scaleFactor3 = MathHelper.Lerp(num654, value26, num662 / num655) / 2f;
-                            int num663 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, 133, 0f, 0f, 100, default(Color), 1.3f);
-                            Main.dust[num663].velocity *= 0.1f;
-                            Main.dust[num663].noGravity = true;
-                            Main.dust[num663].velocity += value30 * scaleFactor3;
-                        }
-                    }
-                    vector13 = vector13.RotatedBy(6.28318548f / num653, default(Vector2));
-                }
-                for (int num664 = 0; num664 < 100; num664++)
-                {
-                    float num665 = num654;
-                    int num666 = 132;
-                    int num667 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, num666, 0f, 0f, 100);
-                    float num668 = Main.dust[num667].velocity.X;
-                    float num669 = Main.dust[num667].velocity.Y;
-                    if (num668 == 0f && num669 == 0f)
-                    {
-                        num668 = 1f;
-                    }
-                    float num670 = (float)Math.Sqrt(num668 * num668 + num669 * num669);
-                    num670 = num665 / num670;
-                    num668 *= num670;
-                    num669 *= num670;
-                    Main.dust[num667].velocity *= 0.5f;
-                    Dust expr_15A4E_cp_0 = Main.dust[num667];
-                    expr_15A4E_cp_0.velocity.X += num668;
-                    Dust expr_15A6D_cp_0 = Main.dust[num667];
-                    expr_15A6D_cp_0.velocity.Y += num669;
-                    Main.dust[num667].scale = 1.3f;
-                    Main.dust[num667].noGravity = true;
-                }
-            }
-            else if (ExplosionType == 3)
-            {
                 for (int num671 = 0; num671 < 400; num671++)
                 {
-                    int num672 = 133;
+                    int num672 = mod.DustType<Dusts.AkumaDust>();
                     float num673 = 16f;
                     if (num671 > 100)
                     {
@@ -249,7 +234,7 @@ namespace AAMod.Projectiles.Akuma
                     }
                     if (num671 > 100)
                     {
-                        num672 = 134;
+                        num672 = mod.DustType<Dusts.AkumaADust>();
                     }
                     if (num671 > 200)
                     {
@@ -257,7 +242,7 @@ namespace AAMod.Projectiles.Akuma
                     }
                     if (num671 > 200)
                     {
-                        num672 = 133;
+                        num672 = mod.DustType<Dusts.AkumaDust>();
                     }
                     if (num671 > 300)
                     {
@@ -265,7 +250,7 @@ namespace AAMod.Projectiles.Akuma
                     }
                     if (num671 > 300)
                     {
-                        num672 = 134;
+                        num672 = mod.DustType<Dusts.AkumaDust>();
                     }
                     int num674 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, num672, 0f, 0f, 100);
                     float num675 = Main.dust[num674].velocity.X;

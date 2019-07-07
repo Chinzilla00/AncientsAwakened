@@ -7,7 +7,7 @@ using System;
 
 namespace AAMod.NPCs.Enemies.Inferno
 {
-    public class Flamespitter : ModNPC
+    public abstract class Flamespitter : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{

@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss.Akuma   //where is located
         {
             
             DisplayName.SetDefault("Dragon Shiv");
-            Tooltip.SetDefault(@"Slow, but has massive knockback and leaves the target bleeding
+            Tooltip.SetDefault(@"Slow, but has massive knockback explodes on contact with an enemy
 Inflicts Daybroken");
             
         }
@@ -45,10 +45,10 @@ Inflicts Daybroken");
             item.melee = true;
             item.width = 42;
             item.height = 52;
-            item.useTime = 40;
-            item.useAnimation = 40;     
+            item.useTime = 50;
+            item.useAnimation = 50;     
             item.useStyle = 3;
-            item.knockBack = 10f;
+            item.knockBack = 20f;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.UseSound = SoundID.Item20; 
             item.autoReuse = true;
@@ -70,7 +70,7 @@ Inflicts Daybroken");
         public void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.Daybreak, 600);
-            target.AddBuff(BuffID.Bleeding, 600);
+            Projectile.NewProjectile((int)target.position.X, (int)target.position.Y, 0, 0, mod.ProjectileType<Projectiles.Akuma.AkumaExp>(), item.damage, 20, Main.myPlayer);
         }
         
         public override void AddRecipes()  //How to craft this sword

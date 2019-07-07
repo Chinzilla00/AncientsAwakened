@@ -132,7 +132,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = mod.ProjectileType<Projectiles.Mjolnir>();
+            projType = mod.ProjectileType<StanMjolnir>();
             attackDelay = 1;
         }
 
