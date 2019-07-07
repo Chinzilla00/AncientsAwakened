@@ -28,7 +28,6 @@ namespace AAMod.Projectiles.Akuma.Lung
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
             projectile.alpha = 255;
-            projectile.hide = true;
             projectile.netImportant = true;
         }
         public override void SetStaticDefaults()
@@ -41,6 +40,7 @@ namespace AAMod.Projectiles.Akuma.Lung
             ProjectileID.Sets.NoLiquidDistortion[projectile.type] = true;
             ProjectileID.Sets.StardustDragon[projectile.type] = true;
         }
+		
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Vector2 vector42 = projectile.position + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;

@@ -40,7 +40,7 @@ namespace AAMod.Items.Boss.Akuma
 
         public override Vector2? HoldoutOffset()
         {
-            return new Vector2(-8, -2);
+            return new Vector2(-4, -2);
         }
 
 

@@ -1,4 +1,5 @@
 using Terraria.ID;
+using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Ranged
 {
@@ -24,6 +25,11 @@ namespace AAMod.Items.Ranged
             item.rare = 1;
             item.ranged = true;
             item.crit = 10;
+        }
+		
+		public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-8, 0);
         }
     }
 }

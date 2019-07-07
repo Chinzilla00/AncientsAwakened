@@ -27,6 +27,11 @@ namespace AAMod.Items.Ranged
             item.autoReuse = true;
             item.shootSpeed = 14f;
         }
+		
+		public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-4, 0);
+        }
 
         public override void SetStaticDefaults()
         {
