@@ -17,7 +17,7 @@ namespace AAMod.Items.Accessories
             DisplayName.SetDefault("Power Stone");
             Tooltip.SetDefault(
 @"Multiplies your attack power by 40%
-'Fun isn’t something one considers when balancing the universe'");
+'Fun isnt something one considers when balancing the universe'");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 8));
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }
