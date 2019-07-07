@@ -15,7 +15,7 @@ namespace AAMod.Dusts
             if (!dust.noGravity)
             {
                 Dust expr_1256_cp_0 = dust;
-                expr_1256_cp_0.velocity.Y = expr_1256_cp_0.velocity.Y + 0.05f;
+                expr_1256_cp_0.velocity.Y += 0.05f;
             }
             if (dust.customData != null && dust.customData is NPC)
             {

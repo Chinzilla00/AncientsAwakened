@@ -181,8 +181,8 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float absDirX = Math.Abs(dirX);
                 float absDirY = Math.Abs(dirY);
                 float newSpeed = speed / length;
-                dirX = dirX * newSpeed;
-                dirY = dirY * newSpeed;
+                dirX *= newSpeed;
+                dirY *= newSpeed;
                 if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || (npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0))
                 {
                     if (npc.velocity.X < dirX)

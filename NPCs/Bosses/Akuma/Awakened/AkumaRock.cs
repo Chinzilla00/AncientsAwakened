@@ -64,9 +64,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 				int num340 = Gore.NewGore(projectile.position + new Vector2(projectile.width * Main.rand.Next(100) / 100f, projectile.height * Main.rand.Next(100) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
 				Main.gore[num340].velocity *= 0.3f;
 				Gore expr_B4D2_cp_0 = Main.gore[num340];
-				expr_B4D2_cp_0.velocity.X = expr_B4D2_cp_0.velocity.X + Main.rand.Next(-10, 11) * 0.05f;
+				expr_B4D2_cp_0.velocity.X += Main.rand.Next(-10, 11) * 0.05f;
 				Gore expr_B502_cp_0 = Main.gore[num340];
-				expr_B502_cp_0.velocity.Y = expr_B502_cp_0.velocity.Y + Main.rand.Next(-10, 11) * 0.05f;
+				expr_B502_cp_0.velocity.Y += Main.rand.Next(-10, 11) * 0.05f;
 			}
 			if (projectile.owner == Main.myPlayer)
 			{

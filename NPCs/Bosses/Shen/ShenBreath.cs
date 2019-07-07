@@ -57,9 +57,9 @@ namespace AAMod.NPCs.Bosses.Shen
                         {
                             Dust expr_DD5D_cp_0 = Main.dust[num299];
                             Main.dust[num299].scale *= 2f;
-                            expr_DD5D_cp_0.velocity.X = expr_DD5D_cp_0.velocity.X * 2f;
+                            expr_DD5D_cp_0.velocity.X *= 2f;
                             Dust expr_DD7D_cp_0 = Main.dust[num299];
-                            expr_DD7D_cp_0.velocity.Y = expr_DD7D_cp_0.velocity.Y * 2f;
+                            expr_DD7D_cp_0.velocity.Y *= 2f;
                         }
                         Main.dust[num299].scale *= 1f;
                         Dust expr_DDE2_cp_0 = Main.dust[num299];

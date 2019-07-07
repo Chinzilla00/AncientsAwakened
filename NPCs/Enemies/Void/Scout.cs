@@ -48,7 +48,6 @@ namespace AAMod.NPCs.Enemies.Void
 		    BaseAI.AISkull(npc, ref npc.ai, false, 6f, 350f, 0.6f, 0.15f);
 			Player player = Main.player[npc.target];
 			bool playerActive = player != null && player.active && !player.dead;
-            Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
             if (shootAI < 60)
             {
                 BaseAI.LookAt(player.Center, npc, 3, 0, .1f, false);

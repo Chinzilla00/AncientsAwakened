@@ -46,9 +46,9 @@ namespace AAMod.Projectiles.Djinn
 				Main.dust[dustIndex].velocity *= 0.1f;
 				Main.dust[dustIndex].velocity += projectile.velocity * 0.5f;
 				Dust sand = Main.dust[dustIndex];
-				sand.position.X = sand.position.X - xPos;
+				sand.position.X -= xPos;
 				Dust sand2 = Main.dust[dustIndex];
-				sand2.position.Y = sand2.position.Y - yPos;
+				sand2.position.Y -= yPos;
 			}
 			if (Main.rand.Next(8) == 0)
 			{

@@ -65,9 +65,9 @@ namespace AAMod.Projectiles
                 Main.dust[num467].position.X = projectile.Center.X;
                 Main.dust[num467].position.Y = projectile.Center.Y;
                 Dust expr_14B5B_cp_0 = Main.dust[num467];
-                expr_14B5B_cp_0.position.X = expr_14B5B_cp_0.position.X + Main.rand.Next(-10, 11);
+                expr_14B5B_cp_0.position.X += Main.rand.Next(-10, 11);
                 Dust expr_14B85_cp_0 = Main.dust[num467];
-                expr_14B85_cp_0.position.Y = expr_14B85_cp_0.position.Y + Main.rand.Next(-10, 11);
+                expr_14B85_cp_0.position.Y += Main.rand.Next(-10, 11);
                 Main.dust[num467].velocity.X = num463;
                 Main.dust[num467].velocity.Y = num464;
                 num462++;

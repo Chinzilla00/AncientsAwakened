@@ -46,9 +46,9 @@ namespace AAMod.Projectiles
 				dust = Main.dust[num157];
 				dust.velocity += projectile.velocity * 0.5f;
 				Dust var_2_69A9_cp_0_cp_0 = Main.dust[num157];
-				var_2_69A9_cp_0_cp_0.position.X = var_2_69A9_cp_0_cp_0.position.X - num154;
+				var_2_69A9_cp_0_cp_0.position.X -= num154;
 				Dust var_2_69C3_cp_0_cp_0 = Main.dust[num157];
-				var_2_69C3_cp_0_cp_0.position.Y = var_2_69C3_cp_0_cp_0.position.Y - num155;
+				var_2_69C3_cp_0_cp_0.position.Y -= num155;
 				num3 = num153;
 			}
 			if (Main.rand.Next(8) == 0)

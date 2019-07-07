@@ -511,7 +511,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     {
                         ai[2] = -200f;
                         npc.direction *= -1;
-                        npc.velocity.X = npc.velocity.X * -1f;
+                        npc.velocity.X *= -1f;
                         npc.collideX = false;
                     }
                 }
@@ -594,37 +594,37 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (npc.direction == -1 && npc.velocity.X > -maxSpeedX)
             {
                 npc.velocity.X -= (moveInterval * 0.5f);
-                if (npc.velocity.X > maxSpeedX) { npc.velocity.X = npc.velocity.X - 0.1f; }
+                if (npc.velocity.X > maxSpeedX) { npc.velocity.X -= 0.1f; }
                 else
-                    if (npc.velocity.X > 0f) { npc.velocity.X = npc.velocity.X + 0.05f; }
+                    if (npc.velocity.X > 0f) { npc.velocity.X += 0.05f; }
                 if (npc.velocity.X < -maxSpeedX) { npc.velocity.X = -maxSpeedX; }
             }
             else
             if (npc.direction == 1 && npc.velocity.X < maxSpeedX)
             {
                 npc.velocity.X += (moveInterval * 0.5f);
-                if (npc.velocity.X < -maxSpeedX) { npc.velocity.X = npc.velocity.X + 0.1f; }
+                if (npc.velocity.X < -maxSpeedX) { npc.velocity.X += 0.1f; }
                 else
-                    if (npc.velocity.X < 0f) { npc.velocity.X = npc.velocity.X - 0.05f; }
+                    if (npc.velocity.X < 0f) { npc.velocity.X -= 0.05f; }
                 if (npc.velocity.X > maxSpeedX) { npc.velocity.X = maxSpeedX; }
             }
 
 
             if (npc.directionY == -1 && (double)npc.velocity.Y > -hoverMaxSpeed)
             {
-                npc.velocity.Y = npc.velocity.Y - hoverInterval;
-                if ((double)npc.velocity.Y > hoverMaxSpeed) { npc.velocity.Y = npc.velocity.Y - 0.05f; }
+                npc.velocity.Y -= hoverInterval;
+                if ((double)npc.velocity.Y > hoverMaxSpeed) { npc.velocity.Y -= 0.05f; }
                 else
-                    if (npc.velocity.Y > 0f) { npc.velocity.Y = npc.velocity.Y + (hoverInterval - 0.01f); }
+                    if (npc.velocity.Y > 0f) { npc.velocity.Y += (hoverInterval - 0.01f); }
                 if ((double)npc.velocity.Y < -hoverMaxSpeed) { npc.velocity.Y = -hoverMaxSpeed; }
             }
             else
             if (npc.directionY == 1 && (double)npc.velocity.Y < hoverMaxSpeed)
             {
-                npc.velocity.Y = npc.velocity.Y + hoverInterval;
-                if ((double)npc.velocity.Y < -hoverMaxSpeed) { npc.velocity.Y = npc.velocity.Y + 0.05f; }
+                npc.velocity.Y += hoverInterval;
+                if ((double)npc.velocity.Y < -hoverMaxSpeed) { npc.velocity.Y += 0.05f; }
                 else
-                if (npc.velocity.Y < 0f) { npc.velocity.Y = npc.velocity.Y - (hoverInterval - 0.01f); }
+                if (npc.velocity.Y < 0f) { npc.velocity.Y -= (hoverInterval - 0.01f); }
                 if ((double)npc.velocity.Y > hoverMaxSpeed) { npc.velocity.Y = hoverMaxSpeed; }
             }
         }

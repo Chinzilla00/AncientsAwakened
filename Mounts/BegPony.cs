@@ -127,7 +127,7 @@ namespace AAMod.Mounts
                     Point point2 = Utils.ToTileCoordinates(player.Center + new Vector2((num4 * player.width / 2 + 2), 0f));
                     if (WorldGen.SolidOrSlopedTile(point.X, point.Y) || WorldGen.SolidOrSlopedTile(point2.X, point2.Y))
                     {
-                        player.velocity.X = player.velocity.X / 2f;
+                        player.velocity.X /= 2f;
                     }
                     player.dashDelay = 300;
                 }

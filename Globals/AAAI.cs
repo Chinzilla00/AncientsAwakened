@@ -253,11 +253,11 @@ namespace AAMod
                         npc.TargetClosest(true);
                         if (npc.direction > 0)
                         {
-                            npc.velocity.X = npc.velocity.X + 2f;
+                            npc.velocity.X += 2f;
                         }
                         else
                         {
-                            npc.velocity.X = npc.velocity.X - 2f;
+                            npc.velocity.X -= 2f;
                         }
                         for (int m = 0; m < 20; m = npcAvoidCollision + 1)
                         {
@@ -284,7 +284,7 @@ namespace AAMod
             else if (npc.ai[0] == 1f)
             {
                 npc.TargetClosest(true);
-                npc.velocity.X = npc.velocity.X + npc.ai[1] * velIntervalX;
+                npc.velocity.X += npc.ai[1] * velIntervalX;
 
                 if (npc.velocity.X > velMaxX)
                     npc.velocity.X = velMaxX;
@@ -313,7 +313,7 @@ namespace AAMod
             }
             else if (npc.ai[0] == 2f)
             {
-                npc.velocity.Y = npc.velocity.Y + npc.ai[1] * velIntervalYTurn;
+                npc.velocity.Y += npc.ai[1] * velIntervalYTurn;
 
                 if (npc.velocity.Length() > velIntervalMaxTurn)
                     npc.velocity *= velIntervalScalar;
@@ -388,46 +388,46 @@ namespace AAMod
             //controls momentum when going left, and clamps velocity at -velMaxX.
             if (npc.direction == -1 && npc.velocity.X > -velMaxX)
             {
-                npc.velocity.X = npc.velocity.X - moveIntervalX;
-                if (npc.velocity.X > 4f) { npc.velocity.X = npc.velocity.X - 0.1f; }
+                npc.velocity.X -= moveIntervalX;
+                if (npc.velocity.X > 4f) { npc.velocity.X -= 0.1f; }
                 else
-                    if (npc.velocity.X > 0f) { npc.velocity.X = npc.velocity.X + 0.05f; }
+                    if (npc.velocity.X > 0f) { npc.velocity.X += 0.05f; }
                 if (npc.velocity.X < -4f) { npc.velocity.X = -velMaxX; }
             }
             else //controls momentum when going right on the x axis and clamps velocity at velMaxX.
                 if (npc.direction == 1 && npc.velocity.X < velMaxX)
             {
-                npc.velocity.X = npc.velocity.X + moveIntervalX;
-                if (npc.velocity.X < -velMaxX) { npc.velocity.X = npc.velocity.X + 0.1f; }
+                npc.velocity.X += moveIntervalX;
+                if (npc.velocity.X < -velMaxX) { npc.velocity.X += 0.1f; }
                 else
-                    if (npc.velocity.X < 0f) { npc.velocity.X = npc.velocity.X - 0.05f; }
+                    if (npc.velocity.X < 0f) { npc.velocity.X -= 0.05f; }
 
                 if (npc.velocity.X > velMaxX) { npc.velocity.X = velMaxX; }
             }
             //controls momentum when going up on the Y axis and clamps velocity at -velMaxY.
             if (npc.directionY == -1 && (double)npc.velocity.Y > -velMaxY)
             {
-                npc.velocity.Y = npc.velocity.Y - moveIntervalY;
-                if ((double)npc.velocity.Y > velMaxY) { npc.velocity.Y = npc.velocity.Y - 0.05f; }
+                npc.velocity.Y -= moveIntervalY;
+                if ((double)npc.velocity.Y > velMaxY) { npc.velocity.Y -= 0.05f; }
                 else
-                    if (npc.velocity.Y > 0f) { npc.velocity.Y = npc.velocity.Y + 0.03f; }
+                    if (npc.velocity.Y > 0f) { npc.velocity.Y += 0.03f; }
 
                 if ((double)npc.velocity.Y < -velMaxY) { npc.velocity.Y = -velMaxY; }
             }
             else //controls momentum when going down on the Y axis and clamps velocity at velMaxY.
                 if (npc.directionY == 1 && (double)npc.velocity.Y < velMaxY)
             {
-                npc.velocity.Y = npc.velocity.Y + moveIntervalY;
-                if ((double)npc.velocity.Y < -velMaxY) { npc.velocity.Y = npc.velocity.Y + 0.05f; }
+                npc.velocity.Y += moveIntervalY;
+                if ((double)npc.velocity.Y < -velMaxY) { npc.velocity.Y += 0.05f; }
                 else
-                    if (npc.velocity.Y < 0f) { npc.velocity.Y = npc.velocity.Y - 0.03f; }
+                    if (npc.velocity.Y < 0f) { npc.velocity.Y -= 0.03f; }
 
                 if ((double)npc.velocity.Y > velMaxY) { npc.velocity.Y = velMaxY; }
             }
             if (!ignoreWet && npc.wet) //if don't ignore being wet and is wet, accelerate upwards to get out.
             {
-                if (npc.velocity.Y > 0f) { npc.velocity.Y = npc.velocity.Y * 0.95f; }
-                npc.velocity.Y = npc.velocity.Y - 0.5f;
+                if (npc.velocity.Y > 0f) { npc.velocity.Y *= 0.95f; }
+                npc.velocity.Y -= 0.5f;
                 if (npc.velocity.Y < -velMaxY * 1.5f) { npc.velocity.Y = -velMaxY * 1.5f; }
                 npc.TargetClosest(true);
                 return;
@@ -556,39 +556,39 @@ namespace AAMod
             //controls momentum when going left, and clamps velocity at -velMaxX.
             if (npc.direction == -1 && npc.velocity.X > -velMaxX)
             {
-                npc.velocity.X = npc.velocity.X - moveIntervalX;
-                if (npc.velocity.X > 4f) { npc.velocity.X = npc.velocity.X - 0.1f; }
+                npc.velocity.X -= moveIntervalX;
+                if (npc.velocity.X > 4f) { npc.velocity.X -= 0.1f; }
                 else
-                    if (npc.velocity.X > 0f) { npc.velocity.X = npc.velocity.X + 0.05f; }
+                    if (npc.velocity.X > 0f) { npc.velocity.X += 0.05f; }
                 if (npc.velocity.X < -4f) { npc.velocity.X = -velMaxX; }
             }
             else //controls momentum when going right on the x axis and clamps velocity at velMaxX.
             if (npc.direction == 1 && npc.velocity.X < velMaxX)
             {
-                npc.velocity.X = npc.velocity.X + moveIntervalX;
-                if (npc.velocity.X < -velMaxX) { npc.velocity.X = npc.velocity.X + 0.1f; }
+                npc.velocity.X += moveIntervalX;
+                if (npc.velocity.X < -velMaxX) { npc.velocity.X += 0.1f; }
                 else
-                    if (npc.velocity.X < 0f) { npc.velocity.X = npc.velocity.X - 0.05f; }
+                    if (npc.velocity.X < 0f) { npc.velocity.X -= 0.05f; }
 
                 if (npc.velocity.X > velMaxX) { npc.velocity.X = velMaxX; }
             }
             //controls momentum when going up on the Y axis and clamps velocity at -velMaxY.
             if (npc.directionY == -1 && (double)npc.velocity.Y > -velMaxY)
             {
-                npc.velocity.Y = npc.velocity.Y - moveIntervalY;
-                if ((double)npc.velocity.Y > velMaxY) { npc.velocity.Y = npc.velocity.Y - 0.05f; }
+                npc.velocity.Y -= moveIntervalY;
+                if ((double)npc.velocity.Y > velMaxY) { npc.velocity.Y -= 0.05f; }
                 else
-                    if (npc.velocity.Y > 0f) { npc.velocity.Y = npc.velocity.Y + 0.03f; }
+                    if (npc.velocity.Y > 0f) { npc.velocity.Y += 0.03f; }
 
                 if ((double)npc.velocity.Y < -velMaxY) { npc.velocity.Y = -velMaxY; }
             }
             else //controls momentum when going down on the Y axis and clamps velocity at velMaxY.
             if (npc.directionY == 1 && (double)npc.velocity.Y < velMaxY)
             {
-                npc.velocity.Y = npc.velocity.Y + moveIntervalY;
-                if ((double)npc.velocity.Y < -velMaxY) { npc.velocity.Y = npc.velocity.Y + 0.05f; }
+                npc.velocity.Y += moveIntervalY;
+                if ((double)npc.velocity.Y < -velMaxY) { npc.velocity.Y += 0.05f; }
                 else
-                    if (npc.velocity.Y < 0f) { npc.velocity.Y = npc.velocity.Y - 0.03f; }
+                    if (npc.velocity.Y < 0f) { npc.velocity.Y -= 0.03f; }
 
                 if ((double)npc.velocity.Y > velMaxY) { npc.velocity.Y = velMaxY; }
             }

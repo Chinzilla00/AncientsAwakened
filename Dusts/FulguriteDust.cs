@@ -10,7 +10,7 @@ namespace AAMod.Dusts
         {
             dust.velocity.Y = Main.rand.Next(-10, 6) * 0.1f;
             Dust expr_43F_cp_0 = dust;
-            expr_43F_cp_0.velocity.X = expr_43F_cp_0.velocity.X * 0.3f;
+            expr_43F_cp_0.velocity.X *= 0.3f;
             dust.scale *= 0.7f;
             return true;
         }
@@ -21,7 +21,7 @@ namespace AAMod.Dusts
             if (!dust.noGravity)
             {
                 Dust expr_1256_cp_0 = dust;
-                expr_1256_cp_0.velocity.Y = expr_1256_cp_0.velocity.Y + 0.05f;
+                expr_1256_cp_0.velocity.Y += 0.05f;
             }
             if (!dust.noLight)
             {

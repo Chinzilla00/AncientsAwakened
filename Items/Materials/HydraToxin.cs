@@ -5,7 +5,7 @@ namespace AAMod.Items.Materials
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bogtoxin");
-            Tooltip.SetDefault("Exceedingly erosive venom.");
+            Tooltip.SetDefault("Exceedingly corrosive venom.");
         }
         public override void SetDefaults()
         {

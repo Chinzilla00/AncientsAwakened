@@ -79,7 +79,7 @@ namespace AAMod.Tiles
                             int num79 = Projectile.NewProjectile(i * 16 + 8, j * 16 + 8, 0f, 2.5f, projectileType, damage2, 0f, Main.myPlayer, 0f, 0f);
                             Main.projectile[num79].velocity.Y = 0.5f;
                             Projectile expr_7AAA_cp_0 = Main.projectile[num79];
-                            expr_7AAA_cp_0.position.Y = expr_7AAA_cp_0.position.Y + 2f;
+                            expr_7AAA_cp_0.position.Y += 2f;
                             Main.projectile[num79].netUpdate = true;
                         }
                         NetMessage.SendTileSquare(-1, i, j, 1, TileChangeType.None);

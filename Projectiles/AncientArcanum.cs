@@ -278,9 +278,9 @@ namespace AAMod.Projectiles
 				Gore gore = Main.gore[num104];
 				gore.velocity *= 0.3f;
 				Gore expr_3C56_cp_0_cp_0 = Main.gore[num104];
-				expr_3C56_cp_0_cp_0.velocity.X = expr_3C56_cp_0_cp_0.velocity.X + Main.rand.Next(-10, 11) * 0.05f;
+				expr_3C56_cp_0_cp_0.velocity.X += Main.rand.Next(-10, 11) * 0.05f;
 				Gore expr_3C81_cp_0_cp_0 = Main.gore[num104];
-				expr_3C81_cp_0_cp_0.velocity.Y = expr_3C81_cp_0_cp_0.velocity.Y + Main.rand.Next(-10, 11) * 0.05f;
+				expr_3C81_cp_0_cp_0.velocity.Y += Main.rand.Next(-10, 11) * 0.05f;
 				num3 = num103;
 			}
 			if (Main.myPlayer == projectile.owner)

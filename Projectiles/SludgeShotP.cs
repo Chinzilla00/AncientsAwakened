@@ -55,18 +55,18 @@ namespace AAMod.Projectiles
 						Main.dust[num299].noGravity = true;
 						Main.dust[num299].scale *= 3f;
 						Dust DD = Main.dust[num299];
-						DD.velocity.X = DD.velocity.X * 2f;
+						DD.velocity.X *= 2f;
 						Dust DDD = Main.dust[num299];
-						DDD.velocity.Y = DDD.velocity.Y * 2f;
+						DDD.velocity.Y *= 2f;
 					}
 					else
 					{
 						Main.dust[num299].scale *= 1.5f;
 					}
 					Dust DDDD = Main.dust[num299];
-					DDDD.velocity.X = DDDD.velocity.X * 1.2f;
+					DDDD.velocity.X *= 1.2f;
 					Dust DDDDD = Main.dust[num299];
-					DDDDD.velocity.Y = DDDDD.velocity.Y * 1.2f;
+					DDDDD.velocity.Y *= 1.2f;
 					Main.dust[num299].scale *= num296;
 					if (num297 == 75)
 					{

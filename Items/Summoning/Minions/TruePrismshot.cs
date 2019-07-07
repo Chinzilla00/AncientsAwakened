@@ -44,9 +44,9 @@ namespace AAMod.Items.Summoning.Minions
                 Main.dust[num444].noGravity = true;
                 Main.dust[num444].position = vector31;
                 Dust expr_13D2C_cp_0 = Main.dust[num444];
-                expr_13D2C_cp_0.position.X = expr_13D2C_cp_0.position.X + (projectile.width / 2);
+                expr_13D2C_cp_0.position.X += (projectile.width / 2);
                 Dust expr_13D50_cp_0 = Main.dust[num444];
-                expr_13D50_cp_0.position.Y = expr_13D50_cp_0.position.Y + (projectile.height / 2);
+                expr_13D50_cp_0.position.Y += (projectile.height / 2);
                 Main.dust[num444].color = Main.DiscoColor;
                 Main.dust[num444].scale = Main.rand.Next(70, 110) * 0.05f;
                 Main.dust[num444].velocity *= 0.2f;

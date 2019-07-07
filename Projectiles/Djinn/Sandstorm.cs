@@ -132,7 +132,7 @@ namespace AAMod.Projectiles.Djinn
                     dust.noGravity = true;
                     dust.velocity.Y = Main.rand.NextFloat() * -0.5f - 1.3f;
                     Dust expr_49A_cp_0 = dust;
-                    expr_49A_cp_0.velocity.X = expr_49A_cp_0.velocity.X + projectile.velocity.X * 2.1f;
+                    expr_49A_cp_0.velocity.X += projectile.velocity.X * 2.1f;
                     dust.noLight = true;
                 }
             }
@@ -156,7 +156,7 @@ namespace AAMod.Projectiles.Djinn
                     gore.timeLeft = 60;
                     gore.alpha = 50;
                     Gore expr_5FA_cp_0 = gore;
-                    expr_5FA_cp_0.velocity.X = expr_5FA_cp_0.velocity.X + projectile.velocity.X;
+                    expr_5FA_cp_0.velocity.X += projectile.velocity.X;
                 }
             }
             for (int m = 0; m < 1; m++)

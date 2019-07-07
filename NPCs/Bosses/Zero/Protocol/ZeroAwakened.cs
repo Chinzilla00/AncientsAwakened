@@ -276,9 +276,9 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 int num371 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y + (npc.height * 0.25f)), npc.width, (int)(npc.height * 0.5f), 5, npc.velocity.X, 2f, 0);
                 Dust expr_12582_cp_0 = Main.dust[num371];
-                expr_12582_cp_0.velocity.X = expr_12582_cp_0.velocity.X * 0.5f;
+                expr_12582_cp_0.velocity.X *= 0.5f;
                 Dust expr_125A2_cp_0 = Main.dust[num371];
-                expr_125A2_cp_0.velocity.Y = expr_125A2_cp_0.velocity.Y * 0.1f;
+                expr_125A2_cp_0.velocity.Y *= 0.1f;
             }
             if (Main.netMode != 1 && !dead2 && npc.timeLeft < 10)
             {

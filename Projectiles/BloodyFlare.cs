@@ -73,9 +73,9 @@ namespace AAMod.Projectiles
 				Dust dust = Main.dust[num582];
 				dust.velocity *= 0f;
 				Dust D1 = Main.dust[num582];
-				D1.position.X = D1.position.X - num580;
+				D1.position.X -= num580;
 				Dust D2 = Main.dust[num582];
-				D2.position.Y = D2.position.Y - num581;
+				D2.position.Y -= num581;
 				num3 = num579;
 			}
 		}

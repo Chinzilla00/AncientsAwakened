@@ -1965,6 +1965,7 @@
     <Compile Include="NPCs\TownNPCs\StanLee.cs" />
     <Compile Include="NPCs\TownNPCs\Samurai.cs" />
     <Compile Include="NPCs\TownNPCs\JudgementNPC.cs" />
+    <Compile Include="Projectiles\Akuma\FireworkYotD.cs" />
     <Compile Include="Projectiles\CursedSickleEXProj.cs" />
     <Compile Include="Projectiles\CursedSickleEX.cs" />
     <Compile Include="Projectiles\GameBoom.cs" />
@@ -6623,6 +6624,7 @@
     <Content Include="Projectiles\Akuma\FireProjEX.png" />
     <Content Include="Projectiles\Akuma\FireProjEXBoom.png" />
     <Content Include="Projectiles\Akuma\FireRain.png" />
+    <Content Include="Projectiles\Akuma\FireworkYotD.png" />
     <Content Include="Projectiles\Akuma\Lung\LungBody.png" />
     <Content Include="Projectiles\Akuma\Lung\LungBody1.png" />
     <Content Include="Projectiles\Akuma\Lung\LungFireball.png" />

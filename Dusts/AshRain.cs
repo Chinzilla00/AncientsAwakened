@@ -45,7 +45,7 @@ namespace AAMod.Dusts
                 if (!dust.noLight && y > 0f)
                 {
                     Dust expr_3604_cp_0 = dust;
-                    expr_3604_cp_0.position.Y = expr_3604_cp_0.position.Y + Main.player[Main.myPlayer].velocity.Y * 0.2f;
+                    expr_3604_cp_0.position.Y += Main.player[Main.myPlayer].velocity.Y * 0.2f;
                 }
                 if (Collision.SolidCollision(dust.position - Vector2.One * 5f, 10, 10) && dust.fadeIn == 0f)
                 {

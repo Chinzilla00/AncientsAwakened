@@ -54,7 +54,7 @@ namespace AAMod.Projectiles
 
 			NPC best = null;
 			Vector2 maxDeviation = velocity.RotatedBy(maxAngle);
-			maxDeviation = maxDeviation * (((velocity.X*maxDeviation.X) + (velocity.Y*maxDeviation.Y)) * invVel);
+			maxDeviation *= (((velocity.X*maxDeviation.X) + (velocity.Y*maxDeviation.Y)) * invVel);
 			if (maxAngle > Math.PI/2)
 				maxDeviation = -maxDeviation;
 
@@ -347,19 +347,19 @@ namespace AAMod.Projectiles
                         num3 *= 2f;
                         if (projectile.Center.X > Main.player[projectile.owner].Center.X && projectile.velocity.X > 0f)
                         {
-                            projectile.velocity.X = projectile.velocity.X * 0.5f;
+                            projectile.velocity.X *= 0.5f;
                         }
                         else if (projectile.Center.X < Main.player[projectile.owner].Center.X && projectile.velocity.X > 0f)
                         {
-                            projectile.velocity.X = projectile.velocity.X * 0.5f;
+                            projectile.velocity.X *= 0.5f;
                         }
                         if (projectile.Center.Y > Main.player[projectile.owner].Center.Y && projectile.velocity.Y > 0f)
                         {
-                            projectile.velocity.Y = projectile.velocity.Y * 0.5f;
+                            projectile.velocity.Y *= 0.5f;
                         }
                         else if (projectile.Center.Y < Main.player[projectile.owner].Center.Y && projectile.velocity.Y > 0f)
                         {
-                            projectile.velocity.Y = projectile.velocity.Y * 0.5f;
+                            projectile.velocity.Y *= 0.5f;
                         }
                     }
 
@@ -460,10 +460,10 @@ namespace AAMod.Projectiles
 				{
 					if (projectile.velocity.Y < 0f)
 					{
-						projectile.velocity.Y = projectile.velocity.Y * 0.9f;
+						projectile.velocity.Y *= 0.9f;
 					}
-					projectile.velocity.Y = projectile.velocity.Y + 1f;
-					projectile.velocity.X = projectile.velocity.X * 0.9f;
+					projectile.velocity.Y += 1f;
+					projectile.velocity.X *= 0.9f;
 				}
 			}
 			else if (projectile.ai[0] == 1f)
@@ -501,20 +501,20 @@ namespace AAMod.Projectiles
 					num9 = num5 / num9;
 					num7 *= num9;
 					num8 *= num9;
-					projectile.velocity.X = projectile.velocity.X * 0.98f;
-					projectile.velocity.Y = projectile.velocity.Y * 0.98f;
-					projectile.velocity.X = projectile.velocity.X + num7;
-					projectile.velocity.Y = projectile.velocity.Y + num8;
+					projectile.velocity.X *= 0.98f;
+					projectile.velocity.Y *= 0.98f;
+					projectile.velocity.X += num7;
+					projectile.velocity.Y += num8;
 				}
 				else
 				{
 					if (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y) < 6f)
 					{
-						projectile.velocity.X = projectile.velocity.X * 0.96f;
-						projectile.velocity.Y = projectile.velocity.Y + 0.2f;
+						projectile.velocity.X *= 0.96f;
+						projectile.velocity.Y += 0.2f;
 					}
 					if (Main.player[projectile.owner].velocity.X == 0f)
-						projectile.velocity.X = projectile.velocity.X * 0.96f;
+						projectile.velocity.X *= 0.96f;
 				}
 			}
 
@@ -594,28 +594,28 @@ namespace AAMod.Projectiles
 
 				if (projectile.velocity.X < num)
 				{
-					projectile.velocity.X = projectile.velocity.X + speedAcceleration;
+					projectile.velocity.X += speedAcceleration;
 					if (projectile.velocity.X < 0f && num > 0f)
-						projectile.velocity.X = projectile.velocity.X + speedAcceleration;
+						projectile.velocity.X += speedAcceleration;
 				}
 				else if (projectile.velocity.X > num)
 				{
-					projectile.velocity.X = projectile.velocity.X - speedAcceleration;
+					projectile.velocity.X -= speedAcceleration;
 					if (projectile.velocity.X > 0f && num < 0f)
-						projectile.velocity.X = projectile.velocity.X - speedAcceleration;
+						projectile.velocity.X -= speedAcceleration;
 				}
 
 				if (projectile.velocity.Y < num2)
 				{
-					projectile.velocity.Y = projectile.velocity.Y + speedAcceleration;
+					projectile.velocity.Y += speedAcceleration;
 					if (projectile.velocity.Y < 0f && num2 > 0f)
-						projectile.velocity.Y = projectile.velocity.Y + speedAcceleration;
+						projectile.velocity.Y += speedAcceleration;
 				}
 				else if (projectile.velocity.Y > num2)
 				{
-					projectile.velocity.Y = projectile.velocity.Y - speedAcceleration;
+					projectile.velocity.Y -= speedAcceleration;
 					if (projectile.velocity.Y > 0f && num2 < 0f)
-						projectile.velocity.Y = projectile.velocity.Y - speedAcceleration;
+						projectile.velocity.Y -= speedAcceleration;
 				}
 
 				if (Main.myPlayer == projectile.owner)
@@ -667,8 +667,8 @@ namespace AAMod.Projectiles
 			projectile.localAI[0] += 1f;
 			if (projectile.localAI[0] >= airTime)
 			{
-				projectile.velocity.Y = projectile.velocity.Y + 0.4f;
-				projectile.velocity.X = projectile.velocity.X * 0.98f;
+				projectile.velocity.Y += 0.4f;
+				projectile.velocity.X *= 0.98f;
 			}
 			else
 				projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
@@ -688,20 +688,20 @@ namespace AAMod.Projectiles
 
 			projectile.tileCollide = false;
 			projectile.alpha = 255;
-			projectile.position.X = projectile.position.X + (projectile.width / 2);
-			projectile.position.Y = projectile.position.Y + (projectile.height / 2);
+			projectile.position.X += (projectile.width / 2);
+			projectile.position.Y += (projectile.height / 2);
 			projectile.width = sizeX;
 			projectile.height = sizeY;
-			projectile.position.X = projectile.position.X - (projectile.width / 2);
-			projectile.position.Y = projectile.position.Y - (projectile.height / 2);
+			projectile.position.X -= (projectile.width / 2);
+			projectile.position.Y -= (projectile.height / 2);
 			projectile.Damage();
 			Main.projectileIdentity[projectile.owner, projectile.identity] = -1;
-			projectile.position.X = projectile.position.X + (projectile.width / 2);
-			projectile.position.Y = projectile.position.Y + (projectile.height / 2);
+			projectile.position.X += (projectile.width / 2);
+			projectile.position.Y += (projectile.height / 2);
 			projectile.width = (int)(sizeX / 5.8f);
 			projectile.height = (int)(sizeY / 5.8f);
-			projectile.position.X = projectile.position.X - (projectile.width / 2);
-			projectile.position.Y = projectile.position.Y - (projectile.height / 2);
+			projectile.position.X -= (projectile.width / 2);
+			projectile.position.Y -= (projectile.height / 2);
 			if (visualAction == null)
 			{
 				for (int i = 0; i < 30; i++)
@@ -727,27 +727,27 @@ namespace AAMod.Projectiles
 					int num3 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
 					Main.gore[num3].velocity *= scaleFactor;
 					Gore gore = Main.gore[num3];
-					gore.velocity.X = gore.velocity.X + 1f;
+					gore.velocity.X += 1f;
 					Gore gore2 = Main.gore[num3];
-					gore2.velocity.Y = gore2.velocity.Y + 1f;
+					gore2.velocity.Y += 1f;
 					num3 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
 					Main.gore[num3].velocity *= scaleFactor;
 					Gore gore3 = Main.gore[num3];
-					gore3.velocity.X = gore3.velocity.X - 1f;
+					gore3.velocity.X -= 1f;
 					Gore gore4 = Main.gore[num3];
-					gore4.velocity.Y = gore4.velocity.Y + 1f;
+					gore4.velocity.Y += 1f;
 					num3 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
 					Main.gore[num3].velocity *= scaleFactor;
 					Gore gore5 = Main.gore[num3];
-					gore5.velocity.X = gore5.velocity.X + 1f;
+					gore5.velocity.X += 1f;
 					Gore gore6 = Main.gore[num3];
-					gore6.velocity.Y = gore6.velocity.Y - 1f;
+					gore6.velocity.Y -= 1f;
 					num3 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
 					Main.gore[num3].velocity *= scaleFactor;
 					Gore gore7 = Main.gore[num3];
-					gore7.velocity.X = gore7.velocity.X - 1f;
+					gore7.velocity.X -= 1f;
 					Gore gore8 = Main.gore[num3];
-					gore8.velocity.Y = gore8.velocity.Y - 1f;
+					gore8.velocity.Y -= 1f;
 				}
 				return;
 			}

@@ -44,7 +44,7 @@ namespace AAMod.Items.Melee
         {
             Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
             float scale = 1f - (Main.rand.NextFloat() * .3f);
-            perturbedSpeed = perturbedSpeed * scale;
+            perturbedSpeed *= scale;
             Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
             return false;
         }

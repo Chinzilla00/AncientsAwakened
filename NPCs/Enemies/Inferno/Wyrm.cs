@@ -146,8 +146,8 @@ namespace AAMod.NPCs.Bosses.Wyrm
 			float absDirX = Math.Abs(dirX);
 			float absDirY = Math.Abs(dirY);
 			float newSpeed = speed / length;
-			dirX = dirX * (newSpeed * 2);
-			dirY = dirY * (newSpeed * 2);
+			dirX *= (newSpeed * 2);
+			dirY *= (newSpeed * 2);
 			if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || (npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0))
 			{
 				if (npc.velocity.X < dirX)

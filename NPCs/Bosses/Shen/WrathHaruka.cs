@@ -395,7 +395,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     internalAI[2] = 0;
                     internalAI[3] = 0;
                     internalAI[4] = 0;
-                    pos = pos * -1f;
+                    pos *= -1f;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
