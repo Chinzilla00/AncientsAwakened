@@ -68,7 +68,7 @@ namespace AAMod.Projectiles
 		{
 			for (int num298 = 0; num298 < 30; num298++)
 			{
-				Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 184, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
+				Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 184, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100);
 			}
 		}
 	}

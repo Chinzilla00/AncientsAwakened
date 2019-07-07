@@ -62,7 +62,7 @@ namespace AAMod.NPCs.Enemies.Inferno
                 {
                     if (Main.rand.Next(5) == 0)
                     {
-                        int num1282 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.DragonflameDust>(), 0f, 0f, 0, default(Color), 1f);
+                        int num1282 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.DragonflameDust>(), 0f, 0f, 0);
                         Main.dust[num1282].alpha = 100;
                         Main.dust[num1282].velocity *= 0.3f;
                         Main.dust[num1282].velocity += npc.velocity * 0.75f;

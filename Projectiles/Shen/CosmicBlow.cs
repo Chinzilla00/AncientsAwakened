@@ -41,7 +41,7 @@ namespace AAMod.Projectiles.Shen
 			projectile.rotation = (float)System.Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
 			for (int i = 0; i < 1; i++)
 			{
-				int d = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("YamataDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
+				int d = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("YamataDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100);
 				if (Main.rand.Next(6) != 0)
 				{
 					Main.dust[d].noGravity = true;
@@ -53,7 +53,7 @@ namespace AAMod.Projectiles.Shen
 					Main.dust[d].velocity.X *= 1.2f;
 					Main.dust[d].velocity.Y *= 1.2f;
 				}
-				int e = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("AkumaADust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
+				int e = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("AkumaADust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100);
 				if (Main.rand.Next(6) != 0)
 				{
 					Main.dust[e].noGravity = true;

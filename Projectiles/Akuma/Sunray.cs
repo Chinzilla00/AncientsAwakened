@@ -84,7 +84,7 @@ namespace AAMod.Projectiles.Akuma
                 float num809 = projectile.velocity.ToRotation() + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
                 float num810 = (float)Main.rand.NextDouble() * 2f + 2f;
                 Vector2 vector73 = new Vector2((float)Math.Cos(num809) * num810, (float)Math.Sin(num809) * num810);
-                int num811 = Dust.NewDust(vector72, 0, 0, 229, vector73.X, vector73.Y, 0, default(Color), 1f);
+                int num811 = Dust.NewDust(vector72, 0, 0, 229, vector73.X, vector73.Y, 0);
                 Main.dust[num811].noGravity = true;
                 Main.dust[num811].scale = 1.7f;
             }

@@ -82,7 +82,7 @@ namespace AAMod.Projectiles.Akuma
                 Vector2 value = projectile.Center + vector2;
                 for (int i = 0; i < 2; i++)
                 {
-                    int num5 = Dust.NewDust(value - Vector2.One * 8f, 16, 16, 135, projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 100, default(Color), 1f);
+                    int num5 = Dust.NewDust(value - Vector2.One * 8f, 16, 16, 135, projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 100);
                     Main.dust[num5].velocity *= 0.66f;
                     Main.dust[num5].noGravity = true;
                     Main.dust[num5].scale = 1.4f;

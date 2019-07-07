@@ -30,7 +30,7 @@ namespace AAMod.Projectiles
                 projectile.Kill();
             }
 
-            Dust.NewDust(projectile.position, projectile.width, projectile.height, 88, 0, 0, 50, default(Color), 1f);
+            Dust.NewDust(projectile.position, projectile.width, projectile.height, 88, 0, 0, 50);
         }
     }
 }

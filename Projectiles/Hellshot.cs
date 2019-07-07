@@ -79,7 +79,7 @@ namespace AAMod.Projectiles
                         Vector2 vector14 = Vector2.UnitX * 0f;
                         vector14 += -Vector2.UnitY.RotatedBy(num110 * (6.28318548f / num109)) * new Vector2(1f, 4f);
                         vector14 = vector14.RotatedBy(projectile.velocity.ToRotation(), default(Vector2));
-                        int num111 = Dust.NewDust(projectile.Center, 0, 0, 60, 0f, 0f, 0, default(Color), 1f);
+                        int num111 = Dust.NewDust(projectile.Center, 0, 0, 60, 0f, 0f, 0);
                         Main.dust[num111].scale = 1.5f;
                         Main.dust[num111].noLight = true;
                         Main.dust[num111].noGravity = true;

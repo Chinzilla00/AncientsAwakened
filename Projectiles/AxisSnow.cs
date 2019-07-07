@@ -25,7 +25,7 @@ namespace AAMod.Projectiles
 			int num3;
 			for (int num367 = 0; num367 < 3; num367 = num3 + 1)
 			{
-				int num368 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 180, 0f, 0f, 0, default(Color), 1f);
+				int num368 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 180, 0f, 0f, 0);
 				Main.dust[num368].noGravity = true;
 				Main.dust[num368].scale = projectile.scale;
 				num3 = num367;

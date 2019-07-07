@@ -442,7 +442,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             int dust = mod.DustType<Dusts.SandDust>();
             for (int Loop = 0; Loop < 5; Loop++)
             {
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 0, default(Color), 1f);
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 0);
                 Main.dust[dust].velocity.Y = hitDirection * 0.1F;
                 Main.dust[dust].noGravity = false;
             }
@@ -450,7 +450,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             {
                 for (int Loop = 0; Loop < 5; Loop++)
                 {
-                    Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 0, default(Color), 1f);
+                    Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 0);
                     Main.dust[dust].velocity.X *= 0f;
                     Main.dust[dust].noGravity = false;
                 }

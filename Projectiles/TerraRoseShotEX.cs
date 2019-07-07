@@ -26,7 +26,7 @@ namespace AAMod.Projectiles
 			{
 				Vector2 position = projectile.position;
                 int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, 107, projectile.velocity.X * 0.2f,
-                projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
+                projectile.velocity.Y * 0.2f, 100);
                 Main.dust[dustId].noGravity = true;
 			}
 		}

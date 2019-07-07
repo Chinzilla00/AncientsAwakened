@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     for (int num298 = 0; num298 < 6; num298++)
                     {
-                        int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, num297, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
+                        int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, num297, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100);
                         if (Main.rand.Next(3) == 0)
                         {
                             Main.dust[num299].noGravity = true;

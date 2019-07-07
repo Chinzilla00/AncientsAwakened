@@ -85,7 +85,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 107, 0f, 0f, 0, default(Color), 1f);
+                    Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 107, 0f, 0f, 0);
                 }
             }
         }

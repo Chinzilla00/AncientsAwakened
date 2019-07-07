@@ -56,7 +56,7 @@ namespace AAMod.Items.Armor.TrueDynaskull
             {
                 for (int num107 = 0; num107 < 3; num107++)
                 {
-                    int num108 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<InfinityOverloadO>(), 0f, 0f, 0, default(Color), 1f);
+                    int num108 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<InfinityOverloadO>(), 0f, 0f, 0);
                     Main.dust[num108].noGravity = true;
                     Main.dust[num108].velocity *= 0.3f;
                     Main.dust[num108].noLight = true;
@@ -76,7 +76,7 @@ namespace AAMod.Items.Armor.TrueDynaskull
                         Vector2 vector14 = Vector2.UnitX * 0f;
                         vector14 += -Vector2.UnitY.RotatedBy(num110 * (6.28318548f / num109), default(Vector2)) * new Vector2(1f, 4f);
                         vector14 = vector14.RotatedBy(projectile.velocity.ToRotation(), default(Vector2));
-                        int num111 = Dust.NewDust(projectile.Center, 0, 0, mod.DustType<InfinityOverloadO>(), 0f, 0f, 0, default(Color), 1f);
+                        int num111 = Dust.NewDust(projectile.Center, 0, 0, mod.DustType<InfinityOverloadO>(), 0f, 0f, 0);
                         Main.dust[num111].scale = 1.5f;
                         Main.dust[num111].noLight = true;
                         Main.dust[num111].noGravity = true;

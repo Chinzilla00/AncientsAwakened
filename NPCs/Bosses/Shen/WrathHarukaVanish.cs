@@ -50,7 +50,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             npc.ai[2] = 1 ;
                             for (int Loop = 0; Loop < 20; Loop++)
                             {
-                                int Smoke2 = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 31), npc.width, npc.height, 186, 1 * Main.rand.NextFloat(-1, 1), -1, 0, default(Color), 1f);
+                                int Smoke2 = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 31), npc.width, npc.height, 186, 1 * Main.rand.NextFloat(-1, 1), -1, 0);
                                 Main.dust[Smoke2].noGravity = true;
                                 Main.dust[Smoke2].noLight = true;
                                 int Smoke = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 31), npc.width, npc.height, 186, 1 * Main.rand.NextFloat(-1, 1), -1, 0, default(Color), 2f);

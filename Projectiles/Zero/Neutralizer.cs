@@ -53,7 +53,7 @@ namespace AAMod.Projectiles.Zero
                     Vector2 vector33 = projectile.position;
                     vector33 -= projectile.velocity * (num447 * 0.25f);
                     projectile.alpha = 255;
-                    int num448 = Dust.NewDust(vector33, projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 200, default(Color), 1f); //Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 200, default(Color), 1f);;
+                    int num448 = Dust.NewDust(vector33, projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 200); //Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 200);;
                     Main.dust[num448].position = vector33;
                     Main.dust[num448].scale = Main.rand.Next(70, 110) * 0.013f;
                     Main.dust[num448].velocity *= 0.2f;

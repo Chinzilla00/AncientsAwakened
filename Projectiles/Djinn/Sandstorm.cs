@@ -139,7 +139,7 @@ namespace AAMod.Projectiles.Djinn
             Vector2 position3 = projectile.Bottom + new Vector2(-25f, -25f);
             for (int k = 0; k < 4; k++)
             {
-                Dust dust2 = Dust.NewDustDirect(position3, 50, 25, 269, projectile.velocity.X, -2f, 100, default(Color), 1f);
+                Dust dust2 = Dust.NewDustDirect(position3, 50, 25, 269, projectile.velocity.X, -2f, 100);
                 dust2.fadeIn = 1.1f;
                 dust2.noGravity = true;
             }

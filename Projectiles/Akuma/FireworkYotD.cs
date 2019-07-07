@@ -107,7 +107,7 @@ namespace AAMod.Projectiles.Akuma
                         num640 = 4f;
                     }
                     int num641 = 130;
-                    int num642 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, num641, 0f, 0f, 100, default(Color), 1f);
+                    int num642 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, num641, 0f, 0f, 100);
                     float num643 = Main.dust[num642].velocity.X;
                     float num644 = Main.dust[num642].velocity.Y;
                     if (num643 == 0f && num644 == 0f)
@@ -141,7 +141,7 @@ namespace AAMod.Projectiles.Akuma
                         num647 = 13f;
                     }
                     int num648 = 131;
-                    int num649 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, num648, 0f, 0f, 100, default(Color), 1f);
+                    int num649 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, num648, 0f, 0f, 100);
                     float num650 = Main.dust[num649].velocity.X;
                     float num651 = Main.dust[num649].velocity.Y;
                     if (num650 == 0f && num651 == 0f)
@@ -217,7 +217,7 @@ namespace AAMod.Projectiles.Akuma
                 {
                     float num665 = num654;
                     int num666 = 132;
-                    int num667 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, num666, 0f, 0f, 100, default(Color), 1f);
+                    int num667 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, num666, 0f, 0f, 100);
                     float num668 = Main.dust[num667].velocity.X;
                     float num669 = Main.dust[num667].velocity.Y;
                     if (num668 == 0f && num669 == 0f)
@@ -267,7 +267,7 @@ namespace AAMod.Projectiles.Akuma
                     {
                         num672 = 134;
                     }
-                    int num674 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, num672, 0f, 0f, 100, default(Color), 1f);
+                    int num674 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, num672, 0f, 0f, 100);
                     float num675 = Main.dust[num674].velocity.X;
                     float num676 = Main.dust[num674].velocity.Y;
                     if (num675 == 0f && num676 == 0f)

@@ -41,7 +41,7 @@ namespace AAMod.Projectiles.Yamata
 			projectile.rotation = (float)System.Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
 			for (int i = 0; i < 3; i++)
 			{
-				int d = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("YamataDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default(Color), 1f);
+				int d = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("YamataDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100);
 				if (Main.rand.Next(6) != 0)
 				{
 					Main.dust[d].noGravity = true;
@@ -160,7 +160,7 @@ namespace AAMod.Projectiles.Yamata
                 int num3;
                 for (int num622 = 0; num622 < 20; num622 = num3 + 1)
                 {
-                    int num623 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 184, 0f, 0f, 0, default(Color), 1f);
+                    int num623 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 184, 0f, 0f, 0);
                     Dust dust = Main.dust[num623];
                     dust.scale *= 1.1f;
                     Main.dust[num623].noGravity = true;
@@ -168,7 +168,7 @@ namespace AAMod.Projectiles.Yamata
                 }
                 for (int num624 = 0; num624 < 30; num624 = num3 + 1)
                 {
-                    int num625 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 184, 0f, 0f, 0, default(Color), 1f);
+                    int num625 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 184, 0f, 0f, 0);
                     Dust dust = Main.dust[num625];
                     dust.velocity *= 2.5f;
                     dust = Main.dust[num625];

@@ -40,7 +40,7 @@ namespace AAMod.Items.Summoning.Minions
                 Vector2 vector31 = projectile.position;
                 vector31 -= projectile.velocity * (num443 * 0.25f);
                 projectile.alpha = 255;
-                int num444 = Dust.NewDust(vector31, 1, 1, mod.DustType<Dusts.HallowedDustT>(), 0f, 0f, 0, default(Color), 1f);
+                int num444 = Dust.NewDust(vector31, 1, 1, mod.DustType<Dusts.HallowedDustT>(), 0f, 0f, 0);
                 Main.dust[num444].noGravity = true;
                 Main.dust[num444].position = vector31;
                 Dust expr_13D2C_cp_0 = Main.dust[num444];

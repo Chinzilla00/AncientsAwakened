@@ -119,7 +119,7 @@ namespace AAMod.Projectiles
             projectile.velocity.Y = -oldVelocity.Y;
 			for (int i = 0; i < 5; i++)
 			{
-				Dust.NewDust(projectile.Center, 16, 16, 0, 0f, 0f, 100, default(Color), 1f);
+				Dust.NewDust(projectile.Center, 16, 16, 0, 0f, 0f, 100);
 			}
             return false;
         }

@@ -39,7 +39,7 @@ namespace AAMod.Projectiles
 				float num154 = projectile.velocity.X / 3f * num153;
 				float num155 = projectile.velocity.Y / 3f * num153;
 				int num156 = 14;
-				int num157 = Dust.NewDust(new Vector2(projectile.position.X + num156, projectile.position.Y + num156), projectile.width - num156 * 2, projectile.height - num156 * 2, mod.DustType<Dusts.HydraDust>(), 0f, 0f, 100, default(Color), 1f);
+				int num157 = Dust.NewDust(new Vector2(projectile.position.X + num156, projectile.position.Y + num156), projectile.width - num156 * 2, projectile.height - num156 * 2, mod.DustType<Dusts.HydraDust>(), 0f, 0f, 100);
 				Main.dust[num157].noGravity = true;
 				Dust dust = Main.dust[num157];
 				dust.velocity *= 0.1f;

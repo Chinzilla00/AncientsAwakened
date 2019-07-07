@@ -71,7 +71,7 @@ namespace AAMod.Projectiles.Akuma
             if (projectile.ai[0] < 0f)
             {
                 Vector2 center15 = projectile.Center;
-                int num1059 = Dust.NewDust(center15 - Vector2.One * 8f, 16, 16, mod.DustType<Dusts.AkumaADust>(), projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 0, default(Color), 1f);
+                int num1059 = Dust.NewDust(center15 - Vector2.One * 8f, 16, 16, mod.DustType<Dusts.AkumaADust>(), projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 0);
                 Main.dust[num1059].velocity *= 2f;
                 Main.dust[num1059].noGravity = true;
                 Main.dust[num1059].scale = Utils.SelectRandom(Main.rand, new float[]

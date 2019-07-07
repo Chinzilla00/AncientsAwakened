@@ -54,7 +54,7 @@ namespace AAMod.Items.Summoning.Minions
                 Main.PlaySound(SoundID.Item46, projectile.position);
                 for (int num502 = 0; num502 < num501; num502++)
                 {
-                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, 172, 0f, 0f, 0, default(Color), 1f);
+                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, 172, 0f, 0f, 0);
                     Main.dust[num503].velocity *= 2f;
                     Main.dust[num503].noGravity = true;
                     Main.dust[num503].scale *= 1.15f;

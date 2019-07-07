@@ -95,7 +95,7 @@ namespace AAMod.Projectiles.Shen
 				float num827 = projectile.velocity.ToRotation() + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
 				float num828 = (float)Main.rand.NextDouble() * 2f + 2f;
 				Vector2 vector73 = new Vector2((float)Math.Cos(num827) * num828, (float)Math.Sin(num827) * num828);
-				int num829 = Dust.NewDust(vector72, 0, 0, 206, vector73.X, vector73.Y, 0, default(Color), 1f);
+				int num829 = Dust.NewDust(vector72, 0, 0, 206, vector73.X, vector73.Y, 0);
 				Main.dust[num829].noGravity = true;
 				Main.dust[num829].scale = 1.7f;
 			}

@@ -41,7 +41,7 @@ namespace AAMod.Projectiles.Djinn
 				float xPos = projectile.velocity.X / 3f * i;
 				float yPos = projectile.velocity.Y / 3f * i;
 				int eggroll = 14;
-				int dustIndex = Dust.NewDust(new Vector2(projectile.position.X + eggroll, projectile.position.Y + eggroll), projectile.width - eggroll * 2, projectile.height - eggroll * 2, 269, 0f, 0f, 100, default(Color), 1f);
+				int dustIndex = Dust.NewDust(new Vector2(projectile.position.X + eggroll, projectile.position.Y + eggroll), projectile.width - eggroll * 2, projectile.height - eggroll * 2, 269, 0f, 0f, 100);
 				Main.dust[dustIndex].noGravity = true;
 				Main.dust[dustIndex].velocity *= 0.1f;
 				Main.dust[dustIndex].velocity += projectile.velocity * 0.5f;

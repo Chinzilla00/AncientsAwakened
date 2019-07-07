@@ -50,7 +50,7 @@ namespace AAMod.NPCs.Bosses.Shen
 			dust20.noGravity = true;
 			for (int num189 = 0; num189 < 1; num189++)
 			{
-				int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 0, default(Color), 1f);
+				int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 0);
 				Main.dust[num190].velocity *= 0.5f;
 				Main.dust[num190].scale *= 1.3f;
 				Main.dust[num190].fadeIn = 1f;
@@ -102,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     mod.DustType<Dusts.AkumaADust>(),
                     mod.DustType<Dusts.YamataADust>()
                 });
-				int num343 = Dust.NewDust(projectile.position, projectile.width, projectile.height, num342, 2.5f * projectile.direction, -2.5f, 0, default(Color), 1f);
+				int num343 = Dust.NewDust(projectile.position, projectile.width, projectile.height, num342, 2.5f * projectile.direction, -2.5f, 0);
 				Main.dust[num343].alpha = 200;
 				Main.dust[num343].velocity *= 2.4f;
 				Main.dust[num343].scale += Main.rand.NextFloat();

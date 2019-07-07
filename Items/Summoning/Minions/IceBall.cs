@@ -27,7 +27,7 @@ namespace AAMod.Items.Summoning.Minions
 			int num3;
 			for (int num501 = 0; num501 < num500; num501 = num3 + 1)
 			{
-				int num502 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 185, 0f, 0f, 0, default(Color), 1f);
+				int num502 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 185, 0f, 0f, 0);
 				if (Main.rand.Next(2) == 0)
 				{
 					Dust dust = Main.dust[num502];
