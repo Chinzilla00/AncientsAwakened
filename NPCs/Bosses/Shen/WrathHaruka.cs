@@ -95,6 +95,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 Main.NewText("Ngh...sorry father...I can't carry on...", new Color(72, 78, 117));
             }
+            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<WrathHarukaVanish>());
             npc.value = 0f;
             npc.boss = false;
         }
@@ -140,15 +141,13 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.TargetClosest(false);
                 if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
                 {
-                    if (internalAI[2] > 3)
+                    if (Main.netMode != 1)
                     {
-                        internalAI[1] = 0;
-                        internalAI[2] = 0;
-                    }
-                    npc.alpha += 4;
-                    if (npc.alpha > 255)
-                    {
+                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<WrathHarukaVanish>(), 0);
+                        Main.npc[DeathAnim].velocity = npc.velocity;
+                        Main.npc[DeathAnim].netUpdate = true;
                         npc.active = false;
+                        npc.netUpdate = true;
                     }
                     return;
                 }

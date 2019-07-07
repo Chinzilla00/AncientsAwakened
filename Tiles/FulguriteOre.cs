@@ -22,7 +22,7 @@ namespace AAMod.Tiles
             drop = mod.ItemType("FulguriteShard");   //put your CustomBlock name
             dustType = mod.DustType("FulguriteDust");
             AddMapEntry(new Color(204, 0, 150));
-			minPick = 200;
+			minPick = 180;
         }
 
         public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)

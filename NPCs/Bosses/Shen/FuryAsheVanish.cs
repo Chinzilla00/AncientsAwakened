@@ -18,13 +18,23 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void SetDefaults()
         {
-            npc.width = 98;
-            npc.height = 98;
-            npc.life = 1;
-            npc.immortal = true;
             npc.dontTakeDamage = true;
+            npc.lifeMax = 1;
+            npc.width = 82;
+            npc.height = 82;
+            npc.friendly = false;
+            npc.lifeMax = 1;
+            npc.dontTakeDamage = true;
+            npc.noGravity = true;
+            npc.aiStyle = -1;
+            npc.timeLeft = 10;
+
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
-        
+
         public override void AI()
         {
             npc.velocity.X *= 0.97f;
@@ -33,22 +43,11 @@ namespace AAMod.NPCs.Bosses.Shen
             if (++npc.frameCounter >= 5)
             {
                 npc.frameCounter = 0;
-                npc.frame.Y += 92;
-                if (npc.velocity != Vector2.Zero)
+                npc.frame.Y += 88;
+                if (npc.frame.Y > (88 * 13))
                 {
-                    if (npc.frame.Y > (92 * 2))
-                    {
-                        npc.frame.Y = 0;
-
-                    }
-                }
-                else
-                {
-                    if (npc.frame.Y > (92 * 13))
-                    {
-                        npc.active = false;
-
-                    }
+                    npc.active = false;
+                    npc.netUpdate = true;
                 }
             }
 
