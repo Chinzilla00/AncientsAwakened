@@ -1,17 +1,15 @@
 using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
 namespace AAMod.Items.Summoning.Minions.Terra
 {
-	public class Minion2 : ModProjectile
+    public class Minion2 : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

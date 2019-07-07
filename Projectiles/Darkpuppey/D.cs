@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Terraria.ID;
 
 namespace AAMod.Projectiles.Darkpuppey
 {

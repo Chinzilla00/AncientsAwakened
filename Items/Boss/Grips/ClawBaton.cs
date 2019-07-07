@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using System;
-using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Grips
 {

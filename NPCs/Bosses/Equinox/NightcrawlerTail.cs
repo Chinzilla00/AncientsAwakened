@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
 using Terraria;
 
 namespace AAMod.NPCs.Bosses.Equinox

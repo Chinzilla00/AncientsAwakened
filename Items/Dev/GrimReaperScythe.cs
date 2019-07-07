@@ -1,15 +1,10 @@
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
 
 namespace AAMod.Items.Dev
 {
-	public class GrimReaperScythe : BaseAAItem
+    public class GrimReaperScythe : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

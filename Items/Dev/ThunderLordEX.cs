@@ -1,6 +1,5 @@
 using Terraria;
 using Microsoft.Xna.Framework;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 

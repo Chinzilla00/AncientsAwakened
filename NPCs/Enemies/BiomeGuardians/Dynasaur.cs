@@ -1,17 +1,15 @@
 using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
 namespace AAMod.NPCs.Enemies.BiomeGuardians
 {
-	public class Dynasaur : ModNPC
+    public class Dynasaur : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{

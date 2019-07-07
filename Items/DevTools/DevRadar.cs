@@ -1,6 +1,5 @@
 
 using Terraria;
-using Terraria.ModLoader;
 using BaseMod;
 
 namespace AAMod.Items.DevTools

@@ -1,5 +1,3 @@
-using Terraria.ModLoader;
-
 namespace AAMod.Items.Usable
 {
     public class InfernoKey : BaseAAItem

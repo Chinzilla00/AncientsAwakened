@@ -1,12 +1,10 @@
 using System;
-using System.IO;
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod.NPCs.Bosses.Zero;
 
 namespace AAMod.NPCs.Bosses.Zero
 {

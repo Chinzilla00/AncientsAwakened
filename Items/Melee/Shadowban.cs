@@ -1,5 +1,4 @@
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee   //where is located
 {

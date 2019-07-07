@@ -2,14 +2,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Audio;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-	public class SearcherZero : ModNPC
+    public class SearcherZero : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{

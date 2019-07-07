@@ -1,11 +1,6 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod.Tiles;
-using AAMod.Walls;
-using AAMod.Dusts;
 
 namespace AAMod.Projectiles
 {

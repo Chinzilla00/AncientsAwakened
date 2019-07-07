@@ -1,5 +1,3 @@
-using Terraria.ModLoader;
-
 namespace AAMod.Items.Blocks
 {
     public class Abyssium : BaseAAItem

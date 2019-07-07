@@ -1,5 +1,4 @@
 using System.Text.RegularExpressions;
-using Terraria.ModLoader;
 
 namespace AAMod.Items.Banners
 {

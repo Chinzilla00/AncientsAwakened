@@ -3,7 +3,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Rajah;
 using Terraria.Localization;
-using System;
 using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.BossSummons

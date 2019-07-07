@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Terraria;
-using System.Collections.Generic;
 using Terraria.Audio;
 
 namespace AAMod.Items.Boss.Zero

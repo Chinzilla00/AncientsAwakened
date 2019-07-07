@@ -1,11 +1,10 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 using Terraria.DataStructures;
 
 namespace AAMod.Items.Pets
 {
-	public class DragonsSoul : BaseAAItem
+    public class DragonsSoul : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

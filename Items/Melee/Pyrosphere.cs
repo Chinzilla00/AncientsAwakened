@@ -1,9 +1,8 @@
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-	public class Pyrosphere : BaseAAItem
+    public class Pyrosphere : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

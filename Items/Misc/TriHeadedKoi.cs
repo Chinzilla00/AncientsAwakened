@@ -1,8 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ModLoader;
-
-namespace AAMod.Items.Misc
+﻿namespace AAMod.Items.Misc
 {
     public class TriHeadedKoi : BaseAAItem
     {

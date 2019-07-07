@@ -1,5 +1,4 @@
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.DataStructures;
 
 namespace AAMod.Items.Boss.Truffle

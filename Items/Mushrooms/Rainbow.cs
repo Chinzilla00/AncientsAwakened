@@ -1,6 +1,5 @@
 using Terraria;
 using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Mushrooms

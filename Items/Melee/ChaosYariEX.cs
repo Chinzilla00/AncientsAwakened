@@ -1,6 +1,5 @@
 using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
 using Terraria;
 
 namespace AAMod.Items.Melee

@@ -2,7 +2,6 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 
 
 namespace AAMod.Items.Armor.Doomsday

@@ -3,8 +3,6 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
-using Terraria.Audio;
-using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Zero
 {
@@ -21,7 +19,7 @@ the longer the rifle is charged, the more it penetrates");
 
         public override void SetDefaults()
         {
-            
+            item.noUseGraphic = true;
             item.damage = 600;
             item.noMelee = true;
             item.ranged = true;
