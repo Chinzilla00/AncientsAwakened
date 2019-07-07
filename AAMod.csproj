@@ -5212,6 +5212,8 @@
     <Content Include="NPCs\Bosses\Shen\ShenSpawn.png" />
     <Content Include="NPCs\Bosses\Shen\ShenStorm.png" />
     <Content Include="NPCs\Bosses\Shen\ShenTransition.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenWingBack.png" />
+    <Content Include="NPCs\Bosses\Shen\ShenWingFront.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHaruka.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHarukaVanish.png" />
     <Content Include="NPCs\Bosses\Shen\WrathHaruka_Head_Boss.png" />

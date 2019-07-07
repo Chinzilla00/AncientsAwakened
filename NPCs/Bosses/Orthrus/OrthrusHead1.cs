@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using BaseMod;
 using System.IO;
 using Terraria.ID;
+using Terraria.Audio;
 
 namespace AAMod.NPCs.Bosses.Orthrus
 {
@@ -47,6 +48,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
             npc.height = 46;
             npc.damage = 40;
             npc.npcSlots = 0;
+            npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
+            npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.dontCountMe = true;
             npc.noTileCollide = true;
             npc.boss = false;

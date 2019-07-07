@@ -31,13 +31,11 @@ namespace AAMod.Projectiles
             if (projectile.velocity.X < 0f)
             {
                 projectile.spriteDirection = -1;
-                projectile.rotation = (float)Math.Atan2(-projectile.velocity.Y, -projectile.velocity.X);
                 projectile.rotation += .8f;
             }
             else
             {
                 projectile.spriteDirection = 1;
-                projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X);
                 projectile.rotation -= .8f;
             }
 
@@ -99,7 +97,6 @@ namespace AAMod.Projectiles
 
         public override void Kill(int timeleft)
         {
-            Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<AmphibiousBoom>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
             int pieCut = 20;
             Main.PlaySound(SoundID.Item14, projectile.position);
             for (int m = 0; m < pieCut; m++)
