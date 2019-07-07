@@ -128,7 +128,7 @@ namespace AAMod.Projectiles.Zero
                             vector9 = -Vector2.UnitY;
                         }
                         int num21 = (int)(projectile.damage * 3f);
-                        int num22 = Projectile.NewProjectile(center.X, center.Y, vector9.X, vector9.Y, mod.ProjectileType<Doomray1>(), num21, projectile.knockBack, projectile.owner, 0f, projectile.whoAmI);
+                        int num22 = Projectile.NewProjectile(center.X, center.Y, vector9.X, vector9.Y, mod.ProjectileType<DoomRay1>(), num21, projectile.knockBack, projectile.owner, 0f, projectile.whoAmI);
                         projectile.ai[1] = num22;
                         projectile.netUpdate = true;
                     }

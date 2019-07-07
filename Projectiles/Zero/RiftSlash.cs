@@ -12,7 +12,7 @@ namespace AAMod.Projectiles.Zero
         {
             projectile.width = 50;
             projectile.height = 50;
-            projectile.aiStyle = -1;
+            projectile.aiStyle = 27;
             projectile.friendly = true;
             projectile.melee = true;
             projectile.ignoreWater = true;
