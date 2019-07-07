@@ -36,12 +36,31 @@ namespace AAMod.Items.Summoning
 		
         public override void SetStaticDefaults()
         {
-              DisplayName.SetDefault("Terra Gauntlet");
-              Tooltip.SetDefault(@"Summons a Terra Squid, Terra Sphere, Terra Crawler, or Terra Weaver to Fight for you");
+            DisplayName.SetDefault("Terra Gauntlet");
+            Tooltip.SetDefault(@"Summons a Terra Squid, Terra Sphere, Terra Crawler, or Terra Weaver to Fight for you");
+        }
+
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
+        public override bool UseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                player.MinionNPCTargetAim();
+            }
+            return base.UseItem(player);
         }
 
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+            if (player.altFunctionUse == 2)
+            {
+                return false;
+            }
+
             int shootMe = Main.rand.Next(4);
             switch (shootMe)
             {
