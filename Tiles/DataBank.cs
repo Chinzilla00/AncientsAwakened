@@ -26,7 +26,6 @@ namespace AAMod.Tiles
                 16,
                 16,
                 16,
-                16,
                 16
             };
             TileObjectData.addTile(Type);

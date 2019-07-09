@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Zero
             item.damage = 250;
             item.UseSound = SoundID.Item13;
             item.channel = true;
-            item.shoot = mod.ProjectileType("DoomRayHandle");
+            item.shoot = mod.ProjectileType("DoomRay");
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.noMelee = true;
             item.magic = true;

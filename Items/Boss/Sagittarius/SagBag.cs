@@ -17,8 +17,9 @@ namespace AAMod.Items.Boss.Sagittarius
             item.width = 32;
             item.height = 32;
             item.expert = true;
-            bossBagNPC = mod.NPCType("Sagittarius");
         }
+
+        public override int BossBagNPC => mod.NPCType("Sagittarius");
 
         public override bool CanRightClick()
         {

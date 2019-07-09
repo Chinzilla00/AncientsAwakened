@@ -3,7 +3,6 @@ using System.Linq;
 using AAMod.Buffs;
 using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.Akuma;
-using AAMod.NPCs.Bosses.Shen;
 using AAMod.NPCs.Bosses.Akuma.Awakened;
 using AAMod.NPCs.Bosses.Zero.Protocol;
 using Microsoft.Xna.Framework;
@@ -524,17 +523,11 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool useShen = (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()));
-            bool useShenA = (NPC.AnyNPCs(mod.NPCType<ShenA>()));
             bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar);
             bool useYamata = (NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar);
-            bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen;
-            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen;
-            bool useVoid = (ZoneVoid || VoidUnit) && !useShen;
-
-            player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
-
-            player.ManageSpecialBiomeVisuals("AAMod:ShenASky", useShenA);
+            bool useMire = (ZoneMire || MoonAltar) && !useYamata;// && !useShen;
+            bool useInferno = (ZoneInferno || SunAltar);// && !useAkuma && !useShen;
+            bool useVoid = (ZoneVoid || VoidUnit);// && !useShen;
 
             player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
 

@@ -14,7 +14,6 @@ namespace AAMod.NPCs.Enemies.Inferno
         public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/Lung"; } }
 
         public bool loludided;
-        private bool weakness;
 
         public override void SetStaticDefaults()
 		{
@@ -50,8 +49,6 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.lavaImmune = true;
             npc.buffImmune[BuffID.OnFire] = true;
         }
-        private int speed = 8;
-
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];

@@ -132,7 +132,7 @@ namespace AAMod.Projectiles.Yamata
                 }
             }
 
-            Texture2D texture = ModLoader.GetTexture("AAMod/Projectiles/Yamata/Flairdra_Chain");
+            Texture2D texture = ModContent.GetTexture("AAMod/Projectiles/Yamata/Flairdra_Chain");
             
             Vector2 position = projectile.Center;
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;

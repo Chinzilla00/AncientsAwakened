@@ -18,10 +18,11 @@ namespace AAMod.Items.Boss.AH
 			item.width = 36;
 			item.height = 32;
             item.expert = true;
-			bossBagNPC = mod.NPCType("Ashe");
 		}
 
-		public override bool CanRightClick()
+        public override int BossBagNPC => mod.NPCType("Ashe");
+
+        public override bool CanRightClick()
 		{
 			return true;
         }

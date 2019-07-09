@@ -115,10 +115,6 @@ namespace AAMod.Projectiles.Yamata
 
         public override void Kill(int timeLeft)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), mod.ProjectileType<YWSplit>(), projectile.damage, 3, Main.myPlayer);
-            }
             Main.PlaySound(SoundID.Item10, projectile.position);
             for (int num579 = 0; num579 < 20; num579++)
             {

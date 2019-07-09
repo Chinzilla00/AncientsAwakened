@@ -49,14 +49,6 @@ Non-Consumable");
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.", new Color(180, 41, 32), false);
                 return false;
             }
-            if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Shen.ShenDoragon>()))
-            {
-                return false;
-            }
-            if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Shen.ShenA>()))
-            {
-                return false;
-            }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
                 if (!player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda && !AAWorld.downedYamata)

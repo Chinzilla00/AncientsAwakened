@@ -18,7 +18,7 @@ namespace AAMod.Projectiles.Rajah
 
 		public override void SetDefaults()
 		{
-            projectile.melee = true;
+            projectile.ranged = true;
 			projectile.width = 10; 
 			projectile.height = 10; 
 			projectile.aiStyle = 1;   

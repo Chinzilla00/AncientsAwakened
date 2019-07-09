@@ -119,7 +119,7 @@ namespace AAMod.Projectiles.Rajah
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Texture2D texture = ModLoader.GetTexture("AAMod/Projectiles/Rajah/Punisher_Chain");
+            Texture2D texture = ModContent.GetTexture("AAMod/Projectiles/Rajah/Punisher_Chain");
  
             Vector2 position = projectile.Center;
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;

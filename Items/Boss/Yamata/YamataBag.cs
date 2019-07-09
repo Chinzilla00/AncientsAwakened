@@ -18,11 +18,10 @@ namespace AAMod.Items.Boss.Yamata
             item.consumable = true;
             item.width = 32;
             item.height = 32;
-            item.expert = true;
-            bossBagNPC = mod.NPCType("YamataA");
             item.rare = 10;
         }
 
+        public override int BossBagNPC => mod.NPCType("YamataA");
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

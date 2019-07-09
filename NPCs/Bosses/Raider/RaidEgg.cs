@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Raider
@@ -12,8 +11,6 @@ namespace AAMod.NPCs.Bosses.Raider
     [AutoloadBossHead]
     public class RaidEgg : ModNPC
     {
-        private Player player;
-        private float speed;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Raider Egg");

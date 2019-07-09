@@ -24,7 +24,6 @@ namespace AAMod.Projectiles.Rajah
 			projectile.timeLeft = 600;  
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;
-            projectile.extraUpdates = 2;
 			aiType = ProjectileID.WoodenArrowFriendly;
             projectile.noDropItem = true;
         }

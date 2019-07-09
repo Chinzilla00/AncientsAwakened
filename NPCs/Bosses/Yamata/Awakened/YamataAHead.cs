@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             isAwakened = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
 
-            npc.damage = 300;
+            npc.damage = 200;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;

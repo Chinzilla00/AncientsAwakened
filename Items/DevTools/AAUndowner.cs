@@ -56,6 +56,7 @@ Non-Consumable");
             AAWorld.downedTruffle = false;
             AAWorld.downedYamata = false;
             AAWorld.downedZero = false;
+            AAWorld.downedRajahsRevenge = false;
             return true;
         }
     }

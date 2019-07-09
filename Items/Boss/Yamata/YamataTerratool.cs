@@ -47,7 +47,6 @@ You may only have a maximum of 2 tool types active");
                 item.pick = 0;
                 item.axe = 0;
                 item.hammer = 0;
-                return false;
             }
             else
             {

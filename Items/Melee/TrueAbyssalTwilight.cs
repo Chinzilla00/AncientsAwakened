@@ -54,7 +54,6 @@ namespace AAMod.Items.Melee
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(mod, "AbyssalTwilight", 1);
                 recipe.AddIngredient(mod, "MireCrystal", 1);
-                recipe.AddIngredient(mod, "TerraCrystal", 1);
                 recipe.AddTile(TileID.MythrilAnvil);
                 recipe.SetResult(this);
                 recipe.AddRecipe();

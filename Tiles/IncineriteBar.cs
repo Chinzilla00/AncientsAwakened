@@ -9,6 +9,7 @@ namespace AAMod.Tiles
     {
         public override void SetDefaults()
         {
+            soundType = 21;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
             Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = false;

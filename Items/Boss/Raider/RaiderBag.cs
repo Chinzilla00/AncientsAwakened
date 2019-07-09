@@ -20,9 +20,10 @@ namespace AAMod.Items.Boss.Raider
 			item.width = 36;
 			item.height = 32;
 			item.expert = true;
-			bossBagNPC = mod.NPCType("Raider");
 		}
-        
+
+        public override int BossBagNPC => mod.NPCType("Raider");
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");

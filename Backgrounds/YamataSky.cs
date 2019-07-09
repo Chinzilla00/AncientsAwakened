@@ -39,7 +39,7 @@ namespace AAMod.Backgrounds
                 RockTextures[i] = TextureManager.Load("Backgrounds/YamataRock" + i);
             }
 
-            SkyTex = TextureManager.Load("Backgrounds/StarTex");
+            SkyTex = TextureManager.Load("Backgrounds/YamataStars");
         }
 
         public override void Update(GameTime gameTime)
@@ -68,8 +68,7 @@ namespace AAMod.Backgrounds
             {
                 if (!Main.dayTime)
                 {
-                    Vector2 SkyPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-                    spriteBatch.Draw(SkyTex, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.MediumVioletRed);
+                    spriteBatch.Draw(SkyTex, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
                     double bgTop = (int)((-Main.screenPosition.Y) / (Main.worldSurface * 16.0 - 600.0) * 200.0);
                     Main.bgColor = Color.White;
                     if (Main.gameMenu || Main.netMode == 2)

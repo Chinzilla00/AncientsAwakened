@@ -4,7 +4,6 @@ using BaseMod;
 using Terraria.Audio;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.ID;
 
 namespace AAMod.NPCs.Bosses.Truffle
 {
@@ -26,27 +25,16 @@ namespace AAMod.NPCs.Bosses.Truffle
             npc.aiStyle = -1;
             npc.lifeMax = 500;
             npc.defense = 0;
-            npc.damage = 40;
+            npc.damage = 20;
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
             npc.noGravity = true;
             npc.noTileCollide = true;
-            npc.alpha = 255;
         }
 
         public override void AI()
         {
-            if (npc.alpha != 0)
-            {
-                for (int LOOP = 0; LOOP < 2; LOOP++)
-                {
-                    Dust dust1;
-                    dust1 = Main.dust[Dust.NewDust(npc.position, npc.width, npc.height, DustID.Electric, 0, 0, 0, default(Color), 1f)];
-                    dust1.noGravity = true;
-                }
-                npc.alpha -= 5;
-            }
             Color color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
 
             Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, color.R / 255, color.G / 255, color.B / 255);

@@ -18,10 +18,10 @@ namespace AAMod.Items.Boss.Grips
 			item.height = 32;
 			item.rare = 9;
 			item.expert = true;
-			bossBagNPC = mod.NPCType("GripOfChaosBlue");
-		}
+        }
+        public override int BossBagNPC => mod.NPCType("GripOfChaosBlue");
 
-		public override bool CanRightClick()
+        public override bool CanRightClick()
 		{
 			return true;
 		}

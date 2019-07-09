@@ -146,7 +146,7 @@ namespace AAMod.Projectiles
         // chain voodoo
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Texture2D texture = ModLoader.GetTexture("AAMod/Projectiles/ChaosChain_Chain");
+            Texture2D texture = ModContent.GetTexture("AAMod/Projectiles/ChaosChain_Chain");
 
             BaseMod.BaseDrawing.DrawChain(spriteBatch, texture, 0, projectile.Center, Main.player[projectile.owner].Center, 0f, lightColor, 1f, true);
             return true;

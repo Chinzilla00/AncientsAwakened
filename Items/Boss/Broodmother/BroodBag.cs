@@ -19,8 +19,8 @@ namespace AAMod.Items.Boss.Broodmother
 			item.width = 36;
 			item.height = 32;
 			item.expert = true;
-			bossBagNPC = mod.NPCType("Broodmother");
-		}
+        }
+        public override int BossBagNPC => mod.NPCType("Broodmother");
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

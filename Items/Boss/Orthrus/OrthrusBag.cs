@@ -19,8 +19,8 @@ namespace AAMod.Items.Boss.Orthrus
 			item.height = 32;
 			item.rare = 9;
 			item.expert = true;
-			bossBagNPC = mod.NPCType("Orthrus");
-		}
+        }
+        public override int BossBagNPC => mod.NPCType("Orthrus");
 
         public override bool CanRightClick()
 		{

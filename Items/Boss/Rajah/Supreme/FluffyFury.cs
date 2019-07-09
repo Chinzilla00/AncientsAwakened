@@ -14,7 +14,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
 
         public override void SetDefaults()
         {
-            item.damage = 200;
+            item.damage = 250;
             item.ranged = true;
             item.width = 44;
             item.height = 76;

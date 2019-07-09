@@ -20,9 +20,9 @@ namespace AAMod.Items.Boss.Retriever
 			item.height = 32;
 			item.rare = 9;
 			item.expert = true;
-			bossBagNPC = mod.NPCType("Retriever");
 		}
 
+        public override int BossBagNPC => mod.NPCType("Retriever");
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

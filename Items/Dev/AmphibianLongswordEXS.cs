@@ -17,9 +17,9 @@ namespace AAMod.Items.Dev
 			item.melee = true;
 			item.width = 64;
 			item.height = 64;
-			item.useTime = 18;
-			item.useAnimation = 18;
-			item.useStyle = 1;
+            item.useTime = 27;
+            item.useTime = 27;
+            item.useStyle = 1;
 			item.knockBack = 7;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 9;

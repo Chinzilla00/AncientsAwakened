@@ -11,19 +11,18 @@ namespace AAMod.Items.Potions
 		}
 		
 		public override void SetDefaults()
-		{
-			item.width = 20;
-			item.height = 34;
-			item.useTurn = true;
-			item.maxStack = 30;
-			item.healMana = 400;
-			item.useAnimation = 17;
-			item.useTime = 17;
-			item.useStyle = 2;
-			item.UseSound = SoundID.Item3;
-			item.consumable = true;
-			item.potion = true;
-			item.value = 50000;
+        {
+            item.UseSound = SoundID.Item3;
+            item.healMana = 400;
+            item.useStyle = 2;
+            item.useTurn = true;
+            item.useAnimation = 17;
+            item.useTime = 17;
+            item.maxStack = 50;
+            item.consumable = true;
+            item.width = 14;
+            item.height = 24;
+            item.value = 50000;
             item.rare = 11;
 		}
 

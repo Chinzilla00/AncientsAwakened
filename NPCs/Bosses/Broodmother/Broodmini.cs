@@ -9,8 +9,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
 {
     public class Broodmini : ModNPC
     {
-        private Player player;
-        private float speed;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Broodmini");

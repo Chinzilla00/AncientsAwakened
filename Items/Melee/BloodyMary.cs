@@ -1,16 +1,14 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee
 {
-	public class BloodyMary : BaseAAItem
+    public class BloodyMary : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Bloody Mary");
-			Tooltip.SetDefault("This is a modded sword."); 
 		}
 
 		public override void SetDefaults()

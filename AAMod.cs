@@ -55,9 +55,6 @@ namespace AAMod
         internal UserInterface TerratoolZInterface;
         internal TerratoolZUI TerratoolZState;
 
-        internal UserInterface TerratoolSInterface;
-        internal TerratoolSUI TerratoolSState;
-
         internal UserInterface TerratoolKipInterface;
         internal TerratoolKipUI TerratoolKipState;
 
@@ -67,6 +64,7 @@ namespace AAMod
         public static int[] SERPENTTYPES = new int[0];
 
         public static bool thoriumLoaded = false;
+        public static bool calamityLoaded = false;
 
         internal static AAMod instance;
         public static AAMod self = null;
@@ -215,9 +213,12 @@ namespace AAMod
             WeakReferences.PerformModSupport();
 
             Mod Thorium = ModLoader.GetMod("ThoriumMod");
+            Mod Calamity = ModLoader.GetMod("CalamityMod");
 
             if (Thorium != null)
                 thoriumLoaded = true;
+            if (Calamity != null)
+                calamityLoaded = true;
         }
 
         public static void PremultiplyTexture(Texture2D texture)
@@ -286,10 +287,6 @@ namespace AAMod
             TerratoolZState = new TerratoolZUI();
             TerratoolZState.Activate();
 
-            TerratoolSInterface = new UserInterface();
-            TerratoolSState = new TerratoolSUI();
-            TerratoolSState.Activate();
-
             TerratoolKipInterface = new UserInterface();
             TerratoolKipState = new TerratoolKipUI();
             TerratoolKipState.Activate();
@@ -304,7 +301,6 @@ namespace AAMod
             PremultiplyTexture(GetTexture("Backgrounds/YamataBeam"));
             PremultiplyTexture(GetTexture("Backgrounds/AkumaAMeteor"));
             PremultiplyTexture(GetTexture("Backgrounds/AkumaMeteor"));
-            PremultiplyTexture(GetTexture("Backgrounds/ShenMeteor"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier"));
             PremultiplyTexture(GetTexture("Projectiles/RadiumStar"));
@@ -343,9 +339,7 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium"), ItemType("TerrariumBox"), TileType("TerrariumBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingDragon"), ItemType("SDBox"), TileType("SDBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant"), ItemType("SGBox"), TileType("SGBox"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shen"), ItemType("ShenBox"), TileType("ShenBox"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA"), ItemType("ShenABox"), TileType("ShenABox"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand"), ItemType("SABox"), TileType("SABox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SupremeRajah"), ItemType("SRajahBox"), TileType("SRajahBox"));
             }
 
             Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.High);
@@ -383,15 +377,6 @@ namespace AAMod
             YamataSky.PlanetTexture = GetTexture("Backgrounds/YamataMoon");
             YamataSky.SkyTex = GetTexture("Backgrounds/YamataStars");
             YamataSky.BeamTexture = GetTexture("Backgrounds/YamataBeam");
-
-            Filters.Scene["AAMod:ShenSky"] = new Filter(new ShenSkyData("FilterMiniTower").UseColor(.5f, 0f, .5f).UseOpacity(0.2f), EffectPriority.VeryHigh);
-            SkyManager.Instance["AAMod:ShenSky"] = new ShenSky();
-            ShenSky.SkyTex = GetTexture("Backgrounds/ShenBg");
-
-            Filters.Scene["AAMod:ShenASky"] = new Filter(new ShenASkyData("FilterMiniTower").UseColor(.7f, 0f, .7f).UseOpacity(0.2f), EffectPriority.VeryHigh);
-            SkyManager.Instance["AAMod:ShenASky"] = new ShenASky();
-            ShenASky.SkyTex = GetTexture("Backgrounds/ShenSky");
-            ShenASky.MeteorTexture = GetTexture("Backgrounds/ShenMeteor");
 
             ReplaceItemTexture(3460, "Resprites/Luminite");
             ReplaceItemTexture(512, "Resprites/SoulOfNight");
@@ -473,14 +458,6 @@ namespace AAMod
                 VoidSky.boltTexture = null;
                 VoidSky.flashTexture = null;
 
-                ShenSky.MeteorTexture = null;
-                ShenSky.SkyTex = null;
-                ShenSky.BGTexture = null;
-
-                ShenASky.MeteorTexture = null;
-                ShenASky.SkyTex = null;
-                ShenASky.BGTexture = null;
-
                 YamataSky.BeamTexture = null;
                 YamataSky.BGTexture = null;
                 YamataSky.PlanetTexture = null;
@@ -530,11 +507,6 @@ namespace AAMod
                 TerratoolZInterface.Update(gameTime);
             }
 
-            if (TerratoolSInterface != null && TerratoolSInterface.CurrentState != null)
-            {
-                TerratoolSInterface.Update(gameTime);
-            }
-
             if (TerratoolKipInterface != null && TerratoolKipInterface.CurrentState != null)
             {
                 TerratoolKipInterface.Update(gameTime);
@@ -579,12 +551,6 @@ namespace AAMod
                     && radialUI4.Visible)
                     {
                         TerratoolZInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
-                    var radialUI5 = TerratoolSInterface.CurrentState as TerratoolSUI;
-                    if (radialUI5 != null && lastUpdateUIGameTime != null
-                    && radialUI5.Visible)
-                    {
-                        TerratoolSInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
                     }
                     var radialUI6 = TerratoolKipInterface.CurrentState as TerratoolKipUI;
                     if (radialUI6 != null && lastUpdateUIGameTime != null

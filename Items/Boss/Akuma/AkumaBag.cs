@@ -19,9 +19,11 @@ namespace AAMod.Items.Boss.Akuma
             item.width = 32;
             item.height = 32;
             item.expert = true;
-            bossBagNPC = mod.NPCType("AkumaA");
             item.rare = 10;
         }
+
+
+        public override int BossBagNPC => mod.NPCType("AkumaA");
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

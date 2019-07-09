@@ -13,8 +13,8 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             projectile.damage = 100;
-            projectile.width = 200;
-            projectile.height = 214;
+            projectile.width = 130;
+            projectile.height = 220;
             projectile.penetrate = -1;
             projectile.hostile = true;
             projectile.friendly = false;

@@ -98,7 +98,9 @@ namespace AAMod.Projectiles.Akuma
             }
             else if (target.boss)
             {
-                Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
+                int p = Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
+                Main.projectile[p].melee = false;
+                Main.projectile[p].ranged = true;
             }
         }
     }

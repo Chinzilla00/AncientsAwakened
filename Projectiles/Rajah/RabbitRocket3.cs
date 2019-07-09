@@ -2,10 +2,11 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Rajah
 {
-    public class RabbitRocket3 : RabbitRocket1
+    public class RabbitRocket3 : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -78,7 +79,8 @@ namespace AAMod.Projectiles.Rajah
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(SoundID.Item14, projectile.position);
-            Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType<RabbitRocketBoom>(), projectile.damage, projectile.knockBack, projectile.owner);
+            int p = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType<RabbitRocketBoom>(), projectile.damage, projectile.knockBack, projectile.owner);
+            Main.projectile[p].Center = projectile.Center;
         }
     }
 }

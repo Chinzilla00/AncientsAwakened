@@ -1404,15 +1404,13 @@ namespace AAMod
         {
             Main.sandTiles += tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()];
             Main.snowTiles += tileCounts[mod.TileType<Torchice>()] + tileCounts[mod.TileType<IndigoIce>()] + tileCounts[mod.TileType<TorchAsh>()];
-            //stormTiles = tileCounts[mod.TileType<StormCloud>()] + tileCounts[mod.TileType<FulguritePlatingS>()] + tileCounts[mod.TileType<FulguriteBrickS>()] + tileCounts[mod.TileType<FulgurGlassS>()];
             mireTiles = tileCounts[mod.TileType<MireGrass>()]+ tileCounts[mod.TileType<Depthstone>()] + tileCounts[mod.TileType<Depthsand>()] + tileCounts[mod.TileType<Depthsandstone>()] + tileCounts[mod.TileType<DepthsandHardened>()] + tileCounts[mod.TileType<IndigoIce>()];
             infernoTiles = tileCounts[mod.TileType<InfernoGrass>()]+ tileCounts[mod.TileType<Torchstone>()] + tileCounts[mod.TileType<Torchsand>()] + tileCounts[mod.TileType<Torchsandstone>()] + tileCounts[mod.TileType<TorchsandHardened>()] + tileCounts[mod.TileType<Torchice>()] + tileCounts[mod.TileType<TorchAsh>()];
             voidTiles = tileCounts[mod.TileType<Doomstone>()] + tileCounts[mod.TileType<Apocalyptite>()];
             mushTiles = tileCounts[mod.TileType<Mycelium>() ];
             Main.jungleTiles += mireTiles;
-            pagodaTiles = tileCounts[mod.TileType<DracoAltarS>()] + tileCounts[mod.TileType<ScorchedDynastyWoodS>()] + tileCounts[mod.TileType<ScorchedShinglesS>()];
-            lakeTiles = tileCounts[mod.TileType<DreadAltarS>()] + tileCounts[mod.TileType<Darkmud>()] + tileCounts[mod.TileType<AbyssGrass>()] + tileCounts[mod.TileType<AbyssWood>()] + tileCounts[mod.TileType<AbyssWoodSolid>()];
-            //shipTiles = tileCounts[mod.TileType<CthulhuPortal>()] + tileCounts[mod.TileType<RottedDynastyWoodS>()];
+            pagodaTiles = tileCounts[mod.TileType<ScorchedDynastyWoodS>()] + tileCounts[mod.TileType<ScorchedShinglesS>()];
+            lakeTiles = tileCounts[mod.TileType<Darkmud>()] + tileCounts[mod.TileType<AbyssGrass>()] + tileCounts[mod.TileType<AbyssWood>()] + tileCounts[mod.TileType<AbyssWoodSolid>()];
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
             Radium = tileCounts[mod.TileType<RadiumOre>()];
         }
@@ -1489,21 +1487,6 @@ namespace AAMod
             progress.Message = "Growing Shrooms";
             Mushroom();
         }
-
-        /*private void ParthenanIsland(GenerationProgress progress)
-        {
-            progress.Message = "Storming the Parthenan";
-            Parthenan();
-        }
-
-        private void Ship(GenerationProgress progress)
-        {
-            shipSide = (Main.dungeonX > Main.maxTilesX / 2 ? -1 : 1);
-            shipPos.X = (shipSide == 1 ? Main.maxTilesX - 140 : 140);
-			shipPos.Y = BaseWorldGen.GetFirstTileFloor((int)shipPos.X, 10, true);
-            progress.Message = "Sinking the ship";
-            SunkenShip();
-        }*/
 
         public void InfernoVolcano()
         {
@@ -1600,15 +1583,6 @@ namespace AAMod
             delete.Place(origin, WorldGen.structures);
             biome.Place(origin, WorldGen.structures);
         }
-
-        /*public void Parthenan()
-        {
-            int ParthenanHeight = 0;
-            ParthenanHeight = 120;
-            Point center = new Point((Main.maxTilesX / 15), center.Y = ParthenanHeight);
-            Parthenan biome = new Parthenan();
-            biome.Place(center, WorldGen.structures);
-        }*/
         
         public override void ResetNearbyTileEffects()
         {

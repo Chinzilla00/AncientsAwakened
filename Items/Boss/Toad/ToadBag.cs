@@ -19,8 +19,9 @@ namespace AAMod.Items.Boss.Toad
 			item.height = 36;
 			item.rare = 11;
 			item.expert = true;
-			bossBagNPC = mod.NPCType("TruffleToad");
 		}
+
+        public override int BossBagNPC => mod.NPCType("TruffleToad");
 
         public override bool CanRightClick()
 		{

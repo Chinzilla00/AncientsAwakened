@@ -18,9 +18,9 @@ namespace AAMod.Items.Boss.Serpent
             item.width = 32;
             item.height = 32;
             item.expert = true;
-            bossBagNPC = mod.NPCType("SerpentHead");
-            
         }
+
+        public override int BossBagNPC => mod.NPCType("SerpentHead");
 
         public override bool CanRightClick()
         {

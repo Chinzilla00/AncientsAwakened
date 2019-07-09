@@ -72,21 +72,21 @@ namespace AAMod.NPCs.Bosses.Serpent
                 {
                     for (int num298 = 0; num298 < 3; num298++)
                     {
-                        int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, num297, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, mod.DustType<Dusts.SnowDustLight>());
+                        int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, num297, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, mod.DustType<Dusts.SnowDustLight>(), default(Color), 1f);
                         if (Main.rand.Next(3) == 0)
                         {
                             Main.dust[num299].noGravity = true;
                             Main.dust[num299].scale *= 2f;
                             Dust expr_DD5D_cp_0 = Main.dust[num299];
-                            expr_DD5D_cp_0.velocity.X *= 2f;
+                            expr_DD5D_cp_0.velocity.X = expr_DD5D_cp_0.velocity.X * 2f;
                             Dust expr_DD7D_cp_0 = Main.dust[num299];
-                            expr_DD7D_cp_0.velocity.Y *= 2f;
+                            expr_DD7D_cp_0.velocity.Y = expr_DD7D_cp_0.velocity.Y * 2f;
                         }
                         Main.dust[num299].scale *= 1f;
                         Dust expr_DDE2_cp_0 = Main.dust[num299];
-                        expr_DDE2_cp_0.velocity.X *= 1.2f;
+                        expr_DDE2_cp_0.velocity.X = expr_DDE2_cp_0.velocity.X * 1.2f;
                         Dust expr_DE02_cp_0 = Main.dust[num299];
-                        expr_DE02_cp_0.velocity.Y *= 1.2f;
+                        expr_DE02_cp_0.velocity.Y = expr_DE02_cp_0.velocity.Y * 1.2f;
                         Main.dust[num299].scale *= num296;
                         Main.dust[num299].velocity += projectile.velocity;
                         if (!Main.dust[num299].noGravity)
@@ -100,7 +100,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             {
                 projectile.ai[0] += 1f;
             }
-            projectile.rotation += 0.3f * projectile.direction;
+            projectile.rotation += 0.3f * (float)projectile.direction;
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)

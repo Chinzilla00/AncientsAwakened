@@ -18,9 +18,8 @@ namespace AAMod.Items.Boss.Djinn
             item.width = 32;
             item.height = 32;
             item.expert = true;
-            bossBagNPC = mod.NPCType("Djinn");
-            
         }
+        public override int BossBagNPC => mod.NPCType("Djinn");
 
         public override bool CanRightClick()
         {

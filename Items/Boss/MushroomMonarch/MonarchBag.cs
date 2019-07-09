@@ -18,8 +18,8 @@ namespace AAMod.Items.Boss.MushroomMonarch
             item.height = 36;
             item.rare = 11;
             item.expert = true;
-            bossBagNPC = mod.NPCType("MushroomMonarch");
         }
+        public override int BossBagNPC => mod.NPCType("MushroomMonarch");
 
         public override bool CanRightClick()
         {

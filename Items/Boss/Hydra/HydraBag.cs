@@ -20,10 +20,11 @@ namespace AAMod.Items.Boss.Hydra
 			item.width = 36;
 			item.height = 32;
 			item.expert = true;
-			bossBagNPC = mod.NPCType("Hydra");
 		}
 
-		public override bool CanRightClick()
+        public override int BossBagNPC => mod.NPCType("Hydra");
+
+        public override bool CanRightClick()
 		{
 			return true;
         }

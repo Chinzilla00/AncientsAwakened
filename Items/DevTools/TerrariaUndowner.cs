@@ -52,6 +52,7 @@ Non-Consumable");
             NPC.downedTowerSolar = false;
             NPC.downedTowerStardust = false;
             NPC.downedTowerVortex = false;
+            AAWorld.downedRajahsRevenge = false;
             return true;
         }
     }

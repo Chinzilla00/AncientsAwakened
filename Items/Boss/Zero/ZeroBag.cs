@@ -4,26 +4,26 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.Items.Boss.Zero
 {
     public class ZeroBag : BaseAAItem
-	{
-        
+    {
+
         public override void SetStaticDefaults()
         {
-            
-            DisplayName.SetDefault("Treasure Bag");
-			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
-		}
 
-		public override void SetDefaults()
-		{
-			item.maxStack = 999;
-			item.consumable = true;
-			item.width = 36;
-			item.height = 32;
-			item.expert = true;
-			bossBagNPC = mod.NPCType("Zero");
+            DisplayName.SetDefault("Treasure Bag");
+            Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
+        }
+
+        public override void SetDefaults()
+        {
+            item.maxStack = 999;
+            item.consumable = true;
+            item.width = 36;
+            item.height = 32;
+            item.expert = true;
             item.rare = 10;
         }
 
+        public override int BossBagNPC => mod.NPCType("Zero");
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

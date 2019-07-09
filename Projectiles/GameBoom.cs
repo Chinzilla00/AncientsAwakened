@@ -22,7 +22,7 @@ namespace AAMod.Projectiles
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
-            projectile.melee = true;
+            projectile.ranged = true;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
         }

@@ -46,7 +46,7 @@ namespace AAMod.Projectiles.EFish
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
 
-            Texture2D texture = ModLoader.GetTexture("AAMod/Projectiles/EFish/EFlairon_Chain");
+            Texture2D texture = ModContent.GetTexture("AAMod/Projectiles/EFish/EFlairon_Chain");
 
             Vector2 position = projectile.Center;
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;

@@ -162,8 +162,6 @@ namespace AAMod.Projectiles
             projectile.penetrate = -1;
             projectile.timeLeft = 8;
             aiType = ProjectileID.Bullet;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 20;
         }
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -195,8 +193,6 @@ namespace AAMod.Projectiles
             projectile.penetrate = 1;
             projectile.timeLeft = 4;
             aiType = ProjectileID.Bullet;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 20;
         }
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)

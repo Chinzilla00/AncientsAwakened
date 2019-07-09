@@ -103,7 +103,7 @@ namespace AAMod.NPCs.Enemies.Mire.Toxitoad
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
 
-            Texture2D texture = ModLoader.GetTexture("AAMod/NPCs/Enemies/Mire/Toxitoad/Toxitongue_Chain");
+            Texture2D texture = ModContent.GetTexture("AAMod/NPCs/Enemies/Mire/Toxitoad/Toxitongue_Chain");
             
             Vector2 position = projectile.Center;
             Vector2 mountedCenter = Main.npc[projectile.owner].Center;

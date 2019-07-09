@@ -520,8 +520,6 @@ namespace AAMod.Worldgeneration
 
         Texture2D Terrasphere = null;
 
-        Texture2D TerraWalls = null;
-
         public override bool Place(Point origin, StructureMap structures)
         {
             //this handles generating the actual tiles, but you still need to add things like treegen etc. I know next to nothing about treegen so you're on your own there, lol.
@@ -532,12 +530,16 @@ namespace AAMod.Worldgeneration
 
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(0, 255, 0)] = -2;
-            colorToTile[Color.Black] = -1; //don't touch when genning				
+            colorToTile[Color.Black] = -1; //don't touch when genning		
+
+
+            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>();
+            colorToTile[new Color(0, 255, 0)] = -2;
+            colorToTile[Color.Black] = -1; //don't touch when genning	
 
 
             Texture2D TerraSmall = mod.GetTexture("Worldgeneration/TerrariumDelete");
             Texture2D TerraMed = mod.GetTexture("Worldgeneration/TerrariumMedDelete");
-            Texture2D TerraLarge = mod.GetTexture("Worldgeneration/TerrariumLargeDelete");
 
             if (Terrasphere == null)
             {
@@ -551,7 +553,7 @@ namespace AAMod.Worldgeneration
                 }
             }
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(worldSize == 3 ? TerraLarge : worldSize == 2 ? TerraMed : TerraSmall, colorToTile);
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(Terrasphere, colorToTile, Terrasphere, colorToWall);
             Point newOrigin = new Point(origin.X, origin.Y); //biomeRadius);
 
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
