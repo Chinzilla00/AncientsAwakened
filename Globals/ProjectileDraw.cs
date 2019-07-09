@@ -904,7 +904,7 @@ namespace AAMod.Projectiles
 
 		public static void DrawChain(int index, Vector2 to, string chainPath)
 		{
-			Texture2D texture = ModLoader.GetTexture(chainPath);
+			Texture2D texture = AAMod.instance.GetTexture(chainPath);
 			Projectile projectile = Main.projectile[index];
 			Vector2 vector = projectile.Center;
 			Rectangle? sourceRectangle = null;

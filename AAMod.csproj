@@ -50,4 +50,9 @@
     <Folder Include="bin\Release\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="BaseMod">
+      <HintPath>lib\BaseMod.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
