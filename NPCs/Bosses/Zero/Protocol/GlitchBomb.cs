@@ -88,15 +88,15 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
             Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<GlitchBoom>(), projectile.damage, 1, projectile.owner);
         }
-        public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens
+        public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
-            projectile.frameCounter++; //increase the frameCounter by one
-            if (projectile.frameCounter >= 5) //once the frameCounter has reached 10 - change the 10 to change how fast the projectile animates
+            projectile.frameCounter++;
+            if (projectile.frameCounter >= 5)
             {
-                projectile.frame++; //go to the next frame
-                projectile.frameCounter = 0; //reset the counter
-                if (projectile.frame > 2) //if past the last frame
-                    projectile.frame = 0; //go back to the first frame
+                projectile.frame++;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 2) 
+                    projectile.frame = 0; 
             }
             return true;
         }

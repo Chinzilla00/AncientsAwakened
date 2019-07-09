@@ -57,28 +57,26 @@ namespace AAMod.Items
                         line2.overrideColor = (Color)customNameColor;
                     }
                 }
+                return;
             }
 
-            if (item.modItem != null && item.modItem.mod.Name == mod.Name && !item.expert)
+            BaseAAItem AAitem = (BaseAAItem)item.modItem;
+            if (AAitem.AARarity != 0)
             {
-                BaseAAItem AAitem = (BaseAAItem)item.modItem;
-                if (AAitem.AARarity != 0)
+                Color Rare;
+                switch (AAitem.AARarity)
                 {
-                    Color Rare;
-                    switch (AAitem.AARarity)
+                    default: Rare = Color.White; break;
+                    case 12: Rare = AAColor.Rarity12; break; //Ashe and Haruka
+                    case 13: Rare = AAColor.Rarity13; break; //Ancients
+                    case 14: Rare = AAColor.Rarity14; break; //Super Ancients	
+                    case 15: Rare = AAColor.Rarity15; break; //Hyper Ancients				
+                }
+                foreach (TooltipLine line2 in list)
+                {
+                    if (line2.mod == "Terraria" && line2.Name == "ItemName")
                     {
-                        default: Rare = Color.White; break;
-                        case 12: Rare = AAColor.Rarity12; break; //Ashe and Haruka
-                        case 13: Rare = AAColor.Rarity13; break; //Ancients
-                        case 14: Rare = AAColor.Rarity14; break; //Super Ancients	
-                        case 15: Rare = AAColor.Rarity15; break; //Hyper Ancients				
-                    }
-                    foreach (TooltipLine line2 in list)
-                    {
-                        if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                        {
-                            line2.overrideColor = Rare;
-                        }
+                        line2.overrideColor = Rare;
                     }
                 }
             }

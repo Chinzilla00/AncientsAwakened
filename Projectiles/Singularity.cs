@@ -40,15 +40,15 @@ namespace AAMod.Projectiles
             Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X * 0, projectile.velocity.Y * 0, mod.ProjectileType("SingularityVortex"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
 
-        public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens
+        public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
-            projectile.frameCounter++; //increase the frameCounter by one
-            if (projectile.frameCounter >= 5) //once the frameCounter has reached 10 - change the 10 to change how fast the projectile animates
+            projectile.frameCounter++;
+            if (projectile.frameCounter >= 5)
             {
-                projectile.frame++; //go to the next frame
-                projectile.frameCounter = 0; //reset the counter
-                if (projectile.frame > 3) //if past the last frame
-                    projectile.frame = 0; //go back to the first frame
+                projectile.frame++;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 3) 
+                    projectile.frame = 0; 
             }
             return true;
         }

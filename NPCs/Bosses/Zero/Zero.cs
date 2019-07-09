@@ -124,7 +124,10 @@ namespace AAMod.NPCs.Bosses.Zero
                     "ZeroStar",
                     "Neutralizer",
                     "ZeroTerratool",
-                    "DoomPortal"
+                    "DoomPortal",
+                    "Gigataser",
+                    "OmegaVolley",
+                    "GenocideCannon"
                 };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));

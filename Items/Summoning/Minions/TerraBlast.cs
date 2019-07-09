@@ -71,7 +71,7 @@ namespace AAMod.Items.Summoning.Minions
         }
         
 
-        public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens
+        public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
             projectile.frameCounter++;
             if (projectile.frameCounter >= 5)
