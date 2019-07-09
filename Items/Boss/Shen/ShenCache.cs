@@ -6,7 +6,6 @@ namespace AAMod.Items.Boss.Shen
 {
     public class ShenCache : BaseAAItem
 	{
-        
         public override void SetStaticDefaults()
         {
             
