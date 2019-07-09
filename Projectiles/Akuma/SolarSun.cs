@@ -38,7 +38,7 @@ namespace AAMod.Projectiles.Akuma
             target.AddBuff(BuffID.Daybreak, 600);
         }
 
-        public override bool PreDraw(SpriteBatch sb, Color lightColor) //this is where the animation happens
+        public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
 
             return false;
