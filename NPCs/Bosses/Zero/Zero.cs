@@ -405,26 +405,21 @@ namespace AAMod.NPCs.Bosses.Zero
                     float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
                     Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
                 }
-                if (npc.ai[2] == 300 || npc.ai[2] == 400)
+                if (npc.ai[2] == 300 || npc.ai[2] == 400) // + lasers
                 {
                     Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
-                    int pieCut = 4;
-                    for (int m = 0; m < pieCut; m++)
-                    {
-                        Vector2 vel = BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), m / pieCut * 6.28f);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vel.X, vel.Y, mod.ProjectileType("ZeroBlast"), 85, 3);
-                    }
+                    Projectile.NewProjectile((new Vector2(npc.Centre.X, npc.Centre.Y)), (new Vector2(0f, -12f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                    Projectile.NewProjectile((new Vector2(npc.Centre.X, npc.Centre.Y)), (new Vector2(0f, 12f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                    Projectile.NewProjectile((new Vector2(npc.Centre.X, npc.Centre.Y)), (new Vector2(-12f, 0f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                    Projectile.NewProjectile((new Vector2(npc.Centre.X, npc.Centre.Y)), (new Vector2(12f, 0f)), mod.ProjectileType("ZeroBlast"), 85, 3);
                 }
-                if (npc.ai[2] == 350)
+                if (npc.ai[2] == 350 || npc.ai[2] == 400) // x lasers
                 {
                     Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
-                    int pieCut = 8;
-                    for (int m = 0; m < pieCut; m++)
-                    {
-
-                        Vector2 vel = BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), m / pieCut * 6.28f);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vel.X, vel.Y, mod.ProjectileType("ZeroBlast"), 85, 3);
-                    }
+                    Projectile.NewProjectile((new Vector2(npc.Centre.X, npc.Centre.Y)), (new Vector2(8f, 8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                    Projectile.NewProjectile((new Vector2(npc.Centre.X, npc.Centre.Y)), (new Vector2(8f, -8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                    Projectile.NewProjectile((new Vector2(npc.Centre.X, npc.Centre.Y)), (new Vector2(-8f, 8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                    Projectile.NewProjectile((new Vector2(npc.Centre.X, npc.Centre.Y)), (new Vector2(-8f, -8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
                 }
                 if (npc.ai[2] >= 500 && npc.ai[2] < 580)
                 {
