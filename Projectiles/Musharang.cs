@@ -8,14 +8,10 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
-namespace GRealm.Projectiles.NPCs
+namespace AAMod.Projectiles
 {
-	public class FolivineChakram : ModProjectile
+	public class Musharang : ModProjectile
 	{
-		public override void SetStaticDefaults()
-		{
-            DisplayName.SetDefault("Folivine's Chakram");
-		}		
 
         public override void SetDefaults()
         {
