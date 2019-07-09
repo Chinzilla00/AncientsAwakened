@@ -77,7 +77,11 @@ namespace AAMod.Items.Boss.Zero
                 "ZeroStar",
                 "Neutralizer",
                 "ZeroTerratool",
-                "DoomPortal"
+                "DoomPortal",
+                "Gigataser",
+                    "OmegaVolley",
+                    "GenocideCannon"
+
             };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
