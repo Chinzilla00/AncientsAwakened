@@ -55,6 +55,9 @@ namespace AAMod
         internal UserInterface TerratoolZInterface;
         internal TerratoolZUI TerratoolZState;
 
+        internal UserInterface TerratoolSInterface;
+        internal TerratoolSUI TerratoolSState;
+
         internal UserInterface TerratoolKipInterface;
         internal TerratoolKipUI TerratoolKipState;
 
@@ -287,6 +290,10 @@ namespace AAMod
             TerratoolZState = new TerratoolZUI();
             TerratoolZState.Activate();
 
+            TerratoolSInterface = new UserInterface();
+            TerratoolSState = new TerratoolSUI();
+            TerratoolSState.Activate();
+
             TerratoolKipInterface = new UserInterface();
             TerratoolKipState = new TerratoolKipUI();
             TerratoolKipState.Activate();
@@ -507,6 +514,11 @@ namespace AAMod
                 TerratoolZInterface.Update(gameTime);
             }
 
+            if (TerratoolSInterface != null && TerratoolSInterface.CurrentState != null)
+            {
+                TerratoolZInterface.Update(gameTime);
+            }
+
             if (TerratoolKipInterface != null && TerratoolKipInterface.CurrentState != null)
             {
                 TerratoolKipInterface.Update(gameTime);
@@ -551,6 +563,12 @@ namespace AAMod
                     && radialUI4.Visible)
                     {
                         TerratoolZInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
+                    }
+                    var radialUI5 = TerratoolSInterface.CurrentState as TerratoolSUI;
+                    if (radialUI5 != null && lastUpdateUIGameTime != null
+                    && radialUI5.Visible)
+                    {
+                        TerratoolSInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
                     }
                     var radialUI6 = TerratoolKipInterface.CurrentState as TerratoolKipUI;
                     if (radialUI6 != null && lastUpdateUIGameTime != null

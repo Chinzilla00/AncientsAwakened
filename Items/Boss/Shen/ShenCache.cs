@@ -1,6 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 namespace AAMod.Items.Boss.Shen
 {
     public class ShenCache : BaseAAItem
@@ -20,9 +21,9 @@ namespace AAMod.Items.Boss.Shen
 			item.width = 36;
 			item.height = 32;
 			item.expert = true;
-			bossBagNPC = mod.NPCType("ShenA");
 		}
 
+        public override int BossBagNPC => mod.NPCType("ShenA");
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
