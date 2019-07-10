@@ -61,7 +61,7 @@ namespace AAMod.Projectiles
 					if (Main.rand.Next(2) == 0)
 					{
 						Vector2 vector140 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-						Dust dust28 = Main.dust[Dust.NewDust(projectile.Center - vector140 * 30f, 0, 0, Utils.SelectRandom<int>(Main.rand, new int[]
+						Dust dust28 = Main.dust[Dust.NewDust(projectile.Center - vector140 * 30f, 0, 0, Utils.SelectRandom(Main.rand, new int[]
 						{
 							88,
 							92
@@ -295,7 +295,7 @@ namespace AAMod.Projectiles
 				}
 				int num106 = Main.rand.Next(5, 9);
 				int num107 = Main.rand.Next(5, 9);
-				int num108 = Utils.SelectRandom<int>(Main.rand, new int[]
+				int num108 = Utils.SelectRandom(Main.rand, new int[]
 				{
 					86,
 					90
@@ -342,11 +342,11 @@ namespace AAMod.Projectiles
 		{
 			Vector2 vector53 = projectile.position + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
 			Texture2D texture2D31 = Main.projectileTexture[projectile.type];
-			Microsoft.Xna.Framework.Color color25 = new Color(250 - 5 * 10, 250 - 5 * 10, 250 - 5 * 10, 150 - 5 * 10);
+            Color color25 = new Color(250 - 5 * 10, 250 - 5 * 10, 250 - 5 * 10, 150 - 5 * 10);
 			Color alpha4 = projectile.GetAlpha(color25);
 			SpriteEffects spriteEffects = SpriteEffects.None;
 			Vector2 origin8 = new Vector2(texture2D31.Width, texture2D31.Height) / 2f;
-			Microsoft.Xna.Framework.Color color57 = alpha4 * 0.8f;
+            Color color57 = alpha4 * 0.8f;
 			color57.A /= 2;
 			Color color58 = Color.Lerp(alpha4, Color.Black, 0.5f);
 			color58.A = alpha4.A;

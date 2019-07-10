@@ -36,6 +36,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.buffImmune[39] = true;
             npc.lavaImmune = true;
             npc.netAlways = true;
+            npc.knockBackResist = 0;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -124,34 +125,25 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (npc.ai[2] >= aiTimerFire)
             {
-                int dustID = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.VoidDust>());
-                Main.dust[dustID].position += (npc.position - npc.oldPosition);
-                Main.dust[dustID].velocity = (npc.Center - npc.Center) * 0.10f;
-                Main.dust[dustID].alpha = 100;
-                Main.dust[dustID].noGravity = true;
-                if (Collision.CanHit(npc.position, npc.width, npc.height, player.Center, player.width, player.height) && npc.ai[2] >= aiTimerFire + 50)
+                int Arrows = Main.rand.Next(2, 5);
+                float spread = 45f * 0.0174f;
+                Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
+                dir *= 6;
+                float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
+                double deltaAngle = spread / Arrows * 2;
+                for (int i = 0; i < Arrows; i++)
                 {
-                    Vector2 fireTarget = npc.Center;
-                    float rot = BaseUtility.RotationTo(npc.Center, player.Center);
-                    fireTarget = BaseUtility.RotateVector(npc.Center, fireTarget, rot);
-                    BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("NeutralizerP"), npc.damage / 2, 0f, 4f);
-                    npc.ai[2] = 0;
+                    double offsetAngle = startAngle + (deltaAngle * i);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("ZArrow"), npc.damage / 2, 5, Main.myPlayer);
                 }
-                
-                if (npc.ai[2] >= aiTimerFire + 60)
-                {
-                    npc.ai[2] = 0;
-                }
+                npc.netUpdate = true;
+                npc.ai[2] = 0;
             }
-            else
-            {
-                Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
-                float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
-                float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
-                float NewRotation = (float)Math.Atan2(num2, num1) - 1.57f;
-                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
-            }
-
+            Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+            float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
+            float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
+            npc.rotation = (float)Math.Atan2(num2, num1) - 1.57f;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)

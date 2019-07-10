@@ -5,23 +5,20 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Projectiles.Zero
+namespace AAMod.NPCs.Bosses.Zero
 {
     // to investigate: Projectile.Damage, (8843)
-    class Rift : ModProjectile
+    class RiftZ : ModProjectile
     {
         public override void SetDefaults()
         {
             projectile.width = 60;
             projectile.height = 60;
-            projectile.friendly = true;
-            projectile.melee = true;
+            projectile.hostile = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
-            projectile.alpha = 50;
+            projectile.alpha = 255;
             projectile.tileCollide = false;
-            projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 0;
         }
 
         private float RingRotation = 0f;
@@ -30,15 +27,60 @@ namespace AAMod.Projectiles.Zero
         {
             RingRotation += 0.03f;
 
+
+            RingRotation += 0.03f;
+
             if (projectile.alpha > 80)
             {
-                projectile.alpha -= 3;
+                projectile.alpha -= 10;
             }
             else
             {
                 projectile.alpha = 80;
             }
+
+            projectile.scale = projectile.penetrate / 20;
+
+            const int aislotHomingCooldown = 0;
+            const int homingDelay = 30;
+            const float desiredFlySpeedInPixelsPerFrame = 5;
+            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
+
+            projectile.ai[aislotHomingCooldown]++;
+            if (projectile.ai[aislotHomingCooldown] > homingDelay)
+            {
+                projectile.ai[aislotHomingCooldown] = homingDelay;
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
+                {
+                    Player n = Main.player[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
+                }
+            }
         }
+
+        private int HomeOnTarget()
+        {
+            const float homingMaximumRangeInPixels = 400;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxPlayers; i++)
+            {
+                Player n = Main.player[i];
+                float distance = projectile.Distance(n.Center);
+                if (distance <= homingMaximumRangeInPixels &&
+                    (
+                        selectedTarget == -1 || //there is no selected target
+                        projectile.Distance(Main.player[selectedTarget].Center) > distance)
+                )
+                    selectedTarget = i;
+            }
+
+            return selectedTarget;
+        }
+
 
         public override bool PreDraw(SpriteBatch spritebatch, Color lightColor)
         {

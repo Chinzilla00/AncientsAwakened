@@ -27,7 +27,7 @@ the longer the taser is charged, the more it penetrates");
             item.useTime = 65;
             item.useAnimation = 65; 
             item.useStyle = 5; 
-            item.shoot = mod.ProjectileType("Gigatazer");
+            item.shoot = mod.ProjectileType("Gigataser");
             item.channel = true;
             item.knockBack = 12;
             item.value = Item.sellPrice(0, 30, 0, 0);

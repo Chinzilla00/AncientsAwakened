@@ -165,7 +165,7 @@ namespace AAMod.Items.Armor.Doomsday
                 {
                     for (int num628 = 0; num628 < 4; num628++)
                     {
-                        int num629 = Utils.SelectRandom<int>(Main.rand, new int[]
+                        int num629 = Utils.SelectRandom(Main.rand, new int[]
                         {
                                                                     226,
                                                                     228,

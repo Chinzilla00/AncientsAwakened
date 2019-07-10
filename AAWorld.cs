@@ -671,7 +671,7 @@ namespace AAMod
                                         UnifiedRandom genRand = WorldGen.genRand;
                                         int[] array = new int[]
                                         { mod.ItemType("DragonfireFlask") };
-                                        item.SetDefaults(Utils.Next<int>(genRand, array), false);
+                                        item.SetDefaults(Utils.Next(genRand, array), false);
                                         chest.item[2].stack = WorldGen.genRand.Next(1, 4);
                                         Item item2 = chest.item[3];
                                         UnifiedRandom genRand2 = WorldGen.genRand;
@@ -884,7 +884,7 @@ namespace AAMod
                     x = WorldGen.genRand.Next(0, Main.maxTilesX);
                     y = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY);
                 }
-                WorldGen.TileRunner(x, y, WorldGen.genRand.Next(2, 6), WorldGen.genRand.Next(3, 7), mod.TileType<Tiles.PrismOre>());
+                WorldGen.TileRunner(x, y, WorldGen.genRand.Next(2, 6), WorldGen.genRand.Next(3, 7), mod.TileType<PrismOre>());
             }
         }
 
@@ -1008,10 +1008,10 @@ namespace AAMod
                         switch (Altar)
                         {
                             case 0:
-                                Altar = mod.TileType<Tiles.ChaosAltar1>();
+                                Altar = mod.TileType<ChaosAltar1>();
                                 break;
                             default:
-                                Altar = mod.TileType<Tiles.ChaosAltar2>();
+                                Altar = mod.TileType<ChaosAltar2>();
                                 break;
                         }
                         if (Main.rand.Next(15) == 0)

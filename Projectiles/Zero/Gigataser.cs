@@ -149,13 +149,13 @@ namespace AAMod.Projectiles.Zero
 					num5 = num1 / num4;
 				float SpeedX = f1 * num5;
 				float SpeedY = f2 * num5;
-                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 89);
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Shock"), projectile.position);
                 Vector2 vector14 = new Vector2(SpeedX, SpeedY);
                 vector14.Normalize();
                 for (int num123 = 0; num123 < chargeLevel; num123++)
                 {
                     Vector2 perturbedSpeed = new Vector2(SpeedX, SpeedY).RotatedByRandom(MathHelper.ToRadians(20));
-                    Projectile.NewProjectile((int)perturbedSpeed.X, (int)perturbedSpeed.Y, SpeedX, SpeedY, mod.ProjectileType("ZeroTaze"), projectile.damage, projectile.knockBack, player.whoAmI, perturbedSpeed.ToRotation());
+                    Projectile.NewProjectile((int)perturbedSpeed.X, (int)perturbedSpeed.Y, SpeedX, SpeedY, mod.ProjectileType<ZeroTaze>(), projectile.damage, projectile.knockBack, player.whoAmI, perturbedSpeed.ToRotation());
                 }
             }
         }

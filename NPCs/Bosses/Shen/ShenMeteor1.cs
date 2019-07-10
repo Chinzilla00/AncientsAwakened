@@ -97,7 +97,7 @@ namespace AAMod.NPCs.Bosses.Shen
 			}
 			for (int num341 = 0; num341 < 5; num341++)
 			{
-				int num342 = Utils.SelectRandom<int>(Main.rand, new int[]
+				int num342 = Utils.SelectRandom(Main.rand, new int[]
 				{
                     mod.DustType<Dusts.AkumaADust>(),
                     mod.DustType<Dusts.YamataADust>()

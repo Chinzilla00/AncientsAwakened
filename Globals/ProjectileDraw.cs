@@ -555,7 +555,7 @@ namespace AAMod.Projectiles
 
 		public static void BoomerangAI(int index, float retractTime = 30f, float speed = 9f, float speedAcceleration = 0.4f, ExtraAction action = null, ExtraAction initialize = null)
 		{
-			Terraria.Projectile projectile = Main.projectile[index];
+            Projectile projectile = Main.projectile[index];
 			if (initialize != null && projectile.localAI[1] == 0f)
 			{
 				projectile.localAI[1] = 1f;

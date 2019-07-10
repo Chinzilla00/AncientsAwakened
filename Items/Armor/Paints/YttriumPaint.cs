@@ -38,7 +38,7 @@ namespace AAMod.Items.Armor.Paints
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == mod.ItemType<Items.Armor.Ytrium.YtriumPlate>() && legs.type == mod.ItemType<Items.Armor.Ytrium.YtriumGreaves>();
+            return body.type == mod.ItemType<Ytrium.YtriumPlate>() && legs.type == mod.ItemType<Ytrium.YtriumGreaves>();
         }
 
         public override void UpdateArmorSet(Player player)
