@@ -48,6 +48,7 @@
   <ItemGroup>
     <Folder Include="bin\Debug\net45\" />
     <Folder Include="bin\Release\" />
+    <Folder Include="Players\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>

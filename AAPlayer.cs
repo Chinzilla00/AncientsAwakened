@@ -24,6 +24,7 @@ using Terraria.Utilities;
 
 namespace AAMod
 {
+
     public class AAPlayer : ModPlayer
     {
         //Minions
@@ -287,7 +288,25 @@ namespace AAMod
 
         public override void ResetEffects()
         {
-            //Minions
+            ResetMinionEffect();
+            ResetArmorEffect();
+            ResetAccessoryEffect();
+            ResetDebuffEffect();
+            ResetPetsEffect();
+            //EnemyChecks
+            IsGoblin = false;
+            ResetMiscEffect();
+        }
+
+        #region ResetEffect
+        private void ResetMiscEffect()
+        {
+            Compass = false;
+            DemonSun = false;
+        }
+
+        private void ResetMinionEffect()
+        {
             FireSpirit = false;
             ImpServant = false;
             ImpSlave = false;
@@ -303,11 +322,11 @@ namespace AAMod
             SkullMinion = false;
             EaterMinion = false;
             CrimeraMinion = false;
-			CrowMinion = false;
+            CrowMinion = false;
             DemonMinion = false;
             DevilMinion = false;
-			DoomiteProbe = false;
-			DoomiteProbeC = false;
+            DoomiteProbe = false;
+            DoomiteProbeC = false;
             HallowedPrism = false;
             TrueHallowedPrism = false;
             TerraMinion = false;
@@ -330,7 +349,10 @@ namespace AAMod
             ChaosClaw = false;
             MiniZero = false;
             TerraSummon = false;
-            //Armor
+        }
+
+        private void ResetArmorEffect()
+        {
             MoonSet = false;
             valkyrieSet = false;
             kindledSet = false;
@@ -377,7 +399,10 @@ namespace AAMod
             Witch = false;
             Tied = false;
             TiedHead = false;
-            //Accessory
+        }
+
+        private void ResetAccessoryEffect()
+        {
             AshRemover = false;
             FogRemover = false;
             clawsOfChaos = false;
@@ -413,7 +438,10 @@ namespace AAMod
             ShadowBand = false;
             RajahCape = false;
             CapShield = false;
-            //Debuffs
+        }
+
+        private void ResetDebuffEffect()
+        {
             CursedHellfire = false;
             infinityOverload = false;
             discordInferno = false;
@@ -432,9 +460,11 @@ namespace AAMod
             Hunted = false;
             Unstable = false;
             IB = false;
-            //Buffs
-            //Weapons
-            //Pets
+        }
+
+
+        private void ResetPetsEffect()
+        {
             Broodmini = false;
             Raidmini = false;
             MiniProbe = false;
@@ -445,13 +475,9 @@ namespace AAMod
             BoomBoi = false;
             DragonSoul = false;
             Glowmoss = false;
-            //EnemyChecks
-            IsGoblin = false;
-
-            //Misc
-            Compass = false;
-            DemonSun = false;
         }
+        #endregion
+
 
         public override void Initialize()
         {
@@ -502,21 +528,6 @@ namespace AAMod
 
         public static Player PlayerPos = Main.player[Main.myPlayer];
 
-        public static Color Uranium
-        {
-            get
-            {
-                return BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)), Color.Green, Color.Green, BaseDrawing.GetLightColor(new Vector2(PlayerPos.position.X, PlayerPos.position.Y)));
-            }
-        }
-
-        public static Color FlashGlow
-        {
-            get
-            {
-                return BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, Color.Transparent, Color.White, Color.White, Color.Transparent);
-            }
-        }
 
         public float Intensity;
         
@@ -1190,12 +1201,6 @@ namespace AAMod
                 
             }
 
-            if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Vanity.Grox.AngryPirateSails>(), true, true))
-            {
-                WingAnimation(player, 1, 10, 2);
-            }
-
-
             if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Boss.Rajah.RabbitcopterEars>(), true, true))
             {
                 bool isFlying = false;
@@ -1355,174 +1360,6 @@ namespace AAMod
                 }
                 num15++;
             }
-        }
-
-        /*
-         * Wing Animation; For when you'd like a custom wing animation. Put this in your modplayer's postupdate.
-         * Note: You MUST do a check for if the player has the wings you want animated equipped first. I have included a working method below this one for you to call.
-         * 
-         * WingType: This is so you can decide what animation specificall you want
-         * * 0: Basic Wing animation. Can be customized with the values adjescent to this value.
-         * * 1: Wing Animation that skips frame 0. This is good for jetpacks or wings with a special idle frame.  Can be customized with the values adjescent to this value.
-         * * 2: Wing animation that acts like a Vortex Booster. Cannot be customized due to the way it is animated. Skips frame 0 and plays animation when falling.
-         * 
-         * AnimationSpeed: How many ticks you'd like each frame to be. Remember that a tick is 1/60th of a second.
-         * 
-         * FallingFrame: Which animation frame you'd like to be up when the player has run out of wing time.
-         */
-
-        public static void WingAnimation(Player player, int WingType = 0, int AnimationSpeed = 4, int FallingFrame = 1)
-        {
-            bool isFlying = false;
-            if (player.controlJump && player.wingTime > 0f && !player.jumpAgainCloud && player.jump == 0 && player.velocity.Y != 0f)
-            {
-                isFlying = true;
-            }
-            if (player.controlJump && player.controlDown && player.wingTime > 0f)
-            {
-                isFlying = true;
-            }
-            if (WingType == 1)
-            {
-                if (isFlying || player.jump > 0)
-                {
-                    player.wingFrameCounter++;
-                    int num80 = 2;
-                    if (player.wingFrameCounter >= num80 * 3)
-                    {
-                        player.wingFrameCounter = 0;
-                    }
-                    player.wingFrame = 1 + player.wingFrameCounter / num80;
-                }
-                else if (player.velocity.Y != 0f)
-                {
-                    if (player.controlJump)
-                    {
-                        player.wingFrameCounter++;
-                        int num81 = 2;
-                        if (player.wingFrameCounter >= num81 * 3)
-                        {
-                            player.wingFrameCounter = 0;
-                        }
-                        player.wingFrame = 1 + player.wingFrameCounter / num81;
-                    }
-                    else if (player.wingTime == 0f)
-                    {
-                        player.wingFrame = 0;
-                    }
-                    else
-                    {
-                        player.wingFrame = 0;
-                    }
-                }
-                else
-                {
-                    player.wingFrame = 0;
-                }
-            }
-            else if (WingType == 2)
-            {
-                if (isFlying || player.jump > 0)
-                {
-                    player.wingFrameCounter++;
-                    if (player.wingFrameCounter > AnimationSpeed)
-                    {
-                        player.wingFrame++;
-                        player.wingFrameCounter = 0;
-                        if (player.wingFrame >= 4)
-                        {
-                            player.wingFrame = 1;
-                        }
-                    }
-                }
-                else if (player.velocity.Y != 0f)
-                {
-                    if (player.controlJump)
-                    {
-                        player.wingFrameCounter++;
-                        if (player.wingFrameCounter > AnimationSpeed)
-                        {
-                            player.wingFrame++;
-                            player.wingFrameCounter = 0;
-                            if (player.wingFrame >= 4)
-                            {
-                                player.wingFrame = 1;
-                            }
-                        }
-                    }
-                    else if (player.wingTime == 0f)
-                    {
-                        player.wingFrame = 0;
-                    }
-                    else
-                    {
-                        player.wingFrame = 0;
-                    }
-                }
-                else
-                {
-                    player.wingFrame = 0;
-                }
-            }
-            else
-            {
-                if (isFlying || player.jump > 0)
-                {
-                    player.wingFrameCounter++;
-                    if (player.wingFrameCounter > AnimationSpeed)
-                    {
-                        player.wingFrame++;
-                        player.wingFrameCounter = 0;
-                        if (player.wingFrame >= 4)
-                        {
-                            player.wingFrame = 0;
-                        }
-                    }
-                }
-                else if (player.velocity.Y != 0f)
-                {
-                    player.wingFrame = FallingFrame;
-                }
-                else
-                {
-                    player.wingFrame = 0;
-                }
-            }
-        }
-
-        /**
-         * Returns true if the given player has the given accessory equipped.
-         * 
-         * type: The accessory you are checking for
-         * 
-         * normal: Check for if it is in a normal accessory slot
-         * 
-         * vanity: Check for it it is in a Vanity accessory slot
-         * 
-         * social: Whether the item's visibility has been turned on or off
-         * 
-         * index: Which specific slot of the player's accessory slots the accessory is in.
-         */
-
-        public static bool HasAccessory(Player player, int type, bool normal, bool vanity, ref bool social, ref int index)
-        {
-            if (vanity)
-            {
-                for (int m = 13; m < 18 + player.extraAccessorySlots; m++)
-                {
-                    Item item = player.armor[m];
-                    if (item != null && !item.IsBlank() && item.type == type) { index = m; social = true; return true; }
-                }
-            }
-            if (normal)
-            {
-                for (int m = 3; m < 8 + player.extraAccessorySlots; m++)
-                {
-                    Item item = player.armor[m];
-                    if (item != null && !item.IsBlank() && item.type == type) { index = m; social = false; return true; }
-                }
-            }
-            return false;
         }
 
         public void DropDevArmor(int dropType)
@@ -3326,15 +3163,15 @@ namespace AAMod
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("UraniumVisor")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/UraniumVisor_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Uranium, edi.shadow), drawPlayer.bodyFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/UraniumVisor_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Uranium, edi.shadow), drawPlayer.bodyFrame, scale);
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("UraniumHeadgear")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/UraniumHeadgear_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Uranium, edi.shadow), drawPlayer.bodyFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/UraniumHeadgear_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Uranium, edi.shadow), drawPlayer.bodyFrame, scale);
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("UraniumHood")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/UraniumHood_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Uranium, edi.shadow), drawPlayer.bodyFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/UraniumHood_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Uranium, edi.shadow), drawPlayer.bodyFrame, scale);
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("TrueNightsHelm")))
             {
@@ -3410,7 +3247,7 @@ namespace AAMod
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("TiedMask")))
             {
-                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/TiedMask_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(FlashGlow, edi.shadow), drawPlayer.bodyFrame, scale);
+                BaseDrawing.DrawPlayerTexture(drawObj, mod.GetTexture("Glowmasks/TiedMask_Head_Glow"), dyeHead, drawPlayer, Position, 0, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.FlashGlow, edi.shadow), drawPlayer.bodyFrame, scale);
             }
             else if (!mapHead && HasAndCanDraw(drawPlayer, mod.ItemType("LizEars")))
             {
@@ -3512,19 +3349,19 @@ namespace AAMod
             }
             else if (drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("UraniumChestplate")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/UraniumChestplate_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Uranium, edi.shadow), drawPlayer.bodyFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/UraniumChestplate_Body_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Uranium, edi.shadow), drawPlayer.bodyFrame);
             }
             else if (!drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("UraniumChestplate")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/UraniumChestplate_Female_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Uranium, edi.shadow), drawPlayer.bodyFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/UraniumChestplate_Female_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Uranium, edi.shadow), drawPlayer.bodyFrame);
             }
             else if (drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("TrueNightsPlate")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueNightsPlate_Glow_Body"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Uranium, edi.shadow), drawPlayer.bodyFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueNightsPlate_Glow_Body"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Uranium, edi.shadow), drawPlayer.bodyFrame);
             }
             else if (!drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("TrueNightsPlate")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueNightsPlate_Glow_Female"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Uranium, edi.shadow), drawPlayer.bodyFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueNightsPlate_Glow_Female"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Uranium, edi.shadow), drawPlayer.bodyFrame);
             }
             else if (drawPlayer.Male && HasAndCanDraw(drawPlayer, mod.ItemType("TrueFleshrendPlate")))
             {
@@ -3680,11 +3517,11 @@ namespace AAMod
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("UraniumBoots")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/UraniumBoots_Legs_Glow"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Uranium, edi.shadow), drawPlayer.legFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/UraniumBoots_Legs_Glow"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Uranium, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("TrueNightsBoots")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueNightsBoots_Glow_Legs"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(Uranium, edi.shadow), drawPlayer.legFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/TrueNightsBoots_Glow_Legs"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Uranium, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("DoomsdayLeggings")))
             {

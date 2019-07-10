@@ -809,9 +809,4 @@ namespace AAMod
             AANet.HandlePacket(bb, whoAmI);
         }
     }
-
-    public enum MPMessageType : byte
-    {
-        RequestUpdateSquidLady
-    }
 }
