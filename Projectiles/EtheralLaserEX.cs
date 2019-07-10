@@ -179,7 +179,7 @@ namespace AAMod.Projectiles
 			}
 			Texture2D tex = Main.projectileTexture[projectile.type];
 			float num228 = projectile.localAI[1];
-			Microsoft.Xna.Framework.Color value25 = Main.hslToRgb(0.54f, 1f, 0.902f);
+            Color value25 = Main.hslToRgb(0.54f, 1f, 0.902f);
 			value25.A = 0;
 			Vector2 value26 = projectile.Center.Floor();
 			value26 += projectile.velocity * projectile.scale * 10.5f;

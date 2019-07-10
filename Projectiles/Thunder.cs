@@ -186,17 +186,17 @@ namespace AAMod.Projectiles
                 if (num291 == 0)
                 {
                     scale16 = new Vector2(projectile.scale) * 0.6f;
-                    DelegateMethods.c_1 = new Microsoft.Xna.Framework.Color(115, 204, 219, 0) * 0.5f;
+                    DelegateMethods.c_1 = new Color(115, 204, 219, 0) * 0.5f;
                 }
                 else if (num291 == 1)
                 {
                     scale16 = new Vector2(projectile.scale) * 0.4f;
-                    DelegateMethods.c_1 = new Microsoft.Xna.Framework.Color(113, 251, 255, 0) * 0.5f;
+                    DelegateMethods.c_1 = new Color(113, 251, 255, 0) * 0.5f;
                 }
                 else
                 {
                     scale16 = new Vector2(projectile.scale) * 0.2f;
-                    DelegateMethods.c_1 = new Microsoft.Xna.Framework.Color(255, 255, 255, 0) * 0.5f;
+                    DelegateMethods.c_1 = new Color(255, 255, 255, 0) * 0.5f;
                 }
                 DelegateMethods.f_1 = 1f;
                 for (int num292 = projectile.oldPos.Length - 1; num292 > 0; num292--)

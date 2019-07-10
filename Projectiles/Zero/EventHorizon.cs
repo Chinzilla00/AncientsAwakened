@@ -15,7 +15,7 @@ namespace AAMod.Projectiles.Zero
         {
             if (Main.netMode != 2)
             {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
@@ -165,7 +165,7 @@ namespace AAMod.Projectiles.Zero
                     vector31 += value28 * num237;
                 }
             }
-            rectangle8 = new Microsoft.Xna.Framework.Rectangle(0, 84, texture2D22.Width, 56); //90 and 48
+            rectangle8 = new Rectangle(0, 84, texture2D22.Width, 56); //90 and 48
             Main.spriteBatch.Draw(texture2D22, value30 - Main.screenPosition + value29, new Microsoft.Xna.Framework.Rectangle?(rectangle8), alpha3, rotation24, texture2D22.Frame(1, 1, 0, 0).Top(), projectile.scale, SpriteEffects.None, 0f);
             return false;
         }

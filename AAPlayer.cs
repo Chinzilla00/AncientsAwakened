@@ -24,7 +24,6 @@ using Terraria.Utilities;
 
 namespace AAMod
 {
-
     public class AAPlayer : ModPlayer
     {
         //Minions
@@ -961,11 +960,11 @@ namespace AAMod
             }
             if (NPC.AnyNPCs(mod.NPCType<Yamata>()))
             {
-                player.AddBuff(mod.BuffType<Buffs.YamataGravity>(), 10, true);
+                player.AddBuff(mod.BuffType<YamataGravity>(), 10, true);
             }
             if (NPC.AnyNPCs(mod.NPCType<YamataA>()))
             {
-                player.AddBuff(mod.BuffType<Buffs.YamataAGravity>(), 10, true);
+                player.AddBuff(mod.BuffType<YamataAGravity>(), 10, true);
             }
             if (player.GetModPlayer<AAPlayer>().ZoneMire || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake)
             {

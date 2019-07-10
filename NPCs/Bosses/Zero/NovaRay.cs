@@ -78,29 +78,24 @@ namespace AAMod.NPCs.Bosses.Zero
 
         }
         public int colorCounter;
-        public Color lineColor;
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-
-            
                 DrawLaser(spriteBatch, Main.projectileTexture[projectile.type], new Vector2(shooter.Center.X, shooter.Center.Y),
-                    projectile.velocity, 10, projectile.damage, -1.57f, 1f, 4000f, AAColor.Oblivion, (int)MoveDistance);
-            
+                    projectile.velocity, 10, -1.57f, 1f, (int)MoveDistance);
             
             return false;
         }
 
         // The core function of drawing a laser
-        public void DrawLaser(SpriteBatch spriteBatch, Texture2D texture, Vector2 start, Vector2 unit, float step, int damage, float rotation = 0f, float scale = 1f, float maxDist = 4000f, Color color = default(Color), int transDist = 50)
+        public void DrawLaser(SpriteBatch spriteBatch, Texture2D texture, Vector2 start, Vector2 unit, float step, float rotation = 0f, float scale = 1f, int transDist = 50)
         {
-            Vector2 origin = start;
             float r = unit.ToRotation() + rotation;
 
             #region Draw laser body
             for (float i = transDist; i <= Distance; i += step)
             {
                 Color c = AAColor.Oblivion;
-                origin = start + i * unit;
+                Vector2 origin = start + i * unit;
                 spriteBatch.Draw(texture, origin - Main.screenPosition,
                     new Rectangle(0, 26, 28, 26), i < transDist ? Color.Transparent : c, r,
                     new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
@@ -109,21 +104,18 @@ namespace AAMod.NPCs.Bosses.Zero
 
             #region Draw laser tail
             spriteBatch.Draw(texture, start + unit * (transDist - step) - Main.screenPosition,
-                new Rectangle(0, 0, 28, 26), AAColor.Oblivion, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+                new Rectangle(0, 0, 28, 26), AAColor.ZeroShield, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
             #endregion
 
             #region Draw laser head
             spriteBatch.Draw(texture, start + (Distance + step) * unit - Main.screenPosition,
-                new Rectangle(0, 52, 28, 26), AAColor.Oblivion, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
+                new Rectangle(0, 52, 28, 26), AAColor.ZeroShield, r, new Vector2(28 * .5f, 26 * .5f), scale, 0, 0);
             #endregion
         }
 
         // Change the way of collision check of the projectile
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
-            // We can only collide if we are at max charge, which is when the laser is actually fired
-
-            Player player = Main.player[projectile.owner];
             Vector2 unit = projectile.velocity;
             float point = 0f;
             // Run an AABB versus Line check to look for collisions, look up AABB collision first to see how it works
@@ -132,13 +124,10 @@ namespace AAMod.NPCs.Bosses.Zero
                 new Vector2(shooter.Center.X, shooter.Center.Y) + unit * Distance, 22, ref point);
         }
 
-        // Set custom immunity time on hitting an NPC
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.immune[projectile.owner] = 5;
         }
-
-
 
         public override bool ShouldUpdatePosition()
         {

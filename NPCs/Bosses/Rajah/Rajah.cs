@@ -210,7 +210,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         Main.NewText("And stay down.", 107, 137, 179);
                         if (Main.netMode != 1)
                         {
-                            Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<Supreme.SupremeRajahBookIt>(), 100, 0, Main.myPlayer);
+                            Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<SupremeRajahBookIt>(), 100, 0, Main.myPlayer);
                         }
                     }
                     else
@@ -238,7 +238,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     {
                         if (isSupreme)
                         {
-                            Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<Supreme.SupremeRajahBookIt>(), 100, 0, Main.myPlayer);
+                            Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<SupremeRajahBookIt>(), 100, 0, Main.myPlayer);
                         }
                         else
                         {

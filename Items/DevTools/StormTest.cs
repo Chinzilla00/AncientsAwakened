@@ -29,7 +29,7 @@ namespace AAMod.Items.DevTools
             item.shootSpeed = 9f;
         }
 		
-		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 			Vector2 vector = new Vector2(speedX, speedY);
 			int L = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("ChaosLightning"), damage, knockBack, player.whoAmI, vector.ToRotation());

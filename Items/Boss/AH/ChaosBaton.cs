@@ -35,7 +35,7 @@ namespace AAMod.Items.Boss.AH
             item.noUseGraphic = true;
         }
 
-        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             int shootMe = Main.rand.Next(2);
             {

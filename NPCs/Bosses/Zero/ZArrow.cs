@@ -1,10 +1,12 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Projectiles.Zero
+namespace AAMod.Players.Bosses.Zero
 {
-    public class ZeroArrow : ModProjectile
+    public class ZArrow : ModProjectile
 	{
         public override void SetStaticDefaults()
         {
@@ -16,12 +18,11 @@ namespace AAMod.Projectiles.Zero
 			projectile.width = 14;
 			projectile.height = 14;
 			projectile.aiStyle = 1;        
-            projectile.friendly = true;
-            projectile.ranged = true;
+            projectile.hostile = true;
             projectile.ignoreWater = true;
-            projectile.usesLocalNPCImmunity = true;
             projectile.penetrate = 1;
             projectile.arrow = true;
+            projectile.extraUpdates = 2;
         }
 
         public override void AI()
@@ -39,7 +40,7 @@ namespace AAMod.Projectiles.Zero
                 int foundTarget = HomeOnTarget();
                 if (foundTarget != -1)
                 {
-                    NPC n = Main.npc[foundTarget];
+                    Player n = Main.player[foundTarget];
                     Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
                     projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
@@ -48,23 +49,19 @@ namespace AAMod.Projectiles.Zero
 
         private int HomeOnTarget()
         {
-            const bool homingCanAimAtWetEnemies = true;
             const float homingMaximumRangeInPixels = 400;
 
             int selectedTarget = -1;
-            for (int i = 0; i < Main.maxNPCs; i++)
+            for (int i = 0; i < Main.maxPlayers; i++)
             {
-                NPC n = Main.npc[i];
-                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
-                {
-                    float distance = projectile.Distance(n.Center);
-                    if (distance <= homingMaximumRangeInPixels &&
-                        (
-                            selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) 
-                    )
-                        selectedTarget = i;
-                }
+                Player n = Main.player[i];
+                float distance = projectile.Distance(n.Center);
+                if (distance <= homingMaximumRangeInPixels &&
+                    (
+                        selectedTarget == -1 || //there is no selected target
+                        projectile.Distance(Main.player[selectedTarget].Center) > distance)
+                )
+                    selectedTarget = i;
             }
 
             return selectedTarget;
@@ -76,8 +73,15 @@ namespace AAMod.Projectiles.Zero
             for (int num468 = 0; num468 < 4; num468++)
             {
                 num468 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color));
+                    -projectile.velocity.Y * 0.2f, 100);
             }
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            BaseDrawing.DrawAfterimage(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, .5f, .5f, 6, false, 0f, 0f, AAColor.ZeroShield);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, lightColor, false);
+            return true;
         }
     }
 }

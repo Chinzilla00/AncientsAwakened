@@ -207,7 +207,7 @@ namespace AAMod.NPCs.Bosses.Zero
         //define which frames are used in each stage (0 = start, 1 = mid, 2 = end
         private void ZeroLaser(int stage, Vector2 currentPosition, float distanceLeft, Rectangle lastFrame, out float distCovered, out Rectangle frame, out Vector2 origin, out Color color)
         {
-            color = Color.White;
+            color = AAColor.ZeroShield;
 			if (stage == 0)
 			{
 				distCovered = 33f;

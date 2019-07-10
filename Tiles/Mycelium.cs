@@ -36,7 +36,7 @@ namespace AAMod.Tiles
             if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(1000) == 0)
             {
                 int style = Main.rand.Next(5);
-                if (PlaceObject(i, j - 1, mod.TileType<Tiles.MadnessShroom>(), false, style))
+                if (PlaceObject(i, j - 1, mod.TileType<MadnessShroom>(), false, style))
                     NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<MadnessShroom>(), style, 0, -1, -1);
             }
         }

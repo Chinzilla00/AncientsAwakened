@@ -137,7 +137,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     for (int i = 0; i < (Main.expertMode ? 3 : 4); i++)
                     {
                         double offsetAngle = startAngle + (deltaAngle * i);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjType("RealityLaser"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjType("DeathLaser"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
                     }
                 }
             }
