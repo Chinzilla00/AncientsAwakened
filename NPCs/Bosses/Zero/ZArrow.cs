@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Players.Bosses.Zero
+namespace AAMod.NPCs.Bosses.Zero
 {
     public class ZArrow : ModProjectile
 	{
