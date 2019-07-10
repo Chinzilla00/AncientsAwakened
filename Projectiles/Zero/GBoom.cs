@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -13,7 +15,7 @@ namespace AAMod.Projectiles.Zero
 
         public override void SetDefaults()
         {
-            projectile.width = 230;
+            projectile.width = 176;
             projectile.height = 230;
             projectile.penetrate = -1;
             projectile.friendly = true;
@@ -43,6 +45,11 @@ namespace AAMod.Projectiles.Zero
         {
             projectile.timeLeft = 0;
         }
-
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 2);
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 1, frame, lightColor, true);
+            return false;
+        }
     }
 }

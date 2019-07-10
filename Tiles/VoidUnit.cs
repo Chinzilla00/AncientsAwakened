@@ -18,7 +18,7 @@ namespace AAMod.Tiles
             TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 18 };
             TileObjectData.addTile(Type);
             AddMapEntry(new Color(75, 139, 166));
-            dustType = 1;
+            dustType = mod.DustType<Dusts.DoomDust>();
             animationFrameHeight = 56;
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.LunarMonolith };

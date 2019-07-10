@@ -17,7 +17,7 @@ namespace AAMod.Projectiles.Zero
 
         public override void SetDefaults()
         {
-            projectile.width = 74;
+            projectile.width = 30;
             projectile.height = 24;
             projectile.friendly = false;
             projectile.hostile = false;

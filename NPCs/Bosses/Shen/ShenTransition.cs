@@ -54,11 +54,11 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (npc.ai[0] == 375)    
             {
-                Main.NewText("Heh…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                Main.NewText("Heh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
             if (npc.ai[0] == 475)
             {
-                Main.NewText("Heheheh…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                Main.NewText("Heheheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
             if (npc.ai[0] == 600)
             {
@@ -78,7 +78,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (npc.ai[0] == 1100)
             {
-                Main.NewText("I have only been using a fraction of my true power...and now...heheheh…", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                Main.NewText("I have only been using a fraction of my true power...and now...heheheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
             if (npc.ai[0] >= 1400)

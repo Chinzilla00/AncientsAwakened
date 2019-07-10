@@ -69,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (npc.ai[0] == 720)
             {
-                Main.NewText("We used to be the same being..! But then a Terrarian wretch like you split our soul in half..! But now...heheheh…", new Color(45, 46, 70));
+                Main.NewText("We used to be the same being..! But then a Terrarian wretch like you split our soul in half..! But now...heheheh...", new Color(45, 46, 70));
             }
 
             if (npc.ai[0] == 900)

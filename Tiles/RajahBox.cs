@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
+using Terraria.ID;
 
 namespace AAMod.Tiles
 {
@@ -20,7 +21,7 @@ namespace AAMod.Tiles
 			disableSmartCursor = true;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Music Box");
-            dustType = 107;
+            dustType = DustID.Gold;
             AddMapEntry(new Color(200, 200, 200), name);
 		}
 

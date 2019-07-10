@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (npc.ai[1] == 180)
                 {
-                    Main.NewText("Split again…", new Color(180, 41, 32));
+                    Main.NewText("Split again...", new Color(180, 41, 32));
                 }
 
                 if (npc.ai[1] == 360)
@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 if (npc.ai[1] == 540)
                 {
                     string Name = Main.netMode != 0 ? "Warriors" : player.name;
-                    Main.NewText(Name + ", you will face our fury again one day...either when we gain enough power again…", new Color(180, 41, 32));
+                    Main.NewText(Name + ", you will face our fury again one day...either when we gain enough power again...", new Color(180, 41, 32));
                 }
 
                 if (npc.ai[1] == 720)

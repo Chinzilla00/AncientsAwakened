@@ -1,13 +1,13 @@
 using Terraria;
 
-namespace AAMod.Items.Boss.Rajah.Supreme
+namespace AAMod.Items.Boss.Rajah
 {
-    public class RajahCache : BaseAAItem
+    public class RajahBag : BaseAAItem
     {
-        
+
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Treasure Cache");
+            DisplayName.SetDefault("Treasure Bag");
             Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
         }
 
@@ -20,7 +20,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
             item.expert = true;
         }
 
-        public override int BossBagNPC => mod.NPCType("SupremeRajah");
+        public override int BossBagNPC => mod.NPCType("Rajah");
 
         public override bool CanRightClick()
         {

@@ -4,7 +4,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
-using System.IO;
 using BaseMod;
 
 namespace AAMod.Projectiles.Rajah
@@ -17,8 +16,8 @@ namespace AAMod.Projectiles.Rajah
 		}
         public override void SetDefaults()
         {
-            projectile.width = 16;
-            projectile.height = 16;
+            projectile.width = 22;
+            projectile.height = 40;
             projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.melee = true;

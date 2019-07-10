@@ -115,20 +115,7 @@ namespace AAMod.Projectiles
 		
 		public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
 		{
-            Player player = Main.player[projectile.owner];
-            float TargetVelocity = 0;
-            if (projectile.ai[0] == 1f)
-            {
-                if (player.Center.X > target.Center.X)
-                {
-                    TargetVelocity = 10 * target.knockBackResist;
-                }
-                else
-                {
-                    TargetVelocity = -10 * target.knockBackResist;
-                }
-            }
-            target.velocity = new Vector2(TargetVelocity, 0);
+            projectile.ai[0] = 1;
         }
 		
 		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)

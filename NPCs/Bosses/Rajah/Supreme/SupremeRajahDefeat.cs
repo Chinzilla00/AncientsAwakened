@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using AAMod.Items.Boss.Rajah;
 using Terraria;
 using Terraria.ModLoader;
 using BaseMod;

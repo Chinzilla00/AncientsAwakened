@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
 			npc.lifeMax = 550000;
             npc.damage = 170;
-            npc.defense = 200;
+            npc.defense = 100;
             npc.width = 78;
             npc.height = 60;
             npc.npcSlots = 0;

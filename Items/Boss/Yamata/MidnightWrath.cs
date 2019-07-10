@@ -24,6 +24,7 @@ namespace AAMod.Items.Boss.Yamata
 			item.shoot = mod.ProjectileType ("MidnightWrath");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
+            item.noMelee = true;
             item.rare = 9; AARarity = 13;
         }
 

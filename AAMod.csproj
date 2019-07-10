@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\references\tModLoader.targets" />
   <PropertyGroup>
@@ -11,18 +11,12 @@
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
   </Target>
   <ItemGroup>
+    <Compile Remove="obj\**" />
     <Compile Remove="Players\**" />
+    <EmbeddedResource Remove="obj\**" />
     <EmbeddedResource Remove="Players\**" />
+    <None Remove="obj\**" />
     <None Remove="Players\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="obj\Debug\net45\AAMod.AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="obj\AAMod.csproj.nuget.dgspec.json" />
-    <Content Include="obj\Debug\AAMod.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\net45\AAMod.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\project.assets.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="AAMod.sln" />
@@ -35,25 +29,10 @@
     <None Include="bin\Debug\Microsoft.Xna.Framework.Xact.dll" />
     <None Include="bin\Debug\ReLogic.dll" />
     <None Include="bin\Debug\Terraria.exe" />
-    <None Include="obj\AAMod.csproj.nuget.cache" />
-    <None Include="obj\AAMod.csproj.nuget.g.props" />
-    <None Include="obj\AAMod.csproj.nuget.g.targets" />
-    <None Include="obj\Debug\AAMod.csproj.CopyComplete" />
-    <None Include="obj\Debug\AAMod.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\Debug\AAMod.csprojAssemblyReference.cache" />
-    <None Include="obj\Debug\AAMod.dll" />
-    <None Include="obj\Debug\AAMod.pdb" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug\net45\AAMod.AssemblyInfoInputs.cache" />
-    <None Include="obj\Debug\net45\AAMod.assets.cache" />
-    <None Include="obj\Debug\net45\AAMod.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\Debug\net45\AAMod.csprojAssemblyReference.cache" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Debug\net45\" />
     <Folder Include="bin\Release\" />
-    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="BaseMod">

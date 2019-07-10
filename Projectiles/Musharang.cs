@@ -1,16 +1,12 @@
-using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
 namespace AAMod.Projectiles
 {
-	public class Musharang : ModProjectile
+    public class Musharang : ModProjectile
 	{
 
         public override void SetDefaults()
@@ -19,8 +15,8 @@ namespace AAMod.Projectiles
             projectile.height = 32;
             projectile.aiStyle = -1;
             projectile.timeLeft = 3600;
-            projectile.friendly = false;
-            projectile.hostile = true;
+            projectile.friendly = true;
+            projectile.hostile = false;
             projectile.tileCollide = true;
             projectile.damage = 1;
             projectile.penetrate = -1;
