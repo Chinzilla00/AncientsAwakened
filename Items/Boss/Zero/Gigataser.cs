@@ -27,15 +27,24 @@ the longer the taser is charged, the more it penetrates");
             item.useTime = 65;
             item.useAnimation = 65; 
             item.useStyle = 5; 
-            item.shoot = mod.ProjectileType("Gigataser");
-            item.channel = true;
+            item.shoot = mod.ProjectileType("ZeroTaze");
             item.knockBack = 12;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 9;
-            item.shootSpeed = 8f;
+            item.shootSpeed = 12f;
             item.crit += 5;
             item.rare = 9;
             AARarity = 13;
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+            }
+            return false;
         }
 
         public override void AddRecipes()

@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Zero
+namespace AAMod.Players.Bosses.Zero
 {
     public class ZArrow : ModProjectile
 	{
@@ -20,7 +20,6 @@ namespace AAMod.NPCs.Bosses.Zero
 			projectile.aiStyle = 1;        
             projectile.hostile = true;
             projectile.ignoreWater = true;
-            projectile.usesLocalNPCImmunity = true;
             projectile.penetrate = 1;
             projectile.arrow = true;
             projectile.extraUpdates = 2;
@@ -41,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 int foundTarget = HomeOnTarget();
                 if (foundTarget != -1)
                 {
-                    NPC n = Main.npc[foundTarget];
+                    Player n = Main.player[foundTarget];
                     Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
                     projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
@@ -50,23 +49,19 @@ namespace AAMod.NPCs.Bosses.Zero
 
         private int HomeOnTarget()
         {
-            const bool homingCanAimAtWetEnemies = true;
             const float homingMaximumRangeInPixels = 400;
 
             int selectedTarget = -1;
-            for (int i = 0; i < Main.maxNPCs; i++)
+            for (int i = 0; i < Main.maxPlayers; i++)
             {
-                NPC n = Main.npc[i];
-                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
-                {
-                    float distance = projectile.Distance(n.Center);
-                    if (distance <= homingMaximumRangeInPixels &&
-                        (
-                            selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) 
-                    )
-                        selectedTarget = i;
-                }
+                Player n = Main.player[i];
+                float distance = projectile.Distance(n.Center);
+                if (distance <= homingMaximumRangeInPixels &&
+                    (
+                        selectedTarget == -1 || //there is no selected target
+                        projectile.Distance(Main.player[selectedTarget].Center) > distance)
+                )
+                    selectedTarget = i;
             }
 
             return selectedTarget;

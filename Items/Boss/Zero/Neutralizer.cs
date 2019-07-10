@@ -45,22 +45,26 @@ namespace AAMod.Items.Boss.Zero
 
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse != 2)
             {
                 item.useTime = 13;
                 item.useAnimation = 13;
+                item.shootSpeed = 8f;
+                item.UseSound = new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound);
             }
             else
             {
                 item.useTime = 23;
                 item.useAnimation = 23;
+                item.shootSpeed = 14;
+                item.UseSound = SoundID.Item5;
             }
             return base.CanUseItem(player);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse != 2)
             {
                 Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType<Projectiles.Zero.Neutralizer>(), damage, knockBack, Main.myPlayer);
                 
