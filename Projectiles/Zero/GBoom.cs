@@ -28,7 +28,7 @@ namespace AAMod.Projectiles.Zero
             if (++projectile.frameCounter >= 5)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 6)
+                if (++projectile.frame >= 5)
                 {
                     projectile.Kill();
 

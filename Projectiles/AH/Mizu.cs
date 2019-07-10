@@ -18,12 +18,13 @@ namespace AAMod.Projectiles.AH
             projectile.width = 28;
             projectile.height = 32;
             projectile.friendly = true;
+            projectile.hostile = false;
             projectile.ranged = true;
             projectile.ignoreWater = true;
             projectile.extraUpdates = 2;
-			projectile.penetrate = 10;
+			projectile.penetrate = 1;
 			projectile.usesLocalNPCImmunity = true;
-			projectile.localNPCHitCooldown = -1;
+			projectile.localNPCHitCooldown = 0;
 			projectile.tileCollide = false;
         }
 

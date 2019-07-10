@@ -92,7 +92,7 @@ namespace AAMod.Projectiles.Rajah
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
             if (projectile.velocity.X != 0f)
             {
-                projectile.spriteDirection = (projectile.direction = Math.Sign(projectile.velocity.X));
+                projectile.spriteDirection = (projectile.direction = -Math.Sign(projectile.velocity.X));
             }
             if (projectile.velocity.Y > 16f)
             {

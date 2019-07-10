@@ -26,7 +26,7 @@ namespace AAMod.Projectiles.Zero
             projectile.alpha = 255;
             projectile.tileCollide = false;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 5;
+            projectile.localNPCHitCooldown = 15;
         }
 
         private float RingRotation = 0f;

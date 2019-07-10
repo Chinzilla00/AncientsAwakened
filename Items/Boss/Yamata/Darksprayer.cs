@@ -33,6 +33,7 @@ Inflicts Moonrazed");
             item.shootSpeed = 20f;
             item.shoot = mod.ProjectileType("Moonblow");
             item.rare = 9; AARarity = 13;
+            item.noMelee = true;
         }
 
         public override Vector2? HoldoutOffset()

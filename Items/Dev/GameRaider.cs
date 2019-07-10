@@ -23,7 +23,7 @@ namespace AAMod.Items.Dev
             item.useTime = 25;
             item.useAnimation = 25;
             item.useStyle = 5;
-            item.noMelee = true; //so the item's animation doesn't do damage
+            item.noMelee = true;
             item.knockBack = 7.5f;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.UseSound = SoundID.Item11;

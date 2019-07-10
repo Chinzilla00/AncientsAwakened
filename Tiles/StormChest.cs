@@ -35,7 +35,7 @@ namespace AAMod.Tiles
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Storm Chest");
 			AddMapEntry(new Color(200, 200, 200), name, MapChestName);
-			dustType = mod.DustType("FulgurChest");
+			dustType = mod.DustType("FulguriteDust");
 			disableSmartCursor = true;
 			adjTiles = new int[] { TileID.Containers };
 			chest = "Storm Chest";
