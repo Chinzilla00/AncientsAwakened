@@ -365,7 +365,7 @@ namespace AAMod.NPCs.Bosses.Raider
                 internalAI[5] = 2;
                 npc.netUpdate = true;
             }
-            else if (internalAI[5] == 2 && Main.netMode != 1))
+            else if (internalAI[5] == 2 && Main.netMode != 1)
             {
                 npc.netUpdate = false;
             }
