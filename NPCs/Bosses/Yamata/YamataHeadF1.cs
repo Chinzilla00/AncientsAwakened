@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             base.SetDefaults();
             npc.lifeMax = 30000;
-            npc.width = 64;
+            npc.width = 250;
             npc.height = 48;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (AAWorld.downedShen)
             {
                 npc.lifeMax = 50000;
-                npc.damage = 1400;
+                npc.damage = 350;
             }
         }
 
@@ -200,7 +200,8 @@ namespace AAMod.NPCs.Bosses.Yamata
                         Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         dir *= 5f;
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), npc.damage, 0f, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), (Main.expertMode ? npc.damage / 4 : npc.damage / 2)
+, 0f, Main.myPlayer);
                     }
                 }
                 else
