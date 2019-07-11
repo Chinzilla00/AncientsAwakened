@@ -40,7 +40,7 @@ namespace AAMod.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            for (int n = 0; n < 3; n++)
+            for (int n = 0; n < 5; n++)
             {
                 float x = projectile.position.X + Main.rand.Next(-400, 400);
                 float y = projectile.position.Y - Main.rand.Next(500, 800);

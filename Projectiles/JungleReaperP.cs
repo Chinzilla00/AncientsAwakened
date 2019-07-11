@@ -10,8 +10,8 @@ namespace AAMod.Projectiles
     {
         public override void SetDefaults()
         {
-            projectile.width = 96;
-            projectile.height = 28;
+            projectile.width = 40;
+            projectile.height = 40;
             projectile.friendly = true;
             projectile.penetrate = -1;                       //this is the projectile penetration
             Main.projFrames[projectile.type] = 1;           //this is projectile frames
@@ -70,6 +70,7 @@ namespace AAMod.Projectiles
         }
         public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {
+            BaseMod.BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile, Color.White, true);
             projectile.frameCounter++;
             if (projectile.frameCounter >= 10)
             {
@@ -78,7 +79,7 @@ namespace AAMod.Projectiles
                 if (projectile.frame > 3) 
                     projectile.frame = 0; 
             }
-            return true;
+            return false;
         }
     }
 }

@@ -16,7 +16,7 @@ the longer the taser is charged, the more it penetrates");
 
         public override void SetDefaults()
         {
-            item.noUseGraphic = true;
+            item.noUseGraphic = false;
             item.damage = 400;
             item.noMelee = true;
             item.ranged = true;
