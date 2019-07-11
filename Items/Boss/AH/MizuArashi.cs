@@ -9,13 +9,13 @@ namespace AAMod.Items.Boss.AH
         public override void SetDefaults()
         {
 
-            item.damage = 105;
+            item.damage = 110;
             item.noMelee = true;
             item.ranged = true;
             item.width = 52;
             item.height = 20;
-            item.useTime = 4;
-            item.reuseDelay = 15;
+            item.useTime = 2;
+            item.reuseDelay = 12;
             item.useAnimation = 12;
             item.useStyle = 5;
             item.shoot = 10;

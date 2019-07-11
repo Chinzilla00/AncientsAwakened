@@ -9,7 +9,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fluffy Fury");
-            Tooltip.SetDefault("Turns wooden arrows into splitting Carrows");
+            Tooltip.SetDefault("Converts arrows into splitting Carrows");
         }
 
         public override void SetDefaults()
@@ -33,13 +33,8 @@ namespace AAMod.Items.Boss.Rajah.Supreme
             AARarity = 14;
         }
 
-
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            if (type == ProjectileID.WoodenArrowFriendly)
-            {
-                type = mod.ProjectileType<Projectiles.Rajah.Carrow>();
-            }
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
             float num117 = 0.314159274f;
             int num118 = Main.rand.Next(2,5);
