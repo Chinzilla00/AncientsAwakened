@@ -14,18 +14,18 @@ namespace AAMod.Items.Boss.Djinn
         public override void SetDefaults()
         {
 
-            item.damage = 26;                        
+            item.damage = 24;                        
             item.magic = true;            
             item.width = 24;
             item.height = 28;
-            item.useTime = 10;
+            item.useTime = 15;
             item.useAnimation = 18;
             item.useStyle = 5;    
             item.noMelee = true;
             item.knockBack = 4;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 3;
-            item.mana = 5;          
+            item.mana = 7;          
             item.UseSound = SoundID.Item21;      
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("SandSpray"); 
