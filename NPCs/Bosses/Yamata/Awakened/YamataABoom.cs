@@ -8,8 +8,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soulsplosion");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 5;     //The recording mode
+            DisplayName.SetDefault("Soulsplosion");     
+            Main.projFrames[projectile.type] = 5;     
         }
 
         public override void SetDefaults()

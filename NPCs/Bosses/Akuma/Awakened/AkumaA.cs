@@ -127,21 +127,38 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 npc.frame.Y = 0;
             }
-            float dist = npc.Distance(player.Center);
-            npc.ai[2]++;
-            if (npc.ai[2] == 300)
+            int Timer = Main.expertMode ? 200 : 300;
+            int TimerMax = Main.expertMode ? 300 : 400;
+            if (Main.netMode != 1)
             {
-                QuoteSaid = false;
+                npc.ai[2]++;
+            }
+
+            if (npc.ai[2] == Timer)
+            {
+                if (Main.netMode != 1)
+                {
+                    QuoteSaid = false;
+                    internalAI[1] += 1;
+                    npc.netUpdate = true;
+                }
                 Roar(roarTimerMax, false);
-                internalAI[1] += 1;
             }
-            if (npc.ai[2] > 300)
+            if (npc.ai[2] > Timer)
             {
-                Attack(npc);
+                if (Main.netMode != 1)
+                {
+                    Attack(npc);
+                }
             }
-            if (npc.ai[2] >= 400)
+
+            if (internalAI[0] >= TimerMax)
             {
-                npc.ai[2] = 0;
+                internalAI[0] = 0;
+            }
+            if (Main.rand.Next(20) == 1 && npc.ai[1] == 0 && npc.ai[2] < 300)
+            {
+                npc.ai[1] = 1;
             }
 
             if (npc.life <= npc.lifeMax / 2 && !spawnAshe)
@@ -149,22 +166,18 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 spawnAshe = true;
                 if (AAWorld.downedAkuma)
                 {
-                    Main.NewText("Ashe? Help your dear old dad with this kid again!", Color.DeepSkyBlue);
-                    Main.NewText("You got it, daddy..!", new Color(102, 20, 48));
+                    BaseUtility.Chat("Ashe? Help your dear old dad with this kid again!", Color.DeepSkyBlue);
+                    BaseUtility.Chat("You got it, daddy..!", new Color(102, 20, 48));
                     AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AsheA"), false, 0, 0);
                 }
                 else
                 {
-                    Main.NewText("Hey! Hands off my papa!", new Color(102, 20, 48));
-                    Main.NewText("Atta-girl..!", Color.DeepSkyBlue);
+                    BaseUtility.Chat("Hey! Hands off my papa!", new Color(102, 20, 48));
+                    BaseUtility.Chat("Atta-girl..!", Color.DeepSkyBlue);
                     AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AsheA"), false, 0, 0);
                 }
             }
 
-            if (dist > 400 & Main.rand.Next(20) == 1 && npc.ai[1] == 0 && npc.ai[2] < 300)
-            {
-                npc.ai[1] = 1;
-            }
             if (npc.ai[1] == 1)
             {
                 attackTimer++;
@@ -172,14 +185,15 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 {
                     for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                     {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), 0f, 0f, 90, default(Color), 2f);
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), 0f, 0f, 90);
                         Main.dust[num935].noGravity = true;
+                        Main.dust[num935].scale = 2f;
                         Main.dust[num935].velocity.Y -= 1f;
                     }
                     if (weakness == false)
                     {
                         weakness = true;
-                        Main.NewText("ACK..! WATER! I LOATHE WATER!!!", Color.DeepSkyBlue);
+                        BaseUtility.Chat("ACK..! WATER! I LOATHE WATER!!!", Color.DeepSkyBlue);
                     }
                 }
                 else if (!npc.HasBuff(BuffID.Wet))
@@ -198,7 +212,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                 {
-                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaADust"), 0f, 0f, 100, default(Color), 2f);
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaADust"), 0f, 0f, 100);
+                    Main.dust[num935].scale = 2f;
                     Main.dust[num935].noGravity = true;
                     Main.dust[num935].noLight = true;
                 }
@@ -256,23 +271,10 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 }
             }
 
-            int minTilePosX = (int)(npc.position.X / 16.0) - 1;
-            int maxTilePosX = (int)((npc.position.X + npc.width) / 16.0) + 2;
-            int minTilePosY = (int)(npc.position.Y / 16.0) - 1;
-            int maxTilePosY = (int)((npc.position.Y + npc.height) / 16.0) + 2;
-            if (minTilePosX < 0)
-                minTilePosX = 0;
-            if (maxTilePosX > Main.maxTilesX)
-                maxTilePosX = Main.maxTilesX;
-            if (minTilePosY < 0)
-                minTilePosY = 0;
-            if (maxTilePosY > Main.maxTilesY)
-                maxTilePosY = Main.maxTilesY;
-
             bool collision = true;
 
-            float speed = 15f;
-            float acceleration = 0.13f;
+            float speed = 17f;
+            float acceleration = 0.11f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
             float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
@@ -361,7 +363,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             if (!Main.dayTime)
             {
-                Main.NewText("Nighttime won't save you from me this time, kid! The day is born anew!", Color.DeepSkyBlue);
+                BaseUtility.Chat("Nighttime won't save you from me this time, kid! The day is born anew!", Color.DeepSkyBlue);
                 Main.dayTime = true;
                 Main.time = 0;
             }
@@ -370,14 +372,13 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 if (Loludided == false)
                 {
-                    Main.NewText("You just got burned, kid.", new Color(180, 41, 32));
+                    BaseUtility.Chat("You just got burned, kid.", new Color(180, 41, 32));
                     Loludided = true;
                 }
                 npc.velocity.Y = npc.velocity.Y + 1f;
                 if (npc.position.Y > Main.rockLayer * 16.0)
                 {
                     npc.velocity.Y = npc.velocity.Y + 1f;
-                    speed = 30f;
                 }
                 if (npc.position.Y > Main.rockLayer * 16.0)
                 {
@@ -411,7 +412,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DraconianRune"));
                 }
-                Main.NewText(AAWorld.downedAkuma ? "Heh, not too shabby this time kid. I'm impressed. Here. Take your prize." : "GRAH..! HOW!? HOW COULD I LOSE TO A MERE MORTAL TERRARIAN?! Hmpf...fine kid, you win, fair and square. Here's your reward.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                BaseUtility.Chat(AAWorld.downedAkuma ? "Heh, not too shabby this time kid. I'm impressed. Here. Take your prize." : "GRAH..! HOW!? HOW COULD I LOSE TO A MERE MORTAL TERRARIAN?! Hmpf...fine kid, you win, fair and square. Here's your reward.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                 AAWorld.downedAkuma = true;
                 if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
@@ -432,7 +433,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 npc.DropBossBags();
                 return;
             }
-            Main.NewText("Nice. You cheated. Now come fight me in expert mode like a real man.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            BaseUtility.Chat("Nice. You cheated. Now come fight me in expert mode like a real man.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             return;
         }
 
@@ -451,17 +452,18 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 if (!QuoteSaid)
                 {
-                    Main.NewText((!Quote1) ? "Sky's fallin' again! On your toes!" : "Down comes the flames of fury again!", Color.DeepSkyBlue);
+                    BaseUtility.Chat((!Quote1) ? "Sky's fallin' again! On your toes!" : "Down comes the flames of fury again!", Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote1 = true;
                 }
-                if (npc.ai[2] == 320 || npc.ai[2] == 340 || npc.ai[2] == 360 || npc.ai[2] == 380)
+                if (npc.ai[2] == 220 || npc.ai[2] == 240 || npc.ai[2] == 260 || npc.ai[2] == 280)
                 {
-                    int Fireballs = Main.expertMode ? 10 : 7;
+                    int Fireballs = Main.expertMode ? 5 : 4;
                     for (int Loops = 0; Loops < Fireballs; Loops++)
                     {
                         AkumaAttacks.Dragonfire(npc, mod, true);
                     }
+                    npc.netUpdate = true;
                 }
             }
 
@@ -469,24 +471,23 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 if (!QuoteSaid)
                 {
-                    Main.NewText((!Quote1) ? "You underestimate the artillery of a dragon, kid!" : "Flames don't give in till the end, kid!", Color.DeepSkyBlue);
+                    BaseUtility.Chat((!Quote1) ? "You underestimate the artillery of a dragon, kid!" : "Flames don't give in till the end, kid!", Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote1 = true;
                 }
-                if (npc.ai[2] == 350)
+                int Fireballs = Main.expertMode ? 3 : 5;
+                float spread = 70f * 0.0174f;
+                float baseSpeed = (float)Math.Sqrt((npc.velocity.X * npc.velocity.X) + (npc.velocity.Y * npc.velocity.Y));
+                double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - .1d;
+                double deltaAngle = spread / 6f;
+                double offsetAngle;
+                for (int i = 0; i < Fireballs; i++)
                 {
-                    int Fireballs = Main.expertMode ? 5 : 3;
-                    float spread = 45f * 0.0174f;
-                    float baseSpeed = (float)Math.Sqrt((npc.velocity.X * npc.velocity.X) + (npc.velocity.Y * npc.velocity.Y));
-                    double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - .1d;
-                    double deltaAngle = spread / 6f;
-                    double offsetAngle;
-                    for (int i = 0; i < Fireballs; i++)
-                    {
-                        offsetAngle = startAngle + (deltaAngle * i);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, mod.ProjectileType<AkumaABomb>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
-                    }
+                    offsetAngle = startAngle + (deltaAngle * i);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, mod.ProjectileType<AkumaABomb>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
                 }
+                internalAI[0] = 0;
+                npc.netUpdate = true;
             }
 
             if (internalAI[1] == 3 || internalAI[1] == 8 || internalAI[1] == 11 || internalAI[1] == 17 || internalAI[1] == 23)
@@ -494,43 +495,38 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 int Fireballs = Main.expertMode ? 12 : 14;
                 if (!QuoteSaid)
                 {
-                    Main.NewText((!Quote1) ? "Heads up! Volcano's eruptin' kid!" : "INCOMING!", Color.DeepSkyBlue);
+                    BaseUtility.Chat((!Quote1) ? "Heads up! Volcano's eruptin' kid!" : "INCOMING!", Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote1 = true;
                 }
-                if (npc.ai[2] == 330 || npc.ai[2] == 360 || npc.ai[2] == 390)
+                if (npc.ai[2] == 220 || npc.ai[2] == 240 || npc.ai[2] == 260 || npc.ai[2] == 280)
                 {
                     for (int Loops = 0; Loops < Fireballs; Loops++)
                     {
                         AkumaAttacks.Eruption(npc, mod);
                     }
+                    npc.netUpdate = true;
                 }
             }
 
             if (internalAI[1] == 4 || internalAI[1] == 10 || internalAI[1] == 13 || internalAI[1] == 20 || internalAI[1] == 25)
             {
-                if (npc.ai[2] == 350)
-                {
-                    if (NPC.CountNPCS(mod.NPCType<AncientLung>()) < (Main.expertMode ? 3 : 4))
-                    {
-                        AkumaAttacks.SpawnLung(player, mod, true);
-                        MinionCount += 1;
-                    }
-                }
+                AkumaAttacks.SpawnLung(player, mod, false);
+                internalAI[0] = 0;
+                npc.netUpdate = true;
             }
             
             if (internalAI[1] == 5 || internalAI[1] == 9 || internalAI[1] == 14 || internalAI[1] == 19 || internalAI[1] == 22)
             {
                 if (!QuoteSaid)
                 {
-                    Main.NewText((!Quote1) ? "Hey Kid? Like Fireworks? No? Too Bad!" : "Here comes the grand finale, kid!", Color.DeepSkyBlue);
+                    BaseUtility.Chat((!Quote1) ? "Hey Kid? Like Fireworks? No? Too Bad!" : "Here comes the grand finale, kid!", Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote1 = true;
                 }
-                if (npc.ai[2] == 350)
-                {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AFireProjHostile>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
-                }
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AFireProjHostile>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
+                internalAI[0] = 0;
+                npc.netUpdate = true;
             }
 
             if (internalAI[1] > 25)
@@ -553,7 +549,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             AkumaTex = Main.npcTexture[npc.type];
             if (npc.type == mod.NPCType<AkumaA>())
             {
-                if (npc.ai[1] == 1 || npc.ai[2] >= 400)
+                if (npc.ai[1] == 1 || npc.ai[2] >= 200)
                 {
                     AkumaTex = mod.GetTexture("NPCs/Bosses/Akuma/Awakened/AkumaA1");
                 }
@@ -569,9 +565,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             Texture2D glowTex3 = mod.GetTexture("Glowmasks/AkumaABody_Glow");
             Texture2D glowTex4 = mod.GetTexture("Glowmasks/AkumaABody1_Glow");
             Texture2D glowTex5 = mod.GetTexture("Glowmasks/AkumaATail_Glow");
-
-            Vector2 Drawpos = npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY);
-            int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
+            int shader;
             if (npc.ai[1] == 1 || npc.ai[2] >= 470 || Main.npc[(int)npc.ai[3]].ai[1] == 1 || Main.npc[(int)npc.ai[3]].ai[2] >= 500)
             {
                 shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
@@ -581,7 +575,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
             }
 
-            Texture2D HeadGlow = (npc.ai[1] == 1 || npc.ai[2] >= 500) ? glowTex1 : glowTex;
+            Texture2D HeadGlow = (npc.ai[1] == 1 || npc.ai[2] >= 200) ? glowTex1 : glowTex;
 
             Texture2D myGlowTex = (npc.type == mod.NPCType<AkumaA>() ? HeadGlow : npc.type == mod.NPCType<AkumaAArms>() ? glowTex2 : npc.type == mod.NPCType<AkumaABody>() ? glowTex3 : npc.type == mod.NPCType<AkumaABody1>() ? glowTex4 : glowTex5);
             BaseDrawing.DrawTexture(spriteBatch, AkumaTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 3, npc.frame, npc.GetAlpha(drawColor), true);
@@ -606,26 +600,10 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 Main.dust[dust2].scale *= 1.3f;
                 Main.dust[dust2].fadeIn = 1f;
                 Main.dust[dust2].noGravity = true;
-
             }
-
-            
         }
 
         public bool spawnAshe = false;
-
-        public void SpawnBoss(Player player, string name, string displayName)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-300f, 300f, (float)Main.rand.NextDouble()), 2000);
-                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
-            }
-        }
-
 
         public int roarTimer = 0;
         public int roarTimerMax = 120;

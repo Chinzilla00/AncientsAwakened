@@ -8,8 +8,8 @@ namespace AAMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Chaos Blast");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 5;     //The recording mode
+            DisplayName.SetDefault("Chaos Blast");     
+            Main.projFrames[projectile.type] = 5;     
         }
 
         public override void SetDefaults()

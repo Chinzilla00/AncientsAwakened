@@ -121,6 +121,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
+            damage = 0;
             return false;
         }
 
@@ -478,7 +479,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public void AIMovementNormal(float movementScalar = 1f, float playerDistance = -1f)
         {
             bool playerTooFar = playerDistance > playerTooFarDist;
-			YamataBody(npc, ref npc.ai, true, 0.2f, 2.5f, 3f, 0.04f, 1.5f, 3);
+			YamataBody(npc, ref npc.ai, true, 0.2f, 3.5f, 6f, 0.04f, 1.5f, 3);
             if (playerTooFar) npc.position += (playerTarget.position - playerTarget.oldPosition);
             npc.rotation = 0f;
         }

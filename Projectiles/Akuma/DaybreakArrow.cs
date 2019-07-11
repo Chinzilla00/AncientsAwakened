@@ -25,7 +25,7 @@ namespace AAMod.Projectiles.Akuma
             }
             projectile.glowMask = customGlowMask;
 
-            DisplayName.SetDefault("Daybreak Arrow");    //The recording mode
+            DisplayName.SetDefault("Daybreak Arrow");    
 		}
 
 		public override void SetDefaults()

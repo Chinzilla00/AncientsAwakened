@@ -25,8 +25,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 			projectile.timeLeft = 600;
 			projectile.alpha = 20;   
 			projectile.ignoreWater = true;
-			projectile.tileCollide = true;
-			aiType = ProjectileID.WoodenArrowFriendly;           
+			projectile.tileCollide = true;           
             
 		}
 

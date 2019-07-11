@@ -8,8 +8,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Shockwave");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 6;     //The recording mode
+            DisplayName.SetDefault("Shockwave");     
+            Main.projFrames[projectile.type] = 6;     
         }
 
         public override void SetDefaults()

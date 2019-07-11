@@ -26,8 +26,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 			projectile.alpha = 20;   
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;
-			aiType = ProjectileID.WoodenArrowFriendly;           
-            
 		}
 
         public override Color? GetAlpha(Color lightColor)

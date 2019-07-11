@@ -8,17 +8,22 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 	{
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.ThrowingKnife);
 			projectile.width = 14;
 			projectile.height = 34;
 			projectile.friendly = false;
             projectile.hostile = true;
 			projectile.timeLeft = 1200;
 			projectile.penetrate = 1;
-			aiType = ProjectileID.ShadowFlameKnife;
+            projectile.extraUpdates = 1;
+            projectile.aiStyle = -1;
 		}
-		
-		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+
+        public override void AI()
+        {
+            BaseMod.BaseAI.AIThrownWeapon(projectile, ref projectile.ai, false, 40);
+        }
+
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
 		{
 			// For going through platforms and such, javelins use a tad smaller size
 			width = height = 10; // notice we set the width to the height, the height to 10. so both are 10
@@ -30,12 +35,9 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 			DisplayName.SetDefault("Abyssal Kunai");
 		}
 
-        bool HitPlayer = false;
-
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(mod.BuffType<Buffs.HydraToxin>(), 180);
-            HitPlayer = true;
             projectile.netUpdate = true;
         }
 
@@ -43,7 +45,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 		{
 			for (int k = 0; k < 5; k++)
 			{
-				int dust = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.CthulhuAuraDust>(), projectile.oldVelocity.X * 0.1f, projectile.oldVelocity.Y * 0.1f);
+			     Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.CthulhuAuraDust>(), projectile.oldVelocity.X * 0.1f, projectile.oldVelocity.Y * 0.1f);
 			}
 			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 0);
 			

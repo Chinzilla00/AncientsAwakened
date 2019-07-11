@@ -8,8 +8,8 @@ namespace AAMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Acid");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 7;     //The recording mode
+            DisplayName.SetDefault("Acid");     
+            Main.projFrames[projectile.type] = 7;     
         }
 
         public override void SetDefaults()

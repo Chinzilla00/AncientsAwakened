@@ -8,8 +8,8 @@ namespace AAMod.Projectiles
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Moo Boom");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 7;     //The recording mode
+            DisplayName.SetDefault("Moo Boom");     
+            Main.projFrames[projectile.type] = 7;     
         }
 
         public override void SetDefaults()

@@ -12,8 +12,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ashe Akuma");     //The English name of the projectile
-            Main.npcFrameCount[npc.type] = 17;     //The recording mode
+            DisplayName.SetDefault("Ashe Akuma");     
+            Main.npcFrameCount[npc.type] = 17;     
         }
 
         public override void SetDefaults()

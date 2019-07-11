@@ -9,8 +9,8 @@ namespace AAMod.Projectiles.Yamata
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soul Bomb");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 4;     //The recording mode
+            DisplayName.SetDefault("Soul Bomb");     
+            Main.projFrames[projectile.type] = 4;     
 		}
 
         public override Color? GetAlpha(Color lightColor)
@@ -20,15 +20,15 @@ namespace AAMod.Projectiles.Yamata
 
         public override void SetDefaults()
 		{
-			projectile.width = 14;               //The width of projectile hitbox
-			projectile.height = 14;              //The height of projectile hitbox
-			projectile.aiStyle = 1;             //The ai style of the projectile, please reference the source code of Terraria
-			projectile.friendly = true;         //Can the projectile deal damage to enemies?
+			projectile.width = 14;               
+			projectile.height = 14;              
+			projectile.aiStyle = 1;             
+			projectile.friendly = true;         
 			projectile.hostile = false;         //Can the projectile deal damage to the player?
-			projectile.ranged = true;           //Is the projectile shoot by a ranged weapon?
-			projectile.penetrate = 1;           //How many monsters the projectile can penetrate. (OnTileCollide below also decrements penetrate for bounces as well)
-			projectile.timeLeft = 600;          //The live time for the projectile (60 = 1 second, so 600 is 10 seconds)
-			projectile.alpha = 20;              //How much light emit around the projectile
+			projectile.ranged = true;           
+			projectile.penetrate = 1;           
+			projectile.timeLeft = 600;          
+			projectile.alpha = 20;              
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;
             projectile.aiStyle = 0;

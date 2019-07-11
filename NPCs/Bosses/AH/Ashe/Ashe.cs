@@ -536,16 +536,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             int VortexType = mod.NPCType("AsheOrbiter");
             if (internalAI[0] == 1)
             {
-                int speedX = 10;
-                int speedY = 10;
+                int speedX = 14;
+                int speedY = 14;
                 float spread = 75f * 0.0174f;
                 float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
                 double startAngle = Math.Atan2(speedX, speedY) - .1d;
                 double deltaAngle = spread / 6f;
-                double offsetAngle;
                 for (int i = 0; i < 5; i++)
                 {
-                    offsetAngle = startAngle + (deltaAngle * i);
+                    double offsetAngle = startAngle + (deltaAngle * i);
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AsheShot>(), npc.damage, 4);
                 }
             }
@@ -807,7 +806,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public void MeleeMovement(Vector2 point)
         {
-            if (MeleeSpeed < 16f)
+            if (MeleeSpeed < 25f)
             {
                 MeleeSpeed += .5f;
             }
@@ -817,18 +816,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             if (length < MeleeSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / MeleeSpeed);
-            }
-            if (length < 200f)
-            {
-                MeleeSpeed *= 0.5f;
-            }
-            if (length < 100f)
-            {
-                MeleeSpeed *= 0.5f;
-            }
-            if (length < 50f)
-            {
-                MeleeSpeed *= 0.5f;
             }
             npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
             npc.velocity *= MeleeSpeed;

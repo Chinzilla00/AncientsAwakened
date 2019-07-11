@@ -9,8 +9,8 @@ namespace AAMod.Items.Armor.TrueNights
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cursed Fireball");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 7;     //The recording mode
+            DisplayName.SetDefault("Cursed Fireball");     
+            Main.projFrames[projectile.type] = 7;     
         }
 
         public override void SetDefaults()

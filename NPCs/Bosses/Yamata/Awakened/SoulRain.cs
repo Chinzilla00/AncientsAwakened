@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
     public class SoulRain : ModProjectile
     {
         public override void SetStaticDefaults()
-        {      //The recording mode
+        {      
         }
 
         public override void SetDefaults()
@@ -24,6 +24,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             projectile.scale = 1f;
             projectile.timeLeft = 100;
             projectile.ignoreWater = true;
+            projectile.extraUpdates = 0;
         }
 
         public override void AI()

@@ -8,8 +8,8 @@ namespace AAMod.Projectiles.AH
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Magic Blast");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 7;     //The recording mode
+            DisplayName.SetDefault("Magic Blast");     
+            Main.projFrames[projectile.type] = 7;     
         }
 
         public override void SetDefaults()

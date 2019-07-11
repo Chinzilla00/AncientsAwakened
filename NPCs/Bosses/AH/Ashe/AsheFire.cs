@@ -23,6 +23,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             projectile.penetrate = 1;
             projectile.alpha = 60;
             projectile.timeLeft = 180;
+            projectile.extraUpdates = 1;
         }
 
         public override Color? GetAlpha(Color lightColor)

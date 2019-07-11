@@ -13,8 +13,6 @@ namespace AAMod.NPCs.Bosses.Akuma
 	{
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AncientLung"; } }
 
-        public bool loludided;
-        private bool weakness;
 
         public override void SetStaticDefaults()
 		{
@@ -54,13 +52,9 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.buffImmune[103] = false;
             npc.alpha = 255;
         }
-        private int speed = 8;
 
         public override bool PreAI()
         {
-            Player player = Main.player[npc.target];
-
-            
             
             AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaDust"), 2, 12);
 
@@ -124,7 +118,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             bool collision = true;
 
-            float speed = 12f;
+            float speed = 15f;
             float acceleration = 0.09f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);

@@ -8,8 +8,8 @@ namespace AAMod.Projectiles.Rajah
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Excalihare");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 7;     //The recording mode
+            DisplayName.SetDefault("Excalihare");     
+            Main.projFrames[projectile.type] = 7;     
         }
 
         public override void SetDefaults()

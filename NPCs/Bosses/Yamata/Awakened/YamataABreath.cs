@@ -32,10 +32,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void AI()
         {
-            if (projectile.timeLeft > 60)
-            {
-                projectile.timeLeft = 60;
-            }
             if (projectile.ai[0] > 7f)
             {
                 float num296 = 1f;
