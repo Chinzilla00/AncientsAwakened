@@ -18,7 +18,7 @@ namespace AAMod.Projectiles.Yamata
             projectile.height = 10;
             projectile.friendly = true;
             projectile.ranged = true;
-            projectile.penetrate = 2;
+            projectile.penetrate = -1;
             projectile.aiStyle = -1;
             projectile.timeLeft = 600;
             projectile.extraUpdates = 1;

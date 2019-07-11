@@ -22,6 +22,7 @@ namespace AAMod.Items.Throwing
             item.shoot = mod.ProjectileType("HellBallP");
 			item.width = 56;
             item.height = 56;
+            item.noMelee = true;
         }
 
         public override void SetStaticDefaults()

@@ -26,7 +26,8 @@ namespace AAMod.Items.Throwing
 			item.UseSound = SoundID.Item19;
 			item.autoReuse = true;
 			item.crit = 10;
-		}
+            item.noMelee = true;
+        }
 
 		public override void SetStaticDefaults()
 		{

@@ -26,7 +26,7 @@ namespace AAMod.Items.Magic
             item.UseSound = SoundID.Item21;            //this is the sound when you use the item
             item.autoReuse = true;
             item.shoot = mod.ProjectileType ("ElectricitySpellP");  //this make the item shoot your projectile
-            item.shootSpeed = 11f;    //projectile speed when shoot
+            item.shootSpeed = 11f;     
         }   
 
     public override void SetStaticDefaults()

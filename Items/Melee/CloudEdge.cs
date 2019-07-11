@@ -22,7 +22,7 @@ namespace AAMod.Items.Melee   //where is located
             item.autoReuse = true;   
             item.useTurn = true;
             item.shoot = mod.ProjectileType("CloudEdgeP");
-            item.shootSpeed = 12f;                //projectile speed                 
+            item.shootSpeed = 12f;                                 
         }
 
     public override void SetStaticDefaults()

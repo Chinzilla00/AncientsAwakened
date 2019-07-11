@@ -24,7 +24,8 @@ namespace AAMod.Items.Throwing
 			item.shoot = mod.ProjectileType ("TechneciumBoomerangP");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-		}
+            item.noMelee = true;
+        }
 
 		public override void SetStaticDefaults()
 		{
