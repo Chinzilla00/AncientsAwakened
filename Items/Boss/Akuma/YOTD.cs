@@ -21,14 +21,14 @@ namespace AAMod.Items.Boss.Akuma
             item.crit = 20;
             item.useStyle = 5;
             item.autoReuse = true;
-            item.useAnimation = 18;
-            item.useTime = 18;
+            item.useAnimation = 25;
+            item.useTime = 25;
             item.useAmmo = AmmoID.Rocket;
             item.width = 50;
             item.height = 20;
             item.shoot = 134;
             item.UseSound = SoundID.Item11;
-            item.damage = 155;
+            item.damage = 300;
             item.shootSpeed = 10f;
             item.noMelee = true;
             item.value = Item.sellPrice(0, 30, 0, 0);
