@@ -816,7 +816,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if (npc.ai[0] == 9f) //Discordian Storm (Awakened Only)
             {
-                ffloat compareX = (npc.Center - player.Center).X;
+                float compareX = (npc.Center - player.Center).X;
                 if (compareX == 0) compareX = 1;
                 Vector2 playerPoint = player.Center + new Vector2(Math.Sign(compareX) * 500, -200);
                 MoveToPoint(playerPoint);
