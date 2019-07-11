@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             base.SetDefaults();
             npc.lifeMax = 30000;
-            npc.width = 250;
+            npc.width = 64;
             npc.height = 48;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
