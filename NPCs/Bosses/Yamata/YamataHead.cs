@@ -272,7 +272,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         {
                             if (Main.netMode != 1)
                             {
-                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 3f, PlayerPosY * 3f, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), npc.damage, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 2f, PlayerPosY * 2f, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), npc.damage, 0f, Main.myPlayer);
                             }
                         }
                         
