@@ -400,7 +400,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.damage = 160;
                 if (npc.ai[2] == 60 || npc.ai[2] == 90 || npc.ai[2] == 120 || npc.ai[2] == 150 || npc.ai[2] == 180)
                 {
-                    float Speed = 16f;  //projectile speed
+                    float Speed = 16f;  
                     Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
                     int damage = 85;  //projectile damage
                     int type = mod.ProjectileType("ZeroBeam1");  //put your projectile

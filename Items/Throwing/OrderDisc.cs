@@ -22,7 +22,8 @@ namespace AAMod.Items.Throwing
 			item.shoot = mod.ProjectileType("OrderDiscP");
 			item.width = 46;
 			item.height = 46;
-		}
+            item.noMelee = true;
+        }
 
 		public override void SetStaticDefaults()
 		{

@@ -1,93 +1,194 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using System;
 
 namespace AAMod.Projectiles
 {
     public class GlacierBreaker : ModProjectile
     {
-		public bool stop = false;
-		
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Glacierbreaker");
+		}
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.BlueMoon);
-            projectile.penetrate = -1;  
-            projectile.width = 26;
-            projectile.height = 26;
-			projectile.tileCollide = false;
-			projectile.scale = 1.5f;
+            projectile.width = 20;
+            projectile.height = 20;
+            projectile.friendly = true;
+            projectile.penetrate = -1; 
+            projectile.melee = true;
+            projectile.knockBack = 0;
         }
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            ProjectileDraw.DrawChain(projectile.whoAmI, Main.player[projectile.owner].MountedCenter,
-                "AAMod/Projectiles/GlacierBreaker_Chain");
-            ProjectileDraw.DrawAroundOrigin(projectile.whoAmI, lightColor);
-            return false;
-        }
-
-		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		
+		public override void AI()
 		{
-			if (!stop)
-			{
-				Player player = Main.player[projectile.owner];
-				Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-				float num75 = 10f;
-				float num82 = projectile.Center.X - vector2.X;
-				float num83 = projectile.Center.Y - vector2.Y;
-				float num84 = (float)Math.Sqrt(num82 * num82 + num83 * num83);
-				float num85 = num84;
-				if ((float.IsNaN(num82) && float.IsNaN(num83)) || (num82 == 0f && num83 == 0f))
-				{
-					num82 = projectile.direction;
-					num83 = 0f;
-					num84 = 11f;
-				}
-				else
-				{
-					num84 = 11f / num84;
-				}
-				num82 *= num84;
-				num83 *= num84;
-				int num117 = 6;
-				for (int num118 = 0; num118 < num117; num118++)
-				{
-					vector2 = new Vector2(player.position.X + player.width * 0.5f + Main.rand.Next(201) * -(float)player.direction + (projectile.Center.X - player.position.X), projectile.Center.Y - 600f);
-					vector2.X = (vector2.X + player.Center.X) / 2f + Main.rand.Next(-350, 351);
-					vector2.Y -= 100 * num118;
-					num82 = projectile.Center.X - vector2.X;
-					num83 = projectile.Center.Y - vector2.Y;
-					float ai2 = num83 + vector2.Y;
-					if (num83 < 0f)
-					{
-						num83 *= -1f;
-					}
-					if (num83 < 20f)
-					{
-						num83 = 20f;
-					}
-					num84 = (float)Math.Sqrt(num82 * num82 + num83 * num83);
-					num84 = num75 / num84;
-					num82 *= num84;
-					num83 *= num84;
-					Vector2 vector11 = new Vector2(num82, num83) / 2f;
-					int p = Projectile.NewProjectile(vector2.X, vector2.Y, vector11.X*3f, vector11.Y*3f, 337, projectile.damage/3, 0f, player.whoAmI);
-					Main.projectile[p].usesLocalNPCImmunity = true;
-					Main.projectile[p].localNPCHitCooldown = 1;
-					Main.projectile[p].tileCollide = false;
-					Main.projectile[p].magic = false;
-					Main.projectile[p].melee = true;
-				}
-				stop = true;
-			}
+            if (Main.rand.NextFloat() < 1f)
+            {
+                Dust dust1;
+                Dust dust2;
+                Vector2 position = projectile.position;
+                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.SnowDust>(), 0, 0, 0)];
+                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.SnowDust>(), 0, 0, 0)];
+                dust1.noGravity = true;
+                dust2.noGravity = true;
+            }
+            if (projectile.timeLeft == 120)
+            {
+                projectile.ai[0] = 1f;
+            }
+
+            if (Main.player[projectile.owner].dead)
+            {
+                projectile.Kill();
+                return;
+            }
+
+            Main.player[projectile.owner].itemAnimation = 5;
+            Main.player[projectile.owner].itemTime = 5;
+
+            if (projectile.alpha == 0)
+            {
+                if (projectile.position.X + (projectile.width / 2) > Main.player[projectile.owner].position.X + (Main.player[projectile.owner].width / 2))
+                {
+                    Main.player[projectile.owner].ChangeDir(1);
+                }
+                else
+                {
+                    Main.player[projectile.owner].ChangeDir(-1);
+                }
+            }
+            Vector2 vector14 = new Vector2(projectile.position.X + (projectile.width * 0.5f), projectile.position.Y + (projectile.height * 0.5f));
+            float num166 = Main.player[projectile.owner].position.X + (Main.player[projectile.owner].width / 2) - vector14.X;
+            float num167 = Main.player[projectile.owner].position.Y + (Main.player[projectile.owner].height / 2) - vector14.Y;
+            float num168 = (float)Math.Sqrt((num166 * num166) + (num167 * num167));
+            if (projectile.ai[0] == 0f)
+            {
+                if (num168 > 700f)
+                {
+                    projectile.ai[0] = 1f;
+                }
+                else if (num168 > 500f)
+                {
+                    projectile.ai[0] = 1f;
+                }
+                projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 2.355f;
+                projectile.ai[1] += 1f;
+                if (projectile.ai[1] > 5f)
+                {
+                    projectile.alpha = 0;
+                }
+                if (projectile.ai[1] > 8f)
+                {
+                    projectile.ai[1] = 8f;
+                }
+                if (projectile.ai[1] >= 10f)
+                {
+                    projectile.ai[1] = 15f;
+                    projectile.velocity.Y = projectile.velocity.Y + 0.3f;
+                }
+                if (projectile.velocity.X < 0f)
+                {
+                    projectile.spriteDirection = -1;
+                }
+                else
+                {
+                    projectile.spriteDirection = 1;
+                }
+            }
+            else if (projectile.ai[0] == 1f)
+            {
+                projectile.tileCollide = false;
+                projectile.rotation = (float)Math.Atan2(num167, num166) - 1.57f;
+                float num169 = 30f;
+
+                if (num168 < 50f)
+                {
+                    projectile.Kill();
+                }
+                num168 = num169 / num168;
+                num166 *= num168;
+                num167 *= num168;
+                projectile.velocity.X = num166;
+                projectile.velocity.Y = num167;
+                if (projectile.velocity.X < 0f)
+                {
+                    projectile.spriteDirection = 1;
+                }
+                else
+                {
+                    projectile.spriteDirection = -1;
+                }
+
+            }
+            if ((int)projectile.ai[1] % 8 == 0 && projectile.owner == Main.myPlayer && Main.rand.Next(50) == 0) //higher # means later on in the attack
+            {
+                Vector2 vector54 = Main.player[projectile.owner].Center - projectile.Center;
+                Vector2 vector55 = vector54 * -1f;
+                vector55.Normalize();
+                vector55 *= Main.rand.Next(45, 65) * 0.1f;
+                vector55 = vector55.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X, vector55.Y, mod.ProjectileType<AsgardianIce>(), projectile.damage, projectile.knockBack, projectile.owner, -10f);
+            }
+        }
+		
+		public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
+		{
+            Player player = Main.player[projectile.owner];
+            float TargetVelocity = 0;
+            target.velocity = new Vector2(TargetVelocity, 0);
+        }
+		
+		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+        {
+            width = 16;
+            height = 16;
+            return true;
+        }
+		
+		public override bool OnTileCollide (Vector2 oldVelocity)
+		{
+			projectile.ai[0] = 1f;
+			return false;
 		}
 		
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Glacier Breaker");
+ 
+        // chain voodoo
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        { 
+            Texture2D texture = ModContent.GetTexture("AAMod/Projectiles/GlacierBreaker_Chain");
+ 
+            Vector2 position = projectile.Center;
+            Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;
+            Rectangle? sourceRectangle = new Rectangle?();
+            Vector2 origin = new Vector2(texture.Width * 0.5f, texture.Height * 0.5f);
+            float num1 = texture.Height;
+            Vector2 vector24 = mountedCenter - position;
+            float rotation = (float)Math.Atan2(vector24.Y, vector24.X) - 1.57f;
+            bool flag = true;
+            if (float.IsNaN(position.X) && float.IsNaN(position.Y))
+                flag = false;
+            if (float.IsNaN(vector24.X) && float.IsNaN(vector24.Y))
+                flag = false;
+            while (flag)
+            {
+                if (vector24.Length() < num1 + 1.0)
+                {
+                    flag = false;
+                }
+                else
+                {
+                    Vector2 vector21 = vector24;
+                    vector21.Normalize();
+                    position += vector21 * num1;
+                    vector24 = mountedCenter - position;
+                    Color color2 = Lighting.GetColor((int)position.X / 16, (int)(position.Y / 16.0));
+                    color2 = projectile.GetAlpha(color2);
+                    Main.spriteBatch.Draw(texture, position - Main.screenPosition, sourceRectangle, Color.White, rotation, origin, 1.35f, SpriteEffects.None, 0.0f);
+                }
+            }
+            return true;
         }
     }
 }

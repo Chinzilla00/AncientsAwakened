@@ -25,7 +25,7 @@ namespace AAMod.Items.Magic
             item.UseSound = SoundID.Item21;            //this is the sound when you use the item
             item.autoReuse = false;
             item.shoot = mod.ProjectileType ("Cloud");  //this make the item shoot your projectile
-            item.shootSpeed = 15f;    //projectile speed when shoot
+            item.shootSpeed = 15f;     
         }
 
         public override void SetStaticDefaults()

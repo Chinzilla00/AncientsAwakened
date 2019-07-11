@@ -25,7 +25,7 @@ namespace AAMod.Items.Magic
             item.useTime = 6;
             item.useAnimation = 18;
             item.shoot = mod.ProjectileType("Venom");
-            item.shootSpeed = 9f;   //projectile speed when shoot
+            item.shootSpeed = 9f;    
         }   
 
         public override void SetStaticDefaults()

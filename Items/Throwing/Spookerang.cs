@@ -21,6 +21,7 @@ namespace AAMod.Items.Throwing
             item.shoot = mod.ProjectileType("SpookerangP");
 			item.width = 54;
             item.height = 54;
+            item.noMelee = true;
         }
 
     public override void SetStaticDefaults()

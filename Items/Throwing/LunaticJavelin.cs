@@ -8,27 +8,27 @@ namespace AAMod.Items.Throwing
         public override void SetDefaults()
         {
 
-            item.damage = 120;           //this is the item damage
-            item.melee = true;             //this make the item do throwing damage
+            item.damage = 120;           
+            item.melee = true;             
             item.noMelee = true;
             item.width = 20;
             item.height = 20;
-            item.useTime = 8;       //this is how fast you use the item
-            item.useAnimation = 8;   //this is how fast the animation when the item is used
+            item.useTime = 8;       
+            item.useAnimation = 8;   
             item.useStyle = 1;      
             item.knockBack = 6;
             item.value = 1;
             item.rare = 8;
-            item.reuseDelay = 0;    //this is the item delay
+            item.reuseDelay = 0;    
             item.UseSound = SoundID.Item1;
-            item.autoReuse = true;       //this make the item auto reuse
-            item.shoot = mod.ProjectileType("LJavelinP");  //javelin projectile
-            item.shootSpeed = 18f;     //projectile speed
+            item.autoReuse = true;       
+            item.shoot = mod.ProjectileType("LJavelinP");  
+            item.shootSpeed = 18f;     
             item.useTurn = true;
-            item.maxStack = 999;       //this is the max stack of this item
-            item.consumable = true;  //this make the item consumable when used
+            item.maxStack = 999;       
+            item.consumable = true;  
             item.noUseGraphic = true;
-                       
+            item.noMelee = true;
         }
 
     public override void SetStaticDefaults()

@@ -25,7 +25,7 @@ namespace AAMod.Items.Magic
             item.UseSound = SoundID.Item21;            //this is the sound when you use the item
             item.autoReuse = true;
             item.shoot = mod.ProjectileType ("DragonP");  //this make the item shoot your projectile
-            item.shootSpeed = 13f;    //projectile speed when shoot
+            item.shootSpeed = 13f;     
         }   
 
     public override void SetStaticDefaults()

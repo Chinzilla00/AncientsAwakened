@@ -21,7 +21,8 @@ namespace AAMod.Items.Throwing
 			item.shoot = mod.ProjectileType("DracorangP");
 			item.width = 22;
 			item.height = 32;
-		}
+            item.noMelee = true;
+        }
 
 		public override void SetStaticDefaults()
 		{
