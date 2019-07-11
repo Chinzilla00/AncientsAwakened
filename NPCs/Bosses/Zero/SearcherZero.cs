@@ -22,9 +22,9 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 5, 50);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
-            npc.lifeMax = 600;
-            npc.defense = 30;
-            npc.damage = 75;
+            npc.lifeMax = 800;
+            npc.defense = 100;
+            npc.damage = 55;
             npc.HitSound = new LegacySoundStyle(3, 4, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0.5f;

@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             base.SetDefaults();
             npc.lifeMax = 35000;
-            npc.damage = 170;
+            npc.damage = 68;
             npc.width = 46;
             npc.height = 46;
 			isAwakened = true;

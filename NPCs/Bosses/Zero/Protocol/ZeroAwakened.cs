@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public override void SetDefaults()
         {
             npc.lifeMax = 600000;
-            npc.damage = 190;
+            npc.damage = 67;
             npc.defense = 70;
             npc.knockBackResist = 0f;
             npc.width = 170;
