@@ -13,7 +13,8 @@ namespace AAMod.Items.Boss.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Neutralizer");
-            Tooltip.SetDefault(@"Left click to fire a bouncing laser that gets more powerful as it bounces off walls");
+            Tooltip.SetDefault(@"Left click to fire a bouncing laser that gets more powerful as it bounces off walls
+Right click to fire normal arrows");
             
         }
 

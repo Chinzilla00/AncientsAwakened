@@ -19,12 +19,12 @@ namespace AAMod.Items.Boss.Akuma
 
         public override void SetDefaults()
         {
-            item.damage = 600;
+            item.damage = 400;
             item.noMelee = true;
             item.ranged = true;
             item.width = 64;
             item.height = 46;
-            item.useTime = 2;
+            item.useTime = 5;
             item.useAnimation = 10;
             item.useStyle = 5;
             item.useAmmo = AmmoID.Gel;

@@ -72,7 +72,7 @@ Super Skullshot EX");
                 item.damage = 340;
                 item.useAnimation = 27;
                 item.useTime = 9;
-                item.reuseDelay = 30;
+                item.reuseDelay = 16;
                 item.shoot = mod.ProjectileType<Projectiles.Hellshot>();
             }
             else
