@@ -15,8 +15,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
     	
         public override void SetDefaults()
         {
-            projectile.width = 50;
-            projectile.height = 50;
+            projectile.width = 34;
+            projectile.height = 90;
             projectile.hostile = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
