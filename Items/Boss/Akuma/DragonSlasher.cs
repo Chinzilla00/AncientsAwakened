@@ -41,12 +41,12 @@ Inflicts Daybroken");
 
         public override void SetDefaults()
         {
-            item.damage = 450;
+            item.damage = 350;
             item.melee = true;
             item.width = 42;
             item.height = 52;
-            item.useTime = 50;
-            item.useAnimation = 50;     
+            item.useTime = 30;
+            item.useAnimation = 30;     
             item.useStyle = 3;
             item.knockBack = 20f;
             item.value = Item.sellPrice(0, 30, 0, 0);
