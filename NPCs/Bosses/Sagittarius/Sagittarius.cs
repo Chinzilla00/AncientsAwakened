@@ -208,12 +208,12 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
             if (internalAI[3] == 1f)
             {
-                Main.NewText("target(s) neutralized. returning to stealth mode.", Color.PaleVioletRed);
+                BaseMod.BaseUtility.Chat("target(s) neutralized. returning to stealth mode.", Color.PaleVioletRed);
                 internalAI[3] = 3f;
             }
             else if (internalAI[0] == 2f)
             {
-                Main.NewText("target(s) lost. returning to stealth mode.", Color.PaleVioletRed);
+                BaseMod.BaseUtility.Chat("target(s) lost. returning to stealth mode.", Color.PaleVioletRed);
                 internalAI[3] = 3f;
             }
             else if (internalAI[3] == 3f)

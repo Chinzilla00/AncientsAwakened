@@ -124,8 +124,8 @@ Non-Consumable");
 
         public override bool UseItem(Player player)
         {
-            Main.NewText("Shen Doragon has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            Main.NewText("Skipping to the fun part, I see? I like you, child.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+            BaseMod.BaseUtility.Chat("Shen Doragon has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+            BaseMod.BaseUtility.Chat("Skipping to the fun part, I see? I like you, child.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenA"), false, 0, 0);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ShenRoar"), player.position);
             return true;

@@ -16,13 +16,14 @@ namespace AAMod.Items.Boss.AH
         {
             item.damage = 140;
             item.noMelee = true;
-            item.ranged = true;
+            item.magic = true;
             item.width = 64;
             item.height = 46;
             item.useTime = 2;
             item.useAnimation = 15;
             item.useStyle = 5;
             item.shoot = mod.ProjectileType("FuryFlame");
+            item.mana = 4;
             item.knockBack = 0;
             item.value = Item.sellPrice(0, 25, 0, 0);
             item.rare = 9;

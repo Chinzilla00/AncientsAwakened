@@ -149,14 +149,14 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 spawnAshe = true;
                 if (AAWorld.downedAkuma)
                 {
-                    Main.NewText("Ashe? Help your dear old dad with this kid again!", Color.DeepSkyBlue);
-                    Main.NewText("You got it, daddy..!", new Color(102, 20, 48));
+                    BaseMod.BaseUtility.Chat("Ashe? Help your dear old dad with this kid again!", Color.DeepSkyBlue);
+                    BaseMod.BaseUtility.Chat("You got it, daddy..!", new Color(102, 20, 48));
                     AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AsheA"), false, 0, 0);
                 }
                 else
                 {
-                    Main.NewText("Hey! Hands off my papa!", new Color(102, 20, 48));
-                    Main.NewText("Atta-girl..!", Color.DeepSkyBlue);
+                    BaseMod.BaseUtility.Chat("Hey! Hands off my papa!", new Color(102, 20, 48));
+                    BaseMod.BaseUtility.Chat("Atta-girl..!", Color.DeepSkyBlue);
                     AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AsheA"), false, 0, 0);
                 }
             }
@@ -179,7 +179,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     if (weakness == false)
                     {
                         weakness = true;
-                        Main.NewText("ACK..! WATER! I LOATHE WATER!!!", Color.DeepSkyBlue);
+                        BaseMod.BaseUtility.Chat("ACK..! WATER! I LOATHE WATER!!!", Color.DeepSkyBlue);
                     }
                 }
                 else if (!npc.HasBuff(BuffID.Wet))
@@ -361,7 +361,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             if (!Main.dayTime)
             {
-                Main.NewText("Nighttime won't save you from me this time, kid! The day is born anew!", Color.DeepSkyBlue);
+                BaseMod.BaseUtility.Chat("Nighttime won't save you from me this time, kid! The day is born anew!", Color.DeepSkyBlue);
                 Main.dayTime = true;
                 Main.time = 0;
             }
@@ -370,7 +370,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 if (Loludided == false)
                 {
-                    Main.NewText("You just got burned, kid.", new Color(180, 41, 32));
+                    BaseMod.BaseUtility.Chat("You just got burned, kid.", new Color(180, 41, 32));
                     Loludided = true;
                 }
                 npc.velocity.Y = npc.velocity.Y + 1f;
@@ -411,7 +411,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DraconianRune"));
                 }
-                Main.NewText(AAWorld.downedAkuma ? "Heh, not too shabby this time kid. I'm impressed. Here. Take your prize." : "GRAH..! HOW!? HOW COULD I LOSE TO A MERE MORTAL TERRARIAN?! Hmpf...fine kid, you win, fair and square. Here's your reward.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                BaseMod.BaseUtility.Chat(AAWorld.downedAkuma ? "Heh, not too shabby this time kid. I'm impressed. Here. Take your prize." : "GRAH..! HOW!? HOW COULD I LOSE TO A MERE MORTAL TERRARIAN?! Hmpf...fine kid, you win, fair and square. Here's your reward.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                 AAWorld.downedAkuma = true;
                 if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
@@ -432,7 +432,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 npc.DropBossBags();
                 return;
             }
-            Main.NewText("Nice. You cheated. Now come fight me in expert mode like a real man.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            BaseMod.BaseUtility.Chat("Nice. You cheated. Now come fight me in expert mode like a real man.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             return;
         }
 
@@ -451,7 +451,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 if (!QuoteSaid)
                 {
-                    Main.NewText((!Quote1) ? "Sky's fallin' again! On your toes!" : "Down comes the flames of fury again!", Color.DeepSkyBlue);
+                    BaseMod.BaseUtility.Chat((!Quote1) ? "Sky's fallin' again! On your toes!" : "Down comes the flames of fury again!", Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote1 = true;
                 }
@@ -469,7 +469,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 if (!QuoteSaid)
                 {
-                    Main.NewText((!Quote1) ? "You underestimate the artillery of a dragon, kid!" : "Flames don't give in till the end, kid!", Color.DeepSkyBlue);
+                    BaseMod.BaseUtility.Chat((!Quote1) ? "You underestimate the artillery of a dragon, kid!" : "Flames don't give in till the end, kid!", Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote1 = true;
                 }
@@ -494,7 +494,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 int Fireballs = Main.expertMode ? 12 : 14;
                 if (!QuoteSaid)
                 {
-                    Main.NewText((!Quote1) ? "Heads up! Volcano's eruptin' kid!" : "INCOMING!", Color.DeepSkyBlue);
+                    BaseMod.BaseUtility.Chat((!Quote1) ? "Heads up! Volcano's eruptin' kid!" : "INCOMING!", Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote1 = true;
                 }
@@ -523,7 +523,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 if (!QuoteSaid)
                 {
-                    Main.NewText((!Quote1) ? "Hey Kid? Like Fireworks? No? Too Bad!" : "Here comes the grand finale, kid!", Color.DeepSkyBlue);
+                    BaseMod.BaseUtility.Chat((!Quote1) ? "Hey Kid? Like Fireworks? No? Too Bad!" : "Here comes the grand finale, kid!", Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote1 = true;
                 }

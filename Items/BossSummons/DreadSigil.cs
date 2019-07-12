@@ -58,11 +58,11 @@ Non-Consumable");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"), player.position);
             if (!AAWorld.downedYamata)
             {
-                Main.NewText("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
+                BaseMod.BaseUtility.Chat("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
             }
             if (AAWorld.downedYamata)
             {
-                Main.NewText("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
+                BaseMod.BaseUtility.Chat("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
             }
 
             return true;
@@ -123,7 +123,7 @@ Non-Consumable");
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)
                     {
-                        if (Main.netMode == 0) { Main.NewText(npcName + " have awoken!", 175, 75, 255, false); }
+                        if (Main.netMode == 0) { BaseMod.BaseUtility.Chat(npcName + " have awoken!", 175, 75, 255, false); }
                         else
                         if (Main.netMode == 2)
                         {
@@ -132,7 +132,7 @@ Non-Consumable");
                     }
                     else
                     {
-                        if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                        if (Main.netMode == 0) { BaseMod.BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
                         else
                         if (Main.netMode == 2)
                         {

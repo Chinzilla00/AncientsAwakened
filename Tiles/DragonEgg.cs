@@ -76,12 +76,12 @@ namespace AAMod.Tiles
             if (AAWorld.SmashDragonEgg == 2)
             {
                 AAWorld.SmashDragonEgg--;
-                Main.NewText("The sound of the egg breaking echoes through the volcano...", Color.DarkOrange);
+                BaseMod.BaseUtility.Chat("The sound of the egg breaking echoes through the volcano...", Color.DarkOrange);
             }
             else if (AAWorld.SmashDragonEgg == 1)
             {
                 AAWorld.SmashDragonEgg--;
-                Main.NewText("You hear a distant roar...", Color.DarkOrange);
+                BaseMod.BaseUtility.Chat("You hear a distant roar...", Color.DarkOrange);
             }
             else
             {

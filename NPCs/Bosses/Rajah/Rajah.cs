@@ -102,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 if (damage > npc.lifeMax / 8)
                 {
-                    Main.NewText("JUSTICE CANNOT BE CHEATED", 107, 137, 179);
+                    BaseMod.BaseUtility.Chat("JUSTICE CANNOT BE CHEATED", 107, 137, 179);
                     damage = 0;
                     npc.damage = 9999;
                     npc.defense = 99999;
@@ -201,7 +201,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     if (isSupreme)
                     {
-                        Main.NewText("And stay down.", 107, 137, 179);
+                        BaseMod.BaseUtility.Chat("And stay down.", 107, 137, 179);
                         if (Main.netMode != 1)
                         {
                             Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<SupremeRajahBookIt>(), 100, 0, Main.myPlayer);
@@ -227,7 +227,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 npc.TargetClosest(true);
                 if (Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 5000)
                 {
-                    Main.NewText("Coward.", 107, 137, 179);
+                    BaseMod.BaseUtility.Chat("Coward.", 107, 137, 179);
                     if (Main.netMode != 1)
                     {
                         if (isSupreme)

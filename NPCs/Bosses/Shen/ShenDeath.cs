@@ -38,58 +38,58 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (npc.ai[1] == 180)
                 {
-                    Main.NewText("Split again...", new Color(180, 41, 32));
+                    BaseMod.BaseUtility.Chat("Split again...", new Color(180, 41, 32));
                 }
 
                 if (npc.ai[1] == 360)
                 {
-                    Main.NewText("This is YOUR fault you insolent worm..! I knew we should have been more aggressive but NOOOOOOOOO..! YOU said we could squash them without even trying!", new Color(45, 46, 70));
+                    BaseMod.BaseUtility.Chat("This is YOUR fault you insolent worm..! I knew we should have been more aggressive but NOOOOOOOOO..! YOU said we could squash them without even trying!", new Color(45, 46, 70));
                 }
 
                 if (npc.ai[1] == 540)
                 {
                     string Name = Main.netMode != 0 ? "Warriors" : player.name;
-                    Main.NewText(Name + ", you will face our fury again one day...either when we gain enough power again...", new Color(180, 41, 32));
+                    BaseMod.BaseUtility.Chat(Name + ", you will face our fury again one day...either when we gain enough power again...", new Color(180, 41, 32));
                 }
 
                 if (npc.ai[1] == 720)
                 {
-                    Main.NewText("...or you decide to use that Sigil again..!", new Color(45, 46, 70));
+                    BaseMod.BaseUtility.Chat("...or you decide to use that Sigil again..!", new Color(45, 46, 70));
                 }
 
                 if (npc.ai[1] >= 900)
                 {
-                    Main.NewText("Your choice, child.", new Color(180, 41, 32));
-                    Main.NewText("Your choice, child.", new Color(45, 46, 70));
+                    BaseMod.BaseUtility.Chat("Your choice, child.", new Color(180, 41, 32));
+                    BaseMod.BaseUtility.Chat("Your choice, child.", new Color(45, 46, 70));
                     npc.active = false;
                 }
                 return;
             }
             if (npc.ai[1] == 180)
             {
-                Main.NewText("YOU IMBECILE! WE LOST! AGAAAAAAAAAAAAIN!!!", new Color(45, 46, 70));
+                BaseMod.BaseUtility.Chat("YOU IMBECILE! WE LOST! AGAAAAAAAAAAAAIN!!!", new Color(45, 46, 70));
             }
 
             if (npc.ai[1] == 360)
             {
-                Main.NewText("Rgh, my head...", new Color(180, 41, 32));
+                BaseMod.BaseUtility.Chat("Rgh, my head...", new Color(180, 41, 32));
             }
 
             if (npc.ai[1] == 540)
             {
                 string Name = Main.netMode != 0 ? "BUNCH OF CLOWNS" : player.Male ? "BOY" : "GIRL";
-                Main.NewText("And YOU, " + Name + "! NEXT TIME I'M GONNA TEAR YOUR HEADS OFF!!!", new Color(45, 46, 70));
+                BaseMod.BaseUtility.Chat("And YOU, " + Name + "! NEXT TIME I'M GONNA TEAR YOUR HEADS OFF!!!", new Color(45, 46, 70));
             }
 
             if (npc.ai[1] == 720)
             {
-                Main.NewText("And trust us, kid.", new Color(180, 41, 32));
+                BaseMod.BaseUtility.Chat("And trust us, kid.", new Color(180, 41, 32));
             }
 
             if (npc.ai[1] >= 900)
             {
-                Main.NewText("There's always a next time.", new Color(180, 41, 32));
-                Main.NewText("There's always a next time.", new Color(45, 46, 70));
+                BaseMod.BaseUtility.Chat("There's always a next time.", new Color(180, 41, 32));
+                BaseMod.BaseUtility.Chat("There's always a next time.", new Color(45, 46, 70));
                 npc.active = false;
             }
         }

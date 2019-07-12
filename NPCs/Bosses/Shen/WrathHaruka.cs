@@ -89,11 +89,11 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             if (DontSayDeathLine)
             {
-                Main.NewText("Father! Rrgh..! Next time we meet, I'll strike you down!", new Color(72, 78, 117));
+                BaseMod.BaseUtility.Chat("Father! Rrgh..! Next time we meet, I'll strike you down!", new Color(72, 78, 117));
             }
             else
             {
-                Main.NewText("Ngh...sorry father...I can't carry on...", new Color(72, 78, 117));
+                BaseMod.BaseUtility.Chat("Ngh...sorry father...I can't carry on...", new Color(72, 78, 117));
             }
             NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<WrathHarukaVanish>());
             npc.value = 0f;

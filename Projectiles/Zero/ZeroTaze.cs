@@ -27,7 +27,7 @@ namespace AAMod.Projectiles.Zero
             projectile.extraUpdates = 4;
             projectile.timeLeft = 120 * (projectile.extraUpdates + 1);
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 5;
+            projectile.localNPCHitCooldown = 0;
 
         }
 

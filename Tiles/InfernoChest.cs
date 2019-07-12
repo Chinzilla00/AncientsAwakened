@@ -21,7 +21,8 @@ namespace AAMod.Tiles
 			Main.tileFrameImportant[Type] = true;
 			Main.tileNoAttach[Type] = true;
 			Main.tileValue[Type] = 500;
-			TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
+            TileID.Sets.HasOutlines[Type] = true;
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style2x2);
 			TileObjectData.newTile.Origin = new Point16(0, 1);
 			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
 			TileObjectData.newTile.HookCheck = new PlacementHook(new Func<int, int, int, int, int, int>(Chest.FindEmptyChest), -1, 0, true);
@@ -34,203 +35,208 @@ namespace AAMod.Tiles
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Inferno Chest");
 			AddMapEntry(new Color(0, 0, 255), name);
-			dustType = 206;
+            name = CreateMapEntryName(Name + "_Locked");
+            dustType = 206;
 			disableSmartCursor = true;
 			adjTiles = new int[] { TileID.Containers };
 			chest = "Inferno Chest";
-		}
+            chestDrop = mod.ItemType("InfernoChest");
+        }
 
-		public string MapChestName(string name, int i, int j)
-		{
-			int left = i;
-			int top = j;
-			Tile tile = Main.tile[i, j];
-			if (tile.frameX % 36 != 0)
-			{
-				left--;
-			}
-			if (tile.frameY != 0)
-			{
-				top--;
-			}
-			int chest = Chest.FindChest(left, top);
-			if (Main.chest[chest].name == "")
-			{
-				return name;
-			}
-			else
-			{
-				return name + ": " + Main.chest[chest].name;
-			}
-		}
+        public override ushort GetMapOption(int i, int j) => (ushort)(Main.tile[i, j].frameX / 36);
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
-		{
-			num = 1;
-		}
+        public override bool HasSmartInteract() => true;
 
-		public override bool CanKillTile(int i, int j, ref bool blockDamaged)
-		{
-			Tile tile = Main.tile[i, j];
-			int left = i;
-			int top = j;
-			if (tile.frameX % 36 != 0)
-			{
-				left--;
-			}
-			if (tile.frameY != 0)
-			{
-				top--;
-			}
-			return Chest.CanDestroyChest(left, top);
-		}
+        public override bool IsLockedChest(int i, int j) => Main.tile[i, j].frameX / 36 == 1;
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-		{
-			Item.NewItem(i * 16, j * 16, 32, 32, mod.ItemType("InfernoChest"));
-			Chest.DestroyChest(i, j);
-		}
+        public override bool UnlockChest(int i, int j, ref short frameXAdjustment, ref int dustType, ref bool manual)
+        {
+            dustType = this.dustType;
+            return true;
+        }
 
-		public override void RightClick(int i, int j)
-		{
-			Player player = Main.player[Main.myPlayer];
-            Tile tile2 = Main.tile[i, j];
-            if (tile2.frameX == 72 || tile2.frameX == 90)
+        public string MapChestName(string name, int i, int j)
+        {
+            int left = i;
+            int top = j;
+            Tile tile = Main.tile[i, j];
+            if (tile.frameX % 36 != 0)
             {
-                for (int num66 = 0; num66 < 58; num66++)
+                left--;
+            }
+            if (tile.frameY != 0)
+            {
+                top--;
+            }
+            int chest = Chest.FindChest(left, top);
+            if (Main.chest[chest].name == "")
+            {
+                return name;
+            }
+            else
+            {
+                return name + ": " + Main.chest[chest].name;
+            }
+        }
+
+        public override void NumDust(int i, int j, bool fail, ref int num)
+        {
+            num = 1;
+        }
+
+        public override bool CanKillTile(int i, int j, ref bool blockDamaged)
+        {
+            Tile tile = Main.tile[i, j];
+            int left = i;
+            int top = j;
+            if (tile.frameX % 36 != 0)
+            {
+                left--;
+            }
+            if (tile.frameY != 0)
+            {
+                top--;
+            }
+            return Chest.CanDestroyChest(left, top);
+        }
+
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        {
+            Item.NewItem(i * 16, j * 16, 32, 32, mod.ItemType("InfernoChest"));
+            Chest.DestroyChest(i, j);
+        }
+
+        public override void RightClick(int i, int j)
+        {
+            Player player = Main.player[Main.myPlayer];
+            Tile tile = Main.tile[i, j];
+            Main.mouseRightRelease = false;
+            int left = i;
+            int top = j;
+            if (tile.frameX % 36 != 0)
+            {
+                left--;
+            }
+            if (tile.frameY != 0)
+            {
+                top--;
+            }
+            if (player.sign >= 0)
+            {
+                Main.PlaySound(SoundID.MenuClose);
+                player.sign = -1;
+                Main.editSign = false;
+                Main.npcChatText = "";
+            }
+            if (Main.editChest)
+            {
+                Main.PlaySound(SoundID.MenuTick);
+                Main.editChest = false;
+                Main.npcChatText = "";
+            }
+            if (player.editedChestName)
+            {
+                NetMessage.SendData(33, -1, -1, NetworkText.FromLiteral(Main.chest[player.chest].name), player.chest, 1f, 0f, 0f, 0, 0, 0);
+                player.editedChestName = false;
+            }
+            bool isLocked = IsLockedChest(left, top);
+            if (Main.netMode == 1 && !isLocked)
+            {
+                if (left == player.chestX && top == player.chestY && player.chest >= 0)
                 {
-                    if (player.inventory[num66].type == mod.ItemType("InfernoKey") && player.inventory[num66].stack > 0 && NPC.downedPlantBoss)
+                    player.chest = -1;
+                    Recipe.FindRecipes();
+                    Main.PlaySound(SoundID.MenuClose);
+                }
+                else
+                {
+                    NetMessage.SendData(31, -1, -1, null, left, (float)top, 0f, 0f, 0, 0, 0);
+                    Main.stackSplit = 600;
+                }
+            }
+            else
+            {
+                if (isLocked)
+                {
+                    int key = mod.ItemType<Items.Usable.InfernoKey>();
+                    if (player.ConsumeItem(key) && Chest.Unlock(left, top))
                     {
-                        player.inventory[num66].stack--;
-                        int left = i;
-                        int top = j;
-                        if (tile2.frameX % 36 != 0)
+                        if (Main.netMode == 1)
                         {
-                            left--;
+                            NetMessage.SendData(MessageID.Unlock, -1, -1, null, player.whoAmI, 1f, (float)left, (float)top);
                         }
-                        if (tile2.frameY != 0)
+                    }
+                }
+                else
+                {
+                    int chest = Chest.FindChest(left, top);
+                    if (chest >= 0)
+                    {
+                        Main.stackSplit = 600;
+                        if (chest == player.chest)
                         {
-                            top--;
+                            player.chest = -1;
+                            Main.PlaySound(SoundID.MenuClose);
                         }
-                        Main.tile[left, top].frameX = 0;
-                        Main.tile[left, top + 1].frameX = 0;
-                        Main.tile[left + 1, top].frameX = 18;
-                        Main.tile[left + 1, top + 1].frameX = 18;
-                        NetMessage.SendTileSquare(-1, left, top, 2, TileChangeType.None);
-                        Main.PlaySound(22, left * 16, top * 16);
+                        else
+                        {
+                            player.chest = chest;
+                            Main.playerInventory = true;
+                            Main.recBigList = false;
+                            player.chestX = left;
+                            player.chestY = top;
+                            Main.PlaySound(player.chest < 0 ? SoundID.MenuOpen : SoundID.MenuTick);
+                        }
+                        Recipe.FindRecipes();
                     }
                 }
             }
-			Tile tile = Main.tile[i, j];
-			if (tile.frameX != 72 && tile.frameX != 90)
-			{
-				Main.mouseRightRelease = false;
-				int left = i;
-				int top = j;
-				if (tile.frameX % 36 != 0)
-				{
-					left--;
-				}
-				if (tile.frameY != 0)
-				{
-					top--;
-				}
-				if (player.sign >= 0)
-				{
-					Main.PlaySound(11, -1, -1, 1);
-					player.sign = -1;
-					Main.editSign = false;
-					Main.npcChatText = "";
-				}
-				if (Main.editChest)
-				{
-					Main.PlaySound(12, -1, -1, 1);
-					Main.editChest = false;
-					Main.npcChatText = "";
-				}
-				if (player.editedChestName)
-				{
-					NetMessage.SendData(33, -1, -1, NetworkText.FromLiteral(Main.chest[player.chest].name), player.chest, 1f, 0f, 0f, 0, 0, 0);
-					player.editedChestName = false;
-				}
-				if (Main.netMode == 1)
-				{
-					if (left == player.chestX && top == player.chestY && player.chest >= 0)
-					{
-						player.chest = -1;
-						Recipe.FindRecipes();
-						Main.PlaySound(11, -1, -1, 1);
-					}
-					else
-					{
-						NetMessage.SendData(31, -1, -1, null, left, top, 0f, 0f, 0, 0, 0);
-						Main.stackSplit = 600;
-					}
-				}
-				else
-				{
-					int chest = Chest.FindChest(left, top);
-					if (chest >= 0)
-					{
-						Main.stackSplit = 600;
-						if (chest == player.chest)
-						{
-							player.chest = -1;
-							Main.PlaySound(11, -1, -1, 1);
-						}
-						else
-						{
-							player.chest = chest;
-							Main.playerInventory = true;
-							Main.recBigList = false;
-							player.chestX = left;
-							player.chestY = top;
-							Main.PlaySound(player.chest < 0 ? 10 : 12, -1, -1, 1);
-						}
-						Recipe.FindRecipes();
-					}
-				}
-			}
-		}
+        }
 
-		public override void MouseOver(int i, int j)
-		{
-			Player player = Main.player[Main.myPlayer];
-			Tile tile = Main.tile[i, j];
-			int left = i;
-			int top = j;
-			if (tile.frameX % 36 != 0)
-			{
-				left--;
-			}
-			if (tile.frameY != 0)
-			{
-				top--;
-			}
-			int chest = Chest.FindChest(left, top);
-			player.showItemIcon2 = -1;
-            player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Inferno Chest";
-            if (player.showItemIconText == "Inferno Chest")
+        public override void MouseOver(int i, int j)
+        {
+            Player player = Main.LocalPlayer;
+            Tile tile = Main.tile[i, j];
+            int left = i;
+            int top = j;
+            if (tile.frameX % 36 != 0)
             {
-                if (tile.frameX == 72 || tile.frameX == 90)
+                left--;
+            }
+            if (tile.frameY != 0)
+            {
+                top--;
+            }
+            int chest = Chest.FindChest(left, top);
+            player.showItemIcon2 = -1;
+            if (chest < 0)
+            {
+                player.showItemIconText = Language.GetTextValue("LegacyChestType.0");
+            }
+            else
+            {
+                player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Inferno Chest";
+                if (player.showItemIconText == "Inferno Chest")
                 {
-                    player.showItemIcon2 = mod.ItemType("InfernoKey");
+                    player.showItemIcon2 = mod.ItemType("InfernoChest");
+                    if (Main.tile[left, top].frameX / 36 == 1)
+                        player.showItemIcon2 = mod.ItemType<Items.Usable.InfernoKey>();
                     player.showItemIconText = "";
                 }
             }
             player.noThrow = 2;
-			player.showItemIcon = true;
-		}
+            player.showItemIcon = true;
+        }
 
-		public override void MouseOverFar(int i, int j)
-		{
-			MouseOver(i, j);
-			Player player = Main.player[Main.myPlayer];
-			if (player.showItemIconText == "")
-			{
-				player.showItemIcon = false;
-				player.showItemIcon2 = 0;
-			}
-		}
-	}
+        public override void MouseOverFar(int i, int j)
+        {
+            MouseOver(i, j);
+            Player player = Main.LocalPlayer;
+            if (player.showItemIconText == "")
+            {
+                player.showItemIcon = false;
+                player.showItemIcon2 = 0;
+            }
+        }
+    }
 }

@@ -590,20 +590,20 @@ namespace AAMod
                 int bunnyKills = NPC.killCount[Item.NPCtoBanner(NPCID.Bunny)];
                 if (bunnyKills % 100 == 0 && bunnyKills < 1000)
                 {
-                    Main.NewText("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
+                    BaseMod.BaseUtility.Chat("Those who slaughter the innocent must be PUNISHED!", 107, 137, 179);
                     Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
                     SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
 
                 }
                 if (bunnyKills % 100 == 0 && bunnyKills >= 1000)
                 {
-                    Main.NewText("YOU HAVE COMMITTED AN UNFORGIVABLE SIN! I SHALL WIPE YOU FROM THIS MORTAL REALM! PREPARE FOR TRUE PAIN AND PUNISHMENT, " + player.name.ToUpper() + "!", 107, 137, 179);
+                    BaseMod.BaseUtility.Chat("YOU HAVE COMMITTED AN UNFORGIVABLE SIN! I SHALL WIPE YOU FROM THIS MORTAL REALM! PREPARE FOR TRUE PAIN AND PUNISHMENT, " + player.name.ToUpper() + "!", 107, 137, 179);
                     Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
                     SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
                 }
                 if (bunnyKills % 50 == 0 && bunnyKills % 100 != 0)
                 {
-                    Main.NewText("The eyes of a wrathful creature gaze upon you...", 107, 137, 179);
+                    BaseMod.BaseUtility.Chat("The eyes of a wrathful creature gaze upon you...", 107, 137, 179);
                 }
             }
         }
@@ -612,7 +612,7 @@ namespace AAMod
         {
             if (damage > npc.lifeMax / 8)
             {
-                Main.NewText(Text, TextColor);
+                BaseMod.BaseUtility.Chat(Text, TextColor);
                 damage = 0;
             }
         }
@@ -866,7 +866,7 @@ namespace AAMod
             }
             catch (Exception e)
             {
-                Main.NewText(e.StackTrace);
+                BaseMod.BaseUtility.Chat(e.StackTrace);
             }
         }
 
@@ -1135,7 +1135,7 @@ namespace AAMod
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)
                     {
-                        if (Main.netMode == 0) { Main.NewText(npcName + " have awoken!", 175, 75, 255, false); }
+                        if (Main.netMode == 0) { BaseMod.BaseUtility.Chat(npcName + " have awoken!", 175, 75, 255, false); }
                         else
                         if (Main.netMode == 2)
                         {
@@ -1144,7 +1144,7 @@ namespace AAMod
                     }
                     else
                     {
-                        if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                        if (Main.netMode == 0) { BaseMod.BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
                         else
                         if (Main.netMode == 2)
                         {

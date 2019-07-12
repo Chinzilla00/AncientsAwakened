@@ -659,7 +659,7 @@ namespace AAMod
                                 PlacementHeight++;
                                 if (WorldGen.SolidTile(PlaceHere, PlacementHeight))
                                 {
-                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("InfernoChest"), false, 2);
+                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("InfernoChest"), false, 1);
                                     if (PlacementSuccess >= 0)
                                     {
                                         Chest chest = Main.chest[PlacementSuccess];
@@ -715,7 +715,7 @@ namespace AAMod
                                 PlacementHeight++;
                                 if (WorldGen.SolidTile(PlaceHere, PlacementHeight))
                                 {
-                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("MireChest"), false, 2);
+                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("MireChest"), false, 1);
                                     if (PlacementSuccess >= 0)
                                     {
                                         Chest chest = Main.chest[PlacementSuccess];
@@ -772,7 +772,7 @@ namespace AAMod
                                 PlacementHeight++;
                                 if (WorldGen.SolidTile(PlaceHere, PlacementHeight))
                                 {
-                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("DoomsdayChest"), false, 2);
+                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("DoomsdayChest"), false, 1);
                                     if (PlacementSuccess >= 0)
                                     {
                                         Chest chest = Main.chest[PlacementSuccess];
@@ -1220,7 +1220,7 @@ namespace AAMod
                 if (RadiumOre == false)
                 {
                     RadiumOre = true;
-                    Main.NewText("The gift of the celestials sparkle in the atmosphere...", Color.Violet);
+                    BaseMod.BaseUtility.Chat("The gift of the celestials sparkle in the atmosphere...", Color.Violet);
                     for (int i = 0; i < Main.maxTilesX / 25; ++i)
                     {
                         int X = WorldGen.genRand.Next(50, (Main.maxTilesX / 10) * 9); //X position, centre.
@@ -1245,12 +1245,12 @@ namespace AAMod
                 if (Ancients == false)
                 {
                     Ancients = true;
-                    Main.NewText("The Ancients have Awakened!", Color.ForestGreen);
+                    BaseMod.BaseUtility.Chat("The Ancients have Awakened!", Color.ForestGreen);
                 }
                 if (Luminite == false)
                 {
                     Luminite = true;
-                    Main.NewText("The Essence of the Moon Lord sparkles in the caves below...", Color.DarkSeaGreen);
+                    BaseMod.BaseUtility.Chat("The Essence of the Moon Lord sparkles in the caves below...", Color.DarkSeaGreen);
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 9), WorldGen.genRand.Next(6, 10), (ushort)mod.TileType("LuminiteOre"));
@@ -1263,7 +1263,7 @@ namespace AAMod
                 if (HallowedOre == false)
                 {
                     HallowedOre = true;
-                    Main.NewText("The caves shine with light for a brief moment...", Color.Goldenrod);
+                    BaseMod.BaseUtility.Chat("The caves shine with light for a brief moment...", Color.Goldenrod);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1280,7 +1280,7 @@ namespace AAMod
                 if (!DiscordOres)
                 {
                     DiscordOres = true;
-                    Main.NewText("Chaotic energy grows in the deepest parts of the world.", Color.Magenta);
+                    BaseMod.BaseUtility.Chat("Chaotic energy grows in the deepest parts of the world.", Color.Magenta);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1308,7 +1308,7 @@ namespace AAMod
                 if (!TerrariumEnemies)
                 {
                     TerrariumEnemies = true;
-                    Main.NewText("You hear a hum of harmony from the Terrarium after the defeat of a great evil...", Color.LimeGreen);
+                    BaseMod.BaseUtility.Chat("You hear a hum of harmony from the Terrarium after the defeat of a great evil...", Color.LimeGreen);
                 }
             }
             if (NPC.downedBoss3)
@@ -1316,9 +1316,9 @@ namespace AAMod
                 if (!Dynaskull)
                 {
                     Dynaskull = true;
-                    Main.NewText("Bones of the ancient past burst with energy!", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
-                    Main.NewText("The desert winds stir...", Color.Orange);
-                    Main.NewText("The winter hills rumble...", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
+                    BaseMod.BaseUtility.Chat("Bones of the ancient past burst with energy!", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
+                    BaseMod.BaseUtility.Chat("The desert winds stir...", Color.Orange);
+                    BaseMod.BaseUtility.Chat("The winter hills rumble...", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1337,9 +1337,9 @@ namespace AAMod
                 if (!Evil)
                 {
                     Evil = true;
-                    Main.NewText("The choirs of unity hum from the terrarium.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
-                    Main.NewText("Devils in the underworld begin to plot.", Color.Purple.R, Color.Purple.G, Color.Purple.B);
-                    Main.NewText("The withered machines of the emptiness reactivate.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    BaseMod.BaseUtility.Chat("The choirs of unity hum from the terrarium.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
+                    BaseMod.BaseUtility.Chat("Devils in the underworld begin to plot.", Color.Purple.R, Color.Purple.G, Color.Purple.B);
+                    BaseMod.BaseUtility.Chat("The withered machines of the emptiness reactivate.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
             if (downedRetriever || downedOrthrus || downedRaider)
@@ -1352,7 +1352,7 @@ namespace AAMod
                 if (FulguriteOre == false)
                 {
                     FulguriteOre = true;
-                    Main.NewText("The clap of a thunderbolt roars in the caverns...", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
+                    BaseMod.BaseUtility.Chat("The clap of a thunderbolt roars in the caverns...", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("FulguriteOre"));
@@ -1378,7 +1378,7 @@ namespace AAMod
             {
                 if (downedAllAncients == false)
                 {
-                    Main.NewText("Chaos begins to stir in the atmosphere...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    BaseMod.BaseUtility.Chat("Chaos begins to stir in the atmosphere...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     downedAllAncients = true;
                 }
             }
@@ -1388,7 +1388,7 @@ namespace AAMod
                 {
                     InfernoStripe = true;
 
-                    Main.NewText("The Souls of Fury and Wrath are unleashed upon the world!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                    BaseMod.BaseUtility.Chat("The Souls of Fury and Wrath are unleashed upon the world!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                     ConversionHandler.ConvertDown((int)InfernoCenter.X, 0, 120, 1);
                 }
                 if (MireStripe == false)

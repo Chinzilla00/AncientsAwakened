@@ -79,7 +79,7 @@ namespace AAMod.Tiles.Oroboros
 				}
 				//Whack it all together to get a HH:MM format
 				var newText = string.Concat("Time: ", intTime, ":", text2, " ", text);
-				Main.NewText(newText, 255, 240, 20);
+				BaseMod.BaseUtility.Chat(newText, 255, 240, 20);
 			}
 		}
 

@@ -610,7 +610,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
             Main.npc[DeathAnim].velocity = npc.velocity;
-            Main.NewText("OW..! THAT HURT, YOU KNOW!", new Color(102, 20, 48));
+            BaseMod.BaseUtility.Chat("OW..! THAT HURT, YOU KNOW!", new Color(102, 20, 48));
             npc.value = 0f;
             npc.boss = false;
         }

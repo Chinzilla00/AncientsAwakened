@@ -88,20 +88,20 @@ N0N-C0NSUMABLE");
         {
             if (!AAWorld.downedZero && !Main.expertMode)
             {
-                Main.NewText("ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+                BaseMod.BaseUtility.Chat("ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
 
             if (!AAWorld.downedZero && Main.expertMode)
             {
-                Main.NewText("ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+                BaseMod.BaseUtility.Chat("ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (!Main.expertMode && AAWorld.downedZero)
             {
-                Main.NewText("TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.", Color.Red.R, Color.Red.G, Color.Red.B);
+                BaseMod.BaseUtility.Chat("TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (Main.expertMode && AAWorld.downedZero)
             {
-                Main.NewText("TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.", Color.Red.R, Color.Red.G, Color.Red.B);
+                BaseMod.BaseUtility.Chat("TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
 
             if (Main.netMode != 1)

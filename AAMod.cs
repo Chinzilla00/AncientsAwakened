@@ -3,6 +3,7 @@ using AAMod.Globals;
 using AAMod.UI;
 //using AAMod.UI;
 using BaseMod;
+using log4net;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -71,6 +72,7 @@ namespace AAMod
 
         internal static AAMod instance;
         public static AAMod self = null;
+        internal ILog Logging = LogManager.GetLogger("AAMod");
 
         public AAMod()
         {
@@ -108,8 +110,8 @@ namespace AAMod
             }
             catch (Exception e)
             {
-                ErrorLogger.Log(e.Message);
-                ErrorLogger.Log(e.StackTrace);
+                instance.Logger.InfoFormat(e.Message);
+                instance.Logger.InfoFormat(e.StackTrace);
             }
         }
 
@@ -206,8 +208,8 @@ namespace AAMod
             }
             catch (Exception e)
             {
-                ErrorLogger.Log(e.Message);
-                ErrorLogger.Log(e.StackTrace);
+                instance.Logger.InfoFormat(e.Message);
+                instance.Logger.InfoFormat(e.StackTrace);
             }
         }
 
@@ -348,6 +350,15 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant"), ItemType("SGBox"), TileType("SGBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SupremeRajah"), ItemType("SRajahBox"), TileType("SRajahBox"));
             }
+
+            Filters.Scene["AAMod:ShenSky"] = new Filter(new ShenSkyData("FilterMiniTower").UseColor(.5f, 0f, .5f).UseOpacity(0.2f), EffectPriority.VeryHigh);
+            SkyManager.Instance["AAMod:ShenSky"] = new ShenSky();
+            ShenSky.SkyTex = GetTexture("Backgrounds/ShenBg");
+
+            Filters.Scene["AAMod:ShenASky"] = new Filter(new ShenASkyData("FilterMiniTower").UseColor(.7f, 0f, .7f).UseOpacity(0.2f), EffectPriority.VeryHigh);
+            SkyManager.Instance["AAMod:ShenASky"] = new ShenASky();
+            ShenASky.SkyTex = GetTexture("Backgrounds/ShenSky");
+            ShenASky.MeteorTexture = GetTexture("Backgrounds/ShenMeteor");
 
             Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.High);
             SkyManager.Instance["AAMod:MireSky"] = new MireSky();
