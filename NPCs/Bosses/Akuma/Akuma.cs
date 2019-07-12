@@ -8,6 +8,7 @@ using BaseMod;
 using System.IO;
 using AAMod.NPCs.Bosses.Akuma.Awakened;
 using Terraria.Graphics.Shaders;
+using Terraria.Localization;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
@@ -161,8 +162,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 int Body1 = isAwakened ? mod.NPCType<AkumaABody1>() : mod.NPCType<AkumaBody1>();
                 int Tail = isAwakened ? mod.NPCType<AkumaATail>() : mod.NPCType<AkumaTail>();
 
-                float dist = npc.Distance(player.Center);
-
                 internalAI[0]++;
                 if (internalAI[0] == Timer && Main.netMode != 1)
                 {
@@ -252,8 +251,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                         internalAI[3] = 0;
                     }
                 }
-
-                BaseAI.AIWorm(npc, new int[npc.type], 1, 0f, 14f, 0f, true, false, true, false, false);
 
                 if (Main.netMode != 1)
                 {
@@ -353,6 +350,138 @@ namespace AAMod.NPCs.Bosses.Akuma
                     }
                     npc.netUpdate = true;
                 }
+
+                bool collision = true;
+
+                float speed = 12f;
+                float acceleration = 0.13f;
+
+                Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
+                float targetYPos = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2);
+
+                float targetRoundedPosX = (int)(targetXPos / 16.0) * 16;
+                float targetRoundedPosY = (int)(targetYPos / 16.0) * 16;
+                npcCenter.X = npcCenter.X / 16 * 16;
+                npcCenter.Y = npcCenter.Y / 16 * 16;
+                float dirX = targetRoundedPosX - npcCenter.X;
+                float dirY = targetRoundedPosY - npcCenter.Y;
+
+                float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
+                if (!collision)
+                {
+                    npc.TargetClosest(true);
+                    npc.velocity.Y = npc.velocity.Y + 0.11f;
+                    if (npc.velocity.Y > speed)
+                        npc.velocity.Y = speed;
+                    if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < speed * 0.4)
+                    {
+                        if (npc.velocity.X < 0.0)
+                            npc.velocity.X = npc.velocity.X - acceleration * 1.1f;
+                        else
+                            npc.velocity.X = npc.velocity.X + acceleration * 1.1f;
+                    }
+                    else if (npc.velocity.Y == speed)
+                    {
+                        if (npc.velocity.X < dirX)
+                            npc.velocity.X = npc.velocity.X + acceleration;
+                        else if (npc.velocity.X > dirX)
+                            npc.velocity.X = npc.velocity.X - acceleration;
+                    }
+                    else if (npc.velocity.Y > 4.0)
+                    {
+                        if (npc.velocity.X < 0.0)
+                            npc.velocity.X = npc.velocity.X + acceleration * 0.9f;
+                        else
+                            npc.velocity.X = npc.velocity.X - acceleration * 0.9f;
+                    }
+                }
+                else
+                {
+                    if (npc.soundDelay == 0)
+                    {
+                        float num1 = length / 40f;
+                        if (num1 < 10.0)
+                            num1 = 10f;
+                        if (num1 > 20.0)
+                            num1 = 20f;
+                        npc.soundDelay = (int)num1;
+                    }
+                    float absDirX = Math.Abs(dirX);
+                    float absDirY = Math.Abs(dirY);
+                    float newSpeed = speed / length;
+                    dirX *= newSpeed;
+                    dirY *= newSpeed;
+                    if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || (npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0))
+                    {
+                        if (npc.velocity.X < dirX)
+                            npc.velocity.X = npc.velocity.X + acceleration;
+                        else if (npc.velocity.X > dirX)
+                            npc.velocity.X = npc.velocity.X - acceleration;
+                        if (npc.velocity.Y < dirY)
+                            npc.velocity.Y = npc.velocity.Y + acceleration;
+                        else if (npc.velocity.Y > dirY)
+                            npc.velocity.Y = npc.velocity.Y - acceleration;
+                        if (Math.Abs(dirY) < speed * 0.2 && (npc.velocity.X > 0.0 && dirX < 0.0 || npc.velocity.X < 0.0 && dirX > 0.0))
+                        {
+                            if (npc.velocity.Y > 0.0)
+                                npc.velocity.Y = npc.velocity.Y + acceleration * 2f;
+                            else
+                                npc.velocity.Y = npc.velocity.Y - acceleration * 2f;
+                        }
+                        if (Math.Abs(dirX) < speed * 0.2 && (npc.velocity.Y > 0.0 && dirY < 0.0 || npc.velocity.Y < 0.0 && dirY > 0.0))
+                        {
+                            if (npc.velocity.X > 0.0)
+                                npc.velocity.X = npc.velocity.X + acceleration * 2f;
+                            else
+                                npc.velocity.X = npc.velocity.X - acceleration * 2f;
+                        }
+                    }
+                    else if (absDirX > absDirY)
+                    {
+                        if (npc.velocity.X < dirX)
+                            npc.velocity.X = npc.velocity.X + acceleration * 1.1f;
+                        else if (npc.velocity.X > dirX)
+                            npc.velocity.X = npc.velocity.X - acceleration * 1.1f;
+                        if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < speed * 0.5)
+                        {
+                            if (npc.velocity.Y > 0.0)
+                                npc.velocity.Y = npc.velocity.Y + acceleration;
+                            else
+                                npc.velocity.Y = npc.velocity.Y - acceleration;
+                        }
+                    }
+                    else
+                    {
+                        if (npc.velocity.Y < dirY)
+                            npc.velocity.Y = npc.velocity.Y + acceleration * 1.1f;
+                        else if (npc.velocity.Y > dirY)
+                            npc.velocity.Y = npc.velocity.Y - acceleration * 1.1f;
+                        if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < speed * 0.5)
+                        {
+                            if (npc.velocity.X > 0.0)
+                                npc.velocity.X = npc.velocity.X + acceleration;
+                            else
+                                npc.velocity.X = npc.velocity.X - acceleration;
+                        }
+                    }
+                }
+                npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+
+                if (collision)
+                {
+                    if (npc.localAI[0] != 1)
+                        npc.netUpdate = true;
+                    npc.localAI[0] = 1f;
+                }
+                else
+                {
+                    if (npc.localAI[0] != 0.0)
+                        npc.netUpdate = true;
+                    npc.localAI[0] = 0.0f;
+                }
+                if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || (npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0)) && !npc.justHit)
+                    npc.netUpdate = true;
             }
             return false;
         }
@@ -592,7 +721,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                     npc.netUpdate = true;
                 }
             }
-
         }
 
         public override void NPCLoot()
@@ -805,37 +933,10 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void SetDefaults()
         {
-            npc.noTileCollide = true;
-            npc.aiStyle = -1;
-            npc.netAlways = true;
-            npc.damage = 80;
-            npc.defense = 270;
-            npc.lifeMax = 650000;
-            npc.value = Item.sellPrice(2, 0, 0, 0);
-            npc.knockBackResist = 0f;
-            npc.boss = true;
-            npc.lavaImmune = true;
-            npc.noGravity = true;
-            npc.behindTiles = true;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
-            for (int k = 0; k < npc.buffImmune.Length; k++)
-            {
-                npc.buffImmune[k] = true;
-            }
-            npc.buffImmune[103] = false;
-            npc.alpha = 255;
-            musicPriority = MusicPriority.BossHigh;
-            npc.dontTakeDamage = true;
+            base.SetDefaults();
             npc.width = 60;
             npc.height = 60;
             npc.dontCountMe = true;
-            if (AAWorld.downedAllAncients)
-            {
-                npc.damage = 61;
-                npc.defense = 180;
-                npc.lifeMax = 700000;
-            }
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -846,16 +947,6 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override bool PreNPCLoot()
         {
             return false;
-        }
-
-        public override bool CheckActive()
-        {
-            if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
-            {
-                return false;
-            }
-            npc.active = false;
-            return true;
         }
     }
     
