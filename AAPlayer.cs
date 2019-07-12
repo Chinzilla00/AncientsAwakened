@@ -69,6 +69,7 @@ namespace AAMod
         public bool ChaosClaw = false;
         public bool MiniZero = false;
         public bool TerraSummon = false;
+        public bool DragonSpirit = false;
         // Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
@@ -162,6 +163,23 @@ namespace AAMod
         public bool Witch;
         public bool Tied;
         public bool TiedHead;
+        public bool ChaosMe = true;
+        public bool ChaosRa = true;
+        public bool ChaosMe1 = true;
+        public bool ChaosRa2 = true;
+        public bool ChaosMa = true;
+        public bool ChaosSu = true;
+
+        public bool Chaos(Player player)
+        {
+            return player.GetModPlayer<AAPlayer>(mod).ChaosMe ||
+                player.GetModPlayer<AAPlayer>(mod).ChaosMe1 ||
+                player.GetModPlayer<AAPlayer>(mod).ChaosRa ||
+                player.GetModPlayer<AAPlayer>(mod).ChaosRa2 ||
+                player.GetModPlayer<AAPlayer>(mod).ChaosMa ||
+                player.GetModPlayer<AAPlayer>(mod).ChaosSu;
+        }
+
         // Accessory bools.
         public bool clawsOfChaos;
         public bool HydraPendant;
@@ -348,6 +366,7 @@ namespace AAMod
             ChaosClaw = false;
             MiniZero = false;
             TerraSummon = false;
+            DragonSpirit = false;
         }
 
         private void ResetArmorEffect()
@@ -2110,6 +2129,38 @@ namespace AAMod
                     Projectile.NewProjectile(player.Center.X, player.Center.Y, num78, num79, mod.ProjectileType("Dynabomb"), num73, num74, i, 0f, 0f);
                 }
             }
+            if (ChaosRa2)
+            {
+                if (AAMod.ArmorAbilityKey.JustPressed && AbilityCD == 0)
+                {
+                    AbilityCD = 180;
+                    int i = Main.myPlayer;
+                    float num72 = 8;
+                    int num73 = 70;
+                    float num74 = 1;
+                    Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
+                    float num78 = Main.mouseX + Main.screenPosition.X - vector2.X;
+                    float num79 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
+                    if (player.gravDir == -1f)
+                    {
+                        num79 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector2.Y;
+                    }
+                    float num80 = (float)Math.Sqrt(num78 * num78 + num79 * num79);
+                    float num81 = num80;
+                    if ((float.IsNaN(num78) && float.IsNaN(num79)) || (num78 == 0f && num79 == 0f))
+                    {
+                        num78 = player.direction;
+                        num79 = 0f;
+                    }
+                    else
+                    {
+                        num80 = num72 / num80;
+                    }
+                    vector2.X = Main.mouseX + Main.screenPosition.X;
+                    vector2.Y = Main.mouseY + Main.screenPosition.Y;
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, num78, num79, mod.ProjectileType("DragonShot"), num73, num74, i, 0f, 0f);
+                }
+            }
             if (CapShield)
             {
                 if (AAMod.AccessoryAbilityKey.JustPressed && !AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<Projectiles.CapShield>()))
@@ -2603,7 +2654,8 @@ namespace AAMod
             {
                 if (Main.rand.Next(4) == 0)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 75, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default(Color), 3f);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, 75, player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100);
+                    Main.dust[dust].scale = 3f;
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -2763,7 +2815,7 @@ namespace AAMod
                 target.AddBuff(BuffID.Chilled, 180);
             }
 
-            if (DynaskullSet && proj.ranged)
+            if (DynaskullSet && proj.ranged && Main.rand.Next(4) == 0)
             {
                 target.AddBuff(BuffID.Confused, 180);
             }
@@ -2839,6 +2891,20 @@ namespace AAMod
             {
                 target.AddBuff(BuffID.Wet, 500);
             }
+
+            if ((ChaosMe || ChaosMe1) && proj.melee)
+            {
+                target.AddBuff(mod.BuffType(Main.rand.Next(2) == 0 ? "DragonFire" : "HydraToxin"), 180);
+            }
+            if ((ChaosRa || ChaosRa2) && proj.ranged)
+            {
+                target.AddBuff(mod.BuffType(Main.rand.Next(2) == 0 ? "DragonFire" : "HydraToxin"), 180);
+            }
+            if (ChaosMa && proj.magic)
+            {
+                target.AddBuff(mod.BuffType(Main.rand.Next(2) == 0 ? "DragonFire" : "HydraToxin"), 180);
+            }
+
 
             if (demonGauntlet && proj.melee)
             {

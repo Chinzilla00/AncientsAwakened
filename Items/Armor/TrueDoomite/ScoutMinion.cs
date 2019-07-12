@@ -229,7 +229,9 @@ namespace AAMod.Items.Armor.TrueDoomite
 						value19.Normalize();
 						value19 *= scaleFactor3;
 						int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, num658, (int)(projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, 0f);
-						Main.projectile[num659].timeLeft = 300;
+                        Main.projectile[num659].ranged = false;
+                        Main.projectile[num659].minion = true;
+                        Main.projectile[num659].timeLeft = 300;
 						projectile.netUpdate = true;
 					}
 				}

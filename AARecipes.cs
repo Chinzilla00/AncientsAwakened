@@ -867,6 +867,16 @@ namespace AAMod
         }
         #endregion
 
+        public static void PrismArmor(string armor, string prism, ModItem result)
+        {
+            ModRecipe recipe = GetNewRecipe();
+            recipe.AddIngredient(AAMod.instance, armor);
+            recipe.AddIngredient(AAMod.instance, prism);
+            recipe.AddTile(AAMod.instance, "TruePaladinsSmeltery");
+            recipe.SetResult(result);
+            recipe.AddRecipe();
+        }
+
         public static void AddRecipeGroups()
         {
             RecipeGroup group0 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " darkmatter helmet", new int[]
@@ -1005,6 +1015,28 @@ namespace AAMod
                 AAMod.instance.ItemType("InfernoAltar")
             });
             RecipeGroup.RegisterGroup("AAMod:Altar", group17);
+
+            RecipeGroup group18 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Chaos Leggings", new int[]
+            {
+                AAMod.instance.ItemType("TrueBlazingSuneate"),
+                AAMod.instance.ItemType("TrueAbyssalHakama"),
+                AAMod.instance.ItemType("TrueAtlanteanBoots"),
+                AAMod.instance.ItemType("TrueDoomiteGreaves"),
+                AAMod.instance.ItemType("TrueRaiderBoots"),
+                AAMod.instance.ItemType("TrueDynaskullGreaves")
+            });
+            RecipeGroup.RegisterGroup("AAMod:ChaosBoots", group18);
+
+            RecipeGroup group19 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Chaos Leggings", new int[]
+            {
+                AAMod.instance.ItemType("TrueBlazingDou"),
+                AAMod.instance.ItemType("TrueAbyssalGi"),
+                AAMod.instance.ItemType("TrueAtlanteanPlate"),
+                AAMod.instance.ItemType("TrueDoomiteBreastplate"),
+                AAMod.instance.ItemType("TrueRaiderPlate"),
+                AAMod.instance.ItemType("TrueDynaskullRibguard")
+            });
+            RecipeGroup.RegisterGroup("AAMod:ChaosPlates", group19);
 
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {

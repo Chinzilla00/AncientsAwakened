@@ -3,15 +3,15 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 
-namespace AAMod.Items.Armor.TrueBlazing
+namespace AAMod.Items.Armor.Chaos
 {
     [AutoloadEquip(EquipType.Head)]
-	public class TrueBlazingKabuto : BaseAAItem
+	public class ChaosKabuto : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Perfect Blazing Kabuto");
-			Tooltip.SetDefault(@"5% increased Damage Resistance");
+			DisplayName.SetDefault("Chaos Kabuto");
+			Tooltip.SetDefault(@"10% increased melee damage");
         }
 
 		public override void SetDefaults()
@@ -20,26 +20,26 @@ namespace AAMod.Items.Armor.TrueBlazing
 			item.height = 20;
 			item.value = 100000;
 			item.rare = 4;
-			item.defense = 18;
+			item.defense = 26;
 		}
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance += .05f;
+            player.meleeDamage += .1f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
-		{
-            return body.type == mod.ItemType("TrueBlazingDou") && legs.type == mod.ItemType("TrueBlazingSuneate");
+        {
+            return body.type == mod.ItemType("ChaosDou") && legs.type == mod.ItemType("ChaosGreaves");
         }
 
-		public override void UpdateArmorSet(Player player)
+        public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"5% increased damage resistance
+			player.setBonus = @"10% increased melee speed
 Enemies are more likely to target you
 Enemies that strike you are set ablaze
 Your Swung weapons set your enemies ablaze";
-            player.endurance = .05f;
+            player.meleeSpeed += .1f;
             player.aggro += 4;
             player.GetModPlayer<AAPlayer>(mod).kindledSet = true;
         }
