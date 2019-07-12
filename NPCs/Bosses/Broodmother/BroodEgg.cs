@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.height = 34;
             npc.aiStyle = -1;
             npc.damage = 0;
-            npc.defense = 30;
+            npc.defense = 20;
             npc.lavaImmune = true;
             npc.buffImmune[BuffID.OnFire] = true;
             npc.lifeMax = 50;
@@ -64,7 +64,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             int hatchTimer = 900;
             if (Main.expertMode)
             {
-                hatchTimer = 600;
+                hatchTimer = 700;
             }
             if (npc.justHit)
             {

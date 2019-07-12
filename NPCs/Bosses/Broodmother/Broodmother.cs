@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.chaseable = true;
             npc.damage = 25;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BroodTheme");
-            npc.defense = 20;
+            npc.defense = 10;
             npc.boss = true;
             npc.lavaImmune = true;
             npc.buffImmune[BuffID.OnFire] = true;
@@ -155,7 +155,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
+            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);  //boss life scale in expertmode
             npc.damage = (int)(npc.damage * 0.8f);  //boss damage increase in expermode
         }
         public override void HitEffect(int hitDirection, double damage)
