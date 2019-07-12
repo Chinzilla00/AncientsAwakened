@@ -23,7 +23,7 @@ namespace AAMod.Items.Ranged
 			item.height = 24;
 			item.shoot = mod.ProjectileType("M79P");
 			item.UseSound = SoundID.Item61;
-			item.damage = 100;
+			item.damage = 150;
 			item.shootSpeed = 11f;
 			item.noMelee = true;
 			item.value = 50000;

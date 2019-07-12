@@ -20,8 +20,8 @@ namespace AAMod.Items.Ranged
             item.ranged = true; //This causes your bow to do ranged damage
             item.width = 22; //Hitbox width
             item.height = 64; //Hitbox height
-            item.useTime = 23; //How long it takes to use the weapon. If this is shorter than the useAnimation it will fire twice in one click.
-            item.useAnimation = 23;  //The animations time length
+            item.useTime = 20; //How long it takes to use the weapon. If this is shorter than the useAnimation it will fire twice in one click.
+            item.useAnimation = 20;  //The animations time length
             item.useStyle = 5; //The style in which the item gets used. 5 for bows.
             item.shoot = 1; //Makes the bow shoot arrows
             item.useAmmo = AmmoID.Arrow;
@@ -29,8 +29,8 @@ namespace AAMod.Items.Ranged
             item.value = Item.sellPrice(0, 1, 8, 0);
             item.rare = 3; //The item's name color
             item.UseSound = SoundID.Item5;
-            item.autoReuse = false; //if the Bow autoreuses or not
-            item.shootSpeed = 8f; //The arrows speed when shot
+            item.autoReuse = true; //if the Bow autoreuses or not
+            item.shootSpeed = 10f; //The arrows speed when shot
             item.crit = 0; //Crit chance
         }
         public override void AddRecipes()

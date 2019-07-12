@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Djinn
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("DustDevil");
-            item.damage = 35;
+            item.damage = 25;
             item.width = 52;
             item.height = 52;
             item.UseSound = SoundID.Item44;
