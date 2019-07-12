@@ -68,8 +68,8 @@ Can only be used in a glowing mushroom biome");
             }
         }
 
-        public override void UseStyle(Player p) { BaseMod.BaseUseStyle.SetStyleBoss(p, item, true, true); }
-        public override bool UseItemFrame(Player p) { BaseMod.BaseUseStyle.SetFrameBoss(p, item); return true; }
+        public override void UseStyle(Player p) { BaseUseStyle.SetStyleBoss(p, item, true, true); }
+        public override bool UseItemFrame(Player p) { BaseUseStyle.SetFrameBoss(p, item); return true; }
 
         public override void AddRecipes()
         {

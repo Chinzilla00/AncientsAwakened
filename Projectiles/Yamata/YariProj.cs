@@ -38,7 +38,7 @@ namespace AAMod.Projectiles.Yamata
 				if(projectile.velocity.Y <= -8f) projectile.velocity.Y = -8f;
 				if(projectile.velocity.Y >= 8f) projectile.velocity.Y = 8f;
 			}
-			projectile.rotation = (float)System.Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
+			projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
 			for (int i = 0; i < 3; i++)
 			{
 				int d = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("YamataDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100);

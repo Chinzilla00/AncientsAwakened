@@ -61,14 +61,8 @@ namespace AAMod.NPCs.Bosses.Hydra
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore4"), 1f);
         }
 
-        public Hydra Body
-		{
-			get
-			{
-				return ((bodyNPC != null && bodyNPC.modNPC is Hydra) ? (Hydra)bodyNPC.modNPC : null);
-			}
-		}
-		public NPC bodyNPC = null;	
+        public Hydra Body => ((bodyNPC != null && bodyNPC.modNPC is Hydra) ? (Hydra)bodyNPC.modNPC : null);
+        public NPC bodyNPC = null;	
         public bool middleHead = false;
         public bool leftHead = false;
         public int damage = 0;

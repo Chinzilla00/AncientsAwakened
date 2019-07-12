@@ -38,7 +38,7 @@ namespace AAMod.Items.Dev
             item.shoot = mod.ProjectileType("Duck");
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
-            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_GUN; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
+            glowmaskDrawType = GLOWMASKTYPE_GUN; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
             glowmaskDrawColor = Color.White;  //glowmask draw color
         }
 

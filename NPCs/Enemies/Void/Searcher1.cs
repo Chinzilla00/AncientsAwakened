@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Enemies.Void
         {
             npc.width = 35;
             npc.height = 35;
-            npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 5, 50);
+            npc.value = BaseUtility.CalcValue(0, 0, 5, 50);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
             npc.lifeMax = 80;

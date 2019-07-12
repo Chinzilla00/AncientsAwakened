@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 		{
             npc.width = 40;
             npc.height = 40;
-            npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 60, 50);
+            npc.value = BaseUtility.CalcValue(0, 0, 60, 50);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
             npc.lifeMax = 250;

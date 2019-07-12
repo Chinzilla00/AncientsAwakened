@@ -70,7 +70,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
             float spread = 12f * 0.0174f;
 			double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y)- spread/2;
 	    	double Angle = spread/4f;

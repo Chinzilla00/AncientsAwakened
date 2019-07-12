@@ -122,7 +122,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
     public class BunnyBrawler1 : BunnyBrawler
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBrawler"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBrawler";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -133,7 +133,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
     public class BunnyBrawler2 : BunnyBrawler
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBrawler"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBrawler";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -144,7 +144,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
     public class BunnyBrawler3 : BunnyBrawler
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBrawler"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBrawler";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -155,7 +155,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
     public class BunnyBrawler4 : BunnyBrawler
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBrawler"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBrawler";
         public override void SetDefaults()
         {
             base.SetDefaults();

@@ -39,13 +39,7 @@ namespace AAMod
         public static int Brain = -1;
         public static int Rajah = -1;
 
-        public override bool InstancePerEntity
-        {
-            get
-            {
-                return true;
-            }
-        }
+        public override bool InstancePerEntity => true;
 
         public override void ResetEffects(NPC npc)
         {

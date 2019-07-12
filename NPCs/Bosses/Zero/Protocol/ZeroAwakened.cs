@@ -552,7 +552,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 npc.damage = (int)(npc.defDamage * 1.5);
                 npc.defense = npc.defDefense + 10;
-                npc.HitSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Zerohit2");
+                npc.HitSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Zerohit2");
                 if (npc.ai[1] == 0f)
                 {
                     float num389 = 8f;

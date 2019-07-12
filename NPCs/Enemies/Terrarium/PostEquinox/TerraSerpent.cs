@@ -11,9 +11,9 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostEquinox
 {
     public class TerraSerpent : ModNPC
 	{
-        
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PostEquinox/TerraSerpent"; } }
-        
+
+        public override string Texture => "AAMod/NPCs/Enemies/Terrarium/PostEquinox/TerraSerpent";
+
 
         public override void SetStaticDefaults()
 		{
@@ -242,7 +242,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostEquinox
 
     public class TerraSerpentBody : TerraSerpent
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PostEquinox/TerraSerpentBody"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Terrarium/PostEquinox/TerraSerpentBody";
 
         public override void SetStaticDefaults()
         {
@@ -359,7 +359,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostEquinox
 
     public class TerraSerpentTail : TerraSerpent
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PostEquinox/TerraSerpentTail"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Terrarium/PostEquinox/TerraSerpentTail";
 
         public override void SetStaticDefaults()
         {

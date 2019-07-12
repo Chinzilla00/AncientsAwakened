@@ -272,8 +272,8 @@ namespace AAMod.Projectiles.Zero
 
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 2);
 
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, dColor, true);
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, color1, true);
+            BaseDrawing.DrawTexture(spritebatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, dColor, true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, color1, true);
             return false;
         }
     }

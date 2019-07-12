@@ -10,7 +10,7 @@ namespace AAMod.Items.DevTools
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("[DEV] Anticheat Disabler");
-            BaseMod.BaseUtility.AddTooltips(item, new string[] { "For testers or pussies." });
+            BaseUtility.AddTooltips(item, new string[] { "For testers or pussies." });
         }
 
         public override void SetDefaults()

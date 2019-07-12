@@ -6,17 +6,17 @@ namespace AAMod.Items.Banners
 	{
 		int pStyle = -1;
 		string dName = null;
-		
-        public override bool CloneNewInstances { get { return true; } }
-		
-		public override bool Autoload(ref string name)
+
+        public override bool CloneNewInstances => true;
+
+        public override bool Autoload(ref string name)
 		{
 			return false;
 		}
 
 		public override void AutoStaticDefaults()
 		{
-			DisplayName.SetDefault(Regex.Replace(base.GetType().Name, "([A-Z])", " $1").Trim());		
+			DisplayName.SetDefault(Regex.Replace(GetType().Name, "([A-Z])", " $1").Trim());		
 		}
 
 		public Banners SetupBanner(string dname, int pstyle)

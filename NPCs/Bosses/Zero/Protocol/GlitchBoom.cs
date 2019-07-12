@@ -50,7 +50,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
             projectile.timeLeft = 0;
         }
 

@@ -27,7 +27,7 @@ namespace AAMod.Tiles
             TileObjectData.newTile.AnchorValidTiles = new int[] { mod.TileType("Depthsand") };
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.DrawFlipHorizontal = true;
-            TileObjectData.newTile.WaterPlacement = Terraria.Enums.LiquidPlacement.Allowed;
+            TileObjectData.newTile.WaterPlacement = LiquidPlacement.Allowed;
             TileObjectData.newTile.LavaDeath = true;
             TileObjectData.newTile.RandomStyleRange = 3;
             TileObjectData.addTile(Type);

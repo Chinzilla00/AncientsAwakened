@@ -80,14 +80,8 @@ namespace AAMod.NPCs.Bosses.Orthrus
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusHeadGore4"), 1f);
         }
 
-        public Orthrus Body
-		{
-			get
-			{
-				return ((bodyNPC != null && bodyNPC.modNPC is Orthrus) ? (Orthrus)bodyNPC.modNPC : null);
-			}
-		}
-		public NPC bodyNPC = null;	
+        public Orthrus Body => ((bodyNPC != null && bodyNPC.modNPC is Orthrus) ? (Orthrus)bodyNPC.modNPC : null);
+        public NPC bodyNPC = null;	
         public bool leftHead = false;
         public int damage = 0;
 

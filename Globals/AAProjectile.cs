@@ -9,7 +9,7 @@ namespace AAMod
 {
     public abstract class AAProjectile : ParentProjectile
     {
-        public override bool CloneNewInstances { get { return true; } }
+        public override bool CloneNewInstances => true;
 
         public string name
         {

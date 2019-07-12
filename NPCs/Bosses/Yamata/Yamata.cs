@@ -76,7 +76,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.defense = 999999;
             npc.knockBackResist = 0f;
             npc.boss = true;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata");
             musicPriority = MusicPriority.BossHigh;
             npc.noGravity = true;
             npc.netAlways = true;
@@ -86,7 +86,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 54, 0, 2);
             frameHead = BaseDrawing.GetFrame(frameCount, frameWidth, 118, 0, 2);
-            npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
+            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;

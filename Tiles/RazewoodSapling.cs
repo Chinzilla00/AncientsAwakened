@@ -27,7 +27,7 @@ namespace AAMod.Tiles
             TileObjectData.newTile.AnchorValidTiles = new int[] { mod.TileType("InfernoGrass") };
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.DrawFlipHorizontal = true;
-            TileObjectData.newTile.WaterPlacement = Terraria.Enums.LiquidPlacement.NotAllowed;
+            TileObjectData.newTile.WaterPlacement = LiquidPlacement.NotAllowed;
             TileObjectData.newTile.LavaDeath = true;
             TileObjectData.newTile.RandomStyleRange = 3;
             TileObjectData.addTile(Type);

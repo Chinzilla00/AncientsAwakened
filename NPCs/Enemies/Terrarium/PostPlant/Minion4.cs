@@ -8,9 +8,9 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 {
     public class Minion4 : ModNPC
 	{
-        
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PostPlant/Minion4Head"; } }
-        
+
+        public override string Texture => "AAMod/NPCs/Enemies/Terrarium/PostPlant/Minion4Head";
+
 
         public override void SetStaticDefaults()
 		{
@@ -221,7 +221,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 
     public class Minion4Body : Minion4
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PostPlant/Minion4Body"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Terrarium/PostPlant/Minion4Body";
 
         public override void SetStaticDefaults()
         {
@@ -342,7 +342,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 
     public class Minion4Tail : Minion4
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PostPlant/Minion4Tail"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Terrarium/PostPlant/Minion4Tail";
 
         public override void SetStaticDefaults()
         {

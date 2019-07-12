@@ -9,15 +9,9 @@ namespace AAMod.NPCs.TownNPCs
     [AutoloadHead]
 	public class GoblinSlayer : ModNPC
 	{
-		public override string Texture
-		{
-			get
-			{
-				return "AAMod/NPCs/TownNPCs/GoblinSlayer";
-			}
-		}
+        public override string Texture => "AAMod/NPCs/TownNPCs/GoblinSlayer";
 
-		public override bool Autoload(ref string name)
+        public override bool Autoload(ref string name)
 		{
 			name = "Goblin Slayer";
 			return mod.Properties.Autoload;

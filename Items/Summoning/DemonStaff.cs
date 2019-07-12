@@ -32,7 +32,7 @@ namespace AAMod.Items.Summoning
             item.shootSpeed = 10f;
             item.buffType = mod.BuffType("DemonMinion");
             item.autoReuse = true;
-            item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 1, 0, 0);
         }
 		
 		public override void UseStyle(Player player)

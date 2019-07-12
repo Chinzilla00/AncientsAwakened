@@ -8,7 +8,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 {
     public class BunnyBattler : ModNPC
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBattler"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBattler";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rabbid Rabbit");
@@ -142,7 +142,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
     public class BunnyBattler1 : BunnyBattler
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBattler"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBattler";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -153,7 +153,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
     public class BunnyBattler2 : BunnyBattler
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBattler"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBattler";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -164,7 +164,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
     public class BunnyBattler3 : BunnyBattler
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBattler"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBattler";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -175,7 +175,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
     public class BunnyBattler4 : BunnyBattler
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/BunnyBattler"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBattler";
         public override void SetDefaults()
         {
             base.SetDefaults();

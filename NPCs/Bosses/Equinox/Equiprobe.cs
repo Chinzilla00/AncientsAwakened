@@ -45,10 +45,10 @@ namespace AAMod.NPCs.Bosses.Equinox
 		float shootAI = 0;
 		public override void AI()
 		{
-			BaseMod.BaseAI.AISkull(npc, ref npc.ai, false, 6f, 350f, 0.1f, 0.15f);
+            BaseAI.AISkull(npc, ref npc.ai, false, 6f, 350f, 0.1f, 0.15f);
 			Player player = Main.player[npc.target];
 			bool playerActive = player != null && player.active && !player.dead;
-			BaseMod.BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 0);		
+            BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 0);		
 			if(Main.netMode != 1 && playerActive)
 			{
 				shootAI++;

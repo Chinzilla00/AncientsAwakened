@@ -31,10 +31,10 @@ namespace AAMod.Projectiles
 			set { projectile.localAI[0] = value; }
 		}
 
-		// Are we at max charge? With c#6 you can simply use => which indicates this is a get only property
-		public bool AtMaxCharge { get { return Charge == MaxChargeValue; } }
+        // Are we at max charge? With c#6 you can simply use => which indicates this is a get only property
+        public bool AtMaxCharge => Charge == MaxChargeValue;
 
-		public override void SetDefaults()
+        public override void SetDefaults()
 		{
 			projectile.width = 10;
 			projectile.height = 10;

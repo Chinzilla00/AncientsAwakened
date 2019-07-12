@@ -11,12 +11,7 @@ namespace AAMod
     {
         //COLORS
         public static Color COLOR_GLOWPULSE //a pulsing white glow
-        {
-            get
-            {
-                return new Color(255, 255, 255) * (Main.mouseTextColor / 255f);
-            }
-        }
+=> new Color(255, 255, 255) * (Main.mouseTextColor / 255f);
 
         public static void MoveToPoint(Entity entity, Vector2 point, float moveSpeed)
         {

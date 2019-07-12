@@ -76,8 +76,8 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.noTileCollide = true;
             npc.alpha = 255;
             npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/ShenRoar");
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Shen");
+            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ShenRoar");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Shen");
             musicPriority = (MusicPriority)11;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -118,20 +118,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
         }
-        public bool ChargePrep
-        {
-            get
-            {
-                return npc.ai[0] == 0.5f || customAI[3] == 0.5f;
-            }
-        }
-        public bool Charging
-        {
-            get
-            {
-                return npc.ai[0] == 1;
-            }
-        }
+        public bool ChargePrep => npc.ai[0] == 0.5f || customAI[3] == 0.5f;
+        public bool Charging => npc.ai[0] == 1;
         public bool SnapToPlayer //wether to 'snap' relative to a player's position. This forces the player to be unable to outrun the npc while this is true.
         {
             get
@@ -162,19 +150,8 @@ namespace AAMod.NPCs.Bosses.Shen
         public int roarTimer = 0; //if this is > 0, then use the roaring frame.
         public int roarTimerMax = 120; //default roar timer. only changed for fire breath as it's longer.
         public bool Roaring //wether or not he is roaring. only used clientside for frame visuals.
-        {
-            get
-            {
-                return roarTimer > 0;
-            }
-        }
-        public bool LookAtPlayer
-        {
-            get
-            {
-                return ChargePrep || npc.ai[0] == 2 || npc.ai[0] == 3;
-            }
-        }
+=> roarTimer > 0;
+        public bool LookAtPlayer => ChargePrep || npc.ai[0] == 2 || npc.ai[0] == 3;
 
         public int chargeWidth = 50;
         public int normalWidth = 444;
@@ -883,7 +860,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else
             {
-                Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/ShenRoar"), npc.Center);
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ShenRoar"), npc.Center);
             }
         }
 

@@ -85,7 +85,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 Main.PlaySound(4, (int)projectile.Center.X, (int)projectile.Center.Y, 3);
             }
 
-            Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
             Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<GlitchBoom>(), projectile.damage, 1, projectile.owner);
         }
         public override bool PreDraw(SpriteBatch sb, Color lightColor)

@@ -26,7 +26,7 @@ namespace AAMod.Items.Ranged
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
             item.knockBack = 0;
-            item.value = Terraria.Item.sellPrice(0, 1, 8, 0);
+            item.value = Item.sellPrice(0, 1, 8, 0);
             item.rare = 4;
             item.UseSound = SoundID.Item11;
             item.shootSpeed = 12f;

@@ -15,7 +15,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     [AutoloadBossHead]
     public class Rajah : ModNPC
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rajah Rabbit");
@@ -85,13 +85,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public int roarTimer = 0;
         public int roarTimerMax = 240;
-        public bool Roaring
-        {
-            get
-            {
-                return roarTimer > 0;
-            }
-        }
+        public bool Roaring => roarTimer > 0;
 
         public void Roar(int timer)
         {
@@ -1031,19 +1025,13 @@ namespace AAMod.NPCs.Bosses.Rajah
             return false;
         }
 
-        public override string BossHeadTexture
-        {
-            get
-            {
-                return "AAMod/NPCs/Bosses/Rajah/Rajah_Head_Boss";
-            }
-        }
+        public override string BossHeadTexture => "AAMod/NPCs/Bosses/Rajah/Rajah_Head_Boss";
     }
 
     [AutoloadBossHead]
     public class Rajah2 : Rajah
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -1056,7 +1044,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     [AutoloadBossHead]
     public class Rajah3 : Rajah
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -1070,7 +1058,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     [AutoloadBossHead]
     public class Rajah4 : Rajah
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -1084,7 +1072,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     [AutoloadBossHead]
     public class Rajah5 : Rajah
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -1098,7 +1086,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     [AutoloadBossHead]
     public class Rajah6 : Rajah
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -1112,7 +1100,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     [AutoloadBossHead]
     public class Rajah7 : Rajah
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -1126,7 +1114,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     [AutoloadBossHead]
     public class Rajah8 : Rajah
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -1140,7 +1128,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     [AutoloadBossHead]
     public class Rajah9 : Rajah
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Rajah"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -1154,7 +1142,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     [AutoloadBossHead]
     public class SupremeRajah : Rajah
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/Supreme/SupremeRajah"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Supreme/SupremeRajah";
 
         public override void SetStaticDefaults()
         {
@@ -1173,12 +1161,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             bossBag = mod.ItemType("RajahCache");
             isSupreme = true;
         }
-        public override string BossHeadTexture
-        {
-            get
-            {
-                return "AAMod/NPCs/Bosses/Rajah/SupremeRajah_Head_Boss";
-            }
-        }
+        public override string BossHeadTexture => "AAMod/NPCs/Bosses/Rajah/SupremeRajah_Head_Boss";
     }
 }

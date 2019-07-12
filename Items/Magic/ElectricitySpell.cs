@@ -55,7 +55,7 @@ namespace AAMod.Items.Magic
 		for (i = 0; i < 5;i++ )
 		{
 			offsetAngle = startAngle + (deltaAngle * i);
-			Terraria.Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
+                Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
 		}
 		return false;
 		}

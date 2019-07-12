@@ -29,7 +29,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIFlail(projectile, ref projectile.ai, false, 250);
+            BaseAI.AIFlail(projectile, ref projectile.ai, false, 250);
             projectile.direction = projectile.spriteDirection = Main.player[projectile.owner].direction;
             if ((Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) / 2f > 0.52f)
             {
@@ -41,7 +41,7 @@ namespace AAMod.Projectiles
 
         public override bool OnTileCollide(Vector2 value2)
         {
-            BaseMod.BaseAI.TileCollideFlail(projectile, ref value2);
+            BaseAI.TileCollideFlail(projectile, ref value2);
             return false;
         }
 
@@ -50,7 +50,7 @@ namespace AAMod.Projectiles
             Texture2D chainTex = mod.GetTexture("Projectiles/Ryusei_Chain");
             if (Main.instance.IsActive)
                 for (int m = 0; m < 2; m++)
-                    BaseMod.BaseDrawing.DrawChain(spriteBatch, chainTex, 0, projectile.Center, Main.player[projectile.owner].Center);
+                    BaseDrawing.DrawChain(spriteBatch, chainTex, 0, projectile.Center, Main.player[projectile.owner].Center);
 
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 2);
             BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 1, frame, dColor, true);

@@ -358,7 +358,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
     public class RabbitcopterSoldier1 : RabbitcopterSoldier
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -369,7 +369,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
     public class RabbitcopterSoldier2 : RabbitcopterSoldier
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -380,7 +380,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
     public class RabbitcopterSoldier3 : RabbitcopterSoldier
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier";
         public override void SetDefaults()
         {
             base.SetDefaults();
@@ -391,7 +391,7 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
     public class RabbitcopterSoldier4 : RabbitcopterSoldier
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier";
         public override void SetDefaults()
         {
             base.SetDefaults();

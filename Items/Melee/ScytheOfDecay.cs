@@ -36,7 +36,7 @@ Death Sickle EX");
             item.noUseGraphic = true; 
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; 
-            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_NONE;
+            glowmaskDrawType = GLOWMASKTYPE_NONE;
             glowmaskDrawColor = Color.White;
         }
 

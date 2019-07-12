@@ -8,9 +8,9 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 {
     public class PurityWeaver : ModNPC
 	{
-        
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/PurityWeaver"; } }
-        
+
+        public override string Texture => "AAMod/NPCs/Enemies/Terrarium/PreHM/PurityWeaver";
+
 
         public override void SetStaticDefaults()
 		{
@@ -236,7 +236,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 
     public class PurityWeaverBody : PurityWeaver
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/PurityWeaverBody"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Terrarium/PreHM/PurityWeaverBody";
 
         public override void SetStaticDefaults()
         {
@@ -363,7 +363,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 
     public class PurityWeaverTail : PurityWeaver
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Terrarium/PreHM/PurityWeaverTail"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Terrarium/PreHM/PurityWeaverTail";
 
         public override void SetStaticDefaults()
         {

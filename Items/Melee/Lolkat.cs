@@ -38,7 +38,7 @@ Meowmere EX");
 			item.shootSpeed = 12f;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";
-            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD;
+            glowmaskDrawType = GLOWMASKTYPE_SWORD;
             glowmaskDrawColor = Color.White;
         }
 

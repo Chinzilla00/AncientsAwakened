@@ -11,8 +11,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 {
     public class AwakenedLung : ModNPC
 	{
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLung"; } }
-        
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLung";
+
 
         public override void SetStaticDefaults()
 		{
@@ -303,17 +303,12 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public int roarTimer = 0; //if this is > 0, then use the roaring frame.
         public int roarTimerMax = 120; //default roar timer. only changed for fire breath as it's longer.
         public bool Roaring //wether or not he is roaring. only used clientside for frame visuals.
-        {
-            get
-            {
-                return roarTimer > 0;
-            }
-        }
+=> roarTimer > 0;
     }
     
     public class AwakenedLungBody : AwakenedLung
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLungBody"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLungBody";
 
         public override void SetStaticDefaults()
         {
@@ -410,7 +405,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
     
     public class AwakenedLungTail : AwakenedLung
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLungTail"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLungTail";
 
         public override void SetStaticDefaults()
         {

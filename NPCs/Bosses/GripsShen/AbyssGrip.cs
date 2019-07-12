@@ -80,8 +80,8 @@ namespace AAMod.NPCs.Bosses.GripsShen
                 BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 2, npc.scale, 7, true, 0, 0, Color.Indigo, npc.frame);
             }
 
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], shader, npc, dColor);
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, shader, npc, Color.White);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], shader, npc, dColor);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, shader, npc, Color.White);
             return false;
         }
 

@@ -29,7 +29,7 @@ namespace AAMod.Items.Dev
 			item.knockBack = 4;
 			item.value = 3000000;
             item.expert = true;
-			item.UseSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/QUAK");
+			item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/QUAK");
             item.autoReuse = true;
 			item.shoot = 10;
 			item.shootSpeed = 15f;

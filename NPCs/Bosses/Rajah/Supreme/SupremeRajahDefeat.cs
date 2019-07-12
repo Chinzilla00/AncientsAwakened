@@ -162,12 +162,6 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
             }
         }
 
-        public override string BossHeadTexture
-        {
-            get
-            {
-                return npc.ai[1] == 0 ? "AAMod/NPCs/Bosses/Rajah/Supreme/SupremeRajahDefeat_Head_Boss" : npc.ai[1] == 1 ? "AAMod/NPCs/Bosses/Rajah/Supreme/SupremeRajahDefeat_Head_Boss1" : "AAMod/NPCs/Bosses/Rajah/Supreme/SupremeRajahDefeat_Head_Boss2";
-            }
-        }
+        public override string BossHeadTexture => npc.ai[1] == 0 ? "AAMod/NPCs/Bosses/Rajah/Supreme/SupremeRajahDefeat_Head_Boss" : npc.ai[1] == 1 ? "AAMod/NPCs/Bosses/Rajah/Supreme/SupremeRajahDefeat_Head_Boss1" : "AAMod/NPCs/Bosses/Rajah/Supreme/SupremeRajahDefeat_Head_Boss2";
     }
 }

@@ -34,15 +34,9 @@ namespace AAMod
 
 		public Vector2 oldDrawPos = default(Vector2);
 
-		public override bool CloneNewInstances
-		{
-			get
-			{
-				return true;
-			}
-		}
+        public override bool CloneNewInstances => true;
 
-		public string name
+        public string name
 		{
 			get
 			{
@@ -61,7 +55,7 @@ namespace AAMod
 			}
 			set
 			{
-				base.DisplayName.SetDefault(value);
+                DisplayName.SetDefault(value);
 			}
 		}
 

@@ -74,7 +74,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 				}
 				if (npc.ai[0] >= 375) //after he says 'heh' on the server, change music on the client
 				{
-					music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Akuma2");
+					music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
 				}				
 				if (npc.ai[0] >= 660) //after 660 on the server, transition color
 				{

@@ -25,7 +25,7 @@ namespace AAMod.Projectiles
 			{
 				Dust dust;
 				Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, 27, 4.736842f, 0f, 46, new Color(0, 255, 217), 1.184211f)];
+                dust = Main.dust[Dust.NewDust(position, 0, 0, 27, 4.736842f, 0f, 46, new Color(0, 255, 217), 1.184211f)];
                 dust.fadeIn = 0.9868421f;
                 dust.noGravity = true;
 			}

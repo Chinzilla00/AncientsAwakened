@@ -748,9 +748,9 @@ namespace AAMod.Worldgeneration
 			float num2 = Math.Max(0f, Math.Min(1f, (num - this._innerRadius) / (this._outerRadius - this._innerRadius)));
 			if (_random.NextDouble() > num2)
 			{
-				return base.UnitApply(origin, x, y, args);
+				return UnitApply(origin, x, y, args);
 			}
-			return base.Fail();
+			return Fail();
 		}
 	}	
 
@@ -763,8 +763,8 @@ namespace AAMod.Worldgeneration
 		public override bool Apply(Point origin, int x, int y, params object[] args)
 		{
 			if(x < 0 || x > Main.maxTilesX || y < 0 || y > Main.maxTilesY)
-				return base.Fail();
-			return base.UnitApply(origin, x, y, args);
+				return Fail();
+			return UnitApply(origin, x, y, args);
 		}
 	}	
 }

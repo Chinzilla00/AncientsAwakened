@@ -93,7 +93,7 @@ namespace AAMod.NPCs.Enemies.Hallow
 
 		public override bool PreDraw(SpriteBatch sb, Color dColor)
 		{
-			BaseMod.BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, Color.White);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, Color.White);
 			return false;
 		}
     }

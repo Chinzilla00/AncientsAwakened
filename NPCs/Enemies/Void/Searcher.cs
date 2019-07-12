@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Enemies.Void
         {
             npc.width = 35;
             npc.height = 35;
-            npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 5, 50);
+            npc.value = BaseUtility.CalcValue(0, 0, 5, 50);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
             npc.lifeMax = 250;
@@ -53,10 +53,10 @@ namespace AAMod.NPCs.Enemies.Void
         float shootAI = 0;
         public override void AI()
         {
-            BaseMod.BaseAI.AISkull(npc, ref npc.ai, true, 6f, 350f, 0.1f, 0.15f);
+            BaseAI.AISkull(npc, ref npc.ai, true, 6f, 350f, 0.1f, 0.15f);
             Player player = Main.player[npc.target];
             bool playerActive = player != null && player.active && !player.dead;
-            BaseMod.BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 0);
+            BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 0);
             if (Main.netMode != 1 && playerActive)
             {
                 shootAI++;

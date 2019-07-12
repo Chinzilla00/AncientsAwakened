@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 {
     public class AncientLung : ModNPC
 	{
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AncientLung"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/AncientLung";
 
 
         public override void SetStaticDefaults()
@@ -306,17 +306,12 @@ namespace AAMod.NPCs.Bosses.Akuma
         public int roarTimer = 0; //if this is > 0, then use the roaring frame.
         public int roarTimerMax = 120; //default roar timer. only changed for fire breath as it's longer.
         public bool Roaring //wether or not he is roaring. only used clientside for frame visuals.
-        {
-            get
-            {
-                return roarTimer > 0;
-            }
-        }
+=> roarTimer > 0;
     }
     
     public class AncientLungBody : AncientLung
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AncientLungBody"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/AncientLungBody";
 
         public override void SetStaticDefaults()
         {
@@ -412,7 +407,7 @@ namespace AAMod.NPCs.Bosses.Akuma
     
     public class AncientLungTail : AncientLung
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AncientLungTail"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/AncientLungTail";
 
         public override void SetStaticDefaults()
         {

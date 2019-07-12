@@ -9,15 +9,9 @@ namespace AAMod.NPCs.TownNPCs
     [AutoloadHead]
 	public class Anubis : ModNPC
 	{
-		public override string Texture
-		{
-			get
-			{
-				return "AAMod/NPCs/TownNPCs/Anubis";
-			}
-		}
+        public override string Texture => "AAMod/NPCs/TownNPCs/Anubis";
 
-		public override bool Autoload(ref string name)
+        public override bool Autoload(ref string name)
         {
             name = "Legendscribe";
             return mod.Properties.Autoload;

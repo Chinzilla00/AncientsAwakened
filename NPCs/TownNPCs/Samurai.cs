@@ -9,23 +9,11 @@ namespace AAMod.NPCs.TownNPCs
     [AutoloadHead]
 	public class Samurai : ModNPC
 	{
-		public override string Texture
-		{
-			get
-			{
-                return "AAMod/NPCs/TownNPCs/Samurai";
-            }
-		}
+        public override string Texture => "AAMod/NPCs/TownNPCs/Samurai";
 
-		public override string[] AltTextures
-		{
-			get
-			{
-				return new string[] { "AAMod/NPCs/TownNPCs/SamuraiParty" };
-            }
-        }
+        public override string[] AltTextures => new string[] { "AAMod/NPCs/TownNPCs/SamuraiParty" };
 
-		public override bool Autoload(ref string name)
+        public override bool Autoload(ref string name)
 		{
 			name = "Samurai";
 			return mod.Properties.Autoload;

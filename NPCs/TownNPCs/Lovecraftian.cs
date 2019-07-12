@@ -8,15 +8,9 @@ namespace AAMod.NPCs.TownNPCs
     [AutoloadHead]
 	public class Lovecraftian : ModNPC
 	{
-        public override string Texture
-		{
-			get
-			{
-				return "AAMod/NPCs/TownNPCs/Lovecraftian";
-			}
-		}
+        public override string Texture => "AAMod/NPCs/TownNPCs/Lovecraftian";
 
-		public override bool Autoload(ref string name)
+        public override bool Autoload(ref string name)
 		{
 			name = "Lovecraftian";
 			return mod.Properties.Autoload;

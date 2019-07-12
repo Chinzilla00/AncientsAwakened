@@ -10,9 +10,9 @@ namespace AAMod.NPCs.Bosses.Wyrm
 {
     public class Wyrm : ModNPC
 	{
-        
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmHead"; } }
-        
+
+        public override string Texture => "AAMod/NPCs/Enemies/Inferno/WyrmHead";
+
 
         public override void SetStaticDefaults()
 		{
@@ -297,7 +297,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 
     public class WyrmBody1 : Wyrm
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmBody1"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Inferno/WyrmBody1";
 
         public override void SetStaticDefaults()
         {
@@ -419,7 +419,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 
     public class WyrmBody2 : Wyrm
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmBody2"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Inferno/WyrmBody2";
 
         public override void SetStaticDefaults()
         {
@@ -542,7 +542,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 
     public class WyrmBody3 : Wyrm
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmBody3"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Inferno/WyrmBody3";
 
         public override void SetStaticDefaults()
         {
@@ -664,7 +664,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 
     public class WyrmBody4 : Wyrm
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmBody4"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Inferno/WyrmBody4";
 
         public override void SetStaticDefaults()
         {
