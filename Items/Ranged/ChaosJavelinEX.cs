@@ -16,8 +16,8 @@ Chaos Javelin EX");
         public override void SetDefaults()
         {
             item.shoot = mod.ProjectileType("ChaosJavelinEX");
-            item.shootSpeed = 12f;
-            item.damage = 200;
+            item.shootSpeed = 17f;
+            item.damage = 225;
             item.knockBack = 5f;
             item.ranged = true;
             item.useStyle = 1;

@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 			npc.lifeMax = 550000;
             npc.damage = 250;
             npc.defense = 100;
-            npc.width = 64;
+            npc.width = 78;
             npc.height = 60;
             npc.npcSlots = 0;
             npc.noTileCollide = true;
@@ -272,8 +272,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         {
                             if (Main.netMode != 1)
                             {
-                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 2f, PlayerPosY * 2f, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), (Main.expertMode ? npc.damage / 4 : npc.damage / 2)
-, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 2f, PlayerPosY * 2f, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), (Main.expertMode ? npc.damage / 4 : npc.damage / 2) , 0f, Main.myPlayer);
                             }
                         }
                         

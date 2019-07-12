@@ -24,8 +24,8 @@ Right click to fire normal arrows");
 			item.ranged = true;
 			item.width = 34;
 			item.height = 58;
-			item.useTime = 13;
-			item.useAnimation = 13;
+			item.useTime = 10;
+			item.useAnimation = 10;
 			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 0;
@@ -48,15 +48,15 @@ Right click to fire normal arrows");
         {
             if (player.altFunctionUse != 2)
             {
-                item.useTime = 13;
-                item.useAnimation = 13;
+                item.useTime = 10;
+                item.useAnimation = 10;
                 item.shootSpeed = 8f;
                 item.UseSound = new LegacySoundStyle(2, 75, Terraria.Audio.SoundType.Sound);
             }
             else
             {
-                item.useTime = 23;
-                item.useAnimation = 23;
+                item.useTime = 17;
+                item.useAnimation = 17;
                 item.shootSpeed = 14;
                 item.UseSound = SoundID.Item5;
             }

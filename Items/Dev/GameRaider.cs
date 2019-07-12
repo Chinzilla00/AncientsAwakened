@@ -20,7 +20,7 @@ namespace AAMod.Items.Dev
             item.ranged = true;
             item.width = 66;
             item.height = 28;
-            item.useTime = 25;
+            item.useTime = 18;
             item.useAnimation = 25;
             item.useStyle = 5;
             item.noMelee = true;
@@ -28,7 +28,7 @@ namespace AAMod.Items.Dev
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.UseSound = SoundID.Item11;
             item.autoReuse = true;
-            item.shootSpeed = 24f;
+            item.shootSpeed = 25f;
             item.shoot = mod.ProjectileType("GameRocket");
             item.useAmmo = AmmoID.Rocket;
             item.rare = 9;
