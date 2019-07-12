@@ -2779,7 +2779,7 @@ namespace AAMod
                 target.AddBuff(BuffID.Chilled, 180);
             }
 
-            if (depthSet && proj.minion)
+            if (depthSet && proj.ranged)
             {
                 target.AddBuff(BuffID.Poisoned, 180);
             }

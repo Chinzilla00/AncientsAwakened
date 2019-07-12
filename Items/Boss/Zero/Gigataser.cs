@@ -17,13 +17,13 @@ the longer the taser is charged, the more it penetrates");
         public override void SetDefaults()
         {
             item.noUseGraphic = false;
-            item.damage = 400;
+            item.damage = 320;
             item.noMelee = true;
             item.ranged = true;
             item.width = 74;
             item.height = 24;
-            item.useTime = 65;
-            item.useAnimation = 65; 
+            item.useTime = 45;
+            item.useAnimation = 45; 
             item.useStyle = 5; 
             item.shoot = mod.ProjectileType("ZeroTaze");
             item.knockBack = 12;
@@ -41,7 +41,7 @@ the longer the taser is charged, the more it penetrates");
             {
                 Vector2 vector82 = new Vector2(speedX, speedY);
                 float ai = Main.rand.Next(100);
-                Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.78539818525314331)) * 14f;
+                Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.6)) * 14f;
                 Projectile.NewProjectile(position.X, position.Y, vector83.X * 2, vector83.Y * 2, mod.ProjectileType<Projectiles.Zero.ZeroTaze>(), damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
             }
             return false;

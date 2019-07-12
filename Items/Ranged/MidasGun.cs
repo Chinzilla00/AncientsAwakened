@@ -31,6 +31,12 @@ namespace AAMod.Items.Ranged
             item.shootSpeed = 16f;
             item.useAmmo = AmmoID.Bullet;
         }
+		
+		public override Vector2? HoldoutOffset()
+		{
+			return new Vector2(-1, -6);
+		}
+		
         public override void AddRecipes()
         {
             ModRecipe recipe;

@@ -34,6 +34,11 @@ namespace AAMod.Items.Boss.Zero
             AARarity = 13;
         }
 
+		public override Vector2? HoldoutOffset()
+		{
+			return new Vector2(-6, 0);
+		}
+		
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
