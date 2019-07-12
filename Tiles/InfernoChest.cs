@@ -32,14 +32,16 @@ namespace AAMod.Tiles
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
-			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Inferno Chest");
-			AddMapEntry(new Color(0, 0, 255), name);
-            name = CreateMapEntryName(Name + "_Locked");
-            dustType = 206;
-			disableSmartCursor = true;
-			adjTiles = new int[] { TileID.Containers };
-			chest = "Inferno Chest";
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Inferno Chest");
+            AddMapEntry(new Color(150, 75, 0), name, MapChestName);
+            name = CreateMapEntryName(Name + "_Locked"); // With multiple map entries, you need unique translation keys.
+            name.SetDefault("Locked Inferno Chest");
+            AddMapEntry(new Color(0, 141, 63), name, MapChestName);
+            dustType = mod.DustType("IncineriteDust");
+            disableSmartCursor = true;
+            adjTiles = new int[] { TileID.Containers };
+            chest = "Inferno Chest";
             chestDrop = mod.ItemType("InfernoChest");
         }
 
