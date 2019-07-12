@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
@@ -7,21 +8,8 @@ namespace AAMod.Projectiles
 {
     public class RadiumArrow : ModProjectile
 	{
-        public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-            projectile.glowMask = customGlowMask;
             DisplayName.SetDefault("Radium Arrow");
 			ProjectileID.Sets.TrailCacheLength[projectile.type] = 8;
 			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
@@ -43,7 +31,11 @@ namespace AAMod.Projectiles
 			projectile.extraUpdates = 1;
 			aiType = ProjectileID.JestersArrow;
             projectile.arrow = true;
+        }
 
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override void Kill(int timeleft)

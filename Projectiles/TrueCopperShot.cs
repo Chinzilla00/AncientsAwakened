@@ -17,8 +17,7 @@ namespace AAMod.Projectiles
 			projectile.hostile = false;
             projectile.timeLeft = 900;
         }
-		
-		public override void AI()
+        public override void AI()
 		{
             if (Main.rand.NextFloat() < 1f)
             {
