@@ -97,7 +97,7 @@ namespace AAMod.Items.Boss.Akuma
                 int num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, num74, num76, num77, Main.myPlayer, 0f, 0f);
                 num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, mod.ProjectileType<LungBody>(), num76, num77, Main.myPlayer, num187, 0f);
                 int num188 = num187;
-                num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, mod.ProjectileType<LungBody1>(), num76, num77, Main.myPlayer, num187, 0f);
+                num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, mod.ProjectileType<LungBody>(), num76, num77, Main.myPlayer, num187, 0f);
                 Main.projectile[num188].localAI[1] = num187;
                 num188 = num187;
                 num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, mod.ProjectileType<LungTail>(), num76, num77, Main.myPlayer, num187, 0f);
@@ -107,7 +107,7 @@ namespace AAMod.Items.Boss.Akuma
             {
                 int num189 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, mod.ProjectileType<LungBody>(), num76, num77, Main.myPlayer, Projectile.GetByUUID(Main.myPlayer, Main.projectile[num185].ai[0]), 0f);
                 int num190 = num189;
-                num189 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, mod.ProjectileType<LungBody1>(), num76, num77, Main.myPlayer, num189, 0f);
+                num189 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, mod.ProjectileType<LungBody>(), num76, num77, Main.myPlayer, num189, 0f);
                 Main.projectile[num190].localAI[1] = num189;
                 Main.projectile[num190].netUpdate = true;
                 Main.projectile[num190].ai[1] = 1f;
