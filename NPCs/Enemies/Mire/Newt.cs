@@ -116,7 +116,7 @@ namespace AAMod.NPCs.Enemies.Mire
                 {
                     if (npc.direction == -1)
                     {
-                        Projectile.NewProjectile((new Vector2(npc.position.X + 56f, npc.Center.Y)), new Vector2(6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("AcidProj"), 15, 3);
+                        Projectile.NewProjectile((new Vector2(npc.position.X + 56f, npc.Center.Y)), new Vector2(3 + Main.rand.Next(0, 3), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("AcidProj"), 15, 3);
                     }
                     else
                     {

@@ -50,13 +50,16 @@ namespace AAMod.NPCs.Bosses.Serpent
         private int RunOnce = 0;
         private int StopSnow = 0;
 
-        public float[] internalAI = new float[1];
+        public float[] internalAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
             if ((Main.netMode == 2 || Main.dedServ))
             {
                 writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
             }
         }
 
@@ -66,6 +69,9 @@ namespace AAMod.NPCs.Bosses.Serpent
             if (Main.netMode == 1)
             {
                 internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
+                internalAI[2] = reader.ReadFloat();
+                internalAI[3] = reader.ReadFloat();
             }
         }
 

@@ -156,7 +156,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         for (int i = 0; i < 3; i++)
                         {
                             Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.78539818525314331)) * 14f;
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector83.X * 2, vector83.Y * 2, mod.ProjectileType<ZeroShock>(), npc.damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector83.X , vector83.Y, mod.ProjectileType<ZeroShock>(), npc.damage / 2, 0f, Main.myPlayer, vector82.ToRotation(), ai);
                         }
                     }
                 }

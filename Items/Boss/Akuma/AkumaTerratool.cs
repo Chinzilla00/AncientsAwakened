@@ -30,7 +30,8 @@ namespace AAMod.Items.Boss.Akuma
         {
             DisplayName.SetDefault("Draconian Terratool");
             Tooltip.SetDefault(@"Right Click to change tool types
-You may only have a maximum of 2 tool types active");
+You may only have a maximum of 2 tool types active
++20 tile reach");
         }
 
         public override bool AltFunctionUse(Player player)
@@ -47,6 +48,7 @@ You may only have a maximum of 2 tool types active");
                 item.pick = 0;
                 item.axe = 0;
                 item.hammer = 0;
+                item.damage = 0;
             }
             else
             {
@@ -54,6 +56,7 @@ You may only have a maximum of 2 tool types active");
                 item.pick = UI.TerratoolAUI.Pick;
                 item.axe = UI.TerratoolAUI.Axe;
                 item.hammer = UI.TerratoolAUI.Hammer;
+                item.damage = 100;
             }
             return true;
         }

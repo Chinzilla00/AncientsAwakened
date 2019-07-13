@@ -90,6 +90,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 BaseMod.BaseUtility.Chat("There's always a next time.", new Color(180, 41, 32));
                 BaseMod.BaseUtility.Chat("There's always a next time.", new Color(45, 46, 70));
+                AAWorld.downedShen = true;
                 npc.active = false;
             }
         }

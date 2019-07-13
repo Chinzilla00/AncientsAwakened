@@ -106,18 +106,14 @@ Non-Consumable");
                 if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
-            for (int m = 0; m < Main.maxProjectiles; m++)
+            if (NPC.AnyNPCs(mod.NPCType<ShenSpawn>()) || NPC.AnyNPCs(mod.NPCType<ShenTransition>()) || NPC.AnyNPCs(mod.NPCType<ShenDefeat>()) || NPC.AnyNPCs(mod.NPCType<ShenDeath>()))
             {
-                Projectile p = Main.projectile[m];
-                if (p != null && p.active && p.type == mod.ProjectileType("ShenTransition"))
-                {
-                    return false;
-                }
-
-                if (p != null && p.active && p.type == mod.ProjectileType("ShenSpawn"))
-                {
-                    return false;
-                }
+                return false;
+            }
+            if (!AAWorld.downedAllAncients)
+            {
+                BaseUtility.Chat("The sigil does nothing...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                return false;
             }
             return true;
         }

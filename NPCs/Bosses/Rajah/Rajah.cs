@@ -151,6 +151,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         }
 
         private bool SayLine = false;
+
         public override void AI()
         {
             AAModGlobalNPC.Rajah = npc.whoAmI;
@@ -379,40 +380,44 @@ namespace AAMod.NPCs.Bosses.Rajah
                     if (internalAI[3] > 40)
                     {
                         internalAI[3] = 0;
+                        int Rocket = isSupreme ? mod.ProjectileType<RajahRocketEXR>() : mod.ProjectileType<RajahRocket>();
                         Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
                         dir *= ProjSpeed();
-                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, mod.ProjectileType<RajahRocket>(), npc.damage / 5, 5, Main.myPlayer);
+                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, Rocket, npc.damage / 5, 5, Main.myPlayer);
                         npc.netUpdate = true;
                     }
                 }
                 else if (npc.ai[3] == 2) //Royal Scepter
                 {
+                    int carrots = isSupreme ? 5 : 3;
+                    int carrotType = isSupreme ? mod.ProjectileType("CarrotEXR") : mod.ProjectileType("CarrotHostile");
                     float spread = 45f * 0.0174f;
                     Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
                     dir *= ProjSpeed();
                     float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
                     double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
-                    double deltaAngle = spread / 6f;
+                    double deltaAngle = spread / carrots * 2;
                     if (internalAI[3] > 40)
                     {
                         internalAI[3] = 0;
-                        for (int i = 0; i < 3; i++)
+                        for (int i = 0; i < carrots; i++)
                         {
                             double offsetAngle = startAngle + (deltaAngle * i);
-                            Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("CarrotHostile"), npc.damage / 3, 5, Main.myPlayer);
+                            Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), carrotType, npc.damage / 3, 5, Main.myPlayer, 0);
                         }
                         npc.netUpdate = true;
                     }
                 }
                 else if (npc.ai[3] == 3) //Javelin
                 {
-                    if (internalAI[3] == 60)
+                    int Javelin = isSupreme ? mod.ProjectileType<BaneTEXR>() : mod.ProjectileType<BaneR>();
+                    if (internalAI[3] == (isSupreme ? 40 : 60))
                     {
                         Vector2 dir = Vector2.Normalize(player.position - WeaponPos);
                         dir *= ProjSpeed();
-                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, mod.ProjectileType<BaneR>(), npc.damage / 5, 5, Main.myPlayer);
+                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, Javelin, npc.damage / 5, 5, Main.myPlayer);
                     }
-                    if (internalAI[3] > 90)
+                    if (internalAI[3] > (isSupreme ? 60 : 90))
                     {
                         internalAI[3] = 0;
                     }
@@ -560,7 +565,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 return "NPCs/Bosses/Rajah/RajahArmsR";
             }
-            else if (npc.ai[3] == 3 && internalAI[3] <= 60) //Javelin
+            else if (npc.ai[3] == 3 && internalAI[3] <= (isSupreme ? 40 : 60)) //Javelin
             {
                 return "NPCs/Bosses/Rajah/RajahArmsS";
             }

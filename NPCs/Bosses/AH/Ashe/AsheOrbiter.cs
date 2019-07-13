@@ -88,12 +88,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 7f), (float)(Math.Cos(offsetAngle) * 7f), mod.ProjectileType<AsheMagicSpark>(), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
             }
-        }
-
-        public override bool PreDraw(SpriteBatch sb, Color dColor)
-		{
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, npc.GetAlpha(Color.White), true);
-			return false;
-		}		
+        }	
 	}
 }

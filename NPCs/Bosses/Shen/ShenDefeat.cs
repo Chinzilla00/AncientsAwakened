@@ -33,8 +33,13 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.ai[1]++;
             if (npc.ai[1] > 240)
             {
-                int nPc = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<ShenDeath>());
-                Main.npc[nPc].netUpdate = true;
+                if (!NPC.AnyNPCs(mod.NPCType<ShenDeath>()))
+                {
+                    int nPc = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<ShenDeath>());
+                    Main.npc[nPc].netUpdate = true;
+                    npc.active = false;
+                    npc.netUpdate = true;
+                }
             }
             else if (npc.ai[1] < 180)
             {
@@ -49,11 +54,6 @@ namespace AAMod.NPCs.Bosses.Shen
                         Projectile.NewProjectile(Pos, Vector2.Zero, mod.ProjectileType<ShenDeathBoom>(), 0, 0, Main.myPlayer, Main.rand.Next(3));
                     }
                 }
-            }
-            if (NPC.AnyNPCs(mod.NPCType<ShenDeath>()))
-            {
-                npc.active = false;
-                npc.netUpdate = true;
             }
         }
     }

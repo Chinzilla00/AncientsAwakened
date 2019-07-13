@@ -74,6 +74,9 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
                 projectile.height = height;
                 projectile.Center = projectile.position;
             }
+            int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, mod.ProjectileType<ExcalihareBoomR>(), projectile.damage, projectile.knockBack, Main.myPlayer);
+            Main.projectile[p].Center = projectile.Center;
+            Main.projectile[p].netUpdate = true;
             return false;
         }
 
@@ -101,7 +104,8 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             BaseDrawing.DrawAfterimage(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, 1f, 1f, 10, false, 0f, 0f, Main.DiscoColor);
-            return true;
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, lightColor, false);
+            return false;
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)

@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.ModLoader;
 using BaseMod;
 
-namespace AAMod.Projectiles.Rajah
+namespace AAMod.Projectiles.Rajah.Supreme
 {
     public class Excalihare : ModProjectile
     {
@@ -76,6 +76,9 @@ namespace AAMod.Projectiles.Rajah
                 projectile.height = height;
                 projectile.Center = projectile.position;
             }
+            int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, mod.ProjectileType<ExcalihareBoom>(), projectile.damage, projectile.knockBack, Main.myPlayer);
+            Main.projectile[p].Center = projectile.Center;
+            Main.projectile[p].netUpdate = true;
             return false;
         }
 

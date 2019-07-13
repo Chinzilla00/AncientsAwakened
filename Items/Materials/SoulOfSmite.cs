@@ -22,13 +22,13 @@ namespace AAMod.Items.Materials
 		public override void SetDefaults()
 		{
 			Item refItem = new Item();
-			refItem.SetDefaults(ItemID.SoulofSight);
-			item.width = refItem.width;
-			item.height = refItem.height;
-			item.maxStack = 999;
-			item.value = 1000;
-			item.rare = 3;
-		}
+            refItem.SetDefaults(ItemID.SoulofNight);
+            item.width = refItem.width;
+            item.height = refItem.height;
+            item.maxStack = 999;
+            item.value = 1000;
+            item.rare = refItem.rare;
+        }
 
         public override void PostUpdate()
 		{

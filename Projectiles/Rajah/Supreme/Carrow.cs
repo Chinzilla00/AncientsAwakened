@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Projectiles.Rajah
+namespace AAMod.Projectiles.Rajah.Supreme
 {
     public class Carrow : ModProjectile
 	{

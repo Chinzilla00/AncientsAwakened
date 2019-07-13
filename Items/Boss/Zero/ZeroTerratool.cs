@@ -30,7 +30,8 @@ namespace AAMod.Items.Boss.Zero
         {
             DisplayName.SetDefault("Doomsday Terratool");
             Tooltip.SetDefault(@"Right Click to change tool types
-You may only have a maximum of 2 tool types active");
+You may only have a maximum of 2 tool types active
++20 tile reach");
         }
 
         public override bool AltFunctionUse(Player player)
@@ -47,6 +48,8 @@ You may only have a maximum of 2 tool types active");
                 item.pick = 0;
                 item.axe = 0;
                 item.hammer = 0;
+                item.damage = 0;
+                item.damage = 0;
             }
             else
             {
@@ -54,6 +57,7 @@ You may only have a maximum of 2 tool types active");
                 item.pick = UI.TerratoolZUI.Pick;
                 item.axe = UI.TerratoolZUI.Axe;
                 item.hammer = UI.TerratoolZUI.Hammer;
+                item.damage = 100;
             }
             return true;
         }

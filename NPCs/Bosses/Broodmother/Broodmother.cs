@@ -42,6 +42,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.HitSound = new LegacySoundStyle(3, 6, Terraria.Audio.SoundType.Sound);
             npc.DeathSound = new LegacySoundStyle(4, 8, Terraria.Audio.SoundType.Sound);
             bossBag = mod.ItemType("BroodBag");
+            npc.npcSlots = 200;
         }
 
         public int frame = 0;
@@ -192,24 +193,10 @@ namespace AAMod.NPCs.Bosses.Broodmother
 		public int projectileInterval = 300; //how long until you fire projectiles
         private int projectileTimer = 0;
         private float pos = 250;
-        private float[] FireTimer = new float[1];
-        private int MaxMinions = Main.hardMode ? 8 : 6;
+        private readonly int MaxMinions = Main.hardMode ? 4 : 3;
 		public const float AISTATE_RUNAWAY = -1f, AISTATE_FLYABOVEPLAYER = 0f, AISTATE_FIREBREATH = 1f, AISTATE_FIREBOMB = 2f, AISTATE_SPAWNEGGS = 3f;
 
 		public override void AI()
-		{
-			//this should catch any more problems and write them to errorlogger (ie logs)
-			try
-			{
-				AI2();
-			}catch(Exception e)
-			{
-				ErrorLogger.Log(e.Message); 
-				ErrorLogger.Log(e.StackTrace);
-			}
-		}
-		
-        public void AI2()
         {
             Player player = Main.player[npc.target];
 
@@ -222,15 +209,16 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 npc.ai = new float[4];
                 if (internalAI[1] == AISTATE_FLYABOVEPLAYER)
                 {
-					npc.ai[1] = 1 + Main.rand.Next(2);
-                }else
+                    npc.ai[1] = 1 + Main.rand.Next(2);
+                }
+                else
                 if (internalAI[1] == AISTATE_SPAWNEGGS)
                 {
                     npc.ai[1] = (npc.ai[1] == 0 ? 1 : 0);
                 }
                 npc.netUpdate = true;
             }
-			pos = (npc.ai[1] == 0 ? -250 : 250);
+            pos = (npc.ai[1] == 0 ? -250 : 250);
 
             if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
@@ -308,7 +296,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     internalAI[2]++;
                     if (internalAI[2] > 30f)
                     {
-                        BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<BroodBreath>(), ref internalAI[3], 5, npc.damage / 2, 12, true, new Vector2(0, 40f));					
+                        BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<BroodBreath>(), ref internalAI[3], 5, npc.damage / 2, 12, true, new Vector2(0, 40f));
                     }
                     if (internalAI[2] > 90)
                     {
@@ -329,13 +317,12 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     {
                         if (projectileTimer > (projectileInterval + 60))
                             projectileTimer = 0;
-                        Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
                         Vector2 firePos = new Vector2(npc.Center.X + (32 * npc.direction), npc.Center.Y + 40f);
                         firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
                         if (Minions < MaxMinions)
                         {
                             int NPCID = NPC.NewNPC((int)firePos.X, (int)firePos.Y, mod.NPCType<BroodEgg>(), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
-							Main.npc[NPCID].velocity.Y = 4f;
+                            Main.npc[NPCID].velocity.Y = 4f;
                             Main.npc[NPCID].netUpdate = true;
                         }
                     }
@@ -350,7 +337,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     {
                         if (projectileTimer > (projectileInterval + 50))
                             projectileTimer = 0;
-                        Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
+                        Vector2 dir = new Vector2(npc.velocity.X * 2f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
                         Vector2 firePos = new Vector2(npc.Center.X + (64 * npc.direction), npc.Center.Y + 10f);
                         firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
                         int projID = Projectile.NewProjectile(firePos, dir, mod.ProjectileType("BroodBall"), npc.damage / 2, 1, 255);

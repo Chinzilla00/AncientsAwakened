@@ -150,8 +150,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         {
             Player player = Main.player[npc.target];
 
-            npc.frame.Y = 74 * internalAI[2];
-
             Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
 
             if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
@@ -394,7 +392,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 internalAI[3]++;
 
-                MoveToPoint(player.Center);
+                SlashMovement(player.Center);
 
                 if (internalAI[2] < 17)
                 {
@@ -617,18 +615,43 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             npc.frame.Y = Frame * frameHeight;
         }
-
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 10f;
+            float moveSpeed = 8f;
             if (Vector2.Distance(npc.Center, point) > 500)
             {
                 moveSpeed = 16;
             }
-            if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN)
+            if (internalAI[0] == AISTATE_SPIN)
             {
                 moveSpeed = 20f;
             }
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
+        }
+        public void SlashMovement(Vector2 point)
+        {
+            float moveSpeed = 15f;
             if (moveSpeed == 0f || npc.Center == point) return;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;

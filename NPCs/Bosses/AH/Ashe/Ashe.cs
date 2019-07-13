@@ -221,7 +221,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     if (Main.netMode != 1)
                     {
-                        FireMagic(npc, npc.velocity);
+                        FireMagic(npc);
                         HasFiredProj = true;
                         npc.netUpdate = true;
                     }
@@ -258,7 +258,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     if (Main.netMode != 1)
                     {
-                        FireMagic(npc, npc.velocity);
+                        FireMagic(npc);
                         npc.netUpdate = true;
                     }
                 }
@@ -289,7 +289,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     if (Main.netMode != 1)
                     {
-                        FireMagic(npc, npc.velocity);
+                        FireMagic(npc);
                         HasFiredProj = true;
                         npc.netUpdate = true;
                     }
@@ -527,7 +527,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public int OrbiterCount = Main.expertMode ? 10 : 8;
 
-        public void FireMagic(NPC npc, Vector2 velocity)
+        public void FireMagic(NPC npc)
         {
             Player player = Main.player[npc.target];
             int VortexType = mod.NPCType("AsheOrbiter");

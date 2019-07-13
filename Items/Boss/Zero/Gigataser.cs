@@ -24,7 +24,8 @@ the longer the taser is charged, the more it penetrates");
             item.height = 24;
             item.useTime = 45;
             item.useAnimation = 45; 
-            item.useStyle = 5; 
+            item.useStyle = 5;
+            item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Shock");
             item.shoot = mod.ProjectileType("ZeroTaze");
             item.knockBack = 12;
             item.value = Item.sellPrice(0, 30, 0, 0);
@@ -33,6 +34,7 @@ the longer the taser is charged, the more it penetrates");
             item.crit += 5;
             item.rare = 9;
             AARarity = 13;
+            item.autoReuse = true;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

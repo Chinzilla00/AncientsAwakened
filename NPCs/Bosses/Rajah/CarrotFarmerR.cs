@@ -123,13 +123,16 @@ namespace AAMod.NPCs.Bosses.Rajah
                     for (i = 0; i < 30; i++)
                     {
                         offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                        if (Main.rand.Next(15) == 0)
+                        int carrotType = rajah.isSupreme ? mod.ProjectileType("CarrotEXR") : mod.ProjectileType("CarrotHostile");
+                        if (Main.rand.Next(rajah.isSupreme ? 10 : 15) == 0)
                         {
-                            int ProjID = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("CarrotHostile"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                            int ProjID = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), carrotType, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                            Main.projectile[ProjID].Center = projectile.Center;
                         }
-                        if (Main.rand.Next(15) == 0)
+                        if (Main.rand.Next(rajah.isSupreme ? 10 : 15) == 0)
                         {
-                            int ProjID = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("CarrotHostile"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                            int ProjID = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), carrotType, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                            Main.projectile[ProjID].Center = projectile.Center;
                         }
                     }
                 }

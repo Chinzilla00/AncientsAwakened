@@ -138,12 +138,14 @@ namespace AAMod.NPCs.Bosses.Zero
                     laser.velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(14f, 0f), laser.rotation);
                 }
             }
-
-            Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
-            float num1 = Main.player[npc.target].position.X + (player.width / 2) - vector2.X;
-            float num2 = Main.player[npc.target].position.Y + (player.height / 2) - vector2.Y;
-            float NewRotation = (float)Math.Atan2(num2, num1);
-            npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
+            else
+            {
+                Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+                float num1 = Main.player[npc.target].position.X + (player.width / 2) - vector2.X;
+                float num2 = Main.player[npc.target].position.Y + (player.height / 2) - vector2.Y;
+                float NewRotation = (float)Math.Atan2(num2, num1);
+                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
+            }
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
