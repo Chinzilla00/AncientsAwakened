@@ -91,11 +91,11 @@ namespace AAMod.NPCs.Bosses.Djinn
             {
                 if (npc.velocity.X > 0)
                 {
-                    npc.direction = -1;
+                    npc.direction = 1;
                 }
                 else
                 {
-                    npc.direction = 1;
+                    npc.direction = -1;
                 }
             }
             else
