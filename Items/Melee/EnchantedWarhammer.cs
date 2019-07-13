@@ -27,7 +27,7 @@ namespace AAMod.Items.Melee
         public override void SetStaticDefaults()
         {
           DisplayName.SetDefault("Enchanted Warhammer");
-          Tooltip.SetDefault("Now with hammer power because gibs wouldn't shut up aout it.");
+          Tooltip.SetDefault("Now with hammer power because gibs wouldn't shut up about it.");
         }
 
  

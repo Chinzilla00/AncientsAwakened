@@ -473,7 +473,10 @@ namespace AAMod.NPCs.Bosses.Truffle
             }
             npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
             npc.velocity *= moveSpeed;
-            npc.velocity *= velMultiplier;
+			if (npc.direction == -1)
+				npc.velocity *= velMultiplier;
+			else
+				npc.velocity *= -velMultiplier;
         }
 
 
