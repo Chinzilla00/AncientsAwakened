@@ -2,25 +2,27 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 
-namespace AAMod.Items.Boss.Rajah
+namespace AAMod.Items.Boss.Rajah.Supreme
 {
 
-    public class Bunzooka : BaseAAItem
+    public class BunzookaEX : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bunzooka");
-            Tooltip.SetDefault("Fires Rabbit Rockets");
+            DisplayName.SetDefault("RPG");
+            Tooltip.SetDefault(@"`Rabbit Propelled Grenade`
+Fires Rabbit Rockets
+Bunnyzooka EX");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 150;
+            item.damage = 300;
             item.ranged = true;
             item.width = 66;
             item.height = 28;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 20;
+            item.useAnimation = 20;
             item.useStyle = 5;
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 7.5f;
@@ -28,9 +30,10 @@ namespace AAMod.Items.Boss.Rajah
             item.UseSound = SoundID.Item11;
             item.autoReuse = true;
             item.shootSpeed = 24f;
-            item.shoot = mod.ProjectileType("RabbitRocket3");
+            item.shoot = mod.ProjectileType("RabbitRocketEX");
             item.useAmmo = AmmoID.Rocket;
-            item.rare = 8;
+            item.rare = 9;
+            AARarity = 14;
         }
         public override Vector2? HoldoutOffset()
         {
@@ -44,7 +47,7 @@ namespace AAMod.Items.Boss.Rajah
             {
                 position += muzzleOffset;
             }
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("RabbitRocket3"), damage, knockBack, player.whoAmI, 0.0f, 0.0f);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("RabbitRocketEX"), damage, knockBack, player.whoAmI, 0.0f, 0.0f);
             return false;
         }
     }

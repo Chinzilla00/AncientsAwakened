@@ -3,19 +3,19 @@ using Terraria;
 using System;
 using Terraria.ID;
 
-namespace AAMod.Items.Boss.Rajah
+namespace AAMod.Items.Boss.Rajah.Supreme
 {
-    public class CottonCane : BaseAAItem
+    public class CottonCaneEX : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Cotton Cane");
-            Tooltip.SetDefault(@"Summons a Rabbitcopter Soldier to fight with you");
+            DisplayName.SetDefault("Rajah's Rage");
+            Tooltip.SetDefault(@"Summons a Royal Rabbit to fight with you");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 90;
+            item.damage = 300;
             item.summon = true;
             item.mana = 10;
             item.width = 26;
@@ -27,9 +27,9 @@ namespace AAMod.Items.Boss.Rajah
             item.knockBack = 3;
             item.rare = 8;
             item.UseSound = SoundID.Item44;
-            item.shoot = mod.ProjectileType<Projectiles.Rajah.RabbitcopterSoldier>();
+            item.shoot = mod.ProjectileType<Projectiles.Rajah.Supreme.RoyalRabbit>();
             item.shootSpeed = 10f;
-            item.buffType = mod.BuffType<Buffs.RabbitcopterSoldier>();
+            item.buffType = mod.BuffType<Buffs.RoyalRabbit>();
             item.autoReuse = true;
         }
 		

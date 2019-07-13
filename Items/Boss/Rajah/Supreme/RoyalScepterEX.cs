@@ -2,9 +2,9 @@ using Terraria;
 using System;
 using Terraria.ID;
 
-namespace AAMod.Items.Boss.Rajah
+namespace AAMod.Items.Boss.Rajah.Supreme
 {
-    public class RoyalScepter : BaseAAItem
+    public class RoyalScepterEX : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Rajah
             item.damage = 80;
             item.useStyle = 5;
             item.shootSpeed = 9f;
-            item.shoot = mod.ProjectileType<Projectiles.Rajah.Carrot>();
+            item.shoot = mod.ProjectileType<Projectiles.Rajah.Supreme.CarrotEX>();
             item.width = 58;
             item.height = 57;
             item.UseSound = SoundID.Item39;
@@ -28,7 +28,8 @@ namespace AAMod.Items.Boss.Rajah
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Royal Scepter");
+            DisplayName.SetDefault("Royal Staff");
+            Tooltip.SetDefault("Royal Scepter EX");
             Item.staff[item.type] = true;
         }
 
@@ -37,14 +38,14 @@ namespace AAMod.Items.Boss.Rajah
 		    float spread = 45f * 0.0174f;
 		    float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
             double startAngle = Math.Atan2(speedX, speedY) - .1d;
-		    double deltaAngle = spread / 6f;
+		    double deltaAngle = spread / 10f;
 		    double offsetAngle;
-		    for (int i = 0; i < 3; i++)
+		    for (int i = 0; i < 5; i++)
 		    {
 		    	offsetAngle = startAngle + (deltaAngle * i);
 		    	int proj = Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
                 Main.projectile[proj].ranged = false;
-                Main.projectile[proj].magic = false;
+                Main.projectile[proj].magic = true;
             }
 		    return false;
 		}

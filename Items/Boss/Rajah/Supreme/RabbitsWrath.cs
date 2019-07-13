@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.autoReuse = true;
             item.shootSpeed = 14f;
-            item.shoot = mod.ProjectileType("Carrot");
+            item.shoot = mod.ProjectileType("CarrotEX");
             item.rare = 9;
             AARarity = 14;
         }
@@ -60,7 +60,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
                 float num83 = vector13.Y;
                 float speedX5 = num82;
                 float speedY6 = num83 + Main.rand.Next(-40, 41) * 0.02f;
-                int p = Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType("Carrot"), damage * 3 / 2, knockBack, Main.myPlayer);
+                int p = Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType("CarrotEX"), damage * 3 / 2, knockBack, Main.myPlayer);
                 Main.projectile[p].melee = false;
                 Main.projectile[p].magic = true;
                 Main.projectile[p].extraUpdates = 1;

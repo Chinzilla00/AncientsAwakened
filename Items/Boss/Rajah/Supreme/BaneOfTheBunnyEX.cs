@@ -1,35 +1,39 @@
 using Terraria;
 using Terraria.ID;
 
-namespace AAMod.Items.Boss.Rajah
+namespace AAMod.Items.Boss.Rajah.Supreme
 {
-    public class BaneOfTheBunny : BaseAAItem
+    public class BaneOfTheBunnyEX : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Bane Of The Bunny");
+            DisplayName.SetDefault("Bane of the Slaughterer");
             Tooltip.SetDefault(@"Right click to use as a spear
 Left click to use as a javelin
-Throwing Javelins right after a spear thrust throws javelins faster for a moment");
+Throwing Javelins right after a spear thrust throws javelins faster for a moment
+Bane of the Bunny EX");
 		}
 
 		public override void SetDefaults()
 		{
-            item.damage = 270;
+            item.damage = 400;
             item.melee = true;
             item.width = 92; 
             item.height = 92;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.channel = true;
-            item.useAnimation = 20;
             item.useStyle = 5;
-            item.useTime = 20;
             item.knockBack = 4f;
-            item.value = Item.sellPrice(0, 30, 0, 0);
-            item.shoot = mod.ProjectileType("BaneS");
+            item.UseSound = SoundID.Item1;
+            item.value = Item.sellPrice(1, 0, 0, 0);
+            item.shoot = mod.ProjectileType("BaneEX");
             item.shootSpeed = 4f;
-            item.rare = 8;
+            item.rare = 9;
+            AARarity = 14;
+            item.useAnimation = 13;
+            item.useTime = 13;
+            item.autoReuse = true;
         }
 
         public override bool AltFunctionUse(Player player)
@@ -41,23 +45,17 @@ Throwing Javelins right after a spear thrust throws javelins faster for a moment
         {
             if (player.altFunctionUse == 2)
             {
-                item.useTime = 15;
-                item.useAnimation = 15;
-                item.UseSound = SoundID.Item1;
+                item.useAnimation = 11;
+                item.useTime = 11;
                 item.useStyle = 5;
-                item.shoot = mod.ProjectileType("BaneS");  
-                item.shootSpeed = 10f;
-                item.autoReuse = true;
+                item.shoot = mod.ProjectileType("BaneEX");  
             }
             else
             {
                 item.useAnimation = 13;
                 item.useTime = 13;
-                item.UseSound = SoundID.Item1;
                 item.useStyle = 1;
-                item.shoot = mod.ProjectileType("BaneT");
-                item.shootSpeed = 10f;
-                item.autoReuse = true;
+                item.shoot = mod.ProjectileType("BaneTEX");
             }
             return base.CanUseItem(player);
         }

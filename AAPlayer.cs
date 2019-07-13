@@ -61,6 +61,7 @@ namespace AAMod
         public bool ScoutMinion = false;
         public bool SagOrbiter = false;
         public bool Rabbitcopter = false;
+        public bool RabbitcopterR = false;
         public bool Sock = false;
         public bool Socc = false;
         public bool Squirrel = false;
@@ -358,6 +359,7 @@ namespace AAMod
             ScoutMinion = false;
             SagOrbiter = false;
             Rabbitcopter = false;
+            RabbitcopterR = false;
             Sock = false;
             Socc = false;
             Squirrel = false;
@@ -1167,101 +1169,6 @@ namespace AAMod
                     {
                         NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                     }
-                }
-            }
-
-            if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.DarkmatterJetpack>(), true, true) || BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.ZeroWings>(), true, true))
-            {
-                bool isFlying = false;
-                if (player.controlJump && player.wingTime > 0f && !player.jumpAgainCloud && player.jump == 0 && player.velocity.Y != 0f)
-                {
-                    isFlying = true;
-                }
-                if (player.controlJump && player.controlDown && player.wingTime > 0f)
-                {
-                    isFlying = true;
-                }
-                if (isFlying || player.jump > 0)
-                {
-                    player.wingFrameCounter++;
-                    int num80 = 2;
-                    if (player.wingFrameCounter >= num80 * 3)
-                    {
-                        player.wingFrameCounter = 0;
-                    }
-                    player.wingFrame = 1 + player.wingFrameCounter / num80;
-                }
-                else if (player.velocity.Y != 0f)
-                {
-                    if (player.controlJump)
-                    {
-                        player.wingFrameCounter++;
-                        int num81 = 2;
-                        if (player.wingFrameCounter >= num81 * 3)
-                        {
-                            player.wingFrameCounter = 0;
-                        }
-                        player.wingFrame = 1 + player.wingFrameCounter / num81;
-                    }
-                    else if (player.wingTime == 0f)
-                    {
-                        player.wingFrame = 0;
-                    }
-                    else
-                    {
-                        player.wingFrame = 0;
-                    }
-                }
-                else
-                {
-                    player.wingFrame = 0;
-                }
-                
-            }
-
-            if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Boss.Rajah.RabbitcopterEars>(), true, true))
-            {
-                bool isFlying = false;
-                if (player.controlJump && player.wingTime > 0f && !player.jumpAgainCloud && player.jump == 0 && player.velocity.Y != 0f)
-                {
-                    isFlying = true;
-                }
-                if (player.controlJump && player.controlDown && player.wingTime > 0f)
-                {
-                    isFlying = true;
-                }
-                if (isFlying || player.jump > 0)
-                {
-                    player.wingFrameCounter++;
-                    if (player.wingFrameCounter >= 6)
-                    {
-                        player.wingFrameCounter = 0;
-                    }
-                    player.wingFrame = 1 + player.wingFrameCounter / 2;
-                }
-                else if (player.velocity.Y != 0f)
-                {
-                    if (player.controlJump)
-                    {
-                        player.wingFrameCounter++;
-                        if (player.wingFrameCounter >= 6)
-                        {
-                            player.wingFrameCounter = 0;
-                        }
-                        player.wingFrame = 1 + player.wingFrameCounter / 2;
-                    }
-                    else if (player.wingTime == 0f)
-                    {
-                        player.wingFrame = 0;
-                    }
-                    else
-                    {
-                        player.wingFrame = 0;
-                    }
-                }
-                else
-                {
-                    player.wingFrame = 0;
                 }
             }
         }
