@@ -348,8 +348,8 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium"), ItemType("TerrariumBox"), TileType("TerrariumBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingDragon"), ItemType("SDBox"), TileType("SDBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant"), ItemType("SGBox"), TileType("SGBox"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shen"), ItemType("SRajahBox"), TileType("SRajahBox"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA"), ItemType("ShenBox"), TileType("ShenABox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shen"), ItemType("ShenBox"), TileType("ShenBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA"), ItemType("ShenABox"), TileType("ShenABox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SupremeRajah"), ItemType("SRajahBox"), TileType("SRajahBox"));
             }
 
