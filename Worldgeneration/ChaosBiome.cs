@@ -154,6 +154,7 @@ namespace AAMod.Worldgeneration
                 new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
                 new PlaceModWall(JungleWall, true)
             }));
+
             int genX = origin.X - (gen.width / 2);
             int genY = origin.Y - 30;
             gen.Generate(genX, genY, true, true);
@@ -188,7 +189,6 @@ namespace AAMod.Worldgeneration
                 {
                     for (int AltarY = yAxis - 45; AltarY < yAxis + 45; AltarY++)
                     {
-                        Tile tile = Main.tile[AltarX, AltarY];
                         if (Main.rand.Next(15) == 0)
                         {
                             WorldGen.PlaceObject(AltarX, AltarY - 1, mod.TileType<ChaosAltar1>());
@@ -276,7 +276,6 @@ namespace AAMod.Worldgeneration
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Volcano"), colorToTile, mod.GetTexture("Worldgeneration/VolcanoWalls"), colorToWall, mod.GetTexture("Worldgeneration/VolcanoLava"));
             Point newOrigin = new Point(origin.X, origin.Y - 30); //biomeRadius);
-            
 
             WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
 			{

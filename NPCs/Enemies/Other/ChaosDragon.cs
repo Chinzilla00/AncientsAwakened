@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Enemies.Other
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                 {
-                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.DiscordLight>(), 0f, 0f, 100, default(Color), 2f);
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.DiscordLight>(), 0f, 0f, 100);
                     Main.dust[num935].noGravity = true;
                     Main.dust[num935].noLight = false;
                 }
@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Enemies.Other
             {
                 npc.alpha = 0;
             }
-            BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 6f, 1.5f, false, 300);
+            BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 6f, 1.5f, true, 300);
             Player player = Main.player[npc.target];
             if (player.Center.X > npc.Center.X)
             {
@@ -73,7 +73,6 @@ namespace AAMod.NPCs.Enemies.Other
         {
             if (npc.life <= 0)
             {
-
                 npc.position.X = npc.position.X + npc.width / 2;
                 npc.position.Y = npc.position.Y + npc.height / 2;
                 npc.width = 44;

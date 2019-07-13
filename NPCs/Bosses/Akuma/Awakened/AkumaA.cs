@@ -569,9 +569,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             Texture2D glowTex3 = mod.GetTexture("Glowmasks/AkumaABody_Glow");
             Texture2D glowTex4 = mod.GetTexture("Glowmasks/AkumaABody1_Glow");
             Texture2D glowTex5 = mod.GetTexture("Glowmasks/AkumaATail_Glow");
-
-            Vector2 Drawpos = npc.Center - Main.screenPosition + new Vector2(0, npc.gfxOffY);
-            int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
+            
+            int shader;
             if (npc.ai[1] == 1 || npc.ai[2] >= 470 || Main.npc[(int)npc.ai[3]].ai[1] == 1 || Main.npc[(int)npc.ai[3]].ai[2] >= 500)
             {
                 shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
@@ -694,7 +693,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             if (Main.netMode != 1)
             {
-                if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("Akuma"))
+                if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("AkumaA"))
                 {
                     npc.life = 0;
                     npc.HitEffect(0, 10.0);

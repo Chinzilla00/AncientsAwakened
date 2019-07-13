@@ -8,7 +8,7 @@ namespace AAMod.Items.Boss.Djinn
 		{
 
             item.damage = 15;            
-            item.melee = true;
+            item.ranged = true;
             item.width = 14;
             item.height = 14;
 			item.useTime = 8;

@@ -28,7 +28,7 @@ namespace AAMod.Projectiles.Zero
             projectile.timeLeft = 120 * (projectile.extraUpdates + 1);
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 0;
-
+            projectile.penetrate = -1;
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)

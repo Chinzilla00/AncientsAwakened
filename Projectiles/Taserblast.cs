@@ -29,7 +29,11 @@ namespace AAMod.Projectiles
         public override void AI()
         {
             projectile.ai[0]++;
-            if (projectile.ai[0] > 20)
+            if (projectile.alpha > 0)
+            {
+                projectile.alpha -= 10;
+            }
+            else
             {
                 projectile.alpha = 0;
             }

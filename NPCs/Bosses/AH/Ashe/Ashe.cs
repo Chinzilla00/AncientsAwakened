@@ -371,7 +371,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             
             if (internalAI[0] == AISTATE_DRAGON) //Summoning a dragon
             {
-                npc.dontTakeDamage = true;
                 internalAI[3]++;
                 if (internalAI[3] > 240)
                 {
@@ -389,18 +388,16 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                 }
             }
-            else
-            {
-                npc.dontTakeDamage = false;
-            }
 
-            if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()))
+            if (NPC.AnyNPCs(mod.NPCType<AsheOrbiter>()) || internalAI[0] == AISTATE_DRAGON)
             {
                 npc.dontTakeDamage = true;
+                npc.reflectingProjectiles = true;
             }
             else
             {
                 npc.dontTakeDamage = false;
+                npc.reflectingProjectiles = false;
             }
 
             npc.rotation = 0; //No ugly rotation.
