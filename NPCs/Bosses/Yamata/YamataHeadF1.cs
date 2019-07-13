@@ -200,7 +200,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         dir *= 5f;
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), npc.damage / 2, 0f, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), npc.damage, 0f, Main.myPlayer);
                     }
                 }
                 else
