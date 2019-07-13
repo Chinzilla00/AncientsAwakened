@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.value = 0f;
-            npc.knockBackResist = 2f;
+            npc.knockBackResist = .2f;
             npc.npcSlots = 0f;
         }
 

@@ -105,10 +105,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             Main.npc[DeathAnim].velocity = npc.velocity;
             if (!NPC.AnyNPCs(mod.NPCType<YamataA>()))
             {
-                BaseMod.BaseUtility.Chat("Dad, you moron..! Whatever, Can't really say I didn't see it coming.", new Color(72, 78, 117));
+                BaseUtility.Chat("Dad, you moron..! Whatever, Can't really say I didn't see it coming.", new Color(72, 78, 117));
                 return;
             }
-            BaseMod.BaseUtility.Chat("That's it. I'm done, YOU deal with them, dad.", new Color(72, 78, 117));
+            BaseUtility.Chat("That's it. I'm done, YOU deal with them, dad.", new Color(72, 78, 117));
         }
 
         public override void BossLoot(ref string name, ref int potionType)

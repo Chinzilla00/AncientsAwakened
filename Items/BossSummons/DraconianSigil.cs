@@ -87,11 +87,11 @@ Non-Consumable");
 
             if (!AAWorld.downedAkuma)
             {
-                BaseMod.BaseUtility.Chat("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", new Color(180, 41, 32));
+                BaseUtility.Chat("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", new Color(180, 41, 32));
             }
             if (AAWorld.downedAkuma)
             {
-                BaseMod.BaseUtility.Chat("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
+                BaseUtility.Chat("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
             }
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Akuma"), true, 0, 0, "Akuma, Draconian Demon", false);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), player.position);

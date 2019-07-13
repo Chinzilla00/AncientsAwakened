@@ -86,12 +86,12 @@ namespace AAMod.NPCs.Bosses.Zero
                 Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
                 if (Main.expertMode)
                 {
-                    BaseMod.BaseUtility.Chat("PHYSICAL ZER0 UNIT IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    BaseUtility.Chat("PHYSICAL ZER0 UNIT IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
                     NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
                 }
                 if (!Main.expertMode)
                 {
-                    BaseMod.BaseUtility.Chat("D00MSDAY PR0T0CALL MALFUNCTI0N. MAIN.EXPERT M0DE = FALSE.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    BaseUtility.Chat("D00MSDAY PR0T0CALL MALFUNCTI0N. MAIN.EXPERT M0DE = FALSE.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
         }
@@ -106,7 +106,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 if (!AAWorld.downedZero)
                 {
-                    BaseMod.BaseUtility.Chat("Doomstone stops glowing. You can now mine it.", Color.Silver);
+                    BaseUtility.Chat("Doomstone stops glowing. You can now mine it.", Color.Silver);
                 }
                 AAWorld.downedZero = true;
                 npc.DropLoot(mod.ItemType("ApocalyptitePlate"), 2, 4);

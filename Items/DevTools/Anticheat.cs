@@ -33,14 +33,14 @@ namespace AAMod.Items.DevTools
         {
             if (AAWorld.Anticheat == false && runOnce == 0)
             {
-                BaseMod.BaseUtility.Chat("Anticheat Protocol enabled", Color.Cyan);
+                BaseUtility.Chat("Anticheat Protocol enabled", Color.Cyan);
                 AAWorld.Anticheat = true;
                 runOnce += 1;
             }
             if (AAWorld.Anticheat == true && runOnce == 0)
             {
                 runOnce += 1;
-                BaseMod.BaseUtility.Chat("Anticheat Protocol disabled", Color.Red);
+                BaseUtility.Chat("Anticheat Protocol disabled", Color.Red);
                 AAWorld.Anticheat = false;
             }
 

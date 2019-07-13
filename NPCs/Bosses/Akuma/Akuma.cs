@@ -58,9 +58,9 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.behindTiles = true;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Akuma");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma");
             npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.NPCKilled, "Sounds/Sounds/AkumaRoar");
+            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/AkumaRoar");
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -167,7 +167,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     if (weakness == false)
                     {
                         weakness = true;
-                        BaseMod.BaseUtility.Chat("Water?! ACK..! I CAN'T BREATHE!", new Color(180, 41, 32));
+                        BaseUtility.Chat("Water?! ACK..! I CAN'T BREATHE!", new Color(180, 41, 32));
                     }
                 }
                 else if (!npc.HasBuff(BuffID.Wet))
@@ -373,7 +373,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (loludided == false)
                 {
-                    BaseMod.BaseUtility.Chat("Yaaaaaaaaawn. I'm bushed kid, I'm gonna have to take a rain check. Come back tomorrow.", new Color(180, 41, 32));
+                    BaseUtility.Chat("Yaaaaaaaaawn. I'm bushed kid, I'm gonna have to take a rain check. Come back tomorrow.", new Color(180, 41, 32));
                     loludided = true;
                 }
                 npc.velocity.Y = npc.velocity.Y + 1f;
@@ -384,7 +384,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (loludided == false)
                 {
-                    BaseMod.BaseUtility.Chat("I thought you terrarians put up more of a fight. Guess not.", new Color(180, 41, 32));
+                    BaseUtility.Chat("I thought you terrarians put up more of a fight. Guess not.", new Color(180, 41, 32));
                     loludided = true;
                 }
                 npc.velocity.Y = npc.velocity.Y - 1f;
@@ -436,7 +436,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid)
                 {
-                    BaseMod.BaseUtility.Chat((!Quote1) ? "Hey kid! Sky's fallin', watch out!" : "Down comes fire and fury!", new Color(180, 41, 32));
+                    BaseUtility.Chat((!Quote1) ? "Hey kid! Sky's fallin', watch out!" : "Down comes fire and fury!", new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote1 = true;
                 }
@@ -454,7 +454,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid)
                 {
-                    if (!Quote2) BaseMod.BaseUtility.Chat("Spirits of the volcano! help me crush this kid!", new Color(180, 41, 32));
+                    if (!Quote2) BaseUtility.Chat("Spirits of the volcano! help me crush this kid!", new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote2 = true;
                 }
@@ -471,7 +471,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid)
                 {
-                    BaseMod.BaseUtility.Chat((!Quote3) ? "Hey kid! Watch out!" : "Incoming!", new Color(180, 41, 32));
+                    BaseUtility.Chat((!Quote3) ? "Hey kid! Watch out!" : "Incoming!", new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote3 = true;
                 }
@@ -484,7 +484,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid)
                 {
-                    BaseMod.BaseUtility.Chat((!Quote4) ? "Face the flames of despair, kid!" : "Heads up, kid!", new Color(180, 41, 32));
+                    BaseUtility.Chat((!Quote4) ? "Face the flames of despair, kid!" : "Heads up, kid!", new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote4 = true;
                 }
@@ -544,7 +544,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };
                 AAAI.DownedBoss(npc, mod, lootTable, AAWorld.downedAkuma, true, mod.ItemType("CrucibleScale"), 20, 30, false, false, true, 0, mod.ItemType("AkumaTrophy"), false);
-                BaseMod.BaseUtility.Chat("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", new Color(180, 41, 32));
+                BaseUtility.Chat("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", new Color(180, 41, 32));
 
             }
             if (Main.expertMode)
@@ -613,7 +613,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             else
             {
-                Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/AkumaRoar"), npc.Center);
+                Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), npc.Center);
             }
         }
 

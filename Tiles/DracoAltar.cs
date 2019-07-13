@@ -137,11 +137,11 @@ namespace AAMod.Tiles
                         }
                         if (!AAWorld.downedAkuma)
                         {
-                            BaseMod.BaseUtility.Chat("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", new Color(180, 41, 32));
+                            BaseUtility.Chat("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", new Color(180, 41, 32));
                         }
                         if (AAWorld.downedAkuma)
                         {
-                            BaseMod.BaseUtility.Chat("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
+                            BaseUtility.Chat("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
                         }
 
                         SpawnBoss(player, "Akuma", "Akuma; Draconian Demon");

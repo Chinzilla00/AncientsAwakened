@@ -139,11 +139,11 @@ namespace AAMod.Tiles
                 {
                     if (!AAWorld.downedYamata)
                     {
-                        BaseMod.BaseUtility.Chat("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
+                        BaseUtility.Chat("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
                     }
                     if (AAWorld.downedYamata)
                     {
-                        BaseMod.BaseUtility.Chat("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
+                        BaseUtility.Chat("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
                     }
 
                     SpawnBoss(player, "Yamata", "Yamata");

@@ -529,11 +529,11 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             if (DontSayDeathLine)
             {
-                BaseMod.BaseUtility.Chat("Papa, NO! You'll PAY for this, " + Main.player[Main.myPlayer].name + "!", new Color(102, 20, 48));
+                BaseUtility.Chat("Papa, NO! You'll PAY for this, " + Main.player[Main.myPlayer].name + "!", new Color(102, 20, 48));
             }
             else
             {
-                BaseMod.BaseUtility.Chat("AGH! Sorry papa..! I gotta bail!", new Color(102, 20, 48));
+                BaseUtility.Chat("AGH! Sorry papa..! I gotta bail!", new Color(102, 20, 48));
             }
             int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<FuryAsheVanish>(), 0);
             Main.npc[DeathAnim].velocity = npc.velocity;

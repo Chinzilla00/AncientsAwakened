@@ -95,7 +95,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 {
                     if (internalAI[0] != 2f || internalAI[0] != 3f)
                     {
-                        BaseMod.BaseUtility.Chat("target(s) neutralized. returning to stealth mode.", Color.PaleVioletRed);
+                        BaseUtility.Chat("target(s) neutralized. returning to stealth mode.", Color.PaleVioletRed);
                         internalAI[0] = 3f;
                     }
                 }
@@ -103,7 +103,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 {
                     if (internalAI[0] != 1f || internalAI[0] != 3f)
                     {
-                        BaseMod.BaseUtility.Chat("target(s) lost. returning to stealth mode.", Color.PaleVioletRed);
+                        BaseUtility.Chat("target(s) lost. returning to stealth mode.", Color.PaleVioletRed);
                         internalAI[0] = 3f;
                     }
                 }
@@ -155,7 +155,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 internalAI[4] = Main.rand.Next(2);
                 if (internalAI[2] == 2)
                 {
-                    BaseMod.BaseUtility.Chat("initializing repair program.", Color.PaleVioletRed);
+                    BaseUtility.Chat("initializing repair program.", Color.PaleVioletRed);
                 }
                 npc.ai = new float[4];
                 npc.netUpdate = true;

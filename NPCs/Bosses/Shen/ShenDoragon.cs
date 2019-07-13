@@ -947,7 +947,7 @@ namespace AAMod.NPCs.Bosses.Shen
             if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && !isAwakened)
             {
                 SpawnGrips = true;
-                BaseMod.BaseUtility.Chat("Grips! Assist me!", Color.DarkMagenta);
+                BaseUtility.Chat("Grips! Assist me!", Color.DarkMagenta);
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AbyssGrip"), false, 0, 0);
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("BlazeGrip"), false, 0, 0);
                 Main.PlaySound(SoundID.Roar, player.position, 0);
@@ -958,15 +958,15 @@ namespace AAMod.NPCs.Bosses.Shen
 
                 if (AAWorld.downedShen)
                 {
-                    BaseMod.BaseUtility.Chat("Ashe? Haruka? I need your assistance again..!", Color.DarkMagenta);
-                    BaseMod.BaseUtility.Chat("On it, Papa~!", new Color(102, 20, 48));
-                    BaseMod.BaseUtility.Chat("Again..?", new Color(72, 78, 117));
+                    BaseUtility.Chat("Ashe? Haruka? I need your assistance again..!", Color.DarkMagenta);
+                    BaseUtility.Chat("On it, Papa~!", new Color(102, 20, 48));
+                    BaseUtility.Chat("Again..?", new Color(72, 78, 117));
                 }
                 else
                 {
-                    BaseMod.BaseUtility.Chat("Girls..? Help your father with this insignificant mortal.", Color.DarkMagenta);
-                    BaseMod.BaseUtility.Chat("With pleasure, Papa~!", new Color(102, 20, 48));
-                    BaseMod.BaseUtility.Chat("Yes, father.", new Color(72, 78, 117));
+                    BaseUtility.Chat("Girls..? Help your father with this insignificant mortal.", Color.DarkMagenta);
+                    BaseUtility.Chat("With pleasure, Papa~!", new Color(102, 20, 48));
+                    BaseUtility.Chat("Yes, father.", new Color(72, 78, 117));
                 }
 
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("FuryAshe"), false, 0, 0);
@@ -1039,7 +1039,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         npc.DropLoot(mod.ItemType<Items.BossSummons.ChaosRune>(), 1f / 7);
                         AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType("ShenDefeat"), false, npc.Center, "");
-                        BaseMod.BaseUtility.Chat("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
+                        BaseUtility.Chat("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     BaseAI.DropItem(npc, mod.ItemType("ShenATrophy"), 1, 1, 15, true);
                     NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenDefeat>());
@@ -1054,12 +1054,12 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     if (!AAWorld.downedShen)
                     {
-                        BaseMod.BaseUtility.Chat("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                        BaseMod.BaseUtility.Chat("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
+                        BaseUtility.Chat("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                        BaseUtility.Chat("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     else
                     {
-                        BaseMod.BaseUtility.Chat("Good show, child, good show. Your combat prowess still impresses me! Maybe some day I'll show you my true power.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                        BaseUtility.Chat("Good show, child, good show. Your combat prowess still impresses me! Maybe some day I'll show you my true power.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     }
                     AAWorld.downedShen = true;
                     npc.DropLoot(mod.ItemType("ChaosScale"), 20, 30);

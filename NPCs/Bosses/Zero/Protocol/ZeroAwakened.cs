@@ -65,7 +65,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
                 if (!AAWorld.downedZero)
                 {
-                    BaseMod.BaseUtility.Chat("Doomstone stops glowing. You can now mine it.", Color.Silver);
+                    BaseUtility.Chat("Doomstone stops glowing. You can now mine it.", Color.Silver);
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("ZeroRune"));
                 }
                 AAWorld.downedZero = true;
@@ -114,12 +114,12 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             if (npc.life <= npc.lifeMax / 4 && Panic == false && !AAWorld.downedZero)
             {
                 Panic = true;
-                BaseMod.BaseUtility.Chat("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L", Color.Red.R, Color.Red.G, Color.Red.B);
+                BaseUtility.Chat("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (npc.life <= npc.lifeMax / 4 && Panic == false && AAWorld.downedZero)
             {
                 Panic = true;
-                BaseMod.BaseUtility.Chat("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L 0MEGA", Color.Red.R, Color.Red.G, Color.Red.B);
+                BaseUtility.Chat("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L 0MEGA", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (damage > 30)
             {
@@ -143,7 +143,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             if (npc.life <= 0 && !Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
             {
-                BaseMod.BaseUtility.Chat("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U", Color.Red.R, Color.Red.G, Color.Red.B);
+                BaseUtility.Chat("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U", Color.Red.R, Color.Red.G, Color.Red.B);
             }
         }
 
@@ -178,7 +178,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 if (damage > npc.lifeMax / 8)
                 {
-                    BaseMod.BaseUtility.Chat("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red);
+                    BaseUtility.Chat("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red);
                     damage = 0;
                 }
 
@@ -301,7 +301,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 npc.TargetClosest(true);
                 if (Killed == false)
                 {
-                    BaseMod.BaseUtility.Chat("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    BaseUtility.Chat("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                     Killed = true;
                 }
                 Panic = false;
@@ -317,7 +317,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 if (Killed == false)
                 {
-                    BaseMod.BaseUtility.Chat("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    BaseUtility.Chat("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                     Killed = true;
                 }
                 npc.TargetClosest(false);

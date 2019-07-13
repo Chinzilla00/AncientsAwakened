@@ -129,7 +129,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HarukaTrophy"));
             }
             NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<HarukaVanish>());
-            BaseMod.BaseUtility.Chat("Rgh..! Ow...", new Color(72, 78, 117));
+            BaseUtility.Chat("Rgh..! Ow...", new Color(72, 78, 117));
             npc.value = 0f;
             npc.boss = false;
         }
