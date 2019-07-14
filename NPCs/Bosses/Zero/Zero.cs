@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void SetDefaults()
         {
-            npc.damage = 65;
+            npc.damage = 59;
             npc.defense = 200;
             npc.lifeMax = 600000;
             if (Main.expertMode)

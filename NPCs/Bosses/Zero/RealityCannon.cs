@@ -21,12 +21,12 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetDefaults()
         {
             npc.width = 40;
-            npc.height = 70;
+            npc.height = 55;
             npc.damage = 62;
             npc.defense = 90;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
-            npc.lifeMax = 37500;
+            npc.lifeMax = 30000;
             npc.noGravity = true;
             animationType = NPCID.PrimeSaw;
             npc.noTileCollide = true;
