@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SetDefaults()
         {
 			npc.lifeMax = 550000;
-            npc.damage = 250;
+            npc.damage = 200;
             npc.defense = 100;
             npc.width = 78;
             npc.height = 60;
@@ -272,7 +272,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         {
                             if (Main.netMode != 1)
                             {
-                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 2f, PlayerPosY * 2f, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), (Main.expertMode ? npc.damage / 4 : npc.damage / 2) , 0f, Main.myPlayer);
+                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 2f, PlayerPosY * 2f, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), (Main.expertMode ? npc.damage / 4 : npc.damage / 2), 0f, Main.myPlayer);
                             }
                         }
                         
@@ -313,7 +313,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote1 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, mod.ProjectileType<YamataVenom>(), ref internalAI[3], 6, npc.damage, 9f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, mod.ProjectileType<YamataVenom>(), ref internalAI[3], 6, (Main.expertMode ? npc.damage / 4 : npc.damage / 2), 9f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 1f)
                 {
@@ -323,7 +323,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote3 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, -4f), player.width, player.height, mod.ProjectileType<YamataStorm>(), ref internalAI[3], 40, npc.damage, 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, -4f), player.width, player.height, mod.ProjectileType<YamataStorm>(), ref internalAI[3], 40, (Main.expertMode ? npc.damage / 4 : npc.damage / 2), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 2f)
                 {
@@ -333,7 +333,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote3 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, mod.ProjectileType<YamataBlast>(), ref internalAI[3], 15, npc.damage, 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, mod.ProjectileType<YamataBlast>(), ref internalAI[3], 15, (Main.expertMode ? npc.damage / 4 : npc.damage / 2), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 3f)
                 {
@@ -356,7 +356,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote1 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(Main.rand.Next(-2, 2), -1f), player.width, player.height, mod.ProjectileType<YamataStorm>(), ref internalAI[3], 30, npc.damage, 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(Main.rand.Next(-2, 2), -1f), player.width, player.height, mod.ProjectileType<YamataStorm>(), ref internalAI[3], 30, (Main.expertMode ? npc.damage / 4 : npc.damage / 2), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 1f)
                 {
@@ -366,7 +366,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote2 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, mod.ProjectileType<HomingSoul>(), ref internalAI[3], 15, npc.damage, 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, mod.ProjectileType<HomingSoul>(), ref internalAI[3], 15, (Main.expertMode ? npc.damage / 4 : npc.damage / 2), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 2f)
                 {
@@ -376,7 +376,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote3 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, mod.ProjectileType<YamataShot>(), ref internalAI[3], 10, npc.damage, 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, mod.ProjectileType<YamataShot>(), ref internalAI[3], 10, (Main.expertMode ? npc.damage / 4 : npc.damage / 2), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 3f)
                 {
@@ -386,7 +386,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote4 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, mod.ProjectileType<AbyssalThunder>(), ref internalAI[3], 20, npc.damage, 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, mod.ProjectileType<AbyssalThunder>(), ref internalAI[3], 20, (Main.expertMode ? npc.damage / 4 : npc.damage / 2), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 4f)
                 {
@@ -396,7 +396,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         QuoteSaid = true;
                         Quote5 = true;
                     }
-                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, mod.ProjectileType<YamataAVenom>(), ref internalAI[3], 6, npc.damage, 10f, true, new Vector2(20f, 15f));
+                    BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, mod.ProjectileType<YamataAVenom>(), ref internalAI[3], 6, (Main.expertMode ? npc.damage / 4 : npc.damage / 2), 10f, true, new Vector2(20f, 15f));
                 }
                 if (AttackType == 5f)
                 {
