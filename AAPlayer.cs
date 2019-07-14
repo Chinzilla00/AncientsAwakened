@@ -255,9 +255,9 @@ namespace AAMod
         public bool YamataAGravity = false;
         public bool Hunted = false;
         public bool Unstable = false;
-        public bool Abducted = false;
-        public Vector2 RingLocation;
         public bool IB = false;
+        public bool Spear = false;
+        public int SpearCount = 0;
         //buffs
 
         public bool Glitched = false;
@@ -480,6 +480,7 @@ namespace AAMod
             Hunted = false;
             Unstable = false;
             IB = false;
+            Spear = false;
         }
 
 
@@ -2291,9 +2292,14 @@ namespace AAMod
             int before = player.lifeRegen;
             bool drain = false;
 
-            if (Abducted)
+            if (Spear)
             {
-                player.Center = RingLocation;
+                if (player.lifeRegen > 0)
+                {
+                    player.lifeRegen = 0;
+                }
+                player.lifeRegenTime = 0;
+                player.lifeRegen -= SpearCount * 5;
             }
 
             if (Unstable)
@@ -2431,7 +2437,7 @@ namespace AAMod
             YamataAGravity = false;
             Hunted = false;
             Unstable = false;
-            Abducted = false;
+            Spear = false;
         }
 
         public override void MeleeEffects(Item item, Rectangle hitbox)

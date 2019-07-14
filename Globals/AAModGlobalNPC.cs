@@ -34,6 +34,10 @@ namespace AAMod
         public bool BrokenArmor = false;
         public bool DynaEnergy1 = false;
         public bool DynaEnergy2 = false;
+        public bool Spear = false;
+        public int SpearCount = 0;
+
+
         public static int Toad = -1;
         public static int Rose = -1;
         public static int Brain = -1;
@@ -58,6 +62,7 @@ namespace AAMod
             BrokenArmor = false;
             DynaEnergy1 = false;
             DynaEnergy2 = false;
+            Spear = false;
         }
 
         public override void SetDefaults(NPC npc)
@@ -90,6 +95,19 @@ namespace AAMod
                 if (damage < 40)
                 {
                     damage = 40;
+                }
+            }
+
+            if (Spear)
+            {
+                if (npc.lifeRegen > 0)
+                {
+                    npc.lifeRegen = 0;
+                }
+                npc.lifeRegen -= SpearCount * 5;
+                if (damage < SpearCount * 5)
+                {
+                    damage = SpearCount * 5;
                 }
             }
 

@@ -25,17 +25,27 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
         }
 
         public bool StuckInEnemy = false;
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
             bool flag3 = projectile.Colliding(myRect, target.getRect());
-            if (flag3 && !StuckInEnemy && !target.boss)
+            if (flag3 && !StuckInEnemy && target.GetModPlayer<AAPlayer>(mod).SpearCount <= 3)
             {
                 StuckInEnemy = true;
                 projectile.ai[0] = 1f;
                 projectile.ai[1] = target.whoAmI;
                 projectile.velocity = (target.Center - projectile.Center) * 0.75f;
+                Main.player[(int)projectile.ai[1]].GetModPlayer<AAPlayer>(mod).SpearCount += 1;
+                Main.player[(int)projectile.ai[1]].AddBuff(mod.BuffType<Buffs.SpearStuck>(), 100000);
                 projectile.netUpdate = true;
+            }
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            if (projectile.ai[0] == 1f)
+            {
+                Main.player[(int)projectile.ai[1]].GetModPlayer<AAPlayer>(mod).SpearCount -= 1;
             }
         }
 
@@ -78,10 +88,10 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
                 {
                     flag53 = true;
                 }
-                else if (Main.npc[num978].active)
+                else if (Main.player[num978].active || !Main.player[num978].dead)
                 {
-                    projectile.Center = Main.npc[num978].Center - projectile.velocity * 2f;
-                    projectile.gfxOffY = Main.npc[num978].gfxOffY;
+                    projectile.Center = Main.player[num978].Center - projectile.velocity * 2f;
+                    projectile.gfxOffY = Main.player[num978].gfxOffY;
                 }
                 else
                 {

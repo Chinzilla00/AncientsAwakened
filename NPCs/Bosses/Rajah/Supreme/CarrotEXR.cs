@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -23,7 +24,13 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
 			projectile.timeLeft = 600;  
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;
-		}
+            projectile.extraUpdates = 1;
+        }
+
+        public override void PostAI()
+        {
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
+        }
 
         public override void Kill(int timeleft)
         {

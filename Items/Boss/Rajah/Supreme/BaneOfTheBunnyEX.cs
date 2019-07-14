@@ -28,12 +28,12 @@ Bane of the Bunny EX");
             item.UseSound = SoundID.Item1;
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.shoot = mod.ProjectileType("BaneEX");
-            item.shootSpeed = 4f;
             item.rare = 9;
             AARarity = 14;
             item.useAnimation = 13;
             item.useTime = 13;
             item.autoReuse = true;
+            item.shootSpeed = 12f;
         }
 
         public override bool AltFunctionUse(Player player)

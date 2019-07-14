@@ -28,12 +28,14 @@ namespace AAMod.Projectiles
         {
             Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
             bool flag3 = projectile.Colliding(myRect, target.getRect());
-            if (flag3 && !StuckInEnemy && !target.boss)
+            if (flag3 && !StuckInEnemy && !target.boss && target.GetGlobalNPC<AAModGlobalNPC>(mod).SpearCount <= 3)
             {
                 StuckInEnemy = true;
                 projectile.ai[0] = 1f;
                 projectile.ai[1] = target.whoAmI;
                 projectile.velocity = (target.Center - projectile.Center) * 0.75f;
+                Main.npc[(int)projectile.ai[1]].GetGlobalNPC<AAModGlobalNPC>(mod).SpearCount += 1;
+                Main.npc[(int)projectile.ai[1]].AddBuff(mod.BuffType<Buffs.SpearStuck>(), 100000);
                 projectile.netUpdate = true;
             }
             target.AddBuff(BuffID.OnFire, 40);
@@ -43,7 +45,7 @@ namespace AAMod.Projectiles
         {
             if (projectile.ai[0] == 1f)
             {
-                Projectile.NewProjectile(projectile.position, Vector2.Zero, mod.ProjectileType<DynaEnergy>(), projectile.damage, projectile.knockBack, Main.myPlayer, 0, 0);
+                Main.npc[(int)projectile.ai[1]].GetGlobalNPC<AAModGlobalNPC>(mod).SpearCount -= 1;
             }
         }
 

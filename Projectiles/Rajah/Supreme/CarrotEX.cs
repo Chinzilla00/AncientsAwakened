@@ -1,5 +1,7 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Rajah.Supreme
@@ -24,10 +26,12 @@ namespace AAMod.Projectiles.Rajah.Supreme
 			projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 0;
+            projectile.extraUpdates = 1;
 		}
 
         public override void AI()
         {
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 30;
             const float desiredFlySpeedInPixelsPerFrame = 10;
@@ -76,8 +80,8 @@ namespace AAMod.Projectiles.Rajah.Supreme
         {
             for (int num468 = 0; num468 < 20; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.CarrotDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, new Color(191, 86, 188));
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, DustID.Gold, -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 100, default(Color));
                 Main.dust[num469].velocity *= 2f;
             }
         }

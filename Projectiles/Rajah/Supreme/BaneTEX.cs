@@ -22,7 +22,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
             projectile.penetrate = -1;
             projectile.extraUpdates = 1;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 3;
+            projectile.localNPCHitCooldown = 0;
         }
 
         public bool StuckInEnemy = false;
@@ -32,11 +32,22 @@ namespace AAMod.Projectiles.Rajah.Supreme
             bool flag3 = projectile.Colliding(myRect, target.getRect());
             if (flag3 && !StuckInEnemy && !target.boss)
             {
+                projectile.usesLocalNPCImmunity = false;
                 StuckInEnemy = true;
                 projectile.ai[0] = 1f;
                 projectile.ai[1] = target.whoAmI;
                 projectile.velocity = (target.Center - projectile.Center) * 0.75f;
+                Main.npc[(int)projectile.ai[1]].GetGlobalNPC<AAModGlobalNPC>(mod).SpearCount += 1;
+                Main.npc[(int)projectile.ai[1]].AddBuff(mod.BuffType<Buffs.SpearStuck>(), 100000);
                 projectile.netUpdate = true;
+            }
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            if (projectile.ai[0] == 1f)
+            {
+                Main.npc[(int)projectile.ai[1]].GetGlobalNPC<AAModGlobalNPC>(mod).SpearCount -= 1;
             }
         }
 
@@ -92,6 +103,14 @@ namespace AAMod.Projectiles.Rajah.Supreme
                 {
                     projectile.Kill();
                 }
+            }
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            if (projectile.ai[0] == 1f)
+            {
+                Main.npc[(int)projectile.ai[1]].GetGlobalNPC<AAModGlobalNPC>(mod).SpearCount -= 1;
             }
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
