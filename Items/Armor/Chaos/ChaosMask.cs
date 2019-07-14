@@ -50,8 +50,8 @@ You can swim and liquid does not affect your movement";
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("AtlanteanHelm"));
-			recipe.AddIngredient(null, "OceanCrystal", 1);
+			recipe.AddIngredient(mod.ItemType("TrueAtlanteanHelm"));
+			recipe.AddIngredient(null, "ChaosCrystal", 1);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

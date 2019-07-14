@@ -55,8 +55,8 @@ A void scout hunts down your foes for you";
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("DoomiteVisor"));
-			recipe.AddIngredient(null, "VoidCrystal", 1);
+			recipe.AddIngredient(mod.ItemType("TrueDoomiteVisor"));
+			recipe.AddIngredient(null, "ChaosCrystal", 1);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

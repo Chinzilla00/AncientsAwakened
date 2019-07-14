@@ -10,10 +10,9 @@ namespace AAMod.Items.Armor.Chaos
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Chaos Slayer Greaves");
+			DisplayName.SetDefault("Chaos Greaves");
             Tooltip.SetDefault(@"10% increased movement speed
-7% increased damage
-The power of discordian rage radiates from this armor");
+7% increased damage");
         }
 
 		public override void SetDefaults()

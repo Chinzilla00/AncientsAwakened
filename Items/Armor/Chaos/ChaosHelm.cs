@@ -73,8 +73,8 @@ You are immune to knockback";
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("RaiderHelm"));
-			recipe.AddIngredient(null, "IceCrystal", 1);
+			recipe.AddIngredient(mod.ItemType("TrueRaiderHelm"));
+			recipe.AddIngredient(null, "ChaosCrystal", 1);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

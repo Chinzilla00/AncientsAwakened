@@ -51,7 +51,7 @@ Night Vision and hunter effects
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("AbyssalFukumen"));
+			recipe.AddIngredient(mod.ItemType("TrueAbyssalFukumen"));
 			recipe.AddIngredient(null, "MireCrystal", 1);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
