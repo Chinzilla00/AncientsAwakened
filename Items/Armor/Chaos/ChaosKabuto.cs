@@ -48,7 +48,7 @@ Your Swung weapons set your enemies ablaze";
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("TrueBlazingKabuto"));
-            recipe.AddIngredient(mod.ItemType("InfernoCrystal"));
+            recipe.AddIngredient(mod.ItemType("ChaosCrystal"));
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
