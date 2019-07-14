@@ -38,7 +38,7 @@ namespace AAMod.Items.Armor.Chaos
 			player.setBonus = @"10% increased melee speed
 Enemies are more likely to target you
 Enemies that strike you are set ablaze
-Your Swung weapons set your enemies ablaze";
+Your Swung weapons inflicts them with Bogtoxin and Dragonflame";
             player.meleeSpeed += .1f;
             player.aggro += 4;
             player.GetModPlayer<AAPlayer>(mod).kindledSet = true;

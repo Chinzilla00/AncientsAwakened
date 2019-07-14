@@ -307,7 +307,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
 
             internalAI[3]++;
-            if (internalAI[3] < 2600)
+            if (internalAI[3] < 5400 - (Main.expertMode ? 900 : 0))
             {
                 if (Distance < 160f)
                 {
@@ -337,10 +337,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         killArms = true;
                         npc.netUpdate = true;
                     }
-                    else
-                    {
-                        BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
-                    }
+                    BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
                 }
             }
 

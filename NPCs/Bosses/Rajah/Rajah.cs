@@ -75,6 +75,8 @@ namespace AAMod.NPCs.Bosses.Rajah
         private Texture2D SupremeEyes;
         private Texture2D ArmTex;
         public int WeaponFrame = 0;
+        public Vector2 MovePoint;
+        public bool SelectPoint = false;
 
         /*
          * npc.ai[0] = Jump Timer
@@ -158,7 +160,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             WeaponPos = new Vector2(npc.Center.X + (npc.direction == 1 ? -78 : 78), npc.Center.Y - 9);
             StaffPos = new Vector2(npc.Center.X + (npc.direction == 1 ? 78 : -78), npc.Center.Y - 9);
             if (Roaring) roarTimer--;
-
+            
             if (Main.netMode != 1 && npc.type == mod.NPCType<SupremeRajah>() && isSupreme == false)
             {
                 isSupreme = true;
@@ -258,7 +260,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
             if (player.Center.Y < npc.position.Y - 30f || TileBelowEmpty() || 
                 !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height) ||
-                Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 2000)
+                Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 2000 || isDashing)
             {
                 npc.noGravity = true;
                 FlyAI();
@@ -716,7 +718,22 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 if (Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 1000)
                 {
-                    speed = 50f; isDashing = true;
+                    if (SelectPoint)
+                    {
+                        int DashDirection = 1;
+                        if (Main.player[npc.target].Center.X < npc.Center .X)
+                        {
+                            DashDirection = -1;
+                        }
+                        float Point = 500 * DashDirection;
+                        MovePoint = Main.player[npc.target].Center + new Vector2(Point, 0);
+                        SelectPoint = false;
+                        npc.netUpdate = true;
+                    }
+
+                    MoveToPoint(MovePoint);
+
+                    isDashing = true;
                 }
                 else
                 {
@@ -1031,6 +1048,18 @@ namespace AAMod.NPCs.Bosses.Rajah
         }
 
         public override string BossHeadTexture => "AAMod/NPCs/Bosses/Rajah/Rajah_Head_Boss";
+
+        public void MoveToPoint(Vector2 point)
+        {
+            float moveSpeed = 50f;
+            if (moveSpeed == 0f || npc.Center == point) return;
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
+        }
     }
 
     [AutoloadBossHead]

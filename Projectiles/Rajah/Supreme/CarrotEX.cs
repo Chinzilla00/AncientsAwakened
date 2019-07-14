@@ -33,9 +33,9 @@ namespace AAMod.Projectiles.Rajah.Supreme
         {
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
-            const int homingDelay = 30;
+            const int homingDelay = 15;
             const float desiredFlySpeedInPixelsPerFrame = 10;
-            const float amountOfFramesToLerpBy = 40; // minimum of 1, please keep in full numbers even though it's a float!
+            const float amountOfFramesToLerpBy = 30; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
             if (projectile.ai[aislotHomingCooldown] > homingDelay)

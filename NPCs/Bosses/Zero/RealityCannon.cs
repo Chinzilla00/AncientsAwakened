@@ -42,6 +42,11 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
+        }
+
         public override bool CheckActive()
         {
             if (NPC.AnyNPCs(mod.NPCType<Zero>()))

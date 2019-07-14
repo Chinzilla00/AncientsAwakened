@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.defense = 90;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
-            npc.lifeMax = 37500;
+            npc.lifeMax = 30000;
             npc.noGravity = true;
             animationType = NPCID.PrimeSaw;
             npc.noTileCollide = true;
@@ -42,6 +42,11 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.buffImmune[k] = true;
             }
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
         }
 
         public override bool CheckActive()
@@ -153,9 +158,9 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.rotation += (float)(0.1 + ((double)(npc.ai[3] / 120) * 0.4f)) * npc.direction * 1;
                 if (npc.ai[3] > 120)
                 {
+                    BaseAI.FireProjectile(player.Center, npc.position, mod.ProjectileType<RiftZ>(), npc.damage / 2, 4, 2, -1, Main.myPlayer);
                     npc.ai[2] = 0;
                     npc.ai[3] = 0;
-                    BaseAI.FireProjectile(player.Center, npc.position, mod.ProjectileType<RiftZ>(), npc.damage / 2, 4, 2, -1, Main.myPlayer);
                 }
             }
             else

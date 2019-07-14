@@ -19,7 +19,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
+            Main.PlaySound(SoundID.Item14, projectile.position);
             int p = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType<RabbitBoomEX>(), projectile.damage, projectile.knockBack, projectile.owner);
             Main.projectile[p].Center = projectile.Center;
             float spread = 12f * 0.0174f;

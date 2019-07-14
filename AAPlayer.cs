@@ -709,9 +709,13 @@ namespace AAMod
 
             if (trueBlazing)
             {
-                npc.AddBuff(mod.BuffType<Electrified>(), 180);
+                npc.AddBuff(BuffID.OnFire, 180);
             }
-
+            if (ChaosMe)
+            {
+                npc.AddBuff(mod.BuffType<DragonFire>(), 180);
+                npc.AddBuff(mod.BuffType<HydraToxin>(), 180);
+            }
 
             if (techneciumSet)
             {
