@@ -17,9 +17,9 @@ namespace AAMod.Items.Dev
 		public override void SetDefaults()
 		{
             
-			item.damage = 200;
+			item.damage = 160;
 			item.magic = true;
-            item.mana = 13;
+            item.mana = 10;
             item.width = 80;
 			item.height = 42;
 			item.useTime = 10;
