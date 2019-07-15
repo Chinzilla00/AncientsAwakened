@@ -9,7 +9,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
         public override void SetDefaults()
         {
             item.mana = 5;
-            item.damage = 80;
+            item.damage = 150;
             item.useStyle = 5;
             item.shootSpeed = 9f;
             item.shoot = mod.ProjectileType<Projectiles.Rajah.Supreme.CarrotEX>();
@@ -17,7 +17,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
             item.height = 57;
             item.UseSound = SoundID.Item39;
             item.useAnimation = 30;
-            item.useTime = 15;
+            item.useTime = 10;
             item.autoReuse = true;
             item.rare = 8;
             item.noMelee = true;

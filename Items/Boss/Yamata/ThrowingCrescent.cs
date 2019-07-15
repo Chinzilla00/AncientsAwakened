@@ -14,13 +14,13 @@ namespace AAMod.Items.Boss.Yamata
             item.melee = true;
             item.width = 30;
             item.height = 30;
-			item.useTime = 8;
+			item.useTime = 5;
 			item.useAnimation = 8;
             item.noUseGraphic = true;
             item.useStyle = 1;
 			item.knockBack = 1;
 			item.value = Item.sellPrice(0, 30, 0, 0);
-			item.shootSpeed = 9f;
+			item.shootSpeed = 15f;
 			item.shoot = mod.ProjectileType ("TC");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
