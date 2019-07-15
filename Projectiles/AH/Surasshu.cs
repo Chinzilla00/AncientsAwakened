@@ -24,6 +24,8 @@ namespace AAMod.Projectiles.AH
             projectile.tileCollide = false;
             projectile.melee = true;
             projectile.ownerHitCheck = true;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 12;
         }
 
         public override void AI()

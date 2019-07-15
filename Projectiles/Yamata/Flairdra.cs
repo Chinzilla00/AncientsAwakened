@@ -85,7 +85,7 @@ namespace AAMod.Projectiles.Yamata
 
         public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
 		{
-            if (Main.netMode != 1 && Main.rand.Next(5) == 0)
+            if (Main.netMode != 1 && Main.rand.Next(2) == 0)
             {
                 Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
                 float spread = 12f * 0.0174f;

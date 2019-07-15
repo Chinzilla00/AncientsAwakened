@@ -188,17 +188,21 @@ namespace AAMod.Projectiles.Akuma
 				vector14.Normalize();
 				vector14 *= 40f;
 				bool flag11 = Collision.CanHit(vector2, 0, 0, vector2 + vector14, 0, 0);
-				for (int num123 = 0; num123 < num122; num123++)
-				{
-					float num124 = num123 - (num122 - 1f) / 2f;
-					Vector2 vector15 = vector14.RotatedBy(num121 * num124, default(Vector2));
-					if (!flag11)
-					{
-						vector15 -= vector14;
-					}
-					int num125 = Projectile.NewProjectile(vector2.X + vector15.X, vector2.Y + vector15.Y, num82, num83, type, projectile.damage, 1f, player.whoAmI, 0.0f, 0.0f);
-					Main.projectile[num125].noDropItem = true;	
-				}					
+                if (chargeLevel >= 2)
+                {
+                    type = mod.ProjectileType<DaybreakArrow>();
+                }
+                for (int num123 = 0; num123 < num122; num123++)
+                {
+                    float num124 = num123 - (num122 - 1f) / 2f;
+                    Vector2 vector15 = vector14.RotatedBy(num121 * num124, default(Vector2));
+                    if (!flag11)
+                    {
+                        vector15 -= vector14;
+                    }
+                    int num125 = Projectile.NewProjectile(vector2.X + vector15.X, vector2.Y + vector15.Y, num82, num83, type, projectile.damage, 1f, player.whoAmI, 0.0f, 0.0f);
+                    Main.projectile[num125].noDropItem = true;
+                }
             }
         }
 

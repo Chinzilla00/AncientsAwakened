@@ -20,7 +20,7 @@ namespace AAMod.Projectiles.AH
             projectile.hostile = false;
             projectile.friendly = true;
             projectile.ignoreWater = true;
-            projectile.penetrate = 1;
+            projectile.penetrate = -1;
             projectile.alpha = 255;
             projectile.timeLeft = 100;
             projectile.aiStyle = -1;
@@ -83,34 +83,12 @@ namespace AAMod.Projectiles.AH
             {
                 projectile.ai[0] += 1f;
             }
-            if (projectile.penetrate < 100)
-            {
-                projectile.alpha = 0;
-                projectile.velocity.X *= 0.00f;
-                projectile.velocity.Y *= 0.00f;
-                if (++projectile.frameCounter >= 4)
-                {
-                    projectile.frameCounter = 0;
-                    if (++projectile.frame >= 6)
-                    {
-                        projectile.Kill();
-
-                    }
-                }
-            }
             projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
         }
-
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType("Dragonfire"), 300);
-        }
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 7, 0, 2);
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 1, frame, projectile.GetAlpha(Color.White), true);
-            return false;
+            int Boom = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType<MagicBoom>(), damage, knockback, Main.myPlayer, 0, 0);
+            Main.projectile[Boom].Center = projectile.Center;
         }
     }
 }

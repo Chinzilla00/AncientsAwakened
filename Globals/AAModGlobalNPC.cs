@@ -35,7 +35,6 @@ namespace AAMod
         public bool DynaEnergy1 = false;
         public bool DynaEnergy2 = false;
         public bool Spear = false;
-        public int SpearCount = 0;
 
 
         public static int Toad = -1;
@@ -104,10 +103,10 @@ namespace AAMod
                 {
                     npc.lifeRegen = 0;
                 }
-                npc.lifeRegen -= SpearCount * 5;
-                if (damage < SpearCount * 5)
+                npc.lifeRegen -= 5;
+                if (damage < 5)
                 {
-                    damage = SpearCount * 5;
+                    damage = 5;
                 }
             }
 

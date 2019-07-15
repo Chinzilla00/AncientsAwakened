@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -38,6 +40,23 @@ namespace AAMod.Items.Boss.AH
                     line2.overrideColor = AAColor.Rarity12;
                 }
             }
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            float spread = 25f * 0.0174f;
+            float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
+            double startAngle = Math.Atan2(speedX, speedY) - .1d;
+            double deltaAngle = spread / 6f;
+            double offsetAngle;
+            for (int i = 0; i < 3; i++)
+            {
+                offsetAngle = startAngle + (deltaAngle * i);
+                int proj = Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
+                Main.projectile[proj].ranged = false;
+                Main.projectile[proj].magic = true;
+            }
+            return false;
         }
     }
 }

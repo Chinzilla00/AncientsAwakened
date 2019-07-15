@@ -257,7 +257,6 @@ namespace AAMod
         public bool Unstable = false;
         public bool IB = false;
         public bool Spear = false;
-        public int SpearCount = 0;
         //buffs
 
         public bool Glitched = false;
@@ -2303,7 +2302,7 @@ namespace AAMod
                     player.lifeRegen = 0;
                 }
                 player.lifeRegenTime = 0;
-                player.lifeRegen -= SpearCount * 5;
+                player.lifeRegen -= 5;
             }
 
             if (Unstable)

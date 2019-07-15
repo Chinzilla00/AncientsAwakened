@@ -1,4 +1,6 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -23,7 +25,7 @@ namespace AAMod.Projectiles.Zero
                        -projectile.velocity.Y * 0.2f, 46, default(Color), 1.184211f);
             Main.dust[num469].noGravity = true;
             Main.dust[num469].velocity *= 2f;
-            projectile.rotation += .02f;
+            projectile.rotation += .1f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 30;
             const float desiredFlySpeedInPixelsPerFrame = 5;
@@ -87,6 +89,11 @@ namespace AAMod.Projectiles.Zero
 		    DisplayName.SetDefault("Vortex");
 		}
 
-
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 2);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, lightColor, true);
+            return false;
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
             item.mana = 9;
             item.UseSound = SoundID.Item20; 
             item.autoReuse = true; 
-            item.shoot = mod.ProjectileType("Toxibomb");  
+            item.shoot = mod.ProjectileType("ToxibombSmall");  
             item.shootSpeed = 20f;
             item.rare = 9; AARarity = 13;
         }
@@ -33,7 +33,8 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Abyssal Bomb");
-			Tooltip.SetDefault("Fires off explosive spirit bombs");
+			Tooltip.SetDefault(@"Fires off explosive spirit bombs
+Small chance to fire an awakened bomb that explodes into abyss souls");
 		}
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -42,11 +43,19 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity13;;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }
 
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            if (Main.rand.Next(3) == 0)
+            {
+                type = mod.ProjectileType("Toxibomb");
+            }
+            return true;
+        }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

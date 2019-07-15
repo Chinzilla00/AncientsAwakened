@@ -29,14 +29,13 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
         {
             Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
             bool flag3 = projectile.Colliding(myRect, target.getRect());
-            if (flag3 && !StuckInEnemy && target.GetModPlayer<AAPlayer>(mod).SpearCount <= 3)
+            Main.player[(int)projectile.ai[1]].AddBuff(mod.BuffType<Buffs.SpearStuck>(), 2);
+            if (flag3 && !StuckInEnemy)
             {
                 StuckInEnemy = true;
                 projectile.ai[0] = 1f;
                 projectile.ai[1] = target.whoAmI;
                 projectile.velocity = (target.Center - projectile.Center) * 0.75f;
-                Main.player[(int)projectile.ai[1]].GetModPlayer<AAPlayer>(mod).SpearCount += 1;
-                Main.player[(int)projectile.ai[1]].AddBuff(mod.BuffType<Buffs.SpearStuck>(), 100000);
                 projectile.netUpdate = true;
             }
         }
@@ -45,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
         {
             if (projectile.ai[0] == 1f)
             {
-                Main.player[(int)projectile.ai[1]].GetModPlayer<AAPlayer>(mod).SpearCount -= 1;
+               ;
             }
         }
 

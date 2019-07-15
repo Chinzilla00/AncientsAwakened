@@ -38,7 +38,7 @@ namespace AAMod.Projectiles.Yamata   //The directory for your .cs and .png; Exam
             if (Main.netMode != 1)
             {
                 ProjTimer++;
-                if (ProjTimer >= 60)
+                if (ProjTimer >= 30)
                 {
                     ProjTimer = 0;
                     Projectile.NewProjectile(projectile.position, Vector2.Zero, mod.ProjectileType<FlairdraCyclone>(), projectile.damage, projectile.knockBack, projectile.owner);

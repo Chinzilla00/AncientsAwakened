@@ -23,6 +23,7 @@ namespace AAMod.Projectiles.Zero
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
+            projectile.ranged = true;
         }
 
         public override void AI()

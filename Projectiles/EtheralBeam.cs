@@ -15,19 +15,19 @@ namespace AAMod.Projectiles
 			DisplayName.SetDefault("Etheral Beam");
 		}
 
-		public override void SetDefaults()
-		{
-			projectile.width = 18;
-			projectile.height = 18;
-			projectile.hostile = false;
-			projectile.magic = true;
-			projectile.friendly = true;
-			projectile.tileCollide = false;
-
-			projectile.penetrate = -1;
-			projectile.alpha = 255;
-            
-		}
+        public override void SetDefaults()
+        {
+            projectile.width = 18;
+            projectile.height = 18;
+            projectile.hostile = false;
+            projectile.magic = true;
+            projectile.friendly = true;
+            projectile.tileCollide = false;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 15;
+            projectile.penetrate = -1;
+            projectile.alpha = 255;
+        }
 
         public override bool PreAI()
         {
@@ -73,11 +73,11 @@ namespace AAMod.Projectiles
                 Tuple<int, int> tuple;
                 float num818;
                 if (!Collision.TupleHitLine(num814, num815, num816, num817, 0, 0, new List<Tuple<int, int>>(), out tuple))
-                    num818 = new Vector2(Math.Abs(num814 - tuple.Item1), Math.Abs(num815 - tuple.Item2)).Length() * 16f;
+                    num818 = new Vector2((float)Math.Abs(num814 - tuple.Item1), (float)Math.Abs(num815 - tuple.Item2)).Length() * 16f;
                 else if (tuple.Item1 == num816 && tuple.Item2 == num817)
                     num818 = 2400f;
                 else
-                    num818 = new Vector2(Math.Abs(num814 - tuple.Item1), Math.Abs(num815 - tuple.Item2)).Length() * 16f;
+                    num818 = new Vector2((float)Math.Abs(num814 - tuple.Item1), (float)Math.Abs(num815 - tuple.Item2)).Length() * 16f;
 
                 array3[num812] = num818;
                 num812++;
@@ -95,8 +95,8 @@ namespace AAMod.Projectiles
             {
                 float num827 = projectile.velocity.ToRotation() + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
                 float num828 = (float)Main.rand.NextDouble() * 2f + 2f;
-                Vector2 vector73 = new Vector2((float)Math.Cos(num827) * num828, (float)Math.Sin(num827) * num828);
-                int num829 = Dust.NewDust(vector72, 0, 0, 206, vector73.X, vector73.Y, 0);
+                Vector2 vector73 = new Vector2((float)Math.Cos((double)num827) * num828, (float)Math.Sin((double)num827) * num828);
+                int num829 = Dust.NewDust(vector72, 0, 0, 206, vector73.X, vector73.Y, 0, default(Color), 1f);
                 Main.dust[num829].noGravity = true;
                 Main.dust[num829].scale = 1.7f;
             }
@@ -115,34 +115,34 @@ namespace AAMod.Projectiles
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
-		{
-			float n = 0f;
-			if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), projectile.Center, projectile.Center + projectile.velocity * projectile.localAI[1], 30f * projectile.scale, ref n))
-				return true;
+        {
+            float n = 0f;
+            if (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), projectile.Center, projectile.Center + projectile.velocity * projectile.localAI[1], 30f * projectile.scale, ref n))
+                return true;
 
-			return false;
-		}
+            return false;
+        }
 
-		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-		{
-			if (projectile.velocity == Vector2.Zero)
-				return false;
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            if (projectile.velocity == Vector2.Zero)
+                return false;
 
-			Texture2D tex2 = Main.projectileTexture[projectile.type];
-			float num210 = projectile.localAI[1];
-			Color c_ = new Color(255, 255, 255, 127);
-			Vector2 value20 = projectile.Center.Floor();
-			num210 -= projectile.scale * 10.5f;
-			Vector2 vector41 = new Vector2(projectile.scale);
-			DelegateMethods.f_1 = 1f;
-			DelegateMethods.c_1 = c_;
-			DelegateMethods.i_1 = 54000 - (int)Main.time / 2;
-			Vector2 vector42 = projectile.oldPos[0] + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
-			Utils.DrawLaser(Main.spriteBatch, tex2, value20 - Main.screenPosition, value20 + projectile.velocity * num210 - Main.screenPosition, vector41, new Utils.LaserLineFraming(DelegateMethods.TurretLaserDraw));
-			DelegateMethods.c_1 = new Color(255, 255, 255, 127) * 0.75f * projectile.Opacity;
-			Utils.DrawLaser(Main.spriteBatch, tex2, value20 - Main.screenPosition, value20 + projectile.velocity * num210 - Main.screenPosition, vector41 / 2f, new Utils.LaserLineFraming(DelegateMethods.TurretLaserDraw));
-			return false;
-		}
+            Texture2D tex2 = Main.projectileTexture[projectile.type];
+            float num210 = projectile.localAI[1];
+            Color c_ = new Color(255, 255, 255, 127);
+            Vector2 value20 = projectile.Center.Floor();
+            num210 -= projectile.scale * 10.5f;
+            Vector2 vector41 = new Vector2(projectile.scale);
+            DelegateMethods.f_1 = 1f;
+            DelegateMethods.c_1 = c_;
+            DelegateMethods.i_1 = 54000 - (int)Main.time / 2;
+            Vector2 vector42 = projectile.oldPos[0] + new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
+            Utils.DrawLaser(Main.spriteBatch, tex2, value20 - Main.screenPosition, value20 + projectile.velocity * num210 - Main.screenPosition, vector41, new Utils.LaserLineFraming(DelegateMethods.TurretLaserDraw));
+            DelegateMethods.c_1 = new Color(255, 255, 255, 127) * 0.75f * projectile.Opacity;
+            Utils.DrawLaser(Main.spriteBatch, tex2, value20 - Main.screenPosition, value20 + projectile.velocity * num210 - Main.screenPosition, vector41 / 2f, new Utils.LaserLineFraming(DelegateMethods.TurretLaserDraw));
+            return false;
+        }
 
-	}
+    }
 }

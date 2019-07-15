@@ -53,6 +53,8 @@ namespace AAMod.Projectiles
             {
 
                 int Shoot = ProjectileID.Meowmere;
+                Main.projectile[Shoot].usesLocalNPCImmunity = true;
+                Main.projectile[Shoot].localNPCHitCooldown = 4;
                 Main.projectile[Shoot].melee = false;
                 Main.projectile[Shoot].magic = true;
 
@@ -60,8 +62,8 @@ namespace AAMod.Projectiles
                 {
                     if (Main.rand.Next(3) == 0)
                     {
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), Shoot, projectile.damage, 3, Main.myPlayer);
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), Shoot, projectile.damage, 3, Main.myPlayer);
+                        int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), Shoot, projectile.damage, 3, Main.myPlayer);
+                        int proj1 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, -16 + Main.rand.Next(0, 33), -16 + Main.rand.Next(0, 33), Shoot, projectile.damage, 3, Main.myPlayer);
                     }
                     if (Main.rand.Next(50) == 0)
                     {

@@ -22,7 +22,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
             projectile.penetrate = -1;
             projectile.extraUpdates = 1;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 0;
+            projectile.localNPCHitCooldown = 25;
         }
 
         public bool StuckInEnemy = false;
@@ -30,24 +30,17 @@ namespace AAMod.Projectiles.Rajah.Supreme
         {
             Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
             bool flag3 = projectile.Colliding(myRect, target.getRect());
-            if (flag3 && !StuckInEnemy && !target.boss)
+            if (!target.boss)
             {
-                projectile.usesLocalNPCImmunity = false;
-                StuckInEnemy = true;
-                projectile.ai[0] = 1f;
-                projectile.ai[1] = target.whoAmI;
-                projectile.velocity = (target.Center - projectile.Center) * 0.75f;
-                Main.npc[(int)projectile.ai[1]].GetGlobalNPC<AAModGlobalNPC>(mod).SpearCount += 1;
                 Main.npc[(int)projectile.ai[1]].AddBuff(mod.BuffType<Buffs.SpearStuck>(), 100000);
-                projectile.netUpdate = true;
-            }
-        }
-
-        public override void Kill(int timeLeft)
-        {
-            if (projectile.ai[0] == 1f)
-            {
-                Main.npc[(int)projectile.ai[1]].GetGlobalNPC<AAModGlobalNPC>(mod).SpearCount -= 1;
+                if (flag3 && !StuckInEnemy)
+                {
+                    StuckInEnemy = true;
+                    projectile.ai[0] = 1f;
+                    projectile.ai[1] = target.whoAmI;
+                    projectile.velocity = (target.Center - projectile.Center) * 0.75f;
+                    projectile.netUpdate = true;
+                }
             }
         }
 

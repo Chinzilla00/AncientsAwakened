@@ -1,4 +1,6 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ModLoader;
@@ -226,6 +228,15 @@ namespace AAMod.Projectiles.Rajah
                     projectile.frame = 0;
                 }
             }
+        }
+
+
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 2);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 4, frame, lightColor, false);
+            return false;
         }
     }
 }

@@ -34,16 +34,21 @@ namespace AAMod.Projectiles.Rajah.Supreme
         {
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = Main.player[projectile.owner].GetModPlayer<AAPlayer>(mod);
-            if (player.dead)
+            bool flag64 = projectile.type == mod.ProjectileType("RoyalRabbit");
+            player.AddBuff(mod.BuffType<Buffs.RoyalRabbit>(), 3600);
+            if (flag64)
             {
-                modPlayer.RabbitcopterR = false;
+                if (player.dead)
+                {
+                    modPlayer.RabbitcopterR = false;
+                }
+                if (modPlayer.RabbitcopterR)
+                {
+                    projectile.timeLeft = 2;
+                }
             }
-            if (modPlayer.RabbitcopterR)
-            {
-                projectile.timeLeft = 2;
-            }
-            float num8 = 0.1f;
             float num9 = projectile.width;
+            float num8 = 0.1f;
             num9 *= 2f;
             for (int j = 0; j < 1000; j++)
             {
@@ -70,6 +75,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
             Vector2 vector = projectile.position;
             float num10 = 400f;
             bool flag = false;
+            int num11 = -1;
             projectile.tileCollide = false;
             NPC ownerMinionAttackTargetNPC2 = projectile.OwnerMinionAttackTargetNPC;
             if (ownerMinionAttackTargetNPC2 != null && ownerMinionAttackTargetNPC2.CanBeChasedBy(this, false))
@@ -80,6 +86,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
                     num10 = num14;
                     vector = ownerMinionAttackTargetNPC2.Center;
                     flag = true;
+                    num11 = ownerMinionAttackTargetNPC2.whoAmI;
                 }
             }
             if (!flag)
@@ -95,6 +102,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
                             num10 = num15;
                             vector = nPC2.Center;
                             flag = true;
+                            num11 = l;
                         }
                     }
                 }
@@ -143,9 +151,10 @@ namespace AAMod.Projectiles.Rajah.Supreme
                     num22 = 15f;
                 }
                 Vector2 center2 = projectile.Center;
+                Vector2 vector6 = player.Center - center2 + new Vector2(0f, -60f);
                 projectile.ai[1] = 3600f;
                 projectile.netUpdate = true;
-                Vector2 vector6 = player.Center - center2;
+                vector6 = player.Center - center2;
                 int num23 = 1;
                 for (int m = 0; m < projectile.whoAmI; m++)
                 {
@@ -269,8 +278,8 @@ namespace AAMod.Projectiles.Rajah.Supreme
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 8, 0, 2);
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 8, frame, lightColor, false);
-            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Glowmasks/RoyalRabbit_Glow"), 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 8, frame, Main.DiscoColor, false);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 8, frame, lightColor, false);
+            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Glowmasks/RoyalRabbit_Glow"), 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 8, frame, Main.DiscoColor, false);
             return false;
         }
     }

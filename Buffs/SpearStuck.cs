@@ -21,15 +21,6 @@ namespace AAMod.Buffs
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
 
             player.GetModPlayer<AAPlayer>(mod).Spear = true;
-            if (modPlayer.SpearCount < 1)
-            {
-                player.DelBuff(buffIndex);
-                buffIndex--;
-            }
-            else
-            {
-                player.buffTime[buffIndex] = 18000;
-            }
         }
 
 		public override void Update(NPC npc, ref int buffIndex)
@@ -37,12 +28,6 @@ namespace AAMod.Buffs
             AAModGlobalNPC GNPC = npc.GetGlobalNPC<AAModGlobalNPC>(mod);
 
             GNPC.Spear = true;
-
-            if (GNPC.SpearCount < 1)
-            {
-                npc.DelBuff(buffIndex);
-                buffIndex--;
-            }
         }
 	}
 }

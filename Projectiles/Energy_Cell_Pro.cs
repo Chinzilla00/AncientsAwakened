@@ -21,7 +21,7 @@ namespace AAMod.Projectiles
 			projectile.height = 4;              
 			projectile.aiStyle = 1;             
 			projectile.friendly = true;         
-			projectile.hostile = false;         //Can the projectile deal damage to the player?
+			projectile.hostile = false;         
 			projectile.ranged = true;           
 			projectile.timeLeft = 600;          
 			projectile.alpha = 255;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in)

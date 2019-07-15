@@ -2,6 +2,8 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
+using BaseMod;
+using Microsoft.Xna.Framework;
 
 namespace AAMod.Projectiles.Zero   //The directory for your .cs and .png; Example: TutorialMOD/Projectiles
 {
@@ -45,7 +47,7 @@ namespace AAMod.Projectiles.Zero   //The directory for your .cs and .png; Exampl
             if (Main.netMode != 1)
             {
                 ProjTimer++;
-                if (ProjTimer >= 60)
+                if (ProjTimer >= 20)
                 {
                     ProjTimer = 0;
                     int NPCTarget = Target();
@@ -80,6 +82,14 @@ namespace AAMod.Projectiles.Zero   //The directory for your .cs and .png; Exampl
             }
 
             return selectedTarget;
+        }
+
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 2);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, lightColor, true);
+            return false;
         }
     }
 }

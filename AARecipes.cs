@@ -1027,7 +1027,7 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosBoots", group18);
 
-            RecipeGroup group19 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Chaos Leggings", new int[]
+            RecipeGroup group19 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Chaos Chestpiece", new int[]
             {
                 AAMod.instance.ItemType("TrueBlazingDou"),
                 AAMod.instance.ItemType("TrueAbyssalGi"),

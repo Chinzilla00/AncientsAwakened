@@ -1,12 +1,11 @@
 using Microsoft.Xna.Framework;
-using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Yamata
 {
-    public class Toxibomb : ModProjectile
+    public class SmallToxibomb : ModProjectile
 	{
         public override void SetStaticDefaults()
         {
@@ -33,7 +32,7 @@ namespace AAMod.Projectiles.Yamata
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;
             projectile.aiStyle = 0;
-            projectile.scale *= 1.2f;
+            
 		}
 
         public override void AI()
@@ -105,33 +104,21 @@ namespace AAMod.Projectiles.Yamata
         {
             target.AddBuff(mod.BuffType("Moonraze"), 600);
         }
+
         public override void Kill(int timeleft)
         {
             Main.PlaySound(SoundID.Item14, projectile.position);
-            float spread = 12f * 0.0174f;
-            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
-            double deltaAngle = spread / 4;
-            for (int i = 0; i < 2; i++)
-            {
-                double offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 3f) * 5, (float)(Math.Cos(offsetAngle) * 3f) * 5, mod.ProjectileType("YWSplit"), projectile.damage / 6, projectile.knockBack, projectile.owner, 0f, 0f);
-                Main.projectile[proj].melee = false;
-                Main.projectile[proj].magic = true;
-                proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 3f) * 5, (float)(-Math.Cos(offsetAngle) * 3f) * 5, mod.ProjectileType("YWSplit"), projectile.damage / 6, projectile.knockBack, projectile.owner, 0f, 0f);
-                Main.projectile[proj].melee = false;
-                Main.projectile[proj].magic = true;
-            }
             for (int num468 = 0; num468 < 20; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.width, projectile.height), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f,
+                int num469 = Dust.NewDust(new Vector2(projectile.width, projectile.height), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f,
+                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 100, default(Color));
                 Main.dust[num469].velocity *= 2f;
             }
-            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Toxiboom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("ToxiboomSmall"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
     }
 }

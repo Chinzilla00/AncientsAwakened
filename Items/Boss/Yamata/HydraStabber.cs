@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss.Yamata   //where is located
         public override void SetStaticDefaults()
         {
             
-            DisplayName.SetDefault("Hydra Stabber");
+            DisplayName.SetDefault("Abyssal Shiv");
             Tooltip.SetDefault(@"Extremely fast and dangerous
 IInflicts Moonraze");
             
@@ -32,7 +32,7 @@ IInflicts Moonraze");
             item.useStyle = 3;        
             item.knockBack = 2f;      
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.UseSound = SoundID.Item1;      
+            item.UseSound = SoundID.Item103;      
             item.autoReuse = true;   
             item.useTurn = false;
             item.shoot = mod.ProjectileType<Projectiles.Yamata.AbyssLash>();

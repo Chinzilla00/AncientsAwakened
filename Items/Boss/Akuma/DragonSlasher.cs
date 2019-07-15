@@ -67,9 +67,9 @@ Inflicts Daybroken");
             }
         }
 
-        public void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(BuffID.Daybreak, 600);
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        { 
+            target.AddBuff(BuffID.Daybreak, 200);
             Projectile.NewProjectile((int)target.position.X, (int)target.position.Y, 0, 0, mod.ProjectileType<Projectiles.Akuma.AkumaExp>(), item.damage, 20, Main.myPlayer);
         }
         
