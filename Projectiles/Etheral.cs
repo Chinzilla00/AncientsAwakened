@@ -114,7 +114,10 @@ namespace AAMod.Projectiles
                 return false;
             }
 
-            projectile.position = player.RotatedRelativePoint(player.MountedCenter, true) - projectile.Size / 2f;
+            if (player.direction == 1)
+				projectile.Center = player.Center + new Vector2(6, 0);
+			if (player.direction == -1)
+				projectile.Center = player.Center + new Vector2(-14, 0);
             projectile.rotation = projectile.velocity.ToRotation() + num;
             projectile.spriteDirection = projectile.direction;
             projectile.timeLeft = 2;

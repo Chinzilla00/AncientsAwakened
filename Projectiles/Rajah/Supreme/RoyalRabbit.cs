@@ -13,29 +13,33 @@ namespace AAMod.Projectiles.Rajah.Supreme
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Royal Rabbit");
-            Main.projFrames[projectile.type] = 8;
+            Main.projFrames[projectile.type] = 4;
         }
 
         public override void SetDefaults()
         {
             projectile.netImportant = true;
-            projectile.width = 34;
-            projectile.height = 26;
+            projectile.width = 30;
+            projectile.height = 32;
             projectile.aiStyle = -1;
             projectile.penetrate = -1;
             projectile.timeLeft *= 5;
             projectile.minion = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            projectile.minionSlots = 0;
+            projectile.minionSlots = 1;
         }
 
         public override void AI()
         {
-            Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = Main.player[projectile.owner].GetModPlayer<AAPlayer>(mod);
-            bool flag64 = projectile.type == mod.ProjectileType("RoyalRabbit");
-            player.AddBuff(mod.BuffType<Buffs.RoyalRabbit>(), 3600);
+			bool flag64 = projectile.type == mod.ProjectileType("RoyalRabbit");
+			Player player = Main.player[projectile.owner];
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            if (!player.active)
+            {
+                projectile.active = false;
+                return;
+            }
             if (flag64)
             {
                 if (player.dead)
@@ -251,20 +255,19 @@ namespace AAMod.Projectiles.Rajah.Supreme
                     }
                 }
             }
+			if (++projectile.frameCounter > 6)
+            {
+                projectile.frame++;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 3)
+                {
+                    projectile.frame = 0;
+                }
+            }
         }
 
         public override bool PreAI()
         {
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 16)
-            {
-                projectile.frameCounter = 0;
-            }
-            projectile.frame = projectile.frameCounter / 4;
-            if (projectile.ai[1] > 0f && projectile.ai[1] < 16f)
-            {
-                projectile.frame += 4;
-            }
             if (Main.rand.Next(6) == 0)
             {
                 int num25 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.Shadowflame, 0f, 0f, 100, Main.DiscoColor, 2f);
@@ -277,9 +280,9 @@ namespace AAMod.Projectiles.Rajah.Supreme
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 8, 0, 2);
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 8, frame, lightColor, false);
-            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Glowmasks/RoyalRabbit_Glow"), 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 8, frame, Main.DiscoColor, false);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 4, frame, lightColor, false);
+            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Glowmasks/RoyalRabbit_Glow"), 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 4, frame, Main.DiscoColor, false);
             return false;
         }
     }

@@ -35,6 +35,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+			type = mod.ProjectileType("Carrow");
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
             float num117 = 0.314159274f;
             int num118 = Main.rand.Next(2,5);

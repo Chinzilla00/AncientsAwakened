@@ -17,8 +17,8 @@ namespace AAMod.Projectiles.Zero
 
         public override void SetDefaults()
         {
-            projectile.width = 30;
-            projectile.height = 30;
+            projectile.width = 24;
+            projectile.height = 74;
             projectile.friendly = false;
             projectile.hostile = false;
             projectile.penetrate = -1;
@@ -104,7 +104,10 @@ namespace AAMod.Projectiles.Zero
 					}
 				}
 			}
-			projectile.position = player.RotatedRelativePoint(player.MountedCenter, true) - projectile.Size / 2f;
+			if (player.direction == 1)
+				projectile.Center = player.Center + new Vector2(10, 0);
+			if (player.direction == -1)
+				projectile.Center = player.Center + new Vector2(-18, 0);
 			projectile.rotation = projectile.velocity.ToRotation() + num;
 			projectile.spriteDirection = projectile.direction;
 			projectile.timeLeft = 2;

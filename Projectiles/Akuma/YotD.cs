@@ -114,7 +114,7 @@ namespace AAMod.Projectiles.Akuma
                     {
                         Vector2 value28 = Vector2.Lerp(vector13, value27, num658 / num655);
                         float scaleFactor2 = MathHelper.Lerp(num654, value26, num658 / num655);
-                        int num659 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 1.3f);
+                        int num659 = Dust.NewDust(projectile.Center, 6, 6, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 1.3f);
                         Main.dust[num659].velocity *= 0.1f;
                         Main.dust[num659].noGravity = true;
                         Main.dust[num659].velocity += value28 * scaleFactor2;
@@ -131,7 +131,7 @@ namespace AAMod.Projectiles.Akuma
                     {
                         Vector2 value30 = Vector2.Lerp(vector13, value29, num662 / num655);
                         float scaleFactor3 = MathHelper.Lerp(num654, value26, num662 / num655) / 2f;
-                        int num663 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 1.3f);
+                        int num663 = Dust.NewDust(projectile.Center, 6, 6, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 1.3f);
                         Main.dust[num663].velocity *= 0.1f;
                         Main.dust[num663].noGravity = true;
                         Main.dust[num663].velocity += value30 * scaleFactor3;
@@ -142,7 +142,7 @@ namespace AAMod.Projectiles.Akuma
             for (int num664 = 0; num664 < 100; num664++)
             {
                 float num665 = num654;
-                int num667 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), 6, 6, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 100);
+                int num667 = Dust.NewDust(projectile.Center, 6, 6, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 100);
                 float num668 = Main.dust[num667].velocity.X;
                 float num669 = Main.dust[num667].velocity.Y;
                 if (num668 == 0f && num669 == 0f)

@@ -16,11 +16,11 @@ namespace AAMod.Buffs
 		public override void Update(Player player, ref int buffIndex)
 		{
 			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-			if (player.ownedProjectileCounts[mod.ProjectileType("RabbitcopterSoldier")] > 0)
+			if (player.ownedProjectileCounts[mod.ProjectileType("RoyalRabbit")] > 0)
 			{
-				modPlayer.Rabbitcopter = true;
+				modPlayer.RabbitcopterR = true;
 			}
-			if (!modPlayer.Rabbitcopter)
+			if (!modPlayer.RabbitcopterR)
 			{
 				player.DelBuff(buffIndex);
 				buffIndex--;

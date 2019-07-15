@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
             item.mana = 9;
             item.UseSound = SoundID.Item20; 
             item.autoReuse = true; 
-            item.shoot = mod.ProjectileType("ToxibombSmall");  
+            item.shoot = mod.ProjectileType("SmallToxibomb");  
             item.shootSpeed = 20f;
             item.rare = 9; AARarity = 13;
         }
