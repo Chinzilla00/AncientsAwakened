@@ -15,6 +15,7 @@ using Terraria.ModLoader;
 using System;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Yamata;
+using AAMod.NPCs.Bosses.Shen;
 using System.Collections.Generic;
 using BaseMod;
 using Terraria.Graphics.Effects;
@@ -554,11 +555,17 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool useAkuma = (NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar);
-            bool useYamata = (NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar);
-            bool useMire = (ZoneMire || MoonAltar) && !useYamata;// && !useShen;
-            bool useInferno = (ZoneInferno || SunAltar);// && !useAkuma && !useShen;
-            bool useVoid = (ZoneVoid || VoidUnit);// && !useShen;
+            bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenA>());
+            bool useShen = NPC.AnyNPCs(mod.NPCType<ShenDoragon>()) && !useShenA;
+            bool useAkuma = NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar;
+            bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar;
+            bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen && !useShenA;
+            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen && !useShenA;
+            bool useVoid = (ZoneVoid || VoidUnit) && !useShen && !useShenA;
+
+            player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
+
+            player.ManageSpecialBiomeVisuals("AAMod:ShenASky", useShen);
 
             player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
 
