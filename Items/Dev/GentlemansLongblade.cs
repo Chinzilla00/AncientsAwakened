@@ -23,8 +23,8 @@ Gentleman's Rapier EX");
 			item.melee = true;
 			item.width = 94;
 			item.height = 96;
-			item.useTime = 10;
-			item.useAnimation = 10;
+			item.useTime = 8;
+			item.useAnimation = 8;
 			item.useStyle = 1;
 			item.knockBack = 3;
 			item.value = 100000;
@@ -32,7 +32,7 @@ Gentleman's Rapier EX");
             item.shoot = mod.ProjectileType("TopHat");
             item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            item.shootSpeed = 22f;
+            item.shootSpeed = 30f;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

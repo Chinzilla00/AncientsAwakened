@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss.EFish
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.Flairon);
-            item.damage = 180;
+            item.damage = 200;
             item.rare = 11;
             item.shoot = mod.ProjectileType("EFlairon");
         }

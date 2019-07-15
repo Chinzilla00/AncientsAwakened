@@ -24,8 +24,8 @@ Left clicking swings the blade
 			item.melee = true;
 			item.width = 64;
 			item.height = 66;
-			item.useTime = 16;
-			item.useAnimation = 16;
+			item.useTime = 10;
+			item.useAnimation = 10;
 			item.useStyle = 1;
 			item.knockBack = 3;
 			item.value = 100000;

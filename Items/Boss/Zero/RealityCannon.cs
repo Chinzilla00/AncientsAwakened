@@ -26,7 +26,7 @@ namespace AAMod.Items.Boss.Zero
             item.knockBack = 0f;
             item.width = 48;
             item.height = 26;
-            item.damage = 150;
+            item.damage = 170;
             item.UseSound = SoundID.Item12;
             item.shoot = mod.ProjectileType("RealityLaser");
             item.rare = 9; AARarity = 13;

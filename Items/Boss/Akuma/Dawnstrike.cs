@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Akuma
             item.width = 64;
             item.height = 46;
             item.useTime = 5;
-            item.useAnimation = 10;
+            item.useAnimation = 5;
             item.useStyle = 5;
             item.useAmmo = AmmoID.Gel;
             item.shoot = mod.ProjectileType("Dawnstrike");
@@ -35,7 +35,7 @@ namespace AAMod.Items.Boss.Akuma
             AARarity = 13;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
-            item.shootSpeed = 13f;
+            item.shootSpeed = 5f;
         }
 
         public override Vector2? HoldoutOffset()

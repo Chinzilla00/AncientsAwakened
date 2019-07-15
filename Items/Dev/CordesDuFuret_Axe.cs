@@ -15,12 +15,12 @@ namespace AAMod.Items.Dev
 
 		public override void SetDefaults()
 		{
-			item.damage = 290;
+			item.damage = 300;
 			item.melee = true;
 			item.width = 64;
 			item.height = 64;
-			item.useTime = 12;
-			item.useAnimation = 12;
+			item.useTime = 5;
+			item.useAnimation = 5;
 			item.useStyle = 1;
 			item.knockBack = 7;
             item.value = Item.sellPrice(0, 30, 0, 0);
