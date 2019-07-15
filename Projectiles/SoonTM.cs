@@ -85,14 +85,6 @@ namespace AAMod.Projectiles
             }
         }
 
-        public override void Kill(int timeLeft)
-        {
-            if (projectile.ai[0] == 1f)
-            {
-                Main.npc[(int)projectile.ai[1]].GetGlobalNPC<AAModGlobalNPC>(mod).SpearCount -= 1;
-            }
-        }
-
         public override void Kill(int timeleft)
         {
             int pieCut = 20;
@@ -110,6 +102,10 @@ namespace AAMod.Projectiles
                 Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default(Vector2), new Vector2(9f, 0f), (m / (float)pieCut) * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
+            }
+            if (projectile.ai[0] == 1f)
+            {
+                Main.npc[(int)projectile.ai[1]].GetGlobalNPC<AAModGlobalNPC>(mod).SpearCount -= 1;
             }
         }
     }

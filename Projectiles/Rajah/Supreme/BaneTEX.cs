@@ -106,13 +106,6 @@ namespace AAMod.Projectiles.Rajah.Supreme
             }
         }
 
-        public override void Kill(int timeLeft)
-        {
-            if (projectile.ai[0] == 1f)
-            {
-                Main.npc[(int)projectile.ai[1]].GetGlobalNPC<AAModGlobalNPC>(mod).SpearCount -= 1;
-            }
-        }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 2);
