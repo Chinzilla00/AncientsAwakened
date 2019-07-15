@@ -20,7 +20,7 @@ Inflicts Daybroken");
         
         public override void SetDefaults()
         {
-            item.damage = 370;
+            item.damage = 380;
             item.melee = true;
             item.width = 86;
             item.height = 86;

@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Yamata        //We need this to basically indicate th
         public override void SetDefaults()
         {
 
-            item.damage = 200;                      
+            item.damage = 250;                      
             item.magic = true;  
             item.width = 32;     
             item.height = 28;    

@@ -35,7 +35,7 @@ namespace AAMod.Items.Boss.Akuma
             AARarity = 13;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
-            item.shootSpeed = 7f;
+            item.shootSpeed = 13f;
         }
 
         public override Vector2? HoldoutOffset()

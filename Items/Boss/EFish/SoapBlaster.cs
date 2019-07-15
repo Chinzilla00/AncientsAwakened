@@ -18,8 +18,8 @@ namespace AAMod.Items.Boss.EFish
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.BubbleGun);
-			item.useTime = 7;
-			item.useAnimation = 7;
+			item.useTime = 5;
+			item.useAnimation = 5;
             item.damage = 150;
             item.rare = 11;
         }
