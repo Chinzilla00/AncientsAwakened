@@ -15,7 +15,82 @@ namespace AAMod.Projectiles.EFish
         }
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.Flairon);
+            projectile.width = 26;
+            projectile.height = 26;
+            projectile.aiStyle = 69;
+            projectile.friendly = true;
+            projectile.penetrate = -1;
+            projectile.alpha = 255;
+            projectile.melee = true;
+        }
+
+        public override void AI()
+        {
+            Vector2 vector54 = Main.player[projectile.owner].Center - projectile.Center;
+            projectile.rotation = vector54.ToRotation() - 1.57f;
+            if (Main.player[projectile.owner].dead)
+            {
+                projectile.Kill();
+                return;
+            }
+            Main.player[projectile.owner].itemAnimation = 10;
+            Main.player[projectile.owner].itemTime = 10;
+            float arg_1C53D_0 = vector54.X;
+            if (vector54.X < 0f)
+            {
+                Main.player[projectile.owner].ChangeDir(1);
+                projectile.direction = 1;
+            }
+            else
+            {
+                Main.player[projectile.owner].ChangeDir(-1);
+                projectile.direction = -1;
+            }
+            Main.player[projectile.owner].itemRotation = (vector54 * -1f * (float)projectile.direction).ToRotation();
+            projectile.spriteDirection = ((vector54.X > 0f) ? -1 : 1);
+            if (projectile.ai[0] == 0f && vector54.Length() > 400f)
+            {
+                projectile.ai[0] = 1f;
+            }
+            if (projectile.ai[0] == 1f || projectile.ai[0] == 2f)
+            {
+                float num687 = vector54.Length();
+                if (num687 > 1500f)
+                {
+                    projectile.Kill();
+                    return;
+                }
+                if (num687 > 600f)
+                {
+                    projectile.ai[0] = 2f;
+                }
+                projectile.tileCollide = false;
+                float num688 = 20f;
+                if (projectile.ai[0] == 2f)
+                {
+                    num688 = 40f;
+                }
+                projectile.velocity = Vector2.Normalize(vector54) * num688;
+                if (vector54.Length() < num688)
+                {
+                    projectile.Kill();
+                    return;
+                }
+            }
+            projectile.ai[1] += 1f;
+            if (projectile.ai[1] > 5f)
+            {
+                projectile.alpha = 0;
+            }
+            if ((int)projectile.ai[1] % 2 == 0 && projectile.owner == Main.myPlayer)
+            {
+                Vector2 vector55 = vector54 * -1f;
+                vector55.Normalize();
+                vector55 *= (float)Main.rand.Next(45, 65) * 0.1f;
+                vector55 = vector55.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866, default(Vector2));
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X, vector55.Y, 405, projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
+                return;
+            }
         }
 		
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -26,7 +101,7 @@ namespace AAMod.Projectiles.EFish
 				float rand = Main.rand.NextFloat() * 6.3f;
 				vel = vel.RotatedBy(rand);
 				vel *= 4f;
-				int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X, vel.Y, 405, projectile.damage, 0, Main.myPlayer);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X, vel.Y, 405, projectile.damage, 0, Main.myPlayer);
 			}
 		}
 
@@ -38,9 +113,27 @@ namespace AAMod.Projectiles.EFish
 				float rand = Main.rand.NextFloat() * 6.3f;
 				vel = vel.RotatedBy(rand);
 				vel *= 4f;
-				int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X, vel.Y, 405, projectile.damage, 0, Main.myPlayer);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X, vel.Y, 405, projectile.damage, 0, Main.myPlayer);
 			}
-			return true;
+            Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
+            if (projectile.type == 33 || projectile.type == 106)
+            {
+                if (projectile.velocity.X != oldVelocity.X)
+                {
+                    projectile.velocity.X = -oldVelocity.X;
+                }
+                if (projectile.velocity.Y != oldVelocity.Y)
+                {
+                    projectile.velocity.Y = -oldVelocity.Y;
+                }
+            }
+            else
+            {
+                projectile.ai[0] = 1f;
+            }
+            projectile.netUpdate = true;
+            Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
+            return false;
 		}
 		
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

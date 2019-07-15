@@ -200,7 +200,7 @@ namespace AAMod.Items.Dev
             {
                 projectile.ai[1] += Main.rand.Next(1, 4);
             }
-            if (projectile.ai[1] > 40)
+            if (projectile.ai[1] > 20)
             {
                 projectile.ai[1] = 0f;
                 projectile.netUpdate = true;

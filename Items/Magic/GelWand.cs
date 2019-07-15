@@ -30,7 +30,7 @@ namespace AAMod.Items.Magic
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Flaming Gel Wand");
-      Tooltip.SetDefault("It shoots flaming gel.");
+      Tooltip.SetDefault("It shoots flaming gel");
             Item.staff[item.type] = true;
         }
 

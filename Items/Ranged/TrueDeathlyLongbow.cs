@@ -10,9 +10,9 @@ namespace AAMod.Items.Ranged
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("True Deathly Longbow");
+            DisplayName.SetDefault("Deathly Ghastbow");
             Tooltip.SetDefault(@"Replaces Arrows with Reaper Arrows
-If bone arrows are used, fires an explosive ghast skull");
+Fires an explosive ghast skull every other shot");
         }
 
         public override void SetDefaults()
@@ -46,6 +46,7 @@ If bone arrows are used, fires an explosive ghast skull");
             player.HealEffect(damage / 8);
         }
 
+        int shoot = 0;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             for (int i = 0; i < 3; i++)
@@ -53,10 +54,16 @@ If bone arrows are used, fires an explosive ghast skull");
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("ReaperArrow"), damage, knockBack, player.whoAmI);
             }
-            if (type == ProjectileID.BoneArrow)
+            shoot++;
+
+            if (shoot % 2 != 0) return false;
+
+            if (shoot >= 2)
             {
                 Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("GhastSkull"), (int)(damage * 1.5), knockBack, player.whoAmI);
+                shoot = 0;
             }
+            shoot = 0;
             return false;
         }
 

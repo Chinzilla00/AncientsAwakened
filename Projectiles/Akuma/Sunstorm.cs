@@ -24,6 +24,8 @@ namespace AAMod.Projectiles.Akuma
             projectile.tileCollide = false;
             projectile.extraUpdates = 5;
             projectile.penetrate = -1;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 5;
         }
         public float[] internalAI = new float[1];
         public override void SendExtraAI(BinaryWriter writer)
