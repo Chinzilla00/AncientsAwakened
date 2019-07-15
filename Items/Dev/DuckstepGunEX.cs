@@ -17,13 +17,13 @@ namespace AAMod.Items.Dev
 		public override void SetDefaults()
 		{
             
-			item.damage = 200;
+			item.damage = 160;
 			item.magic = true;
-            item.mana = 13;
+            item.mana = 10;
             item.width = 80;
 			item.height = 42;
-			item.useTime = 16;
-			item.useAnimation = 16;
+			item.useTime = 10;
+			item.useAnimation = 10;
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 4;

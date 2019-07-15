@@ -20,9 +20,9 @@ namespace AAMod.Items.Magic
             item.autoReuse = true;
             item.mana = 11;
             item.useStyle = 5;
-            item.damage = 140;
-            item.useAnimation = 8;
-            item.useTime = 8;
+            item.damage = 170;
+            item.useAnimation = 6;
+            item.useTime = 6;
             item.width = 62;
             item.height = 62;
             item.shoot = mod.ProjectileType("SubzeroSnowflake");
