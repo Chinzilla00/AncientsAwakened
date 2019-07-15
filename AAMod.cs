@@ -1,7 +1,7 @@
 using AAMod.Backgrounds;
 using AAMod.Globals;
 using AAMod.UI;
-//using AAMod.UI;
+using AAMod.UI.Core;
 using BaseMod;
 using log4net;
 using Microsoft.Xna.Framework;
@@ -42,24 +42,12 @@ namespace AAMod
 
         // UI
         internal UserInterface TerratoolInterface;
-        internal TerratoolTUI TerratoolState;
-
-        internal UserInterface TerratoolCInterface;
+        internal TerratoolTUI TerratoolTState;
         internal TerratoolCUI TerratoolCState;
-
-        internal UserInterface TerratoolAInterface;
         internal TerratoolAUI TerratoolAState;
-
-        internal UserInterface TerratoolYInterface;
         internal TerratoolYUI TerratoolYState;
-
-        internal UserInterface TerratoolZInterface;
         internal TerratoolZUI TerratoolZState;
-
-        internal UserInterface TerratoolSInterface;
         internal TerratoolSUI TerratoolSState;
-
-        internal UserInterface TerratoolKipInterface;
         internal TerratoolKipUI TerratoolKipState;
 
         public static SpriteFont fontMouseText;
@@ -273,30 +261,18 @@ namespace AAMod
         public void LoadClient()
         {
             TerratoolInterface = new UserInterface();
-            TerratoolState = new TerratoolTUI();
-            TerratoolState.Activate();
-
-            TerratoolCInterface = new UserInterface();
+            TerratoolTState = new TerratoolTUI();
+            TerratoolTState.Activate();
             TerratoolCState = new TerratoolCUI();
             TerratoolCState.Activate();
-
-            TerratoolAInterface = new UserInterface();
             TerratoolAState = new TerratoolAUI();
             TerratoolAState.Activate();
-
-            TerratoolYInterface = new UserInterface();
             TerratoolYState = new TerratoolYUI();
             TerratoolYState.Activate();
-
-            TerratoolZInterface = new UserInterface();
             TerratoolZState = new TerratoolZUI();
             TerratoolZState.Activate();
-
-            TerratoolSInterface = new UserInterface();
             TerratoolSState = new TerratoolSUI();
             TerratoolSState.Activate();
-
-            TerratoolKipInterface = new UserInterface();
             TerratoolKipState = new TerratoolKipUI();
             TerratoolKipState.Activate();
 
@@ -502,39 +478,9 @@ namespace AAMod
         {
             lastUpdateUIGameTime = gameTime;
 
-            if (TerratoolInterface != null && TerratoolInterface.CurrentState != null)
+            if (TerratoolInterface?.CurrentState != null)
             {
                 TerratoolInterface.Update(gameTime);
-            }
-
-            if (TerratoolCInterface != null && TerratoolCInterface.CurrentState != null)
-            {
-                TerratoolCInterface.Update(gameTime);
-            }
-
-            if (TerratoolAInterface != null && TerratoolAInterface.CurrentState != null)
-            {
-                TerratoolAInterface.Update(gameTime);
-            }
-
-            if (TerratoolYInterface != null && TerratoolYInterface.CurrentState != null)
-            {
-                TerratoolYInterface.Update(gameTime);
-            }
-
-            if (TerratoolZInterface != null && TerratoolZInterface.CurrentState != null)
-            {
-                TerratoolZInterface.Update(gameTime);
-            }
-
-            if (TerratoolSInterface != null && TerratoolSInterface.CurrentState != null)
-            {
-                TerratoolZInterface.Update(gameTime);
-            }
-
-            if (TerratoolKipInterface != null && TerratoolKipInterface.CurrentState != null)
-            {
-                TerratoolKipInterface.Update(gameTime);
             }
         }
 
@@ -547,48 +493,11 @@ namespace AAMod
                 "AAMod: Radial UIs",
                 delegate
                 {
-                    var radialUI = TerratoolInterface.CurrentState as TerratoolTUI;
-                    if (radialUI != null && lastUpdateUIGameTime != null
-                    && radialUI.Visible)
+                    if (TerratoolInterface?.CurrentState is ToggableUI && lastUpdateUIGameTime != null)
                     {
                         TerratoolInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
                     }
-                    var radialUI1 = TerratoolCInterface.CurrentState as TerratoolCUI;
-                    if (radialUI1 != null && lastUpdateUIGameTime != null
-                    && radialUI1.Visible)
-                    {
-                        TerratoolCInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
-                    var radialUI2 = TerratoolAInterface.CurrentState as TerratoolAUI;
-                    if (radialUI2 != null && lastUpdateUIGameTime != null
-                    && radialUI2.Visible)
-                    {
-                        TerratoolAInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
-                    var radialUI3 = TerratoolYInterface.CurrentState as TerratoolYUI;
-                    if (radialUI3 != null && lastUpdateUIGameTime != null
-                    && radialUI3.Visible)
-                    {
-                        TerratoolYInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
-                    var radialUI4 = TerratoolZInterface.CurrentState as TerratoolZUI;
-                    if (radialUI4 != null && lastUpdateUIGameTime != null
-                    && radialUI4.Visible)
-                    {
-                        TerratoolZInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
-                    var radialUI5 = TerratoolSInterface.CurrentState as TerratoolSUI;
-                    if (radialUI5 != null && lastUpdateUIGameTime != null
-                    && radialUI5.Visible)
-                    {
-                        TerratoolSInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
-                    var radialUI6 = TerratoolKipInterface.CurrentState as TerratoolKipUI;
-                    if (radialUI6 != null && lastUpdateUIGameTime != null
-                    && radialUI6.Visible)
-                    {
-                        TerratoolKipInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
+                    
                     return true;
                 },
                 InterfaceScaleType.UI));
