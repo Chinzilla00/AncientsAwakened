@@ -11,7 +11,7 @@ namespace AAMod.Items.Tools
             item.melee = true;
             item.width = 54;
             item.height = 60;
-			item.useStyle = 1;
+            item.useStyle = 1;
             item.useTime = 5;
             item.useAnimation = 20;
             item.tileBoost += 3;
@@ -60,7 +60,7 @@ You may only have a maximum of 2 tool types active
             return true;
         }
 
-        public override void AddRecipes()  
+        public override void AddRecipes()
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);

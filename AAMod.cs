@@ -497,7 +497,7 @@ namespace AAMod
                     {
                         TerratoolInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
                     }
-                    
+
                     return true;
                 },
                 InterfaceScaleType.UI));
@@ -647,9 +647,9 @@ namespace AAMod
 
                 priority = MusicPriority.BiomeMedium;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shroom");
-                
+
                 return;
-            }      
+            }
         }
 
         public override object Call(params object[] args)
@@ -725,7 +725,7 @@ namespace AAMod
             }
             return new Exception("ANCIENTS AWAKENED CALL ERROR: NO METHOD FOUND: " + methodName);
         }
-		
+
         public override void HandlePacket(BinaryReader bb, int whoAmI)
         {
             AANet.HandlePacket(bb, whoAmI);

@@ -5,7 +5,6 @@ namespace AAMod.Items.Boss.Yamata
 {
     public class YamataTerratool : BaseAAItem
     {
-        
         public override void SetDefaults()
         {
             item.melee = true;

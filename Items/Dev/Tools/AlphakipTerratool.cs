@@ -5,7 +5,6 @@ namespace AAMod.Items.Dev.Tools
 {
     public class AlphakipTerratool : BaseAAItem
     {
-        
         public override void SetDefaults()
         {
             item.melee = true;

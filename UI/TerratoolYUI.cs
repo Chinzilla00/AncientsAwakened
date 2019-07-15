@@ -20,7 +20,7 @@ namespace AAMod.UI
 
         public override UIState State => AAMod.instance.TerratoolYState;
 		
-		public override int HeldItemType => AAMod.instance.ItemType<YamataTerratool>();
+        public override int HeldItemType => AAMod.instance.ItemType<YamataTerratool>();
 
         public override void ButtonClicked(int index)
         {

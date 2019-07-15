@@ -14,13 +14,13 @@ namespace AAMod.UI
 
         public override Texture2D ButtonImages => AAMod.instance.GetTexture("UI/Tools/ToolUIZ");
 
-        public override Texture2D ButtonOnImage => AAMod.instance.GetTexture("UI/Tools/ToolButtonZ"); 
+        public override Texture2D ButtonOnImage => AAMod.instance.GetTexture("UI/Tools/ToolButtonZ");
 
-        public override Texture2D ButtonOffImage => AAMod.instance.GetTexture("UI/Tools/ToolButtonZOff"); 
+        public override Texture2D ButtonOffImage => AAMod.instance.GetTexture("UI/Tools/ToolButtonZOff");
 
         public override UIState State => AAMod.instance.TerratoolZState;
-		
-		public override int HeldItemType => AAMod.instance.ItemType<ZeroTerratool>();
+
+        public override int HeldItemType => AAMod.instance.ItemType<ZeroTerratool>();
 
         public override void ButtonClicked(int index)
         {

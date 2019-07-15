@@ -5,10 +5,8 @@ namespace AAMod.Items.Boss.Shen
 {
     public class ShenTerratool : BaseAAItem
     {
-        
         public override void SetDefaults()
         {
-
             item.melee = true;
             item.width = 54;
             item.height = 60;

@@ -5,7 +5,6 @@ namespace AAMod.Items.Boss.Zero
 {
     public class ZeroTerratool : BaseAAItem
     {
-        
         public override void SetDefaults()
         {
             item.melee = true;

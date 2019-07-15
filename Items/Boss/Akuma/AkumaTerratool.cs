@@ -7,7 +7,6 @@ namespace AAMod.Items.Boss.Akuma
     {
         public override void SetDefaults()
         {
-
             item.melee = true;
             item.width = 54;
             item.height = 60;
