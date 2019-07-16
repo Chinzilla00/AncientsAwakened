@@ -219,7 +219,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
                     projectile.ai[1] += 1f;
                 }
             }
-            if (projectile.ai[1] > Main.rand.Next(180, 900))
+            if (projectile.ai[1] > Main.rand.Next(30, 60))
             {
                 projectile.ai[1] = 0f;
                 projectile.netUpdate = true;
@@ -247,7 +247,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
                             Vector2 value4 = vector - projectile.Center;
                             value4.Normalize();
                             value4 *= scaleFactor4;
-                            int num33 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value4.X, value4.Y, num29, projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+                            int num33 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value4.X*2, value4.Y*2, num29, projectile.damage, 0f, Main.myPlayer, 0f, 0f);
                             Main.projectile[num33].timeLeft = 300;
                             Main.projectile[num33].netUpdate = true;
                             projectile.netUpdate = true;
