@@ -78,7 +78,7 @@ Non-Consumable");
 
         public override bool UseItem(Player player)
         {
-            BaseUtility.Chat("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+            BaseUtility.Chat("The air around you begins to heat up...", new Color(175, 75, 255));
             BaseUtility.Chat("Cutting right to the chase I see..? Alright then, prepare for hell..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, 0, 0, "Akuma, Draconian Demon", false);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), player.position);

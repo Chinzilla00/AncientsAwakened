@@ -258,6 +258,7 @@ namespace AAMod
         public bool Unstable = false;
         public bool IB = false;
         public bool Spear = false;
+        public bool AkumaPain = false;
         //buffs
 
         public bool Glitched = false;
@@ -481,6 +482,7 @@ namespace AAMod
             Unstable = false;
             IB = false;
             Spear = false;
+            AkumaPain = true;
         }
 
 
@@ -813,6 +815,19 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (NPC.AnyNPCs(mod.NPCType<AkumaTransition>()))
+            {
+                int n = BaseAI.GetNPC(player.Center, mod.NPCType<AkumaTransition>(), -1);
+                NPC akuma = Main.npc[n];
+                if (akuma.ai[0] >= 660)
+                {
+                    player.AddBuff(mod.BuffType<BlazingPain>(), 2);
+                }
+            }
+            else if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
+            {
+                player.AddBuff(mod.BuffType<BlazingPain>(), 2);
+            }
             if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Vanity.HappySunSticker>(), true, true))
             {
                 Main.sunTexture = mod.GetTexture("Backgrounds/DemonSun");
@@ -2389,6 +2404,12 @@ namespace AAMod
 
             if (dragonFire)
             {
+                if (player.lifeRegen > 0)
+                {
+                    player.lifeRegen = 0;
+                }
+                player.lifeRegenTime = 0;
+                player.lifeRegen -= 8;
                 player.magicDamage *= 0.8f;
                 player.minionDamage *= 0.8f;
                 player.meleeDamage *= 0.8f;
@@ -2427,6 +2448,35 @@ namespace AAMod
                     player.lifeRegen = 0;
                 }
                 player.lifeRegen -= Math.Abs((int)(player.velocity.X));
+            }
+
+
+            if (discordInferno)
+            {
+                if (player.lifeRegen > 0)
+                {
+                    player.lifeRegen = 0;
+                }
+                player.lifeRegenTime = 0;
+                player.lifeRegen -= Math.Abs((int)player.velocity.X) + 8;
+                player.magicDamage *= 0.8f;
+                player.minionDamage *= 0.8f;
+                player.meleeDamage *= 0.8f;
+                player.thrownDamage *= 0.8f;
+                player.rangedDamage *= 0.8f;
+            }
+
+            if (AkumaPain)
+            {
+                if (player.lifeRegen > 0)
+                {
+                    player.lifeRegen = 0;
+                }
+                player.lifeRegenTime = 0;
+                if ((player.onFire || player.frostBurn || player.onFire2 || dragonFire || discordInferno) && player.lifeRegen < 0)
+                {
+                    player.lifeRegen *= 2;
+                }
             }
         }
 

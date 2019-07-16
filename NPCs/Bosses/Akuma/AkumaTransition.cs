@@ -107,12 +107,13 @@ namespace AAMod.NPCs.Bosses.Akuma
 					BaseUtility.Chat("You know, kid...", new Color(180, 41, 32));
 				}else
 				if(npc.ai[0] == 660) //sync so the color transition occurs
-				{
-					npc.netUpdate = true;
+                {
+                    BaseUtility.Chat("The air around you begins to heat up...", new Color(175, 75, 255));
+                    npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 900)
 				{
-					BaseUtility.Chat("fanning the flames doesn't put them out...", Color.DeepSkyBlue);
+					BaseUtility.Chat("Fanning the flames doesn't put them out...", Color.DeepSkyBlue);
 				}else
 				if (npc.ai[0] >= 1100 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
 				{

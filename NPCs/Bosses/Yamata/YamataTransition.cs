@@ -108,7 +108,8 @@ namespace AAMod.NPCs.Bosses.Yamata
 				if (npc.ai[0] == 900)
 				{
 					BaseUtility.Chat("HAH! AS IF!", new Color(45, 46, 70));
-					npc.netUpdate = true;
+                    BaseUtility.Chat("You begin to feel as if your soul is weighing you down...", Color.PaleVioletRed);
+                    npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 1100)
 				{
