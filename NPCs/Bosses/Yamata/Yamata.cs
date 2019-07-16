@@ -93,7 +93,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             if (AAWorld.downedAllAncients)
             {
-                npc.lifeMax = 250000;
+                npc.lifeMax = 750000;
             }
             npc.chaseable = false;
         }
