@@ -165,22 +165,12 @@ namespace AAMod
         public bool Witch;
         public bool Tied;
         public bool TiedHead;
-        public bool ChaosMe = true;
-        public bool ChaosRa = true;
-        public bool ChaosMe1 = true;
-        public bool ChaosRa2 = true;
-        public bool ChaosMa = true;
-        public bool ChaosSu = true;
-
-        public bool Chaos(Player player)
-        {
-            return player.GetModPlayer<AAPlayer>(mod).ChaosMe ||
-                player.GetModPlayer<AAPlayer>(mod).ChaosMe1 ||
-                player.GetModPlayer<AAPlayer>(mod).ChaosRa ||
-                player.GetModPlayer<AAPlayer>(mod).ChaosRa2 ||
-                player.GetModPlayer<AAPlayer>(mod).ChaosMa ||
-                player.GetModPlayer<AAPlayer>(mod).ChaosSu;
-        }
+        public bool ChaosMe = false;
+        public bool ChaosRa = false;
+        public bool ChaosMe1 = false;
+        public bool ChaosRa2 = false;
+        public bool ChaosMa = false;
+        public bool ChaosSu = false;
 
         // Accessory bools.
         public bool clawsOfChaos;
@@ -420,6 +410,12 @@ namespace AAMod
             Witch = false;
             Tied = false;
             TiedHead = false;
+            ChaosMe = false;
+            ChaosMe1 = false;
+            ChaosRa = false;
+            ChaosRa2 = false;
+            ChaosMa = false;
+            ChaosSu = false;
         }
 
         private void ResetAccessoryEffect()
