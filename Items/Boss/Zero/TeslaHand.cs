@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Zero
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Broken Zero Weapon");
-            Tooltip.SetDefault("Just swing it around and it'll shock whatever's in front of you");
+            Tooltip.SetDefault("Will not stop spewing tesla bolts");
         }
 
         public override void SetDefaults()

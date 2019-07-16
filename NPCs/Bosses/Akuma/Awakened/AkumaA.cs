@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.netAlways = true;
             npc.damage = 110;
             npc.defense = 270;
-            npc.lifeMax = 650000;
+            npc.lifeMax = 600000;
             npc.value = Item.sellPrice(2, 0, 0, 0);
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -57,8 +57,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             if (AAWorld.downedAllAncients)
             {
                 npc.damage = 140;
-                npc.defense = 180;
-                npc.lifeMax = 260000;
+                npc.defense = 300;
+                npc.lifeMax = 750000;
             }
         }
 
