@@ -42,7 +42,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.knockBackResist = 0f;
             npc.damage = 59;
             npc.defense = 250;
-            npc.lifeMax = 600000;
+            npc.lifeMax = 570000;
             if (Main.expertMode)
             {
                 npc.value = Item.sellPrice(0, 0, 0, 0);
@@ -72,7 +72,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 npc.damage = 120;
                 npc.defense = 160;
-                npc.lifeMax = 260000;
+                npc.lifeMax = 700000;
             }
         }
         private bool fireAttack;

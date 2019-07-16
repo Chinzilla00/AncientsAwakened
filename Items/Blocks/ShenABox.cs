@@ -60,7 +60,8 @@ namespace AAMod.Items.Blocks
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.MusicBox);
                 recipe.AddIngredient(null, "ShenBox");
-                recipe.AddIngredient(null, "ChaosSoul");
+                recipe.AddIngredient(null, "YamataABox");
+                recipe.AddIngredient(null, "AkumaABox");
                 recipe.AddTile(TileID.Sawmill);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
