@@ -229,7 +229,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Vector2 oldPos = projectile.oldPos[z] + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY;
                 Vector2 nextPos = projectile.oldPos[z - 1] + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY;
 
-                float alphaMult = BaseUtility.MultiLerp((float)z / ((float)projectile.oldPos.Length - 1f), 0f, 1f, 1f, 1f, 0f);
+                float alphaMult = BaseMod.BaseUtility.MultiLerp((float)z / ((float)projectile.oldPos.Length - 1f), 0f, 1f, 1f, 1f, 0f);
                 if (Main.rand.Next((alphaMult < 0.5f ? 4 : 8)) == 0)
                 {
                     Vector2 dustPos = Vector2.Lerp(oldPos, nextPos, (float)Main.rand.NextDouble());

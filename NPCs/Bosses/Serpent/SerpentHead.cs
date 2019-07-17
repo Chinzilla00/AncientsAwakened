@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.damage = 35;
             npc.defense = 25;
             npc.lifeMax = 6000;
-            npc.value = Item.buyPrice(0, 8, 0, 0);
+            npc.value = Item.buyPrice(0, 5, 0, 0);
             npc.knockBackResist = 0f;
             npc.aiStyle = -1;
             animationType = 10;

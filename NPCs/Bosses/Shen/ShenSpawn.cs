@@ -54,28 +54,28 @@ namespace AAMod.NPCs.Bosses.Shen
             
             if (npc.ai[0] == 180)
             {
-                BaseUtility.Chat("Surprised to see us again, Kid?", new Color(180, 41, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("Surprised to see us again, Kid?", new Color(180, 41, 32));
             }
 
             if (npc.ai[0] == 360)
             {
-                BaseUtility.Chat("NYEHEHEHEHEH..! Yes..! Must be shocking to see us here..! But this time, we have a little tricksie up our sleeves..!", new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat("NYEHEHEHEHEH..! Yes..! Must be shocking to see us here..! But this time, we have a little tricksie up our sleeves..!", new Color(45, 46, 70));
             }
 
             if (npc.ai[0] == 540)
             {
-                BaseUtility.Chat("That Sigil you just used gave us back our full power, which will let us reach our true, powerful form..!", new Color(180, 41, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("That Sigil you just used gave us back our full power, which will let us reach our true, powerful form..!", new Color(180, 41, 32));
             }
 
             if (npc.ai[0] == 720)
             {
-                BaseUtility.Chat("We used to be the same being..! But then a Terrarian wretch like you split our soul in half..! But now...heheheh...", new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat("We used to be the same being..! But then a Terrarian wretch like you split our soul in half..! But now...heheheh...", new Color(45, 46, 70));
             }
 
             if (npc.ai[0] == 900)
             {
-                BaseUtility.Chat("WE ARE COMPLETE AGAIN", new Color(180, 41, 32));
-                BaseUtility.Chat("WE ARE COMPLETE AGAIN", new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat("WE ARE COMPLETE AGAIN", new Color(180, 41, 32));
+                if (Main.netMode != 1) BaseUtility.Chat("WE ARE COMPLETE AGAIN", new Color(45, 46, 70));
                 for (int LOOP = 0; LOOP < 4; LOOP++)
                 {
                     Dust dust1;
@@ -205,17 +205,17 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (npc.ai[0] == 1280)
             {
-                BaseUtility.Chat("Heh....heheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("Heh....heheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
             if (npc.ai[0] == 1460)
             {
-                BaseUtility.Chat("You've made a grave mistake, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("You've made a grave mistake, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
             if (npc.ai[0] == 1640)
             {
-                BaseUtility.Chat("For you see....", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("For you see....", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
             if (npc.ai[0] >= 1640)
@@ -225,19 +225,19 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (npc.ai[0] == 1640)
             {
-                BaseUtility.Chat("I AM SHEN DORAGON, EMPEROR OF CHAOS AND ANARCHY!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("I AM SHEN DORAGON, EMPEROR OF CHAOS AND ANARCHY!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
             if (npc.ai[0] == 1820)
             {
-                BaseUtility.Chat("And you, my child, will face the wrath and fury of chaos itself..!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("And you, my child, will face the wrath and fury of chaos itself..!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
             if (npc.ai[0] >= 2000)
             {
-                BaseUtility.Chat("DIE!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("DIE!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 SummonShen();
                 npc.active = false;
             }

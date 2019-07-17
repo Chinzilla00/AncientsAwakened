@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-            //BaseMod.BaseUtility.Chat("time: "+ projectile.timeLeft + "ai[0]: \n" + projectile.ai[0] + " | ai[1]: \n" + projectile.ai[1]);
+            //if (Main.netMode != 1) BaseMod.BaseUtility.Chat("time: "+ projectile.timeLeft + "ai[0]: \n" + projectile.ai[0] + " | ai[1]: \n" + projectile.ai[1]);
             if (projectile.ai[0] < chargeTime) //spindown
             {
                 AICharge();

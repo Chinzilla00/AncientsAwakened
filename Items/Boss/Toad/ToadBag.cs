@@ -37,7 +37,7 @@ namespace AAMod.Items.Boss.Toad
             if (Main.rand.Next(20) == 0)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-                modPlayer.HMDevArmor();
+                modPlayer.PHMDevArmor();
             }
             string[] lootTable = { "MushrockStaff", "ToadTongue", "Todegun" };
             int loot = Main.rand.Next(lootTable.Length);

@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             else
             {
-                npc.value = 120000f;
+                npc.value = Item.sellPrice(0, 30, 0, 0);
             }
             npc.width = 206;
             npc.height = 208;
@@ -86,12 +86,12 @@ namespace AAMod.NPCs.Bosses.Zero
                 Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
                 if (Main.expertMode)
                 {
-                    BaseUtility.Chat("PHYSICAL ZER0 UNIT IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("PHYSICAL ZER0 UNIT IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
                     NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
                 }
                 if (!Main.expertMode)
                 {
-                    BaseUtility.Chat("D00MSDAY PR0T0CALL MALFUNCTI0N. MAIN.EXPERT M0DE = FALSE.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("D00MSDAY PR0T0CALL MALFUNCTI0N. MAIN.EXPERT M0DE = FALSE.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
         }
@@ -106,7 +106,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 if (!AAWorld.downedZero)
                 {
-                    BaseUtility.Chat("Doomstone stops glowing. You can now mine it.", Color.Silver);
+                    if (Main.netMode != 1) BaseUtility.Chat("Doomstone stops glowing. You can now mine it.", Color.Silver);
                 }
                 AAWorld.downedZero = true;
                 npc.DropLoot(mod.ItemType("ApocalyptitePlate"), 2, 4);
@@ -337,7 +337,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         killArms = true;
                         npc.netUpdate = true;
                     }
-                    BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
+                    if (Main.netMode != 1) BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
                 }
             }
 

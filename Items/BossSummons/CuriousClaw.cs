@@ -44,12 +44,12 @@ Only usable at night");
         {
             if (NPC.AnyNPCs(mod.NPCType<GripOfChaosBlue>()) || NPC.AnyNPCs(mod.NPCType<GripOfChaosRed>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Grips of Chaos are already here!", Color.DarkOrange, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Grips of Chaos are already here!", Color.DarkOrange, false);
                 return false;
             }
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The claw lays limp in your hand. Nasty.", Color.DarkOrange, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The claw lays limp in your hand. Nasty.", Color.DarkOrange, false);
                 return false;
             }
             return true;

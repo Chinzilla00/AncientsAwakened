@@ -84,7 +84,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(mod.BuffType("HydraToxin"), 600);
-            Kill(0);
         }
 
         public override void Kill(int timeleft)
@@ -101,6 +100,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 89, Terraria.Audio.SoundType.Sound));
             Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("YamataABoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            projectile.active = false;
         }
 
         private int HomeOnTarget()

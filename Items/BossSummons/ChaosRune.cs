@@ -84,12 +84,12 @@ Non-Consumable");
         {
             if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Yamata.Yamata>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Yamata.Awakened.YamataA>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The imagery of a blazing demon flashes through your mind...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The imagery of a blazing demon flashes through your mind...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Akuma.Akuma>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Akuma.Awakened.AkumaA>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The imagery of a 7 headed terror flashes through your mind...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The imagery of a 7 headed terror flashes through your mind...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<ShenSpawn>()))
@@ -98,12 +98,12 @@ Non-Consumable");
             }
             if (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<ShenA>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<ShenSpawn>()) || NPC.AnyNPCs(mod.NPCType<ShenTransition>()) || NPC.AnyNPCs(mod.NPCType<ShenDefeat>()) || NPC.AnyNPCs(mod.NPCType<ShenDeath>()))
@@ -112,7 +112,7 @@ Non-Consumable");
             }
             if (!AAWorld.downedAllAncients)
             {
-                BaseUtility.Chat("The sigil does nothing...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (Main.netMode != 1) BaseUtility.Chat("The sigil does nothing...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             return true;
@@ -120,8 +120,8 @@ Non-Consumable");
 
         public override bool UseItem(Player player)
         {
-            BaseUtility.Chat("Shen Doragon has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            BaseUtility.Chat("Skipping to the fun part, I see? I like you, child.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+            if (Main.netMode != 1) BaseUtility.Chat("Shen Doragon has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+            if (Main.netMode != 1) BaseUtility.Chat("Skipping to the fun part, I see? I like you, child.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenA"), false, 0, 0);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ShenRoar"), player.position);
             return true;

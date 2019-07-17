@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
 			base.SetDefaults();
 			isAwakened = true;
-            npc.value = Item.sellPrice(2, 0, 0, 0);
+            npc.value = Item.sellPrice(0, 40, 0, 0);
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");		
             bossBag = mod.ItemType("YamataBag");
             npc.defense = 999999;
@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (damage > npc.lifeMax / 2)
             {
                 cheated = true;
-                BaseUtility.Chat("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", new Color(146, 30, 68));
+                if (Main.netMode != 1) BaseUtility.Chat("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", new Color(146, 30, 68));
             }
             return false;
         }
@@ -69,16 +69,16 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             if (!AAWorld.downedYamata && !cheated)
             {
-                BaseUtility.Chat("NO...! IMPOSSIBLE! EVEN IN MY AWAKENED FORM?! YOU MUST HAVE CHEATED! GYAAAAAAH..! FINE! TAKE YOUR LOOT! I'M OUTTA HERE..!", new Color(146, 30, 68));
-                BaseUtility.Chat("The defeat of Yamata causes the fog in the mire to lift.", Color.Indigo);
+                if (Main.netMode != 1) BaseUtility.Chat("NO...! IMPOSSIBLE! EVEN IN MY AWAKENED FORM?! YOU MUST HAVE CHEATED! GYAAAAAAH..! FINE! TAKE YOUR LOOT! I'M OUTTA HERE..!", new Color(146, 30, 68));
+                if (Main.netMode != 1) BaseUtility.Chat("The defeat of Yamata causes the fog in the mire to lift.", Color.Indigo);
             }
             if (AAWorld.downedYamata && !cheated)
             {
-                BaseUtility.Chat("NOOOOOOOOOOOOOO!!! YOU LITTLE BRAT!!! I ALMOST HAD YOU THIS TIME!!! FINE, take your stuff, See if I care!", new Color(146, 30, 68));
+                if (Main.netMode != 1) BaseUtility.Chat("NOOOOOOOOOOOOOO!!! YOU LITTLE BRAT!!! I ALMOST HAD YOU THIS TIME!!! FINE, take your stuff, See if I care!", new Color(146, 30, 68));
             }
             if (!Main.expertMode && !cheated)
             {
-                BaseUtility.Chat("HAH! Nice try! Come back in Expert mode when you don’t have to cheat to beat me! All your loot is MINE still!", new Color(146, 30, 68));
+                if (Main.netMode != 1) BaseUtility.Chat("HAH! Nice try! Come back in Expert mode when you don’t have to cheat to beat me! All your loot is MINE still!", new Color(146, 30, 68));
             }
         }
 
@@ -136,17 +136,17 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
                 {
-                    BaseUtility.Chat("YOU'RE STILL FIGHTING?! WHAT THE HELL IS WRONG WITH YOU?!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat("YOU'RE STILL FIGHTING?! WHAT THE HELL IS WRONG WITH YOU?!", new Color(146, 30, 68));
                     threeQuarterHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
                 {
-                    BaseUtility.Chat("I'VE HAD IT UP TO HERE WITH YOUR SHENANIGANS!!! EAT VENOM YOU LITTLE HELLSPAWN!!!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat("I'VE HAD IT UP TO HERE WITH YOUR SHENANIGANS!!! EAT VENOM YOU LITTLE HELLSPAWN!!!", new Color(146, 30, 68));
                     HalfHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 10 && tenthHealth == false)
                 {
-                    BaseUtility.Chat("STOP IT STOP IT STOP IT!!! I'M NOT GONNA LET YOU WIN!!!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat("STOP IT STOP IT STOP IT!!! I'M NOT GONNA LET YOU WIN!!!", new Color(146, 30, 68));
                     tenthHealth = true;
                 }
             }
@@ -154,17 +154,17 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
                 {
-                    BaseUtility.Chat("You're an annoying little bugger, you know!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat("You're an annoying little bugger, you know!", new Color(146, 30, 68));
                     threeQuarterHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
                 {
-                    BaseUtility.Chat("DIE! WHY WON'T YOU JUST DIE ALREADY?!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat("DIE! WHY WON'T YOU JUST DIE ALREADY?!", new Color(146, 30, 68));
                     HalfHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 10 && tenthHealth == false)
                 {
-                    BaseUtility.Chat("STOP IT!!! I'M NOT GONNA LOSE AGAIN!!!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat("STOP IT!!! I'M NOT GONNA LOSE AGAIN!!!", new Color(146, 30, 68));
                     tenthHealth = true;
                 }
             }
@@ -174,13 +174,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 spawnHaruka = true;
                 if (AAWorld.downedYamata)
                 {
-                    BaseUtility.Chat("Looks like I gotta come in and save your rear end again, dad.", new Color(72, 78, 117));
-                    BaseUtility.Chat("That's my girl..!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat("Looks like I gotta come in and save your rear end again, dad.", new Color(72, 78, 117));
+                    if (Main.netMode != 1) BaseUtility.Chat("That's my girl..!", new Color(146, 30, 68));
                     AAModGlobalNPC.SpawnBoss(playerTarget, mod.NPCType("HarukaY"), false, 0, 0);
                     return;
                 }
-                BaseUtility.Chat("Oh, sweetie..! Care to help daddy thrash this little worm?!", new Color(146, 30, 68));
-                BaseUtility.Chat("Sigh...yes dad.", new Color(72, 78, 117));
+                if (Main.netMode != 1) BaseUtility.Chat("Oh, sweetie..! Care to help daddy thrash this little worm?!", new Color(146, 30, 68));
+                if (Main.netMode != 1) BaseUtility.Chat("Sigh...yes dad.", new Color(72, 78, 117));
                 AAModGlobalNPC.SpawnBoss(playerTarget, mod.NPCType("HarukaY"), false, 0, 0);
             }
         }

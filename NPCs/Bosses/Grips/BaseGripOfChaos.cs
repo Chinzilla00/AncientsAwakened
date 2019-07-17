@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Grips
             npc.height = 60;			
             npc.aiStyle = -1;
 			npc.knockBackResist = 0f;	
-            npc.value = Item.sellPrice(0, 4, 50, 0);
+            npc.value = Item.sellPrice(0, 1, 50, 0);
             npc.npcSlots = 1f;
             npc.boss = true;  
             npc.lavaImmune = true;

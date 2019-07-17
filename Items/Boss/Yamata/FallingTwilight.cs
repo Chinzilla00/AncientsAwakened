@@ -20,8 +20,9 @@ namespace AAMod.Items.Boss.Yamata
             item.ranged = true;
             item.width = 44;
             item.height = 76;
-            item.useTime = 19;
-            item.useAnimation = 19;
+            item.useAnimation = 15;
+            item.useTime = 5;
+            item.reuseDelay = 17;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 2.5f;
@@ -30,8 +31,13 @@ namespace AAMod.Items.Boss.Yamata
             item.autoReuse = true;
             item.shoot = 1;
             item.shootSpeed = 14f;
-            item.useAmmo = 40;
+            item.useAmmo = AmmoID.Arrow;
             item.rare = 9; AARarity = 13;
+        }
+
+        public override bool ConsumeAmmo(Player player)
+        {
+            return !(player.itemAnimation < item.useAnimation - 1);
         }
 
 

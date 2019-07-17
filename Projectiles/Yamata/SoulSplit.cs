@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -6,13 +6,12 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Yamata
 {
-    class YamataSoul : ModProjectile
+    public class SoulSplit : ModProjectile
     {
-        public short customGlowMask = 0;
-        public override void SetStaticDefaults()
-        {
-            Main.projFrames[projectile.type] = 6;
-
+    	public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Hydra Soul");
+            Main.projFrames[projectile.type] = 4;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -22,28 +21,32 @@ namespace AAMod.Projectiles.Yamata
 
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
-            projectile.friendly = true;
-            projectile.ranged = true;
-            projectile.ignoreWater = true;
-            projectile.tileCollide = true;
-            projectile.alpha = 0;
-            projectile.penetrate = 1;
-            projectile.timeLeft = 900;
+            projectile.width = 30;
+            projectile.height = 30;
             projectile.friendly = true;
             projectile.hostile = false;
-            
+            projectile.melee = true;
+            projectile.tileCollide = false;
+            projectile.ignoreWater = true;
+            projectile.penetrate = 2; 
+            projectile.timeLeft = 120;
+            projectile.aiStyle = 1;
+            aiType = ProjectileID.Bullet;
         }
 
         public override void AI()
         {
+            projectile.timeLeft--;
+            if (projectile.timeLeft <= 0)
+            {
+                projectile.Kill();
+            }
             projectile.frameCounter++;
-            if (projectile.frameCounter > 4)
+            if (projectile.frameCounter > 5)
             {
                 projectile.frame++;
                 projectile.frameCounter = 0;
-                if (projectile.frame > 5)
+                if (projectile.frame > 3)
                 {
                     projectile.frame = 0;
                 }
@@ -58,14 +61,16 @@ namespace AAMod.Projectiles.Yamata
                 projectile.spriteDirection = 1;
                 projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X);
             }
-            Dust dust1;
-
-            dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.width, projectile.height), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 46, default, 1.381579f)];
-            dust1.noGravity = true;
+            int num557 = 8;
+            //dust!
+            int dustId = Dust.NewDust(new Vector2(projectile.position.X + num557, projectile.position.Y + num557), projectile.width - num557 * 2, projectile.height - num557 * 2, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 0);
+            Main.dust[dustId].noGravity = true;
+            int dustId3 = Dust.NewDust(new Vector2(projectile.position.X + num557, projectile.position.Y + num557), projectile.width - num557 * 2, projectile.height - num557 * 2, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 0);
+            Main.dust[dustId3].noGravity = true;
 
             const int aislotHomingCooldown = 0;
-            const int homingDelay = 0;
-            const float desiredFlySpeedInPixelsPerFrame = 30;
+            const int homingDelay = 30;
+            const float desiredFlySpeedInPixelsPerFrame = 10;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
@@ -86,7 +91,7 @@ namespace AAMod.Projectiles.Yamata
         private int HomeOnTarget()
         {
             const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 400;
+            const float homingMaximumRangeInPixels = 700;
 
             int selectedTarget = -1;
             for (int i = 0; i < Main.maxNPCs; i++)
@@ -106,11 +111,7 @@ namespace AAMod.Projectiles.Yamata
 
             return selectedTarget;
         }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(mod.BuffType("Moonraze"), 1000);
-        }
+        
 
         public override void Kill(int timeLeft)
         {
@@ -123,52 +124,11 @@ namespace AAMod.Projectiles.Yamata
                 num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100);
                 Main.dust[num580].velocity *= 2f;
             }
+        }
 
-            int num3;
-            for (int num622 = 0; num622 < 20; num622 = num3 + 1)
-            {
-                int num623 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 184, 0f, 0f, 0);
-                Dust dust = Main.dust[num623];
-                dust.scale *= 1.1f;
-                Main.dust[num623].noGravity = true;
-                num3 = num622;
-            }
-            for (int num624 = 0; num624 < 30; num624 = num3 + 1)
-            {
-                int num625 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 184, 0f, 0f, 0);
-                Dust dust = Main.dust[num625];
-                dust.velocity *= 2.5f;
-                dust = Main.dust[num625];
-                dust.scale *= 0.8f;
-                Main.dust[num625].noGravity = true;
-                num3 = num624;
-            }
-            if (projectile.owner == Main.myPlayer)
-            {
-                int num626 = 2;
-                if (Main.rand.Next(10) == 0)
-                {
-                    num626++;
-                }
-                if (Main.rand.Next(10) == 0)
-                {
-                    num626++;
-                }
-                if (Main.rand.Next(10) == 0)
-                {
-                    num626++;
-                }
-                for (int num627 = 0; num627 < num626; num627 = num3 + 1)
-                {
-                    float num628 = Main.rand.Next(-35, 36) * 0.02f;
-                    float num629 = Main.rand.Next(-35, 36) * 0.02f;
-                    num628 *= 10f;
-                    num629 *= 10f;
-                    int p = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, num628, num629, mod.ProjectileType<SoulSplit>(), projectile.damage * 3, (int)(projectile.knockBack * 0.35), Main.myPlayer, 0f, 0f);
-                    num3 = num627;
-                    Main.projectile[p].timeLeft = 240;
-                }
-            }
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(mod.BuffType("Moonraze"), 300);
         }
     }
 }

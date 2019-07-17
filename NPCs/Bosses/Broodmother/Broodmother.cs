@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.netAlways = true;
             npc.friendly = false;
             npc.lifeMax = 6000;
-            npc.value = 20000;
+            npc.value = Item.sellPrice(0, 5, 0, 0);
             npc.behindTiles = true;
             npc.knockBackResist = 0f;
             npc.HitSound = new LegacySoundStyle(3, 6, Terraria.Audio.SoundType.Sound);
@@ -156,8 +156,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * 0.8f);  //boss damage increase in expermode
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
         }
         public override void HitEffect(int hitDirection, double damage)
         {

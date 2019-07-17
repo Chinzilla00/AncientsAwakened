@@ -50,19 +50,19 @@ Only Usable at night");
 		{
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Nothing is coming. The creatures of the Mire sleep.", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Nothing is coming. The creatures of the Mire sleep.", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
                 return false;
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
 			{
 				if (NPC.AnyNPCs(mod.NPCType("Hydra")))
 				{
-					if(player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Hydra wants that food.", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
+					if(player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Hydra wants that food.", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
 					return false;
 				}
                 return true;
 			}
-			if(player.whoAmI == Main.myPlayer) BaseUtility.Chat("Nothing is coming. Now you look dumb holding out this smelly ball of gunk.", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);			
+			if(player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Nothing is coming. Now you look dumb holding out this smelly ball of gunk.", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);			
 			return false;
 		}	
 	}

@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.defense = 120;
             npc.lifeMax = 150000;
             npc.HitSound = SoundID.NPCHit1;
-            npc.value = Item.sellPrice(0, 4, 0, 0);
+            npc.value = Item.sellPrice(0, 12, 0, 0);
             npc.knockBackResist = 0f;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -129,7 +129,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HarukaTrophy"));
             }
             NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<HarukaVanish>());
-            BaseUtility.Chat("Rgh..! Ow...", new Color(72, 78, 117));
+            if (Main.netMode != 1) BaseUtility.Chat("Rgh..! Ow...", new Color(72, 78, 117));
             npc.value = 0f;
             npc.boss = false;
         }

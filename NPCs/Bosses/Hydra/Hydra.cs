@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.damage = 40;
             npc.defense = 10;
             npc.lifeMax = 4000;
-            npc.value = Item.sellPrice(0, 2, 0, 0);
+            npc.value = Item.sellPrice(0, 5, 0, 0);
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
@@ -139,49 +139,12 @@ namespace AAMod.NPCs.Bosses.Hydra
 		
         public override void AI()
         {
-			HandleHeads();
-			
-           /* if (!HeadsSpawned)
-            {
-                if (Head1 == null)
-                {
-                    if (Main.netMode != 1)
-                    {
-                        Head1 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead1"), 0)];
-                        Head1.realLife = npc.whoAmI;
-                        Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead2"), 0)];
-                        Head2.realLife = npc.whoAmI;
-                        Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead3"), 0)];
-                        Head3.realLife = npc.whoAmI;
-                    }
-                    else
-                    {
-                        int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default(int[]), 100f, null);
-                        if (npcs != null && npcs.Length > 0)
-                        {
-                            foreach (int npcID in npcs)
-                            {
-                                NPC npc2 = Main.npc[npcID];
-                                if (npc2 != null && npc2.type == mod.NPCType("HydraHead1"))
-                                {
-                                    Head1 = npc2;
-                                }
-                                if (npc2 != null && npc2.type == mod.NPCType("HydraHead2"))
-                                {
-                                    Head2 = npc2;
-                                }
-                                if (npc2 != null && npc2.type == mod.NPCType("HydraHead3"))
-                                {
-                                    Head2 = npc2;
-                                }
-                            }
-                        }
-                    }
-                }
-                HeadsSpawned = true;
-            }*/
+            bool noHeads = !NPC.AnyNPCs(mod.NPCType<HydraHead1>()) && !NPC.AnyNPCs(mod.NPCType<HydraHead2>()) && !NPC.AnyNPCs(mod.NPCType<HydraHead3>());
 
-            if (playerTarget != null)
+            HandleHeads();
+
+
+			if (playerTarget != null)
             {
                 float dist = npc.Distance(playerTarget.Center);
                 if (dist > 500 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
@@ -222,6 +185,17 @@ namespace AAMod.NPCs.Bosses.Hydra
                 if (npc.velocity.Y > 7f) npc.velocity.Y *= 0.75f;
                 npc.timeLeft = 50;
                 AIMovementNormal();
+
+                if (HeadsSpawned && noHeads)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        npc.life = 0;
+                        npc.checkDead();
+                        npc.netUpdate = true;
+                    }
+                    return;
+                }
             }
             else
             {

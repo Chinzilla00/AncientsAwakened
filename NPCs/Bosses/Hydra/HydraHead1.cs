@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using BaseMod;
 using Terraria.ID;
 using Terraria.Audio;
+using System.IO;
 
 namespace AAMod.NPCs.Bosses.Hydra
 {
@@ -22,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Hydra
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.lifeMax = 4000;
+            npc.lifeMax = 1300;
             npc.width = 46;
             npc.height = 46;
             npc.damage = 40;
@@ -40,6 +41,31 @@ namespace AAMod.NPCs.Bosses.Hydra
 			leftHead = false;
 			middleHead = true;
         }
+
+        public bool SetLife = false;
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if ((Main.netMode == 2 || Main.dedServ))
+            {
+                writer.Write(SetLife);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                SetLife = reader.ReadBool();
+            }
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
+        }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             return 0f;
@@ -84,6 +110,12 @@ namespace AAMod.NPCs.Bosses.Hydra
             }
 			if(bodyNPC == null)
 				return;
+            if (!SetLife && Main.netMode != 1)
+            {
+                npc.life = bodyNPC.life / 3;
+                SetLife = true;
+                npc.netUpdate = true;
+            }
             if (!bodyNPC.active)
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghosting'
@@ -95,13 +127,11 @@ namespace AAMod.NPCs.Bosses.Hydra
                 return;
             }			
 			
-            npc.realLife = bodyNPC.whoAmI;
             npc.timeLeft = 100;
 
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
-                //attackDelay = 180;
             }
             else
             {
@@ -132,7 +162,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                         dir *= 9f;
                         for (int i = 0; i < 7; ++i)
                         {
-                            int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("AcidProj"), (int)(damage * .8f), 0f, Main.myPlayer);
+                            int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("AcidProj"), damage, 0f, Main.myPlayer);
                             Main.projectile[projID].netUpdate = true;
                         }
                     }
@@ -142,7 +172,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                         dir *= 6f;
                         dir.X += Main.rand.Next(-1, 1) * 0.5f;
                         dir.Y += Main.rand.Next(-1, 1) * 0.5f;
-                        int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("HydraBreath"), (int)(damage * .8f), 0f, Main.myPlayer);
+                        int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("HydraBreath"), damage, 0f, Main.myPlayer);
                         Main.projectile[projID].netUpdate = true;
                     }
                 }

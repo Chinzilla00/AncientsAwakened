@@ -56,12 +56,12 @@ namespace AAMod.Tiles.Oroboros
 			if (player.SpawnX == spawnX && player.SpawnY == spawnY)
 			{
 				player.RemoveSpawn();
-				BaseMod.BaseUtility.Chat("Spawn point removed!", 255, 240, 20, false);
+				if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Spawn point removed!", 255, 240, 20, false);
 			}
 			else if (Player.CheckSpawn(spawnX, spawnY))
 			{
 				player.ChangeSpawn(spawnX, spawnY);
-				BaseMod.BaseUtility.Chat("Spawn point set!", 255, 240, 20, false);
+				if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Spawn point set!", 255, 240, 20, false);
 			}
 		}
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)

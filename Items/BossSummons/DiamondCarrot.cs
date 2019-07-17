@@ -48,7 +48,7 @@ Non-consumable");
         {
             if (!AAWorld.downedRajahsRevenge)
             {
-                BaseMod.BaseUtility.Chat("GRAVE MISTAKE, TERRARIAN!", 107, 137, 179);
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("GRAVE MISTAKE, TERRARIAN!", 107, 137, 179);
             }
             else
             {
@@ -61,7 +61,7 @@ Non-consumable");
                 {
                     Name = Main.player[Main.myPlayer].name;
                 }
-                BaseMod.BaseUtility.Chat("Show me what you got, " + Name + "!", 107, 137, 179);
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Show me what you got, " + Name + "!", 107, 137, 179);
             }
             int overrideDirection = (Main.rand.Next(2) == 0 ? -1 : 1);
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("SupremeRajah"), false, player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, -1200), "Rajah Rabbit");

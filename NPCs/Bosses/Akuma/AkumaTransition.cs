@@ -99,27 +99,27 @@ namespace AAMod.NPCs.Bosses.Akuma
 				}else
 				if (npc.ai[0] == 375)
 				{
-					BaseUtility.Chat("Heh...", new Color(180, 41, 32));
+					if (Main.netMode != 1) BaseUtility.Chat("Heh...", new Color(180, 41, 32));
 					npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 560)
 				{
-					BaseUtility.Chat("You know, kid...", new Color(180, 41, 32));
+					if (Main.netMode != 1) BaseUtility.Chat("You know, kid...", new Color(180, 41, 32));
 				}else
 				if(npc.ai[0] == 660) //sync so the color transition occurs
                 {
-                    BaseUtility.Chat("The air around you begins to heat up...", new Color(175, 75, 255));
+                    if (Main.netMode != 1) BaseUtility.Chat("The air around you begins to heat up...", new Color(175, 75, 255));
                     npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 900)
 				{
-					BaseUtility.Chat("Fanning the flames doesn't put them out...", Color.DeepSkyBlue);
+					if (Main.netMode != 1) BaseUtility.Chat("Fanning the flames doesn't put them out...", Color.DeepSkyBlue);
 				}else
 				if (npc.ai[0] >= 1100 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
 				{
 					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
-					BaseUtility.Chat("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-					BaseUtility.Chat("IT ONLY MAKES THEM STRONGER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+					if (Main.netMode != 1) BaseUtility.Chat("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+					if (Main.netMode != 1) BaseUtility.Chat("IT ONLY MAKES THEM STRONGER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
 					npc.netUpdate = true;
 					npc.active = false;
 				}

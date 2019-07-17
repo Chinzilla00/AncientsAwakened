@@ -44,7 +44,7 @@ Can only be used at night");
         {
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("You feel a static shock from using this. Maybe it's trying to send a signal?", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("You feel a static shock from using this. Maybe it's trying to send a signal?", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
                 if (Main.netMode == 0)
                 {
                     player.statLife -= 1;
@@ -53,7 +53,7 @@ Can only be used at night");
             }
             if (NPC.AnyNPCs(mod.NPCType("Orthrus")))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Orthrus wants to eat that AND you", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Orthrus wants to eat that AND you", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
                 return false;
             }
             return true;
@@ -69,7 +69,7 @@ Can only be used at night");
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), 1200f);
                 Main.npc[npcID].netUpdate2 = true;
                 string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
-                if (Main.netMode == 0) { BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                if (Main.netMode == 0) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
                 else
                 if (Main.netMode == 2)
                 {

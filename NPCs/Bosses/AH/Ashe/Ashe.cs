@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.damage = 150;
             npc.defense = 40;
             npc.lifeMax = 140000;
-            npc.value = Item.sellPrice(0, 4, 0, 0);
+            npc.value = Item.sellPrice(0, 12, 0, 0);
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -607,7 +607,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
             Main.npc[DeathAnim].velocity = npc.velocity;
-            BaseUtility.Chat("OW..! THAT HURT, YOU KNOW!", new Color(102, 20, 48));
+            if (Main.netMode != 1) BaseUtility.Chat("OW..! THAT HURT, YOU KNOW!", new Color(102, 20, 48));
             npc.value = 0f;
             npc.boss = false;
         }

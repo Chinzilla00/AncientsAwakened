@@ -58,11 +58,11 @@ Non-Consumable");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"), player.position);
             if (!AAWorld.downedYamata)
             {
-                BaseUtility.Chat("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
             }
             if (AAWorld.downedYamata)
             {
-                BaseUtility.Chat("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
             }
 
             return true;
@@ -72,24 +72,24 @@ Non-Consumable");
 		{
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
                 return false;
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
 			{
                 if (!AAWorld.downedYamata && !player.GetModPlayer<AAPlayer>(mod).ZoneRisingMoonLake)
                 {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("You NEED to use that sigil on the altar at the center of the mire! Trust me, nothing bad will happen!", new Color(45, 46, 70), false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("You NEED to use that sigil on the altar at the center of the mire! Trust me, nothing bad will happen!", new Color(45, 46, 70), false);
                     return false;
                 }
 				if (NPC.AnyNPCs(mod.NPCType("Yamata")))
 				{
-					if(player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);
+					if(player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);
 					return false;
 				}
                 if (NPC.AnyNPCs(mod.NPCType("YamataA")))
                 {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
                     return false;
                 }
                 for (int m = 0; m < Main.maxProjectiles; m++)
@@ -102,7 +102,7 @@ Non-Consumable");
                 }
                 return true;
 			}
-			if(player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey Dumbo! Mire is that way!", new Color(45, 46, 70), false);			
+			if(player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Hey Dumbo! Mire is that way!", new Color(45, 46, 70), false);			
 			return false;
 		}
 
@@ -123,7 +123,7 @@ Non-Consumable");
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)
                     {
-                        if (Main.netMode == 0) { BaseUtility.Chat(npcName + " have awoken!", 175, 75, 255, false); }
+                        if (Main.netMode == 0) { if (Main.netMode != 1) BaseUtility.Chat(npcName + " have awoken!", 175, 75, 255, false); }
                         else
                         if (Main.netMode == 2)
                         {
@@ -132,7 +132,7 @@ Non-Consumable");
                     }
                     else
                     {
-                        if (Main.netMode == 0) { BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                        if (Main.netMode == 0) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
                         else
                         if (Main.netMode == 2)
                         {

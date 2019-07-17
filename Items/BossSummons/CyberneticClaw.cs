@@ -64,12 +64,12 @@ Only useable at night");
         {
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The claw just lays limp in your hand.", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The claw just lays limp in your hand.", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType("Retriever")))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Retriever is still trying to grab you", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Retriever is still trying to grab you", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
                 return false;
             }
             return true;

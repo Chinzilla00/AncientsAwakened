@@ -88,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void AI()
         {
-            int attackpower = isAwakened ? 200 : 180;
+            npc.defDamage = = isAwakened ? 200 : 180;
             if (Body == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
@@ -108,7 +108,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             else
             {
-                npc.damage = attackpower;
+                npc.damage = npc.defDamage;
             }
             npc.TargetClosest();
             Player targetPlayer = Main.player[npc.target];
@@ -239,7 +239,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             if (npc.life <= 0)
             {
-                BaseUtility.Chat("OWIE!!!", new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat("OWIE!!!", new Color(45, 46, 70));
             }
         }
 

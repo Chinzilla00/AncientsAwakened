@@ -9,7 +9,7 @@ namespace AAMod.Items.Boss.Sagittarius
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Sagittarius Core");	
+            DisplayName.SetDefault("Sagittarius Core");
             BaseUtility.AddTooltips(item, new string[] { "Activates probes that orbit you and defend you from surrounding enemies" });			
 		}		
 

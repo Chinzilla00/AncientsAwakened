@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.lifeMax = 6000;
             npc.buffImmune[20] = true;
             npc.buffImmune[44] = true;
-            npc.value = Item.sellPrice(0, 8, 0, 0);
+            npc.value = Item.sellPrice(0, 5, 0, 0);
             npc.HitSound = SoundID.NPCHit23;
             npc.DeathSound = SoundID.NPCDeath39;
             npc.knockBackResist = 0f;

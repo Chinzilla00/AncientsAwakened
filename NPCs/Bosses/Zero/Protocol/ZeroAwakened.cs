@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             npc.height = 170;
             npc.friendly = false;
             npc.aiStyle = 0;
-            npc.value = Item.sellPrice(2, 0, 0, 0);
+            npc.value = Item.sellPrice(0, 40, 0, 0);
             npc.npcSlots = 1f;
             npc.boss = true;
             npc.lavaImmune = true;
@@ -65,7 +65,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
                 if (!AAWorld.downedZero)
                 {
-                    BaseUtility.Chat("Doomstone stops glowing. You can now mine it.", Color.Silver);
+                    if (Main.netMode != 1) BaseUtility.Chat("Doomstone stops glowing. You can now mine it.", Color.Silver);
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("ZeroRune"));
                 }
                 AAWorld.downedZero = true;
@@ -114,12 +114,12 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             if (npc.life <= npc.lifeMax / 4 && Panic == false && !AAWorld.downedZero)
             {
                 Panic = true;
-                BaseUtility.Chat("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (npc.life <= npc.lifeMax / 4 && Panic == false && AAWorld.downedZero)
             {
                 Panic = true;
-                BaseUtility.Chat("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L 0MEGA", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L 0MEGA", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (damage > 30)
             {
@@ -134,7 +134,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     int Yint = Main.rand.Next(-400, 400);
                     if ((Xint < -100 || Xint > 100) && (Yint < -90 || Yint > 90))
                     {
-                        //BaseMod.BaseUtility.Chat("CALLED! XINT: " + Xint + ". YINT: " + Yint);
+                        //if (Main.netMode != 1) BaseMod.BaseUtility.Chat("CALLED! XINT: " + Xint + ". YINT: " + Yint);
                         Player player = Main.player[npc.target];
                         Vector2 tele = new Vector2((player.Center.X + Xint), (player.Center.Y + Yint));
                         npc.Center = tele;
@@ -143,7 +143,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             if (npc.life <= 0 && !Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
             {
-                BaseUtility.Chat("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U", Color.Red.R, Color.Red.G, Color.Red.B);
             }
         }
 
@@ -178,7 +178,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 if (damage > npc.lifeMax / 8)
                 {
-                    BaseUtility.Chat("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red);
+                    if (Main.netMode != 1) BaseUtility.Chat("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red);
                     damage = 0;
                 }
 
@@ -301,7 +301,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 npc.TargetClosest(true);
                 if (Killed == false)
                 {
-                    BaseUtility.Chat("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                     Killed = true;
                 }
                 Panic = false;
@@ -317,7 +317,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 if (Killed == false)
                 {
-                    BaseUtility.Chat("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                     Killed = true;
                 }
                 npc.TargetClosest(false);

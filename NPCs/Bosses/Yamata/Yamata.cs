@@ -71,7 +71,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             else
             {
-                npc.value = Item.sellPrice(0, 55, 0, 0);
+                npc.value = Item.sellPrice(0, 30, 0, 0);
             }
             npc.defense = 999999;
             npc.knockBackResist = 0f;
@@ -141,11 +141,11 @@ namespace AAMod.NPCs.Bosses.Yamata
                     int loot = Main.rand.Next(lootTable.Length);
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
                     npc.DropLoot(Items.Boss.Yamata.YamataTrophy.type, 1f / 10);
-                    BaseUtility.Chat("HAH! I went easy on ya! Come back when you’re actually good and we can have a real fight!", new Color(45, 46, 70));
+                    if (Main.netMode != 1) BaseUtility.Chat("HAH! I went easy on ya! Come back when you’re actually good and we can have a real fight!", new Color(45, 46, 70));
                     npc.DropLoot(Items.Vanity.Mask.YamataMask.type, 1f / 7);
                     if (!AAWorld.downedYamata)
                     {
-                        BaseUtility.Chat("The defeat of Yamata causes the fog in the mire to lift.", Color.Indigo);
+                        if (Main.netMode != 1) BaseUtility.Chat("The defeat of Yamata causes the fog in the mire to lift.", Color.Indigo);
                     }
                     if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                     {
@@ -371,7 +371,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             if (Main.dayTime)
             {
-                BaseUtility.Chat(isAwakened ? "THE SUN DOESN'T SHINE IN THE DEPTHS!!! NYEHEHEHEHEHEHEHEH!!!" : "HISSSSSSSSSSSSSSS!!! THE SUNNNNNNNNNN! I'M OUT!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat(isAwakened ? "THE SUN DOESN'T SHINE IN THE DEPTHS!!! NYEHEHEHEHEHEHEHEH!!!" : "HISSSSSSSSSSSSSSS!!! THE SUNNNNNNNNNN! I'M OUT!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
                 if (isAwakened)
                 {
                     Main.dayTime = false;
@@ -407,7 +407,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     NoFlyCountDown = 0;
                     NoFly4U = true;
                     playerTarget.AddBuff(isAwakened ? mod.BuffType<Buffs.YamataAGravity>() : mod.BuffType<Buffs.YamataGravity>(), 10, true);
-                    if (npc.type == mod.NPCType<Yamata>()) BaseUtility.Chat("Oh and don't even think about flying! My ego is so massive it has a gravitational pull all of it's own! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!", new Color(45, 46, 70));
+                    if (npc.type == mod.NPCType<Yamata>()) if (Main.netMode != 1) BaseUtility.Chat("Oh and don't even think about flying! My ego is so massive it has a gravitational pull all of it's own! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!", new Color(45, 46, 70));
                 }
 
                 float dist = npc.Distance(playerTarget.Center);
@@ -417,7 +417,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     {
                         if (!FirstLine)
                         {
-                            BaseUtility.Chat(isAwakened ? "THERE IS NO ESCAPE FROM THE ABYSS!" : "Running away?! I DON'T THINK SO!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+                            if (Main.netMode != 1) BaseUtility.Chat(isAwakened ? "THERE IS NO ESCAPE FROM THE ABYSS!" : "Running away?! I DON'T THINK SO!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
                             FirstLine = true;
                         }
                     }
@@ -465,7 +465,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
 			if ((Main.netMode != 1) && !loludide)
             {
-                BaseUtility.Chat("NYEHEHEHEHEHEHEH..! And don’t come back!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat("NYEHEHEHEHEHEHEH..! And don’t come back!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
                 loludide = true;
             }
 
@@ -755,17 +755,17 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
                 {
-                    BaseUtility.Chat("Resistance isn't gonna save you here! Now stop being a little brat and let me destroy you!", new Color(45, 46, 70));
+                    if (Main.netMode != 1) BaseUtility.Chat("Resistance isn't gonna save you here! Now stop being a little brat and let me destroy you!", new Color(45, 46, 70));
                     threeQuarterHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
                 {
-                    BaseUtility.Chat("STOP SQUIRMING AND LET ME SQUASH YOU!!!", new Color(45, 46, 70));
+                    if (Main.netMode != 1) BaseUtility.Chat("STOP SQUIRMING AND LET ME SQUASH YOU!!!", new Color(45, 46, 70));
                     HalfHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
                 {
-                    BaseUtility.Chat("NGAAAAAAAAAAAAAH YOU'RE REALLY ANNOYING YOU KNOW..!", new Color(45, 46, 70));
+                    if (Main.netMode != 1) BaseUtility.Chat("NGAAAAAAAAAAAAAH YOU'RE REALLY ANNOYING YOU KNOW..!", new Color(45, 46, 70));
                     quarterHealth = true;
                 }
             }
@@ -773,17 +773,17 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
                 {
-                    BaseUtility.Chat("I don't understand why you keep fighting me! I'm superior to you in every single way!", new Color(45, 46, 70));
+                    if (Main.netMode != 1) BaseUtility.Chat("I don't understand why you keep fighting me! I'm superior to you in every single way!", new Color(45, 46, 70));
                     threeQuarterHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
                 {
-                    BaseUtility.Chat("I'M GETTING FRUSTRATED AGAIN!", new Color(45, 46, 70));
+                    if (Main.netMode != 1) BaseUtility.Chat("I'M GETTING FRUSTRATED AGAIN!", new Color(45, 46, 70));
                     HalfHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
                 {
-                    BaseUtility.Chat("I HATE FIGHTING YOU! I HATE IT I HATE IT I HATE IT!!!", new Color(45, 46, 70));
+                    if (Main.netMode != 1) BaseUtility.Chat("I HATE FIGHTING YOU! I HATE IT I HATE IT I HATE IT!!!", new Color(45, 46, 70));
                     quarterHealth = true;
                 }
             }

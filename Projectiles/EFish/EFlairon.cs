@@ -82,7 +82,7 @@ namespace AAMod.Projectiles.EFish
             {
                 projectile.alpha = 0;
             }
-            if ((int)projectile.ai[1] % 2 == 0 && projectile.owner == Main.myPlayer)
+            if ((int)projectile.ai[1] % 3 == 0 && projectile.owner == Main.myPlayer)
             {
                 Vector2 vector55 = vector54 * -1f;
                 vector55.Normalize();

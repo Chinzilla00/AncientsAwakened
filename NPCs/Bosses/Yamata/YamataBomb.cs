@@ -103,7 +103,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(mod.BuffType("HydraToxin"), 600);
-            Kill(0);
         }
 
         public override void Kill(int timeleft)
@@ -116,6 +115,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 Main.dust[num469].velocity *= 2f;
             }
             Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("YamataBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            projectile.active = false;
         }
     }
 }

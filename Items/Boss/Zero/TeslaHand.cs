@@ -19,12 +19,12 @@ namespace AAMod.Items.Boss.Zero
         {
             item.ranged = true;
             item.useTime = 4;
-            item.reuseDelay = 15;
-            item.useAnimation = 12;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 2.5f;
             item.autoReuse = true;
+            item.reuseDelay = 15;
+            item.useAnimation = 12;
             item.shootSpeed = 16f;
             item.width = 36;
             item.height = 42;

@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.damage = 70;
             npc.defense = 30;
             npc.lifeMax = 30000;
-            npc.value = Item.sellPrice(0, 10, 50, 0);
+            npc.value = Item.sellPrice(0, 10, 0, 0);
             npc.buffImmune[BuffID.Ichor] = true;
             npc.lavaImmune = true;
             npc.boss = true;

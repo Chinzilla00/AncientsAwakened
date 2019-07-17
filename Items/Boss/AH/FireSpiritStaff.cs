@@ -10,7 +10,7 @@ namespace AAMod.Items.Boss.AH
     {
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Flame Vortex Staff");	
+            DisplayName.SetDefault("Flame Vortex Staff");
             BaseUtility.AddTooltips(item, new string[] { "Conjures flaming spheres that increase your minion damage", "Each sphere takes up 1 minion slot", "You must have at least 2 open slots for the first summon" });			
 		}		
 

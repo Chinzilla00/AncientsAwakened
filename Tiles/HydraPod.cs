@@ -75,12 +75,12 @@ namespace AAMod.Tiles
             if (AAWorld.SmashHydraPod == 2)
             {
                 AAWorld.SmashHydraPod--;
-                BaseMod.BaseUtility.Chat("The contents spill from the broken pod. Nasty.", Color.Blue);
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("The contents spill from the broken pod. Nasty.", Color.Blue);
             }
             else if (AAWorld.SmashHydraPod == 1)
             {
                 AAWorld.SmashHydraPod--;
-                BaseMod.BaseUtility.Chat("You hear hissing somewhere nearby", Color.Blue);
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("You hear hissing somewhere nearby", Color.Blue);
             }
             else
             {

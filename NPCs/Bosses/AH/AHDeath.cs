@@ -43,11 +43,11 @@ namespace AAMod.NPCs.Bosses.AH
             {
                 if (AAWorld.downedSisters)
                 {
-                    BaseMod.BaseUtility.Chat("RRRRRRRRRGH! NOT AGAIN!!!", new Color(102, 20, 48));
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("RRRRRRRRRGH! NOT AGAIN!!!", new Color(102, 20, 48));
                 }
                 else
                 {
-                    BaseMod.BaseUtility.Chat("You see Ashe? I told you this was a stupid idea, but YOU didn't listen...", new Color(72, 78, 117));
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("You see Ashe? I told you this was a stupid idea, but YOU didn't listen...", new Color(72, 78, 117));
                 }
             }
 
@@ -55,11 +55,11 @@ namespace AAMod.NPCs.Bosses.AH
             {
                 if (AAWorld.downedSisters)
                 {
-                    BaseMod.BaseUtility.Chat("Why do I keep going with you..? I should honestly just let you fight them yourself.", new Color(72, 78, 117));
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Why do I keep going with you..? I should honestly just let you fight them yourself.", new Color(72, 78, 117));
                 }
                 else
                 {
-                    BaseMod.BaseUtility.Chat("Shut up! I thought if we ganged up on " + (player.Male ? "him" : "her") + ", we could just beat the daylights out of 'em!", new Color(102, 20, 48));
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Shut up! I thought if we ganged up on " + (player.Male ? "him" : "her") + ", we could just beat the daylights out of 'em!", new Color(102, 20, 48));
                 }
             }
 
@@ -67,19 +67,19 @@ namespace AAMod.NPCs.Bosses.AH
             {
                 if (AAWorld.downedSisters)
                 {
-                    BaseMod.BaseUtility.Chat("Rgh..! Shut up..!", new Color(102, 20, 48));
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Rgh..! Shut up..!", new Color(102, 20, 48));
                     npc.active = false;
                     AAWorld.downedSisters = true;
                 }
                 else
                 {
-                    BaseMod.BaseUtility.Chat("Whatever...I'm going back home. SOMEONE has to tell dad about this kid.", new Color(72, 78, 117));
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Whatever...I'm going back home. SOMEONE has to tell dad about this kid.", new Color(72, 78, 117));
                 }
             }
             
             if (npc.ai[1] == 700)
             {
-                BaseMod.BaseUtility.Chat("Hmpf..! Fine! Be that way! I'm going back to the inferno!", new Color(102, 20, 48));
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Hmpf..! Fine! Be that way! I'm going back to the inferno!", new Color(102, 20, 48));
                 AAWorld.downedSisters = true;
                 npc.active = false;
             }

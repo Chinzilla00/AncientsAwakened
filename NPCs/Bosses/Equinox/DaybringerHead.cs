@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.lifeMax = 125000;
             npc.damage = 200;
             npc.defense = 100;
-            npc.value = Item.sellPrice(0, 55, 0, 0);
+            npc.value = Item.sellPrice(0, 10, 0, 0);
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;

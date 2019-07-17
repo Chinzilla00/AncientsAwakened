@@ -49,11 +49,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    BaseUtility.Chat("I must say, child. You impress me.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("I must say, child. You impress me.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    BaseUtility.Chat("Face it, child! You’ll never defeat the living embodiment of disarray itself!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("Face it, child! You’ll never defeat the living embodiment of disarray itself!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health9 = true;
                 npc.netUpdate = true;
@@ -62,11 +62,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    BaseUtility.Chat("You fight, even when the odds are stacked against you.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("You fight, even when the odds are stacked against you.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    BaseUtility.Chat("You’re still going? How amusing...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("You’re still going? How amusing...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health8 = true;
                 npc.netUpdate = true;
@@ -75,11 +75,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    BaseUtility.Chat("You remind me of myself quite a bit, to be honest...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("You remind me of myself quite a bit, to be honest...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    BaseUtility.Chat("Putting up a fight when you know Death is inevitable...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("Putting up a fight when you know Death is inevitable...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health7 = true;
                 npc.netUpdate = true;
@@ -88,11 +88,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    BaseUtility.Chat("Maybe some day, you'll have your own realm to rule over...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("Maybe some day, you'll have your own realm to rule over...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    BaseUtility.Chat("Now stop making this hard! Stand still and take it like a man!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("Now stop making this hard! Stand still and take it like a man!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health6 = true;
                 npc.netUpdate = true;
@@ -101,11 +101,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    BaseUtility.Chat("But today, we clash! Now show me what you got!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("But today, we clash! Now show me what you got!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    BaseUtility.Chat("DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health4 = true;
                 npc.netUpdate = true;
@@ -114,11 +114,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    BaseUtility.Chat("Still got it? I'm impressed. Show me your true power!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("Still got it? I'm impressed. Show me your true power!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    BaseUtility.Chat("WHAT?! HOW HAVE YOU- ENOUGH! YOU WILL KNOW WHAT IT MEANS TO FEEL UNYIELDING CHAOS!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("WHAT?! HOW HAVE YOU- ENOUGH! YOU WILL KNOW WHAT IT MEANS TO FEEL UNYIELDING CHAOS!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health3 = true;
                 npc.netUpdate = true;
@@ -127,11 +127,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    BaseUtility.Chat("Come on! KEEP PUSHING!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("Come on! KEEP PUSHING!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    BaseUtility.Chat("NO! I WILL NOT LOSE! NOT TO YOU!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("NO! I WILL NOT LOSE! NOT TO YOU!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health2 = true;
                 npc.netUpdate = true;
@@ -140,11 +140,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    BaseUtility.Chat("SHOW ME! SHOW ME THE TRUE POWER YOU HOLD!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("SHOW ME! SHOW ME THE TRUE POWER YOU HOLD!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    BaseUtility.Chat("GRAAAAAAAAAH!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("GRAAAAAAAAAH!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health1 = true;
                 npc.netUpdate = true;

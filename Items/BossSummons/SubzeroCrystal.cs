@@ -43,17 +43,17 @@ Only usable at night");
         {
             if (Main.dayTime )
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The crystal just sits there, melting in the sun", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The crystal just sits there, melting in the sun", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
                 return false;
             }
             if (!player.ZoneSnow)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The crystal shows an image of the nearby ice biome inside of it", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The crystal shows an image of the nearby ice biome inside of it", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType("Serpent")))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Subzero Serpent continues to attack", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Subzero Serpent continues to attack", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
                 return false;
             }
             return true;
@@ -69,7 +69,7 @@ Only usable at night");
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), 1200f);
                 Main.npc[npcID].netUpdate2 = true;
                 string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
-                if (Main.netMode == 0) { BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                if (Main.netMode == 0) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
                 else
                 if (Main.netMode == 2)
                 {
