@@ -89,7 +89,7 @@ namespace AAMod.Projectiles.Yamata
             if (Main.rand.Next(2) == 0)
             {
                 Dust dust;
-                dust = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 46, default(Color), 1.381579f)];
+                dust = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 46, default, 1.381579f)];
             }
         }
         

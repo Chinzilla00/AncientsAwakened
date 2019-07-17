@@ -88,7 +88,7 @@ namespace AAMod.Projectiles.Akuma
 				
 					vector3 = projectile.Center + new Vector2(Main.rand.Next(-num7, num7 + 1), Main.rand.Next(-num7, num7 + 1));
 					Vector2 vector5 = Vector2.Normalize(projectile.velocity) * scaleFactor2;
-					vector5 = vector5.RotatedBy(Main.rand.NextDouble() * 0.19634954631328583 - 0.098174773156642914, default(Vector2));
+					vector5 = vector5.RotatedBy(Main.rand.NextDouble() * 0.19634954631328583 - 0.098174773156642914, default);
 					if (float.IsNaN(vector5.X) || float.IsNaN(vector5.Y))
 					{
 						vector5 = -Vector2.UnitY;
@@ -195,7 +195,7 @@ namespace AAMod.Projectiles.Akuma
                 for (int num123 = 0; num123 < num122; num123++)
                 {
                     float num124 = num123 - (num122 - 1f) / 2f;
-                    Vector2 vector15 = vector14.RotatedBy(num121 * num124, default(Vector2));
+                    Vector2 vector15 = vector14.RotatedBy(num121 * num124, default);
                     if (!flag11)
                     {
                         vector15 -= vector14;

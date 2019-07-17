@@ -47,8 +47,8 @@ namespace AAMod.Projectiles.Akuma   //The directory for your .cs and .png; Examp
             Dust dust1;
             Dust dust2;
             Vector2 position = projectile.position;
-            dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default(Color), 1f)];
-            dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f)];
+            dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default, 1f)];
+            dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default, 1f)];
             dust1.noGravity = true;
             dust2.noGravity = true;
         }

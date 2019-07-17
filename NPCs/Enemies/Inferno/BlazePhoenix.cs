@@ -113,10 +113,10 @@ namespace AAMod.NPCs.Enemies.Inferno
 				for (int m = 0; m < 30; m++)
 				{
 					int dustID = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, 1, DustID.Fire, -npc.velocity.X * 0.2f,
-						-npc.velocity.Y * 0.2f, 100, default(Color), 2f);
+						-npc.velocity.Y * 0.2f, 100, default, 2f);
 					Main.dust[dustID].velocity *= 2f;
 					dustID = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, npc.height, mod.DustType<Dusts.BroodmotherDust>(), -npc.velocity.X * 0.2f,
-						-npc.velocity.Y * 0.2f, 100, default(Color));
+						-npc.velocity.Y * 0.2f, 100, default);
 					Main.dust[dustID].velocity *= 2f;
 				}
             }

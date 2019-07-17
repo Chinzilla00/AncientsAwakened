@@ -42,11 +42,11 @@ namespace AAMod.Projectiles.Shen
             }
             Vector2 position = projectile.Center + (Vector2.Normalize(projectile.velocity) * 10f);
             bool flag5 = WorldGen.SolidTile(Framing.GetTileSafely((int)projectile.position.X / 16, (int)projectile.position.Y / 16));
-            Dust dust19 = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0f, 0f, 0, default(Color), 1f)];
+            Dust dust19 = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0f, 0f, 0, default, 1f)];
             dust19.position = projectile.Center;
             dust19.velocity = Vector2.Zero;
             dust19.noGravity = true;
-            Dust dust18 = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0f, 0f, 0, default(Color), 1f)];
+            Dust dust18 = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0f, 0f, 0, default, 1f)];
             dust18.position = projectile.Center;
             dust18.velocity = Vector2.Zero;
             dust18.noGravity = true;
@@ -74,11 +74,11 @@ namespace AAMod.Projectiles.Shen
             for (int num468 = 0; num468 < 20; num468++)
             {
                 int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, 1, mod.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
+                    -projectile.velocity.Y * 0.2f, 100, default, 2f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
                 num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color));
+                    -projectile.velocity.Y * 0.2f, 100, default);
                 Main.dust[num469].velocity *= 2f;
             }
             if (TileHit)

@@ -113,7 +113,7 @@ namespace AAMod.Items.Summoning.Minions.Terra
             if (projectile.alpha > 0)
                 for (int num1054 = 0; num1054 < 2; num1054++)
                 {
-                    int num1055 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.SummonDust>(), 0f, 0f, 100, default(Color), 2f);
+                    int num1055 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.SummonDust>(), 0f, 0f, 100, default, 2f);
                     Main.dust[num1055].noGravity = true;
                     Main.dust[num1055].noLight = true;
                 }
@@ -125,7 +125,7 @@ namespace AAMod.Items.Summoning.Minions.Terra
             if (num1052 != projectile.rotation)
             {
                 float num1056 = MathHelper.WrapAngle(num1052 - projectile.rotation);
-                vector134 = vector134.RotatedBy(num1056 * 0.1f, default(Vector2));
+                vector134 = vector134.RotatedBy(num1056 * 0.1f, default);
             }
 
             projectile.rotation = vector134.ToRotation() + 1.57079637f;

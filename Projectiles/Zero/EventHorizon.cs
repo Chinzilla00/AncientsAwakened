@@ -66,7 +66,7 @@ namespace AAMod.Projectiles.Zero
             {
                 vector17.Y *= -1f;
             }
-            vector17 = vector17.RotatedBy(projectile.localAI[0], default(Vector2));
+            vector17 = vector17.RotatedBy(projectile.localAI[0], default);
             projectile.ai[0] += 1f;
             if (projectile.ai[0] < 30f)
             {

@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 int dustType = projectile.ai[0] == 1 ? mod.DustType<Dusts.AkumaADust>() : projectile.ai[0] == 2 ? mod.DustType<Dusts.YamataADust>() : mod.DustType<Dusts.Discord>();
                 int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, dustType, -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color));
+                    -projectile.velocity.Y * 0.2f, 100, default);
                 Main.dust[num469].velocity *= 1f;
             }
         }

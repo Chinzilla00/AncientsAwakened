@@ -749,7 +749,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             Vector2 origin = new Vector2(texture.Width / 2, texture.Height / framecount / 2);
             Color lightColor = overrideColor != null ? (Color)overrideColor : BaseDrawing.GetLightColor(position + new Vector2(width * 0.5f, height * 0.5f));
-            Vector2 velAddon = default(Vector2);
+            Vector2 velAddon = default;
             Vector2 originalpos = position;
             Vector2 offset = new Vector2(offsetX, offsetY);
             for (int m = 1; m <= imageCount; m++)

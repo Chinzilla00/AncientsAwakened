@@ -137,7 +137,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 			if (internalAI[0] < 300)
 			{
 				Player player = Main.player[npc.target];
-				Vector2 offsetVec = !brokenJaw ? default(Vector2) : BaseUtility.RotateVector(default(Vector2), new Vector2(0, 20f), BaseUtility.RotationTo(npc.Center, player.Center));
+				Vector2 offsetVec = !brokenJaw ? default : BaseUtility.RotateVector(default, new Vector2(0, 20f), BaseUtility.RotationTo(npc.Center, player.Center));
 				BaseAI.AITackle(npc, ref npc.ai, player.Center + offsetVec, 0.35f, 6f, true, 60);
 				BaseAI.LookAt(player.Center, npc, 0);
 			}

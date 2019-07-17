@@ -31,8 +31,8 @@ namespace AAMod.Projectiles.Shen
                 Dust dust1;
                 Dust dust2;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
+                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
+                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
                 dust1.noGravity = true;
                 dust2.noGravity = true;
             }

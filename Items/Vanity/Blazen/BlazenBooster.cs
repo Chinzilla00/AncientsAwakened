@@ -94,7 +94,7 @@ Hold up to rocket faster
                     {
                         num71 += player.velocity.Y;
                     }
-                    int num72 = Dust.NewDust(new Vector2(x3, num71), 8, 8, type, 0f, 0f, alpha, default(Color), scale);
+                    int num72 = Dust.NewDust(new Vector2(x3, num71), 8, 8, type, 0f, 0f, alpha, default, scale);
                     Dust expr_5AAB_cp_0 = Main.dust[num72];
                     expr_5AAB_cp_0.velocity.X *= 0.1f;
                     Main.dust[num72].velocity.Y = Main.dust[num72].velocity.Y * 1f + 2f * player.gravDir - player.velocity.Y * 0.3f;

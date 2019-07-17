@@ -55,18 +55,18 @@ namespace AAMod.NPCs.Bosses.Shen
                         int height3 = num84;
                         for (int num85 = 0; num85 < 3; num85++)
                         {
-                            int num86 = Dust.NewDust(position, num84, height3, 240, 0f, 0f, 100, default(Color), 1.5f);
+                            int num86 = Dust.NewDust(position, num84, height3, 240, 0f, 0f, 100, default, 1.5f);
                             Main.dust[num86].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                         }
                         for (int num87 = 0; num87 < 15; num87++)
                         {
-                            int num88 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 200, default(Color), 3.7f);
+                            int num88 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 200, default, 3.7f);
                             Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                             Main.dust[num88].noGravity = true;
                             Main.dust[num88].noLight = true;
                             Main.dust[num88].velocity *= 3f;
                             Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
-                            num88 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default(Color), 1.5f);
+                            num88 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default, 1.5f);
                             Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                             Main.dust[num88].velocity *= 2f;
                             Main.dust[num88].noGravity = true;
@@ -83,7 +83,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 int Smoke2 = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 31), npc.width, npc.height, 186, 1 * Main.rand.NextFloat(-1, 1), -1, 0);
                                 Main.dust[Smoke2].noGravity = true;
                                 Main.dust[Smoke2].noLight = true;
-                                int Smoke = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 31), npc.width, npc.height, 186, 1 * Main.rand.NextFloat(-1, 1), -1, 0, default(Color), 2f);
+                                int Smoke = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y + 31), npc.width, npc.height, 186, 1 * Main.rand.NextFloat(-1, 1), -1, 0, default, 2f);
                                 Main.dust[Smoke].noGravity = true;
                                 Main.dust[Smoke].noLight = true;
                             }

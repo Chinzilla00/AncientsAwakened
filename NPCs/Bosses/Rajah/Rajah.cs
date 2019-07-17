@@ -654,7 +654,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                             int num624 = Dust.NewDust(new Vector2(npc.position.X - 20f, npc.position.Y + npc.height), npc.width + 20, 4, 31, 0f, 0f, 100);
                             Main.dust[num624].velocity *= 0.2f;
                         }
-                        int num625 = Gore.NewGore(new Vector2(num622 - 20, npc.position.Y + npc.height - 8f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                        int num625 = Gore.NewGore(new Vector2(num622 - 20, npc.position.Y + npc.height - 8f), default, Main.rand.Next(61, 64), 1f);
                         Main.gore[num625].velocity *= 0.4f;
                     }
                 }

@@ -39,16 +39,16 @@ namespace AAMod.Projectiles
             }
             projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
             Vector2 position = projectile.Center + (Vector2.Normalize(projectile.velocity) * 10f);
-            Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.TMagicDust>(), 0f, 0f, 0, default(Color), 1f)];
+            Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.TMagicDust>(), 0f, 0f, 0, default, 1f)];
             dust20.position = position;
-            dust20.velocity = (projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * 0.33f) + (projectile.velocity / 4f);
-            dust20.position += projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2));
+            dust20.velocity = (projectile.velocity.RotatedBy(1.5707963705062866, default) * 0.33f) + (projectile.velocity / 4f);
+            dust20.position += projectile.velocity.RotatedBy(1.5707963705062866, default);
             dust20.fadeIn = 0.5f;
             dust20.noGravity = true;
-            dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.TMagicDust>(), 0f, 0f, 0, default(Color), 1f)];
+            dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.TMagicDust>(), 0f, 0f, 0, default, 1f)];
             dust20.position = position;
-            dust20.velocity = (projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2)) * 0.33f) + (projectile.velocity / 4f);
-            dust20.position += projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2));
+            dust20.velocity = (projectile.velocity.RotatedBy(-1.5707963705062866, default) * 0.33f) + (projectile.velocity / 4f);
+            dust20.position += projectile.velocity.RotatedBy(-1.5707963705062866, default);
             dust20.fadeIn = 0.5f;
             dust20.noGravity = true;
         }
@@ -59,14 +59,14 @@ namespace AAMod.Projectiles
             for (int m = 0; m < 20; m++)
             {
                 int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 100, Color.White, 1.6f);
-                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), (m / (float)20) * 6.28f);
+                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(6f, 0f), (m / (float)20) * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
             }
             for (int m = 0; m < pieCut; m++)
             {
                 int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 100, Color.White, 2f);
-                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default(Vector2), new Vector2(9f, 0f), (m / (float)20) * 6.28f);
+                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(9f, 0f), (m / (float)20) * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
             }

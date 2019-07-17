@@ -184,7 +184,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
             }
             else
             {
-                npc.velocity = default(Vector2);
+                npc.velocity = default;
                 npc.position += bodyNPC.velocity;
             }
             npc.position += (Body.npc.position - Body.npc.oldPosition);

@@ -237,7 +237,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
                 int num589 = 0;
                 while (num589 < damage / npc.lifeMax * 50.0)
                 {
-                    int num590 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, default(Color), 1.5f);
+                    int num590 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, default, 1.5f);
                     Main.dust[num590].velocity *= 1.5f;
                     Main.dust[num590].noGravity = true;
                     num589++;
@@ -246,7 +246,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
             }
             for (int num591 = 0; num591 < 10; num591++)
             {
-                int num592 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, default(Color), 1.5f);
+                int num592 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, default, 1.5f);
                 Main.dust[num592].velocity *= 2f;
                 Main.dust[num592].noGravity = true;
             }
@@ -286,7 +286,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
         public static void DrawAfterimage(object sb, Texture2D texture, int shader, Vector2 position, int width, int height, Vector2[] oldPoints, float scale = 1f, float rotation = 0f, int direction = 0, int framecount = 1, Rectangle frame = default(Rectangle), float distanceScalar = 1.0F, float sizeScalar = 1f, int imageCount = 7, bool useOldPos = true, float offsetX = 0f, float offsetY = 0f, bool drawCentered = false, Color? overrideColor = null)
         {
             Color lightColor = overrideColor != null ? (Color)overrideColor : BaseDrawing.GetLightColor(position + new Vector2(width * 0.5f, height * 0.5f));
-            Vector2 velAddon = default(Vector2);
+            Vector2 velAddon = default;
             Vector2 originalpos = position;
             Vector2 offset = new Vector2(offsetX, offsetY);
             for (int m = 1; m <= imageCount; m++)

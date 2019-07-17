@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
                 num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y - 4f, 100, default(Color));
+                    -projectile.velocity.Y - 4f, 100, default);
                 Main.dust[num469].velocity *= 2f;
             }
             Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 51 + 8, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("Shockwave"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);

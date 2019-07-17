@@ -172,8 +172,8 @@ namespace AAMod.NPCs.Bosses.Yamata
 		public int MinionTimer = 0;	
 
         //clientside stuff
-        public Vector2 bottomVisualOffset = default(Vector2);
-        public Vector2 topVisualOffset = default(Vector2);
+        public Vector2 bottomVisualOffset = default;
+        public Vector2 topVisualOffset = default;
         public LegInfo[] legs = null;
 		public bool[] headsSaidOw = new bool[7];
         public bool Tag = false;
@@ -829,8 +829,8 @@ namespace AAMod.NPCs.Bosses.Yamata
         private readonly bool flying = false;
         private bool leftLeg = false;
 
-        Vector2 pointToStandOn = default(Vector2);
-        Vector2 legJoint = default(Vector2);
+        Vector2 pointToStandOn = default;
+        Vector2 legJoint = default;
         public Texture2D[] textures = null;
 
         public LegInfo(int lType, Vector2 initialPos, Yamata m)
@@ -850,7 +850,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (velLength > 8f)
             {
                 position = movementSpot;
-                velocity = default(Vector2);
+                velocity = default;
             }
             else
             if (Vector2.Distance(movementSpot, position) > (40 + (int)npc.velocity.Length()))
@@ -864,7 +864,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             else
             {
                 position = movementSpot;
-                velocity = default(Vector2);
+                velocity = default;
             }
         }
 
@@ -878,20 +878,20 @@ namespace AAMod.NPCs.Bosses.Yamata
         public void MoveLegWalking(NPC npc, bool leftLeg, Vector2 standOnPoint)
         {
             UpdateVelOffsetY();
-            if (pointToStandOn != default(Vector2))
+            if (pointToStandOn != default)
             {
                 Vector2 velAddon = (pointToStandOn - position); velAddon.Normalize(); velAddon *= (1.6f + (npc.velocity.Length() * 0.5f));
                 velocity += velAddon;
                 float velMax = 4f + npc.velocity.Length();
                 if (velocity.Length() > velMax) { velocity.Normalize(); velocity *= velMax; }
-                if (Vector2.Distance(pointToStandOn, position) <= 15) { position = pointToStandOn; velocity = default(Vector2); }
+                if (Vector2.Distance(pointToStandOn, position) <= 15) { position = pointToStandOn; velocity = default; }
                 position += velocity;
                 if ((position == pointToStandOn || Vector2.Distance(standOnPoint, position + new Vector2(Hitbox.Width * 0.5f, 0f)) > distanceToMove || Math.Abs(position.X - standOnPoint.X) > distanceToMoveX))
                 {
-                    pointToStandOn = default(Vector2);
+                    pointToStandOn = default;
                 }
             }
-            if (pointToStandOn == default(Vector2))
+            if (pointToStandOn == default)
             {
                 if (Vector2.Distance(standOnPoint, position + new Vector2(Hitbox.Width * 0.5f, 0f)) > distanceToMove || Math.Abs(position.X - standOnPoint.X) > distanceToMoveX)
                 {
@@ -913,7 +913,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 			{
                 rotation = 0f;
                 Vector2 standOnPoint = GetStandOnPoint(npc);
-                if (standOnPoint == default(Vector2)) //'flying' behavior but per leg
+                if (standOnPoint == default) //'flying' behavior but per leg
                 {
                     MoveLegFlying(npc, leftLeg);
                 }
@@ -938,7 +938,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 			
             int defaultTileY = (int)(npc.Bottom.Y / 16f);
             int tileY = BaseWorldGen.GetFirstTileFloor((int)(standOnX / 16f), (int)(npc.Bottom.Y / 16f));
-            if (tileY - defaultTileY > Yamata.flyingTileCount) { return default(Vector2); } //'flying' behavior
+            if (tileY - defaultTileY > Yamata.flyingTileCount) { return default; } //'flying' behavior
             if (!flying)
             {
                 tileY = (int)(tileY * 16f) / 16;
@@ -946,7 +946,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (Main.tile[(int)(standOnX / 16f), tileY] == null || !Main.tile[(int)(standOnX / 16f), tileY].nactive() || !Main.tileSolid[Main.tile[(int)(standOnX / 16f), tileY].type]) tilePosY += 16f;
                 return new Vector2(standOnX - (Hitbox.Width * 0.5f), tilePosY - Hitbox.Height);
             }
-            return default(Vector2);
+            return default;
         }
 
         public Vector2 GetBodyConnector(NPC npc)

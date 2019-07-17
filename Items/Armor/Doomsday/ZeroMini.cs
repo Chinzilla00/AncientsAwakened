@@ -173,7 +173,7 @@ namespace AAMod.Items.Armor.Doomsday
                         });
                         int num630 = Dust.NewDust(projectile.Center, 0, 0, num629, 0f, 0f, 0);
                         Dust dust2 = Main.dust[num630];
-                        Vector2 value17 = Vector2.One.RotatedBy(num628 * 1.57079637f, default(Vector2)).RotatedBy(projectile.rotation, default(Vector2));
+                        Vector2 value17 = Vector2.One.RotatedBy(num628 * 1.57079637f, default).RotatedBy(projectile.rotation, default);
                         dust2.position = projectile.Center + value17 * 10f;
                         dust2.velocity = value17 * 1f;
                         dust2.scale = 0.6f + Main.rand.NextFloat() * 0.5f;

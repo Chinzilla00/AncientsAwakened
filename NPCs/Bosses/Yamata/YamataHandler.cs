@@ -32,7 +32,7 @@ namespace AAMod
 
 		public bool drawCenteredX = false;
 
-		public Vector2 oldDrawPos = default(Vector2);
+		public Vector2 oldDrawPos = default;
 
         public override bool CloneNewInstances => true;
 

@@ -349,10 +349,10 @@ namespace AAMod.NPCs.Bosses.Toad
                         {
                             for (int num623 = 0; num623 < 4; num623++)
                             {
-                                int num624 = Dust.NewDust(new Vector2(npc.position.X - 20f, npc.position.Y + npc.height), npc.width + 20, 4, 31, 0f, 0f, 100, default(Color), 1.5f);
+                                int num624 = Dust.NewDust(new Vector2(npc.position.X - 20f, npc.position.Y + npc.height), npc.width + 20, 4, 31, 0f, 0f, 100, default, 1.5f);
                                 Main.dust[num624].velocity *= 0.2f;
                             }
-                            int num625 = Gore.NewGore(new Vector2(num622 - 20, npc.position.Y + npc.height - 8f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                            int num625 = Gore.NewGore(new Vector2(num622 - 20, npc.position.Y + npc.height - 8f), default, Main.rand.Next(61, 64), 1f);
                             Main.gore[num625].velocity *= 0.4f;
                         }
                         for (int a = 0; a < 4; a++)

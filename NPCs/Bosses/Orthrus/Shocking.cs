@@ -80,7 +80,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
         public override bool PreDraw(SpriteBatch sb, Color dColor)
 		{
 			Vector2 drawOffset = BaseUtility.RotateVector(Vector2.Zero, new Vector2(frameWidth * 0.5f, 0), projectile.rotation);	
-			BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position + drawOffset, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, Main.projFrames[projectile.type], new Rectangle(0, projectile.frame * frameHeight, frameWidth, frameHeight), GetAlpha(dColor), true, default(Vector2));			
+			BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position + drawOffset, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, Main.projFrames[projectile.type], new Rectangle(0, projectile.frame * frameHeight, frameWidth, frameHeight), GetAlpha(dColor), true, default);			
 			return false;
 		}
     }

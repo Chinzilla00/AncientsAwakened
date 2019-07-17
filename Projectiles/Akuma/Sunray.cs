@@ -90,8 +90,8 @@ namespace AAMod.Projectiles.Akuma
             }
             if (Main.rand.Next(5) == 0)
             {
-                Vector2 value38 = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
-                int num812 = Dust.NewDust(vector72 + value38 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default(Color), 1.5f);
+                Vector2 value38 = projectile.velocity.RotatedBy(1.5707963705062866, default) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
+                int num812 = Dust.NewDust(vector72 + value38 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default, 1.5f);
                 Main.dust[num812].velocity *= 0.5f;
                 Main.dust[num812].velocity.Y = -Math.Abs(Main.dust[num812].velocity.Y);
             }

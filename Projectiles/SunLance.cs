@@ -72,7 +72,7 @@ namespace AAMod.Projectiles
 			Vector2 oldCenter = p.Center;
             p.position.X = center.X - p.width * 0.5f;
             p.position.Y = center.Y - p.height * 0.5f;
-			p.position += BaseMod.BaseUtility.RotateVector(default(Vector2), BaseMod.BaseUtility.MultiLerpVector(1f - itemAnimation / (float)itemAnimationMax, spearPos), itemRot);		
+			p.position += BaseMod.BaseUtility.RotateVector(default, BaseMod.BaseUtility.MultiLerpVector(1f - itemAnimation / (float)itemAnimationMax, spearPos), itemRot);		
             if (!overrideKill && Main.player[p.owner].itemAnimation == 0){ p.Kill(); }
             p.rotation = BaseMod.BaseUtility.RotationTo(center, oldCenter) + 2.355f;				
 			if (p.direction == -1) { p.rotation -= 0f; }else

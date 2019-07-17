@@ -82,14 +82,14 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     if (Main.rand.Next(2) == 0)
                     {
-                        int num233 = Dust.NewDust(new Vector2(projectile.position.X + 3f + num231, projectile.position.Y + 3f + num232) - projectile.velocity * 0.5f, projectile.width - 8, projectile.height - 8, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 100, default(Color), 1f);
+                        int num233 = Dust.NewDust(new Vector2(projectile.position.X + 3f + num231, projectile.position.Y + 3f + num232) - projectile.velocity * 0.5f, projectile.width - 8, projectile.height - 8, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 100, default, 1f);
                         Main.dust[num233].scale *= 1.4f + (float)Main.rand.Next(10) * 0.1f;
                         Main.dust[num233].velocity *= 0.2f;
                         Main.dust[num233].noGravity = true;
                     }
                     if (Main.rand.Next(2) == 0)
                     {
-                        int num234 = Dust.NewDust(new Vector2(projectile.position.X + 3f + num231, projectile.position.Y + 3f + num232) - projectile.velocity * 0.5f, projectile.width - 8, projectile.height - 8, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 100, default(Color), 0.5f);
+                        int num234 = Dust.NewDust(new Vector2(projectile.position.X + 3f + num231, projectile.position.Y + 3f + num232) - projectile.velocity * 0.5f, projectile.width - 8, projectile.height - 8, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 100, default, 0.5f);
                         Main.dust[num234].fadeIn = 0.5f + (float)Main.rand.Next(5) * 0.1f;
                         Main.dust[num234].velocity *= 0.05f;
                     }

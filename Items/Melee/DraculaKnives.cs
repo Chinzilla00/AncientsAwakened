@@ -55,7 +55,7 @@ Vampire Knives EX");
             }
             return true;
             /*Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-            Vector2 value = Vector2.UnitX.RotatedBy((double)player.fullRotation, default(Vector2));
+            Vector2 value = Vector2.UnitX.RotatedBy((double)player.fullRotation, default);
             Vector2 vector3 = Main.MouseWorld - vector2;
             Vector2 vector4 = player.itemRotation.ToRotationVector2() * (float)player.direction;
             int num76 = item.damage;

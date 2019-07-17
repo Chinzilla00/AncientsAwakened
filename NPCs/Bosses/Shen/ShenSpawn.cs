@@ -43,9 +43,9 @@ namespace AAMod.NPCs.Bosses.Shen
                     Dust dust2;
                     Vector2 position1 = new Vector2(npc.Center.X + 50, npc.Center.Y);
                     Vector2 position2 = new Vector2(npc.Center.X - 50, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
                     dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
                     dust2.noGravity = true;
                     dust2.scale *= 1.3f;
                     dust2.velocity.Y -= 6;
@@ -82,9 +82,9 @@ namespace AAMod.NPCs.Bosses.Shen
                     Dust dust2;
                     Vector2 position1 = new Vector2(npc.Center.X + 40, npc.Center.Y);
                     Vector2 position2 = new Vector2(npc.Center.X - 40, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
                     dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
                     dust2.noGravity = true;
                     dust2.scale *= 1.3f;
                     dust2.velocity.Y -= 6;
@@ -99,9 +99,9 @@ namespace AAMod.NPCs.Bosses.Shen
                     Dust dust2;
                     Vector2 position1 = new Vector2(npc.Center.X + 35, npc.Center.Y);
                     Vector2 position2 = new Vector2(npc.Center.X - 35, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
                     dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
                     dust2.noGravity = true;
                     dust2.scale *= 1.3f;
                     dust2.velocity.Y -= 6;
@@ -116,9 +116,9 @@ namespace AAMod.NPCs.Bosses.Shen
                     Dust dust2;
                     Vector2 position1 = new Vector2(npc.Center.X + 30, npc.Center.Y);
                     Vector2 position2 = new Vector2(npc.Center.X - 30, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
                     dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
                     dust2.noGravity = true;
                     dust2.scale *= 1.3f;
                     dust2.velocity.Y -= 6;
@@ -133,9 +133,9 @@ namespace AAMod.NPCs.Bosses.Shen
                     Dust dust2;
                     Vector2 position1 = new Vector2(npc.Center.X + 25, npc.Center.Y);
                     Vector2 position2 = new Vector2(npc.Center.X - 25, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
                     dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
                     dust2.noGravity = true;
                     dust2.scale *= 1.3f;
                     dust2.velocity.Y -= 6;
@@ -150,9 +150,9 @@ namespace AAMod.NPCs.Bosses.Shen
                     Dust dust2;
                     Vector2 position1 = new Vector2(npc.Center.X + 15, npc.Center.Y);
                     Vector2 position2 = new Vector2(npc.Center.X - 15, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
                     dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
                     dust2.noGravity = true;
                     dust2.scale *= 1.3f;
                     dust2.velocity.Y -= 6;
@@ -165,9 +165,9 @@ namespace AAMod.NPCs.Bosses.Shen
                 Dust dust2;
                 Vector2 position1 = new Vector2(npc.Center.X + 10, npc.Center.Y);
                 Vector2 position2 = new Vector2(npc.Center.X - 10, npc.Center.Y);
-                dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
+                dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
                 dust1.noGravity = false;
-                dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
+                dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
                 dust2.noGravity = true;
                 dust2.scale *= 1.3f;
                 dust2.velocity.Y -= 6;
@@ -181,9 +181,9 @@ namespace AAMod.NPCs.Bosses.Shen
                     Dust dust2;
                     Vector2 position1 = new Vector2(npc.Center.X + 5, npc.Center.Y);
                     Vector2 position2 = new Vector2(npc.Center.Y - 5, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
                     dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default(Color), 1f)];
+                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
                     dust2.noGravity = true;
                     dust2.scale *= 1.3f;
                     dust2.velocity.Y -= 6;
@@ -196,7 +196,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     Dust dust1;
                     Vector2 position1 = npc.Center;
-                    dust1 = Main.dust[Dust.NewDust(position1, 20, 20, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position1, 20, 20, mod.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
                     dust1.noGravity = false;
                     dust1.scale *= 1.3f;
                     dust1.velocity.Y -= 6;

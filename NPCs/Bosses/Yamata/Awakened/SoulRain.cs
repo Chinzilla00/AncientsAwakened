@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
 
             int dustId = Dust.NewDust(projectile.Center, projectile.width, projectile.height + 5, mod.DustType<Dusts.YamataAuraDust>(), projectile.velocity.X * 0.2f,
-                projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
+                projectile.velocity.Y * 0.2f, 100, default, 2f);
             Main.dust[dustId].noGravity = true;
         }
 

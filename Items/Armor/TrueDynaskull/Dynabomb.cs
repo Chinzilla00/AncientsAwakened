@@ -74,8 +74,8 @@ namespace AAMod.Items.Armor.TrueDynaskull
                     while (num110 < num109)
                     {
                         Vector2 vector14 = Vector2.UnitX * 0f;
-                        vector14 += -Vector2.UnitY.RotatedBy(num110 * (6.28318548f / num109), default(Vector2)) * new Vector2(1f, 4f);
-                        vector14 = vector14.RotatedBy(projectile.velocity.ToRotation(), default(Vector2));
+                        vector14 += -Vector2.UnitY.RotatedBy(num110 * (6.28318548f / num109), default) * new Vector2(1f, 4f);
+                        vector14 = vector14.RotatedBy(projectile.velocity.ToRotation(), default);
                         int num111 = Dust.NewDust(projectile.Center, 0, 0, mod.DustType<InfinityOverloadO>(), 0f, 0f, 0);
                         Main.dust[num111].scale = 1.5f;
                         Main.dust[num111].noLight = true;
@@ -102,18 +102,18 @@ namespace AAMod.Items.Armor.TrueDynaskull
             int height3 = num84;
             for (int num85 = 0; num85 < 4; num85++)
             {
-                int num86 = Dust.NewDust(position, num84, height3, mod.DustType<InfinityOverloadO>(), 0f, 0f, 100, default(Color), 1);
+                int num86 = Dust.NewDust(position, num84, height3, mod.DustType<InfinityOverloadO>(), 0f, 0f, 100, default, 1);
                 Main.dust[num86].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
             }
             for (int num87 = 0; num87 < 20; num87++)
             {
-                int num88 = Dust.NewDust(position, num84, height3, mod.DustType<InfinityOverloadO>(), 0f, 0f, 200, default(Color), 1);
+                int num88 = Dust.NewDust(position, num84, height3, mod.DustType<InfinityOverloadO>(), 0f, 0f, 200, default, 1);
                 Main.dust[num88].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].noGravity = true;
                 Main.dust[num88].noLight = true;
                 Main.dust[num88].velocity *= 3f;
                 Main.dust[num88].velocity += projectile.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
-                num88 = Dust.NewDust(position, num84, height3, mod.DustType<InfinityOverloadO>(), 0f, 0f, 100, default(Color), 1);
+                num88 = Dust.NewDust(position, num84, height3, mod.DustType<InfinityOverloadO>(), 0f, 0f, 100, default, 1);
                 Main.dust[num88].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].velocity *= 2f;
                 Main.dust[num88].noGravity = true;
@@ -123,8 +123,8 @@ namespace AAMod.Items.Armor.TrueDynaskull
             }
             for (int num89 = 0; num89 < 20; num89++)
             {
-                int num90 = Dust.NewDust(position, num84, height3, mod.DustType<InfinityOverloadO>(), 0f, 0f, 0, default(Color), 1);
-                Main.dust[num90].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation(), default(Vector2)) * num84 / 2f);
+                int num90 = Dust.NewDust(position, num84, height3, mod.DustType<InfinityOverloadO>(), 0f, 0f, 0, default, 1);
+                Main.dust[num90].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation(), default) * num84 / 2f);
                 Main.dust[num90].noGravity = true;
                 Main.dust[num90].noLight = true;
                 Main.dust[num90].velocity *= 3f;
@@ -132,8 +132,8 @@ namespace AAMod.Items.Armor.TrueDynaskull
             }
             for (int num91 = 0; num91 < 70; num91++)
             {
-                int num92 = Dust.NewDust(position, num84, height3, mod.DustType<InfinityOverloadO>(), 0f, 0f, 0, default(Color), 1);
-                Main.dust[num92].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation(), default(Vector2)) * num84 / 2f);
+                int num92 = Dust.NewDust(position, num84, height3, mod.DustType<InfinityOverloadO>(), 0f, 0f, 0, default, 1);
+                Main.dust[num92].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation(), default) * num84 / 2f);
                 Main.dust[num92].noGravity = true;
                 Main.dust[num92].velocity *= 3f;
                 Main.dust[num92].velocity += projectile.DirectionTo(Main.dust[num92].position) * 3f;

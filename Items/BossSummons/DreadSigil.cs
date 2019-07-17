@@ -106,9 +106,9 @@ Non-Consumable");
 			return false;
 		}
 
-        public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
+        public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 npcCenter = default, string overrideDisplayName = "", bool namePlural = false)
         {
-            if (npcCenter == default(Vector2))
+            if (npcCenter == default)
                 npcCenter = player.Center;
             if (Main.netMode != 1)
             {

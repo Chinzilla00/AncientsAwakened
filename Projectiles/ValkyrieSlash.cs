@@ -32,7 +32,7 @@ namespace AAMod.Projectiles
                 //Do net updatey thing. Syncs this projectile.
 				if (Main.rand.Next(3) == 0)
                 {
-                 int num30 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6, projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 2f);
+                 int num30 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6, projectile.velocity.X, projectile.velocity.Y, 100, default, 2f);
                     Main.dust[num30].noGravity = true;
                     Main.dust[num30].position -= projectile.velocity;
                 }

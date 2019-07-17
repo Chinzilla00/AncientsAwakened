@@ -167,13 +167,13 @@ namespace AAMod.Projectiles.Tools
             float num299 = num298 + 30f;
             new Vector2(2f, num296 - num299);
             Vector2 value51 = Vector2.Lerp(vector45 + Main.screenPosition, vector46 + value50 * num299, 0.5f);
-            Vector2 vector48 = -Vector2.UnitY.RotatedBy((projectile.localAI[0] / 60f * 3.14159274f), default(Vector2));
+            Vector2 vector48 = -Vector2.UnitY.RotatedBy((projectile.localAI[0] / 60f * 3.14159274f), default);
             Vector2[] array7 = new Vector2[]
             {
                         vector48,
-                        vector48.RotatedBy(1.5707963705062866, default(Vector2)),
-                        vector48.RotatedBy(3.1415927410125732, default(Vector2)),
-                        vector48.RotatedBy(4.71238911151886, default(Vector2))
+                        vector48.RotatedBy(1.5707963705062866, default),
+                        vector48.RotatedBy(3.1415927410125732, default),
+                        vector48.RotatedBy(4.71238911151886, default)
             };
             if (num296 > num299)
             {
@@ -192,7 +192,7 @@ namespace AAMod.Projectiles.Tools
                         color65.A = 128;
                         color65 *= 0.5f;
                     }
-                    Vector2 value52 = new Vector2(array7[num300].X, 0f).RotatedBy(num297, default(Vector2)) * 4f;
+                    Vector2 value52 = new Vector2(array7[num300].X, 0f).RotatedBy(num297, default) * 4f;
                     Main.spriteBatch.Draw(Main.magicPixel, value51 - Main.screenPosition + value52, new Rectangle?(new Rectangle(0, 0, 1, 1)), color65, num297, Vector2.One / 2f, new Vector2(2f, num296 - num299), spriteEffects, 0f);
                 }
             }
@@ -217,7 +217,7 @@ namespace AAMod.Projectiles.Tools
                         color67.A = 128;
                         color67 *= 0.5f;
                     }
-                    Vector2 value53 = new Vector2(array7[num301].X, 0f).RotatedBy(num297, default(Vector2)) * 4f;
+                    Vector2 value53 = new Vector2(array7[num301].X, 0f).RotatedBy(num297, default) * 4f;
                     Main.spriteBatch.Draw(Main.magicPixel, value51 - Main.screenPosition + value53, new Rectangle?(new Rectangle(0, 0, 1, 1)), color67, num297, Vector2.One / 2f, new Vector2(2f, num296 - num299), spriteEffects, 0f);
                 }
             }

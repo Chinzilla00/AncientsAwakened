@@ -53,7 +53,7 @@ namespace AAMod.Projectiles.Akuma
                 {
                     for (int num352 = 0; num352 < 8; num352++)
                     {
-                        int num353 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 1.8f);
+                        int num353 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default, 1.8f);
                         Main.dust[num353].noGravity = true;
                         Main.dust[num353].velocity *= 3f;
                         Main.dust[num353].fadeIn = 0.5f;
@@ -63,15 +63,15 @@ namespace AAMod.Projectiles.Akuma
                 }
                 if (projectile.ai[0] > 2f)
                 {
-                    int num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 20f), 8, 8, mod.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.2f);
+                    int num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 20f), 8, 8, mod.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.2f);
                     Main.dust[num354].noGravity = true;
                     Main.dust[num354].velocity *= 0.2f;
                     Main.dust[num354].position = Main.dust[num354].position.RotatedBy(projectile.rotation, projectile.Center);
-                    num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 15f), 8, 8, mod.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.2f);
+                    num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 15f), 8, 8, mod.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.2f);
                     Main.dust[num354].noGravity = true;
                     Main.dust[num354].velocity *= 0.2f;
                     Main.dust[num354].position = Main.dust[num354].position.RotatedBy(projectile.rotation, projectile.Center);
-                    num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 10f), 8, 8, mod.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.2f);
+                    num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 10f), 8, 8, mod.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.2f);
                     Main.dust[num354].noGravity = true;
                     Main.dust[num354].velocity *= 0.2f;
                     Main.dust[num354].position = Main.dust[num354].position.RotatedBy(projectile.rotation, projectile.Center);
@@ -83,7 +83,7 @@ namespace AAMod.Projectiles.Akuma
                 projectile.ai[0] += 1f;
                 if (projectile.ai[0] > 4f)
                 {
-                    int num356 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 20f), 8, 8, mod.DustType<Dusts.AkumaADust>(), projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.2f);
+                    int num356 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 20f), 8, 8, mod.DustType<Dusts.AkumaADust>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.2f);
                     Main.dust[num356].noGravity = true;
                     Main.dust[num356].velocity *= 0.2f;
                     Main.dust[num356].position = Main.dust[num356].position.RotatedBy(projectile.rotation, projectile.Center);

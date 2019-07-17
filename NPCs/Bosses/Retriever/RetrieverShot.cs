@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Retriever
 
             if (Main.rand.Next(1) == 0)
             {
-                int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.FulguriteDust>(), 0f, 0f, 200, default(Color), 0.8f);
+                int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.FulguriteDust>(), 0f, 0f, 200, default, 0.8f);
                 Main.dust[dustnumber].velocity *= 0.3f;
             }
         }

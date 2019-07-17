@@ -114,7 +114,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (Main.rand.Next(5) == 0)
                     {
                         Vector2 value49 = projectile.velocity.RotatedBy(1.5707963705062866) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
-                        int num854 = Dust.NewDust(projectile.Center + value49 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default(Color), 1.5f);
+                        int num854 = Dust.NewDust(projectile.Center + value49 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default, 1.5f);
                         Main.dust[num854].velocity *= 0.5f;
                         Main.dust[num854].velocity.Y = -Math.Abs(Main.dust[num854].velocity.Y);
                         return;
@@ -233,7 +233,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 if (Main.rand.Next((alphaMult < 0.5f ? 4 : 8)) == 0)
                 {
                     Vector2 dustPos = Vector2.Lerp(oldPos, nextPos, (float)Main.rand.NextDouble());
-                    int dustID = DustHandler.SpawnSpecialDust(dustPos, 5, 5, default(Vector2), 1.4f, GRealm.GetTexture("dust_Spark"), GConstants.COLOR_LIGHTNINGDUST, new Color(255, 255, 255, 0), 1, 39);
+                    int dustID = DustHandler.SpawnSpecialDust(dustPos, 5, 5, default, 1.4f, GRealm.GetTexture("dust_Spark"), GConstants.COLOR_LIGHTNINGDUST, new Color(255, 255, 255, 0), 1, 39);
                     Main.dust[dustID].rotation = (Main.rand.Next(5) * (float)(Math.PI / 8f));
                     Main.dust[dustID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
                     Main.dust[dustID].velocity *= 3f;

@@ -54,7 +54,7 @@ namespace AAMod.Projectiles
 			if (Main.rand.Next(8) == 0)
 			{
 				int num158 = 16;
-				int num159 = Dust.NewDust(new Vector2(projectile.position.X + num158, projectile.position.Y + num158), projectile.width - num158 * 2, projectile.height - num158 * 2, mod.DustType<Dusts.HydraDust>(), 0f, 0f, 100, default(Color), 0.5f);
+				int num159 = Dust.NewDust(new Vector2(projectile.position.X + num158, projectile.position.Y + num158), projectile.width - num158 * 2, projectile.height - num158 * 2, mod.DustType<Dusts.HydraDust>(), 0f, 0f, 100, default, 0.5f);
 				Dust dust = Main.dust[num159];
 				dust.velocity *= 0.25f;
 				dust = Main.dust[num159];

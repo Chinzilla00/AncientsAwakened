@@ -262,7 +262,7 @@ namespace AAMod.Items.Armor.TrueDemon
             }
             if (Main.rand.Next(6) == 0)
             {
-                int num25 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.Shadowflame, 0f, 0f, 100, default(Color), 2f);
+                int num25 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.Shadowflame, 0f, 0f, 100, default, 2f);
                 Main.dust[num25].velocity *= 0.3f;
                 Main.dust[num25].noGravity = true;
                 Main.dust[num25].noLight = true;

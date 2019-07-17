@@ -57,7 +57,7 @@ namespace AAMod.Projectiles
             {
                 float num494 = projectile.velocity.X * 0.334f * num493;
                 float num495 = -(projectile.velocity.Y * 0.334f) * num493;
-                int num496 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 1.1f);
+                int num496 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default, 1.1f);
                 Main.dust[num496].noGravity = true;
                 Main.dust[num496].velocity *= 0f;
                 Dust expr_153E2_cp_0 = Main.dust[num496];
@@ -69,7 +69,7 @@ namespace AAMod.Projectiles
             {
                 float num498 = projectile.velocity.X * 0.2f * num497;
                 float num499 = -(projectile.velocity.Y * 0.2f) * num497;
-                int num500 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 1.3f);
+                int num500 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default, 1.3f);
                 Main.dust[num500].noGravity = true;
                 Main.dust[num500].velocity *= 0f;
                 Dust expr_154F9_cp_0 = Main.dust[num500];
@@ -90,7 +90,7 @@ namespace AAMod.Projectiles
 			projectile.position.Y = projectile.position.Y - projectile.height / 2;
 			for (int num621 = 0; num621 < 10; num621++)
 			{
-				int num622 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 2f);
+				int num622 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default, 2f);
 				Main.dust[num622].velocity *= 3f;
 				if (Main.rand.Next(2) == 0)
 				{
@@ -100,10 +100,10 @@ namespace AAMod.Projectiles
 			}
 			for (int num623 = 0; num623 < 15; num623++)
 			{
-				int num624 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 66, 0f, 0f, 100, default(Color), 3f);
+				int num624 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 66, 0f, 0f, 100, default, 3f);
 				Main.dust[num624].noGravity = true;
 				Main.dust[num624].velocity *= 5f;
-				num624 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 2f);
+				num624 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default, 2f);
 				Main.dust[num624].velocity *= 2f;
 			}
         }

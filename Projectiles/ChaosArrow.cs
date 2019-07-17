@@ -66,7 +66,7 @@ namespace AAMod.Projectiles
             for (int num468 = 0; num468 < 4; num468++)
             {
                 num468 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, Main.rand.Next(2) == 0 ? mod.DustType<Dusts.IncineriteDust>() : mod.DustType<Dusts.AbyssiumDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color));
+                    -projectile.velocity.Y * 0.2f, 100, default);
             }
         }
     }

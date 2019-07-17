@@ -53,7 +53,7 @@ namespace AAMod.Projectiles.Djinn
 			if (Main.rand.Next(8) == 0)
 			{
 				int eggplant = 16;
-				int dustIndex2 = Dust.NewDust(new Vector2(projectile.position.X + eggplant, projectile.position.Y + eggplant), projectile.width - eggplant * 2, projectile.height - eggplant * 2, 269, 0f, 0f, 100, default(Color), 0.5f);
+				int dustIndex2 = Dust.NewDust(new Vector2(projectile.position.X + eggplant, projectile.position.Y + eggplant), projectile.width - eggplant * 2, projectile.height - eggplant * 2, 269, 0f, 0f, 100, default, 0.5f);
 				Main.dust[dustIndex2].velocity *= 0.25f;
 				Main.dust[dustIndex2].velocity += projectile.velocity * 0.5f;
 				return;

@@ -25,7 +25,7 @@ namespace AAMod.Projectiles
 			{
 				Dust dust;
 				Vector2 position = projectile.position;
-				dust = Main.dust[Dust.NewDust(position, 30, 30, mod.DustType<Dusts.SnowDust>(), 0f, 0f, 0, default(Color), 1)];
+				dust = Main.dust[Dust.NewDust(position, 30, 30, mod.DustType<Dusts.SnowDust>(), 0f, 0f, 0, default, 1)];
 				dust.noGravity = true;
 			}
 		}

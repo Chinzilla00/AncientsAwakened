@@ -36,16 +36,16 @@ namespace AAMod.NPCs.Bosses.Shen
 			projectile.scale = projectile.ai[1];
 			projectile.rotation += projectile.velocity.X * 2f;
 			Vector2 position = projectile.Center + Vector2.Normalize(projectile.velocity) * 10f;
-			Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 0, default(Color), 1f)];
+			Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 0, default, 1f)];
 			dust20.position = position;
-			dust20.velocity = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * 0.33f + projectile.velocity / 4f;
-			dust20.position += projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2));
+			dust20.velocity = projectile.velocity.RotatedBy(1.5707963705062866, default) * 0.33f + projectile.velocity / 4f;
+			dust20.position += projectile.velocity.RotatedBy(1.5707963705062866, default);
 			dust20.fadeIn = 0.5f;
 			dust20.noGravity = true;
-			dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 0, default(Color), 1f)];
+			dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 0, default, 1f)];
 			dust20.position = position;
-			dust20.velocity = projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2)) * 0.33f + projectile.velocity / 4f;
-			dust20.position += projectile.velocity.RotatedBy(-1.5707963705062866, default(Vector2));
+			dust20.velocity = projectile.velocity.RotatedBy(-1.5707963705062866, default) * 0.33f + projectile.velocity / 4f;
+			dust20.position += projectile.velocity.RotatedBy(-1.5707963705062866, default);
 			dust20.fadeIn = 0.5f;
 			dust20.noGravity = true;
 			for (int num189 = 0; num189 < 1; num189++)
@@ -69,20 +69,20 @@ namespace AAMod.NPCs.Bosses.Shen
 			projectile.position.Y = projectile.position.Y - projectile.height / 2;
 			for (int num336 = 0; num336 < 8; num336++)
 			{
-				Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 1.5f);
+				Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default, 1.5f);
 			}
 			for (int num337 = 0; num337 < 32; num337++)
 			{
-				int num338 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 2.5f);
+				int num338 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default, 2.5f);
 				Main.dust[num338].noGravity = true;
 				Main.dust[num338].velocity *= 3f;
-				num338 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 1.5f);
+				num338 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default, 1.5f);
 				Main.dust[num338].velocity *= 2f;
 				Main.dust[num338].noGravity = true;
 			}
 			for (int num339 = 0; num339 < 2; num339++)
 			{
-				int num340 = Gore.NewGore(projectile.position + new Vector2(projectile.width * Main.rand.Next(100) / 100f, projectile.height * Main.rand.Next(100) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
+				int num340 = Gore.NewGore(projectile.position + new Vector2(projectile.width * Main.rand.Next(100) / 100f, projectile.height * Main.rand.Next(100) / 100f) - Vector2.One * 10f, default, Main.rand.Next(61, 64), 1f);
 				Main.gore[num340].velocity *= 0.3f;
 				Gore expr_B4D2_cp_0 = Main.gore[num340];
 				expr_B4D2_cp_0.velocity.X += Main.rand.Next(-10, 11) * 0.05f;

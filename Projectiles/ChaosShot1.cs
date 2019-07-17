@@ -74,7 +74,7 @@ namespace AAMod.Projectiles
                     }
                 }
                 float velRot = BaseUtility.RotationTo(projectile.Center, projectile.Center + originalVelocity);
-                projectile.velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(projectile.velocity.Length(), 0f), velRot + (vectorOffset * 0.5f));
+                projectile.velocity = BaseUtility.RotateVector(default, new Vector2(projectile.velocity.Length(), 0f), velRot + (vectorOffset * 0.5f));
             }
             projectile.rotation = BaseUtility.RotationTo(projectile.Center, projectile.Center + projectile.velocity) + 1.57f - MathHelper.PiOver4;
             projectile.spriteDirection = 1;
@@ -87,7 +87,7 @@ namespace AAMod.Projectiles
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, dustType, 0f, 0f, 100, default(Color), 1.2f);
+                    int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, dustType, 0f, 0f, 100, default, 1.2f);
                     Main.dust[dustIndex].velocity *= 1.9f;
                 }
             }

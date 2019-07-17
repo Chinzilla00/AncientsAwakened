@@ -59,7 +59,7 @@ namespace AAMod.Items.Boss.Yamata
             for (int num119 = 0; num119 < num118; num119++)
             {
                 float num120 = num119 - (num118 - 1f) / 2f;
-                Vector2 value9 = vector7.RotatedBy(num117 * num120, default(Vector2));
+                Vector2 value9 = vector7.RotatedBy(num117 * num120, default);
                 if (!flag11)
                 {
                     value9 -= vector7;

@@ -126,7 +126,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 				int dustType = (nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>());
 				for (int k = 0; k < 10; k++)
 				{
-					int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, (int)(npc.velocity.X * 0.2f), (int)(npc.velocity.Y * 0.2f), 0, default(Color), 1.5f);
+					int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, (int)(npc.velocity.X * 0.2f), (int)(npc.velocity.Y * 0.2f), 0, default, 1.5f);
 					Main.dust[dustID].noGravity = true;
 				}
 			}
@@ -244,7 +244,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 			int dustType = (nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>());
             for (int k = 0; k < 5; k++)
             {
-                int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default(Color), 1.2f);
+                int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default, 1.2f);
             }
             if (npc.life <= 0 || (npc.life - damage <= 0))
             {			
@@ -286,7 +286,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 					}
 					for (int k = 0; k < 15; k++)
 					{
-						Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default(Color), 1.5f);
+						Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default, 1.5f);
 					}
 				}
             }
