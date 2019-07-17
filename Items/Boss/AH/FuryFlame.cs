@@ -34,6 +34,17 @@ namespace AAMod.Items.Boss.AH
             item.noUseGraphic = true;
         }
 
+        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
+        {
+            foreach (Terraria.ModLoader.TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
+
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;

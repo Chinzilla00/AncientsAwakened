@@ -24,7 +24,7 @@ namespace AAMod.Items.DevTools
             item.rare = 11;
             item.autoReuse = true;
             item.useTurn = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.shoot = mod.ProjectileType("ChaosLightning");
             item.shootSpeed = 9f;
         }

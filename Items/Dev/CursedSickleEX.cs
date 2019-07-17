@@ -35,7 +35,7 @@ Right click to swing the scythe");
             item.shoot = mod.ProjectileType("CursedSickleEX");
             item.shootSpeed = 0.1f;
             item.melee = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 		}
 
         public override bool AltFunctionUse(Player player)

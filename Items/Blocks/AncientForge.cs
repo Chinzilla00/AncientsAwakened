@@ -26,7 +26,7 @@ namespace AAMod.Items.Blocks
             item.useStyle = 1;
             item.consumable = true;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.createTile = mod.TileType("AncientForge");
         }
 

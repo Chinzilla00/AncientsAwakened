@@ -32,7 +32,7 @@ namespace AAMod.Items.Ranged
             item.rare = 8;
             item.UseSound = SoundID.Item14;
             item.shootSpeed = 12f;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.autoReuse = true;
         }
 

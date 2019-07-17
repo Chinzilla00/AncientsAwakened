@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Rajah;
 using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace AAMod.Items.BossSummons
 {
@@ -28,6 +29,17 @@ Non-consumable");
             item.noUseGraphic = true;
             item.consumable = false;
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah");
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity14;
+                }
+            }
         }
 
         public override bool CanUseItem(Player player)

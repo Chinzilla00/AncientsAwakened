@@ -27,11 +27,12 @@ Chaos Slayer EX");
             item.damage = 380;
             item.knockBack = 12;
             item.melee = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.autoReuse = true;
 			item.shoot = mod.ProjectileType("ChaosSlayerSwordEX");
 			item.shootSpeed = 7;
-            item.useTurn = true;	
+            item.useTurn = true;
+            AARarity = 14;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

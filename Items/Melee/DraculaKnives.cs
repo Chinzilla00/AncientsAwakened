@@ -34,7 +34,7 @@ Vampire Knives EX");
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.knockBack = 2.75f;
             item.melee = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
             glowmaskDrawType = GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	

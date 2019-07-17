@@ -33,8 +33,9 @@ Bunnyzooka EX");
             item.shoot = mod.ProjectileType("RabbitRocketEX");
             item.useAmmo = AmmoID.Rocket;
             item.rare = 9;
-            AARarity = 14;
+            item.expert = true; item.expertOnly = true;
         }
+
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-20, -6);

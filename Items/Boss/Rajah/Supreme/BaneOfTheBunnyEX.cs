@@ -29,7 +29,7 @@ Bane of the Bunny EX");
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.shoot = mod.ProjectileType("BaneEX");
             item.rare = 9;
-            AARarity = 14;
+            item.expert = true; item.expertOnly = true;
             item.useAnimation = 13;
             item.useTime = 13;
             item.autoReuse = true;

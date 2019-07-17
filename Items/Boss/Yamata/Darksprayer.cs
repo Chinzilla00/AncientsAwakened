@@ -36,54 +36,27 @@ Inflicts Moonrazed");
             item.noMelee = true;
         }
 
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-12, 0);
-
-        }
-
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            /*Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
-                texture,
-                new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );*/
-		}
-
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("Moonblow"), damage, knockBack, player.whoAmI, 0, 1);
-            return false;
-        }
-
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity13;;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }
 
-        /*public void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        public override Vector2? HoldoutOffset()
         {
-            target.AddBuff(mod.BuffType("Moonraze"), 600);
-        }*/
+            return new Vector2(-12, 0);
+        }
+
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("Moonblow"), damage, knockBack, player.whoAmI, 0, 1);
+            return false;
+        }
 	
         public override void AddRecipes()
         {

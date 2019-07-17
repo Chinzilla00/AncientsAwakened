@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.Djinn
             item.height = 50;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.accessory = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
 
         public override void UpdateEquip(Player p)

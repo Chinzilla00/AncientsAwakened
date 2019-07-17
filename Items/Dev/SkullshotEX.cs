@@ -35,7 +35,7 @@ Super Skullshot EX");
             item.value = 100000;
             item.rare = 9;
             item.ranged = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

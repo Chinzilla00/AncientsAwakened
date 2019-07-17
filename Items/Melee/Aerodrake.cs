@@ -30,7 +30,7 @@ namespace AAMod.Items.Melee
             item.useTurn = false;
             item.shoot = mod.ProjectileType<Projectiles.Aerodrake>();
             item.shootSpeed = 17f;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 
             glowmaskDrawType = GLOWMASKTYPE_SWORD;
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";

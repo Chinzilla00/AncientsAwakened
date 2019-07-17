@@ -30,10 +30,21 @@ namespace AAMod.Items.Boss.AH
             item.noMelee = true;
             item.summon = true;
             item.shoot = mod.ProjType("FireOrbiter");
-            item.shootSpeed = 5;			
+            item.shootSpeed = 5;
         }
-		
-		public override void UseStyle(Player player)
+
+        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
+        {
+            foreach (Terraria.ModLoader.TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
+
+        public override void UseStyle(Player player)
 		{
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
 			{

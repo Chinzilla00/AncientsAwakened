@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Zero
             item.width = 122;
             item.reuseDelay = 5;
             item.height = 32;
-            item.damage = 250;
+            item.damage = 200;
             item.channel = true;
             item.rare = 5;
             item.useTime = 20;
@@ -37,6 +37,17 @@ namespace AAMod.Items.Boss.Zero
             item.magic = true;
             item.autoReuse = true;
             item.rare = 9; AARarity = 13;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
         public override Vector2? HoldoutOffset()

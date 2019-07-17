@@ -22,11 +22,22 @@ During the day, you gain 20% damage resistance and your melee & magic attacks in
             item.width = 30;
             item.height = 32;
             item.value = Item.sellPrice(3, 0, 0, 0);
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.accessory = true;
             item.defense = 8;
             item.rare = 9;
             AARarity = 13;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)

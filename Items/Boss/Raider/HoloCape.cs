@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Raider
             item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = 2;
             item.accessory = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.defense = 5;
         }
 

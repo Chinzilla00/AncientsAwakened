@@ -21,7 +21,7 @@ namespace AAMod.Items.Dev
             item.useAnimation = 18;
             item.useTime = 18;
             item.shoot = mod.ProjectileType("Chronos");
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
 
 		public override void GetWeaponDamage(Player player, ref int damage)

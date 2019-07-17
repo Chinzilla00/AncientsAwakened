@@ -39,6 +39,18 @@ Inflicts Discordian Inferno");
             item.autoReuse = true;   
             item.useTurn = true;
             item.shootSpeed = 16f;
+            AARarity = 14;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity14;
+                }
+            }
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -64,8 +76,6 @@ Inflicts Discordian Inferno");
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            float num72 = item.shootSpeed;
-
             type = Main.rand.Next(3);
 
             switch (type)
@@ -84,17 +94,6 @@ Inflicts Discordian Inferno");
 
             Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI, 0f, 0f);
             return false;
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity14;
-                }
-            }
         }
 
         public void OnHitNPC(NPC target, int damage, float knockback, bool crit)

@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Zero
             item.consumable = true;
             item.width = 36;
             item.height = 32;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.rare = 10;
         }
 

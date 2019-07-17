@@ -29,7 +29,18 @@ namespace AAMod.Items.Boss.Shen
 			item.useAmmo = AmmoID.Gel;
 		}
 
-		public override void SetStaticDefaults()
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity14;
+                }
+            }
+        }
+
+        public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Flaming Twilight");
 			Tooltip.SetDefault(@"Left click to blasts a discordian fireball at your foes 

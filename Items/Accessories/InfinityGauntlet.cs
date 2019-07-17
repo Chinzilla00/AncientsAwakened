@@ -27,7 +27,7 @@ All effects of the infinity stones
             item.height = 44;
             item.value = Item.sellPrice(0, 0, 0, 0);
             item.rare = 11;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.accessory = true;
             item.defense = 12;
             

@@ -83,7 +83,7 @@ Grants 1 soul essence on direct hit");
             string[] split = oldTooltip.Split(' '); 
             list.RemoveAt(index);
             list.Insert(index, new TooltipLine(mod, "Damage", split[0] + " radiant damage"));
-			TooltipLine colorLine = new TooltipLine(mod, "Healer", "-Healer Class-");
+            TooltipLine colorLine = new TooltipLine(mod, "Healer", "-Healer Class-");
 			colorLine.overrideColor = new Color(255, 255, 91);
             list.Insert(index2, colorLine);
 			base.ModifyTooltips(list);

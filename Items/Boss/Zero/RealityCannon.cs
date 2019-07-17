@@ -29,13 +29,23 @@ namespace AAMod.Items.Boss.Zero
             item.damage = 180;
             item.UseSound = SoundID.Item12;
             item.shoot = mod.ProjectileType("RealityLaser");
-            item.rare = 9; AARarity = 13;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.noMelee = true;
             item.ranged = true;
             item.autoReuse = true;
             item.noUseGraphic = false;
             item.rare = 9; AARarity = 13;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
 

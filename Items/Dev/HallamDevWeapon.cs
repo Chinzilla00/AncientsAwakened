@@ -37,7 +37,7 @@ Prismeow EX");
 			item.autoReuse = false;
 			item.shoot = mod.ProjectileType("RainbowCatPro");
 			item.shootSpeed = 0f;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
             glowmaskDrawType = GLOWMASKTYPE_NONE; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	

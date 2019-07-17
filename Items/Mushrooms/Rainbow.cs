@@ -19,7 +19,7 @@ namespace AAMod.Items.Mushrooms
             item.height = 16;
             item.rare = 2;
             item.maxStack = 99;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.value = Item.sellPrice(0, 0, 0, 0);
         }
 

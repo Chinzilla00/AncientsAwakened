@@ -88,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void AI()
         {
-            npc.defDamage = = isAwakened ? 200 : 180;
+            npc.defDamage = isAwakened ? 200 : 180;
             if (Body == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];

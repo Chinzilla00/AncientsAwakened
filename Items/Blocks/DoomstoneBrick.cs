@@ -21,6 +21,7 @@ namespace AAMod.Items.Blocks
             item.consumable = true;
             item.createTile = mod.TileType("DoomstoneBrick"); //put your CustomBlock Tile name
         }
+
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)

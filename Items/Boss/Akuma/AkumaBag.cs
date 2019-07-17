@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Akuma
             item.consumable = true;
             item.width = 32;
             item.height = 32;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.rare = 10;
         }
 

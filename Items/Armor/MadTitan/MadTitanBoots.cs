@@ -25,7 +25,18 @@ namespace AAMod.Items.Armor.MadTitan
             item.defense = 40;
 		}
 
-		public override void UpdateEquip(Player player)
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity14;
+                }
+            }
+        }
+
+        public override void UpdateEquip(Player player)
 		{
 			player.moveSpeed += 0.4f;
             player.meleeSpeed += 0.2f;

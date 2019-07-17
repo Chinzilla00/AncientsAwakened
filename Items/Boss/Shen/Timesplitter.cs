@@ -32,9 +32,10 @@ Inflicts Daybroken and Moonraze");
 			item.autoReuse = true;
             item.useStyle = 5;
             item.value = Item.sellPrice(1, 50, 0, 0);
-            item.rare = 8;
+            item.rare = 9;
             item.shoot = mod.ProjectileType("TimesplitterP");  //put your Spear projectile name
             item.shootSpeed = 9f;
+            AARarity = 14;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -47,8 +48,6 @@ Inflicts Daybroken and Moonraze");
                 }
             }
         }
-
-
 
         public override bool CanUseItem(Player player)
 		{

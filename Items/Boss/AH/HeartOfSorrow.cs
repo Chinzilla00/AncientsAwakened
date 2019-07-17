@@ -21,7 +21,7 @@ Below 1/3 of your maximum life, your melee and ranged attacks inflict Moonraze i
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 11;
             item.accessory = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.defense = 3;
         }
 

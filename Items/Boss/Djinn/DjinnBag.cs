@@ -17,7 +17,7 @@ namespace AAMod.Items.Boss.Djinn
             item.consumable = true;
             item.width = 32;
             item.height = 32;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
         public override int BossBagNPC => mod.NPCType("Djinn");
 

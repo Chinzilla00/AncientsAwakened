@@ -18,17 +18,6 @@ namespace AAMod.Items.Boss.Yamata
 Inflicts Moonraze");
         }
 
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;;
-                }
-            }
-        }
-
         public override void SetDefaults()
         {
             item.width = 26;
@@ -47,6 +36,17 @@ Inflicts Moonraze");
             item.melee = true;
             item.autoReuse = true;
             item.rare = 9; AARarity = 13;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
 

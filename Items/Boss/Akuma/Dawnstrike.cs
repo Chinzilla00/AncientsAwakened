@@ -38,6 +38,17 @@ namespace AAMod.Items.Boss.Akuma
             item.shootSpeed = 5f;
         }
 
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
+        }
+
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-4, -2);

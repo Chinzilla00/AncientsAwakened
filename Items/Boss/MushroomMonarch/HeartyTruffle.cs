@@ -21,7 +21,7 @@ Don't eat it");
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 1;
             item.accessory = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
 
         public override void UpdateEquip(Player player)

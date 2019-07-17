@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Retriever
             item.height = 30;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = -12;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.accessory = true;
         }
         

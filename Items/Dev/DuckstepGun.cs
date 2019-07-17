@@ -30,7 +30,7 @@ namespace AAMod.Items.Dev
 			item.knockBack = 4;
 			item.value = 1000000;
 			item.rare = 2;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 			item.UseSound = new LegacySoundStyle(29, 10, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
 			item.shoot = 10; //idk why but all the guns in the vanilla source have this

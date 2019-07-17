@@ -25,9 +25,18 @@ A hood enchanted with the firey spirit of a supreme dragon acolyte");
             item.rare = 9;
             AARarity = 12;
             item.defense = 24;
-		}
+        }
 
-
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
 
         public override void UpdateEquip(Player player)
         {

@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss.Grips
             item.height = 32;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 2;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.accessory = true;
             item.defense = 3;
         }

@@ -35,7 +35,7 @@ Conflagrate Staff EX");
             item.shoot = mod.ProjectileType("EnderMinionEX");
             item.buffType = mod.BuffType("EnderMinionBuffEX");
             item.rare = 8;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 			item.UseSound = SoundID.Item44;
 			item.shootSpeed = 7f;	//The buff added to player after used the item
 

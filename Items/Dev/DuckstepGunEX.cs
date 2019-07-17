@@ -28,7 +28,7 @@ namespace AAMod.Items.Dev
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 4;
 			item.value = 3000000;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 			item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/QUAK");
             item.autoReuse = true;
 			item.shoot = 10;

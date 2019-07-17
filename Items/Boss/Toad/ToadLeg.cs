@@ -23,7 +23,7 @@ Increased jump height");
             item.rare = 5;
             item.accessory = true;
             item.expertOnly = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
 
         public override void UpdateEquip(Player player)

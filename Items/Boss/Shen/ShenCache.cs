@@ -8,7 +8,6 @@ namespace AAMod.Items.Boss.Shen
 	{
         public override void SetStaticDefaults()
         {
-            
             DisplayName.SetDefault("Treasure Cache");
 			Tooltip.SetDefault("{$CommonItemTooltip.RightClickToOpen}");
         }
@@ -19,7 +18,7 @@ namespace AAMod.Items.Boss.Shen
 			item.consumable = true;
 			item.width = 36;
 			item.height = 32;
-			item.expert = true;
+			item.expert = true; item.expertOnly = true;
 		}
 
         public override int BossBagNPC => mod.NPCType("ShenA");

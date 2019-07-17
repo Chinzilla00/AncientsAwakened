@@ -31,7 +31,7 @@ namespace AAMod.Items.Melee
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("ChaosShotP");
             item.shootSpeed = 16f;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
             glowmaskDrawType = GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	

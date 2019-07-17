@@ -25,13 +25,12 @@ It smells like fish.");
 			item.height = 20;
 			item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 9;
-            AARarity = 14;
             item.defense = 28;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
-            player.statManaMax2 += 80 ;
+            player.statManaMax2 += 80;
             player.magicCrit += 7;
             player.manaCost *= .9f;
             player.aggro -= 2;

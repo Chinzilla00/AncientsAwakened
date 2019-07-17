@@ -29,7 +29,7 @@ Chaos Chain EX");
             item.shootSpeed = 18f;
             item.UseSound = SoundID.Item116;
             item.rare = 9;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.melee = true;
             item.noMelee = true;

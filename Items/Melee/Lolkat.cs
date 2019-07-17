@@ -33,7 +33,7 @@ Meowmere EX");
             item.UseSound = new LegacySoundStyle(2, 57, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
             item.useTurn = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 			item.shoot = 502;
 			item.shootSpeed = 12f;
 

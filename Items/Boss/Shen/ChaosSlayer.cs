@@ -30,7 +30,9 @@ namespace AAMod.Items.Boss.Shen
             item.autoReuse = true;
 			item.shoot = mod.ProjectileType("ChaosSlayerSword");
 			item.shootSpeed = 5;
-            item.useTurn = true;	
+            item.useTurn = true;
+            item.rare = 9;
+            AARarity = 14;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -43,7 +45,6 @@ namespace AAMod.Items.Boss.Shen
                 }
             }
         }
-
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

@@ -23,14 +23,25 @@ namespace AAMod.Items.Boss.Zero
             item.useTurn = true;
             item.damage = 100;
             item.pick = 300;
+            AARarity = 13;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
+        {
+            foreach (Terraria.ModLoader.TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Doomsday Terratool");
             Tooltip.SetDefault(@"Right Click to change tool types
-You may only have a maximum of 2 tool types active
-+20 tile reach");
+You may only have a maximum of 2 tool types active");
         }
 
         public override bool AltFunctionUse(Player player)

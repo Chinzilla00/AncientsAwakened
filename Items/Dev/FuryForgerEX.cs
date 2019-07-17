@@ -27,7 +27,7 @@ Fury Forger EX");
             item.rare = 9;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 		}
 		
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

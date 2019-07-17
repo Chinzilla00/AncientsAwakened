@@ -33,9 +33,20 @@ While cooldown is occurring, your magic/summon weapons require no mana and have 
             item.height = 52;
             item.maxStack = 1;
             item.value = Item.sellPrice(3, 0, 0, 0);
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.accessory = true;
             item.rare = 9; AARarity = 13;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
         public override Color? GetAlpha(Color lightColor)

@@ -27,7 +27,7 @@ namespace AAMod.Items.Armor.Starcloud
         public override void UpdateEquip(Player player)
         {
             player.minionDamage += 0.06f;  //20 max mana
-			player.statManaMax2 += 20;;
+			player.statManaMax2 += 20;
         }
         public override void AddRecipes()  
         {

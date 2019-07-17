@@ -14,6 +14,7 @@ namespace AAMod.Items.Potions
 		
 		public override void SetDefaults()
 		{
+            item.rare = 11;
 			item.width = 20;
 			item.height = 38;
 			item.useTurn = true;

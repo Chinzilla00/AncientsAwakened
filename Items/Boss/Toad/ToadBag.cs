@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Toad
 			item.width = 32;
 			item.height = 36;
 			item.rare = 11;
-			item.expert = true;
+			item.expert = true; item.expertOnly = true;
 		}
 
         public override int BossBagNPC => mod.NPCType("TruffleToad");

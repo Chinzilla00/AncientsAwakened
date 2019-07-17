@@ -35,7 +35,7 @@ namespace AAMod.Items.Dev
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("PonyShot");
 			item.shootSpeed = 9f;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 		}
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
