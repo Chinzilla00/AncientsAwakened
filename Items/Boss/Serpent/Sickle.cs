@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.Serpent
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sickle");
+			DisplayName.SetDefault("Icicle");
 			Tooltip.SetDefault("Casts crystals that shatter in pieces.");
 		}
     }
