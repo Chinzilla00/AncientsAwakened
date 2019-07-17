@@ -155,6 +155,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                         {
                             if (npc.localAI[1] == aiTimerFire)
                             {
+                                npc.localAI[1] = 0;
                                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("Shocking"), (int)(damage * 1.3f), 0f, Main.myPlayer);
                             }
                         }
