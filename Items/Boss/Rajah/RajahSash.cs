@@ -89,23 +89,23 @@ Immunity to fall damage");
             player.moveSpeed *= 1.4f;
             if (modPlayer.MeleeHighest(player))
             {
-                player.meleeDamage += DamageBoost(player); 
+                player.meleeDamage *= DamageBoost(player); 
             }
             else if (modPlayer.RangedHighest(player))
             {
-                player.rangedDamage += DamageBoost(player);
+                player.rangedDamage *= DamageBoost(player);
             }
             else if (modPlayer.MagicHighest(player))
             {
-                player.magicDamage += DamageBoost(player);
+                player.magicDamage *= DamageBoost(player);
             }
             else if (modPlayer.SummonHighest(player))
             {
-                player.minionDamage += DamageBoost(player);
+                player.minionDamage *= DamageBoost(player);
             }
             else if (modPlayer.ThrownHighest(player))
             {
-                player.thrownDamage += DamageBoost(player);
+                player.thrownDamage *= DamageBoost(player);
             }
         }
 
@@ -113,39 +113,39 @@ Immunity to fall damage");
         {
             if (player.statLife <= player.statLifeMax * .1f)
             {
-                return .72f;
+                return 1.72f;
             }
             if (player.statLife <= player.statLifeMax * .2f)
             {
-                return .64f;
+                return 1.64f;
             }
             if (player.statLife <= player.statLifeMax * .3f)
             {
-                return .56f;
+                return 1.56f;
             }
             if (player.statLife <= player.statLifeMax * .4f)
             {
-                return .48f;
+                return 1.48f;
             }
             if (player.statLife <= player.statLifeMax * .5f)
             {
-                return .4f;
+                return 1.4f;
             }
             if (player.statLife <= player.statLifeMax * .6f)
             {
-                return .32f;
+                return 1.32f;
             }
             if (player.statLife <= player.statLifeMax * .7f)
             {
-                return .24f;
+                return 1.24f;
             }
             if (player.statLife <= player.statLifeMax * .8f)
             {
-                return .16f;
+                return 1.16f;
             }
             if (player.statLife <= player.statLifeMax * .9f)
             {
-                return .8f;
+                return 1.8f;
             }
             return 0f;
         }

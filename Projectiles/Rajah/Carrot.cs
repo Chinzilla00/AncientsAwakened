@@ -24,7 +24,7 @@ namespace AAMod.Projectiles.Rajah
 			projectile.timeLeft = 600;  
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;
-			aiType = ProjectileID.WoodenArrowFriendly;           
+			aiType = ProjectileID.WoodenArrowFriendly;
 		}
 
         public override void Kill(int timeleft)

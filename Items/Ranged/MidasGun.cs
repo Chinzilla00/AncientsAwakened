@@ -30,6 +30,7 @@ namespace AAMod.Items.Ranged
             item.shoot = 10;
             item.shootSpeed = 16f;
             item.useAmmo = AmmoID.Bullet;
+            item.scale *= .8f;
         }
 		
 		public override Vector2? HoldoutOffset()
