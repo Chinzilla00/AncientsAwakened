@@ -22,7 +22,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
             projectile.penetrate = -1;
             projectile.extraUpdates = 1;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 25;
+            projectile.localNPCHitCooldown = 0;
         }
 
         public bool StuckInEnemy = false;
@@ -69,6 +69,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
             }
             if (projectile.ai[0] == 1f)
             {
+                projectile.usesLocalNPCImmunity = false;
                 projectile.ignoreWater = true;
                 projectile.tileCollide = false;
                 int num977 = 15;
