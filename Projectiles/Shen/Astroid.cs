@@ -213,7 +213,7 @@ namespace AAMod.Projectiles.Shen
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
 			
-            Texture2D texture = AAMod.instance.GetTexture("AAMod/Projectiles/Akuma/Daycrusher_Chain");
+            Texture2D texture = AAMod.instance.GetTexture("Projectiles/Shen/Astroid_Chain");
  
             Vector2 position = projectile.Center;
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;

@@ -37,6 +37,12 @@ namespace AAMod.Items.Melee
             glowmaskDrawColor = AAColor.COLOR_WHITEFADE1;
         }
 
+		public override void UseStyle(Player player)
+        {
+            player.itemLocation +=
+                new Vector2(-4 * player.direction, 16 * player.gravDir).RotatedBy(player.itemRotation);
+        }
+		
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

@@ -25,7 +25,7 @@ namespace AAMod.Projectiles.Akuma
             projectile.extraUpdates = 5;
             projectile.penetrate = -1;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 5;
+            projectile.localNPCHitCooldown = 12;
         }
         public float[] internalAI = new float[1];
         public override void SendExtraAI(BinaryWriter writer)
@@ -90,7 +90,7 @@ namespace AAMod.Projectiles.Akuma
                     projectile.frameCounter = 0;
                     projectile.frame++;
                 }
-                if (projectile.ai[0] >= Main.projFrames[projectile.type] * projectile.MaxUpdates * 3)
+                if (projectile.frame == 6)
                 {
                     projectile.Kill();
                 }

@@ -59,7 +59,7 @@ namespace AAMod.Items.Ranged
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            if (type == ProjectileID.WoodenArrowFriendly)
+            if (type == 474)
             {
                 type = 270;
             }

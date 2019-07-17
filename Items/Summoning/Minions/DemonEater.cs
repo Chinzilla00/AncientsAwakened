@@ -197,7 +197,6 @@ namespace AAMod.Items.Summoning.Minions
 			if (projectile.ai[0] == 0f)
 			{
 				float scaleFactor3 = 8f;
-				int num658 = mod.ProjectileType<EaterProj>();;
 				if (flag25 && projectile.ai[1] == 0f)
 				{
 					projectile.ai[1] += 1f;
@@ -206,8 +205,11 @@ namespace AAMod.Items.Summoning.Minions
 						Vector2 value19 = vector46 - projectile.Center;
 						value19.Normalize();
 						value19 *= scaleFactor3;
-						int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, num658, (int)(projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, 0f);
+						int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, ProjectileID.CursedFlameFriendly, (int)(projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, 0f);
 						Main.projectile[num659].timeLeft = 300;
+						Main.projectile[num659].penetrate = 1;
+						Main.projectile[num659].magic = false;
+						Main.projectile[num659].minion = true;
 						projectile.netUpdate = true;
 					}
 				}

@@ -23,8 +23,8 @@ namespace AAMod.Items.Boss.Akuma
             item.mana = 13;
             item.useStyle = 5;
             item.damage = 115;
-            item.useAnimation = 17;
-            item.useTime = 10;
+            item.useAnimation = 20;
+            item.useTime = 20;
             item.width = 40;
             item.height = 40;
             item.shoot = mod.ProjectileType("Sunstorm");
@@ -116,7 +116,7 @@ namespace AAMod.Items.Boss.Akuma
                 num79 *= num80;
                 float num114 = num78;
                 float num115 = num79 + (Main.rand.Next(-40, 41) * 0.02f);
-                Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, type, damage, knockBack, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+                Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, type, damage/2, knockBack, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
             }
             return false;
         }

@@ -11,7 +11,7 @@ namespace AAMod.Items.Melee
 		{
 			DisplayName.SetDefault("Stormbreaker");
 			Tooltip.SetDefault("Forged to slay the mad titan himself"
-            + "\nMelee strikes cause lightning to fall from the sky");
+            + "\nMelee strikes cause lightning to fall from the sky"
             +"\nRight click to throw"
 			+"\nMjolnir EX");
         }

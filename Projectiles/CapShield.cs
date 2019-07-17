@@ -22,6 +22,12 @@ namespace AAMod.Projectiles
             projectile.penetrate = -1;
         }
 
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			BaseAI.TileCollideBoomerang(projectile, ref projectile.velocity, true);
+			return false;
+		}
+		
         public override void AI()
         {
             Player p = Main.player[projectile.owner];

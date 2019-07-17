@@ -109,14 +109,17 @@ namespace AAMod.Projectiles
 
             if (counter >= 80)
             {
+				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 13);
                 chargeLevel = 2;
             }
             else if (counter >= 40)
             {
+				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 13);
                 chargeLevel = 1;
             }
             else
             {
+				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 13);
                 chargeLevel = 0;
             }
 
@@ -153,12 +156,15 @@ namespace AAMod.Projectiles
                 switch (chargeLevel)
                 {
                     case 0:
+						Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 8);
 						Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, ProjectileID.Spark, projectile.damage, 1f, player.whoAmI);
 						break;
 					case 1:
+						Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 88);
                         Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, mod.ProjectileType("Spark2"), (int)(projectile.damage * 1.5), 3f, player.whoAmI);
 						break;
 					case 2:
+						Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 88);
                         Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, mod.ProjectileType("Spark3"), projectile.damage * 2, 6f, player.whoAmI);
 						break;
                 }
