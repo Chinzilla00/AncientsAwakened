@@ -458,12 +458,12 @@ namespace AAMod.NPCs.Bosses.Rajah
                 }
                 else if (npc.ai[3] == 6) //Rabbits Wrath
                 {
-                    if (internalAI[3] > 30)
+                    if (internalAI[3] > 5)
                     {
                         internalAI[3] = 0;
                         Vector2 vector12 = new Vector2(player.Center.X, player.Center.Y);
-                        float num75 = 20f;
-                        for (int num120 = 0; num120 < 6; num120++)
+                        float num75 = 14f;
+                        for (int num120 = 0; num120 < 3; num120++)
                         {
                             Vector2 vector2 = player.Center + new Vector2(-(float)Main.rand.Next(0, 401) * player.direction, -600f);
                             vector2.Y -= 120 * num120;
@@ -482,7 +482,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                             float num83 = vector13.Y;
                             float speedX5 = num82;
                             float speedY6 = num83 + Main.rand.Next(-40, 41) * 0.02f;
-                            int p = Projectile.NewProjectile(vector2.X, vector2.Y, speedX5 * 2, speedY6 * 2, mod.ProjectileType<CarrotEXR>(), npc.damage / 3, 6, Main.myPlayer, 0, 0);
+                            int p = Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType<CarrotEXR>(), npc.damage / 3, 6, Main.myPlayer, 0, 0);
                             Main.projectile[p].tileCollide = false;
                         }
                         npc.netUpdate = true;
@@ -718,26 +718,13 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 if (Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 1000)
                 {
-                    if (SelectPoint)
-                    {
-                        int DashDirection = 1;
-                        if (Main.player[npc.target].Center.X < npc.Center .X)
-                        {
-                            DashDirection = -1;
-                        }
-                        float Point = 500 * DashDirection;
-                        MovePoint = Main.player[npc.target].Center + new Vector2(Point, 0);
-                        SelectPoint = false;
-                        npc.netUpdate = true;
-                    }
-
-                    MoveToPoint(MovePoint);
-
+                    speed = 50f;
                     isDashing = true;
                 }
                 else
                 {
-                    speed = 16f; isDashing = false;
+                    speed = 16f;
+                    isDashing = false;
                 }
             }
             else if (npc.life < (npc.lifeMax * .85f)) //The lower the health, the more damage is done
@@ -1051,7 +1038,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 50f;
+            float moveSpeed = 30f;
             if (moveSpeed == 0f || npc.Center == point) return;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;

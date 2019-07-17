@@ -26,9 +26,9 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void AI()
         {
-            for (int num468 = 0; num468 < 20; num468++)
+            for (int num468 = 0; num468 < 10; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, AAColor.Jevil, 1f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, (NPC.AnyNPCs(mod.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179)), 1f);
                 Main.dust[num469].noGravity = true;
             }
             projectile.damage = 0;
@@ -115,9 +115,9 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void AI()
         {
-            for (int num468 = 0; num468 < 20; num468++)
+            for (int num468 = 0; num468 < 10; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, AAColor.Jevil, 1f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, (NPC.AnyNPCs(mod.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179)), 1f);
                 Main.dust[num469].noGravity = true;
             }
             projectile.damage = 0;
@@ -203,9 +203,9 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void AI()
         {
-            for (int num468 = 0; num468 < 20; num468++)
+            for (int num468 = 0; num468 < 10; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, AAColor.Jevil, 1f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, (NPC.AnyNPCs(mod.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179)), 1f);
                 Main.dust[num469].noGravity = true;
             }
             projectile.damage = 0;
