@@ -2937,7 +2937,7 @@ namespace AAMod
             return false;
         }
 
-        public static void DrawFlickerTexture(int drawType, object sb, PlayerDrawInfo edi, Texture2D tex, int shader, Player drawPlayer, Rectangle frame = default(Rectangle), float rotation = 0, Vector2 drawPos = default, Vector2 framePos = default)
+        public static void DrawFlickerTexture(int drawType, object sb, PlayerDrawInfo edi, Texture2D tex, int shader, Player drawPlayer, Rectangle frame = default, float rotation = 0, Vector2 drawPos = default, Vector2 framePos = default)
         {
             if (drawPlayer == null || !drawPlayer.active || drawPlayer.dead) { return; }
             for (int j = 0; j < 7; j++)
@@ -2956,8 +2956,10 @@ namespace AAMod
                     Vector2 pos = (wings ? new Vector2((int)(edi.position.X - Main.screenPosition.X + drawPlayer.width / 2 - 9 * drawPlayer.direction), (int)(edi.position.Y - Main.screenPosition.Y + drawPlayer.height / 2 + 2f * drawPlayer.gravDir)) : new Vector2((int)(edi.position.X - Main.screenPosition.X - frame.Width / 2 + drawPlayer.width / 2), (int)(edi.position.Y - Main.screenPosition.Y + drawPlayer.height - frame.Height + 4f)));
                     if (sb is List<DrawData>)
                     {
-                        DrawData dd = new DrawData(tex, pos + drawPos + (wings ? default : framePos) + vector, new Rectangle?(frame), color, rotation, framePos, 1f, edi.spriteEffects, 0);
-                        dd.shader = shader;
+                        DrawData dd = new DrawData(tex, pos + drawPos + (wings ? default : framePos) + vector, new Rectangle?(frame), color, rotation, framePos, 1f, edi.spriteEffects, 0)
+                        {
+                            shader = shader
+                        };
                         ((List<DrawData>)sb).Add(dd);
                     }
                     else if (sb is SpriteBatch) ((SpriteBatch)sb).Draw(tex, pos + drawPos + (wings ? default : framePos) + vector, new Rectangle?(frame), color, rotation, framePos, 1f, edi.spriteEffects, 0);
@@ -2968,10 +2970,6 @@ namespace AAMod
         public static bool ShouldDrawArmSkin(Player drawPlayer, int type)
         {
             return BasePlayer.HasChestplate(drawPlayer, type, true) && BaseDrawing.ShouldDrawChestplate(drawPlayer, type);
-        }
-        public static Rectangle GetFrame(Player player, int itemtype, int count, int width, int height)
-        {
-            return BaseDrawing.GetFrame(count, width, height, 0, 2);
         }
         #endregion
 
@@ -3070,7 +3068,7 @@ namespace AAMod
 
         public PlayerLayer glAfterHead = new PlayerLayer("AAMod", "glAfterHead", PlayerLayer.Head, delegate (PlayerDrawInfo edi)
         {
-            DrawAfterHead(edi, default(PlayerHeadDrawInfo), false);
+            DrawAfterHead(edi, default, false);
         });
 
         public static Color GetItemColor(Player drawPlayer, Vector2 position)
@@ -3185,10 +3183,11 @@ namespace AAMod
             Mod mod = AAMod.instance;
             Player drawPlayer = (mapHead ? edhi.drawPlayer : edi.drawPlayer);
             AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>(mod);
-            object drawObj = null; if (mapHead) { drawObj = Main.spriteBatch; } else { drawObj = Main.playerDrawData; }
+            object drawObj;
+            if (mapHead) { drawObj = Main.spriteBatch; } else { drawObj = Main.playerDrawData; }
             Vector2 Position = (mapHead ? drawPlayer.position : edi.position);
             int dyeHead = (mapHead ? edhi.armorShader : edi.headArmorShader);
-            Color colorArmorHead = (mapHead ? edhi.armorColor : edi.upperArmorColor);
+
             float scale = (mapHead ? edhi.scale : 0f);
 
             if (mapHead) { Position += new Vector2(0f, -3f * (1f - scale)); }

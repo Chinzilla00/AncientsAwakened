@@ -107,7 +107,7 @@ namespace AAMod.Backgrounds
                         }
                         num22 = (float)(1.2 - num26 * 0.4);
                     }
-                    Color color6 = new Color(((byte)(255f * num64)), ((byte)(Color.White.G * num64)), ((byte)(Color.White.B * num64)), ((byte)(255f * num64)));
+                    Color color6 = new Color(((byte)(255f * num64)), (byte)(Color.White.G * num64), ((byte)(Color.White.B * num64)), ((byte)(255f * num64)));
                     Main.spriteBatch.Draw(PlanetTexture, new Vector2(num20, (num21 + Main.sunModY)), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, PlanetTexture.Width, PlanetTexture.Height)), color6, rotation, new Vector2((PlanetTexture.Width / 2), (PlanetTexture.Height / 2)), num22, SpriteEffects.None, 0f);
                 }
             }
