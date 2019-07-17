@@ -20,13 +20,13 @@ namespace AAMod.Items.Magic
             item.autoReuse = true;
             item.mana = 11;
             item.useStyle = 5;
-            item.damage = 170;
+            item.damage = 230;
             item.useAnimation = 6;
             item.useTime = 6;
             item.width = 62;
             item.height = 62;
             item.shoot = mod.ProjectileType("SubzeroSnowflake");
-            item.shootSpeed = 12f;
+            item.shootSpeed = 17f;
             item.knockBack = 5f;
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.magic = true;

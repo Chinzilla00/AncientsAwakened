@@ -11,7 +11,7 @@ namespace AAMod.Items.Dev
         {
             DisplayName.SetDefault("Super Skullshot");
             Tooltip.SetDefault(@"fires a massive spread of bullets at your foes
-Right click to fire a spinning bone at your foe
+Right click to fire spinning bones at your foe
 Uses Bullets and Bones as ammo
 'I have an irrational hatred for gods`
 -Gibs");

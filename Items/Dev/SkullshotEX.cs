@@ -12,7 +12,7 @@ namespace AAMod.Items.Dev
         {
             DisplayName.SetDefault("Supreme Hellshot");
             Tooltip.SetDefault(@"fires a massive spread of bullets at your foes
-Right click to fire a hellskull at your foe
+Right click to fire hellskulls at your foe
 Uses Bullets & Bones as ammo
 Super Skullshot EX");
         }

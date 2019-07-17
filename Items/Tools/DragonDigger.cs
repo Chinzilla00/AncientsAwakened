@@ -8,7 +8,7 @@ namespace AAMod.Items.Tools
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Dragon Digger");
-            Tooltip.SetDefault("Dragons Don't really dig, but this'll do");
+            Tooltip.SetDefault("Dragons don't really dig, but this'll do");
 		}
 
 		public override void SetDefaults()

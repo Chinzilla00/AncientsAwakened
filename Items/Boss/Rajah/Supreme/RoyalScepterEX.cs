@@ -29,7 +29,8 @@ namespace AAMod.Items.Boss.Rajah.Supreme
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Royal Staff");
-            Tooltip.SetDefault("Royal Scepter EX");
+            Tooltip.SetDefault(@"Shoots a spread of five golden carrots
+Royal Scepter EX");
             Item.staff[item.type] = true;
         }
 

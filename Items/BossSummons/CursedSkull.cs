@@ -11,7 +11,7 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Cursed Skull");
             Tooltip.SetDefault(@"Summons Skeletron
-Can Only be used at night");
+Can only be used at night");
         }
 
         public override void SetDefaults()

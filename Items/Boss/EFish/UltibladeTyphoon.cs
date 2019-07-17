@@ -17,7 +17,7 @@ Razorblade Typhoon EX");
 		public override void SetDefaults()
 		{
 			item.mana = 16;
-			item.damage = 150;
+			item.damage = 175;
 			item.useStyle = 5;
 			item.shootSpeed = 6f;
 			item.shoot = 409;

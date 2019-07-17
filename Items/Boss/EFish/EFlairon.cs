@@ -8,6 +8,7 @@ namespace AAMod.Items.Boss.EFish
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Emperor Flairon");
+            Tooltip.SetDefault("Lets loose an armada of homing bubbles");
         }
 
         public override void SetDefaults()
