@@ -4,10 +4,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
 using BaseMod;
+using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.AH.Ashe
 {
-    public class AsheOrbiter : Ashe
+    public class AsheOrbiter : ModNPC
 	{				
 		public override void SetStaticDefaults()
 		{
@@ -46,13 +47,13 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
 
-            if (npc.alpha < 0)
+            if (npc.alpha > 0)
             {
-                npc.alpha = 0;
+                npc.alpha -= 4;
             }
             else
             {
-                npc.alpha -= 4;
+                npc.alpha = 0;
             }
 			npc.noGravity = true;
 			if(body == -1)
@@ -71,7 +72,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             npc.oldPos[0] = npc.position;
 
-            if (rotValue == -1f) rotValue = (npc.ai[0] % OrbiterCount) * ((float)Math.PI * 2f / OrbiterCount);
+            if (rotValue == -1f) rotValue = (npc.ai[0] % ((Ashe)ashe.modNPC).OrbiterCount) * ((float)Math.PI * 2f / ((Ashe)ashe.modNPC).OrbiterCount);
             rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
             npc.Center = BaseUtility.RotateVector(ashe.Center, ashe.Center + new Vector2(140f, 0f), rotValue);
@@ -88,6 +89,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 7f), (float)(Math.Cos(offsetAngle) * 7f), mod.ProjectileType<AsheMagicSpark>(), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
             }
-        }	
-	}
+        }
+
+        public override bool PreDraw(SpriteBatch sb, Color dColor)
+        {
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, npc.GetAlpha(Color.White), true);
+            return false;
+        }
+    }
 }
