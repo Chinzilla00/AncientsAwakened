@@ -100,13 +100,13 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(mod.BuffType("DragonFire"), 600);
-            Kill(0);
         }
 
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
             Projectile.NewProjectile(projectile.Center - new Vector2(0, 115), new Vector2(0, 0), mod.ProjectileType<AsheStrike>(), projectile.damage, 5);
+            projectile.active = false;
         }
     }
 }

@@ -27,7 +27,6 @@ namespace AAMod.Items.Boss.Zero
             item.height = 32;
             item.damage = 250;
             item.channel = true;
-            item.mana = 5;
             item.rare = 5;
             item.useTime = 20;
             item.UseSound = SoundID.Item13;

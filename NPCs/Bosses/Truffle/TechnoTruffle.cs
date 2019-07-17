@@ -277,10 +277,8 @@ namespace AAMod.NPCs.Bosses.Truffle
                 npc.noTileCollide = true;
                 npc.noGravity = true;
                 BaseAI.AISpaceOctopus(npc, ref npc.ai, .05f, 8, 250, 0, null);
-                npc.rotation = 0;
                 if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
-                    npc.rotation = 0;
                     npc.noGravity = false;
                     internalAI[0] = 0;
                     internalAI[3] = Main.rand.Next(3);
@@ -292,7 +290,11 @@ namespace AAMod.NPCs.Bosses.Truffle
             }
             else
             {
-                BaseAI.AICharger(npc, ref npc.ai, 0.07f, 10f, false, 30);
+                BaseAI.AICharger(npc, ref npc.ai, 0.07f, 14f, false);
+                npc.rotation = 0;
+            }
+            if (internalAI[3] != AISTATE_DASH)
+            {
                 npc.rotation = 0;
             }
         }

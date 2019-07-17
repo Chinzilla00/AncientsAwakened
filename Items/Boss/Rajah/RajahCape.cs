@@ -90,23 +90,23 @@ All effects of the Sash of Vengeance
             player.noFallDmg = true;
             if (modPlayer.MeleeHighest(player))
             {
-                player.meleeDamage *= DamageBoost(player);
+                player.meleeDamage += DamageBoost(player);
             }
             else if (modPlayer.RangedHighest(player))
             {
-                player.rangedDamage *= DamageBoost(player);
+                player.rangedDamage += DamageBoost(player);
             }
             else if (modPlayer.MagicHighest(player))
             {
-                player.magicDamage *= DamageBoost(player);
+                player.magicDamage += DamageBoost(player);
             }
             else if (modPlayer.SummonHighest(player))
             {
-                player.minionDamage *= DamageBoost(player);
+                player.minionDamage += DamageBoost(player);
             }
             else if (modPlayer.ThrownHighest(player))
             {
-                player.thrownDamage *= DamageBoost(player);
+                player.thrownDamage += DamageBoost(player);
             }
             player.moveSpeed += Speed(player);
             player.endurance += DamageRes(player);
@@ -116,39 +116,39 @@ All effects of the Sash of Vengeance
         {
             if (player.statLife <= player.statLifeMax2 * .1f)
             {
-                return 2.08f;
+                return 1.08f;
             }
             if (player.statLife <= player.statLifeMax2 * .2f)
             {
-                return 1.96f;
+                return .96f;
             }
             if (player.statLife <= player.statLifeMax2 * .3f)
             {
-                return 1.84f;
+                return .84f;
             }
             if (player.statLife <= player.statLifeMax2 * .4f)
             {
-                return 1.72f;
+                return .72f;
             }
             if (player.statLife <= player.statLifeMax2 * .5f)
             {
-                return 1.60f;
+                return .60f;
             }
             if (player.statLife <= player.statLifeMax2 * .6f)
             {
-                return 1.48f;
+                return .48f;
             }
             if (player.statLife <= player.statLifeMax2 * .7f)
             {
-                return 1.36f;
+                return .36f;
             }
             if (player.statLife <= player.statLifeMax2 * .8f)
             {
-                return 1.24f;
+                return .24f;
             }
             if (player.statLife <= player.statLifeMax2 * .9f)
             {
-                return 1.12f;
+                return .12f;
             }
             return 0f;
         }

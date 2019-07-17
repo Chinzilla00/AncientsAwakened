@@ -198,8 +198,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
 		public override void AI()
         {
-            Player player = Main.player[npc.target];
-
             int Minions = NPC.CountNPCS(mod.NPCType<BroodEgg>()) + NPC.CountNPCS(mod.NPCType<Broodmini>());
 
             if (Main.netMode != 1 && internalAI[0]++ >= 120)
@@ -236,6 +234,28 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 npc.damage = npc.defDamage;
             }
 
+            npc.TargetClosest();
+            Player player = Main.player[npc.target];
+            if (internalAI[1] != AISTATE_RUNAWAY)
+            {
+                if (!Main.dayTime)
+                {
+                    internalAI[1] = AISTATE_RUNAWAY;
+                    npc.ai = new float[4];
+                    return;
+                }
+                if (player.dead || !player.active)
+                {
+                    npc.TargetClosest();
+                    if (player.dead || !player.active)
+                    {
+                        internalAI[1] = AISTATE_RUNAWAY;
+                        npc.ai = new float[4];
+                        return;
+                    }
+                }
+            }
+
             if (internalAI[1] == AISTATE_RUNAWAY)
             {
                 npc.noTileCollide = true;
@@ -262,23 +282,6 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 MoveToPoint(wantedVelocity);
             }
 
-            if (!Main.dayTime)
-            {
-                internalAI[1] = AISTATE_RUNAWAY;
-                npc.ai = new float[4];
-                return;
-            }
-            npc.TargetClosest();
-            if (Main.player[npc.target].dead || !Main.player[npc.target].active)
-            {
-                npc.TargetClosest();
-                if (Main.player[npc.target].dead || !Main.player[npc.target].active)
-                {
-                    internalAI[1] = AISTATE_RUNAWAY;
-                    npc.ai = new float[4];
-                    return;
-                }
-            }
 
 
             if (internalAI[1] == AISTATE_FIREBREATH)

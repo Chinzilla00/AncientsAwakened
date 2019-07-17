@@ -677,6 +677,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             DisplayName.SetDefault("Akuma Awakened; Blazing Fury Incarnate");
             Main.npcFrameCount[npc.type] = 1;
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
         public override bool PreAI()
@@ -690,6 +691,21 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 npc.TargetClosest(true);
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
+            if (npc.alpha != 0)
+            {
+                for (int spawnDust = 0; spawnDust < 2; spawnDust++)
+                {
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaADust"), 0f, 0f, 100, default, 2f);
+                    Main.dust[num935].noGravity = true;
+                    Main.dust[num935].noLight = true;
+                }
+            }
+            npc.alpha -= 12;
+            if (npc.alpha < 0)
+            {
+                npc.alpha = 0;
+            }
+
 
             if (Main.netMode != 1)
             {
@@ -740,6 +756,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void SetDefaults()
         {
             base.SetDefaults();
+            npc.boss = false;
             npc.width = 60;
             npc.height = 60;
             npc.dontCountMe = true;
@@ -773,6 +790,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void SetDefaults()
         {
             base.SetDefaults();
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
     }
 
@@ -783,6 +801,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void SetDefaults()
         {
             base.SetDefaults();
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
     }
 
@@ -793,6 +812,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void SetDefaults()
         {
             base.SetDefaults();
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
     }
 }
