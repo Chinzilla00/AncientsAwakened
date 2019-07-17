@@ -37,16 +37,6 @@ namespace AAMod.NPCs.Bosses.Serpent
             {
                 npc.alpha = 0;
             }
-            float num395 = Main.mouseTextColor / 200f - 0.35f;
-            num395 *= 0.2f;
-            npc.scale = num395 + 0.95f;
-            if (npc.ai[0] != 0f)
-            {
-                npc.ai[0] -= 1f;
-                return;
-            }
-            float num396 = npc.position.X;
-            float num397 = npc.position.Y;
             float num398 = 700f;
             bool flag11 = false;
             for (int num399 = 0; num399 < Main.maxPlayers; num399++)
@@ -57,23 +47,12 @@ namespace AAMod.NPCs.Bosses.Serpent
                 if (num402 < num398 && Collision.CanHit(npc.position, npc.width, npc.height, Main.player[num399].position, Main.player[num399].width, Main.player[num399].height))
                 {
                     num398 = num402;
-                    num396 = num400;
-                    num397 = num401;
                     flag11 = true;
                 }
             }
             if (flag11)
             {
-                float num403 = 12f;
-                Vector2 vector29 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-                float num404 = num396 - vector29.X;
-                float num405 = num397 - vector29.Y;
-                float num406 = (float)Math.Sqrt(num404 * num404 + num405 * num405);
-                num406 = num403 / num406;
-                num404 *= num406;
-                num405 *= num406;
-                Projectile.NewProjectile(npc.Center.X - 4f, npc.Center.Y, num404, num405, mod.ProjectileType<IceSpike>(), 20, 3, Main.myPlayer, 0f, 0f);
-                npc.ai[0] = 50f;
+                BaseMod.BaseAI.ShootPeriodic(npc, npc.position, npc.width, npc.height, mod.ProjectileType<IceSpike>(), ref npc.ai[0], 180, npc.damage / 2, 9, true);
                 return;
             }
         }
