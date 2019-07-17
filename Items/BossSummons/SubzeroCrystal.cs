@@ -15,7 +15,7 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Subzero Crystal");
             Tooltip.SetDefault(@"Summons the Subzero Serpent
-Only usable at night");
+Can only be used at night");
 		}
 
 		public override void SetDefaults()

@@ -26,7 +26,6 @@ namespace AAMod.Projectiles.Rajah.Supreme
 			projectile.tileCollide = true;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 0;
-            projectile.extraUpdates = 1;
 		}
 
         public override void AI()

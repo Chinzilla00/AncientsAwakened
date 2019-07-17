@@ -52,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             }
             if (flag11)
             {
-                BaseMod.BaseAI.ShootPeriodic(npc, npc.position, npc.width, npc.height, mod.ProjectileType<IceSpike>(), ref npc.ai[0], 180, npc.damage / 2, 9, true);
+                BaseMod.BaseAI.ShootPeriodic(npc, npc.position, npc.width, npc.height, mod.ProjectileType<IceSpike>(), ref npc.ai[0], 180, npc.damage / 2, 7, true);
                 return;
             }
         }

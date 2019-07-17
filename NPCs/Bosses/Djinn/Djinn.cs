@@ -102,11 +102,11 @@ namespace AAMod.NPCs.Bosses.Djinn
             {
                 if (player.Center.X > npc.Center.X)
                 {
-                    npc.direction = -1;
+                    npc.direction = 1;
                 }
                 else
                 {
-                    npc.direction = 1;
+                    npc.direction = -1;
                 }
             }
 
@@ -195,6 +195,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
             else if (internalAI[0] == 1)
             {
+                npc.damage = 60;
                 npc.ai[3]++;
                 BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.1f, 6f, 6f, false, 300);
                 npc.damage = 40;
@@ -210,6 +211,8 @@ namespace AAMod.NPCs.Bosses.Djinn
             else if (internalAI[0] == 2)
             {
                 npc.ai[3]++;
+
+                npc.damage = 50;
 
                 if (Main.netMode != 1)
                 {
@@ -245,10 +248,12 @@ namespace AAMod.NPCs.Bosses.Djinn
                         npc.netUpdate = true;
                     }
                 }
+
                 MoveToPoint(MovePoint, 10f);
 
                 if (npc.ai[3] > 160 && Main.netMode != 1)
                 {
+                    npc.damage = 30;
                     internalAI[0] = 10;
                     internalAI[1] = 0;
                     npc.ai = new float[4];

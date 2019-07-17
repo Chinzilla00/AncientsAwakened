@@ -14,7 +14,7 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Curious Looking Claw");
             Tooltip.SetDefault(@"It's strangely dry
-Only usable at night");
+Can only be used at night");
         }
 
         public override void SetDefaults()

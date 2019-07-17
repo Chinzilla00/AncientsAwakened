@@ -17,7 +17,6 @@ namespace AAMod.Items.Boss.Zero
 
         public override void SetDefaults()
         {
-
             item.useStyle = 5;
             item.mana = 10;
             item.shootSpeed = 16f;

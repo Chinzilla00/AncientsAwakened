@@ -16,7 +16,7 @@ namespace AAMod.Items.BossSummons
             DisplayName.SetDefault("Dread Moon Sigil");
             Tooltip.SetDefault(@"A ragged old tablet said to contain the dark magic of a new moon
 Summons Yamata
-Only Usable at night in the mire
+Can only be used at night in the mire
 Non-Consumable");
         }
         public override void SetDefaults()

@@ -15,7 +15,7 @@ namespace AAMod.Items.BossSummons
             DisplayName.SetDefault("Hydra Chow");
             Tooltip.SetDefault(@"Just holding this makes you gag
 Summons the Hydra
-Only Usable at night");
+Can only be used at night");
         }
         public override void SetDefaults()
         {

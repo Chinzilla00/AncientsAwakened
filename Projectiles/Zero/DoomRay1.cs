@@ -156,7 +156,7 @@ namespace AAMod.Projectiles.Zero
             }
             else
             {
-                if (Main.time % 10 < 1 && !player.CheckMana(player.inventory[player.selectedItem].mana, true))
+                if (!player.CheckMana(player.inventory[player.selectedItem].mana, true, false))
                 {
                     projectile.Kill();
                 }

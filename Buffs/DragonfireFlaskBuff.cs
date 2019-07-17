@@ -13,5 +13,14 @@ namespace AAMod.Buffs
 			Main.meleeBuff[Type] = true;
 			canBeCleared = true;
 		}
-	}
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            if (player.dead || !player.active)
+            {
+                player.DelBuff(buffIndex);
+                buffIndex--;
+            }
+        }
+    }
 }
