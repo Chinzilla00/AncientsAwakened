@@ -41,14 +41,6 @@ namespace AAMod.Items.Boss.Akuma
             glowmaskDrawColor = Color.White;  //glowmask draw color
         }
 		
-		public override void UseStyle(Player player)
-		{
-			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
-			{
-				player.AddBuff(item.buffType, 3600, true);
-			}
-		}
-
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)
@@ -59,9 +51,30 @@ namespace AAMod.Items.Boss.Akuma
                 }
             }
         }
+		
+		public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
+        public override bool UseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                player.MinionNPCTargetAim();
+            }
+            return base.UseItem(player);
+        }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+			if (player.altFunctionUse == 2)
+            {
+                return false;
+            }
+			
+			player.AddBuff(mod.BuffType("LungMinion"), 2, true);
+
             int num184 = -1;
             int num185 = -1;
             int num74 = item.shoot;
@@ -97,26 +110,14 @@ namespace AAMod.Items.Boss.Akuma
                 int num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, num74, num76, num77, Main.myPlayer, 0f, 0f);
                 num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, mod.ProjectileType<LungBody>(), num76, num77, Main.myPlayer, num187, 0f);
                 int num188 = num187;
-                num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, mod.ProjectileType<LungBody>(), num76, num77, Main.myPlayer, num187, 0f);
-                Main.projectile[num188].localAI[1] = num187;
-                num188 = num187;
+				for (int z = 0; z < player.maxMinions; z++)
+				{
+					num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, mod.ProjectileType<LungBody>(), num76, num77, Main.myPlayer, num187, 0f);
+					Main.projectile[num188].localAI[1] = num187;
+					num188 = num187;
+				}
                 num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, mod.ProjectileType<LungTail>(), num76, num77, Main.myPlayer, num187, 0f);
                 Main.projectile[num188].localAI[1] = num187;
-            }
-            else if (num184 != -1 && num185 != -1)
-            {
-                int num189 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, mod.ProjectileType<LungBody>(), num76, num77, Main.myPlayer, Projectile.GetByUUID(Main.myPlayer, Main.projectile[num185].ai[0]), 0f);
-                int num190 = num189;
-                num189 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, mod.ProjectileType<LungBody>(), num76, num77, Main.myPlayer, num189, 0f);
-                Main.projectile[num190].localAI[1] = num189;
-                Main.projectile[num190].netUpdate = true;
-                Main.projectile[num190].ai[1] = 1f;
-                Main.projectile[num189].localAI[1] = num185;
-                Main.projectile[num189].netUpdate = true;
-                Main.projectile[num189].ai[1] = 1f;
-                Main.projectile[num185].ai[0] = Main.projectile[num189].projUUID;
-                Main.projectile[num185].netUpdate = true;
-                Main.projectile[num185].ai[1] = 1f;
             }
             return false;
         }

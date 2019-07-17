@@ -25,14 +25,6 @@ namespace AAMod.Items.Summoning
             item.shootSpeed = 1f;
             item.mana = 10;
         }
-
-		public override void UseStyle(Player player)
-		{
-			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
-			{
-				player.AddBuff(item.buffType, 3600, true);
-			}
-		}
 		
         public override void SetStaticDefaults()
         {
@@ -60,79 +52,63 @@ namespace AAMod.Items.Summoning
             {
                 return false;
             }
+			
+			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+			modPlayer.TerraSummon = true;
+			player.AddBuff(mod.BuffType("TerraSummon"), 2, true);
 
-            int shootMe = Main.rand.Next(4);
-            switch (shootMe)
-            {
-                case 0:
-                    shootMe = mod.ProjectileType("Minion1");
-                    break;
-                case 1:
-                    shootMe = mod.ProjectileType("Minion2");
-                    break;
-                case 2:
-                    shootMe = mod.ProjectileType("Minion3");
-                    break;
-                case 3:
-                    shootMe = mod.ProjectileType("Minion4Head");
-                    break;
-            }
-            if (shootMe == mod.ProjectileType<Minions.Terra.Minion4Head>())
-            {
-                Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
+			Vector2 point = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY);
+			
+			for (int j = 0; j < Main.projectile.Length; j++)
+			{
+				if (Main.projectile[j].active && Main.projectile[j].owner == Main.myPlayer)
+				{
+					if (Main.projectile[j].type == mod.ProjectileType("Minion4Head") || Main.projectile[j].type == mod.ProjectileType("Minion4Head") || Main.projectile[j].type == mod.ProjectileType("Minion4Head") || Main.projectile[j].type == mod.ProjectileType("Minion1") || Main.projectile[j].type == mod.ProjectileType("Minion2") || Main.projectile[j].type == mod.ProjectileType("Minion3"))
+					{
+						Main.projectile[j].Kill();
+					}
+				}
+			}
+			
+			int current = Projectile.NewProjectile(point.X, point.Y, 0f, 0f, mod.ProjectileType("Minion4Head"), damage, knockBack, Main.myPlayer);
 
-                int head = -1;
-                int tail = -1;
-                for (int j = 0; j < Main.projectile.Length; j++)
-                {
-                    if (Main.projectile[j].active && Main.projectile[j].owner == Main.myPlayer)
-                    {
-                        if (head == -1 && Main.projectile[j].type == mod.ProjectileType("Minion4Head"))
-                        {
-                            head = j;
-                        }
-                        if (tail == -1 && Main.projectile[j].type == mod.ProjectileType("Minion4Tail"))
-                        {
-                            tail = j;
-                        }
-                        if (head != -1 && tail != -1)
-                        {
-                            break;
-                        }
-                    }
-                }
-                if (head == -1 && tail == -1)
-                {
-                    vector2.X = Main.mouseX + Main.screenPosition.X;
-                    vector2.Y = Main.mouseY + Main.screenPosition.Y;
+			int previous = current;
+			for (int k = 0; k < 4; k++)
+			{
+				current = Projectile.NewProjectile(point.X, point.Y, 0f, 0f, mod.ProjectileType("Minion4Body"), damage, knockBack, Main.myPlayer, previous);
+				previous = current;
+			}
 
-                    int current = Projectile.NewProjectile(vector2.X, vector2.Y, 0f, 0f, mod.ProjectileType("Minion4Head"), damage, knockBack, Main.myPlayer);
-
-                    int previous = current;
-                    for (int k = 0; k < 4; k++)
-                    {
-                        current = Projectile.NewProjectile(vector2.X, vector2.Y, 0f, 0f, mod.ProjectileType("Minion4Body"), damage, knockBack, Main.myPlayer, previous);
-                        previous = current;
-                    }
-
-                    previous = current;
-                    current = Projectile.NewProjectile(vector2.X, vector2.Y, 0f, 0f, mod.ProjectileType("Minion4Tail"), damage, knockBack, Main.myPlayer, previous);
-                    Main.projectile[previous].localAI[1] = current;
-                    Main.projectile[previous].netUpdate = true;
-                }
-                return false;
-            }
-            int i = Main.myPlayer;
-            int num73 = damage;
-            float num74 = knockBack;
-            num74 = player.GetWeaponKnockback(item, num74);
-            player.itemTime = item.useTime;
-            Vector2 vector;
-            int num78 = 0;
-            int num79 = 0;
-            vector.X = Main.mouseX + Main.screenPosition.X;
-            vector.Y = Main.mouseY + Main.screenPosition.Y;
-            Projectile.NewProjectile(vector.X, vector.Y, num78, num79, shootMe, num73, num74, i, 0f, 0f);
+			previous = current;
+			current = Projectile.NewProjectile(point.X, point.Y, 0f, 0f, mod.ProjectileType("Minion4Tail"), damage, knockBack, Main.myPlayer, previous);
+			Main.projectile[current].localAI[1] = current;
+			Main.projectile[current].netUpdate = true;
+				
+			for (int z = 0; z < player.maxMinions; z++)
+			{
+				int shootMe = Main.rand.Next(3);
+				switch (shootMe)
+				{
+					case 0:
+						shootMe = mod.ProjectileType("Minion1");
+						break;
+					case 1:
+						shootMe = mod.ProjectileType("Minion2");
+						break;
+					case 2:
+						shootMe = mod.ProjectileType("Minion3");
+						break;
+				}
+				
+				int i = Main.myPlayer;
+				int num73 = damage;
+				float num74 = knockBack;
+				num74 = player.GetWeaponKnockback(item, num74);
+				player.itemTime = item.useTime;
+				int num78 = 0;
+				int num79 = 0;
+				Projectile.NewProjectile(point.X + Main.rand.Next(-50,50), point.Y + Main.rand.Next(-50,50), num78, num79, shootMe, num73, num74, i, 0f, 0f);
+			}
             return false;
         }
     }
