@@ -1236,7 +1236,7 @@ namespace AAMod
                         case "YamataAHead":
                         return "OWIE!!!";
                         case "Yamata1":
-                        return "HAH! I went easy on ya! Come back when you�re actually good and we can have a real fight!";
+                        return "HAH! I went easy on ya! Come back when you're actually good and we can have a real fight!";
                         case "Yamata2":
                         return "The defeat of Yamata causes the fog in the mire to lift.";
                         case "Yamata3":
@@ -1336,7 +1336,7 @@ namespace AAMod
                         case "YamataHead8":
                         return " OUT OF MY FACE!!!";
                         case "YamataHead9":
-                        return"I�VE EATEN RABBITS MORE INTIMIDATING THAN YOU!";
+                        return "I�VE EATEN RABBITS MORE INTIMIDATING THAN YOU!";
                         case "YamataHead10":
                         return "HOPE YOU BROUGHT YOUR UMBRELLA! BECAUSE IT�S RAINING PAIN!!! NYEHEHEHEHEHEHEHEH!!!";
                         case "YamataHead11":
