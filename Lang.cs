@@ -2122,7 +2122,7 @@ namespace AAMod
                         case "DraconianRuneFalse2":
                         return "Hey kid, that rune only works once, ya know.";
                         case "DraconianRuneInfernoFalse":
-                        return "You can only use that rune in the Inferno, kid.";
+                        return Lang.BossSummonsInfo("DraconianRuneInfernoFalse");
                         case "DraconianRuneInfernoFalse2":
                         return "That sigil has to be used at the Altar of the Draconian Sun, kid. It's in the middle of the inferno.";
                         case "DraconianRuneTrue1":
