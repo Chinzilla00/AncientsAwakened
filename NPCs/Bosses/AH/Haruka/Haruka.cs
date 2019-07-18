@@ -392,7 +392,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 internalAI[3]++;
 
-                SlashMovement(player.Center);
+                MoveToPoint(player.Center);
 
                 if (internalAI[2] < 17)
                 {
@@ -625,6 +625,10 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             if (internalAI[0] == AISTATE_SPIN)
             {
                 moveSpeed = 20f;
+            }
+            if (internalAI[0] == AISTATE_SLASH)
+            {
+                moveSpeed = 30f;
             }
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;

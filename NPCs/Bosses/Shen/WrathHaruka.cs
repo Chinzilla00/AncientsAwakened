@@ -377,7 +377,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 internalAI[3]++;
 
-                SlashMovement(player.Center);
+                MoveToPoint(player.Center);
 
                 if (internalAI[2] < 17)
                 {
@@ -603,9 +603,10 @@ namespace AAMod.NPCs.Bosses.Shen
         }
 
 
+
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 10f;
+            float moveSpeed = 12f;
             if (Vector2.Distance(npc.Center, point) > 500)
             {
                 moveSpeed = 16;
@@ -613,6 +614,10 @@ namespace AAMod.NPCs.Bosses.Shen
             if (internalAI[0] == AISTATE_SPIN)
             {
                 moveSpeed = 20f;
+            }
+            if (internalAI[0] == AISTATE_SLASH)
+            {
+                moveSpeed = 30f;
             }
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
@@ -637,18 +642,6 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }
-        public void SlashMovement(Vector2 point)
-        {
-            float moveSpeed = 15f;
-            if (moveSpeed == 0f || npc.Center == point) return;
-            float velMultiplier = 1f;
-            Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
-            npc.velocity *= moveSpeed;
-            npc.velocity *= velMultiplier;
-        }
-
 
         public override void BossLoot(ref string name, ref int potionType)
         {

@@ -57,8 +57,8 @@ A void scout hunts down your foes for you";
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("TrueDoomiteVisor"));
 			recipe.AddIngredient(null, "ChaosCrystal", 1);
-            recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
+            recipe.AddTile(null, "TruePaladinsSmeltery");
+            recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
 	}

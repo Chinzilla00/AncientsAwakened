@@ -255,20 +255,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     npc.netUpdate2 = true;
                 }
             }
-
-            int minTilePosX = (int)(npc.position.X / 16.0) - 1;
-            int maxTilePosX = (int)((npc.position.X + npc.width) / 16.0) + 2;
-            int minTilePosY = (int)(npc.position.Y / 16.0) - 1;
-            int maxTilePosY = (int)((npc.position.Y + npc.height) / 16.0) + 2;
-            if (minTilePosX < 0)
-                minTilePosX = 0;
-            if (maxTilePosX > Main.maxTilesX)
-                maxTilePosX = Main.maxTilesX;
-            if (minTilePosY < 0)
-                minTilePosY = 0;
-            if (maxTilePosY > Main.maxTilesY)
-                maxTilePosY = Main.maxTilesY;
-
             bool collision = true;
 
             float speed = 15f;
@@ -377,7 +363,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 if (npc.position.Y > Main.rockLayer * 16.0)
                 {
                     npc.velocity.Y = npc.velocity.Y + 1f;
-                    speed = 30f;
                 }
                 if (npc.position.Y > Main.rockLayer * 16.0)
                 {
@@ -607,23 +592,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 Main.dust[dust2].noGravity = true;
 
             }
-
-
         }
 
         public bool spawnAshe = false;
-
-        public void SpawnBoss(Player player, string name, string displayName)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-300f, 300f, (float)Main.rand.NextDouble()), 2000);
-                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
-            }
-        }
 
 
         public int roarTimer = 0;
@@ -744,7 +715,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 npc.position.Y = npc.position.Y + posY;
             }
 
-            Player player = Main.player[npc.target];
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);
@@ -757,9 +727,15 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             base.SetDefaults();
             npc.boss = false;
-            npc.width = 60;
-            npc.height = 60;
+            npc.width = 80;
+            npc.height = 80;
             npc.dontCountMe = true;
+        }
+
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            damage *= .5f;
+            return true;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)

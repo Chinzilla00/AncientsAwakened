@@ -141,7 +141,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (internalAI[0] > 300)
             {
-                Attack(npc, npc.velocity);
+                Attack(npc);
             }
             if (internalAI[0] >= 400)
             {
@@ -238,19 +238,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                     npc.netUpdate = true;
                 }
             }
-
-            int minTilePosX = (int)(npc.position.X / 16.0) - 1;
-            int maxTilePosX = (int)((npc.position.X + npc.width) / 16.0) + 2;
-            int minTilePosY = (int)(npc.position.Y / 16.0) - 1;
-            int maxTilePosY = (int)((npc.position.Y + npc.height) / 16.0) + 2;
-            if (minTilePosX < 0)
-                minTilePosX = 0;
-            if (maxTilePosX > Main.maxTilesX)
-                maxTilePosX = Main.maxTilesX;
-            if (minTilePosY < 0)
-                minTilePosY = 0;
-            if (maxTilePosY > Main.maxTilesY)
-                maxTilePosY = Main.maxTilesY;
 
             bool collision = true;
 
@@ -391,7 +378,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 if (npc.position.Y < 0)
                 {
                     npc.velocity.Y = npc.velocity.Y - 1f;
-                    speed = 30f;
                 }
                 if (npc.position.Y < 0)
                 {
@@ -429,7 +415,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public bool Quote4;
         public bool QuoteSaid;
 
-        public void Attack(NPC npc, Vector2 velocity)
+        public void Attack(NPC npc)
         {
             Player player = Main.player[npc.target];
             if (internalAI[1] == 1 || internalAI[1] == 5 || internalAI[1] == 9 || internalAI[1] == 16 || internalAI[1] == 18)
@@ -514,7 +500,6 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             Texture2D texture = Main.npcTexture[npc.type];
             Texture2D attackAni = mod.GetTexture("NPCs/Bosses/Akuma/Akuma");
-            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
             if (fireAttack == false)
             {
                 spriteBatch.Draw(texture, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
@@ -637,6 +622,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Akuma; Draconian Demon");
+            NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
         public override void SetDefaults()
@@ -659,6 +645,12 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override bool PreNPCLoot()
         {
             return false;
+        }
+
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            damage *= .5f;
+            return true;
         }
 
         public override bool PreAI()
@@ -710,7 +702,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.position.Y = npc.position.Y + posY;
             }
 
-            Player player = Main.player[npc.target];
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);
@@ -741,334 +732,52 @@ namespace AAMod.NPCs.Bosses.Akuma
     }
 
     [AutoloadBossHead]
-    public class AkumaBody : Akuma
+    public class AkumaBody : AkumaArms
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaBody"; } }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma; Draconian Demon");
+            base.SetStaticDefaults();
         }
 
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.dontTakeDamage = true;
-            npc.width = 60;
-            npc.height = 60;
-            npc.dontCountMe = true;
-
-            npc.alpha = 255;
-        }
-
-        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-        {
-            return false;
-        }
-
-        public override bool PreAI()
-        {
-            Vector2 chasePosition = Main.npc[(int)npc.ai[1]].Center;
-            Vector2 directionVector = chasePosition - npc.Center;
-            npc.spriteDirection = ((directionVector.X > 0f) ? 1 : -1);
-            if (npc.ai[3] > 0)
-                npc.realLife = (int)npc.ai[3];
-            if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)
-                npc.TargetClosest(true);
-            if (Main.player[npc.target].dead && npc.timeLeft > 300)
-                npc.timeLeft = 300;
-
-            if (Main.netMode != 1)
-            {
-                if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("Akuma"))
-                {
-                    npc.life = 0;
-                    npc.HitEffect(0, 10.0);
-                    npc.active = false;
-                    NetMessage.SendData(28, -1, -1, null, npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
-                }
-            }
-
-            if (npc.ai[1] < (double)Main.npc.Length)
-            {
-                Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-                float dirX = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - npcCenter.X;
-                float dirY = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - npcCenter.Y;
-                npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
-                float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
-                float dist = (length - npc.width) / length;
-                float posX = dirX * dist;
-                float posY = dirY * dist;
-
-                if (dirX < 0f)
-                {
-                    npc.spriteDirection = 1;
-
-                }
-                else
-                {
-                    npc.spriteDirection = -1;
-                }
-
-                npc.velocity = Vector2.Zero;
-                npc.position.X = npc.position.X + posX;
-                npc.position.Y = npc.position.Y + posY;
-            }
-
-            Player player = Main.player[npc.target];
-            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
-            {
-                npc.TargetClosest(true);
-            }
-            npc.netUpdate = true;
-            return false;
-        }
-
-        public override bool PreNPCLoot()
-        {
-            return false;
-        }
-
-        public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
-        {
-            spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
-        }
-
-        public override void BossHeadRotation(ref float rotation)
-        {
-            rotation = npc.rotation;
-        }
-
-        public override bool CheckActive()
-        {
-            if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
-            {
-                return false;
-            }
-            npc.active = false;
-            return true;
         }
     }
 
     [AutoloadBossHead]
-    public class AkumaBody1 : Akuma
+    public class AkumaBody1 : AkumaArms
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaBody1"; } }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma; Draconian Demon");
+            base.SetStaticDefaults();
         }
 
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.dontTakeDamage = true;
-            npc.width = 60;
-            npc.height = 60;
-            npc.dontCountMe = true;
-
-            npc.alpha = 255;
-        }
-
-        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-        {
-            return false;
-        }
-
-
-        public override bool PreAI()
-        {
-            Vector2 chasePosition = Main.npc[(int)npc.ai[1]].Center;
-            Vector2 directionVector = chasePosition - npc.Center;
-            npc.spriteDirection = ((directionVector.X > 0f) ? 1 : -1);
-            if (npc.ai[3] > 0)
-                npc.realLife = (int)npc.ai[3];
-            if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)
-                npc.TargetClosest(true);
-            if (Main.player[npc.target].dead && npc.timeLeft > 300)
-                npc.timeLeft = 300;
-
-            if (Main.netMode != 1)
-            {
-                if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("Akuma"))
-                {
-                    npc.life = 0;
-                    npc.HitEffect(0, 10.0);
-                    npc.active = false;
-                    NetMessage.SendData(28, -1, -1, null, npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
-                }
-            }
-
-            if (npc.ai[1] < (double)Main.npc.Length)
-            {
-                Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-                float dirX = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - npcCenter.X;
-                float dirY = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - npcCenter.Y;
-                npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
-                float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
-                float dist = (length - npc.width) / length;
-                float posX = dirX * dist;
-                float posY = dirY * dist;
-
-                if (dirX < 0f)
-                {
-                    npc.spriteDirection = 1;
-
-                }
-                else
-                {
-                    npc.spriteDirection = -1;
-                }
-
-                npc.velocity = Vector2.Zero;
-                npc.position.X = npc.position.X + posX;
-                npc.position.Y = npc.position.Y + posY;
-            }
-
-            Player player = Main.player[npc.target];
-            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
-            {
-                npc.TargetClosest(true);
-            }
-            npc.netUpdate = true;
-            return false;
-        }
-
-        public override bool PreNPCLoot()
-        {
-            return false;
-        }
-
-        public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
-        {
-            spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
-        }
-
-        public override void BossHeadRotation(ref float rotation)
-        {
-            rotation = npc.rotation;
-        }
-
-        public override bool CheckActive()
-        {
-            if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
-            {
-                return false;
-            }
-            npc.active = false;
-            return true;
         }
     }
 
     [AutoloadBossHead]
-    public class AkumaTail : Akuma
+    public class AkumaTail : AkumaArms
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaTail"; } }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma; Draconian Demon");
+            base.SetStaticDefaults();
         }
 
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.dontTakeDamage = true;
             npc.width = 80;
             npc.height = 80;
-            npc.dontCountMe = true;
-
-            npc.alpha = 255;
-        }
-
-        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-        {
-            return false;
-        }
-
-        public override bool PreNPCLoot()
-        {
-            return false;
-        }
-
-
-        public override bool PreAI()
-        {
-            Vector2 chasePosition = Main.npc[(int)npc.ai[1]].Center;
-            Vector2 directionVector = chasePosition - npc.Center;
-            npc.spriteDirection = ((directionVector.X > 0f) ? 1 : -1);
-            if (npc.ai[3] > 0)
-                npc.realLife = (int)npc.ai[3];
-            if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)
-                npc.TargetClosest(true);
-            if (Main.player[npc.target].dead && npc.timeLeft > 300)
-                npc.timeLeft = 300;
-
-            if (Main.netMode != 1)
-            {
-                if (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("Akuma"))
-                {
-                    npc.life = 0;
-                    npc.HitEffect(0, 10.0);
-                    npc.active = false;
-                    NetMessage.SendData(28, -1, -1, null, npc.whoAmI, -1f, 0.0f, 0.0f, 0, 0, 0);
-                }
-            }
-
-            if (npc.ai[1] < (double)Main.npc.Length)
-            {
-                Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-                float dirX = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - npcCenter.X;
-                float dirY = Main.npc[(int)npc.ai[1]].position.Y + Main.npc[(int)npc.ai[1]].height / 2 - npcCenter.Y;
-                npc.rotation = (float)Math.Atan2(dirY, dirX) + 1.57f;
-                float length = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
-                float dist = (length - npc.width) / length;
-                float posX = dirX * dist;
-                float posY = dirY * dist;
-
-                if (dirX < 0f)
-                {
-                    npc.spriteDirection = 1;
-
-                }
-                else
-                {
-                    npc.spriteDirection = -1;
-                }
-
-                npc.velocity = Vector2.Zero;
-                npc.position.X = npc.position.X + posX;
-                npc.position.Y = npc.position.Y + posY;
-            }
-
-            Player player = Main.player[npc.target];
-            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
-            {
-                npc.TargetClosest(true);
-            }
-            npc.netUpdate = true;
-            return false;
-        }
-
-        public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
-        {
-            spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
-        }
-
-        public override void BossHeadRotation(ref float rotation)
-        {
-            rotation = npc.rotation;
-        }
-
-        public override bool CheckActive()
-        {
-            if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
-            {
-                return false;
-            }
-            npc.active = false;
-            return true;
         }
     }
 }

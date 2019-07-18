@@ -65,32 +65,34 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 return;
             }
-            if (npc.ai[1] == 180)
+            else
             {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("YOU IMBECILE! WE LOST! AGAAAAAAAAAAAAIN!!!", new Color(45, 46, 70));
-            }
+                if (npc.ai[1] == 180)
+                {
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("YOU IMBECILE! WE LOST! AGAAAAAAAAAAAAIN!!!", new Color(45, 46, 70));
+                }
 
-            if (npc.ai[1] == 360)
-            {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Rgh, my head...", new Color(180, 41, 32));
-            }
+                if (npc.ai[1] == 360)
+                {
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Rgh, my head...", new Color(180, 41, 32));
+                }
 
-            if (npc.ai[1] == 540)
-            {
-                string Name = Main.netMode != 0 ? "BUNCH OF CLOWNS" : player.Male ? "BOY" : "GIRL";
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("And YOU, " + Name + "! NEXT TIME I'M GONNA TEAR YOUR HEADS OFF!!!", new Color(45, 46, 70));
-            }
+                if (npc.ai[1] == 540)
+                {
+                    string Name = Main.netMode != 0 ? "BUNCH OF CLOWNS" : player.Male ? "BOY" : "GIRL";
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("And YOU, " + Name + "! NEXT TIME I'M GONNA TEAR YOUR HEADS OFF!!!", new Color(45, 46, 70));
+                }
 
-            if (npc.ai[1] == 720)
-            {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("And trust us, kid.", new Color(180, 41, 32));
-            }
+                if (npc.ai[1] == 720)
+                {
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("And trust us, kid.", new Color(180, 41, 32));
+                }
 
-            if (npc.ai[1] >= 900)
-            {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("There's always a next time.", new Color(180, 41, 32));
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("There's always a next time.", new Color(45, 46, 70));
-                AAWorld.downedShen = true;
+                if (npc.ai[1] >= 900)
+                {
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("There's always a next time.", new Color(180, 41, 32));
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("There's always a next time.", new Color(45, 46, 70));\
+                }
             }
         }
 

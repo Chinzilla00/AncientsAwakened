@@ -43,9 +43,10 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             if (!NPC.AnyNPCs(mod.NPCType<AkumaA>()))
             {
-                npc.life = 0;
                 int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
                 Main.npc[DeathAnim].velocity = npc.velocity;
+                npc.active = false;
+                npc.netUpdate = true;
             }
             return true;
         }
