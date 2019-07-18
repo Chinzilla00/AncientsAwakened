@@ -36,8 +36,7 @@ namespace AAMod.Items.Armor.Deathly
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = @"You are as quiet as death itself, making enemies less likely to target you
-20% Reduced Ammo Consumption";
+            player.setBonus = Lang.ArmorBonus("DeathlySkullBonus");
 
             player.aggro -= 5;
             player.ammoCost80 = true;

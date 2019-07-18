@@ -39,8 +39,7 @@ namespace AAMod.Items.Armor.Fulgurite
 		public override void UpdateArmorSet(Player player)
 		{
 
-            player.setBonus = @"Being struck causes a burst of lightning to erupt from your body, knocking back enemies
-+20% increased melee and movement speed";
+            player.setBonus = Lang.ArmorBonus("FulguriteHelmetBonus");
 
             player.GetModPlayer<AAPlayer>(mod).fulgurite = true;
             player.meleeSpeed *= 1.20f;

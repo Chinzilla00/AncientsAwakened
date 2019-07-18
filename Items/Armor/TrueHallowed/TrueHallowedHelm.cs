@@ -34,7 +34,7 @@ Increases maximum mana by 100
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"20% Chance not to Consume Ammo, reduced mana usage, increased melee, and movement speed";
+            player.setBonus = Lang.ArmorBonus("TrueHallowedHelmBonus");
 
             player.meleeSpeed *= 1.1f;
             player.ammoCost80 = true;

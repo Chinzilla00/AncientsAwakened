@@ -35,10 +35,7 @@ namespace AAMod.Items.Armor.TrueBlazing
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"5% increased damage resistance
-Enemies are more likely to target you
-Enemies that strike you are set ablaze
-Your Swung weapons set your enemies ablaze";
+			player.setBonus = Lang.ArmorBonus("TrueBlazingKabutoBonus");
             player.endurance = .05f;
             player.aggro += 4;
             player.GetModPlayer<AAPlayer>(mod).kindledSet = true;

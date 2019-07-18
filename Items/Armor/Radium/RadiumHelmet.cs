@@ -37,9 +37,7 @@ Shines with the light of a starry night sky");
 		public override void UpdateArmorSet(Player player)
 		{
 			
-			player.setBonus = @"15% increased melee critical chance and speed
-Being hit causes stars from the heavans to fall around you and increases your movement speed
-30% increased movement speed during the day";
+			player.setBonus = Lang.ArmorBonus("RadiumHelmetBonus");
             if (Main.dayTime)
             {
                 player.moveSpeed += .3f;

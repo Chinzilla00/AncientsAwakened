@@ -45,8 +45,7 @@ namespace AAMod.Items.Armor.Paints
 		public override void UpdateArmorSet(Player player)
 		{
 
-            player.setBonus = @"Being struck causes a burst of lightning to erupt from your body, knocking back enemies
-+5 Minion slots";
+            player.setBonus = Lang.ArmorBonus("FulguritePaintBonus");
 
             player.GetModPlayer<AAPlayer>(mod).fulgurite = true;
             player.maxMinions += 5;

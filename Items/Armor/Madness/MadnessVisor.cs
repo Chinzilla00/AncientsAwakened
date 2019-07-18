@@ -30,7 +30,7 @@ namespace AAMod.Items.Armor.Madness
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "+5% damage";
+            player.setBonus = Lang.ArmorBonus("MadnessVisorBonus");
             player.meleeDamage += .05f;
             player.rangedDamage += .05f;
             player.magicDamage += .05f;

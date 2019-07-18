@@ -32,9 +32,7 @@ Increases Maximum Mana by 60");
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = @"You are blessed with a gift of nature, allowing you to autodrink mana potions
-Mana usage lowered by 40%
-The jungle gives you protection, causing deadly spores to spawn around you";
+            player.setBonus = Lang.ArmorBonus("TrueTribalHatBonus");
             player.sporeSac = true;
             player.manaCost *= 0.6f;
             player.manaFlower = true;
