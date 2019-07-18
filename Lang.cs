@@ -2823,12 +2823,12 @@ As your health goes down, your damage resistance goes up";
                         return @"You are blessed with a gift of nature, allowing you to autodrink mana potions
 Mana usage lowered by 30%";
                         case "TrueAbyssalFukumenBonus":
-                        return @"Your minions are imbued with the venomous properties of bogtoxin
+                        return @"Your ranged attacks are imbued with the venomous properties of bogtoxin
 Enemies are less likely to target you
 Night Vision and hunter effects
-75% reduced ammo consumption";
+25% reduced ammo consumption";
                         case "TrueAtlanteanHelmBonus":
-                        return @"While submerged in liquids, your magic abilities are increased drastically
+                        return @"While submerged in water, your magic abilities are increased drastically
 You can swim and water does not affect your movement";
                         case "TrueBlazingKabutoBonus":
                         return @"5% increased damage resistance
@@ -3070,7 +3070,7 @@ The Fire spirit becomes more powerful the less mana you have";
                         case "TribalHatBonus":
                         return "你有幸获得大自然的馈赠, 让你自动使用魔力药剂\r\n减少30%魔法消耗";
                         case "TrueAbyssalFukumenBonus":
-                        return "你的远程攻击具有九头蛇毒的毒性\r\n减少20%弹药消耗\r\n敌人减少瞄准你的可能性\r\n减少7%弹药消耗\r\n藏于阴影中, 你进入隐身状态";
+                        return "你的远程攻击具有九头蛇毒的毒性\r\n敌人减少瞄准你的可能性\r\n减少25%弹药消耗\r\n藏于阴影中, 你进入隐身状态";
                         case "TrueAtlanteanHelmBonus":
                         return "完全处于液体中时, 玩家魔法能力大幅度提升\n你可以在水中畅通无阻的游泳";
                         case "TrueBlazingKabutoBonus":
