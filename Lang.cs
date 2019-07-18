@@ -2122,7 +2122,7 @@ namespace AAMod
                         case "DraconianRuneFalse2":
                         return "Hey kid, that rune only works once, ya know.";
                         case "DraconianRuneInfernoFalse":
-                        return Lang.BossSummonsInfo("DraconianRuneInfernoFalse");
+                        return "You can only use that rune in the Inferno, kid.";
                         case "DraconianRuneInfernoFalse2":
                         return "That sigil has to be used at the Altar of the Draconian Sun, kid. It's in the middle of the inferno.";
                         case "DraconianRuneTrue1":
@@ -2469,7 +2469,7 @@ namespace AAMod
                         case "CurrentSpeedBoost:":
                         return "当前速度增加: ";
                         case "CurrentDamageResistance:":
-                        return "当前伤害抗性: ";
+                        return "当前伤害抗性增加: ";
                         case "Damage":
                         return "伤害";
                     }
