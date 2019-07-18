@@ -135,16 +135,28 @@ namespace AAMod.NPCs.Bosses.Hydra
 					}
 				}
 			}
-		}		
-		
+		}
+
+
+
         public override void AI()
         {
-            bool noHeads = !NPC.AnyNPCs(mod.NPCType<HydraHead1>()) && !NPC.AnyNPCs(mod.NPCType<HydraHead2>()) && !NPC.AnyNPCs(mod.NPCType<HydraHead3>());
+            bool noHeads = Head1 == null && Head2 == null && Head3 == null;
+            if (HeadsSpawned && noHeads)
+            {
+                if (Main.netMode != 1)
+                {
+                    npc.life = 0;
+                    npc.checkDead();
+                    npc.netUpdate = true;
+                }
+                return;
+            }
 
             HandleHeads();
 
 
-			if (playerTarget != null)
+            if (playerTarget != null)
             {
                 float dist = npc.Distance(playerTarget.Center);
                 if (dist > 500 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
@@ -185,17 +197,6 @@ namespace AAMod.NPCs.Bosses.Hydra
                 if (npc.velocity.Y > 7f) npc.velocity.Y *= 0.75f;
                 npc.timeLeft = 50;
                 AIMovementNormal();
-
-                if (HeadsSpawned && noHeads)
-                {
-                    if (Main.netMode != 1)
-                    {
-                        npc.life = 0;
-                        npc.checkDead();
-                        npc.netUpdate = true;
-                    }
-                    return;
-                }
             }
             else
             {

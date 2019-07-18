@@ -66,6 +66,7 @@ namespace AAMod
 
         public override void SetDefaults(NPC npc)
         {
+            base.SetDefaults(npc); 
             if (AAWorld.downedShen == true)
             {
                 if (npc.type == NPCID.GoblinSummoner)   //this is where you choose the npc you want
@@ -77,6 +78,11 @@ namespace AAMod
                     npc.value = 50000f;
                 }
             }
+            if (NPCID.Sets.TownCritter[npc.type] == true)   //this is where you choose the npc you want
+            {
+                npc.dontTakeDamageFromHostiles = true;
+            }
+            return;
         }
 
         public int RiftTimer;

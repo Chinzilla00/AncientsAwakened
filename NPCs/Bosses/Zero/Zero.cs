@@ -52,10 +52,15 @@ namespace AAMod.NPCs.Bosses.Zero
             musicPriority = MusicPriority.BossHigh;
             if (AAWorld.downedAllAncients)
             {
-                npc.lifeMax = 1000000;
+                npc.lifeMax = 1200000;
                 npc.damage = 150;
                 npc.defense = 320;
             }
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -390,46 +395,44 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.dontTakeDamage = false;
                 npc.chaseable = true;
+                npc.damage = 160;
                 if (Main.netMode != 1)
                 {
                     npc.ai[2]++;
                 }
-                npc.damage = 160;
-                if (npc.ai[2] == 60 || npc.ai[2] == 90 || npc.ai[2] == 120 || npc.ai[2] == 150 || npc.ai[2] == 180)
+
+                if (npc.ai[3] == 0)
                 {
-                    float Speed = 16f;  
-                    Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
-                    int damage = 85;  //projectile damage
-                    int type = mod.ProjectileType("ZeroBeam1");  //put your projectile
-                    Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 33);
-                    float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
-                    Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                    if (npc.ai[2] % 20 == 0)
+                    {
+                        float Speed = 16f;
+                        Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                        int damage = 85;
+                        int type = mod.ProjectileType("ZeroBeam1");
+                        Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 33);
+                        float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
+                        Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                    }
+                    if (npc.ai[2] >= 141 && Main.netMode != 1)
+                    {
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 3;
+                    }
                 }
-                if (npc.ai[2] == 300 || npc.ai[2] == 400) // + lasers
+                else if (npc.ai[3] == 1)
                 {
-                    Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
-                    Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, -12f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                    Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 12f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                    Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(-12f, 0f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                    Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(12f, 0f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                }
-                if (npc.ai[2] == 350 || npc.ai[2] == 400) // x lasers
-                {
-                    Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
-                    Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(8f, 8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                    Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(8f, -8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                    Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(-8f, 8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                    Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(-8f, -8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                }
-                if (npc.ai[2] >= 500 && npc.ai[2] < 580)
-                {
-                    if (Main.rand.Next(10) == 0)
+                    if (npc.ai[2] % 30 == 0)
                     {
                         Main.PlaySound(SoundID.Item74, (int)npc.position.X, (int)npc.position.Y);
                         Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0 + Main.rand.Next(-14, 14), 0 + Main.rand.Next(-14, 14), mod.ProjectileType("ZeroRocket"), 85, 3);
                     }
+                    if (npc.ai[2] >= 151 && Main.netMode != 1)
+                    {
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 3;
+                    }
                 }
-                if (npc.ai[2] > 760 && npc.ai[2] < 900)
+                else if (npc.ai[3] == 2)
                 {
                     if (Collision.CanHit(npc.position, npc.width, npc.height, player.Center, player.width, player.height))
                     {
@@ -465,11 +468,41 @@ namespace AAMod.NPCs.Bosses.Zero
                             }
                         }
                     }
+                    if (npc.ai[2] >= 180 && Main.netMode != 1)
+                    {
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 3;
+                    }
                 }
-                if (npc.ai[2] >= 910)
+                else
                 {
-                    npc.ai[2] = 0;
+                    if (npc.ai[2] == 80 || npc.ai[2] == 240) // + lasers
+                    {
+                        Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
+                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, -12f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 12f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(-12f, 0f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(12f, 0f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                    }
+                    if (npc.ai[2] == 160 || npc.ai[2] == 320) // x lasers
+                    {
+                        Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
+                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(8f, 8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(8f, -8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(-8f, 8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(-8f, -8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                    }
+                    if (Main.netMode != 1)
+                    {
+                        if (npc.ai[2] >= 400)
+                        {
+                            npc.ai[3] = Main.rand.Next(3);
+                            npc.ai[2] = 0;
+                            npc.netUpdate = true;
+                        }
+                    }
                 }
+
                 if (ShieldScale > 0)
                 {
                     ShieldScale -= .07f;
