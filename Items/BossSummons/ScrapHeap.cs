@@ -44,7 +44,7 @@ Can only be used at night");
         {
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("You feel a static shock from using this. Maybe it's trying to send a signal?", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ScrapHeapFalse"), Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
                 if (Main.netMode == 0)
                 {
                     player.statLife -= 1;
@@ -53,7 +53,7 @@ Can only be used at night");
             }
             if (NPC.AnyNPCs(mod.NPCType("Orthrus")))
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Orthrus wants to eat that AND you", Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ScrapHeapTrue"), Color.Purple.R, Color.Purple.G, Color.Purple.B, false);
                 return false;
             }
             return true;

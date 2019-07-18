@@ -41,12 +41,12 @@ Can only be used during the day in a red mushroom biome");
         {
             if (!Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The mushroom just glares at you and gives you chills just looking at it.", new Color(216, 110, 40), false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("IntimidatingMushroomFalse"), new Color(216, 110, 40), false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<MushroomMonarch>()))
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The mushroom Monarch keeps trying to stomp you", new Color(216, 110, 40), false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("IntimidatingMushroomTrue"), new Color(216, 110, 40), false);
                 return false;
             }
             return true;
