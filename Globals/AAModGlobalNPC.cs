@@ -1152,11 +1152,11 @@ namespace AAMod
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)
                     {
-                        if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(npcName + " have awoken!", 175, 75, 255, false); }
+                        if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(npcName + Lang.GlobalNPCSInfo("NPCarrive"), 175, 75, 255, false); }
                         else
                         if (Main.netMode == 2)
                         {
-                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + " have awoken!"), new Color(175, 75, 255), -1);
+                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + Lang.GlobalNPCSInfo("NPCarrive")), new Color(175, 75, 255), -1);
                         }
                     }
                     else
