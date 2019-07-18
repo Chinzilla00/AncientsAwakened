@@ -50,9 +50,9 @@ namespace AAMod.Items.Currency
                 color2.R,
                 color2.G,
                 color2.B,
-                Language.GetText("Buy price:"),
+                Language.GetText(Lang.ItemsInfo("GoblinSoulBuyprice")),
                 price,
-                ("Goblin Soul" + (price == 1 ? "" : "s"))
+                (Lang.ItemsInfo("GoblinSoul") + (price == 1 ? "" : "s"))
             });
         }
     }
