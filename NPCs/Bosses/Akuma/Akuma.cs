@@ -167,7 +167,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     if (weakness == false)
                     {
                         weakness = true;
-                        if (Main.netMode != 1) BaseUtility.Chat("Water?! ACK..! I CAN'T BREATHE!", new Color(180, 41, 32));
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Akuma1"), new Color(180, 41, 32));
                     }
                 }
                 else if (!npc.HasBuff(BuffID.Wet))
@@ -373,7 +373,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (loludided == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Yaaaaaaaaawn. I'm bushed kid, I'm gonna have to take a rain check. Come back tomorrow.", new Color(180, 41, 32));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Akuma2"), new Color(180, 41, 32));
                     loludided = true;
                 }
                 npc.velocity.Y = npc.velocity.Y + 1f;
@@ -384,7 +384,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (loludided == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("I thought you terrarians put up more of a fight. Guess not.", new Color(180, 41, 32));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Akuma3"), new Color(180, 41, 32));
                     loludided = true;
                 }
                 npc.velocity.Y = npc.velocity.Y - 1f;
@@ -436,7 +436,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote1) ? "Hey kid! Sky's fallin', watch out!" : "Down comes fire and fury!", new Color(180, 41, 32));
+                    if (Main.netMode != 1) BaseUtility.Chat((!Quote1) ? Lang.BossChat("Akuma4") : Lang.BossChat("Akuma5"), new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote1 = true;
                 }
@@ -454,7 +454,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid)
                 {
-                    if (!Quote2) if (Main.netMode != 1) BaseUtility.Chat("Spirits of the volcano! help me crush this kid!", new Color(180, 41, 32));
+                    if (!Quote2) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Akuma6"), new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote2 = true;
                 }
@@ -471,7 +471,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote3) ? "Hey kid! Watch out!" : "Incoming!", new Color(180, 41, 32));
+                    if (Main.netMode != 1) BaseUtility.Chat((!Quote3) ? Lang.BossChat("Akuma7") : Lang.BossChat("Akuma8"), new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote3 = true;
                 }
@@ -484,7 +484,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote4) ? "Face the flames of despair, kid!" : "Heads up, kid!", new Color(180, 41, 32));
+                    if (Main.netMode != 1) BaseUtility.Chat((!Quote4) ? Lang.BossChat("Akuma9") : Lang.BossChat("Akuma10"), new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote4 = true;
                 }
@@ -536,7 +536,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!AAWorld.downedAkuma)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("The volcanoes of the inferno are finally quelled...", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Akuma11"), Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
                 }
                 if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
@@ -544,7 +544,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };
                 AAAI.DownedBoss(npc, mod, lootTable, AAWorld.downedAkuma, true, mod.ItemType("CrucibleScale"), 20, 30, false, false, true, 0, mod.ItemType("AkumaTrophy"), false);
-                if (Main.netMode != 1) BaseUtility.Chat("Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.", new Color(180, 41, 32));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Akuma12"), new Color(180, 41, 32));
 
             }
             if (Main.expertMode)

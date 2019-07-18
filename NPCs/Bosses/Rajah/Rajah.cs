@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 if (damage > npc.lifeMax / 8)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("JUSTICE CANNOT BE CHEATED", 107, 137, 179);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Rajah1"), 107, 137, 179);
                     damage = 0;
                     npc.damage = 9999;
                     npc.defense = 99999;
@@ -192,7 +192,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         Name = Main.player[Main.myPlayer].name;
                     }
                 }
-                if (Main.netMode != 1) BaseUtility.Chat("THIS ISN'T THE END, " + Name.ToUpper() + "! RIVALS CLASH TILL THE VERY END!", 107, 137, 179);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Rajah5") + Name.ToUpper() + Lang.BossChat("Rajah6"), 107, 137, 179);
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand");
             }
 
@@ -204,7 +204,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     if (isSupreme)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("And stay down.", 107, 137, 179);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Rajah7"), 107, 137, 179);
                         if (Main.netMode != 1)
                         {
                             Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<SupremeRajahBookIt>(), 100, 0, Main.myPlayer);
@@ -212,7 +212,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     }
                     else
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("Justice has been served...", 107, 137, 179);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Rajah2"), 107, 137, 179);
                         if (Main.netMode != 1)
                         {
                             Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
@@ -230,7 +230,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 npc.TargetClosest(true);
                 if (Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 10000)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Coward.", 107, 137, 179);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Rajah3"), 107, 137, 179);
                     if (Main.netMode != 1)
                     {
                         if (isSupreme)
@@ -898,7 +898,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     {
                         Name = Main.player[Main.myPlayer].name;
                     }
-                    if (Main.netMode != 1) BaseUtility.Chat("Well fought, " + Name + ". Take your reward.", 107, 137, 179, true);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Rajah8") + Name + Lang.BossChat("Rajah9"), 107, 137, 179, true);
                     int p = Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<SupremeRajahLeave>(), 100, 0, Main.myPlayer);
                     Main.projectile[p].Center = npc.Center;
                 }
@@ -919,7 +919,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 int bunnyKills = NPC.killCount[Item.NPCtoBanner(NPCID.Bunny)];
                 if (bunnyKills >= 100)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("You win this time, murderer...but I will avenge those you've mercilicely slain...", 107, 137, 179, true);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Rajah4"), 107, 137, 179, true);
                 }
                 Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
                 if (!Main.expertMode)

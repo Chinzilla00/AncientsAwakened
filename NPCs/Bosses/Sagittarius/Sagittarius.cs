@@ -220,7 +220,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 {
                     if (internalAI[3] != 2f || internalAI[3] != 3f)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("target(s) neutralized. returning to stealth mode.", Color.PaleVioletRed);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Sagittarius1"), Color.PaleVioletRed);
                         internalAI[3] = 1f;
                     }
                 }
@@ -232,7 +232,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 {
                     if (internalAI[3] != 1f || internalAI[3] != 3f)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("target(s) lost. returning to stealth mode.", Color.PaleVioletRed);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Sagittarius2"), Color.PaleVioletRed);
                         internalAI[3] = 2f;
                     }
                 }

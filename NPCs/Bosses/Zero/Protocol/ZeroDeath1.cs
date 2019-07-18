@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         {
             if (Main.expertMode && !AAWorld.downedZero && !linesaid && !AAWorld.downedIZ)
             {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("MISSI0N FAILED. SENDING DISTRESS SIGNAL T0 H0ME BASE.", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("ZeroDeath1"), Color.Red.R, Color.Red.G, Color.Red.B);
                 linesaid = true;
             }
             if (++projectile.frameCounter >= 7)
@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         {
             if (!AAWorld.downedZero && Main.expertMode && !AAWorld.downedIZ)
             {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("SENDING...", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("ZeroDeath3"), Color.Red.R, Color.Red.G, Color.Red.B);
             }
             Projectile.NewProjectile((new Vector2(projectile.Center.X, projectile.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath2"), 0, 0);
         }

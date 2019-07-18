@@ -309,7 +309,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (!QuoteSaid)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat((!Quote1) ? "TASTE ACID YOU UNBEARABLE MAGGOT!!!" : "STOP MOVING AND LET ME MELT YOU!!!", new Color(45, 46, 70));
+                        if (Main.netMode != 1) BaseUtility.Chat((!Quote1) ? Lang.BossChat("YamataHead1") : Lang.BossChat("YamataHead2"), new Color(45, 46, 70));
                         QuoteSaid = true;
                         Quote1 = true;
                     }
@@ -319,7 +319,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (!QuoteSaid)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat((!Quote3) ? "Down Down DOWN THE VENOM GOES!!! When it will it stop? WHO KNOWS?! NYEHEHEHEHEHEH!!!" : "DIEDIEDIEDIEDIEDIEDIEDIIIIIIIIIIIIIIIE!!!", new Color(45, 46, 70));
+                        if (Main.netMode != 1) BaseUtility.Chat((!Quote3) ? Lang.BossChat("YamataHead3") : Lang.BossChat("YamataHead4"), new Color(45, 46, 70));
                         QuoteSaid = true;
                         Quote3 = true;
                     }
@@ -329,7 +329,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (!QuoteSaid)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat((!Quote3) ? "BAM! BOOM! I'LL BLOW YOU INTO NEXT SUNDAY!!!" : "NGAAAAAAAAAAAAAAAAAH!!!", new Color(45, 46, 70));
+                        if (Main.netMode != 1) BaseUtility.Chat((!Quote3) ? Lang.BossChat("YamataHead5") : Lang.BossChat("YamataHead6"), new Color(45, 46, 70));
                         QuoteSaid = true;
                         Quote3 = true;
                     }
@@ -339,7 +339,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (!QuoteSaid)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat((!Quote4) ? ("GET THEM! EAT THEM! JUST GET " + (player.Male ? "HIM" : "HER") + " OUT OF MY FACE!!!") : "I’VE EATEN RABBITS MORE INTIMIDATING THAN YOU!", new Color(45, 46, 70));
+                        if (Main.netMode != 1) BaseUtility.Chat((!Quote4) ? (Lang.BossChat("YamataHead7") + (player.Male ? Lang.BossChat("male") : Lang.BossChat("fimale")) + Lang.BossChat("YamataHead8")) : Lang.BossChat("YamataHead9"), new Color(45, 46, 70));
                         QuoteSaid = true;
                         Quote4 = true;
                     }
@@ -352,7 +352,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (!QuoteSaid)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat((!Quote1) ? "HOPE YOU BROUGHT YOUR UMBRELLA! BECAUSE IT’S RAINING PAIN!!! NYEHEHEHEHEHEHEHEH!!!" : "DOWN COMES THE VENOM!!!NYEHEHEHEHEHEHEHEH!", new Color(146, 30, 68));
+                        if (Main.netMode != 1) BaseUtility.Chat((!Quote1) ? Lang.BossChat("YamataHead10") : Lang.BossChat("YamataHead11"), new Color(146, 30, 68));
                         QuoteSaid = true;
                         Quote1 = true;
                     }
@@ -362,7 +362,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (!QuoteSaid)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat((!Quote2) ? "EAT ECTOPLASM YOU LITTLE WRETCH" : "NYAAAAAAAAAAAH!!!", new Color(146, 30, 68));
+                        if (Main.netMode != 1) BaseUtility.Chat((!Quote2) ? Lang.BossChat("YamataHead12") : Lang.BossChat("YamataHead13"), new Color(146, 30, 68));
                         QuoteSaid = true;
                         Quote2 = true;
                     }
@@ -372,7 +372,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (!QuoteSaid)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat((!Quote3) ? "WHOOPS! DROPPED ACID! Hope you're not degradable..!" : "WHOOPS! DROPPED ACID AGAIN! NYEHEHEHEHEHEHEHEHEHEHEHEH", new Color(146, 30, 68));
+                        if (Main.netMode != 1) BaseUtility.Chat((!Quote3) ? Lang.BossChat("YamataHead14") : Lang.BossChat("YamataHead15"), new Color(146, 30, 68));
                         QuoteSaid = true;
                         Quote3 = true;
                     }
@@ -382,7 +382,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (!QuoteSaid)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat((!Quote4) ? "NYAAAAAAAH! YOU WON’T LIVE THROUGH THIS ONE!" : "COME ON!!! STAND STILL SO I CAN BLOW YOU TO MARS!", new Color(146, 30, 68));
+                        if (Main.netMode != 1) BaseUtility.Chat((!Quote4) ? Lang.BossChat("YamataHead16") : Lang.BossChat("YamataHead17"), new Color(146, 30, 68));
                         QuoteSaid = true;
                         Quote4 = true;
                     }
@@ -392,7 +392,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (!QuoteSaid)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat((!Quote5) ? "NGAAAAAAAAAAAAAH STAAAAAAAHP MOOOOOOOOVIIIIIIING!!!!!" : "HAVE A HEALTHY TASTE OF ACID!", new Color(146, 30, 68));
+                        if (Main.netMode != 1) BaseUtility.Chat((!Quote5) ? Lang.BossChat("YamataHead18") : Lang.BossChat("YamataHead19"), new Color(146, 30, 68));
                         QuoteSaid = true;
                         Quote5 = true;
                     }
@@ -402,7 +402,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     if (!QuoteSaid)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat((!Quote6) ? "I'M GONNA RIP YOU TO PIECES YOU LITTLE WRETCH!!!" : "REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!", new Color(146, 30, 68));
+                        if (Main.netMode != 1) BaseUtility.Chat((!Quote6) ? Lang.BossChat("YamataHead20") : Lang.BossChat("YamataHead21"), new Color(146, 30, 68));
                         QuoteSaid = true;
                         Quote6 = true;
                     }
