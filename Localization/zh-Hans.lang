@@ -1661,7 +1661,7 @@ ItemName.Masamune=冈崎正宗之刃
 ItemTooltip.Masamune=造成蚀月\n(译者注：正宗，镰仓末期日本著名刀匠)
 
 ItemName.MizuArashi=水岚
-ItemTooltip.MizuArashi=有1/15的几率发射渊水之魂\n魂击造成两倍伤害, 穿透砖块并且最多穿透10个敌人\n77%几率不消耗箭矢
+ItemTooltip.MizuArashi=有1/15的几率发射渊水之魂\n魂击造成两倍伤害, 穿透物块并且最多穿透10个敌人\n77%几率不消耗箭矢
 
 
 // AAMod.Items.Boss.Akuma
@@ -1702,6 +1702,7 @@ ItemName.LungStaff=古龙之杖
 ItemTooltip.LungStaff=召唤一条古龙为你而战
 
 ItemName.MorningGlory=光荣之晨
+ItemTooltip.MorningGlory=触及敌人时爆炸
 
 ItemName.RadiantDawn=曜光破晓弓
 
@@ -2092,7 +2093,7 @@ ItemName.FlamingTwilight=焰霞的黄昏
 ItemTooltip.FlamingTwilight=左键向你的敌人发射混律火球\n右键在光标位置处降下愤怒之火雨\n使用凝胶作为弹药\n33%几率不消耗凝胶
 
 ItemName.MeteorStrike=流陨神击
-ItemTooltip.MeteorStrike=向你的敌人发射一连串流星\n攻击敌人会导致更小但更具破坏性的爆炸\n击中砖块会产生一个更大但伤害更小的弹道\n造成混律业火
+ItemTooltip.MeteorStrike=向你的敌人发射一连串流星\n攻击敌人会导致更小但更具破坏性的爆炸\n击中物块会产生一个更大但伤害更小的弹道\n造成混律业火
 
 ItemName.ShenATrophy=觉醒应龙纪念章
 
@@ -2206,7 +2207,7 @@ ItemName.YamataTrophy=八歧大蛇纪念章
 
 
 ItemName.AMR=反物质来复枪
-ItemTooltip.AMR=发射无视砖块的无限穿刺激光\n激光穿刺越多越强\n无需弹药
+ItemTooltip.AMR=发射无视物块的无限穿刺激光\n激光穿刺越多越强\n无需弹药
 
 ItemName.Battery=不稳定能量胞腔
 ItemTooltip.Battery=当作弹药\n无消耗
@@ -3553,7 +3554,7 @@ ItemName.ShootingStar=射星
 ItemName.SingularityCannon=奇点加农
 
 ItemName.Skystrike=空袭者
-ItemTooltip.Skystrike=从天而降灾源之箭\n一开始的箭头无视砖块\n代达罗斯风暴弓EX
+ItemTooltip.Skystrike=从天而降灾源之箭\n一开始的箭头无视物块\n代达罗斯风暴弓EX
 
 ItemName.TechneciumRepeater=闪锝连弩
 ItemTooltip.TechneciumRepeater=33%几率不消耗箭矢
