@@ -15,8 +15,8 @@ namespace AAMod.NPCs.Bosses.Raider
 
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 26;
+            projectile.height = 26;
             projectile.friendly = false;
             projectile.tileCollide = true;
             aiType = 48;

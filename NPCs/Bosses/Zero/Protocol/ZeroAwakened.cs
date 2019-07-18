@@ -52,10 +52,15 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             if (AAWorld.downedAllAncients)
             {
-                npc.lifeMax = 1000000;
+                npc.lifeMax = 7000000;
                 npc.damage = 220;
                 npc.defense = 300;
             }
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
         }
 
         public override void NPCLoot()
@@ -160,7 +165,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             for (int k = 0; k < npc.oldPos.Length; k++)
             {
                 Texture2D ZeroTrail = mod.GetTexture("NPCs/Bosses/Zero/Protocol/ZeroTrail");
-                Vector2 drawPos = npc.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, npc.gfxOffY);
                 Color color = npc.GetAlpha(color1) * ((npc.oldPos.Length - k) / (float)npc.oldPos.Length);
                 spritebatch.Draw(ZeroTrail, npc.position, null, color, npc.rotation, drawOrigin, npc.scale, SpriteEffects.None, 0f);
             }
@@ -187,8 +191,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
             return true;
         }
-        private int Glitch = 0;
-        private bool GlitchBool = false;
 
         public float[] internalAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
