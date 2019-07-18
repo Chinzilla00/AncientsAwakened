@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         }
         public override void SetDefaults()
         {
-            npc.lifeMax = 600000;
+            npc.lifeMax = 100000;  // okay so whoever gave this dude more 6mil+ health never touch a boss's health again
             npc.damage = 67;
             npc.defense = 70;
             npc.knockBackResist = 0f;
@@ -52,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             if (AAWorld.downedAllAncients)
             {
-                npc.lifeMax = 7000000;
+                npc.lifeMax = 2000000;
                 npc.damage = 220;
                 npc.defense = 300;
             }
