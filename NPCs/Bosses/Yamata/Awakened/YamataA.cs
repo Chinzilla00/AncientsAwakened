@@ -48,17 +48,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 cheated = true;
                 if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA1"), new Color(146, 30, 68));
             }
+            npc.damage = 0;
             return false;
-        }
-
-        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
-        {
-            damage = 0;
-        }
-
-        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
-        {
-            damage = 0;
         }
 
         public override void BossLoot(ref string name, ref int potionType)

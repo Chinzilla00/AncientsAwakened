@@ -52,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Zero
             musicPriority = MusicPriority.BossHigh;
             if (AAWorld.downedAllAncients)
             {
-                npc.lifeMax = 1200000;
+                npc.lifeMax = 700000;
                 npc.damage = 150;
                 npc.defense = 320;
             }

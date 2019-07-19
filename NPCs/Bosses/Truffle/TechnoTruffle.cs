@@ -138,7 +138,7 @@ namespace AAMod.NPCs.Bosses.Truffle
             }
             if (Main.player[npc.target].dead)
             {
-                npc.TargetClosest(true);
+                npc.TargetClosest();
                 if (Main.player[npc.target].dead)
                 {
                     npc.active = false;

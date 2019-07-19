@@ -197,6 +197,27 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
 		public override void AI()
         {
+            if (internalAI[1] == AISTATE_RUNAWAY)
+            {
+                npc.noTileCollide = true;
+                npc.ai[1] = 0;
+                npc.ai[2] = 0;
+                npc.ai[3] = 0;
+                internalAI[0]++;
+
+                if (npc.timeLeft < 10)
+                    npc.timeLeft = 10;
+                npc.velocity.X *= 0.9f;
+
+                if (internalAI[0] > 300)
+                {
+                    npc.velocity.Y -= 0.1f;
+                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
+                    npc.rotation = 0f;
+                }
+                return;
+            }
+
             int Minions = NPC.CountNPCS(mod.NPCType<BroodEgg>()) + NPC.CountNPCS(mod.NPCType<Broodmini>());
 
             if (Main.netMode != 1 && internalAI[0]++ >= 120)
@@ -255,38 +276,11 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 }
             }
 
-            if (internalAI[1] == AISTATE_RUNAWAY)
-            {
-                npc.noTileCollide = true;
-                npc.ai[1] = 0;
-                npc.ai[2] = 0;
-                npc.ai[3] = 0;
-                internalAI[0]++;
-
-                if (npc.timeLeft < 10)
-                    npc.timeLeft = 10;
-                npc.velocity.X *= 0.9f;
-
-                if (internalAI[0] > 300)
-                {
-                    npc.velocity.Y -= 0.1f;
-                    if (npc.velocity.Y > 15f) npc.velocity.Y = 15f;
-                    npc.rotation = 0f;
-                }
-                return;
-            }
-            else
-            {
-                Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
-                MoveToPoint(wantedVelocity);
-            }
-
-
+            Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
+            MoveToPoint(wantedVelocity);
 
             if (internalAI[1] == AISTATE_FIREBREATH)
             {
-                Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
-                MoveToPoint(wantedVelocity);
                 npc.localAI[2] += 1f;
                 if (npc.localAI[2] > 22f)
                 {
