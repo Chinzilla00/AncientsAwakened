@@ -29,6 +29,7 @@ namespace AAMod.Projectiles.Akuma
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Rectangle SunFrame = new Rectangle(0, 0, 64, 64);
+            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Projectiles/Akuma/SunOrb1"), 0, projectile.position + new Vector2(0, projectile.gfxOffY), projectile.width, projectile.height, projectile.scale, -projectile.rotation, projectile.spriteDirection, 1, SunFrame, AAColor.COLOR_WHITEFADE1, true);
             BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Projectiles/Akuma/SunOrb"), 0, projectile.position + new Vector2(0, projectile.gfxOffY), projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 1, SunFrame, AAColor.COLOR_WHITEFADE1, true);
             return false;
         }
@@ -88,33 +89,22 @@ namespace AAMod.Projectiles.Akuma
                     projectile.ai[1] -= projectile.direction * 0.3926991f / 50f;
                 
             }
+            Vector2 vector46 = projectile.position;
             if (projectile.ai[0] == 0f)
             {
                 int num1060 = -1;
-                float num1061 = num1058;
                 NPC ownerMinionAttackTargetNPC6 = projectile.OwnerMinionAttackTargetNPC;
-                if (ownerMinionAttackTargetNPC6 != null && ownerMinionAttackTargetNPC6.CanBeChasedBy(this, false))
+                for (int num645 = 0; num645 < 200; num645++)
                 {
-                    float num1062 = projectile.Distance(ownerMinionAttackTargetNPC6.Center);
-                    if (num1062 < num1061 && Collision.CanHitLine(projectile.Center, 0, 0, ownerMinionAttackTargetNPC6.Center, 0, 0))
+                    NPC nPC2 = Main.npc[num645];
+                    if (nPC2.CanBeChasedBy(projectile, false))
                     {
-                        num1061 = num1062;
-                        num1060 = ownerMinionAttackTargetNPC6.whoAmI;
-                    }
-                }
-                if (num1060 < 0)
-                {
-                    for (int num1063 = 0; num1063 < 200; num1063++)
-                    {
-                        NPC nPC15 = Main.npc[num1063];
-                        if (nPC15.CanBeChasedBy(this, false))
+                        float num646 = Vector2.Distance(nPC2.Center, projectile.Center);
+                        if (((Vector2.Distance(projectile.Center, vector46) > num646 && num646 < num1058) || projectile.ai[0] <= 0f) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, nPC2.position, nPC2.width, nPC2.height))
                         {
-                            float num1064 = projectile.Distance(nPC15.Center);
-                            if (num1064 < num1061 && Collision.CanHitLine(projectile.Center, 0, 0, nPC15.Center, 0, 0))
-                            {
-                                num1061 = num1064;
-                                num1060 = num1063;
-                            }
+                            num1058 = num646;
+                            vector46 = nPC2.Center;
+                            num1060 = nPC2.whoAmI;
                         }
                     }
                 }
@@ -137,25 +127,28 @@ namespace AAMod.Projectiles.Akuma
                     return;
                 }
                 projectile.ai[0] += 1f;
-                float num1066 = 30f;
+                float num1066 = 60f;
                 if (projectile.ai[0] >= num1066)
                 {
-                    Vector2 vector137 = projectile.DirectionTo(Main.npc[num1065].Center);
-                    if (vector137.HasNaNs())
+                    if (projectile.ai[0] % 10 == 0)
                     {
-                        vector137 = Vector2.UnitY;
+                        float scaleFactor3 = 8f;
+                        int num658 = mod.ProjectileType<FlamingMeteor>();
+                        if (Main.myPlayer == projectile.owner && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, projectile.position, 0, 0))
+                        {
+                            Vector2 value19 = projectile.position - projectile.Center;
+                            value19.Normalize();
+                            value19 *= scaleFactor3;
+                            Vector2 perturbedSpeed = value19.RotatedByRandom(MathHelper.ToRadians(30));
+                            int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, num658, projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+                            Main.projectile[num659].timeLeft = 300;
+                            projectile.netUpdate = true;
+                        }
                     }
-                    float num1067 = vector137.ToRotation();
-                    int num1068 = (vector137.X > 0f) ? 1 : -1;
-                    projectile.direction = num1068;
-                    projectile.ai[0] = -60f;
-                    projectile.ai[1] = num1067 + num1068 * 3.14159274f / 16f;
-                    projectile.netUpdate = true;
-                    if (projectile.owner == Main.myPlayer)
-                    {
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector137.X, vector137.Y, mod.ProjectileType("Sunray"), projectile.damage, projectile.knockBack, projectile.owner, 0f, projectile.whoAmI);
-                    }
-                    
+                }
+                else if (projectile.ai[0] >= 91)
+                {
+                    projectile.ai[0] = 0;
                 }
             }
         }

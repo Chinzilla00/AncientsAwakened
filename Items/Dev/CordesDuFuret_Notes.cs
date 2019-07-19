@@ -29,6 +29,7 @@ namespace AAMod.Items.Dev
 			item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/FerretNote");
 			item.shoot = mod.ProjectileType("FerretNote");
             item.shootSpeed = 12f;
+            item.noUseGraphic = false;
 		}
 
         public override bool CanRightClick()
