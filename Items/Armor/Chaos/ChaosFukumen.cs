@@ -49,8 +49,8 @@ namespace AAMod.Items.Armor.Chaos
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("TrueAbyssalFukumen"));
 			recipe.AddIngredient(null, "ChaosCrystal", 1);
-            recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
+            recipe.AddTile(null, "TruePaladinsSmeltery");
+            recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
     }

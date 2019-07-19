@@ -2529,7 +2529,7 @@ ItemName.UmbreonSPEX=月影之刃
 ItemTooltip.UmbreonSPEX=来自幽暗生物的黑暗剑\n幽夜之刃EX
 
 ItemName.UmbralReaper=阴影收割者
-ItemTooltip.UmbralReaper=右键发射跟踪长矛\n左键发射虚空能量波\n“我没碰过Valkyrie”\n-CMD
+ItemTooltip.UmbralReaper=左键发射跟踪长矛\n右键键发射虚空能量波\n“我没碰过Valkyrie”\n-CMD
 
 ItemName.CursedSickle=咒缚之镰
 ItemTooltip.CursedSickle=在你周围旋转着一把诅咒镰刀，撕碎敌人\n左键单击可旋转镰刀
@@ -4585,7 +4585,7 @@ NPCName.ShenTransition=觉醒之混沌
 
 NPCName.ShenDefeat=混沌的战败
 
-NPCName.ShenDeath=混沌的凋亡
+NPCName.ShenDeath=混沌的陨落
 
 NPCName.Shenling=上神应龙的伴龙
 NPCName.ShenlingBody1=上神应龙的伴龙

@@ -46,7 +46,7 @@ namespace AAMod.Items.Armor.Chaos
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("TrueBlazingKabuto"));
             recipe.AddIngredient(mod.ItemType("ChaosCrystal"));
-            recipe.AddTile(TileID.DemonAltar);
+            recipe.AddTile(null, "TruePaladinsSmeltery");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }
