@@ -392,8 +392,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 internalAI[3]++;
 
-                MoveToPoint(player.Center);
-
                 if (internalAI[2] < 17)
                 {
                     internalAI[1] = 0;
@@ -444,8 +442,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     npc.netUpdate = true;
                 }
 
-                MoveToPoint(MovePoint);
-
                 if ((Vector2.Distance(npc.Center, player.Center) > 300f || internalAI[4] > 120))
                 {
                     npc.frameCounter = 0;
@@ -491,6 +487,10 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             if (internalAI[0] == AISTATE_IDLE || internalAI[0] == AISTATE_PROJ) //When charging the player
             {
                 MoveToPoint(wantedVelocity);
+            }
+            else if (internalAI[0] == AISTATE_SPIN)
+            {
+                MoveToPoint(MovePoint);
             }
             else if (internalAI[0] == AISTATE_SLASH) //When charging the player
             {
@@ -615,6 +615,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             npc.frame.Y = Frame * frameHeight;
         }
+
         public void MoveToPoint(Vector2 point)
         {
             float moveSpeed = 8f;
@@ -649,17 +650,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
-            npc.velocity *= moveSpeed;
-            npc.velocity *= velMultiplier;
-        }
-        public void SlashMovement(Vector2 point)
-        {
-            float moveSpeed = 15f;
-            if (moveSpeed == 0f || npc.Center == point) return;
-            float velMultiplier = 1f;
-            Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
             npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;

@@ -238,7 +238,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
             pos = (npc.ai[1] == 0 ? -250 : 250);
 
-            if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 4000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 4000f)
             {
                 npc.active = false;
             }

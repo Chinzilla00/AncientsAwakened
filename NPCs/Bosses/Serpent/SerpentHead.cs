@@ -311,9 +311,9 @@ namespace AAMod.NPCs.Bosses.Serpent
             Player player = Main.player[npc.target];
             if (NPC.CountNPCS(mod.NPCType<IceCrystal>()) < 3)
             {
-                NPC.NewNPC((int)player.position.X, (int)player.position.Y + 60, mod.NPCType<IceCrystal>(), 0, 0, 0, 0, 0, npc.target);
+                NPC.NewNPC((int)player.position.X + Main.rand.Next(-500, 500), (int)player.position.Y + 500, mod.NPCType<IceCrystal>(), 0, 0, 0, 0, 0, npc.target);
             }
-            internalAI[2] = 0;
+            internalAI[2] = 2;
             npc.netUpdate = true;
         }
 

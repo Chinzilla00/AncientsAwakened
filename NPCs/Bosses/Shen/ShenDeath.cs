@@ -61,8 +61,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Your choice, child.", new Color(180, 41, 32));
                     if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Your choice, child.", new Color(45, 46, 70));
-                    AAWorld.downedShen = true;
-                    npc.active = false;
+                    npc.life = 0;
                 }
                 return;
             }
@@ -93,18 +92,14 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     if (Main.netMode != 1) BaseMod.BaseUtility.Chat("There's always a next time.", new Color(180, 41, 32));
                     if (Main.netMode != 1) BaseMod.BaseUtility.Chat("There's always a next time.", new Color(45, 46, 70));
-                    npc.active = false;
+                    npc.life = 0;
                 }
             }
         }
 
-        public override bool CheckActive()
+        public override void NPCLoot()
         {
-            if (npc.ai[1] >= 900)
-            {
-                return true;
-            }
-            return false;
+            AAWorld.downedShen = true;
         }
     }
 }

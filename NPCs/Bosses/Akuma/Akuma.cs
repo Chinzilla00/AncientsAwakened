@@ -628,8 +628,6 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.dontTakeDamage = true;
-            npc.dontTakeDamage = true;
             npc.width = 60;
             npc.height = 60;
             npc.dontCountMe = true;
@@ -649,7 +647,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            damage *= .5f;
+            damage *= .05f;
             return true;
         }
 

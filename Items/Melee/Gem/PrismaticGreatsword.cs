@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -9,7 +11,7 @@ namespace AAMod.Items.Melee.Gem   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 37;            
+            item.damage = 42;            
             item.melee = true;            
             item.width = 58;              
             item.height = 60;             
@@ -30,6 +32,16 @@ namespace AAMod.Items.Melee.Gem   //where is located
         {
             DisplayName.SetDefault("Prismatic Greatsword");
             Tooltip.SetDefault("");
+        }
+
+        static int shoot = 0;
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockback)
+        {
+            shoot++;
+            if (shoot % 2 != 0) return false;
+
+            shoot = 0;
+            return true;
         }
 
         public override void AddRecipes()  //How to craft this sword
