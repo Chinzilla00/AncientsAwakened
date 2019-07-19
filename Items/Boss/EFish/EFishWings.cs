@@ -11,7 +11,6 @@ namespace AAMod.Items.Boss.EFish
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Emperor Fishron Wings");
-			Tooltip.SetDefault("Allows flight and slow fall");
 		}
 
 		public override void SetDefaults()

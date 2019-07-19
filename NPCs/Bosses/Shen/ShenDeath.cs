@@ -67,33 +67,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else
             {
-                if (npc.ai[1] == 180)
-                {
-                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("ShenDeath7"), new Color(45, 46, 70));
-                }
-
-                if (npc.ai[1] == 360)
-                {
-                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("ShenDeath8"), new Color(180, 41, 32));
-                }
-
-                if (npc.ai[1] == 540)
-                {
-                    string Name = Main.netMode != 0 ? Lang.BossChat("ShenDeath9") : player.Male ? Lang.BossChat("BOY") : Lang.BossChat("GIRL");
-                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("ShenDeath10") + Name + Lang.BossChat("ShenDeath11"), new Color(45, 46, 70));
-                }
-
-                if (npc.ai[1] == 720)
-                {
-                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("ShenDeath12"), new Color(180, 41, 32));
-                }
-
-                if (npc.ai[1] >= 900)
-                {
-                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("ShenDeath13"), new Color(180, 41, 32));
-                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("ShenDeath13"), new Color(45, 46, 70));
-                    AAWorld.downedShen = true;
-                }
+                
             }
             
         }
