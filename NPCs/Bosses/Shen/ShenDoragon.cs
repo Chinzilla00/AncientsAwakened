@@ -16,7 +16,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(customAI[0]);
                 writer.Write(customAI[1]);
@@ -458,7 +458,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Roar(roarTimerMax, false);
                     if (Main.netMode != 1)
                     {
-                        Vector2 infernoPos = new Vector2(200f, (npc.direction == 1 ? 65f : -45f));
+                        Vector2 infernoPos = new Vector2(200f, npc.direction == 1 ? 65f : -45f);
                         Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
 
                         if (player.active && !player.dead)
@@ -466,8 +466,8 @@ namespace AAMod.NPCs.Bosses.Shen
                             float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                             infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
                             vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-                            vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
-                            int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+                            vel *= MoveSpeed / _normalSpeed; //to compensate for players running away
+                            int dir = npc.Center.X < player.Center.X ? 1 : -1;
                             if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                             vel.Y += npc.velocity.Y;
                             infernoPos += npc.Center;
@@ -526,7 +526,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         for (int m = 0; m < 3; m++)
                         {
-                            Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
+                            Vector2 infernoPos = new Vector2(200f, npc.direction == -1 ? 65f : -45f);
                             Vector2 vel = new Vector2(MathHelper.Lerp(12f, 15f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
 
                             if (player.active && !player.dead)
@@ -534,8 +534,8 @@ namespace AAMod.NPCs.Bosses.Shen
                                 float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                                 infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
                                 vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-                                vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
-                                int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+                                vel *= MoveSpeed / _normalSpeed; //to compensate for players running away
+                                int dir = npc.Center.X < player.Center.X ? 1 : -1;
                                 if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                                 vel.Y += npc.velocity.Y;
                                 infernoPos += npc.Center;
@@ -595,7 +595,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         for (int m = 0; m < 3; m++)
                         {
-                            Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
+                            Vector2 infernoPos = new Vector2(200f, npc.direction == -1 ? 65f : -45f);
                             Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-5f, 5f, (float)Main.rand.NextDouble()));
 
                             if (player.active && !player.dead)
@@ -603,8 +603,8 @@ namespace AAMod.NPCs.Bosses.Shen
                                 float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                                 infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
                                 vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-                                vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
-                                int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+                                vel *= MoveSpeed / _normalSpeed; //to compensate for players running away
+                                int dir = npc.Center.X < player.Center.X ? 1 : -1;
                                 if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                                 vel.Y += npc.velocity.Y;
                                 infernoPos += npc.Center;
@@ -660,7 +660,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Roar(roarTimerMax, false);
                     if (Main.netMode != 1)
                     {
-                        Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
+                        Vector2 infernoPos = new Vector2(200f, npc.direction == -1 ? 65f : -45f);
                         Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
 
                         if (player.active && !player.dead)
@@ -668,8 +668,8 @@ namespace AAMod.NPCs.Bosses.Shen
                             float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                             infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
                             vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-                            vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
-                            int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+                            vel *= MoveSpeed / _normalSpeed; //to compensate for players running away
+                            int dir = npc.Center.X < player.Center.X ? 1 : -1;
                             if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                             vel.Y += npc.velocity.Y;
                             infernoPos += npc.Center;
@@ -709,7 +709,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Roar(roarTimerMax, false);
                     if (Main.netMode != 1)
                     {
-                        Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
+                        Vector2 infernoPos = new Vector2(200f, npc.direction == -1 ? 65f : -45f);
                         Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
 
                         if (player.active && !player.dead)
@@ -717,8 +717,8 @@ namespace AAMod.NPCs.Bosses.Shen
                             float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                             infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
                             vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-                            vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
-                            int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+                            vel *= MoveSpeed / _normalSpeed; //to compensate for players running away
+                            int dir = npc.Center.X < player.Center.X ? 1 : -1;
                             if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                             vel.Y += npc.velocity.Y;
                             infernoPos += npc.Center;
@@ -803,7 +803,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
                     if (npc.ai[2] % 20 == 0)
                     {
-                        Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
+                        Vector2 infernoPos = new Vector2(200f, npc.direction == -1 ? 65f : -45f);
                         Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
 
                         if (player.active && !player.dead)
@@ -811,8 +811,8 @@ namespace AAMod.NPCs.Bosses.Shen
                             float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                             infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
                             vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-                            vel *= (MoveSpeed / _normalSpeed); //to compensate for players running away
-                            int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+                            vel *= MoveSpeed / _normalSpeed; //to compensate for players running away
+                            int dir = npc.Center.X < player.Center.X ? 1 : -1;
                             if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                             vel.Y += npc.velocity.Y;
                             infernoPos += npc.Center;
@@ -833,7 +833,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (SnapToPlayer)
             {
-                npc.position += (player.position - player.oldPosition);
+                npc.position += player.position - player.oldPosition;
             }
             HandleFrames(player);
             HandleRotations(player);
@@ -899,7 +899,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public void HandleFrames(Player player)
         {
-            npc.frame = new Rectangle(0, (Roaring ? frameY : 0), 444, frameY);
+            npc.frame = new Rectangle(0, Roaring ? frameY : 0, 444, frameY);
             if (Charging)
             {
                 npc.frameCounter = 0;
@@ -919,7 +919,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                 }
             }
-            npc.direction = (npc.Center.X < player.Center.X ? 1 : -1);
+            npc.direction = npc.Center.X < player.Center.X ? 1 : -1;
         }
 
         public void HandleRotations(Player player)
@@ -1081,8 +1081,8 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
-            Texture2D currentTex = (npc.spriteDirection == 1 ? mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlue") : Main.npcTexture[npc.type]);
-            Texture2D currentWingTex = (npc.spriteDirection == 1 ? mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlueWings") : mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonWings"));
+            Texture2D currentTex = npc.spriteDirection == 1 ? mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlue") : Main.npcTexture[npc.type];
+            Texture2D currentWingTex = npc.spriteDirection == 1 ? mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonBlueWings") : mod.GetTexture("NPCs/Bosses/Shen/ShenDoragonWings");
 
             //offset
             npc.position.Y += 130f;

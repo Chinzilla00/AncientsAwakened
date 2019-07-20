@@ -108,6 +108,20 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void Kill(int timeleft)
         {
             Main.PlaySound(SoundID.Item14, projectile.position);
+            float spread = 12f * 0.0174f;
+            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
+            double Angle = spread / 4;
+            double offsetAngle;
+            int i;
+            if (projectile.owner == Main.myPlayer)
+            {
+                for (i = 0; i < 4; i++)
+                {
+                    offsetAngle = startAngle + Angle * (i + i * i) / 2f + 32f * i;
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("YamataVenom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("YamataVenom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                }
+            }
             for (int num468 = 0; num468 < 20; num468++)
             {
                 int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f,

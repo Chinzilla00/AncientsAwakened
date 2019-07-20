@@ -65,7 +65,7 @@ namespace AAMod.Items.Summoning.Minions
             float num637 = 0.05f;
             for (int num638 = 0; num638 < 1000; num638++)
             {
-                bool flag23 = (Main.projectile[num638].type == mod.ProjectileType("SkullMinion"));
+                bool flag23 = Main.projectile[num638].type == mod.ProjectileType("SkullMinion");
                 if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < projectile.width)
                 {
                     if (projectile.position.X < Main.projectile[num638].position.X)
@@ -191,11 +191,11 @@ namespace AAMod.Items.Summoning.Minions
             projectile.rotation = projectile.velocity.X * 0.05f;
             if (projectile.velocity.X > 0f)
             {
-                projectile.spriteDirection = (projectile.direction = -1);
+                projectile.spriteDirection = projectile.direction = -1;
             }
             else if (projectile.velocity.X < 0f)
             {
-                projectile.spriteDirection = (projectile.direction = 1);
+                projectile.spriteDirection = projectile.direction = 1;
             }
             if (projectile.ai[1] > 0f)
             {
@@ -216,11 +216,11 @@ namespace AAMod.Items.Summoning.Minions
                 {
                     if ((targetPos - projectile.Center).X > 0f)
                     {
-                        projectile.spriteDirection = (projectile.direction = -1);
+                        projectile.spriteDirection = projectile.direction = -1;
                     }
                     else if ((targetPos - projectile.Center).X < 0f)
                     {
-                        projectile.spriteDirection = (projectile.direction = 1);
+                        projectile.spriteDirection = projectile.direction = 1;
                     }
                     if (projectile.ai[1] == 0f)
                     {

@@ -54,7 +54,7 @@ namespace AAMod.NPCs.Bosses.Djinn
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -102,11 +102,11 @@ namespace AAMod.NPCs.Bosses.Djinn
             {
                 if (player.Center.X > npc.Center.X)
                 {
-                    npc.direction = 1;
+                    npc.direction = -1;
                 }
                 else
                 {
-                    npc.direction = -1;
+                    npc.direction = 1;
                 }
             }
 
@@ -213,22 +213,17 @@ namespace AAMod.NPCs.Bosses.Djinn
                 npc.ai[3]++;
 
                 npc.damage = 50;
-
-                if (Main.netMode != 1)
-                {
-                    if (selectPoint)
-                    {
-                        float point = 500 * -npc.direction;
-                        MovePoint = player.Center + new Vector2(-point, 0);
-                        selectPoint = false;
-                        npc.netUpdate = true;
-                    }
-                }
-
                 if (npc.ai[3] < 120)
                 {
                     if (Main.netMode != 1)
                     {
+                        if (selectPoint)
+                        {
+                            float point = 500 * -npc.direction;
+                            MovePoint = player.Center + new Vector2(-point, 0);
+                            selectPoint = false;
+                            npc.netUpdate = true;
+                        }
                         npc.damage = 20;
                         npc.netUpdate = true;
                     }
@@ -239,9 +234,8 @@ namespace AAMod.NPCs.Bosses.Djinn
                     {
                         if (npc.ai[3] == 120)
                         {
-                            float point = 500 * -npc.direction;
+                            float point = 500 * npc.direction;
                             MovePoint = player.Center + new Vector2(point, 0);
-                            selectPoint = false;
                             npc.netUpdate = true;
                         }
                         npc.damage = 40;
@@ -467,7 +461,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -484,7 +478,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }

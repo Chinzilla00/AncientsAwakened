@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Bosses.Hydra
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(SetLife);
             }
@@ -87,7 +87,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore4"), 1f);
         }
 
-        public Hydra Body => ((bodyNPC != null && bodyNPC.modNPC is Hydra) ? (Hydra)bodyNPC.modNPC : null);
+        public Hydra Body => (bodyNPC != null && bodyNPC.modNPC is Hydra) ? (Hydra)bodyNPC.modNPC : null;
         public NPC bodyNPC = null;	
         public bool middleHead = false;
         public bool leftHead = false;
@@ -112,6 +112,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 				return;
             if (!SetLife && Main.netMode != 1)
             {
+                npc.lifeMax = bodyNPC.life / 3;
                 npc.life = bodyNPC.life / 3;
                 SetLife = true;
                 npc.netUpdate = true;
@@ -129,6 +130,23 @@ namespace AAMod.NPCs.Bosses.Hydra
 			
             npc.timeLeft = 100;
 
+            npc.TargetClosest();
+            
+            Player targetPlayer = Main.player[npc.target];
+
+            if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
+
+
+            if (!targetPlayer.GetModPlayer<AAPlayer>(mod).ZoneMire)
+            {
+                npc.damage = 80;
+                npc.defense = 100;
+            }
+            else
+            {
+                npc.damage = 40;
+                npc.defense = 0;
+            }
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
@@ -137,17 +155,11 @@ namespace AAMod.NPCs.Bosses.Hydra
             {
                 damage = npc.damage / 2;
             }
-            npc.TargetClosest();			
-            Player targetPlayer = Main.player[npc.target];
-
-            npc.TargetClosest();
-
-            if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
 
             if (Main.netMode != 1)
             {
                 npc.ai[1]++;
-                int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100); //aiTimerFire is different per head by using whoAmI (which is usually different) 
+                int aiTimerFire = npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100; //aiTimerFire is different per head by using whoAmI (which is usually different) 
                 if (leftHead) aiTimerFire += 30;
                 if (middleHead)
                 {
@@ -213,7 +225,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
                 npc.velocity *= 5f;
             }
-            npc.position += (Body.npc.position - Body.npc.oldPosition);
+            npc.position += Body.npc.position - Body.npc.oldPosition;
             npc.position += bodyNPC.velocity;
             npc.rotation = 1.57f;
             npc.spriteDirection = -1;
@@ -225,12 +237,12 @@ namespace AAMod.NPCs.Bosses.Hydra
         {
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }
@@ -248,6 +260,14 @@ namespace AAMod.NPCs.Bosses.Hydra
         public override bool PreNPCLoot()
         {
             return false;
+        }
+
+        public override void HitEffect(int hitDir, double damage)
+        {
+            if (bodyNPC == null)
+            {
+                bodyNPC.life -= (int)damage;
+            }
         }
     }
 }

@@ -21,15 +21,15 @@ namespace AAMod
 
         public static Color Broodmother => BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, Color.Orange, Color.DarkOrange, Color.Orange);
 
-        public static Color Hydra => BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.DarkSlateBlue, Color.Indigo, Color.DarkSlateBlue);
+        public static Color Hydra => BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, Color.DarkSlateBlue, Color.Indigo, Color.DarkSlateBlue);
 
-        public static Color Glow => BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.White, Color.Transparent, Color.Transparent, Color.White);
+        public static Color Glow => BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, Color.White, Color.Transparent, Color.Transparent, Color.White);
 
-        public static Color Heartstone => BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.HotPink, Color.Transparent, Color.Transparent, Color.HotPink);
+        public static Color Heartstone => BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, Color.HotPink, Color.Transparent, Color.Transparent, Color.HotPink);
 
-        public static Color Starcrystal => BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.DeepSkyBlue, Color.Transparent, Color.Transparent, Color.DeepSkyBlue);
+        public static Color Starcrystal => BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, Color.DeepSkyBlue, Color.Transparent, Color.Transparent, Color.DeepSkyBlue);
 
-        public static Color Flash => BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Transparent, Color.White, Color.Transparent, Color.White, Color.Transparent, Color.Transparent, Color.Transparent);
+        public static Color Flash => BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, Color.Transparent, Color.White, Color.Transparent, Color.White, Color.Transparent, Color.Transparent, Color.Transparent);
 
         public static Color Akuma => new Color(146, 37, 30);
 

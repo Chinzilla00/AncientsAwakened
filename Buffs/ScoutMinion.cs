@@ -27,7 +27,7 @@ namespace AAMod.Buffs
 			}
 			else
 			{
-				player.buffTime[buffIndex] = 18000;
+				player.buffTime[buffIndex] = 2;
 			}
 		}
 	}

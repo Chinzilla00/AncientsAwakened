@@ -68,7 +68,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 for (int num698 = 0; num698 < 200; num698++)
                 {
                     Player player = Main.player[num698];
-                    if ((projectile.ai[0] == 0f || projectile.ai[0] == num698 + 1))
+                    if (projectile.ai[0] == 0f || projectile.ai[0] == num698 + 1)
                     {
                         Vector2 center4 = player.Center;
                         float num699 = Vector2.Distance(center4, vector57);
@@ -82,7 +82,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 }
                 if (num696 >= 0)
                 {
-                    projectile.ai[0] = (num696 + 1);
+                    projectile.ai[0] = num696 + 1;
                     projectile.netUpdate = true;
                 }
             }

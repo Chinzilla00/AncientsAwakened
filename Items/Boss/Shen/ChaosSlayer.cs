@@ -72,7 +72,7 @@ namespace AAMod.Items.Boss.Shen
 			Projectile.NewProjectile(shootPos.X, shootPos.Y, speedX, speedY, projType, damage, knockback, player.whoAmI);
 			for (int m = 0; m < 2; m++)
 			{
-				Projectile.NewProjectile(shootPos.X, shootPos.Y, speedX * 1f, speedY * 1f, (m == 0 ? mod.ProjectileType("ChaosSlayerSwordRed") : mod.ProjectileType("ChaosSlayerSwordBlue")), damage, knockback, player.whoAmI);
+				Projectile.NewProjectile(shootPos.X, shootPos.Y, speedX * 1f, speedY * 1f, m == 0 ? mod.ProjectileType("ChaosSlayerSwordRed") : mod.ProjectileType("ChaosSlayerSwordBlue"), damage, knockback, player.whoAmI);
 			}
 			return false;
 		}

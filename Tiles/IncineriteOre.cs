@@ -37,13 +37,13 @@ namespace AAMod.Tiles
         {
             if (!glow) return;
             Color color = BaseMod.BaseUtility.ColorMult(AAPlayer.IncineriteColor, 0.7f);
-            r = (color.R / 255f); g = (color.G / 255f); b = (color.B / 255f);
+            r = color.R / 255f; g = color.G / 255f; b = color.B / 255f;
         }
 
         public override void PostDraw(int x, int y, SpriteBatch sb)
         {
             Tile tile = Main.tile[x, y];
-            if (glow && (tile != null && tile.active() && tile.type == this.Type))
+            if (glow && tile != null && tile.active() && tile.type == this.Type)
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/IncineriteOre_glow");
                 BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetIncineriteColorDim);

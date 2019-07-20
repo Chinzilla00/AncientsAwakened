@@ -66,7 +66,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
                 int height = projectile.height;
                 int num16 = projectile.penetrate;
                 projectile.position = projectile.Center;
-                projectile.width = (projectile.height = 40 + 8 * (int)projectile.ai[0]);
+                projectile.width = projectile.height = 40 + 8 * (int)projectile.ai[0];
                 projectile.Center = projectile.position;
                 projectile.penetrate = -1;
                 projectile.Damage();
@@ -94,7 +94,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
             if (projectile.velocity.X != 0f)
             {
-                projectile.spriteDirection = (projectile.direction = -Math.Sign(projectile.velocity.X));
+                projectile.spriteDirection = projectile.direction = -Math.Sign(projectile.velocity.X);
             }
             if (projectile.velocity.Y > 16f)
             {

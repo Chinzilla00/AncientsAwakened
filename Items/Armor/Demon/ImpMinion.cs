@@ -195,11 +195,11 @@ namespace AAMod.Items.Armor.Demon
             projectile.rotation = projectile.velocity.X * 0.05f;
             if (projectile.velocity.X > 0f)
             {
-                projectile.spriteDirection = (projectile.direction = -1);
+                projectile.spriteDirection = projectile.direction = -1;
             }
             else if (projectile.velocity.X < 0f)
             {
-                projectile.spriteDirection = (projectile.direction = 1);
+                projectile.spriteDirection = projectile.direction = 1;
             }
             if (projectile.ai[1] > 0f)
             {
@@ -223,11 +223,11 @@ namespace AAMod.Items.Armor.Demon
                 {
                     if ((vector - projectile.Center).X > 0f)
                     {
-                        projectile.spriteDirection = (projectile.direction = -1);
+                        projectile.spriteDirection = projectile.direction = -1;
                     }
                     else if ((vector - projectile.Center).X < 0f)
                     {
-                        projectile.spriteDirection = (projectile.direction = 1);
+                        projectile.spriteDirection = projectile.direction = 1;
                     }
                     if (projectile.ai[1] == 0f)
                     {

@@ -191,7 +191,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -411,7 +411,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         int type = mod.ProjectileType("ZeroBeam1");
                         Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 33);
                         float rotation = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
-                        Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                        Projectile.NewProjectile(vector8.X, vector8.Y, (float)(Math.Cos(rotation) * Speed * -1), (float)(Math.Sin(rotation) * Speed * -1), type, damage, 0f, 0);
                     }
                     if (npc.ai[2] >= 141 && Main.netMode != 1)
                     {
@@ -479,18 +479,18 @@ namespace AAMod.NPCs.Bosses.Zero
                     if (npc.ai[2] == 80 || npc.ai[2] == 240) // + lasers
                     {
                         Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
-                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, -12f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 12f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(-12f, 0f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(12f, 0f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-12f, 0f), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0f), mod.ProjectileType("ZeroBlast"), 85, 3);
                     }
                     if (npc.ai[2] == 160 || npc.ai[2] == 320) // x lasers
                     {
                         Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
-                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(8f, 8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(8f, -8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(-8f, 8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
-                        Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(-8f, -8f)), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("ZeroBlast"), 85, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("ZeroBlast"), 85, 3);
                     }
                     if (Main.netMode != 1)
                     {
@@ -597,7 +597,7 @@ namespace AAMod.NPCs.Bosses.Zero
             float moveSpeed = 16f;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -614,7 +614,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }

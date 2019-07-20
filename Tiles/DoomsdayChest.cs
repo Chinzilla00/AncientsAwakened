@@ -269,12 +269,12 @@ namespace AAMod.Tiles
             Texture2D LockTex = mod.GetTexture("Tiles/DoomsdayChestLockedFrame");
             Texture2D glowTex = mod.GetTexture("Glowmasks/DoomsdayChest_Glow");
 
-            int frameX = (tile != null && tile.active() ? tile.frameX + (Main.tileFrame[Type] * 36) : 0);
-            int frameY = (tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 38) : 0);
+            int frameX = tile != null && tile.active() ? tile.frameX + (Main.tileFrame[Type] * 36) : 0;
+            int frameY = tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 38) : 0;
 
             BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, frameX, frameY, false, false, false, null, GetColor);
 
-            int LockframeY = (tile != null && tile.active() ? tile.frameY + (LockFrame * 38) : 0);
+            int LockframeY = tile != null && tile.active() ? tile.frameY + (LockFrame * 38) : 0;
 
             if (IsLockedChest(x, y))
             {

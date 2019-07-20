@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         {
             Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
 			AAAI.AIShadowflameGhost(npc, ref npc.ai, false, 660f, 0.3f, 10f, 0.2f, 6f, 5f, 10f, 0.4f, 0.4f, 0.95f, 5f);
-			npc.spriteDirection = (npc.velocity.X > 0 ? -1 : 1);
+			npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
 			BaseAI.LookAt(npc.Center + npc.velocity, npc, 0);
             npc.frameCounter++;
             if (npc.frameCounter > 3)

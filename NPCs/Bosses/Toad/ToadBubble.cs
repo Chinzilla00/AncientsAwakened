@@ -84,7 +84,7 @@ namespace AAMod.NPCs.Bosses.Toad
 	    	{
 		    	for (i = 0; i < 2; i++ )
 		    	{
-		   			offsetAngle = (startAngle + Angle * ( i + i * i ) / 2f ) + 32f * i;
+		   			offsetAngle = startAngle + Angle * ( i + i * i ) / 2f  + 32f * i;
 		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( Math.Sin(offsetAngle) * 6f ), (float)( Math.Cos(offsetAngle) * 6f ), mod.ProjectileType<FungusBubble>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
 		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( -Math.Sin(offsetAngle) * 6f ), (float)( -Math.Cos(offsetAngle) * 6f ), mod.ProjectileType<FungusBubble>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
 		    	}

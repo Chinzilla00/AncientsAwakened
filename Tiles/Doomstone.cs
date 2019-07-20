@@ -26,7 +26,7 @@ namespace AAMod.Tiles
             Tile tile = Main.tile[x, y];
             Texture2D glowTex = null;
             bool glow = !AAWorld.downedZero;
-            if (glow && (tile != null && tile.active() && tile.type == Type))
+            if (glow && tile != null && tile.active() && tile.type == Type)
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/Doomstone_Glow");
                 BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetZeroColorDim);

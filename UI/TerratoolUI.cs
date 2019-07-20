@@ -50,7 +50,7 @@ namespace AAMod.UI
                 buttonList.Add(new UIColorImageButton(ButtonOffImage, NoHoverColor));
                 buttonImageList.Add(new UIColorImage(ButtonImages, NoHoverColor, buttonFrontFrame));
 
-                double angle = (Math.PI * 2 * i) / ButtonAmount;
+                double angle = Math.PI * 2 * i / ButtonAmount;
                 double x = circleCenter.X + (CircleRadius * Math.Cos(angle));
                 double y = circleCenter.Y + (CircleRadius * Math.Sin(angle));
 
@@ -165,7 +165,7 @@ namespace AAMod.UI
 
             for (int i = 0; i < buttonList.Count; i++)
             {
-                double angle = (Math.PI * 2 * i) / ButtonAmount;
+                double angle = Math.PI * 2 * i / ButtonAmount;
 
                 double x = circleCenter.X + (CircleRadius * Math.Cos(angle));
                 double y = circleCenter.Y + (CircleRadius * Math.Sin(angle));

@@ -36,7 +36,7 @@ namespace AAMod.Tiles
         {
             Tile tile = Main.tile[x, y];
             bool glow = true;
-            if (glow && (tile != null && tile.active() && tile.type == this.Type))
+            if (glow && tile != null && tile.active() && tile.type == this.Type)
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Tiles/TerraLeaves");
                 BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetTerra2ColorDim);

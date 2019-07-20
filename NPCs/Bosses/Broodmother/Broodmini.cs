@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
 			for (int m = 0; m < (isDead ? 35 : 6); m++)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, (isDead? 2f : 1.5f));
+				Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, isDead? 2f : 1.5f);
 			}			
         }
 

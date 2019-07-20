@@ -57,7 +57,7 @@ namespace AAMod.Backgrounds
                 {
                     if (player.position.Y < Main.worldSurface * 16.0)
                     {
-                        Main.spriteBatch.Draw(fog, new Rectangle(i + (fogOffsetX), j, fog.Width, fog.Height), null, fogColor, 0f, Vector2.Zero, SpriteEffects.None, 0f);
+                        Main.spriteBatch.Draw(fog, new Rectangle(i + fogOffsetX, j, fog.Width, fog.Height), null, fogColor, 0f, Vector2.Zero, SpriteEffects.None, 0f);
                     }
                 }
             }
@@ -87,7 +87,7 @@ namespace AAMod.Backgrounds
                 fadeOpacity -= 0.05f;
                 if (fadeOpacity < 0f) fadeOpacity = 0f;
             }
-            dayTimeOpacity = (Main.dayTime ? BaseUtility.MultiLerp((float)Main.time / 52000f, 0.3f, 1f, 1f, 1f, 1f, 1f, 0.3f) : 0.3f);
+            dayTimeOpacity = Main.dayTime ? BaseUtility.MultiLerp((float)Main.time / 52000f, 0.3f, 1f, 1f, 1f, 1f, 1f, 0.3f) : 0.3f;
             dayTimeOpacity *= Main.dayTime ? 3f : 1f;
         }
 

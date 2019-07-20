@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 Main.PlaySound(SoundID.Item119, npc.position);
                 npc.localAI[3] = 1f;
             }
-            npc.dontTakeDamage = (npc.alpha > 0);
+            npc.dontTakeDamage = npc.alpha > 0;
             if (npc.dontTakeDamage)
             {
                 for (int j = 0; j < 2; j++)

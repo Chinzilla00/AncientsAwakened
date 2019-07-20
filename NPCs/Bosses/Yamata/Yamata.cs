@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -389,8 +389,8 @@ namespace AAMod.NPCs.Bosses.Yamata
 			
             prevHalfHPLeft = halfHPLeft;
             prevFourthHPLeft = fourthHPLeft;
-            halfHPLeft = (halfHPLeft || npc.life <= npc.lifeMax / 2);
-            fourthHPLeft = (fourthHPLeft || npc.life <= npc.lifeMax / 4);
+            halfHPLeft = halfHPLeft || npc.life <= npc.lifeMax / 2;
+            fourthHPLeft = fourthHPLeft || npc.life <= npc.lifeMax / 4;
 			
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
@@ -476,11 +476,11 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
-        public void AIMovementNormal(float movementScalar = 1f, float playerDistance = -1f)
+        public void AIMovementNormal(float playerDistance = -1f)
         {
             bool playerTooFar = playerDistance > playerTooFarDist;
-			YamataBody(npc, ref npc.ai, true, 0.2f, 3.5f, 6f, 0.04f, 1.5f, 3);
-            if (playerTooFar) npc.position += (playerTarget.position - playerTarget.oldPosition);
+			YamataBody(npc, ref npc.ai, true, 0.2f, 3.5f, 8f, 0.07f, 1.5f, 4);
+            if (playerTooFar) npc.position += playerTarget.position - playerTarget.oldPosition;
             npc.rotation = 0f;
         }
 
@@ -594,7 +594,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }else
             if (npc.direction == -1 && npc.velocity.X > -maxSpeedX)
             {
-                npc.velocity.X -= (moveInterval * 0.5f);
+                npc.velocity.X -= moveInterval * 0.5f;
                 if (npc.velocity.X > maxSpeedX) { npc.velocity.X -= 0.1f; }
                 else
                     if (npc.velocity.X > 0f) { npc.velocity.X += 0.05f; }
@@ -603,7 +603,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             else
             if (npc.direction == 1 && npc.velocity.X < maxSpeedX)
             {
-                npc.velocity.X += (moveInterval * 0.5f);
+                npc.velocity.X += moveInterval * 0.5f;
                 if (npc.velocity.X < -maxSpeedX) { npc.velocity.X += 0.1f; }
                 else
                     if (npc.velocity.X < 0f) { npc.velocity.X -= 0.05f; }
@@ -616,7 +616,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.velocity.Y -= hoverInterval;
                 if ((double)npc.velocity.Y > hoverMaxSpeed) { npc.velocity.Y -= 0.05f; }
                 else
-                    if (npc.velocity.Y > 0f) { npc.velocity.Y += (hoverInterval - 0.01f); }
+                    if (npc.velocity.Y > 0f) { npc.velocity.Y += hoverInterval - 0.01f; }
                 if ((double)npc.velocity.Y < -hoverMaxSpeed) { npc.velocity.Y = -hoverMaxSpeed; }
             }
             else
@@ -625,7 +625,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.velocity.Y += hoverInterval;
                 if ((double)npc.velocity.Y < -hoverMaxSpeed) { npc.velocity.Y += 0.05f; }
                 else
-                if (npc.velocity.Y < 0f) { npc.velocity.Y -= (hoverInterval - 0.01f); }
+                if (npc.velocity.Y < 0f) { npc.velocity.Y -= hoverInterval - 0.01f; }
                 if ((double)npc.velocity.Y > hoverMaxSpeed) { npc.velocity.Y = hoverMaxSpeed; }
             }
         }
@@ -692,7 +692,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             Color GlowColor = isAwakened ? AAColor.COLOR_WHITEFADE1 : Color.White;
             if (head != null && head.active && head.modNPC != null && (head.modNPC is YamataHead || head.modNPC is YamataHeadF1))
             {
-				string neckTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataANeck" : "NPCs/Bosses/Yamata/YamataNeck");
+				string neckTex = isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataANeck" : "NPCs/Bosses/Yamata/YamataNeck";
 				Texture2D neckTex2D = mod.GetTexture(neckTex);
 				Vector2 connector = head.Center;
                 Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 40);
@@ -705,9 +705,9 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void PostDraw(SpriteBatch sb, Color dColor)
         {
             Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(npc.Center));
-            string tailTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataATail" : "NPCs/Bosses/Yamata/YamataTail");
-			string headTex = (isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead");
-			string glowTex = (isAwakened ? "Glowmasks/YamataA_Glow" : "");			
+            string tailTex = isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataATail" : "NPCs/Bosses/Yamata/YamataTail";
+			string headTex = isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataAHead" : "NPCs/Bosses/Yamata/YamataHead";
+			string glowTex = isAwakened ? "Glowmasks/YamataA_Glow" : "";			
             BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset + (isAwakened ? new Vector2(0, -32) : new Vector2(0, 0)), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, lightColor, false);
 			if(legs != null && legs.Length == 4)
 			{
@@ -753,7 +753,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             if (!AAWorld.downedYamata)
             {
-                if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
+                if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
                 {
                     if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Yamata10"), new Color(45, 46, 70));
                     threeQuarterHealth = true;
@@ -771,7 +771,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             if (AAWorld.downedYamata)
             {
-                if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
+                if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
                 {
                     if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Yamata13"), new Color(45, 46, 70));
                     threeQuarterHealth = true;
@@ -845,7 +845,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public void MoveLegFlying(NPC npc, bool leftLeg)
         {
-            Vector2 movementSpot = GetBodyConnector(npc) + new Vector2((limbType == 3 ? (-35f - Hitbox.Width) : limbType == 2 ? 35f : limbType == 1 ? (-15f - Hitbox.Width) : 15f), (limbType == 1 || limbType == 0 ? 40f : 50f));
+            Vector2 movementSpot = GetBodyConnector(npc) + new Vector2(limbType == 3 ? (-35f - Hitbox.Width) : limbType == 2 ? 35f : limbType == 1 ? (-15f - Hitbox.Width) : 15f, limbType == 1 || limbType == 0 ? 40f : 50f);
             float velLength = (npc.position - npc.oldPos[1]).Length();
             if (velLength > 8f)
             {
@@ -855,7 +855,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             else
             if (Vector2.Distance(movementSpot, position) > (40 + (int)npc.velocity.Length()))
             {
-                Vector2 velAddon = (movementSpot - position); velAddon.Normalize(); velAddon *= (2f + (velLength * 0.25f));
+                Vector2 velAddon = movementSpot - position; velAddon.Normalize(); velAddon *= 2f + (velLength * 0.25f);
                 velocity += velAddon;
                 float velMax = 4f + velLength;
                 if (velocity.Length() > velMax) { velocity.Normalize(); velocity *= velMax; }
@@ -880,13 +880,13 @@ namespace AAMod.NPCs.Bosses.Yamata
             UpdateVelOffsetY();
             if (pointToStandOn != default)
             {
-                Vector2 velAddon = (pointToStandOn - position); velAddon.Normalize(); velAddon *= (1.6f + (npc.velocity.Length() * 0.5f));
+                Vector2 velAddon = pointToStandOn - position; velAddon.Normalize(); velAddon *= 1.6f + (npc.velocity.Length() * 0.5f);
                 velocity += velAddon;
                 float velMax = 4f + npc.velocity.Length();
                 if (velocity.Length() > velMax) { velocity.Normalize(); velocity *= velMax; }
                 if (Vector2.Distance(pointToStandOn, position) <= 15) { position = pointToStandOn; velocity = default; }
                 position += velocity;
-                if ((position == pointToStandOn || Vector2.Distance(standOnPoint, position + new Vector2(Hitbox.Width * 0.5f, 0f)) > distanceToMove || Math.Abs(position.X - standOnPoint.X) > distanceToMoveX))
+                if (position == pointToStandOn || Vector2.Distance(standOnPoint, position + new Vector2(Hitbox.Width * 0.5f, 0f)) > distanceToMove || Math.Abs(position.X - standOnPoint.X) > distanceToMoveX)
                 {
                     pointToStandOn = default;
                 }
@@ -942,7 +942,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (!flying)
             {
                 tileY = (int)(tileY * 16f) / 16;
-                float tilePosY = (tileY * 16f);
+                float tilePosY = tileY * 16f;
                 if (Main.tile[(int)(standOnX / 16f), tileY] == null || !Main.tile[(int)(standOnX / 16f), tileY].nactive() || !Main.tileSolid[Main.tile[(int)(standOnX / 16f), tileY].type]) tilePosY += 16f;
                 return new Vector2(standOnX - (Hitbox.Width * 0.5f), tilePosY - Hitbox.Height);
             }
@@ -951,7 +951,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public Vector2 GetBodyConnector(NPC npc)
         {
-            return npc.Center + yamata.topVisualOffset + new Vector2((limbType == 3 || limbType == 1 ? -40f : 40f), 0f);
+            return npc.Center + yamata.topVisualOffset + new Vector2(limbType == 3 || limbType == 1 ? -40f : 40f, 0f);
         }
 
         public void DrawLeg(SpriteBatch sb, NPC npc, Color dColor)

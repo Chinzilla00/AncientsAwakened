@@ -37,14 +37,14 @@ namespace AAMod.NPCs.Bosses.Retriever
             BaseAI.AISkull(npc, ref npc.ai, true, 6f, 350f, 0.1f, 0.15f);
             Player player = Main.player[npc.target];
             bool playerActive = player != null && player.active && !player.dead;
-            BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 0);
+            BaseAI.LookAt(playerActive ? player.Center : (npc.Center + npc.velocity), npc, 0);
             if (Main.netMode != 1 && playerActive)
             {
                 shootAI++;
                 if (shootAI >= 130)
                 {
                     shootAI = 0;
-                    int projType = (!Main.dayTime ? mod.ProjType("RetrieverShot") : mod.ProjType("RetrieverShot"));
+                    int projType = !Main.dayTime ? mod.ProjType("RetrieverShot") : mod.ProjType("RetrieverShot");
                     if (Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
                         BaseAI.FireProjectile(player.Center, npc, projType, (int)(npc.damage * 0.25f), 0f, 2f);
                 }

@@ -66,9 +66,9 @@ namespace AAMod.Items.Summoning.Minions.Terra
             if (Main.netMode == 1 && Main.myPlayer == projectile.owner && !syncSpawn) { syncSpawn = projectile.netUpdate2 = true; }
             if (!player.active || player.dead) { projectile.Kill(); return; }
             Target();
-            bool playerTarget = (target != null && target.Equals(player));
+            bool playerTarget = target != null && target.Equals(player);
             int maxDistBeforeReturn = playerTarget ? 950 : 1100;
-            BaseAI.AIMinionFighter(projectile, ref projectile.ai, Main.player[projectile.owner], false, 14, 20, 20, 900, maxDistBeforeReturn, target == player ? -1f : .2f, target == player ? -1f : 12, 10, (proj, owner) => { return (target == player ? null : target); });
+            BaseAI.AIMinionFighter(projectile, ref projectile.ai, Main.player[projectile.owner], false, 14, 20, 20, 900, maxDistBeforeReturn, target == player ? -1f : .2f, target == player ? -1f : 12, 10, (proj, owner) => { return target == player ? null : target; });
         }
 
         public override bool OnTileCollide(Vector2 value2)

@@ -53,7 +53,7 @@ namespace AAMod.Projectiles
 
 			NPC best = null;
 			Vector2 maxDeviation = velocity.RotatedBy(maxAngle);
-			maxDeviation *= (((velocity.X*maxDeviation.X) + (velocity.Y*maxDeviation.Y)) * invVel);
+			maxDeviation *= ((velocity.X*maxDeviation.X) + (velocity.Y*maxDeviation.Y)) * invVel;
 			if (maxAngle > Math.PI/2)
 				maxDeviation = -maxDeviation;
 
@@ -65,12 +65,12 @@ namespace AAMod.Projectiles
 					&& (ignoreDontTakeDamage || !npc.dontTakeDamage) && (!ignoreFriendlies || !npc.friendly) && !npc.immortal)
 				{
 					Vector2 target = npc.Center;
-					Vector2 aim = (target - position);
+					Vector2 aim = target - position;
 					float lenAim = aim.LengthSquared();
 					if (lenAim > maxDist)
 						continue;
 
-					float scalar = ((velocity.X*aim.X) + (velocity.Y*aim.Y));
+					float scalar = (velocity.X*aim.X) + (velocity.Y*aim.Y);
 					Vector2 projVel = aim * (scalar / lenAim);
 					if (scalar < 0)
 						projVel = -projVel;
@@ -687,20 +687,20 @@ namespace AAMod.Projectiles
 
 			projectile.tileCollide = false;
 			projectile.alpha = 255;
-			projectile.position.X += (projectile.width / 2);
-			projectile.position.Y += (projectile.height / 2);
+			projectile.position.X += projectile.width / 2;
+			projectile.position.Y += projectile.height / 2;
 			projectile.width = sizeX;
 			projectile.height = sizeY;
-			projectile.position.X -= (projectile.width / 2);
-			projectile.position.Y -= (projectile.height / 2);
+			projectile.position.X -= projectile.width / 2;
+			projectile.position.Y -= projectile.height / 2;
 			projectile.Damage();
 			Main.projectileIdentity[projectile.owner, projectile.identity] = -1;
-			projectile.position.X += (projectile.width / 2);
-			projectile.position.Y += (projectile.height / 2);
+			projectile.position.X += projectile.width / 2;
+			projectile.position.Y += projectile.height / 2;
 			projectile.width = (int)(sizeX / 5.8f);
 			projectile.height = (int)(sizeY / 5.8f);
-			projectile.position.X -= (projectile.width / 2);
-			projectile.position.Y -= (projectile.height / 2);
+			projectile.position.X -= projectile.width / 2;
+			projectile.position.Y -= projectile.height / 2;
 			if (visualAction == null)
 			{
 				for (int i = 0; i < 30; i++)

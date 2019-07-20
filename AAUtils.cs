@@ -17,12 +17,12 @@ namespace AAMod
         {
             float velMultiplier = 1f;
             Vector2 dist = point - entity.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
             }
-            entity.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            entity.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             entity.velocity *= moveSpeed;
             entity.velocity *= velMultiplier;
         }

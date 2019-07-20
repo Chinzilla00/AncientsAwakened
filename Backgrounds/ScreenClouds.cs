@@ -39,11 +39,11 @@ namespace AAMod.Backgrounds
 			}
 			if(backgroundClouds)
 			{
-				dayTimeOpacity = (BaseUtility.MultiLerp((float)Main.time / 52000f, 0.5f, 1f, 1f, 1f, 1f, 1f, 0.5f));		
+				dayTimeOpacity = BaseUtility.MultiLerp((float)Main.time / 52000f, 0.5f, 1f, 1f, 1f, 1f, 1f, 0.5f);		
 				dayTimeOpacity *= 0.7f; //make it fadier as it's in the background
 			}else
 			{
-				dayTimeOpacity = (BaseUtility.MultiLerp((float)Main.time / 52000f, 0.3f, 1f, 1f, 1f, 1f, 1f, 0.3f));
+				dayTimeOpacity = BaseUtility.MultiLerp((float)Main.time / 52000f, 0.3f, 1f, 1f, 1f, 1f, 1f, 0.3f);
                 dayTimeOpacity *= Main.dayTime ? 2f : 1f;
             }
         }

@@ -147,7 +147,7 @@ namespace AAMod
 			}
 			else
 			{
-				result = (G_CanSpawn(spawnInfo.spawnTileX, spawnInfo.spawnTileY, npc.type, spawnInfo.player, spawnInfo) ? 1f : 0f);
+				result = G_CanSpawn(spawnInfo.spawnTileX, spawnInfo.spawnTileY, npc.type, spawnInfo.player, spawnInfo) ? 1f : 0f;
 			}
 			return result;
 		}
@@ -174,7 +174,7 @@ namespace AAMod
 				if (drawCenteredX)
 				{
 					NPC expr_48_cp_0 = npc;
-					expr_48_cp_0.position.X += (npc.Center.X - npc.position.X);
+					expr_48_cp_0.position.X += npc.Center.X - npc.position.X;
 				}
 				else
 				{

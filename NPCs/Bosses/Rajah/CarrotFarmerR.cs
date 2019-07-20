@@ -122,7 +122,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     for (i = 0; i < 30; i++)
                     {
-                        offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                        offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
                         int carrotType = rajah.isSupreme ? mod.ProjectileType("CarrotEXR") : mod.ProjectileType("CarrotHostile");
                         if (Main.rand.Next(rajah.isSupreme ? 10 : 15) == 0)
                         {

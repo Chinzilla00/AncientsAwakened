@@ -80,7 +80,7 @@ namespace AAMod.Projectiles
 					Vector2 value2 = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY) - vector3;
 					if (player.gravDir == -1f)
 					{
-						value2.Y = (Main.screenHeight - Main.mouseY) + Main.screenPosition.Y - vector3.Y;
+						value2.Y = Main.screenHeight - Main.mouseY + Main.screenPosition.Y - vector3.Y;
 					}
 					Vector2 vector4 = Vector2.Normalize(value2);
 					if (float.IsNaN(vector4.X) || float.IsNaN(vector4.Y))
@@ -103,7 +103,7 @@ namespace AAMod.Projectiles
 			player.heldProj = projectile.whoAmI;
 			player.itemTime = 2;
 			player.itemAnimation = 2;
-			player.itemRotation = (float)Math.Atan2((projectile.velocity.Y * projectile.direction), (projectile.velocity.X * projectile.direction));
+			player.itemRotation = (float)Math.Atan2(projectile.velocity.Y * projectile.direction, projectile.velocity.X * projectile.direction);
 
 			counter++;
 

@@ -110,7 +110,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             if (Main.netMode != 1 && !initCustom)
 			{
 				initCustom = true;
-				customAI[0] += (npc.whoAmI % 7) * 12; //so it doesn't pew all at once
+				customAI[0] += npc.whoAmI % 7 * 12; //so it doesn't pew all at once
 				npc.velocity.X += 0.1f;
 				npc.velocity.Y -= 4f;
 			}
@@ -123,7 +123,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 			bool wormStronger = (nightcrawler && !isDay) ||  (!nightcrawler && isDay);
 			if(wormStronger != prevWormStronger)
 			{
-				int dustType = (nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>());
+				int dustType = nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>();
 				for (int k = 0; k < 10; k++)
 				{
 					int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, (int)(npc.velocity.X * 0.2f), (int)(npc.velocity.Y * 0.2f), 0, default, 1.5f);
@@ -160,15 +160,15 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
             if (wormStronger)
 			{
-				aiCount = (!nightcrawler ? 6 : 4); 
-				moveSpeedMax = (!nightcrawler ? 20f : 16f);
+				aiCount = !nightcrawler ? 6 : 4; 
+				moveSpeedMax = !nightcrawler ? 20f : 16f;
 				npc.damage = 300;		
-				npc.defense = (!nightcrawler ? 120 : 150);
+				npc.defense = !nightcrawler ? 120 : 150;
                 if (AAWorld.downedAllAncients)
                 {
-                    moveSpeedMax = (!nightcrawler ? 25f : 16f);
+                    moveSpeedMax = !nightcrawler ? 25f : 16f;
                     npc.damage = 300;
-                    npc.defense = (!nightcrawler ? 120 : 200);
+                    npc.defense = !nightcrawler ? 120 : 200;
                 }
             }	
             if (!isHead && NPC.CountNPCS(mod.NPCType<Equiprobe>()) < 15)
@@ -178,7 +178,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 			for(int m = 0; m < aiCount; m++)
 			{
                 int Length = nightcrawler ? 24 : 30;
-				int[] wormTypes = (nightcrawler ? new int[]{ mod.NPCType("NightcrawlerHead"), mod.NPCType("NightcrawlerBody"), mod.NPCType("NightcrawlerTail") } : new int[]{ mod.NPCType("DaybringerHead"), mod.NPCType("DaybringerBody"), mod.NPCType("DaybringerTail") });
+				int[] wormTypes = nightcrawler ? new int[]{ mod.NPCType("NightcrawlerHead"), mod.NPCType("NightcrawlerBody"), mod.NPCType("NightcrawlerTail") } : new int[]{ mod.NPCType("DaybringerHead"), mod.NPCType("DaybringerBody"), mod.NPCType("DaybringerTail") };
 				BaseAI.AIWorm(npc, wormTypes, Length, wormDistance, moveSpeedMax, 0.07f, true, false, false, false, false, false);	
 			}			
 			npc.spriteDirection = 1;
@@ -241,7 +241,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 		bool spawnedGore = false;
         public override void HitEffect(int hitDirection, double damage)
         {
-			int dustType = (nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>());
+			int dustType = nightcrawler ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>();
             for (int k = 0; k < 5; k++)
             {
                 int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default, 1.2f);
@@ -294,7 +294,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
         public override void NPCLoot()
         {
-            int otherWormAlive = (nightcrawler ? mod.NPCType("DaybringerHead") : mod.NPCType("NightcrawlerHead"));
+            int otherWormAlive = nightcrawler ? mod.NPCType("DaybringerHead") : mod.NPCType("NightcrawlerHead");
             if (!nightcrawler)
             {
                 AAWorld.downedDB = true;
@@ -317,7 +317,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 AAWorld.downedEquinox = true;
             }
-			string wormType = (nightcrawler ? "Nightcrawler" : "Daybringer");
+			string wormType = nightcrawler ? "Nightcrawler" : "Daybringer";
 			if (Main.rand.Next(10) == 0)
 			{
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType(wormType + "Trophy"));
@@ -345,7 +345,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
 		public Color GetAuraAlpha()
 		{
-			Color c = (Color.White * (Main.mouseTextColor / 255f));
+			Color c = Color.White * (Main.mouseTextColor / 255f);
 			//c.A = 255;
 			return c;
 		}
@@ -427,7 +427,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 			Texture2D tex = Main.npcTexture[npc.type];
 			if(wormStronger)
 			{
-				string texName = ("NPCs/Bosses/Equinox/");
+				string texName = "NPCs/Bosses/Equinox/";
 				if(npc.type == mod.NPCType("DaybringerHead")){ texName += "DaybringerHeadBig"; }else
 				if(npc.type == mod.NPCType("DaybringerBody")){ texName += "DaybringerBodyBig"; }else				
 				if(npc.type == mod.NPCType("DaybringerTail")){ texName += "DaybringerTailBig"; }else				
@@ -436,7 +436,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 				if(npc.type == mod.NPCType("NightcrawlerTail")){ texName += "NightcrawlerTailBig"; }
 				tex = mod.GetTexture(texName);
 				
-				int diff = (Main.player[Main.myPlayer].miscCounter % 50);
+				int diff = Main.player[Main.myPlayer].miscCounter % 50;
 				float diffFloat = diff / 50f;
 				float auraPercent = BaseUtility.MultiLerp(diffFloat, 0f, 1f, 0f); //did it this way so it's syncronized between all the segments
                 BaseDrawing.DrawAura(spritebatch, tex, 0, npc, auraPercent, 2f, 0f, 0f, GetAuraAlpha());				

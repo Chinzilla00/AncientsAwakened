@@ -8,62 +8,58 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
     public class SoulRain : ModProjectile
     {
-        public override void SetStaticDefaults()
-        {      
-        }
-
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.LaserMachinegunLaser);
-            projectile.width = 5;
-            projectile.height = 5;
-            projectile.aiStyle = 1;
+            projectile.width = 10;
+            projectile.height = 10;
             projectile.friendly = false;
             projectile.hostile = true;
-            projectile.alpha = 255;
-            projectile.scale = 1f;
-            projectile.timeLeft = 100;
             projectile.ignoreWater = true;
-            projectile.extraUpdates = 0;
+            projectile.penetrate = 6;
+            projectile.extraUpdates = 2;
         }
 
         public override void AI()
         {
-            projectile.frameCounter++;
-            if (projectile.frameCounter > 4)
+            projectile.scale -= 0.002f;
+            if (projectile.scale <= 0f)
             {
-                projectile.frame++;
-                projectile.frameCounter = 0;
-                if (projectile.frame > 2)
-                {
-                    projectile.frame = 0;
-                }
+                projectile.Kill();
             }
-            if (projectile.velocity.X < 0f)
+            if (projectile.ai[0] <= 3f)
             {
-                projectile.spriteDirection = -1;
-                projectile.rotation = (float)Math.Atan2(-projectile.velocity.Y, -projectile.velocity.X);
+                projectile.ai[0] += 1f;
+                return;
             }
-            else
+            projectile.velocity.Y = projectile.velocity.Y + 0.075f;
+            for (int num151 = 0; num151 < 3; num151++)
             {
-                projectile.spriteDirection = 1;
-                projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X);
+                float num152 = projectile.velocity.X / 3f * num151;
+                float num153 = projectile.velocity.Y / 3f * num151;
+                int num154 = 14;
+                int num155 = Dust.NewDust(new Vector2(projectile.position.X + num154, projectile.position.Y + num154), projectile.width - num154 * 2, projectile.height - num154 * 2, mod.DustType<Dusts.YamataADust>(), 0f, 0f, 0);
+                Main.dust[num155].noGravity = true;
+                Main.dust[num155].velocity *= 0.1f;
+                Main.dust[num155].velocity += projectile.velocity * 0.5f;
+                Dust expr_6A04_cp_0 = Main.dust[num155];
+                expr_6A04_cp_0.position.X -= num152;
+                Dust expr_6A1F_cp_0 = Main.dust[num155];
+                expr_6A1F_cp_0.position.Y -= num153;
             }
-
-            int dustId = Dust.NewDust(projectile.Center, projectile.width, projectile.height + 5, mod.DustType<Dusts.YamataAuraDust>(), projectile.velocity.X * 0.2f,
-                projectile.velocity.Y * 0.2f, 100, default, 2f);
-            Main.dust[dustId].noGravity = true;
+            if (Main.rand.Next(8) == 0)
+            {
+                int num156 = 16;
+                int num157 = Dust.NewDust(new Vector2(projectile.position.X + num156, projectile.position.Y + num156), projectile.width - num156 * 2, projectile.height - num156 * 2, mod.DustType<Dusts.YamataADust>(), 0f, 0f, 0, default, 0.5f);
+                Main.dust[num157].velocity *= 0.25f;
+                Main.dust[num157].velocity += projectile.velocity * 0.5f;
+                return;
+            }
         }
 
-        public override void Kill(int timeleft)
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            for (int num468 = 0; num468 < 20; num468++)
-            {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100);
-                Main.dust[num469].noGravity = true;
-                Main.dust[num469].velocity *= 2f;
-            }
+            target.immune[projectile.owner] = 8;
+            target.AddBuff(mod.BuffType<Buffs.HydraToxin>(), 400);
         }
     }
 }

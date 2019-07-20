@@ -165,7 +165,7 @@ namespace AAMod.Backgrounds
                 {
                     spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
                     spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
-                    float lightningIntensity = BaseUtility.MultiLerp((Main.player[Main.myPlayer].miscCounter % 100f) / 100f, 0.2f, 0.8f, 0.2f);
+                    float lightningIntensity = BaseUtility.MultiLerp(Main.player[Main.myPlayer].miscCounter % 100f / 100f, 0.2f, 0.8f, 0.2f);
                     spriteBatch.Draw(LB, planetPos, null, Color.White * 0.9f * Intensity * lightningIntensity, LBRotation, new Vector2(LB.Width >> 1, LB.Height >> 1), 1f, SpriteEffects.None, 1f);
                     if (AAWorld.downedZero)
                     {
@@ -207,7 +207,7 @@ namespace AAMod.Backgrounds
 
         public override float GetCloudAlpha()
         {
-            return (1f - Intensity);
+            return 1f - Intensity;
         }
 
         public override void Activate(Vector2 position, params object[] args)

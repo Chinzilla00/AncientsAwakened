@@ -17,7 +17,7 @@ namespace AAMod.NPCs.Bosses.Toad
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -145,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Toad
                         if (npc2 != null && npc2.active)
                         {
                             int dustID = Dust.NewDust(npc2.position, npc2.width, npc2.height, mod.DustType<Dusts.ShroomDust>());
-                            Main.dust[dustID].position += (npc.position - npc.oldPosition);
+                            Main.dust[dustID].position += npc.position - npc.oldPosition;
                             Main.dust[dustID].velocity = (npc.Center - npc2.Center) * 0.10f;
                             Main.dust[dustID].noGravity = true;
                         }

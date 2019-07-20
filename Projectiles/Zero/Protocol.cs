@@ -73,7 +73,7 @@ namespace AAMod.Projectiles.Zero
             float num637 = 0.05f;
             for (int num638 = 0; num638 < 1000; num638++)
             {
-                bool flag23 = (Main.projectile[num638].type == mod.ProjectileType("Protocol"));
+                bool flag23 = Main.projectile[num638].type == mod.ProjectileType("Protocol");
                 if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < projectile.width)
                 {
                     if (projectile.position.X < Main.projectile[num638].position.X)
@@ -185,7 +185,7 @@ namespace AAMod.Projectiles.Zero
                 bool flag26 = false;
                 if (!flag26)
                 {
-                    flag26 = (projectile.ai[0] == 1f);
+                    flag26 = projectile.ai[0] == 1f;
                 }
                 float num650 = 6f;
                 if (flag26)
@@ -224,7 +224,7 @@ namespace AAMod.Projectiles.Zero
             }
             projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
             projectile.frameCounter++;
-            if (projectile.frameCounter > 3)
+            if (projectile.frameCounter > 6)
             {
                 projectile.frame++;
                 projectile.frameCounter = 0;

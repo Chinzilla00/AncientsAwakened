@@ -69,7 +69,7 @@ namespace AAMod.Projectiles.Tools
                     Vector2 vector5 = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY) - value7;
                     if (player.gravDir == -1f)
                     {
-                        vector5.Y = (Main.screenHeight - Main.mouseY) + Main.screenPosition.Y - value7.Y;
+                        vector5.Y = Main.screenHeight - Main.mouseY + Main.screenPosition.Y - value7.Y;
                     }
                     Tile tile = Main.tile[Player.tileTargetX, Player.tileTargetY];
                     if (tile.active())
@@ -147,7 +147,7 @@ namespace AAMod.Projectiles.Tools
             player.heldProj = projectile.whoAmI;
             player.itemTime = 2;
             player.itemAnimation = 2;
-            player.itemRotation = (float)Math.Atan2((projectile.velocity.Y * projectile.direction), (projectile.velocity.X * projectile.direction));
+            player.itemRotation = (float)Math.Atan2(projectile.velocity.Y * projectile.direction, projectile.velocity.X * projectile.direction);
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
@@ -167,7 +167,7 @@ namespace AAMod.Projectiles.Tools
             float num299 = num298 + 30f;
             new Vector2(2f, num296 - num299);
             Vector2 value51 = Vector2.Lerp(vector45 + Main.screenPosition, vector46 + value50 * num299, 0.5f);
-            Vector2 vector48 = -Vector2.UnitY.RotatedBy((projectile.localAI[0] / 60f * 3.14159274f), default);
+            Vector2 vector48 = -Vector2.UnitY.RotatedBy(projectile.localAI[0] / 60f * 3.14159274f, default);
             Vector2[] array7 = new Vector2[]
             {
                         vector48,
@@ -198,8 +198,8 @@ namespace AAMod.Projectiles.Tools
             }
             Texture2D texture2D37 = Main.itemTexture[Main.player[projectile.owner].inventory[Main.player[projectile.owner].selectedItem].type];
             Color color66 = Lighting.GetColor((int)vector46.X / 16, (int)vector46.Y / 16);
-            Main.spriteBatch.Draw(texture2D37, vector46 - Main.screenPosition + value50 * num298, null, color66, projectile.rotation + 1.57079637f + ((spriteEffects == SpriteEffects.None) ? 3.14159274f : 0f), new Vector2(((spriteEffects == SpriteEffects.None) ? 0 : texture2D37.Width), texture2D37.Height / 2f) + Vector2.UnitY * 1f, Main.player[projectile.owner].inventory[Main.player[projectile.owner].selectedItem].scale, spriteEffects, 0f);
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/DoomiteMiningLaser_Glow"), vector46 - Main.screenPosition + value50 * num298, null, new Color(255, 255, 255, 0), projectile.rotation + 1.57079637f + ((spriteEffects == SpriteEffects.None) ? 3.14159274f : 0f), new Vector2(((spriteEffects == SpriteEffects.None) ? 0 : texture2D37.Width), texture2D37.Height / 2f) + Vector2.UnitY * 1f, Main.player[projectile.owner].inventory[Main.player[projectile.owner].selectedItem].scale, spriteEffects, 0f);
+            Main.spriteBatch.Draw(texture2D37, vector46 - Main.screenPosition + value50 * num298, null, color66, projectile.rotation + 1.57079637f + ((spriteEffects == SpriteEffects.None) ? 3.14159274f : 0f), new Vector2((spriteEffects == SpriteEffects.None) ? 0 : texture2D37.Width, texture2D37.Height / 2f) + Vector2.UnitY * 1f, Main.player[projectile.owner].inventory[Main.player[projectile.owner].selectedItem].scale, spriteEffects, 0f);
+            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/DoomiteMiningLaser_Glow"), vector46 - Main.screenPosition + value50 * num298, null, new Color(255, 255, 255, 0), projectile.rotation + 1.57079637f + ((spriteEffects == SpriteEffects.None) ? 3.14159274f : 0f), new Vector2((spriteEffects == SpriteEffects.None) ? 0 : texture2D37.Width, texture2D37.Height / 2f) + Vector2.UnitY * 1f, Main.player[projectile.owner].inventory[Main.player[projectile.owner].selectedItem].scale, spriteEffects, 0f);
             if (num296 > num299)
             {
                 for (int num301 = 2; num301 < 4; num301++)

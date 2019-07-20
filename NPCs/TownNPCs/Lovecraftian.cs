@@ -90,8 +90,8 @@ namespace AAMod.NPCs.TownNPCs
 
 
             int Pirate = NPC.FindFirstNPC(NPCID.Pirate);
-            int Mutant = (Fargos == null ? -1 : NPC.FindFirstNPC(Fargos.NPCType("Mutant")));
-            int HordeZombie = (GRealm == null ? -1 : NPC.FindFirstNPC(GRealm.NPCType("HordeZombie")));
+            int Mutant = Fargos == null ? -1 : NPC.FindFirstNPC(Fargos.NPCType("Mutant"));
+            int HordeZombie = GRealm == null ? -1 : NPC.FindFirstNPC(GRealm.NPCType("HordeZombie"));
 
             chat.Add(Lang.TownNPCLovecraftian("LovecraftianChat1"));
 
