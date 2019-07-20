@@ -45,8 +45,8 @@ namespace AAMod.Projectiles
                     float Angle = (float)Math.Atan(Xdis / Ydis);
                     float DistXT = (float)(Math.Sin(Angle) * 29);
                     float DistYT = (float)(Math.Cos(Angle) * 29);
-                    projectile.position.X = (Main.player[projectile.owner].Center.X + DistXT) - 30;
-                    projectile.position.Y = (Main.player[projectile.owner].Center.Y + DistYT) - 30;
+                    projectile.position.X = Main.player[projectile.owner].Center.X + DistXT - 30;
+                    projectile.position.Y = Main.player[projectile.owner].Center.Y + DistYT - 30;
                 }
                 if (Main.player[projectile.owner].Center.Y >= mouse.Y)
                 {
@@ -55,8 +55,8 @@ namespace AAMod.Projectiles
                     float Angle = (float)Math.Atan(Xdis / Ydis);
                     float DistXT = (float)(Math.Sin(Angle) * 29);
                     float DistYT = (float)(Math.Cos(Angle) * 29);
-                    projectile.position.X = (Main.player[projectile.owner].Center.X + (0 - DistXT)) - 30;
-                    projectile.position.Y = (Main.player[projectile.owner].Center.Y + (0 - DistYT)) - 30;
+                    projectile.position.X = Main.player[projectile.owner].Center.X + (0 - DistXT) - 30;
+                    projectile.position.Y = Main.player[projectile.owner].Center.Y + (0 - DistYT) - 30;
                 }
             }
 			

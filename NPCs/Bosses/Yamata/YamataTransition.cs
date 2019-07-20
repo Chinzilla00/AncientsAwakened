@@ -62,7 +62,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 					npc.frame.Y += Main.npcTexture[npc.type].Height / 4 ;
 				}
 
-				if (npc.frame.Y > (Main.npcTexture[npc.type].Height / 4) * 3)
+				if (npc.frame.Y > Main.npcTexture[npc.type].Height / 4 * 3)
 				{
 					npc.frame.Y = 0 ;
 				}
@@ -132,7 +132,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -149,7 +149,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }

@@ -32,7 +32,6 @@ namespace AAMod.Items.Armor.DoomiteU
 		{
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DoomiteScrap", 10);
-            recipe.AddIngredient(null, "Doomite", 2);
             recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

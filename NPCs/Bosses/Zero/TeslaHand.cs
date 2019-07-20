@@ -99,7 +99,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
 
             int probeNumber = ((Zero)zero.modNPC).WeaponCount;
-            if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
+            if (rotValue == -1f) rotValue = npc.ai[0] % probeNumber * ((float)Math.PI * 2f / probeNumber);
             rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
             npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(((Zero)zero.modNPC).Distance, 0f), rotValue);

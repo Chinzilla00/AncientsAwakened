@@ -759,7 +759,7 @@ namespace AAMod
 
             if (Moonraze)
             {
-                int dustCount = Math.Max(1, Math.Min(5, (Math.Max(npc.width, npc.height) / 10)));
+                int dustCount = Math.Max(1, Math.Min(5, Math.Max(npc.width, npc.height) / 10));
                 for (int i = 0; i < dustCount; i++)
                 {
                     int num4 = Dust.NewDust(hitbox.TopLeft(), npc.width, npc.height, mod.DustType<Dusts.Moonraze>(), 0f, 1f, 0);
@@ -1126,7 +1126,7 @@ namespace AAMod
         public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
         {
             if (overrideDirection == 0)
-                overrideDirection = (Main.rand.Next(2) == 0 ? -1 : 1);
+                overrideDirection = Main.rand.Next(2) == 0 ? -1 : 1;
             if (overrideDirectionY == 0)
                 overrideDirectionY = -1;
             Vector2 npcCenter = player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, 800f * overrideDirectionY);
@@ -1153,7 +1153,7 @@ namespace AAMod
                 Main.npc[npcID].netUpdate2 = true;
                 if (spawnMessage)
                 {
-                    string npcName = (!String.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);
+                    string npcName = !String.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName;
                     if ((npcName == null || npcName.Equals("")) && Main.npc[npcID].modNPC != null)
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)

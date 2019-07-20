@@ -227,11 +227,11 @@ namespace AAMod.Items.Armor.Witch
             projectile.frameCounter++;
             if (projectile.velocity.X > 0f)
             {
-                projectile.spriteDirection = (projectile.direction = -1);
+                projectile.spriteDirection = projectile.direction = -1;
             }
             else if (projectile.velocity.X < 0f)
             {
-                projectile.spriteDirection = (projectile.direction = 1);
+                projectile.spriteDirection = projectile.direction = 1;
             }
             if (projectile.ai[1] > 0f)
             {

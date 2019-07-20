@@ -68,7 +68,7 @@ Can only be used at night");
                 int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
                 Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-2000, 2000, (float)Main.rand.NextDouble()), 1200f);
                 Main.npc[npcID].netUpdate2 = true;
-                string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName);
+                string npcName = !string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : displayName;
                 if (Main.netMode == 0) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
                 else
                 if (Main.netMode == 2)

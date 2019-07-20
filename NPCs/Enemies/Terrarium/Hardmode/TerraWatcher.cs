@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
             bool isDead = npc.life <= 0;
             for (int m = 0; m < (isDead ? 25 : 5); m++)
             {
-                Dust.NewDust(npc.position, npc.width, npc.height, 107, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, (isDead ? 2f : 1.1f));
+                Dust.NewDust(npc.position, npc.width, npc.height, 107, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, isDead ? 2f : 1.1f);
             }
         }
 
@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
             BaseAI.AISkull(npc, ref npc.ai, false, 6f, 350f, 0.1f, 0.15f);
             Player player = Main.player[npc.target];
             bool playerActive = player != null && player.active && !player.dead;
-            BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 0);
+            BaseAI.LookAt(playerActive ? player.Center : (npc.Center + npc.velocity), npc, 0);
             if (Main.netMode != 1 && playerActive)
             {
                 npc.ai[2]++;

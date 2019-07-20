@@ -54,7 +54,7 @@ namespace AAMod.Backgrounds
 
         public override float GetCloudAlpha()
         {
-            return (1f - Intensity);
+            return 1f - Intensity;
         }
 
         public override void Activate(Vector2 position, params object[] args)

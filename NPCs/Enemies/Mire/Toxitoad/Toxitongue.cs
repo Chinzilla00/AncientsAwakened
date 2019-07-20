@@ -42,7 +42,7 @@ namespace AAMod.NPCs.Enemies.Mire.Toxitoad
                 projectile.direction = -1;
             }
             Main.npc[projectile.owner].rotation = (vector54 * -1f * projectile.direction).ToRotation();
-            projectile.spriteDirection = ((vector54.X > 0f) ? -1 : 1);
+            projectile.spriteDirection = (vector54.X > 0f) ? -1 : 1;
             if (projectile.ai[0] == 0f && vector54.Length() > 400f)
             {
                 projectile.ai[0] = 1f;

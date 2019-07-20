@@ -78,7 +78,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -167,7 +167,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             float num433 = 6f;
             float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
             float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-            float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+            float PlayerPos = (float)Math.Sqrt(PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY);
             PlayerPos = num433 / PlayerPos;
             PlayerPosX *= PlayerPos;
             PlayerPosY *= PlayerPos;
@@ -289,7 +289,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
 
             Vector2 moveTo = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y - (130f + npc.ai[2])) - npc.Center;
-            npc.velocity = (moveTo) * moveSpeedBoost;
+            npc.velocity = moveTo * moveSpeedBoost;
             npc.rotation = 0;
             npc.position += Body.position - Body.oldPosition;
         }

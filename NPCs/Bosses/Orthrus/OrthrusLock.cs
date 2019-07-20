@@ -16,7 +16,6 @@ namespace AAMod.NPCs.Bosses.Orthrus
         {
             npc.width = 74;
             npc.height = 74;
-            npc.friendly = false;
             npc.lifeMax = 1;
             npc.dontTakeDamage = true;
             npc.noTileCollide = true;
@@ -37,39 +36,61 @@ namespace AAMod.NPCs.Bosses.Orthrus
             return false;
         }
 
+        public NPC orthrus = null;
+
         public override void AI()
         {
+            NPC body = Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType<OrthrusHead1>(), -1)];
+            OrthrusHead1 orthrus = (OrthrusHead1)body.modNPC;
+
             Player player = Main.player[npc.target];
 
-            npc.ai[0]++;
-
-            if (AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<Shocking>()))
+            if (Main.netMode != 1)
             {
-                npc.active = false;
+                npc.ai[0]++;
             }
+
+            npc.rotation += .1f;
 
             if (npc.target == -1)
             {
                 npc.TargetClosest();
             }
-            if (npc.ai[0] > 240)
+
+            if (orthrus.internalAI[0] >= 300)
             {
-                npc.velocity *= 0;
+                if (npc.alpha < 255)
+                {
+                    npc.scale += .5f;
+                    npc.alpha += 5;
+                }
+                else
+                {
+                    orthrus.internalAI[0] = 0;
+                    body.netUpdate = true;
+                    npc.active = false;
+                    npc.netUpdate = true;
+                }
             }
             else
             {
-                npc.Center = player.Center;
-            }
-
-            npc.rotation += .03f;
-
-            if (npc.scale > 1f)
-            {
-                npc.scale -= .5f;
-            }
-            else
-            {
-                npc.scale = 1f;
+                if (orthrus.internalAI[0] > 240)
+                {
+                    npc.velocity *= 0;
+                    npc.netUpdate = true;
+                }
+                else
+                {
+                    npc.Center = player.Center;
+                }
+                if (npc.scale > 1f)
+                {
+                    npc.scale -= .5f;
+                }
+                else
+                {
+                    npc.scale = 1f;
+                }
             }
         }
     }

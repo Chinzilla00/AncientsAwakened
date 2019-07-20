@@ -50,7 +50,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]); //Used as the AI selector
                 writer.Write(internalAI[1]); //Used as the Frame Counter
@@ -427,7 +427,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.netUpdate = true;
                 }
 
-                if ((Vector2.Distance(npc.Center, player.Center) > 300f || internalAI[4] > 120))
+                if (Vector2.Distance(npc.Center, player.Center) > 300f || internalAI[4] > 120)
                 {
                     npc.frameCounter = 0;
                     Frame = 0;
@@ -620,7 +620,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -637,7 +637,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }

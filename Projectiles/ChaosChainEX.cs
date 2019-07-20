@@ -32,7 +32,7 @@ namespace AAMod.Projectiles
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(InternalAI[0]);
                 writer.Write(InternalAI[1]);

@@ -155,7 +155,7 @@ namespace AAMod
             float num433 = 6f;
             PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - Origin.X;
             PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - Origin.Y;
-            PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+            PlayerPos = (float)Math.Sqrt(PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY);
             PlayerPos = num433 / PlayerPos;
             PlayerPosX *= PlayerPos;
             PlayerPosY *= PlayerPos;
@@ -596,12 +596,12 @@ namespace AAMod
 
         public static void DrawAura(object sb, Texture2D texture, int shader, Entity codable, float auraPercent, float distanceScalar = 1f, float offsetX = 0f, float offsetY = 0f, Color? overrideColor = null)
         {
-            int frameCount = (codable is NPC ? Main.npcFrameCount[((NPC)codable).type] : 1);
-            Rectangle frame = (codable is NPC ? ((NPC)codable).frame : new Rectangle(0, 0, texture.Height, texture.Width));
-            float scale = (codable is NPC ? ((NPC)codable).scale : ((Projectile)codable).scale);
-            float rotation = (codable is NPC ? ((NPC)codable).rotation : ((Projectile)codable).rotation);
-            int spriteDirection = (codable is NPC ? ((NPC)codable).spriteDirection : ((Projectile)codable).spriteDirection);
-            float offsetY2 = (codable is NPC ? ((NPC)codable).gfxOffY : 0f);
+            int frameCount = codable is NPC ? Main.npcFrameCount[((NPC)codable).type] : 1;
+            Rectangle frame = codable is NPC ? ((NPC)codable).frame : new Rectangle(0, 0, texture.Height, texture.Width);
+            float scale = codable is NPC ? ((NPC)codable).scale : ((Projectile)codable).scale;
+            float rotation = codable is NPC ? ((NPC)codable).rotation : ((Projectile)codable).rotation;
+            int spriteDirection = codable is NPC ? ((NPC)codable).spriteDirection : ((Projectile)codable).spriteDirection;
+            float offsetY2 = codable is NPC ? ((NPC)codable).gfxOffY : 0f;
             DrawAura(sb, texture, shader, codable.position + new Vector2(0f, offsetY2), codable.width, codable.height, auraPercent, distanceScalar, scale, rotation, spriteDirection, frameCount, frame, offsetX, offsetY, overrideColor);
         }
 

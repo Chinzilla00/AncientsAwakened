@@ -98,7 +98,7 @@ namespace AAMod.Items.Armor.Chaos
         {
             int dustType = Main.rand.Next(2) == 0 ? mod.DustType<InfinityOverloadR>() : mod.DustType<InfinityOverloadB>();
             projectile.position = projectile.Center;
-            projectile.width = (projectile.height = 160);
+            projectile.width = projectile.height = 160;
             projectile.Center = projectile.position;
             projectile.maxPenetrate = -1;
             projectile.penetrate = -1;

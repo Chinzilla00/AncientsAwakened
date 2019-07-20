@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -164,7 +164,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         if (npc2 != null && npc2.active)
                         {
                             int dustID = Dust.NewDust(npc2.position, npc2.width, npc2.height, mod.DustType<Dusts.AkumaDustLight>());
-                            Main.dust[dustID].position += (npc.position - npc.oldPosition);
+                            Main.dust[dustID].position += npc.position - npc.oldPosition;
                             Main.dust[dustID].velocity = (npc.Center - npc2.Center) * 0.10f;
                             Main.dust[dustID].alpha = 100;
                             Main.dust[dustID].noGravity = true;
@@ -557,7 +557,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 double offsetAngle;
                 for (int i = 0; i < (Main.expertMode ? 6 : 4); i++)
                 {
-                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 7f), (float)(Math.Cos(offsetAngle) * 7f), mod.ProjectileType<AsheSpell>(), npc.damage, 0, Main.myPlayer, 0f, 0f);
                 }
             }
@@ -762,12 +762,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 newLightColor.A = (byte)(newLightColor.A * (imageCount + 3 - m) / (imageCount + 9));
                 if (useOldPos)
                 {
-                    position = Vector2.Lerp(originalpos, (m - 1 >= oldPoints.Length ? oldPoints[oldPoints.Length - 1] : oldPoints[m - 1]), distanceScalar);
+                    position = Vector2.Lerp(originalpos, m - 1 >= oldPoints.Length ? oldPoints[oldPoints.Length - 1] : oldPoints[m - 1], distanceScalar);
                     BaseDrawing.DrawTexture(sb, texture, shader, position + offset, width, height, scale, rotation, direction, framecount, frame, newLightColor, drawCentered ? true : false);
                 }
                 else
                 {
-                    Vector2 velocity = (m - 1 >= oldPoints.Length ? oldPoints[oldPoints.Length - 1] : oldPoints[m - 1]);
+                    Vector2 velocity = m - 1 >= oldPoints.Length ? oldPoints[oldPoints.Length - 1] : oldPoints[m - 1];
                     velAddon += velocity * distanceScalar;
                     BaseDrawing.DrawTexture(sb, texture, shader, position + offset - velAddon, width, height, scale, rotation, direction, framecount, frame, newLightColor, drawCentered ? true : false);
                 }
@@ -779,7 +779,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             float moveSpeed = 16f;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -796,7 +796,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }
@@ -809,12 +809,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < MeleeSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / MeleeSpeed);
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= MeleeSpeed;
             npc.velocity *= velMultiplier;
         }

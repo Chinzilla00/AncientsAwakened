@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.DoomiteU
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Scrap Plate Greaves");
+			DisplayName.SetDefault("Dark Doomite Greaves");
         }
 
 		public override void SetDefaults()
@@ -26,7 +26,6 @@ namespace AAMod.Items.Armor.DoomiteU
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "DoomiteScrap", 8);
-            recipe.AddIngredient(null, "Doomite", 2);
             recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

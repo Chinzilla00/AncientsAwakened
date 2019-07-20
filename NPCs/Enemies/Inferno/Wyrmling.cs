@@ -121,7 +121,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 						Vector2 vector2;
 						vector2.X = i * 16;
 						vector2.Y = j * 16;
-						if (npc.position.X + npc.width > vector2.X && npc.position.X < vector2.X + 16.0 && (npc.position.Y + npc.height > (double)vector2.Y && npc.position.Y < vector2.Y + 16.0))
+						if (npc.position.X + npc.width > vector2.X && npc.position.X < vector2.X + 16.0 && npc.position.Y + npc.height > (double)vector2.Y && npc.position.Y < vector2.Y + 16.0)
 						{
 							collision = true;
 							if (Main.rand.Next(100) == 0 && Main.tile[i, j].nactive())
@@ -149,9 +149,9 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 			float absDirX = Math.Abs(dirX);
 			float absDirY = Math.Abs(dirY);
 			float newSpeed = speed / length;
-			dirX *= (newSpeed * 2);
-			dirY *= (newSpeed * 2);
-			if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || (npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0))
+			dirX *= newSpeed * 2;
+			dirY *= newSpeed * 2;
+			if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0)
 			{
 				if (npc.velocity.X < dirX)
 					npc.velocity.X = npc.velocity.X + acceleration;
@@ -243,7 +243,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 					npc.netUpdate = true;
 				npc.localAI[0] = 1f;
 			}
-			if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || (npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0)) && !npc.justHit)
+			if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0) && !npc.justHit)
 				npc.netUpdate = true;
 
 			return false;

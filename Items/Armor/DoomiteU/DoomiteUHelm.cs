@@ -31,8 +31,8 @@ namespace AAMod.Items.Armor.DoomiteU
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"Increases max amount of minions by 2
-Increases your minions knockback by 100%";
+            player.setBonus = @"Increases max amount of minions by 2
+Increases your minions knockback";
         }
 		
 		public override void UpdateEquip(Player player)
@@ -45,7 +45,6 @@ Increases your minions knockback by 100%";
 		{
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DoomiteScrap", 6);
-            recipe.AddIngredient(null, "Doomite", 2);
             recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

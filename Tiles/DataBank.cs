@@ -40,7 +40,7 @@ namespace AAMod.Tiles
         {
             if (!glow) return;
             Color color = BaseUtility.ColorMult(AAPlayer.ZeroColor, 0.7f);
-            r = (color.R / 255f); g = (color.G / 255f); b = (color.B / 255f);
+            r = color.R / 255f; g = color.G / 255f; b = color.B / 255f;
         }
 
         public Color color;

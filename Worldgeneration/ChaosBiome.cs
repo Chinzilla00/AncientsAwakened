@@ -27,7 +27,7 @@ namespace AAMod.Worldgeneration
             GrassWall = (byte)mod.WallType<LivingBogleafWall>(), JungleWall = (byte)mod.WallType<MireJungleWall>();
 
 			int worldSize = GetWorldSize();
-			int biomeRadius = (worldSize == 3 ? 240 : worldSize == 2 ? 200 : 180), biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
+			int biomeRadius = worldSize == 3 ? 240 : worldSize == 2 ? 200 : 180, biomeRadiusHalf = biomeRadius / 2; //how deep the biome is (scaled by world size)	
 			
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(0, 0, 255)] = mod.TileType("Depthstone");
@@ -258,7 +258,7 @@ namespace AAMod.Worldgeneration
 
 
             int worldSize = GetWorldSize();
-            int biomeRadius = (worldSize == 3 ? 240 : worldSize == 2 ? 200 : 180);
+            int biomeRadius = worldSize == 3 ? 240 : worldSize == 2 ? 200 : 180;
 
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>();
             colorToTile[new Color(255, 0, 0)] = mod.TileType("Torchstone");
@@ -467,8 +467,8 @@ namespace AAMod.Worldgeneration
             ushort tileGrass = (ushort)mod.TileType("Mycelium"); //change to types in your mod
 
             int worldSize = GetWorldSize();
-            int biomeWidth = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150), biomeWidthHalf = biomeWidth / 2; //how wide the biome is (scaled by world size)
-            int biomeHeight = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150), biomeHeightHalf = biomeHeight / 2; //how deep the biome is (scaled by world size)   
+            int biomeWidth = worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150, biomeWidthHalf = biomeWidth / 2; //how wide the biome is (scaled by world size)
+            int biomeHeight = worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150, biomeHeightHalf = biomeHeight / 2; //how deep the biome is (scaled by world size)   
 
             //ok time to check to see if this spot is actually a good place to gen
             Dictionary<ushort, int> dictionary = new Dictionary<ushort, int>();
@@ -681,9 +681,9 @@ namespace AAMod.Worldgeneration
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Parthenan"), colorToTile, mod.GetTexture("Worldgeneration/ParthenanWalls"), colorToWall);
             
             gen.Generate(origin.X, origin.Y, true, true);
-            WorldGen.PlaceObject(origin.X + 34, (origin.Y) + 47, (ushort)mod.TileType("DataBank"));
-            WorldGen.PlaceChest((origin.X) + 32, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
-            WorldGen.PlaceChest((origin.X) + 41, (origin.Y) + 47, (ushort)mod.TileType("StormChest"), true);
+            WorldGen.PlaceObject(origin.X + 34, origin.Y + 47, (ushort)mod.TileType("DataBank"));
+            WorldGen.PlaceChest(origin.X + 32, origin.Y + 47, (ushort)mod.TileType("StormChest"), true);
+            WorldGen.PlaceChest(origin.X + 41, origin.Y + 47, (ushort)mod.TileType("StormChest"), true);
             return true;
         }
     }

@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -211,7 +211,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 }
                 if (foundLocation)
                 {
-                    Vector2 tele = new Vector2((player.Center.X + Xint), (player.Center.Y + Yint));
+                    Vector2 tele = new Vector2(player.Center.X + Xint, player.Center.Y + Yint);
                     npc.Center = tele;
                     internalAI[4] = 0;
                 }

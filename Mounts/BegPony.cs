@@ -123,8 +123,8 @@ namespace AAMod.Mounts
                 if (flag)
                 {
                     player.velocity.X = 16.9f * num4;
-                    Point point = Utils.ToTileCoordinates(player.Center + new Vector2((num4 * player.width / 2 + 2), player.gravDir * -player.height / 2f + player.gravDir * 2f));
-                    Point point2 = Utils.ToTileCoordinates(player.Center + new Vector2((num4 * player.width / 2 + 2), 0f));
+                    Point point = Utils.ToTileCoordinates(player.Center + new Vector2(num4 * player.width / 2 + 2, player.gravDir * -player.height / 2f + player.gravDir * 2f));
+                    Point point2 = Utils.ToTileCoordinates(player.Center + new Vector2(num4 * player.width / 2 + 2, 0f));
                     if (WorldGen.SolidOrSlopedTile(point.X, point.Y) || WorldGen.SolidOrSlopedTile(point2.X, point2.Y))
                     {
                         player.velocity.X /= 2f;

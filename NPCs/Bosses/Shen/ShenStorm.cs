@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 projectile.Kill();
             }
-            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.9f) / 255f, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.9f) / 255f);
+            Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.9f / 255f, (255 - projectile.alpha) * 0f / 255f, (255 - projectile.alpha) * 0.9f / 255f);
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             if (projectile.ai[1] == 0f)
             {
@@ -88,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Shen
 	    	{
 		    	for (i = 0; i < 10; i++ )
 		    	{
-		   			offsetAngle = (startAngle + Angle * ( i + i * i ) / 2f ) + 32f * i;
+		   			offsetAngle = startAngle + Angle * ( i + i * i ) / 2f  + 32f * i;
 		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( Math.Sin(offsetAngle) * 6f ), (float)( Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("ShenRain"), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
 		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( -Math.Sin(offsetAngle) * 6f ), (float)( -Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("ShenRain"), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
 		    	}

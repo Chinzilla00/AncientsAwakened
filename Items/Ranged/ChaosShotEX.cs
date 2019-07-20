@@ -55,7 +55,7 @@ namespace AAMod.Items.Ranged
             }
             for (int m = 0; m < 2; m++)
             {
-                Projectile.NewProjectile(position.X, position.Y, speedX * 1f, speedY * 1f, (m == 0 ? mod.ProjectileType("ChaosShot2") : mod.ProjectileType("ChaosShot3")), damage, knockBack, player.whoAmI, 0, 1);
+                Projectile.NewProjectile(position.X, position.Y, speedX * 1f, speedY * 1f, m == 0 ? mod.ProjectileType("ChaosShot2") : mod.ProjectileType("ChaosShot3"), damage, knockBack, player.whoAmI, 0, 1);
             }
 
             Projectile.NewProjectile(position.X, position.Y, speedX * 1f, speedY * 1f, mod.ProjectileType("ChaosShot1"), damage, knockBack, player.whoAmI, 0, 1);

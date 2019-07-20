@@ -125,7 +125,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             if (!AAWorld.downedYamata)
             {
-                if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
+                if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
                 {
                     if (Main.netMode != 1) BaseUtility.Chat("YOU'RE STILL FIGHTING?! WHAT THE HELL IS WRONG WITH YOU?!", new Color(146, 30, 68));
                     threeQuarterHealth = true;
@@ -143,7 +143,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             if (AAWorld.downedYamata)
             {
-                if (npc.life <= ((npc.lifeMax / 4) * 3) && threeQuarterHealth == false)
+                if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
                 {
                     if (Main.netMode != 1) BaseUtility.Chat("You're an annoying little bugger, you know!", new Color(146, 30, 68));
                     threeQuarterHealth = true;

@@ -108,7 +108,7 @@ namespace AAMod.NPCs.Minibosses
                     flag64 = true;
                 }
                 float num1014 = 8f;
-                flag64 = (flag64 && vector126.ToRotation() > 3.14159274f / num1014 && vector126.ToRotation() < 3.14159274f - 3.14159274f / num1014);
+                flag64 = flag64 && vector126.ToRotation() > 3.14159274f / num1014 && vector126.ToRotation() < 3.14159274f - 3.14159274f / num1014;
                 if (num1013 > num999 || !flag64)
                 {
                     npc.velocity.X = (npc.velocity.X * (num1000 - 1f) + vector127.X) / num1000;
@@ -210,7 +210,7 @@ namespace AAMod.NPCs.Minibosses
             if (npc.ai[0] == 3f)
             {
                 npc.position = npc.Center;
-                npc.width = (npc.height = 192);
+                npc.width = npc.height = 192;
                 npc.position.X = npc.position.X - npc.width / 2;
                 npc.position.Y = npc.position.Y - npc.height / 2;
                 npc.velocity = Vector2.Zero;
@@ -275,7 +275,7 @@ namespace AAMod.NPCs.Minibosses
             float num69 = 0 * Main.npc[npc.type].scale;
             Vector2 vector10 = new Vector2(Main.npcTexture[npc.type].Width / 2, Main.npcTexture[npc.type].Height / Main.npcFrameCount[npc.type] / 2);
             Color color9 = Lighting.GetColor((int)(npc.position.X + npc.width * 0.5) / 16, (int)((npc.position.Y + npc.height * 0.5) / 16.0));
-            if ((npc.ai[0] == 2f || npc.ai[0] == 4f))
+            if (npc.ai[0] == 2f || npc.ai[0] == 4f)
             {
                 Texture2D texture2D32 = mod.GetTexture("NPCs/Minibosses/ExterminatorCharge");
                 Vector2 origin16 = new Vector2(texture2D32.Width / 2, texture2D32.Height / 8 + 14);

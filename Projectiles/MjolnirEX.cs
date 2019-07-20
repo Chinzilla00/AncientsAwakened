@@ -144,7 +144,7 @@ namespace AAMod.Projectiles
 					dust.noGravity = true;
 					dust.scale = Main.rand.Next(10, 20) * 0.05f;
 				}
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X/3, vel.Y/3, mod.ProjectileType("MjolnirEffect"), (projectile.damage/3)*2, knockback, projectile.owner);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X/3, vel.Y/3, mod.ProjectileType("MjolnirEffect"), projectile.damage/3*2, knockback, projectile.owner);
 			}
 		}
     }

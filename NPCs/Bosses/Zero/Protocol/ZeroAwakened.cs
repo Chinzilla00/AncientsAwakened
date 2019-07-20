@@ -100,7 +100,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             if (Main.expertMode)
             {
                 potionType = ItemID.SuperHealingPotion;
-                Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
+                Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 0f), mod.ProjectileType("ZeroDeath1"), 0, 0);
             }
             else
             {
@@ -141,7 +141,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     {
                         //if (Main.netMode != 1) BaseMod.BaseUtility.Chat("CALLED! XINT: " + Xint + ". YINT: " + Yint);
                         Player player = Main.player[npc.target];
-                        Vector2 tele = new Vector2((player.Center.X + Xint), (player.Center.Y + Yint));
+                        Vector2 tele = new Vector2(player.Center.X + Xint, player.Center.Y + Yint);
                         npc.Center = tele;
                     }
                 }
@@ -196,7 +196,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -660,7 +660,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                             PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
                             PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
                             PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-                            PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+                            PlayerPos = (float)Math.Sqrt(PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY);
                             PlayerPos = num433 / PlayerPos;
                             PlayerPosX *= PlayerPos;
                             PlayerPosY *= PlayerPos;
@@ -844,7 +844,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 double offsetAngle;
                 for (int i = 0; i < 6; i++)
                 {
-                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 2f), mod.ProjectileType("GlitchRocket"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
                 }
             }
@@ -856,7 +856,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 double offsetAngle;
                 for (int i = 0; i < 5; i++)
                 {
-                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 2f), mod.ProjectileType("Error"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
                 }
             }
@@ -868,8 +868,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 double offsetAngle;
                 for (int i = 0; i < 4; i++)
                 {
-                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 2), (float)(Math.Cos(offsetAngle)), mod.ProjectileType("StaticSphere"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
+                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 2), (float)Math.Cos(offsetAngle), mod.ProjectileType("StaticSphere"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
                 }
             }
         }

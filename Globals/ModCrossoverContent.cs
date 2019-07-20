@@ -90,7 +90,7 @@ namespace AAMod
 
         public static Texture2D GetMapBackgroundImage()
         {
-            return (forceBlackMapBG ? Main.mapTexture : null);
+            return forceBlackMapBG ? Main.mapTexture : null;
         }
 
         public static void SetupSupport()

@@ -86,7 +86,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -300,7 +300,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float newSpeed = speed / length;
                 dirX *= newSpeed;
                 dirY *= newSpeed;
-                if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || (npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0))
+                if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0)
                 {
                     if (npc.velocity.X < dirX)
                         npc.velocity.X = npc.velocity.X + acceleration;
@@ -403,7 +403,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     npc.netUpdate = true;
                 npc.localAI[0] = 0.0f;
             }
-            if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || (npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0)) && !npc.justHit)
+            if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0) && !npc.justHit)
                 npc.netUpdate = true;
 
             return false;
@@ -605,7 +605,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
         {
-            spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+            spriteEffects = npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         }
 
         public override void BossHeadRotation(ref float rotation)
@@ -655,7 +655,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             Vector2 chasePosition = Main.npc[(int)npc.ai[1]].Center;
             Vector2 directionVector = chasePosition - npc.Center;
-            npc.spriteDirection = ((directionVector.X > 0f) ? 1 : -1);
+            npc.spriteDirection = (directionVector.X > 0f) ? 1 : -1;
             if (npc.ai[3] > 0)
                 npc.realLife = (int)npc.ai[3];
             if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)
@@ -710,7 +710,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
         {
-            spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+            spriteEffects = npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         }
 
         public override void BossHeadRotation(ref float rotation)

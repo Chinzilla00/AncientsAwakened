@@ -36,7 +36,7 @@ namespace AAMod.Projectiles.GemShot
 
         public override void AI()
         {
-            Lighting.AddLight(projectile.Center, ((Main.DiscoR - projectile.alpha) * 0.8f) / 255f, ((Main.DiscoG - projectile.alpha) * 0.4f) / 255f, ((Main.DiscoB - projectile.alpha) * 0f) / 255f);
+            Lighting.AddLight(projectile.Center, (Main.DiscoR - projectile.alpha) * 0.8f / 255f, (Main.DiscoG - projectile.alpha) * 0.4f / 255f, (Main.DiscoB - projectile.alpha) * 0f / 255f);
             for (int num339 = 0; num339 < 4; num339++)
             {
                 Dust dust1;

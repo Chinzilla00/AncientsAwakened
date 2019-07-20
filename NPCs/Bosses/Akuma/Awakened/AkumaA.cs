@@ -93,7 +93,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
@@ -278,7 +278,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             float newSpeed = speed / length;
             dirX *= newSpeed;
             dirY *= newSpeed;
-            if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || (npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0))
+            if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0)
             {
                 if (npc.velocity.X < dirX)
                     npc.velocity.X = npc.velocity.X + acceleration;
@@ -382,7 +382,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     npc.netUpdate = true;
                 npc.localAI[0] = 1f;
             }
-            if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || (npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0)) && !npc.justHit)
+            if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0) && !npc.justHit)
                 npc.netUpdate = true;
 
             return false;
@@ -450,7 +450,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 }
             }
 
-            if ((internalAI[1] == 2 || internalAI[1] == 6 || internalAI[1] == 12 || internalAI[1] == 16 || internalAI[1] == 24))
+            if (internalAI[1] == 2 || internalAI[1] == 6 || internalAI[1] == 12 || internalAI[1] == 16 || internalAI[1] == 24)
             {
                 if (!QuoteSaid)
                 {
@@ -567,7 +567,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             Texture2D HeadGlow = (npc.ai[1] == 1 || npc.ai[2] >= 500) ? glowTex1 : glowTex;
 
-            Texture2D myGlowTex = (npc.type == mod.NPCType<AkumaA>() ? HeadGlow : npc.type == mod.NPCType<AkumaAArms>() ? glowTex2 : npc.type == mod.NPCType<AkumaABody>() ? glowTex3 : npc.type == mod.NPCType<AkumaABody1>() ? glowTex4 : glowTex5);
+            Texture2D myGlowTex = npc.type == mod.NPCType<AkumaA>() ? HeadGlow : npc.type == mod.NPCType<AkumaAArms>() ? glowTex2 : npc.type == mod.NPCType<AkumaABody>() ? glowTex3 : npc.type == mod.NPCType<AkumaABody1>() ? glowTex4 : glowTex5;
             BaseDrawing.DrawTexture(spriteBatch, AkumaTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 3, npc.frame, npc.GetAlpha(drawColor), true);
             BaseDrawing.DrawTexture(spriteBatch, myGlowTex, shader, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 3, npc.frame, npc.GetAlpha(Color.White), true);
             return false;
@@ -622,7 +622,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
         {
-            spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+            spriteEffects = npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         }
 
         public override void BossHeadRotation(ref float rotation)
@@ -655,7 +655,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             Vector2 chasePosition = Main.npc[(int)npc.ai[1]].Center;
             Vector2 directionVector = chasePosition - npc.Center;
-            npc.spriteDirection = ((directionVector.X > 0f) ? 1 : -1);
+            npc.spriteDirection = (directionVector.X > 0f) ? 1 : -1;
             if (npc.ai[3] > 0)
                 npc.realLife = (int)npc.ai[3];
             if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)

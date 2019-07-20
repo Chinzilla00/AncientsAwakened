@@ -80,7 +80,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -177,7 +177,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
 			for (int m = 0; m < (isDead ? 45 : 6); m++)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, (isDead? 3f : 1.5f));
+				Dust.NewDust(npc.position, npc.width, npc.height, DustID.Fire, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, isDead? 3f : 1.5f);
 			}	
         }
 
@@ -232,11 +232,11 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 else
                 if (internalAI[1] == AISTATE_SPAWNEGGS)
                 {
-                    npc.ai[1] = (npc.ai[1] == 0 ? 1 : 0);
+                    npc.ai[1] = npc.ai[1] == 0 ? 1 : 0;
                 }
                 npc.netUpdate = true;
             }
-            pos = (npc.ai[1] == 0 ? -250 : 250);
+            pos = npc.ai[1] == 0 ? -250 : 250;
 
             if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 4000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 4000f)
             {
@@ -348,7 +348,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             float moveSpeed = 9f;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -365,7 +365,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }

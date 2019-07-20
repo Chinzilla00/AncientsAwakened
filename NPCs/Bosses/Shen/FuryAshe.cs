@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -488,7 +488,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     for (int m = 0; m < 3; m++)
                     {
-                        Vector2 infernoPos = new Vector2(200f, (npc.direction == -1 ? 65f : -45f));
+                        Vector2 infernoPos = new Vector2(200f, npc.direction == -1 ? 65f : -45f);
                         Vector2 vel = new Vector2(MathHelper.Lerp(12f, 15f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
 
                         if (player.active && !player.dead)
@@ -496,7 +496,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                             infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
                             vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
-                            int dir = (npc.Center.X < player.Center.X ? 1 : -1);
+                            int dir = npc.Center.X < player.Center.X ? 1 : -1;
                             if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                             vel.Y += npc.velocity.Y;
                             infernoPos += npc.Center;
@@ -548,7 +548,7 @@ namespace AAMod.NPCs.Bosses.Shen
             float moveSpeed = 16f;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -565,7 +565,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }
@@ -578,7 +578,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < MeleeSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / MeleeSpeed);
@@ -595,7 +595,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 MeleeSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= MeleeSpeed;
             npc.velocity *= velMultiplier;
         }

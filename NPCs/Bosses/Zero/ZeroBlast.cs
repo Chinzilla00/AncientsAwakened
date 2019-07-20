@@ -150,7 +150,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             for (int j = 0; j < 40; j++)
             {
-                int d2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), (j / 90f) * -projectile.velocity.X, (j / 90f) * -projectile.velocity.Y, 100, Color.White, 1.2f);
+                int d2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), j / 90f * -projectile.velocity.X, j / 90f * -projectile.velocity.Y, 100, Color.White, 1.2f);
                 Main.dust[d2].noGravity = true;
                 Main.dust[d2].velocity *= 0.6f;
             }

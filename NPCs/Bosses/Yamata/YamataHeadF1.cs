@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(customAI[0]);
                 writer.Write(customAI[1]);
@@ -115,7 +115,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
 
 
-            float playerDistance = (targetPlayer == null ? 99999f : Vector2.Distance(targetPlayer.Center, npc.Center));
+            float playerDistance = targetPlayer == null ? 99999f : Vector2.Distance(targetPlayer.Center, npc.Center);
             if (!Body.npc.active)
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
@@ -145,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
                 npc.velocity *= 5f;
             }
-            npc.position += (Body.npc.position - Body.npc.oldPosition);
+            npc.position += Body.npc.position - Body.npc.oldPosition;
             npc.spriteDirection = -1;
             if (Body.TeleportMe1)
             {
@@ -190,7 +190,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     npc.ai[1]++; ;
                 }
-                int aiTimerFire = (npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100);
+                int aiTimerFire = npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100;
                 if (leftHead) aiTimerFire += 30;
                 if (targetPlayer != null && npc.ai[1] == aiTimerFire)
                 {
@@ -200,7 +200,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         dir *= 5f;
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), (Main.expertMode ? npc.damage / 4 : npc.damage / 2), 0f, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), Main.expertMode ? npc.damage / 4 : npc.damage / 2, 0f, Main.myPlayer);
                     }
                 }
                 else

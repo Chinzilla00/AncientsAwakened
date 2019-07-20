@@ -169,7 +169,7 @@ namespace AAMod.Items.Armor.Chaos
                 bool flag26 = false;
                 if (!flag26)
                 {
-                    flag26 = (projectile.ai[0] == 1f);
+                    flag26 = projectile.ai[0] == 1f;
                 }
                 float num650 = 6f;
                 if (flag26)

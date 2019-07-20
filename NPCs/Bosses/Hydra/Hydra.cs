@@ -319,7 +319,7 @@ namespace AAMod.NPCs.Bosses.Hydra
         {
             if (head != null && head.active && head.modNPC != null && head.modNPC is HydraHead1)
             {
-                string neckTex = ("NPCs/Bosses/Hydra/HydraNeck");
+                string neckTex = "NPCs/Bosses/Hydra/HydraNeck";
                 Texture2D neckTex2D = mod.GetTexture(neckTex);
                 Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 30);
                 Vector2 connector = head.Center;
@@ -338,7 +338,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead3", "NPCs/Bosses/Hydra/HydraHead3_Glow", Head3, dColor);
                 DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead1", "NPCs/Bosses/Hydra/HydraHead1_Glow", Head1, dColor); //draw main head last!
             }
-            string tailTex = ("NPCs/Bosses/Hydra/HydraTail");
+            string tailTex = "NPCs/Bosses/Hydra/HydraTail";
             BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY - 30), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 1, frameBottom, dColor, false);
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
             return false;
