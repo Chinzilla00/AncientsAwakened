@@ -2400,7 +2400,9 @@ namespace AAMod
                         case "GoblinSoulBuyprice":
                         return "购买价格:";
                         case "GoblinSoul":
-                        return "哥布林之魂";
+                        return "哥布林亡魂";
+                        case "GoblinSouls":
+                        return "哥布林亡魂";
                     }
                 }
             else
@@ -2413,7 +2415,8 @@ namespace AAMod
                         return "Buy price:";
                         case "GoblinSoul":
                         return "Goblin Soul";
-                        
+                        case "GoblinSouls":
+                        return "Goblin Souls";
                     }
                 }
             return"";
