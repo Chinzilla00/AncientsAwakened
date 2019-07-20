@@ -31,8 +31,8 @@ namespace AAMod.Items.Armor.DoomiteU
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = Lang.ArmorBonus("DoomiteUHelmBonus");
-        }
+			      player.setBonus = Lang.ArmorBonus("DoomiteUHelmBonus");
+    }
 		
 		public override void UpdateEquip(Player player)
 		{
@@ -44,7 +44,6 @@ namespace AAMod.Items.Armor.DoomiteU
 		{
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DoomiteScrap", 6);
-            recipe.AddIngredient(null, "Doomite", 2);
             recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

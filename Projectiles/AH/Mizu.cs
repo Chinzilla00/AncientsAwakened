@@ -116,7 +116,7 @@ namespace AAMod.Projectiles.AH
 		{
 			Main.PlaySound(SoundID.NPCDeath52.WithVolume(.4f), projectile.position);
             projectile.position = projectile.Center;
-            projectile.width = (projectile.height = 160);
+            projectile.width = projectile.height = 160;
             projectile.Center = projectile.position;
             projectile.maxPenetrate = -1;
             projectile.penetrate = -1;

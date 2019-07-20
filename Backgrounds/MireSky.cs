@@ -82,14 +82,14 @@ namespace AAMod.Backgrounds
                     white2.G = (byte)(white2.G * num65);
                     white2.B = (byte)(white2.B * num65);
                     white2.A = (byte)(white2.A * num65);
-                    Main.spriteBatch.Draw(PlanetTexture, new Vector2(num23, (num24 + Main.moonModY)), new Rectangle?(new Rectangle(0, 0, PlanetTexture.Width, PlanetTexture.Width)), white2, rotation2, new Vector2(PlanetTexture.Width / 2, PlanetTexture.Width / 2), num25, SpriteEffects.None, 0f);
+                    Main.spriteBatch.Draw(PlanetTexture, new Vector2(num23, num24 + Main.moonModY), new Rectangle?(new Rectangle(0, 0, PlanetTexture.Width, PlanetTexture.Width)), white2, rotation2, new Vector2(PlanetTexture.Width / 2, PlanetTexture.Width / 2), num25, SpriteEffects.None, 0f);
                 }
             }
         }
 
         public override float GetCloudAlpha()
         {
-            return (1f - Intensity);
+            return 1f - Intensity;
         }
 
         public override void Activate(Vector2 position, params object[] args)

@@ -31,7 +31,7 @@ namespace AAMod.Projectiles.Akuma
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
             }
@@ -78,7 +78,7 @@ namespace AAMod.Projectiles.Akuma
                 projectile.tileCollide = false;
                 projectile.penetrate = -1;
                 projectile.position = projectile.Center;
-                projectile.width = (projectile.height = 140);
+                projectile.width = projectile.height = 140;
                 projectile.Center = projectile.position;
                 projectile.alpha -= 10;
                 if (projectile.alpha < 0)

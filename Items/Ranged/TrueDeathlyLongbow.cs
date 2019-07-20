@@ -42,7 +42,7 @@ Fires an explosive ghast skull every other shot");
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            player.statLife += (damage / 8);
+            player.statLife += damage / 8;
             player.HealEffect(damage / 8);
         }
 

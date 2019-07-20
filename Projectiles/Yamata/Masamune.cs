@@ -42,7 +42,7 @@ namespace AAMod.Projectiles.Yamata
                 for (int num694 = 0; num694 < num693; num694++)
                 {
                     Vector2 vector56 = Vector2.Normalize(projectile.velocity) * new Vector2((float)projectile.width, (float)projectile.height) / 2f;
-                    vector56 = vector56.RotatedBy((double)(num694 - (num693 / 2 - 1)) * 3.1415926535897931 / (double)((float)num693), default) + projectile.Center;
+                    vector56 = vector56.RotatedBy((double)(num694 - (num693 / 2 - 1)) * 3.1415926535897931 / (double)(float)num693, default) + projectile.Center;
                     Vector2 value24 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * (float)Main.rand.Next(3, 8);
                     int num695 = Dust.NewDust(vector56 + value24, 0, 0, mod.DustType<Dusts.YamataDust>(), value24.X * 2f, value24.Y * 2f, 100, default, 1.4f);
                     Main.dust[num695].noGravity = true;

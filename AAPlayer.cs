@@ -535,8 +535,8 @@ namespace AAMod
             ZoneTower = player.ZoneTowerSolar || player.ZoneTowerNebula || player.ZoneTowerStardust || player.ZoneTowerVortex;
             ZoneMire = (AAWorld.mireTiles > 100) || BaseAI.GetNPC(player.Center, mod.NPCType<Yamata>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<YamataA>(), 5000) != -1;
             ZoneInferno = AAWorld.infernoTiles > 100 || BaseAI.GetNPC(player.Center, mod.NPCType<Akuma>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<AkumaA>(), 5000) != -1;
-            ZoneMush = (AAWorld.mushTiles > 100);
-            Terrarium = (AAWorld.terraTiles >= 1);
+            ZoneMush = AAWorld.mushTiles > 100;
+            Terrarium = AAWorld.terraTiles >= 1;
             ZoneVoid = (AAWorld.voidTiles > 20 && player.ZoneSkyHeight) || (AAWorld.voidTiles > 100 && !player.ZoneSkyHeight) || BaseAI.GetNPC(player.Center, mod.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<ZeroAwakened>(), 5000) != -1;
             //ZoneStorm = (AAWorld.stormTiles >= 1);
             //ZoneShip = (AAWorld.shipTiles >= 1);
@@ -584,14 +584,14 @@ namespace AAMod
         public override bool CustomBiomesMatch(Player other)
         {
             AAPlayer modOther = other.GetModPlayer<AAPlayer>(mod);
-            return (ZoneMire == modOther.ZoneMire &&
+            return ZoneMire == modOther.ZoneMire &&
                 ZoneInferno == modOther.ZoneInferno &&
                 ZoneVoid == modOther.ZoneVoid &&
                 ZoneMush == modOther.ZoneMush &&
                 Terrarium == modOther.Terrarium &&
                 ZoneStorm == modOther.ZoneStorm &&
                 ZoneShip == modOther.ZoneShip &&
-                ZoneStars == modOther.ZoneStars);
+                ZoneStars == modOther.ZoneStars;
         }
 
         public override void CopyCustomBiomesTo(Player other)
@@ -941,7 +941,7 @@ namespace AAMod
                             if (projectile != null && projectile.active)
                             {
                                 int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDustLight>());
-                                Main.dust[dustID].position += (player.position - player.oldPosition);
+                                Main.dust[dustID].position += player.position - player.oldPosition;
                                 Main.dust[dustID].velocity = (player.Center - projectile.Center) * 0.05f;
                                 Main.dust[dustID].alpha = 100;
                                 Main.dust[dustID].noGravity = true;
@@ -999,7 +999,7 @@ namespace AAMod
             }
             if (kindledSet || lantern)
             {
-                Lighting.AddLight((int)(player.position.X + player.width / 2) / 16, (int)(player.position.Y + player.height / 2) / 16, AAColor.Lantern.R / 255, (AAColor.Lantern.G / 255) * 0.95f, (AAColor.Lantern.B / 255) * 0.8f);
+                Lighting.AddLight((int)(player.position.X + player.width / 2) / 16, (int)(player.position.Y + player.height / 2) / 16, AAColor.Lantern.R / 255, AAColor.Lantern.G / 255 * 0.95f, AAColor.Lantern.B / 255 * 0.8f);
             }
             if (NPC.AnyNPCs(mod.NPCType<Yamata>()))
             {
@@ -1026,7 +1026,7 @@ namespace AAMod
             }
             if (Main.rand.Next(3600) == 0)
             {
-                VoidGrav = (Main.rand.Next(0, 5) + 1);
+                VoidGrav = Main.rand.Next(0, 5) + 1;
             }
             if (NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()))
             {
@@ -1042,7 +1042,7 @@ namespace AAMod
                 {
                     if (VoidGrav == 0)
                     {
-                        VoidGrav = (Main.rand.Next(0, 5) + 1);
+                        VoidGrav = Main.rand.Next(0, 5) + 1;
                     }
                     if (VoidGrav == 1)
                     {
@@ -1317,7 +1317,7 @@ namespace AAMod
             //3 = PML
             //4 = PA
             bool spawnedDevItems = false; //this prevents it from not dropping anything if the chance lands on something it cannot drop yet (for prehm/hm) as by this point it's past the 10% chance and thus should drop.
-            string addonEX = (dropType == 4 ? "EX" : ""); //only include EX if it's a dropType 3 (ie from ancients)
+            string addonEX = dropType == 4 ? "EX" : ""; //only include EX if it's a dropType 3 (ie from ancients)
             while (!spawnedDevItems)
             {
                 int choice = Main.rand.Next(30);
@@ -1331,7 +1331,7 @@ namespace AAMod
                         spawnedDevItems = true;
                         break;
                     case 1:
-                        string addonA = (dropType == 4 ? "A" : "");
+                        string addonA = dropType == 4 ? "A" : "";
                         if (dropType >= 4)
                         {
                             player.QuickSpawnItem(mod.ItemType("AlphakipTerratool"));
@@ -1759,7 +1759,7 @@ namespace AAMod
                                         expr_370_cp_0.velocity.Y *= 0.5f;
                                     }
                                     Dust expr_38E_cp_0 = Main.dust[num9];
-                                    expr_38E_cp_0.velocity.Y *= (1f + 0.3f * Main.cloudAlpha);
+                                    expr_38E_cp_0.velocity.Y *= 1f + 0.3f * Main.cloudAlpha;
                                     Main.dust[num9].scale += Main.cloudAlpha * 0.2f;
                                     Main.dust[num9].velocity *= 1f + Main.cloudAlpha * 0.5f;
                                 }
@@ -1840,7 +1840,7 @@ namespace AAMod
                                         expr_370_cp_0.velocity.Y *= 0.5f;
                                     }
                                     Dust expr_38E_cp_0 = Main.dust[num9];
-                                    expr_38E_cp_0.velocity.Y *= (1f + 0.3f * Main.cloudAlpha);
+                                    expr_38E_cp_0.velocity.Y *= 1f + 0.3f * Main.cloudAlpha;
                                     Main.dust[num9].scale += Main.cloudAlpha * 0.2f;
                                     Main.dust[num9].velocity *= 1f + Main.cloudAlpha * 0.5f;
                                 }
@@ -1980,7 +1980,7 @@ namespace AAMod
                             Dust expr_370_cp_0 = Main.dust[num9];
                             expr_370_cp_0.velocity.Y += expr_370_cp_0.velocity.Y * 0.5f;
                             Dust expr_38E_cp_0 = Main.dust[num9];
-                            expr_38E_cp_0.velocity.Y *= (1f + 0.3f * Main.cloudAlpha);
+                            expr_38E_cp_0.velocity.Y *= 1f + 0.3f * Main.cloudAlpha;
                             Main.dust[num9].scale += Main.cloudAlpha * 0.2f;
                             Main.dust[num9].velocity *= 1f + Main.cloudAlpha * 0.5f;
                         }
@@ -2444,7 +2444,7 @@ namespace AAMod
                 {
                     player.lifeRegen = 0;
                 }
-                player.lifeRegen -= Math.Abs((int)(player.velocity.X));
+                player.lifeRegen -= Math.Abs((int)player.velocity.X);
             }
 
 
@@ -2953,7 +2953,7 @@ namespace AAMod
                 {
                     bool wings = drawType == 1;
                     if (wings) { rotation = drawPlayer.bodyRotation; frame = new Rectangle(0, Main.wingsTexture[drawPlayer.wings].Height / 4 * drawPlayer.wingFrame, Main.wingsTexture[drawPlayer.wings].Width, Main.wingsTexture[drawPlayer.wings].Height / 4); framePos = new Vector2(Main.wingsTexture[drawPlayer.wings].Width / 2, Main.wingsTexture[drawPlayer.wings].Height / 8); }
-                    Vector2 pos = (wings ? new Vector2((int)(edi.position.X - Main.screenPosition.X + drawPlayer.width / 2 - 9 * drawPlayer.direction), (int)(edi.position.Y - Main.screenPosition.Y + drawPlayer.height / 2 + 2f * drawPlayer.gravDir)) : new Vector2((int)(edi.position.X - Main.screenPosition.X - frame.Width / 2 + drawPlayer.width / 2), (int)(edi.position.Y - Main.screenPosition.Y + drawPlayer.height - frame.Height + 4f)));
+                    Vector2 pos = wings ? new Vector2((int)(edi.position.X - Main.screenPosition.X + drawPlayer.width / 2 - 9 * drawPlayer.direction), (int)(edi.position.Y - Main.screenPosition.Y + drawPlayer.height / 2 + 2f * drawPlayer.gravDir)) : new Vector2((int)(edi.position.X - Main.screenPosition.X - frame.Width / 2 + drawPlayer.width / 2), (int)(edi.position.Y - Main.screenPosition.Y + drawPlayer.height - frame.Height + 4f));
                     if (sb is List<DrawData>)
                     {
                         DrawData dd = new DrawData(tex, pos + drawPos + (wings ? default : framePos) + vector, new Rectangle?(frame), color, rotation, framePos, 1f, edi.spriteEffects, 0)
@@ -3181,14 +3181,14 @@ namespace AAMod
         public static void DrawAfterHead(PlayerDrawInfo edi, PlayerHeadDrawInfo edhi, bool mapHead)
         {
             Mod mod = AAMod.instance;
-            Player drawPlayer = (mapHead ? edhi.drawPlayer : edi.drawPlayer);
+            Player drawPlayer = mapHead ? edhi.drawPlayer : edi.drawPlayer;
             AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>(mod);
             object drawObj;
             if (mapHead) { drawObj = Main.spriteBatch; } else { drawObj = Main.playerDrawData; }
-            Vector2 Position = (mapHead ? drawPlayer.position : edi.position);
-            int dyeHead = (mapHead ? edhi.armorShader : edi.headArmorShader);
+            Vector2 Position = mapHead ? drawPlayer.position : edi.position;
+            int dyeHead = mapHead ? edhi.armorShader : edi.headArmorShader;
 
-            float scale = (mapHead ? edhi.scale : 0f);
+            float scale = mapHead ? edhi.scale : 0f;
 
             if (mapHead) { Position += new Vector2(0f, -3f * (1f - scale)); }
 

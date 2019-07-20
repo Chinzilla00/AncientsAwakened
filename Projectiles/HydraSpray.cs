@@ -25,7 +25,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-        	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.01f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f, ((255 - projectile.alpha) * 0.15f) / 255f);
+        	Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.01f / 255f, (255 - projectile.alpha) * 0.05f / 255f, (255 - projectile.alpha) * 0.15f / 255f);
 			projectile.scale -= 0.002f;
 			if (projectile.scale <= 0f)
 			{

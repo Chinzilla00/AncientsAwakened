@@ -22,12 +22,13 @@ namespace AAMod.Buffs
             }
             if (!modPlayer.doomite)
             {
+                modPlayer.Searcher = false;
                 player.DelBuff(buffIndex);
                 buffIndex--;
             }
             else
             {
-                player.buffTime[buffIndex] = 18000;
+                player.buffTime[buffIndex] = 2;
             }
         }
     }

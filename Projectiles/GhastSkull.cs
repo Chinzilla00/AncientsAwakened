@@ -137,7 +137,7 @@ namespace AAMod.Projectiles
         {
 			Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("GhastBoom"), projectile.damage, projectile.knockBack, projectile.owner);
             projectile.position = projectile.Center;
-            projectile.width = (projectile.height = 160);
+            projectile.width = projectile.height = 160;
             projectile.Center = projectile.position;
             projectile.maxPenetrate = -1;
             projectile.penetrate = -1;

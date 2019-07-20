@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             for (int num468 = 0; num468 < 10; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, (NPC.AnyNPCs(mod.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179)), 1f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, NPC.AnyNPCs(mod.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179), 1f);
                 Main.dust[num469].noGravity = true;
             }
             projectile.damage = 0;
@@ -69,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             float velMultiplier = 1f;
             Vector2 dist = point - projectile.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < Speed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / Speed);
@@ -86,7 +86,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 Speed *= 0.5f;
             }
-            projectile.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            projectile.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             projectile.velocity *= Speed;
             projectile.velocity *= velMultiplier;
         }
@@ -117,7 +117,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             for (int num468 = 0; num468 < 10; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, (NPC.AnyNPCs(mod.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179)), 1f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, NPC.AnyNPCs(mod.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179), 1f);
                 Main.dust[num469].noGravity = true;
             }
             projectile.damage = 0;
@@ -158,7 +158,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             float velMultiplier = 1f;
             Vector2 dist = point - projectile.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < Speed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / Speed);
@@ -175,7 +175,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 Speed *= 0.5f;
             }
-            projectile.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            projectile.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             projectile.velocity *= Speed;
             projectile.velocity *= velMultiplier;
         }
@@ -205,7 +205,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             for (int num468 = 0; num468 < 10; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, (NPC.AnyNPCs(mod.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179)), 1f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, NPC.AnyNPCs(mod.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179), 1f);
                 Main.dust[num469].noGravity = true;
             }
             projectile.damage = 0;
@@ -246,7 +246,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             float velMultiplier = 1f;
             Vector2 dist = point - projectile.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < Speed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / Speed);
@@ -263,7 +263,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 Speed *= 0.5f;
             }
-            projectile.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            projectile.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             projectile.velocity *= Speed;
             projectile.velocity *= velMultiplier;
         }

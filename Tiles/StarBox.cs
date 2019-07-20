@@ -52,8 +52,8 @@ namespace AAMod.Tiles
         {
             Tile tile = Main.tile[x, y];
             int width = 16, height = 16;
-            int frameX = (tile != null && tile.active() ? tile.frameX + (Main.tileFrame[Type] * 38) : 0);
-            int frameY = (tile != null && tile.active() ? tile.frameY : 0);
+            int frameX = tile != null && tile.active() ? tile.frameX + (Main.tileFrame[Type] * 38) : 0;
+            int frameY = tile != null && tile.active() ? tile.frameY : 0;
             Texture2D Tex = Main.tileTexture[Type];
             if (!Main.dayTime)
             {

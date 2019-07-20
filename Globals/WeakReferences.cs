@@ -628,13 +628,13 @@ namespace AAMod.Globals
                 DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Grip it and rip it", "Rematch the Grips of Chaos in their enhanced, discordian form", AAMod.instance.GetTexture("Achievements/Grips"), AAWorld.downedGripsS);
                 DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Hurricane Horror", "Defeat the Spatial Squid of the Ocean, the Kraken", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedKraken);
                 DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Clockwork Catastrophe", "Defeat the destructive doomsday construct, Zero", AAMod.instance.GetTexture("Achievements/Zero"), AAWorld.downedZero);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Doom Slayer", "Destroy Zero's true, dark form, Zero Protocol", AAMod.instance.GetTexture("Achievements/ZeroA"), (AAWorld.downedZero && Main.expertMode));
+                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Doom Slayer", "Destroy Zero's true, dark form, Zero Protocol", AAMod.instance.GetTexture("Achievements/ZeroA"), AAWorld.downedZero && Main.expertMode);
                 DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Trial By Fire", "Defeat the draconian demon of the Inferno, Akuma", AAMod.instance.GetTexture("Achievements/Akuma"), AAWorld.downedAkuma);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Serpent Slayer", "Slay Akuma's true, blazing form, Akuma Awakened", AAMod.instance.GetTexture("Achievements/Akuma"), (AAWorld.downedAkuma && Main.expertMode));
+                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Serpent Slayer", "Slay Akuma's true, blazing form, Akuma Awakened", AAMod.instance.GetTexture("Achievements/Akuma"), AAWorld.downedAkuma && Main.expertMode);
                 DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Crescent of Madness", "Defeat the dread nightmare of the Mire, Yamata", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedYamata);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Hydra Slayer", "Slay Yamata's true, abyssal form, Yamata Awakened", AAMod.instance.GetTexture("BlankTex"), (AAWorld.downedYamata && Main.expertMode));
+                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Hydra Slayer", "Slay Yamata's true, abyssal form, Yamata Awakened", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedYamata && Main.expertMode);
                 DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Unyielding Discord", "Defeat the discordian doomsayer of chaos, Shen Doragon", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedShen);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Dragon Slayer", "Slay Shen Doragon's true, chaotic form, Shen Doragon Awakened", AAMod.instance.GetTexture("BlankTex"), (AAWorld.downedShen && Main.expertMode));
+                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Dragon Slayer", "Slay Shen Doragon's true, chaotic form, Shen Doragon Awakened", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedShen && Main.expertMode);
             }
         }
 

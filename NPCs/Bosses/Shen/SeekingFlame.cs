@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.Shen
             const int aislotHomingCooldown = 0;
             const int homingDelay = 60;
             const float desiredFlySpeedInPixelsPerFrame = 10;
-            const float amountOfFramesToLerpBy = 20;
+            const float amountOfFramesToLerpBy = 30;
 
             projectile.ai[aislotHomingCooldown]++;
             if (projectile.ai[aislotHomingCooldown] > homingDelay)
@@ -113,13 +113,13 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 for (i = 0; i < 4; i++)
                 {
-                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
                     Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingSplit"), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
                     Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingSplit"), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
                 }
                 for (i = 0; i < 2; i++)
                 {
-                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
                     Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingSplit"), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
                     Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingSplit"), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
                 }

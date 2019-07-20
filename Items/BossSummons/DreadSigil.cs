@@ -118,7 +118,7 @@ Non-Consumable");
                 Main.npc[npcID].netUpdate2 = true;
                 if (spawnMessage)
                 {
-                    string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);
+                    string npcName = !string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName;
                     if ((npcName == null || npcName.Equals("")) && Main.npc[npcID].modNPC != null)
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)

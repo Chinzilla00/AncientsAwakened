@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -994,7 +994,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
             if (RageMode)
             {
-                Color RageColor = BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.Firebrick, drawColor, Color.Firebrick);
+                Color RageColor = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, Color.Firebrick, drawColor, Color.Firebrick);
                 BaseDrawing.DrawAura(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, -5f, RageColor);
             }
             else if (SupremeRageMode)
@@ -1042,8 +1042,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (moveSpeed == 0f || npc.Center == point) return;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }

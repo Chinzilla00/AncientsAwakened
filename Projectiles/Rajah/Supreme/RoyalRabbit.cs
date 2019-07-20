@@ -205,11 +205,11 @@ namespace AAMod.Projectiles.Rajah.Supreme
             projectile.rotation = projectile.velocity.X * 0.05f;
             if (projectile.velocity.X > 0f)
             {
-                projectile.spriteDirection = (projectile.direction = -1);
+                projectile.spriteDirection = projectile.direction = -1;
             }
             else if (projectile.velocity.X < 0f)
             {
-                projectile.spriteDirection = (projectile.direction = 1);
+                projectile.spriteDirection = projectile.direction = 1;
             }
             if (projectile.ai[1] > 0f)
             {
@@ -233,11 +233,11 @@ namespace AAMod.Projectiles.Rajah.Supreme
                 {
                     if ((vector - projectile.Center).X > 0f)
                     {
-                        projectile.spriteDirection = (projectile.direction = -1);
+                        projectile.spriteDirection = projectile.direction = -1;
                     }
                     else if ((vector - projectile.Center).X < 0f)
                     {
-                        projectile.spriteDirection = (projectile.direction = 1);
+                        projectile.spriteDirection = projectile.direction = 1;
                     }
                     if (projectile.ai[1] == 0f)
                     {
@@ -266,18 +266,6 @@ namespace AAMod.Projectiles.Rajah.Supreme
             }
         }
 
-        public override bool PreAI()
-        {
-            if (Main.rand.Next(6) == 0)
-            {
-                int num25 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.Shadowflame, 0f, 0f, 100, Main.DiscoColor, 2f);
-                Main.dust[num25].velocity *= 0.3f;
-                Main.dust[num25].noGravity = true;
-                Main.dust[num25].noLight = true;
-            }
-            return true;
-        }
-
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
@@ -286,7 +274,6 @@ namespace AAMod.Projectiles.Rajah.Supreme
             return false;
         }
     }
-
 
     internal class RabbitBeam : ModProjectile
     {
@@ -324,9 +311,9 @@ namespace AAMod.Projectiles.Rajah.Supreme
                 int num444 = Dust.NewDust(vector31, 1, 1, DustID.Shadowflame, 0f, 0f, 0, Main.DiscoColor);
                 Main.dust[num444].position = vector31;
                 Dust expr_13D2C_cp_0 = Main.dust[num444];
-                expr_13D2C_cp_0.position.X += (projectile.width / 2);
+                expr_13D2C_cp_0.position.X += projectile.width / 2;
                 Dust expr_13D50_cp_0 = Main.dust[num444];
-                expr_13D50_cp_0.position.Y += (projectile.height / 2);
+                expr_13D50_cp_0.position.Y += projectile.height / 2;
                 Main.dust[num444].scale = Main.rand.Next(70, 110) * 0.013f;
                 Main.dust[num444].velocity *= 0.2f;
             }

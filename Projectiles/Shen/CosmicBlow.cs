@@ -34,7 +34,7 @@ namespace AAMod.Projectiles.Shen
         {
 			if(projectile.timeLeft < 60)
 			{
-				projectile.velocity.Y += (projectile.velocity.Y > 0f ? 0.04f : -0.04f);
+				projectile.velocity.Y += projectile.velocity.Y > 0f ? 0.04f : -0.04f;
 				if(projectile.velocity.Y <= -8f) projectile.velocity.Y = -8f;
 				if(projectile.velocity.Y >= 8f) projectile.velocity.Y = 8f;
 			}
@@ -119,7 +119,7 @@ namespace AAMod.Projectiles.Shen
         public override void Kill(int timeLeft)
         {
             projectile.position = projectile.Center;
-            projectile.width = (projectile.height = 80);
+            projectile.width = projectile.height = 80;
             projectile.Center = projectile.position;
             projectile.maxPenetrate = -1;
             projectile.penetrate = -1;

@@ -47,7 +47,7 @@ namespace AAMod.Items.BossSummons
 
         public override bool UseItem(Player player)
         {
-            int overrideDirection = (Main.rand.Next(2) == 0 ? -1 : 1);
+            int overrideDirection = Main.rand.Next(2) == 0 ? -1 : 1;
             SpawnBoss(player, mod.NPCType("Rajah"), true, player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, -1200), "Rajah Rabbit");
             return true;
         }
@@ -76,7 +76,7 @@ namespace AAMod.Items.BossSummons
                 Main.npc[npcID].netUpdate2 = true;
                 if (spawnMessage)
                 {
-                    string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);
+                    string npcName = !string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName;
                     if ((npcName == null || npcName.Equals("")) && Main.npc[npcID].modNPC != null)
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)

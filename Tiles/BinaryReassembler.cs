@@ -105,7 +105,7 @@ namespace AAMod.Tiles
         {
             Tile tile = Main.tile[x, y];
             Texture2D glowTex = mod.GetTexture("Glowmasks/BinaryReassemblerTile_Glow");
-            int frameY = (tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 54) : 0);
+            int frameY = tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 54) : 0;
 
             BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, frameY, false, false, false, null, White);
         }

@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             for (int m = 0; m < (isDead ? 35 : 6); m++)
             {
-                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, mod.DustType<Dusts.ShroomDust>(), default, (isDead ? 2f : 1.5f));
+                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, mod.DustType<Dusts.ShroomDust>(), default, isDead ? 2f : 1.5f);
             }
         }
 

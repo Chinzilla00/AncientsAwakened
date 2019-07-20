@@ -75,7 +75,7 @@ Consumes gel as ammo
                 {
                     Vector2 vector2 = new Vector2(player.position.X + (player.width * 0.5f) + (Main.rand.Next(201) * -player.direction) + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
                     vector2.X = ((vector2.X + player.Center.X) / 2f) + Main.rand.Next(-200, 201);
-                    vector2.Y -= (100 * num113);
+                    vector2.Y -= 100 * num113;
                     float num78 = Main.mouseX + Main.screenPosition.X - vector2.X + (Main.rand.Next(-40, 41) * 0.03f);
                     float num79 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
                     if (num79 < 0f)

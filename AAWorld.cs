@@ -816,7 +816,7 @@ namespace AAMod
         {
             int x = Main.maxTilesX;
             int y = Main.maxTilesY;
-            for (int k = 0; k < (int)((x * y) * 15E-05); k++)
+            for (int k = 0; k < (int)(x * y * 15E-05); k++)
             {
                 int tilesX = WorldGen.genRand.Next(0, Main.maxTilesX);
                 int tilesY = WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY);
@@ -891,7 +891,7 @@ namespace AAMod
 
         public void VoidIslands(GenerationProgress progress)
         {
-            progress.Message = ("0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0");
+            progress.Message = "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0";
 
             progress.Set(0f);
             int VoidHeight = 0;
@@ -979,7 +979,7 @@ namespace AAMod
         {
             for (int i = -size / 2; i < size / 2; ++i)
             {
-                int repY = (size / 2) - (Math.Abs(i));
+                int repY = (size / 2) - Math.Abs(i);
                 int offset = repY / 5;
                 repY += WorldGen.genRand.Next(4);
                 for (int j = -offset; j < repY; ++j)
@@ -1082,7 +1082,7 @@ namespace AAMod
                 WorldGen.PlaceTile(i, Y, type);
                 WorldGen.PlaceTile(i, Y + (sizeY - 1), (ushort)mod.TileType("DoomitePlate"));
             }
-            WorldGen.PlaceTile(X + sizeX - 2, Y + (sizeY) - 1, (ushort)mod.TileType("DoomitePlate"));
+            WorldGen.PlaceTile(X + sizeX - 2, Y + sizeY - 1, (ushort)mod.TileType("DoomitePlate"));
             if (chestType == 1)
             {
                 ChestNumber = Main.rand.Next(4);
@@ -1224,7 +1224,7 @@ namespace AAMod
                     if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedEquinoxInfo"), Color.Violet);
                     for (int i = 0; i < Main.maxTilesX / 25; ++i)
                     {
-                        int X = WorldGen.genRand.Next(50, (Main.maxTilesX / 10) * 9); //X position, centre.
+                        int X = WorldGen.genRand.Next(50, Main.maxTilesX / 10 * 9); //X position, centre.
                         int Y = WorldGen.genRand.Next(10, 100); //Y position, centre.
                         int radius = WorldGen.genRand.Next(2, 5); //Radius.
                         for (int x = X - radius; x <= X + radius; x++)
@@ -1418,15 +1418,15 @@ namespace AAMod
 
         private void MireAndInferno(GenerationProgress progress)
         {
-            infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
-            infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
-            mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
+            infernoSide = (Main.dungeonX > Main.maxTilesX / 2) ? (-1) : 1;
+            infernoPos.X = (Main.maxTilesX >= 8000) ? (infernoSide == 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700)));
+            mirePos.X = (Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700)));
             int j = (int)WorldGen.worldSurfaceLow - 30;
-            while (Main.tile[(int)(infernoPos.X), j] != null && !Main.tile[(int)(infernoPos.X), j].active())
+            while (Main.tile[(int)infernoPos.X, j] != null && !Main.tile[(int)infernoPos.X, j].active())
             {
                 j++;
             }
-            for (int l = (int)(infernoPos.X) - 25; l < (int)(infernoPos.X) + 25; l++)
+            for (int l = (int)infernoPos.X - 25; l < (int)infernoPos.X + 25; l++)
             {
                 for (int m = j - 6; m < j + 90; m++)
                 {
@@ -1446,11 +1446,11 @@ namespace AAMod
             }
             infernoPos.Y = j;
             int q = (int)WorldGen.worldSurfaceLow - 30;
-            while (Main.tile[(int)(mirePos.X), q] != null && !Main.tile[(int)(mirePos.X), q].active())
+            while (Main.tile[(int)mirePos.X, q] != null && !Main.tile[(int)mirePos.X, q].active())
             {
                 q++;
             }
-            for (int l = (int)(mirePos.X) - 25; l < (int)(mirePos.X) + 25; l++)
+            for (int l = (int)mirePos.X - 25; l < (int)mirePos.X + 25; l++)
             {
                 for (int m = q - 6; m < q + 90; m++)
                 {
@@ -1510,8 +1510,8 @@ namespace AAMod
                 ushort tileGrass = (ushort)mod.TileType("Mycelium"); //change to types in your mod
 
                 int worldSize = GetWorldSize();
-                int biomeWidth = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150), biomeWidthHalf = biomeWidth / 2; //how wide the biome is (scaled by world size)
-                int biomeHeight = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150); //how deep the biome is (scaled by world size)   
+                int biomeWidth = worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150, biomeWidthHalf = biomeWidth / 2; //how wide the biome is (scaled by world size)
+                int biomeHeight = worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150; //how deep the biome is (scaled by world size)   
 
                 //ok time to check to see if this spot is actually a good place to gen
                 Dictionary<ushort, int> dictionary = new Dictionary<ushort, int>();
@@ -1609,7 +1609,7 @@ namespace AAMod
             int num = 0;
             int num2 = ChaosAltarsSmashed / 3 + 1;
             float num3 = Main.maxTilesX / 4200;
-            num3 = ((num3 * 310f - 85 * num) * 0.85f) / num2;
+            num3 = (num3 * 310f - 85 * num) * 0.85f / num2;
             if (OreCount >= 3)
             {
                 OreCount = 0;

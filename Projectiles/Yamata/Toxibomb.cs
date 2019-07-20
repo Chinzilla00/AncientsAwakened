@@ -113,7 +113,7 @@ namespace AAMod.Projectiles.Yamata
             double deltaAngle = spread / 4;
             for (int i = 0; i < 2; i++)
             {
-                double offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                double offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
                 int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 3f) * 5, (float)(Math.Cos(offsetAngle) * 3f) * 5, mod.ProjectileType("YWSplit"), projectile.damage / 6, projectile.knockBack, projectile.owner, 0f, 0f);
                 Main.projectile[proj].melee = false;
                 Main.projectile[proj].magic = true;

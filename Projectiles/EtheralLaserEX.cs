@@ -97,7 +97,7 @@ namespace AAMod.Projectiles
 			{
 				vector71 = new Vector2?(Main.player[projectile.owner].Center);
 			}
-			projectile.friendly = (projectile2.ai[0] > 30f);
+			projectile.friendly = projectile2.ai[0] > 30f;
 			if (projectile.velocity.HasNaNs() || projectile.velocity == Vector2.Zero) 
 			{
 				projectile.velocity = -Vector2.UnitY;

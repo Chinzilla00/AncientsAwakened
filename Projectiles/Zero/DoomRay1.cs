@@ -89,6 +89,10 @@ namespace AAMod.Projectiles.Zero
             Player player = Main.player[projectile.owner];
             projectile.position = player.Center + projectile.velocity * MOVE_DISTANCE;
             projectile.timeLeft = 2;
+            if (!player.CheckMana(player.inventory[player.selectedItem].mana, true, false))
+            {
+                projectile.Kill();
+            }
 
             UpdatePlayer(player);
             ChargeLaser(player);
@@ -156,10 +160,6 @@ namespace AAMod.Projectiles.Zero
             }
             else
             {
-                if (!player.CheckMana(player.inventory[player.selectedItem].mana, true, false))
-                {
-                    projectile.Kill();
-                }
                 Vector2 offset = projectile.velocity;
                 offset *= MOVE_DISTANCE - 20;
                 Vector2 pos = player.Center + offset - new Vector2(10, 10);
