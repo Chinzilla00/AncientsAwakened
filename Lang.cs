@@ -415,7 +415,7 @@ namespace AAMod
                         case "AnubisChat9":
                         return "顺便感谢你让我掉在这. 在沙漠里走了几千年的滋味真不好受. ";
                         case "AnubisChat10":
-                        return "对了, 我写了泰勒史记. 但是我也写了另外一本伟大的书. 《阿努比斯生命史诗历险记》! 要看看? ";
+                        return "对了, 我写了泰拉史记. 但是我也写了另外一本伟大的书. 《阿努比斯生命史诗历险记》! 要看看? ";
                         case "AnubisChat11":
                         return "你不觉得讨厌吗, 当";
                         case "AnubisChat12":
