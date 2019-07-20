@@ -19,7 +19,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Lang.TownNPCGoblinSlayer("GoblinSlayerName"));
+            DisplayName.SetDefault("Goblin Slayer");
             Main.npcFrameCount[npc.type] = 26;
             NPCID.Sets.ExtraFramesCount[npc.type] = 10;
             NPCID.Sets.AttackFrameCount[npc.type] = 5;

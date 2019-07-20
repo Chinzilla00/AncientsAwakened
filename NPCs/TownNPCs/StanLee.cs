@@ -12,7 +12,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override bool Autoload(ref string name)
 		{
-			name = Lang.TownNPCStanLee("StanLeeName");
+			name = "Illustrator";
 			return mod.Properties.Autoload;
 		}
 
