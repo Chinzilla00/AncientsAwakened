@@ -2672,8 +2672,8 @@ A spooky friend lights your way";
                         return @"+1 Max Minion
 A void searcher fights by your side";
                         case "DoomiteUHelmBonus":
-                        return @"Increases max amount of minions by 2
-Increases your minions knockback by 100%";
+                        return  @"Increases max amount of minions by 2
+Increases your minions knockback";
                         case "DoomsdayMaskBonus":
                         return @"Life termination systems activated
 You detect all hostile life around you
@@ -2966,7 +2966,7 @@ The Fire spirit becomes more powerful the less mana you have";
                         case "DoomiteVisorBonus":
                         return "+1召唤上限\r\n一个虚空搜索者为你而战";
                         case "DoomiteUHelmBonus":
-                        return "增加2召唤上限\r\n增加100%召唤物击退";
+                        return "增加2召唤上限\r\n增加召唤物击退";
                         case "DoomsdayMaskBonus":
                         return "生命终结系统启动\r\n你可以探测到周围所有的敌对生物\r\n在黑暗中更容易看到\r\n你的召唤物对敌人造成一段时间的防御力削弱\r\n+5召唤上限";
                         case "DoomsdayHelmetBonus":
