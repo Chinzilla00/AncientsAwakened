@@ -102,11 +102,11 @@ namespace AAMod.NPCs.Bosses.Djinn
             {
                 if (player.Center.X > npc.Center.X)
                 {
-                    npc.direction = 1;
+                    npc.direction = -1;
                 }
                 else
                 {
-                    npc.direction = -1;
+                    npc.direction = 1;
                 }
             }
 
@@ -213,22 +213,17 @@ namespace AAMod.NPCs.Bosses.Djinn
                 npc.ai[3]++;
 
                 npc.damage = 50;
-
-                if (Main.netMode != 1)
-                {
-                    if (selectPoint)
-                    {
-                        float point = 500 * -npc.direction;
-                        MovePoint = player.Center + new Vector2(-point, 0);
-                        selectPoint = false;
-                        npc.netUpdate = true;
-                    }
-                }
-
                 if (npc.ai[3] < 120)
                 {
                     if (Main.netMode != 1)
                     {
+                        if (selectPoint)
+                        {
+                            float point = 500 * -npc.direction;
+                            MovePoint = player.Center + new Vector2(-point, 0);
+                            selectPoint = false;
+                            npc.netUpdate = true;
+                        }
                         npc.damage = 20;
                         npc.netUpdate = true;
                     }
@@ -239,9 +234,8 @@ namespace AAMod.NPCs.Bosses.Djinn
                     {
                         if (npc.ai[3] == 120)
                         {
-                            float point = 500 * -npc.direction;
+                            float point = 500 * npc.direction;
                             MovePoint = player.Center + new Vector2(point, 0);
-                            selectPoint = false;
                             npc.netUpdate = true;
                         }
                         npc.damage = 40;

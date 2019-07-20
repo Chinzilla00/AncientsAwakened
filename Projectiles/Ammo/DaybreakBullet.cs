@@ -16,7 +16,7 @@ namespace AAMod.Projectiles.Ammo
             projectile.friendly = true;
             projectile.penetrate = 1;
             projectile.light = 0.5f;
-            projectile.alpha = 255;
+            projectile.alpha = 30;
             projectile.extraUpdates = 2;
             projectile.scale = 1.3f;
             projectile.timeLeft = 600;

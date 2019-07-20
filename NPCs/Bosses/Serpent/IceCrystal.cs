@@ -16,6 +16,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.aiStyle = -1;
             npc.alpha = 255;
             npc.value = 0;
+            npc.noGravity = true;
         }
 
 		public override void SetStaticDefaults()
@@ -29,31 +30,14 @@ namespace AAMod.NPCs.Bosses.Serpent
             {
                 npc.ai[2]++;
             }
-            if (npc.alpha > 0)
+            if (npc.alpha > 40)
             {
                 npc.alpha -= 3;
             }
             else
             {
-                npc.alpha = 0;
-            }
-            float num398 = 700f;
-            bool flag11 = false;
-            for (int num399 = 0; num399 < Main.maxPlayers; num399++)
-            {
-                float num400 = Main.player[num399].position.X + Main.player[num399].width / 2;
-                float num401 = Main.player[num399].position.Y + Main.player[num399].height / 2;
-                float num402 = Math.Abs(npc.position.X + (npc.width / 2) - num400) + Math.Abs(npc.position.Y + (npc.height / 2) - num401);
-                if (num402 < num398 && Collision.CanHit(npc.position, npc.width, npc.height, Main.player[num399].position, Main.player[num399].width, Main.player[num399].height))
-                {
-                    num398 = num402;
-                    flag11 = true;
-                }
-            }
-            if (flag11)
-            {
                 BaseMod.BaseAI.ShootPeriodic(npc, npc.position, npc.width, npc.height, mod.ProjectileType<IceSpike>(), ref npc.ai[0], 180, npc.damage / 2, 7, true);
-                return;
+                npc.alpha = 40;
             }
         }
 

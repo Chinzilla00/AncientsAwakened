@@ -377,8 +377,6 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 internalAI[3]++;
 
-                MoveToPoint(player.Center);
-
                 if (internalAI[2] < 17)
                 {
                     internalAI[1] = 0;
@@ -429,8 +427,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.netUpdate = true;
                 }
 
-                MoveToPoint(MovePoint);
-
                 if ((Vector2.Distance(npc.Center, player.Center) > 300f || internalAI[4] > 120))
                 {
                     npc.frameCounter = 0;
@@ -477,10 +473,15 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 MoveToPoint(wantedVelocity);
             }
+            else if (internalAI[0] == AISTATE_SPIN)
+            {
+                MoveToPoint(MovePoint);
+            }
             else if (internalAI[0] == AISTATE_SLASH) //When charging the player
             {
                 MoveToPoint(npc.Center);
             }
+
             npc.rotation = 0;
 
             npc.noTileCollide = true;
@@ -601,8 +602,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.direction = npc.velocity.X > 0 ? 1 : -1;
             }
         }
-
-
 
         public void MoveToPoint(Vector2 point)
         {

@@ -112,6 +112,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 				return;
             if (!SetLife && Main.netMode != 1)
             {
+                npc.lifeMax = bodyNPC.life / 3;
                 npc.life = bodyNPC.life / 3;
                 SetLife = true;
                 npc.netUpdate = true;
@@ -129,6 +130,23 @@ namespace AAMod.NPCs.Bosses.Hydra
 			
             npc.timeLeft = 100;
 
+            npc.TargetClosest();
+            
+            Player targetPlayer = Main.player[npc.target];
+
+            if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
+
+
+            if (!targetPlayer.GetModPlayer<AAPlayer>(mod).ZoneMire)
+            {
+                npc.damage = 80;
+                npc.defense = 100;
+            }
+            else
+            {
+                npc.damage = 40;
+                npc.defense = 0;
+            }
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
@@ -137,12 +155,6 @@ namespace AAMod.NPCs.Bosses.Hydra
             {
                 damage = npc.damage / 2;
             }
-            npc.TargetClosest();			
-            Player targetPlayer = Main.player[npc.target];
-
-            npc.TargetClosest();
-
-            if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
 
             if (Main.netMode != 1)
             {
