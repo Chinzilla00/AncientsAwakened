@@ -33,7 +33,8 @@ Death Sickle EX");
             item.rare = 9;
             item.expert = true;
             item.shoot = mod.ProjectileType("DecayScythe"); 
-            item.noUseGraphic = true; 
+            item.noUseGraphic = true;
+            item.noMelee = true;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; 
             glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_NONE;
