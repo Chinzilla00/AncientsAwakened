@@ -2396,49 +2396,49 @@ namespace AAMod
                     switch(Boss)
                     {
                         case "Usean":
-                        return "使用";
+                        return "使用 ";
                         case "Usea":
-                        return "使用";
+                        return "使用 ";
                         case "Usethe":
-                        return "使用";
+                        return "使用 ";
                         case "or":
-                        return "或者";
+                        return " 或者 ";
                         case "atnight":
-                        return "在晚上召唤";
+                        return " 在晚上召唤";
                         case "MushroomMonarch":
                         return "赤孢皇";
                         case "MushroomMonarchInfo":
-                        return "在白天或者地表蘑菇地召唤";
+                        return " 在白天, 或者地表蘑菇地召唤";
                         case "FeudalFungus":
                         return "真菌帝";
                         case "FeudalFungusInfo":
-                        return "在荧光蘑菇地或者在晚上召唤";
+                        return " 在荧光蘑菇地, 或者在晚上召唤";
                         case "GripsofChaos":
                         return "混沌双爪";
                         case "Broodmother":
                         return "育母炎龙";
                         case "BroodmotherInfo":
-                        return "白天期间在燎狱召唤\n或者破坏火山下3个龙蛋";
+                        return " 白天期间在燎狱召唤, 或者破坏火山下3个龙蛋";
                         case "Hydra":
                         return "九头渊蛇";
                         case "HydraInfo":
-                        return "夜晚在潭渊召唤\n或者破坏潭渊下3个蒴荚";
+                        return " 夜晚在潭渊召唤, 或者破坏潭渊下3个蒴荚";
                         case "SubzeroSerpent":
                         return "绝零冰蛇";
                         case "SubzeroSerpentInfo":
-                        return "在夜晚雪地召唤";
+                        return " 在夜晚雪地召唤";
                         case "DesertDjinn":
                         return "沙漠巨灵";
                         case "DesertDjinnInfo":
-                        return "白天在沙漠召唤";
+                        return " 白天在沙漠召唤";
                         case "Sagittarius":
                         return "射手座-虚空人马";
                         case "SagittariusInfo":
-                        return "在虚空浮岛召唤";
+                        return " 在虚空浮岛召唤";
                         case "TruffleToad":
                         return "松露蟾蜍";
                         case "TruffleToadInfo":
-                        return "在荧光蘑菇环境召唤";
+                        return " 在荧光蘑菇环境召唤";
                         case "Retriever":
                         return "捕猎者-电子猎犬爪";
                         case "TechnoTruffle":
@@ -2450,7 +2450,7 @@ namespace AAMod
                         case "RajahRabbit":
                         return "忍者巨兔";
                         case "RajahRabbitInfo":
-                        return "或者像一个无耻混蛋一样杀100只兔子";
+                        return " 或者像一个无耻混蛋 一样杀100只兔子";
                         case "NightcrawlerDaybringer":
                         return "昼夜双虫";
                         case "SistersofDiscord":
@@ -2458,21 +2458,21 @@ namespace AAMod
                         case "Yamata":
                         return "远古之八歧大蛇";
                         case "YamataInfo":
-                        return "在夜晚潭渊召唤";
+                        return " 在夜晚潭渊召唤";
                         case "Akuma":
                         return "远古之邪鬼巨龙";
                         case "AkumaInfo":
-                        return "在白天燎狱召唤";
+                        return " 在白天燎狱召唤";
                         case "Zero":
                         return "零械单元";
                         case "ZeroInfo":
-                        return "在浮岛虚空召唤";
+                        return " 在浮岛虚空召唤";
                         case "ShenDoragon":
                         return "上神应龙";
                         case "RajahRabbitRevenge":
                         return "至尊忍者巨兔";
                         case "RajahRabbitRevengeInfo":
-                        return "或者总计杀死1000只兔子后，每杀死100只兔子";
+                        return " 或者总计杀死1000只 兔子后, 每杀死100只兔子";
                     }
                 }
             else
@@ -2486,7 +2486,7 @@ namespace AAMod
                         case "Usethe":
                         return "Use the ";
                         case "or":
-                        return "or";
+                        return " or ";
                         case "atnight":
                         return " at night";
                         case "MushroomMonarch":

@@ -570,7 +570,7 @@ namespace AAMod.Globals
 
             if (bossChecklist != null)
             {
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("MushroomMonarch"), 0f, (Func<bool>)(() => AAWorld.downedMonarch), Lang.BossCheck("Usean") + "[i:" + AAMod.instance.ItemType("IntimidatingMushroom") + "]" + Lang.BossCheck("IntimidatingMushroomInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("MushroomMonarch"), 0f, (Func<bool>)(() => AAWorld.downedMonarch), Lang.BossCheck("Usean") + "[i:" + AAMod.instance.ItemType("IntimidatingMushroom") + "]" + Lang.BossCheck("MushroomMonarchInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("FeudalFungus"), 0.1f, (Func<bool>)(() => AAWorld.downedFungus), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("ConfusingMushroom") + "]" + Lang.BossCheck("FeudalFungusInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("GripsofChaos"), 2f, (Func<bool>)(() => AAWorld.downedGrips), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("CuriousClaw") + "]"+ Lang.BossCheck("or") + "[i:" + AAMod.instance.ItemType("InterestingClaw") + "]" + Lang.BossCheck("atnight"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Broodmother"), 3.5f, (Func<bool>)(() => AAWorld.downedBrood), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("DragonBell") + "]" + Lang.BossCheck("BroodmotherInfo"));
