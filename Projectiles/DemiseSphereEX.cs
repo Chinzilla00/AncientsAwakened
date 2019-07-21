@@ -58,7 +58,7 @@ namespace AAMod.Projectiles
             int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, mod.ProjectileType<DemiseBoom>(), projectile.damage, projectile.knockBack, Main.myPlayer);
             Main.projectile[p].Center = projectile.Center;
             Main.projectile[p].usesIDStaticNPCImmunity = true;
-            Main.projectile[p].localNPCHitCooldown = 3;
+            Main.projectile[p].localNPCHitCooldown = 10;
             for (int num468 = 0; num468 < 10; num468++)
             {
                 int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, DustID.Shadowflame, -projectile.velocity.X * 0.2f,
