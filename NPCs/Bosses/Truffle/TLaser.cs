@@ -1,4 +1,3 @@
-using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -83,12 +82,12 @@ namespace AAMod.NPCs.Bosses.Truffle
                 Main.dust[num746].noGravity = true;
                 Main.dust[num746].velocity *= 0.5f;
                 Dust expr_1E976_cp_0 = Main.dust[num746];
-                expr_1E976_cp_0.velocity.X = expr_1E976_cp_0.velocity.X - (num745 - nPC7.velocity.X * 2f / 3f);
+                expr_1E976_cp_0.velocity.X -= (num745 - nPC7.velocity.X * 2f / 3f);
                 Main.dust[num746].scale = 2.8f;
             }
             if (Main.rand.Next(5) == 0)
             {
-                int num747 = Dust.NewDust(new Vector2(projectile.position.X + projectile.width / 2 - projectile.width / 2 * Math.Sign(nPC7.velocity.X) - 4f, projectile.position.Y + projectile.height - 16f), 4, 16, 31, 0f, 0f, 100, default(Color), 1.5f);
+                int num747 = Dust.NewDust(new Vector2(projectile.position.X + projectile.width / 2 - projectile.width / 2 * Math.Sign(nPC7.velocity.X) - 4f, projectile.position.Y + projectile.height - 16f), 4, 16, 31, 0f, 0f, 100, default, 1.5f);
                 Main.dust[num747].velocity *= 0.5f;
                 Dust expr_1EA8C_cp_0 = Main.dust[num747];
                 expr_1EA8C_cp_0.velocity.X -= nPC7.velocity.X / 2f;
@@ -107,15 +106,37 @@ namespace AAMod.NPCs.Bosses.Truffle
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/TruffleBookIt_Glow1");
-            Texture2D glowTex1 = mod.GetTexture("Glowmasks/TruffleBookIt_Glow2");
-            
-            Color color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(projectile.position), BaseDrawing.GetLightColor(projectile.position), Color.Violet, BaseDrawing.GetLightColor(projectile.position), Color.Violet, BaseDrawing.GetLightColor(projectile.position));
-            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, 66, 98);
-
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, lightColor, true);
-            BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, color, true);
-            BaseDrawing.DrawTexture(spriteBatch, glowTex1, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, Color.White, true);
+            lightColor = projectile.GetAlpha(lightColor);
+            Texture2D texture2D16 = Main.projectileTexture[projectile.type];
+            Texture2D texture2D17 = mod.GetTexture("NPCs/Bosses/Truffle/TLaser_Head");
+            SpriteEffects spriteEffects = SpriteEffects.None;
+            if (projectile.spriteDirection == -1)
+            {
+                spriteEffects = SpriteEffects.FlipHorizontally;
+            }
+            int num220 = texture2D16.Height / Main.projFrames[projectile.type];
+            int y9 = num220 * projectile.frame;
+            int num221 = texture2D17.Height / Main.projFrames[projectile.type];
+            int num222 = num221 * projectile.frame;
+            Rectangle value20 = new Rectangle(0, num222, texture2D17.Width, num221);
+            Vector2 vector28 = projectile.position + new Vector2(projectile.width, 0f) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
+            Main.spriteBatch.Draw(texture2D17, vector28, new Rectangle?(value20), lightColor, projectile.rotation, new Vector2(texture2D17.Width / 2, 0f), projectile.scale, spriteEffects, 0f);
+            int num223 = projectile.height - num220 - 14;
+            if (num223 < 0)
+            {
+                num223 = 0;
+            }
+            if (num223 > 0)
+            {
+                if (num222 == num221 * 3)
+                {
+                    num222 = num221 * 2;
+                }
+                Main.spriteBatch.Draw(texture2D17, vector28 + Vector2.UnitY * (num221 - 1), new Rectangle?(new Rectangle(0, num222 + num221 - 1, texture2D17.Width, 1)), lightColor, projectile.rotation, new Vector2(texture2D17.Width / 2, 0f), new Vector2(1f, num223), spriteEffects, 0f);
+            }
+            value20.Width = texture2D16.Width;
+            value20.Y = y9;
+            Main.spriteBatch.Draw(texture2D16, vector28 + Vector2.UnitY * (num221 - 1 + num223), new Rectangle?(value20), lightColor, projectile.rotation, new Vector2(texture2D16.Width / 2f, 0f), projectile.scale, spriteEffects, 0f);
             return false;
         }
     }
