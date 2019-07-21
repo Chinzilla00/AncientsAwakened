@@ -22,7 +22,7 @@ namespace AAMod.Items.Boss.Yamata
             item.height = 76;
             item.useAnimation = 15;
             item.useTime = 5;
-            item.reuseDelay = 17;
+            item.reuseDelay = 16;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 2.5f;

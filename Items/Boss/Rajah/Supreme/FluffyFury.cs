@@ -9,17 +9,18 @@ namespace AAMod.Items.Boss.Rajah.Supreme
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fluffy Fury");
-            Tooltip.SetDefault("Converts arrows into splitting Carrows");
+            Tooltip.SetDefault(@"Converts arrows into splitting Carrows
+Potential lag warning");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 300;
+            item.damage = 400;
             item.ranged = true;
             item.width = 44;
             item.height = 76;
-            item.useTime = 15;
-            item.useAnimation = 15;
+            item.useTime = 10;
+            item.useAnimation = 10;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 3f;

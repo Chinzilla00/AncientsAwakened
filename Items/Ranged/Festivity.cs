@@ -18,9 +18,12 @@ namespace AAMod.Items.Ranged
 		{
 			item.CloneDefaults(3546);
 			item.damage = 250;
-		}
-		
-		public override void AddRecipes()
+            item.reuseDelay = 30;
+            Items.useTime = 16;
+
+        }
+
+        public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(3546);
