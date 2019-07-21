@@ -23,7 +23,7 @@ namespace AAMod.Projectiles.Yamata
             }
             projectile.glowMask = customGlowMask;
 
-            DisplayName.SetDefault("Eventide Arrow");    //The recording mode
+            DisplayName.SetDefault("Eventide Arrow");    
 		}
 
 		public override void SetDefaults()

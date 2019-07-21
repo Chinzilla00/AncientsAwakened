@@ -17,7 +17,7 @@ namespace AAMod.NPCs.Bosses.Toad
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -58,7 +58,7 @@ namespace AAMod.NPCs.Bosses.Toad
             npc.damage = 30;
             npc.defense = 10;
             npc.knockBackResist = 0f;
-            npc.value = Item.sellPrice(0, 1, 0, 0);
+            npc.value = Item.sellPrice(0, 5, 0, 0);
             npc.aiStyle = -1;
             npc.width = 98;
             npc.height = 72;
@@ -145,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Toad
                         if (npc2 != null && npc2.active)
                         {
                             int dustID = Dust.NewDust(npc2.position, npc2.width, npc2.height, mod.DustType<Dusts.ShroomDust>());
-                            Main.dust[dustID].position += (npc.position - npc.oldPosition);
+                            Main.dust[dustID].position += npc.position - npc.oldPosition;
                             Main.dust[dustID].velocity = (npc.Center - npc2.Center) * 0.10f;
                             Main.dust[dustID].noGravity = true;
                         }
@@ -349,10 +349,10 @@ namespace AAMod.NPCs.Bosses.Toad
                         {
                             for (int num623 = 0; num623 < 4; num623++)
                             {
-                                int num624 = Dust.NewDust(new Vector2(npc.position.X - 20f, npc.position.Y + npc.height), npc.width + 20, 4, 31, 0f, 0f, 100, default(Color), 1.5f);
+                                int num624 = Dust.NewDust(new Vector2(npc.position.X - 20f, npc.position.Y + npc.height), npc.width + 20, 4, 31, 0f, 0f, 100, default, 1.5f);
                                 Main.dust[num624].velocity *= 0.2f;
                             }
-                            int num625 = Gore.NewGore(new Vector2(num622 - 20, npc.position.Y + npc.height - 8f), default(Vector2), Main.rand.Next(61, 64), 1f);
+                            int num625 = Gore.NewGore(new Vector2(num622 - 20, npc.position.Y + npc.height - 8f), default, Main.rand.Next(61, 64), 1f);
                             Main.gore[num625].velocity *= 0.4f;
                         }
                         for (int a = 0; a < 4; a++)

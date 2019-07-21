@@ -8,15 +8,9 @@ namespace AAMod.NPCs.TownNPCs
 {
 	public class StanLee : ModNPC
 	{
-		public override string Texture
-		{
-			get
-			{
-                return "AAMod/NPCs/TownNPCs/StanLee";
-            }
-		}
+        public override string Texture => "AAMod/NPCs/TownNPCs/StanLee";
 
-		public override bool Autoload(ref string name)
+        public override bool Autoload(ref string name)
 		{
 			name = "Illustrator";
 			return mod.Properties.Autoload;

@@ -17,7 +17,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
             item.width = 32;
             item.height = 36;
             item.rare = 11;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
         public override int BossBagNPC => mod.NPCType("MushroomMonarch");
 
@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
         {
             if (Main.rand.Next(7) == 0)
             {
-                player.QuickSpawnItem(mod.ItemType<Items.Vanity.Mask.MonarchMask>());
+                player.QuickSpawnItem(mod.ItemType<Vanity.Mask.MonarchMask>());
             }
             if (Main.rand.Next(20) == 0)
             {

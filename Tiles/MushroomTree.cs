@@ -6,13 +6,7 @@ namespace AAMod.Tiles
 {
     class MushroomTree : ModTree
     {
-        private Mod mod
-        {
-            get
-            {
-                return ModLoader.GetMod("AAMod");
-            }
-        }
+        private Mod mod => ModLoader.GetMod("AAMod");
 
         public override int DropWood()
         {

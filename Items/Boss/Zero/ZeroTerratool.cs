@@ -5,7 +5,6 @@ namespace AAMod.Items.Boss.Zero
 {
     public class ZeroTerratool : BaseAAItem
     {
-        
         public override void SetDefaults()
         {
             item.melee = true;
@@ -24,6 +23,18 @@ namespace AAMod.Items.Boss.Zero
             item.useTurn = true;
             item.damage = 100;
             item.pick = 300;
+            AARarity = 13;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
+        {
+            foreach (Terraria.ModLoader.TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
         public override void SetStaticDefaults()
@@ -43,10 +54,12 @@ You may only have a maximum of 2 tool types active");
             if (player.altFunctionUse == 2)
             {
                 item.noUseGraphic = true;
-                AAMod.instance.TerratoolZState.ToggleUI(AAMod.instance.TerratoolZInterface);
+                AAMod.instance.TerratoolZState.ToggleUI(AAMod.instance.TerratoolInterface);
                 item.pick = 0;
                 item.axe = 0;
                 item.hammer = 0;
+                item.damage = 0;
+                item.damage = 0;
             }
             else
             {
@@ -54,6 +67,7 @@ You may only have a maximum of 2 tool types active");
                 item.pick = UI.TerratoolZUI.Pick;
                 item.axe = UI.TerratoolZUI.Axe;
                 item.hammer = UI.TerratoolZUI.Hammer;
+                item.damage = 100;
             }
             return true;
         }

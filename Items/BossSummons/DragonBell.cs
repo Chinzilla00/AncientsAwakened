@@ -41,19 +41,19 @@ Only useable during the day");
         {
             if (!Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The bell rings on deaf ears. The dragons are asleep now.", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The bell rings on deaf ears. The dragons are asleep now.", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
                 return false;
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
                 if (NPC.AnyNPCs(mod.NPCType("Broodmother")))
                 {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Broodmother has already been called", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Broodmother has already been called", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
                     return false;
                 }
                 return true;
             }
-            if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The bell rings on deaf ears. The dragons are not here.", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
+            if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The bell rings on deaf ears. The dragons are not here.", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
             return false;
         }
 

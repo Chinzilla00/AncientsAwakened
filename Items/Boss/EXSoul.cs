@@ -29,7 +29,7 @@ namespace AAMod.Items.Boss
             item.maxStack = 999;
             item.value = 1000000;
             item.rare = 11;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             
         }
 

@@ -47,7 +47,7 @@ namespace AAMod.Items.BossSummons
 
         public override bool UseItem(Player player)
         {
-            int overrideDirection = (Main.rand.Next(2) == 0 ? -1 : 1);
+            int overrideDirection = Main.rand.Next(2) == 0 ? -1 : 1;
             SpawnBoss(player, mod.NPCType("Rajah"), true, player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, -1200), "Rajah Rabbit");
             return true;
         }
@@ -63,9 +63,9 @@ namespace AAMod.Items.BossSummons
             recipe.AddRecipe();
         }
 
-        public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
+        public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 npcCenter = default, string overrideDisplayName = "", bool namePlural = false)
         {
-            if (npcCenter == default(Vector2))
+            if (npcCenter == default)
                 npcCenter = player.Center;
             if (Main.netMode != 1)
             {
@@ -76,12 +76,12 @@ namespace AAMod.Items.BossSummons
                 Main.npc[npcID].netUpdate2 = true;
                 if (spawnMessage)
                 {
-                    string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);
+                    string npcName = !string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName;
                     if ((npcName == null || npcName.Equals("")) && Main.npc[npcID].modNPC != null)
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)
                     {
-                        if (Main.netMode == 0) { Main.NewText(npcName + " have awoken!", 175, 75, 255, false); }
+                        if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(npcName + " have awoken!", 175, 75, 255, false); }
                         else
                         if (Main.netMode == 2)
                         {
@@ -90,7 +90,7 @@ namespace AAMod.Items.BossSummons
                     }
                     else
                     {
-                        if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                        if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
                         else
                         if (Main.netMode == 2)
                         {

@@ -8,8 +8,8 @@ namespace AAMod.Projectiles.Akuma
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Flamesplosion");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 5;     //The recording mode
+            DisplayName.SetDefault("Flamesplosion");     
+            Main.projFrames[projectile.type] = 5;     
         }
 
         public override void SetDefaults()

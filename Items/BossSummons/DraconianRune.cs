@@ -46,24 +46,24 @@ Non-Consumable");
         {
             if (!Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.", new Color(180, 41, 32), false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.", new Color(180, 41, 32), false);
                 return false;
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
                 if (!player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda && !AAWorld.downedYamata)
                 {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("An image of the scorched tower at the peak of the inferno flashes through your mind", Color.Indigo, false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("An image of the scorched tower at the peak of the inferno flashes through your mind", Color.Indigo, false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
                 {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey kid, that rune only works once, ya know.", new Color(180, 41, 32), false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Hey kid, that rune only works once, ya know.", new Color(180, 41, 32), false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
                 {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey kid, that rune only works once, ya know.", new Color(0, 191, 255), false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Hey kid, that rune only works once, ya know.", new Color(0, 191, 255), false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType("AkumaTransition")))
@@ -72,14 +72,14 @@ Non-Consumable");
                 }
                 return true;
             }
-            if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("You can only use that rune in the Inferno, kid.", new Color(180, 41, 32), false);
+            if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("You can only use that rune in the Inferno, kid.", new Color(180, 41, 32), false);
             return false;
         }
 
         public override bool UseItem(Player player)
         {
-            Main.NewText("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            Main.NewText("Cutting right to the chase I see..? Alright then, prepare for hell..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            if (Main.netMode != 1) BaseUtility.Chat("The air around you begins to heat up...", new Color(175, 75, 255));
+            if (Main.netMode != 1) BaseUtility.Chat("Cutting right to the chase I see..? Alright then, prepare for hell..!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, 0, 0, "Akuma, Draconian Demon", false);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), player.position);
             return true;

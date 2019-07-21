@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void AI()
         {
-        	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.9f) / 255f, ((255 - projectile.alpha) * 0f) / 255f, ((255 - projectile.alpha) * 0.4f) / 255f);
+        	Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.9f / 255f, (255 - projectile.alpha) * 0f / 255f, (255 - projectile.alpha) * 0.4f / 255f);
         	projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
         	if (projectile.ai[1] == 0f)
 			{
@@ -70,7 +70,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
             float spread = 12f * 0.0174f;
 			double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y)- spread/2;
 	    	double Angle = spread/4f;
@@ -80,7 +80,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 	    	{
 		    	for (i = 0; i < 4; i++ )
 		    	{
-		   			offsetAngle = (startAngle + Angle * ( i + i * i ) / 2f ) + 32f * i;
+		   			offsetAngle = startAngle + Angle * ( i + i * i ) / 2f  + 32f * i;
 		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( Math.Sin(offsetAngle) * 2f ), (float)( Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("GlitchBlast"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( -Math.Sin(offsetAngle) * 2f ), (float)( -Math.Cos(offsetAngle) * 6f ), mod.ProjectileType("GlitchBlast"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
 		    	}

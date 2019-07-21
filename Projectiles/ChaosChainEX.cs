@@ -32,7 +32,7 @@ namespace AAMod.Projectiles
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(InternalAI[0]);
                 writer.Write(InternalAI[1]);
@@ -101,10 +101,12 @@ namespace AAMod.Projectiles
             {
                 if (num168 > 1000)
                 {
+                    Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<ChaosChainEXSaw>(), projectile.damage, 0, Main.myPlayer);
                     projectile.ai[0] = 1f;
                 }
                 else if (num168 > 500f)
                 {
+                    Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<ChaosChainEXSaw>(), projectile.damage, 0, Main.myPlayer);
                     projectile.ai[0] = 1f;
                 }
                 projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
@@ -160,13 +162,9 @@ namespace AAMod.Projectiles
 		
 		public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
 		{
-            for (int i = 0; i < 1000; ++i)
+            if (projectile.ai[0] == 0f)
             {
-                if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == mod.ProjectileType<ChaosChainEXSaw>() && InternalAI[0] == 1f && InternalAI[1] == 0)
-                {
-                    InternalAI[0] = 1;
-                    Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<ChaosChainEXSaw>(), projectile.damage, 0, Main.myPlayer);
-                }
+                Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<ChaosChainEXSaw>(), projectile.damage, 0, Main.myPlayer);
             }
             target.AddBuff(mod.BuffType<Buffs.DiscordInferno>(), 240);
         }
@@ -181,7 +179,7 @@ namespace AAMod.Projectiles
             Rectangle frame = new Rectangle(0, 0, Tex.Width, Tex.Height);
             for (int i = 0; i < 1000; ++i)
             {
-                if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == mod.ProjectileType<ChaosChainEXSaw>())
+                if (projectile.ai[0] == 0f)
                 {
                     BaseDrawing.DrawTexture(spriteBatch, Tex2, 0, projectile.position, projectile.width, projectile.height, projectile.scale, Rot, Dir, 1, frame, lightColor, true);
                 }

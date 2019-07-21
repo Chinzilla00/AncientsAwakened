@@ -52,7 +52,7 @@ namespace AAMod.Items.Armor.GoblinSlayer
                 {
                     num2 = player.direction;
                 }
-                vector3 = new Vector2(MathHelper.Lerp(0f, -8f, player.fullRotation / 0.7853982f), MathHelper.Lerp(0f, 2f, Math.Abs(player.fullRotation / 0.7853982f))).RotatedBy(player.fullRotation, default(Vector2));
+                vector3 = new Vector2(MathHelper.Lerp(0f, -8f, player.fullRotation / 0.7853982f), MathHelper.Lerp(0f, 2f, Math.Abs(player.fullRotation / 0.7853982f))).RotatedBy(player.fullRotation, default);
                 if (num2 == Math.Sign(player.fullRotation))
                 {
                     vector3 *= MathHelper.Lerp(1f, 0.6f, Math.Abs(player.fullRotation / 0.7853982f));
@@ -97,7 +97,7 @@ namespace AAMod.Items.Armor.GoblinSlayer
             }
             for (float num6 = 1f; num6 <= num5; num6 += 1f)
             {
-                Dust dust = Main.dust[Dust.NewDust(player.Center, 0, 0, 182, 0f, 0f, 0, default(Color), 1f)];
+                Dust dust = Main.dust[Dust.NewDust(player.Center, 0, 0, 182, 0f, 0f, 0, default, 1f)];
                 dust.position = Vector2.Lerp(vector5, vector4, num6 / num5);
                 dust.noGravity = true;
                 dust.velocity = Vector2.Zero;

@@ -21,7 +21,7 @@ namespace AAMod.Items.Melee   //where is located
             item.value = 300000;
             item.autoReuse = true;   
             item.useTurn = false;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.useAnimation = 25;
             item.useTime = 28;
             item.shootSpeed = 5;

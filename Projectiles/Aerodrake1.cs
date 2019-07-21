@@ -10,8 +10,8 @@ namespace AAMod.Projectiles
 	{
 		public override void SetDefaults()
 		{
-			projectile.width = 54;
-			projectile.height = 22;
+			projectile.width = 16;
+			projectile.height = 16;
 			projectile.friendly = true;
 			projectile.penetrate = 3;
 			projectile.aiStyle = -1;
@@ -53,7 +53,7 @@ namespace AAMod.Projectiles
 			MathHelper.ToRadians(90f);
             if (Main.rand.Next(1) == 0)
             {
-                int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6, 0f, 0f, 200, default(Color), 0.8f);
+                int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6, 0f, 0f, 200, default, 0.8f);
                 Main.dust[dustnumber].velocity *= 0.3f;
             }
         }
@@ -61,7 +61,7 @@ namespace AAMod.Projectiles
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-            int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6, 0f, 0f, 200, default(Color), 0.8f);
+            int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6, 0f, 0f, 200, default, 0.8f);
             Main.dust[dustnumber].velocity *= 0.3f;
         }
 

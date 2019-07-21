@@ -1,5 +1,5 @@
 author = Alphakip
-version = 1.0.0.0
+version = 0.9.0.0
 displayName = Ancients Awakened
 includePDB = true
 buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, *.gif, *.piskel, *.csproj.user, Unused\*
@@ -8,3 +8,4 @@ hideResources = true
 includeSource = false
 modReferences = BaseMod
 homepage = https://discord.gg/MmpCpj4
+weakReferences = CalamityMod

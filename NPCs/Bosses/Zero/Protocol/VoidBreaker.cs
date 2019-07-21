@@ -39,9 +39,9 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 for (int num694 = 0; num694 < num693; num694++)
                 {
                     Vector2 vector56 = Vector2.Normalize(projectile.velocity) * new Vector2(projectile.width, projectile.height) / 2f;
-                    vector56 = vector56.RotatedBy((num694 - (num693 / 2 - 1)) * 3.1415926535897931 / (float)num693, default(Vector2)) + projectile.Center;
+                    vector56 = vector56.RotatedBy((num694 - (num693 / 2 - 1)) * 3.1415926535897931 / (float)num693, default) + projectile.Center;
                     Vector2 value24 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
-                    int num695 = Dust.NewDust(vector56 + value24, 0, 0, 217, value24.X * 2f, value24.Y * 2f, mod.DustType<Dusts.VoidDust>(), default(Color), 1.4f);
+                    int num695 = Dust.NewDust(vector56 + value24, 0, 0, 217, value24.X * 2f, value24.Y * 2f, mod.DustType<Dusts.VoidDust>(), default, 1.4f);
                     Main.dust[num695].noGravity = true;
                     Main.dust[num695].noLight = true;
                     Main.dust[num695].velocity /= 4f;
@@ -68,7 +68,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 for (int num698 = 0; num698 < 200; num698++)
                 {
                     Player player = Main.player[num698];
-                    if ((projectile.ai[0] == 0f || projectile.ai[0] == num698 + 1))
+                    if (projectile.ai[0] == 0f || projectile.ai[0] == num698 + 1)
                     {
                         Vector2 center4 = player.Center;
                         float num699 = Vector2.Distance(center4, vector57);
@@ -82,7 +82,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 }
                 if (num696 >= 0)
                 {
-                    projectile.ai[0] = (num696 + 1);
+                    projectile.ai[0] = num696 + 1;
                     projectile.netUpdate = true;
                 }
             }
@@ -126,7 +126,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 {
                     num706 += 6.2831853071795862;
                 }
-                projectile.velocity = projectile.velocity.RotatedBy(num706 * 0.10000000149011612, default(Vector2));
+                projectile.velocity = projectile.velocity.RotatedBy(num706 * 0.10000000149011612, default);
             }
             float num707 = projectile.velocity.Length();
             projectile.velocity.Normalize();

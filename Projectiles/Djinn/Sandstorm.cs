@@ -120,7 +120,7 @@ namespace AAMod.Projectiles.Djinn
                     value5.X *= -1f;
                     Vector2 value6 = new Vector2(6f, 10f);
                     Vector2 position2 = value + value2 * value5 * 0.5f + value6;
-                    Dust dust = Main.dust[Dust.NewDust(position2, 0, 0, 269, 0f, 0f, 0, default(Color), 1f)];
+                    Dust dust = Main.dust[Dust.NewDust(position2, 0, 0, 269, 0f, 0f, 0, default, 1f)];
                     dust.position = position2;
                     dust.fadeIn = 1.3f;
                     dust.scale = 0.87f;
@@ -147,7 +147,7 @@ namespace AAMod.Projectiles.Djinn
             {
                 if (Main.rand.Next(5) == 0)
                 {
-                    Gore gore = Gore.NewGoreDirect(projectile.TopLeft + Main.rand.NextVector2Square(0f, 1f) * projectile.Size, new Vector2(projectile.velocity.X * 1.5f, -Main.rand.NextFloat() * 16f), Utils.SelectRandom<int>(Main.rand, new int[]
+                    Gore gore = Gore.NewGoreDirect(projectile.TopLeft + Main.rand.NextVector2Square(0f, 1f) * projectile.Size, new Vector2(projectile.velocity.X * 1.5f, -Main.rand.NextFloat() * 16f), Utils.SelectRandom(Main.rand, new int[]
                     {
                         1007,
                         1008,
@@ -163,7 +163,7 @@ namespace AAMod.Projectiles.Djinn
             {
                 if (Main.rand.Next(7) == 0)
                 {
-                    Gore gore2 = Gore.NewGoreDirect(projectile.TopLeft + Main.rand.NextVector2Square(0f, 1f) * projectile.Size, new Vector2(projectile.velocity.X * 1.5f, -Main.rand.NextFloat() * 16f), Utils.SelectRandom<int>(Main.rand, new int[]
+                    Gore gore2 = Gore.NewGoreDirect(projectile.TopLeft + Main.rand.NextVector2Square(0f, 1f) * projectile.Size, new Vector2(projectile.velocity.X * 1.5f, -Main.rand.NextFloat() * 16f), Utils.SelectRandom(Main.rand, new int[]
                     {
                         1007,
                         1008,
@@ -177,7 +177,7 @@ namespace AAMod.Projectiles.Djinn
             {
                 if (Main.rand.Next(7) == 0)
                 {
-                    Gore gore3 = Gore.NewGoreDirect(projectile.TopLeft + Main.rand.NextVector2Square(0f, 1f) * projectile.Size, new Vector2(projectile.velocity.X * 1.5f, -Main.rand.NextFloat() * 16f), Utils.SelectRandom<int>(Main.rand, new int[]
+                    Gore gore3 = Gore.NewGoreDirect(projectile.TopLeft + Main.rand.NextVector2Square(0f, 1f) * projectile.Size, new Vector2(projectile.velocity.X * 1.5f, -Main.rand.NextFloat() * 16f), Utils.SelectRandom(Main.rand, new int[]
                     {
                         1007,
                         1008,

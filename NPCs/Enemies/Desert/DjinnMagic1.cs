@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Enemies.Desert
 
             for (int num85 = 0; num85 < 4; num85++)
             {
-                int num86 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 100, default(Color), 1.2f);
+                int num86 = Dust.NewDust(position, num84, height3, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 100, default, 1.2f);
                 Main.dust[num86].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num86].noGravity = true;
             }
@@ -64,11 +64,11 @@ namespace AAMod.NPCs.Enemies.Desert
             for (int num468 = 0; num468 < 20; num468++)
             {
                 int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.InfinityOverloadB>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
+                    -projectile.velocity.Y * 0.2f, 100, default, 2f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
                 num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.InfinityOverloadB>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color));
+                    -projectile.velocity.Y * 0.2f, 100, default);
                 Main.dust[num469].velocity *= 2f;
             }
             Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("DjinnBurst1"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);

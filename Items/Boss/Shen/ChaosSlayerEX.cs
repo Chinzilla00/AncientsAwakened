@@ -27,11 +27,12 @@ Chaos Slayer EX");
             item.damage = 380;
             item.knockBack = 12;
             item.melee = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.autoReuse = true;
 			item.shoot = mod.ProjectileType("ChaosSlayerSwordEX");
 			item.shootSpeed = 7;
-            item.useTurn = true;	
+            item.useTurn = true;
+            AARarity = 14;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -50,7 +51,7 @@ Chaos Slayer EX");
 			Projectile.NewProjectile(shootPos.X, shootPos.Y, speedX, speedY, projType, damage, knockback, player.whoAmI);
 			for (int m = 0; m < 2; m++)
 			{
-				Projectile.NewProjectile(shootPos.X, shootPos.Y, speedX * 1f, speedY * 1f, (m == 0 ? mod.ProjectileType("ChaosSlayerSwordRedEX") : mod.ProjectileType("ChaosSlayerSwordBlueEX")), damage, knockback, player.whoAmI);
+				Projectile.NewProjectile(shootPos.X, shootPos.Y, speedX * 1f, speedY * 1f, m == 0 ? mod.ProjectileType("ChaosSlayerSwordRedEX") : mod.ProjectileType("ChaosSlayerSwordBlueEX"), damage, knockback, player.whoAmI);
 			}
 			return false;
 		}

@@ -35,6 +35,18 @@ namespace AAMod.Items.Boss.Zero
             item.rare = 9; AARarity = 13;
         }
 
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
+        }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
@@ -67,7 +79,7 @@ namespace AAMod.Items.Boss.Zero
 	        recipe.AddRecipe();
 		}
 		
-		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
             float ai3 = (Main.rand.NextFloat() - 0.75f) * 0.7853982f;
             float spread = 45f * 0.0174f;

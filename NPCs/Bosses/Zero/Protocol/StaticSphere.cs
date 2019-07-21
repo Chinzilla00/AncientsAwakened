@@ -121,7 +121,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 for (i = 0; i < 3; i++)
                 {
-                    offsetAngle = (startAngle + Angle * (i + i * i) / 2f) + 32f * i;
+                    offsetAngle = startAngle + Angle * (i + i * i) / 2f + 32f * i;
                     Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 2f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("Static"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
                     Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 2f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("Static"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
                 }

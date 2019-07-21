@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks
 {
-    public class StormChest : BaseAAItem
+    public abstract class StormChest : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

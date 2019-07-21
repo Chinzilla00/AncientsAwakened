@@ -22,7 +22,7 @@ namespace AAMod.Items.Melee   //where is located
             item.autoReuse = false;   
             item.useTurn = false;
             item.shoot = mod.ProjectileType("JungleReaperP");
-            item.shootSpeed = 8f;                //projectile speed                 
+            item.shootSpeed = 8f;                                 
         }
 
     public override void SetStaticDefaults()

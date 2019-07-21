@@ -124,17 +124,17 @@ namespace AAMod.Tiles
                     {
                         if (!Main.dayTime)
                         {
-                            BaseUtility.Chat("Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.", new Color(180, 41, 32), false);
+                            if (Main.netMode != 1) BaseUtility.Chat("Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.", new Color(180, 41, 32), false);
                             return;
                         }
                         if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
                         {
-                            BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(180, 41, 32), false);
+                            if (Main.netMode != 1) BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(180, 41, 32), false);
                             return;
                         }
                         if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
                         {
-                            BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(0, 191, 255), false);
+                            if (Main.netMode != 1) BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(0, 191, 255), false);
                             return;
                         }
                         for (int m = 0; m < Main.maxProjectiles; m++)
@@ -147,11 +147,11 @@ namespace AAMod.Tiles
                         }
                         if (!AAWorld.downedAkuma)
                         {
-                            Main.NewText("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", new Color(180, 41, 32));
+                            if (Main.netMode != 1) BaseUtility.Chat("Heh, I hope you’re ready to feel the fury of the blazing sun kid.", new Color(180, 41, 32));
                         }
                         if (AAWorld.downedAkuma)
                         {
-                            Main.NewText("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
+                            if (Main.netMode != 1) BaseUtility.Chat("Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.", new Color(180, 41, 32));
                         }
 
                         SpawnBoss(player, "Akuma", "Akuma; Draconian Demon");

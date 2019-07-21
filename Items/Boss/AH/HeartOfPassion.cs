@@ -20,15 +20,15 @@ Below 1/3 of your maximum life, your magic attacks and minions inflict Daybroken
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 11;
             item.accessory = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.defense = 3;
         }
         
 
         public override void UpdateEquip(Player player)
         {
-            player.magicDamage += (1 - player.statLife / player.statLifeMax);
-            player.minionDamage += (1 - player.statLife / player.statLifeMax);
+            player.magicDamage += 1 - player.statLife / player.statLifeMax;
+            player.minionDamage += 1 - player.statLife / player.statLifeMax;
             player.GetModPlayer<AAPlayer>(mod).HeartP = true;
 
             if (player.statLife > (player.statLifeMax * (2/3)))

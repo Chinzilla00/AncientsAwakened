@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 		public override void SendExtraAI(BinaryWriter writer)
 		{
 			base.SendExtraAI(writer);
-			if((Main.netMode == 2 || Main.dedServ))
+			if(Main.netMode == 2 || Main.dedServ)
 			{
 				writer.Write(internalAI[0]);
 				writer.Write(internalAI[1]);
@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.damage = 12;  //boss damage
             npc.defense = 12;    //boss defense
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
-            npc.value = Item.sellPrice(0, 0, 75, 45);
+            npc.value = Item.sellPrice(0, 0, 50, 0);
             npc.aiStyle = 26;
             npc.width = 74;
             npc.height = 108;

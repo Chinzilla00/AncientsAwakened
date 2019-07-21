@@ -29,27 +29,6 @@ N0N-C0NSUMABLE");
             item.useStyle = 4;
         }
 
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
-                texture,
-                new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
-        }
-
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)
@@ -68,23 +47,23 @@ N0N-C0NSUMABLE");
             {
                 if (NPC.AnyNPCs(mod.NPCType("Zero")))
                 {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("ERR0R. ZER0 UNIT ALREADY ACTIVE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("ERR0R. ZER0 UNIT ALREADY ACTIVE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType("ZeroAwakened")))
                 {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("ERR0R. ZER0 UNIT ALREADY ACTIVE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("ERR0R. ZER0 UNIT ALREADY ACTIVE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
                     return false;
                 }
                 return true;
             }
-            if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("ERR0R. PLAYER.GETM0DPLAYER<AAPLAYER>(M0D).Z0NEV0ID == FALSE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
+            if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("ERR0R. PLAYER.GETM0DPLAYER<AAPLAYER>(M0D).Z0NEV0ID == FALSE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
             return false;
         }
 
         public override bool UseItem(Player player)
         {
-            Main.NewText("D00MSDAY PR0T0CALL ACTIVATED MANUALLY. TERMINATI0N SYSTEMS AT FULL P0WER", Color.Red.R, Color.Red.G, Color.Red.B);
+            if (Main.netMode != 1) BaseUtility.Chat("D00MSDAY PR0T0CALL ACTIVATED MANUALLY. TERMINATI0N SYSTEMS AT FULL P0WER", Color.Red.R, Color.Red.G, Color.Red.B);
 
             if (Main.netMode != 1)
             {

@@ -48,7 +48,7 @@ namespace AAMod.Tiles
         {
             if (!glow) return;
             Color color = BaseMod.BaseUtility.ColorMult(Color.LimeGreen, 1.4f);
-            r = (color.R / 255f); g = (color.G / 255f); b = (color.B / 255f);
+            r = color.R / 255f; g = color.G / 255f; b = color.B / 255f;
         }
     }
 }

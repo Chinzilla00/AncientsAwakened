@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Enemies.Void
 
 		public override void PostAI()
 		{
-			npc.spriteDirection = (npc.velocity.X > 0 ? -1 : 1);
+			npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
 		}
 
         public override void AI()

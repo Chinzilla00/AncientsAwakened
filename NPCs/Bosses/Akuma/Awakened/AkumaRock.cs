@@ -61,7 +61,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 			}
 			for (int num339 = 0; num339 < 2; num339++)
 			{
-				int num340 = Gore.NewGore(projectile.position + new Vector2(projectile.width * Main.rand.Next(100) / 100f, projectile.height * Main.rand.Next(100) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
+				int num340 = Gore.NewGore(projectile.position + new Vector2(projectile.width * Main.rand.Next(100) / 100f, projectile.height * Main.rand.Next(100) / 100f) - Vector2.One * 10f, default, Main.rand.Next(61, 64), 1f);
 				Main.gore[num340].velocity *= 0.3f;
 				Gore expr_B4D2_cp_0 = Main.gore[num340];
 				expr_B4D2_cp_0.velocity.X += Main.rand.Next(-10, 11) * 0.05f;
@@ -76,7 +76,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 			}
 			for (int num341 = 0; num341 < 5; num341++)
 			{
-				int num342 = Utils.SelectRandom<int>(Main.rand, new int[]
+				int num342 = Utils.SelectRandom(Main.rand, new int[]
 				{
                     mod.DustType<Dusts.AkumaADust>(),
                     mod.DustType<Dusts.AkumaDust>()

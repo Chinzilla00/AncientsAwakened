@@ -41,19 +41,19 @@ Can only be used in a surface glowing mushroom biome");
         {
             if (!player.ZoneGlowshroom && player.Center.Y > Main.worldSurface)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The toadstool croaks..?", Color.Blue, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The toadstool croaks..?", Color.Blue, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<TruffleToad>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Truffle Toad croaks", Color.Blue, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Truffle Toad croaks", Color.Blue, false);
                 return false;
             }
             return true;
         }
 
-        public override void UseStyle(Player p) { BaseMod.BaseUseStyle.SetStyleBoss(p, item, true, true); }
-        public override bool UseItemFrame(Player p) { BaseMod.BaseUseStyle.SetFrameBoss(p, item); return true; }
+        public override void UseStyle(Player p) { BaseUseStyle.SetStyleBoss(p, item, true, true); }
+        public override bool UseItemFrame(Player p) { BaseUseStyle.SetFrameBoss(p, item); return true; }
 
         public override void AddRecipes()
         {

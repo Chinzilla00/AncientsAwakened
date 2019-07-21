@@ -27,6 +27,7 @@ namespace AAMod.NPCs.Enemies.Other
             npc.knockBackResist = 0.4f;
             npc.aiStyle = -1;
             npc.noGravity = true;
+            npc.lavaImmune = true;
         }
 
         public override void AI()

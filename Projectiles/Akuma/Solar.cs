@@ -15,7 +15,7 @@ namespace AAMod.Projectiles.Akuma   //The directory for your .cs and .png; Examp
         {
             if (Main.netMode != 2)
             {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
@@ -47,8 +47,8 @@ namespace AAMod.Projectiles.Akuma   //The directory for your .cs and .png; Examp
             Dust dust1;
             Dust dust2;
             Vector2 position = projectile.position;
-            dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default(Color), 1f)];
-            dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default(Color), 1f)];
+            dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default, 1f)];
+            dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default, 1f)];
             dust1.noGravity = true;
             dust2.noGravity = true;
         }
@@ -58,6 +58,7 @@ namespace AAMod.Projectiles.Akuma   //The directory for your .cs and .png; Examp
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.Daybreak, 300);
+            Main.PlaySound(SoundID.Item14, projectile.position);
             Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
         }
     }

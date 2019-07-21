@@ -20,7 +20,6 @@ namespace AAMod.Projectiles.EFish
         public override void SetDefaults()
         {
             projectile.CloneDefaults(407);
-			aiType = 407;
         }
 
         public override void AI()
@@ -221,11 +220,11 @@ namespace AAMod.Projectiles.EFish
             projectile.frameCounter++;
             if (projectile.velocity.X > 0f)
             {
-                projectile.spriteDirection = (projectile.direction = -1);
+                projectile.spriteDirection = projectile.direction = -1;
             }
             else if (projectile.velocity.X < 0f)
             {
-                projectile.spriteDirection = (projectile.direction = 1);
+                projectile.spriteDirection = projectile.direction = 1;
             }
             if (projectile.ai[1] > 0f)
             {
@@ -259,7 +258,8 @@ namespace AAMod.Projectiles.EFish
                             Vector2 value4 = vector - projectile.Center;
                             value4.Normalize();
                             value4 *= scaleFactor4;
-                            int num33 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value4.X, value4.Y, num29, projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+                            int num33 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value4.X*4, value4.Y*4, num29, projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+                            Main.projectile[num33].minion = true;
                             Main.projectile[num33].timeLeft = 300;
                             Main.projectile[num33].netUpdate = true;
                             projectile.netUpdate = true;

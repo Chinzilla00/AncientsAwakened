@@ -10,7 +10,7 @@ namespace AAMod.Items.Boss.Serpent
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Sickleshot");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("Shoots 2 waves of 2 ice arrows with high velocity in short succession");
         }
 
         public override void SetDefaults()

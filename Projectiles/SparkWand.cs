@@ -80,7 +80,7 @@ namespace AAMod.Projectiles
 					Vector2 value2 = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY) - vector3;
 					if (player.gravDir == -1f)
 					{
-						value2.Y = (Main.screenHeight - Main.mouseY) + Main.screenPosition.Y - vector3.Y;
+						value2.Y = Main.screenHeight - Main.mouseY + Main.screenPosition.Y - vector3.Y;
 					}
 					Vector2 vector4 = Vector2.Normalize(value2);
 					if (float.IsNaN(vector4.X) || float.IsNaN(vector4.Y))
@@ -103,20 +103,23 @@ namespace AAMod.Projectiles
 			player.heldProj = projectile.whoAmI;
 			player.itemTime = 2;
 			player.itemAnimation = 2;
-			player.itemRotation = (float)Math.Atan2((projectile.velocity.Y * projectile.direction), (projectile.velocity.X * projectile.direction));
+			player.itemRotation = (float)Math.Atan2(projectile.velocity.Y * projectile.direction, projectile.velocity.X * projectile.direction);
 
 			counter++;
 
             if (counter >= 80)
             {
+				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 13);
                 chargeLevel = 2;
             }
             else if (counter >= 40)
             {
+				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 13);
                 chargeLevel = 1;
             }
             else
             {
+				Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 13);
                 chargeLevel = 0;
             }
 
@@ -153,12 +156,15 @@ namespace AAMod.Projectiles
                 switch (chargeLevel)
                 {
                     case 0:
+						Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 8);
 						Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, ProjectileID.Spark, projectile.damage, 1f, player.whoAmI);
 						break;
 					case 1:
+						Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 88);
                         Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, mod.ProjectileType("Spark2"), (int)(projectile.damage * 1.5), 3f, player.whoAmI);
 						break;
 					case 2:
+						Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 88);
                         Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, mod.ProjectileType("Spark3"), projectile.damage * 2, 6f, player.whoAmI);
 						break;
                 }

@@ -45,14 +45,14 @@ namespace AAMod.Projectiles.Thorium
 				rot -= 0.20f;
 			}
 
-			projectile.Center = player.Center + new Vector2(-8f, -8f) + RotateVector(default(Vector2), rotVec, rot + (projectile.ai[0] * (6.28f / 2)));
+			projectile.Center = player.Center + new Vector2(-8f, -8f) + RotateVector(default, rotVec, rot + (projectile.ai[0] * (6.28f / 2)));
 
 			for (int m = 0; m < 5; m++)
             {
                 float velX = projectile.velocity.X / 3f * m;
                 float velY = projectile.velocity.Y / 3f * m;
 				int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.IceDust>(), 0, 0, 0);				
-                //int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, 55, 0f, 0f, 0, default(Color), 1.2f);
+                //int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, 55, 0f, 0f, 0, default, 1.2f);
                 Main.dust[dustID].position.X = projectile.Center.X - velX;
                 Main.dust[dustID].position.Y = projectile.Center.Y - velY;
                 Main.dust[dustID].velocity *= 0f;

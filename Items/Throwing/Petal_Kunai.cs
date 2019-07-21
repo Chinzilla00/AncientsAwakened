@@ -10,7 +10,7 @@ namespace AAMod.Items.Throwing
 		public override void SetDefaults()
 		{
 
-			item.damage = 60;
+			item.damage = 50;
 			item.ranged = true;
 			item.width = 14;
 			item.noUseGraphic = true;
@@ -28,7 +28,8 @@ namespace AAMod.Items.Throwing
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.crit = 3;
-		}
+            item.noMelee = true;
+        }
 
 		public override void SetStaticDefaults()
 		{

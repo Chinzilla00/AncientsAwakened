@@ -39,7 +39,7 @@ Storm Rifle EX");
             item.knockBack = 3;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 9;
-            item.UseSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Thunderlord");
+            item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Thunderlord");
             item.autoReuse = true; 
             item.shootSpeed = 9f;
             item.useAmmo = AmmoID.Bullet;

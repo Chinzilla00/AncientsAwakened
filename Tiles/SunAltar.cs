@@ -69,7 +69,7 @@ namespace AAMod.Tiles
             {
                 animate = Main.tileFrame[Type] * animationFrameHeight;
             }
-            Main.spriteBatch.Draw(texture, new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY + animate, 16, height), Lighting.GetColor(i, j), 0f, default(Vector2), 1f, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(texture, new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY + animate, 16, height), Lighting.GetColor(i, j), 0f, default, 1f, SpriteEffects.None, 0f);
             Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/SunAltar_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY + animate, 16, height), Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
             return false;
         }
@@ -90,8 +90,8 @@ namespace AAMod.Tiles
 
         public override void HitWire(int i, int j)
         {
-            int x = i - ((Main.tile[i, j].frameX / 18) % 2);
-            int y = j - ((Main.tile[i, j].frameY / 18) % 3);
+            int x = i - (Main.tile[i, j].frameX / 18 % 2);
+            int y = j - (Main.tile[i, j].frameY / 18 % 3);
             for (int l = x; l < x + 2; l++)
             {
                 for (int m = y; m < y + 3; m++)

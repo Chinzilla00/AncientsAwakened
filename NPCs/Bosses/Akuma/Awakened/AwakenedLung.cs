@@ -11,8 +11,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 {
     public class AwakenedLung : ModNPC
 	{
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLung"; } }
-        
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLung";
+
 
         public override void SetStaticDefaults()
 		{
@@ -174,7 +174,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 float newSpeed = speed / length;
                 dirX *= newSpeed;
                 dirY *= newSpeed;
-                if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || (npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0))
+                if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0)
                 {
                     if (npc.velocity.X < dirX)
                         npc.velocity.X = npc.velocity.X + acceleration;
@@ -270,7 +270,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     npc.netUpdate = true;
                 npc.localAI[0] = 0.0f;
             }
-            if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || (npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0)) && !npc.justHit)
+            if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0) && !npc.justHit)
                 npc.netUpdate = true;
 
             return false;
@@ -303,17 +303,12 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public int roarTimer = 0; //if this is > 0, then use the roaring frame.
         public int roarTimerMax = 120; //default roar timer. only changed for fire breath as it's longer.
         public bool Roaring //wether or not he is roaring. only used clientside for frame visuals.
-        {
-            get
-            {
-                return roarTimer > 0;
-            }
-        }
+=> roarTimer > 0;
     }
     
     public class AwakenedLungBody : AwakenedLung
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLungBody"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLungBody";
 
         public override void SetStaticDefaults()
         {
@@ -337,7 +332,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             Vector2 chasePosition = Main.npc[(int)npc.ai[1]].Center;
             Vector2 directionVector = chasePosition - npc.Center;
-            npc.spriteDirection = ((directionVector.X > 0f) ? 1 : -1);
+            npc.spriteDirection = (directionVector.X > 0f) ? 1 : -1;
             if (npc.ai[3] > 0)
                 npc.realLife = (int)npc.ai[3];
             if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)
@@ -410,7 +405,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
     
     public class AwakenedLungTail : AwakenedLung
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLungTail"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/Awakened/AwakenedLungTail";
 
         public override void SetStaticDefaults()
         {
@@ -439,7 +434,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             Vector2 chasePosition = Main.npc[(int)npc.ai[1]].Center;
             Vector2 directionVector = chasePosition - npc.Center;
-            npc.spriteDirection = ((directionVector.X > 0f) ? 1 : -1);
+            npc.spriteDirection = (directionVector.X > 0f) ? 1 : -1;
             if (npc.ai[3] > 0)
                 npc.realLife = (int)npc.ai[3];
             if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)
@@ -496,7 +491,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
         {
-            spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+            spriteEffects = npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         }
 
         public override void BossHeadRotation(ref float rotation)

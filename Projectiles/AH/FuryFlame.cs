@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -19,11 +20,11 @@ namespace AAMod.Projectiles.AH
             projectile.hostile = false;
             projectile.friendly = true;
             projectile.ignoreWater = true;
-            projectile.penetrate = 1;
+            projectile.penetrate = -1;
             projectile.alpha = 255;
             projectile.timeLeft = 100;
             projectile.aiStyle = -1;
-			projectile.ranged = true;
+			projectile.magic = true;
             projectile.penetrate = 100;
         }
         
@@ -82,28 +83,13 @@ namespace AAMod.Projectiles.AH
             {
                 projectile.ai[0] += 1f;
             }
-            if (projectile.penetrate < 100)
-            {
-                projectile.alpha = 0;
-                projectile.velocity.X *= 0.00f;
-                projectile.velocity.Y *= 0.00f;
-                if (++projectile.frameCounter >= 4)
-                {
-                    projectile.frameCounter = 0;
-                    if (++projectile.frame >= 6)
-                    {
-                        projectile.Kill();
-
-                    }
-                }
-            }
             projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
         }
-
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType("Dragonfire"), 300);
-			damage *= 2;
+			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
+            int Boom = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType<MagicBoom>(), damage, knockback, Main.myPlayer, 0, 0);
+            Main.projectile[Boom].Center = projectile.Center;
         }
     }
 }

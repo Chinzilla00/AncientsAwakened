@@ -10,7 +10,7 @@ namespace AAMod.Items.Boss.AH
     {
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Flame Vortex Staff");	
+            DisplayName.SetDefault("Flame Vortex Staff");
             BaseUtility.AddTooltips(item, new string[] { "Conjures flaming spheres that increase your minion damage", "Each sphere takes up 1 minion slot", "You must have at least 2 open slots for the first summon" });			
 		}		
 
@@ -30,10 +30,21 @@ namespace AAMod.Items.Boss.AH
             item.noMelee = true;
             item.summon = true;
             item.shoot = mod.ProjType("FireOrbiter");
-            item.shootSpeed = 5;			
+            item.shootSpeed = 5;
         }
-		
-		public override void UseStyle(Player player)
+
+        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
+        {
+            foreach (Terraria.ModLoader.TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
+
+        public override void UseStyle(Player player)
 		{
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
 			{

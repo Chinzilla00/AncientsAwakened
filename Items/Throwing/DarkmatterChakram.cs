@@ -30,6 +30,7 @@ namespace AAMod.Items.Throwing
 			item.shoot = mod.ProjectileType ("DMC");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
+            item.noMelee = true;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

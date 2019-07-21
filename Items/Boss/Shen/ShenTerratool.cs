@@ -5,10 +5,8 @@ namespace AAMod.Items.Boss.Shen
 {
     public class ShenTerratool : BaseAAItem
     {
-        
         public override void SetDefaults()
         {
-
             item.melee = true;
             item.width = 54;
             item.height = 60;
@@ -24,7 +22,18 @@ namespace AAMod.Items.Boss.Shen
             item.useTurn = true;
             item.damage = 120;
             item.pick = 320;
+            AARarity = 14;
+        }
 
+        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
+        {
+            foreach (Terraria.ModLoader.TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity14;
+                }
+            }
         }
 
         public override void SetStaticDefaults()
@@ -44,11 +53,11 @@ You may only have a maximum of 2 tool types active");
             if (player.altFunctionUse == 2)
             {
                 item.noUseGraphic = true;
-                AAMod.instance.TerratoolSState.ToggleUI(AAMod.instance.TerratoolSInterface);
+                AAMod.instance.TerratoolSState.ToggleUI(AAMod.instance.TerratoolInterface);
                 item.pick = 0;
                 item.axe = 0;
                 item.hammer = 0;
-                return false;
+                item.damage = 0;
             }
             else
             {
@@ -56,6 +65,7 @@ You may only have a maximum of 2 tool types active");
                 item.pick = UI.TerratoolSUI.Pick;
                 item.axe = UI.TerratoolSUI.Axe;
                 item.hammer = UI.TerratoolSUI.Hammer;
+                item.damage = 120;
             }
             return true;
         }

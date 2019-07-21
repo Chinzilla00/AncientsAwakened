@@ -15,7 +15,7 @@ namespace AAMod.Items.Ranged
             item.ranged = true;
             item.width = 36;
             item.height = 64;
-            item.useTime = 14;
+            item.useTime = 18;
             item.useAnimation = 14;
             item.useStyle = 5;
             item.shoot = 3;
@@ -38,7 +38,7 @@ namespace AAMod.Items.Ranged
             for (int i = 0; i < 3; i++)
             {
                 offsetAngle = startAngle + (deltaAngle * i);
-                Terraria.Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("RadiumArrow"), damage, knockBack, item.owner);
+                Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("RadiumArrow"), damage, knockBack, item.owner);
             }
             return true;
         }

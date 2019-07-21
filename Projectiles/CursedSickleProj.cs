@@ -71,7 +71,7 @@ namespace AAMod.Projectiles
             Main.PlaySound(SoundID.Item10, projectile.position);
             for (int num611 = 0; num611 < 30; num611++)
             {
-                int num612 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 75, projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 1.7f);
+                int num612 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 75, projectile.velocity.X, projectile.velocity.Y, 100, default, 1.7f);
                 Main.dust[num612].noGravity = true;
                 Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 75, projectile.velocity.X, projectile.velocity.Y, 100);
             }

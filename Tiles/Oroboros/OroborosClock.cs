@@ -59,7 +59,7 @@ namespace AAMod.Tiles.Oroboros
 				//Get the decimal points of time.
 				double deltaTime = time - intTime;
 				//multiply them by 60. Minutes, probably
-				deltaTime = ((int)(deltaTime * 60.0));
+				deltaTime = (int)(deltaTime * 60.0);
 				//This could easily be replaced by deltaTime.ToString()
 				string text2 = string.Concat(deltaTime);
 				if (deltaTime < 10.0)
@@ -79,7 +79,7 @@ namespace AAMod.Tiles.Oroboros
 				}
 				//Whack it all together to get a HH:MM format
 				var newText = string.Concat("Time: ", intTime, ":", text2, " ", text);
-				Main.NewText(newText, 255, 240, 20);
+				if (Main.netMode != 1) BaseMod.BaseUtility.Chat(newText, 255, 240, 20);
 			}
 		}
 

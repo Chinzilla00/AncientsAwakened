@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Truffle
 			item.width = 36;
 			item.height = 32;
 			item.rare = 9;
-			item.expert = true;
+			item.expert = true; item.expertOnly = true;
         }
         public override int BossBagNPC => mod.NPCType("TechnoTruffle");
 

@@ -17,35 +17,34 @@ namespace AAMod.Projectiles
 			projectile.hostile = false;
             projectile.timeLeft = 900;
         }
-		
-		public override void AI()
+        public override void AI()
 		{
             if (Main.rand.NextFloat() < 1f)
             {
                 Dust dust;
                 Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 177, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.381579f)];
+                dust = Main.dust[Dust.NewDust(position, 30, 30, 177, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.381579f)];
                 dust.noGravity = true;
             }
             if (Main.rand.NextFloat() < 1f)
             {
                 Dust dust;
                 Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 177, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.381579f)];
+                dust = Main.dust[Dust.NewDust(position, 30, 30, 177, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.381579f)];
                 dust.noGravity = true;
             }
             if (Main.rand.NextFloat() < 1f)
             {
                 Dust dust;
                 Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 177, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.381579f)];
+                dust = Main.dust[Dust.NewDust(position, 30, 30, 177, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.381579f)];
                 dust.noGravity = true;
             }
             if (Main.rand.NextFloat() < 1f)
             {
                 Dust dust;
                 Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 30, 30, 177, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.381579f)];
+                dust = Main.dust[Dust.NewDust(position, 30, 30, 177, 0f, 0f, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1.381579f)];
                 dust.noGravity = true;
             }
         }

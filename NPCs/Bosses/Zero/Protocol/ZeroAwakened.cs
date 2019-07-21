@@ -27,14 +27,14 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public override void SetDefaults()
         {
             npc.lifeMax = 600000;
-            npc.damage = 190;
+            npc.damage = 67;
             npc.defense = 70;
             npc.knockBackResist = 0f;
             npc.width = 170;
             npc.height = 170;
             npc.friendly = false;
             npc.aiStyle = 0;
-            npc.value = Item.sellPrice(2, 0, 0, 0);
+            npc.value = Item.sellPrice(0, 40, 0, 0);
             npc.npcSlots = 1f;
             npc.boss = true;
             npc.lavaImmune = true;
@@ -52,10 +52,15 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             if (AAWorld.downedAllAncients)
             {
-                npc.lifeMax = 1000000;
+                npc.lifeMax = 700000;
                 npc.damage = 220;
                 npc.defense = 300;
             }
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
         }
 
         public override void NPCLoot()
@@ -65,7 +70,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
                 if (!AAWorld.downedZero)
                 {
-                    Main.NewText("Doomstone stops glowing. You can now mine it.", Color.Silver);
+                    if (Main.netMode != 1) BaseUtility.Chat("Doomstone stops glowing. You can now mine it.", Color.Silver);
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("ZeroRune"));
                 }
                 AAWorld.downedZero = true;
@@ -95,7 +100,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             if (Main.expertMode)
             {
                 potionType = ItemID.SuperHealingPotion;
-                Projectile.NewProjectile((new Vector2(npc.Center.X, npc.Center.Y)), (new Vector2(0f, 0f)), mod.ProjectileType("ZeroDeath1"), 0, 0);
+                Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 0f), mod.ProjectileType("ZeroDeath1"), 0, 0);
             }
             else
             {
@@ -114,12 +119,12 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             if (npc.life <= npc.lifeMax / 4 && Panic == false && !AAWorld.downedZero)
             {
                 Panic = true;
-                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT. ENGAGE T0TAL 0FFENCE PR0T0C0L", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (npc.life <= npc.lifeMax / 4 && Panic == false && AAWorld.downedZero)
             {
                 Panic = true;
-                Main.NewText("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L 0MEGA", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat("WARNING. DRASTIC DAMAGE DETECTED, FAILURE IMMINENT AGAIN. ENGAGE T0TAL 0FFENCE PR0T0C0L 0MEGA", Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (damage > 30)
             {
@@ -134,16 +139,16 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     int Yint = Main.rand.Next(-400, 400);
                     if ((Xint < -100 || Xint > 100) && (Yint < -90 || Yint > 90))
                     {
-                        //Main.NewText("CALLED! XINT: " + Xint + ". YINT: " + Yint);
+                        //if (Main.netMode != 1) BaseMod.BaseUtility.Chat("CALLED! XINT: " + Xint + ". YINT: " + Yint);
                         Player player = Main.player[npc.target];
-                        Vector2 tele = new Vector2((player.Center.X + Xint), (player.Center.Y + Yint));
+                        Vector2 tele = new Vector2(player.Center.X + Xint, player.Center.Y + Yint);
                         npc.Center = tele;
                     }
                 }
             }
             if (npc.life <= 0 && !Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
             {
-                Main.NewText("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U", Color.Red.R, Color.Red.G, Color.Red.B);
             }
         }
 
@@ -160,7 +165,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             for (int k = 0; k < npc.oldPos.Length; k++)
             {
                 Texture2D ZeroTrail = mod.GetTexture("NPCs/Bosses/Zero/Protocol/ZeroTrail");
-                Vector2 drawPos = npc.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, npc.gfxOffY);
                 Color color = npc.GetAlpha(color1) * ((npc.oldPos.Length - k) / (float)npc.oldPos.Length);
                 spritebatch.Draw(ZeroTrail, npc.position, null, color, npc.rotation, drawOrigin, npc.scale, SpriteEffects.None, 0f);
             }
@@ -178,7 +182,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 if (damage > npc.lifeMax / 8)
                 {
-                    Main.NewText("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red);
+                    if (Main.netMode != 1) BaseUtility.Chat("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red);
                     damage = 0;
                 }
 
@@ -187,14 +191,12 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
             return true;
         }
-        private int Glitch = 0;
-        private bool GlitchBool = false;
 
         public float[] internalAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -301,7 +303,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 npc.TargetClosest(true);
                 if (Killed == false)
                 {
-                    Main.NewText("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                     Killed = true;
                 }
                 Panic = false;
@@ -317,7 +319,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 if (Killed == false)
                 {
-                    Main.NewText("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                     Killed = true;
                 }
                 npc.TargetClosest(false);
@@ -552,7 +554,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 npc.damage = (int)(npc.defDamage * 1.5);
                 npc.defense = npc.defDefense + 10;
-                npc.HitSound = mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Sounds/Zerohit2");
+                npc.HitSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Zerohit2");
                 if (npc.ai[1] == 0f)
                 {
                     float num389 = 8f;
@@ -658,7 +660,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                             PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
                             PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
                             PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-                            PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
+                            PlayerPos = (float)Math.Sqrt(PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY);
                             PlayerPos = num433 / PlayerPos;
                             PlayerPosX *= PlayerPos;
                             PlayerPosY *= PlayerPos;
@@ -842,7 +844,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 double offsetAngle;
                 for (int i = 0; i < 6; i++)
                 {
-                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 2f), mod.ProjectileType("GlitchRocket"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
                 }
             }
@@ -854,7 +856,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 double offsetAngle;
                 for (int i = 0; i < 5; i++)
                 {
-                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 2f), mod.ProjectileType("Error"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
                 }
             }
@@ -866,8 +868,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 double offsetAngle;
                 for (int i = 0; i < 4; i++)
                 {
-                    offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 2), (float)(Math.Cos(offsetAngle)), mod.ProjectileType("StaticSphere"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
+                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 2), (float)Math.Cos(offsetAngle), mod.ProjectileType("StaticSphere"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
                 }
             }
         }

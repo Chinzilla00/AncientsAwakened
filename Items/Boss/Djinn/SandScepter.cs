@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Djinn
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("DustDevil");
-            item.damage = 35;
+            item.damage = 25;
             item.width = 52;
             item.height = 52;
             item.UseSound = SoundID.Item44;
@@ -32,7 +32,7 @@ namespace AAMod.Items.Boss.Djinn
             item.mana = 5;
         }
 
-        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             int i = Main.myPlayer;
             float num72 = item.shootSpeed;

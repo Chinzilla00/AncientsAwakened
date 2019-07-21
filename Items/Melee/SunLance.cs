@@ -8,7 +8,7 @@ namespace AAMod.Items.Melee
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sun Halberd");
-            BaseMod.BaseUtility.AddTooltips(item, new string[] { "Strikes foes in an arc, then stabs in the direction of the cursor"});			
+            BaseUtility.AddTooltips(item, new string[] { "Strikes foes in an arc, then stabs in the direction of the cursor"});			
 		}
 		
         public override void SetDefaults()
@@ -17,7 +17,7 @@ namespace AAMod.Items.Melee
             item.height = 35;
             item.maxStack = 1;
             item.rare = 5;
-            item.value = BaseMod.BaseUtility.CalcValue(0, 15, 0, 0);
+            item.value = BaseUtility.CalcValue(0, 15, 0, 0);
 
             item.useStyle = 5;
             item.useAnimation = 50;

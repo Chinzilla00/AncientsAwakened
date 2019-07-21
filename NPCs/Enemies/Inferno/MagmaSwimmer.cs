@@ -64,7 +64,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             float playerDistX = Math.Abs(player.Center.X - npc.Center.X);
             float playerDistY = Math.Abs(player.Center.Y - npc.Center.Y);
             bool BiteAttack = playerDistX < 35f && playerDistY < 40f;
-            int frameMax = (BiteAttack ? 8 : 5);
+            int frameMax = BiteAttack ? 8 : 5;
             if (npc.frameCounter++ >= frameMax)
             {
                 npc.frameCounter = 0;

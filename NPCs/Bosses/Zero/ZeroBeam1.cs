@@ -29,9 +29,14 @@ namespace AAMod.NPCs.Bosses.Zero
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;
         }
 
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return AAColor.ZeroShield;
+        }
+
         public override void AI()
         {
-            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.7f) / 255f, ((255 - projectile.alpha) * 0.3f) / 255f, ((255 - projectile.alpha) * 0f) / 255f);
+            Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.7f / 255f, (255 - projectile.alpha) * 0.3f / 255f, (255 - projectile.alpha) * 0f / 255f);
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             projectile.localAI[0] += 1f;
             projectile.alpha += 4;

@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.damage = 35;
             npc.defense = 25;
             npc.lifeMax = 6000;
-            npc.value = Item.buyPrice(0, 8, 0, 0);
+            npc.value = Item.buyPrice(0, 5, 0, 0);
             npc.knockBackResist = 0f;
             npc.aiStyle = -1;
             animationType = 10;
@@ -50,13 +50,16 @@ namespace AAMod.NPCs.Bosses.Serpent
         private int RunOnce = 0;
         private int StopSnow = 0;
 
-        public float[] internalAI = new float[1];
+        public float[] internalAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
             }
         }
 
@@ -66,6 +69,9 @@ namespace AAMod.NPCs.Bosses.Serpent
             if (Main.netMode == 1)
             {
                 internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
+                internalAI[2] = reader.ReadFloat();
+                internalAI[3] = reader.ReadFloat();
             }
         }
 
@@ -123,54 +129,84 @@ namespace AAMod.NPCs.Bosses.Serpent
                     StopSnow = 1;
                 }
             }
-            BaseMod.BaseAI.AIWorm(npc, new int[]{ mod.NPCType("SerpentHead"), mod.NPCType("SerpentBody"), mod.NPCType("SerpentTail") }, 12, 8f, 12f, 0.1f, false, false);
-			bool isHead = npc.type == mod.NPCType("SerpentHead");
-			bool isBody = npc.type == mod.NPCType("SerpentBody");			
-			if(isHead)
-			{
-				if(Main.netMode != 2 && !tongueFlick && Main.rand.Next(20) == 0)
-				{
-					tongueFlick = true;
-				}
-				if(Main.netMode != 1) //frost breath attack
-				{
-					FrostAttack();
-				}
+            BaseAI.AIWorm(npc, new int[] { mod.NPCType("SerpentHead"), mod.NPCType("SerpentBody"), mod.NPCType("SerpentTail") }, 12, 8f, 12f, 0.1f, false, false);
+            bool isHead = npc.type == mod.NPCType("SerpentHead");
+            bool isBody = npc.type == mod.NPCType("SerpentBody");
+            if (isHead)
+            {
+                if (Main.netMode != 2 && !tongueFlick && Main.rand.Next(20) == 0)
+                {
+                    tongueFlick = true;
+                }
 
-				if(tongueFlick)
-				{
-					if(tongueFlickDir)
-					{
-						tongueFlickCounter--;
-						if(tongueFlickCounter <= 0)
-						{
-							tongueFlickCounter = 8;
-							npc.frame.Y -= npc.frame.Height;
-							if(npc.frame.Y <= 0) 
-								tongueFlick = tongueFlickDir = false;
-						}			
-					}else
-					{
-						tongueFlickCounter--;
-						if(tongueFlickCounter <= 0)
-						{
-							tongueFlickCounter = 8;
-							npc.frame.Y += npc.frame.Height;
-							if(npc.frame.Y >= (npc.frame.Height * 3)) 
-								tongueFlickDir = true;
-						}
-					}
-				}
-			}else
-			if(isBody)
-			{
-				if(npc.localAI[0] == 0)
-				{
-					npc.localAI[0] = 1;
-					npc.localAI[1] = Main.rand.Next(4);
-				}
-				npc.frame.Y = (int)npc.localAI[1] * npc.frame.Height;
-			}
+                internalAI[1]++;
+                if (internalAI[1] > 300 && Main.netMode != 1)
+                {
+                    internalAI[1] = 0;
+                    internalAI[2] = Main.rand.Next(3);
+                    npc.netUpdate = true;
+                }
+
+                if (Main.netMode != 1) //frost breath attack
+                {
+                    if (internalAI[2] == 0)
+                    {
+                        IceSentry();
+                    }
+                    else if (internalAI[2] == 1)
+                    {
+                        Iceball();
+                    }
+                    else
+                    {
+                        FrostAttack();
+                    }
+
+                    if (internalAI[3]++ > 400 && NPC.CountNPCS(mod.NPCType<Enemies.Snow.SnakeHead>()) < 3)
+                    {
+                        for (int i = 0; i < 3 - NPC.CountNPCS(mod.NPCType<Enemies.Snow.SnakeHead>()); i++)
+                        {
+                            AAModGlobalNPC.SpawnBoss(player, mod.NPCType<Enemies.Snow.SnakeHead>(), false, 0, 0, "Snake", false);
+                        }
+                    }
+                }
+
+                if (tongueFlick)
+                {
+                    if (tongueFlickDir)
+                    {
+                        tongueFlickCounter--;
+                        if (tongueFlickCounter <= 0)
+                        {
+                            tongueFlickCounter = 8;
+                            npc.frame.Y -= npc.frame.Height;
+                            if (npc.frame.Y <= 0)
+                                tongueFlick = tongueFlickDir = false;
+                        }
+                    }
+                    else
+                    {
+                        tongueFlickCounter--;
+                        if (tongueFlickCounter <= 0)
+                        {
+                            tongueFlickCounter = 8;
+                            npc.frame.Y += npc.frame.Height;
+                            if (npc.frame.Y >= (npc.frame.Height * 3))
+                                tongueFlickDir = true;
+                        }
+                    }
+                }
+            }
+            else
+            if (isBody)
+            {
+                if (npc.localAI[0] == 0)
+                {
+                    npc.localAI[0] = 1;
+                    npc.localAI[1] = Main.rand.Next(4);
+                }
+                npc.frame.Y = (int)npc.localAI[1] * npc.frame.Height;
+            }
         }
 
         private void RainStart()
@@ -221,7 +257,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                 {
                     num3 += 0.2f;
                 }
-                Main.rainTime = (int)((float)Main.rainTime * num3);
+                Main.rainTime = (int)(Main.rainTime * num3);
                 Main.raining = true;
                 if (Main.netMode == 2)
                 {
@@ -243,57 +279,88 @@ namespace AAMod.NPCs.Bosses.Serpent
             }
         }
 
-        public void FrostAttack()
-		{
-			attackCounter++;
-			if (attackCounter == 400 && fireAttack == false)
-			{
-				attackCounter = 0;
-				fireAttack = true;
-			}
-			if (fireAttack == true)
-			{
-				attackTimer++;
-				if ((attackTimer == 8 || attackTimer == 16 || attackTimer == 24 || attackTimer == 32 || attackTimer == 40 || attackTimer == 48 || attackTimer == 56 || attackTimer == 64 || attackTimer == 72 || attackTimer == 79) && !npc.HasBuff(103))
-				{
-					for (int i = 0; i < 5; ++i)
-					{
-						int num429 = 1;
-						if (npc.position.X + (npc.width / 2) < Main.player[npc.target].position.X + Main.player[npc.target].width)
-						{
-							num429 = -1;
-						}
-						Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-						float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) + (num429 * 180) - PlayerDistance.X;
-						float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-						float PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX) + (PlayerPosY * PlayerPosY));
-						float num433 = 6f;
-						PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-						PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
-						PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-						PlayerPos = (float)Math.Sqrt((PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY));
-						PlayerPos = num433 / PlayerPos;
-						PlayerPosX *= PlayerPos;
-						PlayerPosY *= PlayerPos;
-						PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
-						PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
-						PlayerPosY += npc.velocity.Y * 0.5f;
-						PlayerPosX += npc.velocity.X * 0.5f;
-						PlayerDistance.X -= PlayerPosX * 1f;
-						PlayerDistance.Y -= PlayerPosY * 1f;
-						Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("SnowBreath"), npc.damage, 0, Main.myPlayer);
-					}
-				}
-				if (attackTimer >= 80)
-				{
-					fireAttack = false;
-					attackTimer = 0;
-					attackCounter = 0;
-				}
-			}
-		}
+        public void Iceball()
+        {
+            attackCounter++;
+            if (attackCounter >= 180 && fireAttack == false)
+            {
+                attackCounter = 0;
+                fireAttack = true;
+                npc.netUpdate = true;
+            }
+            if (fireAttack == true && Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+            {
+                attackTimer++;
+                if (attackTimer == 20 || attackTimer == 50 || attackTimer == 79)
+                {
+                    BaseAI.FireProjectile(Main.player[npc.target].Center, npc, mod.ProjectileType<IceBall2>(), npc.damage / 2, 3, 14f, 0, 0, -1);
+                    npc.netUpdate = true;
+                }
+                if (attackTimer >= 80)
+                {
+                    fireAttack = false;
+                    attackTimer = 0;
+                    attackCounter = 0;
+                    npc.netUpdate = true;
+                }
+            }
+        }
 
-		public override void OnHitPlayer(Player player, int damage, bool crit)
+        public void IceSentry()
+        {
+            Player player = Main.player[npc.target];
+            if (NPC.CountNPCS(mod.NPCType<IceCrystal>()) < 3)
+            {
+                NPC.NewNPC((int)player.position.X + Main.rand.Next(-500, 500), (int)player.position.Y + 500, mod.NPCType<IceCrystal>(), 0, 0, 0, 0, 0, npc.target);
+            }
+            internalAI[2] = 2;
+            npc.netUpdate = true;
+        }
+
+        public void FrostAttack()
+        {
+            attackCounter++;
+            if (attackCounter == 400 && fireAttack == false)
+            {
+                attackCounter = 0;
+                fireAttack = true;
+                npc.netUpdate = true;
+            }
+            if (fireAttack == true)
+            {
+                attackTimer++;
+                if ((attackTimer == 8 || attackTimer == 16 || attackTimer == 24 || attackTimer == 32 || attackTimer == 40 || attackTimer == 48 || attackTimer == 56 || attackTimer == 64 || attackTimer == 72 || attackTimer == 79) && !npc.HasBuff(103))
+                {
+                    for (int i = 0; i < 5; ++i)
+                    {
+                        float num433 = 6f;
+                        Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                        float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
+                        float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
+                        float PlayerPos = (float)Math.Sqrt(PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY);
+                        PlayerPos = num433 / PlayerPos;
+                        PlayerPosX *= PlayerPos;
+                        PlayerPosY *= PlayerPos;
+                        PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
+                        PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
+                        PlayerPosY += npc.velocity.Y * 0.5f;
+                        PlayerPosX += npc.velocity.X * 0.5f;
+                        PlayerDistance.X -= PlayerPosX * 1f;
+                        PlayerDistance.Y -= PlayerPosY * 1f;
+                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("SnowBreath"), npc.damage, 0, Main.myPlayer);
+                    }
+                }
+                if (attackTimer >= 80)
+                {
+                    fireAttack = false;
+                    attackTimer = 0;
+                    attackCounter = 0;
+                    npc.netUpdate = true;
+                }
+            }
+        }
+
+        public override void OnHitPlayer(Player player, int damage, bool crit)
 		{
 			if (Main.expertMode)
 			{
@@ -326,13 +393,13 @@ namespace AAMod.NPCs.Bosses.Serpent
         {
             for (int k = 0; k < 5; k++)
             {
-                Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.IceDust>(), hitDirection, -1f, 0, default(Color), 1f);
+                Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.IceDust>(), hitDirection, -1f, 0, default, 1f);
             }
             if (npc.life == 0)
             {
                 for (int k = 0; k < 5; k++)
                 {
-                    Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.SnowDustLight>(), hitDirection, -1f, 0, default(Color), 1f);
+                    Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.SnowDustLight>(), hitDirection, -1f, 0, default, 1f);
                 }
             }
         }

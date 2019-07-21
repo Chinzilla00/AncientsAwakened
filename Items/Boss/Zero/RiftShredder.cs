@@ -22,16 +22,27 @@ namespace AAMod.Items.Boss.Zero
 			item.melee = true;
 			item.width = 94;
 			item.height = 70;
-			item.useTime = 15;
+			item.useTime = 20;
             item.shoot = mod.ProjectileType("Rift");
             item.shootSpeed = 10f;
-            item.useAnimation = 15;
+            item.useAnimation = 20;
 			item.useStyle = 1;
 			item.knockBack = 3;
 			item.value = Item.sellPrice(0, 30, 0, 0);
             item.UseSound = new LegacySoundStyle(2, 15, Terraria.Audio.SoundType.Sound);
 			item.autoReuse = true;
             item.rare = 9; AARarity = 13;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -69,7 +80,7 @@ namespace AAMod.Items.Boss.Zero
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             Dust dust;
-            dust = Terraria.Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 46, default(Color), 1.25f);
+            dust = Dust.NewDustDirect(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 46, default, 1.25f);
 			dust.noGravity = true;
         }
 	}

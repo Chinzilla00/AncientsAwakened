@@ -10,7 +10,7 @@ namespace AAMod.Items.DevTools
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("[DEV] Anticheat Disabler");
-            BaseMod.BaseUtility.AddTooltips(item, new string[] { "For testers or pussies." });
+            BaseUtility.AddTooltips(item, new string[] { "For testers or pussies." });
         }
 
         public override void SetDefaults()
@@ -33,14 +33,14 @@ namespace AAMod.Items.DevTools
         {
             if (AAWorld.Anticheat == false && runOnce == 0)
             {
-                Main.NewText("Anticheat Protocol enabled", Color.Cyan);
+                if (Main.netMode != 1) BaseUtility.Chat("Anticheat Protocol enabled", Color.Cyan);
                 AAWorld.Anticheat = true;
                 runOnce += 1;
             }
             if (AAWorld.Anticheat == true && runOnce == 0)
             {
                 runOnce += 1;
-                Main.NewText("Anticheat Protocol disabled", Color.Red);
+                if (Main.netMode != 1) BaseUtility.Chat("Anticheat Protocol disabled", Color.Red);
                 AAWorld.Anticheat = false;
             }
 

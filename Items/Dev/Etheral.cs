@@ -45,6 +45,7 @@ namespace AAMod.Items.Dev
             item.noMelee = true;
             item.magic = true;
             item.autoReuse = true;
+			item.noUseGraphic = true;
             
 		}
 	}

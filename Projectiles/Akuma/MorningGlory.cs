@@ -80,23 +80,28 @@ namespace AAMod.Projectiles.Akuma
         }
 
         public bool StuckInEnemy = false;
+
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.Daybreak, 60);
             Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
             bool flag3 = projectile.Colliding(myRect, target.getRect());
-            if (flag3 && !StuckInEnemy && !target.boss)
+            if (!target.boss)
             {
-                int proj = Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
-                Main.projectile[proj].melee = false;
-                Main.projectile[proj].ranged = true;
-                StuckInEnemy = true;
-                projectile.ai[0] = 1f;
-                projectile.ai[1] = target.whoAmI;
-                projectile.velocity = (target.Center - projectile.Center) * 0.75f;
-                projectile.netUpdate = true;
+                Main.npc[(int)projectile.ai[1]].AddBuff(mod.BuffType<Buffs.SpearStuck>(), 100000);
+                if (flag3 && !StuckInEnemy)
+                {
+                    int proj = Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
+                    Main.projectile[proj].melee = false;
+                    Main.projectile[proj].ranged = true;
+                    StuckInEnemy = true;
+                    projectile.ai[0] = 1f;
+                    projectile.ai[1] = target.whoAmI;
+                    projectile.velocity = (target.Center - projectile.Center) * 0.75f;
+                    projectile.netUpdate = true;
+                }
             }
-            else if (target.boss)
+            else
             {
                 int p = Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
                 Main.projectile[p].melee = false;

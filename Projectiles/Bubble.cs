@@ -20,7 +20,7 @@ namespace AAMod.Projectiles
         {
             Dust dust1;
             Vector2 position = projectile.position;
-            dust1 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.MireBubbleDust>(), 4f, 0f, 46, default(Color), 1f)];
+            dust1 = Main.dust[Dust.NewDust(position, 0, 0, mod.DustType<Dusts.MireBubbleDust>(), 4f, 0f, 46, default, 1f)];
             dust1.noGravity = true;
         }
     }

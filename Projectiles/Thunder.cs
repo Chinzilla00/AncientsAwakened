@@ -112,8 +112,8 @@ namespace AAMod.Projectiles
                     }
                     if (Main.rand.Next(5) == 0)
                     {
-                        Vector2 value49 = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
-                        int num854 = Dust.NewDust(projectile.Center + value49 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default(Color), 1.5f);
+                        Vector2 value49 = projectile.velocity.RotatedBy(1.5707963705062866, default) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
+                        int num854 = Dust.NewDust(projectile.Center + value49 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default, 1.5f);
                         Main.dust[num854].velocity *= 0.5f;
                         Main.dust[num854].velocity.Y = -Math.Abs(Main.dust[num854].velocity.Y);
                         return;
@@ -167,7 +167,7 @@ namespace AAMod.Projectiles
                 if (projectile.velocity != Vector2.Zero)
                 {
                     projectile.localAI[0] += spinningpoint2.X * (projectile.extraUpdates + 1) * 2f * num855;
-                    projectile.velocity = spinningpoint2.RotatedBy(projectile.ai[0] + 1.57079637f, default(Vector2)) * num855;
+                    projectile.velocity = spinningpoint2.RotatedBy(projectile.ai[0] + 1.57079637f, default) * num855;
                     projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
                     return;
                 }
@@ -186,17 +186,17 @@ namespace AAMod.Projectiles
                 if (num291 == 0)
                 {
                     scale16 = new Vector2(projectile.scale) * 0.6f;
-                    DelegateMethods.c_1 = new Microsoft.Xna.Framework.Color(115, 204, 219, 0) * 0.5f;
+                    DelegateMethods.c_1 = new Color(115, 204, 219, 0) * 0.5f;
                 }
                 else if (num291 == 1)
                 {
                     scale16 = new Vector2(projectile.scale) * 0.4f;
-                    DelegateMethods.c_1 = new Microsoft.Xna.Framework.Color(113, 251, 255, 0) * 0.5f;
+                    DelegateMethods.c_1 = new Color(113, 251, 255, 0) * 0.5f;
                 }
                 else
                 {
                     scale16 = new Vector2(projectile.scale) * 0.2f;
-                    DelegateMethods.c_1 = new Microsoft.Xna.Framework.Color(255, 255, 255, 0) * 0.5f;
+                    DelegateMethods.c_1 = new Color(255, 255, 255, 0) * 0.5f;
                 }
                 DelegateMethods.f_1 = 1f;
                 for (int num292 = projectile.oldPos.Length - 1; num292 > 0; num292--)

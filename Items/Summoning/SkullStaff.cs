@@ -10,7 +10,7 @@ namespace AAMod.Items.Summoning
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Skull Wand");
-            Tooltip.SetDefault(@"Summons an aquatic skull to fight with you");
+            Tooltip.SetDefault(@"Summons a dungeon skull to fight with you");
         }
 
         public override void SetDefaults()

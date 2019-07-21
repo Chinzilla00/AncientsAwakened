@@ -21,7 +21,7 @@ namespace AAMod.Items.Dev
             item.useAnimation = 18;
             item.useTime = 18;
             item.shoot = mod.ProjectileType("Chronos");
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
 
 		public override void GetWeaponDamage(Player player, ref int damage)
@@ -64,7 +64,7 @@ namespace AAMod.Items.Dev
 			int minDamage = baseDamage; //this is the damage you set in SetDefaults.
 			int maxDamage = 500; //this is the damage you get at midday/midnight.
 
-			float maxMultiplier = (maxDamage / (float)minDamage);		
+			float maxMultiplier = maxDamage / (float)minDamage;		
 			float time = (int)Main.time;
 			float calcTimeMax = 0f;
 			if(Main.dayTime)

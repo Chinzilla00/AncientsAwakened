@@ -24,7 +24,7 @@ At night, you move three times as fast and your ranged attacks & minions inflict
             item.width = 26;
             item.height = 26;
             item.value = Item.sellPrice(3, 0, 0, 0);
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.accessory = true;
             item.rare = 9; AARarity = 13;
         }

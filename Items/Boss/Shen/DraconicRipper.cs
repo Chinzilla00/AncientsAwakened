@@ -26,9 +26,21 @@ namespace AAMod.Items.Boss.Shen
 			item.rare = 11;
 			item.knockBack = 3f;
 			item.ranged = true;
-		}
+            AARarity = 14;
+        }
 
-		public override void SetStaticDefaults()
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity14;
+                }
+            }
+        }
+
+        public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Draconic Ripper");
 			Tooltip.SetDefault("Shoots dozens of high-caliber bullets"
@@ -59,17 +71,6 @@ namespace AAMod.Items.Boss.Shen
 			}
 			return false;
 		}
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity14;
-                }
-            }
-        }
 
         public override void HoldItem(Player player)
 		{

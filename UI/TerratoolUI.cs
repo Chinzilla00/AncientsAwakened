@@ -11,57 +11,48 @@ namespace AAMod.UI
 {
     internal abstract class TerratoolUI : ToggableUI
     {
-        private static Vector2 circleCenter = Main.MouseScreen - new Vector2(20f, 20f);
-        public List<int> selectedButtons;
+        private static bool onTerratoolMenu = false;
 
         private List<UIColorImageButton> buttonList;
         private List<UIColorImage> buttonImageList;
         private Rectangle buttonFrontFrame;
+        private static Vector2 circleCenter;
+        public List<int> selectedButtons;
 
-        public abstract UserInterface Interface();
-        public abstract UIState State();
-        public abstract Texture2D ButtonImages();
-        public abstract Texture2D ButtonOnImage();
-        public abstract Texture2D ButtonOffImage();
-        public abstract int HeldItemType();
+        public abstract UIState State { get; }
+        public abstract Texture2D ButtonImages { get; }
+        public abstract Texture2D ButtonOnImage { get; }
+        public abstract Texture2D ButtonOffImage { get; }
+        public abstract int HeldItemType { get; }
 
-        public virtual Color HoverColor()
-        {
-            return new Color(150, 150, 150);
-        }
+        public virtual UserInterface Interface => AAMod.instance.TerratoolInterface;
 
-        public virtual Color NoHoverColor()
-        {
-            return new Color(80, 80, 80);
-        }
-        public virtual int ButtonAmount()
-        {
-            return 3;
-        }
-        public virtual float ButtonPadding()
-        {
-            return 5f;
-        }
-        public virtual float CircleRadius()
-        {
-            return 40f + ButtonPadding();
-        }
+        public virtual Color HoverColor => new Color(150, 150, 150);
+
+        public virtual Color NoHoverColor => new Color(80, 80, 80);
+
+        public virtual float ButtonPadding => 5f;
+
+        public virtual float CircleRadius => 40f + ButtonPadding;
+
+        public virtual int ButtonAmount => 3;
 
         public override void OnInitialize()
         {
             buttonList = new List<UIColorImageButton>();
             buttonImageList = new List<UIColorImage>();
-			selectedButtons = new List<int>();
-            buttonFrontFrame = ButtonImages().Frame(1, ButtonAmount());
+            selectedButtons = new List<int>();
+            buttonFrontFrame = ButtonImages.Frame(1, ButtonAmount);
+            circleCenter = Main.MouseScreen - new Vector2(20, 20);
 
-            for (int i = 0; i < ButtonAmount(); i++)
+            for (int i = 0; i < ButtonAmount; i++)
             {
-                buttonList.Add(new UIColorImageButton(ButtonOffImage(), NoHoverColor()));
-                buttonImageList.Add(new UIColorImage(ButtonImages(), NoHoverColor(), buttonFrontFrame));
+                buttonList.Add(new UIColorImageButton(ButtonOffImage, NoHoverColor));
+                buttonImageList.Add(new UIColorImage(ButtonImages, NoHoverColor, buttonFrontFrame));
 
-                double angle = (Math.PI * 2 * i) / ButtonAmount();
-                double x = circleCenter.X + (CircleRadius() * Math.Cos(angle));
-                double y = circleCenter.Y + (CircleRadius() * Math.Sin(angle));
+                double angle = Math.PI * 2 * i / ButtonAmount;
+                double x = circleCenter.X + (CircleRadius * Math.Cos(angle));
+                double y = circleCenter.Y + (CircleRadius * Math.Sin(angle));
 
                 buttonList[i].Left.Set((float)x, 0f);
                 buttonList[i].Top.Set((float)y, 0f);
@@ -94,29 +85,35 @@ namespace AAMod.UI
         {
             base.Update(gameTime);
 
+            if (Main.LocalPlayer.HeldItem.type != HeldItemType || Main.LocalPlayer.dead || Main.LocalPlayer.ghost
+                || ((Main.LocalPlayer.mouseInterface || Main.LocalPlayer.lastMouseInterface) && !onTerratoolMenu))
+            {
+                for (int i = 0; i < buttonList.Count; i++)
+                {
+                    buttonList[i].SetImage(ButtonOffImage);
+
+                    if (!selectedButtons.Contains(i))
+                    {
+                        buttonList[i].SetColor(NoHoverColor);
+                        buttonImageList[i].SetColor(NoHoverColor);
+                    }
+                }
+
+                base.ToggleUI(Interface, State);
+            }
+
+            onTerratoolMenu = false;
+
             for (int i = 0; i < buttonList.Count; i++)
             {
                 if (buttonList[i].ContainsPoint(Main.MouseScreen))
                 {
                     Main.LocalPlayer.mouseInterface = true;
+                    onTerratoolMenu = true;
                 }
             }
 
-            if (Main.LocalPlayer.HeldItem.type != HeldItemType() || Main.LocalPlayer.dead || Main.LocalPlayer.ghost)
-            {
-                for (int i = 0; i < buttonList.Count; i++)
-                {
-                    buttonList[i].SetImage(ButtonOffImage());
-				
-					if (!selectedButtons.Contains(i))
-					{
-						buttonList[i].SetColor(NoHoverColor());
-                        buttonImageList[i].SetColor(NoHoverColor());
-					}
-                }
 
-                base.ToggleUI(Interface(), State());
-            }
         }
 
         public virtual void ButtonClicked(int index)
@@ -129,36 +126,36 @@ namespace AAMod.UI
 
             for (int i = 0; i < buttonList.Count; i++)
             {
-                buttonList[i].SetColor(NoHoverColor());
-                buttonImageList[i].SetColor(NoHoverColor());
+                buttonList[i].SetColor(NoHoverColor);
+                buttonImageList[i].SetColor(NoHoverColor);
             }
 
             foreach (int value in selectedButtons)
             {
-				buttonList[value].SetColor(Color.White);
-				buttonImageList[value].SetColor(Color.White);
+                buttonList[value].SetColor(Color.White);
+                buttonImageList[value].SetColor(Color.White);
             }
         }
 
         public virtual void ButtonHover(int index)
         {
-            buttonList[index].SetImage(ButtonOnImage());
+            buttonList[index].SetImage(ButtonOnImage);
 
             if (!selectedButtons.Contains(index))
             {
-                buttonList[index].SetColor(HoverColor());
-                buttonImageList[index].SetColor(HoverColor());
+                buttonList[index].SetColor(HoverColor);
+                buttonImageList[index].SetColor(HoverColor);
             }
         }
 
         public virtual void ButtonLeave(int index)
         {
-            buttonList[index].SetImage(ButtonOffImage());
+            buttonList[index].SetImage(ButtonOffImage);
 
             if (!selectedButtons.Contains(index))
             {
-                buttonList[index].SetColor(NoHoverColor());
-                buttonImageList[index].SetColor(NoHoverColor());
+                buttonList[index].SetColor(NoHoverColor);
+                buttonImageList[index].SetColor(NoHoverColor);
             }
         }
 
@@ -168,10 +165,10 @@ namespace AAMod.UI
 
             for (int i = 0; i < buttonList.Count; i++)
             {
-                double angle = (Math.PI * 2 * i) / ButtonAmount();
+                double angle = Math.PI * 2 * i / ButtonAmount;
 
-                double x = circleCenter.X + (CircleRadius() * Math.Cos(angle));
-                double y = circleCenter.Y + (CircleRadius() * Math.Sin(angle));
+                double x = circleCenter.X + (CircleRadius * Math.Cos(angle));
+                double y = circleCenter.Y + (CircleRadius * Math.Sin(angle));
 
                 buttonList[i].Left.Set((float)x, 0f);
                 buttonList[i].Top.Set((float)y, 0f);

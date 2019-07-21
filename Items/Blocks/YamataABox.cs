@@ -42,7 +42,7 @@ Remix by GAMetal");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "YamataBox");
-            recipe.AddIngredient(null, "EXSoul");
+            recipe.AddIngredient(null, "Naitokurosu");
             recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();

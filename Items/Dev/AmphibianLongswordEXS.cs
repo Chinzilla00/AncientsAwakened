@@ -18,7 +18,7 @@ namespace AAMod.Items.Dev
 			item.width = 64;
 			item.height = 64;
             item.useTime = 27;
-            item.useTime = 27;
+			item.useAnimation = 27;
             item.useStyle = 1;
 			item.knockBack = 7;
             item.value = Item.sellPrice(0, 30, 0, 0);
@@ -27,7 +27,7 @@ namespace AAMod.Items.Dev
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("AmphibiousProjectileEXS");
             item.shootSpeed = 18f;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 		}
         
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

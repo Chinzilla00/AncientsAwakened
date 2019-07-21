@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss.Yamata   //where is located
         public override void SetStaticDefaults()
         {
             
-            DisplayName.SetDefault("Hydra Stabber");
+            DisplayName.SetDefault("Abyssal Shiv");
             Tooltip.SetDefault(@"Extremely fast and dangerous
 IInflicts Moonraze");
             
@@ -32,7 +32,7 @@ IInflicts Moonraze");
             item.useStyle = 3;        
             item.knockBack = 2f;      
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.UseSound = SoundID.Item1;      
+            item.UseSound = SoundID.Item103;      
             item.autoReuse = true;   
             item.useTurn = false;
             item.shoot = mod.ProjectileType<Projectiles.Yamata.AbyssLash>();
@@ -66,12 +66,10 @@ IInflicts Moonraze");
             if (Main.rand.NextFloat() < 1f)
             {
                 Dust dust;
-                dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 46, default(Color), 1.381579f)];
+                dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 46, default, 1.381579f)];
                 dust.noGravity = true;
             }
         }
-
-
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
@@ -79,7 +77,7 @@ IInflicts Moonraze");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity13;;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }

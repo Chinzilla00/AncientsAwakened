@@ -19,13 +19,13 @@ namespace AAMod.Items.Boss.Akuma
 
         public override void SetDefaults()
         {
-            item.damage = 600;
+            item.damage = 400;
             item.noMelee = true;
             item.ranged = true;
             item.width = 64;
             item.height = 46;
-            item.useTime = 2;
-            item.useAnimation = 10;
+            item.useTime = 5;
+            item.useAnimation = 5;
             item.useStyle = 5;
             item.useAmmo = AmmoID.Gel;
             item.shoot = mod.ProjectileType("Dawnstrike");
@@ -35,7 +35,18 @@ namespace AAMod.Items.Boss.Akuma
             AARarity = 13;
             item.UseSound = SoundID.Item20;
             item.autoReuse = true;
-            item.shootSpeed = 7f;
+            item.shootSpeed = 5f;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
         public override Vector2? HoldoutOffset()

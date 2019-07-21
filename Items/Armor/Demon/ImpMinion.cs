@@ -195,11 +195,11 @@ namespace AAMod.Items.Armor.Demon
             projectile.rotation = projectile.velocity.X * 0.05f;
             if (projectile.velocity.X > 0f)
             {
-                projectile.spriteDirection = (projectile.direction = -1);
+                projectile.spriteDirection = projectile.direction = -1;
             }
             else if (projectile.velocity.X < 0f)
             {
-                projectile.spriteDirection = (projectile.direction = 1);
+                projectile.spriteDirection = projectile.direction = 1;
             }
             if (projectile.ai[1] > 0f)
             {
@@ -223,11 +223,11 @@ namespace AAMod.Items.Armor.Demon
                 {
                     if ((vector - projectile.Center).X > 0f)
                     {
-                        projectile.spriteDirection = (projectile.direction = -1);
+                        projectile.spriteDirection = projectile.direction = -1;
                     }
                     else if ((vector - projectile.Center).X < 0f)
                     {
-                        projectile.spriteDirection = (projectile.direction = 1);
+                        projectile.spriteDirection = projectile.direction = 1;
                     }
                     if (projectile.ai[1] == 0f)
                     {
@@ -261,7 +261,7 @@ namespace AAMod.Items.Armor.Demon
             }
             if (Main.rand.Next(6) == 0)
             {
-                int num25 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 2f);
+                int num25 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default, 2f);
                 Main.dust[num25].velocity *= 0.3f;
                 Main.dust[num25].noGravity = true;
                 Main.dust[num25].noLight = true;

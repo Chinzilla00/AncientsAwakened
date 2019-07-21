@@ -9,13 +9,13 @@ namespace AAMod.Items.Boss.AH
         public override void SetDefaults()
         {
 
-            item.damage = 105;
+            item.damage = 110;
             item.noMelee = true;
             item.ranged = true;
             item.width = 52;
             item.height = 20;
-            item.useTime = 4;
-            item.reuseDelay = 15;
+            item.useTime = 2;
+            item.reuseDelay = 12;
             item.useAnimation = 12;
             item.useStyle = 5;
             item.shoot = 10;
@@ -27,6 +27,17 @@ namespace AAMod.Items.Boss.AH
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 8f;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
+        {
+            foreach (Terraria.ModLoader.TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
 
         public override void SetStaticDefaults()

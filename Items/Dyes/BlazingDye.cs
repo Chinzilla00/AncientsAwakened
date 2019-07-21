@@ -10,7 +10,7 @@ namespace AAMod.Items.Dyes
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Blazing Dye");
-            BaseMod.BaseUtility.AddTooltips(item, new string[] { "Gives a blazing touch to whatever this dye is applied to" });
+            BaseUtility.AddTooltips(item, new string[] { "Gives a blazing touch to whatever this dye is applied to" });
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

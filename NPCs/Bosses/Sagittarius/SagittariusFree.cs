@@ -27,6 +27,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.width = 74;
             npc.height = 70;
             npc.aiStyle = -1;
+            npc.value = Item.sellPrice(0, 8, 0, 0);
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCDeath14;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Sagittarius");
@@ -39,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -95,7 +96,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 {
                     if (internalAI[0] != 2f || internalAI[0] != 3f)
                     {
-                        Main.NewText("target(s) neutralized. returning to stealth mode.", Color.PaleVioletRed);
+                        if (Main.netMode != 1) BaseUtility.Chat("target(s) neutralized. returning to stealth mode.", Color.PaleVioletRed);
                         internalAI[0] = 3f;
                     }
                 }
@@ -103,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 {
                     if (internalAI[0] != 1f || internalAI[0] != 3f)
                     {
-                        Main.NewText("target(s) lost. returning to stealth mode.", Color.PaleVioletRed);
+                        if (Main.netMode != 1) BaseUtility.Chat("target(s) lost. returning to stealth mode.", Color.PaleVioletRed);
                         internalAI[0] = 3f;
                     }
                 }
@@ -155,7 +156,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 internalAI[4] = Main.rand.Next(2);
                 if (internalAI[2] == 2)
                 {
-                    Main.NewText("initializing repair program.", Color.PaleVioletRed);
+                    if (Main.netMode != 1) BaseUtility.Chat("initializing repair program.", Color.PaleVioletRed);
                 }
                 npc.ai = new float[4];
                 npc.netUpdate = true;
@@ -210,7 +211,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 }
                 if (foundLocation)
                 {
-                    Vector2 tele = new Vector2((player.Center.X + Xint), (player.Center.Y + Yint));
+                    Vector2 tele = new Vector2(player.Center.X + Xint, player.Center.Y + Yint);
                     npc.Center = tele;
                     internalAI[4] = 0;
                 }

@@ -33,7 +33,7 @@ namespace AAMod.Tiles
         public override void PostDraw(int x, int y, SpriteBatch spriteBatch)
         {
             Tile tile = Main.tile[x, y];
-            if (glow && (tile != null && tile.active() && tile.type == this.Type))
+            if (glow && tile != null && tile.active() && tile.type == this.Type)
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Tiles/AbyssVines");
                 BaseMod.BaseDrawing.DrawTileTexture(spriteBatch, glowTex, x, y, true, false, false, null, AAGlobalTile.GetYamataColorDim);

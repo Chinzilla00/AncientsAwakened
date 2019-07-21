@@ -26,6 +26,17 @@ The power of discordian rage radiates from this armor");
             AARarity = 14;
         }
 
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity14;
+                }
+            }
+        }
+
         public override void UpdateEquip(Player player)
         {
             player.endurance *= 1.15f;

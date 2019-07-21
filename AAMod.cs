@@ -1,8 +1,9 @@
 using AAMod.Backgrounds;
 using AAMod.Globals;
 using AAMod.UI;
-//using AAMod.UI;
+using AAMod.UI.Core;
 using BaseMod;
+using log4net;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -41,24 +42,12 @@ namespace AAMod
 
         // UI
         internal UserInterface TerratoolInterface;
-        internal TerratoolTUI TerratoolState;
-
-        internal UserInterface TerratoolCInterface;
+        internal TerratoolTUI TerratoolTState;
         internal TerratoolCUI TerratoolCState;
-
-        internal UserInterface TerratoolAInterface;
         internal TerratoolAUI TerratoolAState;
-
-        internal UserInterface TerratoolYInterface;
         internal TerratoolYUI TerratoolYState;
-
-        internal UserInterface TerratoolZInterface;
         internal TerratoolZUI TerratoolZState;
-
-        internal UserInterface TerratoolSInterface;
         internal TerratoolSUI TerratoolSState;
-
-        internal UserInterface TerratoolKipInterface;
         internal TerratoolKipUI TerratoolKipState;
 
         public static SpriteFont fontMouseText;
@@ -71,6 +60,7 @@ namespace AAMod
 
         internal static AAMod instance;
         public static AAMod self = null;
+        internal ILog Logging = LogManager.GetLogger("AAMod");
 
         public AAMod()
         {
@@ -108,8 +98,8 @@ namespace AAMod
             }
             catch (Exception e)
             {
-                ErrorLogger.Log(e.Message);
-                ErrorLogger.Log(e.StackTrace);
+                instance.Logger.InfoFormat(e.Message);
+                instance.Logger.InfoFormat(e.StackTrace);
             }
         }
 
@@ -206,8 +196,8 @@ namespace AAMod
             }
             catch (Exception e)
             {
-                ErrorLogger.Log(e.Message);
-                ErrorLogger.Log(e.StackTrace);
+                instance.Logger.InfoFormat(e.Message);
+                instance.Logger.InfoFormat(e.StackTrace);
             }
         }
 
@@ -271,30 +261,18 @@ namespace AAMod
         public void LoadClient()
         {
             TerratoolInterface = new UserInterface();
-            TerratoolState = new TerratoolTUI();
-            TerratoolState.Activate();
-
-            TerratoolCInterface = new UserInterface();
+            TerratoolTState = new TerratoolTUI();
+            TerratoolTState.Activate();
             TerratoolCState = new TerratoolCUI();
             TerratoolCState.Activate();
-
-            TerratoolAInterface = new UserInterface();
             TerratoolAState = new TerratoolAUI();
             TerratoolAState.Activate();
-
-            TerratoolYInterface = new UserInterface();
             TerratoolYState = new TerratoolYUI();
             TerratoolYState.Activate();
-
-            TerratoolZInterface = new UserInterface();
             TerratoolZState = new TerratoolZUI();
             TerratoolZState.Activate();
-
-            TerratoolSInterface = new UserInterface();
             TerratoolSState = new TerratoolSUI();
             TerratoolSState.Activate();
-
-            TerratoolKipInterface = new UserInterface();
             TerratoolKipState = new TerratoolKipUI();
             TerratoolKipState.Activate();
 
@@ -346,8 +324,19 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium"), ItemType("TerrariumBox"), TileType("TerrariumBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingDragon"), ItemType("SDBox"), TileType("SDBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant"), ItemType("SGBox"), TileType("SGBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shen"), ItemType("ShenBox"), TileType("ShenBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA"), ItemType("ShenABox"), TileType("ShenABox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SupremeRajah"), ItemType("SRajahBox"), TileType("SRajahBox"));
             }
+
+            Filters.Scene["AAMod:ShenSky"] = new Filter(new ShenSkyData("FilterMiniTower").UseColor(.5f, 0f, .5f).UseOpacity(0.2f), EffectPriority.VeryHigh);
+            SkyManager.Instance["AAMod:ShenSky"] = new ShenSky();
+            ShenSky.SkyTex = GetTexture("Backgrounds/ShenBg");
+
+            Filters.Scene["AAMod:ShenASky"] = new Filter(new ShenASkyData("FilterMiniTower").UseColor(.7f, 0f, .7f).UseOpacity(0.2f), EffectPriority.VeryHigh);
+            SkyManager.Instance["AAMod:ShenASky"] = new ShenASky();
+            ShenASky.SkyTex = GetTexture("Backgrounds/ShenSky");
+            ShenASky.MeteorTexture = GetTexture("Backgrounds/ShenMeteor");
 
             Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.High);
             SkyManager.Instance["AAMod:MireSky"] = new MireSky();
@@ -489,39 +478,9 @@ namespace AAMod
         {
             lastUpdateUIGameTime = gameTime;
 
-            if (TerratoolInterface != null && TerratoolInterface.CurrentState != null)
+            if (TerratoolInterface?.CurrentState != null)
             {
                 TerratoolInterface.Update(gameTime);
-            }
-
-            if (TerratoolCInterface != null && TerratoolCInterface.CurrentState != null)
-            {
-                TerratoolCInterface.Update(gameTime);
-            }
-
-            if (TerratoolAInterface != null && TerratoolAInterface.CurrentState != null)
-            {
-                TerratoolAInterface.Update(gameTime);
-            }
-
-            if (TerratoolYInterface != null && TerratoolYInterface.CurrentState != null)
-            {
-                TerratoolYInterface.Update(gameTime);
-            }
-
-            if (TerratoolZInterface != null && TerratoolZInterface.CurrentState != null)
-            {
-                TerratoolZInterface.Update(gameTime);
-            }
-
-            if (TerratoolSInterface != null && TerratoolSInterface.CurrentState != null)
-            {
-                TerratoolZInterface.Update(gameTime);
-            }
-
-            if (TerratoolKipInterface != null && TerratoolKipInterface.CurrentState != null)
-            {
-                TerratoolKipInterface.Update(gameTime);
             }
         }
 
@@ -534,48 +493,11 @@ namespace AAMod
                 "AAMod: Radial UIs",
                 delegate
                 {
-                    var radialUI = TerratoolInterface.CurrentState as TerratoolTUI;
-                    if (radialUI != null && lastUpdateUIGameTime != null
-                    && radialUI.Visible)
+                    if (TerratoolInterface?.CurrentState is ToggableUI && lastUpdateUIGameTime != null)
                     {
                         TerratoolInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
                     }
-                    var radialUI1 = TerratoolCInterface.CurrentState as TerratoolCUI;
-                    if (radialUI1 != null && lastUpdateUIGameTime != null
-                    && radialUI1.Visible)
-                    {
-                        TerratoolCInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
-                    var radialUI2 = TerratoolAInterface.CurrentState as TerratoolAUI;
-                    if (radialUI2 != null && lastUpdateUIGameTime != null
-                    && radialUI2.Visible)
-                    {
-                        TerratoolAInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
-                    var radialUI3 = TerratoolYInterface.CurrentState as TerratoolYUI;
-                    if (radialUI3 != null && lastUpdateUIGameTime != null
-                    && radialUI3.Visible)
-                    {
-                        TerratoolYInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
-                    var radialUI4 = TerratoolZInterface.CurrentState as TerratoolZUI;
-                    if (radialUI4 != null && lastUpdateUIGameTime != null
-                    && radialUI4.Visible)
-                    {
-                        TerratoolZInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
-                    var radialUI5 = TerratoolSInterface.CurrentState as TerratoolSUI;
-                    if (radialUI5 != null && lastUpdateUIGameTime != null
-                    && radialUI5.Visible)
-                    {
-                        TerratoolSInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
-                    var radialUI6 = TerratoolKipInterface.CurrentState as TerratoolKipUI;
-                    if (radialUI6 != null && lastUpdateUIGameTime != null
-                    && radialUI6.Visible)
-                    {
-                        TerratoolKipInterface.Draw(Main.spriteBatch, lastUpdateUIGameTime);
-                    }
+
                     return true;
                 },
                 InterfaceScaleType.UI));
@@ -725,9 +647,9 @@ namespace AAMod
 
                 priority = MusicPriority.BiomeMedium;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shroom");
-                
+
                 return;
-            }      
+            }
         }
 
         public override object Call(params object[] args)
@@ -803,15 +725,10 @@ namespace AAMod
             }
             return new Exception("ANCIENTS AWAKENED CALL ERROR: NO METHOD FOUND: " + methodName);
         }
-		
+
         public override void HandlePacket(BinaryReader bb, int whoAmI)
         {
             AANet.HandlePacket(bb, whoAmI);
         }
-    }
-
-    public enum MPMessageType : byte
-    {
-        RequestUpdateSquidLady
     }
 }

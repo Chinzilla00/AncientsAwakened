@@ -14,7 +14,7 @@ namespace AAMod.Items.Boss.Akuma
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Firestorm");
+            DisplayName.SetDefault("Sunstorm");
         }
 
         public override void SetDefaults()
@@ -23,8 +23,8 @@ namespace AAMod.Items.Boss.Akuma
             item.mana = 13;
             item.useStyle = 5;
             item.damage = 115;
-            item.useAnimation = 17;
-            item.useTime = 10;
+            item.useAnimation = 20;
+            item.useTime = 20;
             item.width = 40;
             item.height = 40;
             item.shoot = mod.ProjectileType("Sunstorm");
@@ -36,6 +36,17 @@ namespace AAMod.Items.Boss.Akuma
             AARarity = 13;
             item.noMelee = true;
             item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -59,18 +70,7 @@ namespace AAMod.Items.Boss.Akuma
             );
         }
 
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;
-                }
-            }
-        }
-
-        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             float num72 = item.shootSpeed;
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
@@ -116,7 +116,7 @@ namespace AAMod.Items.Boss.Akuma
                 num79 *= num80;
                 float num114 = num78;
                 float num115 = num79 + (Main.rand.Next(-40, 41) * 0.02f);
-                Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, type, damage, knockBack, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+                Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, type, damage/2, knockBack, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
             }
             return false;
         }

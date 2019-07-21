@@ -26,7 +26,7 @@ namespace AAMod.Items.Melee
 		public override void SetStaticDefaults()
 		{
 		  DisplayName.SetDefault("Cosmic Fury");
-		  Tooltip.SetDefault("Causes stars to rain from the sky\nStars can reach enemy through any obstacles\nStar Wrath EX");
+		  Tooltip.SetDefault("Causes stars to rain from the sky\nStars can reach enemies through any obstacles\nStar Wrath EX");
 		}
 		
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

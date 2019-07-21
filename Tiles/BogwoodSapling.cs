@@ -18,7 +18,7 @@ namespace AAMod.Tiles
             Main.tileLavaDeath[Type] = true;
             TileObjectData.newTile.Width = 1;
             TileObjectData.newTile.Height = 2;
-            TileObjectData.newTile.Origin = new Terraria.DataStructures.Point16(0, 1);
+            TileObjectData.newTile.Origin = new Point16(0, 1);
             TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile, TileObjectData.newTile.Width, 0);
             TileObjectData.newTile.UsesCustomCanPlace = true;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 18 };
@@ -27,7 +27,7 @@ namespace AAMod.Tiles
             TileObjectData.newTile.AnchorValidTiles = new int[] { mod.TileType("MireGrass") };
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.DrawFlipHorizontal = true;
-            TileObjectData.newTile.WaterPlacement = Terraria.Enums.LiquidPlacement.NotAllowed;
+            TileObjectData.newTile.WaterPlacement = LiquidPlacement.NotAllowed;
             TileObjectData.newTile.LavaDeath = true;
             TileObjectData.newTile.RandomStyleRange = 3;
             TileObjectData.addTile(Type);

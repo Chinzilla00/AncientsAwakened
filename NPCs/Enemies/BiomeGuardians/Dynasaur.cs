@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
         {
             npc.width = 42;
             npc.height = 38;
-            npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 39, 50);
+            npc.value = BaseUtility.CalcValue(0, 0, 39, 50);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
             npc.lifeMax = 180;
@@ -44,14 +44,14 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
 			{
 				for (int m = 0; m < 8; m++)
 				{
-					BaseMod.BaseAI.FireProjectile(npc.Center + new Vector2(velocitiesX[m], velocitiesY[m]), npc.Center, mod.ProjType("BugAcidShot"), 0, 0f, 5f);
+                    BaseAI.FireProjectile(npc.Center + new Vector2(velocitiesX[m], velocitiesY[m]), npc.Center, mod.ProjType("BugAcidShot"), 0, 0f, 5f);
 				}
 			}
-			BaseMod.BaseAI.DropItem(npc, mod.ItemType("AcidSac"), 1 + Main.rand.Next(2) + (Main.expertMode ? 2 : 0), 2, 65, true);
+            BaseAI.DropItem(npc, mod.ItemType("AcidSac"), 1 + Main.rand.Next(2) + (Main.expertMode ? 2 : 0), 2, 65, true);
 			if(ModSupport.calamity != null)
 			{
-				BaseMod.BaseAI.DropItem(npc, ModSupport.calamity.ItemType("BeetleJuice"), 1, 1, 65, true);	
-				BaseMod.BaseAI.DropItem(npc, ModSupport.calamity.ItemType("EssenceofCinder"), 1, 1, (Main.expertMode ? 20 : 15), true);
+                BaseAI.DropItem(npc, ModSupport.calamity.ItemType("BeetleJuice"), 1, 1, 65, true);
+                BaseAI.DropItem(npc, ModSupport.calamity.ItemType("EssenceofCinder"), 1, 1, Main.expertMode ? 20 : 15, true);
 			}
 		}
 
@@ -278,7 +278,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -295,7 +295,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }

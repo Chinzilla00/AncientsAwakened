@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 		{
             npc.width = 40;
             npc.height = 40;
-            npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 60, 50);
+            npc.value = BaseUtility.CalcValue(0, 0, 60, 50);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
             npc.lifeMax = 250;
@@ -42,7 +42,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -137,7 +137,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 			if (internalAI[0] < 300)
 			{
 				Player player = Main.player[npc.target];
-				Vector2 offsetVec = !brokenJaw ? default(Vector2) : BaseUtility.RotateVector(default(Vector2), new Vector2(0, 20f), BaseUtility.RotationTo(npc.Center, player.Center));
+				Vector2 offsetVec = !brokenJaw ? default : BaseUtility.RotateVector(default, new Vector2(0, 20f), BaseUtility.RotationTo(npc.Center, player.Center));
 				BaseAI.AITackle(npc, ref npc.ai, player.Center + offsetVec, 0.35f, 6f, true, 60);
 				BaseAI.LookAt(player.Center, npc, 0);
 			}

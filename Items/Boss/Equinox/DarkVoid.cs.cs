@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.Equinox
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 11;
             item.accessory = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
 
         public override void UpdateEquip(Player player)

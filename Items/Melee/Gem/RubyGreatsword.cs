@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -11,9 +13,9 @@ namespace AAMod.Items.Melee.Gem   //where is located
             item.damage = 32;            
             item.melee = true;            
             item.width = 58;              
-            item.height = 60;             
-            item.useTime = 20;          
-            item.useAnimation = 20;     
+            item.height = 60;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useStyle = 1;        
             item.knockBack = 5;      
             item.value = 3000;        
@@ -25,12 +27,20 @@ namespace AAMod.Items.Melee.Gem   //where is located
             item.shootSpeed = 10f;
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Ruby Greatsword");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+          DisplayName.SetDefault("Ruby Greatsword");
+          Tooltip.SetDefault("");
+        }
+        static int shoot = 0;
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockback)
+        {
+            shoot++;
+            if (shoot % 2 != 0) return false;
 
+            shoot = 0;
+            return true;
+        }
         public override void AddRecipes()  //How to craft this sword
         {
             ModRecipe recipe = new ModRecipe(mod);      

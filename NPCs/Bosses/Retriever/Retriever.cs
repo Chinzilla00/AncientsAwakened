@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Retriever
             npc.damage = 80;
             npc.defense = 30;
             npc.buffImmune[BuffID.Ichor] = true;
-            npc.value = Item.sellPrice(0, 10, 50, 0);
+            npc.value = Item.sellPrice(0, 10, 0, 0);
             npc.knockBackResist = 0f;
             npc.width = 92;
             npc.height = 54;
@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Retriever
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(customAI[0]);
                 writer.Write(customAI[1]);
@@ -72,7 +72,7 @@ namespace AAMod.NPCs.Bosses.Retriever
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/Retriever_Glow1");
             Texture2D glowTex1 = mod.GetTexture("Glowmasks/Retriever_Glow2");
-            color = BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
+            color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color);
             BaseDrawing.DrawTexture(spritebatch, glowTex1, 0, npc, Color.White);
@@ -134,7 +134,7 @@ namespace AAMod.NPCs.Bosses.Retriever
         }
         public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
         {
-            spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+            spriteEffects = npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         }
 
 		public Vector2 offsetBasePoint = new Vector2(240, 0);
@@ -364,7 +364,7 @@ namespace AAMod.NPCs.Bosses.Retriever
                     npc.frame.Y += frameHeight;
                     if (npc.frame.Y > (frameHeight * 13))
                     {
-                        npc.frame.Y = (frameHeight * 10);
+                        npc.frame.Y = frameHeight * 10;
                     }
                 }				
             }
@@ -392,31 +392,31 @@ namespace AAMod.NPCs.Bosses.Retriever
             {
                 if (customAI[0] >= 293)
                 {
-                    npc.frame.Y = (frameHeight * 5);
+                    npc.frame.Y = frameHeight * 5;
                 }
                 else if (customAI[0] >= 286)
                 {
-                    npc.frame.Y = (frameHeight * 6);
+                    npc.frame.Y = frameHeight * 6;
                 }
                 else if (customAI[0] >= 279)
                 {
-                    npc.frame.Y = (frameHeight * 7);
+                    npc.frame.Y = frameHeight * 7;
                 }
                 else if (customAI[0] >= 272)
                 {
-                    npc.frame.Y = (frameHeight * 8);
+                    npc.frame.Y = frameHeight * 8;
                 }
                 else if (customAI[0] >= 265)
                 {
-                    npc.frame.Y = (frameHeight * 9);
+                    npc.frame.Y = frameHeight * 9;
                 }
                 else if (customAI[0] >= 258)
                 {
-                    npc.frame.Y = (frameHeight * 10);
+                    npc.frame.Y = frameHeight * 10;
                 }
                 else if (customAI[0] >= 251)
                 {
-                    npc.frame.Y = (frameHeight * 11);
+                    npc.frame.Y = frameHeight * 11;
                 }
                 else if (customAI[0] >= 60)
                 {
@@ -433,11 +433,11 @@ namespace AAMod.NPCs.Bosses.Retriever
                 }
                 else if (customAI[0] >= 59)
                 {
-                    npc.frame.Y = (frameHeight * 10);
+                    npc.frame.Y = frameHeight * 10;
                 }
                 else if (customAI[0] == 1)
                 {
-                    npc.frame.Y = (frameHeight * 7);
+                    npc.frame.Y = frameHeight * 7;
                 }
             }
             else
@@ -464,14 +464,14 @@ namespace AAMod.NPCs.Bosses.Retriever
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
 			float moveSpd = moveSpeed;			
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
 			if(length < 50f)
 				moveSpd /= 2f;
             if (length < moveSpd)
             {
 				moveSpd = length;
             }
-            npc.velocity = (length <= 5f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length <= 5f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpd;
         }
     }

@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
             item.height = 16;
             item.maxStack = 999;
             item.rare = 1;
-            item.value = Terraria.Item.sellPrice(0, 0, 3, 0);
+            item.value = Item.sellPrice(0, 0, 3, 0);
         }
 
         public override void SetStaticDefaults()
@@ -22,7 +22,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.White, lightColor, lightColor, Color.White);
+            return BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, Color.White, lightColor, lightColor, Color.White);
         }
     }
 }

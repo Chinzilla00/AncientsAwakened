@@ -10,9 +10,9 @@ namespace AAMod.NPCs.Bosses.Wyrm
 {
     public class Wyrm : ModNPC
 	{
-        
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmHead"; } }
-        
+
+        public override string Texture => "AAMod/NPCs/Enemies/Inferno/WyrmHead";
+
 
         public override void SetStaticDefaults()
 		{
@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                 {
-                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaDust"), 0f, 0f, 100, default(Color), 2f);
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaDust"), 0f, 0f, 100, default, 2f);
                     Main.dust[num935].noGravity = true;
                     Main.dust[num935].noLight = true;
                 }
@@ -118,7 +118,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 						Vector2 vector2;
 						vector2.X = i * 16;
 						vector2.Y = j * 16;
-						if (npc.position.X + npc.width > vector2.X && npc.position.X < vector2.X + 16.0 && (npc.position.Y + npc.height > (double)vector2.Y && npc.position.Y < vector2.Y + 16.0))
+						if (npc.position.X + npc.width > vector2.X && npc.position.X < vector2.X + 16.0 && npc.position.Y + npc.height > (double)vector2.Y && npc.position.Y < vector2.Y + 16.0)
 						{
 							collision = true;
 							if (Main.rand.Next(100) == 0 && Main.tile[i, j].nactive())
@@ -146,9 +146,9 @@ namespace AAMod.NPCs.Bosses.Wyrm
 			float absDirX = Math.Abs(dirX);
 			float absDirY = Math.Abs(dirY);
 			float newSpeed = speed / length;
-			dirX *= (newSpeed * 2);
-			dirY *= (newSpeed * 2);
-			if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || (npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0))
+			dirX *= newSpeed * 2;
+			dirY *= newSpeed * 2;
+			if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0)
 			{
 				if (npc.velocity.X < dirX)
 					npc.velocity.X = npc.velocity.X + acceleration;
@@ -240,7 +240,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 					npc.netUpdate = true;
 				npc.localAI[0] = 1f;
 			}
-			if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || (npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0)) && !npc.justHit)
+			if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0) && !npc.justHit)
 				npc.netUpdate = true;
 
 			return false;
@@ -297,7 +297,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 
     public class WyrmBody1 : Wyrm
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmBody1"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Inferno/WyrmBody1";
 
         public override void SetStaticDefaults()
         {
@@ -369,7 +369,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
                 {
                     for (int num934 = 0; num934 < 2; num934++)
                     {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("WyrmADust"), 0f, 0f, 100, default(Color), 2f);
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("WyrmADust"), 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = false;
                         Main.dust[num935].noLight = false;
                     }
@@ -419,7 +419,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 
     public class WyrmBody2 : Wyrm
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmBody2"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Inferno/WyrmBody2";
 
         public override void SetStaticDefaults()
         {
@@ -494,7 +494,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
                 {
                     for (int num934 = 0; num934 < 2; num934++)
                     {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("WyrmADust"), 0f, 0f, 100, default(Color), 2f);
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("WyrmADust"), 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = false;
                         Main.dust[num935].noLight = false;
                     }
@@ -542,7 +542,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 
     public class WyrmBody3 : Wyrm
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmBody3"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Inferno/WyrmBody3";
 
         public override void SetStaticDefaults()
         {
@@ -614,7 +614,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
                 {
                     for (int num934 = 0; num934 < 2; num934++)
                     {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("WyrmADust"), 0f, 0f, 100, default(Color), 2f);
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("WyrmADust"), 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = false;
                         Main.dust[num935].noLight = false;
                     }
@@ -664,7 +664,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
 
     public class WyrmBody4 : Wyrm
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/WyrmBody4"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Inferno/WyrmBody4";
 
         public override void SetStaticDefaults()
         {
@@ -737,7 +737,7 @@ namespace AAMod.NPCs.Bosses.Wyrm
                 {
                     for (int num934 = 0; num934 < 2; num934++)
                     {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("WyrmADust"), 0f, 0f, 100, default(Color), 2f);
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("WyrmADust"), 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = false;
                         Main.dust[num935].noLight = false;
                     }

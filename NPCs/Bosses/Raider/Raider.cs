@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Raider
             npc.damage = 70;
             npc.defense = 30;
             npc.lifeMax = 30000;
-            npc.value = Item.sellPrice(0, 10, 50, 0);
+            npc.value = Item.sellPrice(0, 10, 0, 0);
             npc.buffImmune[BuffID.Ichor] = true;
             npc.lavaImmune = true;
             npc.boss = true;
@@ -52,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Raider
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -164,7 +164,7 @@ namespace AAMod.NPCs.Bosses.Raider
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += 192;
-                bool isCharging = (internalAI[1] == AISTATE_CHARGEATPLAYER); //all ai states between charges
+                bool isCharging = internalAI[1] == AISTATE_CHARGEATPLAYER; //all ai states between charges
                 if (isCharging && (npc.frame.Y >= 192 * 8 || npc.frame.Y < 192 * 5))
                 {
                     npc.frame.Y = 192 * 4;
@@ -254,7 +254,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     else
                     if (internalAI[1] == AISTATE_SPAWNEGGS)
                     {
-                        npc.ai[1] = (npc.ai[1] == 0 ? 1 : 0);
+                        npc.ai[1] = npc.ai[1] == 0 ? 1 : 0;
                     }
                     if (internalAI[1] == AISTATE_CHARGEATPLAYER)
                     {
@@ -263,7 +263,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     }
                 }
             }
-            pos = (npc.ai[1] == 0 ? -250 : 250);
+            pos = npc.ai[1] == 0 ? -250 : 250;
 
             if (Main.dayTime)
             {
@@ -305,7 +305,6 @@ namespace AAMod.NPCs.Bosses.Raider
                     if (projectileTimer > 20)
                     {
                         projectileTimer = 0;
-                        Vector2 dir = new Vector2(npc.velocity.X * 3f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
                         Vector2 firePos = new Vector2(npc.Center.X + (32 * npc.direction), npc.Center.Y + 40f);
                         firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
                         if (Minions < MaxMinions)
@@ -327,6 +326,7 @@ namespace AAMod.NPCs.Bosses.Raider
                         float Point = 500 * npc.direction;
                         MovePoint = player.Center + new Vector2(Point, 500f);
                         SelectPoint = false;
+                        internalAI[5] = 1;
                         npc.netUpdate = true;
                     }
                 }
@@ -337,6 +337,7 @@ namespace AAMod.NPCs.Bosses.Raider
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
+                    internalAI[5] = 0;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
@@ -350,15 +351,23 @@ namespace AAMod.NPCs.Bosses.Raider
                     {
                         if (projectileTimer > (projectileInterval + 50))
                             projectileTimer = 0;
-                        Vector2 dir = new Vector2(npc.velocity.X * 2f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
+                        Vector2 dir = new Vector2(npc.velocity.X * 2f + (4f * npc.direction), npc.velocity.Y * 0.5f + 1f);
                         Vector2 firePos = new Vector2(npc.Center.X + (64 * npc.direction), npc.Center.Y + 28f);
                         firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
-                        int projID = Projectile.NewProjectile(firePos, dir / 2, mod.ProjectileType("RaidSphere"), npc.damage / 2, 1, 255);
+                        int projID = Projectile.NewProjectile(firePos, dir, mod.ProjectileType("RaidSphere"), npc.damage / 2, 1, 255);
                         Main.projectile[projID].netUpdate = true;
                     }
                 }
             }
-            
+            if (internalAI[5] == 1 && Main.netMode != 1)
+            {
+                internalAI[5] = 2;
+                npc.netUpdate = true;
+            }
+            else if (internalAI[5] == 2 && Main.netMode != 1)
+            {
+                npc.netUpdate = false;
+            }
         }
 
         public Vector2 MovePoint;
@@ -369,7 +378,7 @@ namespace AAMod.NPCs.Bosses.Raider
             float MeleeSpeed = 18f;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < MeleeSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / MeleeSpeed);
@@ -386,7 +395,7 @@ namespace AAMod.NPCs.Bosses.Raider
             {
                 MeleeSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= MeleeSpeed;
             npc.velocity *= velMultiplier;
         }
@@ -396,7 +405,7 @@ namespace AAMod.NPCs.Bosses.Raider
             float moveSpeed = 9f;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -413,7 +422,7 @@ namespace AAMod.NPCs.Bosses.Raider
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }

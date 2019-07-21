@@ -74,7 +74,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 				}
 				if (npc.ai[0] >= 375) //after he says 'heh' on the server, change music on the client
 				{
-					music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Akuma2");
+					music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
 				}				
 				if (npc.ai[0] >= 660) //after 660 on the server, transition color
 				{
@@ -99,26 +99,27 @@ namespace AAMod.NPCs.Bosses.Akuma
 				}else
 				if (npc.ai[0] == 375)
 				{
-					BaseUtility.Chat("Heh...", new Color(180, 41, 32));
+					if (Main.netMode != 1) BaseUtility.Chat("Heh...", new Color(180, 41, 32));
 					npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 560)
 				{
-					BaseUtility.Chat("You know, kid...", new Color(180, 41, 32));
+					if (Main.netMode != 1) BaseUtility.Chat("You know, kid...", new Color(180, 41, 32));
 				}else
 				if(npc.ai[0] == 660) //sync so the color transition occurs
-				{
-					npc.netUpdate = true;
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat("The air around you begins to heat up...", new Color(175, 75, 255));
+                    npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 900)
 				{
-					BaseUtility.Chat("fanning the flames doesn't put them out...", Color.DeepSkyBlue);
+					if (Main.netMode != 1) BaseUtility.Chat("Fanning the flames doesn't put them out...", Color.DeepSkyBlue);
 				}else
 				if (npc.ai[0] >= 1100 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
 				{
 					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
-					BaseUtility.Chat("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-					BaseUtility.Chat("IT ONLY MAKES THEM STRONGER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+					if (Main.netMode != 1) BaseUtility.Chat("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+					if (Main.netMode != 1) BaseUtility.Chat("IT ONLY MAKES THEM STRONGER!", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
 					npc.netUpdate = true;
 					npc.active = false;
 				}
@@ -131,7 +132,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -148,7 +149,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }

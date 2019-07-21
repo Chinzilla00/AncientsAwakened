@@ -39,7 +39,7 @@ namespace AAMod.Items.Materials
         public override bool GrabStyle(Player player)
         {
             Vector2 vectorItemToPlayer = player.Center - item.Center;
-            Vector2 movement = -vectorItemToPlayer.SafeNormalize(default(Vector2)) * 0.1f;
+            Vector2 movement = -vectorItemToPlayer.SafeNormalize(default) * 0.1f;
             item.velocity = item.velocity + movement;
             item.velocity = Collision.TileCollision(item.position, item.velocity, item.width, item.height);
             return true;

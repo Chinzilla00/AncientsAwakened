@@ -66,7 +66,7 @@ namespace AAMod.Items.Blocks
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "AkumaBox");
-            recipe.AddIngredient(null, "EXSoul");
+            recipe.AddIngredient(null, "TaiyangBaolei");
             recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();

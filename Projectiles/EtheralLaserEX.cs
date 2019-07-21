@@ -80,12 +80,12 @@ namespace AAMod.Projectiles
 				scaleFactor6 = -2f;
 			}
 			float num814 = (projectile2.ai[0] + num810 * num813) / (num813 * 6f) * 6.28318548f;
-			num811 = Vector2.UnitY.RotatedBy(num814, default(Vector2)).Y * 0.5235988f * num812;
-			value37 = (Vector2.UnitY.RotatedBy(num814, default(Vector2)) * new Vector2(4f, y)).RotatedBy(projectile2.velocity.ToRotation(), default(Vector2));
+			num811 = Vector2.UnitY.RotatedBy(num814, default).Y * 0.5235988f * num812;
+			value37 = (Vector2.UnitY.RotatedBy(num814, default) * new Vector2(4f, y)).RotatedBy(projectile2.velocity.ToRotation(), default);
 			projectile.position = projectile2.Center + value36 * 16f - projectile.Size / 2f + new Vector2(0f, -Main.projectile[(int)projectile.ai[1]].gfxOffY);
 			projectile.position += projectile2.velocity.ToRotation().ToRotationVector2() * scaleFactor6;
 			projectile.position += value37;
-			projectile.velocity = Vector2.Normalize(projectile2.velocity).RotatedBy(num811, default(Vector2));
+			projectile.velocity = Vector2.Normalize(projectile2.velocity).RotatedBy(num811, default);
 			projectile.scale = 1.8f * (1f - num812);
 			projectile.damage = projectile2.damage;
 			if (projectile2.ai[0] >= 180f) 
@@ -97,7 +97,7 @@ namespace AAMod.Projectiles
 			{
 				vector71 = new Vector2?(Main.player[projectile.owner].Center);
 			}
-			projectile.friendly = (projectile2.ai[0] > 30f);
+			projectile.friendly = projectile2.ai[0] > 30f;
 			if (projectile.velocity.HasNaNs() || projectile.velocity == Vector2.Zero) 
 			{
 				projectile.velocity = -Vector2.UnitY;
@@ -153,7 +153,7 @@ namespace AAMod.Projectiles
 				}
 				if (Main.rand.Next(5) == 0) 
 				{
-					Vector2 value42 = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
+					Vector2 value42 = projectile.velocity.RotatedBy(1.5707963705062866, default) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
 					int num847 = Dust.NewDust(vector80 + value42 - Vector2.One * 4f, 8, 8, 261, 0f, 0f, 100, new Color(255, 250, 205), 1f);
 					Main.dust[num847].velocity *= 0.5f;
 					Main.dust[num847].velocity.Y = -Math.Abs(Main.dust[num847].velocity.Y);
@@ -164,7 +164,7 @@ namespace AAMod.Projectiles
 				float num848 = projectile.velocity.ToRotation();
 				if (Main.netMode != 2) 
 				{
-					((WaterShaderData)Filters.Scene["WaterDistortion"].GetShader()).QueueRipple(projectile.position + new Vector2(size.X * 0.5f, 0f).RotatedBy(num848, default(Vector2)), new Color(0.5f, 0.1f * Math.Sign(value43) + 0.5f, 0f, 1f) * Math.Abs(value43), size, RippleShape.Square, num848);
+					((WaterShaderData)Filters.Scene["WaterDistortion"].GetShader()).QueueRipple(projectile.position + new Vector2(size.X * 0.5f, 0f).RotatedBy(num848, default), new Color(0.5f, 0.1f * Math.Sign(value43) + 0.5f, 0f, 1f) * Math.Abs(value43), size, RippleShape.Square, num848);
 				}
 				Utils.PlotTileLine(projectile.Center, projectile.Center + projectile.velocity * projectile.localAI[1], projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CastLight));
 				return;
@@ -179,7 +179,7 @@ namespace AAMod.Projectiles
 			}
 			Texture2D tex = Main.projectileTexture[projectile.type];
 			float num228 = projectile.localAI[1];
-			Microsoft.Xna.Framework.Color value25 = Main.hslToRgb(0.54f, 1f, 0.902f);
+            Color value25 = Main.hslToRgb(0.54f, 1f, 0.902f);
 			value25.A = 0;
 			Vector2 value26 = projectile.Center.Floor();
 			value26 += projectile.velocity * projectile.scale * 10.5f;

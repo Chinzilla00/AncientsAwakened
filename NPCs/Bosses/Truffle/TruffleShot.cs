@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Truffle
             if (projectile.velocity.X < 0f)
             {
                 projectile.spriteDirection = -1;
-                projectile.rotation = (float)Math.Atan2((double)(-(double)projectile.velocity.Y), (double)(-(double)projectile.velocity.X));
+                projectile.rotation = (float)Math.Atan2((double)-(double)projectile.velocity.Y, (double)-(double)projectile.velocity.X);
             }
             else
             {
@@ -67,11 +67,11 @@ namespace AAMod.NPCs.Bosses.Truffle
             for (int num468 = 0; num468 < 20; num468++)
             {
                 num468 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, mod.DustType<Dusts.FulguriteDust>(), projectile.velocity.X * 0.2f,
-                projectile.velocity.Y * 0.2f, 100, default(Color), 2f);
+                projectile.velocity.Y * 0.2f, 100, default, 2f);
                 Main.dust[num468].noGravity = true;
                 Main.dust[num468].velocity *= 2f;
                 num468 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, mod.DustType<Dusts.FulguriteDust>(), projectile.velocity.X * 0.2f,
-                projectile.velocity.Y * 0.2f, 100, default(Color));
+                projectile.velocity.Y * 0.2f, 100, default);
                 Main.dust[num468].velocity *= 2f;
             }
         }

@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -7,13 +9,13 @@ namespace AAMod.Projectiles.Zero
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Genocide");     //The English name of the projectile
-            Main.projFrames[projectile.type] = 5;     //The recording mode
+            DisplayName.SetDefault("Genocide");     
+            Main.projFrames[projectile.type] = 5;     
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 230;
+            projectile.width = 176;
             projectile.height = 230;
             projectile.penetrate = -1;
             projectile.friendly = true;
@@ -21,6 +23,7 @@ namespace AAMod.Projectiles.Zero
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
+            projectile.ranged = true;
         }
 
         public override void AI()
@@ -28,7 +31,7 @@ namespace AAMod.Projectiles.Zero
             if (++projectile.frameCounter >= 5)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 6)
+                if (++projectile.frame >= 5)
                 {
                     projectile.Kill();
 
@@ -43,6 +46,11 @@ namespace AAMod.Projectiles.Zero
         {
             projectile.timeLeft = 0;
         }
-
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 5, 0, 2);
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 5, frame, lightColor, true);
+            return false;
+        }
     }
 }

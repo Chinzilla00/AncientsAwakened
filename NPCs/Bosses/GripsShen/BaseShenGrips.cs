@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
             npc.DeathSound = SoundID.NPCDeath1;
             npc.netAlways = true;
             npc.scale *= 1.4f;
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Shen");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Shen");
         }
         
         public override void FindFrame(int frameHeight)
@@ -101,7 +101,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
 		}
 		public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
 		{
-			spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+			spriteEffects = npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 		}
 
 		public Vector2 offsetBasePoint = Vector2.Zero;
@@ -112,7 +112,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
             }
@@ -186,7 +186,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
 				MoveToPoint(point);
 				if(Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
 				{
-                    bool TripleDive = (npc.life < npc.lifeMax / 2);
+                    bool TripleDive = npc.life < npc.lifeMax / 2;
                     npc.ai[0] = TripleDive ? 4 : 0;
                     npc.ai[1] = TripleDive ? targetPlayer.Center.X : 0;
                     npc.ai[2] = TripleDive ? targetPlayer.Center.Y : 0;
@@ -306,7 +306,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
 			if(moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
 			float velMultiplier = 1f;
 			Vector2 dist = point - npc.Center;
-			float length = (dist == Vector2.Zero ? 0f : dist.Length());
+			float length = dist == Vector2.Zero ? 0f : dist.Length();
 			if(length < moveSpeed)
 			{
 				velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -323,7 +323,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
 			{
 				moveSpeed *= 0.5f;
 			}
-			npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+			npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
 			npc.velocity *= moveSpeed;
 			npc.velocity *= velMultiplier;
 		}

@@ -104,7 +104,7 @@ namespace AAMod.Projectiles
                     {
                         num844 = 0.5f;
                     }
-                    Vector2 value47 = new Vector2(-projectile.width * 0.2f * projectile.scale, 0f).RotatedBy(num844 * 6.28318548f, default(Vector2)).RotatedBy(projectile.velocity.ToRotation(), default(Vector2));
+                    Vector2 value47 = new Vector2(-projectile.width * 0.2f * projectile.scale, 0f).RotatedBy(num844 * 6.28318548f, default).RotatedBy(projectile.velocity.ToRotation(), default);
                     int num845 = Dust.NewDust(projectile.Center - Vector2.One * 5f, 10, 10, 226, -projectile.velocity.X / 3f, -projectile.velocity.Y / 3f, 150, Color.Transparent, 0.7f);
                     Main.dust[num845].position = projectile.Center + value47;
                     Main.dust[num845].velocity = Vector2.Normalize(Main.dust[num845].position - projectile.Center) * 2f;
@@ -121,7 +121,7 @@ namespace AAMod.Projectiles
                     {
                         num847 = 0.5f;
                     }
-                    Vector2 value48 = new Vector2(-projectile.width * 0.6f * projectile.scale, 0f).RotatedBy(num847 * 6.28318548f, default(Vector2)).RotatedBy(projectile.velocity.ToRotation(), default(Vector2));
+                    Vector2 value48 = new Vector2(-projectile.width * 0.6f * projectile.scale, 0f).RotatedBy(num847 * 6.28318548f, default).RotatedBy(projectile.velocity.ToRotation(), default);
                     int num848 = Dust.NewDust(projectile.Center - Vector2.One * 5f, 10, 10, 226, -projectile.velocity.X / 3f, -projectile.velocity.Y / 3f, 150, Color.Transparent, 0.7f);
                     Main.dust[num848].velocity = Vector2.Zero;
                     Main.dust[num848].position = projectile.Center + value48;

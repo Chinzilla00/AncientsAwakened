@@ -29,7 +29,7 @@ namespace AAMod.Items.Dev
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("AmphibiousProjectile");
-            item.shootSpeed = 9f;
+            item.shootSpeed = 12f;
 		}
 
         public override void ModifyTooltips(List<TooltipLine> list)

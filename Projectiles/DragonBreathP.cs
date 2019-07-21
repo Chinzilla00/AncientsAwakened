@@ -2,52 +2,59 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
+using System.IO;
+using BaseMod;
 
 namespace AAMod.Projectiles   //The directory for your .cs and .png; Example: TutorialMOD/Projectiles
 {
     public class DragonBreathP : ModProjectile   //make sure the sprite file is named like the class name (CustomYoyoProjectile)
     {
- 
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Dragon's Breath");
+        }
+
         public override void SetDefaults()
         {
             projectile.extraUpdates = 0;
-            projectile.width = 14;//Set the projectile hitbox width
-            projectile.height = 14; //Set the projectile hitbox height            
-            projectile.aiStyle = 99; // aiStyle 99 is used for all yoyos, and is Extremely suggested, as yoyo are extremely difficult without them
-            projectile.friendly = true;  //Tells the game whether it is friendly to players/friendly npcs or not
-            projectile.penetrate = -1; //Tells the game how many enemies it can hit before being destroyed. -1 = never
-            projectile.melee = true; //Tells the game whether it is a melee projectile or not        
-            // The following sets are only applicable to yoyo that use aiStyle 99.
-            // YoyosLifeTimeMultiplier is how long in seconds the yoyo will stay out before automatically returning to the player.
-            // Vanilla values range from 3f(Wood) to 16f(Chik), and defaults to -1f. Leaving as -1 will make the time infinite.
+            projectile.width = 14;
+            projectile.height = 14;
+            projectile.aiStyle = 99;
+            projectile.friendly = true;
+            projectile.penetrate = -1;
+            projectile.melee = true;
             ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 12f;
-            // YoyosMaximumRange is the maximum distance the yoyo sleep away from the player.
-            // Vanilla values range from 130f(Wood) to 400f(Terrarian), and defaults to 200f
-            ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 360f;
-            // YoyosTopSpeed is top speed of the yoyo projectile.
-            // Vanilla values range from 9f(Wood) to 17.5f(Terrarian), and defaults to 10f
-            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 18f;
+            ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 300f;
+            ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 14f;
         }
 
-        public short customGlowMask = 0;
-        public override void SetStaticDefaults()
+        public float[] internalAI = new float[1];
+        public override void SendExtraAI(BinaryWriter writer)
         {
-            if (Main.netMode != 2)
+            base.SendExtraAI(writer);
+            if (Main.netMode == 2 || Main.dedServ)
             {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
+                writer.Write(internalAI[0]);
             }
-            projectile.glowMask = customGlowMask;
-
-            DisplayName.SetDefault("Dragon's Breath");
         }
-                //dust = Main.dust[Terraria.Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 15, 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
 
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+            }
+        }
+
+        public override void PostAI()
+        {
+            int Target = BaseAI.GetNPC(projectile.Center, -1, 500);
+            if (Target != -1)
+            {
+                NPC target = Main.npc[Target];
+                BaseAI.ShootPeriodic(projectile, target.position, 14, 14, mod.ProjectileType<DragonBreath>(), ref internalAI[0], 5, projectile.damage, 10, true);
+            }
+        }
     }
 }

@@ -26,14 +26,14 @@ namespace AAMod.Items.Melee
 			item.knockBack =20;
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 9;
-			item.expert = true;
+			item.expert = true; item.expertOnly = true;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = false;
             item.shoot = mod.ProjectileType("TrueCopperShot");
             item.shootSpeed = 20f;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
-            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
+            glowmaskDrawType = GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
             glowmaskDrawColor = Color.White;  //glowmask draw color
         }
 

@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             const int homingDelay = 0;
             const float desiredFlySpeedInPixelsPerFrame = 5;
-            const float amountOfFramesToLerpBy = 30; // minimum of 1, please keep in full numbers even though it's a float!
+            const float amountOfFramesToLerpBy = 40; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[1]++;
             if (projectile.ai[1] > homingDelay)
@@ -74,7 +74,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(projectile.ai[0] == 1 ? mod.BuffType("DiscordInferno") : projectile.ai[0] == 2 ? mod.BuffType("HydraToxin") : mod.BuffType("DiscordInferno"), 300);
+            target.AddBuff(projectile.ai[0] == 1 ? mod.BuffType("DiscordInferno") : projectile.ai[0] == 2 ? mod.BuffType("HydraToxin") : mod.BuffType("DiscordInferno"), 200);
         }
 
         public override void Kill(int timeLeft)

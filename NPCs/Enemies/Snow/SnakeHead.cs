@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Enemies.Snow
         {
             return spawnInfo.player.ZoneSnow &&
                 NPC.downedBoss3 && 
-                !Main.dayTime ? .2f : 0f;
+                !Main.dayTime ? .05f : 0f;
         }
 
         public override void AI()

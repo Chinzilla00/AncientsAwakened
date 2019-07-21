@@ -8,13 +8,7 @@ namespace AAMod.NPCs.TownNPCs
     [AutoloadHead]
     public class Mushman : ModNPC
     {
-        public override string Texture
-        {
-            get
-            {
-                return "AAMod/NPCs/TownNPCs/Mushman";
-            }
-        }
+        public override string Texture => "AAMod/NPCs/TownNPCs/Mushman";
 
         public override bool Autoload(ref string name)
         {

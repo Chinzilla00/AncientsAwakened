@@ -18,7 +18,7 @@ namespace AAMod.Projectiles.Zero
             projectile.width = 60;
             projectile.height = 60;
             projectile.friendly = true;
-            projectile.ranged = true;
+            projectile.magic = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 20;
             projectile.alpha = 130;
@@ -26,7 +26,7 @@ namespace AAMod.Projectiles.Zero
             projectile.alpha = 255;
             projectile.tileCollide = false;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 5;
+            projectile.localNPCHitCooldown = 15;
         }
 
         private float RingRotation = 0f;
@@ -37,10 +37,12 @@ namespace AAMod.Projectiles.Zero
 
             if (projectile.alpha > 80)
             {
+                projectile.friendly = false;
                 projectile.alpha -= 3;
             }
             else
             {
+                projectile.friendly = true;
                 projectile.alpha = 80;
             }
 

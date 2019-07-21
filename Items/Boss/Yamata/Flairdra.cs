@@ -14,19 +14,8 @@ namespace AAMod.Items.Boss.Yamata
         {
             
             DisplayName.SetDefault("Flairdra");
-            Tooltip.SetDefault(@"Rockets towards foes and leaves homing cyclones in its wake
+            Tooltip.SetDefault(@"Explodes into wrathful souls on hit
 Inflicts Moonraze");
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;;
-                }
-            }
         }
 
         public override void SetDefaults()
@@ -47,6 +36,17 @@ Inflicts Moonraze");
             item.melee = true;
             item.autoReuse = true;
             item.rare = 9; AARarity = 13;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
 

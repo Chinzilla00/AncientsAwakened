@@ -27,11 +27,22 @@ namespace AAMod.Items.Blocks
 			item.consumable = true;
 			item.createTile = mod.TileType("DaybreakTorch");
 			item.flame = true;
-            AARarity = 14;
+            AARarity = 13;
             item.value = Item.sellPrice(0, 0, 50, 0);
-		}
+        }
 
-		public override void HoldItem(Player player)
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
+        }
+
+        public override void HoldItem(Player player)
 		{
 			if (Main.rand.Next(player.itemAnimation > 0 ? 40 : 80) == 0)
 			{

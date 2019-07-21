@@ -46,7 +46,7 @@ namespace AAMod.Projectiles.Yamata
                 projectile.direction = -1;
             }
             Main.player[projectile.owner].itemRotation = (vector54 * -1f * projectile.direction).ToRotation();
-            projectile.spriteDirection = ((vector54.X > 0f) ? -1 : 1);
+            projectile.spriteDirection = (vector54.X > 0f) ? -1 : 1;
             if (projectile.ai[0] == 0f && vector54.Length() > 400f)
             {
                 projectile.ai[0] = 1f;
@@ -85,7 +85,7 @@ namespace AAMod.Projectiles.Yamata
 
         public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
 		{
-            if (Main.netMode != 1 && Main.rand.Next(5) == 0)
+            if (Main.netMode != 1 && Main.rand.Next(2) == 0)
             {
                 Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
                 float spread = 12f * 0.0174f;
@@ -93,7 +93,7 @@ namespace AAMod.Projectiles.Yamata
                 double deltaAngle = spread / 3;
                 for (int i = 0; i < 3; i++)
                 {
-                    double offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                    double offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
                     Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 3f) * 5, (float)(Math.Cos(offsetAngle) * 3f) * 5, mod.ProjectileType("YWSplit"), projectile.damage / 6, projectile.knockBack, projectile.owner, 0f, 0f);
                     Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 3f) * 5, (float)(-Math.Cos(offsetAngle) * 3f) * 5, mod.ProjectileType("YWSplit"), projectile.damage / 6, projectile.knockBack, projectile.owner, 0f, 0f);
                 }

@@ -12,19 +12,19 @@ namespace AAMod.Items.Boss.Zero
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Broken Zero Weapon");
-            Tooltip.SetDefault("Just swing it around and it'll shock whatever's in front of you");
+            Tooltip.SetDefault("Violently attempting to zap you");
         }
 
         public override void SetDefaults()
         {
             item.ranged = true;
             item.useTime = 4;
-            item.reuseDelay = 15;
-            item.useAnimation = 12;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 2.5f;
             item.autoReuse = true;
+            item.reuseDelay = 15;
+            item.useAnimation = 12;
             item.shootSpeed = 16f;
             item.width = 36;
             item.height = 42;
@@ -33,6 +33,17 @@ namespace AAMod.Items.Boss.Zero
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.shoot = mod.ProjectileType("Teslashock");
             item.rare = 9; AARarity = 13;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
 

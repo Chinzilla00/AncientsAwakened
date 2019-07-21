@@ -15,7 +15,7 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
         {
             if (Main.netMode != 2)
             {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
@@ -44,7 +44,7 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
         {
             Player player = Main.player[projectile.owner];
 
-            Color color = BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, AAColor.CursedInferno, AAColor.Ichor);
+            Color color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, AAColor.CursedInferno, AAColor.Ichor);
             if (Main.myPlayer == projectile.owner)
             {
                 if (!player.channel || player.noItems || player.CCed)

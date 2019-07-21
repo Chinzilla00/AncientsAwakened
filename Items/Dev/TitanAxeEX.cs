@@ -9,8 +9,8 @@ namespace AAMod.Items.Dev
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Titan Slayer");
-            Tooltip.SetDefault(@"Right click to quickly swing the axe
-left click to throw the axe
+            Tooltip.SetDefault(@"Left click to quickly swing the axe
+Right click to throw the axe
 Titan Axe EX");
 		}
 
@@ -31,7 +31,7 @@ Titan Axe EX");
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.shoot = mod.ProjectileType("Surasshu");
             item.shootSpeed = 15f;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
 
         public override bool AltFunctionUse(Player player)

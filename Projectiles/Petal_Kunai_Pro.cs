@@ -28,7 +28,7 @@ namespace AAMod.Projectiles
 		{
 			for (int k = 0; k < 5; k++)
 			{
-				int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.FlowerDust>(), 0f, 0f, 200, default(Color), 0.8f);
+				int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.FlowerDust>(), 0f, 0f, 200, default, 0.8f);
 				Main.dust[dustnumber].velocity *= 0.3f;
 			}
 			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 0);

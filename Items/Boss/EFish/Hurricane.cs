@@ -56,7 +56,7 @@ Tsunami EX");
 			for (int num123 = 0; num123 < num122; num123++)
 			{
 				float num124 = num123 - (num122 - 1f) / 2f;
-				Vector2 vector15 = vector14.RotatedBy(num121 * num124, default(Vector2));
+				Vector2 vector15 = vector14.RotatedBy(num121 * num124, default);
 				if (!flag11)
 				{
 					vector15 -= vector14;

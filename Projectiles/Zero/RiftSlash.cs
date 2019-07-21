@@ -2,11 +2,12 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Zero
 {
     // to investigate: Projectile.Damage, (8843)
-    class RiftSlash : VoidStarPF
+    class RiftSlash : ModProjectile
     {
         public override void SetDefaults()
         {

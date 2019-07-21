@@ -44,12 +44,13 @@ namespace AAMod.NPCs.Bosses.Shen
         }
 
 
+        public int Frame = 0;
         public int[] internalAI = new int[6];
 
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]); //Used as the AI selector
                 writer.Write(internalAI[1]); //Used as the Frame Counter
@@ -89,11 +90,11 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             if (DontSayDeathLine)
             {
-                Main.NewText("Father! Rrgh..! Next time we meet, I'll strike you down!", new Color(72, 78, 117));
+                if (Main.netMode != 1) BaseUtility.Chat("Father! Rrgh..! Next time we meet, I'll strike you down!", new Color(72, 78, 117));
             }
             else
             {
-                Main.NewText("Ngh...sorry father...I can't carry on...", new Color(72, 78, 117));
+                if (Main.netMode != 1) BaseUtility.Chat("Ngh...sorry father...I can't carry on...", new Color(72, 78, 117));
             }
             NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<WrathHarukaVanish>());
             npc.value = 0f;
@@ -177,9 +178,11 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
             }
 
-            internalAI[1]++;
-
-            internalAI[5]++;
+            if (Main.netMode != 1)
+            {
+                internalAI[1]++;
+                internalAI[5]++;
+            }
 
             int InvisTimer1 = 1000;
 
@@ -205,7 +208,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.netUpdate = true;
                 }
             }
-            if (internalAI[5] > InvisTimer2)
+            if (internalAI[5] > InvisTimer2 && Main.netMode != 1)
             {
                 Invisible = false;
                 internalAI[5] = 0;
@@ -216,18 +219,24 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH)
             {
-                if (internalAI[1] > 4)
+                if (Main.netMode != 1)
                 {
-                    internalAI[1] = 0;
-                    internalAI[2]++;
+                    if (internalAI[1] > 4)
+                    {
+                        internalAI[1] = 0;
+                        internalAI[2]++;
+                    }
                 }
             }
             else
             {
-                if (internalAI[1] > 8)
+                if (Main.netMode != 1)
                 {
-                    internalAI[1] = 0;
-                    internalAI[2]++;
+                    if (internalAI[1] > 8)
+                    {
+                        internalAI[1] = 0;
+                        internalAI[2]++;
+                    }
                 }
             }
 
@@ -246,99 +255,127 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                 }
 
-                if (internalAI[2] > 3)
+                if (internalAI[2] > 3 && Main.netMode != 1)
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 0;
+                    npc.netUpdate = true;
                 }
             }
             else if (internalAI[0] == AISTATE_PROJ)
             {
-                if (ProjectileShoot == -1)
+                if (ProjectileShoot == -1 && Main.netMode != 1)
                 {
                     ProjectileShoot = Main.rand.Next(2);
                     npc.netUpdate = true;
                 }
                 if (ProjectileShoot == 0)
                 {
-                    if (internalAI[2] == 5 && internalAI[1] == 3)
+                    if (internalAI[2] == 5 && internalAI[1] == 3 && Main.netMode != 1)
                     {
                         repeat -= 1;
-                        Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
-                        Vector2 fireTarget = npc.Center;
                         int projType = mod.ProjectileType<HarukaKunai>();
-                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 20f);
+                        float spread = 45f * 0.0174f;
+                        Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
+                        dir *= 14f;
+                        float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                        double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
+                        double deltaAngle = spread / 6f;
+                        for (int i = 0; i < 3; i++)
+                        {
+                            double offsetAngle = startAngle + (deltaAngle * i);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, (int)(npc.damage / 1.5f), 5, Main.myPlayer);
+                        }
                         npc.netUpdate = true;
                     }
-                    if (internalAI[2] < 4 || internalAI[2] > 6)
+                    if ((internalAI[2] < 4 || internalAI[2] > 6) && Main.netMode != 1)
                     {
                         internalAI[1] = 0;
                         internalAI[2] = 4;
+                        npc.netUpdate = true;
                     }
                     if (repeat <= 0)
                     {
-                        internalAI[0] = 3;
-                        internalAI[1] = 0;
-                        internalAI[2] = 0;
-                        internalAI[3] = 0;
-                        ProjectileShoot -= 1;
-                        repeat = 12;
-                        npc.ai = new float[4];
-                        npc.netUpdate = true;
+                        npc.frameCounter = 0;
+                        Frame = 0;
+                        if (Main.netMode != 1)
+                        {
+                            internalAI[0] = 3;
+                            internalAI[1] = 0;
+                            internalAI[2] = 0;
+                            internalAI[3] = 0;
+                            internalAI[4] = 0;
+                            ProjectileShoot -= 1;
+                            repeat = 12;
+                            npc.ai = new float[4];
+                            npc.netUpdate = true;
+                        }
                     }
                 }
                 else if (ProjectileShoot == 1)
                 {
                     internalAI[3]++;
-                    if (internalAI[3] == 100 || internalAI[3] == 200 || internalAI[3] == 299)
+                    if (Main.netMode != 1)
                     {
-                        isSlashing = true;
-                    }
-                    if (isSlashing)
-                    {
-                        if (internalAI[2] < 7 || internalAI[2] > 9) //Sets to frame 16
+                        if (internalAI[3] == 100 || internalAI[3] == 200 || internalAI[3] == 299)
                         {
-                            internalAI[1] = 0;
-                            internalAI[2] = 7;
+                            isSlashing = true;
+                            npc.netUpdate = true;
+                        }
+                        if (isSlashing)
+                        {
+                            if (internalAI[2] < 7 || internalAI[2] > 9)
+                            {
+                                internalAI[1] = 0;
+                                internalAI[2] = 7;
+                                npc.netUpdate = true;
+                            }
+                        }
+                        else
+                        {
+                            if (internalAI[2] > 3)
+                            {
+                                internalAI[1] = 0;
+                                internalAI[2] = 0;
+                                npc.netUpdate = true;
+                            }
                         }
                     }
-                    else
-                    {
-                        if (internalAI[2] > 3)
-                        {
-                            internalAI[1] = 0;
-                            internalAI[2] = 0;
-                        }
-                    }
-                    if (internalAI[2] == 8 && internalAI[1] == 4)
+
+                    if (internalAI[2] == 8 && internalAI[1] == 4 && Main.netMode != 1)
                     {
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
                         int projType = mod.ProjectileType<HarukaProj>();
-                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, npc.damage, 0f, 14f);
+                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, (int)(npc.damage * 1.3f), 0f, 18f);
+                        npc.netUpdate = true;
                     }
-                    if (isSlashing && internalAI[2] > 9)
+                    if (isSlashing && internalAI[2] > 9 && Main.netMode != 1)
                     {
                         isSlashing = false;
                         npc.netUpdate = true;
                     }
                     if (internalAI[3] > 300)
                     {
-                        internalAI[0] = 3;
-                        internalAI[1] = 0;
-                        internalAI[2] = 0;
-                        internalAI[3] = 0;
-                        ProjectileShoot -= 1;
-                        npc.ai = new float[4];
-                        npc.netUpdate = true;
+                        npc.frameCounter = 0;
+                        Frame = 0;
+                        if (Main.netMode != 1)
+                        {
+                            internalAI[0] = 3;
+                            internalAI[1] = 0;
+                            internalAI[2] = 0;
+                            internalAI[3] = 0;
+                            internalAI[4] = 0;
+                            ProjectileShoot -= 1;
+                            npc.ai = new float[4];
+                            npc.netUpdate = true;
+                        }
                     }
                 }
             }
             else if (internalAI[0] == AISTATE_SLASH)
             {
                 internalAI[3]++;
-
-                MoveToPoint(player.Center);
 
                 if (internalAI[2] < 17)
                 {
@@ -353,13 +390,18 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if (internalAI[4] > 5)
                 {
-                    internalAI[0] = 3;
-                    internalAI[1] = 0;
-                    internalAI[2] = 0;
-                    internalAI[3] = 0;
-                    internalAI[4] = 0;
-                    npc.ai = new float[4];
-                    npc.netUpdate = true;
+                    npc.frameCounter = 0;
+                    Frame = 0;
+                    if (Main.netMode != 1)
+                    {
+                        internalAI[0] = 3;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        internalAI[3] = 0;
+                        internalAI[4] = 0;
+                        npc.ai = new float[4];
+                        npc.netUpdate = true;
+                    }
                 }
             }
             else if (internalAI[0] == AISTATE_SPIN)
@@ -379,42 +421,50 @@ namespace AAMod.NPCs.Bosses.Shen
 
                 if (SelectPoint)
                 {
-                    float Point = 500 * npc.direction;
+                    float Point = 500 * -npc.direction;
                     MovePoint = player.Center + new Vector2(Point, 0);
                     SelectPoint = false;
                     npc.netUpdate = true;
                 }
 
-                MoveToPoint(MovePoint);
-
-                if (Main.netMode != 1 && (Vector2.Distance(npc.Center, player.Center) > 300f || internalAI[4] > 120))
+                if (Vector2.Distance(npc.Center, player.Center) > 300f || internalAI[4] > 120)
+                {
+                    npc.frameCounter = 0;
+                    Frame = 0;
+                    if (Main.netMode != 1)
+                    {
+                        internalAI[0] = 3;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        internalAI[3] = 0;
+                        internalAI[4] = 0;
+                        pos *= -1f;
+                        npc.ai = new float[4];
+                        npc.netUpdate = true;
+                    }
+                }
+            }
+            else
+            {
+                if (Main.netMode != 1)
                 {
                     internalAI[0] = 3;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
                     internalAI[3] = 0;
-                    internalAI[4] = 0;
-                    pos *= -1f;
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
             }
-            else
-            {
-                internalAI[0] = 3;
-                internalAI[1] = 0;
-                internalAI[2] = 0;
-                internalAI[3] = 0;
-                npc.ai = new float[4];
-                npc.netUpdate = true;
-            }
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
-                npc.damage = 120;
+                npc.damage = 300;
+                npc.defense = 300;
             }
             else //Reset Stats
             {
+                npc.defense = npc.defDefense;
                 npc.damage = 80;
             }
 
@@ -423,13 +473,106 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 MoveToPoint(wantedVelocity);
             }
+            else if (internalAI[0] == AISTATE_SPIN)
+            {
+                MoveToPoint(MovePoint);
+            }
             else if (internalAI[0] == AISTATE_SLASH) //When charging the player
             {
                 MoveToPoint(npc.Center);
             }
+
             npc.rotation = 0;
 
             npc.noTileCollide = true;
+        }
+
+
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frameCounter++;
+            if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH)
+            {
+                if (npc.frameCounter > 4)
+                {
+                    npc.frameCounter = 0;
+                    Frame++;
+                }
+            }
+            else
+            {
+                if (npc.frameCounter > 8)
+                {
+                    npc.frameCounter = 0;
+                    Frame++;
+                }
+            }
+            if (internalAI[0] == AISTATE_IDLE)
+            {
+                if (Frame > 3)
+                {
+                    npc.frameCounter = 0;
+                    Frame = 0;
+                }
+            }
+            else if (internalAI[0] == AISTATE_PROJ)
+            {
+                if (ProjectileShoot == 0)
+                {
+                    if (Frame < 4 || Frame > 6)
+                    {
+                        npc.frameCounter = 0;
+                        Frame = 4;
+                    }
+                }
+                else if (ProjectileShoot == 1)
+                {
+                    internalAI[3]++;
+                    if (isSlashing)
+                    {
+                        if (Frame < 7 || Frame > 9) //Sets to frame 16
+                        {
+                            npc.frameCounter = 0;
+                            Frame = 7;
+                        }
+                    }
+                    else
+                    {
+                        if (Frame > 3)
+                        {
+                            npc.frameCounter = 0;
+                            Frame = 0;
+                        }
+                    }
+                }
+            }
+            else if (internalAI[0] == AISTATE_SLASH)
+            {
+                if (Frame < 17)
+                {
+                    npc.frameCounter = 0;
+                    Frame = 17;
+                }
+                if (Frame > 26)
+                {
+                    npc.frameCounter = 0;
+                    Frame = 17;
+                }
+            }
+            else if (internalAI[0] == AISTATE_SPIN)
+            {
+                if (Frame < 10)
+                {
+                    npc.frameCounter = 0;
+                    Frame = 10;
+                }
+                if (Frame > 16)
+                {
+                    npc.frameCounter = 0;
+                    Frame = 13;
+                }
+            }
+            npc.frame.Y = Frame * frameHeight;
         }
 
         public override void PostAI()
@@ -462,19 +605,22 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 6f;
+            float moveSpeed = 12f;
             if (Vector2.Distance(npc.Center, point) > 500)
             {
-                moveSpeed = 14;
+                moveSpeed = 16;
             }
-            if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN)
+            if (internalAI[0] == AISTATE_SPIN)
             {
-                moveSpeed = 18f;
+                moveSpeed = 20f;
             }
-            if (moveSpeed == 0f || npc.Center == point) return;
+            if (internalAI[0] == AISTATE_SLASH)
+            {
+                moveSpeed = 30f;
+            }
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -491,11 +637,10 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }
-
 
         public override void BossLoot(ref string name, ref int potionType)
         {

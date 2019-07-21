@@ -11,8 +11,8 @@ namespace AAMod.Items.Melee
         {
             item.damage = 110;
             item.melee = true;
-            item.width = 100;
-            item.height = 98;
+            item.width = 90;
+            item.height = 90;
             item.useTime = 45;
             item.useAnimation = 45;     
             item.useStyle = 1;
@@ -28,6 +28,12 @@ namespace AAMod.Items.Melee
         {
             DisplayName.SetDefault("Carnal Crusher");
             Tooltip.SetDefault("Critical Hits heal you");
+        }
+		
+		public override void UseStyle(Player player)
+        {
+            player.itemLocation +=
+                new Vector2(-8 * player.direction, 16 * player.gravDir).RotatedBy(player.itemRotation);
         }
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)

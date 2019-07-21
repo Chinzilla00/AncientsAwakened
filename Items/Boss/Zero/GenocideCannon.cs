@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.Zero
 
         public override void SetDefaults()
         {
-            item.damage = 300;
+            item.damage = 450;
             item.ranged = true;
             item.width = 66;
             item.height = 28;
@@ -34,6 +34,22 @@ namespace AAMod.Items.Boss.Zero
             AARarity = 13;
         }
 
+        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
+        {
+            foreach (Terraria.ModLoader.TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
+        }
+
+        public override Vector2? HoldoutOffset()
+		{
+			return new Vector2(-6, 0);
+		}
+		
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             Vector2 muzzleOffset = Vector2.Normalize(new Vector2(speedX, speedY)) * 25f;
@@ -41,7 +57,8 @@ namespace AAMod.Items.Boss.Zero
             {
                 position += muzzleOffset;
             }
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("GRocket"), damage, knockBack, player.whoAmI, 0.0f, 0.0f);
+            type = Main.rand.Next(4) == 0 ? mod.ProjectileType("GRocket2") : mod.ProjectileType("GRocket");
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI, 0.0f, 0.0f);
             return false;
         }
     }

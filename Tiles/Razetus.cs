@@ -5,15 +5,9 @@ namespace AAMod.Tiles
 {
     public class Razetus : ModCactus
 	{
-		private Mod mod
-		{
-			get
-			{
-				return ModLoader.GetMod("AAMod");
-			}
-		}
+        private Mod mod => ModLoader.GetMod("AAMod");
 
-		public override Texture2D GetTexture()
+        public override Texture2D GetTexture()
 		{
 			return mod.GetTexture("Tiles/Razetus");
 		}

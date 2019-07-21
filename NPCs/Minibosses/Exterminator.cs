@@ -85,7 +85,7 @@ namespace AAMod.NPCs.Minibosses
             {
                 if (Main.rand.Next(3) < num1009)
                 {
-                    int num1012 = Dust.NewDust(npc.Center - new Vector2(num1010), num1010 * 2, num1010 * 2, mod.DustType<Dusts.VoidDust>(), npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f, 90, default(Color), 1.5f);
+                    int num1012 = Dust.NewDust(npc.Center - new Vector2(num1010), num1010 * 2, num1010 * 2, mod.DustType<Dusts.VoidDust>(), npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f, 90, default, 1.5f);
                     Main.dust[num1012].noGravity = true;
                     Main.dust[num1012].velocity *= 0.2f;
                     Main.dust[num1012].fadeIn = 1f;
@@ -108,7 +108,7 @@ namespace AAMod.NPCs.Minibosses
                     flag64 = true;
                 }
                 float num1014 = 8f;
-                flag64 = (flag64 && vector126.ToRotation() > 3.14159274f / num1014 && vector126.ToRotation() < 3.14159274f - 3.14159274f / num1014);
+                flag64 = flag64 && vector126.ToRotation() > 3.14159274f / num1014 && vector126.ToRotation() < 3.14159274f - 3.14159274f / num1014;
                 if (num1013 > num999 || !flag64)
                 {
                     npc.velocity.X = (npc.velocity.X * (num1000 - 1f) + vector127.X) / num1000;
@@ -210,7 +210,7 @@ namespace AAMod.NPCs.Minibosses
             if (npc.ai[0] == 3f)
             {
                 npc.position = npc.Center;
-                npc.width = (npc.height = 192);
+                npc.width = npc.height = 192;
                 npc.position.X = npc.position.X - npc.width / 2;
                 npc.position.Y = npc.position.Y - npc.height / 2;
                 npc.velocity = Vector2.Zero;
@@ -219,20 +219,20 @@ namespace AAMod.NPCs.Minibosses
                 Lighting.AddLight((int)npc.Center.X / 16, (int)npc.Center.Y / 16, 1.1f, 0.3f, 0.3f);
                 for (int num1017 = 0; num1017 < 10; num1017++)
                 {
-                    int num1018 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 100, default(Color), 1.5f);
+                    int num1018 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.VoidDust>(), 0f, 0f, 100, default, 1.5f);
                     Main.dust[num1018].velocity *= 1.4f;
                     Main.dust[num1018].position = ((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2() * ((float)Main.rand.NextDouble() * 96f) + npc.Center;
                 }
                 for (int num1019 = 0; num1019 < 40; num1019++)
                 {
-                    int num1020 = Dust.NewDust(npc.position, npc.width, npc.height, 226, 0f, 0f, 100, default(Color), 0.5f);
+                    int num1020 = Dust.NewDust(npc.position, npc.width, npc.height, 226, 0f, 0f, 100, default, 0.5f);
                     Main.dust[num1020].noGravity = true;
                     Main.dust[num1020].velocity *= 2f;
                     Main.dust[num1020].position = ((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2() * ((float)Main.rand.NextDouble() * 96f) + npc.Center;
                     Main.dust[num1020].velocity = Main.dust[num1020].velocity / 2f + Vector2.Normalize(Main.dust[num1020].position - npc.Center);
                     if (Main.rand.Next(2) == 0)
                     {
-                        num1020 = Dust.NewDust(npc.position, npc.width, npc.height, 226, 0f, 0f, 100, default(Color), 0.9f);
+                        num1020 = Dust.NewDust(npc.position, npc.width, npc.height, 226, 0f, 0f, 100, default, 0.9f);
                         Main.dust[num1020].noGravity = true;
                         Main.dust[num1020].velocity *= 1.2f;
                         Main.dust[num1020].position = ((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2() * ((float)Main.rand.NextDouble() * 96f) + npc.Center;
@@ -240,7 +240,7 @@ namespace AAMod.NPCs.Minibosses
                     }
                     if (Main.rand.Next(4) == 0)
                     {
-                        num1020 = Dust.NewDust(npc.position, npc.width, npc.height, 226, 0f, 0f, 100, default(Color), 0.7f);
+                        num1020 = Dust.NewDust(npc.position, npc.width, npc.height, 226, 0f, 0f, 100, default, 0.7f);
                         Main.dust[num1020].velocity *= 1.2f;
                         Main.dust[num1020].position = ((float)Main.rand.NextDouble() * 6.28318548f).ToRotationVector2() * ((float)Main.rand.NextDouble() * 96f) + npc.Center;
                         Main.dust[num1020].velocity = Main.dust[num1020].velocity / 2f + Vector2.Normalize(Main.dust[num1020].position - npc.Center);
@@ -275,7 +275,7 @@ namespace AAMod.NPCs.Minibosses
             float num69 = 0 * Main.npc[npc.type].scale;
             Vector2 vector10 = new Vector2(Main.npcTexture[npc.type].Width / 2, Main.npcTexture[npc.type].Height / Main.npcFrameCount[npc.type] / 2);
             Color color9 = Lighting.GetColor((int)(npc.position.X + npc.width * 0.5) / 16, (int)((npc.position.Y + npc.height * 0.5) / 16.0));
-            if ((npc.ai[0] == 2f || npc.ai[0] == 4f))
+            if (npc.ai[0] == 2f || npc.ai[0] == 4f)
             {
                 Texture2D texture2D32 = mod.GetTexture("NPCs/Minibosses/ExterminatorCharge");
                 Vector2 origin16 = new Vector2(texture2D32.Width / 2, texture2D32.Height / 8 + 14);
@@ -307,11 +307,11 @@ namespace AAMod.NPCs.Minibosses
                     Main.spriteBatch.Draw(texture2D32, new Vector2(npc.oldPos[num213].X - Main.screenPosition.X + npc.width / 2 - Main.npcTexture[npc.type].Width * npc.scale / 2f + vector10.X * npc.scale, npc.oldPos[num213].Y - Main.screenPosition.Y + npc.height - Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + vector10.Y * npc.scale + num69), new Rectangle?(value36), color47, npc.oldRot[num213] + num211, origin16, MathHelper.Lerp(0.1f, 1.2f, (10f - num213) / 10f), SpriteEffects.None, 0f);
                 }
             }
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/Exterminator_Glow"), npc.Bottom - Main.screenPosition + new Vector2(-Main.npcTexture[npc.type].Width * npc.scale / 2f + vector10.X * npc.scale, -Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + vector10.Y * npc.scale + num69 + npc.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Microsoft.Xna.Framework.Color(255 - npc.alpha, 255 - npc.alpha, 255 - npc.alpha, 255 - npc.alpha), npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/Exterminator_Glow"), npc.Bottom - Main.screenPosition + new Vector2(-Main.npcTexture[npc.type].Width * npc.scale / 2f + vector10.X * npc.scale, -Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + vector10.Y * npc.scale + num69 + npc.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Color(255 - npc.alpha, 255 - npc.alpha, 255 - npc.alpha, 255 - npc.alpha), npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
             float scaleFactor14 = 0.25f + (npc.GetAlpha(color9).ToVector3() - new Vector3(0.5f)).Length() * 0.25f;
             for (int num247 = 0; num247 < 4; num247++)
             {
-                Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/Exterminator_Glow"), npc.Bottom - Main.screenPosition + new Vector2(-Main.npcTexture[npc.type].Width * npc.scale / 2f + vector10.X * npc.scale, -Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + vector10.Y * npc.scale + num69 + npc.gfxOffY) + npc.velocity.RotatedBy(num247 * 1.57079637f, default(Vector2)) * scaleFactor14, new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Microsoft.Xna.Framework.Color(64, 64, 64, 0), npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
+                Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/Exterminator_Glow"), npc.Bottom - Main.screenPosition + new Vector2(-Main.npcTexture[npc.type].Width * npc.scale / 2f + vector10.X * npc.scale, -Main.npcTexture[npc.type].Height * npc.scale / Main.npcFrameCount[npc.type] + 4f + vector10.Y * npc.scale + num69 + npc.gfxOffY) + npc.velocity.RotatedBy(num247 * 1.57079637f, default) * scaleFactor14, new Microsoft.Xna.Framework.Rectangle?(npc.frame), new Color(64, 64, 64, 0), npc.rotation, vector10, npc.scale, SpriteEffects.None, 0f);
             }
 
             return false;

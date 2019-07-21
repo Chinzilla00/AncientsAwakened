@@ -52,8 +52,8 @@ namespace AAMod.NPCs.Enemies.Hallow
 				frameCounter--;
 				if(frameCounter <= 0)
 				{
-					frameCounter = (npc.velocity.Y < 0 ? 3 : 10);
-					npc.frame.Y = (npc.frame.Y == 0 ? npc.frame.Height : 0);
+					frameCounter = npc.velocity.Y < 0 ? 3 : 10;
+					npc.frame.Y = npc.frame.Y == 0 ? npc.frame.Height : 0;
 				}
             }else
             {
@@ -93,7 +93,7 @@ namespace AAMod.NPCs.Enemies.Hallow
 
 		public override bool PreDraw(SpriteBatch sb, Color dColor)
 		{
-			BaseMod.BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, Color.White);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, Color.White);
 			return false;
 		}
     }

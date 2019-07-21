@@ -18,7 +18,7 @@ namespace AAMod.Tiles
             TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 18 };
             TileObjectData.addTile(Type);
             AddMapEntry(new Color(75, 139, 166));
-            dustType = 1;
+            dustType = mod.DustType<Dusts.DoomDust>();
             animationFrameHeight = 56;
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.LunarMonolith };
@@ -60,8 +60,8 @@ namespace AAMod.Tiles
 
         public override void HitWire(int i, int j)
         {
-            int x = i - ((Main.tile[i, j].frameX / 18) % 2);
-            int y = j - ((Main.tile[i, j].frameY / 18) % 3);
+            int x = i - (Main.tile[i, j].frameX / 18 % 2);
+            int y = j - (Main.tile[i, j].frameY / 18 % 3);
             for (int l = x; l < x + 2; l++)
             {
                 for (int m = y; m < y + 3; m++)

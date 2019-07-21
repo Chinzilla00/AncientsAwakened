@@ -22,7 +22,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
             item.useStyle = 1;
             item.consumable = true;
             item.createTile = mod.TileType("GlowingMushiumBar");
-            item.value = Terraria.Item.sellPrice(0, 0, 9, 0);
+            item.value = Item.sellPrice(0, 0, 9, 0);
         }
 
         public override void SetStaticDefaults()
@@ -33,7 +33,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return BaseUtility.MultiLerpColor((Main.player[Main.myPlayer].miscCounter % 100) / 100f, Color.White, lightColor, lightColor, Color.White);
+            return BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, Color.White, lightColor, lightColor, Color.White);
         }
 
         public override void AddRecipes()

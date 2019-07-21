@@ -26,7 +26,18 @@ Boots enchanted with the firey spirit of a supreme dragon acolyte");
             AARarity = 12;
         }
 
-		public override void UpdateEquip(Player player)
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
+
+        public override void UpdateEquip(Player player)
 		{
             player.magicDamage += .12f;
             player.minionDamage += .12f;

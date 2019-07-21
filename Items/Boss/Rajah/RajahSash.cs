@@ -25,7 +25,7 @@ Immunity to fall damage");
             item.rare = 9;
             item.accessory = true;
             item.expertOnly = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -62,7 +62,7 @@ Immunity to fall damage");
 
             string DamageAmmount = (10 * DamageBoost(player)) + "% ";
 
-            TooltipLine DamageToltip = new TooltipLine (mod, "Damage Type", "Current Damage Boost: +" + DamageAmmount + DamageType + " Damage")
+            TooltipLine DamageToltip = new TooltipLine(mod, "Damage Type", "Current Damage Boost: +" + DamageAmmount + DamageType + " Damage")
             {
                 overrideColor = damageColor
             };

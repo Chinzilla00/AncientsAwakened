@@ -62,7 +62,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 					npc.frame.Y += Main.npcTexture[npc.type].Height / 4 ;
 				}
 
-				if (npc.frame.Y > (Main.npcTexture[npc.type].Height / 4) * 3)
+				if (npc.frame.Y > Main.npcTexture[npc.type].Height / 4 * 3)
 				{
 					npc.frame.Y = 0 ;
 				}
@@ -76,7 +76,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				}
 				if (npc.ai[0] >= 375) //after he says 'nyeh' on the server, change music on the client
 				{
-					music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Yamata2");
+					music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
 				}
 				if (npc.ai[0] >= 900) //after he says 'as if' on the server, transition color
 				{
@@ -98,27 +98,28 @@ namespace AAMod.NPCs.Bosses.Yamata
 
 				if (npc.ai[0] == 375)    
 				{
-					BaseUtility.Chat("NYEHEHEHEHEHEHEHEH~!", new Color(45, 46, 70));
+					if (Main.netMode != 1) BaseUtility.Chat("NYEHEHEHEHEHEHEHEH~!", new Color(45, 46, 70));
 					npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 650)
 				{
-					BaseUtility.Chat("You thought I was DONE..?!", new Color(45, 46, 70));
+					if (Main.netMode != 1) BaseUtility.Chat("You thought I was DONE..?!", new Color(45, 46, 70));
 				}else
 				if (npc.ai[0] == 900)
 				{
-					BaseUtility.Chat("HAH! AS IF!", new Color(45, 46, 70));
-					npc.netUpdate = true;
+					if (Main.netMode != 1) BaseUtility.Chat("HAH! AS IF!", new Color(45, 46, 70));
+                    if (Main.netMode != 1) BaseUtility.Chat("You begin to feel as if your soul is weighing you down...", Color.PaleVioletRed);
+                    npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 1100)
 				{
-					BaseUtility.Chat("The abyss hungers...", new Color(146, 30, 68));
+					if (Main.netMode != 1) BaseUtility.Chat("The abyss hungers...", new Color(146, 30, 68));
 				}else
 				if (npc.ai[0] >= 1455 && !NPC.AnyNPCs(mod.NPCType("YamataA")))
 				{
 					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("YamataA"), false, npc.Center, "", false);
-					BaseUtility.Chat("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-					BaseUtility.Chat("AND IT'S GOT 7 HEADS! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!", new Color(146, 30, 68));
+					if (Main.netMode != 1) BaseUtility.Chat("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+					if (Main.netMode != 1) BaseUtility.Chat("AND IT'S GOT 7 HEADS! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!", new Color(146, 30, 68));
 					npc.netUpdate = true;
 					npc.active = false;				
 				}
@@ -131,7 +132,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -148,7 +149,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }

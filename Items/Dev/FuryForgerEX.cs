@@ -2,7 +2,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using System;
-using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Dev
 {
@@ -18,8 +17,8 @@ Fury Forger EX");
 		{
 			item.damage = 400;
 			item.melee = true;
-			item.width = 92;
-			item.height = 98;
+			item.width = 82;
+			item.height = 88;
 			item.useTime = 35;
 			item.useAnimation = 35;
 			item.useStyle = 1;
@@ -28,14 +27,8 @@ Fury Forger EX");
             item.rare = 9;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 		}
-
-		public override void UseStyle(Player player)
-        {
-            player.itemLocation +=
-                new Vector2(-24 * player.direction, 16 * player.gravDir).RotatedBy(player.itemRotation);
-        }
 		
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {

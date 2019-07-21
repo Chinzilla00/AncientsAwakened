@@ -135,15 +135,15 @@ namespace AAMod.Projectiles
 
         public override void Kill(int timeLeft)
         {
+			Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 0, mod.ProjectileType("GhastBoom"), projectile.damage, projectile.knockBack, projectile.owner);
             projectile.position = projectile.Center;
-            projectile.width = (projectile.height = 160);
+            projectile.width = projectile.height = 160;
             projectile.Center = projectile.position;
             projectile.maxPenetrate = -1;
             projectile.penetrate = -1;
             projectile.Damage();
             Main.PlaySound(SoundID.Item14, projectile.position);
             Main.PlaySound(4, projectile.position, 39);
-            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("GhastBoom"), projectile.damage, projectile.knockBack, projectile.owner);
             Vector2 position = projectile.Center + (Vector2.One * -20f);
             int num84 = 40;
             int height3 = num84;

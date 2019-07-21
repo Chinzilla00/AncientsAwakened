@@ -33,7 +33,7 @@ I thought the sky was purple
 			item.knockBack = 3;
 			item.value = Item.sellPrice(0, 20, 0, 0);
 			item.rare = 8;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 			item.UseSound = SoundID.Item44;
 			item.shoot = mod.ProjectileType("EnderMinion");
 			item.shootSpeed = 7f;

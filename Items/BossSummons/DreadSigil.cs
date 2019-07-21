@@ -16,7 +16,7 @@ namespace AAMod.Items.BossSummons
             DisplayName.SetDefault("Dread Moon Sigil");
             Tooltip.SetDefault(@"A ragged old tablet said to contain the dark magic of a new moon
 Summons Yamata
-Only Usable at night
+Can only be used at night in the mire
 Non-Consumable");
         }
         public override void SetDefaults()
@@ -37,7 +37,7 @@ Non-Consumable");
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity13;;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }
@@ -58,11 +58,11 @@ Non-Consumable");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"), player.position);
             if (!AAWorld.downedYamata)
             {
-                Main.NewText("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
             }
             if (AAWorld.downedYamata)
             {
-                Main.NewText("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
             }
 
             return true;
@@ -72,24 +72,24 @@ Non-Consumable");
 		{
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
                 return false;
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
 			{
                 if (!AAWorld.downedYamata && !player.GetModPlayer<AAPlayer>(mod).ZoneRisingMoonLake)
                 {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("You NEED to use that sigil on the altar at the center of the mire! Trust me, nothing bad will happen!", new Color(45, 46, 70), false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("You NEED to use that sigil on the altar at the center of the mire! Trust me, nothing bad will happen!", new Color(45, 46, 70), false);
                     return false;
                 }
 				if (NPC.AnyNPCs(mod.NPCType("Yamata")))
 				{
-					if(player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);
+					if(player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);
 					return false;
 				}
                 if (NPC.AnyNPCs(mod.NPCType("YamataA")))
                 {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
                     return false;
                 }
                 for (int m = 0; m < Main.maxProjectiles; m++)
@@ -102,13 +102,13 @@ Non-Consumable");
                 }
                 return true;
 			}
-			if(player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey Dumbo! Mire is that way!", new Color(45, 46, 70), false);			
+			if(player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Hey Dumbo! Mire is that way!", new Color(45, 46, 70), false);			
 			return false;
 		}
 
-        public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 npcCenter = default(Vector2), string overrideDisplayName = "", bool namePlural = false)
+        public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 npcCenter = default, string overrideDisplayName = "", bool namePlural = false)
         {
-            if (npcCenter == default(Vector2))
+            if (npcCenter == default)
                 npcCenter = player.Center;
             if (Main.netMode != 1)
             {
@@ -118,12 +118,12 @@ Non-Consumable");
                 Main.npc[npcID].netUpdate2 = true;
                 if (spawnMessage)
                 {
-                    string npcName = (!string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName);
+                    string npcName = !string.IsNullOrEmpty(Main.npc[npcID].GivenName) ? Main.npc[npcID].GivenName : overrideDisplayName;
                     if ((npcName == null || npcName.Equals("")) && Main.npc[npcID].modNPC != null)
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)
                     {
-                        if (Main.netMode == 0) { Main.NewText(npcName + " have awoken!", 175, 75, 255, false); }
+                        if (Main.netMode == 0) { if (Main.netMode != 1) BaseUtility.Chat(npcName + " have awoken!", 175, 75, 255, false); }
                         else
                         if (Main.netMode == 2)
                         {
@@ -132,7 +132,7 @@ Non-Consumable");
                     }
                     else
                     {
-                        if (Main.netMode == 0) { Main.NewText(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                        if (Main.netMode == 0) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
                         else
                         if (Main.netMode == 2)
                         {

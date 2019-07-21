@@ -53,7 +53,7 @@ namespace AAMod.Projectiles
 
 			NPC best = null;
 			Vector2 maxDeviation = velocity.RotatedBy(maxAngle);
-			maxDeviation *= (((velocity.X*maxDeviation.X) + (velocity.Y*maxDeviation.Y)) * invVel);
+			maxDeviation *= ((velocity.X*maxDeviation.X) + (velocity.Y*maxDeviation.Y)) * invVel;
 			if (maxAngle > Math.PI/2)
 				maxDeviation = -maxDeviation;
 
@@ -65,12 +65,12 @@ namespace AAMod.Projectiles
 					&& (ignoreDontTakeDamage || !npc.dontTakeDamage) && (!ignoreFriendlies || !npc.friendly) && !npc.immortal)
 				{
 					Vector2 target = npc.Center;
-					Vector2 aim = (target - position);
+					Vector2 aim = target - position;
 					float lenAim = aim.LengthSquared();
 					if (lenAim > maxDist)
 						continue;
 
-					float scalar = ((velocity.X*aim.X) + (velocity.Y*aim.Y));
+					float scalar = (velocity.X*aim.X) + (velocity.Y*aim.Y);
 					Vector2 projVel = aim * (scalar / lenAim);
 					if (scalar < 0)
 						projVel = -projVel;
@@ -555,7 +555,7 @@ namespace AAMod.Projectiles
 
 		public static void BoomerangAI(int index, float retractTime = 30f, float speed = 9f, float speedAcceleration = 0.4f, ExtraAction action = null, ExtraAction initialize = null)
 		{
-			Terraria.Projectile projectile = Main.projectile[index];
+            Projectile projectile = Main.projectile[index];
 			if (initialize != null && projectile.localAI[1] == 0f)
 			{
 				projectile.localAI[1] = 1f;
@@ -687,33 +687,33 @@ namespace AAMod.Projectiles
 
 			projectile.tileCollide = false;
 			projectile.alpha = 255;
-			projectile.position.X += (projectile.width / 2);
-			projectile.position.Y += (projectile.height / 2);
+			projectile.position.X += projectile.width / 2;
+			projectile.position.Y += projectile.height / 2;
 			projectile.width = sizeX;
 			projectile.height = sizeY;
-			projectile.position.X -= (projectile.width / 2);
-			projectile.position.Y -= (projectile.height / 2);
+			projectile.position.X -= projectile.width / 2;
+			projectile.position.Y -= projectile.height / 2;
 			projectile.Damage();
 			Main.projectileIdentity[projectile.owner, projectile.identity] = -1;
-			projectile.position.X += (projectile.width / 2);
-			projectile.position.Y += (projectile.height / 2);
+			projectile.position.X += projectile.width / 2;
+			projectile.position.Y += projectile.height / 2;
 			projectile.width = (int)(sizeX / 5.8f);
 			projectile.height = (int)(sizeY / 5.8f);
-			projectile.position.X -= (projectile.width / 2);
-			projectile.position.Y -= (projectile.height / 2);
+			projectile.position.X -= projectile.width / 2;
+			projectile.position.Y -= projectile.height / 2;
 			if (visualAction == null)
 			{
 				for (int i = 0; i < 30; i++)
 				{
-					int num = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default(Color), 1.5f);
+					int num = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 31, 0f, 0f, 100, default, 1.5f);
 					Main.dust[num].velocity *= 1.4f;
 				}
 				for (int j = 0; j < 20; j++)
 				{
-					int num2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 3.5f);
+					int num2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default, 3.5f);
 					Main.dust[num2].noGravity = true;
 					Main.dust[num2].velocity *= 7f;
-					num2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default(Color), 1.5f);
+					num2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 6, 0f, 0f, 100, default, 1.5f);
 					Main.dust[num2].velocity *= 3f;
 				}
 				for (int k = 0; k < 2; k++)
@@ -723,25 +723,25 @@ namespace AAMod.Projectiles
 					{
 						scaleFactor = 0.8f;
 					}
-					int num3 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
+					int num3 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default, Main.rand.Next(61, 64), 1f);
 					Main.gore[num3].velocity *= scaleFactor;
 					Gore gore = Main.gore[num3];
 					gore.velocity.X += 1f;
 					Gore gore2 = Main.gore[num3];
 					gore2.velocity.Y += 1f;
-					num3 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
+					num3 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default, Main.rand.Next(61, 64), 1f);
 					Main.gore[num3].velocity *= scaleFactor;
 					Gore gore3 = Main.gore[num3];
 					gore3.velocity.X -= 1f;
 					Gore gore4 = Main.gore[num3];
 					gore4.velocity.Y += 1f;
-					num3 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
+					num3 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default, Main.rand.Next(61, 64), 1f);
 					Main.gore[num3].velocity *= scaleFactor;
 					Gore gore5 = Main.gore[num3];
 					gore5.velocity.X += 1f;
 					Gore gore6 = Main.gore[num3];
 					gore6.velocity.Y -= 1f;
-					num3 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default(Vector2), Main.rand.Next(61, 64), 1f);
+					num3 = Gore.NewGore(new Vector2(projectile.position.X, projectile.position.Y), default, Main.rand.Next(61, 64), 1f);
 					Main.gore[num3].velocity *= scaleFactor;
 					Gore gore7 = Main.gore[num3];
 					gore7.velocity.X -= 1f;
@@ -753,13 +753,13 @@ namespace AAMod.Projectiles
 			visualAction();
 		}
 
-		public static void DrawString(int index, Vector2 to = default(Vector2))
+		public static void DrawString(int index, Vector2 to = default)
 		{
 			Projectile projectile = Main.projectile[index];
 			Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;
 			Vector2 vector = mountedCenter;
 			vector.Y += Main.player[projectile.owner].gfxOffY;
-			if (to != default(Vector2))
+			if (to != default)
 				vector = to;
 
 			float num = projectile.Center.X - vector.X;

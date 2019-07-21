@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
 			item.consumable = true;
 			item.value = 2000;
             item.rare = 2;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 			item.createTile = mod.TileType("MonarchTrophy");
 		}
 	}

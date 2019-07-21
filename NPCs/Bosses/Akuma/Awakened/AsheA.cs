@@ -43,9 +43,10 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             if (!NPC.AnyNPCs(mod.NPCType<AkumaA>()))
             {
-                npc.life = 0;
                 int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
                 Main.npc[DeathAnim].velocity = npc.velocity;
+                npc.active = false;
+                npc.netUpdate = true;
             }
             return true;
         }
@@ -68,11 +69,11 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             Main.npc[DeathAnim].velocity = npc.velocity;
             if (!NPC.AnyNPCs(mod.NPCType<AkumaA>()))
             {
-                Main.NewText("Papa, NO! HEY! YOU! I'm gonna bake you alive next time we meet..!", new Color(102, 20, 48));
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Papa, NO! HEY! YOU! I'm gonna bake you alive next time we meet..!", new Color(102, 20, 48));
                 return;
             }
             npc.DropLoot(mod.ItemType<Items.Blocks.DaybreakIncineriteOre>(), Main.rand.Next(10, 25));
-            Main.NewText("OW, you Jerk..! I'm out!", new Color(102, 20, 48));
+            if (Main.netMode != 1) BaseMod.BaseUtility.Chat("OW, you Jerk..! I'm out!", new Color(102, 20, 48));
         }
 
         public override void BossLoot(ref string name, ref int potionType)

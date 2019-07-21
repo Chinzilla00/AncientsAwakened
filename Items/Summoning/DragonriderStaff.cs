@@ -30,7 +30,7 @@ namespace AAMod.Items.Summoning
             item.knockBack = 2f;
             item.buffType = mod.BuffType("DragonMinion");
             item.summon = true;
-            item.value = Terraria.Item.sellPrice(0, 8, 0, 0);
+            item.value = Item.sellPrice(0, 8, 0, 0);
         }
 		
 		public override void UseStyle(Player player)

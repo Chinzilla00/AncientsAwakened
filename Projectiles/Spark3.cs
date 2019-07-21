@@ -33,7 +33,7 @@ namespace AAMod.Projectiles
             {
                 projectile.Kill();
             }
-            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.9f) / 255f, ((255 - projectile.alpha) * .8f) / 255f, 0);
+            Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.9f / 255f, (255 - projectile.alpha) * .8f / 255f, 0);
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             if (projectile.ai[1] == 0f)
             {

@@ -22,7 +22,7 @@ namespace AAMod.Items.Ranged
             item.useStyle = 5;
             item.shoot = mod.ProjectileType ("Squirt");
             item.knockBack = 0;
-            item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 6;
             item.UseSound = SoundID.Item34;
             item.autoReuse = false;

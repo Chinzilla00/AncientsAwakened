@@ -64,7 +64,7 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
                 int height = projectile.height;
                 int num16 = projectile.penetrate;
                 projectile.position = projectile.Center;
-                projectile.width = (projectile.height = 40 + 8 * (int)projectile.ai[0]);
+                projectile.width = projectile.height = 40 + 8 * (int)projectile.ai[0];
                 projectile.Center = projectile.position;
                 projectile.penetrate = -1;
                 projectile.Damage();
@@ -74,6 +74,9 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
                 projectile.height = height;
                 projectile.Center = projectile.position;
             }
+            int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, mod.ProjectileType<ExcalihareBoomR>(), projectile.damage, projectile.knockBack, Main.myPlayer);
+            Main.projectile[p].Center = projectile.Center;
+            Main.projectile[p].netUpdate = true;
             return false;
         }
 
@@ -89,7 +92,7 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
             if (projectile.velocity.X != 0f)
             {
-                projectile.spriteDirection = (projectile.direction = Math.Sign(projectile.velocity.X));
+                projectile.spriteDirection = projectile.direction = Math.Sign(projectile.velocity.X);
             }
             if (projectile.velocity.Y > 16f)
             {
@@ -101,7 +104,8 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             BaseDrawing.DrawAfterimage(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, 1f, 1f, 10, false, 0f, 0f, Main.DiscoColor);
-            return true;
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, lightColor, false);
+            return false;
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)

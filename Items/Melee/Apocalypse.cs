@@ -30,10 +30,10 @@ Horseman's Blade EX");
             item.useTime = 17;
 			item.useAnimation = 17;
 			item.value = 1000000;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 
 			glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
-			glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
+			glowmaskDrawType = GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
 			glowmaskDrawColor = Color.White;  //glowmask draw color
 		}
 

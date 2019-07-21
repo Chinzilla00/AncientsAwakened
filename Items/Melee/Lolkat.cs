@@ -33,16 +33,16 @@ Meowmere EX");
             item.UseSound = new LegacySoundStyle(2, 57, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
             item.useTurn = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 			item.shoot = 502;
 			item.shootSpeed = 12f;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";
-            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD;
+            glowmaskDrawType = GLOWMASKTYPE_SWORD;
             glowmaskDrawColor = Color.White;
         }
 
-        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             float spread = 30f * 0.0174f;
             float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));

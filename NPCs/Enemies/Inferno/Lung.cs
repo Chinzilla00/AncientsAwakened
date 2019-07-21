@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 {
     public class Lung : ModNPC
 	{
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/Lung"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Inferno/Lung";
 
         public bool loludided;
 
@@ -176,7 +176,7 @@ namespace AAMod.NPCs.Enemies.Inferno
                 float newSpeed = speed / length;
                 dirX *= newSpeed;
                 dirY *= newSpeed;
-                if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || (npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0))
+                if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0)
                 {
                     if (npc.velocity.X < dirX)
                         npc.velocity.X = npc.velocity.X + acceleration;
@@ -272,7 +272,7 @@ namespace AAMod.NPCs.Enemies.Inferno
                     npc.netUpdate = true;
                 npc.localAI[0] = 0.0f;
             }
-            if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || (npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0)) && !npc.justHit)
+            if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0) && !npc.justHit)
                 npc.netUpdate = true;
 
             return false;
@@ -282,7 +282,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void NPCLoot()
         {
-            BaseMod.BaseAI.DropItem(npc, mod.ItemType("CrucibleScale"), Main.expertMode ? 1 + Main.rand.Next(2) : Main.rand.Next(1), 3, 100, true);
+            BaseAI.DropItem(npc, mod.ItemType("CrucibleScale"), Main.expertMode ? 1 + Main.rand.Next(2) : Main.rand.Next(1), 3, 100, true);
         }
 
 
@@ -313,17 +313,12 @@ namespace AAMod.NPCs.Enemies.Inferno
         public int roarTimer = 0; //if this is > 0, then use the roaring frame.
         public int roarTimerMax = 120; //default roar timer. only changed for fire breath as it's longer.
         public bool Roaring //wether or not he is roaring. only used clientside for frame visuals.
-        {
-            get
-            {
-                return roarTimer > 0;
-            }
-        }
+=> roarTimer > 0;
     }
     
     public class LungBody : Lung
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/LungBody"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Inferno/LungBody";
 
         public override void SetStaticDefaults()
         {
@@ -347,7 +342,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         {
             Vector2 chasePosition = Main.npc[(int)npc.ai[1]].Center;
             Vector2 directionVector = chasePosition - npc.Center;
-            npc.spriteDirection = ((directionVector.X > 0f) ? 1 : -1);
+            npc.spriteDirection = (directionVector.X > 0f) ? 1 : -1;
             if (npc.ai[3] > 0)
                 npc.realLife = (int)npc.ai[3];
             if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)
@@ -419,7 +414,7 @@ namespace AAMod.NPCs.Enemies.Inferno
     
     public class LungTail : Lung
     {
-        public override string Texture { get { return "AAMod/NPCs/Enemies/Inferno/LungTail"; } }
+        public override string Texture => "AAMod/NPCs/Enemies/Inferno/LungTail";
 
         public override void SetStaticDefaults()
         {
@@ -448,7 +443,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         {
             Vector2 chasePosition = Main.npc[(int)npc.ai[1]].Center;
             Vector2 directionVector = chasePosition - npc.Center;
-            npc.spriteDirection = ((directionVector.X > 0f) ? 1 : -1);
+            npc.spriteDirection = (directionVector.X > 0f) ? 1 : -1;
             if (npc.ai[3] > 0)
                 npc.realLife = (int)npc.ai[3];
             if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)
@@ -505,7 +500,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
         {
-            spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+            spriteEffects = npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         }
 
         public override void BossHeadRotation(ref float rotation)

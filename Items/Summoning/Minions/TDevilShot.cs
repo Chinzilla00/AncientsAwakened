@@ -47,7 +47,7 @@ namespace AAMod.Items.Summoning.Minions
                     float num305 = projectile.velocity.Y * (30f / (float)num303);
                     num304 *= 80f;
                     num305 *= 80f;
-                    int num306 = Dust.NewDust(new Vector2(projectile.position.X - num304, projectile.position.Y - num305), 8, 8, 107, projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default(Color), 0.9f);
+                    int num306 = Dust.NewDust(new Vector2(projectile.position.X - num304, projectile.position.Y - num305), 8, 8, 107, projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default, 0.9f);
                     Main.dust[num306].velocity *= 0.25f;
                     Main.dust[num306].velocity -= projectile.velocity * 5f;
                 }
@@ -59,7 +59,7 @@ namespace AAMod.Items.Summoning.Minions
             }
             else
             {
-                int num310 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 4f), 8, 8, 107, projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default(Color), 0.6f);
+                int num310 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 4f), 8, 8, 107, projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default, 0.6f);
                 Main.dust[num310].velocity *= -0.25f;
                 
             }

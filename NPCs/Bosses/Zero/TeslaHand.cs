@@ -22,11 +22,11 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             npc.width = 40;
             npc.height = 70;
-            npc.damage = 80;
-            npc.defense = 90;
+            npc.damage = 56;
+            npc.defense = 55;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
-            npc.lifeMax = 37500;
+            npc.lifeMax = 30000;
             npc.noGravity = true;
             animationType = NPCID.PrimeSaw;
             npc.noTileCollide = true;
@@ -36,6 +36,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.buffImmune[39] = true;
             npc.lavaImmune = true;
             npc.netAlways = true;
+            npc.knockBackResist = 0;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -98,7 +99,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
 
             int probeNumber = ((Zero)zero.modNPC).WeaponCount;
-            if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
+            if (rotValue == -1f) rotValue = npc.ai[0] % probeNumber * ((float)Math.PI * 2f / probeNumber);
             rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
             npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(((Zero)zero.modNPC).Distance, 0f), rotValue);

@@ -22,11 +22,11 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             npc.width = 40;
             npc.height = 70;
-            npc.damage = 80;
+            npc.damage = 57;
             npc.defense = 90;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
-            npc.lifeMax = 37500;
+            npc.lifeMax = 30000;
             npc.noGravity = true;
             animationType = NPCID.PrimeSaw;
             npc.noTileCollide = true;
@@ -36,10 +36,16 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.buffImmune[39] = true;
             npc.lavaImmune = true;
             npc.netAlways = true;
+            npc.knockBackResist = 0;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
             }
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
         }
 
         public override bool CheckActive()
@@ -68,7 +74,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            bool flag = (npc.life <= 0 || (!npc.active && NPC.AnyNPCs(mod.NPCType<Zero>())));
+            bool flag = npc.life <= 0 || (!npc.active && NPC.AnyNPCs(mod.NPCType<Zero>()));
             if (flag && Main.netMode != 1)
             {
                 int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("TeslaHand"), npc.whoAmI, npc.ai[0], npc.ai[1], npc.ai[2], npc.ai[3], npc.target);
@@ -111,7 +117,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
 
             int probeNumber = ((Zero)zero.modNPC).WeaponCount;
-            if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
+            if (rotValue == -1f) rotValue = npc.ai[0] % probeNumber * ((float)Math.PI * 2f / probeNumber);
             rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
             npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(((Zero)zero.modNPC).Distance, 0f), rotValue);
@@ -134,15 +140,17 @@ namespace AAMod.NPCs.Bosses.Zero
                 else if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<NovaRay>()) && Main.netMode != 1)
                 {
                     laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<NovaRay>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI, 420)];
-                    laser.velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(14f, 0f), laser.rotation);
+                    laser.velocity = BaseUtility.RotateVector(default, new Vector2(14f, 0f), laser.rotation);
                 }
             }
-
-            Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
-            float num1 = Main.player[npc.target].position.X + (player.width / 2) - vector2.X;
-            float num2 = Main.player[npc.target].position.Y + (player.height / 2) - vector2.Y;
-            float NewRotation = (float)Math.Atan2(num2, num1);
-            npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
+            else
+            {
+                Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+                float num1 = Main.player[npc.target].position.X + (player.width / 2) - vector2.X;
+                float num2 = Main.player[npc.target].position.Y + (player.height / 2) - vector2.Y;
+                float NewRotation = (float)Math.Atan2(num2, num1);
+                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
+            }
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)

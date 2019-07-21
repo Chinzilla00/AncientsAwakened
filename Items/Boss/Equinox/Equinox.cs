@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Equinox
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 11;
             item.accessory = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
 
 

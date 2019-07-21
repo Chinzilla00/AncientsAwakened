@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -316,7 +316,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
         {
             if (head != null && head.active && head.modNPC != null && head.modNPC is OrthrusHead1)
             {
-                string neckTex = ("NPCs/Bosses/Orthrus/OrthrusNeck");
+                string neckTex = "NPCs/Bosses/Orthrus/OrthrusNeck";
                 Texture2D neckTex2D = mod.GetTexture(neckTex);
                 Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y) + new Vector2(leftHead ? -37 : 37, -28);
                 Vector2 connector = head.Center - new Vector2(neckTex2D.Width * 0.5f, 0f);

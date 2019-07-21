@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.defense = 120;
             npc.lifeMax = 150000;
             npc.HitSound = SoundID.NPCHit1;
-            npc.value = Item.sellPrice(0, 4, 0, 0);
+            npc.value = Item.sellPrice(0, 12, 0, 0);
             npc.knockBackResist = 0f;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -60,7 +60,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]); //Used as the AI selector
                 writer.Write(internalAI[1]); //Used as the Frame Counter
@@ -129,7 +129,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HarukaTrophy"));
             }
             NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<HarukaVanish>());
-            Main.NewText("Rgh..! Ow...", new Color(72, 78, 117));
+            if (Main.netMode != 1) BaseUtility.Chat("Rgh..! Ow...", new Color(72, 78, 117));
             npc.value = 0f;
             npc.boss = false;
         }
@@ -149,8 +149,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public override void AI()
         {
             Player player = Main.player[npc.target];
-
-            npc.frame.Y = 74 * internalAI[2];
 
             Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
 
@@ -394,8 +392,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 internalAI[3]++;
 
-                MoveToPoint(player.Center);
-
                 if (internalAI[2] < 17)
                 {
                     internalAI[1] = 0;
@@ -446,9 +442,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     npc.netUpdate = true;
                 }
 
-                MoveToPoint(MovePoint);
-
-                if ((Vector2.Distance(npc.Center, player.Center) > 300f || internalAI[4] > 120))
+                if (Vector2.Distance(npc.Center, player.Center) > 300f || internalAI[4] > 120)
                 {
                     npc.frameCounter = 0;
                     Frame = 0;
@@ -493,6 +487,10 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             if (internalAI[0] == AISTATE_IDLE || internalAI[0] == AISTATE_PROJ) //When charging the player
             {
                 MoveToPoint(wantedVelocity);
+            }
+            else if (internalAI[0] == AISTATE_SPIN)
+            {
+                MoveToPoint(MovePoint);
             }
             else if (internalAI[0] == AISTATE_SLASH) //When charging the player
             {
@@ -620,19 +618,22 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 10f;
+            float moveSpeed = 8f;
             if (Vector2.Distance(npc.Center, point) > 500)
             {
                 moveSpeed = 16;
             }
-            if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN)
+            if (internalAI[0] == AISTATE_SPIN)
             {
                 moveSpeed = 20f;
             }
-            if (moveSpeed == 0f || npc.Center == point) return;
+            if (internalAI[0] == AISTATE_SLASH)
+            {
+                moveSpeed = 30f;
+            }
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -649,7 +650,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }

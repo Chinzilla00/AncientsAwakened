@@ -94,7 +94,7 @@ namespace AAMod.Projectiles
     }
     public class CursedSickleEXEffect : ModProjectile
     {
-        public override string Texture { get { return "AAMod/BlankTex"; } }
+        public override string Texture => "AAMod/BlankTex";
         public override void SetDefaults()
         {
             projectile.width = 8;
@@ -130,7 +130,7 @@ namespace AAMod.Projectiles
                 rot -= 0.20f;
             }
 
-            projectile.Center = player.Center + new Vector2(-8f, -8f) + RotateVector(default(Vector2), rotVec, rot + (projectile.ai[0] * (6.28f / 2)));
+            projectile.Center = player.Center + new Vector2(-8f, -8f) + RotateVector(default, rotVec, rot + (projectile.ai[0] * (6.28f / 2)));
 
             for (int m = 0; m < 5; m++)
             {
@@ -149,7 +149,7 @@ namespace AAMod.Projectiles
 
     public class CursedSickleEXDamage : ModProjectile
     {
-        public override string Texture { get { return "AAMod/BlankTex"; } }
+        public override string Texture => "AAMod/BlankTex";
         public override void SetDefaults()
         {
             projectile.width = 120;
@@ -180,7 +180,7 @@ namespace AAMod.Projectiles
 
     public class CursedSickleEXDamage2 : ModProjectile
     {
-        public override string Texture { get { return "AAMod/BlankTex"; } }
+        public override string Texture => "AAMod/BlankTex";
         public override void SetDefaults()
         {
             projectile.width = 120;

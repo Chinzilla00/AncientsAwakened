@@ -125,7 +125,7 @@ namespace AAMod.Projectiles
 			{
 				float num370 = projectile.oldVelocity.X * (30f / num369);
 				float num371 = projectile.oldVelocity.Y * (30f / num369);
-				int num372 = Dust.NewDust(new Vector2(projectile.oldPosition.X - num370, projectile.oldPosition.Y - num371), 8, 8, 180, projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default(Color), 1.2f);
+				int num372 = Dust.NewDust(new Vector2(projectile.oldPosition.X - num370, projectile.oldPosition.Y - num371), 8, 8, 180, projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default, 1.2f);
 				Main.dust[num372].noGravity = true;
 				Dust dust = Main.dust[num372];
 				dust.velocity *= 0.5f;

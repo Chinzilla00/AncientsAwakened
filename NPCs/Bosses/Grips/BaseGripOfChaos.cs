@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Grips
             npc.height = 60;			
             npc.aiStyle = -1;
 			npc.knockBackResist = 0f;	
-            npc.value = Item.sellPrice(0, 4, 50, 0);
+            npc.value = Item.sellPrice(0, 1, 50, 0);
             npc.npcSlots = 1f;
             npc.boss = true;  
             npc.lavaImmune = true;
@@ -83,7 +83,7 @@ namespace AAMod.NPCs.Bosses.Grips
 		}
 		public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
 		{
-			spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+			spriteEffects = npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 		}
 
 		public Vector2 offsetBasePoint = Vector2.Zero;
@@ -94,7 +94,7 @@ namespace AAMod.NPCs.Bosses.Grips
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
             }
@@ -160,7 +160,7 @@ namespace AAMod.NPCs.Bosses.Grips
 				MoveToPoint(point);
 				if(Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
 				{
-					bool doubleDive = (npc.life < npc.lifeMax / 2);
+					bool doubleDive = npc.life < npc.lifeMax / 2;
                     npc.ai[0] = doubleDive ? 3 : 0;
                     npc.ai[1] = doubleDive ? targetPlayer.Center.X : 0;
                     npc.ai[2] = doubleDive ? targetPlayer.Center.Y : 0;
@@ -265,7 +265,7 @@ namespace AAMod.NPCs.Bosses.Grips
 			if(moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
 			float velMultiplier = 1f;
 			Vector2 dist = point - npc.Center;
-			float length = (dist == Vector2.Zero ? 0f : dist.Length());
+			float length = dist == Vector2.Zero ? 0f : dist.Length();
 			if(length < moveSpeed)
 			{
 				velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -282,7 +282,7 @@ namespace AAMod.NPCs.Bosses.Grips
 			{
 				moveSpeed *= 0.5f;
 			}
-			npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+			npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
 			npc.velocity *= moveSpeed;
 			npc.velocity *= velMultiplier;
 		}

@@ -27,7 +27,7 @@ namespace AAMod.Items.Walls
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Doomstone", 2);
+            recipe.AddIngredient(null, "Doomstone");
             recipe.AddTile(null, "ACS");
             recipe.SetResult(this, 4);
             recipe.AddRecipe();

@@ -88,7 +88,7 @@ namespace AAMod.Projectiles.Akuma
 				
 					vector3 = projectile.Center + new Vector2(Main.rand.Next(-num7, num7 + 1), Main.rand.Next(-num7, num7 + 1));
 					Vector2 vector5 = Vector2.Normalize(projectile.velocity) * scaleFactor2;
-					vector5 = vector5.RotatedBy(Main.rand.NextDouble() * 0.19634954631328583 - 0.098174773156642914, default(Vector2));
+					vector5 = vector5.RotatedBy(Main.rand.NextDouble() * 0.19634954631328583 - 0.098174773156642914, default);
 					if (float.IsNaN(vector5.X) || float.IsNaN(vector5.Y))
 					{
 						vector5 = -Vector2.UnitY;
@@ -188,17 +188,21 @@ namespace AAMod.Projectiles.Akuma
 				vector14.Normalize();
 				vector14 *= 40f;
 				bool flag11 = Collision.CanHit(vector2, 0, 0, vector2 + vector14, 0, 0);
-				for (int num123 = 0; num123 < num122; num123++)
-				{
-					float num124 = num123 - (num122 - 1f) / 2f;
-					Vector2 vector15 = vector14.RotatedBy(num121 * num124, default(Vector2));
-					if (!flag11)
-					{
-						vector15 -= vector14;
-					}
-					int num125 = Projectile.NewProjectile(vector2.X + vector15.X, vector2.Y + vector15.Y, num82, num83, type, projectile.damage, 1f, player.whoAmI, 0.0f, 0.0f);
-					Main.projectile[num125].noDropItem = true;	
-				}					
+                if (chargeLevel >= 2)
+                {
+                    type = mod.ProjectileType<DaybreakArrow>();
+                }
+                for (int num123 = 0; num123 < num122; num123++)
+                {
+                    float num124 = num123 - (num122 - 1f) / 2f;
+                    Vector2 vector15 = vector14.RotatedBy(num121 * num124, default);
+                    if (!flag11)
+                    {
+                        vector15 -= vector14;
+                    }
+                    int num125 = Projectile.NewProjectile(vector2.X + vector15.X, vector2.Y + vector15.Y, num82, num83, type, projectile.damage, 1f, player.whoAmI, 0.0f, 0.0f);
+                    Main.projectile[num125].noDropItem = true;
+                }
             }
         }
 
@@ -208,7 +212,7 @@ namespace AAMod.Projectiles.Akuma
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height);
             BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, lightColor, true);
             BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, GlowColor, true);
-            return false;;
+            return false;
         }
     }
 }

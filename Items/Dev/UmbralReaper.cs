@@ -12,7 +12,7 @@ namespace AAMod.Items.Dev
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Umbral Reaper");
-            Tooltip.SetDefault("Right shoots homing spears. \n" + "Left clicking shoots a wave of void energy. \n" + "'I never touched Valkyrie' \n'" + "-CMD");
+            Tooltip.SetDefault("Left clicking shoots homing spears \n" + "Right clicking shoots a wave of void energy \n" + "'I never touched Valkyrie' \n'" + "-CMD");
 		}
 
 		public override void SetDefaults()
@@ -68,7 +68,7 @@ namespace AAMod.Items.Dev
             return base.CanUseItem(player);
 		}
 
-        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             if (player.altFunctionUse == 2)
             {

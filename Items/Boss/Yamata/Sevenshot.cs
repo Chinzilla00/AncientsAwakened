@@ -18,12 +18,12 @@ namespace AAMod.Items.Boss.Yamata
 
 	    public override void SetDefaults()
 	    {
-	        item.damage = 75;
+	        item.damage = 100;
 	        item.ranged = true;
 	        item.width = 60;
 	        item.height = 26;
-	        item.useTime = 18;
-	        item.useAnimation = 18;
+	        item.useTime = 14;
+	        item.useAnimation = 14;
 	        item.useStyle = 5;
 	        item.noMelee = true;
 	        item.knockBack = 4.5f;
@@ -42,7 +42,7 @@ namespace AAMod.Items.Boss.Yamata
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = AAColor.Rarity13;;
+                    line2.overrideColor = AAColor.Rarity13;
                 }
             }
         }
@@ -52,7 +52,7 @@ namespace AAMod.Items.Boss.Yamata
 			return new Vector2(-5, 0);
 		}
 	    
-	    public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+	    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 		    float SpeedX = speedX + Main.rand.Next(-25, 26) * 0.05f;
 		    float SpeedY = speedY + Main.rand.Next(-25, 26) * 0.05f;

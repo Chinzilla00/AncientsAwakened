@@ -37,25 +37,25 @@ namespace AAMod.NPCs.Bosses.Equinox
 			bool isDead = npc.life <= 0;
 			for (int m = 0; m < (isDead ? 25 : 5); m++)
 			{
-				int dustType = (Main.rand.Next(2) == 0 ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>());
-				Dust.NewDust(npc.position, npc.width, npc.height, dustType, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, (isDead ? 2f : 1.1f));
+				int dustType = Main.rand.Next(2) == 0 ? mod.DustType<NightcrawlerDust>() : mod.DustType<DaybringerDust>();
+				Dust.NewDust(npc.position, npc.width, npc.height, dustType, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, isDead ? 2f : 1.1f);
 			}
 		}
 
 		float shootAI = 0;
 		public override void AI()
 		{
-			BaseMod.BaseAI.AISkull(npc, ref npc.ai, false, 6f, 350f, 0.1f, 0.15f);
+            BaseAI.AISkull(npc, ref npc.ai, false, 6f, 350f, 0.1f, 0.15f);
 			Player player = Main.player[npc.target];
 			bool playerActive = player != null && player.active && !player.dead;
-			BaseMod.BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 0);		
+            BaseAI.LookAt(playerActive ? player.Center : (npc.Center + npc.velocity), npc, 0);		
 			if(Main.netMode != 1 && playerActive)
 			{
 				shootAI++;
 				if(shootAI >= 90)
 				{
 					shootAI = 0;
-					int projType = (!Main.dayTime ? mod.ProjType("Moonray") : mod.ProjType("Sunbeam"));					
+					int projType = !Main.dayTime ? mod.ProjType("Moonray") : mod.ProjType("Sunbeam");					
 					if(Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
 						BaseAI.FireProjectile(player.Center, npc, projType, (int)(npc.damage * 0.25f), 0f, 2f);
 				}
@@ -64,7 +64,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
 		public override Color? GetAlpha(Color dColor)
 		{
-			Color c = (Color.White * (Main.mouseTextColor / 255f));
+			Color c = Color.White * (Main.mouseTextColor / 255f);
 			c.A = 255;
 			return c;
 		}		

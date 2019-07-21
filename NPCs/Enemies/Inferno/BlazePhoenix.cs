@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Enemies.Inferno
         {
             Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
 			AAAI.AIShadowflameGhost(npc, ref npc.ai, false, 660f, 0.3f, 10f, 0.2f, 6f, 5f, 10f, 0.4f, 0.4f, 0.95f, 5f);
-			npc.spriteDirection = (npc.velocity.X > 0 ? -1 : 1);
+			npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
 			BaseAI.LookAt(npc.Center + npc.velocity, npc, 0);
             npc.frameCounter++;
             if (npc.frameCounter > 3)
@@ -113,10 +113,10 @@ namespace AAMod.NPCs.Enemies.Inferno
 				for (int m = 0; m < 30; m++)
 				{
 					int dustID = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, 1, DustID.Fire, -npc.velocity.X * 0.2f,
-						-npc.velocity.Y * 0.2f, 100, default(Color), 2f);
+						-npc.velocity.Y * 0.2f, 100, default, 2f);
 					Main.dust[dustID].velocity *= 2f;
 					dustID = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, npc.height, mod.DustType<Dusts.BroodmotherDust>(), -npc.velocity.X * 0.2f,
-						-npc.velocity.Y * 0.2f, 100, default(Color));
+						-npc.velocity.Y * 0.2f, 100, default);
 					Main.dust[dustID].velocity *= 2f;
 				}
             }

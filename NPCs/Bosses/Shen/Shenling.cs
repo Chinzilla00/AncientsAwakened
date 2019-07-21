@@ -10,8 +10,8 @@ namespace AAMod.NPCs.Bosses.Shen
 {
     public class Shenling : ModNPC
 	{
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Shen/Shenling"; } }
-        
+        public override string Texture => "AAMod/NPCs/Bosses/Shen/Shenling";
+
 
         public override void SetStaticDefaults()
 		{
@@ -55,12 +55,12 @@ namespace AAMod.NPCs.Bosses.Shen
                 Main.PlaySound(SoundID.Item119, npc.position);
                 npc.localAI[3] = 1f;
             }
-            npc.dontTakeDamage = (npc.alpha > 0);
+            npc.dontTakeDamage = npc.alpha > 0;
             if (npc.dontTakeDamage)
             {
                 for (int j = 0; j < 2; j++)
                 {
-                    int num2 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 228, 0f, 0f, 100, default(Color), 2f);
+                    int num2 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 228, 0f, 0f, 100, default, 2f);
                     Main.dust[num2].noGravity = true;
                     Main.dust[num2].noLight = true;
                 }
@@ -360,11 +360,11 @@ namespace AAMod.NPCs.Bosses.Shen
             for (int num468 = 0; num468 < 3; num468++)
             {
                 int num469 = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, 1, mod.DustType<Dusts.DiscordLight>(), -npc.velocity.X * 0.2f,
-                    -npc.velocity.Y * 0.2f, 100, default(Color), 2f);
+                    -npc.velocity.Y * 0.2f, 100, default, 2f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
                 num469 = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, npc.height, mod.DustType<Dusts.DiscordLight>(), -npc.velocity.X * 0.2f,
-                    -npc.velocity.Y * 0.2f, 100, default(Color));
+                    -npc.velocity.Y * 0.2f, 100, default);
                 Main.dust[num469].velocity *= 2f;
             }
         }
@@ -386,7 +386,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
     public class ShenlingBody1 : Shenling
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Shen/ShenlingBody1"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Shen/ShenlingBody1";
 
         public override void SetStaticDefaults()
         {
@@ -457,7 +457,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     for (int num934 = 0; num934 < 2; num934++)
                     {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("DiscordLight"), 0f, 0f, 100, default(Color), 2f);
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("DiscordLight"), 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = false;
                         Main.dust[num935].noLight = false;
                     }
@@ -517,7 +517,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
     public class ShenlingBody2 : Shenling
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Shen/ShenlingBody2"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Shen/ShenlingBody2";
 
         public override void SetStaticDefaults()
         {
@@ -588,7 +588,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     for (int num934 = 0; num934 < 2; num934++)
                     {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("DiscordLight"), 0f, 0f, 100, default(Color), 2f);
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("DiscordLight"), 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = false;
                         Main.dust[num935].noLight = false;
                     }
@@ -648,7 +648,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
     public class ShenlingTail : Shenling
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Shen/ShenlingTail"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Shen/ShenlingTail";
 
         public override void SetStaticDefaults()
         {
@@ -719,7 +719,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     for (int num934 = 0; num934 < 2; num934++)
                     {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("DiscordLight"), 0f, 0f, 100, default(Color), 2f);
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("DiscordLight"), 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = false;
                         Main.dust[num935].noLight = false;
                     }

@@ -30,9 +30,9 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.height = 78;
             npc.aiStyle = -1;
             npc.damage = 40;
-            npc.defense = 10;
+            npc.defense = 300;
             npc.lifeMax = 4000;
-            npc.value = Item.sellPrice(0, 2, 0, 0);
+            npc.value = Item.sellPrice(0, 5, 0, 0);
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = new LegacySoundStyle(2, 88, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0f;
@@ -135,74 +135,80 @@ namespace AAMod.NPCs.Bosses.Hydra
 					}
 				}
 			}
-		}		
-		
+		}
+
+        public override void HitEffect(int hitDir, double damage)
+        {
+            if (HeadsSpawned)
+            {
+                Head1.life -= (int)damage;
+                Head2.life -= (int)damage;
+                Head3.life -= (int)damage;
+            }
+        }
+
         public override void AI()
         {
-			HandleHeads();
-			
-           /* if (!HeadsSpawned)
+            bool noHeads = !NPC.AnyNPCs(mod.NPCType<HydraHead1>()) && !NPC.AnyNPCs(mod.NPCType<HydraHead2>()) && !NPC.AnyNPCs(mod.NPCType<HydraHead3>());
+            if (HeadsSpawned && noHeads)
             {
-                if (Head1 == null)
+                if (Main.netMode != 1)
                 {
-                    if (Main.netMode != 1)
-                    {
-                        Head1 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead1"), 0)];
-                        Head1.realLife = npc.whoAmI;
-                        Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead2"), 0)];
-                        Head2.realLife = npc.whoAmI;
-                        Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead3"), 0)];
-                        Head3.realLife = npc.whoAmI;
-                    }
-                    else
-                    {
-                        int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default(int[]), 100f, null);
-                        if (npcs != null && npcs.Length > 0)
-                        {
-                            foreach (int npcID in npcs)
-                            {
-                                NPC npc2 = Main.npc[npcID];
-                                if (npc2 != null && npc2.type == mod.NPCType("HydraHead1"))
-                                {
-                                    Head1 = npc2;
-                                }
-                                if (npc2 != null && npc2.type == mod.NPCType("HydraHead2"))
-                                {
-                                    Head2 = npc2;
-                                }
-                                if (npc2 != null && npc2.type == mod.NPCType("HydraHead3"))
-                                {
-                                    Head2 = npc2;
-                                }
-                            }
-                        }
-                    }
+                    npc.life = 0;
+                    npc.checkDead();
+                    npc.netUpdate = true;
                 }
-                HeadsSpawned = true;
-            }*/
+                return;
+            }
+
+            HandleHeads();
 
             if (playerTarget != null)
             {
                 float dist = npc.Distance(playerTarget.Center);
-                if (dist > 500 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                if (!playerTarget.GetModPlayer<AAPlayer>(mod).ZoneMire)
                 {
                     npc.alpha += 3;
                     if (npc.alpha >= 255)
                     {
-                        Vector2 tele = new Vector2(playerTarget.Center.X + (Main.rand.Next(2) == 0 ? 120 : -120), playerTarget.Center.Y - 16);
-                        TeleportMe1 = true;
-                        TeleportMe2 = true;
-                        TeleportMe3 = true;
-                        npc.Center = tele;
-                        npc.netUpdate = true;
+                        npc.alpha = 255;
+                    }
+                    if (dist > 700 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                    {
+                        npc.alpha += 3;
+                        if (npc.alpha >= 255)
+                        {
+                            Vector2 tele = new Vector2(playerTarget.Center.X + (Main.rand.Next(2) == 0 ? 120 : -120), playerTarget.Center.Y - 16);
+                            TeleportMe1 = true;
+                            TeleportMe2 = true;
+                            TeleportMe3 = true;
+                            npc.Center = tele;
+                            npc.netUpdate = true;
+                        }
                     }
                 }
                 else
                 {
-                    npc.alpha -= 3;
-                    if (npc.alpha <= 0)
+                    if (dist > 700 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                     {
-                        npc.alpha = 0;
+                        npc.alpha += 3;
+                        if (npc.alpha >= 255)
+                        {
+                            Vector2 tele = new Vector2(playerTarget.Center.X + (Main.rand.Next(2) == 0 ? 120 : -120), playerTarget.Center.Y - 16);
+                            TeleportMe1 = true;
+                            TeleportMe2 = true;
+                            TeleportMe3 = true;
+                            npc.Center = tele;
+                            npc.netUpdate = true;
+                        }
+                    }
+                    else
+                    {
+                        npc.alpha -= 3;
+                        if (npc.alpha <= 0)
+                        {
+                            npc.alpha = 0;
+                        }
                     }
                 }
             }
@@ -313,14 +319,13 @@ namespace AAMod.NPCs.Bosses.Hydra
         {
             if (head != null && head.active && head.modNPC != null && head.modNPC is HydraHead1)
             {
-                string neckTex = ("NPCs/Bosses/Hydra/HydraNeck");
+                string neckTex = "NPCs/Bosses/Hydra/HydraNeck";
                 Texture2D neckTex2D = mod.GetTexture(neckTex);
                 Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 30);
                 Vector2 connector = head.Center;
                 BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { null, neckTex2D, null }, 0, neckOrigin, connector, neckTex2D.Height - 10f, drawColor, 1f, false, null);
                 spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, drawColor, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
                 spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, Color.White, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
-
             }
         }
 
@@ -333,7 +338,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead3", "NPCs/Bosses/Hydra/HydraHead3_Glow", Head3, dColor);
                 DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead1", "NPCs/Bosses/Hydra/HydraHead1_Glow", Head1, dColor); //draw main head last!
             }
-            string tailTex = ("NPCs/Bosses/Hydra/HydraTail");
+            string tailTex = "NPCs/Bosses/Hydra/HydraTail";
             BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY - 30), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 1, frameBottom, dColor, false);
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
             return false;

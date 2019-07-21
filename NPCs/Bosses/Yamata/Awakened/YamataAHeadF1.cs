@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             base.SetDefaults();
             npc.lifeMax = 35000;
-            npc.damage = 170;
+            npc.damage = 68;
             npc.width = 46;
             npc.height = 46;
 			isAwakened = true;
@@ -77,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             if (npc.life <= 0)
             {
-                BaseUtility.Chat("OWIE!!!", new Color(146, 30, 68));
+                if (Main.netMode != 1) BaseUtility.Chat("OWIE!!!", new Color(146, 30, 68));
             }
         }
         public override bool PreNPCLoot()

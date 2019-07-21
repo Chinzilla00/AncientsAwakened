@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.velocity.Y += 0.00f;
             if (projectile.timeLeft == 913 && !AAWorld.downedIZ)
             {
-                Main.NewText("DISTRESS SIGNAL RECIEVED.", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("DISTRESS SIGNAL RECIEVED.", Color.Red.R, Color.Red.G, Color.Red.B);
             }
         }
     }

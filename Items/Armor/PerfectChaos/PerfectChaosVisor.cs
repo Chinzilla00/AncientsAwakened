@@ -26,9 +26,19 @@ The power of discordian rage radiates from this hood");
             item.rare = 9;
             AARarity = 14;
             item.defense = 39;
-		}
+        }
 
-		public override bool IsArmorSet(Item head, Item body, Item legs)
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity14;
+                }
+            }
+        }
+        public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
 			return body.type == mod.ItemType("PerfectChaosPlate") && legs.type == mod.ItemType("PerfectChaosGreaves");
 		}

@@ -9,6 +9,7 @@ namespace AAMod.Items.Melee
 		public override void SetStaticDefaults()
 		{
 			Tooltip.SetDefault(@"Forged in the heart of a dying star
+Melee strikes cause lightning to fall from the sky
 Right click to throw
 plz dont sue diver");
         }

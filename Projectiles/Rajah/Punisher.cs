@@ -55,7 +55,7 @@ namespace AAMod.Projectiles.Rajah
                 projectile.direction = -1;
             }
             Main.player[projectile.owner].itemRotation = (vector54 * -1f * projectile.direction).ToRotation();
-            projectile.spriteDirection = ((vector54.X > 0f) ? -1 : 1);
+            projectile.spriteDirection = (vector54.X > 0f) ? -1 : 1;
             if (projectile.ai[0] == 0f && vector54.Length() > 400f)
             {
                 projectile.ai[0] = 1f;
@@ -95,7 +95,7 @@ namespace AAMod.Projectiles.Rajah
                 Vector2 vector55 = vector54 * -1f;
                 vector55.Normalize();
                 vector55 *= Main.rand.Next(45, 65) * 0.1f;
-                vector55 = vector55.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866, default(Vector2));
+                vector55 = vector55.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866, default);
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X * 2, vector55.Y * 2, mod.ProjectileType<Carrot>(), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
                 return;
             }

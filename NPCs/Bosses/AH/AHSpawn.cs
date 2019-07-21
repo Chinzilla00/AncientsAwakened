@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Bosses.AH
 
             if (npc.ai[1] == 60)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
-                Main.NewText("Well hello there, what a surprise to see YOU here~!", new Color(102, 20, 48));
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Well hello there, what a surprise to see YOU here~!", new Color(102, 20, 48));
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
             }
 
@@ -59,11 +59,11 @@ namespace AAMod.NPCs.Bosses.AH
             {
                 if (AAWorld.downedBrood)
                 {
-                    Main.NewText("Oh yes, I've heard PLENTY about you, kid...you're the little warm-blood who thrashed my mother..!", new Color(102, 20, 48));
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Oh yes, I've heard PLENTY about you, kid...you're the little warm-blood who thrashed my mother..!", new Color(102, 20, 48));
                 }
                 else
                 {
-                    Main.NewText("Oh yes, I've heard PLENTY about you, kid...you've been stirring up quite a bit of trouble in these parts...", new Color(102, 20, 48));
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Oh yes, I've heard PLENTY about you, kid...you've been stirring up quite a bit of trouble in these parts...", new Color(102, 20, 48));
                 }
             }
 
@@ -73,35 +73,35 @@ namespace AAMod.NPCs.Bosses.AH
                 {
                     if (AAWorld.downedBrood)
                     {
-                        Main.NewText("And mine...", new Color(72, 78, 117));
+                        if (Main.netMode != 1) BaseMod.BaseUtility.Chat("And mine...", new Color(72, 78, 117));
                     }
                     else
                     {
-                        Main.NewText("...and you also hurt my mom...", new Color(72, 78, 117));
+                        if (Main.netMode != 1) BaseMod.BaseUtility.Chat("...and you also hurt my mom...", new Color(72, 78, 117));
                     }
                 }
                 else
                 {
-                    Main.NewText("You're a pretty annoying wretch, you know...", new Color(72, 78, 117));
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("You're a pretty annoying wretch, you know...", new Color(72, 78, 117));
                 }
             }
 
             
             if (npc.ai[1] == 700)
             {
-                Main.NewText("So now..! Heh...", new Color(102, 20, 48));
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("So now..! Heh...", new Color(102, 20, 48));
             }
 
             if (npc.ai[1] == 820)
             {
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AH");
-                Main.NewText("We're gonna give you something to absolutely SCREAM about..! Come on, Hakie, let's torch this little warm-blood~!", new Color(102, 20, 48));
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("We're gonna give you something to absolutely SCREAM about..! Come on, Hakie, let's torch this little warm-blood~!", new Color(102, 20, 48));
                 SpawnBoss(player, "Ashe");
             }
 
             if (npc.ai[1] >= 960)
             {
-                Main.NewText("Please don't call me Hakie again...ever.", new Color(72, 78, 117));
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Please don't call me Hakie again...ever.", new Color(72, 78, 117));
                 SpawnBoss2(player, "Haruka");
                 npc.active = false;
             }

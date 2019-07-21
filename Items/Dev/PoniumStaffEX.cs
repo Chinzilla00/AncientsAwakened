@@ -17,13 +17,13 @@ namespace AAMod.Items.Dev
 
 		public override void SetDefaults()
 		{
-			item.damage = 320;
+			item.damage = 350;
 			item.magic = true;
 			item.mana = 8;
 			item.width = 88;
 			item.height = 88;
-			item.useTime = 20;
-			item.useAnimation = 20;
+			item.useTime = 15;
+			item.useAnimation = 15;
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 3;
@@ -54,6 +54,12 @@ namespace AAMod.Items.Dev
                 SpriteEffects.None,
                 0f
             );
+        }
+
+        public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+        {
+            Texture2D texture = mod.GetTexture("Glowmasks/PoniumStaff_Glow");
+            spriteBatch.Draw(texture, position, null, Main.DiscoColor, 0, origin, scale, SpriteEffects.None, 0f);
         }
 
         public override void AddRecipes()

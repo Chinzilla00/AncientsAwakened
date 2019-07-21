@@ -21,7 +21,7 @@ Inflicts daybroken");
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.Terrarian);
-            item.damage = 250;                            
+            item.damage = 350;                            
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 2;
             item.knockBack = 1;
@@ -32,6 +32,17 @@ Inflicts daybroken");
             item.shoot = mod.ProjectileType("Solar");
             item.rare = 9;
             AARarity = 13;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -53,17 +64,6 @@ Inflicts daybroken");
                 SpriteEffects.None,
                 0f
             );
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;
-                }
-            }
         }
 
         public override void AddRecipes()  //How to craft this sword

@@ -49,21 +49,21 @@ namespace AAMod.Projectiles.Shen
 			for(int m = 0; m < pieCut; m++)
 			{
 				int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.Magenta, 1.6f);
-				Main.dust[dustID].velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), (m / (float)pieCut) * 6.28f);
+				Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / (float)pieCut * 6.28f);
 				Main.dust[dustID].noLight = false;
 				Main.dust[dustID].noGravity = true;
 			}
 			for(int m = 0; m < pieCut; m++)
 			{
 				int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.Magenta, 2f);
-				Main.dust[dustID].velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(9f, 0f), (m / (float)pieCut) * 6.28f);
+				Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)pieCut * 6.28f);
 				Main.dust[dustID].noLight = false;
 				Main.dust[dustID].noGravity = true;
 			}
 			for(int m = 0; m < 15; m++)
 			{
 				int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.Magenta, 1.2f);
-				Main.dust[dustID].velocity = BaseUtility.RotateVector(default(Vector2), new Vector2(8f + Main.rand.Next(6), 0f), MathHelper.Lerp((float)Main.rand.NextDouble(), 0f, 6.28f));
+				Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(8f + Main.rand.Next(6), 0f), MathHelper.Lerp((float)Main.rand.NextDouble(), 0f, 6.28f));
 				Main.dust[dustID].noLight = false;
 				Main.dust[dustID].noGravity = true;
 			}

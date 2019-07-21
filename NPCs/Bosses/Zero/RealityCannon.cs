@@ -21,12 +21,12 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetDefaults()
         {
             npc.width = 40;
-            npc.height = 70;
-            npc.damage = 80;
+            npc.height = 55;
+            npc.damage = 62;
             npc.defense = 90;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCHit4;
-            npc.lifeMax = 37500;
+            npc.lifeMax = 30000;
             npc.noGravity = true;
             animationType = NPCID.PrimeSaw;
             npc.noTileCollide = true;
@@ -40,6 +40,11 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 npc.buffImmune[k] = true;
             }
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
         }
 
         public override bool CheckActive()
@@ -68,7 +73,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            bool flag = (npc.life <= 0 || (!npc.active && NPC.AnyNPCs(mod.NPCType<Zero>())));
+            bool flag = npc.life <= 0 || (!npc.active && NPC.AnyNPCs(mod.NPCType<Zero>()));
             if (flag && Main.netMode != 1)
             {
                 int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("TeslaHand"), npc.whoAmI, npc.ai[0], npc.ai[1], npc.ai[2], npc.ai[3], npc.target);
@@ -110,7 +115,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
 
             int probeNumber = ((Zero)zero.modNPC).WeaponCount;
-            if (rotValue == -1f) rotValue = (npc.ai[0] % probeNumber) * ((float)Math.PI * 2f / probeNumber);
+            if (rotValue == -1f) rotValue = npc.ai[0] % probeNumber * ((float)Math.PI * 2f / probeNumber);
             rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
             npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(((Zero)zero.modNPC).Distance, 0f), rotValue);
@@ -137,7 +142,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     for (int i = 0; i < (Main.expertMode ? 3 : 4); i++)
                     {
                         double offsetAngle = startAngle + (deltaAngle * i);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjType("RealityLaser"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjType("DeathLaser"), (int)(npc.damage / 1.5f), 5, Main.myPlayer);
                     }
                 }
             }

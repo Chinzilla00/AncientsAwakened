@@ -30,7 +30,7 @@ Wand of Sparking EX");
 			item.rare = 11;
 			item.shootSpeed = 12f;
 			item.noUseGraphic = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
 
         public override void AddRecipes()

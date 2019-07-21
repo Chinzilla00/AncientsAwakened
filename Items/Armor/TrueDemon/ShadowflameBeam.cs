@@ -42,9 +42,9 @@ namespace AAMod.Items.Armor.TrueDemon
                 int num444 = Dust.NewDust(vector31, 1, 1, DustID.Shadowflame, 0f, 0f, 0);
                 Main.dust[num444].position = vector31;
                 Dust expr_13D2C_cp_0 = Main.dust[num444];
-                expr_13D2C_cp_0.position.X += (projectile.width / 2);
+                expr_13D2C_cp_0.position.X += projectile.width / 2;
                 Dust expr_13D50_cp_0 = Main.dust[num444];
-                expr_13D50_cp_0.position.Y += (projectile.height / 2);
+                expr_13D50_cp_0.position.Y += projectile.height / 2;
                 Main.dust[num444].scale = Main.rand.Next(70, 110) * 0.013f;
                 Main.dust[num444].velocity *= 0.2f;
             }
@@ -55,7 +55,7 @@ namespace AAMod.Items.Armor.TrueDemon
             Main.PlaySound(SoundID.Item10, projectile.position);
             for (int num585 = 0; num585 < 20; num585++)
             {
-                int num586 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.Shadowflame, 0f, 0f, 100, default(Color), 2f);
+                int num586 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.Shadowflame, 0f, 0f, 100, default, 2f);
                 Main.dust[num586].noGravity = true;
                 Main.dust[num586].velocity *= 4f;
             }

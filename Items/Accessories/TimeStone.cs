@@ -74,7 +74,7 @@ Using the Time stone like an item stops/resumes time.
             {
                 AAWorld.TimeStopped = false;
             }
-            return false;
+            return true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)

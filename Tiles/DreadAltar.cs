@@ -103,17 +103,17 @@ namespace AAMod.Tiles
             Player player = Main.player[Main.myPlayer];
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
                 return;
             }
             if (NPC.AnyNPCs(mod.NPCType("Yamata")))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);
                 return;
             }
             if (NPC.AnyNPCs(mod.NPCType("YamataA")))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
                 return;
             }
             for (int m = 0; m < Main.maxProjectiles; m++)
@@ -132,11 +132,11 @@ namespace AAMod.Tiles
                     {
                         if (!AAWorld.downedYamata)
                         {
-                            Main.NewText("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
+                            if (Main.netMode != 1) BaseUtility.Chat("You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!", new Color(45, 46, 70));
                         }
                         if (AAWorld.downedYamata)
                         {
-                            Main.NewText("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
+                            if (Main.netMode != 1) BaseUtility.Chat("Back for more..?! This time you won’t be so lucky you little whelp..!", new Color(45, 46, 70));
                         }
 
                         SpawnBoss(player, "Yamata", "Yamata");

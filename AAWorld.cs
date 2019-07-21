@@ -588,6 +588,7 @@ namespace AAMod
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
+            int ChaosIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Slush"));
             int shiniesIndex1 = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
 
@@ -612,7 +613,7 @@ namespace AAMod
             {
                 GenRelicOre();
             }));
-            tasks.Insert(shiniesIndex1 + 1, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
+            tasks.Insert(ChaosIndex + 1, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
             {
 				MireAndInferno(progress);
             }));
@@ -659,7 +660,7 @@ namespace AAMod
                                 PlacementHeight++;
                                 if (WorldGen.SolidTile(PlaceHere, PlacementHeight))
                                 {
-                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("InfernoChest"), false, 2);
+                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("InfernoChest"), false, 1);
                                     if (PlacementSuccess >= 0)
                                     {
                                         Chest chest = Main.chest[PlacementSuccess];
@@ -671,7 +672,7 @@ namespace AAMod
                                         UnifiedRandom genRand = WorldGen.genRand;
                                         int[] array = new int[]
                                         { mod.ItemType("DragonfireFlask") };
-                                        item.SetDefaults(Utils.Next<int>(genRand, array), false);
+                                        item.SetDefaults(Utils.Next(genRand, array), false);
                                         chest.item[2].stack = WorldGen.genRand.Next(1, 4);
                                         Item item2 = chest.item[3];
                                         UnifiedRandom genRand2 = WorldGen.genRand;
@@ -715,7 +716,7 @@ namespace AAMod
                                 PlacementHeight++;
                                 if (WorldGen.SolidTile(PlaceHere, PlacementHeight))
                                 {
-                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("MireChest"), false, 2);
+                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("MireChest"), false, 1);
                                     if (PlacementSuccess >= 0)
                                     {
                                         Chest chest = Main.chest[PlacementSuccess];
@@ -772,7 +773,7 @@ namespace AAMod
                                 PlacementHeight++;
                                 if (WorldGen.SolidTile(PlaceHere, PlacementHeight))
                                 {
-                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("DoomsdayChest"), false, 2);
+                                    int PlacementSuccess = WorldGen.PlaceChest(PlaceHere, PlacementHeight - 1, (ushort)mod.TileType("DoomsdayChest"), false, 1);
                                     if (PlacementSuccess >= 0)
                                     {
                                         Chest chest = Main.chest[PlacementSuccess];
@@ -815,7 +816,7 @@ namespace AAMod
         {
             int x = Main.maxTilesX;
             int y = Main.maxTilesY;
-            for (int k = 0; k < (int)((x * y) * 15E-05); k++)
+            for (int k = 0; k < (int)(x * y * 15E-05); k++)
             {
                 int tilesX = WorldGen.genRand.Next(0, Main.maxTilesX);
                 int tilesY = WorldGen.genRand.Next((int)WorldGen.rockLayerLow, Main.maxTilesY);
@@ -884,13 +885,13 @@ namespace AAMod
                     x = WorldGen.genRand.Next(0, Main.maxTilesX);
                     y = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY);
                 }
-                WorldGen.TileRunner(x, y, WorldGen.genRand.Next(2, 6), WorldGen.genRand.Next(3, 7), mod.TileType<Tiles.PrismOre>());
+                WorldGen.TileRunner(x, y, WorldGen.genRand.Next(2, 6), WorldGen.genRand.Next(3, 7), mod.TileType<PrismOre>());
             }
         }
 
         public void VoidIslands(GenerationProgress progress)
         {
-            progress.Message = ("0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0");
+            progress.Message = "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0";
 
             progress.Set(0f);
             int VoidHeight = 0;
@@ -978,7 +979,7 @@ namespace AAMod
         {
             for (int i = -size / 2; i < size / 2; ++i)
             {
-                int repY = (size / 2) - (Math.Abs(i));
+                int repY = (size / 2) - Math.Abs(i);
                 int offset = repY / 5;
                 repY += WorldGen.genRand.Next(4);
                 for (int j = -offset; j < repY; ++j)
@@ -1008,10 +1009,10 @@ namespace AAMod
                         switch (Altar)
                         {
                             case 0:
-                                Altar = mod.TileType<Tiles.ChaosAltar1>();
+                                Altar = mod.TileType<ChaosAltar1>();
                                 break;
                             default:
-                                Altar = mod.TileType<Tiles.ChaosAltar2>();
+                                Altar = mod.TileType<ChaosAltar2>();
                                 break;
                         }
                         if (Main.rand.Next(15) == 0)
@@ -1081,7 +1082,7 @@ namespace AAMod
                 WorldGen.PlaceTile(i, Y, type);
                 WorldGen.PlaceTile(i, Y + (sizeY - 1), (ushort)mod.TileType("DoomitePlate"));
             }
-            WorldGen.PlaceTile(X + sizeX - 2, Y + (sizeY) - 1, (ushort)mod.TileType("DoomitePlate"));
+            WorldGen.PlaceTile(X + sizeX - 2, Y + sizeY - 1, (ushort)mod.TileType("DoomitePlate"));
             if (chestType == 1)
             {
                 ChestNumber = Main.rand.Next(4);
@@ -1220,10 +1221,10 @@ namespace AAMod
                 if (RadiumOre == false)
                 {
                     RadiumOre = true;
-                    Main.NewText("The gift of the celestials sparkle in the atmosphere...", Color.Violet);
+                    if (Main.netMode != 1) BaseUtility.Chat("The gift of the celestials sparkle in the atmosphere...", Color.Violet);
                     for (int i = 0; i < Main.maxTilesX / 25; ++i)
                     {
-                        int X = WorldGen.genRand.Next(50, (Main.maxTilesX / 10) * 9); //X position, centre.
+                        int X = WorldGen.genRand.Next(50, Main.maxTilesX / 10 * 9); //X position, centre.
                         int Y = WorldGen.genRand.Next(10, 100); //Y position, centre.
                         int radius = WorldGen.genRand.Next(2, 5); //Radius.
                         for (int x = X - radius; x <= X + radius; x++)
@@ -1245,12 +1246,12 @@ namespace AAMod
                 if (Ancients == false)
                 {
                     Ancients = true;
-                    Main.NewText("The Ancients have Awakened!", Color.ForestGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat("The Ancients have Awakened!", Color.ForestGreen);
                 }
                 if (Luminite == false)
                 {
                     Luminite = true;
-                    Main.NewText("The Essence of the Moon Lord sparkles in the caves below...", Color.DarkSeaGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat("The Essence of the Moon Lord sparkles in the caves below...", Color.DarkSeaGreen);
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 9), WorldGen.genRand.Next(6, 10), (ushort)mod.TileType("LuminiteOre"));
@@ -1263,7 +1264,7 @@ namespace AAMod
                 if (HallowedOre == false)
                 {
                     HallowedOre = true;
-                    Main.NewText("The caves shine with light for a brief moment...", Color.Goldenrod);
+                    if (Main.netMode != 1) BaseUtility.Chat("The caves shine with light for a brief moment...", Color.Goldenrod);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1280,7 +1281,7 @@ namespace AAMod
                 if (!DiscordOres)
                 {
                     DiscordOres = true;
-                    Main.NewText("Chaotic energy grows in the deepest parts of the world.", Color.Magenta);
+                    if (Main.netMode != 1) BaseUtility.Chat("Chaotic energy grows in the deepest parts of the world.", Color.Magenta);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1308,7 +1309,7 @@ namespace AAMod
                 if (!TerrariumEnemies)
                 {
                     TerrariumEnemies = true;
-                    Main.NewText("You hear a hum of harmony from the Terrarium after the defeat of a great evil...", Color.LimeGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat("You hear a hum of harmony from the Terrarium after the defeat of a great evil...", Color.LimeGreen);
                 }
             }
             if (NPC.downedBoss3)
@@ -1316,9 +1317,9 @@ namespace AAMod
                 if (!Dynaskull)
                 {
                     Dynaskull = true;
-                    Main.NewText("Bones of the ancient past burst with energy!", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
-                    Main.NewText("The desert winds stir...", Color.Orange);
-                    Main.NewText("The winter hills rumble...", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("Bones of the ancient past burst with energy!", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("The desert winds stir...", Color.Orange);
+                    if (Main.netMode != 1) BaseUtility.Chat("The winter hills rumble...", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1337,9 +1338,9 @@ namespace AAMod
                 if (!Evil)
                 {
                     Evil = true;
-                    Main.NewText("The choirs of unity hum from the terrarium.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
-                    Main.NewText("Devils in the underworld begin to plot.", Color.Purple.R, Color.Purple.G, Color.Purple.B);
-                    Main.NewText("The withered machines of the emptiness reactivate.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("The choirs of unity hum from the terrarium.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("Devils in the underworld begin to plot.", Color.Purple.R, Color.Purple.G, Color.Purple.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("The withered machines of the emptiness reactivate.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
             if (downedRetriever || downedOrthrus || downedRaider)
@@ -1352,7 +1353,7 @@ namespace AAMod
                 if (FulguriteOre == false)
                 {
                     FulguriteOre = true;
-                    Main.NewText("The clap of a thunderbolt roars in the caverns...", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("The clap of a thunderbolt roars in the caverns...", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("FulguriteOre"));
@@ -1378,7 +1379,7 @@ namespace AAMod
             {
                 if (downedAllAncients == false)
                 {
-                    Main.NewText("Chaos begins to stir in the atmosphere...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("Chaos begins to stir in the atmosphere...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     downedAllAncients = true;
                 }
             }
@@ -1388,7 +1389,7 @@ namespace AAMod
                 {
                     InfernoStripe = true;
 
-                    Main.NewText("The Souls of Fury and Wrath are unleashed upon the world!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("The Souls of Fury and Wrath are unleashed upon the world!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                     ConversionHandler.ConvertDown((int)InfernoCenter.X, 0, 120, 1);
                 }
                 if (MireStripe == false)
@@ -1417,15 +1418,15 @@ namespace AAMod
 
         private void MireAndInferno(GenerationProgress progress)
         {
-            infernoSide = ((Main.dungeonX > Main.maxTilesX / 2) ? (-1) : (1));
-            infernoPos.X = ((Main.maxTilesX >= 8000) ? (infernoSide == 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
-            mirePos.X = ((Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700))));
+            infernoSide = (Main.dungeonX > Main.maxTilesX / 2) ? (-1) : 1;
+            infernoPos.X = (Main.maxTilesX >= 8000) ? (infernoSide == 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide == 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700)));
+            mirePos.X = (Main.maxTilesX >= 8000) ? (infernoSide != 1 ? WorldGen.genRand.Next(2000, 2300) : (Main.maxTilesX - WorldGen.genRand.Next(2000, 2300))) : (infernoSide != 1 ? WorldGen.genRand.Next(1500, 1700) : (Main.maxTilesX - WorldGen.genRand.Next(1500, 1700)));
             int j = (int)WorldGen.worldSurfaceLow - 30;
-            while (Main.tile[(int)(infernoPos.X), j] != null && !Main.tile[(int)(infernoPos.X), j].active())
+            while (Main.tile[(int)infernoPos.X, j] != null && !Main.tile[(int)infernoPos.X, j].active())
             {
                 j++;
             }
-            for (int l = (int)(infernoPos.X) - 25; l < (int)(infernoPos.X) + 25; l++)
+            for (int l = (int)infernoPos.X - 25; l < (int)infernoPos.X + 25; l++)
             {
                 for (int m = j - 6; m < j + 90; m++)
                 {
@@ -1445,11 +1446,11 @@ namespace AAMod
             }
             infernoPos.Y = j;
             int q = (int)WorldGen.worldSurfaceLow - 30;
-            while (Main.tile[(int)(mirePos.X), q] != null && !Main.tile[(int)(mirePos.X), q].active())
+            while (Main.tile[(int)mirePos.X, q] != null && !Main.tile[(int)mirePos.X, q].active())
             {
                 q++;
             }
-            for (int l = (int)(mirePos.X) - 25; l < (int)(mirePos.X) + 25; l++)
+            for (int l = (int)mirePos.X - 25; l < (int)mirePos.X + 25; l++)
             {
                 for (int m = q - 6; m < q + 90; m++)
                 {
@@ -1509,8 +1510,8 @@ namespace AAMod
                 ushort tileGrass = (ushort)mod.TileType("Mycelium"); //change to types in your mod
 
                 int worldSize = GetWorldSize();
-                int biomeWidth = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150), biomeWidthHalf = biomeWidth / 2; //how wide the biome is (scaled by world size)
-                int biomeHeight = (worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150); //how deep the biome is (scaled by world size)   
+                int biomeWidth = worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150, biomeWidthHalf = biomeWidth / 2; //how wide the biome is (scaled by world size)
+                int biomeHeight = worldSize == 3 ? 200 : worldSize == 2 ? 180 : 150; //how deep the biome is (scaled by world size)   
 
                 //ok time to check to see if this spot is actually a good place to gen
                 Dictionary<ushort, int> dictionary = new Dictionary<ushort, int>();
@@ -1608,7 +1609,7 @@ namespace AAMod
             int num = 0;
             int num2 = ChaosAltarsSmashed / 3 + 1;
             float num3 = Main.maxTilesX / 4200;
-            num3 = ((num3 * 310f - 85 * num) * 0.85f) / num2;
+            num3 = (num3 * 310f - 85 * num) * 0.85f / num2;
             if (OreCount >= 3)
             {
                 OreCount = 0;
@@ -1619,7 +1620,7 @@ namespace AAMod
             {
                 if (Main.netMode == 0)
                 {
-                    BaseUtility.Chat("Your world bursts with Yttrium!", Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
+                    if (Main.netMode != 1) BaseUtility.Chat("Your world bursts with Yttrium!", Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
                 }
                 num = Ore1;
                 num3 *= 1.05f;
@@ -1629,7 +1630,7 @@ namespace AAMod
             {
                 if (Main.netMode == 0)
                 {
-                    BaseUtility.Chat("Your world bursts with Uranium!", Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B, false);
+                    if (Main.netMode != 1) BaseUtility.Chat("Your world bursts with Uranium!", Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B, false);
                 }
                 num = Ore2;
                 num3 *= 1.05f;
@@ -1639,7 +1640,7 @@ namespace AAMod
             {
                 if (Main.netMode == 0)
                 {
-                    BaseUtility.Chat("Your world bursts with Technecium!", Color.DarkCyan.R, Color.DarkCyan.G, Color.DarkCyan.B, false);
+                    if (Main.netMode != 1) BaseUtility.Chat("Your world bursts with Technecium!", Color.DarkCyan.R, Color.DarkCyan.G, Color.DarkCyan.B, false);
                 }
                 num = Ore3;
                 num4 = 2;

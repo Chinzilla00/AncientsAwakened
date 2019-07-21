@@ -59,7 +59,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
             if (npc.ai[0] == 0f)
             {
-                npc.ai[0] = Math.Max(0, Math.Max(teleportInterval, (teleportInterval - 150)));
+                npc.ai[0] = Math.Max(0, Math.Max(teleportInterval, teleportInterval - 150));
             }
 
             if (npc.ai[2] != 0f && npc.ai[3] != 0f)
@@ -129,7 +129,7 @@ namespace AAMod.NPCs.Enemies.Inferno
                 npc.ai[1] -= 1f;
                 if (npc.ai[1] == 25f)
                 {
-                    Projectile.NewProjectile((new Vector2(npc.position.X + 17f, npc.position.Y + 18f)), new Vector2(-6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("Magma"), 15, 3); ;
+                    Projectile.NewProjectile(new Vector2(npc.position.X + 17f, npc.position.Y + 18f), new Vector2(-6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-4, 0)), mod.ProjectileType("Magma"), 15, 3); ;
                 }
             }
 

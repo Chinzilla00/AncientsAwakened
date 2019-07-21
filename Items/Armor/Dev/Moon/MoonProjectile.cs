@@ -51,7 +51,7 @@ namespace AAMod.Items.Armor.Dev.Moon
 
         public virtual void Effects()
         {
-            Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.05f) / 255f, ((255 - projectile.alpha) * 0.5f) / 255f, ((255 - projectile.alpha) * 0.5f) / 255f);
+            Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.05f / 255f, (255 - projectile.alpha) * 0.5f / 255f, (255 - projectile.alpha) * 0.5f / 255f);
         }
 
         public override Color? GetAlpha(Color lightColor)

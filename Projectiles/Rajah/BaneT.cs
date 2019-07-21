@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -27,13 +28,17 @@ namespace AAMod.Projectiles.Rajah
         {
             Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
             bool flag3 = projectile.Colliding(myRect, target.getRect());
-            if (flag3 && !StuckInEnemy && !target.boss)
+            if (!target.boss)
             {
-                StuckInEnemy = true;
-                projectile.ai[0] = 1f;
-                projectile.ai[1] = target.whoAmI;
-                projectile.velocity = (target.Center - projectile.Center) * 0.75f;
-                projectile.netUpdate = true;
+                Main.npc[(int)projectile.ai[1]].AddBuff(mod.BuffType<Buffs.SpearStuck>(), 100000);
+                if (flag3 && !StuckInEnemy)
+                {
+                    StuckInEnemy = true;
+                    projectile.ai[0] = 1f;
+                    projectile.ai[1] = target.whoAmI;
+                    projectile.velocity = (target.Center - projectile.Center) * 0.75f;
+                    projectile.netUpdate = true;
+                }
             }
         }
 
@@ -90,6 +95,12 @@ namespace AAMod.Projectiles.Rajah
                     projectile.Kill();
                 }
             }
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 2);
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 1, frame, lightColor, true);
+            return false;
         }
     }
 }

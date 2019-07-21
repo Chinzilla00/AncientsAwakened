@@ -12,7 +12,7 @@ namespace AAMod.Items.Dev
         {
             DisplayName.SetDefault("Supreme Hellshot");
             Tooltip.SetDefault(@"fires a massive spread of bullets at your foes
-Right click to fire a hellskull at your foe
+Right click to fire hellskulls at your foe
 Uses Bullets & Bones as ammo
 Super Skullshot EX");
         }
@@ -35,7 +35,7 @@ Super Skullshot EX");
             item.value = 100000;
             item.rare = 9;
             item.ranged = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -69,16 +69,16 @@ Super Skullshot EX");
             if (player.altFunctionUse == 2)
             {
                 item.useAmmo = AAMod.BoneAmmo;
-                item.damage = 340;
+                item.damage = 400;
                 item.useAnimation = 27;
                 item.useTime = 9;
-                item.reuseDelay = 30;
+                item.reuseDelay = 20;
                 item.shoot = mod.ProjectileType<Projectiles.Hellshot>();
             }
             else
             {
                 item.useAmmo = AmmoID.Bullet;
-                item.damage = 160;
+                item.damage = 180;
                 item.useAnimation = 24;
                 item.useTime = 24;
                 item.reuseDelay = 0;

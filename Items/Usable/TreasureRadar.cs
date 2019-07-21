@@ -17,7 +17,7 @@ namespace AAMod.Items.Usable
             item.width = 30;
             item.height = 38;
             item.rare = 2;
-            item.value = BaseMod.BaseUtility.CalcValue(0, 2, 0, 0);
+            item.value = BaseUtility.CalcValue(0, 2, 0, 0);
 
             item.useStyle = 5;
             item.useAnimation = 50;
@@ -58,7 +58,7 @@ namespace AAMod.Items.Usable
             return true;
 		}
 
-		public override void UseStyle(Player p) { BaseMod.BaseUseStyle.SetStyleBoss(p, item, false, false); }
-        public override bool UseItemFrame(Player p) { BaseMod.BaseUseStyle.SetFrameBoss(p, item); return true; }
+		public override void UseStyle(Player p) { BaseUseStyle.SetStyleBoss(p, item, false, false); }
+        public override bool UseItemFrame(Player p) { BaseUseStyle.SetFrameBoss(p, item); return true; }
 	}
 }

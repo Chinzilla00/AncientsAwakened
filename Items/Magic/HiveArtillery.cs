@@ -41,7 +41,6 @@ namespace AAMod.Items.Magic
 				num83 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector2.Y;
 			}
 			float num84 = (float)Math.Sqrt(num82 * num82 + num83 * num83);
-			float num85 = num84;
 			if ((float.IsNaN(num82) && float.IsNaN(num83)) || (num82 == 0f && num83 == 0f))
 			{
 				num82 = player.direction;
@@ -73,15 +72,46 @@ namespace AAMod.Items.Magic
 				float num166 = num83;
 				num165 += Main.rand.Next(-35, 36) * 0.02f;
 				num166 += Main.rand.Next(-35, 36) * 0.02f;
-				int num167 = Projectile.NewProjectile(vector2.X, vector2.Y, num165, num166, player.beeType(), player.beeDamage(damage), player.beeKB(knockBack), player.whoAmI, 0f, 0f);
+				int num167 = Projectile.NewProjectile(vector2.X, vector2.Y, num165, num166, BeeType(player), BeeDamage(damage), BeeKB(knockBack), player.whoAmI, 0f, 0f);
 				Main.projectile[num167].magic = true;
 				Main.projectile[num167].usesLocalNPCImmunity = true;
 				Main.projectile[num167].localNPCHitCooldown = 1;
 			}
 			return false;
 		}
-		
-		public override void AddRecipes()
+
+        private bool makeStrongBee;
+
+        public int BeeType(Player player)
+        {
+            if (player.strongBees && Main.rand.Next(2) == 0)
+            {
+                makeStrongBee = true;
+                return mod.ProjectileType<Projectiles.BeeStrong>();
+            }
+            makeStrongBee = false;
+            return mod.ProjectileType<Projectiles.Bee>();
+        }
+
+        public int BeeDamage(int dmg)
+        {
+            if (makeStrongBee)
+            {
+                return dmg + Main.rand.Next(1, 4);
+            }
+            return dmg + Main.rand.Next(2);
+        }
+
+        public float BeeKB(float KB)
+        {
+            if (makeStrongBee)
+            {
+                return 0.5f + KB * 1.1f;
+            }
+            return KB;
+        }
+
+        public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.BeeGun);

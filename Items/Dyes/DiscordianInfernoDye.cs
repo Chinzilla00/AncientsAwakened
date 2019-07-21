@@ -10,7 +10,7 @@ namespace AAMod.Items.Dyes
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Discordian Inferno Dye");
-            BaseMod.BaseUtility.AddTooltips(item, new string[] { "Gives a discordian touch to whatever this dye is applied to" });
+            BaseUtility.AddTooltips(item, new string[] { "Gives a discordian touch to whatever this dye is applied to" });
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

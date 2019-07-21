@@ -17,7 +17,7 @@ namespace AAMod.Items.Melee
 		public override void SetDefaults()
 		{
             
-			item.damage = 250;
+			item.damage = 320;
 			item.melee = true;
 			item.width = 84;
 			item.height = 84;
@@ -31,7 +31,7 @@ namespace AAMod.Items.Melee
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("ChaosShotP");
             item.shootSpeed = 16f;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
             glowmaskDrawType = GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
@@ -51,7 +51,7 @@ namespace AAMod.Items.Melee
 			recipe.AddRecipe();
 		}
 
-        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 		    float spread = 20f * 0.0174f;
 		    float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));

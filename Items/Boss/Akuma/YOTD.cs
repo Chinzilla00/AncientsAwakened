@@ -21,21 +21,32 @@ namespace AAMod.Items.Boss.Akuma
             item.crit = 20;
             item.useStyle = 5;
             item.autoReuse = true;
-            item.useAnimation = 18;
-            item.useTime = 18;
+            item.useAnimation = 25;
+            item.useTime = 25;
             item.useAmmo = AmmoID.Rocket;
             item.width = 50;
             item.height = 20;
             item.shoot = 134;
             item.UseSound = SoundID.Item11;
-            item.damage = 155;
-            item.shootSpeed = 10f;
+            item.damage = 400;
+            item.shootSpeed = 12f;
             item.noMelee = true;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.knockBack = 2f;
             item.rare = 9;
             AARarity = 13;
             item.ranged = true;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

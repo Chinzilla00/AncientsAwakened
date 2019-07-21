@@ -31,9 +31,19 @@ also acts as all vanilla crafting stations");
             item.consumable = true;
             item.value = 1000000;
             item.createTile = mod.TileType("BinaryReassembler");
-            
         }
-        
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
+        }
+
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
@@ -53,17 +63,6 @@ also acts as all vanilla crafting stations");
                 SpriteEffects.None,
                 0f
             );
-        }
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;
-//
-                }
-            }
         }
 
         public override void AddRecipes()

@@ -14,7 +14,7 @@ namespace AAMod.Items.BossSummons
 		{
             DisplayName.SetDefault("Interesting Looking Claw");
             Tooltip.SetDefault(@"It's oddly Clammy
-Only usable at night");
+Can only be used at night");
 		}
 
 		public override void SetDefaults()
@@ -44,12 +44,12 @@ Only usable at night");
         {
             if (NPC.AnyNPCs(mod.NPCType<GripOfChaosBlue>()) || NPC.AnyNPCs(mod.NPCType<GripOfChaosRed>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Grips of Chaos are already here!", Color.Indigo, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Grips of Chaos are already here!", Color.Indigo, false);
                 return false;
             }
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The claw lays limp in your hand. Nasty.", Color.Indigo, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The claw lays limp in your hand. Nasty.", Color.Indigo, false);
                 return false;
             }
             return true;

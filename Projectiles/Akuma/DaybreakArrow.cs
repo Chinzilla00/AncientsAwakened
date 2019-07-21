@@ -14,7 +14,7 @@ namespace AAMod.Projectiles.Akuma
         {
             if (Main.netMode != 2)
             {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
@@ -25,7 +25,7 @@ namespace AAMod.Projectiles.Akuma
             }
             projectile.glowMask = customGlowMask;
 
-            DisplayName.SetDefault("Daybreak Arrow");    //The recording mode
+            DisplayName.SetDefault("Daybreak Arrow");    
 		}
 
 		public override void SetDefaults()
@@ -60,8 +60,8 @@ namespace AAMod.Projectiles.Akuma
             Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1);
             for (int num468 = 0; num468 < 4; num468++)
             {
-                num468 = Dust.NewDust(new Microsoft.Xna.Framework.Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default(Color));
+                num468 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 100, default);
             }
         }
     }

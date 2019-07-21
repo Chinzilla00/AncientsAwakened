@@ -24,13 +24,13 @@ namespace AAMod.Items.Magic
             item.UseSound = SoundID.Item21;            //this is the sound when you use the item
             item.autoReuse = true;
             item.shoot = mod.ProjectileType ("TFGWP");  //this make the item shoot your projectile
-            item.shootSpeed = 7f;    //projectile speed when shoot
+            item.shootSpeed = 7f;     
         }   
 
     public override void SetStaticDefaults()
     {
       DisplayName.SetDefault("Flaming Gel Wand");
-      Tooltip.SetDefault("It shoots flaming gel.");
+      Tooltip.SetDefault("It shoots flaming gel");
             Item.staff[item.type] = true;
         }
 

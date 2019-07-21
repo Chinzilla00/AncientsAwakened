@@ -46,40 +46,37 @@ Non-Consumable");
         {
             if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Yamata.Yamata>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Yamata.Awakened.YamataA>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Only the blue half of the sigil is lit up...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (Main.netMode != 1) BaseUtility.Chat("Only the blue half of the sigil is lit up...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Akuma.Akuma>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Akuma.Awakened.AkumaA>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Only the red half of the sigil is lit up...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (Main.netMode != 1) BaseUtility.Chat("Only the red half of the sigil is lit up...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (Main.netMode != 1) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<ShenA>()))
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (Main.netMode != 1) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (!AAWorld.downedShen && !player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda && !player.GetModPlayer<AAPlayer>(mod).ZoneRisingMoonLake)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("The Chaos Sigil glows, and imagery of the chaos pedestals flash through your mind", Color.DarkMagenta, false);
+                if (Main.netMode != 1) BaseUtility.Chat("The Chaos Sigil glows, and imagery of the chaos pedestals flash through your mind", Color.DarkMagenta, false);
                 return false;
             }
-            for (int m = 0; m < Main.maxProjectiles; m++)
+            if (NPC.AnyNPCs(mod.NPCType<ShenSpawn>()) || NPC.AnyNPCs(mod.NPCType<ShenTransition>()) || NPC.AnyNPCs(mod.NPCType<ShenDefeat>()) || NPC.AnyNPCs(mod.NPCType<ShenDeath>()))
             {
-                Projectile p = Main.projectile[m];
-                if (p != null && p.active && p.type == mod.ProjectileType("ShenTransition"))
-                {
-                    return false;
-                }
-                if (p != null && p.active && p.type == mod.ProjectileType("ShenSpawn"))
-                {
-                    return false;
-                }
+                return false;
+            }
+            if (!AAWorld.downedAllAncients)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("The sigil does nothing...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                return false;
             }
             return true;
         }
@@ -88,7 +85,7 @@ Non-Consumable");
         {
             if (AAWorld.ShenSummoned)
             {
-                Main.NewText(AAWorld.downedShen ? "Big mistake, child..." : "Hmpf...again..? Alright, let's just get this done and overwith.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat(AAWorld.downedShen ? "Big mistake, child..." : "Hmpf...again..? Alright, let's just get this done and overwith.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenDoragon"), true, 0, 0, "Shen Doragon; Discordian Doomsayer", false);
             }

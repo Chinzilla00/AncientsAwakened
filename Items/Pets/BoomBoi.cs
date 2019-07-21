@@ -4,6 +4,9 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Pets
 {
+    /// <summary>
+    /// ALPHA THIS IS NOT AN ITEM
+    /// </summary>
     public class BoomBoi : ModProjectile
     {
         

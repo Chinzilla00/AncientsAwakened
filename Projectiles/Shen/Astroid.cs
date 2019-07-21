@@ -31,8 +31,8 @@ namespace AAMod.Projectiles.Shen
                 Dust dust1;
                 Dust dust2;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0, 0, 0, default(Color), 1f)];
+                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
+                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
                 dust1.noGravity = true;
                 dust2.noGravity = true;
             }
@@ -213,7 +213,7 @@ namespace AAMod.Projectiles.Shen
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
 			
-            Texture2D texture = AAMod.instance.GetTexture("AAMod/Projectiles/Akuma/Daycrusher_Chain");
+            Texture2D texture = AAMod.instance.GetTexture("Projectiles/Shen/Astroid_Chain");
  
             Vector2 position = projectile.Center;
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;

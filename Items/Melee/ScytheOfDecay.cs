@@ -31,13 +31,13 @@ Death Sickle EX");
             item.knockBack = 2f; 
             item.value = Item.sellPrice(0, 30, 0, 0); 
             item.rare = 9;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.shoot = mod.ProjectileType("DecayScythe"); 
             item.noUseGraphic = true;
             item.noMelee = true;
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; 
-            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_NONE;
+            glowmaskDrawType = GLOWMASKTYPE_NONE;
             glowmaskDrawColor = Color.White;
         }
 

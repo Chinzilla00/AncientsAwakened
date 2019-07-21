@@ -55,7 +55,7 @@ namespace AAMod.Items.Summoning.Minions
 			float num637 = 0.05f;
 			for (int num638 = 0; num638 < 1000; num638++)
 			{
-				bool flag23 = (Main.projectile[num638].type == mod.ProjectileType("DemonEater"));
+				bool flag23 = Main.projectile[num638].type == mod.ProjectileType("DemonEater");
 				if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < projectile.width)
 				{
 					if (projectile.position.X < Main.projectile[num638].position.X)
@@ -139,7 +139,7 @@ namespace AAMod.Items.Summoning.Minions
 				bool flag26 = false;
 				if (!flag26)
 				{
-					flag26 = (projectile.ai[0] == 1f);
+					flag26 = projectile.ai[0] == 1f;
 				}
 				float num650 = 6f;
 				if (flag26)
@@ -197,7 +197,6 @@ namespace AAMod.Items.Summoning.Minions
 			if (projectile.ai[0] == 0f)
 			{
 				float scaleFactor3 = 8f;
-				int num658 = mod.ProjectileType<EaterProj>();;
 				if (flag25 && projectile.ai[1] == 0f)
 				{
 					projectile.ai[1] += 1f;
@@ -206,8 +205,11 @@ namespace AAMod.Items.Summoning.Minions
 						Vector2 value19 = vector46 - projectile.Center;
 						value19.Normalize();
 						value19 *= scaleFactor3;
-						int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, num658, (int)(projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, 0f);
+						int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, ProjectileID.CursedFlameFriendly, (int)(projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, 0f);
 						Main.projectile[num659].timeLeft = 300;
+						Main.projectile[num659].penetrate = 1;
+						Main.projectile[num659].magic = false;
+						Main.projectile[num659].minion = true;
 						projectile.netUpdate = true;
 					}
 				}

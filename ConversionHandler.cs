@@ -23,7 +23,7 @@ namespace AAMod.Worldgen
 		public static void ConvertDown(int centerX, int y, int width, int convertType)
 		{
 			int worldSize = GetWorldSize();
-			int biomeRadius = (worldSize == 3 ? 220 : worldSize == 2 ? 180 : 150);	
+			int biomeRadius = worldSize == 3 ? 220 : worldSize == 2 ? 180 : 150;	
 			biomeRadius /= 2;
 			switch(convertType)
 			{

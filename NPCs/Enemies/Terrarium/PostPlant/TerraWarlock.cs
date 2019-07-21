@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 		public override void SendExtraAI(BinaryWriter writer)
 		{
 			base.SendExtraAI(writer);
-			if((Main.netMode == 2 || Main.dedServ))
+			if(Main.netMode == 2 || Main.dedServ)
 			{
 				writer.Write(internalAI[0]);
 				writer.Write(internalAI[1]);
@@ -110,7 +110,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                     if (npc.frame.Y > (60 * 14) || npc.frame.Y < (60 * 8))
                     {
                         npc.frameCounter = 0;
-                        npc.frame.Y = (60 * 8);
+                        npc.frame.Y = 60 * 8;
                     }
                 }
             }

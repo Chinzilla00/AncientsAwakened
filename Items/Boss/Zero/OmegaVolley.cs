@@ -12,14 +12,14 @@ namespace AAMod.Items.Boss.Zero
 		{
 			item.useStyle = 5;
 			item.autoReuse = true;
-			item.useAnimation = 3;
-			item.useTime = 3;
+			item.useAnimation = 2;
+			item.useTime = 2;
 			item.width = 72;
 			item.height = 34;
 			item.shoot = 10;
 			item.useAmmo = AmmoID.Bullet;
 			item.UseSound = SoundID.Item41;
-			item.damage = 40;
+			item.damage = 100;
 			item.shootSpeed = 15f;
 			item.noMelee = true;
 			item.value = Item.sellPrice(0, 30, 0, 0);
@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Zero
 
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Omega Vollet");
+			DisplayName.SetDefault("Omega Volley");
 			Tooltip.SetDefault(@"Shoots an insanely accurate volley of sonic bullets
 33% chance to not consume ammo");
         }
@@ -65,10 +65,9 @@ namespace AAMod.Items.Boss.Zero
 		public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "Discordium", 5);
-            recipe.AddIngredient(null, "ChaosScale", 5);
+			recipe.AddIngredient(null, "ApocalyptitePlate", 5);
 			recipe.AddIngredient(ItemID.ChainGun);
-            recipe.AddTile(mod.TileType("AncientForge"));
+            recipe.AddTile(mod.TileType("ACS"));
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

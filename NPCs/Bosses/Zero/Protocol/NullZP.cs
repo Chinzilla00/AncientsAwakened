@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 		{
 			
 			npc.frame = new Rectangle(0, frameCount * 40, 36, 38);
-			npc.spriteDirection = (npc.velocity.X > 0 ? -1 : 1);
+			npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
 			npc.rotation = npc.velocity.X * 0.25f;
 		}
 

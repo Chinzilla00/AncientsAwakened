@@ -8,12 +8,13 @@ namespace AAMod.Items.Boss.EFish
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Emperor Flairon");
+            Tooltip.SetDefault("Lets loose an armada of homing bubbles");
         }
 
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.Flairon);
-            item.damage = 160;
+            item.damage = 200;
             item.rare = 11;
             item.shoot = mod.ProjectileType("EFlairon");
         }

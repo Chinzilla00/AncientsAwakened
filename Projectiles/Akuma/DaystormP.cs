@@ -78,7 +78,7 @@ namespace AAMod.Projectiles.Akuma
             if (projectile.ai[1] == 1f && projectile.ai[0] != 1f)
             {
                 Vector2 vector2 = Vector2.UnitX * 24f;
-                vector2 = vector2.RotatedBy(projectile.rotation - 1.57079637f, default(Vector2));
+                vector2 = vector2.RotatedBy(projectile.rotation - 1.57079637f, default);
                 Vector2 value = projectile.Center + vector2;
                 for (int i = 0; i < 2; i++)
                 {
@@ -118,7 +118,7 @@ namespace AAMod.Projectiles.Akuma
                     {
                         value2 = projectile.Center + new Vector2(Main.rand.Next(-num7, num7 + 1), Main.rand.Next(-num7, num7 + 1));
                         Vector2 spinningpoint = Vector2.Normalize(projectile.velocity) * scaleFactor2;
-                        spinningpoint = spinningpoint.RotatedBy(Main.rand.NextDouble() * 0.19634954631328583 - 0.098174773156642914, default(Vector2));
+                        spinningpoint = spinningpoint.RotatedBy(Main.rand.NextDouble() * 0.19634954631328583 - 0.098174773156642914, default);
                         if (float.IsNaN(spinningpoint.X) || float.IsNaN(spinningpoint.Y))
                         {
                             spinningpoint = -Vector2.UnitY;

@@ -40,12 +40,12 @@ namespace AAMod.Items.Dev
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int Shoot = type;
-            Main.projectile[Shoot].melee = false;
-            Main.projectile[Shoot].magic = true;
-            Projectile.NewProjectile(position, new Vector2(speedX, speedY), Shoot, damage, knockBack);
+            int shoot = Projectile.NewProjectile(position, new Vector2(speedX, speedY), type, damage, knockBack, player.whoAmI);
+			Main.projectile[shoot].melee = false;
+            Main.projectile[shoot].magic = true;
             return false;
         }
+		
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)

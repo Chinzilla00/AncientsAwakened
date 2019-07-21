@@ -11,8 +11,8 @@ namespace AAMod.Projectiles
 	{
 		public override void SetDefaults()
 		{
-			projectile.width = 54;
-			projectile.height = 22;
+			projectile.width = 32;
+			projectile.height = 32;
 			projectile.friendly = true;
 			projectile.penetrate = 3;
 			projectile.aiStyle = -1;
@@ -53,7 +53,7 @@ namespace AAMod.Projectiles
 			
 			if (Main.rand.Next(1) == 0)
 			{
-				int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6, 0f, 0f, 200, default(Color), 0.8f);
+				int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, 6, 0f, 0f, 200, default, 0.8f);
 				Main.dust[dustnumber].velocity *= 0.3f;
 			}
 		}
@@ -66,7 +66,7 @@ namespace AAMod.Projectiles
             double deltaAngle = spread / 3;
             for (int i = 0; i < 3; i++)
             {
-                double offsetAngle = (startAngle + deltaAngle * (i + i * i) / 2f) + 32f * i;
+                double offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 3f) * 5, (float)(Math.Cos(offsetAngle) * 3f) * 5, mod.ProjectileType("Aerodrake1"), projectile.damage / 6, projectile.knockBack, projectile.owner, 0f, 0f);
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 3f) * 5, (float)(-Math.Cos(offsetAngle) * 3f) * 5, mod.ProjectileType("Aerodrake1"), projectile.damage / 6, projectile.knockBack, projectile.owner, 0f, 0f);
             }

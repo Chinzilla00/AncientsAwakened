@@ -11,10 +11,8 @@ namespace AAMod.NPCs.Bosses.Akuma
 {
     public class AncientLung : ModNPC
 	{
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AncientLung"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/AncientLung";
 
-        public bool loludided;
-        private bool weakness;
 
         public override void SetStaticDefaults()
 		{
@@ -54,13 +52,9 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.buffImmune[103] = false;
             npc.alpha = 255;
         }
-        private int speed = 8;
 
         public override bool PreAI()
         {
-            Player player = Main.player[npc.target];
-
-            
             
             AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaDust"), 2, 12);
 
@@ -124,7 +118,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
             bool collision = true;
 
-            float speed = 12f;
+            float speed = 15f;
             float acceleration = 0.09f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -183,7 +177,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 float newSpeed = speed / length;
                 dirX *= newSpeed;
                 dirY *= newSpeed;
-                if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || (npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0))
+                if (npc.velocity.X > 0.0 && dirX > 0.0 || npc.velocity.X < 0.0 && dirX < 0.0 || npc.velocity.Y > 0.0 && dirY > 0.0 || npc.velocity.Y < 0.0 && dirY < 0.0)
                 {
                     if (npc.velocity.X < dirX)
                         npc.velocity.X = npc.velocity.X + acceleration;
@@ -279,7 +273,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     npc.netUpdate = true;
                 npc.localAI[0] = 0.0f;
             }
-            if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || (npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0)) && !npc.justHit)
+            if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0) && !npc.justHit)
                 npc.netUpdate = true;
 
             return false;
@@ -312,17 +306,12 @@ namespace AAMod.NPCs.Bosses.Akuma
         public int roarTimer = 0; //if this is > 0, then use the roaring frame.
         public int roarTimerMax = 120; //default roar timer. only changed for fire breath as it's longer.
         public bool Roaring //wether or not he is roaring. only used clientside for frame visuals.
-        {
-            get
-            {
-                return roarTimer > 0;
-            }
-        }
+=> roarTimer > 0;
     }
     
     public class AncientLungBody : AncientLung
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AncientLungBody"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/AncientLungBody";
 
         public override void SetStaticDefaults()
         {
@@ -346,7 +335,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             Vector2 chasePosition = Main.npc[(int)npc.ai[1]].Center;
             Vector2 directionVector = chasePosition - npc.Center;
-            npc.spriteDirection = ((directionVector.X > 0f) ? 1 : -1);
+            npc.spriteDirection = (directionVector.X > 0f) ? 1 : -1;
             if (npc.ai[3] > 0)
                 npc.realLife = (int)npc.ai[3];
             if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)
@@ -418,7 +407,7 @@ namespace AAMod.NPCs.Bosses.Akuma
     
     public class AncientLungTail : AncientLung
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AncientLungTail"; } }
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/AncientLungTail";
 
         public override void SetStaticDefaults()
         {
@@ -447,7 +436,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         {
             Vector2 chasePosition = Main.npc[(int)npc.ai[1]].Center;
             Vector2 directionVector = chasePosition - npc.Center;
-            npc.spriteDirection = ((directionVector.X > 0f) ? 1 : -1);
+            npc.spriteDirection = (directionVector.X > 0f) ? 1 : -1;
             if (npc.ai[3] > 0)
                 npc.realLife = (int)npc.ai[3];
             if (npc.target < 0 || npc.target == byte.MaxValue || Main.player[npc.target].dead)
@@ -505,7 +494,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
         {
-            spriteEffects = (npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None);
+            spriteEffects = npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         }
 
         public override void BossHeadRotation(ref float rotation)

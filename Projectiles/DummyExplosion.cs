@@ -8,7 +8,7 @@ namespace AAMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dummy Explosion");
+			DisplayName.SetDefault("Explosion");
 		}
 
 		public override void SetDefaults()

@@ -8,15 +8,9 @@ namespace AAMod.NPCs.TownNPCs
     [AutoloadHead]
 	public class Lovecraftian : ModNPC
 	{
-        public override string Texture
-		{
-			get
-			{
-				return "AAMod/NPCs/TownNPCs/Lovecraftian";
-			}
-		}
+        public override string Texture => "AAMod/NPCs/TownNPCs/Lovecraftian";
 
-		public override bool Autoload(ref string name)
+        public override bool Autoload(ref string name)
 		{
 			name = "Lovecraftian";
 			return mod.Properties.Autoload;
@@ -96,8 +90,8 @@ namespace AAMod.NPCs.TownNPCs
 
 
             int Pirate = NPC.FindFirstNPC(NPCID.Pirate);
-            int Mutant = (Fargos == null ? -1 : NPC.FindFirstNPC(Fargos.NPCType("Mutant")));
-            int HordeZombie = (GRealm == null ? -1 : NPC.FindFirstNPC(GRealm.NPCType("HordeZombie")));
+            int Mutant = Fargos == null ? -1 : NPC.FindFirstNPC(Fargos.NPCType("Mutant"));
+            int HordeZombie = GRealm == null ? -1 : NPC.FindFirstNPC(GRealm.NPCType("HordeZombie"));
 
             chat.Add("You know, where I’m from, I’m what your world would call ‘hot stuff.’");
 

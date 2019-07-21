@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 			if (Main.rand.Next(8) == 0)
 			{
 				int num156 = 16;
-				int num157 = Dust.NewDust(new Vector2(projectile.position.X + num156, projectile.position.Y + num156), projectile.width - num156 * 2, projectile.height - num156 * 2, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default(Color), 0.5f);
+				int num157 = Dust.NewDust(new Vector2(projectile.position.X + num156, projectile.position.Y + num156), projectile.width - num156 * 2, projectile.height - num156 * 2, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default, 0.5f);
 				Main.dust[num157].velocity *= 0.25f;
 				Main.dust[num157].velocity += projectile.velocity * 0.5f;
 				return;
@@ -63,7 +63,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
         	target.immune[projectile.owner] = 8;
-        	target.AddBuff(BuffID.Poisoned, 400);
+        	target.AddBuff(mod.BuffType<Buffs.HydraToxin>(), 400);
         }
     }
 }

@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-            //Main.NewText("time: "+ projectile.timeLeft + "ai[0]: \n" + projectile.ai[0] + " | ai[1]: \n" + projectile.ai[1]);
+            //if (Main.netMode != 1) BaseMod.BaseUtility.Chat("time: "+ projectile.timeLeft + "ai[0]: \n" + projectile.ai[0] + " | ai[1]: \n" + projectile.ai[1]);
             if (projectile.ai[0] < chargeTime) //spindown
             {
                 AICharge();
@@ -150,7 +150,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             for (int j = 0; j < 40; j++)
             {
-                int d2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), (j / 90f) * -projectile.velocity.X, (j / 90f) * -projectile.velocity.Y, 100, Color.White, 1.2f);
+                int d2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.VoidDust>(), j / 90f * -projectile.velocity.X, j / 90f * -projectile.velocity.Y, 100, Color.White, 1.2f);
                 Main.dust[d2].noGravity = true;
                 Main.dust[d2].velocity *= 0.6f;
             }
@@ -207,7 +207,7 @@ namespace AAMod.NPCs.Bosses.Zero
         //define which frames are used in each stage (0 = start, 1 = mid, 2 = end
         private void ZeroLaser(int stage, Vector2 currentPosition, float distanceLeft, Rectangle lastFrame, out float distCovered, out Rectangle frame, out Vector2 origin, out Color color)
         {
-            color = Color.White;
+            color = AAColor.ZeroShield;
 			if (stage == 0)
 			{
 				distCovered = 33f;

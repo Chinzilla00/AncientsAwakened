@@ -20,7 +20,7 @@ namespace AAMod.Items.Armor.TrueBlazing
 			item.height = 20;
 			item.value = 100000;
 			item.rare = 4;
-			item.defense = 12;
+			item.defense = 18;
 		}
 
         public override void UpdateEquip(Player player)

@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Broodmother
 			item.consumable = true;
 			item.width = 36;
 			item.height = 32;
-			item.expert = true;
+			item.expert = true; item.expertOnly = true;
         }
         public override int BossBagNPC => mod.NPCType("Broodmother");
 

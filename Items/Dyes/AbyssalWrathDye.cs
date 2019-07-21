@@ -9,8 +9,8 @@ namespace AAMod.Items.Dyes
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Abyssal Wrath Dye");	
-            BaseMod.BaseUtility.AddTooltips(item, new string[] { "Gives an abyssal touch to whatever this dye is applied to" });		
+            DisplayName.SetDefault("Abyssal Wrath Dye");
+            BaseUtility.AddTooltips(item, new string[] { "Gives an abyssal touch to whatever this dye is applied to" });		
 		}
 
         public override void ModifyTooltips(List<TooltipLine> list)

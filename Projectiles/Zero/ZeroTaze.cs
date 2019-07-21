@@ -16,34 +16,33 @@ namespace AAMod.Projectiles.Zero
     	
         public override void SetDefaults()
         {
-            projectile.width = 14;
-            projectile.height = 14;
+            projectile.width = 24;
+            projectile.height = 24;
             projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.alpha = 255;
             projectile.ignoreWater = true;
-            projectile.tileCollide = true;
+            projectile.tileCollide = false;
             projectile.extraUpdates = 4;
             projectile.timeLeft = 120 * (projectile.extraUpdates + 1);
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 0;
+            projectile.penetrate = -1;
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             for (int i = 0; i < projectile.oldPos.Length; i++)
             {
-                if (projectile.oldPos[i].X == 0f && projectile.oldPos[i].Y == 0f)
-                {
-                    break;
-                }
                 projHitbox.X = (int)projectile.oldPos[i].X;
                 projHitbox.Y = (int)projectile.oldPos[i].Y;
-                if (projHitbox.Intersects(targetHitbox))
+				if (projHitbox.Intersects(targetHitbox))
                 {
                     return true;
                 }
             }
-            return false;
+            return base.Colliding(projHitbox, targetHitbox);
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
@@ -113,7 +112,7 @@ namespace AAMod.Projectiles.Zero
                     if (Main.rand.Next(5) == 0)
                     {
                         Vector2 value49 = projectile.velocity.RotatedBy(1.5707963705062866) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
-                        int num854 = Dust.NewDust(projectile.Center + value49 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default(Color), 1.5f);
+                        int num854 = Dust.NewDust(projectile.Center + value49 - Vector2.One * 4f, 8, 8, 31, 0f, 0f, 100, default, 1.5f);
                         Main.dust[num854].velocity *= 0.5f;
                         Main.dust[num854].velocity.Y = -Math.Abs(Main.dust[num854].velocity.Y);
                         return;

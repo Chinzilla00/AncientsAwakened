@@ -27,13 +27,17 @@ namespace AAMod.Projectiles
             target.AddBuff(mod.BuffType<Buffs.DynaEnergy1>(), 60);
             Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
             bool flag3 = projectile.Colliding(myRect, target.getRect());
-            if (flag3 && !StuckInEnemy && !target.boss)
+            if (!target.boss)
             {
-                StuckInEnemy = true;
-                projectile.ai[0] = 1f;
-                projectile.ai[1] = target.whoAmI;
-                projectile.velocity = (target.Center - projectile.Center) * 0.75f;
-                projectile.netUpdate = true;
+                Main.npc[(int)projectile.ai[1]].AddBuff(mod.BuffType<Buffs.SpearStuck>(), 100000);
+                if (flag3 && !StuckInEnemy)
+                {
+                    StuckInEnemy = true;
+                    projectile.ai[0] = 1f;
+                    projectile.ai[1] = target.whoAmI;
+                    projectile.velocity = (target.Center - projectile.Center) * 0.75f;
+                    projectile.netUpdate = true;
+                }
             }
         }
 

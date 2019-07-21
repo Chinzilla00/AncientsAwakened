@@ -35,12 +35,12 @@ Conflagrate Staff EX");
             item.shoot = mod.ProjectileType("EnderMinionEX");
             item.buffType = mod.BuffType("EnderMinionBuffEX");
             item.rare = 8;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 			item.UseSound = SoundID.Item44;
 			item.shootSpeed = 7f;	//The buff added to player after used the item
 
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
-            glowmaskDrawType = BaseAAItem.GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
+            glowmaskDrawType = GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
             glowmaskDrawColor = Color.White;  //glowmask draw color
         }
 		

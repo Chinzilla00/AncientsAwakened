@@ -34,8 +34,20 @@ namespace AAMod.Items.Boss.Shen
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("Skyfall");
             item.shootSpeed = 14f;
-            
             item.UseSound = new LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound);
+            item.rare = 9;
+            AARarity = 14;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity14;
+                }
+            }
         }
 
 
@@ -119,17 +131,6 @@ namespace AAMod.Items.Boss.Shen
             float num115 = num79 + (Main.rand.Next(-40, 41) * 0.02f);
             Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, type, damage, knockBack, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
             return false;
-        }
-
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity14;
-                }
-            }
         }
 
         public override void AddRecipes()

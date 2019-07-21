@@ -39,13 +39,13 @@ namespace AAMod.Tiles
         public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
         {
             if (!glow) return;
-            Color color = BaseMod.BaseUtility.ColorMult(AAPlayer.ZeroColor, 0.7f);
-            r = (color.R / 255f); g = (color.G / 255f); b = (color.B / 255f);
+            Color color = BaseUtility.ColorMult(AAPlayer.ZeroColor, 0.7f);
+            r = color.R / 255f; g = color.G / 255f; b = color.B / 255f;
         }
 
         public Color color;
 
-        public override void PostDraw(int i, int j, Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+        public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
             Tile tile = Main.tile[i, j];
             Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);

@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -42,7 +42,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         {
             npc.width = 14;
             npc.height = 14;
-            npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 0, 0);
+            npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
             npc.lifeMax = 1;

@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-
 using Terraria;
 using Terraria.ModLoader;
 using System.Reflection;
@@ -15,36 +14,65 @@ namespace AAMod
 
         public static FieldInfo CRevengence = null, CDeath = null, CDefiled = null;
 
-        public static bool Revengence(bool? value = null)
+        /*
+        public static bool Revengence
         {
-            if (value != null && CRevengence != null)
+            get
             {
-                CRevengence.SetValue(null, (bool)value);
-                return (bool)value;
-
+                if (calamity != null)
+                {
+                    if (calamity.Version >= new Version(1, 4, 2, 201))
+                    {
+                        return CalamityMod.world.CalamityWorld.revenge;
+                    }
+                    else
+                    {
+                        return CalamityMod.CalamityWorld.revenge;
+                    }
+                    
+                }
+                return false;
             }
-            return (CRevengence == null ? false : (bool)CRevengence.GetValue(null));
         }
 
-        public static bool Death(bool? value = null)
+        public static bool Death
         {
-            if (value != null && CDeath != null)
+            get
             {
-                CDeath.SetValue(null, (bool)value);
-                return (bool)value;
+                if (calamity != null)
+                {
+                    if (calamity.Version >= new Version(1, 4, 2, 201))
+                    {
+                        return CalamityMod.world.CalamityWorld.death;
+                    }
+                    else
+                    {
+                        return CalamityMod.CalamityWorld.death;
+                    }
+                    
+                }
+                return false;
             }
-            return (CDeath == null ? false : (bool)CDeath.GetValue(null));
         }
 
-        public static bool Defiled(bool? value = null)
+        public static bool Defiled
         {
-            if (value != null && CDefiled != null)
+            get
             {
-                CDefiled.SetValue(null, (bool)value);
-                return (bool)value;
+                if (calamity != null)
+                {
+                    if (calamity.Version >= new Version(1, 4, 2, 201))
+                    {
+                        return CalamityMod.world.CalamityWorld.defiled;
+                    }
+                    else
+                    {
+                        return CalamityMod.CalamityWorld.defiled;
+                    }
+                }
+                return false;
             }
-            return (CDefiled == null ? false : (bool)CDefiled.GetValue(null));
-        }
+        }*/
 
         public static bool ModInstalled(string name)
         {
@@ -62,7 +90,7 @@ namespace AAMod
 
         public static Texture2D GetMapBackgroundImage()
         {
-            return (forceBlackMapBG ? Main.mapTexture : null);
+            return forceBlackMapBG ? Main.mapTexture : null;
         }
 
         public static void SetupSupport()
@@ -70,27 +98,6 @@ namespace AAMod
             thorium = ModLoader.GetMod("ThoriumMod");
             calamity = ModLoader.GetMod("CalamityMod");
             redemption = ModLoader.GetMod("Redemption");
-
-            #region Calamity
-            if (calamity != null)
-            {
-                FieldInfo worldList = calamity.GetType().GetField("worlds", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-                Dictionary<string, ModWorld> worldDict = (Dictionary<string, ModWorld>)worldList.GetValue(calamity);
-                FieldInfo[] finfo = worldDict["CalamityWorld"].GetType().GetFields(BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
-                for (int m = 0; m < finfo.Length; m++)
-                {
-                    FieldInfo info = finfo[m];
-                    string fname = info.Name.ToLower();
-                    switch (fname)
-                    {
-                        default: break;
-                        case "revenge": CRevengence = info; break;
-                        case "death": CDeath = info; break;
-                        case "defiled": CDefiled = info; break;
-                    }
-                }
-            }
-            #endregion
         }
     }
 

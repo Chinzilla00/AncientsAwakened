@@ -50,7 +50,18 @@ The blazing fury of the Inferno rests in this armor");
             AARarity = 13;
         }
 
-		public override void UpdateEquip(Player player)
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity13;
+                }
+            }
+        }
+
+        public override void UpdateEquip(Player player)
 		{
 			player.moveSpeed += 0.16f;
 			player.meleeSpeed += 0.15f;

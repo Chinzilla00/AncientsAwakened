@@ -9,8 +9,8 @@ namespace AAMod.Projectiles
     {
         public override void SetDefaults()
         {
-            projectile.width = 48;
-            projectile.height = 30;
+            projectile.width = 22;
+            projectile.height = 24;
             projectile.friendly = true;
             projectile.magic = true;
             projectile.ignoreWater = true;
@@ -73,13 +73,17 @@ namespace AAMod.Projectiles
             target.AddBuff(mod.BuffType<Buffs.DynaEnergy1>(), 60);
             Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
             bool flag3 = projectile.Colliding(myRect, target.getRect());
-            if (flag3 && !StuckInEnemy)
+            if (!target.boss)
             {
-                StuckInEnemy = true;
-                projectile.ai[0] = 1f;
-                projectile.ai[1] = target.whoAmI;
-                projectile.velocity = (target.Center - projectile.Center) * 0.75f;
-                projectile.netUpdate = true;
+                Main.npc[(int)projectile.ai[1]].AddBuff(mod.BuffType<Buffs.SpearStuck>(), 100000);
+                if (flag3 && !StuckInEnemy)
+                {
+                    StuckInEnemy = true;
+                    projectile.ai[0] = 1f;
+                    projectile.ai[1] = target.whoAmI;
+                    projectile.velocity = (target.Center - projectile.Center) * 0.75f;
+                    projectile.netUpdate = true;
+                }
             }
         }
 
@@ -90,14 +94,14 @@ namespace AAMod.Projectiles
             for (int m = 0; m < pieCut; m++)
             {
                 int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 100, Color.White, 1.6f);
-                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default(Vector2), new Vector2(6f, 0f), (m / (float)pieCut) * 6.28f);
+                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / (float)pieCut * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
             }
             for (int m = 0; m < pieCut; m++)
             {
                 int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 100, Color.White, 2f);
-                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default(Vector2), new Vector2(9f, 0f), (m / (float)pieCut) * 6.28f);
+                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)pieCut * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
             }

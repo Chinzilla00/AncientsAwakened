@@ -25,7 +25,7 @@ namespace AAMod.Projectiles
 			{
 				Dust dust;
 				Vector2 position = projectile.position;
-                dust = Main.dust[Terraria.Dust.NewDust(position, 0, 0, 27, 4.736842f, 0f, 46, new Color(0, 255, 217), 1.184211f)];
+                dust = Main.dust[Dust.NewDust(position, 0, 0, 27, 4.736842f, 0f, 46, new Color(0, 255, 217), 1.184211f)];
                 dust.fadeIn = 0.9868421f;
                 dust.noGravity = true;
 			}
@@ -50,7 +50,7 @@ namespace AAMod.Projectiles
         {
             if (Main.netMode != 2)
             {
-                Texture2D[] glowMasks = new Microsoft.Xna.Framework.Graphics.Texture2D[Main.glowMaskTexture.Length + 1];
+                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
                 for (int i = 0; i < Main.glowMaskTexture.Length; i++)
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];

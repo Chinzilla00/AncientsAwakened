@@ -16,8 +16,8 @@ Chaos Javelin EX");
         public override void SetDefaults()
         {
             item.shoot = mod.ProjectileType("ChaosJavelinEX");
-            item.shootSpeed = 12f;
-            item.damage = 200;
+            item.shootSpeed = 17f;
+            item.damage = 225;
             item.knockBack = 5f;
             item.ranged = true;
             item.useStyle = 1;
@@ -31,7 +31,7 @@ Chaos Javelin EX");
             item.autoReuse = true;
             item.value = Item.sellPrice(5, 0, 0, 0);
             item.rare = 11;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
 
         public override void AddRecipes()

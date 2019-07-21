@@ -1,4 +1,5 @@
 using Terraria.ID;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Serpent
@@ -15,6 +16,7 @@ namespace AAMod.NPCs.Bosses.Serpent
 		public override void SetStaticDefaults()
 		{
 		    DisplayName.SetDefault("Ice Spike");
+            Main.projFrames[projectile.type] = 5;
 		}
     }
 }

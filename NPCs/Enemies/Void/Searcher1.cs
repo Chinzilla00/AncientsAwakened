@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Enemies.Void
         {
             npc.width = 35;
             npc.height = 35;
-            npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 5, 50);
+            npc.value = BaseUtility.CalcValue(0, 0, 5, 50);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
             npc.lifeMax = 80;
@@ -38,8 +38,8 @@ namespace AAMod.NPCs.Enemies.Void
             bool isDead = npc.life <= 0;
             for (int m = 0; m < (isDead ? 25 : 5); m++)
             {
-                int dustType = (mod.DustType<Dusts.VoidDust>());
-                Dust.NewDust(npc.position, npc.width, npc.height, dustType, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, (isDead ? 2f : 1.1f));
+                int dustType = mod.DustType<Dusts.VoidDust>();
+                Dust.NewDust(npc.position, npc.width, npc.height, dustType, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, isDead ? 2f : 1.1f);
             }
 
             if (npc.life <= 0)
@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Enemies.Void
             BaseAI.AIEater(npc, ref npc.ai, .022f, 4, .6f, false, true);
             Player player = Main.player[npc.target];
             bool playerActive = player != null && player.active && !player.dead;
-            BaseAI.LookAt((playerActive ? player.Center : (npc.Center + npc.velocity)), npc, 0);
+            BaseAI.LookAt(playerActive ? player.Center : (npc.Center + npc.velocity), npc, 0);
             
         }
 

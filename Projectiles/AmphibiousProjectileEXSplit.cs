@@ -60,7 +60,7 @@ namespace AAMod.Projectiles
                 int dustType = (int)projectile.ai[0];
                 float num364 = projectile.velocity.X / 3f * (float)num363;
                 float num365 = projectile.velocity.Y / 3f * (float)num363;
-                int num366 = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 0, default(Color), 1f);
+                int num366 = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 0, default, 1f);
                 Main.dust[num366].position.X = projectile.Center.X - num364;
                 Main.dust[num366].position.Y = projectile.Center.Y - num365;
                 Main.dust[num366].velocity *= 0f;

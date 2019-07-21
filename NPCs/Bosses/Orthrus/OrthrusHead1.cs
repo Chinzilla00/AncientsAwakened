@@ -17,7 +17,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -80,14 +80,10 @@ namespace AAMod.NPCs.Bosses.Orthrus
             Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/OrthrusHeadGore4"), 1f);
         }
 
-        public Orthrus Body
-		{
-			get
-			{
-				return ((bodyNPC != null && bodyNPC.modNPC is Orthrus) ? (Orthrus)bodyNPC.modNPC : null);
-			}
-		}
-		public NPC bodyNPC = null;	
+        public Orthrus Body => (bodyNPC != null && bodyNPC.modNPC is Orthrus) ? (Orthrus)bodyNPC.modNPC : null;
+        public NPC bodyNPC = null;
+        public int Target = -1;
+        public NPC Lock = null;
         public bool leftHead = false;
         public int damage = 0;
 
@@ -143,15 +139,22 @@ namespace AAMod.NPCs.Bosses.Orthrus
 
                 if (Main.netMode != 1)
                 {
-                    npc.localAI[1]++;
-                    int aiTimerFire = 150;
+                    internalAI[0]++;
+                    if (!leftHead && Target == -1 && internalAI[0] >= 150)
+                    {
+                        Target = NPC.NewNPC((int)targetPlayer.Center.X, (int)targetPlayer.Center.Y, mod.NPCType<OrthrusLock>());
+                        Lock = Main.npc[Target];
+                        Lock.netUpdate = true;
+                        npc.netUpdate = true;
+                    }
+
                     if (targetPlayer != null)
                     {
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         if (leftHead)
                         {
                             dir *= 12f;
-                            if (npc.localAI[1] % 10 == 0)
+                            if (internalAI[0] % 10 == 0)
                             {
                                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("OrthrusSpark"), (int)(damage * 1.3f), 0f, Main.myPlayer);
 
@@ -159,7 +162,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                         }
                         else
                         {
-                            if (npc.localAI[1] == aiTimerFire)
+                            if (internalAI[0] == 300)
                             {
                                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("Shocking"), (int)(damage * 1.3f), 0f, Main.myPlayer);
                             }
@@ -185,15 +188,15 @@ namespace AAMod.NPCs.Bosses.Orthrus
                     npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
                     npc.velocity *= 5f;
                 }
-                npc.position += (bodyNPC.oldPos[0] - bodyNPC.position);
+                npc.position += bodyNPC.oldPos[0] - bodyNPC.position;
                 npc.position += bodyNPC.velocity;
             }
             else
             {
-                npc.velocity = default(Vector2);
+                npc.velocity = default;
                 npc.position += bodyNPC.velocity;
             }
-            npc.position += (Body.npc.position - Body.npc.oldPosition);
+            npc.position += Body.npc.position - Body.npc.oldPosition;
             npc.rotation = 1.57f;
             npc.spriteDirection = -1;
             BaseDrawing.AddLight(npc.Center, leftHead ? new Color(255, 84, 84) : new Color(48, 232, 232));
@@ -210,12 +213,12 @@ namespace AAMod.NPCs.Bosses.Orthrus
         {
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = (dist == Vector2.Zero ? 0f : dist.Length());
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
             }
-            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
         }

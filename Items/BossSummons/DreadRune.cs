@@ -17,7 +17,7 @@ namespace AAMod.Items.BossSummons
             DisplayName.SetDefault("Dread Moon Rune");
             Tooltip.SetDefault(@"An enchanted tablet eminating with dark chaotic energy
 Summons Yamata Awakened
-Only Usable at night in the mire
+Can only be used at night in the mire
 Non-Consumable");
         }
         public override void SetDefaults()
@@ -44,8 +44,8 @@ Non-Consumable");
 
         public override bool UseItem(Player player)
 		{
-            Main.NewText("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            Main.NewText("Yeah, yeah I get it, my first phase is obnoxious. Let’s just get this over with..!", new Color(146, 30, 68));
+            if (Main.netMode != 1) BaseUtility.Chat("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+            if (Main.netMode != 1) BaseUtility.Chat("Yeah, yeah I get it, my first phase is obnoxious. Let’s just get this over with..!", new Color(146, 30, 68));
             DreadSigil.SpawnBoss(player, mod.NPCType<NPCs.Bosses.Yamata.Awakened.YamataA>(), false, new Vector2(player.Center.X, player.Center.Y - 100), "Yamata, Dread Nightmare");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"), player.position);
             return true;
@@ -55,24 +55,24 @@ Non-Consumable");
         {
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
                 return false;
             }
             if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
             {
                 if (!player.GetModPlayer<AAPlayer>(mod).ZoneRisingMoonLake && !AAWorld.downedYamata)
                 {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("An image of the strange tree at the heart of the mire flashes through your mind", Color.Indigo, false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("An image of the strange tree at the heart of the mire flashes through your mind", Color.Indigo, false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType("Yamata")))
                 {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(45, 46, 70), false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType("YamataA")))
                 {
-                    if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!", new Color(146, 30, 68), false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType("YamataTransition")))
@@ -81,7 +81,7 @@ Non-Consumable");
                 }
                 return true;
             }
-            if (player.whoAmI == Main.myPlayer) BaseUtility.Chat("Hey Dumbo! Mire is that way!", new Color(45, 46, 70), false);
+            if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Hey Dumbo! Mire is that way!", new Color(45, 46, 70), false);
             return false;
         }
 		

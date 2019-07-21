@@ -12,11 +12,9 @@ namespace AAMod.Items.Boss.Yamata   //where is located
         
         public override void SetStaticDefaults()
         {
-            
             DisplayName.SetDefault("Hydra Slayer");
             Tooltip.SetDefault(@"Used to defeat the multi-headed monstrosities of the abyss
 Inflicts Moonrazed");
-            
         }
 
         
@@ -27,8 +25,8 @@ Inflicts Moonrazed");
             item.melee = true;            
             item.width = 86;              
             item.height = 86;             
-            item.useTime = 17;          
-            item.useAnimation = 17;     
+            item.useTime = 13;          
+            item.useAnimation = 13;     
             item.useStyle = 1;        
             item.knockBack = 3f;      
             item.value = Item.sellPrice(0, 30, 0, 0);

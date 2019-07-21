@@ -17,7 +17,7 @@ namespace AAMod.Items.Vanity.Dallin
             item.consumable = true;
             item.width = 32;
             item.height = 32;
-            item.expert = true;  
+            item.expert = true; item.expertOnly = true;  
         }
 
         public override bool CanRightClick()

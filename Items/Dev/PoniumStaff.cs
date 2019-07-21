@@ -24,8 +24,8 @@ namespace AAMod.Items.Dev
 			item.mana = 7;
 			item.width = 88;
 			item.height = 88;
-			item.useTime = 27;
-			item.useAnimation = 27;
+			item.useTime = 15;
+			item.useAnimation = 15;
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 3;
@@ -35,7 +35,7 @@ namespace AAMod.Items.Dev
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("PonyShot");
 			item.shootSpeed = 9f;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 		}
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

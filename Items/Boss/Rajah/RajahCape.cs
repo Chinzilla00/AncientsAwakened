@@ -25,9 +25,9 @@ All effects of the Sash of Vengeance
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 9;
             item.accessory = true;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
             item.defense = 10;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
         }
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {

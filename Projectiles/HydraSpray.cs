@@ -25,7 +25,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-        	Lighting.AddLight(projectile.Center, ((255 - projectile.alpha) * 0.01f) / 255f, ((255 - projectile.alpha) * 0.05f) / 255f, ((255 - projectile.alpha) * 0.15f) / 255f);
+        	Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.01f / 255f, (255 - projectile.alpha) * 0.05f / 255f, (255 - projectile.alpha) * 0.15f / 255f);
 			projectile.scale -= 0.002f;
 			if (projectile.scale <= 0f)
 			{
@@ -54,7 +54,7 @@ namespace AAMod.Projectiles
 			if (Main.rand.Next(8) == 0)
 			{
 				int num156 = 16;
-				int num157 = Dust.NewDust(new Vector2(projectile.position.X + num156, projectile.position.Y + num156), projectile.width - num156 * 2, projectile.height - num156 * 2, mod.DustType<Dusts.HydraDust>(), 0f, 0f, 100, default(Color), 0.5f);
+				int num157 = Dust.NewDust(new Vector2(projectile.position.X + num156, projectile.position.Y + num156), projectile.width - num156 * 2, projectile.height - num156 * 2, mod.DustType<Dusts.HydraDust>(), 0f, 0f, 100, default, 0.5f);
 				Main.dust[num157].velocity *= 0.25f;
 				Main.dust[num157].velocity += projectile.velocity * 0.5f;
 				return;

@@ -11,7 +11,7 @@ namespace AAMod.Items.Tools
             item.melee = true;
             item.width = 54;
             item.height = 60;
-			item.useStyle = 1;
+            item.useStyle = 1;
             item.useTime = 5;
             item.useAnimation = 20;
             item.tileBoost += 3;
@@ -42,10 +42,11 @@ You may only have a maximum of 2 tool types active");
             if (player.altFunctionUse == 2)
             {
                 item.noUseGraphic = true;
-                AAMod.instance.TerratoolState.ToggleUI(AAMod.instance.TerratoolInterface);
+                AAMod.instance.TerratoolTState.ToggleUI(AAMod.instance.TerratoolInterface);
                 item.pick = 0;
                 item.axe = 0;
                 item.hammer = 0;
+                item.damage = 0;
             }
             else
             {
@@ -53,11 +54,12 @@ You may only have a maximum of 2 tool types active");
                 item.pick = UI.TerratoolTUI.Pick;
                 item.axe = UI.TerratoolTUI.Axe;
                 item.hammer = UI.TerratoolTUI.Hammer;
+                item.damage = 60;
             }
             return true;
         }
 
-        public override void AddRecipes()  
+        public override void AddRecipes()
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);

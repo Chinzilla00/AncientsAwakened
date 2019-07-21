@@ -9,7 +9,7 @@ namespace AAMod
 {
     public abstract class AAProjectile : ParentProjectile
     {
-        public override bool CloneNewInstances { get { return true; } }
+        public override bool CloneNewInstances => true;
 
         public string name
         {
@@ -43,7 +43,7 @@ namespace AAMod
 
         public override bool? CanCutTiles()
         {
-            return (!hurtsTiles ? false : (bool?)null);
+            return !hurtsTiles ? false : (bool?)null;
         }
 
         
@@ -70,11 +70,11 @@ namespace AAMod
                 Vector2 oldPos = projectile.position;
                 if (drawCenteredX)
                 {
-                    projectile.position.X += (projectile.Center.X - projectile.position.X);
+                    projectile.position.X += projectile.Center.X - projectile.position.X;
                 }
                 else
                 {
-                    projectile.position += (projectile.Center - projectile.position);
+                    projectile.position += projectile.Center - projectile.position;
                 }
                 BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, GetAlpha(dColor));
                 projectile.position = oldPos;

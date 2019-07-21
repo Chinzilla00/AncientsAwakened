@@ -29,7 +29,7 @@ namespace AAMod.Projectiles
 			if (Main.rand.NextBool(2))
 			{
 				Dust dust = Main.dust[Dust.NewDust(projectile.Center, 24, 24, DustID.Electric, projectile.velocity.X / 2f,
-							projectile.velocity.Y / 2f, 0, default(Color), 1f)];
+							projectile.velocity.Y / 2f, 0, default, 1f)];
 				dust.noGravity = true;
 				dust.scale = Main.rand.Next(8, 10) * 0.05f;
 			}
@@ -140,11 +140,11 @@ namespace AAMod.Projectiles
 				for (int l = 0; l < 2; l++)
 				{
 					Dust dust = Main.dust[Dust.NewDust(projectile.Center, 24, 24, DustID.Electric, vel.X,
-								vel.Y, 0, default(Color), 1f)];
+								vel.Y, 0, default, 1f)];
 					dust.noGravity = true;
 					dust.scale = Main.rand.Next(10, 20) * 0.05f;
 				}
-				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X/3, vel.Y/3, mod.ProjectileType("MjolnirEffect"), (projectile.damage/3)*2, knockback, projectile.owner);
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vel.X/3, vel.Y/3, mod.ProjectileType("MjolnirEffect"), projectile.damage/3*2, knockback, projectile.owner);
 			}
 		}
     }

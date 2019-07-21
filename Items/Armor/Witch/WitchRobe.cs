@@ -23,8 +23,19 @@ A robe enchanted with the firey spirit of a supreme dragon acolyte");
             AARarity = 12;
             item.value = 300000;
             item.defense = 26;
-		}
-        
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
+
         public override void UpdateEquip(Player player)
         {
             player.magicCrit += 10;

@@ -1,4 +1,6 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ModLoader;
@@ -14,8 +16,8 @@ namespace AAMod.Projectiles.Rajah
         }
         public override void SetDefaults()
         {
-            projectile.width = 28;
-            projectile.height = 24;
+            projectile.width = 30;
+            projectile.height = 32;
             projectile.timeLeft = 18000;
             projectile.timeLeft *= 5;
             projectile.minionSlots = 1f;
@@ -32,7 +34,11 @@ namespace AAMod.Projectiles.Rajah
             bool flag64 = projectile.type == mod.ProjectileType("RabbitcopterSoldier");
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            player.AddBuff(mod.BuffType("RabbitcopterSoldier"), 3600);
+            if (!player.active)
+            {
+                projectile.active = false;
+                return;
+            }
             if (flag64)
             {
                 if (player.dead)
@@ -52,7 +58,7 @@ namespace AAMod.Projectiles.Rajah
             float num637 = 0.05f;
             for (int num638 = 0; num638 < 1000; num638++)
             {
-                bool flag23 = (Main.projectile[num638].type == mod.ProjectileType("RabbitcopterSoldier"));
+                bool flag23 = Main.projectile[num638].type == mod.ProjectileType("RabbitcopterSoldier");
                 if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < projectile.width)
                 {
                     if (projectile.position.X < Main.projectile[num638].position.X)
@@ -154,7 +160,7 @@ namespace AAMod.Projectiles.Rajah
                 bool flag26 = false;
                 if (!flag26)
                 {
-                    flag26 = (projectile.ai[0] == 1f);
+                    flag26 = projectile.ai[0] == 1f;
                 }
                 float num650 = 6f;
                 if (flag26)
@@ -217,15 +223,24 @@ namespace AAMod.Projectiles.Rajah
                     }
                 }
             }
-            if (projectile.frameCounter > 10)
+            if (++projectile.frameCounter > 6)
             {
                 projectile.frame++;
                 projectile.frameCounter = 0;
-                if (projectile.frame > 4)
+                if (projectile.frame > 3)
                 {
                     projectile.frame = 0;
                 }
             }
+        }
+
+
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 4, frame, lightColor, false);
+            return false;
         }
     }
 }

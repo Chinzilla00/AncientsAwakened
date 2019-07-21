@@ -30,13 +30,19 @@ namespace AAMod.Items.Melee
             item.useTurn = false;
             item.shoot = mod.ProjectileType<Projectiles.Aerodrake>();
             item.shootSpeed = 17f;
-            item.expert = true;
+            item.expert = true; item.expertOnly = true;
 
             glowmaskDrawType = GLOWMASKTYPE_SWORD;
             glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";
             glowmaskDrawColor = AAColor.COLOR_WHITEFADE1;
         }
 
+		public override void UseStyle(Player player)
+        {
+            player.itemLocation +=
+                new Vector2(-4 * player.direction, 16 * player.gravDir).RotatedBy(player.itemRotation);
+        }
+		
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);

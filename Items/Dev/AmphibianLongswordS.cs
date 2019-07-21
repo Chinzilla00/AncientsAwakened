@@ -21,7 +21,7 @@ namespace AAMod.Items.Dev
 			item.width = 64;
 			item.height = 64;
             item.useTime = 30;
-            item.useTime = 30;
+            item.useAnimation = 30;
             item.useStyle = 1;
 			item.knockBack = 7;
             item.value = Item.sellPrice(0, 10, 0, 0);
@@ -29,7 +29,7 @@ namespace AAMod.Items.Dev
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("AmphibiousProjectileS");
-            item.shootSpeed = 9f;
+            item.shootSpeed = 12f;
 		}
 
         public override void ModifyTooltips(List<TooltipLine> list)
