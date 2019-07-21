@@ -446,48 +446,48 @@ ItemTooltip.BlazingSuneate=增加2%伤害抗性\n在燎日之焰中锻造\n(译�
 
 // AAMod.Items.Armor.Chaos
 
-ItemName.ChaosDou=冥昧道甲
+ItemName.ChaosDou=混元道甲
 ItemTooltip.ChaosDou=增加7%伤害
 
-ItemName.ChaosFukumen=冥昧假面
+ItemName.ChaosFukumen=混元假面
 ItemTooltip.ChaosFukumen=增加24%远程暴击率
 
-ItemName.ChaosGreaves=冥昧护胫
+ItemName.ChaosGreaves=混元护胫
 ItemTooltip.ChaosGreaves=增加10%移动速度\n增加7%伤害
 
-ItemName.ChaosHelm=冥昧头盔
+ItemName.ChaosHelm=混元头盔
 ItemTooltip.ChaosHelm=增加15%近战速度
 
-ItemName.ChaosKabuto=冥昧盔胄
+ItemName.ChaosKabuto=混元盔胄
 ItemTooltip.ChaosKabuto=增加10%近战伤害
 
-ItemName.ChaosMask=冥昧面具
+ItemName.ChaosMask=混元面具
 ItemTooltip.ChaosMask=减少30%魔法消耗\n允许你在水下呼吸
 
-ItemName.ChaosSkull=冥昧龙颅
+ItemName.ChaosSkull=混元龙颅
 ItemTooltip.ChaosSkull=增加24%远程伤害
 
-ItemName.ChaosVisor=冥昧视镜
+ItemName.ChaosVisor=混元视镜
 ItemTooltip.ChaosVisor=增加30%召唤伤害
 
 // AAMod.Items.Armor.PerfectChaos
 
-ItemName.PerfectChaosGreaves=混沌抹杀者护胫
-ItemTooltip.PerfectChaosGreaves=增加45%移动速度\n增加15%伤害抗性\n从这个盔甲中散发着混沌不和之力
+ItemName.PerfectChaosGreaves=冥昧抹杀者护胫
+ItemTooltip.PerfectChaosGreaves=增加45%移动速度\n增加15%伤害抗性\n从这个盔甲中散发着冥昭瞢暗之力
 
-ItemName.PerfectChaosHood=混沌抹杀者兜帽
-ItemTooltip.PerfectChaosHood=增加32%魔法伤害\n增加20%魔法暴击率\n增加10%伤害抗性\n减少30%魔法消耗\n+150魔法上限\n从这个盔甲中散发着混沌不和之力
+ItemName.PerfectChaosHood=冥昧抹杀者兜帽
+ItemTooltip.PerfectChaosHood=增加32%魔法伤害\n增加20%魔法暴击率\n增加10%伤害抗性\n减少30%魔法消耗\n+150魔法上限\n从这个盔甲中散发着冥昭瞢暗之力
 
-ItemName.PerfectChaosKabuto=混沌抹杀者盔胄
-ItemTooltip.PerfectChaosKabuto=增加30%近战伤害和暴击率\n增加15%伤害抗性\n增加15近战速度\n从这个盔甲中散发着混沌不和之力
+ItemName.PerfectChaosKabuto=冥昧抹杀者盔胄
+ItemTooltip.PerfectChaosKabuto=增加30%近战伤害和暴击率\n增加15%伤害抗性\n增加15近战速度\n从这个盔甲中散发着冥昭瞢暗之力
 
-ItemName.PerfectChaosMask=混沌抹杀者面具
-ItemTooltip.PerfectChaosMask=增加70%召唤伤害\n增加5%伤害抗性\n+6召唤上限\n+2炮台上限\n从这个盔甲中散发着混沌不和之力
+ItemName.PerfectChaosMask=冥昧抹杀者面具
+ItemTooltip.PerfectChaosMask=增加70%召唤伤害\n增加5%伤害抗性\n+6召唤上限\n+2炮台上限\n从这个盔甲中散发着冥昭瞢暗之力
 
-ItemName.PerfectChaosVisor=混沌抹杀者视镜
-ItemTooltip.PerfectChaosVisor=增加45%远程伤害\n增加38%远程暴击率\n增加12%伤害抗性\n减少25%弹药消耗\n从这个盔甲中散发着混沌不和之力
+ItemName.PerfectChaosVisor=冥昧抹杀者视镜
+ItemTooltip.PerfectChaosVisor=增加45%远程伤害\n增加38%远程暴击率\n增加12%伤害抗性\n减少25%弹药消耗\n从这个盔甲中散发着冥昭瞢暗之力
 
-ItemName.PerfectChaosPlate=混沌抹杀者胸甲
+ItemName.PerfectChaosPlate=冥昧抹杀者胸甲
 ItemTooltip.PerfectChaosPlate=增加15%伤害抗性\n允许你在水下呼吸
 
 // AAMod.Items.Armor.Darkmatter
@@ -1054,13 +1054,13 @@ ItemTooltip.TribalKilt=增加8%魔法暴击率\n+20魔力上限
 // AAMod.Items.Armor.TrueAbyssal
 
 
-ItemName.TrueAbyssalFukumen=完美沉渊假面
+ItemName.TrueAbyssalFukumen=精铸沉渊假面
 ItemTooltip.TrueAbyssalFukumen=增加35%移动速度\n增加20%远程伤害
 
-ItemName.TrueAbyssalGi=完美沉渊武服
+ItemName.TrueAbyssalGi=精铸沉渊武服
 ItemTooltip.TrueAbyssalGi=增加50%移动速度\n增加15%远程伤害
 
-ItemName.TrueAbyssalHakama=完美沉渊袴裤
+ItemName.TrueAbyssalHakama=精铸沉渊袴裤
 ItemTooltip.TrueAbyssalHakama=增加40%移动速度\n增加15%远程伤害
 
 
@@ -1080,13 +1080,13 @@ ItemTooltip.TrueAtlanteanPlate=增加20%魔法伤害\n亚特兰蒂斯之力在�
 // AAMod.Items.Armor.TrueBlazing
 
 
-ItemName.TrueBlazingDou=完美怒炎道甲
+ItemName.TrueBlazingDou=精铸怒炎道甲
 ItemTooltip.TrueBlazingDou=增加5%伤害抗性
 
-ItemName.TrueBlazingKabuto=完美怒炎盔胄
+ItemName.TrueBlazingKabuto=精铸怒炎盔胄
 ItemTooltip.TrueBlazingKabuto=增加5%伤害抗性
 
-ItemName.TrueBlazingSuneate=完美怒炎臑当
+ItemName.TrueBlazingSuneate=精铸怒炎臑当
 ItemTooltip.TrueBlazingSuneate=增加5%伤害抗性\n增加5%移动速度\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
 
 
@@ -2071,14 +2071,14 @@ ItemTooltip.SubzeroSlasher=挥动时有几率发射绝零一击
 ItemName.Astroid=惑星末日
 ItemTooltip.Astroid=用星体撞击地球的力量撞击敌人\n造成冥昧业火
 
-ItemName.ChaosScale=混沌神鳞
-ItemTooltip.ChaosScale=灼热的鳞片中散发着混沌之息
+ItemName.ChaosScale=冥昧神鳞
+ItemTooltip.ChaosScale=灼热的鳞片中散发着冥昧之息
 
-ItemName.ChaosSlayer=混沌神杀
-ItemTooltip.ChaosSlayer=释放混沌之刃来攻击你的敌人\n“粉碎一切的理智”
+ItemName.ChaosSlayer=冥昧神杀
+ItemTooltip.ChaosSlayer=释放冥昧之刃来攻击你的敌人\n“粉碎一切的理智”
 
 ItemName.ChaosSlayerEX=应龙神怒
-ItemTooltip.ChaosSlayerEX=释放分裂的混沌之刃来攻击你的敌人\n混沌神杀 EX
+ItemTooltip.ChaosSlayerEX=释放分裂的冥昧之刃来攻击你的敌人\n冥昧神杀 EX
 
 ItemName.ChaosSoul=冥昧之魂
 ItemTooltip.ChaosSoul=稳恒的浑沌，动荡与混乱的本像
@@ -2087,7 +2087,7 @@ ItemName.DraconicRipper=神龙开膛手
 ItemTooltip.DraconicRipper=发射数发高口径子弹\n无视敌人防御\n77%几率不消耗弹药
 
 ItemName.Duality=二律背反
-ItemTooltip.Duality=古老的护身符中喷涌出混沌之力\n在结合了太阳堡垒和夜十头巾效果的基础上，更加强化\n你的攻击造成冥昧业火\n对攻击你的敌人造成冥昧业火\n你免疫泰拉之火、燎狱龙炎、九头蛇毒和冥昧业火\n增加13%攻击力\n在混沌环境，你的攻击力增加30%\n在燎狱中，你增加10防御力\n在潭渊中，你增加50%速度\n允许冲刺，用烈焰烧毁敌人
+ItemTooltip.Duality=古老的护身符中喷涌出冥昧之力\n在结合了太阳堡垒和夜十头巾效果的基础上，更加强化\n你的攻击造成冥昧业火\n对攻击你的敌人造成冥昧业火\n你免疫泰拉之火、燎狱龙炎、九头蛇毒和冥昧业火\n增加13%攻击力\n在混沌环境，你的攻击力增加30%\n在燎狱中，你增加10防御力\n在潭渊中，你增加50%速度\n允许冲刺，用烈焰烧毁敌人
 
 ItemName.FlamingTwilight=焰霞的黄昏
 ItemTooltip.FlamingTwilight=左键向你的敌人发射冥昧火球\n右键在光标位置处降下愤怒之火雨\n使用凝胶作为弹药\n33%几率不消耗凝胶
@@ -2294,10 +2294,10 @@ ItemName.CyberneticShroom=电子控制松露
 ItemTooltip.CyberneticShroom=召唤电子松露\n只能在晚上使用
 
 ItemName.ChaosRune=冥昧符文
-ItemTooltip.ChaosRune=一块充满混沌能量的诅咒图版\n召唤觉醒之上神应龙\n无消耗
+ItemTooltip.ChaosRune=一块充满冥昧能量的诅咒图版\n召唤觉醒之上神应龙\n无消耗
 
 ItemName.ChaosSigil=冥昧印迹
-ItemTooltip.ChaosSigil=一块充满混沌能量的诅咒图版\n召唤混沌之皇-上神应龙\n无消耗
+ItemTooltip.ChaosSigil=一块充满冥昧能量的诅咒图版\n召唤冥昧之皇-上神应龙\n无消耗
 
 ItemName.DiamondCarrot=十克拉钻石胡萝卜
 ItemTooltip.DiamondCarrot=华丽的胡萝卜中散发出一股忍者的愤怒...
@@ -2324,7 +2324,7 @@ ItemName.EquinoxWorm=昼夜虫
 ItemTooltip.EquinoxWorm=使用天空材料制作的蠕虫\n召唤昼夜双虫\n无消耗
 
 ItemName.FlamesOfAnarchy=原初之焰
-ItemTooltip.FlamesOfAnarchy=古代中国燃烧的混沌火焰\n呼唤混沌姐妹\n无消耗
+ItemTooltip.FlamesOfAnarchy=古代中国燃烧的冥昧之焰\n呼唤混沌姐妹\n无消耗
 
 ItemName.GoldenCarrot=十克拉胡罗卜
 ItemTooltip.GoldenCarrot=召唤一个凶猛的惩罚者
@@ -2632,7 +2632,7 @@ ItemName.PurityFlask=纯净烧瓶
 ItemTooltip.PurityFlask=扩散树林
 
 ItemName.SquidList=洛夫克拉夫特星人的研究单
-ItemTooltip.SquidList=我需要这些东西,拜托了!\n1. 一些地下生物圈的东西.其中一种水晶可以起到一些作用......\n2. 腐化地的肉体样本.我想知道这些东西是怎么做成的.\n3. 猩红之地的骨头样本. 我想知道它们的骨骼结构.\n4. 找到潭渊生物的食物是什么. 只要杀死它们,直到从它们身上掉下食物或其他什么东西就行.\n5. 燎狱生物的鳞片.我想知道它们怎么能防火.\n6. 丛林的孢子样本. 这些蘑菇真的很烦人,也许我可以做些什么来清除它们.\n7. 一些生物用来注射毒素的东西. 我的注射器坏了,那个护士不让我用她的. \n8. 赤孢皇和真菌帝的组成样本. 我可能需要一些帮助来研究这些, 不过...\n9. 一块从这里以西的浮岛上搞到的废料金属.用那些材料做装备看上去有点意思.\n10. 有一台制冰机就好了.\n11. 兔子.不是为了测试,我只是觉得他们很可爱,想要一对宠物. \n12. 神圣之地闪闪发光的东西.我希望能炼一些药...
+ItemTooltip.SquidList=我需要这些东西,拜托了!\n1. 一些地下生物群落的东西.其中一种水晶可以起到一些作用......\n2. 腐化地的肉体样本.我想知道这些东西是怎么做成的.\n3. 猩红之地的骨头样本. 我想知道它们的骨骼结构.\n4. 找到潭渊生物的食物是什么. 只要杀死它们,直到从它们身上掉下食物或其他什么东西就行.\n5. 燎狱生物的鳞片.我想知道它们怎么能防火.\n6. 丛林的孢子样本. 这些蘑菇真的很烦人,也许我可以做些什么来清除它们.\n7. 一些生物用来注射毒素的东西. 我的注射器坏了,那个护士不让我用她的. \n8. 赤孢皇和真菌帝的组成样本. 我可能需要一些帮助来研究这些, 不过...\n9. 一块从这里以西的浮岛上搞到的废料金属.用那些材料做装备看上去有点意思.\n10. 有一台制冰机就好了.\n11. 兔子.不是为了测试,我只是觉得他们很可爱,想要一对宠物. \n12. 神圣之地闪闪发光的东西.我希望能炼一些药...
 
 ItemName.VoidFlask=虚空烧瓶
 ItemTooltip.VoidFlask=扩散虚空
@@ -2814,7 +2814,7 @@ ItemName.TerraCrystal=泰拉棱镜
 ItemTooltip.TerraCrystal=注入了泰拉大陆的和谐归一
 
 ItemName.ChaosCrystal=混沌棱镜
-ItemTooltip.ChaosCrystal=注入了太古混沌的不和之火
+ItemTooltip.ChaosCrystal=注入了太古冥昧的不和之火
 
 ItemName.VoidCrystal=虚空棱镜
 ItemTooltip.VoidCrystal=注入了永不停歇的厄劫回声
@@ -2840,7 +2840,7 @@ ItemName.DevilSilk=恶魔丝绸
 ItemTooltip.DevilSilk=自然的罪恶; 感觉不错，但不能长久保存
 
 ItemName.Discordium=冥昧锭
-ItemTooltip.Discordium=世间的混沌之力在此锭中融合，充满强大的能量
+ItemTooltip.Discordium=世间的冥昧之力在此锭中融合，充满强大的能量
 
 ItemName.Doomite=厄劫锭
 ItemTooltip.Doomite=从锭中辐射出让人不安的能量
@@ -3034,18 +3034,18 @@ ItemTooltip.CarnalCrusher=暴击会回复你的生命
 ItemName.Chaos=浑沌
 ItemTooltip.Chaos=这把不和谐之剑对击中的敌人降下愤恨和怒火
 
-ItemName.ChaosChain=混沌链球
-ItemTooltip.ChaosChain=抛出一个带有混沌能量的不稳定球
+ItemName.ChaosChain=冥昧链球
+ItemTooltip.ChaosChain=抛出一个带有冥昧能量的不稳定球
 
-ItemName.ChaosChainEX=完美混沌链球
-ItemTooltip.ChaosChainEX=抛出一把旋转刀刃粉碎敌人\n混沌链球 EX
+ItemName.ChaosChainEX=精铸冥昧链球
+ItemTooltip.ChaosChainEX=抛出一把旋转刀刃粉碎敌人\n冥昧链球 EX
 
-ItemName.ChaosScythe=混沌终焉
+ItemName.ChaosScythe=冥昧终焉
 ItemTooltip.ChaosScythe=“无能为力”\n传说武器
 
-ItemName.ChaosYari=混沌枪矛
+ItemName.ChaosYari=冥昧枪矛
 
-ItemName.ChaosYariEX=真·混沌枪矛EX
+ItemName.ChaosYariEX=真·冥昧枪矛
 
 ItemName.Chicken=惨叫鸡
 
@@ -3460,7 +3460,7 @@ ItemName.Bubbleshot=潭渊泡泡枪
 ItemName.ChaosShot=混沌破坏枪
 ItemTooltip.ChaosShot=发射一枚穿甲弹和6发子弹
 
-ItemName.ChaosShotEX=混沌完全破坏枪
+ItemName.ChaosShotEX=混沌精铸破坏枪
 ItemTooltip.ChaosShotEX=发射一枚穿甲弹和10发子弹\n混沌破坏枪 EX
 
 ItemName.CoinPistol=硬币手枪
@@ -4577,15 +4577,15 @@ NPCName.WrathHarukaVanish=觉醒潭渊妖女 怨惧之八歧遥香
 
 NPCName.ShenDoragon=上神应龙 冥昧末日的预言者
 
-NPCName.ShenA=觉醒之上神应龙 永劫混沌的化身
+NPCName.ShenA=觉醒之上神应龙 冥昭瞢暗的化身
 
 NPCName.ShenSpawn=冥昧之息
 
-NPCName.ShenTransition=觉醒之混沌
+NPCName.ShenTransition=觉醒之冥昧
 
-NPCName.ShenDefeat=混沌的战败
+NPCName.ShenDefeat=冥昧之败
 
-NPCName.ShenDeath=混沌的陨落
+NPCName.ShenDeath=冥昧的陨落
 
 NPCName.Shenling=上神应龙的伴龙
 NPCName.ShenlingBody1=上神应龙的伴龙

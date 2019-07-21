@@ -61,7 +61,7 @@ namespace AAMod
                         case "hardModeInfo":
                         return "愤怒和怨恨的灵魂被释放了!";
                         case "downedAllAncientsInfo":
-                        return "真正的混沌在大气中翻涌...";
+                        return "真正的冥昧之息在大气中翻涌...";
                     }
                 }
             else
@@ -303,7 +303,7 @@ namespace AAMod
                         case "SetChatButtons18":
                         return "远古劫难";
                         case "SetChatButtons19":
-                        return "混沌末日预言者";
+                        return "冥昧末日预言者";
                         case "SetChatButtons20":
                         return "石匠";
                         case "downedMonarchY":
@@ -355,7 +355,7 @@ namespace AAMod
                         case "downedSistersY":
                         return "漂亮！你给那俩宠坏的小孩好好上了一课！那俩没看见这个！";
                         case "downedSistersN":
-                        return "还记得育母炎龙和九头渊蛇？ 好, 那俩有女儿。 而且她们讨厌“男 人”。 。 ！每次我去混沌生态圈的时候, 这俩都会等在那毁了我的一天！你去给她们俩点教训？ ";
+                        return "还记得育母炎龙和九头渊蛇？ 好, 那俩有女儿。 而且她们讨厌“男 人”。 。 ！每次我去混沌之地的时候, 这俩都会等在那毁了我的一天！你去给她们俩点教训？ ";
                         case "downedAkumaY":
                         return "邪鬼巨龙觉得他很激昂。 对我来说, 他只是过于想冷静然后失败了。 不管怎么说, 想要给你头发上倒点水, 你头上有点烧焦了。 ";
                         case "downedAkumaN":
@@ -389,7 +389,7 @@ namespace AAMod
                         case "VoidGuideChat":
                         return "那些东边的浮岛把我吓坏了。 他们只是……在那里。 我想他们上面有些小隔间， 但我不会去那里。 ";
                         case "HardModeGuideChat1":
-                        return "嘿， 如果你去地下混沌生态的话， 我想你可以得到一些魂， 就像你在邪恶环境中得到的那样。 这些应该有用。 ";
+                        return "嘿， 如果你去地下混沌之地的话， 我想你可以得到一些魂， 就像你在邪恶环境中得到的那样。 这些应该有用。 ";
                         case "HardModeGuideChat2":
                         return "嘿， 你知道潭渊里的蟾蜍吗？ 我听说他们囤积了很多硬币。 快去打那些恶心的怪物， 然后砰的一声！都是现金。 ";
                         case "PlantBossGuideChat":
@@ -1012,7 +1012,7 @@ namespace AAMod
                         case "SamuraiChat4":
                         return "的麦酒. 太浓了. 诚实的说, 我喜欢清酒. ";
                         case "SamuraiChat5":
-                        return "混沌生态并不总是这么.... emmm.... 混乱. ";
+                        return "混沌之地并不总是这么.... emmm.... 混乱. ";
                         case "SamuraiChat6":
                         return "你见过我的剑吗? 我哪儿也找不到. ";
                         case "SamuraiChat7":
