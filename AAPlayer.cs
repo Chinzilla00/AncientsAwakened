@@ -2346,7 +2346,6 @@ namespace AAMod
                 {
                     player.wingTimeMax = 18;
                 }
-                player.velocity.Y *= .9f;
                 if (YamataAGravity)
                 {
                     player.moveSpeed *= .58f;
