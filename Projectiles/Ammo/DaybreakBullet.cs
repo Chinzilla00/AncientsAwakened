@@ -21,6 +21,7 @@ namespace AAMod.Projectiles.Ammo
             projectile.scale = 1.3f;
             projectile.timeLeft = 600;
             projectile.ranged = true;
+            aiType = ProjectileID.Bullet;
         }
 
 		public override void SetStaticDefaults()

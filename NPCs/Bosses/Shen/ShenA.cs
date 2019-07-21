@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 300;
+            npc.damage = 260;
             npc.defense = 240;
             npc.lifeMax = 1200000;
             npc.value = Item.sellPrice(1, 0, 0, 0);

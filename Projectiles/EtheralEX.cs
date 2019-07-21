@@ -18,7 +18,8 @@ namespace AAMod.Projectiles
         {
             projectile.width = 28;
             projectile.height = 84;
-            projectile.friendly = true;
+            projectile.hostile = false;
+            projectile.friendly = false;
 			projectile.penetrate = -1;
 			projectile.tileCollide = false;
 			projectile.magic = true;

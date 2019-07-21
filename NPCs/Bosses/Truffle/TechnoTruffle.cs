@@ -14,6 +14,7 @@ namespace AAMod.NPCs.Bosses.Truffle
     public class TechnoTruffle : ModNPC
     {
         public bool AIType = true;
+        public bool ShotLaser = true;
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -24,6 +25,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
                 writer.Write(AIType);
+                writer.Write(ShotLaser);
             }
         }
 
@@ -37,6 +39,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
                 AIType = reader.ReadBool();
+                ShotLaser = reader.ReadBool();
             }
         }
 
@@ -277,8 +280,16 @@ namespace AAMod.NPCs.Bosses.Truffle
                 npc.noTileCollide = true;
                 npc.noGravity = true;
                 BaseAI.AISpaceOctopus(npc, ref npc.ai, .05f, 8, 250, 0, null);
+                if (Main.netMode != 1 && !ShotLaser)
+                {
+                    ShotLaser = true;
+                    Vector2 center11 = npc.Center;
+                    Projectile.NewProjectile(center11.X, center11.Y, 0f, 0f, 447, npc.damage / 2, 0f, Main.myPlayer, (npc.whoAmI + 1), 0f);
+                }
+                Main.PlaySound(SoundID.Item12, npc.Center);
                 if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
+                    ShotLaser = false;
                     npc.noGravity = false;
                     internalAI[0] = 0;
                     internalAI[3] = Main.rand.Next(3);

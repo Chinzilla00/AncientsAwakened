@@ -82,8 +82,18 @@ Non-consumable");
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            ModRecipe recipe;
+            recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "GoldenCarrot", 1);
+            recipe.AddIngredient(null, "UnstableSingularity", 3);
+            recipe.AddIngredient(null, "CrucibleScale", 3);
+            recipe.AddIngredient(null, "DreadScale", 3);
+            recipe.AddIngredient(ItemID.Diamond, 5);
+            recipe.AddTile(null, "AncientForge");
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "PlatinumCarrot", 1);
             recipe.AddIngredient(null, "UnstableSingularity", 3);
             recipe.AddIngredient(null, "CrucibleScale", 3);
             recipe.AddIngredient(null, "DreadScale", 3);

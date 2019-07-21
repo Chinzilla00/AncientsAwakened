@@ -25,7 +25,7 @@ namespace AAMod.Projectiles
 			projectile.alpha = 20;
 			projectile.ignoreWater = true;
             projectile.tileCollide = true;
-			aiType = ProjectileID.WoodenArrowFriendly;           
+			aiType = ProjectileID.Bullet;           
 		}
 
         public override Color? GetAlpha(Color lightColor)
