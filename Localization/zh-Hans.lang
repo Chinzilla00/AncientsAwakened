@@ -78,7 +78,7 @@ BuffDescription.DoomiteProbeC=召唤一个厄劫雷达探针为你而战
 BuffName.DustDevil=沙尘魔
 BuffDescription.DustDevil=召唤一个沙尘魔为你而战
 
-BuffName.DiscordInferno=混律业火
+BuffName.DiscordInferno=冥昧业火
 BuffDescription.DiscordInferno=你的灵魂自我分裂
 
 BuffName.EaterMinion=魔鬼吞噬者
@@ -388,7 +388,7 @@ ItemTooltip.AsgardianWings=可飞行和滑翔
 ItemName.BlazingWings=灼曜之翼
 ItemTooltip.BlazingWings=可飞行和滑翔
 
-ItemName.WingsofChaos=混律之翼
+ItemName.WingsofChaos=冥昧之翼
 ItemTooltip.WingsofChaos=可飞行和滑翔
 
 
@@ -446,28 +446,28 @@ ItemTooltip.BlazingSuneate=增加2%伤害抗性\n在燎日之焰中锻造\n(译�
 
 // AAMod.Items.Armor.Chaos
 
-ItemName.ChaosDou=混律道甲
+ItemName.ChaosDou=冥昧道甲
 ItemTooltip.ChaosDou=增加7%伤害
 
-ItemName.ChaosFukumen=混律假面
+ItemName.ChaosFukumen=冥昧假面
 ItemTooltip.ChaosFukumen=增加24%远程暴击率
 
-ItemName.ChaosGreaves=混律护胫
+ItemName.ChaosGreaves=冥昧护胫
 ItemTooltip.ChaosGreaves=增加10%移动速度\n增加7%伤害
 
-ItemName.ChaosHelm=混律头盔
+ItemName.ChaosHelm=冥昧头盔
 ItemTooltip.ChaosHelm=增加15%近战速度
 
-ItemName.ChaosKabuto=混律盔胄
+ItemName.ChaosKabuto=冥昧盔胄
 ItemTooltip.ChaosKabuto=增加10%近战伤害
 
-ItemName.ChaosMask=混律面具
+ItemName.ChaosMask=冥昧面具
 ItemTooltip.ChaosMask=减少30%魔法消耗\n允许你在水下呼吸
 
-ItemName.ChaosSkull=混律龙颅
+ItemName.ChaosSkull=冥昧龙颅
 ItemTooltip.ChaosSkull=增加24%远程伤害
 
-ItemName.ChaosVisor=混律视镜
+ItemName.ChaosVisor=冥昧视镜
 ItemTooltip.ChaosVisor=增加30%召唤伤害
 
 // AAMod.Items.Armor.PerfectChaos
@@ -1353,7 +1353,7 @@ ItemName.Depthsandstone=潭渊砂岩
 ItemName.Depthstone=潭渊石
 ItemTooltip.Depthstone=潮
 
-ItemName.DiscordianTorch=混律火把
+ItemName.DiscordianTorch=冥昧火把
 
 ItemName.DjinnBox=八音盒(沙漠巨灵)
 ItemTooltip.DjinnBox=播放 'Sand Smackdown' by Frogtism
@@ -1410,7 +1410,7 @@ ItemTooltip.HaphestusForge=*拍一拍熔炉顶* 这小东西竟然可以容纳�
 ItemName.HellstoneAnvil=狱石砧
 ItemTooltip.HellstoneAnvil=这东西会着火吗？
 
-ItemName.HydraBox=八音盒(九头蛇)
+ItemName.HydraBox=八音盒(九头渊蛇)
 ItemTooltip.HydraBox=播放 'Abyssal Wrath' by Spectral Aves
 
 ItemName.Incinerite=燎烬矿
@@ -1556,7 +1556,7 @@ ItemTooltip.TechneciumBar=(破坏燎狱/潭渊祭坛后,地下洞穴层,绿色)
 
 ItemName.UraniumAnvil=铀绿砧
 
-ItemName.VoidBox=八音盒(虚空)
+ItemName.VoidBox=八音盒(浮岛虚空)
 ItemTooltip.VoidBox=播放 'What Once Was' by OmegaFerretMusic
 
 ItemName.VoidUnit=虚空机械单元
@@ -1856,7 +1856,7 @@ ItemTooltip.HydraHide=一个强大的敌人的皮肤
 ItemName.HydraPendant=海德拉挂坠
 ItemTooltip.HydraPendant=增加7%伤害
 
-ItemName.HydraTrophy=海德拉纪念章
+ItemName.HydraTrophy=九头渊蛇纪念章
 
 
 // AAMod.Items.Boss
@@ -2069,7 +2069,7 @@ ItemTooltip.SubzeroSlasher=挥动时有几率发射绝零一击
 // AAMod.Items.Boss.Shen
 
 ItemName.Astroid=惑星末日
-ItemTooltip.Astroid=用星体撞击地球的力量撞击敌人\n造成混律业火
+ItemTooltip.Astroid=用星体撞击地球的力量撞击敌人\n造成冥昧业火
 
 ItemName.ChaosScale=混沌神鳞
 ItemTooltip.ChaosScale=灼热的鳞片中散发着混沌之息
@@ -2080,20 +2080,20 @@ ItemTooltip.ChaosSlayer=释放混沌之刃来攻击你的敌人\n“粉碎一切
 ItemName.ChaosSlayerEX=应龙神怒
 ItemTooltip.ChaosSlayerEX=释放分裂的混沌之刃来攻击你的敌人\n混沌神杀 EX
 
-ItemName.ChaosSoul=混律之魂
+ItemName.ChaosSoul=冥昧之魂
 ItemTooltip.ChaosSoul=稳恒的浑沌，动荡与混乱的本像
 
 ItemName.DraconicRipper=神龙开膛手
 ItemTooltip.DraconicRipper=发射数发高口径子弹\n无视敌人防御\n77%几率不消耗弹药
 
 ItemName.Duality=二律背反
-ItemTooltip.Duality=古老的护身符中喷涌出混沌之力\n在结合了太阳堡垒和暗夜十字头巾效果的基础上，更加强化\n你的攻击造成混律业火\n对攻击你的敌人造成混律业火\n你免疫泰拉之火、燎狱龙炎、九头蛇毒和混律业火\n增加13%攻击力\n在混沌环境，你的攻击力增加30%\n在燎狱中，你增加10防御力\n在潭渊中，你增加50%速度\n允许冲刺，用烈焰烧毁敌人
+ItemTooltip.Duality=古老的护身符中喷涌出混沌之力\n在结合了太阳堡垒和夜十头巾效果的基础上，更加强化\n你的攻击造成冥昧业火\n对攻击你的敌人造成冥昧业火\n你免疫泰拉之火、燎狱龙炎、九头蛇毒和冥昧业火\n增加13%攻击力\n在混沌环境，你的攻击力增加30%\n在燎狱中，你增加10防御力\n在潭渊中，你增加50%速度\n允许冲刺，用烈焰烧毁敌人
 
 ItemName.FlamingTwilight=焰霞的黄昏
-ItemTooltip.FlamingTwilight=左键向你的敌人发射混律火球\n右键在光标位置处降下愤怒之火雨\n使用凝胶作为弹药\n33%几率不消耗凝胶
+ItemTooltip.FlamingTwilight=左键向你的敌人发射冥昧火球\n右键在光标位置处降下愤怒之火雨\n使用凝胶作为弹药\n33%几率不消耗凝胶
 
 ItemName.MeteorStrike=流陨神击
-ItemTooltip.MeteorStrike=向你的敌人发射一连串流星\n攻击敌人会导致更小但更具破坏性的爆炸\n击中物块会产生一个更大但伤害更小的弹道\n造成混律业火
+ItemTooltip.MeteorStrike=向你的敌人发射一连串流星\n攻击敌人会导致更小但更具破坏性的爆炸\n击中物块会产生一个更大但伤害更小的弹道\n造成冥昧业火
 
 ItemName.ShenATrophy=觉醒应龙纪念章
 
@@ -2175,7 +2175,7 @@ ItemTooltip.HydraStabber=极其快和危险\n造成蚀月
 ItemName.MidnightWrath=子夜之怒
 ItemTooltip.MidnightWrath=无消耗
 
-ItemName.Naitokurosu=暗夜十字头巾
+ItemName.Naitokurosu=夜十头巾
 ItemTooltip.Naitokurosu=给予你一个真正的大师级忍者的能力\n让你快速冲刺\n你的移动速度变成2倍并且你的远程攻击和召唤物对敌人造成中毒\n晚上，你的移动速度变成3倍并且你的远程攻击和召唤物对敌人造成蚀月
 
 ItemName.Sevenshot=九头蛇七发枪
@@ -2186,7 +2186,7 @@ ItemName.ThrowingCrescent=新月投刃
 ItemName.Toxibomb=潭渊深毒爆弹
 ItemTooltip.Toxibomb=发射爆炸性精神炸弹
 
-ItemName.YamataATrophy=觉醒九头蛇之八歧大蛇纪念章
+ItemName.YamataATrophy=觉醒之八歧大蛇纪念章
 
 ItemName.YamataBag=宝藏袋
 ItemTooltip.YamataBag={$CommonItemTooltip.RightClickToOpen}
@@ -2285,7 +2285,7 @@ ItemName.CursedSkull=诅咒头骨
 ItemTooltip.CursedSkull=召唤骷髅王\n只能在晚上使用
 
 ItemName.CyberneticBell=电子控制铃
-ItemTooltip.CyberneticBell=一个精心装饰的铃铛\n召唤突袭者-创世哺育之母\n只能在晚上使用
+ItemTooltip.CyberneticBell=一个精心装饰的铃铛\n召唤侵入者-创世哺育之母\n只能在晚上使用
 
 ItemName.CyberneticClaw=电子控制爪
 ItemTooltip.CyberneticClaw=召唤捕猎者-电子猎犬爪\n只能在晚上使用
@@ -2293,10 +2293,10 @@ ItemTooltip.CyberneticClaw=召唤捕猎者-电子猎犬爪\n只能在晚上使�
 ItemName.CyberneticShroom=电子控制松露
 ItemTooltip.CyberneticShroom=召唤电子松露\n只能在晚上使用
 
-ItemName.ChaosRune=混律符文
+ItemName.ChaosRune=冥昧符文
 ItemTooltip.ChaosRune=一块充满混沌能量的诅咒图版\n召唤觉醒之上神应龙\n无消耗
 
-ItemName.ChaosSigil=混律印迹
+ItemName.ChaosSigil=冥昧印迹
 ItemTooltip.ChaosSigil=一块充满混沌能量的诅咒图版\n召唤混沌之皇-上神应龙\n无消耗
 
 ItemName.DiamondCarrot=十克拉钻石胡萝卜
@@ -2330,7 +2330,7 @@ ItemName.GoldenCarrot=十克拉胡罗卜
 ItemTooltip.GoldenCarrot=召唤一个凶猛的惩罚者
 
 ItemName.HydraChow=九头蛇果粮
-ItemTooltip.HydraChow=拿着这个就会让你捂着嘴\n召唤九头蛇\n只能在晚上使用
+ItemTooltip.HydraChow=拿着这个就会让你捂着嘴\n召唤九头渊蛇\n只能在晚上使用
 
 ItemName.InterestingClaw=有趣的爪子
 ItemTooltip.InterestingClaw=奇怪的湿冷\n只能在晚上使用
@@ -2339,7 +2339,7 @@ ItemName.IntimidatingMushroom=惊悚的蘑菇
 ItemTooltip.IntimidatingMushroom=召唤赤孢皇\n只能在白天红色蘑菇地使用
 
 ItemName.Lifescanner=生命扫描仪
-ItemTooltip.Lifescanner=召唤射手座-虚空人马\n只能在虚空使用
+ItemTooltip.Lifescanner=召唤射手座-虚空人马\n只能在浮岛虚空使用
 
 ItemName.PlanteraFlower=丛林兰
 ItemTooltip.PlanteraFlower=召唤世纪之花\n只能在丛林地下召唤
@@ -2348,7 +2348,7 @@ ItemName.PlatinumCarrot=十克拉胡罗卜
 ItemTooltip.PlatinumCarrot=召唤一个凶猛的惩罚者
 
 ItemName.ScrapHeap=电子垃圾堆
-ItemTooltip.ScrapHeap=一大堆金属垃圾\n召唤双头狗-俄耳托斯电子X型\n只能在晚上使用
+ItemTooltip.ScrapHeap=一大堆金属垃圾\n召唤食腐者-双头狗俄耳托斯电子X型\n只能在晚上使用
 
 ItemName.SubzeroCrystal=绝零水晶
 ItemTooltip.SubzeroCrystal=召唤绝零冰蛇\n只能在晚上使用
@@ -2839,7 +2839,7 @@ ItemName.DesertMana=沙漠魔力
 ItemName.DevilSilk=恶魔丝绸
 ItemTooltip.DevilSilk=自然的罪恶; 感觉不错，但不能长久保存
 
-ItemName.Discordium=混律锭
+ItemName.Discordium=冥昧锭
 ItemTooltip.Discordium=世间的混沌之力在此锭中融合，充满强大的能量
 
 ItemName.Doomite=厄劫锭
@@ -3078,7 +3078,7 @@ ItemTooltip.Depthwalker=与九头蛇同行
 
 ItemName.DesertScimitar=沙漠弯刀
 
-ItemName.Discord=混律
+ItemName.Discord=冥昧
 ItemTooltip.Discord=一把略带混沌的剑
 
 ItemName.DiversDoom=暗锑剑
@@ -3390,7 +3390,7 @@ ItemName.TheBigOne=大.药.瓶
 // AAMod.Items.Ranged.Ammo
 
 
-ItemName.ChaosArrow=混沌箭
+ItemName.ChaosArrow=冥昧箭
 ItemTooltip.ChaosArrow=攻击造成随机选择debuff
 
 ItemName.DarkmatterArrow=暗物质箭
@@ -3690,10 +3690,10 @@ ItemName.AbyssalArc=潭渊回旋弧
 ItemName.BurningGel=灼烧胶球
 ItemTooltip.BurningGel=点燃目标
 
-ItemName.ChaosJavelin=混沌标枪
+ItemName.ChaosJavelin=冥昧标枪
 ItemTooltip.ChaosJavelin=接触时爆炸
 
-ItemName.ChaosJavelinEX=真·混沌标枪
+ItemName.ChaosJavelinEX=真·冥昧标枪
 ItemTooltip.ChaosJavelinEX=接触时爆炸\n混沌标枪 EX
 
 ItemName.DarkmatterChakram=暗物质旋刃
@@ -4458,7 +4458,7 @@ NPCName.HydraClawM=九头蛇之爪
 
 // AAMod.NPCs.Bosses.Hydra
 
-NPCName.Hydra=九头蛇-海德拉
+NPCName.Hydra=九头渊蛇
 NPCName.HydraHead1=潭渊蛇头
 NPCName.HydraHead2=潭渊蛇头
 NPCName.HydraHead3=潭渊蛇头
@@ -4482,11 +4482,11 @@ NPCName.RedMushling=红孢精
 
 // AAMod.NPCs.Bosses.Orthrus
 
-NPCName.Orthrus=双头狗-俄耳托斯X型
+NPCName.Orthrus=食腐者-双头狗俄耳托斯X型
 
-NPCName.OrthrusHead1=双头狗-俄耳托斯电子头(蓝)
+NPCName.OrthrusHead1=双头狗俄耳托斯电子头(蓝)
 
-NPCName.OrthrusHead2=双头狗-俄耳托斯电子头(红)
+NPCName.OrthrusHead2=双头狗俄耳托斯电子头(红)
 
 NPCName.OrthrusLock=目标锁定
 
@@ -4496,7 +4496,7 @@ NPCName.OrthrusLock=目标锁定
 
 NPCName.RaidEgg=侵入之卵
 
-NPCName.Raider=突袭者-创世哺育之母
+NPCName.Raider=侵入者-创世哺育之母
 
 NPCName.Raidmini=小侵入者
 
@@ -4575,11 +4575,11 @@ NPCName.WrathHaruka=觉醒潭渊妖女 怨惧之八歧遥香
 
 NPCName.WrathHarukaVanish=觉醒潭渊妖女 怨惧之八歧遥香
 
-NPCName.ShenDoragon=上神应龙 混沌末日的预言者
+NPCName.ShenDoragon=上神应龙 冥昧末日的预言者
 
 NPCName.ShenA=觉醒之上神应龙 永劫混沌的化身
 
-NPCName.ShenSpawn=混沌之息
+NPCName.ShenSpawn=冥昧之息
 
 NPCName.ShenTransition=觉醒之混沌
 
@@ -4708,7 +4708,7 @@ NPCName.TeslaHand=损坏的机械臂
 
 NPCName.VoidStar=星体虚无械
 
-NPCName.Zero=零械单元-预言末日的使者
+NPCName.Zero=零械单元 预言末日的使者
 
 NPCName.ZeroDeactivated=奇异机械
 
@@ -5047,7 +5047,7 @@ MapObject.DaybreakIncineriteOre=炙曦矿石
 
 MapObject.DevStatue=雕像
 
-MapObject.DiscordiumOre=混律矿
+MapObject.DiscordiumOre=冥昧矿
 
 MapObject.DjinnBox=八音盒
 
