@@ -6,31 +6,35 @@ using System.Collections.Generic;
 
 namespace AAMod.Items.Dev
 {
-    public class Demise : BaseAAItem
+    public class DemiseEX : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Demise");
-			Tooltip.SetDefault(@"A legendary sword that was once wielded by the demon king
- Left Click to unleash destructive demonic energy
-Right Click to unleash demon blades that fall from the sky");
+			DisplayName.SetDefault("Catastrophe");
+			Tooltip.SetDefault(@"An almighty greatblade that was once wielded by the demon lord
+Left Click to unleash destructive demonic energy
+Right Click to unleash catastrophic blades that fall from the sky
+True Melee Strikes have a chance to instantly devour an enemy’s soul
+Demise EX");
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 70;
+			item.damage = 350;
 			item.melee = true;
 			item.width = 58;
 			item.height = 58;
-			item.useTime = 30;
-			item.useAnimation = 30;
+			item.useTime = 20;
+			item.useAnimation = 20;
 			item.useStyle = 1;
 			item.knockBack = 5;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 9;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-			item.shoot = mod.ProjectileType("DemiseSphere");
-            item.shootSpeed = 9f;
+			item.shoot = mod.ProjectileType("DemiseSphereEX");
+            item.shootSpeed = 13f;
+            item.expert = true;
+            item.expertOnly = true;
 		}
 
         public override bool AltFunctionUse(Player player)
@@ -40,20 +44,19 @@ Right Click to unleash demon blades that fall from the sky");
 
         public override bool CanUseItem(Player player)
         {
-
             if (player.altFunctionUse == 2)
             {
                 Item.staff[item.type] = false;
                 item.useStyle = 1;
                 item.noMelee = false;
-                item.shoot = mod.ProjectileType("DemiseBlade");
+                item.shoot = mod.ProjectileType("DemiseBladeEX");
             }
             else
             {
                 Item.staff[item.type] = true;
                 item.useStyle = 5;
                 item.noMelee = true;
-                item.shoot = mod.ProjectileType("DemiseSphere");
+                item.shoot = mod.ProjectileType("DemiseSphereEX");
             }
             return base.CanUseItem(player);
         }
@@ -83,29 +86,39 @@ Right Click to unleash demon blades that fall from the sky");
                     float num83 = vector13.Y;
                     float speedX5 = num82;
                     float speedY6 = num83 + Main.rand.Next(-40, 41) * 0.02f;
-                    Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType("DemiseBlade"), damage * 3 / 2, knockBack, Main.myPlayer);
+                    Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType("DemiseBladeEX"), damage * 3 / 2, knockBack, Main.myPlayer);
                 }
             }
             else
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DemiseSphere"), damage, knockBack, player.whoAmI);
+                    int p = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DemiseSphereEX"), damage, knockBack, player.whoAmI);
+                    Main.projectile[p].Center = player.Center;
                 }
             }
             return false;
         }
 
-        public override void ModifyTooltips(List<TooltipLine> list)
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            foreach (TooltipLine line2 in list)
+            if (Main.rand.Next(20) == 0)
             {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = new Color(77, 20, 102);
-                }
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("The struck enemy's soul bursts", new Color(77, 20, 102));
+                target.life = 0;
+                int p = Projectile.NewProjectile((int)target.Center.X, (int)target.Center.Y, 0, 0, mod.ProjectileType<Projectiles.DemiseBlast>(), item.damage, item.knockBack, Main.myPlayer);
+                Main.projectile[p].Center = target.Center;
             }
         }
-	}
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Demise");
+            recipe.AddIngredient(null, "EXSoul");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
+    }
 }

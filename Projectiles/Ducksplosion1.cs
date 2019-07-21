@@ -1,23 +1,24 @@
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Projectiles.Zero
+namespace AAMod.Projectiles
 {
-    public class GBoom2 : ModProjectile
+    public class Ducksplosion1 : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("b00m");     
-            Main.projFrames[projectile.type] = 7;     
+            DisplayName.SetDefault("Dayfire");     
+            Main.projFrames[projectile.type] = 5;     
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 98;
-            projectile.height = 98;
+            projectile.width = 176;
+            projectile.height = 230;
             projectile.penetrate = -1;
-            projectile.friendly = true;
-            projectile.hostile = false;
+            projectile.friendly = false;
+            projectile.hostile = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
@@ -25,10 +26,10 @@ namespace AAMod.Projectiles.Zero
 
         public override void AI()
         {
-            if (++projectile.frameCounter >= 5)
+            if (++projectile.frameCounter >= 9)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 6)
+                if (++projectile.frame >= 5)
                 {
                     projectile.Kill();
 
@@ -36,6 +37,14 @@ namespace AAMod.Projectiles.Zero
             }
             projectile.velocity.X *= 0.00f;
             projectile.velocity.Y *= 0.00f;
+
         }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            target.AddBuff(mod.BuffType<Buffs.Electrified>(), 200);
+        }
+
+
     }
 }

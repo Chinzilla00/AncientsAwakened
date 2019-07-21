@@ -1,13 +1,14 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Projectiles.Zero
+namespace AAMod.Projectiles
 {
-    public class GBoom2 : ModProjectile
+    public class DemiseBoom : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("b00m");     
+            DisplayName.SetDefault("Demise Explosion");     
             Main.projFrames[projectile.type] = 7;     
         }
 
@@ -21,17 +22,19 @@ namespace AAMod.Projectiles.Zero
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 3;
+            projectile.melee = true;
         }
 
         public override void AI()
         {
-            if (++projectile.frameCounter >= 5)
+            if (++projectile.frameCounter >= 4)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 6)
                 {
                     projectile.Kill();
-
                 }
             }
             projectile.velocity.X *= 0.00f;
