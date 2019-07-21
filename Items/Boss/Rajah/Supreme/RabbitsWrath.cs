@@ -19,8 +19,9 @@ namespace AAMod.Items.Boss.Rajah.Supreme
             item.mana = 5;
             item.width = 32;
             item.height = 32;
-            item.useTime = 5;
-            item.useAnimation = 20;
+            item.useTime = 6;
+            item.useAnimation = 10;
+            item.reuseDelay = 10;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = .5f;

@@ -18,8 +18,8 @@ namespace AAMod.Items.Ranged
             item.height = 28;
             item.UseSound = SoundID.Item12;
             item.knockBack = 0.75f;
-            item.damage = 15;
-            item.shootSpeed = 10f;
+            item.damage = 20;
+            item.shootSpeed = 25f;
             item.noMelee = true;
             item.scale = 0.8f;
             item.rare = 1;
