@@ -323,7 +323,7 @@ namespace AAMod
                         case "downedBroodN":
                         return "喜欢龙吗？ 不？ 那可不好。 想要更好的装备？ 你得去杀死这条熔岩 “巨”龙。 她又大又吓人, 太太太太太太太胖了飞不高, 但她还是会飞。 ";
                         case "downedHydraY":
-                        return "总算解脱了。 那只九头蛇似乎并不会退休。 至少她女儿更成熟点……嗯？ 谁？ 我以后再解释, 总之干得好。 ";
+                        return "总算解脱了。 那只九头渊蛇似乎并不会善罢甘休。 至少她女儿更成熟点……嗯？ 谁？ 我以后再解释, 总之干得好。 ";
                         case "downedHydraN":
                         return "潭渊一直是所有令人作呕的蜥蜴聚集地。 不过那有个相当大的, 三个头。 她总是很不高兴, 每次我想进她的窝, 她都想吃掉我！";
                         case "downedDjinnY":
@@ -345,7 +345,7 @@ namespace AAMod
                         case "downedOrthrusY":
                         return "我猜双头狗现在正在吃自己。 ";
                         case "downedOrthrusN":
-                        return "记得九头蛇？ 外面有一个更大的。 是个机器人。 能发闪电。 所以呃…祝你好运！";
+                        return "记得九头渊蛇？ 外面有一个更大的。 是个机器人。 能发闪电。 所以呃…祝你好运！";
                         case "downedEquinoxY":
                         return "除掉昼夜虫干得不错。 不过我可以告诉你现在好像过了一个星期。 希望我没有错过护士的预约…";
                         case "downedEquinoxN":
@@ -355,7 +355,7 @@ namespace AAMod
                         case "downedSistersY":
                         return "漂亮！你给那俩宠坏的小孩好好上了一课！那俩没看见这个！";
                         case "downedSistersN":
-                        return "还记得育母炎龙和九头蛇？ 好, 那俩有女儿。 而且她们讨厌“男 人”。 。 ！每次我去混沌生态圈的时候, 这俩都会等在那毁了我的一天！你去给她们俩点教训？ ";
+                        return "还记得育母炎龙和九头渊蛇？ 好, 那俩有女儿。 而且她们讨厌“男 人”。 。 ！每次我去混沌生态圈的时候, 这俩都会等在那毁了我的一天！你去给她们俩点教训？ ";
                         case "downedAkumaY":
                         return "邪鬼巨龙觉得他很激昂。 对我来说, 他只是过于想冷静然后失败了。 不管怎么说, 想要给你头发上倒点水, 你头上有点烧焦了。 ";
                         case "downedAkumaN":
@@ -379,7 +379,7 @@ namespace AAMod
                         case "AkumaGuideChat":
                         return "如果我是你, 我会在白天离潭渊远点. 雾大的要死, 你都看不见什么鬼东西蹲在里面. 如果我记得没错的话, 你可以带一个用龙爪做的灯笼, 就能看的清楚了. ";
                         case "YamataGuideChat":
-                        return "因为某种原因, 燎狱里的火山在晚上活动频繁. 白天就会比较安静. 如果你能用那些九头蛇的爪子做个掩护物品, 也许你能走过去？ 他们似乎不受那灰烬的影响…";
+                        return "因为某种原因, 燎狱里的火山在晚上活动频繁. 白天就会比较安静. 如果你能用那些九头蛇之爪做个掩护物品, 也许你能走过去？ 他们似乎不受那灰烬的影响…";
                         case "JungleGuideChat":
                         return "我注意到丛林的生物会掉一些奇怪的植物。 它们硬得像钉子， 也许可以用它们来打造装备。 ";
                         case "BroodMotherGuideChat":
@@ -2094,7 +2094,7 @@ namespace AAMod
                         case "CyberneticBellFalse":
                         return "铃铛在响, 什么也没发生. ";
                         case "CyberneticBellTrue":
-                        return "突袭者听到了铃声, 即将开始杀戮. ";
+                        return "侵入者听到了铃声, 即将开始杀戮. ";
                         case "CyberneticClawFalse":
                         return "爪子在你手中无力的伸开. ";
                         case "CyberneticClawTrue":
@@ -2389,11 +2389,183 @@ namespace AAMod
                 }
             return"";
         }
-        public static string ItemsInfo(String Items)
+        public static string BossCheck(String Boss)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
-                    switch(Items)
+                    switch(Boss)
+                    {
+                        case "Usean":
+                        return "使用";
+                        case "Usea":
+                        return "使用";
+                        case "Usethe":
+                        return "使用";
+                        case "or":
+                        return "或者";
+                        case "atnight":
+                        return "在晚上召唤";
+                        case "MushroomMonarch":
+                        return "赤孢皇";
+                        case "MushroomMonarchInfo":
+                        return "在白天或者地表蘑菇地召唤";
+                        case "FeudalFungus":
+                        return "真菌帝";
+                        case "FeudalFungusInfo":
+                        return "在荧光蘑菇地或者在晚上召唤";
+                        case "GripsofChaos":
+                        return "混沌双爪";
+                        case "Broodmother":
+                        return "育母炎龙";
+                        case "BroodmotherInfo":
+                        return "白天期间在燎狱召唤\n或者破坏火山下3个龙蛋";
+                        case "Hydra":
+                        return "九头渊蛇";
+                        case "HydraInfo":
+                        return "夜晚在潭渊召唤\n或者破坏潭渊下3个蒴荚";
+                        case "SubzeroSerpent":
+                        return "绝零冰蛇";
+                        case "SubzeroSerpentInfo":
+                        return "在夜晚雪地召唤";
+                        case "DesertDjinn":
+                        return "沙漠巨灵";
+                        case "DesertDjinnInfo":
+                        return "白天在沙漠召唤";
+                        case "Sagittarius":
+                        return "射手座-虚空人马";
+                        case "SagittariusInfo":
+                        return "在虚空浮岛召唤";
+                        case "TruffleToad":
+                        return "松露蟾蜍";
+                        case "TruffleToadInfo":
+                        return "在荧光蘑菇环境召唤";
+                        case "Retriever":
+                        return "捕猎者-电子猎犬爪";
+                        case "TechnoTruffle":
+                        return "电子化-机械松露怪";
+                        case "RaiderUltima":
+                        return "侵入者-创世哺育之母";
+                        case "OrthrusX":
+                        return "食腐者-双头狗俄耳托斯X型";
+                        case "RajahRabbit":
+                        return "忍者巨兔";
+                        case "RajahRabbitInfo":
+                        return "或者像一个无耻混蛋一样杀100只兔子";
+                        case "NightcrawlerDaybringer":
+                        return "昼夜双虫";
+                        case "SistersofDiscord":
+                        return "混沌姐妹";
+                        case "Yamata":
+                        return "远古之八歧大蛇";
+                        case "YamataInfo":
+                        return "在夜晚潭渊召唤";
+                        case "Akuma":
+                        return "远古之邪鬼巨龙";
+                        case "AkumaInfo":
+                        return "在白天燎狱召唤";
+                        case "Zero":
+                        return "零械单元";
+                        case "ZeroInfo":
+                        return "在浮岛虚空召唤";
+                        case "ShenDoragon":
+                        return "上神应龙";
+                        case "RajahRabbitRevenge":
+                        return "至尊忍者巨兔";
+                        case "RajahRabbitRevengeInfo":
+                        return "或者总计杀死1000只兔子后，每杀死100只兔子";
+                    }
+                }
+            else
+                {
+                    switch(Boss)
+                    {
+                        case "Usean":
+                        return "Use an ";
+                        case "Usea":
+                        return "Use a ";
+                        case "Usethe":
+                        return "Use the ";
+                        case "or":
+                        return "or";
+                        case "atnight":
+                        return " at night";
+                        case "MushroomMonarch":
+                        return "The Mushroom Monarch";
+                        case "MushroomMonarchInfo":
+                        return " during the day in the Surface Mushroom Biome";
+                        case "FeudalFungus":
+                        return "The Feudal Fungus";
+                        case "FeudalFungusInfo":
+                        return " in a Glowing Mushroom Biome or at night";
+                        case "GripsofChaos":
+                        return "Grips of Chaos";
+                        case "Broodmother":
+                        return "The Broodmother";
+                        case "BroodmotherInfo":
+                        return " in the Inferno during the day";
+                        case "Hydra":
+                        return "Hydra";
+                        case "HydraInfo":
+                        return " in the Mire at night";
+                        case "SubzeroSerpent":
+                        return "Subzero Serpent";
+                        case "SubzeroSerpentInfo":
+                        return " in the Snow biome at night";
+                        case "DesertDjinn":
+                        return "Desert Djinn";
+                        case "DesertDjinnInfo":
+                        return " in the Desert during the day";
+                        case "Sagittarius":
+                        return "Sagittarius";
+                        case "SagittariusInfo":
+                        return " in the Void";
+                        case "TruffleToad":
+                        return "Truffle Toad";
+                        case "TruffleToadInfo":
+                        return " in a glowing mushroom biome";
+                        case "Retriever":
+                        return "Retriever";
+                        case "TechnoTruffle":
+                        return "Techno Truffle";
+                        case "RaiderUltima":
+                        return "Raider Ultima";
+                        case "OrthrusX":
+                        return "Orthrus X";
+                        case "RajahRabbit":
+                        return "Rajah Rabbit";
+                        case "RajahRabbitInfo":
+                        return " or kill 100 Rabbits like a jerk.";
+                        case "NightcrawlerDaybringer":
+                        return "Nightcrawler & Daybringer";
+                        case "SistersofDiscord":
+                        return "Sisters of Discord";
+                        case "Yamata":
+                        return "Yamata";
+                        case "YamataInfo":
+                        return " in the Mire at night";
+                        case "Akuma":
+                        return "Akuma";
+                        case "AkumaInfo":
+                        return " in the Inferno during the day";
+                        case "Zero":
+                        return "Zero";
+                        case "ZeroInfo":
+                        return " in the Void";
+                        case "ShenDoragon":
+                        return "Shen Doragon";
+                        case "RajahRabbitRevenge":
+                        return "Rajah Rabbit's Revenge";
+                        case "RajahRabbitRevengeInfo":
+                        return " or every 100 rabbit kills after 1000.";
+                    }
+                }
+            return"";
+        }
+        public static string ItemsInfo(String Itemsname)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+                {
+                    switch(Itemsname)
                     {
                         case "GoblinDollInfo":
                         return "灵魂宝石在你手中具象化";
@@ -2407,7 +2579,7 @@ namespace AAMod
                 }
             else
                 {
-                    switch(Items)
+                    switch(Itemsname)
                     {
                         case "GoblinDollInfo":
                         return "The soul stone materializes in your hand";
@@ -2586,13 +2758,13 @@ namespace AAMod
                         case "ChaosVisorBonus":
                         return "+4召唤上限\n一个虚空猎手为你而战";
                         case "PerfectChaosHoodBonus":
-                        return "“混沌赐予你力量”\n随着你的生命减少， 你的魔法伤害增加， 魔力消耗降低\n你的魔法攻击对敌人造成混律业火";
+                        return "“混沌赐予你力量”\n随着你的生命减少， 你的魔法伤害增加， 魔力消耗降低\n你的魔法攻击对敌人造成冥昧业火";
                         case "PerfectChaosKabutoBonus":
-                        return "“混沌赐予你力量”\n随着你的生命减少， 你的近战伤害和防御力增加\n你的近战攻击对敌人造成混律业火";
+                        return "“混沌赐予你力量”\n随着你的生命减少， 你的近战伤害和防御力增加\n你的近战攻击对敌人造成冥昧业火";
                         case "PerfectChaosMaskBonus":
-                        return "“混沌赐予你力量”\n随着你的生命减少， 你的召唤物伤害增加\n你的召唤物攻击对敌人造成混律业火";
+                        return "“混沌赐予你力量”\n随着你的生命减少， 你的召唤物伤害增加\n你的召唤物攻击对敌人造成冥昧业火";
                         case "PerfectChaosVisorBonus":
-                        return "“混沌赐予你力量”\n随着你的生命减少， 你的远程伤害和暴击率增加\n你的远程攻击对敌人造成混律业火";
+                        return "“混沌赐予你力量”\n随着你的生命减少， 你的远程伤害和暴击率增加\n你的远程攻击对敌人造成冥昧业火";
                         case "DarkmatterHeaddressBonus":
                         return @"增加6召唤上限
 你的召唤物会电击敌人
