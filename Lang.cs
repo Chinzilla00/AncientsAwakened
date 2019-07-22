@@ -2794,7 +2794,7 @@ namespace AAMod
                         case "DoomiteVisorBonus":
                         return "+1召唤上限\r\n一个虚空搜索者为你而战";
                         case "DoomiteUHelmBonus":
-                        return "增加2召唤上限\r\n增加召唤物击退";
+                        return "增加召唤物击退";
                         case "DoomsdayMaskBonus":
                         return "生命终结系统启动\r\n你可以探测到周围所有的敌对生物\r\n在黑暗中更容易看到\r\n你的召唤物对敌人造成一段时间的防御力削弱\r\n+5召唤上限";
                         case "DoomsdayHelmetBonus":
