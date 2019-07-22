@@ -20,7 +20,7 @@ namespace AAMod.Items.Boss.Akuma
             item.width = 34;
             item.height = 34;
             item.ranged = true;
-            item.damage = 400;
+            item.damage = 1200;
             item.shoot = mod.ProjectileType("RadiantDawn");
             item.useTime = 10;
             item.useAnimation = 10;
