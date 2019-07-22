@@ -18,7 +18,7 @@ namespace AAMod.Items.Armor.Madness
             item.value = 18000;
             item.rare = 1;
             item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
-            item.defense = 6;
+            item.defense = 4;
         }
 
         public override void AddRecipes()

@@ -20,7 +20,7 @@ namespace AAMod.Items.Armor.Madness
             item.value = 1700;
             item.rare = 1;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.defense = 4;
+            item.defense = 3;
         }
 
         public override void UpdateEquip(Player player)
