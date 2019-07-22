@@ -14,6 +14,7 @@ namespace AAMod.Items.Accessories
             item.value = Item.sellPrice(0, 8, 0, 0);
             item.rare = 4;
             item.accessory = true;
+            item.defense = 1;
         }
 
         public override void UpdateEquip(Player player)
