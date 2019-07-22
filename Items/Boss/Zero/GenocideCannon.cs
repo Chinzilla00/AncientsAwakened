@@ -10,7 +10,8 @@ namespace AAMod.Items.Boss.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Genocide Cannon");
-            Tooltip.SetDefault("Fires highly explosive Rockets");
+            Tooltip.SetDefault(@"Fires highly explosive Rockets
+25% chance to fire a glitched rocket that explodes into frag rockets");
         }
 
         public override void SetDefaults()

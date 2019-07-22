@@ -129,7 +129,7 @@ namespace AAMod
         public bool trueRaider;
         public bool trueAtlantean;
         public bool trueDynaskull;
-        public int DynaskullCooldown = 0;
+        public bool TrueDoomite;
         public bool terraSet;
         public bool chaosSet;
         public bool darkmatterSetMe;
@@ -172,7 +172,7 @@ namespace AAMod
         public bool ChaosMa = false;
         public bool ChaosSu = false;
 
-        // Accessory bools.
+        // Accessory bools
         public bool clawsOfChaos;
         public bool HydraPendant;
         public bool demonGauntlet;
@@ -388,6 +388,7 @@ namespace AAMod
             terraSet = false;
             chaosSet = false;
             DynaskullSet = false;
+            TrueDoomite = false;
             zeroSet = false;
             dracoSet = false;
             dreadSet = false;
