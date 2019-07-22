@@ -18,8 +18,7 @@ namespace AAMod.Items.Ranged
 		{
 			item.CloneDefaults(3546);
 			item.damage = 250;
-            item.reuseDelay = 30;
-            Items.useTime = 16;
+         
 
         }
 
