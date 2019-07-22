@@ -53,7 +53,7 @@ namespace AAMod.Projectiles   //The directory for your .cs and .png; Example: Tu
             if (Target != -1)
             {
                 NPC target = Main.npc[Target];
-                BaseAI.ShootPeriodic(projectile, target.position, 14, 14, mod.ProjectileType<DragonBreath>(), ref internalAI[0], 5, projectile.damage, 10, true);
+                BaseAI.ShootPeriodic(projectile, target.position, 14, 14, mod.ProjectileType<DragonBreath>(), ref internalAI[0], 5, projectile.damage, 5, true);
             }
         }
     }
