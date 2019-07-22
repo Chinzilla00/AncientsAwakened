@@ -545,13 +545,13 @@ ItemTooltip.DemonHood=增加9%召唤伤害\n+2召唤上限
 
 
 ItemName.DepthFukumen=深暗假面
-ItemTooltip.DepthFukumen=增加25%移动速度\n增加8%远程伤害\n如暗影般没有质量
+ItemTooltip.DepthFukumen=增加25%移动速度\n增加8%远程伤害\n如暗影般轻盈
 
 ItemName.DepthGi=深暗武服
-ItemTooltip.DepthGi=增加40%移动速度\n如暗影般没有质量
+ItemTooltip.DepthGi=增加40%移动速度\n如暗影般轻盈
 
 ItemName.DepthHakama=深暗袴裤
-ItemTooltip.DepthHakama=增加15%移动速度\n如暗影般没有质量
+ItemTooltip.DepthHakama=增加15%移动速度\n如暗影般轻盈
 
 
 // AAMod.Items.Armor.Dev.Alphakip
@@ -2887,7 +2887,7 @@ ItemName.IncineriteBar=燎烬锭
 ItemTooltip.IncineriteBar=小心烫伤！
 
 ItemName.M79Parts=M79部件
-ItemTooltip.IncineriteBar=(地牢愤怒的骷髅掉落)
+ItemTooltip.M79Parts=(地牢愤怒的骷髅掉落)
 
 ItemName.MadnessFragment=癫狂碎片
 
