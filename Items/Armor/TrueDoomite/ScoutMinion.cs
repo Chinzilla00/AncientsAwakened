@@ -50,22 +50,17 @@ namespace AAMod.Items.Armor.TrueDoomite
 			float num634 = 800f;
 			float num635 = 1200f;
 			float num636 = 150f;
-			bool flag64 = projectile.type == mod.ProjectileType("ScoutMinion");
 			Player player = Main.player[projectile.owner];
-			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-			player.AddBuff(mod.BuffType("ScoutMinion"), 3600);
-			if (flag64)
-			{
-				if (player.dead)
-				{
-					modPlayer.ScoutMinion = false;
-				}
-				if (modPlayer.ScoutMinion)
-				{
-					projectile.timeLeft = 2;
-				}
-			}
-			float num637 = 0.05f;
+            AAPlayer modPlayer = Main.player[projectile.owner].GetModPlayer<AAPlayer>(mod);
+            if (player.dead)
+            {
+                modPlayer.ScoutMinion = false;
+            }
+            if (modPlayer.ScoutMinion)
+            {
+                projectile.timeLeft = 2;
+            }
+            float num637 = 0.05f;
 			for (int num638 = 0; num638 < 1000; num638++)
 			{
 				bool flag23 = Main.projectile[num638].type == mod.ProjectileType("ScoutMinion");

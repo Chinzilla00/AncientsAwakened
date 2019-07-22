@@ -33,20 +33,15 @@ namespace AAMod.Items.Armor.Doomite
 
         public override void AI()
         {
-            bool flag64 = projectile.type == mod.ProjectileType("Searcher");
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            player.AddBuff(mod.BuffType("Searcher"), 3600);
-            if (flag64)
+            if (player.dead)
             {
-                if (player.dead)
-                {
-                    modPlayer.Searcher = false;
-                }
-                if (modPlayer.Searcher)
-                {
-                    projectile.timeLeft = 2;
-                }
+                modPlayer.Searcher = false;
+            }
+            if (modPlayer.Searcher)
+            {
+                projectile.timeLeft = 2;
             }
 
             float num633 = 700f;

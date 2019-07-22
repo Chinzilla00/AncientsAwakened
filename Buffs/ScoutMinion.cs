@@ -20,7 +20,7 @@ namespace AAMod.Buffs
 			{
 				modPlayer.ScoutMinion = true;
 			}
-			if (!modPlayer.ScoutMinion)
+			if (!modPlayer.TrueDoomite)
 			{
 				player.DelBuff(buffIndex);
 				buffIndex--;

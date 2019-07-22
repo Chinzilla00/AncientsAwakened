@@ -114,7 +114,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(projectile.ai[0] == 1 ? mod.BuffType("DiscordInferno") : projectile.ai[0] == 2 ? mod.BuffType("HydraToxin") : mod.BuffType("DiscordInferno"), 200);
+            target.AddBuff(projectile.ai[0] == 1 ? mod.BuffType("DragonFire") : projectile.ai[0] == 2 ? mod.BuffType("HydraToxin") : mod.BuffType("DiscordInferno"), 200);
         }
     }
 }
