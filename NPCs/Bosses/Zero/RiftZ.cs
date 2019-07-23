@@ -18,6 +18,7 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.alpha = 255;
+            projectile.alpha = 80;
             projectile.tileCollide = false;
         }
 
@@ -29,15 +30,6 @@ namespace AAMod.NPCs.Bosses.Zero
 
 
             RingRotation += 0.03f;
-
-            if (projectile.alpha > 80)
-            {
-                projectile.alpha -= 10;
-            }
-            else
-            {
-                projectile.alpha = 80;
-            }
 
             projectile.scale = projectile.penetrate / 20;
 
