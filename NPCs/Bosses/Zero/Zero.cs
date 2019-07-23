@@ -72,6 +72,19 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
+            if (npc.life <= (int)(npc.lifeMax * .66f) && !RespawnArms1 && Main.netMode != 1)
+            {
+                RespawnArms1 = true;
+                RespawnArms();
+                npc.netUpdate = true;
+            }
+            if (npc.life <= (int)(npc.lifeMax * .33f) && !RespawnArms2 && Main.netMode != 1)
+            {
+                RespawnArms2 = true;
+                RespawnArms();
+                npc.netUpdate = true;
+            }
+
             if (npc.life <= 0 && npc.type == mod.NPCType<Zero>())
             {
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore1"), 1f);
@@ -100,6 +113,18 @@ namespace AAMod.NPCs.Bosses.Zero
                     if (Main.netMode != 1) BaseUtility.Chat("D00MSDAY PR0T0CALL MALFUNCTI0N. MAIN.EXPERT M0DE = FALSE.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
+        }
+        
+        public void RespawnArms()
+        {
+            if (Main.netMode != 1)
+            {
+                internalAI[2] = 0;
+                internalAI[3] = 0;
+                killArms = true;
+                npc.netUpdate = true;
+            }
+            if (Main.netMode != 1) BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
         }
 
         public override void NPCLoot()
@@ -184,7 +209,6 @@ namespace AAMod.NPCs.Bosses.Zero
         }
 
         public int MinionTimer = 0;
-        public bool AnyArms = false;
         public float Distance = 0;
         public bool killArms = false;
         public float[] internalAI = new float[5];
@@ -200,7 +224,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 writer.Write(internalAI[3]);
                 writer.Write(internalAI[4]);
                 writer.Write(Distance);
-                writer.Write(AnyArms);
                 writer.Write(killArms);
             }
         }
@@ -216,7 +239,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 internalAI[3] = reader.ReadFloat();
                 internalAI[4] = reader.ReadFloat();
                 Distance = reader.ReadFloat();
-                AnyArms = reader.ReadBool();
                 killArms = reader.ReadBool();
             }
         }
@@ -226,18 +248,28 @@ namespace AAMod.NPCs.Bosses.Zero
         public float RingRoatation = 0;
         public int WeaponCount = Main.expertMode ? 6 : 4;
 
+        bool RespawnArms1;
+        bool RespawnArms2;
+
         public override void AI()
         {
             npc.TargetClosest();
 
-            AnyArms = NPC.AnyNPCs(mod.NPCType<VoidStar>()) ||
+            if (NPC.AnyNPCs(mod.NPCType<VoidStar>()) ||
                 NPC.AnyNPCs(mod.NPCType<Taser>()) ||
                 NPC.AnyNPCs(mod.NPCType<RealityCannon>()) ||
                 NPC.AnyNPCs(mod.NPCType<RiftShredder>()) ||
                 NPC.AnyNPCs(mod.NPCType<Neutralizer>()) ||
                 NPC.AnyNPCs(mod.NPCType<OmegaVolley>()) ||
                 NPC.AnyNPCs(mod.NPCType<NovaFocus>()) ||
-                NPC.AnyNPCs(mod.NPCType<GenocideCannon>());
+                NPC.AnyNPCs(mod.NPCType<GenocideCannon>()))
+            {
+                npc.ai[1] = 0;
+            }
+            else
+            {
+                npc.ai[1] = 1;
+            }
 
             if (Main.netMode != 1)
             {
@@ -248,7 +280,6 @@ namespace AAMod.NPCs.Bosses.Zero
             Vector2 DeactivatedPoint = new Vector2(ZeroHandler.ZX, ZeroHandler.ZY);
 
             RingRoatation += 0.03f;
-            KillArms();
 
             if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
@@ -313,7 +344,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
 
             internalAI[3]++;
-            if (internalAI[3] < 5400 - (Main.expertMode ? 900 : 0))
+            if (npc.ai[1] == 0)
             {
                 if (Distance < 160f)
                 {
@@ -330,24 +361,10 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             else
             {
-                if (Distance > 0)
-                {
-                    Distance -= 5f;
-                }
-                else
-                {
-                    if (Main.netMode != 1)
-                    {
-                        internalAI[2] = 0;
-                        internalAI[3] = 0;
-                        killArms = true;
-                        npc.netUpdate = true;
-                    }
-                    if (Main.netMode != 1) BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
-                }
+                Distance = 0;
             }
 
-            if (AnyArms || internalAI[2] == 0)
+            if (npc.ai[1] == 0)
             {
                 npc.ai[1] = 0;
             }

@@ -19,6 +19,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             projectile.ignoreWater = true;
             projectile.penetrate = 6;
             projectile.extraUpdates = 2;
+            projectile.alpha = 255;
         }
 
         public override void AI()

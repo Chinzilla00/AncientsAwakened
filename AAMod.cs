@@ -576,6 +576,12 @@ namespace AAMod
 
             if (Ancients.ZoneInferno)
             {
+                if (player.ZoneRockLayerHeight)
+                {
+                    priority = MusicPriority.BiomeHigh;
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoUnderground");
+                    return;
+                }
                 if (!Main.dayTime)
                 {
                     priority = MusicPriority.BiomeHigh;
@@ -590,13 +596,6 @@ namespace AAMod
                     return;
                 }
 
-                if (player.ZoneRockLayerHeight)
-                {
-                    priority = MusicPriority.BiomeMedium;
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoUnderground");
-
-                    return;
-                }
                 else
                 {
                     priority = MusicPriority.BiomeHigh;
@@ -617,7 +616,7 @@ namespace AAMod
 
                 if (player.ZoneRockLayerHeight)
                 {
-                    priority = MusicPriority.BiomeMedium;
+                    priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireUnderground");
 
                     return;

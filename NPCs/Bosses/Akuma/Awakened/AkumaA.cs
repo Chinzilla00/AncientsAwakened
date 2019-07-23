@@ -443,7 +443,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 }
                 if (npc.ai[2] == 320 || npc.ai[2] == 340 || npc.ai[2] == 360 || npc.ai[2] == 380)
                 {
-                    int Fireballs = Main.expertMode ? 10 : 7;
+                    int Fireballs = Main.expertMode ? 20 : 14;
                     for (int Loops = 0; Loops < Fireballs; Loops++)
                     {
                         AkumaAttacks.Dragonfire(npc, mod, true);
@@ -477,7 +477,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             if (internalAI[1] == 3 || internalAI[1] == 8 || internalAI[1] == 11 || internalAI[1] == 17 || internalAI[1] == 23)
             {
-                int Fireballs = Main.expertMode ? 12 : 14;
+                int Fireballs = Main.expertMode ? 20 : 15;
                 if (!QuoteSaid)
                 {
                     if (Main.netMode != 1) BaseUtility.Chat((!Quote1) ? "Heads up! Volcano's eruptin' kid!" : "INCOMING!", Color.DeepSkyBlue);

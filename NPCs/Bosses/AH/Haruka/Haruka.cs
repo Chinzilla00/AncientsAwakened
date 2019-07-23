@@ -619,14 +619,14 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 8f;
-            if (Vector2.Distance(npc.Center, point) > 500)
-            {
-                moveSpeed = 16;
-            }
+            float moveSpeed = 16f;
             if (internalAI[0] == AISTATE_SPIN)
             {
                 moveSpeed = 20f;
+            }
+            if (Vector2.Distance(npc.Center, point) > 500)
+            {
+                moveSpeed = 25f;
             }
             if (internalAI[0] == AISTATE_SLASH)
             {

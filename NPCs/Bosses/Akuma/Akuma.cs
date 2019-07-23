@@ -429,7 +429,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 if (internalAI[0] == 320 || internalAI[0] == 340 || internalAI[0] == 360 || internalAI[0] == 380)
                 {
-                    int Fireballs = Main.expertMode ? 5 : 4;
+                    int Fireballs = Main.expertMode ? 10 : 8;
                     for (int Loops = 0; Loops < Fireballs; Loops++)
                     {
                         AkumaAttacks.Dragonfire(npc, mod, false);
@@ -477,7 +477,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 if (internalAI[0] == 350)
                 {
-                    int Fireballs = Main.expertMode ? 3 : 5;
+                    int Fireballs = Main.expertMode ? 6 : 10;
                     float spread = 70f * 0.0174f;
                     float baseSpeed = (float)Math.Sqrt((npc.velocity.X * npc.velocity.X) + (npc.velocity.Y * npc.velocity.Y));
                     double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - .1d;

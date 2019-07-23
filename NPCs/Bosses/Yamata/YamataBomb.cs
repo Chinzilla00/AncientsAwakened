@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     projectile.frame = 0;
                 }
             }
-            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
+
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
             const float desiredFlySpeedInPixelsPerFrame = 15;
@@ -79,7 +79,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         private int HomeOnTarget()
         {
             const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 500;
+            const float homingMaximumRangeInPixels = 1000;
 
             int selectedTarget = -1;
             for (int i = 0; i < Main.maxNPCs; i++)
