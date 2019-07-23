@@ -1,3 +1,4 @@
+using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -42,7 +43,7 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 200);
+            target.AddBuff(BuffID.Daybreak, 200);
         }
 
         public override void Kill(int timeLeft)

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Terraria.ID;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ModLoader;
@@ -63,12 +64,10 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
                 Main.dust[num190].noGravity = true;
             }
         }
-
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType("DragonFire"), 600);
+            target.AddBuff(BuffID.Daybreak, 200);
         }
-
 
         public override bool PreDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color lightColor)
         {
