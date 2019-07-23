@@ -17,7 +17,7 @@ namespace AAMod
         public static void HandlePacket(BinaryReader bb, int whoAmI)
         {
 			byte msg = bb.ReadByte();		
-			if(DEBUG) ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- " ) + "HANDING MESSAGE: " + msg);				
+			if(DEBUG) AAMod.instance.Logger.Info((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- " ) + "HANDING MESSAGE: " + msg);				
 			try
 			{
 				if(msg == SummonNPCFromClient)
@@ -44,7 +44,14 @@ namespace AAMod
                     RabbitCount(bb, whoAmI);
                 }
             }
-            catch(Exception e){ ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- " ) + "ERROR HANDLING MSG: " + msg.ToString() + ": " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------"); }
+            catch(Exception e)
+            {
+                string mode = Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ";
+
+                AAMod.instance.Logger.Error($"{mode} ERROR HANDLING MSG: {msg}: {e}");
+                AAMod.instance.Logger.Info(e.StackTrace);
+                AAMod.instance.Logger.Info("-------");
+            }
 		}
 
         private static void LovecraftianCount(BinaryReader reader, int fromWho)
@@ -134,7 +141,11 @@ namespace AAMod
 
         public static void SyncPlayer(int toWho, int fromWho, bool newPlayer)
         {
-            if (DEBUG) ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ") + "SYNC PLAYER CALLED! NEWPLAYER: " + newPlayer + ". TOWHO: " + toWho + ". FROMWHO:" + fromWho);
+            if (DEBUG)
+            {
+                string mode = Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ";
+                AAMod.instance.Logger.Info($"{mode} SYNC PLAYER CALLED! NEWPLAYER: {newPlayer}. TOWHO:{toWho}. FROMWHO:{fromWho}");
+            }
             if (Main.netMode == 2 && (toWho > -1 || fromWho > -1))
             {
                 PlayerConnected(toWho == -1 ? fromWho : toWho);
@@ -143,7 +154,10 @@ namespace AAMod
 
         public static void PlayerConnected(int playerID)
         {
-            if (DEBUG) ErrorLogger.Log("--SERVER-- PLAYER JOINED!");
+            if (DEBUG)
+            {
+                AAMod.instance.Logger.Info("--SERVER-- PLAYER JOINED!");
+            }
         }
 
         public static void SendNetMessage(int msg, params object[] param)
@@ -161,14 +175,18 @@ namespace AAMod
             }
             catch (Exception e)
             {
-                ErrorLogger.Log((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ") + "ERROR SENDING MSG: " + msg.ToString() + ": " + e.Message); ErrorLogger.Log(e.StackTrace); ErrorLogger.Log("-------");
+                string mode = Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ";
+                AAMod.instance.Logger.Error($"{mode} ERROR SENDING MSG: {msg}: {e.Message}");
+                AAMod.instance.Logger.Info(e.StackTrace);
+                AAMod.instance.Logger.Info("-------");
+
                 string param2 = "";
                 for (int m = 0; m < param.Length; m++)
                 {
                     param2 += param[m];
                 }
-                ErrorLogger.Log("PARAMS: " + param2);
-                ErrorLogger.Log("-------");
+                AAMod.instance.Logger.Info("PARAMS: " + param2);
+                AAMod.instance.Logger.Info("-------");
             }
         }
     }

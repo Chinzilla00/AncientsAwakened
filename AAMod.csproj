@@ -4,7 +4,7 @@
   <PropertyGroup>
     <AssemblyName>AAMod</AssemblyName>
     <TargetFramework>net45</TargetFramework>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <Target Name="BuildMod" AfterTargets="Build">

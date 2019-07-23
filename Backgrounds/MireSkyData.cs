@@ -5,8 +5,6 @@ namespace AAMod.Backgrounds
 {
     public class MireSkyData : ScreenShaderData
     {
-        private int DataIndex;
-
         public MireSkyData(string passName) : base(passName)
         {
         }
@@ -18,7 +16,6 @@ namespace AAMod.Backgrounds
             {
                 return;
             }
-            DataIndex = -1;
         }
 
         public override void Apply()

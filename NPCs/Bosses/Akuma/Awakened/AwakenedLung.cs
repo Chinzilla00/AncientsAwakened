@@ -46,14 +46,11 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.buffImmune[103] = false;
             npc.alpha = 255;
         }
-        private int speed = 8;
 
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
-
-            
-            
+       
             AAAI.DustOnNPCSpawn(npc, mod.DustType("AkumaADust"), 2, 12);
 
             npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;

@@ -162,9 +162,9 @@ namespace AAMod.NPCs.Bosses.Zero
                 };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
-                npc.DropLoot(Items.Vanity.Mask.ZeroMask.type, 1f / 7);
-                npc.DropLoot(Items.Boss.Zero.ZeroTrophy.type, 1f / 10);
-                npc.DropLoot(Items.Boss.EXSoul.type, 1f / 10);
+                npc.DropLoot(mod.ItemType<Items.Vanity.Mask.ZeroMask>(), 1f / 7);
+                npc.DropLoot(mod.ItemType<Items.Boss.Zero.ZeroTrophy>(), 1f / 10);
+                npc.DropLoot(mod.ItemType<Items.Boss.EXSoul>(), 1f / 10);
                 if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
