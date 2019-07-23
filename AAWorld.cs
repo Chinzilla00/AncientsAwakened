@@ -235,7 +235,7 @@ namespace AAMod
             }
             catch (Exception e)
             {
-                ErrorLogger.Log(e.ToString() + "\n" + i + " " + j);
+                AAMod.instance.Logger.Error($"{e} \n{i}, {j}");
             }
             return valid;
         }

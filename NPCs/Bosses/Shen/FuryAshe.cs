@@ -14,6 +14,7 @@ namespace AAMod.NPCs.Bosses.Shen
     [AutoloadBossHead]
     public class FuryAshe : ModNPC
     {
+        private float moveSpeed = 15f;
 
         public override void SetStaticDefaults()
         {
@@ -541,11 +542,8 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.boss = false;
         }
 
-        private float moveSpeed = 15f;
-
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 16f;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
             float length = dist == Vector2.Zero ? 0f : dist.Length();

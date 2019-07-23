@@ -5,8 +5,6 @@ namespace AAMod.Backgrounds
 {
     public class VoidSkyData : ScreenShaderData
     {
-        private int DataIndex;
-
         public VoidSkyData(string passName) : base(passName)
         {
         }
@@ -18,7 +16,6 @@ namespace AAMod.Backgrounds
             {
                 return;
             }
-            DataIndex = -1;
         }
 
         public override void Apply()

@@ -49,14 +49,12 @@ namespace AAMod.NPCs.Enemies.Void
             }
         }
 
-        float shootAI = 0;
         public override void AI()
         {
             BaseAI.AIEater(npc, ref npc.ai, .022f, 4, .6f, false, true);
             Player player = Main.player[npc.target];
             bool playerActive = player != null && player.active && !player.dead;
-            BaseAI.LookAt(playerActive ? player.Center : (npc.Center + npc.velocity), npc, 0);
-            
+            BaseAI.LookAt(playerActive ? player.Center : (npc.Center + npc.velocity), npc, 0);         
         }
 
         public override void NPCLoot()

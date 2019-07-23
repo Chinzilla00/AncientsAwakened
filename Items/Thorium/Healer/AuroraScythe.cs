@@ -49,12 +49,12 @@ Grants 1 soul essence on direct hit");
 			return true;
 		}
 
-		public override void GetWeaponDamage(Player player, ref int damage)
-		{
-			damage = (int)(damage * ((ModSupportPlayer)player.GetModPlayer(mod, "ModSupportPlayer")).Thorium_radiantBoost);
-		}
+        public override void ModifyWeaponDamage(Player player, ref float add, ref float mult)
+        {
+            mult *= ((ModSupportPlayer)player.GetModPlayer(mod, "ModSupportPlayer")).Thorium_radiantBoost;
+        }
 
-		public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
+        public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
 		{
 			if (Main.rand.Next(100) <= ((ModSupportPlayer)player.GetModPlayer(mod, "ModSupportPlayer")).Thorium_radiantCrit)
 			{
@@ -83,8 +83,10 @@ Grants 1 soul essence on direct hit");
             string[] split = oldTooltip.Split(' '); 
             list.RemoveAt(index);
             list.Insert(index, new TooltipLine(mod, "Damage", split[0] + " radiant damage"));
-            TooltipLine colorLine = new TooltipLine(mod, "Healer", "-Healer Class-");
-			colorLine.overrideColor = new Color(255, 255, 91);
+            TooltipLine colorLine = new TooltipLine(mod, "Healer", "-Healer Class-")
+            {
+                overrideColor = new Color(255, 255, 91)
+            };
             list.Insert(index2, colorLine);
 			base.ModifyTooltips(list);
         }

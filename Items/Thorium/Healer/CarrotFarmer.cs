@@ -47,12 +47,12 @@ Grants 1 soul essence on direct hit");
 			return true;
 		}
 
-		public override void GetWeaponDamage(Player player, ref int damage)
-		{
-			damage = (int)(damage * ((ModSupportPlayer)player.GetModPlayer(mod, "ModSupportPlayer")).Thorium_radiantBoost);
-		}
+        public override void ModifyWeaponDamage(Player player, ref float add, ref float mult)
+        {
+            mult *= ((ModSupportPlayer)player.GetModPlayer(mod, "ModSupportPlayer")).Thorium_radiantBoost;
+        }
 
-		public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
+        public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
 		{
 			if (Main.rand.Next(100) <= ((ModSupportPlayer)player.GetModPlayer(mod, "ModSupportPlayer")).Thorium_radiantCrit)
 			{

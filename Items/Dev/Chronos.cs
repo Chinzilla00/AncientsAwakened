@@ -24,10 +24,10 @@ namespace AAMod.Items.Dev
             item.expert = true; item.expertOnly = true;
         }
 
-		public override void GetWeaponDamage(Player player, ref int damage)
-		{
-			damage = (int)(damage * CalcDamageMultiplierFromTimeOfDay(item.damage));
-		}
+        public override void ModifyWeaponDamage(Player player, ref float add, ref float mult)
+        {
+            mult *= CalcDamageMultiplierFromTimeOfDay(item.damage);
+        }
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
