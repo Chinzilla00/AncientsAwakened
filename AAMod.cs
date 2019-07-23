@@ -576,6 +576,12 @@ namespace AAMod
 
             if (Ancients.ZoneInferno)
             {
+                if (!Main.dayTime)
+                {
+                    priority = MusicPriority.BiomeHigh;
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/IN");
+                    return;
+                }
                 if (Ancients.ZoneRisingSunPagoda && NPC.downedMoonlord && !AAWorld.downedAkuma)
                 {
                     priority = MusicPriority.BiomeHigh;
