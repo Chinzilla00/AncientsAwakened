@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Akuma.Dawnstrike
 {
-    public class FireshotA : ModProjectile
+    public class FireshotF : ModProjectile
     {
         public override void SetStaticDefaults()
         {
