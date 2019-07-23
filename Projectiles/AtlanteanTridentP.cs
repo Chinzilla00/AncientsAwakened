@@ -5,8 +5,9 @@ using Terraria.ModLoader;
 namespace AAMod.Projectiles
 {
     public class AtlanteanTridentP : ModProjectile
-	{
-		public override void SetDefaults()
+    {
+        public override string Texture => "AAMod/BlankTex";
+        public override void SetDefaults()
 		{
 			projectile.CloneDefaults(14);
 			projectile.penetrate = 1;

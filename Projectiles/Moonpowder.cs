@@ -10,6 +10,7 @@ namespace AAMod.Projectiles
 {
     internal class Moonpowder : ModProjectile
     {
+        public override string Texture => "AAMod/BlankTex";
         public override void SetDefaults()
         {
             projectile.width = 6;

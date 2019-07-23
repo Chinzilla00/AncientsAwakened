@@ -7,6 +7,7 @@ namespace AAMod.Projectiles.Serpent
 {
     public class Sting : ModProjectile
     {
+        public override string Texture => "AAMod/BlankTex";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Sting");

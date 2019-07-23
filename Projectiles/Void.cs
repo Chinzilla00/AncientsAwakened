@@ -28,7 +28,9 @@ namespace AAMod.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType("VoidRing"), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI, 0);
+            int p = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), ProjectileID.Electrosphere, projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI, 0);
+            Main.projectile[p].ranged = false;
+            Main.projectile[p].melee = false;
         }
 
         public override void PostAI()
