@@ -7,7 +7,8 @@ namespace AAMod.Projectiles.Yamata
 {
     public class AbyssLash : ModProjectile
     {
-    	public override void SetStaticDefaults()
+        public override string Texture => "AAMod/BlankTex";
+        public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Abyssal Lash");
 		}

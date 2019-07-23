@@ -10,6 +10,7 @@ namespace AAMod.Projectiles
 {
     internal class SPORZ : ModProjectile
     {
+        public override string Texture => "AAMod/BlankTex";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spores");

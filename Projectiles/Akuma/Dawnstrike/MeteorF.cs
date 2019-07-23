@@ -11,62 +11,71 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
 {
     public class MeteorF : ModProjectile
     {
-    	
-    	public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Dayfire");
-		}
-    	
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 20;
+            projectile.height = 20;
+            projectile.aiStyle = -1;
+            projectile.penetrate = 1;
             projectile.friendly = true;
             projectile.hostile = false;
-            projectile.ignoreWater = true;
-            projectile.penetrate = 1;
             projectile.extraUpdates = 1;
-            projectile.ranged = true;
         }
+
 
         public override void AI()
         {
-            projectile.velocity.Y += .01f;
-            if (projectile.position.Y > Main.player[projectile.owner].position.Y - 300f)
+            projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
+            int dustType = mod.DustType<Dusts.AkumaDust>();
+            if (projectile.localAI[0] == 0f)
             {
-                projectile.tileCollide = true;
+                projectile.localAI[0] = 1f;
+                Main.PlaySound(SoundID.DD2_BetsyFireballShot, projectile.Center);
             }
-            if (projectile.position.Y < Main.worldSurface * 16.0)
+            if (Main.rand.Next(3) == 0)
             {
-                projectile.tileCollide = true;
+                int dustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.Magenta, 2f);
+                Main.dust[dustID2].velocity = -projectile.velocity * 0.5f;
+                Main.dust[dustID2].noLight = false;
+                Main.dust[dustID2].noGravity = true;
             }
-            projectile.scale = projectile.ai[1];
-            projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
         }
-
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-            for (int num468 = 0; num468 < 20; num468++)
+            int dustType = mod.DustType<Dusts.AkumaDust>();
+            int pieCut = 20;
+            for (int m = 0; m < pieCut; m++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 0);
-                Main.dust[num469].noGravity = true;
-                Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 0);
-                Main.dust[num469].velocity *= 2f;
+                int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.Magenta, 1.6f);
+                Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / (float)pieCut * 6.28f);
+                Main.dust[dustID].noLight = false;
+                Main.dust[dustID].noGravity = true;
             }
+            for (int m = 0; m < pieCut; m++)
+            {
+                int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.Magenta, 2f);
+                Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)pieCut * 6.28f);
+                Main.dust[dustID].noLight = false;
+                Main.dust[dustID].noGravity = true;
+            }
+            for (int m = 0; m < 15; m++)
+            {
+                int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.Magenta, 1.2f);
+                Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(8f + Main.rand.Next(6), 0f), MathHelper.Lerp((float)Main.rand.NextDouble(), 0f, 6.28f));
+                Main.dust[dustID].noLight = false;
+                Main.dust[dustID].noGravity = true;
+            }
+            Main.PlaySound(SoundID.Item62, (int)projectile.position.X, (int)projectile.position.Y);
         }
 
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override Color? GetAlpha(Color lightColor)
         {
-            target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 200);
+            return Color.White;
         }
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, Color.White, true);
-            return false;
+            target.AddBuff(BuffID.Daybreak, 300);
         }
     }
 }

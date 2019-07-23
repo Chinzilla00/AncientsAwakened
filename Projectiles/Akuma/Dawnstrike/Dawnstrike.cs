@@ -119,7 +119,7 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
                 chargeLevel = 3;
             }
 
-            else if (counter >= 60)
+            else if (counter > 60)
             {
                 GlowColor = Color.Goldenrod;
                 chargeLevel = 2;

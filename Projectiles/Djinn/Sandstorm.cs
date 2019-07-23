@@ -10,7 +10,7 @@ namespace AAMod.Projectiles.Djinn
 {
     class Sandstorm : ModProjectile
     {
-
+        public override string Texture => "AAMod/BlankTex";
         public override void SetDefaults()
         {
             projectile.width = 60;

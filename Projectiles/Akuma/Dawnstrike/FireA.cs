@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Terraria.ID;
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ModLoader;
@@ -63,12 +64,10 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
                 Main.dust[num190].noGravity = true;
             }
         }
-
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType("DragonFire"), 600);
+            target.AddBuff(BuffID.Daybreak, 200);
         }
-
 
         public override bool PreDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color lightColor)
         {
@@ -89,8 +88,8 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
             for (i = 0; i < 15; i++)
             {
                 offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("FireshotA"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("FireshotA"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("FireshotF"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("FireshotF"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
             }
         }
     }
