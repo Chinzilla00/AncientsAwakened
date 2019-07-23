@@ -35,10 +35,6 @@ Death Sickle EX");
             item.shoot = mod.ProjectileType("DecayScythe"); 
             item.noUseGraphic = true;
             item.noMelee = true;
-
-            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; 
-            glowmaskDrawType = GLOWMASKTYPE_NONE;
-            glowmaskDrawColor = Color.White;
         }
 
         public override void AddRecipes()

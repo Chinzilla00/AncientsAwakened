@@ -46,7 +46,8 @@ namespace AAMod.Items.Accessories.Wings
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "vulture_feather", 15);
-			recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(null, "DesertMana", 5);
+            recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
