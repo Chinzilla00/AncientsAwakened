@@ -9,15 +9,13 @@ namespace AAMod.Items.Boss.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Gigataser");
-            Tooltip.SetDefault(@"Fires void lightning
-Hold to charge the Taser
-the longer the taser is charged, the more it penetrates");
+            Tooltip.SetDefault(@"Fires void lightning");
         }
 
         public override void SetDefaults()
         {
             item.noUseGraphic = false;
-            item.damage = 320;
+            item.damage = 100;
             item.noMelee = true;
             item.ranged = true;
             item.width = 74;

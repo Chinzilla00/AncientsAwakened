@@ -20,12 +20,6 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         }
 
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
-            npc.defense = (int)(npc.defense * 1.2f);
-        }
-
         public override void SetDefaults()
 		{
 			npc.noTileCollide = true;
@@ -107,14 +101,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             int maxTilePosX = (int)((npc.position.X + npc.width) / 16.0) + 2;
             int minTilePosY = (int)(npc.position.Y / 16.0) - 1;
             int maxTilePosY = (int)((npc.position.Y + npc.height) / 16.0) + 2;
-            if (minTilePosX < 0)
-                minTilePosX = 0;
-            if (maxTilePosX > Main.maxTilesX)
-                maxTilePosX = Main.maxTilesX;
-            if (minTilePosY < 0)
-                minTilePosY = 0;
-            if (maxTilePosY > Main.maxTilesY)
-                maxTilePosY = Main.maxTilesY;
 
             bool collision = true;
 
@@ -247,7 +233,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 if (npc.position.Y < 0)
                 {
                     npc.velocity.Y = npc.velocity.Y + 1f;
-                    speed = 30f;
                 }
                 if (npc.position.Y < 0)
                 {
@@ -381,7 +366,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.position.Y = npc.position.Y + posY;
             }
 
-            Player player = Main.player[npc.target];
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);
@@ -483,7 +467,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.position.Y = npc.position.Y + posY;
             }
 
-            Player player = Main.player[npc.target];
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);

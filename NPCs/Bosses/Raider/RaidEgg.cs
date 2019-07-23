@@ -49,11 +49,6 @@ namespace AAMod.NPCs.Bosses.Raider
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color, true);
             return false;
         }
-
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
-        }
         
         public override void AI()
         {

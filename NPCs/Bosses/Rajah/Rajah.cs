@@ -956,7 +956,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * 1.3f);  //boss damage increase in expermode
+            npc.damage = (int)(npc.damage * .6f); 
         }
 
         public void RajahTexture()

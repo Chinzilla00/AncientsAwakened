@@ -260,12 +260,6 @@ namespace AAMod.NPCs.Bosses.Wyrm
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.SoulofFlight, Main.rand.Next(15, 30));
         }
 
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            npc.lifeMax = (int)(npc.lifeMax * 2f);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * 2f);  //boss damage increase in expermode
-        }
-
         public override void HitEffect(int hitDirection, double damage)
         {
             if (npc.life <= 0)

@@ -65,6 +65,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 0.6f);
         }
 
 

@@ -21,6 +21,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public override void SetDefaults()
         {
+            internalAI[0] = 3;
             npc.width = 50;
             npc.height = 60;
             npc.friendly = false;
@@ -136,7 +137,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
-            npc.damage = (int)(npc.damage * 0.6f);
+            npc.damage = (int)(npc.damage * 0.9f);
         }
 
         public bool SetMovePos = false;
@@ -362,7 +363,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
                         int projType = mod.ProjectileType<HarukaProj>();
-                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, (int)(npc.damage * 1.3f), 0f, 18f);
+                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, (int)(npc.damage * 1.3f), 0f, 14f);
                         npc.netUpdate = true;
                     }
                     if (isSlashing && internalAI[2] > 9 && Main.netMode != 1)

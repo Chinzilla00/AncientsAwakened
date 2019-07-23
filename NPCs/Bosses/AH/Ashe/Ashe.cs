@@ -533,8 +533,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             int VortexType = mod.NPCType("AsheOrbiter");
             if (internalAI[0] == 1)
             {
-                int speedX = 14;
-                int speedY = 14;
+                int speedX = 11;
+                int speedY = 11;
                 float spread = 75f * 0.0174f;
                 float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
                 double startAngle = Math.Atan2(speedX, speedY) - .1d;
@@ -547,7 +547,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else if (internalAI[0] == 2)
             {
-                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<AsheFlamethrower>(), ref shootAI[0], 5, npc.damage / 2, 12);
+                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<AsheFlamethrower>(), ref shootAI[0], 5, npc.damage / 2, 14);
             }
             else if (internalAI[0] == 3)
             {
@@ -558,12 +558,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 for (int i = 0; i < (Main.expertMode ? 6 : 4); i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 7f), (float)(Math.Cos(offsetAngle) * 7f), mod.ProjectileType<AsheSpell>(), npc.damage, 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 9f), (float)(Math.Cos(offsetAngle) * 9f), mod.ProjectileType<AsheSpell>(), npc.damage, 0, Main.myPlayer, 0f, 0f);
                 }
             }
             else if (internalAI[0] == AISTATE_CAST4)
             {
-                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<AsheFire>(), npc.damage, 3, 14f, 0, 0, -1);
+                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<AsheFire>(), npc.damage, 3, 16f, 0, 0, -1);
             }
 
             else if (internalAI[0] == AISTATE_VORTEX)
@@ -619,8 +619,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * 1.3f);  //boss damage increase in expermode
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  
+            npc.damage = (int)(npc.damage * 0.6f);
         }
 
 

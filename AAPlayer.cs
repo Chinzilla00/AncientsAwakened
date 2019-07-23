@@ -2322,7 +2322,7 @@ namespace AAMod
                     player.lifeRegen = 0;
                 }
                 player.lifeRegenTime = 0;
-                player.lifeRegen -= 5;
+                player.lifeRegen -= 2;
             }
 
             if (Unstable)

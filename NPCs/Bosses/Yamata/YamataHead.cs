@@ -104,6 +104,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
+            npc.damage = (int)(npc.damage * .8f);
             npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
         }
 

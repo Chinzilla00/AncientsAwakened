@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
-            npc.damage = (int)(npc.damage * 0.6f);
+            npc.damage = (int)(npc.damage * .9f);
         }
 
         public override bool CheckActive()
