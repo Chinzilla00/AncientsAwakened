@@ -37,8 +37,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 		public int body = -1;
 		public float rotValue = -1f;
         public Vector2 pos;
-        int ChainFrame = 0;
-        int ChainTimer = 0;
 
 
         public float[] shootAI = new float[1];
@@ -71,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override void AI()
         {
-            if (!NPC.AnyNPCs(mod.NPCType<SagittariusOrbiter>()))
+            if (!NPC.AnyNPCs(mod.NPCType<Sagittarius>()))
             {
                 npc.life = 0;
             }
@@ -89,15 +87,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 npc.chaseable = true;
             }
 
-            ChainTimer++;
-            if (ChainTimer > 4)
-            {
-                ChainFrame += 1;
-                if (ChainFrame > 2)
-                {
-                    ChainFrame = 0;
-                }
-            }
             if (body == -1)
             {
                 int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Sagittarius"), 400f, null);

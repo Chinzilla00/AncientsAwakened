@@ -4,6 +4,8 @@ using BaseMod;
 using Terraria.Audio;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System.IO;
+using System;
 
 namespace AAMod.NPCs.Bosses.Truffle
 {
@@ -33,24 +35,52 @@ namespace AAMod.NPCs.Bosses.Truffle
             npc.noTileCollide = true;
         }
 
+        public int body = -1;
+        public float rotValue = -1f;
+
         public override void AI()
         {
-            Color color = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, BaseDrawing.GetLightColor(npc.position), BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position), Color.Violet, BaseDrawing.GetLightColor(npc.position));
-
-            Lighting.AddLight((int)(npc.Center.X + (npc.width / 2)) / 16, (int)(npc.position.Y + (npc.height / 2)) / 16, color.R / 255, color.G / 255, color.B / 255);
-
-            BaseAI.AISpore(npc, ref npc.ai, 0.1f, 0.02f, 5f, 1f);
-
-            npc.frameCounter++;
-            if (npc.frameCounter > 8)
+            if (!NPC.AnyNPCs(mod.NPCType<TechnoTruffle>()))
             {
-                npc.frameCounter = 0;
-                npc.frame.Y += 20;
-                if (npc.frame.Y > 60)
-                {
-                    npc.frame.Y = 0;
-                }
+                npc.life = 0;
             }
+
+            npc.noGravity = true;
+
+            if (npc.alpha > 0)
+            {
+                npc.dontTakeDamage = true;
+                npc.chaseable = false;
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
+                npc.chaseable = true;
+            }
+
+            if (body == -1)
+            {
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType<TechnoTruffle>(), 400f, null);
+                if (npcID >= 0) body = npcID;
+            }
+            if (body == -1) return;
+            NPC truffle = Main.npc[body];
+            if (truffle == null || truffle.life <= 0 || !truffle.active || truffle.type != mod.NPCType<TechnoTruffle>()) { BaseAI.KillNPCWithLoot(npc); return; }
+
+            Player player = Main.player[truffle.target];
+
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
+            {
+                npc.oldPos[m] = npc.oldPos[m - 1];
+            }
+            npc.oldPos[0] = npc.position;
+
+            int probeNumber = ((TechnoTruffle)truffle.modNPC).ProbeCount;
+            if (rotValue == -1f) rotValue = npc.ai[0] % probeNumber * ((float)Math.PI * 2f / probeNumber);
+            rotValue += 0.04f;
+            while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
+
+            npc.Center = BaseUtility.RotateVector(player.Center, player.Center + new Vector2(260, 0f), rotValue);
         }
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)

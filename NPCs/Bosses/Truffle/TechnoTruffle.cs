@@ -83,6 +83,7 @@ namespace AAMod.NPCs.Bosses.Truffle
         bool HasStopped = false;
         bool SelectPoint = false;
         Vector2 MovePoint = new Vector2(0, 0);
+        public int ProbeCount = Main.expertMode ? 4 : 6;
 
         public override void FindFrame(int frameHeight)
         {
@@ -440,19 +441,19 @@ namespace AAMod.NPCs.Bosses.Truffle
 
                     if (i == 1)
                     {
-                        NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y - 10, mod.NPCType<TruffleProbe>());
+                        //NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y - 10, mod.NPCType<TruffleProbe>());
                     }
                     if (i == 2)
                     {
-                        NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y + 10, mod.NPCType<TruffleProbe>());
+                       //NPC.NewNPC((int)npc.Center.X + 10, (int)npc.Center.Y + 10, mod.NPCType<TruffleProbe>());
                     }
                     if (i == 3)
                     {
-                        NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y - 10, mod.NPCType<TruffleProbe>());
+                        //NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y - 10, mod.NPCType<TruffleProbe>());
                     }
                     else
                     {
-                        NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y + 10, mod.NPCType<TruffleProbe>());
+                       //NPC.NewNPC((int)npc.Center.X - 10, (int)npc.Center.Y + 10, mod.NPCType<TruffleProbe>());
                     }
                 }
                 npc.netUpdate = true;
