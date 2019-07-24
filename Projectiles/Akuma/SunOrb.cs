@@ -39,7 +39,6 @@ namespace AAMod.Projectiles.Akuma
         {
 			Player player = Main.player[projectile.owner];
             Rotation += .0008f;
-            float num1058 = 1000f;
             projectile.rotation += .0008f;
             projectile.velocity = Vector2.Zero;
             if (projectile.direction == 0)
