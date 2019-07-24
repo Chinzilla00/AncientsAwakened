@@ -21,7 +21,7 @@ namespace AAMod.Items.Melee
             item.value = BaseUtility.CalcValue(0, 5, 0, 0);
 
             item.useStyle = 5;
-            item.useAnimation = 25;
+            item.useAnimation = 55;
             item.useTime = 55;
             item.UseSound = SoundID.Item1;
             item.damage = 29;
@@ -31,7 +31,7 @@ namespace AAMod.Items.Melee
             item.noUseGraphic = true;
             item.noMelee = true;
             item.shoot = mod.ProjType("YtriumHalberd");
-            item.shootSpeed = 8;			
+            item.shootSpeed = 5;			
         }
 		
 		public override void AddRecipes()

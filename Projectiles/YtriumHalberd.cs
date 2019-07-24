@@ -1,4 +1,6 @@
-using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+
 using Terraria;
 using Terraria.ModLoader;
 
@@ -6,6 +8,9 @@ namespace AAMod.Projectiles
 {
     public class YtriumHalberd : ModProjectile
 	{
+		public static Color lightColor = new Color(82, 138, 206);
+		public static Vector2[] spearPos = new Vector2[]{ new Vector2(0, 0), new Vector2(50, -25), new Vector2(100, -50), new Vector2(100, 0), new Vector2(100, 50), new Vector2(50, 25), new Vector2(30, 0), new Vector2(120, 0), new Vector2(120, 0), new Vector2(30, 0) };
+	
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Ytrium Halberd");
@@ -13,61 +18,65 @@ namespace AAMod.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 40;  //The width of the .png file in pixels divided by 2.
-            projectile.aiStyle = 19;
-            projectile.melee = true;  //Dictates whether this is a melee-class weapon.
-            projectile.timeLeft = 90;
-            projectile.height = 40;  //The height of the .png file in pixels divided by 2.
+            projectile.width = 32;
+            projectile.height = 32;
+            projectile.aiStyle = -1;
+            projectile.timeLeft = 600;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.tileCollide = false;
-            projectile.ignoreWater = true;
+            projectile.damage = 1;
             projectile.penetrate = -1;
-            projectile.ownerHitCheck = true;
             projectile.hide = true;
+            projectile.ownerHitCheck = true;
+            projectile.melee = true;
+			projectile.alpha = 254;
         }
 
-        public override void AI()
-        {
-            Main.player[projectile.owner].direction = projectile.direction;
-            Main.player[projectile.owner].heldProj = projectile.whoAmI;
-            Main.player[projectile.owner].itemTime = Main.player[projectile.owner].itemAnimation;
-            projectile.position.X = Main.player[projectile.owner].position.X + Main.player[projectile.owner].width / 2 - projectile.width / 2;
-            projectile.position.Y = Main.player[projectile.owner].position.Y + Main.player[projectile.owner].height / 2 - projectile.height / 2;
-            projectile.position += projectile.velocity * projectile.ai[0];
-            if (projectile.ai[0] == 0f)
-            {
-                projectile.ai[0] = 3f;
-                projectile.netUpdate = true;
-            }
-            if (Main.player[projectile.owner].itemAnimation < Main.player[projectile.owner].itemAnimationMax / 3)
-            {
-                projectile.ai[0] -= 2.4f;
-                if (projectile.localAI[0] == 0f && Main.myPlayer == projectile.owner)
-                {
-                    projectile.localAI[0] = 1f;
-                }
-            }
-            else
-            {
-                projectile.ai[0] += 0.95f;
-            }
+		public override void AI()
+		{
+			AIArcStabSpear(projectile, ref projectile.ai, false);
+			if (Main.rand.Next(3) != 0)
+			{
+				int dustID = Dust.NewDust(projectile.Center, 0, 0, mod.DustType<Dusts.CthulhuDust>(), 0f, 0f, 0);
+				Main.dust[dustID].noGravity = true;
+			}			
+		}
 
-            if (Main.player[projectile.owner].itemAnimation == 0)
-            {
-                projectile.Kill();
-            }
-
-            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 2.355f;
-            if (projectile.spriteDirection == -1)
-            {
-                projectile.rotation -= 1.57f;
-            }
-        }
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			target.immune[projectile.owner] = 10;
+		}
+
+		public override bool PreDraw(SpriteBatch sb, Color dColor)
+		{
+			BaseMod.BaseDrawing.DrawProjectileSpear(sb, Main.projectileTexture[projectile.type], 0, projectile, null, 0f, 0f);
+			return false;
+		}
+
+        public static void AIArcStabSpear(Projectile p, ref float[] ai, bool overrideKill = false)
+        {
+            Player plr = Main.player[p.owner];
+            Item item = plr.inventory[plr.selectedItem];
+            if (Main.myPlayer == p.owner && item != null && item.autoReuse && plr.itemAnimation == 1) { p.Kill(); return; } //prevents a bug with autoReuse and spears
+            Main.player[p.owner].heldProj = p.whoAmI;
+            Main.player[p.owner].itemTime = Main.player[p.owner].itemAnimation;
+			Vector2 gfxOffset = new Vector2(0, plr.gfxOffY);
+            AIArcStabSpear(p, ref ai, plr.Center + gfxOffset, BaseMod.BaseUtility.RotationTo(p.Center, p.Center + p.velocity), plr.direction, plr.itemAnimation, plr.itemAnimationMax, overrideKill, plr.frozen);
+        }
+
+        public static void AIArcStabSpear(Projectile p, ref float[] ai, Vector2 center, float itemRot, int ownerDirection, int itemAnimation, int itemAnimationMax, bool overrideKill = false, bool frozen = false)
+        {
+			if(p.timeLeft < 598) p.alpha -= 70; if(p.alpha < 0) p.alpha = 0;
+            p.direction = ownerDirection;
+			Vector2 oldCenter = p.Center;
+            p.position.X = center.X - p.width * 0.5f;
+            p.position.Y = center.Y - p.height * 0.5f;
+			p.position += BaseMod.BaseUtility.RotateVector(default, BaseMod.BaseUtility.MultiLerpVector(1f - itemAnimation / (float)itemAnimationMax, spearPos), itemRot);		
+            if (!overrideKill && Main.player[p.owner].itemAnimation == 0){ p.Kill(); }
+            p.rotation = BaseMod.BaseUtility.RotationTo(center, oldCenter) + 2.355f;				
+			if (p.direction == -1) { p.rotation -= 0f; }else
+			if (p.direction == 1) { p.rotation -= 1.57f; }		
 		}
 	}
 }

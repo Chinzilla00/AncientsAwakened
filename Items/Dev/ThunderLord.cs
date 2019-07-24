@@ -27,13 +27,13 @@ namespace AAMod.Items.Dev
 
         public override void SetDefaults()
         {
-            item.damage = 100;
+            item.damage = 115;
             item.noMelee = true;
             item.ranged = true; 
             item.width = 70; 
             item.height = 24;
-            item.useTime = 28; 
-            item.useAnimation = 28; 
+            item.useTime = 20; 
+            item.useAnimation = 20; 
             item.useStyle = 5;
             item.shoot = mod.ProjectileType("ThunderSpark");
             item.knockBack = 3;

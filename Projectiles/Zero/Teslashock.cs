@@ -58,9 +58,9 @@ namespace AAMod.Projectiles.Zero
                 }
             }
             const int aislotHomingCooldown = 0;
-            const int homingDelay = 30;
+            const int homingDelay = 15;
             const float desiredFlySpeedInPixelsPerFrame = 10;
-            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
+            const float amountOfFramesToLerpBy = 15; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
             if (projectile.ai[aislotHomingCooldown] > homingDelay)
