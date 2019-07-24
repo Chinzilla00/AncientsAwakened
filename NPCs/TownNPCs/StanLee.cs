@@ -6,6 +6,7 @@ using Terraria.Utilities;
 
 namespace AAMod.NPCs.TownNPCs
 {
+    [AutoloadHead]
 	public class StanLee : ModNPC
 	{
         public override string Texture => "AAMod/NPCs/TownNPCs/StanLee";
