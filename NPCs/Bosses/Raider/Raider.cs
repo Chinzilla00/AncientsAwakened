@@ -354,7 +354,7 @@ namespace AAMod.NPCs.Bosses.Raider
                         Vector2 dir = new Vector2(npc.velocity.X * 2f + (4f * npc.direction), npc.velocity.Y * 0.5f + 1f);
                         Vector2 firePos = new Vector2(npc.Center.X + (64 * npc.direction), npc.Center.Y + 28f);
                         firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
-                        int projID = Projectile.NewProjectile(firePos, dir, mod.ProjectileType("RaidSphere"), npc.damage / Main.expertMode ? 2 : 4, 1, 255);
+                        int projID = Projectile.NewProjectile(firePos, dir, mod.ProjectileType("RaidSphere"), npc.damage / (Main.expertMode ? 2 : 4), 1, 255);
                         Main.projectile[projID].netUpdate = true;
                     }
                 }

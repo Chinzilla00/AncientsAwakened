@@ -285,7 +285,7 @@ namespace AAMod.NPCs.Bosses.Retriever
 					}
 					if(Vector2.Distance(npc.Center, point) < 10f || customAI[0] > 50)
 					{
-						BaseAI.ShootPeriodic(npc, targetPlayer.position, targetPlayer.width, targetPlayer.height, mod.ProjectileType<RetrieverShot>(), ref customAI[1], ShootLaserRate, npc.damage / Main.expertMode ? 2 : 4, 12f, false);
+						BaseAI.ShootPeriodic(npc, targetPlayer.position, targetPlayer.width, targetPlayer.height, mod.ProjectileType<RetrieverShot>(), ref customAI[1], ShootLaserRate, npc.damage / (Main.expertMode ? 2 : 4), 12f, false);
 					}
                 }
             }else
@@ -309,7 +309,7 @@ namespace AAMod.NPCs.Bosses.Retriever
 					}	
 					if(Vector2.Distance(npc.Center, point) < 10f)
 					{						
-						BaseAI.ShootPeriodic(npc, targetPlayer.position, targetPlayer.width, targetPlayer.height, mod.ProjectileType<RetrieverShot>(), ref customAI[1], ShootLaserRate, npc.damage / Main.expertMode ? 2 : 4, 12f, false);
+						BaseAI.ShootPeriodic(npc, targetPlayer.position, targetPlayer.width, targetPlayer.height, mod.ProjectileType<RetrieverShot>(), ref customAI[1], ShootLaserRate, npc.damage / (Main.expertMode ? 2 : 4), 12f, false);
 					}
                 }
             }				

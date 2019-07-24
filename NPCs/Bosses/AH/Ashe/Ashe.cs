@@ -542,7 +542,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 for (int i = 0; i < 5; i++)
                 {
                     double offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AsheShot>(), npc.damage / Main.expertMode ? 2 : 4, 4);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AsheShot>(), npc.damage / (Main.expertMode ? 2 : 4), 4);
                 }
             }
             else if (internalAI[0] == 2)
@@ -558,7 +558,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 for (int i = 0; i < (Main.expertMode ? 6 : 4); i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 9f), (float)(Math.Cos(offsetAngle) * 9f), mod.ProjectileType<AsheSpell>(), npc.damage / Main.expertMode ? 2 : 4, 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 9f), (float)(Math.Cos(offsetAngle) * 9f), mod.ProjectileType<AsheSpell>(), npc.damage / (Main.expertMode ? 2 : 4), 0, Main.myPlayer, 0f, 0f);
                 }
             }
             else if (internalAI[0] == AISTATE_CAST4)

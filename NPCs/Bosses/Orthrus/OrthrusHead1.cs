@@ -156,7 +156,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                             dir *= 12f;
                             if (internalAI[0] % 10 == 0)
                             {
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("OrthrusSpark"), npc.damage / Main.expertMode ? 2 : 4, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("OrthrusSpark"), npc.damage / (Main.expertMode ? 2 : 4), 0f, Main.myPlayer);
 
                             }
                         }
@@ -164,7 +164,7 @@ namespace AAMod.NPCs.Bosses.Orthrus
                         {
                             if (internalAI[0] == 300)
                             {
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("Shocking"), npc.damage / Main.expertMode ? 2 : 4, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("Shocking"), npc.damage / (Main.expertMode ? 2 : 4), 0f, Main.myPlayer);
                             }
                         }
                     }
