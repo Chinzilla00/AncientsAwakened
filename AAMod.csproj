@@ -4,36 +4,12 @@
   <PropertyGroup>
     <AssemblyName>AAMod</AssemblyName>
     <TargetFramework>net45</TargetFramework>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <Target Name="BuildMod" AfterTargets="Build">
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
   </Target>
-  <ItemGroup>
-    <Compile Remove="obj\**" />
-    <Compile Remove="Players\**" />
-    <EmbeddedResource Remove="obj\**" />
-    <EmbeddedResource Remove="Players\**" />
-    <None Remove="obj\**" />
-    <None Remove="Players\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="AAMod.sln" />
-    <None Include="bin\Debug\AAMod.dll" />
-    <None Include="bin\Debug\AAMod.pdb" />
-    <None Include="bin\Debug\BaseMod.dll" />
-    <None Include="bin\Debug\Microsoft.Xna.Framework.dll" />
-    <None Include="bin\Debug\Microsoft.Xna.Framework.Game.dll" />
-    <None Include="bin\Debug\Microsoft.Xna.Framework.Graphics.dll" />
-    <None Include="bin\Debug\Microsoft.Xna.Framework.Xact.dll" />
-    <None Include="bin\Debug\ReLogic.dll" />
-    <None Include="bin\Debug\Terraria.exe" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\net45\" />
-    <Folder Include="bin\Release\" />
-  </ItemGroup>
   <ItemGroup>
     <Reference Include="BaseMod">
       <HintPath>lib\BaseMod.dll</HintPath>

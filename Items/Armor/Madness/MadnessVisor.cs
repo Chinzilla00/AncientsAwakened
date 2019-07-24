@@ -20,7 +20,7 @@ namespace AAMod.Items.Armor.Madness
             item.value = 20000;
             item.rare = 1;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.defense = 5;
+            item.defense = 2;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

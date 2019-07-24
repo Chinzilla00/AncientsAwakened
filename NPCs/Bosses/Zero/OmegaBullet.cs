@@ -12,9 +12,10 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.BulletHighVelocity);
+            projectile.CloneDefaults(ProjectileID.Bullet);
             projectile.friendly = false;
             projectile.hostile = true;
+            aiType = ProjectileID.Bullet;
         }
     }
 }

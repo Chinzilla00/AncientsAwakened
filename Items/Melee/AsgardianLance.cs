@@ -28,7 +28,7 @@ namespace AAMod.Items.Melee
             item.autoReuse = true;
             item.useStyle = 5;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.rare = 3;
+            item.rare = 8;
             item.shootSpeed = 10f;
             item.shoot = mod.ProjectileType("AsgardianLance");  //put your Spear projectile name
         }

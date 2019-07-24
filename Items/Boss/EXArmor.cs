@@ -7,13 +7,10 @@ namespace AAMod.Items.Boss
 {
     public class EXArmor : BaseAAItem
     {
-        internal static int type;
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("EX Armor Fragment");
             Tooltip.SetDefault("Used to make EX armor");
-
         }
 
         // TODO -- Velocity Y smaller, post NewItem?

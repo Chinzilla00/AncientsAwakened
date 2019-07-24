@@ -90,20 +90,23 @@ namespace AAMod.Projectiles.Yamata
             }
 
             //change to make more/less projectiles
-            float screenY = Main.screenPosition.Y;
-            screenY += Main.rand.Next(Main.screenHeight);
-            Vector2 vector = new Vector2(screenX, screenY);
-            float velocityX = target.Center.X - vector.X;
-            float velocityY = target.Center.Y - vector.Y;
-            velocityX += Main.rand.Next(-50, 51) * 0.1f;
-            velocityY += Main.rand.Next(-50, 51) * 0.1f;
-            int num5 = 24;
-            float num6 = (float)Math.Sqrt(velocityX * velocityX + velocityY * velocityY);
-            num6 = num5 / num6;
-            velocityX *= num6;
-            velocityY *= num6;
-            Projectile p = Projectile.NewProjectileDirect(new Vector2(screenX, screenY), new Vector2(velocityX, velocityY), mod.ProjectileType<YariProj>(), damage, 0f, player.whoAmI);
-            p.tileCollide = false;
+            for (int i = 0; i < 2; i++)
+            {
+                float screenY = Main.screenPosition.Y;
+                screenY += Main.rand.Next(Main.screenHeight);
+                Vector2 vector = new Vector2(screenX, screenY);
+                float velocityX = target.Center.X - vector.X;
+                float velocityY = target.Center.Y - vector.Y;
+                velocityX += Main.rand.Next(-50, 51) * 0.1f;
+                velocityY += Main.rand.Next(-50, 51) * 0.1f;
+                int num5 = 24;
+                float num6 = (float)Math.Sqrt(velocityX * velocityX + velocityY * velocityY);
+                num6 = num5 / num6;
+                velocityX *= num6;
+                velocityY *= num6;
+                Projectile p = Projectile.NewProjectileDirect(new Vector2(screenX, screenY), new Vector2(velocityX, velocityY), mod.ProjectileType<YariProj>(), damage, 0f, player.whoAmI);
+                p.tileCollide = false;
+            }
         }
     }
 }

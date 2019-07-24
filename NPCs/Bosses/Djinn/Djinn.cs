@@ -44,6 +44,7 @@ namespace AAMod.NPCs.Bosses.Djinn
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 0.6f);
             npc.defense = (int)(npc.defense * 1.2f);
         }
 

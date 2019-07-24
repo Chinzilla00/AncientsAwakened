@@ -243,7 +243,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * 1.1f);  //boss damage increase in expermode
+            npc.damage = (int)(npc.damage * 0.6f);
         }
     }
 }

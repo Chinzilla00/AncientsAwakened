@@ -532,7 +532,7 @@ namespace AAMod.NPCs.Bosses.Toad
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * 1.4f);  //boss damage increase in expermode
+            npc.damage = (int)(npc.damage * .8f);
         }
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)

@@ -21,6 +21,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
 			projectile.penetrate = 5;
             projectile.tileCollide = false;
+            projectile.extraUpdates = 1;
 		}
         
         public override void SetStaticDefaults()

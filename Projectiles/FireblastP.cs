@@ -6,6 +6,7 @@ namespace AAMod.Projectiles
 {
     public class FireblastP : ModProjectile
     {
+        public override string Texture => "AAMod/BlankTex";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fireblast");

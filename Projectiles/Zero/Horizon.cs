@@ -18,34 +18,31 @@ namespace AAMod.Projectiles.Zero
             projectile.light = 0.2f;
             projectile.aiStyle = 0;
             projectile.friendly = true;
-            projectile.penetrate = 2;
+            projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.scale = 0.9f;
             projectile.melee = true;
             projectile.timeLeft = 300;
             projectile.scale = .1f;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 7;
+            projectile.localNPCHitCooldown = -1;
         }
-        float RotValue = .1f;
+		
         public override void AI()
         {
-            
-            if (projectile.ai[0] == 0)
+            projectile.rotation += .05f;
+            if (projectile.ai[0] == 0f)
             {
                 projectile.scale += .02f;
-                projectile.rotation += RotValue;
                 if (projectile.scale >= 1)
                 {
-                    RotValue = -.1f;
                     projectile.ai[0] = 1f;
                 }
             }
-            if (projectile.ai[0] == 1)
+            if (projectile.ai[0] == 1f)
             {
                 projectile.scale -= .02f;
-                projectile.rotation -= RotValue;
-                if (projectile.scale >= 0)
+                if (projectile.scale <= 0)
                 {
                     projectile.active = false;
                 }
@@ -55,8 +52,8 @@ namespace AAMod.Projectiles.Zero
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Texture2D tex = Main.projectileTexture[projectile.type];
-            BaseDrawing.DrawTexture(spriteBatch, tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, -RotValue, -1, 1, new Rectangle(0, 0, tex.Width, tex.Height), AAColor.Yamata, true);
-            BaseDrawing.DrawTexture(spriteBatch, tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, RotValue, projectile.direction, 1, new Rectangle(0, 0, tex.Width, tex.Height), AAColor.ZeroShield, true);
+            BaseDrawing.DrawTexture(spriteBatch, tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, -projectile.rotation, projectile.direction, 1, new Rectangle(0, 0, tex.Width, tex.Height), AAColor.Yamata, true);
+            BaseDrawing.DrawTexture(spriteBatch, tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, new Rectangle(0, 0, tex.Width, tex.Height), AAColor.ZeroShield, true);
             return false;
         }
     }

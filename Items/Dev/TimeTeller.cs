@@ -25,10 +25,10 @@ namespace AAMod.Items.Dev
             item.shoot = mod.ProjectileType("TimeTeller");
         }
 
-		public override void GetWeaponDamage(Player player, ref int damage)
-		{
-			damage = (int)(damage * CalcDamageMultiplierFromTimeOfDay(item.damage));
-		}
+        public override void ModifyWeaponDamage(Player player, ref float add, ref float mult, ref float flat)
+        {
+            mult *= ((ModSupportPlayer)player.GetModPlayer(mod, "ModSupportPlayer")).Thorium_radiantBoost;
+        }
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
@@ -39,9 +39,9 @@ namespace AAMod.Items.Dev
         {
             DisplayName.SetDefault("Time Teller");
             Tooltip.SetDefault("Damage changes based on time of day\n" +
-				"Damage is greatest at Midday and Midnight\n" +
-                "'Time to Die!'\n" +
-                "-Dallin");
+				               "Damage is greatest at Midday and Midnight\n" +
+                               "'Time to Die!'\n" +
+                               "-Dallin");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

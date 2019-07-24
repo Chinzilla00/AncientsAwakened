@@ -39,6 +39,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
+            npc.damage = (int)(npc.damage * .7f);
         }
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)

@@ -7,6 +7,7 @@ namespace AAMod.Projectiles
 {
     internal class SnowSolution : ModProjectile
     {
+        public override string Texture => "AAMod/BlankTex";
         public override void SetDefaults()
         {
             projectile.width = 6;

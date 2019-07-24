@@ -17,7 +17,7 @@ Right Click to unleash demon blades that fall from the sky");
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 70;
+			item.damage = 150;
 			item.melee = true;
 			item.width = 58;
 			item.height = 58;

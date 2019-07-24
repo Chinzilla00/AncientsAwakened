@@ -6,7 +6,8 @@ using Terraria.ModLoader;
 namespace AAMod.Projectiles
 {
     public class BloodyFlare : ModProjectile
-	{
+    {
+        public override string Texture => "AAMod/BlankTex";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bloody Flare");

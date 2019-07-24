@@ -69,8 +69,9 @@ namespace AAMod.Items.Melee
 		}
 		
 		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
-		{
-			target.AddBuff(mod.BuffType("Electrified"), 300);
+        {
+            Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Thunderstrike"));
+            target.AddBuff(mod.BuffType("Electrified"), 300);
 			Vector2 vector12 = new Vector2(target.Center.X, target.Center.Y);
 			Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
 			float num75 = 20f;

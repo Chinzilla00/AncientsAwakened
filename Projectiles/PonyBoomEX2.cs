@@ -7,6 +7,7 @@ namespace AAMod.Projectiles
 {
     public class PonyBoomEX2 : ModProjectile
     {
+        public override string Texture => "AAMod/BlankTex";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ponysplosion");

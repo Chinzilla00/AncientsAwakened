@@ -89,6 +89,7 @@ namespace AAMod.NPCs.Bosses.Raider
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.3f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 0.6f);
         }
         
         public override void AI()

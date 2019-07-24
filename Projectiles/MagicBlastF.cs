@@ -8,8 +8,6 @@ namespace AAMod.Projectiles
 {
     public class MagicBlastF : ModProjectile
     {
-        private int pieCut;
-
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Magic Blast");
@@ -62,13 +60,11 @@ namespace AAMod.Projectiles
                 Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / (float)20 * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
-            }
-            for (int m = 0; m < pieCut; m++)
-            {
-                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 100, Color.White, 2f);
-                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)20 * 6.28f);
-                Main.dust[dustID].noLight = false;
-                Main.dust[dustID].noGravity = true;
+
+                int dustID2 = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 100, Color.White, 2f);
+                Main.dust[dustID2].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)20 * 6.28f);
+                Main.dust[dustID2].noLight = false;
+                Main.dust[dustID2].noGravity = true;
             }
         }
 

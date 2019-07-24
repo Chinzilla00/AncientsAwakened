@@ -29,7 +29,7 @@ Uses Bullets and Bones as ammo
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
             item.UseSound = SoundID.Item36;
-            item.damage = 30;
+            item.damage = 90;
             item.shootSpeed = 6f;
             item.noMelee = true;
             item.value = 100000;

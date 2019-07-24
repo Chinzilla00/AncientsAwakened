@@ -8,7 +8,6 @@ namespace AAMod.Items.Boss.Akuma
     [AutoloadEquip(EquipType.Shield)]
     public class TaiyangBaolei : BaseAAItem
     {
-        private int Defense;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Taiyang Baolei");

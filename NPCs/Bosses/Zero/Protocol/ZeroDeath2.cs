@@ -6,7 +6,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
     public class ZeroDeath2 : ModProjectile
     {
-        bool slayer = false;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero");

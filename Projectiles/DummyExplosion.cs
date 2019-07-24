@@ -5,8 +5,9 @@ using Terraria.ModLoader;
 namespace AAMod.Projectiles
 {
     public class DummyExplosion : ModProjectile
-	{
-		public override void SetStaticDefaults()
+    {
+        public override string Texture => "AAMod/BlankTex";
+        public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Explosion");
 		}

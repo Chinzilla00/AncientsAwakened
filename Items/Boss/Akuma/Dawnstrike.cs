@@ -13,29 +13,28 @@ namespace AAMod.Items.Boss.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dawnstrike");
-            Tooltip.SetDefault(@"Shoots a piercing blaze of fire
-50% chance to not consume gel");
+            Tooltip.SetDefault(@"Charge the blaster to fire larger flame blasts");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 400;
+            item.noUseGraphic = true;
+            item.damage = 600;
             item.noMelee = true;
             item.ranged = true;
-            item.width = 64;
-            item.height = 46;
-            item.useTime = 5;
-            item.useAnimation = 5;
+            item.width = 74;
+            item.height = 24;
+            item.useTime = 65;
+            item.useAnimation = 65;
             item.useStyle = 5;
-            item.useAmmo = AmmoID.Gel;
             item.shoot = mod.ProjectileType("Dawnstrike");
-            item.knockBack = 0;
+            item.channel = true;
+            item.knockBack = 12;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 9;
-            AARarity = 13;
-            item.UseSound = SoundID.Item20;
-            item.autoReuse = true;
-            item.shootSpeed = 5f;
+            item.shootSpeed = 8f;
+            item.crit += 5;
+            item.rare = 9; AARarity = 13;
         }
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
@@ -52,28 +51,6 @@ namespace AAMod.Items.Boss.Akuma
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-4, -2);
-        }
-
-
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
-                texture,
-                new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
