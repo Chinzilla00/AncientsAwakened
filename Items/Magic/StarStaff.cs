@@ -21,7 +21,7 @@ namespace AAMod.Items.Magic
             item.height = 64;
             item.useTime = 5;
             item.useAnimation = 16;
-            Items.reuseDelay = 16;
+            item.reuseDelay = 16;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 5;
