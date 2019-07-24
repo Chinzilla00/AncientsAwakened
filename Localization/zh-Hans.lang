@@ -189,7 +189,7 @@ BuffName.RoyalRabbit=直升皇兔
 BuffDescription.RoyalRabbit=召唤一个直升皇兔为你而战
 
 BuffName.SagOrbiter=人马轨道器
-BuffDescription.SagOrbiter=召唤一个轨道器为你而战
+BuffDescription.SagOrbiter=召唤轨道器为你而战
 
 BuffName.SagShield=护盾启动
 BuffDescription.SagShield=它们进不来, 你的武器也出不去.
@@ -1705,6 +1705,7 @@ ItemName.MorningGlory=光荣之晨
 ItemTooltip.MorningGlory=触及敌人时爆炸
 
 ItemName.RadiantDawn=曜光破晓弓
+ItemTooltip.RadiantDawn=长按发射更多箭矢
 
 ItemName.ReignOfFire=火焰之治
 ItemTooltip.ReignOfFire=向你的敌人降下燎炎和怒火\n造成破晓
@@ -1775,8 +1776,10 @@ ItemName.SultanScimitar=苏丹弯刀
 
 
 ItemName.EFishWings=猪鲨王之翼
+ItemTooltip.EFishWings=允许飞行和滑翔
 
 ItemName.EFlairon=猪鲨王链球
+ItemTooltip.EFlairon=让我们发射一串制导泡泡
 
 ItemName.FancyTruffle=优质松露
 ItemTooltip.FancyTruffle=吸引了一种在水中繁衍和战斗的王者生物
@@ -2026,7 +2029,8 @@ ItemTooltip.NeutronStaff=发射可以在墙壁上反弹的旋转星星
 ItemName.SagBag=宝藏袋
 ItemTooltip.SagBag={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.SagCore=射手座之核
+ItemName.SagCore=射手座核心
+ItemTooltip.SagCore=激活一圈环绕着你并保护你免受敌人攻击的探针
 
 ItemName.SagShield=人马盾
 ItemTooltip.SagShield=按下ability能力键在你周围释放护盾保护你免受伤害\n在护盾中无法使用物品\n在护盾中生命回复大大提高\n护盾持续5秒\n护盾冷却时间5分钟
@@ -2058,6 +2062,7 @@ ItemName.Sickle=绝零冰刺
 ItemTooltip.Sickle=发射冰晶碎片.
 
 ItemName.SickleShot=镰弯击弓
+ItemTooltip.SickleShot=快速连续发射两波两支冰箭
 
 ItemName.SnakeStaff=绝零蛇杖
 ItemTooltip.SnakeStaff=召唤一个冰蛇为你而战\n每个召唤物占用两个召唤栏
@@ -2430,11 +2435,11 @@ ItemTooltip.EnderStaff=召唤一个旋转焚天结构粉碎敌人\n我觉得天�
 ItemName.EnderStaffEX=焚天镰刀
 ItemTooltip.EnderStaffEX=召唤一个旋转焚天结构粉碎敌人\n焚天法杖EX
 
-ItemName.Etheral=优雅
+ItemName.Etheral=超凡
 ItemTooltip.Etheral= “在错误的人的手里,就会有毁灭性的伤害,所以不要给我!”\n-TheRedstoneBro
 
 ItemName.EtheralEX=光明
-ItemTooltip.EtheralEX=优雅EX
+ItemTooltip.EtheralEX=超凡EX
 
 ItemName.FreedomBlaster=自由爆破枪
 ItemTooltip.FreedomBlaster=一种能发射等离子弹和偶尔发射电荷弹的全自动武器.\n“我可能更喜欢传统的终结者, 不过这个也很有趣!”\n-Tails
@@ -3244,6 +3249,7 @@ ItemTooltip.TerraBladeEX=发射回旋弹道并造成泰拉之焰\n泰拉之刃EX
 ItemName.TerraShortsword=泰拉阔剑
 
 ItemName.ThanosSword=狂热泰坦的双刃剑
+ItemTooltip.ThanosSword=右键如同回旋镖一样扔出
 
 ItemName.ThanosSwordEX=灭霸双翼刀
 ItemTooltip.ThanosSwordEX=“我...无人能敌”\n狂热泰坦的双刃剑EX
@@ -3391,7 +3397,7 @@ ItemName.TheBigOne=大.药.瓶
 // AAMod.Items.Ranged.Ammo
 
 
-ItemName.ChaosArrow=冥昧箭
+ItemName.ChaosArrow=混沌箭
 ItemTooltip.ChaosArrow=攻击造成随机选择debuff
 
 ItemName.DarkmatterArrow=暗物质箭
