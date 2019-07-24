@@ -101,6 +101,9 @@ BuffDescription.Fishnado=召唤一个飓风鲨为你而战
 BuffName.FlameSoul=狱焰之灵
 BuffDescription.FlameSoul=你越虚弱，它越强力
 
+BuffName.Glitched=故障
+BuffDescription.Glitched=你感觉你的头离你有10英里远
+
 BuffName.Glowmoss=发光苔球
 BuffDescription.Glowmoss=别问什么让它发光. 相信我.
 
@@ -2954,7 +2957,8 @@ ItemName.TerraShard=泰拉碎片
 
 ItemName.UraniumBar=铀绿锭
 
-ItemName.VikingRelic=维京海盗遗物\n(骷髅王后,雪地地下，地图中显示背景色，实际为蓝白色，较难找)
+ItemName.VikingRelic=维京海盗遗物
+ItemTooltip.VikingRelic=(骷髅王后,雪地地下，地图中显示背景色，实际为蓝白色，较难找)
 
 ItemName.VoidEnergy=虚空能量
 ItemTooltip.VoidEnergy=黑暗和不稳定能量的奇点
