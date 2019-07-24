@@ -523,7 +523,6 @@ namespace AAMod.NPCs.Bosses.Rajah
                 if (npc.life < (npc.lifeMax / 7))
                 {
                     npc.damage = (int)(npc.defDamage * 2.2f);
-                    npc.defense = (int)(npc.defense * 1.5f);
                 }
             }
             else
@@ -531,7 +530,6 @@ namespace AAMod.NPCs.Bosses.Rajah
                 if (npc.life == npc.lifeMax / 7)
                 {
                     npc.damage = (int)(npc.defDamage * 1.5f);
-                    npc.defense = (int)(npc.defense * 1.5f);
                 }
             }
 
