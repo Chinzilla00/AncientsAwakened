@@ -195,7 +195,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                         Vector2 fireTarget = npc.Center;
                         float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                         fireTarget = BaseUtility.RotateVector(npc.Center, fireTarget, rot);
-                        BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("SagProj"), npc.damage / 2, 0f, 4f);
+                        BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("SagProj"), npc.damage / (Main.expertMode ? 2 : 4), 0f, 4f);
                     }
                 }
             }
@@ -223,7 +223,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                         Vector2 fireTarget = npc.Center;
                         float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                         fireTarget = BaseUtility.RotateVector(npc.Center, fireTarget, rot);
-                        BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("SagProj"), npc.damage / 2, 0f, 4f);
+                        BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("SagProj"), npc.damage / (Main.expertMode ? 2 : 4), 0f, 4f);
                     }
                 }
             }
