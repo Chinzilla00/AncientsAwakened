@@ -284,7 +284,7 @@ namespace AAMod.NPCs.Bosses.Truffle
                 {
                     ShotLaser = true;
                     Vector2 center11 = npc.Center;
-                    Projectile.NewProjectile(center11.X, center11.Y, 0f, 0f, 447, npc.damage / 2, 0f, Main.myPlayer, (npc.whoAmI + 1), 0f);
+                    Projectile.NewProjectile(center11.X, center11.Y, 0f, 0f, 447, npc.damage / Main.expertMode ? 2 : 4, 0f, Main.myPlayer, (npc.whoAmI + 1), 0f);
                 }
                 Main.PlaySound(SoundID.Item12, npc.Center);
                 if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
@@ -380,7 +380,7 @@ namespace AAMod.NPCs.Bosses.Truffle
         public void FireMagic(NPC npc, Vector2 velocity)
         {
             Player player = Main.player[npc.target];
-            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("TruffleShot"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 8f, true, new Vector2(20f, 15f));
+            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("TruffleShot"), ref shootAI[0], 5, npc.damage / Main.expertMode ? 2 : 4, 8f, true, new Vector2(20f, 15f));
             npc.netUpdate = true;
         }
 

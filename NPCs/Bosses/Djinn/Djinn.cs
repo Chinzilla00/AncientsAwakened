@@ -429,7 +429,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
             foreach (Point current2 in list4)
             {
-                Projectile.NewProjectile(current2.X * 16, current2.Y * 16, 0f, 0f, 658, 0, 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(current2.X * 16, current2.Y * 16, 0f, 0f, 658, npc.damage / Main.expertMode ? 2 : 4, 0f, Main.myPlayer, 0f, 0f);
             }
         }
 

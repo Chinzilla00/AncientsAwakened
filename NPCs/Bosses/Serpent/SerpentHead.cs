@@ -293,7 +293,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                 attackTimer++;
                 if (attackTimer == 20 || attackTimer == 50 || attackTimer == 79)
                 {
-                    BaseAI.FireProjectile(Main.player[npc.target].Center, npc, mod.ProjectileType<IceBall2>(), npc.damage / 2, 3, 14f, 0, 0, -1);
+                    BaseAI.FireProjectile(Main.player[npc.target].Center, npc, mod.ProjectileType<IceBall2>(), npc.damage / Main.expertMode ? 2 : 4, 3, 14f, 0, 0, -1);
                     npc.netUpdate = true;
                 }
                 if (attackTimer >= 80)
@@ -347,7 +347,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                         PlayerPosX += npc.velocity.X * 0.5f;
                         PlayerDistance.X -= PlayerPosX * 1f;
                         PlayerDistance.Y -= PlayerPosY * 1f;
-                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("SnowBreath"), npc.damage, 0, Main.myPlayer);
+                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("SnowBreath"), npc.damage / Main.expertMode ? 2 : 4, 0, Main.myPlayer);
                     }
                 }
                 if (attackTimer >= 80)
