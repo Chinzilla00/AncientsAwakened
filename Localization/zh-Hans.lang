@@ -2918,7 +2918,7 @@ ItemName.PrimevalSkull=始源之头骨
 ItemTooltip.PrimevalSkull=那个时代的能量从这个古老的化石中辐射出来
 
 ItemName.PureEvil=纯净之恶
-ItemTooltip.PureEvil=太邪恶了，你看着他就会有罪恶感
+ItemTooltip.PureEvil=太邪恶了，你看着他就会有罪恶感\n(世花后,地狱红恶魔掉落)
 
 ItemName.RadiantIncinerite=焚射锭
 ItemTooltip.RadiantIncinerite=亮的你都看不见了
@@ -3661,7 +3661,7 @@ ItemName.ProbeControlUnit=虚空探头控制单元
 ItemTooltip.ProbeControlUnit=召唤一个虚空探头为你而战
 
 ItemName.SkullStaff=骷髅魔杖
-ItemTooltip.SkullStaff=召唤一个水生骷髅为你而战
+ItemTooltip.SkullStaff=召唤一个水生骷髅为你而战\n(地牢骷髅掉落)
 
 ItemName.TerraStaff=泰拉权杖
 ItemTooltip.TerraStaff=召唤一个泰拉恶魔为你而战
