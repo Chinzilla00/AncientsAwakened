@@ -26,7 +26,7 @@ Cat's Eye Rifle EX");
 
         public override void SetDefaults()
         {
-            item.damage = 850; 
+            item.damage = 900; 
             item.noMelee = true;
             item.ranged = true;
             item.width = 86; 

@@ -14,13 +14,14 @@ namespace AAMod.Items.Magic
 
         public override void SetDefaults()
         {
-            item.damage = 170;
+            item.damage = 200;
             item.magic = true;
             item.mana = 6;
             item.width = 64;
             item.height = 64;
-            item.useTime = 16;
+            item.useTime = 5;
             item.useAnimation = 16;
+            Items.reuseDelay = 16;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 5;

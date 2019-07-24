@@ -14,7 +14,7 @@ namespace AAMod.Items.Vanity.Gibs
             DisplayName.SetDefault("Revenant's Jet Booster");
             Tooltip.SetDefault(@"Allows flight and slow fall
 Hold down and jump to hover for an extended period of time
-'Great for impersonating Ancients Awakened Contributors!'");
+'Great for impersonating Ancients Awakened Developers!'");
 		}
 
 		public override void SetDefaults()
