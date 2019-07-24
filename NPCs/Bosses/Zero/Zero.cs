@@ -121,7 +121,6 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 internalAI[2] = 0;
                 internalAI[3] = 0;
-                killArms = true;
                 npc.netUpdate = true;
             }
             if (Main.netMode != 1) BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
@@ -210,7 +209,6 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public int MinionTimer = 0;
         public float Distance = 0;
-        public bool killArms = false;
         public float[] internalAI = new float[5];
 
         public override void SendExtraAI(BinaryWriter writer)
@@ -224,7 +222,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 writer.Write(internalAI[3]);
                 writer.Write(internalAI[4]);
                 writer.Write(Distance);
-                writer.Write(killArms);
             }
         }
 
@@ -239,7 +236,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 internalAI[3] = reader.ReadFloat();
                 internalAI[4] = reader.ReadFloat();
                 Distance = reader.ReadFloat();
-                killArms = reader.ReadBool();
             }
         }
 
@@ -318,7 +314,6 @@ namespace AAMod.NPCs.Bosses.Zero
                     }
                     else
                     {
-                        KillArms();
                         if (Main.netMode != 1)
                         {
                             Distance = 0;
@@ -329,7 +324,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 return;
             }
 
-            if (Main.netMode != 1 && internalAI[2] != 1 && !killArms)
+            if (Main.netMode != 1 && internalAI[2] != 1)
             {
                 for(int m = 0; m < WeaponCount; m++)
                 {
@@ -541,30 +536,6 @@ namespace AAMod.NPCs.Bosses.Zero
             else
             {
                 npc.frame.Y = frameHeight;
-            }
-        }
-
-        public void KillArms()
-        {
-            if (Main.netMode != 1)
-            {
-                if (killArms)
-                {
-                    if (internalAI[4]++ > 30)
-                    {
-                        killArms = false;
-                        internalAI[4] = 0;
-                    }
-                    else
-                    {
-                        killArms = true;
-                        npc.netUpdate = true;
-                    }
-                }
-                else
-                {
-                    internalAI[4] = 0;
-                }
             }
         }
 

@@ -17,7 +17,6 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.hostile = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
-            projectile.alpha = 255;
             projectile.alpha = 80;
             projectile.tileCollide = false;
         }
