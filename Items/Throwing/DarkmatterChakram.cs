@@ -68,7 +68,8 @@ namespace AAMod.Items.Throwing
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-		    recipe.AddIngredient(null, "DarkMatter", 15);
+            recipe.AddIngredient(null, "DarkEnergy", 5);
+            recipe.AddIngredient(null, "DarkMatter", 15);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);
             recipe.AddRecipe();

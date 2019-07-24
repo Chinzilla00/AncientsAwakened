@@ -183,7 +183,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 npc.Transform(mod.NPCType<SagittariusFree>());
             }
 
-            if (internalAI[3] == 2f)
+            if (internalAI[3] == 1f)
             {
                 npc.TargetClosest(true);
                 npc.velocity *= .7f;
@@ -218,7 +218,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 npc.TargetClosest(true);
                 if (Main.player[npc.target].dead)
                 {
-                    if (internalAI[3] != 2f || internalAI[3] != 3f)
+                    if (internalAI[3] != 1f)
                     {
                         if (Main.netMode != 1) BaseUtility.Chat("target(s) neutralized. returning to stealth mode.", Color.PaleVioletRed);
                         internalAI[3] = 1f;
@@ -230,10 +230,10 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 npc.TargetClosest(true);
                 if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 5000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 5000f)
                 {
-                    if (internalAI[3] != 1f || internalAI[3] != 3f)
+                    if (internalAI[3] != 1f)
                     {
                         if (Main.netMode != 1) BaseUtility.Chat("target(s) lost. returning to stealth mode.", Color.PaleVioletRed);
-                        internalAI[3] = 2f;
+                        internalAI[3] = 1f;
                     }
                 }
             }

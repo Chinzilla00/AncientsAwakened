@@ -69,10 +69,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
         }
 
-        private Color Glow = GenericUtils.COLOR_GLOWPULSE;
-        private Vector2 PlayerPos = new Vector2(0, 0);
-        private Vector2 OldPos = new Vector2(0, 0);
-
         public override void AI()
         {
             if (!NPC.AnyNPCs(mod.NPCType<SagittariusOrbiter>()))
@@ -138,38 +134,14 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             if (npc.ai[0] == 1 || npc.ai[0] == 4 || npc.ai[0] == 7 || npc.ai[0] == 10)
             {
                 aiTimerFire = 50;
-                if (shootAI[0] < 50)
-                {
-                    Glow = AAColor.ZeroShield;
-                }
-                else
-                {
-                    Glow = GenericUtils.COLOR_GLOWPULSE;
-                }
             }
             if (npc.ai[0] == 2 || npc.ai[0] == 5 || npc.ai[0] == 8 || npc.ai[0] == 11)
             {
                 aiTimerFire = 100;
-                if (shootAI[0] < 100 && shootAI[0] > 50)
-                {
-                    Glow = AAColor.ZeroShield;
-                }
-                else
-                {
-                    Glow = GenericUtils.COLOR_GLOWPULSE;
-                }
             }
             if (npc.ai[0] == 3 || npc.ai[0] == 6 || npc.ai[0] == 9 || npc.ai[0] == 12)
             {
                 aiTimerFire = 150;
-                if (shootAI[0] > 100)
-                {
-                    Glow = AAColor.ZeroShield;
-                }
-                else
-                {
-                    Glow = GenericUtils.COLOR_GLOWPULSE;
-                }
             }
 
 

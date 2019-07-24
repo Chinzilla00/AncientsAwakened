@@ -33,6 +33,7 @@ namespace AAMod.Items.Tools
         public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Stardust", 5);
             recipe.AddIngredient(null, "RadiumBar", 12);
             recipe.AddTile(null, "QuantumFusionAccelerator");   
             recipe.SetResult(this);  

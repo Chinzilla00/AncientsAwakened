@@ -29,7 +29,8 @@ namespace AAMod.Items.Ranged.Ammo
         public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "RadiumBar", 3);
+            recipe.AddIngredient(null, "Stardust", 1);
+            recipe.AddIngredient(null, "RadiumBar", 3);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this, 400);
 			recipe.AddRecipe();

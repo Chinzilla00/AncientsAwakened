@@ -54,6 +54,7 @@ namespace AAMod.Items.Ranged
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Stardust", 5);
             recipe.AddIngredient(null, "RadiumBar", 16);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);

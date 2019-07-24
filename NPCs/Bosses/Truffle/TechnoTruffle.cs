@@ -14,18 +14,16 @@ namespace AAMod.NPCs.Bosses.Truffle
     public class TechnoTruffle : ModNPC
     {
         public bool AIType = true;
-        public bool ShotLaser = true;
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
+            if ((Main.netMode == 2 || Main.dedServ))
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
                 writer.Write(AIType);
-                writer.Write(ShotLaser);
             }
         }
 
@@ -39,7 +37,6 @@ namespace AAMod.NPCs.Bosses.Truffle
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
                 AIType = reader.ReadBool();
-                ShotLaser = reader.ReadBool();
             }
         }
 
@@ -55,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Truffle
             npc.damage = 50;
             npc.defense = 40;
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
-            npc.value = Item.sellPrice(0, 10, 0, 0);
+            npc.value = Item.sellPrice(0, 12, 0, 0);
             npc.aiStyle = 0;
             npc.width = 66;
             npc.height = 104;
@@ -141,7 +138,7 @@ namespace AAMod.NPCs.Bosses.Truffle
             }
             if (Main.player[npc.target].dead)
             {
-                npc.TargetClosest();
+                npc.TargetClosest(true);
                 if (Main.player[npc.target].dead)
                 {
                     npc.active = false;
@@ -280,16 +277,10 @@ namespace AAMod.NPCs.Bosses.Truffle
                 npc.noTileCollide = true;
                 npc.noGravity = true;
                 BaseAI.AISpaceOctopus(npc, ref npc.ai, .05f, 8, 250, 0, null);
-                if (Main.netMode != 1 && !ShotLaser)
-                {
-                    ShotLaser = true;
-                    Vector2 center11 = npc.Center;
-                    Projectile.NewProjectile(center11.X, center11.Y, 0f, 0f, 447, npc.damage / (Main.expertMode ? 2 : 4), 0f, Main.myPlayer, (npc.whoAmI + 1), 0f);
-                }
-                Main.PlaySound(SoundID.Item12, npc.Center);
+                npc.rotation = 0;
                 if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
-                    ShotLaser = false;
+                    npc.rotation = 0;
                     npc.noGravity = false;
                     internalAI[0] = 0;
                     internalAI[3] = Main.rand.Next(3);
@@ -301,11 +292,7 @@ namespace AAMod.NPCs.Bosses.Truffle
             }
             else
             {
-                BaseAI.AICharger(npc, ref npc.ai, 0.07f, 14f, false);
-                npc.rotation = 0;
-            }
-            if (internalAI[3] != AISTATE_DASH)
-            {
+                BaseAI.AICharger(npc, ref npc.ai, 0.07f, 10f, false, 30);
                 npc.rotation = 0;
             }
         }
@@ -380,7 +367,7 @@ namespace AAMod.NPCs.Bosses.Truffle
         public void FireMagic(NPC npc, Vector2 velocity)
         {
             Player player = Main.player[npc.target];
-            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("TruffleShot"), ref shootAI[0], 5, npc.damage / (Main.expertMode ? 2 : 4), 8f, true, new Vector2(20f, 15f));
+            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("TruffleShot"), ref shootAI[0], 5, (int)(npc.damage * (Main.expertMode ? 0.25f : 0.5f)), 8f, true, new Vector2(20f, 15f));
             npc.netUpdate = true;
         }
 
@@ -403,8 +390,19 @@ namespace AAMod.NPCs.Bosses.Truffle
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("TruffleMask"));
                 }
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.SoulofSight, Main.rand.Next(25, 40));
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("FulguriteBar"), Main.rand.Next(30, 64));
+                for (int i = 0; i < Main.rand.Next(15, 20); i++)
+                {
+                    int type = ItemID.SoulofFright;
+                    if (Main.rand.Next(3) == 0)
+                    {
+                        type = ItemID.SoulofSight;
+                    }
+                    else if (Main.rand.Next(3) == 1)
+                    {
+                        type = ItemID.SoulofMight;
+                    }
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, type, 1);
+                }
             }
         }
 
@@ -467,7 +465,7 @@ namespace AAMod.NPCs.Bosses.Truffle
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
-            float length = dist == Vector2.Zero ? 0f : dist.Length();
+            float length = (dist == Vector2.Zero ? 0f : dist.Length());
             if (length < moveSpeed)
             {
                 velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
@@ -484,12 +482,12 @@ namespace AAMod.NPCs.Bosses.Truffle
             {
                 moveSpeed *= 0.5f;
             }
-            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
+            npc.velocity = (length == 0f ? Vector2.Zero : Vector2.Normalize(dist));
             npc.velocity *= moveSpeed;
-			if (npc.direction == -1)
-				npc.velocity *= velMultiplier;
-			else
-				npc.velocity *= -velMultiplier;
+            if (npc.direction == -1)
+                npc.velocity *= velMultiplier;
+            else
+                npc.velocity *= -velMultiplier;
         }
 
 
@@ -509,8 +507,6 @@ namespace AAMod.NPCs.Bosses.Truffle
             return false;
         }
     }
-
-
 }
 
 
