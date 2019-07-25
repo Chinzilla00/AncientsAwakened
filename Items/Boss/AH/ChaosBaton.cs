@@ -71,7 +71,7 @@ namespace AAMod.Items.Boss.AH
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "CyberBaton", 1);
+            recipe.AddIngredient(null, "ClawBaton", 1);
             recipe.AddIngredient(null, "DaybreakIncinerite", 5);
             recipe.AddIngredient(null, "EventideAbyssium", 5);
             recipe.AddTile(null, "QuantumFusionAccelerator");

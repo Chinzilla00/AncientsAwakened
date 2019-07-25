@@ -678,11 +678,6 @@ namespace AAMod
                         case "grips":
                         case "gripsofchaos": return AAWorld.downedGrips;
                         case "tode": return AAWorld.downedToad;
-                        case "retriever": return AAWorld.downedRetriever;
-                        case "orthrus": return AAWorld.downedOrthrus;
-                        case "raider": return AAWorld.downedRaider;
-                        case "stormany": return AAWorld.downedStormAny;
-                        case "stormall": return AAWorld.downedStormAll;
                         case "daybringer": return AAWorld.downedDB;
                         case "nightcrawler": return AAWorld.downedNC;
                         case "equinox": return AAWorld.downedEquinox;
