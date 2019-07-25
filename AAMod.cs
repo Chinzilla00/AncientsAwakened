@@ -286,6 +286,7 @@ namespace AAMod
             PremultiplyTexture(GetTexture("Backgrounds/YamataBeam"));
             PremultiplyTexture(GetTexture("Backgrounds/AkumaAMeteor"));
             PremultiplyTexture(GetTexture("Backgrounds/AkumaMeteor"));
+            PremultiplyTexture(GetTexture("Backgrounds/SkyTex"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier"));
             PremultiplyTexture(GetTexture("Projectiles/RadiumStar"));
