@@ -526,7 +526,7 @@ namespace AAMod
             }));
 
 
-            tasks.Insert(shiniesIndex2 + 4, new PassLegacy("Terrarium", delegate (GenerationProgress progress)
+            tasks.Insert(shiniesIndex2 + 7, new PassLegacy("Terrarium", delegate (GenerationProgress progress)
             {
                 Terrarium(progress);
             }));
@@ -538,7 +538,7 @@ namespace AAMod
             }));
 
 
-            tasks.Insert(shiniesIndex2 + 6, new PassLegacy("Altars", delegate (GenerationProgress progress)
+            tasks.Insert(shiniesIndex2 + 8, new PassLegacy("Altars", delegate (GenerationProgress progress)
             {
                 Altars(progress);
             }));
