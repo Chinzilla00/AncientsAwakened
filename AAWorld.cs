@@ -61,10 +61,8 @@ namespace AAMod
         public static bool ModContentGenerated;
         //Messages
         public static bool Evil;
-        public static bool Compass;
         public static bool Empowered;
         //Boss Bools
-        public static bool Chairlol;
         public static bool Ancients;
         public static bool downedMonarch;
         public static bool downedGrips;
@@ -82,16 +80,10 @@ namespace AAMod
         public static bool downedYamata;
         public static bool zeroUS;
         public static bool downedZero;
-        public static bool downedKraken;
         public static bool downedAllAncients;
         public static bool ShenSummoned;
         public static bool downedShen;
-        public static bool downedIZ;
-        public static int downedIZnumber;
         public static bool downedToad;
-        public static bool downedGripsS;
-        public static bool downedSoC;
-        public static bool DarkmatterMeteorBool;
         public static bool downedFungus;
         public static bool downedAshe;
         public static bool downedHaruka;
@@ -133,7 +125,6 @@ namespace AAMod
         public override void Initialize()
         {
             //Bosses
-            Chairlol = false;
             downedMonarch = false;
             downedGrips = false;
             downedEquinox = false;
@@ -143,14 +134,9 @@ namespace AAMod
             zeroUS = false;
             downedZero = false;
             downedShen = false;
-            downedIZ = false;
             downedAllAncients = false;
-            downedIZnumber = 0;
             ShenSummoned = false;
             downedToad = false;
-            downedGripsS = false;
-            downedSoC = false;
-            downedKraken = false;
             downedFungus = false;
             downedDjinn = false;
             downedSerpent = false;
@@ -175,9 +161,7 @@ namespace AAMod
             DiscordOres = downedSisters;
             InfernoStripe = Main.hardMode;
             MireStripe = Main.hardMode;
-            DarkmatterMeteorBool = false;
             Anticheat = true;
-            Compass = false;
             ModContentGenerated = false;
             Empowered = downedShen;
             mirePos = new Vector2(0, 0);
@@ -229,7 +213,6 @@ namespace AAMod
         public override TagCompound Save()
         {
             var downed = new List<string>();
-            if (Chairlol) downed.Add("lol");
             if (downedMonarch) downed.Add("Monarch");
             if (downedGrips) downed.Add("Grips");
             if (downedHydra) downed.Add("Hydra");
@@ -246,16 +229,11 @@ namespace AAMod
             if (downedYamata) downed.Add("Yamata");
             if (downedZero) downed.Add("0");
             if (downedShen) downed.Add("Shen");
-            if (downedIZ) downed.Add("IZ");
             if (downedAllAncients) downed.Add("DAA");
             if (ShenSummoned) downed.Add("ShenS");
             if (downedSerpent) downed.Add("Serpent");
             if (downedDjinn) downed.Add("Djinn");
             if (downedToad) downed.Add("Toad");
-            if (downedGripsS) downed.Add("GripsS");
-            if (downedSoC) downed.Add("SoC");
-            if (Compass) downed.Add("Compass");
-            if (downedKraken) downed.Add("Kraken");
             if (downedFungus) downed.Add("Fungus");
             if (InfernoStripe) downed.Add("IStripe");
             if (MireStripe) downed.Add("MStripe");
@@ -430,7 +408,6 @@ namespace AAMod
         {
             var downed = tag.GetList<string>("downed");
             //bosses
-            Chairlol = downed.Contains("lol");
             downedMonarch = downed.Contains("Monarch");
             downedGrips = downed.Contains("Grips");
             downedBrood = downed.Contains("Brood");
@@ -446,17 +423,12 @@ namespace AAMod
             downedYamata = downed.Contains("Yamata");
             downedZero = downed.Contains("0");
             downedShen = downed.Contains("Shen");
-            downedIZ = downed.Contains("IZ");
             downedAllAncients = downed.Contains("DAA");
             Ancients = downed.Contains("AA");
             ShenSummoned = downed.Contains("ShenS");
             downedSerpent = downed.Contains("Serpent");
             downedDjinn = downed.Contains("Djinn");
             downedToad = downed.Contains("Toad");
-            downedGripsS = downed.Contains("GripsS");
-            downedSoC = downed.Contains("SoC");
-            Compass = downed.Contains("Compass");
-            downedKraken = downed.Contains("Kraken");
             downedFungus = downed.Contains("Fungus");
             downedAshe = downed.Contains("Ashe");
             downedHaruka = downed.Contains("Haruka");
@@ -1284,7 +1256,7 @@ namespace AAMod
                 downedAncient = true;
             }
 
-            if (downedShen || downedIZ)
+            if (downedShen)
             {
                 downedSAncient = true;
             }

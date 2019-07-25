@@ -524,7 +524,6 @@ namespace AAMod
 
             AAPlayer Ancients = player.GetModPlayer<AAPlayer>();
 
-            bool zoneIZ = Ancients.ZoneVoid && !AAWorld.downedIZ;
             bool zoneShen = (Ancients.ZoneRisingSunPagoda || Ancients.ZoneRisingMoonLake) && !AAWorld.downedShen;
 
             if (zoneShen && AAWorld.downedAllAncients)
@@ -535,7 +534,7 @@ namespace AAMod
                 return;
             }
 
-            if (zoneIZ && AAWorld.downedZero && !player.ZoneRockLayerHeight)
+            if (Ancients.ZoneVoid && AAWorld.downedZero && !player.ZoneRockLayerHeight)
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
@@ -686,17 +685,11 @@ namespace AAMod
                         case "sancient":
                         case "sancientany": return AAWorld.downedSAncient;
                         case "gripsS":
-                        case "discordgrips": return AAWorld.downedGripsS;
-                        case "kraken": return AAWorld.downedKraken;
                         case "akuma": return AAWorld.downedAkuma;
                         case "yamata": return AAWorld.downedYamata;
                         case "zero": return AAWorld.downedZero;
                         case "shen":
                         case "shendoragon": return AAWorld.downedShen;
-                        case "iz":
-                        case "infinityzero": return AAWorld.downedIZ;
-                        case "soc":
-                        case "soulofcthulhu": return AAWorld.downedSoC;
                     }
                 };
                 return downed;
