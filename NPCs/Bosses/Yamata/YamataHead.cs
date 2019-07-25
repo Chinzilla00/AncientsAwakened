@@ -110,7 +110,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override void AI()
         {
-            int attackpower = isAwakened ? 130 : 100;
+            int attackpower = isAwakened ? 260 : 230;
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
