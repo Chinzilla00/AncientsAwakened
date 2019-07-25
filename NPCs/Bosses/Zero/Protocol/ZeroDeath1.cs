@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public bool linesaid = false;
         public override void AI()
         {
-            if (Main.expertMode && !AAWorld.downedZero && !linesaid && !AAWorld.downedIZ)
+            if (Main.expertMode && !AAWorld.downedZero && !linesaid)
             {
                 if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("ZeroDeath1"), Color.Red.R, Color.Red.G, Color.Red.B);
                 linesaid = true;
@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         }
         public override void Kill(int timeLeft)
         {
-            if (!AAWorld.downedZero && Main.expertMode && !AAWorld.downedIZ)
+            if (!AAWorld.downedZero && Main.expertMode)
             {
                 if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("ZeroDeath3"), Color.Red.R, Color.Red.G, Color.Red.B);
             }

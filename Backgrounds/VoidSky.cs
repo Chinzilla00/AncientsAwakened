@@ -169,10 +169,7 @@ namespace AAMod.Backgrounds
                     spriteBatch.Draw(LB, planetPos, null, Color.White * 0.9f * Intensity * lightningIntensity, LBRotation, new Vector2(LB.Width >> 1, LB.Height >> 1), 1f, SpriteEffects.None, 1f);
                     if (AAWorld.downedZero)
                     {
-                        if (!AAWorld.downedIZ)
-                        {
-                            spriteBatch.Draw(Echo, echoPos, null, GetGlowAlpha(true), 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), AAWorld.downedAllAncients ? 0.4f : .3f, SpriteEffects.None, 1f);
-                        }
+                        spriteBatch.Draw(Echo, echoPos, null, GetGlowAlpha(true), 0f, new Vector2(Echo.Width >> 1, Echo.Height >> 1), AAWorld.downedAllAncients ? 0.4f : .3f, SpriteEffects.None, 1f);
                     }
                 }
 				Color astroGlow = Color.White * MathHelper.Lerp(0.7f, 1f, Main.mouseTextColor / 255f);

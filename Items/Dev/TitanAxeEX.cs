@@ -32,6 +32,7 @@ Titan Axe EX");
             item.shoot = mod.ProjectileType("Surasshu");
             item.shootSpeed = 15f;
             item.expert = true; item.expertOnly = true;
+            item.UseSound = SoundID.Item1;
         }
 
         public override bool AltFunctionUse(Player player)

@@ -111,9 +111,6 @@ namespace AAMod.NPCs.TownNPCs
             Hydra = false;
             Djinn = false;
             Serpent = false;
-            Raider = false;
-            Retriever = false;
-            Orthrus = false;
             Equinox = false;
             AnubisB = false;
             Sisters = false;
@@ -143,12 +140,6 @@ namespace AAMod.NPCs.TownNPCs
             string DjinnT = Lang.TownNPCAnubis("SetChatButtons8");
 
             string SerpentT = Lang.TownNPCAnubis("SetChatButtons9");
-
-            string RetT = Lang.TownNPCAnubis("SetChatButtons10");
-
-            string RaidT = Lang.TownNPCAnubis("SetChatButtons11");
-
-            string OrthrusT = Lang.TownNPCAnubis("SetChatButtons12");
 
             string EquinoxT = Lang.TownNPCAnubis("SetChatButtons13");
 
@@ -207,57 +198,42 @@ namespace AAMod.NPCs.TownNPCs
                 button2 = SerpentT;
                 Serpent = true;
             }
-            else if (ChatNumber == 8 && Main.hardMode)
-            {
-                button2 = RetT;
-                Retriever = true;
-            }
-            else if (ChatNumber == 9 && Main.hardMode)
-            {
-                button2 = RaidT;
-                Raider = true;
-            }
-            else if (ChatNumber == 10 && Main.hardMode)
-            {
-                button2 = OrthrusT;
-                Orthrus = true;
-            }
-            else if (ChatNumber == 11 && NPC.downedMoonlord)
+            else if (ChatNumber == 8 && NPC.downedMoonlord)
             {
                 button2 = EquinoxT;
                 Equinox = true;
             }
-            else if (ChatNumber == 12 && NPC.downedMoonlord)
+            else if (ChatNumber == 9 && NPC.downedMoonlord)
             {
                 button2 = AnubisT;
                 AnubisB = true;
             }
-            else if (ChatNumber == 13 && NPC.downedMoonlord && AAWorld.downedEquinox)
+            else if (ChatNumber == 10 && NPC.downedMoonlord && AAWorld.downedEquinox)
             {
                 button2 = SistersT;
                 Sisters = true;
             }
-            else if (ChatNumber == 14 && NPC.downedMoonlord && AAWorld.downedSisters)
+            else if (ChatNumber == 11 && NPC.downedMoonlord && AAWorld.downedSisters)
             {
                 button2 = AkumaT;
                 Akuma = true;
             }
-            else if (ChatNumber == 15 && NPC.downedMoonlord && AAWorld.downedSisters)
+            else if (ChatNumber == 12 && NPC.downedMoonlord && AAWorld.downedSisters)
             {
                 button2 = YamataT;
                 Yamata = true;
             }
-            else if (ChatNumber == 16 && NPC.downedMoonlord && AAWorld.downedNC)
+            else if (ChatNumber == 13 && NPC.downedMoonlord && AAWorld.downedNC)
             {
                 button2 = ZeroT;
                 Zero = true;
             }
-            else if (ChatNumber == 17 && AAWorld.downedAllAncients)
+            else if (ChatNumber == 14 && AAWorld.downedAllAncients)
             {
                 button2 = ShenT;
                 Shen = true;
             }
-            else if (ChatNumber == 18 && AAWorld.downedShen)
+            else if (ChatNumber == 15 && AAWorld.downedShen)
             {
                 button2 = StonesT;
                 Stones = true;
@@ -279,9 +255,6 @@ namespace AAMod.NPCs.TownNPCs
             Hydra = false;
             Djinn = false;
             Serpent = false;
-            Raider = false;
-            Retriever = false;
-            Orthrus = false;
             Equinox = false;
             DoNext = false;
             Sisters = false;
@@ -345,21 +318,6 @@ namespace AAMod.NPCs.TownNPCs
             {
                 return AAWorld.downedSerpent ? Lang.TownNPCAnubis("downedSerpentY") : 
                     Lang.TownNPCAnubis("downedSerpentN");
-            }
-            else if (Retriever)
-            {
-                return AAWorld.downedRetriever ? Lang.TownNPCAnubis("downedRetrieverY") : 
-                    Lang.TownNPCAnubis("downedRetrieverN");
-            }
-            else if (Raider)
-            {
-                return AAWorld.downedRaider ? Lang.TownNPCAnubis("downedRaiderY") : 
-                    Lang.TownNPCAnubis("downedRaiderN");
-            }
-            else if (Orthrus)
-            {
-                return AAWorld.downedOrthrus ? Lang.TownNPCAnubis("downedOrthrusY") : 
-                    Lang.TownNPCAnubis("downedOrthrusN");
             }
             else if (Equinox)
             {

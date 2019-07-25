@@ -823,7 +823,6 @@ namespace AAMod
             TransmuteRecipe(ItemID.OrichalcumBar, (short)AAMod.instance.ItemType("UraniumBar"));
             TransmuteRecipe(ItemID.AdamantiteBar, (short)AAMod.instance.ItemType("TechneciumBar"));
             TransmuteRecipe(ItemID.TitaniumBar, (short)AAMod.instance.ItemType("TechneciumBar"));
-            TransmuteRecipe(ItemID.HallowedBar, (short)AAMod.instance.ItemType("FulguriteBar"));
 
             TransmuteRecipe((short)AAMod.instance.ItemType("AbyssiumBar"), (short)AAMod.instance.ItemType("IncineriteBar"));
             TransmuteRecipe((short)AAMod.instance.ItemType("DeepAbyssium"), (short)AAMod.instance.ItemType("RadiantIncinerite"));

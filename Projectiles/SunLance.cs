@@ -9,7 +9,7 @@ namespace AAMod.Projectiles
     public class SunLance : ModProjectile
 	{
 		public static Color lightColor = new Color(82, 138, 206);
-		public static Vector2[] spearPos = new Vector2[]{ new Vector2(0, 0), new Vector2(50, -25), new Vector2(100, -50), new Vector2(100, 0), new Vector2(100, 50), new Vector2(50, 25), new Vector2(30, 0), new Vector2(150, 0), new Vector2(150, 0), new Vector2(30, 0) };
+		public static Vector2[] spearPos = new Vector2[]{ new Vector2(0, 0), new Vector2(50, -25), new Vector2(100, -50), new Vector2(100, 0), new Vector2(100, 50), new Vector2(50, 25), new Vector2(30, 0), new Vector2(120, 0), new Vector2(120, 0), new Vector2(30, 0) };
 	
 		public override void SetStaticDefaults()
 		{

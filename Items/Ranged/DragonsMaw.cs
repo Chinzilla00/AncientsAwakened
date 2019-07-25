@@ -11,14 +11,14 @@ namespace AAMod.Items.Ranged
         public override void SetDefaults()
         {
 
-            item.damage = 40;
+            item.damage = 30;
             item.noMelee = true;
             item.ranged = true;
             item.width = 42;
             item.height = 60;
 
-            item.useTime = 17;
-            item.useAnimation = 17;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useStyle = 5;
             item.shoot = 3;
             item.useAmmo = AmmoID.Arrow;
@@ -34,13 +34,20 @@ namespace AAMod.Items.Ranged
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dragons Maw");
-            Tooltip.SetDefault("Transforms arrows into Flaming Arrows");
+            Tooltip.SetDefault("Transforms arrows into Dragon Arrows");
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ProjectileID.FireArrow, damage, knockBack, player.whoAmI, 0f, 0f); //This is spawning a projectile of type FrostburnArrow using the original stats
-            return false; //Makes sure to not fire the original projectile
+			float rotation = MathHelper.ToRadians(5);
+			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
+			for (int i = 0; i < 2; i++)
+			{
+				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i));
+				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("DragonLaser"), damage, knockBack, player.whoAmI);
+			}
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("DragonArrow"), damage, knockBack, player.whoAmI, 0f, 0f); //This is spawning a projectile of type FrostburnArrow using the original stats
+            return false;
         }
         public override void AddRecipes()
         {

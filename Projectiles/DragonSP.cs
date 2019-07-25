@@ -15,17 +15,16 @@ namespace AAMod.Projectiles
             projectile.height = 24;
             projectile.friendly = true;
             projectile.penetrate = -1;                       //this is the projectile penetration
-            Main.projFrames[projectile.type] = 1;           //this is projectile frames
             projectile.hostile = false;
-            projectile.magic = true;                        //this make the projectile do magic damage
+            projectile.melee = true;                        //this make the projectile do magic damage
             projectile.tileCollide = true;                 //this make that the projectile does not go thru walls
             projectile.ignoreWater = true;
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("DSP");
-    }
+		public override void SetStaticDefaults()
+		{
+		  DisplayName.SetDefault("DSP");
+		}
 
  
         public override void AI()
@@ -55,18 +54,6 @@ namespace AAMod.Projectiles
                     -projectile.velocity.Y * 0.2f, 0, new Color(50, 200, 0), 1f);
                 Main.dust[num469].velocity *= 2f;
             }
-        }
-        public override bool PreDraw(SpriteBatch sb, Color lightColor)
-        {
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 10)
-            {
-                projectile.frame++;
-                projectile.frameCounter = 0;
-                if (projectile.frame > 3) 
-                    projectile.frame = 0; 
-            }
-            return true;
         }
     }
 }

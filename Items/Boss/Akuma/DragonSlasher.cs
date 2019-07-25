@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss.Akuma   //where is located
         {
             
             DisplayName.SetDefault("Dragon Shiv");
-            Tooltip.SetDefault(@"Slow, but has massive knockback explodes on contact with an enemy
+            Tooltip.SetDefault(@"Slow, but hits like a celestial body
 Inflicts Daybroken");
             
         }
@@ -41,7 +41,7 @@ Inflicts Daybroken");
 
         public override void SetDefaults()
         {
-            item.damage = 350;
+            item.damage = 1400;
             item.melee = true;
             item.width = 42;
             item.height = 52;

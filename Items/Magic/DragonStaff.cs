@@ -9,13 +9,13 @@ namespace AAMod.Items.Magic
         public override void SetDefaults()
         {
 
-            item.damage = 70;                        
+            item.damage = 50;                        
             item.magic = true;                     //this make the item do magic damage
             item.width = 60;
             item.height = 60;
 
-            item.useTime = 12;
-            item.useAnimation = 12;
+            item.useTime = 20;
+            item.useAnimation = 20;
             item.useStyle = 5;     //this is how the item is holded
             item.noMelee = true;
             item.knockBack = 6;        

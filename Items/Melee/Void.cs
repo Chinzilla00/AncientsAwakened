@@ -31,6 +31,7 @@ namespace AAMod.Items.Melee
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "DarkEnergy", 5);
             recipe.AddIngredient(null, "DarkMatter", 10);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);

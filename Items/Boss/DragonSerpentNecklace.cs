@@ -60,18 +60,6 @@ Ignores 5 Enemy defense");
                     {
                         return false;
                     }
-                    if (slot != i && player.armor[i].type == mod.ItemType<StormCharm>())
-                    {
-                        return false;
-                    }
-                    if (slot != i && player.armor[i].type == mod.ItemType<Raider.HoloCape>())
-                    {
-                        return false;
-                    }
-                    if (slot != i && player.armor[i].type == mod.ItemType<Orthrus.StormPendant>())
-                    {
-                        return false;
-                    }
                 }
             }
             return true;

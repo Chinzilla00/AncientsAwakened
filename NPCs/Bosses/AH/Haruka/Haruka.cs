@@ -300,7 +300,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         for (int i = 0; i < 3; i++)
                         {
                             double offsetAngle = startAngle + (deltaAngle * i);
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, (int)(npc.damage / 1.5f), 5, Main.myPlayer);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, npc.damage / (Main.expertMode ? 2 : 4), 5, Main.myPlayer);
                         }
                         npc.netUpdate = true;
                     }

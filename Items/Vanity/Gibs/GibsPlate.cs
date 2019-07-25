@@ -12,7 +12,7 @@ namespace AAMod.Items.Vanity.Gibs
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Revenant Plate");
-            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Contributors!'");
+            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Developers!'");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

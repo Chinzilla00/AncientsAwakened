@@ -704,14 +704,6 @@ namespace AAMod
                 Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.TrueCopper.CopperSoul>(), 40, 10, Main.myPlayer, 0, 0);
             }
 
-            if (fulgurite)
-            {
-                if (!ringActive)
-                {
-                    Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.Fulgurite.FulguriteRing>(), 40, 6, Main.myPlayer, 0, 0);
-                }
-            }
-
             if (trueBlazing)
             {
                 npc.AddBuff(BuffID.OnFire, 180);
@@ -2343,9 +2335,9 @@ namespace AAMod
                 {
                     player.mount.Dismount(player);
                 }
-                if (player.wingTimeMax > 18)
+                if (player.wingTimeMax > 15)
                 {
-                    player.wingTimeMax = 18;
+                    player.wingTimeMax = 15;
                 }
                 if (YamataAGravity)
                 {

@@ -32,6 +32,7 @@ You are immune to fall damage");
             player.accRunSpeed = 6.75f;
             player.rocketBoots = 3;
             player.moveSpeed += 5f;
+            player.noFallDmg = true;
         }
 
         public override bool WingUpdate(Player player, bool inUse)

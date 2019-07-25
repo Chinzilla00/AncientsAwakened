@@ -23,10 +23,8 @@ You know what? Just don't put it anywhere near your mouth.");
             item.width = 26;
             item.height = 26;
             item.value = Item.sellPrice(0, 10, 0, 0);
-            item.rare = 8;
             item.accessory = true;
             item.expert = true; item.expertOnly = true;
-            item.defense = 8;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -51,7 +49,6 @@ You know what? Just don't put it anywhere near your mouth.");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "HeartyTruffle", 1);
             recipe.AddIngredient(null, "MagicTruffle", 1);
-            recipe.AddIngredient(null, "MetallicTruffle", 1);
             recipe.AddIngredient(null, "ToadLeg", 1);
             recipe.AddTile(TileID.TinkerersWorkbench);
             recipe.SetResult(this);

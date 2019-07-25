@@ -8,23 +8,9 @@ using System;
 namespace AAMod.Projectiles
 {
     public class ChaosShotP : ModProjectile
-    {
-        public short customGlowMask = 0;
+    { 
         public override void SetStaticDefaults()
         {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/ChaosShot_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-            projectile.glowMask = customGlowMask;
-
             DisplayName.SetDefault("Chaos Beam");
             Main.projFrames[projectile.type] = 4;
         }
@@ -112,6 +98,12 @@ namespace AAMod.Projectiles
             }
 
             return selectedTarget;
+        }
+
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override void Kill(int timeleft)

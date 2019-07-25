@@ -14,13 +14,14 @@ namespace AAMod.Items.Magic
 
         public override void SetDefaults()
         {
-            item.damage = 170;
+            item.damage = 200;
             item.magic = true;
             item.mana = 6;
             item.width = 64;
             item.height = 64;
-            item.useTime = 16;
+            item.useTime = 5;
             item.useAnimation = 16;
+            item.reuseDelay = 16;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 5;
@@ -35,6 +36,7 @@ namespace AAMod.Items.Magic
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Stardust", 5);
             recipe.AddIngredient(null, "RadiumBar", 10);
             recipe.AddTile(null, "QuantumFusionAccelerator");
             recipe.SetResult(this);

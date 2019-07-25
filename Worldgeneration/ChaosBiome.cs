@@ -654,8 +654,6 @@ namespace AAMod.Worldgeneration
         }
     }
 
-   
-
     public class Parthenan : MicroBiome
     {
         public override bool Place(Point origin, StructureMap structures)

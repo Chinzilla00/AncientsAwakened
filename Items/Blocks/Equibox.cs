@@ -56,8 +56,8 @@ namespace AAMod.Items.Blocks
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.MusicBox);
-                recipe.AddIngredient(null, "DarkMatter", 5);
-                recipe.AddIngredient(null, "RadiumBar", 5);
+                recipe.AddIngredient(null, "DarkEnergy", 5);
+                recipe.AddIngredient(null, "Stardust", 5);
                 recipe.AddTile(TileID.Sawmill);
                 recipe.SetResult(this);
                 recipe.AddRecipe();

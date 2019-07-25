@@ -37,6 +37,7 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.lavaImmune = true;
             npc.netAlways = true;
             npc.knockBackResist = 0;
+            npc.noGravity = true;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -87,8 +88,6 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-            npc.noGravity = true;
-
             if (body == -1)
             {
                 int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Zero"), 1000, null);
@@ -106,14 +105,15 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             npc.oldPos[0] = npc.position;
 
-            int probeNumber = ((Zero)zero.modNPC).WeaponCount;
-
             if (((Zero)zero.modNPC).killArms && Main.netMode != 1)
             {
                 npc.active = false;
             }
+
+            int probeNumber = ((Zero)zero.modNPC).WeaponCount;
+
             if (rotValue == -1f) rotValue = npc.ai[0] % probeNumber * ((float)Math.PI * 2f / probeNumber);
-            rotValue += 0.05f;
+            rotValue += 0f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
             npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(((Zero)zero.modNPC).Distance, 0f), rotValue);
 

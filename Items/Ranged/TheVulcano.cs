@@ -15,8 +15,8 @@ namespace AAMod.Items.Ranged
             item.ranged = true;
             item.width = 58;
             item.height = 24;
-            item.useTime = 30;
-            item.useAnimation = 30;
+            item.useTime = 25;
+            item.useAnimation = 25;
             item.useStyle = 5;
             item.shoot = 85;
             item.knockBack = 0;

@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             projectile.velocity.X *= 0.00f;
             projectile.velocity.Y += 0.00f;
-            if (projectile.timeLeft == 913 && !AAWorld.downedIZ)
+            if (projectile.timeLeft == 913)
             {
                 if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("ZeroDeath4"), Color.Red.R, Color.Red.G, Color.Red.B);
             }
