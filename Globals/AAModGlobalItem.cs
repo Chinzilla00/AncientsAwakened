@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.Items.Boss.Akuma;
-using AAMod.Items.Boss.Retriever;
 using AAMod.Items.Boss.Grips;
 using AAMod.Items;
 
@@ -131,7 +130,7 @@ namespace AAMod
                     }
                 }
             }
-            if (item.type == ItemID.EoCShield || item.type == mod.ItemType<StormRiot>() || item.type == mod.ItemType<BulwarkOfChaos>())
+            if (item.type == ItemID.EoCShield ||  item.type == mod.ItemType<BulwarkOfChaos>())
             {
                 if (slot < 10)
                 {
@@ -140,10 +139,6 @@ namespace AAMod
                     {
                         // We need "slot != i" because we don't care what is currently in the slot we will be replacing.
                         if (slot != i && player.armor[i].type == ItemID.EoCShield)
-                        {
-                            return false;
-                        }
-                        if (slot != i && player.armor[i].type == mod.ItemType<StormRiot>())
                         {
                             return false;
                         }

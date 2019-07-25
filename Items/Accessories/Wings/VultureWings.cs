@@ -38,7 +38,7 @@ namespace AAMod.Items.Accessories.Wings
 
         public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
         {
-            speed = 8f;
+            speed = 4f;
             acceleration *= 1f;
         }
 

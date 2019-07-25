@@ -11,6 +11,7 @@ namespace AAMod.Items.Magic
         {
             DisplayName.SetDefault("Terra Focus");
             Tooltip.SetDefault(@"Fires shots of terra magic at your foes");
+            Item.staff[item.type] = true;
         }
 
         public override void SetDefaults()

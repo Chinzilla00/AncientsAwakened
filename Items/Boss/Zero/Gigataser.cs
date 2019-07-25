@@ -63,7 +63,6 @@ namespace AAMod.Items.Boss.Zero
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "ApocalyptitePlate", 5);
             recipe.AddIngredient(null, "UnstableSingularity", 5);
-            recipe.AddIngredient(null, "FulguriteTazerblaster");
             recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();

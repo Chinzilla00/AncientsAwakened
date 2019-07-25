@@ -8,8 +8,6 @@ namespace AAMod.Items.Boss.Equinox
 {
     public class Equinox : BaseAAItem
     {
-
-        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Equinox");
@@ -79,9 +77,9 @@ namespace AAMod.Items.Boss.Equinox
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "RadiantStar", 1);
             recipe.AddIngredient(null, "DarkVoid", 1);
-            recipe.AddIngredient(null, "DarkMatter", 20);
-            recipe.AddIngredient(null, "RadiumBar", 20);
-            recipe.AddTile(null, "QuantumFusionAccelerator");
+            recipe.AddIngredient(null, "Stardust", 20);
+            recipe.AddIngredient(null, "DarkEnergy", 20);
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

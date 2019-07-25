@@ -31,11 +31,7 @@ namespace AAMod.Items.Boss.Grips
                 int maxAccessoryIndex = 5 + player.extraAccessorySlots;
                 for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    if (slot != i && player.armor[i].type == mod.ItemType<Retriever.StormClaw>())
-                    {
-                        return false;
-                    }
-                    if (slot != i && player.armor[i].type == mod.ItemType<Retriever.StormRiot>())
+                    if (slot != i && player.armor[i].type == mod.ItemType<BulwarkOfChaos>())
                     {
                         return false;
                     }

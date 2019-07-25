@@ -29,21 +29,12 @@ namespace AAMod.Items.Magic
             item.shootSpeed = 11f;     
         }   
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Electricity Shard");
-      Tooltip.SetDefault("It shoots sparks in an even spread.");
-    }
-
-		public override void AddRecipes()  
+        public override void SetStaticDefaults()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "FulguriteBar", 4);   //you need 10 Wood
-			recipe.AddIngredient(ItemID.SoulofFright, 10);
-            recipe.AddTile(TileID.WorkBenches);   
-            recipe.SetResult(this);  
-            recipe.AddRecipe();
+          DisplayName.SetDefault("Electricity Shard");
+          Tooltip.SetDefault("It shoots sparks in an even spread.");
         }
+
 		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 		float spread = 45f * 0.0174f;
@@ -60,4 +51,16 @@ namespace AAMod.Items.Magic
 		return false;
 		}
 	}
+
+    public class SpellDrop : GlobalNPC
+    {
+        public override void NPCLoot(NPC npc)
+        {
+            if (npc.type == NPCID.AngryNimbus && Main.rand.Next(6) == 0)
+            {
+                npc.DropLoot(mod.ItemType<ElectricitySpell>());
+            }
+        }
+    }
+
 }

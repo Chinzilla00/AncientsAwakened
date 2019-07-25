@@ -62,14 +62,6 @@ namespace AAMod.Items.Boss.Broodmother
                     {
                         return false;
                     }
-                    if (slot != i && player.armor[i].type == mod.ItemType<StormCharm>())
-                    {
-                        return false;
-                    }
-                    if (slot != i && player.armor[i].type == mod.ItemType<Raider.HoloCape>())
-                    {
-                        return false;
-                    }
                 }
             }
             return true;

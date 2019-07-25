@@ -94,22 +94,22 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 npc.TargetClosest(true);
                 if (Main.player[npc.target].dead)
                 {
-                    if (internalAI[0] != 2f || internalAI[0] != 3f)
+                    if (internalAI[0] != 1f)
                     {
                         if (Main.netMode != 1) BaseUtility.Chat("target(s) neutralized. returning to stealth mode.", Color.PaleVioletRed);
-                        internalAI[0] = 3f;
+                        internalAI[0] = 1f;
                     }
                 }
                 if (Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 5000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 5000f)
                 {
-                    if (internalAI[0] != 1f || internalAI[0] != 3f)
+                    if (internalAI[0] != 1f)
                     {
                         if (Main.netMode != 1) BaseUtility.Chat("target(s) lost. returning to stealth mode.", Color.PaleVioletRed);
-                        internalAI[0] = 3f;
+                        internalAI[0] = 1f;
                     }
                 }
             }
-            if (internalAI[0] == 3f)
+            if (internalAI[0] == 1f)
             {
                 npc.TargetClosest(true);
                 npc.velocity *= .7f;

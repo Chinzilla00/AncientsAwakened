@@ -111,9 +111,6 @@ namespace AAMod.NPCs.TownNPCs
             Hydra = false;
             Djinn = false;
             Serpent = false;
-            Raider = false;
-            Retriever = false;
-            Orthrus = false;
             Equinox = false;
             AnubisB = false;
             Sisters = false;
@@ -143,12 +140,6 @@ namespace AAMod.NPCs.TownNPCs
             string DjinnT = "3 Wishes";
 
             string SerpentT = "Snakes. Why is it always snakes?";
-
-            string RetT = "Gotcha'";
-
-            string RaidT = "Mechanical Mass";
-
-            string OrthrusT = "Two heads; zero brains";
 
             string EquinoxT = "More worm bosses god dammit.";
 
@@ -208,57 +199,42 @@ namespace AAMod.NPCs.TownNPCs
                 button2 = SerpentT;
                 Serpent = true;
             }
-            else if (ChatNumber == 8 && Main.hardMode)
-            {
-                button2 = RetT;
-                Retriever = true;
-            }
-            else if (ChatNumber == 9 && Main.hardMode)
-            {
-                button2 = RaidT;
-                Raider = true;
-            }
-            else if (ChatNumber == 10 && Main.hardMode)
-            {
-                button2 = OrthrusT;
-                Orthrus = true;
-            }
-            else if (ChatNumber == 11 && NPC.downedMoonlord)
+            else if (ChatNumber == 8 && NPC.downedMoonlord)
             {
                 button2 = EquinoxT;
                 Equinox = true;
             }
-            else if (ChatNumber == 12 && NPC.downedMoonlord)
+            else if (ChatNumber == 9 && NPC.downedMoonlord)
             {
                 button2 = AnubisT;
                 AnubisB = true;
             }
-            else if (ChatNumber == 13 && NPC.downedMoonlord && AAWorld.downedEquinox)
+            else if (ChatNumber == 10 && NPC.downedMoonlord && AAWorld.downedEquinox)
             {
                 button2 = SistersT;
                 Sisters = true;
             }
-            else if (ChatNumber == 14 && NPC.downedMoonlord && AAWorld.downedSisters)
+            else if (ChatNumber == 11 && NPC.downedMoonlord && AAWorld.downedSisters)
             {
                 button2 = AkumaT;
                 Akuma = true;
             }
-            else if (ChatNumber == 15 && NPC.downedMoonlord && AAWorld.downedSisters)
+            else if (ChatNumber == 12 && NPC.downedMoonlord && AAWorld.downedSisters)
             {
                 button2 = YamataT;
                 Yamata = true;
             }
-            else if (ChatNumber == 16 && NPC.downedMoonlord && AAWorld.downedNC)
+            else if (ChatNumber == 13 && NPC.downedMoonlord && AAWorld.downedNC)
             {
                 button2 = ZeroT;
                 Zero = true;
             }
-            else if (ChatNumber == 17 && AAWorld.downedAllAncients)
+            else if (ChatNumber == 14 && AAWorld.downedAllAncients)
             {
                 button2 = ShenT;
                 Shen = true;
             }
-            else if (ChatNumber == 18 && AAWorld.downedShen)
+            else if (ChatNumber == 15 && AAWorld.downedShen)
             {
                 button2 = StonesT;
                 Stones = true;
@@ -280,9 +256,6 @@ namespace AAMod.NPCs.TownNPCs
             Hydra = false;
             Djinn = false;
             Serpent = false;
-            Raider = false;
-            Retriever = false;
-            Orthrus = false;
             Equinox = false;
             DoNext = false;
             Sisters = false;
@@ -346,21 +319,6 @@ namespace AAMod.NPCs.TownNPCs
             {
                 return AAWorld.downedSerpent ? "Hope you didn't get any 'FROSTBITES'! *buh-dum-tish* ...yeah I know that was lame." : 
                     "Snakes, why does it always have to be snakes? I hate 'em! Whatever, in the tundra recently, there have been these snow snerpents that won't leave me alone. Could ya play exterminator and find out what they're doing?";
-            }
-            else if (Retriever)
-            {
-                return AAWorld.downedRetriever ? "Did you get my 3rd edition of 'The Life and Epic Adventures of Anubis the Wonder Dog!' back by any chance?" : 
-                    "Remember the Grips of Chaos? Those nasty grabby hands? There's a robotic one and it keeps stealing my stuff. Can you do me a favor and go throw a wrench at it or something?";
-            }
-            else if (Raider)
-            {
-                return AAWorld.downedRaider ? "So it was a giant robot after all? Well, sometimes people just overthinking the problem. That thing was almost as fat as the Broodmother." : 
-                    "People said that they saw strange shade in one of the nights. It was so big that it even closed the moon for a moment. You should discover this mystery and do something.";
-            }
-            else if (Orthrus)
-            {
-                return AAWorld.downedOrthrus ? "I guess orthrus is what it eats, now." : 
-                    "Remeber the Hydra? There's a bigger one out there. And it's a robot. And it uh...shoots lightning. So uh...good luck!";
             }
             else if (Equinox)
             {
