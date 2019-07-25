@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (damage > npc.lifeMax / 2)
             {
                 cheated = true;
-                if (Main.netMode != 1) BaseUtility.Chat("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", new Color(146, 30, 68));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA1"), new Color(146, 30, 68));
             }
             npc.damage = 0;
             return false;
@@ -61,16 +61,16 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             if (!AAWorld.downedYamata && !cheated)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("NO...! IMPOSSIBLE! EVEN IN MY AWAKENED FORM?! YOU MUST HAVE CHEATED! GYAAAAAAH..! FINE! TAKE YOUR LOOT! I'M OUTTA HERE..!", new Color(146, 30, 68));
-                if (Main.netMode != 1) BaseUtility.Chat("The defeat of Yamata causes the fog in the mire to lift.", Color.Indigo);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA2"), new Color(146, 30, 68));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA3"), Color.Indigo);
             }
             if (AAWorld.downedYamata && !cheated)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("NOOOOOOOOOOOOOO!!! YOU LITTLE BRAT!!! I ALMOST HAD YOU THIS TIME!!! FINE, take your stuff, See if I care!", new Color(146, 30, 68));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA4"), new Color(146, 30, 68));
             }
             if (!Main.expertMode && !cheated)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("HAH! Nice try! Come back in Expert mode when you don’t have to cheat to beat me! All your loot is MINE still!", new Color(146, 30, 68));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA5"), new Color(146, 30, 68));
             }
         }
 
@@ -128,17 +128,17 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("YOU'RE STILL FIGHTING?! WHAT THE HELL IS WRONG WITH YOU?!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA6"), new Color(146, 30, 68));
                     threeQuarterHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("I'VE HAD IT UP TO HERE WITH YOUR SHENANIGANS!!! EAT VENOM YOU LITTLE HELLSPAWN!!!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA7"), new Color(146, 30, 68));
                     HalfHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 10 && tenthHealth == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("STOP IT STOP IT STOP IT!!! I'M NOT GONNA LET YOU WIN!!!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA8"), new Color(146, 30, 68));
                     tenthHealth = true;
                 }
             }
@@ -146,17 +146,17 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("You're an annoying little bugger, you know!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA9"), new Color(146, 30, 68));
                     threeQuarterHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("DIE! WHY WON'T YOU JUST DIE ALREADY?!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA10"), new Color(146, 30, 68));
                     HalfHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 10 && tenthHealth == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("STOP IT!!! I'M NOT GONNA LOSE AGAIN!!!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA11"), new Color(146, 30, 68));
                     tenthHealth = true;
                 }
             }
@@ -166,13 +166,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 spawnHaruka = true;
                 if (AAWorld.downedYamata)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Looks like I gotta come in and save your rear end again, dad.", new Color(72, 78, 117));
-                    if (Main.netMode != 1) BaseUtility.Chat("That's my girl..!", new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA14"), new Color(72, 78, 117));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA15"), new Color(146, 30, 68));
                     AAModGlobalNPC.SpawnBoss(playerTarget, mod.NPCType("HarukaY"), false, 0, 0);
                     return;
                 }
-                if (Main.netMode != 1) BaseUtility.Chat("Oh, sweetie..! Care to help daddy thrash this little worm?!", new Color(146, 30, 68));
-                if (Main.netMode != 1) BaseUtility.Chat("Sigh...yes dad.", new Color(72, 78, 117));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA16"), new Color(146, 30, 68));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA17"), new Color(72, 78, 117));
                 AAModGlobalNPC.SpawnBoss(playerTarget, mod.NPCType("HarukaY"), false, 0, 0);
             }
         }

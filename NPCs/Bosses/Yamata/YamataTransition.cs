@@ -98,28 +98,28 @@ namespace AAMod.NPCs.Bosses.Yamata
 
 				if (npc.ai[0] == 375)    
 				{
-					if (Main.netMode != 1) BaseUtility.Chat("NYEHEHEHEHEHEHEHEH~!", new Color(45, 46, 70));
+					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataTransition1"), new Color(45, 46, 70));
 					npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 650)
 				{
-					if (Main.netMode != 1) BaseUtility.Chat("You thought I was DONE..?!", new Color(45, 46, 70));
+					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataTransition2"), new Color(45, 46, 70));
 				}else
 				if (npc.ai[0] == 900)
 				{
-					if (Main.netMode != 1) BaseUtility.Chat("HAH! AS IF!", new Color(45, 46, 70));
-                    if (Main.netMode != 1) BaseUtility.Chat("You begin to feel as if your soul is weighing you down...", Color.PaleVioletRed);
+					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataTransition3"), new Color(45, 46, 70));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataTransition7"), Color.PaleVioletRed);
                     npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 1100)
 				{
-					if (Main.netMode != 1) BaseUtility.Chat("The abyss hungers...", new Color(146, 30, 68));
+					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataTransition4"), new Color(146, 30, 68));
 				}else
 				if (npc.ai[0] >= 1455 && !NPC.AnyNPCs(mod.NPCType("YamataA")))
 				{
 					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("YamataA"), false, npc.Center, "", false);
-					if (Main.netMode != 1) BaseUtility.Chat("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-					if (Main.netMode != 1) BaseUtility.Chat("AND IT'S GOT 7 HEADS! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!", new Color(146, 30, 68));
+					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataTransition5"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataTransition6"), new Color(146, 30, 68));
 					npc.netUpdate = true;
 					npc.active = false;				
 				}

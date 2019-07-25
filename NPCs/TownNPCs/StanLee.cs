@@ -65,19 +65,19 @@ namespace AAMod.NPCs.TownNPCs
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
-            chat.Add("You know, I guess one person can make a difference. 'Nuff said.");
-            chat.Add("I thought you'd be taller.");
-            chat.Add("Have you seen my shoe?");
-            chat.Add("And then there was this one time I was a security guard, but uh...then I got fired...");
-            chat.Add("Excelsior.");
-            chat.Add("Hey, if you got a newspaper, could I borrow the sports section?.");
-            chat.Add("I remember when I was a mail truck driver, got to deliver some mail to some famous guy. I think his name was Tony...Stank?");
-            chat.Add("HAH..! THAT'S HILARIOUS!");
-            chat.Add("Wow, nice suit.");
-            chat.Add("Don't make me whip ya, you little punk.");
+            chat.Add(Lang.TownNPCStanLee("StanLeeChat1"));
+            chat.Add(Lang.TownNPCStanLee("StanLeeChat2"));
+            chat.Add(Lang.TownNPCStanLee("StanLeeChat3"));
+            chat.Add(Lang.TownNPCStanLee("StanLeeChat4"));
+            chat.Add(Lang.TownNPCStanLee("StanLeeChat5"));
+            chat.Add(Lang.TownNPCStanLee("StanLeeChat6"));
+            chat.Add(Lang.TownNPCStanLee("StanLeeChat7"));
+            chat.Add(Lang.TownNPCStanLee("StanLeeChat8"));
+            chat.Add(Lang.TownNPCStanLee("StanLeeChat9"));
+            chat.Add(Lang.TownNPCStanLee("StanLeeChat10"));
             if (Main.invasionType == InvasionID.MartianMadness)
             {
-                chat.Add("Whats'a matter with you, ya never seen a spaceship before?");
+                chat.Add(Lang.TownNPCStanLee("StanLeeChat11"));
             }
             return chat;
         }

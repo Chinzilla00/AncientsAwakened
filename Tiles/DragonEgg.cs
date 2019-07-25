@@ -76,12 +76,12 @@ namespace AAMod.Tiles
             if (AAWorld.SmashDragonEgg == 2)
             {
                 AAWorld.SmashDragonEgg--;
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("The sound of the egg breaking echoes through the volcano...", Color.DarkOrange);
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.TilesInfo("DragonEgg1"), Color.DarkOrange);
             }
             else if (AAWorld.SmashDragonEgg == 1)
             {
                 AAWorld.SmashDragonEgg--;
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("You hear a distant roar...", Color.DarkOrange);
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.TilesInfo("DragonEgg2"), Color.DarkOrange);
             }
             else
             {

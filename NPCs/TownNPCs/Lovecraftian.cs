@@ -93,45 +93,45 @@ namespace AAMod.NPCs.TownNPCs
             int Mutant = Fargos == null ? -1 : NPC.FindFirstNPC(Fargos.NPCType("Mutant"));
             int HordeZombie = GRealm == null ? -1 : NPC.FindFirstNPC(GRealm.NPCType("HordeZombie"));
 
-            chat.Add("You know, where I’m from, I’m what your world would call ‘hot stuff.’");
+            chat.Add(Lang.TownNPCLovecraftian("LovecraftianChat1"));
 
-            chat.Add("I wasn’t the only thing that came here. A whole bunch of other stuff came through with me when a spacial rift opened up in my world. Stuff like the Eye of Cthulhu and the Brain of Cthulhu were already here though. No clue where those two came from.");
+            chat.Add(Lang.TownNPCLovecraftian("LovecraftianChat2"));
 
-            chat.Add("...What are you looking at? You act like you've never seen a squid-person before.");
+            chat.Add(Lang.TownNPCLovecraftian("LovecraftianChat3"));
 
-            chat.Add("Yes I’m a woman. What about it? Is it the tentacle beard that threw you off?");
+            chat.Add(Lang.TownNPCLovecraftian("LovecraftianChat4"));
 
-            chat.Add("If you have any sense of self preservation, I’d avoid that sunken ship in the ocean just off the coast. Scary things from my neck of the woods hang out there, especially... nevermind.");
+            chat.Add(Lang.TownNPCLovecraftian("LovecraftianChat5"));
 
-            chat.Add("Ever just find things in your tentacles that you don’t know how they got there? No? Just me?");
+            chat.Add(Lang.TownNPCLovecraftian("LovecraftianChat6"));
 
-            chat.Add("Hey, your world is pretty interesting. Could you bring me some samples from different biomes for me to study ? If you do, I can make some neat stuff to trade with you.");
+            chat.Add(Lang.TownNPCLovecraftian("LovecraftianChat7"));
             
 
             //If Pirate is present
             if (Pirate >= 0)
             {
-                chat.Add("Oh. This is awkward. Poor " + Main.npc[Pirate].GivenName + ". His ship was the one that got destroyed when I fell out of that rift.");
+                chat.Add(Lang.TownNPCLovecraftian("LovecraftianChat8") + Main.npc[Pirate].GivenName + Lang.TownNPCLovecraftian("LovecraftianChat9"));
             }
 
             //If mutant is present
 
             if (Mutant >= 0)
             {
-                chat.Add("That " + Main.npc[Mutant].GivenName + " is talking out of his ass. Cthulhu would most likely squash him before he could even say *ech*.");
+                chat.Add(Lang.TownNPCLovecraftian("LovecraftianChat10") + Main.npc[Mutant].GivenName + Lang.TownNPCLovecraftian("LovecraftianChat11"));
             }
 
             //If Horde Zombie is present
             if (HordeZombie >= 0)
             {
-                chat.Add("That dead guy shambling around freaks me out, and that’s saying something considering I’m a walking horror story. I don’t know, I just feel like he knows too much...");
+                chat.Add(Lang.TownNPCLovecraftian("LovecraftianChat12"));
             }
 
 
             //Post - Moon Lord
             if (NPC.downedMoonlord)
             {
-                chat.Add("Fun fact; The Moon Lord and Cthulhu are brothers. At least that’s what some pink pixie lady I met one time told me.");
+                chat.Add(Lang.TownNPCLovecraftian("LovecraftianChat13"));
             }
 
             //Providing materials
@@ -141,8 +141,8 @@ namespace AAMod.NPCs.TownNPCs
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = "Shop";
-            button2 = "Supply Ingredients";
+            button = Lang.TownNPCLovecraftian("button1");
+            button2 = Lang.TownNPCLovecraftian("button2");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -185,7 +185,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid1 == 4)
                     {
-                        Main.npcChatText = "Oh! Are those purity shards? Perfect! Here, take this. You can purify most biomes with this special flask I made.";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("PurityFlaskChat");
                         player.QuickSpawnItem(mod.ItemType("PurityFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("PurityFlask");
                     }
@@ -207,7 +207,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid2 == 4)
                     {
-                        Main.npcChatText = "Dragons, eh? I've seen scarier. Anyways, here's a new flask. Careful, it's hot.";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("AshJarChat");
                         player.QuickSpawnItem(mod.ItemType("AshJar"), 5);
                         Main.npcChatCornerItem = mod.ItemType("AshJar");
                     }
@@ -229,7 +229,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid3 == 4)
                     {
-                        Main.npcChatText = "What is this..? It's literally a ball of...something. I'm gonna look into it. Here, new flask. Go crazy.";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("DarkwaterFlaskChat");
                         player.QuickSpawnItem(mod.ItemType("DarkwaterFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("DarkwaterFlask");
                     }
@@ -251,7 +251,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid4 == 4)
                     {
-                        Main.npcChatText = "Why are you gagging? There are things that smell way worse than this. It's only decomposing flesh.";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("CorruptionFlaskChat");
                         player.QuickSpawnItem(mod.ItemType("CorruptionFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("CorruptionFlask");
                     }
@@ -273,7 +273,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid5 == 4)
                     {
-                        Main.npcChatText = "Hm...bones? I've seen ones like these before. Similar to ones from where I came.";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("CrimsonFlaskChat");
                         player.QuickSpawnItem(mod.ItemType("CrimsonFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("CrimsonFlask");
                     }
@@ -294,7 +294,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid6 == 4)
                     {
-                        Main.npcChatText = "What is this stuff? It's...sparkly..? Whatever, I'll research it a bit more. Here's a new flask.";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("MeanGreenStewChat");
                         player.QuickSpawnItem(mod.ItemType("MeanGreenStew"), 5);
                         Main.npcChatCornerItem = mod.ItemType("MeanGreenStew");
                     }
@@ -315,7 +315,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid7 == 4)
                     {
-                        Main.npcChatText = "Wow this is heavy! What is this? I've never seen this kind of metal before. Oh right. New flask. Here.";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("VoidFlaskChat");
                         player.QuickSpawnItem(mod.ItemType("VoidFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("Z");
                     }
@@ -336,7 +336,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid8 == 4)
                     {
-                        Main.npcChatText = "Hmm...glowing spores? I've never seen something like this aside from glowing mushrooms. Speaking of mushrooms, here, I found a recipe for some really good fungicide. I made it into a flask.";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("FungicideChat");
                         player.QuickSpawnItem(mod.ItemType("Fungicide"), 5);
                         Main.npcChatCornerItem = mod.ItemType("Fungicide");
                     }
@@ -357,7 +357,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid9 == 4)
                     {
-                        Main.npcChatText = "What is this stuff? It's so squishy...I'll make it work I guess. Oh by the way, " + Main.npc[Mushman].GivenName + " showed me how to make mushroom spores. Feel free to use it how you see fit.";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("SporeSacChat1") + Main.npc[Mushman].GivenName + Lang.TownNPCLovecraftian("SporeSacChat2");
                         player.QuickSpawnItem(mod.ItemType("SporeSac"), 5);
                         Main.npcChatCornerItem = mod.ItemType("SporeSac");
                     }
@@ -378,7 +378,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid10 == 4)
                     {
-                        Main.npcChatText = "Hm, this stuff is pretty glowy. *Sniff* Yowza that burns my nostrils. Anyways, here, I made a glowing version of  " + Main.npc[Mushman].GivenName + "'s spores.";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("GlowingSporeSacChat1") + Main.npc[Mushman].GivenName + Lang.TownNPCLovecraftian("GlowingSporeSacChat2");
                         player.QuickSpawnItem(mod.ItemType("GlowingSporeSac"), 5);
                         Main.npcChatCornerItem = mod.ItemType("GlowingSporeSac");
                     }
@@ -399,7 +399,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid11 == 4)
                     {
-                        Main.npcChatText = "Oh thank you so much! These stingers will work nicely for some makeshift syringes. Here, I've developed a brand new solution that changes forest into jungle. Nifty, huh?";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("JungleFlaskChat");
                         player.QuickSpawnItem(mod.ItemType("JungleFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("JungleFlask");
                     }
@@ -420,7 +420,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid12 == 0)
                     {
-                        Main.npcChatText = "Now THIS will come in handy. Thank you. Hey, speaking of ice, check this out. Snow creation AND removal flasks? You like it? Two for the price of one!";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("IceFlaskChat");
                         player.QuickSpawnItem(mod.ItemType("IceFlask"), 3);
                         player.QuickSpawnItem(mod.ItemType("IcemeltFlask"), 3);
                         Main.npcChatCornerItem = mod.ItemType("IceFlask");
@@ -442,7 +442,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid13 == 4)
                     {
-                        Main.npcChatText = "I wish we had these back where I came from. They're adorable~! Oh, but I'd be careful with these little guys if I were you. The dryad told me there's some giant monster that protects them...anyways, while you were out, I made a new flask. It turns Jungle into forest. Careful with it.";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("ForestFlaskChat");
                         player.QuickSpawnItem(mod.ItemType("ForestFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("ForestFlask");
                     }
@@ -457,7 +457,7 @@ namespace AAMod.NPCs.TownNPCs
                 {
                     if (!BaseMod.BasePlayer.HasItem(player, mod.ItemType<Items.Flasks.SquidList>()))
                     {
-                        Main.npcChatText = "Here's a list of some things I need for my research. If you lose it, I'll happily write up a new one for you";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("SquidListChat");
                         int itemID = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("SquidList"), 1, false, 0, false, false);
                         if (Main.netMode == 1)
                         {
@@ -466,7 +466,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     else
                     {
-                        Main.npcChatText = "Hmm...nothing? I need stuff to study. I'd like some important materials from biomes. Monster pieces, plants, etc.";
+                        Main.npcChatText = Lang.TownNPCLovecraftian("NothingChat");
                     }
                     Main.npcChatCornerItem = 0;
                     Main.PlaySound(12, -1, -1, 1);

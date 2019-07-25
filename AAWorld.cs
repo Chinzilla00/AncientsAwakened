@@ -1128,7 +1128,7 @@ namespace AAMod
                 if (RadiumOre == false)
                 {
                     RadiumOre = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("The gift of the celestials sparkle in the atmosphere...", Color.Violet);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedEquinoxInfo"), Color.Violet);
                     for (int i = 0; i < Main.maxTilesX / 25; ++i)
                     {
                         int X = WorldGen.genRand.Next(50, Main.maxTilesX / 10 * 9); //X position, centre.
@@ -1153,12 +1153,12 @@ namespace AAMod
                 if (Ancients == false)
                 {
                     Ancients = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("The Ancients have Awakened!", Color.ForestGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedMoonlordInfo1"), Color.ForestGreen);
                 }
                 if (Luminite == false)
                 {
                     Luminite = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("The Essence of the Moon Lord sparkles in the caves below...", Color.DarkSeaGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedMoonlordInfo2"), Color.DarkSeaGreen);
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 9), WorldGen.genRand.Next(6, 10), (ushort)mod.TileType("LuminiteOre"));
@@ -1171,7 +1171,7 @@ namespace AAMod
                 if (HallowedOre == false)
                 {
                     HallowedOre = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("The caves shine with light for a brief moment...", Color.Goldenrod);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedMechBossAnyInfo"), Color.Goldenrod);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1188,7 +1188,7 @@ namespace AAMod
                 if (!DiscordOres)
                 {
                     DiscordOres = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("Chaotic energy grows in the deepest parts of the world.", Color.Magenta);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedSistersInfo"), Color.Magenta);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1216,7 +1216,7 @@ namespace AAMod
                 if (!TerrariumEnemies)
                 {
                     TerrariumEnemies = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("You hear a hum of harmony from the Terrarium after the defeat of a great evil...", Color.LimeGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedBoss2Info"), Color.LimeGreen);
                 }
             }
             if (NPC.downedBoss3)
@@ -1224,9 +1224,9 @@ namespace AAMod
                 if (!Dynaskull)
                 {
                     Dynaskull = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("Bones of the ancient past burst with energy!", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
-                    if (Main.netMode != 1) BaseUtility.Chat("The desert winds stir...", Color.Orange);
-                    if (Main.netMode != 1) BaseUtility.Chat("The winter hills rumble...", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedBoss3Info1"), Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedBoss3Info2"), Color.Orange);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedBoss3Info3"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1245,12 +1245,12 @@ namespace AAMod
                 if (!Evil)
                 {
                     Evil = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("The choirs of unity hum from the terrarium.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
-                    if (Main.netMode != 1) BaseUtility.Chat("Devils in the underworld begin to plot.", Color.Purple.R, Color.Purple.G, Color.Purple.B);
-                    if (Main.netMode != 1) BaseUtility.Chat("The withered machines of the emptiness reactivate.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedPlantBossInfo1"), Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedPlantBossInfo3"), Color.Purple.R, Color.Purple.G, Color.Purple.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedPlantBossInfo2"), Color.Red.R, Color.Red.G, Color.Red.B);
                 }
-            }
-            
+            }       
+
             if (downedAkuma || downedYamata || downedZero)
             {
                 downedAncient = true;
@@ -1265,7 +1265,7 @@ namespace AAMod
             {
                 if (downedAllAncients == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Chaos begins to stir in the atmosphere...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedAllAncientsInfo"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     downedAllAncients = true;
                 }
             }
@@ -1275,7 +1275,7 @@ namespace AAMod
                 {
                     InfernoStripe = true;
 
-                    if (Main.netMode != 1) BaseUtility.Chat("The Souls of Fury and Wrath are unleashed upon the world!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("hardModeInfo"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                     ConversionHandler.ConvertDown((int)InfernoCenter.X, 0, 120, 1);
                 }
                 if (MireStripe == false)
@@ -1506,7 +1506,7 @@ namespace AAMod
             {
                 if (Main.netMode == 0)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Your world bursts with Yttrium!", Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("YttriumInfo"), Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
                 }
                 num = Ore1;
                 num3 *= 1.05f;
@@ -1516,7 +1516,7 @@ namespace AAMod
             {
                 if (Main.netMode == 0)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Your world bursts with Uranium!", Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B, false);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("UraniumInfo"), Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B, false);
                 }
                 num = Ore2;
                 num3 *= 1.05f;
@@ -1526,7 +1526,7 @@ namespace AAMod
             {
                 if (Main.netMode == 0)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Your world bursts with Technecium!", Color.DarkCyan.R, Color.DarkCyan.G, Color.DarkCyan.B, false);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("Technecium"), Color.DarkCyan.R, Color.DarkCyan.G, Color.DarkCyan.B, false);
                 }
                 num = Ore3;
                 num4 = 2;

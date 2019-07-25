@@ -39,7 +39,7 @@ namespace AAMod.Items.Armor.Ytrium
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"You can do a lightning-quick dash.";
+            player.setBonus = Lang.ArmorBonus("YtriumHeadgearBonus");
             player.dash = 2;
         }
 

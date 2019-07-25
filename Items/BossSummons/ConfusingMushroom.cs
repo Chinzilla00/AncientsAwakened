@@ -45,12 +45,12 @@ Can only be used in a glowing mushroom biome");
             }
             if (!player.ZoneGlowshroom)
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The mushroom glows, and the smell of it makes you feel loopy.", Color.SkyBlue, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ConfusingMushroomFalse"), Color.SkyBlue, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<FeudalFungus>()))
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Feudal Fungus keeps trying to attack you", Color.SkyBlue, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ConfusingMushroomTrue"), Color.SkyBlue, false);
                 return false;
             }
             return false;

@@ -44,8 +44,7 @@ namespace AAMod.Items.Armor.Paints
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = @"+2 Minion slots
-You can do a lightning-quick dash";
+            player.setBonus = Lang.ArmorBonus("YttriumPaintBonus");
             player.dash = 2;
             player.maxMinions += 2;
         }

@@ -41,7 +41,7 @@ namespace AAMod.Items.Armor.Paints
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"+2 Minion slots";
+            player.setBonus = Lang.ArmorBonus("CobaltPaintBonus");
             player.armorEffectDrawOutlines = true;
             player.armorEffectDrawShadow = true;
             player.maxMinions += 2;

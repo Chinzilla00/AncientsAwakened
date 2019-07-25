@@ -37,10 +37,7 @@ namespace AAMod.Items.Armor.TrueAbyssal
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = @"Your ranged attacks are imbued with the venomous properties of bogtoxin
-Enemies are less likely to target you
-Night Vision and hunter effects
-25% reduced ammo consumption";
+            player.setBonus = Lang.ArmorBonus("TrueAbyssalFukumenBonus");
             player.aggro -= 6;
             player.GetModPlayer<AAPlayer>(mod).trueAbyssal = true;
             player.ammoCost75 = true;

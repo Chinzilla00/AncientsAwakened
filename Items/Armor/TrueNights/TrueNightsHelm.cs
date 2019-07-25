@@ -36,10 +36,7 @@ namespace AAMod.Items.Armor.TrueNights
 		public override void UpdateArmorSet(Player player)
 		{
 			
-			player.setBonus = @"Being hit by enemies Sends you into a speed frenzy, increasing movement speed for a short time
-44% Increased Movement speed
-Killing enemies has a 25% chance to cause them to erupt into a cursed explosion that damages enemies around it
-Your melee attacks inflict cursed inferno";
+			player.setBonus = Lang.ArmorBonus("TrueNightsHelmBonus");
             player.moveSpeed += 0.44f;
             player.panic = true;
             player.GetModPlayer<AAPlayer>(mod).trueNights = true;

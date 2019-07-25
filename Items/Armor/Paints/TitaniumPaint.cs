@@ -42,8 +42,7 @@ namespace AAMod.Items.Armor.Paints
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = @"+4 Minion slots
-Briefly become invulnerable after your minions strike an enemy";
+            player.setBonus = Lang.ArmorBonus("TitaniumPaintBonus");
             player.onHitDodge = true;
             player.maxMinions += 4;
         }

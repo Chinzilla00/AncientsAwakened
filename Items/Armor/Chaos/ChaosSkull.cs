@@ -35,10 +35,7 @@ namespace AAMod.Items.Armor.Chaos
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"Your ranged attacks are imbued with the chaos of Dragonfire and Bogtoxin
-45% chance to not consume ammo
-20% increased ranged critical chance
-Pressing the Ability hotkey fires off a chaos shot towards your cursor";
+            player.setBonus = Lang.ArmorBonus("ChaosSkullBonus");
 
             player.rangedCrit += 20;
             player.ammoCost75 = true;

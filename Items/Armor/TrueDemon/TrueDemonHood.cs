@@ -36,9 +36,7 @@ Increases your max number of minions by 2");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"Your minions bathe your enemies in shadowflame
-You Always have an Imp army by your side
-Imp army doesn't affect minion count";
+            player.setBonus = Lang.ArmorBonus("TrueDemonHoodBonus");
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
             modPlayer.trueDemonBonus = true;
             modPlayer.trueDemon = true;

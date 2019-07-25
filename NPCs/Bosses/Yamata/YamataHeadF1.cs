@@ -239,7 +239,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             if (npc.life <= 0)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("OWIE!!!", new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Yamata16"), new Color(45, 46, 70));
             }
         }
 

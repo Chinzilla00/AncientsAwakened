@@ -37,7 +37,7 @@ namespace AAMod.Items.Armor.Ocean
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"20% increased magic damage and 15% mana use reduction while submerged in water";
+            player.setBonus = Lang.ArmorBonus("OceanHelmBonus");
             if (player.wet && !player.lavaWet && !player.honeyWet)
             {
                 player.magicDamage += 0.2f;

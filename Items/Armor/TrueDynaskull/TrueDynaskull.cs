@@ -37,9 +37,7 @@ namespace AAMod.Items.Armor.TrueDynaskull
 		public override void UpdateArmorSet(Player player)
 		{
 
-            player.setBonus = @"Your ranged projectiles have so much power behind them, they confuse the target due to concussive force
-45% chance to not consume ammo
-Pressing the Ability hotkey fires off a dynaskull shot towards your cursor";
+            player.setBonus = Lang.ArmorBonus("TrueDynaskullBonus");
 
             player.ammoCost80 = true;
             player.GetModPlayer<AAPlayer>(mod).DynaskullSet = true;

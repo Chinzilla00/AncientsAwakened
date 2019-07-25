@@ -953,35 +953,35 @@ namespace AAMod
             {
                 if (Main.rand.Next(8) == 0)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Hey uh...kid? Correct me if I'm wrong, but I think your world didn't generate with Ancients Awakened stuff in it. I'd make a new one if I were you.", new Color(180, 41, 32), false);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo1"), new Color(180, 41, 32), false);
                 }
                 else if (Main.rand.Next(8) == 1)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("YOU IMBECILE! YOU DIDN'T GENERATE ANCIENTS AWAKENED CONTENT! MAKE A NEW WORLD NOW! REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE", new Color(45, 46, 70), false);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo2"), new Color(45, 46, 70), false);
                 }
                 else if (Main.rand.Next(8) == 2)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("ERR0R. W0RLD D0ES N0T APPEAR T0 C0NTAIN AAM0D.TM0D C0NTENT. PLEASE GENERATE A NEW W0RLD.", new Color(255, 0, 0), false);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo3"), new Color(255, 0, 0), false);
                 }
                 else if (Main.rand.Next(8) == 3)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("HEY! You didn't generate Ancients Awakened stuff in this world! Generate a new world before I blast you to mars!", new Color(102, 20, 48), false);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo4"), new Color(102, 20, 48), false);
                 }
                 else if (Main.rand.Next(8) == 4)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Hey, uh...I don't see any Ancients Awakened content in this world. Might be smart to make a new world or whatever...", new Color(72, 78, 117), false);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo5"), new Color(72, 78, 117), false);
                 }
                 else if (Main.rand.Next(8) == 5)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Hey. You. Interdimensional being. You might have forgotten to make a new world after downloading the mod. Make a new world if you want all the mod's content.", new Color(128, 0, 0), false);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo6"), new Color(128, 0, 0), false);
                 }
                 else if (Main.rand.Next(8) == 6)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Make...new world....or mushmad...will squish...little terrarian...", new Color(216, 110, 40), false);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo7"), new Color(216, 110, 40), false);
                 }
                 else if (Main.rand.Next(8) == 7)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("...Mortal. Your world doesn't have Ancients Awakened content if my old eyes are not lying to me. Generating a new world would be optimal.", new Color(43, 46, 61), false);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo8"), new Color(43, 46, 61), false);
                 }
                 WorldgenReminder = true;
             }
@@ -1911,7 +1911,7 @@ namespace AAMod
                 player.HealEffect(80);
                 player.immune = true;
                 player.immuneTime = player.longInvince ? 180 : 120;
-                if (Main.netMode != 1) BaseUtility.Chat("Your soul ripples...", 51, 255, 255);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.AAPlayerChat("UnstableSoulInfo"), 51, 255, 255);
                 player.AddBuff(mod.BuffType("UnstableSoul"), 18000);
                 return false;
             }
@@ -1960,7 +1960,7 @@ namespace AAMod
                     SnapCD = 18000;
                     player.AddBuff(mod.BuffType<InfinityBurnout>(), 18000);
                     Projectile.NewProjectile(player.position, Vector2.Zero, mod.ProjectileType<Items.Accessories.Snap>(), 0, 0, player.whoAmI);
-                    if (Main.netMode != 1) BaseUtility.Chat("Perfectly Balanced, as all things should be...", Color.Purple);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.AAPlayerChat("InfinityGauntletInfo"), Color.Purple);
                     Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && !NPCID.Sets.TechnicallyABoss[x.type] && !x.boss && x.type != mod.NPCType<ZeroDeactivated>()).ToList().ForEach(x =>
                     {
                         for (int i = 0; i < 5; i++)

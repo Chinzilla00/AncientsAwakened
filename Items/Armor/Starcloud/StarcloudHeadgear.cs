@@ -35,7 +35,7 @@ namespace AAMod.Items.Armor.Starcloud
         }
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "+ 100% minion and magic damage if health is below 60."; // the armor set bonus
+            player.setBonus = Lang.ArmorBonus("StarcloudHeadgearBonus"); // the armor set bonus
 			if (player.statLife < 120)  //this make that if you have less then 100 health your melee damage multiple for 2
             {
 				player.minionDamage *= 2;

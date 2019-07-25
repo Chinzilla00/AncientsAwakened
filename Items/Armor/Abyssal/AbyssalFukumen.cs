@@ -38,9 +38,7 @@ Weightless as shadow itself");
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = @"Your ranged attacks are imbued with the poisonous properties of hydra venom
-20% decreased ammo consumption
-Enemies are less likely to target you";
+            player.setBonus = Lang.ArmorBonus("AbyssalBonus");
             player.GetModPlayer<AAPlayer>(mod).depthSet = true;
             player.aggro -= 3;
             player.ammoCost80 = true;

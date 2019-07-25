@@ -36,10 +36,7 @@ namespace AAMod.Items.Armor.TrueFleshrend
 		public override void UpdateArmorSet(Player player)
 		{
 
-            player.setBonus = @"Being hit by enemies triggers a bloodsplosion that damages all enemies around you
-Massively increased life regen
-Strong Melee hits leech life from enemies to heal you
-You inflict Ichor with all of your melee attacks";
+            player.setBonus = Lang.ArmorBonus("TrueFleshrendHelmBonus");
             
 			player.GetModPlayer<AAPlayer>(mod).fleshrendSet = true;
             player.GetModPlayer<AAPlayer>(mod).trueFlesh = true;

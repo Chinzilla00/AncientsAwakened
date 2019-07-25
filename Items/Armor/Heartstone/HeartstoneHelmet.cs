@@ -35,7 +35,7 @@ Its forged with heart, no really");
         }
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Doubles damage when health is below 40"; // the armor set bonus
+            player.setBonus = Lang.ArmorBonus("HeartstoneHelmetBonus"); // the armor set bonus
 			if (player.statLife < 40)  //this make that if you have less then 100 health your melee damage multiple for 2
             {
                 player.meleeDamage *= 2;

@@ -32,7 +32,7 @@ It smells like fish.");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"Reaching below half heath multiplies your movement speed, ranged damage, and magic damage by 50%";
+            player.setBonus = Lang.ArmorBonus("LeviathanHelmBonus");
             if (player.statLife <= player.statLifeMax2 * .5f)
             {
                 player.moveSpeed += .5f;

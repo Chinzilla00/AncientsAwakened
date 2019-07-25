@@ -40,7 +40,7 @@ namespace AAMod.Items.Armor.Technecium
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = @"Enemies that hit you are electrified";
+            player.setBonus = Lang.ArmorBonus("TechneciumHelmetBonus");
 
 
             player.GetModPlayer<AAPlayer>(mod).techneciumSet = true;

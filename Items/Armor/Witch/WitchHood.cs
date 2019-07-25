@@ -56,11 +56,7 @@ A hood enchanted with the firey spirit of a supreme dragon acolyte");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"Scorch and Burn.
-20% Increased Magic and Minion damage
-+4 max minions
-A Fire spirit protects you
-The Fire spirit becomes more powerful the less mana you have";
+			player.setBonus = Lang.ArmorBonus("WitchHoodBonus");
             player.magicDamage += .2f;
             player.minionDamage += .2f;
             player.maxMinions += 4;
