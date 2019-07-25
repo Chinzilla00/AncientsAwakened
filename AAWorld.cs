@@ -526,19 +526,19 @@ namespace AAMod
             }));
 
 
-            tasks.Insert(shiniesIndex2 + 1, new PassLegacy("Terrarium", delegate (GenerationProgress progress)
+            tasks.Insert(shiniesIndex2 + 7, new PassLegacy("Terrarium", delegate (GenerationProgress progress)
             {
                 Terrarium(progress);
             }));
 
 
-            tasks.Insert(shiniesIndex2 + 2, new PassLegacy("Void Islands", delegate (GenerationProgress progress)
+            tasks.Insert(shiniesIndex2 + 5, new PassLegacy("Void Islands", delegate (GenerationProgress progress)
             {
                 VoidIslands(progress);
             }));
 
 
-            tasks.Insert(shiniesIndex2 + 3, new PassLegacy("Altars", delegate (GenerationProgress progress)
+            tasks.Insert(shiniesIndex2 + 8, new PassLegacy("Altars", delegate (GenerationProgress progress)
             {
                 Altars(progress);
             }));
