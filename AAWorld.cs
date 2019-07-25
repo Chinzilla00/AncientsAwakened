@@ -40,7 +40,6 @@ namespace AAMod
         public static bool TerrariumEnemies;
         public static bool Luminite;
         public static bool DarkMatter;
-        public static bool FulguriteOre;
         public static bool HallowedOre;
         public static bool Dynaskull;
         public static bool ChaosOres;
@@ -73,11 +72,6 @@ namespace AAMod
         public static bool downedHydra;
         public static bool downedSerpent;
         public static bool downedDjinn;
-        public static bool downedRetriever;
-        public static bool downedOrthrus;
-        public static bool downedRaider;
-        public static bool downedStormAny;
-        public static bool downedStormAll;
         public static bool downedRajah;
         public static bool downedDB;
         public static bool downedNC;
@@ -104,7 +98,6 @@ namespace AAMod
         public static bool downedSisters;
         public static bool downedSag;
         public static bool SistersSummoned;
-        public static bool downedTruffle;
         public static bool downedRajahsRevenge;
         //Points
         public static Point WHERESDAVOIDAT;
@@ -143,11 +136,6 @@ namespace AAMod
             Chairlol = false;
             downedMonarch = false;
             downedGrips = false;
-            downedRetriever = false;
-            downedOrthrus = false;
-            downedRaider = false;
-            downedStormAny = false;
-            downedStormAll = false;
             downedEquinox = false;
             downedSAncient = false;
             downedAkuma = false;
@@ -173,14 +161,12 @@ namespace AAMod
             downedSisters = false;
             downedSag = false;
             SistersSummoned = false;
-            downedTruffle = false;
             downedRajah = false;
             RabbitKills = 0;
             //World Changes
             TerrariumEnemies = NPC.downedBoss2;
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
-            FulguriteOre = downedStormAny;
             HallowedOre = NPC.downedMechBossAny;
             Evil = NPC.downedPlantBoss;
             Luminite = NPC.downedMoonlord;
@@ -249,9 +235,6 @@ namespace AAMod
             if (downedHydra) downed.Add("Hydra");
             if (downedBrood) downed.Add("Brood");
             if (NPC.downedBoss3) downed.Add("Dynaskull");
-            if (downedRetriever) downed.Add("Storm1");
-            if (downedOrthrus) downed.Add("Storm2");
-            if (downedRaider) downed.Add("Storm3");
             if (NPC.downedMechBossAny) downed.Add("MechBoss");
             if (NPC.downedPlantBoss) downed.Add("Evil");
             if (NPC.downedMoonlord) downed.Add("MoonLord");
@@ -270,7 +253,6 @@ namespace AAMod
             if (downedDjinn) downed.Add("Djinn");
             if (downedToad) downed.Add("Toad");
             if (downedGripsS) downed.Add("GripsS");
-            if (downedStormAny) downed.Add("AnyStorm");
             if (downedSoC) downed.Add("SoC");
             if (Compass) downed.Add("Compass");
             if (downedKraken) downed.Add("Kraken");
@@ -283,7 +265,6 @@ namespace AAMod
             if (downedSag) downed.Add("Sag");
             if (ModContentGenerated) downed.Add("WorldGenned");
             if (SistersSummoned) downed.Add("Summoned");
-            if (downedTruffle) downed.Add("Truffle");
             if (downedRajah) downed.Add("Rajah");
             if (downedRajahsRevenge) downed.Add("Rajah2");
             if (zeroUS) downed.Add("ZUS");
@@ -321,16 +302,16 @@ namespace AAMod
             flags[2] = downedGrips;
             flags[3] = downedBrood;
             flags[4] = downedHydra;
-            flags[5] = NPC.downedBoss3;
-            flags[6] = downedRetriever;
-            flags[7] = downedOrthrus;
+            flags[5] = ModContentGenerated;
+            flags[6] = downedRajah;
+            flags[7] = downedRajahsRevenge;
             writer.Write(flags);
 
             BitsByte flags2 = new BitsByte();
-            flags2[0] = downedRaider;
-            flags2[1] = NPC.downedMechBossAny;
-            flags2[2] = NPC.downedPlantBoss;
-            flags2[3] = NPC.downedMoonlord;
+            flags2[0] = zeroUS;
+            flags2[1] = downedAshe;
+            flags2[2] = downedHaruka;
+            flags2[3] = SistersSummoned;
             flags2[4] = downedSisters;
             flags2[5] = downedSag;
             flags2[6] = downedEquinox;
@@ -340,11 +321,12 @@ namespace AAMod
             BitsByte flags3 = new BitsByte();
             flags3[0] = downedAllAncients;
             flags3[1] = downedYamata;
-            flags3[2] = Chairlol;
+            flags3[2] = InfernoStripe;
+            flags3[3] = MireStripe;
             flags3[4] = downedZero;
             flags3[5] = downedSAncient;
             flags3[6] = downedShen;
-            flags3[7] = downedIZ;
+            flags3[7] = downedFungus;
             writer.Write(flags3);
 
 
@@ -354,30 +336,8 @@ namespace AAMod
             flags4[2] = downedSerpent;
             flags4[3] = downedDjinn;
             flags4[4] = downedToad;
-            flags4[5] = downedGripsS;
-            flags4[6] = downedStormAny;
-            flags4[7] = SistersSummoned;
             writer.Write(flags4);
 
-            BitsByte flags5 = new BitsByte();
-            flags5[0] = downedSoC;
-            flags5[1] = Compass;
-            flags5[2] = downedKraken;
-            flags5[3] = downedFungus;
-            flags5[4] = InfernoStripe;
-            flags5[5] = MireStripe;
-            flags5[6] = downedAshe;
-            flags5[7] = downedHaruka;
-            writer.Write(flags5);
-
-
-            BitsByte flags6 = new BitsByte();
-            flags6[0] = ModContentGenerated;
-            flags6[1] = downedTruffle;
-            flags6[2] = downedRajah;
-            flags6[3] = downedRajahsRevenge;
-            flags6[4] = zeroUS;
-            writer.Write(flags6);
 
             writer.WriteVector2(MireCenter);
             writer.WriteVector2(InfernoCenter);
@@ -411,15 +371,15 @@ namespace AAMod
             downedGrips = flags[2];
             downedBrood = flags[3];
             downedHydra = flags[4];
-            NPC.downedBoss3 = flags[5];
-            downedRetriever = flags[6];
-            downedOrthrus = flags[7];
+            ModContentGenerated = flags[5];
+            downedRajah = flags[6];
+            downedRajahsRevenge = flags[7];
 
             BitsByte flags2 = reader.ReadByte();
-            downedRaider = flags2[0];
-            NPC.downedMechBossAny = flags2[1];
-            NPC.downedPlantBoss = flags2[2];
-            NPC.downedMoonlord = flags2[3];
+            zeroUS = flags2[0];
+            downedAshe = flags2[1];
+            downedHaruka = flags2[2];
+            SistersSummoned = flags2[3];
             downedSisters = flags2[4];
             downedSag = flags2[5];
             downedEquinox = flags2[6];
@@ -428,11 +388,12 @@ namespace AAMod
             BitsByte flags3 = reader.ReadByte();
             downedAllAncients = flags3[0];
             downedYamata = flags3[1];
-            Chairlol = flags3[2];
+            InfernoStripe = flags3[2];
+            MireStripe = flags3[3];
             downedZero = flags3[4];
-            downedSAncient = flags3[4];
+            downedSAncient = flags3[5];
             downedShen = flags3[6];
-            downedIZ = flags3[7];
+            downedFungus = flags3[7];
 
             BitsByte flags4 = reader.ReadByte();
             Ancients = flags4[0];
@@ -440,26 +401,6 @@ namespace AAMod
             downedSerpent = flags4[2];
             downedDjinn = flags4[3];
             downedToad = flags4[4];
-            downedGripsS = flags4[5];
-            downedStormAny = flags4[6];
-            SistersSummoned = flags4[7];
-
-            BitsByte flags5 = reader.ReadByte();
-            downedSoC = flags5[0];
-            Compass = flags5[1];
-            downedKraken = flags5[2];
-            downedFungus = flags5[3];
-            InfernoStripe = flags5[4];
-            MireStripe = flags5[5];
-            downedAshe = flags5[6];
-            downedHaruka = flags5[7];
-            
-            BitsByte flags6 = reader.ReadByte();
-            ModContentGenerated = flags6[0];
-            downedTruffle = flags6[1];
-            downedRajah = flags6[2];
-            downedRajahsRevenge = flags6[3];
-            zeroUS = flags6[4];
 
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		
@@ -495,9 +436,6 @@ namespace AAMod
             downedBrood = downed.Contains("Brood");
             downedHydra = downed.Contains("Hydra");
             NPC.downedBoss3 = downed.Contains("Dynaskull");
-            downedRetriever = downed.Contains("Storm1");
-            downedOrthrus = downed.Contains("Storm2");
-            downedRaider = downed.Contains("Storm3");
             NPC.downedMechBossAny = downed.Contains("MechBoss");
             NPC.downedPlantBoss = downed.Contains("Evil");
             NPC.downedMoonlord = downed.Contains("MoonLord");
@@ -516,7 +454,6 @@ namespace AAMod
             downedDjinn = downed.Contains("Djinn");
             downedToad = downed.Contains("Toad");
             downedGripsS = downed.Contains("GripsS");
-            downedStormAny = downed.Contains("AnyStorm");
             downedSoC = downed.Contains("SoC");
             Compass = downed.Contains("Compass");
             downedKraken = downed.Contains("Kraken");
@@ -526,14 +463,12 @@ namespace AAMod
             downedSisters = downed.Contains("Sisters");
             downedSag = downed.Contains("Sag");
             SistersSummoned = downed.Contains("Summoned");
-            downedTruffle = downed.Contains("Truffle");
             downedRajah = downed.Contains("Rajah");
             downedRajahsRevenge = downed.Contains("Rajah2");
             zeroUS = downed.Contains("ZUS");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
-            FulguriteOre = downedStormAny;
             HallowedOre = NPC.downedMechBossAny;
             Evil = NPC.downedPlantBoss;
             Luminite = NPC.downedMoonlord;
@@ -1343,28 +1278,7 @@ namespace AAMod
                     if (Main.netMode != 1) BaseUtility.Chat("The withered machines of the emptiness reactivate.", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
-            if (downedRetriever || downedOrthrus || downedRaider)
-            {
-                downedStormAny = true;
-            }
-
-            if (downedStormAny)
-            {
-                if (FulguriteOre == false)
-                {
-                    FulguriteOre = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("The clap of a thunderbolt roars in the caverns...", Color.MediumPurple.R, Color.MediumPurple.G, Color.MediumPurple.B);
-                    for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
-                    {
-                        WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(10, 11), WorldGen.genRand.Next(10, 11), (ushort)mod.TileType("FulguriteOre"));
-                    }
-                }
-            }
-            if (downedRetriever & downedOrthrus & downedRaider)
-            {
-                downedStormAll = true;
-            }
-
+            
             if (downedAkuma || downedYamata || downedZero)
             {
                 downedAncient = true;
