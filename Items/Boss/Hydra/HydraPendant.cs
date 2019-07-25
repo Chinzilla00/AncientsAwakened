@@ -39,14 +39,6 @@ namespace AAMod.Items.Boss.Hydra
                     {
                         return false;
                     }
-                    if (slot != i && player.armor[i].type == mod.ItemType<StormCharm>())
-                    {
-                        return false;
-                    }
-                    if (slot != i && player.armor[i].type == mod.ItemType<Orthrus.StormPendant>())
-                    {
-                        return false;
-                    }
                 }
             }
             return true;
