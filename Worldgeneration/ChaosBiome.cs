@@ -731,7 +731,9 @@ namespace AAMod.Worldgeneration
             gen.Generate(origin.X, origin.Y, true, true);
             WorldGen.PlaceObject(origin.X + 1, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"));
             WorldGen.PlaceObject(origin.X + 78, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"));
-            HoardChest(origin.X + 18, origin.Y + 29);
+            NetMessage.SendObjectPlacment(-1, origin.X + 1, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, origin.X + 78, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
+            HoardChest(origin.X + 18, origin.Y + 30);
             HoardChest(origin.X + 38, origin.Y + 32);
             HoardChest(origin.X + 59, origin.Y + 26);
 
