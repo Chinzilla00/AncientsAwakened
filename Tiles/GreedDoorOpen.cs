@@ -55,8 +55,7 @@ namespace AAMod.Tiles
 			TileObjectData.addAlternate(1);
 			TileObjectData.addTile(Type);
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
-			TileID.Sets.HousingWalls[Type] = true; //needed for non-solid blocks to count as walls
-			TileID.Sets.HasOutlines[Type] = true;
+			TileID.Sets.HousingWalls[Type] = true;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Greed Door");
 			AddMapEntry(new Color(200, 200, 200), name);
