@@ -29,8 +29,11 @@ namespace AAMod
                 
                 dustType = DustTypeID;
             }
-            //TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidWithTop, TileObjectData.newTile.Width, 0);
-            //TileObjectData.addTile(Type);
+            Main.tileSolid[Type] = false;
+            Main.tileMergeDirt[Type] = false;
+            Main.tileLighted[Type] = false;
+            Main.tileFrameImportant[Type] = false;
+            AddMapEntry(new Color(200, 255, 200));
             drop = ItemDropID;
             soundStyle = 18;
             AddMapEntry(MapColor, CreateMapEntryName(MapLegend));
