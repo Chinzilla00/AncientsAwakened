@@ -745,7 +745,7 @@ namespace AAMod.Worldgeneration
 
         public void HoardChest(int x, int y)
         {
-            int PlacementSuccess = WorldGen.PlaceChest(x, y, TileID.Containers, false, 2);
+            int PlacementSuccess = WorldGen.PlaceChest(x, y, (ushort)AAMod.instance.TileType<GreedChest>(), false, 1);
 
             int[] GreedChestLoot = new int[]
                 {   ItemID.GoldenChair,

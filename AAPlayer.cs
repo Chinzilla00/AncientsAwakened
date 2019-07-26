@@ -520,21 +520,6 @@ namespace AAMod
             WorldgenReminder = false;
         }
 
-        public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)
-        {
-            // Make sure this condition is the same as the condition in the Buff to remove itself. We do this here instead of in ModItem.UpdateAccessory in case we want future upgraded items to set blockyAccessory
-            if (BegAccessory)
-            {
-                player.AddBuff(mod.BuffType<Horse>(), 60, true);
-            }
-        }
-
-        public override void PreUpdateBuffs()
-        {
-
-        }
-
-
         public override void UpdateBiomes()
         {
             ZoneTower = player.ZoneTowerSolar || player.ZoneTowerNebula || player.ZoneTowerStardust || player.ZoneTowerVortex;
@@ -546,16 +531,14 @@ namespace AAMod
             ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
             ZoneRisingSunPagoda = AAWorld.pagodaTiles >= 1;
             ZoneStars = AAWorld.Radium >= 20;
-            ZoneHoard = AAWorld.HoardTiles > 1 && player.ZoneRockLayerHeight;
+            ZoneHoard = AAWorld.HoardTiles > 1;
             ZoneAcropolis = AAWorld.CloudTiles > 1;
         }
 
         public static Player PlayerPos = Main.player[Main.myPlayer];
 
-
         public float Intensity;
         
-
         public override void UpdateBiomeVisuals()
         {
             bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenA>());
@@ -599,7 +582,6 @@ namespace AAMod
                 ZoneStars == modOther.ZoneStars && 
                 ZoneHoard == modOther.ZoneHoard &&
                 ZoneAcropolis == modOther.ZoneAcropolis;
-                
         }
 
         public override void CopyCustomBiomesTo(Player other)
@@ -821,11 +803,6 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-            if (ZoneHoard)
-            {
-                player.ZoneJungle = false;
-            }
-
             if (NPC.AnyNPCs(mod.NPCType<AkumaTransition>()))
             {
                 int n = BaseAI.GetNPC(player.Center, mod.NPCType<AkumaTransition>(), -1);

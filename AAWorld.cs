@@ -1259,7 +1259,7 @@ namespace AAMod
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
             Radium = tileCounts[mod.TileType<RadiumOre>()];
             HoardTiles = tileCounts[mod.TileType<GreedBrick>()] + tileCounts[mod.TileType<GreedStone>()] + tileCounts[mod.TileType<GreedDoorClosed>()] + tileCounts[mod.TileType<GreedDoorOpen>()];
-            HoardTiles = tileCounts[mod.TileType<AcropolisBlock>()] + tileCounts[mod.TileType<AcropolisAltarBlock>()];
+            CloudTiles = tileCounts[mod.TileType<AcropolisBlock>()] + tileCounts[mod.TileType<AcropolisAltarBlock>()];
         }
 
         private void MireAndInferno(GenerationProgress progress)
