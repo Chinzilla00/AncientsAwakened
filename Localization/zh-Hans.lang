@@ -2284,7 +2284,7 @@ ItemTooltip.OmegaVolley=发射一排极其精准的声波子弹\n33%几率不消
 // AAMod.Items.BossSummons
 
 
-ItemName.ConfusingMushroom=迷惑的蘑菇
+ItemName.ConfusingMushroom=困惑蘑菇
 ItemTooltip.ConfusingMushroom=召唤真菌帝\n只能在荧光蘑菇地中使用
 
 ItemName.CuriousClaw=稀奇的爪子
@@ -2344,8 +2344,8 @@ ItemTooltip.HydraChow=拿着这个就会让你捂着嘴\n召唤九头渊蛇\n只
 ItemName.InterestingClaw=有趣的爪子
 ItemTooltip.InterestingClaw=奇怪的湿冷\n只能在晚上使用
 
-ItemName.IntimidatingMushroom=惊悚的蘑菇
-ItemTooltip.IntimidatingMushroom=召唤赤孢皇\n只能在白天红色蘑菇地使用
+ItemName.IntimidatingMushroom=战栗蘑菇
+ItemTooltip.IntimidatingMushroom=召唤赤孢皇\n只能在白天使用
 
 ItemName.Lifescanner=生命扫描仪
 ItemTooltip.Lifescanner=召唤射手座-虚空人马\n只能在浮岛虚空使用
