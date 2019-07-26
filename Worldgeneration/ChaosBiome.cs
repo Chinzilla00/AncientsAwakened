@@ -707,7 +707,7 @@ namespace AAMod.Worldgeneration
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
             {
                 [new Color(255, 0, 0)] = mod.TileType("GreedStone"),
-                [new Color(0, 255, 0)] = TileID.GoldCoinPile,
+                [new Color(0, 255, 0)] = mod.TileType("GreedCoin"),
                 [new Color(0, 0, 255)] = mod.TileType("GreedBrick"),
                 [new Color(255, 255, 255)] = -2, //turn into air
                 [Color.Black] = -1 //don't touch when genning		
@@ -721,6 +721,7 @@ namespace AAMod.Worldgeneration
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/GreedNest"), colorToTile, mod.GetTexture("Worldgeneration/GreedNest_Walls"), colorToWall);
 
+            gen.Generate(origin.X, origin.Y, true, true);
 
             WorldUtils.Gen(origin, new Shapes.Circle(80), Actions.Chain(new GenAction[] //remove all fluids in sphere...
 			{
@@ -728,7 +729,6 @@ namespace AAMod.Worldgeneration
                 new Actions.SetLiquid(0, 0)
             }));
 
-            gen.Generate(origin.X, origin.Y, true, true);
             WorldGen.PlaceObject(origin.X + 1, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"));
             WorldGen.PlaceObject(origin.X + 78, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"));
             NetMessage.SendObjectPlacment(-1, origin.X + 1, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
@@ -744,6 +744,54 @@ namespace AAMod.Worldgeneration
         public void HoardChest(int x, int y)
         {
             int PlacementSuccess = WorldGen.PlaceChest(x, y, TileID.Containers, false, 2);
+
+            int[] GreedChestLoot = new int[]
+                {   ItemID.GoldenChair,
+                    ItemID.GoldenToilet,
+                    ItemID.GoldenDoor,
+                    ItemID.GoldenTable,
+                    ItemID.GoldenBed,
+                    ItemID.GoldenPiano,
+                    ItemID.GoldenDresser,
+                    ItemID.GoldenSofa,
+                    ItemID.GoldenSink,
+                    ItemID.GoldenBathtub,
+                    ItemID.GoldenClock,
+                    ItemID.GoldenLamp,
+                    ItemID.GoldenBookcase,
+                    ItemID.GoldenChandelier,
+                    ItemID.GoldenLantern,
+                    ItemID.GoldenCandelabra,
+                    ItemID.GoldenCandle,
+                    ItemID.GoldenChest,
+                    ItemID.GoldenWorkbench,
+                    ItemID.GoldWatch,
+                    ItemID.GoldDust,
+                    ItemID.AncientGoldHelmet,
+                    ItemID.GoldBunny,
+                    ItemID.GoldButterfly,
+                    ItemID.GoldFrog,
+                    ItemID.GoldGrasshopper,
+                    ItemID.SquirrelGold,
+                    ItemID.GoldBird,
+                    ItemID.GoldMouse,
+                    ItemID.GoldWorm,
+                    ItemID.GoldCrown,
+                    ItemID.GoldenKey,
+                    ItemID.Goldfish,
+                    ItemID.ReflectiveGoldDye,
+                    ItemID.GoldGreaves,
+                    ItemID.GoldHelmet,
+                    ItemID.FindingGold,
+                    ItemID.GoldChainmail,
+                    ItemID.GoldShortsword,
+                    ItemID.GoldBroadsword,
+                    ItemID.GoldBow,
+                    ItemID.GoldHammer,
+                    ItemID.GoldPickaxe,
+                    ItemID.GoldenCrate
+            };
+
             if (PlacementSuccess >= 0)
             {
                 Chest chest = Main.chest[PlacementSuccess];
@@ -764,34 +812,46 @@ namespace AAMod.Worldgeneration
                 chest.item[3].SetDefaults(ItemID.GoldCoin, false);
                 chest.item[3].stack = WorldGen.genRand.Next(70, 90);
 
-                chest.item[4].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                { 1704, 1710, 1716, 1720, 1720, 2379, 2389, 2405, 2843, 2663, 2238, 2133, 2137, 2143, 2147, 2151, 2155, 3885, 3910, 17, 1348,
-                955, 2890, 2891, 2893, 3564, 2889, 2894, 2892, 2895, 264, 327, }), false);
-
-                chest.item[5].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                { 1704, 1710, 1716, 1720, 1720, 2379, 2389, 2405, 2843, 2663, 2238, 2133, 2137, 2143, 2147, 2151, 2155, 3885, 3910, 17, 1348,
-                955, 2890, 2891, 2893, 3564, 2889, 2894, 2892, 2895, 264, 327, }), false);
-
-                chest.item[6].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                { 1704, 1710, 1716, 1720, 1720, 2379, 2389, 2405, 2843, 2663, 2238, 2133, 2137, 2143, 2147, 2151, 2155, 3885, 3910, 17, 1348,
-                955, 2890, 2891, 2893, 3564, 2889, 2894, 2892, 2895, 264, 327, }), false);
-
-                chest.item[7].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                { 1704, 1710, 1716, 1720, 1720, 2379, 2389, 2405, 2843, 2663, 2238, 2133, 2137, 2143, 2147, 2151, 2155, 3885, 3910, 17, 1348,
-                955, 2890, 2891, 2893, 3564, 2889, 2894, 2892, 2895, 264, 327, }), false);
-
-                chest.item[8].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                { 1704, 1710, 1716, 1720, 1720, 2379, 2389, 2405, 2843, 2663, 2238, 2133, 2137, 2143, 2147, 2151, 2155, 3885, 3910, 17, 1348,
-                955, 2890, 2891, 2893, 3564, 2889, 2894, 2892, 2895, 264, 327, }), false);
-
-                chest.item[9].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                { 1704, 1710, 1716, 1720, 1720, 2379, 2389, 2405, 2843, 2663, 2238, 2133, 2137, 2143, 2147, 2151, 2155, 3885, 3910, 17, 1348,
-                955, 2890, 2891, 2893, 3564, 2889, 2894, 2892, 2895, 264, 327, }), false);
-
-                chest.item[10].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                { 1704, 1710, 1716, 1720, 1720, 2379, 2389, 2405, 2843, 2663, 2238, 2133, 2137, 2143, 2147, 2151, 2155, 3885, 3910, 17, 1348,
-                955, 2890, 2891, 2893, 3564, 2889, 2894, 2892, 2895, 264, 327, }), false);
+                for (int i = 0; i < 20; i++)
+                {
+                    chest.item[i + 4].SetDefaults(Utils.Next(WorldGen.genRand, GreedChestLoot));
+                }
             }
+        }
+    }
+
+    public class Acropolis : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            Mod mod = AAMod.instance;
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
+            {
+                [new Color(255, 0, 0)] = mod.TileType("AcropolisBlock"),
+                [new Color(255, 0, 255)] = mod.TileType("AcropolisAltarBlock"),
+                [new Color(0, 255, 255)] = TileID.Grass,
+                [new Color(0, 255, 0)] = TileID.Dirt,
+                [new Color(0, 0, 255)] = TileID.Cloud,
+                [new Color(255, 255, 255)] = -2, //turn into air
+                [Color.Black] = -1 //don't touch when genning		
+            };
+
+            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>
+            {
+                [new Color(255, 0, 0)] = mod.WallType("AcropolisBrickWall"),
+                [new Color(255, 0, 255)] = mod.TileType("AcropolisPillar"),
+                [new Color(0, 255, 0)] = WallID.Dirt,
+                [new Color(0, 0, 255)] = WallID.Cloud,
+                [new Color(255, 255, 255)] = -2, 
+                [Color.Black] = -1			
+            };
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Acropolis"), colorToTile, mod.GetTexture("Worldgeneration/AcropolisWalls"), colorToWall);
+
+            gen.Generate(origin.X, origin.Y, true, true);
+
+            return true;
         }
     }
 

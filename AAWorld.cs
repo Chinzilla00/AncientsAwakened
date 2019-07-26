@@ -37,6 +37,7 @@ namespace AAMod
         public static int Darkmatter = 0;
         public static int DiscoBall = 0;
         public static int HoardTiles = 0;
+        public static int CloudTiles = 0;
         //Worldgen
         public static bool TerrariumEnemies;
         public static bool Luminite;
@@ -496,7 +497,7 @@ namespace AAMod
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
-            int ChaosIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Slush"));
+            int ChaosIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Larva"));
             int shiniesIndex1 = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
 
@@ -537,6 +538,10 @@ namespace AAMod
                 Hoard(progress);
             }));
 
+            tasks.Insert(shiniesIndex2 + 7, new PassLegacy("Acropolis", delegate (GenerationProgress progress)
+            {
+                Acropolis(progress);
+            }));
 
             tasks.Insert(shiniesIndex2 + 5, new PassLegacy("Void Islands", delegate (GenerationProgress progress)
             {
@@ -981,8 +986,7 @@ namespace AAMod
                         WorldGen.PlaceWall(i, j, wallID);
                     }
                 }
-            }
-            int chestType = 1;
+            };
             //Side placements
             for (int i = Y; i < Y + sizeY - 1; ++i)
             {
@@ -996,105 +1000,53 @@ namespace AAMod
                 WorldGen.PlaceTile(i, Y + (sizeY - 1), (ushort)mod.TileType("DoomitePlate"));
             }
             WorldGen.PlaceTile(X + sizeX - 2, Y + sizeY - 1, (ushort)mod.TileType("DoomitePlate"));
-            if (chestType == 1)
+
+            int PlacementSuccess = WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChest"), true);
+            if (PlacementSuccess >= 0)
             {
-                ChestNumber = Main.rand.Next(4);
+                Chest chest = Main.chest[PlacementSuccess];
                 if (ChestNumber == 0)
                 {
-                    int PlacementSuccess = WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC1"), true);
-                    if (PlacementSuccess >= 0)
-                    {
-                        Chest chest = Main.chest[PlacementSuccess];
-                        chest.item[0].SetDefaults(mod.ItemType("Voidsaber"), false);
-                        chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                        { mod.ItemType("DoomiteScrap") }), false);
-                        chest.item[1].stack = WorldGen.genRand.Next(4, 6);
-                        Item item = chest.item[2];
-                        UnifiedRandom genRand = WorldGen.genRand;
-                        int[] array2 = new int[]
-                        { 302, 2327, 2351, 304, 2329 };
-                        item.SetDefaults(Utils.Next(genRand, array2), false);
-                        chest.item[2].stack = WorldGen.genRand.Next(1, 3);
-                        chest.item[3].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                        { 282, 286 }), false);
-                        chest.item[3].stack = WorldGen.genRand.Next(15, 31);
-                        chest.item[4].SetDefaults(73, false);
-                        chest.item[4].stack = WorldGen.genRand.Next(1, 3);
-                    }
+                    VoidLoot(mod.ItemType("Voidsaber"), chest);
                 }
                 else if (ChestNumber == 1)
                 {
-                    int PlacementSuccess = WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC2"), true);
-                    if (PlacementSuccess >= 0)
-                    {
-                        Chest chest = Main.chest[PlacementSuccess];
-                        chest.item[0].SetDefaults(mod.ItemType("DoomStaff"), false);
-                        chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                        { mod.ItemType("DoomiteScrap") }), false);
-                        chest.item[1].stack = WorldGen.genRand.Next(4, 6);
-                        Item item = chest.item[2];
-                        UnifiedRandom genRand = WorldGen.genRand;
-                        int[] array2 = new int[]
-                        { 302, 2327, 2351, 304, 2329 };
-                        item.SetDefaults(Utils.Next(genRand, array2), false);
-                        chest.item[2].stack = WorldGen.genRand.Next(1, 3);
-                        chest.item[3].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                        { 282, 286 }), false);
-                        chest.item[3].stack = WorldGen.genRand.Next(15, 31);
-                        chest.item[4].SetDefaults(73, false);
-                        chest.item[4].stack = WorldGen.genRand.Next(1, 3);
-                    }
+                    VoidLoot(mod.ItemType("DoomGun"), chest);
                 }
                 else if (ChestNumber == 2)
                 {
-                    int PlacementSuccess = WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC3"), true);
-                    if (PlacementSuccess >= 0)
-                    {
-                        Chest chest = Main.chest[PlacementSuccess];
-                        chest.item[0].SetDefaults(mod.ItemType("DoomGun"), false);
-                        chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                        { mod.ItemType("DoomiteScrap") }), false);
-                        chest.item[1].stack = WorldGen.genRand.Next(4, 6);
-                        Item item = chest.item[2];
-                        UnifiedRandom genRand = WorldGen.genRand;
-                        int[] array2 = new int[]
-                        { 302, 2327, 2351, 304, 2329 };
-                        item.SetDefaults(Utils.Next(genRand, array2), false);
-                        chest.item[2].stack = WorldGen.genRand.Next(1, 3);
-                        chest.item[3].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                        { 282, 286 }), false);
-                        chest.item[3].stack = WorldGen.genRand.Next(15, 31);
-                        chest.item[4].SetDefaults(72, false);
-                        chest.item[4].stack = WorldGen.genRand.Next(14, 19);
-                    }
+                    VoidLoot(mod.ItemType("DoomStaff"), chest);
+
                 }
-                else
+                else if (ChestNumber == 3)
                 {
-                    int PlacementSuccess = WorldGen.PlaceChest(X + ((sizeX - 1) / 2), Y + sizeY - 2, (ushort)mod.TileType("OroborosChestC4"), true);
-                    if (PlacementSuccess >= 0)
-                    {
-                        Chest chest = Main.chest[PlacementSuccess];
-                        chest.item[0].SetDefaults(mod.ItemType("ProbeControlUnit"), false);
-                        chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                        { mod.ItemType("DoomiteScrap") }), false);
-                        chest.item[1].stack = WorldGen.genRand.Next(4, 6);
-                        Item item = chest.item[2];
-                        UnifiedRandom genRand = WorldGen.genRand;
-                        int[] array2 = new int[]
-                        { 302, 2327, 2351, 304, 2329 };
-                        item.SetDefaults(Utils.Next(genRand, array2), false);
-                        chest.item[2].stack = WorldGen.genRand.Next(1, 3);
-                        chest.item[3].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                        { 282, 286 }), false);
-                        chest.item[3].stack = WorldGen.genRand.Next(15, 31);
-                        chest.item[4].SetDefaults(73, false);
-                        chest.item[4].stack = WorldGen.genRand.Next(1, 3);
-                    }
+                    VoidLoot(mod.ItemType("ProbeControlUnit"), chest);
                 }
+                ChestNumber += 1;
             }
             //Side holes
             for (int i = Y + sizeY - 4; i > Y + sizeY; --i)
+            {
                 WorldGen.KillTile(X, i);
+            }
+        }
+
+        public void VoidLoot(int Item, Chest chest)
+        {
+            chest.item[0].SetDefaults(Item, false);
+            chest.item[1].SetDefaults(mod.ItemType("DoomiteScrap"), false);
+            chest.item[1].stack = WorldGen.genRand.Next(4, 6);
+            Item item = chest.item[2];
+            UnifiedRandom genRand = WorldGen.genRand;
+            int[] array2 = new int[]
+            { 302, 2327, 2351, 304, 2329 };
+            item.SetDefaults(Utils.Next(genRand, array2), false);
+            chest.item[2].stack = WorldGen.genRand.Next(1, 3);
+            chest.item[3].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
+            { 282, 286 }), false);
+            chest.item[3].stack = WorldGen.genRand.Next(15, 31);
+            chest.item[4].SetDefaults(73, false);
+            chest.item[4].stack = WorldGen.genRand.Next(1, 3);
         }
 
         public override void PostWorldGen()
@@ -1307,6 +1259,7 @@ namespace AAMod
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
             Radium = tileCounts[mod.TileType<RadiumOre>()];
             HoardTiles = tileCounts[mod.TileType<GreedBrick>()] + tileCounts[mod.TileType<GreedStone>()] + tileCounts[mod.TileType<GreedDoorClosed>()] + tileCounts[mod.TileType<GreedDoorOpen>()];
+            HoardTiles = tileCounts[mod.TileType<AcropolisBlock>()] + tileCounts[mod.TileType<AcropolisAltarBlock>()];
         }
 
         private void MireAndInferno(GenerationProgress progress)
@@ -1376,20 +1329,22 @@ namespace AAMod
             TerraSphere();
         }
 
+        private void Acropolis(GenerationProgress progress)
+        {
+            progress.Message = "Amassing Treasure";
+            SkyAcropolis();
+        }
+
+        public void SkyAcropolis()
+        {
+            Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
+            Acropolis biome = new Acropolis();
+            biome.Place(origin, WorldGen.structures);
+        }
         private void Hoard(GenerationProgress progress)
         {
             progress.Message = "Amassing Treasure";
             HoardCave();
-        }
-
-        public void InfernoVolcano()
-        {
-            Point origin = new Point ((int)infernoPos.X, (int)infernoPos.Y);
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);	
-            InfernoBiome biome = new InfernoBiome();
-            InfernoDelete delete = new InfernoDelete();
-            delete.Place(origin, WorldGen.structures);
-            biome.Place(origin, WorldGen.structures);
         }
 
         public void HoardCave()
@@ -1408,6 +1363,16 @@ namespace AAMod
             else if (Main.maxTilesX <= 6400) { return 2; }
             else if (Main.maxTilesX <= 8400) { return 3; }
             return 1;
+        }
+
+        public void InfernoVolcano()
+        {
+            Point origin = new Point((int)infernoPos.X, (int)infernoPos.Y);
+            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
+            InfernoBiome biome = new InfernoBiome();
+            InfernoDelete delete = new InfernoDelete();
+            delete.Place(origin, WorldGen.structures);
+            biome.Place(origin, WorldGen.structures);
         }
 
         public void MireAbyss()
