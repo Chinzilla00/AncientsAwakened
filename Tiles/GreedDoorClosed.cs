@@ -82,7 +82,7 @@ namespace AAMod.Tiles
 
         public override void RightClick(int i, int j)
         {
-            if (Main.tile[i, j].frameY != 54)
+            if (Main.tile[i, j].frameY <= 54)
             {
                 openDoorID = -1;
             }
@@ -90,6 +90,8 @@ namespace AAMod.Tiles
             {
                 openDoorID = mod.TileType("GreedDoorOpen");
             }
+
+            UnlockDoor(i, j);
         }
 
         public static void UnlockDoor(int i, int j)
