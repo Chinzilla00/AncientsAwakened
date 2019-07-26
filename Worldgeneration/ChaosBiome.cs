@@ -723,11 +723,8 @@ namespace AAMod.Worldgeneration
 
             gen.Generate(origin.X, origin.Y, true, true);
 
-            WorldUtils.Gen(origin, new Shapes.Circle(80), Actions.Chain(new GenAction[] //remove all fluids in sphere...
-			{
-                new InWorld(),
-                new Actions.SetLiquid(0, 0)
-            }));
+
+            int biomeRadius = 80;
 
             WorldGen.PlaceObject(origin.X + 1, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"));
             WorldGen.PlaceObject(origin.X + 78, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"));
@@ -737,6 +734,11 @@ namespace AAMod.Worldgeneration
             HoardChest(origin.X + 38, origin.Y + 33);
             HoardChest(origin.X + 59, origin.Y + 27);
 
+            WorldUtils.Gen(origin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
+			{
+                new InWorld(),
+                new Actions.SetLiquid(0, 0)
+            }));
 
             return true;
         }
@@ -840,7 +842,7 @@ namespace AAMod.Worldgeneration
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>
             {
                 [new Color(255, 0, 0)] = mod.WallType("AcropolisBrickWall"),
-                [new Color(0, 255, 255)] = mod.TileType("AcropolisPillar"),
+                [new Color(0, 255, 255)] = mod.WallType("AcropolisWall"),
                 [new Color(0, 255, 0)] = WallID.Dirt,
                 [new Color(0, 0, 255)] = WallID.Cloud,
                 [new Color(255, 255, 255)] = -2, 

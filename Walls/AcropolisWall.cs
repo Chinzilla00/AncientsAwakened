@@ -1,15 +1,17 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Walls
 {
-    public class AcropolisPillar : ModWall
+    public class AcropolisWall : ModWall
 	{
 		public override void SetDefaults()
-        {
+		{
+            Main.wallHouse[Type] = true;
             dustType = DustID.BlueCrystalShard;
-            AddMapEntry(new Color(0, 0, 50));
+			AddMapEntry(new Color(0, 0, 25));
 		}
 
         public override void NumDust(int i, int j, bool fail, ref int num)
