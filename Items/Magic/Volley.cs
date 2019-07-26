@@ -20,9 +20,9 @@ namespace AAMod.Items.Magic
             item.knockBack = 4;
             item.value = Item.sellPrice(0, 3, 0, 0);
             item.rare = 4;
-            item.mana = 10;
+            item.mana = 5;
             item.UseSound = SoundID.Item20;
-            item.autoReuse = true;
+            item.autoReuse = false;
             item.shoot = mod.ProjectileType("Volley");
             item.shootSpeed = 5f;
         }

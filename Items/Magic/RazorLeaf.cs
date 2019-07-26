@@ -10,13 +10,13 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
         public override void SetDefaults()
         {
 
-            item.damage = 6;                   
+            item.damage = 10;                   
             item.magic = true;   
             item.width = 24;      
             item.height = 28;      //The size of the height of the hitbox in pixels.
 
-            item.useTime = 14;     
-            item.useAnimation = 14;    //How long the Weapon is used for.
+            item.useTime = 18;     
+            item.useAnimation = 18;    //How long the Weapon is used for.
             item.useStyle = 5;         //The way your Weapon will be used, 5 is the Holding Out Used for: Guns, Spellbooks, Drills, Chainsaws, Flails, Spears for example
             item.noMelee = true;     //Setting to True allows the weapon sprite to stop doing damage, so only the projectile does the damge
             item.knockBack = 1;
