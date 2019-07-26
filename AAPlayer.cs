@@ -88,6 +88,7 @@ namespace AAMod
         public bool YamataAltar = false;
         public bool Terrarium = false;
         public bool ZoneStars = false;
+        public bool ZoneHoard = false;
         public bool AshCurse;
         public int VoidGrav = 0;
         public static int Ashes = 0;
@@ -513,6 +514,7 @@ namespace AAMod
             ZoneShip = false;
             ZoneTower = false;
             ZoneStars = false;
+            ZoneHoard = false;
             WorldgenReminder = false;
         }
 
@@ -539,11 +541,10 @@ namespace AAMod
             ZoneMush = AAWorld.mushTiles > 100;
             Terrarium = AAWorld.terraTiles >= 1;
             ZoneVoid = (AAWorld.voidTiles > 20 && player.ZoneSkyHeight) || (AAWorld.voidTiles > 100 && !player.ZoneSkyHeight) || BaseAI.GetNPC(player.Center, mod.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<ZeroAwakened>(), 5000) != -1;
-            //ZoneStorm = (AAWorld.stormTiles >= 1);
-            //ZoneShip = (AAWorld.shipTiles >= 1);
             ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
             ZoneRisingSunPagoda = AAWorld.pagodaTiles >= 1;
             ZoneStars = AAWorld.Radium >= 20;
+            ZoneHoard = AAWorld.HoardTiles > 1 && player.ZoneRockLayerHeight;
         }
 
         public static Player PlayerPos = Main.player[Main.myPlayer];
@@ -592,7 +593,8 @@ namespace AAMod
                 Terrarium == modOther.Terrarium &&
                 ZoneStorm == modOther.ZoneStorm &&
                 ZoneShip == modOther.ZoneShip &&
-                ZoneStars == modOther.ZoneStars;
+                ZoneStars == modOther.ZoneStars && 
+                ZoneHoard == modOther.ZoneHoard;
         }
 
         public override void CopyCustomBiomesTo(Player other)
@@ -608,6 +610,7 @@ namespace AAMod
             modOther.ZoneRisingSunPagoda = ZoneRisingSunPagoda;
             modOther.ZoneShip = ZoneShip;
             modOther.ZoneStars = ZoneStars;
+            modOther.ZoneHoard = ZoneHoard;
         }
 
         public override void SendCustomBiomes(BinaryWriter bb)
@@ -626,6 +629,7 @@ namespace AAMod
             BitsByte zoneByte2 = 0;
             zoneByte2[0] = ZoneShip;
             zoneByte2[1] = ZoneStars;
+            zoneByte2[2] = ZoneHoard;
             bb.Write(zoneByte2);
         }
 
@@ -644,6 +648,7 @@ namespace AAMod
             BitsByte zoneByte2 = bb.ReadByte();
             ZoneShip = zoneByte2[0];
             ZoneStars = zoneByte2[1];
+            ZoneHoard = zoneByte2[2];
         }
 
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
@@ -769,7 +774,11 @@ namespace AAMod
                 {
                     caughtType = mod.ItemType("MireCrate");
                 }
-                else if (liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
+                if (liquidType == 0 && player.GetModPlayer<AAPlayer>(mod).ZoneHoard)
+                {
+                    caughtType = ItemID.GoldenCrate;
+                }
+                if (liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
                 {
                     caughtType = mod.ItemType("HellCrate");
                 }

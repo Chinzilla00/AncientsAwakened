@@ -542,6 +542,13 @@ namespace AAMod
                 return;
             }
 
+            if (Ancients.ZoneHoard)
+            {
+                priority = MusicPriority.BiomeHigh;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Hoard");
+                return;
+            }
+
             if (Ancients.ZoneVoid)
             {
                 priority = MusicPriority.Event;

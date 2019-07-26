@@ -707,7 +707,7 @@ namespace AAMod.Worldgeneration
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
             {
                 [new Color(255, 0, 0)] = mod.TileType("GreedStone"),
-                [new Color(0, 255, 0)] = mod.TileType("GreedCoin"),
+                [new Color(0, 255, 0)] = TileID.GoldCoinPile,
                 [new Color(0, 0, 255)] = mod.TileType("GreedBrick"),
                 [new Color(255, 255, 255)] = -2, //turn into air
                 [Color.Black] = -1 //don't touch when genning		
@@ -721,12 +721,20 @@ namespace AAMod.Worldgeneration
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/GreedNest"), colorToTile, mod.GetTexture("Worldgeneration/GreedNest_Walls"), colorToWall);
 
+
+            WorldUtils.Gen(origin, new Shapes.Circle(80), Actions.Chain(new GenAction[] //remove all fluids in sphere...
+			{
+                new InWorld(),
+                new Actions.SetLiquid(0, 0)
+            }));
+
             gen.Generate(origin.X, origin.Y, true, true);
-            WorldGen.PlaceObject(origin.X + 1, origin.Y + 27, (ushort)mod.TileType("GreedDoorClosed"));
-            WorldGen.PlaceObject(origin.X + 78, origin.Y + 27, (ushort)mod.TileType("GreedDoorClosed"));
+            WorldGen.PlaceObject(origin.X + 1, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"));
+            WorldGen.PlaceObject(origin.X + 78, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"));
             HoardChest(origin.X + 18, origin.Y + 29);
             HoardChest(origin.X + 38, origin.Y + 32);
             HoardChest(origin.X + 59, origin.Y + 26);
+
 
             return true;
         }

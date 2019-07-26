@@ -47,7 +47,17 @@ namespace AAMod.Tiles
 			openDoorID = mod.TileType("GreedDoorOpen");
 		}
 
-		public override bool HasSmartInteract()
+        public override bool CanKillTile(int i, int j, ref bool blockDamaged)
+        {
+            return false;
+        }
+
+        public override bool CanExplode(int i, int j)
+        {
+            return false;
+        }
+
+        public override bool HasSmartInteract()
         {
 			return true;
 		}
