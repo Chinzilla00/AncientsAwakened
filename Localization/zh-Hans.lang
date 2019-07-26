@@ -2238,7 +2238,7 @@ ItemTooltip.Neutralizer=发射弹跳激光，墙壁反弹使得它们会变得�
 ItemName.RealityCannon=现实破坏炮
 ItemTooltip.RealityCannon=快速射出深色激光
 
-ItemName.RiftShredder=世界碎裂机
+ItemName.RiftShredder=世界割裂臂
 ItemTooltip.RiftShredder=发射虚空之星，撕裂路过的一切现实
 
 ItemName.TeslaHand=破损武器-0
@@ -4709,13 +4709,13 @@ NPCName.OmegaVolley=欧米伽排炮
 
 NPCName.RealityCannon=现实破坏炮
 
-NPCName.RiftShredder=世界碎裂机
+NPCName.RiftShredder=世界割裂臂
 
 NPCName.SearcherZero=搜索者-0型
 
 NPCName.Taser=机甲脉冲枪
 
-NPCName.TeslaHand=损坏的机械臂
+NPCName.TeslaHand=损坏护卫机械臂
 
 NPCName.VoidStar=星体虚无械
 
