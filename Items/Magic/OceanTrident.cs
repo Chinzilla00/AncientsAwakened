@@ -21,8 +21,8 @@ namespace AAMod.Items.Magic
 			item.mana = 5;
 			item.width = 56;
 			item.height = 56;
-			item.useTime = 30;
-			item.useAnimation = 30;
+			item.useTime = 25;
+			item.useAnimation = 25;
 			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 2;

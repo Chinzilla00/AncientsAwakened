@@ -185,7 +185,7 @@ namespace AAMod.Projectiles
 						break;
 					case 3:
 						Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 88);
-                        Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, mod.ProjectileType("FreedomShotCharged"), projectile.damage*8, 1f, player.whoAmI);
+                        Projectile.NewProjectile(vector2.X, vector2.Y, SpeedX, SpeedY, mod.ProjectileType("FreedomShotCharged"), projectile.damage*10, 1f, player.whoAmI);
 						break;
                 }
             }

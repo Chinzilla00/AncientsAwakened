@@ -9,18 +9,18 @@ namespace AAMod.Items.Magic
         public override void SetDefaults()
         {
 
-            item.damage = 10;                        
+            item.damage = 9;                        
             item.magic = true;                     //this make the item do magic damage
             item.width = 26;
             item.height = 38;
-            item.useTime = 23;
-            item.useAnimation = 23;
+            item.useTime = 25;
+            item.useAnimation = 25;
             item.useStyle = 1;        //this is how the item is holded
             item.noMelee = true;
             item.knockBack = 2;        
             item.value = 1000;
             item.rare = 2;
-            item.mana = 2;             //mana use
+            item.mana = 5;             //mana use
             item.UseSound = SoundID.Item21;            //this is the sound when you use the item
             item.autoReuse = true;
             item.shoot = mod.ProjectileType ("TFGWP");  //this make the item shoot your projectile
