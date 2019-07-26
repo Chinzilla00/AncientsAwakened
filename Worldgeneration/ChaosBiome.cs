@@ -840,7 +840,7 @@ namespace AAMod.Worldgeneration
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>
             {
                 [new Color(255, 0, 0)] = mod.WallType("AcropolisBrickWall"),
-                [new Color(255, 0, 255)] = mod.TileType("AcropolisPillar"),
+                [new Color(0, 255, 255)] = mod.TileType("AcropolisPillar"),
                 [new Color(0, 255, 0)] = WallID.Dirt,
                 [new Color(0, 0, 255)] = WallID.Cloud,
                 [new Color(255, 255, 255)] = -2, 

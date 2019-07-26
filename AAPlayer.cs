@@ -89,6 +89,7 @@ namespace AAMod
         public bool Terrarium = false;
         public bool ZoneStars = false;
         public bool ZoneHoard = false;
+        public bool ZoneAcropolis = false;
         public bool AshCurse;
         public int VoidGrav = 0;
         public static int Ashes = 0;
@@ -515,6 +516,7 @@ namespace AAMod
             ZoneTower = false;
             ZoneStars = false;
             ZoneHoard = false;
+            ZoneAcropolis = false;
             WorldgenReminder = false;
         }
 
@@ -545,6 +547,7 @@ namespace AAMod
             ZoneRisingSunPagoda = AAWorld.pagodaTiles >= 1;
             ZoneStars = AAWorld.Radium >= 20;
             ZoneHoard = AAWorld.HoardTiles > 1 && player.ZoneRockLayerHeight;
+            ZoneAcropolis = AAWorld.CloudTiles > 1;
         }
 
         public static Player PlayerPos = Main.player[Main.myPlayer];
@@ -594,7 +597,9 @@ namespace AAMod
                 ZoneStorm == modOther.ZoneStorm &&
                 ZoneShip == modOther.ZoneShip &&
                 ZoneStars == modOther.ZoneStars && 
-                ZoneHoard == modOther.ZoneHoard;
+                ZoneHoard == modOther.ZoneHoard &&
+                ZoneAcropolis == modOther.ZoneAcropolis;
+                
         }
 
         public override void CopyCustomBiomesTo(Player other)
@@ -611,6 +616,7 @@ namespace AAMod
             modOther.ZoneShip = ZoneShip;
             modOther.ZoneStars = ZoneStars;
             modOther.ZoneHoard = ZoneHoard;
+            modOther.ZoneAcropolis = ZoneAcropolis;
         }
 
         public override void SendCustomBiomes(BinaryWriter bb)
@@ -630,6 +636,7 @@ namespace AAMod
             zoneByte2[0] = ZoneShip;
             zoneByte2[1] = ZoneStars;
             zoneByte2[2] = ZoneHoard;
+            zoneByte2[3] = ZoneAcropolis;
             bb.Write(zoneByte2);
         }
 
@@ -649,6 +656,7 @@ namespace AAMod
             ZoneShip = zoneByte2[0];
             ZoneStars = zoneByte2[1];
             ZoneHoard = zoneByte2[2];
+            ZoneAcropolis = zoneByte2[3];
         }
 
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
@@ -813,6 +821,11 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (ZoneHoard)
+            {
+                player.ZoneJungle = false;
+            }
+
             if (NPC.AnyNPCs(mod.NPCType<AkumaTransition>()))
             {
                 int n = BaseAI.GetNPC(player.Center, mod.NPCType<AkumaTransition>(), -1);
@@ -1655,11 +1668,6 @@ namespace AAMod
 
         public override void PreUpdate()
         {
-            if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.DarkmatterJetpack>(), true, true) || BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.ZeroWings>(), true, true) || BasePlayer.HasAccessory(player, mod.ItemType<Items.Boss.Rajah.RabbitcopterEars>(), true, true))
-            {
-                player.flapSound = true;
-            }
-
             groviteGlow[player.whoAmI] = false;
 
             if (SnapCD != 0)
