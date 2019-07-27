@@ -12,6 +12,7 @@ using BaseMod;
 using AAMod.Tiles;
 using AAMod.Walls;
 using Terraria.Utilities;
+using System.Linq;
 
 namespace AAMod.Worldgeneration
 {
@@ -726,13 +727,24 @@ namespace AAMod.Worldgeneration
 
             int biomeRadius = 80;
 
-            WorldGen.PlaceObject(origin.X + 1, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"));
-            WorldGen.PlaceObject(origin.X + 78, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"));
-            NetMessage.SendObjectPlacment(-1, origin.X + 1, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
-            NetMessage.SendObjectPlacment(-1, origin.X + 78, origin.Y + 29, (ushort)mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
-            HoardChest(origin.X + 18, origin.Y + 30);
-            HoardChest(origin.X + 38, origin.Y + 33);
-            HoardChest(origin.X + 59, origin.Y + 27);
+            WorldGen.PlaceObject(origin.X + 1, origin.Y + 60, (ushort)mod.TileType("GreedDoorClosed"));
+            WorldGen.PlaceObject(origin.X + 159, origin.Y + 77, (ushort)mod.TileType("GreedDoorClosed"));
+            NetMessage.SendObjectPlacment(-1, origin.X + 1, origin.Y + 60, (ushort)mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, origin.X + 159, origin.Y + 77, (ushort)mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
+            HoardChest(origin.X + 19, origin.Y + 55);
+            HoardChest(origin.X + 38, origin.Y + 67, 1);
+            HoardChest(origin.X + 25, origin.Y + 34);
+            HoardChest(origin.X + 41, origin.Y + 27);
+            HoardChest(origin.X + 53, origin.Y + 38);
+            HoardChest(origin.X + 49, origin.Y + 54);
+            HoardChest(origin.X + 67, origin.Y + 70, 2);
+            HoardChest(origin.X + 79, origin.Y + 61);
+            HoardChest(origin.X + 72, origin.Y + 41);
+            HoardChest(origin.X + 95, origin.Y + 45);
+            HoardChest(origin.X + 107, origin.Y + 57);
+            HoardChest(origin.X + 121, origin.Y + 33);
+            HoardChest(origin.X + 131, origin.Y + 48, 3);
+            HoardChest(origin.X + 130, origin.Y + 69);
 
             WorldUtils.Gen(origin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
 			{
@@ -743,66 +755,94 @@ namespace AAMod.Worldgeneration
             return true;
         }
 
-        public void HoardChest(int x, int y)
+        public void HoardChest(int x, int y, int specialItem = 0)
         {
             int PlacementSuccess = WorldGen.PlaceChest(x, y, (ushort)AAMod.instance.TileType<GreedChest>(), false, 1);
 
-            int[] GreedChestLoot = new int[]
-                {   ItemID.GoldenChair,
-                    ItemID.GoldenToilet,
-                    ItemID.GoldenDoor,
-                    ItemID.GoldenTable,
-                    ItemID.GoldenBed,
-                    ItemID.GoldenPiano,
-                    ItemID.GoldenDresser,
-                    ItemID.GoldenSofa,
-                    ItemID.GoldenSink,
-                    ItemID.GoldenBathtub,
-                    ItemID.GoldenClock,
-                    ItemID.GoldenLamp,
-                    ItemID.GoldenBookcase,
-                    ItemID.GoldenChandelier,
-                    ItemID.GoldenLantern,
-                    ItemID.GoldenCandelabra,
-                    ItemID.GoldenCandle,
-                    ItemID.GoldenChest,
-                    ItemID.GoldenWorkbench,
-                    ItemID.GoldWatch,
-                    ItemID.GoldDust,
-                    ItemID.AncientGoldHelmet,
-                    ItemID.GoldBunny,
-                    ItemID.GoldButterfly,
-                    ItemID.GoldFrog,
-                    ItemID.GoldGrasshopper,
-                    ItemID.SquirrelGold,
-                    ItemID.GoldBird,
-                    ItemID.GoldMouse,
-                    ItemID.GoldWorm,
-                    ItemID.GoldCrown,
-                    ItemID.GoldenKey,
-                    ItemID.Goldfish,
-                    ItemID.ReflectiveGoldDye,
-                    ItemID.GoldGreaves,
-                    ItemID.GoldHelmet,
-                    ItemID.FindingGold,
-                    ItemID.GoldChainmail,
-                    ItemID.GoldShortsword,
-                    ItemID.GoldBroadsword,
-                    ItemID.GoldBow,
-                    ItemID.GoldHammer,
-                    ItemID.GoldPickaxe,
-                    ItemID.GoldenCrate
+            int[] GreedChestLoot = new int[] {
+
+                ItemID.GoldenChair,
+                ItemID.GoldenToilet,
+                ItemID.GoldenDoor,
+                ItemID.GoldenTable,
+                ItemID.GoldenBed,
+                ItemID.GoldenPiano,
+                ItemID.GoldenDresser,
+                ItemID.GoldenSofa,
+                ItemID.GoldenSink,
+                ItemID.GoldenBathtub,
+                ItemID.GoldenClock,
+                ItemID.GoldenLamp,
+                ItemID.GoldenBookcase,
+                ItemID.GoldenChandelier,
+                ItemID.GoldenLantern,
+                ItemID.GoldenCandelabra,
+                ItemID.GoldenCandle,
+                ItemID.GoldenChest,
+                ItemID.GoldenWorkbench,
+                ItemID.GoldWatch,
+                ItemID.GoldDust,
+                ItemID.AncientGoldHelmet,
+                ItemID.GoldBunny,
+                ItemID.GoldButterfly,
+                ItemID.GoldFrog,
+                ItemID.GoldGrasshopper,
+                ItemID.SquirrelGold,
+                ItemID.GoldBird,
+                ItemID.GoldMouse,
+                ItemID.GoldWorm,
+                ItemID.GoldCrown,
+                ItemID.GoldenKey,
+                ItemID.Goldfish,
+                ItemID.ReflectiveGoldDye,
+                ItemID.GoldGreaves,
+                ItemID.GoldHelmet,
+                ItemID.FindingGold,
+                ItemID.GoldChainmail,
+                ItemID.GoldShortsword,
+                ItemID.GoldBroadsword,
+                ItemID.GoldBow,
+                ItemID.GoldHammer,
+                ItemID.GoldPickaxe,
+                ItemID.GoldenCrate
+            };
+
+            int[] Loot = new int[]
+            {
+                ItemID.CoinGun,
+                ItemID.Cutlass,
+                ItemID.DiscountCard,
+                ItemID.GoldRing,
+                ItemID.LuckyCoin,
             };
 
             if (PlacementSuccess >= 0)
             {
+                Mod mod = AAMod.instance;
+
                 Chest chest = Main.chest[PlacementSuccess];
 
                 Item item0 = chest.item[0];
                 UnifiedRandom genRand0 = WorldGen.genRand;
-                int[] array0 = new int[]
-                { ItemID.CoinGun, ItemID.Cutlass, ItemID.DiscountCard, ItemID.GoldRing, ItemID.LuckyCoin };
-                item0.SetDefaults(Utils.Next(genRand0, array0), false);
+                int type;
+                if (specialItem == 1)
+                {
+                    type = mod.ItemType<Items.Ranged.OdinsBlade>();
+                }
+                else if (specialItem == 2)
+                {
+                    type = mod.ItemType<Items.Melee.RomulusTazesaber>();
+                }
+                else if (specialItem == 3)
+                {
+                    type = mod.ItemType<Items.Misc.AnubisBook>();
+                }
+                else
+                {
+                    type = Utils.Next(genRand0, Loot);
+                }
+
+                item0.SetDefaults(type, false);
 
                 chest.item[1].SetDefaults(ItemID.GoldBar);
                 chest.item[1].stack = WorldGen.genRand.Next(70, 90);
@@ -817,8 +857,14 @@ namespace AAMod.Worldgeneration
                 for (int i = 0; i < 20; i++)
                 {
                     chest.item[i + 4].SetDefaults(Utils.Next(WorldGen.genRand, GreedChestLoot));
+                    if (chest.item[i + 4].maxStack > 1)
+                    {
+                        chest.item[i + 4].stack = WorldGen.genRand.Next(1, 3);
+                    }
                 }
             }
+
+            NetMessage.SendObjectPlacment(-1, x, y, (ushort)AAMod.instance.TileType<GreedChest>(), 1, 0, -1, -1);
         }
     }
 

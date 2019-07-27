@@ -13,7 +13,6 @@ namespace AAMod.Items.Ranged
 
         public override void SetDefaults()
         {
-
             item.shoot = mod.ProjectileType("OdinsBlade");
             item.shootSpeed = 10f;
             item.damage = 70;
@@ -30,7 +29,7 @@ namespace AAMod.Items.Ranged
             item.noMelee = true;
             item.autoReuse = true;
             item.value = 100000;
-            item.rare = 3;
+            item.rare = 7;
         }
 
         public override void AddRecipes()

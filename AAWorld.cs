@@ -99,7 +99,6 @@ namespace AAMod
         public static bool Anticheat = true;
 
         //Squid Lady
-
         public static int squid1 = 0;
         public static int squid2 = 0;
         public static int squid3 = 0;
