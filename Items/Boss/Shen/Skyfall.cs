@@ -19,12 +19,12 @@ namespace AAMod.Items.Boss.Shen
 
         public override void SetDefaults()
         {
-            item.damage = 340;
+            item.damage = 300;
             item.ranged = true;
             item.width = 22;
             item.height = 50;
-            item.useTime = 10;
-            item.useAnimation = 10;
+            item.useTime = 7;
+            item.useAnimation = 7;
             item.useAmmo = AmmoID.Arrow;
             item.useStyle = 5;
             item.noMelee = true;

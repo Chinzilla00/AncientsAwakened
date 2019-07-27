@@ -18,12 +18,12 @@ Inflicts Moonrazed");
 
         public override void SetDefaults()
         {
-            item.damage = 300;
+            item.damage = 370;
             item.ranged = true;
             item.width = 44;
             item.height = 34;
-            item.useTime = 20;
-            item.useAnimation = 20;
+            item.useTime = 15;
+            item.useAnimation = 15;
             item.useStyle = 5;
             item.useAmmo = AmmoID.Rocket;
             item.knockBack = 8f;

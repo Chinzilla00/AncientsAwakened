@@ -17,13 +17,13 @@ Inflicts Daybroken and Moonraze");
 
         public override void SetDefaults()
         {
-            item.damage = 170;
+            item.damage = 265;
             item.melee = true;
             item.width = 96;
             item.height = 96;
             item.scale = 1.1f;
-            item.useTime = 15;
-            item.useAnimation = 15;
+            item.useTime = 16;
+            item.useAnimation = 16;
             item.knockBack = 4.7f;
             item.UseSound = SoundID.Item20;
             item.noMelee = true;

@@ -22,10 +22,10 @@ namespace AAMod.Items.Boss.Zero
 			item.melee = true;
 			item.width = 94;
 			item.height = 70;
-			item.useTime = 30;
+			item.useTime = 20;
             item.shoot = mod.ProjectileType("Rift");
             item.shootSpeed = 10f;
-            item.useAnimation = 30;
+            item.useAnimation = 10;
 			item.useStyle = 1;
 			item.knockBack = 3;
 			item.value = Item.sellPrice(0, 30, 0, 0);
