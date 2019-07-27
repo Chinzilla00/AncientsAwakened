@@ -22,7 +22,7 @@ namespace AAMod.Items.Boss.Akuma
             item.autoReuse = true;
             item.mana = 13;
             item.useStyle = 5;
-            item.damage = 115;
+            item.damage = 145;
             item.useAnimation = 20;
             item.useTime = 20;
             item.width = 40;
