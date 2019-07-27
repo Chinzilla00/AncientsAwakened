@@ -12,9 +12,9 @@ namespace AAMod.Items.Boss.Zero
 		{
 			item.useStyle = 5;
 			item.autoReuse = true;
-			item.useAnimation = 22;
+			item.useAnimation = 18;
 			item.useTime = 4;
-            item.reuseDelay = 22;
+            item.reuseDelay = 18;
 			item.width = 72;
 			item.height = 34;
 			item.shoot = 10;

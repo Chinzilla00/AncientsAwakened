@@ -20,7 +20,7 @@ Mobian Buster EX");
             item.width = 74;
             item.height = 34;
             item.ranged = true;
-            item.damage = 350;  
+            item.damage = 250;  
             item.shoot = mod.ProjectileType("FreedomStar");
             item.useTime = 10;
             item.useAnimation = 10;

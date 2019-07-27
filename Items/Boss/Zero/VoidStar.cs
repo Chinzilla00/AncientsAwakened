@@ -19,13 +19,13 @@ namespace AAMod.Items.Boss.Zero
         public override void SetDefaults()
         {
             item.useStyle = 5;
-            item.useAnimation = 15;
-            item.useTime = 15;
+            item.useAnimation = 60;
+            item.useTime = 60;
             item.shootSpeed = 10f;
             item.knockBack = 0f;
             item.width = 30;
             item.height = 26;
-            item.damage = 290;
+            item.damage = 700;
             item.UseSound = SoundID.Item20;
             item.shoot = mod.ProjectileType("VoidStarPF");
             item.mana = 18;

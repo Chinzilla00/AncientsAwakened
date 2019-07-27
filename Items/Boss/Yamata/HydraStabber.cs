@@ -22,7 +22,7 @@ IInflicts Moonraze");
         
         public override void SetDefaults()
         {
-            item.damage = 290;            
+            item.damage = 470;            
             item.melee = true;            
             item.width = 42;              
             item.height = 52;             

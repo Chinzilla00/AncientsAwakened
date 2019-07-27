@@ -744,7 +744,7 @@ namespace AAMod
             }
         }
 
-        private void GenAbyssium()
+        private void GenEverleaf()
         {
             int x = Main.maxTilesX;
             int y = Main.maxTilesY;
@@ -759,7 +759,7 @@ namespace AAMod
             }
         }
 
-        private void GenEverleaf()
+        private void GenAbyssium()
         {
             int x = Main.maxTilesX;
             int y = Main.maxTilesY;
@@ -1392,7 +1392,7 @@ namespace AAMod
 
         public void TerraSphere()
         {
-            Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.4f)); ;
+            Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.4f));
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             TerrariumDelete delete = new TerrariumDelete();
             TerrariumSphere biome = new TerrariumSphere();
