@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Akuma
 
         public override void SetDefaults()
         {
-            item.crit = 20;
+            item.crit = 14;
             item.useStyle = 5;
             item.autoReuse = true;
             item.useAnimation = 25;
