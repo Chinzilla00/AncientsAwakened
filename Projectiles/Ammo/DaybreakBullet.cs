@@ -69,9 +69,18 @@ namespace AAMod.Projectiles.Ammo
             }
         }
 
+
+
+
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.immune[projectile.owner] = 5;
+            { }
+            target.AddBuff(BuffID.Daybreak, 200);
+            int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("FireProjBoom"), projectile.damage / 5, projectile.knockBack, projectile.owner, 0f, 0f);
+            Main.projectile[proj].melee = false;
+            Main.projectile[proj].ranged = true;
+
         }
     }
 }

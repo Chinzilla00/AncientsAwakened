@@ -29,7 +29,7 @@ Non-consumable");
 			item.value = Item.sellPrice(0, 30, 0, 0);
 			item.rare = 6;
 			item.shoot = mod.ProjectileType("RealityLaser");
-			item.shootSpeed = 1f;
+			item.shootSpeed = 0f;
 			item.ammo = AmmoID.Bullet;
             item.rare = 9; AARarity = 13;
         }
