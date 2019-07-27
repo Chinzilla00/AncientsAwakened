@@ -899,6 +899,9 @@ namespace AAMod.Worldgeneration
 
             gen.Generate(origin.X, origin.Y, true, true);
 
+            WorldGen.PlaceObject(origin.X + 73, origin.Y + 80, (ushort)mod.TileType("AcropolisAltar"));
+            NetMessage.SendObjectPlacment(-1, origin.X + 73, origin.Y + 80, (ushort)mod.TileType("AcropolisAltar"), 0, 0, -1, -1);
+
             return true;
         }
     }

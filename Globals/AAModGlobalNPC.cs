@@ -10,6 +10,7 @@ using AAMod.NPCs.Enemies.Terrarium.Hardmode;
 using AAMod.NPCs.Enemies.Terrarium.PostPlant;
 using AAMod.NPCs.Bosses.Serpent;
 using AAMod.NPCs.Enemies.Snow;
+using AAMod.NPCs.Enemies.Sky;
 using System;
 using Terraria.Localization;
 
@@ -876,8 +877,6 @@ namespace AAMod
                     {
                         if (mnpc.mod.Name.Equals("GRealm")) //do not remove GRealm spawns!
                             keepPool.Add(npcID, kvp.Value);
-                        if (npcID == mod.NPCType("StanLee")) //do not remove GRealm spawns!
-                            keepPool.Add(npcID, kvp.Value);
                     }
                 }
                 pool.Clear();
@@ -1061,6 +1060,16 @@ namespace AAMod
                     pool.Add(mod.NPCType<PuritySphere>(), .05f);
                     pool.Add(mod.NPCType<PurityCrawler>(), .05f);
                     pool.Add(mod.NPCType<PuritySquid>(), .05f);
+                }
+            }
+
+            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneAcropolis)
+            {
+                ClearPoolWithExceptions(pool);
+                pool.Add(NPCID.Harpy, .06f);
+                if (NPC.downedPlantBoss)
+                {
+                    pool.Add(mod.NPCType<Seraph>(), .03f);
                 }
             }
         }
