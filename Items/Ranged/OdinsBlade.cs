@@ -24,7 +24,7 @@ namespace AAMod.Items.Ranged
             item.useTime = 30;
             item.width = 20;
             item.height = 20;
-            item.consumable = true;
+            item.consumable = false;
             item.noUseGraphic = true;
             item.noMelee = true;
             item.autoReuse = true;
