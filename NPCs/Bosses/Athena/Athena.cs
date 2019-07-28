@@ -12,6 +12,7 @@ using System.Collections.Generic;
 
 namespace AAMod.NPCs.Bosses.Athena
 {
+    [AutoloadBossHead]
     public class Athena : ModNPC
     {
         public override void SetStaticDefaults()
@@ -19,20 +20,8 @@ namespace AAMod.NPCs.Bosses.Athena
             Main.npcFrameCount[npc.type] = 7;
         }
 
-        public static Point Origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
-        public static Point Acropolis = new Point(Origin.X + 74, Origin.Y + 72);
-        public static Point Cloud1 = new Point(Origin.X + 73, Origin.Y + 8);
-        public static Point Cloud2 = new Point(Origin.X + 43, Origin.Y + 19);
-        public static Point Cloud3 = new Point(Origin.X + 25, Origin.Y + 39);
-        public static Point Cloud4 = new Point(Origin.X + 14, Origin.Y + 61);
-        public static Point Cloud5 = new Point(Origin.X + 20, Origin.Y + 93);
-        public static Point Cloud6 = new Point(Origin.X + 45, Origin.Y + 114);
-        public static Point Cloud7 = new Point(Origin.X + 73, Origin.Y + 122);
-        public static Point Cloud8 = new Point(Origin.X + 110, Origin.Y + 112);
-        public static Point Cloud9 = new Point(Origin.X + 128, Origin.Y + 92);
-        public static Point Cloud10 = new Point(Origin.X + 135, Origin.Y + 63);
-        public static Point Cloud11 = new Point(Origin.X + 122, Origin.Y + 38);
-        public static Point Cloud12 = new Point(Origin.X + 101, Origin.Y + 18);
+        public static Point CloudPoint = new Point((int)(Main.maxTilesX * 0.65f), 100);
+        public Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
 
         public override void SetDefaults()
         {
@@ -89,38 +78,37 @@ namespace AAMod.NPCs.Bosses.Athena
             }
         }
 
-        private Point MovePoint;
-
-        public Point[] Clouds = new Point[] 
-        {
-            Cloud1, Cloud2, Cloud3, Cloud4, Cloud5, Cloud6, Cloud7, Cloud8, Cloud9, Cloud10, Cloud11, Cloud12
-        };
+        private Vector2 MoveVector2;
 
         public override void AI()
         {
-            if (npc.target == -1)
-            {
-                npc.TargetClosest();
-            }
+            npc.TargetClosest();
             Player player = Main.player[npc.target];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
-            if (player.dead || !player.active || Vector2.Distance(npc.position, player.position) > 5000 || !modPlayer.ZoneAcropolis)
+
+            Vector2 Acropolis = new Vector2(Origin.X + (76 * 16), Origin.Y + (72 * 16));
+            Vector2 Cloud1 = new Vector2(Origin.X + (73 * 16), Origin.Y + (8 * 16));
+            Vector2 Cloud2 = new Vector2(Origin.X + (43 * 16), Origin.Y + (19 * 16));
+            Vector2 Cloud3 = new Vector2(Origin.X + (25 * 16), Origin.Y + (39 * 16));
+            Vector2 Cloud4 = new Vector2(Origin.X + (14 * 16), Origin.Y + (61 * 16));
+            Vector2 Cloud5 = new Vector2(Origin.X + (20 * 16), Origin.Y + (93 * 16));
+            Vector2 Cloud6 = new Vector2(Origin.X + (45 * 16), Origin.Y + (114 * 16));
+            Vector2 Cloud7 = new Vector2(Origin.X + (73 * 16), Origin.Y + (122 * 16));
+            Vector2 Cloud8 = new Vector2(Origin.X + (110 * 16), Origin.Y + (112 * 16));
+            Vector2 Cloud9 = new Vector2(Origin.X + (128 * 16), Origin.Y + (92 * 16));
+            Vector2 Cloud10 = new Vector2(Origin.X + (135 * 16), Origin.Y + (63 * 16));
+            Vector2 Cloud11 = new Vector2(Origin.X + (122 * 16), Origin.Y + (38 * 16));
+            Vector2 Cloud12 = new Vector2(Origin.X + (101 * 16), Origin.Y + (18 * 16));
+
+            Vector2[] Cloud = new Vector2[]
             {
-                npc.TargetClosest();
-                if (player.dead || !player.active || Vector2.Distance(npc.position, player.position) > 5000 || !modPlayer.ZoneAcropolis)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat("And stay away...idiot.", Color.CornflowerBlue);
-                    int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
-                    Main.npc[p].Center = npc.Center;
-                    CloudKill Clouds = new CloudKill();
-                    Clouds.Place(Origin, WorldGen.structures);
-                    npc.active = false;
-                    npc.netUpdate = true;
-                }
-            }
+                Cloud1, Cloud2, Cloud3, Cloud4, Cloud5, Cloud6, Cloud7, Cloud8, Cloud9, Cloud10, Cloud11, Cloud12
+            };
+
             //Preamble Shite 
             if (internalAI[2] != 1) 
             {
+                npc.Center = Acropolis;
                 if (Main.netMode != 1)
                 {
                     if (!AAWorld.downedAthena)
@@ -157,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Athena
                             {
                                 if (Main.netMode != 1) BaseUtility.Chat("En Garde!", Color.CornflowerBlue);
                                 CloudSet Clouds = new CloudSet();
-                                Clouds.Place(Origin, WorldGen.structures);
+                                Clouds.Place(CloudPoint, WorldGen.structures);
                                 internalAI[2] = 1;
                                 npc.netUpdate = true;
                             }
@@ -167,7 +155,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     {
                         if (Main.netMode != 1) BaseUtility.Chat("Hmpf...fine, let's get this overwith. I don't have all day.", Color.CornflowerBlue);
                         CloudSet Clouds = new CloudSet();
-                        Clouds.Place(Origin, WorldGen.structures);
+                        Clouds.Place(CloudPoint, WorldGen.structures);
                         internalAI[2] = 1;
                         npc.netUpdate = true;
                     }
@@ -176,7 +164,23 @@ namespace AAMod.NPCs.Bosses.Athena
             }
             else
             {
+                if (player.dead || !player.active || Vector2.Distance(npc.position, player.position) > 5000 || !modPlayer.ZoneAcropolis)
+                {
+                    npc.TargetClosest();
+                    if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 5000 || !modPlayer.ZoneAcropolis)
+                    {
+                        Main.NewText(Math.Abs(Vector2.Distance(npc.position, player.position)));
+                        if (Main.netMode != 1) BaseUtility.Chat("And stay away...idiot.", Color.CornflowerBlue);
+                        int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
+                        Main.npc[p].Center = npc.Center;
+                        CloudKill Clouds = new CloudKill();
+                        Clouds.Place(CloudPoint, WorldGen.structures);
+                        npc.active = false;
+                        npc.netUpdate = true;
+                    }
+                }
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Athena");
+
                 if (internalAI[1] == 0) //Acropolis Phase
                 {
                     if (Main.netMode != 1)
@@ -184,69 +188,67 @@ namespace AAMod.NPCs.Bosses.Athena
                         npc.ai[3]++;
                     }
 
-                    if (Vector2.Distance(player.Center, Acropolis.ToVector2()) > 30)
+                    if (Vector2.Distance(player.Center, Acropolis) > 480)
                     {
-                        npc.ai[2] = 1;
-                        MoveToPoint(Acropolis);
+                        if (npc.ai[2] == 0 && Main.netMode != 1)
+                        {
+                            npc.ai[2] = 1;
+                            npc.netUpdate = true;
+                        }
+                        MoveToVector2(Acropolis);
                     }
                     else
                     {
-                        npc.ai[2] = 0;
-                        BaseAI.AISpaceOctopus(npc, ref FlyAI, Main.player[npc.target].Center, 0.07f, 5f, 250f, 70f, ShootFeather);
+                        if (npc.ai[2] == 1 && Main.netMode != 1)
+                        {
+                            npc.ai[2] = 0;
+                            npc.netUpdate = true;
+                        }
+                        BaseAI.AISpaceOctopus(npc, ref FlyAI, Main.player[npc.target].Center, 0.1f, 8f, 220f, 70f, ShootFeather);
                     }
 
-                    if (npc.ai[3] > 1500)
+                    if (npc.ai[3] > 600)
                     {
                         internalAI[1] = 1;
                         npc.ai[0] = 0;
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
                         npc.ai[3] = 0;
+                        MoveVector2 = Cloud[Main.rand.Next(12)];
                     }
                 }
                 else //Cloud Phase
                 {
                     if (Main.netMode != 1)
                     {
-                        npc.ai[0]++;
+                        npc.ai[1]++;
 
-                        if (npc.ai[0] == 1200)
+                        if (npc.ai[0] >= 600)
                         {
+                            npc.ai[0] = 0;
                             if (Main.rand.Next(5) == 0)
                             {
-                                MovePoint = Clouds[Main.rand.Next(12)];
-                            }
-                            else
-                            {
                                 internalAI[1] = 0;
-                                npc.ai[0] = 0;
                                 npc.ai[1] = 0;
                                 npc.ai[2] = 0;
                                 npc.ai[3] = 0;
+                                npc.netUpdate = true;
                                 return;
                             }
+                            MoveVector2 = Cloud[Main.rand.Next(12)];
                             npc.netUpdate = true;
                         }
                     }
-                    if (npc.ai[0] >= 1200)
+                    if(Vector2.Distance(npc.Center, MoveVector2) < 10 && Main.netMode != 1)
                     {
-                        npc.ai[2] = 1;
-                        MoveToPoint(MovePoint);
-                        if (Vector2.Distance(npc.Center, MovePoint.ToVector2()) < 10 && Main.netMode != 1)
+                        if (npc.ai[2] == 1 && Main.netMode != 1)
                         {
-                            npc.ai[0] = 0;
+                            npc.ai[2] = 0;
                             npc.netUpdate = true;
                         }
-                    }
-                    else
-                    {
-                        npc.ai[2] = 0;
-                        if (Main.netMode != 1)
-                        {
-                            npc.ai[1]++;
-                        }
+                        npc.velocity *= 0;
 
-                        if (npc.ai[1] % 120 == 0)
+                        if (npc.ai[1] % 90 == 0)
                         {
                             if (Vector2.Distance(player.Center, npc.Center) < 900)
                             {
@@ -254,8 +256,26 @@ namespace AAMod.NPCs.Bosses.Athena
                             }
                         }
                     }
+                    else
+                    {
+                        if (npc.ai[2] == 0 && Main.netMode != 1)
+                        {
+                            npc.ai[2] = 1;
+                            npc.netUpdate = true;
+                        }
+                        MoveToVector2(MoveVector2);
+                    }
                 }
             }
+            if (npc.ai[2] == 1)
+            {
+                npc.noTileCollide = true;
+            }
+            else
+            {
+                npc.noTileCollide = false;
+            }
+            npc.rotation = 0;
         }
 
         public void ShootFeather(NPC npc, Vector2 velocity)
@@ -281,21 +301,20 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.frameCounter++;
             if (npc.frameCounter >= 6)
             {
-                npc.frame.Y = npc.frame.Y + frameHeight;
+                npc.frame.Y += frameHeight;
                 npc.frameCounter = 0;
             }
-            if (npc.frame.Y >= frameHeight * Main.npcFrameCount[npc.type])
+            if (npc.frame.Y >= frameHeight * 7)
             {
                 npc.frame.Y = 0;
             }
         }
 
-        public void MoveToPoint(Point p)
+        public void MoveToVector2(Vector2 p)
         {
-            Vector2 point = p.ToVector2();
             float moveSpeed = 30f;
             float velMultiplier = 1f;
-            Vector2 dist = point - npc.Center;
+            Vector2 dist = p - npc.Center;
             float length = dist == Vector2.Zero ? 0f : dist.Length();
             if (length < moveSpeed)
             {
@@ -326,7 +345,7 @@ namespace AAMod.NPCs.Bosses.Athena
         public override void NPCLoot()
         {
             CloudKill Clouds = new CloudKill();
-            Clouds.Place(Origin, WorldGen.structures);
+            Clouds.Place(CloudPoint, WorldGen.structures);
             if (Main.netMode != 1) BaseUtility.Chat("OW! Fine, fine..! I'll leave you alone! Geez, you don't let up, do you.", Color.CornflowerBlue);
             int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
             Main.npc[p].Center = npc.Center;
@@ -337,18 +356,12 @@ namespace AAMod.NPCs.Bosses.Athena
         {
             Texture2D tex = Main.npcTexture[npc.type];
             Color lightColor = BaseDrawing.GetLightColor(npc.Center);
-            Rectangle frame = BaseDrawing.GetFrame(npc.frame.Y, Main.npcTexture[npc.type].Width, Main.npcTexture[npc.type].Height / Main.npcFrameCount[npc.type], 0, 2);
-
-            for (int m = npc.oldPos.Length - 1; m > 0; m--) { npc.oldPos[m] = npc.oldPos[m - 1]; }
-            npc.oldPos[0] = npc.position;
 
             if (npc.ai[2] == 1)
             {
-                for (int m = npc.oldPos.Length - 1; m > 0; m--) { npc.oldPos[m] = npc.oldPos[m - 1]; }
-                npc.oldPos[0] = npc.position;
-                BaseDrawing.DrawAfterimage(sb, tex, 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.spriteDirection, 7, frame, 1f, 1f, 5, true, 0f, 0f, Color.CornflowerBlue);
+                BaseDrawing.DrawAfterimage(sb, tex, 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.spriteDirection, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
             }
-            BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 7, frame, lightColor);
+            BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 7, npc.frame, lightColor);
             return false;
         }
 

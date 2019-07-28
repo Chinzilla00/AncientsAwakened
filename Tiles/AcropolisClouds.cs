@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Tiles
@@ -11,6 +12,7 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
             Main.tileBlockLight[Type] = true;
+            dustType = DustID.BlueCrystalShard;
             drop = mod.ItemType("Acropolis Clouds");   
             AddMapEntry(new Color(30, 89, 125));
         }
@@ -27,6 +29,13 @@ namespace AAMod.Tiles
             if (tile != null && tile.active() && tile.type == this.Type)
             {
                 BaseMod.BaseDrawing.DrawTileTexture(sb, Main.tileTexture[Type], x, y, true, false, false, null, AAGlobalTile.GetSkyColorBright);
+            }
+        }
+        public override void RandomUpdate(int i, int j)
+        {
+            if (!NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Athena.Athena>()))
+            {
+                WorldGen.KillTile(i, j, false, false, true);
             }
         }
 
