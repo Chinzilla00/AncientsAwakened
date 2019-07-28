@@ -173,8 +173,6 @@ namespace AAMod.NPCs.Bosses.Athena
                         if (Main.netMode != 1) BaseUtility.Chat("And stay away...idiot.", Color.CornflowerBlue);
                         int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
                         Main.npc[p].Center = npc.Center;
-                        CloudKill Clouds = new CloudKill();
-                        Clouds.Place(CloudPoint, WorldGen.structures);
                         npc.active = false;
                         npc.netUpdate = true;
                     }
@@ -344,7 +342,6 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override void NPCLoot()
         {
-            CloudKill Clouds = new CloudKill();
             Clouds.Place(CloudPoint, WorldGen.structures);
             if (Main.netMode != 1) BaseUtility.Chat("OW! Fine, fine..! I'll leave you alone! Geez, you don't let up, do you.", Color.CornflowerBlue);
             int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
@@ -374,26 +371,6 @@ namespace AAMod.NPCs.Bosses.Athena
                 Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
                 {
                     [new Color(255, 255, 0)] = mod.TileType("AcropolisClouds"),
-                    [Color.Black] = -1 //don't touch when genning		
-                };
-
-                TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/AcropolisArena"), colorToTile);
-
-                gen.Generate(origin.X, origin.Y, true, true);
-
-                return true;
-            }
-        }
-
-        public class CloudKill : MicroBiome
-        {
-            public override bool Place(Point origin, StructureMap structures)
-            {
-                Mod mod = AAMod.instance;
-
-                Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
-                {
-                    [new Color(255, 255, 0)] = -2,
                     [Color.Black] = -1 //don't touch when genning		
                 };
 
