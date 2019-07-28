@@ -84,7 +84,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ZeroMask"));
                 }
-                if (Main.rand.Next(20) < 5)
+                if (AAWorld.downedShen)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
