@@ -3,13 +3,13 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Enemies.Sky
+namespace AAMod.NPCs.Bosses.Athena
 {
-    public class ElderDragon : ModNPC
+    public class OlympianDragon : ModNPC
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Elder Dragon");
+            DisplayName.SetDefault("Olympian Dragon");
             Main.npcFrameCount[npc.type] = 5;
         }
         public override void SetDefaults()
@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Enemies.Sky
             npc.aiStyle = 0;
             npc.damage = 30;
             npc.defense = 30;
-            npc.lifeMax = 800;
+            npc.lifeMax = 500;
             npc.HitSound = SoundID.DD2_WyvernHurt;
             npc.DeathSound = SoundID.DD2_WyvernDeath;
             npc.noGravity = true;
@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Enemies.Sky
 
         public override void AI()
         {
-            BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 5f, 4f, false, 300);
+            BaseAI.AIFlier(npc, ref npc.ai, true, 0.15f, 0.08f, 6f, 5f, false, 300);
             Player player = Main.player[npc.target];
             if (player.Center.X > npc.Center.X)
             {
@@ -54,6 +54,7 @@ namespace AAMod.NPCs.Enemies.Sky
                 }
             }
         }
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             if (spawnInfo.playerSafe || !Main.hardMode)
@@ -62,13 +63,6 @@ namespace AAMod.NPCs.Enemies.Sky
             }
             return SpawnCondition.Sky.Chance * 0.10f;
         }
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
-        {
-            target.AddBuff(BuffID.OnFire, 180);
-        }
-        public override void NPCLoot()
-        {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DragonSpirit"));
-        }
+
     }
 }

@@ -55,6 +55,29 @@ namespace AAMod.Tiles
             BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, frameY, false, false, false, null, White);
         }
 
+        public override void RightClick(int i, int j)
+        {
+            Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100);
+            Player player = Main.player[Main.myPlayer];
+            int type = mod.ItemType<Items.BossSummons.Owl>();
+            if (BasePlayer.HasItem(player, type, 1))
+            {
+                for (int m = 0; m < 50; m++)
+                {
+                    Item item = player.inventory[m];
+                    if (item != null && item.type == type && item.stack >= 1)
+                    {
+                        item.stack--;
+                        if (item.stack <= 0)
+                        {
+                            item = new Item();
+                        }
+                        AAModGlobalNPC.SpawnBoss(player, mod.NPCType<NPCs.Bosses.Athena.Athena>(), true, Origin, "Athena");
+                    }
+                }
+            }
+        }
+
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
         {
             return false;

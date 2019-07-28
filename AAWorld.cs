@@ -93,6 +93,9 @@ namespace AAMod
         public static bool downedSag;
         public static bool SistersSummoned;
         public static bool downedRajahsRevenge;
+        public static bool downedAnubis;
+        public static bool downedAthena;
+        public static bool downedGreed;
         //Points
         public static Point WHERESDAVOIDAT;
 
@@ -126,6 +129,9 @@ namespace AAMod
         public override void Initialize()
         {
             //Bosses
+            downedAnubis = false;
+            downedAthena = false;
+            downedGreed = false;
             downedMonarch = false;
             downedGrips = false;
             downedEquinox = false;
@@ -214,10 +220,10 @@ namespace AAMod
         public override TagCompound Save()
         {
             var downed = new List<string>();
-            if (downedMonarch) downed.Add("Monarch");
-            if (downedGrips) downed.Add("Grips");
+            if (downedMonarch) downed.Add("MUSHMAN");
+            if (downedGrips) downed.Add("GrabbyHands");
             if (downedHydra) downed.Add("Hydra");
-            if (downedBrood) downed.Add("Brood");
+            if (downedBrood) downed.Add("Nacho");
             if (NPC.downedBoss3) downed.Add("Dynaskull");
             if (NPC.downedMechBossAny) downed.Add("MechBoss");
             if (NPC.downedPlantBoss) downed.Add("Evil");
@@ -233,13 +239,13 @@ namespace AAMod
             if (downedAllAncients) downed.Add("DAA");
             if (ShenSummoned) downed.Add("ShenS");
             if (downedSerpent) downed.Add("Serpent");
-            if (downedDjinn) downed.Add("Djinn");
+            if (downedDjinn) downed.Add("JojoReference");
             if (downedToad) downed.Add("Toad");
             if (downedFungus) downed.Add("Fungus");
             if (InfernoStripe) downed.Add("IStripe");
             if (MireStripe) downed.Add("MStripe");
-            if (downedAshe) downed.Add("Ashe");
-            if (downedHaruka) downed.Add("Haruka");
+            if (downedAshe) downed.Add("BetterDragonWaifu");
+            if (downedHaruka) downed.Add("TrashDragonWaifu");
             if (downedSisters) downed.Add("Sisters");
             if (downedSag) downed.Add("Sag");
             if (ModContentGenerated) downed.Add("WorldGenned");
@@ -247,6 +253,9 @@ namespace AAMod
             if (downedRajah) downed.Add("Rajah");
             if (downedRajahsRevenge) downed.Add("Rajah2");
             if (zeroUS) downed.Add("ZUS");
+            if (downedAnubis) downed.Add("Doggo");
+            if (downedAthena) downed.Add("BirdBitch");
+            if (downedGreed) downed.Add("GimmeGimme");
 
             return new TagCompound {
                 {"downed", downed},
@@ -315,6 +324,9 @@ namespace AAMod
             flags4[2] = downedSerpent;
             flags4[3] = downedDjinn;
             flags4[4] = downedToad;
+            flags4[5] = downedAnubis;
+            flags4[6] = downedAthena;
+            flags4[7] = downedGreed;
             writer.Write(flags4);
 
 
@@ -380,6 +392,9 @@ namespace AAMod
             downedSerpent = flags4[2];
             downedDjinn = flags4[3];
             downedToad = flags4[4];
+            downedAnubis = flags4[5];
+            downedAthena = flags4[6];
+            downedGreed = flags4[7];
 
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		
@@ -409,9 +424,9 @@ namespace AAMod
         {
             var downed = tag.GetList<string>("downed");
             //bosses
-            downedMonarch = downed.Contains("Monarch");
-            downedGrips = downed.Contains("Grips");
-            downedBrood = downed.Contains("Brood");
+            downedMonarch = downed.Contains("MUSHMAN");
+            downedGrips = downed.Contains("GrabbyHands");
+            downedBrood = downed.Contains("Nacho");
             downedHydra = downed.Contains("Hydra");
             NPC.downedBoss3 = downed.Contains("Dynaskull");
             NPC.downedMechBossAny = downed.Contains("MechBoss");
@@ -428,17 +443,20 @@ namespace AAMod
             Ancients = downed.Contains("AA");
             ShenSummoned = downed.Contains("ShenS");
             downedSerpent = downed.Contains("Serpent");
-            downedDjinn = downed.Contains("Djinn");
+            downedDjinn = downed.Contains("JojoReference");
             downedToad = downed.Contains("Toad");
             downedFungus = downed.Contains("Fungus");
-            downedAshe = downed.Contains("Ashe");
-            downedHaruka = downed.Contains("Haruka");
+            downedAshe = downed.Contains("BetterDragonWaifu");
+            downedHaruka = downed.Contains("TrashDragonWaifu");
             downedSisters = downed.Contains("Sisters");
             downedSag = downed.Contains("Sag");
             SistersSummoned = downed.Contains("Summoned");
             downedRajah = downed.Contains("Rajah");
             downedRajahsRevenge = downed.Contains("Rajah2");
             zeroUS = downed.Contains("ZUS");
+            downedAnubis = downed.Contains("Doggo");
+            downedAthena = downed.Contains("BirdBitch");
+            downedGreed = downed.Contains("GimmeGimme");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -525,7 +543,6 @@ namespace AAMod
             {
 				MireAndInferno(progress);
             }));
-
 
             tasks.Insert(shiniesIndex2 + 7, new PassLegacy("Terrarium", delegate (GenerationProgress progress)
             {
@@ -1256,7 +1273,7 @@ namespace AAMod
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
             Radium = tileCounts[mod.TileType<RadiumOre>()];
             HoardTiles = tileCounts[mod.TileType<GreedBrick>()] + tileCounts[mod.TileType<GreedStone>()] + tileCounts[mod.TileType<GreedDoorClosed>()] + tileCounts[mod.TileType<GreedDoorOpen>()];
-            CloudTiles = tileCounts[mod.TileType<AcropolisBlock>()] + tileCounts[mod.TileType<AcropolisAltarBlock>()];
+            CloudTiles = tileCounts[mod.TileType<AcropolisBlock>()] + tileCounts[mod.TileType<AcropolisAltarBlock>()] + tileCounts[mod.TileType<AcropolisClouds>()];
         }
 
         private void MireAndInferno(GenerationProgress progress)

@@ -9,7 +9,7 @@ using Terraria.ObjectData;
 namespace AAMod.Tiles
 {
 	// TODO: Smart Cursor Outlines and tModLoader support
-	public class GreedDoorClosed : ModTile
+	public class GreedDoorLocked : ModTile
 	{
 		public override void SetDefaults()
         {
@@ -40,11 +40,11 @@ namespace AAMod.Tiles
 			AddToArray(ref TileID.Sets.RoomNeeds.CountsAsDoor);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Hoard Door");
-			AddMapEntry(new Color(100, 70, 0), name);
+			AddMapEntry(new Color(200, 200, 200), name);
 			dustType = DustID.t_Lihzahrd;
 			disableSmartCursor = true;
 			adjTiles = new int[] { TileID.ClosedDoor };
-			openDoorID = mod.TileType("GreedDoorOpen");
+			openDoorID = -1;
 		}
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
@@ -59,7 +59,7 @@ namespace AAMod.Tiles
 
         public override bool HasSmartInteract()
         {
-			return true;
+			return false;
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)
@@ -67,17 +67,44 @@ namespace AAMod.Tiles
 			num = 1;
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
-        {
-			Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("GreedDoor"));
-		}
-
 		public override void MouseOver(int i, int j)
         {
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.showItemIcon = true;
-			player.showItemIcon2 = mod.ItemType("GreedDoor");
+			player.showItemIcon2 = mod.ItemType("GreedKey");
 		}
+
+        public override void RightClick(int i, int j)
+        {
+            if (BaseMod.BasePlayer.HasItem(Main.player[Main.myPlayer], mod.ItemType("GreedKey"), 1))
+            {
+                UnlockDoor(i, j);
+            }
+        }
+
+        public void UnlockDoor(int i, int j)
+        {
+            int num = j;
+            if (Main.tile[i, num] == null)
+            {
+                return;
+            }
+            Main.PlaySound(22, i * 16, num * 16 + 16, 1, 1f, 0f);
+            for (int k = num; k <= num + 2; k++)
+            {
+                if (Main.tile[i, k] == null)
+                {
+                    Main.tile[i, k] = new Tile();
+                }
+                Tile expr_99 = Main.tile[i, k];
+                expr_99.type = (ushort)mod.TileType<GreedDoorClosed>();
+                if (Main.netMode != 1) NetMessage.SendObjectPlacment(-1, i, k, mod.TileType<GreedDoorClosed>(), 0, 0, -1, -1);
+                for (int l = 0; l < 4; l++)
+                {
+                    Dust.NewDust(new Vector2(i * 16, k * 16), 16, 16, 11, 0f, 0f, 0, default, 1f);
+                }
+            }
+        }
     }
 }

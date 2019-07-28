@@ -895,12 +895,12 @@ namespace AAMod.Worldgeneration
                 [Color.Black] = -1			
             };
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Acropolis"), colorToTile, mod.GetTexture("Worldgeneration/AcropolisWalls"), colorToWall);
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Acropolis"), colorToTile, mod.GetTexture("Worldgeneration/AcropolisWalls"), colorToWall, null, mod.GetTexture("Worldgeneration/AcropolisRoof"));
 
             gen.Generate(origin.X, origin.Y, true, true);
 
-            WorldGen.PlaceObject(origin.X + 73, origin.Y + 80, (ushort)mod.TileType("AcropolisAltar"));
-            NetMessage.SendObjectPlacment(-1, origin.X + 73, origin.Y + 80, (ushort)mod.TileType("AcropolisAltar"), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 74, origin.Y + 82, (ushort)mod.TileType("AcropolisAltar"));
+            NetMessage.SendObjectPlacment(-1, origin.X + 74, origin.Y + 82, (ushort)mod.TileType("AcropolisAltar"), 0, 0, -1, -1);
 
             return true;
         }

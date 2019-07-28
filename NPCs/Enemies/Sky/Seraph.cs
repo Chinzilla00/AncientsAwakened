@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Enemies.Sky
 
 		public override void AI()
 		{
-			BaseAI.AIFlier(npc, ref npc.ai, true, 0.15f, 0.08f, 8f, 7f, true, 300);
+			BaseAI.AIFlier(npc, ref npc.ai, true, 0.15f, 0.08f, 8f, 7f, false, 300);
 
             Player player = Main.player[npc.target];
 
@@ -85,5 +85,10 @@ namespace AAMod.NPCs.Enemies.Sky
                 npc.frame.Y = 0;
             }
         }
-	}
+
+        public override void NPCLoot()
+        {
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SeraphFeather"));
+        }
+    }
 }
