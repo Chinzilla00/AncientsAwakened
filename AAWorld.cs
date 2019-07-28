@@ -1202,9 +1202,7 @@ namespace AAMod
                 if (!Evil)
                 {
                     Evil = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("The choirs of unity hum from the terrarium.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
-                    if (Main.netMode != 1) BaseUtility.Chat("Devils in the underworld begin to plot.", Color.Purple.R, Color.Purple.G, Color.Purple.B);
-                    if (Main.netMode != 1) BaseUtility.Chat("The withered machines of the emptiness reactivate.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("Hey kid, it's me, Anubis. Do me a favor and meet me back in town, I wanna talk to ya about somethin'.", Color.Gold.R, Color.Gold.G, Color.Gold.B);
                 }
             }
             
