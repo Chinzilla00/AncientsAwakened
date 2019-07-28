@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.aiStyle = -1;
             npc.lifeMax = 40000;
             npc.defense = 20;
-            npc.damage = 60;
+            npc.damage = 80;
             npc.knockBackResist = 0f;
             npc.noGravity = true;
             npc.HitSound = SoundID.NPCHit1;
