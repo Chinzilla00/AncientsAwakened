@@ -15,7 +15,7 @@ Fury Forger EX");
 		}
 		public override void SetDefaults()
 		{
-			item.damage = 400;
+			item.damage = 2500;
 			item.melee = true;
 			item.width = 82;
 			item.height = 88;

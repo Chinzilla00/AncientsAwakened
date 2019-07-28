@@ -17,7 +17,7 @@ Chaos Javelin EX");
         {
             item.shoot = mod.ProjectileType("ChaosJavelinEX");
             item.shootSpeed = 17f;
-            item.damage = 225;
+            item.damage = 400;
             item.knockBack = 5f;
             item.ranged = true;
             item.useStyle = 1;

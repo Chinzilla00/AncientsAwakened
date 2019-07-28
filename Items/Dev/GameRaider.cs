@@ -20,8 +20,8 @@ namespace AAMod.Items.Dev
             item.ranged = true;
             item.width = 66;
             item.height = 28;
-            item.useTime = 18;
-            item.useAnimation = 25;
+            item.useTime = 35;
+            item.useAnimation = 35;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 7.5f;

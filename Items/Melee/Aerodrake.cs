@@ -18,9 +18,9 @@ namespace AAMod.Items.Melee
             item.rare = 9;
             item.UseSound = SoundID.DD2_SonicBoomBladeSlash;
             item.useStyle = 1;
-            item.damage = 300;
-            item.useAnimation = 25;
-            item.useTime = 25;
+            item.damage = 1650;
+            item.useAnimation = 15;
+            item.useTime = 15;
             item.width = 82;
             item.height = 102;
             item.knockBack = 5.5f;
