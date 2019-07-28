@@ -894,9 +894,6 @@ namespace AAMod
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
-            Player player = Main.player[Main.myPlayer];
-
-
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneStars)
             {
                 if (Main.dayTime)
@@ -912,7 +909,7 @@ namespace AAMod
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
             {
                 ClearPoolWithExceptions(pool);
-                if ((player.position.Y < (Main.worldSurface * 16.0)) && (Main.dayTime || AAWorld.downedAkuma))
+                if ((spawnInfo.player.position.Y < (Main.worldSurface * 16.0)) && (Main.dayTime || AAWorld.downedAkuma))
                 {
                     pool.Add(mod.NPCType("Wyrmling"), .25f);
                     pool.Add(mod.NPCType("InfernalSlime"), .05f);
@@ -926,7 +923,7 @@ namespace AAMod
                         pool.Add(mod.NPCType("BlazePhoenix"), .1f);
                     }
                 }
-                else if (player.position.Y > (Main.worldSurface * 16.0))
+                else if (spawnInfo.player.position.Y > (Main.worldSurface * 16.0))
                 {
                     pool.Add(mod.NPCType("Wyrmling"), .25f);
                     pool.Add(mod.NPCType("Flamebrute"), .25f);
@@ -939,11 +936,11 @@ namespace AAMod
                         pool.Add(mod.NPCType("Wyvern"), .1f);
                         pool.Add(mod.NPCType("Wyrm"), .008f);
                         pool.Add(mod.NPCType("ChaoticDawn"), .01f);
-                        if (player.ZoneSnow)
+                        if (spawnInfo.player.ZoneSnow)
                         {
                             pool.Add(mod.NPCType("Dragron"), .01f);
                         }
-                        if (player.ZoneUndergroundDesert)
+                        if (spawnInfo.player.ZoneUndergroundDesert)
                         {
                             pool.Add(mod.NPCType("InfernoGhoul"), .1f);
                         }
@@ -962,7 +959,7 @@ namespace AAMod
             if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire)
             {
                 ClearPoolWithExceptions(pool);
-                if ((player.position.Y < (Main.worldSurface * 16.0)) && (!Main.dayTime || AAWorld.downedYamata))
+                if ((spawnInfo.player.position.Y < (Main.worldSurface * 16.0)) && (!Main.dayTime || AAWorld.downedYamata))
                 {
                     pool.Add(mod.NPCType("Mosster"), .05f);
                     pool.Add(mod.NPCType("Newt"), .1f);
@@ -976,7 +973,7 @@ namespace AAMod
                         pool.Add(mod.NPCType("Kappa"), .05f);
                     }
                 }
-                else if (player.position.Y > (Main.worldSurface * 16.0))
+                else if (spawnInfo.player.position.Y > (Main.worldSurface * 16.0))
                 {
                     pool.Add(mod.NPCType("Mosster"), .05f);
                     pool.Add(mod.NPCType("Newt"), .1f);
@@ -987,11 +984,11 @@ namespace AAMod
                         pool.Add(mod.NPCType("FogAngler"), SpawnCondition.WaterCritter.Chance * 0.2f);
                         pool.Add(mod.NPCType("Miresquito"), .05f);
                         pool.Add(mod.NPCType("ChaoticTwilight"), .01f);
-                        if (player.ZoneSnow)
+                        if (spawnInfo.player.ZoneSnow)
                         {
                             pool.Add(mod.NPCType("Miregron"), .01f);
                         }
-                        if (player.ZoneUndergroundDesert)
+                        if (spawnInfo.player.ZoneUndergroundDesert)
                         {
                             pool.Add(mod.NPCType("MireGhoul"), .05f);
                         }
