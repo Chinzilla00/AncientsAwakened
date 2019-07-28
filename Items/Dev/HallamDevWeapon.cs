@@ -21,7 +21,7 @@ Prismeow EX");
 		public override void SetDefaults()
 		{
             
-			item.damage = 100;
+			item.damage = 50;
 			item.magic = true;
 			item.mana = 200;
 			item.width = 52;

@@ -18,7 +18,7 @@ Blade of Night EX");
 		
 		public override void SetDefaults()
 		{
-			item.damage = 425;
+			item.damage = 436;
 			item.melee = true;
 			item.width = 100;
 			item.height = 100;
