@@ -69,7 +69,7 @@ Super Skullshot EX");
             if (player.altFunctionUse == 2)
             {
                 item.useAmmo = AAMod.BoneAmmo;
-                item.damage = 600;
+                item.damage = 650;
                 item.useAnimation = 20;
                 item.useTime = 9;
                 item.reuseDelay = 20;
@@ -78,7 +78,7 @@ Super Skullshot EX");
             else
             {
                 item.useAmmo = AmmoID.Bullet;
-                item.damage = 250;
+                item.damage = 210;
                 item.useAnimation = 24;
                 item.useTime = 24;
                 item.reuseDelay = 0;

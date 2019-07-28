@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿ using System.IO;
 using System.Linq;
 using AAMod.Buffs;
 using AAMod.NPCs.Bosses.Zero;
@@ -2329,9 +2329,9 @@ namespace AAMod
                 {
                     player.mount.Dismount(player);
                 }
-                if (player.wingTimeMax > 15)
+                if (player.wingTimeMax > 17)
                 {
-                    player.wingTimeMax = 15;
+                    player.wingTimeMax = 16;
                 }
                 if (YamataAGravity)
                 {

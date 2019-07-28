@@ -22,7 +22,7 @@ namespace AAMod.Items.Boss.Zero
 			item.melee = true;
 			item.width = 94;
 			item.height = 70;
-			item.useTime = 20;
+			item.useTime = 22;
             item.shoot = mod.ProjectileType("Rift");
             item.shootSpeed = 10f;
             item.useAnimation = 10;

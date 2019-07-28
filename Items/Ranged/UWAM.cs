@@ -25,8 +25,8 @@ namespace AAMod.Items.Ranged
 			item.knockBack = 4;
 			item.width = 86;
 			item.height = 40;
-			item.useTime = 5;
-			item.useAnimation = 5;
+			item.useTime = 3;
+			item.useAnimation = 3;
 			item.value = 1000000;
 			item.rare = 11;
 			item.autoReuse = true;
