@@ -202,33 +202,63 @@ namespace AAMod.NPCs.Bosses.Athena
                     if (Main.netMode != 1)
                     {
                         npc.ai[1]++;
-
-                        if (npc.ai[0] >= 600)
+                        if (npc.ai[1] == 300)
                         {
-                            npc.ai[0] = 0;
                             if (Main.rand.Next(5) == 0)
                             {
                                 internalAI[1] = 0;
+                                npc.ai[0] = 0;
                                 npc.ai[1] = 0;
                                 npc.ai[2] = 0;
                                 npc.ai[3] = 0;
                                 npc.netUpdate = true;
                                 return;
                             }
+                            npc.ai[0] = 0;
                             MoveVector2 = CloudPick();
                             npc.netUpdate = true;
                         }
                     }
-                    if(Vector2.Distance(npc.Center, MoveVector2) < 10 && Main.netMode != 1)
+                    if(Vector2.Distance(npc.Center, MoveVector2) < 10)
                     {
                         if (npc.ai[2] == 1 && Main.netMode != 1)
                         {
+                            npc.ai[1] = 0;
                             npc.ai[2] = 0;
                             npc.netUpdate = true;
                         }
                         npc.velocity *= 0;
 
-                        if (npc.ai[1] % 90 == 0)
+                        if (npc.ai[1] % 200 == 0 && Main.netMode != 1)
+                        {
+                            int Choice = Main.rand.Next(2);
+                            if (Choice == 0)
+                            {
+                                NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y, mod.NPCType<OlympianDragon>());
+                                NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y, mod.NPCType<OlympianDragon>());
+                            }
+                            else
+                            {
+                                NPC Seraph1 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y + 100, mod.NPCType<SeraphA>())];
+                                for (int i = 0; i < 3; i++)
+                                {
+                                   Dust d = Main.dust[Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
+                                }
+                                NPC Seraph2 = Main.npc[NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y - 50, mod.NPCType<SeraphA>())];
+                                for (int i = 0; i < 3; i++)
+                                {
+                                    Dust d = Main.dust[Dust.NewDust(Seraph2.position, Seraph2.height, Seraph2.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
+                                }
+                                NPC Seraph3 = Main.npc[NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y - 50, mod.NPCType<SeraphA>())];
+                                for (int i = 0; i < 3; i++)
+                                {
+                                    Dust d = Main.dust[Dust.NewDust(Seraph3.position, Seraph3.height, Seraph3.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
+                                }
+                            }
+                            npc.netUpdate = true;
+                        }
+
+                        if (npc.ai[1] % 60 == 0)
                         {
                             if (Vector2.Distance(player.Center, npc.Center) < 900)
                             {
@@ -255,6 +285,16 @@ namespace AAMod.NPCs.Bosses.Athena
             {
                 npc.noTileCollide = false;
             }
+
+            if (player.Center.X < npc.Center.X)
+            {
+                npc.direction = -1;
+            }
+            else
+            {
+                npc.direction = 1;
+            }
+
             npc.rotation = 0;
         }
 
@@ -358,7 +398,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public void MoveToVector2(Vector2 p)
         {
-            float moveSpeed = 30f;
+            float moveSpeed = 25f;
             float velMultiplier = 1f;
             Vector2 dist = p - npc.Center;
             float length = dist == Vector2.Zero ? 0f : dist.Length();
@@ -403,9 +443,9 @@ namespace AAMod.NPCs.Bosses.Athena
 
             if (npc.ai[2] == 1)
             {
-                BaseDrawing.DrawAfterimage(sb, tex, 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.spriteDirection, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
+                BaseDrawing.DrawAfterimage(sb, tex, 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
             }
-            BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 7, npc.frame, lightColor);
+            BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor);
             return false;
         }
 
@@ -488,8 +528,8 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            BaseDrawing.DrawAfterimage(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.spriteDirection, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
-            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 7, npc.frame, npc.GetAlpha(lightColor), false);
+            BaseDrawing.DrawAfterimage(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, npc.GetAlpha(lightColor), false);
             return false;
         }
     }
