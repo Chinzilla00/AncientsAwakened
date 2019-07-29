@@ -30,11 +30,11 @@ namespace AAMod.Items.DevTools
         {
             if (flag)
             {
-                ConversionHandler.ConvertDown((int)(player.Center.X / 16f), (int)(player.Bottom.Y / 16f) + 3, 40, ConversionHandler.CONVERTID_INFERNO);
+                ConversionHandler.ConvertDown((int)(player.Center.X / 16f), (int)(player.Bottom.Y / 16f) + 3, 40, ConversionType.INFERNO);
             }
             else
             {
-                ConversionHandler.ConvertDown((int)(player.Center.X / 16f), (int)(player.Bottom.Y / 16f) + 3, 40, ConversionHandler.CONVERTID_MIRE);
+                ConversionHandler.ConvertDown((int)(player.Center.X / 16f), (int)(player.Bottom.Y / 16f) + 3, 40, ConversionType.MIRE);
             }
             flag = false;
             return true;

@@ -14,9 +14,6 @@ namespace AAMod.Worldgen
 
     class ConversionHandler
     {
-        public static int CONVERTID_MIRE = 0;
-        public static int CONVERTID_INFERNO = 1;
-
         public static int startMireX = -1;
         public static int startMireY = -1;
         public static int genMireWidth = -1;
