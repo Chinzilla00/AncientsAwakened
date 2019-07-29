@@ -28,7 +28,7 @@ Scythe of the Grim Reaper EX");
 			item.knockBack = 6f;
 			item.width = 24;
 			item.height = 28;
-			item.damage = 150;
+			item.damage = 225;
 			item.crit = 14;
 			item.scale = 1.15f;
 			item.UseSound = SoundID.Item71;

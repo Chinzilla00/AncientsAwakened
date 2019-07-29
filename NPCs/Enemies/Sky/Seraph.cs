@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Enemies.Sky
 			npc.aiStyle = -1;
             npc.lifeMax = 500;
             npc.defense = 20;
-            npc.damage = 30;
+            npc.damage = 55;
             npc.knockBackResist = 0.3f;
 			npc.noGravity = true;
             npc.HitSound = SoundID.NPCHit1;

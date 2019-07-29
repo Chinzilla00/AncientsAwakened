@@ -17,7 +17,7 @@ Terra Ballista EX");
 
 	    public override void SetDefaults()
 	    {
-	        item.damage = 90;
+	        item.damage = 215;
 	        item.crit += 25;
 	        item.ranged = true;
 	        item.width = 50;

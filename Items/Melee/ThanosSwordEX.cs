@@ -16,7 +16,7 @@ Mad Titan's Dualblade EX");
         public override void SetDefaults()
         {
             item.noUseGraphic = true;
-            item.damage = 300;
+            item.damage = 1750;
             item.melee = true;
             item.noMelee = true;
             item.width = 88;

@@ -17,8 +17,8 @@ namespace AAMod.Items.Magic
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(3570);
-			item.useTime = 15;
-			item.useAnimation = 15;
+			item.useTime = 8;
+			item.useAnimation = 8;
 			item.damage = 175;
 			item.mana = 15;
 		}

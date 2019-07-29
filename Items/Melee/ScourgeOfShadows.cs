@@ -22,8 +22,8 @@ namespace AAMod.Items.Melee
 			item.width = 18;
 			item.height = 20;
 			item.UseSound = SoundID.Item39;
-			item.useAnimation = 15;
-			item.useTime = 15;
+			item.useAnimation = 10;
+			item.useTime = 10;
 			item.noUseGraphic = true;
 			item.noMelee = true;
 			item.value = Item.sellPrice(0, 50, 0, 0);

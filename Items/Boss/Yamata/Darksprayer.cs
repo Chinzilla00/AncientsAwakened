@@ -18,7 +18,7 @@ Inflicts Moonrazed");
 
         public override void SetDefaults()
         {
-            item.damage = 370;
+            item.damage = 425;
             item.ranged = true;
             item.width = 44;
             item.height = 34;

@@ -19,7 +19,7 @@ Terra Blade EX");
 			item.rare = 11;
 			item.UseSound = SoundID.Item1;
 			item.useStyle = 1;
-			item.damage = 400;
+			item.damage = 440;
 			item.useAnimation = 7;
 			item.useTime = 7;
 			item.width = 62;
