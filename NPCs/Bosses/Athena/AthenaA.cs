@@ -13,10 +13,11 @@ using System.Collections.Generic;
 namespace AAMod.NPCs.Bosses.Athena
 {
     [AutoloadBossHead]
-    public class Athena : ModNPC
+    public class AthenaA : ModNPC
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Olympian Athena");
             Main.npcFrameCount[npc.type] = 7;
         }
 
@@ -476,70 +477,6 @@ namespace AAMod.NPCs.Bosses.Athena
 
                 return true;
             }
-        }
-    }
-
-    public class AthenaFlee : ModNPC
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Athena/Athena";
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Athena");
-            Main.npcFrameCount[npc.type] = 7;
-        }
-        public override void SetDefaults()
-        {
-            npc.life = 1;
-            npc.dontTakeDamage = true;
-            npc.damage = 60;
-            npc.width = 152;
-            npc.height = 114;
-            npc.friendly = false;
-            npc.timeLeft = 900;
-        }
-
-        public override void AI()
-        {
-            if (Main.netMode != 1 && npc.ai[0]++ >= 120)
-            {
-                if (npc.ai[0] == 120)
-                {
-                    npc.velocity.Y = .4f;
-                    npc.netUpdate = true;
-                }
-                else if (npc.ai[0] == 130)
-                {
-                    npc.velocity.Y = -3f;
-                    npc.netUpdate = true;
-                }
-                else if (npc.ai[0] > 130)
-                {
-                    npc.velocity.Y = -3f;
-                }
-                if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate = true; }
-            }
-        }
-
-        public override void FindFrame(int frameHeight)
-        {
-            npc.frameCounter++;
-            if (npc.frameCounter >= 6)
-            {
-                npc.frame.Y = npc.frame.Y + frameHeight;
-                npc.frameCounter = 0;
-            }
-            if (npc.frame.Y >= frameHeight * Main.npcFrameCount[npc.type])
-            {
-                npc.frame.Y = 0;
-            }
-        }
-
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            BaseDrawing.DrawAfterimage(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
-            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, npc.GetAlpha(lightColor), false);
-            return false;
         }
     }
 }

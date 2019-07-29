@@ -514,7 +514,8 @@ namespace AAMod.Globals
                 bossChecklist.Call("AddBossWithInfo", "Subzero Serpent", 5.5f, (Func<bool>)(() => AAWorld.downedSerpent), "Use a [i:" + AAMod.instance.ItemType("SubzeroCrystal") + "] in the Snow biome at night");
                 bossChecklist.Call("AddBossWithInfo", "Desert Djinn", 5.5f, (Func<bool>)(() => AAWorld.downedDjinn), "Use a [i:" + AAMod.instance.ItemType("DjinnLamp") + "] in the Desert during the day");
                 bossChecklist.Call("AddBossWithInfo", "Sagittarius", 5.7f, (Func<bool>)(() => AAWorld.downedSag), "Use a [i:" + AAMod.instance.ItemType("Lifescanner") + "] in the Void");
-                bossChecklist.Call("AddBossWithInfo", "Truffle Toad", 6.5f, (Func<bool>)(() => AAWorld.downedToad), "Use a [i:" + AAMod.instance.ItemType("Toadstool") + "] in a glowing mushroom biome");
+                bossChecklist.Call("AddBossWithInfo", "Truffle Toad", 4f, (Func<bool>)(() => AAWorld.downedToad), "Use a [i:" + AAMod.instance.ItemType("Toadstool") + "] in a glowing mushroom biome");
+                bossChecklist.Call("AddBossWithInfo", "Athena", 11.5f, (Func<bool>)(() => AAWorld.downedToad), "Use an [i:" + AAMod.instance.ItemType("Owl") + "] at the owl altar in the Acropolis.");
                 bossChecklist.Call("AddBossWithInfo", "Rajah Rabbit", 12.1f, (Func<bool>)(() => AAWorld.downedRajah), "Use a [i:" + AAMod.instance.ItemType("GoldenCarrot") + "] or kill 100 Rabbits like a jerk.");
                 bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 15f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + AAMod.instance.ItemType("EquinoxWorm") + "]");
                 bossChecklist.Call("AddBossWithInfo", "Sisters of Discord", 16.1f, (Func<bool>)(() => AAWorld.downedSisters), "Use the [i:" + AAMod.instance.ItemType("FlamesOfAnarchy") + "]");
@@ -542,7 +543,7 @@ namespace AAMod.Globals
         }
         
         // Unused as of now, till Achievements Libs is more stable and support more reliable.
-        private static void PerformAchievementsLibsSupport()
+        /*private static void PerformAchievementsLibsSupport()
         {
             Mod DradonIsDum = ModLoader.GetMod("AchievementLibs");
 
@@ -564,7 +565,7 @@ namespace AAMod.Globals
                 DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Unyielding Discord", "Defeat the discordian doomsayer of chaos, Shen Doragon", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedShen);
                 DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Dragon Slayer", "Slay Shen Doragon's true, chaotic form, Shen Doragon Awakened", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedShen && Main.expertMode);
             }
-        }
+        }*/
 
         private static void PerformCencusSupport()
         {
