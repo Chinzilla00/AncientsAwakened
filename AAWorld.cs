@@ -1279,13 +1279,13 @@ namespace AAMod
                     InfernoStripe = true;
 
                     if (Main.netMode != 1) BaseUtility.Chat("The Souls of Fury and Wrath are unleashed upon the world!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-                    ConversionHandler.ConvertDown((int)InfernoCenter.X, 0, 120, 1);
+                    ConversionHandler.ConvertDown((int)InfernoCenter.X, 0, 120, ConversionType.INFERNO);
                 }
                 if (MireStripe == false)
                 {
                     MireStripe = true;
 
-                    ConversionHandler.ConvertDown((int)MireCenter.X, 0, 120, 0);
+                    ConversionHandler.ConvertDown((int)MireCenter.X, 0, 120, ConversionType.MIRE);
                 }
             }
         }
