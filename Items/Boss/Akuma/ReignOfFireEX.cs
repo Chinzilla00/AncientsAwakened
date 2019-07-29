@@ -21,7 +21,7 @@ Reign of Fire EX");
         
         public override void SetDefaults()
         {
-            item.damage = 750;            
+            item.damage = 850;            
             item.melee = true;            
             item.width = 86;              
             item.height = 86;             

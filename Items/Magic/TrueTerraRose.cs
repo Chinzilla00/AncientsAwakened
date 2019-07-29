@@ -19,7 +19,7 @@ Terra Rose EX");
 
 		public override void SetDefaults()
 		{
-			item.damage = 410;
+			item.damage = 500;
 			item.magic = true;
 			item.mana = 15;
 			item.width = 68;

@@ -25,7 +25,7 @@ namespace AAMod.Items.Boss.Zero
 			item.useTime = 22;
             item.shoot = mod.ProjectileType("Rift");
             item.shootSpeed = 10f;
-            item.useAnimation = 10;
+            item.useAnimation = 22;
 			item.useStyle = 1;
 			item.knockBack = 3;
 			item.value = Item.sellPrice(0, 30, 0, 0);
