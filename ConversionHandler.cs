@@ -61,9 +61,10 @@ namespace AAMod.Worldgen
 
                 case 8400:
                     return 3;
-            }
 
-            return 1; // unknown size, assume small
+                default:
+                    return 1;
+            }
         }
 
         #region Thread Callback Stuff
