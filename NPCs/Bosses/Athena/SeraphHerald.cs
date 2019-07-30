@@ -88,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     if (Main.netMode != 1) BaseUtility.Chat("She demands a rematch, and this time, she won't let you tear her down so easily!", Color.Silver);
                 }
                 else
-                if (npc.ai[0] >= 360)
+                if (npc.ai[0] == 360)
                 {
                     if (Main.netMode != 1) BaseUtility.Chat("I would say break a leg, but we can do that ourselves when you show up!", Color.Silver);
                 }

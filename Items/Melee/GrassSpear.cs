@@ -42,8 +42,7 @@ namespace AAMod.Items.Melee
 
         public override void AddRecipes()  
         {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Everleaf", 10);   
+            ModRecipe recipe = new ModRecipe(mod);  
             recipe.AddIngredient(ItemID.Stinger, 4);
             recipe.AddIngredient(ItemID.JungleSpores, 4);
             recipe.AddTile(TileID.Anvils);   
