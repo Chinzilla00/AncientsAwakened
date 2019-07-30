@@ -12,6 +12,8 @@ namespace AAMod.NPCs.Bosses.Shen
     [AutoloadBossHead]
     public class ShenDoragon : ModNPC
     {
+        public int damage = 0;
+
         public float[] customAI = new float[6];
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -231,6 +233,14 @@ namespace AAMod.NPCs.Bosses.Shen
             #endregion
 
             Player player = Main.player[npc.target];
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
 
             int Inferno = mod.ProjectileType<DiscordianInferno>();
             int Bomb = mod.ProjectileType<ShenFirebomb>();
@@ -503,7 +513,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 InfernoType = 2;
                             }
                         }
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Inferno, npc.damage / (Main.expertMode ? 2 : 4), 0f, Main.myPlayer, InfernoType, 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Inferno, damage, 0f, Main.myPlayer, InfernoType, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }
@@ -570,7 +580,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                     shootThis = 2;
                                 }
                             }
-                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Bomb, npc.damage / (Main.expertMode ? 2 : 4), 0f, Main.myPlayer, shootThis, 0f);
+                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Bomb, damage, 0f, Main.myPlayer, shootThis, 0f);
                             Main.projectile[projectile].velocity = vel;
                             Main.projectile[projectile].netUpdate = true;
                         }
@@ -638,7 +648,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                     shootThis = 2;
                                 }
                             }
-                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Flame, npc.damage / (Main.expertMode ? 2 : 4), 0f, Main.myPlayer, shootThis, 0f);
+                            int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, Flame, damage, 0f, Main.myPlayer, shootThis, 0f);
                             Main.projectile[projectile].velocity = vel;
                             Main.projectile[projectile].netUpdate = true;
                         }
@@ -688,7 +698,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 shootThis = 2;
                             }
                         }
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X / 2, vel.Y / 2, Storm, npc.damage / (Main.expertMode ? 2 : 4), 0f, Main.myPlayer, shootThis, 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X / 2, vel.Y / 2, Storm, damage, 0f, Main.myPlayer, shootThis, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }
@@ -738,7 +748,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             }
                         }
                         int shootThis = mod.ProjectileType<DiscordianFlare>();
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, npc.damage / (Main.expertMode ? 2 : 4), 0f, Main.myPlayer, Type, 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, shootThis, damage, 0f, Main.myPlayer, Type, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }
@@ -820,7 +830,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             infernoPos.Y -= 60;
                         }
                         int shootThis = mod.ProjectileType<ChaosLightning>();
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 6, vel.X * 2, vel.Y * 2, shootThis, npc.damage / (Main.expertMode ? 2 : 4), 0f, Main.myPlayer, vel.ToRotation(), 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 6, vel.X * 2, vel.Y * 2, shootThis, damage, 0f, Main.myPlayer, vel.ToRotation(), 0f);
                         Main.projectile[projectile].netUpdate = true;
                     }
 

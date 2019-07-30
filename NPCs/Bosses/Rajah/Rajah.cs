@@ -16,6 +16,8 @@ namespace AAMod.NPCs.Bosses.Rajah
     public class Rajah : ModNPC
     {
         public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
+        public int damage = 0;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rajah Rabbit");
@@ -156,6 +158,14 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void AI()
         {
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
             AAModGlobalNPC.Rajah = npc.whoAmI;
             WeaponPos = new Vector2(npc.Center.X + (npc.direction == 1 ? -78 : 78), npc.Center.Y - 9);
             StaffPos = new Vector2(npc.Center.X + (npc.direction == 1 ? 78 : -78), npc.Center.Y - 9);
@@ -207,7 +217,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         if (Main.netMode != 1) BaseUtility.Chat("And stay down.", 107, 137, 179);
                         if (Main.netMode != 1)
                         {
-                            Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<SupremeRajahBookIt>(), 100, 0, Main.myPlayer);
+                            Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<SupremeRajahBookIt>(), damage, 0, Main.myPlayer);
                         }
                     }
                     else
@@ -215,7 +225,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         if (Main.netMode != 1) BaseUtility.Chat("Justice has been served...", 107, 137, 179);
                         if (Main.netMode != 1)
                         {
-                            Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
+                            Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), damage, 0, Main.myPlayer);
                         }
                     }
                     npc.active = false;
@@ -235,11 +245,11 @@ namespace AAMod.NPCs.Bosses.Rajah
                     {
                         if (isSupreme)
                         {
-                            Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<SupremeRajahBookIt>(), 100, 0, Main.myPlayer);
+                            Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<SupremeRajahBookIt>(), damage, 0, Main.myPlayer); //Originally 100 damage
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), 100, 0, Main.myPlayer);
+                            Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<RajahBookIt>(), damage, 0, Main.myPlayer);
                         }
                     }
                     npc.active = false;
@@ -385,7 +395,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         int Rocket = isSupreme ? mod.ProjectileType<RajahRocketEXR>() : mod.ProjectileType<RajahRocket>();
                         Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
                         dir *= ProjSpeed();
-                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, Rocket, npc.damage / 5, 5, Main.myPlayer);
+                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, Rocket, damage, 5, Main.myPlayer);
                         npc.netUpdate = true;
                     }
                 }
@@ -405,7 +415,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         for (int i = 0; i < carrots; i++)
                         {
                             double offsetAngle = startAngle + (deltaAngle * i);
-                            Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), carrotType, npc.damage / 4, 5, Main.myPlayer, 0);
+                            Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), carrotType, damage, 5, Main.myPlayer, 0);
                         }
                         npc.netUpdate = true;
                     }
@@ -417,7 +427,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     {
                         Vector2 dir = Vector2.Normalize(player.position - WeaponPos);
                         dir *= ProjSpeed();
-                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, Javelin, npc.damage / 5, 5, Main.myPlayer);
+                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, Javelin, damage, 5, Main.myPlayer);
                     }
                     if (internalAI[3] > (isSupreme ? 60 : 90))
                     {
@@ -432,7 +442,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         internalAI[3] = 0;
                         Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
                         dir *= ProjSpeed();
-                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, mod.ProjectileType<ExcalihareR>(), npc.damage / 5, 5, Main.myPlayer);
+                        Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, mod.ProjectileType<ExcalihareR>(), damage, 5, Main.myPlayer);
                         npc.netUpdate = true;
                     }
                 }
@@ -451,7 +461,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         for (int i = 0; i < Arrows; i++)
                         {
                             double offsetAngle = startAngle + (deltaAngle * i);
-                            Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("CarrowR"), npc.damage / 4, 5, Main.myPlayer);
+                            Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("CarrowR"), damage, 5, Main.myPlayer);
                         }
                         npc.netUpdate = true;
                     }
@@ -482,7 +492,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                             float num83 = vector13.Y;
                             float speedX5 = num82;
                             float speedY6 = num83 + Main.rand.Next(-40, 41) * 0.02f;
-                            int p = Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType<CarrotEXR>(), npc.damage / 4, 6, Main.myPlayer, 0, 0);
+                            int p = Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType<CarrotEXR>(), damage, 6, Main.myPlayer, 0, 0);
                             Main.projectile[p].tileCollide = false;
                         }
                         npc.netUpdate = true;
@@ -492,7 +502,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<CarrotFarmerR>()))
                     {
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), npc.damage / 5, 3f, Main.myPlayer, npc.whoAmI);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), damage, 3f, Main.myPlayer, npc.whoAmI);
                         npc.netUpdate = true;
                     }
                 }

@@ -56,6 +56,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public bool Invisible = false;
         public int Frame = 0;
 
+        public int damage = 0;
+
         public int[] internalAI = new int[6];
 
         public override void SendExtraAI(BinaryWriter writer)
@@ -150,6 +152,14 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public override void AI()
         {
             Player player = Main.player[npc.target];
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
 
             Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
 
@@ -300,7 +310,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         for (int i = 0; i < 3; i++)
                         {
                             double offsetAngle = startAngle + (deltaAngle * i);
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, npc.damage / (Main.expertMode ? 2 : 4), 5, Main.myPlayer);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 5, Main.myPlayer);
                         }
                         npc.netUpdate = true;
                     }
@@ -363,7 +373,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
                         int projType = mod.ProjectileType<HarukaProj>();
-                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, (int)(npc.damage * 1.3f), 0f, 14f);
+                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage, 0f, 14f);
                         npc.netUpdate = true;
                     }
                     if (isSlashing && internalAI[2] > 9 && Main.netMode != 1)

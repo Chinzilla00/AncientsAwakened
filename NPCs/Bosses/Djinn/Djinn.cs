@@ -14,6 +14,8 @@ namespace AAMod.NPCs.Bosses.Djinn
     [AutoloadBossHead]
     public class Djinn : ModNPC
     {
+        public int damage = 0;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Desert Djinn");
@@ -81,6 +83,14 @@ namespace AAMod.NPCs.Bosses.Djinn
 
         public override void AI()
         {
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
             Player player = Main.player[npc.target];
             if (runonce == 0)
             {
@@ -429,7 +439,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
             foreach (Point current2 in list4)
             {
-                Projectile.NewProjectile(current2.X * 16, current2.Y * 16, 0f, 0f, 658, npc.damage / (Main.expertMode ? 2 : 4), 0f, Main.myPlayer, 0f, 0f);
+                Projectile.NewProjectile(current2.X * 16, current2.Y * 16, 0f, 0f, 658, damage, 0f, Main.myPlayer, 0f, 0f);
             }
         }
 
