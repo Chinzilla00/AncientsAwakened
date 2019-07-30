@@ -29,9 +29,7 @@ namespace AAMod.Items.Armor.TrueRaider
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = @"You are immune to all cold-related debuffs
-You quickly regenerate your HP while standing still
-You are immune to knockback";
+            player.setBonus = Lang.ArmorBonus("TrueRaiderPlateBonus");
             player.buffImmune[44] = true;
 			player.buffImmune[46] = true;
 			player.buffImmune[47] = true;

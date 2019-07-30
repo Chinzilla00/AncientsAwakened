@@ -113,28 +113,28 @@ namespace AAMod.NPCs.TownNPCs
             int Truffle = NPC.FindFirstNPC(NPCID.Truffle);
             if (Truffle >= 0 && Main.rand.Next(4) == 0)
             {
-                chat.Add("Those glowing truffles are all just such downers.");
+                chat.Add(Lang.TownNPCMushman("MushmanChat1"));
             }
             int WitchDoctor = NPC.FindFirstNPC(NPCID.WitchDoctor);
             if (WitchDoctor >= 0 && Main.rand.Next(4) == 0)
             {
-                return Main.npc[WitchDoctor].GivenName + " offered to let me get in his hot tub one time. I denied because I had better things to do";
+                return Main.npc[WitchDoctor].GivenName + Lang.TownNPCMushman("MushmanChat2");
             }
-            chat.Add("The Mushroom Monarch isn't all he seems, you know.");
-            chat.Add("Don't ask where I get the mushrooms for my potions.");
-            chat.Add("I got potions, you got money. Wanna trade?");
+            chat.Add(Lang.TownNPCMushman("MushmanChat3"));
+            chat.Add(Lang.TownNPCMushman("MushmanChat4"));
+            chat.Add(Lang.TownNPCMushman("MushmanChat5"));
             int Clothier = NPC.FindFirstNPC(NPCID.Clothier);
             if (Clothier >= 0 && Main.rand.Next(4) == 0)
             {
-                return Main.npc[Clothier].GivenName + " asked me one time if red truffles tasted as good as blue ones. Obviously not. Blue truffles are way saltier.";
+                return Main.npc[Clothier].GivenName + Lang.TownNPCMushman("MushmanChat6");
             }
             return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = "Shop";
-            button2 = "Strange Plants";
+            button = Lang.TownNPCMushman("button1");
+            button2 = Lang.TownNPCMushman("button2");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -452,27 +452,27 @@ namespace AAMod.NPCs.TownNPCs
         public string NoMushroomChat()
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
-            chat.Add("I need strange plants for something. Bring me some and I'll give you some special alchemical mushrooms. Good for making potions.");
-            chat.Add("...no plants?");
-            chat.Add("Plants please. I won't give you mushrooms without them.");
+            chat.Add(Lang.TownNPCMushman("NoMushroomChat1"));
+            chat.Add(Lang.TownNPCMushman("NoMushroomChat2"));
+            chat.Add(Lang.TownNPCMushman("NoMushroomChat3"));
             return chat;
         }
 
         public string SpecialChat()
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
-            chat.Add("A Madness Mushroom? Sweet! Here's a special kind mushroom for payment. This one is really useful. Just...don't eat it directly.");
-            chat.Add("Oh, a Madness Mushroom! These ones I like a lot because of their special properties. Here, have a few rainbow shrooms.");
-            chat.Add("You can find these in both mushroom biomes, you know. Make sure to check both of them just in case. They're really useful.");
+            chat.Add(Lang.TownNPCMushman("SpecialChat1"));
+            chat.Add(Lang.TownNPCMushman("SpecialChat2"));
+            chat.Add(Lang.TownNPCMushman("SpecialChat3"));
             return chat;
         }
 
         public string MushroomChat()
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
-            chat.Add("Thank you. These mushrooms are way more useful than worthless dyes, am I right?");
-            chat.Add("Here. More colored mushrooms for all your brewing needs. Just...don't eat them.");
-            chat.Add("What do I use these dye materials for? Uh...things. Now leave me be, I have stuff to do!");
+            chat.Add(Lang.TownNPCMushman("MushroomChat1"));
+            chat.Add(Lang.TownNPCMushman("MushroomChat2"));
+            chat.Add(Lang.TownNPCMushman("MushroomChat3"));
             return chat;
         }
 

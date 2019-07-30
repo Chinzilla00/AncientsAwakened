@@ -46,27 +46,27 @@ Non-Consumable");
         {
             if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Yamata.Yamata>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Yamata.Awakened.YamataA>()))
             {
-                if (Main.netMode != 1) BaseUtility.Chat("Only the blue half of the sigil is lit up...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ChaosSigilFalse1"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Akuma.Akuma>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Akuma.Awakened.AkumaA>()))
             {
-                if (Main.netMode != 1) BaseUtility.Chat("Only the red half of the sigil is lit up...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ChaosSigilFalse2"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
             {
-                if (Main.netMode != 1) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ChaosSigilFalse3"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<ShenA>()))
             {
-                if (Main.netMode != 1) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ChaosSigilFalse3"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             if (!AAWorld.downedShen && !player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda && !player.GetModPlayer<AAPlayer>(mod).ZoneRisingMoonLake)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("The Chaos Sigil glows, and imagery of the chaos pedestals flash through your mind", Color.DarkMagenta, false);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ChaosSigilFalse4"), Color.DarkMagenta, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType<ShenSpawn>()) || NPC.AnyNPCs(mod.NPCType<ShenTransition>()) || NPC.AnyNPCs(mod.NPCType<ShenDefeat>()) || NPC.AnyNPCs(mod.NPCType<ShenDeath>()))
@@ -75,7 +75,7 @@ Non-Consumable");
             }
             if (!AAWorld.downedAllAncients)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("The sigil does nothing...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ChaosSigilFalse5"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
             return true;
@@ -85,7 +85,7 @@ Non-Consumable");
         {
             if (AAWorld.ShenSummoned)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(AAWorld.downedShen ? "Big mistake, child..." : "Hmpf...again..? Alright, let's just get this done and overwith.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat(AAWorld.downedShen ? Lang.BossSummonsInfo("ChaosSigilTrue1") : Lang.BossSummonsInfo("ChaosSigilTrue2"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenDoragon"), true, 0, 0, "Shen Doragon; Discordian Doomsayer", false);
             }

@@ -39,9 +39,7 @@ Shines with the light of a starry night sky");
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = @"25% decreased ammo consumption
-20% increased ranged critical chance
-Being hit causes stars from the heavans to fall around you and increases your movement speed";
+            player.setBonus = Lang.ArmorBonus("RadiumHeadgearBonus");
 
             player.GetModPlayer<AAPlayer>(mod).Radium = true;
             player.GetModPlayer<AAPlayer>(mod).radiumRa = true;

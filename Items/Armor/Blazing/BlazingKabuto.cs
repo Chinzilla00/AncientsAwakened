@@ -36,9 +36,7 @@ Forged in the flames of the blazing sun");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"5% increased damage resistance
-Enemies are more likely to target you
-Your Swung weapons set your enemies ablaze";
+			player.setBonus = Lang.ArmorBonus("BlazingBonus");
             player.endurance = .05f;
             player.aggro += 4;
             player.GetModPlayer<AAPlayer>(mod).kindledSet = true;

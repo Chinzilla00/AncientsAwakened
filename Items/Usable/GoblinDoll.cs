@@ -45,7 +45,7 @@ namespace AAMod.Items.Usable
                         Player player = Main.player[item.owner];
                         player.QuickSpawnItem(mod.ItemType<Accessories.SoulStone>());
                         Main.npc[i].StrikeNPCNoInteraction(9999, 10f, -Main.npc[i].direction, false, false, false);
-                        if (Main.netMode != 1) BaseMod.BaseUtility.Chat("The soul stone materializes in your hand", 180, 120, 0);
+                        if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.ItemsInfo("GoblinDollInfo"), 180, 120, 0);
                     }
                 }
             }

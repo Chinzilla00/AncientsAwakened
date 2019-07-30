@@ -38,8 +38,7 @@ Increases maximum mana by 20");
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = @"You are blessed with a gift of nature, allowing you to autodrink mana potions
-Mana usage lowered by 30%";
+            player.setBonus = Lang.ArmorBonus("TribalHatBonus");
 
             player.manaCost *= 0.7f;
             player.manaFlower = true;

@@ -77,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             if (npc.life <= 0)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("OWIE!!!", new Color(146, 30, 68));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataAHead"), new Color(146, 30, 68));
             }
         }
         public override bool PreNPCLoot()

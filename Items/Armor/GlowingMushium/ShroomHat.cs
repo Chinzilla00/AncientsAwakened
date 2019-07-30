@@ -38,7 +38,7 @@ namespace AAMod.Items.Armor.GlowingMushium
 		public override void UpdateArmorSet(Player player)
 		{
 
-            player.setBonus = @"You are immune to Mana Sickness";
+            player.setBonus = Lang.ArmorBonus("ShroomHatBonus");
 
             player.buffImmune[BuffID.ManaSickness] = true;
 		}

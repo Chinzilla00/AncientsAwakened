@@ -44,8 +44,7 @@ namespace AAMod.Items.Armor.Paints
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = @"+3 Minion slots
-Enemies near you are burned by radiation emitted by your armor";
+            player.setBonus = Lang.ArmorBonus("UraniumPaintBonus");
 
 
             player.GetModPlayer<AAPlayer>(mod).uraniumSet = true;

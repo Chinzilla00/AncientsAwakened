@@ -62,9 +62,7 @@ Dark, yet still barely visible");
 		public override void UpdateArmorSet(Player player)
 		{
 			
-			player.setBonus = @"15% increased melee critical chance and speed
-Your melee weapons electrocute enemies
-8% increased damage resistance at night";
+			player.setBonus = Lang.ArmorBonus("DarkmatterHelmetBonus");
             if (!Main.dayTime)
             {
                 player.endurance += .08f;

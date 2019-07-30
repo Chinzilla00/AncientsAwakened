@@ -34,9 +34,7 @@ namespace AAMod.Items.Armor.Chaos
         int counter = 0;
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"You are immune to most debuffs
-You quickly regenerate your HP while standing still
-You are immune to knockback";
+            player.setBonus = Lang.ArmorBonus("ChaosHelmBonus");
             player.buffImmune[46] = true;
             player.buffImmune[33] = true;
             player.buffImmune[36] = true;
