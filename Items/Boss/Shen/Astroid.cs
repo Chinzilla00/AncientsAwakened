@@ -28,7 +28,7 @@ Inflicts Discordian Inferno");
             item.useAnimation = 40;
             item.useTime = 40;
             item.knockBack = 7.5F;
-            item.damage = 290;
+            item.damage = 300;
             item.noUseGraphic = true;
             item.shoot = mod.ProjectileType("Astroid");
             item.shootSpeed = 32F;
