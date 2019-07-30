@@ -1770,7 +1770,7 @@ ItemName.SandstormCrossbow=沙暴十字弩
 ItemTooltip.SandstormCrossbow=用沙漠楔代替箭矢
 
 ItemName.SandstormMedallion=沙暴勋环
-ItemTooltip.SandstormMedallion=在沙尘暴期间，你的计数器计数翻倍
+ItemTooltip.SandstormMedallion=在沙尘暴期间，你的所有属性翻倍
 
 ItemName.SultanScimitar=苏丹弯刀
 
@@ -1803,7 +1803,7 @@ ItemTooltip.UltibladeTyphoon=发射3个快速回旋的剃刃风暴\n水刃龙卷
 
 
 ItemName.DarkVoid=深空之星
-ItemTooltip.DarkVoid=晚上计数器数据增加\n“漆黑而又怪异”
+ItemTooltip.DarkVoid=晚上你的属性提升\n“漆黑而又怪异”
 
 ItemName.DBBag=宝藏袋
 ItemTooltip.DBBag={$CommonItemTooltip.RightClickToOpen}
@@ -1819,7 +1819,7 @@ ItemTooltip.NCBag={$CommonItemTooltip.RightClickToOpen}
 ItemName.NCTrophy=奈克劳尔纪念章
 
 ItemName.RadiantStar=光曜之星
-ItemTooltip.RadiantStar=白天计数器数据增加\n“闪闪发光”
+ItemTooltip.RadiantStar=白天你的属性提升\n“闪闪发光”
 
 
 // AAMod.Items.Boss.Grips
@@ -1878,10 +1878,10 @@ ItemName.EXSoul=EX之魂
 ItemTooltip.EXSoul=远古神秘魔法的精华\n(远古三王掉落)
 
 ItemName.FireFrostMedallion=冰与火之勋环
-ItemTooltip.FireFrostMedallion=在沙尘暴或者暴风雪期间期间，你的计数器计数翻倍
+ItemTooltip.FireFrostMedallion=在沙尘暴或者暴风雪期间，你的所有属性翻倍
 
 ItemName.MadnessTruffle=癫狂松露
-ItemTooltip.MadnessTruffle=提升跳跃速度而且允许自动跳跃\n免疫坠落伤害\n提升跳跃高度\n+50魔法伤害\n+50生命上限\n你知道的,别把它往嘴里放.
+ItemTooltip.MadnessTruffle=提升跳跃速度而且允许自动跳跃\n免疫坠落伤害\n提升跳跃高度\n+50魔法上限\n+50生命上限\n你知道的,别把它往嘴里放.
 
 ItemName.StormCharm=暴风魅饰
 ItemTooltip.StormCharm=增加15%伤害和伤害抗性\n增加10%近战速度\n所有攻击造成20真实伤害 (无种类伤害)\n获得冲刺能力
@@ -2045,7 +2045,7 @@ ItemName.SagTrophy=虚空人马纪念章
 
 
 ItemName.ArcticMedallion=北极勋环
-ItemTooltip.ArcticMedallion=暴风雪中你的计数器计数加倍
+ItemTooltip.ArcticMedallion=暴风雪中你的所有属性计数加倍
 
 ItemName.BlizzardBuster=雪暴破坏镖
 
@@ -2154,6 +2154,7 @@ ItemName.TruffleTrophy=机械松露纪念章
 
 
 ItemName.AbyssalYari=潭渊钩枪
+ItemTooltip.AbyssalYari=划分昼夜的两种传奇长矛中的一种
 
 ItemName.AbyssArrow=宵暗箭
 ItemTooltip.AbyssArrow=无月之夜的黑暗将敌人致盲\n造成蚀月\n无消耗
