@@ -2364,7 +2364,7 @@ ItemName.SubzeroCrystal=绝零水晶
 ItemTooltip.SubzeroCrystal=召唤绝零冰蛇\n只能在晚上使用
 
 ItemName.Toadstool=蟾蜍臭菇
-ItemTooltip.Toadstool=召唤松露蟾蜍\n只能再发光蘑菇地中使用
+ItemTooltip.Toadstool=召唤松露蟾蜍\n只能在发光蘑菇地中使用
 
 ItemName.ZeroRune=错.误_空.值
 ItemTooltip.ZeroRune=启.动.最.近.的.零.代.码.单.位\n不消耗
