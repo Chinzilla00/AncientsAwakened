@@ -310,7 +310,7 @@ ItemName.Lantern=灯笼
 ItemTooltip.Lantern=驱散潭渊雾气
 
 ItemName.MindStone=心灵宝石
-ItemTooltip.MindStone=减少50%魔力消耗\n+200魔力上限\n“简单的微积分”
+ItemTooltip.MindStone=减少50%魔力消耗\n+200魔力上限\n“简单的微积分”\n(白昼启明虫掉落)
 
 ItemName.OrnateBand=华丽珠环
 ItemTooltip.OrnateBand=增加5%伤害抗性
@@ -319,22 +319,22 @@ ItemName.PalladiumShield=钯金盾
 ItemTooltip.PalladiumShield=使你免疫击退
 
 ItemName.PowerStone=力量宝石
-ItemTooltip.PowerStone=增加40%攻击力\n“在平衡宇宙的过程中,乐趣并不是一件值得考虑的事情”
+ItemTooltip.PowerStone=增加40%攻击力\n“在平衡宇宙的过程中,乐趣并不是一件值得考虑的事情”\n(邪鬼巨龙掉落)
 
 ItemName.RealityStone=现实宝石
-ItemTooltip.RealityStone=让你控制你周围的现实：允许长途飞行，疯狂的速度和不羁的运动\n“现在...现实能变成任何我想要的样子...”
+ItemTooltip.RealityStone=让你控制你周围的现实：允许长途飞行，疯狂的速度和不羁的运动\n“现在...现实能变成任何我想要的样子...”\n(零械单元掉落)
 
 ItemName.ShadowBand=暗影饰带
 ItemTooltip.ShadowBand=增加15%移动速度
 
 ItemName.SoulStone=灵魂宝石
-ItemTooltip.SoulStone=+6召唤上限\n使你可以探测周围生物的灵魂、有价值的资源和陷阱\n“我失去的远超出你的想象”
+ItemTooltip.SoulStone=+6召唤上限\n使你可以探测周围生物的灵魂、有价值的资源和陷阱\n“我失去的远超出你的想象”\n(将哥布林工匠巫毒娃娃丢入岩浆获得)
 
 ItemName.SpaceStone=空间宝石
-ItemTooltip.SpaceStone=让你可以用抓钩键传送,类似于裂位法杖\n使你免疫混沌\n“但这...确实让我面露笑容”
+ItemTooltip.SpaceStone=让你可以用抓钩键传送,类似于裂位法杖\n使你免疫混沌\n“但这...确实让我面露笑容”\n(八歧大蛇掉落)
 
 ItemName.TimeStone=时间宝石
-ItemTooltip.TimeStone=减少80%重生时间\n“恐惧，逃避，命运终会降临。”
+ItemTooltip.TimeStone=减少80%重生时间\n“恐惧，逃避，命运终会降临。”\n(黑夜爬行虫掉落)
 
 
 // AAMod.Items.Accessories.Wings
@@ -3915,7 +3915,7 @@ ItemName.FungicideSolution=除菌溶液
 ItemTooltip.FungicideSolution=环境改造枪专用\n清除蘑菇地
 
 ItemName.GoblinDoll=哥布林工匠巫毒娃娃
-ItemTooltip.GoblinDoll=真对不起，小东西...\n（译者注：早就想把这个整天骗我钱的玩意搞死了。）
+ItemTooltip.GoblinDoll=真对不起，小东西...\n（译者注：早就想把这个整天骗我钱的玩意搞死了。）\n(远古三王后, 哥布林召唤师掉落)
 
 ItemName.HellCrate=地狱板条箱
 ItemTooltip.HellCrate=右键打开
