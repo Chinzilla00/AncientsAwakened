@@ -12,6 +12,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
     [AutoloadBossHead]
     public class SagittariusFree : Sagittarius
 	{
+        public int damage = 0;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sagittarius-A");
@@ -67,6 +69,14 @@ namespace AAMod.NPCs.Bosses.Sagittarius
        
         public override void AI()
         {
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
             npc.noGravity = true;
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
@@ -166,7 +176,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             {
                 BaseAI.AIEater(npc, ref npc.ai, 0.05f, 4f, 0, false, true);
                 npc.rotation = 0;
-                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("SagProj"), ref shootAI[0], 15, (int)(npc.damage * 0.25f), 10f, true, new Vector2(20f, 15f));
+                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjType("SagProj"), ref shootAI[0], 15, damage, 10f, true, new Vector2(20f, 15f));
             }
             else if (internalAI[2] == 2) //Shield Mode
             {
@@ -243,7 +253,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 for (int i = 0; i < Main.rand.Next(1, 3); i++)
                 {
                     offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(player.position.X, player.position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<Zero.DeathLaser>(), npc.damage / 4, 2, Main.myPlayer);
+                    Projectile.NewProjectile(player.position.X, player.position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<Zero.DeathLaser>(), damage, 2, Main.myPlayer);
                 }
             }
         }

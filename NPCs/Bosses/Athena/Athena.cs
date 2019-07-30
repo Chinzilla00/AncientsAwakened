@@ -22,6 +22,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public static Point CloudPoint = new Point((int)(Main.maxTilesX * 0.65f), 100);
         public Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
+        public int damage = 0;
 
         public override void SetDefaults()
         {
@@ -80,6 +81,14 @@ namespace AAMod.NPCs.Bosses.Athena
         public Vector2 MoveVector2;
         public override void AI()
         {
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
             npc.TargetClosest();
             Player player = Main.player[npc.target];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
@@ -386,7 +395,7 @@ namespace AAMod.NPCs.Bosses.Athena
             for (int i = 0; i < 3; i++)
             {
                 double offsetAngle = startAngle + (deltaAngle * i);
-                int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, npc.damage / 4, 2, Main.myPlayer);
+                int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 2, Main.myPlayer);
                 Main.projectile[p].tileCollide = false;
             }
         }

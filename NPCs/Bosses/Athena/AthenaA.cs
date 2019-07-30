@@ -21,6 +21,8 @@ namespace AAMod.NPCs.Bosses.Athena
             Main.npcFrameCount[npc.type] = 7;
         }
 
+        public int damage = 0;
+
         public static Point CloudPoint = new Point((int)(Main.maxTilesX * 0.65f), 100);
         public Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
 
@@ -377,6 +379,14 @@ namespace AAMod.NPCs.Bosses.Athena
         public void ShootFeather(NPC npc, Vector2 velocity)
         {
             Player player = Main.player[npc.target];
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
             int projType = mod.ProjectileType<SeraphFeather>();
             float spread = 30f * 0.0174f;
             Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
@@ -387,7 +397,7 @@ namespace AAMod.NPCs.Bosses.Athena
             for (int i = 0; i < 3; i++)
             {
                 double offsetAngle = startAngle + (deltaAngle * i);
-                int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, npc.damage / 4, 2, Main.myPlayer);
+                int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 2, Main.myPlayer);
                 Main.projectile[p].tileCollide = false;
             }
         }

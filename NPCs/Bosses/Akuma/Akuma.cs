@@ -82,6 +82,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         private int attackTimer;
         public static int MinionCount = 0;
         public int MaxMinons = Main.expertMode ? 3 : 4;
+        public int damage = 0;
 
         public float[] internalAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
@@ -117,7 +118,14 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
-
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
 
             if (fireAttack == true || internalAI[0] >= 450)
             {
@@ -464,7 +472,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 if (internalAI[0] == 400)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AkumaFireProj>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AkumaFireProj>(), damage, 3, Main.myPlayer);
                 }
             }
             else
@@ -486,7 +494,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     for (int i = 0; i < Fireballs; i++)
                     {
                         offsetAngle = startAngle + (deltaAngle * i);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, mod.ProjectileType<AkumaBomb>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, mod.ProjectileType<AkumaBomb>(), damage, 3, Main.myPlayer);
                     }
                 }
             }

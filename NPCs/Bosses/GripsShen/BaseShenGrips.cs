@@ -17,6 +17,8 @@ namespace AAMod.NPCs.Bosses.GripsShen
             Main.npcFrameCount[npc.type] = 14;
         }
 
+        public int damage = 0;
+
         public override void SetDefaults()
         {
             npc.width = 66;
@@ -129,7 +131,15 @@ namespace AAMod.NPCs.Bosses.GripsShen
 
         public override void AI()
 		{
-			npc.TargetClosest();
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
+            npc.TargetClosest();
 			Player targetPlayer = Main.player[npc.target];
 
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
@@ -223,7 +233,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
                     internalAI[0]++;
                     if (internalAI[0] == 40)
                     {
-                        BaseAI.FireProjectile(targetPlayer.Center, npc.Center, BlazeGrip ? mod.ProjectileType<BlazeBomb>() : mod.ProjectileType<AbyssalBomb>(), (int)(npc.damage * (Main.expertMode ? .25f : .5f)), 2, 9f, -1, Main.myPlayer);
+                        BaseAI.FireProjectile(targetPlayer.Center, npc.Center, BlazeGrip ? mod.ProjectileType<BlazeBomb>() : mod.ProjectileType<AbyssalBomb>(), damage, 2, 9f, -1, Main.myPlayer);
                     }
                     if (internalAI[0] > 50)
                     {
