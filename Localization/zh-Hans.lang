@@ -8,6 +8,9 @@ BuffDescription.AtlanteanBuff=你的战斗能力提升了
 BuffName.BabyPhoenix=小凤凰
 BuffDescription.BabyPhoenix=召唤一只小凤凰为你而战
 
+BuffName.BlazingPain=痛灼
+BuffDescription.BlazingPain=着火debuff对你造成双倍伤害
+
 BuffName.BoomBoi=砰!!!
 BuffDescription.BoomBoi=实际上并不会爆炸...除非.
 
@@ -36,6 +39,9 @@ BuffDescription.ChaosBuff=你的魔法能力大量提升
 
 BuffName.ChaosWrath=混沌怨怒
 BuffDescription.ChaosWrath=伤痛只会让你更强
+
+BuffName.CursedHellfire=诅咒狱炎
+BuffDescription.CursedHellfire=你的血肉在烧灼中消散
 
 BuffName.CyberClaw=电子之爪
 BuffDescription.CyberClaw=召唤电子之爪为你而战
@@ -69,6 +75,9 @@ BuffDescription.DragonMinion=召唤一条龙为你而战
 BuffName.DragonSoul=炎龙之魂
 BuffDescription.DragonSoul=龙之怒火中烧
 
+BuffName.DragonSpirit=龙魂
+BuffDescription.DragonSpirit=召唤一个龙魂为你而战
+
 BuffName.DoomiteProbe=厄劫探针
 BuffDescription.DoomiteProbe=召唤一个厄劫探针为你而战
 
@@ -80,6 +89,10 @@ BuffDescription.DustDevil=召唤一个沙尘魔为你而战
 
 BuffName.DiscordInferno=冥昧业火
 BuffDescription.DiscordInferno=你的灵魂自我分裂
+
+BuffName.DynaEnergy1=远古能量
+
+BuffName.DynaEnergy2=远古能量
 
 BuffName.EaterMinion=魔鬼吞噬者
 BuffDescription.EaterMinion=召唤一个恶魔吞噬者为你而战
@@ -221,6 +234,9 @@ BuffDescription.Socc=袜神.
 BuffName.SockPuppet=袜偶
 BuffDescription.SockPuppet=召唤一只袜子人偶为你而战
 
+BuffName.SpearStuck=刺穿
+BuffDescription.SpearStuck=一支长矛扎进了你的身体里, 啊！
+
 BuffName.Squirrel=松鼠
 BuffDescription.Squirrel=扔坚果
 
@@ -238,6 +254,9 @@ BuffDescription.Terrarium=免疫坠落伤害\n你对泰拉心球的光芒感到�
 
 BuffName.TerraSummon=向泰拉心球的呼唤
 BuffDescription.TerraSummon=一大堆怪物可供你召唤
+
+BuffName.TerraWizard=泰拉女巫
+BuffDescription.TerraWizard=魔力
 
 BuffName.TimeFrozen=时间冻结
 
@@ -267,6 +286,9 @@ BuffDescription.Yanked=“小 弟 弟,你 哪 也 去 不 了!”
 ItemName.TriHeadedKoi=三头锦鲤
 
 ItemName.Fishmother=育母炎鱼
+
+ItemName.AnubisBook=《阿努比斯生命史诗历险记》
+ItemTooltip.AnubisBook=一本非常……有趣的关于阿努比斯的生活和各种不幸遭遇的书.\n也许你把这个给他, 他会给你点东西.
 
 // AAMod.Items.Accessories
 
@@ -1695,6 +1717,8 @@ ItemTooltip.Dawnstrike=喷射火焰\n50%几率不消耗凝胶
 ItemName.DaybreakArrow=破晓箭
 ItemTooltip.DaybreakArrow=用燎阳的热量烧毁目标\n造成破晓\n无消耗
 
+ItemName.DaybreakBullet=破晓弹
+
 ItemName.Daycrusher=破晓者链球
 ItemTooltip.Daycrusher=以太阳质量的力度猛击敌人\n造成破晓
 
@@ -1811,7 +1835,7 @@ ItemTooltip.DBBag={$CommonItemTooltip.RightClickToOpen}
 ItemName.DBTrophy=戴布林格纪念章
 
 ItemName.Equinox=昼夜平分符
-ItemTooltip.Equinox=极大提升计数器数据\n“真正的平衡”
+ItemTooltip.Equinox=极大提升你的各项属性\n“真正的平衡”
 
 ItemName.NCBag=宝藏袋
 ItemTooltip.NCBag={$CommonItemTooltip.RightClickToOpen}
@@ -2433,6 +2457,9 @@ ItemTooltip.DeceivingTruthEX=发射一根无限穿透的藤曼
 ItemName.Demise=终亡
 ItemTooltip.Demise=曾经被魔王使用的传说之剑
 
+ItemName.DemiseEX=大劫难
+ItemTooltip.DemiseEX=一把曾经为恶魔领主所用万能大剑\n左键释放毁灭性恶魔能量\n右键从空中降下灾难性剑气\n真正的近战攻击有几率瞬间吞噬敌人的灵魂\n终亡 EX
+
 ItemName.EnderStaff=焚天法杖
 ItemTooltip.EnderStaff=召唤一个旋转焚天结构粉碎敌人\n我觉得天是紫的\n-Ender
 
@@ -2943,6 +2970,9 @@ ItemName.SnowMana=冰霜魔力
 ItemName.SoulOfSmite=狂焰之魂
 ItemTooltip.SoulOfSmite=燎狱生物的精华
 
+ItemName.SeraphFeather=六翼天羽
+ItemTooltip.SeraphFeather=六翼鸟妖的银色羽毛
+
 ItemName.SoulOfSpite=渊怨之魂
 ItemTooltip.SoulOfSpite=潭渊生物的精华
 
@@ -3214,6 +3244,9 @@ ItemTooltip.RustyCutlass=虽然锈了,但是依旧锋利
 
 ItemName.Ryusei=流星
 ItemTooltip.Ryusei=攻击用火焰和燎狱龙炎灼烧敌人
+
+ItemName.RomulusTazesaber=罗慕路斯电刃
+ItemTooltip.RomulusTazesaber=从一位受人尊敬的英雄手中窃取的雷熔电刃\n(译者注：罗慕路斯，罗马传说中的罗马城建造者)
 
 ItemName.SaltwaterSpear=海水矛枪
 
@@ -3915,7 +3948,7 @@ ItemName.FungicideSolution=除菌溶液
 ItemTooltip.FungicideSolution=环境改造枪专用\n清除蘑菇地
 
 ItemName.GoblinDoll=哥布林工匠巫毒娃娃
-ItemTooltip.GoblinDoll=真对不起，小东西...\n（译者注：早就想把这个整天骗我钱的玩意搞死了。）\n(远古三王后, 哥布林召唤师掉落)
+ItemTooltip.GoblinDoll=真对不起，小东西...\n(译者注：早就想把这个整天骗我钱的玩意搞死了。)\n(远古三王后, 哥布林召唤师掉落)
 
 ItemName.HellCrate=地狱板条箱
 ItemTooltip.HellCrate=右键打开
