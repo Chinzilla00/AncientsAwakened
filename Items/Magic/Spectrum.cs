@@ -8,7 +8,9 @@ namespace AAMod.Items.Magic
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Spectrum");
-			Tooltip.SetDefault("Focuses a devastating beam of light");
+            Tooltip.SetDefault(@"Focuses a devastating beam of light
+Last Prism EX");
+           
 		}
 
 	    public override void SetDefaults()
