@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Athena
 {
-    public class FallenAngel_Light : ModNPC
+    public class AthenaLight : ModNPC
     {
         Vector2 tPos;
         int despawn = 0;

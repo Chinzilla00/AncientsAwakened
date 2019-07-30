@@ -97,7 +97,9 @@ namespace AAMod
         public static bool downedRajahsRevenge;
         public static bool downedAnubis;
         public static bool downedAthena;
+        public static bool downedAthenaA;
         public static bool downedGreed;
+        public static bool AthenaHerald;
         //Points
         public static Point WHERESDAVOIDAT;
 
@@ -133,6 +135,7 @@ namespace AAMod
             //Bosses
             downedAnubis = false;
             downedAthena = false;
+            downedAthenaA = false;
             downedGreed = false;
             downedMonarch = false;
             downedGrips = false;
@@ -157,7 +160,7 @@ namespace AAMod
             downedSag = false;
             SistersSummoned = false;
             downedRajah = false;
-            RabbitKills = 0;
+            AthenaHerald = false;
             //World Changes
             TerrariumEnemies = NPC.downedBoss2;
             ChaosOres = downedGrips;
@@ -259,7 +262,9 @@ namespace AAMod
             if (zeroUS) downed.Add("ZUS");
             if (downedAnubis) downed.Add("Doggo");
             if (downedAthena) downed.Add("BirdBitch");
+            if (downedAthenaA) downed.Add("BirdBitchA");
             if (downedGreed) downed.Add("GimmeGimme");
+            if (AthenaHerald) downed.Add("BitchBird");
 
             return new TagCompound {
                 {"downed", downed},
@@ -334,6 +339,11 @@ namespace AAMod
             writer.Write(flags4);
 
 
+            BitsByte flags5 = new BitsByte();
+            flags5[0] = AthenaHerald;
+            flags5[1] = downedAthenaA;
+            writer.Write(flags5);
+
             writer.WriteVector2(MireCenter);
             writer.WriteVector2(InfernoCenter);
 
@@ -400,6 +410,10 @@ namespace AAMod
             downedAthena = flags4[6];
             downedGreed = flags4[7];
 
+            BitsByte flags5 = reader.ReadByte();
+            AthenaHerald = flags5[0];
+            downedAthenaA = flags5[1];
+
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		
 
@@ -460,7 +474,9 @@ namespace AAMod
             zeroUS = downed.Contains("ZUS");
             downedAnubis = downed.Contains("Doggo");
             downedAthena = downed.Contains("BirdBitch");
+            downedAthenaA = downed.Contains("BirdBitchA");
             downedGreed = downed.Contains("GimmeGimme");
+            AthenaHerald = downed.Contains("BitchBird");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
