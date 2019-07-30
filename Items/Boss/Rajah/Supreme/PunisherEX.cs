@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
             item.knockBack = 7f;
             item.width = 30;
             item.height = 10;
-            item.damage = 400;
+            item.damage = 500;
             item.shoot = mod.ProjectileType<Projectiles.Rajah.Supreme.PunisherEX>();
             item.shootSpeed = 15f;
             item.UseSound = SoundID.Item1;

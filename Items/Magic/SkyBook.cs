@@ -31,7 +31,7 @@ namespace AAMod.Items.Magic
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Sky Tome");
-            Tooltip.SetDefault("Casts crystal shards towards your cursor");
+            Tooltip.SetDefault("Casts a cloud");
         }
 
         public override void AddRecipes()  

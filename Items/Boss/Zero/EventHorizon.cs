@@ -18,14 +18,14 @@ namespace AAMod.Items.Boss.Zero
         {
             item.width = 38;
             item.height = 54;
-            item.damage = 270;
+            item.damage = 275;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.channel = true;
             item.autoReuse = true;
             item.melee = true;
-            item.useAnimation = 15;
-            item.useTime = 15;
+            item.useAnimation = 10;
+            item.useTime = 10;
             item.useStyle = 5;
             item.knockBack = 2f;
             item.UseSound = SoundID.Item116;

@@ -10,11 +10,12 @@ namespace AAMod.Items.Boss.Yamata
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Abyssal Yari");
+            Tooltip.SetDefault(@"One of two legendary spears used to divide time into day and night");
         }
 
         public override void SetDefaults()
         {
-            item.damage = 170;
+            item.damage = 350;
             item.melee = true;
             item.width = 132;
             item.height = 132;

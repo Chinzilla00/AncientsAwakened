@@ -120,6 +120,14 @@ namespace AAMod
             return GetTimedColor(AAColor.Shen2, color, min, max, clamp);
         }
 
+        public static Color GetSkyColorBrightInvert(Color color) { return GetSkyColor(color, 1f, 0.6f, true); }
+        public static Color GetSkyColorDim(Color color) { return GetSkyColor(color, 0.4f, 1f, false); }
+        public static Color GetSkyColorBright(Color color) { return GetSkyColor(color, 0.6f, 1f, false); }
+        public static Color GetSkyColor(Color color, float min, float max, bool clamp)
+        {
+            return GetTimedColor(AAColor.Sky, color, min, max, clamp);
+        }
+
         public static Color GetBlankColorBrightInvert(Color color) { return GetBlankColor(color, 1f, 0.6f, true); }
         public static Color GetBlankColorDim(Color color) { return GetBlankColor(color, 0.4f, 1f, false); }
         public static Color GetBlankColorBright(Color color) { return GetBlankColor(color, 0.6f, 1f, false); }

@@ -359,23 +359,25 @@ namespace AAMod.NPCs.TownNPCs
             }
             else
             {
-                return Lang.TownNPCAnubis("else");
+                return GuideChat();
             }
         }
 
-        public string GuideChat()
+        public static string GuideChat()
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
-            if (!AAWorld.downedAkuma)
+            if (!AAWorld.downedYamata)
             {
                 chat.Add(Lang.TownNPCAnubis("AkumaGuideChat"));
             }
-            if (!AAWorld.downedYamata)
+
+            if (!AAWorld.downedAkuma)
             {
                 chat.Add(Lang.TownNPCAnubis("YamataGuideChat"));
             }
             chat.Add(Lang.TownNPCAnubis("JungleGuideChat"));
+            
             if (Main.rand.Next(2) == 0)
             {
                 chat.Add(Lang.TownNPCAnubis("BroodMotherGuideChat"));
@@ -390,10 +392,7 @@ namespace AAMod.NPCs.TownNPCs
                 chat.Add(Lang.TownNPCAnubis("HardModeGuideChat1"));
                 chat.Add(Lang.TownNPCAnubis("HardModeGuideChat2"));
             }
-            if (NPC.downedPlantBoss)
-            {
-                chat.Add(Lang.TownNPCAnubis("PlantBossGuideChat"));
-            }
+
             if (AAWorld.downedEquinox)
             {
                 chat.Add(Lang.TownNPCAnubis("EquinoxBossGuideChat"));

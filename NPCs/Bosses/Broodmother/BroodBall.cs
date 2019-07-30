@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
 		public override Color? GetAlpha(Color lightColor)
 		{
-			return GenericUtils.COLOR_GLOWPULSE;
+			return ColorUtils.COLOR_GLOWPULSE;
 		}
     }
 }

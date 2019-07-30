@@ -16,13 +16,13 @@ namespace AAMod.Items.Boss.Yamata
 
         public override void SetDefaults()
         {
-            item.damage = 110;
+            item.damage = 170;
             item.ranged = true;
             item.width = 44;
             item.height = 76;
             item.useAnimation = 15;
             item.useTime = 5;
-            item.reuseDelay = 16;
+            item.reuseDelay = 20;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 2.5f;

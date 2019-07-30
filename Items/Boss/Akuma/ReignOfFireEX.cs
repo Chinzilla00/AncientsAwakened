@@ -21,12 +21,12 @@ Reign of Fire EX");
         
         public override void SetDefaults()
         {
-            item.damage = 450;            
+            item.damage = 850;            
             item.melee = true;            
             item.width = 86;              
             item.height = 86;             
-            item.useTime = 25;          
-            item.useAnimation = 25;     
+            item.useTime = 20;          
+            item.useAnimation = 20;     
             item.useStyle = 1;        
             item.knockBack = 6.5f;      
             item.value = Item.sellPrice(3, 0, 0, 0);

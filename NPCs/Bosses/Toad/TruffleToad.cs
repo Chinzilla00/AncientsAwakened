@@ -540,7 +540,7 @@ namespace AAMod.NPCs.Bosses.Toad
             Texture2D GlowTex = mod.GetTexture("Glowmasks/TruffleToad_Glow");
 
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor, true);
-            BaseDrawing.DrawTexture(sb, GlowTex, 0, npc, GenericUtils.COLOR_GLOWPULSE, true);
+            BaseDrawing.DrawTexture(sb, GlowTex, 0, npc, ColorUtils.COLOR_GLOWPULSE, true);
             return false;
         }
     }

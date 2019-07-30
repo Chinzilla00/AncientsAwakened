@@ -55,7 +55,7 @@ Uses Bullets and Bones as ammo
                 item.useTime = 5;
                 item.reuseDelay = 17;
                 item.useAmmo = AAMod.BoneAmmo;
-                item.damage = 80;
+                item.damage = 350;
             }
             else
             {
@@ -63,7 +63,7 @@ Uses Bullets and Bones as ammo
                 item.useTime = 28;
                 item.reuseDelay = 0;
                 item.useAmmo = AmmoID.Bullet;
-                item.damage = 30;
+                item.damage = 70;
             }
             return base.CanUseItem(player);
         }

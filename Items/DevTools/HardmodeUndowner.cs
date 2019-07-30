@@ -60,6 +60,9 @@ Non-Consumable");
             AAWorld.downedYamata = false;
             AAWorld.downedZero = false;
             AAWorld.downedRajahsRevenge = false;
+            AAWorld.downedAthena = false;
+            AAWorld.downedAnubis = false;
+            AAWorld.downedGreed = false;
             return true;
         }
     }

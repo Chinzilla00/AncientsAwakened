@@ -22,7 +22,7 @@ Inflicts Daybroken");
         public override void SetDefaults()
         {
             item.mana = 10;
-            item.damage = 150;
+            item.damage = 1000;
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("SunOrb");

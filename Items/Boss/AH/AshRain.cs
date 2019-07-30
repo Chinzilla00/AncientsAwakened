@@ -24,7 +24,7 @@ namespace AAMod.Items.Boss.AH
 
         public override void SetDefaults()
         {
-            item.damage = 150;                        
+            item.damage = 315;                        
             item.magic = true;            
             item.width = 24;
             item.height = 28;

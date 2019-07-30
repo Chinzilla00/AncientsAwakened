@@ -20,7 +20,7 @@ namespace AAMod.Projectiles.Zero
             projectile.hostile = false;
             projectile.friendly = true;
             projectile.ignoreWater = true;
-            projectile.penetrate = -1;
+            projectile.penetrate = 1;
             projectile.extraUpdates = 2;
             projectile.timeLeft = 1000;
             cooldownSlot = 1;

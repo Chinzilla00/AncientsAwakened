@@ -27,7 +27,7 @@ namespace AAMod.Items.Melee
             item.rare = 9;
 			item.expert = true; item.expertOnly = true;
 			item.UseSound = SoundID.Item1;
-			item.autoReuse = false;
+			item.autoReuse = true;
             item.shootSpeed = 20f;
         }
 

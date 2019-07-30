@@ -234,6 +234,10 @@ namespace AAMod
             if (Main.rand == null)
                 Main.rand = new UnifiedRandom();
 
+            /*Ref<Effect> screenRef = new Ref<Effect>(GetEffect("Effects/Shockwave"));
+            Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.VeryHigh);
+            Filters.Scene["Shockwave"].Load();*/
+
             GameShaders.Armor.BindShader(ItemType("BlazingDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorLivingFlame")).UseColor(Color.SkyBlue.R / 255f, Color.SkyBlue.G / 255f, Color.SkyBlue.B / 255f).UseSecondaryColor(Color.DeepSkyBlue.R / 255f, Color.DeepSkyBlue.G / 255f, Color.DeepSkyBlue.B / 255f);
             GameShaders.Armor.BindShader(ItemType("AbyssalDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorLivingFlame").UseColor(146f / 255f, 30f / 255f, 68f / 255f).UseSecondaryColor(105f / 255f, 20f / 255f, 50f / 255f));
             GameShaders.Armor.BindShader(ItemType("DoomsdayDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorVortex")).UseImage("Images/Misc/noise").UseColor(0f, 0f, 0f).UseSecondaryColor(1f, 0f, 0f).UseSaturation(1f);
@@ -286,6 +290,7 @@ namespace AAMod
             PremultiplyTexture(GetTexture("Backgrounds/YamataBeam"));
             PremultiplyTexture(GetTexture("Backgrounds/AkumaAMeteor"));
             PremultiplyTexture(GetTexture("Backgrounds/AkumaMeteor"));
+            PremultiplyTexture(GetTexture("Backgrounds/SkyTex"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier"));
             PremultiplyTexture(GetTexture("Projectiles/RadiumStar"));
@@ -354,6 +359,12 @@ namespace AAMod
             VoidSky.flashTexture = GetTexture("Backgrounds/VoidFlash");
             VoidSky.Stars = GetTexture("Backgrounds/Void_Starfield");
             VoidSky.SkyTexture = GetTexture("Backgrounds/SkyTex");
+
+
+            Filters.Scene["AAMod:AthenaSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.High);
+            SkyManager.Instance["AAMod:AthenaSky"] = new AthenaSky();
+            AthenaSky.boltTexture = GetTexture("Backgrounds/AthenaBolt");
+            AthenaSky.flashTexture = GetTexture("Backgrounds/AthenaFlash");
 
             Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.3f), EffectPriority.High);
             SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
@@ -538,6 +549,20 @@ namespace AAMod
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
 
+                return;
+            }
+
+            if (Ancients.ZoneHoard)
+            {
+                priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Hoard");
+                return;
+            }
+
+            if (Ancients.ZoneAcropolis)
+            {
+                priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Acropolis");
                 return;
             }
 

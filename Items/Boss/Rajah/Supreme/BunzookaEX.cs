@@ -17,7 +17,7 @@ Bunnyzooka EX");
 
         public override void SetDefaults()
         {
-            item.damage = 500;
+            item.damage = 550;
             item.ranged = true;
             item.width = 66;
             item.height = 28;

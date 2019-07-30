@@ -27,6 +27,7 @@ namespace AAMod.Items.Armor.Doomite
             projectile.tileCollide = false;
             projectile.timeLeft *= 5;
             projectile.minion = true;
+            projectile.minionSlots = 0;
         }
 
         public int FrameTimer = 0;

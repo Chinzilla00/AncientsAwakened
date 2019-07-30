@@ -515,6 +515,7 @@ namespace AAMod.Globals
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("DesertDjinn"), 5.5f, (Func<bool>)(() => AAWorld.downedDjinn), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("DjinnLamp") + "]" + Lang.BossCheck("DesertDjinnInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Sagittarius"), 5.7f, (Func<bool>)(() => AAWorld.downedSag), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("Lifescanner") + "]" + Lang.BossCheck("SagittariusInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("TruffleToad"), 6.5f, (Func<bool>)(() => AAWorld.downedToad), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("Toadstool") + "]" + Lang.BossCheck("TruffleToadInfo"));
+                bossChecklist.Call("AddBossWithInfo", "Athena", 11.5f, (Func<bool>)(() => AAWorld.downedToad), "Use an [i:" + AAMod.instance.ItemType("Owl") + "] at the owl altar in the Acropolis.");
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("RajahRabbit"), 12.1f, (Func<bool>)(() => AAWorld.downedRajah), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("GoldenCarrot") + "]" + Lang.BossCheck("RajahRabbitInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("NightcrawlerDaybringer"), 15f, (Func<bool>)(() => AAWorld.downedEquinox), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("EquinoxWorm") + "]");
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("SistersofDiscord"), 16.1f, (Func<bool>)(() => AAWorld.downedSisters), Lang.BossCheck("Usethe")+"[i:" + AAMod.instance.ItemType("FlamesOfAnarchy") + "]");
@@ -523,7 +524,6 @@ namespace AAMod.Globals
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Zero"), 16.4f, (Func<bool>)(() => AAWorld.downedZero), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("ZeroTesseract") + "]" + Lang.BossCheck("ZeroInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("ShenDoragon"), 20f, (Func<bool>)(() => AAWorld.downedShen), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("ChaosSigil") + "]");
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("RajahRabbitRevenge"), 40f, (Func<bool>)(() => AAWorld.downedRajahsRevenge), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType<DiamondCarrot>() + "]" + Lang.BossCheck("RajahRabbitRevengeInfo"));
-
                 // SlimeKing = 1f;
                 // EyeOfCthulhu = 2f;
                 // EaterOfWorlds = 3f;
@@ -542,7 +542,7 @@ namespace AAMod.Globals
         }
         
         // Unused as of now, till Achievements Libs is more stable and support more reliable.
-        private static void PerformAchievementsLibsSupport()
+        /*private static void PerformAchievementsLibsSupport()
         {
             Mod DradonIsDum = ModLoader.GetMod("AchievementLibs");
 
@@ -564,7 +564,7 @@ namespace AAMod.Globals
                 DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Unyielding Discord", "Defeat the discordian doomsayer of chaos, Shen Doragon", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedShen);
                 DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Dragon Slayer", "Slay Shen Doragon's true, chaotic form, Shen Doragon Awakened", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedShen && Main.expertMode);
             }
-        }
+        }*/
 
         private static void PerformCencusSupport()
         {

@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿ using System.IO;
 using System.Linq;
 using AAMod.Buffs;
 using AAMod.NPCs.Bosses.Zero;
@@ -22,6 +22,7 @@ using Terraria.Graphics.Effects;
 using AAMod.Items;
 using Terraria.GameContent.Events;
 using Terraria.Utilities;
+using AAMod.NPCs.Bosses.Athena;
 
 namespace AAMod
 {
@@ -88,6 +89,8 @@ namespace AAMod
         public bool YamataAltar = false;
         public bool Terrarium = false;
         public bool ZoneStars = false;
+        public bool ZoneHoard = false;
+        public bool ZoneAcropolis = false;
         public bool AshCurse;
         public int VoidGrav = 0;
         public static int Ashes = 0;
@@ -513,23 +516,10 @@ namespace AAMod
             ZoneShip = false;
             ZoneTower = false;
             ZoneStars = false;
+            ZoneHoard = false;
+            ZoneAcropolis = false;
             WorldgenReminder = false;
         }
-
-        public override void UpdateEquips(ref bool wallSpeedBuff, ref bool tileSpeedBuff, ref bool tileRangeBuff)
-        {
-            // Make sure this condition is the same as the condition in the Buff to remove itself. We do this here instead of in ModItem.UpdateAccessory in case we want future upgraded items to set blockyAccessory
-            if (BegAccessory)
-            {
-                player.AddBuff(mod.BuffType<Horse>(), 60, true);
-            }
-        }
-
-        public override void PreUpdateBuffs()
-        {
-
-        }
-
 
         public override void UpdateBiomes()
         {
@@ -539,19 +529,17 @@ namespace AAMod
             ZoneMush = AAWorld.mushTiles > 100;
             Terrarium = AAWorld.terraTiles >= 1;
             ZoneVoid = (AAWorld.voidTiles > 20 && player.ZoneSkyHeight) || (AAWorld.voidTiles > 100 && !player.ZoneSkyHeight) || BaseAI.GetNPC(player.Center, mod.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<ZeroAwakened>(), 5000) != -1;
-            //ZoneStorm = (AAWorld.stormTiles >= 1);
-            //ZoneShip = (AAWorld.shipTiles >= 1);
             ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
             ZoneRisingSunPagoda = AAWorld.pagodaTiles >= 1;
             ZoneStars = AAWorld.Radium >= 20;
+            ZoneHoard = AAWorld.HoardTiles > 1;
+            ZoneAcropolis = AAWorld.CloudTiles > 1;
         }
 
         public static Player PlayerPos = Main.player[Main.myPlayer];
 
-
         public float Intensity;
         
-
         public override void UpdateBiomeVisuals()
         {
             bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenA>());
@@ -592,7 +580,9 @@ namespace AAMod
                 Terrarium == modOther.Terrarium &&
                 ZoneStorm == modOther.ZoneStorm &&
                 ZoneShip == modOther.ZoneShip &&
-                ZoneStars == modOther.ZoneStars;
+                ZoneStars == modOther.ZoneStars && 
+                ZoneHoard == modOther.ZoneHoard &&
+                ZoneAcropolis == modOther.ZoneAcropolis;
         }
 
         public override void CopyCustomBiomesTo(Player other)
@@ -608,6 +598,8 @@ namespace AAMod
             modOther.ZoneRisingSunPagoda = ZoneRisingSunPagoda;
             modOther.ZoneShip = ZoneShip;
             modOther.ZoneStars = ZoneStars;
+            modOther.ZoneHoard = ZoneHoard;
+            modOther.ZoneAcropolis = ZoneAcropolis;
         }
 
         public override void SendCustomBiomes(BinaryWriter bb)
@@ -626,6 +618,8 @@ namespace AAMod
             BitsByte zoneByte2 = 0;
             zoneByte2[0] = ZoneShip;
             zoneByte2[1] = ZoneStars;
+            zoneByte2[2] = ZoneHoard;
+            zoneByte2[3] = ZoneAcropolis;
             bb.Write(zoneByte2);
         }
 
@@ -644,6 +638,8 @@ namespace AAMod
             BitsByte zoneByte2 = bb.ReadByte();
             ZoneShip = zoneByte2[0];
             ZoneStars = zoneByte2[1];
+            ZoneHoard = zoneByte2[2];
+            ZoneAcropolis = zoneByte2[3];
         }
 
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
@@ -769,7 +765,11 @@ namespace AAMod
                 {
                     caughtType = mod.ItemType("MireCrate");
                 }
-                else if (liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
+                if (liquidType == 0 && player.GetModPlayer<AAPlayer>(mod).ZoneHoard)
+                {
+                    caughtType = ItemID.GoldenCrate;
+                }
+                if (liquidType == 1 && ItemID.Sets.CanFishInLava[fishingRod.type] && player.ZoneUnderworldHeight)
                 {
                     caughtType = mod.ItemType("HellCrate");
                 }
@@ -804,6 +804,17 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (NPC.downedMoonlord && Vector2.Distance(player.Center, new Vector2(player.SpawnX, player.SpawnY)) < 1000 && !AAWorld.AthenaHerald && !AAWorld.downedAthenaA)
+            {
+                Vector2 spawnpoint = player.Center - new Vector2(250, 200);
+                int Seraph = NPC.NewNPC((int)spawnpoint.X, (int)spawnpoint.Y + 100, mod.NPCType<SeraphA>());
+                NPC Seraph1 = Main.npc[Seraph];
+                for (int i = 0; i < 5; i++)
+                {
+                    Dust d = Main.dust[Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
+                }
+                AAWorld.AthenaHerald = true;
+            }
             if (NPC.AnyNPCs(mod.NPCType<AkumaTransition>()))
             {
                 int n = BaseAI.GetNPC(player.Center, mod.NPCType<AkumaTransition>(), -1);
@@ -1646,11 +1657,6 @@ namespace AAMod
 
         public override void PreUpdate()
         {
-            if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.DarkmatterJetpack>(), true, true) || BasePlayer.HasAccessory(player, mod.ItemType<Items.Accessories.Wings.ZeroWings>(), true, true) || BasePlayer.HasAccessory(player, mod.ItemType<Items.Boss.Rajah.RabbitcopterEars>(), true, true))
-            {
-                player.flapSound = true;
-            }
-
             groviteGlow[player.whoAmI] = false;
 
             if (SnapCD != 0)
@@ -2335,9 +2341,9 @@ namespace AAMod
                 {
                     player.mount.Dismount(player);
                 }
-                if (player.wingTimeMax > 15)
+                if (player.wingTimeMax > 17)
                 {
-                    player.wingTimeMax = 15;
+                    player.wingTimeMax = 16;
                 }
                 if (YamataAGravity)
                 {
@@ -3677,7 +3683,7 @@ namespace AAMod
                 Texture2D RingGlow = mod.GetTexture("Glowmasks/SagittariusFreeRing_Glow");
                 BaseDrawing.DrawTexture(Main.spriteBatch, Shield, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), AAColor.ZeroShield, true);
                 BaseDrawing.DrawTexture(Main.spriteBatch, Ring, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale, drawPlayer.GetModPlayer<AAPlayer>(mod).RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), true);
-                BaseDrawing.DrawTexture(Main.spriteBatch, RingGlow, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale, drawPlayer.GetModPlayer<AAPlayer>(mod).RingRoatation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), GenericUtils.COLOR_GLOWPULSE, true);
+                BaseDrawing.DrawTexture(Main.spriteBatch, RingGlow, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale, drawPlayer.GetModPlayer<AAPlayer>(mod).RingRoatation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), ColorUtils.COLOR_GLOWPULSE, true);
             }
             if (drawPlayer.GetModPlayer<AAPlayer>(mod).TimeScale > 0)
             {
