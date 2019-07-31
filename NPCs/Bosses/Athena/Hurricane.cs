@@ -15,7 +15,7 @@ namespace AAMod.NPCs.Bosses.Athena
         {
             projectile.width = 14;
             projectile.height = 14;
-            projectile.aiStyle = 128;
+            projectile.aiStyle = -1;
             projectile.penetrate = 1;
             projectile.timeLeft = 900;
             projectile.tileCollide = false;

@@ -128,6 +128,10 @@ namespace AAMod.NPCs.Bosses.Athena
                     {
                         if (Main.netMode != 1) BaseUtility.Chat("A VARIAN ALWAYS PUTS UP ONE LAST FIGHT!!!", Color.Silver);
                         AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaA>(), false, npc.Center);
+
+                        int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
+                        Main.projectile[b].Center = npc.Center;
+
                         npc.active = false;
                         npc.netUpdate = true;
                     }

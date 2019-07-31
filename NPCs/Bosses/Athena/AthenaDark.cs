@@ -7,8 +7,6 @@ namespace AAMod.NPCs.Bosses.Athena
 {
     public class AthenaDark : ModNPC
     {
-        Vector2 tPos;
-        int despawn = 0;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Angel Clone");
@@ -21,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Athena
         {
 			npc.alpha = 255;
 			npc.dontTakeDamage = true;
-            npc.lifeMax = Main.expertMode ? 15000 : 10000;
+            npc.lifeMax = 1;
             npc.aiStyle = 0;
             npc.damage = Main.expertMode ? 50 : 84;
             npc.defense = Main.expertMode ? 1 : 1;
@@ -34,8 +32,8 @@ namespace AAMod.NPCs.Bosses.Athena
         }
         public override void AI()
         {
-            //int angelCount = NPC.CountNPCS(mod.NPCType("FallenAngel"));
-            if (!Main.npc[(int)npc.ai[0]].active)
+            bool Athena = NPC.AnyNPCs(mod.NPCType("AthenaA"));
+            if (!Athena)
             {
                 npc.life = 0;
                 npc.checkDead();
@@ -47,19 +45,21 @@ namespace AAMod.NPCs.Bosses.Athena
             Player player = Main.player[npc.target];
             if (!Main.player[npc.target].dead)
             {
-                despawn = 0;
+                Vector2 tPos;
+                npc.ai[1] = 0;
                 tPos.X = player.Center.X;
                 tPos.Y = player.Center.Y - 70;
-                npc.velocity.X += (npc.DirectionTo(tPos).X * Vector2.Distance(npc.Center, tPos) / 600 / 2 * 3);
-                npc.velocity.Y += (npc.DirectionTo(tPos).Y * Vector2.Distance(npc.Center, tPos) / 600 / 2);
+                npc.velocity.X += (npc.DirectionTo(tPos).X * Vector2.Distance(npc.Center, tPos) / 600 / 2);
+                npc.velocity.Y += (npc.DirectionTo(tPos).Y * Vector2.Distance(npc.Center, tPos) / 600 / 2 * 3);
             }
             else
             {
-                npc.velocity.Y -= despawn;
-                despawn++;
-                if (despawn > 40)
+                npc.velocity.Y -= npc.ai[1];
+                npc.ai[1]++;
+                if (npc.ai[1] > 40 && Main.netMode != 1)
                 {
                     npc.active = false;
+                    npc.netUpdate = true;
                 }
             }
         }

@@ -3,7 +3,7 @@ using Terraria.Graphics.Effects;
 
 namespace AAMod
 {
-    public class Shockwave : ModProjectile
+    public class ShockwaveBoom : ModProjectile
     {
         public override string Texture => "AAMod/BlankTex";
         public override void SetStaticDefaults()

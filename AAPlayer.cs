@@ -100,7 +100,7 @@ namespace AAMod
         public bool ZoneTower;
 
         public bool RadiumStars = false;
-        public bool Darkmatter = true;
+        public bool Darkmatter = false;
         // Armor bools.
         public bool MoonSet;
         public bool goblinSlayer;
@@ -482,7 +482,7 @@ namespace AAMod
             Unstable = false;
             IB = false;
             Spear = false;
-            AkumaPain = true;
+            AkumaPain = false;
         }
 
 
@@ -801,19 +801,27 @@ namespace AAMod
         public float RingRoatation = 0;
 
         public float TimeScale = 0;
+        public int HeraldTimer = 600;
 
         public override void PostUpdate()
         {
-            if (NPC.downedMoonlord && Vector2.Distance(player.Center, new Vector2(player.SpawnX, player.SpawnY)) < 1000 && !AAWorld.AthenaHerald && !AAWorld.downedAthenaA)
+            if (NPC.downedMoonlord && !AAWorld.AthenaHerald && !AAWorld.downedAthenaA)
             {
-                Vector2 spawnpoint = player.Center - new Vector2(250, 200);
-                int Seraph = NPC.NewNPC((int)spawnpoint.X, (int)spawnpoint.Y + 100, mod.NPCType<SeraphA>());
-                NPC Seraph1 = Main.npc[Seraph];
-                for (int i = 0; i < 5; i++)
+                if (HeraldTimer > 0)
                 {
-                    Dust d = Main.dust[Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
+                    HeraldTimer--;
                 }
-                AAWorld.AthenaHerald = true;
+                else
+                {
+                    Vector2 spawnpoint = player.Center - new Vector2(250, 200);
+                    int Seraph = NPC.NewNPC((int)spawnpoint.X, (int)spawnpoint.Y, mod.NPCType<SeraphA>());
+                    NPC Seraph1 = Main.npc[Seraph];
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Dust d = Main.dust[Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
+                    }
+                    AAWorld.AthenaHerald = true;
+                }
             }
             if (NPC.AnyNPCs(mod.NPCType<AkumaTransition>()))
             {
@@ -2299,8 +2307,7 @@ namespace AAMod
         {
             if (trueFlesh)
             {
-                player.lifeRegenTime++;
-                player.lifeRegenTime++;
+                player.lifeRegenTime += 2;
             }
         }
 
@@ -2310,9 +2317,6 @@ namespace AAMod
 
         public override void UpdateBadLifeRegen()
         {
-            int before = player.lifeRegen;
-            bool drain = false;
-
             if (Spear)
             {
                 if (player.lifeRegen > 0)
@@ -2331,7 +2335,6 @@ namespace AAMod
 
             if (infinityOverload)
             {
-                drain = true;
                 player.lifeRegen -= 60;
             }
 
@@ -2382,11 +2385,6 @@ namespace AAMod
                 }
             }
 
-            if (drain && before > 0)
-            {
-                player.lifeRegenTime = 0;
-                player.lifeRegen -= before;
-            }
             if (terraBlaze)
             {
                 if (player.lifeRegen > 0)
