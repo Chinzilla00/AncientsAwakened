@@ -108,7 +108,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (Main.expertMode)
                 {
                     if (Main.netMode != 1) BaseUtility.Chat("PHYSICAL ZER0 UNIT IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
-                    NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"));
+                    NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"), 0, 0, 0, 0, 0, npc.target) ;
 
                     int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
                     Main.projectile[b].Center = npc.Center;
@@ -344,7 +344,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 return;
             }
 
-            if (Main.netMode != 1 && internalAI[2] != 1 && !killArms)
+            if (Main.netMode != 1 && internalAI[2] != 1 && npc.ai[1] == 0)
             {
                 for (int m = 0; m < WeaponCount; m++)
                 {

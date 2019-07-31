@@ -801,28 +801,9 @@ namespace AAMod
         public float RingRoatation = 0;
 
         public float TimeScale = 0;
-        public int HeraldTimer = 600;
 
         public override void PostUpdate()
         {
-            if (NPC.downedMoonlord && !AAWorld.AthenaHerald && !AAWorld.downedAthenaA)
-            {
-                if (HeraldTimer > 0)
-                {
-                    HeraldTimer--;
-                }
-                else
-                {
-                    Vector2 spawnpoint = player.Center - new Vector2(250, 200);
-                    int Seraph = NPC.NewNPC((int)spawnpoint.X, (int)spawnpoint.Y, mod.NPCType<SeraphA>());
-                    NPC Seraph1 = Main.npc[Seraph];
-                    for (int i = 0; i < 5; i++)
-                    {
-                        Dust d = Main.dust[Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
-                    }
-                    AAWorld.AthenaHerald = true;
-                }
-            }
             if (NPC.AnyNPCs(mod.NPCType<AkumaTransition>()))
             {
                 int n = BaseAI.GetNPC(player.Center, mod.NPCType<AkumaTransition>(), -1);

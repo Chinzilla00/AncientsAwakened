@@ -18,7 +18,6 @@ namespace AAMod.NPCs.Enemies.Sky
             projectile.melee = true;
             projectile.penetrate = 3;
             projectile.hostile = true;
-            projectile.extraUpdates = 1;
         }
 
         public override void AI()

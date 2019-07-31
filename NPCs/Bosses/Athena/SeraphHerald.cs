@@ -12,6 +12,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override void SetDefaults()
         {
+            Main.npcFrameCount[npc.type] = 4;
             npc.width = 60;
             npc.height = 40;
             npc.friendly = false;
@@ -107,6 +108,12 @@ namespace AAMod.NPCs.Bosses.Athena
                 if (npc.ai[0] >= 480)
                 {
                     if (Main.netMode != 1) BaseUtility.Chat("See ya twerp!", Color.CadetBlue);
+
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Dust.NewDust(npc.position, npc.height, npc.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                    }
+
                     npc.active = false;
                     npc.netUpdate = true;
                 }
