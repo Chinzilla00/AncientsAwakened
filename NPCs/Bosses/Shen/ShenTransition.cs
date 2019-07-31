@@ -52,40 +52,52 @@ namespace AAMod.NPCs.Bosses.Shen
                     dust1.velocity.Y -= 6;
                 }
             }
-            if (npc.ai[0] == 375)    
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("Heh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-            }
-            if (npc.ai[0] == 475)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("Heheheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-            }
-            if (npc.ai[0] == 600)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("HAHAHAHAHAHAHA!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-            }
-            if (npc.ai[0] == 820)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("Have you forgotten about our last battles...?", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-            }
-            if (npc.ai[0] == 960)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("There's always a last stand, kiddo...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-            }
-            if (npc.ai[0] >= 1100)
-            {
-                npc.alpha -= 5;
-            }
-            if (npc.ai[0] == 1100)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("I have only been using a fraction of my true power...and now...heheheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-            }
 
-            if (npc.ai[0] >= 1400)
+            if (Main.netMode != 1)
             {
-                SummonShen();
-                npc.active = false;        
+                if (npc.ai[0] == 375)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat("Heh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    npc.netUpdate = true;
+                }
+                if (npc.ai[0] == 475)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat("Heheheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    npc.netUpdate = true;
+                }
+                if (npc.ai[0] == 600)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat("HAHAHAHAHAHAHA!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    npc.netUpdate = true;
+                }
+                if (npc.ai[0] == 820)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat("Have you forgotten about our last battles...?", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    npc.netUpdate = true;
+                }
+                if (npc.ai[0] == 960)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat("There's always a last stand, kiddo...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    npc.netUpdate = true;
+                }
+                if (npc.ai[0] >= 1100)
+                {
+                    npc.alpha -= 5;
+                }
+                if (npc.ai[0] == 1100)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat("I have only been using a fraction of my true power...and now...heheheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    npc.netUpdate = true;
+                }
+                if (npc.ai[0] >= 1400)
+                {
+                    SummonShen();
+                    npc.active = false;
+                    npc.netUpdate = true;
+                }
             }
+            
+
         }
 
         public void SummonShen()
@@ -93,6 +105,10 @@ namespace AAMod.NPCs.Bosses.Shen
             Player player = Main.player[npc.target];
             if (Main.netMode != 1) BaseUtility.Chat("Shen Doragon has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             if (Main.netMode != 1) BaseUtility.Chat("YOU WILL BURN IN THE FLAMES OF DISCORDIAN HELL!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+
+            int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
+            Main.projectile[b].Center = npc.Center;
+
 
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenA"), false, npc.Center, "Shen Awakened", false);
         }

@@ -120,7 +120,11 @@ namespace AAMod.NPCs.Bosses.Yamata
 					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("YamataA"), false, npc.Center, "", false);
 					if (Main.netMode != 1) BaseUtility.Chat("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
 					if (Main.netMode != 1) BaseUtility.Chat("AND IT'S GOT 7 HEADS! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!", new Color(146, 30, 68));
-					npc.netUpdate = true;
+
+                    int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
+                    Main.projectile[b].Center = npc.Center;
+
+                    npc.netUpdate = true;
 					npc.active = false;				
 				}
 			}
