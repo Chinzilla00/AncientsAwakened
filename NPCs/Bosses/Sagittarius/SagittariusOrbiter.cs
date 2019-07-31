@@ -11,7 +11,9 @@ using System.IO;
 namespace AAMod.NPCs.Bosses.Sagittarius
 {
     public class SagittariusOrbiter : ModNPC
-	{				
+	{
+        public int damage = 0;
+
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Orbiter");
@@ -69,6 +71,14 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override void AI()
         {
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
             if (!NPC.AnyNPCs(mod.NPCType<Sagittarius>()))
             {
                 npc.life = 0;
@@ -156,7 +166,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                         Vector2 fireTarget = npc.Center;
                         float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                         fireTarget = BaseUtility.RotateVector(npc.Center, fireTarget, rot);
-                        BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("SagProj"), npc.damage / (Main.expertMode ? 2 : 4), 0f, 4f);
+                        BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("SagProj"), damage, 0f, 4f);
                     }
                 }
             }
@@ -184,7 +194,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                         Vector2 fireTarget = npc.Center;
                         float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                         fireTarget = BaseUtility.RotateVector(npc.Center, fireTarget, rot);
-                        BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("SagProj"), npc.damage / (Main.expertMode ? 2 : 4), 0f, 4f);
+                        BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("SagProj"), damage, 0f, 4f);
                     }
                 }
             }

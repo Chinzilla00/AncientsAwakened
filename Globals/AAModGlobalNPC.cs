@@ -919,7 +919,6 @@ namespace AAMod
                     if (Main.hardMode)
                     {
                         pool.Add(mod.NPCType("MagmaSwimmer"), SpawnCondition.WaterCritter.Chance * 0.2f);
-                        pool.Add(mod.NPCType("Wyvern"), .2f);
                         pool.Add(mod.NPCType("BlazePhoenix"), .1f);
                     }
                 }
@@ -931,7 +930,6 @@ namespace AAMod
                     pool.Add(mod.NPCType("DragonClaw"), .05f);
                     if (Main.hardMode)
                     {
-                        pool.Add(mod.NPCType("HotWasp"), .05f);
                         pool.Add(mod.NPCType("MagmaSwimmer"), SpawnCondition.WaterCritter.Chance * 0.2f);
                         pool.Add(mod.NPCType("Wyvern"), .1f);
                         pool.Add(mod.NPCType("Wyrm"), .008f);

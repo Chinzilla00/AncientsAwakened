@@ -1,30 +1,28 @@
-using System;
-using System.IO;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
+using System;
+using Terraria.ID;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Enemies.Sky
 {
 	public class SeraphFeather : ModProjectile
-	{	
+    {
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.HarpyFeather);
+            projectile.width = 16;
+            projectile.height = 16;
+            projectile.aiStyle = -1;
+            projectile.melee = true;
+            projectile.penetrate = 3;
+            projectile.hostile = true;
         }
 
-        public override void Kill(int timeLeft)
+        public override void AI()
         {
-            for (int num610 = 0; num610 < 10; num610++)
-            {
-                Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 42, projectile.velocity.X * 0.1f, projectile.velocity.Y * 0.1f, 0, default, 1f);
-            };
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 2.355f;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

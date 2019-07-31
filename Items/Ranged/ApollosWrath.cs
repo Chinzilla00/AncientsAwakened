@@ -40,7 +40,6 @@ Doesn't use Ammo");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Apollo", 1);
             recipe.AddIngredient(ItemID.PulseBow, 1);
             recipe.AddIngredient(ItemID.SoulofMight, 20);
 			recipe.AddTile(TileID.MythrilAnvil);

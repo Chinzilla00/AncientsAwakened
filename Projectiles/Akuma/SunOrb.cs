@@ -91,7 +91,7 @@ namespace AAMod.Projectiles.Akuma
                 
             }
 			
-			  float num633 = 700f;
+			float num633 = 700f;
             float num634 = 800f;
             float num635 = 1200f;
             float num636 = 150f;
@@ -247,7 +247,6 @@ namespace AAMod.Projectiles.Akuma
             }
             if (projectile.ai[0] == 0f)
             {
-                float scaleFactor3 = 8f;
                 int num658 = mod.ProjectileType<FlamingMeteor>();
                 if (flag25 && projectile.ai[1] == 0f)
                 {
@@ -256,7 +255,7 @@ namespace AAMod.Projectiles.Akuma
                     {
                         Vector2 value19 = vector46 - projectile.Center;
                         value19.Normalize();
-                        value19 *= scaleFactor3;
+                        value19 *= 8;
 						Vector2 perturbedSpeed = value19.RotatedByRandom(MathHelper.ToRadians(10));
                         int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, num658, projectile.damage, 0f, Main.myPlayer, 0f, 0f);
                         Main.projectile[num659].timeLeft = 300;

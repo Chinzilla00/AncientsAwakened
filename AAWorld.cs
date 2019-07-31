@@ -1111,9 +1111,29 @@ namespace AAMod
 
         public static Point CloudPoint = new Point((int)(Main.maxTilesX * 0.65f), 100);
         public Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
+        public int HeraldTimer = 1200;
 
         public override void PostUpdate()
         {
+            if (NPC.downedMoonlord && !AthenaHerald && !downedAthenaA)
+            {
+                if (HeraldTimer > 0)
+                {
+                    HeraldTimer--;
+                }
+                else
+                {
+                    Player player = Main.player[BaseAI.GetPlayer(new Vector2(Main.maxTilesX / 2, Main.maxTilesY / 2), -1)];
+                    Vector2 spawnpoint = player.Center - new Vector2(250, 200);
+                    int Seraph = NPC.NewNPC((int)spawnpoint.X, (int)spawnpoint.Y, mod.NPCType<NPCs.Bosses.Athena.SeraphHerald>());
+                    NPC Seraph1 = Main.npc[Seraph];
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, mod.DustType<NPCs.Bosses.Athena.Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                    }
+                    AAWorld.AthenaHerald = true;
+                }
+            }
             if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Athena.Athena>()))
             {
                 Dissipate = false;

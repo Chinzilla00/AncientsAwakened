@@ -16,6 +16,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public int timer;
         public static int type;
         private bool Panic = false;
+        public int damage = 0;
 
         public override void SetStaticDefaults()
         {
@@ -220,6 +221,14 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void AI()
         {
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);
@@ -424,7 +433,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                             if (Main.netMode != 1)
                             {
                                 float num380 = 9f;
-                                int num381 = npc.damage / 4;
+                                int num381 = damage;
                                 int num382 = mod.ProjectileType<GlitchBomb>();
                                 if (Main.expertMode)
                                 {
@@ -690,7 +699,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                             {
                                 if (Main.netMode != 1)
                                 {
-                                    Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, Proj, (int)(damage * 1.5f), 0f, Main.myPlayer);
+                                    Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX, PlayerPosY, Proj, damage, 0f, Main.myPlayer);
                                 }
                             }
                             return;
@@ -781,12 +790,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         {
                             npc.localAI[1] = 0f;
                             float num403 = 9f;
-                            int num404 = npc.damage / 8;
+                            int num404 = damage;
                             int num405 = mod.ProjectileType<DeathLaser>();
-                            if (Main.expertMode)
-                            {
-                                num404 = npc.damage / 8;
-                            }
                             num402 = (float)Math.Sqrt((num400 * num400) + (num401 * num401));
                             num402 = num403 / num402;
                             num400 *= num402;
@@ -846,7 +851,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 for (int i = 0; i < 6; i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 2f), mod.ProjectileType("GlitchRocket"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 2f), mod.ProjectileType("GlitchRocket"), damage, 0, Main.myPlayer, 0f, 0f);
                 }
             }
             else if (Attack == 2)
@@ -858,7 +863,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 for (int i = 0; i < 5; i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 2f), mod.ProjectileType("Error"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 2f), mod.ProjectileType("Error"), damage, 0, Main.myPlayer, 0f, 0f);
                 }
             }
             else if (Attack == 3)
@@ -870,7 +875,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 for (int i = 0; i < 4; i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 2), (float)Math.Cos(offsetAngle), mod.ProjectileType("StaticSphere"), npc.damage / 2, 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 2), (float)Math.Cos(offsetAngle), mod.ProjectileType("StaticSphere"), damage, 0, Main.myPlayer, 0f, 0f);
                 }
             }
         }

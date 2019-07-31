@@ -2,20 +2,31 @@ using AAMod.NPCs.Enemies.Sky;
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Athena
 {
-	public class SeraphHerald : Seraph
+	public class SeraphHerald : ModNPC
 	{
         public override string Texture => "AAMod/NPCs/Bosses/Athena/SeraphA";
 
         public override void SetDefaults()
         {
-            base.SetDefaults();
+            Main.npcFrameCount[npc.type] = 4;
+            npc.width = 60;
+            npc.height = 40;
+            npc.friendly = false;
             npc.lifeMax = 1;
             npc.dontTakeDamage = true;
-            npc.damage = 0;
-            npc.value = 0;
+            npc.noTileCollide = true;
+            npc.noGravity = true;
+            npc.aiStyle = -1;
+            npc.timeLeft = 10;
+            npc.alpha = 255;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
         int pos;
@@ -71,36 +82,71 @@ namespace AAMod.NPCs.Bosses.Athena
                     }
                 }
                 npc.ai[0]++;
+                npc.alpha -= 15;
 
                 if (npc.ai[0] == 1)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("HEY! EARTHWALKER! YEAH YOU, YA STUPID APE!", Color.Silver);
+                    if (Main.netMode != 1) BaseUtility.Chat("HEY! EARTHWALKER! YEAH YOU, YA STUPID APE!", Color.CadetBlue);
                     npc.netUpdate = true;
                 }
                 else
                 if (npc.ai[0] == 120)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Queen Athena requests your presence at the acropolis again immediately!", Color.Silver);
+                    if (Main.netMode != 1) BaseUtility.Chat("Queen Athena requests your presence at the acropolis again immediately!", Color.CadetBlue);
                 }
                 else
                 if (npc.ai[0] == 240)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("She demands a rematch, and this time, she won't let you tear her down so easily!", Color.Silver);
+                    if (Main.netMode != 1) BaseUtility.Chat("She demands a rematch, and this time, she won't let you tear her down so easily!", Color.CadetBlue);
                 }
                 else
-                if (npc.ai[0] >= 360)
+                if (npc.ai[0] == 360)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("I would say break a leg, but we can do that ourselves when you show up!", Color.Silver);
+                    if (Main.netMode != 1) BaseUtility.Chat("I would say break a leg, but we can do that ourselves when you show up!", Color.CadetBlue);
                 }
                 else
                 if (npc.ai[0] >= 480)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("See ya twerp!", Color.Silver);
+                    if (Main.netMode != 1) BaseUtility.Chat("See ya twerp!", Color.CadetBlue);
+
+                    for (int i = 0; i < 5; i++)
+                    {
+                        Dust.NewDust(npc.position, npc.height, npc.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                    }
+
                     npc.active = false;
                     npc.netUpdate = true;
                 }
             }
             return false;
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.velocity.X > 0f)
+            {
+                npc.spriteDirection = 1;
+            }
+            if (npc.velocity.X < 0f)
+            {
+                npc.spriteDirection = -1;
+            }
+            npc.rotation = npc.velocity.X * 0.1f;
+            if (npc.type == 210 || npc.type == 211)
+            {
+                npc.frameCounter += 1.0;
+                npc.rotation = npc.velocity.X * 0.2f;
+            }
+            npc.frameCounter += 1.0;
+            if (npc.frameCounter >= 6.0)
+            {
+                npc.frame.Y = npc.frame.Y + frameHeight;
+                npc.frameCounter = 0.0;
+            }
+            if (npc.frame.Y >= frameHeight * Main.npcFrameCount[npc.type])
+            {
+                npc.frame.Y = 0;
+            }
         }
 
         public void MoveToPoint(Vector2 point, bool goUpFirst = false)

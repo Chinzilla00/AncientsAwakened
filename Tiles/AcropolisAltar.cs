@@ -73,6 +73,10 @@ namespace AAMod.Tiles
                             item = new Item();
                         }
                         AAModGlobalNPC.SpawnBoss(player, mod.NPCType<NPCs.Bosses.Athena.Athena>(), true, Origin, "Athena");
+                        for (int a = 0; a < 8; a++)
+                        {
+                            Dust.NewDust(Origin, 152, 114, mod.DustType<NPCs.Bosses.Athena.Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                        }
                     }
                 }
             }

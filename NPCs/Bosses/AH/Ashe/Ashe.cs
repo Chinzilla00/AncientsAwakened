@@ -96,6 +96,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public bool Health1 = false;
         public int Frame = 0;
 
+        public int damage = 0;
 
         public static int AISTATE_HOVER = 0, AISTATE_CAST1 = 1, AISTATE_CAST2 = 2, AISTATE_CAST3 = 3, AISTATE_CAST4 = 4, AISTATE_MELEE = 5, AISTATE_DRAGON = 6, AISTATE_VORTEX = 7;
 
@@ -103,6 +104,14 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             Player player = Main.player[npc.target];
             bool AsheType = npc.type == mod.NPCType<Ashe>();
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
 
             RingEffects();
             RingEffects2();
@@ -542,12 +551,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 for (int i = 0; i < 5; i++)
                 {
                     double offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AsheShot>(), npc.damage / (Main.expertMode ? 2 : 4), 4);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<AsheShot>(), damage, 4);
                 }
             }
             else if (internalAI[0] == 2)
             {
-                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<AsheFlamethrower>(), ref shootAI[0], 5, npc.damage / 2, 14);
+                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<AsheFlamethrower>(), ref shootAI[0], 5, damage, 14);
             }
             else if (internalAI[0] == 3)
             {
@@ -558,12 +567,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 for (int i = 0; i < (Main.expertMode ? 6 : 4); i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 9f), (float)(Math.Cos(offsetAngle) * 9f), mod.ProjectileType<AsheSpell>(), npc.damage / (Main.expertMode ? 2 : 4), 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 9f), (float)(Math.Cos(offsetAngle) * 9f), mod.ProjectileType<AsheSpell>(), damage, 0, Main.myPlayer, 0f, 0f);
                 }
             }
             else if (internalAI[0] == AISTATE_CAST4)
             {
-                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<AsheFire>(), npc.damage, 3, 16f, 0, 0, -1);
+                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<AsheFire>(), damage, 3, 16f, 0, 0, -1);
             }
 
             else if (internalAI[0] == AISTATE_VORTEX)

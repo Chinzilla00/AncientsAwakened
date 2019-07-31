@@ -16,6 +16,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public bool Loludided;
         private bool weakness = false;
         public int fireTimer = 0;
+        public int damage = 0;
 
         public override void SetStaticDefaults()
         {
@@ -116,7 +117,14 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
-
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
 
             npc.frameCounter++;
             if (npc.frameCounter > 8)
@@ -470,7 +478,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     for (int i = 0; i < Fireballs; i++)
                     {
                         offsetAngle = startAngle + (deltaAngle * i);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, mod.ProjectileType<AkumaABomb>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, mod.ProjectileType<AkumaABomb>(), damage, 3, Main.myPlayer);
                     }
                 }
             }
@@ -515,7 +523,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 }
                 if (npc.ai[2] == 350)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AFireProjHostile>(), npc.damage / (Main.expertMode ? 2 : 4), 3, Main.myPlayer);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AFireProjHostile>(), damage, 3, Main.myPlayer);
                 }
             }
 

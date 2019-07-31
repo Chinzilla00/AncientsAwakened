@@ -38,7 +38,6 @@ namespace AAMod.Items.Melee   //where is located
         public override void AddRecipes()  //How to craft this sword
         {
             ModRecipe recipe = new ModRecipe(mod);      
-            recipe.AddIngredient(null, "NightKeeper", 1);
 			recipe.AddIngredient(null, "DeepAbyssium", 10);
 			recipe.AddIngredient(ItemID.Ectoplasm, 15);
             recipe.AddTile(TileID.MythrilAnvil);   

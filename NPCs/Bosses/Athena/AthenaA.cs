@@ -21,6 +21,8 @@ namespace AAMod.NPCs.Bosses.Athena
             Main.npcFrameCount[npc.type] = 7;
         }
 
+        public int damage = 0;
+
         public static Point CloudPoint = new Point((int)(Main.maxTilesX * 0.65f), 100);
         public Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
 
@@ -87,204 +89,133 @@ namespace AAMod.NPCs.Bosses.Athena
 
             Vector2 Acropolis = new Vector2(Origin.X + (76 * 16), Origin.Y + (72 * 16));
 
-            //Preamble Shite 
-            if (internalAI[2] != 1) 
+            if (player.dead || !player.active || Vector2.Distance(npc.position, player.position) > 5000 || !modPlayer.ZoneAcropolis)
             {
-                npc.Center = Acropolis;
+                npc.TargetClosest();
+                if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 5000 || !modPlayer.ZoneAcropolis)
+                {
+                    Main.NewText(Math.Abs(Vector2.Distance(npc.position, player.position)));
+                    if (Main.netMode != 1) BaseUtility.Chat("And stay away...idiot.", Color.CornflowerBlue);
+                    int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
+                    Main.npc[p].Center = npc.Center;
+                    npc.active = false;
+                    npc.netUpdate = true;
+                }
+            }
+
+            if (internalAI[1] == 0) //Acropolis Phase
+            {
                 if (Main.netMode != 1)
                 {
-                    
-                    music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
-                    if (internalAI[3]++ < 420)
-                    {
-                        if (!AAWorld.downedAthena)
-                        {
-                            if (internalAI[3] == 60)
-                            {
-                                if (Main.netMode != 1) BaseUtility.Chat("Hmpf..!", Color.CornflowerBlue);
-                            }
-
-                            if (internalAI[3] == 180)
-                            {
-                                string s = "";
-                                if (Main.ActivePlayersCount > 1)
-                                {
-                                    s = "s";
-                                }
-                                if (Main.netMode != 1) BaseUtility.Chat("You! Earthwalker" + s + "!", Color.CornflowerBlue);
-                            }
-
-                            if (internalAI[3] == 300)
-                            {
-                                if (Main.netMode != 1) BaseUtility.Chat("My seraphs tell me you've been attacking them! Why?!", Color.CornflowerBlue);
-                            }
-
-                            if (internalAI[3] == 420)
-                            {
-                                if (Main.netMode != 1) BaseUtility.Chat("I'm gonna teach you a lesson, you little brat!", Color.CornflowerBlue);
-                            }
-
-                            if (internalAI[3] >= 420)
-                            {
-                                if (Main.netMode != 1) BaseUtility.Chat("En Garde!", Color.CornflowerBlue);
-                                CloudSet Clouds = new CloudSet();
-                                Clouds.Place(CloudPoint, WorldGen.structures);
-                                internalAI[2] = 1;
-                                npc.netUpdate = true;
-                            }
-                        }
-                        else
-                        {
-                            if (internalAI[3] == 60)
-                            {
-                                if (Main.netMode != 1) BaseUtility.Chat("Sigh...", Color.CornflowerBlue);
-                            }
-
-                            if (internalAI[3] >= 180)
-                            {
-                                if (Main.netMode != 1) BaseUtility.Chat("...fine, let's get this overwith. I don't have all day.", Color.CornflowerBlue);
-                                CloudSet Clouds = new CloudSet();
-                                Clouds.Place(CloudPoint, WorldGen.structures);
-                                internalAI[2] = 1;
-                                npc.netUpdate = true;
-                            }
-                        }
-                    }
+                    npc.ai[3]++;
                 }
-                
-            }
-            else
-            {
-                if (player.dead || !player.active || Vector2.Distance(npc.position, player.position) > 5000 || !modPlayer.ZoneAcropolis)
+
+                if (Vector2.Distance(player.Center, Acropolis) > 480)
                 {
-                    npc.TargetClosest();
-                    if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 5000 || !modPlayer.ZoneAcropolis)
+                    if (npc.ai[2] == 0 && Main.netMode != 1)
                     {
-                        Main.NewText(Math.Abs(Vector2.Distance(npc.position, player.position)));
-                        if (Main.netMode != 1) BaseUtility.Chat("And stay away...idiot.", Color.CornflowerBlue);
-                        int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
-                        Main.npc[p].Center = npc.Center;
-                        npc.active = false;
+                        npc.ai[2] = 1;
+                        npc.netUpdate = true;
+                    }
+                    MoveToVector2(Acropolis);
+                }
+                else
+                {
+                    if (npc.ai[2] == 1 && Main.netMode != 1)
+                    {
+                        npc.ai[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                    BaseAI.AISpaceOctopus(npc, ref FlyAI, Main.player[npc.target].Center, 0.1f, 8f, 220f, 70f, ShootFeather);
+                }
+
+                if (npc.ai[3] > 600)
+                {
+                    internalAI[1] = 1;
+                    npc.ai[0] = 0;
+                    npc.ai[1] = 0;
+                    npc.ai[2] = 0;
+                    npc.ai[3] = 0;
+                    MoveVector2 = CloudPick();
+                }
+            }
+            else //Cloud Phase
+            {
+                if (Main.netMode != 1)
+                {
+                    npc.ai[1]++;
+                    if (npc.ai[1] == 300)
+                    {
+                        if (Main.rand.Next(5) == 0)
+                        {
+                            internalAI[1] = 0;
+                            npc.ai[0] = 0;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                            npc.ai[3] = 0;
+                            npc.netUpdate = true;
+                            return;
+                        }
+                        npc.ai[0] = 0;
+                        MoveVector2 = CloudPick();
                         npc.netUpdate = true;
                     }
                 }
-
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Athena");
-
-                if (internalAI[1] == 0) //Acropolis Phase
+                if (Vector2.Distance(npc.Center, MoveVector2) < 10)
                 {
-                    if (Main.netMode != 1)
+                    if (npc.ai[2] == 1 && Main.netMode != 1)
                     {
-                        npc.ai[3]++;
-                    }
-
-                    if (Vector2.Distance(player.Center, Acropolis) > 480)
-                    {
-                        if (npc.ai[2] == 0 && Main.netMode != 1)
-                        {
-                            npc.ai[2] = 1;
-                            npc.netUpdate = true;
-                        }
-                        MoveToVector2(Acropolis);
-                    }
-                    else
-                    {
-                        if (npc.ai[2] == 1 && Main.netMode != 1)
-                        {
-                            npc.ai[2] = 0;
-                            npc.netUpdate = true;
-                        }
-                        BaseAI.AISpaceOctopus(npc, ref FlyAI, Main.player[npc.target].Center, 0.1f, 8f, 220f, 70f, ShootFeather);
-                    }
-
-                    if (npc.ai[3] > 600)
-                    {
-                        internalAI[1] = 1;
-                        npc.ai[0] = 0;
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
-                        npc.ai[3] = 0;
-                        MoveVector2 = CloudPick();
+                        npc.netUpdate = true;
+                    }
+                    npc.velocity *= 0;
+
+                    if (npc.ai[1] % 200 == 0 && Main.netMode != 1)
+                    {
+                        int Choice = Main.rand.Next(2);
+                        if (Choice == 0)
+                        {
+                            NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y, mod.NPCType<OlympianDragon>());
+                            NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y, mod.NPCType<OlympianDragon>());
+                        }
+                        else
+                        {
+                            NPC Seraph1 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y + 100, mod.NPCType<SeraphA>())];
+                            for (int i = 0; i < 3; i++)
+                            {
+                                Dust d = Main.dust[Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
+                            }
+                            NPC Seraph2 = Main.npc[NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y - 50, mod.NPCType<SeraphA>())];
+                            for (int i = 0; i < 3; i++)
+                            {
+                                Dust d = Main.dust[Dust.NewDust(Seraph2.position, Seraph2.height, Seraph2.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
+                            }
+                            NPC Seraph3 = Main.npc[NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y - 50, mod.NPCType<SeraphA>())];
+                            for (int i = 0; i < 3; i++)
+                            {
+                                Dust d = Main.dust[Dust.NewDust(Seraph3.position, Seraph3.height, Seraph3.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
+                            }
+                        }
+                        npc.netUpdate = true;
+                    }
+
+                    if (npc.ai[1] % 60 == 0)
+                    {
+                        if (Vector2.Distance(player.Center, npc.Center) < 900)
+                        {
+                            ShootFeather(npc, npc.velocity);
+                        }
                     }
                 }
-                else //Cloud Phase
+                else
                 {
-                    if (Main.netMode != 1)
+                    if (npc.ai[2] == 0 && Main.netMode != 1)
                     {
-                        npc.ai[1]++;
-                        if (npc.ai[1] == 300)
-                        {
-                            if (Main.rand.Next(5) == 0)
-                            {
-                                internalAI[1] = 0;
-                                npc.ai[0] = 0;
-                                npc.ai[1] = 0;
-                                npc.ai[2] = 0;
-                                npc.ai[3] = 0;
-                                npc.netUpdate = true;
-                                return;
-                            }
-                            npc.ai[0] = 0;
-                            MoveVector2 = CloudPick();
-                            npc.netUpdate = true;
-                        }
+                        npc.ai[2] = 1;
+                        npc.netUpdate = true;
                     }
-                    if(Vector2.Distance(npc.Center, MoveVector2) < 10)
-                    {
-                        if (npc.ai[2] == 1 && Main.netMode != 1)
-                        {
-                            npc.ai[1] = 0;
-                            npc.ai[2] = 0;
-                            npc.netUpdate = true;
-                        }
-                        npc.velocity *= 0;
-
-                        if (npc.ai[1] % 200 == 0 && Main.netMode != 1)
-                        {
-                            int Choice = Main.rand.Next(2);
-                            if (Choice == 0)
-                            {
-                                NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y, mod.NPCType<OlympianDragon>());
-                                NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y, mod.NPCType<OlympianDragon>());
-                            }
-                            else
-                            {
-                                NPC Seraph1 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y + 100, mod.NPCType<SeraphA>())];
-                                for (int i = 0; i < 3; i++)
-                                {
-                                   Dust d = Main.dust[Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
-                                }
-                                NPC Seraph2 = Main.npc[NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y - 50, mod.NPCType<SeraphA>())];
-                                for (int i = 0; i < 3; i++)
-                                {
-                                    Dust d = Main.dust[Dust.NewDust(Seraph2.position, Seraph2.height, Seraph2.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
-                                }
-                                NPC Seraph3 = Main.npc[NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y - 50, mod.NPCType<SeraphA>())];
-                                for (int i = 0; i < 3; i++)
-                                {
-                                    Dust d = Main.dust[Dust.NewDust(Seraph3.position, Seraph3.height, Seraph3.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
-                                }
-                            }
-                            npc.netUpdate = true;
-                        }
-
-                        if (npc.ai[1] % 60 == 0)
-                        {
-                            if (Vector2.Distance(player.Center, npc.Center) < 900)
-                            {
-                                ShootFeather(npc, npc.velocity);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        if (npc.ai[2] == 0 && Main.netMode != 1)
-                        {
-                            npc.ai[2] = 1;
-                            npc.netUpdate = true;
-                        }
-                        MoveToVector2(MoveVector2);
-                    }
+                    MoveToVector2(MoveVector2);
                 }
             }
             if (npc.ai[2] == 1)
@@ -377,6 +308,14 @@ namespace AAMod.NPCs.Bosses.Athena
         public void ShootFeather(NPC npc, Vector2 velocity)
         {
             Player player = Main.player[npc.target];
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
             int projType = mod.ProjectileType<SeraphFeather>();
             float spread = 30f * 0.0174f;
             Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
@@ -387,7 +326,7 @@ namespace AAMod.NPCs.Bosses.Athena
             for (int i = 0; i < 3; i++)
             {
                 double offsetAngle = startAngle + (deltaAngle * i);
-                int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, npc.damage / 4, 2, Main.myPlayer);
+                int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 2, Main.myPlayer);
                 Main.projectile[p].tileCollide = false;
             }
         }

@@ -13,6 +13,7 @@ namespace AAMod.NPCs.Bosses.Toad
     public class TruffleToad : ModNPC
     {
         public float bossLife;
+        public int damage = 0;
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -88,6 +89,14 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void AI()
         {
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
             npc.TargetClosest();
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
             AAModGlobalNPC.Toad = npc.whoAmI;
@@ -219,11 +228,11 @@ namespace AAMod.NPCs.Bosses.Toad
                         internalAI[2] = 0;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("ToadBomb"), 35, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("ToadBomb"), damage, 3);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("ToadBomb"), 35, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("ToadBomb"), damage, 3);
                         }
                         npc.netUpdate = true;
                     }
@@ -272,11 +281,11 @@ namespace AAMod.NPCs.Bosses.Toad
                         internalAI[2] = 0;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("FungusBubble"), 35, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("FungusBubble"), damage, 3);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("FungusBubble"), 35, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("FungusBubble"), damage, 3); //Originally 35 damage
                         }
                         npc.netUpdate = true;
                     }
@@ -426,11 +435,11 @@ namespace AAMod.NPCs.Bosses.Toad
                         internalAI[2] = 0;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-1, 0)), mod.ProjectileType("ToadBubble"), 35, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-1, 0)), mod.ProjectileType("ToadBubble"), damage, 3);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-1, 0)), mod.ProjectileType("ToadBubble"), 35, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-1, 0)), mod.ProjectileType("ToadBubble"), damage, 3);
                         }
                         npc.netUpdate = true;
                     }

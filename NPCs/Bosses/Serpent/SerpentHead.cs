@@ -11,6 +11,8 @@ namespace AAMod.NPCs.Bosses.Serpent
     [AutoloadBossHead]	
 	public class SerpentHead : ModNPC
 	{
+        public int damage = 0;
+
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Subzero Serpent");
@@ -77,6 +79,14 @@ namespace AAMod.NPCs.Bosses.Serpent
 
         public override void AI()
         {
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
             Player player = Main.player[npc.target];
             if (Main.dayTime || !player.ZoneSnow)
             {
@@ -293,7 +303,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                 attackTimer++;
                 if (attackTimer == 20 || attackTimer == 50 || attackTimer == 79)
                 {
-                    BaseAI.FireProjectile(Main.player[npc.target].Center, npc, mod.ProjectileType<IceBall2>(), npc.damage / (Main.expertMode ? 2 : 4), 3, 14f, 0, 0, -1);
+                    BaseAI.FireProjectile(Main.player[npc.target].Center, npc, mod.ProjectileType<IceBall2>(), damage, 3, 14f, 0, 0, -1);
                     npc.netUpdate = true;
                 }
                 if (attackTimer >= 80)
@@ -347,7 +357,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                         PlayerPosX += npc.velocity.X * 0.5f;
                         PlayerDistance.X -= PlayerPosX * 1f;
                         PlayerDistance.Y -= PlayerPosY * 1f;
-                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("SnowBreath"), npc.damage / (Main.expertMode ? 2 : 4), 0, Main.myPlayer);
+                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType("SnowBreath"), damage, 0, Main.myPlayer);
                     }
                 }
                 if (attackTimer >= 80)

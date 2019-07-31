@@ -22,6 +22,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public static Point CloudPoint = new Point((int)(Main.maxTilesX * 0.65f), 100);
         public Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
+        public int damage = 0;
 
         public override void SetDefaults()
         {
@@ -80,6 +81,14 @@ namespace AAMod.NPCs.Bosses.Athena
         public Vector2 MoveVector2;
         public override void AI()
         {
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
             npc.TargetClosest();
             Player player = Main.player[npc.target];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
@@ -386,7 +395,7 @@ namespace AAMod.NPCs.Bosses.Athena
             for (int i = 0; i < 3; i++)
             {
                 double offsetAngle = startAngle + (deltaAngle * i);
-                int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, npc.damage / 4, 2, Main.myPlayer);
+                int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 2, Main.myPlayer);
                 Main.projectile[p].tileCollide = false;
             }
         }
@@ -439,6 +448,27 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override void NPCLoot()
         {
+            if (NPC.downedMoonlord)
+            {
+                if (!AAWorld.downedAthenaA)
+                {
+                    int a = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaDefeat>());
+                    Main.npc[a].Center = npc.Center;
+                }
+                else
+                {
+                    int a = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaA>());
+                    Main.npc[a].Center = npc.Center;
+
+                    int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
+                    Main.projectile[b].Center = npc.Center;
+
+                    if (Main.netMode != 1) BaseUtility.Chat("No more kidding around, the storms are calling, and they're coming for you!", Color.Cyan);
+
+                    Main.projectile[b].netUpdate = true;
+                }
+                return;
+            }
             if (Main.netMode != 1) BaseUtility.Chat("OW! Fine, fine..! I'll leave you alone! Geez, you don't let up, do you.", Color.CornflowerBlue);
             int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
             Main.npc[p].Center = npc.Center;

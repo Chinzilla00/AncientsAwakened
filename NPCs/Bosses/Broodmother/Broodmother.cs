@@ -52,6 +52,8 @@ namespace AAMod.NPCs.Bosses.Broodmother
         public Texture2D Tex = null;
         public Texture2D Glow = null;
 
+        public int damage = 0;
+
         public override void FindFrame(int frameHeight)
         {
             if (npc.frameCounter++ > 3)
@@ -198,6 +200,14 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
 		public override void AI()
         {
+            if (Main.expertMode)
+            {
+                damage = npc.damage / 4;
+            }
+            else
+            {
+                damage = npc.damage / 2;
+            }
             if (internalAI[1] == AISTATE_RUNAWAY)
             {
                 npc.noTileCollide = true;
@@ -294,7 +304,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     internalAI[2]++;
                     if (internalAI[2] > 30f)
                     {
-                        BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<BroodBreath>(), ref internalAI[3], 5, npc.damage / (Main.expertMode ? 2 : 4), 12, true, new Vector2(0, 40f));
+                        BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<BroodBreath>(), ref internalAI[3], 5, damage, 12, true, new Vector2(0, 40f));
                     }
                     if (internalAI[2] > 90)
                     {
@@ -338,7 +348,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                         Vector2 dir = new Vector2(npc.velocity.X * 2f + (2f * npc.direction), npc.velocity.Y * 0.5f + 1f);
                         Vector2 firePos = new Vector2(npc.Center.X + (64 * npc.direction), npc.Center.Y + 10f);
                         firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
-                        int projID = Projectile.NewProjectile(firePos, dir, mod.ProjectileType("BroodBall"), npc.damage / (Main.expertMode ? 2 : 4), 1, 255);
+                        int projID = Projectile.NewProjectile(firePos, dir, mod.ProjectileType("BroodBall"), damage, 1, 255);
                         Main.projectile[projID].netUpdate = true;
                     }
                 }

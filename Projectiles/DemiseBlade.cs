@@ -53,10 +53,10 @@ namespace AAMod.Projectiles
             {
                 float num795 = projectile.oldVelocity.X * (30f / (float)num794);
                 float num796 = projectile.oldVelocity.Y * (30f / (float)num794);
-                int num797 = Dust.NewDust(new Vector2(projectile.oldPosition.X - num795, projectile.oldPosition.Y - num796), 8, 8, 107, projectile.oldVelocity.X, projectile.oldVelocity.Y, DustID.Shadowflame, default, 1.8f);
+                int num797 = Dust.NewDust(new Vector2(projectile.oldPosition.X - num795, projectile.oldPosition.Y - num796), 8, 8, DustID.Shadowflame, projectile.oldVelocity.X, projectile.oldVelocity.Y, DustID.Shadowflame, default, 1.8f);
                 Main.dust[num797].noGravity = true;
                 Main.dust[num797].velocity *= 0.5f;
-                num797 = Dust.NewDust(new Vector2(projectile.oldPosition.X - num795, projectile.oldPosition.Y - num796), 8, 8, 107, projectile.oldVelocity.X, projectile.oldVelocity.Y, DustID.Shadowflame, default, 1.4f);
+                num797 = Dust.NewDust(new Vector2(projectile.oldPosition.X - num795, projectile.oldPosition.Y - num796), 8, 8, DustID.Shadowflame, projectile.oldVelocity.X, projectile.oldVelocity.Y, DustID.Shadowflame, default, 1.4f);
                 Main.dust[num797].velocity *= 0.05f;
             }
         }

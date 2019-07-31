@@ -7,8 +7,6 @@ namespace AAMod.NPCs.Bosses.Athena
 {
     public class AthenaLight : ModNPC
     {
-        Vector2 tPos;
-        int despawn = 0;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Angel Clone");
@@ -21,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Athena
         {
 			npc.alpha = 255;
 			npc.dontTakeDamage = true;
-            npc.lifeMax = Main.expertMode ? 20000 : 20000;
+            npc.lifeMax = 1;
             npc.aiStyle = 0;
             npc.damage = Main.expertMode ? 50 : 84;
             npc.defense = Main.expertMode ? 1 : 1;
@@ -47,7 +45,8 @@ namespace AAMod.NPCs.Bosses.Athena
             Player player = Main.player[npc.target];
             if (!Main.player[npc.target].dead)
             {
-                despawn = 0;
+                Vector2 tPos;
+                npc.ai[1] = 0;
                 tPos.X = player.Center.X;
                 tPos.Y = player.Center.Y - 70;
                 npc.velocity.X += (npc.DirectionTo(tPos).X * Vector2.Distance(npc.Center, tPos) / 600 / 2);
@@ -55,11 +54,12 @@ namespace AAMod.NPCs.Bosses.Athena
             }
             else
             {
-                npc.velocity.Y -= despawn;
-                despawn++;
-                if (despawn > 40)
+                npc.velocity.Y -= npc.ai[1];
+                npc.ai[1]++;
+                if (npc.ai[1] > 40 && Main.netMode != 1)
                 {
                     npc.active = false;
+                    npc.netUpdate = true;
                 }
             }
         }
