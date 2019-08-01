@@ -162,13 +162,13 @@ namespace AAMod.NPCs.Bosses.Athena
                 {
                     npc.frame.Y = frameHeight * 11;
                 }
-                else if (npc.ai[0] <= 450)
+                else if (npc.ai[0] >= 450)
                 {
                     if (npc.frameCounter >= 15)
                     {
                         npc.frame.Y += frameHeight;
                         npc.frameCounter = 0;
-                        if (npc.frame.Y < frameHeight * 12 || npc.frame.Y >= frameHeight * 15)
+                        if (npc.frame.Y < frameHeight * 12 || npc.frame.Y >= frameHeight * 14)
                         {
                             npc.frame.Y = frameHeight * 12;
                         }
