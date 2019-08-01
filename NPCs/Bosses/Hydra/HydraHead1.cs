@@ -127,8 +127,8 @@ namespace AAMod.NPCs.Bosses.Hydra
                     npc.netUpdate = true;
                 }
                 return;
-            }			
-			
+            }
+
             npc.timeLeft = 100;
 
             npc.TargetClosest();
