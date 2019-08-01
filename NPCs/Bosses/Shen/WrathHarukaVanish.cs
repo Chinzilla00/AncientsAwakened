@@ -113,7 +113,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/WrathHarukVanish_Glow");
+            Texture2D glowTex = mod.GetTexture("Glowmasks/WrathHarukaVanish_Glow");
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 17, npc.frame, npc.GetAlpha(dColor), false);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 17, npc.frame, Color.White, false);

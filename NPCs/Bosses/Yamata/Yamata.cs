@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         private bool threeQuarterHealth = false;
         private bool HalfHealth = false;
         public bool loludide = false;
-
+        public bool flag;
 
         public float[] internalAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
@@ -371,7 +371,11 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             if (Main.dayTime)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(isAwakened ? "THE SUN DOESN'T SHINE IN THE DEPTHS!!! NYEHEHEHEHEHEHEHEH!!!" : "HISSSSSSSSSSSSSSS!!! THE SUNNNNNNNNNN! I'M OUT!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+                if (Main.netMode != 1 && !flag)
+                {
+                    flag = true;
+                    BaseUtility.Chat(isAwakened ? "THE SUN DOESN'T SHINE IN THE DEPTHS!!! NYEHEHEHEHEHEHEHEH!!!" : "HISSSSSSSSSSSSSSS!!! THE SUNNNNNNNNNN! I'M OUT!", isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+                }
                 if (isAwakened)
                 {
                     Main.dayTime = false;
@@ -385,6 +389,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         npc.active = false;
                     }
                 }
+                return;
             }
 			
             prevHalfHPLeft = halfHPLeft;
