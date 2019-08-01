@@ -40,6 +40,8 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.DeathSound = SoundID.NPCDeath1;
             npc.boss = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Athena");
+            npc.alpha = 255;
+            npc.noTileCollide = true;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -96,73 +98,76 @@ namespace AAMod.NPCs.Bosses.Athena
             Vector2 Acropolis = new Vector2(Origin.X + (76 * 16), Origin.Y + (72 * 16));
 
             //Preamble Shite 
-            if (internalAI[2] != 1) 
+            if (internalAI[2] != 1)
             {
-                npc.Center = Acropolis;
+                npc.dontTakeDamage = true;
                 if (Main.netMode != 1)
                 {
-                    
                     music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
-                    if (internalAI[3]++ < 420)
+                    if (Vector2.Distance(npc.Center, Acropolis) < 10)
                     {
-                        if (!AAWorld.downedAthena)
+                        npc.velocity *= 0;
+                        if (internalAI[3]++ < 420)
                         {
-                            if (internalAI[3] == 60)
+                            if (!AAWorld.downedAthena)
                             {
-                                if (Main.netMode != 1) BaseUtility.Chat("Hmpf..!", Color.CornflowerBlue);
-                            }
-
-                            if (internalAI[3] == 180)
-                            {
-                                string s = "";
-                                if (Main.ActivePlayersCount > 1)
+                                if (internalAI[3] == 60)
                                 {
-                                    s = "s";
+                                    if (Main.netMode != 1) BaseUtility.Chat("Hmpf..!", Color.CornflowerBlue);
                                 }
-                                if (Main.netMode != 1) BaseUtility.Chat("You! Earthwalker" + s + "!", Color.CornflowerBlue);
-                            }
 
-                            if (internalAI[3] == 300)
-                            {
-                                if (Main.netMode != 1) BaseUtility.Chat("My seraphs tell me you've been attacking them! Why?!", Color.CornflowerBlue);
-                            }
+                                if (internalAI[3] == 180)
+                                {
+                                    string s = "";
+                                    if (Main.ActivePlayersCount > 1)
+                                    {
+                                        s = "s";
+                                    }
+                                    if (Main.netMode != 1) BaseUtility.Chat("You! Earthwalker" + s + "!", Color.CornflowerBlue);
+                                }
 
-                            if (internalAI[3] == 420)
-                            {
-                                if (Main.netMode != 1) BaseUtility.Chat("I'm gonna teach you a lesson, you little brat!", Color.CornflowerBlue);
-                            }
+                                if (internalAI[3] == 300)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat("My seraphs tell me you've been attacking them! Why?!", Color.CornflowerBlue);
+                                }
 
-                            if (internalAI[3] >= 420)
-                            {
-                                if (Main.netMode != 1) BaseUtility.Chat("En Garde!", Color.CornflowerBlue);
-                                CloudSet Clouds = new CloudSet();
-                                Clouds.Place(CloudPoint, WorldGen.structures);
-                                internalAI[2] = 1;
-                                npc.netUpdate = true;
-                            }
-                        }
-                        else
-                        {
-                            if (internalAI[3] == 60)
-                            {
-                                if (Main.netMode != 1) BaseUtility.Chat("Sigh...", Color.CornflowerBlue);
-                            }
+                                if (internalAI[3] == 420)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat("I'm gonna teach you a lesson, you little brat!", Color.CornflowerBlue);
+                                }
 
-                            if (internalAI[3] >= 180)
+                                if (internalAI[3] >= 420)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat("En Garde!", Color.CornflowerBlue);
+                                    internalAI[2] = 1;
+                                    npc.netUpdate = true;
+                                }
+                            }
+                            else
                             {
-                                if (Main.netMode != 1) BaseUtility.Chat("...fine, let's get this overwith. I don't have all day.", Color.CornflowerBlue);
-                                CloudSet Clouds = new CloudSet();
-                                Clouds.Place(CloudPoint, WorldGen.structures);
-                                internalAI[2] = 1;
-                                npc.netUpdate = true;
+                                if (internalAI[3] == 60)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat("Sigh...", Color.CornflowerBlue);
+                                }
+
+                                if (internalAI[3] >= 180)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat("Lets just get this overwith. I don't have all day.", Color.CornflowerBlue);
+                                    internalAI[2] = 1;
+                                    npc.netUpdate = true;
+                                }
                             }
                         }
                     }
+                    else
+                    {
+                        MoveToVector2(Acropolis);
+                    }
                 }
-                
             }
             else
             {
+                npc.dontTakeDamage = false;
                 if (player.dead || !player.active || Vector2.Distance(npc.position, player.position) > 5000 || !modPlayer.ZoneAcropolis)
                 {
                     npc.TargetClosest();
@@ -294,14 +299,6 @@ namespace AAMod.NPCs.Bosses.Athena
                         MoveToVector2(MoveVector2);
                     }
                 }
-            }
-            if (npc.ai[2] == 1)
-            {
-                npc.noTileCollide = true;
-            }
-            else
-            {
-                npc.noTileCollide = false;
             }
 
             if (player.Center.X < npc.Center.X)
@@ -487,26 +484,6 @@ namespace AAMod.NPCs.Bosses.Athena
             BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor);
             return false;
         }
-
-        public class CloudSet : MicroBiome
-        {
-            public override bool Place(Point origin, StructureMap structures)
-            {
-                Mod mod = AAMod.instance;
-
-                Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
-                {
-                    [new Color(255, 255, 0)] = mod.TileType("AcropolisClouds"),
-                    [Color.Black] = -1 //don't touch when genning		
-                };
-
-                TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/AcropolisArena"), colorToTile);
-
-                gen.Generate(origin.X, origin.Y, true, true);
-
-                return true;
-            }
-        }
     }
 
     public class AthenaFlee : ModNPC
@@ -520,13 +497,18 @@ namespace AAMod.NPCs.Bosses.Athena
         }
         public override void SetDefaults()
         {
-            npc.life = 1;
-            npc.dontTakeDamage = true;
-            npc.damage = 60;
             npc.width = 152;
             npc.height = 114;
-            npc.friendly = false;
-            npc.timeLeft = 900;
+            npc.npcSlots = 1000;
+            npc.aiStyle = -1;
+            npc.defense = 1;
+            npc.knockBackResist = 0f;
+            npc.noGravity = true;
+            npc.lifeMax = 1;
+            npc.dontTakeDamage = true;
+            npc.noTileCollide = true;
+            npc.damage = 0;
+            npc.value = 0;
         }
 
         public override void AI()

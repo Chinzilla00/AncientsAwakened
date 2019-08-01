@@ -878,6 +878,7 @@ namespace AAMod.Worldgeneration
             {
                 [new Color(255, 0, 0)] = mod.TileType("AcropolisBlock"),
                 [new Color(255, 0, 255)] = mod.TileType("AcropolisAltarBlock"),
+                [new Color(255, 255, 0)] = mod.TileType("AcropolisClouds"),
                 [new Color(0, 255, 255)] = TileID.Grass,
                 [new Color(0, 255, 0)] = TileID.Dirt,
                 [new Color(0, 0, 255)] = TileID.Cloud,

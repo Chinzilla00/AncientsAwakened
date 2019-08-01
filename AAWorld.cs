@@ -53,8 +53,6 @@ namespace AAMod
         public static bool InfernoStripe;
         public static bool MireStripe;
         private int infernoSide = 0;
-        public static bool Dissipate = true;
-        public static int CloudAlpha = 255;
         //private int shipSide = 0;
         private Vector2 infernoPos = new Vector2(0, 0);
         private Vector2 mirePos = new Vector2(0, 0);
@@ -182,8 +180,6 @@ namespace AAMod
             MireCenter = -Vector2.One;
             SmashDragonEgg = 2;
             SmashHydraPod = 2;
-            Dissipate = true;
-            CloudAlpha = 255;
             //Squid Lady
             squid1 = 0;
             squid2 = 0;
@@ -201,6 +197,8 @@ namespace AAMod
             squid14 = 0;
             squid15 = 0;
             squid16 = 0;
+
+            //Athena Clouds
         }
 
         public static int Raycast(int x, int y)
@@ -1109,7 +1107,6 @@ namespace AAMod
             }
         }
 
-        public static Point CloudPoint = new Point((int)(Main.maxTilesX * 0.65f), 100);
         public Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
         public int HeraldTimer = 1200;
 
@@ -1133,31 +1130,6 @@ namespace AAMod
                     }
                     AthenaHerald = true;
                 }
-            }
-
-            if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Athena.Athena>()))
-            {
-                Dissipate = false;
-                CloudAlpha -= 4;
-                if (CloudAlpha <= 0)
-                {
-                    CloudAlpha = 0;
-                }
-            }
-            else
-            {
-                if (!Dissipate)
-                {
-                    CloudAlpha += 5;
-
-                }
-            }
-            if (CloudAlpha > 255)
-            {
-                Dissipate = true;
-                CloudAlpha = 255;
-                CloudKill Clouds = new CloudKill();
-                Clouds.Place(CloudPoint, WorldGen.structures);
             }
 
             if (TimeStopped)
@@ -2110,26 +2082,6 @@ namespace AAMod
                     }
                 }
             }
-        }
-    }
-
-    public class CloudKill : MicroBiome
-    {
-        public override bool Place(Point origin, StructureMap structures)
-        {
-            Mod mod = AAMod.instance;
-
-            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
-            {
-                [new Color(255, 255, 0)] = -2,
-                [Color.Black] = -1 //don't touch when genning		
-            };
-
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/AcropolisArena"), colorToTile);
-
-            gen.Generate(origin.X, origin.Y, true, true);
-
-            return true;
         }
     }
 }

@@ -156,7 +156,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     BaseAI.AISpaceOctopus(npc, ref FlyAI, Main.player[npc.target].Center, 0.1f, 8f, 220f, 70f, ShootFeather);
                 }
 
-                if (npc.ai[3] > 600)
+                if (npc.ai[3] > 400)
                 {
                     internalAI[1] = 1;
                     npc.ai[0] = 0;
@@ -414,35 +414,11 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            Texture2D tex = internalAI[2] != 1 ? mod.GetTexture("NPCs/Bosses/Athena/SassyBitch") : Main.npcTexture[npc.type];
+            Texture2D tex = Main.npcTexture[npc.type];
             Color lightColor = BaseDrawing.GetLightColor(npc.Center);
-
-            if (npc.ai[2] == 1)
-            {
-                BaseDrawing.DrawAfterimage(sb, tex, 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
-            }
+            BaseDrawing.DrawAfterimage(sb, tex, 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
             BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor);
             return false;
-        }
-
-        public class CloudSet : MicroBiome
-        {
-            public override bool Place(Point origin, StructureMap structures)
-            {
-                Mod mod = AAMod.instance;
-
-                Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
-                {
-                    [new Color(255, 255, 0)] = mod.TileType("AcropolisClouds"),
-                    [Color.Black] = -1 //don't touch when genning		
-                };
-
-                TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/AcropolisArena"), colorToTile);
-
-                gen.Generate(origin.X, origin.Y, true, true);
-
-                return true;
-            }
         }
     }
 }
