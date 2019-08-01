@@ -10,10 +10,6 @@ namespace AAMod.NPCs.Bosses.Athena
 {
 	public class OwlRune : ModNPC
     {
-        public override void SetStaticDefaults()
-        {
-            Main.npcFrameCount[npc.type] = 4;
-        }
         public override void SetDefaults()
         {
             npc.alpha = 255;

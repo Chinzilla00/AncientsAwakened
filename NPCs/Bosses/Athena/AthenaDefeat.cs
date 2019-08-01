@@ -1,6 +1,7 @@
 using AAMod.NPCs.Enemies.Sky;
 using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,13 +12,13 @@ namespace AAMod.NPCs.Bosses.Athena
     {
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 15;
+            Main.npcFrameCount[npc.type] = 7;
         }
 
         public override void SetDefaults()
         {
-            npc.width = 152;
-            npc.height = 114;
+            npc.width = 80;
+            npc.height = 58;
             npc.npcSlots = 1000;
             npc.aiStyle = -1;
             npc.defense = 1;
@@ -34,6 +35,8 @@ namespace AAMod.NPCs.Bosses.Athena
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
         }
 
+        Texture2D tex;
+
         public override void AI()
         {
             Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
@@ -43,6 +46,7 @@ namespace AAMod.NPCs.Bosses.Athena
             {
                 if (Vector2.Distance(npc.Center, Acropolis) < 100 && Main.netMode != 1)
                 {
+                    npc.frame.Y = 0;
                     npc.velocity.X *= 0;
                     npc.ai[1] = 1;
                     npc.noTileCollide = false;
@@ -51,10 +55,13 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
                 if (npc.ai[1] == 0)
                 {
+                    tex = Main.npcTexture[mod.NPCType<Athena>()];
                     MoveToPoint(Acropolis);
                 }
                 else
-                {
+                { 
+                    tex = Main.npcTexture[npc.type];
+                    Main.npcFrameCount[npc.type] = 8;
                     npc.ai[0]++;
                     if (Main.netMode != 1)
                     {
@@ -152,15 +159,15 @@ namespace AAMod.NPCs.Bosses.Athena
                     {
                         npc.frame.Y += frameHeight;
                         npc.frameCounter = 0;
-                        if (npc.frame.Y < frameHeight * 8 || npc.frame.Y >= frameHeight * 12)
+                        if (npc.frame.Y >= frameHeight * 4)
                         {
-                            npc.frame.Y = frameHeight * 8;
+                            npc.frame.Y = 0;
                         }
                     }
                 }
                 else if (npc.ai[0] >= 270 && npc.ai[0] < 450)
                 {
-                    npc.frame.Y = frameHeight * 11;
+                    npc.frame.Y = frameHeight * 3;
                 }
                 else if (npc.ai[0] >= 450)
                 {
@@ -168,9 +175,9 @@ namespace AAMod.NPCs.Bosses.Athena
                     {
                         npc.frame.Y += frameHeight;
                         npc.frameCounter = 0;
-                        if (npc.frame.Y < frameHeight * 12 || npc.frame.Y >= frameHeight * 14)
+                        if (npc.frame.Y < frameHeight * 4 || npc.frame.Y >= frameHeight * 8)
                         {
-                            npc.frame.Y = frameHeight * 12;
+                            npc.frame.Y = frameHeight * 4;
                         }
                     }
                 }
