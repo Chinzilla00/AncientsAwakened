@@ -636,7 +636,12 @@ namespace AAMod
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shrines");
                     return;
                 }
-
+                if (Main.dayTime)
+                {
+                    priority = MusicPriority.BiomeHigh;
+                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/DM");
+                    return;
+                }
                 if (player.ZoneRockLayerHeight)
                 {
                     priority = MusicPriority.BiomeHigh;

@@ -1131,9 +1131,10 @@ namespace AAMod
                     {
                         Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, mod.DustType<NPCs.Bosses.Athena.Feather>(), Main.rand.Next(-1, 2), 1, 0);
                     }
-                    AAWorld.AthenaHerald = true;
+                    AthenaHerald = true;
                 }
             }
+
             if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Athena.Athena>()))
             {
                 Dissipate = false;
@@ -1149,14 +1150,14 @@ namespace AAMod
                 {
                     CloudAlpha += 5;
 
-                    if (CloudAlpha >= 255)
-                    {
-                        Dissipate = true;
-                        CloudAlpha = 255;
-                        CloudKill Clouds = new CloudKill();
-                        Clouds.Place(CloudPoint, WorldGen.structures);
-                    }
                 }
+            }
+            if (CloudAlpha > 255)
+            {
+                Dissipate = true;
+                CloudAlpha = 255;
+                CloudKill Clouds = new CloudKill();
+                Clouds.Place(CloudPoint, WorldGen.structures);
             }
 
             if (TimeStopped)

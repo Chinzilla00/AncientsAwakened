@@ -33,15 +33,15 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.value = BaseUtility.CalcValue(0, 10, 0, 0);
             npc.npcSlots = 1000;
             npc.aiStyle = -1;
-            npc.lifeMax = 40000;
-            npc.defense = 20;
-            npc.damage = 90;
+            npc.lifeMax = 70000;
+            npc.defense = 40;
+            npc.damage = 110;
             npc.knockBackResist = 0f;
             npc.noGravity = true;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.boss = true;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Athena");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AthenaA");
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -103,6 +103,33 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
             }
 
+            if (internalAI[0] == 0 && npc.life < npc.lifeMax / 3 && Main.netMode != 1)
+            {
+                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaDark>(), false, npc.Center);
+                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaLight>(), false, npc.Center);
+                internalAI[0] = 1;
+                npc.netUpdate = true;
+            }
+
+            if (internalAI[2]++ > 300 && Main.netMode != 1)
+            {
+                int pChoice = Main.rand.Next(3);
+                if (pChoice == 0)
+                {
+                    NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<OwlRune>());
+                }
+                else if (pChoice == 1)
+                {
+                    NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<OwlRuneCharged>());
+                }
+                else
+                {
+                    Projectile.NewProjectile(player.Center.X + Main.rand.Next(-20, 20), player.Center.Y, 0, 0, mod.ProjectileType<Hurricane>(), npc.damage, 12, Main.myPlayer);
+                }
+                internalAI[2] = 0;
+                npc.netUpdate = true;
+            }
+
             if (internalAI[1] == 0) //Acropolis Phase
             {
                 if (Main.netMode != 1)
@@ -144,7 +171,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 if (Main.netMode != 1)
                 {
                     npc.ai[1]++;
-                    if (npc.ai[1] == 300)
+                    if (npc.ai[1] == 200)
                     {
                         if (Main.rand.Next(5) == 0)
                         {

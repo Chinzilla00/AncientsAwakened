@@ -82,7 +82,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector83.X, vector83.Y, mod.ProjectileType<AthenaShock>(), npc.damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
                 }
             }
-            Lighting.AddLight(npc.Center, 0.4f, 0.85f, 0.9f);
+            Lighting.AddLight(npc.Center, 0f, 0.85f, 0.9f);
             if (npc.alpha < 150 && npc.ai[0] < 180f)
             {
                 for (int num843 = 0; num843 < 1; num843++)
@@ -137,7 +137,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type] , 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
             return false;
         }
     }

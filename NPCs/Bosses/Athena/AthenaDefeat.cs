@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Athena
             }
             if (Main.netMode != 1)
             {
-                if (Vector2.Distance(npc.Center, npc.Center) < 100 && Main.netMode != 1)
+                if (Vector2.Distance(npc.Center, Acropolis) < 100 && Main.netMode != 1)
                 {
                     npc.ai[1] = 1;
                     npc.noGravity = false;
@@ -124,7 +124,7 @@ namespace AAMod.NPCs.Bosses.Athena
                         npc.netUpdate = true;
                     }
                     else
-                    if (npc.ai[0] <= 900)
+                    if (npc.ai[0] >= 900)
                     {
                         if (Main.netMode != 1) BaseUtility.Chat("A VARIAN ALWAYS PUTS UP ONE LAST FIGHT!!!", Color.Silver);
                         AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaA>(), false, npc.Center);
