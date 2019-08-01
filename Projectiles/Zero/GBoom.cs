@@ -28,6 +28,10 @@ namespace AAMod.Projectiles.Zero
 
         public override void AI()
         {
+            if (projectile.frameCounter == 1)
+            {
+                projectile.damage = 0;
+            }
             if (++projectile.frameCounter >= 5)
             {
                 projectile.frameCounter = 0;
