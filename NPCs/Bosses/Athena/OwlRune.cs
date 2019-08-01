@@ -10,6 +10,10 @@ namespace AAMod.NPCs.Bosses.Athena
 {
 	public class OwlRune : ModNPC
     {
+        public override void SetStaticDefaults()
+        {
+            Main.npcFrameCount[npc.type] = 4;
+        }
         public override void SetDefaults()
         {
             npc.alpha = 255;
@@ -24,6 +28,7 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.value = Item.buyPrice(0, 0, 0, 0);
             npc.lavaImmune = true;
             npc.noTileCollide = true;
+            npc.noGravity = true;
         }
 
         public override void AI()
