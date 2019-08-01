@@ -37,19 +37,13 @@ namespace AAMod.NPCs.Bosses.Athena
 
             if (player.Center.X > npc.Center.X)
             {
-                if (pos == -250)
-                {
-                    pos = 250;
-                }
+                pos = 250;
 
                 npc.direction = 1;
             }
             else
             {
-                if (pos == 250)
-                {
-                    pos = -250;
-                }
+                pos = -250;
 
                 npc.direction = -1;
             }

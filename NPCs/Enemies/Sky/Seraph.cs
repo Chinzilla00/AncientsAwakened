@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Enemies.Sky
 
         public override bool PreAI()
         {
-            if (npc.type == mod.NPCType<SeraphA>() && !NPC.AnyNPCs(mod.NPCType<Athena>()))
+            if (npc.type == mod.NPCType<SeraphA>() && (!NPC.AnyNPCs(mod.NPCType<Athena>()) || !NPC.AnyNPCs(mod.NPCType<AthenaA>())))
             {
                 npc.velocity.Y -= .2f;
                 npc.velocity.X *= .95f;

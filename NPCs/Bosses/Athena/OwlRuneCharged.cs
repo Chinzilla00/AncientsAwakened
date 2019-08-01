@@ -9,6 +9,11 @@ namespace AAMod.NPCs.Bosses.Athena
 {
 	public class OwlRuneCharged : ModNPC
     {
+        public override void SetStaticDefaults()
+        {
+            Main.npcFrameCount[npc.type] = 4;
+        }
+
         public override void SetDefaults()
         {
             npc.alpha = 255;
@@ -23,6 +28,7 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.value = Item.buyPrice(0, 0, 0, 0);
             npc.lavaImmune = true;
             npc.noTileCollide = true;
+            npc.noGravity = true;
         }
 
         public override void AI()
@@ -78,7 +84,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 {
                     Vector2 vector82 = array5[num842] - npc.Center;
                     float ai = Main.rand.Next(100);
-                    Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.78539818525314331)) * 7f;
+                    Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.78539818525314331)) * 10f;
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector83.X, vector83.Y, mod.ProjectileType<AthenaShock>(), npc.damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
                 }
             }
@@ -127,8 +133,9 @@ namespace AAMod.NPCs.Bosses.Athena
         {
             if (++npc.frameCounter >= 4)
             {
+                npc.frame.Y += frameHeight;
                 npc.frameCounter = 0;
-                if (++frameHeight >= Main.projFrames[npc.type])
+                if (npc.frame.Y >= frameHeight * 3)
                 {
                     npc.frame.Y = 0;
                 }

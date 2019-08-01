@@ -414,6 +414,10 @@ namespace AAMod.NPCs.Bosses.Athena
         public void MoveToVector2(Vector2 p)
         {
             float moveSpeed = 25f;
+            if (internalAI[2] != 1)
+            {
+                moveSpeed = 14f;
+            }
             float velMultiplier = 1f;
             Vector2 dist = p - npc.Center;
             float length = dist == Vector2.Zero ? 0f : dist.Length();
