@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Bosses.Athena
     {
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 14;
+            Main.npcFrameCount[npc.type] = 15;
         }
 
         public override void SetDefaults()
