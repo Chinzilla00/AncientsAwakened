@@ -22,6 +22,7 @@ namespace AAMod.NPCs.Bosses.Athena
             }
             else
             {
+                dust.rotation = dust.rotation.AngleLerp(dust.velocity.ToRotation() - 1.57079637f, 0.4f);
                 int p = BaseAI.GetPlayer(dust.position, -1);
                 Player player = Main.player[p];
                 Vector2 target = player.Center;

@@ -161,6 +161,16 @@ namespace AAMod.NPCs.Bosses.Hydra
                 return;
             }
 
+            if (Main.dayTime)
+            {
+                npc.alpha += 2;
+                if (npc.alpha >= 256)
+                {
+                    npc.active = false;
+                }
+                return;
+            }
+
             HandleHeads();
 
             if (playerTarget != null)

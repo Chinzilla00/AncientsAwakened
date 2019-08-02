@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -27,6 +28,16 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
+            if (projectile.velocity.X < 0f)
+            {
+                projectile.spriteDirection = -1;
+                projectile.rotation = (float)Math.Atan2(-projectile.velocity.Y, -projectile.velocity.X);
+            }
+            else
+            {
+                projectile.spriteDirection = 1;
+                projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X);
+            }
             if (Main.rand.Next(3) == 0)
             {
                 Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 186, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);

@@ -542,6 +542,7 @@ namespace AAMod
         
         public override void UpdateBiomeVisuals()
         {
+            bool useAthena = NPC.AnyNPCs(mod.NPCType<AthenaA>());
             bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenA>());
             bool useShen = NPC.AnyNPCs(mod.NPCType<ShenDoragon>()) && !useShenA;
             bool useAkuma = NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar;
@@ -549,6 +550,8 @@ namespace AAMod
             bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen && !useShenA;
             bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen && !useShenA;
             bool useVoid = (ZoneVoid || VoidUnit) && !useShen && !useShenA;
+
+            player.ManageSpecialBiomeVisuals("AAMod:AthenaSky", useAthena);
 
             player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
 

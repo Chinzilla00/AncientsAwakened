@@ -6,9 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using BaseMod;
 using System.IO;
-using AAMod.NPCs.Bosses.Akuma.Awakened;
-using Terraria.Graphics.Shaders;
-using Terraria.Localization;
 
 namespace AAMod.NPCs.Bosses.Akuma
 {
@@ -36,8 +33,8 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetDefaults()
         {
             npc.noTileCollide = true;
-            npc.height = 120;
-            npc.width = 84;
+            npc.height = 80;
+            npc.width = 80;
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
@@ -640,7 +637,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.width = 60;
             npc.height = 60;
             npc.dontCountMe = true;
-
+            npc.chaseable = false;
             npc.alpha = 255;
         }
 

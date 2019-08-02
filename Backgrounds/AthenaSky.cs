@@ -186,7 +186,7 @@ namespace AAMod.Backgrounds
 
         private void UpdateAthenaSky()
         {
-            if (NPC.AnyNPCs(AAMod.instance.NPCType<Athena>()))
+            if (NPC.AnyNPCs(AAMod.instance.NPCType<AthenaA>()))
             {
                 return;
             }

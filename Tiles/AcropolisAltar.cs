@@ -55,9 +55,11 @@ namespace AAMod.Tiles
             BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, frameY, false, false, false, null, White);
         }
 
+        public Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
+
         public override void RightClick(int i, int j)
         {
-            Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100);
+            Vector2 Acropolis = new Vector2(Origin.X + (76 * 16), Origin.Y + (72 * 16));
             Player player = Main.player[Main.myPlayer];
             int type = mod.ItemType<Items.BossSummons.Owl>();
             if (BasePlayer.HasItem(player, type, 1))
@@ -72,14 +74,25 @@ namespace AAMod.Tiles
                         {
                             item = new Item();
                         }
-                        AAModGlobalNPC.SpawnBoss(player, mod.NPCType<NPCs.Bosses.Athena.Athena>(), true, Origin, "Athena");
-                        for (int a = 0; a < 8; a++)
-                        {
-                            Dust.NewDust(Origin, 152, 114, mod.DustType<NPCs.Bosses.Athena.Feather>(), Main.rand.Next(-1, 2), 1, 0);
-                        }
+                        SpawnBoss(mod, player, mod.NPCType<NPCs.Bosses.Athena.Athena>(), true, Acropolis, 0, -1, "Athena", false);
                     }
                 }
             }
+        }
+
+        // SpawnBoss(player, mod.NPCType("MyBoss"), true, 0, 0, "DerpyBoi 2", false);
+        public static void SpawnBoss(Mod mod, Player player, int bossType, bool spawnMessage = true, Vector2 Pos = default, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
+        {
+            if (overrideDirection == 0)
+                overrideDirection = Main.rand.Next(2) == 0 ? -1 : 1;
+            if (overrideDirectionY == 0)
+                overrideDirectionY = -1;
+            Vector2 npcCenter = Pos + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, 800f * overrideDirectionY);
+            for (int a = 0; a < 8; a++)
+            {
+                Dust.NewDust(npcCenter, 152, 114, mod.DustType<NPCs.Bosses.Athena.Feather>(), Main.rand.Next(-1, 2), 1, 0);
+            }
+            AAModGlobalNPC.SpawnBoss(player, bossType, spawnMessage, npcCenter, overrideDisplayName, namePlural);
         }
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)

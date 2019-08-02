@@ -1,6 +1,7 @@
 using AAMod.NPCs.Enemies.Sky;
 using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,13 +12,13 @@ namespace AAMod.NPCs.Bosses.Athena
     {
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 15;
+            Main.npcFrameCount[npc.type] = 7;
         }
 
         public override void SetDefaults()
         {
-            npc.width = 152;
-            npc.height = 114;
+            npc.width = 60;
+            npc.height = 58;
             npc.npcSlots = 1000;
             npc.aiStyle = -1;
             npc.defense = 1;
@@ -30,113 +31,127 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.dontTakeDamage = true;
             npc.damage = 0;
             npc.value = 0;
+            npc.noTileCollide = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
         }
+
+        Texture2D tex;
 
         public override void AI()
         {
             Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
             Vector2 Acropolis = new Vector2(Origin.X + (76 * 16), Origin.Y + (72 * 16));
             npc.TargetClosest();
-            if (Main.netMode != 2)
-            {
-                npc.frameCounter++;
-                if (npc.frameCounter >= 6)
-                {
-                    npc.frameCounter = 0;
-                    npc.frame.Y += Main.npcTexture[npc.type].Height / 4;
-                }
-                if (npc.frame.Y > Main.npcTexture[npc.type].Height / 4 * 3)
-                {
-                    npc.frame.Y = 0;
-                }
-            }
             if (Main.netMode != 1)
             {
-                if (Vector2.Distance(npc.Center, npc.Center) < 100 && Main.netMode != 1)
+                if (Vector2.Distance(npc.Center, Acropolis) < 10 && Main.netMode != 1)
                 {
+                    npc.frame.Y = 0;
+                    npc.velocity.X *= 0;
                     npc.ai[1] = 1;
+                    npc.noTileCollide = false;
                     npc.noGravity = false;
                     npc.netUpdate = true;
                 }
                 if (npc.ai[1] == 0)
                 {
+                    tex = Main.npcTexture[mod.NPCType<Athena>()];
                     MoveToPoint(Acropolis);
                 }
                 else
-                {
+                { 
+                    tex = Main.npcTexture[npc.type];
+                    Main.npcFrameCount[npc.type] = 8;
+                    npc.ai[0]++;
                     if (Main.netMode != 1)
                     {
-                        npc.ai[0]++;
-                    }
-                    if (npc.ai[0] == 90)
-                    {
-                        if (Main.netMode != 1) BaseUtility.Chat("...hah...hah...", Color.Silver);
-                        npc.netUpdate = true;
-                    }
-                    else
-                    if (npc.ai[0] == 180)
-                    {
-                        if (Main.netMode != 1) BaseUtility.Chat("...I still lost.", Color.Silver);
-                        npc.netUpdate = true;
-                    }
-                    else
-                    if (npc.ai[0] == 270)
-                    {
-                        if (Main.netMode != 1) BaseUtility.Chat("...", Color.Silver);
-                        npc.netUpdate = true;
-                    }
-                    else
-                    if (npc.ai[0] == 360)
-                    {
-                        music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AthenaA");
-                        if (Main.netMode != 1) BaseUtility.Chat("No.", Color.Silver);
-                        npc.netUpdate = true;
-                    }
-                    else
-                    if (npc.ai[0] == 450)
-                    {
-                        if (Main.netMode != 1) BaseUtility.Chat("I'm not giving up that easilly.", Color.Silver);
-                        npc.netUpdate = true;
-                    }
-                    else
-                    if (npc.ai[0] == 540)
-                    {
-                        if (Main.netMode != 1) BaseUtility.Chat("There's a phrase my people live by, earthwalker.", Color.Silver);
-                        npc.netUpdate = true;
-                    }
-                    else
-                    if (npc.ai[0] == 630)
-                    {
-                        if (Main.netMode != 1) BaseUtility.Chat("Brightest of dawn...", Color.Silver);
-                        npc.netUpdate = true;
-                    }
-                    else
-                    if (npc.ai[0] == 720)
-                    {
-                        if (Main.netMode != 1) BaseUtility.Chat("Darkest of night...", Color.Silver);
-                        npc.netUpdate = true;
-                    }
-                    else
-                    if (npc.ai[0] == 810)
-                    {
-                        if (Main.netMode != 1) BaseUtility.Chat("Even in defeat...", Color.Silver);
-                        npc.netUpdate = true;
-                    }
-                    else
-                    if (npc.ai[0] <= 900)
-                    {
-                        if (Main.netMode != 1) BaseUtility.Chat("A VARIAN ALWAYS PUTS UP ONE LAST FIGHT!!!", Color.Silver);
-                        AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaA>(), false, npc.Center);
+                        if (npc.ai[0] == 120)
+                        {
+                            if (Main.netMode != 1) BaseUtility.Chat("...hah...hah...", Color.CornflowerBlue);
+                            npc.netUpdate = true;
+                        }
+                        else
+                        if (npc.ai[0] == 240)
+                        {
+                            if (Main.netMode != 1) BaseUtility.Chat("...I still lost.", Color.CornflowerBlue);
+                            npc.netUpdate = true;
+                        }
+                        else
+                        if (npc.ai[0] == 360)
+                        {
+                            if (Main.netMode != 1) BaseUtility.Chat("...", Color.CornflowerBlue);
+                            npc.netUpdate = true;
+                        }
+                        else
+                        if (npc.ai[0] == 480)
+                        {
+                            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AthenaA");
+                            if (Main.netMode != 1) BaseUtility.Chat("No.", Color.CornflowerBlue);
+                            npc.netUpdate = true;
+                        }
+                        else
+                        if (npc.ai[0] == 600)
+                        {
+                            if (Main.netMode != 1) BaseUtility.Chat("I'm not giving up that easilly.", Color.CornflowerBlue);
+                            npc.netUpdate = true;
+                        }
+                        else
+                        if (npc.ai[0] == 720)
+                        {
+                            if (Main.netMode != 1) BaseUtility.Chat("There's a phrase my people live by, earthwalker.", Color.CornflowerBlue);
+                            npc.netUpdate = true;
+                        }
+                        else
+                        if (npc.ai[0] == 840)
+                        {
+                            if (Main.netMode != 1) BaseUtility.Chat("Brightest of dawn...", Color.CornflowerBlue);
+                            npc.netUpdate = true;
+                        }
+                        else
+                        if (npc.ai[0] == 960)
+                        {
+                            if (Main.netMode != 1) BaseUtility.Chat("Darkest of night...", Color.CornflowerBlue);
+                            npc.netUpdate = true;
+                        }
+                        else
+                        if (npc.ai[0] == 1080)
+                        {
+                            if (Main.netMode != 1) BaseUtility.Chat("Even in defeat...", Color.CornflowerBlue);
+                            npc.netUpdate = true;
+                        }
+                        else
+                        if (npc.ai[0] >= 1200)
+                        {
+                            if (Main.netMode != 1) BaseUtility.Chat("A VARIAN ALWAYS PUTS UP ONE LAST FIGHT!!!", Color.Silver);
+                            AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaA>(), false, npc.Center);
 
-                        int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
-                        Main.projectile[b].Center = npc.Center;
+                            int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer);
+                            Main.projectile[b].Center = npc.Center;
 
-                        npc.active = false;
-                        npc.netUpdate = true;
+                            npc.active = false;
+                            npc.netUpdate = true;
+                        }
                     }
                 }
             }
+        }
+
+        public override bool PreDraw(SpriteBatch sb, Color dColor)
+        {
+            if (npc.ai[1] == 0)
+            {
+                tex = Main.npcTexture[mod.NPCType<Athena>()];
+            }
+            else
+            {
+                tex = Main.npcTexture[npc.type];
+            }
+
+            Color lightColor = BaseDrawing.GetLightColor(npc.Center);
+
+            BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor);
+
+            return false;
         }
 
         public override void FindFrame(int frameHeight)
@@ -156,36 +171,38 @@ namespace AAMod.NPCs.Bosses.Athena
             }
             else
             {
-                if (npc.frameCounter >= 15)
-                {
-                    npc.frame.Y += frameHeight;
-                    npc.frameCounter = 0;
-                }
                 if (npc.ai[0] < 270)
                 {
-                    if (npc.frame.Y < frameHeight * 8 || npc.frame.Y >= frameHeight * 12)
+                    if (npc.frameCounter >= 15)
                     {
-                        npc.frame.Y = 8;
+                        npc.frame.Y += frameHeight;
+                        npc.frameCounter = 0;
+                        if (npc.frame.Y >= frameHeight * 4)
+                        {
+                            npc.frame.Y = 0;
+                        }
                     }
                 }
                 else if (npc.ai[0] >= 270 && npc.ai[0] < 450)
                 {
-                    if (npc.frame.Y < frameHeight * 8 || npc.frame.Y >= frameHeight * 12)
-                    {
-                        npc.frame.Y = 11;
-                    }
+                    npc.frame.Y = frameHeight * 3;
                 }
-                else if (npc.ai[0] <= 450)
+                else if (npc.ai[0] >= 450)
                 {
-                    if (npc.frame.Y < frameHeight * 12 || npc.frame.Y >= frameHeight * 15)
+                    if (npc.frameCounter >= 15)
                     {
-                        npc.frame.Y = 12;
+                        npc.frame.Y += frameHeight;
+                        npc.frameCounter = 0;
+                        if (npc.frame.Y < frameHeight * 4 || npc.frame.Y >= frameHeight * 8)
+                        {
+                            npc.frame.Y = frameHeight * 4;
+                        }
                     }
                 }
             }
         }
 
-        public void MoveToPoint(Vector2 point, bool goUpFirst = false)
+        public void MoveToPoint(Vector2 point)
         {
             float moveSpeed = 14f;
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed

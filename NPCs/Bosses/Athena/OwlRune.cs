@@ -24,6 +24,7 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.value = Item.buyPrice(0, 0, 0, 0);
             npc.lavaImmune = true;
             npc.noTileCollide = true;
+            npc.noGravity = true;
         }
 
         public override void AI()

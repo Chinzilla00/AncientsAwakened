@@ -605,22 +605,21 @@ namespace AAMod
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoUnderground");
                     return;
                 }
-                if (!Main.dayTime)
-                {
-                    priority = MusicPriority.BiomeHigh;
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/IN");
-                    return;
-                }
-                if (Ancients.ZoneRisingSunPagoda && NPC.downedMoonlord && !AAWorld.downedAkuma)
-                {
-                    priority = MusicPriority.BiomeHigh;
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/AkumaShrine");
-
-                    return;
-                }
-
                 else
                 {
+                    if (!Main.dayTime)
+                    {
+                        priority = MusicPriority.BiomeHigh;
+                        music = GetSoundSlot(SoundType.Music, "Sounds/Music/IN");
+                        return;
+                    }
+                    if (Ancients.ZoneRisingSunPagoda && NPC.downedMoonlord && !AAWorld.downedAkuma)
+                    {
+                        priority = MusicPriority.BiomeHigh;
+                        music = GetSoundSlot(SoundType.Music, "Sounds/Music/AkumaShrine");
+
+                        return;
+                    }
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface");
 
@@ -630,13 +629,6 @@ namespace AAMod
 
             if (Ancients.ZoneMire)
             {
-                if (Ancients.ZoneRisingMoonLake && NPC.downedMoonlord && !AAWorld.downedYamata)
-                {
-                    priority = MusicPriority.BiomeHigh;
-                    music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shrines");
-                    return;
-                }
-
                 if (player.ZoneRockLayerHeight)
                 {
                     priority = MusicPriority.BiomeHigh;
@@ -646,6 +638,20 @@ namespace AAMod
                 }
                 else
                 {
+                    if (Main.dayTime)
+                    {
+                        priority = MusicPriority.BiomeHigh;
+                        music = GetSoundSlot(SoundType.Music, "Sounds/Music/DM");
+                        return;
+                    }
+
+                    if (Ancients.ZoneRisingMoonLake && NPC.downedMoonlord && !AAWorld.downedYamata)
+                    {
+                        priority = MusicPriority.BiomeHigh;
+                        music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shrines");
+                        return;
+                    }
+
                     priority = MusicPriority.BiomeHigh;
                     music = GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface");
 

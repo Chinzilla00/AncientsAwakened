@@ -33,15 +33,15 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.value = BaseUtility.CalcValue(0, 10, 0, 0);
             npc.npcSlots = 1000;
             npc.aiStyle = -1;
-            npc.lifeMax = 40000;
-            npc.defense = 20;
-            npc.damage = 90;
+            npc.lifeMax = 70000;
+            npc.defense = 40;
+            npc.damage = 110;
             npc.knockBackResist = 0f;
             npc.noGravity = true;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.boss = true;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Athena");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AthenaA");
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -103,6 +103,36 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
             }
 
+            if (internalAI[0] == 0 && npc.life < npc.lifeMax / 3 && Main.netMode != 1)
+            {
+                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaDark>(), false, npc.Center);
+                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaLight>(), false, npc.Center);
+                internalAI[0] = 1;
+                npc.netUpdate = true;
+            }
+
+            if (internalAI[2]++ > 300 && Main.netMode != 1)
+            {
+                int pChoice = Main.rand.Next(3);
+                if (pChoice == 0)
+                {
+                    NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<OwlRune>());
+                }
+                else if (pChoice == 1)
+                {
+                    NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<OwlRuneCharged>());
+                }
+                else
+                {
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Projectile.NewProjectile(player.Center.X + Main.rand.Next(-100, 100), player.Center.Y, 0, 0, mod.ProjectileType<Hurricane>(), npc.damage, 12, Main.myPlayer);
+                    }
+                }
+                internalAI[2] = 0;
+                npc.netUpdate = true;
+            }
+
             if (internalAI[1] == 0) //Acropolis Phase
             {
                 if (Main.netMode != 1)
@@ -129,7 +159,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     BaseAI.AISpaceOctopus(npc, ref FlyAI, Main.player[npc.target].Center, 0.1f, 8f, 220f, 70f, ShootFeather);
                 }
 
-                if (npc.ai[3] > 600)
+                if (npc.ai[3] > 400)
                 {
                     internalAI[1] = 1;
                     npc.ai[0] = 0;
@@ -144,7 +174,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 if (Main.netMode != 1)
                 {
                     npc.ai[1]++;
-                    if (npc.ai[1] == 300)
+                    if (npc.ai[1] == 200)
                     {
                         if (Main.rand.Next(5) == 0)
                         {
@@ -382,40 +412,16 @@ namespace AAMod.NPCs.Bosses.Athena
             if (Main.netMode != 1) BaseUtility.Chat("OW! Fine, fine..! I'll leave you alone! Geez, you don't let up, do you.", Color.CornflowerBlue);
             int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
             Main.npc[p].Center = npc.Center;
-            AAWorld.downedAthena = true;
+            AAWorld.downedAthenaA = true;
         }
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            Texture2D tex = internalAI[2] != 1 ? mod.GetTexture("NPCs/Bosses/Athena/SassyBitch") : Main.npcTexture[npc.type];
+            Texture2D tex = Main.npcTexture[npc.type];
             Color lightColor = BaseDrawing.GetLightColor(npc.Center);
-
-            if (npc.ai[2] == 1)
-            {
-                BaseDrawing.DrawAfterimage(sb, tex, 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
-            }
+            BaseDrawing.DrawAfterimage(sb, tex, 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
             BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor);
             return false;
-        }
-
-        public class CloudSet : MicroBiome
-        {
-            public override bool Place(Point origin, StructureMap structures)
-            {
-                Mod mod = AAMod.instance;
-
-                Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
-                {
-                    [new Color(255, 255, 0)] = mod.TileType("AcropolisClouds"),
-                    [Color.Black] = -1 //don't touch when genning		
-                };
-
-                TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/AcropolisArena"), colorToTile);
-
-                gen.Generate(origin.X, origin.Y, true, true);
-
-                return true;
-            }
         }
     }
 }

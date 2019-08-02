@@ -13,8 +13,8 @@ namespace AAMod.Projectiles
 		public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.WoodenBoomerang);
-            projectile.width = 190;
-			projectile.height = 210;
+            projectile.width = 88;
+			projectile.height = 100;
 			projectile.friendly = true;
             projectile.hostile = false;
             projectile.tileCollide = false;

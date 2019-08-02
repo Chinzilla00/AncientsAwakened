@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Dev
+namespace AAMod.Items.Dev.Minions
 {
     public class SockPuppetEX : ModProjectile
     {
