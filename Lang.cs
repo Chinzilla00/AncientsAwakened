@@ -2616,7 +2616,7 @@ namespace AAMod
                         case "CurrentSpeedBoost:":
                         return "当前速度增加: ";
                         case "CurrentDamageResistance:":
-                        return "当前伤害抗性增加: ";
+                        return "当前伤害减免增加: ";
                         case "Damage":
                         return "伤害";
                     }
@@ -2742,7 +2742,7 @@ namespace AAMod
                         case "AtlanteanBonus":
                         return @"完全处于液体中时, 你的魔法能力和防御力提升";
                         case "BlazingBonus":
-                        return @"增加5%伤害抗性
+                        return @"增加5%伤害减免
 敌人更容易瞄准你
 你挥动的武器对敌人造成燃烧";
                         case "ChaosFukumenBonus":
@@ -2768,15 +2768,15 @@ namespace AAMod
                         case "DarkmatterHeaddressBonus":
                         return @"增加6召唤上限
 你的召唤物会电击敌人
-夜晚增加8%伤害抗性";
+夜晚增加8%伤害减免";
                         case "DarkmatterHelmBonus":
-                        return "增加30%投掷速度和暴击率\r\n你的投掷武器会电击敌人\r\n夜晚增加8%伤害抗性";
+                        return "增加30%投掷速度和暴击率\r\n你的投掷武器会电击敌人\r\n夜晚增加8%伤害减免";
                         case "DarkmatterHelmetBonus":
-                        return "增加15%近战暴击率和近战速度\r\n你的近战武器会电击敌人\r\n夜晚增加8%伤害抗性";
+                        return "增加15%近战暴击率和近战速度\r\n你的近战武器会电击敌人\r\n夜晚增加8%伤害减免";
                         case "DarkmatterMaskBonus":
-                        return "增加200魔力上限\r\n减少20%魔力消耗\r\n你的魔法攻击会电击敌人\r\n夜晚增加8%伤害抗性";
+                        return "增加200魔力上限\r\n减少20%魔力消耗\r\n你的魔法攻击会电击敌人\r\n夜晚增加8%伤害减免";
                         case "DarkmatterVisorBonus":
-                        return "减少25%弹药消耗\r\n增加20%远程暴击率\r\n你的远程武器会电击敌人\r\n夜晚增加8%伤害抗性";
+                        return "减少25%弹药消耗\r\n增加20%远程暴击率\r\n你的远程武器会电击敌人\r\n夜晚增加8%伤害减免";
                         case "DeathlySkullBonus":
                         return "如死般默然, 使得怪物更少瞄准你\r\n减少20%弹药消耗";
                         case "DemonHoodBonus":
@@ -2816,7 +2816,7 @@ namespace AAMod
                         case "ShroomHatBonus":
                         return "你对法力病免疫";
                         case "GoblinSlayerHelmBonus":
-                        return "对哥布林增加500%伤害和击退\r\n增加80%对哥布林的伤害抗性\r\n“我只想猎杀哥布林”";
+                        return "对哥布林增加500%伤害和击退\r\n增加80%对哥布林的伤害减免\r\n“我只想猎杀哥布林”";
                         case "HoodlumHoodBonus":
                         return "生命值低于一半时， 移动速度、近战伤害和召唤伤害将增加50%";
                         case "HeartstoneHelmetBonus":
@@ -2826,7 +2826,7 @@ namespace AAMod
                         case "LeviathanHelmBonus":
                         return "生命值低于一半时， 移动速度、远程战伤害和魔法伤害将增加50%";
                         case "KindledKabutoBonus":
-                        return "增加5%伤害抗性\r\n你挥动的武器对敌人造成灼伤";
+                        return "增加5%伤害减免\r\n你挥动的武器对敌人造成灼伤";
                         case "MadnessVisorBonus":
                         return "增加5%伤害";
                         case "MadTitanChestplateBonus":
@@ -2834,7 +2834,7 @@ namespace AAMod
                         case "MadTitanVestBonus":
                         return "无限手套现在正是最强之时\r\n“狂热泰坦的力量就在你的指尖”\r\n(译者注：你也是灭霸? )";
                         case "MechHelmBonus":
-                        return "增加10%伤害抗性";
+                        return "增加10%伤害减免";
                         case "MushiumHatBonus":
                         return "药水病的时间减少25%";
                         case "NightmareHelmetBonus":
@@ -2884,7 +2884,7 @@ namespace AAMod
                         case "RadiumMaskBonus":
                         return "+200魔力上限\r\n减少20%魔力消耗\r\n受到攻击会有星星从天堂坠落并增加你的移动速度\r\n白天增加30%移动速度";
                         case "RaiderChestBonus":
-                        return "你不会被击退\r\n随着你的生命值降低, 你的伤害抗性将提高";
+                        return "你不会被击退\r\n随着你的生命值降低, 你的伤害减免将提高";
                         case "StarcloudHeadgearBonus":
                         return "生命值低于60时, 增加100%召唤物和魔法伤害";
                         case "StarcrystalHelmBonus":
@@ -2902,7 +2902,7 @@ namespace AAMod
                         case "TrueAtlanteanHelmBonus":
                         return "完全处于液体中时, 玩家魔法能力大幅度提升\n你可以在水中畅通无阻的游泳";
                         case "TrueBlazingKabutoBonus":
-                        return "增加5%伤害抗性\r\n敌人更容易瞄准你\r\n攻击你的敌人获得燃烧\r\n你挥动的武器对敌人造成燃烧";
+                        return "增加5%伤害减免\r\n敌人更容易瞄准你\r\n攻击你的敌人获得燃烧\r\n你挥动的武器对敌人造成燃烧";
                         case "TrueCopperHelmBonus":
                         return "“你周围的大地魔力赐予你能量”\r\n受到攻击时释放出铜之魂攻击敌人";
                         case "TrueDeathlySkullBonus":
@@ -2930,7 +2930,7 @@ namespace AAMod
                         case "UraniumVisorBonus":
                         return "靠近你的敌人受到你盔甲的辐射灼伤";
                         case "VikingPlateBonus":
-                        return "增加4%伤害抗性";
+                        return "增加4%伤害减免";
                         case "WitchHoodBonus":
                         return "灼热并且燃烧\r\n增加20%魔法/召唤伤害\r\n+4召唤上限\r\n一个狱焰之灵保护着你\r\n越少的法力, 使得狱焰之灵更强大";
                         case "YtriumHeadgearBonus":

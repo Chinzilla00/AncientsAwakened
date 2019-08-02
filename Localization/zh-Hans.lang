@@ -335,7 +335,7 @@ ItemName.MindStone=心灵宝石
 ItemTooltip.MindStone=减少50%魔力消耗\n+200魔力上限\n“简单的微积分”\n(白昼启明虫掉落)
 
 ItemName.OrnateBand=华丽珠环
-ItemTooltip.OrnateBand=增加5%伤害抗性
+ItemTooltip.OrnateBand=增加5%伤害减免
 
 ItemName.PalladiumShield=钯金盾
 ItemTooltip.PalladiumShield=使你免疫击退
@@ -461,13 +461,13 @@ ItemTooltip.AtlanteanPlate=增加15%魔法伤害\n亚特兰蒂斯之力在其中
 
 
 ItemName.BlazingDou=怒炎道甲
-ItemTooltip.BlazingDou=增加2%伤害抗性\n在燎日之焰中锻造
+ItemTooltip.BlazingDou=增加2%伤害减免\n在燎日之焰中锻造
 
 ItemName.BlazingKabuto=怒炎盔胄
-ItemTooltip.BlazingKabuto=增加2%伤害抗性\n在燎日之焰中锻造
+ItemTooltip.BlazingKabuto=增加2%伤害减免\n在燎日之焰中锻造
 
 ItemName.BlazingSuneate=怒炎臑当
-ItemTooltip.BlazingSuneate=增加2%伤害抗性\n在燎日之焰中锻造\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
+ItemTooltip.BlazingSuneate=增加2%伤害减免\n在燎日之焰中锻造\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
 
 // AAMod.Items.Armor.Chaos
 
@@ -498,22 +498,22 @@ ItemTooltip.ChaosVisor=增加30%召唤伤害
 // AAMod.Items.Armor.PerfectChaos
 
 ItemName.PerfectChaosGreaves=冥昧抹杀者护胫
-ItemTooltip.PerfectChaosGreaves=增加45%移动速度\n增加15%伤害抗性\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosGreaves=增加45%移动速度\n增加15%伤害减免\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosHood=冥昧抹杀者兜帽
-ItemTooltip.PerfectChaosHood=增加32%魔法伤害\n增加20%魔法暴击率\n增加10%伤害抗性\n减少30%魔法消耗\n+150魔法上限\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosHood=增加32%魔法伤害\n增加20%魔法暴击率\n增加10%伤害减免\n减少30%魔法消耗\n+150魔法上限\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosKabuto=冥昧抹杀者盔胄
-ItemTooltip.PerfectChaosKabuto=增加30%近战伤害和暴击率\n增加15%伤害抗性\n增加15近战速度\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosKabuto=增加30%近战伤害和暴击率\n增加15%伤害减免\n增加15近战速度\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosMask=冥昧抹杀者面具
-ItemTooltip.PerfectChaosMask=增加70%召唤伤害\n增加5%伤害抗性\n+6召唤上限\n+2炮台上限\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosMask=增加70%召唤伤害\n增加5%伤害减免\n+6召唤上限\n+2炮台上限\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosVisor=冥昧抹杀者视镜
-ItemTooltip.PerfectChaosVisor=增加45%远程伤害\n增加38%远程暴击率\n增加12%伤害抗性\n减少25%弹药消耗\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosVisor=增加45%远程伤害\n增加38%远程暴击率\n增加12%伤害减免\n减少25%弹药消耗\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosPlate=冥昧抹杀者胸甲
-ItemTooltip.PerfectChaosPlate=增加15%伤害抗性\n允许你在水下呼吸
+ItemTooltip.PerfectChaosPlate=增加15%伤害减免\n允许你在水下呼吸
 
 // AAMod.Items.Armor.Darkmatter
 
@@ -583,26 +583,26 @@ ItemTooltip.DepthHakama=增加15%移动速度\n如暗影般轻盈
 
 
 ItemName.FishDiverBootsA=如鱼得水脚蹼
-ItemTooltip.FishDiverBootsA=现在有脚蹼了!\n增加20%近战/远程伤害和暴击率\n增加13%伤害抗性和近战速度\n增加35%移动速度\n减少20%弹药消耗
+ItemTooltip.FishDiverBootsA=现在有脚蹼了!\n增加20%近战/远程伤害和暴击率\n增加13%伤害减免和近战速度\n增加35%移动速度\n减少20%弹药消耗
 
 ItemName.FishDiverJacketA=如鱼得水紧身夹克
-ItemTooltip.FishDiverJacketA=这件夹克隔热良好，你可以保持干燥地坐在海里\n增加20%近战/远程伤害和暴击率\n增加13%伤害抗性和近战速度\n减少25%弹药消耗
+ItemTooltip.FishDiverJacketA=这件夹克隔热良好，你可以保持干燥地坐在海里\n增加20%近战/远程伤害和暴击率\n增加13%伤害减免和近战速度\n减少25%弹药消耗
 
 ItemName.FishDiverMaskA=如鱼得水呼吸头盔
-ItemTooltip.FishDiverMaskA=我听说你喜欢宝可梦沼跃鱼？\n增加20%近战/远程伤害和暴击率\n增加13%伤害抗性和近战速度\n允许水下呼吸
+ItemTooltip.FishDiverMaskA=我听说你喜欢宝可梦沼跃鱼？\n增加20%近战/远程伤害和暴击率\n增加13%伤害减免和近战速度\n允许水下呼吸
 
 
 // AAMod.Items.Armor.Dev.Alphakip.Shiny
 
 
 ItemName.SFishDiverBootsA=闪鱼入水脚蹼
-ItemTooltip.SFishDiverBootsA=现在有脚蹼了!\n增加20%近战/远程伤害和暴击率\n增加13%伤害抗性和近战速度\n增加35%移动速度\n减少20%弹药消耗
+ItemTooltip.SFishDiverBootsA=现在有脚蹼了!\n增加20%近战/远程伤害和暴击率\n增加13%伤害减免和近战速度\n增加35%移动速度\n减少20%弹药消耗
 
 ItemName.SFishDiverJacketA=闪鱼入水紧身夹克
-ItemTooltip.SFishDiverJacketA=这件夹克隔热良好，你可以保持干燥地坐在海里\n增加20%近战/远程伤害和暴击率\n增加13%伤害抗性和近战速度\n减少25%弹药消耗
+ItemTooltip.SFishDiverJacketA=这件夹克隔热良好，你可以保持干燥地坐在海里\n增加20%近战/远程伤害和暴击率\n增加13%伤害减免和近战速度\n减少25%弹药消耗
 
 ItemName.SFishDiverMaskA=闪鱼入水呼吸头盔
-ItemTooltip.SFishDiverMaskA=我听说你喜欢宝可梦沼跃鱼？\n增加20%近战/远程伤害和暴击率\n增加13%伤害抗性和近战速度\n允许水下呼吸
+ItemTooltip.SFishDiverMaskA=我听说你喜欢宝可梦沼跃鱼？\n增加20%近战/远程伤害和暴击率\n增加13%伤害减免和近战速度\n允许水下呼吸
 
 
 // AAMod.Items.Armor.Dev.Moon
@@ -672,20 +672,20 @@ ItemTooltip.DoomsdayLeggings=增加18%移动速度\n增加20%召唤物伤害\n�
 
 
 ItemName.DracoHelm=炙戮盔胄
-ItemTooltip.DracoHelm=增加20%近战暴击率\n增加10%伤害抗性\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoHelm=增加20%近战暴击率\n增加10%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
 
 ItemName.DracoLeggings=炙戮护腿
-ItemTooltip.DracoLeggings=增加16%移动速度\n增加16%近战速度\n增加10%伤害抗性\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoLeggings=增加16%移动速度\n增加16%近战速度\n增加10%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
 
 ItemName.DracoPlate=炙戮道甲
-ItemTooltip.DracoPlate=增加25%近战伤害\n增加10%伤害抗性\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoPlate=增加25%近战伤害\n增加10%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
 
 
 // AAMod.Items.Armor.Dread
 
 
 ItemName.DreadBoots=惧之月袴裤
-ItemTooltip.DreadBoots=增加50%移动速度\n减少25%弹药消耗\n增加5%伤害抗性\n装甲中栖宿着潭渊的沉渊之怒
+ItemTooltip.DreadBoots=增加50%移动速度\n减少25%弹药消耗\n增加5%伤害减免\n装甲中栖宿着潭渊的沉渊之怒
 
 ItemName.DreadHelm=惧之月假面
 ItemTooltip.DreadHelm=增加24%远程暴击率\n增加20%移动速度\n装甲中栖宿着潭渊的沉渊之怒
@@ -953,7 +953,7 @@ ItemName.PalladiumPaint=钯金脸部涂装
 ItemTooltip.PalladiumPaint=增加15%召唤伤害\n+40魔力上限
 
 ItemName.TechneciumPaint=闪锝脸部涂装
-ItemTooltip.TechneciumPaint=+100魔力上限\n增加4%伤害抗性\n增加25%召唤伤害
+ItemTooltip.TechneciumPaint=+100魔力上限\n增加4%伤害减免\n增加25%召唤伤害
 
 ItemName.TerraPaint=泰拉脸部涂装
 ItemTooltip.TerraPaint=增加42%召唤伤害\n+120魔力上限
@@ -962,7 +962,7 @@ ItemName.TitaniumPaint=钛金脸部涂装
 ItemTooltip.TitaniumPaint=增加27%召唤伤害\n+100魔力上限
 
 ItemName.UraniumPaint=铀绿脸部涂装
-ItemTooltip.UraniumPaint=+60魔力上限\n增加3%伤害抗性\n增加20%召唤伤害
+ItemTooltip.UraniumPaint=+60魔力上限\n增加3%伤害减免\n增加20%召唤伤害
 
 ItemName.YttriumPaint=钇土脸部涂装
 ItemTooltip.YttriumPaint=+50魔力上限\n增加8%移动速度\n增加15%召唤伤害
@@ -1048,19 +1048,19 @@ ItemTooltip.StarcrystalPlate=+20魔法上限
 
 
 ItemName.TechneciumGreaves=闪锝腿甲
-ItemTooltip.TechneciumGreaves=增加4%伤害抗性\n增加5%移动速度
+ItemTooltip.TechneciumGreaves=增加4%伤害减免\n增加5%移动速度
 
 ItemName.TechneciumHelmet=闪锝头盔
-ItemTooltip.TechneciumHelmet=增加4%伤害抗性\n增加10%魔法伤害和暴击率\n+100魔力上限
+ItemTooltip.TechneciumHelmet=增加4%伤害减免\n增加10%魔法伤害和暴击率\n+100魔力上限
 
 ItemName.TechneciumMask=闪锝面具
-ItemTooltip.TechneciumMask=增加4%伤害抗性\n增加14%远程伤害和暴击率
+ItemTooltip.TechneciumMask=增加4%伤害减免\n增加14%远程伤害和暴击率
 
 ItemName.TechneciumPlate=闪锝护胸
-ItemTooltip.TechneciumPlate=增加4%伤害抗性
+ItemTooltip.TechneciumPlate=增加4%伤害减免
 
 ItemName.TechneciumVisor=闪锝面罩
-ItemTooltip.TechneciumVisor=增加4%伤害抗性\n增加12%近战伤害和暴击率
+ItemTooltip.TechneciumVisor=增加4%伤害减免\n增加12%近战伤害和暴击率
 
 
 // AAMod.Items.Armor.Tribal
@@ -1106,13 +1106,13 @@ ItemTooltip.TrueAtlanteanPlate=增加20%魔法伤害\n亚特兰蒂斯之力在�
 
 
 ItemName.TrueBlazingDou=精铸怒炎道甲
-ItemTooltip.TrueBlazingDou=增加5%伤害抗性
+ItemTooltip.TrueBlazingDou=增加5%伤害减免
 
 ItemName.TrueBlazingKabuto=精铸怒炎盔胄
-ItemTooltip.TrueBlazingKabuto=增加5%伤害抗性
+ItemTooltip.TrueBlazingKabuto=增加5%伤害减免
 
 ItemName.TrueBlazingSuneate=精铸怒炎臑当
-ItemTooltip.TrueBlazingSuneate=增加5%伤害抗性\n增加5%移动速度\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
+ItemTooltip.TrueBlazingSuneate=增加5%伤害减免\n增加5%移动速度\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
 
 
 // AAMod.Items.Armor.TrueCopper
@@ -1254,13 +1254,13 @@ ItemTooltip.UraniumBoots=增加8%移动速度
 ItemName.UraniumChestplate=铀绿胸甲
 
 ItemName.UraniumHeadgear=铀绿头饰
-ItemTooltip.UraniumHeadgear=增加3%伤害抗性\n增加8%远程伤害
+ItemTooltip.UraniumHeadgear=增加3%伤害减免\n增加8%远程伤害
 
 ItemName.UraniumHood=铀绿兜帽
-ItemTooltip.UraniumHood=+60魔力上限\n增加3%伤害抗性\n增加8%魔法伤害
+ItemTooltip.UraniumHood=+60魔力上限\n增加3%伤害减免\n增加8%魔法伤害
 
 ItemName.UraniumVisor=铀绿面罩
-ItemTooltip.UraniumVisor=增加3%伤害抗性\n增加8%近战伤害
+ItemTooltip.UraniumVisor=增加3%伤害减免\n增加8%近战伤害
 
 
 // AAMod.Items.Armor.Viking
@@ -1754,11 +1754,14 @@ ItemTooltip.SunStaff=向你的敌人降下燎炎和怒火\n造成破晓
 ItemName.SunStorm=燎焰风暴
 
 ItemName.TaiyangBaolei=太阳堡垒
-ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n增加10%伤害抗性,你的近战和魔法攻击对敌人造成灼伤\n白天,增加20%伤害抗性你的近战和魔法攻击造成破晓来代替着火\n(译者注：绝了,这个装备的英文原名就是taiyangbaolei)
+ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n增加10%伤害减免,你的近战和魔法攻击对敌人造成灼伤\n白天,增加20%伤害减免你的近战和魔法攻击造成破晓来代替着火\n(译者注：绝了,这个装备的英文原名就是taiyangbaolei)
 
 ItemName.YOTD=龙年大吉
 ItemTooltip.YOTD=发射绚烂的烟花吸引同伴驱赶敌人\n“邪鬼巨龙牌安全烟花,朝脸发射也没伤害!文明放烟花,安全你我他!”
 
+// AAMod.Items.Boss.Athena
+
+ItemName.AthenaBag=宝藏袋
 
 // AAMod.Items.Boss.Broodmother
 
@@ -1772,7 +1775,7 @@ ItemName.BroodScale=焦炎鳞片
 ItemTooltip.BroodScale=可怕敌人的鳞片
 
 ItemName.DragonCape=驯龙者披风
-ItemTooltip.DragonCape=增加7%伤害抗性
+ItemTooltip.DragonCape=增加7%伤害减免
 
 
 // AAMod.Items.Boss.Djinn
@@ -1895,7 +1898,7 @@ ItemName.HydraTrophy=九头渊蛇纪念章
 
 
 ItemName.DragonSerpentNecklace=龙蛇项链
-ItemTooltip.DragonSerpentNecklace=增加7%伤害和伤害抗性\n无视敌人5防御力
+ItemTooltip.DragonSerpentNecklace=增加7%伤害和伤害减免\n无视敌人5防御力
 
 ItemName.EXArmor=EX装甲碎片
 ItemTooltip.EXArmor=用于制作EX装甲
@@ -1910,7 +1913,7 @@ ItemName.MadnessTruffle=癫狂松露
 ItemTooltip.MadnessTruffle=提升跳跃速度而且允许自动跳跃\n免疫坠落伤害\n提升跳跃高度\n+50魔法上限\n+50生命上限\n你知道的,别把它往嘴里放.
 
 ItemName.StormCharm=暴风魅饰
-ItemTooltip.StormCharm=增加15%伤害和伤害抗性\n增加10%近战速度\n所有攻击造成20真实伤害 (无种类伤害)\n获得冲刺能力
+ItemTooltip.StormCharm=增加15%伤害和伤害减免\n增加10%近战速度\n所有攻击造成20真实伤害 (无种类伤害)\n获得冲刺能力
 
 
 // AAMod.Items.Boss.MushroomMonarch
@@ -1959,7 +1962,7 @@ ItemTooltip.StormPendant=增加18%伤害\n增加10%魔法回复
 
 
 ItemName.HoloCape=全息披风
-ItemTooltip.HoloCape=增加15%伤害抗性
+ItemTooltip.HoloCape=增加15%伤害减免
 
 ItemName.RaiderBag=宝藏袋
 ItemTooltip.RaiderBag={$CommonItemTooltip.RightClickToOpen}
@@ -1998,7 +2001,7 @@ ItemName.RajahPelt=兔毛
 ItemTooltip.RajahPelt=令人惊讶的毛皮耐久度
 
 ItemName.RajahCape=忍者兔的至尊斗篷
-ItemTooltip.RajahCape=每损失10％生命值，你获得以下效果:\n1. 最高伤害提升类型再获得12%伤害加成\n2. 提升5%移动速度\n3.增加4%伤害抗性\n复仇腰带的所有效果\n“你被无辜的保护者视为合格的继承者”
+ItemTooltip.RajahCape=每损失10％生命值，你获得以下效果:\n1. 最高伤害提升类型再获得12%伤害加成\n2. 提升5%移动速度\n3.增加4%伤害减免\n复仇腰带的所有效果\n“你被无辜的保护者视为合格的继承者”
 
 // AAMod.Items.Boss.Rajah.Supreme
 

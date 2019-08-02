@@ -1,7 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-namespace AAMod.Items.Boss.Akuma
+namespace AAMod.Items.Boss.Athena
 {
     public class AthenaBag : BaseAAItem
     {
