@@ -3589,6 +3589,8 @@ ItemName.OceanWhaler=猎鲸者
 ItemName.PrimevalJavelin=原初之枪
 ItemTooltip.PrimevalJavelin=如果扎在敌人身上，敌人死亡时，释放四个远古能量导引的箭头
 
+ItemName.PurityString=净化之弦
+
 ItemName.Railjaw=钢颚枪
 
 ItemName.RustyCrossbow=锈蚀十字弩
@@ -3954,6 +3956,9 @@ ItemTooltip.FungicideSolution=环境改造枪专用\n清除蘑菇地
 
 ItemName.GoblinDoll=哥布林工匠巫毒娃娃
 ItemTooltip.GoblinDoll=真对不起，小东西...\n(译者注：早就想把这个整天骗我钱的玩意搞死了。)\n(远古三王后, 哥布林召唤师掉落)
+
+ItemName.GreedKey=鎏金钥匙
+ItemTooltip.GreedKey=似乎可以打开....什么东西?
 
 ItemName.HellCrate=地狱板条箱
 ItemTooltip.HellCrate=右键打开
