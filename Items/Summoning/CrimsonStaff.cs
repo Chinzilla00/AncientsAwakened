@@ -19,7 +19,7 @@ namespace AAMod.Items.Summoning
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("CrimeraMinion");
-            item.damage = 15;
+            item.damage = 20;
             item.width = 46;
             item.height = 46;
             item.UseSound = SoundID.Item44;

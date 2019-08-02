@@ -187,7 +187,7 @@ namespace AAMod.Projectiles.AH
             {
                 projectile.ai[1] += Main.rand.Next(1, 4);
             }
-            if (projectile.ai[1] > 90f)
+            if (projectile.ai[1] > 60f)
             {
                 projectile.ai[1] = 0f;
                 projectile.netUpdate = true;

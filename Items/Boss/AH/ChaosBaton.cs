@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.AH
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("ChaosBaton");
-            item.damage = 120;
+            item.damage = 300;
             item.width = 52;
             item.noMelee = true;
             item.height = 52;

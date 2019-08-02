@@ -144,13 +144,13 @@ namespace AAMod.Projectiles.Rajah
                 vector47.Normalize();
                 if (num648 > 200f)
                 {
-                    float scaleFactor2 = 8f;
+                    float scaleFactor2 = 14f;
                     vector47 *= scaleFactor2;
                     projectile.velocity = (projectile.velocity * 40f + vector47) / 41f;
                 }
                 else
                 {
-                    float num649 = 4f;
+                    float num649 = 6f;
                     vector47 *= -num649;
                     projectile.velocity = (projectile.velocity * 40f + vector47) / 41f;
                 }
@@ -162,7 +162,7 @@ namespace AAMod.Projectiles.Rajah
                 {
                     flag26 = projectile.ai[0] == 1f;
                 }
-                float num650 = 6f;
+                float num650 = 9f;
                 if (flag26)
                 {
                     num650 = 15f;
@@ -172,7 +172,7 @@ namespace AAMod.Projectiles.Rajah
                 float num651 = vector48.Length();
                 if (num651 > 200f && num650 < 8f)
                 {
-                    num650 = 8f;
+                    num650 = 12f;
                 }
                 if (num651 < num636 && flag26 && !Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
                 {

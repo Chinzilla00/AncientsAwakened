@@ -16,7 +16,7 @@ namespace AAMod.Items.Summoning
 
         public override void SetDefaults()
         {
-            item.damage = 130;
+            item.damage = 180;
             item.summon = true;
             item.mana = 10;
             item.width = 26;
@@ -26,7 +26,7 @@ namespace AAMod.Items.Summoning
             item.useStyle = 1;
             item.noMelee = true;
             item.knockBack = 3;
-            item.rare = 4;
+            item.rare = 7;
             item.UseSound = SoundID.Item44;
             item.shoot = mod.ProjectileType("TerraWizard");
             item.shootSpeed = 10f;

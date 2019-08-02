@@ -21,7 +21,7 @@ namespace AAMod.Items.Armor.Doomite
             projectile.netImportant = true;
             projectile.friendly = true;
             projectile.ignoreWater = true;
-            projectile.minionSlots = 0.5f;
+            projectile.minionSlots = 0;
             projectile.timeLeft = 18000;
             projectile.penetrate = -1;
             projectile.tileCollide = false;

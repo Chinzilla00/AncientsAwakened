@@ -16,7 +16,7 @@ namespace AAMod.Items.Summoning
         public override void SetDefaults()
         {
             item.mana = 20;
-            item.damage = 90;
+            item.damage = 50;
             item.useStyle = 1;
             item.shootSpeed = 10f;
             item.shoot = mod.ProjectileType("DragonHead");
