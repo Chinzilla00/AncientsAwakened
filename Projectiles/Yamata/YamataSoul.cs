@@ -22,8 +22,8 @@ namespace AAMod.Projectiles.Yamata
 
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 80;
+            projectile.height = 40;
             projectile.friendly = true;
             projectile.ranged = true;
             projectile.ignoreWater = true;
@@ -33,7 +33,15 @@ namespace AAMod.Projectiles.Yamata
             projectile.timeLeft = 900;
             projectile.friendly = true;
             projectile.hostile = false;
-            
+
+        }
+
+
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+        {
+            width = 10;
+            height = 10;
+            return true;
         }
 
         public override void AI()

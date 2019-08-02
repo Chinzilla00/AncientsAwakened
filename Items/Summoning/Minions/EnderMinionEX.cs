@@ -21,6 +21,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.timeLeft = 300;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
+            projectile.extraUpdates = 1;
         }
 
         public override void SetStaticDefaults()

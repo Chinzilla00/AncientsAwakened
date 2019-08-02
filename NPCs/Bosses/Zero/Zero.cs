@@ -104,14 +104,16 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.height = 100;
                 npc.position.X = npc.position.X - (npc.width / 2);
                 npc.position.Y = npc.position.Y - (npc.height / 2);
-                Vector2 spawnAt = npc.Center + new Vector2(0f, npc.height / 2f);
-                if (Main.expertMode)
+                if (Main.expertMode && Main.netMode != 1) 
                 {
                     if (Main.netMode != 1) BaseUtility.Chat("PHYSICAL ZER0 UNIT IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
-                    NPC.NewNPC((int)spawnAt.X, (int)spawnAt.Y, mod.NPCType("ZeroAwakened"), 0, 0, 0, 0, 0, npc.target) ;
+                    int z = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ZeroAwakened"), 0, 0, 0, 0, 0, npc.target) ;
+                    Main.npc[z].Center = npc.Center;
 
                     int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
                     Main.projectile[b].Center = npc.Center;
+
+                    npc.netUpdate = true;
 
                 }
                 if (!Main.expertMode)
@@ -292,8 +294,6 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             Player player = Main.player[npc.target];
 
-            Vector2 DeactivatedPoint = new Vector2(ZeroHandler.ZX, ZeroHandler.ZY);
-
             RingRoatation += 0.03f;
 
             if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
@@ -301,45 +301,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.TargetClosest();
                 if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
                 {
-                    if (Vector2.Distance(DeactivatedPoint, npc.position) > 4000)
-                    {
-                        npc.velocity.X *= .95f;
-                        if (npc.velocity.X < 1)
-                        {
-                            npc.velocity.X = 0;
-                            npc.velocity.Y -= .2f;
-                            if (npc.position.Y < 0 && Main.netMode != 1)
-                            {
-                                npc.active = false;
-                                npc.netUpdate = true;
-                            }
-                        }
-                        else
-                        {
-                            npc.velocity.Y *= .95f;
-                        }
-                    }
-                    else
-                    {
-                        MoveToPoint(DeactivatedPoint);
-                        if (Vector2.Distance(npc.Center, DeactivatedPoint) < 16)
-                        {
-                            npc.Transform(mod.NPCType<ZeroDeactivated>());
-                        }
-                    }
-                    if (Distance > 0)
-                    {
-                        Distance -= 5f;
-                    }
-                    else
-                    {
-                        KillArms();
-                        if (Main.netMode != 1)
-                        {
-                            Distance = 0;
-                            npc.netUpdate = true;
-                        }
-                    }
+                    npc.Transform(mod.NPCType<ZeroDeactivated>());
                 }
                 return;
             }

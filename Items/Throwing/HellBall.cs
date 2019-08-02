@@ -33,7 +33,15 @@ namespace AAMod.Items.Throwing
 
         public override bool CanUseItem(Player player)       //this make that you can shoot only 1 boomerang at once
         {
-            if (AAGlobalProjectile.CountProjectiles(mod.ProjectileType("HellBallP")) > 5)
+            int num = 0;
+            for (int i = 0; i < 200; i++)
+            {
+                if (Main.projectile[i].active && Main.projectile[i].type == mod.ProjectileType("HellBallP"))
+                {
+                    num++;
+                }
+            }
+            if (num > 5)
             {
                 return false;
             }

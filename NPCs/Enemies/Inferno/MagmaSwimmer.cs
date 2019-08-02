@@ -70,16 +70,16 @@ namespace AAMod.NPCs.Enemies.Inferno
                 npc.frameCounter = 0;
                 if (BiteAttack)
                 {
-                    npc.frame.Y += 44;
-                    if (npc.frame.Y < 44 * 2 || npc.frame.Y > 44 * 3)
+                    npc.frame.Y += frameHeight;
+                    if (npc.frame.Y < frameHeight * 2 || npc.frame.Y > frameHeight * 3)
                     {
-                        npc.frame.Y = 44 * 6;
+                        npc.frame.Y = frameHeight * 2;
                     }
                 }
                 else
                 {
-                    npc.frame.Y += 44;
-                    if (npc.frame.Y > 44)
+                    npc.frame.Y += frameHeight;
+                    if (npc.frame.Y > frameHeight)
                     {
                         npc.frame.Y = 0;
                     }

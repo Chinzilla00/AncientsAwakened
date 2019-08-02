@@ -195,8 +195,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 if (!Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) <= 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) >= 6000f)
                 {
                     npc.TargetClosest(true);
-
-                    internalAI[0] = 0f;
                 }
                 return;
             }

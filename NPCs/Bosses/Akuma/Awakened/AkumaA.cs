@@ -28,8 +28,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void SetDefaults()
         {
             npc.noTileCollide = true;
-            npc.width = 84;
-            npc.height = 84;
+            npc.width = 80;
+            npc.height = 80;
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.damage = 110;
@@ -739,6 +739,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.width = 80;
             npc.height = 80;
             npc.dontCountMe = true;
+            npc.chaseable = false;
         }
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)

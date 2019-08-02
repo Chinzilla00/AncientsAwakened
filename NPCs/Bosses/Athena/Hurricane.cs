@@ -146,7 +146,7 @@ namespace AAMod.NPCs.Bosses.Athena
             Rectangle rectangle15 = texture2D33.Frame(1, Main.projFrames[projectile.type], 0, projectile.frame);
             Color alpha5 = projectile.GetAlpha(lightColor);
             Vector2 origin11 = rectangle15.Size() / 2f;
-            Color color61 = Main.hslToRgb(0.136f, 1f, 0.5f).MultiplyRGBA(new Color(255, 255, 255, 0));
+            Color color61 = Main.hslToRgb(0.251f, 1f, 1f).MultiplyRGBA(new Color(255, 255, 255, 0));
             Main.spriteBatch.Draw(texture2D33, vector42, new Rectangle?(rectangle15), color61, 0f, origin11, new Vector2(1f, 5f) * projectile.scale * 2f, spriteEffects, 0f);
             Main.spriteBatch.Draw(texture2D33, vector42, new Rectangle?(rectangle15), alpha5, projectile.rotation, origin11, projectile.scale, spriteEffects, 0f);
             Main.spriteBatch.Draw(texture2D33, vector42, new Rectangle?(rectangle15), alpha5, 0f, origin11, new Vector2(1f, 8f) * projectile.scale, spriteEffects, 0f);

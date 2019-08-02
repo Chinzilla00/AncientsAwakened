@@ -1632,7 +1632,12 @@ namespace AAMod
                                 WorldGen.SquareTileFrame(k, l);
                                 sendNet = true;
                             }
-
+                            else if (type == TileID.SnowBlock)
+                            {
+                                Main.tile[k, l].type = (ushort)mod.TileType<TorchAsh>();
+                                WorldGen.SquareTileFrame(k, l);
+                                sendNet = true;
+                            }
                             if (sendNet)
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                         }

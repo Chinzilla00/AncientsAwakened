@@ -17,7 +17,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override void SetDefaults()
         {
-            npc.width = 80;
+            npc.width = 60;
             npc.height = 58;
             npc.npcSlots = 1000;
             npc.aiStyle = -1;
@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.TargetClosest();
             if (Main.netMode != 1)
             {
-                if (Vector2.Distance(npc.Center, Acropolis) < 100 && Main.netMode != 1)
+                if (Vector2.Distance(npc.Center, Acropolis) < 10 && Main.netMode != 1)
                 {
                     npc.frame.Y = 0;
                     npc.velocity.X *= 0;
@@ -65,67 +65,67 @@ namespace AAMod.NPCs.Bosses.Athena
                     npc.ai[0]++;
                     if (Main.netMode != 1)
                     {
-                        if (npc.ai[0] == 90)
+                        if (npc.ai[0] == 120)
                         {
                             if (Main.netMode != 1) BaseUtility.Chat("...hah...hah...", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
-                        if (npc.ai[0] == 180)
+                        if (npc.ai[0] == 240)
                         {
                             if (Main.netMode != 1) BaseUtility.Chat("...I still lost.", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
-                        if (npc.ai[0] == 270)
+                        if (npc.ai[0] == 360)
                         {
                             if (Main.netMode != 1) BaseUtility.Chat("...", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
-                        if (npc.ai[0] == 360)
+                        if (npc.ai[0] == 480)
                         {
                             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AthenaA");
                             if (Main.netMode != 1) BaseUtility.Chat("No.", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
-                        if (npc.ai[0] == 450)
+                        if (npc.ai[0] == 600)
                         {
                             if (Main.netMode != 1) BaseUtility.Chat("I'm not giving up that easilly.", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
-                        if (npc.ai[0] == 540)
+                        if (npc.ai[0] == 720)
                         {
                             if (Main.netMode != 1) BaseUtility.Chat("There's a phrase my people live by, earthwalker.", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
-                        if (npc.ai[0] == 630)
+                        if (npc.ai[0] == 840)
                         {
                             if (Main.netMode != 1) BaseUtility.Chat("Brightest of dawn...", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
-                        if (npc.ai[0] == 720)
+                        if (npc.ai[0] == 960)
                         {
                             if (Main.netMode != 1) BaseUtility.Chat("Darkest of night...", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
-                        if (npc.ai[0] == 810)
+                        if (npc.ai[0] == 1080)
                         {
                             if (Main.netMode != 1) BaseUtility.Chat("Even in defeat...", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
-                        if (npc.ai[0] >= 900)
+                        if (npc.ai[0] >= 1200)
                         {
                             if (Main.netMode != 1) BaseUtility.Chat("A VARIAN ALWAYS PUTS UP ONE LAST FIGHT!!!", Color.Silver);
                             AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaA>(), false, npc.Center);
 
-                            int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 5, 15);
+                            int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer);
                             Main.projectile[b].Center = npc.Center;
 
                             npc.active = false;
@@ -138,6 +138,15 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
+            if (npc.ai[1] == 0)
+            {
+                tex = Main.npcTexture[mod.NPCType<Athena>()];
+            }
+            else
+            {
+                tex = Main.npcTexture[npc.type];
+            }
+
             Color lightColor = BaseDrawing.GetLightColor(npc.Center);
 
             BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor);

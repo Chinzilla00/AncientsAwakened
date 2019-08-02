@@ -124,7 +124,10 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
                 else
                 {
-                    Projectile.NewProjectile(player.Center.X + Main.rand.Next(-20, 20), player.Center.Y, 0, 0, mod.ProjectileType<Hurricane>(), npc.damage, 12, Main.myPlayer);
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Projectile.NewProjectile(player.Center.X + Main.rand.Next(-100, 100), player.Center.Y, 0, 0, mod.ProjectileType<Hurricane>(), npc.damage, 12, Main.myPlayer);
+                    }
                 }
                 internalAI[2] = 0;
                 npc.netUpdate = true;
@@ -409,7 +412,7 @@ namespace AAMod.NPCs.Bosses.Athena
             if (Main.netMode != 1) BaseUtility.Chat("OW! Fine, fine..! I'll leave you alone! Geez, you don't let up, do you.", Color.CornflowerBlue);
             int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
             Main.npc[p].Center = npc.Center;
-            AAWorld.downedAthena = true;
+            AAWorld.downedAthenaA = true;
         }
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)

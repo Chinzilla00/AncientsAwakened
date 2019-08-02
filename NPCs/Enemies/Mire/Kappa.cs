@@ -133,26 +133,7 @@ namespace AAMod.NPCs.Enemies.Mire
             bool flag5 = false;
             bool flag6 = true;
             bool flag7 = false;
-            int num42 = npc.type;
             bool flag8 = true;
-            num42 = npc.type;
-            if (num42 != 466)
-            {
-                switch (num42)
-                {
-                    default:
-                        if (num42 != 520)
-                        {
-                            goto IL_2E98;
-                        }
-                        break;
-                }
-            }
-            if (npc.ai[2] > 0f)
-            {
-                flag8 = false;
-            }
-            IL_2E98:
             if (!flag7 && flag8)
             {
                 if (npc.velocity.Y == 0f && ((npc.velocity.X > 0f && npc.direction < 0) || (npc.velocity.X < 0f && npc.direction > 0)))
@@ -220,98 +201,48 @@ namespace AAMod.NPCs.Enemies.Mire
                     npc.velocity *= 0.8f;
                 }
             }
-                else if (npc.velocity.X < 2f && npc.direction == 1)
+            else if (npc.velocity.X < 2f && npc.direction == 1)
+            {
+                npc.velocity.X = npc.velocity.X + 0.07f;
+                if (npc.velocity.X > 2f)
                 {
-                    npc.velocity.X = npc.velocity.X + 0.07f;
-                    if (npc.velocity.X > 2f)
-                    {
-                        npc.velocity.X = 2f;
-                    }
+                    npc.velocity.X = 2f;
                 }
-                else if (npc.velocity.X > -2f && npc.direction == -1)
+            }
+            else if (npc.velocity.X > -2f && npc.direction == -1)
+            {
+                npc.velocity.X = npc.velocity.X - 0.07f;
+                if (npc.velocity.X < -2f)
                 {
-                    npc.velocity.X = npc.velocity.X - 0.07f;
-                    if (npc.velocity.X < -2f)
-                    {
-                        npc.velocity.X = -2f;
-                    }
+                    npc.velocity.X = -2f;
                 }
-            
+            }
+
             float num79 = 1f;
-                if (npc.type == 186)
+            if (npc.velocity.X < -num79 || npc.velocity.X > num79)
+            {
+                if (npc.velocity.Y == 0f)
                 {
-                    num79 = 1.1f;
+                    npc.velocity *= 0.8f;
                 }
-                if (npc.type == 187)
+            }
+            else if (npc.velocity.X < num79 && npc.direction == 1)
+            {
+                npc.velocity.X = npc.velocity.X + 0.07f;
+                if (npc.velocity.X > num79)
                 {
-                    num79 = 0.9f;
+                    npc.velocity.X = num79;
                 }
-                if (npc.type == 188)
+            }
+            else if (npc.velocity.X > -num79 && npc.direction == -1)
+            {
+                npc.velocity.X = npc.velocity.X - 0.07f;
+                if (npc.velocity.X < -num79)
                 {
-                    num79 = 1.2f;
+                    npc.velocity.X = -num79;
                 }
-                if (npc.type == 189)
-                {
-                    num79 = 0.8f;
-                }
-                if (npc.type == 132)
-                {
-                    num79 = 0.95f;
-                }
-                if (npc.type == 200)
-                {
-                    num79 = 0.87f;
-                }
-                if (npc.type == 223)
-                {
-                    num79 = 1.05f;
-                }
-                if (npc.type == 489)
-                {
-                    float num80 = (Main.player[npc.target].Center - npc.Center).Length();
-                    num80 *= 0.0025f;
-                    if (num80 > 1.5)
-                    {
-                        num80 = 1.5f;
-                    }
-                    if (Main.expertMode)
-                    {
-                        num79 = 3f - num80;
-                    }
-                    else
-                    {
-                        num79 = 2.5f - num80;
-                    }
-                    num79 *= 0.8f;
-                }
-                if (npc.type == 489 || npc.type == 3 || npc.type == 132 || npc.type == 186 || npc.type == 187 || npc.type == 188 || npc.type == 189 || npc.type == 200 || npc.type == 223 || npc.type == 331 || npc.type == 332)
-                {
-                    num79 *= 1f + (1f - npc.scale);
-                }
-                if (npc.velocity.X < -num79 || npc.velocity.X > num79)
-                {
-                    if (npc.velocity.Y == 0f)
-                    {
-                        npc.velocity *= 0.8f;
-                    }
-                }
-                else if (npc.velocity.X < num79 && npc.direction == 1)
-                {
-                    npc.velocity.X = npc.velocity.X + 0.07f;
-                    if (npc.velocity.X > num79)
-                    {
-                        npc.velocity.X = num79;
-                    }
-                }
-                else if (npc.velocity.X > -num79 && npc.direction == -1)
-                {
-                    npc.velocity.X = npc.velocity.X - 0.07f;
-                    if (npc.velocity.X < -num79)
-                    {
-                        npc.velocity.X = -num79;
-                    }
-                }
-            
+            }
+
             bool flag23 = false;
             if (npc.velocity.Y == 0f)
             {
@@ -386,10 +317,6 @@ namespace AAMod.NPCs.Enemies.Mire
                     {
                         float num175 = position2.Y + npc.height - num174;
                         float num176 = 16.1f;
-                        if (npc.type == 163 || npc.type == 164 || npc.type == 236 || npc.type == 239 || npc.type == 530)
-                        {
-                            num176 += 8f;
-                        }
                         if (num175 <= num176)
                         {
                             npc.gfxOffY += npc.position.Y + npc.height - num174;
@@ -495,7 +422,7 @@ namespace AAMod.NPCs.Enemies.Mire
                             npc.velocity.Y = -5f;
                             npc.netUpdate = true;
                         }
-                        else if (npc.directionY < 0 && npc.type != 67 && (!Main.tile[num177, num178 + 1].nactive() || !Main.tileSolid[Main.tile[num177, num178 + 1].type]) && (!Main.tile[num177 + npc.direction, num178 + 1].nactive() || !Main.tileSolid[Main.tile[num177 + npc.direction, num178 + 1].type]))
+                        else if (npc.directionY < 0 && (!Main.tile[num177, num178 + 1].nactive() || !Main.tileSolid[Main.tile[num177, num178 + 1].type]) && (!Main.tile[num177 + npc.direction, num178 + 1].nactive() || !Main.tileSolid[Main.tile[num177 + npc.direction, num178 + 1].type]))
                         {
                             npc.velocity.Y = -8f;
                             npc.velocity.X = npc.velocity.X * 1.5f;
