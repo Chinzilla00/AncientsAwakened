@@ -136,6 +136,15 @@ namespace AAMod.NPCs.Bosses.Athena
             }
         }
 
+        public override bool PreDraw(SpriteBatch sb, Color dColor)
+        {
+            Color lightColor = BaseDrawing.GetLightColor(npc.Center);
+
+            BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor);
+
+            return false;
+        }
+
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
@@ -184,7 +193,7 @@ namespace AAMod.NPCs.Bosses.Athena
             }
         }
 
-        public void MoveToPoint(Vector2 point, bool goUpFirst = false)
+        public void MoveToPoint(Vector2 point)
         {
             float moveSpeed = 14f;
             if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
