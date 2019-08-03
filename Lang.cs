@@ -2439,6 +2439,14 @@ namespace AAMod
                         return "松露蟾蜍";
                         case "TruffleToadInfo":
                         return " 在荧光蘑菇环境召唤";
+                        case "Athena":
+                        return "天城鸟妖神";
+                        case "AthenaInfo":
+                        return " 在天穹卫城的天鸮祭坛上召唤.";
+                        case "AthenaA":
+                        return "鸟妖神的复仇";
+                        case "AthenaAInfo":
+                        return " 在天穹卫城的天鸮祭坛上召唤, 月球领主后";
                         case "Retriever":
                         return "捕猎者-电子猎犬爪";
                         case "TechnoTruffle":
@@ -2523,6 +2531,14 @@ namespace AAMod
                         return "Truffle Toad";
                         case "TruffleToadInfo":
                         return " in a glowing mushroom biome";
+                        case "Athena":
+                        return "Athena";
+                        case "AthenaInfo":
+                        return " at the owl altar in the Acropolis.";
+                        case "AthenaA":
+                        return "Athena Rematch";
+                        case "AthenaAInfo":
+                        return " at the owl altar in the Acropolis Post-moon lord.";
                         case "Retriever":
                         return "Retriever";
                         case "TechnoTruffle":

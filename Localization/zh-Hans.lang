@@ -4461,6 +4461,29 @@ NPCName.AncientLungBody=远古之伴龙
 
 NPCName.AncientLungTail=远古之伴龙
 
+// AAMod.NPCs.Bosses.Athena
+
+NPCName.Athena=天城鸟妖神 雅典娜
+
+NPCName.AthenaFlee=天城鸟妖神 雅典娜
+
+NPCName.AthenaA=觉醒的奥林匹亚之神 雅典娜
+
+NPCName.AthenaDark=天城鸟妖神的暗影
+
+NPCName.AthenaLight=天城鸟妖神的光影
+
+NPCName.AthenaDefeat=被打败的鸟妖神 雅典娜
+
+NPCName.OlympianDragon=卫城飞龙
+
+NPCName.OwlRune=天鸮符文
+
+NPCName.OwlRuneCharged=蓄能天鸮符文
+
+NPCName.SeraphA=六翼鸟妖
+
+NPCName.SeraphHerald=六翼鸟妖斥候
 
 // AAMod.NPCs.Bosses.Broodmother
 
