@@ -46,12 +46,24 @@ Allows to breath underwater");
         }
 		
 		public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("OceanHelm"));
-			recipe.AddTile(TileID.DemonAltar);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
+        {
+            ModRecipe recipe;
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("OceanHelm"));
+            recipe.AddIngredient(mod.ItemType("DepthFukumen"));
+            recipe.AddIngredient(mod.ItemType("VikingHelm"));
+            recipe.AddIngredient(mod.ItemType("DoomiteUHelm"));
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("OceanHelm"));
+            recipe.AddIngredient(mod.ItemType("KindledKabuto"));
+            recipe.AddIngredient(ItemID.FossilHelm);
+            recipe.AddIngredient(mod.ItemType("DoomiteUHelm"));
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
 	}
 }
