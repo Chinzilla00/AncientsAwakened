@@ -357,10 +357,10 @@ namespace AAMod.NPCs.Bosses.Athena
                     int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 2, Main.myPlayer);
                     Main.projectile[p].tileCollide = false;
                 }
-                else
-                {
-                    BaseAI.FireProjectile(player.position, npc.position, mod.ProjectileType<AthenaMagic>(), damage, 5, 12, -1, Main.myPlayer, default);
-                }
+            }
+            else
+            {
+                BaseAI.FireProjectile(player.position, npc.position, mod.ProjectileType<AthenaMagic>(), damage, 5, 12, -1, Main.myPlayer, default);
             }
         }
 
