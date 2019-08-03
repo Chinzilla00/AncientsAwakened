@@ -1,4 +1,4 @@
-namespace AAMod.Items.Materials
+namespace AAMod.Items.Boss.Athena
 {
     public class GoddessFeather : BaseAAItem
     {
