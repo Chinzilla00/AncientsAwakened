@@ -830,7 +830,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             infernoPos.Y -= 60;
                         }
                         int shootThis = mod.ProjectileType<ChaosLightning>();
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 6, vel.X * 2, vel.Y * 2, shootThis, damage, 0f, Main.myPlayer, vel.ToRotation(), 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 6, vel.X * 2, vel.Y * 2, shootThis, npc.damage / 2, 0f, Main.myPlayer, vel.ToRotation(), 0f);
                         Main.projectile[projectile].netUpdate = true;
                     }
 
@@ -951,9 +951,14 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
-        public override void HitEffect(int hitDirection, double damage)
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
             damage *= .8f;
+            return true;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
             Player player = Main.player[npc.target];
             if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && !isAwakened)
             {
@@ -1022,20 +1027,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 Health1 = true;
                 npc.netUpdate = true;
-            }
-        }
-
-
-
-        public void SpawnBoss(Player player, string name, string displayName)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-300f, 300f, (float)Main.rand.NextDouble()), 300f);
-                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
             }
         }
 

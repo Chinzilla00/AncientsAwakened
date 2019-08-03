@@ -8,7 +8,7 @@ namespace AAMod.Items.Summoning
     {
         public override void SetDefaults()
         {
-            item.damage = 60;
+            item.damage = 80;
             item.noMelee = true;
             item.summon = true;
             item.width = 18;

@@ -32,10 +32,6 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             for (int i = 0; i < projectile.oldPos.Length; i++)
             {
-                if (projectile.oldPos[i].X == 0f && projectile.oldPos[i].Y == 0f)
-                {
-                    break;
-                }
                 projHitbox.X = (int)projectile.oldPos[i].X;
                 projHitbox.Y = (int)projectile.oldPos[i].Y;
                 if (projHitbox.Intersects(targetHitbox))
@@ -43,7 +39,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     return true;
                 }
             }
-            return false;
+            return base.Colliding(projHitbox, targetHitbox);
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
