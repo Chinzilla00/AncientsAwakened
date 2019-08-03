@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.Zero
 
         public override void SetDefaults()
         {
-            item.damage = 90;
+            item.damage = 200;
             item.summon = true;
             item.mana = 10;
             item.width = 24;

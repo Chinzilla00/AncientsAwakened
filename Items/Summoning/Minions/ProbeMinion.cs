@@ -23,12 +23,12 @@ namespace AAMod.Items.Summoning.Minions
             projectile.netImportant = true;
             projectile.friendly = true;
             projectile.ignoreWater = true;
-            projectile.minionSlots = 0.5f;
             projectile.timeLeft = 18000;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.timeLeft *= 5;
             projectile.minion = true;
+            projectile.minionSlots = 1;
         }
 
         public int FrameTimer = 0;

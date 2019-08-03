@@ -27,7 +27,7 @@ namespace AAMod.Items.Summoning
             item.useStyle = 1;
             item.noMelee = true;
             item.knockBack = 3;
-            item.rare = 4;
+            item.rare = 7;
             item.UseSound = SoundID.Item44;
             item.shoot = mod.ProjectileType("TrueHallowedPrism");
             item.shootSpeed = 10f;

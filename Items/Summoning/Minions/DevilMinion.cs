@@ -240,7 +240,7 @@ namespace AAMod.Items.Summoning.Minions
             }
             if (projectile.ai[0] == 0f)
             {
-                float scaleFactor3 = 8f;
+                float scaleFactor3 = 11f;
                 int num658 = mod.ProjectileType<DevilProj>();
                 if (flag25 && projectile.ai[1] == 0f)
                 {

@@ -86,18 +86,11 @@ namespace AAMod.Projectiles.Serpent
                     if (num1043 < num1040 * 2f)
                     {
                         num1042 = ownerMinionAttackTargetNPC5.whoAmI;
-                        if (ownerMinionAttackTargetNPC5.boss)
-                        {
-                            int arg_2D352_0 = ownerMinionAttackTargetNPC5.whoAmI;
-                        }
-                        else
-                        {
-                            int arg_2D35E_0 = ownerMinionAttackTargetNPC5.whoAmI;
-                        }
                     }
                 }
 
                 if (num1042 < 0)
+                {
                     for (int num1044 = 0; num1044 < 200; num1044++)
                     {
                         NPC nPC13 = Main.npc[num1044];
@@ -107,10 +100,10 @@ namespace AAMod.Projectiles.Serpent
                             if (num1045 < num1040)
                             {
                                 num1042 = num1044;
-                                bool arg_2D3CE_0 = nPC13.boss;
                             }
                         }
                     }
+                }
             }
 
             if (num1042 != -1)
@@ -172,6 +165,7 @@ namespace AAMod.Projectiles.Serpent
         }
     }
 
+
     public class SerpentBody : ModProjectile
     {
         public override void SetDefaults()
@@ -228,10 +222,9 @@ namespace AAMod.Projectiles.Serpent
                 return;
             }
 
-            int num1038 = 10;
+            int num1038 = 30;
             if (player.dead) modPlayer.SnakeMinion = false;
             if (modPlayer.SnakeMinion) projectile.timeLeft = 2;
-            num1038 = 30;
 
             //D U S T
             /*if (Main.rand.Next(30) == 0)
@@ -248,7 +241,6 @@ namespace AAMod.Projectiles.Serpent
 
             bool flag67 = false;
             Vector2 value67 = Vector2.Zero;
-            Vector2 arg_2D865_0 = Vector2.Zero;
             float num1052 = 0f;
             float scaleFactor16 = 0f;
             float scaleFactor17 = 1f;
@@ -263,12 +255,10 @@ namespace AAMod.Projectiles.Serpent
             {
                 flag67 = true;
                 value67 = Main.projectile[byUUID].Center;
-                Vector2 arg_2D957_0 = Main.projectile[byUUID].velocity;
                 num1052 = Main.projectile[byUUID].rotation;
                 float num1053 = MathHelper.Clamp(Main.projectile[byUUID].scale, 0f, 50f);
                 scaleFactor17 = num1053;
                 scaleFactor16 = 16f;
-                int arg_2D9AD_0 = Main.projectile[byUUID].alpha;
                 Main.projectile[byUUID].localAI[0] = projectile.localAI[0] + 1f;
                 if (Main.projectile[byUUID].type != mod.ProjectileType("SerpentHead")) Main.projectile[byUUID].localAI[1] = projectile.whoAmI;
             }
@@ -338,18 +328,16 @@ namespace AAMod.Projectiles.Serpent
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             projectile.timeLeft *= 5;
         }
-
         public override Color? GetAlpha(Color lightColor)
         {
             return Color.White;
         }
-
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Serpent Head");
+            DisplayName.SetDefault("Ancient Serpent");
         }
-
-        public override void DrawBehind(int index, List<int> drawCacheProjsBehindNPCsAndTiles, List<int> drawCacheProjsBehindNPCs, List<int> drawCacheProjsBehindProjectiles, List<int> drawCacheProjsOverWiresUI)
+        public override void DrawBehind(int index, List<int> drawCacheProjsBehindNPCsAndTiles, List<int> drawCacheProjsBehindNPCs, List<int> drawCacheProjsBehindProjectiles,
+           List<int> drawCacheProjsOverWiresUI)
         {
             drawCacheProjsBehindProjectiles.Add(index);
         }
@@ -378,27 +366,12 @@ namespace AAMod.Projectiles.Serpent
             }
 
 
-            int num1038 = 10;
+            int num1038 = 30;
             if (player.dead) modPlayer.SnakeMinion = false;
             if (modPlayer.SnakeMinion) projectile.timeLeft = 2;
-            num1038 = 30;
-
-            //D U S T
-            /*if (Main.rand.Next(30) == 0)
-            {
-                int num1039 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 135, 0f, 0f, 0, default, 2f);
-                Main.dust[num1039].noGravity = true;
-                Main.dust[num1039].fadeIn = 2f;
-                Point point4 = Main.dust[num1039].position.ToTileCoordinates();
-                if (WorldGen.InWorld(point4.X, point4.Y, 5) && WorldGen.SolidTile(point4.X, point4.Y))
-                {
-                    Main.dust[num1039].noLight = true;
-                }
-            }*/
 
             bool flag67 = false;
             Vector2 value67 = Vector2.Zero;
-            Vector2 arg_2D865_0 = Vector2.Zero;
             float num1052 = 0f;
             float scaleFactor16 = 0f;
             float scaleFactor17 = 1f;
@@ -413,12 +386,10 @@ namespace AAMod.Projectiles.Serpent
             {
                 flag67 = true;
                 value67 = Main.projectile[byUUID].Center;
-                Vector2 arg_2D957_0 = Main.projectile[byUUID].velocity;
                 num1052 = Main.projectile[byUUID].rotation;
                 float num1053 = MathHelper.Clamp(Main.projectile[byUUID].scale, 0f, 50f);
                 scaleFactor17 = num1053;
                 scaleFactor16 = 16f;
-                int arg_2D9AD_0 = Main.projectile[byUUID].alpha;
                 Main.projectile[byUUID].localAI[0] = projectile.localAI[0] + 1f;
                 if (Main.projectile[byUUID].type != mod.ProjectileType("SerpentHead")) Main.projectile[byUUID].localAI[1] = projectile.whoAmI;
                 if (projectile.owner == player.whoAmI && Main.projectile[byUUID].type == mod.ProjectileType("SerpentHead"))
@@ -431,12 +402,14 @@ namespace AAMod.Projectiles.Serpent
 
             if (!flag67) return;
             if (projectile.alpha > 0)
+            {
                 for (int num1054 = 0; num1054 < 2; num1054++)
                 {
                     int num1055 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 135, 0f, 0f, 100, default, 2f);
                     Main.dust[num1055].noGravity = true;
                     Main.dust[num1055].noLight = true;
                 }
+            }
 
             projectile.alpha -= 42;
             if (projectile.alpha < 0) projectile.alpha = 0;
