@@ -2464,7 +2464,7 @@ namespace AAMod
                         case "OrthrusX":
                         return "食腐者-双头狗俄耳托斯X型";
                         case "RajahRabbit":
-                        return "忍者巨兔";
+                        return "巨兔王公";
                         case "RajahRabbitInfo":
                         return " 或者像一个无耻混蛋 一样杀100只兔子";
                         case "NightcrawlerDaybringer":
@@ -2486,7 +2486,7 @@ namespace AAMod
                         case "ShenDoragon":
                         return "上神应龙";
                         case "RajahRabbitRevenge":
-                        return "至尊忍者巨兔";
+                        return "至尊巨兔王公";
                         case "RajahRabbitRevengeInfo":
                         return " 或者总计杀死1000只 兔子后, 每杀死100只兔子";
                     }

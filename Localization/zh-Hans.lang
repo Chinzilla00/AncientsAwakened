@@ -1501,7 +1501,7 @@ ItemTooltip.RadiantArcanum=向星星许愿\n允许你加工暗物质簇和镭光
 ItemName.RadiumOre=镭光矿
 ItemTooltip.RadiumOre=如午夜星辰般闪耀\n(昼夜虫后,白天太空)
 
-ItemName.RajahBox=八音盒(忍者巨兔)
+ItemName.RajahBox=八音盒(巨兔王公)
 ItemTooltip.RajahBox=播放 'Unforseen Consequences' by Spectral Aves
 
 ItemName.Razewood=燎火木
@@ -1995,10 +1995,10 @@ ItemTooltip.RabbitcopterEars=允许飞行和滑翔\n“啊,那不是兔耳朵的
 ItemName.RajahBag=宝藏袋
 ItemTooltip.RajahBag={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.RajahSash=忍者巨兔的复仇腰带
+ItemName.RajahSash=巨兔王公的复仇腰带
 ItemTooltip.RajahSash=每损失10％生命值,你的最高伤害类型提升8％的额外攻击力\n提升跳跃高度和速度\n获得自动跳跃\n免疫坠落伤害
 
-ItemName.RajahTrophy=忍者巨兔纪念章
+ItemName.RajahTrophy=巨兔王公纪念章
 
 ItemName.RoyalScepter=皇家萝卜杖
 ItemTooltip.RoyalScepter=一波发射3个萝卜
@@ -2006,7 +2006,7 @@ ItemTooltip.RoyalScepter=一波发射3个萝卜
 ItemName.RajahPelt=兔毛
 ItemTooltip.RajahPelt=令人惊讶的毛皮耐久度
 
-ItemName.RajahCape=忍者兔的至尊斗篷
+ItemName.RajahCape=王公兔的至尊斗篷
 ItemTooltip.RajahCape=每损失10％生命值，你获得以下效果:\n1. 最高伤害提升类型再获得12%伤害加成\n2. 提升5%移动速度\n3.增加4%伤害减免\n复仇腰带的所有效果\n“你被无辜的保护者视为合格的继承者”
 
 // AAMod.Items.Boss.Rajah.Supreme
@@ -2345,7 +2345,7 @@ ItemName.ChaosSigil=冥昧印迹
 ItemTooltip.ChaosSigil=一块充满冥昧能量的诅咒图版\n召唤冥昧之皇-上神应龙\n无消耗
 
 ItemName.DiamondCarrot=十克拉钻石胡萝卜
-ItemTooltip.DiamondCarrot=华丽的胡萝卜中散发出一股忍者的愤怒...
+ItemTooltip.DiamondCarrot=华丽的胡萝卜中散发出一股王公的愤怒...
 
 ItemName.DjinnLamp=沙漠魔灯
 ItemTooltip.DjinnLamp=召唤沙漠巨灵\n只能在白天使用
@@ -2366,7 +2366,7 @@ ItemName.DreadSigil=惧月印迹
 ItemTooltip.DreadSigil=一个据说包含了新生之月黑暗能量的破烂旧板子\n召唤远古之八歧大蛇\n只能在晚上使用\n无消耗
 
 ItemName.EquinoxWorm=昼夜虫
-ItemTooltip.EquinoxWorm=使用天空材料制作的蠕虫\n召唤昼夜双虫\n无消耗
+ItemTooltip.EquinoxWorm=使用天界材料制作的蠕虫\n召唤昼夜双虫\n无消耗
 
 ItemName.FlamesOfAnarchy=原初之焰
 ItemTooltip.FlamesOfAnarchy=古代中国燃烧的冥昧之焰\n呼唤混沌姐妹\n无消耗
@@ -3325,7 +3325,7 @@ ItemName.TrueBlazingDawn=赤煞之曦
 ItemTooltip.TrueBlazingDawn=初生之日的真正辉光
 
 ItemName.TrueCopperShortsword=真·铜质短剑
-ItemTooltip.TrueCopperShortsword=只是而从字面上而言模因的东西
+ItemTooltip.TrueCopperShortsword=只是从字面上而言模因的东西
 
 ItemName.TrueCopperShortswordEX=终极短剑
 ItemTooltip.TrueCopperShortswordEX=铜质短剑EX
@@ -4258,7 +4258,7 @@ ItemName.OrthrusMaskBlue=双头狗蓝面具
 
 ItemName.OrthrusMaskRed=双头狗红面具
 
-ItemName.RajahMask=忍者巨兔面具
+ItemName.RajahMask=巨兔王公面具
 
 ItemName.RetrieverMask=捕猎者面具
 
@@ -4616,18 +4616,18 @@ NPCName.RabbitcopterSoldier2=直升飞兔
 NPCName.RabbitcopterSoldier3=直升飞兔
 NPCName.RabbitcopterSoldier4=直升飞兔
 
-NPCName.Rajah=忍者巨兔
-NPCName.Rajah2=忍者巨兔
-NPCName.Rajah3=忍者巨兔
-NPCName.Rajah4=忍者巨兔
-NPCName.Rajah5=忍者巨兔
-NPCName.Rajah6=忍者巨兔
-NPCName.Rajah7=忍者巨兔
-NPCName.Rajah8=忍者巨兔
-NPCName.Rajah9=忍者巨兔
+NPCName.Rajah=巨兔王公
+NPCName.Rajah2=巨兔王公
+NPCName.Rajah3=巨兔王公
+NPCName.Rajah4=巨兔王公
+NPCName.Rajah5=巨兔王公
+NPCName.Rajah6=巨兔王公
+NPCName.Rajah7=巨兔王公
+NPCName.Rajah8=巨兔王公
+NPCName.Rajah9=巨兔王公
 
-NPCName.SupremeRajah=至尊忍者巨兔-无辜的保护者
-NPCName.SupremeRajahDefeat=忍者巨兔
+NPCName.SupremeRajah=至尊巨兔王公-无辜的保护者
+NPCName.SupremeRajahDefeat=巨兔王公
 
 
 
