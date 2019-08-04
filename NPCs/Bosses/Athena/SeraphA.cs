@@ -4,6 +4,10 @@ namespace AAMod.NPCs.Bosses.Athena
 {
 	public class SeraphA : Seraph
 	{
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Seraph Guard");
+        }
         public override void SetDefaults()
         {
             base.SetDefaults();

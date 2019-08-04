@@ -31,11 +31,23 @@ It vibrates with the powers of Atlantis");
 		
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("OceanShirt"));
-			recipe.AddTile(TileID.DemonAltar);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+            ModRecipe recipe;
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("OceanShirt"));
+            recipe.AddIngredient(mod.ItemType("DepthGi"));
+            recipe.AddIngredient(mod.ItemType("VikingPlate"));
+            recipe.AddIngredient(mod.ItemType("DoomiteUPlate"));
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("OceanShirt"));
+            recipe.AddIngredient(mod.ItemType("KindledKabuto"));
+            recipe.AddIngredient(ItemID.FossilShirt);
+            recipe.AddIngredient(mod.ItemType("DoomiteUPlate"));
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
 		}
 	}
 }

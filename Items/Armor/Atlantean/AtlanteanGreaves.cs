@@ -33,11 +33,24 @@ Allows to freely move in liquids");
 		
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("OceanBoots"));
+            ModRecipe recipe;
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("OceanBoots"));
+            recipe.AddIngredient(mod.ItemType("DepthHakama"));
+            recipe.AddIngredient(mod.ItemType("VikingBoots"));
+            recipe.AddIngredient(mod.ItemType("DoomiteUGreaves"));
 			recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
-		}
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("OceanBoots"));
+            recipe.AddIngredient(mod.ItemType("KindledSuneate"));
+            recipe.AddIngredient(ItemID.FossilPants);
+            recipe.AddIngredient(mod.ItemType("DoomiteUGreaves"));
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+
+        }
 	}
 }

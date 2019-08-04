@@ -113,12 +113,8 @@ namespace AAMod.NPCs.Bosses.Athena
 
             if (internalAI[2]++ > 300 && Main.netMode != 1)
             {
-                int pChoice = Main.rand.Next(3);
+                int pChoice = Main.rand.Next(2);
                 if (pChoice == 0)
-                {
-                    NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<OwlRune>());
-                }
-                else if (pChoice == 1)
                 {
                     NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<OwlRuneCharged>());
                 }
@@ -346,18 +342,25 @@ namespace AAMod.NPCs.Bosses.Athena
             {
                 damage = npc.damage / 2;
             }
-            int projType = mod.ProjectileType<SeraphFeather>();
-            float spread = 30f * 0.0174f;
-            Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
-            dir *= 14f;
-            float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
-            double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
-            double deltaAngle = spread / 6f;
-            for (int i = 0; i < 3; i++)
+            if (Main.rand.Next(2) == 0)
             {
-                double offsetAngle = startAngle + (deltaAngle * i);
-                int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 2, Main.myPlayer);
-                Main.projectile[p].tileCollide = false;
+                int projType = mod.ProjectileType<SeraphFeather>();
+                float spread = 30f * 0.0174f;
+                Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
+                dir *= 14f;
+                float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
+                double deltaAngle = spread / 6f;
+                for (int i = 0; i < 3; i++)
+                {
+                    double offsetAngle = startAngle + (deltaAngle * i);
+                    int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 2, Main.myPlayer);
+                    Main.projectile[p].tileCollide = false;
+                }
+            }
+            else
+            {
+                BaseAI.FireProjectile(player.position, npc.position, mod.ProjectileType<AthenaMagic>(), damage, 5, 12, -1, Main.myPlayer, default);
             }
         }
 
