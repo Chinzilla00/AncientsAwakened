@@ -35,7 +35,7 @@ namespace AAMod.Tiles
             name.SetDefault("Golden Chest");
             AddMapEntry(new Color(141, 62, 0), name, MapChestName);
             name = CreateMapEntryName(Name + "_Locked"); // With multiple map entries, you need unique translation keys.
-            name.SetDefault("Locked Golden Chest");
+            name.SetDefault("{$Mods.AAMod.Common.GreedChest_Locked}");
             AddMapEntry(new Color(141, 62, 0), name, MapChestName);
             dustType = DustID.Gold;
             disableSmartCursor = true;
