@@ -14,7 +14,7 @@ namespace AAMod.Items.Dev
 			Tooltip.SetDefault(@"An almighty greatblade that was once wielded by the demon lord
 Left Click to unleash destructive demonic energy
 Right Click to unleash catastrophic blades that fall from the sky
-True Melee Strikes have a chance to instantly devour an enemy’s soul
+True Melee Strikes have a chance to instantly devour an enemyï¿½s soul
 Demise EX");
 		}
 		public override void SetDefaults()
@@ -105,7 +105,7 @@ Demise EX");
         {
             if (Main.rand.Next(20) == 0)
             {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("The struck enemy's soul bursts", new Color(77, 20, 102));
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.ItemsInfo("DemiseEXInfo"), new Color(77, 20, 102));
                 target.life = 0;
                 int p = Projectile.NewProjectile((int)target.Center.X, (int)target.Center.Y, 0, 0, mod.ProjectileType<Projectiles.DemiseBlast>(), item.damage, item.knockBack, Main.myPlayer);
                 Main.projectile[p].Center = target.Center;

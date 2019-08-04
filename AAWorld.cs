@@ -1259,7 +1259,7 @@ namespace AAMod
                 if (!Evil)
                 {
                     Evil = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("Hey kid, it's me, Anubis. Do me a favor and meet me back in town, I wanna talk to ya about somethin'.", Color.Gold.R, Color.Gold.G, Color.Gold.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedPlantBossInfo4"), Color.Gold.R, Color.Gold.G, Color.Gold.B);
                 }
             }       
 

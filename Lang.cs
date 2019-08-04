@@ -56,6 +56,8 @@ namespace AAMod
                         return "虚空枯萎机器重新运转";
                         case "downedPlantBossInfo3":
                         return "地下的恶魔开始密谋";
+                        case "downedPlantBossInfo4":
+                        return "嘿, 小子, 是我, 阿努比斯. 回城找我帮我个忙, 我想和你说点事.";
                         case "downedStormAnyInfo":
                         return "山洞里一道霹雳轰鸣...";
                         case "hardModeInfo":
@@ -98,6 +100,8 @@ namespace AAMod
                         return "The withered machines of the emptiness reactivate.";
                         case "downedPlantBossInfo3":
                         return "Devils in the underworld begin to plot.";
+                        case "downedPlantBossInfo4":
+                        return "Hey kid, it's me, Anubis. Do me a favor and meet me back in town, I wanna talk to ya about somethin'.";
                         case "downedStormAnyInfo":
                         return "The clap of a thunderbolt roars in the caverns...";
                         case "hardModeInfo":
@@ -2057,6 +2061,8 @@ namespace AAMod
                     {
                         case "BossAwoken":
                         return "已经苏醒!";
+                        case "EquinoxWormawoken":
+                        return "昼夜双虫已经苏醒!";
                         case "ChaosRuneYamataFalse":
                         return "一幅凶煞邪魔的图像在你脑海中一闪而过...";
                         case "ChaosRuneAkumaFalse":
@@ -2225,6 +2231,8 @@ namespace AAMod
                     {
                         case "BossAwoken":
                         return " have awoken!";
+                        case "EquinoxWormawoken":
+                        return "The Equinox Worms have awoken!";
                         case "ChaosRuneYamataFalse":
                         return "The imagery of a blazing demon flashes through your mind...";
                         case "ChaosRuneAkumaFalse":
@@ -2591,6 +2599,8 @@ namespace AAMod
                         return "哥布林亡魂";
                         case "GoblinSouls":
                         return "哥布林亡魂";
+                        case "DemiseEXInfo":
+                        return "被击中的敌人灵魂爆裂";
                     }
                 }
             else
@@ -2605,6 +2615,8 @@ namespace AAMod
                         return "Goblin Soul";
                         case "GoblinSouls":
                         return "Goblin Souls";
+                        case "DemiseEXInfo":
+                        return "The struck enemy's soul bursts";
                     }
                 }
             return"";
