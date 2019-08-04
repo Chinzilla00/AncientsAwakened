@@ -1234,9 +1234,9 @@ namespace AAMod
                         case "SupremeRajahDefeat15":
                         return "...看你了, 年轻人. ";
                         case "SupremeRajahDefeat16":
-                        return "忍者兔的讲话温暖了你的内心. 你决定从此不再伤害兔子. 成为他的骄傲. ";
+                        return "王公兔的讲话温暖了你的内心. 你决定从此不再伤害兔子. 成为他的骄傲. ";
                         case "YamataAHead":
-                        return "喂!!!";
+                        return "哦呃!!!";
                         case "Yamata1":
                         return "哈! 我对你很宽容! 当你真正强大的时候再来, 我们来真正的比试!";
                         case "Yamata2":
@@ -1320,7 +1320,7 @@ namespace AAMod
                         case "HarukaY1":
                         return "爸爸, 你这个白痴……不论怎样, 我不能说我没看到这个. ";
                         case "HarukaY2":
-                        return "就这样吧. 我凉了, 你来对付他们, 爸爸. ";
+                        return "就这样吧. 我输了, 你来对付他们, 爸爸. ";
                         case "YamataHead1":
                         return "尝尝酸液的滋味, 你这讨厌的蛆虫!!!!";
                         case "YamataHead2":
@@ -2858,9 +2858,9 @@ namespace AAMod
                         case "MadnessVisorBonus":
                         return "增加5%伤害";
                         case "MadTitanChestplateBonus":
-                        return "无限手套现在正是最强之时\r\n“狂热泰坦的力量就在你的指尖”\r\n(译者注：你也是灭霸? )";
+                        return "无限手套现在正是最强之时\r\n“疯狂泰坦的力量就在你的指尖”\r\n(译者注：你也是灭霸? )";
                         case "MadTitanVestBonus":
-                        return "无限手套现在正是最强之时\r\n“狂热泰坦的力量就在你的指尖”\r\n(译者注：你也是灭霸? )";
+                        return "无限手套现在正是最强之时\r\n“疯狂泰坦的力量就在你的指尖”\r\n(译者注：你也是灭霸? )";
                         case "MechHelmBonus":
                         return "增加10%伤害减免";
                         case "MushiumHatBonus":

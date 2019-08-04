@@ -84,8 +84,8 @@ BuffDescription.DoomiteProbe=召唤一个厄劫探针为你而战
 BuffName.DoomiteProbeC=厄劫雷达探针
 BuffDescription.DoomiteProbeC=召唤一个厄劫雷达探针为你而战
 
-BuffName.DustDevil=沙尘魔
-BuffDescription.DustDevil=召唤一个沙尘魔为你而战
+BuffName.DustDevil=沙卷风
+BuffDescription.DustDevil=召唤一个沙卷风为你而战
 
 BuffName.DiscordInferno=冥昧业火
 BuffDescription.DiscordInferno=你的灵魂自我分裂
@@ -198,7 +198,7 @@ BuffDescription.ReaperCD=你现在不能用这个武器的冲刺技能
 BuffName.RealityBent=弯曲裂位
 BuffDescription.RealityBent=你周围的空间被扭曲了
 
-BuffName.RoyalKitten=皇族凯蒂
+BuffName.RoyalKitten=皇族小猫
 BuffDescription.RoyalKitten=“真漂亮!”
 
 BuffName.RoyalRabbit=直升皇兔
@@ -841,16 +841,16 @@ ItemTooltip.MadnessVisor=增加4%伤害
 // AAMod.Items.Armor.MadTitan
 
 
-ItemName.MadTitanBoots=狂热泰坦护胫
+ItemName.MadTitanBoots=疯狂泰坦护胫
 ItemTooltip.MadTitanBoots=增加40%移动速度\n增加20%近战速度
 
-ItemName.MadTitanChestplate=狂热泰坦胸甲
+ItemName.MadTitanChestplate=疯狂泰坦胸甲
 ItemTooltip.MadTitanChestplate=增加40%伤害\n减少25%弹药消耗
 
-ItemName.MadTitanHelm=狂热泰坦护头
+ItemName.MadTitanHelm=疯狂泰坦护头
 ItemTooltip.MadTitanHelm=+7召唤上限 \n+160魔法上限
 
-ItemName.MadTitanVest=狂热泰坦背心
+ItemName.MadTitanVest=疯狂泰坦背心
 ItemTooltip.MadTitanVest=增加40%伤害\n减少25%弹药消耗
 
 
@@ -1799,7 +1799,7 @@ ItemName.Sandagger=沙之投刀
 ItemName.SandLamp=沙之神灯
 
 ItemName.SandScepter=沙漠权杖
-ItemTooltip.SandScepter=召唤一个沙尘魔为你而战
+ItemTooltip.SandScepter=召唤一个沙卷风为你而战
 
 ItemName.SandstormCrossbow=沙暴十字弩
 ItemTooltip.SandstormCrossbow=用沙漠楔代替箭矢
@@ -2789,13 +2789,13 @@ ItemTooltip.TerraFocus=向你的敌人发射泰拉魔力
 ItemName.Toxifang=毒牙
 ItemTooltip.Toxifang=发射毒牙
 
-ItemName.TrueGong=原.魔.锣
+ItemName.TrueGong=真.魔.锣
 ItemTooltip.TrueGong=更.多.锣.声
 
-ItemName.TrueManaRose=原版魔法玫瑰
+ItemName.TrueManaRose=真·魔法玫瑰
 ItemTooltip.TrueManaRose=粉的像霞
 
-ItemName.TrueTerraRose=原版泰拉玫瑰
+ItemName.TrueTerraRose=真·泰拉玫瑰
 ItemTooltip.TrueTerraRose=传言说这个法杖只被传说的英雄使用\n攻击触碰爆炸\n可以穿墙\n泰拉玫瑰EX
 
 ItemName.VenomSpray=毒液喷流
@@ -2948,7 +2948,7 @@ ItemName.Nightmare_Bar=梦魇锭
 ItemName.Nightmare_Ore=梦魇矿
 
 ItemName.OrderBar=秩序锭
-ItemTooltip.OrderBar=发挥着团结的力量
+ItemTooltip.OrderBar=发挥着秩序的力量
 
 ItemName.OceanWhisper=绝海之低语
 ItemTooltip.OceanWhisper=充满的魔力的光环中不断发出绵软的洋流之声
@@ -3186,8 +3186,8 @@ ItemName.GladiatorsGlory=角斗士荣光
 ItemName.GlacierBreaker=冰川粉碎者
 ItemTooltip.GlacierBreaker=击中敌人掉落冰柱
 
-ItemName.GoblinSlayer=哥布林屠戮者之剑
-ItemTooltip.GoblinSlayer=左键挥动右键前刺\n“传说中的哥布林杀手”
+ItemName.GoblinSlayer=哥布林杀手
+ItemTooltip.GoblinSlayer=左键挥动右键前刺\n“传奇哥布林杀手的佩剑”
 
 ItemName.GrassSpear=草剃长矛
 
@@ -3229,8 +3229,8 @@ ItemName.MushMace=赤孢链棍
 ItemName.MoltenLance=熔岩长枪
 ItemTooltip.MoltenLance=可以立即烤熟肉串!
 
-ItemName.MidasClub=迈达斯狼牙棒
-ItemTooltip.MidasClub=攻击敌人获得更多赏金
+ItemName.MidasClub=点金棒
+ItemTooltip.MidasClub=攻击敌人获得更多钱币
 
 ItemName.Mjolnir=乔尔尼尔-雷神之锤
 ItemTooltip.Mjolnir=在垂死的恒星的核心中锻造而成\n右键投掷\nplz dont sue diver
@@ -3300,11 +3300,11 @@ ItemTooltip.TerraBladeEX=发射回旋弹道并造成泰拉之焰\n泰拉之刃EX
 
 ItemName.TerraShortsword=泰拉阔剑
 
-ItemName.ThanosSword=狂热泰坦的双刃剑
+ItemName.ThanosSword=疯狂泰坦的双刃剑
 ItemTooltip.ThanosSword=右键如同回旋镖一样扔出
 
 ItemName.ThanosSwordEX=灭霸双翼刀
-ItemTooltip.ThanosSwordEX=“我...无人能敌”\n狂热泰坦的双刃剑EX
+ItemTooltip.ThanosSwordEX=“我...无人能敌”\n疯狂泰坦的双刃剑EX
 
 ItemName.The_Plague=瘟疫
 
@@ -3421,7 +3421,7 @@ ItemName.RaidEgg=电子控制蛋
 ItemTooltip.RaidEgg=会有什么孵出来呢...等等!我们不是已经做过类似的事了吗?
 
 ItemName.RoyalStar=皇家之星
-ItemTooltip.RoyalStar=召唤一只非常漂亮的凯蒂猫
+ItemTooltip.RoyalStar=召唤一只非常漂亮的小猫
 
 ItemName.Seashroom=海松露
 ItemTooltip.Seashroom=闻起来像鱼的味道
@@ -3436,9 +3436,9 @@ ItemTooltip.Carrot=对你的视力好
 ItemName.DragonfireFlask=燎狱龙炎烧瓶
 ItemTooltip.DragonfireFlask=近战攻击造成龙炎
 
-ItemName.GrandHealingPotion=伟大生命药瓶
+ItemName.GrandHealingPotion=超大生命药瓶
 
-ItemName.GrandManaPotion=伟大魔力药瓶
+ItemName.GrandManaPotion=超大魔力药瓶
 
 ItemName.HydratoxinFlask=九头蛇毒烧瓶
 ItemTooltip.HydratoxinFlask=近战攻击造成九头蛇毒
@@ -3584,7 +3584,7 @@ ItemTooltip.Laser_Rifle=使用能量胞腔作为子弹
 ItemName.M79=M79
 ItemTooltip.M79=使用M79圆榴弹作为子弹\n33%几率不消耗子弹
 
-ItemName.MidasGun=迈达斯枪
+ItemName.MidasGun=点金枪
 ItemTooltip.MidasGun=发射子弹获得更多金币
 
 ItemName.MadnessBow=癫狂弓
@@ -3638,7 +3638,7 @@ ItemTooltip.Toxithrower=使用凝胶作为子弹
 ItemName.TrueDeathlyLongbow=真·死神长弓
 ItemTooltip.TrueDeathlyLongbow=将箭变为幽魂箭
 
-ItemName.TrueTerraBallista=团结烈弓
+ItemName.TrueTerraBallista=秩序烈弓
 ItemTooltip.TrueTerraBallista=将箭变为泰拉箭\n一次发射3波3发箭\n泰拉强弩EX
 
 ItemName.UraniumRepeater=铀绿连弩
