@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.height = 80;
             npc.aiStyle = -1;
             npc.damage = 30;
-            npc.defense = 25;
+            npc.defense = 15;
             npc.lifeMax = 6000;
             npc.buffImmune[20] = true;
             npc.buffImmune[44] = true;
