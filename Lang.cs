@@ -1244,7 +1244,7 @@ namespace AAMod
                         case "Yamata3":
                         return "潭渊里没有太阳!!! 呵呵呵呵呵呵!!!";
                         case "Yamata4":
-                        return "非非非非常讨厌!!! 这个太阳! 好, 我出来了!";
+                        return "非非非非常讨厌!!! 这太阳! 我走了!";
                         case "Yamata5":
                         return "你 觉 我 已 经 不 行 了 对 吗? ! 我 可 不 这 么 认 为!!!";
                         case "Yamata6":
@@ -1268,7 +1268,7 @@ namespace AAMod
                         case "Yamata15":
                         return "我讨厌和你打! 非常非常非常讨厌!!!";
                         case "YamataHead":
-                        return "喂!!!";
+                        return "哦啊!!!";
                         case "YamataTransition1":
                         return "呀哈哈哈哈哈哈哈哈哈~";
                         case "YamataTransition2":
@@ -1407,6 +1407,14 @@ namespace AAMod
                         return "目 标 被 毁 灭. 返 回 初 始 轨 道. ";
                         case "ZeroAwakened7":
                         return "目 标 丢 失. 返 回 初 始 轨 道. ";
+                        case "ZeroDeath1":
+                        return "任 务 失 败. 向 基 地 发 送 遇 难 信 号. ";
+                        case "ZeroDeath2":
+                        return "任 务 失 败. 再 次 尝 试 发 送 遇 难 信 号. ";
+                        case "ZeroDeath3":
+                        return "信 号 发 送 中...";
+                        case "ZeroDeath4":
+                        return "收 到 遇 难 信 号. ";
                         case "FuryAshe1":
                         return "爸, 不! 你要为此付出代价, ";
                         case "FuryAshe2":
@@ -2967,14 +2975,6 @@ namespace AAMod
                         return "你可以进行闪电般的冲刺";
                         case "YtriumMaskBonus":
                         return "你可以进行闪电般的冲刺";
-                        case "ZeroDeath1":
-                        return "任 务 失 败. 向 基 地 发 送 遇 难 信 号. ";
-                        case "ZeroDeath2":
-                        return "任 务 失 败. 再 次 尝 试 发 送 遇 难 信 号. ";
-                        case "ZeroDeath3":
-                        return "信 号 发 送 中...";
-                        case "ZeroDeath4":
-                        return "收 到 遇 难 信 号. ";
                     }
                 }
             else

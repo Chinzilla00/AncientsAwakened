@@ -131,7 +131,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 killArms = true;
                 npc.netUpdate = true;
             }
-            if (Main.netMode != 1) BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
+            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ZeroBoss10"), Color.Red, false);
         }
 
         public override void NPCLoot()
@@ -350,7 +350,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         killArms = true;
                         npc.netUpdate = true;
                     }
-                    if (Main.netMode != 1) BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ZeroBoss10"), Color.Red, false);
                 }
             }
 
