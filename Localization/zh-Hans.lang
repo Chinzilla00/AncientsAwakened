@@ -2263,7 +2263,7 @@ ItemTooltip.BrokenCode=让你有5秒故障时间(译者注：当前版本实际�
 ItemName.DoomPortal=厄劫之门
 ItemTooltip.DoomPortal=召唤一个小厄劫零约之械为你而战
 
-ItemName.DoomRay=厄劫射线
+ItemName.DoomRay=新星焦点枪
 ItemTooltip.DoomRay=发射疯狂而强大的死亡激光
 
 ItemName.EventHorizon=事件视界线
@@ -2463,10 +2463,10 @@ ItemName.DuckstepGunEX=嘎嘎鸭 R.E.M.I.X.
 ItemTooltip.DuckstepGunEX=嘎嘎鸭发射器EX
 
 ItemName.DeceivingTruth=真实锻造者
-ItemTooltip.DeceivingTruth=发射一根无限穿透的藤曼
+ItemTooltip.DeceivingTruth=发射一根无限穿透的藤蔓
 
 ItemName.DeceivingTruthEX=梦魇锻造者
-ItemTooltip.DeceivingTruthEX=发射一根无限穿透的藤曼
+ItemTooltip.DeceivingTruthEX=发射一根无限穿透的藤蔓
 
 ItemName.Demise=终亡
 ItemTooltip.Demise=曾经被魔王使用的传说之剑
@@ -2492,11 +2492,11 @@ ItemTooltip.FreedomBlaster=一种能发射等离子弹和偶尔发射电荷弹�
 ItemName.FreedomStar=自由之星
 ItemTooltip.FreedomStar=Tails真正的破坏枪.\n按住使用按钮充电,发射一个强大的充能炮!\n然你久等了,啊哈?\n-Tails\n莫比安破坏枪 EX
 
-ItemName.FuryForger=虚伪之怒
+ItemName.FuryForger=熔火之怒
 ItemTooltip.FuryForger=击中敌人迸发出火花
 
-ItemName.FuryForgerEX=大虚伪之怒
-ItemTooltip.FuryForgerEX=击中敌人迸发出火花\n虚伪之怒 EX
+ItemName.FuryForgerEX=锻铸天怒
+ItemTooltip.FuryForgerEX=击中敌人迸发出火花\n熔火之怒 EX
 
 ItemName.GameRaider=游戏乱入者
 ItemTooltip.GameRaider=发射爆炸蘑菇火箭
@@ -3096,7 +3096,7 @@ ItemName.ChaosChainEX=精铸冥昧链球
 ItemTooltip.ChaosChainEX=抛出一把旋转刀刃粉碎敌人\n冥昧链球 EX
 
 ItemName.ChaosScythe=冥昧终焉
-ItemTooltip.ChaosScythe=“无能为力”\n传说武器
+ItemTooltip.ChaosScythe=“一切尽在我掌中”\n传说武器
 
 ItemName.ChaosYari=冥昧枪矛
 
@@ -3436,9 +3436,9 @@ ItemTooltip.Carrot=对你的视力好
 ItemName.DragonfireFlask=燎狱龙炎烧瓶
 ItemTooltip.DragonfireFlask=近战攻击造成龙炎
 
-ItemName.GrandHealingPotion=超大生命药瓶
+ItemName.GrandHealingPotion=究极生命药瓶
 
-ItemName.GrandManaPotion=超大魔力药瓶
+ItemName.GrandManaPotion=究极魔力药瓶
 
 ItemName.HydratoxinFlask=九头蛇毒烧瓶
 ItemTooltip.HydratoxinFlask=近战攻击造成九头蛇毒
