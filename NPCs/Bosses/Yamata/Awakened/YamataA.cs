@@ -17,7 +17,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetStaticDefaults()
         {
 			base.SetStaticDefaults();
-            displayName = "Yamata Awakened";
+            displayName = "Shin'en Yamata";
             Main.npcFrameCount[npc.type] = 7;			
         }	
 

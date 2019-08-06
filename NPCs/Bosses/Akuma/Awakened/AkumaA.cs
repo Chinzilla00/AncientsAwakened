@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma Awakened; Blazing Fury Incarnate");
+            DisplayName.SetDefault("Oni Akuma");
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
             Main.npcFrameCount[npc.type] = 3;
         }
