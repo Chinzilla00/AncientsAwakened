@@ -18,6 +18,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.Utilities;
+using Terraria.Localization;
 
 namespace AAMod
 {
@@ -242,7 +243,7 @@ namespace AAMod
             GameShaders.Armor.BindShader(ItemType("AbyssalWrathDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorHades").UseColor(146f / 255f, 30f / 255f, 68f / 255f).UseSecondaryColor(105f / 255f, 20f / 255f, 50f / 255f));
             GameShaders.Armor.BindShader(ItemType("BlazingFuryDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorHades")).UseColor(Color.SkyBlue.R / 255f, Color.SkyBlue.G / 255f, Color.SkyBlue.B / 255f).UseSecondaryColor(Color.DeepSkyBlue.R / 255f, Color.DeepSkyBlue.G / 255f, Color.DeepSkyBlue.B / 255f);
 
-            InfinityHotKey = RegisterHotKey("Snap", "G");
+            InfinityHotKey = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.InfinityHotKey"), "G");
 
             Rift = RegisterHotKey("Rift Home", "C");
             RiftReturn = RegisterHotKey("Rift Back", "X");

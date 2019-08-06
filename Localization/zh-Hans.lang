@@ -2374,6 +2374,9 @@ ItemTooltip.FlamesOfAnarchy=古代中国燃烧的冥昧之焰\n呼唤混沌姐�
 ItemName.GoldenCarrot=十克拉胡罗卜
 ItemTooltip.GoldenCarrot=召唤一个凶猛的惩罚者
 
+ItemName.GoldenGrub=金欲食物
+ItemTooltip.GoldenGrub=召唤贪欲魔像\n只能在欲望金窟中的魔欲祭坛处使用\n“非常闪耀”
+
 ItemName.HydraChow=九头蛇果粮
 ItemTooltip.HydraChow=拿着这个就会让你捂着嘴\n召唤九头渊蛇\n只能在晚上使用
 
@@ -2387,7 +2390,7 @@ ItemName.Lifescanner=生命扫描仪
 ItemTooltip.Lifescanner=召唤射手座-虚空人马\n只能在浮岛虚空使用
 
 ItemName.Owl=卫城林鸮像
-ItemTooltip.Owl=召唤雅典娜\n只能在天穹卫城使用\n“灵魂的凝视”
+ItemTooltip.Owl=召唤雅典娜\n只能在天穹卫城上的天鸮祭坛处使用\n“灵魂的凝视”
 
 ItemName.PlanteraFlower=丛林兰
 ItemTooltip.PlanteraFlower=召唤世纪之花\n只能在丛林地下召唤
@@ -2626,18 +2629,26 @@ ItemTooltip.Anticheat=测试人员或废物专用
 
 
 ItemName.AbyssalDye=潭渊染料
+ItemTooltip.AbyssalDye=这种染料使用后有一种深不可测的感觉
 
 ItemName.AbyssalWrathDye=渊怒染料
+ItemTooltip.AbyssalWrathDye=这种染料使用后有一种深不可测的感觉
 
 ItemName.BlazingDye=烈焰染料
+ItemTooltip.BlazingDye=这种染料使用后有一种灼热激昂的感觉
 
 ItemName.BlazingFuryDye=炙怒染料
+ItemTooltip.BlazingFuryDye=这种染料使用后有一种灼热激昂的感觉
 
 ItemName.DiscordianDye=酷煞染料
+ItemTooltip.DiscordianDye=这种染料使用后有一种混沌之感
 
 ItemName.DiscordianInfernoDye=煞狱染料
+ItemTooltip.DiscordianInfernoDye=这种染料使用后有一种混沌之感
 
 ItemName.DoomsdayDye=末日染料
+ItemTooltip.DoomsdayDye=这种染料使用后有一种出现异常的感觉
+
 
 
 // AAMod.Items.Flasks
@@ -2923,6 +2934,9 @@ ItemTooltip.FishronScale=闻起来有死掉的臭鱼和甘甜的胜利的味道
 
 ItemName.FulguriteBar=雷熔锭
 ItemTooltip.FulguriteBar=静态-Y
+
+ItemName.CovetiteCrystal=贪欲水晶
+ItemTooltip.CovetiteCrystal=尽管你已经拥有了它, 然而你依旧对这个水晶有一种奇怪的欲望
 
 ItemName.Hotshroom=日之菇
 ItemTooltip.Hotshroom=只在白天生长
@@ -5326,6 +5340,14 @@ MapObject.OroborosDoorOpen=虚环木门
 
 // AAMod.Tiles.Trophy
 
+//hotkey
+
+Common.InfinityHotKey=响指
+Common.Rifthotkey=裂位回家
+Common.RiftReturnhotkey=裂位返程
+Common.AccessoryAbilityKey=远古觉醒饰品能力
+Common.ArmorAbilityKey=远古觉醒套装能力
+Common.TimeStonehotKey=时间宝石
 
 
 

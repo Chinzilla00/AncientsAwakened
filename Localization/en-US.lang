@@ -8,3 +8,13 @@ Common.DoomsdayChest_Locked=Locked Doomsday Chest
 
 Common.GreedChest_Locked=Locked Golden Chest
 
+hotkey
+
+Common.InfinityHotKey=Snap
+Common.Rifthotkey=Rift Home
+Common.RiftReturnhotkey=Rift Back
+Common.AccessoryAbilityKey=AA Accessory Ability
+Common.ArmorAbilityKey=AA Armor Ability
+Common.TimeStonehotKey=Time Stone
+
+

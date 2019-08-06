@@ -2685,6 +2685,38 @@ namespace AAMod
                 }
             return"";
         }
+        public static string questFish(String questFishtext)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+                {
+                    switch(questFishtext)
+                    {
+                        case "Fishmother":
+                        return "好, 那么, 我正穿过燎狱寻找一些热的东西来搞我的传奇恶作剧, 恰巧我看到了这个水下大胖鱼把它周围的水都煮沸了. 我感觉 '完美!' 但是我没法抓住它因为我没带鱼竿. 去抓住它, 我的仆人.";
+                        case "FishmotherLocation":
+                        return "燎狱的任何位置";
+                        case "TriHeadedKoi":
+                        return "我讨厌潭渊. 在我睡觉时间以外什么也看不见, 但是我知道那有一条杀人鱼, 那东西有, 三 个 头. 你能去给我抓来吗?";
+                        case "TriHeadedKoiLocation":
+                        return "潭渊的任何位置";
+                    }
+                }
+            else
+                {
+                    switch(questFishtext)
+                    {
+                        case "Fishmother":
+                        return "Okay so, I was walking through the Inferno looking for something hot for one of my epic pranks, when I saw this fat fish underwater, boiling the water around it. I thought 'PERFECT!' but I couldn't catch it because I didn't have my rod on me. Go get it, slave.";
+                        case "FishmotherLocation":
+                        return "Caught anywhere in the Inferno";
+                        case "TriHeadedKoi":
+                        return "I hate the Mire. I can't see a thing in there unless it's past my bedtime, but I know there's a killer fish in there that I want that has, get this, THREE HEADS. Can you go get it for me?";
+                        case "TriHeadedKoiLocation":
+                        return "Caught anywhere in the Mire";
+                    }
+                }
+            return"";
+        }
         public static string TilesInfo(String Tiles)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
