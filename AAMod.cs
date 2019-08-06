@@ -295,6 +295,9 @@ namespace AAMod
             PremultiplyTexture(GetTexture("Projectiles/RadiumStar"));
             PremultiplyTexture(GetTexture("Projectiles/Stars"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Toad/ToadBubble"));
+            PremultiplyTexture(GetTexture("NPCs/Bosses/Greed/GreedSpawn"));
+            PremultiplyTexture(GetTexture("NPCs/Bosses/Greed/GreedSpawn1"));
+            PremultiplyTexture(GetTexture("NPCs/Bosses/Greed/GreedSpawn2"));
 
             if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
             {
