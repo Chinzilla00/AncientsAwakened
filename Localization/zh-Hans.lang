@@ -953,7 +953,7 @@ ItemName.PalladiumPaint=钯金脸部涂装
 ItemTooltip.PalladiumPaint=增加15%召唤伤害\n+40魔力上限
 
 ItemName.TechneciumPaint=闪锝脸部涂装
-ItemTooltip.TechneciumPaint=+100魔力上限\n增加4%伤害减免\n增加25%召唤伤害
+ItemTooltip.TechneciumPaint=+100魔力上限\n增加4%伤害减免\n增加50%召唤伤害
 
 ItemName.TerraPaint=泰拉脸部涂装
 ItemTooltip.TerraPaint=增加42%召唤伤害\n+120魔力上限
@@ -962,7 +962,7 @@ ItemName.TitaniumPaint=钛金脸部涂装
 ItemTooltip.TitaniumPaint=增加27%召唤伤害\n+100魔力上限
 
 ItemName.UraniumPaint=铀绿脸部涂装
-ItemTooltip.UraniumPaint=+60魔力上限\n增加3%伤害减免\n增加20%召唤伤害
+ItemTooltip.UraniumPaint=+100魔力上限\n增加40%召唤伤害
 
 ItemName.YttriumPaint=钇土脸部涂装
 ItemTooltip.YttriumPaint=+50魔力上限\n增加8%移动速度\n增加15%召唤伤害
@@ -1048,19 +1048,19 @@ ItemTooltip.StarcrystalPlate=+20魔法上限
 
 
 ItemName.TechneciumGreaves=闪锝腿甲
-ItemTooltip.TechneciumGreaves=增加4%伤害减免\n增加5%移动速度
+ItemTooltip.TechneciumGreaves=增加4%伤害减免\n增加12%移动速度
 
 ItemName.TechneciumHelmet=闪锝头盔
-ItemTooltip.TechneciumHelmet=增加4%伤害减免\n增加10%魔法伤害和暴击率\n+100魔力上限
+ItemTooltip.TechneciumHelmet=增加4%伤害减免\n增加18%魔法伤害和暴击率\n+100魔力上限
 
 ItemName.TechneciumMask=闪锝面具
-ItemTooltip.TechneciumMask=增加4%伤害减免\n增加14%远程伤害和暴击率
+ItemTooltip.TechneciumMask=增加4%伤害减免\n增加23%远程伤害和暴击率
 
 ItemName.TechneciumPlate=闪锝护胸
-ItemTooltip.TechneciumPlate=增加4%伤害减免
+ItemTooltip.TechneciumPlate=增加6%伤害减免
 
 ItemName.TechneciumVisor=闪锝面罩
-ItemTooltip.TechneciumVisor=增加4%伤害减免\n增加12%近战伤害和暴击率
+ItemTooltip.TechneciumVisor=增加4%伤害减免\n增加18%近战伤害和暴击率
 
 
 // AAMod.Items.Armor.Tribal
@@ -1249,18 +1249,19 @@ ItemTooltip.TrueTribalKilt=增加12%魔法伤害\n+60魔力上限\n增加15%移�
 
 
 ItemName.UraniumBoots=铀绿护胫
-ItemTooltip.UraniumBoots=增加8%移动速度
+ItemTooltip.UraniumBoots=增加8%移动速度和暴击率
 
 ItemName.UraniumChestplate=铀绿胸甲
+ItemTooltip.UraniumChestplate=增加7%伤害和暴击率
 
 ItemName.UraniumHeadgear=铀绿头饰
-ItemTooltip.UraniumHeadgear=增加3%伤害减免\n增加8%远程伤害
+ItemTooltip.UraniumHeadgear=增加18%远程伤害\n20%几率不消耗弹药
 
 ItemName.UraniumHood=铀绿兜帽
-ItemTooltip.UraniumHood=+60魔力上限\n增加3%伤害减免\n增加8%魔法伤害
+ItemTooltip.UraniumHood=+90魔力上限\n增加18%魔法伤害\n减少18%魔力消耗
 
 ItemName.UraniumVisor=铀绿面罩
-ItemTooltip.UraniumVisor=增加3%伤害减免\n增加8%近战伤害
+ItemTooltip.UraniumVisor=增加17%近战伤害\n增加7%近战暴击率
 
 
 // AAMod.Items.Armor.Viking
@@ -1290,10 +1291,10 @@ ItemTooltip.WitchRobe=增加10%魔法/召唤伤害\n增加10%暴击率\n+2召唤
 
 
 ItemName.YtriumGreaves=钇土护胫
-ItemTooltip.YtriumGreaves=增加8%移动速度
+ItemTooltip.YtriumGreaves=增加10%移动速度
 
 ItemName.YtriumHeadgear=钇土兜帽
-ItemTooltip.YtriumHeadgear=+50魔力上限\n增加5%魔法暴击\n增加8%移动速度
+ItemTooltip.YtriumHeadgear=增加10%移动速度
 
 ItemName.YtriumHelm=钇土护头
 ItemTooltip.YtriumHelm=增加9%远程暴击\n增加8%移动速度
@@ -1302,7 +1303,7 @@ ItemName.YtriumMask=钇土面罩
 ItemTooltip.YtriumMask=增加8%移动速度\n增加15%近战速度
 
 ItemName.YtriumPlate=钇土胸甲
-ItemTooltip.YtriumPlate=增加8%移动速度
+ItemTooltip.YtriumPlate=增加10%移动速度
 
 
 // AAMod.Items.Banners
@@ -5199,7 +5200,9 @@ MapObject.GreedDoorOpen=藏宝门
 
 MapObject.GreedChest=金色宝箱
 
-Common.GreedChest_Locked=上锁金色宝箱
+Common.GreedChest_Locked=上锁金色宝箱a
+
+MapObject.GreedAltar=原欲祭坛
 
 MapObject.HallowedAnvil=神圣砧
 
