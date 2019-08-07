@@ -5200,7 +5200,7 @@ MapObject.GreedDoorOpen=藏宝门
 
 MapObject.GreedChest=金色宝箱
 
-Common.GreedChest_Locked=上锁金色宝箱a
+Common.GreedChest_Locked=上锁金色宝箱
 
 MapObject.GreedAltar=原欲祭坛
 
