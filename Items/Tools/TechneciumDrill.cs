@@ -21,7 +21,9 @@ namespace AAMod.Items.Tools
             item.width = 20;
             item.height = 12;
             item.damage = 20;
-            item.pick = 180;
+            item.useTime = 5;
+            item.useAnimation = 15;
+            item.pick = 220;
             item.UseSound = SoundID.Item23;
             item.rare = 4;
             item.value = 108000;

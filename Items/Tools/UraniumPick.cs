@@ -8,26 +8,26 @@ namespace AAMod.Items.Tools
         public override void SetDefaults()
         {
             item.useStyle = 1;
-            item.useAnimation = 29;
-            item.useTime = 12;
+            item.useAnimation = 23;
+            item.useTime = 6;
             item.knockBack = 5f;
             item.useTurn = true;
             item.autoReuse = true;
-            item.width = 36;
-            item.height = 36;
-            item.damage = 25;
-            item.pick = 150;
+            item.width = 20;
+            item.height = 12;
+            item.damage = 40;
+            item.pick = 200;
             item.UseSound = SoundID.Item1;
-            item.rare = 4;
-            item.value = 81000;
+            item.rare = 8;
+            item.value = 216000;
             item.melee = true;
             item.scale = 1.15f;
+            item.tileBoost++;
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Uranium Pickaxe");
-            Tooltip.SetDefault("Can mine Technecium");
         }
 
         public override void AddRecipes()  

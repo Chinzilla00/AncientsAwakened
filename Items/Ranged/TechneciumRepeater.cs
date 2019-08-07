@@ -14,28 +14,30 @@ namespace AAMod.Items.Ranged
         }
 
 		public override void SetDefaults()
-		{
-			item.damage = 39;
-			item.ranged = true;
-			item.width = 52;
-			item.height = 20;
-			item.useTime = 15;
-			item.useAnimation = 15;
-			item.useStyle = 5;
-			item.noMelee = true; //so the item's animation doesn't do damage
-			item.knockBack = 3;
-            item.value = 108000;
-            item.rare = 4;
-			item.UseSound = SoundID.Item5;
-			item.autoReuse = true;
-			item.shoot = 10;
-			item.shootSpeed = 13f;
-			item.useAmmo = AmmoID.Arrow;
-		}
+        {
+            item.damage = 110;
+            item.crit += 25;
+            item.ranged = true;
+            item.width = 50;
+            item.height = 34;
+            item.useTime = 3;
+            item.reuseDelay = 15;
+            item.useAnimation = 12;
+            item.useStyle = 5;
+            item.noMelee = true;
+            item.knockBack = 2.5f;
+            item.value = 350000;
+            item.rare = 9;
+            item.UseSound = SoundID.Item5;
+            item.autoReuse = true;
+            item.shoot = 10;
+            item.shootSpeed = 16f;
+            item.useAmmo = 40;
+        }
 		
 		public override bool ConsumeAmmo(Player player)
 		{
-		return Main.rand.NextFloat() >= .33;
+		    return Main.rand.NextFloat() >= .33;
 		}
 		
 		public override Vector2? HoldoutOffset()

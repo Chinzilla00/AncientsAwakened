@@ -21,10 +21,10 @@ namespace AAMod.Items.Tools
             item.width = 20;
             item.height = 12;
             item.damage = 23;
-            item.axe = 14;
+            item.axe = 12;
             item.UseSound = SoundID.Item23;
             item.shoot = mod.ProjectileType("YtriumChainsaw");
-            item.rare = 4;
+            item.rare = 2;
             item.value = BaseMod.BaseUtility.CalcValue(0, 5, 0, 0);
             item.noMelee = true;
             item.noUseGraphic = true;

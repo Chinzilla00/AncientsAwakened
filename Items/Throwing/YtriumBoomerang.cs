@@ -9,7 +9,7 @@ namespace AAMod.Items.Throwing
 		public override void SetDefaults()
 		{
 
-            item.damage = 30;            
+            item.damage = 24;            
             item.melee = true;
             item.width = 30;
             item.height = 30;
@@ -18,8 +18,8 @@ namespace AAMod.Items.Throwing
             item.noUseGraphic = true;
             item.useStyle = 1;
 			item.knockBack = 0;
-			item.rare = 6;
-			item.shootSpeed = 9f;
+            item.rare = 2;
+            item.shootSpeed = 9f;
 			item.shoot = mod.ProjectileType ("YtriumBoomerangP");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;

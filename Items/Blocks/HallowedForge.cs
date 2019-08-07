@@ -47,15 +47,6 @@ namespace AAMod.Items.Blocks
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "HallowedOre", 20);
-                recipe.AddIngredient(null, "TechneciumForge", 1);
-                recipe.AddIngredient(ItemID.ImbuingStation, 1);
-                recipe.AddIngredient(ItemID.Autohammer, 1);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
         }
     }
 }

@@ -10,25 +10,23 @@ namespace AAMod.Items.Armor.Paints
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Uranium Face Paint");
-            Tooltip.SetDefault(@"+60 max mana
-3% increased damage reistance
-20% increased minion damage");
+            Tooltip.SetDefault(@"+100 max mana
+40% increased minion damage");
         }
 
         public override void SetDefaults()
         {
             item.width = 20;
             item.height = 20;
-            item.value = 50000;
-            item.rare = 4;
-            item.defense = 3;
+            item.value = 60000;
+            item.rare = 8;
+            item.defense = 4;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.minionDamage += 0.2f;
-            player.statManaMax2 += 60;
-            player.endurance *= 1.03f;
+            player.minionDamage += 0.4f;
+            player.statManaMax2 += 100;
         }
 
         public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
@@ -46,7 +44,6 @@ namespace AAMod.Items.Armor.Paints
 
             player.setBonus = @"+3 Minion slots
 Enemies near you are burned by radiation emitted by your armor";
-
 
             player.GetModPlayer<AAPlayer>(mod).uraniumSet = true;
             player.maxMinions += 3;

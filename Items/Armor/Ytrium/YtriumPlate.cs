@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Ytrium
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Yttrium Chestplate");
-            Tooltip.SetDefault(@"8% increased movement speed");
+            Tooltip.SetDefault(@"10% increased movement speed");
         }
 
         public override void SetDefaults()
@@ -19,13 +19,13 @@ namespace AAMod.Items.Armor.Ytrium
             item.width = 30;
             item.height = 18;
             item.value = 70000;
-            item.rare = 4;
-            item.defense = 7;
+            item.rare = 2;
+            item.defense = 6;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.moveSpeed *= 1.08f;
+            player.moveSpeed += .1f;
         }
 
         public override void AddRecipes()

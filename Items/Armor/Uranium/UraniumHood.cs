@@ -11,9 +11,8 @@ namespace AAMod.Items.Armor.Uranium
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Uranium Hood");
-            Tooltip.SetDefault(@"+60 increased max mana
-3% increased damage resistance
-8% increased Magic damage");
+            Tooltip.SetDefault(@"+90 increased max mana
+18% increased magic damage and reduced mana consumption");
         }
 
         public override void SetDefaults()
@@ -21,15 +20,15 @@ namespace AAMod.Items.Armor.Uranium
             item.width = 22;
             item.height = 20;
             item.value = 90000;
-            item.rare = 4;
-            item.defense = 5;
+            item.rare = 8;
+            item.defense = 6;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance *= 1.03f;
-            player.magicDamage *= 1.08f;
-            player.statManaMax2 += 60;
+            player.manaCost *= .82f;
+            player.magicDamage *= 1.18f;
+            player.statManaMax2 += 90;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -39,10 +38,7 @@ namespace AAMod.Items.Armor.Uranium
 
         public override void UpdateArmorSet(Player player)
         {
-
             player.setBonus = @"Enemies near you are burned by radiation emitted by your armor";
-
-
             player.GetModPlayer<AAPlayer>(mod).uraniumSet = true;
         }
 

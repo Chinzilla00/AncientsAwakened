@@ -19,7 +19,7 @@ namespace AAMod.Tiles
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Uranium Ore");
             AddMapEntry(new Color(2, 150, 0), name);
-            minPick = 110;
+            minPick = 200;
         }
 
         public override bool CanExplode(int i, int j)

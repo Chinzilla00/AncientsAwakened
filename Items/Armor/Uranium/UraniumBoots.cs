@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Uranium
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Uranium Boots");
-            Tooltip.SetDefault(@"8% increased movement speed");
+            Tooltip.SetDefault(@"8% increased critical strike chance & movement speed");
         }
 
         public override void SetDefaults()
@@ -25,7 +25,11 @@ namespace AAMod.Items.Armor.Uranium
 
         public override void UpdateEquip(Player player)
         {
-            player.moveSpeed *= 1.08f;
+            player.moveSpeed += .08f;
+            player.meleeCrit += 8;
+            player.rangedCrit += 8;
+            player.magicCrit += 8;
+            player.thrownCrit += 8;
         }
 
         public override void AddRecipes()

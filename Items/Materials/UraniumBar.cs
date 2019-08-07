@@ -16,7 +16,7 @@ namespace AAMod.Items.Materials
             item.height = 20;
             item.maxStack = 99;
             item.value = 22000;
-            item.rare = 3;
+            item.rare = 8;
             item.useStyle = 1;
             item.useTurn = true;
             item.useAnimation = 15;

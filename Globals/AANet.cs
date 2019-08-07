@@ -12,7 +12,7 @@ namespace AAMod
     {
         public const byte SummonNPCFromClient = 0;
 	    public const byte UpdateLovecraftianCount = 1;
-        public const byte RabbitKillCounter = 1;
+        public const byte GenOre = 2;
 
         public static void HandlePacket(BinaryReader bb, int whoAmI)
         {
@@ -39,9 +39,20 @@ namespace AAMod
 				{
 					LovecraftianCount(bb, whoAmI);
 				}
-                if (msg == RabbitKillCounter)
+                else
+                if (msg == GenOre) //generate ore (client-to-server)
                 {
-                    RabbitCount(bb, whoAmI);
+                    if (Main.netMode == 2)
+                    {
+                        int oreType = (int)bb.ReadByte();
+                        switch (oreType)
+                        {
+                            default: break;
+                            case 0: AAWorld.GenYttrium(); break;
+                            case 1: AAWorld.GenUranium(); break;
+                            case 2: AAWorld.GenTechnecium(); break;
+                        }
+                    }
                 }
             }
             catch(Exception e)

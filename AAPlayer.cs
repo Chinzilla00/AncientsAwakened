@@ -23,6 +23,7 @@ using AAMod.Items;
 using Terraria.GameContent.Events;
 using Terraria.Utilities;
 using AAMod.NPCs.Bosses.Athena;
+using AAMod.Items.Armor.Technecium;
 
 namespace AAMod
 {
@@ -119,6 +120,8 @@ namespace AAMod
         public bool demonBonus;
         public bool uraniumSet;
         public bool techneciumSet;
+        public bool isCharged;
+        public int techneciumCharge;
         public bool trueCopper;
         public bool trueHallow;
         public bool trueNights;
@@ -377,6 +380,8 @@ namespace AAMod
             goblinSlayer = false;
             tribalSet = false;
             techneciumSet = false;
+            isCharged = false;
+            techneciumCharge = 0;
             trueTribal = false;
             trueAbyssal = false;
             impSet = false;
@@ -647,6 +652,29 @@ namespace AAMod
 
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
+            if (techneciumSet)
+            {
+                int chargeCount = player.ownedProjectileCounts[mod.ProjectileType<Items.Armor.Technecium.TechneciumCharge>()];
+                target.AddBuff(mod.BuffType<Electrified>(), 180);
+                if (chargeCount < 5)
+                {
+                    if (Main.rand.Next(50) == 0)
+                    {
+                        isCharged = true;
+                        Projectile.NewProjectile(player.position.X, player.position.Y, 0, 0, mod.ProjectileType<Items.Armor.Technecium.TechneciumCharge>(), 50, 4, Main.myPlayer);
+                    }
+                }
+                else if (techneciumCharge >= 5)
+                {
+                    isCharged = false;
+                    int[] ActiveCharges = BaseAI.GetProjectiles(player.Center, mod.ProjectileType<TechneciumCharge>(), Main.myPlayer, 500, null);
+                    for (int i = 0; i < ActiveCharges.Length; i++)
+                    {
+                        Projectile sphere = Main.projectile[i];
+                        sphere.ai[0] = 1;
+                    }
+                }
+            }
             if (Palladium)
             {
                 player.AddBuff(BuffID.RapidHealing, 300);
@@ -662,14 +690,43 @@ namespace AAMod
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
+            if (techneciumSet)
+            {
+                target.AddBuff(mod.BuffType<Electrified>(), 180);
+                if (Main.rand.Next(50) == 0)
+                {
+                    isCharged = true;
+                    Projectile.NewProjectile(player.position.X, player.position.Y, 0, 0, mod.ProjectileType<Items.Armor.Technecium.TechneciumCharge>(), 50, 4, Main.myPlayer);
+                }
+            }
             if (Palladium)
             {
                 player.AddBuff(BuffID.RapidHealing, 300);
+            }
+            if (trueNights && proj.melee && Main.rand.Next(4) == 0)
+            {
+                if (target.life <= 0)
+                {
+                    isCharged = true;
+                    target.AddBuff(mod.BuffType<Electrified>(), 180);
+                    Projectile.NewProjectile(target.Center, new Vector2(0, 0), mod.ProjectileType<Items.Armor.TrueNights.CursedFireball>(), damage, 0, Main.myPlayer);
+                }
             }
         }
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
+            if (isCharged)
+            {
+                isCharged = false;
+                techneciumCharge = 0;
+                int[] ActiveCharges = BaseAI.GetProjectiles(player.Center, mod.ProjectileType<TechneciumCharge>(), Main.myPlayer, 500, null);
+                for (int i = 0; i < ActiveCharges.Length; i++)
+                {
+                    Projectile sphere = Main.projectile[i];
+                    sphere.ai[0] = 1;
+                }
+            }
             if (DragonsGuard)
             {
                 npc.AddBuff(BuffID.OnFire, 120);
@@ -711,11 +768,6 @@ namespace AAMod
             {
                 npc.AddBuff(mod.BuffType<DragonFire>(), 180);
                 npc.AddBuff(mod.BuffType<HydraToxin>(), 180);
-            }
-
-            if (techneciumSet)
-            {
-                npc.AddBuff(mod.BuffType<Electrified>(), 180);
             }
 
             if (BrokenCode)
@@ -799,6 +851,7 @@ namespace AAMod
             }
         }
 
+        public int[] Charges = null;
         public int[] Spheres = null;
         public float ShieldScale = 0;
         public float RingRoatation = 0;
@@ -925,7 +978,7 @@ namespace AAMod
 
             if (Orbiters)
             {
-                Spheres = BaseAI.GetProjectiles(player.Center, mod.NPCType("FireOrbiter"), Main.myPlayer, 48);
+                Spheres = BaseAI.GetProjectiles(player.Center, mod.ProjectileType("FireOrbiter"), Main.myPlayer, 48);
                 if (player.ownedProjectileCounts[mod.ProjectileType("FireOrbiter")] > 0)
                 {
                     player.minionDamage += AAGlobalProjectile.CountProjectiles(mod.ProjectileType<Projectiles.AH.FireOrbiter>()) * .1f;
@@ -937,6 +990,29 @@ namespace AAMod
                             if (projectile != null && projectile.active)
                             {
                                 int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDustLight>());
+                                Main.dust[dustID].position += player.position - player.oldPosition;
+                                Main.dust[dustID].velocity = (player.Center - projectile.Center) * 0.05f;
+                                Main.dust[dustID].alpha = 100;
+                                Main.dust[dustID].noGravity = true;
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (isCharged)
+            {
+                Charges = BaseAI.GetProjectiles(player.Center, mod.ProjectileType("TechneciumCharge"), Main.myPlayer, 48);
+                if (player.ownedProjectileCounts[mod.ProjectileType("TechneciumCharge")] > 0)
+                {
+                    if (Main.netMode != 2 && Main.player[Main.myPlayer].miscCounter % 3 == 0)
+                    {
+                        for (int m = 0; m < Charges.Length; m++)
+                        {
+                            Projectile projectile = Main.projectile[Charges[m]];
+                            if (projectile != null && projectile.active)
+                            {
+                                int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Electric);
                                 Main.dust[dustID].position += player.position - player.oldPosition;
                                 Main.dust[dustID].velocity = (player.Center - projectile.Center) * 0.05f;
                                 Main.dust[dustID].alpha = 100;
@@ -1536,12 +1612,12 @@ namespace AAMod
                         spawnedDevItems = true;
                         break;
                     case 19:
-                        player.QuickSpawnItem(mod.ItemType("DarkMask"));
-                        player.QuickSpawnItem(mod.ItemType("DarkShirt"));
-                        player.QuickSpawnItem(mod.ItemType("DarkPants"));
-                        if (dropType >= 3)
+                        player.QuickSpawnItem(mod.ItemType("CursedHood"));
+                        player.QuickSpawnItem(mod.ItemType("CursedRobe"));
+                        player.QuickSpawnItem(mod.ItemType("CursedPaints"));
+                        if (dropType >= 1)
                         {
-                            player.QuickSpawnItem(mod.ItemType("DeceivingTruth" + addonEX));
+                            player.QuickSpawnItem(mod.ItemType("CursedSickle" + addonEX));
                         }
                         spawnedDevItems = true;
                         break;
@@ -1602,16 +1678,6 @@ namespace AAMod
                         if (dropType >= 2)
                         {
                             player.QuickSpawnItem(mod.ItemType("GameRaider"));
-                        }
-                        spawnedDevItems = true;
-                        break;
-                    case 27:
-                        player.QuickSpawnItem(mod.ItemType("CursedHood"));
-                        player.QuickSpawnItem(mod.ItemType("CursedRobe"));
-                        player.QuickSpawnItem(mod.ItemType("CursedPaints"));
-                        if (dropType >= 1)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("CursedSickle" + addonEX));
                         }
                         spawnedDevItems = true;
                         break;

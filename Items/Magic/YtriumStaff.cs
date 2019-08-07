@@ -12,10 +12,9 @@ namespace AAMod.Items.Magic
             item.width = 44;
             item.height = 44;
             item.maxStack = 1;
-
             item.value = BaseMod.BaseUtility.CalcValue(0, 5, 0, 0);
-            item.rare = 3;
-			item.damage = 30;                        
+            item.rare = 2;
+			item.damage = 25;                        
             item.magic = true;
 			item.useTime = 23;
             item.useAnimation = 23;
@@ -38,7 +37,7 @@ namespace AAMod.Items.Magic
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod, "YtriumBar", 24);
+            recipe.AddIngredient(mod, "YtriumBar", 12);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

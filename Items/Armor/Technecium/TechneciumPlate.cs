@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.Technecium
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Technecium Plate");
-            Tooltip.SetDefault(@"4% Damage resistance");
+            Tooltip.SetDefault(@"6% Damage resistance");
         }
 
         public override void SetDefaults()
@@ -18,13 +18,13 @@ namespace AAMod.Items.Armor.Technecium
             item.width = 22;
             item.height = 18;
             item.value = Item.sellPrice(0, 1, 80, 0);
-            item.rare = 4;
+            item.rare = 9;
             item.defense = 17;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance *= 1.04f;
+            player.endurance *= 1.06f;
         }
 
         public override void AddRecipes()

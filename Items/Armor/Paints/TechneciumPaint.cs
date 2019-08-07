@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Paints
             DisplayName.SetDefault("Technecium Face Paint");
             Tooltip.SetDefault(@"+100 max mana
 4% increased damage reistance
-25% increased minion damage");
+50% increased minion damage");
         }
 
         public override void SetDefaults()
@@ -20,13 +20,13 @@ namespace AAMod.Items.Armor.Paints
             item.width = 20;
             item.height = 20;
             item.value = 50000;
-            item.rare = 4;
-            item.defense = 5;
+            item.rare = 9;
+            item.defense = 8;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.minionDamage += 0.25f;
+            player.minionDamage += 0.5f;
             player.statManaMax2 += 100;
             player.endurance *= 1.04f;
         }
@@ -45,9 +45,8 @@ namespace AAMod.Items.Armor.Paints
         {
 
             player.setBonus = @"+4 Minion slots
-Enemies that hit you are electrified";
-
-
+Hitting enemies causes you to build up a static charge
+Charge is released once you reach a charge level of 4 or you are hit";
             player.GetModPlayer<AAPlayer>(mod).techneciumSet = true;
             player.maxMinions += 4;
         }

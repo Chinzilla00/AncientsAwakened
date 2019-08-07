@@ -79,6 +79,15 @@ namespace AAMod.NPCs.Bosses.Greed
             AIWorm(npc, ref isDigging, new int[] { mod.NPCType<Greed>(), mod.NPCType<GreedBody>(), mod.NPCType<GreedTail>(), }, 0f, 8f, 0.07f, true, true, true, true, true);
         }
 
+        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
+        {
+            if (item.pick > 0)
+            {
+                npc.StrikeNPC(damage + item.pick, knockback, 0, true);
+            }
+        }
+
+
         public static void AIWorm(NPC npc, ref bool isDigging, int[] wormTypes, float partDistanceAddon = 0f, float maxSpeed = 8f, float gravityResist = 0.07f, bool fly = false,  bool ignoreTiles = false, bool spawnTileDust = true, bool soundEffects = true, bool rotateAverage = false)
         {
             bool singlePiece = wormTypes.Length == 1;
@@ -323,7 +332,7 @@ namespace AAMod.NPCs.Bosses.Greed
                             }
                         }
                         else
-                            if (absPlayerCenterX > absPlayerCenterY)
+                        if (absPlayerCenterX > absPlayerCenterY)
                         {
                             if (npc.velocity.X < playerCenterX) { npc.velocity.X += gravityResist * 1.1f; }
                             else
@@ -377,6 +386,85 @@ namespace AAMod.NPCs.Bosses.Greed
             }
         }
 
+        public override void PostAI()
+        {
+            if (npc.type == mod.NPCType<GreedBody>())
+            {
+                switch ((int)npc.ai[2])
+                {
+                    case 0:
+                        npc.defense = 6;
+                        break;
+                    case 1:
+                        npc.defense = 7;
+                        break;
+                    case 2:
+                        npc.defense = 9;
+                        break;
+                    case 3:
+                        npc.defense = 11;
+                        break;
+                    case 4:
+                        npc.defense = 13;
+                        break;
+                    case 5:
+                        npc.defense = 15;
+                        break;
+                    case 6:
+                        npc.defense = 16;
+                        break;
+                    case 7:
+                        npc.defense = 20;
+                        break;
+                    case 8:
+                        npc.defense = 19;
+                        break;
+                    case 9:
+                        npc.defense = 19;
+                        break;
+                    case 10:
+                        npc.defense = 15;
+                        break;
+                    case 11:
+                        npc.defense = 21;
+                        break;
+                    case 12:
+                        npc.defense = 18;
+                        break;
+                    case 13:
+                        npc.defense = 25;
+                        break;
+                    case 14:
+                        npc.defense = 26;
+                        break;
+                    case 15:
+                        npc.defense = 32;
+                        break;
+                    case 16:
+                        npc.defense = 37;
+                        break;
+                    case 17:
+                        npc.defense = 42;
+                        break;
+                    case 18:
+                        npc.defense = 50;
+                        break;
+                    case 19:
+                        npc.defense = 49;
+                        break;
+                    case 20:
+                        npc.defense = 53;
+                        break;
+                    case 21:
+                        npc.defense = 56;
+                        break;
+                    case 22:
+                        npc.defense = 58;
+                        break;
+                }
+            }
+        }
+
         public override void FindFrame(int frameHeight)
         {
             if (npc.type == mod.NPCType<GreedBody>())
@@ -385,38 +473,19 @@ namespace AAMod.NPCs.Bosses.Greed
             }
         }
 
-        public override void PostAI()
-        {
-            if (npc.type == mod.NPCType<GreedBody>())
-            {
-                switch ((int)npc.ai[2])
-                {
-                }
-
-            }
-        }
-
-        public override void OnHitPlayer(Player player, int damage, bool crit)
-		{
-			if (Main.expertMode)
-			{
-				player.AddBuff(BuffID.Chilled, 200, true);
-			}
-			else
-			{
-				player.AddBuff(BuffID.Chilled, 100, true);
-			}
-		}
-
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.HealingPotion;   //boss drops
+            potionType = ItemID.GreaterHealingPotion;   //boss drops
             AAWorld.downedSerpent = true;
         }
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
+            if (npc.type != mod.NPCType<Greed>())
+            {
+                return false;
+            }
             scale = 1.5f;
-            return null;
+            return true;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

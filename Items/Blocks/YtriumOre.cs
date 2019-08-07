@@ -14,14 +14,15 @@ namespace AAMod.Items.Blocks
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
-            item.createTile = mod.TileType("YtriumOre"); //put your CustomBlock Tile name
+            item.createTile = mod.TileType("YtriumOre");
+            item.rare = 2;
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Yttrium Ore");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+          DisplayName.SetDefault("Yttrium Ore");
+          Tooltip.SetDefault("");
+        }
 
     }
 }

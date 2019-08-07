@@ -11,9 +11,7 @@ namespace AAMod.Items.Armor.Ytrium
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Yttrium Headgear");
-            Tooltip.SetDefault(@"+50 Max Mana
-5% increased magic critical strike chance
-8% increased movement speed");
+            Tooltip.SetDefault(@"10% increased movement speed");
         }
 
         public override void SetDefaults()
@@ -21,15 +19,13 @@ namespace AAMod.Items.Armor.Ytrium
             item.width = 28;
             item.height = 24;
             item.value = 70000;
-            item.rare = 4;
-            item.defense = 2;
+            item.rare = 2;
+            item.defense = 6;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.magicCrit += 5;
-            player.statManaMax2 += 50;
-            player.moveSpeed *= 1.08f;
+            player.moveSpeed += .1f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -40,6 +36,7 @@ namespace AAMod.Items.Armor.Ytrium
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = @"You can do a lightning-quick dash.";
+            player.rangedDamage += .1f;
             player.dash = 2;
         }
 

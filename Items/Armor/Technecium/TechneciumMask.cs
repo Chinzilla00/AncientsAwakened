@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Technecium
         {
             DisplayName.SetDefault("Technecium Mask");
             Tooltip.SetDefault(@"4% increased damage resistance
-14% increased ranged damage & critical strike chance");
+23% increased ranged damage & critical strike chance");
         }
 
         public override void SetDefaults()
@@ -20,14 +20,14 @@ namespace AAMod.Items.Armor.Technecium
             item.height = 24;
             item.value = Item.sellPrice(0, 1, 80, 0);
             item.rare = 4;
-            item.defense = 8;
+            item.defense = 13;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance *= 1.03f;
-            player.rangedDamage *= 1.14f;
-            player.rangedCrit += 14;
+            player.endurance *= 1.04f;
+            player.rangedDamage *= 1.13f;
+            player.rangedCrit += 13;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -37,10 +37,8 @@ namespace AAMod.Items.Armor.Technecium
 
         public override void UpdateArmorSet(Player player)
         {
-
-            player.setBonus = @"Enemies that hit you are inflicted with electrified";
-
-
+            player.setBonus = @"Hitting enemies causes you to build up a static charge
+Charge is released once you reach a charge level of 4 or you are hit";
             player.GetModPlayer<AAPlayer>(mod).techneciumSet = true;
         }
 

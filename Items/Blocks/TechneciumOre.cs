@@ -17,11 +17,11 @@ namespace AAMod.Items.Blocks
             item.createTile = mod.TileType("TechneciumOre"); //put your CustomBlock Tile name
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Technecium Ore");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+          DisplayName.SetDefault("Technecium Ore");
+          Tooltip.SetDefault("");
+        }
 
     }
 }
