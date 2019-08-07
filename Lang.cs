@@ -2930,7 +2930,7 @@ namespace AAMod
                         case "PalladiumPaintBonus":
                         return "+1召唤上限\r\n击中敌人后, 极大增加生命回复";
                         case "TechneciumPaintBonus":
-                        return "+4召唤伤害\r\n攻击你的敌人受到电击";
+                        return "+4召唤伤害\r\n攻击敌人使你进行静电蓄能\n当你充能达到4级或者你受到攻击时蓄能将会释放";
                         case "TerraPaintBonus":
                         return "+7召唤上限";
                         case "TitaniumPaintBonus":
@@ -2958,11 +2958,11 @@ namespace AAMod
                         case "StarcrystalHelmBonus":
                         return "魔法低于20%最大值时, 伤害变成2倍";
                         case "TechneciumHelmetBonus":
-                        return "攻击你的敌人受到电击";
+                        return "攻击敌人使你进行静电蓄能\n当你充能达到4级或者你受到攻击时蓄能将会释放";
                         case "TechneciumMaskBonus":
-                        return "攻击你的敌人受到电击";
+                        return "攻击敌人使你进行静电蓄能\n当你充能达到4级或者你受到攻击时蓄能将会释放";
                         case "TechneciumVisorBonus":
-                        return "攻击你的敌人受到电击";
+                        return "攻击敌人使你进行静电蓄能\n当你充能达到4级或者你受到攻击时蓄能将会释放";
                         case "TribalHatBonus":
                         return "你有幸获得大自然的馈赠, 让你自动使用魔力药剂\r\n减少30%魔法消耗";
                         case "TrueAbyssalFukumenBonus":
@@ -3227,7 +3227,8 @@ Shoots crystal leaves at nearby enemies";
 Greatly increases life regeneration after striking an enemy";
                         case "TechneciumPaintBonus":
                         return @"+4 Minion slots
-Enemies that hit you are electrified";
+Hitting enemies causes you to build up a static charge
+Charge is released once you reach a charge level of 4 or you are hit";
                         case "TerraPaintBonus":
                         return @"+7 Minion slots";
                         case "TitaniumPaintBonus":
@@ -3271,11 +3272,14 @@ As your health goes down, your damage resistance goes up";
                         case "StarcrystalHelmBonus":
                         return "Doubles damage when mana is below 20% maximum capacity";
                         case "TechneciumHelmetBonus":
-                        return @"Enemies that hit you are electrified";
+                        return @"Hitting enemies causes you to build up a static charge
+Charge is released once you reach a charge level of 4 or you are hit";
                         case "TechneciumMaskBonus":
-                        return @"Enemies that hit you are inflicted with electrified";
+                        return @"Hitting enemies causes you to build up a static charge
+Charge is released once you reach a charge level of 4 or you are hit";
                         case "TechneciumVisorBonus":
-                        return @"Enemies that hit you are inflicted with electrified";
+                        return @"Hitting enemies causes you to build up a static charge
+Charge is released once you reach a charge level of 4 or you are hit";
                         case "TribalHatBonus":
                         return @"You are blessed with a gift of nature, allowing you to autodrink mana potions
 Mana usage lowered by 30%";
