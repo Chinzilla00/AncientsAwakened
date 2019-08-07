@@ -1154,7 +1154,7 @@ namespace AAMod
                         case "AkumaA12":
                         return "好好好. 你作弊. 你应该像一个真正的男子汉一样来专家模式挑战我. ";
                         case "AkumaA13":
-                        return "天又塌了! 集中注意!";
+                        return "天又要塌了! 集中注意!";
                         case "AkumaA14":
                         return "愤怒之火再次从天而降!";
                         case "AkumaA15":
@@ -2478,23 +2478,23 @@ namespace AAMod
                         case "NightcrawlerDaybringer":
                         return "昼夜双虫";
                         case "SistersofDiscord":
-                        return "混沌姐妹";
+                        return "(远古者)混沌姐妹";
                         case "Yamata":
-                        return "远古之八歧大蛇";
+                        return "(远古者)八歧大蛇";
                         case "YamataInfo":
                         return " 在夜晚潭渊召唤";
                         case "Akuma":
-                        return "远古之邪鬼巨龙";
+                        return "(远古者)邪鬼巨龙";
                         case "AkumaInfo":
                         return " 在白天燎狱召唤";
                         case "Zero":
-                        return "零械单元";
+                        return "(远古者)零械单元";
                         case "ZeroInfo":
                         return " 在浮岛虚空召唤";
                         case "ShenDoragon":
-                        return "上神应龙";
+                        return "(原古者)上神应龙";
                         case "RajahRabbitRevenge":
-                        return "至尊巨兔王公";
+                        return "(原古者)至尊巨兔王公";
                         case "RajahRabbitRevengeInfo":
                         return " 或者总计杀死1000只 兔子后, 每杀死100只兔子";
                     }

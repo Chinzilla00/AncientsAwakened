@@ -2389,7 +2389,7 @@ ItemTooltip.IntimidatingMushroom=召唤赤孢皇\n只能在白天使用
 ItemName.Lifescanner=生命扫描仪
 ItemTooltip.Lifescanner=召唤射手座-虚空人马\n只能在浮岛虚空使用
 
-ItemName.Owl=卫城林鸮像
+ItemName.Owl=卫城天鸮像
 ItemTooltip.Owl=召唤雅典娜\n只能在天穹卫城上的天鸮祭坛处使用\n“灵魂的凝视”
 
 ItemName.PlanteraFlower=丛林兰
@@ -4824,7 +4824,7 @@ NPCName.ZeroDeactivated=奇异机械
 
 NPCName.NullZP=无械-0型
 
-NPCName.ZeroAwakened=真.零.无.械-零.之.始.约.协.议
+NPCName.ZeroAwakened=零械内核 零.之.始.约.协.议
 
 
 // AAMod.NPCs.Critters
