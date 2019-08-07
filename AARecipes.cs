@@ -936,8 +936,7 @@ namespace AAMod
             RecipeGroup group7 = new RecipeGroup(getName: () => Language.GetTextValue("LegacyMisc.37") + " hardmode forge", validItems: new int[]
             {
                 ItemID.AdamantiteForge,
-                ItemID.TitaniumForge,
-                AAMod.instance.ItemType("TechneciumForge")
+                ItemID.TitaniumForge
             });
             RecipeGroup.RegisterGroup("AnyHardmodeForge", group7);
 

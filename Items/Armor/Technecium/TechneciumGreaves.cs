@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Technecium
 		{
 			DisplayName.SetDefault("Technecium Greaves");
 			Tooltip.SetDefault(@"4% Damage resistance
-5% increased movement speed");
+12% increased movement speed");
 		}
 
 		public override void SetDefaults()
@@ -19,14 +19,14 @@ namespace AAMod.Items.Armor.Technecium
 			item.width = 22;
 			item.height = 18;
 			item.value = Item.sellPrice(0, 1, 80, 0);
-			item.rare = 4;
+			item.rare = 9;
 			item.defense = 13;
 		}
 
 		public override void UpdateEquip(Player player)
 		{
 			player.endurance *= 1.04f;
-			player.moveSpeed += 0.5f;
+			player.moveSpeed += 0.12f;
 		}
 		
 		public override void AddRecipes()

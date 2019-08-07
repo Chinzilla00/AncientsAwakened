@@ -21,10 +21,10 @@ namespace AAMod.Items.Tools
             item.width = 20;
             item.height = 12;
             item.damage = 10;
-            item.pick = 110;
+            item.pick = 100;
             item.UseSound = SoundID.Item23;
             item.shoot = mod.ProjectileType("YtriumDrill");
-            item.rare = 4;
+            item.rare = 2;
             item.value = BaseMod.BaseUtility.CalcValue(0, 5, 0, 0);
             item.noMelee = true;
             item.noUseGraphic = true;
@@ -34,13 +34,11 @@ namespace AAMod.Items.Tools
 
         public override void AddRecipes()
         {
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(mod, "YtriumBar", 10);
-                recipe.AddTile(TileID.Anvils);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod, "YtriumBar", 10);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

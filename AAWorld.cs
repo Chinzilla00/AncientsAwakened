@@ -39,6 +39,9 @@ namespace AAMod
         public static int HoardTiles = 0;
         public static int CloudTiles = 0;
         //Worldgen
+        public static bool Yttrium;
+        public static bool Uranium;
+        public static bool Technecium;
         public static bool TerrariumEnemies;
         public static bool Luminite;
         public static bool DarkMatter;
@@ -53,7 +56,6 @@ namespace AAMod
         public static bool InfernoStripe;
         public static bool MireStripe;
         private int infernoSide = 0;
-        //private int shipSide = 0;
         private Vector2 infernoPos = new Vector2(0, 0);
         private Vector2 mirePos = new Vector2(0, 0);
         private Vector2 InfernoCenter = -Vector2.One;
@@ -160,6 +162,9 @@ namespace AAMod
             downedRajah = false;
             AthenaHerald = false;
             //World Changes
+            Yttrium = NPC.downedQueenBee;
+            Uranium = NPC.downedPlantBoss;
+            Technecium = NPC.downedMartians;
             TerrariumEnemies = NPC.downedBoss2;
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -840,6 +845,8 @@ namespace AAMod
             }
         }
 
+        
+
         public void VoidIslands(GenerationProgress progress)
         {
             progress.Message = "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0";
@@ -1162,6 +1169,19 @@ namespace AAMod
                 }
             }
 
+            if (NPC.downedQueenBee && !Yttrium)
+            {
+                GenYttrium();
+            }
+            if (NPC.downedPlantBoss && !Uranium)
+            {
+                GenUranium();
+            }
+            if (NPC.downedMartians && !Technecium)
+            {
+                GenTechnecium();
+            }
+
             if (NPC.downedMoonlord)
             {
                 if (Ancients == false)
@@ -1295,6 +1315,41 @@ namespace AAMod
 
                     ConversionHandler.ConvertDown((int)MireCenter.X, 0, 120, ConversionType.MIRE);
                 }
+            }
+        }
+        public static void GenYttrium()
+        {
+            if (Main.netMode == 1) { AANet.SendNetMessage(AANet.GenOre, (byte)0); }
+            else
+            {
+                Yttrium = true;
+                float percent = (float)Main.maxTilesX / 4300f;
+                int count = (int)((Main.expertMode ? 350f : 300f) * percent);
+                BaseWorldGen.GenOre(AAMod.instance.TileType<YtriumOre>(), count, 5, 9, (int)Main.rockLayer, true);
+            }
+        }
+
+        public static void GenUranium()
+        {
+            if (Main.netMode == 1) { AANet.SendNetMessage(AANet.GenOre, (byte)1); }
+            else
+            {
+                Uranium = true;
+                float percent = Main.maxTilesX / 4300f;
+                int count = (int)((Main.expertMode ? 350f : 300f) * percent);
+                BaseWorldGen.GenOre(AAMod.instance.TileType<UraniumOre>(), count, 5, 9, (int)Main.rockLayer, true);
+            }
+        }
+
+        public static void GenTechnecium()
+        {
+            if (Main.netMode == 1) { AANet.SendNetMessage(AANet.GenOre, (byte)2); }
+            else
+            {
+                Technecium = true;
+                float percent = Main.maxTilesX / 4300f;
+                int count = (int)((Main.expertMode ? 350f : 300f) * percent);
+                BaseWorldGen.GenOre(AAMod.instance.TileType<TechneciumOre>(), count, 5, 9, (int)Main.rockLayer, true);
             }
         }
 
@@ -1464,98 +1519,6 @@ namespace AAMod
             modPlayer.MoonAltar = false;
             modPlayer.AkumaAltar = false;
             modPlayer.YamataAltar = false;
-        }
-
-        public static void SmashAltar()
-        {
-            Mod mod = AAMod.instance;
-            if (Main.netMode == 1 || !Main.hardMode || WorldGen.noTileActions || WorldGen.gen)
-            {
-                return;
-            }
-            int Ore1 = mod.TileType<YtriumOre>();
-            int Ore2 = mod.TileType<UraniumOre>();
-            int Ore3 = mod.TileType<TechneciumOre>();
-            Player player = Main.player[Main.myPlayer];
-            int num = 0;
-            int num2 = ChaosAltarsSmashed / 3 + 1;
-            float num3 = Main.maxTilesX / 4200;
-            num3 = (num3 * 310f - 85 * num) * 0.85f / num2;
-            if (OreCount >= 3)
-            {
-                OreCount = 0;
-            }
-
-            int num4;
-            if (OreCount == 0)
-            {
-                if (Main.netMode == 0)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("YttriumInfo"), Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
-                }
-                num = Ore1;
-                num3 *= 1.05f;
-                num4 = 4;
-            }
-            else if (OreCount == 1)
-            {
-                if (Main.netMode == 0)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("UraniumInfo"), Color.DarkSeaGreen.R, Color.DarkSeaGreen.G, Color.DarkSeaGreen.B, false);
-                }
-                num = Ore2;
-                num3 *= 1.05f;
-                num4 = 3;
-            }
-            else
-            {
-                if (Main.netMode == 0)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("Technecium"), Color.DarkCyan.R, Color.DarkCyan.G, Color.DarkCyan.B, false);
-                }
-                num = Ore3;
-                num4 = 2;
-            }
-            int num8 = 0;
-            while (num8 < num3)
-            {
-                int i2 = WorldGen.genRand.Next(100, Main.maxTilesX - 100);
-                double num9 = Main.worldSurface;
-                if (num == Ore2)
-                {
-                    num9 = Main.rockLayer;
-                }
-                if (num == Ore3)
-                {
-                    num9 = (Main.rockLayer + Main.rockLayer + Main.maxTilesY) / 3.0;
-                }
-                int j2 = WorldGen.genRand.Next((int)num9, Main.maxTilesY - 150);
-                WorldGen.OreRunner(i2, j2, WorldGen.genRand.Next(5, 9 + num4), WorldGen.genRand.Next(5, 9 + num4), (ushort)num);
-                num8++;
-            }
-            if (Main.netMode != 1)
-            {
-                int num14 = Main.rand.Next(2) + 1;
-                for (int k = 0; k < num14; k++)
-                {
-                    Spawn(player, mod, "ChaosDragon");
-                }
-            }
-
-            OreCount += 1;
-            ChaosAltarsSmashed++;
-        }
-
-        public static void Spawn(Player player, Mod mod, string name)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType(name);
-                if (NPC.AnyNPCs(bossType)) { return; } //don't spawn if there's already a boss!
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0);
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-200f, 200f, (float)Main.rand.NextDouble()), 100f);
-                Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
-            }
         }
 
         /* 1 = Inferno

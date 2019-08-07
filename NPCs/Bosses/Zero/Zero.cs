@@ -74,16 +74,20 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
+			                
             if (npc.life <= (int)(npc.lifeMax * .66f) && !RespawnArms1 && Main.netMode != 1)
             {
+				 npc.ai[1] = 0;
                 RespawnArms1 = true;
                 RespawnArms();
+				 killArms = false;
                 npc.netUpdate = true;
             }
             if (npc.life <= (int)(npc.lifeMax * .33f) && !RespawnArms2 && Main.netMode != 1)
             {
                 RespawnArms2 = true;
                 RespawnArms();
+				 killArms = false;
                 npc.netUpdate = true;
             }
 
@@ -126,9 +130,10 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (Main.netMode != 1)
             {
+				  npc.ai[1] = 0;
                 internalAI[2] = 0;
                 internalAI[3] = 0;
-                killArms = true;
+               // killArms = true;
                 npc.netUpdate = true;
             }
             if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ZeroBoss10"), Color.Red, false);
@@ -255,12 +260,15 @@ namespace AAMod.NPCs.Bosses.Zero
         public float ShieldScale = 0.5f;
         public float RingRoatation = 0;
         public int WeaponCount = Main.expertMode ? 6 : 4;
-
+		public int Delay;
+		public int Delay2;
+		public int Delay3;
         bool RespawnArms1;
         bool RespawnArms2;
 
         public override void AI()
         {
+			Delay++;
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
@@ -269,6 +277,10 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 damage = npc.damage / 2;
             }
+			if (npc.life <= (int)(npc.lifeMax * .66f))
+				Delay2++;
+			if (npc.life <= (int)(npc.lifeMax * .33f))
+				Delay3++;
             npc.TargetClosest();
 
             if (NPC.AnyNPCs(mod.NPCType<VoidStar>()) ||
@@ -280,12 +292,34 @@ namespace AAMod.NPCs.Bosses.Zero
                 NPC.AnyNPCs(mod.NPCType<NovaFocus>()) ||
                 NPC.AnyNPCs(mod.NPCType<GenocideCannon>()))
             {
+				
                 npc.ai[1] = 0;
             }
-            else
-            {
+            else if (Delay > 2){
+					if (npc.life > (int)(npc.lifeMax * .66f)){
                 npc.ai[1] = 1;
-            }
+				 killArms = true;
+					}
+					 if (Delay2 >2){
+					if (npc.life > (int)(npc.lifeMax * .33f)){
+                npc.ai[1] = 1;
+				 killArms = true;
+					}
+			}
+			 if (Delay3 >2){
+					if (npc.life > (int)(npc.lifeMax * .1f)){
+                npc.ai[1] = 1;
+				 killArms = true;
+					}
+			}
+			}
+			
+			else
+			{
+				  killArms = false;
+				 npc.ai[1] = 0;
+			}
+            
 
             if (Main.netMode != 1)
             {
@@ -307,16 +341,19 @@ namespace AAMod.NPCs.Bosses.Zero
 
             if (Main.netMode != 1 && internalAI[2] != 1 && npc.ai[1] == 0)
             {
+				
                 for (int m = 0; m < WeaponCount; m++)
                 {
+					BaseUtility.Chat("RE-wiogn WEAP0N UNITS", Color.Green, false);
                     int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType(ArmChoice()), 0, m);
                     Main.npc[npcID].Center = npc.Center;
                     Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
                     Main.npc[npcID].velocity *= 8f;
                     Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
                 }
+				
                 internalAI[2] = 1;
-                npc.netUpdate = true;
+                npc.netUpdate = true;			
             }
 
             internalAI[3]++;
@@ -347,7 +384,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     {
                         internalAI[2] = 0;
                         internalAI[3] = 0;
-                        killArms = true;
+                        //killArms = true;
                         npc.netUpdate = true;
                     }
                     if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ZeroBoss10"), Color.Red, false);

@@ -11,8 +11,8 @@ namespace AAMod.Items.Armor.Uranium
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Uranium Visor");
-            Tooltip.SetDefault(@"3% increased damage resistance
-8% increased melee damage");
+            Tooltip.SetDefault(@"17% increased melee damage
+7% increased melee critical strike chance");
         }
 
         public override void SetDefaults()
@@ -20,14 +20,14 @@ namespace AAMod.Items.Armor.Uranium
             item.width = 28;
             item.height = 24;
             item.value = 90000;
-            item.rare = 4;
-            item.defense = 22;
+            item.rare = 8;
+            item.defense = 24;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance *= 1.03f;
-            player.meleeDamage *= 1.08f;
+            player.meleeCrit += 7;
+            player.meleeDamage *= 1.17f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -37,10 +37,7 @@ namespace AAMod.Items.Armor.Uranium
 
         public override void UpdateArmorSet(Player player)
         {
-
             player.setBonus = Lang.ArmorBonus("UraniumVisorBonus");
-
-
             player.GetModPlayer<AAPlayer>(mod).uraniumSet = true;
         }
 

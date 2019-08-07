@@ -17,14 +17,14 @@ namespace AAMod.Items.Melee
             item.width = 35;
             item.height = 35;
             item.maxStack = 1;
-            item.rare = 5;
+            item.rare = 2;
             item.value = BaseUtility.CalcValue(0, 5, 0, 0);
 
             item.useStyle = 5;
             item.useAnimation = 55;
             item.useTime = 55;
             item.UseSound = SoundID.Item1;
-            item.damage = 29;
+            item.damage = 25;
             item.knockBack = 5;
             item.melee = true;
             item.autoReuse = true;

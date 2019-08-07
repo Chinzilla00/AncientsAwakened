@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Technecium
         {
             DisplayName.SetDefault("Technecium Helmet");
             Tooltip.SetDefault(@"4% increased damage resistance
-10% increased magic damage & critical strike chance
+18% increased magic damage & critical strike chance
 +100 increased mana");
         }
 
@@ -20,15 +20,15 @@ namespace AAMod.Items.Armor.Technecium
             item.width = 28;
             item.height = 24;
             item.value = Item.sellPrice(0, 1, 80, 0);
-            item.rare = 4;
-            item.defense = 5;
+            item.rare = 9;
+            item.defense = 10;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.endurance *= 1.04f;
-            player.magicDamage *= 1.1f;
-            player.magicCrit += 12;
+            player.magicDamage *= 1.18f;
+            player.magicCrit += 18;
             player.statManaMax2 += 100;
         }
 
@@ -41,8 +41,6 @@ namespace AAMod.Items.Armor.Technecium
         {
 
             player.setBonus = Lang.ArmorBonus("TechneciumHelmetBonus");
-
-
             player.GetModPlayer<AAPlayer>(mod).techneciumSet = true;
         }
 

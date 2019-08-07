@@ -13,23 +13,22 @@ namespace AAMod.Items.Tools
             item.width = 38;
             item.height = 38;
 
-            item.useTime = 8;
-            item.useAnimation = 12;
-            item.pick = 110;    //pickaxe power
+            item.useTime = 16;
+            item.useAnimation = 20;
+            item.pick = 100;
             item.useStyle = 1;
             item.knockBack = 1;
             item.value = BaseMod.BaseUtility.CalcValue(0, 5, 0, 0);
-            item.rare = 9;
+            item.rare = 2;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Yttrium Pickaxe");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Yttrium Pickaxe");
+        }
 
         public override void AddRecipes()  
         {

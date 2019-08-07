@@ -14,21 +14,22 @@ namespace AAMod.Items.Melee   //where is located
             item.knockBack = 6f;
             item.width = 52;
             item.height = 52;
-            item.damage = 44;
+            item.damage = 60;
             item.scale = 1.15f;
             item.UseSound = SoundID.Item1;
             item.rare = 4;
             item.value = 103500;
             item.melee = true;
+            item.shoot = mod.ProjectileType<Projectiles.Radiosphere>();
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Amnesia");
+            DisplayName.SetDefault("Uranium Hazardblade");
             Tooltip.SetDefault("");
         }
 
-        public override void AddRecipes()  //How to craft this sword
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);      
 			recipe.AddIngredient(mod, "UraniumBar", 10);

@@ -20,7 +20,7 @@ namespace AAMod.Items.Tools
             item.width = 20;
             item.height = 12;
             item.damage = 33;
-            item.axe = 30;
+            item.axe = 35;
             item.UseSound = SoundID.Item23;
             item.shoot = mod.ProjectileType("TechneciumChainsaw");
             item.rare = 4;

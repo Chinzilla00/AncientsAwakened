@@ -8,7 +8,7 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 30;            
+            item.damage = 27;            
             item.melee = true;            
             item.width = 50;              
             item.height = 58;             
@@ -16,8 +16,8 @@ namespace AAMod.Items.Melee   //where is located
             item.useAnimation = 20;     
             item.useStyle = 1;        
             item.knockBack = 4;      
-            item.value = 20;        
-            item.rare = 4;
+            item.value = 2000;        
+            item.rare = 2;
             item.UseSound = SoundID.Item1;       
             item.autoReuse = true;   
             item.useTurn = true;
@@ -28,7 +28,6 @@ namespace AAMod.Items.Melee   //where is located
         public override void SetStaticDefaults()
         {
           DisplayName.SetDefault("Yttrium Blade");
-          Tooltip.SetDefault("");
         }
 
         public override void AddRecipes()  //How to craft this sword

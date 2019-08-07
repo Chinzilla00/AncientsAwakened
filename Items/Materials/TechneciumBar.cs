@@ -22,11 +22,11 @@ namespace AAMod.Items.Materials
             item.createTile = mod.TileType("TechneciumBar");
         }
 
-    public override void SetStaticDefaults()
-    {
-      DisplayName.SetDefault("Technecium Bar");
-      Tooltip.SetDefault("");
-    }
+        public override void SetStaticDefaults()
+        {
+          DisplayName.SetDefault("Technecium Bar");
+          Tooltip.SetDefault("");
+        }
 
 		public override void AddRecipes()
         {                                                   

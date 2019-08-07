@@ -17,7 +17,7 @@ namespace AAMod.Tiles
             name.SetDefault("Yttrium Ore");
             AddMapEntry(new Color(160, 150, 0), name);
             dustType = mod.DustType<Dusts.YtriumDust>();
-			minPick = 100;
+			minPick = 65;
         }
 
         public override bool CanExplode(int i, int j)

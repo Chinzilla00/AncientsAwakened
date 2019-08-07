@@ -14,21 +14,22 @@ namespace AAMod.Items.Tools
 		public override void SetDefaults()
         {
             item.useStyle = 5;
-            item.useAnimation = 25;
-            item.useTime = 10;
-            item.shootSpeed = 32f;
-            item.knockBack = 0f;
+            item.useAnimation = 23;
+            item.useTime = 6;
+            item.shootSpeed = 40f;
+            item.knockBack = 1f;
             item.width = 20;
             item.height = 12;
-            item.damage = 15;
-            item.pick = 150;
+            item.damage = 35;
+            item.pick = 200;
             item.UseSound = SoundID.Item23;
-            item.rare = 4;
-            item.value = 81000;
+            item.rare = 7;
+            item.value = 216000;
             item.noMelee = true;
             item.noUseGraphic = true;
             item.melee = true;
             item.channel = true;
+            item.tileBoost++;
             item.shoot = mod.ProjectileType("UraniumDrill");
         }
 

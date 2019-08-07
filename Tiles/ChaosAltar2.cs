@@ -53,7 +53,7 @@ namespace AAMod.Tiles
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            AAWorld.SmashAltar();
+            WorldGen.SmashAltar(i, j);
         }
 
         public void DamagePlayer (Player player)

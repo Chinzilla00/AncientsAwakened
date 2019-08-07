@@ -16,7 +16,7 @@ namespace AAMod.Items.Materials
             item.autoReuse = true;
             item.useAnimation = 15;
             item.useTime = 10;
-            item.rare = 10;
+            item.rare = 2;
             item.useStyle = 1;
             item.consumable = true;
             item.createTile = mod.TileType("YttriumBar");
@@ -31,8 +31,8 @@ namespace AAMod.Items.Materials
 		public override void AddRecipes()
         {                                                   
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "YtriumOre", 4);              //example of how to craft with a modded item
-            recipe.AddTile(TileID.Hellforge);
+            recipe.AddIngredient(null, "YtriumOre", 3);              //example of how to craft with a modded item
+            recipe.AddTile(TileID.Furnaces);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Technecium
         {
             DisplayName.SetDefault("Technecium Visor");
             Tooltip.SetDefault(@"4% increased damage resistance
-12% increased melee damage & critical strike chance");
+18% increased melee damage & critical strike chance");
         }
 
         public override void SetDefaults()
@@ -19,15 +19,15 @@ namespace AAMod.Items.Armor.Technecium
             item.width = 28;
             item.height = 24;
             item.value = Item.sellPrice(0, 1, 80, 0);
-            item.rare = 4;
-            item.defense = 23;
+            item.rare = 9;
+            item.defense = 28;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance *= 1.04f;
-            player.meleeDamage *= 1.12f;
-            player.meleeCrit += 12;
+            player.endurance *= 1.4f;
+            player.meleeDamage *= 1.18f;
+            player.meleeCrit += 18;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -39,8 +39,6 @@ namespace AAMod.Items.Armor.Technecium
         {
 
             player.setBonus = Lang.ArmorBonus("TechneciumVisorBonus");
-
-
             player.GetModPlayer<AAPlayer>(mod).techneciumSet = true;
         }
 

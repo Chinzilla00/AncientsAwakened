@@ -16,7 +16,7 @@ namespace AAMod.Tiles
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Technecium Ore");
             AddMapEntry(new Color(100, 200, 200), name);
-			minPick = 150;
+			minPick = 210;
         }
 
         public override bool CanExplode(int i, int j)
