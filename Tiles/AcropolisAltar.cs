@@ -70,10 +70,6 @@ namespace AAMod.Tiles
                     if (item != null && item.type == type && item.stack >= 1)
                     {
                         item.stack--;
-                        if (item.stack <= 0)
-                        {
-                            item = new Item();
-                        }
                         SpawnBoss(mod, player, mod.NPCType<NPCs.Bosses.Athena.Athena>(), true, Acropolis, 0, -1, "Athena", false);
                     }
                 }

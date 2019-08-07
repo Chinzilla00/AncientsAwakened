@@ -42,6 +42,7 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.boss = true;
             bossBag = mod.ItemType("GreedBag");
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Greed");
+            npc.alpha = 255;
         }
 
         public float[] internalAI = new float[6];
@@ -75,6 +76,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void AI()
         {
+            AAAI.DustOnNPCSpawn(npc, DustID.GoldCoin, 2, 12);
             bool isDigging = false;
             AIWorm(npc, ref isDigging, new int[] { mod.NPCType<Greed>(), mod.NPCType<GreedBody>(), mod.NPCType<GreedTail>(), }, 0f, 8f, 0.07f, true, true, true, true, true);
         }

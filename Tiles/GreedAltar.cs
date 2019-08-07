@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using AAMod.NPCs.Bosses.Greed;
 
 namespace AAMod.Tiles
 {
@@ -41,11 +42,6 @@ namespace AAMod.Tiles
             }
         }
 
-        public Color White(Color color)
-        {
-            return AAColor.Sky;
-        }
-
         public override void RightClick(int i, int j)
         {
             Player player = Main.player[Main.myPlayer];
@@ -58,11 +54,7 @@ namespace AAMod.Tiles
                     if (item != null && item.type == type && item.stack >= 1)
                     {
                         item.stack--;
-                        if (item.stack <= 0)
-                        {
-                            item = new Item();
-                        }
-                        AAModGlobalNPC.SpawnBoss(player, mod.NPCType<NPCs.Bosses.Greed.Greed>(), true, 0, 0, "Greed", false);
+                        AAModGlobalNPC.SpawnBoss(player, mod.NPCType<Greed>(), false, new Vector2(i, j + 100), "Greed");
                     }
                 }
             }
