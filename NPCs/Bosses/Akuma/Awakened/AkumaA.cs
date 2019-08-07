@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.height = 80;
             npc.aiStyle = -1;
             npc.netAlways = true;
-            npc.damage = 110;
+            npc.damage = 150;
             npc.defense = 270;
             npc.lifeMax = 600000;
             npc.value = Item.sellPrice(0, 40, 0, 0);
@@ -57,7 +57,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             musicPriority = MusicPriority.BossHigh;
             if (AAWorld.downedAllAncients)
             {
-                npc.damage = 140;
+                npc.damage = 210;
                 npc.defense = 300;
                 npc.lifeMax = 750000;
             }
