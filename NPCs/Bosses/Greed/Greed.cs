@@ -10,7 +10,6 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Greed
 {
-    [AutoloadBossHead]	
 	public class Greed : ModNPC
 	{
         public int damage = 0;
