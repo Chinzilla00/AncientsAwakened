@@ -175,15 +175,15 @@ namespace AAMod.Worldgeneration
             WorldGen.PlaceObject(genX + 143, genY + 216, mod.TileType<HydraPod>());
             WorldGen.PlaceObject(genX + 161, genY + 214, mod.TileType<HydraPod>());
             WorldGen.PlaceObject(genX + 171, genY + 205, mod.TileType<HydraPod>());
-            NetMessage.SendObjectPlacment(-1, genX + 25, genY + 204, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
-            NetMessage.SendObjectPlacment(-1, genX + 43, genY + 211, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
-            NetMessage.SendObjectPlacment(-1, genX + 59, genY + 221, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
-            NetMessage.SendObjectPlacment(-1, genX + 81, genY + 223, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
-            NetMessage.SendObjectPlacment(-1, genX + 103, genY + 231, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
-            NetMessage.SendObjectPlacment(-1, genX + 124, genY + 222, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
-            NetMessage.SendObjectPlacment(-1, genX + 143, genY + 216, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
-            NetMessage.SendObjectPlacment(-1, genX + 161, genY + 214, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
-            NetMessage.SendObjectPlacment(-1, genX + 171, genY + 205, (ushort)mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 25, genY + 204, mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 43, genY + 211, mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 59, genY + 221, mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 81, genY + 223, mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 103, genY + 231, mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 124, genY + 222, mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 143, genY + 216, mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 161, genY + 214, mod.TileType("HydraPod"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, genX + 171, genY + 205, mod.TileType("HydraPod"), 0, 0, -1, -1);
 
             //WorldGen.PlaceObject(genX + 59, genY + 31, mod.TileType<DreadAltarS>());		   
 
@@ -716,19 +716,19 @@ namespace AAMod.Worldgeneration
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>
             {
                 [new Color(255, 0, 0)] = -2,
-                [Color.Black] = -1 //don't touch when genning				
+                [Color.Black] = -1
             };
 
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/GreedNest"), colorToTile, mod.GetTexture("Worldgeneration/GreedNestWalls"), colorToWall, null, mod.GetTexture("Worldgeneration/GreedNestSlopes"));
 
             gen.Generate(origin.X, origin.Y, true, true);
 
-            WorldGen.PlaceObject(origin.X + 80, origin.Y + 88, (ushort)mod.TileType("GreedAltar"));
-            NetMessage.SendObjectPlacment(-1, origin.X + 80, origin.Y + 88, (ushort)mod.TileType("GreedAltar"), 0, 0, -1, -1);
-            WorldGen.PlaceObject(origin.X + 1, origin.Y + 60, (ushort)mod.TileType("GreedDoorClosed"));
-            WorldGen.PlaceObject(origin.X + 159, origin.Y + 77, (ushort)mod.TileType("GreedDoorClosed"));
-            NetMessage.SendObjectPlacment(-1, origin.X + 1, origin.Y + 60, (ushort)mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
-            NetMessage.SendObjectPlacment(-1, origin.X + 159, origin.Y + 77, (ushort)mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 80, origin.Y + 88, mod.TileType("GreedAltar"));
+            WorldGen.PlaceObject(origin.X + 1, origin.Y + 60, mod.TileType("GreedDoorClosed"));
+            WorldGen.PlaceObject(origin.X + 159, origin.Y + 77, mod.TileType("GreedDoorClosed"));
+            NetMessage.SendObjectPlacment(-1, origin.X + 80, origin.Y + 88, mod.TileType("GreedAltar"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, origin.X + 1, origin.Y + 60, mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, origin.X + 159, origin.Y + 77, mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
             HoardChest(origin.X + 19, origin.Y + 55);
             HoardChest(origin.X + 38, origin.Y + 67, 1);
             HoardChest(origin.X + 25, origin.Y + 34);
