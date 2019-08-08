@@ -12,7 +12,7 @@ namespace AAMod.Items.Melee
 			item.damage = 56;
 			item.useTime = 15;
 			item.useAnimation = 15;     
-			item.knockBack = 50;
+			item.knockBack = 100;
             item.value = Item.sellPrice(0, 25, 0, 0);
             item.rare = 5;            
 		}
@@ -31,6 +31,8 @@ namespace AAMod.Items.Melee
 			recipe.AddTile(null, "QuantumFusionAccelerator");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
+
+            // rattle rattle
 		}
 	}
 }
