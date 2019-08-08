@@ -417,9 +417,9 @@ namespace AAMod
                         case "AnubisChat8":
                         return "沙漠巨灵被打败了但是它没从我这得到任何东西! 核实一下!";
                         case "AnubisChat9":
-                        return "顺便感谢你让我掉在这. 在沙漠里走了几千年的滋味真不好受. ";
+                        return "顺便感谢你让我在这落脚. 在沙漠里走了几千年的滋味真不好受. ";
                         case "AnubisChat10":
-                        return "对了, 我写了泰拉史记. 但是我也写了另外一本伟大的书. 《阿努比斯生命史诗历险记》! 要看看? ";
+                        return "对了, 我写了泰拉史记. 但是我也写了另外一本伟大的书, 《阿努比斯生命史诗历险记》! 要看看? ";
                         case "AnubisChat11":
                         return "你不觉得讨厌吗, 当";
                         case "AnubisChat12":
@@ -433,7 +433,7 @@ namespace AAMod
                         case "AnubisChat16":
                         return "天哪, 我之前试过和他们搭讪, ";
                         case "AnubisChat17":
-                        return "把我给踢出来了. 我想知道, 这些女人和血月是怎么回事? ";
+                        return "不想让我加入他们的聊天. 我想知道, 这些女人和血月是怎么回事? ";
                         case "AnubisChat18":
                         return "我试着和";
                         case "AnubisChat19":
@@ -2448,7 +2448,7 @@ namespace AAMod
                         case "DesertDjinnInfo":
                         return " 白天在沙漠召唤";
                         case "Sagittarius":
-                        return "射手座-虚空人马";
+                        return "虚空人马";
                         case "SagittariusInfo":
                         return " 在虚空浮岛召唤";
                         case "TruffleToad":
