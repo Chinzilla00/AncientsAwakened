@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Yamata
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shoot = 1;
-            item.shootSpeed = 14f;
+            item.shootSpeed = 20f;
             item.useAmmo = AmmoID.Arrow;
             item.rare = 9; AARarity = 13;
         }
