@@ -76,6 +76,8 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override bool PreAI()
         {
+            npc.TargetClosest();
+            Player player = Main.player[npc.target];
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
@@ -272,11 +274,11 @@ namespace AAMod.NPCs.Bosses.Greed
             }
             npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
 
-            if (!Main.dayTime)
+            if (player.position.Y < (Main.worldSurface * 16.0))
             {
                 if (loludided == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Yaaaaaaaaawn. I'm bushed kid, I'm gonna have to take a rain check. Come back tomorrow.", new Color(180, 41, 32));
+                    if (Main.netMode != 1) BaseUtility.Chat("EEEEEEEEEEEEEEEGH THE LIGHT OF THE SURFACE! TOO BRIGHT! TOO BRIGHT!", Color.Goldenrod);
                     loludided = true;
                 }
                 npc.velocity.Y = npc.velocity.Y + 1f;
@@ -287,7 +289,7 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 if (loludided == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("I thought you terrarians put up more of a fight. Guess not.", new Color(180, 41, 32));
+                    if (Main.netMode != 1) BaseUtility.Chat("AND STAY AWAY FROM MY GLORIOUS RICHES YOU LITTLE THIEF!", Color.Goldenrod);
                     loludided = true;
                 }
                 npc.velocity.Y = npc.velocity.Y - 1f;

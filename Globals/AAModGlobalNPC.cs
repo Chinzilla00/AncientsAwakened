@@ -11,6 +11,7 @@ using AAMod.NPCs.Enemies.Terrarium.PostPlant;
 using AAMod.NPCs.Bosses.Serpent;
 using AAMod.NPCs.Enemies.Snow;
 using AAMod.NPCs.Enemies.Sky;
+using AAMod.NPCs.Enemies.Cavern;
 using System;
 using Terraria.Localization;
 
@@ -1065,6 +1066,18 @@ namespace AAMod
                 if (NPC.downedPlantBoss)
                 {
                     pool.Add(mod.NPCType<Seraph>(), .03f);
+                }
+            }
+
+            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneAcropolis)
+            {
+                ClearPoolWithExceptions(pool);
+                pool.Add(NPCID.GiantWormHead, .06f);
+                pool.Add(NPCID.GoldWorm, .001f);
+                pool.Add(NPCID.Worm, .01f);
+                if (NPC.downedPlantBoss)
+                {
+                    pool.Add(mod.NPCType<Scavenger>(), .03f);
                 }
             }
         }

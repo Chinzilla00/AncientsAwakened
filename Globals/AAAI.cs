@@ -276,16 +276,16 @@ namespace AAMod
                     }
                 }
             }
-            if (npc.ai[0] == 0f)
+            if (ai[0] == 0f)
             {
                 npc.TargetClosest(true);
-                npc.ai[0] = 1f;
-                npc.ai[1] = npc.direction;
+                ai[0] = 1f;
+                ai[1] = npc.direction;
             }
-            else if (npc.ai[0] == 1f)
+            else if (ai[0] == 1f)
             {
                 npc.TargetClosest(true);
-                npc.velocity.X += npc.ai[1] * velIntervalX;
+                npc.velocity.X += ai[1] * velIntervalX;
 
                 if (npc.velocity.X > velMaxX)
                     npc.velocity.X = velMaxX;
@@ -302,19 +302,19 @@ namespace AAMod
                     playerDistY = -velMaxY;
 
                 npc.velocity.Y = (npc.velocity.Y * (velScalarY - 1f) + playerDistY) / velScalarY;
-                if ((npc.ai[1] > 0f && Main.player[npc.target].Center.X - npc.Center.X < -distanceBeforeTakeoff) || (npc.ai[1] < 0f && Main.player[npc.target].Center.X - npc.Center.X > distanceBeforeTakeoff))
+                if ((ai[1] > 0f && Main.player[npc.target].Center.X - npc.Center.X < -distanceBeforeTakeoff) || (ai[1] < 0f && Main.player[npc.target].Center.X - npc.Center.X > distanceBeforeTakeoff))
                 {
-                    npc.ai[0] = 2f;
-                    npc.ai[1] = 0f;
+                    ai[0] = 2f;
+                    ai[1] = 0f;
                     if (npc.Center.Y + 20f > Main.player[npc.target].Center.Y)
-                        npc.ai[1] = -1f;
+                        ai[1] = -1f;
                     else
-                        npc.ai[1] = 1f;
+                        ai[1] = 1f;
                 }
             }
-            else if (npc.ai[0] == 2f)
+            else if (ai[0] == 2f)
             {
-                npc.velocity.Y += npc.ai[1] * velIntervalYTurn;
+                npc.velocity.Y += ai[1] * velIntervalYTurn;
 
                 if (npc.velocity.Length() > velIntervalMaxTurn)
                     npc.velocity *= velIntervalScalar;
@@ -322,13 +322,13 @@ namespace AAMod
                 if (npc.velocity.X > -1f && npc.velocity.X < 1f)
                 {
                     npc.TargetClosest(true);
-                    npc.ai[0] = 3f;
-                    npc.ai[1] = npc.direction;
+                    ai[0] = 3f;
+                    ai[1] = npc.direction;
                 }
             }
-            else if (npc.ai[0] == 3f)
+            else if (ai[0] == 3f)
             {
-                npc.velocity.X += npc.ai[1] * velIntervalXTurn;
+                npc.velocity.X += ai[1] * velIntervalXTurn;
 
                 if (npc.Center.Y > Main.player[npc.target].Center.Y)
                     npc.velocity.Y -= velIntervalY;
@@ -341,8 +341,8 @@ namespace AAMod
                 if (npc.velocity.Y > -1f && npc.velocity.Y < 1f)
                 {
                     npc.TargetClosest(true);
-                    npc.ai[0] = 0f;
-                    npc.ai[1] = npc.direction;
+                    ai[0] = 0f;
+                    ai[1] = npc.direction;
                 }
             }
         }

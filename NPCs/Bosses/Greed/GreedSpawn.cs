@@ -63,27 +63,27 @@ namespace AAMod.NPCs.Bosses.Greed
 			{
 				npc.ai[0]++;
 
-				if (npc.ai[0] == 375)    
+				if (npc.ai[0] == 175)    
 				{
 					if (Main.netMode != 1) BaseUtility.Chat("Who disturbs me from my coin-counting?! I'm busy--", Color.Goldenrod);
 					npc.netUpdate = true;
 				}else
-				if (npc.ai[0] == 650)
+				if (npc.ai[0] == 350)
 				{
 					if (Main.netMode != 1) BaseUtility.Chat("...Oooooh...is that...?", Color.Goldenrod);
 				}else
-				if (npc.ai[0] == 900)
+				if (npc.ai[0] == 500)
 				{
 					if (Main.netMode != 1) BaseUtility.Chat("You brought me my favorite dish..!", Color.Goldenrod);
                     npc.netUpdate = true;
 				}else
-				if (npc.ai[0] == 1100)
+				if (npc.ai[0] == 610)
 				{
 					if (Main.netMode != 1) BaseUtility.Chat("Golden Grub...", Color.Goldenrod);
 				}else
-				if (npc.ai[0] >= 1455 && !NPC.AnyNPCs(mod.NPCType("YamataA")))
+				if (npc.ai[0] >= 755 && !NPC.AnyNPCs(mod.NPCType("Greed")))
 				{
-					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("YamataA"), true, npc.Center, "Greed", false);
+					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Greed"), true, npc.Center, "Greed", false);
 					if (Main.netMode != 1) BaseUtility.Chat("WITH A SIDE OF TERRARIAN!!!", Color.Goldenrod);
 
                     npc.netUpdate = true;
@@ -105,9 +105,9 @@ namespace AAMod.NPCs.Bosses.Greed
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Rectangle SunFrame = new Rectangle(0, 0, 60, 60);
-            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("NPCs/Bosses/Greed/GreedSpawn2"), 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, -npc.rotation, npc.spriteDirection, 1, SunFrame, AAColor.COLOR_WHITEFADE1, true);
-            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("NPCs/Bosses/Greed/GreedSpawn1"), 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 1, SunFrame, AAColor.COLOR_WHITEFADE1, true);
-            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("NPCs/Bosses/Greed/GreedSpawn"), 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, Rotation, npc.spriteDirection, 1, SunFrame, AAColor.COLOR_WHITEFADE1, true);
+            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("NPCs/Bosses/Greed/GreedSpawn2"), 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, -npc.rotation, npc.spriteDirection, 1, SunFrame, npc.GetAlpha(AAColor.COLOR_WHITEFADE1), true);
+            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("NPCs/Bosses/Greed/GreedSpawn1"), 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 1, SunFrame, npc.GetAlpha(AAColor.COLOR_WHITEFADE1), true);
+            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("NPCs/Bosses/Greed/GreedSpawn"), 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, Rotation, npc.spriteDirection, 1, SunFrame, npc.GetAlpha(AAColor.COLOR_WHITEFADE1), true);
             return false;
         }
     }

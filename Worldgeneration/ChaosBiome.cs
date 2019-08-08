@@ -708,7 +708,6 @@ namespace AAMod.Worldgeneration
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
             {
                 [new Color(255, 0, 0)] = mod.TileType("GreedStone"),
-                [new Color(0, 255, 0)] = mod.TileType("GreedCoin"),
                 [new Color(0, 0, 255)] = mod.TileType("GreedBrick"),
                 [new Color(255, 255, 255)] = -2, //turn into air
                 [Color.Black] = -1 //don't touch when genning		
@@ -720,13 +719,12 @@ namespace AAMod.Worldgeneration
                 [Color.Black] = -1 //don't touch when genning				
             };
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/GreedNest"), colorToTile, mod.GetTexture("Worldgeneration/GreedNest_Walls"), colorToWall);
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/GreedNest"), colorToTile, mod.GetTexture("Worldgeneration/GreedNest_Walls"), colorToWall, null, mod.GetTexture("Worldgeneration/GreedNestSlopes"));
 
             gen.Generate(origin.X, origin.Y, true, true);
 
-
-            int biomeRadius = 80;
-
+            WorldGen.PlaceObject(origin.X + 80, origin.Y + 88, (ushort)mod.TileType("GreedAltar"));
+            NetMessage.SendObjectPlacment(-1, origin.X + 80, origin.Y + 88, (ushort)mod.TileType("GreedAltar"), 0, 0, -1, -1);
             WorldGen.PlaceObject(origin.X + 1, origin.Y + 60, (ushort)mod.TileType("GreedDoorClosed"));
             WorldGen.PlaceObject(origin.X + 159, origin.Y + 77, (ushort)mod.TileType("GreedDoorClosed"));
             NetMessage.SendObjectPlacment(-1, origin.X + 1, origin.Y + 60, (ushort)mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
@@ -745,12 +743,6 @@ namespace AAMod.Worldgeneration
             HoardChest(origin.X + 121, origin.Y + 33);
             HoardChest(origin.X + 131, origin.Y + 48, 3);
             HoardChest(origin.X + 130, origin.Y + 69);
-
-            WorldUtils.Gen(origin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //remove all fluids in sphere...
-			{
-                new InWorld(),
-                new Actions.SetLiquid(0, 0)
-            }));
 
             return true;
         }
