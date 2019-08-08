@@ -97,7 +97,13 @@ namespace AAMod.NPCs.Bosses.Djinn
                 StartSandstorm();
                 runonce += 1;
             }
-
+			 if (internalAI[0] == 2 && npc.ai[3] < 60)
+            {
+					npc.velocity.X *= 0.97f;
+					
+					
+			}
+		
             if (internalAI[0] == 2 && npc.ai[3] > 120)
             {
                 if (npc.velocity.X > 0)
@@ -113,11 +119,11 @@ namespace AAMod.NPCs.Bosses.Djinn
             {
                 if (player.Center.X > npc.Center.X)
                 {
-                    npc.direction = -1;
+                    npc.direction = 1;
                 }
                 else
                 {
-                    npc.direction = 1;
+                    npc.direction = -1;
                 }
             }
 
@@ -149,8 +155,9 @@ namespace AAMod.NPCs.Bosses.Djinn
                 internalAI[1]++;
                 if (internalAI[1] >= 300)
                 {
+					
                     selectPoint = true; ;
-                    internalAI[0] = Main.rand.Next(3);
+                    internalAI[0] = Main.rand.Next(3) ;
                     internalAI[1] = 0;
                     npc.ai[3] = 0;
                     npc.ai = new float[4];
@@ -222,16 +229,19 @@ namespace AAMod.NPCs.Bosses.Djinn
             else if (internalAI[0] == 2)
             {
                 npc.ai[3]++;
-
+				
                 npc.damage = 50;
-                if (npc.ai[3] < 120)
+                if (npc.ai[3] < 120 && npc.ai[3] > 60)
                 {
                     if (Main.netMode != 1)
                     {
                         if (selectPoint)
                         {
-                            float point = 500 * -npc.direction;
-                            MovePoint = player.Center + new Vector2(-point, 0);
+							
+							 
+                            float point = 700 * npc.direction;
+                            MovePoint = player.Center + new Vector2(point, 0);
+							MoveToPoint(MovePoint, 10f);
                             selectPoint = false;
                             npc.netUpdate = true;
                         }
@@ -245,8 +255,10 @@ namespace AAMod.NPCs.Bosses.Djinn
                     {
                         if (npc.ai[3] == 120)
                         {
-                            float point = 500 * npc.direction;
-                            MovePoint = player.Center + new Vector2(point, 0);
+							 
+                            //float point = 500 * npc.direction;
+                            MovePoint = new Vector2(player.Center.X, npc.position.Y);
+							MoveToPoint(MovePoint, 10f);
                             npc.netUpdate = true;
                         }
                         npc.damage = 40;
@@ -254,7 +266,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                     }
                 }
 
-                MoveToPoint(MovePoint, 10f);
+               
 
                 if (npc.ai[3] > 160 && Main.netMode != 1)
                 {
@@ -337,8 +349,9 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
             else if (internalAI[0] == 2)
             {
-                if (npc.ai[3] < 180)
+                if (npc.ai[3] < 60)
                 {
+					
                     if (npc.frameCounter > 9)
                     {
                         npc.frame.Y += frameHeight;
@@ -351,20 +364,23 @@ namespace AAMod.NPCs.Bosses.Djinn
                 }
                 else
                 {
+					
                     if (npc.frame.Y < FrameHeight * 4)
                     {
-                        npc.frame.Y = 4;
+                        npc.frame.Y = FrameHeight * 4;
                     }
                     if (npc.frameCounter > 9)
                     {
                         npc.frame.Y += frameHeight;
                         npc.frameCounter = 0;
                     }
-                }
-                if (npc.frame.Y > FrameHeight * 7)
+					 if (npc.frame.Y > FrameHeight * 7)
                 {
-                    npc.frame.Y = 4;
+					
+                     npc.frame.Y = FrameHeight * 5;
                 }
+                }
+               
                 return;
             }
             else
