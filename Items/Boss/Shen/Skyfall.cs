@@ -23,8 +23,8 @@ namespace AAMod.Items.Boss.Shen
             item.ranged = true;
             item.width = 22;
             item.height = 50;
-            item.useTime = 7;
-            item.useAnimation = 7;
+            item.useTime = 5;
+            item.useAnimation = 5;
             item.useAmmo = AmmoID.Arrow;
             item.useStyle = 5;
             item.noMelee = true;

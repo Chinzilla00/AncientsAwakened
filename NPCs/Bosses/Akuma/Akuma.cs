@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
-            npc.damage = 59;
+            npc.damage = 140;
             npc.defense = 250;
             npc.lifeMax = 570000;
             if (Main.expertMode)
@@ -68,8 +68,8 @@ namespace AAMod.NPCs.Bosses.Akuma
             musicPriority = MusicPriority.BossHigh;
             if (AAWorld.downedAllAncients)
             {
-                npc.damage = 120;
-                npc.defense = 160;
+                npc.damage = 200;
+                npc.defense = 300;
                 npc.lifeMax = 700000;
             }
         }

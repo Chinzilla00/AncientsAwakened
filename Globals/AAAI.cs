@@ -5,6 +5,7 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.Localization;
 
 namespace AAMod
 {
@@ -628,6 +629,443 @@ namespace AAMod
                 }
                 position2 = new Vector2(position.X + offX, position.Y + offY);
                 BaseDrawing.DrawTexture(sb, texture, shader, position2, width, height, scale, rotation, direction, framecount, frame, lightColor, true);
+            }
+        }
+
+        public static void AIWorm(NPC npc, int[] wormTypes, int wormLength = 3, float partDistanceAddon = 0f, float maxSpeed = 8f, float gravityResist = 0.07f, bool fly = false, bool split = false, bool ignoreTiles = false, bool spawnTileDust = true, bool soundEffects = true, bool rotateAverage = false, Action<NPC, int, bool> onChangeType = null)
+        {
+            bool diggingDummy = false;
+            AIWorm(npc, ref diggingDummy, wormTypes, wormLength, partDistanceAddon, maxSpeed, gravityResist, fly, split, ignoreTiles, spawnTileDust, soundEffects, rotateAverage, onChangeType);
+        }
+
+        public static void AIWorm(NPC npc, ref bool isDigging, int[] wormTypes, int wormLength = 3, float partDistanceAddon = 0f, float maxSpeed = 8f, float gravityResist = 0.07f, bool fly = false, bool split = false, bool ignoreTiles = false, bool spawnTileDust = true, bool soundEffects = true, bool rotateAverage = false, Action<NPC, int, bool> onChangeType = null)
+        {
+            int[] wtypes = new int[(wormTypes.Length == 1 ? 1 : wormLength)];
+            wtypes[0] = wormTypes[0];
+            if (wormTypes.Length > 1)
+            {
+                wtypes[wtypes.Length - 1] = wormTypes[2];
+                for (int m = 1; m < wtypes.Length - 1; m++)
+                {
+                    wtypes[m] = wormTypes[1];
+                }
+            }
+            AIWorm(npc, ref isDigging, wtypes, partDistanceAddon, maxSpeed, gravityResist, fly, split, ignoreTiles, spawnTileDust, soundEffects, rotateAverage, onChangeType);
+        }
+
+        public static void AIWorm(NPC npc, int[] wormTypes, float partDistanceAddon = 0f, float maxSpeed = 8f, float gravityResist = 0.07f, bool fly = false, bool split = false, bool ignoreTiles = false, bool spawnTileDust = true, bool soundEffects = true, bool rotateAverage = false, Action<NPC, int, bool> onChangeType = null)
+        {
+            bool diggingDummy = false;
+            AIWorm(npc, ref diggingDummy, wormTypes, partDistanceAddon, maxSpeed, gravityResist, fly, split, ignoreTiles, spawnTileDust, soundEffects, rotateAverage, onChangeType);
+        }
+
+        public static void AIWorm(NPC npc, ref bool isDigging, int[] wormTypes, float partDistanceAddon = 0f, float maxSpeed = 8f, float gravityResist = 0.07f, bool fly = false, bool split = false, bool ignoreTiles = false, bool spawnTileDust = true, bool soundEffects = true, bool rotateAverage = false, Action<NPC, int, bool> onChangeType = null)
+        {
+            bool singlePiece = wormTypes.Length == 1;
+            bool isHead = npc.type == wormTypes[0];
+            bool isTail = npc.type == wormTypes[wormTypes.Length - 1];
+            bool isBody = !isHead && !isTail;
+            int wormLength = wormTypes.Length;
+
+            if (split)
+            {
+                npc.realLife = -1;
+            }
+            else
+            if (npc.ai[3] > 0f)
+                npc.realLife = (int)npc.ai[3];
+
+            if (npc.ai[0] == -1f)
+                npc.ai[0] = npc.whoAmI;
+            if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead)
+                npc.TargetClosest(true);
+            if (isHead)
+            {
+                if ((npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead) && npc.timeLeft > 300)
+                    npc.timeLeft = 300;
+            }
+            else
+            {
+                npc.timeLeft = 50;
+            }
+            if (Main.netMode != 1)
+            {
+                if (!singlePiece)
+                {
+                    //spawn pieces (flying)
+                    if (fly && isHead && npc.ai[0] == 0f)
+                    {
+                        npc.ai[3] = (float)npc.whoAmI;
+                        npc.realLife = npc.whoAmI;
+                        int npcID = npc.whoAmI;
+                        for (int m = 1; m < wormLength - 1; m++)
+                        {
+                            int npcType = wormTypes[m];
+
+                            float ai0 = 0;
+                            float ai1 = npcID;
+                            float ai2 = m;
+                            float ai3 = npc.ai[3];
+
+                            int newnpcID = NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), npcType, npc.whoAmI, ai0, ai1, ai2, ai3);
+                            Main.npc[npcID].ai[0] = newnpcID;
+                            Main.npc[npcID].netUpdate = true;
+                            //Main.npc[newnpcID].ai[3] = (float)npc.whoAmI;
+                            //Main.npc[newnpcID].realLife = npc.whoAmI;
+                            //Main.npc[newnpcID].ai[1] = (float)npcID;
+                            //Main.npc[npcID].ai[0] = (float)newnpcID;
+                            //Main.npc[newnpcID].netUpdate = true;							
+                            //NetMessage.SendData(23, -1, -1, NetworkText.FromLiteral(""), newnpcID, 0f, 0f, 0f, 0);
+                            npcID = newnpcID;
+                        }
+                        npc.netUpdate = true;
+                    }
+                    else //spawn pieces
+                    if ((isHead || isBody) && npc.ai[0] == 0f)
+                    {
+                        if (isHead)
+                        {
+                            if (!split)
+                            {
+                                npc.ai[3] = (float)npc.whoAmI;
+                                npc.realLife = npc.whoAmI;
+                            }
+                            npc.ai[2] = (float)(wormLength - 1);
+                        }
+                        float ai0 = 0;
+                        float ai1 = npc.whoAmI;
+                        float ai2 = npc.ai[2] - 1f;
+                        float ai3 = npc.ai[3];
+                        if (split)
+                            npc.ai[3] = 0f;
+
+                        if (isHead)
+                        {
+                            npc.ai[0] = (float)NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[1], npc.whoAmI, ai0, ai1, ai2, ai3);
+                        }
+                        else
+                        if (isBody && npc.ai[2] > 0f)
+                        {
+                            npc.ai[0] = (float)NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[wormLength - (int)npc.ai[2]], npc.whoAmI, ai0, ai1, ai2, ai3);
+                        }
+                        else
+                        {
+                            npc.ai[0] = (float)NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[wormTypes.Length - 1], npc.whoAmI, ai0, ai1, ai2, ai3);
+                        }
+                        /*if (!split)
+						{
+							Main.npc[(int)npc.ai[0]].ai[3] = npc.ai[3];
+							Main.npc[(int)npc.ai[0]].realLife = npc.realLife;
+						}
+						Main.npc[(int)npc.ai[0]].ai[1] = (float)npc.whoAmI;
+						Main.npc[(int)npc.ai[0]].ai[2] = npc.ai[2] - 1f;*/
+                        Main.npc[(int)npc.ai[0]].netUpdate = true;
+                        npc.netUpdate = true;
+                    }
+                }
+                //if npc can split, check if pieces are dead and if so split.
+                if (!singlePiece && split)
+                {
+                    if (!Main.npc[(int)npc.ai[1]].active && !Main.npc[(int)npc.ai[0]].active) //if this is in the middle and both parts are inactive, kill self
+                    {
+                        npc.life = 0;
+                        npc.HitEffect(0, 10.0);
+                        npc.active = false;
+                    }
+                    if (npc.type == wormTypes[0] && !Main.npc[(int)npc.ai[0]].active) //if this is the head and the bottom is inactive, kill self
+                    {
+                        npc.life = 0;
+                        npc.HitEffect(0, 10.0);
+                        npc.active = false;
+                    }
+                    if (npc.type == wormTypes[wormTypes.Length - 1] && !Main.npc[(int)npc.ai[1]].active) //if this is the tail and the top is inactive, kill self
+                    {
+                        npc.life = 0;
+                        npc.HitEffect(0, 10.0);
+                        npc.active = false;
+                    }
+                    if (isBody && !Main.npc[(int)npc.ai[1]].active) //if the body was just split, turn it into a head
+                    {
+                        int oldType = npc.type;
+                        npc.type = wormTypes[0];
+                        int npcID = npc.whoAmI;
+                        float lifePercent = (float)npc.life / (float)npc.lifeMax;
+                        float lastPiece = npc.ai[0];
+                        npc.SetDefaults(npc.type, -1f);
+                        npc.life = (int)((float)npc.lifeMax * lifePercent);
+                        npc.ai[0] = lastPiece;
+                        npc.TargetClosest(true);
+                        npc.netUpdate = true;
+                        npc.whoAmI = npcID;
+                        if (onChangeType != null) onChangeType(npc, oldType, true);
+                    }
+                    else
+                    if (isBody && !Main.npc[(int)npc.ai[0]].active) //if the body was just split, turn it into a tail
+                    {
+                        int oldType = npc.type;
+                        npc.type = wormTypes[wormTypes.Length - 1];
+                        int npcID = npc.whoAmI;
+                        float lifePercent = (float)npc.life / (float)npc.lifeMax;
+                        float lastPiece = npc.ai[1];
+                        npc.SetDefaults(npc.type, -1f);
+                        npc.life = (int)((float)npc.lifeMax * lifePercent);
+                        npc.ai[1] = lastPiece;
+                        npc.TargetClosest(true);
+                        npc.netUpdate = true;
+                        npc.whoAmI = npcID;
+                        if (onChangeType != null) onChangeType(npc, oldType, false);
+                    }
+                }
+                else
+                if (!singlePiece)
+                {
+                    if (npc.type != wormTypes[0] && (!Main.npc[(int)npc.ai[1]].active || Main.npc[(int)npc.ai[1]].aiStyle != npc.aiStyle))
+                    {
+                        npc.life = 0;
+                        npc.HitEffect(0, 10.0);
+                        npc.active = false;
+                    }
+                    if (npc.type != wormTypes[wormTypes.Length - 1] && (!Main.npc[(int)npc.ai[0]].active || Main.npc[(int)npc.ai[0]].aiStyle != npc.aiStyle))
+                    {
+                        npc.life = 0;
+                        npc.HitEffect(0, 10.0);
+                        npc.active = false;
+                    }
+                }
+                if (!npc.active && Main.netMode == 2)
+                    NetMessage.SendData(28, -1, -1, NetworkText.FromLiteral(""), npc.whoAmI, 1, 0f, 0f, -1);
+            }
+            int tileX = (int)(npc.position.X / 16f) - 1;
+            int tileCenterX = (int)((npc.Center.X) / 16f) + 2;
+            int tileY = (int)(npc.position.Y / 16f) - 1;
+            int tileCenterY = (int)((npc.Center.Y) / 16f) + 2;
+            if (tileX < 0) { tileX = 0; }
+            if (tileCenterX > Main.maxTilesX) { tileCenterX = Main.maxTilesX; }
+            if (tileY < 0) { tileY = 0; }
+            if (tileCenterY > Main.maxTilesY) { tileCenterY = Main.maxTilesY; }
+            bool canMove = false;
+            if (fly || ignoreTiles) { canMove = true; }
+            if (!canMove || spawnTileDust)
+            {
+                for (int tX = tileX; tX < tileCenterX; tX++)
+                {
+                    for (int tY = tileY; tY < tileCenterY; tY++)
+                    {
+                        Tile checkTile = BaseWorldGen.GetTileSafely(tX, tY);
+                        if (checkTile != null && ((checkTile.nactive() && (Main.tileSolid[(int)checkTile.type] || (Main.tileSolidTop[(int)checkTile.type] && checkTile.frameY == 0))) || checkTile.liquid > 64))
+                        {
+                            Vector2 tPos;
+                            tPos.X = (float)(tX * 16);
+                            tPos.Y = (float)(tY * 16);
+                            if (npc.position.X + (float)npc.width > tPos.X && npc.position.X < tPos.X + 16f && npc.position.Y + (float)npc.height > tPos.Y && npc.position.Y < tPos.Y + 16f)
+                            {
+                                canMove = true;
+                                if (spawnTileDust && Main.rand.Next(100) == 0 && checkTile.nactive())
+                                {
+                                    WorldGen.KillTile(tX, tY, true, true, false);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            if (!canMove && npc.type == wormTypes[0])
+            {
+                Rectangle rectangle = new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height);
+                int playerCheckDistance = 1000;
+                bool canMove2 = true;
+                for (int m3 = 0; m3 < 255; m3++)
+                {
+                    if (Main.player[m3].active)
+                    {
+                        Rectangle rectangle2 = new Rectangle((int)Main.player[m3].position.X - playerCheckDistance, (int)Main.player[m3].position.Y - playerCheckDistance, playerCheckDistance * 2, playerCheckDistance * 2);
+                        if (rectangle.Intersects(rectangle2))
+                        {
+                            canMove2 = false;
+                            break;
+                        }
+                    }
+                }
+                if (canMove2) { canMove = true; }
+            }
+            if (fly)
+            {
+                if (npc.velocity.X < 0f) { npc.spriteDirection = 1; } else if (npc.velocity.X > 0f) { npc.spriteDirection = -1; }
+            }
+            Vector2 npcCenter = npc.Center;
+            float playerCenterX = Main.player[npc.target].Center.X;
+            float playerCenterY = Main.player[npc.target].Center.Y;
+            playerCenterX = (float)((int)(playerCenterX / 16f) * 16); playerCenterY = (float)((int)(playerCenterY / 16f) * 16);
+            npcCenter.X = (float)((int)(npcCenter.X / 16f) * 16); npcCenter.Y = (float)((int)(npcCenter.Y / 16f) * 16);
+            playerCenterX -= npcCenter.X; playerCenterY -= npcCenter.Y;
+            float dist = (float)Math.Sqrt((double)(playerCenterX * playerCenterX + playerCenterY * playerCenterY));
+            isDigging = canMove;
+            if (npc.ai[1] > 0f && npc.ai[1] < (float)Main.npc.Length)
+            {
+                try
+                {
+                    npcCenter = npc.Center;
+                    playerCenterX = Main.npc[(int)npc.ai[1]].Center.X - npcCenter.X;
+                    playerCenterY = Main.npc[(int)npc.ai[1]].Center.Y - npcCenter.Y;
+                }
+                catch
+                {
+                }
+                if (!rotateAverage || npc.type == wormTypes[0])
+                {
+                    npc.rotation = (float)Math.Atan2((double)playerCenterY, (double)playerCenterX) + 1.57f;
+                }
+                else
+                {
+                    NPC frontNPC = Main.npc[(int)npc.ai[1]];
+                    Vector2 rotVec = BaseUtility.RotateVector(frontNPC.Center, frontNPC.Center + new Vector2(0f, 30f), frontNPC.rotation);
+                    npc.rotation = BaseUtility.RotationTo(npc.Center, rotVec) + 1.57f;
+                }
+                dist = (float)Math.Sqrt((double)(playerCenterX * playerCenterX + playerCenterY * playerCenterY));
+                dist = (dist - (float)npc.width - (float)partDistanceAddon) / dist;
+                playerCenterX *= dist;
+                playerCenterY *= dist;
+                npc.velocity = default(Vector2);
+                npc.position.X = npc.position.X + playerCenterX;
+                npc.position.Y = npc.position.Y + playerCenterY;
+                if (fly)
+                {
+                    if (playerCenterX < 0f) { npc.spriteDirection = 1; return; }
+                    else
+                    if (playerCenterX > 0f) { npc.spriteDirection = -1; return; }
+                }
+            }
+            else
+            {
+                if (!canMove)
+                {
+                    npc.TargetClosest(true);
+                    npc.velocity.Y = npc.velocity.Y + 0.11f;
+                    if (npc.velocity.Y > maxSpeed) { npc.velocity.Y = maxSpeed; }
+                    if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)maxSpeed * 0.4)
+                    {
+                        if (npc.velocity.X < 0f) { npc.velocity.X = npc.velocity.X - gravityResist * 1.1f; } else { npc.velocity.X = npc.velocity.X + gravityResist * 1.1f; }
+                    }
+                    else
+                        if (npc.velocity.Y == maxSpeed)
+                    {
+                        if (npc.velocity.X < playerCenterX) { npc.velocity.X = npc.velocity.X + gravityResist; }
+                        else
+                            if (npc.velocity.X > playerCenterX) { npc.velocity.X = npc.velocity.X - gravityResist; }
+                    }
+                    else
+                            if (npc.velocity.Y > 4f)
+                    {
+                        if (npc.velocity.X < 0f) { npc.velocity.X = npc.velocity.X + gravityResist * 0.9f; } else { npc.velocity.X = npc.velocity.X - gravityResist * 0.9f; }
+                    }
+                }
+                else
+                {
+                    if (soundEffects && npc.soundDelay == 0)
+                    {
+                        float distSoundDelay = dist / 40f;
+                        if (distSoundDelay < 10f) { distSoundDelay = 10f; }
+                        if (distSoundDelay > 20f) { distSoundDelay = 20f; }
+                        npc.soundDelay = (int)distSoundDelay;
+                        Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 1);
+                    }
+                    dist = (float)Math.Sqrt((double)(playerCenterX * playerCenterX + playerCenterY * playerCenterY));
+                    float absPlayerCenterX = Math.Abs(playerCenterX);
+                    float absPlayerCenterY = Math.Abs(playerCenterY);
+                    float newSpeed = maxSpeed / dist;
+                    playerCenterX *= newSpeed;
+                    playerCenterY *= newSpeed;
+                    bool dontFall = false;
+                    if (fly)
+                    {
+                        if (((npc.velocity.X > 0f && playerCenterX < 0f) || (npc.velocity.X < 0f && playerCenterX > 0f) || (npc.velocity.Y > 0f && playerCenterY < 0f) || (npc.velocity.Y < 0f && playerCenterY > 0f)) && Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) > gravityResist / 2f && dist < 300f)
+                        {
+                            dontFall = true;
+                            if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < maxSpeed) { npc.velocity *= 1.1f; }
+                        }
+                        if (npc.position.Y > Main.player[npc.target].position.Y || (double)(Main.player[npc.target].position.Y / 16f) > Main.worldSurface || Main.player[npc.target].dead)
+                        {
+                            dontFall = true;
+                            if (Math.Abs(npc.velocity.X) < maxSpeed / 2f)
+                            {
+                                if (npc.velocity.X == 0f) { npc.velocity.X = npc.velocity.X - (float)npc.direction; }
+                                npc.velocity.X = npc.velocity.X * 1.1f;
+                            }
+                            else
+                                if (npc.velocity.Y > -maxSpeed) { npc.velocity.Y = npc.velocity.Y - gravityResist; }
+                        }
+                    }
+                    if (!dontFall)
+                    {
+                        if ((npc.velocity.X > 0f && playerCenterX > 0f) || (npc.velocity.X < 0f && playerCenterX < 0f) || (npc.velocity.Y > 0f && playerCenterY > 0f) || (npc.velocity.Y < 0f && playerCenterY < 0f))
+                        {
+                            if (npc.velocity.X < playerCenterX) { npc.velocity.X = npc.velocity.X + gravityResist; }
+                            else
+                                if (npc.velocity.X > playerCenterX) { npc.velocity.X = npc.velocity.X - gravityResist; }
+                            if (npc.velocity.Y < playerCenterY) { npc.velocity.Y = npc.velocity.Y + gravityResist; }
+                            else
+                                if (npc.velocity.Y > playerCenterY) { npc.velocity.Y = npc.velocity.Y - gravityResist; }
+                            if ((double)Math.Abs(playerCenterY) < (double)maxSpeed * 0.2 && ((npc.velocity.X > 0f && playerCenterX < 0f) || (npc.velocity.X < 0f && playerCenterX > 0f)))
+                            {
+                                if (npc.velocity.Y > 0f) { npc.velocity.Y = npc.velocity.Y + gravityResist * 2f; } else { npc.velocity.Y = npc.velocity.Y - gravityResist * 2f; }
+                            }
+                            if ((double)Math.Abs(playerCenterX) < (double)maxSpeed * 0.2 && ((npc.velocity.Y > 0f && playerCenterY < 0f) || (npc.velocity.Y < 0f && playerCenterY > 0f)))
+                            {
+                                if (npc.velocity.X > 0f) { npc.velocity.X = npc.velocity.X + gravityResist * 2f; } else { npc.velocity.X = npc.velocity.X - gravityResist * 2f; }
+                            }
+                        }
+                        else
+                            if (absPlayerCenterX > absPlayerCenterY)
+                        {
+                            if (npc.velocity.X < playerCenterX) { npc.velocity.X = npc.velocity.X + gravityResist * 1.1f; }
+                            else
+                                if (npc.velocity.X > playerCenterX) { npc.velocity.X = npc.velocity.X - gravityResist * 1.1f; }
+
+                            if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)maxSpeed * 0.5)
+                            {
+                                if (npc.velocity.Y > 0f) { npc.velocity.Y = npc.velocity.Y + gravityResist; } else { npc.velocity.Y = npc.velocity.Y - gravityResist; }
+                            }
+                        }
+                        else
+                        {
+                            if (npc.velocity.Y < playerCenterY) { npc.velocity.Y = npc.velocity.Y + gravityResist * 1.1f; }
+                            else
+                                if (npc.velocity.Y > playerCenterY) { npc.velocity.Y = npc.velocity.Y - gravityResist * 1.1f; }
+                            if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)maxSpeed * 0.5)
+                            {
+                                if (npc.velocity.X > 0f) { npc.velocity.X = npc.velocity.X + gravityResist; } else { npc.velocity.X = npc.velocity.X - gravityResist; }
+                            }
+                        }
+                    }
+                }
+                if (!rotateAverage || npc.type == wormTypes[0])
+                {
+                    npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 1.57f;
+                }
+                else
+                {
+                    NPC frontNPC = Main.npc[(int)npc.ai[1]];
+                    Vector2 rotVec = BaseUtility.RotateVector(frontNPC.Center, frontNPC.Center + new Vector2(0f, 30f), frontNPC.rotation);
+                    npc.rotation = BaseUtility.RotationTo(npc.Center, rotVec) + 1.57f;
+                }
+                if (npc.type == wormTypes[0])
+                {
+                    if (canMove)
+                    {
+                        if (npc.localAI[0] != 1f) { npc.netUpdate = true; }
+                        npc.localAI[0] = 1f;
+                    }
+                    else
+                    {
+                        if (npc.localAI[0] != 0f) { npc.netUpdate = true; }
+                        npc.localAI[0] = 0f;
+                    }
+                    if (((npc.velocity.X > 0f && npc.oldVelocity.X < 0f) || (npc.velocity.X < 0f && npc.oldVelocity.X > 0f) || (npc.velocity.Y > 0f && npc.oldVelocity.Y < 0f) || (npc.velocity.Y < 0f && npc.oldVelocity.Y > 0f)) && !npc.justHit)
+                    {
+                        npc.netUpdate = true;
+                        return;
+                    }
+                }
             }
         }
     }

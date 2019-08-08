@@ -23,7 +23,7 @@ namespace AAMod.Projectiles.Akuma
             projectile.aiStyle = 34;
             projectile.friendly = true;
             projectile.ranged = true;
-            projectile.timeLeft = 45;
+            projectile.timeLeft = 100;
         }
 
         public float[] internalAI = new float[1];
