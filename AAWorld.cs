@@ -587,7 +587,6 @@ namespace AAMod
                 VoidIslands(progress);
             }));
 
-
             tasks.Insert(shiniesIndex2 + 8, new PassLegacy("Altars", delegate (GenerationProgress progress)
             {
                 Altars(progress);
