@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Enemies.Cavern
             npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 0, 90);
             npc.npcSlots = 5;
             npc.aiStyle = -1;
-            npc.lifeMax = 70;
+            npc.lifeMax = 300;
             npc.defense = 15;
             npc.damage = 20;
             npc.HitSound = SoundID.NPCHit1;
@@ -54,7 +54,7 @@ namespace AAMod.NPCs.Enemies.Cavern
 
 		public override void AI()
         {
-            int[] types = new int[] { mod.NPCType("Scavenger"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerTail") };
+            int[] types = new int[] { mod.NPCType("Scavenger"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerTail") };
             BaseAI.AIWorm(npc, types, 5, 6f, 8f, 0.07f, false, true);
         }
 
@@ -77,7 +77,7 @@ namespace AAMod.NPCs.Enemies.Cavern
             base.SetDefaults();
             npc.value = BaseUtility.CalcValue(0, 0, 0, 75);
             npc.npcSlots = 3;
-            npc.lifeMax = 50;
+            npc.lifeMax = 300;
             npc.defense = 10;
             npc.damage = 15;
         }
@@ -90,7 +90,7 @@ namespace AAMod.NPCs.Enemies.Cavern
             base.SetDefaults();
             npc.value = BaseUtility.CalcValue(0, 0, 0, 60);
             npc.npcSlots = 3;
-            npc.lifeMax = 50;
+            npc.lifeMax = 300;
             npc.defense = 10;
             npc.damage = 15;
         }

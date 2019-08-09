@@ -54,7 +54,14 @@ namespace AAMod.Tiles
                     if (item != null && item.type == type && item.stack >= 1)
                     {
                         item.stack--;
-                        AAModGlobalNPC.SpawnBoss(player, mod.NPCType<Greed>(), false, new Vector2(i, j + 100), "Greed");
+                        if (AAWorld.downedGreed)
+                        {
+                            AAModGlobalNPC.SpawnBoss(player, mod.NPCType<Greed>(), true, 0, 0, "Greed");
+                        }
+                        else
+                        {
+                            AAModGlobalNPC.SpawnBoss(player, mod.NPCType<GreedSpawn>(), false, new Vector2(i * 16, (j * 16) - 100), "Greed");
+                        }
                     }
                 }
             }

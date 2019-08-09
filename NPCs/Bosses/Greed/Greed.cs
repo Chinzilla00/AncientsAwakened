@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Greed
 {
+    [AutoloadBossHead]
 	public class Greed : ModNPC
 	{
         public int damage = 0;
@@ -132,25 +133,13 @@ namespace AAMod.NPCs.Bosses.Greed
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
 
-                    for (int i = 0; i < 23; ++i)
+                    for (int i = 0; i < 24; ++i)
                     {
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaArms"), npc.whoAmI, 0, latestNPC);
+                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("GreedBody"), npc.whoAmI, 0, latestNPC);
                         Main.npc[latestNPC].realLife = npc.whoAmI;
-                        Main.npc[latestNPC].ai[2] = npc.whoAmI;
+                        Main.npc[latestNPC].ai[2] = i;
                         Main.npc[latestNPC].ai[3] = npc.whoAmI;
                     }
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[3] = npc.whoAmI;
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody1"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[3] = npc.whoAmI;
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaTail"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[3] = npc.whoAmI;
 
                     npc.ai[0] = 1;
                     npc.netUpdate = true;
@@ -159,7 +148,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
             bool collision = true;
 
-            float speed = 12f;
+            float speed = 16f;
             float acceleration = 0.13f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -403,6 +392,7 @@ namespace AAMod.NPCs.Bosses.Greed
         }
     }
 
+    [AutoloadBossHead]
     public class GreedBody : Greed
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Greed/GreedBody"; } }
@@ -411,7 +401,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             DisplayName.SetDefault("Greed");
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
-            Main.npcFrameCount[npc.type] = 23;
+            Main.npcFrameCount[npc.type] = 24;
         }
 
         public override void SetDefaults()
@@ -491,8 +481,22 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 npc.TargetClosest(true);
             }
-            npc.netUpdate = true;
-            return false;
+            if (npc.alpha < 0)
+            {
+                npc.alpha = 0;
+                return false;
+            }
+            else
+            {
+                for (int spawnDust = 0; spawnDust < 4; spawnDust++)
+                {
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.GoldCoin, 0f, 0f, 100, default, 2f);
+                    Main.dust[num935].noGravity = true;
+                    Main.dust[num935].noLight = true;
+                }
+                npc.alpha -= 3;
+                return false;
+            }
         }
 
         public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
@@ -563,44 +567,16 @@ namespace AAMod.NPCs.Bosses.Greed
                     return npc.defense = 53;
                 case 21:
                     return npc.defense = 56;
-                default:
+                case 22:
                     return npc.defense = 58;
+                default:
+                    return npc.defense = 30;
             }
         }
-    }
 
-    public class GreedTail : Greed
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Greed/GreedTail";
-        public override void SetStaticDefaults()
+        public override void BossHeadSlot(ref int index)
         {
-            DisplayName.SetDefault("Greed");
-            Main.npcFrameCount[npc.type] = 1;
-        }
-
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.dontCountMe = true;
-        }
-
-        public override bool PreNPCLoot()
-        {
-            return false;
-        }
-
-        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-        {
-            return false;
-        }
-
-        public override bool CheckActive()
-        {
-            if (NPC.AnyNPCs(mod.NPCType<Greed>()))
-            {
-                return false;
-            }
-            return true;
+            base.BossHeadSlot(ref index);
         }
     }
 }
