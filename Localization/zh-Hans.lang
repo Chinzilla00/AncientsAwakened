@@ -1669,7 +1669,7 @@ ItemName.AshRain=灰烬之雨
 ItemTooltip.AshRain=发射在击中或一段时间后爆炸的火球
 
 ItemName.FireSpiritStaff=烈焰漩涡法杖
-ItemTooltip.FireSpiritStaff=召唤烈焰火球,增加你的召唤物伤害\n每个球占用一个召唤上限\n第一次召唤必须有两个可用召唤栏
+ItemTooltip.FireSpiritStaff=召唤烈焰火球,增加你的召唤物伤害\n每个球占用一个召唤上限\n最好至少有两个可用召唤栏来进行召唤
 
 ItemName.FuryFlame=暴怒烈焰
 ItemTooltip.FuryFlame=让你可以向你的敌人发射爆炸火焰
