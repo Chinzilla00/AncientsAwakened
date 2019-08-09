@@ -2104,7 +2104,7 @@ ItemName.SickleShot=镰弯击弓
 ItemTooltip.SickleShot=快速连续发射两波两支冰箭
 
 ItemName.SnakeStaff=绝零蛇杖
-ItemTooltip.SnakeStaff=召唤一个冰蛇为你而战\n每个召唤物占用两个召唤栏
+ItemTooltip.SnakeStaff=召唤一个冰蛇为你而战\n每个召唤栏召唤两节
 
 ItemName.SnowflakeShuriken=薄霜手里剑
 
@@ -4778,7 +4778,7 @@ NPCName.WyrmlingTail2=燎狱游虫
 
 NPCName.HarukaY=潭渊妖女 八歧遥香
 
-NPCName.YamataA=觉醒之八歧大蛇 雷霆潭渊的化身
+NPCName.YamataA=觉醒之八歧大蛇 震怒潭渊的化身
 
 NPCName.YamataAHead=觉醒之八歧大蛇的头
 
