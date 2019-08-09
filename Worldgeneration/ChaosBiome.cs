@@ -709,8 +709,8 @@ namespace AAMod.Worldgeneration
             {
                 [new Color(255, 0, 0)] = mod.TileType("GreedStone"),
                 [new Color(0, 0, 255)] = mod.TileType("GreedBrick"),
-                [new Color(255, 255, 255)] = -2, //turn into air
-                [Color.Black] = -1 //don't touch when genning		
+                [new Color(255, 255, 255)] = -2,
+                [Color.Black] = -1
             };
 
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>
