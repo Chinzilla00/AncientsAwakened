@@ -566,15 +566,16 @@ namespace AAMod
 				MireAndInferno(progress);
             }));
 
+            tasks.Insert(shiniesIndex2 + 6, new PassLegacy("Hoard", delegate (GenerationProgress progress)
+            {
+                Hoard(progress);
+            }));
+
             tasks.Insert(shiniesIndex2 + 7, new PassLegacy("Terrarium", delegate (GenerationProgress progress)
             {
                 Terrarium(progress);
             }));
 
-            tasks.Insert(shiniesIndex2 + 7, new PassLegacy("Hoard", delegate (GenerationProgress progress)
-            {
-                Hoard(progress);
-            }));
 
             tasks.Insert(shiniesIndex2 + 7, new PassLegacy("Acropolis", delegate (GenerationProgress progress)
             {
@@ -585,7 +586,6 @@ namespace AAMod
             {
                 VoidIslands(progress);
             }));
-
 
             tasks.Insert(shiniesIndex2 + 8, new PassLegacy("Altars", delegate (GenerationProgress progress)
             {
@@ -1458,7 +1458,6 @@ namespace AAMod
         public void HoardCave()
         {
             Point origin = new Point((int)(Main.maxTilesX * 0.3f), (int)(Main.maxTilesY * 0.65f));
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             Hoard biome = new Hoard();
             HoardClear delete = new HoardClear();
             delete.Place(origin, WorldGen.structures);
