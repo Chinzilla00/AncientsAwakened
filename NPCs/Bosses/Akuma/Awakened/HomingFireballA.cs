@@ -56,8 +56,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
-            const float desiredFlySpeedInPixelsPerFrame = 5;
-            const float amountOfFramesToLerpBy = 30; // minimum of 1, please keep in full numbers even though it's a float!
+            const float desiredFlySpeedInPixelsPerFrame = 15;
+            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
             if (projectile.ai[aislotHomingCooldown] > homingDelay)
@@ -94,7 +94,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             const bool homingCanAimAtWetEnemies = true;
             const float homingMaximumRangeInPixels = 500;
-
+			
             int selectedTarget = -1;
             for (int i = 0; i < Main.maxNPCs; i++)
             {
@@ -110,7 +110,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                         selectedTarget = i;
                 }
             }
-
+			projectile.velocity.X *= 1.032f;
+			projectile.velocity.Y *= 1.032f;
             return selectedTarget;
         }
 
