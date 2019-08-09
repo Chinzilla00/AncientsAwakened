@@ -44,16 +44,16 @@ namespace AAMod.NPCs.Bosses.Greed
                 Rotation += .05f;
 
 
-                if (npc.ai[0] > 375)
+                if (npc.ai[0] > 175)
 				{
-					npc.alpha -= 5;
+					npc.alpha -= 3;
 					if (npc.alpha < 0)
 					{
 						npc.alpha = 0;
 					}
 				}
 
-                if (npc.ai[0] >= 1100)
+                if (npc.ai[0] >= 570)
                 {
                     music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Greed");
                 }
@@ -98,6 +98,7 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 return false;
             }
+            npc.active = false;
             return true;
         }
 

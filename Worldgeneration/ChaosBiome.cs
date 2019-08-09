@@ -709,8 +709,8 @@ namespace AAMod.Worldgeneration
             {
                 [new Color(255, 0, 0)] = mod.TileType("GreedStone"),
                 [new Color(0, 0, 255)] = mod.TileType("GreedBrick"),
-                [new Color(255, 255, 255)] = -2, //turn into air
-                [Color.Black] = -1 //don't touch when genning		
+                [new Color(255, 255, 255)] = -2,
+                [Color.Black] = -1
             };
 
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>
@@ -727,8 +727,8 @@ namespace AAMod.Worldgeneration
             WorldGen.PlaceObject(origin.X + 1, origin.Y + 60, mod.TileType("GreedDoorClosed"));
             WorldGen.PlaceObject(origin.X + 159, origin.Y + 77, mod.TileType("GreedDoorClosed"));
             NetMessage.SendObjectPlacment(-1, origin.X + 80, origin.Y + 88, mod.TileType("GreedAltar"), 0, 0, -1, -1);
-            NetMessage.SendObjectPlacment(-1, origin.X + 1, origin.Y + 60, mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
-            NetMessage.SendObjectPlacment(-1, origin.X + 159, origin.Y + 77, mod.TileType("GreedDoorClosed"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, origin.X + 1, origin.Y + 60, mod.TileType("GreedDoorLocked"), 0, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, origin.X + 159, origin.Y + 77, mod.TileType("GreedDoorLocked"), 0, 0, -1, -1);
             HoardChest(origin.X + 19, origin.Y + 55);
             HoardChest(origin.X + 38, origin.Y + 67, 1);
             HoardChest(origin.X + 25, origin.Y + 34);

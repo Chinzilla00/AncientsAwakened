@@ -10,6 +10,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Greed
 {
+    [AutoloadBossHead]
 	public class Greed : ModNPC
 	{
         public int damage = 0;
@@ -87,22 +88,31 @@ namespace AAMod.NPCs.Bosses.Greed
                 damage = npc.damage / 2;
             }
 
-            if (npc.alpha != 0)
-            {
-                for (int spawnDust = 0; spawnDust < 4; spawnDust++)
-                {
-                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.GoldCoin, 0f, 0f, 100, default, 2f);
-                    Main.dust[num935].noGravity = true;
-                    Main.dust[num935].noLight = true;
-                }
-            }
-            if (npc.alpha < 0)
+            if (npc.alpha <= 0)
             {
                 npc.alpha = 0;
             }
             else
             {
                 npc.alpha -= 3;
+                if (npc.alpha != 0)
+                {
+                    for (int spawnDust = 0; spawnDust < 4; spawnDust++)
+                    {
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.GoldCoin, 0f, 0f, 100, default, 2f);
+                        Main.dust[num935].noGravity = true;
+                        Main.dust[num935].noLight = true;
+                    }
+                }
+            }
+
+
+            if (!Main.gamePaused && Main.rand.Next(60) == 0 && Main.player[Main.myPlayer].findTreasure)
+            {
+                int num52 = Dust.NewDust(npc.Center, 16, 16, 204, 0f, 0f, 150, default, 0.3f);
+                Main.dust[num52].fadeIn = 1f;
+                Main.dust[num52].velocity *= 0.1f;
+                Main.dust[num52].noLight = true;
             }
 
             npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
@@ -132,25 +142,13 @@ namespace AAMod.NPCs.Bosses.Greed
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
 
-                    for (int i = 0; i < 23; ++i)
+                    for (int i = 0; i < 24; ++i)
                     {
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaArms"), npc.whoAmI, 0, latestNPC);
+                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("GreedBody"), npc.whoAmI, 0, latestNPC);
                         Main.npc[latestNPC].realLife = npc.whoAmI;
-                        Main.npc[latestNPC].ai[2] = npc.whoAmI;
+                        Main.npc[latestNPC].ai[2] = i;
                         Main.npc[latestNPC].ai[3] = npc.whoAmI;
                     }
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[3] = npc.whoAmI;
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody1"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[3] = npc.whoAmI;
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaTail"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[3] = npc.whoAmI;
 
                     npc.ai[0] = 1;
                     npc.netUpdate = true;
@@ -159,7 +157,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
             bool collision = true;
 
-            float speed = 12f;
+            float speed = 18f;
             float acceleration = 0.13f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -273,6 +271,35 @@ namespace AAMod.NPCs.Bosses.Greed
                 }
             }
             npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+
+            int tileX = (int)(npc.position.X / 16f) - 1;
+            int tileCenterX = (int)((npc.Center.X) / 16f) + 2;
+            int tileY = (int)(npc.position.Y / 16f) - 1;
+            int tileCenterY = (int)((npc.Center.Y) / 16f) + 2;
+            if (tileX < 0) { tileX = 0; }
+            if (tileCenterX > Main.maxTilesX) { tileCenterX = Main.maxTilesX; }
+            if (tileY < 0) { tileY = 0; }
+            if (tileCenterY > Main.maxTilesY) { tileCenterY = Main.maxTilesY; }
+            for (int tX = tileX; tX < tileCenterX; tX++)
+            {
+                for (int tY = tileY; tY < tileCenterY; tY++)
+                {
+                    Tile checkTile = BaseWorldGen.GetTileSafely(tX, tY);
+                    if (checkTile != null && ((checkTile.nactive() && (Main.tileSolid[(int)checkTile.type] || (Main.tileSolidTop[(int)checkTile.type] && checkTile.frameY == 0))) || checkTile.liquid > 64))
+                    {
+                        Vector2 tPos;
+                        tPos.X = (float)(tX * 16);
+                        tPos.Y = (float)(tY * 16);
+                        if (npc.position.X + (float)npc.width > tPos.X && npc.position.X < tPos.X + 16f && npc.position.Y + (float)npc.height > tPos.Y && npc.position.Y < tPos.Y + 16f)
+                        {
+                            if (Main.rand.Next(100) == 0 && checkTile.nactive())
+                            {
+                                WorldGen.KillTile(tX, tY, true, true, false);
+                            }
+                        }
+                    }
+                }
+            }
 
             if (player.position.Y < (Main.worldSurface * 16.0))
             {
@@ -401,8 +428,14 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.value = 0f;
             npc.boss = false;
         }
+
+        public override void BossHeadRotation(ref float rotation)
+        {
+            rotation = npc.rotation;
+        }
     }
 
+    [AutoloadBossHead]
     public class GreedBody : Greed
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Greed/GreedBody"; } }
@@ -411,7 +444,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             DisplayName.SetDefault("Greed");
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
-            Main.npcFrameCount[npc.type] = 23;
+            Main.npcFrameCount[npc.type] = 24;
         }
 
         public override void SetDefaults()
@@ -487,17 +520,55 @@ namespace AAMod.NPCs.Bosses.Greed
                 npc.position.Y = npc.position.Y + posY;
             }
 
+            int tileX = (int)(npc.position.X / 16f) - 1;
+            int tileCenterX = (int)((npc.Center.X) / 16f) + 2;
+            int tileY = (int)(npc.position.Y / 16f) - 1;
+            int tileCenterY = (int)((npc.Center.Y) / 16f) + 2;
+            if (tileX < 0) { tileX = 0; }
+            if (tileCenterX > Main.maxTilesX) { tileCenterX = Main.maxTilesX; }
+            if (tileY < 0) { tileY = 0; }
+            if (tileCenterY > Main.maxTilesY) { tileCenterY = Main.maxTilesY; }
+            for (int tX = tileX; tX < tileCenterX; tX++)
+            {
+                for (int tY = tileY; tY < tileCenterY; tY++)
+                {
+                    Tile checkTile = BaseWorldGen.GetTileSafely(tX, tY);
+                    if (checkTile != null && ((checkTile.nactive() && (Main.tileSolid[(int)checkTile.type] || (Main.tileSolidTop[(int)checkTile.type] && checkTile.frameY == 0))) || checkTile.liquid > 64))
+                    {
+                        Vector2 tPos;
+                        tPos.X = (float)(tX * 16);
+                        tPos.Y = (float)(tY * 16);
+                        if (npc.position.X + (float)npc.width > tPos.X && npc.position.X < tPos.X + 16f && npc.position.Y + (float)npc.height > tPos.Y && npc.position.Y < tPos.Y + 16f)
+                        {
+                            if (Main.rand.Next(100) == 0 && checkTile.nactive())
+                            {
+                                WorldGen.KillTile(tX, tY, true, true, false);
+                            }
+                        }
+                    }
+                }
+            }
+
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead || !Main.player[npc.target].active)
             {
                 npc.TargetClosest(true);
             }
-            npc.netUpdate = true;
-            return false;
-        }
-
-        public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
-        {
-            spriteEffects = npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            if (npc.alpha <= 0)
+            {
+                npc.alpha = 0;
+                return false;
+            }
+            else
+            {
+                for (int spawnDust = 0; spawnDust < 4; spawnDust++)
+                {
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, DustID.GoldCoin, 0f, 0f, 100, default, 2f);
+                    Main.dust[num935].noGravity = true;
+                    Main.dust[num935].noLight = true;
+                }
+                npc.alpha -= 3;
+                return false;
+            }
         }
 
         public override void BossHeadRotation(ref float rotation)
@@ -563,44 +634,41 @@ namespace AAMod.NPCs.Bosses.Greed
                     return npc.defense = 53;
                 case 21:
                     return npc.defense = 56;
-                default:
+                case 22:
                     return npc.defense = 58;
+                default:
+                    return npc.defense = 30;
             }
         }
-    }
 
-    public class GreedTail : Greed
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Greed/GreedTail";
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Greed");
-            Main.npcFrameCount[npc.type] = 1;
-        }
 
-        public override void SetDefaults()
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            base.SetDefaults();
-            npc.dontCountMe = true;
-        }
+            Texture2D texture = Main.npcTexture[npc.type];
+            Texture2D glow = mod.GetTexture("Glowmasks/GreedBody_Glow");
 
-        public override bool PreNPCLoot()
-        {
-            return false;
-        }
+            npc.position.Y += npc.height * 0.5f;
 
-        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-        {
-            return false;
-        }
-
-        public override bool CheckActive()
-        {
-            if (NPC.AnyNPCs(mod.NPCType<Greed>()))
+            BaseDrawing.DrawTexture(spritebatch, texture, 0, npc, dColor);
+            if (Main.player[Main.myPlayer].findTreasure)
             {
-                return false;
+                Color color = dColor;
+                byte b2 = 200;
+                byte b3 = 170;
+                if (color.R < b2)
+                {
+                    color.R = b2;
+                }
+                if (color.G < b3)
+                {
+                    color.G = b3;
+                }
+                color.A = Main.mouseTextColor;
+                BaseDrawing.DrawTexture(spritebatch, glow, 0, npc, color);
             }
-            return true;
+
+            npc.position.Y -= npc.height * 0.5f;
+            return false;
         }
     }
 }
