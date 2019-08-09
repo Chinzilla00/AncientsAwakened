@@ -344,7 +344,7 @@ namespace AAMod.NPCs.Bosses.Zero
 				
                 for (int m = 0; m < WeaponCount; m++)
                 {
-					BaseUtility.Chat("RE-wiogn WEAP0N UNITS", Color.Green, false);
+					BaseUtility.Chat(Lang.BossChat("ZeroBoss11"), Color.Green, false);
                     int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType(ArmChoice()), 0, m);
                     Main.npc[npcID].Center = npc.Center;
                     Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));

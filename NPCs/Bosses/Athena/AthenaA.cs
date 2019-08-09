@@ -95,7 +95,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 5000 || !modPlayer.ZoneAcropolis)
                 {
                     Main.NewText(Math.Abs(Vector2.Distance(npc.position, player.position)));
-                    if (Main.netMode != 1) BaseUtility.Chat("And stay away...idiot.", Color.CornflowerBlue);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaA1"), Color.CornflowerBlue);
                     int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
                     Main.npc[p].Center = npc.Center;
                     npc.active = false;
@@ -412,7 +412,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override void NPCLoot()
         {
-            if (Main.netMode != 1) BaseUtility.Chat("OW! Fine, fine..! I'll leave you alone! Geez, you don't let up, do you.", Color.CornflowerBlue);
+            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaA2"), Color.CornflowerBlue);
             int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
             Main.npc[p].Center = npc.Center;
             AAWorld.downedAthenaA = true;

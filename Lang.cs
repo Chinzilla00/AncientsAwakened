@@ -319,7 +319,7 @@ namespace AAMod
                         case "downedFungusN":
                         return "绚烂的蘑菇洞总让我觉得有点毛骨悚然。 无论如何, 你想要更好的魔法能力？ 有一个巨大的蘑菇怪物, 身体内充满了强大的魔法能力。 只不过你在它下面的时候需要堵住你的鼻子。 ";
                         case "downedGripsY":
-                        return "把那些大爪子打下来很不错。 也许小东西们能让我一个人呆一会。 ";
+                        return "把那些大爪子打下来很不错。 也许小东西们能让我好好歇一歇。 ";
                         case "downedGripsN":
                         return "那些飞着的爪子在晚上简直就是一场让我害怕的噩梦。 我旅行中, 遇到过两个大大的。 也许如果你杀了他们, 小东西们就会被赶走。 也许你杀一点小爪子, 就能显示召唤出他们的方法。 ";
                         case "downedBroodY":
@@ -1185,6 +1185,56 @@ namespace AAMod
                         return "只会让他们更猛烈!";
                         case "AkumaTransition6":
                         return "你周围的空气开始升温...";
+
+                        case "Athena1":
+                        return "哈..!";
+                        case "Athena2":
+                        return "们";
+                        case "Athena3":
+                        return "你! 地上的凡人";
+                        case "Athena4":
+                        return "我的六翼小天使们告诉我你一直在攻击他们! 为什么?!";
+                        case "Athena5":
+                        return "那我要给你好好上一课, 你这个不懂规矩的小混蛋!";
+                        case "Athena6":
+                        return "准备开战!";
+                        case "Athena7":
+                        return "呼...";
+                        case "Athena8":
+                        return "咱们快点搞完. 我整天没这么多闲空.";
+                        case "Athena9":
+                        return "那就滚远点...白痴.";
+                        case "Athena10":
+                        return "不开玩笑, 风暴已经受到呼唤, 即将冲你而来!";
+                        case "Athena11":
+                        return "哦! 好, 好..! 我会让你歇一会! 你不会松懈的, 对吗?";
+
+                        case "AthenaA1":
+                        return "那就滚远点...白痴.";
+                        case "AthenaA2":
+                        return "哦! 好, 好..! 我会让你歇一会! 你不会松懈的, 对吗?";
+
+                        case "AthenaDefeat1":
+                        return "...呼...呼...";
+                        case "AthenaDefeat2":
+                        return "...我还是输了.";
+                        case "AthenaDefeat3":
+                        return "不.";
+                        case "AthenaDefeat4":
+                        return "我不会这样轻易的放弃.";
+                        case "AthenaDefeat5":
+                        return "有一句我的人民赖以为生的名言, 地上的凡人.";
+                        case "AthenaDefeat6":
+                        return "最耀眼的黎明...";
+                        case "AthenaDefeat7":
+                        return "最漆黑的深夜...";
+                        case "AthenaDefeat8":
+                        return "即便失败...";
+                        case "AthenaDefeat9":
+                        return "战 士 不 会 在 最 后 一 战 前 倒 下!!!";
+
+                        
+
                         case "Rajah1":
                         return "正 义 不 会 被 欺 骗";
                         case "Rajah2":
@@ -1318,7 +1368,7 @@ namespace AAMod
                         case "YamataA17":
                         return "哎...是的爸爸";
                         case "HarukaY1":
-                        return "爸爸, 你这个白痴……不论怎样, 我不能说我没看到这个. ";
+                        return "爸爸, 你这个白痴……不论怎样, 我不能说我没预料到. ";
                         case "HarukaY2":
                         return "就这样吧. 我输了, 你来对付他们, 爸爸. ";
                         case "YamataHead1":
@@ -1393,6 +1443,8 @@ namespace AAMod
                         return "旋 转 协 议 加 载. ";
                         case "ZeroBoss10":
                         return "武 器 单 元 重 新 加 载";
+                        case "ZeroBoss11":
+                        return "重 载 武 器 单 元";
                         case "ZeroAwakened1":
                         return "厄劫石停止发光. 现在你可以挖掘了. ";
                         case "ZeroAwakened2":
@@ -1512,7 +1564,7 @@ namespace AAMod
                         case "ShenDoragon15":
                         return "一个超远古之神的失败给予了石匠们新的力量";
                         case "ShenDoragon16":
-                        return "呵呵, 好吧. 我想我会让你单独呆会. 但是如果你回来变得更强, 我会给你展示展示永劫混沌的真实实力...";
+                        return "呵呵, 好吧. 我想我会让你歇息一会. 但是如果你回来变得更强, 我会给你展示展示永劫混沌的真实实力...";
                         case "ShenDoragon17":
                         return "一个超远古之神的失败给予了石匠们新的力量";
                         case "ShenDoragon18":
@@ -1569,6 +1621,7 @@ namespace AAMod
                         return "BOY";
                         case "girl":
                         return "GIRL";
+
                         case "AHDeath1":
                         return "RRRRRRRRRGH! NOT AGAIN!!!";
                         case "AHDeath2":
@@ -1585,6 +1638,7 @@ namespace AAMod
                         return "Whatever...I'm going back home. SOMEONE has to tell dad about this kid.";
                         case "AHDeath8":
                         return "Hmpf..! Fine! Be that way! I'm going back to the inferno!";
+
                         case "AHSpawn1":
                         return "Well hello there, what a surprise to see YOU here~!";
                         case "AHSpawn2":
@@ -1603,10 +1657,12 @@ namespace AAMod
                         return "We're gonna give you something to absolutely SCREAM about..! Come on, Hakie, let's torch this little warm-blood~!";
                         case "AHSpawn9":
                         return "Please don't call me Hakie again...ever.";
+
                         case "AsheDowned":
                         return "OW..! THAT HURT, YOU KNOW!";
                         case "HarukaDowned":
                         return "Rgh..! Ow...";
+
                         case "Akuma1":
                         return "Water?! ACK..! I CAN'T BREATHE!";
                         case "Akuma2":
@@ -1631,6 +1687,7 @@ namespace AAMod
                         return "The volcanoes of the inferno are finally quelled...";
                         case "Akuma12":
                         return "Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.";
+
                         case "AkumaA1":
                         return "Ashe? Help your dear old dad with this kid again!";
                         case "AkumaA2":
@@ -1671,10 +1728,12 @@ namespace AAMod
                         return "Hey Kid? Like Fireworks? No? Too Bad!";
                         case "AkumaA20":
                         return "Here comes the grand finale, kid!";
+
                         case "AkumaAAshe1":
                         return "Papa, NO! HEY! YOU! I'm gonna bake you alive next time we meet..!";
                         case "AkumaAAshe2":
                         return "OW, you Jerk..! I'm out!";
+
                         case "AkumaTransition1":
                         return "Heh...";
                         case "AkumaTransition2":
@@ -1687,6 +1746,56 @@ namespace AAMod
                         return "IT ONLY MAKES THEM STRONGER!";
                         case "AkumaTransition6":
                         return "The air around you begins to heat up...";
+
+                        case "Athena1":
+                        return "Hmpf..!";
+                        case "Athena2":
+                        return "s";
+                        case "Athena3":
+                        return "You! Earthwalker";
+                        case "Athena4":
+                        return "My seraphs tell me you've been attacking them! Why?!";
+                        case "Athena5":
+                        return "I'm gonna teach you a lesson, you little brat!";
+                        case "Athena6":
+                        return "En Garde!";
+                        case "Athena7":
+                        return "Sigh...";
+                        case "Athena8":
+                        return "Lets just get this overwith. I don't have all day.";
+                        case "Athena9":
+                        return "And stay away...idiot.";
+                        case "Athena10":
+                        return "No more kidding around, the storms are calling, and they're coming for you!";
+                        case "Athena11":
+                        return "OW! Fine, fine..! I'll leave you alone! Geez, you don't let up, do you.";
+
+                        case "AthenaA1":
+                        return "And stay away...idiot.";
+                        case "AthenaA2":
+                        return "OW! Fine, fine..! I'll leave you alone! Geez, you don't let up, do you.";
+
+                        case "AthenaDefeat1":
+                        return "...hah...hah...";
+                        case "AthenaDefeat2":
+                        return "...I still lost.";
+                        case "AthenaDefeat3":
+                        return "No.";
+                        case "AthenaDefeat4":
+                        return "I'm not giving up that easilly.";
+                        case "AthenaDefeat5":
+                        return "There's a phrase my people live by, earthwalker.";
+                        case "AthenaDefeat6":
+                        return "Brightest of dawn...";
+                        case "AthenaDefeat7":
+                        return "Darkest of night...";
+                        case "AthenaDefeat8":
+                        return "Even in defeat...";
+                        case "AthenaDefeat9":
+                        return "Even in defeat...";
+                        case "AthenaDefeat10":
+                        return "A VARIAN ALWAYS PUTS UP ONE LAST FIGHT!!!";
+
                         case "Rajah1":
                         return "JUSTICE CANNOT BE CHEATED";
                         case "Rajah2":
@@ -1705,6 +1814,7 @@ namespace AAMod
                         return "Well fought, ";
                         case "Rajah9":
                         return ". Take your reward.";
+
                         case "SupremeRajahDefeat1":
                         return "Rgh...";
                         case "SupremeRajahDefeat2":
@@ -1737,6 +1847,7 @@ namespace AAMod
                         return "...See ya, kiddo.";
                         case "SupremeRajahDefeat16":
                         return "Rajah Rabbit's speech warms your heart. You no longer have the will to harm rabbits. Do him proud.";
+
                         case "YamataAHead":
                         return "OWIE!!!";
                         case "Yamata1":
@@ -1769,6 +1880,7 @@ namespace AAMod
                         return "I'M GETTING FRUSTRATED AGAIN!";
                         case "Yamata15":
                         return "I HATE FIGHTING YOU! I HATE IT I HATE IT I HATE IT!!!";
+
                         case "YamataHead":
                         return "OWIE!!!";
                         case "YamataTransition1":
@@ -1785,6 +1897,7 @@ namespace AAMod
                         return "AND IT'S GOT 7 HEADS! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!";
                         case "YamataTransition7":
                         return "You begin to feel as if your soul is weighing you down...";
+
                         case "YamataA1":
                         return "REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE";
                         case "YamataA2":
@@ -1819,10 +1932,12 @@ namespace AAMod
                         return "Oh, sweetie..! Care to help daddy thrash this little worm?!";
                         case "YamataA17":
                         return "Sigh...yes dad.";
+
                         case "HarukaY1":
                         return "Dad, you moron..! Whatever, Can't really say I didn't see it coming.";
                         case "HarukaY2":
                         return "That's it. I'm done, YOU deal with them, dad.";
+
                         case "YamataHead1":
                         return "TASTE ACID YOU UNBEARABLE MAGGOT!!!";
                         case "YamataHead2":
@@ -1865,6 +1980,7 @@ namespace AAMod
                         return "I'M GONNA RIP YOU TO PIECES YOU LITTLE WRETCH!!!";
                         case "YamataHead21":
                         return "REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!";
+
                         case "Sagittarius1":
                         return "target(s) neutralized. returning to stealth mode.";
                         case "Sagittarius2":
@@ -1875,6 +1991,7 @@ namespace AAMod
                         return "target(s) lost. returning to stealth mode.";
                         case "SagittariusFree3":
                         return "initializing repair program.";
+
                         case "ZeroBoss1":
                         return "PHYSICAL ZER0 UNIT IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.";
                         case "ZeroBoss2":
@@ -1895,6 +2012,9 @@ namespace AAMod
                         return "CYCLONE PROTOCOL ENGAGED";
                         case "ZeroBoss10":
                         return "RE-ESTABLISHING WEAP0N UNITS";
+                        case "ZeroBoss11":
+                        return "RE-wiogn WEAP0N UNITS";
+
                         case "ZeroAwakened1":
                         return "Doomstone stops glowing. You can now mine it.";
                         case "ZeroAwakened2":

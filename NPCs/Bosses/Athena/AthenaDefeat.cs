@@ -67,13 +67,13 @@ namespace AAMod.NPCs.Bosses.Athena
                     {
                         if (npc.ai[0] == 120)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("...hah...hah...", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat1"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 240)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("...I still lost.", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat2"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
@@ -86,43 +86,43 @@ namespace AAMod.NPCs.Bosses.Athena
                         if (npc.ai[0] == 480)
                         {
                             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AthenaA");
-                            if (Main.netMode != 1) BaseUtility.Chat("No.", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat3"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 600)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("I'm not giving up that easilly.", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat4"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 720)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("There's a phrase my people live by, earthwalker.", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat5"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 840)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("Brightest of dawn...", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat6"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 960)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("Darkest of night...", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat7"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 1080)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("Even in defeat...", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat8"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] >= 1200)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("A VARIAN ALWAYS PUTS UP ONE LAST FIGHT!!!", Color.Silver);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat9"), Color.Silver);
                             AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaA>(), false, npc.Center);
 
                             int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer);
