@@ -2293,7 +2293,7 @@ ItemTooltip.Vortex=旋转速度快到可以把敌人拉入它的引力中
 ItemName.ZeroArrow=奇点箭
 ItemTooltip.ZeroArrow=唯一比光快的是虚空吞噬它的速度\n无消耗
 
-ItemName.ZeroATrophy=真零无械纪念章
+ItemName.ZeroATrophy=零械临界单元纪念章
 
 ItemName.ZeroBag=宝藏袋
 ItemTooltip.ZeroBag={$CommonItemTooltip.RightClickToOpen}
@@ -2475,7 +2475,7 @@ ItemTooltip.DeceivingTruthEX=发射一根无限穿透的藤蔓
 ItemName.Demise=终亡
 ItemTooltip.Demise=曾经被魔王使用的传说之剑
 
-ItemName.DemiseEX=大劫难
+ItemName.DemiseEX=旷世浩劫
 ItemTooltip.DemiseEX=一把曾经为恶魔领主所用万能大剑\n左键释放毁灭性恶魔能量\n右键从空中降下灾难性剑气\n真正的近战攻击有几率瞬间吞噬敌人的灵魂\n终亡 EX
 
 ItemName.EnderStaff=焚天法杖
@@ -4837,7 +4837,7 @@ NPCName.ZeroDeactivated=奇异机械
 
 NPCName.NullZP=无械-0型
 
-NPCName.ZeroAwakened=零械内核 零.之.始.约.协.议
+NPCName.ZeroAwakened=零械临界单元 零.之.始.约.协.议
 
 
 // AAMod.NPCs.Critters
