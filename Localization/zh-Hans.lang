@@ -2936,7 +2936,7 @@ ItemTooltip.FishronScale=闻起来有死掉的臭鱼和甘甜的胜利的味道
 ItemName.FulguriteBar=雷熔锭
 ItemTooltip.FulguriteBar=静态-Y
 
-ItemName.CovetiteCrystal=贪欲水晶
+ItemName.CovetiteCrystal=贪欲晶石
 ItemTooltip.CovetiteCrystal=尽管你已经拥有了它, 然而你依旧对这个水晶有一种奇怪的欲望
 
 ItemName.Hotshroom=日之菇
@@ -4564,7 +4564,7 @@ NPCName.HydraClawM=九头蛇之爪
 
 // AAMod.NPCs.Bosses.Greed
 
-NPCName.GreedSpawn=欲望之星
+NPCName.GreedSpawn=欲望闪光
 
 NPCName.Scavenger=拾金婪虫
 NPCName.ScavengerBody=拾金婪虫
