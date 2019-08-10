@@ -354,7 +354,10 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 }
             }
         }
-
+		public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
+        {
+            spriteEffects = npc.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+        }
         public void MoveToPoint(Vector2 point)
         {
             float moveSpeed = 9f;

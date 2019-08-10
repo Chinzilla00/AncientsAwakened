@@ -32,7 +32,7 @@ namespace AAMod.Tiles
 
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
-            if (NPC.AnyNPCs(mod.NPCType("Greed")))
+            if (NPC.AnyNPCs(mod.NPCType("Greed")) || NPC.AnyNPCs(mod.NPCType("GreedSpawn")))
             {
                 frame = 1;
             }
@@ -54,7 +54,14 @@ namespace AAMod.Tiles
                     if (item != null && item.type == type && item.stack >= 1)
                     {
                         item.stack--;
-                        AAModGlobalNPC.SpawnBoss(player, mod.NPCType<Greed>(), false, new Vector2(i, j + 100), "Greed");
+                        if (AAWorld.downedGreed)
+                        {
+                            AAModGlobalNPC.SpawnBoss(player, mod.NPCType<Greed>(), true, 0, 0, "Greed");
+                        }
+                        else
+                        {
+                            AAModGlobalNPC.SpawnBoss(player, mod.NPCType<GreedSpawn>(), false, new Vector2(i * 16, (j * 16) - 200), "Greed");
+                        }
                     }
                 }
             }
