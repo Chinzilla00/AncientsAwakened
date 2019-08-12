@@ -908,7 +908,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             infernoPos.Y -= 60;
                         }
                         int shootThis = mod.ProjectileType<ChaosLightning>();
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 6, vel.X * 2, vel.Y * 2, shootThis, npc.damage / 5, 0f, Main.myPlayer, vel.ToRotation(), 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 6, vel.X * 2, vel.Y * 2, shootThis, npc.damage / 4, 0f, Main.myPlayer, vel.ToRotation(), 0f);
                         Main.projectile[projectile].netUpdate = true;
                     }
 
