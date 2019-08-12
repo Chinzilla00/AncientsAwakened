@@ -855,7 +855,7 @@ namespace AAMod.NPCs.Bosses.Shen
 			float speedX = -npc.velocity.X * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-8f, 8f);
 		float speedY = -npc.velocity.Y * Main.rand.Next(40, 70) * 0.01f + Main.rand.Next(-20, 21) * 0.4f; // This is Vanilla code, a little more obscure.
 		// Spawn the Projectile.
-		Projectile.NewProjectile(player.position.X -1500, player.position.Y + disY, 1, 0, mod.ProjectileType("Side"), (int)(npc.damage * 0.5), 0f, npc.target, 0f, 0f);
+		Projectile.NewProjectile(player.position.X -1500, player.position.Y + disY, 1, 0, mod.ProjectileType("Side"), (int)(npc.damage * 0.2), 0f, npc.target, 0f, 0f);
 		
 	}
                 float compareX = (npc.Center - player.Center).X;
@@ -908,7 +908,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             infernoPos.Y -= 60;
                         }
                         int shootThis = mod.ProjectileType<ChaosLightning>();
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 6, vel.X * 2, vel.Y * 2, shootThis, npc.damage / 2, 0f, Main.myPlayer, vel.ToRotation(), 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 6, vel.X * 2, vel.Y * 2, shootThis, npc.damage / 5, 0f, Main.myPlayer, vel.ToRotation(), 0f);
                         Main.projectile[projectile].netUpdate = true;
                     }
 
