@@ -505,7 +505,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             else if (internalAI[0] == AISTATE_SLASH) //When charging the player
             {
-                MoveToPoint(npc.Center);
+                MoveToPoint(player.Center);
             }
             npc.rotation = 0;
 
@@ -640,7 +640,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             if (internalAI[0] == AISTATE_SLASH)
             {
-                moveSpeed = 30f;
+                moveSpeed = 15f;
             }
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
