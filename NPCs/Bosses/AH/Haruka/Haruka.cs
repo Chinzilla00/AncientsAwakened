@@ -310,7 +310,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         for (int i = 0; i < 3; i++)
                         {
                             double offsetAngle = startAngle + (deltaAngle * i);
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 5, Main.myPlayer);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage*4, 5, Main.myPlayer);
                         }
                         npc.netUpdate = true;
                     }
@@ -373,7 +373,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
                         int projType = mod.ProjectileType<HarukaProj>();
-                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage, 0f, 14f);
+                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*4, 0f, 14f);
                         npc.netUpdate = true;
                     }
                     if (isSlashing && internalAI[2] > 9 && Main.netMode != 1)
