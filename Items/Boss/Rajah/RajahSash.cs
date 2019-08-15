@@ -25,7 +25,7 @@ Immunity to fall damage");
             item.rare = 9;
             item.accessory = true;
             item.expertOnly = true;
-            item.expert = true; item.expertOnly = true;
+            item.expert = true;
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
@@ -34,6 +34,7 @@ Immunity to fall damage");
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
             Color damageColor = Color.Firebrick;
             string DamageType = "";
+
             if (modPlayer.MeleeHighest(player))
             {
                 DamageType = "Melee";
@@ -60,14 +61,13 @@ Immunity to fall damage");
                 damageColor = Color.DarkOrange;
             }
 
-            string DamageAmmount = (10 * DamageBoost(player)) + "% ";
-
-            TooltipLine DamageToltip = new TooltipLine(mod, "Damage Type", "Current Damage Boost: +" + DamageAmmount + DamageType + " Damage")
+            string DamageAmount = (10 * DamageBoost(player)) + "% ";
+            TooltipLine DamageTooltip = new TooltipLine(mod, "Damage Type", "Current Damage Boost: +" + DamageAmount + DamageType + " Damage")
             {
                 overrideColor = damageColor
             };
+            tooltips.Add(DamageTooltip);
 
-            tooltips.Add(DamageToltip);
             base.ModifyTooltips(tooltips);
         }
 
@@ -82,14 +82,16 @@ Immunity to fall damage");
         public override void UpdateEquip(Player player)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+
             player.autoJump = true;
             Player.jumpHeight = 40;
             player.jumpSpeedBoost += 3.6f;
             player.noFallDmg = true;
             player.moveSpeed *= 1.4f;
+
             if (modPlayer.MeleeHighest(player))
             {
-                player.meleeDamage += DamageBoost(player); 
+                player.meleeDamage += DamageBoost(player);
             }
             else if (modPlayer.RangedHighest(player))
             {
@@ -115,39 +117,42 @@ Immunity to fall damage");
             {
                 return .72f;
             }
-            if (player.statLife <= player.statLifeMax * .2f)
+            else if (player.statLife <= player.statLifeMax * .2f)
             {
                 return .64f;
             }
-            if (player.statLife <= player.statLifeMax * .3f)
+            else if (player.statLife <= player.statLifeMax * .3f)
             {
                 return .56f;
             }
-            if (player.statLife <= player.statLifeMax * .4f)
+            else if (player.statLife <= player.statLifeMax * .4f)
             {
                 return .48f;
             }
-            if (player.statLife <= player.statLifeMax * .5f)
+            else if (player.statLife <= player.statLifeMax * .5f)
             {
                 return .4f;
             }
-            if (player.statLife <= player.statLifeMax * .6f)
+            else if (player.statLife <= player.statLifeMax * .6f)
             {
                 return .32f;
             }
-            if (player.statLife <= player.statLifeMax * .7f)
+            else if (player.statLife <= player.statLifeMax * .7f)
             {
                 return .24f;
             }
-            if (player.statLife <= player.statLifeMax * .8f)
+            else if (player.statLife <= player.statLifeMax * .8f)
             {
                 return .16f;
             }
-            if (player.statLife <= player.statLifeMax * .9f)
+            else if (player.statLife <= player.statLifeMax * .9f)
             {
                 return .8f;
             }
-            return 0f;
+            else
+            {
+                return 0f;
+            }
         }
     }
 }
