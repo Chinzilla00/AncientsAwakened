@@ -199,7 +199,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     }
                     else
                     {
-                        Name = Main.player[Main.myPlayer].name;
+                        Name = Main.LocalPlayer.name;
                     }
                 }
                 if (Main.netMode != 1) BaseUtility.Chat("THIS ISN'T THE END, " + Name.ToUpper() + "! RIVALS CLASH TILL THE VERY END!", 107, 137, 179);
@@ -904,7 +904,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     }
                     else
                     {
-                        Name = Main.player[Main.myPlayer].name;
+                        Name = Main.LocalPlayer.name;
                     }
                     if (Main.netMode != 1) BaseUtility.Chat("Well fought, " + Name + ". Take your reward.", 107, 137, 179, true);
                     int p = Projectile.NewProjectile(npc.position, npc.velocity, mod.ProjectileType<SupremeRajahLeave>(), 100, 0, Main.myPlayer);
@@ -1002,7 +1002,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
             if (RageMode)
             {
-                Color RageColor = BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, Color.Firebrick, drawColor, Color.Firebrick);
+                Color RageColor = BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, Color.Firebrick, drawColor, Color.Firebrick);
                 BaseDrawing.DrawAura(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, -5f, RageColor);
             }
             else if (SupremeRageMode)

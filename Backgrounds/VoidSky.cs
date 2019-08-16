@@ -157,7 +157,7 @@ namespace AAMod.Backgrounds
                 Asteroidpos1.Y += (float)Math.Sin(asteroidPercent1) * 16f;
                 Asteroidpos2.Y += (float)Math.Sin(asteroidPercent2) * -30f;
                 Asteroidpos3.Y += (float)Math.Sin(asteroidPercent3) * 20f;
-                if (!AAWorld.downedZero || !Main.player[Main.myPlayer].ZoneSkyHeight)
+                if (!AAWorld.downedZero || !Main.LocalPlayer.ZoneSkyHeight)
                 {
                     spriteBatch.Draw(Stars, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
                 }
@@ -165,7 +165,7 @@ namespace AAMod.Backgrounds
                 {
                     spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
                     spriteBatch.Draw(PlanetTexture, planetPos, null, Color.White * 0.9f * Intensity, Rotation, new Vector2(PlanetTexture.Width >> 1, PlanetTexture.Height >> 1), 1f, SpriteEffects.None, 1f);
-                    float lightningIntensity = BaseUtility.MultiLerp(Main.player[Main.myPlayer].miscCounter % 100f / 100f, 0.2f, 0.8f, 0.2f);
+                    float lightningIntensity = BaseUtility.MultiLerp(Main.LocalPlayer.miscCounter % 100f / 100f, 0.2f, 0.8f, 0.2f);
                     spriteBatch.Draw(LB, planetPos, null, Color.White * 0.9f * Intensity * lightningIntensity, LBRotation, new Vector2(LB.Width >> 1, LB.Height >> 1), 1f, SpriteEffects.None, 1f);
                     if (AAWorld.downedZero)
                     {

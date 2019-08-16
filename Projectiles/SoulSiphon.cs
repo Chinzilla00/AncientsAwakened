@@ -72,11 +72,11 @@ namespace AAMod.Projectiles
             {
                 return;
             }
-            if (Main.player[Main.myPlayer].lifeSteal <= 0f)
+            if (Main.LocalPlayer.lifeSteal <= 0f)
             {
                 return;
             }
-            Main.player[Main.myPlayer].lifeSteal -= Heal;
+            Main.LocalPlayer.lifeSteal -= Heal;
             int num2 = projectile.owner;
             Projectile.NewProjectile(target.position.X, target.position.Y, 0f, 0f, mod.ProjectileType("SoulSiphonHeal"), 0, 0f, projectile.owner, num2, Heal);
         }

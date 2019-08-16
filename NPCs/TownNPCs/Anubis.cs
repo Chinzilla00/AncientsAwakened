@@ -437,7 +437,7 @@ namespace AAMod.NPCs.TownNPCs
             chat.Add("Don't you hate it when " + (WorldGen.crimson ? "red fleshy crap" : "purple muggy crap") + " takes over your biome? it's disgusting.");
             chat.Add("What creature do I hate most? Oh that's easy, King Slime. If that thing lands on you, good luck washing the slime out of your clothes or fur without a blowtorch.");
             
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
 
 
             int FemaleNPC = NPC.FindFirstNPC(FindFemaleNPC());

@@ -60,7 +60,7 @@ namespace AAMod.Tiles
         public override void RightClick(int i, int j)
         {
             Vector2 Acropolis = new Vector2(Origin.X + (76 * 16), Origin.Y + (72 * 16));
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
             int type = mod.ItemType<Items.BossSummons.Owl>();
             if (BasePlayer.HasItem(player, type, 1))
             {

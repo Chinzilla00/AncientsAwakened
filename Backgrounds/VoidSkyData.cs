@@ -11,7 +11,7 @@ namespace AAMod.Backgrounds
 
         private void UpdateVoidSky()
         {
-            AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>();
+            AAPlayer modPlayer = Main.LocalPlayer.GetModPlayer<AAPlayer>();
             if (AAWorld.voidTiles < 100)
             {
                 return;
