@@ -500,7 +500,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 }
                 else if (npc.ai[3] == 7) //Carrot Farmer
                 {
-                    if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<CarrotFarmerR>()))
+                    if (!AAGlobalProjectile.AnyProjectiles(mod.ProjectileType<CarrotFarmerR>()))
                     {
                         Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<CarrotFarmerR>(), damage, 3f, Main.myPlayer, npc.whoAmI);
                         npc.netUpdate = true;

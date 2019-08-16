@@ -59,11 +59,7 @@ namespace AAMod.Items.Accessories
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage += .40f;
-            player.rangedDamage += .40f;
-            player.magicDamage += .40f;
-            player.thrownDamage += .40f;
-            player.minionDamage += .40f;
+            player.allDamage += .40f;
         }
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {

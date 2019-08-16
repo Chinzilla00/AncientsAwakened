@@ -137,7 +137,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.ai[3] = 0;
                     if (Main.netMode != 1) laser.Kill();
                 }
-                else if (!AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<NovaRay>()) && Main.netMode != 1)
+                else if (!AAGlobalProjectile.AnyProjectiles(mod.ProjectileType<NovaRay>()) && Main.netMode != 1)
                 {
                     laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType<NovaRay>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI, 420)];
                     laser.velocity = BaseUtility.RotateVector(default, new Vector2(14f, 0f), laser.rotation);
