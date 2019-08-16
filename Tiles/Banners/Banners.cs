@@ -176,7 +176,7 @@ namespace AAMod.Tiles.Banners
 				string name = GetBannerName(Main.tile[x, y].frameX);
 				if(name == null) return;
 
-                Player player = Main.player[Main.myPlayer];	
+                Player player = Main.LocalPlayer;	
 				if(name.Contains("Snake")) //worms need to be specific
 				{
 					player.NPCBannerBuff[mod.NPCType(name + "Head")] = true;

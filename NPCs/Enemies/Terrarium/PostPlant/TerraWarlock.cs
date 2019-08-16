@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 
         public override void PostAI()
         {
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
             if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
             {
                 npc.life = 0;

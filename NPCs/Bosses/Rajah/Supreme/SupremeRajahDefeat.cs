@@ -102,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
                 }
                 else
                 {
-                    Name = Main.player[Main.myPlayer].name;
+                    Name = Main.LocalPlayer.name;
                 }
                 if (Main.netMode != 1) BaseUtility.Chat("Who better to take my place than you, " + Name + "?", 107, 137, 179, true);
             }

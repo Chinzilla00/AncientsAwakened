@@ -43,7 +43,7 @@ namespace AAMod.Tiles
 
 		public override void RightClick(int i, int j)
 		{
-			Player player = Main.player[Main.myPlayer];
+			Player player = Main.LocalPlayer;
             if (Quack == false)
             {
                 QuackTimer = 90;

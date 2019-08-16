@@ -522,7 +522,7 @@ namespace AAMod
                 Item.NewItem(npc.getRect(), ItemID.Bone, Main.rand.Next(30, 45));
             }
 
-            if (Main.player[Main.myPlayer].ZoneJungle && Main.rand.Next(30) == 0)
+            if (Main.LocalPlayer.ZoneJungle && Main.rand.Next(30) == 0)
             {
                 Item.NewItem(npc.getRect(), mod.ItemType("Everleaf"), Main.rand.Next(1, 2));
             }
@@ -1098,7 +1098,7 @@ namespace AAMod
 
             if (type == NPCID.Dryad)
             {
-                if (Main.player[Main.myPlayer].GetModPlayer<AAPlayer>(mod).ZoneMush)
+                if (Main.LocalPlayer.GetModPlayer<AAPlayer>(mod).ZoneMush)
                 {
                     shop.item[nextSlot].SetDefaults(mod.ItemType("MyceliumSeeds"));
                     nextSlot++;
