@@ -29,7 +29,7 @@ namespace AAMod.Tiles
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
         {
             //delte this and you die
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
             if (!Main.hardMode)
             {
                 if (blockDamaged == true)

@@ -31,20 +31,12 @@ namespace AAMod.Items.Armor.Madness
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = Lang.ArmorBonus("MadnessVisorBonus");
-            player.meleeDamage += .05f;
-            player.rangedDamage += .05f;
-            player.magicDamage += .05f;
-            player.minionDamage += .05f;
-            player.thrownDamage += .05f;
+            player.allDamage += .05f;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage += .04f;
-            player.rangedDamage += .04f;
-            player.magicDamage += .04f;
-            player.minionDamage += .04f;
-            player.thrownDamage += .04f;
+            player.allDamage += .04f;
         }
 
         public override void AddRecipes()

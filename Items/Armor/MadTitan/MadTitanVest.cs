@@ -27,11 +27,7 @@ namespace AAMod.Items.Armor.MadTitan
 
 		public override void UpdateEquip(Player player)
 		{
-			player.meleeDamage *= 1.40f;
-            player.rangedDamage *= 1.40f;
-            player.magicDamage *= 1.40f;
-            player.minionDamage *= 1.40f;
-            player.thrownDamage *= 1.40f;
+			player.allDamage *= 1.40f;
             player.ammoCost75 = true;
         }
 

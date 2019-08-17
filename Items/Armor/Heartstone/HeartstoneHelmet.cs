@@ -38,11 +38,7 @@ Its forged with heart, no really");
             player.setBonus = Lang.ArmorBonus("HeartstoneHelmetBonus"); // the armor set bonus
 			if (player.statLife < 40)  //this make that if you have less then 100 health your melee damage multiple for 2
             {
-                player.meleeDamage *= 2;
-				player.rangedDamage *= 2;
-				player.magicDamage *= 2;
-                player.minionDamage *= 2;
-                player.thrownDamage *= 2;
+                player.allDamage *= 2;
             }﻿
         }
         public override void AddRecipes()  

@@ -71,7 +71,7 @@ Non-consumable");
                 }
                 else
                 {
-                    Name = Main.player[Main.myPlayer].name;
+                    Name = Main.LocalPlayer.name;
                 }
                 if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossSummonsInfo("DiamondCarrotRajahText2") + Name + "!", 107, 137, 179);
             }

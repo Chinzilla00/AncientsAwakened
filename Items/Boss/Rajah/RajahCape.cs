@@ -18,6 +18,7 @@ namespace AAMod.Items.Boss.Rajah
 All effects of the Sash of Vengeance
 'You have been deemed a worthy successor by the Champion of the Innocent'");
         }
+
         public override void SetDefaults()
         {
             item.width = 66;
@@ -27,14 +28,15 @@ All effects of the Sash of Vengeance
             item.accessory = true;
             item.expert = true; item.expertOnly = true;
             item.defense = 10;
-            item.expert = true; item.expertOnly = true;
         }
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.player[item.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
             Color damageColor = Color.Firebrick;
             string DamageType = "";
+
             if (modPlayer.MeleeHighest(player))
             {
                 DamageType = Lang.RajahSPTooltip("Melee");
@@ -61,33 +63,35 @@ All effects of the Sash of Vengeance
                 damageColor = Color.DarkOrange;
             }
 
-            string DamageAmmount = (10 * DamageBoost(player)) + "% ";
-
-            string SpeedAmmount = (10 * Speed(player)) + "% ";
-
-            string ResAmmount = (10 * DamageRes(player)) + "% ";
-
-            TooltipLine DamageToltip = new TooltipLine(mod, "Damage Type", Lang.RajahSPTooltip("CurrentDamageBoost:+") + DamageAmmount + DamageType + Lang.RajahSPTooltip("Damage"))
+            string DamageAmount = (10 * DamageBoost(player)) + "% ";
+            TooltipLine DamageToltip = new TooltipLine(mod, "Damage Type", Lang.RajahSPTooltip("CurrentDamageBoost:+") + DamageAmount + DamageType + Lang.RajahSPTooltip("Damage"))
             {
                 overrideColor = damageColor
             };
-            TooltipLine SpeedTooltip = new TooltipLine(mod, "Damage Type", Lang.RajahSPTooltip("CurrentSpeedBoost:") + SpeedAmmount);
-
-            TooltipLine ResTooltip = new TooltipLine(mod, "Damage Type", Lang.RajahSPTooltip("CurrentDamageResistance:") + ResAmmount);
-
             tooltips.Add(DamageToltip);
+
+            string SpeedAmount = (10 * Speed(player)) + "% ";
+            TooltipLine SpeedTooltip = new TooltipLine(mod, "Damage Type", Lang.RajahSPTooltip("CurrentSpeedBoost:") + SpeedAmount);
             tooltips.Add(SpeedTooltip);
+
+            string ResAmount = (10 * DamageRes(player)) + "% ";
+            TooltipLine ResTooltip = new TooltipLine(mod, "Damage Type", Lang.RajahSPTooltip("CurrentDamageResistance:") + ResAmount);
             tooltips.Add(ResTooltip);
+
             base.ModifyTooltips(tooltips);
         }
 
         public override void UpdateEquip(Player player)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+
             player.autoJump = true;
             Player.jumpHeight = 40;
             player.jumpSpeedBoost += 3.6f;
             player.noFallDmg = true;
+            player.moveSpeed += Speed(player);
+            player.endurance += DamageRes(player);
+
             if (modPlayer.MeleeHighest(player))
             {
                 player.meleeDamage += DamageBoost(player);
@@ -108,8 +112,6 @@ All effects of the Sash of Vengeance
             {
                 player.thrownDamage += DamageBoost(player);
             }
-            player.moveSpeed += Speed(player);
-            player.endurance += DamageRes(player);
         }
 
         public float DamageBoost(Player player)
@@ -118,38 +120,39 @@ All effects of the Sash of Vengeance
             {
                 return 1.08f;
             }
-            if (player.statLife <= player.statLifeMax2 * .2f)
+            else if (player.statLife <= player.statLifeMax2 * .2f)
             {
                 return .96f;
             }
-            if (player.statLife <= player.statLifeMax2 * .3f)
+            else if (player.statLife <= player.statLifeMax2 * .3f)
             {
                 return .84f;
             }
-            if (player.statLife <= player.statLifeMax2 * .4f)
+            else if (player.statLife <= player.statLifeMax2 * .4f)
             {
                 return .72f;
             }
-            if (player.statLife <= player.statLifeMax2 * .5f)
+            else if (player.statLife <= player.statLifeMax2 * .5f)
             {
                 return .60f;
             }
-            if (player.statLife <= player.statLifeMax2 * .6f)
+            else if (player.statLife <= player.statLifeMax2 * .6f)
             {
                 return .48f;
             }
-            if (player.statLife <= player.statLifeMax2 * .7f)
+            else if (player.statLife <= player.statLifeMax2 * .7f)
             {
                 return .36f;
             }
-            if (player.statLife <= player.statLifeMax2 * .8f)
+            else if (player.statLife <= player.statLifeMax2 * .8f)
             {
                 return .24f;
             }
-            if (player.statLife <= player.statLifeMax2 * .9f)
+            else if (player.statLife <= player.statLifeMax2 * .9f)
             {
                 return .12f;
             }
+
             return 0f;
         }
 
@@ -159,38 +162,39 @@ All effects of the Sash of Vengeance
             {
                 return .36f;
             }
-            if (player.statLife <= player.statLifeMax2 * .2f)
+            else if (player.statLife <= player.statLifeMax2 * .2f)
             {
                 return .32f;
             }
-            if (player.statLife <= player.statLifeMax2 * .3f)
+            else if (player.statLife <= player.statLifeMax2 * .3f)
             {
                 return .28f;
             }
-            if (player.statLife <= player.statLifeMax2 * .4f)
+            else if (player.statLife <= player.statLifeMax2 * .4f)
             {
                 return .24f;
             }
-            if (player.statLife <= player.statLifeMax2 * .5f)
+            else if (player.statLife <= player.statLifeMax2 * .5f)
             {
                 return .20f;
             }
-            if (player.statLife <= player.statLifeMax2 * .6f)
+            else if (player.statLife <= player.statLifeMax2 * .6f)
             {
                 return .16f;
             }
-            if (player.statLife <= player.statLifeMax2 * .7f)
+            else if (player.statLife <= player.statLifeMax2 * .7f)
             {
                 return .12f;
             }
-            if (player.statLife <= player.statLifeMax2 * .8f)
+            else if (player.statLife <= player.statLifeMax2 * .8f)
             {
                 return .08f;
             }
-            if (player.statLife <= player.statLifeMax2 * .9f)
+            else if (player.statLife <= player.statLifeMax2 * .9f)
             {
                 return .04f;
             }
+
             return 0f;
         }
 
@@ -200,38 +204,39 @@ All effects of the Sash of Vengeance
             {
                 return .45f;
             }
-            if (player.statLife <= player.statLifeMax2 * .2f)
+            else if (player.statLife <= player.statLifeMax2 * .2f)
             {
                 return .4f;
             }
-            if (player.statLife <= player.statLifeMax2 * .3f)
+            else if (player.statLife <= player.statLifeMax2 * .3f)
             {
                 return .35f;
             }
-            if (player.statLife <= player.statLifeMax2 * .4f)
+            else if (player.statLife <= player.statLifeMax2 * .4f)
             {
                 return .3f;
             }
-            if (player.statLife <= player.statLifeMax2 * .5f)
+            else if (player.statLife <= player.statLifeMax2 * .5f)
             {
                 return .25f;
             }
-            if (player.statLife <= player.statLifeMax2 * .6f)
+            else if (player.statLife <= player.statLifeMax2 * .6f)
             {
                 return .2f;
             }
-            if (player.statLife <= player.statLifeMax2 * .7f)
+            else if (player.statLife <= player.statLifeMax2 * .7f)
             {
                 return .15f;
             }
-            if (player.statLife <= player.statLifeMax2 * .8f)
+            else if (player.statLife <= player.statLifeMax2 * .8f)
             {
                 return .1f;
             }
-            if (player.statLife <= player.statLifeMax2 * .9f)
+            else if (player.statLife <= player.statLifeMax2 * .9f)
             {
                 return .05f;
             }
+
             return 0f;
         }
     }

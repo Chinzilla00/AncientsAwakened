@@ -64,11 +64,7 @@ All effects of the infinity stones
             player.GetModPlayer<AAPlayer>().Power = true;
             player.meleeSpeed += 0.12f;
             player.aggro += 8;
-            player.meleeDamage += .4f;
-            player.rangedDamage += .4f;
-            player.magicDamage += .4f;
-            player.thrownDamage += .4f;
-            player.minionDamage += .4f;
+            player.allDamage += .4f;
             player.statManaMax2 += 300;
             player.buffImmune[88] = true;
             player.maxMinions += 6;

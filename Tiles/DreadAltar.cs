@@ -100,7 +100,7 @@ namespace AAMod.Tiles
 
         public override void RightClick(int i, int j)
         {
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
             if (Main.dayTime)
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.TilesInfo("DreadAltar1"), new Color(45, 46, 70), false);

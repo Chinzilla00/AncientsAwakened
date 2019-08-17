@@ -146,7 +146,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 npc.defense = (int)(npc.defDefense * ShroomCount);
                 AIChangeRate = 120;
                 JumpX = 8f; JumpY = -10f; JumpX2 = 10f; JumpY2 = -14f;
-                if (Main.netMode != 2 && Main.player[Main.myPlayer].miscCounter % 2 == 0)
+                if (Main.netMode != 2 && Main.LocalPlayer.miscCounter % 2 == 0)
                 {
                     for (int m = 0; m < Shrooms.Length; m++)
                     {

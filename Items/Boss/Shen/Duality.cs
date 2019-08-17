@@ -84,37 +84,16 @@ Grants a strong dash that shreds through enemies in a fiery blaze of glory");
             player.moveSpeed += 2f;
             player.endurance += 0.2f;
             player.dash = 3;
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
-            {
-                player.moveSpeed += .5f;
-            }
-            else
-            {
-                player.moveSpeed += 0f;
-            }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
-            {
-                item.defense = 18;
-            }
-            else
-            {
-                item.defense = 8;
-            }
+            player.moveSpeed += player.GetModPlayer<AAPlayer>(mod).ZoneMire ? .5f : 0f;
+            item.defense = player.GetModPlayer<AAPlayer>(mod).ZoneInferno ? 18 : 8;
+
             if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno || player.GetModPlayer<AAPlayer>(mod).ZoneMire)
             {
-                player.meleeDamage += .3f;
-                player.magicDamage += .3f;
-                player.rangedDamage += .3f;
-                player.minionDamage += .3f;
-                player.thrownDamage += .3f;
+                player.allDamage += .3f;
             }
             else
             {
-                player.meleeDamage += .15f;
-                player.magicDamage += .15f;
-                player.rangedDamage += .15f;
-                player.minionDamage += .15f;
-                player.thrownDamage += .15f;
+                player.allDamage += .15f;
             }
         }
 
@@ -129,7 +108,7 @@ Grants a strong dash that shreds through enemies in a fiery blaze of glory");
             }
         }
 
-        public override void AddRecipes()  //How to craft this sword
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "TaiyangBaolei", 1);

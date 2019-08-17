@@ -431,7 +431,7 @@ namespace AAMod.NPCs.TownNPCs
             chat.Add(Lang.TownNPCAnubis("AnubisChat11") + (WorldGen.crimson ? Lang.TownNPCAnubis("AnubisChat12") : Lang.TownNPCAnubis("AnubisChat13")) + Lang.TownNPCAnubis("AnubisChat14"));
             chat.Add(Lang.TownNPCAnubis("AnubisChat15"));
             
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
 
 
             int FemaleNPC = NPC.FindFirstNPC(FindFemaleNPC());

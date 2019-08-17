@@ -6,7 +6,7 @@ namespace AAMod.UI
 {
     internal sealed class TerratoolSUI : TerratoolUI
     {
-        public static int Pick = 0;
+        public static int Pick = 320;
 
         public static int Hammer = 0;
 

@@ -37,11 +37,7 @@ Ignores 5 Enemy defense");
         public override void UpdateEquip(Player player)
         {
             player.endurance += .07f;
-            player.meleeDamage += .07f;
-            player.rangedDamage += .07f;
-            player.magicDamage += .07f;
-            player.minionDamage += .07f;
-            player.thrownDamage += .07f;
+            player.allDamage += .07f;
             player.GetModPlayer<AAPlayer>(mod).clawsOfChaos = true;
         }
 
