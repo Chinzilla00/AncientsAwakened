@@ -23,8 +23,8 @@ namespace AAMod.Backgrounds
         {
 			if(Main.netMode == 2 || Main.dedServ) return; //BEGONE SERVER HEATHENS! UPDATE ONLY CLIENTSIDE!
 
-			Player player = Main.player[Main.myPlayer];
-			bool inMire = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>(AAMod.instance).ZoneMire;
+			Player player = Main.LocalPlayer;
+			bool inMire = Main.LocalPlayer.GetModPlayer<AAPlayer>(AAMod.instance).ZoneMire;
 			if(!backgroundFog && (BasePlayer.HasAccessory(player, AAMod.instance.ItemType("Lantern"), true, false) || AAWorld.downedYamata)) inMire = false;
 			
 			fogOffsetX += 1;
@@ -54,7 +54,7 @@ namespace AAMod.Backgrounds
 			if(fadeOpacity == 0f) return; //don't draw if no fog
             if(setSB) Main.spriteBatch.Begin();
             Mod mod = AAMod.instance;
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
 
             Color DefaultFog = new Color(62, 68, 100);
             Color YamataFog = new Color(100, 38, 62);

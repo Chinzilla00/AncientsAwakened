@@ -12,7 +12,7 @@ namespace AAMod.Backgrounds
 {
     public class FogOverlay : Overlay
     {
-        private Ref<Texture2D> texture;
+        private readonly Ref<Texture2D> texture;
         private ScreenShaderData shader;
         Mod mod = AAMod.instance;
 
@@ -22,7 +22,7 @@ namespace AAMod.Backgrounds
 
         public FogOverlay(string textureName, string shaderName = "Default", EffectPriority priority = EffectPriority.VeryLow, RenderLayers layer = RenderLayers.All) : base(priority, layer)
         {
-            texture = TextureManager.AsyncLoad((textureName == null) ? "" : textureName);
+            texture = TextureManager.AsyncLoad(textureName ?? "");
             shader = new ScreenShaderData(Main.ScreenShaderRef, shaderName);
         }
 
@@ -30,7 +30,7 @@ namespace AAMod.Backgrounds
         {
             if (fadeOpacity == 0f) return; //don't draw if no fog
             Main.spriteBatch.Begin();
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
             Texture2D fog = mod.GetTexture("Backgrounds/FogTex");
 
             Color DefaultFog = new Color(62, 68, 100);
@@ -68,11 +68,11 @@ namespace AAMod.Backgrounds
         {
             if (Main.netMode == 2 || Main.dedServ) return; //BEGONE SERVER HEATHENS! UPDATE ONLY CLIENTSIDE!
 
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
 
             Texture2D fog = mod.GetTexture("Backgrounds/fog");
 
-            bool inMire = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>(AAMod.instance).ZoneMire;
+            bool inMire = Main.LocalPlayer.GetModPlayer<AAPlayer>(AAMod.instance).ZoneMire;
             if (BasePlayer.HasAccessory(player, AAMod.instance.ItemType("Lantern"), true, false) || AAWorld.downedYamata) inMire = false;
 
             fogOffsetX += 1;
@@ -93,7 +93,7 @@ namespace AAMod.Backgrounds
 
         public override void Activate(Vector2 position, params object[] args)
         {
-            Main.player[Main.myPlayer].position = position;
+            Main.LocalPlayer.position = position;
             Mode = OverlayMode.FadeIn;
         }
 

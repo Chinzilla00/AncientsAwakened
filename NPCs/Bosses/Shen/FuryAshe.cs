@@ -530,7 +530,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             if (DontSayDeathLine)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("Papa, NO! You'll PAY for this, " + Main.player[Main.myPlayer].name + "!", new Color(102, 20, 48));
+                if (Main.netMode != 1) BaseUtility.Chat("Papa, NO! You'll PAY for this, " + Main.LocalPlayer.name + "!", new Color(102, 20, 48));
             }
             else
             {

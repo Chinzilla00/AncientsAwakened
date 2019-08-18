@@ -104,7 +104,7 @@ namespace AAMod.Tiles
 
         public override void RightClick(int i, int j)
         {
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
 
             if (!NPC.AnyNPCs(mod.NPCType("Akuma")) && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
             {

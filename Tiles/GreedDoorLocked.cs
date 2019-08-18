@@ -77,7 +77,7 @@ namespace AAMod.Tiles
 
         public override void RightClick(int i, int j)
         {
-            if (BaseMod.BasePlayer.HasItem(Main.player[Main.myPlayer], mod.ItemType("GreedKey"), 1))
+            if (BaseMod.BasePlayer.HasItem(Main.LocalPlayer, mod.ItemType("GreedKey"), 1))
             {
                 UnlockDoor(i, j);
             }

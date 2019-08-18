@@ -41,14 +41,17 @@ namespace AAMod.UI
         {
             buttonList = new List<UIColorImageButton>();
             buttonImageList = new List<UIColorImage>();
-            selectedButtons = new List<int>();
+            selectedButtons = new List<int>
+            {
+                0
+            };
             buttonFrontFrame = ButtonImages.Frame(1, ButtonAmount);
             circleCenter = Main.MouseScreen - new Vector2(20, 20);
 
             for (int i = 0; i < ButtonAmount; i++)
             {
-                buttonList.Add(new UIColorImageButton(ButtonOffImage, NoHoverColor));
-                buttonImageList.Add(new UIColorImage(ButtonImages, NoHoverColor, buttonFrontFrame));
+                buttonList.Add(new UIColorImageButton(ButtonOffImage, (i == 0) ? Color.White : NoHoverColor));
+                buttonImageList.Add(new UIColorImage(ButtonImages, (i == 0) ? Color.White : NoHoverColor, buttonFrontFrame));
 
                 double angle = Math.PI * 2 * i / ButtonAmount;
                 double x = circleCenter.X + (CircleRadius * Math.Cos(angle));

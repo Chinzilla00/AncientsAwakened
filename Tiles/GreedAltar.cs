@@ -44,7 +44,7 @@ namespace AAMod.Tiles
 
         public override void RightClick(int i, int j)
         {
-            Player player = Main.player[Main.myPlayer];
+            Player player = Main.LocalPlayer;
             int type = mod.ItemType<Items.BossSummons.GoldenGrub>();
             if (BasePlayer.HasItem(player, type, 1))
             {

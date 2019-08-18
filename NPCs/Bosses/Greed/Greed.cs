@@ -107,7 +107,7 @@ namespace AAMod.NPCs.Bosses.Greed
             }
 
 
-            if (!Main.gamePaused && Main.rand.Next(60) == 0 && Main.player[Main.myPlayer].findTreasure)
+            if (!Main.gamePaused && Main.rand.Next(60) == 0 && Main.LocalPlayer.findTreasure)
             {
                 int num52 = Dust.NewDust(npc.Center, 16, 16, 204, 0f, 0f, 150, default, 0.3f);
                 Main.dust[num52].fadeIn = 1f;
@@ -650,7 +650,7 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.position.Y += npc.height * 0.5f;
 
             BaseDrawing.DrawTexture(spritebatch, texture, 0, npc, dColor);
-            if (Main.player[Main.myPlayer].findTreasure)
+            if (Main.LocalPlayer.findTreasure)
             {
                 Color color = dColor;
                 byte b2 = 200;

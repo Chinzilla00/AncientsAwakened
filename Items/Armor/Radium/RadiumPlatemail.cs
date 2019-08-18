@@ -26,11 +26,7 @@ namespace AAMod.Items.Armor.Radium
 
 		public override void UpdateEquip(Player player)
 		{
-			player.meleeDamage *= 1.25f;
-            player.rangedDamage *= 1.25f;
-            player.magicDamage *= 1.25f;
-            player.minionDamage *= 1.25f;
-            player.thrownDamage *= 1.25f;
+			player.allDamage *= 1.25f;
             player.AddBuff(BuffID.Shine, 2);
         }
 

@@ -63,11 +63,7 @@ namespace AAMod.Items.Armor.TrueCopper
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage += .1f;
-            player.rangedDamage += .1f;
-            player.magicDamage += .1f;
-            player.minionDamage += .1f;
-            player.thrownDamage += .1f;
+            player.allDamage += .1f;
             player.maxMinions += 2;
 		}
 

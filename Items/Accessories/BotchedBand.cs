@@ -18,11 +18,7 @@ namespace AAMod.Items.Accessories
         public override void UpdateEquip(Player player)
         {
             player.moveSpeed += .1f;
-            player.magicDamage += .1f;
-            player.meleeDamage += .1f;
-            player.rangedDamage += .1f;
-            player.thrownDamage += .1f;
-            player.minionDamage += .1f;
+            player.allDamage += .1f;
         }
 
         public override void SetStaticDefaults()

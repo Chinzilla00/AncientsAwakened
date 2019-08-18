@@ -165,7 +165,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
             if (Vortexes != null && Vortexes.Length > 0)
             {
-                if (Main.netMode != 2 && Main.player[Main.myPlayer].miscCounter % 2 == 0)
+                if (Main.netMode != 2 && Main.LocalPlayer.miscCounter % 2 == 0)
                 {
                     for (int m = 0; m < Vortexes.Length; m++)
                     {
