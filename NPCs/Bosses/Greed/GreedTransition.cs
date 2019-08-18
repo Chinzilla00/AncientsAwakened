@@ -8,6 +8,7 @@ namespace AAMod.NPCs.Bosses.Greed
 {
     public class GreedTransition : ModNPC
     {
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Greed/GreedSpawn"; } }
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spark of Greed");
