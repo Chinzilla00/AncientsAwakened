@@ -2269,8 +2269,8 @@ ItemTooltip.DoomRay=发射疯狂而强大的死亡激光
 
 ItemName.EventHorizon=事件视界线
 
-ItemName.Neutralizer=中和光束炮
-ItemTooltip.Neutralizer=发射弹跳激光，墙壁反弹使得它们会变得更强
+ItemName.Neutralizer=中和光束弓
+ItemTooltip.Neutralizer=发射反弹激光，墙壁反弹使得它们会变得更强
 
 ItemName.RealityCannon=现实破坏炮
 ItemTooltip.RealityCannon=快速射出深色激光
@@ -4817,7 +4817,7 @@ NPCName.OmegaVolley=欧米伽排炮
 
 NPCName.RealityCannon=现实破坏炮
 
-NPCName.RiftShredder=世界割裂器
+NPCName.RiftShredder=世界割裂臂
 
 NPCName.SearcherZero=搜索者-0型
 
