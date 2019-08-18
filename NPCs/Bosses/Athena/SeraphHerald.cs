@@ -80,29 +80,29 @@ namespace AAMod.NPCs.Bosses.Athena
 
                 if (npc.ai[0] == 1)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("HEY! EARTHWALKER! YEAH YOU, YA STUPID APE!", Color.CadetBlue);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald1"), Color.CadetBlue);
                     npc.netUpdate = true;
                 }
                 else
                 if (npc.ai[0] == 120)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Queen Athena requests your presence at the acropolis again immediately!", Color.CadetBlue);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald2"), Color.CadetBlue);
                 }
                 else
                 if (npc.ai[0] == 240)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("She demands a rematch, and this time, she won't let you tear her down so easily!", Color.CadetBlue);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald3"), Color.CadetBlue);
                 }
                 else
                 if (npc.ai[0] == 360)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("I would say break a leg, but we can do that ourselves when you show up!", Color.CadetBlue);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald4"), Color.CadetBlue);
                 }
                 if (!AAWorld.downedGreed)
                 {
                     if (npc.ai[0] >= 480)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("See ya twerp!", Color.CadetBlue);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald5"), Color.CadetBlue);
 
                         for (int i = 0; i < 5; i++)
                         {
@@ -117,12 +117,12 @@ namespace AAMod.NPCs.Bosses.Athena
                 {
                     if (npc.ai[0] == 480)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("Oh yeah, and uh, that obnoxious kleptomaniac worm wants to fight you again too or something.", Color.CadetBlue);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald6"), Color.CadetBlue);
                     }
 
                     if (npc.ai[0] >= 600)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("See ya twerp!", Color.CadetBlue);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SeraphHerald5"), Color.CadetBlue);
 
                         for (int i = 0; i < 5; i++)
                         {

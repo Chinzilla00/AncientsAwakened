@@ -1205,7 +1205,7 @@ namespace AAMod
                         case "Athena9":
                         return "那就滚远点...白痴.";
                         case "Athena10":
-                        return "不跟你闹着玩了, 呼唤的风暴已经冲你而来!";
+                        return "不跟你闹着玩了, 我所呼唤的风暴即将冲你而来!";
                         case "Athena11":
                         return "哦! 好, 好..! 我不打扰你了! 看在上帝的份上, 你给我小心着点, 懂吗?";
 
@@ -1251,6 +1251,19 @@ namespace AAMod
                         return "希望“他”不会回来...";
                         case "Athena2Defeat9":
                         return "一切平安.";
+
+                        case "SeraphHerald1":
+                        return "嘿! 地 上 的 凡 人! 对 你, 你 这 个 臭 傻 X!";
+                        case "SeraphHerald2":
+                        return "雅典娜女王要求你立即再次去天穹卫城觐见!";
+                        case "SeraphHerald3":
+                        return "她要求重比一次, 而且这次, 她不会让你这么轻易把她打败!";
+                        case "SeraphHerald4":
+                        return "我也许会说祝你好运, 如果你能出现的话!";
+                        case "SeraphHerald5":
+                        return "不见不散你个傻X!";
+                        case "SeraphHerald6":
+                        return "啊对了, 呃, 那个喜欢偷别人东西的恶心虫子也想跟你再打一架.";
 
                         case "Rajah1":
                         return "正 义 不 会 被 欺 骗";
@@ -1831,6 +1844,19 @@ namespace AAMod
                         return "hopefully HE doesn't come back...";
                         case "Athena2Defeat9":
                         return "Stay safe.";
+
+                        case "SeraphHerald1":
+                        return "HEY! EARTHWALKER! YEAH YOU, YA STUPID APE!";
+                        case "SeraphHerald2":
+                        return "Queen Athena requests your presence at the acropolis again immediately!";
+                        case "SeraphHerald3":
+                        return "She demands a rematch, and this time, she won't let you tear her down so easily!";
+                        case "SeraphHerald4":
+                        return "I would say break a leg, but we can do that ourselves when you show up!";
+                        case "SeraphHerald5":
+                        return "See ya twerp!";
+                        case "SeraphHerald6":
+                        return "Oh yeah, and uh, that obnoxious kleptomaniac worm wants to fight you again too or something.";
 
                         case "Rajah1":
                         return "JUSTICE CANNOT BE CHEATED";
