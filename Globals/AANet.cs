@@ -44,7 +44,7 @@ namespace AAMod
                 {
                     if (Main.netMode == 2)
                     {
-                        int oreType = (int)bb.ReadByte();
+                        int oreType = bb.ReadByte();
                         switch (oreType)
                         {
                             default: break;

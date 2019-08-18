@@ -7,12 +7,14 @@ namespace AAMod.NPCs.Bosses.Athena
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Seraph Guard");
+			
         }
         public override void SetDefaults()
         {
             base.SetDefaults();
             npc.lifeMax = 130;
         }
+	
 
         public override bool PreNPCLoot()
         {

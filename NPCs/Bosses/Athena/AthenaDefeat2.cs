@@ -8,8 +8,10 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Athena
 {
-	public class AthenaDefeat : ModNPC
+	public class AthenaDefeat2 : ModNPC
     {
+        public override string Texture => "AAMod/NPCs/Bosses/Athena/AthenaDefeat";
+
         public override void SetStaticDefaults()
         {
             Main.npcFrameCount[npc.type] = 7;
@@ -67,67 +69,67 @@ namespace AAMod.NPCs.Bosses.Athena
                     {
                         if (npc.ai[0] == 120)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat1"), Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat("...", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 240)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat2"), Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat("...WHY?!", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 360)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("...", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat("...Why can't I win?!", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 480)
                         {
-                            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AthenaA");
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat3"), Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat("...", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 600)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat4"), Color.CornflowerBlue);
+                            string s = "";
+                            if (Main.ActivePlayersCount > 1)
+                            {
+                                s = "s";
+                            }
+                            if (Main.netMode != 1) BaseUtility.Chat("...You haven't heard the end of me, earthwalker " + s + "...", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 720)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat5"), Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat("I will win back my honor eventually...", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 840)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat6"), Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat("...until then, watch your back.", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 960)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat7"), Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat("Dark, chaotic forces are waking up as of late.", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 1080)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat8"), Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat("hopefully HE doesn't come back...", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] >= 1200)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat9"), Color.Silver);
-                            AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaA>(), false, npc.Center);
-
-                            int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer);
-                            Main.projectile[b].Center = npc.Center;
-
+                            if (Main.netMode != 1) BaseUtility.Chat("Stay safe.", Color.Silver);
+                            AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaFlee>(), false, npc.Center);
                             npc.active = false;
                             npc.netUpdate = true;
                         }

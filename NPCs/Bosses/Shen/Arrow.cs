@@ -99,9 +99,9 @@ private void LookInDirectionP(Vector2 look)
        //If the npc is hostile
      
            //Get the shoot trajectory from the projectile and target
-           float shootToX = player.position.X + (float)player.width * 0.5f - projectile.Center.X;
+           float shootToX = player.position.X + player.width * 0.5f - projectile.Center.X;
            float shootToY = player.position.Y - projectile.Center.Y+400;
-           float distance = (float)System.Math.Sqrt((double)(shootToX * shootToX + shootToY * shootToY));
+           float distance = (float)System.Math.Sqrt(shootToX * shootToX + shootToY * shootToY);
 
            //If the distance between the live targeted npc and the projectile is less than 480 pixels
            if(distance < 480f && player.active)

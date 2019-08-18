@@ -98,18 +98,40 @@ namespace AAMod.NPCs.Bosses.Athena
                 {
                     if (Main.netMode != 1) BaseUtility.Chat("I would say break a leg, but we can do that ourselves when you show up!", Color.CadetBlue);
                 }
-                else
-                if (npc.ai[0] >= 480)
+                if (!AAWorld.downedGreed)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("See ya twerp!", Color.CadetBlue);
-
-                    for (int i = 0; i < 5; i++)
+                    if (npc.ai[0] >= 480)
                     {
-                        Dust.NewDust(npc.position, npc.height, npc.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                        if (Main.netMode != 1) BaseUtility.Chat("See ya twerp!", Color.CadetBlue);
+
+                        for (int i = 0; i < 5; i++)
+                        {
+                            Dust.NewDust(npc.position, npc.height, npc.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                        }
+
+                        npc.active = false;
+                        npc.netUpdate = true;
+                    }
+                }
+                else
+                {
+                    if (npc.ai[0] == 480)
+                    {
+                        if (Main.netMode != 1) BaseUtility.Chat("Oh yeah, and uh, that obnoxious kleptomaniac worm wants to fight you again too or something.", Color.CadetBlue);
                     }
 
-                    npc.active = false;
-                    npc.netUpdate = true;
+                    if (npc.ai[0] >= 600)
+                    {
+                        if (Main.netMode != 1) BaseUtility.Chat("See ya twerp!", Color.CadetBlue);
+
+                        for (int i = 0; i < 5; i++)
+                        {
+                            Dust.NewDust(npc.position, npc.height, npc.width, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                        }
+
+                        npc.active = false;
+                        npc.netUpdate = true;
+                    }
                 }
             }
             return false;
