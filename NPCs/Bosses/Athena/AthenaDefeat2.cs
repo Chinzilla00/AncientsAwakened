@@ -57,7 +57,6 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
                 if (npc.ai[1] == 0)
                 {
-                    tex = Main.npcTexture[mod.NPCType<Athena>()];
                     MoveToPoint(Acropolis);
                 }
                 else
@@ -140,7 +139,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            if (npc.ai[1] == 0)
+            if (npc.ai[1] != 0)
             {
                 tex = Main.npcTexture[mod.NPCType<AthenaDefeat>()];
             }
@@ -151,7 +150,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
             Color lightColor = BaseDrawing.GetLightColor(npc.Center);
 
-            BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor);
+            BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor, true);
 
             return false;
         }
@@ -173,7 +172,7 @@ namespace AAMod.NPCs.Bosses.Athena
             }
             else
             {
-                if (npc.ai[0] < 270)
+                if (npc.ai[0] < 480)
                 {
                     if (npc.frameCounter >= 15)
                     {
@@ -185,11 +184,11 @@ namespace AAMod.NPCs.Bosses.Athena
                         }
                     }
                 }
-                else if (npc.ai[0] >= 270 && npc.ai[0] < 450)
+                else if (npc.ai[0] >= 480 && npc.ai[0] < 720)
                 {
                     npc.frame.Y = frameHeight * 3;
                 }
-                else if (npc.ai[0] >= 450)
+                else if (npc.ai[0] >= 720)
                 {
                     if (npc.frameCounter >= 15)
                     {

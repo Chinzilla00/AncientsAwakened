@@ -6,6 +6,7 @@ namespace AAMod.NPCs.Bosses.Athena
 	{
         public override void SetStaticDefaults()
         {
+            base.SetStaticDefaults();
             DisplayName.SetDefault("Seraph Guard");		
         }
 

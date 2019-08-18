@@ -39,6 +39,8 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.TargetClosest();
 
             Player player = Main.player[npc.target];
+            MoveToPoint(player.Center - new Vector2(0, 300f));
+
             if (Main.netMode != 2) //clientside stuff
             {
                 npc.frameCounter++;
@@ -91,13 +93,41 @@ namespace AAMod.NPCs.Bosses.Greed
 
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat("I WILL STEAL YOUR LIFE! HAHAHAHAHAHAHAHAHAHA!!!", Color.Goldenrod);
+                        BaseUtility.Chat("I WILL STEAL YOUR LIFE! HEEHEEHEEHEEHEEHEEHEEHEEHEEHEE!!!", Color.Goldenrod);
                     }
 
                     npc.netUpdate = true;
                     npc.active = false;
                 }
             }
+        }
+
+        public void MoveToPoint(Vector2 point, bool goUpFirst = false)
+        {
+            float moveSpeed = 14f;
+            if (moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
         }
 
         public override bool CheckActive()

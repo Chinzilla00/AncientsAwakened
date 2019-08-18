@@ -548,19 +548,19 @@ namespace AAMod.NPCs.Bosses.Athena
         {
             if (Main.netMode != 1 && npc.ai[0]++ >= 120)
             {
-                if (npc.ai[0] == 120)
+                if (npc.ai[0] >= 120 && npc.ai[0] < 130)
                 {
-                    npc.velocity.Y = .4f;
+                    npc.velocity.Y += 1f;
                     npc.netUpdate = true;
                 }
                 else if (npc.ai[0] == 130)
                 {
-                    npc.velocity.Y = -3f;
+                    npc.velocity.Y = -6f;
                     npc.netUpdate = true;
                 }
                 else if (npc.ai[0] > 130)
                 {
-                    npc.velocity.Y = -3f;
+                    npc.velocity.Y = -6f;
                 }
                 if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate = true; }
             }

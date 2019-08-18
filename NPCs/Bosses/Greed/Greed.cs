@@ -441,6 +441,22 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             rotation = npc.rotation;
         }
+
+
+
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        {
+            Texture2D texture = Main.npcTexture[npc.type];
+
+            npc.position.Y += npc.height * 0.5f;
+
+            BaseDrawing.DrawTexture(spritebatch, texture, 0, npc, dColor);
+
+            npc.position.Y -= npc.height * 0.5f;
+
+            return false;
+        }
     }
 
     [AutoloadBossHead]

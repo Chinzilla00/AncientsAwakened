@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Greed");
+			DisplayName.SetDefault("Greed, Gilded Glutton");
 		}
 
 		public override void SetDefaults()
@@ -362,7 +362,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void FindFrame(int frameHeight)
         {
-            if (npc.type == mod.NPCType<GreedBody>())
+            if (npc.type == mod.NPCType<GreedABody>())
             {
                 npc.frame.Y = frameHeight * (int)npc.ai[2];
             }
@@ -375,7 +375,7 @@ namespace AAMod.NPCs.Bosses.Greed
         }
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
-            if (npc.type != mod.NPCType<Greed>())
+            if (npc.type != mod.NPCType<GreedA>())
             {
                 return false;
             }
@@ -436,7 +436,7 @@ namespace AAMod.NPCs.Bosses.Greed
     [AutoloadBossHead]
     public class GreedABody : Greed
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Greed/GreedBody"; } }
+        public override string Texture { get { return "AAMod/NPCs/Bosses/Greed/GreedABody"; } }
 
         public override void SetStaticDefaults()
         {
@@ -576,7 +576,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Greed>()))
+            if (NPC.AnyNPCs(mod.NPCType<GreedA>()))
             {
                 return false;
             }
