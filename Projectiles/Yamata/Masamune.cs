@@ -41,9 +41,9 @@ namespace AAMod.Projectiles.Yamata
                 int num693 = 6;
                 for (int num694 = 0; num694 < num693; num694++)
                 {
-                    Vector2 vector56 = Vector2.Normalize(projectile.velocity) * new Vector2((float)projectile.width, (float)projectile.height) / 2f;
-                    vector56 = vector56.RotatedBy((double)(num694 - (num693 / 2 - 1)) * 3.1415926535897931 / (double)(float)num693, default) + projectile.Center;
-                    Vector2 value24 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * (float)Main.rand.Next(3, 8);
+                    Vector2 vector56 = Vector2.Normalize(projectile.velocity) * new Vector2(projectile.width, projectile.height) / 2f;
+                    vector56 = vector56.RotatedBy((num694 - (num693 / 2 - 1)) * 3.1415926535897931 / (float)num693, default) + projectile.Center;
+                    Vector2 value24 = ((float)(Main.rand.NextDouble() * 3.1415927410125732) - 1.57079637f).ToRotationVector2() * Main.rand.Next(3, 8);
                     int num695 = Dust.NewDust(vector56 + value24, 0, 0, mod.DustType<Dusts.YamataDust>(), value24.X * 2f, value24.Y * 2f, 100, default, 1.4f);
                     Main.dust[num695].noGravity = true;
                     Main.dust[num695].noLight = true;
@@ -71,7 +71,7 @@ namespace AAMod.Projectiles.Yamata
                 for (int num698 = 0; num698 < 200; num698++)
                 {
                     NPC nPC6 = Main.npc[num698];
-                    if (nPC6.CanBeChasedBy(this, false) && (projectile.ai[0] == 0f || projectile.ai[0] == (float)(num698 + 1)))
+                    if (nPC6.CanBeChasedBy(this, false) && (projectile.ai[0] == 0f || projectile.ai[0] == num698 + 1))
                     {
                         Vector2 center4 = nPC6.Center;
                         float num699 = Vector2.Distance(center4, vector57);
@@ -85,7 +85,7 @@ namespace AAMod.Projectiles.Yamata
                 }
                 if (num696 >= 0)
                 {
-                    projectile.ai[0] = (float)(num696 + 1);
+                    projectile.ai[0] = num696 + 1;
                     projectile.netUpdate = true;
                 }
             }
@@ -99,9 +99,9 @@ namespace AAMod.Projectiles.Yamata
                 int num700 = (int)(projectile.ai[0] - 1f);
                 if (Main.npc[num700].active && !Main.npc[num700].dontTakeDamage && Main.npc[num700].immune[projectile.owner] == 0)
                 {
-                    float num701 = Main.npc[num700].position.X + (float)(Main.npc[num700].width / 2);
-                    float num702 = Main.npc[num700].position.Y + (float)(Main.npc[num700].height / 2);
-                    float num703 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num701) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num702);
+                    float num701 = Main.npc[num700].position.X + Main.npc[num700].width / 2;
+                    float num702 = Main.npc[num700].position.Y + Main.npc[num700].height / 2;
+                    float num703 = Math.Abs(projectile.position.X + projectile.width / 2 - num701) + Math.Abs(projectile.position.Y + projectile.height / 2 - num702);
                     if (num703 < 1000f)
                     {
                         flag31 = true;
@@ -120,7 +120,7 @@ namespace AAMod.Projectiles.Yamata
                 Vector2 v = vector57 - projectile.Center;
                 float num704 = projectile.velocity.ToRotation();
                 float num705 = v.ToRotation();
-                double num706 = (double)(num705 - num704);
+                double num706 = num705 - num704;
                 if (num706 > 3.1415926535897931)
                 {
                     num706 -= 6.2831853071795862;

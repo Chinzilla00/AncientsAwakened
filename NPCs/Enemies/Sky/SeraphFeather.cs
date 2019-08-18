@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Enemies.Sky
 
         public override void AI()
         {
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 2.355f;
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 2.355f;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

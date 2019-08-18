@@ -72,8 +72,8 @@ namespace AAMod.Projectiles
             Main.PlaySound(SoundID.Item10, projectile.position);
             for (int num794 = 4; num794 < 31; num794++)
             {
-                float num795 = projectile.oldVelocity.X * (30f / (float)num794);
-                float num796 = projectile.oldVelocity.Y * (30f / (float)num794);
+                float num795 = projectile.oldVelocity.X * (30f / num794);
+                float num796 = projectile.oldVelocity.Y * (30f / num794);
                 int num797 = Dust.NewDust(new Vector2(projectile.oldPosition.X - num795, projectile.oldPosition.Y - num796), 8, 8, mod.DustType<Dusts.SnowDustLight>(), projectile.oldVelocity.X, projectile.oldVelocity.Y, 27, default, 1.8f);
                 Main.dust[num797].noGravity = true;
                 Main.dust[num797].velocity *= 0.5f;

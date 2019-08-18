@@ -143,6 +143,25 @@ namespace AAMod.NPCs.Bosses.Athena
                                     npc.netUpdate = true;
                                 }
                             }
+                            else if (AAWorld.AthenaHerald && !AAWorld.downedAthenaA)
+                            {
+                                if (internalAI[3] == 60)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat("...So. You came.", Color.CornflowerBlue);
+                                }
+
+                                if (internalAI[3] == 180)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat("It's high time I won my honor back..!", Color.CornflowerBlue);
+                                }
+
+                                if (internalAI[3] == 300)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat("En Garde!", Color.CornflowerBlue);
+                                    internalAI[2] = 1;
+                                    npc.netUpdate = true;
+                                }
+                            }
                             else
                             {
                                 if (internalAI[3] == 60)
@@ -184,13 +203,14 @@ namespace AAMod.NPCs.Bosses.Athena
 
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Athena");
 
-                if (internalAI[2]++ > 300 && Main.netMode != 1)
+                if (internalAI[0]++ > 300 && Main.netMode != 1)
                 {
                     int pChoice = Main.rand.Next(2);
                     if (pChoice == 0)
                     {
                         NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<OwlRune>());
                     }
+                    internalAI[0] = 0;
                 }
 
                 if (internalAI[1] == 0) //Acropolis Phase

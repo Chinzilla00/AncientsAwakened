@@ -39,7 +39,7 @@ namespace AAMod.Projectiles
                 Main.PlaySound(SoundID.Item60, projectile.position);
             }
 
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 2.355f;
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 2.355f;
 
             if (projectile.velocity.Y > 16f)
             {
@@ -53,8 +53,8 @@ namespace AAMod.Projectiles
             Main.PlaySound(SoundID.Item10, projectile.position);
             for (int num794 = 4; num794 < 31; num794++)
             {
-                float num795 = projectile.oldVelocity.X * (30f / (float)num794);
-                float num796 = projectile.oldVelocity.Y * (30f / (float)num794);
+                float num795 = projectile.oldVelocity.X * (30f / num794);
+                float num796 = projectile.oldVelocity.Y * (30f / num794);
                 int num797 = Dust.NewDust(new Vector2(projectile.oldPosition.X - num795, projectile.oldPosition.Y - num796), 8, 8, DustID.Shadowflame, projectile.oldVelocity.X, projectile.oldVelocity.Y, 27, default, 1.8f);
                 Main.dust[num797].noGravity = true;
                 Main.dust[num797].velocity *= 0.5f;

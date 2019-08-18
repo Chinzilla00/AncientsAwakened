@@ -57,14 +57,14 @@ namespace AAMod.Projectiles
                 if (Main.player[projectile.owner].channel)
                 {
                     float num113 = 30;
-                    Vector2 vector9 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
-                    float num114 = (float)Main.mouseX + Main.screenPosition.X - vector9.X;
-                    float num115 = (float)Main.mouseY + Main.screenPosition.Y - vector9.Y;
+                    Vector2 vector9 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
+                    float num114 = Main.mouseX + Main.screenPosition.X - vector9.X;
+                    float num115 = Main.mouseY + Main.screenPosition.Y - vector9.Y;
                     if (Main.player[projectile.owner].gravDir == -1f)
                     {
-                        num115 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector9.Y;
+                        num115 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector9.Y;
                     }
-                    float num116 = (float)Math.Sqrt((double)(num114 * num114 + num115 * num115));
+                    float num116 = (float)Math.Sqrt(num114 * num114 + num115 * num115);
                     if (projectile.ai[0] < 0f)
                     {
                         projectile.ai[0] += 1f;
@@ -141,7 +141,7 @@ namespace AAMod.Projectiles
             }
             else
             {
-                projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+                projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             }
             if (projectile.velocity.Y > 16f)
             {
