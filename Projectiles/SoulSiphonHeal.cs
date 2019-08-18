@@ -32,7 +32,7 @@ namespace AAMod.Projectiles
             float num491 = (float)Math.Sqrt(num489 * num489 + num490 * num490);
             if (num491 < 50f && projectile.position.X < Main.player[player].position.X + Main.player[player].width && projectile.position.X + projectile.width > Main.player[player].position.X && projectile.position.Y < Main.player[player].position.Y + Main.player[player].height && projectile.position.Y + projectile.height > Main.player[player].position.Y)
             {
-                if (projectile.owner == Main.myPlayer && !Main.player[Main.myPlayer].moonLeech)
+                if (projectile.owner == Main.myPlayer && !Main.LocalPlayer.moonLeech)
                 {
                     int Heal = (int)projectile.ai[1];
                     Main.player[player].HealEffect(Heal, false);

@@ -37,11 +37,7 @@ namespace AAMod.Items.Armor.Starcrystal
             player.setBonus = "Doubles damage when mana is below 20% maximum capacity"; 
 			if (player.statMana < player.statManaMax * .2f) 
             {
-                player.meleeDamage *= 2;
-				player.rangedDamage *= 2;
-				player.magicDamage *= 2;
-                player.minionDamage *= 2;
-                player.thrownDamage *= 2;
+                player.allDamage *= 2;
             }
         }
         public override void AddRecipes()  

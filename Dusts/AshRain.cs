@@ -37,7 +37,7 @@ namespace AAMod.Dusts
                 }
                 AAPlayer.Ashes++;
                 dust.scale += 0.009f;
-                float y = Main.player[Main.myPlayer].velocity.Y;
+                float y = Main.LocalPlayer.velocity.Y;
                 if (y > 0f && dust.fadeIn == 0f && dust.velocity.Y < y)
                 {
                     dust.velocity.Y = MathHelper.Lerp(dust.velocity.Y, y, 0.04f);
@@ -45,7 +45,7 @@ namespace AAMod.Dusts
                 if (!dust.noLight && y > 0f)
                 {
                     Dust expr_3604_cp_0 = dust;
-                    expr_3604_cp_0.position.Y += Main.player[Main.myPlayer].velocity.Y * 0.2f;
+                    expr_3604_cp_0.position.Y += Main.LocalPlayer.velocity.Y * 0.2f;
                 }
                 if (Collision.SolidCollision(dust.position - Vector2.One * 5f, 10, 10) && dust.fadeIn == 0f)
                 {

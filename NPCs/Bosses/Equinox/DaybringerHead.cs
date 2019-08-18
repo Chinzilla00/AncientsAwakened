@@ -436,7 +436,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 				if(npc.type == mod.NPCType("NightcrawlerTail")){ texName += "NightcrawlerTailBig"; }
 				tex = mod.GetTexture(texName);
 				
-				int diff = Main.player[Main.myPlayer].miscCounter % 50;
+				int diff = Main.LocalPlayer.miscCounter % 50;
 				float diffFloat = diff / 50f;
 				float auraPercent = BaseUtility.MultiLerp(diffFloat, 0f, 1f, 0f); //did it this way so it's syncronized between all the segments
                 BaseDrawing.DrawAura(spritebatch, tex, 0, npc, auraPercent, 2f, 0f, 0f, GetAuraAlpha());				

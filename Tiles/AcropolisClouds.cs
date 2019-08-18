@@ -35,7 +35,7 @@ namespace AAMod.Tiles
 
         public static Color C(Color co)
         {
-            return BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, AAColor.Sky, Color.Transparent, AAColor.Sky);
+            return BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, AAColor.Sky, Color.Transparent, AAColor.Sky);
         }
 
         public override void PostDraw(int i, int j, SpriteBatch sb)

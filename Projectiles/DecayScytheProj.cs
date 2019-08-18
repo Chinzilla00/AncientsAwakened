@@ -17,7 +17,7 @@ namespace AAMod.Projectiles
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return BaseUtility.MultiLerpColor(Main.player[Main.myPlayer].miscCounter % 100 / 100f, AAColor.CursedInferno, AAColor.Ichor);
+            return BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, AAColor.CursedInferno, AAColor.Ichor);
         }
         
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

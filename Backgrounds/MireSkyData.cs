@@ -11,7 +11,7 @@ namespace AAMod.Backgrounds
 
         private void UpdateMireSky()
         {
-            AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>();
+            AAPlayer modPlayer = Main.LocalPlayer.GetModPlayer<AAPlayer>();
             if (AAWorld.mireTiles < 100)
             {
                 return;

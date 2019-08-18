@@ -12,7 +12,7 @@ namespace AAMod.Backgrounds
 
         private void UpdateInfernoSky()
         {
-            AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>();
+            AAPlayer modPlayer = Main.LocalPlayer.GetModPlayer<AAPlayer>();
             if (AAWorld.infernoTiles < 100)
             {
                 return;

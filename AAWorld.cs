@@ -1513,7 +1513,7 @@ namespace AAMod
         
         public override void ResetNearbyTileEffects()
         {
-            AAPlayer modPlayer = Main.player[Main.myPlayer].GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = Main.LocalPlayer.GetModPlayer<AAPlayer>(mod);
             modPlayer.VoidUnit = false;
             modPlayer.SunAltar = false;
             modPlayer.MoonAltar = false;

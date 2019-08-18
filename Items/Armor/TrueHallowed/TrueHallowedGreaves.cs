@@ -27,11 +27,7 @@ namespace AAMod.Items.Armor.TrueHallowed
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage *= 1.1f;
-            player.rangedDamage *= 1.1f;
-            player.magicDamage *= 1.1f;
-            player.minionDamage *= 1.1f;
-            player.thrownDamage *= 1.1f;
+            player.allDamage *= 1.1f;
             player.moveSpeed *= 1.12f;
         }
 

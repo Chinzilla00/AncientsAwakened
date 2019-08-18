@@ -25,16 +25,12 @@ namespace AAMod.Items.Boss.Equinox
                 player.lifeRegen += 5;
                 player.statDefense += 8;
                 player.meleeSpeed += 0.10f;
-                player.meleeDamage += 0.3f;
                 player.meleeCrit += 4;
-                player.rangedDamage += 0.3f;
                 player.rangedCrit += 4;
-                player.magicDamage += 0.3f;
                 player.magicCrit += 4;
                 player.pickSpeed -= 0.30f;
-                player.minionDamage += 0.3f;
                 player.minionKB += 0.7f;
-                player.thrownDamage += 0.3f;
+                player.allDamage += 0.3f;
                 player.thrownCrit += 4;
             }
         }

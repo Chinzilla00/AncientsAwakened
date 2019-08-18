@@ -8,29 +8,30 @@ namespace AAMod
 {
     public class AAGlobalProjectile : GlobalProjectile
     {
-	
-        public static int CountProjectiles(int Type)
+
         {
             int num = 0;
             for (int i = 0; i < 200; i++)
             {
-                if (Main.projectile[i].active && Main.projectile[i].type == Type)
+                if (Main.projectile[i].active && Main.projectile[i].type == type)
                 {
                     num++;
                 }
             }
+
             return num;
         }
 
-        public static bool AnyProjectiless(int Type)
+        public static bool AnyProjectiles(int type)
         {
             for (int i = 0; i < 200; i++)
             {
-                if (Main.projectile[i].active && Main.projectile[i].type == Type)
+                if (Main.projectile[i].active && Main.projectile[i].type == type)
                 {
                     return true;
                 }
             }
+
             return false;
         }
 
@@ -40,6 +41,7 @@ namespace AAMod
             {
                 Convert((int)(projectile.position.X + (projectile.width / 2)) / 16, (int)(projectile.position.Y + (projectile.height / 2)) / 16);
             }
+
             base.PostAI(projectile);
         }
 
@@ -47,6 +49,7 @@ namespace AAMod
         public static void Convert(int i, int j, int size = 4)
         {
             Mod mod = AAMod.instance;
+
             for (int k = i - size; k <= i + size; k++)
             {
                 for (int l = j - size; l <= j + size; l++)
