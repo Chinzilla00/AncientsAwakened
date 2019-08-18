@@ -11,7 +11,7 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.Greed
 {
     [AutoloadBossHead]
-	public class Greed : ModNPC
+	public class GreedA : ModNPC
 	{
         public int damage = 0;
         bool loludided = false;
@@ -19,7 +19,6 @@ namespace AAMod.NPCs.Bosses.Greed
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Greed");
-            Main.npcFrameCount[npc.type] = 3;
 		}
 
 		public override void SetDefaults()
@@ -27,9 +26,9 @@ namespace AAMod.NPCs.Bosses.Greed
 			npc.npcSlots = 5f;
             npc.width = 38;
             npc.height = 38;
-            npc.damage = 35;
-            npc.defense = 25;
-            npc.lifeMax = 50000;
+            npc.damage = 70;
+            npc.defense = 30;
+            npc.lifeMax = 60000;
             npc.value = Item.buyPrice(0, 5, 0, 0);
             npc.knockBackResist = 0f;
             npc.aiStyle = -1;
@@ -41,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.netAlways = true;
             npc.boss = true;
             bossBag = mod.ItemType("GreedBag");
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Greed");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/GreedA");
             npc.alpha = 255;
         }
 
@@ -143,7 +142,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
                     for (int i = 0; i < 24; ++i)
                     {
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("GreedBody"), npc.whoAmI, 0, latestNPC);
+                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("GreedABody"), npc.whoAmI, 0, latestNPC);
                         Main.npc[latestNPC].realLife = npc.whoAmI;
                         Main.npc[latestNPC].ai[2] = i;
                         Main.npc[latestNPC].ai[3] = npc.whoAmI;
@@ -156,7 +155,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
             bool collision = true;
 
-            float speed = 18f;
+            float speed = 20f;
             float acceleration = 0.13f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -407,27 +406,18 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void NPCLoot()
         {
-            if (NPC.downedMoonlord)
+            if (!Main.expertMode)
             {
-                int a = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<GreedTransition>());
-                Main.npc[a].Center = npc.Center;
-                return;
+                AAWorld.downedSerpent = true;
+                npc.DropLoot(mod.ItemType("CovetiteCoin"), 10, 15);
+                string[] lootTable = {  };
+                int loot = Main.rand.Next(lootTable.Length);
+                //npc.DropLoot(Items.Vanity.Mask.GreedMask.type, 1f / 7);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
             }
-            else
+            if (Main.expertMode)
             {
-                if (!Main.expertMode)
-                {
-                    AAWorld.downedSerpent = true;
-                    npc.DropLoot(mod.ItemType("CovetiteCoin"), 10, 15);
-                    string[] lootTable = { };
-                    int loot = Main.rand.Next(lootTable.Length);
-                    //npc.DropLoot(Items.Vanity.Mask.GreedMask.type, 1f / 7);
-                    npc.DropLoot(mod.ItemType(lootTable[loot]));
-                }
-                if (Main.expertMode)
-                {
-                    npc.DropBossBags();
-                }
+                npc.DropBossBags();
             }
             if (Main.rand.Next(10) == 0)
             {
@@ -444,7 +434,7 @@ namespace AAMod.NPCs.Bosses.Greed
     }
 
     [AutoloadBossHead]
-    public class GreedBody : Greed
+    public class GreedABody : Greed
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Greed/GreedBody"; } }
 
@@ -653,7 +643,6 @@ namespace AAMod.NPCs.Bosses.Greed
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D texture = Main.npcTexture[npc.type];
-            Texture2D glow = mod.GetTexture("Glowmasks/GreedBody_Glow");
 
             npc.position.Y += npc.height * 0.5f;
 
@@ -672,7 +661,7 @@ namespace AAMod.NPCs.Bosses.Greed
                     color.G = b3;
                 }
                 color.A = Main.mouseTextColor;
-                BaseDrawing.DrawTexture(spritebatch, glow, 0, npc, color);
+                BaseDrawing.DrawTexture(spritebatch, texture, 0, npc, color);
             }
 
             npc.position.Y -= npc.height * 0.5f;

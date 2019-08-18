@@ -4,9 +4,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.AH.Haruka
-{
-    public class HarukaProj : ModProjectile
+namespace AAMod.NPCs.Bosses.Athena
+{ 
+    public class RazorGust : ModProjectile
 	{
 		public override void SetDefaults()
 		{
@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Night Slash");
+            DisplayName.SetDefault("Razor Gust");
 		}
 		
 		public override Color? GetAlpha(Color lightColor)
@@ -37,17 +37,14 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			projectile.ai[0] += 0.1f;
-			projectile.velocity *= 0.75f;
 		}
 		
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
 		{
-			// Inflate some target hitboxes if they are beyond 8,8 size
 			if (targetHitbox.Width > 8 && targetHitbox.Height > 8)
 			{
 				targetHitbox.Inflate(-targetHitbox.Width / 8, -targetHitbox.Height / 8);
 			}
-			// Return if the hitboxes intersects, which means the javelin collides or not
 			return projHitbox.Intersects(targetHitbox);
 		}
 		

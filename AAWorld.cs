@@ -1324,7 +1324,7 @@ namespace AAMod
             else
             {
                 Yttrium = true;
-                float percent = (float)Main.maxTilesX / 4300f;
+                float percent = Main.maxTilesX / 4300f;
                 int count = (int)((Main.expertMode ? 350f : 300f) * percent);
                 BaseWorldGen.GenOre(AAMod.instance.TileType<YtriumOre>(), count, 5, 9, (int)Main.rockLayer, true);
             }

@@ -56,7 +56,7 @@ namespace AAMod.Projectiles
                 {
                     float scaleFactor5 = player.inventory[player.selectedItem].shootSpeed * projectile.scale;
                     Vector2 value12 = vector;
-                    Vector2 value13 = Main.screenPosition + new Vector2((float)Main.mouseX, (float)Main.mouseY) - value12;
+                    Vector2 value13 = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY) - value12;
                     if (player.gravDir == -1f)
                         value13.Y = Main.screenHeight - Main.mouseY + Main.screenPosition.Y - value12.Y;
 

@@ -42,8 +42,8 @@ namespace AAMod.Projectiles
 				{
 					if (Main.npc[index].CanBeChasedBy(this, false) && (projectile.ai[1] == 0.0 || projectile.ai[1] == (double)(index + 1)))
 					{
-						float num7 = Main.npc[index].position.X + (float)(Main.npc[index].width / 2);
-						float num8 = Main.npc[index].position.Y + (float)(Main.npc[index].height / 2);
+						float num7 = Main.npc[index].position.X + Main.npc[index].width / 2;
+						float num8 = Main.npc[index].position.Y + Main.npc[index].height / 2;
 						float num9 = Math.Abs(projectile.position.X + (projectile.width / 2) - num7) + Math.Abs(projectile.position.Y + (projectile.height / 2) - num8);
 						if (num9 < num5 && Collision.CanHit(new Vector2(projectile.position.X + (projectile.width / 2), projectile.position.Y + (projectile.height / 2)), 1, 1, Main.npc[index].position, Main.npc[index].width, Main.npc[index].height))
 						{
@@ -56,7 +56,7 @@ namespace AAMod.Projectiles
 					}
 				}
 				if (flag2)
-					projectile.ai[1] = (float)(num6 + 1);
+					projectile.ai[1] = num6 + 1;
 				flag2 = false;
 			}
 			if (projectile.ai[1] > 0.0)
@@ -64,11 +64,11 @@ namespace AAMod.Projectiles
 				int index = (int)(projectile.ai[1] - 1.0);
 				if (Main.npc[index].active && Main.npc[index].CanBeChasedBy(this, true) && !Main.npc[index].dontTakeDamage)
 				{
-					if ((double)(Math.Abs(projectile.position.X + (projectile.width / 2) - (Main.npc[index].position.X + (float)(Main.npc[index].width / 2))) + Math.Abs(projectile.position.Y + (projectile.height / 2) - (Main.npc[index].position.Y + (float)(Main.npc[index].height / 2)))) < 1000.0)
+					if (Math.Abs(projectile.position.X + (projectile.width / 2) - (Main.npc[index].position.X + Main.npc[index].width / 2)) + Math.Abs(projectile.position.Y + (projectile.height / 2) - (Main.npc[index].position.Y + Main.npc[index].height / 2)) < 1000.0)
 					{
 						flag2 = true;
-						num3 = Main.npc[index].position.X + (float)(Main.npc[index].width / 2);
-						num4 = Main.npc[index].position.Y + (float)(Main.npc[index].height / 2);
+						num3 = Main.npc[index].position.X + Main.npc[index].width / 2;
+						num4 = Main.npc[index].position.Y + Main.npc[index].height / 2;
 					}
 				}
 				else
@@ -87,8 +87,8 @@ namespace AAMod.Projectiles
 				float num12 = num8 * num11;
 				float num13 = num9 * num11;
 				int num14 = 8;
-				projectile.velocity.X = (projectile.velocity.X * (float)(num14 - 1) + num12) / num14;
-				projectile.velocity.Y = (projectile.velocity.Y * (float)(num14 - 1) + num13) / num14;
+				projectile.velocity.X = (projectile.velocity.X * (num14 - 1) + num12) / num14;
+				projectile.velocity.Y = (projectile.velocity.Y * (num14 - 1) + num13) / num14;
 			}
         }
 

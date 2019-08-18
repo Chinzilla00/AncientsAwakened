@@ -52,9 +52,9 @@ namespace AAMod.Projectiles.Ammo
             int num568 = Gore.NewGore(new Vector2(projectile.position.X - 10f, projectile.position.Y - 10f), default, Main.rand.Next(61, 64), 1f);
             Main.gore[num568].velocity *= 0.3f;
             Gore expr_12836_cp_0 = Main.gore[num568];
-            expr_12836_cp_0.velocity.X += (float)Main.rand.Next(-10, 11) * 0.05f;
+            expr_12836_cp_0.velocity.X += Main.rand.Next(-10, 11) * 0.05f;
             Gore expr_12866_cp_0 = Main.gore[num568];
-            expr_12866_cp_0.velocity.Y += (float)Main.rand.Next(-10, 11) * 0.05f;
+            expr_12866_cp_0.velocity.Y += Main.rand.Next(-10, 11) * 0.05f;
             if (projectile.owner == Main.myPlayer)
             {
                 projectile.localAI[1] = -1f;
