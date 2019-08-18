@@ -1100,7 +1100,7 @@ namespace AAMod
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat("...Mortal. Your world doesn't have Ancients Awakened content if my old eyes are not lying to me. Generating a new world would be optimal.", new Color(43, 46, 61), false);
+                        BaseUtility.Chat("...Mortal. Your world doesn't have Ancients Awakened content if my old eyes do not deceive me. Generating a new world would be optimal.", new Color(43, 46, 61), false);
                     }
                 }
 
