@@ -184,13 +184,14 @@ namespace AAMod.NPCs.Bosses.Athena
 
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Athena");
 
-                if (internalAI[2]++ > 300 && Main.netMode != 1)
+                if (internalAI[0]++ > 300 && Main.netMode != 1)
                 {
                     int pChoice = Main.rand.Next(2);
                     if (pChoice == 0)
                     {
                         NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<OwlRune>());
                     }
+					internalAI[0] = 0;
                 }
 
                 if (internalAI[1] == 0) //Acropolis Phase

@@ -140,7 +140,7 @@ namespace AAMod.NPCs.Bosses.Athena
         {
             if (npc.ai[1] == 0)
             {
-                tex = Main.npcTexture[mod.NPCType<Athena>()];
+                tex = Main.npcTexture[mod.NPCType<AthenaDefeat>()];
             }
             else
             {

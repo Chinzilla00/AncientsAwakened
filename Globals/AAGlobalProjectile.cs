@@ -8,6 +8,7 @@ namespace AAMod
 {
     public class AAGlobalProjectile : GlobalProjectile
     {
+	
         public static int CountProjectiles(int Type)
         {
             int num = 0;
