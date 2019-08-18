@@ -354,7 +354,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             int Frames = IsHead ? 3 : 1;
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, Frames, npc.frame, new Color(Color.White.R, Color.White.G, Color.White.B, 100), true);
-
+			
             return false;
         }
     }
@@ -373,7 +373,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             base.SetDefaults();
             npc.dontCountMe = true;
         }
-
+		
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             return false;
@@ -422,7 +422,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else
             {
-                npc.direction = 1;
+              npc.direction = 1;
             }
 
             if (Main.netMode != 1)
@@ -453,7 +453,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     npc.alpha = 0;
                 }
             }
-
+		
 
             if (npc.ai[1] < (double)Main.npc.Length)
             {
@@ -465,14 +465,35 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float dist = (length - npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
+				 if (dirX < 0f)
+                {
+                    npc.direction = 1;
 
+                }
+                else
+                {
+                    npc.direction = -1;
+                }
 
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }
+		
             return false;
         }
+	
+               
+      public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D CurrentTex;
+			 int Frames = 1;
+            Texture2D texture = Main.npcTexture[npc.type];
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, Frames, npc.frame, new Color(Color.White.R, Color.White.G, Color.White.B, 100), true);
 
+            return false;
+        }
+            
+     
         public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
             Player player = Main.player[npc.target];
@@ -1010,14 +1031,31 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float dist = (length - npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
+				 if (dirX < 0f)
+                {
+                    npc.direction = 1;
 
+                }
+                else
+                {
+                    npc.direction = -1;
+                }
 
+			
                 npc.position.X = npc.position.X + posX;
                 npc.position.Y = npc.position.Y + posY;
             }
             return false;
         }
+		public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D CurrentTex;
+			 int Frames = 1;
+            Texture2D texture = Main.npcTexture[npc.type];
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, Frames, npc.frame, new Color(Color.White.R, Color.White.G, Color.White.B, 100), true);
 
+            return false;
+        }
         public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
             Player player = Main.player[npc.target];

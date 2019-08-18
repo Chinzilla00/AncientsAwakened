@@ -2381,7 +2381,7 @@ namespace AAMod
 
             if (CapShield)
             {
-                if (AAMod.AccessoryAbilityKey.JustPressed && !AAGlobalProjectile.AnyProjectiless(mod.ProjectileType<Projectiles.CapShield>()))
+                if (AAMod.AccessoryAbilityKey.JustPressed && !AAGlobalProjectile.AnyProjectiles(mod.ProjectileType<Projectiles.CapShield>()))
                 {
                     Vector2 Throw = Main.screenPosition + Main.MouseScreen;
                     BaseAI.FireProjectile(Throw, player.Center, mod.ProjectileType("CapShield"), 40, 3, 12, 1, Main.myPlayer);
