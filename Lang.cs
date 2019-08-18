@@ -1205,7 +1205,7 @@ namespace AAMod
                         case "Athena9":
                         return "那就滚远点...白痴.";
                         case "Athena10":
-                        return "不开玩笑, 风暴已经受到呼唤, 即将冲你而来!";
+                        return "不跟你闹着玩了, 呼唤的风暴已经冲你而来!";
                         case "Athena11":
                         return "哦! 好, 好..! 我不打扰你了! 看在上帝的份上, 你给我小心着点, 懂吗?";
 
