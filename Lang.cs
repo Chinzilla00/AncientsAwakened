@@ -163,7 +163,7 @@ namespace AAMod
                         case "WorldgenReminderInfo7":
                         return "Make...new world....or mushmad...will squish...little terrarian...";
                         case "WorldgenReminderInfo8":
-                        return "...Mortal. Your world doesn't have Ancients Awakened content if my old eyes are not lying to me. Generating a new world would be optimal.";
+                        return "...Mortal. Your world doesn't have Ancients Awakened content if my old eyes do not deceive me. Generating a new world would be optimal.";
                     }
                 }
             return"";
