@@ -4499,6 +4499,8 @@ NPCName.AthenaLight=天城鸟妖神的光影
 
 NPCName.AthenaDefeat=被打败的鸟妖神 雅典娜
 
+NPCName.AthenaDefeat2=被打败的鸟妖神 雅典娜
+
 NPCName.OlympianDragon=卫城飞龙
 
 NPCName.OwlRune=天鸮符文
@@ -4564,7 +4566,7 @@ NPCName.HydraClawM=九头蛇之爪
 
 // AAMod.NPCs.Bosses.Greed
 
-NPCName.GreedSpawn=欲望闪光
+NPCName.GreedSpawn=闪耀的贪婪
 
 NPCName.Scavenger=拾金婪虫
 NPCName.ScavengerBody=拾金婪虫

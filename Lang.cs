@@ -1233,7 +1233,24 @@ namespace AAMod
                         case "AthenaDefeat9":
                         return "战 士 不 会 在 最 后 一 战 前 倒 下!!!";
 
-                        
+                        case "Athena2Defeat1":
+                        return "...为什么?!";
+                        case "Athena2Defeat2":
+                        return "...我怎么就是赢不了?!";
+                        case "Athena2Defeat3":
+                        return "...这事咱俩还没完, 地上的凡人";
+                        case "Athena2Defeat4":
+                        return "们";
+                        case "Athena2Defeat5":
+                        return "我最终会夺回属于我的荣耀...";
+                        case "Athena2Defeat6":
+                        return "...那时, 你给我小心着点.";
+                        case "Athena2Defeat7":
+                        return "黑暗, 混沌的力量在最近苏醒.";
+                        case "Athena2Defeat8":
+                        return "希望“他”不会回来...";
+                        case "Athena2Defeat9":
+                        return "一切平安.";
 
                         case "Rajah1":
                         return "正 义 不 会 被 欺 骗";
@@ -1795,6 +1812,25 @@ namespace AAMod
                         return "Even in defeat...";
                         case "AthenaDefeat10":
                         return "A VARIAN ALWAYS PUTS UP ONE LAST FIGHT!!!";
+
+                        case "Athena2Defeat1":
+                        return "...WHY?!";
+                        case "Athena2Defeat2":
+                        return "...Why can't I win?!";
+                        case "Athena2Defeat3":
+                        return "...You haven't heard the end of me, earthwalker ";
+                        case "Athena2Defeat4":
+                        return "s";
+                        case "Athena2Defeat5":
+                        return "I will win back my honor eventually...";
+                        case "Athena2Defeat6":
+                        return "...until then, watch your back.";
+                        case "Athena2Defeat7":
+                        return "Dark, chaotic forces are waking up as of late.";
+                        case "Athena2Defeat8":
+                        return "hopefully HE doesn't come back...";
+                        case "Athena2Defeat9":
+                        return "Stay safe.";
 
                         case "Rajah1":
                         return "JUSTICE CANNOT BE CHEATED";

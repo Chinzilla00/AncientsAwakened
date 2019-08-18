@@ -75,13 +75,13 @@ namespace AAMod.NPCs.Bosses.Athena
                         else
                         if (npc.ai[0] == 240)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("...WHY?!", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena2Defeat1"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 360)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("...Why can't I win?!", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena2Defeat2"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
@@ -96,39 +96,39 @@ namespace AAMod.NPCs.Bosses.Athena
                             string s = "";
                             if (Main.ActivePlayersCount > 1)
                             {
-                                s = "s";
+                                s = Lang.BossChat("Athena2Defeat4");
                             }
-                            if (Main.netMode != 1) BaseUtility.Chat("...You haven't heard the end of me, earthwalker " + s + "...", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena2Defeat3") + s + "...", Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 720)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("I will win back my honor eventually...", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena2Defeat5"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 840)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("...until then, watch your back.", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena2Defeat6"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 960)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("Dark, chaotic forces are waking up as of late.", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena2Defeat7"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] == 1080)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("hopefully HE doesn't come back...", Color.CornflowerBlue);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena2Defeat8"), Color.CornflowerBlue);
                             npc.netUpdate = true;
                         }
                         else
                         if (npc.ai[0] >= 1200)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("Stay safe.", Color.Silver);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena2Defeat9"), Color.Silver);
                             AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaFlee>(), false, npc.Center);
                             npc.active = false;
                             npc.netUpdate = true;
