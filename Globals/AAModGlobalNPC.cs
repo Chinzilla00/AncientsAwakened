@@ -1069,7 +1069,7 @@ namespace AAMod
                 }
             }
 
-            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneAcropolis)
+            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneHoard)
             {
                 ClearPoolWithExceptions(pool);
                 pool.Add(NPCID.GiantWormHead, .06f);

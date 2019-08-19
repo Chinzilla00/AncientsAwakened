@@ -192,7 +192,6 @@ namespace AAMod.NPCs.Bosses.Athena
                     npc.TargetClosest();
                     if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 5000 || !modPlayer.ZoneAcropolis)
                     {
-                        Main.NewText(Math.Abs(Vector2.Distance(npc.position, player.position)));
                         if (Main.netMode != 1) BaseUtility.Chat("And stay away...idiot.", Color.CornflowerBlue);
                         int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
                         Main.npc[p].Center = npc.Center;

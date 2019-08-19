@@ -378,8 +378,6 @@ namespace AAMod.NPCs.TownNPCs
                 chat.Add("The Volcano in the inferno gets pretty active at night for some reason. During the day, it seems to calm down. Maybe you could get through if you made some kind of cover out of those Hydra claws? They seem to not be affected by that ash...");
             }
 
-            chat.Add("Creatures in the jungle drop these really weird leaves I've noticed. They're tough as nails, though, so making gear out of it could be a pretty interesting idea...");
-
             if (Main.rand.Next(2) == 0)
             {
                 chat.Add("You know those eggs at the bottom of the inferno volcano? Yeah uh, I wouldn't touch those if I were you, unless you want to deal with a very angry dragon.");

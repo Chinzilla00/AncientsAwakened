@@ -18,7 +18,7 @@ namespace AAMod.Projectiles.Zero
             projectile.melee = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
-            projectile.alpha = 50;
+            projectile.alpha = 255;
             projectile.tileCollide = false;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 0;

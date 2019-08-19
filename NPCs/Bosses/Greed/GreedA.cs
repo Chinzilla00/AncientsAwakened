@@ -27,8 +27,8 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.width = 38;
             npc.height = 38;
             npc.damage = 70;
-            npc.defense = 30;
-            npc.lifeMax = 60000;
+            npc.defense = 80;
+            npc.lifeMax = 120000;
             npc.value = Item.buyPrice(0, 5, 0, 0);
             npc.knockBackResist = 0f;
             npc.aiStyle = -1;

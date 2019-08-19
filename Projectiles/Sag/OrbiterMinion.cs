@@ -72,7 +72,7 @@ namespace AAMod.Projectiles.Sag
                     if (((Vector2.Distance(projectile.Center, vector46) > num646 && num646 < num633) || !flag25) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, nPC2.position, nPC2.width, nPC2.height))
                     {
                         num633 = num646;
-                        vector46 = nPC2.Center;
+                        vector46 = nPC2.position;
                         flag25 = true;
                         Height = nPC2.height;
                         Width = nPC2.width;

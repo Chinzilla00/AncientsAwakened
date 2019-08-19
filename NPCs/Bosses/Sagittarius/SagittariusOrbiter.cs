@@ -189,7 +189,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 npc.Center = BaseUtility.RotateVector(player.Center, player.Center + new Vector2(260, 0f), rotValue);
                 if (shootAI[0] == aiTimerFire)
                 {
-                    if (Collision.CanHit(npc.position, npc.width, npc.height, player.Center, player.width, player.height))
+                    if (Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
                     {
                         Vector2 fireTarget = npc.Center;
                         float rot = BaseUtility.RotationTo(npc.Center, player.Center);

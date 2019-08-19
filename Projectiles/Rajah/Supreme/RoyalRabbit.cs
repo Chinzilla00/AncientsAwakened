@@ -132,8 +132,8 @@ namespace AAMod.Projectiles.Rajah.Supreme
                 {
                     float num21 = 4f;
                     vector4 *= -num21;
-                    projectile.velocity.X = (projectile.velocity.X * 40f + vector4.X) / 41f;
-                    projectile.velocity.Y = (projectile.velocity.Y * 40f + vector4.Y) / 41f;
+                    projectile.velocity.X = (projectile.velocity.X * 30f + vector4.X) / 41f;
+                    projectile.velocity.Y = (projectile.velocity.Y * 30f + vector4.Y) / 41f;
                 }
                 else
                 {

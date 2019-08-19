@@ -127,7 +127,7 @@ namespace AAMod.NPCs.Bosses.Athena
                         else
                         if (npc.ai[0] >= 1200)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("Stay safe.", Color.Silver);
+                            if (Main.netMode != 1) BaseUtility.Chat("Stay safe.", Color.CornflowerBlue);
                             AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaFlee>(), false, npc.Center);
                             npc.active = false;
                             npc.netUpdate = true;
