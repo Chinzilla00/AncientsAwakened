@@ -309,7 +309,7 @@ namespace AAMod
                         case "SetChatButtons19":
                         return "冥昧末日预言者";
                         case "SetChatButtons20":
-                        return "石匠";
+                        return "宝石持有者";
                         case "downedMonarchY":
                         return "…就这样? ";
                         case "downedMonarchN":
@@ -1592,11 +1592,11 @@ namespace AAMod
                         case "ShenDoragon14":
                         return "什么? 你还能打? 为什么? !";
                         case "ShenDoragon15":
-                        return "一个超远古之神的失败给予了石匠们新的力量";
+                        return "一个超远古之神的失败给予了宝石持有者们新的力量";
                         case "ShenDoragon16":
                         return "呵呵, 好吧. 我想我会让你歇息一会. 但是如果你回来变得更强, 我会给你展示展示永劫混沌的真实实力...";
                         case "ShenDoragon17":
-                        return "一个超远古之神的失败给予了石匠们新的力量";
+                        return "一个超远古之神的失败给予了宝石持有者们新的力量";
                         case "ShenDoragon18":
                         return "一场好戏, 孩子, 真是一场好戏. 你的战斗力仍然让我印象深刻!也许有一天我会给你看看我的真正实力. ";
                         case "ShenSpawn1":

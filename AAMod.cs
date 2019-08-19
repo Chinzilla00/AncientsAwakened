@@ -245,13 +245,13 @@ namespace AAMod
 
             InfinityHotKey = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.InfinityHotKey"), "G");
 
-            Rift = RegisterHotKey("Rift Home", "C");
-            RiftReturn = RegisterHotKey("Rift Back", "X");
+            Rift = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.Rifthotkey"), "C");
+            RiftReturn = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.RiftReturnhotkey"), "X");
 
-            AccessoryAbilityKey = RegisterHotKey("AA Accessory Ability", "U");
-            ArmorAbilityKey = RegisterHotKey("AA Armor Ability", "Y");
+            AccessoryAbilityKey = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.AccessoryAbilityKey"), "U");
+            ArmorAbilityKey = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.ArmorAbilityKey"), "Y");
 
-            TimeStone = RegisterHotKey("Time Stone", "K");
+            TimeStone = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.TimeStonehotKey"), "K");
 
             if (!Main.dedServ)
             {
