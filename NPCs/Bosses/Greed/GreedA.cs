@@ -142,7 +142,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
                     for (int i = 0; i < 24; ++i)
                     {
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("GreedABody"), npc.whoAmI, 0, latestNPC);
+                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<GreedABody>(), npc.whoAmI, 0, latestNPC);
                         Main.npc[latestNPC].realLife = npc.whoAmI;
                         Main.npc[latestNPC].ai[2] = i;
                         Main.npc[latestNPC].ai[3] = npc.whoAmI;
@@ -431,6 +431,34 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             rotation = npc.rotation;
         }
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        {
+            Texture2D texture = Main.npcTexture[npc.type];
+
+            npc.position.Y += npc.height * 0.5f;
+
+            BaseDrawing.DrawTexture(spritebatch, texture, 0, npc, dColor);
+            if (Main.LocalPlayer.findTreasure)
+            {
+                Color color = dColor;
+                byte b2 = 200;
+                byte b3 = 170;
+                if (color.R < b2)
+                {
+                    color.R = b2;
+                }
+                if (color.G < b3)
+                {
+                    color.G = b3;
+                }
+                color.A = Main.mouseTextColor;
+                BaseDrawing.DrawTexture(spritebatch, texture, 0, npc, color);
+            }
+
+            npc.position.Y -= npc.height * 0.5f;
+            return false;
+        }
     }
 
     [AutoloadBossHead]
@@ -483,7 +511,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
             if (Main.netMode != 1)
             {
-                if (!Main.npc[(int)npc.ai[3]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("Greed"))
+                if (!Main.npc[(int)npc.ai[3]].active || Main.npc[(int)npc.ai[3]].type != mod.NPCType("GreedA"))
                 {
                     npc.life = 0;
                     npc.HitEffect(0, 10.0);
@@ -574,16 +602,6 @@ namespace AAMod.NPCs.Bosses.Greed
             rotation = npc.rotation;
         }
 
-        public override bool CheckActive()
-        {
-            if (NPC.AnyNPCs(mod.NPCType<GreedA>()))
-            {
-                return false;
-            }
-            npc.active = false;
-            return true;
-        }
-
         public int Def()
         {
             switch ((int)npc.ai[2])
@@ -637,35 +655,6 @@ namespace AAMod.NPCs.Bosses.Greed
                 default:
                     return npc.defense = 30;
             }
-        }
-
-
-        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
-        {
-            Texture2D texture = Main.npcTexture[npc.type];
-
-            npc.position.Y += npc.height * 0.5f;
-
-            BaseDrawing.DrawTexture(spritebatch, texture, 0, npc, dColor);
-            if (Main.LocalPlayer.findTreasure)
-            {
-                Color color = dColor;
-                byte b2 = 200;
-                byte b3 = 170;
-                if (color.R < b2)
-                {
-                    color.R = b2;
-                }
-                if (color.G < b3)
-                {
-                    color.G = b3;
-                }
-                color.A = Main.mouseTextColor;
-                BaseDrawing.DrawTexture(spritebatch, texture, 0, npc, color);
-            }
-
-            npc.position.Y -= npc.height * 0.5f;
-            return false;
         }
     }
 }

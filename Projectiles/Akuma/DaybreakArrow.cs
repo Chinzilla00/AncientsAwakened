@@ -49,6 +49,7 @@ namespace AAMod.Projectiles.Akuma
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.Daybreak, 200);
+            Main.PlaySound(SoundID.Item14, projectile.position);
             int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("FireProjBoom"), projectile.damage / 6, projectile.knockBack, projectile.owner, 0f, 0f);
             Main.projectile[proj].melee = false;
             Main.projectile[proj].ranged = true;

@@ -21,8 +21,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override void SetDefaults()
         {
-            npc.width = 38;
-            npc.height = 38;
+            npc.width = 30;
+            npc.height = 30;
             npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.npcSlots = 1;
             npc.aiStyle = -1;

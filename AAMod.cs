@@ -290,6 +290,9 @@ namespace AAMod
             PremultiplyTexture(GetTexture("Backgrounds/AkumaAMeteor"));
             PremultiplyTexture(GetTexture("Backgrounds/AkumaMeteor"));
             PremultiplyTexture(GetTexture("Backgrounds/SkyTex"));
+            PremultiplyTexture(GetTexture("Backgrounds/ShenMeteor"));
+            PremultiplyTexture(GetTexture("Backgrounds/AthenaBolt"));
+            PremultiplyTexture(GetTexture("Backgrounds/AthenaFlash"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier"));
             PremultiplyTexture(GetTexture("Projectiles/RadiumStar"));
@@ -298,6 +301,7 @@ namespace AAMod
             PremultiplyTexture(GetTexture("NPCs/Bosses/Greed/GreedSpawn"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Greed/GreedSpawn1"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Greed/GreedSpawn2"));
+            PremultiplyTexture(GetTexture("NPCs/Bosses/Greed/UraniumShield"));
 
             if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
             {

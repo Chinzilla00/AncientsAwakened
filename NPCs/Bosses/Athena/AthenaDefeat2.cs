@@ -155,6 +155,8 @@ namespace AAMod.NPCs.Bosses.Athena
             return false;
         }
 
+
+
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
@@ -178,15 +180,15 @@ namespace AAMod.NPCs.Bosses.Athena
                     {
                         npc.frame.Y += frameHeight;
                         npc.frameCounter = 0;
-                        if (npc.frame.Y >= frameHeight * 4)
+                        if (npc.frame.Y >= frameHeight * 10 || npc.frame.Y < frameHeight * 7)
                         {
-                            npc.frame.Y = 0;
+                            npc.frame.Y = frameHeight * 7;
                         }
                     }
                 }
                 else if (npc.ai[0] >= 480 && npc.ai[0] < 720)
                 {
-                    npc.frame.Y = frameHeight * 3;
+                    npc.frame.Y = frameHeight * 10;
                 }
                 else if (npc.ai[0] >= 720)
                 {
@@ -194,9 +196,9 @@ namespace AAMod.NPCs.Bosses.Athena
                     {
                         npc.frame.Y += frameHeight;
                         npc.frameCounter = 0;
-                        if (npc.frame.Y < frameHeight * 4 || npc.frame.Y >= frameHeight * 8)
+                        if (npc.frame.Y < frameHeight * 11 || npc.frame.Y >= frameHeight * 14)
                         {
-                            npc.frame.Y = frameHeight * 4;
+                            npc.frame.Y = frameHeight * 11;
                         }
                     }
                 }
