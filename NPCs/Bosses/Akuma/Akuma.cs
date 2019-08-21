@@ -216,32 +216,17 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
-
-                    for (int i = 0; i < 3; ++i)
+                    int[] Frame = { 1, 2, 0, 2, 1, 2, 0, 2, 1, 2, 0, 2, 1, 3, 4 };
+                    for (int i = 0; i < Frame.Length; ++i)
                     {
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
                         Main.npc[latestNPC].realLife = npc.whoAmI;
                         Main.npc[latestNPC].ai[3] = npc.whoAmI;
-
-                        latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaArms"), npc.whoAmI, 0, latestNPC);
-                        Main.npc[latestNPC].realLife = npc.whoAmI;
-                        Main.npc[latestNPC].ai[3] = npc.whoAmI;
+                        Main.npc[latestNPC].netUpdate = true;
+                        Main.npc[latestNPC].ai[2] = Frame[i];
                     }
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[3] = npc.whoAmI;
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaBody1"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[3] = npc.whoAmI;
-
-                    latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaTail"), npc.whoAmI, 0, latestNPC);
-                    Main.npc[latestNPC].realLife = npc.whoAmI;
-                    Main.npc[latestNPC].ai[3] = npc.whoAmI;
-
                     npc.ai[0] = 1;
-                    npc.netUpdate = true;
+                    npc.netUpdate2 = true;
                 }
             }
 
@@ -621,40 +606,14 @@ namespace AAMod.NPCs.Bosses.Akuma
     }
 
     [AutoloadBossHead]
-    public class AkumaArms : Akuma
+    public class AkumaBody : Akuma
     {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaArms"; } }
-
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/AkumaBody";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma; Draconian Demon");
+            DisplayName.SetDefault("Akuma, Draconian Demon");
+            Main.npcFrameCount[npc.type] = 5;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
-        }
-
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.width = 60;
-            npc.height = 60;
-            npc.dontCountMe = true;
-            npc.chaseable = false;
-            npc.alpha = 255;
-        }
-
-        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-        {
-            return false;
-        }
-
-        public override bool PreNPCLoot()
-        {
-            return false;
-        }
-
-        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-        {
-            damage *= .05f;
-            return true;
         }
 
         public override bool PreAI()
@@ -668,6 +627,21 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.TargetClosest(true);
             if (Main.player[npc.target].dead && npc.timeLeft > 300)
                 npc.timeLeft = 300;
+            if (npc.alpha != 0)
+            {
+                for (int spawnDust = 0; spawnDust < 2; spawnDust++)
+                {
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("AkumaDust"), 0f, 0f, 100, default, 2f);
+                    Main.dust[num935].noGravity = true;
+                    Main.dust[num935].noLight = true;
+                }
+            }
+            npc.alpha -= 12;
+            if (npc.alpha < 0)
+            {
+                npc.alpha = 0;
+            }
+
 
             if (Main.netMode != 1)
             {
@@ -714,14 +688,35 @@ namespace AAMod.NPCs.Bosses.Akuma
             return false;
         }
 
-        public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
+        public override void SetDefaults()
         {
-            spriteEffects = npc.spriteDirection == 1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+            base.SetDefaults();
+            npc.boss = false;
+            npc.width = 60;
+            npc.height = 60;
+            npc.dontCountMe = true;
+            npc.chaseable = false;
         }
 
-        public override void BossHeadRotation(ref float rotation)
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            rotation = npc.rotation;
+            damage *= .1f;
+            return true;
+        }
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            return false;
+        }
+
+        public override bool PreNPCLoot()
+        {
+            return false;
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frame.Y = frameHeight * (int)npc.ai[2];
         }
 
         public override bool CheckActive()
@@ -732,56 +727,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             npc.active = false;
             return true;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class AkumaBody : AkumaArms
-    {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaBody"; } }
-
-        public override void SetStaticDefaults()
-        {
-            base.SetStaticDefaults();
-        }
-
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-        }
-    }
-
-    [AutoloadBossHead]
-    public class AkumaBody1 : AkumaArms
-    {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaBody1"; } }
-
-        public override void SetStaticDefaults()
-        {
-            base.SetStaticDefaults();
-        }
-
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-        }
-    }
-
-    [AutoloadBossHead]
-    public class AkumaTail : AkumaArms
-    {
-        public override string Texture { get { return "AAMod/NPCs/Bosses/Akuma/AkumaTail"; } }
-
-        public override void SetStaticDefaults()
-        {
-            base.SetStaticDefaults();
-        }
-
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.width = 80;
-            npc.height = 80;
         }
     }
 }

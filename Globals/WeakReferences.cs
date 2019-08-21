@@ -496,7 +496,7 @@ namespace AAMod.Globals
                 yabhb.Call("hbSetMidBarOffset", -30, 10);
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
-                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("ZeroAwakened"));
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("ZeroProtocol"));
             }
         }
 

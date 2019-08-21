@@ -111,7 +111,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (Main.expertMode && Main.netMode != 1) 
                 {
                     if (Main.netMode != 1) BaseUtility.Chat("PHYSICAL ZER0 UNIT IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
-                    int z = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ZeroAwakened"), 0, 0, 0, 0, 0, npc.target) ;
+                    int z = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ZeroProtocol"), 0, 0, 0, 0, 0, npc.target) ;
                     Main.npc[z].Center = npc.Center;
 
                     int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);

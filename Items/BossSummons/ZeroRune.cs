@@ -50,7 +50,7 @@ N0N-C0NSUMABLE");
                     if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("ERR0R. ZER0 UNIT ALREADY ACTIVE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
                     return false;
                 }
-                if (NPC.AnyNPCs(mod.NPCType("ZeroAwakened")))
+                if (NPC.AnyNPCs(mod.NPCType("ZeroProtocol")))
                 {
                     if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("ERR0R. ZER0 UNIT ALREADY ACTIVE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
                     return false;
@@ -69,7 +69,7 @@ N0N-C0NSUMABLE");
             {
                 AAWorld.zeroUS = true;
                 if (!NPC.AnyNPCs(mod.NPCType("ZeroDeactivated")))
-                    NPC.NewNPC((int)player.position.X + Main.rand.Next(-2200, 2200), (int)player.position.Y + 1200, mod.NPCType("ZeroAwakened"));
+                    NPC.NewNPC((int)player.position.X + Main.rand.Next(-2200, 2200), (int)player.position.Y + 1200, mod.NPCType("ZeroProtocol"));
             }
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ZeroDeath"));
             return true;

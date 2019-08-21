@@ -134,7 +134,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     }
                 }
             }
-            if (npc.life <= 0 && !Main.expertMode && npc.type == mod.NPCType<ZeroAwakened>())
+            if (npc.life <= 0 && !Main.expertMode)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U", Color.Red.R, Color.Red.G, Color.Red.B);
             }
@@ -145,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/ZeroAwakened_Glow");
+            Texture2D glowTex = mod.GetTexture("Glowmasks/ZeroProtocol_Glow");
             float Color = Math.Abs(Main.GameUpdateCount) / 0.5f;
             float Flash = 1f * (float)Math.Sin(Color);
             Color color1 = Microsoft.Xna.Framework.Color.Lerp(Microsoft.Xna.Framework.Color.Red, Microsoft.Xna.Framework.Color.Black, Flash);
@@ -284,7 +284,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             else
             {
-                MoveToPoint(new Vector2(XPos, YPos);
+                MoveToPoint(new Vector2(XPos, YPos));
             }
 
             if (Teleport)
