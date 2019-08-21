@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
 		public override void SetDefaults()
 		{
-            npc.lifeMax = 400;
+            npc.lifeMax = 200;
             npc.defense = 20;
             npc.damage = 50;
             npc.width = 26;
