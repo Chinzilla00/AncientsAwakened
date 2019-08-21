@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Technecium
         {
             DisplayName.SetDefault("Technecium Mask");
             Tooltip.SetDefault(@"4% increased damage resistance
-23% increased ranged damage & critical strike chance");
+18% increased ranged damage & critical strike chance");
         }
 
         public override void SetDefaults()
@@ -20,14 +20,14 @@ namespace AAMod.Items.Armor.Technecium
             item.height = 24;
             item.value = Item.sellPrice(0, 1, 80, 0);
             item.rare = 4;
-            item.defense = 13;
+            item.defense = 14;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.endurance *= 1.04f;
-            player.rangedDamage *= 1.13f;
-            player.rangedCrit += 13;
+            player.rangedDamage *= 1.18f;
+            player.rangedCrit += 18;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

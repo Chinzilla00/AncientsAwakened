@@ -29,7 +29,7 @@ namespace AAMod.Items.Armor.Uranium
             item.height = 20;
             item.value = 90000;
             item.rare = 8;
-            item.defense = 17;
+            item.defense = 24;
         }
 
         public override void AddRecipes()
