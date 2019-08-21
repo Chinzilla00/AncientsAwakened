@@ -104,6 +104,39 @@ namespace AAMod.NPCs.Bosses.Greed
                 }
             }
 
+            if (Main.netMode != 1)
+            {
+                internalAI[2]++;
+                internalAI[3]++;
+                if (internalAI[2] >= 260)
+                {
+                    MinionSummon();
+                    internalAI[2] = 0;
+                    npc.netUpdate = true;
+                }
+                if (internalAI[3] == 340)
+                {
+                    internalAI[5] = Main.rand.Next(2);
+                    npc.netUpdate = true;
+                }
+                if (internalAI[3] > 540)
+                {
+                    internalAI[3] = 0;
+                    npc.netUpdate = true;
+                }
+            }
+
+            if (internalAI[3] > 340)
+            {
+                if (internalAI[5] == 0)
+                {
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<GreedCoin>(), ref internalAI[4], 30, npc.damage / 4, 10, true);
+                }
+                else
+                {
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<CoinRain>(), ref internalAI[4], 60, npc.damage / 3, 12, true);
+                }
+            }
 
             if (!Main.gamePaused && Main.rand.Next(60) == 0 && Main.LocalPlayer.findTreasure)
             {
@@ -155,8 +188,8 @@ namespace AAMod.NPCs.Bosses.Greed
 
             bool collision = true;
 
-            float speed = 20f;
-            float acceleration = 0.13f;
+            float speed = 18f;
+            float acceleration = 0.08f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
             float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
@@ -360,14 +393,6 @@ namespace AAMod.NPCs.Bosses.Greed
             }
         }
 
-        public override void FindFrame(int frameHeight)
-        {
-            if (npc.type == mod.NPCType<GreedABody>())
-            {
-                npc.frame.Y = frameHeight * (int)npc.ai[2];
-            }
-        }
-
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = ItemID.GreaterHealingPotion;   //boss drops
@@ -459,10 +484,124 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.position.Y -= npc.height * 0.5f;
             return false;
         }
+
+
+        public void MinionSummon()
+        {
+            int Xint = Main.rand.Next(-400, 400);
+            int Yint = Main.rand.Next(-400, 400);
+            int MinionChoice = Main.rand.Next(10);
+            if (MinionChoice == 0)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 0);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 2);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 4);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 6);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 1)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 1);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 3);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 5);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 7);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 2)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 8);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 9);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 3)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 10);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 11);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 4)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 12);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 13);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 5)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 14);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 16);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 18);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 6)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 15);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 17);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 19);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 7)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 20);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 20);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 8)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 21);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 9)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 22);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+        }
     }
 
     [AutoloadBossHead]
-    public class GreedABody : Greed
+    public class GreedABody : GreedA
     {
         public override string Texture { get { return "AAMod/NPCs/Bosses/Greed/GreedABody"; } }
 
@@ -600,6 +739,14 @@ namespace AAMod.NPCs.Bosses.Greed
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.type == mod.NPCType<GreedABody>())
+            {
+                npc.frame.Y = frameHeight * (int)npc.ai[2];
+            }
         }
 
         public int Def()

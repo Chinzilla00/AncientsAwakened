@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
 		public override void SetDefaults()
 		{
-            npc.lifeMax = 200;
+            npc.lifeMax = 400;
             npc.defense = 20;
             npc.damage = 50;
             npc.width = 26;
@@ -30,7 +30,6 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.4f;
-            npc.noTileCollide = true;
             npc.noGravity = true;
         }
 
@@ -58,7 +57,7 @@ namespace AAMod.NPCs.Bosses.Greed
                 internalAI[3] = reader.ReadFloat();
             }
         }
-
+        int idleTimer = 0;
         public override void AI()
         {
             Player player = Main.player[npc.target];
@@ -79,38 +78,46 @@ namespace AAMod.NPCs.Bosses.Greed
             }
             else
             {
-                if (MinionType >= 7 ||
+                if (MinionType <= 7 ||
                    MinionType == 9 ||
                    MinionType == 10 ||
                    MinionType == 11 ||
+                   MinionType == 12 ||
                    MinionType == 13 ||
                    MinionType == 14 ||
                    MinionType == 15 ||
                    MinionType == 16 ||
                    MinionType == 18 ||
                    MinionType == 19 ||
-                   MinionType == 20) //If Earlygame ore, Crimtane, Abyssium, Yttrium, Hellstone, Cobalt, Palladium, Mythril, Adamantite, Titanium, or Uranium, have Melee AI.
+                   MinionType == 20) //If Earlygame ore, Crimtane, Incinerite, Abyssium, Yttrium, Hellstone, Cobalt, Palladium, Mythril, Adamantite, Titanium, or Uranium, have Melee AI.
                 {
-                    BaseAI.AIFlier(npc, ref internalAI, true, 0.4f, 0.04f, 6f, 1.5f, true, 300);
+                    float Speed = 3;
+                    if (MinionType == 11 ||
+                   MinionType == 12)
+                    {
+                        Speed = 5;
+                    }
+                    BaseAI.AIElemental(npc, ref internalAI, ref idleTimer, null, 120, false, true, 400, 200f, 180, Speed);
                 }
                 else //if Demonite, Oricalcum, Chlorophite, or Technecium, Ranged AI
                 {
+                    npc.noTileCollide = true;
                     BaseAI.AISkull(npc, ref internalAI, false, 6, 350, 0.14f, .2f);
 
                     if (Main.netMode != 1)
                     {
                         int p;
-                        if (MinionType == 8)
+                        if (MinionType == 8) //Demonite
                         {
                             p = ProjectileID.CursedFlameHostile;
-                            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 120, npc.damage / 2, 9, false);
+                            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 120, npc.damage / 2, 9, true);
                         }
-                        else if (MinionType == 21)
+                        else if (MinionType == 21) //Chlorophyte
                         {
                             p = ProjectileID.CrystalLeafShot;
                             BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 120, npc.damage / 2, 9, true);
                         }
-                        else if (MinionType == 17 && npc.ai[1]++ > 180)
+                        else if (MinionType == 17 && npc.ai[1]++ > 180) //Oricalcum
                         {
                             npc.ai[1] = 0;
                             int direction = npc.direction;
@@ -136,7 +143,7 @@ namespace AAMod.NPCs.Bosses.Greed
                             Main.projectile[l].hostile = true;
                             npc.netUpdate = true;
                         }
-                        else
+                        else //Technecium
                         {
                             p = mod.ProjectileType<TCharge>();
                             BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 90, npc.damage / 2, 9, true);
@@ -144,31 +151,94 @@ namespace AAMod.NPCs.Bosses.Greed
                     }
                 }
             }
+            if (MinionType == 19) //Titanium Shadow Dodge
+            {
+                shadowDodge = shadowDodgeTimer > 0;
+                if (shadowDodge)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        if (!npc.dontTakeDamage)
+                        {
+                            npc.dontTakeDamage = true;
+                            npc.netUpdate = true;
+                        }
+                        shadowDodgeTimer--;
+                    }
+
+                    shadowDodgeCount += 1f;
+                    if (shadowDodgeCount > 30f)
+                    {
+                        shadowDodgeCount = 30f;
+                    }
+                }
+                else
+                {
+                    if (Main.netMode != 1)
+                    {
+                        if (npc.dontTakeDamage)
+                        {
+                            npc.dontTakeDamage = false;
+                            npc.netUpdate = true;
+                        }
+                    }
+                    npc.dontTakeDamage = false;
+                    shadowDodgeCount -= 1f;
+                    if (shadowDodgeCount < 0f)
+                    {
+                        shadowDodgeCount = 0f;
+                    }
+                }
+            }
+            if (MinionType == 9 || MinionType == 15)
+            {
+                RegenCounter++;
+
+                if (RegenCounter == 300)
+                {
+                    npc.life++;
+                    if (MinionType == 9)
+                    {
+                        npc.life++;
+                    }
+                }
+            }
             npc.rotation = 0;
-            if (shadowDodge)
-            {
-                shadowDodgeCount += 1f;
-                if (shadowDodgeCount > 30f)
-                {
-                    shadowDodgeCount = 30f;
-                }
-            }
-            else
-            {
-                shadowDodgeCount -= 1f;
-                if (shadowDodgeCount < 0f)
-                {
-                    shadowDodgeCount = 0f;
-                }
-            }
         }
 
         bool shadowDodge = false;
         float shadowDodgeCount = 0;
+        int shadowDodgeTimer = 0;
+        int RegenCounter = 0;
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (MinionType == 9 || MinionType == 15)
+            {
+                RegenCounter = 0;
+            }
+        }
+
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            
+            if (MinionType == 13)
+            {
+                target.AddBuff(BuffID.OnFire, 200);
+            }
+            if (MinionType == 19 && shadowDodgeTimer <= 0)
+            {
+                shadowDodgeTimer = 180;
+            }
+        }
+
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (MinionType == 10)
+            {
+                damage *= .9f;
+            }
+            return true;
         }
 
         Color bodyColor;
@@ -235,7 +305,7 @@ namespace AAMod.NPCs.Bosses.Greed
             if (MinionType == 20)
             {
                 Texture2D shield = mod.GetTexture("NPCs/Bosses/Greed/UraniumShield");
-                BaseDrawing.DrawTexture(spriteBatch, shield, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 15, npc.frame, AAColor.Uranium, true);
+                BaseDrawing.DrawTexture(spriteBatch, shield, 0, npc.Center, shield.Width, shield.Height, npc.scale, npc.rotation, npc.direction, 1, new Rectangle(0, 0, shield.Width, shield.Height), AAColor.Uranium, true);
             }
 
             if (shadowDodgeCount > 0f && MinionType == 19)
@@ -247,9 +317,63 @@ namespace AAMod.NPCs.Bosses.Greed
                 position.X = npc.position.X - shadowDodgeCount;
                 BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 15, npc.frame, new Color(bodyColor.R, bodyColor.G, bodyColor.B, 30), true);
             }
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 15, npc.frame, glowColor, true);
 
             BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 15, npc.frame, glowColor, true);
             return false;
+        }
+
+        public void SetStats()
+        {
+            switch (MinionType)
+            {
+                case 0:
+                    npc.defense = 6; npc.damage = 8; break;
+                case 1:
+                    npc.defense = 7; npc.damage = 9; break;
+                case 2:
+                    npc.defense = 9; npc.damage = 10; break;
+                case 3:
+                    npc.defense = 11; npc.damage = 11; break;
+                case 4:
+                    npc.defense = 13; npc.damage = 11; break;
+                case 5:
+                    npc.defense = 15; npc.damage = 12; break;
+                case 6:
+                    npc.defense = 16; npc.damage = 13; break;
+                case 7:
+                    npc.defense = 20; npc.damage = 15; break;
+                case 8:
+                    npc.defense = 19; npc.damage = 17; break;
+                case 9:
+                    npc.defense = 19; npc.damage = 22; break;
+                case 10:
+                    npc.defense = 21; npc.damage = 26; break;
+                case 11:
+                    npc.defense = 15; npc.damage = 14; break;
+                case 12:
+                    npc.defense = 18; npc.damage = 27; break;
+                case 13:
+                    npc.defense = 25; npc.damage = 36; break;
+                case 14:
+                    npc.defense = 16; npc.damage = 40; break;
+                case 15:
+                    npc.defense = 32; npc.damage = 36; break;
+                case 16:
+                    npc.defense = 27; npc.damage = 50; break;
+                case 17:
+                    npc.defense = 42; npc.damage = 47; break;
+                case 18:
+                    npc.defense = 40; npc.damage = 60; break;
+                case 19:
+                    npc.defense = 49; npc.damage = 52; break;
+                case 20:
+                    npc.defense = 53; npc.damage = 60; break;
+                case 21:
+                    npc.defense = 56; npc.damage = 75; break;
+                default:
+                    npc.defense = 58; npc.damage = 70; break;
+            }
         }
     }
 }

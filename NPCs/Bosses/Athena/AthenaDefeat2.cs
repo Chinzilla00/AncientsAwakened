@@ -14,7 +14,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 7;
+            Main.npcFrameCount[npc.type] = 15;
         }
 
         public override void SetDefaults()
@@ -36,8 +36,6 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.noTileCollide = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
         }
-
-        Texture2D tex;
 
         public override void AI()
         {
@@ -139,18 +137,12 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            if (npc.ai[1] != 0)
-            {
-                tex = Main.npcTexture[mod.NPCType<AthenaDefeat>()];
-            }
-            else
-            {
-                tex = Main.npcTexture[npc.type];
-            }
+
+            Texture2D tex = Main.npcTexture[npc.type];
 
             Color lightColor = BaseDrawing.GetLightColor(npc.Center);
 
-            BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor, true);
+            BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 15, npc.frame, lightColor, true);
 
             return false;
         }
