@@ -59,7 +59,6 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
                 else
                 { 
-                    tex = Main.npcTexture[npc.type];
                     Main.npcFrameCount[npc.type] = 8;
                     npc.ai[0]++;
                     if (Main.netMode != 1)
