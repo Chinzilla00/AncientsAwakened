@@ -21,7 +21,7 @@ namespace AAMod.Items.Armor.Uranium
             item.height = 20;
             item.value = 90000;
             item.rare = 8;
-            item.defense = 12;
+            item.defense = 10;
         }
 
         public override void UpdateEquip(Player player)

@@ -15,12 +15,12 @@ namespace AAMod.Items.Ranged
 
 		public override void SetDefaults()
 		{
-			item.damage = 45;
+			item.damage = 55;
 			item.ranged = true;
 			item.width = 52;
 			item.height = 20;
-			item.useTime = 20;
-			item.useAnimation = 20;
+			item.useTime = 15;
+			item.useAnimation = 15;
 			item.useStyle = 5;
 			item.noMelee = true; //so the item's animation doesn't do damage
 			item.knockBack = 3;
