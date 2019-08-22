@@ -27,19 +27,21 @@ namespace AAMod.Items.Accessories.Wings
             player.wingTimeMax = 170;
         }
 
-        public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising, ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
+
+        public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
+            ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
         {
-            ascentWhenFalling = 0.5f;
-            ascentWhenRising = 0.5f;
+            ascentWhenFalling = 0.85f;
+            ascentWhenRising = 0.15f;
             maxCanAscendMultiplier = 1f;
-            maxAscentMultiplier = 1f;
-            constantAscend = 0.12f;
+            maxAscentMultiplier = 2.1f;
+            constantAscend = 0.135f;
         }
 
         public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
         {
-            speed = 7f;
-            acceleration *= 1.33f;
+            speed = 8f;
+            acceleration *= 2f;
         }
 
         public override void AddRecipes()

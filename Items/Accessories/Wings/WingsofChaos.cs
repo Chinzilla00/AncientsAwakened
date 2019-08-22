@@ -31,17 +31,17 @@ namespace AAMod.Items.Accessories.Wings
 		public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,
 			ref float maxCanAscendMultiplier, ref float maxAscentMultiplier, ref float constantAscend)
 		{
-			ascentWhenFalling = 0.85f;
+			ascentWhenFalling = 0.95f;
 			ascentWhenRising = 0.15f;
 			maxCanAscendMultiplier = 1f;
-			maxAscentMultiplier = 3f;
+			maxAscentMultiplier = 4f;
 			constantAscend = 0.135f;
 		}
 
 		public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
 		{
 			speed = 16f;
-			acceleration *= 3.5f;
+			acceleration *= 3.7f;
 		}
 
         public override void ModifyTooltips(List<TooltipLine> list)

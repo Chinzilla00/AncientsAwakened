@@ -35,13 +35,13 @@ namespace AAMod.Items.Accessories.Wings
 			ascentWhenFalling = 0.85f;
 			ascentWhenRising = 0.15f;
 			maxCanAscendMultiplier = 1f;
-			maxAscentMultiplier = 2f;
+			maxAscentMultiplier = 1.7f;
 			constantAscend = 0.135f;
 		}
 
 		public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
 		{
-			speed = 8f;
+			speed = 7f;
 			acceleration *= 1.5f;
 		}
 
