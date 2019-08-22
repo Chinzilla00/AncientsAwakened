@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.TrueAbyssal
             base.SetStaticDefaults();
             DisplayName.SetDefault("Perfect Abyssal Fukumen");
             Tooltip.SetDefault(@"35% increased movement speed
-20% increased ranged damage");
+13% increased ranged damage");
         }
 
 		public override void SetDefaults()
@@ -26,7 +26,7 @@ namespace AAMod.Items.Armor.TrueAbyssal
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage += .2f;
+            player.rangedDamage += .13f;
             player.moveSpeed += .35f;
         }
 

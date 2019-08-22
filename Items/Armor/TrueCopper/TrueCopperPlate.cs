@@ -14,7 +14,7 @@ namespace AAMod.Items.Armor.TrueCopper
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("True Copper Chainmail");
 			Tooltip.SetDefault(@"10% increased damage
-100 increased maximum mana
+60 increased maximum mana
 'And you thought copper was worthless.'");
 		}
 
@@ -63,7 +63,7 @@ namespace AAMod.Items.Armor.TrueCopper
         public override void UpdateEquip(Player player)
         {
             player.allDamage += .1f;
-            player.statManaMax2 += 200;
+            player.statManaMax2 += 60;
         }
 
 		public override void AddRecipes()
