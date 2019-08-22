@@ -285,7 +285,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         case 1: XPos = 400; break;
                         default: XPos = 0; break;
                     }
-                    internalAI[3] = Main.rand.Next(1, 3);
+                    internalAI[3] = 1;
                     npc.ai[0] = 0;
                     npc.netUpdate = true;
                 }
@@ -308,22 +308,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     if (npc.ai[2] >= 70 && Main.netMode != 1)
                     {
                         internalAI[3] = 0; npc.ai[2] = 0; npc.netUpdate = true;
-                    }
-                }
-                if (internalAI[3] == 2) //Charge
-                {
-                    if (SelectPoint && Main.netMode != 1)
-                    {
-                        ChargePoint = new Vector2(player.position.X - XPos, player.position.Y - YPos);
-                        SelectPoint = false;
-                        npc.netUpdate = true;
-                    }
-                    MoveToPoint(ChargePoint);
-                    if (Vector2.Distance(npc.Center, ChargePoint) < 50 && Main.netMode != 1)
-                    {
-                        ChargePoint = Vector2.Zero;
-                        internalAI[3] = 1;
-                        npc.netUpdate = true;
                     }
                 }
             }
