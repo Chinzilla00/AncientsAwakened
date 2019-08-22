@@ -129,7 +129,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     if (Main.netMode != 1)
                     {
                         npc.ai[0] = 0;
-                        Teleport = true;
+                        internalAI[3] = 1;
                         npc.netUpdate = true;
                     }
                 }
@@ -181,7 +181,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         }
 
         public float[] internalAI = new float[4];
-        public bool Teleport = false;
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -191,7 +190,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
-                writer.Write(Teleport);
             }
         }
 
@@ -204,18 +202,18 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
-                Teleport = reader.ReadBool();
             }
         }
 
         float XPos = 0;
-        float oldX = 0;
-        float YPos = -500;
-        float oldY = 0;
+        float YPos = -400;
         bool isGlitching = false;
+        bool SelectPoint = false;
+        Vector2 ChargePoint = Vector2.Zero;
 
         public override void AI()
         {
+
             npc.TargetClosest();
             Player player = Main.player[npc.target];
 
@@ -224,7 +222,16 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             Vector2 Position = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
             float PlayerX = player.position.X + (player.width / 2) - Position.X;
             float PlayerY = player.position.Y + (player.height / 2) - Position.Y;
-            npc.rotation = (float)Math.Atan2(PlayerX, PlayerY) - 1.57f;
+            npc.rotation = (float)Math.Atan2(PlayerX, PlayerY);
+
+            if (player.Center.X > npc.Center.X)
+            {
+                npc.direction = 1;
+            }
+            else
+            {
+                npc.direction = -1;
+            }
 
             if (player.dead || tooFar)
             {
@@ -234,11 +241,11 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 {
                     if (!PlayerDead)
                     {
-                        if (tooFar)
+                        if (player.dead)
                         {
                             if (Main.netMode != 1) BaseUtility.Chat("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                         }
-                        else if (player.dead)
+                        else if (tooFar)
                         {
                             if (Main.netMode != 1) BaseUtility.Chat("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                         }
@@ -255,51 +262,71 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 
             }
 
+            if (npc.ai[1] == 0)
+            {
+                internalAI[3] = 1;
+                npc.ai[1] = 1;
+                npc.netUpdate = true;
+            }
+
             if (npc.ai[0]++ > 300)
             {
                 if (Main.netMode != 1)
                 {
-                    switch (Main.rand.Next(3))
+                    switch (Main.rand.Next(2))
                     {
                         case 0: YPos = 0; break;
-                        case 1: YPos = -500; break;
-                        default: YPos = 500; break;
+                        default: YPos = -400; break;
                     }
 
                     switch (YPos == 0 ? Main.rand.Next(2) : Main.rand.Next(3)) //To prevent ZP from locking to the player's position
                     {
-                        case 0: XPos = -500; break;
-                        case 1: XPos = 500; break;
+                        case 0: XPos = -400; break;
+                        case 1: XPos = 400; break;
                         default: XPos = 0; break;
                     }
-                    if (XPos != oldX || YPos != oldY)
-                    {
-                        isGlitching = false;
-                        Teleport = true;
-                        oldX = XPos; oldY = YPos;
-                    }
+                    internalAI[3] = Main.rand.Next(1, 3);
                     npc.ai[0] = 0;
                     npc.netUpdate = true;
                 }
             }
             else
             {
-                MoveToPoint(new Vector2(XPos, YPos));
-            }
-
-            if (Teleport)
-            {
-                npc.ai[2]++;
-                if (npc.ai[2] == 30)
+                if (internalAI[3] == 0) //Regular Movement
                 {
-                    npc.Center = new Vector2(player.Center.X + XPos, player.Center.Y + YPos);
+                    MoveToPoint(new Vector2(player.position.X + XPos, player.position.Y + YPos));
                 }
-                if (npc.ai[2] >= 70)
+                if (internalAI[3] == 1) //Teleport
                 {
-                    Teleport = false;
+                    npc.velocity *= 0;
+                    npc.ai[0] = 0;
+                    npc.ai[2]++;
+                    if (npc.ai[2] >= 30)
+                    {
+                        npc.Center = new Vector2(player.Center.X + XPos, player.Center.Y + YPos);
+                    }
+                    if (npc.ai[2] >= 70 && Main.netMode != 1)
+                    {
+                        internalAI[3] = 0; npc.ai[2] = 0; npc.netUpdate = true;
+                    }
+                }
+                if (internalAI[3] == 2) //Charge
+                {
+                    if (SelectPoint && Main.netMode != 1)
+                    {
+                        ChargePoint = new Vector2(player.position.X - XPos, player.position.Y - YPos);
+                        SelectPoint = false;
+                        npc.netUpdate = true;
+                    }
+                    MoveToPoint(ChargePoint);
+                    if (Vector2.Distance(npc.Center, ChargePoint) < 50 && Main.netMode != 1)
+                    {
+                        ChargePoint = Vector2.Zero;
+                        internalAI[3] = 1;
+                        npc.netUpdate = true;
+                    }
                 }
             }
-
 
             internalAI[0]++;
             if (internalAI[0] >= 240 && Main.netMode != 1)
@@ -324,6 +351,10 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public void MoveToPoint(Vector2 point)
         {
             float moveSpeed = 16f;
+            if (internalAI[3] == 2)
+            {
+                moveSpeed = 26f;
+            }
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
             float length = dist == Vector2.Zero ? 0f : dist.Length();
@@ -357,7 +388,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 Frame += 1;
             }
 
-            if (Teleport)
+            if (internalAI[3] == 1)
             {
                 if (Frame < 8)
                 {

@@ -224,7 +224,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 {
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
-                    int[] Frame = { 1, 2, 0, 1, 2, 1, 2, 0, 1, 2, 1, 2, 0, 1, 2, 3, 4};
+                    int[] Frame = { 1, 2, 0, 1, 2, 2, 1, 2, 2, 0, 1, 2, 2, 1, 2, 2, 0, 1, 2, 3, 4};
                     for (int i = 0; i < Frame.Length; ++i)
                     {
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AkumaABody"), npc.whoAmI, 0, latestNPC);
@@ -629,6 +629,16 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            npc.boss = false;
+            npc.width = 40;
+            npc.height = 40;
+            npc.dontCountMe = true;
+            npc.chaseable = false;
+        }
+
         public override bool PreAI()
         {
             Vector2 chasePosition = Main.npc[(int)npc.ai[1]].Center;
@@ -699,16 +709,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             npc.netUpdate = true;
             return false;
-        }
-
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.boss = false;
-            npc.width = 60;
-            npc.height = 60;
-            npc.dontCountMe = true;
-            npc.chaseable = false;
         }
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)

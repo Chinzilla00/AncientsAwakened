@@ -97,11 +97,9 @@ namespace AAMod.NPCs.Bosses.Djinn
                 StartSandstorm();
                 runonce += 1;
             }
-			 if (internalAI[0] == 2 && npc.ai[3] < 60)
+	        if (internalAI[0] == 2 && npc.ai[3] < 60)
             {
 					npc.velocity.X *= 0.97f;
-					
-					
 			}
 		
             if (internalAI[0] == 2 && npc.ai[3] > 120)
@@ -157,7 +155,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 {
 					
                     selectPoint = true; ;
-                    internalAI[0] = Main.rand.Next(3) ;
+                    internalAI[0] = Main.rand.Next(3);
                     internalAI[1] = 0;
                     npc.ai[3] = 0;
                     npc.ai = new float[4];
@@ -170,31 +168,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 npc.ai[3]++;
                 npc.velocity.X = 0;
                 npc.velocity.Y = 0;
-                if (npc.ai[3] == 9)
-                {
-                    if (Main.netMode != 1 && AAGlobalProjectile.CountProjectiles(658) < 5)
-                    {
-                        FireProjectile();
-                        npc.netUpdate = true;
-                    }
-                }
-                if (npc.ai[3] == 36)
-                {
-                    if (Main.netMode != 1 && AAGlobalProjectile.CountProjectiles(658) < 5)
-                    {
-                        FireProjectile();
-                        npc.netUpdate = true;
-                    }
-                }
-                if (npc.ai[3] == 72)
-                {
-                    if (Main.netMode != 1 && AAGlobalProjectile.CountProjectiles(658) < 5)
-                    {
-                        FireProjectile();
-                        npc.netUpdate = true;
-                    }
-                }
-                if (npc.ai[3] > 81)
+                if (npc.ai[3] == 9 || npc.ai[3] == 36 || npc.ai[3] == 72)
                 {
                     if (Main.netMode != 1 && AAGlobalProjectile.CountProjectiles(658) < 5)
                     {
