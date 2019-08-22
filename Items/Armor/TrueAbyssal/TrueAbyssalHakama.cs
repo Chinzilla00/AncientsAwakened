@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.TrueAbyssal
             base.SetStaticDefaults();
             DisplayName.SetDefault("Perfect Abyssal Hakama");
             Tooltip.SetDefault(@"40% increased movement speed
-15% increased ranged damage");
+15% increased ranged crit");
 		}
 
 		public override void SetDefaults()
@@ -26,7 +26,7 @@ namespace AAMod.Items.Armor.TrueAbyssal
 
 		public override void UpdateEquip(Player player)
 		{
-			player.rangedDamage += .15f;
+            player.rangedCrit += 15; 
 			player.moveSpeed += 0.40f;
 		}
 

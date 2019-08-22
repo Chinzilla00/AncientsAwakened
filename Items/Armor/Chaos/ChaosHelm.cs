@@ -10,6 +10,7 @@ namespace AAMod.Items.Armor.Chaos
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chaos Helmet");
+            Tooltip.SetDefault(@"15% increased melee damage and speed");
         }
 
 		public override void SetDefaults()
@@ -24,7 +25,9 @@ namespace AAMod.Items.Armor.Chaos
 		public override void UpdateEquip(Player player)
 		{
            player.meleeSpeed += 0.15f;
-		}
+            player.meleeDamage *= 1.15f;
+
+        }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {

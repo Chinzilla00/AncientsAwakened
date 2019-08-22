@@ -26,7 +26,7 @@ namespace AAMod.Items.Armor.TrueDynaskull
 
 		public override void UpdateEquip(Player player)
 		{
-			player.thrownDamage *= 1.18f;
+			player.rangedDamage *= 1.18f;
 		}
 
 		public override void AddRecipes()

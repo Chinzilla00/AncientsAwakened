@@ -11,7 +11,8 @@ namespace AAMod.Items.Armor.TrueBlazing
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Perfect Blazing Kabuto");
-			Tooltip.SetDefault(@"5% increased Damage Resistance");
+			Tooltip.SetDefault(@"5% increased Damage Resistance
+                                15% increased melee damage");
         }
 
 		public override void SetDefaults()
@@ -26,6 +27,8 @@ namespace AAMod.Items.Armor.TrueBlazing
         public override void UpdateEquip(Player player)
         {
             player.endurance += .05f;
+            player.meleeDamage *= 1.15f;
+
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

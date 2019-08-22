@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Uranium
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Uranium Headgear");
-            Tooltip.SetDefault(@"18% increased ranged damage
+            Tooltip.SetDefault(@"8% increased ranged damage
 20% chance to not consume ammo");
         }
 
