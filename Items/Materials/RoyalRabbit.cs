@@ -29,7 +29,7 @@ namespace AAMod.Items.Materials
         public override bool UseItem(Player player)
         {
             int num = NPC.NewNPC((int)(player.position.X + Main.rand.Next(-20, 20)), (int)(player.position.Y - 0f), mod.NPCType("RoyalRabbit"));
-            if (Main.netMode == 2 && num < 200)
+            if (Main.netMode == NetmodeID.Server && num < 200)
             {
                 NetMessage.SendData(23, -1, -1, null, num, 0f, 0f, 0f, 0, 0, 0);
             }

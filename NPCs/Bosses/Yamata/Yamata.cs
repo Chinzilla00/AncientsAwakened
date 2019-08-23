@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat();
                 internalAI[1] = reader.ReadFloat();
@@ -226,7 +226,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				{
 					if(!HeadsSpawned)
 					{
-						int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default(int[]), 200f, null);
+						int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default, 200f, null);
 						if (npcs != null && npcs.Length > 0)
 						{
 							foreach (int npcID in npcs)
@@ -306,7 +306,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 					//the AI[0] checks are so when this is fargo'd into a multispawn it doesn't try to attach all the heads to one enemy if they are too close together.
 					if(!HeadsSpawned)
 					{
-						int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default(int[]), 1000f, null);
+						int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default, 1000f, null);
 						if (npcs != null && npcs.Length > 0)
 						{
 							foreach (int npcID in npcs)

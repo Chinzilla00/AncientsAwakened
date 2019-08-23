@@ -38,8 +38,8 @@ Non-Consumable");
 
         public override bool UseItem(Player player)
         {
-            if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat("The Equinox Worms have awoken!", 175, 75, 255, false); }
-            else if (Main.netMode == 2)
+            if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat("The Equinox Worms have awoken!", 175, 75, 255, false); }
+            else if (Main.netMode == NetmodeID.Server)
             {
                 NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The Equinox Worms have awoken!"), new Color(175, 75, 255), -1);
             }

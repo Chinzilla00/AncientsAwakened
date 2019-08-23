@@ -57,7 +57,7 @@ namespace AAMod.NPCs.Bosses.Djinn
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -69,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Djinn
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat();
                 internalAI[1] = reader.ReadFloat();
@@ -417,9 +417,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 if (!flag118)
                 {
                     int startY = point14.Y - 20;
-                    int num1470;
-                    int num1471;
-                    Collision.ExpandVertically(num1469, startY, out num1470, out num1471, 1, 51);
+                    Collision.ExpandVertically(num1469, startY, out int num1470, out int num1471, 1, 51);
                     if (StrayMethods.CanSpawnSandstormHostile(new Vector2(num1469, num1471 - 15) * 16f, 15, 15))
                     {
                         list4.Add(new Point(num1469, num1471 - 15));

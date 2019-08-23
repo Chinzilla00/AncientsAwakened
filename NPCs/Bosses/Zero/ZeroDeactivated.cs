@@ -164,7 +164,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 int whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, mod.NPCType<ZeroDeactivated>());
                 ZX = (int)spawnPos.X;
 				ZY = (int)spawnPos.Y;				
-				if (Main.netMode == 2 && whoAmI != -1 && whoAmI < 200)
+				if (Main.netMode == NetmodeID.Server && whoAmI != -1 && whoAmI < 200)
 				{					
 					NetMessage.SendData(MessageID.SyncNPC, number: whoAmI);
 				}			

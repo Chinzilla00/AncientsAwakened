@@ -1231,7 +1231,7 @@ namespace AAMod
                         flag14 = true;
                     }
 
-                    if (player.stealth == 0f && num29 != player.stealth && Main.netMode == 1)
+                    if (player.stealth == 0f && num29 != player.stealth && Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                     }
@@ -1261,7 +1261,7 @@ namespace AAMod
                         flag14 = true;
                     }
 
-                    if (player.stealth == 1f && num30 != player.stealth && Main.netMode == 1)
+                    if (player.stealth == 1f && num30 != player.stealth && Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                     }
@@ -1308,7 +1308,7 @@ namespace AAMod
                         player.stealth = 0f;
                     }
 
-                    if (player.stealth == 0f && num29 != player.stealth && Main.netMode == 1)
+                    if (player.stealth == 0f && num29 != player.stealth && Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                     }
@@ -1332,7 +1332,7 @@ namespace AAMod
                         player.stealth = 1f;
                     }
 
-                    if (player.stealth == 1f && num30 != player.stealth && Main.netMode == 1)
+                    if (player.stealth == 1f && num30 != player.stealth && Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                     }

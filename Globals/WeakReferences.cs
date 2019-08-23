@@ -1,9 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using AAMod.Items.BossSummons;
+using Microsoft.Xna.Framework;
 using System;
-using Terraria;
 using Terraria.ModLoader;
-using AAMod.Items.BossSummons;
-using System.Collections.Generic;
 
 namespace AAMod.Globals
 {

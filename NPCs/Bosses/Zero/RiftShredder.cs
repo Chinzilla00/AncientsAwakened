@@ -66,7 +66,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             writer.Write((short)npc.localAI[0]);
             base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
             }
@@ -76,7 +76,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             npc.localAI[0] = reader.ReadInt16();
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat();
             }

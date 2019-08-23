@@ -224,7 +224,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if ((Main.netMode == 2 || Main.dedServ))
+            if ((Main.netMode == NetmodeID.Server || Main.dedServ))
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -239,7 +239,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat();
                 internalAI[1] = reader.ReadFloat();

@@ -1,6 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Dev
 {
@@ -42,7 +43,7 @@ namespace AAMod.Items.Dev
 			byte pre = item.prefix;
             item.TurnToAir();
 			int itemID = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("CordesDuFuret_Axe"), 1, false, pre, false, false);
-			if (Main.netMode == 1)
+			if (Main.netMode == NetmodeID.MultiplayerClient)
 			{
 				NetMessage.SendData(21, -1, -1, null, itemID, 1f, 0f, 0f, 0, 0, 0);
 			}			

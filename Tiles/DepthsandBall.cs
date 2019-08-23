@@ -97,7 +97,7 @@ namespace AAMod.Tiles
                         if (Main.tile[tileX, tileY + 1].halfBrick() || Main.tile[tileX, tileY + 1].slope() != 0)
                         {
                             WorldGen.SlopeTile(tileX, tileY + 1, 0);
-                            if (Main.netMode == 2)
+                            if (Main.netMode == NetmodeID.Server)
                             {
                                 NetMessage.SendData(17, -1, -1, null, 14, tileX, tileY + 1, 0f, 0, 0, 0);
                             }

@@ -1175,18 +1175,18 @@ namespace AAMod
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)
                     {
-                        if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(npcName + " have awoken!", 175, 75, 255, false); }
+                        if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(npcName + " have awoken!", 175, 75, 255, false); }
                         else
-                        if (Main.netMode == 2)
+                        if (Main.netMode == NetmodeID.Server)
                         {
                             NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + " have awoken!"), new Color(175, 75, 255), -1);
                         }
                     }
                     else
                     {
-                        if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                        if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
                         else
-                        if (Main.netMode == 2)
+                        if (Main.netMode == NetmodeID.Server)
                         {
                             NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
                             {

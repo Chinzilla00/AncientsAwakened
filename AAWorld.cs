@@ -1320,7 +1320,7 @@ namespace AAMod
         }
         public static void GenYttrium()
         {
-            if (Main.netMode == 1) { AANet.SendNetMessage(AANet.GenOre, (byte)0); }
+            if (Main.netMode == NetmodeID.MultiplayerClient) { AANet.SendNetMessage(AANet.GenOre, (byte)0); }
             else
             {
                 Yttrium = true;
@@ -1332,7 +1332,7 @@ namespace AAMod
 
         public static void GenUranium()
         {
-            if (Main.netMode == 1) { AANet.SendNetMessage(AANet.GenOre, (byte)1); }
+            if (Main.netMode == NetmodeID.MultiplayerClient) { AANet.SendNetMessage(AANet.GenOre, (byte)1); }
             else
             {
                 Uranium = true;
@@ -1344,7 +1344,7 @@ namespace AAMod
 
         public static void GenTechnecium()
         {
-            if (Main.netMode == 1) { AANet.SendNetMessage(AANet.GenOre, (byte)2); }
+            if (Main.netMode == NetmodeID.MultiplayerClient) { AANet.SendNetMessage(AANet.GenOre, (byte)2); }
             else
             {
                 Technecium = true;

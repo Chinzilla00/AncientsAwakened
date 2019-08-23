@@ -191,7 +191,7 @@ namespace AAMod.NPCs.Bosses.Equinox
         {
 			if(probeCounter == -1)
 				probeCounter = 500 + Main.rand.Next(750);
-			if(Main.netMode == 1 || npc.whoAmI % 3 != 0) return;
+			if(Main.netMode == NetmodeID.MultiplayerClient || npc.whoAmI % 3 != 0) return;
 			probeCounter = Math.Max(0, probeCounter - 1);
             if (probeCounter <= 0)
             {

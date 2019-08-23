@@ -144,7 +144,7 @@ namespace AAMod.Tiles
                 player.editedChestName = false;
             }
             bool isLocked = IsLockedChest(left, top);
-            if (Main.netMode == 1 && !isLocked)
+            if (Main.netMode == NetmodeID.MultiplayerClient && !isLocked)
             {
                 if (left == player.chestX && top == player.chestY && player.chest >= 0)
                 {
@@ -165,7 +165,7 @@ namespace AAMod.Tiles
                     int key = mod.ItemType<Items.Usable.DoomstopperKey>();
                     if (player.ConsumeItem(key) && Chest.Unlock(left, top))
                     {
-                        if (Main.netMode == 1)
+                        if (Main.netMode == NetmodeID.MultiplayerClient)
                         {
                             NetMessage.SendData(MessageID.Unlock, -1, -1, null, player.whoAmI, 1f, left, top);
                         }

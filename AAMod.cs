@@ -76,7 +76,7 @@ namespace AAMod
 
         public static void SetupBannerItemTextures()
         {
-            if (Main.netMode == 2 || Main.dedServ) return; //don't do any texture stuff on a server lol
+            if (Main.netMode == NetmodeID.Server || Main.dedServ) return; //don't do any texture stuff on a server lol
             try
             {
                 int fx = 16;
