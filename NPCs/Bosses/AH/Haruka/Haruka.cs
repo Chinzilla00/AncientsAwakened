@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.width = 50;
             npc.height = 60;
             npc.friendly = false;
-            npc.damage = 110;
+            npc.damage = 180;
             npc.defense = 120;
             npc.lifeMax = 150000;
             npc.HitSound = SoundID.NPCHit1;
@@ -310,7 +310,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         for (int i = 0; i < 3; i++)
                         {
                             double offsetAngle = startAngle + (deltaAngle * i);
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage*4, 5, Main.myPlayer);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage*1, 5, Main.myPlayer);
                         }
                         npc.netUpdate = true;
                     }
@@ -373,7 +373,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
                         int projType = mod.ProjectileType<HarukaProj>();
-                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*4, 0f, 14f);
+                        BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*1, 0f, 14f);
                         npc.netUpdate = true;
                     }
                     if (isSlashing && internalAI[2] > 9 && Main.netMode != 1)
@@ -485,7 +485,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
-                npc.damage = 300;
+                npc.damage = 180;
                 npc.defense = 300;
             }
             else //Reset Stats
