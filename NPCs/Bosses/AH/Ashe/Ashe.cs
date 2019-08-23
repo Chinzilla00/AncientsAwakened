@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             npc.width = 40;
             npc.height = 100;
-            npc.damage = 180;
+            npc.damage = 150;
             npc.defense = 40;
             npc.lifeMax = 140000;
             npc.value = Item.sellPrice(0, 12, 0, 0);
@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -62,7 +62,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat();
                 internalAI[1] = reader.ReadFloat();
@@ -340,19 +340,19 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             if (internalAI[0] == AISTATE_MELEE) //Melee Damage/Speed boost
             {
                 npc.damage++;
-                if (npc.damage > 180)
+                if (npc.damage > 160)
                 {
-                    npc.damage = 180;
+                    npc.damage = 160;
                 }
                 if (internalAI[2] > 21)
                 {
                     MeleeSpeed -= .01f;
-                    npc.damage = 180;
+                    npc.damage = 100;
                 }
             }
             else //Reset Stats
             {
-                npc.damage = 180;
+                npc.damage = 100;
                 MeleeSpeed = 0;
             }
 
