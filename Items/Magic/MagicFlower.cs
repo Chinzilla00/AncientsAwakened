@@ -28,7 +28,7 @@ namespace AAMod.Items.Magic
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("ManaShot");
-			item.shootSpeed = 5f;
+			item.shootSpeed = 10f;
 		}
 
 		public override void AddRecipes()

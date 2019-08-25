@@ -26,7 +26,6 @@ namespace AAMod.Items.Armor.Uranium
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance *= 1.03f;
             player.rangedDamage *= 1.08f;
         }
 

@@ -24,7 +24,7 @@ namespace AAMod.Items.Boss.Toad
             item.useAnimation = 40;
             item.useTime = 40;
             item.knockBack = 8f;
-            item.damage = 40;
+            item.damage = 30;
             item.noUseGraphic = true;
             item.shoot = mod.ProjectileType("ToadTongue");
             item.shootSpeed = 14;

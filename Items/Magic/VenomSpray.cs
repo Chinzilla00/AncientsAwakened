@@ -22,8 +22,8 @@ namespace AAMod.Items.Magic
             item.mana = 5;             //mana use
             item.UseSound = SoundID.Item21;            //this is the sound when you use the item
             item.autoReuse = true;
-            item.useTime = 6;
-            item.useAnimation = 18;
+            item.useTime = 12;
+            item.useAnimation = 12;
             item.shoot = mod.ProjectileType("Venom");
             item.shootSpeed = 9f;    
         }   

@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.TrueDeathly
         {
             DisplayName.SetDefault("Deathly Ghast Greaves");
             Tooltip.SetDefault(@"5% Increased ranged damage
-             15% Increased movement speed
+15% Increased movement speed
 ");
         }
 

@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.Toad
             item.knockBack = 3f;
             item.width = 16;
             item.height = 16;
-            item.damage = 25;
+            item.damage = 15;
             item.UseSound = SoundID.DD2_BetsysWrathShot;
             item.rare = 4;
             item.value = Item.sellPrice(0, 0, 70, 0);
