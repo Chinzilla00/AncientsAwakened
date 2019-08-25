@@ -103,8 +103,6 @@ namespace AAMod
         //Points
         public static Point WHERESDAVOIDAT;
 
-        public static bool Anticheat = true;
-
         //Squid Lady
         public static int squid1 = 0;
         public static int squid2 = 0;
@@ -176,7 +174,6 @@ namespace AAMod
             DiscordOres = downedSisters;
             InfernoStripe = Main.hardMode;
             MireStripe = Main.hardMode;
-            Anticheat = true;
             ModContentGenerated = false;
             Empowered = downedShen;
             mirePos = new Vector2(0, 0);

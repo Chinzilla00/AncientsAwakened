@@ -633,15 +633,6 @@ namespace AAMod
             }
         }
 
-        public void Anticheat(NPC npc, string Text, Color TextColor, ref double damage)
-        {
-            if (damage > npc.lifeMax / 8)
-            {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Text, TextColor);
-                damage = 0;
-            }
-        }
-
         public override void DrawEffects(NPC npc, ref Color drawColor)
         {
             Rectangle hitbox = npc.Hitbox;

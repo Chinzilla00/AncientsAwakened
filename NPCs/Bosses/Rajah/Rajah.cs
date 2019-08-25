@@ -102,22 +102,10 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            if (AAWorld.Anticheat == true && isSupreme)
-            {
-                if (damage > npc.lifeMax / 8)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat("JUSTICE CANNOT BE CHEATED", 107, 137, 179);
-                    damage = 0;
-                    npc.damage = 9999;
-                    npc.defense = 99999;
-                }
-                return false;
-            }
             if (isSupreme)
             {
                 damage *= .5f;
             }
-
             return true;
         }
 
