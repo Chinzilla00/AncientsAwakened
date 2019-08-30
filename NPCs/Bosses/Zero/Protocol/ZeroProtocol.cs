@@ -164,22 +164,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             return false;
         }
 
-        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
-        {
-            if (AAWorld.Anticheat == true)
-            {
-                if (damage > npc.lifeMax / 8)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red);
-                    damage = 0;
-                }
-
-                return false;
-            }
-
-            return true;
-        }
-
         public float[] internalAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
         {
