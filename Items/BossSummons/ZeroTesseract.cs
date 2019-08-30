@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Terraria;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.BossSummons
 {
@@ -106,10 +107,11 @@ N0N-C0NSUMABLE");
 
             if (Main.netMode != 1)
             {
-				AAWorld.zeroUS = true;
-				if(!NPC.AnyNPCs(mod.NPCType("ZeroDeactivated")))
-					NPC.NewNPC((int)player.position.X + Main.rand.Next(-2200, 2200), (int)player.position.Y - 300, mod.NPCType("Zero"));
+                AAWorld.zeroUS = true;
+                if (!NPC.AnyNPCs(mod.NPCType("ZeroDeactivated")))
+                    NPC.NewNPC((int)player.position.X, (int)player.position.Y - 300, mod.NPCType("Zero"));
             }
+
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));
             return true;
         }

@@ -6,6 +6,7 @@ namespace AAMod.NPCs.Bosses.Zero
 {
     public class NeutralizerP : ModProjectile
     {
+        public override string Texture => "AAMod/BlankTex";
         public override void SetDefaults()
         {
             projectile.width = 4;

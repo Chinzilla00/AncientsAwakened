@@ -21,13 +21,13 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         {
             DisplayName.SetDefault("ZER0 PR0T0C0L");
             Main.npcFrameCount[npc.type] = 15; 
-            NPCID.Sets.TrailCacheLength[npc.type] = 15;
+            NPCID.Sets.TrailCacheLength[npc.type] = 20;
             NPCID.Sets.TrailingMode[npc.type] = 0;
         }
         public override void SetDefaults()
         {
             npc.lifeMax = 600000;
-            npc.damage = 67;
+            npc.damage = 150;
             npc.defense = 70;
             npc.knockBackResist = 0f;
             npc.width = 170;
@@ -84,13 +84,13 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ZeroMask"));
                 }
-                if (AAWorld.downedShen)
+                if (Main.rand.Next(10) == 0 && AAWorld.downedAllAncients)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
                 }
                 if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
                 npc.DropBossBags();
                 return;
@@ -164,11 +164,27 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             return false;
         }
 
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            if (AAWorld.Anticheat == true)
+            {
+                if (damage > npc.lifeMax / 8)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat("Y0UR CHEAT SHEET BUTCHER T00L WILL N0T SAVE Y0U HERE", Color.Red);
+                    damage = 0;
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+
         public float[] internalAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -180,7 +196,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == NetmodeID.MultiplayerClient)
+            if (Main.netMode == 1)
             {
                 internalAI[0] = reader.ReadFloat();
                 internalAI[1] = reader.ReadFloat();
@@ -192,30 +208,15 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         float XPos = 0;
         float YPos = -400;
         bool isGlitching = false;
-        bool SelectPoint = false;
-        Vector2 ChargePoint = Vector2.Zero;
 
         public override void AI()
         {
-
             npc.TargetClosest();
             Player player = Main.player[npc.target];
 
             bool tooFar = Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 10000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 10000f;
 
-            Vector2 Position = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
-            float PlayerX = player.position.X + (player.width / 2) - Position.X;
-            float PlayerY = player.position.Y + (player.height / 2) - Position.Y;
-            npc.rotation = (float)Math.Atan2(PlayerX, PlayerY);
-
-            if (player.Center.X > npc.Center.X)
-            {
-                npc.direction = 1;
-            }
-            else
-            {
-                npc.direction = -1;
-            }
+            BaseAI.LookAt(player.Center, npc, 0);
 
             if (player.dead || tooFar)
             {
@@ -243,7 +244,11 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     if (npc.position.Y + npc.height - npc.velocity.Y <= 0 && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
                     return;
                 }
-                
+            }
+
+            if (Main.netMode != 1)
+            {
+                AAWorld.zeroUS = false;
             }
 
             if (npc.ai[1] == 0)
@@ -257,41 +262,91 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 if (Main.netMode != 1)
                 {
-                    switch (Main.rand.Next(2))
+                    internalAI[3] = Main.rand.Next(3);
+                    if (internalAI[3] == 0 || internalAI[3] == 1)
                     {
-                        case 0: YPos = 0; break;
-                        default: YPos = -400; break;
+                        switch (Main.rand.Next(2))
+                        {
+                            case 0: YPos = 0; break;
+                            default: YPos = -400; break;
+                        }
+
+                        switch (YPos == 0 ? Main.rand.Next(2) : Main.rand.Next(3)) //To prevent ZP from locking to the player's position
+                        {
+                            case 0: XPos = -400; break;
+                            case 1: XPos = 400; break;
+                            default: XPos = 0; break;
+                        }
+                        internalAI[3] = 1;
                     }
 
-                    switch (YPos == 0 ? Main.rand.Next(2) : Main.rand.Next(3)) //To prevent ZP from locking to the player's position
-                    {
-                        case 0: XPos = -400; break;
-                        case 1: XPos = 400; break;
-                        default: XPos = 0; break;
-                    }
-                    internalAI[3] = 1;
                     npc.ai[0] = 0;
                     npc.netUpdate = true;
                 }
             }
             else
             {
-                if (internalAI[3] == 0) //Regular Movement
+                if (internalAI[3] != 2)
                 {
                     MoveToPoint(new Vector2(player.position.X + XPos, player.position.Y + YPos));
                 }
+
                 if (internalAI[3] == 1) //Teleport
                 {
-                    npc.velocity *= 0;
+                    
                     npc.ai[0] = 0;
                     npc.ai[2]++;
-                    if (npc.ai[2] >= 30)
+                    if (npc.ai[2] < 31)
+                    {
+                        npc.velocity *= 0;
+                    }
+                    if (npc.ai[2] == 30)
                     {
                         npc.Center = new Vector2(player.Center.X + XPos, player.Center.Y + YPos);
                     }
                     if (npc.ai[2] >= 70 && Main.netMode != 1)
                     {
-                        internalAI[3] = 0; npc.ai[2] = 0; npc.netUpdate = true;
+                        internalAI[3] = 0;
+                        npc.ai[0] = 0;
+                        npc.ai[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                }
+                if (internalAI[3] == 2) //Static Cyclone
+                {
+                    npc.velocity *= .98f;
+                    int Max = 4;
+                    if (npc.life < npc.lifeMax * .8f)
+                    {
+                        Max = 5;
+                    }
+                    if (npc.life < npc.lifeMax * .6f)
+                    {
+                        Max = 6;
+                    }
+                    if (npc.life < npc.lifeMax * .4f)
+                    {
+                        Max = 7;
+                    }
+                    if (npc.life < npc.lifeMax * .2f)
+                    {
+                        Max = 8;
+                    }
+
+                    if (npc.velocity.Y <= 5f && npc.velocity.X <= 5f && Main.netMode != 1)
+                    {
+                        float rotation = 2f * (float)Math.PI / Max;
+                        Vector2 vel = npc.velocity;
+                        vel.Normalize();
+                        vel *= 17f;
+                        int type = mod.ProjectileType("StaticStorm");
+                        for (int i = 0; i < Max; i++)
+                        {
+                            vel = vel.RotatedBy(rotation);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vel.X, vel.Y, type, npc.damage / 4, 4, Main.myPlayer, npc.direction > 0 ? -1f : 1f, 6f);
+                        }
+                        internalAI[3] = 0;
+                        npc.netUpdate = true;
                     }
                 }
             }
@@ -318,11 +373,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 16f;
-            if (internalAI[3] == 2)
-            {
-                moveSpeed = 26f;
-            }
+            float moveSpeed = 20f;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
             float length = dist == Vector2.Zero ? 0f : dist.Length();
@@ -423,7 +474,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 for (int i = 0; i < 6; i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 2f), mod.ProjectileType("GlitchRocket"), damage, 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 2f), mod.ProjectileType("GlitchRocket"), 67, 0, Main.myPlayer, 0f, 0f);
                 }
             }
             else if (Attack == 2)
@@ -435,7 +486,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 for (int i = 0; i < 5; i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 2f), mod.ProjectileType("Error"), damage, 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 4f), (float)(Math.Cos(offsetAngle) * 2f), mod.ProjectileType("Error"), 67, 0, Main.myPlayer, 0f, 0f);
                 }
             }
             else if (Attack == 3)
@@ -447,7 +498,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 for (int i = 0; i < 4; i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 2), (float)Math.Cos(offsetAngle), mod.ProjectileType("StaticSphere"), damage, 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 2), (float)Math.Cos(offsetAngle), mod.ProjectileType("StaticSphere"), 67, 0, Main.myPlayer, 0f, 0f);
                 }
             }
         }

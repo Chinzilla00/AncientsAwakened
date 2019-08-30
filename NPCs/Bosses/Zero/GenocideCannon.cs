@@ -3,6 +3,7 @@ using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -84,6 +85,13 @@ namespace AAMod.NPCs.Bosses.Zero
                 Main.npc[ind].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
                 Main.npc[ind].velocity *= 8f;
                 Main.npc[ind].netUpdate2 = true; Main.npc[ind].netUpdate = true;
+                for (int i = 0; i < 3; i++)
+                {
+                    Dust dust;
+                    Vector2 position = npc.Center;
+                    dust = Main.dust[Dust.NewDust(position, 42, 47, 226, 0f, 0f, 0, new Color(255, 0, 0), 1.513158f)];
+                    dust.shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
+                }
             }
         }
 
@@ -110,14 +118,9 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             npc.oldPos[0] = npc.position;
 
-            if (((Zero)zero.modNPC).killArms && Main.netMode != 1)
-            {
-                npc.active = false;
-            }
-
             int probeNumber = ((Zero)zero.modNPC).WeaponCount;
             if (rotValue == -1f) rotValue = npc.ai[0] % probeNumber * ((float)Math.PI * 2f / probeNumber);
-            rotValue += 0f;
+            rotValue += Main.expertMode ? .05f : 0f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
             npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(((Zero)zero.modNPC).Distance, 0f), rotValue);
 

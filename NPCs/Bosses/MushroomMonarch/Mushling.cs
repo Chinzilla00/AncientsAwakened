@@ -17,7 +17,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void SetDefaults()
         {
             npc.lifeMax = 50;
-            npc.damage = 12;
+            npc.damage = 6;
             npc.defense = 5; 
             npc.knockBackResist = 1f;
             npc.value = Item.sellPrice(0, 0, 0, 0);

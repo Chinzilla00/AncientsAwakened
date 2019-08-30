@@ -5,7 +5,6 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Zero
 {
-    // to investigate: Projectile.Damage, (8843)
     class VoidStarP : ModProjectile
     {
         public override void SetStaticDefaults()
@@ -20,8 +19,8 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.height = 60;
             projectile.friendly = false;
             projectile.hostile = true;
-            projectile.tileCollide = false;
-            projectile.penetrate = 5;
+            projectile.tileCollide = true;
+            projectile.penetrate = 1;
             projectile.timeLeft = 180;
             projectile.aiStyle = -1;
             projectile.alpha = 0;
@@ -30,45 +29,59 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
-            if (projectile.ai[1] == 0.0f)
-            {
-                projectile.ai[0] -= 0.3f;
-                projectile.velocity.Y -= projectile.ai[0];
-                projectile.ai[1] = 1.0f;
-            }
-            projectile.velocity *= 1.03f;
-        }
+            projectile.rotation += 0.03f;
 
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            projectile.penetrate--;
-            if (projectile.penetrate <= 0)
+            if (projectile.alpha > 30)
             {
-                projectile.Kill();
+                projectile.alpha -= 3;
             }
             else
             {
-                if (projectile.velocity.X != oldVelocity.X)
-                {
-                    projectile.velocity.X = -oldVelocity.X;
-                }
-                if (projectile.velocity.Y != oldVelocity.Y)
-                {
-                    projectile.velocity.Y = -oldVelocity.Y;
-                }
-                projectile.velocity *= 0.75f;
-                Main.PlaySound(SoundID.Item10, projectile.position);
+                projectile.alpha = 30;
             }
-            return false;
+
+            const int aislotHomingCooldown = 0;
+            const int homingDelay = 30;
+            const float desiredFlySpeedInPixelsPerFrame = 10;
+            const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
+
+            projectile.ai[aislotHomingCooldown]++;
+            if (projectile.ai[aislotHomingCooldown] > homingDelay)
+            {
+                projectile.ai[aislotHomingCooldown] = homingDelay;
+
+                int foundTarget = HomeOnTarget();
+                if (foundTarget != -1)
+                {
+                    Player n = Main.player[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
+                }
+            }
         }
 
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        private int HomeOnTarget()
         {
-            projectile.penetrate--;
-            if (projectile.penetrate <= 0)
+            const float homingMaximumRangeInPixels = 400;
+
+            int selectedTarget = -1;
+            for (int i = 0; i < Main.maxPlayers; i++)
             {
-                projectile.Kill();
+                Player n = Main.player[i];
+                float distance = projectile.Distance(n.Center);
+                if (distance <= homingMaximumRangeInPixels &&
+                (
+                    selectedTarget == -1 || projectile.Distance(Main.player[selectedTarget].Center) > distance)
+                )
+                    selectedTarget = i;
             }
+
+            return selectedTarget;
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, mod.ProjectileType<Cyclone>(), projectile.damage / 4, 0, Main.myPlayer);
         }
     }
 }
