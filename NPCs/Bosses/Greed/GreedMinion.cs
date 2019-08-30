@@ -64,6 +64,12 @@ namespace AAMod.NPCs.Bosses.Greed
 
             MinionType = (int)npc.ai[0];
 
+            if (MinionType == 20 && npc.ai[3] == 0)
+            {
+                npc.ai[3] = 1;
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, mod.ProjectileType<UraniumShield>(), npc.damage, 0, Main.myPlayer, npc.whoAmI);
+            }
+
             if (npc.ai[2] == 0)
             {
                 if (Main.netMode != 1)
@@ -302,11 +308,6 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             SetColor();
             Texture2D glowTex = mod.GetTexture("Glowmasks/GreedMinion_Glow");
-            if (MinionType == 20)
-            {
-                Texture2D shield = mod.GetTexture("NPCs/Bosses/Greed/UraniumShield");
-                BaseDrawing.DrawTexture(spriteBatch, shield, 0, npc.Center, shield.Width, shield.Height, npc.scale, npc.rotation, npc.direction, 1, new Rectangle(0, 0, shield.Width, shield.Height), AAColor.Uranium, true);
-            }
 
             if (shadowDodgeCount > 0f && MinionType == 19)
             {
