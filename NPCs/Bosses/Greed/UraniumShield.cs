@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             NPC Body = Main.npc[(int)projectile.ai[0]];
             projectile.Center = Body.Center;
-            if (Body == null || Body.life <= 0)
+            if (Body == null || Body.life <= 0 || (Body.ai[0] != 20 && Body.type != mod.NPCType<GreedMinion>()))
             {
                 projectile.active = false;
             }
