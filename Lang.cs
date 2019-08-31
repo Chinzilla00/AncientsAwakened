@@ -1208,6 +1208,12 @@ namespace AAMod
                         return "不跟你闹着玩了, 我所呼唤的风暴即将冲你而来!";
                         case "Athena11":
                         return "哦! 好, 好..! 我不打扰你了! 看在上帝的份上, 你给我小心着点, 懂吗?";
+                        case "Athena12":
+                        return "...那么. 你来啦.";
+                        case "Athena13":
+                        return "是时候夺回我的荣耀了..!";
+                        case "Athena14":
+                        return "准备开战!";
 
                         case "AthenaA1":
                         return "那就滚远点...白痴.";
@@ -1264,6 +1270,35 @@ namespace AAMod
                         return "不见不散你个傻X!";
                         case "SeraphHerald6":
                         return "啊对了, 呃, 那个喜欢偷别人东西的恶心虫子也想跟你再打一架.";
+
+                        case "GreedFalse1":
+                        return "呃呃呃呃呃呃 这 是 地 表 的 光! 太 亮 了! 太 刺 眼 了!";
+                        case "GreedFalse2":
+                        return "离 我 琳 琅 满 目 的 财 宝 远 点 你 这 个 臭 小 偷!";
+
+                        case "Greed1":
+                        return "谁在打扰我数钱?! 我忙的要死--";
+                        case "Greed2":
+                        return "...哦哦哦哦哦哦...那是...?";
+                        case "Greed3":
+                        return "你把我最喜欢吃的带来了..!";
+                        case "Greed4":
+                        return "金色大餐...";
+                        case "Greed5":
+                        return "以 及 一 个 泰 拉 人!!!";
+                        case "GreedName":
+                        return "金食饕餮";
+
+                        case "GreedTransition1":
+                        return "你..! 你 这 个 小--";
+                        case "GreedTransition2":
+                        return "好 了, 我 受 够 了!";
+                        case "GreedTransition3":
+                        return "你 想 偷 我 的 财 宝, 那 现 在...!";
+                        case "GreedTransition4":
+                        return "我 要 你 的 命! 呵 呵 呵 呵 呵!!!";
+                        case "GreedAName":
+                        return "觉醒金食饕餮";
 
                         case "Rajah1":
                         return "正 义 不 会 被 欺 骗";
@@ -1799,6 +1834,12 @@ namespace AAMod
                         return "No more kidding around, the storms are calling, and they're coming for you!";
                         case "Athena11":
                         return "OW! Fine, fine..! I'll leave you alone! Geez, you don't let up, do you.";
+                        case "Athena12":
+                        return "...So. You came.";
+                        case "Athena13":
+                        return "It's high time I won my honor back..!";
+                        case "Athena14":
+                        return "En Garde!";
 
                         case "AthenaA1":
                         return "And stay away...idiot.";
@@ -1857,6 +1898,35 @@ namespace AAMod
                         return "See ya twerp!";
                         case "SeraphHerald6":
                         return "Oh yeah, and uh, that obnoxious kleptomaniac worm wants to fight you again too or something.";
+
+                        case "GreedFalse1":
+                        return "EEEEEEEEEEEEEEEGH THE LIGHT OF THE SURFACE! TOO BRIGHT! TOO BRIGHT!";
+                        case "GreedFalse2":
+                        return "AND STAY AWAY FROM MY GLORIOUS RICHES YOU LITTLE THIEF!";
+
+                        case "Greed1":
+                        return "Who disturbs me from my coin-counting?! I'm busy--";
+                        case "Greed2":
+                        return "...Oooooh...is that...?";
+                        case "Greed3":
+                        return "You brought me my favorite dish..!";
+                        case "Greed4":
+                        return "Golden Grub...";
+                        case "Greed5":
+                        return "WITH A SIDE OF TERRARIAN!!!";
+                        case "GreedName":
+                        return "Greed";
+
+                        case "GreedTransition1":
+                        return "YOU..! YOU LITTLE--";
+                        case "GreedTransition2":
+                        return "THATS IT, I'VE HAD IT!";
+                        case "GreedTransition3":
+                        return "YOU TRY TO STEAL MY SHINIES, AND NOW...!";
+                        case "GreedTransition4":
+                        return "I WILL STEAL YOUR LIFE! HEEHEEHEEHEEHEEHEEHEEHEEHEEHEE!!!";
+                        case "GreedAName":
+                        return "Greed";
 
                         case "Rajah1":
                         return "JUSTICE CANNOT BE CHEATED";
@@ -3540,6 +3610,42 @@ The Fire spirit becomes more powerful the less mana you have";
                     }
                 }
             return "";
+        }
+        public static string WorldBuild(String Info)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+            {
+                switch(Info)
+                {
+                    case "Info1":
+                    return "安置混沌祭坛";
+                    case "Info2":
+                    return "混沌蔓延";
+                    case "Info3":
+                    return "把土壤焦化成燎狱";
+                    case "Info4":
+                    return "给潭渊蓄水";
+                    case "Info5":
+                    return "建筑泰拉心球";
+                }
+            }
+            else
+            {
+                switch(NPCsummon)
+                {
+                    case "Info1":
+                    return "Placing Chaos Altars";
+                    case "Info2":
+                    return "Spreading Chaos";
+                    case "Info3":
+                    return "Scorching the Inferno";
+                    case "Info4":
+                    return "Flooding the Mire";
+                    case "Info5":
+                    return "Constructing the Terrarium";
+                }
+            }
+            return"";
         }
     }
 }

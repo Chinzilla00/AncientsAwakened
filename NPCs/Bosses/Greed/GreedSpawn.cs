@@ -65,26 +65,26 @@ namespace AAMod.NPCs.Bosses.Greed
 
 				if (npc.ai[0] == 175)    
 				{
-					if (Main.netMode != 1) BaseUtility.Chat("Who disturbs me from my coin-counting?! I'm busy--", Color.Goldenrod);
+					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Greed1"), Color.Goldenrod);
 					npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 350)
 				{
-					if (Main.netMode != 1) BaseUtility.Chat("...Oooooh...is that...?", Color.Goldenrod);
+					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Greed2"), Color.Goldenrod);
 				}else
 				if (npc.ai[0] == 500)
 				{
-					if (Main.netMode != 1) BaseUtility.Chat("You brought me my favorite dish..!", Color.Goldenrod);
+					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Greed3"), Color.Goldenrod);
                     npc.netUpdate = true;
 				}else
 				if (npc.ai[0] == 610)
 				{
-					if (Main.netMode != 1) BaseUtility.Chat("Golden Grub...", Color.Goldenrod);
+					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Greed4"), Color.Goldenrod);
 				}else
 				if (npc.ai[0] >= 755 && !NPC.AnyNPCs(mod.NPCType("Greed")))
 				{
-					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Greed"), true, npc.Center, "Greed", false);
-					if (Main.netMode != 1) BaseUtility.Chat("WITH A SIDE OF TERRARIAN!!!", Color.Goldenrod);
+					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Greed"), true, npc.Center, Lang.BossChat("GreedName"), false);
+					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Greed5"), Color.Goldenrod);
 
                     npc.netUpdate = true;
 					npc.active = false;				

@@ -147,17 +147,17 @@ namespace AAMod.NPCs.Bosses.Athena
                             {
                                 if (internalAI[3] == 60)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat("...So. You came.", Color.CornflowerBlue);
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena12"), Color.CornflowerBlue);
                                 }
 
                                 if (internalAI[3] == 180)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat("It's high time I won my honor back..!", Color.CornflowerBlue);
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena13"), Color.CornflowerBlue);
                                 }
 
                                 if (internalAI[3] == 300)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat("En Garde!", Color.CornflowerBlue);
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena14"), Color.CornflowerBlue);
                                     internalAI[2] = 1;
                                     npc.netUpdate = true;
                                 }

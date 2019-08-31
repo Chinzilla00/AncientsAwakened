@@ -949,7 +949,7 @@ namespace AAMod
 
         private void Altars(GenerationProgress progress)
         {
-            progress.Message = "Placing Chaos Altars";
+            progress.Message = Lang.WorldBuild("Info1");
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
                 int xAxis = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
@@ -1421,9 +1421,9 @@ namespace AAMod
 
             MireCenter = mirePos;
 
-            progress.Message = "Spreading Chaos";
+            progress.Message = Lang.WorldBuild("Info2");
 
-            progress.Message = "Scorching the Inferno";
+            progress.Message = Lang.WorldBuild("Info3");
 
             {
                 Point origin = new Point((int)infernoPos.X, (int)infernoPos.Y);
@@ -1434,7 +1434,7 @@ namespace AAMod
                 biome.Place(origin, WorldGen.structures);
             }
 
-            progress.Message = "Flooding the Mire";
+            progress.Message = Lang.WorldBuild("Info4");
 
             {
                 Point origin = new Point((int)mirePos.X, (int)mirePos.Y);
@@ -1448,7 +1448,7 @@ namespace AAMod
 
         private void Terrarium(GenerationProgress progress)
         {
-            progress.Message = "Constructing the Terrarium";
+            progress.Message = Lang.WorldBuild("Info5");
             Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.4f));
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             TerrariumDelete delete = new TerrariumDelete();
