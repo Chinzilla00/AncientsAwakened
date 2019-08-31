@@ -15,7 +15,7 @@ namespace AAMod.Items.Ranged
 
         public override void SetDefaults()
         {
-            item.damage = 45;
+            item.damage = 25;
             item.noMelee = true;
             item.ranged = true;
             item.width = 50;
@@ -44,7 +44,7 @@ namespace AAMod.Items.Ranged
 		    	offsetAngle = startAngle + (deltaAngle * i);
 		    	Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
             }
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType<Projectiles.Shadowshot>(), (int)(damage * 1.5f), knockBack, item.owner);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType<Projectiles.Shadowshot>(), (int)(damage * 1.0f), knockBack, item.owner);
             return false;
 		}
 

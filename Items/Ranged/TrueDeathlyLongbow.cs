@@ -60,7 +60,7 @@ Fires an explosive ghast skull every other shot");
 
             if (shoot >= 2)
             {
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("GhastSkull"), (int)(damage * 1.5), knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("GhastSkull"), (int)(damage * 1.0), knockBack, player.whoAmI);
                 shoot = 0;
             }
             shoot = 0;

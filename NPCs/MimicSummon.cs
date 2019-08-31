@@ -1,108 +1,16 @@
-﻿using Terraria.ID;
+﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria;
 
 namespace AAMod.NPCs
 {
-    public class InfernoChestSummon : ModPlayer
-	{
-		public int LastChest = 0;
-
-		public override void PreUpdateBuffs()
-		{
-			if (Main.netMode != 1)
-			{
-				if (player.chest == -1 && LastChest >= 0 && Main.chest[LastChest] != null)
-				{
-					int x2 = Main.chest[LastChest].x;
-					int y2 = Main.chest[LastChest].y;
-					ChestItemSummonCheck(x2, y2, mod);
-				}
-				LastChest = player.chest;
-			}
-		}
-
-		public static bool ChestItemSummonCheck(int x, int y, Mod mod)
-		{
-			if (Main.netMode == 1)
-			{
-				return false;
-			}
-			int num = Chest.FindChest(x, y);
-			if (num < 0)
-			{
-				return false;
-			}
-			int numberExampleBlocks = 0;
-			int numberOtherItems = 0;
-			ushort tileType = Main.tile[Main.chest[num].x, Main.chest[num].y].type;
-			int tileStyle = Main.tile[Main.chest[num].x, Main.chest[num].y].frameX / 36;
-			if (tileType == TileID.Containers && (tileStyle < 5 || tileStyle > 6))
-			{
-				for (int i = 0; i < 40; i++)
-				{
-					if (Main.chest[num].item[i] != null && Main.chest[num].item[i].type > 0)
-					{
-						if (Main.chest[num].item[i].type == mod.ItemType("KeyOfSmite"))
-						{
-							numberExampleBlocks += Main.chest[num].item[i].stack;
-						}
-						else
-						{
-							numberOtherItems++;
-						}
-					}
-				}
-			}
-			if (numberOtherItems == 0 && numberExampleBlocks == 1)
-			{
-				if (Main.tile[x, y].type == 21)
-				{
-					if (Main.tile[x, y].frameX % 36 != 0)
-					{
-						x--;
-					}
-					if (Main.tile[x, y].frameY % 36 != 0)
-					{
-						y--;
-					}
-					int number = Chest.FindChest(x, y);
-					for (int j = x; j <= x + 1; j++)
-					{
-						for (int k = y; k <= y + 1; k++)
-						{
-							if (Main.tile[j, k].type == 21)
-							{
-								Main.tile[j, k].active(false);
-							}
-						}
-					}
-					for (int l = 0; l < 40; l++)
-					{
-						Main.chest[num].item[l] = new Item();
-					}
-					Chest.DestroyChest(x, y);
-					NetMessage.SendData(34, -1, -1, null, 1, x, y, 0f, number, 0, 0);
-					NetMessage.SendTileSquare(-1, x, y, 3);
-				}
-				int npcToSpawn = mod.NPCType("InfernoMimic");
-				int npcIndex = NPC.NewNPC((x * 16) + 16, (y * 16) + 32, npcToSpawn, 0, 0f, 0f, 0f, 0f, 255);
-				Main.npc[npcIndex].whoAmI = npcIndex;
-				NetMessage.SendData(23, -1, -1, null, npcIndex, 0f, 0f, 0f, 0, 0, 0);
-				Main.npc[npcIndex].BigMimicSpawnSmoke();
-			}
-
-			return false;
-		}
-	}
-
-    public class MireChestSummon : ModPlayer
+    public class MimicSummon : ModPlayer
     {
-        public int LastChest = 0;
+        int LastChest = 0;
 
         public override void PreUpdateBuffs()
         {
-            if (Main.netMode != 1)
+            if (Main.netMode != NetmodeID.MultiplayerClient)
             {
                 if (player.chest == -1 && LastChest >= 0 && Main.chest[LastChest] != null)
                 {
@@ -114,77 +22,99 @@ namespace AAMod.NPCs
             }
         }
 
-        public static bool ChestItemSummonCheck(int x, int y, Mod mod)
+        public override void UpdateAutopause()
         {
-            if (Main.netMode == 1)
+            LastChest = player.chest;
+        }
+
+        public static void ChestItemSummonCheck(int x, int y, Mod mod)
+        {
+            if (!Main.hardMode || Main.netMode == NetmodeID.MultiplayerClient)
             {
-                return false;
-            }
-            int num = Chest.FindChest(x, y);
-            if (num < 0)
-            {
-                return false;
-            }
-            int numberExampleBlocks = 0;
-            int numberOtherItems = 0;
-            ushort tileType = Main.tile[Main.chest[num].x, Main.chest[num].y].type;
-            int tileStyle = Main.tile[Main.chest[num].x, Main.chest[num].y].frameX / 36;
-            if (tileType == TileID.Containers && (tileStyle < 5 || tileStyle > 6))
-            {
-                for (int i = 0; i < 40; i++)
-                {
-                    if (Main.chest[num].item[i] != null && Main.chest[num].item[i].type > 0)
-                    {
-                        if (Main.chest[num].item[i].type == mod.ItemType("KeyOfSpite"))
-                        {
-                            numberExampleBlocks += Main.chest[num].item[i].stack;
-                        }
-                        else
-                        {
-                            numberOtherItems++;
-                        }
-                    }
-                }
-            }
-            if (numberOtherItems == 0 && numberExampleBlocks == 1)
-            {
-                if (Main.tile[x, y].type == 21)
-                {
-                    if (Main.tile[x, y].frameX % 36 != 0)
-                    {
-                        x--;
-                    }
-                    if (Main.tile[x, y].frameY % 36 != 0)
-                    {
-                        y--;
-                    }
-                    int number = Chest.FindChest(x, y);
-                    for (int j = x; j <= x + 1; j++)
-                    {
-                        for (int k = y; k <= y + 1; k++)
-                        {
-                            if (Main.tile[j, k].type == 21)
-                            {
-                                Main.tile[j, k].active(false);
-                            }
-                        }
-                    }
-                    for (int l = 0; l < 40; l++)
-                    {
-                        Main.chest[num].item[l] = new Item();
-                    }
-                    Chest.DestroyChest(x, y);
-                    NetMessage.SendData(34, -1, -1, null, 1, x, y, 0f, number, 0, 0);
-                    NetMessage.SendTileSquare(-1, x, y, 3);
-                }
-                int npcToSpawn = mod.NPCType("MireMimic");
-                int npcIndex = NPC.NewNPC((x * 16) + 16, (y * 16) + 32, npcToSpawn, 0, 0f, 0f, 0f, 0f, 255);
-                Main.npc[npcIndex].whoAmI = npcIndex;
-                NetMessage.SendData(23, -1, -1, null, npcIndex, 0f, 0f, 0f, 0, 0, 0);
-                Main.npc[npcIndex].BigMimicSpawnSmoke();
+                return;
             }
 
-            return false;
+            int chestIndex = Chest.FindChest(x, y);
+            if (chestIndex < 0)
+            {
+                return;
+            }
+
+            ushort tileType = Main.tile[Main.chest[chestIndex].x, Main.chest[chestIndex].y].type;
+            int tileStyle = Main.tile[Main.chest[chestIndex].x, Main.chest[chestIndex].y].frameX / 36;
+
+            if (!TileID.Sets.BasicChest[tileType] || tileStyle == 5 || tileStyle == 6)
+            {
+                return;
+            }
+
+            bool hasInfernoKey = false;
+            bool hasMireKey = false;
+            bool hasItems = false;
+
+            for (int i = 0; i < 40; i++)
+            {
+                if (Main.chest[chestIndex].item[i] == null || Main.chest[chestIndex].item[i].type <= 0)
+                {
+                    continue;
+                }
+
+                if (hasItems || Main.chest[chestIndex].item[i].stack != 1)
+                {
+                    return;
+                }
+
+                hasItems = true;
+
+                if (Main.chest[chestIndex].item[i].type == mod.ItemType("KeyOfSmite"))
+                {
+                    hasInfernoKey = true;
+                }
+                else if (Main.chest[chestIndex].item[i].type == mod.ItemType("KeyOfSpite"))
+                {
+                    hasMireKey = true;
+                }
+            }
+
+            if (!hasItems)
+            {
+                return;
+            }
+
+            for (int j = x; j <= x + 1; j++)
+            {
+                for (int k = y; k <= y + 1; k++)
+                {
+                    if (TileID.Sets.BasicChest[Main.tile[j, k].type])
+                    {
+                        Main.tile[j, k].active(false);
+                    }
+                }
+            }
+
+            for (int l = 0; l < 40; l++)
+            {
+                Main.chest[chestIndex].item[l] = new Item();
+            }
+
+            Chest.DestroyChest(x, y);
+            NetMessage.SendData(MessageID.ChestUpdates, -1, -1, null, 1, x, y, 0f, chestIndex);
+            NetMessage.SendTileSquare(-1, x, y, 3);
+
+            int npcToSpawn = -1;
+            if (hasInfernoKey)
+            {
+                npcToSpawn = mod.NPCType("InfernoMimic");
+            }
+            else if (hasMireKey)
+            {
+                npcToSpawn = mod.NPCType("MireMimic");
+            }
+
+            int npcIndex = NPC.NewNPC(x * 16 + 16, y * 16 + 32, npcToSpawn);
+            Main.npc[npcIndex].whoAmI = npcIndex;
+            NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npcIndex);
+            Main.npc[npcIndex].BigMimicSpawnSmoke();
         }
     }
 }

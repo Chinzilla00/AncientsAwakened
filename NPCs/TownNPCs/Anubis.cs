@@ -376,8 +376,6 @@ namespace AAMod.NPCs.TownNPCs
             {
                 chat.Add(Lang.TownNPCAnubis("YamataGuideChat"));
             }
-            chat.Add(Lang.TownNPCAnubis("JungleGuideChat"));
-            
             if (Main.rand.Next(2) == 0)
             {
                 chat.Add(Lang.TownNPCAnubis("BroodMotherGuideChat"));

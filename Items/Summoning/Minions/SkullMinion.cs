@@ -44,6 +44,7 @@ namespace AAMod.Items.Summoning.Minions
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
             if (player.dead) modPlayer.SkullMinion = false;
             if (modPlayer.SkullMinion) projectile.timeLeft = 2;
+            player.AddBuff(mod.BuffType("SkullMinion"), 3600);
 
             dust--;
             if (dust >= 0)

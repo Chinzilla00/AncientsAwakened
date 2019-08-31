@@ -633,15 +633,6 @@ namespace AAMod
             }
         }
 
-        public void Anticheat(NPC npc, string Text, Color TextColor, ref double damage)
-        {
-            if (damage > npc.lifeMax / 8)
-            {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Text, TextColor);
-                damage = 0;
-            }
-        }
-
         public override void DrawEffects(NPC npc, ref Color drawColor)
         {
             Rectangle hitbox = npc.Hitbox;
@@ -1069,7 +1060,7 @@ namespace AAMod
                 }
             }
 
-            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneAcropolis)
+            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneHoard)
             {
                 ClearPoolWithExceptions(pool);
                 pool.Add(NPCID.GiantWormHead, .06f);
@@ -1175,18 +1166,18 @@ namespace AAMod
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)
                     {
-                        if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(npcName + Lang.GlobalNPCSInfo("NPCarrive"), 175, 75, 255, false); }
+                        if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(npcName + Lang.GlobalNPCSInfo("NPCarrive"), 175, 75, 255, false); }
                         else
-                        if (Main.netMode == 2)
+                        if (Main.netMode == NetmodeID.Server)
                         {
                             NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + Lang.GlobalNPCSInfo("NPCarrive")), new Color(175, 75, 255), -1);
                         }
                     }
                     else
                     {
-                        if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                        if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
                         else
-                        if (Main.netMode == 2)
+                        if (Main.netMode == NetmodeID.Server)
                         {
                             NetMessage.BroadcastChatMessage(NetworkText.FromKey("Announcement.HasAwoken", new object[]
                             {

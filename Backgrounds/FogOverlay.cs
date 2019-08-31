@@ -7,6 +7,7 @@ using Terraria.Graphics;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 using Terraria.ModLoader;
 using BaseMod;
+using Terraria.ID;
 
 namespace AAMod.Backgrounds
 {
@@ -66,7 +67,7 @@ namespace AAMod.Backgrounds
 
         public override void Update(GameTime gameTime)
         {
-            if (Main.netMode == 2 || Main.dedServ) return; //BEGONE SERVER HEATHENS! UPDATE ONLY CLIENTSIDE!
+            if (Main.netMode == NetmodeID.Server || Main.dedServ) return; //BEGONE SERVER HEATHENS! UPDATE ONLY CLIENTSIDE!
 
             Player player = Main.LocalPlayer;
 

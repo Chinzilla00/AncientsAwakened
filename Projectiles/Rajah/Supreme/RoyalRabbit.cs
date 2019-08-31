@@ -79,6 +79,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
             Vector2 vector = projectile.position;
             float num10 = 400f;
             bool flag = false;
+            int num11 = -1;
             projectile.tileCollide = false;
             NPC ownerMinionAttackTargetNPC2 = projectile.OwnerMinionAttackTargetNPC;
             if (ownerMinionAttackTargetNPC2 != null && ownerMinionAttackTargetNPC2.CanBeChasedBy(this, false))
@@ -89,6 +90,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
                     num10 = num14;
                     vector = ownerMinionAttackTargetNPC2.Center;
                     flag = true;
+                    num11 = ownerMinionAttackTargetNPC2.whoAmI;
                 }
             }
             if (!flag)
@@ -104,6 +106,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
                             num10 = num15;
                             vector = nPC2.Center;
                             flag = true;
+                            num11 = l;
                         }
                     }
                 }
@@ -190,7 +193,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
                         num22 /= 2f;
                     }
                     vector6 *= num22;
-                    projectile.velocity = (projectile.velocity * 22f + vector6) / 21f;
+                    projectile.velocity = (projectile.velocity * 20f + vector6) / 21f;
                 }
                 else
                 {
@@ -215,7 +218,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
                     projectile.ai[1] += 1f;
                 }
             }
-            if (projectile.ai[1] > Main.rand.Next(30, 60))
+            if (projectile.ai[1] > Main.rand.Next(180, 900))
             {
                 projectile.ai[1] = 0f;
                 projectile.netUpdate = true;

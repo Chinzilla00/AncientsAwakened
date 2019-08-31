@@ -62,8 +62,6 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void FindFrame(int frameHeight)
         {
-            if (npc.velocity.Y == 0.0)
-                npc.spriteDirection = npc.direction;
             ++npc.frameCounter;
             if (npc.frameCounter >= 8.0)
             {
@@ -111,14 +109,9 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             npc.oldPos[0] = npc.position;
 
-            if (((Zero)zero.modNPC).killArms && Main.netMode != 1)
-            {
-                npc.active = false;
-            }
-
             int probeNumber = ((Zero)zero.modNPC).WeaponCount;
             if (rotValue == -1f) rotValue = npc.ai[0] % probeNumber * ((float)Math.PI * 2f / probeNumber);
-            rotValue += 0f;
+            rotValue += Main.expertMode ? .05f : 0f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
             npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(((Zero)zero.modNPC).Distance, 0f), rotValue);
 
@@ -127,6 +120,12 @@ namespace AAMod.NPCs.Bosses.Zero
             Player player = Main.player[zero.target];
 
             int aiTimerFire = Main.expertMode ? 230 : 280;
+
+            Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+            float num1 = Main.player[npc.target].position.X + (player.width / 2) - vector2.X;
+            float num2 = Main.player[npc.target].position.Y + (player.height / 2) - vector2.Y;
+            float NewRotation = (float)Math.Atan2(num2, num1);
+            npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
 
             if (npc.ai[2] >= aiTimerFire)
             {
@@ -143,14 +142,8 @@ namespace AAMod.NPCs.Bosses.Zero
                     laser.velocity = BaseUtility.RotateVector(default, new Vector2(14f, 0f), laser.rotation);
                 }
             }
-            else
-            {
-                Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
-                float num1 = Main.player[npc.target].position.X + (player.width / 2) - vector2.X;
-                float num2 = Main.player[npc.target].position.Y + (player.height / 2) - vector2.Y;
-                float NewRotation = (float)Math.Atan2(num2, num1);
-                npc.rotation = MathHelper.Lerp(npc.rotation, NewRotation, 1f / 30f);
-            }
+            npc.direction = 1;
+            npc.spriteDirection = 1;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)

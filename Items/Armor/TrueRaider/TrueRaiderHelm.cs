@@ -10,6 +10,7 @@ namespace AAMod.Items.Armor.TrueRaider
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Asgardian Helmet");
+            Tooltip.SetDefault(@"15% increased melee damage and speed");
         }
 
 		public override void SetDefaults()
@@ -23,8 +24,9 @@ namespace AAMod.Items.Armor.TrueRaider
 		
 		public override void UpdateEquip(Player player)
 		{
-           player.meleeSpeed += 0.15f;
-		}
+           player.meleeSpeed = 0.15f;
+           player.meleeDamage *= 1.15f;
+        }
 		
 		public override void AddRecipes()
 		{

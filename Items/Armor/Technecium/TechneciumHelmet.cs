@@ -21,7 +21,7 @@ namespace AAMod.Items.Armor.Technecium
             item.height = 24;
             item.value = Item.sellPrice(0, 1, 80, 0);
             item.rare = 9;
-            item.defense = 10;
+            item.defense = 3;
         }
 
         public override void UpdateEquip(Player player)

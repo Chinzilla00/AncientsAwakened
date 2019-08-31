@@ -12,6 +12,7 @@ namespace AAMod.Items.Throwing
 			item.useTime = 25;
             item.CloneDefaults(ItemID.LightDisc);
             item.melee = true;
+            item.maxStack = 5;
             item.damage = 42;                            
             item.value = 6;
             item.rare = 5;
@@ -41,7 +42,7 @@ namespace AAMod.Items.Throwing
                     num++;
                 }
             }
-            if (num > 5)
+            if (num > item.stack)
             {
                 return false;
             }

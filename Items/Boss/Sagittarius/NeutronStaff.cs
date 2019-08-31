@@ -13,7 +13,7 @@ namespace AAMod.Items.Boss.Sagittarius
             item.height = 38;
             item.useTime = 25;
             item.useAnimation = 25;
-            item.useStyle = 1;
+            item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 2;
             item.value = 10000;

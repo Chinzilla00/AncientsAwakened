@@ -68,6 +68,20 @@ namespace AAMod.Items.Boss.AH
             return true;
         }
 
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
+        public override bool UseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                player.MinionNPCTargetAim();
+            }
+            return base.UseItem(player);
+        }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

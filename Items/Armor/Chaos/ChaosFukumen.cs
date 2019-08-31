@@ -33,10 +33,9 @@ namespace AAMod.Items.Armor.Chaos
             return body.type == mod.ItemType("ChaosDou") && legs.type == mod.ItemType("ChaosGreaves");
         }
 
-        public override void UpdateArmorSet(Player player)
-		{
+        public override void UpdateArmorSet(Player player){
             player.setBonus = Lang.ArmorBonus("ChaosFukumenBonus");
-            player.rangedDamage += .20f;
+            player.rangedDamage += .25f;
             player.aggro -= 7;
             player.GetModPlayer<AAPlayer>(mod).ChaosRa = true;
             player.ammoCost75 = true;

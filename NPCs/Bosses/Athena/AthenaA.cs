@@ -31,8 +31,8 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.value = BaseUtility.CalcValue(0, 10, 0, 0);
             npc.npcSlots = 1000;
             npc.aiStyle = -1;
-            npc.lifeMax = 70000;
-            npc.defense = 40;
+            npc.lifeMax = 110000;
+            npc.defense = 70;
             npc.damage = 110;
             npc.knockBackResist = 0f;
             npc.noGravity = true;
@@ -54,7 +54,7 @@ namespace AAMod.NPCs.Bosses.Athena
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -68,7 +68,7 @@ namespace AAMod.NPCs.Bosses.Athena
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat();
                 internalAI[1] = reader.ReadFloat();
@@ -92,7 +92,6 @@ namespace AAMod.NPCs.Bosses.Athena
                 npc.TargetClosest();
                 if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 5000 || !modPlayer.ZoneAcropolis)
                 {
-                    Main.NewText(Math.Abs(Vector2.Distance(npc.position, player.position)));
                     if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaA1"), Color.CornflowerBlue);
                     int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
                     Main.npc[p].Center = npc.Center;

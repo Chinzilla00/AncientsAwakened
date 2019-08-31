@@ -8,6 +8,7 @@ using Terraria.Utilities;
 using BaseMod;
 using AAMod.NPCs.Bosses.Athena;
 using Terraria.Graphics.Shaders;
+using Terraria.ID;
 
 namespace AAMod.Backgrounds
 {
@@ -213,7 +214,7 @@ namespace AAMod.Backgrounds
 
         public void Update(Texture2D texture)
         {
-            if (Main.netMode == 2 || Main.dedServ) return; //BEGONE SERVER HEATHENS! UPDATE ONLY CLIENTSIDE!
+            if (Main.netMode == NetmodeID.Server || Main.dedServ) return; //BEGONE SERVER HEATHENS! UPDATE ONLY CLIENTSIDE!
 
             bool athena = NPC.AnyNPCs(AAMod.instance.NPCType<Athena>());
             if (!backgroundClouds) athena = false;

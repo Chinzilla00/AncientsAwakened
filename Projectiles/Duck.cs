@@ -54,8 +54,6 @@ namespace AAMod.Projectiles
         {
             int num309 = Dust.NewDust(new Vector2(projectile.position.X - projectile.velocity.X * 4f + 2f, projectile.position.Y + 2f - projectile.velocity.Y * 4f), 8, 8, mod.DustType<Dusts.InfinityOverloadG>(), projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default, 1.25f);
             Main.dust[num309].velocity *= -0.25f;
-            num309 = Dust.NewDust(new Vector2(projectile.position.X - projectile.velocity.X * 4f + 2f, projectile.position.Y + 2f - projectile.velocity.Y * 4f), 8, 8, mod.DustType<Dusts.InfinityOverloadG>(), projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default, 1.25f);
-            Main.dust[num309].velocity *= -0.25f;
             Main.dust[num309].position -= projectile.velocity * 0.5f;
 
             const int aislotHomingCooldown = 0;
@@ -79,12 +77,12 @@ namespace AAMod.Projectiles
 
             if (projectile.velocity.X < 0f)
             {
-                projectile.spriteDirection = -1;
+                projectile.direction = -1;
                 projectile.rotation = (float)Math.Atan2(-projectile.velocity.Y, -projectile.velocity.X) - 1.57f;
             }
             else
             {
-                projectile.spriteDirection = 1;
+                projectile.direction = 1;
                 projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             }
         }

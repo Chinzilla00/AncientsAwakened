@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueNights
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("True Night's Helm");
-			Tooltip.SetDefault("14% increased melee speed");
+			Tooltip.SetDefault("14% increased melee damage and speed");
 
 		}
 
@@ -26,7 +26,8 @@ namespace AAMod.Items.Armor.TrueNights
 		public override void UpdateEquip(Player player)
 		{
 			player.meleeSpeed += 0.14f;
-		}
+            player.meleeDamage *= 1.14f;
+        }
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{

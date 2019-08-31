@@ -91,6 +91,7 @@ namespace AAMod.Projectiles.Akuma
                 Main.npc[(int)projectile.ai[1]].AddBuff(mod.BuffType<Buffs.SpearStuck>(), 100000);
                 if (flag3 && !StuckInEnemy)
                 {
+                    Main.PlaySound(SoundID.Item14, projectile.position);
                     int proj = Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
                     Main.projectile[proj].melee = false;
                     Main.projectile[proj].ranged = true;
@@ -103,6 +104,7 @@ namespace AAMod.Projectiles.Akuma
             }
             else
             {
+                Main.PlaySound(SoundID.Item14, projectile.position);
                 int p = Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
                 Main.projectile[p].melee = false;
                 Main.projectile[p].ranged = true;

@@ -523,7 +523,7 @@ namespace AAMod
             ZoneInferno = AAWorld.infernoTiles > 100 || BaseAI.GetNPC(player.Center, mod.NPCType<Akuma>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<AkumaA>(), 5000) != -1;
             ZoneMush = AAWorld.mushTiles > 100;
             Terrarium = AAWorld.terraTiles >= 1;
-            ZoneVoid = (AAWorld.voidTiles > 20 && player.ZoneSkyHeight) || (AAWorld.voidTiles > 100 && !player.ZoneSkyHeight) || BaseAI.GetNPC(player.Center, mod.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<ZeroAwakened>(), 5000) != -1;
+            ZoneVoid = (AAWorld.voidTiles > 20 && player.ZoneSkyHeight) || (AAWorld.voidTiles > 100 && !player.ZoneSkyHeight) || BaseAI.GetNPC(player.Center, mod.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<ZeroProtocol>(), 5000) != -1;
             ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
             ZoneRisingSunPagoda = AAWorld.pagodaTiles >= 1;
             ZoneStars = AAWorld.Radium >= 20;
@@ -1149,7 +1149,7 @@ namespace AAMod
                 VoidGrav = Main.rand.Next(0, 5) + 1;
             }
 
-            if (NPC.AnyNPCs(mod.NPCType<ZeroAwakened>()))
+            if (NPC.AnyNPCs(mod.NPCType<ZeroProtocol>()))
             {
                 if (!Filters.Scene["MoonLordShake"].IsActive())
                 {
@@ -1231,7 +1231,7 @@ namespace AAMod
                         flag14 = true;
                     }
 
-                    if (player.stealth == 0f && num29 != player.stealth && Main.netMode == 1)
+                    if (player.stealth == 0f && num29 != player.stealth && Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                     }
@@ -1261,7 +1261,7 @@ namespace AAMod
                         flag14 = true;
                     }
 
-                    if (player.stealth == 1f && num30 != player.stealth && Main.netMode == 1)
+                    if (player.stealth == 1f && num30 != player.stealth && Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                     }
@@ -1308,7 +1308,7 @@ namespace AAMod
                         player.stealth = 0f;
                     }
 
-                    if (player.stealth == 0f && num29 != player.stealth && Main.netMode == 1)
+                    if (player.stealth == 0f && num29 != player.stealth && Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                     }
@@ -1332,7 +1332,7 @@ namespace AAMod
                         player.stealth = 1f;
                     }
 
-                    if (player.stealth == 1f && num30 != player.stealth && Main.netMode == 1)
+                    if (player.stealth == 1f && num30 != player.stealth && Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
                     }

@@ -27,7 +27,7 @@ namespace AAMod.Items.Armor.Uranium
         public override void UpdateEquip(Player player)
         {
             player.meleeCrit += 7;
-            player.meleeDamage *= 1.17f;
+            player.meleeDamage *= 1.08f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

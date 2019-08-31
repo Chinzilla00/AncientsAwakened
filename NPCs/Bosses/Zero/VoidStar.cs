@@ -105,19 +105,14 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             npc.oldPos[0] = npc.position;
 
-            if (((Zero)zero.modNPC).killArms && Main.netMode != 1)
-            {
-                npc.active = false;
-            }
-
             int probeNumber = ((Zero)zero.modNPC).WeaponCount;
 
             if (rotValue == -1f) rotValue = npc.ai[0] % probeNumber * ((float)Math.PI * 2f / probeNumber);
-            rotValue += 0f;
+            rotValue += Main.expertMode ? .05f : 0f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
             npc.Center = BaseUtility.RotateVector(zero.Center, zero.Center + new Vector2(((Zero)zero.modNPC).Distance, 0f), rotValue);
 
-            int aiTimerFire = Main.expertMode ? 210 : 250;
+            int aiTimerFire = 600;
 
             if (Main.netMode != 1) { npc.ai[2]++; }
 
@@ -131,7 +126,7 @@ namespace AAMod.NPCs.Bosses.Zero
                     Vector2 fireTarget = npc.Center;
                     float rot = BaseUtility.RotationTo(npc.Center, player.Center);
                     fireTarget = BaseUtility.RotateVector(npc.Center, fireTarget, rot);
-                    BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("VoidStar"), npc.damage / 2, 0f, 4f);
+                    BaseAI.FireProjectile(player.Center, fireTarget, mod.ProjType("VoidStarP"), npc.damage / 2, 0f, 4f);
                 }
             }
 

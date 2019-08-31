@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Athena
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -70,7 +70,7 @@ namespace AAMod.NPCs.Bosses.Athena
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat();
                 internalAI[1] = reader.ReadFloat();
@@ -192,7 +192,6 @@ namespace AAMod.NPCs.Bosses.Athena
                     npc.TargetClosest();
                     if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 5000 || !modPlayer.ZoneAcropolis)
                     {
-                        Main.NewText(Math.Abs(Vector2.Distance(npc.position, player.position)));
                         if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena9"), Color.CornflowerBlue);
                         int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
                         Main.npc[p].Center = npc.Center;
@@ -548,19 +547,19 @@ namespace AAMod.NPCs.Bosses.Athena
         {
             if (Main.netMode != 1 && npc.ai[0]++ >= 120)
             {
-                if (npc.ai[0] == 120)
+                if (npc.ai[0] >= 120 && npc.ai[0] < 130)
                 {
-                    npc.velocity.Y = .4f;
+                    npc.velocity.Y += 1f;
                     npc.netUpdate = true;
                 }
                 else if (npc.ai[0] == 130)
                 {
-                    npc.velocity.Y = -3f;
+                    npc.velocity.Y = -6f;
                     npc.netUpdate = true;
                 }
                 else if (npc.ai[0] > 130)
                 {
-                    npc.velocity.Y = -3f;
+                    npc.velocity.Y = -6f;
                 }
                 if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate = true; }
             }

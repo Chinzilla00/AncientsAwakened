@@ -21,13 +21,13 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override void SetDefaults()
         {
-            npc.width = 38;
-            npc.height = 38;
+            npc.width = 30;
+            npc.height = 30;
             npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
             npc.lifeMax = 300;
-            npc.defense = 15;
+            npc.defense = 0;
             npc.damage = 20;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCDeath14;
@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(InternalAI[0]);
                 writer.Write(InternalAI[1]);
@@ -60,7 +60,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 InternalAI[0] = reader.ReadFloat();
                 InternalAI[1] = reader.ReadFloat();
@@ -189,7 +189,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 npc.Center = BaseUtility.RotateVector(player.Center, player.Center + new Vector2(260, 0f), rotValue);
                 if (shootAI[0] == aiTimerFire)
                 {
-                    if (Collision.CanHit(npc.position, npc.width, npc.height, player.Center, player.width, player.height))
+                    if (Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
                     {
                         Vector2 fireTarget = npc.Center;
                         float rot = BaseUtility.RotationTo(npc.Center, player.Center);

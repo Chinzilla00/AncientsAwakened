@@ -56,7 +56,7 @@ namespace AAMod.Items.Usable
                     Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, ItemID.PharaohsRobe, 1, false, -1, false, false);
                 }
 
-                if (Main.netMode == 1)
+                if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
                     NetMessage.SendData(21, -1, -1, null, index, 1f, 0f, 0f, 0, 0, 0);
                 }

@@ -103,8 +103,6 @@ namespace AAMod
         //Points
         public static Point WHERESDAVOIDAT;
 
-        public static bool Anticheat = true;
-
         //Squid Lady
         public static int squid1 = 0;
         public static int squid2 = 0;
@@ -176,7 +174,6 @@ namespace AAMod
             DiscordOres = downedSisters;
             InfernoStripe = Main.hardMode;
             MireStripe = Main.hardMode;
-            Anticheat = true;
             ModContentGenerated = false;
             Empowered = downedShen;
             mirePos = new Vector2(0, 0);
@@ -1319,7 +1316,7 @@ namespace AAMod
         }
         public static void GenYttrium()
         {
-            if (Main.netMode == 1) { AANet.SendNetMessage(AANet.GenOre, (byte)0); }
+            if (Main.netMode == NetmodeID.MultiplayerClient) { AANet.SendNetMessage(AANet.GenOre, (byte)0); }
             else
             {
                 Yttrium = true;
@@ -1331,7 +1328,7 @@ namespace AAMod
 
         public static void GenUranium()
         {
-            if (Main.netMode == 1) { AANet.SendNetMessage(AANet.GenOre, (byte)1); }
+            if (Main.netMode == NetmodeID.MultiplayerClient) { AANet.SendNetMessage(AANet.GenOre, (byte)1); }
             else
             {
                 Uranium = true;
@@ -1343,7 +1340,7 @@ namespace AAMod
 
         public static void GenTechnecium()
         {
-            if (Main.netMode == 1) { AANet.SendNetMessage(AANet.GenOre, (byte)2); }
+            if (Main.netMode == NetmodeID.MultiplayerClient) { AANet.SendNetMessage(AANet.GenOre, (byte)2); }
             else
             {
                 Technecium = true;
@@ -1425,38 +1422,52 @@ namespace AAMod
             MireCenter = mirePos;
 
             progress.Message = "Spreading Chaos";
+
             progress.Message = "Scorching the Inferno";
-            InfernoVolcano();
+
+            {
+                Point origin = new Point((int)infernoPos.X, (int)infernoPos.Y);
+                origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
+                InfernoBiome biome = new InfernoBiome();
+                InfernoDelete delete = new InfernoDelete();
+                delete.Place(origin, WorldGen.structures);
+                biome.Place(origin, WorldGen.structures);
+            }
+
             progress.Message = "Flooding the Mire";
-            MireAbyss();
+
+            {
+                Point origin = new Point((int)mirePos.X, (int)mirePos.Y);
+                origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
+                MireDelete delete = new MireDelete();
+                MireBiome biome = new MireBiome();
+                delete.Place(origin, WorldGen.structures);
+                biome.Place(origin, WorldGen.structures);
+            }
         }
 
         private void Terrarium(GenerationProgress progress)
         {
             progress.Message = "Constructing the Terrarium";
-            TerraSphere();
+            Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.4f));
+            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
+            TerrariumDelete delete = new TerrariumDelete();
+            TerrariumSphere biome = new TerrariumSphere();
+            delete.Place(origin, WorldGen.structures);
+            biome.Place(origin, WorldGen.structures);
         }
 
         private void Acropolis(GenerationProgress progress)
         {
             progress.Message = "Amassing Treasure";
-            SkyAcropolis();
-        }
-
-        public void SkyAcropolis()
-        {
             Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
             Acropolis biome = new Acropolis();
             biome.Place(origin, WorldGen.structures);
         }
+
         private void Hoard(GenerationProgress progress)
         {
             progress.Message = "Amassing Treasure";
-            HoardCave();
-        }
-
-        public void HoardCave()
-        {
             Point origin = new Point((int)(Main.maxTilesX * 0.3f), (int)(Main.maxTilesY * 0.65f));
             Hoard biome = new Hoard();
             HoardClear delete = new HoardClear();
@@ -1472,44 +1483,6 @@ namespace AAMod
             return 1;
         }
 
-        public void InfernoVolcano()
-        {
-            Point origin = new Point((int)infernoPos.X, (int)infernoPos.Y);
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
-            InfernoBiome biome = new InfernoBiome();
-            InfernoDelete delete = new InfernoDelete();
-            delete.Place(origin, WorldGen.structures);
-            biome.Place(origin, WorldGen.structures);
-        }
-
-        public void MireAbyss()
-        {
-            Point origin = new Point ((int)mirePos.X, (int)mirePos.Y);
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
-            MireDelete delete = new MireDelete();
-            MireBiome biome = new MireBiome();
-            delete.Place(origin, WorldGen.structures);
-            biome.Place(origin, WorldGen.structures);
-        }
-
-        public void SunkenShip()
-        {
-            Point origin = new Point((int)shipPos.X, (int)shipPos.Y);
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
-            BOTE biome = new BOTE();
-            biome.Place(origin, WorldGen.structures);
-        }
-
-        public void TerraSphere()
-        {
-            Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.4f));
-            origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
-            TerrariumDelete delete = new TerrariumDelete();
-            TerrariumSphere biome = new TerrariumSphere();
-            delete.Place(origin, WorldGen.structures);
-            biome.Place(origin, WorldGen.structures);
-        }
-        
         public override void ResetNearbyTileEffects()
         {
             AAPlayer modPlayer = Main.LocalPlayer.GetModPlayer<AAPlayer>(mod);

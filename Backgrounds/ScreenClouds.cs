@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using BaseMod;
+using Terraria.ID;
 
 namespace AAMod.Backgrounds
 {
@@ -20,7 +21,7 @@ namespace AAMod.Backgrounds
 
         public void Update(Texture2D texture)
         {
-			if(Main.netMode == 2 || Main.dedServ) return; //BEGONE SERVER HEATHENS! UPDATE ONLY CLIENTSIDE!
+			if(Main.netMode == NetmodeID.Server || Main.dedServ) return; //BEGONE SERVER HEATHENS! UPDATE ONLY CLIENTSIDE!
 
 			Player player = Main.LocalPlayer;
 			bool inStorm = Main.LocalPlayer.GetModPlayer<AAPlayer>(AAMod.instance).ZoneStorm;

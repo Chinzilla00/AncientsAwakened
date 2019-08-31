@@ -16,13 +16,13 @@ namespace AAMod.Items.Boss.Serpent
         public override void SetDefaults()
         {
 
-            item.damage = 25;
+            item.damage = 15;
             item.noMelee = true;
             item.ranged = true;
             item.width = 40;
             item.height = 62;
-            item.useTime = 25;
-            item.useAnimation = 28;
+            item.useTime = 30;
+            item.useAnimation = 30;
             item.useStyle = 5;
             item.shoot = mod.ProjectileType<Projectiles.Serpent.IceArrow>();
             item.useAmmo = AmmoID.Arrow;

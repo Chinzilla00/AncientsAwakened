@@ -1,10 +1,9 @@
+using BaseMod;
+using Microsoft.Xna.Framework;
 using System;
 using System.IO;
-using Microsoft.Xna.Framework;
-
 using Terraria;
-using Terraria.ModLoader;
-using BaseMod;
+using Terraria.ID;
 
 namespace AAMod
 {
@@ -14,15 +13,23 @@ namespace AAMod
 	    public const byte UpdateLovecraftianCount = 1;
         public const byte GenOre = 2;
 
+        public static bool DEBUG = true;
+
         public static void HandlePacket(BinaryReader bb, int whoAmI)
         {
-			byte msg = bb.ReadByte();		
-			if(DEBUG) AAMod.instance.Logger.Info((Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- " ) + "HANDING MESSAGE: " + msg);				
-			try
+            byte msg = bb.ReadByte();
+            
+			if (DEBUG)
+            {
+                string mode = Main.netMode == NetmodeID.Server ? "--SERVER-- " : "--CLIENT-- ";
+                AAMod.instance.Logger.Info($"{mode} HANDLING MESSAGE: {msg}");
+            }
+
+            try
 			{
-				if(msg == SummonNPCFromClient)
+				if (msg == SummonNPCFromClient)
 				{
-					if(Main.netMode == 2)
+					if (Main.netMode == NetmodeID.Server)
 					{
 						int playerID = bb.ReadByte();
 						int bossType = bb.ReadShort();
@@ -34,30 +41,39 @@ namespace AAMod
 
 						AAModGlobalNPC.SpawnBoss(Main.player[playerID], bossType, spawnMessage, new Vector2(npcCenterX, npcCenterY), overrideDisplayName, namePlural);
 					}
-				}else
-				if(msg == UpdateLovecraftianCount)
+				}
+                else if (msg == UpdateLovecraftianCount)
 				{
 					LovecraftianCount(bb, whoAmI);
 				}
-                else
-                if (msg == GenOre) //generate ore (client-to-server)
+                else if (msg == GenOre) //generate ore (client-to-server)
                 {
-                    if (Main.netMode == 2)
+                    if (Main.netMode == NetmodeID.Server)
                     {
                         int oreType = bb.ReadByte();
                         switch (oreType)
-                        {
-                            default: break;
-                            case 0: AAWorld.GenYttrium(); break;
-                            case 1: AAWorld.GenUranium(); break;
-                            case 2: AAWorld.GenTechnecium(); break;
+                        {                           
+                            case 0:
+                                AAWorld.GenYttrium();
+                                break;
+
+                            case 1:
+                                AAWorld.GenUranium();
+                                break;
+
+                            case 2:
+                                AAWorld.GenTechnecium();
+                                break;
+
+                            default:
+                                break;
                         }
                     }
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                string mode = Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ";
+                string mode = Main.netMode == NetmodeID.Server ? "--SERVER-- " : "--CLIENT-- ";
 
                 AAMod.instance.Logger.Error($"{mode} ERROR HANDLING MSG: {msg}: {e}");
                 AAMod.instance.Logger.Info(e.StackTrace);
@@ -68,72 +84,73 @@ namespace AAMod
         private static void LovecraftianCount(BinaryReader reader, int fromWho)
         {
             int whichSquidX = reader.ReadByte();
-            if (whichSquidX == 1)
+            switch (whichSquidX)
             {
-                AAWorld.squid1 += 1;
-            }
-            else if (whichSquidX == 2)
-            {
-                AAWorld.squid2 += 1;
-            }
-            else if (whichSquidX == 3)
-            {
-                AAWorld.squid3 += 1;
-            }
-            else if (whichSquidX == 4)
-            {
-                AAWorld.squid4 += 1;
-            }
-            else if (whichSquidX == 5)
-            {
-                AAWorld.squid5 += 1;
-            }
-            else if (whichSquidX == 6)
-            {
-                AAWorld.squid6 += 1;
-            }
-            else if (whichSquidX == 7)
-            {
-                AAWorld.squid7 += 1;
-            }
-            else if (whichSquidX == 8)
-            {
-                AAWorld.squid8 += 1;
-            }
-            else if (whichSquidX == 9)
-            {
-                AAWorld.squid9 += 1;
-            }
-            else if (whichSquidX == 10)
-            {
-                AAWorld.squid10 += 1;
-            }
-            else if (whichSquidX == 11)
-            {
-                AAWorld.squid11 += 1;
-            }
-            else if (whichSquidX == 12)
-            {
-                AAWorld.squid12 += 1;
-            }
-            else if (whichSquidX == 13)
-            {
-                AAWorld.squid13 += 1;
-            }
-            else if (whichSquidX == 14)
-            {
-                AAWorld.squid14 += 1;
-            }
-            else if (whichSquidX == 16)
-            {
-                AAWorld.squid15 += 1;
-            }
-            else if (whichSquidX == 17)
-            {
-                AAWorld.squid16 += 1;
+                case 1:
+                    AAWorld.squid1 += 1;
+                    break;
+
+                case 2:
+                    AAWorld.squid2 += 1;
+                    break;
+
+                case 3:
+                    AAWorld.squid3 += 1;
+                    break;
+
+                case 4:
+                    AAWorld.squid4 += 1;
+                    break;
+
+                case 5:
+                    AAWorld.squid5 += 1;
+                    break;
+
+                case 6:
+                    AAWorld.squid6 += 1;
+                    break;
+
+                case 7:
+                    AAWorld.squid7 += 1;
+                    break;
+
+                case 8:
+                    AAWorld.squid8 += 1;
+                    break;
+
+                case 9:
+                    AAWorld.squid9 += 1;
+                    break;
+
+                case 10:
+                    AAWorld.squid10 += 1;
+                    break;
+
+                case 11:
+                    AAWorld.squid11 += 1;
+                    break;
+
+                case 12:
+                    AAWorld.squid12 += 1;
+                    break;
+
+                case 13:
+                    AAWorld.squid13 += 1;
+                    break;
+
+                case 14:
+                    AAWorld.squid14 += 1;
+                    break;
+
+                case 16:
+                    AAWorld.squid15 += 1;
+                    break;
+
+                case 17:
+                    AAWorld.squid16 += 1;
+                    break;
             }
         }
-
 
         private static void RabbitCount(BinaryReader reader, int fromWho)
         {
@@ -148,16 +165,15 @@ namespace AAMod
             }
         }
 
-        public static bool DEBUG = true;
-
         public static void SyncPlayer(int toWho, int fromWho, bool newPlayer)
         {
             if (DEBUG)
             {
-                string mode = Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ";
+                string mode = Main.netMode == NetmodeID.Server ? "--SERVER-- " : "--CLIENT-- ";
                 AAMod.instance.Logger.Info($"{mode} SYNC PLAYER CALLED! NEWPLAYER: {newPlayer}. TOWHO:{toWho}. FROMWHO:{fromWho}");
             }
-            if (Main.netMode == 2 && (toWho > -1 || fromWho > -1))
+
+            if (Main.netMode == NetmodeID.Server && (toWho > -1 || fromWho > -1))
             {
                 PlayerConnected(toWho == -1 ? fromWho : toWho);
             }
@@ -180,13 +196,16 @@ namespace AAMod
         {
             try
             {
-                if (Main.netMode == 0) { return; }
+                if (Main.netMode == NetmodeID.SinglePlayer)
+                {
+                    return;
+                }
 
                 BaseNet.WriteToPacket(AAMod.instance.GetPacket(), (byte)msg, param).Send(client);
             }
             catch (Exception e)
             {
-                string mode = Main.netMode == 2 ? "--SERVER-- " : "--CLIENT-- ";
+                string mode = Main.netMode == NetmodeID.Server ? "--SERVER-- " : "--CLIENT-- ";
                 AAMod.instance.Logger.Error($"{mode} ERROR SENDING MSG: {msg}: {e.Message}");
                 AAMod.instance.Logger.Info(e.StackTrace);
                 AAMod.instance.Logger.Info("-------");
@@ -196,6 +215,7 @@ namespace AAMod
                 {
                     param2 += param[m];
                 }
+
                 AAMod.instance.Logger.Info("PARAMS: " + param2);
                 AAMod.instance.Logger.Info("-------");
             }

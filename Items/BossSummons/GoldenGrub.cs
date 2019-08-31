@@ -29,7 +29,7 @@ Can only be used in Greed's Hoard at the Altar of Desire
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "CovetiteCrystal", 15);
             recipe.AddIngredient(ItemID.Topaz, 2);
-            recipe.AddIngredient(ItemID.WormFood, 1);
+            recipe.AddIngredient(ItemID.MechanicalWorm, 1);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();

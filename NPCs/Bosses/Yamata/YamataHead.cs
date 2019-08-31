@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SetDefaults()
         {
 			npc.lifeMax = 550000;
-            npc.damage = 200;
+            npc.damage = 150;
             npc.defense = 100;
             npc.width = 78;
             npc.height = 60;
@@ -79,7 +79,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -92,7 +92,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat();
                 internalAI[1] = reader.ReadFloat();

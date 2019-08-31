@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Chaos
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chaos Kabuto");
-			Tooltip.SetDefault(@"10% increased melee damage");
+			Tooltip.SetDefault(@"25% increased melee damage");
         }
 
 		public override void SetDefaults()
@@ -25,7 +25,7 @@ namespace AAMod.Items.Armor.Chaos
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage += .1f;
+            player.meleeDamage *= 1.25f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

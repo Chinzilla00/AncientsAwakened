@@ -19,6 +19,7 @@ namespace AAMod
                     num++;
                 }
             }
+
             return num;
         }
 

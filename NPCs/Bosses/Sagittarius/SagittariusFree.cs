@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.lifeMax = 6000;
             npc.boss = true;
             npc.defense = 0;
-            npc.damage = 50;
+            npc.damage = 40;
             npc.width = 74;
             npc.height = 70;
             npc.aiStyle = -1;
@@ -42,7 +42,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat();
                 internalAI[1] = reader.ReadFloat();

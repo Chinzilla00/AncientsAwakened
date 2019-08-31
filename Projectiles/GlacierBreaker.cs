@@ -120,18 +120,17 @@ namespace AAMod.Projectiles
                 {
                     projectile.spriteDirection = -1;
                 }
-
             }
-        }
-		
-		public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
-        {
-            Vector2 vector54 = Main.player[projectile.owner].Center - projectile.Center;
-            Vector2 vector55 = vector54 * -1f;
-            vector55.Normalize();
-            vector55 *= Main.rand.Next(45, 65) * 0.1f;
-            vector55 = vector55.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866);
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X, vector55.Y, mod.ProjectileType<AsgardianIce>(), projectile.damage, projectile.knockBack, projectile.owner, -10f);
+            if ((int)projectile.ai[1] % 3 == 0 && projectile.owner == Main.myPlayer)
+            {
+                Vector2 vector54 = Main.player[projectile.owner].Center - projectile.Center;
+                Vector2 vector55 = vector54 * -1f;
+                vector55.Normalize();
+                vector55 *= Main.rand.Next(45, 65) * 0.1f;
+                vector55 = vector55.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866, default);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X, vector55.Y, 405, projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
+                return;
+            }
         }
 		
 		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)

@@ -40,8 +40,10 @@ namespace AAMod
 
         public override void Kill(int timeLeft)
         {
-            WorldGen.PlaceTile((int)(projectile.position.X / 16), (int)(projectile.position.Y / 16),
-                Tile);
+            if (Tile != -1)
+            {
+                WorldGen.PlaceTile((int)(projectile.position.X / 16), (int)(projectile.position.Y / 16), Tile);
+            }
         }
     }
 }

@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Serpent
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -68,7 +68,7 @@ namespace AAMod.NPCs.Bosses.Serpent
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat();
                 internalAI[1] = reader.ReadFloat();
@@ -269,7 +269,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                 }
                 Main.rainTime = (int)(Main.rainTime * num3);
                 Main.raining = true;
-                if (Main.netMode == 2)
+                if (Main.netMode == NetmodeID.Server)
                 {
                     NetMessage.SendData(7, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
                 }
@@ -282,7 +282,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             {
                 Main.rainTime = 0;
                 Main.raining = false;
-                if (Main.netMode == 2)
+                if (Main.netMode == NetmodeID.Server)
                 {
                     NetMessage.SendData(7, -1, -1, null, 0, 0f, 0f, 0f, 0, 0, 0);
                 }

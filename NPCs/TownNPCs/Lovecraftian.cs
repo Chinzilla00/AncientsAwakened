@@ -190,7 +190,7 @@ namespace AAMod.NPCs.TownNPCs
                         Main.npcChatCornerItem = mod.ItemType("PurityFlask");
                     }
 
-                    if (Main.netMode == 1)
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)1);
                     }
@@ -212,7 +212,7 @@ namespace AAMod.NPCs.TownNPCs
                         Main.npcChatCornerItem = mod.ItemType("AshJar");
                     }
 
-                    if (Main.netMode == 1)
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)2);
                     }
@@ -234,7 +234,7 @@ namespace AAMod.NPCs.TownNPCs
                         Main.npcChatCornerItem = mod.ItemType("DarkwaterFlask");
                     }
 
-					if(Main.netMode == 1)
+					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)3);
 					}
@@ -256,7 +256,7 @@ namespace AAMod.NPCs.TownNPCs
                         Main.npcChatCornerItem = mod.ItemType("CorruptionFlask");
                     }
 
-					if(Main.netMode == 1)
+					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)4);
 					}
@@ -277,7 +277,7 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("CrimsonFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("CrimsonFlask");
                     }
-					if(Main.netMode == 1)
+					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)5);
 					}
@@ -298,7 +298,7 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("MeanGreenStew"), 5);
                         Main.npcChatCornerItem = mod.ItemType("MeanGreenStew");
                     }
-					if(Main.netMode == 1)
+					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)6);
 					}
@@ -319,7 +319,7 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("VoidFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("Z");
                     }
-					if(Main.netMode == 1)
+					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)7);
 					}
@@ -340,7 +340,7 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("Fungicide"), 5);
                         Main.npcChatCornerItem = mod.ItemType("Fungicide");
                     }
-					if(Main.netMode == 1)
+					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)8);
 					}
@@ -361,7 +361,7 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("SporeSac"), 5);
                         Main.npcChatCornerItem = mod.ItemType("SporeSac");
                     }
-					if(Main.netMode == 1)
+					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)9);
 					}
@@ -382,7 +382,7 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("GlowingSporeSac"), 5);
                         Main.npcChatCornerItem = mod.ItemType("GlowingSporeSac");
                     }
-					if(Main.netMode == 1)
+					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{
 						AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)10);
 					}
@@ -403,7 +403,7 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("JungleFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("JungleFlask");
                     }
-                    if (Main.netMode == 1)
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)11);
                     }
@@ -425,7 +425,7 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("IcemeltFlask"), 3);
                         Main.npcChatCornerItem = mod.ItemType("IceFlask");
                     }
-                    if (Main.netMode == 1)
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)12);
                     }
@@ -446,7 +446,7 @@ namespace AAMod.NPCs.TownNPCs
                         player.QuickSpawnItem(mod.ItemType("ForestFlask"), 5);
                         Main.npcChatCornerItem = mod.ItemType("ForestFlask");
                     }
-                    if (Main.netMode == 1)
+                    if (Main.netMode == NetmodeID.MultiplayerClient)
                     {
                         AANet.SendNetMessage(AANet.UpdateLovecraftianCount, (byte)13);
                     }
@@ -459,7 +459,7 @@ namespace AAMod.NPCs.TownNPCs
                     {
                         Main.npcChatText = Lang.TownNPCLovecraftian("SquidListChat");
                         int itemID = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("SquidList"), 1, false, 0, false, false);
-                        if (Main.netMode == 1)
+                        if (Main.netMode == NetmodeID.MultiplayerClient)
                         {
                             NetMessage.SendData(21, -1, -1, null, itemID, 1f, 0f, 0f, 0, 0, 0);
                         }

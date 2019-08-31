@@ -73,21 +73,23 @@ namespace AAMod.NPCs.Bosses.Zero
         }
 
         public override void HitEffect(int hitDirection, double damage)
-        {
-			                
+        {          
             if (npc.life <= (int)(npc.lifeMax * .66f) && !RespawnArms1 && Main.netMode != 1)
             {
-				 npc.ai[1] = 0;
+                WeaponCount += 1;
+                npc.ai[1] = 0;
                 RespawnArms1 = true;
                 RespawnArms();
-				 killArms = false;
+                if (Main.netMode != 1) BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
                 npc.netUpdate = true;
             }
             if (npc.life <= (int)(npc.lifeMax * .33f) && !RespawnArms2 && Main.netMode != 1)
             {
+                WeaponCount += 1;
+                npc.ai[1] = 0;
                 RespawnArms2 = true;
                 RespawnArms();
-				 killArms = false;
+                if (Main.netMode != 1) BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
                 npc.netUpdate = true;
             }
 
@@ -102,16 +104,10 @@ namespace AAMod.NPCs.Bosses.Zero
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
-                npc.position.X = npc.position.X + (npc.width / 2);
-                npc.position.Y = npc.position.Y + (npc.height / 2);
-                npc.width = 100;
-                npc.height = 100;
-                npc.position.X = npc.position.X - (npc.width / 2);
-                npc.position.Y = npc.position.Y - (npc.height / 2);
                 if (Main.expertMode && Main.netMode != 1) 
                 {
                     if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ZeroBoss1"), Color.Red.R, Color.Red.G, Color.Red.B);
-                    int z = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ZeroAwakened"), 0, 0, 0, 0, 0, npc.target) ;
+                    int z = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ZeroProtocol"), 0, 0, 0, 0, 0, npc.target) ;
                     Main.npc[z].Center = npc.Center;
 
                     int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
@@ -130,13 +126,21 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             if (Main.netMode != 1)
             {
-				  npc.ai[1] = 0;
-                internalAI[2] = 0;
-                internalAI[3] = 0;
-               // killArms = true;
+                npc.ai[0] = 10f;
+
+                for (int m = 0; m < WeaponCount; m++)
+                {
+                    int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType(ArmChoice()), 0, m);
+                    Main.npc[npcID].Center = npc.Center;
+                    Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
+                    Main.npc[npcID].velocity *= 8f;
+                    Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
+                }
+
+                internalAI[3] = 1;
+                Distance = 0;
                 npc.netUpdate = true;
             }
-            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ZeroBoss10"), Color.Red, false);
         }
 
         public override void NPCLoot()
@@ -222,7 +226,6 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public int MinionTimer = 0;
         public float Distance = 0;
-        public bool killArms = false;
         public float[] internalAI = new float[5];
 
         public override void SendExtraAI(BinaryWriter writer)
@@ -236,7 +239,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 writer.Write(internalAI[3]);
                 writer.Write(internalAI[4]);
                 writer.Write(Distance);
-                writer.Write(killArms);
             }
         }
 
@@ -251,7 +253,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 internalAI[3] = reader.ReadFloat();
                 internalAI[4] = reader.ReadFloat();
                 Distance = reader.ReadFloat();
-                killArms = reader.ReadBool();
             }
         }
 
@@ -260,15 +261,11 @@ namespace AAMod.NPCs.Bosses.Zero
         public float ShieldScale = 0.5f;
         public float RingRoatation = 0;
         public int WeaponCount = Main.expertMode ? 6 : 4;
-		public int Delay;
-		public int Delay2;
-		public int Delay3;
         bool RespawnArms1;
         bool RespawnArms2;
 
         public override void AI()
         {
-			Delay++;
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
@@ -277,11 +274,19 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 damage = npc.damage / 2;
             }
-			if (npc.life <= (int)(npc.lifeMax * .66f))
-				Delay2++;
-			if (npc.life <= (int)(npc.lifeMax * .33f))
-				Delay3++;
+
+            if (npc.ai[0] > 0)
+            {
+                npc.ai[0]--;
+            }
+
             npc.TargetClosest();
+
+            if (Main.netMode != 1 && internalAI[3] == 0 && npc.ai[1] == 0)
+            {
+                RespawnArms();
+                npc.netUpdate = true;
+            }
 
             if (NPC.AnyNPCs(mod.NPCType<VoidStar>()) ||
                 NPC.AnyNPCs(mod.NPCType<Taser>()) ||
@@ -292,39 +297,31 @@ namespace AAMod.NPCs.Bosses.Zero
                 NPC.AnyNPCs(mod.NPCType<NovaFocus>()) ||
                 NPC.AnyNPCs(mod.NPCType<GenocideCannon>()))
             {
-				
                 npc.ai[1] = 0;
             }
-            else if (Delay > 2){
-					if (npc.life > (int)(npc.lifeMax * .66f)){
+            else
+            {
                 npc.ai[1] = 1;
-				 killArms = true;
-					}
-					 if (Delay2 >2){
-					if (npc.life > (int)(npc.lifeMax * .33f)){
-                npc.ai[1] = 1;
-				 killArms = true;
-					}
-			}
-			 if (Delay3 >2){
-					if (npc.life > (int)(npc.lifeMax * .1f)){
-                npc.ai[1] = 1;
-				 killArms = true;
-					}
-			}
-			}
-			
-			else
-			{
-				  killArms = false;
-				 npc.ai[1] = 0;
-			}
-            
+            }
+
+            if (Distance < 160f)
+            {
+                Distance += 5f;
+            }
+            else
+            {
+                if (Main.netMode != 1)
+                {
+                    Distance = 160f;
+                    npc.netUpdate = true;
+                }
+            }
 
             if (Main.netMode != 1)
             {
                 AAWorld.zeroUS = false;
             }
+
             Player player = Main.player[npc.target];
 
             RingRoatation += 0.03f;
@@ -338,68 +335,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 return;
             }
-
-            if (Main.netMode != 1 && internalAI[2] != 1 && npc.ai[1] == 0)
-            {
-				
-                for (int m = 0; m < WeaponCount; m++)
-                {
-					BaseUtility.Chat(Lang.BossChat("ZeroBoss11"), Color.Green, false);
-                    int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType(ArmChoice()), 0, m);
-                    Main.npc[npcID].Center = npc.Center;
-                    Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
-                    Main.npc[npcID].velocity *= 8f;
-                    Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
-                }
-				
-                internalAI[2] = 1;
-                npc.netUpdate = true;			
-            }
-
-            internalAI[3]++;
-            if (internalAI[3] < 5400 - (Main.expertMode ? 900 : 0))
-            {
-                if (Distance < 160f)
-                {
-                    Distance += 5f;
-                }
-                else
-                {
-                    if (Main.netMode != 1)
-                    {
-                        Distance = 160f;
-                        npc.netUpdate = true;
-                    }
-                }
-            }
-            else
-            {
-                if (Distance > 0)
-                {
-                    Distance -= 5f;
-                }
-                else
-                {
-                    if (Main.netMode != 1)
-                    {
-                        internalAI[2] = 0;
-                        internalAI[3] = 0;
-                        //killArms = true;
-                        npc.netUpdate = true;
-                    }
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ZeroBoss10"), Color.Red, false);
-                }
-            }
-
-            if (npc.ai[1] == 0)
-            {
-                npc.ai[1] = 0;
-            }
-            else
-            {
-                npc.ai[1] = 1;
-            }
-
             if (ShieldScale < .5f)
             {
                 ShieldScale += .05f;
@@ -612,30 +547,6 @@ namespace AAMod.NPCs.Bosses.Zero
             else
             {
                 npc.frame.Y = frameHeight;
-            }
-        }
-
-        public void KillArms()
-        {
-            if (Main.netMode != 1)
-            {
-                if (killArms)
-                {
-                    if (internalAI[4]++ > 30)
-                    {
-                        killArms = false;
-                        internalAI[4] = 0;
-                    }
-                    else
-                    {
-                        killArms = true;
-                        npc.netUpdate = true;
-                    }
-                }
-                else
-                {
-                    internalAI[4] = 0;
-                }
             }
         }
 

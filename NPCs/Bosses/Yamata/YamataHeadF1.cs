@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.boss = false;
             npc.noGravity = true;
             npc.chaseable = false;
-            npc.damage = 200;
+            npc.damage = 250;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
             npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
             for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -51,7 +51,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(customAI[0]);
                 writer.Write(customAI[1]);
@@ -63,7 +63,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 customAI[0] = reader.ReadFloat();
                 customAI[1] = reader.ReadFloat();

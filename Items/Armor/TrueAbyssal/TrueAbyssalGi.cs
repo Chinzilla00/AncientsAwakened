@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.TrueAbyssal
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Perfect Abyssal Gi");
 			Tooltip.SetDefault(@"50% increased movement speed
-15% increased ranged damage");
+9% increased ranged damage");
 		}
 
 		public override void SetDefaults()
@@ -26,7 +26,7 @@ namespace AAMod.Items.Armor.TrueAbyssal
 
 		public override void UpdateEquip(Player player)
 		{
-			player.rangedDamage += .15f;
+			player.rangedDamage += .9f;
             player.moveSpeed += .50f;
 		}
 

@@ -14,7 +14,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override void SetStaticDefaults()
         {
-            Main.npcFrameCount[npc.type] = 7;
+            Main.npcFrameCount[npc.type] = 15;
         }
 
         public override void SetDefaults()
@@ -37,8 +37,6 @@ namespace AAMod.NPCs.Bosses.Athena
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
         }
 
-        Texture2D tex;
-
         public override void AI()
         {
             Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
@@ -57,12 +55,10 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
                 if (npc.ai[1] == 0)
                 {
-                    tex = Main.npcTexture[mod.NPCType<Athena>()];
                     MoveToPoint(Acropolis);
                 }
                 else
                 { 
-                    tex = Main.npcTexture[npc.type];
                     Main.npcFrameCount[npc.type] = 8;
                     npc.ai[0]++;
                     if (Main.netMode != 1)
@@ -128,7 +124,7 @@ namespace AAMod.NPCs.Bosses.Athena
                         else
                         if (npc.ai[0] >= 1200)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena2Defeat9"), Color.Silver);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena2Defeat9"), Color.CornflowerBlue);
                             AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaFlee>(), false, npc.Center);
                             npc.active = false;
                             npc.netUpdate = true;
@@ -140,21 +136,17 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            if (npc.ai[1] == 0)
-            {
-                tex = Main.npcTexture[mod.NPCType<AthenaDefeat>()];
-            }
-            else
-            {
-                tex = Main.npcTexture[npc.type];
-            }
+
+            Texture2D tex = Main.npcTexture[npc.type];
 
             Color lightColor = BaseDrawing.GetLightColor(npc.Center);
 
-            BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor);
+            BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 15, npc.frame, lightColor, true);
 
             return false;
         }
+
+
 
         public override void FindFrame(int frameHeight)
         {
@@ -173,31 +165,31 @@ namespace AAMod.NPCs.Bosses.Athena
             }
             else
             {
-                if (npc.ai[0] < 270)
+                if (npc.ai[0] < 480)
                 {
                     if (npc.frameCounter >= 15)
                     {
                         npc.frame.Y += frameHeight;
                         npc.frameCounter = 0;
-                        if (npc.frame.Y >= frameHeight * 4)
+                        if (npc.frame.Y >= frameHeight * 10 || npc.frame.Y < frameHeight * 7)
                         {
-                            npc.frame.Y = 0;
+                            npc.frame.Y = frameHeight * 7;
                         }
                     }
                 }
-                else if (npc.ai[0] >= 270 && npc.ai[0] < 450)
+                else if (npc.ai[0] >= 480 && npc.ai[0] < 720)
                 {
-                    npc.frame.Y = frameHeight * 3;
+                    npc.frame.Y = frameHeight * 10;
                 }
-                else if (npc.ai[0] >= 450)
+                else if (npc.ai[0] >= 720)
                 {
                     if (npc.frameCounter >= 15)
                     {
                         npc.frame.Y += frameHeight;
                         npc.frameCounter = 0;
-                        if (npc.frame.Y < frameHeight * 4 || npc.frame.Y >= frameHeight * 8)
+                        if (npc.frame.Y < frameHeight * 11 || npc.frame.Y >= frameHeight * 14)
                         {
-                            npc.frame.Y = frameHeight * 4;
+                            npc.frame.Y = frameHeight * 11;
                         }
                     }
                 }

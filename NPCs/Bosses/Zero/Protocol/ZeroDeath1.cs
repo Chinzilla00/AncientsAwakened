@@ -48,7 +48,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("ZeroDeath3"), Color.Red.R, Color.Red.G, Color.Red.B);
             }
-            Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y), new Vector2(0f, 0f), mod.ProjectileType("ZeroDeath2"), 0, 0);
+            int p = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y), new Vector2(0f, 0f), mod.ProjectileType("ZeroDeath2"), 0, 0);
+            Main.projectile[p].Center = projectile.Center;
         }
     }
 }

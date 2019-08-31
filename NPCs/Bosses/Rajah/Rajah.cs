@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -61,7 +61,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
+            if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat(); //SpaceOctopus AI stuff
                 internalAI[1] = reader.ReadFloat(); //Is Flying
@@ -102,22 +102,10 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            if (AAWorld.Anticheat == true && isSupreme)
-            {
-                if (damage > npc.lifeMax / 8)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Rajah1"), 107, 137, 179);
-                    damage = 0;
-                    npc.damage = 9999;
-                    npc.defense = 99999;
-                }
-                return false;
-            }
             if (isSupreme)
             {
                 damage *= .5f;
             }
-
             return true;
         }
 

@@ -12,7 +12,8 @@ namespace AAMod.Items.Armor.TrueBlazing
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Perfect Blazing Dao");
-			Tooltip.SetDefault(@"5% increased damage resistance");
+			Tooltip.SetDefault(@"5% increased damage resistance
+13% increased melee damage");
 		}
 
 		public override void SetDefaults()
@@ -27,9 +28,11 @@ namespace AAMod.Items.Armor.TrueBlazing
 		public override void UpdateEquip(Player player)
 		{
 			player.endurance += 0.05f;
+            player.meleeDamage *= 1.13f;
+
         }
 
-		public override void AddRecipes()
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("BlazingDou"));

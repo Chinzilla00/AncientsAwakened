@@ -26,8 +26,8 @@ namespace AAMod.Items.Armor.Uranium
 
         public override void UpdateEquip(Player player)
         {
-            player.manaCost *= .82f;
-            player.magicDamage *= 1.18f;
+            player.manaCost *= .92f;
+            player.magicDamage *= 1.08f;
             player.statManaMax2 += 90;
         }
 

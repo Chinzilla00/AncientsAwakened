@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ID;
 
 namespace AAMod.Items.Usable
 {
@@ -53,7 +54,7 @@ namespace AAMod.Items.Usable
                 int index = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item, 1, false, -1, false, false);
                 int index1 = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("AbyssiumBar"), Main.rand.Next(0, 12));
 
-                if (Main.netMode == 1)
+                if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
                     NetMessage.SendData(21, -1, -1, null, index, 1f, 0f, 0f, 0, 0, 0);
                     NetMessage.SendData(21, -1, -1, null, index1, 1f, 0f, 0f, 0, 0, 0);

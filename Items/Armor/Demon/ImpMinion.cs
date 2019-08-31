@@ -145,10 +145,9 @@ namespace AAMod.Items.Armor.Demon
                     num22 = 15f;
                 }
                 Vector2 center2 = projectile.Center;
-                Vector2 vector6 = player.Center - center2 + new Vector2(0f, -60f);
                 projectile.ai[1] = 3600f;
                 projectile.netUpdate = true;
-                vector6 = player.Center - center2;
+                Vector2 vector6 = player.Center - center2;
                 int num23 = 1;
                 for (int m = 0; m < projectile.whoAmI; m++)
                 {

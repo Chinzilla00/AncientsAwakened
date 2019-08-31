@@ -28,7 +28,7 @@ namespace AAMod.Tiles
             int tileType = tile.type;
             if (!WorldGen.noTileActions && tile.active() && (tileType == Type))
             {
-                if (Main.netMode == 0)
+                if (Main.netMode == NetmodeID.SinglePlayer)
                 {
                     if (tile3 != null && !tile3.active())
                     {
@@ -49,7 +49,7 @@ namespace AAMod.Tiles
                         }
                     }
                 }
-                else if (Main.netMode == 2 && tile3 != null && !tile3.active())
+                else if (Main.netMode == NetmodeID.Server && tile3 != null && !tile3.active())
                 {
                     bool flag19 = !(tile2.active() && (TileID.Sets.BasicChest[tile2.type] || TileID.Sets.BasicChestFake[tile2.type] || tile2.type == 323 || TileLoader.IsDresser(tile2.type)));
                     if (flag19)
