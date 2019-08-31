@@ -80,7 +80,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.ai[1] = 0;
                 RespawnArms1 = true;
                 RespawnArms();
-                if (Main.netMode != 1) BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ZeroBoss10"), Color.Red, false);
                 npc.netUpdate = true;
             }
             if (npc.life <= (int)(npc.lifeMax * .33f) && !RespawnArms2 && Main.netMode != 1)
@@ -89,7 +89,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.ai[1] = 0;
                 RespawnArms2 = true;
                 RespawnArms();
-                if (Main.netMode != 1) BaseUtility.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ZeroBoss10"), Color.Red, false);
                 npc.netUpdate = true;
             }
 

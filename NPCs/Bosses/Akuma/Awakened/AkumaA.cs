@@ -498,7 +498,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 if (!QuoteSaid)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote5) ? "The Sun won't quit 'til the day is done, kid!" : "Face the fury of the sun!", Color.DeepSkyBlue);
+                    if (Main.netMode != 1) BaseUtility.Chat((!Quote5) ? Lang.BossChat("AkumaA21") : Lang.BossChat("AkumaA22"), Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote5 = true;
                 }
