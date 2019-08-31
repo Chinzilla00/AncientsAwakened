@@ -1122,9 +1122,9 @@ namespace AAMod
                         case "Akuma8":
                         return "我来了!";
                         case "Akuma9":
-                        return "面对绝望之火吧, 小子!";
+                        return "小子, 阳光普照之处没有阴凉可乘!";
                         case "Akuma10":
-                        return "抬头, 小子!";
+                        return "热起来了, 对吗?";
                         case "Akuma11":
                         return "燎狱的火山终于平息了...";
                         case "Akuma12":
@@ -1710,9 +1710,9 @@ namespace AAMod
                         case "Akuma8":
                         return "Incoming!";
                         case "Akuma9":
-                        return "Face the flames of despair, kid!";
+                        return "Sun's shining, and there's no shade to be seen, kid!";
                         case "Akuma10":
-                        return "Heads up, kid!";
+                        return "Getting hotter, ain't it?";
                         case "Akuma11":
                         return "The volcanoes of the inferno are finally quelled...";
                         case "Akuma12":
@@ -2996,7 +2996,7 @@ namespace AAMod
 敌人更容易瞄准你
 你挥动的武器对敌人造成燃烧";
                         case "ChaosFukumenBonus":
-                        return "你的远程攻击混合燎狱龙炎和九头蛇毒\n增加20%远程伤害\n敌人更容易瞄准你\n夜视和狩猎效果\n减少25%弹药消耗";
+                        return "你的远程攻击混合燎狱龙炎和九头蛇毒\n增加25%远程伤害\n敌人更容易瞄准你\n夜视和狩猎效果\n减少25%弹药消耗";
                         case "ChaosHelmBonus":
                         return "你免疫大多数负面效果\n站立不动时快速回复生命值\n你免疫击退";
                         case "ChaosKabutoBonus":
@@ -3213,7 +3213,7 @@ Enemies are more likely to target you
 Your Swung weapons set your enemies ablaze";
                         case "ChaosFukumenBonus":
                         return @"Your ranged attacks are imbued with the chaos of Dragonfire and Bogtoxin
-20% increased ranged damage
+25% increased ranged damage
 Enemies are less likely to target you
 Night Vision and hunter effects
 25% reduced ammo consumption";
