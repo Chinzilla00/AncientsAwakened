@@ -1169,6 +1169,11 @@ namespace AAMod
                         return "嘿小子? 喜欢烟花吗? 不? 真糟糕!";
                         case "AkumaA20":
                         return "该完美收场了, 小子!";
+                        case "AkumaA21":
+                        return "白昼不息烈日不止, 小子!";
+                        case "AkumaA22":
+                        return "面对烈日的怒火吧!";
+
                         case "AkumaAAshe1":
                         return "爸, 不! 啊! 你! 下次我们再见的时候, 我要把你活烤了. . !";
                         case "AkumaAAshe2":
@@ -1793,6 +1798,10 @@ namespace AAMod
                         return "Hey Kid? Like Fireworks? No? Too Bad!";
                         case "AkumaA20":
                         return "Here comes the grand finale, kid!";
+                        case "AkumaA21":
+                        return "The Sun won't quit 'til the day is done, kid!";
+                        case "AkumaA22":
+                        return "Face the fury of the sun!";
 
                         case "AkumaAAshe1":
                         return "Papa, NO! HEY! YOU! I'm gonna bake you alive next time we meet..!";
