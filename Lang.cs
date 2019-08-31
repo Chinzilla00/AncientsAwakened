@@ -3631,7 +3631,7 @@ The Fire spirit becomes more powerful the less mana you have";
             }
             else
             {
-                switch(NPCsummon)
+                switch(Info)
                 {
                     case "Info1":
                     return "Placing Chaos Altars";
