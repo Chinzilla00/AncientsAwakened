@@ -1421,6 +1421,8 @@ ItemTooltip.FungusBox=播放 'Bioluminescent Beatdown' by Spectral Aves
 ItemName.GripsBox=八音盒(混沌之握)
 ItemTooltip.GripsBox=播放 'Twin Terror' by Spectral Aves
 
+ItemName.GreedLantern=石灯笼
+
 ItemName.HallowedAnvil=神圣砧
 ItemTooltip.HallowedAnvil=一个神圣的砧
 
@@ -4444,6 +4446,7 @@ NPCName.AHSpawn=混沌双胞胎姐妹
 
 // AAMod.NPCs.Bosses.Akuma.Awakened
 
+NPCName.Sun=酷煞之日
 
 NPCName.AkumaA=觉醒之邪鬼巨龙 愤怒燎狱的化身
 
@@ -4466,6 +4469,7 @@ NPCName.AwakenedLungTail=觉醒之伴龙
 
 // AAMod.NPCs.Bosses.Akuma
 
+NPCName.SunA=邪鬼之日
 
 NPCName.Akuma=远古之邪鬼巨龙 凶煞恶魔
 
@@ -4568,6 +4572,10 @@ NPCName.HydraClawM=九头蛇之爪
 
 NPCName.GreedSpawn=闪耀的贪婪
 
+NPCName.GreedTransition=闪耀的贪婪
+
+NPCName.GreedMinion=矿石精
+
 NPCName.Scavenger=拾金婪虫
 NPCName.ScavengerBody=拾金婪虫
 NPCName.ScavengerTail=拾金婪虫
@@ -4575,6 +4583,10 @@ NPCName.ScavengerTail=拾金婪虫
 NPCName.Greed=金食饕餮
 NPCName.GreedBody=金食饕餮
 NPCName.GreedTail=金食饕餮
+
+NPCName.GreedA=觉醒之金食饕餮 贪婪鎏金虫
+NPCName.GreedABody=觉醒之金食饕餮 贪婪鎏金虫
+NPCName.GreedATail=觉醒之金食饕餮 贪婪鎏金虫
 
 
 // AAMod.NPCs.Bosses.Hydra
@@ -4839,7 +4851,7 @@ NPCName.ZeroDeactivated=奇异机械
 
 NPCName.NullZP=无械-0型
 
-NPCName.ZeroAwakened=零械临界单元 零.之.始.约.协.议
+NPCName.ZeroProtocol=零械临界单元 零.之.始.约.协.议
 
 
 // AAMod.NPCs.Critters
