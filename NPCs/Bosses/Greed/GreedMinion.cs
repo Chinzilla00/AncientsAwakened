@@ -247,8 +247,8 @@ namespace AAMod.NPCs.Bosses.Greed
             return true;
         }
 
-        Color bodyColor;
-        Color glowColor;
+        Color bodyColor = Color.White;
+        Color glowColor = Color.White;
 
         public override void FindFrame(int frameHeight)
         {
