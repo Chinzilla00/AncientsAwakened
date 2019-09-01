@@ -78,7 +78,7 @@ Super Skullshot EX");
             else
             {
                 item.useAmmo = AmmoID.Bullet;
-                item.damage = 300;
+                item.damage = 350;
                 item.useAnimation = 24;
                 item.useTime = 24;
                 item.reuseDelay = 0;

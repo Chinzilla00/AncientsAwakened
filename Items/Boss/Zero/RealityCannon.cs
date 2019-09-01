@@ -20,8 +20,8 @@ namespace AAMod.Items.Boss.Zero
         {
             
             item.useStyle = 5;
-            item.useAnimation = 15;
-            item.useTime = 15;
+            item.useAnimation = 10;
+            item.useTime = 10;
             item.shootSpeed = 16f;
             item.knockBack = 0f;
             item.width = 48;

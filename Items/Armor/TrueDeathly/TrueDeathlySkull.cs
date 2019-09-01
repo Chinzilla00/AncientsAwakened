@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.TrueDeathly
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Deathly Ghast Skull");
-            Tooltip.SetDefault("12% Increased ranged damage and Critical Strike chance");
+            Tooltip.SetDefault("15% Increased ranged damage and Critical Strike chance");
         }
 
         public override void SetDefaults()
@@ -25,8 +25,8 @@ namespace AAMod.Items.Armor.TrueDeathly
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage *= 1.12f;
-            player.rangedCrit += 12;
+            player.rangedDamage *= 1.15f;
+            player.rangedCrit += 15;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

@@ -36,11 +36,11 @@ namespace AAMod.Items.Armor.Chaos
         public override void UpdateArmorSet(Player player)
 		{
             player.setBonus = @"Your ranged attacks are imbued with the chaos of Dragonfire and Bogtoxin
-25% increased ranged damage
+30% increased ranged damage
 Enemies are less likely to target you
 Night Vision and hunter effects
 25% reduced ammo consumption";
-            player.rangedDamage += .25f;
+            player.rangedDamage += .30f;
             player.aggro -= 7;
             player.GetModPlayer<AAPlayer>(mod).ChaosRa = true;
             player.ammoCost75 = true;
