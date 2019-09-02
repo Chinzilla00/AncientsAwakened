@@ -32,7 +32,7 @@ namespace AAMod.Projectiles.Zero
 
         public override bool PreDraw(SpriteBatch spritebatch, Color lightColor)
         {
-            BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[projectile.type], 0, projectile, 1.5f, 1f, 5, false, 0f, 0f, projectile.GetAlpha(AAColor.ZeroShield));
+            BaseDrawing.DrawAfterimage(spritebatch, Main.projectileTexture[projectile.type], 0, projectile, 1.5f, 1f, 5, false, 0f, 0f, projectile.GetAlpha(AAColor.ZeroShield));
             return true;
         }
     }

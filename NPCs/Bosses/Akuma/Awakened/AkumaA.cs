@@ -95,7 +95,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
@@ -105,7 +105,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == NetmodeID.MultiplayerClient)
+            if (Main.netMode == 1)
             {
                 internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
@@ -142,7 +142,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 QuoteSaid = false;
                 Roar(roarTimerMax, false);
-                internalAI[1] += 1;
+                internalAI[1] = Main.rand.Next(6);
             }
             if (npc.ai[2] > 300)
             {
@@ -382,6 +382,10 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 AAWorld.downedAkuma = true;
                 if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
+                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
+                }
+                if (Main.rand.Next(10) == 0 && AAWorld.downedAllAncients)
+                {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PowerStone"));
                 }
                 if (Main.rand.Next(10) == 0)
@@ -392,17 +396,12 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("AkumaAMask"));
                 }
-                if (AAWorld.downedShen)
-                {
-                    Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
-                }
                 npc.DropBossBags();
                 return;
             }
             if (Main.netMode != 1) BaseUtility.Chat("Nice. You cheated. Now come fight me in expert mode like a real man.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             return;
         }
-
 
         public bool Quote1;
         public bool Quote2;
@@ -414,7 +413,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public void Attack(NPC npc)
         {
             Player player = Main.player[npc.target];
-            if (internalAI[1] == 1 || internalAI[1] == 7 || internalAI[1] == 15 || internalAI[1] == 18 || internalAI[1] == 21)
+            if (internalAI[1] == 0)
             {
                 if (!QuoteSaid)
                 {
@@ -431,14 +430,13 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                 }
             }
-
-            if (internalAI[1] == 2 || internalAI[1] == 6 || internalAI[1] == 12 || internalAI[1] == 16 || internalAI[1] == 24)
+            else if (internalAI[1] == 1)
             {
                 if (!QuoteSaid)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote1) ? "You underestimate the artillery of a dragon, kid!" : "Flames don't give in till the end!!", Color.DeepSkyBlue);
+                    if (Main.netMode != 1) BaseUtility.Chat((!Quote2) ? "You underestimate the artillery of a dragon, kid!" : "Flames don't give in till the end!!", Color.DeepSkyBlue);
                     QuoteSaid = true;
-                    Quote1 = true;
+                    Quote2 = true;
                 }
                 if (npc.ai[2] == 350)
                 {
@@ -455,15 +453,14 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                 }
             }
-
-            if (internalAI[1] == 3 || internalAI[1] == 8 || internalAI[1] == 11 || internalAI[1] == 17 || internalAI[1] == 23)
+            else if (internalAI[1] == 2)
             {
                 int Fireballs = Main.expertMode ? 20 : 15;
                 if (!QuoteSaid)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote1) ? "Heads up! Volcano's eruptin' kid!" : "INCOMING!", Color.DeepSkyBlue);
+                    if (Main.netMode != 1) BaseUtility.Chat((!Quote3) ? "Heads up! Volcano's eruptin' kid!" : "INCOMING!", Color.DeepSkyBlue);
                     QuoteSaid = true;
-                    Quote1 = true;
+                    Quote3 = true;
                 }
                 if (npc.ai[2] == 330 || npc.ai[2] == 360 || npc.ai[2] == 390)
                 {
@@ -473,8 +470,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                 }
             }
-
-            if (internalAI[1] == 4 || internalAI[1] == 10 || internalAI[1] == 13 || internalAI[1] == 20 || internalAI[1] == 25)
+            else if (internalAI[1] == 3)
             {
                 if (npc.ai[2] == 350)
                 {
@@ -485,24 +481,34 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                 }
             }
-
-            if (internalAI[1] == 5 || internalAI[1] == 9 || internalAI[1] == 14 || internalAI[1] == 19 || internalAI[1] == 22)
+            else if (internalAI[1] == 4)
             {
                 if (!QuoteSaid)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote1) ? "Hey Kid? Like Fireworks? No? Too Bad!" : "Here comes the grand finale, kid!", Color.DeepSkyBlue);
+                    if (Main.netMode != 1) BaseUtility.Chat((!Quote4) ? "Hey Kid? Like Fireworks? No? Too Bad!" : "Here comes the grand finale, kid!", Color.DeepSkyBlue);
                     QuoteSaid = true;
-                    Quote1 = true;
+                    Quote4 = true;
                 }
                 if (npc.ai[2] == 350)
                 {
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AFireProjHostile>(), damage, 3, Main.myPlayer);
                 }
             }
-
-            if (internalAI[1] > 25)
+            else
             {
-                internalAI[1] = 0;
+                if (!QuoteSaid)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat((!Quote5) ? "The Sun won't quit 'til the day is done, kid!" : "Face the fury of the sun!", Color.DeepSkyBlue);
+                    QuoteSaid = true;
+                    Quote5 = true;
+                }
+                if (npc.ai[2] == 350)
+                {
+                    for (int a = 0; a < 3; a++)
+                    {
+                        NPC.NewNPC((int)(player.position.X + Main.rand.Next(700)), (int)(player.position.Y + Main.rand.Next(700)), mod.NPCType<SunA>());
+                    }
+                }
             }
         }
 

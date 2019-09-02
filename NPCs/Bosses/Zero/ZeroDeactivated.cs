@@ -44,10 +44,8 @@ namespace AAMod.NPCs.Bosses.Zero
             RingRoatation += .01f;
             if (Main.netMode != 1 && AAWorld.zeroUS == true)
             {
-                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Zero"));
-                npc.active = false;
-				npc.netUpdate = true;
-				return;
+                npc.Transform(mod.NPCType<Zero>());
+                return;
             }
             npc.timeLeft = 10;
 			if(npc.ai[0] == 0)
@@ -164,7 +162,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 int whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, mod.NPCType<ZeroDeactivated>());
                 ZX = (int)spawnPos.X;
 				ZY = (int)spawnPos.Y;				
-				if (Main.netMode == NetmodeID.Server && whoAmI != -1 && whoAmI < 200)
+				if (Main.netMode == 2 && whoAmI != -1 && whoAmI < 200)
 				{					
 					NetMessage.SendData(MessageID.SyncNPC, number: whoAmI);
 				}			

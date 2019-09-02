@@ -84,10 +84,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 20);
             Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("HomingBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-            for (int dust = 0; dust <= 3; dust++)
-            {
-                Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
-            }
         }
 
         private int HomeOnTarget()

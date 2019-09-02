@@ -85,7 +85,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
-            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
@@ -97,7 +97,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void ReceiveExtraAI(BinaryReader reader)
         {
             base.ReceiveExtraAI(reader);
-            if (Main.netMode == NetmodeID.MultiplayerClient)
+            if (Main.netMode == 1)
             {
                 internalAI[0] = reader.ReadFloat();
                 internalAI[1] = reader.ReadFloat();
@@ -143,7 +143,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 QuoteSaid = false;
                 Roar(roarTimerMax, false);
-                internalAI[1] += 1;
+                internalAI[1] = Main.rand.Next(5);
             }
             if (internalAI[0] > 300)
             {
@@ -404,12 +404,15 @@ namespace AAMod.NPCs.Bosses.Akuma
         public bool Quote2;
         public bool Quote3;
         public bool Quote4;
+        public bool Quote5;
         public bool QuoteSaid;
 
         public void Attack(NPC npc)
         {
             Player player = Main.player[npc.target];
-            if (internalAI[1] == 1 || internalAI[1] == 5 || internalAI[1] == 9 || internalAI[1] == 16 || internalAI[1] == 18)
+
+
+            if (internalAI[1] == 0)
             {
                 if (!QuoteSaid)
                 {
@@ -427,7 +430,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
 
             }
-            else if (internalAI[1] == 3 || internalAI[1] == 8 || internalAI[1] == 13 || internalAI[1] == 11 || internalAI[1] == 20)
+            else if (internalAI[1] == 1)
             {
                 if (!QuoteSaid)
                 {
@@ -435,7 +438,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     QuoteSaid = true;
                     Quote2 = true;
                 }
-                if (internalAI[0] == 400)
+                if (internalAI[0] == 350)
                 {
                     if (NPC.CountNPCS(mod.NPCType<AncientLung>()) < (Main.expertMode ? 3 : 4))
                     {
@@ -444,7 +447,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     }
                 }
             }
-            else if (internalAI[1] == 4 || internalAI[1] == 6 || internalAI[1] == 10 || internalAI[1] == 14 || internalAI[1] == 17)
+            else if (internalAI[1] == 2)
             {
                 if (!QuoteSaid)
                 {
@@ -452,18 +455,34 @@ namespace AAMod.NPCs.Bosses.Akuma
                     QuoteSaid = true;
                     Quote3 = true;
                 }
-                if (internalAI[0] == 400)
+                if (internalAI[0] == 350)
                 {
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AkumaFireProj>(), damage, 3, Main.myPlayer);
+                }
+            }
+            else if (internalAI[1] == 3)
+            {
+                if (!QuoteSaid)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat((!Quote4) ? "Sun's shining, and there's no shade to be seen, kid!" : "Getting hotter, ain't it?", new Color(180, 41, 32));
+                    QuoteSaid = true;
+                    Quote4 = true;
+                }
+                if (internalAI[0] == 350)
+                {
+                    for (int a = 0; a < 2; a++)
+                    {
+                        NPC.NewNPC((int)(player.position.X + Main.rand.Next(400)), (int)(player.position.Y + Main.rand.Next(400)), mod.NPCType<Sun>());
+                    }
                 }
             }
             else
             {
                 if (!QuoteSaid)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote4) ? "Face the flames of despair, kid!" : "Heads up, kid!", new Color(180, 41, 32));
+                    if (Main.netMode != 1) BaseUtility.Chat((!Quote5) ? "Face the flames of despair, kid!" : "Heads up, kid!", new Color(180, 41, 32));
                     QuoteSaid = true;
-                    Quote4 = true;
+                    Quote5 = true;
                 }
                 if (internalAI[0] == 350)
                 {
@@ -479,11 +498,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                         Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, mod.ProjectileType<AkumaBomb>(), damage, 3, Main.myPlayer);
                     }
                 }
-            }
-
-            if (internalAI[1] > 20)
-            {
-                internalAI[1] = 0;
             }
         }
 
