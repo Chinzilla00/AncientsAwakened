@@ -111,10 +111,13 @@ namespace AAMod.NPCs
                 npcToSpawn = mod.NPCType("MireMimic");
             }
 
-            int npcIndex = NPC.NewNPC(x * 16 + 16, y * 16 + 32, npcToSpawn);
-            Main.npc[npcIndex].whoAmI = npcIndex;
-            NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npcIndex);
-            Main.npc[npcIndex].BigMimicSpawnSmoke();
+            if (npcToSpawn != -1)
+            {
+                int npcIndex = NPC.NewNPC(x * 16 + 16, y * 16 + 32, npcToSpawn);
+                Main.npc[npcIndex].whoAmI = npcIndex;
+                NetMessage.SendData(MessageID.SyncNPC, -1, -1, null, npcIndex);
+                Main.npc[npcIndex].BigMimicSpawnSmoke();
+            }
         }
     }
 }
