@@ -16,7 +16,7 @@ namespace AAMod.Items.Ranged
         {
             item.shoot = mod.ProjectileType("ChaosJavelin");
             item.shootSpeed = 15f;
-            item.damage = 70;
+            item.damage = 105;
             item.knockBack = 5f;
             item.ranged = true;
             item.useStyle = 1;

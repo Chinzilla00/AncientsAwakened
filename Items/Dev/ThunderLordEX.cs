@@ -27,7 +27,7 @@ Storm Rifle EX");
 
         public override void SetDefaults()
         {
-            item.damage = 500;
+            item.damage = 250;
             item.noMelee = true;
             item.ranged = true; 
             item.width = 70; 

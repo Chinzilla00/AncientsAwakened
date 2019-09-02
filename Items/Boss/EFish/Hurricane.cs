@@ -26,7 +26,7 @@ Tsunami EX");
             item.shoot = 1;
             item.useAmmo = AmmoID.Arrow;
             item.UseSound = SoundID.Item5;
-            item.damage = 200;
+            item.damage = 100;
             item.shootSpeed = 13f;
             item.knockBack = 4f;
             item.rare = 8;
