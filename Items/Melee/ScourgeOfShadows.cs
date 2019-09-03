@@ -18,7 +18,7 @@ namespace AAMod.Items.Melee
 			item.useStyle = 5;
 			item.shootSpeed = 14f;
 			item.shoot = mod.ProjectileType("ScourgeOfShadowsP");
-			item.damage = 128;
+			item.damage = 130;
 			item.width = 18;
 			item.height = 20;
 			item.UseSound = SoundID.Item39;

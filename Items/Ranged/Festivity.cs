@@ -9,7 +9,7 @@ namespace AAMod.Items.Ranged
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Festivity");
+			DisplayName.SetDefault("Independence");
 			Tooltip.SetDefault("Shoots 3 firework rockets"
 			+"\nCelebration EX");
 		}
@@ -17,7 +17,7 @@ namespace AAMod.Items.Ranged
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(3546);
-			item.damage = 250;
+			item.damage = 375;
          
 
         }

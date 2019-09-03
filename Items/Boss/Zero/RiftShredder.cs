@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Zero
 		public override void SetDefaults()
 		{
             
-			item.damage = 370;
+			item.damage = 190;
 			item.melee = true;
 			item.width = 94;
 			item.height = 70;

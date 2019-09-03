@@ -19,7 +19,7 @@ namespace AAMod.Items.Ranged
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.SDMG);
-			item.damage = 80;
+			item.damage = 95;
 
 			item.ranged = true;
 			item.knockBack = 4;

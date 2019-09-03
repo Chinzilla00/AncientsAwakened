@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Shen
 
         public override void SetDefaults()
         {
-            item.damage = 300;
+            item.damage = 210;
             item.ranged = true;
             item.width = 22;
             item.height = 50;
