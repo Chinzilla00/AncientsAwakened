@@ -70,15 +70,16 @@ namespace AAMod.Tiles
                     if (item != null && item.type == type && item.stack >= 1)
                     {
                         item.stack--;
-                        AAModGlobalNPC.SpawnBoss(player, mod.NPCType<NPCs.Bosses.Athena.Athena>(), true, Acropolis, "Athena", false);
+                        SpawnBoss(player, mod.NPCType<NPCs.Bosses.Athena.Athena>(), true, player.Center, 0, -1, "Athena", false);
                     }
                 }
             }
         }
 
         // SpawnBoss(player, mod.NPCType("MyBoss"), true, 0, 0, "DerpyBoi 2", false);
-        public static void SpawnBoss(Mod mod, Player player, int bossType, bool spawnMessage = true, Vector2 Pos = default, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
+        public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 Pos = default, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
         {
+            Mod mod = AAMod.instance;
             if (overrideDirection == 0)
                 overrideDirection = Main.rand.Next(2) == 0 ? -1 : 1;
             if (overrideDirectionY == 0)
