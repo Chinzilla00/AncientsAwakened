@@ -75,7 +75,7 @@ Immunity to fall damage");
         {
             if (player.wingTime > 0)
             {
-                player.wingTime += 3;
+                player.wingTime += 1;
             }
         }
 
@@ -84,7 +84,7 @@ Immunity to fall damage");
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
 
             player.autoJump = true;
-            Player.jumpHeight = 40;
+            Player.jumpHeight = 10;
             player.jumpSpeedBoost += 3.6f;
             player.noFallDmg = true;
             player.moveSpeed *= 1.4f;
