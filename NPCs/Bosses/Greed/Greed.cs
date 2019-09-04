@@ -4,6 +4,7 @@ using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -36,12 +37,12 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.behindTiles = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
-            npc.HitSound = SoundID.NPCHit5;
-            npc.DeathSound = SoundID.NPCDeath7;
+            npc.HitSound = new LegacySoundStyle(21, 1);
+            npc.DeathSound = new LegacySoundStyle(2, 14);
             npc.netAlways = true;
             npc.boss = true;
             bossBag = mod.ItemType("GreedBag");
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Greed");
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Greed");
             npc.alpha = 255;
         }
 

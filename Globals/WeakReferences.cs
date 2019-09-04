@@ -382,6 +382,7 @@ namespace AAMod.Globals
                 bossChecklist.Call("AddBossWithInfo", "Sagittarius", 5.7f, (Func<bool>)(() => AAWorld.downedSag), "Use a [i:" + AAMod.instance.ItemType("Lifescanner") + "] in the Void");
                 bossChecklist.Call("AddBossWithInfo", "Truffle Toad", 4f, (Func<bool>)(() => AAWorld.downedToad), "Use a [i:" + AAMod.instance.ItemType("Toadstool") + "] in a glowing mushroom biome");
                 bossChecklist.Call("AddBossWithInfo", "Athena", 11.5f, (Func<bool>)(() => AAWorld.downedAthena), "Use an [i:" + AAMod.instance.ItemType("Owl") + "] at the owl altar in the Acropolis.");
+                bossChecklist.Call("AddBossWithInfo", "Greed", 11.5f, (Func<bool>)(() => AAWorld.downedGreed), "Use a [i:" + AAMod.instance.ItemType("GoldenGrub") + "] at the Altar of Desire in the Hoard.");
                 bossChecklist.Call("AddBossWithInfo", "Rajah Rabbit", 12.1f, (Func<bool>)(() => AAWorld.downedRajah), "Use a [i:" + AAMod.instance.ItemType("GoldenCarrot") + "] or kill 100 Rabbits like a jerk.");
                 bossChecklist.Call("AddBossWithInfo", "Athena Rematch", 14.2f, (Func<bool>)(() => AAWorld.downedAthenaA), "Use an [i:" + AAMod.instance.ItemType("Owl") + "] at the owl altar in the Acropolis Post-moon lord.", (Func<bool>)(() => AAWorld.AthenaHerald));
                 bossChecklist.Call("AddBossWithInfo", "Nightcrawler & Daybringer", 15f, (Func<bool>)(() => AAWorld.downedEquinox), "Use a [i:" + AAMod.instance.ItemType("EquinoxWorm") + "]");
