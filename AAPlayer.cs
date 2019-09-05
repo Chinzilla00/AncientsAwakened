@@ -3244,62 +3244,42 @@ namespace AAMod
 
         public bool MeleeHighest(Player player)
         {
-            if (player.meleeDamage > player.rangedDamage &&
+            return player.meleeDamage > player.rangedDamage &&
                 player.meleeDamage > player.magicDamage &&
                 player.meleeDamage > player.minionDamage &&
-                player.meleeDamage > player.thrownDamage)
-            {
-                return true;
-            }
-            return false;
+                player.meleeDamage > player.thrownDamage;
         }
 
         public bool RangedHighest(Player player)
         {
-            if (player.rangedDamage > player.meleeDamage &&
+            return player.rangedDamage > player.meleeDamage &&
                 player.rangedDamage > player.magicDamage &&
                 player.rangedDamage > player.minionDamage &&
-                player.rangedDamage > player.thrownDamage)
-            {
-                return true;
-            }
-            return false;
+                player.rangedDamage > player.thrownDamage;
         }
 
         public bool MagicHighest(Player player)
         {
-            if (player.magicDamage > player.rangedDamage &&
+            return player.magicDamage > player.rangedDamage &&
                 player.magicDamage > player.meleeDamage &&
                 player.magicDamage > player.minionDamage &&
-                player.magicDamage > player.thrownDamage)
-            {
-                return true;
-            }
-            return false;
+                player.magicDamage > player.thrownDamage;
         }
 
         public bool SummonHighest(Player player)
         {
-            if (player.minionDamage > player.rangedDamage &&
+            return player.minionDamage > player.rangedDamage &&
                 player.minionDamage > player.magicDamage &&
                 player.minionDamage > player.meleeDamage &&
-                player.minionDamage > player.thrownDamage)
-            {
-                return true;
-            }
-            return false;
+                player.minionDamage > player.thrownDamage;
         }
 
         public bool ThrownHighest(Player player)
         {
-            if (player.thrownDamage > player.rangedDamage &&
+            return player.thrownDamage > player.rangedDamage &&
                 player.thrownDamage > player.magicDamage &&
                 player.thrownDamage > player.minionDamage &&
-                player.thrownDamage > player.meleeDamage)
-            {
-                return true;
-            }
-            return false;
+                player.thrownDamage > player.meleeDamage;
         }
     }
 }
