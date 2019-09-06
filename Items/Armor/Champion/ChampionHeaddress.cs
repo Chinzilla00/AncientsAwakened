@@ -44,14 +44,12 @@ The power of discordian rage radiates from this hood");
 			return body.type == mod.ItemType("ChampionPlate") && legs.type == mod.ItemType("ChampionGreaves");
 		}
 
+
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"'Chaos empowers you'
-As your health decreases, your minion damage increases
-Your minions raze your oponents with the flames of discordian hell";
-            player.GetModPlayer<AAPlayer>(mod).ChampionSu = true;
-            player.AddBuff(mod.BuffType("ChaosWrath"), 2);
+            player.setBonus = @"";
         }
+
 
         public override void UpdateEquip(Player player)
         {

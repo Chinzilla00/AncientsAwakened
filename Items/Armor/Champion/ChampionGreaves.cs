@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.Items.Armor.Champion
 {
     [AutoloadEquip(EquipType.Legs)]
-	public class ChampionChaosGreaves : BaseAAItem
+	public class ChampionGreaves : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{

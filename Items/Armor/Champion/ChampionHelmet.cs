@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.Items.Armor.Champion
 {
     [AutoloadEquip(EquipType.Head)]
-    public class ChampionKabuto : BaseAAItem
+    public class ChampionHelmet : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -42,14 +42,12 @@ The power of discordian rage radiates from this armor");
 		{
 			return body.type == mod.ItemType("ChampionPlate") && legs.type == mod.ItemType("ChampionGreaves");
 		}
+
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"'Chaos empowers you'
-As your health decreases, your melee damage and defense increase
-Your attacks raze your oponents with the flames of Chaos";
-            player.GetModPlayer<AAPlayer>(mod).ChampionMe = true;
-            player.AddBuff(mod.BuffType("ChaosWrath"), 2);
+            player.setBonus = @"";
         }
+
 
         public override void UpdateEquip(Player player)
         {
