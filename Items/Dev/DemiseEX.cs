@@ -103,7 +103,7 @@ Demise EX");
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            if (Main.rand.Next(20) == 0 && !target.boss)
+            if (Main.rand.Next(20) == 0 && (!target.boss || !NPCID.Sets.TechnicallyABoss[target.type]))
             {
                 if (Main.netMode != 1) BaseMod.BaseUtility.Chat("The struck enemy's soul bursts", new Color(77, 20, 102));
                 target.life = 0;

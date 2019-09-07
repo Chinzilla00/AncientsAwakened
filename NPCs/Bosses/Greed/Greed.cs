@@ -442,6 +442,11 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void NPCLoot()
         {
+            if (!AAWorld.downedGreed && ModLoader.GetMod("CalamityMod") != null)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GreedLore"));
+            }
+            AAWorld.downedGreed = true;
             if (NPC.downedMoonlord)
             {
                 int a = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<GreedTransition>());
@@ -452,7 +457,6 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 if (!Main.expertMode)
                 {
-                    AAWorld.downedSerpent = true;
                     npc.DropLoot(mod.ItemType("CovetiteCoin"), 10, 15);
                     string[] lootTable = { };
                     int loot = Main.rand.Next(lootTable.Length);

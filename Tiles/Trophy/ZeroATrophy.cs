@@ -1,3 +1,4 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -19,19 +20,31 @@ namespace AAMod.Tiles.Trophy
             dustType = 7;
 			disableSmartCursor = true;
 			AddMapEntry(new Color(120, 85, 60));
-		}
+            animationFrameHeight = 54;
+        }
 
-        public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
+        public override void AnimateTile(ref int frame, ref int frameCounter)
         {
-            Tile tile = Main.tile[i, j];
-            Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
-            if (Main.drawToScreen)
+            if (++frameCounter >= 5)
             {
-                zero = Vector2.Zero;
+                frameCounter = 0;
+                if (++frame >= 9) frame = 0;
             }
-            int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/ZeroATrophy_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), AAColor.COLOR_WHITEFADE1, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/ZeroATrophy_Glow1"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), AAColor.Glow, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+        }
+
+        public Color Glow(Color color)
+        {
+            return ColorUtils.COLOR_GLOWPULSE;
+        }
+
+        public override void PostDraw(int x, int y, SpriteBatch sb)
+        {
+            Tile tile = Main.tile[x, y];
+            Texture2D glowTex = mod.GetTexture("Glowmasks/ChaosCrucible_Glow");
+            Texture2D Sphere = mod.GetTexture("Glowmasks/ChaosCrucible_Sphere");
+            int frameY = tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 54) : 0;
+
+            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, frameY, false, false, false, null, Glow);
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

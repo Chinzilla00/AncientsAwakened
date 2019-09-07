@@ -17,8 +17,8 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override void SetDefaults()
         {
-            npc.width = 60;
-            npc.height = 58;
+            npc.width = 132;
+            npc.height = 104;
             npc.npcSlots = 1000;
             npc.aiStyle = -1;
             npc.defense = 1;
@@ -130,15 +130,6 @@ namespace AAMod.NPCs.Bosses.Athena
             }
         }
 
-        public override bool PreDraw(SpriteBatch sb, Color dColor)
-        {
-            Color lightColor = BaseDrawing.GetLightColor(npc.Center);
-
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 15, npc.frame, lightColor, true);
-
-            return false;
-        }
-
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
@@ -178,7 +169,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     {
                         npc.frame.Y += frameHeight;
                         npc.frameCounter = 0;
-                        if (npc.frame.Y < frameHeight * 11 || npc.frame.Y >= frameHeight * 14)
+                        if (npc.frame.Y < frameHeight * 11 || npc.frame.Y >= frameHeight * 15)
                         {
                             npc.frame.Y = frameHeight * 11;
                         }

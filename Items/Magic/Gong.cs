@@ -16,10 +16,10 @@ namespace AAMod.Items.Magic
             item.magic = true;
 			item.useTime = 30;
             item.useAnimation = 30;
-            item.useStyle = 5;        //this is how the item is holded
+            item.useStyle = 5;        
             item.noMelee = true;
             item.knockBack = 4;
-			item.mana = 8;             //mana use
+			item.mana = 8;             
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/GONG");
             item.autoReuse = true;
             item.shoot = 122;

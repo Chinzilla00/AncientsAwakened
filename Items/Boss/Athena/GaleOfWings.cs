@@ -11,16 +11,16 @@ namespace AAMod.Items.Boss.Athena
         {
 
             item.damage = 50;                        
-            item.magic = true;                     //this make the item do magic damage
+            item.magic = true;                     
             item.width = 24;
             item.height = 28;
-            item.useStyle = 5;        //this is how the item is holded
+            item.useStyle = 5;        
             item.noMelee = true;
             item.knockBack = 4;
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 7;
-            item.mana = 8;             //mana use
-            item.UseSound = SoundID.Item21;            //this is the sound when you use the item
+            item.mana = 8;             
+            item.UseSound = SoundID.Item21;            
             item.autoReuse = true;
             item.useTime = 28;
             item.useAnimation = 28;
