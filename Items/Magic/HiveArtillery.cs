@@ -11,7 +11,7 @@ namespace AAMod.Items.Magic
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hive Artillery");
-			Tooltip.SetDefault("Shoots dozens of evil african bees"
+			Tooltip.SetDefault("Shoots dozens of terrifying bees"
 			+"\nBees ignore enemy invincibility frames"
 			+"\nBee Gun EX");
         }

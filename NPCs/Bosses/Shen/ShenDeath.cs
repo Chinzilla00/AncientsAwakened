@@ -9,6 +9,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Discord's Death");
+            Terraria.ID.NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
         public override void SetDefaults()

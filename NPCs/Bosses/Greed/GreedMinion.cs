@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.IO;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -27,8 +28,8 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.width = 26;
             npc.height = 20;
             npc.aiStyle = -1;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
+            npc.HitSound = new LegacySoundStyle(21, 1);
+            npc.DeathSound = new LegacySoundStyle(2, 14);
             npc.knockBackResist = 0.4f;
             npc.noGravity = true;
         }

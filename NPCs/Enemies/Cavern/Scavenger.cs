@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Enemies.Cavern
 		{
             npc.width = 25;
             npc.height = 25;
-            npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 0, 90);
+            npc.value = BaseUtility.CalcValue(0, 0, 0, 90);
             npc.npcSlots = 5;
             npc.aiStyle = -1;
             npc.lifeMax = 300;
@@ -54,8 +54,9 @@ namespace AAMod.NPCs.Enemies.Cavern
 
 		public override void AI()
         {
-            int[] types = new int[] { mod.NPCType("Scavenger"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerTail") };
-            BaseAI.AIWorm(npc, types, 5, 6f, 8f, 0.07f, false, true);
+            int[] types = new int[] { mod.NPCType("Scavenger"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerTail") };
+            bool diggingDummy = false;
+            BaseAI.AIWorm(npc, ref diggingDummy, types, 5, 0f, 8f, 0.07f, false, false, false, true, true, true);
         }
 
 		public override bool PreDraw(SpriteBatch sb, Color dColor)

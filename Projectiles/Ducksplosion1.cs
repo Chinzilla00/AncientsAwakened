@@ -17,8 +17,8 @@ namespace AAMod.Projectiles
             projectile.width = 176;
             projectile.height = 230;
             projectile.penetrate = -1;
-            projectile.friendly = false;
-            projectile.hostile = true;
+            projectile.friendly = true;
+            projectile.hostile = false;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;

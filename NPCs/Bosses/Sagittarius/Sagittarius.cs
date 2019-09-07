@@ -15,6 +15,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sagittarius");
+            Main.npcFrameCount[npc.type] = 4;
 		}
 
 		public override void SetDefaults()
@@ -252,15 +253,26 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             if (internalAI[2] == 1) //Chaase down the target
             {
                 BaseAI.AIElemental(npc, ref npc.ai, null, 120, false, false, 10, 10, 10, 2.5f);
-                npc.rotation = 0;
             }
             else //Hover over target
             {
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.3f, 7f, 250f, 70f, null);
-                npc.rotation = 0;
+                BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.3f, 10f, 250f, 70f, null);
             }
+            npc.rotation = 0;
 
             npc.noTileCollide = true;
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.frameCounter++ < (16 - npc.velocity.X))
+            {
+                npc.frame.Y += frameHeight;
+                if (npc.frame.Y > frameHeight * 3)
+                {
+                    npc.frame.Y = 0;
+                }
+            }
         }
 
         public override void HitEffect(int hitDirection, double damage)
