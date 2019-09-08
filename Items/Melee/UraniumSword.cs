@@ -21,6 +21,7 @@ namespace AAMod.Items.Melee   //where is located
             item.value = 103500;
             item.melee = true;
             item.shoot = mod.ProjectileType<Projectiles.Radiosphere>();
+            item.shootSpeed = 9;
         }
 
         public override void SetStaticDefaults()

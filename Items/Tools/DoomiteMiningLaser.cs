@@ -10,7 +10,7 @@ namespace AAMod.Items.Tools
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Doomite Mining Laser");
-            BaseUtility.AddTooltips(item, new string[] { "100% pickaxe power", "Mines using the power of a dark laser" });			
+            BaseUtility.AddTooltips(item, new string[] { "Mines with an antimatter laser" });			
 		}		
 
         public override void SetDefaults()

@@ -46,8 +46,15 @@ Your Swung weapons inflicts them with Bogtoxin and Dragonflame";
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            ModRecipe recipe;
+            recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("TrueBlazingKabuto"));
+            recipe.AddIngredient(mod.ItemType("ChaosCrystal"));
+            recipe.AddTile(null, "TruePaladinsSmeltery");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("TrueRaiderHelm"));
             recipe.AddIngredient(mod.ItemType("ChaosCrystal"));
             recipe.AddTile(null, "TruePaladinsSmeltery");
             recipe.SetResult(this);

@@ -32,7 +32,7 @@ namespace AAMod.Projectiles
 
 		public override void SetStaticDefaults()
 		{
-		DisplayName.SetDefault("Mana Petal");
+		    DisplayName.SetDefault("Mana Petal");
 		}
 
 

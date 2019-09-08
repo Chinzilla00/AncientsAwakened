@@ -178,7 +178,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 else if (!npc.HasBuff(BuffID.Wet))
                 {
-                    AAAI.BreatheFire(npc, true, mod.ProjectileType<AkumaBreath>(), 2, 2);
+                    AAAI.BreatheFire(npc, true, mod.ProjectileType<AkumaBreath>(), 2, 4);
                 }
                 if (attackTimer >= 80)
                 {

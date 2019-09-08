@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             projectile.height = 10;
             projectile.hostile = true;
             projectile.friendly = false;
-            projectile.damage = 25;
+            projectile.damage = 35;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.alpha = 255;

@@ -117,12 +117,12 @@ namespace AAMod.NPCs.Bosses.Greed
                         if (MinionType == 8) //Demonite
                         {
                             p = ProjectileID.CursedFlameHostile;
-                            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 120, npc.damage / 2, 9, true);
+                            ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 120, npc.damage / 2, 9, true);
                         }
                         else if (MinionType == 21) //Chlorophyte
                         {
                             p = ProjectileID.CrystalLeafShot;
-                            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 120, npc.damage / 2, 9, true);
+                            ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 120, npc.damage / 2, 9, true);
                         }
                         else if (MinionType == 17 && npc.ai[1]++ > 180) //Oricalcum
                         {
@@ -376,6 +376,31 @@ namespace AAMod.NPCs.Bosses.Greed
                 default:
                     npc.defense = 58; npc.damage = 70; break;
             }
+        }
+
+        public static int ShootPeriodic(Entity codable, Vector2 position, int width, int height, int projType, ref float delayTimer, float delayTimerMax = 100f, int damage = -1, float speed = 10f, bool checkCanHit = true, Vector2 offset = default(Vector2))
+        {
+            int pID = -1;
+            if (damage == -1) { Projectile proj = new Projectile(); proj.SetDefaults(projType); damage = proj.damage; }
+            bool properSide = (codable is NPC ? Main.netMode != 1 : codable is Projectile ? ((Projectile)codable).owner == Main.myPlayer : true);
+            if (properSide)
+            {
+                Vector2 targetCenter = position + new Vector2(width * 0.5f, height * 0.5f);
+                delayTimer--;
+                if (delayTimer <= 0)
+                {
+                    if (!checkCanHit || Collision.CanHit(codable.position, codable.width, codable.height, position, width, height))
+                    {
+                        Vector2 fireTarget = codable.Center + offset;
+                        float rot = BaseUtility.RotationTo(codable.Center, targetCenter);
+                        fireTarget = BaseUtility.RotateVector(codable.Center, fireTarget, rot);
+                        pID = BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage, 0f, speed, -1);
+                    }
+                    delayTimer = delayTimerMax;
+                    if (codable is NPC) { ((NPC)codable).netUpdate = true; }
+                }
+            }
+            return pID;
         }
     }
 }

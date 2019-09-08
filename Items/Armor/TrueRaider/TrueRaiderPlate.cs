@@ -11,7 +11,8 @@ namespace AAMod.Items.Armor.TrueRaider
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Asgardian Chestplate");
-		}
+            Tooltip.SetDefault(@"");
+        }
 
 		public override void SetDefaults()
 		{

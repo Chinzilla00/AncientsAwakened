@@ -18,6 +18,7 @@ namespace AAMod.Tiles
             AddMapEntry(new Color(160, 150, 0), name);
             dustType = mod.DustType<Dusts.YtriumDust>();
 			minPick = 65;
+            soundType = 21;
         }
 
         public override bool CanExplode(int i, int j)

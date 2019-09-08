@@ -42,7 +42,7 @@ It vibrates with the powers of Atlantis");
             recipe.AddRecipe();
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("OceanShirt"));
-            recipe.AddIngredient(mod.ItemType("KindledKabuto"));
+            recipe.AddIngredient(mod.ItemType("KindledDou"));
             recipe.AddIngredient(ItemID.FossilShirt);
             recipe.AddIngredient(mod.ItemType("DoomiteUPlate"));
             recipe.AddTile(TileID.DemonAltar);

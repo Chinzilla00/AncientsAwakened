@@ -2419,6 +2419,20 @@ namespace AAMod
                 }
             }
 
+            if (crit)
+            {
+                if (damage / 10 < 1)
+                {
+                    player.statLife += 1;
+                    CombatText.NewText(player.getRect(), Color.Green, 1, true, false);
+                }
+                else
+                {
+                    player.statLife += damage / 10;
+                    CombatText.NewText(player.getRect(), Color.Green, damage / 10, true, false);
+                }
+            }
+
             if (Tied || trueNights)
             {
                 target.AddBuff(BuffID.CursedInferno, 300);
@@ -2987,6 +3001,17 @@ namespace AAMod
                 if (trueFlesh)
                 {
                     target.AddBuff(BuffID.Ichor, 300);
+                    if (crit)
+                    {
+                        if (damage / 10 < 1)
+                        {
+                            player.statLife += 1;
+                        }
+                        else
+                        {
+                            player.statLife += damage / 10;
+                        }
+                    }
                 }
 
                 if (trueNights)

@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetStaticDefaults()
         {
 			base.SetStaticDefaults();
-            DisplayName.SetDefault("Shin'en Yamata");
+            DisplayName.SetDefault("Yamata no Orochi");
             Main.npcFrameCount[npc.type] = 7;
         }
 

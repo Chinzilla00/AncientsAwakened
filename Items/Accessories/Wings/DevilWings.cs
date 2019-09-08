@@ -48,7 +48,7 @@ namespace AAMod.Items.Accessories.Wings
 			recipe.AddIngredient(ItemID.FlameWings, 1);
             recipe.AddIngredient(null, "DevilSilk", 10);
             recipe.AddIngredient(null, "PureEvil", 3);
-            recipe.AddIngredient(null, "DungeonCrystal", 1);
+            recipe.AddIngredient(null, "HellCrystal", 1);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
