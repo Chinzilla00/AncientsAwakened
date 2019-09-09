@@ -40,7 +40,7 @@ namespace AAMod.Items.Armor.Doomite
             {
                 modPlayer.Searcher = false;
             }
-            if (modPlayer.Searcher)
+            if (modPlayer.doomite)
             {
                 projectile.timeLeft = 2;
             }

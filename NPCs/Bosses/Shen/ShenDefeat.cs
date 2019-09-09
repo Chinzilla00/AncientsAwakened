@@ -36,7 +36,16 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (!NPC.AnyNPCs(mod.NPCType<ShenDeath>()))
                 {
-                    int nPc = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<ShenDeath>());
+                    int i;
+                    if (AAWorld.downedShen)
+                    {
+                        i = 1;
+                    }
+                    else
+                    {
+                        i = 0;
+                    }
+                    int nPc = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<ShenDeath>(), 0, i);
                     Main.npc[nPc].netUpdate = true;
                     npc.active = false;
                     npc.netUpdate = true;

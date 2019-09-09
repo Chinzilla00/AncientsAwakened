@@ -40,6 +40,7 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.DeathSound = SoundID.NPCDeath1;
             npc.boss = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AthenaA");
+            bossBag = mod.ItemType<Items.Boss.Athena.AthenaBag>();
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -128,7 +129,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     for (int i = 0; i < 3; i++)
                     {
                         double offsetAngle = startAngle + (deltaAngle * i);
-                        int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 2, Main.myPlayer);
+                        int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage / 2, 2, Main.myPlayer);
                         Main.projectile[p].tileCollide = false;
                     }
                 }
@@ -136,7 +137,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 {
                     for (int i = 0; i < 3; i++)
                     {
-                        Projectile.NewProjectile(player.Center.X + Main.rand.Next(-100, 100), player.Center.Y, 0, 0, mod.ProjectileType<Hurricane>(), npc.damage, 12, Main.myPlayer);
+                        Projectile.NewProjectile(player.Center.X + Main.rand.Next(-100, 100), player.Center.Y, 0, 0, mod.ProjectileType<Hurricane>(), 30, 12, Main.myPlayer);
                     }
                 }
                 internalAI[2] = 0;
@@ -348,14 +349,6 @@ namespace AAMod.NPCs.Bosses.Athena
         public void ShootFeather(NPC npc, Vector2 velocity)
         {
             Player player = Main.player[npc.target];
-            if (Main.expertMode)
-            {
-                damage = npc.damage / 4;
-            }
-            else
-            {
-                damage = npc.damage / 2;
-            }
             if (Main.rand.Next(2) == 0)
             {
                 int projType = mod.ProjectileType<SeraphFeather>();
@@ -368,13 +361,13 @@ namespace AAMod.NPCs.Bosses.Athena
                 for (int i = 0; i < 3; i++)
                 {
                     double offsetAngle = startAngle + (deltaAngle * i);
-                    int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 2, Main.myPlayer);
+                    int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage / 2, 2, Main.myPlayer);
                     Main.projectile[p].tileCollide = false;
                 }
             }
             else
             {
-                BaseAI.FireProjectile(player.position, npc.position, mod.ProjectileType<AthenaMagic>(), damage, 5, 12, -1, Main.myPlayer, default);
+                BaseAI.FireProjectile(player.position, npc.position, mod.ProjectileType<AthenaMagic>(), damage / 2, 5, 12, -1, Main.myPlayer, default);
             }
         }
 

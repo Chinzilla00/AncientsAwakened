@@ -74,15 +74,10 @@ Hold down and jump to hover for an extended period of time
                 if (player.controlDown && player.controlJump && player.wingTime > 0f && !player.merman)
                 {
                     player.velocity.Y *= 0.7f;
-                    if (player.velocity.Y > -2f && player.velocity.Y < 1f)
+                    if (player.velocity.Y > 1E-05f && player.velocity.Y < 1f)
                     {
                         player.velocity.Y = 1E-05f;
                     }
-                    player.armorEffectDrawShadowEOCShield = true;
-                }
-                else
-                {
-                    player.armorEffectDrawShadowEOCShield = false;
                 }
             }
             return false;

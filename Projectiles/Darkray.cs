@@ -49,5 +49,14 @@ namespace AAMod.Projectiles
             projectile.extraUpdates = 1;
 			aiType = ProjectileID.Bullet;           
 		}
+
+        public override void PostAI()
+        {
+            if (projectile.velocity == Vector2.Zero)
+            {
+                projectile.active = false;
+            }
+        }
+
 	}
 }

@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.TargetClosest();
             Player player = Main.player[npc.target];
             npc.Center = player.Center;
-            if (!AAWorld.downedShen)
+            if (npc.ai[0] == 0)
             {
                 if (npc.ai[1] == 180)
                 {
