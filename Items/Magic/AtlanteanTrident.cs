@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -10,7 +11,7 @@ namespace AAMod.Items.Magic
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Atlantean Trident");
-			Tooltip.SetDefault("Fires off magical tridents");
+			Tooltip.SetDefault("Fires off a tri-shot of water bolts");
 			Item.staff[item.type] = true;
 		}
 
@@ -30,22 +31,24 @@ namespace AAMod.Items.Magic
 			item.rare = 3;
 			item.UseSound = SoundID.Item21;
 			item.autoReuse = true;
-			item.shoot = mod.ProjectileType("AtlanteanTridentP");
+			item.shoot = ProjectileID.WaterBolt;
 			item.shootSpeed = 10f;
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			float numberProjectiles = 3;
-			float rotation = MathHelper.ToRadians(10);
-			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
-			for (int i = 0; i < numberProjectiles; i++)
-			{
-				Vector2 perturbedSpeed = new Vector2(speedX*4, speedY*4).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * .2f;
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
-			}
-			return false;
-		}
+            float spread = 45f * 0.0174f;
+            float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
+            double startAngle = Math.Atan2(speedX, speedY) - .1d;
+            double deltaAngle = spread / 6f;
+            double offsetAngle;
+            for (int i = 0; i < 3; i++)
+            {
+                offsetAngle = startAngle + (deltaAngle * i);
+                Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
+            }
+            return false;
+        }
 		
 		public override void AddRecipes()
 		{

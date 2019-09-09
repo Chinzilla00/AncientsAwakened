@@ -51,7 +51,7 @@ Can only be used at night");
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The crystal shows an image of the nearby ice biome inside of it", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
                 return false;
             }
-            if (NPC.AnyNPCs(mod.NPCType("Serpent")))
+            if (NPC.AnyNPCs(mod.NPCType("SerpentHead")))
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Subzero Serpent continues to attack", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
                 return false;

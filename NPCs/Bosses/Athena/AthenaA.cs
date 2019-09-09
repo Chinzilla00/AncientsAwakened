@@ -7,6 +7,7 @@ using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using AAMod.NPCs.Enemies.Sky;
+using AAMod.Items.Boss.Athena;
 
 namespace AAMod.NPCs.Bosses.Athena
 {
@@ -429,6 +430,17 @@ namespace AAMod.NPCs.Bosses.Athena
                 if (Main.netMode != 1) BaseUtility.Chat("Rgh...alright, alright, I get it. I yield. Take your stuff and leave...idiot...", Color.CornflowerBlue);
                 int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
                 Main.npc[p].Center = npc.Center;
+            }
+            if(Main.expertMode)
+            {
+                npc.DropBossBags();
+            }
+            else
+            {
+                npc.DropLoot(mod.ItemType<GoddessFeather>(), Main.rand.Next(15, 31));
+                string[] lootTable = { "Olympia", "FluffyFury", "RabbitsWrath" };
+                int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
             }
             AAWorld.downedAthenaA = true;
         }

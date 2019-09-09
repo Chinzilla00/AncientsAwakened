@@ -70,7 +70,7 @@ Uses Bullets and Bones as ammo
 
         public override bool ConsumeAmmo(Player player)
         {
-            return !(player.itemAnimation < item.useAnimation - 5);
+            return !(player.itemAnimation < item.useAnimation - 1);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
