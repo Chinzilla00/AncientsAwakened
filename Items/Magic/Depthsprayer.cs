@@ -23,7 +23,7 @@ namespace AAMod.Items.Magic
 			item.knockBack = 4f;
 			item.width = 38;
 			item.height = 10;
-			item.damage = 70;
+			item.damage = 35;
 			item.shoot = mod.ProjectileType("Depthsprayer");
 			item.shootSpeed = 12f;
 			item.UseSound = SoundID.Item13;
