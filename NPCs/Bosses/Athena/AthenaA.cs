@@ -422,7 +422,7 @@ namespace AAMod.NPCs.Bosses.Athena
         {
             if (!AAWorld.downedAthenaA)
             {
-                int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaDefeat2>());
+                int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaDefeat>(), 0, 0, 0, 1);
                 Main.npc[p].Center = npc.Center;
             }
             else

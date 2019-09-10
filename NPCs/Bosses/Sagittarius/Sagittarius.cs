@@ -24,8 +24,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.boss = true;
             npc.defense = 300;
             npc.damage = 35;
-            npc.width = 92;
-            npc.height = 92;
+            npc.width = 124;
+            npc.height = 186;
             npc.aiStyle = -1;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCDeath14;

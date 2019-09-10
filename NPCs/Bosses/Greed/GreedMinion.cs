@@ -25,8 +25,8 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.lifeMax = 200;
             npc.defense = 20;
             npc.damage = 50;
-            npc.width = 26;
-            npc.height = 20;
+            npc.width = 60;
+            npc.height = 60;
             npc.aiStyle = -1;
             npc.HitSound = new LegacySoundStyle(21, 1);
             npc.DeathSound = new LegacySoundStyle(2, 14);

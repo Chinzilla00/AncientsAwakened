@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Enemies.Cavern
         {
             int[] types = new int[] { mod.NPCType("Scavenger"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerTail") };
             bool diggingDummy = false;
-            BaseAI.AIWorm(npc, ref diggingDummy, types, 5, 0f, 8f, 0.07f, false, false, false, true, true, true);
+            BaseAI.AIWorm(npc, ref diggingDummy, types, 5, 0f, 8f, 0.07f, false, false, false, false, true, true);
         }
 
 		public override bool PreDraw(SpriteBatch sb, Color dColor)

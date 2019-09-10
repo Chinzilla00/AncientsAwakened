@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Greed, Gilded Glutton");
+			DisplayName.SetDefault("Worm King Greed");
 		}
 
 		public override void SetDefaults()
