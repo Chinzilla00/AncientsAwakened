@@ -17,7 +17,7 @@ namespace AAMod.Items.Magic
 
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 6;
-			item.damage = 150;                        
+			item.damage = 50;                        
             item.magic = true;
 			item.useTime = 30;
             item.useAnimation = 30;

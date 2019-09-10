@@ -22,8 +22,8 @@ namespace AAMod.Items.Boss.Yamata
 	        item.ranged = true;
 	        item.width = 60;
 	        item.height = 26;
-	        item.useTime = 17;
-	        item.useAnimation = 17;
+	        item.useTime = 16;
+	        item.useAnimation = 16;
 	        item.useStyle = 5;
 	        item.noMelee = true;
 	        item.knockBack = 4.5f;

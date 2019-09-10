@@ -11,7 +11,7 @@ namespace AAMod.Items.Boss.Toad
 
 		public override void SetDefaults()
 		{
-			item.damage = 20;
+			item.damage = 15;
 			item.magic = true;
 			item.mana = 6;
 			item.width = 58;

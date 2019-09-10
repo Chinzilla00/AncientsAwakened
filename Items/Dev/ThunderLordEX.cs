@@ -27,13 +27,13 @@ Storm Rifle EX");
 
         public override void SetDefaults()
         {
-            item.damage = 250;
+            item.damage = 375;
             item.noMelee = true;
             item.ranged = true; 
             item.width = 70; 
             item.height = 24;
-            item.useTime = 5; 
-            item.useAnimation = 8; 
+            item.useTime = 3; 
+            item.useAnimation = 3; 
             item.useStyle = 5;
             item.shoot = mod.ProjectileType("ThunderBullet");
             item.knockBack = 3;

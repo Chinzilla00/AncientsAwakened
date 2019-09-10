@@ -12,12 +12,12 @@ namespace AAMod.Items.Boss.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Daystorm");
-            Tooltip.SetDefault(@"incinerate your enamys in the storm of scorching firey mayhem");
+            Tooltip.SetDefault(@"Incinerate your enemies in a storm of scorching fiery mayhem");
         }       
 
         public override void SetDefaults()
 		{
-			item.damage = 250;
+			item.damage = 225;
 			item.magic = true;
 			item.mana = 6;
 			item.width = 100;
