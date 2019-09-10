@@ -87,20 +87,13 @@ namespace AAMod.NPCs.Bosses.Serpent
             {
                 damage = npc.damage / 2;
             }
+
             Player player = Main.player[npc.target];
-            if (Main.dayTime || !player.ZoneSnow)
-            {
-                internalAI[0]++;
-                npc.velocity.Y = npc.velocity.Y + 0.8f;
-                if (internalAI[0] >= 300)
-                {
-                    npc.active = false;
-                }
-            }
-            else if (player.dead || !player.active)
+
+            if (player.dead || !player.active || !player.ZoneSnow)
             {
                 npc.TargetClosest(true);
-                if (player.dead || !player.active)
+                if (player.dead || !player.active || !player.ZoneSnow)
                 {
                     internalAI[0]++;
                     npc.velocity.Y = npc.velocity.Y + 0.8f;

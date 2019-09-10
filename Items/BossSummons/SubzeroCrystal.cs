@@ -41,11 +41,6 @@ Can only be used at night");
 
         public override bool CanUseItem(Player player)
         {
-            if (Main.dayTime )
-            {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The crystal just sits there, melting in the sun", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
-                return false;
-            }
             if (!player.ZoneSnow)
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The crystal shows an image of the nearby ice biome inside of it", Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);

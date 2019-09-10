@@ -40,11 +40,6 @@ Only usable during the day");
 
         public override bool CanUseItem(Player player)
         {
-            if (!Main.dayTime)
-            {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The lamp shimmers in the moonlight, yet does nothing", Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
-                return false;
-            }
             if (!player.ZoneDesert)
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The lamp spits out sand as you rub it", Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);

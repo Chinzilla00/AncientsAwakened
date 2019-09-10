@@ -142,7 +142,6 @@ namespace AAMod.NPCs.Bosses.Shen
         public int discordianFirebombPercent = 30; //the % amount to shoot firebombs
         public int aiChangeRate = 100; //the rate to jump to another ai. (in truth this is ai[2], this is what it is checked against by default.)
         public int aiTooLongCheck = 60; //if he takes too long to change ai states this forces it to happen soon. smaller value == faster change.
-		public int Timer10;
         public int damageDiscordianInferno = 120; //how much damage the inferno fire does.
         public int damageDiscordianFirebomb = 140; //how much damage the firebomb does.
 
@@ -152,8 +151,8 @@ namespace AAMod.NPCs.Bosses.Shen
         public int frameY = 400; //the frame height for the body.
         public int roarTimer = 0; //if this is > 0, then use the roaring frame.
         public int roarTimerMax = 120; //default roar timer. only changed for fire breath as it's longer.
-        public bool Roaring //wether or not he is roaring. only used clientside for frame visuals.
-=> roarTimer > 0;
+        public bool Roaring => roarTimer > 0; //wether or not he is roaring. only used clientside for frame visuals.
+
         public bool LookAtPlayer => ChargePrep || npc.ai[0] == 2 || npc.ai[0] == 3;
 
         public int chargeWidth = 50;
@@ -175,7 +174,7 @@ namespace AAMod.NPCs.Bosses.Shen
             return null;
         }
 
-			public int Side;
+	    public int Side;
         public bool Health4 = false;
         public bool Health3 = false;
         public bool Health2 = false;
@@ -772,94 +771,86 @@ namespace AAMod.NPCs.Bosses.Shen
                 Vector2 playerPoint = player.Center + new Vector2(Math.Sign(compareX) * 500, -400);
                 MoveToPoint(playerPoint);
                 Roar(roarTimerMax, false);
-				Timer10++;
-             
-                    if (Main.netMode != 1)
-                    {
-                        
-					//Player player = Main.player[npc.target];
-				
-                int indexer = 1;
-                float Speed = 25f;  //projectile speed
-                Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
-                int damage = 10;  //projectile damage
-                int type = mod.ProjectileType("Arrow");  //put your projectile
-                Main.PlaySound(23, (int)npc.position.X, (int)npc.position.Y, 17);
-                float rot = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
-
-
-             
-				if (Timer10 == 1)
-                    indexer = Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rot) * Speed) * -1), (float)((Math.Sin(rot) * Speed) * -1), type, damage, 0f, 0);
-
-             
-					if (Timer10 >= 180){
-                    for (indexer = 0; indexer < 200; indexer++)
-                    {
-                        if (Main.projectile[indexer].type == mod.ProjectileType("Arrow"))
-                        {
-							
-				
-            for (int num119 = 0; num119 < 2; num119++)
-            {
-                for (int num120 = 0; num120 < 3; num120++)
+                if (Main.netMode != 1)
                 {
-                    Vector2 vector12 = new Vector2(Main.projectile[indexer].position.X, Main.projectile[indexer].position.Y);
-                    float num75 = 20f;
-                    Vector2 vector2 = Main.projectile[indexer].Center + new Vector2(-(float)Main.rand.Next(0, 401) * Main.projectile[indexer].direction, -1200f);
-                    vector2.Y -= 100 * num120;
-                    Vector2 vector13 = vector12 - vector2;
-                    if (vector13.Y < 0f)
+                    customAI[5]++;
+                    float Speed = 25f;  //projectile speed
+                    Vector2 vector8 = new Vector2(npc.position.X + (npc.width / 2), npc.position.Y + (npc.height / 2));
+                    int damage = 10;  //projectile damage
+                    int type = mod.ProjectileType("Arrow");  //put your projectile
+                    Main.PlaySound(23, (int)npc.position.X, (int)npc.position.Y, 17);
+                    float rot = (float)Math.Atan2(vector8.Y - (player.position.Y + (player.height * 0.5f)), vector8.X - (player.position.X + (player.width * 0.5f)));
+
+
+             
+				    if (customAI[5] == 1)
                     {
-                        vector13.Y *= -1f;
+                        Projectile.NewProjectile(vector8.X, vector8.Y, (float)((Math.Cos(rot) * Speed) * -1), (float)((Math.Sin(rot) * Speed) * -1), type, damage, 0f, npc.target);
+                        npc.netUpdate = true;
                     }
-                    if (vector13.Y < 20f)
+
+             
+					if (customAI[5] >= 180)
                     {
-                        vector13.Y = 20f;
-                    }
-                    vector13.Normalize();
-                    vector13 *= num75;
-                    float num82 = vector13.X;
-                    float num83 = vector13.Y;
-                    float speedX5 = num82;
-                    float speedY5 = num83 + Main.rand.Next(-5, 5) * 0.02f;
-                    int L = Projectile.NewProjectile(vector2.X, vector2.Y, speedX5 * 2, speedY5 * 2, mod.ProjectileType<NPCs.Bosses.Shen.ChaosLightning>(), npc.damage / 6, 1, Main.myPlayer, vector13.ToRotation());
-                    Main.projectile[L].penetrate = -1;
-                    Main.projectile[L].hostile = false;
-                    Main.projectile[L].hostile = true;
-                }
-            
-			
-				}
-		
-        
-    }
-					}
+                        for (int indexer = 0; indexer < 200; indexer++)
+                        {
+                            if (Main.projectile[indexer].type == mod.ProjectileType("Arrow"))
+                            {
+                                for (int num119 = 0; num119 < 2; num119++)
+                                {
+                                    for (int num120 = 0; num120 < 3; num120++)
+                                    {
+                                        Vector2 vector12 = new Vector2(Main.projectile[indexer].position.X, Main.projectile[indexer].position.Y);
+                                        float num75 = 20f;
+                                        Vector2 vector2 = Main.projectile[indexer].Center + new Vector2(-(float)Main.rand.Next(0, 401) * Main.projectile[indexer].direction, -1200f);
+                                        vector2.Y -= 100 * num120;
+                                        Vector2 vector13 = vector12 - vector2;
+                                        if (vector13.Y < 0f)
+                                        {
+                                            vector13.Y *= -1f;
+                                        }
+                                        if (vector13.Y < 20f)
+                                        {
+                                            vector13.Y = 20f;
+                                        }
+                                        vector13.Normalize();
+                                        vector13 *= num75;
+                                        float num82 = vector13.X;
+                                        float num83 = vector13.Y;
+                                        float speedX5 = num82;
+                                        float speedY5 = num83 + Main.rand.Next(-5, 5) * 0.02f;
+                                        int L = Projectile.NewProjectile(vector2.X, vector2.Y, speedX5 * 2, speedY5 * 2, mod.ProjectileType<ChaosLightning>(), npc.damage / 6, 1, Main.myPlayer, vector13.ToRotation());
+                                        Main.projectile[L].penetrate = -1;
+                                        Main.projectile[L].hostile = false;
+                                        Main.projectile[L].hostile = true;
+                                    }
+				                }
+                            }
+					    }
                     }
                 }
                 npc.ai[2] += 1f;
                 if (npc.ai[2] >= 180)
                 {
-					Timer10 = 0;
+					customAI[5] = 0;
                     SwitchToAI(0f, 0f, 0f, npc.ai[3] + 1);
                 }
             }
             else if (npc.ai[0] == 8f) //Fire Rain (Awakened only)
             {
-							  Side++;
+				Side++;
 				if (Side == 3)
 					
 				for (int i = 0; i < 6; i++)
-	{
-		float disY = Main.rand.NextFloat(-600, 600);
-			float speedX = -npc.velocity.X * Main.rand.NextFloat(.4f, .7f) + Main.rand.NextFloat(-8f, 8f);
-		float speedY = -npc.velocity.Y * Main.rand.Next(40, 70) * 0.01f + Main.rand.Next(-20, 21) * 0.4f; // This is Vanilla code, a little more obscure.
-		// Spawn the Projectile.
-		Projectile.NewProjectile(player.position.X -1500, player.position.Y + disY, 1, 0, mod.ProjectileType("Side"), (int)(npc.damage * 0.2), 0f, npc.target, 0f, 0f);
-		
-	}
+	            {
+		            float disY = Main.rand.NextFloat(-600, 600);
+		            Projectile.NewProjectile(player.position.X -1500, player.position.Y + disY, 1, 0, mod.ProjectileType("Side"), (int)(npc.damage * 0.2), 0f, npc.target, 0f, 0f);
+	            }
+
                 float compareX = (npc.Center - player.Center).X;
+
                 if (compareX == 0) compareX = 1;
+
                 Vector2 playerPoint = player.Center + new Vector2(Math.Sign(compareX) * 500, -400);
                 MoveToPoint(playerPoint);
                 Roar(roarTimerMax, false);

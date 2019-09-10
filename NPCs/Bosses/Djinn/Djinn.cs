@@ -126,10 +126,10 @@ namespace AAMod.NPCs.Bosses.Djinn
                 }
             }
 
-            if (player.dead || !Main.dayTime)
+            if (player.dead || !player.active)
             {
                 npc.TargetClosest(true);
-                if (player.dead || !Main.dayTime)
+                if (player.dead || !player.active)
                 {
                     FuriousFlexing();
                     return;
