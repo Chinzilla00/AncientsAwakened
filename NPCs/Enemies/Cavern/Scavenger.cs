@@ -61,12 +61,8 @@ namespace AAMod.NPCs.Enemies.Cavern
 
 		public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            npc.position.Y += npc.height * 0.5f; return true;
-        }
-
-		public override void PostDraw(SpriteBatch sb, Color dColor)
-        {
-            npc.position.Y -= npc.height * 0.5f;
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor, true);
+            return false;
         }
 	}
 
