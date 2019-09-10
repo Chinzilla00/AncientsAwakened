@@ -23,6 +23,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.extraUpdates = 2;
             projectile.timeLeft = 1000;
             cooldownSlot = 1;
+            projectile.tileCollide = false;
         }
 
         public bool playedSound = false;
