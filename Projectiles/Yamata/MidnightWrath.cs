@@ -22,6 +22,8 @@ namespace AAMod.Projectiles.Yamata
             projectile.aiStyle = -1;
             projectile.timeLeft = 600;
             projectile.extraUpdates = 1;
+			projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = -1;
         }
 
         public bool StuckInEnemy = false;
@@ -34,7 +36,7 @@ namespace AAMod.Projectiles.Yamata
                 StuckInEnemy = true;
                 projectile.ai[0] = 1f;
                 projectile.ai[1] = target.whoAmI;
-                projectile.velocity = (target.Center - projectile.Center) * 0.75f;
+                projectile.velocity = (target.Center - projectile.Center) * 0.33f;
                 projectile.netUpdate = true;
             }
         }
@@ -65,10 +67,6 @@ namespace AAMod.Projectiles.Yamata
                 {
                     projectile.Center = Main.npc[num978].Center - projectile.velocity * 2f;
                     projectile.gfxOffY = Main.npc[num978].gfxOffY;
-                }
-                else
-                {
-                    flag53 = true;
                 }
                 if (flag53)
                 {
