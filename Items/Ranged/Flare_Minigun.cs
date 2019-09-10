@@ -44,7 +44,7 @@ namespace AAMod.Items.Ranged
 			{
 				for(int i = 0; i < 1000; ++i)
 				{
-					if(Main.projectile[i].active && Main.projectile[i].type == 163)
+					if(Main.projectile[i].active && (Main.projectile[i].type == 163 || Main.projectile[i].type == 310))
 					{
 						Main.projectile[i].Kill();
 					}
@@ -82,7 +82,7 @@ namespace AAMod.Items.Ranged
             int num45 = 0;
             for (int num46 = 54; num46 < 58; num46++)
             {
-                if (player.inventory[num46].stack > 0 && player.inventory[num46].ammo == 931)
+                if (player.inventory[num46].stack > 0 && (player.inventory[num46].ammo == 931 || player.inventory[num46].ammo == 1614))
                 {
                     num45 = player.inventory[num46].type;
                     break;
@@ -92,7 +92,7 @@ namespace AAMod.Items.Ranged
             {
                 for (int num47 = 0; num47 < 54; num47++)
                 {
-                    if (player.inventory[num47].stack > 0 && player.inventory[num47].ammo == 931)
+                    if (player.inventory[num47].stack > 0 && (player.inventory[num47].ammo == 931 || player.inventory[num47].ammo == 1614))
                     {
                         num45 = player.inventory[num47].type;
                         break;

@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.Audio;
 using Terraria.ModLoader;
 using BaseMod;
+using System.IO;
 
 namespace AAMod.NPCs.Bosses.Hydra
 {
@@ -163,11 +164,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 
             if (Main.dayTime)
             {
-                npc.alpha += 2;
-                if (npc.alpha >= 256)
-                {
-                    npc.active = false;
-                }
+                AIMovementRunAway();
                 return;
             }
 
@@ -246,6 +243,26 @@ namespace AAMod.NPCs.Bosses.Hydra
             }
         }
 
+        public float[] internalAI = new float[1];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if (Main.netMode == 2 || Main.dedServ)
+            {
+                writer.Write(internalAI[0]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == 1)
+            {
+                internalAI[0] = reader.ReadFloat();
+            }
+        }
+
+
         public override void PostAI()
         {
             if (npc.velocity.X != 0)
@@ -273,10 +290,12 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public void AIMovementRunAway()
         {
-            npc.alpha += 10;
-            if (npc.alpha >= 255)
+            npc.alpha += 2;
+            if (Main.netMode != 1) internalAI[0] += 2;
+            if (internalAI[0] >= 255)
             {
                 npc.active = false;
+                npc.netUpdate = true;
             }
         }
 
