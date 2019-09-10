@@ -44,7 +44,7 @@ namespace AAMod.Items.Ranged
 			{
 				for(int i = 0; i < 1000; ++i)
 				{
-					if(Main.projectile[i].active && Main.projectile[i].type == 163)
+					if(Main.projectile[i].active && (Main.projectile[i].type == 163 || Main.projectile[i].type == 310))
 					{
 						Main.projectile[i].Kill();
 					}
