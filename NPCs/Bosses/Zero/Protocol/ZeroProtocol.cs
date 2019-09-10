@@ -154,12 +154,12 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 Texture2D ZeroTrail = mod.GetTexture("NPCs/Bosses/Zero/Protocol/ZeroTrail");
                 Color color = npc.GetAlpha(color1) * ((npc.oldPos.Length - k) / (float)npc.oldPos.Length);
-                spritebatch.Draw(ZeroTrail, npc.position, null, color, npc.rotation, drawOrigin, npc.scale, npc.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                spritebatch.Draw(ZeroTrail, npc.position, null, color, npc.rotation, drawOrigin, npc.scale, SpriteEffects.None, 0f);
             }
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc, auraPercent, 1f, 0f, 0f, color1);
+            BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, npc.rotation, npc.direction, 15, npc.frame, 0f, 0f, color1);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color1);
             return false;
         }

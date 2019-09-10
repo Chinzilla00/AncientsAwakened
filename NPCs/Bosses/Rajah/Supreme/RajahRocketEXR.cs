@@ -15,8 +15,8 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
 
         public override void SetDefaults()
         {
-            projectile.width = 14;
-            projectile.height = 14;
+            projectile.width = 20;
+            projectile.height = 20;
             projectile.penetrate = 1;
             projectile.tileCollide = true;
             projectile.hostile = true;

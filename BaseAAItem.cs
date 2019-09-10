@@ -39,7 +39,7 @@ namespace AAMod.Items
 					rotation,
 					texture.Size() * 0.5f,
 					scale,
-					SpriteEffects.None,
+					item.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally,
 					0f
 				);
 			}

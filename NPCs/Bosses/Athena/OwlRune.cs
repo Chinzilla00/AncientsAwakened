@@ -19,8 +19,8 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.damage = Main.expertMode ? 50 : 84;
             npc.defense = Main.expertMode ? 1 : 1;
             npc.knockBackResist = 0.2f;
-            npc.width = 152;
-            npc.height = 84;
+            npc.width = 82;
+            npc.height = 82;
             npc.value = Item.buyPrice(0, 0, 0, 0);
             npc.lavaImmune = true;
             npc.noTileCollide = true;
@@ -69,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
                 npc.TargetClosest();
                 Player player = Main.player[npc.target];
-                BaseAI.ShootPeriodic(npc, player.position, npc.width, npc.height, mod.ProjectileType<SeraphFeather>(), ref npc.ai[2], 15, npc.damage / 4, 10, false);
+                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<SeraphFeather>(), ref npc.ai[2], 15, npc.damage / 4, 10, false);
             }
             else
             {
@@ -89,7 +89,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), false);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
             return false;
         }
     }

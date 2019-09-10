@@ -13,143 +13,151 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override void SetDefaults()
         {
-            projectile.width = 14;
-            projectile.height = 14;
-            projectile.aiStyle = -1;
-            projectile.penetrate = 1;
-            projectile.timeLeft = 900;
-            projectile.tileCollide = false;
-            projectile.ignoreWater = true;
-            projectile.alpha = 255;
+            projectile.width = 10;
+            projectile.height = 10;
             projectile.hostile = true;
+            projectile.tileCollide = false;
+            projectile.penetrate = -1;
+            projectile.timeLeft = 1200;
         }
+
 
         public override void AI()
         {
-            Color newColor3 = new Color(255, 255, 255);
+            float num1125 = 600f;
             if (projectile.soundDelay == 0)
             {
                 projectile.soundDelay = -1;
-                Main.PlaySound(SoundID.Item60, projectile.Center);
+                Main.PlaySound(2, projectile.Center, 122);
             }
-            if (projectile.localAI[1] < 30f)
-            {
-                for (int num1132 = 0; num1132 < 1; num1132++)
-                {
-                    float value79 = -0.5f;
-                    float value80 = 0.9f;
-                    float amount4 = Main.rand.NextFloat();
-                    Vector2 value81 = new Vector2(MathHelper.Lerp(0.1f, 1f, Main.rand.NextFloat()), MathHelper.Lerp(value79, value80, amount4));
-                    value81.X *= MathHelper.Lerp(2.2f, 0.6f, amount4);
-                    value81.X *= -1f;
-                    Vector2 value82 = new Vector2(2f, 10f);
-                    Vector2 position4 = projectile.Center + new Vector2(60f, 200f) * value81 * 0.5f + value82;
-                    Dust dust35 = Main.dust[Dust.NewDust(position4, 0, 0, 187, 0f, 0f, 0, default, 1f)];
-                    dust35.position = position4;
-                    dust35.customData = projectile.Center + value82;
-                    dust35.fadeIn = 1f;
-                    dust35.scale = 0.3f;
-                    if (value81.X > -1.2f)
-                    {
-                        dust35.velocity.X = 1f + Main.rand.NextFloat();
-                    }
-                    dust35.velocity.Y = Main.rand.NextFloat() * -0.5f - 1f;
-                }
-            }
-            if (projectile.localAI[0] == 0f)
-            {
-                projectile.localAI[0] = 0.8f;
-                projectile.direction = 1;
-                Point point9 = projectile.Center.ToTileCoordinates();
-                projectile.Center = new Vector2(point9.X * 16 + 8, point9.Y * 16 + 8);
-            }
-            projectile.rotation = projectile.localAI[1] / 40f * 6.28318548f * projectile.direction;
-            if (projectile.localAI[1] < 33f)
-            {
-                if (projectile.alpha > 0)
-                {
-                    projectile.alpha -= 8;
-                }
-                if (projectile.alpha < 0)
-                {
-                    projectile.alpha = 0;
-                }
-            }
-            if (projectile.localAI[1] > 103f)
-            {
-                if (projectile.alpha < 255)
-                {
-                    projectile.alpha += 16;
-                }
-                if (projectile.alpha > 255)
-                {
-                    projectile.alpha = 255;
-                }
-            }
-            if (projectile.alpha == 0)
-            {
-                Lighting.AddLight(projectile.Center, newColor3.ToVector3() * 0.5f);
-            }
-            for (int num1133 = 0; num1133 < 2; num1133++)
-            {
-                if (Main.rand.Next(10) == 0)
-                {
-                    Vector2 value83 = Vector2.UnitY.RotatedBy(num1133 * 3.14159274f).RotatedBy(projectile.rotation);
-                    Dust dust36 = Main.dust[Dust.NewDust(projectile.Center, 0, 0, 187, 0f, 0f, 225, newColor3, 1.5f)];
-                    dust36.noGravity = true;
-                    dust36.noLight = true;
-                    dust36.scale = projectile.Opacity * projectile.localAI[0];
-                    dust36.position = projectile.Center;
-                    dust36.velocity = value83 * 2.5f;
-                }
-            }
-            for (int num1134 = 0; num1134 < 2; num1134++)
-            {
-                if (Main.rand.Next(10) == 0)
-                {
-                    Vector2 value84 = Vector2.UnitY.RotatedBy(num1134 * 3.14159274f);
-                    Dust dust37 = Main.dust[Dust.NewDust(projectile.Center, 0, 0, 187, 0f, 0f, 225, newColor3, 1.5f)];
-                    dust37.noGravity = true;
-                    dust37.noLight = true;
-                    dust37.scale = projectile.Opacity * projectile.localAI[0];
-                    dust37.position = projectile.Center;
-                    dust37.velocity = value84 * 2.5f;
-                }
-            }
-            if (projectile.localAI[1] < 33f || projectile.localAI[1] > 87f)
-            {
-                projectile.scale = projectile.Opacity / 2f * projectile.localAI[0];
-            }
-            projectile.velocity = Vector2.Zero;
-            projectile.localAI[1] += 1f;
-            if (projectile.localAI[1] == 60f && projectile.owner == Main.myPlayer)
-            {
-                int num1135 = 30;
-                if (Main.expertMode)
-                {
-                    num1135 = 22;
-                }
-                Projectile.NewProjectile(projectile.Center, Vector2.Zero, 657, num1135, 3f, projectile.owner, 0f, 0f);
-            }
-            if (projectile.localAI[1] >= 120f)
+            projectile.ai[0] += 1f;
+            if (projectile.ai[0] >= num1125)
             {
                 projectile.Kill();
-                return;
+            }
+            if (projectile.localAI[0] >= 30f)
+            {
+                projectile.damage = 0;
+                if (projectile.ai[0] < num1125 - 120f)
+                {
+                    float num1126 = projectile.ai[0] % 60f;
+                    projectile.ai[0] = num1125 - 120f + num1126;
+                    projectile.netUpdate = true;
+                }
+            }
+            float num1127 = 15f;
+            float num1128 = 15f;
+            Point point8 = projectile.Center.ToTileCoordinates();
+            Collision.ExpandVertically(point8.X, point8.Y, out int num1129, out int num1130, (int)num1127, (int)num1128);
+            num1129++;
+            num1130--;
+            Vector2 value72 = new Vector2(point8.X, num1129) * 16f + new Vector2(8f);
+            Vector2 value73 = new Vector2(point8.X, num1130) * 16f + new Vector2(8f);
+            Vector2 vector146 = Vector2.Lerp(value72, value73, 0.5f);
+            Vector2 value74 = new Vector2(0f, value73.Y - value72.Y);
+            value74.X = value74.Y * 0.2f;
+            projectile.width = (int)(value74.X * 0.65f);
+            projectile.height = (int)value74.Y;
+            projectile.Center = vector146;
+            if (projectile.owner == Main.myPlayer)
+            {
+                bool flag74 = false;
+                Vector2 center16 = Main.player[projectile.owner].Center;
+                Vector2 top = Main.player[projectile.owner].Top;
+                for (float num1131 = 0f; num1131 < 1f; num1131 += 0.05f)
+                {
+                    Vector2 position2 = Vector2.Lerp(value72, value73, num1131);
+                    if (Collision.CanHitLine(position2, 0, 0, center16, 0, 0) || Collision.CanHitLine(position2, 0, 0, top, 0, 0))
+                    {
+                        flag74 = true;
+                        break;
+                    }
+                }
+                if (!flag74 && projectile.ai[0] < num1125 - 120f)
+                {
+                    float num1132 = projectile.ai[0] % 60f;
+                    projectile.ai[0] = num1125 - 120f + num1132;
+                    projectile.netUpdate = true;
+                }
+            }
+            if (projectile.ai[0] < num1125 - 120f)
+            {
+                for (int num1133 = 0; num1133 < 1; num1133++)
+                {
+                    float value75 = -0.5f;
+                    float value76 = 0.9f;
+                    float amount3 = Main.rand.NextFloat();
+                    Vector2 value77 = new Vector2(MathHelper.Lerp(0.1f, 1f, Main.rand.NextFloat()), MathHelper.Lerp(value75, value76, amount3));
+                    value77.X *= MathHelper.Lerp(2.2f, 0.6f, amount3);
+                    value77.X *= -1f;
+                    Vector2 value78 = new Vector2(6f, 10f);
+                    Vector2 position3 = vector146 + value74 * value77 * 0.5f + value78;
+                    Dust dust33 = Main.dust[Dust.NewDust(position3, 0, 0, 16, 0f, 0f, 0, default, 1.5f)];
+                    dust33.position = position3;
+                    dust33.customData = vector146 + value78;
+                    dust33.fadeIn = 1f;
+                    dust33.scale = 0.3f;
+                    if (value77.X > -1.2f)
+                    {
+                        dust33.velocity.X = 1f + Main.rand.NextFloat();
+                    }
+                    dust33.velocity.Y = Main.rand.NextFloat() * -0.5f - 1f;
+                }
             }
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            SpriteEffects spriteEffects = projectile.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-            Vector2 vector42 = projectile.position + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
-            Texture2D texture2D33 = Main.projectileTexture[projectile.type];
-            Rectangle rectangle15 = texture2D33.Frame(1, Main.projFrames[projectile.type], 0, projectile.frame);
-            Color alpha5 = projectile.GetAlpha(lightColor);
-            Vector2 origin11 = rectangle15.Size() / 2f;
-            Color color61 = Main.hslToRgb(0.251f, 1f, 1f).MultiplyRGBA(new Color(255, 255, 255, 0));
-            Main.spriteBatch.Draw(texture2D33, vector42, new Rectangle?(rectangle15), color61, 0f, origin11, new Vector2(1f, 5f) * projectile.scale * 2f, spriteEffects, 0f);
-            Main.spriteBatch.Draw(texture2D33, vector42, new Rectangle?(rectangle15), alpha5, projectile.rotation, origin11, projectile.scale, spriteEffects, 0f);
-            Main.spriteBatch.Draw(texture2D33, vector42, new Rectangle?(rectangle15), alpha5, 0f, origin11, new Vector2(1f, 8f) * projectile.scale, spriteEffects, 0f);
+            float num226 = 600f;
+            float num227 = 15f;
+            float num228 = 15f;
+            float num229 = projectile.ai[0];
+            float scale5 = MathHelper.Clamp(num229 / 30f, 0f, 1f);
+            if (num229 > num226 - 60f)
+            {
+                scale5 = MathHelper.Lerp(1f, 0f, (num229 - (num226 - 60f)) / 60f);
+            }
+            Point point5 = projectile.Center.ToTileCoordinates();
+            Collision.ExpandVertically(point5.X, point5.Y, out int num230, out int num231, (int)num227, (int)num228);
+            num230++;
+            num231--;
+            float num232 = 0.2f;
+            Vector2 value32 = new Vector2(point5.X, num230) * 16f + new Vector2(8f);
+            Vector2 value33 = new Vector2(point5.X, num231) * 16f + new Vector2(8f);
+            Vector2.Lerp(value32, value33, 0.5f);
+            Vector2 vector33 = new Vector2(0f, value33.Y - value32.Y);
+            vector33.X = vector33.Y * num232;
+            new Vector2(value32.X - vector33.X / 2f, value32.Y);
+            Texture2D texture2D23 = Main.projectileTexture[projectile.type];
+            Rectangle rectangle9 = texture2D23.Frame(1, 1, 0, 0);
+            Vector2 origin3 = rectangle9.Size() / 2f;
+            float num233 = -0.06283186f * num229;
+            Vector2 spinningpoint2 = Vector2.UnitY.RotatedBy(num229 * 0.1f, default);
+            float num234 = 0f;
+            float num235 = 5.1f;
+            Color value34 = new Color(225, 225, 225);
+            for (float num236 = (int)value33.Y; num236 > (int)value32.Y; num236 -= num235)
+            {
+                num234 += num235;
+                float num237 = num234 / vector33.Y;
+                float num238 = num234 * 6.28318548f / -20f;
+                float num239 = num237 - 0.15f;
+                Vector2 vector34 = spinningpoint2.RotatedBy(num238, default);
+                Vector2 value35 = new Vector2(0f, num237 + 1f);
+                value35.X = value35.Y * num232;
+                Color color39 = Color.Lerp(Color.Transparent, value34, num237 * 2f);
+                if (num237 > 0.5f)
+                {
+                    color39 = Color.Lerp(Color.Transparent, value34, 2f - num237 * 2f);
+                }
+                color39.A = (byte)(color39.A * 0.5f);
+                color39 *= scale5;
+                vector34 *= value35 * 100f;
+                vector34.Y = 0f;
+                vector34.X = 0f;
+                vector34 += new Vector2(value33.X, num236) - Main.screenPosition;
+                Main.spriteBatch.Draw(texture2D23, vector34, new Microsoft.Xna.Framework.Rectangle?(rectangle9), color39, num233 + num238, origin3, 1f + num239, SpriteEffects.None, 0f);
+            }
             return false;
         }
     }

@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueAbyssal
 		public override void SetStaticDefaults()
 		{
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Perfect Abyssal Hakama");
+            DisplayName.SetDefault("Shadow Hakama");
             Tooltip.SetDefault(@"40% increased movement speed
 15% increased ranged crit");
 		}
