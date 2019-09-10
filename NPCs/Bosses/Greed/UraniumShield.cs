@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Greed
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Texture2D shield = mod.GetTexture("NPCs/Bosses/Greed/UraniumShield");
-            BaseDrawing.DrawTexture(spriteBatch, shield, 0, projectile.Center, shield.Width, shield.Height, projectile.scale, projectile.rotation, projectile.direction, 1, new Rectangle(0, 0, shield.Width, shield.Height), AAColor.Uranium, true);
+            BaseDrawing.DrawTexture(spriteBatch, shield, 0, projectile.position, shield.Width, shield.Height, 1f, 0, 0, 1, new Rectangle(0, 0, shield.Width, shield.Height), AAColor.Uranium, true);
             return false;
         }
     }

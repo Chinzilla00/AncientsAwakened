@@ -29,6 +29,7 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.lavaImmune = true;
             npc.noTileCollide = true;
             npc.noGravity = true;
+            npc.damage = 90;
         }
 
         public override void AI()
