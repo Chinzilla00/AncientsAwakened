@@ -296,8 +296,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 1, npc.frame, dColor, true);
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Sagittarius_Glow"), 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 1, npc.frame, ColorUtils.COLOR_GLOWPULSE, true);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 4, npc.frame, dColor, true);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Sagittarius_Glow"), 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 4, npc.frame, ColorUtils.COLOR_GLOWPULSE, true);
             return false;
         }
 

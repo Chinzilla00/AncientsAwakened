@@ -130,7 +130,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     for (int i = 0; i < 3; i++)
                     {
                         double offsetAngle = startAngle + (deltaAngle * i);
-                        int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage / 2, 2, Main.myPlayer);
+                        int p = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 2, Main.myPlayer);
                         Main.projectile[p].tileCollide = false;
                     }
                 }
@@ -138,7 +138,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 {
                     for (int i = 0; i < 3; i++)
                     {
-                        Projectile.NewProjectile(player.Center.X + Main.rand.Next(-100, 100), player.Center.Y, 0, 0, mod.ProjectileType<Hurricane>(), 30, 12, Main.myPlayer);
+                        Projectile.NewProjectile(player.Center.X + Main.rand.Next(-100, 100), player.Center.Y, 0, 0, mod.ProjectileType<Hurricane>(), damage, 12, Main.myPlayer);
                     }
                 }
                 internalAI[2] = 0;
