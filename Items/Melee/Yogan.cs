@@ -17,7 +17,7 @@ namespace AAMod.Items.Melee
             item.knockBack = 5;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 4;
-            item.autoReuse = true;
+            item.autoReuse = false;
             item.useTurn = false;
             item.shoot = mod.ProjectileType("Yogan");
 			item.UseSound = SoundID.Item18;

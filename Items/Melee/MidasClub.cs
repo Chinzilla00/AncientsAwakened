@@ -13,7 +13,7 @@ namespace AAMod.Items.Melee
 		}
         public override void SetDefaults()
         {
-            item.damage = 20;
+            item.damage = 50;
             item.melee = true;
             item.width = 34;
             item.height = 52;
@@ -23,7 +23,7 @@ namespace AAMod.Items.Melee
             item.knockBack = 4;
             item.value = 10000;
             item.rare = 2;
-            item.autoReuse = false;
+            item.autoReuse = true;
         }
         public override void AddRecipes()
 		{

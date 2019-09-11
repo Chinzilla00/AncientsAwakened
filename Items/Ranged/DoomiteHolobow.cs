@@ -28,8 +28,8 @@ namespace AAMod.Items.Ranged
             item.value = Item.sellPrice(0, 0, 60, 0);
             item.rare = 3;
             item.UseSound = SoundID.Item12;
-            item.autoReuse = false;
-            item.shootSpeed = 7f;
+            item.autoReuse = true;
+            item.shootSpeed = 40f;
             item.crit = 0;
         }
         public override void AddRecipes()

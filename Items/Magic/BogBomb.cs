@@ -8,7 +8,7 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
         public override void SetDefaults()
         {
 
-            item.damage = 100;                      
+            item.damage = 25;                      
             item.magic = true;  
             item.width = 32;     
             item.height = 28;    

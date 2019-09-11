@@ -12,8 +12,8 @@ namespace AAMod.Items.Melee   //where is located
             item.melee = true;            
             item.width = 32;              
             item.height = 32;             
-            item.useTime = 20;          
-            item.useAnimation = 20;     
+            item.useTime = 45;          
+            item.useAnimation = 45;     
             item.useStyle = 1;        
             item.knockBack = 1;      
             item.value = 5000;        
