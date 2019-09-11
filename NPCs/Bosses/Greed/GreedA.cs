@@ -41,7 +41,7 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.netAlways = true;
             npc.boss = true;
             bossBag = mod.ItemType("GreedBag");
-            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Greed");
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/GreedA");
             npc.alpha = 255;
         }
 
