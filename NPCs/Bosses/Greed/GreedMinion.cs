@@ -96,15 +96,37 @@ namespace AAMod.NPCs.Bosses.Greed
                    MinionType == 16 ||
                    MinionType == 18 ||
                    MinionType == 19 ||
-                   MinionType == 20) //If Earlygame ore, Crimtane, Incinerite, Abyssium, Yttrium, Hellstone, Cobalt, Palladium, Mythril, Adamantite, Titanium, or Uranium, have Melee AI.
+                   MinionType == 20 ||
+                   MinionType == 28) //If Earlygame ore, Crimtane, Incinerite, Abyssium, Yttrium, Hellstone, Cobalt, Palladium, Mythril, Adamantite, Titanium, or Uranium, have Melee AI.
                 {
                     float Speed = 3;
-                    if (MinionType == 11 ||
-                   MinionType == 12)
+                    if (MinionType == 11 || MinionType == 12)
                     {
                         Speed = 5;
                     }
-                    BaseAI.AIElemental(npc, ref internalAI, ref idleTimer, null, 120, false, true, 400, 200f, 180, Speed);
+                    if (MinionType == 27)
+                    {
+                        npc.ai[3]++;
+                        for (int m = npc.oldPos.Length - 1; m > 0; m--)
+                        {
+                            npc.oldPos[m] = npc.oldPos[m - 1];
+                        }
+                        npc.oldPos[0] = npc.position;
+
+                    }
+                    if (MinionType == 27 && npc.ai[3] > 300)
+                    {
+                        BaseAI.AITackle(npc, ref npc.ai, Main.player[npc.target].Center, 0.5f, 12f, true, 60);
+
+                        if (npc.ai[3] > 420)
+                        {
+                            npc.ai[3] = 0;
+                        }
+                    }
+                    else
+                    {
+                        BaseAI.AIElemental(npc, ref internalAI, ref idleTimer, null, 120, false, true, 400, 200f, 180, Speed);
+                    }
                 }
                 else //if Demonite, Oricalcum, Chlorophite, or Technecium, Ranged AI
                 {
@@ -123,6 +145,16 @@ namespace AAMod.NPCs.Bosses.Greed
                         {
                             p = ProjectileID.CrystalLeafShot;
                             ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 120, npc.damage / 2, 9, true);
+                        }
+                        else if (MinionType == 25) //Nebula
+                        {
+                            p = mod.ProjectileType<Nebula>();
+                            ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 200, npc.damage / 2, 9, true);
+                        }
+                        else if (MinionType == 26) //Vortex
+                        {
+                            p = 640;
+                            ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 200, npc.damage / 2, 9, true);
                         }
                         else if (MinionType == 17 && npc.ai[1]++ > 180) //Oricalcum
                         {
@@ -197,17 +229,54 @@ namespace AAMod.NPCs.Bosses.Greed
                     }
                 }
             }
-            if (MinionType == 9 || MinionType == 15)
+            if (MinionType == 9 || MinionType == 15) //Regen
             {
-                RegenCounter++;
-
-                if (RegenCounter == 300)
+                npc.ai[3]++;
+                if (npc.ai[3] >= 100)
                 {
                     npc.life++;
                     if (MinionType == 9)
                     {
                         npc.life++;
                     }
+                    npc.ai[3] = 0;
+                }
+            }
+            if (MinionType == 24) //Stardust Summon
+            {
+                npc.ai[3]++;
+
+                if (npc.ai[3] > 400)
+                {
+                    npc.ai[3] = 0;
+                    int Xint = Main.rand.Next(-400, 400);
+                    int Yint = Main.rand.Next(-400, 400);
+                    NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, Main.rand.Next(29));
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Dust.NewDust(new Vector2(Xint, Yint), 60, 60, 229, 0f, 0f, 0, Color.White, 1);
+                    }
+                }
+            }
+            if (MinionType == 25) //Vortex Stealth
+            {
+                npc.ai[3]++;
+
+                if (npc.ai[3] == 300)
+                {
+                    npc.netUpdate = true;
+                }
+                if (npc.ai[3] > 300)
+                {
+                    npc.alpha += 3;
+                    if (npc.alpha > 200)
+                    {
+                        npc.alpha = 200;
+                    }
+                }
+                if (npc.ai[3] > 460)
+                {
+                    npc.ai[3] = 0;
                 }
             }
             npc.rotation = 0;
@@ -216,16 +285,23 @@ namespace AAMod.NPCs.Bosses.Greed
         bool shadowDodge = false;
         float shadowDodgeCount = 0;
         int shadowDodgeTimer = 0;
-        int RegenCounter = 0;
 
         public override void HitEffect(int hitDirection, double damage)
         {
             if (MinionType == 9 || MinionType == 15)
             {
-                RegenCounter = 0;
+                npc.ai[3] = 0;
             }
         }
 
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            if (MinionType == 26 && npc.ai[3] > 300)
+            {
+                return false;
+            }
+            return true;
+        }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
@@ -299,9 +375,15 @@ namespace AAMod.NPCs.Bosses.Greed
                 case 17: bodyColor = new Color(151, 0, 127); glowColor = new Color(248, 113, 227); break; //Oricalcum
                 case 18: bodyColor = new Color(128, 26, 52); glowColor = new Color(221, 85, 152); break; //Adamantite
                 case 19: bodyColor = new Color(91, 90, 119); glowColor = new Color(190, 187, 220); break; //Titanium
-                case 20: bodyColor = new Color(28, 39, 67); glowColor = new Color(92, 157, 103); break; //Uranium
-                case 21: bodyColor = new Color(36, 137, 0); glowColor = new Color(234, 254, 126); break; //Chlorophyte
-                default: bodyColor = new Color(68, 81, 112); glowColor = new Color(96, 225, 225); break; //Technecium
+                case 20: bodyColor = new Color(128, 26, 52); glowColor = new Color(221, 85, 152); break; //Hallowed
+                case 21: bodyColor = new Color(28, 39, 67); glowColor = new Color(92, 157, 103); break; //Uranium
+                case 22: bodyColor = new Color(36, 137, 0); glowColor = new Color(234, 254, 126); break; //Chlorophyte
+                case 23: bodyColor = new Color(68, 81, 112); glowColor = new Color(96, 225, 225); break; //Technecium
+                case 24: bodyColor = new Color(80, 87, 182); glowColor = new Color(255, 180, 0); break; //Stardust
+                case 25: bodyColor = new Color(80, 87, 182); glowColor = new Color(153, 108, 227); break; //Nebula
+                case 26: bodyColor = new Color(0, 127, 78); glowColor = new Color(0, 160, 170); break; //Vortex
+                case 27: bodyColor = new Color(249, 79, 7); glowColor = new Color(255, 231, 66); break; //Solar
+                case 28: bodyColor = new Color(73, 123, 119); glowColor = new Color(164, 101, 124); break; //Luminite
             }
         }
 
@@ -309,6 +391,11 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             SetColor();
             Texture2D glowTex = mod.GetTexture("Glowmasks/GreedMinion_Glow");
+
+            if (MinionType == 27 && npc.ai[3] > 300)
+            {
+                BaseDrawing.DrawAfterimage(spriteBatch, Main.npcTexture[npc.type], 0, npc, 1, 1, 8, true, 0, 0, new Color(bodyColor.R, bodyColor.G, bodyColor.B, 90), npc.frame, 15);
+            }
 
             if (shadowDodgeCount > 0f && MinionType == 19)
             {
@@ -319,7 +406,7 @@ namespace AAMod.NPCs.Bosses.Greed
                 position.X = npc.position.X - shadowDodgeCount;
                 BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 15, npc.frame, new Color(bodyColor.R, bodyColor.G, bodyColor.B, 30), true);
             }
-            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 15, npc.frame, glowColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 15, npc.frame, bodyColor, true);
 
             BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 15, npc.frame, glowColor, true);
             return false;
@@ -370,11 +457,24 @@ namespace AAMod.NPCs.Bosses.Greed
                 case 19:
                     npc.defense = 49; npc.damage = 52; break;
                 case 20:
-                    npc.defense = 53; npc.damage = 60; break;
+                    npc.defense = 50; npc.damage = 57; break;
                 case 21:
+                    npc.defense = 53; npc.damage = 60; break;
+                case 22:
                     npc.defense = 56; npc.damage = 75; break;
-                default:
+                case 23:
                     npc.defense = 58; npc.damage = 70; break;
+                case 24:
+                    npc.defense = 38; npc.damage = 60; break;
+                case 25:
+                    npc.defense = 46; npc.damage = 130; break;
+                case 26:
+                    npc.defense = 63; npc.damage = 50; break;
+                case 27:
+                    npc.defense = 78; npc.damage = 105; break;
+                default:
+                    npc.defense = 58; npc.damage = 88; break;
+
             }
         }
 
@@ -395,6 +495,13 @@ namespace AAMod.NPCs.Bosses.Greed
                         float rot = BaseUtility.RotationTo(codable.Center, targetCenter);
                         fireTarget = BaseUtility.RotateVector(codable.Center, fireTarget, rot);
                         pID = BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage, 0f, speed, -1);
+                        Main.projectile[pID].friendly = false;
+                        Main.projectile[pID].hostile = true;
+
+                        if (Main.projectile[pID].type == AAMod.instance.ProjectileType<Nebula>())
+                        {
+                            Main.projectile[pID].ai[0] = Main.rand.Next(2);
+                        }
                     }
                     delayTimer = delayTimerMax;
                     if (codable is NPC) { ((NPC)codable).netUpdate = true; }

@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Greed
 			npc.npcSlots = 5f;
             npc.width = 38;
             npc.height = 38;
-            npc.damage = 70;
+            npc.damage = 90;
             npc.defense = 80;
             npc.lifeMax = 120000;
             npc.value = Item.buyPrice(0, 5, 0, 0);
@@ -78,14 +78,19 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             npc.TargetClosest();
             Player player = Main.player[npc.target];
-            if (Main.expertMode)
+
+            if (npc.HasBuff(mod.BuffType<BuffA>()))
             {
-                damage = npc.damage / 4;
+                npc.damage = (int)(npc.defDamage * 1.15f);
             }
-            else
+
+            if (npc.HasBuff(mod.BuffType<BuffD>()))
             {
-                damage = npc.damage / 2;
+                npc.defDefense = (int)(npc.defDefense * 1.15f);
             }
+
+            damage = npc.damage / 2;
+
 
             if (npc.alpha <= 0)
             {
@@ -174,7 +179,7 @@ namespace AAMod.NPCs.Bosses.Greed
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
 
-                    for (int i = 0; i < 24; ++i)
+                    for (int i = 0; i < 30; ++i)
                     {
                         latestNPC = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<GreedABody>(), npc.whoAmI, 0, latestNPC);
                         Main.npc[latestNPC].realLife = npc.whoAmI;
@@ -458,9 +463,13 @@ namespace AAMod.NPCs.Bosses.Greed
             rotation = npc.rotation;
         }
 
+        float rot = 0;
+
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D texture = Main.npcTexture[npc.type];
+            Texture2D Atk = mod.GetTexture("NPCs/Bosses/Greed/ABoost");
+            Texture2D Def = mod.GetTexture("NPCs/Bosses/Greed/DBoost");
 
             npc.position.Y += npc.height * 0.5f;
 
@@ -482,16 +491,42 @@ namespace AAMod.NPCs.Bosses.Greed
                 BaseDrawing.DrawTexture(spritebatch, texture, 0, npc, color);
             }
 
+            rot += .1f;
+
+            if (npc.HasBuff(mod.BuffType<BuffA>()))
+            {
+                Rectangle frame = BaseDrawing.GetFrame(BoostFrame, Atk.Width, Atk.Height / 4, 0, 0);
+                BaseDrawing.DrawTexture(spritebatch, Atk, 0, npc.position, npc.width, npc.height, npc.scale, rot, 0, 4, frame, ColorUtils.COLOR_GLOWPULSE, true);
+            }
+            if (npc.HasBuff(mod.BuffType<BuffD>()))
+            {
+                Rectangle frame = BaseDrawing.GetFrame(BoostFrame, Def.Width, Def.Height / 4, 0, 0);
+                BaseDrawing.DrawTexture(spritebatch, Def, 0, npc.position, npc.width, npc.height, npc.scale, rot, 0, 4, frame, ColorUtils.COLOR_GLOWPULSE, true);
+            }
+
             npc.position.Y -= npc.height * 0.5f;
             return false;
         }
 
+        int BoostFrame = 0;
+
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.frameCounter++ > 6)
+            {
+                BoostFrame += 1;
+                if (BoostFrame > 3)
+                {
+                    BoostFrame = 0;
+                }
+            }
+        }
 
         public void MinionSummon()
         {
             int Xint = Main.rand.Next(-400, 400);
             int Yint = Main.rand.Next(-400, 400);
-            int MinionChoice = Main.rand.Next(10);
+            int MinionChoice = Main.rand.Next(11);
             if (MinionChoice == 0)
             {
                 int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 0);
@@ -592,10 +627,41 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 21);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 21);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
             else if (MinionChoice == 9)
             {
                 int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 22);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 10)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 23);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 11)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 24);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 25);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 26);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 27);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 12)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 28);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
         }
@@ -610,7 +676,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             DisplayName.SetDefault("Greed");
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
-            Main.npcFrameCount[npc.type] = 24;
+            Main.npcFrameCount[npc.type] = 30;
         }
 
         public override void SetDefaults()
@@ -795,11 +861,23 @@ namespace AAMod.NPCs.Bosses.Greed
                 case 19:
                     return npc.defense = 49;
                 case 20:
-                    return npc.defense = 53;
+                    return npc.defense = 50;
                 case 21:
-                    return npc.defense = 56;
+                    return npc.defense = 53;
                 case 22:
+                    return npc.defense = 56;
+                case 23:
                     return npc.defense = 58;
+                case 24:
+                    return npc.defense = 38;
+                case 25:
+                    return npc.defense = 46;
+                case 26:
+                    return npc.defense = 62;
+                case 27:
+                    return npc.defense = 78;
+                case 29:
+                    return npc.defense = 56;
                 default:
                     return npc.defense = 30;
             }

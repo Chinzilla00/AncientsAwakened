@@ -498,7 +498,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             int Xint = Main.rand.Next(-400, 400);
             int Yint = Main.rand.Next(-400, 400);
-            int MinionChoice = Main.rand.Next(10);
+            int MinionChoice = Main.rand.Next(11);
             if (MinionChoice == 0)
             {
                 int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 0);
@@ -599,10 +599,19 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 21);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 21);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
             else if (MinionChoice == 9)
             {
                 int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 22);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 10)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 23);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
         }
@@ -804,10 +813,12 @@ namespace AAMod.NPCs.Bosses.Greed
                 case 19:
                     return npc.defense = 49;
                 case 20:
-                    return npc.defense = 53;
+                    return npc.defense = 50;
                 case 21:
-                    return npc.defense = 56;
+                    return npc.defense = 53;
                 case 22:
+                    return npc.defense = 56;
+                case 23:
                     return npc.defense = 58;
                 default:
                     return npc.defense = 30;
