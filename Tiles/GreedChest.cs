@@ -34,9 +34,6 @@ namespace AAMod.Tiles
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Gilded Chest");
             AddMapEntry(new Color(150, 125, 0), name, MapChestName);
-            name = CreateMapEntryName(Name + "_Locked"); // With multiple map entries, you need unique translation keys.
-            name.SetDefault("Locked Gilded Chest");
-            AddMapEntry(new Color(75, 65, 0), name, MapChestName);
             disableSmartCursor = true;
             dustType = DustID.Gold;
             adjTiles = new int[] { TileID.Containers };
@@ -52,26 +49,7 @@ namespace AAMod.Tiles
 
         public string MapChestName(string name, int i, int j)
         {
-            int left = i;
-            int top = j;
-            Tile tile = Main.tile[i, j];
-            if (tile.frameX % 36 != 0)
-            {
-                left--;
-            }
-            if (tile.frameY != 0)
-            {
-                top--;
-            }
-            int chest = Chest.FindChest(left, top);
-            if (Main.chest[chest].name == "")
-            {
-                return name;
-            }
-            else
-            {
-                return name + ": " + Main.chest[chest].name;
-            }
+            return "";
         }
 
         public override bool UnlockChest(int i, int j, ref short frameXAdjustment, ref int dustType, ref bool manual)
