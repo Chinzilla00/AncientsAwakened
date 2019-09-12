@@ -32,13 +32,16 @@ namespace AAMod.Tiles
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Golden Chest");
-            AddMapEntry(new Color(141, 62, 0), name, MapChestName);
-            dustType = DustID.Gold;
+            name.SetDefault("Gilded Chest");
+            AddMapEntry(new Color(150, 125, 0), name, MapChestName);
+            name = CreateMapEntryName(Name + "_Locked"); // With multiple map entries, you need unique translation keys.
+            name.SetDefault("Locked Gilded Chest");
+            AddMapEntry(new Color(75, 65, 0), name, MapChestName);
             disableSmartCursor = true;
+            dustType = DustID.Gold;
             adjTiles = new int[] { TileID.Containers };
-            chest = "Golden Chest";
-            chestDrop = ItemID.GoldenChest;
+            chest = "Gilded Chest";
+            chestDrop = mod.ItemType<Items.Blocks.GreedChest>();
         }
 
         public override ushort GetMapOption(int i, int j) => (ushort)(Main.tile[i, j].frameX / 36);
@@ -46,12 +49,6 @@ namespace AAMod.Tiles
         public override bool HasSmartInteract() => true;
 
         public override bool IsLockedChest(int i, int j) => Main.tile[i, j].frameX / 36 == 1;
-
-        public override bool UnlockChest(int i, int j, ref short frameXAdjustment, ref int dustType, ref bool manual)
-        {
-            dustType = this.dustType;
-            return true;
-        }
 
         public string MapChestName(string name, int i, int j)
         {
@@ -75,6 +72,12 @@ namespace AAMod.Tiles
             {
                 return name + ": " + Main.chest[chest].name;
             }
+        }
+
+        public override bool UnlockChest(int i, int j, ref short frameXAdjustment, ref int dustType, ref bool manual)
+        {
+            dustType = this.dustType;
+            return true;
         }
 
         public override void NumDust(int i, int j, bool fail, ref int num)
