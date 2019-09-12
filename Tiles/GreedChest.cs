@@ -31,9 +31,6 @@ namespace AAMod.Tiles
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Gilded Chest");
-            AddMapEntry(new Color(150, 125, 0), name, MapChestName);
             disableSmartCursor = true;
             dustType = DustID.Gold;
             adjTiles = new int[] { TileID.Containers };
@@ -46,11 +43,6 @@ namespace AAMod.Tiles
         public override bool HasSmartInteract() => true;
 
         public override bool IsLockedChest(int i, int j) => Main.tile[i, j].frameX / 36 == 1;
-
-        public string MapChestName(string name, int i, int j)
-        {
-            return "";
-        }
 
         public override bool UnlockChest(int i, int j, ref short frameXAdjustment, ref int dustType, ref bool manual)
         {
