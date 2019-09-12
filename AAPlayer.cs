@@ -2419,7 +2419,7 @@ namespace AAMod
                 }
             }
 
-            if (crit)
+            if (crit && trueFlesh)
             {
                 if (damage / 10 < 1)
                 {
