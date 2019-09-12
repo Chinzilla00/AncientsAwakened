@@ -15,7 +15,7 @@ namespace AAMod.Items.Ranged
         {
             item.shoot = mod.ProjectileType("Incapacitator");
             item.shootSpeed = 11f;
-            item.damage = 40;
+            item.damage = 21;
             item.knockBack = 5f;
             item.ranged = true;
             item.useStyle = 1;
