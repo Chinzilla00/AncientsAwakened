@@ -21,6 +21,7 @@ namespace AAMod.Items.Melee   //where is located
             item.autoReuse = true;   
             item.useTurn = false;
             item.shoot = mod.ProjectileType("IllumantBall");
+            item.UseSound = SoundID.Item1;
         }
 
     public override void SetStaticDefaults()

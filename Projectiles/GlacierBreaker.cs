@@ -34,101 +34,64 @@ namespace AAMod.Projectiles
                 dust1.noGravity = true;
                 dust2.noGravity = true;
             }
-            if (projectile.timeLeft == 120)
-            {
-                projectile.ai[0] = 1f;
-            }
-
+            Vector2 vector54 = Main.player[projectile.owner].Center - projectile.Center;
+            projectile.rotation = vector54.ToRotation() - 1.57f;
             if (Main.player[projectile.owner].dead)
             {
                 projectile.Kill();
                 return;
             }
-
-            Main.player[projectile.owner].itemAnimation = 5;
-            Main.player[projectile.owner].itemTime = 5;
-
-            if (projectile.alpha == 0)
+            Main.player[projectile.owner].itemAnimation = 10;
+            Main.player[projectile.owner].itemTime = 10;
+            if (vector54.X < 0f)
             {
-                if (projectile.position.X + (projectile.width / 2) > Main.player[projectile.owner].position.X + (Main.player[projectile.owner].width / 2))
-                {
-                    Main.player[projectile.owner].ChangeDir(1);
-                }
-                else
-                {
-                    Main.player[projectile.owner].ChangeDir(-1);
-                }
+                Main.player[projectile.owner].ChangeDir(1);
+                projectile.direction = 1;
             }
-            Vector2 vector14 = new Vector2(projectile.position.X + (projectile.width * 0.5f), projectile.position.Y + (projectile.height * 0.5f));
-            float num166 = Main.player[projectile.owner].position.X + (Main.player[projectile.owner].width / 2) - vector14.X;
-            float num167 = Main.player[projectile.owner].position.Y + (Main.player[projectile.owner].height / 2) - vector14.Y;
-            float num168 = (float)Math.Sqrt((num166 * num166) + (num167 * num167));
-            if (projectile.ai[0] == 0f)
+            else
             {
-                if (num168 > 700f)
-                {
-                    projectile.ai[0] = 1f;
-                }
-                else if (num168 > 500f)
-                {
-                    projectile.ai[0] = 1f;
-                }
-                projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 2.355f;
-                projectile.ai[1] += 1f;
-                if (projectile.ai[1] > 5f)
-                {
-                    projectile.alpha = 0;
-                }
-                if (projectile.ai[1] > 8f)
-                {
-                    projectile.ai[1] = 8f;
-                }
-                if (projectile.ai[1] >= 10f)
-                {
-                    projectile.ai[1] = 15f;
-                    projectile.velocity.Y = projectile.velocity.Y + 0.3f;
-                }
-                if (projectile.velocity.X < 0f)
-                {
-                    projectile.spriteDirection = -1;
-                }
-                else
-                {
-                    projectile.spriteDirection = 1;
-                }
+                Main.player[projectile.owner].ChangeDir(-1);
+                projectile.direction = -1;
             }
-            else if (projectile.ai[0] == 1f)
+            Main.player[projectile.owner].itemRotation = (vector54 * -1f * projectile.direction).ToRotation();
+            projectile.spriteDirection = (vector54.X > 0f) ? -1 : 1;
+            if (projectile.ai[0] == 0f && vector54.Length() > 400f)
             {
-                projectile.tileCollide = false;
-                projectile.rotation = (float)Math.Atan2(num167, num166) - 1.57f;
-                float num169 = 30f;
-
-                if (num168 < 50f)
+                projectile.ai[0] = 1f;
+            }
+            if (projectile.ai[0] == 1f || projectile.ai[0] == 2f)
+            {
+                float num687 = vector54.Length();
+                if (num687 > 1500f)
                 {
                     projectile.Kill();
+                    return;
                 }
-                num168 = num169 / num168;
-                num166 *= num168;
-                num167 *= num168;
-                projectile.velocity.X = num166;
-                projectile.velocity.Y = num167;
-                if (projectile.velocity.X < 0f)
+                if (num687 > 600f)
                 {
-                    projectile.spriteDirection = 1;
+                    projectile.ai[0] = 2f;
                 }
-                else
+                projectile.tileCollide = false;
+                float num688 = 20f;
+                if (projectile.ai[0] == 2f)
                 {
-                    projectile.spriteDirection = -1;
+                    num688 = 40f;
                 }
+                projectile.velocity = Vector2.Normalize(vector54) * num688;
+                if (vector54.Length() < num688)
+                {
+                    projectile.Kill();
+                    return;
+                }
+            }
+            projectile.ai[1] += 1f;
+            if (projectile.ai[1] > 5f)
+            {
+                projectile.alpha = 0;
             }
             if ((int)projectile.ai[1] % 3 == 0 && projectile.owner == Main.myPlayer)
             {
-                Vector2 vector54 = Main.player[projectile.owner].Center - projectile.Center;
-                Vector2 vector55 = vector54 * -1f;
-                vector55.Normalize();
-                vector55 *= Main.rand.Next(45, 65) * 0.1f;
-                vector55 = vector55.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866, default);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X, vector55.Y, mod.ProjectileType<AsgardianIce>(), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 4, mod.ProjectileType<AsgardianIce>(), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
                 return;
             }
         }
