@@ -10,11 +10,11 @@ namespace AAMod.Items.Armor.Champion
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Chaos Slayer Kabuto");
-            Tooltip.SetDefault(@"30% increased Melee damage & critical strike chance
-15% increased damage resistance
-15% increased melee speed
-The power of discordian rage radiates from this armor");
+            DisplayName.SetDefault("Champion Greathelm");
+            Tooltip.SetDefault(@"35% increased Melee damage & critical strike chance
+10% increased non-melee damage
+18% increased melee speed
+The armor of a champion feared across the land");
         }
 
         public override void SetDefaults()
@@ -24,7 +24,7 @@ The power of discordian rage radiates from this armor");
 			item.value = Item.sellPrice(3, 0, 0, 0);
             item.rare = 9;
             AARarity = 14;
-            item.defense = 44;
+            item.defense = 39;
 		}
 
         public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
@@ -51,18 +51,18 @@ The power of discordian rage radiates from this armor");
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage *= 1.3f;
-            player.meleeCrit += 30;
-            player.endurance *= 1.15f;
+            player.meleeDamage *= 1.25f;
+            player.meleeCrit += 35;
+            player.allDamage += .1f;
             player.meleeSpeed *= 1.15f;
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DracoHelm", 1);
-            recipe.AddIngredient(null, "Discordium", 6);
-            recipe.AddIngredient(null, "ChaosScale", 6);
+            recipe.AddIngredient(null, "HoodlumHood", 1);
+            recipe.AddIngredient(null, "LeviathanHelm", 1);
+            recipe.AddIngredient(null, "ChampionPlate", 10);
             recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);
             recipe.AddRecipe();

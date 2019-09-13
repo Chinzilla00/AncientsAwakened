@@ -13,7 +13,7 @@ namespace AAMod.Items.Armor.Champion
             DisplayName.SetDefault("Champion Mask");
             Tooltip.SetDefault(@"55% increased ranged damage
 44% increased ranged critical strike chance
-10% increased damage
+10% increased non-ranged damage
 25% reduced ammo consumption
 The armor of a champion feared across the land");
         }
@@ -50,7 +50,7 @@ The armor of a champion feared across the land");
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage *= 1.55f;
+            player.rangedDamage *= 1.45f;
             player.rangedCrit += 44;
             player.allDamage += .1f;
             player.ammoCost75 = true;
