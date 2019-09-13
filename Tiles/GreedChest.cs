@@ -31,11 +31,18 @@ namespace AAMod.Tiles
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
-            disableSmartCursor = true;
+
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Greed Chest");
+            AddMapEntry(new Color(150, 75, 0), name, MapChestName);
+            name = CreateMapEntryName(Name + "_Locked"); // With multiple map entries, you need unique translation keys.
+            name.SetDefault("Locked Greed Chest");
+            AddMapEntry(new Color(141, 64, 0), name, MapChestName);
             dustType = DustID.Gold;
+            disableSmartCursor = true;
             adjTiles = new int[] { TileID.Containers };
-            chest = "Gilded Chest";
-            chestDrop = mod.ItemType<Items.Blocks.GreedChest>();
+            chest = "Greed Chest";
+            chestDrop = mod.ItemType("GreedChest");
         }
 
         public override ushort GetMapOption(int i, int j) => (ushort)(Main.tile[i, j].frameX / 36);
@@ -48,6 +55,30 @@ namespace AAMod.Tiles
         {
             dustType = this.dustType;
             return true;
+        }
+
+        public string MapChestName(string name, int i, int j)
+        {
+            int left = i;
+            int top = j;
+            Tile tile = Main.tile[i, j];
+            if (tile.frameX % 36 != 0)
+            {
+                left--;
+            }
+            if (tile.frameY != 0)
+            {
+                top--;
+            }
+            int chest = Chest.FindChest(left, top);
+            if (Main.chest[chest].name == "")
+            {
+                return name;
+            }
+            else
+            {
+                return name + ": " + Main.chest[chest].name;
+            }
         }
 
         public override void NumDust(int i, int j, bool fail, ref int num)
@@ -73,7 +104,7 @@ namespace AAMod.Tiles
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(i * 16, j * 16, 32, 32, chestDrop);
+            Item.NewItem(i * 16, j * 16, 32, 32, mod.ItemType("GreedChest"));
             Chest.DestroyChest(i, j);
         }
 
@@ -186,10 +217,10 @@ namespace AAMod.Tiles
             }
             else
             {
-                player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Golden Chest";
-                if (player.showItemIconText == "Golden Chest")
+                player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Greed Chest";
+                if (player.showItemIconText == "Greed Chest")
                 {
-                    player.showItemIcon2 = ItemID.GoldenChest;
+                    player.showItemIcon2 = mod.ItemType("GreedChest");
                     if (Main.tile[left, top].frameX / 36 == 1)
                         player.showItemIcon2 = mod.ItemType<Items.Usable.GreedKey>();
                     player.showItemIconText = "";

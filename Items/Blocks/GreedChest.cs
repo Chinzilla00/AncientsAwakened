@@ -1,13 +1,10 @@
-using Terraria.ID;
-using Terraria.ModLoader;
-
 namespace AAMod.Items.Blocks
 {
     public class GreedChest : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Gilded Chest");
+            DisplayName.SetDefault("Greed Chest");
 		}
 
 		public override void SetDefaults()

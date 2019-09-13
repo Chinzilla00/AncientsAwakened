@@ -10,7 +10,7 @@ using Terraria.ObjectData;
 namespace AAMod.Tiles
 {
 	// TODO: Smart Cursor Outlines and tModLoader support
-	public class GreedDoorClosed : ModTile
+	public class GreedDoorLocked : ModTile
 	{
 		public override void SetDefaults()
         {
@@ -45,12 +45,11 @@ namespace AAMod.Tiles
 			dustType = DustID.t_Lihzahrd;
 			disableSmartCursor = true;
 			adjTiles = new int[] { TileID.ClosedDoor };
-			openDoorID = mod.TileType("GreedDoorOpen");
         }
 
         public override bool HasSmartInteract() => true;
 
-        public bool IsLockedDoor = true;
+        public bool IsLockedDoor(int i, int j) => Main.tile[i, j].frameY / 54 == 2;
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged) => false;
 
@@ -69,28 +68,22 @@ namespace AAMod.Tiles
         public override void RightClick(int i, int j)
         {
             Player p = Main.player[Main.myPlayer];
-            if (Main.tile[i, j].frameY <= 52)
+            int num43 = mod.ItemType<Items.Usable.GreedKey>();
+            for (int num44 = 0; num44 < 58; num44++)
             {
-                int num43 = mod.ItemType<Items.Usable.GreedKey>();
-                for (int num44 = 0; num44 < 58; num44++)
+                if (p.inventory[num44].type == num43 && p.inventory[num44].stack > 0)
                 {
-                    if (p.inventory[num44].type == num43 && p.inventory[num44].stack > 0)
+                    p.inventory[num44].stack--;
+                    if (p.inventory[num44].stack <= 0)
                     {
-                        p.inventory[num44].stack--;
-                        if (p.inventory[num44].stack <= 0)
-                        {
-                            p.inventory[num44] = new Item();
-                        }
-                        Main.tile[i, j].frameY += 52;
+                        p.inventory[num44] = new Item();
+                    }
+                    Main.tile[i, j].type = (ushort)mod.TileType<GreedDoorClosed>();
+                    if (Main.netMode == 1)
+                    {
+                        NetMessage.SendData(52, -1, -1, null, p.whoAmI, 2f, i, j, 0, 0, 0);
                     }
                 }
-                openDoorID = -1;
-            }
-            else
-            {
-                openDoorID = mod.TileType("GreedDoorOpen");
-                WorldGen.OpenDoor(i, j, p.direction);
-                NetMessage.SendData(19, -1, -1, null, 0, i, j, p.direction, 0, 0, 0);
             }
         }
 

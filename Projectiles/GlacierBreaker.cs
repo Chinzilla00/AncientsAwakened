@@ -89,9 +89,9 @@ namespace AAMod.Projectiles
             {
                 projectile.alpha = 0;
             }
-            if ((int)projectile.ai[1] % 3 == 0 && projectile.owner == Main.myPlayer)
+            if ((int)projectile.ai[1] % 8 == 0 && projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 4, mod.ProjectileType<AsgardianIce>(), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 7, mod.ProjectileType<AsgardianIce>(), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
                 return;
             }
         }
