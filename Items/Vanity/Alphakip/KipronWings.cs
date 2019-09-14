@@ -71,21 +71,24 @@ Hold down and jump to hover for an extended period of time
         {
             if (player.controlDown && player.controlJump && player.wingTime > 0f && !player.merman)
             {
-                player.velocity.Y *= 0.92f;
+                player.velocity.Y *= 0.01f;
                 if (player.velocity.Y > -2f && player.velocity.Y < 1f)
                 {
                     player.velocity.Y = 1E-05f;
                 }
             }
 
-            player.wingFrameCounter++;
-            if (player.wingFrameCounter > 16)
+            if (inUse)
             {
-                player.wingFrame++;
-                player.wingFrameCounter = 0;
-                if (player.wingFrame >= 3)
+                player.wingFrameCounter++;
+                if (player.wingFrameCounter > 8)
                 {
-                    player.wingFrame = 0;
+                    player.wingFrame++;
+                    player.wingFrameCounter = 0;
+                    if (player.wingFrame >= 3)
+                    {
+                        player.wingFrame = 0;
+                    }
                 }
             }
             return true;
