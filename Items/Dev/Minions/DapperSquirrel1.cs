@@ -371,7 +371,7 @@ namespace AAMod.Items.Dev.Minions
                             num77 *= num78;
                             int num79 = projectile.damage;
                             int num80 = mod.ProjectileType<Hat>();
-                            int num81 = Projectile.NewProjectile(vector8.X, vector8.Y, num75, num77, num80, num79, projectile.knockBack, Main.myPlayer, 0f, num64);
+                            int num81 = Projectile.NewProjectile(vector8.X, vector8.Y, num75 * 2, num77 * 2, num80, num79, projectile.knockBack, Main.myPlayer, 0f, num64);
                             Main.projectile[num81].timeLeft = 300;
                             if (num75 < 0f)
                             {

@@ -8,7 +8,7 @@ namespace AAMod.Items.Blocks
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("True Void Music Box");
-            Tooltip.SetDefault("Plays 'Omen of a Fate Fortold' by OmegaFerretMusic");
+            Tooltip.SetDefault("Plays 'Systems Engaged' by OmegaFerretMusic");
         }
 
         public override void SetDefaults()

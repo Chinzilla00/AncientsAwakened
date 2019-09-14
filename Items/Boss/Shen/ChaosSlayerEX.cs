@@ -11,7 +11,8 @@ namespace AAMod.Items.Boss.Shen
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ikari");
-            Tooltip.SetDefault(@"Unleashes explosive piercing blades of chaos to smite your foes
+            Tooltip.SetDefault(@"Unleashes explosive blades of chaos to smite your foes
+blades go through tiles
 Chaos Slayer EX");
         }
 

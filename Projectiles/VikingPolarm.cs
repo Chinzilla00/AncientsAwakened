@@ -68,10 +68,5 @@ namespace AAMod.Projectiles
         		projectile.rotation -= 1.57f;
         	}
         }
-        
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-        	target.immune[projectile.owner] = 5;
-        }
     }
 }

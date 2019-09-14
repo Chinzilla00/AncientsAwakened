@@ -20,6 +20,7 @@ namespace AAMod.Projectiles.Djinn
 			projectile.timeLeft = 550;
 			projectile.extraUpdates = 2;
             projectile.melee = true;
+            projectile.penetrate = -1;
         }
 
         public override void AI()

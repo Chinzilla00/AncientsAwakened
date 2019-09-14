@@ -10,19 +10,19 @@ namespace AAMod.Items.Magic
         {
 
             item.damage = 50;                        
-            item.magic = true;                     //this make the item do magic damage
+            item.magic = true;                     
             item.width = 60;
             item.height = 60;
 
             item.useTime = 20;
             item.useAnimation = 20;
-            item.useStyle = 5;     //this is how the item is holded
+            item.useStyle = 5;     
             item.noMelee = true;
             item.knockBack = 6;        
             item.value = 10000;
             item.rare = 5;
-            item.mana = 5;             //mana use
-            item.UseSound = SoundID.Item21;            //this is the sound when you use the item
+            item.mana = 5;             
+            item.UseSound = SoundID.Item21;            
             item.autoReuse = true;
             item.shoot = mod.ProjectileType ("DragonP");  //this make the item shoot your projectile
             item.shootSpeed = 13f;     

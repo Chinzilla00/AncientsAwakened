@@ -17,7 +17,7 @@ namespace AAMod.Items.Ranged
         public override void SetDefaults()
         {
 
-            item.damage = 35;
+            item.damage = 37;
             item.noMelee = true;
             item.ranged = true;
             item.width = 50;
@@ -31,7 +31,7 @@ namespace AAMod.Items.Ranged
             item.value = Item.sellPrice(0, 20, 0, 0);
             item.rare = 8;
             item.UseSound = SoundID.Item14;
-            item.shootSpeed = 25f;
+            item.shootSpeed = 20f;
             item.autoReuse = true;
         }
 

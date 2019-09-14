@@ -34,10 +34,10 @@ namespace AAMod.Tiles
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Mire Chest");
-            AddMapEntry(new Color(150, 75, 0), name, MapChestName);
+            AddMapEntry(new Color(0, 75, 150), name, MapChestName);
             name = CreateMapEntryName(Name + "_Locked"); // With multiple map entries, you need unique translation keys.
             name.SetDefault("{$Mods.AAMod.Common.MireChest_Locked}");
-            AddMapEntry(new Color(0, 141, 63), name, MapChestName);
+            AddMapEntry(new Color(0, 64, 141), name, MapChestName);
             dustType = mod.DustType("DoomDust");
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.Containers };

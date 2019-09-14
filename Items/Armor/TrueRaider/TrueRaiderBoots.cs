@@ -10,6 +10,7 @@ namespace AAMod.Items.Armor.TrueRaider
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Asgardian Greaves");
+            Tooltip.SetDefault(@"");
 
         }
 

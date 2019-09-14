@@ -97,7 +97,21 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
+        int a = 0;
 
+        public override void PostAI()
+        {
+            if (Main.netMode != 1) a++;
+            if (a == 40)
+            {
+                projectile.tileCollide = true;
+                projectile.netUpdate = true;
+            }
+            if (a < 40)
+            {
+                projectile.tileCollide = false;
+            }
+        }
 
         private int HomeOnTarget()
         {

@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -16,6 +17,23 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.friendly = false;
             projectile.hostile = true;
             aiType = ProjectileID.Bullet;
+            projectile.tileCollide = false;
+        }
+
+        int a = 0;
+
+        public override void PostAI()
+        {
+            if (Main.netMode != 1) a++;
+            if (a == 40)
+            {
+                projectile.tileCollide = true;
+                projectile.netUpdate = true;
+            }
+            if (a < 40)
+            {
+                projectile.tileCollide = false;
+            }
         }
     }
 }

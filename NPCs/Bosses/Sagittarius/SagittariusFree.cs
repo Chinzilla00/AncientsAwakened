@@ -89,7 +89,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
 
             npc.frameCounter++;
-            if (npc.frameCounter > 7)
+            if (npc.frameCounter > 30)
             {
                 npc.frame.Y += 72;
                 npc.frameCounter = 0;
@@ -187,6 +187,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 }
                 internalAI[3] = 1200;
                 npc.life += 2;
+                CombatText.NewText(new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height), CombatText.HealLife, string.Concat(2), false, false);
                 BaseAI.AISpaceOctopus(npc, ref npc.ai, Main.player[npc.target].Center, 0.07f, 5f, 250f, 70f, ShootLaser);
             }
             else

@@ -4,6 +4,7 @@ using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
@@ -36,12 +37,12 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.behindTiles = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
-            npc.HitSound = SoundID.NPCHit5;
-            npc.DeathSound = SoundID.NPCDeath7;
+            npc.HitSound = new LegacySoundStyle(21, 1);
+            npc.DeathSound = new LegacySoundStyle(2, 14);
             npc.netAlways = true;
             npc.boss = true;
             bossBag = mod.ItemType("GreedBag");
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Greed");
+            music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/Greed");
             npc.alpha = 255;
         }
 
@@ -441,6 +442,11 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void NPCLoot()
         {
+            if (!AAWorld.downedGreed && ModLoader.GetMod("CalamityMod") != null)
+            {
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GreedLore"));
+            }
+            AAWorld.downedGreed = true;
             if (NPC.downedMoonlord)
             {
                 int a = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<GreedTransition>());
@@ -451,7 +457,6 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 if (!Main.expertMode)
                 {
-                    AAWorld.downedSerpent = true;
                     npc.DropLoot(mod.ItemType("CovetiteCoin"), 10, 15);
                     string[] lootTable = { };
                     int loot = Main.rand.Next(lootTable.Length);
@@ -493,7 +498,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             int Xint = Main.rand.Next(-400, 400);
             int Yint = Main.rand.Next(-400, 400);
-            int MinionChoice = Main.rand.Next(10);
+            int MinionChoice = Main.rand.Next(11);
             if (MinionChoice == 0)
             {
                 int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 0);
@@ -594,10 +599,19 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 21);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+                Xint = Main.rand.Next(-400, 400);
+                Yint = Main.rand.Next(-400, 400);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 21);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
             else if (MinionChoice == 9)
             {
                 int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 22);
+                Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
+            }
+            else if (MinionChoice == 10)
+            {
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, mod.NPCType<GreedMinion>(), 0, 23);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
         }
@@ -799,10 +813,12 @@ namespace AAMod.NPCs.Bosses.Greed
                 case 19:
                     return npc.defense = 49;
                 case 20:
-                    return npc.defense = 53;
+                    return npc.defense = 50;
                 case 21:
-                    return npc.defense = 56;
+                    return npc.defense = 53;
                 case 22:
+                    return npc.defense = 56;
+                case 23:
                     return npc.defense = 58;
                 default:
                     return npc.defense = 30;

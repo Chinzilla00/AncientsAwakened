@@ -21,7 +21,7 @@ namespace AAMod.Items.Melee
 			item.noMelee = true;
 			item.useStyle = 1;
 			item.shootSpeed = 16f;
-			item.damage = 240;
+			item.damage = 300;
 			item.knockBack = 9f;
 			item.width = 14;
 			item.height = 28;

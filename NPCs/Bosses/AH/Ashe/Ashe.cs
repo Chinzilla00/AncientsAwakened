@@ -117,12 +117,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             RingEffects2();
             if (Main.netMode != 1)
             {
-                if (internalAI[1]++ >= 8)
-                {
-                    internalAI[1] = 0;
-                    internalAI[2]++;
-                    npc.netUpdate = true;
-                }
+                internalAI[2]++;
             }
 
             if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
@@ -226,7 +221,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else if (internalAI[0] == AISTATE_CAST4 || internalAI[0] == AISTATE_MELEE || internalAI[0] == AISTATE_VORTEX) //Strong
             {
-                if (internalAI[2] == 20 && internalAI[1] == 4 && internalAI[0] != AISTATE_MELEE && !HasFiredProj) //Only Shoot if not in melee mode
+                if (internalAI[2] == 160 && internalAI[0] != AISTATE_MELEE && !HasFiredProj) //Only Shoot if not in melee mode
                 {
                     if (Main.netMode != 1)
                     {
@@ -235,12 +230,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         npc.netUpdate = true;
                     }
                 }
-                if (internalAI[2] < 16) 
+                if (internalAI[2] < 128) 
                 {
-                    internalAI[1] = 0;
-                    internalAI[2] = 16;
+                    internalAI[2] = 128;
                 }
-                if (internalAI[2] > 23)
+                if (internalAI[2] > 184)
                 {
                     if (internalAI[0] == AISTATE_MELEE)
                     {
@@ -252,7 +246,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     {
                         HasFiredProj = false;
                         internalAI[0] = 0;
-                        internalAI[1] = 0;
                         internalAI[2] = 0;
                         internalAI[3] = 0;
                         moveSpeed = 16f;
@@ -263,7 +256,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else if (internalAI[0] == AISTATE_CAST2)
             {
-                if (internalAI[2] > 11)
+                if (internalAI[2] > 88)
                 {
                     if (Main.netMode != 1)
                     {
@@ -271,12 +264,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         npc.netUpdate = true;
                     }
                 }
-                if (internalAI[2] < 8)
+                if (internalAI[2] < 64)
                 {
-                    internalAI[1] = 0;
-                    internalAI[2] = 8;
+                    internalAI[2] = 64;
                 }
-                if (internalAI[2] > 15)
+                if (internalAI[2] > 120)
                 {
                     npc.frameCounter = 0;
                     Frame = 0;
@@ -284,7 +276,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     {
                         HasFiredProj = false;
                         internalAI[0] = 0;
-                        internalAI[1] = 0;
                         internalAI[2] = 0;
                         internalAI[3] = 0;
                         npc.ai = new float[4];
@@ -294,7 +285,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else
             {
-                if (internalAI[2] == 12 && internalAI[1] == 4 && !HasFiredProj)
+                if (internalAI[2] == 96 && internalAI[1] == 4 && !HasFiredProj)
                 {
                     if (Main.netMode != 1)
                     {
@@ -303,12 +294,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         npc.netUpdate = true;
                     }
                 }
-                if (internalAI[2] < 8)
+                if (internalAI[2] <64)
                 {
-                    internalAI[1] = 0;
-                    internalAI[2] = 8;
+                    internalAI[2] = 64;
                 }
-                if (internalAI[2] > 15)
+                if (internalAI[2] > 120)
                 {
                     npc.frameCounter = 0;
                     Frame = 0;
@@ -337,7 +327,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 FlyingNegative = true;
             }
 
-            if (internalAI[0] == AISTATE_MELEE) //Melee Damage/Speed boost
+            if (internalAI[0] == AISTATE_MELEE) //When charging the player
             {
                 npc.damage++;
                 if (npc.damage > 160)
@@ -349,16 +339,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     MeleeSpeed -= .01f;
                     npc.damage = 100;
                 }
-            }
-            else //Reset Stats
-            {
-                npc.damage = 100;
-                MeleeSpeed = 0;
-            }
 
-
-            if (internalAI[0] == AISTATE_MELEE) //When charging the player
-            {
                 if (Main.netMode != 1)
                 {
                     if (SelectPoint)
@@ -373,6 +354,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else //Anything else
             {
+                npc.damage = 100;
+                MeleeSpeed = 0;
                 Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
                 MoveToPoint(wantedVelocity);
             }

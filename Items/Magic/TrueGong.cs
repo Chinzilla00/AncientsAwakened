@@ -17,14 +17,14 @@ namespace AAMod.Items.Magic
 
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 6;
-			item.damage = 150;                        
+			item.damage = 50;                        
             item.magic = true;
 			item.useTime = 30;
             item.useAnimation = 30;
-            item.useStyle = 5;        //this is how the item is holded
+            item.useStyle = 5;        
             item.noMelee = true;
             item.knockBack = 4;
-			item.mana = 13;             //mana use
+			item.mana = 13;             
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/MOARGONG"); 
             item.autoReuse = true;
             item.shoot = 122;

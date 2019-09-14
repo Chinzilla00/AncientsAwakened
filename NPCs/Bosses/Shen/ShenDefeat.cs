@@ -9,6 +9,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Discord's Defeat");
+            Terraria.ID.NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
         public override void SetDefaults()
@@ -30,19 +31,17 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
-            npc.ai[1]++;
             if (npc.ai[1] > 240)
             {
-                if (!NPC.AnyNPCs(mod.NPCType<ShenDeath>()))
-                {
-                    int nPc = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<ShenDeath>());
-                    Main.npc[nPc].netUpdate = true;
-                    npc.active = false;
-                    npc.netUpdate = true;
-                }
+                int i = AAWorld.downedShen ? 1 : 0;
+                int nPc = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<ShenDeath>(), 0, i);
+                Main.npc[nPc].netUpdate = true;
+                npc.active = false;
+                npc.netUpdate = true;
             }
-            else if (npc.ai[1] < 180)
+            else
             {
+                npc.ai[1]++;
                 npc.ai[0]++;
                 if (npc.ai[0] > 4)
                 {

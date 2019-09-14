@@ -17,6 +17,7 @@ namespace AAMod.Tiles
             name.SetDefault("Technecium Ore");
             AddMapEntry(new Color(100, 200, 200), name);
 			minPick = 210;
+            soundType = 21;
         }
 
         public override bool CanExplode(int i, int j)

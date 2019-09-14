@@ -15,9 +15,9 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dread Moon Rune");
-            Tooltip.SetDefault(@"An enchanted tablet eminating with dark chaotic energy
-Summons Yamata Awakened
-Can only be used at night in the mire
+            Tooltip.SetDefault(@"An enchanted tablet radiating dark chaotic energy
+Summons Yamata no Orochi
+Can only be used in the mire at night
 Non-Consumable");
         }
         public override void SetDefaults()

@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.timeLeft = 240;
         }
 
-        public override void AI()
+        public override void PostAI()
         {
             projectile.timeLeft--;
             if (projectile.timeLeft <= 0)

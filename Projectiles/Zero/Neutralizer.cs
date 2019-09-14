@@ -27,7 +27,7 @@ namespace AAMod.Projectiles.Zero
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-
+            Player player = Main.player[projectile.owner];
             if (projectile.velocity.X != oldVelocity.X)
             {
                 projectile.position.X = projectile.position.X + projectile.velocity.X;
@@ -39,6 +39,10 @@ namespace AAMod.Projectiles.Zero
                 projectile.position.Y = projectile.position.Y + projectile.velocity.Y;
                 projectile.velocity.Y = -oldVelocity.Y;
                 projectile.damage = (int)(projectile.damage * 1.2);
+            }
+            if (projectile.damage > 3000 * player.rangedDamage)
+            {
+                projectile.damage = (int)(3000 * player.rangedDamage);
             }
             return false; // return false because we are handling collision
         }

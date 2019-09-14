@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueDynaskull
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Primeval Dynaskull Greaves");
+			DisplayName.SetDefault("Primeval Greaves");
             Tooltip.SetDefault(@"20% Increased ranged critical chance
 +12% movement speed");
 

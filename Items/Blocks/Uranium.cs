@@ -18,7 +18,7 @@ namespace AAMod.Items.Blocks
             item.height = 12;
             item.value = 5500;
             item.rare = 8;
-            item.createTile = mod.TileType("Uranium"); //put your CustomBlock Tile name
+            item.createTile = mod.TileType("UraniumOre");
         }
 
 

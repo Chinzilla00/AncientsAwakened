@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Yamata Awakened");
+            DisplayName.SetDefault("Yamata no Orochi");
             Main.npcFrameCount[npc.type] = 9;
         }
 
@@ -77,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             if (npc.life <= 0)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataAHead"), new Color(146, 30, 68));
+                CombatText.NewText(npc.getRect(), new Color(146, 30, 68), Lang.BossChat("YamataAHead"), true, false);
             }
         }
         public override bool PreNPCLoot()

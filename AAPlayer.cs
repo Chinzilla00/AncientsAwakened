@@ -2420,6 +2420,20 @@ namespace AAMod
                 }
             }
 
+            if (crit && trueFlesh)
+            {
+                if (damage / 10 < 1)
+                {
+                    player.statLife += 1;
+                    CombatText.NewText(player.getRect(), Color.Green, 1, true, false);
+                }
+                else
+                {
+                    player.statLife += damage / 10;
+                    CombatText.NewText(player.getRect(), Color.Green, damage / 10, true, false);
+                }
+            }
+
             if (Tied || trueNights)
             {
                 target.AddBuff(BuffID.CursedInferno, 300);
@@ -2988,6 +3002,17 @@ namespace AAMod
                 if (trueFlesh)
                 {
                     target.AddBuff(BuffID.Ichor, 300);
+                    if (crit)
+                    {
+                        if (damage / 10 < 1)
+                        {
+                            player.statLife += 1;
+                        }
+                        else
+                        {
+                            player.statLife += damage / 10;
+                        }
+                    }
                 }
 
                 if (trueNights)
@@ -3245,62 +3270,42 @@ namespace AAMod
 
         public bool MeleeHighest(Player player)
         {
-            if (player.meleeDamage > player.rangedDamage &&
+            return player.meleeDamage > player.rangedDamage &&
                 player.meleeDamage > player.magicDamage &&
                 player.meleeDamage > player.minionDamage &&
-                player.meleeDamage > player.thrownDamage)
-            {
-                return true;
-            }
-            return false;
+                player.meleeDamage > player.thrownDamage;
         }
 
         public bool RangedHighest(Player player)
         {
-            if (player.rangedDamage > player.meleeDamage &&
+            return player.rangedDamage > player.meleeDamage &&
                 player.rangedDamage > player.magicDamage &&
                 player.rangedDamage > player.minionDamage &&
-                player.rangedDamage > player.thrownDamage)
-            {
-                return true;
-            }
-            return false;
+                player.rangedDamage > player.thrownDamage;
         }
 
         public bool MagicHighest(Player player)
         {
-            if (player.magicDamage > player.rangedDamage &&
+            return player.magicDamage > player.rangedDamage &&
                 player.magicDamage > player.meleeDamage &&
                 player.magicDamage > player.minionDamage &&
-                player.magicDamage > player.thrownDamage)
-            {
-                return true;
-            }
-            return false;
+                player.magicDamage > player.thrownDamage;
         }
 
         public bool SummonHighest(Player player)
         {
-            if (player.minionDamage > player.rangedDamage &&
+            return player.minionDamage > player.rangedDamage &&
                 player.minionDamage > player.magicDamage &&
                 player.minionDamage > player.meleeDamage &&
-                player.minionDamage > player.thrownDamage)
-            {
-                return true;
-            }
-            return false;
+                player.minionDamage > player.thrownDamage;
         }
 
         public bool ThrownHighest(Player player)
         {
-            if (player.thrownDamage > player.rangedDamage &&
+            return player.thrownDamage > player.rangedDamage &&
                 player.thrownDamage > player.magicDamage &&
                 player.thrownDamage > player.minionDamage &&
-                player.thrownDamage > player.meleeDamage)
-            {
-                return true;
-            }
-            return false;
+                player.thrownDamage > player.meleeDamage;
         }
     }
 }

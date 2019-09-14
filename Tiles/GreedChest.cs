@@ -31,17 +31,18 @@ namespace AAMod.Tiles
 			TileObjectData.newTile.LavaDeath = false;
 			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 			TileObjectData.addTile(Type);
+
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Golden Chest");
-            AddMapEntry(new Color(141, 62, 0), name, MapChestName);
+            name.SetDefault("Greed Chest");
+            AddMapEntry(new Color(150, 75, 0), name, MapChestName);
             name = CreateMapEntryName(Name + "_Locked"); // With multiple map entries, you need unique translation keys.
             name.SetDefault("{$Mods.AAMod.Common.GreedChest_Locked}");
-            AddMapEntry(new Color(141, 62, 0), name, MapChestName);
+            AddMapEntry(new Color(141, 64, 0), name, MapChestName);
             dustType = DustID.Gold;
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.Containers };
-            chest = "Golden Chest";
-            chestDrop = ItemID.GoldenChest;
+            chest = "Greed Chest";
+            chestDrop = mod.ItemType("GreedChest");
         }
 
         public override ushort GetMapOption(int i, int j) => (ushort)(Main.tile[i, j].frameX / 36);
@@ -103,7 +104,7 @@ namespace AAMod.Tiles
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(i * 16, j * 16, 32, 32, chestDrop);
+            Item.NewItem(i * 16, j * 16, 32, 32, mod.ItemType("GreedChest"));
             Chest.DestroyChest(i, j);
         }
 
@@ -216,10 +217,10 @@ namespace AAMod.Tiles
             }
             else
             {
-                player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Golden Chest";
-                if (player.showItemIconText == "Golden Chest")
+                player.showItemIconText = Main.chest[chest].name.Length > 0 ? Main.chest[chest].name : "Greed Chest";
+                if (player.showItemIconText == "Greed Chest")
                 {
-                    player.showItemIcon2 = ItemID.GoldenChest;
+                    player.showItemIcon2 = mod.ItemType("GreedChest");
                     if (Main.tile[left, top].frameX / 36 == 1)
                         player.showItemIcon2 = mod.ItemType<Items.Usable.GreedKey>();
                     player.showItemIconText = "";

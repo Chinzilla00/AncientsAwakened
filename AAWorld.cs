@@ -167,7 +167,7 @@ namespace AAMod
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             HallowedOre = NPC.downedMechBossAny;
-            Evil = NPC.downedPlantBoss;
+            Evil = NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
             RadiumOre = downedDB;
@@ -481,7 +481,7 @@ namespace AAMod
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             HallowedOre = NPC.downedMechBossAny;
-            Evil = NPC.downedPlantBoss;
+            Evil = NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
             Luminite = NPC.downedMoonlord;
             RadiumOre = downedEquinox;
             DiscordOres = downedSisters;
@@ -1363,7 +1363,7 @@ namespace AAMod
             lakeTiles = tileCounts[mod.TileType<Darkmud>()] + tileCounts[mod.TileType<AbyssGrass>()] + tileCounts[mod.TileType<AbyssWood>()] + tileCounts[mod.TileType<AbyssWoodSolid>()];
             terraTiles = tileCounts[mod.TileType<TerraCrystal>()] + tileCounts[mod.TileType<TerraWood>()] + tileCounts[mod.TileType<TerraLeaves>()];
             Radium = tileCounts[mod.TileType<RadiumOre>()];
-            HoardTiles = tileCounts[mod.TileType<GreedBrick>()] + tileCounts[mod.TileType<GreedStone>()] + tileCounts[mod.TileType<GreedDoorClosed>()] + tileCounts[mod.TileType<GreedDoorOpen>()];
+            HoardTiles = tileCounts[mod.TileType<GreedBrick>()] + tileCounts[mod.TileType<GreedStone>()];
             CloudTiles = tileCounts[mod.TileType<AcropolisBlock>()] + tileCounts[mod.TileType<AcropolisAltarBlock>()] + tileCounts[mod.TileType<AcropolisClouds>()];
         }
 

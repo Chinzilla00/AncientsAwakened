@@ -24,7 +24,7 @@ Chaos Chain EX");
             item.knockBack = 1f;
             item.width = 30;
             item.height = 10;
-            item.damage = 250;
+            item.damage = 275;
             item.shoot = mod.ProjectileType("ChaosChainEX");
             item.shootSpeed = 18f;
             item.UseSound = SoundID.Item116;

@@ -27,6 +27,7 @@ namespace AAMod.Items.Armor.Uranium
         public override void UpdateEquip(Player player)
         {
             player.rangedDamage *= 1.08f;
+            player.ammoCost80 = true;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

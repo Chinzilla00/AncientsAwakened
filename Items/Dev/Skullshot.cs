@@ -2,6 +2,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ID;
 using System;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Dev
 {
@@ -24,8 +25,8 @@ Uses Bullets and Bones as ammo
             item.useStyle = 5;
             item.useAnimation = 34;
             item.useTime = 34;
-            item.width = 50;
-            item.height = 14;
+            item.width = 46;
+            item.height = 20;
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;
             item.UseSound = SoundID.Item36;
@@ -35,11 +36,27 @@ Uses Bullets and Bones as ammo
             item.value = 100000;
             item.rare = 9;
             item.ranged = true;
-
-            glowmaskTexture = "Glowmasks/" + GetType().Name;
-			glowmaskDrawType = GLOWMASKTYPE_GUN;
-			glowmaskDrawColor = Color.White;
-			customNameColor = new Color(255, 128, 0);
+        }
+		
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        {
+            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name);
+            spriteBatch.Draw
+            (
+                texture,
+                new Vector2
+                (
+                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
+                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
+                ),
+                new Rectangle(0, 0, texture.Width, texture.Height),
+                new Color(255, 128, 0),
+                rotation,
+                texture.Size() * 0.5f,
+                scale,
+                SpriteEffects.None,
+                0f
+            );
         }
 
         public override bool AltFunctionUse(Player player)
@@ -55,7 +72,7 @@ Uses Bullets and Bones as ammo
                 item.useTime = 5;
                 item.reuseDelay = 17;
                 item.useAmmo = AAMod.BoneAmmo;
-                item.damage = 350;
+                item.damage = 375;
             }
             else
             {
@@ -63,14 +80,14 @@ Uses Bullets and Bones as ammo
                 item.useTime = 28;
                 item.reuseDelay = 0;
                 item.useAmmo = AmmoID.Bullet;
-                item.damage = 70;
+                item.damage = 95;
             }
             return base.CanUseItem(player);
         }
 
         public override bool ConsumeAmmo(Player player)
         {
-            return !(player.itemAnimation < item.useAnimation - 2);
+            return !(player.itemAnimation < item.useAnimation - 2) || player.altFunctionUse != 2;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)

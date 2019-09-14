@@ -10,18 +10,18 @@ namespace AAMod.Items.Magic
         {
 
             item.damage = 9;                        
-            item.magic = true;                     //this make the item do magic damage
+            item.magic = true;                     
             item.width = 26;
             item.height = 38;
             item.useTime = 25;
             item.useAnimation = 25;
-            item.useStyle = 1;        //this is how the item is holded
+            item.useStyle = 1;        
             item.noMelee = true;
             item.knockBack = 2;        
             item.value = 1000;
             item.rare = 2;
-            item.mana = 5;             //mana use
-            item.UseSound = SoundID.Item21;            //this is the sound when you use the item
+            item.mana = 5;             
+            item.UseSound = SoundID.Item21;            
             item.autoReuse = true;
             item.shoot = mod.ProjectileType ("TFGWP");  //this make the item shoot your projectile
             item.shootSpeed = 7f;     

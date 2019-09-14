@@ -12,7 +12,7 @@ namespace AAMod.Items.Melee
 		}
         public override void SetDefaults()
         {
-            item.damage = 31;
+            item.damage = 20;
             item.melee = true;
             item.width = 66;
             item.height = 64;

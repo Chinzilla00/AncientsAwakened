@@ -43,7 +43,12 @@ namespace AAMod.Items.Ranged
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
             }
             return false;
-		}
+        }
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-4, 0);
+        }
 
         public override void AddRecipes()
         {

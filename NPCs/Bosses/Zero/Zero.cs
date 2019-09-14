@@ -122,9 +122,19 @@ namespace AAMod.NPCs.Bosses.Zero
             }
         }
 
+        bool hasArms = false;
         public void RespawnArms()
         {
-            if (Main.netMode != 1)
+            hasArms = NPC.AnyNPCs(mod.NPCType<VoidStar>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Taser>()) ||
+                   NPC.AnyNPCs(mod.NPCType<RealityCannon>()) ||
+                   NPC.AnyNPCs(mod.NPCType<RiftShredder>()) ||
+                   NPC.AnyNPCs(mod.NPCType<Neutralizer>()) ||
+                   NPC.AnyNPCs(mod.NPCType<OmegaVolley>()) ||
+                   NPC.AnyNPCs(mod.NPCType<NovaFocus>()) ||
+                   NPC.AnyNPCs(mod.NPCType<GenocideCannon>());
+
+            if (Main.netMode != 1 && !hasArms)
             {
                 npc.ai[0] = 10f;
 

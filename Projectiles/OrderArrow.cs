@@ -27,8 +27,8 @@ namespace AAMod.Projectiles
 		{
 			if (Main.rand.Next(2) == 0)
 			{
-				Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, 211,
-				projectile.velocity.X * .5f, projectile.velocity.Y * .5f, 200, Scale: 1.1f);
+				Dust dust = Dust.NewDustDirect(projectile.position, projectile.height, projectile.width, 107,
+				projectile.velocity.X * .5f, projectile.velocity.Y * .5f, 200, Scale: .6f);
 				dust.velocity += projectile.velocity * 0.4f;
 				dust.velocity *= 0.3f;
 			}
@@ -50,8 +50,8 @@ namespace AAMod.Projectiles
             Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 1);
             for (int num468 = 0; num468 < 4; num468++)
             {
-                num468 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, 6, -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default);
+                num468 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, 107, -projectile.velocity.X * 0.2f,
+                    -projectile.velocity.Y * 0.2f, 100, default, .6f);
             }
         }
 

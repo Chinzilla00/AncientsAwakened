@@ -10,7 +10,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Discordian Strike");     
-            Main.projFrames[projectile.type] = 7;     
+            Main.projFrames[projectile.type] = 7;
         }
 
         public override void SetDefaults()

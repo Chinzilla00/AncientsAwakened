@@ -17,7 +17,7 @@ namespace AAMod.Projectiles
             projectile.penetrate = 1;
             projectile.timeLeft = 240;
             projectile.tileCollide = false;
-            aiType = 1;
+            aiType = 27;
         }
 
         public override void PostAI()

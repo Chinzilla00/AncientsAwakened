@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Bosses.Djinn
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);
-            npc.damage = (int)(npc.damage * 0.6f);
+            npc.damage = (int)(npc.damage * 1.6f);
             npc.defense = (int)(npc.defense * 1.2f);
         }
 
@@ -80,6 +80,7 @@ namespace AAMod.NPCs.Bosses.Djinn
 
         bool selectPoint = false;
         Vector2 MovePoint;
+        bool soundPlayed = false;
 
         public override void AI()
         {
@@ -125,17 +126,38 @@ namespace AAMod.NPCs.Bosses.Djinn
                 }
             }
 
-            if (!player.ZoneDesert || player.dead || !Main.dayTime)
+            if (player.dead || !player.active)
             {
                 npc.TargetClosest(true);
-                if (!player.ZoneDesert || player.dead || !Main.dayTime)
+                if (player.dead || !player.active)
                 {
                     FuriousFlexing();
                     return;
                 }
             }
+            else if (!player.ZoneDesert)
+            {
+                if (!soundPlayed)
+                {
+                    soundPlayed = true;
+                    Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0);
+                }
+                npc.damage = 1000;
+                npc.defense = 1000;
+                npc.ai[3]++;
+                BaseAI.AIFlier(npc, ref npc.ai, true, 0.3f, 0.3f, 16f, 16f, false, 300);
+
+                if (npc.localAI[0]++ > 50)
+                {
+                    npc.localAI[0] = 0;
+                    Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-200, 200), npc.Center.Y + Main.rand.Next(-100, 100), 0, 0, mod.ProjectileType<Menacing>(), 0, 0, Main.myPlayer);
+                }
+                return;
+            }
             else
             {
+                soundPlayed = false;
+                npc.defense = 15;
                 Sandstorm.TimeLeft = 10;
                 if (npc.alpha <= 0)
                 {
@@ -308,9 +330,9 @@ namespace AAMod.NPCs.Bosses.Djinn
                 npc.frame.Y = Frame * frameHeight;
                 return;
             }
-            else if (internalAI[0] == 1)
+            else if (internalAI[0] == 1 || !Main.player[npc.target].ZoneDesert)
             {
-                if (npc.frameCounter > 9)
+                if (npc.frameCounter > 5)
                 {
                     npc.frame.Y += frameHeight;
                     npc.frameCounter = 0;
@@ -348,7 +370,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                         npc.frame.Y += frameHeight;
                         npc.frameCounter = 0;
                     }
-					 if (npc.frame.Y > FrameHeight * 7)
+			    if (npc.frame.Y > FrameHeight * 7)
                 {
 					
                      npc.frame.Y = FrameHeight * 5;
@@ -535,7 +557,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             Texture2D MudaMuda = mod.GetTexture("NPCs/Bosses/Djinn/DesertDjinnMudaMuda");
             Texture2D Punch = mod.GetTexture("NPCs/Bosses/Djinn/DesertDjinnPunch");
 
-            if (internalAI[0] == 1)
+            if (internalAI[0] == 1 || !Main.player[npc.target].ZoneDesert)
             {
                 CurrentTex = MudaMuda;
             }
@@ -549,6 +571,12 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
 
             var effects = npc.direction == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+
+            if (!Main.player[npc.target].ZoneDesert)
+            {
+                drawColor = Color.Goldenrod;
+                BaseDrawing.DrawAfterimage(spriteBatch, CurrentTex, 0, npc, 1, 1, 7, false, 0, 0, drawColor, npc.frame, 15);
+            }
 
             spriteBatch.Draw(CurrentTex, npc.Center - Main.screenPosition, npc.frame, drawColor, npc.rotation, npc.frame.Size() / 2, npc.scale, effects, 0);
 

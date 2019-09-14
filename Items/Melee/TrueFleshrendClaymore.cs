@@ -17,7 +17,7 @@ Despite the name, it's not actually made of flesh");
 		public override void SetDefaults()
 		{
             
-			item.damage = 115;
+			item.damage = 150;
 			item.melee = true;
 			item.width = 75;
 			item.height = 71;
@@ -28,7 +28,7 @@ Despite the name, it's not actually made of flesh");
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 8;
 			item.UseSound = SoundID.Item1;
-			item.autoReuse = false;
+			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("TrueFleshClaymoreShot");
             item.shootSpeed = 12f;
 

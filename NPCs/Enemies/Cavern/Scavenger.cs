@@ -20,9 +20,9 @@ namespace AAMod.NPCs.Enemies.Cavern
 		
 		public override void SetDefaults()
 		{
-            npc.width = 25;
-            npc.height = 25;
-            npc.value = BaseMod.BaseUtility.CalcValue(0, 0, 0, 90);
+            npc.width = 24;
+            npc.height = 24;
+            npc.value = BaseUtility.CalcValue(0, 0, 0, 90);
             npc.npcSlots = 5;
             npc.aiStyle = -1;
             npc.lifeMax = 300;
@@ -54,18 +54,14 @@ namespace AAMod.NPCs.Enemies.Cavern
 
 		public override void AI()
         {
-            int[] types = new int[] { mod.NPCType("Scavenger"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerTail") };
-            BaseAI.AIWorm(npc, types, 5, 6f, 8f, 0.07f, false, true);
+            int[] types = new int[] { mod.NPCType("Scavenger"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerTail") };
+            BaseAI.AIWorm(npc, types, 7, 0, 12f, 0.1f, false, false, true, true, false);
         }
 
 		public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            npc.position.Y += npc.height * 0.5f; return true;
-        }
-
-		public override void PostDraw(SpriteBatch sb, Color dColor)
-        {
-            npc.position.Y -= npc.height * 0.5f;
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor, true);
+            return false;
         }
 	}
 

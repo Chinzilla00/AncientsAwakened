@@ -18,7 +18,7 @@ namespace AAMod.Projectiles
             projectile.height = 16;
             projectile.friendly = true;
             projectile.aiStyle = -1;
-            projectile.melee = true;
+            projectile.ranged = true;
             projectile.penetrate = 1;
             projectile.extraUpdates = 1;
         }

@@ -14,13 +14,14 @@ namespace AAMod.Projectiles
 
 		public override void SetDefaults()
 		{
-			projectile.CloneDefaults(ProjectileID.IceSpike);
+			projectile.CloneDefaults(ProjectileID.FrostArrow);
             projectile.hostile = false;
             projectile.friendly = true;
 			projectile.penetrate = 5;
 		}
         public override void PostAI()
         {
+
             if (projectile.frameCounter++ > 6)
             {
                 projectile.frameCounter = 0;
@@ -30,6 +31,11 @@ namespace AAMod.Projectiles
                     projectile.frame = 0;
                 }
             }
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 50);
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

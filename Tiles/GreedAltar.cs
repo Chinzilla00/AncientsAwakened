@@ -32,7 +32,7 @@ namespace AAMod.Tiles
 
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
-            if (NPC.AnyNPCs(mod.NPCType("Greed")) || NPC.AnyNPCs(mod.NPCType("GreedSpawn")))
+            if (NPC.AnyNPCs(mod.NPCType("Greed")) || NPC.AnyNPCs(mod.NPCType("GreedSpawn")) || NPC.AnyNPCs(mod.NPCType("GreedA")) || NPC.AnyNPCs(mod.NPCType("GreedTransition")))
             {
                 frame = 1;
             }
@@ -44,6 +44,10 @@ namespace AAMod.Tiles
 
         public override void RightClick(int i, int j)
         {
+            if (NPC.AnyNPCs(mod.NPCType("Greed")) || NPC.AnyNPCs(mod.NPCType("GreedSpawn")) || NPC.AnyNPCs(mod.NPCType("GreedA")) || NPC.AnyNPCs(mod.NPCType("GreedTransition")))
+            {
+                return;
+            }
             Player player = Main.LocalPlayer;
             int type = mod.ItemType<Items.BossSummons.GoldenGrub>();
             if (BasePlayer.HasItem(player, type, 1))

@@ -35,7 +35,6 @@ namespace AAMod.Projectiles.EFish
             }
             Main.player[projectile.owner].itemAnimation = 10;
             Main.player[projectile.owner].itemTime = 10;
-            float arg_1C53D_0 = vector54.X;
             if (vector54.X < 0f)
             {
                 Main.player[projectile.owner].ChangeDir(1);

@@ -20,7 +20,6 @@ namespace AAMod.NPCs.Bosses.Greed
 			projectile.height = 90;
 			projectile.hostile = true;
 			projectile.penetrate = -1;
-			projectile.timeLeft = 120;
 			projectile.ignoreWater = true;
             projectile.tileCollide = true;          
 		}
@@ -29,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             NPC Body = Main.npc[(int)projectile.ai[0]];
             projectile.Center = Body.Center;
-            if (Body == null || Body.life <= 0 || (Body.ai[0] != 20 && Body.type != mod.NPCType<GreedMinion>()))
+            if (Body == null || Body.life <= 0 || (Body.ai[0] != 21 && Body.type != mod.NPCType<GreedMinion>()))
             {
                 projectile.active = false;
             }
@@ -38,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Greed
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Texture2D shield = mod.GetTexture("NPCs/Bosses/Greed/UraniumShield");
-            BaseDrawing.DrawTexture(spriteBatch, shield, 0, projectile.Center, shield.Width, shield.Height, projectile.scale, projectile.rotation, projectile.direction, 1, new Rectangle(0, 0, shield.Width, shield.Height), AAColor.Uranium, true);
+            BaseDrawing.DrawTexture(spriteBatch, shield, 0, projectile.position, shield.Width, shield.Height, 1f, 0, 0, 1, new Rectangle(0, 0, shield.Width, shield.Height), AAColor.Uranium, true);
             return false;
         }
     }

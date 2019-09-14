@@ -41,17 +41,12 @@ Can only be used at night");
 
         public override bool CanUseItem(Player player)
         {
-            if (Main.dayTime )
-            {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("SubzeroCrystalTimeFalse"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
-                return false;
-            }
             if (!player.ZoneSnow)
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("SubzeroCrystalSnowZoneFalse"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
                 return false;
             }
-            if (NPC.AnyNPCs(mod.NPCType("Serpent")))
+            if (NPC.AnyNPCs(mod.NPCType("SerpentHead")))
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("SubzeroCrystalTrue"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
                 return false;

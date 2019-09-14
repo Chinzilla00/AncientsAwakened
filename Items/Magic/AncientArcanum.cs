@@ -15,7 +15,7 @@ namespace AAMod.Items.Magic
 		public override void SetDefaults()
 		{
 			item.mana = 35;
-			item.damage = 180;
+			item.damage = 195;
 			item.useStyle = 5;
 			item.shootSpeed = 9f;
 			item.shoot = mod.ProjectileType("AncientArcanum");

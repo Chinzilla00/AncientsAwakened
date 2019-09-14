@@ -52,12 +52,6 @@ namespace AAMod.Items.Ranged
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
-            recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 6);
-            recipe.AddIngredient(ItemID.Harpoon);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
         }
     }
 }

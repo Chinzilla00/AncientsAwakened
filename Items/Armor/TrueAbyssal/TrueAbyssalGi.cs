@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueAbyssal
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			DisplayName.SetDefault("Perfect Abyssal Gi");
+			DisplayName.SetDefault("Shadow Gi");
 			Tooltip.SetDefault(@"50% increased movement speed
 9% increased ranged damage");
 		}

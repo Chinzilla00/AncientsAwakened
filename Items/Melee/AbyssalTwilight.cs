@@ -26,7 +26,7 @@ namespace AAMod.Items.Melee
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.rare = 3;
 			item.UseSound = SoundID.Item1;
-			item.autoReuse = false;
+			item.autoReuse = true;
 		}
 
 		public override void AddRecipes()

@@ -45,12 +45,19 @@ namespace AAMod.Items.Armor.Chaos
 
         public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+            ModRecipe recipe;
+            recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("TrueAbyssalFukumen"));
 			recipe.AddIngredient(null, "ChaosCrystal", 1);
             recipe.AddTile(null, "TruePaladinsSmeltery");
             recipe.SetResult(this);
 			recipe.AddRecipe();
-		}
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType("TrueDynaskull"));
+            recipe.AddIngredient(null, "ChaosCrystal", 1);
+            recipe.AddTile(null, "TruePaladinsSmeltery");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

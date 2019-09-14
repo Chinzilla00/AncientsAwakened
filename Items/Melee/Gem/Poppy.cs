@@ -28,12 +28,11 @@ namespace AAMod.Items.Melee.Gem   //where is located
             item.UseSound = SoundID.Item1;       
             item.autoReuse = true;   
             item.useTurn = true;
-            item.shoot = mod.ProjectileType<Projectiles.GemShot.AmethystShot>();
             item.shootSpeed = 16f;
 
-            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow"; //the glowmask texture path.
-            glowmaskDrawType = GLOWMASKTYPE_SWORD; //what type it is when drawn in the hand, _NONE == no draw, _SWORD == like a sword, _GUN == like a gun	
-            glowmaskDrawColor = Color.White;  //glowmask draw color
+            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";
+            glowmaskDrawType = GLOWMASKTYPE_SWORD;
+            glowmaskDrawColor = Color.White;
         }
 
         public override void AddRecipes()  //How to craft this sword

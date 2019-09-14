@@ -21,7 +21,7 @@ Inflicts daybroken");
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.Terrarian);
-            item.damage = 350;                            
+            item.damage = 750;                            
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 2;
             item.knockBack = 1;

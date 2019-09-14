@@ -12,7 +12,9 @@ namespace AAMod.Items.Boss.Shen
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Chaos Slayer");
-            Tooltip.SetDefault("Unleashes blades of chaos to smite your foes\n'Shatter all sanity'");
+            Tooltip.SetDefault(@"Unleashes blades of chaos to smite your foes
+blades go through tiles
+'Shatter all sanity'");
         }
 
         public override void SetDefaults()

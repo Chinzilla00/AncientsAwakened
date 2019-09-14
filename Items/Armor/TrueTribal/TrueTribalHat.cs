@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.TrueTribal
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Living Tribal Hat");
+            DisplayName.SetDefault("Druid Hood");
             Tooltip.SetDefault(@"10% Increased magic damage
 Increases Maximum Mana by 60");
         }

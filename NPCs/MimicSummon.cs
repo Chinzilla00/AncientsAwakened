@@ -49,7 +49,6 @@ namespace AAMod.NPCs
             }
 
             bool hasInfernoKey = false;
-            bool hasMireKey = false;
             bool hasItems = false;
 
             for (int i = 0; i < 40; i++)
@@ -70,9 +69,9 @@ namespace AAMod.NPCs
                 {
                     hasInfernoKey = true;
                 }
-                else if (Main.chest[chestIndex].item[i].type == mod.ItemType("KeyOfSpite"))
+                else if (Main.chest[chestIndex].item[i].type != mod.ItemType("KeyOfSpite"))
                 {
-                    hasMireKey = true;
+                    return;
                 }
             }
 
@@ -101,14 +100,10 @@ namespace AAMod.NPCs
             NetMessage.SendData(MessageID.ChestUpdates, -1, -1, null, 1, x, y, 0f, chestIndex);
             NetMessage.SendTileSquare(-1, x, y, 3);
 
-            int npcToSpawn = -1;
+            int npcToSpawn = mod.NPCType("MireMimic");
             if (hasInfernoKey)
             {
                 npcToSpawn = mod.NPCType("InfernoMimic");
-            }
-            else if (hasMireKey)
-            {
-                npcToSpawn = mod.NPCType("MireMimic");
             }
 
             int npcIndex = NPC.NewNPC(x * 16 + 16, y * 16 + 32, npcToSpawn);

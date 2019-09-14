@@ -35,7 +35,6 @@ namespace AAMod.Projectiles.AH
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
 		{
 			projectile.ai[0] += 0.1f;
-			projectile.velocity *= 0.75f;
 		}
 		
 		public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)

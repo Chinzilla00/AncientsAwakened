@@ -44,7 +44,7 @@ namespace AAMod.Items.Ranged
 			{
 				for(int i = 0; i < 1000; ++i)
 				{
-					if(Main.projectile[i].active && Main.projectile[i].type == 163)
+					if(Main.projectile[i].active && (Main.projectile[i].type == 163 || Main.projectile[i].type == 310))
 					{
 						Main.projectile[i].Kill();
 					}
@@ -59,7 +59,7 @@ namespace AAMod.Items.Ranged
 		
 		public override bool ConsumeAmmo(Player player)
 		{
-		return Main.rand.NextFloat() >= .33;
+		    return Main.rand.NextFloat() >= .33;
 		}
 		
 		public override Vector2? HoldoutOffset()
@@ -79,10 +79,38 @@ namespace AAMod.Items.Ranged
 			float speedY3 = perturbedSpeed3.Y;
 			float speedX4 = perturbedSpeed4.X;
 			float speedY4 = perturbedSpeed4.Y;
-			Projectile.NewProjectile(vector.X, vector.Y, speedX2, speedY2, 163, damage, knockBack, player.whoAmI);
-			Projectile.NewProjectile(vector.X, vector.Y, speedX, speedY, 163, damage, knockBack, player.whoAmI);
-			Projectile.NewProjectile(vector.X, vector.Y, speedX3, speedY3, 163, damage, knockBack, player.whoAmI);
-			Projectile.NewProjectile(vector.X, vector.Y, speedX4, speedY4, 163, damage, knockBack, player.whoAmI);
+            int num45 = 0;
+            for (int num46 = 54; num46 < 58; num46++)
+            {
+                if (player.inventory[num46].stack > 0 && (player.inventory[num46].ammo == 931 || player.inventory[num46].ammo == 1614))
+                {
+                    num45 = player.inventory[num46].type;
+                    break;
+                }
+            }
+            if (num45 == 0)
+            {
+                for (int num47 = 0; num47 < 54; num47++)
+                {
+                    if (player.inventory[num47].stack > 0 && (player.inventory[num47].ammo == 931 || player.inventory[num47].ammo == 1614))
+                    {
+                        num45 = player.inventory[num47].type;
+                        break;
+                    }
+                }
+            }
+            if (num45 == 931)
+            {
+                num45 = 163;
+            }
+            else if (num45 == 1614)
+            {
+                num45 = 310;
+            }
+            Projectile.NewProjectile(vector.X, vector.Y, speedX2, speedY2, num45, damage, knockBack, player.whoAmI);
+			Projectile.NewProjectile(vector.X, vector.Y, speedX, speedY, num45, damage, knockBack, player.whoAmI);
+			Projectile.NewProjectile(vector.X, vector.Y, speedX3, speedY3, num45, damage, knockBack, player.whoAmI);
+			Projectile.NewProjectile(vector.X, vector.Y, speedX4, speedY4, num45, damage, knockBack, player.whoAmI);
 			return false;
 		}
 		

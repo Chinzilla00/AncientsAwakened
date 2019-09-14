@@ -79,6 +79,16 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             
             BaseAI.AISpore(npc, ref internalAI, 0.1f, 0.02f, 5f, 1f);
             
+            if (Collision.SolidCollision(npc.position, npc.width, npc.height))
+            {
+                npc.velocity *= .96f;
+                npc.scale -= .5f;
+                if (npc.scale <= 0)
+                {
+                    npc.active = false;
+                    npc.netUpdate = true;
+                }
+            }
         }
     }
 }

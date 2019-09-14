@@ -11,19 +11,19 @@ namespace AAMod.Items.Magic
         {
 
             item.damage = 90;                        
-            item.magic = true;                     //this make the item do magic damage
+            item.magic = true;                     
             item.width = 32;
             item.height = 32;
 
             item.useTime = 20;
             item.useAnimation = 20;
-            item.useStyle = 1;        //this is how the item is holded
+            item.useStyle = 1;        
             item.noMelee = true;
             item.knockBack = 3;
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 6;
-            item.mana = 4;             //mana use
-            item.UseSound = SoundID.Item21;            //this is the sound when you use the item
+            item.mana = 4;             
+            item.UseSound = SoundID.Item21;            
             item.autoReuse = true;
             item.shoot = mod.ProjectileType ("ElectricitySpellP");  //this make the item shoot your projectile
             item.shootSpeed = 11f;     

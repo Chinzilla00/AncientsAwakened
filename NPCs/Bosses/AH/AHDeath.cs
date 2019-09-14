@@ -9,7 +9,8 @@ namespace AAMod.NPCs.Bosses.AH
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sisters Defear");
+            DisplayName.SetDefault("Sisters Defeat");
+            Terraria.ID.NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
         public override void SetDefaults()

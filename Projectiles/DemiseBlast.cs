@@ -23,7 +23,6 @@ namespace AAMod.Projectiles
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
-            projectile.usesLocalNPCImmunity = true;
         }
 
         public override Color? GetAlpha(Color lightColor)

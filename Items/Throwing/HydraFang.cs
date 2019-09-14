@@ -8,15 +8,15 @@ namespace AAMod.Items.Throwing
 	{
 		public override void SetDefaults()
 		{
-			item.damage = 18;
+			item.damage = 13;
 			item.ranged = true;
 			item.noUseGraphic = true;
 			item.maxStack = 999;
 			item.consumable = true;
 			item.width = 28;
 			item.height = 34;
-			item.useTime = 15;
-			item.useAnimation = 15;
+			item.useTime = 17;
+			item.useAnimation = 17;
 			item.shoot = mod.ProjectileType("HydraFangP");
 			item.shootSpeed = 16f;
 			item.useStyle = 1;
