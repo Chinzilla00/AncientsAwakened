@@ -1,20 +1,16 @@
-using System; using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-
-using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
-using BaseMod;
 
 namespace AAMod.Items.Boss.Greed
 {
     public class GildedGlock : BaseAAItem
     {
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Gilded Glock");
             Tooltip.SetDefault("Uses Coins as Ammo");
+        }
+        public override void SetDefaults()
+        {
             item.width = 44;
             item.height = 30;
             item.rare = 8;
@@ -28,53 +24,8 @@ namespace AAMod.Items.Boss.Greed
             item.autoReuse = false;
             item.noMelee = true;
             item.shoot = 158;
-            item.shootSpeed = 12;		
+            item.shootSpeed = 12;
+            item.useAmmo = AmmoID.Coin;
         }
-
-        public override bool CanUseItem(Player player)
-        {
-            int itemIndex = -1;
-            if (HasCoin(player, 71, ref itemIndex)) //copper coins
-            {
-                if (ConsumeAmmo(player)) { BasePlayer.ReduceSlot(player, itemIndex, 1); }
-                return true;
-            }
-            if (HasCoin(player, 72, ref itemIndex)) //silver coins
-            {
-                if (!BasePlayer.HasEmptySlots(player, 1, true, true, false)) { return false; }
-                if (BasePlayer.DowngradeMoney(player, itemIndex, ref itemIndex))
-                {
-                    if (ConsumeAmmo(player)) { BasePlayer.ReduceSlot(player, itemIndex, 1); }
-                    return true;
-                }
-                return true;
-            }
-            if (HasCoin(player, 73, ref itemIndex)) //gold coins
-            {
-                if (!BasePlayer.HasEmptySlots(player, 1, true, true, false)) { return false; }
-                if (BasePlayer.DowngradeMoney(player, itemIndex, ref itemIndex))
-                {
-                    if (ConsumeAmmo(player)) { BasePlayer.ReduceSlot(player, itemIndex, 1); }
-                    return true;
-                }
-                return true;
-            }
-            else
-            if (HasCoin(player, 74, ref itemIndex)) //plat coins
-            {
-                if (!BasePlayer.HasEmptySlots(player, 1, true, true, false)) { return false; }
-                if (BasePlayer.DowngradeMoney(player, itemIndex, ref itemIndex))
-                {
-                    if (ConsumeAmmo(player)) { BasePlayer.ReduceSlot(player, itemIndex, 1); }
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public bool HasCoin(Player player, int type, ref int itemIndex)
-		{
-			return BasePlayer.HasItem(player, type, ref itemIndex, 1, true, true);
-		}
 	}
 }
