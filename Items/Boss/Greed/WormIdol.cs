@@ -1,4 +1,4 @@
-namespace AAMod.Items.Materials
+namespace AAMod.Items.Bosses.Greed
 {
     public class WormIdol : BaseAAItem
     {

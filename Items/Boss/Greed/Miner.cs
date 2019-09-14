@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ID;
 
-namespace AAMod.Items.Boss.Serpent
+namespace AAMod.Items.Boss.Greed
 {
     public class Miner : BaseAAItem
     {
