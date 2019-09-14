@@ -23,7 +23,7 @@ namespace AAMod.Items.Magic
             item.mana = 5;             
             item.UseSound = SoundID.Item21;            
             item.autoReuse = true;
-            item.shoot = 664;  //this make the item shoot your projectile
+            item.shoot = 664;  
             item.shootSpeed = 11f;     
         }   
 
