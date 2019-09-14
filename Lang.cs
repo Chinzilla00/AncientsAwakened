@@ -1064,9 +1064,9 @@ namespace AAMod
                         case "fimale":
                         return "她";
                         case "boy":
-                        return "少年";
+                        return ", 少年";
                         case "girl":
-                        return "少女";
+                        return ", 少女";
                         case "AHDeath1":
                         return "啊啊啊啊啊! 别又这样了!!!";
                         case "AHDeath2":
@@ -1688,9 +1688,9 @@ namespace AAMod
                         case "fimale":
                         return "her";
                         case "boy":
-                        return "BOY";
+                        return ", BOY";
                         case "girl":
-                        return "GIRL";
+                        return ", GIRL";
 
                         case "AHDeath1":
                         return "RRRRRRRRRGH! NOT AGAIN!!!";
@@ -1872,8 +1872,6 @@ namespace AAMod
                         case "AthenaDefeat8":
                         return "Even in defeat...";
                         case "AthenaDefeat9":
-                        return "Even in defeat...";
-                        case "AthenaDefeat10":
                         return "A VARIAN ALWAYS PUTS UP ONE LAST FIGHT!!!";
 
                         case "Athena2Defeat1":
@@ -2810,6 +2808,10 @@ namespace AAMod
                         return " in a glowing mushroom biome";
                         case "Athena":
                         return "Athena";
+                        case "Greed":
+                        return "Greed";
+                        case "GreedInfo":
+                        return " at the Altar of Desire in the Hoard.";
                         case "AthenaInfo":
                         return " at the owl altar in the Acropolis.";
                         case "AthenaA":
