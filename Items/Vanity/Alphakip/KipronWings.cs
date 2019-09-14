@@ -58,7 +58,6 @@ Hold down and jump to hover for an extended period of time
             {
                 speed = 15f;
                 acceleration *= 10f;
-                player.velocity.Y *= 0f;
             }
             else
             {
@@ -80,8 +79,12 @@ Hold down and jump to hover for an extended period of time
 
             if (inUse)
             {
+                if (player.controlJump && player.wingTime <= 0)
+                {
+                    player.wingFrame = 2;
+                }
                 player.wingFrameCounter++;
-                if (player.wingFrameCounter > 8)
+                if (player.wingFrameCounter > 6)
                 {
                     player.wingFrame++;
                     player.wingFrameCounter = 0;
@@ -90,6 +93,10 @@ Hold down and jump to hover for an extended period of time
                         player.wingFrame = 0;
                     }
                 }
+            }
+            else
+            {
+                player.wingFrame = 0;
             }
             return true;
         }
