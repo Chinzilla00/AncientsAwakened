@@ -69,18 +69,26 @@ Hold down and jump to hover for an extended period of time
 
         public override bool WingUpdate(Player player, bool inUse)
         {
-            if (BaseMod.BasePlayer.HasAccessory(player, mod.ItemType<KipronWings>(), true, false))
+            if (player.controlDown && player.controlJump && player.wingTime > 0f && !player.merman)
             {
-                if (player.controlDown && player.controlJump && player.wingTime > 0f && !player.merman)
+                player.velocity.Y *= 0.92f;
+                if (player.velocity.Y > -2f && player.velocity.Y < 1f)
                 {
-                    player.velocity.Y *= 0.7f;
-                    if (player.velocity.Y > 1E-05f && player.velocity.Y < 1f)
-                    {
-                        player.velocity.Y = 1E-05f;
-                    }
+                    player.velocity.Y = 1E-05f;
                 }
             }
-            return false;
+
+            player.wingFrameCounter++;
+            if (player.wingFrameCounter > 16)
+            {
+                player.wingFrame++;
+                player.wingFrameCounter = 0;
+                if (player.wingFrame >= 3)
+                {
+                    player.wingFrame = 0;
+                }
+            }
+            return true;
         }
     }
 }
