@@ -10,7 +10,7 @@ namespace AAMod.Items.Boss.Greed
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Charm of Desire");
-            Tooltip.SetDefault(@"Grabbing coins boosts your damage by 1% for a 4 seconds
+            Tooltip.SetDefault(@"Grabbing coins boosts your damage by 1% for 4 seconds
 Grabbing another coin increases the damage by 1% and resets the countdown
 Caps out at 20% damage");
         }

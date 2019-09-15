@@ -27,7 +27,7 @@ namespace AAMod.Items.Melee   //where is located
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Glacier Breaker");
-			Tooltip.SetDefault(@"Drops icesickles while the flail travels");
+			Tooltip.SetDefault(@"Drops Icicles while the flail travels");
 		}
 		
 		public override void AddRecipes()
