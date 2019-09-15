@@ -1423,6 +1423,8 @@ ItemTooltip.GripsBox=播放 'Twin Terror' by Spectral Aves
 
 ItemName.GreedLantern=石灯笼
 
+ItemName.GreedChest=贪婪宝箱
+
 ItemName.HallowedAnvil=神圣砧
 ItemTooltip.HallowedAnvil=一个神圣的砧
 
@@ -3201,7 +3203,7 @@ ItemName.FulguriteTazesaber=雷熔电刃
 ItemName.GladiatorsGlory=角斗士荣光
 
 ItemName.GlacierBreaker=冰川粉碎者
-ItemTooltip.GlacierBreaker=击中敌人掉落冰柱
+ItemTooltip.GlacierBreaker=随着连枷移动掉落冰柱
 
 ItemName.GoblinSlayer=哥布林杀手
 ItemTooltip.GoblinSlayer=左键挥动右键前刺\n“传奇哥布林杀手的佩剑”
@@ -5224,9 +5226,9 @@ MapObject.GreedDoorLocked=藏宝门
 
 MapObject.GreedDoorOpen=藏宝门
 
-MapObject.GreedChest=金色宝箱
+MapObject.GreedChest=贪婪宝箱
 
-Common.GreedChest_Locked=上锁金色宝箱
+Common.GreedChest_Locked=上锁贪婪宝箱
 
 MapObject.GreedAltar=原欲祭坛
 
