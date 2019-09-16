@@ -169,9 +169,8 @@ namespace AAMod.NPCs.TownNPCs
                 int DyePurple2 = player.FindItem(ItemID.VioletHusk);
                 int DyePink = player.FindItem(ItemID.PinkPricklyPear);
                 int DyeGray = player.FindItem(ItemID.BlackInk);
-                int DyeBrown = player.FindItem(mod.ItemType<Items.Materials.CocoaBean>());
 
-                string[] lootTable = { "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Brown", "Gray", "Pink" };
+                string[] lootTable = { "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "Pink" };
                 int loot = Main.rand.Next(lootTable.Length);
 
                 if (Special >= 0)
@@ -394,20 +393,6 @@ namespace AAMod.NPCs.TownNPCs
 
                     Main.npcChatText = MushroomChat();
                     player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Purple>(), 5);
-
-                    Main.PlaySound(24, -1, -1, 1);
-                    return;
-                }
-                else if (DyeBrown >= 0)
-                {
-                    player.inventory[DyeBrown].stack--;
-                    if (player.inventory[DyeBrown].stack <= 0)
-                    {
-                        player.inventory[DyeBrown] = new Item();
-                    }
-
-                    Main.npcChatText = MushroomChat();
-                    player.QuickSpawnItem(mod.ItemType<Items.Mushrooms.Brown>(), 5);
 
                     Main.PlaySound(24, -1, -1, 1);
                     return;

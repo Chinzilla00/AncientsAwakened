@@ -228,6 +228,8 @@ namespace AAMod
         public bool BegHideVanity;
         public bool BegForceVanity;
         public bool HorseBuff;
+        public bool GreedCharm;
+        public bool GreedTalisman;
 
         //debuffs
         public bool CursedHellfire = false;
@@ -258,6 +260,9 @@ namespace AAMod
 
         //buffs
         public bool Glitched = false;
+        public bool Greed1 = false;
+        public bool Greed2 = false;
+        public float GreedyDamage = 0;
 
         //pets
         public bool Broodmini = false;
@@ -457,6 +462,10 @@ namespace AAMod
             ShadowBand = false;
             RajahCape = false;
             CapShield = false;
+            GreedCharm = false;
+            GreedTalisman = false;
+            Greed1 = false;
+            Greed2 = false;
         }
 
         private void ResetDebuffEffect()
@@ -481,6 +490,8 @@ namespace AAMod
             IB = false;
             Spear = false;
             AkumaPain = false;
+            Greed1 = false;
+            Greed2 = false;
         }
 
         private void ResetPetsEffect()
@@ -857,6 +868,10 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (!Greed1 && !Greed2)
+            {
+                GreedyDamage = 0;
+            }
             DarkmatterSet = darkmatterSetMe || darkmatterSetRa || darkmatterSetMa || darkmatterSetSu || darkmatterSetTh;
 
             if (NPC.AnyNPCs(mod.NPCType<AkumaTransition>()))

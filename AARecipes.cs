@@ -151,13 +151,6 @@ namespace AAMod
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
-            recipe.AddIngredient(null, "CocoaBean");
-            recipe.AddIngredient(ItemID.BottledWater);
-            recipe.AddTile(TileID.DyeVat);
-            recipe.SetResult(ItemID.BrownDye);
-            recipe.AddRecipe();
-
-            recipe = GetNewRecipe();
             recipe.AddIngredient(ItemID.SoulofLight, 15);
             recipe.AddIngredient(ItemID.Pearlwood, 5);
             recipe.AddIngredient(ItemID.CrystalShard, 30);

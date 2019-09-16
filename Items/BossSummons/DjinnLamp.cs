@@ -13,8 +13,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Desert Lamp");
-            Tooltip.SetDefault(@"Summons the Desert Djinn
-Only usable during the day");
+            Tooltip.SetDefault(@"Summons the Desert Djinn");
 		}
 
 		public override void SetDefaults()

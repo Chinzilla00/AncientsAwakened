@@ -140,7 +140,7 @@ namespace AAMod.NPCs.Bosses.Greed
                 }
                 else
                 {
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<CoinRain>(), ref internalAI[4], 60, npc.damage / 3, 12, true);
+
                 }
             }
 
