@@ -1,12 +1,13 @@
-namespace AAMod.Items.Boss.Yamata
+using Terraria.ModLoader;
+using System.Collections.Generic;
+
+namespace AAMod.Items.Boss.Athena
 {
-    public class YamataATrophy : BaseAAItem
+    public class AthenaTrophy : BaseAAItem
 	{
-        public static int type;
-        
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Yamata No Orochi Trophy");
+            DisplayName.SetDefault("Athena Trophy");
 		}
 
         public override void SetDefaults()
@@ -22,9 +23,8 @@ namespace AAMod.Items.Boss.Yamata
             item.useStyle = 1;
 			item.consumable = true;
 			item.value = 2000;
-            item.rare = 10;
-            item.expert = true; item.expertOnly = true;
-			item.createTile = mod.TileType("YamataATrophy");
+			item.rare = 1;
+			item.createTile = mod.TileType("AthenaTrophy");
 		}
 	}
 }
