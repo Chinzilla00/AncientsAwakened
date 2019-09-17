@@ -99,6 +99,7 @@ namespace AAMod
         public static bool downedAthena;
         public static bool downedAthenaA;
         public static bool downedGreed;
+        public static bool downedGreedA;
         public static bool AthenaHerald;
         //Points
         public static Point WHERESDAVOIDAT;
@@ -135,6 +136,7 @@ namespace AAMod
             downedAthena = false;
             downedAthenaA = false;
             downedGreed = false;
+            downedGreedA = false;
             downedMonarch = false;
             downedGrips = false;
             downedEquinox = false;
@@ -264,6 +266,7 @@ namespace AAMod
             if (downedAthena) downed.Add("BirdBitch");
             if (downedAthenaA) downed.Add("BirdBitchA");
             if (downedGreed) downed.Add("GimmeGimme");
+            if (downedGreedA) downed.Add("WOOOORMS");
             if (AthenaHerald) downed.Add("BitchBird");
 
             return new TagCompound {
@@ -291,6 +294,90 @@ namespace AAMod
                 {"Pod", SmashHydraPod}
             };
         }
+
+        public override void Load(TagCompound tag)
+        {
+            var downed = tag.GetList<string>("downed");
+            //bosses
+            downedMonarch = downed.Contains("MUSHMAN");
+            downedGrips = downed.Contains("GrabbyHands");
+            downedBrood = downed.Contains("Nacho");
+            downedHydra = downed.Contains("Hydra");
+            NPC.downedBoss3 = downed.Contains("Dynaskull");
+            NPC.downedMechBossAny = downed.Contains("MechBoss");
+            NPC.downedPlantBoss = downed.Contains("Evil");
+            NPC.downedMoonlord = downed.Contains("MoonLord");
+            downedEquinox = downed.Contains("Equinox");
+            downedAncient = downed.Contains("A");
+            downedSAncient = downed.Contains("SA");
+            downedAkuma = downed.Contains("Akuma");
+            downedYamata = downed.Contains("Yamata");
+            downedZero = downed.Contains("0");
+            downedShen = downed.Contains("Shen");
+            downedAllAncients = downed.Contains("DAA");
+            Ancients = downed.Contains("AA");
+            ShenSummoned = downed.Contains("ShenS");
+            downedSerpent = downed.Contains("Serpent");
+            downedDjinn = downed.Contains("JojoReference");
+            downedToad = downed.Contains("Toad");
+            downedFungus = downed.Contains("Fungus");
+            downedAshe = downed.Contains("BetterDragonWaifu");
+            downedHaruka = downed.Contains("TrashDragonWaifu");
+            downedSisters = downed.Contains("Sisters");
+            downedSag = downed.Contains("Sag");
+            SistersSummoned = downed.Contains("Summoned");
+            downedRajah = downed.Contains("Rajah");
+            downedRajahsRevenge = downed.Contains("Rajah2");
+            zeroUS = downed.Contains("ZUS");
+            downedAnubis = downed.Contains("Doggo");
+            downedAthena = downed.Contains("BirdBitch");
+            downedAthenaA = downed.Contains("BirdBitchA");
+            downedGreed = downed.Contains("GimmeGimme");
+            downedGreedA = downed.Contains("WOOOORMS");
+            AthenaHerald = downed.Contains("BitchBird");
+            //World Changes
+            ChaosOres = downedGrips;
+            Dynaskull = NPC.downedBoss3;
+            HallowedOre = NPC.downedMechBossAny;
+            Evil = NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
+            Luminite = NPC.downedMoonlord;
+            RadiumOre = downedEquinox;
+            DiscordOres = downedSisters;
+            InfernoStripe = downed.Contains("IStripe");
+            MireStripe = downed.Contains("MStripe");
+            ModContentGenerated = downed.Contains("WorldGenned");
+
+            if (tag.ContainsKey("MCenter")) // check if the altar coordinates exist in the save file
+            {
+                MireCenter = tag.Get<Vector2>("MCenter");
+            }
+            if (tag.ContainsKey("ICenter")) // check if the altar coordinates exist in the save file
+            {
+                InfernoCenter = tag.Get<Vector2>("ICenter");
+            }
+            //Squid Lady
+
+            squid1 = tag.GetInt("squid1");
+            squid2 = tag.GetInt("squid2");
+            squid3 = tag.GetInt("squid3");
+            squid4 = tag.GetInt("squid4");
+            squid5 = tag.GetInt("squid5");
+            squid6 = tag.GetInt("squid6");
+            squid7 = tag.GetInt("squid7");
+            squid8 = tag.GetInt("squid8");
+            squid9 = tag.GetInt("squid9");
+            squid10 = tag.GetInt("squid10");
+            squid11 = tag.GetInt("squid11");
+            squid12 = tag.GetInt("squid12");
+            squid13 = tag.GetInt("squid13");
+            squid14 = tag.GetInt("squid14");
+            squid15 = tag.GetInt("squid15");
+            squid16 = tag.GetInt("squid16");
+            RabbitKills = tag.GetInt("Bunny");
+            SmashDragonEgg = tag.GetInt("Egg");
+            SmashHydraPod = tag.GetInt("Pod");
+        }
+
         public override void NetSend(BinaryWriter writer)
         {
             BitsByte flags = new BitsByte();
@@ -342,6 +429,7 @@ namespace AAMod
             BitsByte flags5 = new BitsByte();
             flags5[0] = AthenaHerald;
             flags5[1] = downedAthenaA;
+            flags5[2] = downedGreedA;
             writer.Write(flags5);
 
             writer.WriteVector2(MireCenter);
@@ -413,6 +501,7 @@ namespace AAMod
             BitsByte flags5 = reader.ReadByte();
             AthenaHerald = flags5[0];
             downedAthenaA = flags5[1];
+            downedGreedA = flags5[2];
 
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		
@@ -438,87 +527,6 @@ namespace AAMod
             SmashDragonEgg = reader.ReadInt32();
         }
 
-        public override void Load(TagCompound tag)
-        {
-            var downed = tag.GetList<string>("downed");
-            //bosses
-            downedMonarch = downed.Contains("MUSHMAN");
-            downedGrips = downed.Contains("GrabbyHands");
-            downedBrood = downed.Contains("Nacho");
-            downedHydra = downed.Contains("Hydra");
-            NPC.downedBoss3 = downed.Contains("Dynaskull");
-            NPC.downedMechBossAny = downed.Contains("MechBoss");
-            NPC.downedPlantBoss = downed.Contains("Evil");
-            NPC.downedMoonlord = downed.Contains("MoonLord");
-            downedEquinox = downed.Contains("Equinox");
-            downedAncient = downed.Contains("A");
-            downedSAncient = downed.Contains("SA");
-            downedAkuma = downed.Contains("Akuma");
-            downedYamata = downed.Contains("Yamata");
-            downedZero = downed.Contains("0");
-            downedShen = downed.Contains("Shen");
-            downedAllAncients = downed.Contains("DAA");
-            Ancients = downed.Contains("AA");
-            ShenSummoned = downed.Contains("ShenS");
-            downedSerpent = downed.Contains("Serpent");
-            downedDjinn = downed.Contains("JojoReference");
-            downedToad = downed.Contains("Toad");
-            downedFungus = downed.Contains("Fungus");
-            downedAshe = downed.Contains("BetterDragonWaifu");
-            downedHaruka = downed.Contains("TrashDragonWaifu");
-            downedSisters = downed.Contains("Sisters");
-            downedSag = downed.Contains("Sag");
-            SistersSummoned = downed.Contains("Summoned");
-            downedRajah = downed.Contains("Rajah");
-            downedRajahsRevenge = downed.Contains("Rajah2");
-            zeroUS = downed.Contains("ZUS");
-            downedAnubis = downed.Contains("Doggo");
-            downedAthena = downed.Contains("BirdBitch");
-            downedAthenaA = downed.Contains("BirdBitchA");
-            downedGreed = downed.Contains("GimmeGimme");
-            AthenaHerald = downed.Contains("BitchBird");
-            //World Changes
-            ChaosOres = downedGrips;
-            Dynaskull = NPC.downedBoss3;
-            HallowedOre = NPC.downedMechBossAny;
-            Evil = NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
-            Luminite = NPC.downedMoonlord;
-            RadiumOre = downedEquinox;
-            DiscordOres = downedSisters;
-            InfernoStripe = downed.Contains("IStripe");
-            MireStripe = downed.Contains("MStripe");
-            ModContentGenerated = downed.Contains("WorldGenned");
-
-            if (tag.ContainsKey("MCenter")) // check if the altar coordinates exist in the save file
-            {
-                MireCenter = tag.Get<Vector2>("MCenter");
-            }
-            if (tag.ContainsKey("ICenter")) // check if the altar coordinates exist in the save file
-            {
-                InfernoCenter = tag.Get<Vector2>("ICenter");
-            }
-            //Squid Lady
-
-            squid1 = tag.GetInt("squid1");
-            squid2 = tag.GetInt("squid2");
-            squid3 = tag.GetInt("squid3");
-            squid4 = tag.GetInt("squid4");
-            squid5 = tag.GetInt("squid5");
-            squid6 = tag.GetInt("squid6");
-            squid7 = tag.GetInt("squid7");
-            squid8 = tag.GetInt("squid8");
-            squid9 = tag.GetInt("squid9");
-            squid10 = tag.GetInt("squid10");
-            squid11 = tag.GetInt("squid11");
-            squid12 = tag.GetInt("squid12");
-            squid13 = tag.GetInt("squid13");
-            squid14 = tag.GetInt("squid14");
-            squid15 = tag.GetInt("squid15");
-            squid16 = tag.GetInt("squid16");
-            RabbitKills = tag.GetInt("Bunny");
-            SmashDragonEgg = tag.GetInt("Egg");
-            SmashHydraPod = tag.GetInt("Pod");
-        }
 
         private string NumberRand(int size)
         {

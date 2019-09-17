@@ -1,6 +1,3 @@
-using Terraria.ModLoader;
-using System.Collections.Generic;
-
 namespace AAMod.Items.Boss.Athena
 {
     public class AthenaTrophy : BaseAAItem

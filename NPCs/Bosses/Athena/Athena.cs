@@ -7,8 +7,6 @@ using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using AAMod.NPCs.Enemies.Sky;
-using Terraria.World.Generation;
-using System.Collections.Generic;
 
 namespace AAMod.NPCs.Bosses.Athena
 {

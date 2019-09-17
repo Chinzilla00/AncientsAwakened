@@ -12,7 +12,6 @@ using BaseMod;
 using AAMod.Tiles;
 using AAMod.Walls;
 using Terraria.Utilities;
-using System.Linq;
 
 namespace AAMod.Worldgeneration
 {

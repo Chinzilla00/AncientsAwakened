@@ -1,4 +1,3 @@
-using AAMod.NPCs.Enemies.Sky;
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Terraria;
@@ -6,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Athena
 {
-	public class SeraphHerald : ModNPC
+    public class SeraphHerald : ModNPC
 	{
         public override string Texture => "AAMod/NPCs/Bosses/Athena/SeraphA";
 

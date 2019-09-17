@@ -1,6 +1,5 @@
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
 
 namespace AAMod.Items.Armor.Chaos
 {

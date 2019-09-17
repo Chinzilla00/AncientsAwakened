@@ -12,6 +12,7 @@ using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Terraria;
@@ -21,6 +22,7 @@ using Terraria.GameInput;
 using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 using Terraria.Utilities;
 
 namespace AAMod
@@ -298,6 +300,23 @@ namespace AAMod
         public int PrismCooldown = 0;
         public bool WorldgenReminder = false;
         public bool DemonSun = false;
+        public bool AnubisBook = false;
+
+        public override TagCompound Save()
+        {
+            var saved = new List<string>();
+            if (AnubisBook) saved.Add("Book");
+            return new TagCompound
+            {
+                { "saved", saved }
+            };
+        }
+
+        public override void Load(TagCompound tag)
+        {
+            var downed = tag.GetList<string>("saved");
+            AnubisBook = downed.Contains("Book");
+        }
 
         public override void ResetEffects()
         {

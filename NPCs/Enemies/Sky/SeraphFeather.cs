@@ -3,12 +3,11 @@ using Terraria;
 using Terraria.ModLoader;
 using BaseMod;
 using System;
-using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Enemies.Sky
 {
-	public class SeraphFeather : ModProjectile
+    public class SeraphFeather : ModProjectile
     {
         public override void SetDefaults()
         {

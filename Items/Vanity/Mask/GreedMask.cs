@@ -3,13 +3,12 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Vanity.Mask
 {
     [AutoloadEquip(EquipType.Head)]
-	public class AkumaAMask : BaseAAItem
+	public class GreedMask : BaseAAItem
     {
-        public static int type;
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Oni Akuma Mask");
+            DisplayName.SetDefault("Greed Mask");
 		}
 
         public override void SetDefaults()

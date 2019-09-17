@@ -1,12 +1,8 @@
-
-using Microsoft.Xna.Framework;
-using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.Shen
 {
-	public class Arrow : ModProjectile
+    public class Arrow : ModProjectile
 	{
 		
 		public override void SetStaticDefaults()
