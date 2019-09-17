@@ -1235,13 +1235,13 @@ ItemTooltip.TrueRaiderPlate=增加15%近战伤害
 // AAMod.Items.Armor.TrueTribal
 
 
-ItemName.TrueTribalCloak=现居部落披风
+ItemName.TrueTribalCloak=德鲁伊披风
 ItemTooltip.TrueTribalCloak=增加14%魔法伤害\n+60魔力上限
 
-ItemName.TrueTribalHat=现居部落兜帽
+ItemName.TrueTribalHat=德鲁伊兜帽
 ItemTooltip.TrueTribalHat=增加10%魔法伤害\n+60魔力上限
 
-ItemName.TrueTribalKilt=现居部落褶裙
+ItemName.TrueTribalKilt=德鲁伊褶裙
 ItemTooltip.TrueTribalKilt=增加12%魔法伤害\n+60魔力上限\n增加15%移动速度
 
 
@@ -1412,7 +1412,7 @@ ItemTooltip.EventideAbyssiumOre=又冷又湿, 如同遍布泥潭的沼泽中的�
 ItemName.EventideTorch=渊宵火把
 
 ItemName.FateBox=八音盒(永劫虚空)
-ItemTooltip.FateBox=播放 'Omen of a Fate Fortold' by OmegaFerretMusic
+ItemTooltip.FateBox=播放 'Systems Engaged' by OmegaFerretMusic
 
 ItemName.FulguriteShard=雷熔碎片
 ItemTooltip.FulguriteShard=数千次闪电的咆哮穿透了这个碎片\n(电子四王击杀一个后,地下洞穴层,紫红色)
@@ -2172,7 +2172,7 @@ ItemName.ChaosSoul=冥昧之魂
 ItemTooltip.ChaosSoul=稳恒的浑沌，动荡与混乱的本像
 
 ItemName.DraconicRipper=神龙开膛手
-ItemTooltip.DraconicRipper=发射数发高口径子弹\n无视敌人防御\n77%几率不消耗弹药
+ItemTooltip.DraconicRipper=发射数发高口径子弹\n无视敌人防御
 
 ItemName.Duality=二律背反
 ItemTooltip.Duality=古老的护身符中喷涌出冥昧之力\n在结合了太阳堡垒和夜十头巾效果的基础上，更加强化\n你的攻击造成冥昧业火\n对攻击你的敌人造成冥昧业火\n你免疫泰拉之火、燎狱龙炎、九头蛇毒和冥昧业火\n增加13%攻击力\n在混沌环境，你的攻击力增加30%\n在燎狱中，你增加10防御力\n在潭渊中，你增加50%速度\n允许冲刺，用烈焰烧毁敌人
@@ -2802,7 +2802,7 @@ ItemName.Gong=法锣
 ItemName.GunkWand=烂泥棒
 
 ItemName.HiveArtillery=蜂巢机炮
-ItemTooltip.HiveArtillery=发射数个邪恶非洲蜂\n蜜蜂攻击无视无敌帧\n蜜蜂枪EX
+ItemTooltip.HiveArtillery=发射数个恐怖蜂\n蜜蜂攻击无视无敌帧\n蜜蜂枪EX
 
 ItemName.MadnessStaff=癫狂权杖
 
