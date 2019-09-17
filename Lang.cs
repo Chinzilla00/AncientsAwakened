@@ -2717,11 +2717,11 @@ namespace AAMod
                         case "Greed":
                         return "金食饕餮";
                         case "GreedInfo":
-                        return "在欲望金窟的原欲祭坛处召唤.";
+                        return "在欲望金窟的原欲祭坛\n处召唤.";
                         case "Athena":
                         return "天城鸟妖神";
                         case "AthenaInfo":
-                        return " 在天穹卫城的天鸮祭坛上召唤.";
+                        return " 在天穹卫城的天鸮祭坛\n上召唤.";
                         case "AthenaA":
                         return "鸟妖神的复仇";
                         case "AthenaAInfo":
