@@ -2970,6 +2970,7 @@ namespace AAMod
                         return "Current Damage Boost: +";
                     }
                 }
+            return"";
         }
         public static string questFish(String questFishtext)
         {
