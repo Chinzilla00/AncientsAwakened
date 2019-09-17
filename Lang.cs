@@ -2948,6 +2948,25 @@ namespace AAMod
                 }
             return"";
         }
+        public static string GreedTooltip(String Greed)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+                {
+                    switch(Greed)
+                    {
+                        case "CurrentDamageBoost:+":
+                        return "当前伤害提升: +";
+                    }
+                }
+            else
+                {
+                    switch(Greed)
+                    {
+                        case "CurrentDamageBoost:+":
+                        return "Current Damage Boost: +";
+                    }
+                }
+        }
         public static string questFish(String questFishtext)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)

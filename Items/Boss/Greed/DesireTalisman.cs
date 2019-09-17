@@ -34,7 +34,7 @@ Hitting enemies will sometimes drop extra coins");
             Player player = Main.player[item.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
 
-            TooltipLine DamageTooltip = new TooltipLine(mod, "Damage", "Current Damage Boost: +" + modPlayer.GreedyDamage + "%");
+            TooltipLine DamageTooltip = new TooltipLine(mod, "Damage", Lang.GreedTooltip("CurrentDamageBoost:+") + modPlayer.GreedyDamage + "%");
             tooltips.Add(DamageTooltip);
 
             base.ModifyTooltips(tooltips);

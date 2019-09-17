@@ -1889,6 +1889,38 @@ ItemName.AbyssGripTrophy=渊惧之爪纪念章
 
 ItemName.BlazeGripTrophy=狱怒之爪纪念章
 
+// AAMod.Items.Boss.Greed
+
+BuffName.CharmBuff=强欲
+BuffDescription.CharmBuff=金钱即是力量！！！
+
+ItemName.CovetiteCoin=欲晶币
+
+ItemName.DesireCharm=贪欲挂饰
+ItemTooltip.DesireCharm=拾取硬币时增加1%伤害持续4秒\n再拾取时再增加1%伤害并重置计时\n伤害增加上限20%
+
+ItemName.DesireTalisman=贪欲护身符
+ItemTooltip.DesireTalisman=你每次攻击敌人, 都造成5真实伤害(无种类伤害)
+
+ItemName.GildedGlock=鎏金格洛克手枪
+ItemTooltip.GildedGlock=使用钱币作为子弹
+
+ItemName.GoldDigger=黄金发掘机
+ItemTooltip.GoldDigger=发射一束碰到砖块会产生金币喷泉的弹幕\n喷泉越活跃产生的金币越少
+
+ItemName.GreedBag=宝藏袋
+
+ItemName.GreedTrophy=金食饕餮纪念章
+
+ItemName.Miner=掘-矿
+ItemTooltip.Miner=挖矿更快 (暂未实现效果)
+
+BuffName.TalismanBuff=冷酷金欲
+BuffDescription.TalismanBuff=钱！好多的钱！大量的钱！
+
+ItemName.WormIdol=视虫唯神
+ItemTooltip.WormIdol=一个刻画某种蠕虫之神的远古雕像\n在底部好像有个能装某个球的槽
+
 
 // AAMod.Items.Boss.Hydra
 
@@ -2407,7 +2439,7 @@ ItemName.ScrapHeap=电子垃圾堆
 ItemTooltip.ScrapHeap=一大堆金属垃圾\n召唤食腐者-双头狗俄耳托斯电子X型\n只能在晚上使用
 
 ItemName.SubzeroCrystal=绝零水晶
-ItemTooltip.SubzeroCrystal=召唤绝零冰蛇\n只能在晚上使用
+ItemTooltip.SubzeroCrystal=召唤绝零冰蛇
 
 ItemName.Toadstool=蟾蜍臭菇
 ItemTooltip.Toadstool=召唤松露蟾蜍\n只能在发光蘑菇地中使用
@@ -3304,7 +3336,7 @@ ItemName.SpookySword=阴森木剑
 ItemName.StarWrathEX=宙怒
 ItemTooltip.StarWrathEX=星雨从天而降\n星星可以穿透障碍物击中敌人\n星怒EX
 
-ItemName.SunLance=太阳长戟
+ItemName.SunLance=太阳关刀
 ItemTooltip.SunLance=弧形挥动,沿光标攻击敌人
 
 ItemName.SwampSlasher=污泽砍刀
