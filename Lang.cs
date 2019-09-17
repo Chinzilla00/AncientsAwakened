@@ -2714,6 +2714,10 @@ namespace AAMod
                         return "松露蟾蜍";
                         case "TruffleToadInfo":
                         return " 在荧光蘑菇环境召唤";
+                        case "Greed":
+                        return "金食饕餮";
+                        case "GreedInfo":
+                        return "在欲望金窟的原欲祭坛处召唤.";
                         case "Athena":
                         return "天城鸟妖神";
                         case "AthenaInfo":
