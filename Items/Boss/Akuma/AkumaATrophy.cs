@@ -6,7 +6,7 @@ namespace AAMod.Items.Boss.Akuma
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Akuma Awakened Trophy");
+            DisplayName.SetDefault("Oni Akuma Trophy");
 		}
 
         public override void SetDefaults()
