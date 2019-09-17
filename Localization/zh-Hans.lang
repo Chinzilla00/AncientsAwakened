@@ -1079,13 +1079,13 @@ ItemTooltip.TribalKilt=增加8%魔法暴击率\n+20魔力上限
 // AAMod.Items.Armor.TrueAbyssal
 
 
-ItemName.TrueAbyssalFukumen=精铸沉渊假面
+ItemName.TrueAbyssalFukumen=渊影假面
 ItemTooltip.TrueAbyssalFukumen=增加35%移动速度\n增加20%远程伤害
 
-ItemName.TrueAbyssalGi=精铸沉渊武服
+ItemName.TrueAbyssalGi=渊影武服
 ItemTooltip.TrueAbyssalGi=增加50%移动速度\n增加15%远程伤害
 
-ItemName.TrueAbyssalHakama=精铸沉渊袴裤
+ItemName.TrueAbyssalHakama=渊影袴裤
 ItemTooltip.TrueAbyssalHakama=增加40%移动速度\n增加15%远程伤害
 
 
@@ -1105,13 +1105,13 @@ ItemTooltip.TrueAtlanteanPlate=增加20%魔法伤害\n亚特兰蒂斯之力在�
 // AAMod.Items.Armor.TrueBlazing
 
 
-ItemName.TrueBlazingDou=精铸怒炎道甲
+ItemName.TrueBlazingDou=邪鬼道甲
 ItemTooltip.TrueBlazingDou=增加5%伤害减免
 
-ItemName.TrueBlazingKabuto=精铸怒炎盔胄
+ItemName.TrueBlazingKabuto=邪鬼盔胄
 ItemTooltip.TrueBlazingKabuto=增加5%伤害减免
 
-ItemName.TrueBlazingSuneate=精铸怒炎臑当
+ItemName.TrueBlazingSuneate=邪鬼臑当
 ItemTooltip.TrueBlazingSuneate=增加5%伤害减免\n增加5%移动速度\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
 
 
@@ -1383,6 +1383,8 @@ ItemName.DiscordianTorch=冥昧火把
 
 ItemName.DjinnBox=八音盒(沙漠巨灵)
 ItemTooltip.DjinnBox=播放 'Sand Smackdown' by Frogtism
+
+ItemName.DoomsdayChest=末日宝箱
 
 ItemName.DoomsdayPlating=末日电路镀层
 
@@ -1734,6 +1736,9 @@ ItemTooltip.Daycrusher=以太阳质量的力度猛击敌人\n造成破晓
 ItemName.DragonSlasher=屠龙短刀
 ItemTooltip.DragonSlasher=很慢,但是具有强力击退并对目标造成流血\n造成破晓
 
+ItemName.Daystorm=破晓风暴
+ItemTooltip.Daystorm=在烈火燎原的风暴中焚尽你的敌人
+
 ItemName.LungStaff=古龙之杖
 ItemTooltip.LungStaff=召唤一条古龙为你而战
 
@@ -1773,6 +1778,8 @@ ItemName.AthenaBag=宝藏袋
 ItemName.GoddessFeather=神妖鸟羽
 
 ItemName.GaleOfWings=翅岚
+
+ItemName.AthenaABag=宝藏袋
 
 // AAMod.Items.Boss.Broodmother
 
@@ -2156,10 +2163,10 @@ ItemName.ChaosScale=冥昧神鳞
 ItemTooltip.ChaosScale=灼热的鳞片中散发着冥昧之息
 
 ItemName.ChaosSlayer=冥昧神杀
-ItemTooltip.ChaosSlayer=释放冥昧之刃来攻击你的敌人\n“粉碎一切的理智”
+ItemTooltip.ChaosSlayer=释放冥昧之刃来攻击你的敌人\n火焰可以穿墙\n“粉碎一切的理智”
 
 ItemName.ChaosSlayerEX=应龙神怒
-ItemTooltip.ChaosSlayerEX=释放分裂的冥昧之刃来攻击你的敌人\n冥昧神杀 EX
+ItemTooltip.ChaosSlayerEX=释放分裂的冥昧之刃来攻击你的敌人\n火焰可以穿墙\n冥昧神杀 EX
 
 ItemName.ChaosSoul=冥昧之魂
 ItemTooltip.ChaosSoul=稳恒的浑沌，动荡与混乱的本像
@@ -2181,7 +2188,7 @@ ItemName.ShenATrophy=觉醒应龙纪念章
 ItemName.ShenCache=宝藏箱
 ItemTooltip.ShenCache={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.ShenTerratool=上神万用工具
+ItemName.ShenTerratool=应龙万用工具
 ItemTooltip.ShenTerratool=右键切换工具类型\n现在你可以同时使用两种工具类型\n+25 范围
 
 ItemName.ShenTrophy=上神应龙纪念章
@@ -2385,7 +2392,7 @@ ItemName.DiamondCarrot=十克拉钻石胡萝卜
 ItemTooltip.DiamondCarrot=华丽的胡萝卜中散发出一股王公的愤怒...
 
 ItemName.DjinnLamp=沙漠魔灯
-ItemTooltip.DjinnLamp=召唤沙漠巨灵\n只能在白天使用
+ItemTooltip.DjinnLamp=召唤沙漠巨灵
 
 ItemName.DraconianRune=煞日符文
 ItemTooltip.DraconianRune=一个充满了混沌燎焰之力的迷人板子\n召唤觉醒之邪鬼巨龙\n只能在白天燎狱使用\n无消耗
@@ -2760,7 +2767,7 @@ ItemName.AncientArcanum=远古奥秘
 ItemTooltip.AncientArcanum=发射一个小型闪电漩涡，触碰敌人时爆炸
 
 ItemName.AtlanteanTrident=亚特兰三叉法戟
-ItemTooltip.AtlanteanTrident=发射魔法三叉戟
+ItemTooltip.AtlanteanTrident=发射三发魔法水箭
 
 ItemName.BlazePike=怒焰法矛
 ItemTooltip.BlazePike=摸上去非常烫手
