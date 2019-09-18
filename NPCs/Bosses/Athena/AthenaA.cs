@@ -437,8 +437,8 @@ namespace AAMod.NPCs.Bosses.Athena
             }
             else
             {
-                npc.DropLoot(mod.ItemType<GoddessFeather>(), Main.rand.Next(15, 31));
-                string[] lootTable = { "Olympia", "FluffyFury", "RabbitsWrath" };
+                npc.DropLoot(mod.ItemType("GoddessFeather"), Main.rand.Next(20, 25));
+                string[] lootTable = { "HurricaneStone", "Olympia", "Windfury", "GaleForce" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
             }

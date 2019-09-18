@@ -32,7 +32,7 @@ namespace AAMod.Items.Boss.Athena
         {
             if (Main.rand.Next(7) == 0)
             {
-                //player.QuickSpawnItem(mod.ItemType("AthenaMask"));
+                player.QuickSpawnItem(mod.ItemType("AthenaMask"));
             }
             if (Main.rand.Next(20) == 0)
             {
