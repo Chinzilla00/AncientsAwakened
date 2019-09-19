@@ -49,16 +49,16 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (!AliveCheck(Main.player[npc.target]))
                         break;
                     targetPos = player.Center;
-                    targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    Movement(targetPos, 0.5f);
+                    targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    Movement(targetPos, 1f);
                     if (++npc.ai[2] > 300)
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
                         npc.netUpdate = true;
-                        npc.velocity.X = 4 * (npc.Center.X < targetPos.X ? -1 : 1);
-                        npc.velocity.Y *= 0.1f;
+                        npc.velocity.X = -2 * (npc.Center.X < targetPos.X ? -1 : 1);
+                        npc.velocity.Y *= 0.2f;
                         if (Main.netMode != 1)
                             Main.NewText("spawn mega ray");
                     }
@@ -84,15 +84,15 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (!AliveCheck(player))
                         break;
                     targetPos = player.Center;
-                    targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y -= 600;
-                    Movement(targetPos, 0.8f);
-                    if (++npc.ai[1] > 180 || npc.Distance(targetPos) < 50) //initiate dash
+                    targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.Y -= 700;
+                    Movement(targetPos, 1.2f);
+                    if (++npc.ai[1] > 180 || Math.Abs(npc.Center.Y - targetPos.Y) < 100) //initiate dash
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
                         npc.netUpdate = true;
-                        npc.velocity = npc.DirectionTo(player.Center) * 30;
+                        npc.velocity = npc.DirectionTo(player.Center) * 45;
                     }
                     break;
 
@@ -100,7 +100,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (++npc.ai[1] > 30)
                     {
                         npc.ai[1] = 0;
-                        if (++npc.ai[2] > 3) //repeat three times
+                        if (++npc.ai[2] >= 3) //repeat three times
                         {
                             npc.ai[0]++;
                             npc.ai[2] = 0;
@@ -124,7 +124,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             npc.ai[0]++;
                             npc.ai[1] = 0;
                             npc.netUpdate = true;
-                            npc.velocity.X = -40 * (npc.Center.X < targetPos.X ? -1 : 1);
+                            npc.velocity.X = -40 * (npc.Center.X < player.Center.X ? -1 : 1);
                             npc.velocity.Y *= 0.1f;
                         }
                     }
@@ -145,7 +145,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
-                        if (++npc.ai[3] > 3) //repeat dash three times
+                        if (++npc.ai[3] >= 3) //repeat dash three times
                         {
                             npc.ai[0]++;
                             npc.ai[3] = 0;
@@ -204,7 +204,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
-                        if (++npc.ai[3] > 3) //dash three times
+                        if (++npc.ai[3] >= 3) //dash three times
                         {
                             npc.ai[0]++;
                             npc.ai[3] = 0;
@@ -227,8 +227,8 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.ai[0]++;
                         npc.ai[1] = 0;
                         npc.netUpdate = true;
-                        npc.velocity.X = -40 * (npc.Center.X < targetPos.X ? -1 : 1);
-                        npc.velocity.Y *= 0.1f;
+                        npc.velocity.X = -40 * (npc.Center.X < player.Center.X ? -1 : 1);
+                        npc.velocity.Y = 5f;
                         if (Main.netMode != 1)
                             Main.NewText("spawn mega homing ball");
                     }
@@ -236,7 +236,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
                 case 10: //dashing
                     npc.velocity *= 0.99f;
-                    if (npc.ai[1] > 30)
+                    if (++npc.ai[1] > 30)
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
@@ -248,7 +248,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (!AliveCheck(player))
                         break;
                     targetPos = player.Center;
-                    targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
                     Movement(targetPos, 0.5f);
                     if (++npc.ai[2] > 60)
                     {
@@ -263,12 +263,12 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.ai[2] = 0;
                         npc.ai[3] = npc.Distance(player.Center);
                         npc.netUpdate = true;
-                        npc.velocity = npc.DirectionTo(player.Center).RotatedBy(Math.PI / 2) * 30;
+                        npc.velocity = npc.DirectionTo(player.Center).RotatedBy(Math.PI / 2) * 40;
                     }
                     break;
 
                 case 12: //fly in jumbo circle
-                    npc.velocity += npc.velocity.RotatedBy(Math.PI / 2) * npc.velocity.Length() / npc.ai[3];
+                    npc.velocity -= npc.velocity.RotatedBy(Math.PI / 2) * npc.velocity.Length() / npc.ai[3];
                     if (++npc.ai[2] > 6)
                     {
                         npc.ai[2] = 0;
