@@ -28,7 +28,7 @@ namespace AAMod.Projectiles.Greed
         {
             Projectile Body = Main.projectile[(int)projectile.ai[0]];
             projectile.Center = Body.Center;
-            if (Body == null || !Body.active || (Body.ai[0] != 21 && Body.type != mod.ProjectileType<GreedMinion>()))
+            if (Body == null || !Body.active || (Body.ai[0] != 21 && Body.type != mod.ProjectileType("GreedMinion")))
             {
                 projectile.active = false;
             }
