@@ -61,7 +61,7 @@ namespace AAMod.Items.Boss.Shen
             player.QuickSpawnItem(mod.ItemType("EXSoul"));
             string[] lootTable = 
             {
-                "ChaosSlayer", "MeteorStrike", "Skyfall", "Astroid"
+                "ChaosSlayer", "MeteorStrike", "Skyfall", "Astroid", "DraconicRipper", "FlamingTwilight", "ShenTerratool", "Timesplitter"
             };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));

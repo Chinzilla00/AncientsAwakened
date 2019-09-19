@@ -1,7 +1,5 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Armor.Champion
 {
@@ -12,10 +10,10 @@ namespace AAMod.Items.Armor.Champion
         {
             DisplayName.SetDefault("Chaos Slayer Mask");
             Tooltip.SetDefault(@"70% increased minion damage
-5% increased damage resistance
-+6 maximum Minions
+10% increased non-minion damage
++7 maximum Minions
 +2 maximum sentries 
-The power of discordian rage radiates from this hood");
+The armor of a champion feared across the land");
         }
 
         public override void SetDefaults()
@@ -53,18 +51,18 @@ The power of discordian rage radiates from this hood");
 
         public override void UpdateEquip(Player player)
         {
-            player.minionDamage *= 1.7f;
-            player.endurance *= 1.05f;
-            player.maxMinions += 6;
+            player.minionDamage *= 1.6f;
+            player.allDamage += .1f;
+            player.maxMinions += 7;
             player.maxTurrets += 2;
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DoomsdayMask", 1);
-            recipe.AddIngredient(null, "Discordium", 6);
-            recipe.AddIngredient(null, "ChaosScale", 6);
+            recipe.AddIngredient(null, "HoodlumHood", 1);
+            recipe.AddIngredient(null, "LeviathanHelm", 1);
+            recipe.AddIngredient(null, "ChampionPlate", 10);
             recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);
             recipe.AddRecipe();

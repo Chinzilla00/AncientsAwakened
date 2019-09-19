@@ -1,17 +1,14 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
 namespace AAMod.NPCs.Enemies.Cavern
 {
-	public class Scavenger : ModNPC
+    public class Scavenger : ModNPC
 	{
 		public override void SetStaticDefaults()
 		{
@@ -20,8 +17,8 @@ namespace AAMod.NPCs.Enemies.Cavern
 		
 		public override void SetDefaults()
 		{
-            npc.width = 25;
-            npc.height = 25;
+            npc.width = 24;
+            npc.height = 24;
             npc.value = BaseUtility.CalcValue(0, 0, 0, 90);
             npc.npcSlots = 5;
             npc.aiStyle = -1;
@@ -55,8 +52,7 @@ namespace AAMod.NPCs.Enemies.Cavern
 		public override void AI()
         {
             int[] types = new int[] { mod.NPCType("Scavenger"), mod.NPCType("ScavengerBody"), mod.NPCType("ScavengerTail") };
-            bool diggingDummy = false;
-            BaseAI.AIWorm(npc, ref diggingDummy, types, 5, 0f, 8f, 0.07f, false, false, false, false, true, true);
+            BaseAI.AIWorm(npc, types, 7, 0, 12f, 0.1f, false, false, true, true, false);
         }
 
 		public override bool PreDraw(SpriteBatch sb, Color dColor)

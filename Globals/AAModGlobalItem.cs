@@ -176,6 +176,31 @@ namespace AAMod
             }
         }
 
+        public override bool OnPickup(Item item, Player player)
+        {
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            if (item.ammo == AmmoID.Coin)
+            {
+                if (modPlayer.GreedCharm)
+                {
+                    player.AddBuff(mod.BuffType<Items.Boss.Greed.CharmBuff>(), 240);
+                    if (modPlayer.GreedyDamage < 20)
+                    {
+                        modPlayer.GreedyDamage += 1;
+                    }
+                }
+                else if (modPlayer.GreedTalisman)
+                {
+                    player.AddBuff(mod.BuffType<Items.Boss.Greed.TalismanBuff>(), 240);
+                    if (modPlayer.GreedyDamage < 40)
+                    {
+                        modPlayer.GreedyDamage += 1;
+                    }
+                }
+            }
+            return base.OnPickup(item, player);
+        }
+
         public static void OpenAACrate(Player player, int CrateType)
         {
             Mod mod = AAMod.instance;

@@ -9,7 +9,7 @@ namespace AAMod.Items.Magic
         public override void SetDefaults()
         {
 
-            item.damage = 25;                        
+            item.damage = 30;                        
             item.magic = true;                     
             item.width = 24;
             item.height = 28;
@@ -23,7 +23,7 @@ namespace AAMod.Items.Magic
             item.mana = 5;             
             item.UseSound = SoundID.Item21;            
             item.autoReuse = true;
-            item.shoot = 664;  //this make the item shoot your projectile
+            item.shoot = 664;  
             item.shootSpeed = 11f;     
         }   
 

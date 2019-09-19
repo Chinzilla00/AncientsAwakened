@@ -49,6 +49,7 @@ namespace AAMod
         internal TerratoolZUI TerratoolZState;
         internal TerratoolSUI TerratoolSState;
         internal TerratoolKipUI TerratoolKipState;
+        internal TerratoolEXUI TerratoolEXState;
 
         public static SpriteFont fontMouseText;
 
@@ -275,6 +276,8 @@ namespace AAMod
             TerratoolSState.Activate();
             TerratoolKipState = new TerratoolKipUI();
             TerratoolKipState.Activate();
+            TerratoolEXState = new TerratoolEXUI();
+            TerratoolEXState.Activate();
 
             Ref<Effect> screenRef = new Ref<Effect>(GetEffect("Effects/Shockwave"));
             Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.VeryHigh);

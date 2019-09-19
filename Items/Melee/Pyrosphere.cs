@@ -20,7 +20,7 @@ namespace AAMod.Items.Melee
             item.useAnimation = 45;
             item.useTime = 45;
             item.UseSound = SoundID.Item1;
-            item.damage = 20;
+            item.damage = 15;
             item.knockBack = 7;
             item.melee = true;
             item.shoot = mod.ProjectileType<Projectiles.Pyrosphere>();

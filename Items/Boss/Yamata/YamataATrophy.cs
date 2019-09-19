@@ -6,7 +6,7 @@ namespace AAMod.Items.Boss.Yamata
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Yamata Awakened Trophy");
+            DisplayName.SetDefault("Yamata No Orochi Trophy");
 		}
 
         public override void SetDefaults()

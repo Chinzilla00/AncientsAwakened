@@ -39,6 +39,8 @@ namespace AAMod.Projectiles.Yamata
                 projectile.velocity = (target.Center - projectile.Center) * 0.33f;
                 projectile.netUpdate = true;
             }
+            target.lifeRegen -= 5;
+            target.AddBuff(mod.BuffType<Buffs.Moonraze>(), 200);
         }
 
         public override void AI()
@@ -84,11 +86,7 @@ namespace AAMod.Projectiles.Yamata
 
         public override void Kill(int timeLeft)
         {
-            if (Main.rand.Next(2) == 0)
-            {
-                Dust dust;
-                dust = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 46, default, 1.381579f)];
-            }
+            Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDust>(), 0f, 0f, 46, default, 1.381579f);
         }
         
     }

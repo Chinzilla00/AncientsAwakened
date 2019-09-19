@@ -21,8 +21,8 @@ namespace AAMod.Items.Melee   //where is located
             item.width = 60;              
             item.height = 60;             
             
-            item.useTime = 30;          
-            item.useAnimation = 30;     
+            item.useTime = 25;          
+            item.useAnimation = 25;     
             item.useStyle = 1;        
             item.knockBack = 4;
             item.value = Item.sellPrice(0, 2, 0, 0);

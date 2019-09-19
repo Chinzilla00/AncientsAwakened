@@ -16,7 +16,7 @@ namespace AAMod.Items.Ranged
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.PiranhaGun);
-			item.damage = 200;
+			item.damage = 500;
 			item.shoot = mod.ProjectileType("SharkLauncherP");
 		}
 		

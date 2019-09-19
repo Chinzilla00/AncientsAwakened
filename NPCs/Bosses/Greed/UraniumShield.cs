@@ -2,7 +2,6 @@ using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Greed
@@ -20,7 +19,6 @@ namespace AAMod.NPCs.Bosses.Greed
 			projectile.height = 90;
 			projectile.hostile = true;
 			projectile.penetrate = -1;
-			projectile.timeLeft = 120;
 			projectile.ignoreWater = true;
             projectile.tileCollide = true;          
 		}
@@ -29,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             NPC Body = Main.npc[(int)projectile.ai[0]];
             projectile.Center = Body.Center;
-            if (Body == null || Body.life <= 0 || (Body.ai[0] != 20 && Body.type != mod.NPCType<GreedMinion>()))
+            if (Body == null || Body.life <= 0 || (Body.ai[0] != 21 && Body.type != mod.NPCType<GreedMinion>()))
             {
                 projectile.active = false;
             }

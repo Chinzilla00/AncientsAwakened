@@ -12,6 +12,7 @@ using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Terraria;
@@ -21,6 +22,7 @@ using Terraria.GameInput;
 using Terraria.Graphics.Effects;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 using Terraria.Utilities;
 
 namespace AAMod
@@ -228,6 +230,8 @@ namespace AAMod
         public bool BegHideVanity;
         public bool BegForceVanity;
         public bool HorseBuff;
+        public bool GreedCharm;
+        public bool GreedTalisman;
 
         //debuffs
         public bool CursedHellfire = false;
@@ -258,6 +262,9 @@ namespace AAMod
 
         //buffs
         public bool Glitched = false;
+        public bool Greed1 = false;
+        public bool Greed2 = false;
+        public float GreedyDamage = 0;
 
         //pets
         public bool Broodmini = false;
@@ -293,6 +300,23 @@ namespace AAMod
         public int PrismCooldown = 0;
         public bool WorldgenReminder = false;
         public bool DemonSun = false;
+        public bool AnubisBook = false;
+
+        public override TagCompound Save()
+        {
+            var saved = new List<string>();
+            if (AnubisBook) saved.Add("Book");
+            return new TagCompound
+            {
+                { "saved", saved }
+            };
+        }
+
+        public override void Load(TagCompound tag)
+        {
+            var downed = tag.GetList<string>("saved");
+            AnubisBook = downed.Contains("Book");
+        }
 
         public override void ResetEffects()
         {
@@ -457,6 +481,10 @@ namespace AAMod
             ShadowBand = false;
             RajahCape = false;
             CapShield = false;
+            GreedCharm = false;
+            GreedTalisman = false;
+            Greed1 = false;
+            Greed2 = false;
         }
 
         private void ResetDebuffEffect()
@@ -481,6 +509,8 @@ namespace AAMod
             IB = false;
             Spear = false;
             AkumaPain = false;
+            Greed1 = false;
+            Greed2 = false;
         }
 
         private void ResetPetsEffect()
@@ -857,6 +887,10 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (!Greed1 && !Greed2)
+            {
+                GreedyDamage = 0;
+            }
             DarkmatterSet = darkmatterSetMe || darkmatterSetRa || darkmatterSetMa || darkmatterSetSu || darkmatterSetTh;
 
             if (NPC.AnyNPCs(mod.NPCType<AkumaTransition>()))
@@ -2419,7 +2453,7 @@ namespace AAMod
                 }
             }
 
-            if (crit)
+            if (crit && trueFlesh)
             {
                 if (damage / 10 < 1)
                 {

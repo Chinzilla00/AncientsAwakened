@@ -2,7 +2,6 @@ using Terraria;
 using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
-using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {

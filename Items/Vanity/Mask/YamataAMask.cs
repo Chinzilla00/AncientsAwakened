@@ -9,7 +9,7 @@ namespace AAMod.Items.Vanity.Mask
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Yamata Awakened Mask");
+            DisplayName.SetDefault("Yamata No Orochi Mask");
 		}
 
         public override void SetDefaults()

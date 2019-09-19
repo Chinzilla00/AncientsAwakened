@@ -1052,8 +1052,8 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 150;
-            npc.defense = 130;
+            npc.damage = 80;
+            npc.defense = 60;
             npc.lifeMax = 80000;
         }
     }
@@ -1065,8 +1065,8 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 170;
-            npc.defense = 150;
+            npc.damage = 80;
+            npc.defense = 70;
             npc.lifeMax = 100000;
             npc.life = 100000;
         }
@@ -1079,8 +1079,8 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 190;
-            npc.defense = 180;
+            npc.damage = 100;
+            npc.defense = 90;
             npc.lifeMax = 200000;
             npc.life = 200000;
         }
@@ -1093,8 +1093,8 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 220;
-            npc.defense = 210;
+            npc.damage = 130;
+            npc.defense = 100;
             npc.lifeMax = 300000;
             npc.life = 300000;
         }
@@ -1107,8 +1107,8 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 250;
-            npc.defense = 230;
+            npc.damage = 180;
+            npc.defense = 150;
             npc.lifeMax = 500000;
             npc.life = 500000;
         }
@@ -1121,8 +1121,8 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 270;
-            npc.defense = 250;
+            npc.damage = 210;
+            npc.defense = 170;
             npc.lifeMax = 700000;
             npc.life = 700000;
         }
@@ -1135,8 +1135,8 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 300;
-            npc.defense = 270;
+            npc.damage = 250;
+            npc.defense = 180;
             npc.lifeMax = 900000;
             npc.life = 900000;
         }
@@ -1149,8 +1149,8 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 320;
-            npc.defense = 290;
+            npc.damage = 290;
+            npc.defense = 230;
             npc.lifeMax = 1000000;
             npc.life = 1000000;
         }
@@ -1170,10 +1170,10 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 350;
+            npc.damage = 310;
             npc.defense = 0;
-            npc.lifeMax = 4000000;
-            npc.life = 4000000;
+            npc.lifeMax = 2600000;
+            npc.life = 2600000;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/SupremeRajah");
             bossBag = mod.ItemType("RajahCache");
             isSupreme = true;

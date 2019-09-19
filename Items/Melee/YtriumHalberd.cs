@@ -24,7 +24,7 @@ namespace AAMod.Items.Melee
             item.useAnimation = 55;
             item.useTime = 55;
             item.UseSound = SoundID.Item1;
-            item.damage = 25;
+            item.damage = 15;
             item.knockBack = 5;
             item.melee = true;
             item.autoReuse = true;

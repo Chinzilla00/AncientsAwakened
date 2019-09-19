@@ -7,7 +7,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Champion Plate");
-            Tooltip.SetDefault("@Forged from Champium");
+            Tooltip.SetDefault("Forged from Champium");
         }
         public override void SetDefaults()
         {

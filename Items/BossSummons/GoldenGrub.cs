@@ -1,8 +1,5 @@
-using Terraria;
 using Terraria.ID;
-using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using BaseMod;
 
 namespace AAMod.Items.BossSummons
 {

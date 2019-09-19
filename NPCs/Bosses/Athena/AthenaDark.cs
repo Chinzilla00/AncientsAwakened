@@ -19,10 +19,10 @@ namespace AAMod.NPCs.Bosses.Athena
         {
 			npc.alpha = 255;
 			npc.dontTakeDamage = true;
-            npc.lifeMax = 1;
+            npc.lifeMax = 2000;
             npc.aiStyle = 0;
-            npc.damage = Main.expertMode ? 50 : 84;
-            npc.defense = Main.expertMode ? 1 : 1;
+            npc.damage = 60;
+            npc.defense = 70;
             npc.knockBackResist = 0.2f;
             npc.width = 152;
             npc.height = 84;
