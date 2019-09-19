@@ -1,6 +1,7 @@
 ﻿using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -34,6 +35,308 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.defense = (int)(npc.defense * 1.2f);
             npc.damage = (int)(npc.damage * .8f);
             damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
+        }
+
+        public override void AI()
+        {
+            Player player = Main.player[npc.target];
+            Vector2 targetPos;
+            switch ((int)npc.ai[0])
+            {
+                case 0: //target for first time, navigate beside player
+                    if (!npc.HasPlayerTarget)
+                        npc.TargetClosest();
+                    if (!AliveCheck(Main.player[npc.target]))
+                        break;
+                    targetPos = player.Center;
+                    targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    Movement(targetPos, 0.5f);
+                    if (++npc.ai[2] > 300)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.netUpdate = true;
+                        npc.velocity.X = 4 * (npc.Center.X < targetPos.X ? -1 : 1);
+                        npc.velocity.Y *= 0.1f;
+                        if (Main.netMode != 1)
+                            Main.NewText("spawn mega ray");
+                    }
+                    if (++npc.ai[1] > 60)
+                    {
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                        if (Main.netMode != 1)
+                            Main.NewText("spawn predictive delayed fireballs");
+                    }
+                    break;
+
+                case 1: //firing mega ray
+                    if (++npc.ai[1] > 120)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 2: //fly to corner for dash
+                    if (!AliveCheck(player))
+                        break;
+                    targetPos = player.Center;
+                    targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.Y -= 600;
+                    Movement(targetPos, 0.8f);
+                    if (++npc.ai[1] > 180 || npc.Distance(targetPos) < 50) //initiate dash
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                        npc.velocity = npc.DirectionTo(player.Center) * 30;
+                    }
+                    break;
+
+                case 3: //dashing
+                    if (++npc.ai[1] > 30)
+                    {
+                        npc.ai[1] = 0;
+                        if (++npc.ai[2] > 3) //repeat three times
+                        {
+                            npc.ai[0]++;
+                            npc.ai[2] = 0;
+                        }
+                        else
+                            npc.ai[0]--;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 4: //prepare for queen bee dashes
+                    if (!AliveCheck(player))
+                        break;
+                    if (++npc.ai[1] > 30)
+                    {
+                        targetPos = player.Center;
+                        targetPos.X += 900 * (npc.Center.X < targetPos.X ? -1 : 1);
+                        Movement(targetPos, 0.8f);
+                        if (npc.ai[1] > 180 || Math.Abs(npc.Center.Y - targetPos.Y) < 50) //initiate dash
+                        {
+                            npc.ai[0]++;
+                            npc.ai[1] = 0;
+                            npc.netUpdate = true;
+                            npc.velocity.X = -40 * (npc.Center.X < targetPos.X ? -1 : 1);
+                            npc.velocity.Y *= 0.1f;
+                        }
+                    }
+                    else
+                    {
+                        npc.velocity *= 0.9f; //decelerate briefly
+                    }
+                    break;
+
+                case 5: //dashing, leave trail of vertical deathrays
+                    if (npc.ai[3] == 0 && ++npc.ai[2] > 5) //spawn rays on first dash only
+                    {
+                        npc.ai[2] = 0;
+                        if (Main.netMode != 1)
+                            Main.NewText("spawn vertical rays");
+                    }
+                    if (++npc.ai[1] > 240 || (Math.Sign(npc.velocity.X) > 0 ? npc.Center.X > player.Center.X + 900 : npc.Center.X < player.Center.X - 900))
+                    {
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        if (++npc.ai[3] > 3) //repeat dash three times
+                        {
+                            npc.ai[0]++;
+                            npc.ai[3] = 0;
+                        }
+                        else
+                            npc.ai[0]--;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 6: //fly over player, spit mega balls
+                    if (!AliveCheck(player))
+                        break;
+                    targetPos = player.Center;
+                    targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.Y -= 200;
+                    Movement(targetPos, 0.5f);
+                    if (++npc.ai[2] > 60)
+                    {
+                        npc.ai[2] = 0;
+                        npc.netUpdate = true;
+                        if (Main.netMode != 1)
+                            Main.NewText("spit mega ball");
+                    }
+                    if (++npc.ai[1] > 210)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 7: //prepare for fishron dash
+                    if (!AliveCheck(player))
+                        break;
+                    targetPos = player.Center + player.DirectionTo(npc.Center) * 600;
+                    Movement(targetPos, 0.8f);
+                    if (++npc.ai[1] > 30)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                        npc.velocity = npc.DirectionTo(player.Center) * 30;
+                    }
+                    break;
+
+                case 8: //dashing
+                    if (++npc.ai[2] > 6)
+                    {
+                        npc.ai[2] = 0;
+                        if (Main.netMode != 1)
+                            Main.NewText("spawn dash fireballs");
+                    }
+                    if (++npc.ai[1] > 30)
+                    {
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        if (++npc.ai[3] > 3) //dash three times
+                        {
+                            npc.ai[0]++;
+                            npc.ai[3] = 0;
+                        }
+                        else
+                            npc.ai[0]--;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 9: //fly up, prepare to spit mega homing and dash
+                    if (!AliveCheck(player))
+                        break;
+                    targetPos = player.Center;
+                    targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.Y -= 600;
+                    Movement(targetPos, 0.8f);
+                    if (++npc.ai[1] > 180 || npc.Distance(targetPos) < 50)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                        npc.velocity.X = -40 * (npc.Center.X < targetPos.X ? -1 : 1);
+                        npc.velocity.Y *= 0.1f;
+                        if (Main.netMode != 1)
+                            Main.NewText("spawn mega homing ball");
+                    }
+                    break;
+
+                case 10: //dashing
+                    npc.velocity *= 0.99f;
+                    if (npc.ai[1] > 30)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 11: //hover nearby, shoot lightning
+                    if (!AliveCheck(player))
+                        break;
+                    targetPos = player.Center;
+                    targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    Movement(targetPos, 0.5f);
+                    if (++npc.ai[2] > 60)
+                    {
+                        npc.ai[2] = 0;
+                        if (Main.netMode != 1)
+                            Main.NewText("spawn lightning");
+                    }
+                    if (++npc.ai[1] > 300)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = npc.Distance(player.Center);
+                        npc.netUpdate = true;
+                        npc.velocity = npc.DirectionTo(player.Center).RotatedBy(Math.PI / 2) * 30;
+                    }
+                    break;
+
+                case 12: //fly in jumbo circle
+                    npc.velocity += npc.velocity.RotatedBy(Math.PI / 2) * npc.velocity.Length() / npc.ai[3];
+                    if (++npc.ai[2] > 6)
+                    {
+                        npc.ai[2] = 0;
+                        if (Main.netMode != 1)
+                            Main.NewText("spawn perpendicular thingies");
+                    }
+                    if (++npc.ai[1] > 180)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[3] = 0;
+                    }
+                    break;
+
+                default:
+                    npc.ai[0] = 0;
+                    goto case 0;
+            }
+        }
+
+        private bool AliveCheck(Player player)
+        {
+            if ((!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f) && npc.localAI[3] > 0)
+            {
+                npc.TargetClosest();
+                if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f)
+                {
+                    if (npc.timeLeft > 60)
+                        npc.timeLeft = 60;
+                    npc.velocity.Y -= 1f;
+                    return false;
+                }
+            }
+            if (npc.timeLeft < 600)
+                npc.timeLeft = 600;
+            return true;
+        }
+
+        private void Movement(Vector2 targetPos, float speedModifier)
+        {
+            if (npc.Center.X < targetPos.X)
+            {
+                npc.velocity.X += speedModifier;
+                if (npc.velocity.X < 0)
+                    npc.velocity.X += speedModifier * 2;
+            }
+            else
+            {
+                npc.velocity.X -= speedModifier;
+                if (npc.velocity.X > 0)
+                    npc.velocity.X -= speedModifier * 2;
+            }
+            if (npc.Center.Y < targetPos.Y)
+            {
+                npc.velocity.Y += speedModifier;
+                if (npc.velocity.Y < 0)
+                    npc.velocity.Y += speedModifier * 2;
+            }
+            else
+            {
+                npc.velocity.Y -= speedModifier;
+                if (npc.velocity.Y > 0)
+                    npc.velocity.Y -= speedModifier * 2;
+            }
+            if (Math.Abs(npc.velocity.X) > 30)
+                npc.velocity.X = 30 * Math.Sign(npc.velocity.X);
+            if (Math.Abs(npc.velocity.Y) > 30)
+                npc.velocity.Y = 30 * Math.Sign(npc.velocity.Y);
         }
 
         public bool Health9 = false;
