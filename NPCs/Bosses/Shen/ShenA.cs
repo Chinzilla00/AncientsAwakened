@@ -51,23 +51,25 @@ namespace AAMod.NPCs.Bosses.Shen
                     targetPos = player.Center;
                     targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
                     Movement(targetPos, 1f);
-                    if (++npc.ai[2] > 300)
+                    if (++npc.ai[2] > 240)
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
+                        npc.ai[3] = npc.Center.X < player.Center.X ? 0 : (float)Math.PI;
                         npc.netUpdate = true;
-                        npc.velocity.X = -2 * (npc.Center.X < targetPos.X ? -1 : 1);
+                        npc.velocity.X = 2 * (npc.Center.X < player.Center.X ? -1 : 1);
                         npc.velocity.Y *= 0.2f;
                         if (Main.netMode != 1)
-                            Main.NewText("spawn mega ray");
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitX.RotatedBy(npc.ai[3]), mod.ProjectileType("ShenDeathray"), npc.damage / 3, 0f, Main.myPlayer, 0, npc.whoAmI);
                     }
                     if (++npc.ai[1] > 60)
                     {
                         npc.ai[1] = 0;
                         npc.netUpdate = true;
                         if (Main.netMode != 1)
-                            Main.NewText("spawn predictive delayed fireballs");
+                            for (int i = -2; i <= 2; i++)
+                                Projectile.NewProjectile(npc.Center, Vector2.UnitX.RotatedBy(Math.PI / 4) * (npc.Center.X < player.Center.X ? -1 : 1), mod.ProjectileType("ShenFireballSpread"), npc.damage / 4, 0f, Main.myPlayer, 30, 30 + 60);
                     }
                     break;
 
@@ -76,6 +78,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
+                        npc.ai[3] = 0;
                         npc.netUpdate = true;
                     }
                     break;
@@ -139,7 +142,10 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         npc.ai[2] = 0;
                         if (Main.netMode != 1)
-                            Main.NewText("spawn vertical rays");
+                        {
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitY, mod.ProjectileType("ShenDeathrayVertical"), npc.damage / 4, 0f, Main.myPlayer, 0f, npc.whoAmI);
+                            Projectile.NewProjectile(npc.Center, -Vector2.UnitY, mod.ProjectileType("ShenDeathrayVertical"), npc.damage / 4, 0f, Main.myPlayer, 0f, npc.whoAmI);
+                        }
                     }
                     if (++npc.ai[1] > 240 || (Math.Sign(npc.velocity.X) > 0 ? npc.Center.X > player.Center.X + 900 : npc.Center.X < player.Center.X - 900))
                     {
@@ -160,15 +166,22 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (!AliveCheck(player))
                         break;
                     targetPos = player.Center;
-                    targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y -= 200;
+                    targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.Y -= 400;
                     Movement(targetPos, 0.5f);
                     if (++npc.ai[2] > 60)
                     {
                         npc.ai[2] = 0;
                         npc.netUpdate = true;
                         if (Main.netMode != 1)
-                            Main.NewText("spit mega ball");
+                        {
+                            Vector2 spawnPos = npc.Center;
+                            spawnPos.X += 250 * (npc.Center.X < player.Center.X ? 1 : -1);
+                            Vector2 vel = (player.Center - spawnPos) / 30;
+                            if (vel.Length() < 25)
+                                vel = Vector2.Normalize(vel) * 25;
+                            Projectile.NewProjectile(spawnPos, vel, mod.ProjectileType("ShenFireballFrag"), npc.damage / 4, 0f, Main.myPlayer);
+                        }
                     }
                     if (++npc.ai[1] > 210)
                     {
@@ -198,7 +211,11 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         npc.ai[2] = 0;
                         if (Main.netMode != 1)
-                            Main.NewText("spawn dash fireballs");
+                        {
+                            const float ai0 = 0.01f;
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(-Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
+                        }
                     }
                     if (++npc.ai[1] > 30)
                     {
@@ -273,7 +290,11 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         npc.ai[2] = 0;
                         if (Main.netMode != 1)
-                            Main.NewText("spawn perpendicular thingies");
+                        {
+                            const float ai0 = 0.01f;
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(-Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
+                        }
                     }
                     if (++npc.ai[1] > 180)
                     {
