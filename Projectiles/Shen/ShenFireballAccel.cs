@@ -21,7 +21,7 @@ namespace AAMod.Projectiles.Shen
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
             projectile.hostile = true;
-            projectile.timeLeft = 360;
+            projectile.timeLeft = 720;
             projectile.aiStyle = -1;
             projectile.extraUpdates = 1;
             cooldownSlot = 1;

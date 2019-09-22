@@ -12,7 +12,7 @@ namespace AAMod.Projectiles.Shen
     {
         public override string Texture => "AAMod/Projectiles/Shen/ShenDeathray";
 
-        private const float maxTime = 300;
+        private const float maxTime = 600;
 
         public override void SetStaticDefaults()
         {
@@ -34,7 +34,7 @@ namespace AAMod.Projectiles.Shen
 
         public override bool CanDamage()
         {
-            return projectile.scale >= .7f;
+            return projectile.scale >= 1f;
         }
 
         public override bool? CanHitNPC(NPC target)
@@ -56,7 +56,7 @@ namespace AAMod.Projectiles.Shen
             }
             if (Main.npc[(int)projectile.ai[1]].active && Main.npc[(int)projectile.ai[1]].type == mod.NPCType("ShenA"))
             {
-                projectile.Center = Main.npc[(int)projectile.ai[1]].Center;
+                //projectile.Center = Main.npc[(int)projectile.ai[1]].Center;
             }
             else
             {
@@ -73,16 +73,12 @@ namespace AAMod.Projectiles.Shen
             }
             float num801 = 1f;
             projectile.localAI[0] += 1f;
-            if (Main.npc[(int)projectile.ai[1]].ai[0] > 6)
+            if (Main.npc[(int)projectile.ai[1]].ai[0] > 5)
             {
                 projectile.Kill();
                 return;
             }
-            else if (projectile.localAI[0] > 150)
-            {
-                projectile.localAI[0] = 300;
-            }
-            projectile.scale = (float)Math.Sin(projectile.localAI[0] * 3.14159274f / maxTime) * 2f * num801;
+            projectile.scale = (float)Math.Sin(projectile.localAI[0] * 3.14159274f / maxTime) * 5f * num801;
             if (projectile.scale > num801)
             {
                 projectile.scale = num801;

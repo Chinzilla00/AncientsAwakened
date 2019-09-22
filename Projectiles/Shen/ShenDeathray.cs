@@ -31,7 +31,7 @@ namespace AAMod.Projectiles.Shen
 
         public override bool CanHitPlayer(Player target)
         {
-            return projectile.scale >= 10f;
+            return projectile.scale >= 5f;
         }
 
         public override void AI()
@@ -58,14 +58,14 @@ namespace AAMod.Projectiles.Shen
             {
                 Main.PlaySound(29, (int)Main.player[Main.myPlayer].Center.X, (int)Main.player[Main.myPlayer].Center.Y, 104, 1f, 0f);
             }
-            float num801 = 10f;
+            float num801 = 5f;
             projectile.localAI[0] += 1f;
             if (projectile.localAI[0] >= maxTime)
             {
                 projectile.Kill();
                 return;
             }
-            projectile.scale = (float)Math.Sin(projectile.localAI[0] * 3.14159274f / maxTime) * 5f * num801;
+            projectile.scale = (float)Math.Sin(projectile.localAI[0] * 3.14159274f / maxTime) * 2.5f * num801;
             if (projectile.scale > num801)
             {
                 projectile.scale = num801;

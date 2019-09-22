@@ -69,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.netUpdate = true;
                         if (Main.netMode != 1)
                             for (int i = -2; i <= 2; i++)
-                                Projectile.NewProjectile(npc.Center, Vector2.UnitX.RotatedBy(Math.PI / 4) * (npc.Center.X < player.Center.X ? -1 : 1), mod.ProjectileType("ShenFireballSpread"), npc.damage / 4, 0f, Main.myPlayer, 30, 30 + 60);
+                                Projectile.NewProjectile(npc.Center, 30 * Vector2.UnitX.RotatedBy(Math.PI / 4 * i) * (npc.Center.X < player.Center.X ? -1 : 1), mod.ProjectileType("ShenFireballSpread"), npc.damage / 4, 0f, Main.myPlayer, 20, 20 + 60);
                     }
                     break;
 
@@ -87,8 +87,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (!AliveCheck(player))
                         break;
                     targetPos = player.Center;
-                    targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y -= 700;
+                    targetPos.X += 800 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.Y -= 800;
                     Movement(targetPos, 1.2f);
                     if (++npc.ai[1] > 180 || Math.Abs(npc.Center.Y - targetPos.Y) < 100) //initiate dash
                     {
@@ -100,7 +100,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     break;
 
                 case 3: //dashing
-                    if (++npc.ai[1] > 30)
+                    if (++npc.ai[1] > 45)
                     {
                         npc.ai[1] = 0;
                         if (++npc.ai[2] >= 3) //repeat three times
@@ -120,7 +120,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (++npc.ai[1] > 30)
                     {
                         targetPos = player.Center;
-                        targetPos.X += 900 * (npc.Center.X < targetPos.X ? -1 : 1);
+                        targetPos.X += 1000 * (npc.Center.X < targetPos.X ? -1 : 1);
                         Movement(targetPos, 0.8f);
                         if (npc.ai[1] > 180 || Math.Abs(npc.Center.Y - targetPos.Y) < 50) //initiate dash
                         {
@@ -138,9 +138,9 @@ namespace AAMod.NPCs.Bosses.Shen
                     break;
 
                 case 5: //dashing, leave trail of vertical deathrays
-                    if (npc.ai[3] == 0 && ++npc.ai[2] > 5) //spawn rays on first dash only
+                    if (npc.ai[3] == 0 && --npc.ai[2] < 0) //spawn rays on first dash only
                     {
-                        npc.ai[2] = 0;
+                        npc.ai[2] = 4;
                         if (Main.netMode != 1)
                         {
                             Projectile.NewProjectile(npc.Center, Vector2.UnitY, mod.ProjectileType("ShenDeathrayVertical"), npc.damage / 4, 0f, Main.myPlayer, 0f, npc.whoAmI);
@@ -162,12 +162,12 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     break;
 
-                case 6: //fly over player, spit mega balls
+                case 6: //fly at player, spit mega balls
                     if (!AliveCheck(player))
                         break;
                     targetPos = player.Center;
                     targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y -= 400;
+                    targetPos.Y += 400;
                     Movement(targetPos, 0.5f);
                     if (++npc.ai[2] > 60)
                     {
@@ -192,22 +192,25 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     break;
 
-                case 7: //prepare for fishron dash
+                case 7: goto case 2;
+                case 8: goto case 3;
+
+                case 9: //prepare for fishron dash
                     if (!AliveCheck(player))
                         break;
                     targetPos = player.Center + player.DirectionTo(npc.Center) * 600;
                     Movement(targetPos, 0.8f);
-                    if (++npc.ai[1] > 30)
+                    if (++npc.ai[1] > 20)
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
                         npc.netUpdate = true;
-                        npc.velocity = npc.DirectionTo(player.Center) * 30;
+                        npc.velocity = npc.DirectionTo(player.Center) * 35;
                     }
                     break;
 
-                case 8: //dashing
-                    if (++npc.ai[2] > 6)
+                case 10: //dashing
+                    if (++npc.ai[2] > 3)
                     {
                         npc.ai[2] = 0;
                         if (Main.netMode != 1)
@@ -217,11 +220,11 @@ namespace AAMod.NPCs.Bosses.Shen
                             Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(-Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
                         }
                     }
-                    if (++npc.ai[1] > 30)
+                    if (++npc.ai[1] > 40)
                     {
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
-                        if (++npc.ai[3] >= 3) //dash three times
+                        if (++npc.ai[3] >= 5) //dash five times
                         {
                             npc.ai[0]++;
                             npc.ai[3] = 0;
@@ -232,7 +235,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     break;
 
-                case 9: //fly up, prepare to spit mega homing and dash
+                case 11: //fly up, prepare to spit mega homing and dash
                     if (!AliveCheck(player))
                         break;
                     targetPos = player.Center;
@@ -251,7 +254,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     break;
 
-                case 10: //dashing
+                case 12: //dashing
                     npc.velocity *= 0.99f;
                     if (++npc.ai[1] > 30)
                     {
@@ -261,7 +264,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     break;
 
-                case 11: //hover nearby, shoot lightning
+                case 13: //hover nearby, shoot lightning
                     if (!AliveCheck(player))
                         break;
                     targetPos = player.Center;
@@ -284,14 +287,14 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     break;
 
-                case 12: //fly in jumbo circle
+                case 14: //fly in jumbo circle
                     npc.velocity -= npc.velocity.RotatedBy(Math.PI / 2) * npc.velocity.Length() / npc.ai[3];
-                    if (++npc.ai[2] > 6)
+                    if (++npc.ai[2] > 1)
                     {
                         npc.ai[2] = 0;
                         if (Main.netMode != 1)
                         {
-                            const float ai0 = 0.01f;
+                            const float ai0 = 0.004f;
                             Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
                             Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(-Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
                         }
