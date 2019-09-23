@@ -7,8 +7,6 @@ namespace AAMod.Tiles
 {
     public class UraniumOre : ModTile
     {
-        public Texture2D glowTex;
-        public bool glow = true;
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;

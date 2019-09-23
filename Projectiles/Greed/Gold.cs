@@ -25,6 +25,14 @@ namespace AAMod.Projectiles.Greed
 
         public override void AI()
         {
+            if (projectile.ai[1] == 0)
+            {
+                projectile.magic = true;
+            }
+            else
+            {
+                projectile.minion = true;
+            }
             Dust.NewDust(projectile.position, 12, 12, DustID.GoldCoin);
             projectile.rotation += (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) * 0.03f * projectile.direction;
             projectile.ai[0] += 1f;

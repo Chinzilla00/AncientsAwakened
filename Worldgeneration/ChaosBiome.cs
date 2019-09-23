@@ -720,6 +720,12 @@ namespace AAMod.Worldgeneration
 
             gen.Generate(origin.X, origin.Y, true, true);
 
+            WorldUtils.Gen(new Point(origin.X - (gen.width / 2), origin.Y - 20), new Shapes.Rectangle(gen.width, gen.height), Actions.Chain(new GenAction[]
+			{
+                new InWorld(),
+                new Actions.SetLiquid(0, 0)
+            }));
+
             WorldGen.PlaceObject(origin.X + 80, origin.Y + 88, mod.TileType("GreedAltar"));
             NetMessage.SendObjectPlacment(-1, origin.X + 80, origin.Y + 88, mod.TileType("GreedAltar"), 0, 0, -1, -1);
             HoardChest(origin.X + 19, origin.Y + 55);

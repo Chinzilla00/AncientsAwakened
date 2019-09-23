@@ -45,6 +45,11 @@ namespace AAMod
 
         public override bool InstancePerEntity => true;
 
+        public bool isBunny(NPC npc)
+        {
+            return npc.type == NPCID.Bunny || npc.type == NPCID.GoldBunny || npc.type == NPCID.BunnySlimed || npc.type == NPCID.BunnyXmas || npc.type == NPCID.PartyBunny;
+        }
+
         public override void ResetEffects(NPC npc)
         {
             CursedHellfire = false;
@@ -81,6 +86,11 @@ namespace AAMod
             if (NPCID.Sets.TownCritter[npc.type])
             {
                 npc.dontTakeDamageFromHostiles = true;
+            }
+
+            if (isBunny(npc) && AAWorld.downedRajahsRevenge)
+            {
+                npc.dontTakeDamage = true;
             }
         }
 
@@ -204,7 +214,6 @@ namespace AAMod
 
         public override void NPCLoot(NPC npc)
         {
-            bool isBunny = npc.type == NPCID.Bunny || npc.type == NPCID.GoldBunny || npc.type == NPCID.BunnySlimed || npc.type == NPCID.BunnyXmas || npc.type == NPCID.PartyBunny;
 
             if (npc.type == NPCID.DukeFishron && !Main.expertMode)
             {
@@ -471,7 +480,7 @@ namespace AAMod
                 npc.DropLoot(mod.ItemType("GoldenCarrot"));
             }
 
-            if (isBunny && NPC.downedGolemBoss)
+            if (isBunny(npc) && NPC.downedGolemBoss)
             {
                 if (Main.rand.NextBool(80))
                 {
@@ -528,7 +537,7 @@ namespace AAMod
             }
 
 
-            if (Main.hardMode && isBunny && Rajah != -1)
+            if (Main.hardMode && isBunny(npc) && Rajah != -1)
             {
                 Player player = Main.player[Player.FindClosest(npc.Center, npc.width, npc.height)];
 

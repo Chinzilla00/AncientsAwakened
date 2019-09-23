@@ -23,6 +23,7 @@ namespace AAMod
     {
         public static int SmashDragonEgg = 2;
         public static int SmashHydraPod = 2;
+        public static int OpenedChest = 2;
         //tile ints
         public static int mireTiles = 0;
         public static int infernoTiles = 0;

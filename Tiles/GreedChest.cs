@@ -53,6 +53,23 @@ namespace AAMod.Tiles
 
         public override bool UnlockChest(int i, int j, ref short frameXAdjustment, ref int dustType, ref bool manual)
         {
+            if (AAWorld.OpenedChest == 2)
+            {
+                AAWorld.OpenedChest--;
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("The ground below you trembles slightly...", Color.DarkGoldenrod);
+            }
+            else if (AAWorld.OpenedChest == 1)
+            {
+                AAWorld.OpenedChest--;
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("You hear a scream echo through the caverns...", Color.DarkGoldenrod);
+            }
+            else
+            {
+                Player player = Main.player[BaseMod.BaseAI.GetPlayer(new Vector2(i, j), -1)];
+                AAWorld.OpenedChest = 2;
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("HANDS OFF MY LOOT YOU THIEVING APE!!!", Color.Goldenrod);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Greed"), false, 0, 0, "Greed");
+            }
             dustType = this.dustType;
             return true;
         }
