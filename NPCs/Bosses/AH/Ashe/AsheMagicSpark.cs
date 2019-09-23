@@ -60,7 +60,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 2);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
             BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 4, frame, projectile.GetAlpha(Color.White), true);
             return false;
         }

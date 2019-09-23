@@ -12,7 +12,7 @@ using BaseMod;
 
 namespace AAMod.Projectiles.Greed
 {
-	public class Cybee : AAProjectile
+	public class OreConstruct : AAProjectile
 	{
 		public override void SetStaticDefaults()
 		{
