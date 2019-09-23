@@ -250,7 +250,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.velocity.X = -40 * (npc.Center.X < player.Center.X ? -1 : 1);
                         npc.velocity.Y = 5f;
                         if (Main.netMode != 1)
-                            Main.NewText("spawn mega homing ball");
+                            Projectile.NewProjectile(npc.Center, Vector2.Zero, mod.ProjectileType("ShenFireballHoming"), npc.damage / 3, 0f, Main.myPlayer, npc.target, 8f);
                     }
                     break;
 
