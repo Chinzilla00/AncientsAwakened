@@ -1,6 +1,7 @@
 ﻿using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -34,6 +35,332 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.defense = (int)(npc.defense * 1.2f);
             npc.damage = (int)(npc.damage * .8f);
             damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
+        }
+
+        public override void AI()
+        {
+            Player player = Main.player[npc.target];
+            Vector2 targetPos;
+            switch ((int)npc.ai[0])
+            {
+                case 0: //target for first time, navigate beside player
+                    if (!npc.HasPlayerTarget)
+                        npc.TargetClosest();
+                    if (!AliveCheck(Main.player[npc.target]))
+                        break;
+                    targetPos = player.Center;
+                    targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    Movement(targetPos, 1f);
+                    if (++npc.ai[2] > 240)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = npc.Center.X < player.Center.X ? 0 : (float)Math.PI;
+                        npc.netUpdate = true;
+                        npc.velocity.X = 2 * (npc.Center.X < player.Center.X ? -1 : 1);
+                        npc.velocity.Y *= 0.2f;
+                        if (Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitX.RotatedBy(npc.ai[3]), mod.ProjectileType("ShenDeathray"), npc.damage / 3, 0f, Main.myPlayer, 0, npc.whoAmI);
+                    }
+                    if (++npc.ai[1] > 60)
+                    {
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                        if (Main.netMode != 1)
+                            for (int i = -2; i <= 2; i++)
+                                Projectile.NewProjectile(npc.Center, 30 * Vector2.UnitX.RotatedBy(Math.PI / 4 * i) * (npc.Center.X < player.Center.X ? -1 : 1), mod.ProjectileType("ShenFireballSpread"), npc.damage / 4, 0f, Main.myPlayer, 20, 20 + 60);
+                    }
+                    break;
+
+                case 1: //firing mega ray
+                    if (++npc.ai[1] > 120)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[3] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 2: //fly to corner for dash
+                    if (!AliveCheck(player))
+                        break;
+                    targetPos = player.Center;
+                    targetPos.X += 800 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.Y -= 800;
+                    Movement(targetPos, 1.2f);
+                    if (++npc.ai[1] > 180 || Math.Abs(npc.Center.Y - targetPos.Y) < 100) //initiate dash
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                        npc.velocity = npc.DirectionTo(player.Center) * 45;
+                    }
+                    break;
+
+                case 3: //dashing
+                    if (++npc.ai[1] > 45)
+                    {
+                        npc.ai[1] = 0;
+                        if (++npc.ai[2] >= 3) //repeat three times
+                        {
+                            npc.ai[0]++;
+                            npc.ai[2] = 0;
+                        }
+                        else
+                            npc.ai[0]--;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 4: //prepare for queen bee dashes
+                    if (!AliveCheck(player))
+                        break;
+                    if (++npc.ai[1] > 30)
+                    {
+                        targetPos = player.Center;
+                        targetPos.X += 1000 * (npc.Center.X < targetPos.X ? -1 : 1);
+                        Movement(targetPos, 0.8f);
+                        if (npc.ai[1] > 180 || Math.Abs(npc.Center.Y - targetPos.Y) < 50) //initiate dash
+                        {
+                            npc.ai[0]++;
+                            npc.ai[1] = 0;
+                            npc.netUpdate = true;
+                            npc.velocity.X = -40 * (npc.Center.X < player.Center.X ? -1 : 1);
+                            npc.velocity.Y *= 0.1f;
+                        }
+                    }
+                    else
+                    {
+                        npc.velocity *= 0.9f; //decelerate briefly
+                    }
+                    break;
+
+                case 5: //dashing, leave trail of vertical deathrays
+                    if (npc.ai[3] == 0 && --npc.ai[2] < 0) //spawn rays on first dash only
+                    {
+                        npc.ai[2] = 4;
+                        if (Main.netMode != 1)
+                        {
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitY, mod.ProjectileType("ShenDeathrayVertical"), npc.damage / 4, 0f, Main.myPlayer, 0f, npc.whoAmI);
+                            Projectile.NewProjectile(npc.Center, -Vector2.UnitY, mod.ProjectileType("ShenDeathrayVertical"), npc.damage / 4, 0f, Main.myPlayer, 0f, npc.whoAmI);
+                        }
+                    }
+                    if (++npc.ai[1] > 240 || (Math.Sign(npc.velocity.X) > 0 ? npc.Center.X > player.Center.X + 900 : npc.Center.X < player.Center.X - 900))
+                    {
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        if (++npc.ai[3] >= 3) //repeat dash three times
+                        {
+                            npc.ai[0]++;
+                            npc.ai[3] = 0;
+                        }
+                        else
+                            npc.ai[0]--;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 6: //fly at player, spit mega balls
+                    if (!AliveCheck(player))
+                        break;
+                    targetPos = player.Center;
+                    targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.Y += 400;
+                    Movement(targetPos, 0.5f);
+                    if (++npc.ai[2] > 60)
+                    {
+                        npc.ai[2] = 0;
+                        npc.netUpdate = true;
+                        if (Main.netMode != 1)
+                        {
+                            Vector2 spawnPos = npc.Center;
+                            spawnPos.X += 250 * (npc.Center.X < player.Center.X ? 1 : -1);
+                            Vector2 vel = (player.Center - spawnPos) / 30;
+                            if (vel.Length() < 25)
+                                vel = Vector2.Normalize(vel) * 25;
+                            Projectile.NewProjectile(spawnPos, vel, mod.ProjectileType("ShenFireballFrag"), npc.damage / 4, 0f, Main.myPlayer);
+                        }
+                    }
+                    if (++npc.ai[1] > 210)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 7: goto case 2;
+                case 8: goto case 3;
+
+                case 9: //prepare for fishron dash
+                    if (!AliveCheck(player))
+                        break;
+                    targetPos = player.Center + player.DirectionTo(npc.Center) * 600;
+                    Movement(targetPos, 0.8f);
+                    if (++npc.ai[1] > 20)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                        npc.velocity = npc.DirectionTo(player.Center) * 35;
+                    }
+                    break;
+
+                case 10: //dashing
+                    if (++npc.ai[2] > 3)
+                    {
+                        npc.ai[2] = 0;
+                        if (Main.netMode != 1)
+                        {
+                            const float ai0 = 0.01f;
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(-Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
+                        }
+                    }
+                    if (++npc.ai[1] > 40)
+                    {
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        if (++npc.ai[3] >= 5) //dash five times
+                        {
+                            npc.ai[0]++;
+                            npc.ai[3] = 0;
+                        }
+                        else
+                            npc.ai[0]--;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 11: //fly up, prepare to spit mega homing and dash
+                    if (!AliveCheck(player))
+                        break;
+                    targetPos = player.Center;
+                    targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.Y -= 600;
+                    Movement(targetPos, 0.8f);
+                    if (++npc.ai[1] > 180 || npc.Distance(targetPos) < 50)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                        npc.velocity.X = -40 * (npc.Center.X < player.Center.X ? -1 : 1);
+                        npc.velocity.Y = 5f;
+                        if (Main.netMode != 1)
+                            Main.NewText("spawn mega homing ball");
+                    }
+                    break;
+
+                case 12: //dashing
+                    npc.velocity *= 0.99f;
+                    if (++npc.ai[1] > 30)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 13: //hover nearby, shoot lightning
+                    if (!AliveCheck(player))
+                        break;
+                    targetPos = player.Center;
+                    targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    Movement(targetPos, 0.5f);
+                    if (++npc.ai[2] > 60)
+                    {
+                        npc.ai[2] = 0;
+                        if (Main.netMode != 1)
+                            Main.NewText("spawn lightning");
+                    }
+                    if (++npc.ai[1] > 300)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = npc.Distance(player.Center);
+                        npc.netUpdate = true;
+                        npc.velocity = npc.DirectionTo(player.Center).RotatedBy(Math.PI / 2) * 40;
+                    }
+                    break;
+
+                case 14: //fly in jumbo circle
+                    npc.velocity -= npc.velocity.RotatedBy(Math.PI / 2) * npc.velocity.Length() / npc.ai[3];
+                    if (++npc.ai[2] > 1)
+                    {
+                        npc.ai[2] = 0;
+                        if (Main.netMode != 1)
+                        {
+                            const float ai0 = 0.004f;
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(-Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
+                        }
+                    }
+                    if (++npc.ai[1] > 180)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[3] = 0;
+                    }
+                    break;
+
+                default:
+                    npc.ai[0] = 0;
+                    goto case 0;
+            }
+        }
+
+        private bool AliveCheck(Player player)
+        {
+            if ((!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f) && npc.localAI[3] > 0)
+            {
+                npc.TargetClosest();
+                if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f)
+                {
+                    if (npc.timeLeft > 60)
+                        npc.timeLeft = 60;
+                    npc.velocity.Y -= 1f;
+                    return false;
+                }
+            }
+            if (npc.timeLeft < 600)
+                npc.timeLeft = 600;
+            return true;
+        }
+
+        private void Movement(Vector2 targetPos, float speedModifier)
+        {
+            if (npc.Center.X < targetPos.X)
+            {
+                npc.velocity.X += speedModifier;
+                if (npc.velocity.X < 0)
+                    npc.velocity.X += speedModifier * 2;
+            }
+            else
+            {
+                npc.velocity.X -= speedModifier;
+                if (npc.velocity.X > 0)
+                    npc.velocity.X -= speedModifier * 2;
+            }
+            if (npc.Center.Y < targetPos.Y)
+            {
+                npc.velocity.Y += speedModifier;
+                if (npc.velocity.Y < 0)
+                    npc.velocity.Y += speedModifier * 2;
+            }
+            else
+            {
+                npc.velocity.Y -= speedModifier;
+                if (npc.velocity.Y > 0)
+                    npc.velocity.Y -= speedModifier * 2;
+            }
+            if (Math.Abs(npc.velocity.X) > 30)
+                npc.velocity.X = 30 * Math.Sign(npc.velocity.X);
+            if (Math.Abs(npc.velocity.Y) > 30)
+                npc.velocity.Y = 30 * Math.Sign(npc.velocity.Y);
         }
 
         public bool Health9 = false;
