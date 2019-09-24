@@ -1153,6 +1153,11 @@ namespace AAMod
                         return "燎狱的火山终于平息了...";
                         case "Akuma12":
                         return "哈...你小子还不错, 但还不够强. 等你再强一点再回来找我. ";
+                        case "Akuma13":
+                        return "面对绝望之火吧!小子!";
+                        case "Akuma14":
+                        return "注意集中, 小子!";
+
                         case "AkumaA1":
                         return "艾希? 再来帮你一次亲爱的老爸料理这小子!";
                         case "AkumaA2":
@@ -1781,6 +1786,10 @@ namespace AAMod
                         return "The volcanoes of the inferno are finally quelled...";
                         case "Akuma12":
                         return "Hmpf...you’re pretty good kid, but not good enough. Come back once you’ve gotten a bit better.";
+                        case "Akuma13":
+                        return "Face the flames of despair, kid!";
+                        case "Akuma14":
+                        return "Heads up, kid!";
 
                         case "AkumaA1":
                         return "Ashe? Help your dear old dad with this kid again!";

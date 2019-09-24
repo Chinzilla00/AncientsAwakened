@@ -480,7 +480,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote5) ? "Face the flames of despair, kid!" : "Heads up, kid!", new Color(180, 41, 32));
+                    if (Main.netMode != 1) BaseUtility.Chat((!Quote5) ? Lang.BossChat("Akuma13") : Lang.BossChat("Akuma14"), new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote5 = true;
                 }
