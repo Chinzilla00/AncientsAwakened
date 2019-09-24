@@ -271,11 +271,27 @@ namespace AAMod.NPCs.Bosses.Shen
                     targetPos = player.Center;
                     targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
                     Movement(targetPos, 0.5f);
-                    if (++npc.ai[2] > 60)
+                    if (++npc.ai[2] > 40)
                     {
                         npc.ai[2] = 0;
-                        if (Main.netMode != 1)
-                            Main.NewText("spawn lightning");
+                        if (Main.netMode != 1) //spawn lightning
+                        {
+                            Vector2 infernoPos = new Vector2(200f, npc.direction == -1 ? 65f : -45f);
+                            Vector2 vel = new Vector2(MathHelper.Lerp(6f, 8f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-4f, 4f, (float)Main.rand.NextDouble()));
+                            if (player.active && !player.dead)
+                            {
+                                float rot = BaseUtility.RotationTo(npc.Center, player.Center);
+                                infernoPos = BaseUtility.RotateVector(Vector2.Zero, infernoPos, rot);
+                                vel = BaseUtility.RotateVector(Vector2.Zero, vel, rot);
+                                vel *= MoveSpeed / _normalSpeed; //to compensate for players running away
+                                int dir = npc.Center.X < player.Center.X ? 1 : -1;
+                                if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
+                                vel.Y += npc.velocity.Y;
+                                infernoPos += npc.Center;
+                                infernoPos.Y -= 60;
+                            }
+                            Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 6, vel.X * 2, vel.Y * 2, mod.ProjectileType("ChaosLightning"), npc.damage / 4, 0f, Main.myPlayer, vel.ToRotation(), 0f);
+                        }
                     }
                     if (++npc.ai[1] > 300)
                     {
