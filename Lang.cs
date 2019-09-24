@@ -287,7 +287,7 @@ namespace AAMod
                         case "SetChatButtons8":
                         return "三个愿望";
                         case "SetChatButtons9":
-                        return "蛇. 怎么总是蛇? ";
+                        return "冰凉";
                         case "SetChatButtons10":
                         return "了解";
                         case "SetChatButtons11":
@@ -310,6 +310,18 @@ namespace AAMod
                         return "冥昧末日预言者";
                         case "SetChatButtons20":
                         return "宝石持有者";
+                        case "SetChatButtons21":
+                        return "Squakin' Headache";
+                        case "SetChatButtons21":
+                        return "What a Worm";
+                        case "SetChatButtons22":
+                        return "Hopping Hoodlum";
+                        case "SetChatButtons23":
+                        return "Harpy Hags are back";
+                        case "SetChatButtons24":
+                        return "Riches and R.I.P. you";
+                        case "SetChatButtons24":
+                        return "Wrath of the Wabbit";
                         case "downedMonarchY":
                         return "…就这样? ";
                         case "downedMonarchN":
@@ -487,7 +499,7 @@ namespace AAMod
                         case "SetChatButtons8":
                         return "3 Wishes";
                         case "SetChatButtons9":
-                        return "Snakes. Why is it always snakes?";
+                        return "Cool as Ice";
                         case "SetChatButtons10":
                         return "Gotcha'";
                         case "SetChatButtons11":
@@ -510,6 +522,18 @@ namespace AAMod
                         return "Discordian Doomsayer";
                         case "SetChatButtons20":
                         return "The Stonekeepers";
+                        case "SetChatButtons21":
+                        return "Squakin' Headache";
+                        case "SetChatButtons21":
+                        return "What a Worm";
+                        case "SetChatButtons22":
+                        return "Hopping Hoodlum";
+                        case "SetChatButtons23":
+                        return "Harpy Hags are back";
+                        case "SetChatButtons24":
+                        return "Riches and R.I.P. you";
+                        case "SetChatButtons24":
+                        return "Wrath of the Wabbit";
                         case "downedMonarchY":
                         return "...that was it?";
                         case "downedMonarchN":
