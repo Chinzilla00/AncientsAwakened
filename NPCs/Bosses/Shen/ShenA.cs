@@ -100,8 +100,9 @@ namespace AAMod.NPCs.Bosses.Shen
                     break;
 
                 case 3: //dashing
-                    if (++npc.ai[1] > 45)
+                    if (npc.Center.Y > player.Center.Y + 700)
                     {
+                        npc.velocity.Y *= 0.5f;
                         npc.ai[1] = 0;
                         if (++npc.ai[2] >= 3) //repeat three times
                         {

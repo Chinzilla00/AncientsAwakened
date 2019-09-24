@@ -21,17 +21,32 @@ namespace AAMod.Projectiles.Shen
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
             projectile.hostile = true;
-            projectile.scale = 3f;
+            projectile.scale = 4f;
             projectile.aiStyle = -1;
             cooldownSlot = 1;
         }
 
         public override void AI()
         {
-            projectile.velocity = projectile.DirectionTo(Main.player[(int)projectile.ai[0]].Center) * projectile.ai[5];
-            projectile.scale -= 3f / 360f;
-            if (projectile.scale <= 0)
+            projectile.velocity = projectile.DirectionTo(Main.player[(int)projectile.ai[0]].Center) * projectile.ai[1];
+            projectile.scale -= 3f / 300f;
+            if (projectile.scale <= 1)
                 projectile.Kill();
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            if (Main.netMode != 1)
+            {
+                Vector2 vel = Vector2.Normalize(projectile.velocity);
+                const float ai = 0.015f;
+                for (int i = 0; i < 16; ++i)
+                {
+                    vel = vel.RotatedBy(Math.PI / 5);
+                    Projectile.NewProjectile(projectile.Center, vel, mod.ProjectileType("ShenFireballAccel"), projectile.damage, 0f, Main.myPlayer, Math.Abs(ai), 0f);
+                    Projectile.NewProjectile(projectile.Center, vel, mod.ProjectileType("ShenFireballAccel"), projectile.damage, 0f, Main.myPlayer, Math.Abs(ai), 0f);
+                }
+            }
         }
     }
 }

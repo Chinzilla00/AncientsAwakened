@@ -31,11 +31,12 @@ namespace AAMod.Projectiles.Shen
             if (Main.netMode != 1)
             {
                 Vector2 vel = Vector2.Normalize(projectile.velocity);
-                float ai = 0.01f * Math.Sign(projectile.velocity.X);
-                for (int i = 0; i < 10; ++i)
+                const float ai = 0.01f;
+                for (int i = 0; i < 8; ++i)
                 {
                     vel = vel.RotatedBy(Math.PI / 5);
                     Projectile.NewProjectile(projectile.Center, vel, mod.ProjectileType("ShenFireballAccel"), projectile.damage, 0f, Main.myPlayer, Math.Abs(ai), ai);
+                    Projectile.NewProjectile(projectile.Center, vel, mod.ProjectileType("ShenFireballAccel"), projectile.damage, 0f, Main.myPlayer, Math.Abs(ai), -ai);
                 }
             }
         }
