@@ -97,10 +97,11 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.netUpdate = true;
                         npc.velocity = npc.DirectionTo(player.Center) * 45;
                     }
+                    npc.rotation = 0;
                     break;
 
                 case 3: //dashing
-                    if (npc.Center.Y > player.Center.Y + 700)
+                    if (npc.Center.Y > player.Center.Y + 700 || Math.Abs(npc.Center.X - player.Center.X) > 1500)
                     {
                         npc.velocity.Y *= 0.5f;
                         npc.ai[1] = 0;
@@ -113,6 +114,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             npc.ai[0]--;
                         npc.netUpdate = true;
                     }
+                    npc.rotation = npc.velocity.ToRotation();
                     break;
 
                 case 4: //prepare for queen bee dashes
@@ -136,6 +138,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         npc.velocity *= 0.9f; //decelerate briefly
                     }
+                    npc.rotation = 0;
                     break;
 
                 case 5: //dashing, leave trail of vertical deathrays
@@ -206,8 +209,9 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.ai[0]++;
                         npc.ai[1] = 0;
                         npc.netUpdate = true;
-                        npc.velocity = npc.DirectionTo(player.Center) * 35;
+                        npc.velocity = npc.DirectionTo(player.Center) * 40;
                     }
+                    npc.rotation = 0;
                     break;
 
                 case 10: //dashing
@@ -234,6 +238,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             npc.ai[0]--;
                         npc.netUpdate = true;
                     }
+                    npc.rotation = npc.velocity.ToRotation();
                     break;
 
                 case 11: //fly up, prepare to spit mega homing and dash
@@ -253,6 +258,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         if (Main.netMode != 1)
                             Projectile.NewProjectile(npc.Center, Vector2.Zero, mod.ProjectileType("ShenFireballHoming"), npc.damage / 3, 0f, Main.myPlayer, npc.target, 8f);
                     }
+                    npc.rotation = 0;
                     break;
 
                 case 12: //dashing
@@ -269,8 +275,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (!AliveCheck(player))
                         break;
                     targetPos = player.Center;
-                    targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    Movement(targetPos, 0.5f);
+                    targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    Movement(targetPos, 0.7f);
                     if (++npc.ai[2] > 40)
                     {
                         npc.ai[2] = 0;
@@ -293,7 +299,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y - 6, vel.X * 2, vel.Y * 2, mod.ProjectileType("ChaosLightning"), npc.damage / 4, 0f, Main.myPlayer, vel.ToRotation(), 0f);
                         }
                     }
-                    if (++npc.ai[1] > 300)
+                    if (++npc.ai[1] > 360)
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
@@ -316,12 +322,30 @@ namespace AAMod.NPCs.Bosses.Shen
                             Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(-Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
                         }
                     }
-                    if (++npc.ai[1] > 180)
+                    if (++npc.ai[1] > 150)
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
                         npc.ai[3] = 0;
                     }
+                    npc.rotation = npc.velocity.ToRotation();
+                    break;
+
+                case 15: //wait for old attack to go away
+                    if (!AliveCheck(player))
+                        break;
+                    targetPos = player.Center;
+                    targetPos.X += 600 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    Movement(targetPos, 1f);
+                    if (++npc.ai[2] > 120)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        npc.netUpdate = true;
+                    }
+                    npc.rotation = 0;
                     break;
 
                 default:

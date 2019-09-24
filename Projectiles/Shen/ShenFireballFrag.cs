@@ -34,7 +34,7 @@ namespace AAMod.Projectiles.Shen
                 const float ai = 0.01f;
                 for (int i = 0; i < 8; ++i)
                 {
-                    vel = vel.RotatedBy(Math.PI / 8);
+                    vel = vel.RotatedBy(Math.PI / 4);
                     Projectile.NewProjectile(projectile.Center, vel, mod.ProjectileType("ShenFireballAccel"), projectile.damage, 0f, Main.myPlayer, Math.Abs(ai), ai);
                     Projectile.NewProjectile(projectile.Center, vel, mod.ProjectileType("ShenFireballAccel"), projectile.damage, 0f, Main.myPlayer, Math.Abs(ai), -ai);
                 }
