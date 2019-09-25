@@ -21,10 +21,10 @@ namespace AAMod.Projectiles
             projectile.width = 10;
             projectile.height = 10;
             projectile.friendly = true;
-            projectile.penetrate = 3;
+            projectile.penetrate = 5;
             projectile.ranged = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.extraUpdates = 2;
+            projectile.extraUpdates = 8;
         }
 
         public bool runOnce = true;
@@ -47,7 +47,7 @@ namespace AAMod.Projectiles
         NPC ConfirmedTarget;
         NPC possibleTarget;
         float distance;
-        float maxDistance = 1200;
+        float maxDistance = 2000;
         bool foundTarget;
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
@@ -80,7 +80,7 @@ namespace AAMod.Projectiles
                 projectile.Kill();
             }
             foundTarget = false;
-            maxDistance = 300;
+            maxDistance = 1000;
         }
 
         public static Vector2 PolarVector(float radius, float theta)
