@@ -7,7 +7,6 @@ using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using AAMod.NPCs.Enemies.Sky;
-using AAMod.Items.Boss.Athena;
 
 namespace AAMod.NPCs.Bosses.Athena
 {

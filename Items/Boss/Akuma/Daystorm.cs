@@ -53,7 +53,7 @@ namespace AAMod.Items.Boss.Akuma
 
             if (shoot >= 6)
             {
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("AMeteor"), (int)(damage * 2), knockBack, player.whoAmI);
+                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("AMeteor"), damage * 2, knockBack, player.whoAmI);
                 shoot = 0;
             }
             shoot = 0;

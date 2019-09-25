@@ -41,6 +41,10 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             Player player = Main.player[npc.target];
             Vector2 targetPos;
+
+            Dashing = false;
+            if (Roaring) roarTimer--;
+
             switch ((int)npc.ai[0])
             {
                 case 0: //target for first time, navigate beside player
@@ -53,6 +57,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Movement(targetPos, 1f);
                     if (++npc.ai[2] > 240)
                     {
+                        Roar(roarTimerMax, false);
                         npc.ai[0]++;
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
@@ -66,6 +71,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (++npc.ai[1] > 60)
                     {
                         npc.ai[1] = 0;
+                        Roar(roarTimerMax, false);
                         npc.netUpdate = true;
                         if (Main.netMode != 1)
                             for (int i = -2; i <= 2; i++)
@@ -114,6 +120,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             npc.ai[0]--;
                         npc.netUpdate = true;
                     }
+                    Dashing = true;
                     npc.rotation = npc.velocity.ToRotation();
                     break;
 
@@ -153,6 +160,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     if (++npc.ai[1] > 240 || (Math.Sign(npc.velocity.X) > 0 ? npc.Center.X > player.Center.X + 900 : npc.Center.X < player.Center.X - 900))
                     {
+                        Roar(roarTimerMax, false);
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
                         if (++npc.ai[3] >= 3) //repeat dash three times
@@ -164,6 +172,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             npc.ai[0]--;
                         npc.netUpdate = true;
                     }
+                    Dashing = true;
                     break;
 
                 case 6: //fly at player, spit mega balls
@@ -176,6 +185,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (++npc.ai[2] > 60)
                     {
                         npc.ai[2] = 0;
+                        Roar(roarTimerMax, false);
                         npc.netUpdate = true;
                         if (Main.netMode != 1)
                         {
@@ -206,6 +216,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Movement(targetPos, 0.8f);
                     if (++npc.ai[1] > 20)
                     {
+                        Roar(roarTimerMax, false);
                         npc.ai[0]++;
                         npc.ai[1] = 0;
                         npc.netUpdate = true;
@@ -238,6 +249,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             npc.ai[0]--;
                         npc.netUpdate = true;
                     }
+                    Dashing = true;
                     npc.rotation = npc.velocity.ToRotation();
                     break;
 
@@ -250,6 +262,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Movement(targetPos, 0.8f);
                     if (++npc.ai[1] > 180 || npc.Distance(targetPos) < 50)
                     {
+                        Roar(roarTimerMax, false);
                         npc.ai[0]++;
                         npc.ai[1] = 0;
                         npc.netUpdate = true;
@@ -262,6 +275,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     break;
 
                 case 12: //dashing
+                    Dashing = true;
                     npc.velocity *= 0.99f;
                     if (++npc.ai[1] > 30)
                     {
@@ -279,6 +293,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     Movement(targetPos, 0.7f);
                     if (++npc.ai[2] > 40)
                     {
+                        Roar(roarTimerMax, false);
                         npc.ai[2] = 0;
                         if (Main.netMode != 1) //spawn lightning
                         {
@@ -311,6 +326,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     break;
 
                 case 14: //fly in jumbo circle
+                    Dashing = true;
                     npc.velocity -= npc.velocity.RotatedBy(Math.PI / 2) * npc.velocity.Length() / npc.ai[3];
                     if (++npc.ai[2] > 1)
                     {
@@ -321,6 +337,10 @@ namespace AAMod.NPCs.Bosses.Shen
                             Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
                             Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(-Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
                         }
+                    }
+                    if (npc.ai[1] <= 1)
+                    {
+                        Roar(roarTimerMax, false);
                     }
                     if (++npc.ai[1] > 150)
                     {
@@ -402,6 +422,34 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.velocity.X = 30 * Math.Sign(npc.velocity.X);
             if (Math.Abs(npc.velocity.Y) > 30)
                 npc.velocity.Y = 30 * Math.Sign(npc.velocity.Y);
+        }
+
+        bool Dashing = false;
+
+        public override void FindFrame(int frameHeight)
+        {
+            Player player = Main.player[npc.target];
+            npc.frame = new Rectangle(0, Roaring ? frameY : 0, 444, frameY);
+            if (Dashing)
+            {
+                npc.frameCounter = 0;
+                wingFrame.Y = wingFrameY;
+            }
+            else
+            {
+                npc.frameCounter++;
+                if (npc.frameCounter >= 5)
+                {
+                    npc.frameCounter = 0;
+                    wingFrame.Y += wingFrameY;
+                    if (wingFrame.Y > (wingFrameY * 4))
+                    {
+                        npc.frameCounter = 0;
+                        wingFrame.Y = 0;
+                    }
+                }
+                npc.spriteDirection = npc.Center.X < player.Center.X ? 1 : -1;
+            }
         }
 
         public bool Health9 = false;

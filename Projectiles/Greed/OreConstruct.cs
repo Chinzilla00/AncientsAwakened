@@ -1,18 +1,12 @@
-using System;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
-using Terraria.Graphics.Shaders;
-using Terraria.ModLoader;
 using BaseMod;
 
 namespace AAMod.Projectiles.Greed
 {
-	public class OreConstruct : AAProjectile
+    public class OreConstruct : AAProjectile
 	{
 		public override void SetStaticDefaults()
 		{

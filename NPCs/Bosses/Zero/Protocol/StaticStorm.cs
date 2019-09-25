@@ -119,7 +119,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             int num1 = 36;
             for (int index1 = 0; index1 < num1; ++index1)
             {
-                Vector2 vector2_1 = (Vector2.Normalize(projectile.velocity) * new Vector2((float)projectile.width / 2f, (float)projectile.height) * 0.75f).RotatedBy((double)(index1 - (num1 / 2 - 1)) * 6.28318548202515 / (double)num1, new Vector2()) + projectile.Center;
+                Vector2 vector2_1 = (Vector2.Normalize(projectile.velocity) * new Vector2(projectile.width / 2f, projectile.height) * 0.75f).RotatedBy((index1 - (num1 / 2 - 1)) * 6.28318548202515 / num1, new Vector2()) + projectile.Center;
                 Vector2 vector2_2 = vector2_1 - projectile.Center;
                 int index2 = Dust.NewDust(vector2_1 + vector2_2, 0, 0, 226, vector2_2.X * 2f, vector2_2.Y * 2f, 100, new Color(), 1.4f);
                 Main.dust[index2].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);

@@ -1,6 +1,5 @@
 using Terraria.ModLoader;
 using Terraria;
-using System.Collections.Generic;
 using Terraria.ID;
 
 namespace AAMod.Items.Boss.Greed

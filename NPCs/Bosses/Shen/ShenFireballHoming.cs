@@ -1,17 +1,34 @@
 using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Projectiles.Shen
+namespace AAMod.NPCs.Bosses.Shen
 {
     public class ShenFireballHoming : ModProjectile
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Fireball");
+            Main.projFrames[projectile.type] = 4;
+        }
+
+        public override void PostAI()
+        {
+            if (projectile.frameCounter++ > 5)
+            {
+                projectile.frame++;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 3)
+                {
+                    projectile.frame = 0;
+                }
+            }
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White;
         }
 
         public override void SetDefaults()
