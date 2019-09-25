@@ -50,9 +50,9 @@ Enemies are less likely to target you";
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DepthFukumen", 1);
-            recipe.AddIngredient(null, "DoomiteUHelm", 1);
-            recipe.AddIngredient(null, "VikingHelm", 1);
-            recipe.AddIngredient(null, "OceanHelm", 1);
+            recipe.AddIngredient(null, "Doomite", 5);
+            recipe.AddIngredient(null, "RelicBar", 5);
+            recipe.AddIngredient(ItemID.Coral, 5);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();
