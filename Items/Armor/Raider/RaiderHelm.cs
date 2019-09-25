@@ -26,9 +26,9 @@ namespace AAMod.Items.Armor.Raider
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("VikingHelm"));
-            recipe.AddIngredient(mod.ItemType("DepthFukumen"));
-            recipe.AddIngredient(mod.ItemType("OceanHelm"));
-            recipe.AddIngredient(mod.ItemType("DoomiteUHelm"));
+            recipe.AddIngredient(ItemID.Coral, 5);
+            recipe.AddIngredient(mod.ItemType("HydraHide"), 5);
+            recipe.AddIngredient(mod.ItemType("Doomite"), 5);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -33,9 +33,9 @@ Weightless as shadow itself");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DepthHakama", 1);
-            recipe.AddIngredient(null, "Doomite", 6);
             recipe.AddIngredient(null, "RelicBar", 6);
             recipe.AddIngredient(ItemID.Coral, 6);
+            recipe.AddIngredient(null, "Doomite", 6);
             recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

@@ -33,9 +33,9 @@ namespace AAMod.Items.Armor.Fleshrend
 		{
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.CrimsonGreaves, 1);
-            recipe.AddIngredient(ItemID.JunglePants, 1);
-            recipe.AddIngredient(ItemID.NecroGreaves, 1);
-            recipe.AddIngredient(null, "ImpBoots", 1);
+            recipe.AddIngredient(ItemID.JungleSpores, 6);
+            recipe.AddIngredient(ItemID.Bone, 6);
+            recipe.AddIngredient(null, "DevilSilk", 6);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
 			recipe.AddRecipe();

@@ -50,9 +50,9 @@ Mana usage lowered by 30%";
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.JungleHat, 1);
-                recipe.AddIngredient(ItemID.CrimsonHelmet, 1);
-                recipe.AddIngredient(ItemID.NecroHelmet, 1);
-                recipe.AddIngredient(null, "ImpHood", 1);
+                recipe.AddIngredient(ItemID.ShadowScale, 8);
+                recipe.AddIngredient(ItemID.Bone, 8);
+                recipe.AddIngredient(null, "DevilSilk", 8);
                 recipe.AddTile(TileID.DemonAltar);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
@@ -60,9 +60,9 @@ Mana usage lowered by 30%";
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.JungleHat, 1);
-                recipe.AddIngredient(ItemID.ShadowHelmet, 1);
-                recipe.AddIngredient(ItemID.NecroHelmet, 1);
-                recipe.AddIngredient(null, "ImpHood", 1);
+                recipe.AddIngredient(ItemID.TissueSample, 8);
+                recipe.AddIngredient(ItemID.Bone, 8);
+                recipe.AddIngredient(null, "DevilSilk", 8);
                 recipe.AddTile(TileID.DemonAltar);
                 recipe.SetResult(this);
                 recipe.AddRecipe();

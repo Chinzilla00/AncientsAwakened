@@ -35,9 +35,9 @@ Increases Maximum Mana by 20");
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.JunglePants, 1);
-                recipe.AddIngredient(ItemID.CrimsonGreaves, 1);
-                recipe.AddIngredient(ItemID.NecroGreaves, 1);
-                recipe.AddIngredient(null, "ImpBoots", 1);
+                recipe.AddIngredient(ItemID.ShadowScale, 6);
+                recipe.AddIngredient(ItemID.Bone, 6);
+                recipe.AddIngredient(null, "DevilSilk", 6);
                 recipe.AddTile(TileID.DemonAltar);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
@@ -45,9 +45,9 @@ Increases Maximum Mana by 20");
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.JunglePants, 1);
-                recipe.AddIngredient(ItemID.ShadowGreaves, 1);
-                recipe.AddIngredient(ItemID.NecroGreaves, 1);
-                recipe.AddIngredient(null, "ImpBoots", 1);
+                recipe.AddIngredient(ItemID.TissueSample, 6);
+                recipe.AddIngredient(ItemID.Bone, 6);
+                recipe.AddIngredient(null, "DevilSilk", 6);
                 recipe.AddTile(TileID.DemonAltar);
                 recipe.SetResult(this);
                 recipe.AddRecipe();

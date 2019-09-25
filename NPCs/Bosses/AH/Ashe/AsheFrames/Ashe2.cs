@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Graphics.Shaders;
+using System;
 
 namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
 {
@@ -49,6 +50,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
 
         public override void AI()
         {
+            Player player = Main.player[npc.target];
+
             if (Main.netMode != -1 && npc.ai[0] == Hover)
             {
                 npc.ai[1]++;
@@ -62,6 +65,56 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                 npc.netUpdate = true;
             }
 
+
+            npc.direction = npc.spriteDirection = npc.position.X < player.position.X ? 1 : -1;
+            Vector2 targetPos;
+            float speedModifier;
+
+            if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            {
+                npc.TargetClosest(true);
+                if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
+                        Main.npc[DeathAnim].velocity = npc.velocity;
+                        Main.npc[DeathAnim].netUpdate = true;
+                    }
+                    npc.active = false;
+                }
+                return;
+            }
+
+            if (npc.ai[0] != 3 || npc.ai[0] != 4)
+            {
+                Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
+                MoveToPoint(wantedVelocity);
+            }
+
+            if (Main.netMode != 1 && internalAI[0] == Hover) //Only randomly select AI if not doing a dragon summon
+            {
+                internalAI[3]++;
+                if (internalAI[3] >= 90)
+                {
+                    internalAI[3] = 0;
+                    if (NPC.CountNPCS(mod.NPCType<AsheDragon>()) < 1 && internalAI[4] <= 0)
+                    {
+                        internalAI[0] = Main.rand.Next(7);
+                    }
+                    else
+                    {
+                        internalAI[0] = Main.rand.Next(6);
+                    }
+                    if (internalAI[0] == Hover)
+                    {
+                        ChangePos();
+                    }
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
+                }
+            }
+
             switch (npc.ai[0])
             {
                 case 0:
@@ -70,7 +123,50 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                     break;
                 case 2:
                     break;
-                case 3:
+                case 3: //Mutant-style melee dash
+                    targetPos = player.Center;
+                    targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.Y -= 400;
+                    speedModifier = 0.6f;
+                    if (npc.Center.X < targetPos.X)
+                    {
+                        npc.velocity.X += speedModifier;
+                        if (npc.velocity.X < 0)
+                            npc.velocity.X += speedModifier * 2;
+                    }
+                    else
+                    {
+                        npc.velocity.X -= speedModifier;
+                        if (npc.velocity.X > 0)
+                            npc.velocity.X -= speedModifier * 2;
+                    }
+                    if (npc.Center.Y < targetPos.Y)
+                    {
+                        npc.velocity.Y += speedModifier;
+                        if (npc.velocity.Y < 0)
+                            npc.velocity.Y += speedModifier * 2;
+                    }
+                    else
+                    {
+                        npc.velocity.Y -= speedModifier;
+                        if (npc.velocity.Y > 0)
+                            npc.velocity.Y -= speedModifier * 2;
+                    }
+                    if (Math.Abs(npc.velocity.X) > 24)
+                        npc.velocity.X = 24 * Math.Sign(npc.velocity.X);
+                    if (Math.Abs(npc.velocity.Y) > 24)
+                        npc.velocity.Y = 24 * Math.Sign(npc.velocity.Y);
+                    if (npc.Distance(targetPos) < 50 || ++npc.ai[1] > 180)
+                    {
+                        npc.velocity.X = 35f * (npc.position.X < player.position.X ? 1 : -1);
+                        if (npc.velocity.Y < 0)
+                            npc.velocity.Y *= -1;
+                        npc.velocity.Y *= 0.3f;
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                        Main.PlaySound(15, (int)npc.Center.X, (int)npc.Center.Y, 0);
+                    }
                     break;
                 case 4:
                     break;
@@ -81,6 +177,17 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                 default:
                     npc.ai[0] = 0;
                     break;
+            }
+
+            if (npc.velocity.X > 0) //Flying in the positive X direction
+            {
+                FlyingPositive = true;
+                FlyingNegative = false;
+            }
+            else //Flying in the nagative X direction
+            {
+                FlyingPositive = false;
+                FlyingNegative = true;
             }
         }
 
@@ -97,14 +204,13 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
             {
                 if (Main.netMode != 1)
                 {
+                    const float distance = 125f;
+                    float rotation = 2f * (float)Math.PI / OrbiterCount;
                     for (int m = 0; m < OrbiterCount; m++)
                     {
-                        int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbiter"), 0);
-                        Main.npc[npcID].Center = npc.Center;
-                        Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
-                        Main.npc[npcID].velocity *= 8f;
-                        Main.npc[npcID].ai[0] = m;
-                        Main.npc[npcID].netUpdate2 = true; Main.npc[npcID].netUpdate = true;
+                        int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("CrystalLeaf"), 0, npc.whoAmI, distance, 300, rotation * m);
+                        if (Main.netMode == 2 && n < 200)
+                            NetMessage.SendData(23, -1, -1, null, n);
                     }
                 }
             }
@@ -140,7 +246,14 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = 0;
+            if (NPC.AnyNPCs(mod.NPCType<Haruka.Haruka>()))
+            {
+                potionType = 0;
+            }
+            else
+            {
+                potionType = ItemID.SuperHealingPotion;
+            }
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

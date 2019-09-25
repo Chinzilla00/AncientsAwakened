@@ -54,7 +54,11 @@ A void searcher fights by your side";
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Doomite", 10);
+            recipe.AddIngredient(null, "DoomiteUHelm", 5);
+            recipe.AddIngredient(null, "Doomite", 5);
+            recipe.AddIngredient(ItemID.Coral, 5);
+            recipe.AddIngredient(ItemID.FossilOre, 5);
+            recipe.AddIngredient(null, "BroodScale", 5);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();

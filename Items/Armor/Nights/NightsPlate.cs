@@ -33,9 +33,9 @@ namespace AAMod.Items.Armor.Nights
             { 
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.ShadowScalemail, 1);
-            recipe.AddIngredient(ItemID.JungleShirt, 1);
-            recipe.AddIngredient(ItemID.NecroBreastplate, 1);
-            recipe.AddIngredient(null, "ImpGarb", 1);
+            recipe.AddIngredient(ItemID.JungleSpores, 8);
+            recipe.AddIngredient(ItemID.Bone, 8);
+            recipe.AddIngredient(null, "DevilSilk", 8);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();

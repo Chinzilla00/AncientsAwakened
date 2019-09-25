@@ -36,6 +36,7 @@ namespace AAMod.Items.Blocks
                 recipe.AddIngredient(ItemID.PearlwoodWorkBench, 1);
                 recipe.AddIngredient(ItemID.CrystalBall, 1);
                 recipe.AddIngredient(ItemID.HeavyWorkBench, 1);
+                recipe.AddIngredient(ItemID.Autohammer, 1);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }
@@ -46,6 +47,7 @@ namespace AAMod.Items.Blocks
                 recipe.AddIngredient(ItemID.PearlwoodWorkBench, 1);
                 recipe.AddIngredient(ItemID.CrystalBall, 1);
                 recipe.AddIngredient(ItemID.HeavyWorkBench, 1);
+                recipe.AddIngredient(ItemID.Autohammer, 1);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }

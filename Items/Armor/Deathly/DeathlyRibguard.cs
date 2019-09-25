@@ -33,9 +33,9 @@ namespace AAMod.Items.Armor.Deathly
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.NecroBreastplate, 1);
-                recipe.AddIngredient(ItemID.JungleShirt, 1);
-                recipe.AddIngredient(ItemID.CrimsonScalemail, 1);
-                recipe.AddIngredient(null, "ImpGarb", 1);
+                recipe.AddIngredient(ItemID.JungleSpores, 8);
+                recipe.AddIngredient(ItemID.ShadowScale, 8);
+                recipe.AddIngredient(null, "DevilSilk", 8);
                 recipe.AddTile(TileID.DemonAltar);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
@@ -43,9 +43,9 @@ namespace AAMod.Items.Armor.Deathly
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.NecroBreastplate, 1);
-                recipe.AddIngredient(ItemID.JungleShirt, 1);
-                recipe.AddIngredient(ItemID.ShadowScalemail, 1);
-                recipe.AddIngredient(null, "ImpGarb", 1);
+                recipe.AddIngredient(ItemID.JungleSpores, 8);
+                recipe.AddIngredient(ItemID.TissueSample, 8);
+                recipe.AddIngredient(null, "DevilSilk", 8);
                 recipe.AddTile(TileID.DemonAltar);
                 recipe.SetResult(this);
                 recipe.AddRecipe();

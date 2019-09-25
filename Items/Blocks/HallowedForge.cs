@@ -34,7 +34,6 @@ namespace AAMod.Items.Blocks
                 recipe.AddIngredient(null, "HallowedOre", 20);
                 recipe.AddIngredient(ItemID.AdamantiteForge, 1);
                 recipe.AddIngredient(ItemID.ImbuingStation, 1);
-                recipe.AddIngredient(ItemID.Autohammer, 1);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }
@@ -43,7 +42,6 @@ namespace AAMod.Items.Blocks
                 recipe.AddIngredient(null, "HallowedOre", 20);
                 recipe.AddIngredient(ItemID.TitaniumForge, 1);
                 recipe.AddIngredient(ItemID.ImbuingStation, 1);
-                recipe.AddIngredient(ItemID.Autohammer, 1);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }
