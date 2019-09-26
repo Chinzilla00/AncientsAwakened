@@ -46,6 +46,21 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void AI()
         {
             projectile.velocity = projectile.DirectionTo(Main.player[(int)projectile.ai[0]].Center) * projectile.ai[1];
+            if (++projectile.localAI[0] > 60)
+            {
+                projectile.localAI[0] = 0;
+                if (Main.netMode != 1)
+                {
+                    Vector2 vel = Vector2.Normalize(projectile.velocity);
+                    const float ai = 0.015f;
+                    for (int i = 0; i < 16; ++i)
+                    {
+                        vel = vel.RotatedBy(Math.PI / 8);
+                        Projectile.NewProjectile(projectile.Center, vel, mod.ProjectileType("ShenFireballAccel"), projectile.damage, 0f, Main.myPlayer, Math.Abs(ai), 0f);
+                        Projectile.NewProjectile(projectile.Center, vel, mod.ProjectileType("ShenFireballAccel"), projectile.damage, 0f, Main.myPlayer, Math.Abs(ai), 0f);
+                    }
+                }
+            }
             projectile.scale -= 3f / 300f;
             if (projectile.scale <= 1)
                 projectile.Kill();
