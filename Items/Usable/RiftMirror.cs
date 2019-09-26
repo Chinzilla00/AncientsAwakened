@@ -26,8 +26,8 @@ Pressing the rift return hotkey brings you back to your most recent rift locatio
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.MagicMirror);
             recipe.AddIngredient(ItemID.IceMirror);
-            recipe.AddTile(null, "HellstoneAnvil");
-			recipe.SetResult(this);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
     }

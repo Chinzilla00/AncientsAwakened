@@ -27,31 +27,32 @@ namespace AAMod.Tiles
             AddMapEntry(new Color(40, 40, 40), name);
             disableSmartCursor = true;
             adjTiles = new int[]
-            { TileID.WorkBenches,
-              TileID.Hellforge,
-              TileID.Furnaces,
-              TileID.TinkerersWorkbench,
-              TileID.AlchemyTable,
-              TileID.Bottles,
-              TileID.MythrilAnvil,
-              TileID.Tables,
-              TileID.DemonAltar,
-              TileID.Chairs,
-              TileID.Anvils,
-              mod.TileType("HellstoneAnvil"),
-              mod.TileType("HallowedAnvil"),
-              mod.TileType("HallowedForge"),
-              mod.TileType("PaladinsSmeltery"),
-              TileID.MythrilAnvil,
-              TileID.Anvils,
-              TileID.CrystalBall,
-              TileID.HeavyWorkBench,
-              TileID.Hellforge,
-              TileID.Furnaces,
-              TileID.AdamantiteForge,
-              TileID.Autohammer,
-              TileID.ImbuingStation
-              };
+            {
+                TileID.WorkBenches,
+                TileID.Hellforge,
+                TileID.Furnaces,
+                TileID.TinkerersWorkbench,
+                TileID.AlchemyTable,
+                TileID.Bottles,
+                TileID.MythrilAnvil,
+                TileID.Tables,
+                TileID.DemonAltar,
+                TileID.Chairs,
+                TileID.Anvils,
+                mod.TileType("HellstoneAnvil"),
+                mod.TileType("HallowedAnvil"),
+                mod.TileType("HallowedForge"),
+                mod.TileType("PaladinsSmeltery"),
+                TileID.MythrilAnvil,
+                TileID.Anvils,
+                TileID.CrystalBall,
+                TileID.HeavyWorkBench,
+                TileID.Hellforge,
+                TileID.Furnaces,
+                TileID.AdamantiteForge,
+                TileID.Autohammer,
+                TileID.ImbuingStation
+            };
             animationFrameHeight = 38;
         }
 

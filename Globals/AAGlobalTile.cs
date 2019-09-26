@@ -95,6 +95,11 @@ namespace AAMod
         public static Color GetBlankColorBright(Color color) => GetBlankColor(color, 0.6f, 1f, false);
         public static Color GetBlankColorBrightInvert(Color color) => GetBlankColor(color, 1f, 0.6f, true);
 
+        public static Color GetRainbowColor(Color color, float min, float max, bool clamp) => GetTimedColor(Main.DiscoColor, color, min, max, clamp);
+        public static Color GetRainbowColorDim(Color color) => GetRainbowColor(color, 0.4f, 1f, false);
+        public static Color GetRainbowColorBright(Color color) => GetRainbowColor(color, 0.6f, 1f, false);
+        public static Color GetRainbowColorBrightInvert(Color color) => GetRainbowColor(color, 1f, 0.6f, true);
+
         public override bool Drop(int i, int j, int type)
         {
             if (type == TileID.Dirt && TileID.Sets.BreakableWhenPlacing[TileID.Dirt]) //placing grass

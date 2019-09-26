@@ -36,14 +36,14 @@ namespace AAMod.Items.Armor.Olympian
 
         public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"";
+			player.setBonus = @"NYI set bonus";
         }
 		
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("AtlanteanHelm"));
-			recipe.AddIngredient(null, "OceanCrystal", 1);
+            recipe.AddIngredient(ItemID.GladiatorHelmet);
+            recipe.AddIngredient(null, "GoddessFeather", 6);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

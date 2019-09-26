@@ -21,7 +21,7 @@ namespace AAMod.Items.Tools
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "IncineriteBar", 12);
-                recipe.AddTile(null, "HellstoneAnvil");
+                recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }

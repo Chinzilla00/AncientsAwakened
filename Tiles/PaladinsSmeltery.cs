@@ -31,7 +31,6 @@ namespace AAMod.Tiles
                 TileID.MythrilAnvil,
                 TileID.Anvils,
                 TileID.CrystalBall,
-                TileID.HeavyWorkBench,
                 TileID.Hellforge,
                 TileID.Furnaces,
                 TileID.AdamantiteForge,

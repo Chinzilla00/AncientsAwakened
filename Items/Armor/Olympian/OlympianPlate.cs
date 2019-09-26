@@ -30,8 +30,8 @@ namespace AAMod.Items.Armor.Olympian
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.GladiatorLeggings);
-			recipe.AddIngredient(null, "GoddessFeather", 10);
+            recipe.AddIngredient(ItemID.GladiatorBreastplate);
+            recipe.AddIngredient(null, "GoddessFeather", 10);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

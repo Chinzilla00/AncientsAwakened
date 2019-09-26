@@ -26,7 +26,7 @@ namespace AAMod.Tiles
             dustType = mod.DustType("DaybreakIncineriteDust");
             AddMapEntry(new Color(50, 50, 50), name);
             disableSmartCursor = true;
-            adjTiles = new int[] { TileID.WorkBenches, TileID.MythrilAnvil, TileID.Anvils, TileID.CrystalBall, TileID.HeavyWorkBench, TileID.Autohammer};
+            adjTiles = new int[] { TileID.WorkBenches, TileID.MythrilAnvil, TileID.Anvils, TileID.CrystalBall, TileID.Autohammer};
         }
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {

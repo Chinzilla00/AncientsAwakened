@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 
@@ -49,13 +50,13 @@ Your Swung weapons inflicts them with Bogtoxin and Dragonflame";
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("BlazingKabuto"));
             recipe.AddIngredient(mod.ItemType("ChaosCrystal"));
-            recipe.AddTile(null, "TruePaladinsSmeltery");
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("RaiderHelm"));
             recipe.AddIngredient(mod.ItemType("ChaosCrystal"));
-            recipe.AddTile(null, "TruePaladinsSmeltery");
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

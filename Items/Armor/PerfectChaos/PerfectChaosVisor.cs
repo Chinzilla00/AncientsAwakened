@@ -66,7 +66,7 @@ Your ranged attacks raze your oponents with the flames of discordian hell";
             recipe.AddIngredient(null, "DreadHelm", 1);
             recipe.AddIngredient(null, "Discordium", 6);
             recipe.AddIngredient(null, "ChaosScale", 6);
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

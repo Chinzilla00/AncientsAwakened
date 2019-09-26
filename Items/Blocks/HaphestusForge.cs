@@ -55,54 +55,17 @@ Functions as a Hellforge, Hellstone Anvil, Alchemy Table, Demon Altar, Tinkerer'
 
         public override void AddRecipes()
         {
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "CrimsonAltar", 1);
-                recipe.AddIngredient(ItemID.Hellforge, 1);
-                recipe.AddIngredient(ItemID.Bottle, 1);
-                recipe.AddIngredient(ItemID.TinkerersWorkshop, 1);
-                recipe.AddIngredient(ItemID.WoodenTable);
-                recipe.AddIngredient(ItemID.WoodenChair, 1);
-                recipe.AddIngredient(null, "HellstoneAnvil", 1);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "CorruptAltar", 1);
-                recipe.AddIngredient(ItemID.Hellforge, 1);
-                recipe.AddIngredient(ItemID.Bottle, 1);
-                recipe.AddIngredient(ItemID.TinkerersWorkshop, 1);
-                recipe.AddIngredient(ItemID.WoodenTable);
-                recipe.AddIngredient(ItemID.WoodenChair, 1);
-                recipe.AddIngredient(null, "HellstoneAnvil", 1);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "MireAltar", 1);
-                recipe.AddIngredient(ItemID.Hellforge, 1);
-                recipe.AddIngredient(ItemID.TinkerersWorkshop, 1);
-                recipe.AddIngredient(ItemID.Bottle, 1);
-                recipe.AddIngredient(ItemID.WoodenTable);
-                recipe.AddIngredient(ItemID.WoodenChair, 1);
-                recipe.AddIngredient(null, "HellstoneAnvil", 1);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "InfernoAltar", 1);
-                recipe.AddIngredient(ItemID.Hellforge, 1);
-                recipe.AddIngredient(ItemID.TinkerersWorkshop, 1);
-                recipe.AddIngredient(ItemID.Bottle, 1);
-                recipe.AddIngredient(ItemID.WoodenTable);
-                recipe.AddIngredient(ItemID.WoodenChair, 1);
-                recipe.AddIngredient(null, "HellstoneAnvil", 1);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
+            ModRecipe recipe;
+            recipe = new ModRecipe(mod);
+            recipe.AddRecipeGroup("AAMod:Altar");
+            recipe.AddIngredient(ItemID.Hellforge, 1);
+            recipe.AddIngredient(ItemID.Bottle, 1);
+            recipe.AddIngredient(ItemID.TinkerersWorkshop, 1);
+            recipe.AddIngredient(ItemID.WoodenTable);
+            recipe.AddIngredient(ItemID.WoodenChair, 1);
+            recipe.AddIngredient(null, "HellstoneAnvil", 1);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

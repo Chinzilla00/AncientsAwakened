@@ -68,9 +68,7 @@ also acts as all vanilla crafting stations");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DarkMatter", 30);
-            recipe.AddIngredient(null, "Apocalyptite", 10);
-            recipe.AddIngredient(null, "TerraCore", 1);
+            recipe.AddIngredient(null, "ApocalyptitePlate", 30);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

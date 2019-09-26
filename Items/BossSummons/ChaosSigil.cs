@@ -105,7 +105,7 @@ Non-Consumable");
             recipe.AddIngredient(null, "DraconianSigil", 1);
             recipe.AddIngredient(null, "DreadSigil", 1);
             recipe.AddIngredient(null, "Discordium", 10);
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

@@ -138,7 +138,7 @@ namespace AAMod
             recipe = GetNewRecipe();
             recipe.AddIngredient(null, "DevilSilk", 5);
             recipe.AddIngredient(ItemID.Hay, 5);
-            recipe.AddTile(null, "HellstoneAnvil");
+            recipe.AddTile(TileID.Loom);
             recipe.SetResult(ItemID.GuideVoodooDoll, 1);
             recipe.AddRecipe();
 
@@ -845,16 +845,6 @@ namespace AAMod
         }
         #endregion
 
-        public static void PrismArmor(string armor, string prism, ModItem result)
-        {
-            ModRecipe recipe = GetNewRecipe();
-            recipe.AddIngredient(AAMod.instance, armor);
-            recipe.AddIngredient(AAMod.instance, prism);
-            recipe.AddTile(AAMod.instance, "TruePaladinsSmeltery");
-            recipe.SetResult(result);
-            recipe.AddRecipe();
-        }
-
         public static void AddRecipeGroups()
         {
             RecipeGroup group0 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " darkmatter helmet", new int[]
@@ -884,7 +874,7 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AAMod:Gold", group2);
            
-            RecipeGroup group3 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " astral crafting station", new int[]
+            RecipeGroup group3 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " celestial crafting station", new int[]
             {
                 AAMod.instance.ItemType("RadiantArcanum"),
                 AAMod.instance.ItemType("QuantumFusionAccelerator"),
@@ -1014,6 +1004,18 @@ namespace AAMod
                 AAMod.instance.ItemType("DynaskullRibguard")
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosPlates", group19);
+
+            RecipeGroup group20 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " hardmode anvil", new int[]
+            {
+                ItemID.MythrilAnvil, ItemID.OrichalcumAnvil
+            });
+            RecipeGroup.RegisterGroup("AAMod:HAnvil", group19);
+
+            RecipeGroup group21 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " hardmode forge", new int[]
+            {
+                ItemID.AdamantiteForge, ItemID.TitaniumForge
+            });
+            RecipeGroup.RegisterGroup("AAMod:HForge", group19);
 
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {

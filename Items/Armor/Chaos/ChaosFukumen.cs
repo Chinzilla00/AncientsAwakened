@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Armor.Chaos
@@ -53,13 +54,13 @@ Night Vision and hunter effects
             recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("AbyssalFukumen"));
 			recipe.AddIngredient(null, "ChaosCrystal", 1);
-            recipe.AddTile(null, "TruePaladinsSmeltery");
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
 			recipe.AddRecipe();
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("Dynaskull"));
             recipe.AddIngredient(null, "ChaosCrystal", 1);
-            recipe.AddTile(null, "TruePaladinsSmeltery");
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

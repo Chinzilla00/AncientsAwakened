@@ -29,22 +29,11 @@ namespace AAMod.Items.Blocks
 
         public override void AddRecipes()
         {
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "HallowedOre", 20);
-                recipe.AddIngredient(ItemID.AdamantiteForge, 1);
-                recipe.AddIngredient(ItemID.ImbuingStation, 1);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "HallowedOre", 20);
-                recipe.AddIngredient(ItemID.TitaniumForge, 1);
-                recipe.AddIngredient(ItemID.ImbuingStation, 1);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "HallowedOre", 20);
+            recipe.AddRecipeGroup("AAMod:HForge");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

@@ -113,7 +113,7 @@ Grants a strong dash that shreds through enemies in a fiery blaze of glory");
             recipe.AddIngredient(null, "TaiyangBaolei", 1);
             recipe.AddIngredient(null, "Naitokurosu", 1);
             recipe.AddIngredient(null, "ChaosSoul", 1);
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

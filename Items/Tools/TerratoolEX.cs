@@ -65,7 +65,7 @@ Terratool EX");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod, "Terratool");
             recipe.AddIngredient(mod, "EXSoul");
-            recipe.AddTile(mod, "AncientForge");
+            recipe.AddTile(mod, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

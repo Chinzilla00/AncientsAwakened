@@ -1,18 +1,18 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Tiles
 {
-    class CrimstoneNoSpread : ModTile
+    public class HydraBrick : ModTile
     {
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;
-            Main.tileMergeDirt[Type] = false;
-            AddMapEntry(new Color(130, 0, 0));
-            dustType = DustID.SomethingRed;
+			Main.tileMergeDirt[Type] = true;
+            Main.tileBlockLight[Type] = true;
+            drop = mod.ItemType("Hydra Brick");   
+            AddMapEntry(new Color(125, 59, 42));
         }
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)

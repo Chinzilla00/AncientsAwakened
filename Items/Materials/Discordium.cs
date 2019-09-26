@@ -55,7 +55,7 @@ namespace AAMod.Items.Materials
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DaybreakIncinerite", 1);
             recipe.AddIngredient(null, "EventideAbyssium", 1);
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

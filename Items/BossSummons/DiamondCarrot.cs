@@ -89,7 +89,7 @@ Non-consumable");
             recipe.AddIngredient(null, "CrucibleScale", 3);
             recipe.AddIngredient(null, "DreadScale", 3);
             recipe.AddIngredient(ItemID.Diamond, 5);
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
             recipe = new ModRecipe(mod);
@@ -98,7 +98,7 @@ Non-consumable");
             recipe.AddIngredient(null, "CrucibleScale", 3);
             recipe.AddIngredient(null, "DreadScale", 3);
             recipe.AddIngredient(ItemID.Diamond, 5);
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

@@ -8,7 +8,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles
 {
-    public class ChaosCrucible : ModTile
+    public class FurnitureDynamo : ModTile
     {
         public override void SetDefaults()
         {
@@ -24,47 +24,39 @@ namespace AAMod.Tiles
             TileObjectData.newTile.CoordinatePadding = 2;
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("ChaosCrucible");
+            name.SetDefault("Furniture Dynamo");
             AddMapEntry(new Color(40, 0, 0), name);
             disableSmartCursor = true;
             adjTiles = new int[]
             {
-                mod.TileType("ACS"),
+                TileID.Blendomatic,
+                TileID.Solidifier,
+                TileID.Blendomatic,
+                TileID.MeatGrinder,
+                TileID.LivingLoom,
+                TileID.FleshCloningVat,
+                TileID.GlassKiln,
+                TileID.BoneWelder,
+                TileID.SteampunkBoiler,
+                TileID.LihzahrdFurnace,
+                TileID.HeavyWorkBench,
+                TileID.Sawmill,
+                TileID.IceMachine,
+                TileID.SkyMill,
+                TileID.HoneyDispenser,
+                TileID.AlchemyTable
             };
             animationFrameHeight = 54;
         }
 
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
-            frame = Main.tileFrame[TileID.AlchemyTable];
-        }
-
-        public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
-        {
-            r = 0.50f;
-            g = 0;
-            b = 0.50f;
-        }
-
-        public Color White(Color color)
-        {
-            return Color.White;
-        }
-
-        public override void PostDraw(int x, int y, SpriteBatch sb)
-        {
-            Tile tile = Main.tile[x, y];
-            Texture2D glowTex = mod.GetTexture("Glowmasks/ChaosCrucible_Glow");
-            Texture2D Sphere = mod.GetTexture("Glowmasks/ChaosCrucible_Sphere");
-            int frameY = tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 54) : 0;
-
-            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, frameY, false, false, false, null, White);
-            BaseDrawing.DrawTileTexture(sb, Sphere, x, y, 16, 16, tile.frameX, frameY, false, false, false, null, AAGlobalTile.GetShenColorBright);
+            frame = Main.tileFrame[TileID.Solidifier];
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("ChaosCrucible"));
+            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("FurnitureDynamo"));
         }
     }
 }

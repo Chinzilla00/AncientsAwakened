@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using BaseMod;
+using Terraria.ID;
 
 namespace AAMod.Tiles
 {
@@ -20,8 +21,52 @@ namespace AAMod.Tiles
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Terra Infuser");
+            name.SetDefault("Infinity Core");
             AddMapEntry(new Color(40, 100, 40), name);
+            adjTiles = new int[]
+            {
+                TileID.WorkBenches,
+                TileID.Anvils,
+                TileID.Furnaces,
+                TileID.Hellforge,
+                TileID.Bookcases,
+                TileID.Sinks,
+                TileID.Solidifier,
+                TileID.Blendomatic,
+                TileID.MeatGrinder,
+                TileID.Loom,
+                TileID.LivingLoom,
+                TileID.FleshCloningVat,
+                TileID.GlassKiln,
+                TileID.BoneWelder,
+                TileID.SteampunkBoiler,
+                TileID.Bottles,
+                TileID.LihzahrdFurnace,
+                TileID.ImbuingStation,
+                TileID.DyeVat,
+                TileID.Kegs,
+                TileID.HeavyWorkBench,
+                TileID.Tables,
+                TileID.Chairs,
+                TileID.CookingPots,
+                TileID.DemonAltar,
+                TileID.Sawmill,
+                TileID.CrystalBall,
+                TileID.AdamantiteForge,
+                TileID.MythrilAnvil,
+                TileID.TinkerersWorkbench,
+                TileID.Autohammer,
+                TileID.IceMachine,
+                TileID.SkyMill,
+                TileID.HoneyDispenser,
+                TileID.AlchemyTable,
+                TileID.LunarCraftingStation,
+                mod.TileType("HellstoneAnvil"),
+                mod.TileType("HallowedAnvil"),
+                mod.TileType("HallowedForge"),
+                mod.TileType("QuantumFusionAccelerator"),
+                mod.TileType("ACS"),
+            };
             disableSmartCursor = true;
             animationFrameHeight = 54;
         }
@@ -39,7 +84,7 @@ namespace AAMod.Tiles
         {
             Tile tile = Main.tile[x, y];
             Texture2D glowTex = mod.GetTexture("Glowmasks/TerraPrism_Glow");
-            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 54), false, false, false, null, AAGlobalTile.GetTerraColorBright);
+            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, tile.frameY + (Main.tileFrame[Type] * 54), false, false, false, null, AAGlobalTile.GetRainbowColorBright);
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)

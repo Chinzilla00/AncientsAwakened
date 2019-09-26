@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Armor.Chaos
@@ -53,7 +54,7 @@ You can swim and liquid does not affect your movement";
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("AtlanteanHelm"));
 			recipe.AddIngredient(null, "ChaosCrystal", 1);
-            recipe.AddTile(null, "TruePaladinsSmeltery");
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

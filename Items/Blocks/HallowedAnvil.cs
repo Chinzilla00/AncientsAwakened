@@ -28,29 +28,16 @@ namespace AAMod.Items.Blocks
         }
 
         public override void AddRecipes()
-        { 
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.HallowedBar, 10);
-                recipe.AddIngredient(ItemID.MythrilAnvil, 1);
-                recipe.AddIngredient(ItemID.PearlwoodWorkBench, 1);
-                recipe.AddIngredient(ItemID.CrystalBall, 1);
-                recipe.AddIngredient(ItemID.HeavyWorkBench, 1);
-                recipe.AddIngredient(ItemID.Autohammer, 1);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.HallowedBar, 10);
-                recipe.AddIngredient(ItemID.OrichalcumAnvil, 1);
-                recipe.AddIngredient(ItemID.PearlwoodWorkBench, 1);
-                recipe.AddIngredient(ItemID.CrystalBall, 1);
-                recipe.AddIngredient(ItemID.HeavyWorkBench, 1);
-                recipe.AddIngredient(ItemID.Autohammer, 1);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
+        {
+            ModRecipe recipe;
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.HallowedBar, 10);
+            recipe.AddRecipeGroup("AAMod:HAnvil");
+            recipe.AddIngredient(ItemID.PearlwoodWorkBench, 1);
+            recipe.AddIngredient(ItemID.CrystalBall, 1);
+            recipe.AddIngredient(ItemID.Autohammer, 1);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }
