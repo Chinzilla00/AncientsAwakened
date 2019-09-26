@@ -40,9 +40,6 @@ namespace AAMod
         public static int HoardTiles = 0;
         public static int CloudTiles = 0;
         //Worldgen
-        public static bool Yttrium;
-        public static bool Uranium;
-        public static bool Technecium;
         public static bool TerrariumEnemies;
         public static bool Luminite;
         public static bool DarkMatter;
@@ -163,9 +160,6 @@ namespace AAMod
             downedRajah = false;
             AthenaHerald = false;
             //World Changes
-            Yttrium = NPC.downedQueenBee;
-            Uranium = NPC.downedPlantBoss;
-            Technecium = NPC.downedMartians;
             TerrariumEnemies = NPC.downedBoss2;
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -1174,20 +1168,6 @@ namespace AAMod
                     }
                 }
             }
-
-            if (NPC.downedQueenBee && !Yttrium)
-            {
-                GenYttrium();
-            }
-            if (NPC.downedPlantBoss && !Uranium)
-            {
-                GenUranium();
-            }
-            if (NPC.downedMartians && !Technecium)
-            {
-                GenTechnecium();
-            }
-
             if (NPC.downedMoonlord)
             {
                 if (Ancients == false)
@@ -1322,41 +1302,6 @@ namespace AAMod
 
                     ConversionHandler.ConvertDown((int)MireCenter.X, 0, 120, ConversionType.MIRE);
                 }
-            }
-        }
-        public static void GenYttrium()
-        {
-            if (Main.netMode == NetmodeID.MultiplayerClient) { AANet.SendNetMessage(AANet.GenOre, (byte)0); }
-            else
-            {
-                Yttrium = true;
-                float percent = Main.maxTilesX / 4300f;
-                int count = (int)((Main.expertMode ? 350f : 300f) * percent);
-                BaseWorldGen.GenOre(AAMod.instance.TileType<YtriumOre>(), count, 5, 9, (int)Main.rockLayer, true);
-            }
-        }
-
-        public static void GenUranium()
-        {
-            if (Main.netMode == NetmodeID.MultiplayerClient) { AANet.SendNetMessage(AANet.GenOre, (byte)1); }
-            else
-            {
-                Uranium = true;
-                float percent = Main.maxTilesX / 4300f;
-                int count = (int)((Main.expertMode ? 350f : 300f) * percent);
-                BaseWorldGen.GenOre(AAMod.instance.TileType<UraniumOre>(), count, 5, 9, (int)Main.rockLayer, true);
-            }
-        }
-
-        public static void GenTechnecium()
-        {
-            if (Main.netMode == NetmodeID.MultiplayerClient) { AANet.SendNetMessage(AANet.GenOre, (byte)2); }
-            else
-            {
-                Technecium = true;
-                float percent = Main.maxTilesX / 4300f;
-                int count = (int)((Main.expertMode ? 350f : 300f) * percent);
-                BaseWorldGen.GenOre(AAMod.instance.TileType<TechneciumOre>(), count, 5, 9, (int)Main.rockLayer, true);
             }
         }
 

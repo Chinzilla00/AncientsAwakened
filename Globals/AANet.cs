@@ -46,30 +46,6 @@ namespace AAMod
 				{
 					LovecraftianCount(bb, whoAmI);
 				}
-                else if (msg == GenOre) //generate ore (client-to-server)
-                {
-                    if (Main.netMode == NetmodeID.Server)
-                    {
-                        int oreType = bb.ReadByte();
-                        switch (oreType)
-                        {                           
-                            case 0:
-                                AAWorld.GenYttrium();
-                                break;
-
-                            case 1:
-                                AAWorld.GenUranium();
-                                break;
-
-                            case 2:
-                                AAWorld.GenTechnecium();
-                                break;
-
-                            default:
-                                break;
-                        }
-                    }
-                }
             }
             catch (Exception e)
             {

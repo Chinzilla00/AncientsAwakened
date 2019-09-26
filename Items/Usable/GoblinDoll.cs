@@ -43,9 +43,8 @@ namespace AAMod.Items.Usable
                     if (Main.npc[i].type == NPCID.GoblinTinkerer && Main.npc[i].active)
                     {
                         Player player = Main.player[item.owner];
-                        player.QuickSpawnItem(mod.ItemType<Accessories.SoulStone>());
+                        //player.QuickSpawnItem(mod.ItemType<Accessories.SoulStone>());
                         Main.npc[i].StrikeNPCNoInteraction(9999, 10f, -Main.npc[i].direction, false, false, false);
-                        if (Main.netMode != 1) BaseMod.BaseUtility.Chat("The soul stone materializes in your hand", 180, 120, 0);
                     }
                 }
             }

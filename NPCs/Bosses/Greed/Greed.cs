@@ -625,7 +625,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             DisplayName.SetDefault("Greed");
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
-            Main.npcFrameCount[npc.type] = 24;
+            Main.npcFrameCount[npc.type] = 21;
         }
 
         public override void SetDefaults()
@@ -798,27 +798,21 @@ namespace AAMod.NPCs.Bosses.Greed
                 case 12:
                     return npc.defense = 18;
                 case 13:
-                    return npc.defense = 25;
-                case 14:
                     return npc.defense = 26;
-                case 15:
+                case 14:
                     return npc.defense = 32;
-                case 16:
+                case 15:
                     return npc.defense = 37;
-                case 17:
+                case 16:
                     return npc.defense = 42;
+                case 17:
+                    return npc.defense = 50;
                 case 18:
-                    return npc.defense = 50;
-                case 19:
                     return npc.defense = 49;
-                case 20:
+                case 19:
                     return npc.defense = 50;
-                case 21:
-                    return npc.defense = 53;
-                case 22:
+                case 20:
                     return npc.defense = 56;
-                case 23:
-                    return npc.defense = 58;
                 default:
                     return npc.defense = 30;
             }

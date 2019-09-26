@@ -39,6 +39,8 @@ namespace AAMod
 
         public static Color YamataA => new Color(146, 30, 68);
 
+        public static Color Hero => BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, Color.ForestGreen, Color.Brown, Color.Brown, Color.ForestGreen);
+
         public static Color Zero => BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, Color.Red, Color.DarkRed, Color.Red);
 
         public static Color Shen => Color.Magenta;

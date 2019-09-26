@@ -810,13 +810,6 @@ namespace AAMod
             TransmuteRecipe(ItemID.MythrilBar, ItemID.OrichalcumBar);
             TransmuteRecipe(ItemID.AdamantiteBar, ItemID.TitaniumBar);
 
-            TransmuteRecipe(ItemID.CobaltBar, (short)AAMod.instance.ItemType("YtriumBar"));
-            TransmuteRecipe(ItemID.PalladiumBar, (short)AAMod.instance.ItemType("YtriumBar"));
-            TransmuteRecipe(ItemID.MythrilBar, (short)AAMod.instance.ItemType("UraniumBar"));
-            TransmuteRecipe(ItemID.OrichalcumBar, (short)AAMod.instance.ItemType("UraniumBar"));
-            TransmuteRecipe(ItemID.AdamantiteBar, (short)AAMod.instance.ItemType("TechneciumBar"));
-            TransmuteRecipe(ItemID.TitaniumBar, (short)AAMod.instance.ItemType("TechneciumBar"));
-
             TransmuteRecipe((short)AAMod.instance.ItemType("AbyssiumBar"), (short)AAMod.instance.ItemType("IncineriteBar"));
             TransmuteRecipe((short)AAMod.instance.ItemType("DeepAbyssium"), (short)AAMod.instance.ItemType("RadiantIncinerite"));
             TransmuteRecipe((short)AAMod.instance.ItemType("DaybreakIncinerite"), (short)AAMod.instance.ItemType("EventideAbyssium"));
@@ -831,13 +824,6 @@ namespace AAMod
             TransmuteRecipe(ItemID.CobaltOre, ItemID.PalladiumOre);
             TransmuteRecipe(ItemID.MythrilOre, ItemID.OrichalcumOre);
             TransmuteRecipe(ItemID.TitaniumOre, ItemID.AdamantiteOre);
-
-            TransmuteRecipe(ItemID.CobaltOre, (short)AAMod.instance.ItemType("YtriumOre"));
-            TransmuteRecipe(ItemID.PalladiumOre, (short)AAMod.instance.ItemType("YtriumOre"));
-            TransmuteRecipe(ItemID.MythrilOre, (short)AAMod.instance.ItemType("Uranium"));
-            TransmuteRecipe(ItemID.OrichalcumOre, (short)AAMod.instance.ItemType("Uranium"));
-            TransmuteRecipe(ItemID.AdamantiteOre, (short)AAMod.instance.ItemType("TechneciumOre"));
-            TransmuteRecipe(ItemID.TitaniumOre, (short)AAMod.instance.ItemType("TechneciumOre"));
 
             TransmuteRecipe((short)AAMod.instance.ItemType("Abyssium"), (short)AAMod.instance.ItemType("Incinerite"));
             #endregion
@@ -1009,23 +995,23 @@ namespace AAMod
 
             RecipeGroup group18 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Chaos Leggings", new int[]
             {
-                AAMod.instance.ItemType("TrueBlazingSuneate"),
-                AAMod.instance.ItemType("TrueAbyssalHakama"),
-                AAMod.instance.ItemType("TrueAtlanteanBoots"),
-                AAMod.instance.ItemType("TrueDoomiteGreaves"),
-                AAMod.instance.ItemType("TrueRaiderBoots"),
-                AAMod.instance.ItemType("TrueDynaskullGreaves")
+                AAMod.instance.ItemType("BlazingSuneate"),
+                AAMod.instance.ItemType("AbyssalHakama"),
+                AAMod.instance.ItemType("AtlanteanBoots"),
+                AAMod.instance.ItemType("DoomiteGreaves"),
+                AAMod.instance.ItemType("RaiderBoots"),
+                AAMod.instance.ItemType("DynaskullGreaves")
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosBoots", group18);
 
             RecipeGroup group19 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Chaos Chestpiece", new int[]
             {
-                AAMod.instance.ItemType("TrueBlazingDou"),
-                AAMod.instance.ItemType("TrueAbyssalGi"),
-                AAMod.instance.ItemType("TrueAtlanteanPlate"),
-                AAMod.instance.ItemType("TrueDoomiteBreastplate"),
-                AAMod.instance.ItemType("TrueRaiderPlate"),
-                AAMod.instance.ItemType("TrueDynaskullRibguard")
+                AAMod.instance.ItemType("BlazingDou"),
+                AAMod.instance.ItemType("AbyssalGi"),
+                AAMod.instance.ItemType("AtlanteanPlate"),
+                AAMod.instance.ItemType("DoomiteBreastplate"),
+                AAMod.instance.ItemType("RaiderPlate"),
+                AAMod.instance.ItemType("DynaskullRibguard")
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosPlates", group19);
 

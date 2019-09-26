@@ -49,7 +49,7 @@ namespace AAMod.Items.Ranged
 	        ModRecipe recipe = new ModRecipe(mod);
 	        recipe.AddIngredient(null, "TrueDeathlyLongbow");
             recipe.AddIngredient(ItemID.HallowedRepeater);
-            recipe.AddIngredient(null, "TerraCrystal", 1);
+            recipe.AddIngredient(null, "HeroShards", 1);
             recipe.AddTile(TileID.MythrilAnvil);
 	        recipe.SetResult(this);
 	        recipe.AddRecipe();

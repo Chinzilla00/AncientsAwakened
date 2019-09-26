@@ -214,12 +214,6 @@ namespace AAMod
 
         public override void NPCLoot(NPC npc)
         {
-
-            if (npc.type == NPCID.DukeFishron && !Main.expertMode)
-            {
-                npc.DropLoot(mod.ItemType<Items.Materials.FishronScale>(), Main.rand.Next(10, 26));
-            }
-
             if (npc.type == NPCID.FireImp)
             {
                 npc.DropLoot(mod.ItemType("DevilSilk"), Main.rand.Next(2, 3));
@@ -528,6 +522,14 @@ namespace AAMod
                     }
                 }
                 if (player.GetModPlayer<AAPlayer>(mod).Terrarium && NPC.downedPlantBoss)
+                {
+                    if (Main.rand.NextBool(100))
+                    {
+                        npc.DropLoot(mod.ItemType("TerraCrystal"));
+                    }
+                }
+
+                if ((player.GetModPlayer<AAPlayer>(mod).ZoneInferno || player.GetModPlayer<AAPlayer>(mod).ZoneMire) && NPC.downedPlantBoss)
                 {
                     if (Main.rand.NextBool(100))
                     {

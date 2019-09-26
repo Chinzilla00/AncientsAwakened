@@ -57,14 +57,6 @@ namespace AAMod.Items.Melee
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(mod, "BlazingDawn", 1);
-                recipe.AddIngredient(mod, "InfernoCrystal", 1);
-                recipe.AddTile(TileID.MythrilAnvil);
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
 		}
 		
 		 public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)

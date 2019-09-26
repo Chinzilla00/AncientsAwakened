@@ -33,7 +33,7 @@ namespace AAMod.Items.Melee
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("Yogan"));
-            recipe.AddIngredient(mod.ItemType("InfernoCrystal"));
+            recipe.AddIngredient(mod.ItemType("HeroShards"));
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

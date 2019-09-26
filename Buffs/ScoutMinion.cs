@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Buffs
 {
-    public class ScoutMinion : ModBuff
+    /*public class ScoutMinion : ModBuff
 	{
 		public override void SetDefaults()
 		{
@@ -30,5 +30,5 @@ namespace AAMod.Buffs
 				player.buffTime[buffIndex] = 2;
 			}
 		}
-	}
+	}*/
 }

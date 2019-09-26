@@ -61,7 +61,6 @@ The armor of a champion feared across the land");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "HoodlumHood", 1);
-            recipe.AddIngredient(null, "LeviathanHelm", 1);
             recipe.AddIngredient(null, "ChampionPlate", 10);
             recipe.AddTile(null, "AncientForge");
             recipe.SetResult(this);

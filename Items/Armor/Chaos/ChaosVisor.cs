@@ -54,7 +54,7 @@ A void scout hunts down your foes for you";
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("TrueDoomiteVisor"));
+			recipe.AddIngredient(mod.ItemType("DoomiteVisor"));
 			recipe.AddIngredient(null, "ChaosCrystal", 1);
             recipe.AddTile(null, "TruePaladinsSmeltery");
             recipe.SetResult(this);

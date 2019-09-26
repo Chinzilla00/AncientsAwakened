@@ -82,7 +82,7 @@ namespace AAMod.Items.Summoning
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "HallowStaff");
-            recipe.AddIngredient(null, "HallowCrystal");
+            recipe.AddIngredient(null, "HeroShards");
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

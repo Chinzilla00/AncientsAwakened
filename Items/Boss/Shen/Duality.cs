@@ -79,7 +79,6 @@ Grants a strong dash that shreds through enemies in a fiery blaze of glory");
             player.blackBelt = true;
             player.spikedBoots = 2;
             modPlayer.clawsOfChaos = true;
-            modPlayer.StormClaw = true;
             modPlayer.AADash = 1;
             player.moveSpeed += 2f;
             player.endurance += 0.2f;

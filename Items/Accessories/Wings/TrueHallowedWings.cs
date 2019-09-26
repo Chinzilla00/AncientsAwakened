@@ -49,7 +49,7 @@ namespace AAMod.Items.Accessories.Wings
 			recipe.AddIngredient(ItemID.AngelWings, 1);
             recipe.AddIngredient(ItemID.HallowedBar, 10);
             recipe.AddIngredient(ItemID.CrystalShard, 5);
-            recipe.AddIngredient(null, "HallowCrystal", 1);
+            recipe.AddIngredient(null, "HeroShards", 1);
             recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
