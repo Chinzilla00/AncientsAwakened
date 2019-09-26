@@ -122,6 +122,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     Dashing = true;
                     npc.rotation = npc.velocity.ToRotation();
+                    if (npc.velocity.X < 0)
+                        npc.rotation += (float)Math.PI;
                     break;
 
                 case 4: //prepare for queen bee dashes
@@ -251,6 +253,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     Dashing = true;
                     npc.rotation = npc.velocity.ToRotation();
+                    if (npc.velocity.X < 0)
+                        npc.rotation += (float)Math.PI;
                     break;
 
                 case 11: //fly up, prepare to spit mega homing and dash
