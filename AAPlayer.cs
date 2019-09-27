@@ -1533,7 +1533,7 @@ namespace AAMod
 
                         if (dropType >= 2)
                         {
-                            player.QuickSpawnItem(mod.ItemType("Skullshot"));
+                            player.QuickSpawnItem(Main.rand.Next(2) == 0 ? mod.ItemType("Skullshot") : mod.ItemType("GibsFemur"));
                         }
 
                         spawnedDevItems = true;
