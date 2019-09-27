@@ -21,7 +21,7 @@ namespace AAMod.Items.Dev
             item.maxStack = 1;
             item.ranged = true;
             item.damage = 120;                            
-            item.value = 6;
+            item.value = 600000;
             item.rare = 11;
             item.knockBack = 5;
             item.useStyle = 1;
@@ -31,6 +31,7 @@ namespace AAMod.Items.Dev
 			item.width = 32;
             item.height = 32;
             item.noMelee = true;
+            item.shootSpeed = 10f;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

@@ -22,6 +22,7 @@ namespace AAMod.Projectiles
             projectile.friendly = true;
             projectile.melee = true;
             projectile.penetrate = -1;
+            projectile.extraUpdates = 1;
         }
 
         public int bounces = 5;
