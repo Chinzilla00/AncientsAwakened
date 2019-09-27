@@ -506,7 +506,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     npc.DropLoot(mod.ItemType("AthenaMask"));
                 }
                 npc.DropLoot(mod.ItemType("GoddessFeather"), Main.rand.Next(20, 25));
-                string[] lootTable = { "DivineWindCharm", "GaleOfWings", "RazorwindLongbow", "SkycutterKopis" };
+                string[] lootTable = { "DivineWindCharm", "GaleOfWings", "RazorwindLongbow", "SkycutterKopis", "OlympianWings"};
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
             }

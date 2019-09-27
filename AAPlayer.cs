@@ -19,6 +19,7 @@ using Terraria.DataStructures;
 using Terraria.GameContent.Events;
 using Terraria.GameInput;
 using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
@@ -28,6 +29,7 @@ namespace AAMod
 {
     public partial class AAPlayer : ModPlayer
     {
+        #region Variables
         //Minions
         public bool FireSpirit = false;
         public bool ImpServant = false;
@@ -176,10 +178,10 @@ namespace AAMod
         public bool DragonShell;
         public bool ammo20percentdown = false;
         public int AADash;
+        public int AADashTime;
+        public int dashDelayAA;
         public bool RStar;
         public bool DVoid;
-        public int dashTimeAA;
-        public int dashDelayAA;
         public int[] AADoubleTapKeyTimer = new int[4];
         public int[] AAHoldDownKeyTimer = new int[4];
         public bool DiscordShredder;
@@ -191,6 +193,7 @@ namespace AAMod
         public bool ShadowBand = false;
         public bool RajahCape = false;
         public bool CapShield = false;
+        public bool olympianWings = false;
 
         public bool SagShield = false;
         public bool ShieldUp = false;
@@ -268,6 +271,9 @@ namespace AAMod
         public bool DemonSun = false;
         public bool AnubisBook = false;
 
+        #endregion
+
+        #region Save/Load
         public override TagCompound Save()
         {
             var saved = new List<string>();
@@ -284,6 +290,9 @@ namespace AAMod
             AnubisBook = downed.Contains("Book");
         }
 
+        #endregion
+
+        #region Reset Effects
         public override void ResetEffects()
         {
             ResetMinionEffect();
@@ -427,6 +436,8 @@ namespace AAMod
             GreedTalisman = false;
             Greed1 = false;
             Greed2 = false;
+            olympianWings = false;
+            AADash = 0;
         }
 
         private void ResetDebuffEffect()
@@ -487,6 +498,8 @@ namespace AAMod
             ZoneAcropolis = false;
             WorldgenReminder = false;
         }
+
+        #endregion
 
         public override void UpdateBiomes()
         {
@@ -749,6 +762,17 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (olympianWings && player.dash < 1)
+            {
+                if (player.velocity.Y != 0)
+                {
+                    player.dash = 2;
+                }
+                else
+                {
+                    player.dash = 0;
+                }
+            }
             if (!Greed1 && !Greed2)
             {
                 GreedyDamage = 0;
@@ -1110,6 +1134,195 @@ namespace AAMod
                         dust2.velocity = vector2.RotatedBy(-1.5707963705062866) * 2f;
                         dust2.scale = 0.5f + Main.rand.NextFloat();
                         dust2.fadeIn = 0.5f;
+                    }
+                }
+            }
+        }
+
+        public override void PostUpdateBuffs()
+        {
+            if (player.mount.Active || player.mount.Cart)
+            {
+                player.dashDelay = 60;
+                AADash = 0;
+            }
+        }
+
+        public override void PostUpdateEquips()
+        {
+            if (player.mount.Active || player.mount.Cart)
+            {
+                player.dashDelay = 60;
+                AADash = 0;
+            }
+        }
+
+        public override void PostUpdateRunSpeeds()
+        {
+            if (player.pulley && AADash > 0)
+            {
+                AADashMovement();
+            }
+            else if (player.grappling[0] == -1 && !player.tongued)
+            {
+                AAHorizontalMovement();
+                if (AADash > 0)
+                {
+                    AADashMovement();
+                }
+            }
+        }
+
+        public void AAHorizontalMovement()
+        {
+            float runSpeed = (player.accRunSpeed + player.maxRunSpeed) / 2f;
+            if (player.controlLeft && player.velocity.X > -player.accRunSpeed && player.dashDelay >= 0)
+            {
+                if (player.velocity.X < -runSpeed && player.velocity.Y == 0f && !player.mount.Active)
+                {
+                    if (AADash == 1)
+                    {
+                        int dust = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y), player.width + 8, 4, mod.DustType<Feather>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default, 1.5f);
+                        Main.dust[dust].velocity.X = Main.dust[dust].velocity.X * 0.2f;
+                        Main.dust[dust].velocity.Y = Main.dust[dust].velocity.Y * 0.2f;
+                        Main.dust[dust].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
+                    }
+                }
+            }
+            else if (player.controlRight && player.velocity.X < player.accRunSpeed && player.dashDelay >= 0)
+            {
+                if (player.velocity.X > runSpeed && player.velocity.Y == 0f && !player.mount.Active)
+                {
+                    if (AADash == 1)
+                    {
+                        int dust = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y), player.width + 8, 4, mod.DustType<Feather>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default, 1.5f);
+                        Main.dust[dust].velocity.X = Main.dust[dust].velocity.X * 0.2f;
+                        Main.dust[dust].velocity.Y = Main.dust[dust].velocity.Y * 0.2f;
+                        Main.dust[dust].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
+                    }
+                }
+            }
+        }
+
+        public void AADashMovement()
+        {
+            if (player.dashDelay > 0)
+            {
+                return;
+            }
+            if (player.dashDelay < 0)
+            {
+                float num7 = 12f;
+                float num8 = 0.985f;
+                float num9 = Math.Max(player.accRunSpeed, player.maxRunSpeed);
+                float num10 = 0.94f;
+                int num11 = 20;
+                if (AADash == 1)
+                {
+                    for (int k = 0; k < 2; k++)
+                    {
+                        int num12;
+                        if (player.velocity.Y == 0f)
+                        {
+                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height - 4f), player.width, 8, mod.DustType<Feather>(), 0f, 0f, 100, default, 1.4f);
+                        }
+                        else
+                        {
+                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height / 2 - 8f), player.width, 16, mod.DustType<Feather>(), 0f, 0f, 100, default, 1.4f);
+                        }
+                        Main.dust[num12].velocity *= 0.1f;
+                        Main.dust[num12].scale *= 1f + Main.rand.Next(20) * 0.01f;
+                        Main.dust[num12].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
+                    }
+                }
+                if (AADash > 0)
+                {
+                    player.vortexStealthActive = false;
+                    if (player.velocity.X > num7 || player.velocity.X < -num7)
+                    {
+                        player.velocity.X = player.velocity.X * num8;
+                        return;
+                    }
+                    if (player.velocity.X > num9 || player.velocity.X < -num9)
+                    {
+                        player.velocity.X = player.velocity.X * num10;
+                        return;
+                    }
+                    player.dashDelay = num11;
+                    if (player.velocity.X < 0f)
+                    {
+                        player.velocity.X = -num9;
+                        return;
+                    }
+                    if (player.velocity.X > 0f)
+                    {
+                        player.velocity.X = num9;
+                        return;
+                    }
+                }
+            }
+            else if (AADash > 0 && !player.mount.Active)
+            {
+                if (AADash == 1)
+                {
+                    int direction = 0;
+                    bool DashAttempt = false;
+                    if (AADashTime > 0)
+                    {
+                        AADashTime--;
+                    }
+                    if (AADashTime < 0)
+                    {
+                        AADashTime++;
+                    }
+                    if (player.controlRight && player.releaseRight && player.velocity.Y != 0)
+                    {
+                        if (AADashTime > 0)
+                        {
+                            direction = 1;
+                            DashAttempt = true;
+                            AADashTime = 0;
+                        }
+                        else
+                        {
+                            AADashTime = 15;
+                        }
+                    }
+                    else if (player.controlLeft && player.releaseLeft && player.velocity.Y != 0)
+                    {
+                        if (AADashTime < 0)
+                        {
+                            direction = -1;
+                            DashAttempt = true;
+                            AADashTime = 0;
+                        }
+                        else
+                        {
+                            AADashTime = -15;
+                        }
+                    }
+                    if (DashAttempt)
+                    {
+                        player.velocity.X = 14.5f * direction;
+                        Point point = (player.Center + new Vector2(direction * player.width / 2 + 2, player.gravDir * -player.height / 2f + player.gravDir * 2f)).ToTileCoordinates();
+                        Point point2 = (player.Center + new Vector2(direction * player.width / 2 + 2, 0f)).ToTileCoordinates();
+                        if (WorldGen.SolidOrSlopedTile(point.X, point.Y) || WorldGen.SolidOrSlopedTile(point2.X, point2.Y))
+                        {
+                            player.velocity.X = player.velocity.X / 2f;
+                        }
+                        player.dashDelay = -1;
+                        for (int num17 = 0; num17 < 20; num17++)
+                        {
+                            int num18 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.DustType<Feather>(), 0f, 0f, 100, default, 2f);
+                            Dust expr_CDB_cp_0 = Main.dust[num18];
+                            expr_CDB_cp_0.position.X += Main.rand.Next(-5, 6);
+                            Dust expr_D02_cp_0 = Main.dust[num18];
+                            expr_D02_cp_0.position.Y += Main.rand.Next(-5, 6);
+                            Main.dust[num18].velocity *= 0.2f;
+                            Main.dust[num18].scale *= 1f + Main.rand.Next(20) * 0.01f;
+                            Main.dust[num18].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
+                        }
+                        return;
                     }
                 }
             }

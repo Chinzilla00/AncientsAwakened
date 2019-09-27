@@ -5,12 +5,13 @@ using Terraria.ModLoader;
 namespace AAMod.Items.Accessories.Wings
 {
     [AutoloadEquip(EquipType.Wings)]
-	public class TrueHallowedWings : BaseAAItem
+	public class Olympian : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Hallowed Wings");
-            Tooltip.SetDefault("Allows flight and slow fall");
+            DisplayName.SetDefault("Olympian Wings");
+            Tooltip.SetDefault(@"Allows flight and slow fall
+Grants a dash while flying");
         }
 
 		public override void SetDefaults()
@@ -24,6 +25,7 @@ namespace AAMod.Items.Accessories.Wings
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            player.GetModPlayer<AAPlayer>(mod).AADash = 1;
             player.wingTimeMax = 170;
         }
 
@@ -42,17 +44,5 @@ namespace AAMod.Items.Accessories.Wings
             speed = 8f;
             acceleration *= 2f;
         }
-
-        public override void AddRecipes()
-		{
-			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemID.AngelWings, 1);
-            recipe.AddIngredient(ItemID.HallowedBar, 10);
-            recipe.AddIngredient(ItemID.CrystalShard, 5);
-            recipe.AddIngredient(null, "HeroShards", 1);
-            recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-		}
 	}
 }

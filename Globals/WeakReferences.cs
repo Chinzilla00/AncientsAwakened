@@ -379,8 +379,8 @@ namespace AAMod.Globals
                 bossChecklist.Call("AddBossWithInfo", "Hydra", 3.5f, (Func<bool>)(() => AAWorld.downedHydra), "Use a [i:" + AAMod.instance.ItemType("HydraChow") + "] in the Mire at night");
                 bossChecklist.Call("AddBossWithInfo", "Subzero Serpent", 5.5f, (Func<bool>)(() => AAWorld.downedSerpent), "Use a [i:" + AAMod.instance.ItemType("SubzeroCrystal") + "] in the Snow biome at night");
                 bossChecklist.Call("AddBossWithInfo", "Desert Djinn", 5.5f, (Func<bool>)(() => AAWorld.downedDjinn), "Use a [i:" + AAMod.instance.ItemType("DjinnLamp") + "] in the Desert during the day");
+                bossChecklist.Call("AddBossWithInfo", "Truffle Toad", 5.6f, (Func<bool>)(() => AAWorld.downedToad), "Use a [i:" + AAMod.instance.ItemType("Toadstool") + "] in a glowing mushroom biome");
                 bossChecklist.Call("AddBossWithInfo", "Sagittarius", 5.7f, (Func<bool>)(() => AAWorld.downedSag), "Use a [i:" + AAMod.instance.ItemType("Lifescanner") + "] in the Void");
-                bossChecklist.Call("AddBossWithInfo", "Truffle Toad", 4f, (Func<bool>)(() => AAWorld.downedToad), "Use a [i:" + AAMod.instance.ItemType("Toadstool") + "] in a glowing mushroom biome");
                 bossChecklist.Call("AddBossWithInfo", "Athena", 11.5f, (Func<bool>)(() => AAWorld.downedAthena), "Use an [i:" + AAMod.instance.ItemType("Owl") + "] at the owl altar in the Acropolis.");
                 bossChecklist.Call("AddBossWithInfo", "Greed", 11.5f, (Func<bool>)(() => AAWorld.downedGreed), "Use a [i:" + AAMod.instance.ItemType("GoldenGrub") + "] at the Altar of Desire in the Hoard.");
                 bossChecklist.Call("AddBossWithInfo", "Rajah Rabbit", 12.1f, (Func<bool>)(() => AAWorld.downedRajah), "Use a [i:" + AAMod.instance.ItemType("GoldenCarrot") + "] or kill 100 Rabbits like a jerk.");
@@ -446,11 +446,13 @@ namespace AAMod.Globals
                 //censusMod.Call("TownNPCCondition", mod.NPCType("Anubis"), $"Have [i:{ItemType<Items.ExampleItem>()}] or [i:{ItemType<Items.Placeable.ExampleBlock>()}] in inventory and build a house out of [i:{ItemType<Items.Placeable.ExampleBlock>()}] and [i:{ItemType<Items.Placeable.ExampleWall>()}]");
 
                 censusMod.Call("TownNPCCondition", mod.NPCType("Anubis"), "Always available");
-                censusMod.Call("TownNPCCondition", mod.NPCType("Mushman"), "After defeating Mushroom Monarch or Feudal Fungus, build a house in a red mushroom biome");
-                censusMod.Call("TownNPCCondition", mod.NPCType("Lovecraftian"), "Eye of Cthulhu defeated");
-                censusMod.Call("TownNPCCondition", mod.NPCType("Anubis"), "Grips of Chaos defeated");
-                censusMod.Call("TownNPCCondition", mod.NPCType("Goblin Slayer"), "Goblin Army is defeated");
-
+                if (!AAConfigClient.Instance.NoAATownNPC)
+                {
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Mushman"), "After defeating Mushroom Monarch or Feudal Fungus, build a house in a red mushroom biome");
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Lovecraftian"), "Eye of Cthulhu defeated");
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Samurai"), "Grips of Chaos defeated");
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Goblin Slayer"), "Goblin Army is defeated");
+                }
             }
         }
     }
