@@ -17,8 +17,9 @@ namespace AAMod.Items.Dev
         public override void SetDefaults()
         {
 			item.useTime = 25;
-            item.CloneDefaults(ItemID.LightDisc);
-            item.melee = true;
+            item.CloneDefaults(ItemID.Bone);
+            item.maxStack = 1;
+            item.ranged = true;
             item.damage = 120;                            
             item.value = 6;
             item.rare = 11;

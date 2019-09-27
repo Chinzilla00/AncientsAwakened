@@ -21,8 +21,10 @@ namespace AAMod.Projectiles
             projectile.scale = 1f;
             projectile.friendly = true;
             projectile.melee = true;
-            projectile.penetrate = 5;
+            projectile.penetrate = -1;
         }
+
+        public int bounces = 5;
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
         {
@@ -43,13 +45,17 @@ namespace AAMod.Projectiles
                 projectile.position.Y = projectile.position.Y + projectile.velocity.Y;
                 projectile.velocity.Y = -oldVelocity.Y;
             }
-            projectile.penetrate--;
+            bounces--;
             return false;
         }
 
         int a = 0;
         public override void AI()
         {
+            if (bounces <= 0)
+            {
+                projectile.Kill();
+            }
             if (a++ > 2)
             {
                 CombatText.NewText(projectile.getRect(), Color.IndianRed, "A", true);
