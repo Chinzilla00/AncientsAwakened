@@ -41,6 +41,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             Player player = Main.player[npc.target];
             Vector2 targetPos;
+            drawAfterimage = false;
 
             Dashing = false;
             if (Roaring) roarTimer--;
@@ -587,7 +588,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             //draw body/charge afterimage
             BaseDrawing.DrawTexture(sb, currentWingTex1, 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 5, wingFrame, drawColor);
-            if (Charging)
+            if (Dashing)
             {
                 BaseDrawing.DrawAfterimage(sb, currentTex, 0, npc, 1.5f, 1f, 3, false, 0f, 0f, new Color(drawColor.R, drawColor.G, drawColor.B, 150));
             }

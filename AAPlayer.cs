@@ -437,7 +437,6 @@ namespace AAMod
             Greed1 = false;
             Greed2 = false;
             olympianWings = false;
-            AADash = 0;
         }
 
         private void ResetDebuffEffect()
@@ -1224,11 +1223,11 @@ namespace AAMod
                         int num12;
                         if (player.velocity.Y == 0f)
                         {
-                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height - 4f), player.width, 8, mod.DustType<Feather>(), 0f, 0f, 100, default, 1.4f);
+                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height - 4f), player.width, 8, mod.DustType<Feather>(), 0f, 0f, 100, default, 1);
                         }
                         else
                         {
-                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height / 2 - 8f), player.width, 16, mod.DustType<Feather>(), 0f, 0f, 100, default, 1.4f);
+                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height / 2 - 8f), player.width, 16, mod.DustType<Feather>(), 0f, 0f, 100, default, 1);
                         }
                         Main.dust[num12].velocity *= 0.1f;
                         Main.dust[num12].scale *= 1f + Main.rand.Next(20) * 0.01f;
@@ -1311,15 +1310,15 @@ namespace AAMod
                             player.velocity.X = player.velocity.X / 2f;
                         }
                         player.dashDelay = -1;
-                        for (int num17 = 0; num17 < 20; num17++)
+                        for (int num17 = 0; num17 < 2; num17++)
                         {
-                            int num18 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.DustType<Feather>(), 0f, 0f, 100, default, 2f);
+                            int num18 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.DustType<Feather>(), 0f, 0f, 100, default, 1);
                             Dust expr_CDB_cp_0 = Main.dust[num18];
                             expr_CDB_cp_0.position.X += Main.rand.Next(-5, 6);
                             Dust expr_D02_cp_0 = Main.dust[num18];
                             expr_D02_cp_0.position.Y += Main.rand.Next(-5, 6);
                             Main.dust[num18].velocity *= 0.2f;
-                            Main.dust[num18].scale *= 1f + Main.rand.Next(20) * 0.01f;
+                            Main.dust[num18].scale *= .1f + Main.rand.Next(20) * 0.01f;
                             Main.dust[num18].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
                         }
                         return;
