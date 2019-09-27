@@ -33,6 +33,7 @@ namespace AAMod.Items.Dev
             item.noMelee = true;
             item.shootSpeed = 10f;
             item.consumable = false;
+            item.autoReuse = true;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
