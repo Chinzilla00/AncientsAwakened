@@ -32,6 +32,7 @@ namespace AAMod.Items.Dev
             item.height = 32;
             item.noMelee = true;
             item.shootSpeed = 10f;
+            item.consumable = false;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
