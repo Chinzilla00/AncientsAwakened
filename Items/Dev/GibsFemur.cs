@@ -19,7 +19,6 @@ namespace AAMod.Items.Dev
 			item.useTime = 25;
             item.CloneDefaults(ItemID.LightDisc);
             item.melee = true;
-            item.maxStack = 3;
             item.damage = 120;                            
             item.value = 6;
             item.rare = 11;
@@ -42,23 +41,6 @@ namespace AAMod.Items.Dev
                     line2.overrideColor = new Color(255, 128, 0);
                 }
             }
-        }
-
-        public override bool CanUseItem(Player player)       //this make that you can shoot only 1 boomerang at once
-        {
-            int num = 0;
-            for (int i = 0; i < 200; i++)
-            {
-                if (Main.projectile[i].active && Main.projectile[i].type == mod.ProjectileType("GibsFemur"))
-                {
-                    num++;
-                }
-            }
-            if (num >= item.stack)
-            {
-                return false;
-            }
-            return true;
         }
     }
 }

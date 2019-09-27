@@ -11,19 +11,17 @@ namespace AAMod.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Angry Femur");
-            Main.projFrames[projectile.type] = 5;
         }
 
         public override void SetDefaults()
         {
             projectile.width = 32;
             projectile.height = 32;
-            projectile.aiStyle = 1;
+            projectile.aiStyle = -1;
             projectile.scale = 1f;
             projectile.friendly = true;
             projectile.melee = true;
             projectile.penetrate = 5;
-            projectile.extraUpdates = 1;
         }
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
@@ -35,36 +33,24 @@ namespace AAMod.Projectiles
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            bool flag8 = false;
             if (projectile.velocity.X != oldVelocity.X)
             {
-                projectile.velocity.X = oldVelocity.X * -0.75f;
-                flag8 = true;
+                projectile.position.X = projectile.position.X + projectile.velocity.X;
+                projectile.velocity.X = -oldVelocity.X;
             }
-            if ((projectile.velocity.Y != oldVelocity.Y && oldVelocity.Y > 2f) || projectile.velocity.Y == 0f)
+            if (projectile.velocity.Y != oldVelocity.Y)
             {
-                projectile.velocity.Y = oldVelocity.Y * -0.75f;
-                flag8 = true;
+                projectile.position.Y = projectile.position.Y + projectile.velocity.Y;
+                projectile.velocity.Y = -oldVelocity.Y;
             }
-            if (flag8)
-            {
-                float num10 = oldVelocity.Length() / projectile.velocity.Length();
-                if (num10 == 0f)
-                {
-                    num10 = 1f;
-                }
-                projectile.velocity /= num10;
-                projectile.penetrate--;
-                Collision.HitTiles(projectile.position, oldVelocity, projectile.width, projectile.height);
-            }
+            projectile.penetrate--;
             return false;
         }
 
         int a = 0;
         public override void AI()
         {
-            Player player = Main.player[projectile.owner];
-            if (a++ > 4)
+            if (a++ > 2)
             {
                 CombatText.NewText(projectile.getRect(), Color.IndianRed, "A", true);
                 a = 0;
@@ -80,26 +66,7 @@ namespace AAMod.Projectiles
                 projectile.velocity.Y = 16f;
             }
 
-            if (projectile.penetrate < 2)
-            {
-                projectile.penetrate = 2;
-                projectile.tileCollide = false;
-                float distPlayerX = player.Center.X - projectile.Center.X;
-                float distPlayerY = player.Center.Y - projectile.Center.Y;
-                float distPlayer = (float)Math.Sqrt(distPlayerX * distPlayerX + distPlayerY * distPlayerY);
-                if (distPlayer > 3000f)
-                {
-                    projectile.Kill();
-                }
-                projectile.velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(.7f, 0f), BaseMod.BaseUtility.RotationTo(projectile.Center, player.Center));
-                if (Main.myPlayer == projectile.owner)
-                {
-                    Rectangle rectangle = projectile.Hitbox;
-                    Rectangle value = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
-                    if (rectangle.Intersects(value)) { projectile.Kill(); }
-                }
-            }
-            projectile.rotation += 0.2f + Math.Abs(projectile.velocity.X) * 0.1f;
+            projectile.rotation += .7f * projectile.direction;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
