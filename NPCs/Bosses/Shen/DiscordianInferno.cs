@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
-            int dustType = projectile.ai[0] == 1 ? mod.DustType<Dusts.AkumaADust>() : projectile.ai[0] == 2 ? mod.DustType<Dusts.YamataADust>();
+            int dustType = projectile.ai[0] == 1 ? mod.DustType<Dusts.AkumaADust>() : mod.DustType<Dusts.YamataADust>();
             if (projectile.localAI[0] == 0f)
             {
                 projectile.localAI[0] = 1f;

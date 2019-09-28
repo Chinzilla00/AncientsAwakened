@@ -9,7 +9,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
-    [AutoloadBossHead]
+    /*[AutoloadBossHead]
     public class ShenDoragon : ModNPC
     {
         public int damage = 0;
@@ -1172,5 +1172,5 @@ namespace AAMod.NPCs.Bosses.Shen
             return false;
         }
     }
-
+    */
 }
