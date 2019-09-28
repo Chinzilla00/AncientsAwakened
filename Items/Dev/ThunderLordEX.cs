@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
-    public class ThunderlordEX : BaseAAItem
+    public class ThunderLordEX : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
