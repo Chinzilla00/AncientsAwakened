@@ -54,7 +54,7 @@ Non-Consumable");
                 if (Main.netMode != 1) BaseUtility.Chat("Only the red half of the sigil is lit up...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
-            if (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
+            if (NPC.AnyNPCs(mod.NPCType<Shen>()))
             {
                 if (Main.netMode != 1) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;

@@ -153,7 +153,7 @@ namespace AAMod
                 npc.damage -= 10;
             }
 
-            bool shen = npc.type == mod.NPCType<ShenDoragon>() || npc.type == mod.NPCType<ShenA>();
+            bool shen = npc.type == mod.NPCType<Shen>() || npc.type == mod.NPCType<ShenA>();
 
             ApplyDPSDebuff(terraBlaze, shen ? 46 : 26, shen ? 30 : 10, ref npc.lifeRegen, ref damage);
             ApplyDPSDebuff(infinityOverload, 60, 40, ref npc.lifeRegen, ref damage);

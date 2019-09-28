@@ -516,11 +516,11 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else if(internalAI[0] == 3)
             {
-                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<ShenFirebomb>(), npc.damage, 3, 5f, 0, 0, 0);
+                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<Akuma.Awakened.AkumaRock>(), npc.damage, 3, 5f, 0, 0, 0);
             }
             else if (internalAI[0] == 4)
             {
-                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<ShenStorm>(), npc.damage, 3, 5f, 0, 0, 0);
+                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<Akuma.AkumaFireProj>(), npc.damage, 3, 5f, 0, 0, 0);
             }
         }
 

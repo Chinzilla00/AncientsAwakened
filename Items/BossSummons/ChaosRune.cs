@@ -96,7 +96,7 @@ Non-Consumable");
             {
                 return false;
             }
-            if (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
+            if (NPC.AnyNPCs(mod.NPCType<Shen>()))
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;

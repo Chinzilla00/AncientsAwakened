@@ -122,7 +122,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
         public bool ChargePrep => npc.ai[0] == 0.5f || customAI[3] == 0.5f;
-        public bool Charging => npc.ai[0] == 1 && npc.type == mod.NPCType<ShenDoragon>();
+        public bool Charging => npc.ai[0] == 1 && npc.type == mod.NPCType<Shen>();
         public bool SnapToPlayer //wether to 'snap' relative to a player's position. This forces the player to be unable to outrun the npc while this is true.
         {
             get

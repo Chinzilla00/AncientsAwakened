@@ -519,7 +519,7 @@ namespace AAMod
         {
             bool useAthena = NPC.AnyNPCs(mod.NPCType<AthenaA>());
             bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenA>());
-            bool useShen = NPC.AnyNPCs(mod.NPCType<ShenDoragon>()) && !useShenA;
+            bool useShen = NPC.AnyNPCs(mod.NPCType<Shen>()) && !useShenA;
             bool useAkuma = NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar;
             bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar;
             bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen && !useShenA;

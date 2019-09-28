@@ -88,8 +88,15 @@ namespace AAMod.NPCs.Bosses.GripsShen
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.SuperHealingPotion;
+            potionType = 0;
         }
+
+
+        public override bool CheckActive()
+        {
+            return !NPC.AnyNPCs(mod.NPCType<Shen.Shen>());
+        }
+
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {

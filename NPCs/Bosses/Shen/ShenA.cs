@@ -34,7 +34,6 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
             npc.defense = (int)(npc.defense * 1.2f);
             npc.damage = (int)(npc.damage * .8f);
-            damageDiscordianInferno = (int)(damageDiscordianInferno * 1.2f);
         }
 
         public override void AI()
