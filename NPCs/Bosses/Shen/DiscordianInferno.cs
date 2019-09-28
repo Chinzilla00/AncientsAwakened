@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
-			int dustType = projectile.ai[0] == 1 ? mod.DustType<Dusts.AkumaADust>() : projectile.ai[0] == 2 ? mod.DustType<Dusts.YamataADust>() : mod.DustType<Dusts.Discord>();
+            int dustType = projectile.ai[0] == 1 ? mod.DustType<Dusts.AkumaADust>() : projectile.ai[0] == 2 ? mod.DustType<Dusts.YamataADust>();
             if (projectile.localAI[0] == 0f)
             {
                 projectile.localAI[0] = 1f;
@@ -57,9 +57,10 @@ namespace AAMod.NPCs.Bosses.Shen
 				Main.dust[dustID2].noGravity = true;
 			}
         }
+
         public override void Kill(int timeLeft)
         {
-            int dustType = projectile.ai[0] == 1 ? mod.DustType<Dusts.AkumaADust>() : projectile.ai[0] == 2 ? mod.DustType<Dusts.YamataADust>() : mod.DustType<Dusts.Discord>();
+            int dustType = projectile.ai[0] == 1 ? mod.DustType<Dusts.AkumaADust>() : mod.DustType<Dusts.YamataADust>();
             int pieCut = 20;
 			for(int m = 0; m < pieCut; m++)
 			{
@@ -88,7 +89,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override Color? GetAlpha(Color lightColor)
         {
-            Color color = projectile.ai[0] == 1 ? AAColor.AkumaA : projectile.ai[0] == 2 ? AAColor.YamataA : Color.Magenta;
+            Color color = projectile.ai[0] == 1 ? AAColor.AkumaA : AAColor.YamataA ;
             return new Color(color.R, color.G, color.B, 200);
         }
 
@@ -113,7 +114,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(projectile.ai[0] == 1 ? mod.BuffType("DragonFire") : projectile.ai[0] == 2 ? mod.BuffType("HydraToxin") : mod.BuffType("DiscordInferno"), 200);
+            target.AddBuff(projectile.ai[0] == 1 ? mod.BuffType("DragonFire") : mod.BuffType("HydraToxin"), 200);
         }
     }
 }

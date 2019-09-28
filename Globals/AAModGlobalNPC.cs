@@ -45,7 +45,7 @@ namespace AAMod
 
         public override bool InstancePerEntity => true;
 
-        public bool isBunny(NPC npc)
+        public bool IsBunny(NPC npc)
         {
             return npc.type == NPCID.Bunny || npc.type == NPCID.GoldBunny || npc.type == NPCID.BunnySlimed || npc.type == NPCID.BunnyXmas || npc.type == NPCID.PartyBunny;
         }
@@ -88,7 +88,7 @@ namespace AAMod
                 npc.dontTakeDamageFromHostiles = true;
             }
 
-            if (isBunny(npc) && AAWorld.downedRajahsRevenge)
+            if (IsBunny(npc) && AAWorld.downedRajahsRevenge)
             {
                 npc.dontTakeDamage = true;
             }
@@ -453,12 +453,9 @@ namespace AAMod
                 npc.DropLoot(ItemID.Bone, Main.rand.Next(30, 45));
             }
 
-            if (Main.LocalPlayer.ZoneJungle)
+            if ((npc.type == NPCID.ArmoredViking || npc.type == NPCID.UndeadViking) && NPC.downedBoss3)
             {
-                if (Main.rand.NextBool(30))
-                {
-                    npc.DropLoot(mod.ItemType("Everleaf"));
-                }
+                npc.DropLoot(mod.ItemType<Items.Materials.VikingRelic>(), Main.rand.Next(0, 3));
             }
 
             if (AASets.Goblins[npc.type] && NPC.downedGoblins)
@@ -474,7 +471,7 @@ namespace AAMod
                 npc.DropLoot(mod.ItemType("GoldenCarrot"));
             }
 
-            if (isBunny(npc) && NPC.downedGolemBoss)
+            if (IsBunny(npc) && NPC.downedGolemBoss)
             {
                 if (Main.rand.NextBool(80))
                 {
@@ -539,7 +536,7 @@ namespace AAMod
             }
 
 
-            if (Main.hardMode && isBunny(npc) && Rajah != -1)
+            if (Main.hardMode && IsBunny(npc) && Rajah != -1)
             {
                 Player player = Main.player[Player.FindClosest(npc.Center, npc.width, npc.height)];
 
