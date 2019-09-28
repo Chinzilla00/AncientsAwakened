@@ -10,8 +10,34 @@ namespace AAMod.Items.Dev
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Thunder Lord");
-            Tooltip.SetDefault(@"Fires off Thundershots
+            Tooltip.SetDefault(@"Fires off Thundershots and has a rare chance to shoot a Supercharged Thundershot that calls down Thunder from the sky
+
 Storm Rifle EX");
+        }
+
+        public override void SetDefaults()
+        {
+            item.damage = 375;
+            item.noMelee = true;
+            item.ranged = true; 
+            item.width = 90; 
+            item.height = 30;
+            item.useTime = 3; 
+            item.useAnimation = 5; 
+            item.useStyle = 5;
+            item.shoot = mod.ProjectileType("SThunderBullet");
+            item.knockBack = 3;
+            item.value = Item.sellPrice(0, 5, 0, 0);
+            item.rare = 9;
+            item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Thunderlord");
+            item.autoReuse = true; 
+            item.shootSpeed = 9f;
+            item.useAmmo = AmmoID.Bullet;
+            item.crit = 10; 
+        }
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-1, 0);
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -21,39 +47,11 @@ Storm Rifle EX");
             {
                 position += muzzleOffset;
             }
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType<Projectiles.ThunderBullet>(), damage, knockBack, Main.myPlayer, 0, 0);
+            type = Main.rand.Next(20) == 0 ? mod.ProjectileType("SThunderBullet") : mod.ProjectileType("ThunderBullet");
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI, 2f, 2f);
             return false;
         }
 
-        public override void SetDefaults()
-        {
-            item.damage = 375;
-            item.noMelee = true;
-            item.ranged = true; 
-            item.width = 70; 
-            item.height = 24;
-            item.useTime = 3; 
-            item.useAnimation = 3; 
-            item.useStyle = 5;
-            item.shoot = mod.ProjectileType("ThunderBullet");
-            item.knockBack = 3;
-            item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 9;
-            item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Thunderlord");
-            item.autoReuse = true; 
-            item.shootSpeed = 9f;
-            item.useAmmo = AmmoID.Bullet;
-
-            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";
-			glowmaskDrawType = GLOWMASKTYPE_GUN;
-			glowmaskDrawColor = AAColor.COLOR_WHITEFADE1;
-			customNameColor = new Color(0, 0, 255);			
-        }
-
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-1, 0);
-        }
 
         public override void AddRecipes()
         {
