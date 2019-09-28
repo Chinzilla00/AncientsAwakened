@@ -77,7 +77,6 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.lavaImmune = true;
             npc.noGravity = true;
             npc.noTileCollide = true;
-            npc.alpha = 255;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/ShenRoar");
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Shen");
@@ -193,6 +192,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             #endregion
 
+            Dashing = false;
             if (Roaring) roarTimer--;
 
             switch ((int)npc.ai[0])
@@ -215,8 +215,6 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.netUpdate = true;
                         npc.velocity.X = 2 * (npc.Center.X < player.Center.X ? -1 : 1);
                         npc.velocity.Y *= 0.2f;
-                        if (Main.netMode != 1)
-                            Projectile.NewProjectile(npc.Center, Vector2.UnitX.RotatedBy(npc.ai[3]), Homing, npc.damage / 3, 0f, Main.myPlayer, 0, npc.whoAmI);
                     }
                     if (++npc.ai[1] > 60)
                     {
@@ -229,7 +227,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     break;
 
-                case 1: //firing mega ray
+                case 1: //Fire Breath
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<ShenABreath>(), ref npc.ai[2], 5, npc.damage / 2, 10, false);
                     if (++npc.ai[1] > 120)
                     {
                         npc.ai[0]++;
@@ -534,6 +533,32 @@ namespace AAMod.NPCs.Bosses.Shen
                 default:
                     npc.ai[0] = 0;
                     goto case 0;
+            }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            Player player = Main.player[npc.target];
+            npc.frame = new Rectangle(0, Roaring ? frameY : 0, 444, frameY);
+            if (Dashing)
+            {
+                npc.frameCounter = 0;
+                wingFrame.Y = wingFrameY;
+            }
+            else
+            {
+                npc.frameCounter++;
+                if (npc.frameCounter >= 5)
+                {
+                    npc.frameCounter = 0;
+                    wingFrame.Y += wingFrameY;
+                    if (wingFrame.Y > (wingFrameY * 4))
+                    {
+                        npc.frameCounter = 0;
+                        wingFrame.Y = 0;
+                    }
+                }
+                npc.spriteDirection = npc.Center.X < player.Center.X ? 1 : -1;
             }
         }
 

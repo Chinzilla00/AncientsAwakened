@@ -29,6 +29,16 @@ namespace AAMod.Items.Boss.Grips
         }
         public override void AI()
         {
+            projectile.spriteDirection = projectile.direction;
+            if (projectile.velocity.X < 0)
+            {
+                projectile.direction = -1;
+                projectile.spriteDirection = projectile.direction;
+            }
+            else
+            {
+                projectile.direction = 1;
+            }
             if (projectile.frameCounter++ > 5)
             {
                 projectile.frame++;

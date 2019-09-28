@@ -33,7 +33,6 @@ namespace AAMod
         public static ModHotKey ArmorAbilityKey;
         public static ModHotKey Rift;
         public static ModHotKey RiftReturn;
-        public static ModHotKey TimeStone;
 
         // Textures
         public static IDictionary<string, Texture2D> Textures = null;
@@ -251,8 +250,6 @@ namespace AAMod
             AccessoryAbilityKey = RegisterHotKey("AA Accessory Ability", "U");
             ArmorAbilityKey = RegisterHotKey("AA Armor Ability", "Y");
 
-            TimeStone = RegisterHotKey("Time Stone", "K");
-
             if (!Main.dedServ)
             {
                 LoadClient();
@@ -339,6 +336,7 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shen"), ItemType("ShenBox"), TileType("ShenBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA"), ItemType("ShenABox"), TileType("ShenABox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SupremeRajah"), ItemType("SRajahBox"), TileType("SRajahBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand"), ItemType("SABox"), TileType("SABox"));
             }
 
             Filters.Scene["AAMod:ShenSky"] = new Filter(new ShenSkyData("FilterMiniTower").UseColor(.5f, 0f, .5f).UseOpacity(0.2f), EffectPriority.VeryHigh);
@@ -425,7 +423,6 @@ namespace AAMod
             RiftReturn = null;
             AccessoryAbilityKey = null;
             ArmorAbilityKey = null;
-            TimeStone = null;
 
             if (!Main.dedServ)
             {
