@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using BaseMod;
 
-namespace AAMod.Tiles
+namespace AAMod.Tiles.Crafters
 {
     public class Transmuter : ModTile
     {

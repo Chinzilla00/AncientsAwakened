@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AAMod.Tiles.Bars.Bars
+namespace AAMod.Tiles.Bars
 {
     public class RadiumBarTile : ModTile
     {
