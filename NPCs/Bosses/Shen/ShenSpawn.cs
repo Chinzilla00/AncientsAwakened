@@ -247,7 +247,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public void SummonShen()
         {
-            AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType("ShenDoragon"), false, npc.Center, "");
+            AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType("Shen"), false, npc.Center, "");
         }
 
         public Color GetColorAlpha()

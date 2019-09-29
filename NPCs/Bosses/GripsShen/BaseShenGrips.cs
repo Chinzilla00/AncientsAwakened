@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
         
         public override void FindFrame(int frameHeight)
         {
-            if (!NPC.AnyNPCs(mod.NPCType("ShenDoragon")))
+            if (!NPC.AnyNPCs(mod.NPCType("Shen")))
             {
                 npc.life = 0;
             }

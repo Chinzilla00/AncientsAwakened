@@ -87,7 +87,7 @@ Non-Consumable");
             {
                 if (Main.netMode != 1) BaseUtility.Chat(AAWorld.downedShen ? "Big mistake, child..." : "Hmpf...again..? Alright, let's just get this done and overwith.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenDoragon"), true, 0, 0, "Shen Doragon; Discordian Doomsayer", false);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Shen"), true, 0, 0, "Shen Doragon; Discordian Doomsayer", false);
             }
             if (!AAWorld.ShenSummoned)
             {
