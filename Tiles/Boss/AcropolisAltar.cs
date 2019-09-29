@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using AAMod.NPCs.Bosses.Athena;
 
 namespace AAMod.Tiles.Boss
 {
@@ -61,7 +62,8 @@ namespace AAMod.Tiles.Boss
         {
             Player player = Main.LocalPlayer;
             int type = mod.ItemType<Items.BossSummons.Owl>();
-            if (BasePlayer.HasItem(player, type, 1))
+            bool Athena = NPC.AnyNPCs(mod.NPCType<Athena>()) || NPC.AnyNPCs(mod.NPCType<AthenaFlee>()) || NPC.AnyNPCs(mod.NPCType<AthenaDefeat>()) || NPC.AnyNPCs(mod.NPCType<AthenaA>());
+            if (BasePlayer.HasItem(player, type, 1) || !Athena)
             {
                 for (int m = 0; m < 50; m++)
                 {
