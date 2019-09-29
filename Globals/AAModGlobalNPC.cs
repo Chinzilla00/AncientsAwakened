@@ -25,7 +25,6 @@ namespace AAMod
         public bool TimeFrozen = false;
         public bool infinityOverload = false;
         public bool terraBlaze = false;
-        public bool Dragonfire = false;
         public bool Hydratoxin = false;
         public bool Moonraze = false;
         public bool Electrified = false;
@@ -56,7 +55,6 @@ namespace AAMod
             infinityOverload = false;
             terraBlaze = false;
             TimeFrozen = false;
-            Dragonfire = false;
             Hydratoxin = false;
             Moonraze = false;
             Electrified = false;
@@ -148,10 +146,7 @@ namespace AAMod
                 npc.defense *= (int).8f;
             }
 
-            if (Dragonfire)
-            {
-                npc.damage -= 10;
-            }
+            
 
             bool shen = npc.type == mod.NPCType<Shen>() || npc.type == mod.NPCType<ShenA>();
 

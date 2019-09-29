@@ -2463,7 +2463,7 @@ namespace AAMod
 
                 player.lifeRegenTime = 0;
                 player.lifeRegen -= 8;
-                player.allDamage *= 0.8f;
+                
             }
 
             if (riftbent)

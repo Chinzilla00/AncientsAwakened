@@ -14,5 +14,8 @@
     <Reference Include="BaseMod">
       <HintPath>lib\BaseMod.dll</HintPath>
     </Reference>
+    <Reference Include="Terraria">
+      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Terraria\Terraria.exe</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
