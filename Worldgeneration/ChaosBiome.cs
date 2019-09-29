@@ -13,7 +13,7 @@ using AAMod.Tiles;
 using AAMod.Walls;
 using Terraria.Utilities;
 using AAMod.Tiles.Chests;
-using AAMod.Tiles.Tiles;
+using AAMod.Tiles;
 using AAMod.Tiles.Crafters;
 using AAMod.Tiles.Boss;
 

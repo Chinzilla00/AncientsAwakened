@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.Walls;
 using AAMod.Dusts;
-using AAMod.Tiles.Tiles;
+using AAMod.Tiles;
 
 namespace AAMod.Projectiles
 {

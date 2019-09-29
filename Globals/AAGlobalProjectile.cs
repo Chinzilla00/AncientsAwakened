@@ -2,7 +2,7 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod.Tiles.Tiles;
+using AAMod.Tiles;
 
 namespace AAMod
 {

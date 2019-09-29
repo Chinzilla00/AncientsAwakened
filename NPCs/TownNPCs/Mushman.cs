@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
-using AAMod.Tiles.Tiles;
+using AAMod.Tiles;
 using AAMod.Tiles.Plants;
 
 namespace AAMod.NPCs.TownNPCs
