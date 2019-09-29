@@ -32,12 +32,11 @@ namespace AAMod.Items.Boss.Grips
             projectile.spriteDirection = projectile.direction;
             if (projectile.velocity.X < 0)
             {
-                projectile.direction = -1;
-                projectile.spriteDirection = projectile.direction;
+                projectile.direction = 1;
             }
             else
             {
-                projectile.direction = 1;
+                projectile.direction = -1;
             }
             if (projectile.frameCounter++ > 5)
             {

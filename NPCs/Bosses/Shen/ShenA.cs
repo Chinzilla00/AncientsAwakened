@@ -14,7 +14,7 @@ namespace AAMod.NPCs.Bosses.Shen
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Shen Doragon Awakened; Unyielding Chaos Incarnate");
+            DisplayName.SetDefault("Shen Doragon Awakened");
             Main.npcFrameCount[npc.type] = 2;
         }
 

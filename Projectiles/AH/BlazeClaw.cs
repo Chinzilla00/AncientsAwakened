@@ -37,11 +37,11 @@ namespace AAMod.Projectiles.AH
             projectile.spriteDirection = projectile.direction;
             if (projectile.velocity.X < 0)
             {
-                projectile.direction = -1;
+                projectile.direction = 1;
             }
             else
             {
-                projectile.direction = 1;
+                projectile.direction = -1;
             }
             if (projectile.frameCounter++ > 6)
             {

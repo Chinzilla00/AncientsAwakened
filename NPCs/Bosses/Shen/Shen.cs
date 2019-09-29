@@ -286,7 +286,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     break;
 
                 case 1: //Fire Breath
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<ShenABreath>(), ref npc.ai[2], 5, npc.damage / 2, 10, false);
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<ShenABreath>(), ref npc.ai[2], 5, npc.damage / 2, 13, false);
                     if (++npc.ai[1] > 120)
                     {
                         npc.ai[0]++;
@@ -385,7 +385,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     targetPos = player.Center;
                     targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
                     targetPos.Y += 400;
-                    Movement(targetPos, 0.5f);
+                    Movement(targetPos, .8f);
                     if (++npc.ai[2] > 80)
                     {
                         npc.ai[2] = 0;
