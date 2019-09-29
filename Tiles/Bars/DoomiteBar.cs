@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AAMod.Tiles.Bar
+namespace AAMod.Tiles.Bars
 {
     public class DoomiteBar : ModTile
     {
