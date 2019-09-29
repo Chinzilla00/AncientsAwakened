@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Tiles.Trees.Ore
+namespace AAMod.Tiles.Ore
 {
     public class AbyssiumOre : ModTile
     {
