@@ -25,7 +25,6 @@ namespace AAMod
         public bool TimeFrozen = false;
         public bool infinityOverload = false;
         public bool terraBlaze = false;
-        public bool Dragonfire = false;
         public bool Hydratoxin = false;
         public bool Moonraze = false;
         public bool Electrified = false;
@@ -56,7 +55,6 @@ namespace AAMod
             infinityOverload = false;
             terraBlaze = false;
             TimeFrozen = false;
-            Dragonfire = false;
             Hydratoxin = false;
             Moonraze = false;
             Electrified = false;
@@ -148,10 +146,7 @@ namespace AAMod
                 npc.defense *= (int).8f;
             }
 
-            if (Dragonfire)
-            {
-                npc.damage -= 10;
-            }
+            
 
             bool shen = npc.type == mod.NPCType<Shen>() || npc.type == mod.NPCType<ShenA>();
 
@@ -744,22 +739,7 @@ namespace AAMod
                 Lighting.AddLight(npc.position, 0.1f, 0.3f, 0.7f);
             }
 
-            if (Dragonfire)
-            {
-                if (Main.rand.Next(4) < 3)
-                {
-                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, mod.DustType<Dusts.DragonflameDust>(), npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 107);
-                    Main.dust[dust].noGravity = true;
-                    Main.dust[dust].velocity *= 1.8f;
-                    Main.dust[dust].velocity.Y -= 0.5f;
-                    if (Main.rand.Next(4) == 0)
-                    {
-                        Main.dust[dust].noGravity = false;
-                        Main.dust[dust].scale *= 0.5f;
-                    }
-                }
-                Lighting.AddLight(npc.position, 0.7f, 0.2f, 0.1f);
-            }
+            
 
             if (terraBlaze)
             {
