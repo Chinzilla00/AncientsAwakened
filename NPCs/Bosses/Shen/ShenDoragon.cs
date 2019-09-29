@@ -1,13 +1,4 @@
-﻿using BaseMod;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.IO;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
-namespace AAMod.NPCs.Bosses.Shen
+﻿namespace AAMod.NPCs.Bosses.Shen
 {
     /*[AutoloadBossHead]
     public class ShenDoragon : ModNPC

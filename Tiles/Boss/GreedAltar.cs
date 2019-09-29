@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using AAMod.NPCs.Bosses.Greed;
 
-namespace AAMod.Tiles
+namespace AAMod.Tiles.Boss
 {
     public class GreedAltar : ModTile
     {

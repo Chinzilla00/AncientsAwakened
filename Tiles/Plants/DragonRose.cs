@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using AAMod.Tiles.Tiles;
 
 namespace AAMod.Tiles.Plants
 {

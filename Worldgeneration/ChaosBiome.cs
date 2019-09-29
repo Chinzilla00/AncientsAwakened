@@ -15,6 +15,7 @@ using Terraria.Utilities;
 using AAMod.Tiles.Chests;
 using AAMod.Tiles.Tiles;
 using AAMod.Tiles.Crafters;
+using AAMod.Tiles.Boss;
 
 namespace AAMod.Worldgeneration
 {

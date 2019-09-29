@@ -83,7 +83,7 @@ namespace AAMod.Items.DevTools
                     i = WorldGen.genRand.Next(0, Main.maxTilesX);
                     j = WorldGen.genRand.Next((int)Main.worldSurface, Main.maxTilesY);
                 }
-                WorldGen.TileRunner(i, j, WorldGen.genRand.Next(2, 6), WorldGen.genRand.Next(3, 7), mod.TileType<Tiles.PrismOre>());
+                WorldGen.TileRunner(i, j, WorldGen.genRand.Next(2, 6), WorldGen.genRand.Next(3, 7), mod.TileType("PrismOre"));
             }
         }
     }

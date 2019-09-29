@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AAMod.Tiles
+namespace AAMod.Tiles.Boss
 {
     public class DragonEgg : ModTile
     {

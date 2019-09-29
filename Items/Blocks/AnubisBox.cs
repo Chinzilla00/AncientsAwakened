@@ -1,14 +1,15 @@
 using Terraria.ModLoader;
+using System.Collections.Generic;
 using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-    public class AcropolisBox : BaseAAItem
+    public class AnubisBox : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Acropolis Music Box");
-            Tooltip.SetDefault(@"Plays 'Palace in the Sky' by Turquoise");
+			DisplayName.SetDefault("Anubis Music Box");
+            Tooltip.SetDefault(@"Plays 'True Blazing Fury' by Kanashii");
         }
 
         public override void SetDefaults()
@@ -19,10 +20,10 @@ namespace AAMod.Items.Blocks
 			item.useTime = 10;
 			item.autoReuse = true;
 			item.consumable = true;
-			item.createTile = mod.TileType("AcropolisBox");
+			item.createTile = mod.TileType("AnubisBox");
 			item.width = 24;
 			item.height = 24;
-			item.rare = 8;
+			item.rare = 5;
 			item.value = 10000;
 			item.accessory = true;
 		}
@@ -30,7 +31,7 @@ namespace AAMod.Items.Blocks
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.MusicBox);
-            recipe.AddIngredient(null, "GoddessFeather", 5);
+            recipe.AddIngredient(null, "ForsakenFragment", 3);
             recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();

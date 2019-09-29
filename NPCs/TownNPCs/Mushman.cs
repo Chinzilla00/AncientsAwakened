@@ -2,6 +2,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
+using AAMod.Tiles.Tiles;
+using AAMod.Tiles.Plants;
 
 namespace AAMod.NPCs.TownNPCs
 {
@@ -75,7 +77,7 @@ namespace AAMod.NPCs.TownNPCs
             {
                 for (int j = num4 + 2; j < num5 + 2; j++)
                 {
-                    if (Main.tile[i, j].active() && (Main.tile[i, j].type == mod.TileType<Tiles.Mycelium>() || Main.tile[i, j].type == mod.TileType<Tiles.Mushroom>() || Main.tile[i, j].type == mod.TileType<Tiles.MadnessShroom>()))
+                    if (Main.tile[i, j].active() && (Main.tile[i, j].type == mod.TileType<Mycelium>() || Main.tile[i, j].type == mod.TileType<Mushroom>() || Main.tile[i, j].type == mod.TileType<MadnessShroom>()))
                     {
                         num++;
                     }

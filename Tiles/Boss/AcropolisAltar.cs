@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AAMod.Tiles
+namespace AAMod.Tiles.Boss
 {
     public class AcropolisAltar : ModTile
     {
@@ -59,7 +59,6 @@ namespace AAMod.Tiles
 
         public override void RightClick(int i, int j)
         {
-            Vector2 Acropolis = new Vector2(Origin.X + (76 * 16), Origin.Y + (72 * 16));
             Player player = Main.LocalPlayer;
             int type = mod.ItemType<Items.BossSummons.Owl>();
             if (BasePlayer.HasItem(player, type, 1))
