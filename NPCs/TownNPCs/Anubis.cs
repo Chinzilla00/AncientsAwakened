@@ -429,6 +429,7 @@ namespace AAMod.NPCs.TownNPCs
             {
                 if (ModLoader.GetMod("CalamityMod") != null)
                 {
+                    
                     Mod calamity = ModLoader.GetMod("CalamityMod");
                     if (calamity != null && DoG && AAWorld.downedGreedA)
                     {
