@@ -673,7 +673,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Greed");
+            DisplayName.SetDefault("Worm King Greed");
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
             Main.npcFrameCount[npc.type] = 27;
         }

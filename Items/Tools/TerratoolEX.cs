@@ -43,7 +43,7 @@ Terratool EX");
             if (player.altFunctionUse == 2)
             {
                 item.noUseGraphic = true;
-                AAMod.instance.TerratoolKipState.ToggleUI(AAMod.instance.TerratoolInterface);
+                AAMod.instance.TerratoolEXState.ToggleUI(AAMod.instance.TerratoolInterface);
                 item.pick = 0;
                 item.axe = 0;
                 item.hammer = 0;

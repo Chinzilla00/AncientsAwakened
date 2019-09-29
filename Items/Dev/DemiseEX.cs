@@ -49,6 +49,7 @@ Demise EX");
                 item.useStyle = 1;
                 item.noMelee = false;
                 item.shoot = mod.ProjectileType("DemiseBladeEX");
+                item.shootSpeed = 15f;
             }
             else
             {
@@ -56,6 +57,7 @@ Demise EX");
                 item.useStyle = 5;
                 item.noMelee = true;
                 item.shoot = mod.ProjectileType("DemiseSphereEX");
+                item.shootSpeed = 13f;
             }
             return base.CanUseItem(player);
         }

@@ -15,35 +15,6 @@ namespace AAMod.NPCs.Bosses.Shen
     {
         public int damage = 0;
 
-        public float[] customAI = new float[6];
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            base.SendExtraAI(writer);
-            if (Main.netMode == NetmodeID.Server || Main.dedServ)
-            {
-                writer.Write(customAI[0]);
-                writer.Write(customAI[1]);
-                writer.Write(customAI[2]);
-                writer.Write(customAI[3]);
-                writer.Write(customAI[4]);
-                writer.Write(customAI[5]);
-            }
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            base.ReceiveExtraAI(reader);
-            if (Main.netMode == NetmodeID.MultiplayerClient)
-            {
-                customAI[0] = reader.ReadFloat();
-                customAI[1] = reader.ReadFloat();
-                customAI[2] = reader.ReadFloat();
-                customAI[3] = reader.ReadFloat();
-                customAI[4] = reader.ReadFloat();
-                customAI[5] = reader.ReadFloat();
-            }
-        }
-
         public bool SpawnGrips = false;
 
         public override void SetStaticDefaults()
@@ -165,6 +136,26 @@ namespace AAMod.NPCs.Bosses.Shen
         public bool Health2 = false;
         public bool Health1 = false;
 
+        public float[] FleeTimer = new float[1];
+
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            {
+                writer.Write(FleeTimer[0]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                FleeTimer[0] = reader.ReadFloat();
+            }
+        }
+
         public override void AI()
         {
             Player player = Main.player[npc.target];
@@ -194,6 +185,73 @@ namespace AAMod.NPCs.Bosses.Shen
 
             Dashing = false;
             if (Roaring) roarTimer--;
+
+            if (NPC.AnyNPCs(mod.NPCType<GripsShen.BlazeGrip>()) || NPC.AnyNPCs(mod.NPCType<GripsShen.AbyssGrip>()))
+            {
+                if (npc.alpha < 50)
+                {
+                    npc.alpha = 50;
+                }
+                else
+                {
+                    npc.alpha += 4;
+                }
+                npc.dontTakeDamage = true;
+            }
+            else
+            {
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
+                if (npc.alpha <= 0)
+                {
+                    npc.alpha = 0;
+                }
+                else
+                {
+                    for (int spawnDust = 0; spawnDust < 2; spawnDust++)
+                    {
+                        int dust = spawnDust == 1 ? mod.DustType<Dusts.AkumaADust>() : mod.DustType<Dusts.YamataADust>();
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 100, default, 2f);
+                        Main.dust[num935].noGravity = true;
+                        Main.dust[num935].noLight = true;
+                    }
+                    npc.alpha -= 4;
+                }
+                npc.dontTakeDamage = false;
+            }
+
+            if (player.dead || !player.active || Vector2.Distance(npc.Center, player.Center) > 10000)
+            {
+                npc.TargetClosest();
+
+                if (player.dead || !player.active || Vector2.Distance(npc.Center, player.Center) > 10000)
+                {
+                    if (Main.netMode != 1 && FleeTimer[0]++ >= 120)
+                    {
+                        if (FleeTimer[0] < 130)
+                        {
+                            npc.velocity.Y += 1f;
+                            npc.netUpdate = true;
+                        }
+                        else if (FleeTimer[0] == 130)
+                        {
+                            npc.velocity.Y = -6f;
+                            npc.netUpdate = true;
+                        }
+                        else if (FleeTimer[0] > 130)
+                        {
+                            npc.velocity.Y = -6f;
+                        }
+                        if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate = true; }
+                    }
+                }
+                else
+                {
+                    FleeTimer[0] = 0;
+                }
+            }
 
             switch ((int)npc.ai[0])
             {

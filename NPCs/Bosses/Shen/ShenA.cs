@@ -2,7 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.IO;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Shen
@@ -27,6 +29,7 @@ namespace AAMod.NPCs.Bosses.Shen
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA");
             musicPriority = (MusicPriority)11;
             isAwakened = true;
+            npc.alpha = 255;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -36,6 +39,26 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.damage = (int)(npc.damage * .8f);
         }
 
+        public float[] FleeTimer = new float[1];
+
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            {
+                writer.Write(FleeTimer[0]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                FleeTimer[0] = reader.ReadFloat();
+            }
+        }
+
         public override void AI()
         {
             Player player = Main.player[npc.target];
@@ -43,6 +66,72 @@ namespace AAMod.NPCs.Bosses.Shen
 
             Dashing = false;
             if (Roaring) roarTimer--;
+
+            if (NPC.AnyNPCs(mod.NPCType<FuryAshe>()) || NPC.AnyNPCs(mod.NPCType<WrathHaruka>()))
+            {
+                if (npc.alpha < 50)
+                {
+                    npc.alpha = 50;
+                }
+                else
+                {
+                    npc.alpha += 4;
+                }
+                npc.dontTakeDamage = true;
+            }
+            else
+            {
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
+                }
+                if (npc.alpha <= 0)
+                {
+                    npc.alpha = 0;
+                }
+                else
+                {
+                    for (int spawnDust = 0; spawnDust < 2; spawnDust++)
+                    {
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default, 2f);
+                        Main.dust[num935].noGravity = true;
+                        Main.dust[num935].noLight = true;
+                    }
+                    npc.alpha -= 4;
+                }
+                npc.dontTakeDamage = false;
+            }
+
+            if (player.dead || !player.active || Vector2.Distance(npc.Center, player.Center) > 10000)
+            {
+                npc.TargetClosest();
+
+                if (player.dead || !player.active || Vector2.Distance(npc.Center, player.Center) > 10000)
+                {
+                    if (Main.netMode != 1 && FleeTimer[0]++ >= 120)
+                    {
+                        if (FleeTimer[0] < 130)
+                        {
+                            npc.velocity.Y += 1f;
+                            npc.netUpdate = true;
+                        }
+                        else if (FleeTimer[0] == 130)
+                        {
+                            npc.velocity.Y = -6f;
+                            npc.netUpdate = true;
+                        }
+                        else if (FleeTimer[0] > 130)
+                        {
+                            npc.velocity.Y = -6f;
+                        }
+                        if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate = true; }
+                    }
+                }
+                else
+                {
+                    FleeTimer[0] = 0;
+                }
+            }
 
             switch ((int)npc.ai[0])
             {
@@ -370,7 +459,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                     npc.rotation = 0;
                     break;
-
                 default:
                     npc.ai[0] = 0;
                     goto case 0;
