@@ -181,7 +181,7 @@ namespace AAMod.Projectiles.AH
 			}
 			else
 			{
-				projectile.rotation = projectile.velocity.ToRotation() + 1.57;
+				projectile.rotation = projectile.velocity.ToRotation() + 1.57f;
 			}
 			if (projectile.ai[1] > 0f)
 			{
