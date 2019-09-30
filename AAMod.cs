@@ -228,6 +228,8 @@ namespace AAMod
 
         public override void Load()
         {
+            Logger.InfoFormat("{0} AA log", Name);
+
             instance = this;
             GoblinSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ItemType<Items.Currency.GoblinSoul>()));
             BoneAmmo = ItemID.Bone;

@@ -793,25 +793,8 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void NPCLoot()
         {
-            if (isAwakened)
+            if (npc.type != mod.NPCType<ShenA>())
             {
-                if (Main.expertMode)
-                {
-                    npc.DropLoot(Items.Vanity.Mask.ShenAMask.type, 1f / 7);
-                    if (!AAWorld.downedShen)
-                    {
-                        npc.DropLoot(mod.ItemType<Items.BossSummons.ChaosRune>(), 1f / 7);
-                        AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType("ShenDefeat"), false, npc.Center, "");
-                        if (Main.netMode != 1) BaseUtility.Chat("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
-                    }
-                    BaseAI.DropItem(npc, mod.ItemType("ShenATrophy"), 1, 1, 15, true);
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenDefeat>());
-                    npc.DropBossBags();
-                }
-            }
-            else
-            {
-
                 npc.DropLoot(Items.Vanity.Mask.ShenMask.type, 1f / 7);
                 if (!Main.expertMode)
                 {

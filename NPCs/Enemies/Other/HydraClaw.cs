@@ -75,9 +75,10 @@ namespace AAMod.NPCs.Enemies.Other
         {
             target.AddBuff(BuffID.Poisoned, 180);
         }
+
         public override void NPCLoot()
         {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HydraClaw"));
+            npc.DropLoot(mod.ItemType("HydraClaw"), Main.rand.Next(0, 1));
         }
     }
 }
