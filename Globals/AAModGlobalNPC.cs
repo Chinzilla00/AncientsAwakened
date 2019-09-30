@@ -93,6 +93,7 @@ namespace AAMod
         }
 
         public int RiftTimer;
+
         public int RiftDamage = 10;
 
         public override void UpdateLifeRegen(NPC npc, ref int damage)
