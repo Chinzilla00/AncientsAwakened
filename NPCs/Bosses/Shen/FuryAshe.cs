@@ -89,12 +89,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override bool CheckActive()
         {
-            if (!NPC.AnyNPCs(mod.NPCType<ShenA>()))
-            {
-                return false;
-            }
-
-            return true;
+            return !NPC.AnyNPCs(mod.NPCType<ShenA>());
         }
 
 

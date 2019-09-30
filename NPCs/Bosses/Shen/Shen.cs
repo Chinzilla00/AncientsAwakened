@@ -186,6 +186,25 @@ namespace AAMod.NPCs.Bosses.Shen
             Dashing = false;
             if (Roaring) roarTimer--;
 
+            if (Dashing)
+            {
+                if (npc.width != chargeWidth)
+                {
+                    Vector2 center = npc.Center;
+                    npc.width = chargeWidth;
+                    npc.Center = center;
+                    npc.netUpdate = true;
+                }
+            }
+            else
+            if (npc.width != normalWidth)
+            {
+                Vector2 center = npc.Center;
+                npc.width = normalWidth;
+                npc.Center = center;
+                npc.netUpdate = true;
+            }
+
             if (NPC.AnyNPCs(mod.NPCType<GripsShen.BlazeGrip>()) || NPC.AnyNPCs(mod.NPCType<GripsShen.AbyssGrip>()))
             {
                 if (npc.alpha < 50)

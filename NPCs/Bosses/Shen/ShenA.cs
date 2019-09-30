@@ -39,8 +39,6 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.damage = (int)(npc.damage * .8f);
         }
 
-        public float[] FleeTimer = new float[1];
-
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -66,6 +64,25 @@ namespace AAMod.NPCs.Bosses.Shen
 
             Dashing = false;
             if (Roaring) roarTimer--;
+
+            if (Dashing)
+            {
+                if (npc.width != chargeWidth)
+                {
+                    Vector2 center = npc.Center;
+                    npc.width = chargeWidth;
+                    npc.Center = center;
+                    npc.netUpdate = true;
+                }
+            }
+            else
+            if (npc.width != normalWidth)
+            {
+                Vector2 center = npc.Center;
+                npc.width = normalWidth;
+                npc.Center = center;
+                npc.netUpdate = true;
+            }
 
             if (NPC.AnyNPCs(mod.NPCType<FuryAshe>()) || NPC.AnyNPCs(mod.NPCType<WrathHaruka>()))
             {
@@ -539,7 +556,10 @@ namespace AAMod.NPCs.Bosses.Shen
                         wingFrame.Y = 0;
                     }
                 }
-                npc.spriteDirection = npc.Center.X < player.Center.X ? 1 : -1;
+                if (npc.ai[0] != 1)
+                {
+                    npc.spriteDirection = npc.Center.X < player.Center.X ? 1 : -1;
+                }
             }
         }
 

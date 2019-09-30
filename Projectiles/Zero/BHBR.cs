@@ -22,6 +22,7 @@ namespace AAMod.Projectiles.Zero
             projectile.ignoreWater = true;
             projectile.usesLocalNPCImmunity = true;
             projectile.penetrate = 1;
+            projectile.extraUpdates = 1;
         }
 
         public override void AI()

@@ -128,15 +128,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 }
             }
 
-            if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
-            {
-                npc.noTileCollide = true;
-                MoveToPoint(new Vector2(player.Center.X, player.Center.Y - 170f));
-            }
-            else
-            {
-                npc.noTileCollide = false;
-            }
+            npc.noTileCollide = true;
 
             if (Main.netMode != 1 && internalAI[1] != AISTATE_SHOOT)
 			{

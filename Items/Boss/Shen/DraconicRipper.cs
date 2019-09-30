@@ -64,10 +64,14 @@ namespace AAMod.Items.Boss.Shen
                 else if(i == 1)
                 {
                     tooth = "AkumaTooth";
+                    knockBack += 2;
+                    damage -= 10;
                 }
                 else
                 {
                     tooth = "YamataTooth";
+                    knockBack -= 2;
+                    damage += 10;
                 }
                 Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType(tooth), damage, knockBack, player.whoAmI);

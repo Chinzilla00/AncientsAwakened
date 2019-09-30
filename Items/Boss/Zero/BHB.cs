@@ -29,7 +29,7 @@ namespace AAMod.Items.Boss.Zero
             item.value = Item.sellPrice(0, 10, 0, 0);
             item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/BHB");
             item.autoReuse = true;
-            item.shootSpeed = 60f;
+            item.shootSpeed = 10f;
             item.shoot = mod.ProjectileType("RealityLaser");
             item.useAmmo = AmmoID.Bullet;
             item.rare = 9;

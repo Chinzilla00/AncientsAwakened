@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("ZER0 PR0T0C0L");
-            Main.npcFrameCount[npc.type] = 15; 
+            Main.npcFrameCount[npc.type] = 14; 
             NPCID.Sets.TrailCacheLength[npc.type] = 20;
             NPCID.Sets.TrailingMode[npc.type] = 0;
         }
@@ -159,7 +159,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, npc.rotation, -npc.direction, 15, npc.frame, 0f, 0f, color1);
+            BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, npc.rotation, -npc.direction, 14, npc.frame, 0f, 0f, color1);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color1);
             return false;
         }
@@ -393,31 +393,20 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
             if (internalAI[3] == 1)
             {
-                if (Frame < 8)
+                if (Frame < 7)
                 {
-                    Frame = 8;
+                    Frame = 7;
                 }
-                if (Frame > 14)
+                if (Frame > 13)
                 {
-                    Frame = 14;
+                    Frame = 13;
                 }
             }
             else
             {
-                if (isGlitching)
+                if (Frame > 6)
                 {
-                    if (Frame > 7)
-                    {
-                        Frame = 0;
-                        isGlitching = false;
-                    }
-                }
-                else
-                {
-                    if (Frame > 3)
-                    {
-                        Frame = 0;
-                    }
+                    Frame = 0;
                 }
             }
 
