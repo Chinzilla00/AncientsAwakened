@@ -176,12 +176,12 @@ namespace AAMod.Projectiles.AH
 				}
 			}
 			if (foundTarget)
-			{
-				projectile.rotation = (position - projectile.Center).ToRotation() + 3.14159274f;
+            {
+                projectile.rotation = (position - projectile.Center).ToRotation() + 1.57f;
 			}
 			else
 			{
-				projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
+				projectile.rotation = projectile.velocity.ToRotation() + 1.57;
 			}
 			if (projectile.ai[1] > 0f)
 			{

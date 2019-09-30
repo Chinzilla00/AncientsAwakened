@@ -88,8 +88,8 @@ namespace AAMod.Items.Boss.Grips
             {
                 projectile.ai[1] += 1f;
                 projectile.extraUpdates = 1;
-                projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
-                
+                projectile.rotation = projectile.velocity.ToRotation() + 1.57f;
+
                 if (projectile.ai[1] > 40f)
                 {
                     projectile.ai[1] = 1f;
@@ -202,7 +202,7 @@ namespace AAMod.Items.Boss.Grips
                     projectile.velocity.Y = -0.05f;
                 }
             }
-            projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
+            projectile.rotation = projectile.velocity.ToRotation() + 1.57f;
             if (projectile.ai[1] > 0f)
             {
                 projectile.ai[1] += Main.rand.Next(1, 4);
