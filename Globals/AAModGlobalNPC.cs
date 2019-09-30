@@ -92,10 +92,6 @@ namespace AAMod
             }
         }
 
-        public int RiftTimer;
-
-        public int RiftDamage = 10;
-
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
             if (npc.type == NPCID.KingSlime || npc.type == NPCID.Plantera || 
@@ -104,31 +100,6 @@ namespace AAMod
             {
                 ApplyDPSDebuff(npc.onFire, 20, ref npc.lifeRegen);
             }
-
-            if (riftBent)
-            {
-                RiftTimer++;
-
-                if (RiftTimer >= 120)
-                {
-                    RiftDamage += 10;
-                    RiftTimer = 0;
-                }
-
-                if (RiftDamage >= 80)
-                {
-                    RiftDamage = 80;
-                }
-
-                npc.lifeRegen = 0;
-                npc.lifeRegen -= RiftDamage;
-            }
-            else
-            {
-                RiftDamage = 10;
-                RiftTimer = 0;
-            }
-
 
             if (DiscordInferno)
             {
@@ -697,19 +668,6 @@ namespace AAMod
                     Main.dust[num4].noGravity = true;
                     Main.dust[num4].scale += Main.rand.NextFloat();
                 }
-            }
-
-            if (riftBent)
-            {
-                int Loops = RiftDamage / 10;
-                for (int i = 0; i < Loops; i++)
-                {
-                    int num4 = Dust.NewDust(hitbox.TopLeft(), npc.width, npc.height, mod.DustType<Dusts.CthulhuAuraDust>(), 0f, 1f, 0);
-                    if (Main.dust[num4].velocity.Y > 0) Main.dust[num4].velocity.Y *= -1;
-                    Main.dust[num4].noGravity = true;
-                    Main.dust[num4].scale += Main.rand.NextFloat();
-                }
-                Lighting.AddLight((int)(npc.Center.X / 16f), (int)(npc.Center.Y / 16f), 0f, 0.45f, 0.45f);
             }
 
             if (DiscordInferno)
