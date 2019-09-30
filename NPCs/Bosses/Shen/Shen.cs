@@ -219,15 +219,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else
             {
-                if (npc.alpha < 0)
-                {
-                    npc.alpha = 0;
-                }
-                if (npc.alpha <= 0)
-                {
-                    npc.alpha = 0;
-                }
-                else
+                if (npc.alpha > 0)
                 {
                     for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                     {
@@ -237,6 +229,10 @@ namespace AAMod.NPCs.Bosses.Shen
                         Main.dust[num935].noLight = true;
                     }
                     npc.alpha -= 4;
+                }
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
                 }
                 npc.dontTakeDamage = false;
             }
