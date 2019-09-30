@@ -64,7 +64,7 @@ namespace AAMod
         public string nums = "1234567890";
         public static bool ModContentGenerated;
         //Messages
-        public static bool Evil;
+        public static bool AMessage;
         public static bool Empowered;
         //Boss Bools
         public static bool Ancients;
@@ -166,7 +166,7 @@ namespace AAMod
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             HallowedOre = NPC.downedMechBossAny;
-            Evil = NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
+            AMessage = NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
             RadiumOre = downedDB;
@@ -232,8 +232,8 @@ namespace AAMod
             if (downedBrood) downed.Add("Nacho");
             if (NPC.downedBoss3) downed.Add("Dynaskull");
             if (NPC.downedMechBossAny) downed.Add("MechBoss");
-            if (NPC.downedPlantBoss) downed.Add("Evil");
             if (NPC.downedMoonlord) downed.Add("MoonLord");
+            if (AMessage) downed.Add("AMessage");
             if (downedEquinox) downed.Add("Equinox");
             if (Ancients) downed.Add("AA");
             if (downedAncient) downed.Add("A");
@@ -302,8 +302,8 @@ namespace AAMod
             downedHydra = downed.Contains("Hydra");
             NPC.downedBoss3 = downed.Contains("Dynaskull");
             NPC.downedMechBossAny = downed.Contains("MechBoss");
-            NPC.downedPlantBoss = downed.Contains("Evil");
             NPC.downedMoonlord = downed.Contains("MoonLord");
+            AMessage = downed.Contains("AMessage");
             downedEquinox = downed.Contains("Equinox");
             downedAncient = downed.Contains("A");
             downedSAncient = downed.Contains("SA");
@@ -336,7 +336,7 @@ namespace AAMod
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             HallowedOre = NPC.downedMechBossAny;
-            Evil = NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
+            AMessage = NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
             Luminite = NPC.downedMoonlord;
             RadiumOre = downedEquinox;
             DiscordOres = downedSisters;
@@ -1238,7 +1238,7 @@ namespace AAMod
                 if (!TerrariumEnemies)
                 {
                     TerrariumEnemies = true;
-                    if (Main.netMode != 1) BaseUtility.Chat("You hear a hum of harmony from the Terrarium after the defeat of a great evil...", Color.LimeGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat("You hear a hum of harmony from the Terrarium after the defeat of a great AMessage...", Color.LimeGreen);
                 }
             }
             if (NPC.downedBoss3)
@@ -1264,9 +1264,9 @@ namespace AAMod
             }
             if (NPC.downedPlantBoss)
             {
-                if (!Evil)
+                if (!AMessage)
                 {
-                    Evil = true;
+                    AMessage = true;
                     if (Main.netMode != 1) BaseUtility.Chat("Hey kid, it's me, Anubis. Do me a favor and meet me back in town, I wanna talk to ya about somethin'.", Color.Gold.R, Color.Gold.G, Color.Gold.B);
                 }
             }

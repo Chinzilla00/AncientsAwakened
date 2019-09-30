@@ -27,8 +27,8 @@ namespace AAMod.NPCs.Bosses.Hydra
         public override void SetDefaults()
         {
             npc.npcSlots = 100;
-            npc.width = 96;
-            npc.height = 78;
+            npc.width = 152;
+            npc.height = 116;
             npc.aiStyle = -1;
             npc.damage = 40;
             npc.defense = 300;
@@ -137,16 +137,6 @@ namespace AAMod.NPCs.Bosses.Hydra
 				}
 			}
 		}
-
-        public override void HitEffect(int hitDir, double damage)
-        {
-            if (HeadsSpawned)
-            {
-                Head1.life -= (int)damage;
-                Head2.life -= (int)damage;
-                Head3.life -= (int)damage;
-            }
-        }
 
         public override void AI()
         {

@@ -24,8 +24,8 @@ namespace AAMod.NPCs.Bosses.Hydra
         {
             base.SetDefaults();
             npc.lifeMax = 1300;
-            npc.width = 46;
-            npc.height = 46;
+            npc.width = 42;
+            npc.height = 54;
             npc.damage = 40;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
@@ -95,7 +95,7 @@ namespace AAMod.NPCs.Bosses.Hydra
         public int damage = 0;
 
         public int distFromBodyX = 60; //how far from the body to centeralize the movement points. (X coord)
-        public int distFromBodyY = 90; //how far from the body to centeralize the movement points. (Y coord)
+        public int distFromBodyY = 110; //how far from the body to centeralize the movement points. (Y coord)
         public int movementVariance = 40; //how far from the center point to move.
         public bool fireAttack = false;
 
@@ -261,14 +261,6 @@ namespace AAMod.NPCs.Bosses.Hydra
         public override bool PreNPCLoot()
         {
             return false;
-        }
-
-        public override void HitEffect(int hitDir, double damage)
-        {
-            if (bodyNPC == null)
-            {
-                bodyNPC.life -= (int)damage;
-            }
         }
     }
 }
