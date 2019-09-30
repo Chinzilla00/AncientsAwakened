@@ -99,6 +99,12 @@ namespace AAMod.NPCs.Bosses.Zero
             
             return false;
         }
+
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+        {
+            damage = 0;
+            return false;
+        }
     }
 
     public class ZeroHandler : ModWorld
