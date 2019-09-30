@@ -175,6 +175,16 @@ namespace AAMod
             return base.CanExplode(i, j, type);
         }
 
+        public override bool Slope(int i, int j, int type)
+        {
+            if (Main.tile[i, j - 1].active() && (Main.tile[i, j - 1].type == mod.TileType<ChaosAltar1>() || Main.tile[i, j - 1].type == mod.TileType<ChaosAltar2>()) && (Main.tile[i, j].type != mod.TileType<ChaosAltar1>() || Main.tile[i, j].type != mod.TileType<ChaosAltar2>()))
+            {
+                return false;
+            }
+
+            return base.Slope(i, j, type);
+        }
+
         public override void RandomUpdate(int i, int j, int type)
         {
             if (Main.tile[i, j].type == TileID.MushroomGrass)
