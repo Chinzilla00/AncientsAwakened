@@ -34,8 +34,6 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.netAlways = true;
             npc.boss = true;
             bossBag = mod.ItemType<Items.Boss.Anubis.AnubisBag>();
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
-            npc.alpha = 50;
             npc.dontCountMe = true;
 		}
 
