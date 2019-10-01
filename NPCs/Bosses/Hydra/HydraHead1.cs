@@ -228,7 +228,6 @@ namespace AAMod.NPCs.Bosses.Hydra
             }
             npc.position += Body.npc.position - Body.npc.oldPosition;
             npc.position += bodyNPC.velocity;
-            npc.rotation = 1.57f;
             npc.spriteDirection = -1;
             BaseDrawing.AddLight(npc.Center, leftHead ? new Color(255, 84, 84) : new Color(48, 232, 232));
         }

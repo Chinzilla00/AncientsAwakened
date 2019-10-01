@@ -42,8 +42,8 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.netAlways = true;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/HydraTheme");
             npc.buffImmune[BuffID.Poisoned] = true;
-            frameWidth = 94;
-            frameHeight = 76;
+            frameWidth = 152;
+            frameHeight = 116;
             npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 44, 0, 2);
             bossBag = mod.ItemType("HydraBag");
@@ -107,7 +107,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 			{
 				if(!HeadsSpawned)
 				{
-					int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default(int[]), 200f, null);
+					int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default, 200f, null);
 					if (npcs != null && npcs.Length > 0)
 					{
 						foreach (int npcID in npcs)
@@ -289,7 +289,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             }
         }
 
-        public void AIMovementNormal(float movementScalar = 1f, float playerDistance = -1f)
+        public void AIMovementNormal()
         {
             BaseAI.AIZombie(npc, ref npc.ai, false, false, -1, 0.07f, 1f, 14, 20, 1, true, 1, 1, true, null, false);
             npc.rotation = 0f;
