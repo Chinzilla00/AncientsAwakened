@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Grips
             }
             if (blueGripExists == 0)
             {
-                if (Main.rand.Next(4) == 0)
+                if (Main.rand.Next(4) == 0 && !Main.expertMode)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ClawBaton"));
                 }

@@ -215,19 +215,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
                 npc.velocity *= 5f;
             }
-            if (dist < 40f)
-            {
-                npc.velocity *= 0.9f;
-                if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
-                if (Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
-            }
-            else
-            {
-                npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
-                npc.velocity *= 5f;
-            }
             npc.position += Body.npc.position - Body.npc.oldPosition;
-            npc.position += bodyNPC.velocity;
             npc.spriteDirection = -1;
             BaseDrawing.AddLight(npc.Center, leftHead ? new Color(255, 84, 84) : new Color(48, 232, 232));
         }

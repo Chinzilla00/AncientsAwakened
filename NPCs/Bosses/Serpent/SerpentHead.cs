@@ -500,7 +500,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                 }
                 if (Main.netMode != 1)
                 {
-                    if (internalAI[4] == 0 && npc.ai[0] == 0f)
+                    if (internalAI[4] == 0)
                     {
                         int Previous = npc.whoAmI;
                         for (int num36 = 0; num36 < 12; num36++)
@@ -508,11 +508,11 @@ namespace AAMod.NPCs.Bosses.Serpent
                             int Segment;
                             if (num36 >= 0 && num36 < 12)
                             {
-                                Segment = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), mod.NPCType("SerpentBody"), npc.whoAmI);
+                                Segment = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), mod.NPCType<SerpentBody>(), npc.whoAmI);
                             }
                             else
                             {
-                                Segment = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), mod.NPCType("SerpentTail"), npc.whoAmI);
+                                Segment = NPC.NewNPC((int)npc.position.X + (npc.width / 2), (int)npc.position.Y + (npc.height / 2), mod.NPCType<SerpentTail>(), npc.whoAmI);
                             }
                             Main.npc[Segment].realLife = npc.whoAmI;
                             Main.npc[Segment].ai[2] = npc.whoAmI;
@@ -521,7 +521,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                             NetMessage.SendData(23, -1, -1, null, Segment, 0f, 0f, 0f, 0);
                             Previous = Segment;
                         }
-                        internalAI[4] = 0;
+                        internalAI[4] = 1;
                         npc.netUpdate = true;
                     }
                 }

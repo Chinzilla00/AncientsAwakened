@@ -467,12 +467,56 @@ namespace AAMod.NPCs.Enemies.Cavern
         }
     }
 
-    public class ScavengerTail : ModNPC
+    public class ScavengerTail : Scavenger
     {
         public override void SetStaticDefaults()
         {
-            base.SetStaticDefaults();
-            npc.CloneDefaults(mod.NPCType<ScavengerBody>());
+            DisplayName.SetDefault("Scavenger");
+        }
+
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+        }
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            return false;
+        }
+
+        public override void AI()
+        {
+            if (!Main.npc[(int)npc.ai[1]].active)
+            {
+                npc.life = 0;
+                npc.HitEffect(0, 10.0);
+                npc.active = false;
+            }
+        }
+
+        public override bool CheckActive()
+        {
+            return false;
+        }
+
+        public override bool PreNPCLoot()
+        {
+            return false;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            for (int k = 0; k < 3; k++)
+            {
+                Dust.NewDust(npc.position, npc.width, npc.height, 10, hitDirection, -1f, 0, default, 1f);
+            }
+            if (npc.life <= 0)
+            {
+                for (int k = 0; k < 10; k++)
+                {
+                    Dust.NewDust(npc.position, npc.width, npc.height, 10, hitDirection, -1f, 0, default, 1f);
+                }
+            }
         }
     }
 }

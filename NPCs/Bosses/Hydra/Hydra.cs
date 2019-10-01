@@ -11,7 +11,7 @@ using System.IO;
 namespace AAMod.NPCs.Bosses.Hydra
 {
     [AutoloadBossHead]
-    public class Hydra : YamataBoss
+    public class Hydra : ModNPC
     {
         public NPC Head1;
         public NPC Head2;
@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void SetStaticDefaults()
         {
-            displayName = "Hydra";
+            DisplayName.SetDefault("Hydra");
             Main.npcFrameCount[npc.type] = 15;
         }
 
@@ -42,10 +42,6 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.netAlways = true;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/HydraTheme");
             npc.buffImmune[BuffID.Poisoned] = true;
-            frameWidth = 152;
-            frameHeight = 116;
-            npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
-            frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 44, 0, 2);
             bossBag = mod.ItemType("HydraBag");
         }
 
@@ -253,28 +249,30 @@ namespace AAMod.NPCs.Bosses.Hydra
         }
 
 
-        public override void PostAI()
+        public override void FindFrame(int frameHeight)
         {
             if (npc.velocity.X != 0)
                 npc.spriteDirection = npc.velocity.X > 0 ? 1 : -1;
 
-            nextFrameCounter--;
-            if (nextFrameCounter <= 0)
+            npc.frameCounter--;
+            if (npc.frameCounter <= 0)
             {
-                nextFrameCounter = 2;
-                frameCount++;
-                if (frameCount > 14)
-                    frameCount = 1;
+                npc.frameCounter = 5;
+                npc.frame.Y += frameHeight;
+                if (npc.frame.Y > frameHeight * 14)
+                {
+                    npc.frame.Y = frameHeight * 2;
+                }
             }
             if (npc.velocity.X == 0)
             {
-                nextFrameCounter = 0;
-                frameCount = 1;
+                npc.frameCounter = 0;
+                npc.frame.Y = 0;
             }
             if (npc.velocity.Y != 0)
             {
-                nextFrameCounter = 0;
-                frameCount = 0;
+                npc.frameCounter = 0;
+                npc.frame.Y = frameHeight;
             }
         }
 
@@ -351,15 +349,23 @@ namespace AAMod.NPCs.Bosses.Hydra
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
             dColor = npc.GetAlpha(dColor);
-            if (Head1 != null && Head2 != null && Head3 != null)
-            {
+
+            int frameWidth = 152;
+            frameBottom = BaseDrawing.GetFrame(0, frameWidth, 44, 0, 2);
+
+            if (Head2 != null && Head3 != null)
+            { 
                 DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead2", "NPCs/Bosses/Hydra/HydraHead2_Glow", Head2, dColor);
                 DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead3", "NPCs/Bosses/Hydra/HydraHead3_Glow", Head3, dColor);
-                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead1", "NPCs/Bosses/Hydra/HydraHead1_Glow", Head1, dColor); //draw main head last!
             }
             string tailTex = "NPCs/Bosses/Hydra/HydraTail";
             BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY - 30), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 1, frameBottom, dColor, false);
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
+
+            if (Head1 != null)
+            {
+                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead1", "NPCs/Bosses/Hydra/HydraHead1_Glow", Head1, dColor); //draw main head last!
+            }
             return false;
         }
     }

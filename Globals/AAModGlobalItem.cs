@@ -284,4 +284,31 @@ namespace AAMod
             }
         }
     }
+
+    public class InvokerCaligulaItem : GlobalItem
+    {
+        public override bool InstancePerEntity
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public override bool CloneNewInstances
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override bool CanUseItem(Item item, Player player)
+        {
+            if (player.GetModPlayer<InvokerPlayer>(mod).InvokedCaligula && player.inventory[player.selectedItem].damage > 0 && !(player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula && player.inventory[player.selectedItem].type == mod.ItemType("InvokerStaff") && player.altFunctionUse == 2))
+            {
+                return false;
+            }
+            return true;
+        }
+    }
 }
