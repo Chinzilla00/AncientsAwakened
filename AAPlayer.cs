@@ -1842,10 +1842,12 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("InvokerPants"));
                         player.QuickSpawnItem(mod.ItemType("InvokerHood"));
 
+                        /* 
                         if (dropType >= 1)
                         {
                             player.QuickSpawnItem(mod.ItemType("InvokerBook"));
                         }
+                        */
                         if (dropType >= 3)
                         {
                             player.QuickSpawnItem(mod.ItemType("InvokerStaff"));
