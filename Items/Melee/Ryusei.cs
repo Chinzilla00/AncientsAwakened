@@ -10,7 +10,7 @@ namespace AAMod.Items.Melee
         {
 			item.CloneDefaults(ItemID.SolarEruption);
 
-            item.damage = 48; 
+            item.damage = 70; 
             item.melee = true; 
             item.width = 46; 
             item.height = 66;    
