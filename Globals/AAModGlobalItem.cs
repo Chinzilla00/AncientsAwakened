@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using AAMod.Items.Boss.Akuma;
 using AAMod.Items.Boss.Grips;
 using AAMod.Items;
+using AAMod.Items.Dev.Invoker;
 
 namespace AAMod
 {
