@@ -144,6 +144,15 @@ BuffDescription.InfinityBurnout=它们应该冲着我的头砍
 BuffName.InfinityOverload=无限超载
 BuffDescription.InfinityOverload=对你来说，你手中的无限宝石过于强大
 
+BuffName.InvokedCaligula=召唤兽·卡利古拉
+BuffDescription.InvokedCaligula=第一个被召唤的怪兽就是你自己
+
+BuffName.InvokedCaligulaSafe=召唤兽·卡利古拉
+BuffDescription.InvokedCaligulaSafe=你的利爪猛击敌人并且能够治疗你
+
+BuffName.InvokerofMadness=暴走召唤师
+BuffDescription.InvokerofMadness=疯狂的召唤师
+
 BuffName.Irradiated=辐射
 BuffDescription.Irradiated=你的生命值持续减少
 
@@ -415,6 +424,9 @@ ItemTooltip.BlazingWings=可飞行和滑翔
 
 ItemName.WingsofChaos=冥昧之翼
 ItemTooltip.WingsofChaos=可飞行和滑翔
+
+ItemName.OlympianWings=奥林匹亚之翼
+ItemTooltip.OlympianWings=可飞行和滑翔\n飞行中可冲刺
 
 
 
@@ -914,6 +926,18 @@ ItemTooltip.OceanHelm=增加20魔力上限\n增加2%魔法伤害
 ItemName.OceanShirt=海洋胸甲
 ItemTooltip.OceanShirt=增加20魔力上限\n增加2%魔法伤害
 
+// AAMod.Items.Armor.Olympian
+
+
+ItemName.OlympianBoots=奥林匹亚护胫
+ItemTooltip.OlympianBoots=增加15%魔法暴击率
+
+ItemName.OlympianHelm=奥林匹亚头盔
+ItemTooltip.OlympianHelm=减少25%魔法消耗
+
+ItemName.OlympianPlate=奥林匹亚胸甲
+ItemTooltip.OlympianPlate=增加20%魔法伤害
+
 
 // AAMod.Items.Armor.Oroboros
 
@@ -1324,6 +1348,9 @@ ItemName.ThixxieBanner=
 ItemName.Abyssium=潭渊矿
 ItemTooltip.Abyssium=整个黏糊糊的. 真让人讨厌.\n(地下洞穴层,黑色,少量)
 
+ItemName.AcropolisBox=八音盒(天穹卫城)
+ItemTooltip.AcropolisBox=播放 'Palace in the Sky' by Turquoise
+
 ItemName.AkumaABox=八音盒(觉醒之邪鬼巨龙)
 ItemTooltip.AkumaABox=播放 'True Blazing Fury' by Kanashii
 
@@ -1332,6 +1359,9 @@ ItemTooltip.AkumaBox=播放 'Trial By Fire' by Saucecoie
 
 ItemName.AncientForge=远古锻造炉
 ItemTooltip.AncientForge=充满远古魔力的熔炉
+
+ItemName.AnubisBox=八音盒(阿努比斯)
+ItemTooltip.AnubisBox=播放 'True Blazing Fury' by Kanashii
 
 ItemName.Apocalyptite=启示矿
 ItemTooltip.Apocalyptite=(虚空浮岛)
@@ -2301,6 +2331,9 @@ ItemTooltip.AMR=发射无视物块的无限穿刺激光\n激光穿刺越多越�
 ItemName.Battery=不稳定能量胞腔
 ItemTooltip.Battery=当作弹药\n无消耗
 
+ItemName.BHB=黑洞爆裂枪
+ItemTooltip.BHB=这个武器发射3发爆破弹并随机发射一枚跟踪火箭弹
+
 ItemName.BrokenCode=破失代码
 ItemTooltip.BrokenCode=让你有5秒故障时间(译者注：当前版本实际是3秒恐慌)\n获得故障\n免疫不安定\n在冷却时间内，你的速度会提高，但你会失去无敌帧\n“你看上去不太好”
 
@@ -2634,6 +2667,12 @@ ItemTooltip.CursedSickle=在你周围旋转着一把诅咒镰刀，撕碎敌人\
 
 ItemName.CursedSickleEX=塔尔塔洛斯猎魂镰
 ItemTooltip.CursedSickleEX=在你周围旋转着一把诅咒镰刀，撕碎敌人\n右键单击可旋转镰刀\n(译者注:塔尔塔洛斯 Tartarus,是“地狱”的代名词，是地狱冥土的本体)
+
+// AAMod.Items.Dev.Invoker
+
+ItemName.InvokerBook=法之圣典
+
+ItemName.InvokerStaff=阿莱斯特之杖
 
 // AAMod.Items.DevTools
 
