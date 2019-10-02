@@ -312,15 +312,15 @@ namespace AAMod
                         return "宝石持有者";
                         case "SetChatButtons21":
                         return "Squakin' Headache";
-                        case "SetChatButtons21":
-                        return "What a Worm";
                         case "SetChatButtons22":
-                        return "Hopping Hoodlum";
+                        return "What a Worm";
                         case "SetChatButtons23":
+                        return "Hopping Hoodlum";
+                        case "SetChatButtons24":
                         return "Harpy Hags are back";
-                        case "SetChatButtons24":
+                        case "SetChatButtons25":
                         return "Riches and R.I.P. you";
-                        case "SetChatButtons24":
+                        case "SetChatButtons26":
                         return "Wrath of the Wabbit";
                         case "downedMonarchY":
                         return "…就这样? ";
@@ -530,15 +530,15 @@ namespace AAMod
                         return "The Stonekeepers";
                         case "SetChatButtons21":
                         return "Squakin' Headache";
-                        case "SetChatButtons21":
-                        return "What a Worm";
                         case "SetChatButtons22":
-                        return "Hopping Hoodlum";
+                        return "What a Worm";
                         case "SetChatButtons23":
+                        return "Hopping Hoodlum";
+                        case "SetChatButtons24":
                         return "Harpy Hags are back";
-                        case "SetChatButtons24":
+                        case "SetChatButtons25":
                         return "Riches and R.I.P. you";
-                        case "SetChatButtons24":
+                        case "SetChatButtons26":
                         return "Wrath of the Wabbit";
                         case "downedMonarchY":
                         return "...that was it?";
