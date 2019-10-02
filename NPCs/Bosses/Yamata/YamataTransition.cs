@@ -187,6 +187,83 @@ namespace AAMod.NPCs.Bosses.Yamata
 			}
         }
 
+        public override bool PreAI()
+        {
+            if (AAConfigClient.Instance.NoBossDialogue)
+            {
+                npc.TargetClosest();
+                Player player = Main.player[npc.target];
+                MoveToPoint(player.Center - new Vector2(0, 300f));
+
+                if (Vector2.Distance(npc.Center, player.Center) > 2000)
+                {
+                    npc.alpha = 255;
+                    npc.Center = player.Center - new Vector2(0, 300f);
+                }
+
+                if (Main.netMode != 2) //clientside stuff
+                {
+                    npc.frameCounter++;
+                    if (npc.frameCounter >= 7)
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y += 52;
+                    }
+                    if (npc.frame.Y > 52 * 5)
+                    {
+                        npc.frame.Y = 0;
+                    }
+                    if (npc.ai[0] > 180)
+                    {
+                        npc.alpha -= 5;
+                        if (npc.alpha < 0)
+                        {
+                            npc.alpha = 0;
+                        }
+                    }
+                    if (npc.ai[0] >= 180) //after he says 'heh' on the server, change music on the client
+                    {
+                        music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
+                    }
+                    if (npc.ai[0] >= 380)
+                    {
+                        RVal -= 5;
+                        BVal += 5;
+                        if (RVal <= 0)
+                        {
+                            RVal = 0;
+                        }
+                        if (BVal >= 380)
+                        {
+                            BVal = 255;
+                        }
+                    }
+                }
+                if (Main.netMode != 1)
+                {
+                    npc.ai[0]++;
+                    if (npc.ai[0] == 180)
+                    {
+                        npc.netUpdate = true;
+                    }
+                    else
+                    if (npc.ai[0] >= 600 && !NPC.AnyNPCs(mod.NPCType("YamataA")))
+                    {
+                        AAModGlobalNPC.SpawnBoss(player, mod.NPCType("YamataA"), false, npc.Center, "", false);
+                        if (Main.netMode != 1) BaseUtility.Chat("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+
+                        int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
+                        Main.projectile[b].Center = npc.Center;
+
+                        npc.netUpdate = true;
+                        npc.active = false;
+                    }
+                }
+                return false;
+            }
+            return true;
+        }
+
         public void MoveToPoint(Vector2 point, bool goUpFirst = false)
         {
             float moveSpeed = 14f;

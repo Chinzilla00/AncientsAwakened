@@ -50,12 +50,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 npc.buffImmune[k] = true;
             }
-            if (AAWorld.downedAllAncients)
-            {
-                npc.lifeMax = 700000;
-                npc.damage = 220;
-                npc.defense = 300;
-            }
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -71,7 +65,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
                 if (!AAWorld.downedZero)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Doomstone stops glowing. You can now mine it.", Color.Silver);
+                    if (Main.netMode != 1) BaseUtility.Chat("You feel as though you are being watched...", Color.PaleVioletRed);
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("ZeroRune"));
                 }
                 AAWorld.downedZero = true;
@@ -83,10 +77,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 if (Main.rand.Next(7) == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ZeroMask"));
-                }
-                if (Main.rand.Next(10) == 0 && AAWorld.downedAllAncients)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
                 }
                 if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
@@ -136,7 +126,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             if (npc.life <= 0 && !Main.expertMode)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) AAMod.Chat("CHEATER ALERT CHEATER ALERT. N0 DR0PS 4 U", Color.Red.R, Color.Red.G, Color.Red.B);
             }
         }
 
@@ -212,11 +202,11 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     {
                         if (player.dead)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
+                            if (Main.netMode != 1) AAMod.Chat("TARGET NEUTRALIZED. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                         }
                         else if (tooFar)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
+                            if (Main.netMode != 1) AAMod.Chat("TARGET L0ST. RETURNING T0 0RBIT.", Color.Red.R, Color.Red.G, Color.Red.B);
                         }
                         PlayerDead = true;
                     }

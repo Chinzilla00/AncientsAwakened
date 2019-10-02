@@ -99,7 +99,6 @@ namespace AAMod.NPCs.TownNPCs
         public static bool Zero = false;
         public static bool Shen = false;
         public static bool RajahC = false;
-        public static bool Stones = false;
         public static bool BaseChat = false;
         public static int ChatNumber = 0;
 
@@ -127,7 +126,6 @@ namespace AAMod.NPCs.TownNPCs
             Zero = false;
             Shen = false;
             RajahC = false;
-            Stones = false;
         }
         
         public override void SetChatButtons(ref string button, ref string button2)
@@ -175,8 +173,6 @@ namespace AAMod.NPCs.TownNPCs
             string ShenT = "Discordian Doomsayer";
 
             string RajahCT = "Wrath of the Wabbit";
-
-            string StonesT = "The Stonekeepers";
 
             button = SwitchInfoT;
 
@@ -280,15 +276,10 @@ namespace AAMod.NPCs.TownNPCs
                 button2 = ShenT;
                 Shen = true;
             }
-            else if (ChatNumber == 20 && AAWorld.downedShen)
-            {
-                button2 = StonesT;
-                Stones = true;
-            }
-            else if (ChatNumber == 21 && AAWorld.downedRajahsRevenge)
+            else if (ChatNumber == 20 && AAWorld.downedRajahsRevenge)
             {
                 button2 = RajahCT;
-                Stones = true;
+                RajahC = true;
             }
             else
             {
@@ -321,7 +312,6 @@ namespace AAMod.NPCs.TownNPCs
             Zero = false;
             Shen = false;
             RajahC = false;
-            Stones = true;
         }
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -473,10 +463,6 @@ namespace AAMod.NPCs.TownNPCs
             {
                 return AAWorld.downedShen ?  "So ol' Rajah finally decided to hang up the scepter? Seems like he thought you were the right pick to protect those in need. I'd do what he says. It's the right thing to do, in my opinion." :
                     "Them bunnies have been getting pretty riled up lately. Something ain't right. I just feel it...";
-            }
-            else if (Stones)
-            {
-                return "You know...after you whooped ol' Shen, I felt some...very old magic activate. Maybe you should pay a visit to some of the tougher bosses you've come across? By the way, have you seen the Goblin Summoner recently? Jeeze she got tough. Wonder what her deal is.";
             }
             else
             {

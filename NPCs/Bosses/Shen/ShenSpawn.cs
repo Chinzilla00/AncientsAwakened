@@ -31,20 +31,22 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
+        int dustx = 50;
+
         public override void AI()
         {
             npc.TargetClosest();
             Player player = Main.player[npc.target];
             npc.Center = player.Center - new Vector2(0, 300f);
             npc.ai[0]++;
-            if (npc.ai[0] < 900)
+            if (npc.ai[0] <= 960)
             {
                 for (int LOOP = 0; LOOP < 4; LOOP++)
                 {
                     Dust dust1;
                     Dust dust2;
-                    Vector2 position1 = new Vector2(npc.Center.X + 50, npc.Center.Y);
-                    Vector2 position2 = new Vector2(npc.Center.X - 50, npc.Center.Y);
+                    Vector2 position1 = new Vector2(npc.Center.X + dustx, npc.Center.Y);
+                    Vector2 position2 = new Vector2(npc.Center.X - dustx, npc.Center.Y);
                     dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
                     dust1.noGravity = false;
                     dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
@@ -53,7 +55,19 @@ namespace AAMod.NPCs.Bosses.Shen
                     dust2.velocity.Y -= 6;
                 }
             }
-            
+            else if (npc.ai[0] > 960 && npc.ai[0] < 1640)
+            {
+                for (int LOOP = 0; LOOP < 8; LOOP++)
+                {
+                    Dust dust1;
+                    Vector2 position1 = npc.Center;
+                    dust1 = Main.dust[Dust.NewDust(position1, 20, 20, mod.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
+                    dust1.noGravity = false;
+                    dust1.scale *= 1.3f;
+                    dust1.velocity.Y -= 6;
+                }
+            }
+
             if (npc.ai[0] == 180)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("Surprised to see us again, Kid?", new Color(180, 41, 32));
@@ -73,176 +87,123 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (Main.netMode != 1) BaseUtility.Chat("We used to be the same being..! But then a Terrarian wretch like you split our soul in half..! But now...heheheh...", new Color(45, 46, 70));
             }
-
             if (npc.ai[0] == 900)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("WE ARE COMPLETE AGAIN", new Color(180, 41, 32));
                 if (Main.netMode != 1) BaseUtility.Chat("WE ARE COMPLETE AGAIN", new Color(45, 46, 70));
-                for (int LOOP = 0; LOOP < 4; LOOP++)
+            }
+
+            if (dustx > 0 && npc.ai[0] >= 900)
+            {
+                dustx -= 1;
+                if (dustx < 0)
                 {
-                    Dust dust1;
-                    Dust dust2;
-                    Vector2 position1 = new Vector2(npc.Center.X + 40, npc.Center.Y);
-                    Vector2 position2 = new Vector2(npc.Center.X - 40, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
-                    dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
-                    dust2.noGravity = true;
-                    dust2.scale *= 1.3f;
-                    dust2.velocity.Y -= 6;
+                    dustx = 0;
                 }
             }
 
-            if (npc.ai[0] <= 930 && npc.ai[0] >= 900)
-            {
-                for (int LOOP = 0; LOOP < 4; LOOP++)
-                {
-                    Dust dust1;
-                    Dust dust2;
-                    Vector2 position1 = new Vector2(npc.Center.X + 35, npc.Center.Y);
-                    Vector2 position2 = new Vector2(npc.Center.X - 35, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
-                    dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
-                    dust2.noGravity = true;
-                    dust2.scale *= 1.3f;
-                    dust2.velocity.Y -= 6;
-                }
-            }
-
-            if (npc.ai[0] <= 960 && npc.ai[0] >= 930)
-            {
-                for (int LOOP = 0; LOOP < 4; LOOP++)
-                {
-                    Dust dust1;
-                    Dust dust2;
-                    Vector2 position1 = new Vector2(npc.Center.X + 30, npc.Center.Y);
-                    Vector2 position2 = new Vector2(npc.Center.X - 30, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
-                    dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
-                    dust2.noGravity = true;
-                    dust2.scale *= 1.3f;
-                    dust2.velocity.Y -= 6;
-                }
-            }
-
-            if (npc.ai[0] <= 990 && npc.ai[0] >= 960)
-            {
-                for (int LOOP = 0; LOOP < 4; LOOP++)
-                {
-                    Dust dust1;
-                    Dust dust2;
-                    Vector2 position1 = new Vector2(npc.Center.X + 25, npc.Center.Y);
-                    Vector2 position2 = new Vector2(npc.Center.X - 25, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
-                    dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
-                    dust2.noGravity = true;
-                    dust2.scale *= 1.3f;
-                    dust2.velocity.Y -= 6;
-                }
-            }
-
-            if (npc.ai[0] <= 1010 && npc.ai[0] >= 990)
-            {
-                for (int LOOP = 0; LOOP < 4; LOOP++)
-                {
-                    Dust dust1;
-                    Dust dust2;
-                    Vector2 position1 = new Vector2(npc.Center.X + 15, npc.Center.Y);
-                    Vector2 position2 = new Vector2(npc.Center.X - 15, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
-                    dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
-                    dust2.noGravity = true;
-                    dust2.scale *= 1.3f;
-                    dust2.velocity.Y -= 6;
-                }
-            }
-
-            if (npc.ai[0] <= 1040 && npc.ai[0] >= 1010)
-            {
-                Dust dust1;
-                Dust dust2;
-                Vector2 position1 = new Vector2(npc.Center.X + 10, npc.Center.Y);
-                Vector2 position2 = new Vector2(npc.Center.X - 10, npc.Center.Y);
-                dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
-                dust1.noGravity = false;
-                dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
-                dust2.noGravity = true;
-                dust2.scale *= 1.3f;
-                dust2.velocity.Y -= 6;
-            }
-
-            if (npc.ai[0] <= 1070 && npc.ai[0] >= 1040)
-            {
-                for (int LOOP = 0; LOOP < 4; LOOP++)
-                {
-                    Dust dust1;
-                    Dust dust2;
-                    Vector2 position1 = new Vector2(npc.Center.X + 5, npc.Center.Y);
-                    Vector2 position2 = new Vector2(npc.Center.Y - 5, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
-                    dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
-                    dust2.noGravity = true;
-                    dust2.scale *= 1.3f;
-                    dust2.velocity.Y -= 6;
-                }
-            }
-
-            if (npc.ai[0] > 1070 && npc.ai[0] < 1640)
-            {
-                for (int LOOP = 0; LOOP < 8; LOOP++)
-                {
-                    Dust dust1;
-                    Vector2 position1 = npc.Center;
-                    dust1 = Main.dust[Dust.NewDust(position1, 20, 20, mod.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
-                    dust1.noGravity = false;
-                    dust1.scale *= 1.3f;
-                    dust1.velocity.Y -= 6;
-                }
-            }
-
-            if (npc.ai[0] == 1280)
+            if (npc.ai[0] == 960)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("Heh....heheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
-            if (npc.ai[0] == 1460)
+            if (npc.ai[0] == 1140)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("You've made a grave mistake, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
-            if (npc.ai[0] == 1640)
+            if (npc.ai[0] == 1320)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("For you see....", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
-            if (npc.ai[0] >= 1640)
+            if (npc.ai[0] >= 1500)
             {
                 npc.alpha -= 5;
             }
 
-            if (npc.ai[0] == 1640)
+            if (npc.ai[0] == 1520)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("I AM SHEN DORAGON, EMPEROR OF CHAOS AND ANARCHY!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
-            if (npc.ai[0] == 1820)
+            if (npc.ai[0] == 1700)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("And you, my child, will face the wrath and fury of chaos itself..!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("And you, my child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
-            if (npc.ai[0] >= 2000)
+            if (npc.ai[0] >= 1880)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("DIE!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat("WILL PERISH!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 SummonShen();
                 npc.active = false;
             }
+        }
+
+        public override bool PreAI()
+        {
+            if (AAConfigClient.Instance.NoBossDialogue)
+            {
+                npc.TargetClosest();
+                Player player = Main.player[npc.target];
+                npc.Center = player.Center - new Vector2(0, 300f); ;
+                npc.ai[0]++;
+
+                if (npc.ai[0] <= 960)
+                {
+                    for (int LOOP = 0; LOOP < 4; LOOP++)
+                    {
+                        Dust dust1;
+                        Dust dust2;
+                        Vector2 position1 = new Vector2(npc.Center.X + dustx, npc.Center.Y);
+                        Vector2 position2 = new Vector2(npc.Center.X - dustx, npc.Center.Y);
+                        dust1 = Main.dust[Dust.NewDust(position1, 1, 1, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
+                        dust1.noGravity = false;
+                        dust2 = Main.dust[Dust.NewDust(position2, 1, 1, mod.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
+                        dust2.noGravity = true;
+                        dust2.scale *= 1.3f;
+                        dust2.velocity.Y -= 6;
+                    }
+                }
+                else if (npc.ai[0] > 960 && npc.ai[0] < 1640)
+                {
+                    for (int LOOP = 0; LOOP < 8; LOOP++)
+                    {
+                        Dust dust1;
+                        Vector2 position1 = npc.Center;
+                        dust1 = Main.dust[Dust.NewDust(position1, 20, 20, mod.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
+                        dust1.noGravity = false;
+                        dust1.scale *= 1.3f;
+                        dust1.velocity.Y -= 6;
+                    }
+                }
+
+                if (npc.ai[0] >= 400)
+                {
+                    npc.alpha -= 5;
+                }
+
+
+                if (dustx > 0 && npc.ai[0] >= 900)
+                {
+                    dustx -= 1;
+                    if (dustx < 0)
+                    {
+                        dustx = 0;
+                    }
+                }
+
+                if (npc.ai[0] >= 600)
+                {
+                    SummonShen();
+                    npc.active = false;
+                    npc.netUpdate = true;
+                }
+                return false;
+            }
+            return true;
         }
 
         public void SummonShen()
@@ -304,9 +265,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             if (npc.ai[1] > 240)
             {
-                int i = AAWorld.downedShen ? 1 : 0;
-                NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<ShenDeath>(), 0, i);
-                npc.active = false;
+                npc.life = 0;
                 npc.netUpdate = true;
             }
             else
@@ -324,6 +283,12 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                 }
             }
+        }
+
+        public override void NPCLoot()
+        {
+            int i = AAWorld.downedShen ? 0 : 1;
+            NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<ShenDeath>(), 0, i);
         }
     }
 
@@ -356,6 +321,12 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
+            if (AAConfigClient.Instance.NoBossDialogue)
+            {
+                AAWorld.downedShen = true;
+                npc.active = false;
+                npc.netUpdate = true;
+            }
             npc.TargetClosest();
             Player player = Main.player[npc.target];
             npc.Center = player.Center;
@@ -474,7 +445,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.timeLeft = 10;
             }
-            if (npc.alpha > 0 && npc.ai[0] > 375)
+            if (npc.alpha < 255 && npc.ai[0] > 350)
             {
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA");
                 for (int LOOP = 0; LOOP < 8; LOOP++)
@@ -521,7 +492,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if (npc.ai[0] == 1100)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("I have only been using a fraction of my true power...and now...heheheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat("But now, you stand in my path...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     npc.netUpdate = true;
                 }
                 if (npc.ai[0] >= 1400)
@@ -531,15 +502,52 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.netUpdate = true;
                 }
             }
+        }
+
+        public override bool PreAI()
+        {
+            if (AAConfigClient.Instance.NoBossDialogue)
+            {
+                npc.TargetClosest();
+                Player player = Main.player[npc.target];
+                npc.Center = player.Center - new Vector2(0, 300f); ;
+                npc.ai[0]++;
+                if (npc.alpha < 255 && npc.ai[0] > 200)
+                {
+                    music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA");
+                    for (int LOOP = 0; LOOP < 8; LOOP++)
+                    {
+                        Dust dust1;
+                        Vector2 position1 = npc.Center;
+                        dust1 = Main.dust[Dust.NewDust(position1, 20, 20, mod.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
+                        dust1.noGravity = false;
+                        dust1.scale *= 1.3f;
+                        dust1.velocity.Y -= 6;
+                    }
+                }
+
+                if (npc.ai[0] >= 400)
+                {
+                    npc.alpha -= 5;
+                }
 
 
+                if (npc.ai[0] >= 600)
+                {
+                    SummonShen();
+                    npc.active = false;
+                    npc.netUpdate = true;
+                }
+                return false;
+            }
+            return true;
         }
 
         public void SummonShen()
         {
             Player player = Main.player[npc.target];
             if (Main.netMode != 1) BaseUtility.Chat("Shen Doragon has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            if (Main.netMode != 1) BaseUtility.Chat("YOU WILL BURN IN THE FLAMES OF DISCORDIAN HELL!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+            if (Main.netMode != 1) BaseUtility.Chat("SO YOU WILL BURN IN THE FLAMES OF DISCORDIAN HELL!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
             Main.projectile[b].Center = npc.Center;

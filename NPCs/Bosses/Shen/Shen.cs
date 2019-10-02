@@ -207,7 +207,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (NPC.AnyNPCs(mod.NPCType<GripsShen.BlazeGrip>()) || NPC.AnyNPCs(mod.NPCType<GripsShen.AbyssGrip>()))
             {
-                if (npc.alpha < 50)
+                if (npc.alpha > 50)
                 {
                     npc.alpha = 50;
                 }
@@ -224,6 +224,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                     {
                         int dust = spawnDust == 1 ? mod.DustType<Dusts.AkumaADust>() : mod.DustType<Dusts.YamataADust>();
+                        if (Main.rand.Next(4) == 0) dust = mod.DustType<Dusts.Discord>();
                         int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = true;
                         Main.dust[num935].noLight = true;
@@ -301,7 +302,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     break;
 
                 case 1: //Fire Breath
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<ShenABreath>(), ref npc.ai[2], 5, npc.damage / 2, 13, false);
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<ShenABreath>(), ref npc.ai[2], 5, npc.damage / 2, 13, false, new Vector2(167 * npc.direction, 0));
                     if (++npc.ai[1] > 120)
                     {
                         npc.ai[0]++;
@@ -399,7 +400,6 @@ namespace AAMod.NPCs.Bosses.Shen
                         break;
                     targetPos = player.Center;
                     targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y += 400;
                     Movement(targetPos, .8f);
                     if (++npc.ai[2] > 80)
                     {
@@ -561,7 +561,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     break;
 
                 case 14: //fly in jumbo circle
-                    Dashing = true;
                     npc.velocity -= npc.velocity.RotatedBy(Math.PI / 2) * npc.velocity.Length() / npc.ai[3];
                     if (++npc.ai[2] > 5)
                     {
@@ -584,6 +583,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.ai[3] = 0;
                     }
                     npc.rotation = npc.velocity.ToRotation();
+                    Dashing = true;
                     break;
 
                 case 15: //wait for old attack to go away
@@ -724,26 +724,26 @@ namespace AAMod.NPCs.Bosses.Shen
             if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && !isAwakened)
             {
                 SpawnGrips = true;
-                if (Main.netMode != 1) BaseUtility.Chat("Grips! Assist me!", Color.DarkMagenta);
+                if (Main.netMode != 1) AAMod.Chat("Grips! Assist me!", Color.DarkMagenta);
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AbyssGrip"), false, 0, 0);
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("BlazeGrip"), false, 0, 0);
                 Main.PlaySound(SoundID.Roar, player.position, 0);
             }
-            if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && isAwakened)
+            if (npc.life <= npc.lifeMax * .4f && !SpawnGrips && isAwakened)
             {
                 SpawnGrips = true;
 
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Ashe? Haruka? I need your assistance again..!", Color.DarkMagenta);
-                    if (Main.netMode != 1) BaseUtility.Chat("On it, Papa~!", new Color(102, 20, 48));
-                    if (Main.netMode != 1) BaseUtility.Chat("Again..?", new Color(72, 78, 117));
+                    if (Main.netMode != 1) AAMod.Chat("Ashe? Haruka? I need your assistance again..!", Color.DarkMagenta);
+                    if (Main.netMode != 1) AAMod.Chat("On it, Papa~!", new Color(102, 20, 48));
+                    if (Main.netMode != 1) AAMod.Chat("Again..?", new Color(72, 78, 117));
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Girls..? Help your father with this insignificant mortal.", Color.DarkMagenta);
-                    if (Main.netMode != 1) BaseUtility.Chat("With pleasure, Papa~!", new Color(102, 20, 48));
-                    if (Main.netMode != 1) BaseUtility.Chat("Yes, father.", new Color(72, 78, 117));
+                    if (Main.netMode != 1) AAMod.Chat("Girls..? Help your father with this insignificant kid.", Color.DarkMagenta);
+                    if (Main.netMode != 1) AAMod.Chat("With pleasure, Papa~!", new Color(102, 20, 48));
+                    if (Main.netMode != 1) AAMod.Chat("Yes, father.", new Color(72, 78, 117));
                 }
 
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("FuryAshe"), false, 0, 0);
@@ -754,11 +754,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("You are quite persistent, Child. I like that.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Quite the skill, kid.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("What's this? Competence? I would have never expected...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("What's this? Competence? Impressive.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health4 = true;
                 npc.netUpdate = true;
@@ -767,11 +767,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("True warriors don't show mercy! I won't and I doubt you will either..!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("You're a real fighter, you know. Now stand still and let me grill you.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Give up, child. The world will always fall into chaos!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Chaos always reigns, kid. You terrarians never seem to learn that.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health3 = true;
                 npc.netUpdate = true;
@@ -780,11 +780,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("SHOW NO MERCY!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Looks like you're turning tide, but not for long!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("What? You're still fighting? Why?!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Hmm...still fighting, eh?", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health1 = true;
                 npc.netUpdate = true;
@@ -800,12 +800,12 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     if (!AAWorld.downedShen)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                        if (Main.netMode != 1) AAMod.Chat("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                         if (Main.netMode != 1) BaseUtility.Chat("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     else
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("Good show, child, good show. Your combat prowess still impresses me! Maybe some day I'll show you my true power.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                        if (Main.netMode != 1) AAMod.Chat("Good show, child, good show. Your combat prowess still impresses me! Maybe some day I'll show you my true power.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     }
                     AAWorld.downedShen = true;
                     npc.DropLoot(mod.ItemType("ChaosScale"), 20, 30);
@@ -846,6 +846,29 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.position.Y -= 130f;
             return false;
         }
+        public static int ShootPeriodic(Entity codable, Vector2 position, int width, int height, int projType, ref float delayTimer, float delayTimerMax = 100f, int damage = -1, float speed = 10f, bool checkCanHit = true)
+        {
+            int pID = -1;
+            if (damage == -1) { Projectile proj = new Projectile(); proj.SetDefaults(projType); damage = proj.damage; }
+            bool properSide = (codable is NPC ? Main.netMode != 1 : codable is Projectile ? ((Projectile)codable).owner == Main.myPlayer : true);
+            if (properSide)
+            {
+                Vector2 targetCenter = position + new Vector2(width * 0.5f, height * 0.5f);
+                delayTimer--;
+                if (delayTimer <= 0)
+                {
+                    if (!checkCanHit || Collision.CanHit(codable.position, codable.width, codable.height, position, width, height))
+                    {
+                        Vector2 fireTarget = codable.Center + new Vector2(167 * codable.direction, 0);
+                        float rot = BaseUtility.RotationTo(codable.Center, targetCenter);
+                        fireTarget = BaseUtility.RotateVector(codable.Center, fireTarget, rot);
+                        pID = BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage, 0f, speed);
+                    }
+                    delayTimer = delayTimerMax;
+                    if (codable is NPC) { ((NPC)codable).netUpdate = true; }
+                }
+            }
+            return pID;
+        }
     }
-
 }

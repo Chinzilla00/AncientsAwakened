@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using AAMod.Items.Boss.Akuma;
 using AAMod.Items.Boss.Grips;
 using AAMod.Items;
+using AAMod.Items.Dev.Invoker;
 
 namespace AAMod
 {
@@ -282,6 +283,33 @@ namespace AAMod
                     player.QuickSpawnItem(item, Main.rand.Next(2, 6));
                 }
             }
+        }
+    }
+
+    public class InvokerCaligulaItem : GlobalItem
+    {
+        public override bool InstancePerEntity
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public override bool CloneNewInstances
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override bool CanUseItem(Item item, Player player)
+        {
+            if (player.GetModPlayer<InvokerPlayer>(mod).InvokedCaligula && player.inventory[player.selectedItem].damage > 0 && !(player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula && player.inventory[player.selectedItem].type == mod.ItemType("InvokerStaff") && player.altFunctionUse == 2))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
