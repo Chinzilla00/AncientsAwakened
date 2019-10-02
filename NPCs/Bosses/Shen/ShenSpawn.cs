@@ -122,19 +122,19 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.alpha -= 5;
             }
 
-            if (npc.ai[0] == 1680)
+            if (npc.ai[0] == 1520)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("I AM SHEN DORAGON, EMPEROR OF CHAOS AND ANARCHY!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
-            if (npc.ai[0] == 1860)
+            if (npc.ai[0] == 1700)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("And you, my child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
-            if (npc.ai[0] >= 2040)
+            if (npc.ai[0] >= 1880)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("WILL PERISH!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 SummonShen();
