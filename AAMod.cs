@@ -2,6 +2,7 @@ using AAMod.Backgrounds;
 using AAMod.Globals;
 using AAMod.UI;
 using AAMod.UI.Core;
+using AAMod.Items.Dev.Invoker;
 using BaseMod;
 using log4net;
 using Microsoft.Xna.Framework;
@@ -401,8 +402,12 @@ namespace AAMod
             sun3TextureBackup = Main.sun3Texture;
 
             AddEquipTexture(new InvokedCaligulaHead(), null, EquipType.Head, "InvokedCaligulaHead", "AAMod/Items/Dev/Invoker/InvokedCaligula_Head", "", "");
-			AddEquipTexture(new InvokedCaligulaBody(), null, EquipType.Body, "InvokedCaligulaBody", "AAMod/Items/Dev/Invoker/InvokedCaligula_Body", "AAMod/Items/Dev/Invoker/InvokedCaligula_Arms", "");
-			AddEquipTexture(new InvokedCaligulaLegs(), null, EquipType.Legs, "InvokedCaligulaLegs", "AAMod/Items/Dev/Invoker/InvokedCaligula_Legs", "", "");
+            AddEquipTexture(new InvokedCaligulaBody(), null, EquipType.Body, "InvokedCaligulaBody", "AAMod/Items/Dev/Invoker/InvokedCaligula_Body", "AAMod/Items/Dev/Invoker/InvokedCaligula_Arms", "");
+            AddEquipTexture(new InvokedCaligulaLegs(), null, EquipType.Legs, "InvokedCaligulaLegs", "AAMod/Items/Dev/Invoker/InvokedCaligula_Legs", "", "");
+
+            AddEquipTexture(new InvokerHead(), null, EquipType.Head, "InvokerHead", "AAMod/Items/Vanity/Invoker/InvokerHood_Head", "", "");
+            AddEquipTexture(new InvokerBody(), null, EquipType.Body, "InvokerBody", "AAMod/Items/Vanity/Invoker/InvokerRobe_Body", "AAMod/Items/Vanity/Invoker/InvokerRobe_Arms", "");
+            AddEquipTexture(new InvokerLegs(), null, EquipType.Legs, "InvokerLegs", "AAMod/Items/Vanity/Invoker/InvokerPants_Legs", "", "");
         }
 
         //DO NOT MAKE THESE STATIC! DOING SO WILL PREVENT WHAT IT FIXES FROM HAPPENING.
