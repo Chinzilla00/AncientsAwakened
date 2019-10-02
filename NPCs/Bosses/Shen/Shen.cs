@@ -207,7 +207,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (NPC.AnyNPCs(mod.NPCType<GripsShen.BlazeGrip>()) || NPC.AnyNPCs(mod.NPCType<GripsShen.AbyssGrip>()))
             {
-                if (npc.alpha < 50)
+                if (npc.alpha > 50)
                 {
                     npc.alpha = 50;
                 }
@@ -224,6 +224,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                     {
                         int dust = spawnDust == 1 ? mod.DustType<Dusts.AkumaADust>() : mod.DustType<Dusts.YamataADust>();
+                        if (Main.rand.Next(4) == 0) dust = mod.DustType<Dusts.Discord>();
                         int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = true;
                         Main.dust[num935].noLight = true;
@@ -301,7 +302,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     break;
 
                 case 1: //Fire Breath
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<ShenABreath>(), ref npc.ai[2], 5, npc.damage / 2, 13, false);
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<ShenABreath>(), ref npc.ai[2], 5, npc.damage / 2, 13, false, new Vector2(167 * npc.direction, 0));
                     if (++npc.ai[1] > 120)
                     {
                         npc.ai[0]++;
@@ -561,7 +562,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     break;
 
                 case 14: //fly in jumbo circle
-                    Dashing = true;
                     npc.velocity -= npc.velocity.RotatedBy(Math.PI / 2) * npc.velocity.Length() / npc.ai[3];
                     if (++npc.ai[2] > 5)
                     {
@@ -584,6 +584,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.ai[3] = 0;
                     }
                     npc.rotation = npc.velocity.ToRotation();
+                    Dashing = true;
                     break;
 
                 case 15: //wait for old attack to go away

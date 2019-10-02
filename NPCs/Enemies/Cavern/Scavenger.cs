@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Audio;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Enemies.Cavern
 {
@@ -17,8 +18,8 @@ namespace AAMod.NPCs.Enemies.Cavern
         public override void SetDefaults()
         {
             npc.damage = 40;
-            npc.width = 28;
-            npc.height = 28;
+            npc.width = 50;
+            npc.height = 50;
             npc.defense = 0;
             npc.lifeMax = 1000;
             npc.aiStyle = 6;
@@ -411,6 +412,12 @@ namespace AAMod.NPCs.Enemies.Cavern
             BaseAI.DropItem(npc, mod.ItemType("CovetiteCrystal"), Main.expertMode ? 1 + Main.rand.Next(1) : 1, 5, Main.expertMode ? 40 : 30, true);
             npc.DropLoot(mod.ItemType<Items.Usable.GreedKey>(), .05f);
         }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 1, npc.frame, drawColor, true);
+            return false;
+        }
     }
 
 
@@ -424,6 +431,8 @@ namespace AAMod.NPCs.Enemies.Cavern
         public override void SetDefaults()
         {
             base.SetDefaults();
+            npc.width = 36;
+            npc.height = 36;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -464,6 +473,11 @@ namespace AAMod.NPCs.Enemies.Cavern
                     Dust.NewDust(npc.position, npc.width, npc.height, 10, hitDirection, -1f, 0, default, 1f);
                 }
             }
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 1, npc.frame, drawColor, true);
+            return false;
         }
     }
 
@@ -477,6 +491,8 @@ namespace AAMod.NPCs.Enemies.Cavern
         public override void SetDefaults()
         {
             base.SetDefaults();
+            npc.width = 44;
+            npc.height = 44;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -517,6 +533,11 @@ namespace AAMod.NPCs.Enemies.Cavern
                     Dust.NewDust(npc.position, npc.width, npc.height, 10, hitDirection, -1f, 0, default, 1f);
                 }
             }
+        }
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 1, npc.frame, drawColor, true);
+            return false;
         }
     }
 }

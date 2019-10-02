@@ -467,6 +467,7 @@ namespace AAMod.NPCs.Bosses.Greed
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D texture = Main.npcTexture[npc.type];
+            Texture2D glow = mod.GetTexture("Glowmasks/GreedA_Glow");
             Texture2D Atk = mod.GetTexture("NPCs/Bosses/Greed/ABoost");
             Texture2D Def = mod.GetTexture("NPCs/Bosses/Greed/DBoost");
 
@@ -487,7 +488,7 @@ namespace AAMod.NPCs.Bosses.Greed
                     color.G = b3;
                 }
                 color.A = Main.mouseTextColor;
-                BaseDrawing.DrawTexture(spritebatch, texture, 0, npc, color);
+                BaseDrawing.DrawTexture(spritebatch, glow, 0, npc, color);
             }
 
             rot += .1f;
