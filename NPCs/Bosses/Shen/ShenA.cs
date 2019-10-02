@@ -734,11 +734,11 @@ namespace AAMod.NPCs.Bosses.Shen
                 Text.Add("Now that I think about it, though, you cracking open that overseer like an egg? Quite the strength that had to have needed.");
             }
 
-            if (AAMod.jsLoaded && JetshiftMod.JetshiftWorld.downedCosmicMystery)
+            /*if (AAMod.jsLoaded && JetshiftMod.JetshiftWorld.downedCosmicMystery)
             {
                 a = true;
                 Text.Add("But slaying those two meteor-squatting crystal things? That's quite an eye-catcher.");
-            }
+            }*/
 
             if (!a)
             {
