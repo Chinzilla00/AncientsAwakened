@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Armor.Chaos
@@ -33,7 +34,7 @@ namespace AAMod.Items.Armor.Chaos
             ModRecipe recipe = new ModRecipe(AAMod.instance);
             recipe.AddRecipeGroup("AAMod:ChaosPlates");
             recipe.AddIngredient(null, "ChaosCrystal");
-            recipe.AddTile(null, "TruePaladinsSmeltery");
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

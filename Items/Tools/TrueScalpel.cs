@@ -34,7 +34,7 @@ namespace AAMod.Items.Tools
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod, "Scalpel");
-            recipe.AddIngredient(mod, "CrimsonCrystal");
+            recipe.AddIngredient(mod, "HeroShards");
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -1,15 +1,10 @@
-using Terraria.ModLoader;
-using System.Collections.Generic;
-
-namespace AAMod.Items.Boss.Athena
+namespace AAMod.Items.Boss.Anubis
 {
-    public class AthenaTrophy : BaseAAItem
+    public class AnubisTrophy : BaseAAItem
 	{
-        public static int type;
-        
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Athena Trophy");
+            DisplayName.SetDefault("Anubis Trophy");
 		}
 
         public override void SetDefaults()
@@ -26,7 +21,7 @@ namespace AAMod.Items.Boss.Athena
 			item.consumable = true;
 			item.value = 2000;
 			item.rare = 1;
-			item.createTile = mod.TileType("AthenaTrophy");
+			item.createTile = mod.TileType("AnubisTrophy");
 		}
 	}
 }

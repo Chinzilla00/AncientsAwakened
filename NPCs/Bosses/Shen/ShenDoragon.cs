@@ -1,15 +1,6 @@
-﻿using BaseMod;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.IO;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
-namespace AAMod.NPCs.Bosses.Shen
+﻿namespace AAMod.NPCs.Bosses.Shen
 {
-    [AutoloadBossHead]
+    /*[AutoloadBossHead]
     public class ShenDoragon : ModNPC
     {
         public int damage = 0;
@@ -122,7 +113,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
         public bool ChargePrep => npc.ai[0] == 0.5f || customAI[3] == 0.5f;
-        public bool Charging => npc.ai[0] == 1;
+        public bool Charging => npc.ai[0] == 1 && npc.type == mod.NPCType<Shen>();
         public bool SnapToPlayer //wether to 'snap' relative to a player's position. This forces the player to be unable to outrun the npc while this is true.
         {
             get
@@ -1172,5 +1163,5 @@ namespace AAMod.NPCs.Bosses.Shen
             return false;
         }
     }
-
+    */
 }

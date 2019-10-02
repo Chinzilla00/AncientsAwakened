@@ -56,16 +56,16 @@ namespace AAMod.NPCs.TownNPCs
 		}
 
 		public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-		{
-			for (int k = 0; k < 255; k++)
-			{
-				Player player = Main.player[k];
-				if (player.active)
-				{
+        {
+            for (int k = 0; k < 255; k++)
+            {
+                Player player = Main.player[k];
+                if (player.active)
+                {
                     return true;
                 }
-			}
-			return false;
+            }
+            return false;
 		}
 
 		public override string TownNPCName()
@@ -86,16 +86,19 @@ namespace AAMod.NPCs.TownNPCs
         public static bool Hydra = false;
         public static bool Djinn = false;
         public static bool Serpent = false;
-        public static bool Retriever = false;
-        public static bool Raider = false;
-        public static bool Orthrus = false;
-        public static bool Equinox = false;
         public static bool AnubisB = false;
+        public static bool Athena = false;
+        public static bool Greed = false;
+        public static bool Rajah = false;
+        public static bool AthenaA = false;
+        public static bool GreedA = false;
+        public static bool Equinox = false;
         public static bool Sisters = false;
         public static bool Akuma = false;
         public static bool Yamata = false;
         public static bool Zero = false;
         public static bool Shen = false;
+        public static bool RajahC = false;
         public static bool Stones = false;
         public static bool BaseChat = false;
         public static int ChatNumber = 0;
@@ -111,13 +114,19 @@ namespace AAMod.NPCs.TownNPCs
             Hydra = false;
             Djinn = false;
             Serpent = false;
-            Equinox = false;
             AnubisB = false;
+            Athena = false;
+            Greed = false;
+            Rajah = false;
+            AthenaA = false;
+            GreedA = false;
+            Equinox = false;
             Sisters = false;
             Akuma = false;
             Yamata = false;
             Zero = false;
             Shen = false;
+            RajahC = false;
             Stones = false;
         }
         
@@ -141,9 +150,19 @@ namespace AAMod.NPCs.TownNPCs
 
             string SerpentT = Lang.TownNPCAnubis("SetChatButtons9");
 
-            string EquinoxT = Lang.TownNPCAnubis("SetChatButtons13");
-
             string AnubisT = Lang.TownNPCAnubis("SetChatButtons14");
+
+            string AthenaT = "Squakin' Headache";
+
+            string GreedT = "What a Worm";
+
+            string RajahT = "Hopping Hoodlum";
+
+            string AthenaAT = "Harpy Hags are back";
+
+            string GreedAT = "Riches and R.I.P. you";
+
+            string EquinoxT = Lang.TownNPCAnubis("SetChatButtons13");
 
             string SistersT = Lang.TownNPCAnubis("SetChatButtons15");
 
@@ -155,7 +174,10 @@ namespace AAMod.NPCs.TownNPCs
 
             string ShenT = Lang.TownNPCAnubis("SetChatButtons19");
 
+            string RajahCT = "Wrath of the Wabbit";
+
             string StonesT = Lang.TownNPCAnubis("SetChatButtons20");
+
             button = SwitchInfoT;
 
             if (ChatNumber == 0)
@@ -198,44 +220,74 @@ namespace AAMod.NPCs.TownNPCs
                 button2 = SerpentT;
                 Serpent = true;
             }
-            else if (ChatNumber == 8 && NPC.downedMoonlord)
-            {
-                button2 = EquinoxT;
-                Equinox = true;
-            }
-            else if (ChatNumber == 9 && NPC.downedMoonlord)
+            else if (ChatNumber == 8 && NPC.downedPlantBoss)
             {
                 button2 = AnubisT;
                 AnubisB = true;
             }
-            else if (ChatNumber == 10 && NPC.downedMoonlord && AAWorld.downedEquinox)
+            else if (ChatNumber == 9 && AAWorld.downedAnubis)
+            {
+                button2 = AthenaT;
+                Athena = true;
+            }
+            else if (ChatNumber == 10 && AAWorld.downedAnubis)
+            {
+                button2 = GreedT;
+                Greed = true;
+            }
+            else if (ChatNumber == 11 && Main.hardMode)
+            {
+                button2 = RajahT;
+                Rajah = true;
+            }
+            else if (ChatNumber == 12 && NPC.downedMoonlord && AAWorld.downedAnubis && AAWorld.downedAthena)
+            {
+                button2 = AthenaAT;
+                AthenaA = true;
+            }
+            else if (ChatNumber == 13 && NPC.downedMoonlord && AAWorld.downedAnubis && AAWorld.downedGreed)
+            {
+                button2 = GreedAT;
+                GreedA = true;
+            }
+            else if (ChatNumber == 14 && AAWorld.downedGreedA && AAWorld.downedAthenaA)
+            {
+                button2 = EquinoxT;
+                Equinox = true;
+            }
+            else if (ChatNumber == 15 && NPC.downedMoonlord && AAWorld.downedEquinox)
             {
                 button2 = SistersT;
                 Sisters = true;
             }
-            else if (ChatNumber == 11 && NPC.downedMoonlord && AAWorld.downedSisters)
+            else if (ChatNumber == 16 && NPC.downedMoonlord && AAWorld.downedSisters)
             {
                 button2 = AkumaT;
                 Akuma = true;
             }
-            else if (ChatNumber == 12 && NPC.downedMoonlord && AAWorld.downedSisters)
+            else if (ChatNumber == 17 && NPC.downedMoonlord && AAWorld.downedSisters)
             {
                 button2 = YamataT;
                 Yamata = true;
             }
-            else if (ChatNumber == 13 && NPC.downedMoonlord && AAWorld.downedNC)
+            else if (ChatNumber == 18 && NPC.downedMoonlord && AAWorld.downedNC)
             {
                 button2 = ZeroT;
                 Zero = true;
             }
-            else if (ChatNumber == 14 && AAWorld.downedAllAncients)
+            else if (ChatNumber == 19 && AAWorld.downedAllAncients)
             {
                 button2 = ShenT;
                 Shen = true;
             }
-            else if (ChatNumber == 15 && AAWorld.downedShen)
+            else if (ChatNumber == 20 && AAWorld.downedShen)
             {
                 button2 = StonesT;
+                Stones = true;
+            }
+            else if (ChatNumber == 21 && AAWorld.downedRajahsRevenge)
+            {
+                button2 = RajahCT;
                 Stones = true;
             }
             else
@@ -248,6 +300,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public void ResetBools()
         {
+            DoNext = false;
             Mushroom = false;
             Glowshroom = false;
             Grips = false;
@@ -255,13 +308,19 @@ namespace AAMod.NPCs.TownNPCs
             Hydra = false;
             Djinn = false;
             Serpent = false;
+            AnubisB = false;
+            Athena = false;
+            Greed = false;
+            Rajah = false;
+            AthenaA = false;
+            GreedA = false;
             Equinox = false;
-            DoNext = false;
             Sisters = false;
             Akuma = false;
             Yamata = false;
             Zero = false;
             Shen = false;
+            RajahC = false;
             Stones = true;
         }
 
@@ -271,19 +330,40 @@ namespace AAMod.NPCs.TownNPCs
 			{
 				ResetBools();
 				ChatNumber += 1;
-				if (ChatNumber > 17)
+				if (ChatNumber > 23)
 				{
 					ChatNumber = 0;
 				}
 			}
 			else
-			{
-				Main.npcChatText = BossChat();
+            {
+                Player player = Main.LocalPlayer;
+                int Item = player.FindItem(mod.ItemType<Items.Misc.AnubisBook>());
+                if (Item >= 0 && !player.GetModPlayer<AAPlayer>(mod).AnubisBook && Greed)
+                {
+                    player.inventory[Item].stack--;
+                    if (player.inventory[Item].stack <= 0)
+                    {
+                        player.inventory[Item] = new Item();
+                    }
+
+                    Main.npcChatText = @"You got it! My limited edition copy of my esteemed biogrophy! Thanks, pal. You know what? As a gift, you can have it. Here, I'll even autograph it for you.
+...Whoops, I accidentally used my runic quill to sign it. Oh well, now it's magic.";
+                    //player.QuickSpawnItem(mod.ItemType<Items.Magic.AnubisTome>(), 1);
+
+                    Main.PlaySound(24, -1, -1, 1);
+                    return;
+                }
+                Main.npcChatText = BossChat();
 			}
 		}
 
+        public static bool DoG => CalamityMod.World.CalamityWorld.downedDoG;
+
         public static string BossChat()
         {
+            Player player = Main.LocalPlayer;
+            Mod mod = AAMod.instance;
             if (Mushroom)
             {
                 return AAWorld.downedMonarch ? Lang.TownNPCAnubis("downedMonarchY") : 
@@ -319,14 +399,50 @@ namespace AAMod.NPCs.TownNPCs
                 return AAWorld.downedSerpent ? Lang.TownNPCAnubis("downedSerpentY") : 
                     Lang.TownNPCAnubis("downedSerpentN");
             }
+            else if (AnubisB)
+            {
+                return AAWorld.downedAnubis ? "You could have gone a little easier on me, ya know. My back still hurts from that." :
+                    "I hear there’s this lorekeeper guy that’s really jacked and handsome, and all the ladies love him for his amazing soul-judging abilities. What a guy.";
+            }
+            else if (Athena)
+            {
+                return AAWorld.downedAthena ? "Thank the Equinox, you shut those annoying little squakers up! I was about to roast one of them over a spit and have fried chicken for dinner if they shrieked at me one more time." :
+                    "You know those screechin' harpies up in the sky? Well there are these REALLY obnoxious ones called seraphs who just WILL NOT SHUT UP!!! They have a leader in that sky palace to the east. Maybe if you give her the ol' one-two, they'll shut their yappers.";
+            }
+            else if (Greed)
+            {
+                return AAWorld.downedGreed ? (player.GetModPlayer<AAPlayer>(mod).AnubisBook ? "Hey thanks for getting my book back. Greed stole it a while ago, probably because of the gold highlights I used to bind it. Look around that cave, maybe there's some other stuff he's stolen?" : 
+                    "Hey uh...did you find my thing yet? No? Just dig around in that loot pile down there, I'm sure it's there somewhere.") :
+                    "Hey uh, there's this HUGE hoard of treasure underground somewhere with lots of gold in it, but it's guarded by this really stingy worm. You should go check it out for a boatload of booty, but uh...there's something of mine down there. Could you go get it for me? Don't worry, when you see it, you'll know it's mine.";
+            }
+            else if (Rajah)
+            {
+                return AAWorld.downedRajah ? "You bested Rajah? Pft, yeah right, I've seen him trounce supposed gods before, there is no way you beat him..!" :
+                    "Hey, you know those bunnies that hop around all the time? I uh...I wouldn't harass them if I were you. There's a legend around here of a sort of 'Guardian' of sorts that prtotects them from danger. Why is it a legend? Because apparently nobody has ever fought this thing and lived. Neat story, eh?";
+            }
+            else if (AthenaA)
+            {
+                return AAWorld.downedAthenaA ? "Huh? What's a Varian you ask? That's something I haven't heard in years...so long ago that I barely even remember the name. Although I do recall something about another one kicking around somewhere..." :
+                    "Hey, did that annoying little witch find you? Sorry for telling her where you were, she wouldn't stop screeching in my ear. Anyways, looks like Athena wants a rematch. Stay on your guard, bud. This seems like a trap...";
+            }
+            else if (GreedA)
+            {
+                if (ModLoader.GetMod("CalamityMod") != null)
+                {
+                    
+                    Mod calamity = ModLoader.GetMod("CalamityMod");
+                    if (calamity != null && DoG && AAWorld.downedGreedA)
+                    {
+                        return "Ya know, you duking it out with the Devourer of Gods reminded me of Greed a bit...I mean think about it. They both have wormhole capabilities and they both adapt to what they eat. Could they possibly be...nah, that'd be rediculous...or..?";
+                    }
+                }
+                return AAWorld.downedGreedA ? "So he WAS hiding his true power all along. I wonder why, though...could he be hiding from something, perhaps..?" :
+                    "You know, I seem to remember a story about ol' grabby-mc-steal-your-crap. When he first showed up in these parts, he was much stronger than he was when you kicked his rear end. Maybe he got weaker as time went on..? Or maybe...nah, that couldn't be it.";
+            }
             else if (Equinox)
             {
                 return AAWorld.downedEquinox ? Lang.TownNPCAnubis("downedEquinoxY") : 
                     Lang.TownNPCAnubis("downedEquinoxN");
-            }
-            else if (AnubisB)
-            {
-                return Lang.TownNPCAnubis("AnubisB");
             }
             else if (Sisters)
             {
@@ -352,6 +468,11 @@ namespace AAMod.NPCs.TownNPCs
             {
                 return AAWorld.downedShen ? Lang.TownNPCAnubis("downedShenY") :
                     Lang.TownNPCAnubis("downedShenN");
+            }
+            else if (RajahC)
+            {
+                return AAWorld.downedShen ?  Lang.TownNPCAnubis("downedRajahCY") :
+                    Lang.TownNPCAnubis("downedRajahCN");
             }
             else if (Stones)
             {
@@ -413,6 +534,13 @@ namespace AAMod.NPCs.TownNPCs
 
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
+            Player player = Main.LocalPlayer;
+
+            if (player.head == mod.ItemType<Items.Vanity.Mask.AnubisMask>() && Main.rand.Next(5) == 0)
+            {
+                return Lang.TownNPCAnubis("AnubisChatMask");
+            }
+
             chat.Add(Lang.TownNPCAnubis("AnubisChat1"));
             chat.Add(Lang.TownNPCAnubis("AnubisChat2"));
             chat.Add(Lang.TownNPCAnubis("AnubisChat3"));
@@ -429,7 +557,6 @@ namespace AAMod.NPCs.TownNPCs
             chat.Add(Lang.TownNPCAnubis("AnubisChat11") + (WorldGen.crimson ? Lang.TownNPCAnubis("AnubisChat12") : Lang.TownNPCAnubis("AnubisChat13")) + Lang.TownNPCAnubis("AnubisChat14"));
             chat.Add(Lang.TownNPCAnubis("AnubisChat15"));
             
-            Player player = Main.LocalPlayer;
 
 
             int FemaleNPC = NPC.FindFirstNPC(FindFemaleNPC());
@@ -452,11 +579,6 @@ namespace AAMod.NPCs.TownNPCs
             if (BirthdayParty.GenuineParty || BirthdayParty.ManualParty)
             {
                 chat.Add(Lang.TownNPCAnubis("AnubisChat21"));
-            }
-
-            if (AAWorld.DiscoBall > 0)
-            {
-                chat.Add(Lang.TownNPCAnubis("AnubisChat22"));
             }
 
             if (HordeZombie >= 0)

@@ -79,8 +79,6 @@ Grants a strong dash that shreds through enemies in a fiery blaze of glory");
             player.blackBelt = true;
             player.spikedBoots = 2;
             modPlayer.clawsOfChaos = true;
-            modPlayer.StormClaw = true;
-            modPlayer.AADash = 1;
             player.moveSpeed += 2f;
             player.endurance += 0.2f;
             player.dash = 3;
@@ -114,7 +112,7 @@ Grants a strong dash that shreds through enemies in a fiery blaze of glory");
             recipe.AddIngredient(null, "TaiyangBaolei", 1);
             recipe.AddIngredient(null, "Naitokurosu", 1);
             recipe.AddIngredient(null, "ChaosSoul", 1);
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
@@ -12,6 +7,7 @@ namespace AAMod.Projectiles
 {
     public class ShenTooth : ModProjectile
     {
+        public int type = 0;
         public bool ToothSpawned;
         public override void SetStaticDefaults() //Sets the display name
         {
@@ -43,5 +39,9 @@ namespace AAMod.Projectiles
             projectile.rotation = projectile.velocity.ToRotation() + MathHelper.PiOver2; // projectile sprite faces up
         }
 
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            target.AddBuff(type == 1 ? BuffID.Daybreak : mod.BuffType(type == 2 ? "Moonraze" : "DiscordInferno"), 60);
+        }
     }
 }

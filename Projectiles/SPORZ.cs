@@ -3,8 +3,8 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod.Tiles;
 using AAMod.Dusts;
+using AAMod.Tiles;
 
 namespace AAMod.Projectiles
 {

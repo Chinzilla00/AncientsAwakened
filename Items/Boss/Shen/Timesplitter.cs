@@ -61,7 +61,7 @@ Inflicts Daybroken and Moonraze");
             recipe.AddIngredient(null, "ChaosScale", 5);
             recipe.AddIngredient(null, "AbyssalYari");
 			recipe.AddIngredient(null, "SunSpear");
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

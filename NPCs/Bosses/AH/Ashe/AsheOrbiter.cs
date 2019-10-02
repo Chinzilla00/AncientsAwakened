@@ -72,10 +72,25 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             npc.oldPos[0] = npc.position;
 
-            if (rotValue == -1f) rotValue = npc.ai[0] % ((Ashe)ashe.modNPC).OrbiterCount * ((float)Math.PI * 2f / ((Ashe)ashe.modNPC).OrbiterCount);
-            rotValue += 0.05f;
-            while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
-            npc.Center = BaseUtility.RotateVector(ashe.Center, ashe.Center + new Vector2(140f, 0f), rotValue);
+
+            npc.ai[2] += 2 * (float)Math.PI / 420;
+            if (npc.ai[2] > (float)Math.PI)
+            {
+                npc.ai[2] -= 2 * (float)Math.PI;
+            }
+            npc.ai[1] += (float)Math.Sin(npc.ai[2]) * 7;
+            npc.position = ashe.Center + new Vector2(npc.ai[1], 0f).RotatedBy(npc.ai[3]);
+            npc.position.X -= npc.width / 2;
+            npc.position.Y -= npc.height / 2;
+            float rotation = npc.ai[1] == 125f ? 0.03f : -0.01f;
+            npc.ai[3] += rotation;
+            if (npc.ai[3] > (float)Math.PI)
+            {
+                npc.ai[3] -= 2f * (float)Math.PI;
+                npc.netUpdate = true;
+            }
+
+            npc.rotation = npc.ai[3] + (float)Math.PI / 2f;
         }
 
         public override void NPCLoot()

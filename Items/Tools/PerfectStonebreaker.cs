@@ -33,7 +33,7 @@ namespace AAMod.Items.Tools
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod, "Stonebreaker");
-            recipe.AddIngredient(mod, "InfernoCrystal");
+            recipe.AddIngredient(mod, "HeroShards");
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);  
             recipe.AddRecipe();

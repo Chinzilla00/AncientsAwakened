@@ -1,7 +1,5 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Armor.Champion
 {
@@ -46,11 +44,9 @@ The armor of a champion feared across the land");
 		public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DracoPlate", 1);
-            recipe.AddIngredient(null, "DreadPlate", 1);
-            recipe.AddIngredient(null, "Discordium", 10);
-            recipe.AddIngredient(null, "ChaosScale", 10);
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddIngredient(null, "HoodlumShirt", 1);
+            recipe.AddIngredient(null, "ChampionPlate", 10);
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

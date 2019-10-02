@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Greed
@@ -458,7 +457,7 @@ namespace AAMod.NPCs.Bosses.Greed
                 if (!Main.expertMode)
                 {
                     npc.DropLoot(mod.ItemType("CovetiteCoin"), 10, 15);
-                    string[] lootTable = { };
+                    string[] lootTable = { "GildedGlock", "GoldDigger", "Miner" };
                     int loot = Main.rand.Next(lootTable.Length);
                     //npc.DropLoot(Items.Vanity.Mask.GreedMask.type, 1f / 7);
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
@@ -626,7 +625,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             DisplayName.SetDefault("Greed");
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
-            Main.npcFrameCount[npc.type] = 24;
+            Main.npcFrameCount[npc.type] = 22;
         }
 
         public override void SetDefaults()
@@ -773,55 +772,49 @@ namespace AAMod.NPCs.Bosses.Greed
             switch ((int)npc.ai[2])
             {
                 case 0:
-                    return npc.defense = 6;
+                    return npc.defense = 6; //Copper
                 case 1:
-                    return npc.defense = 7;
+                    return npc.defense = 7; //tin
                 case 2:
-                    return npc.defense = 9;
+                    return npc.defense = 9; //Iron
                 case 3:
-                    return npc.defense = 11;
+                    return npc.defense = 11; //Lead
                 case 4:
-                    return npc.defense = 13;
+                    return npc.defense = 13; //Silver
                 case 5:
-                    return npc.defense = 15;
+                    return npc.defense = 15; //Tungsten
                 case 6:
-                    return npc.defense = 16;
+                    return npc.defense = 16; //Gold
                 case 7:
-                    return npc.defense = 20;
+                    return npc.defense = 20; //Platinum
                 case 8:
-                    return npc.defense = 19;
+                    return npc.defense = 19; //Shadow
                 case 9:
-                    return npc.defense = 19;
+                    return npc.defense = 19; //Crimson
                 case 10:
-                    return npc.defense = 15;
+                    return npc.defense = 15; //Abyssium
                 case 11:
-                    return npc.defense = 21;
+                    return npc.defense = 21; //Incinerite
                 case 12:
-                    return npc.defense = 18;
+                    return npc.defense = 25; //Hellstone
                 case 13:
-                    return npc.defense = 25;
+                    return npc.defense = 26; //Cobalt
                 case 14:
-                    return npc.defense = 26;
+                    return npc.defense = 32; //Paladium
                 case 15:
-                    return npc.defense = 32;
+                    return npc.defense = 37; //Mythril
                 case 16:
-                    return npc.defense = 37;
+                    return npc.defense = 42; //Oricalcum
                 case 17:
-                    return npc.defense = 42;
+                    return npc.defense = 50; //Adamantite
                 case 18:
-                    return npc.defense = 50;
+                    return npc.defense = 49; //Titanium
                 case 19:
-                    return npc.defense = 49;
+                    return npc.defense = 50; //Hallowed
                 case 20:
-                    return npc.defense = 50;
-                case 21:
-                    return npc.defense = 53;
-                case 22:
-                    return npc.defense = 56;
-                case 23:
-                    return npc.defense = 58;
+                    return npc.defense = 56; //Chlorophyte
                 default:
-                    return npc.defense = 30;
+                    return npc.defense = 30; //Tail
             }
         }
 

@@ -52,11 +52,6 @@ namespace AAMod.NPCs.Bosses.GripsShen
                 Main.dust[dust2].noGravity = true;
             }
         }
-        public override bool CheckActive()
-        {
-            return !NPC.AnyNPCs(mod.NPCType<Shen.ShenDoragon>());
-        }
-
         public override Color? GetAlpha(Color lightColor)
         {
             if (npc.alpha > 0)

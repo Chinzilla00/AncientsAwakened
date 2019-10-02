@@ -47,15 +47,15 @@ namespace AAMod.Items.Armor.Chaos
 		{
             ModRecipe recipe;
             recipe = new ModRecipe(mod);
-			recipe.AddIngredient(mod.ItemType("TrueAbyssalFukumen"));
+			recipe.AddIngredient(mod.ItemType("AbyssalFukumen"));
 			recipe.AddIngredient(null, "ChaosCrystal", 1);
-            recipe.AddTile(null, "TruePaladinsSmeltery");
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
 			recipe.AddRecipe();
             recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType("TrueDynaskull"));
+            recipe.AddIngredient(mod.ItemType("Dynaskull"));
             recipe.AddIngredient(null, "ChaosCrystal", 1);
-            recipe.AddTile(null, "TruePaladinsSmeltery");
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -374,7 +374,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (Main.netMode != 1 && !flag)
                 {
                     flag = true;
-                    BaseUtility.Chat(isAwakened ? Lang.BossChat("Yamata3") : Lang.BossChat("Yamata4"), isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+                    AAMod.Chat(isAwakened ? Lang.BossChat("Yamata3") : Lang.BossChat("Yamata4"), isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
                 }
                 if (isAwakened)
                 {
@@ -412,7 +412,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     NoFlyCountDown = 0;
                     NoFly4U = true;
                     playerTarget.AddBuff(isAwakened ? mod.BuffType<Buffs.YamataAGravity>() : mod.BuffType<Buffs.YamataGravity>(), 10, true);
-                    if (npc.type == mod.NPCType<Yamata>()) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Yamata6"), new Color(45, 46, 70));
+                    if (npc.type == mod.NPCType<Yamata>()) if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata6"), new Color(45, 46, 70));
                 }
 
                 float dist = npc.Distance(playerTarget.Center);
@@ -422,7 +422,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     {
                         if (!FirstLine)
                         {
-                            if (Main.netMode != 1) BaseUtility.Chat(isAwakened ? Lang.BossChat("Yamata7") : Lang.BossChat("Yamata8"), isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+                            if (Main.netMode != 1) AAMod.Chat(isAwakened ? Lang.BossChat("Yamata7") : Lang.BossChat("Yamata8"), isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
                             FirstLine = true;
                         }
                     }
@@ -470,7 +470,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
 			if ((Main.netMode != 1) && !loludide)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Yamata9"), isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
+                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata9"), isAwakened ? new Color(146, 30, 68) : new Color(45, 46, 70));
                 loludide = true;
             }
 
@@ -716,10 +716,10 @@ namespace AAMod.NPCs.Bosses.Yamata
             BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY) + bottomVisualOffset + (isAwakened ? new Vector2(0, -32) : new Vector2(0, 0)), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], frameBottom, lightColor, false);
 			if(legs != null && legs.Length == 4)
 			{
-				legs[2].DrawLeg(sb, npc, dColor); //back legs
-				legs[3].DrawLeg(sb, npc, dColor);
-				legs[0].DrawLeg(sb, npc, dColor); //front legs
-				legs[1].DrawLeg(sb, npc, dColor);
+				legs[2].DrawLeg(sb, npc); //back legs
+				legs[3].DrawLeg(sb, npc);
+				legs[0].DrawLeg(sb, npc); //front legs
+				legs[1].DrawLeg(sb, npc);
 			}		
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, lightColor, false);
             if (isAwakened)
@@ -760,17 +760,17 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Yamata10"), new Color(45, 46, 70));
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata10"), new Color(45, 46, 70));
                     threeQuarterHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Yamata11"), new Color(45, 46, 70));
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata11"), new Color(45, 46, 70));
                     HalfHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Yamata12"), new Color(45, 46, 70));
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata12"), new Color(45, 46, 70));
                     quarterHealth = true;
                 }
             }
@@ -778,17 +778,17 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Yamata13"), new Color(45, 46, 70));
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata13"), new Color(45, 46, 70));
                     threeQuarterHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Yamata14"), new Color(45, 46, 70));
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata14"), new Color(45, 46, 70));
                     HalfHealth = true;
                 }
                 if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Yamata15"), new Color(45, 46, 70));
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata15"), new Color(45, 46, 70));
                     quarterHealth = true;
                 }
             }
@@ -804,7 +804,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public float[] hitRatios = null;
         public bool flatJoint = false;
 
-        public AnimationInfo(int type, float speedMult = 1f, float aMult = 1f)
+        public AnimationInfo(int type, float aMult = 1f)
         {
             animType = type;
             animMult = aMult;
@@ -828,7 +828,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
     public class LegInfo : LimbInfo
     {
-        Vector2 velocity, oldVelocity, legOrigin;
+        Vector2 velocity, legOrigin;
         private float velOffsetY = 0f;
         private readonly float distanceToMove = 120f, distanceToMoveX = 50f;
         private readonly bool flying = false;
@@ -848,7 +848,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             legOrigin = new Vector2(limbType == 1 || limbType == 3 ? Hitbox.Width - 12 : 12, 12);
         }
 
-        public void MoveLegFlying(NPC npc, bool leftLeg)
+        public void MoveLegFlying(NPC npc)
         {
             Vector2 movementSpot = GetBodyConnector(npc) + new Vector2(limbType == 3 ? (-35f - Hitbox.Width) : limbType == 2 ? 35f : limbType == 1 ? (-15f - Hitbox.Width) : 15f, limbType == 1 || limbType == 0 ? 40f : 50f);
             float velLength = (npc.position - npc.oldPos[1]).Length();
@@ -880,7 +880,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             velOffsetY = BaseUtility.MultiLerp(movementRatio, 0f, 30f, 0f);
         }
 
-        public void MoveLegWalking(NPC npc, bool leftLeg, Vector2 standOnPoint)
+        public void MoveLegWalking(NPC npc, Vector2 standOnPoint)
         {
             UpdateVelOffsetY();
             if (pointToStandOn != default)
@@ -920,17 +920,16 @@ namespace AAMod.NPCs.Bosses.Yamata
                 Vector2 standOnPoint = GetStandOnPoint(npc);
                 if (standOnPoint == default) //'flying' behavior but per leg
                 {
-                    MoveLegFlying(npc, leftLeg);
+                    MoveLegFlying(npc);
                 }
                 else
                 {
-                    MoveLegWalking(npc, leftLeg, standOnPoint);
+                    MoveLegWalking(npc, standOnPoint);
                 }
             }
             Vector2 bodyConnector = GetBodyConnector(npc);
             legJoint = Vector2.Lerp(position, bodyConnector, 0.3f) + new Vector2(leftLeg ? 30 : 0f, -30);
             oldPosition = position;
-            oldVelocity = velocity;
         }
 
         public Vector2 GetStandOnPoint(NPC npc)
@@ -938,7 +937,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             float scalar = npc.velocity.Length();
             float outerLegDefault = 70f + (0.5f * scalar);
             float innerLegDefault = 50f + (0.5f * scalar);
-            float rightLegScalar = 1f + (npc.velocity.X > 2f ? (scalar * 0.2f) : 0f); //fixes an offset problem when the npc walks right
             float standOnX = npc.Center.X + yamata.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
 			
             int defaultTileY = (int)(npc.Bottom.Y / 16f);
@@ -959,7 +957,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             return npc.Center + yamata.topVisualOffset + new Vector2(limbType == 3 || limbType == 1 ? -40f : 40f, 0f);
         }
 
-        public void DrawLeg(SpriteBatch sb, NPC npc, Color dColor)
+        public void DrawLeg(SpriteBatch sb, NPC npc)
         {
             Mod mod = AAMod.instance;
             if (textures == null)

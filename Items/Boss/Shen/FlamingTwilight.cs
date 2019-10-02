@@ -120,7 +120,7 @@ Consumes gel as ammo
             recipe.AddIngredient(null, "ChaosScale", 5);
             recipe.AddIngredient(null, "Dawnstrike");
             recipe.AddIngredient(null, "Darksprayer");
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

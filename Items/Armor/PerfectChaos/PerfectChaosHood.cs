@@ -67,7 +67,7 @@ The power of discordian rage radiates from this hood");
             recipe.AddIngredient(null, "DoomsdayHelmet", 1);
             recipe.AddIngredient(null, "Discordium", 6);
             recipe.AddIngredient(null, "ChaosScale", 6);
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

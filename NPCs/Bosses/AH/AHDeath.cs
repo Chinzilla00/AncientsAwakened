@@ -38,6 +38,12 @@ namespace AAMod.NPCs.Bosses.AH
             npc.TargetClosest();
             Player player = Main.player[npc.target];
 
+            if (AAConfigClient.Instance.NoBossDialogue)
+            {
+                AAWorld.downedSisters = true;
+                npc.active = false;
+            }
+
             npc.Center = player.Center;
 
             if (npc.ai[1] == 100)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)

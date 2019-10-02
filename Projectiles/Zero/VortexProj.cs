@@ -54,7 +54,7 @@ namespace AAMod.Projectiles.Zero
                 if (target.active && (target.type < 548 || target.type > 578) && target.type != NPCID.TargetDummy && !target.friendly && !target.boss && target.CanBeChasedBy(projectile, false) && Vector2.Distance(projectile.Center, target.Center) < 100)
                 {
                     float num3 = 10f;
-                    Vector2 vector = new Vector2(target.position.X + target.width / 2, target.position.Y + (float)(target.height / 2));
+                    Vector2 vector = new Vector2(target.position.X + target.width / 2, target.position.Y + target.height / 2);
                     float num4 = projectile.Center.X - vector.X;
                     float num5 = projectile.Center.Y - vector.Y;
                     float num6 = (float)Math.Sqrt(num4 * num4 + num5 * num5);

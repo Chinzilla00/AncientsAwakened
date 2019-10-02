@@ -70,9 +70,8 @@ also acts as all vanilla crafting stations");
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "TerraCore", 1);
-                recipe.AddIngredient(null, "DaybreakIncineriteOre", 15);
-                recipe.AddIngredient(null, "EventideAbyssiumOre", 15);
+                recipe.AddIngredient(null, "DaybreakIncinerite", 15);
+                recipe.AddIngredient(null, "EventideAbyssium", 15);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }

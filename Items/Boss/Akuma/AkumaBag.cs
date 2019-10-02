@@ -1,11 +1,12 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 namespace AAMod.Items.Boss.Akuma
 {
     public class AkumaBag : BaseAAItem
     {
-        
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Treasure Bag");
@@ -64,7 +65,7 @@ namespace AAMod.Items.Boss.Akuma
             }
             player.QuickSpawnItem(mod.ItemType("CrucibleScale"), Main.rand.Next(30, 40));
             player.QuickSpawnItem(mod.ItemType("TaiyangBaolei"));
-            string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher"};
+            string[] lootTable = { "AkumaTerratool", "DayStorm", "LungStaff", "MorningGlory", "RadiantDawn", "Solar", "SunSpear", "ReignOfFire", "DaybreakArrow", "Daycrusher", "Dawnstrike", "SunStorm", "SunStaff", "DragonSlasher" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
         }

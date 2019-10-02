@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework;
 using Terraria.ID;
 using System;
 using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev
 {
@@ -37,8 +39,19 @@ Uses Bullets and Bones as ammo
             item.rare = 9;
             item.ranged = true;
         }
-		
-		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+
+        public override void ModifyTooltips(List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = new Color(255, 128, 0);
+                }
+            }
+        }
+
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name);
             spriteBatch.Draw

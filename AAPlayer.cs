@@ -1,5 +1,4 @@
 ﻿using AAMod.Buffs;
-using AAMod.Items.Armor.Technecium;
 using AAMod.NPCs.Bosses.Akuma;
 using AAMod.NPCs.Bosses.Akuma.Awakened;
 using AAMod.NPCs.Bosses.Athena;
@@ -12,21 +11,23 @@ using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.GameContent.Events;
 using Terraria.GameInput;
 using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ModLoader.IO;
 using Terraria.Utilities;
 
 namespace AAMod
 {
     public partial class AAPlayer : ModPlayer
     {
+        #region Variables
         //Minions
         public bool FireSpirit = false;
         public bool ImpServant = false;
@@ -118,24 +119,6 @@ namespace AAMod
         public bool tribalSet;
         public bool demonSet;
         public bool demonBonus;
-        public bool uraniumSet;
-        public bool techneciumSet;
-        public bool isCharged;
-        public int techneciumCharge;
-        public bool trueCopper;
-        public bool trueHallow;
-        public bool trueNights;
-        public bool trueFlesh;
-        public bool trueTribal;
-        public bool trueDeathly;
-        public bool trueAbyssal;
-        public bool trueDemon;
-        public bool trueDemonBonus;
-        public bool trueBlazing;
-        public bool trueRaider;
-        public bool trueAtlantean;
-        public bool trueDynaskull;
-        public bool TrueDoomite;
         public bool terraSet;
         public bool chaosSet;
         public bool darkmatterSetMe;
@@ -177,23 +160,13 @@ namespace AAMod
         public bool ChaosRa2 = false;
         public bool ChaosMa = false;
         public bool ChaosSu = false;
+        public bool Olympian = false;
 
         // Accessory bools
         public bool clawsOfChaos;
         public bool HydraPendant;
         public bool demonGauntlet;
-        public bool StormClaw;
-        public bool dwarvenGauntlet;
         public bool BrokenCode;
-        public bool InfinityGauntlet;
-        public bool TrueInfinityGauntlet;
-        public bool Power;
-        public bool Reality;
-        public bool Mind;
-        public bool Time;
-        public bool Soul;
-        public bool Space;
-        public int SnapCD = 0;
         public int AbilityCD = 180;
         public bool AshRemover;
         public bool FogRemover;
@@ -203,10 +176,10 @@ namespace AAMod
         public bool DragonShell;
         public bool ammo20percentdown = false;
         public int AADash;
+        public int AADashTime;
+        public int dashDelayAA;
         public bool RStar;
         public bool DVoid;
-        public int dashTimeAA;
-        public int dashDelayAA;
         public int[] AADoubleTapKeyTimer = new int[4];
         public int[] AAHoldDownKeyTimer = new int[4];
         public bool DiscordShredder;
@@ -218,16 +191,12 @@ namespace AAMod
         public bool ShadowBand = false;
         public bool RajahCape = false;
         public bool CapShield = false;
+        public bool olympianWings = false;
 
         public bool SagShield = false;
         public bool ShieldUp = false;
         public int SagCooldown = 0;
 
-        public bool BegAccessoryPrevious;
-        public bool BegAccessory;
-        public bool BegHideVanity;
-        public bool BegForceVanity;
-        public bool HorseBuff;
         public bool GreedCharm;
         public bool GreedTalisman;
 
@@ -298,7 +267,30 @@ namespace AAMod
         public int PrismCooldown = 0;
         public bool WorldgenReminder = false;
         public bool DemonSun = false;
+        public bool AnubisBook = false;
 
+        #endregion
+
+        #region Save/Load
+        public override TagCompound Save()
+        {
+            var saved = new List<string>();
+            if (AnubisBook) saved.Add("Book");
+            return new TagCompound
+            {
+                { "saved", saved }
+            };
+        }
+
+        public override void Load(TagCompound tag)
+        {
+            var downed = tag.GetList<string>("saved");
+            AnubisBook = downed.Contains("Book");
+        }
+
+        #endregion
+
+        #region Reset Effects
         public override void ResetEffects()
         {
             ResetMinionEffect();
@@ -377,28 +369,13 @@ namespace AAMod
             fleshrendSet = false;
             goblinSlayer = false;
             tribalSet = false;
-            techneciumSet = false;
-            isCharged = false;
-            techneciumCharge = 0;
-            trueTribal = false;
-            trueAbyssal = false;
             impSet = false;
-            trueDemon = false;
-            trueDemonBonus = false;
-            trueDeathly = false;
-            trueDynaskull = false;
-            trueCopper = false;
-            trueBlazing = false;
-            trueRaider = false;
-            trueAtlantean = false;
             terraSet = false;
             chaosSet = false;
             DynaskullSet = false;
-            TrueDoomite = false;
             zeroSet = false;
             dracoSet = false;
             dreadSet = false;
-            uraniumSet = false;
             darkmatterSetMe = false;
             darkmatterSetRa = false;
             darkmatterSetMa = false;
@@ -423,6 +400,7 @@ namespace AAMod
             ChaosRa2 = false;
             ChaosMa = false;
             ChaosSu = false;
+            Olympian = false;
         }
 
         private void ResetAccessoryEffect()
@@ -432,17 +410,7 @@ namespace AAMod
             clawsOfChaos = false;
             HydraPendant = false;
             demonGauntlet = false;
-            StormClaw = false;
             BrokenCode = false;
-            dwarvenGauntlet = false;
-            InfinityGauntlet = false;
-            Power = false;
-            Reality = false;
-            Mind = false;
-            Time = false;
-            Soul = false;
-            Space = false;
-            TrueInfinityGauntlet = false;
             Baolei = false;
             Duality = false;
             Naitokurosu = false;
@@ -466,6 +434,7 @@ namespace AAMod
             GreedTalisman = false;
             Greed1 = false;
             Greed2 = false;
+            olympianWings = false;
         }
 
         private void ResetDebuffEffect()
@@ -527,6 +496,8 @@ namespace AAMod
             WorldgenReminder = false;
         }
 
+        #endregion
+
         public override void UpdateBiomes()
         {
             ZoneTower = player.ZoneTowerSolar || player.ZoneTowerNebula || player.ZoneTowerStardust || player.ZoneTowerVortex;
@@ -546,7 +517,7 @@ namespace AAMod
         {
             bool useAthena = NPC.AnyNPCs(mod.NPCType<AthenaA>());
             bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenA>());
-            bool useShen = NPC.AnyNPCs(mod.NPCType<ShenDoragon>()) && !useShenA;
+            bool useShen = NPC.AnyNPCs(mod.NPCType<Shen>()) && !useShenA;
             bool useAkuma = NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar;
             bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar;
             bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen && !useShenA;
@@ -643,92 +614,22 @@ namespace AAMod
 
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
-            if (techneciumSet)
-            {
-                int chargeCount = player.ownedProjectileCounts[mod.ProjectileType<TechneciumCharge>()];
-
-                target.AddBuff(mod.BuffType<Electrified>(), 180);
-
-                if (chargeCount < 5)
-                {
-                    if (Main.rand.Next(50) == 0)
-                    {
-                        isCharged = true;
-                        Projectile.NewProjectile(player.position.X, player.position.Y, 0, 0, mod.ProjectileType<TechneciumCharge>(), 50, 4, Main.myPlayer);
-                    }
-                }
-                else if (techneciumCharge >= 5)
-                {
-                    isCharged = false;
-
-                    int[] ActiveCharges = BaseAI.GetProjectiles(player.Center, mod.ProjectileType<TechneciumCharge>(), Main.myPlayer, 500, null);
-                    for (int i = 0; i < ActiveCharges.Length; i++)
-                    {
-                        Projectile sphere = Main.projectile[i];
-                        sphere.ai[0] = 1;
-                    }
-                }
-            }
-
             if (Palladium)
             {
                 player.AddBuff(BuffID.RapidHealing, 300);
-            }
-
-            if (trueNights && item.melee && Main.rand.Next(4) == 0)
-            {
-                if (target.life <= 0)
-                {
-                    Projectile.NewProjectile(target.Center, new Vector2(0, 0), mod.ProjectileType<Items.Armor.TrueNights.CursedFireball>(), damage, 0, Main.myPlayer);
-                }
             }
         }
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
-            if (techneciumSet)
-            {
-                target.AddBuff(mod.BuffType<Electrified>(), 180);
-
-                if (Main.rand.Next(50) == 0)
-                {
-                    isCharged = true;
-                    Projectile.NewProjectile(player.position.X, player.position.Y, 0, 0, mod.ProjectileType<Items.Armor.Technecium.TechneciumCharge>(), 50, 4, Main.myPlayer);
-                }
-            }
-
             if (Palladium)
             {
                 player.AddBuff(BuffID.RapidHealing, 300);
-            }
-
-            if (trueNights && proj.melee && Main.rand.Next(4) == 0)
-            {
-                if (target.life <= 0)
-                {
-                    isCharged = true;
-
-                    target.AddBuff(mod.BuffType<Electrified>(), 180);
-                    Projectile.NewProjectile(target.Center, new Vector2(0, 0), mod.ProjectileType<Items.Armor.TrueNights.CursedFireball>(), damage, 0, Main.myPlayer);
-                }
             }
         }
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
-            if (isCharged)
-            {
-                isCharged = false;
-
-                techneciumCharge = 0;
-                int[] ActiveCharges = BaseAI.GetProjectiles(player.Center, mod.ProjectileType<TechneciumCharge>(), Main.myPlayer, 500, null);
-                for (int i = 0; i < ActiveCharges.Length; i++)
-                {
-                    Projectile sphere = Main.projectile[i];
-                    sphere.ai[0] = 1;
-                }
-            }
-
             if (DragonsGuard)
             {
                 npc.AddBuff(BuffID.OnFire, 120);
@@ -755,16 +656,6 @@ namespace AAMod
                         }
                     }
                 }
-            }
-
-            if (trueCopper)
-            {
-                Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType<Items.Armor.TrueCopper.CopperSoul>(), 40, 10, Main.myPlayer, 0, 0);
-            }
-
-            if (trueBlazing)
-            {
-                npc.AddBuff(BuffID.OnFire, 180);
             }
 
             if (ChaosMe)
@@ -868,6 +759,17 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (olympianWings && player.dash < 1)
+            {
+                if (player.velocity.Y != 0)
+                {
+                    player.dash = 2;
+                }
+                else
+                {
+                    player.dash = 0;
+                }
+            }
             if (!Greed1 && !Greed2)
             {
                 GreedyDamage = 0;
@@ -934,23 +836,6 @@ namespace AAMod
                 }
             }
 
-            if (AAWorld.TimeStopped || (Time && Main.fastForwardTime))
-            {
-                TimeScale += .02f;
-                if (TimeScale >= 1f)
-                {
-                    TimeScale = 1f;
-                }
-            }
-            else
-            {
-                TimeScale -= .02f;
-                if (TimeScale <= 0f)
-                {
-                    TimeScale = 0f;
-                }
-            }
-
             if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Equinox.DaybringerHead>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Equinox.NightcrawlerHead>()))
             {
                 TimeScale = 0;
@@ -964,40 +849,6 @@ namespace AAMod
             if (ShieldScale > 0)
             {
                 RingRotation += .05f;
-            }
-
-            if (trueAbyssal)
-            {
-                Color light = BaseDrawing.GetLightColor(new Vector2(Main.LocalPlayer.position.X, Main.LocalPlayer.position.Y));
-
-                if (light.R < 40 && light.G < 40 && light.B < 40)
-                {
-                    AbyssalStealth = true;
-                }
-                else
-                {
-                    AbyssalStealth = false;
-                }
-            }
-
-            if (uraniumSet)
-            {
-                Color color = BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, BaseDrawing.GetLightColor(Main.LocalPlayer.position), BaseDrawing.GetLightColor(Main.LocalPlayer.position), Color.Green, Color.Green, BaseDrawing.GetLightColor(Main.LocalPlayer.position));
-                Lighting.AddLight((int)(player.Center.X / 16f), (int)(player.Center.Y / 16f), (color * .01f).R, (color * .01f).G, (color * .01f).B);
-
-                float RadiationDistance = 64f;
-
-                if (player.whoAmI == Main.myPlayer)
-                {
-                    for (int l = 0; l < 200; l++)
-                    {
-                        NPC nPC = Main.npc[l];
-                        if (nPC.active && !nPC.friendly && nPC.damage > 0 && !nPC.dontTakeDamage && !nPC.boss && Vector2.Distance(player.Center, nPC.Center) <= RadiationDistance && Collision.CanHit(nPC.position, nPC.width, nPC.height, Main.LocalPlayer.position, Main.LocalPlayer.width, Main.LocalPlayer.height))
-                        {
-                            player.ApplyDamageToNPC(nPC, 1, 0f, 0, false);
-                        }
-                    }
-                }
             }
 
             if (Orbiters)
@@ -1017,32 +868,6 @@ namespace AAMod
                             if (projectile != null && projectile.active)
                             {
                                 int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDustLight>());
-
-                                Main.dust[dustID].position += player.position - player.oldPosition;
-                                Main.dust[dustID].velocity = (player.Center - projectile.Center) * 0.05f;
-                                Main.dust[dustID].alpha = 100;
-                                Main.dust[dustID].noGravity = true;
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (isCharged)
-            {
-                Charges = BaseAI.GetProjectiles(player.Center, mod.ProjectileType("TechneciumCharge"), Main.myPlayer, 48);
-
-                if (player.ownedProjectileCounts[mod.ProjectileType("TechneciumCharge")] > 0)
-                {
-                    if (Main.netMode != 2 && Main.LocalPlayer.miscCounter % 3 == 0)
-                    {
-                        for (int m = 0; m < Charges.Length; m++)
-                        {
-                            Projectile projectile = Main.projectile[Charges[m]];
-
-                            if (projectile != null && projectile.active)
-                            {
-                                int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Electric);
 
                                 Main.dust[dustID].position += player.position - player.oldPosition;
                                 Main.dust[dustID].velocity = (player.Center - projectile.Center) * 0.05f;
@@ -1309,47 +1134,192 @@ namespace AAMod
                     }
                 }
             }
+        }
 
-
-            if (trueAbyssal)
+        public override void PostUpdateBuffs()
+        {
+            if (player.mount.Active || player.mount.Cart)
             {
-                if (AbyssalStealth)
+                player.dashDelay = 60;
+                AADash = 0;
+            }
+        }
+
+        public override void PostUpdateEquips()
+        {
+            if (player.mount.Active || player.mount.Cart)
+            {
+                player.dashDelay = 60;
+                AADash = 0;
+            }
+        }
+
+        public override void PostUpdateRunSpeeds()
+        {
+            if (player.pulley && AADash > 0)
+            {
+                AADashMovement();
+            }
+            else if (player.grappling[0] == -1 && !player.tongued)
+            {
+                AAHorizontalMovement();
+                if (AADash > 0)
                 {
-                    float num29 = player.stealth;
+                    AADashMovement();
+                }
+            }
+        }
 
-                    player.stealth -= 0.04f;
-                    if (player.stealth < 0f)
+        public void AAHorizontalMovement()
+        {
+            float runSpeed = (player.accRunSpeed + player.maxRunSpeed) / 2f;
+            if (player.controlLeft && player.velocity.X > -player.accRunSpeed && player.dashDelay >= 0)
+            {
+                if (player.velocity.X < -runSpeed && player.velocity.Y == 0f && !player.mount.Active)
+                {
+                    if (AADash == 1)
                     {
-                        player.stealth = 0f;
-                    }
-
-                    if (player.stealth == 0f && num29 != player.stealth && Main.netMode == NetmodeID.MultiplayerClient)
-                    {
-                        NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
-                    }
-
-                    player.rangedDamage += (1f - player.stealth) * 0.6f;
-                    player.rangedCrit += (int)((1f - player.stealth) * 16f);
-                    player.aggro -= 50;
-
-                    if (player.mount.Active)
-                    {
-                        AbyssalStealth = false;
+                        int dust = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y), player.width + 8, 4, mod.DustType<Feather>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default, 1.5f);
+                        Main.dust[dust].velocity.X = Main.dust[dust].velocity.X * 0.2f;
+                        Main.dust[dust].velocity.Y = Main.dust[dust].velocity.Y * 0.2f;
+                        Main.dust[dust].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
                     }
                 }
-                else
+            }
+            else if (player.controlRight && player.velocity.X < player.accRunSpeed && player.dashDelay >= 0)
+            {
+                if (player.velocity.X > runSpeed && player.velocity.Y == 0f && !player.mount.Active)
                 {
-                    float num30 = player.stealth;
-
-                    player.stealth += 0.04f;
-                    if (player.stealth > 1f)
+                    if (AADash == 1)
                     {
-                        player.stealth = 1f;
+                        int dust = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y), player.width + 8, 4, mod.DustType<Feather>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default, 1.5f);
+                        Main.dust[dust].velocity.X = Main.dust[dust].velocity.X * 0.2f;
+                        Main.dust[dust].velocity.Y = Main.dust[dust].velocity.Y * 0.2f;
+                        Main.dust[dust].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
                     }
+                }
+            }
+        }
 
-                    if (player.stealth == 1f && num30 != player.stealth && Main.netMode == NetmodeID.MultiplayerClient)
+        public void AADashMovement()
+        {
+            if (player.dashDelay > 0)
+            {
+                return;
+            }
+            if (player.dashDelay < 0)
+            {
+                float num7 = 12f;
+                float num8 = 0.985f;
+                float num9 = Math.Max(player.accRunSpeed, player.maxRunSpeed);
+                float num10 = 0.94f;
+                int num11 = 20;
+                if (AADash == 1)
+                {
+                    for (int k = 0; k < 2; k++)
                     {
-                        NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
+                        int num12;
+                        if (player.velocity.Y == 0f)
+                        {
+                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height - 4f), player.width, 8, mod.DustType<Feather>(), 0f, 0f, 100, default, 1);
+                        }
+                        else
+                        {
+                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height / 2 - 8f), player.width, 16, mod.DustType<Feather>(), 0f, 0f, 100, default, 1);
+                        }
+                        Main.dust[num12].velocity *= 0.1f;
+                        Main.dust[num12].scale *= 1f + Main.rand.Next(20) * 0.01f;
+                        Main.dust[num12].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
+                    }
+                }
+                if (AADash > 0)
+                {
+                    player.vortexStealthActive = false;
+                    if (player.velocity.X > num7 || player.velocity.X < -num7)
+                    {
+                        player.velocity.X = player.velocity.X * num8;
+                        return;
+                    }
+                    if (player.velocity.X > num9 || player.velocity.X < -num9)
+                    {
+                        player.velocity.X = player.velocity.X * num10;
+                        return;
+                    }
+                    player.dashDelay = num11;
+                    if (player.velocity.X < 0f)
+                    {
+                        player.velocity.X = -num9;
+                        return;
+                    }
+                    if (player.velocity.X > 0f)
+                    {
+                        player.velocity.X = num9;
+                        return;
+                    }
+                }
+            }
+            else if (AADash > 0 && !player.mount.Active)
+            {
+                if (AADash == 1)
+                {
+                    int direction = 0;
+                    bool DashAttempt = false;
+                    if (AADashTime > 0)
+                    {
+                        AADashTime--;
+                    }
+                    if (AADashTime < 0)
+                    {
+                        AADashTime++;
+                    }
+                    if (player.controlRight && player.releaseRight && player.velocity.Y != 0)
+                    {
+                        if (AADashTime > 0)
+                        {
+                            direction = 1;
+                            DashAttempt = true;
+                            AADashTime = 0;
+                        }
+                        else
+                        {
+                            AADashTime = 15;
+                        }
+                    }
+                    else if (player.controlLeft && player.releaseLeft && player.velocity.Y != 0)
+                    {
+                        if (AADashTime < 0)
+                        {
+                            direction = -1;
+                            DashAttempt = true;
+                            AADashTime = 0;
+                        }
+                        else
+                        {
+                            AADashTime = -15;
+                        }
+                    }
+                    if (DashAttempt)
+                    {
+                        player.velocity.X = 14.5f * direction;
+                        Point point = (player.Center + new Vector2(direction * player.width / 2 + 2, player.gravDir * -player.height / 2f + player.gravDir * 2f)).ToTileCoordinates();
+                        Point point2 = (player.Center + new Vector2(direction * player.width / 2 + 2, 0f)).ToTileCoordinates();
+                        if (WorldGen.SolidOrSlopedTile(point.X, point.Y) || WorldGen.SolidOrSlopedTile(point2.X, point2.Y))
+                        {
+                            player.velocity.X = player.velocity.X / 2f;
+                        }
+                        player.dashDelay = -1;
+                        for (int num17 = 0; num17 < 2; num17++)
+                        {
+                            int num18 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.DustType<Feather>(), 0f, 0f, 100, default, 1);
+                            Dust expr_CDB_cp_0 = Main.dust[num18];
+                            expr_CDB_cp_0.position.X += Main.rand.Next(-5, 6);
+                            Dust expr_D02_cp_0 = Main.dust[num18];
+                            expr_D02_cp_0.position.Y += Main.rand.Next(-5, 6);
+                            Main.dust[num18].velocity *= 0.2f;
+                            Main.dust[num18].scale *= .1f + Main.rand.Next(20) * 0.01f;
+                            Main.dust[num18].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
+                        }
+                        return;
                     }
                 }
             }
@@ -1416,8 +1386,6 @@ namespace AAMod
 
             float num13 = MathHelper.Lerp(0.2f, 0.35f, Sandstorm.Severity);
             float num14 = MathHelper.Lerp(0.5f, 0.7f, Sandstorm.Severity);
-            float amount = (num5 - 0.77f) / 0.230000019f;
-            int maxValue2 = (int)MathHelper.Lerp(1f, 10f, amount);
             int num15 = 0;
 
             while (num15 < num9)
@@ -1775,7 +1743,7 @@ namespace AAMod
 
                         if (dropType >= 2)
                         {
-                            player.QuickSpawnItem(mod.ItemType("Skullshot"));
+                            player.QuickSpawnItem(Main.rand.Next(2) == 0 ? mod.ItemType("Skullshot") : mod.ItemType("GibsFemur"));
                         }
 
                         spawnedDevItems = true;
@@ -1870,6 +1838,22 @@ namespace AAMod
                         break;
 
                     case 26:
+                        player.QuickSpawnItem(mod.ItemType("InvokerRobe"));
+                        player.QuickSpawnItem(mod.ItemType("InvokerPants"));
+                        player.QuickSpawnItem(mod.ItemType("InvokerHood"));
+
+                        if (dropType >= 1)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("InvokerBook"));
+                        }
+                        if (dropType >= 3)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("InvokerStaff"));
+                        }
+                        spawnedDevItems = true;
+                        break;
+
+                    case 27:
                         if (dropType >= 2)
                         {
                             player.QuickSpawnItem(mod.ItemType("GameRaider"));
@@ -1913,16 +1897,6 @@ namespace AAMod
         public override void PreUpdate()
         {
             groviteGlow[player.whoAmI] = false;
-
-            if (SnapCD != 0)
-            {
-                SnapCD--;
-            }
-
-            if ((Mind || Power || Reality || Soul || Space || Time) && !(dwarvenGauntlet || InfinityGauntlet || TrueInfinityGauntlet))
-            {
-                player.AddBuff(mod.BuffType<InfinityOverload>(), 180);
-            }
 
             if (player.GetModPlayer<AAPlayer>().ZoneVoid || player.GetModPlayer<AAPlayer>().ZoneInferno || player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda)
             {
@@ -2155,14 +2129,6 @@ namespace AAMod
                 }
             }
 
-            if (dwarvenGauntlet)
-            {
-                if (item.melee)
-                {
-                    knockback += 2f;
-                }
-            }
-
             if (IsGoblin)
             {
                 knockback += 5f;
@@ -2172,14 +2138,6 @@ namespace AAMod
         public virtual float UseTimeMultiplier(Item item, Player player)
         {
             float multiplier = 1f;
-
-            if (StormClaw)
-            {
-                if (!item.autoReuse)
-                {
-                    multiplier *= 2f;
-                }
-            }
 
             if (HydraPendant)
             {
@@ -2199,36 +2157,6 @@ namespace AAMod
             return multiplier;
         }
 
-        public override bool PreKill(double damage, int hitDirection, bool pvp, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
-        {
-            if (trueDeathly && player.FindBuffIndex(mod.BuffType("UnstableSoul")) == -1)
-            {
-                player.statLife = 100;
-                player.HealEffect(80);
-
-                player.immune = true;
-                player.immuneTime = player.longInvince ? 180 : 120;
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.AAPlayerChat("UnstableSoulInfo"), 51, 255, 255);
-
-                if (Main.netMode != 1)
-                {
-                    BaseUtility.Chat(Lang.AAPlayerChat("UnstableSoulInfo"), 51, 255, 255);
-                }
-                player.AddBuff(mod.BuffType("UnstableSoul"), 18000);
-
-                return false;
-            }
-
-            return true;
-        }
-
-        public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
-        {
-            if (Time)
-            {
-                player.respawnTimer = (int)(player.respawnTimer * .2);
-            }
-        }
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -2237,7 +2165,7 @@ namespace AAMod
                 RiftPos = player.position;
                 for (int m = 0; m < 58; m++)
                 {
-                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>() || Space)
+                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>())
                     {
                         player.Spawn();
                     }
@@ -2248,54 +2176,10 @@ namespace AAMod
             {
                 for (int m = 0; m < 58; m++)
                 {
-                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>() || Space)
+                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>())
                     {
                         player.position = RiftPos;
                     }
-                }
-            }
-
-            if (InfinityGauntlet || TrueInfinityGauntlet || Alpha)
-            {
-                if (AAMod.InfinityHotKey.JustPressed && SnapCD <= 0)
-                {
-                    SnapCD = 18000;
-                    player.AddBuff(mod.BuffType<InfinityBurnout>(), 18000);
-
-                    Projectile.NewProjectile(player.position, Vector2.Zero, mod.ProjectileType<Items.Accessories.Snap>(), 0, 0, player.whoAmI);
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.AAPlayerChat("InfinityGauntletInfo"), Color.Purple);
-
-                    if (Main.netMode != 1)
-                    {
-                        BaseUtility.Chat(Lang.AAPlayerChat("InfinityGauntletInfo"), Color.Purple);
-                    }
-
-                    Main.npc.Where(x => x.active && !x.townNPC && x.type != NPCID.TargetDummy && !NPCID.Sets.TechnicallyABoss[x.type] && !x.boss && x.type != mod.NPCType<ZeroDeactivated>()).ToList().ForEach(x =>
-                    {
-                        for (int i = 0; i < 5; i++)
-                        {
-                            int dust = Dust.NewDust(x.position, x.width, x.height, mod.DustType<Dusts.SnapDust>(), 0f, 0f, 0);
-
-                            Main.dust[dust].velocity.Y = 3f + Main.rand.Next(30) * 0.1f;
-
-                            Dust expr_292_cp_0 = Main.dust[dust];
-                            expr_292_cp_0.velocity.Y *= Main.dust[dust].scale;
-
-                            Main.dust[dust].velocity.X = (Main.cloudAlpha + 0.5f) * 25f + Main.rand.NextFloat() * 0.2f - 0.1f;
-
-                            Dust expr_370_cp_0 = Main.dust[dust];
-                            expr_370_cp_0.velocity.Y += expr_370_cp_0.velocity.Y * 0.5f;
-
-                            Dust expr_38E_cp_0 = Main.dust[dust];
-                            expr_38E_cp_0.velocity.Y *= 1f + 0.3f * Main.cloudAlpha;
-
-                            Main.dust[dust].scale += Main.cloudAlpha * 0.2f;
-                            Main.dust[dust].velocity *= 1f + Main.cloudAlpha * 0.5f;
-                        }
-
-                        x.NPCLoot();
-                        x.active = false;
-                    });
                 }
             }
 
@@ -2307,60 +2191,12 @@ namespace AAMod
                 }
             }
 
-            if (Time)
-            {
-                if (AAMod.TimeStone.JustPressed && !NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Equinox.NightcrawlerHead>()) && !NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Equinox.DaybringerHead>()))
-                {
-                    AAWorld.TimeStopped = false;
-
-                    if (!Main.fastForwardTime)
-                    {
-                        Main.fastForwardTime = true;
-                    }
-                    else
-                    {
-                        Main.fastForwardTime = false;
-                    }
-                }
-            }
-
             if (SagShield)
             {
                 if (AAMod.AccessoryAbilityKey.JustPressed && SagCooldown == 0)
                 {
                     player.AddBuff(mod.BuffType<SagShield>(), 300);
                     SagCooldown = 5400;
-                }
-            }
-
-            if (trueDynaskull)
-            {
-                if (AAMod.ArmorAbilityKey.JustPressed && AbilityCD == 0)
-                {
-                    AbilityCD = 180;
-
-                    int damage = 70;
-                    float knockback = 1;
-
-                    Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-                    float speedX = Main.mouseX + Main.screenPosition.X - vector2.X;
-                    float speedY = Main.mouseY + Main.screenPosition.Y - vector2.Y;
-
-                    if (player.gravDir == -1f)
-                    {
-                        speedY = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector2.Y;
-                    }
-
-                    if ((float.IsNaN(speedX) && float.IsNaN(speedY)) || (speedX == 0f && speedY == 0f))
-                    {
-                        speedX = player.direction;
-                        speedY = 0f;
-                    }
-
-                    vector2.X = Main.mouseX + Main.screenPosition.X;
-                    vector2.Y = Main.mouseY + Main.screenPosition.Y;
-
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, speedX, speedY, mod.ProjectileType("Dynabomb"), damage, knockback, Main.myPlayer, 0f, 0f);
                 }
             }
 
@@ -2435,33 +2271,9 @@ namespace AAMod
                 }
             }
 
-            if (crit && trueFlesh)
-            {
-                if (damage / 10 < 1)
-                {
-                    player.statLife += 1;
-                    CombatText.NewText(player.getRect(), Color.Green, 1, true, false);
-                }
-                else
-                {
-                    player.statLife += damage / 10;
-                    CombatText.NewText(player.getRect(), Color.Green, damage / 10, true, false);
-                }
-            }
-
-            if (Tied || trueNights)
-            {
-                target.AddBuff(BuffID.CursedInferno, 300);
-            }
-
             if (perfectChaosMe)
             {
                 target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
-            }
-
-            if (trueFlesh)
-            {
-                target.AddBuff(BuffID.Ichor, 300);
             }
 
             if (valkyrieSet)
@@ -2503,11 +2315,6 @@ namespace AAMod
                 player.ApplyDamageToNPC(target, 5, 0, 0, false);
             }
 
-            if (StormClaw)
-            {
-                player.ApplyDamageToNPC(target, 20, 0, 0, false);
-            }
-
             if (DiscordShredder)
             {
                 player.ApplyDamageToNPC(target, 30, 0, 0, false);
@@ -2518,14 +2325,6 @@ namespace AAMod
             {
                 int buff = WorldGen.crimson ? BuffID.Ichor : BuffID.CursedInferno;
                 target.AddBuff(buff, 180);
-            }
-
-            if (Time)
-            {
-                for (int i = 0; i < 255; i++)
-                {
-                    target.AddBuff(BuffID.Chilled, 1200);
-                }
             }
 
             if (HeartP && player.statLife > (player.statLifeMax / 3))
@@ -2567,38 +2366,12 @@ namespace AAMod
             }
         }
 
-        public void RespawnIZ(Player player)
-        {
-            if (Main.netMode != 1)
-            {
-                int bossType = mod.NPCType("IZSpawn1");
-                if (NPC.AnyNPCs(bossType))
-                {
-                    return;
-                }
-
-                int npcID = NPC.NewNPC((int)player.Center.X, (int)player.Center.Y, bossType, 0, 1f);
-
-                Main.npc[npcID].Center = player.Center - new Vector2(MathHelper.Lerp(-100f, 100f, (float)Main.rand.NextDouble()), 0f);
-                Main.npc[npcID].netUpdate2 = true;
-                Main.npc[npcID].netUpdate = true;
-            }
-        }
-
         public int IZHoldTimer = 180;
         public bool InfZ = false;
         public int GetIZHealth = 2500000;
         public int EscapeLine = 180;
         public int RiftTimer;
         public int RiftDamage = 10;
-
-        public override void UpdateLifeRegen()
-        {
-            if (trueFlesh)
-            {
-                player.lifeRegenTime += 2;
-            }
-        }
 
         public override void UpdateBadLifeRegen()
         {
@@ -2697,7 +2470,7 @@ namespace AAMod
 
                 player.lifeRegenTime = 0;
                 player.lifeRegen -= 8;
-                player.allDamage *= 0.8f;
+                
             }
 
             if (riftbent)
@@ -2790,25 +2563,7 @@ namespace AAMod
 
         public override void MeleeEffects(Item item, Rectangle hitbox)
         {
-            if (trueFlesh)
-            {
-                if (Main.rand.NextFloat() < 1f)
-                {
-                    Dust dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 246, 0f, 0f, 46)];
-                    dust.noGravity = true;
-                }
-            }
-
-            if (trueNights)
-            {
-                if (Main.rand.NextFloat() < 1f)
-                {
-                    Dust dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, 76, 0f, 0f, 46)];
-                    dust.noGravity = true;
-                }
-            }
-
-            if (demonGauntlet && !dwarvenGauntlet)
+            if (demonGauntlet)
             {
                 if (Main.rand.NextFloat() < 1f)
                 {
@@ -3014,35 +2769,6 @@ namespace AAMod
         {
             if (proj.melee)
             {
-                if (trueFlesh)
-                {
-                    target.AddBuff(BuffID.Ichor, 300);
-                    if (crit)
-                    {
-                        if (damage / 10 < 1)
-                        {
-                            player.statLife += 1;
-                        }
-                        else
-                        {
-                            player.statLife += damage / 10;
-                        }
-                    }
-                }
-
-                if (trueNights)
-                {
-                    target.AddBuff(BuffID.CursedInferno, 300);
-                }
-
-                if (trueNights && Main.rand.Next(4) == 0)
-                {
-                    if (target.life <= 0)
-                    {
-                        Projectile.NewProjectile(target.Center, new Vector2(0, 0), mod.ProjectileType<Items.Armor.TrueNights.CursedFireball>(), damage, 0, Main.myPlayer);
-                    }
-                }
-
                 if (perfectChaosMe)
                 {
                     target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
@@ -3094,11 +2820,6 @@ namespace AAMod
 
             if (proj.ranged)
             {
-                if (trueAbyssal)
-                {
-                    target.AddBuff(mod.BuffType<HydratoxinFlaskBuff>(), 300);
-                }
-
                 if (perfectChaosRa)
                 {
                     target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
@@ -3177,11 +2898,6 @@ namespace AAMod
                     target.AddBuff(BuffID.OnFire, 180);
                 }
 
-                if (trueDemon)
-                {
-                    target.AddBuff(BuffID.ShadowFlame, 300);
-                }
-
                 if (darkmatterSetSu)
                 {
                     target.AddBuff(mod.BuffType("Electrified"), 500);
@@ -3219,19 +2935,9 @@ namespace AAMod
                 target.AddBuff(buff, 1000);
             }
 
-            if (Time)
-            {
-                target.AddBuff(BuffID.Chilled, 180);
-            }
-
             if (clawsOfChaos)
             {
                 player.ApplyDamageToNPC(target, 5, 0, 0, false);
-            }
-
-            if (StormClaw)
-            {
-                player.ApplyDamageToNPC(target, 20, 0, 0, false);
             }
 
             if (DiscordShredder)

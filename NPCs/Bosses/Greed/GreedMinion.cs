@@ -65,12 +65,6 @@ namespace AAMod.NPCs.Bosses.Greed
 
             MinionType = (int)npc.ai[0];
 
-            if (MinionType == 20 && npc.ai[3] == 0)
-            {
-                npc.ai[3] = 1;
-                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0, 0, mod.ProjectileType<UraniumShield>(), npc.damage, 0, Main.myPlayer, npc.whoAmI);
-            }
-
             if (npc.ai[2] == 0)
             {
                 if (Main.netMode != 1)
@@ -93,18 +87,18 @@ namespace AAMod.NPCs.Bosses.Greed
                    MinionType == 13 ||
                    MinionType == 14 ||
                    MinionType == 15 ||
-                   MinionType == 16 ||
+                   MinionType == 17 ||
                    MinionType == 18 ||
                    MinionType == 19 ||
-                   MinionType == 20 ||
-                   MinionType == 28) //If Earlygame ore, Crimtane, Incinerite, Abyssium, Yttrium, Hellstone, Cobalt, Palladium, Mythril, Adamantite, Titanium, or Uranium, have Melee AI.
+                   MinionType == 24 ||
+                   MinionType == 25) //If Earlygame ore, Crimtane, Incinerite, Abyssium, Hellstone, Cobalt, Palladium, Mythril, Adamantite, or Titanium, have Melee AI.
                 {
                     float Speed = 3;
-                    if (MinionType == 11 || MinionType == 12)
+                    if (MinionType == 11)
                     {
                         Speed = 5;
                     }
-                    if (MinionType == 27)
+                    if (MinionType == 24)
                     {
                         npc.ai[3]++;
                         for (int m = npc.oldPos.Length - 1; m > 0; m--)
@@ -114,7 +108,7 @@ namespace AAMod.NPCs.Bosses.Greed
                         npc.oldPos[0] = npc.position;
 
                     }
-                    if (MinionType == 27 && npc.ai[3] > 300)
+                    if (MinionType == 24 && npc.ai[3] > 300)
                     {
                         BaseAI.AITackle(npc, ref npc.ai, Main.player[npc.target].Center, 0.5f, 12f, true, 60);
 
@@ -141,22 +135,22 @@ namespace AAMod.NPCs.Bosses.Greed
                             p = ProjectileID.CursedFlameHostile;
                             ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 120, npc.damage / 2, 9, true);
                         }
-                        else if (MinionType == 21) //Chlorophyte
+                        else if (MinionType == 20) //Chlorophyte
                         {
                             p = ProjectileID.CrystalLeafShot;
                             ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 120, npc.damage / 2, 9, true);
                         }
-                        else if (MinionType == 25) //Nebula
+                        else if (MinionType == 22) //Nebula
                         {
                             p = mod.ProjectileType<Nebula>();
                             ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 200, npc.damage / 2, 9, true);
                         }
-                        else if (MinionType == 26) //Vortex
+                        else if (MinionType == 23) //Vortex
                         {
                             p = 640;
                             ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 200, npc.damage / 2, 9, true);
                         }
-                        else if (MinionType == 17 && npc.ai[1]++ > 180) //Oricalcum
+                        else if (MinionType == 16 && npc.ai[1]++ > 180) //Oricalcum
                         {
                             npc.ai[1] = 0;
                             int direction = npc.direction;
@@ -182,15 +176,10 @@ namespace AAMod.NPCs.Bosses.Greed
                             Main.projectile[l].hostile = true;
                             npc.netUpdate = true;
                         }
-                        else //Technecium
-                        {
-                            p = mod.ProjectileType<TCharge>();
-                            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 90, npc.damage / 2, 9, true);
-                        }
                     }
                 }
             }
-            if (MinionType == 19) //Titanium Shadow Dodge
+            if (MinionType == 18) //Titanium Shadow Dodge
             {
                 shadowDodge = shadowDodgeTimer > 0;
                 if (shadowDodge)
@@ -229,7 +218,7 @@ namespace AAMod.NPCs.Bosses.Greed
                     }
                 }
             }
-            if (MinionType == 9 || MinionType == 15) //Regen
+            if (MinionType == 9 || MinionType == 14) //Regen
             {
                 npc.ai[3]++;
                 if (npc.ai[3] >= 100)
@@ -242,7 +231,7 @@ namespace AAMod.NPCs.Bosses.Greed
                     npc.ai[3] = 0;
                 }
             }
-            if (MinionType == 24) //Stardust Summon
+            if (MinionType == 21) //Stardust Summon
             {
                 npc.ai[3]++;
 
@@ -258,7 +247,7 @@ namespace AAMod.NPCs.Bosses.Greed
                     }
                 }
             }
-            if (MinionType == 25) //Vortex Stealth
+            if (MinionType == 23) //Vortex Stealth
             {
                 npc.ai[3]++;
 
@@ -288,7 +277,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (MinionType == 9 || MinionType == 15)
+            if (MinionType == 9 || MinionType == 13)
             {
                 npc.ai[3] = 0;
             }
@@ -296,7 +285,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
-            if (MinionType == 26 && npc.ai[3] > 300)
+            if (MinionType == 23 && npc.ai[3] > 300)
             {
                 return false;
             }
@@ -305,11 +294,11 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            if (MinionType == 13)
+            if (MinionType == 12)
             {
                 target.AddBuff(BuffID.OnFire, 200);
             }
-            if (MinionType == 19 && shadowDodgeTimer <= 0)
+            if (MinionType == 18 && shadowDodgeTimer <= 0)
             {
                 shadowDodgeTimer = 180;
             }
@@ -367,23 +356,20 @@ namespace AAMod.NPCs.Bosses.Greed
                 case 9: bodyColor = new Color(76, 76, 76); glowColor = new Color(216, 59, 63); break; //Crimtane
                 case 10: bodyColor = new Color(62, 58, 48); glowColor = new Color(204, 108, 42); break; //Incinerite
                 case 11: bodyColor = new Color(52, 36, 88); glowColor = new Color(18, 103, 92); break; //Abyssium
-                case 12: bodyColor = new Color(128, 73, 97); glowColor = new Color(228, 155, 102); break; //Yttrium
-                case 13: bodyColor = new Color(102, 34, 34); glowColor = new Color(238, 102, 70); break; //Hellstone
-                case 14: bodyColor = new Color(4, 48, 111); glowColor = new Color(143, 210, 253); break; //Cobalt
-                case 15: bodyColor = new Color(160, 36, 11); glowColor = new Color(245, 95, 55); break; //Palladium
-                case 16: bodyColor = new Color(22, 119, 125); glowColor = new Color(212, 255, 190); break; //Mythril
-                case 17: bodyColor = new Color(151, 0, 127); glowColor = new Color(248, 113, 227); break; //Oricalcum
-                case 18: bodyColor = new Color(128, 26, 52); glowColor = new Color(221, 85, 152); break; //Adamantite
-                case 19: bodyColor = new Color(91, 90, 119); glowColor = new Color(190, 187, 220); break; //Titanium
-                case 20: bodyColor = new Color(128, 26, 52); glowColor = new Color(221, 85, 152); break; //Hallowed
-                case 21: bodyColor = new Color(28, 39, 67); glowColor = new Color(92, 157, 103); break; //Uranium
-                case 22: bodyColor = new Color(36, 137, 0); glowColor = new Color(234, 254, 126); break; //Chlorophyte
-                case 23: bodyColor = new Color(68, 81, 112); glowColor = new Color(96, 225, 225); break; //Technecium
-                case 24: bodyColor = new Color(80, 87, 182); glowColor = new Color(255, 180, 0); break; //Stardust
-                case 25: bodyColor = new Color(80, 87, 182); glowColor = new Color(153, 108, 227); break; //Nebula
-                case 26: bodyColor = new Color(0, 127, 78); glowColor = new Color(0, 160, 170); break; //Vortex
-                case 27: bodyColor = new Color(249, 79, 7); glowColor = new Color(255, 231, 66); break; //Solar
-                case 28: bodyColor = new Color(73, 123, 119); glowColor = new Color(164, 101, 124); break; //Luminite
+                case 12: bodyColor = new Color(102, 34, 34); glowColor = new Color(238, 102, 70); break; //Hellstone
+                case 13: bodyColor = new Color(4, 48, 111); glowColor = new Color(143, 210, 253); break; //Cobalt
+                case 14: bodyColor = new Color(160, 36, 11); glowColor = new Color(245, 95, 55); break; //Palladium
+                case 15: bodyColor = new Color(22, 119, 125); glowColor = new Color(212, 255, 190); break; //Mythril
+                case 16: bodyColor = new Color(151, 0, 127); glowColor = new Color(248, 113, 227); break; //Oricalcum
+                case 17: bodyColor = new Color(128, 26, 52); glowColor = new Color(221, 85, 152); break; //Adamantite
+                case 18: bodyColor = new Color(91, 90, 119); glowColor = new Color(190, 187, 220); break; //Titanium
+                case 19: bodyColor = new Color(128, 26, 52); glowColor = new Color(221, 85, 152); break; //Hallowed
+                case 20: bodyColor = new Color(36, 137, 0); glowColor = new Color(234, 254, 126); break; //Chlorophyte
+                case 21: bodyColor = new Color(80, 87, 182); glowColor = new Color(255, 180, 0); break; //Stardust
+                case 22: bodyColor = new Color(80, 87, 182); glowColor = new Color(153, 108, 227); break; //Nebula
+                case 23: bodyColor = new Color(0, 127, 78); glowColor = new Color(0, 160, 170); break; //Vortex
+                case 24: bodyColor = new Color(249, 79, 7); glowColor = new Color(255, 231, 66); break; //Solar
+                case 25: bodyColor = new Color(73, 123, 119); glowColor = new Color(164, 101, 124); break; //Luminite
             }
         }
 
@@ -441,36 +427,30 @@ namespace AAMod.NPCs.Bosses.Greed
                 case 11:
                     npc.defense = 15; npc.damage = 14; break;
                 case 12:
-                    npc.defense = 18; npc.damage = 27; break;
-                case 13:
                     npc.defense = 25; npc.damage = 36; break;
-                case 14:
+                case 13:
                     npc.defense = 16; npc.damage = 40; break;
-                case 15:
+                case 14:
                     npc.defense = 32; npc.damage = 36; break;
-                case 16:
+                case 15:
                     npc.defense = 27; npc.damage = 50; break;
-                case 17:
+                case 16:
                     npc.defense = 42; npc.damage = 47; break;
-                case 18:
+                case 17:
                     npc.defense = 40; npc.damage = 60; break;
-                case 19:
+                case 18:
                     npc.defense = 49; npc.damage = 52; break;
-                case 20:
+                case 19:
                     npc.defense = 50; npc.damage = 57; break;
-                case 21:
-                    npc.defense = 53; npc.damage = 60; break;
-                case 22:
+                case 20:
                     npc.defense = 56; npc.damage = 75; break;
-                case 23:
-                    npc.defense = 58; npc.damage = 70; break;
-                case 24:
+                case 21:
                     npc.defense = 38; npc.damage = 60; break;
-                case 25:
+                case 22:
                     npc.defense = 46; npc.damage = 130; break;
-                case 26:
+                case 23:
                     npc.defense = 63; npc.damage = 50; break;
-                case 27:
+                case 24:
                     npc.defense = 78; npc.damage = 105; break;
                 default:
                     npc.defense = 58; npc.damage = 88; break;

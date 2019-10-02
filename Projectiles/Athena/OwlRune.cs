@@ -3,11 +3,10 @@ using Terraria;
 using Terraria.ModLoader;
 using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
-using System.IO;
 
 namespace AAMod.Projectiles.Athena
 {
-	public class OwlRune : ModProjectile
+    public class OwlRune : ModProjectile
     {
         public override void SetDefaults()
         {

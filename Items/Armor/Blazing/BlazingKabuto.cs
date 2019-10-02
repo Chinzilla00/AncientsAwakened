@@ -46,9 +46,9 @@ Forged in the flames of the blazing sun");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("KindledKabuto"));
-            recipe.AddIngredient(mod.ItemType("OceanHelm"));
-            recipe.AddIngredient(ItemID.FossilHelm);
-            recipe.AddIngredient(mod.ItemType("DoomiteUHelm"));
+            recipe.AddIngredient(ItemID.Coral, 5);
+            recipe.AddIngredient(ItemID.FossilOre, 5);
+            recipe.AddIngredient(mod.ItemType("Doomite"), 5);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();

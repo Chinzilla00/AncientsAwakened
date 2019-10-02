@@ -392,6 +392,7 @@ namespace AAMod.Globals
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Zero"), 16.4f, (Func<bool>)(() => AAWorld.downedZero), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("ZeroTesseract") + "]" + Lang.BossCheck("ZeroInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("ShenDoragon"), 20f, (Func<bool>)(() => AAWorld.downedShen), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("ChaosSigil") + "]");
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("RajahRabbitRevenge"), 40f, (Func<bool>)(() => AAWorld.downedRajahsRevenge), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType<DiamondCarrot>() + "]" + Lang.BossCheck("RajahRabbitRevengeInfo"));
+
                 // SlimeKing = 1f;
                 // EyeOfCthulhu = 2f;
                 // EaterOfWorlds = 3f;
@@ -445,11 +446,13 @@ namespace AAMod.Globals
                 //censusMod.Call("TownNPCCondition", mod.NPCType("Anubis"), $"Have [i:{ItemType<Items.ExampleItem>()}] or [i:{ItemType<Items.Placeable.ExampleBlock>()}] in inventory and build a house out of [i:{ItemType<Items.Placeable.ExampleBlock>()}] and [i:{ItemType<Items.Placeable.ExampleWall>()}]");
 
                 censusMod.Call("TownNPCCondition", mod.NPCType("Anubis"), "Always available");
-                censusMod.Call("TownNPCCondition", mod.NPCType("Mushman"), "After defeating Mushroom Monarch or Feudal Fungus, build a house in a red mushroom biome");
-                censusMod.Call("TownNPCCondition", mod.NPCType("Lovecraftian"), "Eye of Cthulhu defeated");
-                censusMod.Call("TownNPCCondition", mod.NPCType("Anubis"), "Grips of Chaos defeated");
-                censusMod.Call("TownNPCCondition", mod.NPCType("Goblin Slayer"), "Goblin Army is defeated");
-
+                if (!AAConfigClient.Instance.NoAATownNPC)
+                {
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Mushman"), "After defeating Mushroom Monarch or Feudal Fungus, build a house in a red mushroom biome");
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Lovecraftian"), "Eye of Cthulhu defeated");
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Samurai"), "Grips of Chaos defeated");
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Goblin Slayer"), "Goblin Army is defeated");
+                }
             }
         }
     }

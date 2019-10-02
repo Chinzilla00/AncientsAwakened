@@ -12,7 +12,9 @@ using BaseMod;
 using AAMod.Tiles;
 using AAMod.Walls;
 using Terraria.Utilities;
-using System.Linq;
+using AAMod.Tiles.Chests;
+using AAMod.Tiles.Crafters;
+using AAMod.Tiles.Boss;
 
 namespace AAMod.Worldgeneration
 {
@@ -720,6 +722,12 @@ namespace AAMod.Worldgeneration
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/GreedNest"), colorToTile, mod.GetTexture("Worldgeneration/GreedNestWalls"), colorToWall, null, mod.GetTexture("Worldgeneration/GreedNestSlopes"));
 
             gen.Generate(origin.X, origin.Y, true, true);
+
+            WorldUtils.Gen(new Point(origin.X - (gen.width / 2), origin.Y - 20), new Shapes.Rectangle(gen.width, gen.height), Actions.Chain(new GenAction[]
+			{
+                new InWorld(),
+                new Actions.SetLiquid(0, 0)
+            }));
 
             WorldGen.PlaceObject(origin.X + 80, origin.Y + 88, mod.TileType("GreedAltar"));
             NetMessage.SendObjectPlacment(-1, origin.X + 80, origin.Y + 88, mod.TileType("GreedAltar"), 0, 0, -1, -1);

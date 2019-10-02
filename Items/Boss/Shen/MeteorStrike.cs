@@ -108,7 +108,7 @@ Inflicts Discordian Inferno");
             recipe.AddIngredient(null, "Toxibomb", 1);
             recipe.AddIngredient(null, "ChaosScale", 5);
             recipe.AddIngredient(null, "Discordium", 5);
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

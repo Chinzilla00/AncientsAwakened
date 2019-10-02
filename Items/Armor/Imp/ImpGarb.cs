@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 
@@ -32,7 +33,7 @@ namespace AAMod.Items.Armor.Imp
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "DevilSilk", 7);
-                recipe.AddTile(null, "HellstoneAnvil");
+                recipe.AddTile(TileID.Loom);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }

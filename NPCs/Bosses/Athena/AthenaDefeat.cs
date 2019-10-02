@@ -1,14 +1,12 @@
-using AAMod.NPCs.Enemies.Sky;
 using BaseMod;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Athena
 {
-	public class AthenaDefeat : ModNPC
+    public class AthenaDefeat : ModNPC
     {
         public override void SetStaticDefaults()
         {

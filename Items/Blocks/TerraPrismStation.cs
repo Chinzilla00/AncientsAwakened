@@ -7,8 +7,9 @@ namespace AAMod.Items.Blocks
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Terra Infuser");
-            Tooltip.SetDefault(@"Used to infuse biome prisms with the power of biome essesces.");
+            DisplayName.SetDefault("Infinity Core");
+            Tooltip.SetDefault(@"The 'craft-all'.
+Combiles all vanilla and Ancients Awakened crafting stations together");
         }
 
         public override void SetDefaults()
@@ -25,15 +26,16 @@ namespace AAMod.Items.Blocks
             item.consumable = true;
             item.value = 100000;
             item.createTile = mod.TileType("TerraPrism");
-            
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Prism", 5);
-            recipe.AddIngredient(null, "TerraCrystal", 1);
-            recipe.AddTile(null, "HallowedAnvil");
+            recipe.AddIngredient(null, "TruePaladinsSmeltery", 1);
+            recipe.AddIngredient(null, "FurnitureDynamo", 1);
+            recipe.AddIngredient(null, "TerraCore", 1);
+            recipe.AddRecipeGroup("AAMod:AstralStations");
+            recipe.AddRecipeGroup("AAMod:ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

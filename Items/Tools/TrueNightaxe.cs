@@ -34,7 +34,7 @@ namespace AAMod.Items.Tools
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod, "Nightaxe");
-            recipe.AddIngredient(mod, "CorruptionCrystal");
+            recipe.AddIngredient(mod, "HeroShards");
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);  
             recipe.AddRecipe();

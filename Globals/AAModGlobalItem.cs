@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using AAMod.Items.Boss.Akuma;
 using AAMod.Items.Boss.Grips;
 using AAMod.Items;
+using AAMod.Items.Dev.Invoker;
 
 namespace AAMod
 {
@@ -170,10 +171,7 @@ namespace AAMod
 
         public override void OpenVanillaBag(string context, Player player, int arg)
         {
-            if (context == "bossBag" && arg == ItemID.FishronBossBag)
-            {
-                player.QuickSpawnItem(mod.ItemType<Items.Materials.FishronScale>(), Main.rand.Next(15, 31));
-            }
+
         }
 
         public override bool OnPickup(Item item, Player player)
@@ -233,9 +231,12 @@ namespace AAMod
                     {
                         int[] items = new int[]
                         {
-                            mod.ItemType<Items.Materials.YtriumBar>(),
-                            mod.ItemType<Items.Materials.UraniumBar>(),
-                            mod.ItemType<Items.Materials.TechneciumBar>()
+                            ItemID.CobaltBar,
+                            ItemID.PalladiumBar,
+                            ItemID.MythrilBar,
+                            ItemID.OrichalcumBar,
+                            ItemID.AdamantiteBar,
+                            ItemID.TitaniumBar,
                         };
                         item = Main.rand.Next(items);
                         amount = Main.rand.Next(7, 18);
@@ -282,6 +283,33 @@ namespace AAMod
                     player.QuickSpawnItem(item, Main.rand.Next(2, 6));
                 }
             }
+        }
+    }
+
+    public class InvokerCaligulaItem : GlobalItem
+    {
+        public override bool InstancePerEntity
+        {
+            get
+            {
+                return true;
+            }
+        }
+
+        public override bool CloneNewInstances
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override bool CanUseItem(Item item, Player player)
+        {
+            if (player.GetModPlayer<InvokerPlayer>(mod).InvokedCaligula && player.inventory[player.selectedItem].damage > 0 && !(player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula && player.inventory[player.selectedItem].type == mod.ItemType("InvokerStaff") && player.altFunctionUse == 2))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

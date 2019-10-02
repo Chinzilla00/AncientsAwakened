@@ -15,6 +15,7 @@ using Terraria.GameContent.UI;
 using Terraria.Graphics.Effects;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.Utilities;
@@ -34,7 +35,6 @@ namespace AAMod
         public static ModHotKey ArmorAbilityKey;
         public static ModHotKey Rift;
         public static ModHotKey RiftReturn;
-        public static ModHotKey TimeStone;
 
         // Textures
         public static IDictionary<string, Texture2D> Textures = null;
@@ -50,6 +50,7 @@ namespace AAMod
         internal TerratoolZUI TerratoolZState;
         internal TerratoolSUI TerratoolSState;
         internal TerratoolKipUI TerratoolKipState;
+        internal TerratoolEXUI TerratoolEXState;
 
         public static SpriteFont fontMouseText;
 
@@ -58,6 +59,11 @@ namespace AAMod
 
         public static bool thoriumLoaded = false;
         public static bool calamityLoaded = false;
+        public static bool gRealmLoaded = false;
+        public static bool redeLoaded = false;
+        public static bool spiritLoaded = false;
+        public static bool jsLoaded = false;
+
 
         internal static AAMod instance;
         public static AAMod self = null;
@@ -208,11 +214,23 @@ namespace AAMod
 
             Mod Thorium = ModLoader.GetMod("ThoriumMod");
             Mod Calamity = ModLoader.GetMod("CalamityMod");
+            Mod GRealm = ModLoader.GetMod("GRealm");
+            Mod Rede = ModLoader.GetMod("Redemption");
+            Mod Spirit = ModLoader.GetMod("SpiritMod");
+            Mod js = ModLoader.GetMod("JetshiftMod");
 
             if (Thorium != null)
                 thoriumLoaded = true;
             if (Calamity != null)
                 calamityLoaded = true;
+            if (GRealm != null)
+                gRealmLoaded = true;
+            if (Rede != null)
+                redeLoaded = true;
+            if (Spirit != null)
+                calamityLoaded = true;
+            if (js != null)
+                jsLoaded = true;
         }
 
         public static void PremultiplyTexture(Texture2D texture)
@@ -229,6 +247,8 @@ namespace AAMod
 
         public override void Load()
         {
+            Logger.InfoFormat("{0} AA log", Name);
+
             instance = this;
             GoblinSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ItemType<Items.Currency.GoblinSoul>()));
             BoneAmmo = ItemID.Bone;
@@ -250,8 +270,6 @@ namespace AAMod
 
             AccessoryAbilityKey = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.AccessoryAbilityKey"), "U");
             ArmorAbilityKey = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.ArmorAbilityKey"), "Y");
-
-            TimeStone = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.TimeStonehotKey"), "K");
 
             if (!Main.dedServ)
             {
@@ -276,6 +294,8 @@ namespace AAMod
             TerratoolSState.Activate();
             TerratoolKipState = new TerratoolKipUI();
             TerratoolKipState.Activate();
+            TerratoolEXState = new TerratoolEXUI();
+            TerratoolEXState.Activate();
 
             Ref<Effect> screenRef = new Ref<Effect>(GetEffect("Effects/Shockwave"));
             Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.VeryHigh);
@@ -302,7 +322,6 @@ namespace AAMod
             PremultiplyTexture(GetTexture("NPCs/Bosses/Greed/GreedSpawn"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Greed/GreedSpawn1"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Greed/GreedSpawn2"));
-            PremultiplyTexture(GetTexture("NPCs/Bosses/Greed/UraniumShield"));
 
             if (GetSoundSlot(SoundType.Music, "Sounds/Music/Monarch") != 0) //ensure music was loaded!
             {
@@ -319,6 +338,8 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Djinn"), ItemType("DjinnBox"), TileType("DjinnBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/TODE"), ItemType("ToadBox"), TileType("ToadBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6"), ItemType("SerpentBox"), TileType("SerpentBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis"), ItemType("AnubisBox"), TileType("AnubisBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Acropolis"), ItemType("AcropolisBox"), TileType("AcropolisBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme"), ItemType("RajahBox"), TileType("RajahBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox"), ItemType("Equibox"), TileType("Equibox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Stars"), ItemType("StarBox"), TileType("StarBox"));
@@ -338,6 +359,7 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shen"), ItemType("ShenBox"), TileType("ShenBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA"), ItemType("ShenABox"), TileType("ShenABox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SupremeRajah"), ItemType("SRajahBox"), TileType("SRajahBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand"), ItemType("SABox"), TileType("SABox"));
             }
 
             Filters.Scene["AAMod:ShenSky"] = new Filter(new ShenSkyData("FilterMiniTower").UseColor(.5f, 0f, .5f).UseOpacity(0.2f), EffectPriority.VeryHigh);
@@ -424,7 +446,6 @@ namespace AAMod
             RiftReturn = null;
             AccessoryAbilityKey = null;
             ArmorAbilityKey = null;
-            TimeStone = null;
 
             if (!Main.dedServ)
             {
@@ -690,6 +711,26 @@ namespace AAMod
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Shroom");
 
                 return;
+            }
+        }
+
+        public static void Chat(string s, Color color, bool sync = true)
+        {
+            Chat(s, color.R, color.G, color.B, sync);
+        }
+
+        /*
+         * Sends the given string to chat, with the given color values.
+         */
+        public static void Chat(string s, byte colorR = 255, byte colorG = 255, byte colorB = 255, bool sync = true)
+        {
+            if (!AAConfigClient.Instance.NoBossDialogue)
+            {
+                if (Main.netMode == 0) { Main.NewText(s, colorR, colorG, colorB); }
+                else
+                if (Main.netMode == 1) { Main.NewText(s, colorR, colorG, colorB); }
+                else //if(sync){ NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(s), new Color(colorR, colorG, colorB), Main.myPlayer); } }else
+                if (sync && Main.netMode == 2) { NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(s), new Color(colorR, colorG, colorB), -1); }
             }
         }
 

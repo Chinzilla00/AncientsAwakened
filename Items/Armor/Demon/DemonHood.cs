@@ -60,9 +60,9 @@ namespace AAMod.Items.Armor.Demon
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "ImpHood", 1);
-                recipe.AddIngredient(ItemID.NecroHelmet, 1);
-                recipe.AddIngredient(ItemID.JungleHat, 1);
-                recipe.AddIngredient(ItemID.CrimsonHelmet, 1);
+                recipe.AddIngredient(ItemID.Bone, 5);
+                recipe.AddIngredient(ItemID.JungleSpores, 5);
+                recipe.AddIngredient(ItemID.ShadowScale, 5);
                 recipe.AddTile(TileID.DemonAltar);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
@@ -70,9 +70,9 @@ namespace AAMod.Items.Armor.Demon
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "ImpHood", 1);
-                recipe.AddIngredient(ItemID.NecroHelmet, 1);
-                recipe.AddIngredient(ItemID.JungleHat, 1);
-                recipe.AddIngredient(ItemID.ShadowHelmet, 1);
+                recipe.AddIngredient(ItemID.Bone, 5);
+                recipe.AddIngredient(ItemID.JungleSpores, 5);
+                recipe.AddIngredient(ItemID.TissueSample, 5);
                 recipe.AddTile(TileID.DemonAltar);
                 recipe.SetResult(this);
                 recipe.AddRecipe();

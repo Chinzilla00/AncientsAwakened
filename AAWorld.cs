@@ -9,7 +9,9 @@ using Terraria.ModLoader;
 using Terraria.World.Generation;
 using Terraria.GameContent.Generation;
 using Terraria.ModLoader.IO;
+using AAMod.Tiles.Ore;
 using AAMod.Tiles;
+using AAMod.Tiles.Crafters;
 using BaseMod;
 using AAMod.Worldgeneration;
 using AAMod.Worldgen;
@@ -23,6 +25,7 @@ namespace AAMod
     {
         public static int SmashDragonEgg = 2;
         public static int SmashHydraPod = 2;
+        public static int OpenedChest = 2;
         //tile ints
         public static int mireTiles = 0;
         public static int infernoTiles = 0;
@@ -39,9 +42,6 @@ namespace AAMod
         public static int HoardTiles = 0;
         public static int CloudTiles = 0;
         //Worldgen
-        public static bool Yttrium;
-        public static bool Uranium;
-        public static bool Technecium;
         public static bool TerrariumEnemies;
         public static bool Luminite;
         public static bool DarkMatter;
@@ -64,7 +64,7 @@ namespace AAMod
         public string nums = "1234567890";
         public static bool ModContentGenerated;
         //Messages
-        public static bool Evil;
+        public static bool AMessage;
         public static bool Empowered;
         //Boss Bools
         public static bool Ancients;
@@ -99,6 +99,7 @@ namespace AAMod
         public static bool downedAthena;
         public static bool downedAthenaA;
         public static bool downedGreed;
+        public static bool downedGreedA;
         public static bool AthenaHerald;
         //Points
         public static Point WHERESDAVOIDAT;
@@ -135,6 +136,7 @@ namespace AAMod
             downedAthena = false;
             downedAthenaA = false;
             downedGreed = false;
+            downedGreedA = false;
             downedMonarch = false;
             downedGrips = false;
             downedEquinox = false;
@@ -160,14 +162,11 @@ namespace AAMod
             downedRajah = false;
             AthenaHerald = false;
             //World Changes
-            Yttrium = NPC.downedQueenBee;
-            Uranium = NPC.downedPlantBoss;
-            Technecium = NPC.downedMartians;
             TerrariumEnemies = NPC.downedBoss2;
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
             HallowedOre = NPC.downedMechBossAny;
-            Evil = NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
+            AMessage = NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
             Luminite = NPC.downedMoonlord;
             DarkMatter = downedNC;
             RadiumOre = downedDB;
@@ -233,8 +232,8 @@ namespace AAMod
             if (downedBrood) downed.Add("Nacho");
             if (NPC.downedBoss3) downed.Add("Dynaskull");
             if (NPC.downedMechBossAny) downed.Add("MechBoss");
-            if (NPC.downedPlantBoss) downed.Add("Evil");
             if (NPC.downedMoonlord) downed.Add("MoonLord");
+            if (AMessage) downed.Add("AMessage");
             if (downedEquinox) downed.Add("Equinox");
             if (Ancients) downed.Add("AA");
             if (downedAncient) downed.Add("A");
@@ -264,6 +263,7 @@ namespace AAMod
             if (downedAthena) downed.Add("BirdBitch");
             if (downedAthenaA) downed.Add("BirdBitchA");
             if (downedGreed) downed.Add("GimmeGimme");
+            if (downedGreedA) downed.Add("WOOOORMS");
             if (AthenaHerald) downed.Add("BitchBird");
 
             return new TagCompound {
@@ -291,6 +291,90 @@ namespace AAMod
                 {"Pod", SmashHydraPod}
             };
         }
+
+        public override void Load(TagCompound tag)
+        {
+            var downed = tag.GetList<string>("downed");
+            //bosses
+            downedMonarch = downed.Contains("MUSHMAN");
+            downedGrips = downed.Contains("GrabbyHands");
+            downedBrood = downed.Contains("Nacho");
+            downedHydra = downed.Contains("Hydra");
+            NPC.downedBoss3 = downed.Contains("Dynaskull");
+            NPC.downedMechBossAny = downed.Contains("MechBoss");
+            NPC.downedMoonlord = downed.Contains("MoonLord");
+            AMessage = downed.Contains("AMessage");
+            downedEquinox = downed.Contains("Equinox");
+            downedAncient = downed.Contains("A");
+            downedSAncient = downed.Contains("SA");
+            downedAkuma = downed.Contains("Akuma");
+            downedYamata = downed.Contains("Yamata");
+            downedZero = downed.Contains("0");
+            downedShen = downed.Contains("Shen");
+            downedAllAncients = downed.Contains("DAA");
+            Ancients = downed.Contains("AA");
+            ShenSummoned = downed.Contains("ShenS");
+            downedSerpent = downed.Contains("Serpent");
+            downedDjinn = downed.Contains("JojoReference");
+            downedToad = downed.Contains("Toad");
+            downedFungus = downed.Contains("Fungus");
+            downedAshe = downed.Contains("BetterDragonWaifu");
+            downedHaruka = downed.Contains("TrashDragonWaifu");
+            downedSisters = downed.Contains("Sisters");
+            downedSag = downed.Contains("Sag");
+            SistersSummoned = downed.Contains("Summoned");
+            downedRajah = downed.Contains("Rajah");
+            downedRajahsRevenge = downed.Contains("Rajah2");
+            zeroUS = downed.Contains("ZUS");
+            downedAnubis = downed.Contains("Doggo");
+            downedAthena = downed.Contains("BirdBitch");
+            downedAthenaA = downed.Contains("BirdBitchA");
+            downedGreed = downed.Contains("GimmeGimme");
+            downedGreedA = downed.Contains("WOOOORMS");
+            AthenaHerald = downed.Contains("BitchBird");
+            //World Changes
+            ChaosOres = downedGrips;
+            Dynaskull = NPC.downedBoss3;
+            HallowedOre = NPC.downedMechBossAny;
+            AMessage = NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
+            Luminite = NPC.downedMoonlord;
+            RadiumOre = downedEquinox;
+            DiscordOres = downedSisters;
+            InfernoStripe = downed.Contains("IStripe");
+            MireStripe = downed.Contains("MStripe");
+            ModContentGenerated = downed.Contains("WorldGenned");
+
+            if (tag.ContainsKey("MCenter")) // check if the altar coordinates exist in the save file
+            {
+                MireCenter = tag.Get<Vector2>("MCenter");
+            }
+            if (tag.ContainsKey("ICenter")) // check if the altar coordinates exist in the save file
+            {
+                InfernoCenter = tag.Get<Vector2>("ICenter");
+            }
+            //Squid Lady
+
+            squid1 = tag.GetInt("squid1");
+            squid2 = tag.GetInt("squid2");
+            squid3 = tag.GetInt("squid3");
+            squid4 = tag.GetInt("squid4");
+            squid5 = tag.GetInt("squid5");
+            squid6 = tag.GetInt("squid6");
+            squid7 = tag.GetInt("squid7");
+            squid8 = tag.GetInt("squid8");
+            squid9 = tag.GetInt("squid9");
+            squid10 = tag.GetInt("squid10");
+            squid11 = tag.GetInt("squid11");
+            squid12 = tag.GetInt("squid12");
+            squid13 = tag.GetInt("squid13");
+            squid14 = tag.GetInt("squid14");
+            squid15 = tag.GetInt("squid15");
+            squid16 = tag.GetInt("squid16");
+            RabbitKills = tag.GetInt("Bunny");
+            SmashDragonEgg = tag.GetInt("Egg");
+            SmashHydraPod = tag.GetInt("Pod");
+        }
+
         public override void NetSend(BinaryWriter writer)
         {
             BitsByte flags = new BitsByte();
@@ -342,6 +426,7 @@ namespace AAMod
             BitsByte flags5 = new BitsByte();
             flags5[0] = AthenaHerald;
             flags5[1] = downedAthenaA;
+            flags5[2] = downedGreedA;
             writer.Write(flags5);
 
             writer.WriteVector2(MireCenter);
@@ -413,6 +498,7 @@ namespace AAMod
             BitsByte flags5 = reader.ReadByte();
             AthenaHerald = flags5[0];
             downedAthenaA = flags5[1];
+            downedGreedA = flags5[2];
 
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		
@@ -438,87 +524,6 @@ namespace AAMod
             SmashDragonEgg = reader.ReadInt32();
         }
 
-        public override void Load(TagCompound tag)
-        {
-            var downed = tag.GetList<string>("downed");
-            //bosses
-            downedMonarch = downed.Contains("MUSHMAN");
-            downedGrips = downed.Contains("GrabbyHands");
-            downedBrood = downed.Contains("Nacho");
-            downedHydra = downed.Contains("Hydra");
-            NPC.downedBoss3 = downed.Contains("Dynaskull");
-            NPC.downedMechBossAny = downed.Contains("MechBoss");
-            NPC.downedPlantBoss = downed.Contains("Evil");
-            NPC.downedMoonlord = downed.Contains("MoonLord");
-            downedEquinox = downed.Contains("Equinox");
-            downedAncient = downed.Contains("A");
-            downedSAncient = downed.Contains("SA");
-            downedAkuma = downed.Contains("Akuma");
-            downedYamata = downed.Contains("Yamata");
-            downedZero = downed.Contains("0");
-            downedShen = downed.Contains("Shen");
-            downedAllAncients = downed.Contains("DAA");
-            Ancients = downed.Contains("AA");
-            ShenSummoned = downed.Contains("ShenS");
-            downedSerpent = downed.Contains("Serpent");
-            downedDjinn = downed.Contains("JojoReference");
-            downedToad = downed.Contains("Toad");
-            downedFungus = downed.Contains("Fungus");
-            downedAshe = downed.Contains("BetterDragonWaifu");
-            downedHaruka = downed.Contains("TrashDragonWaifu");
-            downedSisters = downed.Contains("Sisters");
-            downedSag = downed.Contains("Sag");
-            SistersSummoned = downed.Contains("Summoned");
-            downedRajah = downed.Contains("Rajah");
-            downedRajahsRevenge = downed.Contains("Rajah2");
-            zeroUS = downed.Contains("ZUS");
-            downedAnubis = downed.Contains("Doggo");
-            downedAthena = downed.Contains("BirdBitch");
-            downedAthenaA = downed.Contains("BirdBitchA");
-            downedGreed = downed.Contains("GimmeGimme");
-            AthenaHerald = downed.Contains("BitchBird");
-            //World Changes
-            ChaosOres = downedGrips;
-            Dynaskull = NPC.downedBoss3;
-            HallowedOre = NPC.downedMechBossAny;
-            Evil = NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
-            Luminite = NPC.downedMoonlord;
-            RadiumOre = downedEquinox;
-            DiscordOres = downedSisters;
-            InfernoStripe = downed.Contains("IStripe");
-            MireStripe = downed.Contains("MStripe");
-            ModContentGenerated = downed.Contains("WorldGenned");
-
-            if (tag.ContainsKey("MCenter")) // check if the altar coordinates exist in the save file
-            {
-                MireCenter = tag.Get<Vector2>("MCenter");
-            }
-            if (tag.ContainsKey("ICenter")) // check if the altar coordinates exist in the save file
-            {
-                InfernoCenter = tag.Get<Vector2>("ICenter");
-            }
-            //Squid Lady
-
-            squid1 = tag.GetInt("squid1");
-            squid2 = tag.GetInt("squid2");
-            squid3 = tag.GetInt("squid3");
-            squid4 = tag.GetInt("squid4");
-            squid5 = tag.GetInt("squid5");
-            squid6 = tag.GetInt("squid6");
-            squid7 = tag.GetInt("squid7");
-            squid8 = tag.GetInt("squid8");
-            squid9 = tag.GetInt("squid9");
-            squid10 = tag.GetInt("squid10");
-            squid11 = tag.GetInt("squid11");
-            squid12 = tag.GetInt("squid12");
-            squid13 = tag.GetInt("squid13");
-            squid14 = tag.GetInt("squid14");
-            squid15 = tag.GetInt("squid15");
-            squid16 = tag.GetInt("squid16");
-            RabbitKills = tag.GetInt("Bunny");
-            SmashDragonEgg = tag.GetInt("Egg");
-            SmashHydraPod = tag.GetInt("Pod");
-        }
 
         private string NumberRand(int size)
         {
@@ -814,7 +819,7 @@ namespace AAMod
         {
             int x = Main.maxTilesX;
             int y = Main.maxTilesY;
-            for (int k = 0; k < (int)(x * y * 15E-05); k++)
+            for (int k = 0; k < (int)(x * y * 15E-04); k++)
             {
                 int tilesX = WorldGen.genRand.Next(0, Main.maxTilesX);
                 int tilesY = WorldGen.genRand.Next(0, Main.maxTilesY);
@@ -1165,20 +1170,6 @@ namespace AAMod
                     }
                 }
             }
-
-            if (NPC.downedQueenBee && !Yttrium)
-            {
-                GenYttrium();
-            }
-            if (NPC.downedPlantBoss && !Uranium)
-            {
-                GenUranium();
-            }
-            if (NPC.downedMartians && !Technecium)
-            {
-                GenTechnecium();
-            }
-
             if (NPC.downedMoonlord)
             {
                 if (Ancients == false)
@@ -1273,9 +1264,9 @@ namespace AAMod
             }
             if (NPC.downedPlantBoss)
             {
-                if (!Evil)
+                if (!AMessage)
                 {
-                    Evil = true;
+                    AMessage = true;
                     if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedPlantBossInfo4"), Color.Gold.R, Color.Gold.G, Color.Gold.B);
                 }
             }       
@@ -1312,41 +1303,6 @@ namespace AAMod
 
                     ConversionHandler.ConvertDown((int)MireCenter.X, 0, 120, ConversionType.MIRE);
                 }
-            }
-        }
-        public static void GenYttrium()
-        {
-            if (Main.netMode == NetmodeID.MultiplayerClient) { AANet.SendNetMessage(AANet.GenOre, (byte)0); }
-            else
-            {
-                Yttrium = true;
-                float percent = Main.maxTilesX / 4300f;
-                int count = (int)((Main.expertMode ? 350f : 300f) * percent);
-                BaseWorldGen.GenOre(AAMod.instance.TileType<YtriumOre>(), count, 5, 9, (int)Main.rockLayer, true);
-            }
-        }
-
-        public static void GenUranium()
-        {
-            if (Main.netMode == NetmodeID.MultiplayerClient) { AANet.SendNetMessage(AANet.GenOre, (byte)1); }
-            else
-            {
-                Uranium = true;
-                float percent = Main.maxTilesX / 4300f;
-                int count = (int)((Main.expertMode ? 350f : 300f) * percent);
-                BaseWorldGen.GenOre(AAMod.instance.TileType<UraniumOre>(), count, 5, 9, (int)Main.rockLayer, true);
-            }
-        }
-
-        public static void GenTechnecium()
-        {
-            if (Main.netMode == NetmodeID.MultiplayerClient) { AANet.SendNetMessage(AANet.GenOre, (byte)2); }
-            else
-            {
-                Technecium = true;
-                float percent = Main.maxTilesX / 4300f;
-                int count = (int)((Main.expertMode ? 350f : 300f) * percent);
-                BaseWorldGen.GenOre(AAMod.instance.TileType<TechneciumOre>(), count, 5, 9, (int)Main.rockLayer, true);
             }
         }
 
@@ -1848,10 +1804,15 @@ namespace AAMod
                                 WorldGen.SquareTileFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }
-
                             else if (type == 203)
                             {
                                 Main.tile[k, l].type = 200;
+                                WorldGen.SquareTileFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (type == mod.TileType<InfernoGrass>())
+                            {
+                                Main.tile[k, l].type = TileID.SnowBlock;
                                 WorldGen.SquareTileFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }

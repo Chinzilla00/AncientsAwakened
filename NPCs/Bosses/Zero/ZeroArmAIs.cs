@@ -8,10 +8,10 @@ namespace AAMod.NPCs.Bosses.Zero
     {
         public static void MeleeWeaponLeft(NPC npc)
         {
-            Vector2 Center = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-            float num448 = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - 200f * npc.ai[0] - Center.X;
+            Vector2 Center = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+            float num448 = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - 200f * npc.ai[0] - Center.X;
             float num449 = Main.npc[(int)npc.ai[1]].position.Y + 230f - Center.Y;
-            float num450 = (float)Math.Sqrt((double)(num448 * num448 + num449 * num449));
+            float num450 = (float)Math.Sqrt(num448 * num448 + num449 * num449);
             if (npc.ai[2] != 99f)
             {
                 if (num450 > 800f)
@@ -60,7 +60,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         npc.velocity.Y = -8f;
                     }
                 }
-                if (npc.position.X + (float)(npc.width / 2) > Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2))
+                if (npc.position.X + npc.width / 2 > Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2)
                 {
                     if (npc.velocity.X > 0f)
                     {
@@ -72,7 +72,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         npc.velocity.X = 12f;
                     }
                 }
-                if (npc.position.X + (float)(npc.width / 2) < Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2))
+                if (npc.position.X + npc.width / 2 < Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2)
                 {
                     if (npc.velocity.X < 0f)
                     {
@@ -188,7 +188,7 @@ namespace AAMod.NPCs.Bosses.Zero
                                 npc.velocity.Y = -3f;
                             }
                         }
-                        if (npc.position.X + (float)(npc.width / 2) > Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2))
+                        if (npc.position.X + npc.width / 2 > Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2)
                         {
                             if (npc.velocity.X > 0f)
                             {
@@ -200,7 +200,7 @@ namespace AAMod.NPCs.Bosses.Zero
                                 npc.velocity.X = 12f;
                             }
                         }
-                        if (npc.position.X + (float)(npc.width / 2) < Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - 250f)
+                        if (npc.position.X + npc.width / 2 < Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - 250f)
                         {
                             if (npc.velocity.X < 0f)
                             {
@@ -213,19 +213,19 @@ namespace AAMod.NPCs.Bosses.Zero
                             }
                         }
                     }
-                    Vector2 vector48 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                    float num454 = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - 200f * npc.ai[0] - vector48.X;
+                    Vector2 vector48 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                    float num454 = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - 200f * npc.ai[0] - vector48.X;
                     float num455 = Main.npc[(int)npc.ai[1]].position.Y + 230f - vector48.Y;
-                    Math.Sqrt((double)(num454 * num454 + num455 * num455));
-                    npc.rotation = (float)Math.Atan2((double)num455, (double)num454) + 1.57f;
+                    Math.Sqrt(num454 * num454 + num455 * num455);
+                    npc.rotation = (float)Math.Atan2(num455, num454) + 1.57f;
                     return;
                 }
                 if (npc.ai[2] == 1f)
                 {
-                    Vector2 vector49 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                    float num456 = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - 200f * npc.ai[0] - vector49.X;
+                    Vector2 vector49 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                    float num456 = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - 200f * npc.ai[0] - vector49.X;
                     float num457 = Main.npc[(int)npc.ai[1]].position.Y + 230f - vector49.Y;
-                    npc.rotation = (float)Math.Atan2((double)num457, (double)num456) + 1.57f;
+                    npc.rotation = (float)Math.Atan2(num457, num456) + 1.57f;
                     npc.velocity.X *= 0.95f;
                     npc.velocity.Y -= 0.1f;
                     if (npc.velocity.Y < -8f)
@@ -236,10 +236,10 @@ namespace AAMod.NPCs.Bosses.Zero
                     {
                         npc.TargetClosest(true);
                         npc.ai[2] = 2f;
-                        vector49 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                        num456 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector49.X;
-                        num457 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector49.Y;
-                        float num458 = (float)Math.Sqrt((double)(num456 * num456 + num457 * num457));
+                        vector49 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                        num456 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector49.X;
+                        num457 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector49.Y;
+                        float num458 = (float)Math.Sqrt(num456 * num456 + num457 * num457);
                         num458 = 22f / num458;
                         npc.velocity.X = num456 * num458;
                         npc.velocity.Y = num457 * num458;
@@ -260,10 +260,10 @@ namespace AAMod.NPCs.Bosses.Zero
                     if (npc.ai[2] == 4f)
                     {
                         npc.TargetClosest(true);
-                        Vector2 vector50 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                        float num459 = Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2) - vector50.X;
-                        float num460 = Main.player[npc.target].position.Y + (float)(Main.player[npc.target].height / 2) - vector50.Y;
-                        float num461 = (float)Math.Sqrt((double)(num459 * num459 + num460 * num460));
+                        Vector2 vector50 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                        float num459 = Main.player[npc.target].position.X + Main.player[npc.target].width / 2 - vector50.X;
+                        float num460 = Main.player[npc.target].position.Y + Main.player[npc.target].height / 2 - vector50.Y;
+                        float num461 = (float)Math.Sqrt(num459 * num459 + num460 * num460);
                         num461 = 7f / num461;
                         num459 *= num461;
                         num460 *= num461;
@@ -306,13 +306,13 @@ namespace AAMod.NPCs.Bosses.Zero
                             npc.ai[3] = 0f;
                             npc.netUpdate = true;
                         }
-                        vector50 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                        num459 = Main.npc[(int)npc.ai[1]].position.X + (float)(Main.npc[(int)npc.ai[1]].width / 2) - 200f * npc.ai[0] - vector50.X;
+                        vector50 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                        num459 = Main.npc[(int)npc.ai[1]].position.X + Main.npc[(int)npc.ai[1]].width / 2 - 200f * npc.ai[0] - vector50.X;
                         num460 = Main.npc[(int)npc.ai[1]].position.Y + 230f - vector50.Y;
-                        npc.rotation = (float)Math.Atan2((double)num460, (double)num459) + 1.57f;
+                        npc.rotation = (float)Math.Atan2(num460, num459) + 1.57f;
                         return;
                     }
-                    if (npc.ai[2] == 5f && ((npc.velocity.X > 0f && npc.position.X + (float)(npc.width / 2) > Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2)) || (npc.velocity.X < 0f && npc.position.X + (float)(npc.width / 2) < Main.player[npc.target].position.X + (float)(Main.player[npc.target].width / 2))))
+                    if (npc.ai[2] == 5f && ((npc.velocity.X > 0f && npc.position.X + npc.width / 2 > Main.player[npc.target].position.X + Main.player[npc.target].width / 2) || (npc.velocity.X < 0f && npc.position.X + npc.width / 2 < Main.player[npc.target].position.X + Main.player[npc.target].width / 2)))
                     {
                         npc.ai[2] = 0f;
                         return;

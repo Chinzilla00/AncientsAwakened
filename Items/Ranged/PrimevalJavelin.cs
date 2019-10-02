@@ -35,7 +35,7 @@ namespace AAMod.Items.Ranged
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DynaskullJavelin");
-            recipe.AddIngredient(null, "DesertCrystal");
+            recipe.AddIngredient(null, "HeroShards");
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();

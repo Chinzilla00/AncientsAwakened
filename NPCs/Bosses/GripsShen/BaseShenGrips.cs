@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
         
         public override void FindFrame(int frameHeight)
         {
-            if (!NPC.AnyNPCs(mod.NPCType("ShenDoragon")))
+            if (!NPC.AnyNPCs(mod.NPCType("Shen")))
             {
                 npc.life = 0;
             }
@@ -88,8 +88,15 @@ namespace AAMod.NPCs.Bosses.GripsShen
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.SuperHealingPotion;
+            potionType = 0;
         }
+
+
+        public override bool CheckActive()
+        {
+            return !NPC.AnyNPCs(mod.NPCType<Shen.Shen>());
+        }
+
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {

@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Greed
@@ -674,9 +673,9 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Greed");
+            DisplayName.SetDefault("Worm King Greed");
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
-            Main.npcFrameCount[npc.type] = 30;
+            Main.npcFrameCount[npc.type] = 27;
         }
 
         public override void SetDefaults()
@@ -845,42 +844,64 @@ namespace AAMod.NPCs.Bosses.Greed
                 case 11:
                     return npc.defense = 21;
                 case 12:
-                    return npc.defense = 18;
-                case 13:
                     return npc.defense = 25;
-                case 14:
+                case 13:
                     return npc.defense = 26;
-                case 15:
+                case 14:
                     return npc.defense = 32;
-                case 16:
+                case 15:
                     return npc.defense = 37;
-                case 17:
+                case 16:
                     return npc.defense = 42;
+                case 17:
+                    return npc.defense = 50;
                 case 18:
-                    return npc.defense = 50;
-                case 19:
                     return npc.defense = 49;
-                case 20:
+                case 19:
                     return npc.defense = 50;
-                case 21:
-                    return npc.defense = 53;
-                case 22:
+                case 20:
                     return npc.defense = 56;
-                case 23:
-                    return npc.defense = 58;
-                case 24:
+                case 21:
                     return npc.defense = 38;
-                case 25:
+                case 22:
                     return npc.defense = 46;
-                case 26:
+                case 23:
                     return npc.defense = 62;
-                case 27:
+                case 24:
                     return npc.defense = 78;
-                case 29:
+                case 25:
                     return npc.defense = 56;
                 default:
                     return npc.defense = 30;
             }
+        }
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        {
+            Texture2D texture = Main.npcTexture[npc.type];
+            Texture2D glow = mod.GetTexture("Glowmasks/GreedABody_Glow");
+
+            npc.position.Y += npc.height * 0.5f;
+
+            BaseDrawing.DrawTexture(spritebatch, texture, 0, npc, dColor);
+            if (Main.LocalPlayer.findTreasure)
+            {
+                Color color = dColor;
+                byte b2 = 200;
+                byte b3 = 170;
+                if (color.R < b2)
+                {
+                    color.R = b2;
+                }
+                if (color.G < b3)
+                {
+                    color.G = b3;
+                }
+                color.A = Main.mouseTextColor;
+                BaseDrawing.DrawTexture(spritebatch, glow, 0, npc, color);
+            }
+
+            npc.position.Y -= npc.height * 0.5f;
+            return false;
         }
     }
 }

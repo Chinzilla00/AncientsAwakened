@@ -54,7 +54,7 @@ Non-Consumable");
                 if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ChaosSigilFalse2"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
-            if (NPC.AnyNPCs(mod.NPCType<ShenDoragon>()))
+            if (NPC.AnyNPCs(mod.NPCType<Shen>()))
             {
                 if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ChaosSigilFalse3"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
@@ -87,7 +87,7 @@ Non-Consumable");
             {
                 if (Main.netMode != 1) BaseUtility.Chat(AAWorld.downedShen ? Lang.BossSummonsInfo("ChaosSigilTrue1") : Lang.BossSummonsInfo("ChaosSigilTrue2"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("ShenDoragon"), true, 0, 0, "Shen Doragon; Discordian Doomsayer", false);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Shen"), true, 0, 0, "Shen Doragon; Discordian Doomsayer", false);
             }
             if (!AAWorld.ShenSummoned)
             {
@@ -105,7 +105,7 @@ Non-Consumable");
             recipe.AddIngredient(null, "DraconianSigil", 1);
             recipe.AddIngredient(null, "DreadSigil", 1);
             recipe.AddIngredient(null, "Discordium", 10);
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

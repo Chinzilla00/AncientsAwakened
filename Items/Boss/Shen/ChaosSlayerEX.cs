@@ -63,7 +63,7 @@ Chaos Slayer EX");
             recipe.AddIngredient(null, "ChaosSlayer");
             recipe.AddIngredient(null, "PerfectChaos");
             recipe.AddIngredient(null, "EXSoul");
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

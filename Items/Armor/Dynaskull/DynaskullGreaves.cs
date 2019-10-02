@@ -33,7 +33,10 @@ namespace AAMod.Items.Armor.Dynaskull
 		{
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.FossilPants, 1);
-            recipe.AddIngredient(null, "DynaskullOre", 30);
+            recipe.AddIngredient(null, "DynaskullOre", 15);
+            recipe.AddIngredient(null, "Doomite", 6);
+            recipe.AddIngredient(ItemID.Coral, 6);
+            recipe.AddIngredient(null, "BroodScale", 6);
             recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
 			recipe.AddRecipe();

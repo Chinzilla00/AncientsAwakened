@@ -1,3 +1,4 @@
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
@@ -24,7 +25,7 @@ namespace AAMod.Items.Usable
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "Doomite", 20);
-            recipe.AddTile(null, "HellstoneAnvil");
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }

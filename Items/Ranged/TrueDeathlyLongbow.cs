@@ -72,7 +72,7 @@ Fires an explosive ghast skull every other shot");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DeathlyLongbow", 1);
             recipe.AddIngredient(ItemID.Ectoplasm, 20);
-            recipe.AddIngredient(null, "DungeonCrystal", 1);
+            recipe.AddIngredient(null, "HeroShards", 1);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

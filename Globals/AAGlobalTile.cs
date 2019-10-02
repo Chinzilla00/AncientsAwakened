@@ -1,4 +1,5 @@
-
+using AAMod.Tiles.Plants;
+using AAMod.Tiles.Crafters;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -95,6 +96,11 @@ namespace AAMod
         public static Color GetBlankColorBright(Color color) => GetBlankColor(color, 0.6f, 1f, false);
         public static Color GetBlankColorBrightInvert(Color color) => GetBlankColor(color, 1f, 0.6f, true);
 
+        public static Color GetRainbowColor(Color color, float min, float max, bool clamp) => GetTimedColor(Main.DiscoColor, color, min, max, clamp);
+        public static Color GetRainbowColorDim(Color color) => GetRainbowColor(color, 0.4f, 1f, false);
+        public static Color GetRainbowColorBright(Color color) => GetRainbowColor(color, 0.6f, 1f, false);
+        public static Color GetRainbowColorBrightInvert(Color color) => GetRainbowColor(color, 1f, 0.6f, true);
+
         public override bool Drop(int i, int j, int type)
         {
             if (type == TileID.Dirt && TileID.Sets.BreakableWhenPlacing[TileID.Dirt]) //placing grass
@@ -151,7 +157,7 @@ namespace AAMod
 
         public override bool CanKillTile(int i, int j, int type, ref bool blockDamaged)
         {
-            if (Main.tile[i, j + 1].active() && (Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar2>()))
+            if (Main.tile[i, j - 1].active() && (Main.tile[i, j - 1].type == mod.TileType<ChaosAltar1>() || Main.tile[i, j - 1].type == mod.TileType<ChaosAltar2>()) && (Main.tile[i, j].type != mod.TileType<ChaosAltar1>() || Main.tile[i, j].type != mod.TileType<ChaosAltar2>()))
             {
                 return false;
             }
@@ -161,12 +167,22 @@ namespace AAMod
 
         public override bool CanExplode(int i, int j, int type)
         {
-            if (Main.tile[i, j + 1].active() && (Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar1>() || Main.tile[i, j].type == mod.TileType<Tiles.ChaosAltar2>()))
+            if (Main.tile[i, j - 1].active() && (Main.tile[i, j - 1].type == mod.TileType<ChaosAltar1>() || Main.tile[i, j - 1].type == mod.TileType<ChaosAltar2>()) && (Main.tile[i, j].type != mod.TileType<ChaosAltar1>() || Main.tile[i, j].type != mod.TileType<ChaosAltar2>()))
             {
                 return false;
             }
 
             return base.CanExplode(i, j, type);
+        }
+
+        public override bool Slope(int i, int j, int type)
+        {
+            if (Main.tile[i, j - 1].active() && (Main.tile[i, j - 1].type == mod.TileType<ChaosAltar1>() || Main.tile[i, j - 1].type == mod.TileType<ChaosAltar2>()) && (Main.tile[i, j].type != mod.TileType<ChaosAltar1>() || Main.tile[i, j].type != mod.TileType<ChaosAltar2>()))
+            {
+                return false;
+            }
+
+            return base.Slope(i, j, type);
         }
 
         public override void RandomUpdate(int i, int j, int type)
@@ -177,9 +193,9 @@ namespace AAMod
                 {
                     int style = Main.rand.Next(5);
 
-                    if (PlaceObject(i, j - 1, mod.TileType<Tiles.MadnessShroom>(), false, style))
+                    if (PlaceObject(i, j - 1, mod.TileType<MadnessShroom>(), false, style))
                     {
-                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Tiles.MadnessShroom>(), style, 0, -1, -1);
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<MadnessShroom>(), style, 0, -1, -1);
                     }
                 }
             }
@@ -188,15 +204,15 @@ namespace AAMod
             {
                 if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(800) == 0)
                 {
-                    if (PlaceObject(i, j - 1, mod.TileType<Tiles.Carrot>(), false, 0))
+                    if (PlaceObject(i, j - 1, mod.TileType<Carrot>(), false, 0))
                     {
-                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Tiles.Carrot>(), 0, 0, -1, -1);
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Carrot>(), 0, 0, -1, -1);
                     }
                 }
             }
         }
 
-        public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int alternate = 0, int random = -1, int direction = -1)
+        public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int random = -1, int direction = -1)
         {
             if (!TileObject.CanPlace(x, y, type, style, direction, out TileObject toBePlaced, false))
             {

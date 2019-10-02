@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.chaseable = true;
-            npc.damage = 25;
+            npc.damage = 35;
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/BroodTheme");
             npc.defense = 10;
             npc.boss = true;

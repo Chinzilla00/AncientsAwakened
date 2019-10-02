@@ -138,7 +138,7 @@ namespace AAMod
             recipe = GetNewRecipe();
             recipe.AddIngredient(null, "DevilSilk", 5);
             recipe.AddIngredient(ItemID.Hay, 5);
-            recipe.AddTile(null, "HellstoneAnvil");
+            recipe.AddTile(TileID.Loom);
             recipe.SetResult(ItemID.GuideVoodooDoll, 1);
             recipe.AddRecipe();
 
@@ -810,13 +810,6 @@ namespace AAMod
             TransmuteRecipe(ItemID.MythrilBar, ItemID.OrichalcumBar);
             TransmuteRecipe(ItemID.AdamantiteBar, ItemID.TitaniumBar);
 
-            TransmuteRecipe(ItemID.CobaltBar, (short)AAMod.instance.ItemType("YtriumBar"));
-            TransmuteRecipe(ItemID.PalladiumBar, (short)AAMod.instance.ItemType("YtriumBar"));
-            TransmuteRecipe(ItemID.MythrilBar, (short)AAMod.instance.ItemType("UraniumBar"));
-            TransmuteRecipe(ItemID.OrichalcumBar, (short)AAMod.instance.ItemType("UraniumBar"));
-            TransmuteRecipe(ItemID.AdamantiteBar, (short)AAMod.instance.ItemType("TechneciumBar"));
-            TransmuteRecipe(ItemID.TitaniumBar, (short)AAMod.instance.ItemType("TechneciumBar"));
-
             TransmuteRecipe((short)AAMod.instance.ItemType("AbyssiumBar"), (short)AAMod.instance.ItemType("IncineriteBar"));
             TransmuteRecipe((short)AAMod.instance.ItemType("DeepAbyssium"), (short)AAMod.instance.ItemType("RadiantIncinerite"));
             TransmuteRecipe((short)AAMod.instance.ItemType("DaybreakIncinerite"), (short)AAMod.instance.ItemType("EventideAbyssium"));
@@ -831,13 +824,6 @@ namespace AAMod
             TransmuteRecipe(ItemID.CobaltOre, ItemID.PalladiumOre);
             TransmuteRecipe(ItemID.MythrilOre, ItemID.OrichalcumOre);
             TransmuteRecipe(ItemID.TitaniumOre, ItemID.AdamantiteOre);
-
-            TransmuteRecipe(ItemID.CobaltOre, (short)AAMod.instance.ItemType("YtriumOre"));
-            TransmuteRecipe(ItemID.PalladiumOre, (short)AAMod.instance.ItemType("YtriumOre"));
-            TransmuteRecipe(ItemID.MythrilOre, (short)AAMod.instance.ItemType("Uranium"));
-            TransmuteRecipe(ItemID.OrichalcumOre, (short)AAMod.instance.ItemType("Uranium"));
-            TransmuteRecipe(ItemID.AdamantiteOre, (short)AAMod.instance.ItemType("TechneciumOre"));
-            TransmuteRecipe(ItemID.TitaniumOre, (short)AAMod.instance.ItemType("TechneciumOre"));
 
             TransmuteRecipe((short)AAMod.instance.ItemType("Abyssium"), (short)AAMod.instance.ItemType("Incinerite"));
             #endregion
@@ -858,16 +844,6 @@ namespace AAMod
             recipe.AddRecipe();
         }
         #endregion
-
-        public static void PrismArmor(string armor, string prism, ModItem result)
-        {
-            ModRecipe recipe = GetNewRecipe();
-            recipe.AddIngredient(AAMod.instance, armor);
-            recipe.AddIngredient(AAMod.instance, prism);
-            recipe.AddTile(AAMod.instance, "TruePaladinsSmeltery");
-            recipe.SetResult(result);
-            recipe.AddRecipe();
-        }
 
         public static void AddRecipeGroups()
         {
@@ -898,7 +874,7 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AAMod:Gold", group2);
            
-            RecipeGroup group3 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " astral crafting station", new int[]
+            RecipeGroup group3 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " celestial crafting station", new int[]
             {
                 AAMod.instance.ItemType("RadiantArcanum"),
                 AAMod.instance.ItemType("QuantumFusionAccelerator"),
@@ -1009,25 +985,37 @@ namespace AAMod
 
             RecipeGroup group18 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Chaos Leggings", new int[]
             {
-                AAMod.instance.ItemType("TrueBlazingSuneate"),
-                AAMod.instance.ItemType("TrueAbyssalHakama"),
-                AAMod.instance.ItemType("TrueAtlanteanBoots"),
-                AAMod.instance.ItemType("TrueDoomiteGreaves"),
-                AAMod.instance.ItemType("TrueRaiderBoots"),
-                AAMod.instance.ItemType("TrueDynaskullGreaves")
+                AAMod.instance.ItemType("BlazingSuneate"),
+                AAMod.instance.ItemType("AbyssalHakama"),
+                AAMod.instance.ItemType("AtlanteanBoots"),
+                AAMod.instance.ItemType("DoomiteGreaves"),
+                AAMod.instance.ItemType("RaiderBoots"),
+                AAMod.instance.ItemType("DynaskullGreaves")
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosBoots", group18);
 
             RecipeGroup group19 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " Chaos Chestpiece", new int[]
             {
-                AAMod.instance.ItemType("TrueBlazingDou"),
-                AAMod.instance.ItemType("TrueAbyssalGi"),
-                AAMod.instance.ItemType("TrueAtlanteanPlate"),
-                AAMod.instance.ItemType("TrueDoomiteBreastplate"),
-                AAMod.instance.ItemType("TrueRaiderPlate"),
-                AAMod.instance.ItemType("TrueDynaskullRibguard")
+                AAMod.instance.ItemType("BlazingDou"),
+                AAMod.instance.ItemType("AbyssalGi"),
+                AAMod.instance.ItemType("AtlanteanPlate"),
+                AAMod.instance.ItemType("DoomiteBreastplate"),
+                AAMod.instance.ItemType("RaiderPlate"),
+                AAMod.instance.ItemType("DynaskullRibguard")
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosPlates", group19);
+
+            RecipeGroup group20 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " hardmode anvil", new int[]
+            {
+                ItemID.MythrilAnvil, ItemID.OrichalcumAnvil
+            });
+            RecipeGroup.RegisterGroup("AAMod:HAnvil", group19);
+
+            RecipeGroup group21 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " hardmode forge", new int[]
+            {
+                ItemID.AdamantiteForge, ItemID.TitaniumForge
+            });
+            RecipeGroup.RegisterGroup("AAMod:HForge", group19);
 
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {

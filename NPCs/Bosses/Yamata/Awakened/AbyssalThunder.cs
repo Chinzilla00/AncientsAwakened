@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Yamata.Awakened
@@ -11,7 +10,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Abyssal Thunder");
-            Main.projFrames[projectile.type] = 5;
+            Main.projFrames[projectile.type] = 4;
 		}
 
 		public override void SetDefaults()
@@ -37,6 +36,19 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(mod.BuffType<Buffs.HydraToxin>(), 600);
+        }
+
+        public override void PostAI()
+        {
+            if (projectile.frameCounter++ > 6)
+            {
+                projectile.frame += 1;
+                projectile.frameCounter = 0;
+                if (projectile.frame > 3)
+                {
+                    projectile.frame = 0;
+                }
+            }
         }
 
         public override void Kill(int timeleft)

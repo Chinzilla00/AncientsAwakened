@@ -16,7 +16,7 @@ namespace AAMod.Items.Ranged
 
 	    public override void SetDefaults()
 	    {
-	        item.damage = 95;
+	        item.damage = 70;
 	        item.crit += 25;
 	        item.ranged = true;
 	        item.width = 50;
@@ -49,7 +49,7 @@ namespace AAMod.Items.Ranged
 	        ModRecipe recipe = new ModRecipe(mod);
 	        recipe.AddIngredient(null, "TrueDeathlyLongbow");
             recipe.AddIngredient(ItemID.HallowedRepeater);
-            recipe.AddIngredient(null, "TerraCrystal", 1);
+            recipe.AddIngredient(null, "HeroShards", 1);
             recipe.AddTile(TileID.MythrilAnvil);
 	        recipe.SetResult(this);
 	        recipe.AddRecipe();

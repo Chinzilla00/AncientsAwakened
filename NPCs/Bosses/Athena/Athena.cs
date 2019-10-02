@@ -7,8 +7,6 @@ using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using AAMod.NPCs.Enemies.Sky;
-using Terraria.World.Generation;
-using System.Collections.Generic;
 
 namespace AAMod.NPCs.Bosses.Athena
 {
@@ -488,19 +486,35 @@ namespace AAMod.NPCs.Bosses.Athena
                 {
                     int a = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaA>());
                     Main.npc[a].Center = npc.Center;
-
                     int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
                     Main.projectile[b].Center = npc.Center;
-
                     if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena10"), Color.Cyan);
 
                     Main.projectile[b].netUpdate = true;
                 }
                 return;
             }
+
+            if (Main.expertMode)
+            {
+                npc.DropBossBags();
+            }
+            else
+            {
+                if (Main.rand.Next(7) == 0)
+                {
+                    npc.DropLoot(mod.ItemType("AthenaMask"));
+                }
+                npc.DropLoot(mod.ItemType("GoddessFeather"), Main.rand.Next(20, 25));
+                string[] lootTable = { "DivineWindCharm", "GaleOfWings", "RazorwindLongbow", "SkycutterKopis", "OlympianWings"};
+                int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
+            }
+
             if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena11"), Color.CornflowerBlue);
             int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<AthenaFlee>());
             Main.npc[p].Center = npc.Center;
+
             AAWorld.downedAthena = true;
         }
 

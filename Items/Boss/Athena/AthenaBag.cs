@@ -32,7 +32,7 @@ namespace AAMod.Items.Boss.Athena
         {
             if (Main.rand.Next(7) == 0)
             {
-                //player.QuickSpawnItem(mod.ItemType("AthenaMask"));
+                player.QuickSpawnItem(mod.ItemType("AthenaMask"));
             }
             if (Main.rand.Next(20) == 0)
             {
@@ -40,7 +40,7 @@ namespace AAMod.Items.Boss.Athena
                 modPlayer.PPDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("GoddessFeather"), Main.rand.Next(20, 25));
-            string[] lootTable = { "DivineWindCharm", "GaleOfWings", "RazorwindLongbow", "SkycutterKopis" };
+            string[] lootTable = { "DivineWindCharm", "GaleOfWings", "RazorwindLongbow", "SkycutterKopis", "OlympianWings" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
         }

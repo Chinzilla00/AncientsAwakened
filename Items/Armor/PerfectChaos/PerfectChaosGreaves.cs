@@ -50,7 +50,7 @@ The power of discordian rage radiates from this armor");
             recipe.AddIngredient(null, "DreadBoots", 1);
             recipe.AddIngredient(null, "Discordium", 4);
             recipe.AddIngredient(null, "ChaosScale", 4);
-            recipe.AddTile(null, "AncientForge");
+            recipe.AddTile(null, "ACS");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

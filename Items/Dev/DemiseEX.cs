@@ -2,7 +2,6 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 
 namespace AAMod.Items.Dev
 {
@@ -50,6 +49,7 @@ Demise EX");
                 item.useStyle = 1;
                 item.noMelee = false;
                 item.shoot = mod.ProjectileType("DemiseBladeEX");
+                item.shootSpeed = 15f;
             }
             else
             {
@@ -57,6 +57,7 @@ Demise EX");
                 item.useStyle = 5;
                 item.noMelee = true;
                 item.shoot = mod.ProjectileType("DemiseSphereEX");
+                item.shootSpeed = 13f;
             }
             return base.CanUseItem(player);
         }

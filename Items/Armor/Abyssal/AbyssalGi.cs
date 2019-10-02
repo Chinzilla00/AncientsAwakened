@@ -33,9 +33,9 @@ Weightless as shadow itself");
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DepthGi", 1);
-            recipe.AddIngredient(null, "DoomiteUPlate", 1);
-            recipe.AddIngredient(null, "VikingPlate", 1);
-            recipe.AddIngredient(null, "OceanShirt", 1);
+            recipe.AddIngredient(null, "RelicBar", 8);
+            recipe.AddIngredient(ItemID.Coral, 8);
+            recipe.AddIngredient(null, "Doomite", 8);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();

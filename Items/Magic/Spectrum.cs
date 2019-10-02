@@ -40,7 +40,7 @@ Last Prism EX");
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.LastPrism);
 			recipe.AddIngredient(mod.ItemType("EXSoul"));
-			recipe.AddTile(null, "AncientForge");
+			recipe.AddTile(null, "ACS");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

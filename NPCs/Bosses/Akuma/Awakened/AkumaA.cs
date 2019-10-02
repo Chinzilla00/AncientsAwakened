@@ -158,14 +158,14 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 spawnAshe = true;
                 if (AAWorld.downedAkuma)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaA1"), Color.DeepSkyBlue);
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaA2"), new Color(102, 20, 48));
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA1"), Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA2"), new Color(102, 20, 48));
                     AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AsheA"), false, 0, 0);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaA3"), new Color(102, 20, 48));
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaA4"), Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA3"), new Color(102, 20, 48));
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA4"), Color.DeepSkyBlue);
                     AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AsheA"), false, 0, 0);
                 }
             }
@@ -188,7 +188,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     if (weakness == false)
                     {
                         weakness = true;
-                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaA7"), Color.DeepSkyBlue);
+                        if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA7"), Color.DeepSkyBlue);
                     }
                 }
                 else if (!npc.HasBuff(BuffID.Wet))
@@ -329,7 +329,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             if (!Main.dayTime)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaA8"), Color.DeepSkyBlue);
+                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA8"), Color.DeepSkyBlue);
                 Main.dayTime = true;
                 Main.time = 0;
             }
@@ -338,7 +338,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 if (Loludided == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaA9"), new Color(180, 41, 32));
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA9"), new Color(180, 41, 32));
                     Loludided = true;
                 }
                 npc.velocity.Y = npc.velocity.Y + 1f;
@@ -378,7 +378,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DraconianRune"));
                 }
-                if (Main.netMode != 1) BaseUtility.Chat(AAWorld.downedAkuma ? Lang.BossChat("AkumaA10") : Lang.BossChat("AkumaA11"), Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                if (Main.netMode != 1) AAMod.Chat(AAWorld.downedAkuma ? Lang.BossChat("AkumaA10") : Lang.BossChat("AkumaA11"), Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                 AAWorld.downedAkuma = true;
                 if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
@@ -399,7 +399,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 npc.DropBossBags();
                 return;
             }
-            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaA12"), Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA12"), Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             return;
         }
 
@@ -413,11 +413,12 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public void Attack(NPC npc)
         {
             Player player = Main.player[npc.target];
+            bool sayQuote = Main.rand.Next(4) == 0;
             if (internalAI[1] == 0)
             {
-                if (!QuoteSaid)
+                if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote1) ? Lang.BossChat("AkumaA13") : Lang.BossChat("AkumaA14"), Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat((!Quote1) ? Lang.BossChat("AkumaA13") : Lang.BossChat("AkumaA14") , Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote1 = true;
                 }
@@ -432,9 +433,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             else if (internalAI[1] == 1)
             {
-                if (!QuoteSaid)
+                if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote2) ? Lang.BossChat("AkumaA15") : Lang.BossChat("AkumaA16"), Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat((!Quote2) ? Lang.BossChat("AkumaA15") : Lang.BossChat("AkumaA16") , Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote2 = true;
                 }
@@ -456,9 +457,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             else if (internalAI[1] == 2)
             {
                 int Fireballs = Main.expertMode ? 20 : 15;
-                if (!QuoteSaid)
+                if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote3) ? Lang.BossChat("AkumaA17") : Lang.BossChat("AkumaA18"), Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("AkumaA17") : Lang.BossChat("AkumaA18") , Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote3 = true;
                 }
@@ -483,9 +484,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             else if (internalAI[1] == 4)
             {
-                if (!QuoteSaid)
+                if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote4) ? Lang.BossChat("AkumaA19") : Lang.BossChat("AkumaA20"), Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat((!Quote4) ? Lang.BossChat("AkumaA19") : Lang.BossChat("AkumaA20"), Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote4 = true;
                 }
@@ -496,9 +497,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             else
             {
-                if (!QuoteSaid)
+                if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote5) ? Lang.BossChat("AkumaA21") : Lang.BossChat("AkumaA22"), Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat((!Quote5) ? Lang.BossChat("AkumaA21") : Lang.BossChat("AkumaA22") , Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote5 = true;
                 }

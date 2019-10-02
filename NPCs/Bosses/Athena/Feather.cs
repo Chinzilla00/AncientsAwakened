@@ -1,11 +1,10 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Athena
 {
-	public class Feather : ModDust
+    public class Feather : ModDust
 	{
 		public override void OnSpawn(Dust dust)
         {
@@ -23,9 +22,9 @@ namespace AAMod.NPCs.Bosses.Athena
             else
             {
                 dust.rotation = dust.rotation.AngleLerp(dust.velocity.ToRotation() - 1.57079637f, 0.4f);
-                int p = BaseAI.GetPlayer(dust.position, -1);
+                /*int p = BaseAI.GetPlayer(dust.position, -1);
                 Player player = Main.player[p];
-                Vector2 target = player.Center;
+                Vector2 target = player.Center;*/
                 float moveIntervalX = 0.1f, moveIntervalY = 0.02f, maxSpeedX = 5f;
 
                 dust.position += dust.velocity;
@@ -33,12 +32,12 @@ namespace AAMod.NPCs.Bosses.Athena
                 dust.velocity.Y += moveIntervalY;
                 if (dust.velocity.Y < 0f) dust.velocity.Y *= 0.99f;
                 if (dust.velocity.Y > 1f) dust.velocity.Y = 1f;
-                if (dust.position.X + 24 < target.X - 8)
+                if (dust.velocity.X > 1)
                 {
                     if (dust.velocity.X < 0) dust.velocity.X *= 0.98f;
                     dust.velocity.X += moveIntervalX;
                 }
-                else if (dust.position.X > target.X + 8)
+                else if (dust.velocity.X < -1)
                 {
                     if (dust.velocity.X > 0) dust.velocity.X *= 0.98f;
                     dust.velocity.X -= moveIntervalX;
