@@ -698,43 +698,50 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
+        public bool DownedRag => ThoriumMod.ThoriumWorld.downedRealityBreaker;
+        public bool DownedScal => CalamityMod.World.CalamityWorld.downedSCal;
+        public bool DownedMantid => GRealm.MWorld.downedMatriarch;
+        public bool DownedNeb => Redemption.RedeWorld.downedNebuleus;
+        public bool DownedOverseer => SpiritMod.MyWorld.downedOverseer;
+        //public bool DownedDuo => JetshiftMod.JetshiftWorld.downedCosmicMystery;
+
         public string BossDialogue()
         {
             WeightedRandom<string> Text = new WeightedRandom<string>();
 
             bool a = false;
 
-            if (AAMod.thoriumLoaded && ThoriumMod.ThoriumWorld.downedRealityBreaker)
+            if (AAMod.thoriumLoaded && DownedRag)
             {
                 a = true;
                 Text.Add("You know, I was watching you beat down that god-sphere and its 3 goons. Gotta admit, pretty impressive.");
             }
 
-            if (AAMod.calamityLoaded && CalamityMod.World.CalamityWorld.downedSCal)
+            if (AAMod.calamityLoaded && DownedScal)
             {
                 a = true;
                 Text.Add("Considering you put that angsty witch in her place, gotta hand it to ya.");
             }
 
-            if (AAMod.gRealmLoaded && GRealm.MWorld.downedMatriarch)
+            if (AAMod.gRealmLoaded && DownedMantid)
             {
                 a = true;
                 Text.Add("Seeing you squashed that oversided insect in the jungle, that's quite a head-turner.");
             }
 
-            if (AAMod.redeLoaded && Redemption.RedeWorld.downedNebuleus)
+            if (AAMod.redeLoaded && DownedNeb)
             {
                 a = true;
                 Text.Add("However, after you walloped that cosmic prude, even I was taken aback by that level of skill.");
             }
 
-            if (AAMod.spiritLoaded && SpiritMod.MyWorld.downedOverseer)
+            if (AAMod.spiritLoaded && DownedOverseer)
             {
                 a = true;
                 Text.Add("Now that I think about it, though, you cracking open that overseer like an egg? Quite the strength that had to have needed.");
             }
 
-            /*if (AAMod.jsLoaded && JetshiftMod.JetshiftWorld.downedCosmicMystery)
+            /*if (AAMod.jsLoaded && DownedDuo)
             {
                 a = true;
                 Text.Add("But slaying those two meteor-squatting crystal things? That's quite an eye-catcher.");
