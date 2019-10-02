@@ -724,26 +724,26 @@ namespace AAMod.NPCs.Bosses.Shen
             if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && !isAwakened)
             {
                 SpawnGrips = true;
-                if (Main.netMode != 1) BaseUtility.Chat("Grips! Assist me!", Color.DarkMagenta);
+                if (Main.netMode != 1) AAMod.Chat("Grips! Assist me!", Color.DarkMagenta);
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AbyssGrip"), false, 0, 0);
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("BlazeGrip"), false, 0, 0);
                 Main.PlaySound(SoundID.Roar, player.position, 0);
             }
-            if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && isAwakened)
+            if (npc.life <= npc.lifeMax * .4f && !SpawnGrips && isAwakened)
             {
                 SpawnGrips = true;
 
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Ashe? Haruka? I need your assistance again..!", Color.DarkMagenta);
-                    if (Main.netMode != 1) BaseUtility.Chat("On it, Papa~!", new Color(102, 20, 48));
-                    if (Main.netMode != 1) BaseUtility.Chat("Again..?", new Color(72, 78, 117));
+                    if (Main.netMode != 1) AAMod.Chat("Ashe? Haruka? I need your assistance again..!", Color.DarkMagenta);
+                    if (Main.netMode != 1) AAMod.Chat("On it, Papa~!", new Color(102, 20, 48));
+                    if (Main.netMode != 1) AAMod.Chat("Again..?", new Color(72, 78, 117));
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Girls..? Help your father with this insignificant mortal.", Color.DarkMagenta);
-                    if (Main.netMode != 1) BaseUtility.Chat("With pleasure, Papa~!", new Color(102, 20, 48));
-                    if (Main.netMode != 1) BaseUtility.Chat("Yes, father.", new Color(72, 78, 117));
+                    if (Main.netMode != 1) AAMod.Chat("Girls..? Help your father with this insignificant kid.", Color.DarkMagenta);
+                    if (Main.netMode != 1) AAMod.Chat("With pleasure, Papa~!", new Color(102, 20, 48));
+                    if (Main.netMode != 1) AAMod.Chat("Yes, father.", new Color(72, 78, 117));
                 }
 
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("FuryAshe"), false, 0, 0);
@@ -754,11 +754,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("You are quite persistent, Child. I like that.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Quite the skill, kid.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("What's this? Competence? I would have never expected...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("What's this? Competence? Impressive.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health4 = true;
                 npc.netUpdate = true;
@@ -767,11 +767,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("True warriors don't show mercy! I won't and I doubt you will either..!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("You're a real fighter, you know. Now stand still and let me grill you.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Give up, child. The world will always fall into chaos!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Chaos always reigns, kid. You terrarians never seem to learn that.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health3 = true;
                 npc.netUpdate = true;
@@ -780,11 +780,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("SHOW NO MERCY!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Looks like you're turning tide, but not for long!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("What? You're still fighting? Why?!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Hmm...still fighting, eh?", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health1 = true;
                 npc.netUpdate = true;
@@ -800,12 +800,12 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     if (!AAWorld.downedShen)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                        if (Main.netMode != 1) AAMod.Chat("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                         if (Main.netMode != 1) BaseUtility.Chat("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     else
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("Good show, child, good show. Your combat prowess still impresses me! Maybe some day I'll show you my true power.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                        if (Main.netMode != 1) AAMod.Chat("Good show, child, good show. Your combat prowess still impresses me! Maybe some day I'll show you my true power.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     }
                     AAWorld.downedShen = true;
                     npc.DropLoot(mod.ItemType("ChaosScale"), 20, 30);

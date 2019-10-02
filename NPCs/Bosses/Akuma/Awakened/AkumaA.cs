@@ -158,14 +158,14 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 spawnAshe = true;
                 if (AAWorld.downedAkuma)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Ashe? Help your dear old dad with this kid again!", Color.DeepSkyBlue);
-                    if (Main.netMode != 1) BaseUtility.Chat("You got it, daddy..!", new Color(102, 20, 48));
+                    if (Main.netMode != 1) AAMod.Chat("Ashe? Help your dear old dad with this kid again!", Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat("You got it, daddy..!", new Color(102, 20, 48));
                     AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AsheA"), false, 0, 0);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Hey! Hands off my papa!", new Color(102, 20, 48));
-                    if (Main.netMode != 1) BaseUtility.Chat("Atta-girl..!", Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat("Hey! Hands off my papa!", new Color(102, 20, 48));
+                    if (Main.netMode != 1) AAMod.Chat("Atta-girl..!", Color.DeepSkyBlue);
                     AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AsheA"), false, 0, 0);
                 }
             }
@@ -188,7 +188,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     if (weakness == false)
                     {
                         weakness = true;
-                        if (Main.netMode != 1) BaseUtility.Chat("ACK..! WATER! I LOATHE WATER!!!", Color.DeepSkyBlue);
+                        if (Main.netMode != 1) AAMod.Chat("ACK..! WATER! I LOATHE WATER!!!", Color.DeepSkyBlue);
                     }
                 }
                 else if (!npc.HasBuff(BuffID.Wet))
@@ -329,7 +329,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             if (!Main.dayTime)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("Nighttime won't save you from me this time, kid! The day is born anew!", Color.DeepSkyBlue);
+                if (Main.netMode != 1) AAMod.Chat("Nighttime won't save you from me this time, kid! The day is born anew!", Color.DeepSkyBlue);
                 Main.dayTime = true;
                 Main.time = 0;
             }
@@ -338,7 +338,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 if (Loludided == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("You just got burned, kid.", new Color(180, 41, 32));
+                    if (Main.netMode != 1) AAMod.Chat("You just got burned, kid.", new Color(180, 41, 32));
                     Loludided = true;
                 }
                 npc.velocity.Y = npc.velocity.Y + 1f;
@@ -378,7 +378,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("DraconianRune"));
                 }
-                if (Main.netMode != 1) BaseUtility.Chat(AAWorld.downedAkuma ? "Heh, not too shabby this time kid. I'm impressed. Here. Take your prize." : "GRAH..! HOW!? HOW COULD I LOSE TO A MERE MORTAL TERRARIAN?! Hmpf...fine kid, you win, fair and square. Here's your reward.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+                if (Main.netMode != 1) AAMod.Chat(AAWorld.downedAkuma ? "Heh, not too shabby this time kid. I'm impressed. Here. Take your prize." : "GRAH..! HOW!? HOW COULD I LOSE TO A MERE MORTAL TERRARIAN?! Hmpf...fine kid, you win, fair and square. Here's your reward.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                 AAWorld.downedAkuma = true;
                 if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
@@ -399,7 +399,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 npc.DropBossBags();
                 return;
             }
-            if (Main.netMode != 1) BaseUtility.Chat("Nice. You cheated. Now come fight me in expert mode like a real man.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
+            if (Main.netMode != 1) AAMod.Chat("Nice. You cheated. Now come fight me in expert mode like a real man.", Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
             return;
         }
 
@@ -413,11 +413,12 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public void Attack(NPC npc)
         {
             Player player = Main.player[npc.target];
+            bool sayQuote = Main.rand.Next(4) == 0;
             if (internalAI[1] == 0)
             {
-                if (!QuoteSaid)
+                if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote1) ? "Sky's fallin' again! On your toes!" : "Down comes the flames of fury again!", Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat((!Quote1) ? "Sky's fallin' again! On your toes!" : "Down comes the flames of fury again!" , Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote1 = true;
                 }
@@ -432,9 +433,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             else if (internalAI[1] == 1)
             {
-                if (!QuoteSaid)
+                if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote2) ? "You underestimate the artillery of a dragon, kid!" : "Flames don't give in till the end!!", Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat((!Quote2) ? "You underestimate the artillery of a dragon, kid!" : "Flames don't give in till the end!!" , Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote2 = true;
                 }
@@ -456,9 +457,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             else if (internalAI[1] == 2)
             {
                 int Fireballs = Main.expertMode ? 20 : 15;
-                if (!QuoteSaid)
+                if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote3) ? "Heads up! Volcano's eruptin' kid!" : "INCOMING!", Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat((!Quote3) ? "Heads up! Volcano's eruptin' kid!" : "INCOMING!" , Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote3 = true;
                 }
@@ -483,9 +484,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             else if (internalAI[1] == 4)
             {
-                if (!QuoteSaid)
+                if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote4) ? "Hey Kid? Like Fireworks? No? Too Bad!" : "Here comes the grand finale, kid!", Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat((!Quote4) ? "Hey Kid? Like Fireworks? No? Too Bad!" : "Here comes the grand finale, kid!", Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote4 = true;
                 }
@@ -496,9 +497,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             else
             {
-                if (!QuoteSaid)
+                if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat((!Quote5) ? "The Sun won't quit 'til the day is done, kid!" : "Face the fury of the sun!", Color.DeepSkyBlue);
+                    if (Main.netMode != 1) AAMod.Chat((!Quote5) ? "The Sun won't quit 'til the day is done, kid!" : "Face the fury of the sun!" , Color.DeepSkyBlue);
                     QuoteSaid = true;
                     Quote5 = true;
                 }
