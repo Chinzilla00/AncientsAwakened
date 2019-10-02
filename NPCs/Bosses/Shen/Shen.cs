@@ -400,7 +400,6 @@ namespace AAMod.NPCs.Bosses.Shen
                         break;
                     targetPos = player.Center;
                     targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y += 400;
                     Movement(targetPos, .8f);
                     if (++npc.ai[2] > 80)
                     {
@@ -847,6 +846,29 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.position.Y -= 130f;
             return false;
         }
+        public static int ShootPeriodic(Entity codable, Vector2 position, int width, int height, int projType, ref float delayTimer, float delayTimerMax = 100f, int damage = -1, float speed = 10f, bool checkCanHit = true)
+        {
+            int pID = -1;
+            if (damage == -1) { Projectile proj = new Projectile(); proj.SetDefaults(projType); damage = proj.damage; }
+            bool properSide = (codable is NPC ? Main.netMode != 1 : codable is Projectile ? ((Projectile)codable).owner == Main.myPlayer : true);
+            if (properSide)
+            {
+                Vector2 targetCenter = position + new Vector2(width * 0.5f, height * 0.5f);
+                delayTimer--;
+                if (delayTimer <= 0)
+                {
+                    if (!checkCanHit || Collision.CanHit(codable.position, codable.width, codable.height, position, width, height))
+                    {
+                        Vector2 fireTarget = codable.Center + new Vector2(167 * codable.direction, 0);
+                        float rot = BaseUtility.RotationTo(codable.Center, targetCenter);
+                        fireTarget = BaseUtility.RotateVector(codable.Center, fireTarget, rot);
+                        pID = BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage, 0f, speed);
+                    }
+                    delayTimer = delayTimerMax;
+                    if (codable is NPC) { ((NPC)codable).netUpdate = true; }
+                }
+            }
+            return pID;
+        }
     }
-
 }

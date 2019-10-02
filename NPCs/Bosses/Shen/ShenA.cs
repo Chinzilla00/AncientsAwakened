@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                     {
-                        int dust = spawnDust == 1 ? mod.DustType<Dusts.DiscordLight>();
+                        int dust = mod.DustType<Dusts.DiscordLight>();
                         int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = true;
                         Main.dust[num935].noLight = true;
@@ -286,7 +286,6 @@ namespace AAMod.NPCs.Bosses.Shen
                         break;
                     targetPos = player.Center;
                     targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y += 400;
                     Movement(targetPos, 0.5f);
                     if (++npc.ai[2] > 60)
                     {

@@ -287,6 +287,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void NPCLoot()
         {
+            int i = AAWorld.downedShen ? 0 : 1;
             NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<ShenDeath>(), 0, i);
         }
     }
