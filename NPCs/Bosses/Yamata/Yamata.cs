@@ -91,10 +91,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 npc.buffImmune[k] = true;
             }
-            if (AAWorld.downedAllAncients)
-            {
-                npc.lifeMax = 750000;
-            }
             npc.chaseable = false;
         }
 
@@ -146,10 +142,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                     if (!AAWorld.downedYamata)
                     {
                         if (Main.netMode != 1) BaseUtility.Chat("The defeat of Yamata causes the fog in the mire to lift.", Color.Indigo);
-                    }
-                    if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
-                    {
-                        Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SpaceStone"));
                     }
                 }
                 if (Main.expertMode)

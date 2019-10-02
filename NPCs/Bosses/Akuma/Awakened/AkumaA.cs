@@ -55,12 +55,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.buffImmune[103] = false;
             npc.alpha = 255;
             musicPriority = MusicPriority.BossHigh;
-            if (AAWorld.downedAllAncients)
-            {
-                npc.damage = 210;
-                npc.defense = 300;
-                npc.lifeMax = 750000;
-            }
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -383,10 +377,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
-                }
-                if (Main.rand.Next(10) == 0 && AAWorld.downedAllAncients)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("PowerStone"));
                 }
                 if (Main.rand.Next(10) == 0)
                 {

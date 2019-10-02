@@ -110,11 +110,6 @@ Non-Consumable");
             {
                 return false;
             }
-            if (!AAWorld.downedAllAncients)
-            {
-                if (Main.netMode != 1) BaseUtility.Chat("The sigil does nothing...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
-                return false;
-            }
             return true;
         }
 
