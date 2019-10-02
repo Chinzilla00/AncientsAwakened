@@ -87,7 +87,7 @@ namespace AAMod
                         case "downedSistersInfo":
                         return "Chaotic energy grows in the deepest parts of the world.";
                         case "downedBoss2Info":
-                        return "You hear a hum of harmony from the Terrarium after the defeat of a great evil...";
+                        return "You hear a hum of harmony from the Terrarium after the defeat of a great AMessage...";
                         case "downedBoss3Info1":
                         return "Bones of the ancient past burst with energy!";
                         case "downedBoss3Info2":
@@ -388,6 +388,10 @@ namespace AAMod
                         return "天哪——我知道你有这种感觉, 伙计！太棒了！尽管……你打他时他看起来很生气……几乎和他被打时一样——呃, 别再生气了。  ";
                         case "downedShenN":
                         return "邪鬼巨龙和八歧大蛇...你知道吗, 他们两个曾经是一个生物。 很糟糕的是, 它很强。 他曾经一度把两个文明世界合二为一。 不说了, 你需要啥？ ";
+                        case "downedRajahCY":
+                        return "所以巨兔王公最终决定移交权力？似乎他认为你是保护那些需要帮助的人的合适人选。如果是我的话我会照他说的做。在我看来，这是正确的做法。";
+                        case "downedRajahCN":
+                        return "他们兔子最近很生气。有点不对劲。我只是感觉到…";
                         case "Stones":
                         return "你知道……在你与上神应龙交战之后, 我感觉到一些……非常古老的魔法在激活。 也许你应该去拜访一下你遇到的那些强硬的BOSS？ 顺便问一下, 你最近见过哥布林召唤师吗？ 天哪, 她变得很强。 不知道她会掉落什么东西。 ";
                         case "else":
@@ -412,6 +416,8 @@ namespace AAMod
                         return "你听到泰拉心球里传来的音乐了吗？ 我觉得下面有些新东西。 看看你能不能弄到他们持有的绿色棱镜。 我想你可以用它建造一个牛逼的制作台。 ";
                         case "EquinoxBossGuideChat":
                         return "你知道天空中那些发光的球吗？ 如果我没记错， 它们会随时间而变化。 如果你一天不同的时间去， 也许你能得到不同的东西？ ";
+                        case "AnubisChatMask":
+                        return "嘿, 看上去帅的一批.";
                         case "AnubisChat1":
                         return "你不会恰巧擅长揉肚子吧? ";
                         case "AnubisChat2":
@@ -600,6 +606,10 @@ namespace AAMod
                         return "Holy-- I knew you had it in you, man! Awesome job! Although...he seemed pretty angry when you beat him...almost as angry as when he got beat by-- er, nevermind that.";
                         case "downedShenN":
                         return "Akuma and Yamata...you know, those two were once one being. And hot dang, that guy was powerful. He leveled 2 civilizations one time. Anyways, so what was it that you needed?";
+                        case "downedRajahCY":
+                        return "So ol' Rajah finally decided to hang up the scepter? Seems like he thought you were the right pick to protect those in need. I'd do what he says. It's the right thing to do, in my opinion.";
+                        case "downedRajahCN":
+                        return "Them bunnies have been getting pretty riled up lately. Something ain't right. I just feel it...";
                         case "Stones":
                         return "You know...after you whooped ol' Shen, I felt some...very old magic activate. Maybe you should pay a visit to some of the tougher bosses you've come across? By the way, have you seen the Goblin Summoner recently? Jeeze she got tough. Wonder what her deal is.";
                         case "else":
@@ -624,6 +634,9 @@ namespace AAMod
                         return "Did you hear that music coming from the Terrarium? I think there's something new down there. See if you can get your hands on one of those green prisms they have. I think you can make a crazy new crafting station with it.";
                         case "EquinoxBossGuideChat":
                         return "You know those glowing spheres in the sky? If I remember correctly, they change depending on the time of day. Maybe you can get something different from them if you go at different points in the day?";
+                        
+                        case "AnubisChatMask":
+                        return "Hey, lookin' good handsome.";
                         case "AnubisChat1":
                         return "You wouldn’t happen to be good at belly rubs would you?";
                         case "AnubisChat2":
@@ -1574,38 +1587,42 @@ namespace AAMod
                         return "父亲! 呃啊. . ! 下次再见的时候, 我要让你命丧于此!";
                         case "WrathHaruka2":
                         return "呃...对不起, 父亲...我坚持不住了...";
+
                         case "ShenA1":
-                        return "我不得不说, 孩子. 你让我印象深刻. ";
+                        return "你将面临一次真正的战斗, 孩子.";
                         case "ShenA2":
-                        return "直面它吧, 孩子! 你永远也无法打败本身就是混沌的存在!";
+                        return "搞清楚你的位置, 泰拉人. 你自作自受. 仪式, 符文? 全都是你自己.";
                         case "ShenA3":
-                        return "即使面临困难， 你依旧在战斗";
+                        return "Brawlin' till the very end.";
                         case "ShenA4":
-                        return "你执意要这样? 真有意思...";
+                        return "你为何要再起争端? 为力量? 还是荣耀?";
                         case "ShenA5":
-                        return "老实说， 你让我想起了我自己...";
+                        return "你有点让我回想起了自己...";
                         case "ShenA6":
-                        return "你知道难逃一死之时， 你就与之抗争...";
+                        return "不管怎样，我会说这将是你的最后一次!";
                         case "ShenA7":
-                        return "也许有一天， 你会成为你自己领地的统治者...";
+                        return "你也很强. 鼓起勇气和你所拥有的东西战斗";
                         case "ShenA8":
-                        return "现在别再这样了!站住， 像个男人一样!";
+                        return "你想打败我几次? 或者说你会放弃?";
+                        /* 
                         case "ShenA9":
-                        return "然而如今， 我们对立而战!现在我看看你有什么能耐!";
+                        return "But today, we clash! Now show me what you got!";
                         case "ShenA10":
-                        return "微 不 足 道 的 一 只 蝼 蚁! 你 已 经 死 了!";
+                        return "DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!!";
+                        */
                         case "ShenA11":
-                        return "继续来? 真令我印象深刻. 给我看看你真正的实力!";
+                        return "Hmpf..! Here we are again, gettin' close to the end of the line. I'm not holding back!";
                         case "ShenA12":
-                        return "什 么? ! 你 怎 么 - 够 了! 你 很 快 就 会 直 到 永 劫 的 混 沌 意 味 着 什 么!";
-                        case "ShenA13": 
-                        return "来! 继续努力!";
+                        return "Hm..?! You haven't kicked the bucket yet? Well then...Let's change that!";
+                        case "ShenA13":
+                        return "游戏收尾才越发动人心弦, 记住了, 孩子!";
                         case "ShenA14":
-                        return "不! 我 怎 么 会! 输 给 你!";
+                        return "你这个小..! 等死吧!";
                         case "ShenA15":
-                        return "给 我 看 看! 给 我 看 看 你 有 什 么 真 本 事!";
+                        return "正是如此! 终结将至, 所以你不敢退缩!";
                         case "ShenA16":
-                        return "哦啊啊啊啊啊!!!";
+                        return "这不可能--! 怎么回事?!";
+
                         case "ShenDeath1":
                         return "重新分离...";
                         case "ShenDeath2":
@@ -2023,7 +2040,7 @@ namespace AAMod
                         case "YamataAHead":
                         return "OWIE!!!";
                         case "Yamata1":
-                        return "HAH! I went easy on ya! Come back when you're actually good and we can have a real fight!";
+                        return "HAH! I went easy on ya! Come back when you�re actually good and we can have a real fight!";
                         case "Yamata2":
                         return "The defeat of Yamata causes the fog in the mire to lift.";
                         case "Yamata3":
@@ -2217,38 +2234,42 @@ namespace AAMod
                         return "Father! Rrgh..! Next time we meet, I'll strike you down!";
                         case "WrathHaruka2":
                         return "Ngh...sorry father...I can't carry on...";
+
                         case "ShenA1":
-                        return "I must say, child. You impress me.";
+                        return "You put up a real fight, kid.";
                         case "ShenA2":
-                        return "Face it, child! You’ll never defeat the living embodiment of disarray itself!";
+                        return "Look at where you are, terrarian. This is your own doing. The ritual, the rune? All you.";
                         case "ShenA3":
-                        return "You fight, even when the odds are stacked against you.";
+                        return "Brawlin' till the very end.";
                         case "ShenA4":
-                        return "You’re still going? How amusing...";
+                        return "Why do you instigate all these fights? Power? Glory?";
                         case "ShenA5":
-                        return "You remind me of myself quite a bit, to be honest...";
+                        return "You remind me of myself quite a bit...";
                         case "ShenA6":
-                        return "Putting up a fight when you know Death is inevitable...";
+                        return "Either way, I'll personally make sure this is your last one!";
                         case "ShenA7":
-                        return "Maybe some day, you'll have your own realm to rule over...";
+                        return "You're strong, too. Takes guts to fight most of what you have.";
                         case "ShenA8":
-                        return "Now stop making this hard! Stand still and take it like a man!";
+                        return "How many times will you fight to tear me down? Or will you give up?";
+                        /* 
                         case "ShenA9":
                         return "But today, we clash! Now show me what you got!";
                         case "ShenA10":
                         return "DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!!";
+                        */
                         case "ShenA11":
-                        return "Still got it? I'm impressed. Show me your true power!";
+                        return "Hmpf..! Here we are again, gettin' close to the end of the line. I'm not holding back!";
                         case "ShenA12":
-                        return "WHAT?! HOW HAVE YOU- ENOUGH! YOU WILL KNOW WHAT IT MEANS TO FEEL UNYIELDING CHAOS!";
+                        return "Hm..?! You haven't kicked the bucket yet? Well then...Let's change that!";
                         case "ShenA13":
-                        return "Come on! KEEP PUSHING!";
+                        return "The end of a game is the most stressful, keep that in mind, kid!";
                         case "ShenA14":
-                        return "NO! I WILL NOT LOSE! NOT TO YOU!";
+                        return "You little..! Die already!";
                         case "ShenA15":
-                        return "SHOW ME! SHOW ME THE TRUE POWER YOU HOLD!";
+                        return "This is it! The end is near, so don't you dare hold back!";
                         case "ShenA16":
-                        return "GRAAAAAAAAAH!!!";
+                        return "This can't be--! How?!";
+
                         case "ShenDeath1":
                         return "Split again...";
                         case "ShenDeath2":
