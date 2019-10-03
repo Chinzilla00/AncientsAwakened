@@ -37,6 +37,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 npc.buffImmune[k] = true;
             }
+            npc.scale *= 2;
         }
 
         public override void AI()
@@ -208,10 +209,21 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
             }*/
 
-            Vector2 moveTo = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y + npc.ai[2]) - npc.Center;
-            npc.velocity = moveTo * moveSpeedBoost;
             npc.rotation = 0;
-            npc.position += Body.position - Body.oldPosition;
+            Vector2 nextTarget = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y + npc.ai[2]);
+            float dist = Vector2.Distance(nextTarget, npc.Center);
+            if (dist < 100)
+            {
+                npc.velocity *= 0.9f;
+                if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
+                if (Math.Abs(npc.velocity.Y) < 0.05f) npc.velocity.Y = 0f;
+            }
+            else
+            {
+                npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
+                npc.velocity *= 5f;
+            }
+            //npc.position += Body.position - Body.oldPosition;
 
             //insert my actual AI here...
         }

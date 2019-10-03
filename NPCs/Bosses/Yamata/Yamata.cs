@@ -200,32 +200,32 @@ namespace AAMod.NPCs.Bosses.Yamata
                         Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF"), 0)];
                         Head2.ai[0] = npc.whoAmI;
                         Head2.ai[1] = headX * -3f;
-                        Head2.ai[2] = headY * 0.4f;
+                        Head2.ai[2] = headY * 0.7f;
                         Head2.ai[3] = 3f;
                         Head3 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF"), 0)];
                         Head3.ai[0] = npc.whoAmI;
                         Head3.ai[1] = headX * -2f;
-                        Head3.ai[2] = headY * 0.6f;
+                        Head3.ai[2] = headY * 0.8f;
                         Head3.ai[3] = 2f;
                         Head4 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF"), 0)];
                         Head4.ai[0] = npc.whoAmI;
                         Head4.ai[1] = headX * -1f;
-                        Head4.ai[2] = headY * 0.8f;
+                        Head4.ai[2] = headY * 0.9f;
                         Head4.ai[3] = 1f;
                         Head5 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF"), 0)];
                         Head5.ai[0] = npc.whoAmI;
                         Head5.ai[1] = headX * 1f;
-                        Head5.ai[2] = headY * 0.8f;
+                        Head5.ai[2] = headY * 0.9f;
                         Head5.ai[3] = 1f;
                         Head6 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF"), 0)];
                         Head6.ai[0] = npc.whoAmI;
                         Head6.ai[1] = headX * 2f;
-                        Head6.ai[2] = headY * 0.6f;
+                        Head6.ai[2] = headY * 0.8f;
                         Head6.ai[3] = 2f;
                         Head7 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF"), 0)];
                         Head7.ai[0] = npc.whoAmI;
                         Head7.ai[1] = headX * 3f;
-                        Head7.ai[2] = headY * 0.4f;
+                        Head7.ai[2] = headY * 0.7f;
                         Head7.ai[3] = 3f;
 
                         TrueHead.netUpdate = true;
@@ -710,12 +710,12 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(npc.Center));
             Color GlowColor = isAwakened ? AAColor.COLOR_WHITEFADE1 : Color.White;
-            if (head != null && head.active && head.modNPC != null && (head.modNPC is YamataHead || head.modNPC is YamataHeadF1))
+            if (head != null && head.active && head.modNPC != null && (head.modNPC is YamataHead || head.modNPC is YamataHeadF1 || head.modNPC is Awakened.YamataAHeadF))
             {
 				string neckTex = isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataANeck" : "NPCs/Bosses/Yamata/YamataNeck";
 				Texture2D neckTex2D = mod.GetTexture(neckTex);
 				Vector2 connector = head.Center;
-                Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 40);
+                Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 40 * npc.scale);
                 BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { neckTex2D, neckTex2D, neckTex2D }, 0, neckOrigin, connector, neckTex2D.Height - 10f, drawColor, 1f, DrawUnder, null);
                 BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(headTexture), 0, head.position + new Vector2(0f, head.gfxOffY) + topVisualOffset, head.width, head.height, head.scale, head.rotation, head.spriteDirection, Main.npcFrameCount[head.type], head.frame, drawColor, false);
                 BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(glowMaskTexture), 0, head.position + new Vector2(0f, head.gfxOffY) + topVisualOffset, head.width, head.height, head.scale, head.rotation, head.spriteDirection, Main.npcFrameCount[head.type], head.frame, GlowColor, false);

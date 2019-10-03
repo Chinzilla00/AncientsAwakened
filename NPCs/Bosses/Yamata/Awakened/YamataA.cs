@@ -34,6 +34,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 npc.buffImmune[k] = true;
             }
             musicPriority = MusicPriority.BossHigh;
+            npc.scale *= 2;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

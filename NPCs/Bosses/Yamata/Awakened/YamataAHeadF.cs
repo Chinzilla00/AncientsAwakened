@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
     [AutoloadBossHead]
-    public class YamataHeadF : ModNPC
+    public class YamataAHeadF : ModNPC
     {
 		public bool isAwakened = false;
         public override void SetStaticDefaults()
@@ -45,6 +45,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 npc.lifeMax = 50000;
                 npc.damage = 350;
             }
+            
+            npc.lifeMax = 35000;
+            npc.damage = 210;
+            npc.width = 46;
+            npc.height = 46;
+            isAwakened = true;
+            npc.scale *= 2;
         }
 
         public float[] internalAI = new float[4];
@@ -132,21 +139,24 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             switch ((int)internalAI[0])
             {
                 case 0: //charge up
-                    //insert dust here
-                    nextTarget = Body.npc.Center + new Vector2(npc.ai[1], -600);
+
+                    //insert charging dust here
+
                     if (++internalAI[1] > 180)
                     {
                         internalAI[0]++;
                         internalAI[1] = 0;
                         npc.netUpdate = true;
                         if (Main.netMode != 1)
-                            Main.NewText("shoot wavy laser");
+                        {
+                            float ai0 = (float)Math.PI * 2 / 300 * (npc.ai[3] == 2 ? 1 : -1) * Math.Sign(npc.ai[1]);
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitY, mod.ProjectileType("YamataWaveDeathray"), npc.damage / 4, 0f, Main.myPlayer, ai0, npc.whoAmI);
+                        }
                     }
                     break;
 
                 case 1: //idle while firing laser
-                    nextTarget = Body.npc.Center + new Vector2(npc.ai[1], -600);
-                    if (++internalAI[1] > 240)
+                    if (++internalAI[1] > 300)
                     {
                         internalAI[0]++;
                         internalAI[1] = 0;
@@ -160,7 +170,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
-                            Main.NewText("spray the old breath shit ig");
+                            Main.NewText("shoot those old tiny purple needle things ig");
                     }
                     if (++internalAI[1] > 240)
                     {
@@ -261,7 +271,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 BaseAI.AIFlier(npc, ref customAI, true, .5f, .8f, 5, 5, false, 300);
             }
             else*/
-            if (dist < 40f)
+            if (dist < 100)
             {
                 npc.velocity *= 0.9f;
                 if (Math.Abs(npc.velocity.X) < 0.05f) npc.velocity.X = 0f;
@@ -272,7 +282,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
                 npc.velocity *= 5f;
             }
-            npc.position += Body.npc.position - Body.npc.oldPosition;
+            //npc.position += Body.npc.position - Body.npc.oldPosition;
             npc.spriteDirection = -1;
             if (Body.TeleportMe1)
             {
