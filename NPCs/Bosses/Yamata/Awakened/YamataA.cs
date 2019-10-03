@@ -8,25 +8,25 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
     [AutoloadBossHead]
     public class YamataA : Yamata
-	{
-		bool cheated = false;
+    {
+        bool cheated = false;
         private bool tenthHealth = false;
         private bool threeQuarterHealth = false;
         private bool HalfHealth = false;
 
         public override void SetStaticDefaults()
         {
-			base.SetStaticDefaults();
+            base.SetStaticDefaults();
             displayName = "Yamata no Orochi";
-            Main.npcFrameCount[npc.type] = 7;			
-        }	
+            Main.npcFrameCount[npc.type] = 7;
+        }
 
         public override void SetDefaults()
         {
-			base.SetDefaults();
-			isAwakened = true;
+            base.SetDefaults();
+            isAwakened = true;
             npc.value = Item.sellPrice(0, 40, 0, 0);
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");		
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
             bossBag = mod.ItemType("YamataBag");
             npc.defense = 999999;
             for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -41,7 +41,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
             npc.damage = (int)(npc.damage * .7f);
         }
-
+        
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
             if (damage > npc.lifeMax / 2)

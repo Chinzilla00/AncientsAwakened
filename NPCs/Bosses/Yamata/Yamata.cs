@@ -190,22 +190,45 @@ namespace AAMod.NPCs.Bosses.Yamata
 				{
 					if(!HeadsSpawned)
 					{
-						TrueHead = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHead"), 0)];
-						TrueHead.ai[0] = npc.whoAmI;
-						Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF1"), 0)];
-						Head2.ai[0] = npc.whoAmI;
-						Head3 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF1"), 0)];
-						Head3.ai[0] = npc.whoAmI;
-						Head4 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF1"), 0)];
-						Head4.ai[0] = npc.whoAmI;
-						Head5 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF2"), 0)];
-						Head5.ai[0] = npc.whoAmI;
-						Head6 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF2"), 0)];
-						Head6.ai[0] = npc.whoAmI;
-						Head7 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF2"), 0)];
-						Head7.ai[0] = npc.whoAmI;	
+                        const int headX = 300;
+                        const int headY = -600;
 
-						TrueHead.netUpdate = true;
+                        TrueHead = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHead"), 0)];
+                        TrueHead.ai[0] = npc.whoAmI;
+                        TrueHead.ai[1] = 0;
+                        TrueHead.ai[2] = headY;
+                        Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF"), 0)];
+                        Head2.ai[0] = npc.whoAmI;
+                        Head2.ai[1] = headX * -3f;
+                        Head2.ai[2] = headY * 0.4f;
+                        Head2.ai[3] = 3f;
+                        Head3 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF"), 0)];
+                        Head3.ai[0] = npc.whoAmI;
+                        Head3.ai[1] = headX * -2f;
+                        Head3.ai[2] = headY * 0.6f;
+                        Head3.ai[3] = 2f;
+                        Head4 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF"), 0)];
+                        Head4.ai[0] = npc.whoAmI;
+                        Head4.ai[1] = headX * -1f;
+                        Head4.ai[2] = headY * 0.8f;
+                        Head4.ai[3] = 1f;
+                        Head5 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF"), 0)];
+                        Head5.ai[0] = npc.whoAmI;
+                        Head5.ai[1] = headX * 1f;
+                        Head5.ai[2] = headY * 0.8f;
+                        Head5.ai[3] = 1f;
+                        Head6 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF"), 0)];
+                        Head6.ai[0] = npc.whoAmI;
+                        Head6.ai[1] = headX * 2f;
+                        Head6.ai[2] = headY * 0.6f;
+                        Head6.ai[3] = 2f;
+                        Head7 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHeadF"), 0)];
+                        Head7.ai[0] = npc.whoAmI;
+                        Head7.ai[1] = headX * 3f;
+                        Head7.ai[2] = headY * 0.4f;
+                        Head7.ai[3] = 3f;
+
+                        TrueHead.netUpdate = true;
 						Head2.netUpdate = true;
 						Head3.netUpdate = true;
 						Head4.netUpdate = true;
