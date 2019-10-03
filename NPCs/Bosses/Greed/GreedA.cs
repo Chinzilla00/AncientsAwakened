@@ -11,19 +11,19 @@ using Terraria.ModLoader;
 namespace AAMod.NPCs.Bosses.Greed
 {
     [AutoloadBossHead]
-	public class GreedA : ModNPC
-	{
+    public class GreedA : ModNPC
+    {
         public int damage = 0;
         bool loludided = false;
 
         public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Worm King Greed");
-		}
+        {
+            DisplayName.SetDefault("Worm King Greed");
+        }
 
-		public override void SetDefaults()
-		{
-			npc.npcSlots = 5f;
+        public override void SetDefaults()
+        {
+            npc.npcSlots = 5f;
             npc.width = 38;
             npc.height = 38;
             npc.damage = 90;
@@ -140,6 +140,57 @@ namespace AAMod.NPCs.Bosses.Greed
                 else
                 {
 
+                }
+            }
+
+            switch ((int)internalAI[0])
+            {
+                case 0:
+                    if (++internalAI[1] > 60)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        npc.netUpdate = true;
+                        if (NPC.CountNPCS(mod.NPCType<GreedTurret>()) < 2)
+                        {
+                            int A = Main.rand.Next(-600, 600);
+                            int Minion = NPC.NewNPC((int)player.Center.X + A, (int)player.Center.Y + A, mod.NPCType<GreedTurret>(), 0);
+                            Main.npc[Minion].netUpdate = true;
+                        }
+                    }
+                    break;
+
+                case 1:
+                    if (++internalAI[1] > 120)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        if (!Main.dedServ)
+                        {
+                            Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/Quake1").WithVolume(.7f).WithPitchVariance(.1f));
+                        }
+                        int proj = Projectile.NewProjectile(player.Center.X, player.Center.Y - 100, 0f, 0f, mod.ProjectileType("WarningPro"), 43, 0, Main.myPlayer, (npc.life > (int)(npc.lifeMax * 0.5f) ? 0 : 1), 0);
+                        Main.projectile[proj].netUpdate = true;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 2: goto case 0;
+
+                default:
+                    internalAI[0] = 0;
+                    goto case 0;
+            }
+
+            if (npc.life <= (int)(npc.lifeMax * 0.5f))
+            {
+                if (Main.rand.Next(60) == 0)
+                {
+                    int A = Main.rand.Next(-200, 200) * 6;
+                    int B = Main.rand.Next(-200, 200) - 1000;
+
+                    int p = Projectile.NewProjectile(player.Center.X + A, player.Center.Y + B, 0f, 7f, mod.ProjectileType("CovStalactitePro"), 43, 1);
+                    Main.projectile[p].netUpdate = true;
                 }
             }
 
@@ -414,10 +465,10 @@ namespace AAMod.NPCs.Bosses.Greed
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-		{
-			npc.lifeMax = (int)(npc.lifeMax * 0.75f * bossLifeScale);
-			npc.damage = (int)(npc.damage * 0.85f);
-		}
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.75f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 0.85f);
+        }
 
         public override void HitEffect(int hitDirection, double damage)
         {
@@ -440,7 +491,7 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 AAWorld.downedSerpent = true;
                 npc.DropLoot(mod.ItemType("CovetiteCoin"), 10, 15);
-                string[] lootTable = {  };
+                string[] lootTable = { };
                 int loot = Main.rand.Next(lootTable.Length);
                 //npc.DropLoot(Items.Vanity.Mask.GreedMask.type, 1f / 7);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
