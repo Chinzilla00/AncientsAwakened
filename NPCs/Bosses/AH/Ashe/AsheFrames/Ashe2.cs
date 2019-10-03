@@ -163,6 +163,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                     }
                     break;
                 case 7:
+                    AIChange();
                     break;
                 default:
                     npc.ai[0] = 0;
