@@ -22,8 +22,8 @@ namespace AAMod.Tiles.Decoration
                 16,
                 16
             };
-            TileObjectData.newTile.AnchorBottom = default(AnchorData);
-            TileObjectData.newTile.AnchorTop = default(AnchorData);
+            TileObjectData.newTile.AnchorBottom = default;
+            TileObjectData.newTile.AnchorTop = default;
             TileObjectData.newTile.AnchorWall = true;
             TileObjectData.addTile(Type);
             AddMapEntry(new Color(120, 85, 60));

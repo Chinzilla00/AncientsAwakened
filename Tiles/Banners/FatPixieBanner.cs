@@ -17,7 +17,7 @@ namespace AAMod.Tiles.Banners
             TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
             TileObjectData.newTile.Height = 3;
             TileObjectData.newTile.Origin = new Point16(1, 1);
-            TileObjectData.newTile.AnchorBottom = default(AnchorData);
+            TileObjectData.newTile.AnchorBottom = default;
             TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile | AnchorType.SolidSide | AnchorType.SolidBottom, TileObjectData.newTile.Width, 0);
 			TileObjectData.newTile.CoordinatePadding = 0;			
             TileObjectData.newTile.LavaDeath = false;
