@@ -186,7 +186,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
-                            Main.NewText("breathe lingering flame");
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 20f, mod.ProjectileType("YamataABreath"), npc.damage / 4, 0f, Main.myPlayer);
                     }
                     if (++internalAI[1] > 180)
                     {
@@ -201,7 +201,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     if (internalAI[1] == npc.ai[3] * 60)
                     {
                         if (Main.netMode != 1)
-                            Main.NewText("shoot direct deathray");
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center), mod.ProjectileType("Deathray"), npc.damage, 0f, Main.myPlayer, 0f, npc.whoAmI);
                     }
                     if (++internalAI[1] > 360)
                     {
@@ -220,7 +220,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
-                            Main.NewText("drop bomb");
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitY * 5, mod.ProjectileType("YamataAShockBomb"), npc.damage / 4, 0f, Main.myPlayer, npc.target);
                     }
                     if (++internalAI[1] > 420)
                     {
@@ -242,9 +242,9 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                         if (Main.netMode != 1)
                         {
                             if (npc.ai[3] == 3)
-                                Main.NewText("direct aim shot");
+                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 12f, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
                             else
-                                Main.NewText("homing shot");
+                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 10f, mod.ProjectileType("YamataABomb"), npc.damage / 4, 0f, Main.myPlayer);
                         }
                     }
                     if (++internalAI[1] > 360)

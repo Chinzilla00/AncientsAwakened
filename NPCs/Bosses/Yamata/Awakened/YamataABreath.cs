@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.alpha = 255;
-            projectile.timeLeft = 100;
+            projectile.timeLeft = 420;
             projectile.aiStyle = -1;
         }
 
@@ -32,6 +32,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void AI()
         {
+            projectile.velocity *= 0.99f;
             if (projectile.ai[0] > 7f)
             {
                 float num296 = 1f;

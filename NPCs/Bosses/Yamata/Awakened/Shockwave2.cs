@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -48,6 +49,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void Kill(int timeLeft)
         {
             projectile.timeLeft = 0;
+            if (Main.netMode != 1 && projectile.ai[0] != 0)
+            {
+                projectile.ai[0] -= projectile.ai[0] > 0 ? 1 : -1; //approach 0
+                Projectile.NewProjectile(projectile.Center + Vector2.UnitX * Math.Sign(projectile.ai[0]) * projectile.width, Vector2.Zero, mod.ProjectileType("Shockwave2"), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0]);
+            }
         }
 
     }
