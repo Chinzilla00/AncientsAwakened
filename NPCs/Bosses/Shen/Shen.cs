@@ -724,7 +724,7 @@ namespace AAMod.NPCs.Bosses.Shen
             if (npc.life <= npc.lifeMax / 2 && !SpawnGrips && !isAwakened)
             {
                 SpawnGrips = true;
-                if (Main.netMode != 1) AAMod.Chat("Grips! Assist me!", Color.DarkMagenta);
+                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ShenDoragon2"), Color.DarkMagenta);
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AbyssGrip"), false, 0, 0);
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("BlazeGrip"), false, 0, 0);
                 Main.PlaySound(SoundID.Roar, player.position, 0);
@@ -735,15 +735,15 @@ namespace AAMod.NPCs.Bosses.Shen
 
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) AAMod.Chat("Ashe? Haruka? I need your assistance again..!", Color.DarkMagenta);
-                    if (Main.netMode != 1) AAMod.Chat("On it, Papa~!", new Color(102, 20, 48));
-                    if (Main.netMode != 1) AAMod.Chat("Again..?", new Color(72, 78, 117));
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ShenDoragon3"), Color.DarkMagenta);
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ShenDoragon4"), new Color(102, 20, 48));
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ShenDoragon5"), new Color(72, 78, 117));
                 }
                 else
                 {
-                    if (Main.netMode != 1) AAMod.Chat("Girls..? Help your father with this insignificant kid.", Color.DarkMagenta);
-                    if (Main.netMode != 1) AAMod.Chat("With pleasure, Papa~!", new Color(102, 20, 48));
-                    if (Main.netMode != 1) AAMod.Chat("Yes, father.", new Color(72, 78, 117));
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ShenDoragon6"), Color.DarkMagenta);
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ShenDoragon7"), new Color(102, 20, 48));
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ShenDoragon8"), new Color(72, 78, 117));
                 }
 
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("FuryAshe"), false, 0, 0);
@@ -754,11 +754,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) AAMod.Chat("Quite the skill, kid.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ShenDoragon19"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) AAMod.Chat("What's this? Competence? Impressive.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ShenDoragon20"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health4 = true;
                 npc.netUpdate = true;
@@ -800,12 +800,12 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     if (!AAWorld.downedShen)
                     {
-                        if (Main.netMode != 1) AAMod.Chat("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                        if (Main.netMode != 1) BaseUtility.Chat("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
+                        if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ShenDoragon16"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenDoragon17"), Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     else
                     {
-                        if (Main.netMode != 1) AAMod.Chat("Good show, child, good show. Your combat prowess still impresses me! Maybe some day I'll show you my true power.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                        if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ShenDoragon18"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     }
                     AAWorld.downedShen = true;
                     npc.DropLoot(mod.ItemType("ChaosScale"), 20, 30);

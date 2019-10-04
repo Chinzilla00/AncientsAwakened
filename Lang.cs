@@ -1685,6 +1685,11 @@ namespace AAMod
                         return "一个超远古之神的失败给予了宝石持有者们新的力量";
                         case "ShenDoragon18":
                         return "一场好戏, 孩子, 真是一场好戏. 你的战斗力仍然让我印象深刻!也许有一天我会给你看看我的真正实力. ";
+                        case "ShenDoragon19":
+                        return "颇有水平, 孩子.";
+                        case "ShenDoragon20":
+                        return "这是? 能力? 难以置信.";
+
                         case "ShenSpawn1":
                         return "又看到我们了是不是很惊讶, 小子? ";
                         case "ShenSpawn2":
@@ -2296,6 +2301,7 @@ namespace AAMod
                         return "And trust us, kid.";
                         case "ShenDeath13":
                         return "There's always a next time.";
+
                         case "ShenDoragon1":
                         return "TERRA MAGIC?! NO! I THOUGHT IT WAS WIPED FROM THE EARTH!";
                         case "ShenDoragon2":
@@ -2332,6 +2338,13 @@ namespace AAMod
                         return "The defeat of a superancient empowers the stonekeepers.";
                         case "ShenDoragon18":
                         return "Good show, child, good show. Your combat prowess still impresses me! Maybe some day I'll show you my true power.";
+                        case "ShenDoragon19":
+                        return "Quite the skill, kid.";
+                        case "ShenDoragon20":
+                        return "What's this? Competence? Impressive.";
+                        
+
+
                         case "ShenSpawn1":
                         return "Surprised to see us again, Kid?";
                         case "ShenSpawn2":
