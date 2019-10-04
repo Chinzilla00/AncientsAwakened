@@ -1441,6 +1441,9 @@ ItemTooltip.EventideAbyssiumOre=又冷又湿, 如同遍布泥潭的沼泽中的�
 
 ItemName.EventideTorch=渊宵火把
 
+ItemName.FurnitureDynamo=家居集铸点
+ItemTooltip.FurnitureDynamo=将所有的家具铸造位点合成为一个\n现在你不需要在你家里摆7个家具制作点了
+
 ItemName.FateBox=八音盒(永劫虚空)
 ItemTooltip.FateBox=播放 'Systems Engaged' by OmegaFerretMusic
 
@@ -1689,6 +1692,11 @@ ItemName.SauceStatue=蛇雕像
 
 ItemName.TailsStatue=狡狐雕像
 
+// AAMod.Items.Boss.Anubis
+
+ItemName.AnubisBag=宝藏袋
+
+ItemName.ForsakenFragment=逝落碎片
 
 // AAMod.Items.Boss.AH
 
@@ -1951,6 +1959,12 @@ ItemName.GreedTrophy=金食饕餮纪念章
 
 ItemName.Miner=掘-矿
 ItemTooltip.Miner=挖矿更快 (暂未实现效果)
+
+ItemName.StoneScarf=坚石围巾
+ItemTooltip.StoneScarf=增加20%伤害减免
+
+ItemName.StoneShell=硬岩壳
+ItemTooltip.StoneShell=比基岩硬，比浮岩轻
 
 BuffName.TalismanBuff=冷酷金欲
 BuffDescription.TalismanBuff=钱！好多的钱！大量的钱！
@@ -2581,6 +2595,8 @@ ItemTooltip.FuryForgerEX=击中敌人迸发出火花\n熔火之怒 EX
 ItemName.GameRaider=游戏乱入者
 ItemTooltip.GameRaider=发射爆炸蘑菇火箭
 
+ItemName.GibsFemur=愤怒的股骨
+
 ItemName.GrimReaperScythe=冷酷收割之镰
 ItemTooltip.GrimReaperScythe=左键挥动并投掷跟踪镰刀\n右键冲刺攻击\n冲刺时免疫伤害，造成10倍真实近战伤害\n冲刺能力有10秒CD\n“嗯，你以前见过多少冷酷收割者，伙计？”\n-Gregg
 
@@ -3020,6 +3036,9 @@ ItemTooltip.FulguriteBar=静态-Y
 
 ItemName.CovetiteCrystal=贪欲晶石
 ItemTooltip.CovetiteCrystal=尽管你已经拥有了它, 然而你依旧对这个水晶有一种奇怪的欲望
+
+ItemName.HeroShards=英雄裂片
+ItemTooltip.HeroShards=破碎的遗迹碎片
 
 ItemName.Hotshroom=日之菇
 ItemTooltip.Hotshroom=只在白天生长
@@ -4007,6 +4026,9 @@ ItemName.TechneciumPickaxe=闪锝镐
 ItemName.Terratool=泰拉万用工具
 ItemTooltip.Terratool=背包中右键切换工具类型\n现在你可以同时使用两种工具工具形态
 
+ItemName.TerratoolEX=泰拉改造者
+ItemTooltip.Terratool=背包中右键切换工具类型\n现在你可以同时使用两种工具工具形态\n泰拉万用工具 EX
+
 ItemName.Terratool_Axe=泰拉万用工具
 ItemTooltip.Terratool_Axe=背包中右键切换工具类型\n现在你可以同时使用两种工具工具形态
 
@@ -4304,6 +4326,17 @@ ItemTooltip.HalTrousers=这条裤子比你想象的贵\n“非常适合冒充远
 ItemName.HalTux=Hallam的花式礼服
 ItemTooltip.HalTux=这件礼服纯手工\n“非常适合冒充远古觉醒的开发者!”
 
+// AAMod.Items.Vanity.Invoker
+
+ItemName.InvokerHood=召唤师兜帽
+ItemTooltip.InvokerHood=“大兽”阿莱斯特的附魔兜帽\n“非常适合冒充远古觉醒的捐赠者!”
+
+ItemName.InvokerPants=召唤师长裤
+ItemTooltip.InvokerPants=“大兽”阿莱斯特的附魔长裤\n“非常适合冒充远古觉醒的捐赠者!”
+
+ItemName.InvokerRobe=召唤师法衣
+ItemTooltip.InvokerRobe=“大兽”阿莱斯特的附魔法衣\n“非常适合冒充远古觉醒的捐赠者!”
+
 // AAMod.Items.Vanity.Universe
 
 ItemName.CursedHood=诅咒收割者兜帽
@@ -4328,6 +4361,12 @@ ItemTooltip.HappySunSticker=:D
 ItemName.AkumaAMask=觉醒之邪鬼巨龙面具
 
 ItemName.AkumaMask=远古之邪鬼巨龙面具
+
+ItemName.AnubisMask=阿努比斯面具
+
+ItemName.AthenaMask=雅典娜面具
+
+ItemName.GreedMask=金欲虫面具
 
 ItemName.BroodmotherMask=育母炎龙面具
 
@@ -4485,11 +4524,16 @@ ItemTooltip.MonochromeApple=会吸引一个伙伴马
 
 NPCName.SpacePlaceholder=深空之门
 
+// AAMod.NPCs.Bosses.Anubis
+
+NPCName.Anubis=阿努比斯
 
 // AAMod.NPCs.Bosses.AH.Ashe
 
 
 NPCName.Ashe=燎狱魔女 邪鬼艾希
+
+NPCName.Ashe2=燎狱魔女 邪鬼艾希
 
 NPCName.AsheDragon=艾希的燎狱烬龙
 
@@ -4664,9 +4708,9 @@ NPCName.Greed=金食饕餮
 NPCName.GreedBody=金食饕餮
 NPCName.GreedTail=金食饕餮
 
-NPCName.GreedA=觉醒之金食饕餮 贪婪鎏金虫
-NPCName.GreedABody=觉醒之金食饕餮 贪婪鎏金虫
-NPCName.GreedATail=觉醒之金食饕餮 贪婪鎏金虫
+NPCName.GreedA=觉醒之金食饕餮 鎏金蟲王
+NPCName.GreedABody=觉醒之金食饕餮 鎏金蟲王
+NPCName.GreedATail=觉醒之金食饕餮 鎏金蟲王
 
 
 // AAMod.NPCs.Bosses.Hydra
@@ -4789,6 +4833,8 @@ NPCName.WrathHaruka=觉醒潭渊妖女 怨惧之八歧遥香
 NPCName.WrathHarukaVanish=觉醒潭渊妖女 怨惧之八歧遥香
 
 NPCName.ShenDoragon=上神应龙 冥昧末日的预言者
+
+NPCName.Shen=上神应龙 冥昧末日的预言者
 
 NPCName.ShenA=觉醒之上神应龙 冥昭瞢暗的化身
 
