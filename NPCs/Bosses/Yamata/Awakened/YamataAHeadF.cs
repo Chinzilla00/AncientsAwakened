@@ -166,7 +166,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
                 case 2: //shoot shit
                     internalAI[2] += npc.ai[3];
-                    if (internalAI[2] > 60)
+                    if (internalAI[2] > 180)
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
@@ -232,10 +232,19 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     }
                     break;
 
-                case 7: //breathe the lingering shit
+                case 7: //pause, let previous waves disperse
+                    if (++internalAI[1] > 120)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 8: //breathe the lingering shit
                     goto case 3;
 
-                case 8: //some mix of 2 attacks he already does, something homing + something directly aimed
+                case 9: //some mix of 2 attacks he already does, something homing + something directly aimed
                     internalAI[2] += npc.ai[3];
                     if (internalAI[2] > 120)
                     {
@@ -243,9 +252,9 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                         if (Main.netMode != 1)
                         {
                             if (npc.ai[3] == 3)
-                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 10f, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
-                            else
                                 Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 7f, mod.ProjectileType("YamataABomb"), npc.damage / 4, 0f, Main.myPlayer);
+                            else
+                                Projectile.NewProjectile(npc.Center, Vector2.UnitY * 10, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
                         }
                     }
                     if (++internalAI[1] > 360)
@@ -257,7 +266,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     }
                     break;
 
-                case 9: //shoot the shit again
+                case 10: //shoot the shit again
                     goto case 2;
 
                 default:

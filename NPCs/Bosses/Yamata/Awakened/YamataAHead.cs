@@ -225,7 +225,145 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             //npc.position += Body.position - Body.oldPosition;
 
-            //insert my actual AI here...
+            switch ((int)internalAI[0])
+            {
+                case 0: //while other heads are charging
+                    if (++internalAI[2] > 60)
+                    {
+                        internalAI[2] = 0;
+                        if (Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitY * 5, mod.ProjectileType("YamataAShockBomb"), npc.damage / 4, 0f, Main.myPlayer, npc.target);
+                    }
+                    if (++internalAI[1] > 180)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 1: //while other heads are shooting waveray
+                    if (++internalAI[2] > 60)
+                    {
+                        internalAI[2] = 0;
+                        if (Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 10f, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
+                    }
+                    if (++internalAI[1] > 300)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 2: //shoot shit
+                    if (++internalAI[2] > 20)
+                    {
+                        internalAI[2] = 0;
+                        if (Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 5f, mod.ProjectileType("YamataAVenom2"), npc.damage / 4, 0f, Main.myPlayer);
+                    }
+                    if (++internalAI[1] > 240)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 3: //breathe lingering flame
+                    if (++internalAI[2] > 60)
+                    {
+                        internalAI[2] = 0;
+                        if (Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 7f, mod.ProjectileType("YamataABomb"), npc.damage / 4, 0f, Main.myPlayer);
+                    }
+                    if (++internalAI[1] > 180)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 4: //shoot direct aim deathrays
+                    if (internalAI[1] == npc.ai[3] * 60)
+                    {
+                        if (Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center), mod.ProjectileType("YamataDeathray"), npc.damage, 0f, Main.myPlayer, 0f, npc.whoAmI);
+                    }
+                    if (++internalAI[1] > 360)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 5: //shoot the shit again
+                    goto case 2;
+
+                case 6: //drop meteor that creates ripples across ground
+                    if (++internalAI[2] > 360)
+                    {
+                        internalAI[2] = 0;
+                        if (Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitY * 5, mod.ProjectileType("YamataAShockBomb"), npc.damage / 4, 0f, Main.myPlayer, npc.target);
+                    }
+                    if (++internalAI[1] > 420)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 7: //pause, let previous waves disperse
+                    if (++internalAI[1] > 120)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 8: //breathe the lingering shit
+                    goto case 3;
+
+                case 9: //some mix of 2 attacks he already does, something homing + something directly aimed
+                    if (++internalAI[2] > 60)
+                    {
+                        if (internalAI[2] > 120)
+                            internalAI[2] = 0;
+                        if (++internalAI[3] > 15)
+                        {
+                            internalAI[3] = 0;
+                            if (Main.netMode != 1)
+                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 6f, mod.ProjectileType("YamataAVenom2"), npc.damage / 4, 0f, Main.myPlayer);
+                        }
+                    }
+                    if (++internalAI[1] > 360)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 10: //shoot the shit again
+                    goto case 2;
+
+                default:
+                    internalAI[0] = 0;
+                    npc.netUpdate = true;
+                    goto case 0;
+            }
         }
     }
 }
