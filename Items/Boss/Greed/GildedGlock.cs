@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using Terraria.ID;
 
 namespace AAMod.Items.Boss.Greed
@@ -27,5 +28,10 @@ namespace AAMod.Items.Boss.Greed
             item.shootSpeed = 12;
             item.useAmmo = AmmoID.Coin;
         }
-	}
+
+        public override Vector2? HoldoutOffset()
+        {
+            return new Vector2(-2, 0);
+        }
+    }
 }

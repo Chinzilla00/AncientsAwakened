@@ -50,12 +50,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 npc.buffImmune[k] = true;
             }
-            if (AAWorld.downedAllAncients)
-            {
-                npc.lifeMax = 700000;
-                npc.damage = 220;
-                npc.defense = 300;
-            }
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -83,10 +77,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 if (Main.rand.Next(7) == 0)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("ZeroMask"));
-                }
-                if (Main.rand.Next(10) == 0 && AAWorld.downedAllAncients)
-                {
-                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
                 }
                 if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {

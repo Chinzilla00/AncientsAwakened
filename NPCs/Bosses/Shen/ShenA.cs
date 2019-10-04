@@ -88,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (NPC.AnyNPCs(mod.NPCType<FuryAshe>()) || NPC.AnyNPCs(mod.NPCType<WrathHaruka>()))
             {
-                if (npc.alpha < 50)
+                if (npc.alpha > 50)
                 {
                     npc.alpha = 50;
                 }
@@ -100,23 +100,20 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else
             {
-                if (npc.alpha < 0)
-                {
-                    npc.alpha = 0;
-                }
-                if (npc.alpha <= 0)
-                {
-                    npc.alpha = 0;
-                }
-                else
+                if (npc.alpha > 0)
                 {
                     for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                     {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default, 2f);
+                        int dust = mod.DustType<Dusts.DiscordLight>();
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = true;
                         Main.dust[num935].noLight = true;
                     }
                     npc.alpha -= 4;
+                }
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
                 }
                 npc.dontTakeDamage = false;
             }
@@ -289,7 +286,6 @@ namespace AAMod.NPCs.Bosses.Shen
                         break;
                     targetPos = player.Center;
                     targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y += 400;
                     Movement(targetPos, 0.5f);
                     if (++npc.ai[2] > 60)
                     {
@@ -437,7 +433,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     break;
 
                 case 14: //fly in jumbo circle
-                    Dashing = true;
                     npc.velocity -= npc.velocity.RotatedBy(Math.PI / 2) * npc.velocity.Length() / npc.ai[3];
                     if (++npc.ai[2] > 1)
                     {
@@ -460,6 +455,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.ai[3] = 0;
                     }
                     npc.rotation = npc.velocity.ToRotation();
+                    Dashing = true;
                     break;
 
                 case 15: //wait for old attack to go away
@@ -548,7 +544,10 @@ namespace AAMod.NPCs.Bosses.Shen
                         if (Main.netMode != 1) BaseUtility.Chat("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     BaseAI.DropItem(npc, mod.ItemType("ShenATrophy"), 1, 1, 15, true);
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenDefeat>());
+                    if (!NPC.AnyNPCs(mod.NPCType<ShenDefeat>()))
+                    {
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenDefeat>());
+                    }
                     npc.DropBossBags();
                 }
             }

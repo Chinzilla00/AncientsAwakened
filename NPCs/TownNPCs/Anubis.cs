@@ -99,7 +99,6 @@ namespace AAMod.NPCs.TownNPCs
         public static bool Zero = false;
         public static bool Shen = false;
         public static bool RajahC = false;
-        public static bool Stones = false;
         public static bool BaseChat = false;
         public static int ChatNumber = 0;
 
@@ -127,7 +126,6 @@ namespace AAMod.NPCs.TownNPCs
             Zero = false;
             Shen = false;
             RajahC = false;
-            Stones = false;
         }
         
         public override void SetChatButtons(ref string button, ref string button2)
@@ -175,9 +173,7 @@ namespace AAMod.NPCs.TownNPCs
             string ShenT = Lang.TownNPCAnubis("SetChatButtons19");
 
             string RajahCT = "Wrath of the Wabbit";
-
-            string StonesT = Lang.TownNPCAnubis("SetChatButtons20");
-
+            
             button = SwitchInfoT;
 
             if (ChatNumber == 0)
@@ -280,15 +276,10 @@ namespace AAMod.NPCs.TownNPCs
                 button2 = ShenT;
                 Shen = true;
             }
-            else if (ChatNumber == 20 && AAWorld.downedShen)
-            {
-                button2 = StonesT;
-                Stones = true;
-            }
-            else if (ChatNumber == 21 && AAWorld.downedRajahsRevenge)
+            else if (ChatNumber == 20 && AAWorld.downedRajahsRevenge)
             {
                 button2 = RajahCT;
-                Stones = true;
+                RajahC = true;
             }
             else
             {
@@ -321,7 +312,6 @@ namespace AAMod.NPCs.TownNPCs
             Zero = false;
             Shen = false;
             RajahC = false;
-            Stones = true;
         }
 
 		public override void OnChatButtonClicked(bool firstButton, ref bool shop)
@@ -473,10 +463,6 @@ namespace AAMod.NPCs.TownNPCs
             {
                 return AAWorld.downedShen ?  Lang.TownNPCAnubis("downedRajahCY") :
                     Lang.TownNPCAnubis("downedRajahCN");
-            }
-            else if (Stones)
-            {
-                return Lang.TownNPCAnubis("Stones");
             }
             else
             {

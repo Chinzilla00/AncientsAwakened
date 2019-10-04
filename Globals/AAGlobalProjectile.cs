@@ -12,7 +12,7 @@ namespace AAMod
         public static int CountProjectiles(int type)
         {
             int num = 0;
-            for (int i = 0; i < 200; i++)
+            for (int i = 0; i < Main.maxProjectiles; i++)
             {
                 if (Main.projectile[i].active && Main.projectile[i].type == type)
                 {
@@ -25,7 +25,7 @@ namespace AAMod
 
         public static bool AnyProjectiles(int type)
         {
-            for (int i = 0; i < 200; i++)
+            for (int i = 0; i < Main.maxProjectiles; i++)
             {
                 if (Main.projectile[i].active && Main.projectile[i].type == type)
                 {

@@ -71,7 +71,7 @@ namespace AAMod.Tiles.Boss
                     if (item != null && item.type == type && item.stack >= 1)
                     {
                         item.stack--;
-                        SpawnBoss(player, mod.NPCType<NPCs.Bosses.Athena.Athena>(), true, player.Center, 0, -1, "Athena", false);
+                        SpawnBoss(player, mod.NPCType<Athena>(), true, player.Center, 0, -1, "Athena", false);
                     }
                 }
             }
@@ -88,7 +88,7 @@ namespace AAMod.Tiles.Boss
             Vector2 npcCenter = Pos + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, 800f * overrideDirectionY);
             for (int a = 0; a < 8; a++)
             {
-                Dust.NewDust(npcCenter, 152, 114, mod.DustType<NPCs.Bosses.Athena.Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                Dust.NewDust(npcCenter, 152, 114, mod.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
             }
             AAModGlobalNPC.SpawnBoss(player, bossType, spawnMessage, npcCenter, overrideDisplayName, namePlural);
         }

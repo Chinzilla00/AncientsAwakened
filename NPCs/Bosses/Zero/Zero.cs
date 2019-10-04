@@ -52,12 +52,6 @@ namespace AAMod.NPCs.Bosses.Zero
             npc.lavaImmune = true;
             npc.netAlways = true;
             musicPriority = MusicPriority.BossHigh;
-            if (AAWorld.downedAllAncients)
-            {
-                npc.lifeMax = 700000;
-                npc.damage = 150;
-                npc.defense = 320;
-            }
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

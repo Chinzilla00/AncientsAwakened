@@ -122,19 +122,19 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.alpha -= 5;
             }
 
-            if (npc.ai[0] == 1680)
+            if (npc.ai[0] == 1520)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("I AM SHEN DORAGON, EMPEROR OF CHAOS AND ANARCHY!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
-            if (npc.ai[0] == 1860)
+            if (npc.ai[0] == 1700)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("And you, my child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
-            if (npc.ai[0] >= 2040)
+            if (npc.ai[0] >= 1880)
             {
                 if (Main.netMode != 1) BaseUtility.Chat("WILL PERISH!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 SummonShen();
@@ -265,9 +265,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             if (npc.ai[1] > 240)
             {
-                int i = AAWorld.downedShen ? 1 : 0;
-                NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<ShenDeath>(), 0, i);
-                npc.active = false;
+                npc.life = 0;
                 npc.netUpdate = true;
             }
             else
@@ -285,6 +283,12 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                 }
             }
+        }
+
+        public override void NPCLoot()
+        {
+            int i = AAWorld.downedShen ? 0 : 1;
+            NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType<ShenDeath>(), 0, i);
         }
     }
 
@@ -441,7 +445,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.timeLeft = 10;
             }
-            if (npc.alpha < 255 && npc.ai[0] > 375)
+            if (npc.alpha < 255 && npc.ai[0] > 350)
             {
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA");
                 for (int LOOP = 0; LOOP < 8; LOOP++)
