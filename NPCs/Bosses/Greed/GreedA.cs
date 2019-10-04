@@ -175,7 +175,35 @@ namespace AAMod.NPCs.Bosses.Greed
                     }
                     break;
 
-                case 2: goto case 0;
+                case 2:
+                    internalAI[1]++;
+                    if (internalAI[1] > 80 && internalAI[1] <= 160)
+                    {
+                        if (Main.rand.Next(40) == 0)
+                        {
+
+                            int proj = Projectile.NewProjectile(player.Center.X + Main.rand.Next(-200, 200), player.Center.Y + Main.rand.Next(200, 350), 0f, -4f, mod.ProjectileType("TreasurePro"), 32, 0, Main.myPlayer);
+                            Main.projectile[proj].netUpdate = true;
+                        }
+                    }
+                    if (internalAI[1] > 300)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 3:
+                    if (++internalAI[1] > 200)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 4: goto case 0;
 
                 default:
                     internalAI[0] = 0;
@@ -246,6 +274,17 @@ namespace AAMod.NPCs.Bosses.Greed
 
             float speed = 18f;
             float acceleration = 0.08f;
+
+            if ((int)internalAI[0] == 3)
+            {
+                speed = 22f;
+                acceleration = 0.38f;
+            }
+            else
+            {
+                speed = 18f;
+                acceleration = 0.08f;
+            }
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
             float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
