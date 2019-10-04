@@ -3372,6 +3372,9 @@ ItemName.RaiderLance=突击者长枪
 ItemName.RustyCutlass=锈蚀短刀
 ItemTooltip.RustyCutlass=虽然锈了,但是依旧锋利
 
+ItemName.Ryugen=殺龙剑刃
+ItemTooltip.Ryugen=“我要灭了他们一队人”/n-Jace
+
 ItemName.Ryusei=流星
 ItemTooltip.Ryusei=攻击用火焰和燎狱龙炎灼烧敌人
 
@@ -4696,6 +4699,8 @@ NPCName.HydraClawM=九头蛇之爪
 
 NPCName.GreedSpawn=闪耀的贪婪
 
+NPCName.GreedTurret=贪欲之奇点
+
 NPCName.GreedTransition=闪耀的贪婪
 
 NPCName.GreedMinion=矿石精
@@ -4921,6 +4926,8 @@ NPCName.HarukaY=潭渊妖女 八歧遥香
 NPCName.YamataA=觉醒之八歧大蛇 震怒潭渊的化身
 
 NPCName.YamataAHead=觉醒之八歧大蛇的头
+
+NPCName.YamataAHeadF=觉醒之八歧大蛇的头
 
 NPCName.YamataAHeadF1=觉醒之八歧大蛇的头
 
