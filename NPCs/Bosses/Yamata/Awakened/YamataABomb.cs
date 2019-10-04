@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 00;
-            const float desiredFlySpeedInPixelsPerFrame = 10;
+            const float desiredFlySpeedInPixelsPerFrame = 9;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
@@ -98,7 +98,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     -projectile.velocity.Y * 0.2f, 0);
                 Main.dust[num469].velocity *= 2f;
             }
-            float spread = 12f * 0.0174f;
+            /*float spread = 12f * 0.0174f;
             double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
             double Angle = spread / 4;
             double offsetAngle;
@@ -111,7 +111,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("YamataAVenom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
                     Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("YamataAVenom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
                 }
-            }
+            }*/
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 89, Terraria.Audio.SoundType.Sound));
             Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("YamataABoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
             projectile.active = false;

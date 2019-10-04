@@ -431,7 +431,8 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
 
                 float dist = npc.Distance(playerTarget.Center);
-                if (dist > 800 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                if (dist > 1200 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height)
+                    || Main.player[npc.target].position.Y < npc.position.Y - 600)
                 {
                     if (Main.netMode != 1 && SayTheLineYamata == 300)
                     {
@@ -442,7 +443,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                         }
                     }
                     SayTheLineYamata--;
-                    npc.alpha += 3;
+                    npc.alpha += 1;
                     if (npc.alpha >= 255)
                     {
                         npc.alpha = 255;

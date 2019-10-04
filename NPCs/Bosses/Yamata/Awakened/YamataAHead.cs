@@ -221,7 +221,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             else
             {
                 npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
-                npc.velocity *= 5f;
+                npc.velocity *= 10f;
             }
             //npc.position += Body.position - Body.oldPosition;
 

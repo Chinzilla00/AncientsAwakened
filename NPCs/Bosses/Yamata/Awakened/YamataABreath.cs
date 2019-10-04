@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void AI()
         {
-            projectile.velocity *= 0.99f;
+            projectile.velocity *= 0.97f;
             if (projectile.ai[0] > 7f)
             {
                 float num296 = 1f;

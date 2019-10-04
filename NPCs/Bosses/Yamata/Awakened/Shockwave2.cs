@@ -30,6 +30,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             return Color.White;
         }
 
+        public override bool CanDamage()
+        {
+            return projectile.localAI[0] > 10;
+        }
+
         public override void AI()
         {
             if (++projectile.frameCounter >= 6)
@@ -43,17 +48,17 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             projectile.velocity.X *= 0.00f;
             projectile.velocity.Y *= 0.00f;
-
+            if (++projectile.localAI[0] == 10)
+                if (Main.netMode != 1 && projectile.ai[0] != 0)
+                {
+                    projectile.ai[0] -= projectile.ai[0] > 0 ? 1 : -1; //approach 0
+                    Projectile.NewProjectile(projectile.Center + Vector2.UnitX * Math.Sign(projectile.ai[0]) * projectile.width, Vector2.Zero, mod.ProjectileType("Shockwave2"), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0]);
+                }
         }
 
         public override void Kill(int timeLeft)
         {
             projectile.timeLeft = 0;
-            if (Main.netMode != 1 && projectile.ai[0] != 0)
-            {
-                projectile.ai[0] -= projectile.ai[0] > 0 ? 1 : -1; //approach 0
-                Projectile.NewProjectile(projectile.Center + Vector2.UnitX * Math.Sign(projectile.ai[0]) * projectile.width, Vector2.Zero, mod.ProjectileType("Shockwave2"), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0]);
-            }
         }
 
     }

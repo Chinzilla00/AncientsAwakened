@@ -170,7 +170,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
-                            Main.NewText("shoot those old tiny purple needle things ig");
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 5f, mod.ProjectileType("YamataAVenom2"), npc.damage / 4, 0f, Main.myPlayer);
                     }
                     if (++internalAI[1] > 240)
                     {
@@ -182,7 +182,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     break;
 
                 case 3: //breathe lingering flame
-                    if (++internalAI[2] > 30 && internalAI[1] > 120)
+                    internalAI[2] += npc.ai[3];
+                    if (++internalAI[2] > 60)
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
@@ -201,7 +202,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     if (internalAI[1] == npc.ai[3] * 60)
                     {
                         if (Main.netMode != 1)
-                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center), mod.ProjectileType("Deathray"), npc.damage, 0f, Main.myPlayer, 0f, npc.whoAmI);
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center), mod.ProjectileType("YamataDeathray"), npc.damage, 0f, Main.myPlayer, 0f, npc.whoAmI);
                     }
                     if (++internalAI[1] > 360)
                     {
@@ -242,9 +243,9 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                         if (Main.netMode != 1)
                         {
                             if (npc.ai[3] == 3)
-                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 12f, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 10f, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
                             else
-                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 10f, mod.ProjectileType("YamataABomb"), npc.damage / 4, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 7f, mod.ProjectileType("YamataABomb"), npc.damage / 4, 0f, Main.myPlayer);
                         }
                     }
                     if (++internalAI[1] > 360)
@@ -280,7 +281,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             else
             {
                 npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
-                npc.velocity *= 5f;
+                npc.velocity *= 10f;
             }
             //npc.position += Body.npc.position - Body.npc.oldPosition;
             npc.spriteDirection = -1;
