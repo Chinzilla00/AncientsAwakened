@@ -23,7 +23,7 @@ namespace AAMod.Tiles.Crafters
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Furniture Dynamo");
-            AddMapEntry(new Color(40, 0, 0), name);
+            AddMapEntry(new Color(36, 98, 192), name);
             disableSmartCursor = true;
             adjTiles = new int[]
             {
@@ -44,12 +44,6 @@ namespace AAMod.Tiles.Crafters
                 TileID.HoneyDispenser,
                 TileID.AlchemyTable
             };
-            animationFrameHeight = 54;
-        }
-
-        public override void AnimateTile(ref int frame, ref int frameCounter)
-        {
-            frame = Main.tileFrame[TileID.Solidifier];
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
