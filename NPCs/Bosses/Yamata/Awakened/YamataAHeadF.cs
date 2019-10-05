@@ -245,18 +245,19 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 case 8: //breathe the lingering shit
                     goto case 3;
 
-                case 9: //some mix of 2 attacks he already does, something homing + something directly aimed
+                case 9: //weaker meteor rain
                     internalAI[2] += npc.ai[3];
                     if (internalAI[2] > 120)
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
-                        {
-                            if (npc.ai[3] == 3)
-                                Projectile.NewProjectile(npc.Center, Vector2.UnitY * 10, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
-                            else
-                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 7f, mod.ProjectileType("YamataABomb"), npc.damage / 4, 0f, Main.myPlayer);
-                        }
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitY * 10, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
+                    }
+                    if (++internalAI[3] > 20) //outermost heads enrage at player if they walk away from underneath
+                    {
+                        internalAI[3] = 0;
+                        if (npc.ai[3] == 3 && Math.Sign(npc.Center.X - Main.player[npc.target].Center.X) != Math.Sign(npc.ai[1]) && Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 5f, mod.ProjectileType("YamataAVenom2"), npc.damage / 4, 0f, Main.myPlayer);
                     }
                     if (++internalAI[1] > 360)
                     {
