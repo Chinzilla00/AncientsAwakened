@@ -958,8 +958,8 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Vector2 GetStandOnPoint(NPC npc)
         {
             float scalar = npc.velocity.Length();
-            float outerLegDefault = 100f + (0.5f * scalar);
-            float innerLegDefault = 70f + (0.5f * scalar);
+            float outerLegDefault = 150f + (0.5f * scalar);
+            float innerLegDefault = 120f + (0.5f * scalar);
             float standOnX = npc.Center.X + yamata.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
 			
             int defaultTileY = (int)(npc.Bottom.Y / 16f);
