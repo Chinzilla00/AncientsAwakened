@@ -191,7 +191,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 					if(!HeadsSpawned)
 					{
                         const int headX = 300;
-                        const int headY = -600;
+                        const int headY = -500;
 
                         TrueHead = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("YamataAHead"), 0)];
                         TrueHead.ai[0] = npc.whoAmI;
@@ -432,7 +432,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
                 float dist = npc.Distance(playerTarget.Center);
                 if (dist > 1200 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height)
-                    || Main.player[npc.target].position.Y < npc.position.Y - 600)
+                    || Main.player[npc.target].position.Y < npc.position.Y - 500)
                 {
                     if (Main.netMode != 1 && SayTheLineYamata == 300)
                     {
