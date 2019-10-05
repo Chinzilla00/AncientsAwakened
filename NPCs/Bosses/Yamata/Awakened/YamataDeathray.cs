@@ -42,7 +42,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             if (Main.npc[(int)projectile.ai[1]].active && Main.npc[(int)projectile.ai[1]].type == mod.NPCType("YamataAHeadF"))
             {
-                projectile.Center = Main.npc[(int)projectile.ai[1]].Center;
+                projectile.Center = Main.npc[(int)projectile.ai[1]].Center + Vector2.UnitY * 45;
             }
             else
             {
