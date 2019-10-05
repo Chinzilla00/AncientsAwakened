@@ -749,12 +749,12 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             else
             {
-                DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF1", "Glowmasks/YamataAHeadF_Glow", Head2, dColor, false);
-                DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF1", "Glowmasks/YamataAHeadF_Glow", Head3, dColor, false);
-                DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF1", "Glowmasks/YamataAHeadF_Glow", Head4, dColor, false);
-                DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF2", "Glowmasks/YamataAHeadF_Glow", Head5, dColor, false);
-                DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF2", "Glowmasks/YamataAHeadF_Glow", Head6, dColor, false);
-                DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF2", "Glowmasks/YamataAHeadF_Glow", Head7, dColor, false);
+                DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF", "NPCs/Bosses/Yamata/Awakened/YamataAHeadF_Glow", Head2, dColor, false);
+                DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF", "NPCs/Bosses/Yamata/Awakened/YamataAHeadF_Glow", Head3, dColor, false);
+                DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF", "NPCs/Bosses/Yamata/Awakened/YamataAHeadF_Glow", Head4, dColor, false);
+                DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF", "NPCs/Bosses/Yamata/Awakened/YamataAHeadF_Glow", Head5, dColor, false);
+                DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF", "NPCs/Bosses/Yamata/Awakened/YamataAHeadF_Glow", Head6, dColor, false);
+                DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF", "NPCs/Bosses/Yamata/Awakened/YamataAHeadF_Glow", Head7, dColor, false);
             }
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, lightColor, false);
             if (isAwakened)
