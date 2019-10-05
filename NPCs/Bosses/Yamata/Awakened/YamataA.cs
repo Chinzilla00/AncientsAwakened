@@ -18,7 +18,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             base.SetStaticDefaults();
             displayName = "Yamata no Orochi";
-            Main.npcFrameCount[npc.type] = 7;
+            //Main.npcFrameCount[npc.type] = 7;
         }
 
         public override void SetDefaults()
@@ -34,7 +34,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 npc.buffImmune[k] = true;
             }
             musicPriority = MusicPriority.BossHigh;
-            npc.scale *= 2;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -178,7 +177,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void FindFrame(int frameHeight)
         {
-            npc.frameCounter++;
+            //npc.frameCounter++;
             if (npc.frameCounter < 5)
             {
                 npc.frame.Y = 0 * frameHeight;

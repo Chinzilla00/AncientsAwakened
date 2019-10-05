@@ -709,6 +709,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         
         public void DrawHead(SpriteBatch spriteBatch, string headTexture, string glowMaskTexture, NPC head, Color drawColor, bool DrawUnder)
         {
+            bool awakened = npc.type == mod.NPCType("YamataA");
             Color lightColor = npc.GetAlpha(BaseDrawing.GetLightColor(npc.Center));
             Color GlowColor = isAwakened ? AAColor.COLOR_WHITEFADE1 : Color.White;
             if (head != null && head.active && head.modNPC != null && (head.modNPC is YamataHead || head.modNPC is YamataHeadF1 || head.modNPC is Awakened.YamataAHeadF))
@@ -716,10 +717,10 @@ namespace AAMod.NPCs.Bosses.Yamata
 				string neckTex = isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataANeck" : "NPCs/Bosses/Yamata/YamataNeck";
 				Texture2D neckTex2D = mod.GetTexture(neckTex);
 				Vector2 connector = head.Center;
-                Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 40 * npc.scale);
+                Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 90 * npc.scale);
                 BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { neckTex2D, neckTex2D, neckTex2D }, 0, neckOrigin, connector, neckTex2D.Height - 10f, drawColor, 1f, DrawUnder, null);
-                BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(headTexture), 0, head.position + new Vector2(0f, head.gfxOffY) + topVisualOffset, head.width, head.height, head.scale, head.rotation, head.spriteDirection, Main.npcFrameCount[head.type], head.frame, drawColor, false);
-                BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(glowMaskTexture), 0, head.position + new Vector2(0f, head.gfxOffY) + topVisualOffset, head.width, head.height, head.scale, head.rotation, head.spriteDirection, Main.npcFrameCount[head.type], head.frame, GlowColor, false);
+                BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(headTexture), 0, head.position, head.width, head.height, head.scale, head.rotation, head.spriteDirection, Main.npcFrameCount[head.type], head.frame, drawColor, false);
+                BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(glowMaskTexture), 0, head.position, head.width, head.height, head.scale, head.rotation, head.spriteDirection, Main.npcFrameCount[head.type], head.frame, GlowColor, false);
             }
         }
 
@@ -736,12 +737,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				legs[3].DrawLeg(sb, npc);
 				legs[0].DrawLeg(sb, npc); //front legs
 				legs[1].DrawLeg(sb, npc);
-			}		
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, lightColor, false);
-            if (isAwakened)
-            {
-                BaseDrawing.DrawTexture(sb, mod.GetTexture(glowTex), 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, AAColor.COLOR_WHITEFADE1, false);
-            }
+			}
             if (!isAwakened)
             {
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF1", "Glowmasks/YamataHeadF1_Glow", Head2, dColor, false);
@@ -750,7 +746,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "Glowmasks/YamataHeadF2_Glow", Head5, dColor, false);
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "Glowmasks/YamataHeadF2_Glow", Head6, dColor, false);
                 DrawHead(sb, "NPCs/Bosses/Yamata/YamataHeadF2", "Glowmasks/YamataHeadF2_Glow", Head7, dColor, false);
-                DrawHead(sb, headTex, "Glowmasks/YamataHead_Glow", TrueHead, dColor, false);
             }
             else
             {
@@ -760,11 +755,23 @@ namespace AAMod.NPCs.Bosses.Yamata
                 DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF2", "Glowmasks/YamataAHeadF_Glow", Head5, dColor, false);
                 DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF2", "Glowmasks/YamataAHeadF_Glow", Head6, dColor, false);
                 DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHeadF2", "Glowmasks/YamataAHeadF_Glow", Head7, dColor, false);
+            }
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, lightColor, false);
+            if (isAwakened)
+            {
+                BaseDrawing.DrawTexture(sb, mod.GetTexture(glowTex), 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, AAColor.COLOR_WHITEFADE1, false);
+                BaseDrawing.DrawAfterimage(sb, mod.GetTexture(glowTex), 0, npc, 0.8f, 1f, 4, false, 0f, 0f, AAColor.COLOR_WHITEFADE1);
+            }
+            if (!isAwakened)
+            {
+                DrawHead(sb, headTex, "Glowmasks/YamataHead_Glow", TrueHead, dColor, false);
+            }
+            else
+            {
                 DrawHead(sb, headTex, "Glowmasks/YamataAHead_Glow", TrueHead, dColor, false);
             }
             if (isAwakened)
             {
-                BaseDrawing.DrawAfterimage(sb, mod.GetTexture(glowTex), 0, npc, 0.8f, 1f, 4, false, 0f, 0f, AAColor.COLOR_WHITEFADE1);
             }
         }
 
@@ -976,9 +983,9 @@ namespace AAMod.NPCs.Bosses.Yamata
         public void DrawLeg(SpriteBatch sb, NPC npc)
         {
             Mod mod = AAMod.instance;
+            bool awakened = npc.type == mod.NPCType("YamataA");
             if (textures == null)
             {
-				bool awakened = npc.type == mod.NPCType("YamataA");
 				string texRoot = "NPCs/Bosses/Yamata/Yamata";
 				if(awakened) texRoot = "NPCs/Bosses/Yamata/Awakened/YamataA";
                 textures = new Texture2D[5];
@@ -1000,7 +1007,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 BaseDrawing.DrawChain(sb, new Texture2D[] { null, textures[1], null }, 0, drawPos + new Vector2(Hitbox.Width * 0.5f, 6f), legJoint, 0f, null, 1f, false, null);
                 BaseDrawing.DrawChain(sb, new Texture2D[] { textures[0], textures[1], textures[0] }, 0, legJoint, GetBodyConnector(npc), 0f, null, 1f, false, null);
             }
-            BaseDrawing.DrawTexture(sb, textures[4], 0, drawPos, Hitbox.Width, Hitbox.Height, npc.scale, rotation, limbType == 1 || limbType == 3 ? 1 : -1, 1, Hitbox, lightColor, false, legOrigin);
+            BaseDrawing.DrawTexture(sb, textures[4], 0, drawPos, Hitbox.Width, Hitbox.Height, npc.scale * (awakened ? 2 : 1), rotation, limbType == 1 || limbType == 3 ? 1 : -1, 1, Hitbox, lightColor, false, legOrigin);
         }
     }
 }
