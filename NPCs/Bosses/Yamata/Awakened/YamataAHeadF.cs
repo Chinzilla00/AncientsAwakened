@@ -157,10 +157,27 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     break;
 
                 case 1: //idle while firing laser
+                    if (++internalAI[3] > 20) 
+                    {
+                        internalAI[3] = 0;
+                        if (npc.ai[3] == 3 && Main.netMode != 1)
+                        {
+                            if (Math.Sign(npc.Center.X - Main.player[npc.target].Center.X) != Math.Sign(npc.ai[1])) //outermost heads enrage at player if they walk away from underneath
+                            {
+                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 5f, mod.ProjectileType("YamataAVenom2"), npc.damage / 4, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 7f, mod.ProjectileType("YamataABomb"), npc.damage / 4, 0f, Main.myPlayer);
+                            }
+                            else
+                            {
+                                Projectile.NewProjectile(npc.Center, Vector2.UnitY * 10, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
+                            }
+                        }
+                    }
                     if (++internalAI[1] > 300)
                     {
                         internalAI[0]++;
                         internalAI[1] = 0;
+                        internalAI[3] = 0;
                         npc.netUpdate = true;
                     }
                     break;
@@ -264,6 +281,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                         internalAI[0]++;
                         internalAI[1] = 0;
                         internalAI[2] = 0;
+                        internalAI[3] = 0;
                         npc.netUpdate = true;
                     }
                     break;
