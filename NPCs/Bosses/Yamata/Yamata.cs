@@ -717,7 +717,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 				string neckTex = isAwakened ? "NPCs/Bosses/Yamata/Awakened/YamataANeck" : "NPCs/Bosses/Yamata/YamataNeck";
 				Texture2D neckTex2D = mod.GetTexture(neckTex);
 				Vector2 connector = head.Center;
-                Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 90 * npc.scale);
+                Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 110 * npc.scale);
                 BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { neckTex2D, neckTex2D, neckTex2D }, 0, neckOrigin, connector, neckTex2D.Height - 10f, drawColor, 1f, DrawUnder, null);
                 BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(headTexture), 0, head.position, head.width, head.height, head.scale, head.rotation, head.spriteDirection, Main.npcFrameCount[head.type], head.frame, drawColor, false);
                 BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(glowMaskTexture), 0, head.position, head.width, head.height, head.scale, head.rotation, head.spriteDirection, Main.npcFrameCount[head.type], head.frame, GlowColor, false);
@@ -958,8 +958,8 @@ namespace AAMod.NPCs.Bosses.Yamata
         public Vector2 GetStandOnPoint(NPC npc)
         {
             float scalar = npc.velocity.Length();
-            float outerLegDefault = 70f + (0.5f * scalar);
-            float innerLegDefault = 50f + (0.5f * scalar);
+            float outerLegDefault = 100f + (0.5f * scalar);
+            float innerLegDefault = 70f + (0.5f * scalar);
             float standOnX = npc.Center.X + yamata.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
 			
             int defaultTileY = (int)(npc.Bottom.Y / 16f);
