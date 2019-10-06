@@ -40,15 +40,17 @@ namespace AAMod.Tiles.Ore
 
         public override bool PreDraw(int x, int y, SpriteBatch spriteBatch)
         {
-            Texture2D glowtex = mod.GetTexture("Glowmasks/RadiumOre_Glow");
+            Texture2D glowtex;
             if (Main.dayTime)
             {
+                glowtex = mod.GetTexture("Glowmasks/RadiumOre_Glow");
                 BaseDrawing.DrawTileTexture(spriteBatch, Main.tileTexture[Type], x, y, true, false, false);
                 BaseDrawing.DrawTileTexture(spriteBatch, glowtex, x, y, true, false, false, null, AAGlobalTile.GetRadiumColorBright);
             }
             else
             {
-                BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/RadiumOreDark"), x, y, true, false, false);
+                glowtex = mod.GetTexture("Glowmasks/DarkmatterOre_Glow");
+                BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/DarkmatterOre"), x, y, true, false, false);
                 BaseDrawing.DrawTileTexture(spriteBatch, glowtex, x, y, true, false, false, null, AAGlobalTile.GetDarkmatterColorBright);
             }
             Tile tile = Main.tile[x, y];

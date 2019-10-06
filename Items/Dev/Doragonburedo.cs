@@ -6,9 +6,9 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Dev   //where is located
+namespace AAMod.Items.Dev
 {
-    public class Ryugen : ModItem
+    public class Doragonburedo : BaseAAItem
     {
         public static short customGlowMask = 0;
         public override void SetStaticDefaults()
@@ -22,7 +22,7 @@ namespace AAMod.Items.Dev   //where is located
                 {
                     glowMasks[i] = Main.glowMaskTexture[i];
                 }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Items/Dev/" + GetType().Name + "_Glow");
+                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }

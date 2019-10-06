@@ -52,6 +52,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.height = 46;
             isAwakened = true;
             npc.scale *= 2;
+            npc.knockBackResist *= 0.1f;
         }
 
         public float[] internalAI = new float[4];
@@ -156,21 +157,38 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     break;
 
                 case 1: //idle while firing laser
+                    if (++internalAI[3] > 20) 
+                    {
+                        internalAI[3] = 0;
+                        if (npc.ai[3] == 3 && Main.netMode != 1)
+                        {
+                            if (Math.Sign(npc.Center.X - Main.player[npc.target].Center.X) != Math.Sign(npc.ai[1])) //outermost heads enrage at player if they walk away from underneath
+                            {
+                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 5f, mod.ProjectileType("YamataAVenom2"), npc.damage / 4, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 7f, mod.ProjectileType("YamataABomb"), npc.damage / 4, 0f, Main.myPlayer);
+                            }
+                            else
+                            {
+                                Projectile.NewProjectile(npc.Center, Vector2.UnitY * 10, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
+                            }
+                        }
+                    }
                     if (++internalAI[1] > 300)
                     {
                         internalAI[0]++;
                         internalAI[1] = 0;
+                        internalAI[3] = 0;
                         npc.netUpdate = true;
                     }
                     break;
 
                 case 2: //shoot shit
                     internalAI[2] += npc.ai[3];
-                    if (internalAI[2] > 60)
+                    if (internalAI[2] > 180)
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
-                            Main.NewText("shoot those old tiny purple needle things ig");
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 5f, mod.ProjectileType("YamataAVenom2"), npc.damage / 4, 0f, Main.myPlayer);
                     }
                     if (++internalAI[1] > 240)
                     {
@@ -182,11 +200,12 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     break;
 
                 case 3: //breathe lingering flame
-                    if (++internalAI[2] > 30 && internalAI[1] > 120)
+                    internalAI[2] += npc.ai[3];
+                    if (++internalAI[2] > 60)
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
-                            Main.NewText("breathe lingering flame");
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 20f, mod.ProjectileType("YamataABreath"), npc.damage / 4, 0f, Main.myPlayer);
                     }
                     if (++internalAI[1] > 180)
                     {
@@ -201,7 +220,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     if (internalAI[1] == npc.ai[3] * 60)
                     {
                         if (Main.netMode != 1)
-                            Main.NewText("shoot direct deathray");
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center), mod.ProjectileType("YamataDeathray"), npc.damage / 4, 0f, Main.myPlayer, 0f, npc.whoAmI);
                     }
                     if (++internalAI[1] > 360)
                     {
@@ -220,7 +239,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
-                            Main.NewText("drop bomb");
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitY * 5, mod.ProjectileType("YamataAShockBomb"), npc.damage / 4, 0f, Main.myPlayer, npc.target);
                     }
                     if (++internalAI[1] > 420)
                     {
@@ -231,32 +250,43 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     }
                     break;
 
-                case 7: //breathe the lingering shit
+                case 7: //pause, let previous waves disperse
+                    if (++internalAI[1] > 120)
+                    {
+                        internalAI[0]++;
+                        internalAI[1] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 8: //breathe the lingering shit
                     goto case 3;
 
-                case 8: //some mix of 2 attacks he already does, something homing + something directly aimed
+                case 9: //weaker meteor rain
                     internalAI[2] += npc.ai[3];
                     if (internalAI[2] > 120)
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
-                        {
-                            if (npc.ai[3] == 3)
-                                Main.NewText("direct aim shot");
-                            else
-                                Main.NewText("homing shot");
-                        }
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitY * 10, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
+                    }
+                    if (++internalAI[3] > 20) //outermost heads enrage at player if they walk away from underneath
+                    {
+                        internalAI[3] = 0;
+                        if (npc.ai[3] == 3 && Math.Sign(npc.Center.X - Main.player[npc.target].Center.X) != Math.Sign(npc.ai[1]) && Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 5f, mod.ProjectileType("YamataAVenom2"), npc.damage / 4, 0f, Main.myPlayer);
                     }
                     if (++internalAI[1] > 360)
                     {
                         internalAI[0]++;
                         internalAI[1] = 0;
                         internalAI[2] = 0;
+                        internalAI[3] = 0;
                         npc.netUpdate = true;
                     }
                     break;
 
-                case 9: //shoot the shit again
+                case 10: //shoot the shit again
                     goto case 2;
 
                 default:
@@ -280,7 +310,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             else
             {
                 npc.velocity = Vector2.Normalize(nextTarget - npc.Center);
-                npc.velocity *= 5f;
+                npc.velocity *= 10f;
             }
             //npc.position += Body.npc.position - Body.npc.oldPosition;
             npc.spriteDirection = -1;

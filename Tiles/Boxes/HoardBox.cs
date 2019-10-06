@@ -3,10 +3,11 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
+using Terraria.ID;
 
 namespace AAMod.Tiles.Boxes
 {
-    class RoHBox : ModTile
+    class HoardBox : ModTile
 	{
 		public override void SetDefaults()
 		{
@@ -20,13 +21,13 @@ namespace AAMod.Tiles.Boxes
 			disableSmartCursor = true;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Music Box");
-            dustType = 107;
-            AddMapEntry(new Color(200, 200, 200), name);
+            dustType = DustID.Dirt;
+            AddMapEntry(new Color(200, 160, 0), name);
 		}
 
-		public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("RoHBox"));
+			Item.NewItem(i * 16, j * 16, 16, 48, mod.ItemType("HoardBox"));
 		}
 
 		public override void MouseOver(int i, int j)
@@ -34,7 +35,7 @@ namespace AAMod.Tiles.Boxes
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.showItemIcon = true;
-			player.showItemIcon2 = mod.ItemType("RoHBox");
+			player.showItemIcon2 = mod.ItemType("HoardBox");
 		}
 	}
 }

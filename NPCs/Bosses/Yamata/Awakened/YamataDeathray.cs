@@ -7,10 +7,9 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
-    public class YamataWaveDeathray : ModProjectile
+    public class YamataDeathray : ModProjectile
     {
-        public override string Texture => "AAMod/NPCs/Bosses/Yamata/Awakened/YamataWaveDeathray";
-        private const float maxTime = 300;
+        private const float maxTime = 180;
         private float timer = 0;
 
         public override void SetStaticDefaults()
@@ -71,8 +70,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 projectile.scale = num801;
             }
             float num804 = projectile.velocity.ToRotation();
-            timer += projectile.ai[0];
-            num804 += (float)Math.Cos(timer) * 0.014f * Math.Sign(projectile.ai[0]);
+            //timer += projectile.ai[0];
+            //num804 += (float)Math.Cos(timer) * 0.014f * Math.Sign(projectile.ai[0]);
             projectile.rotation = num804 - 1.57079637f;
             projectile.velocity = num804.ToRotationVector2();
             float num805 = 3f;
