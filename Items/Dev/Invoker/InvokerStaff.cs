@@ -13,7 +13,7 @@ namespace AAMod.Items.Dev.Invoker
 	{
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Invoker Staff");
+            DisplayName.SetDefault("Aleister Staff");
 			Tooltip.SetDefault("");
 
             Item.staff[item.type] = true;
@@ -107,7 +107,7 @@ Legendry Weapon.";
 			{
 				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("InvokerStaffproj"), (int)((double)damage), knockBack, player.whoAmI, 0f, 0f);
 			}
-			if (player.altFunctionUse == 2 && player.GetModPlayer<InvokerPlayer>(mod).Thebookoflaw)
+			if (player.altFunctionUse == 2 && player.GetModPlayer<InvokerPlayer>(mod).SpringInvoker)
 			{
 				if(!player.GetModPlayer<InvokerPlayer>(mod).InvokerMadness)
 				{
@@ -126,7 +126,7 @@ Legendry Weapon.";
 
 		public override bool AltFunctionUse(Player player)
 		{
-			return (!(!player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula && player.GetModPlayer<InvokerPlayer>(mod).InvokedCaligula) && player.GetModPlayer<InvokerPlayer>(mod).Thebookoflaw);
+			return (!(!player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula && player.GetModPlayer<InvokerPlayer>(mod).InvokedCaligula) && player.GetModPlayer<InvokerPlayer>(mod).SpringInvoker);
 		}
 
     }
@@ -489,7 +489,7 @@ Legendry Weapon.";
 					CaligulaSoulFight = false;
 				}
 				
-				bool flag = Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).Thebookoflaw && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).Thebookoflaw;
+				bool flag = (Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") || Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == ItemID.RodofDiscord) && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).SpringInvoker && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).Thebookoflaw;
 				bool flag2 = npc.life < 50000 && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).InvokedCaligula;
 				
 				if(!flag || !flag2)
@@ -529,7 +529,7 @@ Legendry Weapon.";
 		
 		public override bool PreNPCLoot(NPC npc)
 		{
-			if(Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).Thebookoflaw && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).Thebookoflaw)
+			if(Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).SpringInvoker && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).Thebookoflaw)
 			{
             	//Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).BanishProjClear = true; // Just for test.
 				float nump7 = 4f;

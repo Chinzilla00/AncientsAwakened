@@ -15,29 +15,32 @@ namespace AAMod.Items.Dev.Invoker
 		{
 			return player.GetModPlayer<InvokerPlayer>();
 		}
-
 		public float BanishDamage;
 		public float BanishDamageMult = 1f;
 		public int BanishLimit = 1;
 
 		public override void ResetEffects()
 		{
-			Thebookoflaw = false;
+			SpringInvoker = false;
 			banishing = false;
 			InvokedCaligula = false;
 			BanishProjClear = false;
+			Thebookoflaw = false;
 			InvokerMadness = false;
+			InvokerShow = false;
 			BanishDamage = 0;
 			ResetVariables();
 		}
 
 		public override void UpdateDead()
 		{
-			Thebookoflaw = false;
+			SpringInvoker = false;
 			banishing = false;
 			InvokedCaligula = false;
 			BanishProjClear = false;
+			Thebookoflaw = false;
 			InvokerMadness = false;
+			InvokerShow = false;
 			BanishDamage = 0;
 			ResetVariables();
 		}
@@ -90,12 +93,10 @@ namespace AAMod.Items.Dev.Invoker
 			{
 				list.Add("FinisherElysium");
 			}
-            TagCompound tagCompound = new TagCompound
-            {
-                { "InvokerSummon", list },
-                { "CaligulaSoul", CaligulaSoul }
-            };
-            return tagCompound;
+			TagCompound tagCompound = new TagCompound();
+			tagCompound.Add("InvokerSummon", list);
+			tagCompound.Add("CaligulaSoul", CaligulaSoul);
+			return tagCompound;
 		}
 		public override void Load(TagCompound tag)
 		{
@@ -139,9 +140,11 @@ namespace AAMod.Items.Dev.Invoker
 		public bool LightingMechaba;
 		public bool FinisherElysium;
 		public bool banishing;
-		public bool Thebookoflaw;
+		public bool SpringInvoker;
+		public bool InvokerShow;
 		public bool InvokedCaligula;
 		public bool InvokerMadness;
+		public bool Thebookoflaw;
 		public bool BanishProjClear;
 		private int selfbanished = 0;
 		int InvokedCaligulaClaw = 0;
@@ -173,7 +176,8 @@ namespace AAMod.Items.Dev.Invoker
 			//if (!Thebookoflaw)
 			if ((banishing || selfbanished > 0) && !DarkCaligula)
 			{
-				if(selfbanished == 0) Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, 0f, mod.ProjectileType("InvokedRune"), 0, 0f, Main.player[Main.myPlayer].whoAmI, 2f, player.whoAmI);
+				int k = 0;
+				if(selfbanished == 0) k = Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, 0f, mod.ProjectileType("InvokedRune"), 0, 0f, Main.player[Main.myPlayer].whoAmI, 2f, player.whoAmI);
 				selfbanished ++;
 				if(selfbanished > 60) {player.AddBuff(mod.BuffType("InvokedCaligula"), 10800); selfbanished = 0;}
 			}
@@ -189,12 +193,83 @@ namespace AAMod.Items.Dev.Invoker
 					}
 				}
 			}
+			if (InvokerShow)
+			{
+				base.player.legs = mod.GetEquipSlot("InvokerLegs", EquipType.Legs);
+				base.player.body = mod.GetEquipSlot("InvokerBody", EquipType.Body);
+				base.player.head = mod.GetEquipSlot("InvokerHead", EquipType.Head);
+			}
+			if (SpringInvoker)
+			{
+				if ((double)Math.Abs(player.velocity.X) < 0.05 && (double)Math.Abs(player.velocity.Y) < 0.05 && (player.itemAnimation == 0 || player.inventory[player.selectedItem].type == mod.ItemType("InvokerStaff")))
+				{
+					if(player.lifeRegen < 0) player.lifeRegen /= 2;
+					if (player.lifeRegenTime > 90 && player.lifeRegenTime < 1800)
+					{
+						player.lifeRegenTime = 1800;
+					}
+					player.lifeRegenTime += 4;
+					player.lifeRegen += 4;
+					float Shine = (float)(player.lifeRegenTime - 3000);
+					Shine /= 300f;
+					if (Shine > 0f)
+					{
+						if (Shine > 30f)
+						{
+							Shine = 30f;
+						}
+					}
+					player.lifeRegen += (int)Math.Round((double)Shine);
+					if (player.lifeRegen > 0 && player.statLife < player.statLifeMax2)
+					{
+						player.lifeRegenCount++;
+						if ((Main.rand.Next(30000) < player.lifeRegenTime || Main.rand.Next(30) == 0))
+						{
+							int num5 = Dust.NewDust(player.position, player.width, player.height, 55, 0f, 0f, 200, default(Color), 0.5f);
+							Main.dust[num5].noGravity = true;
+							Main.dust[num5].velocity *= 0.75f;
+							Main.dust[num5].fadeIn = 1.3f;
+							Vector2 vector = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+							vector.Normalize();
+							vector *= (float)Main.rand.Next(50, 100) * 0.04f;
+							Main.dust[num5].velocity = vector;
+							vector.Normalize();
+							vector *= 34f;
+							Main.dust[num5].position = player.Center - vector;
+						}
+					}
+				}
+				
+				if((double)player.statLife <= (double)player.statLifeMax2 * 0.5)
+				{
+					player.iceBarrier= true;
+				}
+
+				if ((float)player.statLife > (float)player.statLifeMax2 * 0.25f)
+				{
+					player.hasPaladinShield = true;
+					if (player.whoAmI != Main.myPlayer && player.miscCounter % 10 == 0)
+					{
+						int myPlayer = Main.myPlayer;
+						if (Main.player[myPlayer].team == player.team && player.team != 0)
+						{
+							float num = player.position.X - Main.player[myPlayer].position.X;
+							float num2 = player.position.Y - Main.player[myPlayer].position.Y;
+							float num3 = (float)Math.Sqrt((double)(num * num + num2 * num2));
+							if (num3 < 800f)
+							{
+								Main.player[myPlayer].AddBuff(43, 20, true);
+							}
+						}
+					}
+				}
+			}
 			if (InvokedCaligula)
 			{
-                player.legs = mod.GetEquipSlot("InvokedCaligulaLegs", EquipType.Legs);
-                player.body = mod.GetEquipSlot("InvokedCaligulaBody", EquipType.Body);
-                player.head = mod.GetEquipSlot("InvokedCaligulaHead", EquipType.Head);
-
+				base.player.legs = mod.GetEquipSlot("InvokedCaligulaLegs", EquipType.Legs);
+				base.player.body = mod.GetEquipSlot("InvokedCaligulaBody", EquipType.Body);
+				base.player.head = mod.GetEquipSlot("InvokedCaligulaHead", EquipType.Head);
+				
 				if(Main.mouseLeft && player.inventory[player.selectedItem].damage > 0)
 				{
 					InvokedCaligulaClaw ++;
@@ -220,35 +295,10 @@ namespace AAMod.Items.Dev.Invoker
 				{
 					InvokedCaligulaClaw = 0;
 				}
+				
 			}
 		}
 		
-	}
-	public class InvokerCaligulaItem : GlobalItem
-	{
-		public override bool InstancePerEntity
-		{
-			get
-			{
-				return true;
-			}
-		}
-
-		public override bool CloneNewInstances
-		{
-			get
-			{
-				return true;
-			}
-		}
-		public override bool CanUseItem(Item item, Player player)
-		{
-			if(player.GetModPlayer<InvokerPlayer>(mod).InvokedCaligula && player.inventory[player.selectedItem].damage > 0 && !(player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula && player.inventory[player.selectedItem].type == mod.ItemType("InvokerStaff") && player.altFunctionUse == 2))
-			{
-				return false;
-			}
-			return true;
-		}
 	}
 
 	public class InvokedCaligulaShoot : ModProjectile
@@ -326,7 +376,7 @@ namespace AAMod.Items.Dev.Invoker
 			Lighting.AddLight(vector21, 0.8f, 0.8f, 0.8f);
 			if (Main.rand.Next(3) == 0)
 			{
-				int num2 = Dust.NewDust(vector21 - projectile.Size / 2f, projectile.width, projectile.height, 63, projectile.velocity.X, projectile.velocity.Y, 100, default, 2f);
+				int num2 = Dust.NewDust(vector21 - projectile.Size / 2f, projectile.width, projectile.height, 63, projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 2f);
 				Main.dust[num2].noGravity = true;
 				Main.dust[num2].position -= projectile.velocity;
 			}
