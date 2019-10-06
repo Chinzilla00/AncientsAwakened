@@ -386,12 +386,13 @@ namespace AAMod.Items.Dev.Invoker
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
+			
 			Player player = Main.player[Main.myPlayer];
 			//damage = (int)((player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula? 1000 : 500) * (player.minionDamage + player.allDamage));
 			crit = true;
 			if(player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula)
 			{
-				int regen = (Main.rand.Next(2) == 0 ? 2 : 1);
+				int regen = (Main.rand.Next(2) == 0 ? 2*(0.0001 * target.maxlife + 1) : (0.0001 * target.maxlife + 1));
 				player.statLife += regen;
 				player.HealEffect(regen, true);
 				if (player.statLife > player.statLifeMax2)
