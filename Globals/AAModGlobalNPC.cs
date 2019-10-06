@@ -267,14 +267,6 @@ namespace AAMod
                     npc.DropLoot(mod.ItemType("ShinyCharm"));
                 }
 
-                if (AAWorld.downedAllAncients && npc.type == NPCID.GoblinSummoner)
-                {
-                    if (Main.rand.NextBool(4))
-                    {
-                        npc.DropLoot(mod.ItemType("GoblinDoll"));
-                    }
-                }
-
                 if (npc.type == NPCID.EyeofCthulhu)
                 {
                     if (Main.rand.NextBool(4))

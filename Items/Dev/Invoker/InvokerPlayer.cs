@@ -280,7 +280,7 @@ namespace AAMod.Items.Dev.Invoker
 						vector20.Normalize();
 						if (vector20.HasNaNs())
 						{
-							vector20 = Vector2.UnitX * (float)player.direction;
+							vector20 = Vector2.UnitX * player.direction;
 						}
 						vector20 *= scaleFactor6;
 						Projectile.NewProjectile(player.position.X, player.position.Y, vector20.X, vector20.Y, mod.ProjectileType("InvokedCaligulaShoot"), (int)((DarkCaligula? 1200 : 600) * (player.minionDamage + player.allDamage - 1)), 4f, player.whoAmI, 0f, 0f);
@@ -329,16 +329,16 @@ namespace AAMod.Items.Dev.Invoker
         {
 			Player player = Main.player[Main.myPlayer];
 			Vector2 vector = player.RotatedRelativePoint(player.MountedCenter, true);
-			float position1 = (float)Main.mouseX + Main.screenPosition.X - vector.X;
-			float position2 = (float)Main.mouseY + Main.screenPosition.Y - vector.Y;
+			float position1 = Main.mouseX + Main.screenPosition.X - vector.X;
+			float position2 = Main.mouseY + Main.screenPosition.Y - vector.Y;
 			projectile.position = player.RotatedRelativePoint(player.MountedCenter, true) - projectile.Size / 2f;
 			if(player.direction == -1)
 			{
-				projectile.rotation = (float)Math.Atan2((double)(position2 * (float)player.direction), (double)(position1 * (float)player.direction)) - player.fullRotation + MathHelper.ToRadians(180f);
+				projectile.rotation = (float)Math.Atan2(position2 * player.direction, position1 * player.direction) - player.fullRotation + MathHelper.ToRadians(180f);
 			}
 			else
 			{
-				projectile.rotation = (float)Math.Atan2((double)(position2 * (float)player.direction), (double)(position1 * (float)player.direction)) + player.fullRotation;
+				projectile.rotation = (float)Math.Atan2(position2 * player.direction, position1 * player.direction) + player.fullRotation;
 			}
 			int num1 = projectile.frame + 1;
 			projectile.frame = num1;
@@ -359,7 +359,7 @@ namespace AAMod.Items.Dev.Invoker
 				vector20.Normalize();
 				if (vector20.HasNaNs())
 				{
-					vector20 = Vector2.UnitX * (float)player.direction;
+					vector20 = Vector2.UnitX * player.direction;
 				}
 				vector20 *= scaleFactor6;
 				if (vector20.X != projectile.velocity.X || vector20.Y != projectile.velocity.Y)

@@ -7,29 +7,28 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
     {
         public override void SetDefaults()
         {
-
-            item.damage = 25;                      
-            item.magic = true;  
-            item.width = 32;     
-            item.height = 28;    
-            item.useTime = 20; 
-            item.useAnimation = 20; 
-            item.useStyle = 5;        
-            item.noMelee = true;   
-            item.knockBack = 1; 
-            item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 8;   
-            item.mana = 9;
-            item.UseSound = SoundID.Item1; 
-            item.autoReuse = true; 
-            item.shoot = mod.ProjectileType("BogBomb");  
-            item.shootSpeed = 30f;    
+            item.damage = 20; //Projectile Damage
+            item.magic = true; //It's a magic tome
+            item.mana = 12; //It will use that much
+            item.width = 8;
+            item.height = 8;
+            item.useTime = 20;
+            item.useAnimation = 20;
+            item.useStyle = 5;
+            item.noMelee = true; //Why would you hit anyone with a book?
+            item.knockBack = 4;
+            item.value = 10000;
+            item.rare = 2;
+            item.UseSound = SoundID.Item8;
+            item.autoReuse = true;
+            item.shoot = mod.ProjectileType("BogOrb");
+            item.shootSpeed = 8f;
         }
 
-		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Bog Bomb");
-			Tooltip.SetDefault("Fires an explosive bomb that inflicts venom upon whatever it strikes");
-		}
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Bog Bomb");
+            Tooltip.SetDefault("Fires an explosive bomb that inflicts venom upon whatever it strikes");
+        }
     }
 }

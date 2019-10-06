@@ -6,6 +6,8 @@ using System.IO;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Utilities;
+using Terraria.GameContent.Events;
 
 namespace AAMod.NPCs.Bosses.Shen
 {
@@ -86,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (NPC.AnyNPCs(mod.NPCType<FuryAshe>()) || NPC.AnyNPCs(mod.NPCType<WrathHaruka>()))
             {
-                if (npc.alpha < 50)
+                if (npc.alpha > 50)
                 {
                     npc.alpha = 50;
                 }
@@ -98,23 +100,20 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             else
             {
-                if (npc.alpha < 0)
-                {
-                    npc.alpha = 0;
-                }
-                if (npc.alpha <= 0)
-                {
-                    npc.alpha = 0;
-                }
-                else
+                if (npc.alpha > 0)
                 {
                     for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                     {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, default, 2f);
+                        int dust = mod.DustType<Dusts.DiscordLight>();
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = true;
                         Main.dust[num935].noLight = true;
                     }
                     npc.alpha -= 4;
+                }
+                if (npc.alpha < 0)
+                {
+                    npc.alpha = 0;
                 }
                 npc.dontTakeDamage = false;
             }
@@ -287,7 +286,6 @@ namespace AAMod.NPCs.Bosses.Shen
                         break;
                     targetPos = player.Center;
                     targetPos.X += 700 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y += 400;
                     Movement(targetPos, 0.5f);
                     if (++npc.ai[2] > 60)
                     {
@@ -435,7 +433,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     break;
 
                 case 14: //fly in jumbo circle
-                    Dashing = true;
                     npc.velocity -= npc.velocity.RotatedBy(Math.PI / 2) * npc.velocity.Length() / npc.ai[3];
                     if (++npc.ai[2] > 1)
                     {
@@ -458,6 +455,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.ai[3] = 0;
                     }
                     npc.rotation = npc.velocity.ToRotation();
+                    Dashing = true;
                     break;
 
                 case 15: //wait for old attack to go away
@@ -546,7 +544,10 @@ namespace AAMod.NPCs.Bosses.Shen
                         if (Main.netMode != 1) BaseUtility.Chat("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     BaseAI.DropItem(npc, mod.ItemType("ShenATrophy"), 1, 1, 15, true);
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenDefeat>());
+                    if (!NPC.AnyNPCs(mod.NPCType<ShenDefeat>()))
+                    {
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenDefeat>());
+                    }
                     npc.DropBossBags();
                 }
             }
@@ -588,6 +589,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public bool Health8 = false;
         public bool Health7 = false;
         public bool Health6 = false;
+        public bool Health5 = false;
         public bool HealthOneHalf = false;
 
         public override void HitEffect(int hitDirection, double damage)
@@ -597,11 +599,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("I must say, child. You impress me.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("You put up a real fight, kid.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Face it, child! You’ll never defeat the living embodiment of disarray itself!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Look at where you are, terrarian. This is your own doing. The ritual, the rune? All you.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health9 = true;
                 npc.netUpdate = true;
@@ -610,11 +612,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("You fight, even when the odds are stacked against you.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Brawlin' till the very end.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("You’re still going? How amusing...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Why do you instigate all these fights? Power? Glory?", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health8 = true;
                 npc.netUpdate = true;
@@ -623,11 +625,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("You remind me of myself quite a bit, to be honest...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("You remind me of myself quite a bit...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Putting up a fight when you know Death is inevitable...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Either way, I'll personally make sure this is your last one!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health7 = true;
                 npc.netUpdate = true;
@@ -636,37 +638,30 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Maybe some day, you'll have your own realm to rule over...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("You're strong, too. Takes guts to fight most of what you have.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Now stop making this hard! Stand still and take it like a man!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("How many times will you fight to tear me down? Or will you give up?", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health6 = true;
                 npc.netUpdate = true;
             }
-            if (npc.life <= npc.lifeMax * 0.4f && !Health4)
+            if (npc.life <= npc.lifeMax * 0.5f && !Health5)
             {
-                if (AAWorld.downedShen)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat("But today, we clash! Now show me what you got!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                }
-                else
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat("DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                }
-                Health4 = true;
+                if (Main.netMode != 1) AAMod.Chat(BossDialogue(), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                Health5 = true;
                 npc.netUpdate = true;
             }
             if (npc.life <= npc.lifeMax * 0.3f && !Health3)
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Still got it? I'm impressed. Show me your true power!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Hmpf..! Here we are again, gettin' close to the end of the line. I'm not holding back!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("WHAT?! HOW HAVE YOU- ENOUGH! YOU WILL KNOW WHAT IT MEANS TO FEEL UNYIELDING CHAOS!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("Hm..?! You haven't kicked the bucket yet? Well then...Let's change that!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health3 = true;
                 npc.netUpdate = true;
@@ -675,11 +670,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Come on! KEEP PUSHING!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("The end of a game is the most stressful, keep that in mind, kid!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("NO! I WILL NOT LOSE! NOT TO YOU!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("You little..! Die already!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health2 = true;
                 npc.netUpdate = true;
@@ -688,11 +683,11 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (AAWorld.downedShen)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("SHOW ME! SHOW ME THE TRUE POWER YOU HOLD!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("This is it! The end is near, so don't you dare hold back!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("GRAAAAAAAAAH!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) AAMod.Chat("This can't be--! How?!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 }
                 Health1 = true;
                 npc.netUpdate = true;
@@ -701,6 +696,62 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand");
             }
+        }
+
+        public bool DownedRag => ThoriumMod.ThoriumWorld.downedRealityBreaker;
+        public bool DownedScal => CalamityMod.World.CalamityWorld.downedSCal;
+        public bool DownedMantid => GRealm.MWorld.downedMatriarch;
+        public bool DownedNeb => Redemption.RedeWorld.downedNebuleus;
+        public bool DownedOverseer => SpiritMod.MyWorld.downedOverseer;
+        //public bool DownedDuo => JetshiftMod.JetshiftWorld.downedCosmicMystery;
+
+        public string BossDialogue()
+        {
+            WeightedRandom<string> Text = new WeightedRandom<string>();
+
+            bool a = false;
+
+            if (AAMod.thoriumLoaded && DownedRag)
+            {
+                a = true;
+                Text.Add("You know, I was watching you beat down that god-sphere and its 3 goons. Gotta admit, pretty impressive.");
+            }
+
+            if (AAMod.calamityLoaded && DownedScal)
+            {
+                a = true;
+                Text.Add("Considering you put that angsty witch in her place, gotta hand it to ya.");
+            }
+
+            if (AAMod.gRealmLoaded && DownedMantid)
+            {
+                a = true;
+                Text.Add("Seeing you squashed that oversided insect in the jungle, that's quite a head-turner.");
+            }
+
+            if (AAMod.redeLoaded && DownedNeb)
+            {
+                a = true;
+                Text.Add("However, after you walloped that cosmic prude, even I was taken aback by that level of skill.");
+            }
+
+            if (AAMod.spiritLoaded && DownedOverseer)
+            {
+                a = true;
+                Text.Add("Now that I think about it, though, you cracking open that overseer like an egg? Quite the strength that had to have needed.");
+            }
+
+            /*if (AAMod.jsLoaded && DownedDuo)
+            {
+                a = true;
+                Text.Add("But slaying those two meteor-squatting crystal things? That's quite an eye-catcher.");
+            }*/
+
+            if (!a)
+            {
+                Text.Add("Everything you've torn down, gods and monsters alike, I respect that.");
+            }
+            return Text;
         }
 
         public override bool PreDraw(SpriteBatch sb, Color drawColor)

@@ -105,7 +105,7 @@ Legendry Weapon.";
 		{
 			if (player.altFunctionUse != 2 && player.GetModPlayer<InvokerPlayer>(mod).Thebookoflaw)
 			{
-				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("InvokerStaffproj"), (int)((double)damage), knockBack, player.whoAmI, 0f, 0f);
+				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("InvokerStaffproj"), (int)damage, knockBack, player.whoAmI, 0f, 0f);
 			}
 			if (player.altFunctionUse == 2 && player.GetModPlayer<InvokerPlayer>(mod).SpringInvoker)
 			{
@@ -241,7 +241,7 @@ Legendry Weapon.";
 					flag2 = true;
 				}
 				int num9 = (int)projectile.ai[1];
-				if (projectile.localAI[0] >= (float)(60 * num6))
+				if (projectile.localAI[0] >= 60 * num6)
 				{
 					flag = true;
 				}
@@ -278,7 +278,7 @@ Legendry Weapon.";
 		{
 			Rectangle rectangle = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
 
-			double Realdamage = Main.CalculateDamage((int)projectile.damage, 0);
+			double Realdamage = Main.CalculateDamage(projectile.damage, 0);
 			if(target.life <= Realdamage) target.life -= target.life - 1;
 			else target.life -= (int)Realdamage;
 
@@ -325,7 +325,7 @@ Legendry Weapon.";
 								return;
 							}
 							projectile.ai[0] = 1f;
-							projectile.ai[1] = (float)i;
+							projectile.ai[1] = i;
 							projectile.velocity = (Main.npc[i].Center - projectile.Center) * 0.75f;
 							projectile.netUpdate = true;
 							projectile.StatusNPC(i);
@@ -334,7 +334,7 @@ Legendry Weapon.";
 							int num2 = 0;
 							for (int j = 0; j < 1000; j++)
 							{
-								if (j != projectile.whoAmI && Main.projectile[j].active && Main.projectile[j].owner == Main.myPlayer && Main.projectile[j].type == projectile.type && Main.projectile[j].ai[0] == 1f && Main.projectile[j].ai[1] == (float)i)
+								if (j != projectile.whoAmI && Main.projectile[j].active && Main.projectile[j].owner == Main.myPlayer && Main.projectile[j].type == projectile.type && Main.projectile[j].ai[0] == 1f && Main.projectile[j].ai[1] == i)
 								{
 									array[num2++] = new Point(j, Main.projectile[j].timeLeft);
 									if (num2 >= array.Length)
@@ -533,9 +533,9 @@ Legendry Weapon.";
 			{
             	//Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).BanishProjClear = true; // Just for test.
 				float nump7 = 4f;
-				float nump8 = (float)Main.rand.Next(-100, 101);
-				float nump9 = (float)Main.rand.Next(-100, 101);
-				float nump10 = (float)Math.Sqrt((double)(nump8 * nump8 + nump9 * nump9));
+				float nump8 = Main.rand.Next(-100, 101);
+				float nump9 = Main.rand.Next(-100, 101);
+				float nump10 = (float)Math.Sqrt(nump8 * nump8 + nump9 * nump9);
 				nump10 = nump7 / nump10;
 				nump8 *= nump10;
 				nump9 *= nump10;
@@ -546,7 +546,7 @@ Legendry Weapon.";
 				{
 					if (Main.npc[i].CanBeChasedBy(this, false))
 					{
-						float num5 = Math.Abs(Main.npc[i].position.X + (float)(Main.npc[i].width / 2) - npc.position.X + (float)(npc.width / 2)) + Math.Abs(Main.npc[i].position.Y + (float)(Main.npc[i].height / 2) - npc.position.Y + (float)(npc.height / 2));
+						float num5 = Math.Abs(Main.npc[i].position.X + Main.npc[i].width / 2 - npc.position.X + npc.width / 2) + Math.Abs(Main.npc[i].position.Y + Main.npc[i].height / 2 - npc.position.Y + npc.height / 2);
 						if (num5 < 800f)
 						{
 							if (Collision.CanHit(npc.position, 1, 1, Main.npc[i].position, Main.npc[i].width, Main.npc[i].height) && num5 > 50f)
@@ -578,7 +578,7 @@ Legendry Weapon.";
 				if(npc.lifeMax >= 1000) Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("InvokedHeal"), 0, 0f, Main.player[Main.myPlayer].whoAmI, Main.player[Main.myPlayer].whoAmI, (npc.life > npc.lifeMax? npc.life : npc.lifeMax) * 0.001f);
 				if(npc.damage != 0) 
 				{
-					if((npc.realLife >= 0 && npc.realLife == npc.whoAmI) || npc.realLife < 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y, nump8, nump9, mod.ProjectileType("InvokedDamage"), npc.damage * 20, 0f, Main.player[Main.myPlayer].whoAmI, (float)num6, 0f);
+					if((npc.realLife >= 0 && npc.realLife == npc.whoAmI) || npc.realLife < 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y, nump8, nump9, mod.ProjectileType("InvokedDamage"), npc.damage * 20, 0f, Main.player[Main.myPlayer].whoAmI, num6, 0f);
 				}
 				if(npc.GetGlobalNPC<InvokedGlobalNPC>(mod).CaligulaSoulFight && !Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).DarkCaligula && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).InvokedCaligula && (npc.type == mod.NPCType("ZeroProtocol") || npc.type == mod.NPCType("YamataA") || npc.type == mod.NPCType("AkumaA") || npc.type == mod.NPCType("ShenA") || npc.type == mod.NPCType("SupremeRajah")))
 				{
@@ -666,7 +666,7 @@ Legendry Weapon.";
 						{
 							if (Main.npc[num570].CanBeChasedBy(this, true))
 							{
-								float num571 = Math.Abs(Main.npc[num570].position.X + (float)(Main.npc[num570].width / 2) - projectile.position.X + (float)(projectile.width / 2)) + Math.Abs(Main.npc[num570].position.Y + (float)(Main.npc[num570].height / 2) - projectile.position.Y + (float)(projectile.height / 2));
+								float num571 = Math.Abs(Main.npc[num570].position.X + Main.npc[num570].width / 2 - projectile.position.X + projectile.width / 2) + Math.Abs(Main.npc[num570].position.Y + Main.npc[num570].height / 2 - projectile.position.Y + projectile.height / 2);
 								if (num571 < 800f)
 								{
 									array2[num569] = num570;
@@ -682,30 +682,30 @@ Legendry Weapon.";
 							return;
 						}
 						num568 = array2[Main.rand.Next(num569)];
-						projectile.ai[0] = (float)num568;
+						projectile.ai[0] = num568;
 					}
 					float num572 = 4f;
-					Vector2 vector44 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+					Vector2 vector44 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
 					float num573 = Main.npc[num568].Center.X - vector44.X;
 					float num574 = Main.npc[num568].Center.Y - vector44.Y;
-					float num575 = (float)Math.Sqrt((double)(num573 * num573 + num574 * num574));
+					float num575 = (float)Math.Sqrt(num573 * num573 + num574 * num574);
 					num575 = num572 / num575;
 					num573 *= num575;
 					num574 *= num575;
 					int num576 = 30;
-					projectile.velocity.X = (projectile.velocity.X * (float)(num576 - 1) + num573) / (float)num576;
-					projectile.velocity.Y = (projectile.velocity.Y * (float)(num576 - 1) + num574) / (float)num576;
+					projectile.velocity.X = (projectile.velocity.X * (num576 - 1) + num573) / num576;
+					projectile.velocity.Y = (projectile.velocity.Y * (num576 - 1) + num574) / num576;
 				}
 				else
 				{
 
 					int num492 = (int)projectile.ai[0];
 					float num493 = 4f;
-					Vector2 vector39 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+					Vector2 vector39 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
 					float num494 = Main.player[num492].Center.X - vector39.X;
 					float num495 = Main.player[num492].Center.Y - vector39.Y;
-					float num496 = (float)Math.Sqrt((double)(num494 * num494 + num495 * num495));
-					if (num496 < 50f && projectile.position.X < Main.player[num492].position.X + (float)Main.player[num492].width && projectile.position.X + (float)projectile.width > Main.player[num492].position.X && projectile.position.Y < Main.player[num492].position.Y + (float)Main.player[num492].height && projectile.position.Y + (float)projectile.height > Main.player[num492].position.Y)
+					float num496 = (float)Math.Sqrt(num494 * num494 + num495 * num495);
+					if (num496 < 50f && projectile.position.X < Main.player[num492].position.X + Main.player[num492].width && projectile.position.X + projectile.width > Main.player[num492].position.X && projectile.position.Y < Main.player[num492].position.Y + Main.player[num492].height && projectile.position.Y + projectile.height > Main.player[num492].position.Y)
 					{
 						if (projectile.owner == Main.myPlayer)
 						{
@@ -724,8 +724,8 @@ Legendry Weapon.";
 			}
 			for (int num577 = 0; num577 < 5; num577 = num0 + 1)
 			{
-				float num578 = projectile.velocity.X * 0.2f * (float)num577;
-				float num579 = -(projectile.velocity.Y * 0.2f) * (float)num577;
+				float num578 = projectile.velocity.X * 0.2f * num577;
+				float num579 = -(projectile.velocity.Y * 0.2f) * num577;
 				int num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 175, 0f, 0f, 20, Color.DarkBlue, 2f);
 				Main.dust[num580].noGravity = true;
 				Dust dust3 = Main.dust[num580];
@@ -741,7 +741,7 @@ Legendry Weapon.";
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-			double Realdamage = Main.CalculateDamage((int)projectile.damage, 0);
+			double Realdamage = Main.CalculateDamage(projectile.damage, 0);
 			if(target.life <= Realdamage) target.life -= target.life - 1;
 			else target.life -= (int)Realdamage;
 
@@ -777,11 +777,11 @@ Legendry Weapon.";
         {
 			int num492 = (int)projectile.ai[0];
 			float num493 = 4f;
-			Vector2 vector39 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+			Vector2 vector39 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
 			float num494 = Main.player[num492].Center.X - vector39.X;
 			float num495 = Main.player[num492].Center.Y - vector39.Y;
-			float num496 = (float)Math.Sqrt((double)(num494 * num494 + num495 * num495));
-			if (num496 < 50f && projectile.position.X < Main.player[num492].position.X + (float)Main.player[num492].width && projectile.position.X + (float)projectile.width > Main.player[num492].position.X && projectile.position.Y < Main.player[num492].position.Y + (float)Main.player[num492].height && projectile.position.Y + (float)projectile.height > Main.player[num492].position.Y)
+			float num496 = (float)Math.Sqrt(num494 * num494 + num495 * num495);
+			if (num496 < 50f && projectile.position.X < Main.player[num492].position.X + Main.player[num492].width && projectile.position.X + projectile.width > Main.player[num492].position.X && projectile.position.Y < Main.player[num492].position.Y + Main.player[num492].height && projectile.position.Y + projectile.height > Main.player[num492].position.Y)
 			{
 				if (projectile.owner == Main.myPlayer)
 				{
@@ -793,7 +793,7 @@ Legendry Weapon.";
 					{
 						Main.player[num492].statLife = Main.player[num492].statLifeMax2;
 					}
-					NetMessage.SendData(66, -1, -1, null, num492, (float)num497, 0f, 0f, 0, 0, 0);
+					NetMessage.SendData(66, -1, -1, null, num492, num497, 0f, 0f, 0, 0, 0);
 				}
 				projectile.Kill();
 			}
@@ -805,8 +805,8 @@ Legendry Weapon.";
 			int num3;
 			for (int num502 = 0; num502 < 5; num502 = num3 + 1)
 			{
-				float num503 = projectile.velocity.X * 0.2f * (float)num502;
-				float num504 = -(projectile.velocity.Y * 0.2f) * (float)num502;
+				float num503 = projectile.velocity.X * 0.2f * num502;
+				float num504 = -(projectile.velocity.Y * 0.2f) * num502;
 				int num505 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 175, 0f, 0f, 20, Color.OrangeRed, 1.3f);
 				Main.dust[num505].noGravity = true;
 				Dust dust3 = Main.dust[num505];

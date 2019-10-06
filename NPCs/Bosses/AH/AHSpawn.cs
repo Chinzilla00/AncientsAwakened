@@ -44,9 +44,15 @@ namespace AAMod.NPCs.Bosses.AH
 
         public override void AI()
         {
-            npc.ai[1]++;
             npc.TargetClosest();
             Player player = Main.player[npc.target];
+            if (AAConfigClient.Instance.NoBossDialogue)
+            {
+                SpawnBoss(player, "Ashe");
+                SpawnBoss2(player, "Haruka");
+                npc.active = false;
+            }
+            npc.ai[1]++;
 
             npc.Center = player.Center;
 

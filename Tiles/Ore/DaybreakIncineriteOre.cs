@@ -35,15 +35,15 @@ namespace AAMod.Tiles.Ore
             if (glow && tile != null && tile.active() && tile.type == this.Type)
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/DaybreakIncineriteOre_Glow");
-                BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetAkumaColorDim);
+                BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetAkumaColorBright);
             }
         }
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)   //light colors
         {
             r = 0;
-            g = 0.25f;
-            b = 0.25f;
+            g = 0.15f;
+            b = 0.15f;
         }
     }
 }
