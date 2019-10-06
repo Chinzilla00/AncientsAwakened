@@ -482,7 +482,10 @@ Legendry Weapon.";
 
 			if(npc.boss)
 			{
-				CaligulaSoulFight = true;
+				if(npc.life/npc.Maxlife > 0.95)
+				{
+					CaligulaSoulFight = true;
+				}
 
 				if(InvokerPlayer.CaligulaSoul.Contains(npc.type))
 				{
@@ -651,7 +654,6 @@ Legendry Weapon.";
 		public override void AI()
         {
 			time += 1;
-			int num0;
 			if (time >= 60)
 			{
 				if(projectile.ai[1] == 0f)
@@ -662,7 +664,7 @@ Legendry Weapon.";
 					{
 						int[] array2 = new int[200];
 						int num569 = 0;
-						for (int num570 = 0; num570 < 200; num570 = num0 + 1)
+						for (int num570 = 0; num570 < 200; num570 ++)
 						{
 							if (Main.npc[num570].CanBeChasedBy(this, true))
 							{
@@ -670,11 +672,9 @@ Legendry Weapon.";
 								if (num571 < 800f)
 								{
 									array2[num569] = num570;
-									num0 = num569;
-									num569 = num0 + 1;
+									num569 ++;
 								}
 							}
-							num0 = num570;
 						}
 						if (num569 == 0)
 						{
@@ -722,19 +722,15 @@ Legendry Weapon.";
 					projectile.velocity.Y = (projectile.velocity.Y * 15f + num495) / 16f;
 				}
 			}
-			for (int num577 = 0; num577 < 5; num577 = num0 + 1)
+			for (int num577 = 0; num577 < 5; num577 ++)
 			{
 				float num578 = projectile.velocity.X * 0.2f * num577;
 				float num579 = -(projectile.velocity.Y * 0.2f) * num577;
 				int num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 175, 0f, 0f, 20, Color.DarkBlue, 2f);
 				Main.dust[num580].noGravity = true;
-				Dust dust3 = Main.dust[num580];
-				dust3.velocity *= 0f;
-				Dust dust74 = Main.dust[num580];
-				dust74.position.X = dust74.position.X - num578;
-				Dust dust75 = Main.dust[num580];
-				dust75.position.Y = dust75.position.Y - num579;
-				num0 = num577;
+				Main.dust[num580].velocity *= 0f;
+				Main.dust[num580].position.X = Main.dust[num580].position.X - num578;
+				Main.dust[num580].position.Y = Main.dust[num580].position.Y - num579;
 			}
 			return;
 		}
@@ -802,20 +798,15 @@ Legendry Weapon.";
 			num495 *= num496;
 			projectile.velocity.X = (projectile.velocity.X * 15f + num494) / 16f;
 			projectile.velocity.Y = (projectile.velocity.Y * 15f + num495) / 16f;
-			int num3;
-			for (int num502 = 0; num502 < 5; num502 = num3 + 1)
+			for (int num502 = 0; num502 < 5; num502 ++)
 			{
 				float num503 = projectile.velocity.X * 0.2f * num502;
 				float num504 = -(projectile.velocity.Y * 0.2f) * num502;
 				int num505 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 175, 0f, 0f, 20, Color.OrangeRed, 1.3f);
 				Main.dust[num505].noGravity = true;
-				Dust dust3 = Main.dust[num505];
-				dust3.velocity *= 0f;
-				Dust dust72 = Main.dust[num505];
-				dust72.position.X = dust72.position.X - num503;
-				Dust dust73 = Main.dust[num505];
-				dust73.position.Y = dust73.position.Y - num504;
-				num3 = num502;
+				Main.dust[num505] *= 0f;
+				Main.dust[num505].position.X = Main.dust[num505].position.X - num503;
+				Main.dust[num505].position.Y = Main.dust[num505].position.Y - num504;
 			}
 			return;
 		}
