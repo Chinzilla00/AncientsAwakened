@@ -19,6 +19,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             projectile.height = 90;
             projectile.hostile = true;
             projectile.ignoreWater = true;
+            projectile.tileCollide = false;
             projectile.penetrate = 1;
             projectile.alpha = 0;
             cooldownSlot = 1;
