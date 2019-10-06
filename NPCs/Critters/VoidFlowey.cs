@@ -7,7 +7,7 @@ using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 
-namespace AAMod.NPCs.Enemies.Void
+namespace AAMod.NPCs.Critters
 {
     public class VoidFlowey : ModNPC
     {
