@@ -72,10 +72,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata");
             npc.noGravity = true;
             npc.netAlways = true;
-            frameWidth = 162;
-            frameHeight = 118;
+            frameWidth = 324;
+            frameHeight = 236;
             npc.alpha = 255;
-            npc.frame = BaseDrawing.GetFrame(frameCount, frameWidth, frameHeight, 0, 2);
+            npc.frame = BaseDrawing.GetFrame(0, frameWidth, frameHeight, 0, 2);
             frameBottom = BaseDrawing.GetFrame(frameCount, frameWidth, 54, 0, 2);
             frameHead = BaseDrawing.GetFrame(frameCount, frameWidth, 118, 0, 2);
             npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
