@@ -4575,15 +4575,15 @@ NPCName.AHSpawn=混沌双胞胎姐妹
 
 NPCName.Sun=酷煞之日
 
-NPCName.AkumaA=觉醒之邪鬼巨龙 愤怒燎狱的化身
+NPCName.AkumaA=觉醒之邪鬼巨龙 狂煞魔豪鬼
 
-NPCName.AkumaAArms=觉醒之邪鬼巨龙 愤怒燎狱的化身
+NPCName.AkumaAArms=觉醒之邪鬼巨龙 狂煞魔豪鬼
 
-NPCName.AkumaABody=觉醒之邪鬼巨龙 愤怒燎狱的化身
+NPCName.AkumaABody=觉醒之邪鬼巨龙 狂煞魔豪鬼
 
-NPCName.AkumaABody1=觉醒之邪鬼巨龙 愤怒燎狱的化身
+NPCName.AkumaABody1=觉醒之邪鬼巨龙 狂煞魔豪鬼
 
-NPCName.AkumaATail=觉醒之邪鬼巨龙 愤怒燎狱的化身
+NPCName.AkumaATail=觉醒之邪鬼巨龙 狂煞魔豪鬼
 
 NPCName.AsheA=燎狱魔女 邪鬼艾希
 
@@ -4713,9 +4713,9 @@ NPCName.Greed=金食饕餮
 NPCName.GreedBody=金食饕餮
 NPCName.GreedTail=金食饕餮
 
-NPCName.GreedA=觉醒之金食饕餮 鎏金蟲王
-NPCName.GreedABody=觉醒之金食饕餮 鎏金蟲王
-NPCName.GreedATail=觉醒之金食饕餮 鎏金蟲王
+NPCName.GreedA=觉醒之金食饕餮 鎏金万蟲王
+NPCName.GreedABody=觉醒之金食饕餮 鎏金万蟲王
+NPCName.GreedATail=觉醒之金食饕餮 鎏金万蟲王
 
 
 // AAMod.NPCs.Bosses.Hydra
@@ -4923,7 +4923,7 @@ NPCName.WyrmlingTail2=燎狱游虫
 
 NPCName.HarukaY=潭渊妖女 八歧遥香
 
-NPCName.YamataA=觉醒之八歧大蛇 震怒潭渊的化身
+NPCName.YamataA=觉醒之八歧大蛇 八俣远吕智
 
 NPCName.YamataAHead=觉醒之八歧大蛇的头
 
@@ -5217,10 +5217,6 @@ NPCName.Vortex=虚空绞杀者-铰刀
 
 // AAMod.NPCs.TownNPCs
 
-
-===UNKNWN===
-NPCName.Anubis=传说的书记员
-
 ===UNKNWN===
 NPCName.GoblinSlayer=哥布林杀手
 
@@ -5232,8 +5228,6 @@ NPCName.Mushman=赤松露人
 
 ===UNKNWN===
 NPCName.Samurai=武士
-
-NPCName.StanLee=插画绘师
 
 
 // AAMod.Tiles.Banners
