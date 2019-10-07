@@ -2,11 +2,14 @@ using Terraria;
 using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
+using System.IO;
+using Terraria.ID;
+using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
     [AutoloadBossHead]
-    public class YamataAHead : YamataHead
+    public class YamataAHead : ModNPC
     {
         public override void SetStaticDefaults()
         {
@@ -35,24 +38,44 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.knockBackResist *= 0.1f;
         }
 
+        public NPC Body;
+        public YamataA yamata = null;
+
+        public float[] internalAI = new float[4];
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            {
+                writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
+                internalAI[2] = reader.ReadFloat();
+                internalAI[3] = reader.ReadFloat();
+            }
+        }
+
         public override void AI()
         {
             int attackpower = 160;
-            if (Main.expertMode)
-            {
-                damage = npc.damage / 4;
-            }
-            else
-            {
-                damage = npc.damage / 2;
-            }
             if (Body == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
-                if (npcBody.type == mod.NPCType<Yamata>() || npcBody.type == mod.NPCType<YamataA>())
+                if (npcBody.type == mod.NPCType<YamataA>())
                 {
                     Body = npcBody;
-                    yamata = (Yamata)npcBody.modNPC;
+                    yamata = (YamataA)npcBody.modNPC;
                 }
             }
             if (Body == null)
@@ -75,7 +98,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
             if (Yamata.TeleportMeBitch)
             {
-                Yamata.TeleportMeBitch = false;
+                YamataA.TeleportMeBitch = false;
                 npc.Center = yamata.npc.Center;
                 return;
             }

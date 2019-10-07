@@ -85,8 +85,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             return 0f;
         }
 
-		public Yamata Body = null;
-        public Yamata Head = null;
+		public YamataA Body = null;
+        public YamataA Head = null;
         public bool killedbyplayer = true;	
 		public bool leftHead = false;
         public bool fireAttack = false;
@@ -100,9 +100,9 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (Body == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
-                if (npcBody.type == mod.NPCType<Yamata>() || npcBody.type == mod.NPCType<YamataA>())
+                if (npcBody.type == mod.NPCType<YamataA>())
                 {
-                    Body = (Yamata)npcBody.modNPC;
+                    Body = (YamataA)npcBody.modNPC;
                 }
             }
             if (Body == null)
