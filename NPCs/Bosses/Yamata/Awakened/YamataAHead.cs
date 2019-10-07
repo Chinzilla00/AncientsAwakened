@@ -24,7 +24,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetDefaults()
         {
             base.SetDefaults();
-            isAwakened = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
 
             npc.damage = 350;
@@ -91,7 +90,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 npc.damage = attackpower;
             }
 
-            int roarSound = mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar");
+            //int roarSound = mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar");
 
             if (!player.active || player.dead || !Body.active)
             {
