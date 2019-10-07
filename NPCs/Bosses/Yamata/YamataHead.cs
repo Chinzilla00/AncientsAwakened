@@ -419,53 +419,22 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
-            if (isAwakened)
+            if (npc.ai[3] == 1 || npc.ai[2] >= 400)
             {
-                if (npc.frameCounter > 5)
+                if (npc.frameCounter++ < 5)
                 {
-                    npc.frameCounter = 0;
-                    npc.frame.Y += frameHeight;
-                    if (npc.frame.Y > frameHeight * 2)
-                    {
-                        npc.frame.Y = 0;
-                    }
+                    npc.frame.Y = 1 * frameHeight;
                 }
-                if (npc.ai[3] == 1 || internalAI[2] > 400)
+                else
                 {
-                    if (npc.frameCounter < 5)
-                    {
-                        npc.frame.Y = frameHeight * 3;
-                    }
-                    if (npc.frameCounter > 10)
-                    {
-                        npc.frame.Y += frameHeight;
-                        npc.frameCounter = 5;
-                        if (npc.frame.Y > frameHeight * 6)
-                        {
-                            npc.frame.Y = frameHeight * 4;
-                        }
-                    }
+                    npc.frame.Y = 2 * frameHeight;
                 }
             }
             else
             {
-                if (npc.ai[3] == 1 || npc.ai[2] >= 400)
-                {
-                    if (npc.frameCounter < 5)
-                    {
-                        npc.frame.Y = 1 * frameHeight;
-                    }
-                    else
-                    {
-                        npc.frame.Y = 2 * frameHeight;
-                    }
-                }
-                else
-                {
 
-                    npc.frame.Y = 0 * frameHeight;
-                    npc.frameCounter = 0;
-                }
+                npc.frame.Y = 0 * frameHeight;
+                npc.frameCounter = 0;
             }
         }
 

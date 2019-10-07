@@ -27,6 +27,7 @@ namespace AAMod.Items.Dev
                 Main.glowMaskTexture = glowMasks;
             }
         }
+
         public override void SetDefaults()
         {
 			item.CloneDefaults(ItemID.Arkhalis);

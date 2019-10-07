@@ -17,7 +17,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
 			base.SetStaticDefaults();
             DisplayName.SetDefault("Yamata no Orochi");
-            Main.npcFrameCount[npc.type] = 7;
+            Main.npcFrameCount[npc.type] = 3;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -98,53 +98,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
             int roarSound = mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar");
 
-            /*Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-            float num433 = 6f;
-            float PlayerPosX = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - PlayerDistance.X;
-            float PlayerPosY = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - PlayerDistance.Y;
-            float PlayerPos = (float)Math.Sqrt(PlayerPosX * PlayerPosX + PlayerPosY * PlayerPosY);
-            PlayerPos = num433 / PlayerPos;
-            PlayerPosX *= PlayerPos;
-            PlayerPosY *= PlayerPos;
-            PlayerPosY += Main.rand.Next(-40, 41) * 0.01f;
-            PlayerPosX += Main.rand.Next(-40, 41) * 0.01f;
-            PlayerPosY += npc.velocity.Y * 0.5f;
-            PlayerPosX += npc.velocity.X * 0.5f;
-            PlayerDistance.X -= PlayerPosX * 1f;
-            PlayerDistance.Y -= PlayerPosY * 1f;*/
-
-            /*if (npc.alpha <= 0)
-            {
-                internalAI[2]++;
-            }
-            if (internalAI[2] == 399)
-            {
-                QuoteSaid = false;
-                Main.PlaySound(roarSound, npc.Center);
-                int AttackType = 2;
-                int AwakenedAttackType = 4;
-                if (!isAwakened && (NPC.AnyNPCs(mod.NPCType<YamataHeadF1>()) || NPC.AnyNPCs(mod.NPCType<YamataHeadF2>())))
-                {
-                    AttackType = 4;
-                }
-                if (isAwakened && (NPC.AnyNPCs(mod.NPCType<YamataAHeadF1>()) || NPC.AnyNPCs(mod.NPCType<YamataAHeadF2>())))
-                {
-                    AwakenedAttackType = 6;
-                }
-                internalAI[1] = isAwakened ? Main.rand.Next(AwakenedAttackType) : Main.rand.Next(AttackType);
-            }
-
-            if (internalAI[2] >= 400)
-            {
-                Attacks(internalAI[1]);
-            }
-
-            if (internalAI[2] >= 600)
-            {
-                EATTHELITTLEMAGGOT = false;
-                internalAI[2] = 0;
-            }*/
-
             if (!player.active || player.dead || !Body.active)
             {
                 npc.TargetClosest(false);
@@ -158,57 +111,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     return;
                 }
             }
-            /*fireTimer++;
-            if (fireTimer >= 240 && npc.ai[3] == 0)
-            {
-                Main.PlaySound(roarSound, npc.Center);
-                npc.ai[3] = 1;
-                fireTimer = 0;
-            }
-            projDamage = Main.expertMode ? (npc.damage / 2) : (npc.damage / 4);
-            if (npc.ai[3] == 1)
-            {
-                attackTimer++;
-                if (Main.rand.Next(3) == 0)
-                {
-                    if (attackTimer == 40)
-                    {
-                        Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
-                        int proj2 = Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-20, 20), npc.Center.Y + Main.rand.Next(-20, 20), npc.velocity.X * 2f, npc.velocity.Y * 2f, mod.ProjectileType(isAwakened ? "YamataABomb" : "YamataBomb"), projDamage, 0, Main.myPlayer);
-                        Main.projectile[proj2].damage = projDamage;
-                        attackTimer = 0;
-                        attackFrame = 0;
-                        attackCounter = 0;
-                    }
-                    if (attackTimer >= 80)
-                    {
-                        npc.ai[3] = 0;
-                    }
-                }
-                else
-                {
-                    if (attackTimer == 8 || attackTimer == 16 || attackTimer == 24 || attackTimer == 32 || attackTimer == 40 || attackTimer == 48 || attackTimer == 56 || attackTimer == 64 || attackTimer == 72 || attackTimer == 79)
-                    {
-                        Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
-                        for (int i = 0; i < 5; ++i)
-                        {
-                            if (Main.netMode != 1)
-                            {
-                                Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 2f, PlayerPosY * 2f, mod.ProjectileType(isAwakened ? "YamataABreath" : "YamataBreath"), projDamage, 0f, Main.myPlayer);
-                            }
-                        }
-
-                    }
-                    if (attackTimer >= 80)
-                    {
-                        npc.ai[3] = 0;
-                        attackTimer = 0;
-                        attackFrame = 0;
-                        attackCounter = 0;
-                    }
-                }
-
-            }*/
 
             npc.rotation = 0;
             Vector2 nextTarget = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y + npc.ai[2]);
