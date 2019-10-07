@@ -29,7 +29,6 @@ namespace AAMod
         public static int BoneAmmo = 10000;
 
         // Hotkeys
-        public static ModHotKey InfinityHotKey;
         public static ModHotKey AccessoryAbilityKey;
         public static ModHotKey ArmorAbilityKey;
         public static ModHotKey Rift;
