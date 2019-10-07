@@ -249,32 +249,32 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                                     TrueHead = npc2;
                                 }
                                 else
-                                if (Head2 == null && npc2.type == mod.NPCType("YamataAHeadF1") && npc2.ai[0] == npc.whoAmI)
+                                if (Head2 == null && npc2.type == mod.NPCType("YamataAHeadF") && npc2.ai[0] == npc.whoAmI)
                                 {
                                     Head2 = npc2;
                                 }
                                 else
-                                if (Head3 == null && npc2.type == mod.NPCType("YamataAHeadF1") && npc2.ai[0] == npc.whoAmI)
+                                if (Head3 == null && npc2.type == mod.NPCType("YamataAHeadF") && npc2.ai[0] == npc.whoAmI)
                                 {
                                     Head3 = npc2;
                                 }
                                 else
-                                if (Head4 == null && npc2.type == mod.NPCType("YamataAHeadF1") && npc2.ai[0] == npc.whoAmI)
+                                if (Head4 == null && npc2.type == mod.NPCType("YamataAHeadF") && npc2.ai[0] == npc.whoAmI)
                                 {
                                     Head4 = npc2;
                                 }
                                 else
-                                if (Head5 == null && npc2.type == mod.NPCType("YamataAHeadF2") && npc2.ai[0] == npc.whoAmI)
+                                if (Head5 == null && npc2.type == mod.NPCType("YamataAHeadF") && npc2.ai[0] == npc.whoAmI)
                                 {
                                     Head5 = npc2;
                                 }
                                 else
-                                if (Head6 == null && npc2.type == mod.NPCType("YamataAHeadF2") && npc2.ai[0] == npc.whoAmI)
+                                if (Head6 == null && npc2.type == mod.NPCType("YamataAHeadF") && npc2.ai[0] == npc.whoAmI)
                                 {
                                     Head6 = npc2;
                                 }
                                 else
-                                if (Head7 == null && npc2.type == mod.NPCType("YamataAHeadF2") && npc2.ai[0] == npc.whoAmI)
+                                if (Head7 == null && npc2.type == mod.NPCType("YamataAHeadF") && npc2.ai[0] == npc.whoAmI)
                                 {
                                     Head7 = npc2;
                                 }
@@ -805,7 +805,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public Rectangle Hitbox;
         public float rotation = 0f, movementRatio = 0f;
         public AnimationInfo overrideAnimation = null;
-        public YamataA yamata = null;
+        public YamataA yamataA = null;
     }
 
     public class LegInfo : LimbInfo
@@ -822,11 +822,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public LegInfo(int lType, Vector2 initialPos, YamataA m)
         {
-            yamata = m;
+            yamataA = m;
             position = initialPos;
             pointToStandOn = position;
             limbType = lType;
-            Hitbox = new Rectangle(0, 0, 70, 38);
+            Hitbox = new Rectangle(0, 0, 140, 76);
             legOrigin = new Vector2(limbType == 1 || limbType == 3 ? Hitbox.Width - 12 : 12, 12);
         }
 
@@ -891,7 +891,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public void UpdateLeg(NPC npc)
         {
             leftLeg = limbType == 1 || limbType == 3;
-            if (Vector2.Distance(Center, npc.Center) > 499 || Yamata.TeleportMeBitch) position = npc.Center; //prevent issues when the legs are WAY off.
+            if (Vector2.Distance(Center, npc.Center) > 499 || YamataA.TeleportMeBitch) position = npc.Center; //prevent issues when the legs are WAY off.
             if (overrideAnimation != null)
             {
                 if (overrideAnimation.movementRatio >= 1f) overrideAnimation = null;
@@ -919,11 +919,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             float scalar = npc.velocity.Length();
             float outerLegDefault = 150f + (0.5f * scalar);
             float innerLegDefault = 120f + (0.5f * scalar);
-            float standOnX = npc.Center.X + yamata.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
+            float standOnX = npc.Center.X + yamataA.topVisualOffset.X + (limbType == 3 ? (-outerLegDefault - Hitbox.Width) : limbType == 2 ? (outerLegDefault + Hitbox.Width) : limbType == 1 ? (-innerLegDefault - Hitbox.Width) : (innerLegDefault + Hitbox.Width));
 
             int defaultTileY = (int)(npc.Bottom.Y / 16f);
             int tileY = BaseWorldGen.GetFirstTileFloor((int)(standOnX / 16f), (int)(npc.Bottom.Y / 16f));
-            if (tileY - defaultTileY > Yamata.flyingTileCount) { return default; } //'flying' behavior
+            if (tileY - defaultTileY > YamataA.flyingTileCount) { return default; } //'flying' behavior
             if (!flying)
             {
                 tileY = (int)(tileY * 16f) / 16;
@@ -936,7 +936,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public Vector2 GetBodyConnector(NPC npc)
         {
-            return npc.Center + yamata.topVisualOffset + new Vector2(limbType == 3 || limbType == 1 ? -40f : 40f, 0f);
+            return npc.Center + yamataA.topVisualOffset + new Vector2(limbType == 3 || limbType == 1 ? -40f : 40f, 0f);
         }
 
         public void DrawLeg(SpriteBatch sb, NPC npc)
