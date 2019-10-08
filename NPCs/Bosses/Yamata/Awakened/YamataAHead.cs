@@ -38,8 +38,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.knockBackResist *= 0.1f;
         }
 
-        public NPC Body;
-        public YamataA yamata = null;
+        public YamataA Body = null;
 
         public float[] internalAI = new float[4];
         public override void SendExtraAI(BinaryWriter writer)
@@ -74,13 +73,16 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
                 if (npcBody.type == mod.NPCType<YamataA>())
                 {
-                    Body = npcBody;
-                    yamata = (YamataA)npcBody.modNPC;
+                    Body = (YamataA)npcBody.modNPC;
                 }
             }
             if (Body == null)
                 return;
-            if (!Body.active)
+
+            npc.alpha = Body.npc.alpha;
+
+
+            if (!Body.npc.active)
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
                 {
@@ -91,7 +93,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 return;
             }
 
-            npc.realLife = Body.whoAmI;
+            npc.realLife = Body.npc.whoAmI;
             npc.timeLeft = 100;
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
@@ -99,11 +101,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (Yamata.TeleportMeBitch)
             {
                 YamataA.TeleportMeBitch = false;
-                npc.Center = yamata.npc.Center;
+                npc.Center = Body.npc.Center;
                 return;
             }
 
-            npc.alpha = Body.alpha;
             if (npc.alpha > 0)
             {
                 npc.damage = 0;
@@ -115,11 +116,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
             //int roarSound = mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar");
 
-            if (!player.active || player.dead || !Body.active)
+            if (!player.active || player.dead || !Body.npc.active)
             {
                 npc.TargetClosest(false);
                 player = Main.player[npc.target];
-                if (!player.active || player.dead || !Body.active)
+                if (!player.active || player.dead || !Body.npc.active)
                 {
                     if (npc.timeLeft > 10)
                     {
@@ -130,7 +131,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
 
             npc.rotation = 0;
-            Vector2 nextTarget = new Vector2(Body.Center.X + npc.ai[1], Body.Center.Y + npc.ai[2]);
+            Vector2 nextTarget = new Vector2(Body.npc.Center.X + npc.ai[1], Body.npc.Center.Y + npc.ai[2]);
             float dist = Vector2.Distance(nextTarget, npc.Center);
             if (dist < 100)
             {

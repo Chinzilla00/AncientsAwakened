@@ -51,7 +51,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.width = 46;
             npc.height = 46;
             isAwakened = true;
-            npc.scale *= 2;
             npc.knockBackResist *= 0.1f;
         }
 
@@ -86,7 +85,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         }
 
 		public YamataA Body = null;
-        public YamataA Head = null;
         public bool killedbyplayer = true;	
 		public bool leftHead = false;
         public bool fireAttack = false;
