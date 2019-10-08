@@ -1100,10 +1100,16 @@ namespace AAMod
                         return "他";
                         case "fimale":
                         return "她";
+                        case "male2":
+                        return " 他 ";
+                        case "fimale2":
+                        return " 她 ";
+
                         case "boy":
                         return ", 少年";
                         case "girl":
                         return ", 少女";
+
                         case "AHDeath1":
                         return "啊啊啊啊啊! 别又这样了!!!";
                         case "AHDeath2":
@@ -1738,6 +1744,10 @@ namespace AAMod
                         return "him";
                         case "fimale":
                         return "her";
+                        case "male2":
+                        return "HIM";
+                        case "fimale2":
+                        return "HER";
                         case "boy":
                         return ", BOY";
                         case "girl":
