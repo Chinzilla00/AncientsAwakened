@@ -7,7 +7,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
     public class YamataAVenom2 : ModProjectile
     {
-    	public override void SetStaticDefaults()
+        public override string Texture => "AAMod/BlankTex";
+        public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Venom");
 		}

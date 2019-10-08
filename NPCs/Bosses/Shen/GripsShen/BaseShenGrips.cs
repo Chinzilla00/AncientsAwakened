@@ -7,7 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System.IO;
 
-namespace AAMod.NPCs.Bosses.GripsShen
+namespace AAMod.NPCs.Bosses.Shen.GripsShen
 {
     public abstract class BaseShenGrips : ModNPC
     {
@@ -94,7 +94,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
 
         public override bool CheckActive()
         {
-            return !NPC.AnyNPCs(mod.NPCType<Shen.Shen>());
+            return !NPC.AnyNPCs(mod.NPCType<Shen>());
         }
 
 
@@ -256,25 +256,6 @@ namespace AAMod.NPCs.Bosses.GripsShen
             }
             else //standard movement
 			{
-                MinionTimer++;
-                if (MinionTimer == 120)
-                {
-                    if (npc.type == mod.NPCType<BlazeGrip>() && NPC.AnyNPCs(mod.NPCType<BlazeClawM>()))
-                    {
-                        for (int Loops = 0; Loops < (Main.expertMode ? 6 : 4); Loops++)
-                        {
-                            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<BlazeClawM>());
-                        }
-                    }
-                    if (npc.type == mod.NPCType<AbyssGrip>())
-                    {
-                        for (int Loops = 0; Loops < (Main.expertMode ? 6 : 4); Loops++)
-                        {
-                            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AbyssClawM>());
-                        }
-                    }
-                    MinionTimer = 0;
-                }
 				moveSpeed = 16f;
 				Vector2 point = targetPlayer.Center + offsetBasePoint;
 				MoveToPoint(point);
@@ -318,7 +299,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
 
       
 
-        public void MoveToPoint(Vector2 point, bool goUpFirst = false)
+        public void MoveToPoint(Vector2 point)
 		{
 			if(moveSpeed == 0f || npc.Center == point) return; //don't move if you have no move speed
 			float velMultiplier = 1f;
@@ -347,9 +328,8 @@ namespace AAMod.NPCs.Bosses.GripsShen
 
         private void DespawnHandler()
         {
-            Player player = Main.player[npc.target];
             npc.TargetClosest(false);
-            player = Main.player[npc.target];
+            Player player = Main.player[npc.target];
             if (!player.active || player.dead || Main.dayTime)        // If the player is dead and not active, the npc flies off-screen and despawns
             {
                 npc.velocity.X = 0;

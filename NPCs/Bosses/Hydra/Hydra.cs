@@ -355,8 +355,8 @@ namespace AAMod.NPCs.Bosses.Hydra
 
             if (Head2 != null && Head3 != null)
             { 
-                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead2", "NPCs/Bosses/Hydra/HydraHead2_Glow", Head2, dColor);
-                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead3", "NPCs/Bosses/Hydra/HydraHead3_Glow", Head3, dColor);
+                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead2", "Glowmasks/HydraHead2_Glow", Head2, dColor);
+                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead3", "Glowmasks/HydraHead3_Glow", Head3, dColor);
             }
             string tailTex = "NPCs/Bosses/Hydra/HydraTail";
             BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY - 30), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 1, frameBottom, dColor, false);
@@ -364,7 +364,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 
             if (Head1 != null)
             {
-                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead1", "NPCs/Bosses/Hydra/HydraHead1_Glow", Head1, dColor); //draw main head last!
+                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead1", "Glowmasks/HydraHead1_Glow", Head1, dColor); //draw main head last!
             }
             return false;
         }

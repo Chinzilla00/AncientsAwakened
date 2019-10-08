@@ -3,13 +3,13 @@ using System;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.GripsShen
+namespace AAMod.NPCs.Bosses.Shen.GripsShen
 {
-    internal class BlazeBomb : ModProjectile
+    internal class AbyssalBomb : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Scorch Bomb");
+            DisplayName.SetDefault("Abyssal Bomb");
             Main.projFrames[projectile.type] = 4;
         }
 
@@ -84,7 +84,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 600);
+            target.AddBuff(mod.BuffType("HydraToxin"), 600);
             Kill(0);
         }
 
@@ -100,7 +100,7 @@ namespace AAMod.NPCs.Bosses.GripsShen
                     -projectile.velocity.Y * 0.2f, 0);
                 Main.dust[num469].velocity *= 2f;
             }
-            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("BlazeBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("AbyssBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
 
         private int HomeOnTarget()
