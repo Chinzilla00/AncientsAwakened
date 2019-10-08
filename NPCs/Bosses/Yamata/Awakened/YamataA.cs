@@ -110,7 +110,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             else
             {
-                if (Main.netMode != 1) BaseUtility.Chat("HAH! Nice try! Come back in Expert mode when you don�t have to cheat to beat me! All your loot is MINE still!", new Color(146, 30, 68));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA5"), new Color(146, 30, 68));
             }
             if (!AAWorld.downedYamata)
             {
@@ -309,7 +309,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 if (Main.netMode != 1 && !flag)
                 {
                     flag = true;
-                    AAMod.Chat("THE SUN DOESN'T SHINE IN THE DEPTHS!!! NYEHEHEHEHEHEHEHEH!!!", new Color(146, 30, 68));
+                    AAMod.Chat(Lang.BossChat("Yamata3"), new Color(146, 30, 68));
                 }
                 Main.dayTime = false;
                 Main.time = 0;
@@ -349,7 +349,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     {
                         if (!FirstLine)
                         {
-                            if (Main.netMode != 1) AAMod.Chat("THERE IS NO ESCAPE FROM THE ABYSS!", new Color(146, 30, 68));
+                            if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata7"), new Color(146, 30, 68));
                             FirstLine = true;
                         }
                     }
@@ -397,7 +397,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             if ((Main.netMode != 1) && !loludide)
             {
-                if (Main.netMode != 1) AAMod.Chat("NYEHEHEHEHEHEHEH..! And don�t come back!", new Color(146, 30, 68));
+                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata9"), new Color(146, 30, 68));
                 loludide = true;
             }
 
