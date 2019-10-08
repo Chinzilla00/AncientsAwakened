@@ -116,7 +116,7 @@ namespace AAMod.Projectiles
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Texture2D texture = ModContent.GetTexture("AAMod/Projectiles/OceanWhaler_Chain");
+            Texture2D texture = mod.GetTexture("Chains/OceanWhaler_Chain");
 
             Vector2 position = projectile.Center;
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;

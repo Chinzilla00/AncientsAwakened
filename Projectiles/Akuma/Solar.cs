@@ -8,8 +8,6 @@ namespace AAMod.Projectiles.Akuma   //The directory for your .cs and .png; Examp
 {
     public class Solar : ModProjectile   //make sure the sprite file is named like the class name (CustomYoyoProjectile)
     {
-
-
         public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {

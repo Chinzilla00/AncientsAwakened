@@ -93,38 +93,6 @@ namespace AAMod.Projectiles.Akuma
                 bool flag2 = player.channel && player.CheckMana(player.inventory[player.selectedItem].mana, true, false) && !player.noItems && !player.CCed;
                 if (flag2)
                 {
-                    float scaleFactor = player.inventory[player.selectedItem].shootSpeed * projectile.scale;
-                    Vector2 value2 = vector;
-                    Vector2 value3 = Main.screenPosition + new Vector2(Main.mouseX, Main.mouseY) - value2;
-                    if (player.gravDir == -1f)
-                    {
-                        value3.Y = Main.screenHeight - Main.mouseY + Main.screenPosition.Y - value2.Y;
-                    }
-                    Vector2 vector3 = Vector2.Normalize(value3);
-                    if (float.IsNaN(vector3.X) || float.IsNaN(vector3.Y))
-                    {
-                        vector3 = -Vector2.UnitY;
-                    }
-                    vector3 *= scaleFactor;
-                    if (vector3.X != projectile.velocity.X || vector3.Y != projectile.velocity.Y)
-                    {
-                        projectile.netUpdate = true;
-                    }
-                    projectile.velocity = vector3;
-                    int num6 = mod.ProjectileType<Dayser>();
-                    float scaleFactor2 = 14f;
-                    int num7 = 7;
-                    for (int j = 0; j < 2; j++)
-                    {
-                        value2 = projectile.Center + new Vector2(Main.rand.Next(-num7, num7 + 1), Main.rand.Next(-num7, num7 + 1));
-                        Vector2 spinningpoint = Vector2.Normalize(projectile.velocity) * scaleFactor2;
-                        spinningpoint = spinningpoint.RotatedBy(Main.rand.NextDouble() * 0.19634954631328583 - 0.098174773156642914, default);
-                        if (float.IsNaN(spinningpoint.X) || float.IsNaN(spinningpoint.Y))
-                        {
-                            spinningpoint = -Vector2.UnitY;
-                        }
-                        Projectile.NewProjectile(value2.X, value2.Y, spinningpoint.X, spinningpoint.Y, num6, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                    }
                 }
                 else
                 {

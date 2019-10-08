@@ -192,7 +192,6 @@ namespace AAMod
         public bool DragonsGuard = false;
         public bool ShadowBand = false;
         public bool RajahCape = false;
-        public bool CapShield = false;
         public bool olympianWings = false;
 
         public bool SagShield = false;
@@ -431,7 +430,6 @@ namespace AAMod
             DragonsGuard = false;
             ShadowBand = false;
             RajahCape = false;
-            CapShield = false;
             GreedCharm = false;
             GreedTalisman = false;
             Greed1 = false;
@@ -2229,15 +2227,6 @@ namespace AAMod
                     vector2.Y = Main.mouseY + Main.screenPosition.Y;
 
                     Projectile.NewProjectile(player.Center.X, player.Center.Y, speedX, speedY, mod.ProjectileType("DragonShot"), damage, knockback, Main.myPlayer, 0f, 0f);
-                }
-            }
-
-            if (CapShield)
-            {
-                if (AAMod.AccessoryAbilityKey.JustPressed && !AAGlobalProjectile.AnyProjectiles(mod.ProjectileType<Projectiles.CapShield>()))
-                {
-                    Vector2 Throw = Main.screenPosition + Main.MouseScreen;
-                    BaseAI.FireProjectile(Throw, player.Center, mod.ProjectileType("CapShield"), 40, 3, 12, 1, Main.myPlayer);
                 }
             }
 
