@@ -189,6 +189,14 @@ namespace AAMod.NPCs.Bosses.Hydra
                         Main.projectile[projID].netUpdate = true;
                     }
                 }
+                if ((!middleHead && npc.ai[1] >= aiTimerFire) || (middleHead && npc.ai[1] >= 100 && npc.ai[1] % 10 == 0))
+                {
+                    npc.frame.Y = 54;
+                }
+                else
+                {
+                    npc.frame.Y = 0;
+                }
                 if (npc.ai[1] >= 200) //pick random spot to move head to
                 {
                     npc.ai[1] = 0;

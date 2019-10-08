@@ -801,7 +801,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (!AAWorld.downedShen)
                     {
                         if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ShenDoragon16"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenDoragon17"), Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     else
                     {

@@ -541,7 +541,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         npc.DropLoot(mod.ItemType<Items.BossSummons.ChaosRune>(), 1f / 7);
                         AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType("ShenDefeat"), false, npc.Center, "");
-                        if (Main.netMode != 1) BaseUtility.Chat("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     BaseAI.DropItem(npc, mod.ItemType("ShenATrophy"), 1, 1, 15, true);
                     if (!NPC.AnyNPCs(mod.NPCType<ShenDefeat>()))

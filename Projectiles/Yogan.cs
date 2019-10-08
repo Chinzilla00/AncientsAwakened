@@ -52,7 +52,7 @@ namespace AAMod.Projectiles
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color dColor)
         {
-            Texture2D chainTex = mod.GetTexture("Projectiles/Yogan_Chain");
+            Texture2D chainTex = mod.GetTexture("Chains/Yogan_Chain");
             if (Main.instance.IsActive)
                 for (int m = 0; m < 2; m++)
                     BaseDrawing.DrawChain(spriteBatch, chainTex, 0, projectile.Center, Main.player[projectile.owner].Center);

@@ -135,7 +135,7 @@ namespace AAMod.Projectiles
         // chain voodoo
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         { 
-            BaseMod.BaseDrawing.DrawChain(spriteBatch, mod.GetTexture("Projectiles/MushMaceChain"), 0, projectile.Center, Main.player[projectile.owner].Center);
+            BaseMod.BaseDrawing.DrawChain(spriteBatch, mod.GetTexture("Chains/MushMaceChain"), 0, projectile.Center, Main.player[projectile.owner].Center);
             return true;
         }
     }

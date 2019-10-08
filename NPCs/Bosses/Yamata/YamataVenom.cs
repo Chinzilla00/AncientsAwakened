@@ -6,7 +6,8 @@ namespace AAMod.NPCs.Bosses.Yamata
 {
     public class YamataVenom : ModProjectile
     {
-    	public override void SetStaticDefaults()
+        public override string Texture => "AAMod/BlankTex";
+        public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Venom");
 		}
