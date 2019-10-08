@@ -25,8 +25,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             base.SetDefaults();
             npc.lifeMax = 30000;
-            npc.width = 64;
-            npc.height = 48;
+            npc.width = 76;
+            npc.height = 92;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
             npc.noTileCollide = true;
@@ -36,22 +36,16 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.damage = 250;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
             npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
-            for (int k = 0; k < npc.buffImmune.Length; k++)
-            {
-                npc.buffImmune[k] = true;
-            }
-            if (AAWorld.downedShen)
-            {
-                npc.lifeMax = 50000;
-                npc.damage = 350;
-            }
-            
             npc.lifeMax = 35000;
             npc.damage = 210;
             npc.width = 46;
             npc.height = 46;
             isAwakened = true;
             npc.knockBackResist *= 0.1f;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
         public float[] internalAI = new float[4];

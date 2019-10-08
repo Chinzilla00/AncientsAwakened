@@ -26,16 +26,21 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void SetDefaults()
         {
-            base.SetDefaults();
+            npc.lifeMax = 550000;
+            npc.damage = 200;
+            npc.defense = 100;
+            npc.width = 78;
+            npc.height = 60;
+            npc.npcSlots = 0;
+            npc.noTileCollide = true;
+            npc.noGravity = true;
+            npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2");
-
-            npc.damage = 350;
+            npc.knockBackResist *= 0.05f;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
             }
-            npc.scale *= 2;
-            npc.knockBackResist *= 0.1f;
         }
 
         public YamataA Body = null;

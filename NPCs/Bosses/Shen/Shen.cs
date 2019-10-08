@@ -801,7 +801,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (!AAWorld.downedShen)
                     {
                         if (Main.netMode != 1) AAMod.Chat("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                        if (Main.netMode != 1) BaseUtility.Chat("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     else
                     {
