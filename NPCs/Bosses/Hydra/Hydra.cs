@@ -289,7 +289,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public void AIMovementNormal()
         {
-            BaseAI.AIZombie(npc, ref npc.ai, false, false, -1, 0.07f, 1f, 14, 20, 1, true, 1, 1, true, null, false);
+            BaseAI.AIZombie(npc, ref npc.ai, false, false, -1, 0.07f, 3f, 14, 20, 1, true, 1, 1, true, null, false);
             npc.rotation = 0f;
         }
 
