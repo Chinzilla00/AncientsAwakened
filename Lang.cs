@@ -1723,9 +1723,9 @@ namespace AAMod
                         case "ShenSpawn9":
                         return "吾 乃 上 神 应 龙, 混 乱 与 动 荡 的 原 初 之 皇!";
                         case "ShenSpawn10":
-                        return "而你, 我的孩子, 将会面临混沌的恐惧和怒火. . !";
+                        return "而你, 我的孩子. . !";
                         case "ShenSpawn11":
-                        return "只有一个字 死!!!";
+                        return "神 形 俱 灭!!!";
                         case "ShenTransition1":
                         return "呵呵...";
                         case "ShenTransition2":
@@ -1733,11 +1733,11 @@ namespace AAMod
                         case "ShenTransition3":
                         return "哈哈哈哈哈哈哈!!!";
                         case "ShenTransition4":
-                        return "你是不是已经忘了我们最后一次战斗...? ";
+                        return "你是不是已经忘了我们的上次战斗...? ";
                         case "ShenTransition5":
-                        return "总会还有一次战斗, 小子...";
+                        return "咱们之间的争斗才刚刚开始, 天真的孩子...";
                         case "ShenTransition6":
-                        return "我只是用了一部分我的能力...而现在...呵呵呵呵...";
+                        return "然而现在, 你挡住了我的去路...";
                         case "ShenTransition7":
                         return "上神应龙觉醒了!";
                         case "ShenTransition8":
@@ -2390,9 +2390,9 @@ namespace AAMod
                         case "ShenSpawn9":
                         return "I AM SHEN DORAGON, EMPEROR OF CHAOS AND ANARCHY!";
                         case "ShenSpawn10":
-                        return "And you, my child, will face the wrath and fury of chaos itself..!";
+                        return "And you, my child...";
                         case "ShenSpawn11":
-                        return "DIE!!!";
+                        return "WILL PERISH!!!";
                         case "ShenTransition1":
                         return "Heh...";
                         case "ShenTransition2":
@@ -2404,7 +2404,7 @@ namespace AAMod
                         case "ShenTransition5":
                         return "There's always a last stand, kiddo...";
                         case "ShenTransition6":
-                        return "I have only been using a fraction of my true power...and now...heheheh...";
+                        return "But now, you stand in my path...";
                         case "ShenTransition7":
                         return "Shen Doragon has been Awakened!";
                         case "ShenTransition8":
