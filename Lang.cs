@@ -1625,7 +1625,7 @@ namespace AAMod
                         case "ShenA14":
                         return "你这个小..! 等死吧!";
                         case "ShenA15":
-                        return "正是如此! 终结将至, 所以你不敢退缩!";
+                        return "正是如此! 尾声将至, 所以你不敢退缩!";
                         case "ShenA16":
                         return "这不可能--! 怎么回事?!";
 
@@ -1695,6 +1695,14 @@ namespace AAMod
                         return "颇有水平, 孩子.";
                         case "ShenDoragon20":
                         return "这是? 能力? 难以置信.";
+                        case "ShenDoragon21":
+                        return "你应该知道你是个真正的勇士. 那就站好让我烤熟了你.";
+                        case "ShenDoragon22":
+                        return "天地草创, 混沌君临, 孩子. 你们泰拉人从未领悟其意.";
+                        case "ShenDoragon23":
+                        return "看上去你还想力挽狂澜, 那并不会太久!";
+                        case "ShenDoragon24":
+                        return "哼嗯嗯...还要打, 嗯?";
 
                         case "ShenSpawn1":
                         return "又看到我们了是不是很惊讶, 小子? ";
@@ -2352,6 +2360,14 @@ namespace AAMod
                         return "Quite the skill, kid.";
                         case "ShenDoragon20":
                         return "What's this? Competence? Impressive.";
+                        case "ShenDoragon21":
+                        return "You're a real fighter, you know. Now stand still and let me grill you.";
+                        case "ShenDoragon22":
+                        return "Chaos always reigns, kid. You terrarians never seem to learn that.";
+                        case "ShenDoragon23":
+                        return "Looks like you're turning tide, but not for long!";
+                        case "ShenDoragon24":
+                        return "Hmm...still fighting, eh?";
                         
 
 

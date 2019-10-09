@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     if (npc.ai[0] >= 600 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
                     {
                         AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
-                        if (Main.netMode != 1) BaseUtility.Chat("Akuma has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaTransition4"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
 
                         int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
                         Main.projectile[b].Center = npc.Center;
