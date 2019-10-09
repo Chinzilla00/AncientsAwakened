@@ -178,6 +178,46 @@ namespace AAMod
                 }
             return"";
         }
+
+        public static string GreedChest(String Greed)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+                {
+                    switch(Greed)
+                    {
+                        case "GreedChest1":
+                        return "你脚下的地面轻微震动着...";
+                        case "GreedChest2":
+                        return "你听到一声尖啸在洞穴中回荡...";
+                        case "GreedChest3":
+                        return "把 老 子 的 东 西 放 下 你 这 个 贼 野 人!!!";
+                    }
+                }
+            else
+                {
+                    switch(Greed)
+                    {
+                        case "GreedChest1":
+                        return "The ground below you trembles slightly...";
+                        case "GreedChest2":
+                        return "You hear a scream echo through the caverns...";
+                        case "GreedChest3":
+                        return "HANDS OFF MY LOOT YOU THIEVING APE!!!";
+                    }
+                }
+            return"";
+        }
+
+        public static string BossSummonName(String Boss)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+                {
+                }
+            else
+                {
+                }
+            return"";
+        }
         public static string GlobalNPCSInfo(String NPCsummon)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
