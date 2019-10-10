@@ -410,10 +410,12 @@ Legendry Weapon.";
 		public bool IsBeingBanished = false;
 		public int BanishCount = 0;
 		public bool CaligulaSoulFight = false;
+		public bool CaligulaSoulClaw = false;
 
 		public override void ResetEffects(NPC npc)
 		{
-			this.Banished = false;
+			Banished = false;
+			CaligulaSoulClaw = false;
 		}
 
 		public void BanishAction(NPC npc)
@@ -583,7 +585,7 @@ Legendry Weapon.";
 				{
 					if((npc.realLife >= 0 && npc.realLife == npc.whoAmI) || npc.realLife < 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y, nump8, nump9, mod.ProjectileType("InvokedDamage"), npc.damage * 20, 0f, Main.player[Main.myPlayer].whoAmI, num6, 0f);
 				}
-				if(npc.GetGlobalNPC<InvokedGlobalNPC>(mod).CaligulaSoulFight && !Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).DarkCaligula && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).InvokedCaligula && (npc.type == mod.NPCType("ZeroProtocol") || npc.type == mod.NPCType("YamataA") || npc.type == mod.NPCType("AkumaA") || npc.type == mod.NPCType("ShenA") || npc.type == mod.NPCType("SupremeRajah")))
+				if(npc.GetGlobalNPC<InvokedGlobalNPC>(mod).CaligulaSoulFight && npc.GetGlobalNPC<InvokedGlobalNPC>(mod).CaligulaSoulClaw && !Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).DarkCaligula && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).InvokedCaligula && (npc.type == mod.NPCType("ZeroProtocol") || npc.type == mod.NPCType("YamataA") || npc.type == mod.NPCType("AkumaA") || npc.type == mod.NPCType("ShenA") || npc.type == mod.NPCType("SupremeRajah")))
 				{
 					Projectile.NewProjectile(npc.Center.X, npc.Center.Y, nump8, nump9, mod.ProjectileType("InvokedDamage"), 0, 0f, Main.player[Main.myPlayer].whoAmI, Main.player[Main.myPlayer].whoAmI, npc.type);
 				}

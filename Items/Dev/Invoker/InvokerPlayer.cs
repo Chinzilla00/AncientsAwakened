@@ -387,7 +387,10 @@ namespace AAMod.Items.Dev.Invoker
 			for(int i=0; i < 200; i++)
 			{
 				if(projectile.Hitbox.Intersects(Main.npc[i].Hitbox))
-				Main.npc[i].immune[projectile.owner] = 0;
+				{
+					Main.npc[i].immune[projectile.owner] = 0;
+					Main.npc[i].GetGlobalNPC<InvokedGlobalNPC>(mod).InvokedCaligulaClaw = true;
+				}
 			}
 		}
 
