@@ -484,7 +484,7 @@ Legendry Weapon.";
 
 			if(npc.boss)
 			{
-				if(npc.life/npc.Maxlife > 0.95)
+				if(npc.life/npc.lifeMax > 0.95)
 				{
 					CaligulaSoulFight = true;
 				}
@@ -806,7 +806,7 @@ Legendry Weapon.";
 				float num504 = -(projectile.velocity.Y * 0.2f) * num502;
 				int num505 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 175, 0f, 0f, 20, Color.OrangeRed, 1.3f);
 				Main.dust[num505].noGravity = true;
-				Main.dust[num505] *= 0f;
+				Main.dust[num505].velocity *= 0f;
 				Main.dust[num505].position.X = Main.dust[num505].position.X - num503;
 				Main.dust[num505].position.Y = Main.dust[num505].position.Y - num504;
 			}

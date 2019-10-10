@@ -147,7 +147,8 @@ namespace AAMod.Items.Dev.Invoker
 		public bool Thebookoflaw;
 		public bool BanishProjClear;
 		private int selfbanished = 0;
-		int InvokedCaligulaClaw = 0;
+		private int InvokedCaligulaClaw = 0;
+		private int ClawDir = 0;
 
 
 		public override void UpdateLifeRegen()
@@ -283,10 +284,11 @@ namespace AAMod.Items.Dev.Invoker
 							vector20 = Vector2.UnitX * player.direction;
 						}
 						vector20 *= scaleFactor6;
-						Projectile.NewProjectile(player.position.X, player.position.Y, vector20.X, vector20.Y, mod.ProjectileType("InvokedCaligulaShoot"), (int)((DarkCaligula? 1200 : 600) * (player.minionDamage + player.allDamage - 1)), 4f, player.whoAmI, 0f, 0f);
+						ClawDir = Projectile.NewProjectile(player.position.X, player.position.Y, vector20.X, vector20.Y, mod.ProjectileType("InvokedCaligulaShoot"), (int)((DarkCaligula? 1200 : 600) * (player.minionDamage + player.allDamage - 1)), 4f, player.whoAmI, 0f, 0f);
 					}
 					else if(InvokedCaligulaClaw > 30)
 					{
+						player.ChangeDir(Main.projectile[ClawDir].direction);
 						InvokedCaligulaClaw = 0;
 					}
 				}
@@ -319,7 +321,7 @@ namespace AAMod.Items.Dev.Invoker
 			projectile.timeLeft = 30;
 			projectile.penetrate = -1;
 			projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 1;
+            projectile.localNPCHitCooldown = 12;
 		}
 
 		public override Color? GetAlpha(Color lightColor)
@@ -389,7 +391,7 @@ namespace AAMod.Items.Dev.Invoker
 				if(projectile.Hitbox.Intersects(Main.npc[i].Hitbox))
 				{
 					Main.npc[i].immune[projectile.owner] = 0;
-					Main.npc[i].GetGlobalNPC<InvokedGlobalNPC>(mod).InvokedCaligulaClaw = true;
+					Main.npc[i].GetGlobalNPC<InvokedGlobalNPC>(mod).CaligulaSoulClaw = true;
 				}
 			}
 		}
@@ -402,7 +404,8 @@ namespace AAMod.Items.Dev.Invoker
 			crit = true;
 			if(player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula)
 			{
-				int regen = (Main.rand.Next(2) == 0 ? 2*(0.0001 * target.maxlife + 1) : (0.0001 * target.maxlife + 1));
+				String Lifelength = target.lifeMax + "";
+				int regen = (Main.rand.Next(2) == 0 ? 2*(Lifelength.Length + 1) : (Lifelength.Length + 1));
 				player.statLife += regen;
 				player.HealEffect(regen, true);
 				if (player.statLife > player.statLifeMax2)
