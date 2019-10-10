@@ -25,7 +25,7 @@ namespace AAMod.Projectiles.AH
             projectile.melee = true;
             projectile.ownerHitCheck = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 12;
+            projectile.localNPCHitCooldown = 1;
         }
 
         public override void AI()
@@ -91,6 +91,11 @@ namespace AAMod.Projectiles.AH
 			player.itemTime = 2;
 			player.itemAnimation = 2;
 			player.itemRotation = (float)Math.Atan2(projectile.velocity.Y * projectile.direction, projectile.velocity.X * projectile.direction);
+			for(int i=0; i < 200; i++)
+			{
+				if(projectile.Hitbox.Intersects(Main.npc[i].Hitbox))
+				Main.npc[i].immune[projectile.owner] = 0;
+			}
         }
         
         public override Color? GetAlpha(Color lightColor)
