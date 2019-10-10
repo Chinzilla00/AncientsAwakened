@@ -318,6 +318,8 @@ namespace AAMod.Items.Dev.Invoker
 			projectile.ownerHitCheck = true;
 			projectile.timeLeft = 30;
 			projectile.penetrate = -1;
+			projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 1;
 		}
 
 		public override Color? GetAlpha(Color lightColor)
@@ -381,7 +383,12 @@ namespace AAMod.Items.Dev.Invoker
 				Main.dust[num2].position -= projectile.velocity;
 			}
 			player.ChangeDir(Main.projectile[projectile.whoAmI].direction);
-			
+
+			for(int i=0; i < 200; i++)
+			{
+				if(projectile.Hitbox.Intersects(Main.npc[i].Hitbox))
+				Main.npc[i].immune[projectile.owner] = 0;
+			}
 		}
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
