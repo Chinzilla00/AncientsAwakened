@@ -56,22 +56,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
             Vector2 targetPos;
             RingEffects();
 
-            if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
-            {
-                npc.TargetClosest(true);
-                if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
-                {
-                    if (Main.netMode != 1)
-                    {
-                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AsheVanish>(), 0);
-                        Main.npc[DeathAnim].velocity = npc.velocity;
-                        Main.npc[DeathAnim].netUpdate = true;
-                    }
-                    npc.active = false;
-                }
-                return;
-            }
-
             if (npc.ai[0] == Idle || npc.ai[0] == CastMagic1 || npc.ai[0] == CastMagic2 || npc.ai[0] == Vortex)
             {
                 Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
