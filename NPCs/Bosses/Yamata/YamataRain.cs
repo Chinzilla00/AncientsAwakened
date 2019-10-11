@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 float num152 = projectile.velocity.X / 3f * num151;
                 float num153 = projectile.velocity.Y / 3f * num151;
                 int num154 = 14;
-                int num155 = Dust.NewDust(new Vector2(projectile.position.X + num154, projectile.position.Y + num154), projectile.width - num154 * 2, projectile.height - num154 * 2, Terraria.ModLoader.ModContent.DustType<Dusts.YamataAuraDust>(), 0f, 0f, 0);
+                int num155 = Dust.NewDust(new Vector2(projectile.position.X + num154, projectile.position.Y + num154), projectile.width - num154 * 2, projectile.height - num154 * 2, ModContent.DustType<Dusts.YamataAuraDust>(), 0f, 0f, 0);
                 Main.dust[num155].noGravity = true;
                 Main.dust[num155].velocity *= 0.1f;
                 Main.dust[num155].velocity += projectile.velocity * 0.5f;
@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             if (Main.rand.Next(8) == 0)
             {
                 int num156 = 16;
-                int num157 = Dust.NewDust(new Vector2(projectile.position.X + num156, projectile.position.Y + num156), projectile.width - num156 * 2, projectile.height - num156 * 2, Terraria.ModLoader.ModContent.DustType<Dusts.YamataAuraDust>(), 0f, 0f, 0, default, 0.5f);
+                int num157 = Dust.NewDust(new Vector2(projectile.position.X + num156, projectile.position.Y + num156), projectile.width - num156 * 2, projectile.height - num156 * 2, ModContent.DustType<Dusts.YamataAuraDust>(), 0f, 0f, 0, default, 0.5f);
                 Main.dust[num157].velocity *= 0.25f;
                 Main.dust[num157].velocity += projectile.velocity * 0.5f;
                 return;
@@ -59,7 +59,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.immune[projectile.owner] = 8;
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.HydraToxin>(), 400);
+            target.AddBuff(ModContent.BuffType<Buffs.HydraToxin>(), 400);
         }
     }
 }

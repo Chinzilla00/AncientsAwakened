@@ -22,7 +22,7 @@ namespace AAMod.Tiles.Bars
             TileObjectData.newTile.StyleWrapLimit = 111;
             TileObjectData.addTile(Type);
             drop = mod.ItemType("RadiumBar");   //put your CustomBlock name
-            dustType = Terraria.ModLoader.ModContent.DustType<Dusts.RadiumDust>();
+            dustType = ModContent.DustType<Dusts.RadiumDust>();
             AddMapEntry(new Color(200, 170, 100));
 			minPick = 0;
         }

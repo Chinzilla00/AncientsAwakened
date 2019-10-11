@@ -115,19 +115,19 @@ namespace AAMod.NPCs.TownNPCs
 
 		public override void SetupShop(Chest shop, ref int nextSlot)
 		{
-            shop.item[nextSlot].SetDefaults(Terraria.ModLoader.ModContent.ItemType<Items.Armor.GoblinSlayer.GoblinSlayerHelm>());
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Armor.GoblinSlayer.GoblinSlayerHelm>());
             shop.item[nextSlot].shopCustomPrice = new int?(10);
             shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(Terraria.ModLoader.ModContent.ItemType<Items.Armor.GoblinSlayer.GoblinSlayerChest>());
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Armor.GoblinSlayer.GoblinSlayerChest>());
             shop.item[nextSlot].shopCustomPrice = new int?(15);
             shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(Terraria.ModLoader.ModContent.ItemType<Items.Armor.GoblinSlayer.GoblinSlayerGreaves>());
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Armor.GoblinSlayer.GoblinSlayerGreaves>());
             shop.item[nextSlot].shopCustomPrice = new int?(12);
             shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
             nextSlot++;
-            shop.item[nextSlot].SetDefaults(Terraria.ModLoader.ModContent.ItemType<Items.Melee.GoblinSlayer>());
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Melee.GoblinSlayer>());
             shop.item[nextSlot].shopCustomPrice = new int?(15);
             shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
             nextSlot++;
@@ -139,7 +139,7 @@ namespace AAMod.NPCs.TownNPCs
 
 		public override void NPCLoot()
 		{
-			Item.NewItem(npc.getRect(), Terraria.ModLoader.ModContent.ItemType<Items.Melee.GoblinSlayer>());
+			Item.NewItem(npc.getRect(), ModContent.ItemType<Items.Melee.GoblinSlayer>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)

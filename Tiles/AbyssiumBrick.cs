@@ -13,7 +13,7 @@ namespace AAMod.Tiles
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("AbyssiumBrick");   //put your CustomBlock name
             AddMapEntry(new Color(0, 0, 51));
-            dustType = Terraria.ModLoader.ModContent.DustType<Dusts.AbyssiumDust>();
+            dustType = ModContent.DustType<Dusts.AbyssiumDust>();
         }
     }
 }

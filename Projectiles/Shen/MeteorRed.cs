@@ -47,7 +47,7 @@ namespace AAMod.Projectiles.Shen
             Vector2 position = projectile.Center + (Vector2.Normalize(projectile.velocity) * 10f);
             for (int num189 = 0; num189 < 1; num189++)
             {
-                int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.YamataADust>(), 0f, 0f, 0);
+                int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataADust>(), 0f, 0f, 0);
                 
                 Main.dust[num190].fadeIn = 1f;
                 Main.dust[num190].noGravity = true;
@@ -63,18 +63,18 @@ namespace AAMod.Projectiles.Shen
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             EnemyHit = true;
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.Moonraze>(), 600);
+            target.AddBuff(ModContent.BuffType<Buffs.Moonraze>(), 600);
         }
 
         public override void Kill(int timeLeft)
         {
             for (int num468 = 0; num468 < 20; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, 1, Terraria.ModLoader.ModContent.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f,
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, 1, ModContent.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 100, default, 2f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f,
+                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 100, default);
                 Main.dust[num469].velocity *= 2f;
             }

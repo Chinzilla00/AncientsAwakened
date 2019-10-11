@@ -132,7 +132,7 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 if (internalAI[5] == 0)
                 {
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, Terraria.ModLoader.ModContent.ProjectileType<GreedCoin>(), ref internalAI[4], 30, npc.damage / 4, 10, true);
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<GreedCoin>(), ref internalAI[4], 30, npc.damage / 4, 10, true);
                 }
                 else
                 {
@@ -397,7 +397,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void FindFrame(int frameHeight)
         {
-            if (npc.type == Terraria.ModLoader.ModContent.NPCType<GreedBody>())
+            if (npc.type == ModContent.NPCType<GreedBody>())
             {
                 npc.frame.Y = frameHeight * (int)npc.ai[2];
             }
@@ -410,7 +410,7 @@ namespace AAMod.NPCs.Bosses.Greed
         }
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
-            if (npc.type != Terraria.ModLoader.ModContent.NPCType<Greed>())
+            if (npc.type != ModContent.NPCType<Greed>())
             {
                 return false;
             }
@@ -448,7 +448,7 @@ namespace AAMod.NPCs.Bosses.Greed
             AAWorld.downedGreed = true;
             if (NPC.downedMoonlord)
             {
-                int a = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, Terraria.ModLoader.ModContent.NPCType<GreedTransition>());
+                int a = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<GreedTransition>());
                 Main.npc[a].Center = npc.Center;
                 return;
             }
@@ -500,117 +500,117 @@ namespace AAMod.NPCs.Bosses.Greed
             int MinionChoice = Main.rand.Next(11);
             if (MinionChoice == 0)
             {
-                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 0);
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 0);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 2);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 2);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 4);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 4);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 6);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 6);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
             else if (MinionChoice == 1)
             {
-                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 1);
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 1);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 3);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 3);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 5);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 5);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 7);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 7);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
             else if (MinionChoice == 2)
             {
-                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 8);
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 8);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 9);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 9);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
             else if (MinionChoice == 3)
             {
-                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 10);
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 10);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 11);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 11);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
             else if (MinionChoice == 4)
             {
-                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 12);
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 12);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 13);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 13);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
             else if (MinionChoice == 5)
             {
-                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 14);
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 14);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 16);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 16);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 18);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 18);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
             else if (MinionChoice == 6)
             {
-                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 15);
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 15);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 17);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 17);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 19);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 19);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
             else if (MinionChoice == 7)
             {
-                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 20);
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 20);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 20);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 20);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
             else if (MinionChoice == 8)
             {
-                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 21);
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 21);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
                 Xint = Main.rand.Next(-400, 400);
                 Yint = Main.rand.Next(-400, 400);
-                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 21);
+                a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 21);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
             else if (MinionChoice == 9)
             {
-                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 22);
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 22);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
             else if (MinionChoice == 10)
             {
-                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, 23);
+                int a = NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, 23);
                 Main.npc[a].Center = new Vector2(npc.Center.X + Xint, npc.Center.Y + Yint);
             }
         }
@@ -759,7 +759,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Greed>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<Greed>()))
             {
                 return false;
             }

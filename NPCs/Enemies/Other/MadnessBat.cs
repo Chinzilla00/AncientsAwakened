@@ -76,13 +76,13 @@ namespace AAMod.NPCs.Enemies.Other
         {
             for (int k = 0; k < 3; k++)
             {
-                Dust.NewDust(npc.position, npc.width, npc.height, Main.rand.Next(2) == 0 ? Terraria.ModLoader.ModContent.DustType<Dusts.InfinityOverloadR>() : Terraria.ModLoader.ModContent.DustType<Dusts.InfinityOverloadP>(), hitDirection, -1f, 0);
+                Dust.NewDust(npc.position, npc.width, npc.height, Main.rand.Next(2) == 0 ? ModContent.DustType<Dusts.InfinityOverloadR>() : ModContent.DustType<Dusts.InfinityOverloadP>(), hitDirection, -1f, 0);
             }
             if (npc.life <= 0)
             {
                 for (int k = 0; k < 15; k++)
                 {
-                    Dust.NewDust(npc.position, npc.width, npc.height, Main.rand.Next(2) == 0 ? Terraria.ModLoader.ModContent.DustType<Dusts.InfinityOverloadR>() : Terraria.ModLoader.ModContent.DustType<Dusts.InfinityOverloadP>(), hitDirection, -1f, 0);
+                    Dust.NewDust(npc.position, npc.width, npc.height, Main.rand.Next(2) == 0 ? ModContent.DustType<Dusts.InfinityOverloadR>() : ModContent.DustType<Dusts.InfinityOverloadP>(), hitDirection, -1f, 0);
                 }
             }
         }

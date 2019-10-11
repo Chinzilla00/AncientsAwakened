@@ -42,7 +42,7 @@ namespace AAMod.Projectiles
             {
                 float Eggroll = Math.Abs(Main.GameUpdateCount) / 8f;
                 float Pie = 1f * (float)Math.Sin(Eggroll);
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, Terraria.ModLoader.ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, Main.DiscoColor, 1f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, Main.DiscoColor, 1f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].alpha = 20;
             }

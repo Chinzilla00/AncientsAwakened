@@ -56,7 +56,7 @@ namespace AAMod.Projectiles
             }
             for (int num457 = 0; num457 < 10; num457++)
             {
-                int num458 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, Main.DiscoColor, 1.2f);
+                int num458 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, Main.DiscoColor, 1.2f);
                 Main.dust[num458].noGravity = true;
                 Main.dust[num458].velocity *= 0.5f;
                 Main.dust[num458].velocity += projectile.velocity * 0.1f;
@@ -65,7 +65,7 @@ namespace AAMod.Projectiles
 
         public override void Kill(int timeLeft)
         {
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, Terraria.ModLoader.ModContent.ProjectileType<PonyBoomEX2>(), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, ModContent.ProjectileType<PonyBoomEX2>(), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
 
     }

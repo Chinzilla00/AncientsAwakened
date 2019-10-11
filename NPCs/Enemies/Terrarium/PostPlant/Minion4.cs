@@ -252,8 +252,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                 npc.height = 78;
                 npc.position.X = npc.position.X - npc.width / 2;
                 npc.position.Y = npc.position.Y - npc.height / 2;
-                int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.SummonDust>();
-                int dust2 = Terraria.ModLoader.ModContent.DustType<Dusts.SummonDust>();
+                int dust1 = ModContent.DustType<Dusts.SummonDust>();
+                int dust2 = ModContent.DustType<Dusts.SummonDust>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;

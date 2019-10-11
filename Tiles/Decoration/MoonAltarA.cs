@@ -21,7 +21,7 @@ namespace AAMod.Tiles.Decoration
             dustType = 1;
             animationFrameHeight = 56;
             disableSmartCursor = true;
-            dustType = Terraria.ModLoader.ModContent.DustType<Dusts.YamataADust>();
+            dustType = ModContent.DustType<Dusts.YamataADust>();
             adjTiles = new int[] { TileID.LunarMonolith };
         }
 

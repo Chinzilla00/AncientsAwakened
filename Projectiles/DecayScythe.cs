@@ -95,7 +95,7 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
                     }
                     num22 *= num24;
                     num23 *= num24;
-                    int a = Projectile.NewProjectile(vector.X, vector.Y, num22, num23, Terraria.ModLoader.ModContent.ProjectileType<DecayScytheProj>(), projectile.damage, projectile.knockBack, player.whoAmI, 0f, 0f);
+                    int a = Projectile.NewProjectile(vector.X, vector.Y, num22, num23, ModContent.ProjectileType<DecayScytheProj>(), projectile.damage, projectile.knockBack, player.whoAmI, 0f, 0f);
                     Main.projectile[a].netUpdate = true;
                     Main.PlaySound(SoundID.Item71, projectile.Center);
                 }

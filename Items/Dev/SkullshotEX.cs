@@ -73,7 +73,7 @@ Super Skullshot EX");
                 item.useAnimation = 20;
                 item.useTime = 9;
                 item.reuseDelay = 20;
-                item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Hellshot>();
+                item.shoot = ModContent.ProjectileType<Projectiles.Hellshot>();
             }
             else
             {
@@ -99,7 +99,7 @@ Super Skullshot EX");
             }
             else
             {
-                int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Hellshot>(), damage, knockBack, Main.myPlayer, 0f, 0f);
+                int proj = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<Projectiles.Hellshot>(), damage, knockBack, Main.myPlayer, 0f, 0f);
                 Main.projectile[proj].ranged = true;
             }
             return false;

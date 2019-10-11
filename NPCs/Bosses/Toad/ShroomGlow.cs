@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             for (int m = 0; m < (isDead ? 35 : 6); m++)
             {
-                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, Terraria.ModLoader.ModContent.DustType<Dusts.ShroomDust>(), default, isDead ? 2f : 1.5f);
+                Dust.NewDust(npc.position, npc.width, npc.height, DustID.Blood, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, ModContent.DustType<Dusts.ShroomDust>(), default, isDead ? 2f : 1.5f);
             }
         }
 
@@ -86,7 +86,7 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void PostAI()
         {
-            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<TruffleToad>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<TruffleToad>()))
             {
                 if (npc.alpha > 0)
                 {

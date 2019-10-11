@@ -46,7 +46,7 @@ Non-Consumable");
 		{
             if (Main.netMode != 1) BaseUtility.Chat("Yamata has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             if (Main.netMode != 1) BaseUtility.Chat("Yeah, yeah I get it, my first phase is obnoxious. Let’s just get this over with..!", new Color(146, 30, 68));
-            DreadSigil.SpawnBoss(player, Terraria.ModLoader.ModContent.NPCType<NPCs.Bosses.Yamata.Awakened.YamataA>(), false, new Vector2(player.Center.X, player.Center.Y - 100), "Yamata, Dread Nightmare");
+            DreadSigil.SpawnBoss(player, ModContent.NPCType<NPCs.Bosses.Yamata.Awakened.YamataA>(), false, new Vector2(player.Center.X, player.Center.Y - 100), "Yamata, Dread Nightmare");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"), player.position);
             return true;
 		}

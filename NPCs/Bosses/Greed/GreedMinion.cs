@@ -142,7 +142,7 @@ namespace AAMod.NPCs.Bosses.Greed
                         }
                         else if (MinionType == 22) //Nebula
                         {
-                            p = Terraria.ModLoader.ModContent.ProjectileType<Nebula>();
+                            p = ModContent.ProjectileType<Nebula>();
                             ShootPeriodic(npc, player.position, player.width, player.height, p, ref npc.ai[1], 200, npc.damage / 2, 9, true);
                         }
                         else if (MinionType == 23) //Vortex
@@ -240,7 +240,7 @@ namespace AAMod.NPCs.Bosses.Greed
                     npc.ai[3] = 0;
                     int Xint = Main.rand.Next(-400, 400);
                     int Yint = Main.rand.Next(-400, 400);
-                    NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, Terraria.ModLoader.ModContent.NPCType<GreedMinion>(), 0, Main.rand.Next(29));
+                    NPC.NewNPC((int)npc.Center.X + Xint, (int)npc.Center.Y + Yint, ModContent.NPCType<GreedMinion>(), 0, Main.rand.Next(29));
                     for (int i = 0; i < 3; i++)
                     {
                         Dust.NewDust(new Vector2(Xint, Yint), 60, 60, 229, 0f, 0f, 0, Color.White, 1);

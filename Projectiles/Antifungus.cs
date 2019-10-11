@@ -26,7 +26,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int dustType = Terraria.ModLoader.ModContent.DustType<SwarmDust>();
+            int dustType = ModContent.DustType<SwarmDust>();
             if (projectile.owner == Main.myPlayer)
             {
                 Convert((int)(projectile.position.X + projectile.width / 2) / 16, (int)(projectile.position.Y + projectile.height / 2) / 16);
@@ -95,13 +95,13 @@ namespace AAMod.Projectiles
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (wall == (ushort)Terraria.ModLoader.ModContent.WallType<Mushwall>())
+                        else if (wall == (ushort)ModContent.WallType<Mushwall>())
                         {
                             Main.tile[k, l].wall = WallID.Grass;
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == Terraria.ModLoader.ModContent.TileType<Mycelium>())
+                        else if (type == ModContent.TileType<Mycelium>())
                         {
                             Main.tile[k, l].type = TileID.Grass;
                             WorldGen.SquareTileFrame(k, l, true);

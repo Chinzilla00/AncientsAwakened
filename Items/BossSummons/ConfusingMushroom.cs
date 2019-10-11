@@ -48,7 +48,7 @@ Can only be used in a glowing mushroom biome");
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The mushroom glows, and the smell of it makes you feel loopy.", Color.SkyBlue, false);
                 return false;
             }
-            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<FeudalFungus>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<FeudalFungus>()))
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Feudal Fungus keeps trying to attack you", Color.SkyBlue, false);
                 return false;

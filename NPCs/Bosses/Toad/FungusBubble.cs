@@ -74,14 +74,14 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
 		{
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.Shroomed>(), 180);
+            target.AddBuff(ModContent.BuffType<Buffs.Shroomed>(), 180);
         }
 
         public override void Kill(int timeLeft)
         {
             for (int dust = 0; dust <= 5; dust++)
             {
-                int dustType = Terraria.ModLoader.ModContent.DustType<Dusts.ShroomDust>();
+                int dustType = ModContent.DustType<Dusts.ShroomDust>();
                 Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, dustType, projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
             }
         }

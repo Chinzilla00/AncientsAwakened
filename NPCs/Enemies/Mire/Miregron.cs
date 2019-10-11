@@ -170,7 +170,7 @@ namespace AAMod.NPCs.Enemies.Mire
                 int num589 = 0;
                 while (num589 < damage / npc.lifeMax * 50.0)
                 {
-                    int num590 = Dust.NewDust(npc.position, npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.AcidDust>(), 0f, 0f, 0, default, 1.5f);
+                    int num590 = Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.AcidDust>(), 0f, 0f, 0, default, 1.5f);
                     Main.dust[num590].velocity *= 1.5f;
                     Main.dust[num590].noGravity = true;
                     num589++;
@@ -179,7 +179,7 @@ namespace AAMod.NPCs.Enemies.Mire
             }
             for (int num591 = 0; num591 < 10; num591++)
             {
-                int num592 = Dust.NewDust(npc.position, npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.AcidDust>(), 0f, 0f, 0, default, 1.5f);
+                int num592 = Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.AcidDust>(), 0f, 0f, 0, default, 1.5f);
                 Main.dust[num592].velocity *= 2f;
                 Main.dust[num592].noGravity = true;
             }

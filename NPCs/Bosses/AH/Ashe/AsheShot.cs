@@ -39,12 +39,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             float spread = 45f * 0.0174f;
             double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (spread / 2);
             double deltaAngle = spread / 8f;
-            Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), Terraria.ModLoader.ModContent.ProjectileType<AsheBoom>(), projectile.damage, 2);
+            Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), ModContent.ProjectileType<AsheBoom>(), projectile.damage, 2);
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.DragonFire>(), 200);
+            target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 200);
         }
     }
 }

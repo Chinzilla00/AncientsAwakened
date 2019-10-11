@@ -32,7 +32,7 @@ namespace AAMod.Items.Armor.Chaos
 
         public override void AI()
         {
-            int dustType = Main.rand.Next(2) == 0 ? Terraria.ModLoader.ModContent.DustType<InfinityOverloadR>() : Terraria.ModLoader.ModContent.DustType<InfinityOverloadB>();
+            int dustType = Main.rand.Next(2) == 0 ? ModContent.DustType<InfinityOverloadR>() : ModContent.DustType<InfinityOverloadB>();
             projectile.frameCounter++;
             if (projectile.frameCounter > 5)
             {
@@ -96,7 +96,7 @@ namespace AAMod.Items.Armor.Chaos
 
         public override void Kill(int timeLeft)
         {
-            int dustType = Main.rand.Next(2) == 0 ? Terraria.ModLoader.ModContent.DustType<InfinityOverloadR>() : Terraria.ModLoader.ModContent.DustType<InfinityOverloadB>();
+            int dustType = Main.rand.Next(2) == 0 ? ModContent.DustType<InfinityOverloadR>() : ModContent.DustType<InfinityOverloadB>();
             projectile.position = projectile.Center;
             projectile.width = projectile.height = 160;
             projectile.Center = projectile.position;

@@ -194,7 +194,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 		public override void HitEffect(int hitDirection, double damage)
 		{
 
-            int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.BroodmotherDust>();
+            int dust1 = ModContent.DustType<Dusts.BroodmotherDust>();
             if (npc.life <= 0)
 			{
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);

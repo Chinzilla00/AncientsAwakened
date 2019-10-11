@@ -108,7 +108,7 @@ Demise EX");
             {
                 if (Main.netMode != 1) BaseMod.BaseUtility.Chat("The struck enemy's soul bursts", new Color(77, 20, 102));
                 target.life = 0;
-                int p = Projectile.NewProjectile((int)target.Center.X, (int)target.Center.Y, 0, 0, Terraria.ModLoader.ModContent.ProjectileType<Projectiles.DemiseBlast>(), item.damage, item.knockBack, Main.myPlayer);
+                int p = Projectile.NewProjectile((int)target.Center.X, (int)target.Center.Y, 0, 0, ModContent.ProjectileType<Projectiles.DemiseBlast>(), item.damage, item.knockBack, Main.myPlayer);
                 Main.projectile[p].Center = target.Center;
             }
         }

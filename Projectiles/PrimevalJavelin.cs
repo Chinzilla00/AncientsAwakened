@@ -24,12 +24,12 @@ namespace AAMod.Projectiles
         public bool StuckInEnemy = false;
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.DynaEnergy2>(), 60);
+            target.AddBuff(ModContent.BuffType<Buffs.DynaEnergy2>(), 60);
             Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
             bool flag3 = projectile.Colliding(myRect, target.getRect());
             if (!target.boss)
             {
-                Main.npc[(int)projectile.ai[1]].AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.SpearStuck>(), 100000);
+                Main.npc[(int)projectile.ai[1]].AddBuff(ModContent.BuffType<Buffs.SpearStuck>(), 100000);
                 if (flag3 && !StuckInEnemy)
                 {
                     StuckInEnemy = true;

@@ -204,7 +204,7 @@ namespace AAMod.Items.Armor.Doomite
 			if (projectile.ai[0] == 0f)
 			{
 				float scaleFactor3 = 8f;
-				int num658 = Terraria.ModLoader.ModContent.ProjectileType<Summoning.Minions.ProbeShot>();
+				int num658 = ModContent.ProjectileType<Summoning.Minions.ProbeShot>();
 				if (flag25 && projectile.ai[1] == 0f)
 				{
 					projectile.ai[1] += 1f;

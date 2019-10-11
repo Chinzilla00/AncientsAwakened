@@ -25,7 +25,7 @@ namespace AAMod.Projectiles
 			{
 				Dust dust;
 				Vector2 position = projectile.position;
-				dust = Main.dust[Dust.NewDust(position, 30, 30, Terraria.ModLoader.ModContent.DustType<Dusts.SnowDust>(), 0f, 0f, 0, default, 1)];
+				dust = Main.dust[Dust.NewDust(position, 30, 30, ModContent.DustType<Dusts.SnowDust>(), 0f, 0f, 0, default, 1)];
 				dust.noGravity = true;
 			}
 		}
@@ -34,11 +34,11 @@ namespace AAMod.Projectiles
         {
             for (int num468 = 0; num468 < 10; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.SnowDust>(), -projectile.velocity.X * 0.2f,
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.SnowDust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 0);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.IceDust>(), -projectile.velocity.X * 0.2f,
+                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.IceDust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 0);
                 Main.dust[num469].velocity *= 2f;
             }

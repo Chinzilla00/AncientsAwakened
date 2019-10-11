@@ -52,7 +52,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int num309 = Dust.NewDust(new Vector2(projectile.position.X - projectile.velocity.X * 4f + 2f, projectile.position.Y + 2f - projectile.velocity.Y * 4f), 8, 8, Terraria.ModLoader.ModContent.DustType<Dusts.InfinityOverloadG>(), projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default, 1.25f);
+            int num309 = Dust.NewDust(new Vector2(projectile.position.X - projectile.velocity.X * 4f + 2f, projectile.position.Y + 2f - projectile.velocity.Y * 4f), 8, 8, ModContent.DustType<Dusts.InfinityOverloadG>(), projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default, 1.25f);
             Main.dust[num309].velocity *= -0.25f;
             Main.dust[num309].position -= projectile.velocity * 0.5f;
 
@@ -112,7 +112,7 @@ namespace AAMod.Projectiles
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(SoundID.Item14, projectile.position);
-            int p = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), projectile.ai[1] == 1 ? Terraria.ModLoader.ModContent.ProjectileType<Ducksplosion1>() : Terraria.ModLoader.ModContent.ProjectileType<Ducksplosion>(), projectile.damage, projectile.knockBack, projectile.owner);
+            int p = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), projectile.ai[1] == 1 ? ModContent.ProjectileType<Ducksplosion1>() : ModContent.ProjectileType<Ducksplosion>(), projectile.damage, projectile.knockBack, projectile.owner);
             Main.projectile[p].Center = projectile.Center;
         }
 

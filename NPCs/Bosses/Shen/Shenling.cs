@@ -101,8 +101,8 @@ namespace AAMod.NPCs.Bosses.Shen
                     int num9 = npc.whoAmI;
                     for (int l = 0; l < 10; l++)
                     {
-                        int Body1 = Terraria.ModLoader.ModContent.NPCType<ShenlingBody1>();
-                        int Body2 = Terraria.ModLoader.ModContent.NPCType<ShenlingBody2>();
+                        int Body1 = ModContent.NPCType<ShenlingBody1>();
+                        int Body2 = ModContent.NPCType<ShenlingBody2>();
 
                         int SpawnBody1 = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), Body1, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
                         Main.npc[SpawnBody1].ai[3] = npc.whoAmI;
@@ -120,7 +120,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         num9 = SpawnBody2;
                         npc.netUpdate = true;
                     }
-                    int num10 = Terraria.ModLoader.ModContent.NPCType<ShenlingTail>();
+                    int num10 = ModContent.NPCType<ShenlingTail>();
                     int num11 = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), num10, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
                     Main.npc[num11].ai[3] = npc.whoAmI;
                     Main.npc[num11].realLife = npc.whoAmI;
@@ -359,11 +359,11 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             for (int num468 = 0; num468 < 3; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, 1, Terraria.ModLoader.ModContent.DustType<Dusts.DiscordLight>(), -npc.velocity.X * 0.2f,
+                int num469 = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, 1, ModContent.DustType<Dusts.DiscordLight>(), -npc.velocity.X * 0.2f,
                     -npc.velocity.Y * 0.2f, 100, default, 2f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.DiscordLight>(), -npc.velocity.X * 0.2f,
+                num469 = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, npc.height, ModContent.DustType<Dusts.DiscordLight>(), -npc.velocity.X * 0.2f,
                     -npc.velocity.Y * 0.2f, 100, default);
                 Main.dust[num469].velocity *= 2f;
             }
@@ -416,8 +416,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.height = 78;
                 npc.position.X = npc.position.X - npc.width / 2;
                 npc.position.Y = npc.position.Y - npc.height / 2;
-                int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.DiscordLight>();
-                int dust2 = Terraria.ModLoader.ModContent.DustType<Dusts.DiscordLight>();
+                int dust1 = ModContent.DustType<Dusts.DiscordLight>();
+                int dust2 = ModContent.DustType<Dusts.DiscordLight>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;
@@ -547,8 +547,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.height = 78;
                 npc.position.X = npc.position.X - npc.width / 2;
                 npc.position.Y = npc.position.Y - npc.height / 2;
-                int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.DiscordLight>();
-                int dust2 = Terraria.ModLoader.ModContent.DustType<Dusts.DiscordLight>();
+                int dust1 = ModContent.DustType<Dusts.DiscordLight>();
+                int dust2 = ModContent.DustType<Dusts.DiscordLight>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;
@@ -678,8 +678,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.height = 78;
                 npc.position.X = npc.position.X - npc.width / 2;
                 npc.position.Y = npc.position.Y - npc.height / 2;
-                int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.DiscordLight>();
-                int dust2 = Terraria.ModLoader.ModContent.DustType<Dusts.DiscordLight>();
+                int dust1 = ModContent.DustType<Dusts.DiscordLight>();
+                int dust2 = ModContent.DustType<Dusts.DiscordLight>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;

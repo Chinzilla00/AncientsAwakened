@@ -20,7 +20,7 @@ namespace AAMod.Tiles
             SetModCactus(new Bogtus());
             SetModPalmTree(new BogPalmTree());
             TileID.Sets.Conversion.Sand[Type] = true;
-            dustType = Terraria.ModLoader.ModContent.DustType<Dusts.BogwoodDust>();
+            dustType = ModContent.DustType<Dusts.BogwoodDust>();
         }
 
         public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)

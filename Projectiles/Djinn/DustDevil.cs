@@ -256,7 +256,7 @@ namespace AAMod.Projectiles.Djinn
             if (projectile.ai[0] == 0f)
             {
                 float scaleFactor4 = 5f;
-                int num29 = Terraria.ModLoader.ModContent.ProjectileType<DevilGust>();
+                int num29 = ModContent.ProjectileType<DevilGust>();
                 
                 if (flag)
                 {

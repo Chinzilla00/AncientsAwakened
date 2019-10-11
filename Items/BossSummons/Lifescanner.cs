@@ -41,7 +41,7 @@ Can only be used in the Void");
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Lifescanner doesn't do anything.", new Color(216, 60, 0), false);
                 return false;
             }
-            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<NPCs.Bosses.Sagittarius.Sagittarius>()) || NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<NPCs.Bosses.Sagittarius.SagittariusFree>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Sagittarius.Sagittarius>()) || NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Sagittarius.SagittariusFree>()))
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Lifescanner doesn't do anything.", new Color(216, 60, 0), false);
                 return false;

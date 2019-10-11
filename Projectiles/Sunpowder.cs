@@ -25,7 +25,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int dustType = Terraria.ModLoader.ModContent.DustType<BroodmotherDust>();
+            int dustType = ModContent.DustType<BroodmotherDust>();
             projectile.velocity *= 0.95f;
             projectile.ai[0] += 1f;
             if (projectile.ai[0] == 180f)
@@ -76,55 +76,55 @@ namespace AAMod.Projectiles
                     {
                         int type = Main.tile[k, l].type;
                         int wall = Main.tile[k, l].wall;
-                        if (type == (ushort)Terraria.ModLoader.ModContent.WallType<DepthstoneWall>())
+                        if (type == (ushort)ModContent.WallType<DepthstoneWall>())
                         {
                             Main.tile[k, l].wall = WallID.Stone;
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == (ushort)Terraria.ModLoader.ModContent.WallType<DepthsandstoneWall>())
+                        else if (type == (ushort)ModContent.WallType<DepthsandstoneWall>())
                         {
                             Main.tile[k, l].wall = WallID.Sandstone;
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == (ushort)Terraria.ModLoader.ModContent.WallType<DepthsandHardenedWall>())
+                        else if (type == (ushort)ModContent.WallType<DepthsandHardenedWall>())
                         {
                             Main.tile[k, l].wall = WallID.HardenedSand;
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == Terraria.ModLoader.ModContent.TileType<Depthstone>())
+                        else if (type == ModContent.TileType<Depthstone>())
                         {
                             Main.tile[k, l].type = 1;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == Terraria.ModLoader.ModContent.TileType<MireGrass>())
+                        else if (type == ModContent.TileType<MireGrass>())
                         {
                             Main.tile[k, l].type = 60;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == Terraria.ModLoader.ModContent.TileType<IndigoIce>())
+                        else if (type == ModContent.TileType<IndigoIce>())
                         {
                             Main.tile[k, l].type = 161;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == Terraria.ModLoader.ModContent.TileType<Depthsandstone>())
+                        else if (type == ModContent.TileType<Depthsandstone>())
                         {
                             Main.tile[k, l].type = 396;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == Terraria.ModLoader.ModContent.TileType<Depthsand>())
+                        else if (type == ModContent.TileType<Depthsand>())
                         {
                             Main.tile[k, l].type = 53;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == Terraria.ModLoader.ModContent.TileType<DepthsandHardened>())
+                        else if (type == ModContent.TileType<DepthsandHardened>())
                         {
                             Main.tile[k, l].type = 397;
                             WorldGen.SquareTileFrame(k, l, true);

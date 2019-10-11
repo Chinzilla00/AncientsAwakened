@@ -86,8 +86,8 @@ namespace AAMod.NPCs.Bosses.Equinox
 
 		public void HandleDayNightCycle()
 		{
-			bool daybringerExists = NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<DaybringerHead>());
-			bool nightcrawlerExists = NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<NightcrawlerHead>());
+			bool daybringerExists = NPC.AnyNPCs(ModContent.NPCType<DaybringerHead>());
+			bool nightcrawlerExists = NPC.AnyNPCs(ModContent.NPCType<NightcrawlerHead>());
 			if (daybringerExists && nightcrawlerExists)
             {
                 if (Main.expertMode)
@@ -138,7 +138,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 			bool wormStronger = (nightcrawler && !isDay) ||  (!nightcrawler && isDay);
 			if(wormStronger != prevWormStronger)
 			{
-				int dustType = nightcrawler ? Terraria.ModLoader.ModContent.DustType<NightcrawlerDust>() : Terraria.ModLoader.ModContent.DustType<DaybringerDust>();
+				int dustType = nightcrawler ? ModContent.DustType<NightcrawlerDust>() : ModContent.DustType<DaybringerDust>();
 				for (int k = 0; k < 10; k++)
 				{
 					int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, (int)(npc.velocity.X * 0.2f), (int)(npc.velocity.Y * 0.2f), 0, default, 1.5f);
@@ -173,7 +173,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 				npc.damage = 300;		
 				npc.defense = !nightcrawler ? 120 : 150;
             }	
-            if (!isHead && NPC.CountNPCS(Terraria.ModLoader.ModContent.NPCType<Equiprobe>()) < 15)
+            if (!isHead && NPC.CountNPCS(ModContent.NPCType<Equiprobe>()) < 15)
             {
 				SpawnProbe();
 			}
@@ -241,7 +241,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 		bool spawnedGore = false;
         public override void HitEffect(int hitDirection, double damage)
         {
-			int dustType = nightcrawler ? Terraria.ModLoader.ModContent.DustType<NightcrawlerDust>() : Terraria.ModLoader.ModContent.DustType<DaybringerDust>();
+			int dustType = nightcrawler ? ModContent.DustType<NightcrawlerDust>() : ModContent.DustType<DaybringerDust>();
             for (int k = 0; k < 5; k++)
             {
                 Dust.NewDust(npc.position, npc.width, npc.height, dustType, hitDirection, -1f, 0, default, 1.2f);

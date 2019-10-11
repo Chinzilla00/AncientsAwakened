@@ -35,7 +35,7 @@ namespace AAMod.Projectiles.Shen
 
         public override void AI()
         {
-            int dustType = swordType == 0 ? Terraria.ModLoader.ModContent.DustType<Dusts.DiscordLight>() : swordType == 1 ? Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDustLight>() : Terraria.ModLoader.ModContent.DustType<Dusts.YamataDustLight>();
+            int dustType = swordType == 0 ? ModContent.DustType<Dusts.DiscordLight>() : swordType == 1 ? ModContent.DustType<Dusts.AkumaDustLight>() : ModContent.DustType<Dusts.YamataDustLight>();
 
             int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, dustType, 0f, 0f, 100, Color.White, 1.6f);
 			Main.dust[dustID].velocity *= 0f;
@@ -81,8 +81,8 @@ namespace AAMod.Projectiles.Shen
 
         public override void Kill(int timeLeft)
         {
-			int dustType = swordType == 0 ? Terraria.ModLoader.ModContent.DustType<Dusts.Discord>() : swordType == 1 ? Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDustLight>() : Terraria.ModLoader.ModContent.DustType<Dusts.YamataDustLight>();
-            int boomType = swordType == 0 ? Terraria.ModLoader.ModContent.ProjectileType<MeteorBoom>() : swordType == 1 ? Terraria.ModLoader.ModContent.ProjectileType<MeteorBoomBlue>() : Terraria.ModLoader.ModContent.ProjectileType<MeteorBoomRed>();
+			int dustType = swordType == 0 ? ModContent.DustType<Dusts.Discord>() : swordType == 1 ? ModContent.DustType<Dusts.AkumaDustLight>() : ModContent.DustType<Dusts.YamataDustLight>();
+            int boomType = swordType == 0 ? ModContent.ProjectileType<MeteorBoom>() : swordType == 1 ? ModContent.ProjectileType<MeteorBoomBlue>() : ModContent.ProjectileType<MeteorBoomRed>();
             int pieCut = 20;
 			for(int m = 0; m < pieCut; m++)
 			{

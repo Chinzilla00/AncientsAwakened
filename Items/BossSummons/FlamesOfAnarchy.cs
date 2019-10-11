@@ -36,7 +36,7 @@ Non-Consumable");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Ashe>()) && !NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Haruka>()) && !NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<AHSpawn>());
+            return !NPC.AnyNPCs(ModContent.NPCType<Ashe>()) && !NPC.AnyNPCs(ModContent.NPCType<Haruka>()) && !NPC.AnyNPCs(ModContent.NPCType<AHSpawn>());
         }
 
         public override bool UseItem(Player player)

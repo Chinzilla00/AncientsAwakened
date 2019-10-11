@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.DeathSound = SoundID.NPCDeath7;
             npc.netAlways = true;
             npc.boss = true;
-            bossBag = Terraria.ModLoader.ModContent.ItemType<Items.Boss.Serpent.SerpentBag>();
+            bossBag = ModContent.ItemType<Items.Boss.Serpent.SerpentBag>();
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
             npc.alpha = 50;
         }
@@ -618,9 +618,9 @@ namespace AAMod.NPCs.Bosses.Serpent
 
             if (internalAI[2] == 0)
             {
-                if (NPC.CountNPCS(Terraria.ModLoader.ModContent.NPCType<IceCrystal>()) < 3)
+                if (NPC.CountNPCS(ModContent.NPCType<IceCrystal>()) < 3)
                 {
-                    NPC.NewNPC((int)player.position.X + Main.rand.Next(-500, 500), (int)player.position.Y + 500, Terraria.ModLoader.ModContent.NPCType<IceCrystal>(), 0, 0, 0, 0, 0, npc.target);
+                    NPC.NewNPC((int)player.position.X + Main.rand.Next(-500, 500), (int)player.position.Y + 500, ModContent.NPCType<IceCrystal>(), 0, 0, 0, 0, 0, npc.target);
                 }
                 internalAI[2] = 2;
                 npc.netUpdate = true;
@@ -639,7 +639,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                     attackTimer++;
                     if (attackTimer == 20 || attackTimer == 50 || attackTimer == 79)
                     {
-                        BaseAI.FireProjectile(Main.player[npc.target].Center, npc, Terraria.ModLoader.ModContent.ProjectileType<IceBall2>(), damage, 3, 14f, 0, 0, -1);
+                        BaseAI.FireProjectile(Main.player[npc.target].Center, npc, ModContent.ProjectileType<IceBall2>(), damage, 3, 14f, 0, 0, -1);
                         npc.netUpdate = true;
                     }
                     if (attackTimer >= 80)
@@ -694,11 +694,11 @@ namespace AAMod.NPCs.Bosses.Serpent
                 }
             }
 
-            if (internalAI[3]++ > 400 && NPC.CountNPCS(Terraria.ModLoader.ModContent.NPCType<Enemies.Snow.SnakeHead>()) < 3)
+            if (internalAI[3]++ > 400 && NPC.CountNPCS(ModContent.NPCType<Enemies.Snow.SnakeHead>()) < 3)
             {
-                for (int i = 0; i < 3 - NPC.CountNPCS(Terraria.ModLoader.ModContent.NPCType<Enemies.Snow.SnakeHead>()); i++)
+                for (int i = 0; i < 3 - NPC.CountNPCS(ModContent.NPCType<Enemies.Snow.SnakeHead>()); i++)
                 {
-                    AAModGlobalNPC.SpawnBoss(player, Terraria.ModLoader.ModContent.NPCType<Enemies.Snow.SnakeHead>(), false, 0, 0, "Snake", false);
+                    AAModGlobalNPC.SpawnBoss(player, ModContent.NPCType<Enemies.Snow.SnakeHead>(), false, 0, 0, "Snake", false);
                 }
                 internalAI[3] = 0;
             }
@@ -738,13 +738,13 @@ namespace AAMod.NPCs.Bosses.Serpent
         {
             for (int x = 0; x < 5; x++)
             {
-                Dust.NewDust(npc.position, npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.IceDust>(), hitDirection, -1f, 0, default, 1f);
+                Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.IceDust>(), hitDirection, -1f, 0, default, 1f);
             }
             if (npc.life == 0)
             {
                 for (int x = 0; x < 5; x++)
                 {
-                    Dust.NewDust(npc.position, npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.SnowDustLight>(), hitDirection, -1f, 0, default, 1f);
+                    Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.SnowDustLight>(), hitDirection, -1f, 0, default, 1f);
                 }
             }
         }
@@ -1171,7 +1171,7 @@ namespace AAMod.NPCs.Bosses.Serpent
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<SerpentHead>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<SerpentHead>()))
             {
                 return false;
             }
@@ -1206,7 +1206,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.DeathSound = SoundID.NPCDeath7;
             npc.netAlways = true;
             npc.boss = true;
-            bossBag = Terraria.ModLoader.ModContent.ItemType<Items.Boss.Serpent.SerpentBag>();
+            bossBag = ModContent.ItemType<Items.Boss.Serpent.SerpentBag>();
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
             npc.alpha = 50;
             npc.dontCountMe = true;
@@ -1536,7 +1536,7 @@ namespace AAMod.NPCs.Bosses.Serpent
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<SerpentHead>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<SerpentHead>()))
             {
                 return false;
             }

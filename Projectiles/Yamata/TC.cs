@@ -33,7 +33,7 @@ namespace AAMod.Projectiles.Yamata
                 if (ProjTimer >= 20)
                 {
                     ProjTimer = 0;
-                    Projectile.NewProjectile(projectile.position, Vector2.Zero, Terraria.ModLoader.ModContent.ProjectileType<FlairdraCyclone>(), projectile.damage, projectile.knockBack, projectile.owner);
+                    Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<FlairdraCyclone>(), projectile.damage, projectile.knockBack, projectile.owner);
                 }
             }
         }
@@ -90,7 +90,7 @@ namespace AAMod.Projectiles.Yamata
                 num79 *= num80;
                 float num114 = num78;
                 float num115 = num79 + (Main.rand.Next(-40, 41) * 0.05f);
-                Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * -0.75f, Terraria.ModLoader.ModContent.ProjectileType<YWSplit>(), projectile.damage, projectile.damage, player.whoAmI, 0f, -0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+                Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * -0.75f, ModContent.ProjectileType<YWSplit>(), projectile.damage, projectile.damage, player.whoAmI, 0f, -0.5f + ((float)Main.rand.NextDouble() * 0.3f));
             }
         }
 

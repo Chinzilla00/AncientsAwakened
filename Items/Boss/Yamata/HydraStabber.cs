@@ -35,7 +35,7 @@ IInflicts Moonraze");
             item.UseSound = SoundID.Item103;      
             item.autoReuse = true;   
             item.useTurn = false;
-            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Yamata.AbyssLash>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Yamata.AbyssLash>();
             item.shootSpeed = 10;
             item.rare = 9; AARarity = 13;
         }
@@ -66,7 +66,7 @@ IInflicts Moonraze");
             if (Main.rand.NextFloat() < 1f)
             {
                 Dust dust;
-                dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, Terraria.ModLoader.ModContent.DustType<Dusts.YamataDust>(), 0f, 0f, 46, default, 1.381579f)];
+                dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<Dusts.YamataDust>(), 0f, 0f, 46, default, 1.381579f)];
                 dust.noGravity = true;
             }
         }
@@ -84,7 +84,7 @@ IInflicts Moonraze");
 
         public void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.Moonraze>(), 600);
+            target.AddBuff(ModContent.BuffType<Buffs.Moonraze>(), 600);
         }
         
         public override void AddRecipes()  //How to craft this sword

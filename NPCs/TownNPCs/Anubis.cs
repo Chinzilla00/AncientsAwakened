@@ -328,7 +328,7 @@ namespace AAMod.NPCs.TownNPCs
 			else
             {
                 Player player = Main.LocalPlayer;
-                int Item = player.FindItem(Terraria.ModLoader.ModContent.ItemType<Items.Misc.AnubisBook>());
+                int Item = player.FindItem(ModContent.ItemType<Items.Misc.AnubisBook>());
                 if (Item >= 0 && !player.GetModPlayer<AAPlayer>().AnubisBook && Greed)
                 {
                     player.inventory[Item].stack--;
@@ -525,7 +525,7 @@ namespace AAMod.NPCs.TownNPCs
 
             Player player = Main.LocalPlayer;
 
-            if (player.head == Terraria.ModLoader.ModContent.ItemType<Items.Vanity.Mask.AnubisMask>() && Main.rand.Next(5) == 0)
+            if (player.head == ModContent.ItemType<Items.Vanity.Mask.AnubisMask>() && Main.rand.Next(5) == 0)
             {
                 return "Hey, lookin' good handsome.";
             }
@@ -621,7 +621,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = Terraria.ModLoader.ModContent.ProjectileType<JudgementNPC>();
+            projType = ModContent.ProjectileType<JudgementNPC>();
             attackDelay = 5;
         }
 

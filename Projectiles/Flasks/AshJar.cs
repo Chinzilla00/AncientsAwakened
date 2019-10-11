@@ -41,7 +41,7 @@ namespace AAMod.Projectiles.Flasks
             Main.PlaySound(SoundID.Shatter, (int)position.X, (int)position.Y);
 
             int radius = 6;
-            int FlaskDust = Terraria.ModLoader.ModContent.DustType<Dusts.OrangeSolution>();
+            int FlaskDust = ModContent.DustType<Dusts.OrangeSolution>();
 
             for (int m = 0; m < 20; m++)
             {

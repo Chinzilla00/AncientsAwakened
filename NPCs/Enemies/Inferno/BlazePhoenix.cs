@@ -62,7 +62,7 @@ namespace AAMod.NPCs.Enemies.Inferno
                 {
                     if (Main.rand.Next(5) == 0)
                     {
-                        int num1282 = Dust.NewDust(npc.position, npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.DragonflameDust>(), 0f, 0f, 0);
+                        int num1282 = Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.DragonflameDust>(), 0f, 0f, 0);
                         Main.dust[num1282].alpha = 100;
                         Main.dust[num1282].velocity *= 0.3f;
                         Main.dust[num1282].velocity += npc.velocity * 0.75f;
@@ -115,7 +115,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 					int dustID = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, 1, DustID.Fire, -npc.velocity.X * 0.2f,
 						-npc.velocity.Y * 0.2f, 100, default, 2f);
 					Main.dust[dustID].velocity *= 2f;
-					dustID = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.BroodmotherDust>(), -npc.velocity.X * 0.2f,
+					dustID = Dust.NewDust(new Vector2(npc.Center.X, npc.Center.Y), npc.width, npc.height, ModContent.DustType<Dusts.BroodmotherDust>(), -npc.velocity.X * 0.2f,
 						-npc.velocity.Y * 0.2f, 100, default);
 					Main.dust[dustID].velocity *= 2f;
 				}

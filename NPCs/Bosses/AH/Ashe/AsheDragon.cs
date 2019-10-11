@@ -95,22 +95,22 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
                     for (int l = 0; l < 30; l++)
                     {
-                        int type = Terraria.ModLoader.ModContent.NPCType<AsheDragonBody>();
+                        int type = ModContent.NPCType<AsheDragonBody>();
                         if ((l - 2) % 4 == 0 && l < 26)
                         {
-                            type = Terraria.ModLoader.ModContent.NPCType<AsheDragonArms>();
+                            type = ModContent.NPCType<AsheDragonArms>();
                         }
                         else if (l == 27)
                         {
-                            type = Terraria.ModLoader.ModContent.NPCType<AsheDragonBody1>();
+                            type = ModContent.NPCType<AsheDragonBody1>();
                         }
                         else if (l == 28)
                         {
-                            type = Terraria.ModLoader.ModContent.NPCType<AsheDragonBody2>();
+                            type = ModContent.NPCType<AsheDragonBody2>();
                         }
                         else if (l == 29)
                         {
-                            type = Terraria.ModLoader.ModContent.NPCType<AsheDragonTail>();
+                            type = ModContent.NPCType<AsheDragonTail>();
                         }
 
                         int newNPC = NPC.NewNPC((int)npc.Center.X, (int)(npc.position.Y + npc.height), type, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
@@ -329,11 +329,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             for (int num468 = 0; num468 < 3; num468++)
             {
-                int num469 = Dust.NewDust(npc.Center, npc.width, 1, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), -npc.velocity.X * 0.2f, -npc.velocity.Y * 0.2f, 100, default, 2f);
+                int num469 = Dust.NewDust(npc.Center, npc.width, 1, ModContent.DustType<Dusts.AkumaDust>(), -npc.velocity.X * 0.2f, -npc.velocity.Y * 0.2f, 100, default, 2f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
 
-                num469 = Dust.NewDust(npc.Center, npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), -npc.velocity.X * 0.2f, -npc.velocity.Y * 0.2f, 100, default);
+                num469 = Dust.NewDust(npc.Center, npc.width, npc.height, ModContent.DustType<Dusts.AkumaDust>(), -npc.velocity.X * 0.2f, -npc.velocity.Y * 0.2f, 100, default);
                 Main.dust[num469].velocity *= 2f;
             }
         }
@@ -378,14 +378,14 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.position.X = npc.Center.X;
                 npc.position.Y = npc.Center.Y;
 
-                int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
+                int dust1 = ModContent.DustType<Dusts.AkumaDust>();
                 Dust.NewDust(npc.position, npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;
                 Main.dust[dust1].fadeIn = 1f;
                 Main.dust[dust1].noGravity = false;
 
-                int dust2 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
+                int dust2 = ModContent.DustType<Dusts.AkumaDust>();
                 Dust.NewDust(npc.position, npc.width, npc.height, dust2, 0f, 0f, 0);
                 Main.dust[dust2].velocity *= 0.5f;
                 Main.dust[dust2].scale *= 1.3f;
@@ -525,14 +525,14 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.position.X = npc.Center.X;
                 npc.position.Y = npc.Center.Y;
 
-                int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
+                int dust1 = ModContent.DustType<Dusts.AkumaDust>();
                 Dust.NewDust(npc.position, npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;
                 Main.dust[dust1].fadeIn = 1f;
                 Main.dust[dust1].noGravity = false;
 
-                int dust2 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
+                int dust2 = ModContent.DustType<Dusts.AkumaDust>();
                 Dust.NewDust(npc.position, npc.width, npc.height, dust2, 0f, 0f, 0);
                 Main.dust[dust2].velocity *= 0.5f;
                 Main.dust[dust2].scale *= 1.3f;
@@ -665,14 +665,14 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.position.X = npc.Center.X;
                 npc.position.Y = npc.Center.Y;
 
-                int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
+                int dust1 = ModContent.DustType<Dusts.AkumaDust>();
                 Dust.NewDust(npc.position, npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;
                 Main.dust[dust1].fadeIn = 1f;
                 Main.dust[dust1].noGravity = false;
 
-                int dust2 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
+                int dust2 = ModContent.DustType<Dusts.AkumaDust>();
                 Dust.NewDust(npc.position, npc.width, npc.height, dust2, 0f, 0f, 0);
                 Main.dust[dust2].velocity *= 0.5f;
                 Main.dust[dust2].scale *= 1.3f;
@@ -804,14 +804,14 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.position.X = npc.Center.X;
                 npc.position.Y = npc.Center.Y;
 
-                int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
+                int dust1 = ModContent.DustType<Dusts.AkumaDust>();
                 Dust.NewDust(npc.position, npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;
                 Main.dust[dust1].fadeIn = 1f;
                 Main.dust[dust1].noGravity = false;
 
-                int dust2 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
+                int dust2 = ModContent.DustType<Dusts.AkumaDust>();
                 Dust.NewDust(npc.position, npc.width, npc.height, dust2, 0f, 0f, 0);
                 Main.dust[dust2].velocity *= 0.5f;
                 Main.dust[dust2].scale *= 1.3f;
@@ -943,14 +943,14 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.position.X = npc.Center.X;
                 npc.position.Y = npc.Center.Y;
 
-                int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
+                int dust1 = ModContent.DustType<Dusts.AkumaDust>();
                 Dust.NewDust(npc.position, npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;
                 Main.dust[dust1].fadeIn = 1f;
                 Main.dust[dust1].noGravity = false;
 
-                int dust2 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
+                int dust2 = ModContent.DustType<Dusts.AkumaDust>();
                 Dust.NewDust(npc.position, npc.width, npc.height, dust2, 0f, 0f, 0);
                 Main.dust[dust2].velocity *= 0.5f;
                 Main.dust[dust2].scale *= 1.3f;

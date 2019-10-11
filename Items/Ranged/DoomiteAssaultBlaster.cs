@@ -24,7 +24,7 @@ namespace AAMod.Items.Ranged
             item.autoReuse = true;
             item.ranged = true;
             item.value = 20000;
-            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.DoomiteVortex>();
+            item.shoot = ModContent.ProjectileType<Projectiles.DoomiteVortex>();
         }
 
         public override void SetStaticDefaults()

@@ -45,12 +45,12 @@ namespace AAMod.NPCs.Bosses.Toad
             {
                 for (int m = 0; m < 3; m++)
                 {
-                    int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.ShroomDust>(), 0f, 0f, 100, Color.White, 1.6f);
+                    int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.ShroomDust>(), 0f, 0f, 100, Color.White, 1.6f);
                     Main.dust[dustID].velocity = -projectile.velocity * 0.5f;
                     Main.dust[dustID].noLight = false;
                     Main.dust[dustID].noGravity = true;
                 }
-                int dustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.ShroomDust>(), 0f, 0f, 100, Color.Purple, 2f);
+                int dustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.ShroomDust>(), 0f, 0f, 100, Color.Purple, 2f);
                 Main.dust[dustID2].velocity = -projectile.velocity * 0.5f;
                 Main.dust[dustID2].noLight = false;
                 Main.dust[dustID2].noGravity = true;
@@ -69,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.Shroomed>(), 300);
+            target.AddBuff(ModContent.BuffType<Buffs.Shroomed>(), 300);
         }
 
         public override void Kill(int timeLeft)
@@ -85,13 +85,13 @@ namespace AAMod.NPCs.Bosses.Toad
 		    	for (i = 0; i < 2; i++ )
 		    	{
 		   			offsetAngle = startAngle + Angle * ( i + i * i ) / 2f  + 32f * i;
-		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( Math.Sin(offsetAngle) * 6f ), (float)( Math.Cos(offsetAngle) * 6f ), Terraria.ModLoader.ModContent.ProjectileType<FungusBubble>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
-		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( -Math.Sin(offsetAngle) * 6f ), (float)( -Math.Cos(offsetAngle) * 6f ), Terraria.ModLoader.ModContent.ProjectileType<FungusBubble>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
+		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( Math.Sin(offsetAngle) * 6f ), (float)( Math.Cos(offsetAngle) * 6f ), ModContent.ProjectileType<FungusBubble>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
+		        	Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)( -Math.Sin(offsetAngle) * 6f ), (float)( -Math.Cos(offsetAngle) * 6f ), ModContent.ProjectileType<FungusBubble>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], 0f);
 		    	}
 	    	}
         	for (int dust = 0; dust <= 5; dust++)
             {
-                int dustType = Terraria.ModLoader.ModContent.DustType<Dusts.ShroomDust>();
+                int dustType = ModContent.DustType<Dusts.ShroomDust>();
                 Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, dustType, projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
         	}
         }

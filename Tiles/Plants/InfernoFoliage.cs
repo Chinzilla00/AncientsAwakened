@@ -16,7 +16,7 @@ namespace AAMod.Tiles.Plants
             Main.tileMergeDirt[Type] = true;
             Main.tileLighted[Type] = false;
 
-            dustType = Terraria.ModLoader.ModContent.DustType<Dusts.RazeleafDust>();
+            dustType = ModContent.DustType<Dusts.RazeleafDust>();
             soundType = 6;
 
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);

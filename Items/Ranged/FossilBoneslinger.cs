@@ -34,7 +34,7 @@ namespace AAMod.Items.Ranged
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            type = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.AmberArrow>();
+            type = ModContent.ProjectileType<Projectiles.AmberArrow>();
             return true;
         }
         public override void AddRecipes()

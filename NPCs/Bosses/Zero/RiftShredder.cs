@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Zero>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<Zero>()))
             {
                 return false;
             }
@@ -98,7 +98,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            bool flag = npc.life <= 0 || (!npc.active && NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Zero>()));
+            bool flag = npc.life <= 0 || (!npc.active && NPC.AnyNPCs(ModContent.NPCType<Zero>()));
             if (flag && Main.netMode != 1)
             {
                 int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("TeslaHand"), npc.whoAmI, npc.ai[0], npc.ai[1], npc.ai[2], npc.ai[3], npc.target);
@@ -153,7 +153,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.rotation += (float)(0.1 + ((double)(npc.ai[3] / 120) * 0.4f)) * npc.direction * 1;
                 if (npc.ai[3] > 120)
                 {
-                    BaseAI.FireProjectile(player.Center, npc.position, Terraria.ModLoader.ModContent.ProjectileType<RiftZ>(), npc.damage / 2, 4, 2, -1, Main.myPlayer);
+                    BaseAI.FireProjectile(player.Center, npc.position, ModContent.ProjectileType<RiftZ>(), npc.damage / 2, 4, 2, -1, Main.myPlayer);
                     npc.ai[2] = 0;
                     npc.ai[3] = 0;
                 }

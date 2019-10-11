@@ -60,7 +60,7 @@ namespace AAMod.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.OnFire, 300);
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.DragonFire>(), 300);
+            target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 300);
 		}
     }
 }

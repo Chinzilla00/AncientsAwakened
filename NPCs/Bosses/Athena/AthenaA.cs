@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.DeathSound = SoundID.NPCDeath1;
             npc.boss = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AthenaA");
-            bossBag = Terraria.ModLoader.ModContent.ItemType<Items.Boss.Athena.AthenaBag>();
+            bossBag = ModContent.ItemType<Items.Boss.Athena.AthenaBag>();
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -94,7 +94,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 5000 || !modPlayer.ZoneAcropolis)
                 {
                     if (Main.netMode != 1) BaseUtility.Chat("And stay away...idiot.", Color.CornflowerBlue);
-                    int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, Terraria.ModLoader.ModContent.NPCType<AthenaFlee>());
+                    int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaFlee>());
                     Main.npc[p].Center = npc.Center;
                     npc.active = false;
                     npc.netUpdate = true;
@@ -103,8 +103,8 @@ namespace AAMod.NPCs.Bosses.Athena
 
             if (internalAI[0] == 0 && npc.life < npc.lifeMax / 3 && Main.netMode != 1)
             {
-                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], Terraria.ModLoader.ModContent.NPCType<AthenaDark>(), false, npc.Center);
-                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], Terraria.ModLoader.ModContent.NPCType<AthenaLight>(), false, npc.Center);
+                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], ModContent.NPCType<AthenaDark>(), false, npc.Center);
+                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], ModContent.NPCType<AthenaLight>(), false, npc.Center);
                 internalAI[0] = 1;
                 npc.netUpdate = true;
             }
@@ -114,12 +114,12 @@ namespace AAMod.NPCs.Bosses.Athena
                 int pChoice = Main.rand.Next(3);
                 if (pChoice == 0)
                 {
-                    NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, Terraria.ModLoader.ModContent.NPCType<OwlRuneCharged>());
+                    NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<OwlRuneCharged>());
                 }
                 else
                 if (pChoice == 1)
                 {
-                    int projType = Terraria.ModLoader.ModContent.ProjectileType<RazorGust>();
+                    int projType = ModContent.ProjectileType<RazorGust>();
                     float spread = 30f * 0.0174f;
                     Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
                     dir *= 14f;
@@ -137,7 +137,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 {
                     for (int i = 0; i < 3; i++)
                     {
-                        Projectile.NewProjectile(player.Center.X + Main.rand.Next(-100, 100), player.Center.Y, 0, 0, Terraria.ModLoader.ModContent.ProjectileType<Hurricane>(), damage, 12, Main.myPlayer);
+                        Projectile.NewProjectile(player.Center.X + Main.rand.Next(-100, 100), player.Center.Y, 0, 0, ModContent.ProjectileType<Hurricane>(), damage, 12, Main.myPlayer);
                     }
                 }
                 internalAI[2] = 0;
@@ -217,25 +217,25 @@ namespace AAMod.NPCs.Bosses.Athena
                         int Choice = Main.rand.Next(2);
                         if (Choice == 0)
                         {
-                            NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<OlympianDragon>());
-                            NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<OlympianDragon>());
+                            NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y, ModContent.NPCType<OlympianDragon>());
+                            NPC.NewNPC((int)npc.Center.X - 100, (int)npc.Center.Y, ModContent.NPCType<OlympianDragon>());
                         }
                         else
                         {
-                            NPC Seraph1 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y + 100, Terraria.ModLoader.ModContent.NPCType<SeraphA>())];
+                            NPC Seraph1 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y + 100, ModContent.NPCType<SeraphA>())];
                             for (int i = 0; i < 3; i++)
                             {
-                                Dust d = Main.dust[Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, Terraria.ModLoader.ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
+                                Dust d = Main.dust[Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
                             }
-                            NPC Seraph2 = Main.npc[NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y - 50, Terraria.ModLoader.ModContent.NPCType<SeraphA>())];
+                            NPC Seraph2 = Main.npc[NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y - 50, ModContent.NPCType<SeraphA>())];
                             for (int i = 0; i < 3; i++)
                             {
-                                Dust d = Main.dust[Dust.NewDust(Seraph2.position, Seraph2.height, Seraph2.width, Terraria.ModLoader.ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
+                                Dust d = Main.dust[Dust.NewDust(Seraph2.position, Seraph2.height, Seraph2.width, ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
                             }
-                            NPC Seraph3 = Main.npc[NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y - 50, Terraria.ModLoader.ModContent.NPCType<SeraphA>())];
+                            NPC Seraph3 = Main.npc[NPC.NewNPC((int)npc.Center.X + 100, (int)npc.Center.Y - 50, ModContent.NPCType<SeraphA>())];
                             for (int i = 0; i < 3; i++)
                             {
-                                Dust d = Main.dust[Dust.NewDust(Seraph3.position, Seraph3.height, Seraph3.width, Terraria.ModLoader.ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
+                                Dust d = Main.dust[Dust.NewDust(Seraph3.position, Seraph3.height, Seraph3.width, ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
                             }
                         }
                         npc.netUpdate = true;
@@ -351,7 +351,7 @@ namespace AAMod.NPCs.Bosses.Athena
             Player player = Main.player[npc.target];
             if (Main.rand.Next(2) == 0)
             {
-                int projType = Terraria.ModLoader.ModContent.ProjectileType<SeraphFeather>();
+                int projType = ModContent.ProjectileType<SeraphFeather>();
                 float spread = 30f * 0.0174f;
                 Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
                 dir *= 14f;
@@ -367,7 +367,7 @@ namespace AAMod.NPCs.Bosses.Athena
             }
             else
             {
-                BaseAI.FireProjectile(player.position, npc.position, Terraria.ModLoader.ModContent.ProjectileType<AthenaMagic>(), damage / 2, 5, 12, -1, Main.myPlayer, default);
+                BaseAI.FireProjectile(player.position, npc.position, ModContent.ProjectileType<AthenaMagic>(), damage / 2, 5, 12, -1, Main.myPlayer, default);
             }
         }
 
@@ -421,13 +421,13 @@ namespace AAMod.NPCs.Bosses.Athena
         {
             if (!AAWorld.downedAthenaA)
             {
-                int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, Terraria.ModLoader.ModContent.NPCType<AthenaDefeat>(), 0, 0, 0, 1);
+                int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaDefeat>(), 0, 0, 0, 1);
                 Main.npc[p].Center = npc.Center;
             }
             else
             {
                 if (Main.netMode != 1) BaseUtility.Chat("Rgh...alright, alright, I get it. I yield. Take your stuff and leave...idiot...", Color.CornflowerBlue);
-                int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, Terraria.ModLoader.ModContent.NPCType<AthenaFlee>());
+                int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaFlee>());
                 Main.npc[p].Center = npc.Center;
             }
             if(Main.expertMode)

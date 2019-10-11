@@ -61,8 +61,8 @@ namespace AAMod.Tiles.Boss
         public override void RightClick(int i, int j)
         {
             Player player = Main.LocalPlayer;
-            int type = Terraria.ModLoader.ModContent.ItemType<Items.BossSummons.Owl>();
-            bool Athena = NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Athena>()) || NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<AthenaFlee>()) || NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<AthenaDefeat>()) || NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<AthenaA>());
+            int type = ModContent.ItemType<Items.BossSummons.Owl>();
+            bool Athena = NPC.AnyNPCs(ModContent.NPCType<Athena>()) || NPC.AnyNPCs(ModContent.NPCType<AthenaFlee>()) || NPC.AnyNPCs(ModContent.NPCType<AthenaDefeat>()) || NPC.AnyNPCs(ModContent.NPCType<AthenaA>());
             if (BasePlayer.HasItem(player, type, 1) || !Athena)
             {
                 for (int m = 0; m < 50; m++)
@@ -71,7 +71,7 @@ namespace AAMod.Tiles.Boss
                     if (item != null && item.type == type && item.stack >= 1)
                     {
                         item.stack--;
-                        SpawnBoss(player, Terraria.ModLoader.ModContent.NPCType<Athena>(), true, player.Center, 0, -1, "Athena", false);
+                        SpawnBoss(player, ModContent.NPCType<Athena>(), true, player.Center, 0, -1, "Athena", false);
                     }
                 }
             }
@@ -88,7 +88,7 @@ namespace AAMod.Tiles.Boss
             Vector2 npcCenter = Pos + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, 800f * overrideDirectionY);
             for (int a = 0; a < 8; a++)
             {
-                Dust.NewDust(npcCenter, 152, 114, Terraria.ModLoader.ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                Dust.NewDust(npcCenter, 152, 114, ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
             }
             AAModGlobalNPC.SpawnBoss(player, bossType, spawnMessage, npcCenter, overrideDisplayName, namePlural);
         }

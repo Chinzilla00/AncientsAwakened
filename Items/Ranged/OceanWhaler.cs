@@ -19,7 +19,7 @@ namespace AAMod.Items.Ranged
             item.width = 30;
             item.height = 10;
             item.damage = 34;
-            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.OceanWhaler>();
+            item.shoot = ModContent.ProjectileType<Projectiles.OceanWhaler>();
             item.shootSpeed = 11f;
             item.UseSound = SoundID.Item10;
             item.rare = 2;

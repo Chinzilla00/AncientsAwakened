@@ -46,7 +46,7 @@ namespace AAMod.Projectiles.Serpent
         {
             for (int num468 = 0; num468 < 4; num468++)
             {
-                num468 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.IceDust>(), -projectile.velocity.X * 0.2f,
+                num468 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.IceDust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 100, default);
             }
             target.AddBuff(BuffID.Chilled, 200);
@@ -56,7 +56,7 @@ namespace AAMod.Projectiles.Serpent
         {
             for (int num468 = 0; num468 < 4; num468++)
             {
-                num468 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.IceDust>(), -projectile.velocity.X * 0.2f,
+                num468 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.IceDust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 100, default);
             }
             return true;

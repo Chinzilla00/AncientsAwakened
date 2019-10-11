@@ -123,7 +123,7 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
                 if (Main.netMode != 1) BaseUtility.Chat("...See ya, kiddo.", 107, 137, 179, true);
                 AAWorld.downedRajahsRevenge = true;
                 if (Main.netMode != 1) BaseUtility.Chat("Rajah Rabbit's speech warms your heart. You no longer have the will to harm rabbits. Do him proud.", Color.Green, true);
-                int p = Projectile.NewProjectile(npc.position, npc.velocity, Terraria.ModLoader.ModContent.ProjectileType<SupremeRajahLeave>(), 100, 0, Main.myPlayer);
+                int p = Projectile.NewProjectile(npc.position, npc.velocity, ModContent.ProjectileType<SupremeRajahLeave>(), 100, 0, Main.myPlayer);
                 Main.projectile[p].position = npc.position;
                 npc.active = false;
                 npc.netUpdate = true;

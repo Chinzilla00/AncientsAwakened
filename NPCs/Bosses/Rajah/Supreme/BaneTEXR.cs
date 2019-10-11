@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
         {
             Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
             bool flag3 = projectile.Colliding(myRect, target.getRect());
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.SpearStuck>(), 2);
+            target.AddBuff(ModContent.BuffType<Buffs.SpearStuck>(), 2);
             if (flag3 && !StuckInEnemy)
             {
                 StuckInEnemy = true;

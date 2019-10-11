@@ -177,11 +177,11 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 {
                     internalAI[2]++;
                 }
-                if (NPC.CountNPCS(Terraria.ModLoader.ModContent.NPCType<RedMushling>()) < 4)
+                if (NPC.CountNPCS(ModContent.NPCType<RedMushling>()) < 4)
                 {
                     for (int i = 0; i < 2; i++)
                     {
-                        int Minion = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<RedMushling>(), 0);
+                        int Minion = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<RedMushling>(), 0);
                         Main.npc[Minion].netUpdate = true;
                     }
                     internalAI[2] = 0;

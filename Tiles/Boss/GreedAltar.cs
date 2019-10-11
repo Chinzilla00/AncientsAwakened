@@ -48,7 +48,7 @@ namespace AAMod.Tiles.Boss
                 return;
             }
             Player player = Main.LocalPlayer;
-            int type = Terraria.ModLoader.ModContent.ItemType<Items.BossSummons.GoldenGrub>();
+            int type = ModContent.ItemType<Items.BossSummons.GoldenGrub>();
             if (BasePlayer.HasItem(player, type, 1))
             {
                 for (int m = 0; m < 50; m++)
@@ -59,11 +59,11 @@ namespace AAMod.Tiles.Boss
                         item.stack--;
                         if (AAWorld.downedGreed)
                         {
-                            AAModGlobalNPC.SpawnBoss(player, Terraria.ModLoader.ModContent.NPCType<Greed>(), true, 0, 0, "Greed");
+                            AAModGlobalNPC.SpawnBoss(player, ModContent.NPCType<Greed>(), true, 0, 0, "Greed");
                         }
                         else
                         {
-                            AAModGlobalNPC.SpawnBoss(player, Terraria.ModLoader.ModContent.NPCType<GreedSpawn>(), false, new Vector2(i * 16, (j * 16) - 200), "Greed");
+                            AAModGlobalNPC.SpawnBoss(player, ModContent.NPCType<GreedSpawn>(), false, new Vector2(i * 16, (j * 16) - 200), "Greed");
                         }
                     }
                 }

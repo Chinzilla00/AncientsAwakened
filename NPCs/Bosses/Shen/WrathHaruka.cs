@@ -77,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            Dust.NewDust(npc.position + npc.velocity, npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.AcidDust>(), npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f);
+            Dust.NewDust(npc.position + npc.velocity, npc.width, npc.height, ModContent.DustType<Dusts.AcidDust>(), npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f);
             if (npc.life <= 0)
             {
                 DontSayDeathLine = false;
@@ -96,7 +96,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (Main.netMode != 1) BaseUtility.Chat("Ngh...sorry father...I can't carry on...", new Color(72, 78, 117));
             }
-            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<WrathHarukaVanish>());
+            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<WrathHarukaVanish>());
             npc.value = 0f;
             npc.boss = false;
         }
@@ -109,7 +109,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override bool CheckActive()
         {
-            return !NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<ShenA>());
+            return !NPC.AnyNPCs(ModContent.NPCType<ShenA>());
         }
 
         public bool SetMovePos = false;
@@ -144,7 +144,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     if (Main.netMode != 1)
                     {
-                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<WrathHarukaVanish>(), 0);
+                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<WrathHarukaVanish>(), 0);
                         Main.npc[DeathAnim].velocity = npc.velocity;
                         Main.npc[DeathAnim].netUpdate = true;
                         npc.active = false;
@@ -274,7 +274,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (internalAI[2] == 5 && internalAI[1] == 3 && Main.netMode != 1)
                     {
                         repeat -= 1;
-                        int projType = Terraria.ModLoader.ModContent.ProjectileType<HarukaKunai>();
+                        int projType = ModContent.ProjectileType<HarukaKunai>();
                         float spread = 45f * 0.0174f;
                         Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
                         dir *= 14f;
@@ -346,7 +346,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
-                        int projType = Terraria.ModLoader.ModContent.ProjectileType<HarukaProj>();
+                        int projType = ModContent.ProjectileType<HarukaProj>();
                         BaseAI.FireProjectile(targetCenter, fireTarget, projType, (int)(npc.damage * 1.3f), 0f, 18f);
                         npc.netUpdate = true;
                     }

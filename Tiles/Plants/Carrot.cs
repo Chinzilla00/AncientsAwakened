@@ -14,8 +14,8 @@ namespace AAMod.Tiles.Plants
             Main.tileLighted[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
             TileObjectData.addTile(Type);
-            drop = Terraria.ModLoader.ModContent.ItemType<Items.Potions.Carrot>();
-            dustType = Terraria.ModLoader.ModContent.DustType<Dusts.CarrotDust>();
+            drop = ModContent.ItemType<Items.Potions.Carrot>();
+            dustType = ModContent.DustType<Dusts.CarrotDust>();
             soundType = 6;
         }
 

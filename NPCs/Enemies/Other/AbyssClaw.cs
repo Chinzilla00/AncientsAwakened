@@ -70,14 +70,14 @@ namespace AAMod.NPCs.Enemies.Other
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    Dust.NewDust(npc.Center, npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.YamataAuraDust>());
+                    Dust.NewDust(npc.Center, npc.width, npc.height, ModContent.DustType<Dusts.YamataAuraDust>());
                 }
             }
         }
 
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
         {
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.HydraToxin>(), 180);
+            target.AddBuff(ModContent.BuffType<Buffs.HydraToxin>(), 180);
         }
 
         public override void NPCLoot()

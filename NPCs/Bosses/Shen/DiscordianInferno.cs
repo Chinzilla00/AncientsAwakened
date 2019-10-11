@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
-            int dustType = projectile.ai[0] == 1 ? Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADust>() : Terraria.ModLoader.ModContent.DustType<Dusts.YamataADust>();
+            int dustType = projectile.ai[0] == 1 ? ModContent.DustType<Dusts.AkumaADust>() : ModContent.DustType<Dusts.YamataADust>();
             if (projectile.localAI[0] == 0f)
             {
                 projectile.localAI[0] = 1f;
@@ -60,7 +60,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void Kill(int timeLeft)
         {
-            int dustType = projectile.ai[0] == 1 ? Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADust>() : Terraria.ModLoader.ModContent.DustType<Dusts.YamataADust>();
+            int dustType = projectile.ai[0] == 1 ? ModContent.DustType<Dusts.AkumaADust>() : ModContent.DustType<Dusts.YamataADust>();
             int pieCut = 20;
 			for(int m = 0; m < pieCut; m++)
 			{

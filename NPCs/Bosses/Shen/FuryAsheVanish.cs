@@ -60,7 +60,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             int blue = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
             int red = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
-            int purple = GameShaders.Armor.GetShaderIdFromItemId(Terraria.ModLoader.ModContent.ItemType<Items.Dyes.DiscordianDye>());
+            int purple = GameShaders.Armor.GetShaderIdFromItemId(ModContent.ItemType<Items.Dyes.DiscordianDye>());
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 17, npc.frame, npc.GetAlpha(dColor), true);
             BaseDrawing.DrawTexture(spritebatch, glowTex, purple, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 17, npc.frame, Color.White, true);

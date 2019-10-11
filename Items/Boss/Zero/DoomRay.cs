@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Zero
             item.useTime = 20;
             item.UseSound = SoundID.Item13;
             item.useAnimation = 20;
-            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Zero.DoomRay1>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Zero.DoomRay1>();
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.noMelee = true;
             item.magic = true;

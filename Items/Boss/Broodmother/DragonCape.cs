@@ -58,7 +58,7 @@ namespace AAMod.Items.Boss.Broodmother
                 int maxAccessoryIndex = 5 + player.extraAccessorySlots;
                 for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    if (slot != i && player.armor[i].type == Terraria.ModLoader.ModContent.ItemType<DragonSerpentNecklace>())
+                    if (slot != i && player.armor[i].type == ModContent.ItemType<DragonSerpentNecklace>())
                     {
                         return false;
                     }

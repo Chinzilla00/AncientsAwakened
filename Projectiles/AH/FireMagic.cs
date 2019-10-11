@@ -54,7 +54,7 @@ namespace AAMod.Projectiles.AH
             }
             for (int num189 = 0; num189 < 1; num189++)
             {
-                int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 0);
+                int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 0);
 
                 Main.dust[num190].scale *= 1.3f;
                 Main.dust[num190].fadeIn = 1f;
@@ -78,7 +78,7 @@ namespace AAMod.Projectiles.AH
 		
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            Projectile.NewProjectile(projectile.Center, Vector2.Zero, Terraria.ModLoader.ModContent.ProjectileType<MagicBoom>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
+            Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<MagicBoom>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
             Main.PlaySound(SoundID.Item14, projectile.position);
             target.AddBuff(mod.BuffType("DragonFire"), 600);
             projectile.active = false;

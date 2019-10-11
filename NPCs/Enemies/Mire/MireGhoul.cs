@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Enemies.Mire
 			for (int i = 0; i < 10; i++)
 			{
 				int dustType = Main.rand.Next(139, 143);
-				int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.AbyssiumDust>(), 0f, 0f, 200, default, 0.8f);
+				int dustIndex = Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.AbyssiumDust>(), 0f, 0f, 200, default, 0.8f);
                 Main.dust[dustIndex].velocity *= 0.3f;
 			}
 		}

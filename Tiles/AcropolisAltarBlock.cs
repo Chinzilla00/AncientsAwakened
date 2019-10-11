@@ -10,7 +10,7 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
-            Main.tileMerge[Type][Terraria.ModLoader.ModContent.TileType<AcropolisBlock>()] = true;
+            Main.tileMerge[Type][ModContent.TileType<AcropolisBlock>()] = true;
             Main.tileBlockLight[Type] = true;
             drop = mod.ItemType("Acropolis Brick");   
             AddMapEntry(new Color(30, 59, 125));

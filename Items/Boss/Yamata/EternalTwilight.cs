@@ -47,7 +47,7 @@ namespace AAMod.Items.Boss.Yamata
             {
                 float SpeedX = speedX + Main.rand.Next(-25, 26) * 0.05f;
                 float SpeedY = speedY + Main.rand.Next(-25, 26) * 0.05f;
-                Projectile.NewProjectile(position.X, position.Y, SpeedX, SpeedY, Terraria.ModLoader.ModContent.ProjectileType<YamataPhantom>(), damage, knockBack, player.whoAmI, 0.0f, 0.0f);
+                Projectile.NewProjectile(position.X, position.Y, SpeedX, SpeedY, ModContent.ProjectileType<YamataPhantom>(), damage, knockBack, player.whoAmI, 0.0f, 0.0f);
             }
             return false;
         }

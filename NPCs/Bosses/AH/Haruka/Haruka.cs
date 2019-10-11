@@ -101,7 +101,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            Dust.NewDust(npc.position + npc.velocity, npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.AcidDust>(), npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f);
+            Dust.NewDust(npc.position + npc.velocity, npc.width, npc.height, ModContent.DustType<Dusts.AcidDust>(), npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f);
         }
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
@@ -114,7 +114,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             int Ashe = NPC.CountNPCS(mod.NPCType("Ashe"));
             if (Ashe == 0)
             {
-                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<AHDeath>());
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AHDeath>());
                 if (Main.expertMode)
                 {
                     npc.DropBossBags();
@@ -131,7 +131,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HarukaTrophy"));
             }
-            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<HarukaVanish>());
+            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HarukaVanish>());
             if (Main.netMode != 1) BaseUtility.Chat("Rgh..! Ow...", new Color(72, 78, 117));
             npc.value = 0f;
             npc.boss = false;
@@ -170,7 +170,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     if (Main.netMode != 1)
                     {
-                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<HarukaVanish>(), 0);
+                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HarukaVanish>(), 0);
                         Main.npc[DeathAnim].velocity = npc.velocity;
                         Main.npc[DeathAnim].netUpdate = true;
                         npc.active = false;
@@ -300,7 +300,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     if (internalAI[2] == 5 && internalAI[1] == 3 && Main.netMode != 1)
                     {
                         repeat -= 1;
-                        int projType = Terraria.ModLoader.ModContent.ProjectileType<HarukaKunai>();
+                        int projType = ModContent.ProjectileType<HarukaKunai>();
                         float spread = 45f * 0.0174f;
                         Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
                         dir *= 14f;
@@ -372,7 +372,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     {
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
-                        int projType = Terraria.ModLoader.ModContent.ProjectileType<HarukaProj>();
+                        int projType = ModContent.ProjectileType<HarukaProj>();
                         BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*1, 0f, 14f);
                         npc.netUpdate = true;
                     }

@@ -79,7 +79,7 @@ namespace AAMod.Projectiles.Rajah
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(SoundID.Item14, projectile.position);
-            int p = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), Terraria.ModLoader.ModContent.ProjectileType<RabbitRocketBoom>(), projectile.damage, projectile.knockBack, projectile.owner);
+            int p = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), ModContent.ProjectileType<RabbitRocketBoom>(), projectile.damage, projectile.knockBack, projectile.owner);
             Main.projectile[p].Center = projectile.Center;
         }
     }

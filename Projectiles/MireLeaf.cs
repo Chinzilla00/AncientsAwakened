@@ -39,7 +39,7 @@ namespace AAMod.Projectiles
 
             for (int m = 0; m < 12; m++)
             {
-                Dust.NewDust(projectile.position, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.BogleafDust>(), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, Microsoft.Xna.Framework.Color.White, 1.2f);
+                Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.BogleafDust>(), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, Microsoft.Xna.Framework.Color.White, 1.2f);
             }
         }
     }

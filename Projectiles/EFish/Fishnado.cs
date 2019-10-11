@@ -36,7 +36,7 @@ namespace AAMod.Projectiles.EFish
             bool flag64 = projectile.type == mod.ProjectileType("Fishnado");
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
-            player.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.Fishnado>(), 3600);
+            player.AddBuff(ModContent.BuffType<Buffs.Fishnado>(), 3600);
             if (flag64)
             {
                 if (player.dead)

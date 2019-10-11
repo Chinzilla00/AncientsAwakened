@@ -162,7 +162,7 @@ namespace AAMod.Tiles.Chests
             {
                 if (isLocked)
                 {
-                    int key = Terraria.ModLoader.ModContent.ItemType<Items.Usable.DoomstopperKey>();
+                    int key = ModContent.ItemType<Items.Usable.DoomstopperKey>();
                     if (player.ConsumeItem(key) && Chest.Unlock(left, top))
                     {
                         if (Main.netMode == NetmodeID.MultiplayerClient)
@@ -224,7 +224,7 @@ namespace AAMod.Tiles.Chests
                 {
                     player.showItemIcon2 = mod.ItemType("DoomsdayChest");
                     if (Main.tile[left, top].frameX / 36 == 1)
-                        player.showItemIcon2 = Terraria.ModLoader.ModContent.ItemType<Items.Usable.DoomstopperKey>();
+                        player.showItemIcon2 = ModContent.ItemType<Items.Usable.DoomstopperKey>();
                     player.showItemIconText = "";
                 }
             }

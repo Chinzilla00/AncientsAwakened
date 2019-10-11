@@ -40,7 +40,7 @@ namespace AAMod.Projectiles
 				float num154 = projectile.velocity.X / 3f * num153;
 				float num155 = projectile.velocity.Y / 3f * num153;
 				int num156 = 14;
-				int num157 = Dust.NewDust(new Vector2(projectile.position.X + num156, projectile.position.Y + num156), projectile.width - num156 * 2, projectile.height - num156 * 2, Terraria.ModLoader.ModContent.DustType<Dusts.HydraDust>(), 0f, 0f, 100);
+				int num157 = Dust.NewDust(new Vector2(projectile.position.X + num156, projectile.position.Y + num156), projectile.width - num156 * 2, projectile.height - num156 * 2, ModContent.DustType<Dusts.HydraDust>(), 0f, 0f, 100);
 				Main.dust[num157].noGravity = true;
 				Dust dust = Main.dust[num157];
 				dust.velocity *= 0.1f;
@@ -55,7 +55,7 @@ namespace AAMod.Projectiles
 			if (Main.rand.Next(8) == 0)
 			{
 				int num158 = 16;
-				int num159 = Dust.NewDust(new Vector2(projectile.position.X + num158, projectile.position.Y + num158), projectile.width - num158 * 2, projectile.height - num158 * 2, Terraria.ModLoader.ModContent.DustType<Dusts.HydraDust>(), 0f, 0f, 100, default, 0.5f);
+				int num159 = Dust.NewDust(new Vector2(projectile.position.X + num158, projectile.position.Y + num158), projectile.width - num158 * 2, projectile.height - num158 * 2, ModContent.DustType<Dusts.HydraDust>(), 0f, 0f, 100, default, 0.5f);
 				Dust dust = Main.dust[num159];
 				dust.velocity *= 0.25f;
 				dust = Main.dust[num159];

@@ -29,7 +29,7 @@ namespace AAMod.Projectiles
         public override void AI()
         {
             projectile.rotation += .1f;
-            int stardust = Terraria.ModLoader.ModContent.DustType<Dusts.StarDust>();
+            int stardust = ModContent.DustType<Dusts.StarDust>();
             int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, stardust, projectile.velocity.X * 0.2f,
                 projectile.velocity.Y * 0.2f, 100, default, 2f);
             Main.dust[dustId].noGravity = true;
@@ -53,7 +53,7 @@ namespace AAMod.Projectiles
                 num16 = num15 / num16;
                 num13 *= num16;
                 num14 *= num16;
-                int num17 = Projectile.NewProjectile(x, y, num13, num14, Terraria.ModLoader.ModContent.ProjectileType<Stars>(), 70, 5f, Main.myPlayer, 0f, 0f);
+                int num17 = Projectile.NewProjectile(x, y, num13, num14, ModContent.ProjectileType<Stars>(), 70, 5f, Main.myPlayer, 0f, 0f);
                 Main.projectile[num17].ai[1] = projectile.position.Y;
             }
         }

@@ -43,7 +43,7 @@ namespace AAMod.Items.Ranged
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Projectile.NewProjectile(position, new Vector2(speedX, speedY), Terraria.ModLoader.ModContent.ProjectileType<Projectiles.HoloArrow>(), item.damage, knockBack, player.whoAmI);
+            Projectile.NewProjectile(position, new Vector2(speedX, speedY), ModContent.ProjectileType<Projectiles.HoloArrow>(), item.damage, knockBack, player.whoAmI);
             return false;
         }
     }

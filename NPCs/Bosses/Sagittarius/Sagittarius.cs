@@ -179,9 +179,9 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             {
                 internalAI[4]++;
             }
-            if (!NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<SagittariusOrbiter>()) && internalAI[4] >= 60)
+            if (!NPC.AnyNPCs(ModContent.NPCType<SagittariusOrbiter>()) && internalAI[4] >= 60)
             {
-                npc.Transform(Terraria.ModLoader.ModContent.NPCType<SagittariusFree>());
+                npc.Transform(ModContent.NPCType<SagittariusFree>());
             }
 
             if (internalAI[3] == 1f)
@@ -279,8 +279,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         {
             if (npc.life <= 0)
             {
-                int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.VoidDust>();
-                int dust2 = Terraria.ModLoader.ModContent.DustType<Dusts.VoidDust>();
+                int dust1 = ModContent.DustType<Dusts.VoidDust>();
+                int dust2 = ModContent.DustType<Dusts.VoidDust>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;
@@ -317,7 +317,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 string[] lootTable = { "SagCore", "NeutronStaff", "Legg" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
-                Item.NewItem(npc.Center, Terraria.ModLoader.ModContent.ItemType<Items.Materials.Doomite>(), Main.rand.Next(30, 40));
+                Item.NewItem(npc.Center, ModContent.ItemType<Items.Materials.Doomite>(), Main.rand.Next(30, 40));
             }
             else
             {

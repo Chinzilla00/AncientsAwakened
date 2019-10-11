@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Enemies.Other
 			bool isDead = npc.life <= 0;
 			for (int m = 0; m < (isDead ? 25 : 5); m++)
 			{
-				Dust.NewDust(npc.position, npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<NightcrawlerDust>(), npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, isDead ? 2f : 1.1f);
+				Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<NightcrawlerDust>(), npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, isDead ? 2f : 1.1f);
 			}
 		}
 
@@ -74,7 +74,7 @@ namespace AAMod.NPCs.Enemies.Other
         {
             for (int Ammount = 0; Ammount < Main.rand.Next(3); Ammount++)
             {
-                npc.DropLoot(Terraria.ModLoader.ModContent.ItemType<Items.Materials.DarkEnergy>());
+                npc.DropLoot(ModContent.ItemType<Items.Materials.DarkEnergy>());
             }
         }
 

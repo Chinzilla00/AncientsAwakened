@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Athena
         }
         public override void AI()
         {
-            bool Athena = NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<AthenaA>());
+            bool Athena = NPC.AnyNPCs(ModContent.NPCType<AthenaA>());
             if (!Athena)
             {
                 npc.life = 0;

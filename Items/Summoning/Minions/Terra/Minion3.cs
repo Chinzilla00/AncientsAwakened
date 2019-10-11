@@ -199,7 +199,7 @@ namespace AAMod.Items.Summoning.Minions.Terra
             if (projectile.ai[0] == 0f)
             {
                 float scaleFactor3 = 8f;
-                int num658 = Terraria.ModLoader.ModContent.ProjectileType<SummonShot>();
+                int num658 = ModContent.ProjectileType<SummonShot>();
                 if (flag25 && projectile.ai[1] == 0f)
                 {
                     projectile.ai[1] += 1f;

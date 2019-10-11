@@ -22,7 +22,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int dustType = Terraria.ModLoader.ModContent.DustType<SnowDustLight>();
+            int dustType = ModContent.DustType<SnowDustLight>();
             if (projectile.owner == Main.myPlayer)
             {
                 AAWorld.AAConvert((int)(projectile.position.X + projectile.width / 2) / 16, (int)(projectile.position.Y + projectile.height / 2) / 16, 8);

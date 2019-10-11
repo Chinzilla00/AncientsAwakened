@@ -17,7 +17,7 @@ namespace AAMod.Tiles.Ore
             drop = ItemID.LunarOre;
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Luminite Ore");
-            dustType = Terraria.ModLoader.ModContent.DustType<Dusts.LuminiteDust>();
+            dustType = ModContent.DustType<Dusts.LuminiteDust>();
             soundType = 21;
             AddMapEntry(new Color(0, 90, 60), name);
 			minPick = 225;

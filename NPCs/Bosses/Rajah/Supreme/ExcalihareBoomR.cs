@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.InfinityOverload>(), 120);
+            target.AddBuff(ModContent.BuffType<Buffs.InfinityOverload>(), 120);
         }
 
         public override void Kill(int timeLeft)

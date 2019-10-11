@@ -42,7 +42,7 @@ Can only be used at night");
 
         public override bool CanUseItem(Player player)
         {
-            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<GripOfChaosBlue>()) || NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<GripOfChaosRed>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<GripOfChaosBlue>()) || NPC.AnyNPCs(ModContent.NPCType<GripOfChaosRed>()))
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Grips of Chaos are already here!", Color.Indigo, false);
                 return false;

@@ -33,16 +33,16 @@ namespace AAMod.Items.BossSummons
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            return !(NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah>()) ||
-                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah2>()) ||
-                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah3>()) ||
-                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah4>()) ||
-                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah5>()) ||
-                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah6>()) ||
-                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah7>()) ||
-                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah8>()) ||
-                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah9>()) ||
-                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<SupremeRajah>()));
+            return !(NPC.AnyNPCs(ModContent.NPCType<Rajah>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah2>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah3>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah6>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah9>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()));
         }
 
         public override bool UseItem(Player player)
@@ -55,7 +55,7 @@ namespace AAMod.Items.BossSummons
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(Terraria.ModLoader.ModContent.ItemType<Potions.Carrot>(), 5);
+            recipe.AddIngredient(ModContent.ItemType<Potions.Carrot>(), 5);
             recipe.AddIngredient(ItemID.GoldBar, 10);
             recipe.AddIngredient(ItemID.GoldBunny, 1);
             recipe.AddTile(TileID.MythrilAnvil);

@@ -82,14 +82,14 @@ namespace AAMod.NPCs.Bosses.Zero
                 {
                     if (Main.rand.Next(2) == 0)
                     {
-                        int num233 = Dust.NewDust(new Vector2(projectile.position.X + 3f + num231, projectile.position.Y + 3f + num232) - projectile.velocity * 0.5f, projectile.width - 8, projectile.height - 8, Terraria.ModLoader.ModContent.DustType<Dusts.VoidDust>(), 0f, 0f, 100, default, 1f);
+                        int num233 = Dust.NewDust(new Vector2(projectile.position.X + 3f + num231, projectile.position.Y + 3f + num232) - projectile.velocity * 0.5f, projectile.width - 8, projectile.height - 8, ModContent.DustType<Dusts.VoidDust>(), 0f, 0f, 100, default, 1f);
                         Main.dust[num233].scale *= 1.4f + Main.rand.Next(10) * 0.1f;
                         Main.dust[num233].velocity *= 0.2f;
                         Main.dust[num233].noGravity = true;
                     }
                     if (Main.rand.Next(2) == 0)
                     {
-                        int num234 = Dust.NewDust(new Vector2(projectile.position.X + 3f + num231, projectile.position.Y + 3f + num232) - projectile.velocity * 0.5f, projectile.width - 8, projectile.height - 8, Terraria.ModLoader.ModContent.DustType<Dusts.VoidDust>(), 0f, 0f, 100, default, 0.5f);
+                        int num234 = Dust.NewDust(new Vector2(projectile.position.X + 3f + num231, projectile.position.Y + 3f + num232) - projectile.velocity * 0.5f, projectile.width - 8, projectile.height - 8, ModContent.DustType<Dusts.VoidDust>(), 0f, 0f, 100, default, 0.5f);
                         Main.dust[num234].fadeIn = 0.5f + Main.rand.Next(5) * 0.1f;
                         Main.dust[num234].velocity *= 0.05f;
                     }
@@ -143,7 +143,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 for (int m = 0; m < 6; m++)
                 {
-                    int dustID = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.VoidDust>(), -projectile.velocity.X * 0.2f,
+                    int dustID = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.VoidDust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 100);
                     Main.dust[dustID].noGravity = true;
                     Main.dust[dustID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
@@ -152,7 +152,7 @@ namespace AAMod.NPCs.Bosses.Zero
             }
 
             Main.PlaySound(new LegacySoundStyle(2, 14, Terraria.Audio.SoundType.Sound));
-            Projectile.NewProjectile(projectile.Center, Vector2.Zero, Terraria.ModLoader.ModContent.ProjectileType<GenocideBoom>(), projectile.damage, 1, projectile.owner);
+            Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<GenocideBoom>(), projectile.damage, 1, projectile.owner);
         }
 
 

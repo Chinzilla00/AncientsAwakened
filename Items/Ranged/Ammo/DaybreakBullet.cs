@@ -13,7 +13,7 @@ namespace AAMod.Items.Ranged.Ammo
 		public override void SetDefaults()
 		{
 			item.shootSpeed = 5f;
-			item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Ammo.DaybreakBullet>();
+			item.shoot = ModContent.ProjectileType<Projectiles.Ammo.DaybreakBullet>();
 			item.damage = 25;
 			item.width = 8;
 			item.height = 8;

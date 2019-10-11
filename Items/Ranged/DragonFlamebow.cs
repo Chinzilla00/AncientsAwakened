@@ -20,7 +20,7 @@ namespace AAMod.Items.Ranged
             item.useTime = 21;
             item.useAnimation = 21;
             item.useStyle = 5;
-            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.DragonArrow>();
+            item.shoot = ModContent.ProjectileType<Projectiles.DragonArrow>();
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 2;
             item.value = 1000;
@@ -39,7 +39,7 @@ namespace AAMod.Items.Ranged
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, Terraria.ModLoader.ModContent.ProjectileType<Projectiles.DragonArrow>(), damage, knockBack, player.whoAmI, 0f, 0f); //This is spawning a projectile of type FrostburnArrow using the original stats
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<Projectiles.DragonArrow>(), damage, knockBack, player.whoAmI, 0f, 0f); //This is spawning a projectile of type FrostburnArrow using the original stats
             return false;
         }
         public override void AddRecipes()

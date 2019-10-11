@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.HydraToxin>(), 180);
+            target.AddBuff(ModContent.BuffType<Buffs.HydraToxin>(), 180);
             projectile.netUpdate = true;
         }
 
@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 		{
 			for (int k = 0; k < 5; k++)
 			{
-			     Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.CthulhuAuraDust>(), projectile.oldVelocity.X * 0.1f, projectile.oldVelocity.Y * 0.1f);
+			     Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, ModContent.DustType<Dusts.CthulhuAuraDust>(), projectile.oldVelocity.X * 0.1f, projectile.oldVelocity.Y * 0.1f);
 			}
 			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 0);
 			

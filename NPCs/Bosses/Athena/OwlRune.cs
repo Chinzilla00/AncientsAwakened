@@ -70,7 +70,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
                 npc.TargetClosest();
                 Player player = Main.player[npc.target];
-                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, Terraria.ModLoader.ModContent.ProjectileType<SeraphFeather>(), ref npc.ai[2], 15, npc.damage / 4, 10, false);
+                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<SeraphFeather>(), ref npc.ai[2], 15, npc.damage / 4, 10, false);
             }
             else
             {

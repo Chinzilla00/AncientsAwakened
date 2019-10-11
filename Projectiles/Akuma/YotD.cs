@@ -122,7 +122,7 @@ namespace AAMod.Projectiles.Akuma
                 {
                     for (int num352 = 0; num352 < 8; num352++)
                     {
-                        int num353 = Dust.NewDust(projectile.position, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default, 1.8f);
+                        int num353 = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default, 1.8f);
                         Main.dust[num353].noGravity = true;
                         Main.dust[num353].velocity *= 3f;
                         Main.dust[num353].fadeIn = 0.5f;
@@ -132,15 +132,15 @@ namespace AAMod.Projectiles.Akuma
                 }
                 if (projectile.ai[0] > 2f)
                 {
-                    int num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 20f), 8, 8, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.2f);
+                    int num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 20f), 8, 8, ModContent.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.2f);
                     Main.dust[num354].noGravity = true;
                     Main.dust[num354].velocity *= 0.2f;
                     Main.dust[num354].position = Main.dust[num354].position.RotatedBy(projectile.rotation, projectile.Center);
-                    num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 15f), 8, 8, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.2f);
+                    num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 15f), 8, 8, ModContent.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.2f);
                     Main.dust[num354].noGravity = true;
                     Main.dust[num354].velocity *= 0.2f;
                     Main.dust[num354].position = Main.dust[num354].position.RotatedBy(projectile.rotation, projectile.Center);
-                    num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 10f), 8, 8, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.2f);
+                    num354 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 10f), 8, 8, ModContent.DustType<Dusts.AkumaDust>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.2f);
                     Main.dust[num354].noGravity = true;
                     Main.dust[num354].velocity *= 0.2f;
                     Main.dust[num354].position = Main.dust[num354].position.RotatedBy(projectile.rotation, projectile.Center);
@@ -152,7 +152,7 @@ namespace AAMod.Projectiles.Akuma
                 projectile.ai[0] += 1f;
                 if (projectile.ai[0] > 4f)
                 {
-                    int num356 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 20f), 8, 8, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADust>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.2f);
+                    int num356 = Dust.NewDust(new Vector2(projectile.position.X + 2f, projectile.position.Y + 20f), 8, 8, ModContent.DustType<Dusts.AkumaADust>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.2f);
                     Main.dust[num356].noGravity = true;
                     Main.dust[num356].velocity *= 0.2f;
                     Main.dust[num356].position = Main.dust[num356].position.RotatedBy(projectile.rotation, projectile.Center);
@@ -182,7 +182,7 @@ namespace AAMod.Projectiles.Akuma
                     {
                         Vector2 value28 = Vector2.Lerp(vector13, value27, num658 / num655);
                         float scaleFactor2 = MathHelper.Lerp(num654, value26, num658 / num655);
-                        int num659 = Dust.NewDust(projectile.Center, 6, 6, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default, 1.3f);
+                        int num659 = Dust.NewDust(projectile.Center, 6, 6, ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default, 1.3f);
                         Main.dust[num659].velocity *= 0.1f;
                         Main.dust[num659].noGravity = true;
                         Main.dust[num659].velocity += value28 * scaleFactor2;
@@ -199,7 +199,7 @@ namespace AAMod.Projectiles.Akuma
                     {
                         Vector2 value30 = Vector2.Lerp(vector13, value29, num662 / num655);
                         float scaleFactor3 = MathHelper.Lerp(num654, value26, num662 / num655) / 2f;
-                        int num663 = Dust.NewDust(projectile.Center, 6, 6, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default, 1.3f);
+                        int num663 = Dust.NewDust(projectile.Center, 6, 6, ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default, 1.3f);
                         Main.dust[num663].velocity *= 0.1f;
                         Main.dust[num663].noGravity = true;
                         Main.dust[num663].velocity += value30 * scaleFactor3;
@@ -210,7 +210,7 @@ namespace AAMod.Projectiles.Akuma
             for (int num664 = 0; num664 < 100; num664++)
             {
                 float num665 = num654;
-                int num667 = Dust.NewDust(projectile.Center, 6, 6, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADust>(), 0f, 0f, 100);
+                int num667 = Dust.NewDust(projectile.Center, 6, 6, ModContent.DustType<Dusts.AkumaADust>(), 0f, 0f, 100);
                 float num668 = Main.dust[num667].velocity.X;
                 float num669 = Main.dust[num667].velocity.Y;
                 if (num668 == 0f && num669 == 0f)

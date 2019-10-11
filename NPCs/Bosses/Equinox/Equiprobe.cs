@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 			bool isDead = npc.life <= 0;
 			for (int m = 0; m < (isDead ? 25 : 5); m++)
 			{
-				int dustType = Main.rand.Next(2) == 0 ? Terraria.ModLoader.ModContent.DustType<NightcrawlerDust>() : Terraria.ModLoader.ModContent.DustType<DaybringerDust>();
+				int dustType = Main.rand.Next(2) == 0 ? ModContent.DustType<NightcrawlerDust>() : ModContent.DustType<DaybringerDust>();
 				Dust.NewDust(npc.position, npc.width, npc.height, dustType, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, isDead ? 2f : 1.1f);
 			}
 		}

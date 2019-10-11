@@ -30,7 +30,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int stardust = Terraria.ModLoader.ModContent.DustType<Dusts.StarDust>();
+            int stardust = ModContent.DustType<Dusts.StarDust>();
             int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, stardust, projectile.velocity.X * 0.2f,
                 projectile.velocity.Y * 0.2f, 100, default, 2f);
             Main.dust[dustId].noGravity = true;

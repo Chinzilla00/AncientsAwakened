@@ -58,12 +58,12 @@ Non-Consumable");
                     if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("That sigil has to be used at the Altar of the Draconian Sun, kid. It's in the middle of the inferno.", new Color(180, 41, 32), false);
                     return false;
                 }
-                if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Akuma>()))
+                if (NPC.AnyNPCs(ModContent.NPCType<Akuma>()))
                 {
                     if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(180, 41, 32), false);
                     return false;
                 }
-                if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<AkumaA>()))
+                if (NPC.AnyNPCs(ModContent.NPCType<AkumaA>()))
                 {
                     if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Hey kid, that Sigil only works once, ya know.", new Color(0, 191, 255), false);
                     return false;

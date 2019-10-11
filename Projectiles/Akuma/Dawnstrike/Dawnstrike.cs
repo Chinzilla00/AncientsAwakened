@@ -66,7 +66,7 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
 				Vector2 value = projectile.Center + vector2;
 				for (int i = 0; i < chargeLevel; i++)
 				{
-                    int type = chargeLevel >= 3 ? Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADust>() : Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
+                    int type = chargeLevel >= 3 ? ModContent.DustType<Dusts.AkumaADust>() : ModContent.DustType<Dusts.AkumaDust>();
                     int num5 = Dust.NewDust(value - Vector2.One * 8f, 16, 16, type, projectile.velocity.X / 2f, projectile.velocity.Y / 2f, 100);
 					Main.dust[num5].position.Y -= 0.3f;
 					Main.dust[num5].velocity *= 0.66f;
@@ -144,17 +144,17 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
             float damage = projectile.damage;
             if (chargeLevel == 3)
             {
-                type = Terraria.ModLoader.ModContent.ProjectileType<FireA>();
+                type = ModContent.ProjectileType<FireA>();
                 damage = projectile.damage * 2;
             }
             else if (chargeLevel == 2)
             {
-                type = Terraria.ModLoader.ModContent.ProjectileType<AMeteor>();
+                type = ModContent.ProjectileType<AMeteor>();
                 damage = projectile.damage * 1.5f;
             }
             else
             {
-                type = Terraria.ModLoader.ModContent.ProjectileType<MeteorF>();
+                type = ModContent.ProjectileType<MeteorF>();
             }
             if (projectile.owner == Main.myPlayer)
             {

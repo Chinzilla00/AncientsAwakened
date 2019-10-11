@@ -249,7 +249,7 @@ namespace AAMod.Items.Armor.Witch
             if (projectile.ai[0] == 0f)
             {
                 float scaleFactor4 = 7f;
-                int num29 = Terraria.ModLoader.ModContent.ProjectileType<FlameSoulShot>();
+                int num29 = ModContent.ProjectileType<FlameSoulShot>();
                 
                 if (flag)
                 {

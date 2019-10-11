@@ -54,7 +54,7 @@ Non-Consumable");
 
         public override bool UseItem(Player player)
 		{
-            SpawnBoss(player, Terraria.ModLoader.ModContent.NPCType<NPCs.Bosses.Yamata.Yamata>(), true, new Vector2(player.Center.X, player.Center.Y - 100), "Yamata, Dread Nightmare");
+            SpawnBoss(player, ModContent.NPCType<NPCs.Bosses.Yamata.Yamata>(), true, new Vector2(player.Center.X, player.Center.Y - 100), "Yamata, Dread Nightmare");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"), player.position);
             if (!AAWorld.downedYamata)
             {

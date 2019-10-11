@@ -19,7 +19,7 @@ namespace AAMod.Items.Melee
             item.autoReuse = true;
             item.useStyle = 1;
             item.shootSpeed = 8f;
-            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.DeathDagger>();
+            item.shoot = ModContent.ProjectileType<Projectiles.DeathDagger>();
             item.damage = 29;
             item.width = 54;
             item.height = 54;

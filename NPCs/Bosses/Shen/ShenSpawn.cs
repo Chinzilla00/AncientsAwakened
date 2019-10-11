@@ -47,9 +47,9 @@ namespace AAMod.NPCs.Bosses.Shen
                     Dust dust2;
                     Vector2 position1 = new Vector2(npc.Center.X + dustx, npc.Center.Y);
                     Vector2 position2 = new Vector2(npc.Center.X - dustx, npc.Center.Y);
-                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position1, 1, 1, ModContent.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
                     dust1.noGravity = false;
-                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, Terraria.ModLoader.ModContent.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
+                    dust2 = Main.dust[Dust.NewDust(position2, 1, 1, ModContent.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
                     dust2.noGravity = true;
                     dust2.scale *= 1.3f;
                     dust2.velocity.Y -= 6;
@@ -61,7 +61,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     Dust dust1;
                     Vector2 position1 = npc.Center;
-                    dust1 = Main.dust[Dust.NewDust(position1, 20, 20, Terraria.ModLoader.ModContent.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position1, 20, 20, ModContent.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
                     dust1.noGravity = false;
                     dust1.scale *= 1.3f;
                     dust1.velocity.Y -= 6;
@@ -159,9 +159,9 @@ namespace AAMod.NPCs.Bosses.Shen
                         Dust dust2;
                         Vector2 position1 = new Vector2(npc.Center.X + dustx, npc.Center.Y);
                         Vector2 position2 = new Vector2(npc.Center.X - dustx, npc.Center.Y);
-                        dust1 = Main.dust[Dust.NewDust(position1, 1, 1, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
+                        dust1 = Main.dust[Dust.NewDust(position1, 1, 1, ModContent.DustType<Dusts.AkumaDust>(), 0, 0, 0, default, 1f)];
                         dust1.noGravity = false;
-                        dust2 = Main.dust[Dust.NewDust(position2, 1, 1, Terraria.ModLoader.ModContent.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
+                        dust2 = Main.dust[Dust.NewDust(position2, 1, 1, ModContent.DustType<Dusts.YamataDust>(), 0, 0, 0, default, 1f)];
                         dust2.noGravity = true;
                         dust2.scale *= 1.3f;
                         dust2.velocity.Y -= 6;
@@ -173,7 +173,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         Dust dust1;
                         Vector2 position1 = npc.Center;
-                        dust1 = Main.dust[Dust.NewDust(position1, 20, 20, Terraria.ModLoader.ModContent.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
+                        dust1 = Main.dust[Dust.NewDust(position1, 20, 20, ModContent.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
                         dust1.noGravity = false;
                         dust1.scale *= 1.3f;
                         dust1.velocity.Y -= 6;
@@ -279,7 +279,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     for (int i = 0; i < 3; i++)
                     {
                         Vector2 Pos = new Vector2(npc.position.X + Main.rand.Next(0, 444), npc.position.Y - Main.rand.Next(0, 100));
-                        Projectile.NewProjectile(Pos, Vector2.Zero, Terraria.ModLoader.ModContent.ProjectileType<ShenDeathBoom>(), 0, 0, Main.myPlayer, Main.rand.Next(3));
+                        Projectile.NewProjectile(Pos, Vector2.Zero, ModContent.ProjectileType<ShenDeathBoom>(), 0, 0, Main.myPlayer, Main.rand.Next(3));
                     }
                 }
             }
@@ -288,7 +288,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void NPCLoot()
         {
             int i = AAWorld.downedShen ? 0 : 1;
-            NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, Terraria.ModLoader.ModContent.NPCType<ShenDeath>(), 0, i);
+            NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<ShenDeath>(), 0, i);
         }
     }
 
@@ -452,7 +452,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     Dust dust1;
                     Vector2 position1 = npc.Center;
-                    dust1 = Main.dust[Dust.NewDust(position1, 20, 20, Terraria.ModLoader.ModContent.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
+                    dust1 = Main.dust[Dust.NewDust(position1, 20, 20, ModContent.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
                     dust1.noGravity = false;
                     dust1.scale *= 1.3f;
                     dust1.velocity.Y -= 6;
@@ -519,7 +519,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     {
                         Dust dust1;
                         Vector2 position1 = npc.Center;
-                        dust1 = Main.dust[Dust.NewDust(position1, 20, 20, Terraria.ModLoader.ModContent.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
+                        dust1 = Main.dust[Dust.NewDust(position1, 20, 20, ModContent.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
                         dust1.noGravity = false;
                         dust1.scale *= 1.3f;
                         dust1.velocity.Y -= 6;

@@ -57,7 +57,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             for (int num189 = 0; num189 < 1; num189++)
             {
-                int num190 = Dust.NewDust(projectile.Center, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 0);
+                int num190 = Dust.NewDust(projectile.Center, projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 0);
 
                 Main.dust[num190].scale *= 1.3f;
                 Main.dust[num190].fadeIn = 1f;
@@ -81,7 +81,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.DragonFire>(), 300);
+            target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 300);
 
             Kill(0);
         }

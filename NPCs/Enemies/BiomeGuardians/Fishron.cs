@@ -237,7 +237,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
                 int num589 = 0;
                 while (num589 < damage / npc.lifeMax * 50.0)
                 {
-                    int num590 = Dust.NewDust(npc.position, npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, default, 1.5f);
+                    int num590 = Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, default, 1.5f);
                     Main.dust[num590].velocity *= 1.5f;
                     Main.dust[num590].noGravity = true;
                     num589++;
@@ -246,7 +246,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
             }
             for (int num591 = 0; num591 < 10; num591++)
             {
-                int num592 = Dust.NewDust(npc.position, npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, default, 1.5f);
+                int num592 = Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, default, 1.5f);
                 Main.dust[num592].velocity *= 2f;
                 Main.dust[num592].noGravity = true;
             }
@@ -261,7 +261,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
 		{
             if (Main.rand.Next(3) == 0)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, Terraria.ModLoader.ModContent.ItemType<Items.Materials.OceanWhisper>(), 1, false, 0, false, false);
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Materials.OceanWhisper>(), 1, false, 0, false, false);
             }
         }
 

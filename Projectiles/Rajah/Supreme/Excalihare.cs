@@ -76,7 +76,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
                 projectile.height = height;
                 projectile.Center = projectile.position;
             }
-            int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, Terraria.ModLoader.ModContent.ProjectileType<ExcalihareBoom>(), projectile.damage, projectile.knockBack, Main.myPlayer);
+            int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, ModContent.ProjectileType<ExcalihareBoom>(), projectile.damage, projectile.knockBack, Main.myPlayer);
             Main.projectile[p].Center = projectile.Center;
             Main.projectile[p].netUpdate = true;
             return false;
@@ -112,15 +112,15 @@ namespace AAMod.Projectiles.Rajah.Supreme
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.InfinityOverload>(), 120);
-            int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, Terraria.ModLoader.ModContent.ProjectileType<ExcalihareBoom>(), projectile.damage, projectile.knockBack, Main.myPlayer);
+            target.AddBuff(ModContent.BuffType<Buffs.InfinityOverload>(), 120);
+            int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, ModContent.ProjectileType<ExcalihareBoom>(), projectile.damage, projectile.knockBack, Main.myPlayer);
             Main.projectile[p].Center = projectile.Center;
             Main.projectile[p].netUpdate = true;
         }
 
         public override void Kill(int i)
         {
-            int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, Terraria.ModLoader.ModContent.ProjectileType<ExcalihareBoom>(), projectile.damage, projectile.knockBack, Main.myPlayer);
+            int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, ModContent.ProjectileType<ExcalihareBoom>(), projectile.damage, projectile.knockBack, Main.myPlayer);
             Main.projectile[p].Center = projectile.Center;
             Main.projectile[p].netUpdate = true;
         }

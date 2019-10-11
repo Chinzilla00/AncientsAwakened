@@ -20,7 +20,7 @@ namespace AAMod.Tiles.Crafters
 			disableSmartCursor = true;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Evil Altar");
-            dustType = Terraria.ModLoader.ModContent.DustType<Dusts.InfinityOverloadP>();
+            dustType = ModContent.DustType<Dusts.InfinityOverloadP>();
             AddMapEntry(new Color(120, 0, 160), name);
             adjTiles = new int[] { TileID.DemonAltar };
         }
