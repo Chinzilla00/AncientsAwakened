@@ -8,7 +8,7 @@ using BaseMod;
 using Terraria.Graphics.Shaders;
 using System;
 
-namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
+namespace AAMod.NPCs.Bosses.AH.Ashe
 {
     [AutoloadBossHead]
     public class Ashe : ModNPC
@@ -67,7 +67,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                 case 0:
                     if (!AliveCheck(player))
                         break;
-                    IdleFrames();
                     if (npc.ai[1]++ > 120 / (Main.expertMode? 2 : 1))
                     {
                         AIChange();
@@ -144,25 +143,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                         AIChange();
                     }
 
-                    if (Frame < 16)
-                    {
-                        Frame = 16;
-                    }
-                    if (npc.frameCounter++ >= 10)
-                    {
-                        npc.frameCounter = 0;
-                        Frame++;
-                    }
-                    if (Frame > 23)
-                    {
-                        Frame = 23;
-                    }
+                    
 
                     break;
                 case 4: //Melee prep
                     if (!AliveCheck(player))
                         break;
-                    IdleFrames();
                     targetPos = player.Center;
                     targetPos.X += 400 * (npc.Center.X < targetPos.X ? -1 : 1);
                     targetPos.Y -= 400;
@@ -180,20 +166,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                 case 5: //Melee
                     if (!AliveCheck(player))
                         break;
-
-                    if (Frame < 24)
-                    {
-                        Frame = 24;
-                    }
-                    if (npc.frameCounter++ >= 10)
-                    {
-                        npc.frameCounter = 0;
-                        Frame++;
-                    }
-                    if (Frame >= 31)
-                    {
-                        Frame = 31;
-                    }
 
                     if (npc.Center.Y > player.Center.Y + 700 || Math.Abs(npc.Center.X - player.Center.X) > 1500)
                     {
@@ -214,20 +186,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                 case 6: //prepare for queen bee dash
                     if (!AliveCheck(player))
                         break;
-
-                    if (npc.frameCounter++ >= 12)
-                    {
-                        npc.frameCounter = 0;
-                        Frame++;
-                    }
-                    if (Frame >= 11)
-                    {
-                        Frame = 11;
-                    }
-                    if (Frame < 8)
-                    {
-                        Frame = 8;
-                    }
 
                     if (++npc.ai[1] > 48)
                     {
@@ -250,20 +208,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                     break;
 
                 case 7: //Dash
-                    if (Frame < 12)
-                    {
-                        Frame = 12;
-                    }
-                    if (npc.frameCounter++ >= 12)
-                    {
-                        npc.frameCounter = 0;
-                        Frame++;
-                    }
-                    if (Frame >= 16)
-                    {
-                        Frame = 12;
-                    }
-
                     if (++npc.ai[1] > 240 || (Math.Sign(npc.velocity.X) > 0 ? npc.Center.X > player.Center.X + 900 : npc.Center.X < player.Center.X - 900))
                     {
                         npc.ai[1] = 0;
@@ -297,22 +241,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                 case 9:
                     if (!AliveCheck(player))
                         break;
-
-                    if (Frame < 24)
-                    {
-                        Frame = 24;
-                    }
-                    if (npc.frameCounter++ >= 10)
-                    {
-                        npc.frameCounter = 0;
-                        Frame++;
-                    }
-                    if (Frame >= 31)
-                    {
-                        Frame = 31;
-                    }
-
-                    if (npc.ai[1]++ > 70)
+                    if (npc.ai[1]++ > 140)
                     {
                         FireMagic(npc);
                         npc.ai[0] = npc.ai[3];
@@ -326,33 +255,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                         break;
                     npc.ai[0] = 0;
                     break;
-            }
-        }
-
-        public void IdleFrames()
-        {
-            if (npc.frameCounter++ >= 10)
-            {
-                npc.frameCounter = 0;
-                Frame++;
-            }
-            if (!FlyingBack)
-            {
-                if (Frame > 3)
-                {
-                    Frame = 0;
-                }
-            }
-            else
-            {
-                if (Frame >= 8)
-                {
-                    Frame = 0;
-                }
-                if (Frame < 4)
-                {
-                    Frame = 4;
-                }
             }
         }
 
@@ -769,6 +671,81 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
 
         public override void FindFrame(int frameHeight)
         {
+            if (npc.frameCounter++ >= 10)
+            {
+                npc.frameCounter = 0;
+                Frame++;
+            }
+            if (npc.ai[0] == Idle || npc.ai[0] == MeleePrep || (npc.ai[0] == SummonDragon && npc.ai[1] < 70))
+            {
+                if (!FlyingBack)
+                {
+                    if (Frame > 3)
+                    {
+                        Frame = 0;
+                    }
+                }
+                else
+                {
+                    if (Frame >= 8)
+                    {
+                        Frame = 0;
+                    }
+                    if (Frame < 4)
+                    {
+                        Frame = 4;
+                    }
+                }
+            }
+            else if (npc.ai[0] == ChargePrep)
+            {
+                if (Frame >= 11)
+                {
+                    Frame = 11;
+                }
+                if (Frame < 8)
+                {
+                    Frame = 8;
+                }
+            }
+            else if (npc.ai[0] == Charge)
+            {
+                if (Frame < 12)
+                {
+                    Frame = 12;
+                }
+                if (Frame >= 16)
+                {
+                    Frame = 12;
+                }
+            }
+            else if (npc.ai[0] == CastMagic0 || npc.ai[0] == CastMagic2)
+            {
+                if (Frame < 16)
+                {
+                    Frame = 16;
+                }
+                if (npc.frameCounter++ >= 10)
+                {
+                    npc.frameCounter = 0;
+                    Frame++;
+                }
+                if (Frame > 23)
+                {
+                    Frame = 23;
+                }
+            }
+            else if (npc.ai[0] == Vortex || npc.ai[0] == Melee || npc.ai[0] == CastMagic1 || (npc.ai[0] == SummonDragon && npc.ai[1] > 70))
+            {
+                if (Frame < 24)
+                {
+                    Frame = 24;
+                }
+                if (Frame >= 31)
+                {
+                    Frame = 31;
+                }
+            }
             npc.frame.Y = Frame * frameHeight;
         }
 
