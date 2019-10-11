@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Enemies.Sky
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.noTileCollide = true;
-            if (npc.type == mod.NPCType<SeraphA>())
+            if (npc.type == ModContent.NPCType<SeraphA>())
             {
                 npc.alpha = 255;
             }
@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Enemies.Sky
 
         public override bool PreAI()
         {
-            if (npc.type == mod.NPCType<SeraphA>() && !(NPC.AnyNPCs(mod.NPCType<Athena>()) || NPC.AnyNPCs(mod.NPCType<AthenaA>())))
+            if (npc.type == ModContent.NPCType<SeraphA>() && !(NPC.AnyNPCs(ModContent.NPCType<Athena>()) || NPC.AnyNPCs(ModContent.NPCType<AthenaA>())))
             {
                 npc.velocity.Y -= .2f;
                 npc.velocity.X *= .95f;
@@ -65,7 +65,7 @@ namespace AAMod.NPCs.Enemies.Sky
 
             if (npc.ai[3]++ > 30 && Main.netMode != 1)
             {
-                int projType = mod.ProjectileType<SeraphFeather>();
+                int projType = ModContent.ProjectileType<SeraphFeather>();
                 float spread = 30f * 0.0174f;
                 Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
                 dir *= 14f;

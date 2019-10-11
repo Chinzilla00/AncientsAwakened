@@ -71,14 +71,14 @@ namespace AAMod.NPCs.Enemies.Other
             {
                 for (int i = 0; i < 5; i++)
                 {
-                    Dust.NewDust(npc.Center, npc.width, npc.height, mod.DustType<Dusts.AkumaDust>());
+                    Dust.NewDust(npc.Center, npc.width, npc.height, ModContent.DustType<Dusts.AkumaDust>());
                 }
             }
         }
 
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
         {
-            target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 180);
+            target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 180);
         }
 
         public override void NPCLoot()

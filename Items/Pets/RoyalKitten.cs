@@ -31,7 +31,7 @@ namespace AAMod.Items.Pets
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (player.dead)
             {
                 modPlayer.RoyalKitten = false;

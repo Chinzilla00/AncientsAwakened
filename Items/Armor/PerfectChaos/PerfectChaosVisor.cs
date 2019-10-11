@@ -48,7 +48,7 @@ The power of discordian rage radiates from this hood");
             player.setBonus = @"'Chaos empowers you'
 As your health decreases, your ranged damage and critical chance increases
 Your ranged attacks raze your oponents with the flames of discordian hell";
-            player.GetModPlayer<AAPlayer>(mod).perfectChaosRa = true;
+            player.GetModPlayer<AAPlayer>().perfectChaosRa = true;
             player.AddBuff(mod.BuffType("ChaosWrath"), 2);
         }
 

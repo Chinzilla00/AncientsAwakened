@@ -117,7 +117,7 @@ namespace AAMod.NPCs.Bosses.Athena
                             if (npc.ai[0] >= 1200)
                             {
                                 if (Main.netMode != 1) BaseUtility.Chat("A VARIAN ALWAYS PUTS UP ONE LAST FIGHT!!!", Color.CornflowerBlue);
-                                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaA>(), false, npc.Center);
+                                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], ModContent.NPCType<AthenaA>(), false, npc.Center);
 
                                 int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer);
                                 Main.projectile[b].Center = npc.Center;
@@ -181,7 +181,7 @@ namespace AAMod.NPCs.Bosses.Athena
                             else if (npc.ai[0] >= 1200)
                             {
                                 if (Main.netMode != 1) BaseUtility.Chat("Stay safe.", Color.CornflowerBlue);
-                                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType<AthenaFlee>(), false, npc.Center);
+                                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], ModContent.NPCType<AthenaFlee>(), false, npc.Center);
                                 npc.active = false;
                                 npc.netUpdate = true;
                             }

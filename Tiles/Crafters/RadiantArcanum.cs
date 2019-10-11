@@ -22,7 +22,7 @@ namespace AAMod.Tiles.Crafters
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("RadiantArcanum");
-            dustType = mod.DustType<Dusts.RadiumDust>();
+            dustType = ModContent.DustType<Dusts.RadiumDust>();
             AddMapEntry(new Color(200, 160, 0), name);
             disableSmartCursor = true;
             adjTiles = new int[]

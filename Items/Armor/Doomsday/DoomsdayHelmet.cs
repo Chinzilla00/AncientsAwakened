@@ -83,7 +83,7 @@ Mana usage reduced by 30%";
             player.manaCost *= .7f;
             player.AddBuff(BuffID.Hunter, 2);
             player.AddBuff(BuffID.NightOwl, 2);
-            player.GetModPlayer<AAPlayer>(mod).zeroSet = true;
+            player.GetModPlayer<AAPlayer>().zeroSet = true;
 		}
 
 		public override void AddRecipes()

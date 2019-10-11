@@ -26,7 +26,7 @@ namespace AAMod.Projectiles
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(SoundID.Item14, projectile.position);
-            int Proj = Projectile.NewProjectile(projectile.position, Vector2.Zero, mod.ProjectileType<ChaosBoomEX>(), projectile.damage, projectile.knockBack, Main.myPlayer, Main.rand.Next(2), 1);
+            int Proj = Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<ChaosBoomEX>(), projectile.damage, projectile.knockBack, Main.myPlayer, Main.rand.Next(2), 1);
             Main.projectile[Proj].Center = projectile.Center;
         }
 

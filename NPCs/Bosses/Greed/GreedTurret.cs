@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
             if (npc.ai[0] == 1)
             {
-                int type = mod.ProjectileType<GreedLaser>();
+                int type = ModContent.ProjectileType<GreedLaser>();
                 float Speed = 8f;
                 float rotation = (float)Math.Atan2(npcCenter.Y - (player.position.Y + (player.height * 0.5f)), npcCenter.X - (player.position.X + (player.width * 0.5f)));
 
@@ -63,7 +63,7 @@ namespace AAMod.NPCs.Bosses.Greed
             }
             if (npc.ai[0] == 2)
             {
-                int type = mod.ProjectileType<GreedLaser>();
+                int type = ModContent.ProjectileType<GreedLaser>();
                 float Speed = 7f;
                 float rotation = (float)Math.Atan2(npcCenter.Y - (player.position.Y + (player.height * 0.5f)), npcCenter.X - (player.position.X + (player.width * 0.5f)));
 
@@ -79,7 +79,7 @@ namespace AAMod.NPCs.Bosses.Greed
             }
             if (npc.ai[0] >= 3)
             {
-                int type = mod.ProjectileType<DesireBeam>();
+                int type = ModContent.ProjectileType<DesireBeam>();
                 float Speed = 10f;
                 float rotation = (float)Math.Atan2(npcCenter.Y - (player.Center.Y), npcCenter.X - (player.Center.X));
 

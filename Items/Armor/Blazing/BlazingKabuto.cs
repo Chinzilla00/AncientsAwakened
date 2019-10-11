@@ -41,7 +41,7 @@ Enemies are more likely to target you
 Your Swung weapons set your enemies ablaze";
             player.endurance = .05f;
             player.aggro += 4;
-            player.GetModPlayer<AAPlayer>(mod).kindledSet = true;
+            player.GetModPlayer<AAPlayer>().kindledSet = true;
         }
 
         public override void AddRecipes()

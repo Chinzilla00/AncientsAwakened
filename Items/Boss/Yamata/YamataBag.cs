@@ -57,7 +57,7 @@ namespace AAMod.Items.Boss.Yamata
             }
             if (Main.rand.Next(20) == 0)
             {
-                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PMLDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("DreadScale"), Main.rand.Next(30, 40));

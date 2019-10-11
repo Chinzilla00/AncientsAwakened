@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             for (int num468 = 0; num468 < 10; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, NPC.AnyNPCs(mod.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179), 1f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179), 1f);
                 Main.dust[num469].noGravity = true;
             }
             projectile.damage = 0;
@@ -42,18 +42,18 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void Kill(int timeLeft)
         {
-            int MinionType = mod.NPCType<RabbitcopterSoldier>();
-            if (NPC.AnyNPCs(mod.NPCType<SupremeRajah>()))
+            int MinionType = ModContent.NPCType<RabbitcopterSoldier>();
+            if (NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
             {
-                MinionType = mod.NPCType<RabbitcopterSoldier4>();
+                MinionType = ModContent.NPCType<RabbitcopterSoldier4>();
             }
-            else if (NPC.AnyNPCs(mod.NPCType<Rajah7>()) || NPC.AnyNPCs(mod.NPCType<Rajah8>()) || NPC.AnyNPCs(mod.NPCType<Rajah9>()))
+            else if (NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah9>()))
             {
-                MinionType = mod.NPCType<RabbitcopterSoldier3>();
+                MinionType = ModContent.NPCType<RabbitcopterSoldier3>();
             }
-            else if (NPC.AnyNPCs(mod.NPCType<Rajah4>()) || NPC.AnyNPCs(mod.NPCType<Rajah5>()) || NPC.AnyNPCs(mod.NPCType<Rajah6>()))
+            else if (NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah6>()))
             {
-                MinionType = mod.NPCType<RabbitcopterSoldier2>();
+                MinionType = ModContent.NPCType<RabbitcopterSoldier2>();
             }
 
 
@@ -117,7 +117,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             for (int num468 = 0; num468 < 10; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, NPC.AnyNPCs(mod.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179), 1f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179), 1f);
                 Main.dust[num469].noGravity = true;
             }
             projectile.damage = 0;
@@ -131,18 +131,18 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void Kill(int timeLeft)
         {
-            int MinionType = mod.NPCType<BunnyBrawler>();
-            if (NPC.AnyNPCs(mod.NPCType<SupremeRajah>()))
+            int MinionType = ModContent.NPCType<BunnyBrawler>();
+            if (NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
             {
-                MinionType = mod.NPCType<BunnyBrawler4>();
+                MinionType = ModContent.NPCType<BunnyBrawler4>();
             }
-            else if (NPC.AnyNPCs(mod.NPCType<Rajah7>()) || NPC.AnyNPCs(mod.NPCType<Rajah8>()) || NPC.AnyNPCs(mod.NPCType<Rajah9>()))
+            else if (NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah9>()))
             {
-                MinionType = mod.NPCType<BunnyBrawler3>();
+                MinionType = ModContent.NPCType<BunnyBrawler3>();
             }
-            else if (NPC.AnyNPCs(mod.NPCType<Rajah4>()) || NPC.AnyNPCs(mod.NPCType<Rajah5>()) || NPC.AnyNPCs(mod.NPCType<Rajah6>()))
+            else if (NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah6>()))
             {
-                MinionType = mod.NPCType<BunnyBrawler2>();
+                MinionType = ModContent.NPCType<BunnyBrawler2>();
             }
 
 
@@ -205,7 +205,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             for (int num468 = 0; num468 < 10; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, NPC.AnyNPCs(mod.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179), 1f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()) ? Main.DiscoColor : new Color(107, 137, 179), 1f);
                 Main.dust[num469].noGravity = true;
             }
             projectile.damage = 0;
@@ -219,18 +219,18 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void Kill(int timeLeft)
         {
-            int MinionType = mod.NPCType<BunnyBattler>();
-            if (NPC.AnyNPCs(mod.NPCType<SupremeRajah>()))
+            int MinionType = ModContent.NPCType<BunnyBattler>();
+            if (NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
             {
-                MinionType = mod.NPCType<BunnyBattler4>();
+                MinionType = ModContent.NPCType<BunnyBattler4>();
             }
-            else if (NPC.AnyNPCs(mod.NPCType<Rajah7>()) || NPC.AnyNPCs(mod.NPCType<Rajah8>()) || NPC.AnyNPCs(mod.NPCType<Rajah9>()))
+            else if (NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah9>()))
             {
-                MinionType = mod.NPCType<BunnyBattler3>();
+                MinionType = ModContent.NPCType<BunnyBattler3>();
             }
-            else if (NPC.AnyNPCs(mod.NPCType<Rajah4>()) || NPC.AnyNPCs(mod.NPCType<Rajah5>()) || NPC.AnyNPCs(mod.NPCType<Rajah6>()))
+            else if (NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah6>()))
             {
-                MinionType = mod.NPCType<BunnyBattler2>();
+                MinionType = ModContent.NPCType<BunnyBattler2>();
             }
 
 

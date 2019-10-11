@@ -32,11 +32,11 @@ namespace AAMod.Tiles.Boss
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Dragon Egg");
-            drop1 = mod.ItemType<Pyrosphere>();
-            drop2 = mod.ItemType<Items.Ranged.Firebuster>();
-            drop3 = mod.ItemType<Items.Magic.Volley>();
-            drop4 = mod.ItemType<Items.Pets.DragonsSoul>();
-            drop5 = mod.ItemType<Items.Accessories.DragonsGuard>();
+            drop1 = ModContent.ItemType<Pyrosphere>();
+            drop2 = ModContent.ItemType<Items.Ranged.Firebuster>();
+            drop3 = ModContent.ItemType<Items.Magic.Volley>();
+            drop4 = ModContent.ItemType<Items.Pets.DragonsSoul>();
+            drop5 = ModContent.ItemType<Items.Accessories.DragonsGuard>();
             AddMapEntry(new Color(102, 45, 42), name);
             disableSmartCursor = true;
         }

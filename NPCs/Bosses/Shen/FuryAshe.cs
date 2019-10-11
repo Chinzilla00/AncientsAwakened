@@ -89,7 +89,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override bool CheckActive()
         {
-            return !NPC.AnyNPCs(mod.NPCType<ShenA>());
+            return !NPC.AnyNPCs(ModContent.NPCType<ShenA>());
         }
 
 
@@ -134,7 +134,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     if (Main.netMode != 1)
                     {
-                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<FuryAsheVanish>(), 0);
+                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<FuryAsheVanish>(), 0);
                         Main.npc[DeathAnim].velocity = npc.velocity;
                         Main.npc[DeathAnim].netUpdate = true;
                     }
@@ -157,7 +157,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (internalAI[3] >= 90)
                     {
                         internalAI[3] = 0;
-                        if (NPC.CountNPCS(mod.NPCType<Shenling>()) < 3)
+                        if (NPC.CountNPCS(ModContent.NPCType<Shenling>()) < 3)
                         {
                             internalAI[0] = Main.rand.Next(7);
                         }
@@ -329,7 +329,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 internalAI[3]++;
                 if (internalAI[3] > 240)
                 {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<Shenling>(), 0);
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<Shenling>(), 0);
                     internalAI[0] = 0;
                     internalAI[1] = 0;
                     internalAI[2] = 0;
@@ -443,7 +443,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         private void RingEffects2()
         {
-            if (internalAI[0] == AISTATE_DRAGON || NPC.AnyNPCs(mod.NPCType<AsheOrbiter>())) //If summoning noodle
+            if (internalAI[0] == AISTATE_DRAGON || NPC.AnyNPCs(ModContent.NPCType<AsheOrbiter>())) //If summoning noodle
             {
                 RingRotation2 += 0.02f;
                 if (scale2 < 1f)
@@ -498,7 +498,7 @@ namespace AAMod.NPCs.Bosses.Shen
                             infernoPos += npc.Center;
                             infernoPos.Y -= 40;
                         }
-                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, mod.ProjectileType<DiscordianInferno>(), npc.damage / 2, 0f, Main.myPlayer, 0f, 0f);
+                        int projectile = Projectile.NewProjectile((int)infernoPos.X, (int)infernoPos.Y, vel.X, vel.Y, ModContent.ProjectileType<DiscordianInferno>(), npc.damage / 2, 0f, Main.myPlayer, 0f, 0f);
                         Main.projectile[projectile].velocity = vel;
                         Main.projectile[projectile].netUpdate = true;
                     }
@@ -507,15 +507,15 @@ namespace AAMod.NPCs.Bosses.Shen
             else if(internalAI[0] == 2)
             {
 
-                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<ShenABreath>(), ref shootAI[0], 5, npc.damage / 2, 12);
+                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<ShenABreath>(), ref shootAI[0], 5, npc.damage / 2, 12);
             }
             else if(internalAI[0] == 3)
             {
-                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<Akuma.Awakened.AkumaRock>(), npc.damage, 3, 5f, 0, 0, 0);
+                BaseAI.FireProjectile(player.Center, npc, ModContent.ProjectileType<Akuma.Awakened.AkumaRock>(), npc.damage, 3, 5f, 0, 0, 0);
             }
             else if (internalAI[0] == 4)
             {
-                BaseAI.FireProjectile(player.Center, npc, mod.ProjectileType<Akuma.AkumaFireProj>(), npc.damage, 3, 5f, 0, 0, 0);
+                BaseAI.FireProjectile(player.Center, npc, ModContent.ProjectileType<Akuma.AkumaFireProj>(), npc.damage, 3, 5f, 0, 0, 0);
             }
         }
 
@@ -531,7 +531,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (Main.netMode != 1) BaseUtility.Chat("AGH! Sorry papa..! I gotta bail!", new Color(102, 20, 48));
             }
-            int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<FuryAsheVanish>(), 0);
+            int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<FuryAsheVanish>(), 0);
             Main.npc[DeathAnim].velocity = npc.velocity;
             npc.value = 0f;
             npc.boss = false;
@@ -606,7 +606,7 @@ namespace AAMod.NPCs.Bosses.Shen
             Rectangle ShieldFrame = new Rectangle(0, 0, Barrier.Width, Barrier.Height);
 
             int red = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
-            int purple = GameShaders.Armor.GetShaderIdFromItemId(mod.ItemType<Items.Dyes.DiscordianDye>());
+            int purple = GameShaders.Armor.GetShaderIdFromItemId(ModContent.ItemType<Items.Dyes.DiscordianDye>());
 
             if (internalAI[0] == AISTATE_MELEE)
             {

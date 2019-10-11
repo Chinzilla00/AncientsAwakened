@@ -44,7 +44,7 @@ Grants a strong dash that shreds through enemies in a fiery blaze of glory");
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             player.buffImmune[20] = true;
             player.buffImmune[22] = true;
             player.buffImmune[23] = true;
@@ -82,10 +82,10 @@ Grants a strong dash that shreds through enemies in a fiery blaze of glory");
             player.moveSpeed += 2f;
             player.endurance += 0.2f;
             player.dash = 3;
-            player.moveSpeed += player.GetModPlayer<AAPlayer>(mod).ZoneMire ? .5f : 0f;
-            item.defense = player.GetModPlayer<AAPlayer>(mod).ZoneInferno ? 18 : 8;
+            player.moveSpeed += player.GetModPlayer<AAPlayer>().ZoneMire ? .5f : 0f;
+            item.defense = player.GetModPlayer<AAPlayer>().ZoneInferno ? 18 : 8;
 
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno || player.GetModPlayer<AAPlayer>(mod).ZoneMire)
+            if (player.GetModPlayer<AAPlayer>().ZoneInferno || player.GetModPlayer<AAPlayer>().ZoneMire)
             {
                 player.allDamage += .3f;
             }

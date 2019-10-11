@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         {
             if (Main.rand.Next(7) == 0)
             {
-                target.AddBuff(mod.BuffType<Buffs.Unstable>(), 180);
+                target.AddBuff(ModContent.BuffType<Buffs.Unstable>(), 180);
             }
         }
 

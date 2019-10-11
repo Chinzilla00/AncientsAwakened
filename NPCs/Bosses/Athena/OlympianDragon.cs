@@ -34,14 +34,14 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override bool PreAI()
         {
-            if (!NPC.AnyNPCs(mod.NPCType<Athena>()) || !NPC.AnyNPCs(mod.NPCType<AthenaA>()))
+            if (!NPC.AnyNPCs(ModContent.NPCType<Athena>()) || !NPC.AnyNPCs(ModContent.NPCType<AthenaA>()))
             {
                 npc.velocity *= .95f;
                 if (npc.alpha != 0)
                 {
                     for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                     {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 100);
+                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100);
                         Main.dust[num935].noGravity = true;
                         Main.dust[num935].noLight = false;
                     }
@@ -62,7 +62,7 @@ namespace AAMod.NPCs.Bosses.Athena
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                 {
-                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 100);
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100);
                     Main.dust[num935].noGravity = true;
                     Main.dust[num935].noLight = false;
                 }

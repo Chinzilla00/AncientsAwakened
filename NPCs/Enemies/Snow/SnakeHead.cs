@@ -71,20 +71,20 @@ namespace AAMod.NPCs.Enemies.Snow
         {
             for (int k = 0; k < 5; k++)
             {
-                Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.IceDust>(), hitDirection, -1f, 0);
+                Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.IceDust>(), hitDirection, -1f, 0);
             }
             if (npc.life == 0)
             {
                 for (int k = 0; k < 5; k++)
                 {
-                    Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.SnowDustLight>(), hitDirection, -1f, 0);
+                    Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.SnowDustLight>(), hitDirection, -1f, 0);
                 }
             }
         }
 
         public override bool PreNPCLoot()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Bosses.Serpent.SerpentHead>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<Bosses.Serpent.SerpentHead>()))
             {
                 return false;
             }

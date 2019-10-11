@@ -29,7 +29,7 @@ Below 1/3 of your maximum life, your melee and ranged attacks inflict Moonraze i
         {
             player.meleeDamage +=  1 - player.statLife / player.statLifeMax;
             player.rangedDamage += 1 - player.statLife / player.statLifeMax;
-            player.GetModPlayer<AAPlayer>(mod).HeartS = true;
+            player.GetModPlayer<AAPlayer>().HeartS = true;
 
             if (player.statLife > (player.statLifeMax * (2/3)))
             {
@@ -44,7 +44,7 @@ Below 1/3 of your maximum life, your melee and ranged attacks inflict Moonraze i
                 int maxAccessoryIndex = 5 + player.extraAccessorySlots;
                 for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    if (slot != i && player.armor[i].type == mod.ItemType<HeartOfPassion>())
+                    if (slot != i && player.armor[i].type == ModContent.ItemType<HeartOfPassion>())
                     {
                         return false;
                     }

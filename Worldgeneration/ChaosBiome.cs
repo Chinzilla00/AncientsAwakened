@@ -821,15 +821,15 @@ namespace AAMod.Worldgeneration
                 int type;
                 if (specialItem == 1)
                 {
-                    type = mod.ItemType<Items.Ranged.OdinsBlade>();
+                    type = ModContent.ItemType<Items.Ranged.OdinsBlade>();
                 }
                 else if (specialItem == 2)
                 {
-                    type = mod.ItemType<Items.Melee.RomulusTazesaber>();
+                    type = ModContent.ItemType<Items.Melee.RomulusTazesaber>();
                 }
                 else if (specialItem == 3)
                 {
-                    type = mod.ItemType<Items.Misc.AnubisBook>();
+                    type = ModContent.ItemType<Items.Misc.AnubisBook>();
                 }
                 else
                 {

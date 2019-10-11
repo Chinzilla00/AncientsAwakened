@@ -11,7 +11,7 @@ namespace AAMod.Mounts
 		public override void SetDefaults()
 		{
             mountData.spawnDust = DustID.Smoke;
-            mountData.buff = mod.BuffType<Buffs.PrettyPony>();
+            mountData.buff = ModContent.BuffType<Buffs.PrettyPony>();
             mountData.heightBoost = 44;
             mountData.flightTimeMax = 0;
             mountData.fallDamage = 0f;

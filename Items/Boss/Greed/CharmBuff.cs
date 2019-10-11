@@ -14,8 +14,8 @@ namespace AAMod.Items.Boss.Greed
         public override void Update(Player player, ref int buffIndex)
         {
             base.Update(player, ref buffIndex);
-            player.GetModPlayer<AAPlayer>(mod).Greed1 = true;
-            player.allDamage += player.GetModPlayer<AAPlayer>(mod).GreedyDamage / 100f;
+            player.GetModPlayer<AAPlayer>().Greed1 = true;
+            player.allDamage += player.GetModPlayer<AAPlayer>().GreedyDamage / 100f;
         }
 	}
 }

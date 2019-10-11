@@ -53,7 +53,7 @@ namespace AAMod.Items.Boss.Shen
 		{
             if (Main.rand.NextFloat() < 0.01f)
             {
-                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.SADevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("ChaosScale"), Main.rand.Next(30, 40));

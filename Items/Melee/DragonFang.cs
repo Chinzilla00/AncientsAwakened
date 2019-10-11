@@ -49,7 +49,7 @@ namespace AAMod.Items.Melee
                 item.useStyle = 1;
                 item.autoReuse = true;
                 item.channel = false;
-                item.shoot = mod.ProjectileType<Projectiles.AsgardianIce>();
+                item.shoot = ModContent.ProjectileType<Projectiles.AsgardianIce>();
             }
             else
             {
@@ -61,7 +61,7 @@ namespace AAMod.Items.Melee
                 item.useStyle = 5;
                 item.autoReuse = false;
                 item.channel = true;
-                item.shoot = mod.ProjectileType<Projectiles.ValkyrieSlash>();
+                item.shoot = ModContent.ProjectileType<Projectiles.ValkyrieSlash>();
             }
             return base.CanUseItem(player);
         }

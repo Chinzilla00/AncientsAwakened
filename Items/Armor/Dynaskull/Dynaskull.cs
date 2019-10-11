@@ -39,7 +39,7 @@ namespace AAMod.Items.Armor.Dynaskull
 
             player.setBonus = @"Your ranged projectiles have so much power behind them, they confuse the target due to concussive force";
             
-			player.GetModPlayer<AAPlayer>(mod).DynaskullSet = true;
+			player.GetModPlayer<AAPlayer>().DynaskullSet = true;
 		}
 
 		public override void AddRecipes()

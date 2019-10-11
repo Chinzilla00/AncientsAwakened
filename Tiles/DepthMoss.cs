@@ -24,7 +24,7 @@ namespace AAMod.Tiles
             soundType = 21;
             minPick = 65;
             AddMapEntry(new Color(0, 50, 140));
-            drop = mod.ItemType<Items.Blocks.Depthstone>();
+            drop = ModContent.ItemType<Items.Blocks.Depthstone>();
         }
 
         public override void RandomUpdate(int i, int j)

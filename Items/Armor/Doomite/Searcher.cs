@@ -35,7 +35,7 @@ namespace AAMod.Items.Armor.Doomite
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (player.dead)
             {
                 modPlayer.Searcher = false;
@@ -204,7 +204,7 @@ namespace AAMod.Items.Armor.Doomite
 			if (projectile.ai[0] == 0f)
 			{
 				float scaleFactor3 = 8f;
-				int num658 = mod.ProjectileType<Summoning.Minions.ProbeShot>();
+				int num658 = ModContent.ProjectileType<Summoning.Minions.ProbeShot>();
 				if (flag25 && projectile.ai[1] == 0f)
 				{
 					projectile.ai[1] += 1f;

@@ -18,7 +18,7 @@ namespace AAMod.Items.Accessories
 
         public override void UpdateEquip(Player player)
         {
-            player.GetModPlayer<AAPlayer>(mod).DragonsGuard = true;
+            player.GetModPlayer<AAPlayer>().DragonsGuard = true;
         }
 
         public override void SetStaticDefaults()

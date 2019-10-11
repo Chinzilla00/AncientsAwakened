@@ -27,9 +27,9 @@ namespace AAMod.Projectiles
         {
             if (projectile.localAI[1] > 7f)
             {
-                int num309 = Dust.NewDust(new Vector2(projectile.position.X - projectile.velocity.X * 4f + 2f, projectile.position.Y + 2f - projectile.velocity.Y * 4f), 8, 8, mod.DustType<Dusts.SnowDustLight>(), projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default, 1.25f);
+                int num309 = Dust.NewDust(new Vector2(projectile.position.X - projectile.velocity.X * 4f + 2f, projectile.position.Y + 2f - projectile.velocity.Y * 4f), 8, 8, ModContent.DustType<Dusts.SnowDustLight>(), projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default, 1.25f);
                 Main.dust[num309].velocity *= -0.25f;
-                num309 = Dust.NewDust(new Vector2(projectile.position.X - projectile.velocity.X * 4f + 2f, projectile.position.Y + 2f - projectile.velocity.Y * 4f), 8, 8, mod.DustType<Dusts.SnowDustLight>(), projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default, 1.25f);
+                num309 = Dust.NewDust(new Vector2(projectile.position.X - projectile.velocity.X * 4f + 2f, projectile.position.Y + 2f - projectile.velocity.Y * 4f), 8, 8, ModContent.DustType<Dusts.SnowDustLight>(), projectile.oldVelocity.X, projectile.oldVelocity.Y, 100, default, 1.25f);
                 Main.dust[num309].velocity *= -0.25f;
                 Main.dust[num309].position -= projectile.velocity * 0.5f;
             }
@@ -74,10 +74,10 @@ namespace AAMod.Projectiles
             {
                 float num795 = projectile.oldVelocity.X * (30f / num794);
                 float num796 = projectile.oldVelocity.Y * (30f / num794);
-                int num797 = Dust.NewDust(new Vector2(projectile.oldPosition.X - num795, projectile.oldPosition.Y - num796), 8, 8, mod.DustType<Dusts.SnowDustLight>(), projectile.oldVelocity.X, projectile.oldVelocity.Y, 27, default, 1.8f);
+                int num797 = Dust.NewDust(new Vector2(projectile.oldPosition.X - num795, projectile.oldPosition.Y - num796), 8, 8, ModContent.DustType<Dusts.SnowDustLight>(), projectile.oldVelocity.X, projectile.oldVelocity.Y, 27, default, 1.8f);
                 Main.dust[num797].noGravity = true;
                 Main.dust[num797].velocity *= 0.5f;
-                num797 = Dust.NewDust(new Vector2(projectile.oldPosition.X - num795, projectile.oldPosition.Y - num796), 8, 8, mod.DustType<Dusts.SnowDustLight>(), projectile.oldVelocity.X, projectile.oldVelocity.Y, 27, default, 1.4f);
+                num797 = Dust.NewDust(new Vector2(projectile.oldPosition.X - num795, projectile.oldPosition.Y - num796), 8, 8, ModContent.DustType<Dusts.SnowDustLight>(), projectile.oldVelocity.X, projectile.oldVelocity.Y, 27, default, 1.4f);
                 Main.dust[num797].velocity *= 0.05f;
             }
         }

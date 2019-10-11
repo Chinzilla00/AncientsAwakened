@@ -65,7 +65,7 @@ namespace AAMod.Tiles.Plants
 			int stage = Main.tile[i, j].frameX / 18;
 			if (stage == 2)
 			{
-				Item.NewItem(i * 16, j * 16, 0, 0, mod.ItemType<Items.Placeable.ExampleHerbSeeds>());
+				Item.NewItem(i * 16, j * 16, 0, 0, ModContent.ItemType<Items.Placeable.ExampleHerbSeeds>());
 			}
 			return false;
 		}*/

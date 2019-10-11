@@ -38,7 +38,7 @@ Ignores 5 Enemy defense");
         {
             player.endurance += .07f;
             player.allDamage += .07f;
-            player.GetModPlayer<AAPlayer>(mod).clawsOfChaos = true;
+            player.GetModPlayer<AAPlayer>().clawsOfChaos = true;
         }
 
         public override bool CanEquipAccessory(Player player, int slot)
@@ -48,11 +48,11 @@ Ignores 5 Enemy defense");
                 int maxAccessoryIndex = 5 + player.extraAccessorySlots;
                 for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    if (slot != i && player.armor[i].type == mod.ItemType<Broodmother.DragonCape>())
+                    if (slot != i && player.armor[i].type == ModContent.ItemType<Broodmother.DragonCape>())
                     {
                         return false;
                     }
-                    if (slot != i && player.armor[i].type == mod.ItemType<Hydra.HydraPendant>())
+                    if (slot != i && player.armor[i].type == ModContent.ItemType<Hydra.HydraPendant>())
                     {
                         return false;
                     }

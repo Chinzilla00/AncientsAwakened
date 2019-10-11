@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Rajah
             item.width = 30;
             item.height = 10;
             item.damage = 90;
-            item.shoot = mod.ProjectileType<Projectiles.Rajah.Punisher>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Rajah.Punisher>();
             item.shootSpeed = 15f;
             item.UseSound = SoundID.Item1;
             item.rare = 8;

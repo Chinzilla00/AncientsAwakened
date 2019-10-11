@@ -471,7 +471,7 @@ Legendry Weapon.";
 			{
 				Projectile p = Main.projectile[i];
 				int num9 = (int)p.ai[1];
-				if (p.active && p.type == mod.ProjectileType<InvokerStaffproj>() && p.ai[0] == 1f && npc == Main.npc[num9]) 
+				if (p.active && p.type == ModContent.ProjectileType<InvokerStaffproj>() && p.ai[0] == 1f && npc == Main.npc[num9]) 
 				{
 					InvokedCount++;
 					npc.lifeRegen -= 10;
@@ -601,7 +601,7 @@ Legendry Weapon.";
 				{
 					Projectile p = Main.projectile[q];
 					bool KILL = false;
-					if (p.active && p.type != mod.ProjectileType<InvokedHeal>() && p.type != mod.ProjectileType<InvokedDamage>() && p.type != mod.ProjectileType<InvokerStaffproj>() && p.type != mod.ProjectileType<InvokedRune>())
+					if (p.active && p.type != ModContent.ProjectileType<InvokedHeal>() && p.type != ModContent.ProjectileType<InvokedDamage>() && p.type != ModContent.ProjectileType<InvokerStaffproj>() && p.type != ModContent.ProjectileType<InvokedRune>())
 					{
 						//if(Main.netMode != 0 && p.owner != Main.clientPlayer.whoAmI) KILL = true;
 						KILL = true;

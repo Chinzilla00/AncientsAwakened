@@ -184,7 +184,7 @@ namespace AAMod.Projectiles.Athena
             }
             if (projectile.ai[0] == 0f)
             {
-                int num658 = mod.ProjectileType<Feather>();
+                int num658 = ModContent.ProjectileType<Feather>();
                 if (flag25 && projectile.ai[1] == 0f)
                 {
                     projectile.ai[1] += 1f;

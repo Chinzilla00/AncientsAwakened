@@ -41,7 +41,7 @@ namespace AAMod.Items.Summoning.Minions
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (player.dead) modPlayer.SkullMinion = false;
             if (modPlayer.SkullMinion) projectile.timeLeft = 2;
             player.AddBuff(mod.BuffType("SkullMinion"), 3600);
@@ -52,7 +52,7 @@ namespace AAMod.Items.Summoning.Minions
                 int num501 = 20;
                 for (int num502 = 0; num502 < num501; num502++)
                 {
-                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, AAColor.Hallow, 1f);
+                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, ModContent.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, AAColor.Hallow, 1f);
                     Main.dust[num503].velocity *= 2f;
                 }
             }
@@ -239,7 +239,7 @@ namespace AAMod.Items.Summoning.Minions
             if (projectile.ai[0] == 0f)
             {
                 float scaleFactor3 = 24f;
-                int num658 = mod.ProjectileType<SkullShot>();
+                int num658 = ModContent.ProjectileType<SkullShot>();
                 if (flag25 && projectile.ai[1] == 0f)
                 {
                     projectile.ai[1] += 1f;

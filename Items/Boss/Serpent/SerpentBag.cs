@@ -35,7 +35,7 @@ namespace AAMod.Items.Boss.Serpent
             }
             if (Main.rand.Next(20) == 0)
             {
-                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PHMDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("SnowMana"), Main.rand.Next(15, 20));

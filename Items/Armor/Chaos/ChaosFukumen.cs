@@ -42,7 +42,7 @@ Night Vision and hunter effects
 25% reduced ammo consumption";
             player.rangedDamage += .25f;
             player.aggro -= 7;
-            player.GetModPlayer<AAPlayer>(mod).ChaosRa = true;
+            player.GetModPlayer<AAPlayer>().ChaosRa = true;
             player.ammoCost75 = true;
             player.nightVision = true;
 			player.detectCreature = true;

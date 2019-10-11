@@ -25,7 +25,7 @@ Shield has a 5 minute cooldown");
 
         public override void UpdateEquip(Player p)
         {
-            p.GetModPlayer<AAPlayer>(mod).SagShield = true;
+            p.GetModPlayer<AAPlayer>().SagShield = true;
         }
     }
 }

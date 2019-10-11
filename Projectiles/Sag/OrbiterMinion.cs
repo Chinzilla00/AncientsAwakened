@@ -47,7 +47,7 @@ namespace AAMod.Projectiles.Sag
         public override void AI()
 		{
 			Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (player.dead || !player.HasBuff(mod.BuffType("SagOrbiter"))) projectile.Kill();
             if (modPlayer.SagOrbiter)
             {
@@ -81,7 +81,7 @@ namespace AAMod.Projectiles.Sag
             }
             if (flag25)
             {
-                BaseAI.ShootPeriodic(projectile, vector46, Width, Height, mod.ProjectileType<Darkray>(), ref projectile.ai[1], 120, (int)projectile.ai[0], 11, true);
+                BaseAI.ShootPeriodic(projectile, vector46, Width, Height, ModContent.ProjectileType<Darkray>(), ref projectile.ai[1], 120, (int)projectile.ai[0], 11, true);
             }
 			
             if (projectile.active) { SetRot(); }

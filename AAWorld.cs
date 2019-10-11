@@ -1131,11 +1131,11 @@ namespace AAMod
                 {
                     Player player = Main.player[BaseAI.GetPlayer(new Vector2(Main.maxTilesX / 2, Main.maxTilesY / 2), -1)];
                     Vector2 spawnpoint = player.Center - new Vector2(250, 200);
-                    int Seraph = NPC.NewNPC((int)spawnpoint.X, (int)spawnpoint.Y, mod.NPCType<NPCs.Bosses.Athena.SeraphHerald>());
+                    int Seraph = NPC.NewNPC((int)spawnpoint.X, (int)spawnpoint.Y, ModContent.NPCType<NPCs.Bosses.Athena.SeraphHerald>());
                     NPC Seraph1 = Main.npc[Seraph];
                     for (int i = 0; i < 5; i++)
                     {
-                        Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, mod.DustType<NPCs.Bosses.Athena.Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                        Dust.NewDust(Seraph1.position, Seraph1.height, Seraph1.width, ModContent.DustType<NPCs.Bosses.Athena.Feather>(), Main.rand.Next(-1, 2), 1, 0);
                     }
                     AthenaHerald = true;
                 }
@@ -1442,7 +1442,7 @@ namespace AAMod
 
         public override void ResetNearbyTileEffects()
         {
-            AAPlayer modPlayer = Main.LocalPlayer.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = Main.LocalPlayer.GetModPlayer<AAPlayer>();
             modPlayer.VoidUnit = false;
             modPlayer.SunAltar = false;
             modPlayer.MoonAltar = false;

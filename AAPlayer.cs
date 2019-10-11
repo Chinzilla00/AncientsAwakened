@@ -501,11 +501,11 @@ namespace AAMod
         public override void UpdateBiomes()
         {
             ZoneTower = player.ZoneTowerSolar || player.ZoneTowerNebula || player.ZoneTowerStardust || player.ZoneTowerVortex;
-            ZoneMire = (AAWorld.mireTiles > 100) || BaseAI.GetNPC(player.Center, mod.NPCType<Yamata>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<YamataA>(), 5000) != -1;
-            ZoneInferno = AAWorld.infernoTiles > 100 || BaseAI.GetNPC(player.Center, mod.NPCType<Akuma>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<AkumaA>(), 5000) != -1;
+            ZoneMire = (AAWorld.mireTiles > 100) || BaseAI.GetNPC(player.Center, ModContent.NPCType<Yamata>(), 5000) != -1 || BaseAI.GetNPC(player.Center, ModContent.NPCType<YamataA>(), 5000) != -1;
+            ZoneInferno = AAWorld.infernoTiles > 100 || BaseAI.GetNPC(player.Center, ModContent.NPCType<Akuma>(), 5000) != -1 || BaseAI.GetNPC(player.Center, ModContent.NPCType<AkumaA>(), 5000) != -1;
             ZoneMush = AAWorld.mushTiles > 100;
             Terrarium = AAWorld.terraTiles >= 1;
-            ZoneVoid = (AAWorld.voidTiles > 20 && player.ZoneSkyHeight) || (AAWorld.voidTiles > 100 && !player.ZoneSkyHeight) || BaseAI.GetNPC(player.Center, mod.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, mod.NPCType<ZeroProtocol>(), 5000) != -1;
+            ZoneVoid = (AAWorld.voidTiles > 20 && player.ZoneSkyHeight) || (AAWorld.voidTiles > 100 && !player.ZoneSkyHeight) || BaseAI.GetNPC(player.Center, ModContent.NPCType<Zero>(), 5000) != -1 || BaseAI.GetNPC(player.Center, ModContent.NPCType<ZeroProtocol>(), 5000) != -1;
             ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
             ZoneRisingSunPagoda = AAWorld.pagodaTiles >= 1;
             ZoneStars = AAWorld.Radium >= 20;
@@ -515,11 +515,11 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool useAthena = NPC.AnyNPCs(mod.NPCType<AthenaA>());
-            bool useShenA = NPC.AnyNPCs(mod.NPCType<ShenA>());
-            bool useShen = NPC.AnyNPCs(mod.NPCType<Shen>()) && !useShenA;
-            bool useAkuma = NPC.AnyNPCs(mod.NPCType<AkumaA>()) || AkumaAltar;
-            bool useYamata = NPC.AnyNPCs(mod.NPCType<YamataA>()) || YamataAltar;
+            bool useAthena = NPC.AnyNPCs(ModContent.NPCType<AthenaA>());
+            bool useShenA = NPC.AnyNPCs(ModContent.NPCType<ShenA>());
+            bool useShen = NPC.AnyNPCs(ModContent.NPCType<Shen>()) && !useShenA;
+            bool useAkuma = NPC.AnyNPCs(ModContent.NPCType<AkumaA>()) || AkumaAltar;
+            bool useYamata = NPC.AnyNPCs(ModContent.NPCType<YamataA>()) || YamataAltar;
             bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen && !useShenA;
             bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen && !useShenA;
             bool useVoid = (ZoneVoid || VoidUnit) && !useShen && !useShenA;
@@ -542,7 +542,7 @@ namespace AAMod
 
         public override bool CustomBiomesMatch(Player other)
         {
-            AAPlayer modOther = other.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modOther = other.GetModPlayer<AAPlayer>();
             return ZoneMire == modOther.ZoneMire &&
                 ZoneInferno == modOther.ZoneInferno &&
                 ZoneVoid == modOther.ZoneVoid &&
@@ -557,7 +557,7 @@ namespace AAMod
 
         public override void CopyCustomBiomesTo(Player other)
         {
-            AAPlayer modOther = other.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modOther = other.GetModPlayer<AAPlayer>();
             modOther.ZoneInferno = ZoneInferno;
             modOther.ZoneMire = ZoneMire;
             modOther.ZoneVoid = ZoneVoid;
@@ -660,8 +660,8 @@ namespace AAMod
 
             if (ChaosMe)
             {
-                npc.AddBuff(mod.BuffType<DragonFire>(), 180);
-                npc.AddBuff(mod.BuffType<HydraToxin>(), 180);
+                npc.AddBuff(ModContent.BuffType<DragonFire>(), 180);
+                npc.AddBuff(ModContent.BuffType<HydraToxin>(), 180);
             }
 
             if (BrokenCode)
@@ -708,17 +708,17 @@ namespace AAMod
                     caughtType = mod.ItemType("DesertCrate");
                 }
 
-                if ((liquidType == 0 || liquidType == 1) && player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
+                if ((liquidType == 0 || liquidType == 1) && player.GetModPlayer<AAPlayer>().ZoneInferno)
                 {
                     caughtType = mod.ItemType("InfernoCrate");
                 }
 
-                if (liquidType == 0 && player.GetModPlayer<AAPlayer>(mod).ZoneMire)
+                if (liquidType == 0 && player.GetModPlayer<AAPlayer>().ZoneMire)
                 {
                     caughtType = mod.ItemType("MireCrate");
                 }
 
-                if (liquidType == 0 && player.GetModPlayer<AAPlayer>(mod).ZoneHoard)
+                if (liquidType == 0 && player.GetModPlayer<AAPlayer>().ZoneHoard)
                 {
                     caughtType = ItemID.GoldenCrate;
                 }
@@ -739,12 +739,12 @@ namespace AAMod
                 caughtType = mod.ItemType("Fishmother");
             }
 
-            if (Main.rand.Next(50) == 0 && player.GetModPlayer<AAPlayer>(mod).ZoneInferno && Main.hardMode)
+            if (Main.rand.Next(50) == 0 && player.GetModPlayer<AAPlayer>().ZoneInferno && Main.hardMode)
             {
                 caughtType = mod.ItemType("ScorchShark");
             }
 
-            if (Main.rand.Next(50) == 0 && player.GetModPlayer<AAPlayer>(mod).ZoneMire && Main.hardMode)
+            if (Main.rand.Next(50) == 0 && player.GetModPlayer<AAPlayer>().ZoneMire && Main.hardMode)
             {
                 caughtType = mod.ItemType("SwimmingHydra");
             }
@@ -776,22 +776,22 @@ namespace AAMod
             }
             DarkmatterSet = darkmatterSetMe || darkmatterSetRa || darkmatterSetMa || darkmatterSetSu || darkmatterSetTh;
 
-            if (NPC.AnyNPCs(mod.NPCType<AkumaTransition>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<AkumaTransition>()))
             {
-                int n = BaseAI.GetNPC(player.Center, mod.NPCType<AkumaTransition>(), -1);
+                int n = BaseAI.GetNPC(player.Center, ModContent.NPCType<AkumaTransition>(), -1);
                 NPC akuma = Main.npc[n];
 
                 if (akuma.ai[0] >= 660)
                 {
-                    player.AddBuff(mod.BuffType<BlazingPain>(), 2);
+                    player.AddBuff(ModContent.BuffType<BlazingPain>(), 2);
                 }
             }
-            else if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
+            else if (NPC.AnyNPCs(ModContent.NPCType<AkumaA>()))
             {
-                player.AddBuff(mod.BuffType<BlazingPain>(), 2);
+                player.AddBuff(ModContent.BuffType<BlazingPain>(), 2);
             }
 
-            if (BasePlayer.HasAccessory(player, mod.ItemType<Items.Vanity.HappySunSticker>(), true, true))
+            if (BasePlayer.HasAccessory(player, ModContent.ItemType<Items.Vanity.HappySunSticker>(), true, true))
             {
                 Main.sunTexture = mod.GetTexture("Backgrounds/DemonSun");
                 Main.sun3Texture = mod.GetTexture("Backgrounds/DemonSunEclipse");
@@ -836,7 +836,7 @@ namespace AAMod
                 }
             }
 
-            if (NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Equinox.DaybringerHead>()) || NPC.AnyNPCs(mod.NPCType<NPCs.Bosses.Equinox.NightcrawlerHead>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Equinox.DaybringerHead>()) || NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Equinox.NightcrawlerHead>()))
             {
                 TimeScale = 0;
             }
@@ -857,7 +857,7 @@ namespace AAMod
 
                 if (player.ownedProjectileCounts[mod.ProjectileType("FireOrbiter")] > 0)
                 {
-                    player.minionDamage += AAGlobalProjectile.CountProjectiles(mod.ProjectileType<Projectiles.AH.FireOrbiter>()) * .1f;
+                    player.minionDamage += AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<Projectiles.AH.FireOrbiter>()) * .1f;
 
                     if (Main.netMode != 2 && Main.LocalPlayer.miscCounter % 3 == 0)
                     {
@@ -867,7 +867,7 @@ namespace AAMod
 
                             if (projectile != null && projectile.active)
                             {
-                                int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDustLight>());
+                                int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDustLight>());
 
                                 Main.dust[dustID].position += player.position - player.oldPosition;
                                 Main.dust[dustID].velocity = (player.Center - projectile.Center) * 0.05f;
@@ -957,30 +957,30 @@ namespace AAMod
                 Lighting.AddLight((int)(player.position.X + player.width / 2) / 16, (int)(player.position.Y + player.height / 2) / 16, AAColor.Lantern.R / 255, AAColor.Lantern.G / 255 * 0.95f, AAColor.Lantern.B / 255 * 0.8f);
             }
 
-            if (NPC.AnyNPCs(mod.NPCType<Yamata>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<Yamata>()))
             {
-                player.AddBuff(mod.BuffType<YamataGravity>(), 10, true);
+                player.AddBuff(ModContent.BuffType<YamataGravity>(), 10, true);
             }
 
-            if (NPC.AnyNPCs(mod.NPCType<YamataA>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<YamataA>()))
             {
-                player.AddBuff(mod.BuffType<YamataAGravity>(), 10, true);
+                player.AddBuff(ModContent.BuffType<YamataAGravity>(), 10, true);
             }
 
             if (player.GetModPlayer<AAPlayer>().ZoneMire || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake)
             {
                 if (Main.dayTime && !AAWorld.downedYamata)
                 {
-                    if (!player.GetModPlayer<AAPlayer>(mod).FogRemover)
+                    if (!player.GetModPlayer<AAPlayer>().FogRemover)
                     {
-                        player.AddBuff(mod.BuffType<Clueless>(), 5);
+                        player.AddBuff(ModContent.BuffType<Clueless>(), 5);
                     }
                 }
             }
 
             if (player.GetModPlayer<AAPlayer>().Terrarium)
             {
-                player.AddBuff(mod.BuffType<Terrarium>(), 2);
+                player.AddBuff(ModContent.BuffType<Terrarium>(), 2);
                 player.AddBuff(BuffID.DryadsWard, 2);
             }
 
@@ -989,7 +989,7 @@ namespace AAMod
                 VoidGrav = Main.rand.Next(0, 5) + 1;
             }
 
-            if (NPC.AnyNPCs(mod.NPCType<ZeroProtocol>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<ZeroProtocol>()))
             {
                 if (!Filters.Scene["MoonLordShake"].IsActive())
                 {
@@ -1112,7 +1112,7 @@ namespace AAMod
                     if (Main.rand.Next(2) == 0)
                     {
                         Vector2 vector = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                        Dust dust = Main.dust[Dust.NewDust(player.Center - vector * 30f, 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0)];
+                        Dust dust = Main.dust[Dust.NewDust(player.Center - vector * 30f, 0, 0, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 0)];
 
                         dust.noGravity = true;
                         dust.position = player.Center - vector * Main.rand.Next(5, 11);
@@ -1124,7 +1124,7 @@ namespace AAMod
                     if (Main.rand.Next(2) == 0)
                     {
                         Vector2 vector2 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                        Dust dust2 = Main.dust[Dust.NewDust(player.Center - vector2 * 30f, 0, 0, mod.DustType<Dusts.AbyssDust>(), 0f, 0f, 0)];
+                        Dust dust2 = Main.dust[Dust.NewDust(player.Center - vector2 * 30f, 0, 0, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 0)];
 
                         dust2.noGravity = true;
                         dust2.position = player.Center - vector2 * 12f;
@@ -1179,7 +1179,7 @@ namespace AAMod
                 {
                     if (AADash == 1)
                     {
-                        int dust = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y), player.width + 8, 4, mod.DustType<Feather>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default, 1.5f);
+                        int dust = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y), player.width + 8, 4, ModContent.DustType<Feather>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default, 1.5f);
                         Main.dust[dust].velocity.X = Main.dust[dust].velocity.X * 0.2f;
                         Main.dust[dust].velocity.Y = Main.dust[dust].velocity.Y * 0.2f;
                         Main.dust[dust].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
@@ -1192,7 +1192,7 @@ namespace AAMod
                 {
                     if (AADash == 1)
                     {
-                        int dust = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y), player.width + 8, 4, mod.DustType<Feather>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default, 1.5f);
+                        int dust = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y), player.width + 8, 4, ModContent.DustType<Feather>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default, 1.5f);
                         Main.dust[dust].velocity.X = Main.dust[dust].velocity.X * 0.2f;
                         Main.dust[dust].velocity.Y = Main.dust[dust].velocity.Y * 0.2f;
                         Main.dust[dust].shader = GameShaders.Armor.GetSecondaryShader(player.cWings, player);
@@ -1221,11 +1221,11 @@ namespace AAMod
                         int num12;
                         if (player.velocity.Y == 0f)
                         {
-                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height - 4f), player.width, 8, mod.DustType<Feather>(), 0f, 0f, 100, default, 1);
+                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height - 4f), player.width, 8, ModContent.DustType<Feather>(), 0f, 0f, 100, default, 1);
                         }
                         else
                         {
-                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height / 2 - 8f), player.width, 16, mod.DustType<Feather>(), 0f, 0f, 100, default, 1);
+                            num12 = Dust.NewDust(new Vector2(player.position.X, player.position.Y + player.height / 2 - 8f), player.width, 16, ModContent.DustType<Feather>(), 0f, 0f, 100, default, 1);
                         }
                         Main.dust[num12].velocity *= 0.1f;
                         Main.dust[num12].scale *= 1f + Main.rand.Next(20) * 0.01f;
@@ -1310,7 +1310,7 @@ namespace AAMod
                         player.dashDelay = -1;
                         for (int num17 = 0; num17 < 2; num17++)
                         {
-                            int num18 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, mod.DustType<Feather>(), 0f, 0f, 100, default, 1);
+                            int num18 = Dust.NewDust(new Vector2(player.position.X, player.position.Y), player.width, player.height, ModContent.DustType<Feather>(), 0f, 0f, 100, default, 1);
                             Dust expr_CDB_cp_0 = Main.dust[num18];
                             expr_CDB_cp_0.position.X += Main.rand.Next(-5, 6);
                             Dust expr_D02_cp_0 = Main.dust[num18];
@@ -1927,11 +1927,11 @@ namespace AAMod
                 return;
             }
 
-            if ((player.GetModPlayer<AAPlayer>(mod).ZoneInferno || player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda) && player.GetModPlayer<AAPlayer>(mod).AshCurse)
+            if ((player.GetModPlayer<AAPlayer>().ZoneInferno || player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda) && player.GetModPlayer<AAPlayer>().AshCurse)
             {
-                if (!player.GetModPlayer<AAPlayer>(mod).AshRemover || !(player.ZoneSkyHeight || player.ZoneOverworldHeight))
+                if (!player.GetModPlayer<AAPlayer>().AshRemover || !(player.ZoneSkyHeight || player.ZoneOverworldHeight))
                 {
-                    player.AddBuff(mod.BuffType<BurningAsh>(), 5);
+                    player.AddBuff(ModContent.BuffType<BurningAsh>(), 5);
                 }
 
                 if (AAWorld.infernoTiles > 0 && Main.LocalPlayer.position.Y < Main.worldSurface * 16.0)
@@ -1983,13 +1983,13 @@ namespace AAMod
 
                                 if (Main.tile[num7, num8] != null && Main.tile[num7, num8].wall == 0)
                                 {
-                                    int dust = Dust.NewDust(new Vector2(num5, num6), 10, 10, mod.DustType<Dusts.AshRain>(), 0f, 0f, 0);
+                                    int dust = Dust.NewDust(new Vector2(num5, num6), 10, 10, ModContent.DustType<Dusts.AshRain>(), 0f, 0f, 0);
                                     Main.dust[dust].velocity.Y = 3f + Main.rand.Next(30) * 0.1f;
 
                                     Dust expr_292_cp_0 = Main.dust[dust];
                                     expr_292_cp_0.velocity.Y *= Main.dust[dust].scale;
 
-                                    if (!player.GetModPlayer<AAPlayer>(mod).AshCurse)
+                                    if (!player.GetModPlayer<AAPlayer>().AshCurse)
                                     {
                                         Main.dust[dust].velocity.X = Main.rand.Next(-10, 10) * 0.1f;
 
@@ -2029,7 +2029,7 @@ namespace AAMod
                 return;
             }
 
-            if ((player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda || player.GetModPlayer<AAPlayer>(mod).ZoneRisingMoonLake) && AAWorld.downedAllAncients && !AAWorld.downedShen)
+            if ((player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake) && AAWorld.downedAllAncients && !AAWorld.downedShen)
             {
                 if (Main.LocalPlayer.position.Y < Main.worldSurface * 16.0)
                 {
@@ -2080,13 +2080,13 @@ namespace AAMod
 
                                 if (Main.tile[num7, num8] != null && Main.tile[num7, num8].wall == 0)
                                 {
-                                    int dust = Dust.NewDust(new Vector2(num5, num6), 10, 10, mod.DustType<Dusts.Discord>(), 0f, 0f, 0);
+                                    int dust = Dust.NewDust(new Vector2(num5, num6), 10, 10, ModContent.DustType<Dusts.Discord>(), 0f, 0f, 0);
                                     Main.dust[dust].velocity.Y = 3f + Main.rand.Next(30) * 0.1f;
 
                                     Dust expr_292_cp_0 = Main.dust[dust];
                                     expr_292_cp_0.velocity.Y *= Main.dust[dust].scale;
 
-                                    if (!player.GetModPlayer<AAPlayer>(mod).AshCurse)
+                                    if (!player.GetModPlayer<AAPlayer>().AshCurse)
                                     {
                                         Main.dust[dust].velocity.X = Main.rand.Next(-10, 10) * 0.1f;
 
@@ -2164,7 +2164,7 @@ namespace AAMod
                 RiftPos = player.position;
                 for (int m = 0; m < 58; m++)
                 {
-                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>())
+                    if (player.inventory[m].type == ModContent.ItemType<Items.Usable.RiftMirror>())
                     {
                         player.Spawn();
                     }
@@ -2175,7 +2175,7 @@ namespace AAMod
             {
                 for (int m = 0; m < 58; m++)
                 {
-                    if (player.inventory[m].type == mod.ItemType<Items.Usable.RiftMirror>())
+                    if (player.inventory[m].type == ModContent.ItemType<Items.Usable.RiftMirror>())
                     {
                         player.position = RiftPos;
                     }
@@ -2194,7 +2194,7 @@ namespace AAMod
             {
                 if (AAMod.AccessoryAbilityKey.JustPressed && SagCooldown == 0)
                 {
-                    player.AddBuff(mod.BuffType<SagShield>(), 300);
+                    player.AddBuff(ModContent.BuffType<SagShield>(), 300);
                     SagCooldown = 5400;
                 }
             }
@@ -2263,7 +2263,7 @@ namespace AAMod
 
             if (perfectChaosMe)
             {
-                target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
+                target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
             }
 
             if (valkyrieSet)
@@ -2280,13 +2280,13 @@ namespace AAMod
 
             if (Naitokurosu)
             {
-                int buff = Main.dayTime ? BuffID.Venom : mod.BuffType<Moonraze>();
+                int buff = Main.dayTime ? BuffID.Venom : ModContent.BuffType<Moonraze>();
                 target.AddBuff(buff, 1000);
             }
 
             if (Duality)
             {
-                int buff = Main.dayTime ? BuffID.Daybreak : mod.BuffType<Moonraze>();
+                int buff = Main.dayTime ? BuffID.Daybreak : ModContent.BuffType<Moonraze>();
                 target.AddBuff(buff, 1000);
             }
 
@@ -2308,7 +2308,7 @@ namespace AAMod
             if (DiscordShredder)
             {
                 player.ApplyDamageToNPC(target, 30, 0, 0, false);
-                target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
+                target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
             }
 
             if (demonGauntlet)
@@ -2319,7 +2319,7 @@ namespace AAMod
 
             if (HeartP && player.statLife > (player.statLifeMax / 3))
             {
-                target.AddBuff(mod.BuffType<DragonFire>(), 600);
+                target.AddBuff(ModContent.BuffType<DragonFire>(), 600);
             }
             else if (HeartP && player.statLife < (player.statLifeMax / 3))
             {
@@ -2328,11 +2328,11 @@ namespace AAMod
 
             if (HeartS && player.statLife > (player.statLifeMax / 3))
             {
-                target.AddBuff(mod.BuffType<HydraToxin>(), 600);
+                target.AddBuff(ModContent.BuffType<HydraToxin>(), 600);
             }
             else if (HeartS && player.statLife < (player.statLifeMax / 3))
             {
-                target.AddBuff(mod.BuffType<Moonraze>(), 600);
+                target.AddBuff(ModContent.BuffType<Moonraze>(), 600);
             }
 
             if (dracoSet)
@@ -2707,7 +2707,7 @@ namespace AAMod
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, mod.DustType<Dusts.Discord>(), 0f, -2.5f, 0);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, ModContent.DustType<Dusts.Discord>(), 0f, -2.5f, 0);
 
                     Main.dust[dust].alpha = 100;
                     Main.dust[dust].noGravity = true;
@@ -2719,7 +2719,7 @@ namespace AAMod
             {
                 for (int i = 0; i < 2; i++)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, mod.DustType<Dusts.ShroomDust>(), 0f, -2.5f, 0);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, ModContent.DustType<Dusts.ShroomDust>(), 0f, -2.5f, 0);
 
                     Main.dust[dust].alpha = 100;
                     Main.dust[dust].noGravity = true;
@@ -2734,7 +2734,7 @@ namespace AAMod
                 int Loops = RiftDamage / 10;
                 for (int i = 0; i < Loops; i++)
                 {
-                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, mod.DustType<Dusts.CthulhuAuraDust>(), 0f, -2.5f, 0);
+                    int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width, player.height, ModContent.DustType<Dusts.CthulhuAuraDust>(), 0f, -2.5f, 0);
 
                     Main.dust[dust].alpha = 100;
                     Main.dust[dust].noGravity = true;
@@ -2761,7 +2761,7 @@ namespace AAMod
             {
                 if (perfectChaosMe)
                 {
-                    target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
+                    target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
                 }
 
                 if (dracoSet)
@@ -2812,12 +2812,12 @@ namespace AAMod
             {
                 if (perfectChaosRa)
                 {
-                    target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
+                    target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
                 }
 
                 if (dreadSet)
                 {
-                    target.AddBuff(mod.BuffType<Moonraze>(), 600);
+                    target.AddBuff(ModContent.BuffType<Moonraze>(), 600);
                 }
 
                 if (DynaskullSet && Main.rand.Next(4) == 0)
@@ -2846,17 +2846,17 @@ namespace AAMod
             {
                 if (MoonSet)
                 {
-                    target.AddBuff(mod.BuffType<Moonraze>(), 300);
+                    target.AddBuff(ModContent.BuffType<Moonraze>(), 300);
                 }
 
                 if (zeroSet)
                 {
-                    target.AddBuff(mod.BuffType<BrokenArmor>(), 1000);
+                    target.AddBuff(ModContent.BuffType<BrokenArmor>(), 1000);
                 }
 
                 if (perfectChaosMa)
                 {
-                    target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
+                    target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
                 }
 
                 if (darkmatterSetMa)
@@ -2875,12 +2875,12 @@ namespace AAMod
             {
                 if (zeroSet1)
                 {
-                    target.AddBuff(mod.BuffType<BrokenArmor>(), 1000);
+                    target.AddBuff(ModContent.BuffType<BrokenArmor>(), 1000);
                 }
 
                 if (perfectChaosSu)
                 {
-                    target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
+                    target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
                 }
 
                 if (impSet)
@@ -2915,13 +2915,13 @@ namespace AAMod
 
             if (Naitokurosu && (proj.ranged || proj.minion))
             {
-                int buff = Main.dayTime ? BuffID.Venom : mod.BuffType<Moonraze>();
+                int buff = Main.dayTime ? BuffID.Venom : ModContent.BuffType<Moonraze>();
                 target.AddBuff(buff, 1000);
             }
 
             if (Duality)
             {
-                int buff = Main.dayTime ? BuffID.Daybreak : mod.BuffType<Moonraze>();
+                int buff = Main.dayTime ? BuffID.Daybreak : ModContent.BuffType<Moonraze>();
                 target.AddBuff(buff, 1000);
             }
 
@@ -2933,7 +2933,7 @@ namespace AAMod
             if (DiscordShredder)
             {
                 player.ApplyDamageToNPC(target, 30, 0, 0, false);
-                target.AddBuff(mod.BuffType<DiscordInferno>(), 300);
+                target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
             }
         }
 
@@ -3202,7 +3202,7 @@ namespace AAMod
         {
             Mod mod = AAMod.instance;
             Player drawPlayer = edi.drawPlayer;
-            AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>();
 
             Vector2 position = edi.position;
             int dyeHead = edi.headArmorShader;
@@ -3432,7 +3432,7 @@ namespace AAMod
         {
             Mod mod = AAMod.instance;
             Player drawPlayer = edi.drawPlayer;
-            AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>();
 
             if (HasAndCanDraw(drawPlayer, mod.ItemType("DracoPlate")))
             {
@@ -3484,7 +3484,7 @@ namespace AAMod
         {
             Mod mod = AAMod.instance;
             Player drawPlayer = edi.drawPlayer;
-            AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>();
 
             if (HasAndCanDraw(drawPlayer, mod.ItemType("DracoPlate")))
             {
@@ -3532,7 +3532,7 @@ namespace AAMod
         {
             Mod mod = AAMod.instance;
             Player drawPlayer = edi.drawPlayer;
-            AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = drawPlayer.GetModPlayer<AAPlayer>();
 
             if (HasAndCanDraw(drawPlayer, mod.ItemType("DracoLeggings")))
             {
@@ -3648,22 +3648,22 @@ namespace AAMod
                 return;
             }
 
-            if (drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale > 0)
+            if (drawPlayer.GetModPlayer<AAPlayer>().ShieldScale > 0)
             {
                 Texture2D Shield = mod.GetTexture("NPCs/Bosses/Sagittarius/SagittariusShield");
-                BaseDrawing.DrawTexture(Main.spriteBatch, Shield, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), AAColor.ZeroShield, true);
+                BaseDrawing.DrawTexture(Main.spriteBatch, Shield, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>().ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), AAColor.ZeroShield, true);
 
                 Texture2D Ring = mod.GetTexture("NPCs/Bosses/Sagittarius/SagittariusFreeRing");
-                BaseDrawing.DrawTexture(Main.spriteBatch, Ring, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale, drawPlayer.GetModPlayer<AAPlayer>(mod).RingRotation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), true);
+                BaseDrawing.DrawTexture(Main.spriteBatch, Ring, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>().ShieldScale, drawPlayer.GetModPlayer<AAPlayer>().RingRotation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), true);
 
                 Texture2D RingGlow = mod.GetTexture("Glowmasks/SagittariusFreeRing_Glow");
-                BaseDrawing.DrawTexture(Main.spriteBatch, RingGlow, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).ShieldScale, drawPlayer.GetModPlayer<AAPlayer>(mod).RingRotation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), ColorUtils.COLOR_GLOWPULSE, true);
+                BaseDrawing.DrawTexture(Main.spriteBatch, RingGlow, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>().ShieldScale, drawPlayer.GetModPlayer<AAPlayer>().RingRotation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), ColorUtils.COLOR_GLOWPULSE, true);
             }
 
-            if (drawPlayer.GetModPlayer<AAPlayer>(mod).TimeScale > 0)
+            if (drawPlayer.GetModPlayer<AAPlayer>().TimeScale > 0)
             {
                 Texture2D Ring = mod.GetTexture("Items/Accessories/TimeRing");
-                BaseDrawing.DrawTexture(Main.spriteBatch, Ring, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>(mod).TimeScale, drawPlayer.GetModPlayer<AAPlayer>(mod).RingRotation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), AAColor.COLOR_WHITEFADE1, true);
+                BaseDrawing.DrawTexture(Main.spriteBatch, Ring, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>().TimeScale, drawPlayer.GetModPlayer<AAPlayer>().RingRotation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), AAColor.COLOR_WHITEFADE1, true);
             }
         });
 

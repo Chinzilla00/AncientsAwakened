@@ -17,7 +17,7 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			player.GetModPlayer<AAPlayer>(mod).infinityOverload = true;
+			player.GetModPlayer<AAPlayer>().infinityOverload = true;
 		}
 	}
 }

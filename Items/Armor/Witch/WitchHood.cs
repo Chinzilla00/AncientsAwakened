@@ -65,7 +65,7 @@ The Fire spirit becomes more powerful the less mana you have";
             player.minionDamage += .2f;
             player.maxMinions += 4;
 
-            player.GetModPlayer<AAPlayer>(mod).Witch = true;
+            player.GetModPlayer<AAPlayer>().Witch = true;
 
             if (player.whoAmI == Main.myPlayer)
             {

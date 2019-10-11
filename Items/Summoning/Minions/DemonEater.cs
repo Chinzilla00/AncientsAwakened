@@ -34,7 +34,7 @@ namespace AAMod.Items.Summoning.Minions
         {
             bool flag64 = projectile.type == mod.ProjectileType("DemonEater");
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             player.AddBuff(mod.BuffType("EaterMinion"), 3600);
             if (flag64)
             {

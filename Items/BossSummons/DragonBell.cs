@@ -44,7 +44,7 @@ Only useable during the day");
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The bell rings on deaf ears. The dragons are asleep now.", Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B, false);
                 return false;
             }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
+            if (player.GetModPlayer<AAPlayer>().ZoneInferno)
             {
                 if (NPC.AnyNPCs(mod.NPCType("Broodmother")))
                 {

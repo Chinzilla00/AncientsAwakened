@@ -57,7 +57,7 @@ namespace AAMod.Items.Pets
             Player player = Main.player[projectile.owner];
             if (Main.myPlayer == projectile.owner)
             {
-                if (player.GetModPlayer<AAPlayer>(mod).DragonSoul)
+                if (player.GetModPlayer<AAPlayer>().DragonSoul)
                 {
                     projectile.timeLeft = 2;
                 }

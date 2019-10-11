@@ -13,7 +13,7 @@ namespace AAMod.Items.Flasks
             item.consumable = true;
             item.useTime = 28;
             item.useAnimation = 28;
-            item.shoot = mod.ProjectileType<Projectiles.ForestSolution>();
+            item.shoot = ModContent.ProjectileType<Projectiles.ForestSolution>();
             item.shootSpeed = 1f;
             item.useStyle = 1;
             item.value = Item.sellPrice(0, 0, 1, 0);
@@ -43,7 +43,7 @@ namespace AAMod.Items.Flasks
             }
             else
             {
-                item.shoot = mod.ProjectileType<Projectiles.ForestSolution>();
+                item.shoot = ModContent.ProjectileType<Projectiles.ForestSolution>();
                 item.shootSpeed = 2f;
             }
             return base.CanUseItem(player);

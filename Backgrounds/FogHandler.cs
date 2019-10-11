@@ -16,7 +16,7 @@ namespace AAMod.Backgrounds
         {
             Color YamataFog = new Color(200, 100, 100);
 
-            bool YamataA = NPC.AnyNPCs(mod.NPCType<YamataA>());
+            bool YamataA = NPC.AnyNPCs(ModContent.NPCType<YamataA>());
 
             mireFog.Update(mod.GetTexture("Backgrounds/FogTex"));
             mireFog.Draw(mod.GetTexture("Backgrounds/FogTex"), false, YamataA ? YamataFog : Color.White, true);

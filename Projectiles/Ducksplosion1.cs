@@ -41,7 +41,7 @@ namespace AAMod.Projectiles
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType<Buffs.Electrified>(), 200);
+            target.AddBuff(ModContent.BuffType<Buffs.Electrified>(), 200);
         }
 
 

@@ -136,7 +136,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void AI()
         {
-            bool noHeads = !NPC.AnyNPCs(mod.NPCType<HydraHead1>()) && !NPC.AnyNPCs(mod.NPCType<HydraHead2>()) && !NPC.AnyNPCs(mod.NPCType<HydraHead3>());
+            bool noHeads = !NPC.AnyNPCs(ModContent.NPCType<HydraHead1>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead2>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead3>());
             if (HeadsSpawned && noHeads)
             {
                 if (Main.netMode != 1)
@@ -159,7 +159,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             if (playerTarget != null)
             {
                 float dist = npc.Distance(playerTarget.Center);
-                if (!playerTarget.GetModPlayer<AAPlayer>(mod).ZoneMire)
+                if (!playerTarget.GetModPlayer<AAPlayer>().ZoneMire)
                 {
                     npc.alpha += 3;
                     if (npc.alpha >= 255)

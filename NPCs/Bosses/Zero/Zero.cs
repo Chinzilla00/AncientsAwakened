@@ -87,7 +87,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.netUpdate = true;
             }
 
-            if (npc.life <= 0 && npc.type == mod.NPCType<Zero>())
+            if (npc.life <= 0 && npc.type == ModContent.NPCType<Zero>())
             {
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore1"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore1"), 1f);
@@ -120,14 +120,14 @@ namespace AAMod.NPCs.Bosses.Zero
         bool hasArms = false;
         public void RespawnArms()
         {
-            hasArms = NPC.AnyNPCs(mod.NPCType<VoidStar>()) ||
-                   NPC.AnyNPCs(mod.NPCType<Taser>()) ||
-                   NPC.AnyNPCs(mod.NPCType<RealityCannon>()) ||
-                   NPC.AnyNPCs(mod.NPCType<RiftShredder>()) ||
-                   NPC.AnyNPCs(mod.NPCType<Neutralizer>()) ||
-                   NPC.AnyNPCs(mod.NPCType<OmegaVolley>()) ||
-                   NPC.AnyNPCs(mod.NPCType<NovaFocus>()) ||
-                   NPC.AnyNPCs(mod.NPCType<GenocideCannon>());
+            hasArms = NPC.AnyNPCs(ModContent.NPCType<VoidStar>()) ||
+                   NPC.AnyNPCs(ModContent.NPCType<Taser>()) ||
+                   NPC.AnyNPCs(ModContent.NPCType<RealityCannon>()) ||
+                   NPC.AnyNPCs(ModContent.NPCType<RiftShredder>()) ||
+                   NPC.AnyNPCs(ModContent.NPCType<Neutralizer>()) ||
+                   NPC.AnyNPCs(ModContent.NPCType<OmegaVolley>()) ||
+                   NPC.AnyNPCs(ModContent.NPCType<NovaFocus>()) ||
+                   NPC.AnyNPCs(ModContent.NPCType<GenocideCannon>());
 
             if (Main.netMode != 1 && !hasArms)
             {
@@ -184,9 +184,9 @@ namespace AAMod.NPCs.Bosses.Zero
                 };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
-                npc.DropLoot(mod.ItemType<Items.Vanity.Mask.ZeroMask>(), 1f / 7);
-                npc.DropLoot(mod.ItemType<Items.Boss.Zero.ZeroTrophy>(), 1f / 10);
-                npc.DropLoot(mod.ItemType<Items.Boss.EXSoul>(), 1f / 10);
+                npc.DropLoot(ModContent.ItemType<Items.Vanity.Mask.ZeroMask>(), 1f / 7);
+                npc.DropLoot(ModContent.ItemType<Items.Boss.Zero.ZeroTrophy>(), 1f / 10);
+                npc.DropLoot(ModContent.ItemType<Items.Boss.EXSoul>(), 1f / 10);
                 if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("RealityStone"));
@@ -294,14 +294,14 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.netUpdate = true;
             }
 
-            if (NPC.AnyNPCs(mod.NPCType<VoidStar>()) ||
-                NPC.AnyNPCs(mod.NPCType<Taser>()) ||
-                NPC.AnyNPCs(mod.NPCType<RealityCannon>()) ||
-                NPC.AnyNPCs(mod.NPCType<RiftShredder>()) ||
-                NPC.AnyNPCs(mod.NPCType<Neutralizer>()) ||
-                NPC.AnyNPCs(mod.NPCType<OmegaVolley>()) ||
-                NPC.AnyNPCs(mod.NPCType<NovaFocus>()) ||
-                NPC.AnyNPCs(mod.NPCType<GenocideCannon>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<VoidStar>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Taser>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<RealityCannon>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<RiftShredder>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Neutralizer>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<OmegaVolley>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<NovaFocus>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<GenocideCannon>()))
             {
                 npc.ai[1] = 0;
             }
@@ -337,7 +337,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.TargetClosest();
                 if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
                 {
-                    npc.Transform(mod.NPCType<ZeroDeactivated>());
+                    npc.Transform(ModContent.NPCType<ZeroDeactivated>());
                 }
                 return;
             }
@@ -450,7 +450,7 @@ namespace AAMod.NPCs.Bosses.Zero
                                 Vector2 vector82 = array5[num842] - npc.Center;
                                 float ai = Main.rand.Next(100);
                                 Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.78539818525314331)) * 14f;
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector83.X, vector83.Y, mod.ProjectileType<ZeroShock>(), damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector83.X, vector83.Y, ModContent.ProjectileType<ZeroShock>(), damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
                             }
                         }
                     }

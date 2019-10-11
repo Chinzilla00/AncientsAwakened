@@ -50,7 +50,7 @@ The power of discordian rage radiates from this hood");
             player.setBonus = @"'Chaos empowers you'
 As your health decreases, your magic damage increases and your mana consumption decreases
 Your magic attacks raze your oponents with the flames of discordian hell";
-            player.GetModPlayer<AAPlayer>(mod).perfectChaosMa = true;
+            player.GetModPlayer<AAPlayer>().perfectChaosMa = true;
             player.AddBuff(mod.BuffType("ChaosWrath"), 2);
         }
 

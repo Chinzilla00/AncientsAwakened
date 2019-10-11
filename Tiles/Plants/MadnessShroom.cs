@@ -15,8 +15,8 @@ namespace AAMod.Tiles.Plants
             TileObjectData.newTile.RandomStyleRange = 5;
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.addTile(Type);
-            drop = mod.ItemType<Items.Mushrooms.MadnessShroom>();
-            dustType = mod.DustType<Dusts.InfinityOverloadP>();
+            drop = ModContent.ItemType<Items.Mushrooms.MadnessShroom>();
+            dustType = ModContent.DustType<Dusts.InfinityOverloadP>();
             soundType = 6;
         }
 

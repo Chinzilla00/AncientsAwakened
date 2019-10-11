@@ -173,7 +173,7 @@ namespace AAMod.NPCs.Enemies.Inferno
                 int num589 = 0;
                 while (num589 < damage / npc.lifeMax * 50.0)
                 {
-                    int num590 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.BroodmotherDust>(), 0f, 0f, 0, default, 1.5f);
+                    int num590 = Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.BroodmotherDust>(), 0f, 0f, 0, default, 1.5f);
                     Main.dust[num590].velocity *= 1.5f;
                     Main.dust[num590].noGravity = true;
                     num589++;
@@ -182,7 +182,7 @@ namespace AAMod.NPCs.Enemies.Inferno
             }
             for (int num591 = 0; num591 < 10; num591++)
             {
-                int num592 = Dust.NewDust(npc.position, npc.width, npc.height, mod.DustType<Dusts.BroodmotherDust>(), 0f, 0f, 0, default, 1.5f);
+                int num592 = Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.BroodmotherDust>(), 0f, 0f, 0, default, 1.5f);
                 Main.dust[num592].velocity *= 2f;
                 Main.dust[num592].noGravity = true;
             }

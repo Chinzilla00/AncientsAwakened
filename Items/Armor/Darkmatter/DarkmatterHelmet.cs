@@ -71,7 +71,7 @@ Your melee weapons electrocute enemies
             }
             player.meleeSpeed += 0.15f;
             player.meleeCrit += 15;
-            player.GetModPlayer<AAPlayer>(mod).darkmatterSetMe = true;
+            player.GetModPlayer<AAPlayer>().darkmatterSetMe = true;
             player.armorEffectDrawShadowLokis = true;
         }
 

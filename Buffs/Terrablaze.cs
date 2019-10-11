@@ -17,7 +17,7 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			player.GetModPlayer<AAPlayer>(mod).terraBlaze = true;
+			player.GetModPlayer<AAPlayer>().terraBlaze = true;
             player.statDefense -= 25;
 		}
 

@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 	        if (bodyNPC == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
-                if (npcBody.type == mod.NPCType<Hydra>())
+                if (npcBody.type == ModContent.NPCType<Hydra>())
                 {
                     bodyNPC = npcBody;
                 }
@@ -138,7 +138,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
 
 
-            if (!targetPlayer.GetModPlayer<AAPlayer>(mod).ZoneMire)
+            if (!targetPlayer.GetModPlayer<AAPlayer>().ZoneMire)
             {
                 npc.damage = 80;
                 npc.defense = 100;

@@ -61,7 +61,7 @@ namespace AAMod.Items.Boss.Broodmother
             if (Main.rand.Next(20) == 0)
             {
 
-                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PHMDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("Incinerite"), Main.rand.Next(75, 125));

@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Grips
 
         public override void AI()
         {
-            if (!NPC.AnyNPCs(mod.NPCType<GripOfChaosRed>()) && !NPC.AnyNPCs(mod.NPCType<GripOfChaosBlue>()))
+            if (!NPC.AnyNPCs(ModContent.NPCType<GripOfChaosRed>()) && !NPC.AnyNPCs(ModContent.NPCType<GripOfChaosBlue>()))
             {
                 npc.alpha += 10;
                 if (npc.alpha > 255)

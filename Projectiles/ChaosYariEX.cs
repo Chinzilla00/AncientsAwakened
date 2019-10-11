@@ -37,14 +37,14 @@ namespace AAMod.Projectiles
         	projectile.position += projectile.velocity * projectile.ai[0];
         	if (Main.rand.Next(5) == 0)
             {
-                int DustType = mod.DustType<Dusts.AkumaADust>();
+                int DustType = ModContent.DustType<Dusts.AkumaADust>();
                 if (Main.rand.Next(3) == 0)
                 {
-                    DustType = mod.DustType<Dusts.YamataADust>();
+                    DustType = ModContent.DustType<Dusts.YamataADust>();
                 }
                 if (Main.rand.Next(3) == 1)
                 {
-                    DustType = mod.DustType<Dusts.Discord>();
+                    DustType = ModContent.DustType<Dusts.Discord>();
                 }
                 Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, DustType, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
             }

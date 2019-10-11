@@ -49,7 +49,7 @@ namespace AAMod.Projectiles.Djinn
         {
             bool flag64 = projectile.type == mod.ProjectileType("DustDevil");
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             player.AddBuff(mod.BuffType("DustDevil"), 3600);
             if (flag64)
             {
@@ -256,7 +256,7 @@ namespace AAMod.Projectiles.Djinn
             if (projectile.ai[0] == 0f)
             {
                 float scaleFactor4 = 5f;
-                int num29 = mod.ProjectileType<DevilGust>();
+                int num29 = ModContent.ProjectileType<DevilGust>();
                 
                 if (flag)
                 {

@@ -54,7 +54,7 @@ namespace AAMod.Items.Boss.AH
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            bool AnyOrbiters = AAGlobalProjectile.AnyProjectiles(mod.ProjectileType<Projectiles.AH.FireOrbiter>());
+            bool AnyOrbiters = AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Projectiles.AH.FireOrbiter>());
             int SummonCount = 2;
             if (AnyOrbiters)
             {

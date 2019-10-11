@@ -21,7 +21,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(SoundID.Item14, projectile.position);
-            int p = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType<RabbitBoomEX>(), projectile.damage, projectile.knockBack, projectile.owner);
+            int p = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), ModContent.ProjectileType<RabbitBoomEX>(), projectile.damage, projectile.knockBack, projectile.owner);
             Main.projectile[p].magic = false;
             Main.projectile[p].ranged = true;
             Main.projectile[p].Center = projectile.Center;

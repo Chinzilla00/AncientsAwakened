@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Enemies.Mire
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             Player player = spawnInfo.player;
-            if (spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMire && Main.hardMode && !spawnInfo.playerSafe)
+            if (spawnInfo.player.GetModPlayer<AAPlayer>().ZoneMire && Main.hardMode && !spawnInfo.playerSafe)
             {
                 return SpawnCondition.UndergroundMimic.Chance;
             }

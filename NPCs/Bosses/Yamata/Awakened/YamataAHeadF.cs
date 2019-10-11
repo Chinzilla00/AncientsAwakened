@@ -92,7 +92,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (Body == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
-                if (npcBody.type == mod.NPCType<YamataA>())
+                if (npcBody.type == ModContent.NPCType<YamataA>())
                 {
                     Body = (YamataA)npcBody.modNPC;
                 }
@@ -405,7 +405,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataA>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<Yamata>()) || NPC.AnyNPCs(ModContent.NPCType<YamataA>()))
             {
                 return false;
             }

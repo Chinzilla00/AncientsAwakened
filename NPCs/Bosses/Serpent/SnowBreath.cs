@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Serpent
                     num296 = 0.75f;
                 }
                 projectile.ai[0] += 1f;
-                int num297 = mod.DustType<Dusts.SnowDustLight>();
+                int num297 = ModContent.DustType<Dusts.SnowDustLight>();
                 if (projectile.ai[1] == 1)
                 {
                     num297 = 75;
@@ -61,18 +61,18 @@ namespace AAMod.NPCs.Bosses.Serpent
 
                 if (projectile.ai[1] == 3)
                 {
-                    num297 = mod.DustType<Dusts. BroodmotherDust>();
+                    num297 = ModContent.DustType<Dusts. BroodmotherDust>();
                 }
 
                 if (projectile.ai[1] == 4)
                 {
-                    num297 = mod.DustType<Dusts.AcidDust>();
+                    num297 = ModContent.DustType<Dusts.AcidDust>();
                 }
                 if (Main.rand.Next(2) == 0)
                 {
                     for (int num298 = 0; num298 < 3; num298++)
                     {
-                        int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, num297, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, mod.DustType<Dusts.SnowDustLight>(), default, 1f);
+                        int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, num297, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, ModContent.DustType<Dusts.SnowDustLight>(), default, 1f);
                         if (Main.rand.Next(3) == 0)
                         {
                             Main.dust[num299].noGravity = true;

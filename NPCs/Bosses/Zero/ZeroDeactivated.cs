@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Zero
             RingRoatation += .01f;
             if (Main.netMode != 1 && AAWorld.zeroUS == true)
             {
-                npc.Transform(mod.NPCType<Zero>());
+                npc.Transform(ModContent.NPCType<Zero>());
                 return;
             }
             npc.timeLeft = 10;
@@ -165,7 +165,7 @@ namespace AAMod.NPCs.Bosses.Zero
 			bool anyZerosExist = NPC.AnyNPCs(mod.NPCType("ZeroDeactivated")) || NPC.AnyNPCs(mod.NPCType("Zero")) || NPC.AnyNPCs(mod.NPCType("ZeroProtocol"));			
 			if (!anyZerosExist)
 			{
-                int whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, mod.NPCType<ZeroDeactivated>());
+                int whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, ModContent.NPCType<ZeroDeactivated>());
                 ZX = (int)spawnPos.X;
 				ZY = (int)spawnPos.Y;				
 				if (Main.netMode == 2 && whoAmI != -1 && whoAmI < 200)

@@ -41,7 +41,7 @@ Enemies that strike you are set ablaze
 Your Swung weapons inflicts them with Bogtoxin and Dragonflame";
             player.meleeSpeed += .1f;
             player.aggro += 4;
-            player.GetModPlayer<AAPlayer>(mod).kindledSet = true;
+            player.GetModPlayer<AAPlayer>().kindledSet = true;
         }
 
         public override void AddRecipes()

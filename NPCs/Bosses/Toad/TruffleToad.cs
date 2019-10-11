@@ -153,7 +153,7 @@ namespace AAMod.NPCs.Bosses.Toad
                         NPC npc2 = Main.npc[Shrooms[m]];
                         if (npc2 != null && npc2.active)
                         {
-                            int dustID = Dust.NewDust(npc2.position, npc2.width, npc2.height, mod.DustType<Dusts.ShroomDust>());
+                            int dustID = Dust.NewDust(npc2.position, npc2.width, npc2.height, ModContent.DustType<Dusts.ShroomDust>());
                             Main.dust[dustID].position += npc.position - npc.oldPosition;
                             Main.dust[dustID].velocity = (npc.Center - npc2.Center) * 0.10f;
                             Main.dust[dustID].noGravity = true;
@@ -366,7 +366,7 @@ namespace AAMod.NPCs.Bosses.Toad
                         }
                         for (int a = 0; a < 4; a++)
                         {
-                            NPC.NewNPC((int)(npc.position.X + Main.rand.Next(40)), (int)(npc.position.Y + npc.height), mod.NPCType<GlowshroomGrow>());
+                            NPC.NewNPC((int)(npc.position.X + Main.rand.Next(40)), (int)(npc.position.Y + npc.height), ModContent.NPCType<GlowshroomGrow>());
                         }
                         internalAI[0] = AISTATE_JUMP;
                         internalAI[1] = 0;
@@ -461,9 +461,9 @@ namespace AAMod.NPCs.Bosses.Toad
                 npc.velocity.X *= .98f;
                 if (internalAI[1] == 35)
                 {
-                    NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                    NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
-                    NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), mod.NPCType<TinyToad>());
+                    NPC.NewNPC((int)(npc.Center.X - 30f), (int)(npc.Center.Y - 16), ModContent.NPCType<TinyToad>());
+                    NPC.NewNPC((int)npc.Center.X, (int)(npc.Center.Y - 16), ModContent.NPCType<TinyToad>());
+                    NPC.NewNPC((int)(npc.Center.X + 30f), (int)(npc.Center.Y - 16), ModContent.NPCType<TinyToad>());
                 }
                 if (internalAI[1] >= 100)
                 {

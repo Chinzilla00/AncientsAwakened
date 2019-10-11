@@ -197,7 +197,7 @@ namespace AAMod.Projectiles.Thorium
             {
                 float velX = projectile.velocity.X / 3f * m;
                 float velY = projectile.velocity.Y / 3f * m;
-                int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AcidDust>(), 0, 0, 0);
+                int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.AcidDust>(), 0, 0, 0);
                 //int dustID = Dust.NewDust(projectile.position, projectile.width, projectile.height, 55, 0f, 0f, 0, default, 1.2f);
                 Main.dust[dustID].position.X = projectile.Center.X - velX;
                 Main.dust[dustID].position.Y = projectile.Center.Y - velY;

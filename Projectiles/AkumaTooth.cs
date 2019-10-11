@@ -9,7 +9,7 @@
 
         public override void SetDefaults() // Clones the bullet defaults
         {
-            projectile.CloneDefaults(mod.ProjectileType<ShenTooth>());
+            projectile.CloneDefaults(ModContent.ProjectileType<ShenTooth>());
             type = 1;
         }
     }

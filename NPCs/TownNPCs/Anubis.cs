@@ -328,8 +328,8 @@ namespace AAMod.NPCs.TownNPCs
 			else
             {
                 Player player = Main.LocalPlayer;
-                int Item = player.FindItem(mod.ItemType<Items.Misc.AnubisBook>());
-                if (Item >= 0 && !player.GetModPlayer<AAPlayer>(mod).AnubisBook && Greed)
+                int Item = player.FindItem(ModContent.ItemType<Items.Misc.AnubisBook>());
+                if (Item >= 0 && !player.GetModPlayer<AAPlayer>().AnubisBook && Greed)
                 {
                     player.inventory[Item].stack--;
                     if (player.inventory[Item].stack <= 0)
@@ -339,7 +339,7 @@ namespace AAMod.NPCs.TownNPCs
 
                     Main.npcChatText = @"You got it! My limited edition copy of my esteemed biogrophy! Thanks, pal. You know what? As a gift, you can have it. Here, I'll even autograph it for you.
 ...Whoops, I accidentally used my runic quill to sign it. Oh well, now it's magic.";
-                    //player.QuickSpawnItem(mod.ItemType<Items.Magic.AnubisTome>(), 1);
+                    //player.QuickSpawnItem(ModContent.ItemType<Items.Magic.AnubisTome>(), 1);
 
                     Main.PlaySound(24, -1, -1, 1);
                     return;
@@ -401,7 +401,7 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (Greed)
             {
-                return AAWorld.downedGreed ? (player.GetModPlayer<AAPlayer>(mod).AnubisBook ? "Hey thanks for getting my book back. Greed stole it a while ago, probably because of the gold highlights I used to bind it. Look around that cave, maybe there's some other stuff he's stolen?" : 
+                return AAWorld.downedGreed ? (player.GetModPlayer<AAPlayer>().AnubisBook ? "Hey thanks for getting my book back. Greed stole it a while ago, probably because of the gold highlights I used to bind it. Look around that cave, maybe there's some other stuff he's stolen?" : 
                     "Hey uh...did you find my thing yet? No? Just dig around in that loot pile down there, I'm sure it's there somewhere.") :
                     "Hey uh, there's this HUGE hoard of treasure underground somewhere with lots of gold in it, but it's guarded by this really stingy worm. You should go check it out for a boatload of booty, but uh...there's something of mine down there. Could you go get it for me? Don't worry, when you see it, you'll know it's mine.";
             }
@@ -525,7 +525,7 @@ namespace AAMod.NPCs.TownNPCs
 
             Player player = Main.LocalPlayer;
 
-            if (player.head == mod.ItemType<Items.Vanity.Mask.AnubisMask>() && Main.rand.Next(5) == 0)
+            if (player.head == ModContent.ItemType<Items.Vanity.Mask.AnubisMask>() && Main.rand.Next(5) == 0)
             {
                 return "Hey, lookin' good handsome.";
             }
@@ -621,7 +621,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = mod.ProjectileType<JudgementNPC>();
+            projType = ModContent.ProjectileType<JudgementNPC>();
             attackDelay = 5;
         }
 

@@ -166,7 +166,7 @@ namespace AAMod.Projectiles
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            target.AddBuff(mod.BuffType<Buffs.CursedHellfire>(), 210);
+            target.AddBuff(ModContent.BuffType<Buffs.CursedHellfire>(), 210);
         }
 
         public override void AI()
@@ -197,7 +197,7 @@ namespace AAMod.Projectiles
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            target.AddBuff(mod.BuffType<Buffs.CursedHellfire>(), 210);
+            target.AddBuff(ModContent.BuffType<Buffs.CursedHellfire>(), 210);
         }
 
         public override void AI()

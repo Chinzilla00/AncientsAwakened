@@ -70,7 +70,7 @@ Your minions electrocute enemies
                 player.endurance += .08f;
             }
             player.maxMinions += 6;
-            player.GetModPlayer<AAPlayer>(mod).darkmatterSetSu = true;
+            player.GetModPlayer<AAPlayer>().darkmatterSetSu = true;
             player.armorEffectDrawShadowLokis = true;
         }
 

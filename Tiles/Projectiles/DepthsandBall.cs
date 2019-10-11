@@ -17,7 +17,7 @@ namespace AAMod.Tiles.Projectiles
         {
             if (Main.rand.Next(2) == 0)
             {
-                int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.BogwoodDust>(), 0f, 0f, 0);
+                int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.BogwoodDust>(), 0f, 0f, 0);
                 Main.dust[dust].velocity.X *= 0.4f;
             }
             projectile.tileCollide = true;

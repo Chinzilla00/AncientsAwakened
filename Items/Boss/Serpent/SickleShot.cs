@@ -24,7 +24,7 @@ namespace AAMod.Items.Boss.Serpent
             item.useTime = 30;
             item.useAnimation = 30;
             item.useStyle = 5;
-            item.shoot = mod.ProjectileType<Projectiles.Serpent.IceArrow>();
+            item.shoot = ModContent.ProjectileType<Projectiles.Serpent.IceArrow>();
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 2;
             item.value = Item.sellPrice(0, 5, 0, 0);

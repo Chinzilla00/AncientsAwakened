@@ -35,7 +35,7 @@ namespace AAMod.Items.Summoning.Minions
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             player.AddBuff(mod.BuffType("CrowMinion"), 3600);
             if (player.dead)
             {

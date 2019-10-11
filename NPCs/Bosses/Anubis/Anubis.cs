@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.DeathSound = SoundID.NPCDeath7;
             npc.netAlways = true;
             npc.boss = true;
-            bossBag = mod.ItemType<AnubisBag>();
+            bossBag = ModContent.ItemType<AnubisBag>();
             npc.dontCountMe = true;
 		}
 

@@ -10,7 +10,7 @@ namespace AAMod.Water
         {
             Player player = Main.LocalPlayer;
 
-            if (Main.bgStyle == mod.GetSurfaceBgStyleSlot("MireSurfaceBgStyle") || Main.bgStyle == mod.GetSurfaceBgStyleSlot("MireDesertBgStyle") || (player.ZoneSnow && player.GetModPlayer<AAPlayer>(mod).ZoneMire))
+            if (Main.bgStyle == mod.GetSurfaceBgStyleSlot("MireSurfaceBgStyle") || Main.bgStyle == mod.GetSurfaceBgStyleSlot("MireDesertBgStyle") || (player.ZoneSnow && player.GetModPlayer<AAPlayer>().ZoneMire))
             {
                 if (!Main.dayTime || AAWorld.downedYamata || player.position.Y > Main.worldSurface * 16.0)
                 {

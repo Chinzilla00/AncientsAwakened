@@ -35,7 +35,7 @@ namespace AAMod.Items.Boss.Greed
             }
             if (Main.rand.Next(20) == 0)
             {
-                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PPDevArmor();
             }
             string[] lootTable = { "GildedGlock", "Miner", "StoneSlammer", "Unearther"};

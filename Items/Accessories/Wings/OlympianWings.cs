@@ -24,7 +24,7 @@ Grants a dash while flying");
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<AAPlayer>(mod).AADash = 1;
+            player.GetModPlayer<AAPlayer>().AADash = 1;
             player.wingTimeMax = 170;
         }
 

@@ -53,7 +53,7 @@ namespace AAMod.Projectiles
         public override void Kill(int timeleft)
         {
 			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
-            int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, mod.ProjectileType<DemiseBoom>(), projectile.damage, projectile.knockBack, Main.myPlayer);
+            int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, ModContent.ProjectileType<DemiseBoom>(), projectile.damage, projectile.knockBack, Main.myPlayer);
             Main.projectile[p].Center = projectile.Center;
             for (int num468 = 0; num468 < 10; num468++)
             {

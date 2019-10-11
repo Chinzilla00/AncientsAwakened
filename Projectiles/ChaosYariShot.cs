@@ -41,7 +41,7 @@ namespace AAMod.Projectiles
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, Main.rand.Next(2) == 0 ? mod.DustType<Dusts.AkumaDust>() : mod.DustType<Dusts.YamataAuraDust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+                    Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, Main.rand.Next(2) == 0 ? ModContent.DustType<Dusts.AkumaDust>() : ModContent.DustType<Dusts.YamataAuraDust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
                 }
             }
         }

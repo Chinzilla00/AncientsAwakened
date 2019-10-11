@@ -15,7 +15,7 @@ namespace AAMod.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<AAPlayer>(mod).Glowmoss = true;
+            player.GetModPlayer<AAPlayer>().Glowmoss = true;
             player.buffTime[buffIndex] = 18000;
             bool petProjectileNotSpawned = player.ownedProjectileCounts[mod.ProjectileType("Glowmoss")] <= 0;
             if (petProjectileNotSpawned && player.whoAmI == Main.myPlayer)

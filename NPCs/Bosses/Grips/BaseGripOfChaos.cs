@@ -206,13 +206,13 @@ namespace AAMod.NPCs.Bosses.Grips
                 MinionTimer++;
                 if (MinionTimer == 160)
                 {
-                    if (npc.type == mod.NPCType<GripOfChaosRed>() && NPC.CountNPCS(mod.NPCType<DragonClawM>()) < 4)
+                    if (npc.type == ModContent.NPCType<GripOfChaosRed>() && NPC.CountNPCS(ModContent.NPCType<DragonClawM>()) < 4)
                     {
-                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<DragonClawM>());
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<DragonClawM>());
                     }
-                    if (npc.type == mod.NPCType<GripOfChaosBlue>() && NPC.CountNPCS(mod.NPCType<HydraClawM>()) < 4)
+                    if (npc.type == ModContent.NPCType<GripOfChaosBlue>() && NPC.CountNPCS(ModContent.NPCType<HydraClawM>()) < 4)
                     {
-                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<HydraClawM>());
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HydraClawM>());
                     }
                     MinionTimer = 0;
                 }
@@ -247,11 +247,11 @@ namespace AAMod.NPCs.Bosses.Grips
                 npc.alpha -= 5;
                 if (npc.alpha <= 0)
                 {
-                    if (npc.type == mod.NPCType<GripOfChaosRed>())
+                    if (npc.type == ModContent.NPCType<GripOfChaosRed>())
                     {
                         npc.defense = 12;
                     }
-                    if (npc.type == mod.NPCType<GripOfChaosBlue>())
+                    if (npc.type == ModContent.NPCType<GripOfChaosBlue>())
                     {
                         npc.defense = 8;
                     }

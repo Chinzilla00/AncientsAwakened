@@ -26,7 +26,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int dustType = mod.DustType<SwarmDust>();
+            int dustType = ModContent.DustType<SwarmDust>();
             if (projectile.owner == Main.myPlayer)
             {
                 Convert((int)(projectile.position.X + projectile.width / 2) / 16, (int)(projectile.position.Y + projectile.height / 2) / 16);

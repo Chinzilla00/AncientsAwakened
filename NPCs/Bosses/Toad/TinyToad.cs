@@ -109,7 +109,7 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void PostAI()
         {
-            if (NPC.AnyNPCs(mod.NPCType<TruffleToad>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<TruffleToad>()))
             {
                 if (npc.alpha > 0)
                 {

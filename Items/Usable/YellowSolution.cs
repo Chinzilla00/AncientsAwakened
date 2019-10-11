@@ -14,7 +14,7 @@ namespace AAMod.Items.Usable
 
 		public override void SetDefaults()
 		{
-			item.shoot = mod.ProjectileType<Projectiles.Snowmelt>() - ProjectileID.PureSpray;
+			item.shoot = ModContent.ProjectileType<Projectiles.Snowmelt>() - ProjectileID.PureSpray;
 			item.ammo = AmmoID.Solution;
 			item.width = 10;
 			item.height = 12;
