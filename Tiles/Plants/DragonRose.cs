@@ -38,8 +38,8 @@ namespace AAMod.Tiles.Plants
 			TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
 			TileObjectData.newTile.AnchorValidTiles = new int[]
 			{
-				mod.TileType<InfernoGrass>(),
-                mod.TileType<Torchstone>(),
+				ModContent.TileType<InfernoGrass>(),
+                ModContent.TileType<Torchstone>(),
             };
 			TileObjectData.newTile.AnchorAlternateTiles = new int[]
 			{

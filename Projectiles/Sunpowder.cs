@@ -94,37 +94,37 @@ namespace AAMod.Projectiles
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<Depthstone>())
+                        else if (type == ModContent.TileType<Depthstone>())
                         {
                             Main.tile[k, l].type = 1;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<MireGrass>())
+                        else if (type == ModContent.TileType<MireGrass>())
                         {
                             Main.tile[k, l].type = 60;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<IndigoIce>())
+                        else if (type == ModContent.TileType<IndigoIce>())
                         {
                             Main.tile[k, l].type = 161;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<Depthsandstone>())
+                        else if (type == ModContent.TileType<Depthsandstone>())
                         {
                             Main.tile[k, l].type = 396;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<Depthsand>())
+                        else if (type == ModContent.TileType<Depthsand>())
                         {
                             Main.tile[k, l].type = 53;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<DepthsandHardened>())
+                        else if (type == ModContent.TileType<DepthsandHardened>())
                         {
                             Main.tile[k, l].type = 397;
                             WorldGen.SquareTileFrame(k, l, true);

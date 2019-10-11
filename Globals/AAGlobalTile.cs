@@ -157,7 +157,7 @@ namespace AAMod
 
         public override bool CanKillTile(int i, int j, int type, ref bool blockDamaged)
         {
-            if (Main.tile[i, j - 1].active() && (Main.tile[i, j - 1].type == mod.TileType<ChaosAltar1>() || Main.tile[i, j - 1].type == mod.TileType<ChaosAltar2>()) && (Main.tile[i, j].type != mod.TileType<ChaosAltar1>() || Main.tile[i, j].type != mod.TileType<ChaosAltar2>()))
+            if (Main.tile[i, j - 1].active() && (Main.tile[i, j - 1].type == ModContent.TileType<ChaosAltar1>() || Main.tile[i, j - 1].type == ModContent.TileType<ChaosAltar2>()) && (Main.tile[i, j].type != ModContent.TileType<ChaosAltar1>() || Main.tile[i, j].type != ModContent.TileType<ChaosAltar2>()))
             {
                 return false;
             }
@@ -167,7 +167,7 @@ namespace AAMod
 
         public override bool CanExplode(int i, int j, int type)
         {
-            if (Main.tile[i, j - 1].active() && (Main.tile[i, j - 1].type == mod.TileType<ChaosAltar1>() || Main.tile[i, j - 1].type == mod.TileType<ChaosAltar2>()) && (Main.tile[i, j].type != mod.TileType<ChaosAltar1>() || Main.tile[i, j].type != mod.TileType<ChaosAltar2>()))
+            if (Main.tile[i, j - 1].active() && (Main.tile[i, j - 1].type == ModContent.TileType<ChaosAltar1>() || Main.tile[i, j - 1].type == ModContent.TileType<ChaosAltar2>()) && (Main.tile[i, j].type != ModContent.TileType<ChaosAltar1>() || Main.tile[i, j].type != ModContent.TileType<ChaosAltar2>()))
             {
                 return false;
             }
@@ -177,7 +177,7 @@ namespace AAMod
 
         public override bool Slope(int i, int j, int type)
         {
-            if (Main.tile[i, j - 1].active() && (Main.tile[i, j - 1].type == mod.TileType<ChaosAltar1>() || Main.tile[i, j - 1].type == mod.TileType<ChaosAltar2>()) && (Main.tile[i, j].type != mod.TileType<ChaosAltar1>() || Main.tile[i, j].type != mod.TileType<ChaosAltar2>()))
+            if (Main.tile[i, j - 1].active() && (Main.tile[i, j - 1].type == ModContent.TileType<ChaosAltar1>() || Main.tile[i, j - 1].type == ModContent.TileType<ChaosAltar2>()) && (Main.tile[i, j].type != ModContent.TileType<ChaosAltar1>() || Main.tile[i, j].type != ModContent.TileType<ChaosAltar2>()))
             {
                 return false;
             }
@@ -193,9 +193,9 @@ namespace AAMod
                 {
                     int style = Main.rand.Next(5);
 
-                    if (PlaceObject(i, j - 1, mod.TileType<MadnessShroom>(), false, style))
+                    if (PlaceObject(i, j - 1, ModContent.TileType<MadnessShroom>(), false, style))
                     {
-                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<MadnessShroom>(), style, 0, -1, -1);
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, ModContent.TileType<MadnessShroom>(), style, 0, -1, -1);
                     }
                 }
             }
@@ -204,9 +204,9 @@ namespace AAMod
             {
                 if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(800) == 0)
                 {
-                    if (PlaceObject(i, j - 1, mod.TileType<Carrot>(), false, 0))
+                    if (PlaceObject(i, j - 1, ModContent.TileType<Carrot>(), false, 0))
                     {
-                        NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType<Carrot>(), 0, 0, -1, -1);
+                        NetMessage.SendObjectPlacment(-1, i, j - 1, ModContent.TileType<Carrot>(), 0, 0, -1, -1);
                     }
                 }
             }

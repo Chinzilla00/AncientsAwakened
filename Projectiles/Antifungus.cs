@@ -101,7 +101,7 @@ namespace AAMod.Projectiles
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<Mycelium>())
+                        else if (type == ModContent.TileType<Mycelium>())
                         {
                             Main.tile[k, l].type = TileID.Grass;
                             WorldGen.SquareTileFrame(k, l, true);

@@ -57,37 +57,37 @@ namespace AAMod
                 {
                     if (WorldGen.InWorld(k, l, 1) && Math.Abs(k - i) + Math.Abs(l - j) < 6)
                     {
-                        if (Main.tile[k, l].type == mod.TileType<InfernoGrass>() || Main.tile[k, l].type == mod.TileType<MireGrass>() || Main.tile[k, l].type == mod.TileType<Mycelium>() || Main.tile[k, l].type == mod.TileType<Doomgrass>())
+                        if (Main.tile[k, l].type == ModContent.TileType<InfernoGrass>() || Main.tile[k, l].type == ModContent.TileType<MireGrass>() || Main.tile[k, l].type == ModContent.TileType<Mycelium>() || Main.tile[k, l].type == ModContent.TileType<Doomgrass>())
                         {
                             Main.tile[k, l].type = 2;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
                         }
-                        else if (Main.tile[k, l].type == mod.TileType<Torchstone>() || Main.tile[k, l].type == mod.TileType<Depthstone>() || Main.tile[k, l].type == mod.TileType<DoomstoneB>())
+                        else if (Main.tile[k, l].type == ModContent.TileType<Torchstone>() || Main.tile[k, l].type == ModContent.TileType<Depthstone>() || Main.tile[k, l].type == ModContent.TileType<DoomstoneB>())
                         {
                             Main.tile[k, l].type = 1;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
                         }
-                        else if (Main.tile[k, l].type == mod.TileType<Torchsand>() || Main.tile[k, l].type == mod.TileType<Depthsand>())
+                        else if (Main.tile[k, l].type == ModContent.TileType<Torchsand>() || Main.tile[k, l].type == ModContent.TileType<Depthsand>())
                         {
                             Main.tile[k, l].type = 53;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
                         }
-                        else if (Main.tile[k, l].type == mod.TileType<TorchsandHardened>() || Main.tile[k, l].type == mod.TileType<DepthsandHardened>())
+                        else if (Main.tile[k, l].type == ModContent.TileType<TorchsandHardened>() || Main.tile[k, l].type == ModContent.TileType<DepthsandHardened>())
                         {
                             Main.tile[k, l].type = 397;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
                         }
-                        else if (Main.tile[k, l].type == mod.TileType<Torchsandstone>() || Main.tile[k, l].type == mod.TileType<Depthsandstone>())
+                        else if (Main.tile[k, l].type == ModContent.TileType<Torchsandstone>() || Main.tile[k, l].type == ModContent.TileType<Depthsandstone>())
                         {
                             Main.tile[k, l].type = 396;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
                         }
-                        else if (Main.tile[k, l].type == mod.TileType<Torchice>() || Main.tile[k, l].type == mod.TileType<IndigoIce>())
+                        else if (Main.tile[k, l].type == ModContent.TileType<Torchice>() || Main.tile[k, l].type == ModContent.TileType<IndigoIce>())
                         {
                             Main.tile[k, l].type = 161;
                             WorldGen.SquareTileFrame(k, l, true);

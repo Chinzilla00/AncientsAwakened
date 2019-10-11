@@ -77,7 +77,7 @@ namespace AAMod.NPCs.TownNPCs
             {
                 for (int j = num4 + 2; j < num5 + 2; j++)
                 {
-                    if (Main.tile[i, j].active() && (Main.tile[i, j].type == mod.TileType<Mycelium>() || Main.tile[i, j].type == mod.TileType<Mushroom>() || Main.tile[i, j].type == mod.TileType<MadnessShroom>()))
+                    if (Main.tile[i, j].active() && (Main.tile[i, j].type == ModContent.TileType<Mycelium>() || Main.tile[i, j].type == ModContent.TileType<Mushroom>() || Main.tile[i, j].type == ModContent.TileType<MadnessShroom>()))
                     {
                         num++;
                     }
