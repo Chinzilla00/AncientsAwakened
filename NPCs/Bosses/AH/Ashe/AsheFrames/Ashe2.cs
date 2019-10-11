@@ -63,7 +63,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                 {
                     if (Main.netMode != 1)
                     {
-                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AsheVanish>(), 0);
+                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<AsheVanish>(), 0);
                         Main.npc[DeathAnim].velocity = npc.velocity;
                         Main.npc[DeathAnim].netUpdate = true;
                     }
@@ -140,7 +140,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                             Vector2 vel = (player.Center - spawnPos) / 30;
                             if (vel.Length() < 25)
                                 vel = Vector2.Normalize(vel) * 25;
-                            Projectile.NewProjectile(spawnPos, vel, ModContent.ProjectileType<AsheSpark>(), npc.damage / 4, 0f, Main.myPlayer);
+                            Projectile.NewProjectile(spawnPos, vel, Terraria.ModLoader.ModContent.ProjectileType<AsheSpark>(), npc.damage / 4, 0f, Main.myPlayer);
                         }
                     }
                     if (++npc.ai[1] > 210)
@@ -158,7 +158,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
                     }
                     if (npc.ai[1] > 240 / (Main.expertMode ? 2 : 1))
                     {
-                        NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AsheDragon>());
+                        NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, Terraria.ModLoader.ModContent.NPCType<AsheDragon>());
                         AIChange();
                     }
                     break;
@@ -184,7 +184,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
 
         private void AIChange()
         {
-            npc.ai[0] = npc.ai[0] != 0 ? 0 : (NPC.AnyNPCs(ModContent.NPCType<AsheDragon>()) ? Main.rand.Next(6) : Main.rand.Next(5));
+            npc.ai[0] = npc.ai[0] != 0 ? 0 : (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<AsheDragon>()) ? Main.rand.Next(6) : Main.rand.Next(5));
             npc.ai[1] = 0;
             npc.ai[2] = 0;
         }
@@ -223,7 +223,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
 
         public static int VortexDamage(Mod mod)
         {
-            return  1 + (NPC.CountNPCS(ModContent.NPCType<AsheOrbiter>()) / 15);
+            return  1 + (NPC.CountNPCS(Terraria.ModLoader.ModContent.NPCType<AsheOrbiter>()) / 15);
         }
 
         public int OrbiterCount = Main.expertMode ? 10 : 8;
@@ -251,7 +251,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
             int Haruka = NPC.CountNPCS(mod.NPCType("Haruka"));
             if (Haruka == 0)
             {
-                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AHDeath>());
+                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<AHDeath>());
                 if (Main.expertMode)
                 {
                     npc.DropBossBags();
@@ -267,7 +267,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
             {
                 Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("AsheTrophy"));
             }
-            int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AsheVanish>(), 0);
+            int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<AsheVanish>(), 0);
             Main.npc[DeathAnim].velocity = npc.velocity;
             if (Main.netMode != 1) BaseUtility.Chat("OW..! THAT HURT, YOU KNOW!", new Color(102, 20, 48));
             npc.value = 0f;
@@ -276,7 +276,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            if (NPC.AnyNPCs(ModContent.NPCType<Haruka.Haruka>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Haruka.Haruka>()))
             {
                 potionType = 0;
             }
@@ -456,7 +456,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe.AsheFrames
 
         private void RingEffects()
         {
-            if (npc.ai[0] == SummonDragon || NPC.AnyNPCs(ModContent.NPCType<AsheOrbiter>()))
+            if (npc.ai[0] == SummonDragon || NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<AsheOrbiter>()))
             {
                 RingRotation += 0.02f;
                 if (scale < 1f)

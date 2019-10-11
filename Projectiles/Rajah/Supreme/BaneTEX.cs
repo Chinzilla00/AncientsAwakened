@@ -32,7 +32,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
             bool flag3 = projectile.Colliding(myRect, target.getRect());
             if (!target.boss)
             {
-                Main.npc[(int)projectile.ai[1]].AddBuff(ModContent.BuffType<Buffs.SpearStuck>(), 100000);
+                Main.npc[(int)projectile.ai[1]].AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.SpearStuck>(), 100000);
                 if (flag3 && !StuckInEnemy)
                 {
                     StuckInEnemy = true;

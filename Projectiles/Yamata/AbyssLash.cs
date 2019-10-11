@@ -82,7 +82,7 @@ namespace AAMod.Projectiles.Yamata
 				int num897 = 0;
 				while (num897 < projectile.scale * 5f)
 				{
-					int num898 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDustLight>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.1f);
+					int num898 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.YamataDustLight>(), projectile.velocity.X, projectile.velocity.Y, 100, default, 1.1f);
 					Main.dust[num898].position = (Main.dust[num898].position + projectile.Center) / 2f;
 					Main.dust[num898].noGravity = true;
 					Main.dust[num898].velocity *= 0.1f;
@@ -97,7 +97,7 @@ namespace AAMod.Projectiles.Yamata
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(ModContent.BuffType<Buffs.Moonraze>(), 120);
+            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.Moonraze>(), 120);
         	target.immune[projectile.owner] = 5;
         }
     }

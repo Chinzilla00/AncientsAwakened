@@ -91,10 +91,10 @@ namespace AAMod.NPCs.Bosses.Zero
                 //emit dust
                 for (int i = 0; i < 5; i++)
                 {
-                    int d1 = Dust.NewDust(projectile.position + new Vector2(projectile.width / 2, projectile.height / 2) + projectile.velocity * muzzleDist, 1, 1, ModContent.DustType<Dusts.VoidDust>(), 0f, 0f, 100, Color.White, 1.5f);
+                    int d1 = Dust.NewDust(projectile.position + new Vector2(projectile.width / 2, projectile.height / 2) + projectile.velocity * muzzleDist, 1, 1, Terraria.ModLoader.ModContent.DustType<Dusts.VoidDust>(), 0f, 0f, 100, Color.White, 1.5f);
                     Main.dust[d1].noGravity = true;
                     Main.dust[d1].velocity *= 0.4f;
-                    d1 = Dust.NewDust(endPos + new Vector2(projectile.width / 2, projectile.height / 2), 0, 0, ModContent.DustType<Dusts.VoidDust>(), 0f, 0f, 100, Color.White, 1f);
+                    d1 = Dust.NewDust(endPos + new Vector2(projectile.width / 2, projectile.height / 2), 0, 0, Terraria.ModLoader.ModContent.DustType<Dusts.VoidDust>(), 0f, 0f, 100, Color.White, 1f);
                     Main.dust[d1].noGravity = true;
                     Main.dust[d1].velocity *= 0.4f;
                 }
@@ -128,7 +128,7 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.scale *= 0.992f;
             if (projectile.ai[1] > 0.12f) projectile.ai[1] *= 0.98f;
 
-            int d1 = Dust.NewDust(projectile.position + new Vector2(projectile.width / 2f, projectile.height / 2f), 1, 1, ModContent.DustType<Dusts.VoidDust>(), 0f, 0f, 100, Color.White, 1f);
+            int d1 = Dust.NewDust(projectile.position + new Vector2(projectile.width / 2f, projectile.height / 2f), 1, 1, Terraria.ModLoader.ModContent.DustType<Dusts.VoidDust>(), 0f, 0f, 100, Color.White, 1f);
             Main.dust[d1].noGravity = true;
             Main.dust[d1].velocity *= 0.5f;
 
@@ -150,7 +150,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             for (int j = 0; j < 40; j++)
             {
-                int d2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.VoidDust>(), j / 90f * -projectile.velocity.X, j / 90f * -projectile.velocity.Y, 100, Color.White, 1.2f);
+                int d2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.VoidDust>(), j / 90f * -projectile.velocity.X, j / 90f * -projectile.velocity.Y, 100, Color.White, 1.2f);
                 Main.dust[d2].noGravity = true;
                 Main.dust[d2].velocity *= 0.6f;
             }

@@ -969,8 +969,8 @@ namespace AAMod
 
             RecipeGroup group16 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " evil summon staff", new int[]
             {
-                ModContent.ItemType<Items.Summoning.EaterStaff>(),
-                ModContent.ItemType<Items.Summoning.CrimsonStaff>()
+                Terraria.ModLoader.ModContent.ItemType<Items.Summoning.EaterStaff>(),
+                Terraria.ModLoader.ModContent.ItemType<Items.Summoning.CrimsonStaff>()
             });
             RecipeGroup.RegisterGroup("AAMod:EvilStaff", group16);
 

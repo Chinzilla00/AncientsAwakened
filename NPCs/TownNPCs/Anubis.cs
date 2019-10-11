@@ -328,7 +328,7 @@ namespace AAMod.NPCs.TownNPCs
 			else
             {
                 Player player = Main.LocalPlayer;
-                int Item = player.FindItem(ModContent.ItemType<Items.Misc.AnubisBook>());
+                int Item = player.FindItem(Terraria.ModLoader.ModContent.ItemType<Items.Misc.AnubisBook>());
                 if (Item >= 0 && !player.GetModPlayer<AAPlayer>().AnubisBook && Greed)
                 {
                     player.inventory[Item].stack--;
@@ -339,7 +339,7 @@ namespace AAMod.NPCs.TownNPCs
 
                     Main.npcChatText = @"You got it! My limited edition copy of my esteemed biogrophy! Thanks, pal. You know what? As a gift, you can have it. Here, I'll even autograph it for you.
 ...Whoops, I accidentally used my runic quill to sign it. Oh well, now it's magic.";
-                    //player.QuickSpawnItem(ModContent.ItemType<Items.Magic.AnubisTome>(), 1);
+                    //player.QuickSpawnItem(Terraria.ModLoader.ModContent.ItemType<Items.Magic.AnubisTome>(), 1);
 
                     Main.PlaySound(24, -1, -1, 1);
                     return;
@@ -525,7 +525,7 @@ namespace AAMod.NPCs.TownNPCs
 
             Player player = Main.LocalPlayer;
 
-            if (player.head == ModContent.ItemType<Items.Vanity.Mask.AnubisMask>() && Main.rand.Next(5) == 0)
+            if (player.head == Terraria.ModLoader.ModContent.ItemType<Items.Vanity.Mask.AnubisMask>() && Main.rand.Next(5) == 0)
             {
                 return "Hey, lookin' good handsome.";
             }
@@ -621,7 +621,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ModContent.ProjectileType<JudgementNPC>();
+            projType = Terraria.ModLoader.ModContent.ProjectileType<JudgementNPC>();
             attackDelay = 5;
         }
 

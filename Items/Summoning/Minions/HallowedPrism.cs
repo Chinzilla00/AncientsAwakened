@@ -60,7 +60,7 @@ namespace AAMod.Items.Summoning.Minions
                 int num501 = 20;
                 for (int num502 = 0; num502 < num501; num502++)
                 {
-                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, ModContent.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, AAColor.Hallow, 1f);
+                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, Terraria.ModLoader.ModContent.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 0, AAColor.Hallow, 1f);
                     Main.dust[num503].velocity *= 2f;
                 }
             }
@@ -239,7 +239,7 @@ namespace AAMod.Items.Summoning.Minions
             if (projectile.ai[0] == 0f)
             {
                 float scaleFactor3 = 24f;
-                int num658 = ModContent.ProjectileType<Prismshot>();
+                int num658 = Terraria.ModLoader.ModContent.ProjectileType<Prismshot>();
                 if (flag25 && projectile.ai[1] == 0f)
                 {
                     projectile.ai[1] += 1f;

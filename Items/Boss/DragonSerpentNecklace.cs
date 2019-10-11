@@ -48,11 +48,11 @@ Ignores 5 Enemy defense");
                 int maxAccessoryIndex = 5 + player.extraAccessorySlots;
                 for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    if (slot != i && player.armor[i].type == ModContent.ItemType<Broodmother.DragonCape>())
+                    if (slot != i && player.armor[i].type == Terraria.ModLoader.ModContent.ItemType<Broodmother.DragonCape>())
                     {
                         return false;
                     }
-                    if (slot != i && player.armor[i].type == ModContent.ItemType<Hydra.HydraPendant>())
+                    if (slot != i && player.armor[i].type == Terraria.ModLoader.ModContent.ItemType<Hydra.HydraPendant>())
                     {
                         return false;
                     }

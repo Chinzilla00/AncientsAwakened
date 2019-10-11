@@ -28,7 +28,7 @@ namespace AAMod.Projectiles.Shen
         public override void AI()
         {
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
-            int dustType = ModContent.DustType<Dusts.Discord>();
+            int dustType = Terraria.ModLoader.ModContent.DustType<Dusts.Discord>();
             if (projectile.localAI[0] == 0f)
             {
                 projectile.localAI[0] = 1f;
@@ -44,7 +44,7 @@ namespace AAMod.Projectiles.Shen
         }
         public override void Kill(int timeLeft)
         {
-            int dustType =  ModContent.DustType<Dusts.Discord>();
+            int dustType =  Terraria.ModLoader.ModContent.DustType<Dusts.Discord>();
             int pieCut = 20;
 			for(int m = 0; m < pieCut; m++)
 			{

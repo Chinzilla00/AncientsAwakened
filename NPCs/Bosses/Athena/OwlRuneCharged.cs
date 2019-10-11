@@ -86,7 +86,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     Vector2 vector82 = array5[num842] - npc.Center;
                     float ai = Main.rand.Next(100);
                     Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(0.78539818525314331)) * 10f;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector83.X, vector83.Y, ModContent.ProjectileType<AthenaShock>(), npc.damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vector83.X, vector83.Y, Terraria.ModLoader.ModContent.ProjectileType<AthenaShock>(), npc.damage, 0f, Main.myPlayer, vector82.ToRotation(), ai);
                 }
             }
             Lighting.AddLight(npc.Center, 0f, 0.85f, 0.9f);

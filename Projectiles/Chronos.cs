@@ -62,7 +62,7 @@ namespace AAMod.Projectiles
                     }
                 }
                 vector *= 0.8f;
-                Projectile.NewProjectile(projectile.Center.X - vector.X, projectile.Center.Y - vector.Y, vector.X, vector.Y, ModContent.ProjectileType<Time>(), projectile.damage, projectile.knockBack, projectile.owner, 1, 0f);
+                Projectile.NewProjectile(projectile.Center.X - vector.X, projectile.Center.Y - vector.Y, vector.X, vector.Y, Terraria.ModLoader.ModContent.ProjectileType<Time>(), projectile.damage, projectile.knockBack, projectile.owner, 1, 0f);
                 projectile.localAI[1] = 0f;
             }
         }

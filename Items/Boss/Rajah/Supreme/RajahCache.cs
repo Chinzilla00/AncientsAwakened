@@ -37,7 +37,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.SADevArmor();
             }
-            player.QuickSpawnItem(ModContent.ItemType<RajahPelt>(), Main.rand.Next(15, 31));
+            player.QuickSpawnItem(Terraria.ModLoader.ModContent.ItemType<RajahPelt>(), Main.rand.Next(15, 31));
             player.QuickSpawnItem(mod.ItemType("RajahCape"));
             string[] lootTable = { "Excalihare", "FluffyFury", "RabbitsWrath", "BaneOfTheBunnyEX", "CottonCaneEX", "PunisherEX", "RoyalScepterEX", "BunzookaEX"};
             int loot = Main.rand.Next(lootTable.Length);

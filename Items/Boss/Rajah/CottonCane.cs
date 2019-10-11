@@ -27,9 +27,9 @@ namespace AAMod.Items.Boss.Rajah
             item.knockBack = 3;
             item.rare = 8;
             item.UseSound = SoundID.Item44;
-            item.shoot = ModContent.ProjectileType<Projectiles.Rajah.RabbitcopterSoldier>();
+            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Rajah.RabbitcopterSoldier>();
             item.shootSpeed = 10f;
-            item.buffType = ModContent.BuffType<Buffs.RabbitcopterSoldier>();
+            item.buffType = Terraria.ModLoader.ModContent.BuffType<Buffs.RabbitcopterSoldier>();
             item.autoReuse = true;
         }
 		

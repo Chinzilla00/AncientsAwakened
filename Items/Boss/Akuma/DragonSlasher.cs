@@ -73,7 +73,7 @@ Inflicts Daybroken");
             if (Main.rand.NextFloat() < 1f)
             {
                 Dust dust;
-                dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
+                dust = Main.dust[Dust.NewDust(new Vector2(hitbox.X, hitbox.Y), hitbox.Width, hitbox.Height, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 46, new Color(255, 75, 0), 1.381579f)];
                 dust.noGravity = true;
             }
         }
@@ -81,7 +81,7 @@ Inflicts Daybroken");
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         { 
             target.AddBuff(BuffID.Daybreak, 200);
-            Projectile.NewProjectile((int)target.position.X, (int)target.position.Y, 0, 0, ModContent.ProjectileType<Projectiles.Akuma.AkumaExp>(), item.damage, 20, Main.myPlayer);
+            Projectile.NewProjectile((int)target.position.X, (int)target.position.Y, 0, 0, Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Akuma.AkumaExp>(), item.damage, 20, Main.myPlayer);
         }
         
         public override void AddRecipes()  //How to craft this sword

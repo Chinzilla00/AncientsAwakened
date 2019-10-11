@@ -44,16 +44,16 @@ Non-consumable");
 
         public override bool CanUseItem(Player player)
         {
-            return !(NPC.AnyNPCs(ModContent.NPCType<Rajah>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah2>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah3>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah6>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah9>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()));
+            return !(NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah>()) ||
+                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah2>()) ||
+                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah3>()) ||
+                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah4>()) ||
+                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah5>()) ||
+                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah6>()) ||
+                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah7>()) ||
+                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah8>()) ||
+                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah9>()) ||
+                NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<SupremeRajah>()));
         }
 
         public override bool UseItem(Player player)

@@ -60,7 +60,7 @@ namespace AAMod.Projectiles
 		{
 			if (Main.rand.Next(2) == 0)
 			{
-				int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.MagicDust>(), 0f, 0f, 200, default, 0.8f);
+				int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.MagicDust>(), 0f, 0f, 200, default, 0.8f);
 				Main.dust[dustnumber].velocity *= 0.3f;
 			}
 			

@@ -15,7 +15,7 @@ namespace AAMod.Items.Ranged
             item.useTime = 40;
             item.useAnimation = 30;
             item.useStyle = 5;
-            item.shoot = ModContent.ProjectileType<Projectiles.Singularity>();
+            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Singularity>();
             item.knockBack = 5;
             item.value = Terraria.Item.sellPrice(0, 8, 0, 0);
             item.rare = 11;

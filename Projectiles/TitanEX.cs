@@ -83,7 +83,7 @@ namespace AAMod.Projectiles
             Lighting.AddLight(vector14, 1f, 0.2f, 2f);
             if (Main.rand.Next(3) == 0)
             {
-                int num30 = Dust.NewDust(vector14 - projectile.Size / 2f, projectile.width, projectile.height, ModContent.DustType<Dusts.Discord>(), projectile.velocity.X, projectile.velocity.Y, 100, AAColor.Shen2, 1f);
+                int num30 = Dust.NewDust(vector14 - projectile.Size / 2f, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.Discord>(), projectile.velocity.X, projectile.velocity.Y, 100, AAColor.Shen2, 1f);
                 Main.dust[num30].noGravity = true;
                 Main.dust[num30].position -= projectile.velocity;
             }

@@ -23,7 +23,7 @@ namespace AAMod.Items.Melee
             item.damage = 15;
             item.knockBack = 7;
             item.melee = true;
-            item.shoot = ModContent.ProjectileType<Projectiles.Pyrosphere>();
+            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Pyrosphere>();
             item.shootSpeed = 10;
             item.noUseGraphic = true;
             item.noMelee = true;

@@ -21,7 +21,7 @@ namespace AAMod.Projectiles.Serpent
         {
             Dust dust1;
             Vector2 position = projectile.position;
-            dust1 = Main.dust[Dust.NewDust(position, 0, 0, ModContent.DustType<Dusts.SnowDust>(), 4f, 0f, 46, default, 1f)];
+            dust1 = Main.dust[Dust.NewDust(position, 0, 0, Terraria.ModLoader.ModContent.DustType<Dusts.SnowDust>(), 4f, 0f, 46, default, 1f)];
             dust1.noGravity = true;
         }
 

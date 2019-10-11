@@ -62,7 +62,7 @@ namespace AAMod.Items.DevTools
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(ModContent.BuffType<Buffs.InfinityOverload>(), 300);
+            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.InfinityOverload>(), 300);
         }
     }
 }

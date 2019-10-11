@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Enemies.Void
 			bool isDead = npc.life <= 0;
 			for (int m = 0; m < (isDead ? 25 : 5); m++)
 			{
-				int dustType = ModContent.DustType<VoidDust>();
+				int dustType = Terraria.ModLoader.ModContent.DustType<VoidDust>();
 				Dust.NewDust(npc.position, npc.width, npc.height, dustType, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, Color.White, isDead ? 2f : 1.1f);
 			}
 		}

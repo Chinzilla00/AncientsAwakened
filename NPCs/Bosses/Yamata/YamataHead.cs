@@ -121,7 +121,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 	        if (Body == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
-                if (npcBody.type == ModContent.NPCType<Yamata>() || npcBody.type == ModContent.NPCType<YamataA>())
+                if (npcBody.type == Terraria.ModLoader.ModContent.NPCType<Yamata>() || npcBody.type == Terraria.ModLoader.ModContent.NPCType<YamataA>())
                 {
                     Body = npcBody;
 					yamata = (Yamata)npcBody.modNPC;
@@ -305,7 +305,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     QuoteSaid = true;
                     Quote1 = true;
                 }
-                BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, ModContent.ProjectileType<YamataVenom>(), ref internalAI[3], 6, projDamage, 9f, true, new Vector2(20f, 15f));
+                BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, Terraria.ModLoader.ModContent.ProjectileType<YamataVenom>(), ref internalAI[3], 6, projDamage, 9f, true, new Vector2(20f, 15f));
             }
             if (AttackType == 1f)
             {
@@ -315,7 +315,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     QuoteSaid = true;
                     Quote3 = true;
                 }
-                BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, -4f), player.width, player.height, ModContent.ProjectileType<YamataStorm>(), ref internalAI[3], 40, projDamage, 10f, true, new Vector2(20f, 15f));
+                BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, -4f), player.width, player.height, Terraria.ModLoader.ModContent.ProjectileType<YamataStorm>(), ref internalAI[3], 40, projDamage, 10f, true, new Vector2(20f, 15f));
             }
             if (AttackType == 2f)
             {
@@ -325,7 +325,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     QuoteSaid = true;
                     Quote3 = true;
                 }
-                BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, ModContent.ProjectileType<YamataBlast>(), ref internalAI[3], 15, projDamage, 10f, true, new Vector2(20f, 15f));
+                BaseAI.ShootPeriodic(npc, new Vector2(player.position.X, player.position.Y - 1), player.width, player.height, Terraria.ModLoader.ModContent.ProjectileType<YamataBlast>(), ref internalAI[3], 15, projDamage, 10f, true, new Vector2(20f, 15f));
             }
             if (AttackType == 3f)
             {
@@ -403,7 +403,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(ModContent.NPCType<Yamata>()) || NPC.AnyNPCs(ModContent.NPCType<YamataA>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Yamata>()) || NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<YamataA>()))
             {
                 return false;
             }

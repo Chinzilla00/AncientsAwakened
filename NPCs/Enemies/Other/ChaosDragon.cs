@@ -36,7 +36,7 @@ namespace AAMod.NPCs.Enemies.Other
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                 {
-                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, ModContent.DustType<Dusts.DiscordLight>(), 0f, 0f, 100);
+                    int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.DiscordLight>(), 0f, 0f, 100);
                     Main.dust[num935].noGravity = true;
                     Main.dust[num935].noLight = false;
                 }
@@ -79,8 +79,8 @@ namespace AAMod.NPCs.Enemies.Other
                 npc.height = 78;
                 npc.position.X = npc.position.X - npc.width / 2;
                 npc.position.Y = npc.position.Y - npc.height / 2;
-                int dust1 = ModContent.DustType<Dusts.YamataDust>();
-                int dust2 = ModContent.DustType<Dusts.YamataDust>();
+                int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.YamataDust>();
+                int dust2 = Terraria.ModLoader.ModContent.DustType<Dusts.YamataDust>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;

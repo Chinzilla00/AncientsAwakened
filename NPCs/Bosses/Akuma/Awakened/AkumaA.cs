@@ -188,7 +188,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 else if (!npc.HasBuff(BuffID.Wet))
                 {
                     Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
-                    AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaABreath>(), 2, 2);
+                    AAAI.BreatheFire(npc, true, Terraria.ModLoader.ModContent.ProjectileType<AkumaABreath>(), 2, 2);
                 }
                 if (attackTimer >= 80)
                 {
@@ -440,7 +440,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     for (int i = 0; i < Fireballs; i++)
                     {
                         offsetAngle = startAngle + (deltaAngle * i);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, ModContent.ProjectileType<AkumaABomb>(), damage, 3, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, Terraria.ModLoader.ModContent.ProjectileType<AkumaABomb>(), damage, 3, Main.myPlayer);
                     }
                 }
             }
@@ -465,7 +465,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 if (npc.ai[2] == 350)
                 {
-                    if (NPC.CountNPCS(ModContent.NPCType<AncientLung>()) < (Main.expertMode ? 3 : 4))
+                    if (NPC.CountNPCS(Terraria.ModLoader.ModContent.NPCType<AncientLung>()) < (Main.expertMode ? 3 : 4))
                     {
                         AkumaAttacks.SpawnLung(player, mod, true);
                         MinionCount += 1;
@@ -482,7 +482,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 }
                 if (npc.ai[2] == 350)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, ModContent.ProjectileType<AFireProjHostile>(), damage, 3, Main.myPlayer);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, Terraria.ModLoader.ModContent.ProjectileType<AFireProjHostile>(), damage, 3, Main.myPlayer);
                 }
             }
             else
@@ -497,7 +497,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 {
                     for (int a = 0; a < 3; a++)
                     {
-                        NPC.NewNPC((int)(player.position.X + Main.rand.Next(700)), (int)(player.position.Y + Main.rand.Next(700)), ModContent.NPCType<SunA>());
+                        NPC.NewNPC((int)(player.position.X + Main.rand.Next(700)), (int)(player.position.Y + Main.rand.Next(700)), Terraria.ModLoader.ModContent.NPCType<SunA>());
                     }
                 }
             }
@@ -515,7 +515,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
             AkumaTex = Main.npcTexture[npc.type];
-            if (npc.type == ModContent.NPCType<AkumaA>())
+            if (npc.type == Terraria.ModLoader.ModContent.NPCType<AkumaA>())
             {
                 if (npc.ai[1] == 1 || npc.ai[2] >= 400)
                 {
@@ -543,7 +543,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             Texture2D HeadGlow = (npc.ai[1] == 1 || npc.ai[2] >= 500) ? glowTex1 : glowTex;
 
-            Texture2D myGlowTex = npc.type == ModContent.NPCType<AkumaA>() ? HeadGlow : glowTex2;
+            Texture2D myGlowTex = npc.type == Terraria.ModLoader.ModContent.NPCType<AkumaA>() ? HeadGlow : glowTex2;
             BaseDrawing.DrawTexture(spriteBatch, AkumaTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 3, npc.frame, npc.GetAlpha(drawColor), true);
             BaseDrawing.DrawTexture(spriteBatch, myGlowTex, shader, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 3, npc.frame, npc.GetAlpha(Color.White), true);
             return false;
@@ -552,8 +552,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            int dust1 = ModContent.DustType<Dusts.AkumaADust>();
-            int dust2 = ModContent.DustType<Dusts.AkumaDust>();
+            int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADust>();
+            int dust2 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
             if (npc.life <= 0)
             {
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
@@ -607,7 +607,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(ModContent.NPCType<AkumaA>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<AkumaA>()))
             {
                 return false;
             }
@@ -731,7 +731,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(ModContent.NPCType<AkumaA>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<AkumaA>()))
             {
                 return false;
             }

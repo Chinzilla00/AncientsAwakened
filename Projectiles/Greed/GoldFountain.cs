@@ -39,11 +39,11 @@ namespace AAMod.Projectiles.Greed
                 projectile.alpha += 5;
             }
 
-            int FountainCount = AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<GoldFountain>());
+            int FountainCount = AAGlobalProjectile.CountProjectiles(Terraria.ModLoader.ModContent.ProjectileType<GoldFountain>());
             if (FountainCount < 1) FountainCount = 1;
             if (Main.netMode != 1 && projectile.ai[0]++ >= 5 * FountainCount)
             {
-                Projectile.NewProjectile(projectile.position.X, projectile.position.Y, Main.rand.Next(-3, 4), Main.rand.Next(7, 10), ModContent.ProjectileType<Gold>(), projectile.damage, 1);
+                Projectile.NewProjectile(projectile.position.X, projectile.position.Y, Main.rand.Next(-3, 4), Main.rand.Next(7, 10), Terraria.ModLoader.ModContent.ProjectileType<Gold>(), projectile.damage, 1);
                 projectile.ai[0] = 0;
                 projectile.netUpdate = true;
             }

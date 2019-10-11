@@ -188,7 +188,7 @@ namespace AAMod.Backgrounds
 
         private void UpdateAthenaSky()
         {
-            if (NPC.AnyNPCs(ModContent.NPCType<AthenaA>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<AthenaA>()))
             {
                 return;
             }
@@ -217,7 +217,7 @@ namespace AAMod.Backgrounds
         {
             if (Main.netMode == NetmodeID.Server || Main.dedServ) return; //BEGONE SERVER HEATHENS! UPDATE ONLY CLIENTSIDE!
 
-            bool athena = NPC.AnyNPCs(ModContent.NPCType<Athena>());
+            bool athena = NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Athena>());
             if (!backgroundClouds) athena = false;
 
             fogOffsetX += 1;

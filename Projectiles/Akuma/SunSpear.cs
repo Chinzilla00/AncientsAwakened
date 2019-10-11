@@ -69,10 +69,10 @@ namespace AAMod.Projectiles.Akuma
         public override void AI()
         {
             //dust!
-            int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width / 2, projectile.height + 5, ModContent.DustType<Dusts.AkumaADust>(), projectile.velocity.X * 0.2f,
+            int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width / 2, projectile.height + 5, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADust>(), projectile.velocity.X * 0.2f,
                 projectile.velocity.Y * 0.2f, 100, default, 2f);
             Main.dust[dustId].noGravity = true;
-            int dustId3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width / 2, projectile.height + 5, ModContent.DustType<Dusts.AkumaADust>(), projectile.velocity.X * 0.2f,
+            int dustId3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width / 2, projectile.height + 5, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADust>(), projectile.velocity.X * 0.2f,
                 projectile.velocity.Y * 0.2f, 100, default, 2f);
             Main.dust[dustId3].noGravity = true;
 
@@ -122,8 +122,8 @@ namespace AAMod.Projectiles.Akuma
                 Dust dust1;
                 Dust dust2;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, 0, 0, ModContent.DustType<Dusts.AkumaDust>(), 4.736842f, 0f, 46, default, 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, 0, 0, ModContent.DustType<Dusts.AkumaADust>(), 4.736842f, 0f, 46, default, 1f)];
+                dust1 = Main.dust[Dust.NewDust(position, 0, 0, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>(), 4.736842f, 0f, 46, default, 1f)];
+                dust2 = Main.dust[Dust.NewDust(position, 0, 0, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADust>(), 4.736842f, 0f, 46, default, 1f)];
                 dust1.noGravity = true;
                 dust2.noGravity = true;
             }

@@ -41,7 +41,7 @@ namespace AAMod.NPCs.Bosses.Toad
         {
             for (int i = 0; i < 5; i++)
             {
-                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.ShroomDust>(), 0f, 0f, 100, default, 1.2f);
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.ShroomDust>(), 0f, 0f, 100, default, 1.2f);
                 Main.dust[dustIndex].velocity *= 1.8f;
             }
         }

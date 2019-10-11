@@ -59,7 +59,7 @@ namespace AAMod.Projectiles
 			}
             if (Main.rand.Next(6) == 0)
             {
-            	Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, ModContent.DustType<Dusts.AbyssDust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
+            	Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AbyssDust>(), projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
             }
         }
         
@@ -67,7 +67,7 @@ namespace AAMod.Projectiles
         {
             for (int num303 = 0; num303 < 3; num303++)
 			{
-				int num304 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, default, 0.8f);
+				int num304 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, default, 0.8f);
 				Main.dust[num304].noGravity = true;
 				Main.dust[num304].velocity *= 1.2f;
 				Main.dust[num304].velocity -= projectile.oldVelocity * 0.3f;

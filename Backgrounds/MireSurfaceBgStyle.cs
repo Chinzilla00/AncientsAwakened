@@ -56,7 +56,7 @@ namespace AAMod.Backgrounds
             Color DefaultFog = new Color(120, 120, 200);
             Color YamataFog = new Color(200, 100, 100);
             
-            bool YamataA = NPC.AnyNPCs(ModContent.NPCType<YamataA>());
+            bool YamataA = NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<YamataA>());
 
             mireBGFog.Update(mod.GetTexture("Backgrounds/FogTex"));
 			mireBGFog.Draw(mod.GetTexture("Backgrounds/FogTex"), true, YamataA ? YamataFog : DefaultFog);

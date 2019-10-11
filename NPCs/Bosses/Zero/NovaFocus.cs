@@ -52,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(ModContent.NPCType<Zero>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Zero>()))
             {
                 return false;
             }
@@ -74,7 +74,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            bool flag = npc.life <= 0 || (!npc.active && NPC.AnyNPCs(ModContent.NPCType<Zero>()));
+            bool flag = npc.life <= 0 || (!npc.active && NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Zero>()));
             if (flag && Main.netMode != 1)
             {
                 int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("TeslaHand"), npc.whoAmI, npc.ai[0], npc.ai[1], npc.ai[2], npc.ai[3], npc.target);
@@ -136,9 +136,9 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.ai[3] = 0;
                     if (Main.netMode != 1) laser.Kill();
                 }
-                else if (!AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<NovaRay>()) && Main.netMode != 1)
+                else if (!AAGlobalProjectile.AnyProjectiles(Terraria.ModLoader.ModContent.ProjectileType<NovaRay>()) && Main.netMode != 1)
                 {
-                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, ModContent.ProjectileType<NovaRay>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI, 420)];
+                    laser = Main.projectile[Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, Terraria.ModLoader.ModContent.ProjectileType<NovaRay>(), (int)(npc.damage * 0.75f), 3f, Main.myPlayer, npc.whoAmI, 420)];
                     laser.velocity = BaseUtility.RotateVector(default, new Vector2(14f, 0f), laser.rotation);
                 }
             }

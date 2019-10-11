@@ -206,13 +206,13 @@ namespace AAMod.NPCs.Bosses.Grips
                 MinionTimer++;
                 if (MinionTimer == 160)
                 {
-                    if (npc.type == ModContent.NPCType<GripOfChaosRed>() && NPC.CountNPCS(ModContent.NPCType<DragonClawM>()) < 4)
+                    if (npc.type == Terraria.ModLoader.ModContent.NPCType<GripOfChaosRed>() && NPC.CountNPCS(Terraria.ModLoader.ModContent.NPCType<DragonClawM>()) < 4)
                     {
-                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<DragonClawM>());
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<DragonClawM>());
                     }
-                    if (npc.type == ModContent.NPCType<GripOfChaosBlue>() && NPC.CountNPCS(ModContent.NPCType<HydraClawM>()) < 4)
+                    if (npc.type == Terraria.ModLoader.ModContent.NPCType<GripOfChaosBlue>() && NPC.CountNPCS(Terraria.ModLoader.ModContent.NPCType<HydraClawM>()) < 4)
                     {
-                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HydraClawM>());
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<HydraClawM>());
                     }
                     MinionTimer = 0;
                 }
@@ -247,11 +247,11 @@ namespace AAMod.NPCs.Bosses.Grips
                 npc.alpha -= 5;
                 if (npc.alpha <= 0)
                 {
-                    if (npc.type == ModContent.NPCType<GripOfChaosRed>())
+                    if (npc.type == Terraria.ModLoader.ModContent.NPCType<GripOfChaosRed>())
                     {
                         npc.defense = 12;
                     }
-                    if (npc.type == ModContent.NPCType<GripOfChaosBlue>())
+                    if (npc.type == Terraria.ModLoader.ModContent.NPCType<GripOfChaosBlue>())
                     {
                         npc.defense = 8;
                     }

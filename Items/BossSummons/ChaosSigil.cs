@@ -44,22 +44,22 @@ Non-Consumable");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Yamata.Yamata>()) || NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Yamata.Awakened.YamataA>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<NPCs.Bosses.Yamata.Yamata>()) || NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<NPCs.Bosses.Yamata.Awakened.YamataA>()))
             {
                 if (Main.netMode != 1) BaseUtility.Chat("Only the blue half of the sigil is lit up...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Akuma.Akuma>()) || NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Akuma.Awakened.AkumaA>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<NPCs.Bosses.Akuma.Akuma>()) || NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<NPCs.Bosses.Akuma.Awakened.AkumaA>()))
             {
                 if (Main.netMode != 1) BaseUtility.Chat("Only the red half of the sigil is lit up...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<Shen>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Shen>()))
             {
                 if (Main.netMode != 1) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<ShenA>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<ShenA>()))
             {
                 if (Main.netMode != 1) BaseUtility.Chat("HAH! I WISH there were two of me to smash you into the ground!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
                 return false;
@@ -69,7 +69,7 @@ Non-Consumable");
                 if (Main.netMode != 1) BaseUtility.Chat("The Chaos Sigil glows, and imagery of the chaos pedestals flash through your mind", Color.DarkMagenta, false);
                 return false;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<ShenSpawn>()) || NPC.AnyNPCs(ModContent.NPCType<ShenTransition>()) || NPC.AnyNPCs(ModContent.NPCType<ShenDefeat>()) || NPC.AnyNPCs(ModContent.NPCType<ShenDeath>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<ShenSpawn>()) || NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<ShenTransition>()) || NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<ShenDefeat>()) || NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<ShenDeath>()))
             {
                 return false;
             }

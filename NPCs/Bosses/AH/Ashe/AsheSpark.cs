@@ -50,7 +50,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 200);
+            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.DragonFire>(), 200);
         }
 
         public override void Kill(int timeLeft)

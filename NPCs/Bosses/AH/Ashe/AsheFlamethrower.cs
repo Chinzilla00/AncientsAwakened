@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     num296 = 0.75f;
                 }
                 projectile.ai[0] += 1f;
-                int num297 = ModContent.DustType<Dusts.AkumaDust>();
+                int num297 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
                 if (Main.rand.Next(2) == 0)
                 {
                     for (int num298 = 0; num298 < 6; num298++)

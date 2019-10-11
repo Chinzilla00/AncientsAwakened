@@ -38,8 +38,8 @@ namespace AAMod.Tiles.Plants
 			TileObjectData.newTile.CopyFrom(TileObjectData.StyleAlch);
 			TileObjectData.newTile.AnchorValidTiles = new int[]
 			{
-				ModContent.TileType<InfernoGrass>(),
-                ModContent.TileType<Torchstone>(),
+				Terraria.ModLoader.ModContent.TileType<InfernoGrass>(),
+                Terraria.ModLoader.ModContent.TileType<Torchstone>(),
             };
 			TileObjectData.newTile.AnchorAlternateTiles = new int[]
 			{
@@ -65,7 +65,7 @@ namespace AAMod.Tiles.Plants
 			int stage = Main.tile[i, j].frameX / 18;
 			if (stage == 2)
 			{
-				Item.NewItem(i * 16, j * 16, 0, 0, ModContent.ItemType<Items.Placeable.ExampleHerbSeeds>());
+				Item.NewItem(i * 16, j * 16, 0, 0, Terraria.ModLoader.ModContent.ItemType<Items.Placeable.ExampleHerbSeeds>());
 			}
 			return false;
 		}*/

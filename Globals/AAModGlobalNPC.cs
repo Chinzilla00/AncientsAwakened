@@ -95,8 +95,8 @@ namespace AAMod
         public override void UpdateLifeRegen(NPC npc, ref int damage)
         {
             if (npc.type == NPCID.KingSlime || npc.type == NPCID.Plantera || 
-                npc.type == ModContent.NPCType<SerpentBody>() || npc.type == ModContent.NPCType<SerpentHead>() || npc.type == ModContent.NPCType<SerpentTail>() ||
-                npc.type == ModContent.NPCType<SnakeHead>() || npc.type == ModContent.NPCType<SnakeBody>() || npc.type == ModContent.NPCType<SnakeBody2>() || npc.type == ModContent.NPCType<SnakeTail>())
+                npc.type == Terraria.ModLoader.ModContent.NPCType<SerpentBody>() || npc.type == Terraria.ModLoader.ModContent.NPCType<SerpentHead>() || npc.type == Terraria.ModLoader.ModContent.NPCType<SerpentTail>() ||
+                npc.type == Terraria.ModLoader.ModContent.NPCType<SnakeHead>() || npc.type == Terraria.ModLoader.ModContent.NPCType<SnakeBody>() || npc.type == Terraria.ModLoader.ModContent.NPCType<SnakeBody2>() || npc.type == Terraria.ModLoader.ModContent.NPCType<SnakeTail>())
             {
                 ApplyDPSDebuff(npc.onFire, 20, ref npc.lifeRegen);
             }
@@ -120,7 +120,7 @@ namespace AAMod
 
             
 
-            bool shen = npc.type == ModContent.NPCType<Shen>() || npc.type == ModContent.NPCType<ShenA>();
+            bool shen = npc.type == Terraria.ModLoader.ModContent.NPCType<Shen>() || npc.type == Terraria.ModLoader.ModContent.NPCType<ShenA>();
 
             ApplyDPSDebuff(terraBlaze, shen ? 46 : 26, shen ? 30 : 10, ref npc.lifeRegen, ref damage);
             ApplyDPSDebuff(infinityOverload, 60, 40, ref npc.lifeRegen, ref damage);
@@ -183,7 +183,7 @@ namespace AAMod
 
         public override void NPCLoot(NPC npc)
         {
-            if (npc.type == ModContent.NPCType<NPCs.Enemies.Other.HydraClaw>())
+            if (npc.type == Terraria.ModLoader.ModContent.NPCType<NPCs.Enemies.Other.HydraClaw>())
             {
                 return;
             }
@@ -219,14 +219,14 @@ namespace AAMod
 
                 if (DynaEnergy1)
                 {
-                    Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<Projectiles.DynaEnergy>(), 60, 1, Main.myPlayer);
+                    Projectile.NewProjectile(npc.position, Vector2.Zero, Terraria.ModLoader.ModContent.ProjectileType<Projectiles.DynaEnergy>(), 60, 1, Main.myPlayer);
                 }
 
                 if (DynaEnergy2)
                 {
                     for (int i = 0; i < 4; i++)
                     {
-                        Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<Projectiles.DynaEnergy>(), 60, 1, Main.myPlayer);
+                        Projectile.NewProjectile(npc.position, Vector2.Zero, Terraria.ModLoader.ModContent.ProjectileType<Projectiles.DynaEnergy>(), 60, 1, Main.myPlayer);
                     }
                 }
 
@@ -401,7 +401,7 @@ namespace AAMod
 
                 if ((npc.type == NPCID.ArmoredViking || npc.type == NPCID.UndeadViking) && NPC.downedBoss3)
                 {
-                    npc.DropLoot(ModContent.ItemType<Items.Materials.VikingRelic>(), Main.rand.Next(0, 3));
+                    npc.DropLoot(Terraria.ModLoader.ModContent.ItemType<Items.Materials.VikingRelic>(), Main.rand.Next(0, 3));
                 }
 
                 if (AASets.Goblins[npc.type] && NPC.downedGoblins)
@@ -649,7 +649,7 @@ namespace AAMod
                 int dustCount = Math.Max(1, Math.Min(5, Math.Max(npc.width, npc.height) / 10));
                 for (int i = 0; i < dustCount; i++)
                 {
-                    int num4 = Dust.NewDust(hitbox.TopLeft(), npc.width, npc.height, ModContent.DustType<Dusts.Moonraze>(), 0f, 1f, 0);
+                    int num4 = Dust.NewDust(hitbox.TopLeft(), npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.Moonraze>(), 0f, 1f, 0);
                     if (Main.dust[num4].velocity.Y > 0) Main.dust[num4].velocity.Y *= -1;
                     Main.dust[num4].noGravity = true;
                     Main.dust[num4].scale += Main.rand.NextFloat();
@@ -660,7 +660,7 @@ namespace AAMod
             {
                 for (int i = 0; i < 8; i++)
                 {
-                    int num4 = Dust.NewDust(hitbox.TopLeft(), npc.width, npc.height, ModContent.DustType<Dusts.Discord>(), 0f, -2.5f, 0);
+                    int num4 = Dust.NewDust(hitbox.TopLeft(), npc.width, npc.height, Terraria.ModLoader.ModContent.DustType<Dusts.Discord>(), 0f, -2.5f, 0);
                     Main.dust[num4].alpha = 100;
                     Main.dust[num4].noGravity = true;
                     Main.dust[num4].scale += Main.rand.NextFloat();
@@ -671,7 +671,7 @@ namespace AAMod
             {
                 if (Main.rand.Next(4) < 3)
                 {
-                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, ModContent.DustType<Dusts.HydratoxinDust>(), npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 107);
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, Terraria.ModLoader.ModContent.DustType<Dusts.HydratoxinDust>(), npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 107);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -707,7 +707,7 @@ namespace AAMod
             {
                 if (Main.rand.Next(4) < 3)
                 {
-                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 107, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, ModContent.DustType<Dusts.VoidDust>(), default, 3.5f);
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, 107, npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, Terraria.ModLoader.ModContent.DustType<Dusts.VoidDust>(), default, 3.5f);
                     Main.dust[dust].noGravity = true;
                     Main.dust[dust].velocity *= 1.8f;
                     Main.dust[dust].velocity.Y -= 0.5f;
@@ -903,32 +903,32 @@ namespace AAMod
 
                 if (NPC.downedPlantBoss)
                 {
-                    pool.Add(ModContent.NPCType<Bladon>(), .05f);
-                    pool.Add(ModContent.NPCType<TerraDeadshot>(), .05f);
-                    pool.Add(ModContent.NPCType<TerraWizard>(), .05f);
-                    pool.Add(ModContent.NPCType<TerraWarlock>(), .05f);
-                    pool.Add(ModContent.NPCType<PurityWeaver>(), .03f);
-                    pool.Add(ModContent.NPCType<PuritySphere>(), .03f);
-                    pool.Add(ModContent.NPCType<PurityCrawler>(), .03f);
-                    pool.Add(ModContent.NPCType<PuritySquid>(), .03f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<Bladon>(), .05f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<TerraDeadshot>(), .05f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<TerraWizard>(), .05f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<TerraWarlock>(), .05f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<PurityWeaver>(), .03f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<PuritySphere>(), .03f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<PurityCrawler>(), .03f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<PuritySquid>(), .03f);
                     return;
                 }
                 else if (Main.hardMode)
                 {
-                    pool.Add(ModContent.NPCType<TerraProbe>(), .07f);
-                    pool.Add(ModContent.NPCType<TerraWatcher>(), .07f);
-                    pool.Add(ModContent.NPCType<TerraSquire>(), .07f);
-                    pool.Add(ModContent.NPCType<PurityWeaver>(), .03f);
-                    pool.Add(ModContent.NPCType<PuritySphere>(), .03f);
-                    pool.Add(ModContent.NPCType<PurityCrawler>(), .03f);
-                    pool.Add(ModContent.NPCType<PuritySquid>(), .03f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<TerraProbe>(), .07f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<TerraWatcher>(), .07f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<TerraSquire>(), .07f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<PurityWeaver>(), .03f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<PuritySphere>(), .03f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<PurityCrawler>(), .03f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<PuritySquid>(), .03f);
                 }
                 else if (NPC.downedBoss2)
                 {
-                    pool.Add(ModContent.NPCType<PurityWeaver>(), .05f);
-                    pool.Add(ModContent.NPCType<PuritySphere>(), .05f);
-                    pool.Add(ModContent.NPCType<PurityCrawler>(), .05f);
-                    pool.Add(ModContent.NPCType<PuritySquid>(), .05f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<PurityWeaver>(), .05f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<PuritySphere>(), .05f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<PurityCrawler>(), .05f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<PuritySquid>(), .05f);
                 }
             }
 
@@ -938,7 +938,7 @@ namespace AAMod
                 pool.Add(NPCID.Harpy, .06f);
                 if (NPC.downedPlantBoss)
                 {
-                    pool.Add(ModContent.NPCType<Seraph>(), .03f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<Seraph>(), .03f);
                 }
             }
 
@@ -952,7 +952,7 @@ namespace AAMod
 
                 if (NPC.downedPlantBoss)
                 {
-                    pool.Add(ModContent.NPCType<Scavenger>(), .03f);
+                    pool.Add(Terraria.ModLoader.ModContent.NPCType<Scavenger>(), .03f);
                 }
             }
         }
@@ -1114,42 +1114,42 @@ namespace AAMod
 
             Mod mod = AAMod.instance;
 
-            int RajahType = ModContent.NPCType<Rajah>();
+            int RajahType = Terraria.ModLoader.ModContent.NPCType<Rajah>();
             if (NPC.killCount[NPCID.Bunny] >= 1000)
             {
-                RajahType = ModContent.NPCType<SupremeRajah>();
+                RajahType = Terraria.ModLoader.ModContent.NPCType<SupremeRajah>();
             }
             else if (NPC.killCount[NPCID.Bunny] >= 900)
             {
-                RajahType = ModContent.NPCType<Rajah9>();
+                RajahType = Terraria.ModLoader.ModContent.NPCType<Rajah9>();
             }
             else if (NPC.killCount[NPCID.Bunny] >= 800)
             {
-                RajahType = ModContent.NPCType<Rajah8>();
+                RajahType = Terraria.ModLoader.ModContent.NPCType<Rajah8>();
             }
             else if (NPC.killCount[NPCID.Bunny] >= 700)
             {
-                RajahType = ModContent.NPCType<Rajah7>();
+                RajahType = Terraria.ModLoader.ModContent.NPCType<Rajah7>();
             }
             else if (NPC.killCount[NPCID.Bunny] > 600)
             {
-                RajahType = ModContent.NPCType<Rajah6>();
+                RajahType = Terraria.ModLoader.ModContent.NPCType<Rajah6>();
             }
             else if (NPC.killCount[NPCID.Bunny] >= 500)
             {
-                RajahType = ModContent.NPCType<Rajah5>();
+                RajahType = Terraria.ModLoader.ModContent.NPCType<Rajah5>();
             }
             else if (NPC.killCount[NPCID.Bunny] >= 400)
             {
-                RajahType = ModContent.NPCType<Rajah4>();
+                RajahType = Terraria.ModLoader.ModContent.NPCType<Rajah4>();
             }
             else if (NPC.killCount[NPCID.Bunny] >= 300)
             {
-                RajahType = ModContent.NPCType<Rajah3>();
+                RajahType = Terraria.ModLoader.ModContent.NPCType<Rajah3>();
             }
             else if (NPC.killCount[NPCID.Bunny] >= 200)
             {
-                RajahType = ModContent.NPCType<Rajah2>();
+                RajahType = Terraria.ModLoader.ModContent.NPCType<Rajah2>();
             }
 
             if (Main.netMode != 1)

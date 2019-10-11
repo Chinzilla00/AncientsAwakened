@@ -87,16 +87,16 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void PostAI()
         {
-            if (NPC.AnyNPCs(ModContent.NPCType<Rajah>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah2>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah3>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah6>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah9>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah>()) ||
+                   NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah2>()) ||
+                   NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah3>()) ||
+                   NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah4>()) ||
+                   NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah5>()) ||
+                   NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah6>()) ||
+                   NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah7>()) ||
+                   NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah8>()) ||
+                   NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Rajah9>()) ||
+                   NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<SupremeRajah>()))
             {
                 if (npc.alpha > 0)
                 {
@@ -171,7 +171,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            if (NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<SupremeRajah>()))
             {
                 BaseDrawing.DrawAfterimage(spriteBatch, Main.npcTexture[npc.type], 0, npc, 1f, 1f, 10, true, 0f, 0f, Main.DiscoColor);
             }

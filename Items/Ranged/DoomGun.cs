@@ -25,7 +25,7 @@ namespace AAMod.Items.Ranged
             item.rare = 1;
             item.ranged = true;
             item.value = 2000;
-            item.shoot = ModContent.ProjectileType<Projectiles.Darkray>();
+            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Darkray>();
         }
 
         public override void SetStaticDefaults()

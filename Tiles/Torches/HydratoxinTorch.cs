@@ -38,7 +38,7 @@ namespace AAMod.Tiles.Torches
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Torch");
 			AddMapEntry(new Color(20, 120, 160), name);
-			dustType = ModContent.DustType<Dusts.DragonflameDust>();
+			dustType = Terraria.ModLoader.ModContent.DustType<Dusts.DragonflameDust>();
 			drop = mod.ItemType("HydratoxinTorch");
 			disableSmartCursor = true;
 			adjTiles = new int[]{ TileID.Torches };

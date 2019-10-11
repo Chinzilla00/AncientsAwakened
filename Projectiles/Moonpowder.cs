@@ -25,7 +25,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int dustType = ModContent.DustType<AbyssDust>();
+            int dustType = Terraria.ModLoader.ModContent.DustType<AbyssDust>();
             projectile.velocity *= 0.95f;
             projectile.ai[0] += 1f;
             if (projectile.ai[0] == 180f)
@@ -76,55 +76,55 @@ namespace AAMod.Projectiles
                     {
                         int type = Main.tile[k, l].type;
                         int wall = Main.tile[k, l].wall;
-                        if (type == (ushort)ModContent.WallType<TorchstoneWall>())
+                        if (type == (ushort)Terraria.ModLoader.ModContent.WallType<TorchstoneWall>())
                         {
                             Main.tile[k, l].wall = WallID.Stone;
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == (ushort)ModContent.WallType<TorchsandstoneWall>())
+                        else if (type == (ushort)Terraria.ModLoader.ModContent.WallType<TorchsandstoneWall>())
                         {
                             Main.tile[k, l].wall = WallID.Sandstone;
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == (ushort)ModContent.WallType<TorchsandHardenedWall>())
+                        else if (type == (ushort)Terraria.ModLoader.ModContent.WallType<TorchsandHardenedWall>())
                         {
                             Main.tile[k, l].wall = WallID.HardenedSand;
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == ModContent.TileType<Torchstone>())
+                        else if (type == Terraria.ModLoader.ModContent.TileType<Torchstone>())
                         {
                             Main.tile[k, l].type = 1;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == ModContent.TileType<InfernoGrass>())
+                        else if (type == Terraria.ModLoader.ModContent.TileType<InfernoGrass>())
                         {
                             Main.tile[k, l].type = 2;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == ModContent.TileType<Torchice>())
+                        else if (type == Terraria.ModLoader.ModContent.TileType<Torchice>())
                         {
                             Main.tile[k, l].type = 161;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == ModContent.TileType<Torchsandstone>())
+                        else if (type == Terraria.ModLoader.ModContent.TileType<Torchsandstone>())
                         {
                             Main.tile[k, l].type = 396;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == ModContent.TileType<Torchsand>())
+                        else if (type == Terraria.ModLoader.ModContent.TileType<Torchsand>())
                         {
                             Main.tile[k, l].type = 53;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == ModContent.TileType<TorchsandHardened>())
+                        else if (type == Terraria.ModLoader.ModContent.TileType<TorchsandHardened>())
                         {
                             Main.tile[k, l].type = 397;
                             WorldGen.SquareTileFrame(k, l, true);

@@ -214,11 +214,11 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
             if (Attack == 0)
             {
-                if (NPC.CountNPCS(ModContent.NPCType<Mushling>()) < 4)
+                if (NPC.CountNPCS(Terraria.ModLoader.ModContent.NPCType<Mushling>()) < 4)
                 {
                     for (int i = 0; i < (Main.expertMode ? 3 : 2); i++)
                     {
-                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<Mushling>());
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<Mushling>());
                     }
                 }
                 else
@@ -228,7 +228,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<FungusFlier>());
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<FungusFlier>());
                 }
             }
             else if (Attack == 2)
@@ -247,7 +247,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             {
                 for (int i = 0; i < 4; i++)
                 {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<FungusSpore>(), 0, i);
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, Terraria.ModLoader.ModContent.NPCType<FungusSpore>(), 0, i);
                 }
             }
         }

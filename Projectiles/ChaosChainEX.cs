@@ -57,7 +57,7 @@ namespace AAMod.Projectiles
         {
             for (int i = 0; i < 1000; ++i)
             {
-                if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == ModContent.ProjectileType<ChaosChainEXSaw>() && projectile.ai[0] == 1f)
+                if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == Terraria.ModLoader.ModContent.ProjectileType<ChaosChainEXSaw>() && projectile.ai[0] == 1f)
                 {
                     InternalAI[1] = 1;
                 }
@@ -102,12 +102,12 @@ namespace AAMod.Projectiles
             {
                 if (num168 > 1000)
                 {
-                    Projectile.NewProjectile(projectile.position, projectile.velocity, ModContent.ProjectileType<ChaosChainEXSaw>(), projectile.damage, 0, Main.myPlayer);
+                    Projectile.NewProjectile(projectile.position, projectile.velocity, Terraria.ModLoader.ModContent.ProjectileType<ChaosChainEXSaw>(), projectile.damage, 0, Main.myPlayer);
                     projectile.ai[0] = 1f;
                 }
                 else if (num168 > 500f)
                 {
-                    Projectile.NewProjectile(projectile.position, projectile.velocity, ModContent.ProjectileType<ChaosChainEXSaw>(), projectile.damage, 0, Main.myPlayer);
+                    Projectile.NewProjectile(projectile.position, projectile.velocity, Terraria.ModLoader.ModContent.ProjectileType<ChaosChainEXSaw>(), projectile.damage, 0, Main.myPlayer);
                     projectile.ai[0] = 1f;
                 }
                 projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
@@ -165,9 +165,9 @@ namespace AAMod.Projectiles
 		{
             if (projectile.ai[0] == 0f)
             {
-                Projectile.NewProjectile(projectile.position, projectile.velocity, ModContent.ProjectileType<ChaosChainEXSaw>(), projectile.damage, 0, Main.myPlayer);
+                Projectile.NewProjectile(projectile.position, projectile.velocity, Terraria.ModLoader.ModContent.ProjectileType<ChaosChainEXSaw>(), projectile.damage, 0, Main.myPlayer);
             }
-            target.AddBuff(ModContent.BuffType<Buffs.DiscordInferno>(), 240);
+            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.DiscordInferno>(), 240);
         }
 		
         // chain voodoo

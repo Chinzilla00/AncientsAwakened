@@ -41,7 +41,7 @@ namespace AAMod.Projectiles.Zero
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
-            Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<GBoom2>(), projectile.damage, 2, projectile.owner);
+            Projectile.NewProjectile(projectile.position, Vector2.Zero, Terraria.ModLoader.ModContent.ProjectileType<GBoom2>(), projectile.damage, 2, projectile.owner);
         }
 
         public virtual void Effects()

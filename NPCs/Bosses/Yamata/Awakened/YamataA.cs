@@ -337,7 +337,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     Player t = Main.player[p];
                     if (t.active && !t.dead)
                     {
-                        Main.player[p].AddBuff(ModContent.BuffType<Buffs.YamataAGravity>(), 10, true);
+                        Main.player[p].AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.YamataAGravity>(), 10, true);
                     }
                 }
 
@@ -663,8 +663,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            int dust1 = ModContent.DustType<Dusts.YamataADust>();
-            int dust2 = ModContent.DustType<Dusts.YamataADust>();
+            int dust1 = Terraria.ModLoader.ModContent.DustType<Dusts.YamataADust>();
+            int dust2 = Terraria.ModLoader.ModContent.DustType<Dusts.YamataADust>();
             if (npc.life <= 0)
             {
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);

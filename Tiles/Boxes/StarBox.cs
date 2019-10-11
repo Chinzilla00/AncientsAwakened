@@ -43,7 +43,7 @@ namespace AAMod.Tiles.Boxes
             {
                 ModTranslation name = CreateMapEntryName();
                 AddMapEntry(new Color(0, 30, 100), name);
-                dustType = ModContent.DustType<Dusts.DarkmatterDust>();
+                dustType = Terraria.ModLoader.ModContent.DustType<Dusts.DarkmatterDust>();
             }
             return true;
         }

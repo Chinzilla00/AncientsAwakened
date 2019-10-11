@@ -49,7 +49,7 @@ namespace AAMod.Projectiles.AH
                     num296 = 0.75f;
                 }
                 projectile.ai[0] += 1f;
-                int num297 = ModContent.DustType<Dusts.AkumaDust>();
+                int num297 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDust>();
                 if (Main.rand.Next(2) == 0)
                 {
                     for (int num298 = 0; num298 < 3; num298++)
@@ -87,7 +87,7 @@ namespace AAMod.Projectiles.AH
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
 			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
-            int Boom = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, ModContent.ProjectileType<MagicBoom>(), damage, knockback, Main.myPlayer, 0, 0);
+            int Boom = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, Terraria.ModLoader.ModContent.ProjectileType<MagicBoom>(), damage, knockback, Main.myPlayer, 0, 0);
             Main.projectile[Boom].Center = projectile.Center;
         }
     }

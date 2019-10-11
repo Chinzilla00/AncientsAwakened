@@ -27,7 +27,7 @@ namespace AAMod.Projectiles.Serpent
 
 			for (int i = 0; i < 5; i++)
 			{
-				Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.IceDust>());
+				Dust.NewDust(projectile.position, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.IceDust>());
 			}
 			Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y);
 		}

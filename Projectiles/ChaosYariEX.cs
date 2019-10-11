@@ -37,14 +37,14 @@ namespace AAMod.Projectiles
         	projectile.position += projectile.velocity * projectile.ai[0];
         	if (Main.rand.Next(5) == 0)
             {
-                int DustType = ModContent.DustType<Dusts.AkumaADust>();
+                int DustType = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADust>();
                 if (Main.rand.Next(3) == 0)
                 {
-                    DustType = ModContent.DustType<Dusts.YamataADust>();
+                    DustType = Terraria.ModLoader.ModContent.DustType<Dusts.YamataADust>();
                 }
                 if (Main.rand.Next(3) == 1)
                 {
-                    DustType = ModContent.DustType<Dusts.Discord>();
+                    DustType = Terraria.ModLoader.ModContent.DustType<Dusts.Discord>();
                 }
                 Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, DustType, projectile.velocity.X * 0.5f, projectile.velocity.Y * 0.5f);
             }

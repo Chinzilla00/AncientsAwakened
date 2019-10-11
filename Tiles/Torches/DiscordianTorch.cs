@@ -38,7 +38,7 @@ namespace AAMod.Tiles.Torches
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Torch");
 			AddMapEntry(new Color(150, 10, 180), name);
-			dustType = ModContent.DustType<Dusts.Discord>();
+			dustType = Terraria.ModLoader.ModContent.DustType<Dusts.Discord>();
 			drop = mod.ItemType("DiscordianTorch");
 			disableSmartCursor = true;
 			adjTiles = new int[]{ TileID.Torches };

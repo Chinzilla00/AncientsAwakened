@@ -35,19 +35,19 @@ namespace AAMod.Projectiles.Akuma
 			projectile.scale = projectile.ai[1];
 			projectile.rotation += projectile.velocity.X * 2f;
 			Vector2 position = projectile.Center + Vector2.Normalize(projectile.velocity) * 10f;
-			Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDustLight>(), 0f, 0f, 0, default, 1f)];
+			Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDustLight>(), 0f, 0f, 0, default, 1f)];
 			dust20.position = position;
 			dust20.velocity = projectile.velocity.RotatedBy(1.5707963705062866, default) * 0.33f + projectile.velocity / 4f;
 			dust20.position += projectile.velocity.RotatedBy(1.5707963705062866, default);
 			dust20.fadeIn = 0.5f;
 			dust20.noGravity = true;
-			dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaADustLight>(), 0f, 0f, 0, default, 1f)];
+			dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADustLight>(), 0f, 0f, 0, default, 1f)];
 			dust20.position = position;
 			dust20.velocity = projectile.velocity.RotatedBy(-1.5707963705062866, default) * 0.33f + projectile.velocity / 4f;
 			dust20.position += projectile.velocity.RotatedBy(-1.5707963705062866, default);
 			dust20.fadeIn = 0.5f;
 			dust20.noGravity = true;
-            int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDustLight>(), 0f, 0f, 0, default, 1f);
+            int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDustLight>(), 0f, 0f, 0, default, 1f);
             Main.dust[num190].velocity *= 0.5f;
             Main.dust[num190].scale *= 1.3f;
             Main.dust[num190].fadeIn = 1f;
@@ -65,14 +65,14 @@ namespace AAMod.Projectiles.Akuma
 			projectile.position.Y = projectile.position.Y - projectile.height / 2;
 			for (int num336 = 0; num336 < 8; num336++)
 			{
-				Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaADustLight>(), 0f, 0f, 100, default, 1.5f);
+				Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADustLight>(), 0f, 0f, 100, default, 1.5f);
 			}
 			for (int num337 = 0; num337 < 32; num337++)
 			{
-                int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDustLight>(), 0f, 0f, 100, default, 2.5f);
+                int dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDustLight>(), 0f, 0f, 100, default, 2.5f);
 				Main.dust[dust].noGravity = true;
 				Main.dust[dust].velocity *= 3f;
-				dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDustLight>(), 0f, 0f, 100, default, 1.5f);
+				dust = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDustLight>(), 0f, 0f, 100, default, 1.5f);
 				Main.dust[dust].velocity *= 2f;
 				Main.dust[dust].noGravity = true;
 			}
@@ -95,8 +95,8 @@ namespace AAMod.Projectiles.Akuma
 			{
 				int num342 = Utils.SelectRandom(Main.rand, new int[]
 				{
-					ModContent.DustType<Dusts.AkumaDustLight>(),
-                    ModContent.DustType<Dusts.AkumaADustLight>()
+					Terraria.ModLoader.ModContent.DustType<Dusts.AkumaDustLight>(),
+                    Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADustLight>()
                 });
 				int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, num342, 2.5f * projectile.direction, -2.5f, 0, default, 1f);
 				Main.dust[dust].alpha = 200;

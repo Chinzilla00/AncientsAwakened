@@ -81,7 +81,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void Kill(int timeLeft)
         {
-            Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, ModContent.ProjectileType<Cyclone>(), projectile.damage / 4, 0, Main.myPlayer);
+            Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, Terraria.ModLoader.ModContent.ProjectileType<Cyclone>(), projectile.damage / 4, 0, Main.myPlayer);
         }
     }
 }

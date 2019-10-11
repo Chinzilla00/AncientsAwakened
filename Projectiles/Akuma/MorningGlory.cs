@@ -88,11 +88,11 @@ namespace AAMod.Projectiles.Akuma
             bool flag3 = projectile.Colliding(myRect, target.getRect());
             if (!target.boss)
             {
-                Main.npc[(int)projectile.ai[1]].AddBuff(ModContent.BuffType<Buffs.SpearStuck>(), 100000);
+                Main.npc[(int)projectile.ai[1]].AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.SpearStuck>(), 100000);
                 if (flag3 && !StuckInEnemy)
                 {
                     Main.PlaySound(SoundID.Item14, projectile.position);
-                    int proj = Projectile.NewProjectile(projectile.position, projectile.velocity, ModContent.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
+                    int proj = Projectile.NewProjectile(projectile.position, projectile.velocity, Terraria.ModLoader.ModContent.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
                     Main.projectile[proj].melee = false;
                     Main.projectile[proj].ranged = true;
                     StuckInEnemy = true;
@@ -105,7 +105,7 @@ namespace AAMod.Projectiles.Akuma
             else
             {
                 Main.PlaySound(SoundID.Item14, projectile.position);
-                int p = Projectile.NewProjectile(projectile.position, projectile.velocity, ModContent.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
+                int p = Projectile.NewProjectile(projectile.position, projectile.velocity, Terraria.ModLoader.ModContent.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
                 Main.projectile[p].melee = false;
                 Main.projectile[p].ranged = true;
             }

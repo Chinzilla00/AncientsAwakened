@@ -48,7 +48,7 @@ namespace AAMod.Projectiles
                 }
                 else
                 {
-                    Buff = ModContent.BuffType<Buffs.Moonraze>();
+                    Buff = Terraria.ModLoader.ModContent.BuffType<Buffs.Moonraze>();
                 }
 
                 target.AddBuff(Buff, 180);

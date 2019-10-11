@@ -315,7 +315,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     Player t = Main.player[p];
                     if (t.active && !t.dead)
                     {
-                        Main.player[p].AddBuff(ModContent.BuffType<Buffs.YamataGravity>(), 10, true);
+                        Main.player[p].AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.YamataGravity>(), 10, true);
                     }
                 }
                 NoFlyCountDown--;
@@ -323,7 +323,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 {
                     NoFlyCountDown = 0;
                     NoFly4U = true;
-                    if (npc.type == ModContent.NPCType<Yamata>()) if (Main.netMode != 1) AAMod.Chat("Oh and don't even think about flying! My ego is so massive it has a gravitational pull all of it's own! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!", new Color(45, 46, 70));
+                    if (npc.type == Terraria.ModLoader.ModContent.NPCType<Yamata>()) if (Main.netMode != 1) AAMod.Chat("Oh and don't even think about flying! My ego is so massive it has a gravitational pull all of it's own! NYEHEHEHEHEHEHEHEHEHEHEHEH!!!", new Color(45, 46, 70));
                 }
 
                 float dist = npc.Distance(playerTarget.Center);

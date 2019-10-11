@@ -87,10 +87,10 @@ namespace AAMod.Items.Magic
             if (player.strongBees && Main.rand.Next(2) == 0)
             {
                 makeStrongBee = true;
-                return ModContent.ProjectileType<Projectiles.BeeStrong>();
+                return Terraria.ModLoader.ModContent.ProjectileType<Projectiles.BeeStrong>();
             }
             makeStrongBee = false;
-            return ModContent.ProjectileType<Projectiles.Bee>();
+            return Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Bee>();
         }
 
         public int BeeDamage(int dmg)

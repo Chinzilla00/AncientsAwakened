@@ -15,8 +15,8 @@ namespace AAMod.Tiles.Plants
             TileObjectData.newTile.RandomStyleRange = 5;
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.addTile(Type);
-            drop = ModContent.ItemType<Items.Mushrooms.MadnessShroom>();
-            dustType = ModContent.DustType<Dusts.InfinityOverloadP>();
+            drop = Terraria.ModLoader.ModContent.ItemType<Items.Mushrooms.MadnessShroom>();
+            dustType = Terraria.ModLoader.ModContent.DustType<Dusts.InfinityOverloadP>();
             soundType = 6;
         }
 

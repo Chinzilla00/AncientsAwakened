@@ -23,7 +23,7 @@ namespace AAMod.Items.Melee.Gem   //where is located
             item.UseSound = SoundID.Item1;       
             item.autoReuse = false;   
             item.useTurn = true;
-            item.shoot = ModContent.ProjectileType<Projectiles.GemShot.TopazShot>();
+            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.GemShot.TopazShot>();
             item.shootSpeed = 6f;
         }
 

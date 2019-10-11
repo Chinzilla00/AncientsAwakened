@@ -52,7 +52,7 @@ namespace AAMod.Projectiles   //The directory for your .cs and .png; Example: Tu
             if (Target != -1)
             {
                 NPC target = Main.npc[Target];
-                BaseAI.ShootPeriodic(projectile, target.position, 14, 14, ModContent.ProjectileType<DragonBreath>(), ref internalAI[0], 5, projectile.damage, 4, true);
+                BaseAI.ShootPeriodic(projectile, target.position, 14, 14, Terraria.ModLoader.ModContent.ProjectileType<DragonBreath>(), ref internalAI[0], 5, projectile.damage, 4, true);
             }
         }
     }

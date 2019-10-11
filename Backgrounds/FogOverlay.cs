@@ -37,7 +37,7 @@ namespace AAMod.Backgrounds
             Color DefaultFog = new Color(62, 68, 100);
             Color YamataFog = new Color(100, 38, 62);
 
-            bool YamataA = NPC.AnyNPCs(ModContent.NPCType<YamataA>());
+            bool YamataA = NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<YamataA>());
 
             Color fogColor = GetAlpha(YamataA ? YamataFog : DefaultFog, 0.4f * fadeOpacity * dayTimeOpacity);
 
@@ -73,7 +73,7 @@ namespace AAMod.Backgrounds
 
             Texture2D fog = mod.GetTexture("Backgrounds/fog");
 
-            bool inMire = Main.LocalPlayer.GetModPlayer<AAPlayer>(AAMod.instance).ZoneMire;
+            bool inMire = Main.LocalPlayer.GetModPlayer<AAPlayer>().ZoneMire;
             if (BasePlayer.HasAccessory(player, AAMod.instance.ItemType("Lantern"), true, false) || AAWorld.downedYamata) inMire = false;
 
             fogOffsetX += 1;

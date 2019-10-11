@@ -13,7 +13,7 @@ namespace AAMod.Items.Flasks
             item.consumable = true;
             item.useTime = 28;
             item.useAnimation = 28;
-            item.shoot = ModContent.ProjectileType<Projectiles.SnowSolution>();
+            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.SnowSolution>();
             item.shootSpeed = 1f;
             item.useStyle = 1;
             item.value = Item.sellPrice(0, 0, 1, 0);
@@ -39,7 +39,7 @@ namespace AAMod.Items.Flasks
 
             if (player.altFunctionUse != 2)
             {
-                item.shoot = ModContent.ProjectileType<Projectiles.Flasks.IceFlask>();
+                item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Flasks.IceFlask>();
                 item.shootSpeed = 9f;
             }
             else

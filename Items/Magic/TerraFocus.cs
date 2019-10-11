@@ -25,7 +25,7 @@ namespace AAMod.Items.Magic
             item.damage = 50;
             item.UseSound = SoundID.Item9;
             item.crit = 20;
-            item.shoot = ModContent.ProjectileType<Projectiles.MagicBlastF>();
+            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.MagicBlastF>();
             item.mana = 14;
             item.rare = 4;
             item.value = 300000;

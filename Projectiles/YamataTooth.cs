@@ -9,7 +9,7 @@
 
         public override void SetDefaults() // Clones the bullet defaults
         {
-            projectile.CloneDefaults(ModContent.ProjectileType<ShenTooth>());
+            projectile.CloneDefaults(Terraria.ModLoader.ModContent.ProjectileType<ShenTooth>());
             type = 2;
         }
     }

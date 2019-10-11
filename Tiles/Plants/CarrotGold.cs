@@ -17,7 +17,7 @@ namespace AAMod.Tiles.Plants
             Main.tileLighted[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
             TileObjectData.addTile(Type);
-            drop = ModContent.ItemType<Items.BossSummons.GoldenCarrot>();
+            drop = Terraria.ModLoader.ModContent.ItemType<Items.BossSummons.GoldenCarrot>();
             dustType = DustID.GoldCoin;
             soundType = 6;
         }

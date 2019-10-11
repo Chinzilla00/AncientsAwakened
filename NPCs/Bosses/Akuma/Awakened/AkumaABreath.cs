@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     num296 = 0.75f;
                 }
                 projectile.ai[0] += 1f;
-                int num297 = ModContent.DustType<Dusts.AkumaADust>();
+                int num297 = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADust>();
                 if (Main.rand.Next(2) == 0)
                 {
                     for (int num298 = 0; num298 < 3; num298++)

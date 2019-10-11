@@ -31,8 +31,8 @@ namespace AAMod.Projectiles.Shen
                 Dust dust1;
                 Dust dust2;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, ModContent.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, ModContent.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
+                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
+                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.Discord>(), 0, 0, 0, default, 1f)];
                 dust1.noGravity = true;
                 dust2.noGravity = true;
             }
@@ -204,7 +204,7 @@ namespace AAMod.Projectiles.Shen
                 num79 *= num80;
                 float num114 = num78;
                 float num115 = num79 + (Main.rand.Next(-40, 41) * 0.02f);
-                Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, ModContent.ProjectileType<Meteorite>(), projectile.damage, projectile.damage, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+                Projectile.NewProjectile(vector2.X, vector2.Y, num114 * 0.75f, num115 * 0.75f, Terraria.ModLoader.ModContent.ProjectileType<Meteorite>(), projectile.damage, projectile.damage, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
             }
         }
 		

@@ -13,7 +13,7 @@ namespace AAMod.Items.Tools
 		public override void SetDefaults()
 		{
             item.CloneDefaults(ItemID.HotlineFishingHook);
-            item.shoot = ModContent.ProjectileType<Hellfisher_Bob>();
+            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Hellfisher_Bob>();
 		}
 
         public override void AddRecipes()

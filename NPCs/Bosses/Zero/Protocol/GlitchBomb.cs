@@ -67,7 +67,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         {
             if (Main.rand.Next(7) == 0)
             {
-                target.AddBuff(ModContent.BuffType<Buffs.Unstable>(), 180);
+                target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.Unstable>(), 180);
             }
         }
 
@@ -77,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 for (int m = 0; m < 6; m++)
                 {
-                    int dustID = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.VoidDust>(), -projectile.velocity.X * 0.2f,
+                    int dustID = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.VoidDust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 100);
                     Main.dust[dustID].noGravity = true;
                     Main.dust[dustID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
@@ -86,7 +86,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
 
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"), (int)projectile.Center.X, (int)projectile.Center.Y);
-            Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<GlitchBoom>(), projectile.damage, 1, projectile.owner);
+            Projectile.NewProjectile(projectile.Center, Vector2.Zero, Terraria.ModLoader.ModContent.ProjectileType<GlitchBoom>(), projectile.damage, 1, projectile.owner);
         }
         public override bool PreDraw(SpriteBatch sb, Color lightColor)
         {

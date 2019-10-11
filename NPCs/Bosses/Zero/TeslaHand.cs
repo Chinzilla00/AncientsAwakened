@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(ModContent.NPCType<Zero>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<Zero>()))
             {
                 return false;
             }

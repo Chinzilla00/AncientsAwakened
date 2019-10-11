@@ -74,7 +74,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, ModContent.ProjectileType<NebulaBoost>(), 0, 0, Main.myPlayer, projectile.ai[0]);
+            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, Terraria.ModLoader.ModContent.ProjectileType<NebulaBoost>(), 0, 0, Main.myPlayer, projectile.ai[0]);
             projectile.Kill();
         }
 
@@ -84,14 +84,14 @@ namespace AAMod.NPCs.Bosses.Greed
             int pieCut = 20;
             for (int m = 0; m < pieCut; m++)
             {
-                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, c, 1.6f);
+                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, Terraria.ModLoader.ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, c, 1.6f);
                 Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / (float)pieCut * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
             }
             for (int m = 0; m < pieCut; m++)
             {
-                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, c, 2f);
+                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, Terraria.ModLoader.ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, c, 2f);
                 Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)pieCut * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
@@ -141,7 +141,7 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 projectile.ai[aislotHomingCooldown] = homingDelay;
 
-                int foundTarget = BaseAI.GetNPC(projectile.Center, ModContent.NPCType<GreedA>(), -1);
+                int foundTarget = BaseAI.GetNPC(projectile.Center, Terraria.ModLoader.ModContent.NPCType<GreedA>(), -1);
                 if (foundTarget != -1)
                 {
                     NPC n = Main.npc[foundTarget];
@@ -183,15 +183,15 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            if (target.type == ModContent.NPCType<GreedA>())
+            if (target.type == Terraria.ModLoader.ModContent.NPCType<GreedA>())
             {
                 if (projectile.ai[0] == 0)
                 {
-                    target.AddBuff(ModContent.BuffType<BuffA>(), 180);
+                    target.AddBuff(Terraria.ModLoader.ModContent.BuffType<BuffA>(), 180);
                 }
                 else if (projectile.ai[0] == 1)
                 {
-                    target.AddBuff(ModContent.BuffType<BuffD>(), 180);
+                    target.AddBuff(Terraria.ModLoader.ModContent.BuffType<BuffD>(), 180);
                 }
                 else
                 {
@@ -209,14 +209,14 @@ namespace AAMod.NPCs.Bosses.Greed
             int pieCut = 20;
             for (int m = 0; m < pieCut; m++)
             {
-                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, c, 1.6f);
+                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, Terraria.ModLoader.ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, c, 1.6f);
                 Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / (float)pieCut * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
             }
             for (int m = 0; m < pieCut; m++)
             {
-                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, c, 2f);
+                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, Terraria.ModLoader.ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 100, c, 2f);
                 Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)pieCut * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;

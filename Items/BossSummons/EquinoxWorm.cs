@@ -33,7 +33,7 @@ Non-Consumable");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(ModContent.NPCType<NightcrawlerHead>()) && !NPC.AnyNPCs(ModContent.NPCType<DaybringerHead>());
+            return !NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<NightcrawlerHead>()) && !NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<DaybringerHead>());
         }
 
         public override bool UseItem(Player player)

@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
             item.damage = 260;
             item.useStyle = 5;
             item.shootSpeed = 9f;
-            item.shoot = ModContent.ProjectileType<Projectiles.Rajah.Supreme.CarrotEX>();
+            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Rajah.Supreme.CarrotEX>();
             item.width = 58;
             item.height = 57;
             item.UseSound = SoundID.Item39;

@@ -22,7 +22,7 @@ namespace AAMod.Tiles.Bars
             TileObjectData.newTile.StyleWrapLimit = 111;
             TileObjectData.addTile(Type);
             drop = mod.ItemType("DaybreakIncinerite");   //put your CustomBlock name
-            dustType = ModContent.DustType<Dusts.DaybreakIncineriteDust>();
+            dustType = Terraria.ModLoader.ModContent.DustType<Dusts.DaybreakIncineriteDust>();
             AddMapEntry(new Color(160, 100, 0));
 			minPick = 0;
         }

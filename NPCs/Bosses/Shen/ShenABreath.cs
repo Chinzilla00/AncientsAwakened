@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     num296 = 0.75f;
                 }
                 projectile.ai[0] += 1f;
-                int num297 = ModContent.DustType<Dusts.Discord>();
+                int num297 = Terraria.ModLoader.ModContent.DustType<Dusts.Discord>();
                 if (Main.rand.Next(2) == 0)
                 {
                     for (int num298 = 0; num298 < 8; num298++)
@@ -85,7 +85,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(ModContent.BuffType<Buffs.DiscordInferno>(), 180);
+            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.DiscordInferno>(), 180);
         }
     }
 }

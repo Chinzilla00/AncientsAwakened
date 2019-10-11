@@ -41,7 +41,7 @@ namespace AAMod.Projectiles.Yamata   //The directory for your .cs and .png; Exam
                 if (ProjTimer >= 50)
                 {
                     ProjTimer = 0;
-                    Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<FlairdraCyclone>(), projectile.damage, projectile.knockBack, projectile.owner);
+                    Projectile.NewProjectile(projectile.position, Vector2.Zero, Terraria.ModLoader.ModContent.ProjectileType<FlairdraCyclone>(), projectile.damage, projectile.knockBack, projectile.owner);
                 }
             }
         }

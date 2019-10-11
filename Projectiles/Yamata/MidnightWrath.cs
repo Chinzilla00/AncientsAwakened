@@ -40,7 +40,7 @@ namespace AAMod.Projectiles.Yamata
                 projectile.netUpdate = true;
             }
             target.lifeRegen -= 5;
-            target.AddBuff(ModContent.BuffType<Buffs.Moonraze>(), 200);
+            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.Moonraze>(), 200);
         }
 
         public override void AI()
@@ -86,7 +86,7 @@ namespace AAMod.Projectiles.Yamata
 
         public override void Kill(int timeLeft)
         {
-            Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), 0f, 0f, 46, default, 1.381579f);
+            Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.YamataDust>(), 0f, 0f, 46, default, 1.381579f);
         }
         
     }

@@ -27,7 +27,7 @@ namespace AAMod.Items.Melee
 			item.autoReuse = true;
 			item.useTurn = true;
             item.shootSpeed = 10;
-            item.shoot = ModContent.ProjectileType<Projectiles.HydraSlash>();
+            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.HydraSlash>();
 		}
 
         int shoot = 0;
@@ -43,7 +43,7 @@ namespace AAMod.Items.Melee
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
-			target.AddBuff(ModContent.BuffType<Buffs.HydraToxin>(), 180);
+			target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.HydraToxin>(), 180);
 		}
 	}
 }

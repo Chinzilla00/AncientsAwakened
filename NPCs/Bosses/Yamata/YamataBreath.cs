@@ -49,7 +49,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     num296 = 0.75f;
                 }
                 projectile.ai[0] += 1f;
-                int num297 = ModContent.DustType<Dusts.YamataDust>();
+                int num297 = Terraria.ModLoader.ModContent.DustType<Dusts.YamataDust>();
                 if (Main.rand.Next(2) == 0)
                 {
                     for (int num298 = 0; num298 < 1; num298++)

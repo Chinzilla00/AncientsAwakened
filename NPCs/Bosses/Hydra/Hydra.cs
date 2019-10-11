@@ -136,7 +136,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void AI()
         {
-            bool noHeads = !NPC.AnyNPCs(ModContent.NPCType<HydraHead1>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead2>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead3>());
+            bool noHeads = !NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<HydraHead1>()) && !NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<HydraHead2>()) && !NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<HydraHead3>());
             if (HeadsSpawned && noHeads)
             {
                 if (Main.netMode != 1)

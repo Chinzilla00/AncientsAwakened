@@ -38,7 +38,7 @@ namespace AAMod.Items.Usable
 
             if (player.altFunctionUse == 2)
             {
-                item.shoot = ModContent.ProjectileType<Projectiles.Flasks.SporeSac>();
+                item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Flasks.SporeSac>();
                 item.shootSpeed = 9f;
             }
             else

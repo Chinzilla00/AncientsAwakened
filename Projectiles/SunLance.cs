@@ -38,7 +38,7 @@ namespace AAMod.Projectiles
 			AIArcStabSpear(projectile, ref projectile.ai, false);
 			if (Main.rand.Next(3) != 0)
 			{
-				int dustID = Dust.NewDust(projectile.Center, 0, 0, ModContent.DustType<Dusts.CthulhuDust>(), 0f, 0f, 0);
+				int dustID = Dust.NewDust(projectile.Center, 0, 0, Terraria.ModLoader.ModContent.DustType<Dusts.CthulhuDust>(), 0f, 0f, 0);
 				Main.dust[dustID].noGravity = true;
 			}			
 		}

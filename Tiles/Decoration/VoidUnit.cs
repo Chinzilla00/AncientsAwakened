@@ -18,7 +18,7 @@ namespace AAMod.Tiles.Decoration
             TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 18 };
             TileObjectData.addTile(Type);
             AddMapEntry(new Color(75, 139, 166));
-            dustType = ModContent.DustType<Dusts.DoomDust>();
+            dustType = Terraria.ModLoader.ModContent.DustType<Dusts.DoomDust>();
             animationFrameHeight = 56;
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.LunarMonolith };

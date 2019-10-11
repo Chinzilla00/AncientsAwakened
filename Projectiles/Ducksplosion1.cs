@@ -41,7 +41,7 @@ namespace AAMod.Projectiles
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(ModContent.BuffType<Buffs.Electrified>(), 200);
+            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.Electrified>(), 200);
         }
 
 

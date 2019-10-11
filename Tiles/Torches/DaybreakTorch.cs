@@ -38,7 +38,7 @@ namespace AAMod.Tiles.Torches
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Torch");
 			AddMapEntry(new Color(150, 70, 0), name);
-			dustType = ModContent.DustType<Dusts.AkumaADust>();
+			dustType = Terraria.ModLoader.ModContent.DustType<Dusts.AkumaADust>();
 			drop = mod.ItemType("DaybreakTorch");
 			disableSmartCursor = true;
 			adjTiles = new int[]{ TileID.Torches };

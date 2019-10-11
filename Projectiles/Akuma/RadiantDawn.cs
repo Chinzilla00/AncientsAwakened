@@ -190,7 +190,7 @@ namespace AAMod.Projectiles.Akuma
 				bool flag11 = Collision.CanHit(vector2, 0, 0, vector2 + vector14, 0, 0);
                 if (chargeLevel >= 2)
                 {
-                    type = ModContent.ProjectileType<DaybreakArrow>();
+                    type = Terraria.ModLoader.ModContent.ProjectileType<DaybreakArrow>();
                 }
                 for (int num123 = 0; num123 < num122; num123++)
                 {

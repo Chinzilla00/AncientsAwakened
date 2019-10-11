@@ -16,7 +16,7 @@ namespace AAMod.Tiles
             Main.tileMerge[Type][mod.TileType("AbyssLeaves")] = true;
             Main.tileMerge[Type][mod.TileType("AbyssWoodSolid")] = true;
             soundType = 21;
-            dustType = ModContent.DustType<Dusts.AbyssDust>();
+            dustType = Terraria.ModLoader.ModContent.DustType<Dusts.AbyssDust>();
             AddMapEntry(new Color(52, 0, 200));
         }
 

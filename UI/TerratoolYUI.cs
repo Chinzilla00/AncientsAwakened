@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Terraria.UI;
 using AAMod.Items.Boss.Yamata;
+using Terraria.ModLoader;
 
 namespace AAMod.UI
 {
@@ -20,7 +21,7 @@ namespace AAMod.UI
 
         public override UIState State => AAMod.instance.TerratoolYState;
 		
-        public override int HeldItemType => AAMod.instance.ItemType<YamataTerratool>();
+        public override int HeldItemType => ModContent.ItemType<YamataTerratool>();
 
         public override void ButtonClicked(int index)
         {

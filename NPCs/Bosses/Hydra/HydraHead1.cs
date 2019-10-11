@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 	        if (bodyNPC == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
-                if (npcBody.type == ModContent.NPCType<Hydra>())
+                if (npcBody.type == Terraria.ModLoader.ModContent.NPCType<Hydra>())
                 {
                     bodyNPC = npcBody;
                 }

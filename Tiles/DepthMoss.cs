@@ -24,7 +24,7 @@ namespace AAMod.Tiles
             soundType = 21;
             minPick = 65;
             AddMapEntry(new Color(0, 50, 140));
-            drop = ModContent.ItemType<Items.Blocks.Depthstone>();
+            drop = Terraria.ModLoader.ModContent.ItemType<Items.Blocks.Depthstone>();
         }
 
         public override void RandomUpdate(int i, int j)

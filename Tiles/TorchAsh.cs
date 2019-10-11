@@ -18,9 +18,9 @@ namespace AAMod.Tiles
             Main.tileMergeDirt[Type] = true;
             Main.tileBlockLight[Type] = true;
             TileID.Sets.Snow[Type] = true;
-            dustType = ModContent.DustType<Dusts.AshRain>();
+            dustType = Terraria.ModLoader.ModContent.DustType<Dusts.AshRain>();
             AddMapEntry(new Color(30, 30, 30));
-            drop = ModContent.ItemType<Items.Blocks.TorchAsh>();
+            drop = Terraria.ModLoader.ModContent.ItemType<Items.Blocks.TorchAsh>();
         }
 
         public override void RandomUpdate(int i, int j)

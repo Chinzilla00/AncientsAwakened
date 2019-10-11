@@ -14,7 +14,7 @@ namespace AAMod.Items.Usable
 
 		public override void SetDefaults()
 		{
-			item.shoot = ModContent.ProjectileType<Projectiles.Antifungus>() - ProjectileID.PureSpray;
+			item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Antifungus>() - ProjectileID.PureSpray;
 			item.ammo = AmmoID.Solution;
 			item.width = 10;
 			item.height = 12;

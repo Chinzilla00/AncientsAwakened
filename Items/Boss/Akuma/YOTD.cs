@@ -53,7 +53,7 @@ namespace AAMod.Items.Boss.Akuma
         {
             for (int num211 = 0; num211 < 2; num211++)
             {
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<Projectiles.Akuma.YotD>(), item.damage, item.knockBack, Main.myPlayer, 0f, 1f);
+                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Akuma.YotD>(), item.damage, item.knockBack, Main.myPlayer, 0f, 1f);
             }
             return false;
         }

@@ -40,10 +40,10 @@ namespace AAMod.Items.Boss.Djinn
             switch (Shoot)
             {
                 case 0:
-                    Shoot = ModContent.ProjectileType<Projectiles.Djinn.DesertBolt1>();
+                    Shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Djinn.DesertBolt1>();
                     break;
                 default:
-                    Shoot = ModContent.ProjectileType<Projectiles.Djinn.DesertBolt2>();
+                    Shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Djinn.DesertBolt2>();
                     break;
             }
             float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));

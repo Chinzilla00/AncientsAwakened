@@ -70,7 +70,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     npc.position = new Vector2(pos, 200);
                     for (int i = 0; i < 5; i++)
                     {
-                        Dust d = Main.dust[Dust.NewDust(npc.position, npc.height, npc.width, ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
+                        Dust d = Main.dust[Dust.NewDust(npc.position, npc.height, npc.width, Terraria.ModLoader.ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0)];
                         d.position = npc.Center;
                     }
                 }
@@ -105,7 +105,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
                         for (int i = 0; i < 5; i++)
                         {
-                            Dust.NewDust(npc.position, npc.height, npc.width, ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                            Dust.NewDust(npc.position, npc.height, npc.width, Terraria.ModLoader.ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
                         }
 
                         npc.active = false;
@@ -125,7 +125,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
                         for (int i = 0; i < 5; i++)
                         {
-                            Dust.NewDust(npc.position, npc.height, npc.width, ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                            Dust.NewDust(npc.position, npc.height, npc.width, Terraria.ModLoader.ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
                         }
 
                         npc.active = false;

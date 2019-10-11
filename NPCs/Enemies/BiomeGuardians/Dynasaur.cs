@@ -234,7 +234,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
                             num225 *= num226;
                             int num227 = 80;
                             value2 += npc.velocity * 5f;
-                            int num229 = Projectile.NewProjectile(value2.X + num224 * 100f, value2.Y + num225 * 100f, num224, num225, ModContent.ProjectileType<DynaBlast>(), num227, 0f, Main.myPlayer, 0f, 0f);
+                            int num229 = Projectile.NewProjectile(value2.X + num224 * 100f, value2.Y + num225 * 100f, num224, num225, Terraria.ModLoader.ModContent.ProjectileType<DynaBlast>(), num227, 0f, Main.myPlayer, 0f, 0f);
                             Main.projectile[num229].timeLeft = 300;
                             return;
                         }

@@ -41,7 +41,7 @@ namespace AAMod.Projectiles.GemShot
             {
                 Dust dust1;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AbyssDust>(), 0, 0, 0, Color.Orange, 1f)];
+                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AbyssDust>(), 0, 0, 0, Color.Orange, 1f)];
                 dust1.noGravity = true;
             }
         }
@@ -53,7 +53,7 @@ namespace AAMod.Projectiles.GemShot
             {
                 Dust dust1;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AbyssDust>(), 0, 0, 0, Color.Orange, 1f)];
+                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.AbyssDust>(), 0, 0, 0, Color.Orange, 1f)];
                 dust1.noGravity = true;
             }
         }

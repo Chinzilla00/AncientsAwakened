@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.MushroomMonarch
         {
             if (Main.rand.Next(7) == 0)
             {
-                player.QuickSpawnItem(ModContent.ItemType<Vanity.Mask.FungusMask>());
+                player.QuickSpawnItem(Terraria.ModLoader.ModContent.ItemType<Vanity.Mask.FungusMask>());
             }
             if (Main.rand.Next(20) == 0)
             {

@@ -51,7 +51,7 @@ namespace AAMod.Projectiles
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            target.AddBuff(ModContent.BuffType<Buffs.Electrified>(), 90);
+            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.Electrified>(), 90);
         }
     }
 }

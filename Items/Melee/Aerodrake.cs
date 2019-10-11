@@ -28,7 +28,7 @@ namespace AAMod.Items.Melee
             item.value = Item.sellPrice(1, 0, 0, 0);
             item.autoReuse = true;
             item.useTurn = false;
-            item.shoot = ModContent.ProjectileType<Projectiles.Aerodrake>();
+            item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Aerodrake>();
             item.shootSpeed = 17f;
             item.expert = true; item.expertOnly = true;
 

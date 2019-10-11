@@ -88,7 +88,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 	    	}
         	for (int dust = 0; dust <= 5; dust++)
         	{
-        		Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, ModContent.DustType<Dusts.CthulhuAuraDust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
+        		Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, Terraria.ModLoader.ModContent.DustType<Dusts.CthulhuAuraDust>(), projectile.oldVelocity.X * 0.5f, projectile.oldVelocity.Y * 0.5f);
         	}
         }
     }

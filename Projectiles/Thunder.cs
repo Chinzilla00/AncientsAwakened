@@ -220,7 +220,7 @@ namespace AAMod.Projectiles
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(ModContent.BuffType<Buffs.Electrified>(), 200);
+            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<Buffs.Electrified>(), 200);
         }
 
         public override void Kill(int timeLeft)
