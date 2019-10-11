@@ -2,8 +2,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using Terraria.DataStructures;
-using System.Collections.Generic;
+
 
 namespace AAMod.Items.Armor.Darkmatter
 {
@@ -62,8 +61,17 @@ Dark, yet still barely visible");
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = "";
-            player.GetModPlayer<DarkmatterMaskEffects>().setBonus = true;
+			player.setBonus = @"200 increased maximum mana
+20% reduced mana usage
+Your Magic spells electrocute enemies
+8% increased damage resistance at night";
+            if (!Main.dayTime)
+            {
+                player.endurance += .08f;
+            }
+            player.statManaMax2 += 200;
+            player.manaCost *= 0.80f;
+            player.GetModPlayer<AAPlayer>().darkmatterSetMa = true;
             player.armorEffectDrawShadowLokis = true;
         }
 
@@ -77,56 +85,4 @@ Dark, yet still barely visible");
             recipe.AddRecipe();
         }
 	}
-    public class DarkmatterMaskEffects : ModPlayer
-    {
-        public bool setBonus = false;
-        public int timer;
-        public int auraFrame = 0;
-        public int auraFrameCount = 4;
-        public override void ResetEffects()
-        {
-            setBonus = false;
-            
-        }
-        public override void PreUpdate()
-        {
-
-            timer++;
-            if (timer % 4 == 0)
-            {
-                auraFrame++;
-                if (auraFrame >= auraFrameCount)
-                {
-                    auraFrame = 0;
-                }
-            }
-        }
-        public static readonly PlayerLayer Portal = new PlayerLayer("AAMod", "Portal", PlayerLayer.MiscEffectsBack, delegate (PlayerDrawInfo drawInfo)
-        {
-
-            Player drawPlayer = drawInfo.drawPlayer;
-            Mod mod = ModLoader.GetMod("AAMod");
-            Texture2D texture = mod.GetTexture("Items/Armor/Darkmatter/Aura");
-
-            if (drawPlayer.GetModPlayer<DarkmatterMaskEffects>().setBonus)
-            {
-                Vector2 Center = drawInfo.position + new Vector2(drawPlayer.width / 2, drawPlayer.height / 2)  - Main.screenPosition;
-
-                DrawData data = new DrawData(texture, Center, texture.Frame(1, drawPlayer.GetModPlayer<DarkmatterMaskEffects>().auraFrameCount, 0, drawPlayer.GetModPlayer<DarkmatterMaskEffects>().auraFrame), Color.White, 0f, new Vector2(texture.Size().X, texture.Size().Y / 4) * .5f, 1f, drawInfo.spriteEffects, 0);
-                data.shader = drawInfo.bodyArmorShader;
-                Main.playerDrawData.Add(data);
-            }
-        });
-        public override void ModifyDrawLayers(List<PlayerLayer> layers)
-        {
-
-
-            int frontLayer = layers.FindIndex(PlayerLayer => PlayerLayer.Name.Equals("MiscEffectsBack"));
-            if (frontLayer != -1)
-            {
-                Portal.visible = true;
-                layers.Insert(frontLayer + 1, Portal);
-            }
-        }
-    }
 }
