@@ -95,7 +95,7 @@ namespace AAMod.Projectiles
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (wall == (ushort)mod.WallType<Mushwall>())
+                        else if (wall == (ushort)ModContent.WallType<Mushwall>())
                         {
                             Main.tile[k, l].wall = WallID.Grass;
                             WorldGen.SquareWallFrame(k, l, true);

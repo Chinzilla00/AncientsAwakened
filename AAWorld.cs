@@ -1471,19 +1471,19 @@ namespace AAMod
                         {
                             if (WallID.Sets.Conversion.Stone[wall])
                             {
-                                Main.tile[k, l].wall = (ushort)mod.WallType<TorchstoneWall>();
+                                Main.tile[k, l].wall = (ushort)ModContent.WallType<TorchstoneWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
                                 sendNet = true;
                             }
                             else if (WallID.Sets.Conversion.Sandstone[wall])
                             {
-                                Main.tile[k, l].wall = (ushort)mod.WallType<TorchsandstoneWall>();
+                                Main.tile[k, l].wall = (ushort)ModContent.WallType<TorchsandstoneWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
                                 sendNet = true;
                             }
                             else if (WallID.Sets.Conversion.HardenedSand[wall])
                             {
-                                Main.tile[k, l].wall = (ushort)mod.WallType<TorchsandHardenedWall>();
+                                Main.tile[k, l].wall = (ushort)ModContent.WallType<TorchsandHardenedWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
                                 sendNet = true;
                             }
@@ -1536,19 +1536,19 @@ namespace AAMod
                         {
                             if (WallID.Sets.Conversion.Stone[wall])
                             {
-                                Main.tile[k, l].wall = (ushort)mod.WallType<DepthstoneWall>();
+                                Main.tile[k, l].wall = (ushort)ModContent.WallType<DepthstoneWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
                                 sendNet = true;
                             }
                             else if (WallID.Sets.Conversion.Sandstone[wall])
                             {
-                                Main.tile[k, l].wall = (ushort)mod.WallType<DepthsandstoneWall>();
+                                Main.tile[k, l].wall = (ushort)ModContent.WallType<DepthsandstoneWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
                                 sendNet = true;
                             }
                             else if (WallID.Sets.Conversion.HardenedSand[wall])
                             {
-                                Main.tile[k, l].wall = (ushort)mod.WallType<DepthsandHardenedWall>();
+                                Main.tile[k, l].wall = (ushort)ModContent.WallType<DepthsandHardenedWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
                                 sendNet = true;
                             }
@@ -1610,7 +1610,7 @@ namespace AAMod
                         {
                             if (WallID.Sets.Conversion.Grass[type])
                             {
-                                Main.tile[k, l].type = (ushort)mod.WallType<Mushwall>();
+                                Main.tile[k, l].type = (ushort)ModContent.WallType<Mushwall>();
                                 WorldGen.SquareTileFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }
@@ -1635,7 +1635,7 @@ namespace AAMod
                                 WorldGen.SquareTileFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }
-                            else if (wall == mod.WallType<Mushwall>())
+                            else if (wall == ModContent.WallType<Mushwall>())
                             {
                                 Main.tile[k, l].type = WallID.Grass;
                                 WorldGen.SquareTileFrame(k, l, true);
@@ -1900,31 +1900,31 @@ namespace AAMod
                         }
                         else if (conversionType == 11) //Order
                         {
-                            if (wall == mod.WallType<TorchstoneWall>() || wall == mod.WallType<DepthstoneWall>())
+                            if (wall == ModContent.WallType<TorchstoneWall>() || wall == ModContent.WallType<DepthstoneWall>())
                             {
                                 Main.tile[k, l].wall = WallID.Stone;
                                 WorldGen.SquareWallFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }
-                            else if (wall == mod.WallType<InfernoGrassWall>())
+                            else if (wall == ModContent.WallType<InfernoGrassWall>())
                             {
                                 Main.tile[k, l].wall = WallID.GrassUnsafe;
                                 WorldGen.SquareWallFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }
-                            else if (wall == mod.WallType<MireJungleWall>())
+                            else if (wall == ModContent.WallType<MireJungleWall>())
                             {
                                 Main.tile[k, l].wall = WallID.JungleUnsafe;
                                 WorldGen.SquareWallFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }
-                            else if (wall == mod.WallType<TorchsandHardenedWall>() || wall == mod.WallType<DepthsandHardenedWall>())
+                            else if (wall == ModContent.WallType<TorchsandHardenedWall>() || wall == ModContent.WallType<DepthsandHardenedWall>())
                             {
                                 Main.tile[k, l].wall = WallID.HardenedSand;
                                 WorldGen.SquareWallFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }
-                            else if (wall == mod.WallType<TorchsandstoneWall>() || wall == mod.WallType<DepthsandstoneWall>())
+                            else if (wall == ModContent.WallType<TorchsandstoneWall>() || wall == ModContent.WallType<DepthsandstoneWall>())
                             {
                                 Main.tile[k, l].wall = WallID.Sandstone;
                                 WorldGen.SquareWallFrame(k, l, true);

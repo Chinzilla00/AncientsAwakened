@@ -27,8 +27,8 @@ namespace AAMod.Worldgeneration
             tileSand = (ushort)mod.TileType("Depthsand"), tileSandHardened = (ushort)mod.TileType("DepthsandHardened"), tileSandstone = (ushort)mod.TileType("Depthsandstone"),
             LivingWood = (ushort)ModContent.TileType<LivingBogwood>(), LivingLeaves = (ushort)ModContent.TileType<LivingBogleaves>();
 
-            byte StoneWall = (byte)mod.WallType<DepthstoneWall>(), SandstoneWall = (byte)mod.WallType<DepthsandstoneWall>(), HardenedSandWall = (byte)mod.WallType<DepthsandHardenedWall>(),
-            GrassWall = (byte)mod.WallType<LivingBogleafWall>(), JungleWall = (byte)mod.WallType<MireJungleWall>();
+            byte StoneWall = (byte)ModContent.WallType<DepthstoneWall>(), SandstoneWall = (byte)ModContent.WallType<DepthsandstoneWall>(), HardenedSandWall = (byte)ModContent.WallType<DepthsandHardenedWall>(),
+            GrassWall = (byte)ModContent.WallType<LivingBogleafWall>(), JungleWall = (byte)ModContent.WallType<MireJungleWall>();
 
 			int worldSize = GetWorldSize();
 			int biomeRadius = worldSize == 3 ? 240 : worldSize == 2 ? 200 : 180; //how deep the biome is (scaled by world size)	
@@ -263,8 +263,8 @@ namespace AAMod.Worldgeneration
             tileIce = (ushort)mod.TileType("Torchice"), tileSand = (ushort)mod.TileType("Torchsand"), tileSandHardened = (ushort)mod.TileType("TorchsandHardened"), tileSandstone = (ushort)mod.TileType("Torchsandstone"),
             LivingWood = (ushort)ModContent.TileType<LivingRazewood>(), LivingLeaves = (ushort)ModContent.TileType<LivingRazeleaves>();
 
-            byte StoneWall = (byte)mod.WallType<TorchstoneWall>(), SandstoneWall = (byte)mod.WallType<TorchsandstoneWall>(), HardenedSandWall = (byte)mod.WallType<TorchsandHardenedWall>(),
-            GrassWall = (byte)mod.WallType<InfernoGrassWall>();
+            byte StoneWall = (byte)ModContent.WallType<TorchstoneWall>(), SandstoneWall = (byte)ModContent.WallType<TorchsandstoneWall>(), HardenedSandWall = (byte)ModContent.WallType<TorchsandHardenedWall>(),
+            GrassWall = (byte)ModContent.WallType<InfernoGrassWall>();
 
 
             int worldSize = GetWorldSize();
@@ -751,7 +751,7 @@ namespace AAMod.Worldgeneration
 
         public void HoardChest(int x, int y, int specialItem = 0)
         {
-            int PlacementSuccess = WorldGen.PlaceChest(x, y, (ushort)AAMod.instance.TileType<GreedChest>(), false, 1);
+            int PlacementSuccess = WorldGen.PlaceChest(x, y, (ushort)ModContent.TileType<GreedChest>(), false, 1);
 
             int[] GreedChestLoot = new int[] {
 
@@ -812,8 +812,6 @@ namespace AAMod.Worldgeneration
 
             if (PlacementSuccess >= 0)
             {
-                Mod mod = AAMod.instance;
-
                 Chest chest = Main.chest[PlacementSuccess];
 
                 Item item0 = chest.item[0];
@@ -858,7 +856,7 @@ namespace AAMod.Worldgeneration
                 }
             }
 
-            NetMessage.SendObjectPlacment(-1, x, y, (ushort)AAMod.instance.TileType<GreedChest>(), 1, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, x, y, (ushort)ModContent.TileType<GreedChest>(), 1, 0, -1, -1);
         }
     }
 
