@@ -22,7 +22,7 @@ namespace AAMod.Buffs
             bool NearPlayerY = (npc.Center.X > player.Center.Y - 48) || (npc.Center.X < player.Center.Y + 48);
             if (NearPlayerX || NearPlayerY)
             {
-                npc.GetGlobalNPC<AAModGlobalNPC>(mod).irradiated = true;
+                npc.GetGlobalNPC<AAModGlobalNPC>().irradiated = true;
             }
         }
     }

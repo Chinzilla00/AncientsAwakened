@@ -24,7 +24,7 @@ namespace AAMod.Backgrounds
 			if(Main.netMode == NetmodeID.Server || Main.dedServ) return; //BEGONE SERVER HEATHENS! UPDATE ONLY CLIENTSIDE!
 
 			Player player = Main.LocalPlayer;
-			bool inStorm = Main.LocalPlayer.GetModPlayer<AAPlayer>(AAMod.instance).ZoneStorm;
+			bool inStorm = Main.LocalPlayer.GetModPlayer<AAPlayer>().ZoneStorm;
 			if(!backgroundClouds) inStorm = false;
 			
 			fogOffsetX += 1;

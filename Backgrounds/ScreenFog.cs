@@ -25,7 +25,7 @@ namespace AAMod.Backgrounds
 			if(Main.netMode == NetmodeID.Server || Main.dedServ) return; //BEGONE SERVER HEATHENS! UPDATE ONLY CLIENTSIDE!
 
 			Player player = Main.LocalPlayer;
-			bool inMire = Main.LocalPlayer.GetModPlayer<AAPlayer>(AAMod.instance).ZoneMire;
+			bool inMire = Main.LocalPlayer.GetModPlayer<AAPlayer>().ZoneMire;
 			if(!backgroundFog && (BasePlayer.HasAccessory(player, AAMod.instance.ItemType("Lantern"), true, false) || AAWorld.downedYamata)) inMire = false;
 			
 			fogOffsetX += 1;

@@ -17,7 +17,7 @@ namespace AAMod.Buffs
 
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-			npc.GetGlobalNPC<AAModGlobalNPC>(mod).Moonraze = true;
+			npc.GetGlobalNPC<AAModGlobalNPC>().Moonraze = true;
 		}
 	}
 }

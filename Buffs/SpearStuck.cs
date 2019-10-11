@@ -25,7 +25,7 @@ namespace AAMod.Buffs
 
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-            AAModGlobalNPC GNPC = npc.GetGlobalNPC<AAModGlobalNPC>(mod);
+            AAModGlobalNPC GNPC = npc.GetGlobalNPC<AAModGlobalNPC>();
 
             GNPC.Spear = true;
         }
