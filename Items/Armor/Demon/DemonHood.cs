@@ -39,7 +39,7 @@ namespace AAMod.Items.Armor.Demon
         {
 
             player.setBonus = Lang.ArmorBonus("DemonHoodBonus");
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             modPlayer.impSet = true;
             modPlayer.demonBonus = true;
             if (player.whoAmI == Main.myPlayer)

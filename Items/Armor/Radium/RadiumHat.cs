@@ -44,8 +44,8 @@ Shines with the light of a starry night sky");
             player.maxMinions += 7;
             player.panic = true;
             player.starCloak = true;
-            player.GetModPlayer<AAPlayer>(mod).Radium = true;
-            player.GetModPlayer<AAPlayer>(mod).radiumSu = true;
+            player.GetModPlayer<AAPlayer>().Radium = true;
+            player.GetModPlayer<AAPlayer>().radiumSu = true;
         }
 
 		public override void AddRecipes()

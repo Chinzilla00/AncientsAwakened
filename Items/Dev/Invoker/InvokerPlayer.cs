@@ -243,7 +243,7 @@ namespace AAMod.Items.Dev.Invoker
 		}
 		public override bool CanUseItem(Item item, Player player)
 		{
-			if(player.GetModPlayer<InvokerPlayer>(mod).InvokedCaligula && player.inventory[player.selectedItem].damage > 0 && !(player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula && player.inventory[player.selectedItem].type == mod.ItemType("InvokerStaff") && player.altFunctionUse == 2))
+			if(player.GetModPlayer<InvokerPlayer>().InvokedCaligula && player.inventory[player.selectedItem].damage > 0 && !(player.GetModPlayer<InvokerPlayer>().DarkCaligula && player.inventory[player.selectedItem].type == mod.ItemType("InvokerStaff") && player.altFunctionUse == 2))
 			{
 				return false;
 			}
@@ -337,9 +337,9 @@ namespace AAMod.Items.Dev.Invoker
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
 			Player player = Main.player[Main.myPlayer];
-			//damage = (int)((player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula? 1000 : 500) * (player.minionDamage + player.allDamage));
+			//damage = (int)((player.GetModPlayer<InvokerPlayer>().DarkCaligula? 1000 : 500) * (player.minionDamage + player.allDamage));
 			crit = true;
-			if(player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula)
+			if(player.GetModPlayer<InvokerPlayer>().DarkCaligula)
 			{
 				int regen = (Main.rand.Next(2) == 0 ? 2 : 1);
 				player.statLife += regen;

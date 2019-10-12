@@ -22,7 +22,7 @@ namespace AAMod.Buffs
                 player.wingTimeMax = 0;
             }
             player.wingTimeMax /= 8;
-            player.GetModPlayer<AAPlayer>(mod).shroomed = true;
+            player.GetModPlayer<AAPlayer>().shroomed = true;
         }
         
 	}

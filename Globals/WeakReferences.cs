@@ -391,7 +391,7 @@ namespace AAMod.Globals
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Akuma"), 16.3f, (Func<bool>)(() => AAWorld.downedAkuma), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("DraconianSigil") + "]" + Lang.BossCheck("AkumaInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Zero"), 16.4f, (Func<bool>)(() => AAWorld.downedZero), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("ZeroTesseract") + "]" + Lang.BossCheck("ZeroInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("ShenDoragon"), 20f, (Func<bool>)(() => AAWorld.downedShen), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("ChaosSigil") + "]");
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("RajahRabbitRevenge"), 40f, (Func<bool>)(() => AAWorld.downedRajahsRevenge), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType<DiamondCarrot>() + "]" + Lang.BossCheck("RajahRabbitRevengeInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("RajahRabbitRevenge"), 40f, (Func<bool>)(() => AAWorld.downedRajahsRevenge), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("DiamondCarrot") + "]" + Lang.BossCheck("RajahRabbitRevengeInfo"));
 
                 // SlimeKing = 1f;
                 // EyeOfCthulhu = 2f;

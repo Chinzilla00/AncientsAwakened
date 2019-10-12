@@ -18,7 +18,7 @@ namespace AAMod.Tiles.Decoration
             TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 18 };
             TileObjectData.addTile(Type);
             AddMapEntry(new Color(75, 139, 166));
-            dustType = mod.DustType<Dusts.DoomDust>();
+            dustType = ModContent.DustType<Dusts.DoomDust>();
             animationFrameHeight = 56;
             disableSmartCursor = true;
             adjTiles = new int[] { TileID.LunarMonolith };
@@ -33,7 +33,7 @@ namespace AAMod.Tiles.Decoration
         {
             if (Main.tile[i, j].frameY >= 56)
             {
-                AAPlayer modPlayer = Main.LocalPlayer.GetModPlayer<AAPlayer>(mod);
+                AAPlayer modPlayer = Main.LocalPlayer.GetModPlayer<AAPlayer>();
                 modPlayer.VoidUnit = true;
             }
         }

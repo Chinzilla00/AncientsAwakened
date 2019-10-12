@@ -25,10 +25,10 @@ namespace AAMod.Worldgeneration
 			Mod mod = AAMod.instance;
             ushort tileGrass = (ushort)mod.TileType("MireGrass"), tileDirt = TileID.Mud, tileStone = (ushort)mod.TileType("Depthstone"), tileIce = (ushort)mod.TileType("IndigoIce"),
             tileSand = (ushort)mod.TileType("Depthsand"), tileSandHardened = (ushort)mod.TileType("DepthsandHardened"), tileSandstone = (ushort)mod.TileType("Depthsandstone"),
-            LivingWood = (ushort)mod.TileType<LivingBogwood>(), LivingLeaves = (ushort)mod.TileType<LivingBogleaves>();
+            LivingWood = (ushort)ModContent.TileType<LivingBogwood>(), LivingLeaves = (ushort)ModContent.TileType<LivingBogleaves>();
 
-            byte StoneWall = (byte)mod.WallType<DepthstoneWall>(), SandstoneWall = (byte)mod.WallType<DepthsandstoneWall>(), HardenedSandWall = (byte)mod.WallType<DepthsandHardenedWall>(),
-            GrassWall = (byte)mod.WallType<LivingBogleafWall>(), JungleWall = (byte)mod.WallType<MireJungleWall>();
+            byte StoneWall = (byte)ModContent.WallType<DepthstoneWall>(), SandstoneWall = (byte)ModContent.WallType<DepthsandstoneWall>(), HardenedSandWall = (byte)ModContent.WallType<DepthsandHardenedWall>(),
+            GrassWall = (byte)ModContent.WallType<LivingBogleafWall>(), JungleWall = (byte)ModContent.WallType<MireJungleWall>();
 
 			int worldSize = GetWorldSize();
 			int biomeRadius = worldSize == 3 ? 240 : worldSize == 2 ? 200 : 180; //how deep the biome is (scaled by world size)	
@@ -168,15 +168,15 @@ namespace AAMod.Worldgeneration
             gen.Generate(genX, genY, true, true);
 
 
-            WorldGen.PlaceObject(genX + 24, genY + 203, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 43, genY + 211, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 59, genY + 221, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 81, genY + 223, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 103, genY + 231, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 124, genY + 222, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 143, genY + 216, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 161, genY + 214, mod.TileType<HydraPod>());
-            WorldGen.PlaceObject(genX + 171, genY + 205, mod.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 24, genY + 203, ModContent.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 43, genY + 211, ModContent.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 59, genY + 221, ModContent.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 81, genY + 223, ModContent.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 103, genY + 231, ModContent.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 124, genY + 222, ModContent.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 143, genY + 216, ModContent.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 161, genY + 214, ModContent.TileType<HydraPod>());
+            WorldGen.PlaceObject(genX + 171, genY + 205, ModContent.TileType<HydraPod>());
             NetMessage.SendObjectPlacment(-1, genX + 25, genY + 204, mod.TileType("HydraPod"), 0, 0, -1, -1);
             NetMessage.SendObjectPlacment(-1, genX + 43, genY + 211, mod.TileType("HydraPod"), 0, 0, -1, -1);
             NetMessage.SendObjectPlacment(-1, genX + 59, genY + 221, mod.TileType("HydraPod"), 0, 0, -1, -1);
@@ -187,7 +187,7 @@ namespace AAMod.Worldgeneration
             NetMessage.SendObjectPlacment(-1, genX + 161, genY + 214, mod.TileType("HydraPod"), 0, 0, -1, -1);
             NetMessage.SendObjectPlacment(-1, genX + 171, genY + 205, mod.TileType("HydraPod"), 0, 0, -1, -1);
 
-            //WorldGen.PlaceObject(genX + 59, genY + 31, mod.TileType<DreadAltarS>());		   
+            //WorldGen.PlaceObject(genX + 59, genY + 31, Terraria.ModLoader.ModContent.TileType<DreadAltarS>());		   
 
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
@@ -199,7 +199,7 @@ namespace AAMod.Worldgeneration
                     {
                         if (Main.rand.Next(15) == 0)
                         {
-                            WorldGen.PlaceObject(AltarX, AltarY - 1, mod.TileType<ChaosAltar1>());
+                            WorldGen.PlaceObject(AltarX, AltarY - 1, ModContent.TileType<ChaosAltar1>());
                         }
                     }
                 }
@@ -261,10 +261,10 @@ namespace AAMod.Worldgeneration
             //--- Initial variable creation
             ushort tileGrass = (ushort)mod.TileType("InfernoGrass"), tileStone = (ushort)mod.TileType("Torchstone"), tileSnow = (ushort)mod.TileType("TorchAsh"),
             tileIce = (ushort)mod.TileType("Torchice"), tileSand = (ushort)mod.TileType("Torchsand"), tileSandHardened = (ushort)mod.TileType("TorchsandHardened"), tileSandstone = (ushort)mod.TileType("Torchsandstone"),
-            LivingWood = (ushort)mod.TileType<LivingRazewood>(), LivingLeaves = (ushort)mod.TileType<LivingRazeleaves>();
+            LivingWood = (ushort)ModContent.TileType<LivingRazewood>(), LivingLeaves = (ushort)ModContent.TileType<LivingRazeleaves>();
 
-            byte StoneWall = (byte)mod.WallType<TorchstoneWall>(), SandstoneWall = (byte)mod.WallType<TorchsandstoneWall>(), HardenedSandWall = (byte)mod.WallType<TorchsandHardenedWall>(),
-            GrassWall = (byte)mod.WallType<InfernoGrassWall>();
+            byte StoneWall = (byte)ModContent.WallType<TorchstoneWall>(), SandstoneWall = (byte)ModContent.WallType<TorchsandstoneWall>(), HardenedSandWall = (byte)ModContent.WallType<TorchsandHardenedWall>(),
+            GrassWall = (byte)ModContent.WallType<InfernoGrassWall>();
 
 
             int worldSize = GetWorldSize();
@@ -406,16 +406,16 @@ namespace AAMod.Worldgeneration
             int genY = origin.Y - 80;
             gen.Generate(genX, genY, true, true);
 
-            //WorldGen.PlaceObject(genX + 65, genY + 4, mod.TileType<DracoAltarS>());
-            WorldGen.PlaceObject(genX + 24, genY + 307, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 33, genY + 313, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 46, genY + 314, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 57, genY + 316, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 67, genY + 316, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 78, genY + 317, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 87, genY + 315, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 96, genY + 312, mod.TileType<DragonEgg>());
-            WorldGen.PlaceObject(genX + 103, genY + 307, mod.TileType<DragonEgg>());
+            //WorldGen.PlaceObject(genX + 65, genY + 4, Terraria.ModLoader.ModContent.TileType<DracoAltarS>());
+            WorldGen.PlaceObject(genX + 24, genY + 307, ModContent.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 33, genY + 313, ModContent.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 46, genY + 314, ModContent.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 57, genY + 316, ModContent.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 67, genY + 316, ModContent.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 78, genY + 317, ModContent.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 87, genY + 315, ModContent.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 96, genY + 312, ModContent.TileType<DragonEgg>());
+            WorldGen.PlaceObject(genX + 103, genY + 307, ModContent.TileType<DragonEgg>());
             NetMessage.SendObjectPlacment(-1, genX + 24, genY + 307, (ushort)mod.TileType("DragonEgg"), 0, 0, -1, -1);
             NetMessage.SendObjectPlacment(-1, genX + 33, genY + 313, (ushort)mod.TileType("DragonEgg"), 0, 0, -1, -1);
             NetMessage.SendObjectPlacment(-1, genX + 46, genY + 314, (ushort)mod.TileType("DragonEgg"), 0, 0, -1, -1);
@@ -436,7 +436,7 @@ namespace AAMod.Worldgeneration
                     {
                         if (Main.rand.Next(15) == 0)
                         {
-                            WorldGen.PlaceObject(AltarX, AltarY - 1, mod.TileType<ChaosAltar2>());
+                            WorldGen.PlaceObject(AltarX, AltarY - 1, ModContent.TileType<ChaosAltar2>());
                         }
                     }
                 }
@@ -751,7 +751,7 @@ namespace AAMod.Worldgeneration
 
         public void HoardChest(int x, int y, int specialItem = 0)
         {
-            int PlacementSuccess = WorldGen.PlaceChest(x, y, (ushort)AAMod.instance.TileType<GreedChest>(), false, 1);
+            int PlacementSuccess = WorldGen.PlaceChest(x, y, (ushort)ModContent.TileType<GreedChest>(), false, 1);
 
             int[] GreedChestLoot = new int[] {
 
@@ -812,8 +812,6 @@ namespace AAMod.Worldgeneration
 
             if (PlacementSuccess >= 0)
             {
-                Mod mod = AAMod.instance;
-
                 Chest chest = Main.chest[PlacementSuccess];
 
                 Item item0 = chest.item[0];
@@ -821,15 +819,15 @@ namespace AAMod.Worldgeneration
                 int type;
                 if (specialItem == 1)
                 {
-                    type = mod.ItemType<Items.Ranged.OdinsBlade>();
+                    type = ModContent.ItemType<Items.Ranged.OdinsBlade>();
                 }
                 else if (specialItem == 2)
                 {
-                    type = mod.ItemType<Items.Melee.RomulusTazesaber>();
+                    type = ModContent.ItemType<Items.Melee.RomulusTazesaber>();
                 }
                 else if (specialItem == 3)
                 {
-                    type = mod.ItemType<Items.Misc.AnubisBook>();
+                    type = ModContent.ItemType<Items.Misc.AnubisBook>();
                 }
                 else
                 {
@@ -858,7 +856,7 @@ namespace AAMod.Worldgeneration
                 }
             }
 
-            NetMessage.SendObjectPlacment(-1, x, y, (ushort)AAMod.instance.TileType<GreedChest>(), 1, 0, -1, -1);
+            NetMessage.SendObjectPlacment(-1, x, y, (ushort)ModContent.TileType<GreedChest>(), 1, 0, -1, -1);
         }
     }
 

@@ -40,7 +40,7 @@ namespace AAMod.Items.Armor.Witch
         {
             bool flag64 = projectile.type == mod.ProjectileType("FlameSoul");
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             player.AddBuff(mod.BuffType("FlameSoul"), 3600);
             if (flag64)
             {
@@ -249,7 +249,7 @@ namespace AAMod.Items.Armor.Witch
             if (projectile.ai[0] == 0f)
             {
                 float scaleFactor4 = 7f;
-                int num29 = mod.ProjectileType<FlameSoulShot>();
+                int num29 = ModContent.ProjectileType<FlameSoulShot>();
                 
                 if (flag)
                 {

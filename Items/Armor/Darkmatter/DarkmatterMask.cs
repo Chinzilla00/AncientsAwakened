@@ -68,7 +68,7 @@ Dark, yet still barely visible");
             }
             player.statManaMax2 += 200;
             player.manaCost *= 0.80f;
-            player.GetModPlayer<AAPlayer>(mod).darkmatterSetMa = true;
+            player.GetModPlayer<AAPlayer>().darkmatterSetMa = true;
             player.armorEffectDrawShadowLokis = true;
         }
 

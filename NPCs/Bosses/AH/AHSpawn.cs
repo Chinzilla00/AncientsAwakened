@@ -1,3 +1,4 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
@@ -58,7 +59,7 @@ namespace AAMod.NPCs.Bosses.AH
 
             if (npc.ai[1] == 60)          //if the timer has gotten to 7.5 seconds, this happens (60 = 1 second)
             {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("AHSpawn1"), new Color(102, 20, 48));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn1"), new Color(102, 20, 48));
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
             }
 
@@ -66,11 +67,11 @@ namespace AAMod.NPCs.Bosses.AH
             {
                 if (AAWorld.downedBrood)
                 {
-                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("AHSpawn2"), new Color(102, 20, 48));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn2"), new Color(102, 20, 48));
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("AHSpawn3"), new Color(102, 20, 48));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn3"), new Color(102, 20, 48));
                 }
             }
 
@@ -80,36 +81,46 @@ namespace AAMod.NPCs.Bosses.AH
                 {
                     if (AAWorld.downedBrood)
                     {
-                        if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("AHSpawn4"), new Color(72, 78, 117));
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn4"), new Color(72, 78, 117));
                     }
                     else
                     {
-                        if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("AHSpawn5"), new Color(72, 78, 117));
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn5"), new Color(72, 78, 117));
                     }
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("AHSpawn6"), new Color(72, 78, 117));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn6"), new Color(72, 78, 117));
                 }
             }
 
-            
+            if (npc.ai[1] == 550)
+            {
+                NPC.NewNPC((int)npc.position.X - 300, (int)npc.position.Y - 450, mod.NPCType("AsheSpawn"), 0, npc.whoAmI);
+            }
+
             if (npc.ai[1] == 700)
             {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("AHSpawn7"), new Color(102, 20, 48));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn7"), new Color(102, 20, 48));
+            }
+
+            if (npc.ai[1] == 550)
+            {
+                NPC.NewNPC((int)npc.position.X + 300, (int)npc.position.Y - 450, mod.NPCType("HarukaSpawn"), 0, npc.whoAmI);
             }
 
             if (npc.ai[1] == 820)
             {
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AH");
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("AHSpawn8"), new Color(102, 20, 48));
+                Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType("AsheSpawn"), -1)].Transform(mod.NPCType("Ashe"));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn8"), new Color(102, 20, 48));
                 SpawnBoss(player, "Ashe");
             }
 
             if (npc.ai[1] >= 960)
             {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("AHSpawn9"), new Color(72, 78, 117));
-                SpawnBoss2(player, "Haruka");
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn9"), new Color(72, 78, 117));
+                Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType("HarukaSpawn"), -1)].Transform(mod.NPCType("Haruka"));
                 npc.active = false;
             }
         }

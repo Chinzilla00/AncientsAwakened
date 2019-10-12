@@ -22,7 +22,7 @@ namespace AAMod.Items.Accessories
         {
             if (item.accessory)
             {
-                player.buffImmune[mod.BuffType<Buffs.Clueless>()] = true;
+                player.buffImmune[ModContent.BuffType<Buffs.Clueless>()] = true;
             }
         }
 
@@ -71,7 +71,7 @@ namespace AAMod.Items.Accessories
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<DragonClaw>(), 15);
+            recipe.AddIngredient(ModContent.ItemType<DragonClaw>(), 15);
             recipe.AddTile(TileID.DemonAltar);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -39,7 +39,7 @@ namespace AAMod.Items.Armor.Dynaskull
 
             player.setBonus = Lang.ArmorBonus("DynaskullBonus");
             
-			player.GetModPlayer<AAPlayer>(mod).DynaskullSet = true;
+			player.GetModPlayer<AAPlayer>().DynaskullSet = true;
 		}
 
 		public override void AddRecipes()

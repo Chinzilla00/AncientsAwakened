@@ -61,7 +61,7 @@ A hood enchanted with the firey spirit of a supreme dragon acolyte");
             player.minionDamage += .2f;
             player.maxMinions += 4;
 
-            player.GetModPlayer<AAPlayer>(mod).Witch = true;
+            player.GetModPlayer<AAPlayer>().Witch = true;
 
             if (player.whoAmI == Main.myPlayer)
             {

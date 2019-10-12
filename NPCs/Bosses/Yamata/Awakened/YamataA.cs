@@ -65,7 +65,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.height = 90;
             npc.aiStyle = -1;
             npc.damage = 0;
-            npc.lifeMax = 550000;
+            npc.lifeMax = 650000;
             npc.defense = 999999;
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -98,7 +98,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            npc.damage = 0;
+            damage = 0;
             return false;
         }
 
@@ -337,7 +337,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     Player t = Main.player[p];
                     if (t.active && !t.dead)
                     {
-                        Main.player[p].AddBuff(mod.BuffType<Buffs.YamataAGravity>(), 10, true);
+                        Main.player[p].AddBuff(ModContent.BuffType<Buffs.YamataAGravity>(), 10, true);
                     }
                 }
 
@@ -663,8 +663,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            int dust1 = mod.DustType<Dusts.YamataADust>();
-            int dust2 = mod.DustType<Dusts.YamataADust>();
+            int dust1 = ModContent.DustType<Dusts.YamataADust>();
+            int dust2 = ModContent.DustType<Dusts.YamataADust>();
             if (npc.life <= 0)
             {
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);

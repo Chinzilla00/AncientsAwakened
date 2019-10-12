@@ -41,8 +41,8 @@ Shines with the light of a starry night sky");
 
             player.setBonus = Lang.ArmorBonus("RadiumHeadgearBonus");
 
-            player.GetModPlayer<AAPlayer>(mod).Radium = true;
-            player.GetModPlayer<AAPlayer>(mod).radiumRa = true;
+            player.GetModPlayer<AAPlayer>().Radium = true;
+            player.GetModPlayer<AAPlayer>().radiumRa = true;
             player.ammoCost75 = true;
             player.rangedCrit += 20;
             player.panic = true;

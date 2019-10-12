@@ -61,7 +61,7 @@ namespace AAMod.Projectiles.AH
             }
 			
 			Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (player.dead || !player.HasBuff(mod.BuffType("Orbiters"))) projectile.Kill();
             if (modPlayer.Orbiters)
             {

@@ -46,7 +46,7 @@ namespace AAMod.Projectiles
 
             if (Main.rand.Next(1) == 0)
             {
-                int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 200);
+                int dustnumber = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.InfinityOverloadB>(), 0f, 0f, 200);
                 Main.dust[dustnumber].velocity *= 0.3f;
             }
         }

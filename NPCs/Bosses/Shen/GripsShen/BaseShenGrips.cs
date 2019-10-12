@@ -94,7 +94,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 
         public override bool CheckActive()
         {
-            return !NPC.AnyNPCs(mod.NPCType<Shen>());
+            return !NPC.AnyNPCs(ModContent.NPCType<Shen>());
         }
 
 
@@ -234,13 +234,13 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                 moveSpeed = 15f;
                 Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
                 MoveToPoint(point);
-                bool BlazeGrip = npc.type == mod.NPCType<BlazeGrip>();
+                bool BlazeGrip = npc.type == ModContent.NPCType<BlazeGrip>();
                 if (Main.netMode != 1 && (Vector2.Distance(npc.Center, point) < 10f || forceChange))
                 {
                     internalAI[0]++;
                     if (internalAI[0] == 40)
                     {
-                        BaseAI.FireProjectile(targetPlayer.Center, npc.Center, BlazeGrip ? mod.ProjectileType<BlazeBomb>() : mod.ProjectileType<AbyssalBomb>(), damage, 2, 9f, -1, Main.myPlayer);
+                        BaseAI.FireProjectile(targetPlayer.Center, npc.Center, BlazeGrip ? ModContent.ProjectileType<BlazeBomb>() : ModContent.ProjectileType<AbyssalBomb>(), damage, 2, 9f, -1, Main.myPlayer);
                     }
                     if (internalAI[0] > 50)
                     {
@@ -285,11 +285,11 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                 npc.alpha -= 5;
                 if (npc.alpha <= 0)
                 {
-                    if (npc.type == mod.NPCType<BlazeGrip>())
+                    if (npc.type == ModContent.NPCType<BlazeGrip>())
                     {
                         npc.defense = 110;
                     }
-                    if (npc.type == mod.NPCType<AbyssGrip>())
+                    if (npc.type == ModContent.NPCType<AbyssGrip>())
                     {
                         npc.defense = 90;
                     }

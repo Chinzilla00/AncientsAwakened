@@ -110,6 +110,7 @@ namespace AAMod.Backgrounds
             Vector4 value = inColor.ToVector4();
             return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
+
         public float asteroidPercent1 = 0f;
         public float asteroidPercent2 = 0f;
         public float asteroidPercent3 = 0f;

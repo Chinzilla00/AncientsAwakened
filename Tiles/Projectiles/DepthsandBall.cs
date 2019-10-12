@@ -17,7 +17,7 @@ namespace AAMod.Tiles.Projectiles
         {
             if (Main.rand.Next(2) == 0)
             {
-                int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.BogwoodDust>(), 0f, 0f, 0);
+                int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.BogwoodDust>(), 0f, 0f, 0);
                 Main.dust[dust].velocity.X *= 0.4f;
             }
             projectile.tileCollide = true;
@@ -91,9 +91,9 @@ namespace AAMod.Tiles.Projectiles
                     bool onMinecartTrack = tileY < Main.maxTilesY - 2 && Main.tile[tileX, tileY + 1] != null && Main.tile[tileX, tileY + 1].active() && Main.tile[tileX, tileY + 1].type == TileID.MinecartTrack;
                     if (!onMinecartTrack)
                     {
-                        WorldGen.PlaceTile(tileX, tileY, mod.TileType<Depthsand>(), false, true, -1, 0);
+                        WorldGen.PlaceTile(tileX, tileY, ModContent.TileType<Depthsand>(), false, true, -1, 0);
                     }
-                    if (!onMinecartTrack && Main.tile[tileX, tileY].active() && Main.tile[tileX, tileY].type == mod.TileType<Depthsand>())
+                    if (!onMinecartTrack && Main.tile[tileX, tileY].active() && Main.tile[tileX, tileY].type == ModContent.TileType<Depthsand>())
                     {
                         if (Main.tile[tileX, tileY + 1].halfBrick() || Main.tile[tileX, tileY + 1].slope() != 0)
                         {
@@ -105,7 +105,7 @@ namespace AAMod.Tiles.Projectiles
                         }
                         if (Main.netMode != 0)
                         {
-                            NetMessage.SendData(17, -1, -1, null, 1, tileX, tileY, mod.TileType<Depthsand>(), 0, 0, 0);
+                            NetMessage.SendData(17, -1, -1, null, 1, tileX, tileY, ModContent.TileType<Depthsand>(), 0, 0, 0);
                         }
                     }
                 }

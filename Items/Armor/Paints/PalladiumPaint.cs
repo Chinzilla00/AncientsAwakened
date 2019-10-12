@@ -44,7 +44,7 @@ namespace AAMod.Items.Armor.Paints
         {
             player.setBonus = Lang.ArmorBonus("PalladiumPaintBonus");
             player.maxMinions += 1;
-            player.GetModPlayer<AAPlayer>(mod).Palladium = true;
+            player.GetModPlayer<AAPlayer>().Palladium = true;
         }
 
         public override void AddRecipes()

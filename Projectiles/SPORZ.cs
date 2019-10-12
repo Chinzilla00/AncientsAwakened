@@ -30,7 +30,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int dustType = mod.DustType<MushDust>();
+            int dustType = ModContent.DustType<MushDust>();
             if (projectile.owner == Main.myPlayer)
             {
                 Convert((int)(projectile.position.X + projectile.width / 2) / 16, (int)(projectile.position.Y + projectile.height / 2) / 16);
@@ -88,7 +88,7 @@ namespace AAMod.Projectiles
                         int type = Main.tile[k, l].type;
                         if (TileID.Sets.Conversion.Grass[type])
                         {
-                            Main.tile[k, l].type = (ushort)mod.TileType<Mycelium>();
+                            Main.tile[k, l].type = (ushort)ModContent.TileType<Mycelium>();
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }

@@ -41,7 +41,7 @@ namespace AAMod.Items.Boss.Grips
             }
             bool flag64 = projectile.type == mod.ProjectileType("DragonClaw");
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             player.AddBuff(mod.BuffType("GripMinion"), 3600);
             if (flag64)
             {

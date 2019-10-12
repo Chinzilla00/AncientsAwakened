@@ -41,8 +41,8 @@ Shines with the light of a starry night sky");
             {
                 player.moveSpeed += .3f;
             }
-            player.GetModPlayer<AAPlayer>(mod).Radium = true;
-            player.GetModPlayer<AAPlayer>(mod).radiumMa = true;
+            player.GetModPlayer<AAPlayer>().Radium = true;
+            player.GetModPlayer<AAPlayer>().radiumMa = true;
             player.statManaMax2 += 200;
             player.manaCost *= 0.80f;
             player.panic = true;

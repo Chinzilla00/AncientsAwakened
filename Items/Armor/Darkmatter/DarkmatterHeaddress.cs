@@ -68,7 +68,7 @@ Dark, yet still barely visible");
                 player.endurance += .08f;
             }
             player.maxMinions += 6;
-            player.GetModPlayer<AAPlayer>(mod).darkmatterSetSu = true;
+            player.GetModPlayer<AAPlayer>().darkmatterSetSu = true;
             player.armorEffectDrawShadowLokis = true;
         }
 

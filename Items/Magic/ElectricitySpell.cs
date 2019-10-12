@@ -58,7 +58,7 @@ namespace AAMod.Items.Magic
         {
             if (npc.type == NPCID.AngryNimbus && Main.rand.Next(6) == 0)
             {
-                npc.DropLoot(mod.ItemType<ElectricitySpell>());
+                npc.DropLoot(ModContent.ItemType<ElectricitySpell>());
             }
         }
     }

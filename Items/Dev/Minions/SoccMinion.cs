@@ -38,7 +38,7 @@ namespace AAMod.Items.Dev.Minions
         {
             bool flag64 = projectile.type == mod.ProjectileType("SoccMinion");
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             player.AddBuff(mod.BuffType("Socc"), 3600);
             if (flag64)
             {

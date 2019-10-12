@@ -33,7 +33,7 @@ All effects of the Sash of Vengeance
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.player[item.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             Color damageColor = Color.Firebrick;
             string DamageType = "";
 
@@ -83,7 +83,7 @@ All effects of the Sash of Vengeance
 
         public override void UpdateEquip(Player player)
         {
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
             player.autoJump = true;
             Player.jumpHeight = 40;

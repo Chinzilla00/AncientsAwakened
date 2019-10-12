@@ -54,7 +54,7 @@ namespace AAMod.Projectiles.Serpent
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
             if ((int)Main.time % 120 == 0) projectile.netUpdate = true;
             if (!player.active)
@@ -213,7 +213,7 @@ namespace AAMod.Projectiles.Serpent
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
             if ((int)Main.time % 120 == 0) projectile.netUpdate = true;
             if (!player.active)
@@ -356,7 +356,7 @@ namespace AAMod.Projectiles.Serpent
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
             if ((int)Main.time % 120 == 0) projectile.netUpdate = true;
             if (!player.active)

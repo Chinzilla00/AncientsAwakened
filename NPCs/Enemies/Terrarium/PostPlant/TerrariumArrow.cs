@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType<Buffs.Terrablaze>(), 300);
+            target.AddBuff(ModContent.BuffType<Buffs.Terrablaze>(), 300);
         }
     }
 }

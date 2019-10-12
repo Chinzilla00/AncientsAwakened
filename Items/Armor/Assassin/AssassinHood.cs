@@ -58,7 +58,7 @@ A dark hood infused with the shadow of midnight");
             player.aggro -= 6;
             player.rangedDamage += .2f;
             player.meleeDamage += .2f;
-            player.GetModPlayer<AAPlayer>(mod).Assassin = true;
+            player.GetModPlayer<AAPlayer>().Assassin = true;
         }
 	}
 }

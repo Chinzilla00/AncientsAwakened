@@ -41,9 +41,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override bool PreAI()
         {
-            if (!NPC.AnyNPCs(mod.NPCType<AkumaA>()))
+            if (!NPC.AnyNPCs(ModContent.NPCType<AkumaA>()))
             {
-                int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
+                int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AsheVanish>(), 0);
                 Main.npc[DeathAnim].velocity = npc.velocity;
                 npc.active = false;
                 npc.netUpdate = true;
@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
         public override bool CheckActive()
         {
-            if (!NPC.AnyNPCs(mod.NPCType<AkumaA>()))
+            if (!NPC.AnyNPCs(ModContent.NPCType<AkumaA>()))
             {
                 return true;
             }
@@ -65,14 +65,14 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             npc.value = 0f;
             npc.boss = false;
-            int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<AsheVanish>(), 0);
+            int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AsheVanish>(), 0);
             Main.npc[DeathAnim].velocity = npc.velocity;
-            if (!NPC.AnyNPCs(mod.NPCType<AkumaA>()))
+            if (!NPC.AnyNPCs(ModContent.NPCType<AkumaA>()))
             {
                 if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("AkumaAAshe1"), new Color(102, 20, 48));
                 return;
             }
-            npc.DropLoot(mod.ItemType<Items.Blocks.DaybreakIncineriteOre>(), Main.rand.Next(10, 25));
+            npc.DropLoot(ModContent.ItemType<Items.Blocks.DaybreakIncineriteOre>(), Main.rand.Next(10, 25));
             if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("AkumaAAshe2"), new Color(102, 20, 48));
         }
 

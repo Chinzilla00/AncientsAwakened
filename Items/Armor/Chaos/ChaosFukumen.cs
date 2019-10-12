@@ -37,7 +37,7 @@ namespace AAMod.Items.Armor.Chaos
             player.setBonus = Lang.ArmorBonus("ChaosFukumenBonus");
             player.rangedDamage += .25f;
             player.aggro -= 7;
-            player.GetModPlayer<AAPlayer>(mod).ChaosRa = true;
+            player.GetModPlayer<AAPlayer>().ChaosRa = true;
             player.ammoCost75 = true;
             player.nightVision = true;
 			player.detectCreature = true;

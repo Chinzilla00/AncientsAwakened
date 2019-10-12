@@ -89,19 +89,19 @@ namespace AAMod.Projectiles
 
         public override void Kill(int timeleft)
         {
-            Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType<ChaosBoomEX>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
+            Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<ChaosBoomEX>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
             int pieCut = 20;
             Main.PlaySound(SoundID.Item14, projectile.position);
             for (int m = 0; m < pieCut; m++)
             {
-                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, Color.White, 1.6f);
+                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.Discord>(), 0f, 0f, 100, Color.White, 1.6f);
                 Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / pieCut * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
             }
             for (int m = 0; m < pieCut; m++)
             {
-                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, mod.DustType<Dusts.Discord>(), 0f, 0f, 100, Color.White, 2f);
+                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.Discord>(), 0f, 0f, 100, Color.White, 2f);
                 Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / pieCut * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;

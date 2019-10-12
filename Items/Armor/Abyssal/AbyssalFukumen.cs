@@ -39,7 +39,7 @@ Weightless as shadow itself");
 		public override void UpdateArmorSet(Player player)
 		{
             player.setBonus = Lang.ArmorBonus("AbyssalBonus");
-            player.GetModPlayer<AAPlayer>(mod).depthSet = true;
+            player.GetModPlayer<AAPlayer>().depthSet = true;
             player.aggro -= 3;
             player.ammoCost80 = true;
         }

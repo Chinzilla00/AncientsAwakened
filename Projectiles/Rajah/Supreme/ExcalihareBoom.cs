@@ -50,7 +50,7 @@ namespace AAMod.Projectiles.Rajah.Supreme
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            target.AddBuff(mod.BuffType<Buffs.InfinityOverload>(), 120);
+            target.AddBuff(ModContent.BuffType<Buffs.InfinityOverload>(), 120);
         }
 
         public override void Kill(int timeLeft)

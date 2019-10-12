@@ -43,7 +43,7 @@ namespace AAMod.Items.Usable
                     if (Main.npc[i].type == NPCID.GoblinTinkerer && Main.npc[i].active)
                     {
                         Player player = Main.player[item.owner];
-                        //player.QuickSpawnItem(mod.ItemType<Accessories.SoulStone>());
+                        //player.QuickSpawnItem(Terraria.ModLoader.ModContent.ItemType<Accessories.SoulStone>());
                         Main.npc[i].StrikeNPCNoInteraction(9999, 10f, -Main.npc[i].direction, false, false, false);
                     }
                 }

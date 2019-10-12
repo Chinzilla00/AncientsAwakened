@@ -22,7 +22,7 @@ namespace AAMod.Tiles.Decoration
             dustType = 1;
             animationFrameHeight = 56;
             disableSmartCursor = true;
-            dustType = mod.DustType<Dusts.AkumaDust>();
+            dustType = ModContent.DustType<Dusts.AkumaDust>();
             adjTiles = new int[] { TileID.LunarMonolith };
         }
 
@@ -35,7 +35,7 @@ namespace AAMod.Tiles.Decoration
         {
             if (Main.tile[i, j].frameY >= 56)
             {
-                AAPlayer modPlayer = Main.LocalPlayer.GetModPlayer<AAPlayer>(mod);
+                AAPlayer modPlayer = Main.LocalPlayer.GetModPlayer<AAPlayer>();
                 modPlayer.SunAltar = true;
             }
         }

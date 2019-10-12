@@ -249,7 +249,7 @@ namespace AAMod
             Logger.InfoFormat("{0} AA log", Name);
 
             instance = this;
-            GoblinSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ItemType<Items.Currency.GoblinSoul>()));
+            GoblinSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.GoblinSoul>()));
             BoneAmmo = ItemID.Bone;
             if (Main.rand == null)
                 Main.rand = new UnifiedRandom();
@@ -312,7 +312,6 @@ namespace AAMod
             PremultiplyTexture(GetTexture("Backgrounds/AthenaBolt"));
             PremultiplyTexture(GetTexture("Backgrounds/AthenaFlash"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
-            PremultiplyTexture(GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier"));
             PremultiplyTexture(GetTexture("Projectiles/RadiumStar"));
             PremultiplyTexture(GetTexture("Projectiles/Stars"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Toad/ToadBubble"));

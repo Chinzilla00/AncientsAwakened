@@ -53,7 +53,7 @@ namespace AAMod.Items.Summoning
                 return false;
             }
 			
-			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 			modPlayer.TerraSummon = true;
 			player.AddBuff(mod.BuffType("TerraSummon"), 2, true);
 

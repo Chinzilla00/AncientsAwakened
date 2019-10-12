@@ -44,16 +44,16 @@ Non-consumable");
 
         public override bool CanUseItem(Player player)
         {
-            return !(NPC.AnyNPCs(mod.NPCType<Rajah>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah2>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah3>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah4>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah5>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah6>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah7>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah8>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah9>()) ||
-                NPC.AnyNPCs(mod.NPCType<SupremeRajah>()));
+            return !(NPC.AnyNPCs(ModContent.NPCType<Rajah>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah2>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah3>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah6>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah9>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()));
         }
 
         public override bool UseItem(Player player)

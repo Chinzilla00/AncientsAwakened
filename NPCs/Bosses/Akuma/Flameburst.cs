@@ -40,13 +40,13 @@ namespace AAMod.NPCs.Bosses.Akuma
             projectile.scale = projectile.ai[1];
             projectile.rotation = projectile.velocity.ToRotation() - 1.57079637f;
             Vector2 position = projectile.Center + (Vector2.Normalize(projectile.velocity) * 10f);
-            Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default, 1f)];
+            Dust dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default, 1f)];
             dust20.position = position;
             dust20.velocity = (projectile.velocity.RotatedBy(1.5707963705062866, default) * 0.33f) + (projectile.velocity / 4f);
             dust20.position += projectile.velocity.RotatedBy(1.5707963705062866, default);
             dust20.fadeIn = 0.5f;
             dust20.noGravity = true;
-            dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default, 1f)];
+            dust20 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default, 1f)];
             dust20.position = position;
             dust20.velocity = (projectile.velocity.RotatedBy(-1.5707963705062866, default) * 0.33f) + (projectile.velocity / 4f);
             dust20.position += projectile.velocity.RotatedBy(-1.5707963705062866, default);
@@ -62,11 +62,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             double deltaAngle = spread / 8f;
             for (int num468 = 0; num468 < 20; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), -projectile.velocity.X * 0.2f,
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 0);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), -projectile.velocity.X * 0.2f,
+                num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDust>(), -projectile.velocity.X * 0.2f,
                     -projectile.velocity.Y * 0.2f, 0);
                 Main.dust[num469].velocity *= 2f;
             }
@@ -74,7 +74,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 300);
+            target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 300);
         }
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor)

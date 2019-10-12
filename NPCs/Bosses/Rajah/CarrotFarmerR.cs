@@ -42,43 +42,43 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (rajah == null)
             {
                 NPC npcBody = Main.npc[(int)projectile.ai[0]];
-                if (npcBody.type == mod.NPCType<Rajah>())
+                if (npcBody.type == ModContent.NPCType<Rajah>())
                 {
                     rajah = (Rajah)npcBody.modNPC;
                 }
-                else if (npcBody.type == mod.NPCType<Rajah2>())
+                else if (npcBody.type == ModContent.NPCType<Rajah2>())
                 {
                     rajah = (Rajah2)npcBody.modNPC;
                 }
-                else if (npcBody.type == mod.NPCType<Rajah3>())
+                else if (npcBody.type == ModContent.NPCType<Rajah3>())
                 {
                     rajah = (Rajah3)npcBody.modNPC;
                 }
-                else if (npcBody.type == mod.NPCType<Rajah4>())
+                else if (npcBody.type == ModContent.NPCType<Rajah4>())
                 {
                     rajah = (Rajah4)npcBody.modNPC;
                 }
-                else if (npcBody.type == mod.NPCType<Rajah5>())
+                else if (npcBody.type == ModContent.NPCType<Rajah5>())
                 {
                     rajah = (Rajah5)npcBody.modNPC;
                 }
-                else if (npcBody.type == mod.NPCType<Rajah6>())
+                else if (npcBody.type == ModContent.NPCType<Rajah6>())
                 {
                     rajah = (Rajah6)npcBody.modNPC;
                 }
-                else if (npcBody.type == mod.NPCType<Rajah7>())
+                else if (npcBody.type == ModContent.NPCType<Rajah7>())
                 {
                     rajah = (Rajah7)npcBody.modNPC;
                 }
-                else if (npcBody.type == mod.NPCType<Rajah8>())
+                else if (npcBody.type == ModContent.NPCType<Rajah8>())
                 {
                     rajah = (Rajah8)npcBody.modNPC;
                 }
-                else if (npcBody.type == mod.NPCType<Rajah9>())
+                else if (npcBody.type == ModContent.NPCType<Rajah9>())
                 {
                     rajah = (Rajah9)npcBody.modNPC;
                 }
-                else if (npcBody.type == mod.NPCType<SupremeRajah>())
+                else if (npcBody.type == ModContent.NPCType<SupremeRajah>())
                 {
                     rajah = (SupremeRajah)npcBody.modNPC;
                 }
@@ -110,7 +110,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 for (int u = 0; u < 10; u++)
                 {
-                    int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType<Dusts.CarrotDust>(), Main.rand.Next((int)-5f, (int)5f), Main.rand.Next((int)-5f, (int)5f), 0);
+                    int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.CarrotDust>(), Main.rand.Next((int)-5f, (int)5f), Main.rand.Next((int)-5f, (int)5f), 0);
                     Main.dust[dust].noGravity = true;
                 }
                 float spread = 12f * 0.0174f;

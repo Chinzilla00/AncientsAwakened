@@ -43,7 +43,7 @@ namespace AAMod.Items.Dev.Minions
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (!player.active)
             {
                 projectile.active = false;
@@ -368,7 +368,7 @@ namespace AAMod.Items.Dev.Minions
                             num75 *= num78;
                             num77 *= num78;
                             int num79 = projectile.damage;
-                            int num80 = mod.ProjectileType<Acorn>();
+                            int num80 = ModContent.ProjectileType<Acorn>();
                             int num81 = Projectile.NewProjectile(vector8.X, vector8.Y, num75 * 2, num77 * 2, num80, num79, projectile.knockBack, Main.myPlayer, 0f, num64);
                             Main.projectile[num81].timeLeft = 300;
                             if (num75 < 0f)

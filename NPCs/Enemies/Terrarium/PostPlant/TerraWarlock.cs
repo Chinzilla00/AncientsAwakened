@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
         public override void PostAI()
         {
             Player player = Main.LocalPlayer;
-            if (!player.GetModPlayer<AAPlayer>(mod).Terrarium)
+            if (!player.GetModPlayer<AAPlayer>().Terrarium)
             {
                 npc.life = 0;
             }
@@ -164,8 +164,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
                 npc.height = 78;
                 npc.position.X = npc.position.X - npc.width / 2;
                 npc.position.Y = npc.position.Y - npc.height / 2;
-                int dust1 = mod.DustType<Dusts.SummonDust>();
-                int dust2 = mod.DustType<Dusts.SummonDust>();
+                int dust1 = ModContent.DustType<Dusts.SummonDust>();
+                int dust2 = ModContent.DustType<Dusts.SummonDust>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;
@@ -184,17 +184,17 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
         {
             if (Main.rand.Next(40) == 0)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Materials.TerraCrystal>());
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Materials.TerraCrystal>());
             }
             if (Main.rand.Next(20) == 0)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType<Items.Summoning.TerraGauntlet>());
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Summoning.TerraGauntlet>());
             }
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            target.AddBuff(mod.BuffType<Buffs.Terrablaze>(), 300);
+            target.AddBuff(ModContent.BuffType<Buffs.Terrablaze>(), 300);
         }
     }
 }

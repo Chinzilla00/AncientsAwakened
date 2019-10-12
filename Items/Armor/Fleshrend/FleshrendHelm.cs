@@ -40,7 +40,7 @@ namespace AAMod.Items.Armor.Fleshrend
             player.setBonus = Lang.ArmorBonus("FleshrendHelmBonus");
 
             player.crimsonRegen = true;
-			player.GetModPlayer<AAPlayer>(mod).fleshrendSet = true;
+			player.GetModPlayer<AAPlayer>().fleshrendSet = true;
 		}
 
 		public override void AddRecipes()

@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(mod.NPCType<NightcrawlerHead>()))
+            if (NPC.AnyNPCs(Terraria.ModLoader.ModContent.NPCType<NightcrawlerHead>()))
             {
                 return false;
             }

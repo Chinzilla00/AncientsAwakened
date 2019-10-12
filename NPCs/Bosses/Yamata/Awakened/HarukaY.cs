@@ -69,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 npc.direction = npc.velocity.X > 0 ? 1 : -1;
             }
-            if (!NPC.AnyNPCs(mod.NPCType<YamataA>()))
+            if (!NPC.AnyNPCs(ModContent.NPCType<YamataA>()))
             {
                 npc.life = 0;
             }
@@ -90,7 +90,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override bool CheckActive()
         {
-            if (!NPC.AnyNPCs(mod.NPCType<YamataA>()))
+            if (!NPC.AnyNPCs(ModContent.NPCType<YamataA>()))
             {
                 return true;
             }
@@ -101,9 +101,9 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             npc.value = 0f;
             npc.boss = false;
-            int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<HarukaVanish>(), 0);
+            int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HarukaVanish>(), 0);
             Main.npc[DeathAnim].velocity = npc.velocity;
-            if (!NPC.AnyNPCs(mod.NPCType<YamataA>()))
+            if (!NPC.AnyNPCs(ModContent.NPCType<YamataA>()))
             {
                 if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("HarukaY1"), new Color(72, 78, 117));
                 return;

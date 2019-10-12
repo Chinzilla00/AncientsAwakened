@@ -39,7 +39,7 @@ Forged in the flames of the blazing sun");
 			player.setBonus = Lang.ArmorBonus("BlazingBonus");
             player.endurance = .05f;
             player.aggro += 4;
-            player.GetModPlayer<AAPlayer>(mod).kindledSet = true;
+            player.GetModPlayer<AAPlayer>().kindledSet = true;
         }
 
         public override void AddRecipes()

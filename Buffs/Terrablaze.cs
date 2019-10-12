@@ -17,13 +17,13 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			player.GetModPlayer<AAPlayer>(mod).terraBlaze = true;
+			player.GetModPlayer<AAPlayer>().terraBlaze = true;
             player.statDefense -= 25;
 		}
 
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-			npc.GetGlobalNPC<AAModGlobalNPC>(mod).terraBlaze = true;
+			npc.GetGlobalNPC<AAModGlobalNPC>().terraBlaze = true;
             npc.defense -= 25;
 		}
 	}

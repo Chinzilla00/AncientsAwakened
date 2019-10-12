@@ -37,7 +37,7 @@ namespace AAMod.Items.Armor.Chaos
         {
             player.setBonus = Lang.ArmorBonus("ChaosVisorBonus");
             player.maxMinions += 4;
-            player.GetModPlayer<AAPlayer>(mod).doomite = true;
+            player.GetModPlayer<AAPlayer>().doomite = true;
             if (player.whoAmI == Main.myPlayer)
             {
                 if (player.FindBuffIndex(mod.BuffType("ScoutMinion")) == -1)

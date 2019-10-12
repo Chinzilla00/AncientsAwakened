@@ -59,7 +59,7 @@ namespace AAMod.Items.Boss.Zero
             }
             if (Main.rand.Next(20) == 0)
             {
-                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PMLDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("UnstableSingularity"), Main.rand.Next(30, 40));

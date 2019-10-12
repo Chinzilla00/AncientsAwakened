@@ -336,10 +336,10 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             switch (Proj) //switch for attack modes
             {
                 case 0:
-                    Proj = mod.ProjectileType<DeathLaser>();
+                    Proj = ModContent.ProjectileType<DeathLaser>();
                     break;
                 default:
-                    Proj = mod.ProjectileType<GlitchBomb>();
+                    Proj = ModContent.ProjectileType<GlitchBomb>();
                     break;
             }
             BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, Proj, ref npc.ai[3], 150, npc.damage / 4, 10, true);
@@ -411,19 +411,19 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 {
                     if (i == 1)
                     {
-                        NPC.NewNPC((int)npc.Center.X + 30, (int)npc.Center.Y + 30, mod.NPCType<NullZP>());
+                        NPC.NewNPC((int)npc.Center.X + 30, (int)npc.Center.Y + 30, ModContent.NPCType<NullZP>());
                     }
                     else if (i == 2)
                     {
-                        NPC.NewNPC((int)npc.Center.X + 30, (int)npc.Center.Y - 30, mod.NPCType<NullZP>());
+                        NPC.NewNPC((int)npc.Center.X + 30, (int)npc.Center.Y - 30, ModContent.NPCType<NullZP>());
                     }
                     else if (i == 3)
                     {
-                        NPC.NewNPC((int)npc.Center.X - 30, (int)npc.Center.Y + 30, mod.NPCType<NullZP>());
+                        NPC.NewNPC((int)npc.Center.X - 30, (int)npc.Center.Y + 30, ModContent.NPCType<NullZP>());
                     }
                     else
                     {
-                        NPC.NewNPC((int)npc.Center.X - 30, (int)npc.Center.Y - 30, mod.NPCType<NullZP>());
+                        NPC.NewNPC((int)npc.Center.X - 30, (int)npc.Center.Y - 30, ModContent.NPCType<NullZP>());
                     }
                 }
             }

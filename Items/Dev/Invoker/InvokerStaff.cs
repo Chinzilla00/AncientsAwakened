@@ -24,7 +24,7 @@ namespace AAMod.Items.Dev.Invoker
 		{
 			String text = "";
 			Player player = Main.player[Main.myPlayer];
-			if(!player.GetModPlayer<InvokerPlayer>(mod).Thebookoflaw)
+			if(!player.GetModPlayer<InvokerPlayer>().Thebookoflaw)
 			{
 				text += @"Strange. All is strange. 
 Swinging a weapon causes summon damage?
@@ -46,7 +46,7 @@ Legendry Weapon.";
 					string[] splitText = tooltipLine.text.Split(' ');
 					string damageValue = splitText.First();
 					string damageWord = splitText.Last();
-					if(Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).Thebookoflaw) 
+					if(Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw) 
 					{
 						tooltipLine.text = damageValue + " banish " + damageWord;
 					}
@@ -81,7 +81,7 @@ Legendry Weapon.";
         }
 		public override bool CanUseItem(Player player)
 		{
-			if(!player.GetModPlayer<InvokerPlayer>(mod).Thebookoflaw)
+			if(!player.GetModPlayer<InvokerPlayer>().Thebookoflaw)
 			{
 				item.noMelee = false;
 				Item.staff[item.type] = false;
@@ -90,7 +90,7 @@ Legendry Weapon.";
 				item.damage = (int)(200 * player.minionDamage);
 				return true;
 			}
-			if(player.GetModPlayer<InvokerPlayer>(mod).Thebookoflaw)
+			if(player.GetModPlayer<InvokerPlayer>().Thebookoflaw)
 			{
 				item.noMelee = true;
 				Item.staff[item.type] = true;
@@ -103,17 +103,17 @@ Legendry Weapon.";
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			if (player.altFunctionUse != 2 && player.GetModPlayer<InvokerPlayer>(mod).Thebookoflaw)
+			if (player.altFunctionUse != 2 && player.GetModPlayer<InvokerPlayer>().Thebookoflaw)
 			{
 				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("InvokerStaffproj"), (int)damage, knockBack, player.whoAmI, 0f, 0f);
 			}
-			if (player.altFunctionUse == 2 && player.GetModPlayer<InvokerPlayer>(mod).Thebookoflaw)
+			if (player.altFunctionUse == 2 && player.GetModPlayer<InvokerPlayer>().Thebookoflaw)
 			{
-				if(!player.GetModPlayer<InvokerPlayer>(mod).InvokerMadness)
+				if(!player.GetModPlayer<InvokerPlayer>().InvokerMadness)
 				{
-					player.AddBuff(mod.BuffType("InvokerofMadness"), player.GetModPlayer<InvokerPlayer>(mod).Thebookoflaw? 30 : 300);
-					player.GetModPlayer<InvokerPlayer>(mod).BanishDamage = item.damage * 5;
-					player.GetModPlayer<InvokerPlayer>(mod).banishing = true;
+					player.AddBuff(mod.BuffType("InvokerofMadness"), player.GetModPlayer<InvokerPlayer>().Thebookoflaw? 30 : 300);
+					player.GetModPlayer<InvokerPlayer>().BanishDamage = item.damage * 5;
+					player.GetModPlayer<InvokerPlayer>().banishing = true;
 				}
 			}
 			return false;
@@ -126,7 +126,7 @@ Legendry Weapon.";
 
 		public override bool AltFunctionUse(Player player)
 		{
-			return (!(!player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula && player.GetModPlayer<InvokerPlayer>(mod).InvokedCaligula) && player.GetModPlayer<InvokerPlayer>(mod).Thebookoflaw);
+			return (!(!player.GetModPlayer<InvokerPlayer>().DarkCaligula && player.GetModPlayer<InvokerPlayer>().InvokedCaligula) && player.GetModPlayer<InvokerPlayer>().Thebookoflaw);
 		}
 
     }
@@ -145,10 +145,11 @@ Legendry Weapon.";
 			item.thrown = false;
 			item.summon = false;
 		}
-		public override void ModifyWeaponDamage(Player player, ref float add, ref float mult) 
+        public override void ModifyWeaponDamage(Player player, ref float add, ref float mult)
 		{
 			mult *= InvokerPlayer.ModPlayer(player).BanishDamageMult;
 		}
+
 		public override void GetWeaponKnockback(Player player, ref float knockback)
 		{
 			knockback = 0;
@@ -196,7 +197,6 @@ Legendry Weapon.";
         {
             Lighting.AddLight(projectile.Center, (Main.DiscoR -projectile.alpha) * 0.8f / 255f, (Main.DiscoG -projectile.alpha) * 0.4f / 255f, (Main.DiscoB -projectile.alpha) * 0f / 255f);
             Player projOwner = Main.player[projectile.owner];
-            Vector2 ownerMountedCenter = projOwner.RotatedRelativePoint(projOwner.MountedCenter, true);
            	projectile.direction = projOwner.direction;
            	projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(225f);
 
@@ -258,7 +258,7 @@ Legendry Weapon.";
 					{
 						Main.npc[num9].HitEffect(0, 1.0);
 					}
-					if(Main.npc[num9].GetGlobalNPC<InvokedGlobalNPC>(mod).IsBeingBanished)
+					if(Main.npc[num9].GetGlobalNPC<InvokedGlobalNPC>().IsBeingBanished)
 					{
 						flag = true;
 					}
@@ -387,12 +387,12 @@ Legendry Weapon.";
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.GetGlobalNPC<InvokedGlobalNPC>(mod).Banished = true;
+            npc.GetGlobalNPC<InvokedGlobalNPC>().Banished = true;
 
-			InvokerPlayer InvokerPlayer = Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod);
-			if((InvokerPlayer.banishing && npc.active && (InvokerPlayer.BanishDamage * InvokerPlayer.BanishDamageMult * InvokerPlayer.BanishLimit > npc.life)) || npc.GetGlobalNPC<InvokedGlobalNPC>(mod).IsBeingBanished)
+			InvokerPlayer InvokerPlayer = Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>();
+			if((InvokerPlayer.banishing && npc.active && (InvokerPlayer.BanishDamage * InvokerPlayer.BanishDamageMult * InvokerPlayer.BanishLimit > npc.life)) || npc.GetGlobalNPC<InvokedGlobalNPC>().IsBeingBanished)
 			{
-				npc.GetGlobalNPC<InvokedGlobalNPC>(mod).IsBeingBanished = true;
+				npc.GetGlobalNPC<InvokedGlobalNPC>().IsBeingBanished = true;
 			}
         }
 	}
@@ -471,14 +471,14 @@ Legendry Weapon.";
 			{
 				Projectile p = Main.projectile[i];
 				int num9 = (int)p.ai[1];
-				if (p.active && p.type == mod.ProjectileType<InvokerStaffproj>() && p.ai[0] == 1f && npc == Main.npc[num9]) 
+				if (p.active && p.type == ModContent.ProjectileType<InvokerStaffproj>() && p.ai[0] == 1f && npc == Main.npc[num9]) 
 				{
 					InvokedCount++;
 					npc.lifeRegen -= 10;
 				}
 			}
 
-			InvokerPlayer InvokerPlayer = Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod);
+			InvokerPlayer InvokerPlayer = Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>();
 
 			if(npc.boss)
 			{
@@ -489,8 +489,8 @@ Legendry Weapon.";
 					CaligulaSoulFight = false;
 				}
 				
-				bool flag = Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).Thebookoflaw && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).Thebookoflaw;
-				bool flag2 = npc.life < 50000 && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).InvokedCaligula;
+				bool flag = Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw;
+				bool flag2 = npc.life < 50000 && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().InvokedCaligula;
 				
 				if(!flag || !flag2)
 				{
@@ -501,7 +501,7 @@ Legendry Weapon.";
 
 			if(!npc.townNPC && (npc.life < InvokerPlayer.BanishDamage * InvokerPlayer.BanishDamageMult * InvokedCount) && InvokerPlayer.banishing && (npc.active || npc.life > 0))
 			{
-				npc.GetGlobalNPC<InvokedGlobalNPC>(mod).IsBeingBanished = true;
+				npc.GetGlobalNPC<InvokedGlobalNPC>().IsBeingBanished = true;
 			}
 			if((IsBeingBanished && !npc.townNPC && (npc.active || npc.life > 0)) || (!npc.townNPC && (npc.life < InvokerPlayer.BanishDamage) && InvokerPlayer.banishing && (npc.active || npc.life > 0)))
 			{
@@ -529,9 +529,9 @@ Legendry Weapon.";
 		
 		public override bool PreNPCLoot(NPC npc)
 		{
-			if(Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).Thebookoflaw && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).Thebookoflaw)
+			if(Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw)
 			{
-            	//Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).BanishProjClear = true; // Just for test.
+            	//Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().BanishProjClear = true; // Just for test.
 				float nump7 = 4f;
 				float nump8 = Main.rand.Next(-100, 101);
 				float nump9 = Main.rand.Next(-100, 101);
@@ -580,7 +580,7 @@ Legendry Weapon.";
 				{
 					if((npc.realLife >= 0 && npc.realLife == npc.whoAmI) || npc.realLife < 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y, nump8, nump9, mod.ProjectileType("InvokedDamage"), npc.damage * 20, 0f, Main.player[Main.myPlayer].whoAmI, num6, 0f);
 				}
-				if(npc.GetGlobalNPC<InvokedGlobalNPC>(mod).CaligulaSoulFight && !Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).DarkCaligula && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).InvokedCaligula && (npc.type == mod.NPCType("ZeroProtocol") || npc.type == mod.NPCType("YamataA") || npc.type == mod.NPCType("AkumaA") || npc.type == mod.NPCType("ShenA") || npc.type == mod.NPCType("SupremeRajah")))
+				if(npc.GetGlobalNPC<InvokedGlobalNPC>().CaligulaSoulFight && !Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().DarkCaligula && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().InvokedCaligula && (npc.type == mod.NPCType("ZeroProtocol") || npc.type == mod.NPCType("YamataA") || npc.type == mod.NPCType("AkumaA") || npc.type == mod.NPCType("ShenA") || npc.type == mod.NPCType("SupremeRajah")))
 				{
 					Projectile.NewProjectile(npc.Center.X, npc.Center.Y, nump8, nump9, mod.ProjectileType("InvokedDamage"), 0, 0f, Main.player[Main.myPlayer].whoAmI, Main.player[Main.myPlayer].whoAmI, npc.type);
 				}
@@ -595,13 +595,13 @@ Legendry Weapon.";
 		public override bool Autoload(ref string name) => true;
 		public override bool PreAI(Projectile projectile)
 		{
-			if (Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).BanishProjClear)
+			if (Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().BanishProjClear)
 			{
 				for (int q = 0; q < 1000; q++)
 				{
 					Projectile p = Main.projectile[q];
 					bool KILL = false;
-					if (p.active && p.type != mod.ProjectileType<InvokedHeal>() && p.type != mod.ProjectileType<InvokedDamage>() && p.type != mod.ProjectileType<InvokerStaffproj>() && p.type != mod.ProjectileType<InvokedRune>())
+					if (p.active && p.type != ModContent.ProjectileType<InvokedHeal>() && p.type != ModContent.ProjectileType<InvokedDamage>() && p.type != ModContent.ProjectileType<InvokerStaffproj>() && p.type != ModContent.ProjectileType<InvokedRune>())
 					{
 						//if(Main.netMode != 0 && p.owner != Main.clientPlayer.whoAmI) KILL = true;
 						KILL = true;
@@ -710,7 +710,7 @@ Legendry Weapon.";
 						if (projectile.owner == Main.myPlayer)
 						{
 							Player player = Main.player[num492];
-							player.GetModPlayer<InvokerPlayer>(mod).CaligulaSoul.Add((int)projectile.ai[1]) ;
+							player.GetModPlayer<InvokerPlayer>().CaligulaSoul.Add((int)projectile.ai[1]) ;
 							CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), Color.DarkGray, "Powerful Soul Steal!", false, false);
 						}
 						projectile.Kill();
@@ -731,9 +731,9 @@ Legendry Weapon.";
 				Dust dust3 = Main.dust[num580];
 				dust3.velocity *= 0f;
 				Dust dust74 = Main.dust[num580];
-				dust74.position.X = dust74.position.X - num578;
+				dust74.position.X -= num578;
 				Dust dust75 = Main.dust[num580];
-				dust75.position.Y = dust75.position.Y - num579;
+				dust75.position.Y -= num579;
 				num0 = num577;
 			}
 			return;
@@ -812,9 +812,9 @@ Legendry Weapon.";
 				Dust dust3 = Main.dust[num505];
 				dust3.velocity *= 0f;
 				Dust dust72 = Main.dust[num505];
-				dust72.position.X = dust72.position.X - num503;
+				dust72.position.X -= num503;
 				Dust dust73 = Main.dust[num505];
-				dust73.position.Y = dust73.position.Y - num504;
+				dust73.position.Y -= num504;
 				num3 = num502;
 			}
 			return;

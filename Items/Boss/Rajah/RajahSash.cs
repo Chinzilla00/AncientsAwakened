@@ -31,7 +31,7 @@ Immunity to fall damage");
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.player[item.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             Color damageColor = Color.Firebrick;
             string DamageType = "";
 
@@ -81,7 +81,7 @@ Immunity to fall damage");
 
         public override void UpdateEquip(Player player)
         {
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
             player.autoJump = true;
             Player.jumpHeight = 10;

@@ -9,6 +9,7 @@ using BaseMod;
 using AAMod.NPCs.Bosses.Athena;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Backgrounds
 {
@@ -187,7 +188,7 @@ namespace AAMod.Backgrounds
 
         private void UpdateAthenaSky()
         {
-            if (NPC.AnyNPCs(AAMod.instance.NPCType<AthenaA>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<AthenaA>()))
             {
                 return;
             }
@@ -216,7 +217,7 @@ namespace AAMod.Backgrounds
         {
             if (Main.netMode == NetmodeID.Server || Main.dedServ) return; //BEGONE SERVER HEATHENS! UPDATE ONLY CLIENTSIDE!
 
-            bool athena = NPC.AnyNPCs(AAMod.instance.NPCType<Athena>());
+            bool athena = NPC.AnyNPCs(ModContent.NPCType<Athena>());
             if (!backgroundClouds) athena = false;
 
             fogOffsetX += 1;

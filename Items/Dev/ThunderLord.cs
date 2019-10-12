@@ -21,7 +21,7 @@ namespace AAMod.Items.Dev
             {
                 position += muzzleOffset;
             }
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType<Projectiles.ThunderSpark>(), damage, knockBack, Main.myPlayer, 0, 0);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, Terraria.ModLoader.ModContent.ProjectileType<Projectiles.ThunderSpark>(), damage, knockBack, Main.myPlayer, 0, 0);
             return false;
         }
 

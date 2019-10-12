@@ -107,16 +107,16 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void PostAI()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Rajah>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah2>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah3>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah4>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah5>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah6>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah7>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah8>()) ||
-                NPC.AnyNPCs(mod.NPCType<Rajah9>()) ||
-                NPC.AnyNPCs(mod.NPCType<SupremeRajah>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<Rajah>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah2>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah3>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah6>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<Rajah9>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
             {
                 if (npc.alpha > 0)
                 {
@@ -191,7 +191,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            if (NPC.AnyNPCs(mod.NPCType<SupremeRajah>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
             {
                 BaseDrawing.DrawAfterimage(spriteBatch, Main.npcTexture[npc.type], 0, npc, 1f, 1f, 10, true, 0f, 0f, Main.DiscoColor);
             }

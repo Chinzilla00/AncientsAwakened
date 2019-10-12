@@ -44,7 +44,7 @@ Can only be used in a surface glowing mushroom biome");
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ToadstoolFalse"), Color.Blue, false);
                 return false;
             }
-            if (NPC.AnyNPCs(mod.NPCType<TruffleToad>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<TruffleToad>()))
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ToadstoolTrue"), Color.Blue, false);
                 return false;

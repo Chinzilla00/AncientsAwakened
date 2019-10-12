@@ -51,19 +51,19 @@ Non-Consumable");
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianDayTimeFalse"), new Color(180, 41, 32), false);
                 return false;
             }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
+            if (player.GetModPlayer<AAPlayer>().ZoneInferno)
             {
-                if (!AAWorld.downedAkuma && !player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda)
+                if (!AAWorld.downedAkuma && !player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda)
                 {
                     if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianRuneInfernoFalse2"), new Color(180, 41, 32), false);
                     return false;
                 }
-                if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
+                if (NPC.AnyNPCs(ModContent.NPCType<Akuma>()))
                 {
                     if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianSigilFalse"), new Color(180, 41, 32), false);
                     return false;
                 }
-                if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
+                if (NPC.AnyNPCs(ModContent.NPCType<AkumaA>()))
                 {
                     if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianSigilFalse"), new Color(0, 191, 255), false);
                     return false;

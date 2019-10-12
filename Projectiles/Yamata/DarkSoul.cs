@@ -43,7 +43,7 @@ namespace AAMod.Projectiles.Yamata
             {
                 float num573 = projectile.velocity.X * 0.2f * num572;
                 float num574 = -(projectile.velocity.Y * 0.2f) * num572;
-                int num575 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataDustLight>(), 0f, 0f, 100, default, 1.3f);
+                int num575 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDustLight>(), 0f, 0f, 100, default, 1.3f);
                 Main.dust[num575].noGravity = true;
                 Main.dust[num575].velocity *= 0f;
                 Dust expr_178B4_cp_0 = Main.dust[num575];

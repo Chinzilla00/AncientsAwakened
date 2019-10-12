@@ -77,7 +77,7 @@ The power to destroy entire planets rests in this armor");
             player.maxMinions += 5;
             player.AddBuff(BuffID.Hunter, 2);
             player.AddBuff(BuffID.NightOwl, 2);
-            player.GetModPlayer<AAPlayer>(mod).zeroSet1 = true;
+            player.GetModPlayer<AAPlayer>().zeroSet1 = true;
 		}
 
 		public override void AddRecipes()

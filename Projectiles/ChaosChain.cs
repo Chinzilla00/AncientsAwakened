@@ -29,8 +29,8 @@ namespace AAMod.Projectiles
                 Dust dust1;
                 Dust dust2;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0, 0, 0)];
-                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.YamataAuraDust>(), 0, 0, 0)];
+                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDust>(), 0, 0, 0)];
+                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, ModContent.DustType<Dusts.YamataAuraDust>(), 0, 0, 0)];
                 dust1.noGravity = true;
                 dust2.noGravity = true;
             }
@@ -138,8 +138,8 @@ namespace AAMod.Projectiles
 
         public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
 		{
-            target.AddBuff(mod.BuffType<Buffs.HydraToxin>(), 150);
-            target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 150);
+            target.AddBuff(ModContent.BuffType<Buffs.HydraToxin>(), 150);
+            target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 150);
         }
 		
  

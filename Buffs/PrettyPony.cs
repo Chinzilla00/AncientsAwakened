@@ -15,7 +15,7 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			player.mount.SetMount(mod.MountType<Mounts.BegPony>(), player);
+			player.mount.SetMount(ModContent.MountType<Mounts.BegPony>(), player);
 			player.buffTime[buffIndex] = 10;
 		}
 	}

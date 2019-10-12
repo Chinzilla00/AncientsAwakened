@@ -38,7 +38,7 @@ namespace AAMod.Items.Armor.Chaos
 			player.setBonus = Lang.ArmorBonus("ChaosKabutoBonus");
             player.meleeSpeed += .1f;
             player.aggro += 4;
-            player.GetModPlayer<AAPlayer>(mod).kindledSet = true;
+            player.GetModPlayer<AAPlayer>().kindledSet = true;
         }
 
         public override void AddRecipes()

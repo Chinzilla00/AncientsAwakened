@@ -32,7 +32,7 @@ namespace AAMod.Items.Armor.Kindled
 		{
 			player.setBonus = Lang.ArmorBonus("KindledKabutoBonus");
             player.endurance *= 1.05f;
-            player.GetModPlayer<AAPlayer>(mod).kindledSet = true;
+            player.GetModPlayer<AAPlayer>().kindledSet = true;
         }
 
         public override void AddRecipes()

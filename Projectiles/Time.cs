@@ -48,7 +48,7 @@ namespace AAMod.Projectiles
                 }
                 else
                 {
-                    Buff = mod.BuffType<Buffs.Moonraze>();
+                    Buff = ModContent.BuffType<Buffs.Moonraze>();
                 }
 
                 target.AddBuff(Buff, 180);

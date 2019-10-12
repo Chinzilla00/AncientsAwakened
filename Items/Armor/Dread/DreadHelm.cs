@@ -59,7 +59,7 @@ The abyssal wrath of the Mire rests in this armor");
             player.buffImmune[44] = true;
             player.buffImmune[67] = true;
             player.AddBuff(BuffID.Shine, 2);
-            player.GetModPlayer<AAPlayer>(mod).dreadSet = true;
+            player.GetModPlayer<AAPlayer>().dreadSet = true;
 		}
 
 		public override void AddRecipes()

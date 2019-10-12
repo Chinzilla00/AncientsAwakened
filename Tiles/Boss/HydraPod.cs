@@ -32,11 +32,11 @@ namespace AAMod.Tiles.Boss
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Hydra Pod");
-            drop1 = mod.ItemType<HydrasSpear>();
-            drop2 = mod.ItemType<Items.Ranged.Mossket>();
-            drop3 = mod.ItemType<Items.Magic.GunkWand>();
-            drop4 = mod.ItemType<Items.Pets.GlowmossBall>();
-            drop5 = mod.ItemType<Items.Accessories.ShadowBand>();
+            drop1 = ModContent.ItemType<HydrasSpear>();
+            drop2 = ModContent.ItemType<Items.Ranged.Mossket>();
+            drop3 = ModContent.ItemType<Items.Magic.GunkWand>();
+            drop4 = ModContent.ItemType<Items.Pets.GlowmossBall>();
+            drop5 = ModContent.ItemType<Items.Accessories.ShadowBand>();
             AddMapEntry(new Color(17, 26, 41), name);
             disableSmartCursor = true;
         }

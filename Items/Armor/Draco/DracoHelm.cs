@@ -79,7 +79,7 @@ The blazing fury of the Inferno rests in this armor");
             player.buffImmune[46] = true;
             player.buffImmune[47] = true;
             player.AddBuff(BuffID.Shine, 2);
-            player.GetModPlayer<AAPlayer>(mod).dracoSet = true;
+            player.GetModPlayer<AAPlayer>().dracoSet = true;
 		}
 
 		public override void AddRecipes()

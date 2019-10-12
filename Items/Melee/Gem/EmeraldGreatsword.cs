@@ -23,7 +23,7 @@ namespace AAMod.Items.Melee.Gem   //where is located
             item.UseSound = SoundID.Item1;       
             item.autoReuse = false;   
             item.useTurn = true;
-            item.shoot = mod.ProjectileType<Projectiles.GemShot.EmeraldShot>();
+            item.shoot = ModContent.ProjectileType<Projectiles.GemShot.EmeraldShot>();
             item.shootSpeed = 9f;
         }
 

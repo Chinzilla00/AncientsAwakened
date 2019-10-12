@@ -17,13 +17,13 @@ namespace AAMod.Buffs
 		public override void Update(Player player, ref int buffIndex)
 		{
 			player.buffTime[buffIndex] = 18000;
-            player.GetModPlayer<AAPlayer>(mod).MudkipS = true;
+            player.GetModPlayer<AAPlayer>().MudkipS = true;
 			bool petProjectileNotSpawned = player.ownedProjectileCounts[mod.ProjectileType("MudkipS")] <= 0;
 			if (petProjectileNotSpawned && player.whoAmI == Main.myPlayer)
 			{
 				Projectile.NewProjectile(player.position.X + player.width / 2, player.position.Y + player.height / 2, 0f, 0f, mod.ProjectileType("MudkipS"), 0, 0f, player.whoAmI, 0f, 0f);
 			}
-            if (!player.GetModPlayer<AAPlayer>(mod).Alpha || !player.GetModPlayer<AAPlayer>(mod).MudkipS)
+            if (!player.GetModPlayer<AAPlayer>().Alpha || !player.GetModPlayer<AAPlayer>().MudkipS)
             {
                 player.DelBuff(buffIndex);
                 buffIndex--;

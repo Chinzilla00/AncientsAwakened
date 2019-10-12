@@ -86,7 +86,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.netUpdate = true;
             }
 
-            if (NPC.AnyNPCs(mod.NPCType<FuryAshe>()) || NPC.AnyNPCs(mod.NPCType<WrathHaruka>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<FuryAshe>()) || NPC.AnyNPCs(ModContent.NPCType<WrathHaruka>()))
             {
                 if (npc.alpha > 50)
                 {
@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                     {
-                        int dust = mod.DustType<Dusts.DiscordLight>();
+                        int dust = ModContent.DustType<Dusts.DiscordLight>();
                         int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = true;
                         Main.dust[num935].noLight = true;
@@ -532,20 +532,20 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void NPCLoot()
         {
-            if (npc.type == mod.NPCType<ShenA>())
+            if (npc.type == ModContent.NPCType<ShenA>())
             {
                 if (Main.expertMode)
                 {
                     npc.DropLoot(Items.Vanity.Mask.ShenAMask.type, 1f / 7);
                     if (!AAWorld.downedShen)
                     {
-                        npc.DropLoot(mod.ItemType<Items.BossSummons.ChaosRune>(), 1f / 7);
+                        npc.DropLoot(ModContent.ItemType<Items.BossSummons.ChaosRune>(), 1f / 7);
                         AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType("ShenDefeat"), false, npc.Center, "");
                     }
                     BaseAI.DropItem(npc, mod.ItemType("ShenATrophy"), 1, 1, 15, true);
-                    if (!NPC.AnyNPCs(mod.NPCType<ShenDefeat>()))
+                    if (!NPC.AnyNPCs(ModContent.NPCType<ShenDefeat>()))
                     {
-                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenDefeat>());
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<ShenDefeat>());
                     }
                     npc.DropBossBags();
                 }

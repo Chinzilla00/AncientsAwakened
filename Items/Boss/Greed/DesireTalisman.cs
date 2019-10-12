@@ -31,7 +31,7 @@ Hitting enemies will sometimes drop extra coins");
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.player[item.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
             TooltipLine DamageTooltip = new TooltipLine(mod, "Damage", Lang.GreedTooltip("CurrentDamageBoost:+") + modPlayer.GreedyDamage + "%");
             tooltips.Add(DamageTooltip);
@@ -41,7 +41,7 @@ Hitting enemies will sometimes drop extra coins");
 
         public override void UpdateEquip(Player player)
         {
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
             modPlayer.GreedTalisman = true;
             player.goldRing = true;

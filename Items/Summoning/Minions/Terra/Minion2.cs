@@ -49,7 +49,7 @@ namespace AAMod.Items.Summoning.Minions.Terra
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 			if (modPlayer.TerraSummon)
 			{
 				projectile.timeLeft = 2;

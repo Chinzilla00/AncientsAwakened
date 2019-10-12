@@ -80,7 +80,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.noGravity = true;
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
-            AAPlayer modplayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modplayer = player.GetModPlayer<AAPlayer>();
             RingRoatation += .05f;
             npc.ai[1]++;
             if (internalAI[3] > 0)
@@ -254,7 +254,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 for (int i = 0; i < Main.rand.Next(1, 3); i++)
                 {
                     offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(player.position.X, player.position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType<Zero.DeathLaser>(), damage, 2, Main.myPlayer);
+                    Projectile.NewProjectile(player.position.X, player.position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), ModContent.ProjectileType<Zero.DeathLaser>(), damage, 2, Main.myPlayer);
                 }
             }
         }
@@ -263,8 +263,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         {
             if (npc.life <= 0)
             {
-                int dust1 = mod.DustType<Dusts.VoidDust>();
-                int dust2 = mod.DustType<Dusts.VoidDust>();
+                int dust1 = ModContent.DustType<Dusts.VoidDust>();
+                int dust2 = ModContent.DustType<Dusts.VoidDust>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;
@@ -294,7 +294,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 string[] lootTable = { "SagCore", "NeutronStaff", "Legg" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
-                Item.NewItem(npc.Center, mod.ItemType<Items.Materials.Doomite>(), Main.rand.Next(20, 30));
+                Item.NewItem(npc.Center, ModContent.ItemType<Items.Materials.Doomite>(), Main.rand.Next(20, 30));
             }
             else
             {

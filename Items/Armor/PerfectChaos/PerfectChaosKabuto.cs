@@ -45,7 +45,7 @@ The power of discordian rage radiates from this armor");
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = Lang.ArmorBonus("PerfectChaosKabutoBonus");
-            player.GetModPlayer<AAPlayer>(mod).perfectChaosMe = true;
+            player.GetModPlayer<AAPlayer>().perfectChaosMe = true;
             player.AddBuff(mod.BuffType("ChaosWrath"), 2);
         }
 

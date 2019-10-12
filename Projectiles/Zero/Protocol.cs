@@ -58,7 +58,7 @@ namespace AAMod.Projectiles.Zero
             float num636 = 150f;
             bool flag64 = projectile.type == mod.ProjectileType("Protocol");
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (flag64)
             {
                 if (player.dead)

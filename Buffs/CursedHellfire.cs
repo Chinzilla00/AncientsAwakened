@@ -17,12 +17,12 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-			player.GetModPlayer<AAPlayer>(mod).CursedHellfire = true;
+			player.GetModPlayer<AAPlayer>().CursedHellfire = true;
 		}
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.GetGlobalNPC<AAModGlobalNPC>(mod).CursedHellfire = true;
+            npc.GetGlobalNPC<AAModGlobalNPC>().CursedHellfire = true;
         }
     }
 }

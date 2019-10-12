@@ -33,7 +33,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int dustType = proType == 0 ? mod.DustType<Dusts.DiscordLight>() : proType == 1 ? mod.DustType<Dusts.AkumaDustLight>() : mod.DustType<Dusts.YamataDustLight>();
+            int dustType = proType == 0 ? ModContent.DustType<Dusts.DiscordLight>() : proType == 1 ? ModContent.DustType<Dusts.AkumaDustLight>() : ModContent.DustType<Dusts.YamataDustLight>();
             if (projectile.ai[1] != 0)
             {
                 projectile.extraUpdates = 1;
@@ -83,7 +83,7 @@ namespace AAMod.Projectiles
 
         public override void Kill(int timeLeft)
         {
-            int dustType = proType == 0 ? 0 : proType == 1 ? mod.DustType<Dusts.AkumaDustLight>() : mod.DustType<Dusts.YamataAuraDust>();
+            int dustType = proType == 0 ? 0 : proType == 1 ? ModContent.DustType<Dusts.AkumaDustLight>() : ModContent.DustType<Dusts.YamataAuraDust>();
             if (proType != 0)
             {
                 for (int i = 0; i < 4; i++)

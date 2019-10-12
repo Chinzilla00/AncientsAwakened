@@ -42,7 +42,7 @@ namespace AAMod.Projectiles.Zero
                 {
                     projectile.ai[aislotHomingCooldown] = 0;
                     NPC n = Main.npc[foundTarget];
-                    BaseAI.ShootPeriodic(projectile, n.position, n.width, n.height, mod.ProjectileType<Darkray>(), ref shootAI[0], 5, projectile.damage, 24f, true, projectile.Center);
+                    BaseAI.ShootPeriodic(projectile, n.position, n.width, n.height, ModContent.ProjectileType<Darkray>(), ref shootAI[0], 5, projectile.damage, 24f, true, projectile.Center);
                 }
             }
         }

@@ -36,7 +36,7 @@ namespace AAMod.Items.Armor.Doomite
         {
             player.setBonus = Lang.ArmorBonus("DoomiteVisorBonus");
             player.maxMinions += 1;
-            player.GetModPlayer<AAPlayer>(mod).doomite = true;
+            player.GetModPlayer<AAPlayer>().doomite = true;
             if (player.whoAmI == Main.myPlayer)
             {
                 if (player.FindBuffIndex(mod.BuffType("Searcher")) == -1)
