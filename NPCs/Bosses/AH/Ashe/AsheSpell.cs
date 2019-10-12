@@ -51,6 +51,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             Vector2 acceleration = projectile.velocity.RotatedBy(Math.PI / 2);
             acceleration *= projectile.ai[1];
             projectile.velocity += acceleration;
+
+            if (projectile.velocity.X > 9)
+            {
+                projectile.velocity.X = 9;
+            }
         }
     }
 }
