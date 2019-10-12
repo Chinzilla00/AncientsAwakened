@@ -26,8 +26,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 550000;
-            npc.damage = 200;
+            npc.lifeMax = 650000;
+            npc.damage = 250;
             npc.defense = 100;
             npc.width = 78;
             npc.height = 60;
@@ -40,6 +40,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
+            }
+            if (AAWorld.downedShen)
+            {
+                npc.damage = 450;
             }
         }
 
@@ -234,6 +238,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     goto case 2;
 
                 case 6: //drop meteor that creates ripples across ground
+                    if (++internalAI[2] == 60)
+                    {
+                        internalAI[2] = 0;
+                        if (Main.netMode != 1)
+                            for (int i = -1; i <= 1; i++)
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center).RotatedBy(MathHelper.ToRadians(i * 5)) * 6f, mod.ProjectileType("YamataAVenom2"), npc.damage / 4, 0f, Main.myPlayer);
+                    }
                     if (++internalAI[1] > 420)
                     {
                         internalAI[0]++;
@@ -256,10 +267,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     goto case 3;
 
                 case 9: //some mix of 2 attacks he already does, something homing + something directly aimed
-                    if (++internalAI[2] > 60)
+                    if (--internalAI[2] > 0)
                     {
-                        internalAI[2] = 0;
-                        Projectile.NewProjectile(npc.Center, Vector2.UnitY * 10, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
+                        internalAI[2] = 120;
+                        if (Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 7f, mod.ProjectileType("YamataABomb"), npc.damage / 4, 0f, Main.myPlayer);
                     }
                     if (++internalAI[1] > 360)
                     {
