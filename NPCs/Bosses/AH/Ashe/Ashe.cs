@@ -46,20 +46,16 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public int[] Vortexes = null;
 
-        public static int Idle = 0, CastMagic0 = 1, CastMagic1 = 2, CastMagic2 = 3, MeleePrep = 4, Melee = 5, ChargePrep = 6, Charge = 7, SummonDragon = 8, Vortex = 9;
-
         public override void AI()
         {
             Player player = Main.player[npc.target];
 
-            npc.direction = npc.spriteDirection = npc.position.X < player.position.X ? 1 : -1;
-            RingEffects();
+            Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
 
-            if (npc.ai[0] == Idle || npc.ai[0] == CastMagic1 || npc.ai[0] == CastMagic2 || npc.ai[0] == Vortex)
-            {
-                Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
-                MoveToPoint(wantedVelocity);
-            }
+            npc.direction = npc.spriteDirection = npc.position.X < player.position.X ? 1 : -1;
+            RingEffects(); FireMagic(npc);
+
+            Vector2 targetPos;
 
             switch (npc.ai[0])
             {
@@ -71,17 +67,294 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 case 1:
                     if (!AliveCheck(player))
                         break;
+
+                    MoveToPoint(wantedVelocity);
+
+                    BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-5, 5), Main.rand.Next(-5, 5)), player.width, player.height, ModContent.ProjectileType<AsheShot>(), ref npc.ai[2], 60, npc.damage / 2, 12, false);
+
+                    if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
+                    {
+                        AIChange();
+                    }
+                    break;
+                case 2:
+                    if (!AliveCheck(player))
+                        break;
                     IdlePhase();
                     break;
+                case 3: //prepare for queen bee dashes
+                    if (!AliveCheck(player))
+                        break;
+                    if (++npc.ai[1] > 60)
+                    {
+                        targetPos = player.Center;
+                        targetPos.X += 400 * (npc.Center.X < targetPos.X ? -1 : 1);
+                        Movement(targetPos, 1.5f);
+                        if (npc.ai[1] > 180 || Math.Abs(npc.Center.Y - targetPos.Y) < 40) //initiate dash
+                        {
+                            npc.ai[0]++;
+                            npc.ai[1] = 0;
+                            npc.netUpdate = true;
+                            npc.velocity.X = -40 * (npc.Center.X < player.Center.X ? -1 : 1);
+                            npc.velocity.Y *= 0.1f;
+                        }
+                    }
+                    else
+                    {
+                        npc.velocity *= 0.9f; //decelerate briefly
+                    }
+                    break;
+                case 4:
+                    if (++npc.ai[1] > 240 || (Math.Sign(npc.velocity.X) > 0 ? npc.Center.X > player.Center.X + 900 : npc.Center.X < player.Center.X - 900))
+                    {
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        if (++npc.ai[3] >= 2) //repeat dash twice
+                        {
+                            npc.ai[0]++;
+                            npc.ai[3] = 0;
+                        }
+                        else
+                            npc.ai[0]--;
+                        npc.netUpdate = true;
+                    }
+
+                    if (npc.ai[1] % 10 == 0 && npc.life < npc.lifeMax / 2)
+                    {
+                        const float ai0 = 0.01f;
+                        Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(Math.PI / 2), mod.ProjectileType("AsheMagicSpark"), npc.damage / 2, 0f, Main.myPlayer, ai0);
+                        Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(-Math.PI / 2), mod.ProjectileType("AsheMagicSpark"), npc.damage / 2, 0f, Main.myPlayer, ai0);
+                    }
+                    break;
+                case 5:
+                    if (!AliveCheck(player))
+                        break;
+                    IdlePhase();
+                    break;
+                case 6:
+                    if (!AliveCheck(player))
+                        break;
+
+                    wantedVelocity = player.Center - new Vector2(pos, 0);
+
+                    MoveToPoint(wantedVelocity);
+
+                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<Akuma.AkumaBreath>(), ref npc.ai[2], 10, npc.damage / 2, 12, false);
+                    if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
+                    {
+                        AIChange();
+                    }
+                    break;
+                case 7:
+                    if (!AliveCheck(player))
+                        break;
+                    IdlePhase();
+                    break;
+                case 8: //prepare for fishron dash
+                    if (!AliveCheck(player))
+                        break;
+                    targetPos = player.Center + player.DirectionTo(npc.Center) * 600;
+                    Movement(targetPos, 0.8f);
+                    if (++npc.ai[1] > 20)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                        npc.velocity = npc.DirectionTo(player.Center) * 40;
+                    }
+                    npc.rotation = 0;
+                    break;
+
+                case 9: //dashing
+                    if (++npc.ai[2] > 3)
+                    {
+                        npc.ai[2] = 0;
+                        if (Main.netMode != 1)
+                        {
+                            const float ai0 = 0.01f;
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(Math.PI / 2), mod.ProjectileType("AsheSpell"), npc.damage / 4, 0f, Main.myPlayer, ai0);
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(-Math.PI / 2), mod.ProjectileType("AsheSpell"), npc.damage / 4, 0f, Main.myPlayer, ai0);
+                        }
+                    }
+                    if (++npc.ai[1] > 40)
+                    {
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        if (++npc.ai[3] >= 3) //dash three times
+                        {
+                            npc.ai[0]++;
+                            npc.ai[3] = 0;
+                        }
+                        else
+                            npc.ai[0]--;
+                        npc.netUpdate = true;
+                    }
+                    npc.rotation = npc.velocity.ToRotation();
+                    if (npc.velocity.X < 0)
+                        npc.rotation += (float)Math.PI;
+                    break;
+                case 10:
+                    if (!AliveCheck(player))
+                        break;
+                    IdlePhase();
+                    break;
+                case 11:
+                    if (!AliveCheck(player))
+                        break;
+                    MoveToPoint(wantedVelocity);
+                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], 60, npc.damage / 2, 12, false);
+                    if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
+                    {
+                        AIChange();
+                    }
+                    break;
+                case 12:
+                    if (NPC.AnyNPCs(ModContent.NPCType<AsheDragon>()))
+                    {
+                        npc.ai[0] = 0;
+                        goto case 0;
+                    }
+                    if (!AliveCheck(player))
+                        break;
+                    IdlePhase();
+                    break;
+                case 13:
+                    if (!AliveCheck(player))
+                        break;
+                    if (npc.ai[1]++ > 200)
+                    {
+                        NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AsheDragon>());
+                        AIChange();
+                    }
+                    break;
+                default:
+                    npc.ai[0] = 0;
+                    goto case 0;
+            }
+
+            if (npc.ai[0] == 4 || npc.ai[0] == 10)
+            {
+                npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
+            }
+            else
+            {
+                npc.rotation = 0;
             }
         }
 
         public void IdlePhase()
         {
+            Player player = Main.player[npc.target];
+            Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
+            MoveToPoint(wantedVelocity);
+
             if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
             {
                 AIChange();
             }
+        }
+
+        public int Frame = 0;
+
+        public override void FindFrame(int frameHeight)
+        {
+            if (npc.frameCounter++ >= 10)
+            {
+                npc.frameCounter = 0;
+                Frame++;
+            }
+            if (npc.ai[0] == 0 || npc.ai[0] == 2 || npc.ai[0] == 5 || npc.ai[0] == 7 || npc.ai[0] == 10)
+            {
+                if (!FlyingBack)
+                {
+                    if (Frame > 3)
+                    {
+                        Frame = 0;
+                    }
+                }
+                else
+                {
+                    if (Frame >= 8)
+                    {
+                        Frame = 0;
+                    }
+                    if (Frame < 4)
+                    {
+                        Frame = 4;
+                    }
+                }
+            }
+            else if (npc.ai[0] == 3 || npc.ai[0] == 8)
+            {
+                if (Frame >= 11)
+                {
+                    Frame = 11;
+                }
+                if (Frame < 8)
+                {
+                    Frame = 8;
+                }
+            }
+            else if (npc.ai[0] == 4 || npc.ai[0] == 9)
+            {
+                if (Frame < 12)
+                {
+                    Frame = 12;
+                }
+                if (Frame >= 16)
+                {
+                    Frame = 12;
+                }
+            }
+            else if (npc.ai[0] == 1 || npc.ai[0] == 6 || npc.ai[0] == 11)
+            {
+                if (Frame < 16)
+                {
+                    Frame = 16;
+                }
+                if (npc.frameCounter++ >= 10)
+                {
+                    npc.frameCounter = 0;
+                    Frame++;
+                }
+                if (Frame > 23)
+                {
+                    Frame = 23;
+                }
+            }
+            npc.frame.Y = Frame * frameHeight;
+        }
+
+        private void Movement(Vector2 targetPos, float speedModifier)
+        {
+            if (npc.Center.X < targetPos.X)
+            {
+                npc.velocity.X += speedModifier;
+                if (npc.velocity.X < 0)
+                    npc.velocity.X += speedModifier * 2;
+            }
+            else
+            {
+                npc.velocity.X -= speedModifier;
+                if (npc.velocity.X > 0)
+                    npc.velocity.X -= speedModifier * 2;
+            }
+            if (npc.Center.Y < targetPos.Y)
+            {
+                npc.velocity.Y += speedModifier;
+                if (npc.velocity.Y < 0)
+                    npc.velocity.Y += speedModifier * 2;
+            }
+            else
+            {
+                npc.velocity.Y -= speedModifier;
+                if (npc.velocity.Y > 0)
+                    npc.velocity.Y -= speedModifier * 2;
+            }
+            if (Math.Abs(npc.velocity.X) > 30)
+                npc.velocity.X = 30 * Math.Sign(npc.velocity.X);
+            if (Math.Abs(npc.velocity.Y) > 30)
+                npc.velocity.Y = 30 * Math.Sign(npc.velocity.Y);
         }
 
         private bool AliveCheck(Player player)
@@ -121,16 +394,29 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public int OrbiterCount = Main.expertMode ? 10 : 8;
 
+        bool Health1 = false;
+        bool Health2 = false;
+
         public void FireMagic(NPC npc)
         {
-            Player player = Main.player[npc.target];
-
-            if (npc.ai[0] == Vortex)
+            if (Main.netMode != 1)
             {
-                if (Main.netMode != 1)
+                const float distance = 125f;
+                float rotation = 2f * (float)Math.PI / OrbiterCount;
+                if (Health1 && npc.life < npc.lifeMax * (2 / 3))
                 {
-                    const float distance = 125f;
-                    float rotation = 2f * (float)Math.PI / OrbiterCount;
+                    Health1 = true;
+                    for (int m = 0; m < OrbiterCount; m++)
+                    {
+                        int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
+                        if (Main.netMode == 2 && n < 200)
+                            NetMessage.SendData(23, -1, -1, null, n);
+                    }
+                }
+                if (Health2 && npc.life < npc.lifeMax / 3)
+                {
+                    OrbiterCount += 2;
+                    Health2 = true;
                     for (int m = 0; m < OrbiterCount; m++)
                     {
                         int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
@@ -139,37 +425,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                 }
             }
-            else if (npc.ai[0] == CastMagic0)
-            {
-                float spread = 60f * 0.0174f;
-                double startAngle = Math.Atan2(npc.velocity.X, -npc.velocity.Y) - spread / 2;
-                double deltaAngle = spread / (Main.expertMode ? 6 : 4);
-                double offsetAngle;
-                for (int i = 0; i < (Main.expertMode ? 6 : 4); i++)
-                {
-                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 9f), (float)(Math.Cos(offsetAngle) * 9f), ModContent.ProjectileType<AsheSpell>(), npc.damage / 4, 0, Main.myPlayer, 0f, 0f);
-                }
-            }
-            else if (npc.ai[0] == CastMagic1)
-            {
-                int speedX = 11;
-                int speedY = 11;
-                float spread = 75f * 0.0174f;
-                float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
-                double startAngle = Math.Atan2(speedX, speedY) - .1d;
-                double deltaAngle = spread / 6f;
-                for (int i = 0; i < 5; i++)
-                {
-                    double offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * npc.direction, baseSpeed * (float)Math.Cos(offsetAngle), ModContent.ProjectileType<AsheShot>(), npc.damage / 4, 4);
-                }
-            }
-            else if (npc.ai[0] == CastMagic2)
-            {
-                BaseAI.FireProjectile(player.Center, npc, ModContent.ProjectileType<AsheFire>(), npc.damage / 4, 3, 16f, 0, 0, -1);
-            }
-            
         }
 
         public override void NPCLoot()
@@ -195,7 +450,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AsheVanish>(), 0);
             Main.npc[DeathAnim].velocity = npc.velocity;
-            if (Main.netMode != 1) BaseUtility.Chat("OW..! THAT HURT, YOU KNOW!", new Color(102, 20, 48));
+            if (Main.netMode != 1) BaseUtility.Chat("OW..! THAT HURT, YOU MEANIE!", new Color(102, 20, 48));
             npc.value = 0f;
             npc.boss = false;
         }
@@ -217,36 +472,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);  
             npc.damage = (int)(npc.damage * 0.6f);
         }
-
-        #region extra AI slots
-
-        public float[] internalAI = new float[5];
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            base.SendExtraAI(writer);
-            if (Main.netMode == NetmodeID.Server || Main.dedServ)
-            {
-                writer.Write(internalAI[0]);
-                writer.Write(internalAI[1]);
-                writer.Write(internalAI[2]);
-                writer.Write(internalAI[3]);
-                writer.Write(internalAI[4]);
-            }
-        }
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            base.ReceiveExtraAI(reader);
-            if (Main.netMode == NetmodeID.MultiplayerClient)
-            {
-                internalAI[0] = reader.ReadFloat();
-                internalAI[1] = reader.ReadFloat();
-                internalAI[2] = reader.ReadFloat();
-                internalAI[3] = reader.ReadFloat();
-                internalAI[4] = reader.ReadFloat();
-            }
-        }
-
-        #endregion
 
         #region movement stuff
 
@@ -283,7 +508,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 FlyingPositive = false;
                 FlyingNegative = true;
             }
-            if (internalAI[0] != Melee)
+            if (npc.ai[0] == 0 || npc.ai[0] == 2 || npc.ai[0] == 5 || npc.ai[0] == 7 || npc.ai[0] == 10)
             {
                 if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
                 {
@@ -397,7 +622,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         private void RingEffects()
         {
-            if (npc.ai[0] == SummonDragon || NPC.AnyNPCs(ModContent.NPCType<AsheOrbiter>()))
+            if (npc.ai[0] == 13 || NPC.AnyNPCs(ModContent.NPCType<AsheOrbiter>()))
             {
                 RingRotation += 0.02f;
                 if (scale >= 1f)
@@ -422,7 +647,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
 
-            if (npc.ai[0] == SummonDragon || npc.ai[0] == CastMagic0 || npc.ai[0] == CastMagic1 || npc.ai[0] == CastMagic2)
+            if (npc.ai[0] == 1 || npc.ai[0] == 6 || npc.ai[0] == 11 || npc.ai[0] == 13)
             {
                 if (scale2 >= 1f)
                 {
@@ -444,88 +669,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     scale2 = 0;
                 }
             }
-        }
-
-        public int Frame = 0;
-
-        public override void FindFrame(int frameHeight)
-        {
-            if (npc.frameCounter++ >= 10)
-            {
-                npc.frameCounter = 0;
-                Frame++;
-            }
-            if (npc.ai[0] == Idle || npc.ai[0] == MeleePrep || (npc.ai[0] == SummonDragon && npc.ai[1] < 70))
-            {
-                if (!FlyingBack)
-                {
-                    if (Frame > 3)
-                    {
-                        Frame = 0;
-                    }
-                }
-                else
-                {
-                    if (Frame >= 8)
-                    {
-                        Frame = 0;
-                    }
-                    if (Frame < 4)
-                    {
-                        Frame = 4;
-                    }
-                }
-            }
-            else if (npc.ai[0] == ChargePrep)
-            {
-                if (Frame >= 11)
-                {
-                    Frame = 11;
-                }
-                if (Frame < 8)
-                {
-                    Frame = 8;
-                }
-            }
-            else if (npc.ai[0] == Charge)
-            {
-                if (Frame < 12)
-                {
-                    Frame = 12;
-                }
-                if (Frame >= 16)
-                {
-                    Frame = 12;
-                }
-            }
-            else if (npc.ai[0] == CastMagic0 || npc.ai[0] == CastMagic2)
-            {
-                if (Frame < 16)
-                {
-                    Frame = 16;
-                }
-                if (npc.frameCounter++ >= 10)
-                {
-                    npc.frameCounter = 0;
-                    Frame++;
-                }
-                if (Frame > 23)
-                {
-                    Frame = 23;
-                }
-            }
-            else if (npc.ai[0] == Vortex || npc.ai[0] == Melee || npc.ai[0] == CastMagic1 || (npc.ai[0] == SummonDragon && npc.ai[1] > 70))
-            {
-                if (Frame < 24)
-                {
-                    Frame = 24;
-                }
-                if (Frame >= 31)
-                {
-                    Frame = 31;
-                }
-            }
-            npc.frame.Y = Frame * frameHeight;
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)

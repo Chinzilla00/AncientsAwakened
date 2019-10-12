@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
-            const float desiredFlySpeedInPixelsPerFrame = 8;
+            const float desiredFlySpeedInPixelsPerFrame = 12;
             const float amountOfFramesToLerpBy = 30; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
