@@ -311,7 +311,6 @@ namespace AAMod
             PremultiplyTexture(GetTexture("Backgrounds/AthenaBolt"));
             PremultiplyTexture(GetTexture("Backgrounds/AthenaFlash"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
-            PremultiplyTexture(GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier"));
             PremultiplyTexture(GetTexture("Projectiles/RadiumStar"));
             PremultiplyTexture(GetTexture("Projectiles/Stars"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Toad/ToadBubble"));

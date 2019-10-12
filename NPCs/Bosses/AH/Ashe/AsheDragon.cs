@@ -13,6 +13,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ashen Dragon");
+            Main.npcFrameCount[npc.type] = 3;
         }
 
         public override void SetDefaults()
@@ -296,7 +297,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
                 npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
 
-                /*float num62 = Vector2.Distance(Main.player[npc.target].Center, npc.Center);
+                float num62 = Vector2.Distance(Main.player[npc.target].Center, npc.Center);
                 int num63 = 0;
                 if (Vector2.Normalize(Main.player[npc.target].Center - npc.Center).ToRotation().AngleTowards(npc.velocity.ToRotation(), (float)Math.PI / 2) == npc.velocity.ToRotation() && num62 < 350f)
                 {
@@ -321,7 +322,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 if (npc.frameCounter > 4.0)
                 {
                     npc.frameCounter = 4.0;
-                }*/
+                }
             }
         }
 
