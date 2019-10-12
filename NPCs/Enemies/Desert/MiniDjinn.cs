@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Enemies.Desert
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            return Main.dayTime && spawnInfo.player.ZoneDesert && !spawnInfo.player.ZoneBeach && NPC.downedBoss3 && !spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneTower ? .05f : 0f;
+            return Main.dayTime && spawnInfo.player.ZoneDesert && !spawnInfo.player.ZoneBeach && NPC.downedBoss3 && !spawnInfo.player.GetModPlayer<AAPlayer>().ZoneTower ? .05f : 0f;
         }
 
         public float[] shootAI = new float[4];
@@ -96,10 +96,10 @@ namespace AAMod.NPCs.Enemies.Desert
             switch (Shoot)
             {
                 case 0:
-                    Shoot = mod.ProjectileType<DjinnMagic1>();
+                    Shoot = ModContent.ProjectileType<DjinnMagic1>();
                     break;
                 default:
-                    Shoot = mod.ProjectileType<DjinnMagic2>();
+                    Shoot = ModContent.ProjectileType<DjinnMagic2>();
                     break;
             }
 
@@ -116,8 +116,8 @@ namespace AAMod.NPCs.Enemies.Desert
                 npc.height = 66;
                 npc.position.X = npc.position.X - npc.width / 2;
                 npc.position.Y = npc.position.Y - npc.height / 2;
-                int dust1 = mod.DustType<Dusts.SandDust>();
-                int dust2 = mod.DustType<Dusts.SandDust>();
+                int dust1 = ModContent.DustType<Dusts.SandDust>();
+                int dust2 = ModContent.DustType<Dusts.SandDust>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity.X *= 0f;
                 Main.dust[dust1].scale *= 1.3f;
@@ -131,7 +131,7 @@ namespace AAMod.NPCs.Enemies.Desert
 
         public override void NPCLoot()
         {
-            npc.DropLoot(mod.ItemType<Items.BossSummons.DjinnLamp>());
+            npc.DropLoot(ModContent.ItemType<Items.BossSummons.DjinnLamp>());
         }
     }
 }

@@ -41,7 +41,7 @@ namespace AAMod.Items.Armor.Demon
             player.setBonus = @"Your minions set enemies ablaze
 You Always have a small Imp servant by your side
 Imp isn't counted in your max minion count";
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             modPlayer.impSet = true;
             modPlayer.demonBonus = true;
             if (player.whoAmI == Main.myPlayer)

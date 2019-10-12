@@ -400,9 +400,9 @@ namespace AAMod.Items.Dev.Invoker
 		{
 			
 			Player player = Main.player[Main.myPlayer];
-			//damage = (int)((player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula? 1000 : 500) * (player.minionDamage + player.allDamage));
+			//damage = (int)((player.GetModPlayer<InvokerPlayer>().DarkCaligula? 1000 : 500) * (player.minionDamage + player.allDamage));
 			crit = true;
-			if(player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula)
+			if(player.GetModPlayer<InvokerPlayer>().DarkCaligula)
 			{
 				String Lifelength = target.lifeMax + "";
 				int regen = (Main.rand.Next(2) == 0 ? 2*(Lifelength.Length + 1) : (Lifelength.Length + 1));

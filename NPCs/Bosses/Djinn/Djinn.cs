@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.noGravity = true;
             npc.noTileCollide = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Djinn");
-            bossBag = mod.ItemType<Items.Boss.Djinn.DjinnBag>();
+            bossBag = ModContent.ItemType<Items.Boss.Djinn.DjinnBag>();
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -150,7 +150,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 if (npc.localAI[0]++ > 50)
                 {
                     npc.localAI[0] = 0;
-                    Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-200, 200), npc.Center.Y + Main.rand.Next(-100, 100), 0, 0, mod.ProjectileType<Menacing>(), 0, 0, Main.myPlayer);
+                    Projectile.NewProjectile(npc.Center.X + Main.rand.Next(-200, 200), npc.Center.Y + Main.rand.Next(-100, 100), 0, 0, ModContent.ProjectileType<Menacing>(), 0, 0, Main.myPlayer);
                 }
                 return;
             }
@@ -459,20 +459,20 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.position.Y = npc.position.Y + npc.height / 2;
             npc.position.X = npc.position.X - npc.width / 2;
             npc.position.Y = npc.position.Y - npc.height / 2;
-            int dust = mod.DustType<Dusts.SandDust>();
+            int dust = ModContent.DustType<Dusts.SandDust>();
             for (int Loop = 0; Loop < 5; Loop++)
             {
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 0);
-                Main.dust[dust].velocity.Y = hitDirection * 0.1F;
-                Main.dust[dust].noGravity = false;
+                int d = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 0);
+                Main.dust[d].velocity.Y = hitDirection * 0.1F;
+                Main.dust[d].noGravity = false;
             }
             if (npc.life <= 0)
             {
                 for (int Loop = 0; Loop < 5; Loop++)
                 {
-                    Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 0);
-                    Main.dust[dust].velocity.X *= 0f;
-                    Main.dust[dust].noGravity = false;
+                    int d = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 0);
+                    Main.dust[d].velocity.X *= 0f;
+                    Main.dust[d].noGravity = false;
                 }
             }
         }

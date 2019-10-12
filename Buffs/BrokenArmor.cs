@@ -16,7 +16,7 @@ namespace AAMod.Buffs
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.GetGlobalNPC<AAModGlobalNPC>(mod).BrokenArmor = true;
+            npc.GetGlobalNPC<AAModGlobalNPC>().BrokenArmor = true;
         }
     }
 }

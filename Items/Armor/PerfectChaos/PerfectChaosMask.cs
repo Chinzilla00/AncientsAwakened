@@ -49,7 +49,7 @@ The power of discordian rage radiates from this hood");
             player.setBonus = @"'Chaos empowers you'
 As your health decreases, your minion damage increases
 Your minions raze your oponents with the flames of discordian hell";
-            player.GetModPlayer<AAPlayer>(mod).perfectChaosSu = true;
+            player.GetModPlayer<AAPlayer>().perfectChaosSu = true;
             player.AddBuff(mod.BuffType("ChaosWrath"), 2);
         }
 

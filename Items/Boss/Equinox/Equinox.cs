@@ -66,7 +66,7 @@ namespace AAMod.Items.Boss.Equinox
 		public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.nightVision = true;
-            player.GetModPlayer<AAPlayer>(mod).RStar = true;
+            player.GetModPlayer<AAPlayer>().RStar = true;
         }
         public override void AddRecipes()
         {

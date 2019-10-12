@@ -39,14 +39,14 @@ namespace AAMod.Projectiles.Ammo
             Main.PlaySound(SoundID.Item14, projectile.position);
             for (int num565 = 0; num565 < 7; num565++)
             {
-                Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default, 1.5f);
+                Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default, 1.5f);
             }
             for (int num566 = 0; num566 < 3; num566++)
             {
-                int num567 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 100);
+                int num567 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaADust>(), 0f, 0f, 100);
                 Main.dust[num567].noGravity = true;
                 Main.dust[num567].velocity *= 3f;
-                num567 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 100);
+                num567 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaADust>(), 0f, 0f, 100);
                 Main.dust[num567].velocity *= 2f;
             }
             int num568 = Gore.NewGore(new Vector2(projectile.position.X - 10f, projectile.position.Y - 10f), default, Main.rand.Next(61, 64), 1f);

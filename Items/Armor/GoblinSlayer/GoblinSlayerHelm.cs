@@ -35,7 +35,7 @@ namespace AAMod.Items.Armor.GoblinSlayer
 			player.setBonus = @"500% increased damage and knockback to goblins
 80% damage resistance from goblins
 'I hunt goblins or nothing.'";
-            player.GetModPlayer<AAPlayer>(mod).goblinSlayer = true;
+            player.GetModPlayer<AAPlayer>().goblinSlayer = true;
             int num = 0;
             num += player.bodyFrame.Y / 56;
             if (num >= Main.OffsetsPlayerHeadgear.Length)

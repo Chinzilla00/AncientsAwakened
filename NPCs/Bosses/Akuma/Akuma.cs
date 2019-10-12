@@ -173,7 +173,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 else if (!npc.HasBuff(BuffID.Wet))
                 {
-                    AAAI.BreatheFire(npc, true, mod.ProjectileType<AkumaBreath>(), 2, 4);
+                    AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaBreath>(), 2, 4);
                 }
                 if (attackTimer >= 80)
                 {
@@ -435,7 +435,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 if (internalAI[0] == 350)
                 {
-                    if (NPC.CountNPCS(mod.NPCType<AncientLung>()) < (Main.expertMode ? 3 : 4))
+                    if (NPC.CountNPCS(ModContent.NPCType<AncientLung>()) < (Main.expertMode ? 3 : 4))
                     {
                         AkumaAttacks.SpawnLung(player, mod, false);
                         MinionCount += 1;
@@ -452,7 +452,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 }
                 if (internalAI[0] == 350)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, mod.ProjectileType<AkumaFireProj>(), damage, 3, Main.myPlayer);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, ModContent.ProjectileType<AkumaFireProj>(), damage, 3, Main.myPlayer);
                 }
             }
             else if (internalAI[1] == 3)
@@ -467,7 +467,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                 {
                     for (int a = 0; a < 2; a++)
                     {
-                        NPC.NewNPC((int)(player.position.X + Main.rand.Next(400)), (int)(player.position.Y + Main.rand.Next(400)), mod.NPCType<Sun>());
+                        NPC.NewNPC((int)(player.position.X + Main.rand.Next(400)), (int)(player.position.Y + Main.rand.Next(400)), ModContent.NPCType<Sun>());
                     }
                 }
             }
@@ -490,7 +490,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                     for (int i = 0; i < Fireballs; i++)
                     {
                         offsetAngle = startAngle + (deltaAngle * i);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, mod.ProjectileType<AkumaBomb>(), damage, 3, Main.myPlayer);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, ModContent.ProjectileType<AkumaBomb>(), damage, 3, Main.myPlayer);
                     }
                 }
             }
@@ -559,8 +559,8 @@ namespace AAMod.NPCs.Bosses.Akuma
                 npc.position.Y = npc.position.Y + npc.height / 2;
                 npc.position.X = npc.position.X - npc.width / 2;
                 npc.position.Y = npc.position.Y - npc.height / 2;
-                int dust1 = mod.DustType<Dusts.AkumaDust>();
-                int dust2 = mod.DustType<Dusts.AkumaDust>();
+                int dust1 = ModContent.DustType<Dusts.AkumaDust>();
+                int dust2 = ModContent.DustType<Dusts.AkumaDust>();
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
                 Main.dust[dust1].velocity *= 0.5f;
                 Main.dust[dust1].scale *= 1.3f;
@@ -726,7 +726,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<Akuma>()))
             {
                 return false;
             }

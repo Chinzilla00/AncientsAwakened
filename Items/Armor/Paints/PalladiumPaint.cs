@@ -45,7 +45,7 @@ namespace AAMod.Items.Armor.Paints
             player.setBonus = @"+1 Minion Slot
 Greatly increases life regeneration after striking an enemy";
             player.maxMinions += 1;
-            player.GetModPlayer<AAPlayer>(mod).Palladium = true;
+            player.GetModPlayer<AAPlayer>().Palladium = true;
         }
 
         public override void AddRecipes()

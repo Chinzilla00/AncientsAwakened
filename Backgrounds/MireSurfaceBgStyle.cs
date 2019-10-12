@@ -12,7 +12,7 @@ namespace AAMod.Backgrounds
 
         public override bool ChooseBgStyle()
         {
-            return !Main.gameMenu && Main.LocalPlayer.GetModPlayer<AAPlayer>(mod).ZoneMire && !Main.LocalPlayer.ZoneSnow && !Main.LocalPlayer.ZoneDesert;
+            return !Main.gameMenu && Main.LocalPlayer.GetModPlayer<AAPlayer>().ZoneMire && !Main.LocalPlayer.ZoneSnow && !Main.LocalPlayer.ZoneDesert;
         }
 
         public override void ModifyFarFades(float[] fades, float transitionSpeed)
@@ -56,7 +56,7 @@ namespace AAMod.Backgrounds
             Color DefaultFog = new Color(120, 120, 200);
             Color YamataFog = new Color(200, 100, 100);
             
-            bool YamataA = NPC.AnyNPCs(mod.NPCType<YamataA>());
+            bool YamataA = NPC.AnyNPCs(ModContent.NPCType<YamataA>());
 
             mireBGFog.Update(mod.GetTexture("Backgrounds/FogTex"));
 			mireBGFog.Draw(mod.GetTexture("Backgrounds/FogTex"), true, YamataA ? YamataFog : DefaultFog);

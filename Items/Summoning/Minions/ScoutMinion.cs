@@ -46,7 +46,7 @@
 			float num635 = 1200f;
 			float num636 = 150f;
 			Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = Main.player[projectile.owner].GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = Main.player[projectile.owner].GetModPlayer<AAPlayer>();
             if (player.dead)
             {
                 modPlayer.ScoutMinion = false;

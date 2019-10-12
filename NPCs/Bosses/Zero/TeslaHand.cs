@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Zero>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<Zero>()))
             {
                 return false;
             }

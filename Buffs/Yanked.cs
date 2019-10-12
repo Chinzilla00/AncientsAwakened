@@ -19,7 +19,7 @@ namespace AAMod.Buffs
         {
             player.wingTime = 0;
             player.velocity.Y += 10;
-            player.GetModPlayer<AAPlayer>(mod).Yanked = true;
+            player.GetModPlayer<AAPlayer>().Yanked = true;
         }
     }
 }

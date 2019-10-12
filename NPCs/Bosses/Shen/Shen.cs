@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.buffImmune[k] = true;
             }
-            npc.buffImmune[mod.BuffType<Buffs.Terrablaze>()] = false;
+            npc.buffImmune[ModContent.BuffType<Buffs.Terrablaze>()] = false;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -108,7 +108,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 potionType = 0;
                 return;
             }
-            potionType = mod.ItemType<Items.Potions.GrandHealingPotion>();
+            potionType = ModContent.ItemType<Items.Potions.GrandHealingPotion>();
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -163,23 +163,23 @@ namespace AAMod.NPCs.Bosses.Shen
 
             #region ProjIDs
 
-            int AccelR = mod.ProjectileType<FireballAccelR>();
-            int AccelB = mod.ProjectileType<FireballAccelB>();
+            int AccelR = ModContent.ProjectileType<FireballAccelR>();
+            int AccelB = ModContent.ProjectileType<FireballAccelB>();
 
-            int FragR = mod.ProjectileType<FireballFragR>();
-            int FragB = mod.ProjectileType<FireballFragB>();
+            int FragR = ModContent.ProjectileType<FireballFragR>();
+            int FragB = ModContent.ProjectileType<FireballFragB>();
 
-            int HomingR = mod.ProjectileType<FireballHomingR>();
-            int HomingB = mod.ProjectileType<FireballHomingB>();
+            int HomingR = ModContent.ProjectileType<FireballHomingR>();
+            int HomingB = ModContent.ProjectileType<FireballHomingB>();
 
-            int SpreadR = mod.ProjectileType<FireballSpreadR>();
-            int SpreadB = mod.ProjectileType<FireballSpreadB>();
+            int SpreadR = ModContent.ProjectileType<FireballSpreadR>();
+            int SpreadB = ModContent.ProjectileType<FireballSpreadB>();
 
             int Accel = npc.spriteDirection == 1 ? AccelR : AccelB;
             int Homing = npc.spriteDirection == 1 ? HomingR : HomingB;
             int Spread = npc.spriteDirection == 1 ? SpreadR : SpreadB;
             int Frag = npc.spriteDirection == 1 ? FragR : FragB;
-            int Inferno = mod.ProjectileType<DiscordianInferno>();
+            int Inferno = ModContent.ProjectileType<DiscordianInferno>();
 
             #endregion
 
@@ -205,7 +205,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.netUpdate = true;
             }
 
-            if (NPC.AnyNPCs(mod.NPCType<GripsShen.BlazeGrip>()) || NPC.AnyNPCs(mod.NPCType<GripsShen.AbyssGrip>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<GripsShen.BlazeGrip>()) || NPC.AnyNPCs(ModContent.NPCType<GripsShen.AbyssGrip>()))
             {
                 if (npc.alpha > 50)
                 {
@@ -223,8 +223,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                     {
-                        int dust = spawnDust == 1 ? mod.DustType<Dusts.AkumaADust>() : mod.DustType<Dusts.YamataADust>();
-                        if (Main.rand.Next(4) == 0) dust = mod.DustType<Dusts.Discord>();
+                        int dust = spawnDust == 1 ? ModContent.DustType<Dusts.AkumaADust>() : ModContent.DustType<Dusts.YamataADust>();
+                        if (Main.rand.Next(4) == 0) dust = ModContent.DustType<Dusts.Discord>();
                         int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 100, default, 2f);
                         Main.dust[num935].noGravity = true;
                         Main.dust[num935].noLight = true;
@@ -302,7 +302,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     break;
 
                 case 1: //Fire Breath
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<ShenABreath>(), ref npc.ai[2], 5, npc.damage / 2, 13, false, new Vector2(167 * npc.direction, 0));
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<ShenABreath>(), ref npc.ai[2], 5, npc.damage / 2, 13, false, new Vector2(167 * npc.direction, 0));
                     if (++npc.ai[1] > 120)
                     {
                         npc.ai[0]++;
@@ -793,7 +793,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void NPCLoot()
         {
-            if (npc.type != mod.NPCType<ShenA>())
+            if (npc.type != ModContent.NPCType<ShenA>())
             {
                 npc.DropLoot(Items.Vanity.Mask.ShenMask.type, 1f / 7);
                 if (!Main.expertMode)
@@ -801,7 +801,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (!AAWorld.downedShen)
                     {
                         if (Main.netMode != 1) AAMod.Chat("Heh, alright. I’ll leave you alone I guess. But if you come back stronger, I’ll show you the power of true unyielding chaos...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
-                        if (Main.netMode != 1) BaseUtility.Chat("The defeat of a superancient empowers the stonekeepers.", Color.LimeGreen.R, Color.LimeGreen.G, Color.LimeGreen.B);
                     }
                     else
                     {
@@ -817,7 +816,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 else
                 {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType<ShenTransition>());
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<ShenTransition>());
                 }
                 BaseAI.DropItem(npc, mod.ItemType("ShenTrophy"), 1, 1, 15, true);
                 npc.value = 0f;

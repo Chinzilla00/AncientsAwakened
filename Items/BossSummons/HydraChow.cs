@@ -53,7 +53,7 @@ Can only be used at night");
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Nothing is coming. The creatures of the Mire sleep.", Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
                 return false;
             }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
+            if (player.GetModPlayer<AAPlayer>().ZoneMire)
 			{
 				if (NPC.AnyNPCs(mod.NPCType("Hydra")))
 				{

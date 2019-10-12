@@ -48,7 +48,7 @@ namespace AAMod.Projectiles.AH
 			float num15 = 1200f;
 			float num16 = 150f;
 			Player player = Main.player[projectile.owner];
-			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 			player.AddBuff(mod.BuffType("ChaosClaw"), 3600);
             if (player.dead)
             {

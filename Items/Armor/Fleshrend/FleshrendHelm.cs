@@ -41,7 +41,7 @@ namespace AAMod.Items.Armor.Fleshrend
 Increased life regen";
 
             player.crimsonRegen = true;
-			player.GetModPlayer<AAPlayer>(mod).fleshrendSet = true;
+			player.GetModPlayer<AAPlayer>().fleshrendSet = true;
 		}
 
 		public override void AddRecipes()

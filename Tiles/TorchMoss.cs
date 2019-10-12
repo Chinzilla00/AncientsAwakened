@@ -22,7 +22,7 @@ namespace AAMod.Tiles
             Main.tileLighted[Type] = true;
             dustType = mod.DustType("RazeleafDust");
             AddMapEntry(new Color(255, 153, 51));
-            drop = mod.ItemType<Items.Blocks.Torchstone>();
+            drop = ModContent.ItemType<Items.Blocks.Torchstone>();
         }
 
         public override void RandomUpdate(int i, int j)

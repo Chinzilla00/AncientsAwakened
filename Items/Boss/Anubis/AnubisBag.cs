@@ -59,7 +59,7 @@ namespace AAMod.Items.Boss.Anubis
             }
             if (Main.rand.Next(20) == 0)
             {
-                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.HMDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("ForsakenFragment"), Main.rand.Next(8, 16));

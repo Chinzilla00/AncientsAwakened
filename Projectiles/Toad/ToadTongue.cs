@@ -29,8 +29,8 @@ namespace AAMod.Projectiles.Toad
                 Dust dust1;
                 Dust dust2;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.ShroomDust>(), 0, 0, 0, default, 1f)];
-                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.ShroomDust>(), 0, 0, 0, default, 1f)];
+                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, ModContent.DustType<Dusts.ShroomDust>(), 0, 0, 0, default, 1f)];
+                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, ModContent.DustType<Dusts.ShroomDust>(), 0, 0, 0, default, 1f)];
                 dust1.noGravity = true;
                 dust2.noGravity = true;
             }
@@ -169,7 +169,7 @@ namespace AAMod.Projectiles.Toad
         // chain voodoo
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         { 
-            Texture2D texture = ModContent.GetTexture("AAMod/Projectiles/Toad/ToadTongue_Chain");
+            Texture2D texture = mod.GetTexture("Chains/ToadTongue_Chain");
  
             Vector2 position = projectile.Center;
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;

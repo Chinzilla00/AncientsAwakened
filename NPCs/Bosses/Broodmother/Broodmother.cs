@@ -230,7 +230,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 return;
             }
 
-            int Minions = NPC.CountNPCS(mod.NPCType<BroodEgg>()) + NPC.CountNPCS(mod.NPCType<Broodmini>());
+            int Minions = NPC.CountNPCS(ModContent.NPCType<BroodEgg>()) + NPC.CountNPCS(ModContent.NPCType<Broodmini>());
 
             if (Main.netMode != 1 && internalAI[0]++ >= 120)
             {
@@ -255,7 +255,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 npc.active = false;
             }
 
-            if (!Main.player[npc.target].GetModPlayer<AAPlayer>(mod).ZoneInferno)
+            if (!Main.player[npc.target].GetModPlayer<AAPlayer>().ZoneInferno)
             {
                 npc.dontTakeDamage = true;
                 npc.damage = 130;
@@ -304,7 +304,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                     internalAI[2]++;
                     if (internalAI[2] > 30f)
                     {
-                        BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, mod.ProjectileType<BroodBreath>(), ref internalAI[3], 5, damage, 12, true, new Vector2(0, 40f));
+                        BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<BroodBreath>(), ref internalAI[3], 5, damage, 12, true, new Vector2(0, 40f));
                     }
                     if (internalAI[2] > 90)
                     {
@@ -329,7 +329,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                         firePos = BaseUtility.RotateVector(npc.Center, firePos, npc.rotation); //+ (npc.direction == -1 ? (float)Math.PI : 0f)));
                         if (Minions < MaxMinions)
                         {
-                            int NPCID = NPC.NewNPC((int)firePos.X, (int)firePos.Y, mod.NPCType<BroodEgg>(), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                            int NPCID = NPC.NewNPC((int)firePos.X, (int)firePos.Y, ModContent.NPCType<BroodEgg>(), npc.whoAmI, 0f, 0f, 0f, 0f, 255);
                             Main.npc[NPCID].velocity.Y = 4f;
                             Main.npc[NPCID].netUpdate = true;
                         }

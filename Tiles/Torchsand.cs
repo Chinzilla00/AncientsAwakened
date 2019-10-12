@@ -21,7 +21,7 @@ namespace AAMod.Tiles
             SetModCactus(new Razetus());
             SetModPalmTree(new RazePalmTree());
             TileID.Sets.Conversion.Sand[Type] = true;
-            dustType = mod.DustType<Dusts.RazewoodDust>();
+            dustType = ModContent.DustType<Dusts.RazewoodDust>();
         }
 
         public override bool TileFrame(int i, int j, ref bool resetFrame, ref bool noBreak)

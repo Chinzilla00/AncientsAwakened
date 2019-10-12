@@ -42,7 +42,7 @@ N0N-C0NSUMABLE");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneVoid)
+            if (player.GetModPlayer<AAPlayer>().ZoneVoid)
             {
                 if (NPC.AnyNPCs(mod.NPCType("Zero")))
                 {

@@ -36,7 +36,7 @@ namespace AAMod.Items.Boss.Athena
             }
             if (Main.rand.Next(20) == 0)
             {
-                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PMLDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("GoddessFeather"), Main.rand.Next(20, 25));

@@ -62,7 +62,7 @@ you can do a swift dash";
             player.aggro -= 6;
             player.rangedDamage += .2f;
             player.meleeDamage += .2f;
-            player.GetModPlayer<AAPlayer>(mod).Assassin = true;
+            player.GetModPlayer<AAPlayer>().Assassin = true;
         }
 	}
 }

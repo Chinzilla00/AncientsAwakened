@@ -30,11 +30,11 @@ namespace AAMod.Items.Boss.MushroomMonarch
         {
             if (Main.rand.Next(7) == 0)
             {
-                player.QuickSpawnItem(mod.ItemType<Vanity.Mask.FungusMask>());
+                player.QuickSpawnItem(Terraria.ModLoader.ModContent.ItemType<Vanity.Mask.FungusMask>());
             }
             if (Main.rand.Next(20) == 0)
             {
-                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PHMDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("GlowingMushium"), Main.rand.Next(30, 40));

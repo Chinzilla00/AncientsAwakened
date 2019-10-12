@@ -33,7 +33,7 @@ namespace AAMod.Items.Armor.Kindled
 			player.setBonus = @"5% increased damage resistance
 Your Swung weapons set your enemies ablaze";
             player.endurance *= 1.05f;
-            player.GetModPlayer<AAPlayer>(mod).kindledSet = true;
+            player.GetModPlayer<AAPlayer>().kindledSet = true;
         }
 
         public override void AddRecipes()

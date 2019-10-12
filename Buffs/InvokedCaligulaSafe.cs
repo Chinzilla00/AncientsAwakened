@@ -17,7 +17,7 @@ namespace AAMod.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<InvokerPlayer>(mod).InvokedCaligula = true;
+            player.GetModPlayer<InvokerPlayer>().InvokedCaligula = true;
 			
 			player.buffTime[buffIndex] = 18000;
         }

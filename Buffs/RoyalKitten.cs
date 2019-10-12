@@ -16,7 +16,7 @@ namespace AAMod.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             player.buffTime[buffIndex] = 1800000;
-            player.GetModPlayer<AAPlayer>(mod).RoyalKitten = true;
+            player.GetModPlayer<AAPlayer>().RoyalKitten = true;
             bool petProjectileNotSpawned = player.ownedProjectileCounts[mod.ProjectileType("RoyalKitten")] <= 0;
             if (petProjectileNotSpawned && player.whoAmI == Main.myPlayer)
             {

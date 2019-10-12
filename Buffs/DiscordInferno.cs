@@ -17,12 +17,12 @@ namespace AAMod.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<AAPlayer>(mod).discordInferno = true;
+            player.GetModPlayer<AAPlayer>().discordInferno = true;
         }
 
         public override void Update(NPC npc, ref int buffIndex)
 		{
-			npc.GetGlobalNPC<AAModGlobalNPC>(mod).DiscordInferno = true;
+			npc.GetGlobalNPC<AAModGlobalNPC>().DiscordInferno = true;
 		}
 	}
 }

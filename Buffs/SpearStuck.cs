@@ -18,14 +18,14 @@ namespace AAMod.Buffs
 
 		public override void Update(Player player, ref int buffIndex)
 		{
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
-            player.GetModPlayer<AAPlayer>(mod).Spear = true;
+            player.GetModPlayer<AAPlayer>().Spear = true;
         }
 
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-            AAModGlobalNPC GNPC = npc.GetGlobalNPC<AAModGlobalNPC>(mod);
+            AAModGlobalNPC GNPC = npc.GetGlobalNPC<AAModGlobalNPC>();
 
             GNPC.Spear = true;
         }

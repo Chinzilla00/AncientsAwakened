@@ -79,7 +79,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             {
                 damage = npc.damage / 2;
             }
-            if (!NPC.AnyNPCs(mod.NPCType<Sagittarius>()))
+            if (!NPC.AnyNPCs(ModContent.NPCType<Sagittarius>()))
             {
                 npc.life = 0;
             }
@@ -247,9 +247,9 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override void NPCLoot()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Sagittarius>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<Sagittarius>()))
             {
-                Item.NewItem(npc.Center, mod.ItemType<Items.Materials.Doomite>(), Main.rand.Next(2));
+                Item.NewItem(npc.Center, ModContent.ItemType<Items.Materials.Doomite>(), Main.rand.Next(2));
             }
         }
 

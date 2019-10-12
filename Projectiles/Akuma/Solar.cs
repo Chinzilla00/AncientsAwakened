@@ -8,8 +8,6 @@ namespace AAMod.Projectiles.Akuma   //The directory for your .cs and .png; Examp
 {
     public class Solar : ModProjectile   //make sure the sprite file is named like the class name (CustomYoyoProjectile)
     {
-
-
         public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
@@ -47,8 +45,8 @@ namespace AAMod.Projectiles.Akuma   //The directory for your .cs and .png; Examp
             Dust dust1;
             Dust dust2;
             Vector2 position = projectile.position;
-            dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default, 1f)];
-            dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default, 1f)];
+            dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 0, default, 1f)];
+            dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default, 1f)];
             dust1.noGravity = true;
             dust2.noGravity = true;
         }
@@ -59,7 +57,7 @@ namespace AAMod.Projectiles.Akuma   //The directory for your .cs and .png; Examp
         {
             target.AddBuff(BuffID.Daybreak, 300);
             Main.PlaySound(SoundID.Item14, projectile.position);
-            Projectile.NewProjectile(projectile.position, projectile.velocity, mod.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
+            Projectile.NewProjectile(projectile.position, projectile.velocity, ModContent.ProjectileType<AkumaExp>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.whoAmI);
         }
     }
 }

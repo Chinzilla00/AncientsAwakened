@@ -38,7 +38,7 @@ namespace AAMod.Items.Dev.Minions
         {
             bool flag64 = projectile.type == mod.ProjectileType("SockPuppetEX");
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (flag64)
             {
                 if (player.dead)

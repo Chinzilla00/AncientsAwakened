@@ -151,7 +151,7 @@ namespace AAMod.NPCs.TownNPCs
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
             Player player = Main.LocalPlayer;
-            AAPlayer p = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer p = player.GetModPlayer<AAPlayer>();
 
             if (firstButton)
             {
@@ -164,23 +164,23 @@ namespace AAMod.NPCs.TownNPCs
 
                 int Mushman = NPC.FindFirstNPC(mod.NPCType("Mushman"));
 
-                int Item1 = player.FindItem(mod.ItemType<Items.Materials.TerraShard>());
-                int Item2 = player.FindItem(mod.ItemType<Items.Materials.DragonScale>());
-                int Item3 = player.FindItem(mod.ItemType<Items.Materials.MirePod>());
+                int Item1 = player.FindItem(ModContent.ItemType<Items.Materials.TerraShard>());
+                int Item2 = player.FindItem(ModContent.ItemType<Items.Materials.DragonScale>());
+                int Item3 = player.FindItem(ModContent.ItemType<Items.Materials.MirePod>());
                 int Item4 = player.FindItem(ItemID.RottenChunk);
                 int Item5 = player.FindItem(ItemID.Vertebrae);
                 int Item6 = player.FindItem(ItemID.PixieDust);
-                int Item7 = player.FindItem(mod.ItemType<Items.Materials.DoomiteScrap>());
+                int Item7 = player.FindItem(ModContent.ItemType<Items.Materials.DoomiteScrap>());
                 int Item8 = player.FindItem(ItemID.JungleSpores);
-                int Item9 = player.FindItem(mod.ItemType<Items.Boss.MushroomMonarch.Mushium>());
-                int Item10 = player.FindItem(mod.ItemType<Items.Boss.MushroomMonarch.GlowingMushium>());
+                int Item9 = player.FindItem(ModContent.ItemType<Items.Boss.MushroomMonarch.Mushium>());
+                int Item10 = player.FindItem(ModContent.ItemType<Items.Boss.MushroomMonarch.GlowingMushium>());
                 int Item11 = player.FindItem(ItemID.Stinger);
                 int Item12 = player.FindItem(ItemID.IceMachine);
                 int Item13 = player.FindItem(ItemID.Bunny);
 
                 if (Item1 >= 0 && AAWorld.squid1 < 5) //Item 1: 3 Blueberries
                 {
-                    Main.npcChatCornerItem = mod.ItemType<Items.Materials.TerraShard>();
+                    Main.npcChatCornerItem = ModContent.ItemType<Items.Materials.TerraShard>();
                     player.inventory[Item1].stack--;
                     if (player.inventory[Item1].stack <= 0)
                     {
@@ -202,7 +202,7 @@ namespace AAMod.NPCs.TownNPCs
                 }
                 else if (Item2 >= 0 && AAWorld.squid2 < 5) //Item 2: 3 Teal Mushrooms
                 {
-                    Main.npcChatCornerItem = mod.ItemType<Items.Materials.DragonScale>();
+                    Main.npcChatCornerItem = ModContent.ItemType<Items.Materials.DragonScale>();
                     player.inventory[Item2].stack--;
                     if (player.inventory[Item2].stack <= 0)
                     {
@@ -224,7 +224,7 @@ namespace AAMod.NPCs.TownNPCs
                 }
                 else if (Item3 >= 0 && AAWorld.squid3 < 5)
                 {
-                    Main.npcChatCornerItem = mod.ItemType<Items.Materials.MirePod>();
+                    Main.npcChatCornerItem = ModContent.ItemType<Items.Materials.MirePod>();
                     player.inventory[Item3].stack--;
                     if (player.inventory[Item3].stack <= 0)
                     {
@@ -310,7 +310,7 @@ namespace AAMod.NPCs.TownNPCs
                 }
                 else if (Item7 >= 0 && AAWorld.squid7 < 5)
                 {
-                    Main.npcChatCornerItem = mod.ItemType<Items.Materials.DoomiteScrap>();
+                    Main.npcChatCornerItem = ModContent.ItemType<Items.Materials.DoomiteScrap>();
                     player.inventory[Item7].stack--;
                     if (player.inventory[Item7].stack <= 0)
                     {
@@ -352,7 +352,7 @@ namespace AAMod.NPCs.TownNPCs
                 }
                 else if (Item9 >= 0 && AAWorld.squid9 < 5 && Mushman >= 0)
                 {
-                    Main.npcChatCornerItem = mod.ItemType<Items.Boss.MushroomMonarch.Mushium>();
+                    Main.npcChatCornerItem = ModContent.ItemType<Items.Boss.MushroomMonarch.Mushium>();
                     player.inventory[Item9].stack--;
                     if (player.inventory[Item9].stack <= 0)
                     {
@@ -373,7 +373,7 @@ namespace AAMod.NPCs.TownNPCs
                 }
                 else if (Item10 >= 0 && AAWorld.squid10 < 5 && Mushman >= 0)
                 {
-                    Main.npcChatCornerItem = mod.ItemType<Items.Boss.MushroomMonarch.GlowingMushium>();
+                    Main.npcChatCornerItem = ModContent.ItemType<Items.Boss.MushroomMonarch.GlowingMushium>();
                     player.inventory[Item10].stack--;
                     if (player.inventory[Item10].stack <= 0)
                     {
@@ -458,7 +458,7 @@ namespace AAMod.NPCs.TownNPCs
                 }
                 else
                 {
-                    if (!BaseMod.BasePlayer.HasItem(player, mod.ItemType<Items.Flasks.SquidList>()))
+                    if (!BaseMod.BasePlayer.HasItem(player, ModContent.ItemType<Items.Flasks.SquidList>()))
                     {
                         Main.npcChatText = "Here's a list of some things I need for my research. If you lose it, I'll happily write up a new one for you";
                         int itemID = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("SquidList"), 1, false, 0, false, false);
@@ -482,76 +482,76 @@ namespace AAMod.NPCs.TownNPCs
         {
             if (AAWorld.squid1 >= 5)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.PurityFlask>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Flasks.PurityFlask>());
                 nextSlot++;
             }
             if (AAWorld.squid2 >= 5)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.AshJar>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Flasks.AshJar>());
                 nextSlot++;
             }
             if (AAWorld.squid3 >= 5)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.DarkwaterFlask>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Flasks.DarkwaterFlask>());
                 nextSlot++;
             }
             if (AAWorld.squid4 >= 5)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.CorruptionFlask>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Flasks.CorruptionFlask>());
                 nextSlot++;
             }
             if (AAWorld.squid5 >= 5)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.CrimsonFlask>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Flasks.CrimsonFlask>());
                 nextSlot++;
             }
             if (AAWorld.squid6 >= 5)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.HallowFlask>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Flasks.HallowFlask>());
                 nextSlot++;
             }
             if (AAWorld.squid7 >= 5)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.VoidFlask>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Flasks.VoidFlask>());
                 nextSlot++;
             }
             if (AAWorld.squid8 >= 5)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.Fungicide>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Flasks.Fungicide>());
                 nextSlot++;
             }
             if (AAWorld.squid9 >= 5)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Usable.SporeSac>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Usable.SporeSac>());
                 nextSlot++;
             }
             if (AAWorld.squid10 >= 5)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.GlowingSporeSac>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Flasks.GlowingSporeSac>());
                 nextSlot++;
             }
             if (AAWorld.squid11 >= 5)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.JungleFlask>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Flasks.JungleFlask>());
                 nextSlot++;
             }
             if (AAWorld.squid12 >= 1)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.IceFlask>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Flasks.IceFlask>());
                 nextSlot++;
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.IcemeltFlask>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Flasks.IcemeltFlask>());
                 nextSlot++;
             }
             if (AAWorld.squid13 >= 5)
             {
-                shop.item[nextSlot].SetDefaults(mod.ItemType<Items.Flasks.ForestFlask>());
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Flasks.ForestFlask>());
                 nextSlot++;
             }
         }
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = mod.ProjectileType<EyeShot>();
+            projType = ModContent.ProjectileType<EyeShot>();
             attackDelay = 1;
         }
         public override void TownNPCAttackStrength(ref int damage, ref float knockback)

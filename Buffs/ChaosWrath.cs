@@ -15,7 +15,7 @@ namespace AAMod.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (modPlayer.perfectChaosRa)
             {
                 if (player.statLife <= player.statLifeMax2 * .2f)

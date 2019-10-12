@@ -29,7 +29,7 @@ Below 1/3 of your maximum life, your magic attacks and minions inflict Daybroken
         {
             player.magicDamage += 1 - player.statLife / player.statLifeMax;
             player.minionDamage += 1 - player.statLife / player.statLifeMax;
-            player.GetModPlayer<AAPlayer>(mod).HeartP = true;
+            player.GetModPlayer<AAPlayer>().HeartP = true;
 
             if (player.statLife > (player.statLifeMax * (2/3)))
             {
@@ -44,7 +44,7 @@ Below 1/3 of your maximum life, your magic attacks and minions inflict Daybroken
                 int maxAccessoryIndex = 5 + player.extraAccessorySlots;
                 for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
-                    if (slot != i && player.armor[i].type == mod.ItemType<HeartOfSorrow>())
+                    if (slot != i && player.armor[i].type == ModContent.ItemType<HeartOfSorrow>())
                     {
                         return false;
                     }

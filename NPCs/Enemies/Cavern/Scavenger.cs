@@ -410,7 +410,7 @@ namespace AAMod.NPCs.Enemies.Cavern
         public override void NPCLoot()
         {
             BaseAI.DropItem(npc, mod.ItemType("CovetiteCrystal"), Main.expertMode ? 1 + Main.rand.Next(1) : 1, 5, Main.expertMode ? 40 : 30, true);
-            npc.DropLoot(mod.ItemType<Items.Usable.GreedKey>(), .05f);
+            npc.DropLoot(ModContent.ItemType<Items.Usable.GreedKey>(), .05f);
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)

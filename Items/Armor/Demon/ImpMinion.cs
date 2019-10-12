@@ -31,7 +31,7 @@ namespace AAMod.Items.Armor.Demon
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = Main.player[projectile.owner].GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = Main.player[projectile.owner].GetModPlayer<AAPlayer>();
             if (player.dead)
             {
                 modPlayer.ImpServant = false;

@@ -34,7 +34,7 @@ namespace AAMod.Items.Boss.Sagittarius
             }
             if (Main.rand.Next(20) == 0)
             {
-                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PHMDevArmor();
             }
             string[] lootTable = { "SagCore", "NeutronStaff","Legg" };

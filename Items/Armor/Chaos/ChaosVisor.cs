@@ -38,7 +38,7 @@ namespace AAMod.Items.Armor.Chaos
             player.setBonus = @"+4 Minion slots
 A void scout hunts down your foes for you";
             player.maxMinions += 4;
-            player.GetModPlayer<AAPlayer>(mod).doomite = true;
+            player.GetModPlayer<AAPlayer>().doomite = true;
             if (player.whoAmI == Main.myPlayer)
             {
                 if (player.FindBuffIndex(mod.BuffType("ScoutMinion")) == -1)

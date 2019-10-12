@@ -20,7 +20,7 @@ namespace AAMod.Tiles.Boxes
 			disableSmartCursor = true;
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Music Box");
-            dustType = mod.DustType<Dusts.Discord>();
+            dustType = ModContent.DustType<Dusts.Discord>();
             AddMapEntry(new Color(200, 200, 200), name);
 		}
 

@@ -33,7 +33,7 @@ namespace AAMod.Projectiles.Rajah
         {
             bool flag64 = projectile.type == mod.ProjectileType("RabbitcopterSoldier");
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (!player.active)
             {
                 projectile.active = false;

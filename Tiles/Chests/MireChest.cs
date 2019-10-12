@@ -160,7 +160,7 @@ namespace AAMod.Tiles.Chests
             {
                 if (isLocked)
                 {
-                    int key = mod.ItemType<Items.Usable.MireKey>();
+                    int key = ModContent.ItemType<Items.Usable.MireKey>();
                     if (player.ConsumeItem(key) && Chest.Unlock(left, top))
                     {
                         if (Main.netMode == NetmodeID.MultiplayerClient)
@@ -222,7 +222,7 @@ namespace AAMod.Tiles.Chests
                 {
                     player.showItemIcon2 = mod.ItemType("MireChest");
                     if (Main.tile[left, top].frameX / 36 == 1)
-                        player.showItemIcon2 = mod.ItemType<Items.Usable.MireKey>();
+                        player.showItemIcon2 = ModContent.ItemType<Items.Usable.MireKey>();
                     player.showItemIconText = "";
                 }
             }

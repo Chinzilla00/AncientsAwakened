@@ -40,7 +40,7 @@ namespace AAMod.Items.Armor.Chaos
                 }
             }
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             player.AddBuff(mod.BuffType("DragonSpirit"), 3600);
             if (player.dead)
             {

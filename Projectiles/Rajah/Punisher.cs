@@ -96,7 +96,7 @@ namespace AAMod.Projectiles.Rajah
                 vector55.Normalize();
                 vector55 *= Main.rand.Next(45, 65) * 0.1f;
                 vector55 = vector55.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866, default);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X * 2, vector55.Y * 2, mod.ProjectileType<Carrot>(), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X * 2, vector55.Y * 2, ModContent.ProjectileType<Carrot>(), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
                 return;
             }
         }
@@ -119,7 +119,7 @@ namespace AAMod.Projectiles.Rajah
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Texture2D texture = ModContent.GetTexture("AAMod/Projectiles/Rajah/Punisher_Chain");
+            Texture2D texture = mod.GetTexture("Chains/Punisher_Chain");
  
             Vector2 position = projectile.Center;
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;

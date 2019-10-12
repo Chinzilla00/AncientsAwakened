@@ -36,13 +36,13 @@ namespace AAMod.NPCs.Enemies.Mushroom
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
 		{
-            return spawnInfo.player.GetModPlayer<AAPlayer>(mod).ZoneMush ? .7f : 0f;
+            return spawnInfo.player.GetModPlayer<AAPlayer>().ZoneMush ? .7f : 0f;
         }
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
 
-            int dust1 = mod.DustType<Dusts.MushDust>();
+            int dust1 = ModContent.DustType<Dusts.MushDust>();
             if (npc.life <= 0)
 			{
                 Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);

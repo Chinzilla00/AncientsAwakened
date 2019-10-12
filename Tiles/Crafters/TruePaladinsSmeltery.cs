@@ -23,7 +23,7 @@ namespace AAMod.Tiles.Crafters
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("True Paladin's Smeltery");
-            dustType = mod.DustType<Dusts.DaybreakIncineriteDust>();
+            dustType = ModContent.DustType<Dusts.DaybreakIncineriteDust>();
             AddMapEntry(new Color(40, 40, 40), name);
             disableSmartCursor = true;
             adjTiles = new int[]

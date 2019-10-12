@@ -17,7 +17,7 @@ namespace AAMod.Buffs
 		public override void Update(Player player, ref int buffIndex)
 		{
 			player.buffTime[buffIndex] = 1800000;
-            player.GetModPlayer<AAPlayer>(mod).Sharkron = true;
+            player.GetModPlayer<AAPlayer>().Sharkron = true;
 			bool petProjectileNotSpawned = player.ownedProjectileCounts[mod.ProjectileType("Sharkron")] <= 0;
 			if (petProjectileNotSpawned && player.whoAmI == Main.myPlayer)
 			{

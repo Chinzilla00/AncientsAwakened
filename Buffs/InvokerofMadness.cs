@@ -18,7 +18,7 @@ namespace AAMod.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetModPlayer<InvokerPlayer>(mod).InvokerMadness = true;
+            player.GetModPlayer<InvokerPlayer>().InvokerMadness = true;
         }
 	}
 }

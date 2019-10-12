@@ -54,7 +54,7 @@ Non-Consumable");
 
         public override bool UseItem(Player player)
 		{
-            SpawnBoss(player, mod.NPCType<NPCs.Bosses.Yamata.Yamata>(), true, new Vector2(player.Center.X, player.Center.Y - 100), "Yamata, Dread Nightmare");
+            SpawnBoss(player, ModContent.NPCType<NPCs.Bosses.Yamata.Yamata>(), true, new Vector2(player.Center.X, player.Center.Y - 100), "Yamata, Dread Nightmare");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"), player.position);
             if (!AAWorld.downedYamata)
             {
@@ -75,9 +75,9 @@ Non-Consumable");
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!", new Color(45, 46, 70), false);
                 return false;
             }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneMire)
+            if (player.GetModPlayer<AAPlayer>().ZoneMire)
 			{
-                if (!AAWorld.downedYamata && !player.GetModPlayer<AAPlayer>(mod).ZoneRisingMoonLake)
+                if (!AAWorld.downedYamata && !player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake)
                 {
                     if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("You NEED to use that sigil on the altar at the center of the mire! Trust me, nothing bad will happen!", new Color(45, 46, 70), false);
                     return false;

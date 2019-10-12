@@ -37,7 +37,7 @@ namespace AAMod.Items.Summoning.Minions.Terra
         {
 			projectile.tileCollide = false;
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 			if (modPlayer.TerraSummon)
 			{
 				projectile.timeLeft = 2;
@@ -210,7 +210,7 @@ namespace AAMod.Items.Summoning.Minions.Terra
             if (projectile.ai[0] == 0f)
             {
                 float scaleFactor3 = 8f;
-                int num658 = mod.ProjectileType<SummonShot>();
+                int num658 = ModContent.ProjectileType<SummonShot>();
                 if (flag25 && projectile.ai[1] == 0f)
                 {
                     projectile.ai[1] += 1f;

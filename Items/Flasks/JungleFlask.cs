@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Flasks
 {
@@ -13,7 +14,7 @@ namespace AAMod.Items.Flasks
             item.consumable = true;
             item.useTime = 28;
             item.useAnimation = 28;
-            item.shoot = mod.ProjectileType<Projectiles.JungleSolution>();
+            item.shoot = ModContent.ProjectileType<Projectiles.JungleSolution>();
             item.shootSpeed = 1f;
             item.useStyle = 1;
             item.value = Item.sellPrice(0, 0, 1, 0);

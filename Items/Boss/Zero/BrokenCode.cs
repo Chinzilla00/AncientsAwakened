@@ -56,7 +56,7 @@ While cooldown is occurring, your magic/summon weapons require no mana and have 
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.buffImmune[mod.BuffType<Buffs.Unstable>()] = true;
+            player.buffImmune[ModContent.BuffType<Buffs.Unstable>()] = true;
             if (player.controlHook && CodeCD == 0 && Main.myPlayer == player.whoAmI)
             {
                 Vector2 vector32;
@@ -80,7 +80,7 @@ While cooldown is occurring, your magic/summon weapons require no mana and have 
                         NetMessage.SendData(65, -1, -1, null, 0, player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
                         Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));
                         CodeCD = 300;
-                        player.AddBuff(mod.BuffType<Buffs.Glitched>(), 300);
+                        player.AddBuff(ModContent.BuffType<Buffs.Glitched>(), 300);
                     }
                 }
             }

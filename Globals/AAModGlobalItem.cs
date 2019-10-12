@@ -106,12 +106,12 @@ namespace AAMod
 
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
-            if (player.HeldItem.type == mod.ItemType<Items.Usable.CodeMagnetWeak>())
+            if (player.HeldItem.type == ModContent.ItemType<Items.Usable.CodeMagnetWeak>())
             {
                 grabRange += 250;
             }
 
-            if (player.HeldItem.type == mod.ItemType<Items.Usable.CodeMagnet>())
+            if (player.HeldItem.type == ModContent.ItemType<Items.Usable.CodeMagnet>())
             {
                 grabRange += 1920;
             }
@@ -119,7 +119,7 @@ namespace AAMod
 
         public override bool CanEquipAccessory(Item item, Player player, int slot)
         {
-            if (item.type == ItemID.AnkhShield || item.type == ItemID.ObsidianShield || item.type == mod.ItemType<TaiyangBaolei>())
+            if (item.type == ItemID.AnkhShield || item.type == ItemID.ObsidianShield || item.type == ModContent.ItemType<TaiyangBaolei>())
             {
                 if (slot < 10)
                 {
@@ -137,7 +137,7 @@ namespace AAMod
                             return false;
                         }
 
-                        if (slot != i && player.armor[i].type == mod.ItemType<TaiyangBaolei>())
+                        if (slot != i && player.armor[i].type == ModContent.ItemType<TaiyangBaolei>())
                         {
                             return false;
                         }
@@ -145,7 +145,7 @@ namespace AAMod
                 }
             }
 
-            if (item.type == ItemID.EoCShield ||  item.type == mod.ItemType<BulwarkOfChaos>())
+            if (item.type == ItemID.EoCShield ||  item.type == ModContent.ItemType<BulwarkOfChaos>())
             {
                 if (slot < 10)
                 {
@@ -158,7 +158,7 @@ namespace AAMod
                             return false;
                         }
 
-                        if (slot != i && player.armor[i].type == mod.ItemType<BulwarkOfChaos>())
+                        if (slot != i && player.armor[i].type == ModContent.ItemType<BulwarkOfChaos>())
                         {
                             return false;
                         }
@@ -176,12 +176,12 @@ namespace AAMod
 
         public override bool OnPickup(Item item, Player player)
         {
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (item.ammo == AmmoID.Coin)
             {
                 if (modPlayer.GreedCharm)
                 {
-                    player.AddBuff(mod.BuffType<Items.Boss.Greed.CharmBuff>(), 240);
+                    player.AddBuff(ModContent.BuffType<Items.Boss.Greed.CharmBuff>(), 240);
                     if (modPlayer.GreedyDamage < 20)
                     {
                         modPlayer.GreedyDamage += 1;
@@ -189,7 +189,7 @@ namespace AAMod
                 }
                 else if (modPlayer.GreedTalisman)
                 {
-                    player.AddBuff(mod.BuffType<Items.Boss.Greed.TalismanBuff>(), 240);
+                    player.AddBuff(ModContent.BuffType<Items.Boss.Greed.TalismanBuff>(), 240);
                     if (modPlayer.GreedyDamage < 40)
                     {
                         modPlayer.GreedyDamage += 1;
@@ -273,13 +273,13 @@ namespace AAMod
             {
                 if (Main.hardMode && Main.rand.Next(2) == 0)
                 {
-                    int item = CrateType == 1 ? mod.ItemType<Items.Materials.SoulOfSpite>() : mod.ItemType<Items.Materials.SoulOfSmite>();
+                    int item = CrateType == 1 ? ModContent.ItemType<Items.Materials.SoulOfSpite>() : ModContent.ItemType<Items.Materials.SoulOfSmite>();
                     player.QuickSpawnItem(item, Main.rand.Next(2, 6));
                 }
 
                 if (Main.hardMode && Main.rand.Next(2) == 0)
                 {
-                    int item = CrateType == 1 ? mod.ItemType<Items.Materials.HydraToxin>() : mod.ItemType<Items.Materials.DragonFire>();
+                    int item = CrateType == 1 ? ModContent.ItemType<Items.Materials.HydraToxin>() : ModContent.ItemType<Items.Materials.DragonFire>();
                     player.QuickSpawnItem(item, Main.rand.Next(2, 6));
                 }
             }
@@ -305,7 +305,7 @@ namespace AAMod
         }
         public override bool CanUseItem(Item item, Player player)
         {
-            if (player.GetModPlayer<InvokerPlayer>(mod).InvokedCaligula && player.inventory[player.selectedItem].damage > 0 && !(player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula && player.inventory[player.selectedItem].type == mod.ItemType("InvokerStaff") && player.altFunctionUse == 2))
+            if (player.GetModPlayer<InvokerPlayer>().InvokedCaligula && player.inventory[player.selectedItem].damage > 0 && !(player.GetModPlayer<InvokerPlayer>().DarkCaligula && player.inventory[player.selectedItem].type == mod.ItemType("InvokerStaff") && player.altFunctionUse == 2))
             {
                 return false;
             }

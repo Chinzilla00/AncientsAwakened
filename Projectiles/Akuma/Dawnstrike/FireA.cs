@@ -57,7 +57,7 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
             }
             for (int num189 = 0; num189 < 1; num189++)
             {
-                int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.AkumaADust>(), 0f, 0f, 0);
+                int num190 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaADust>(), 0f, 0f, 0);
 
                 Main.dust[num190].scale *= 1.3f;
                 Main.dust[num190].fadeIn = 1f;
@@ -83,7 +83,7 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
             double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
             double deltaAngle = spread / 15;
             double offsetAngle;
-            Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType<ABoom>(), projectile.damage, 2);
+            Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), ModContent.ProjectileType<ABoom>(), projectile.damage, 2);
             int i;
             for (i = 0; i < 15; i++)
             {

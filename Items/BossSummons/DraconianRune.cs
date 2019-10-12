@@ -49,19 +49,19 @@ Non-Consumable");
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.", new Color(180, 41, 32), false);
                 return false;
             }
-            if (player.GetModPlayer<AAPlayer>(mod).ZoneInferno)
+            if (player.GetModPlayer<AAPlayer>().ZoneInferno)
             {
-                if (!player.GetModPlayer<AAPlayer>(mod).ZoneRisingSunPagoda && !AAWorld.downedYamata)
+                if (!player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda && !AAWorld.downedYamata)
                 {
                     if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("An image of the scorched tower at the peak of the inferno flashes through your mind", Color.Indigo, false);
                     return false;
                 }
-                if (NPC.AnyNPCs(mod.NPCType<Akuma>()))
+                if (NPC.AnyNPCs(ModContent.NPCType<Akuma>()))
                 {
                     if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Hey kid, that rune only works once, ya know.", new Color(180, 41, 32), false);
                     return false;
                 }
-                if (NPC.AnyNPCs(mod.NPCType<AkumaA>()))
+                if (NPC.AnyNPCs(ModContent.NPCType<AkumaA>()))
                 {
                     if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Hey kid, that rune only works once, ya know.", new Color(0, 191, 255), false);
                     return false;

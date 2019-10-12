@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Accessories
 {
@@ -16,7 +17,7 @@ namespace AAMod.Items.Accessories
 
         public override void UpdateInventory(Player player)
         {
-            if (item.type == mod.ItemType<AshProofVest0>())
+            if (item.type == ModContent.ItemType<AshProofVest0>())
             {
                 if (Main.itemAnimations[item.type].Frame == 5)
                 {
@@ -27,7 +28,7 @@ namespace AAMod.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            if (item.type == mod.ItemType<AshProofVest0>())
+            if (item.type == ModContent.ItemType<AshProofVest0>())
             {
                 if (Main.itemAnimations[item.type].Frame == 5)
                 {
@@ -41,27 +42,27 @@ namespace AAMod.Items.Accessories
                 {
                     if (Main.rand.Next(3600) == 0)
                     {
-                        if (item.type == mod.ItemType<AshProofVest3>())
+                        if (item.type == ModContent.ItemType<AshProofVest3>())
                         {
                             Main.PlaySound(SoundID.Item34);
-                            item.type = mod.ItemType<AshProofVest2>();
-                            item.CloneDefaults(mod.ItemType<AshProofVest2>());
+                            item.type = ModContent.ItemType<AshProofVest2>();
+                            item.CloneDefaults(ModContent.ItemType<AshProofVest2>());
                             item.stack++;
                             item.stack--;
                         }
-                        else if (item.type == mod.ItemType<AshProofVest2>())
+                        else if (item.type == ModContent.ItemType<AshProofVest2>())
                         {
                             Main.PlaySound(SoundID.Item34);
-                            item.type = mod.ItemType<AshProofVest1>();
-                            item.CloneDefaults(mod.ItemType<AshProofVest1>());
+                            item.type = ModContent.ItemType<AshProofVest1>();
+                            item.CloneDefaults(ModContent.ItemType<AshProofVest1>());
                             item.stack++;
                             item.stack--;
                         }
                         else
                         {
                             Main.PlaySound(SoundID.Item34);
-                            item.type = mod.ItemType<AshProofVest0>();
-                            item.CloneDefaults(mod.ItemType<AshProofVest0>());
+                            item.type = ModContent.ItemType<AshProofVest0>();
+                            item.CloneDefaults(ModContent.ItemType<AshProofVest0>());
                             item.stack++;
                             item.stack--;
                         }

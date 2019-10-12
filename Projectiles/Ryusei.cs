@@ -47,7 +47,7 @@ namespace AAMod.Projectiles
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color dColor)
         {
-            Texture2D chainTex = mod.GetTexture("Projectiles/Ryusei_Chain");
+            Texture2D chainTex = mod.GetTexture("Chains/Ryusei_Chain");
             if (Main.instance.IsActive)
                 for (int m = 0; m < 2; m++)
                     BaseDrawing.DrawChain(spriteBatch, chainTex, 0, projectile.Center, Main.player[projectile.owner].Center);
@@ -60,7 +60,7 @@ namespace AAMod.Projectiles
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.AddBuff(BuffID.OnFire, 300);
-            target.AddBuff(mod.BuffType<Buffs.DragonFire>(), 300);
+            target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 300);
 		}
     }
 }

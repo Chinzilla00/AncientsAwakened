@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Terraria.UI;
 using AAMod.Items.Boss.Zero;
+using Terraria.ModLoader;
 
 namespace AAMod.UI
 {
@@ -20,7 +21,7 @@ namespace AAMod.UI
 
         public override UIState State => AAMod.instance.TerratoolZState;
 
-        public override int HeldItemType => AAMod.instance.ItemType<ZeroTerratool>();
+        public override int HeldItemType => ModContent.ItemType<ZeroTerratool>();
 
         public override void ButtonClicked(int index)
         {

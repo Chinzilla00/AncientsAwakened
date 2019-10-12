@@ -13,7 +13,7 @@ namespace AAMod.Buffs
 
 		public override void Update(NPC npc, ref int buffIndex)
 		{
-            npc.GetGlobalNPC<AAModGlobalNPC>(mod).DynaEnergy2 = true;
+            npc.GetGlobalNPC<AAModGlobalNPC>().DynaEnergy2 = true;
         }
 	}
 }

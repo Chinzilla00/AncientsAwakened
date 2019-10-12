@@ -21,7 +21,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int dustType = mod.DustType<Dusts.OrderSolution>();
+            int dustType = ModContent.DustType<Dusts.OrderSolution>();
             if (projectile.owner == Main.myPlayer)
             {
                 AAWorld.AAConvert((int)(projectile.position.X + projectile.width / 2) / 16, (int)(projectile.position.Y + projectile.height / 2) / 16, 11);

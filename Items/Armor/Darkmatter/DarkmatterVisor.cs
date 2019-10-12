@@ -53,7 +53,7 @@ Your ranged ammunition electrocute enemies
             }
             player.ammoCost75 = true;
             player.rangedCrit += 20;
-            player.GetModPlayer<AAPlayer>(mod).darkmatterSetRa = true;
+            player.GetModPlayer<AAPlayer>().darkmatterSetRa = true;
             player.armorEffectDrawShadowLokis = true;
         }
 

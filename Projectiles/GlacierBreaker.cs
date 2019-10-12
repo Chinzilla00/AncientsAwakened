@@ -29,8 +29,8 @@ namespace AAMod.Projectiles
                 Dust dust1;
                 Dust dust2;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.SnowDust>(), 0, 0, 0)];
-                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, mod.DustType<Dusts.SnowDust>(), 0, 0, 0)];
+                dust1 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, ModContent.DustType<Dusts.SnowDust>(), 0, 0, 0)];
+                dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, ModContent.DustType<Dusts.SnowDust>(), 0, 0, 0)];
                 dust1.noGravity = true;
                 dust2.noGravity = true;
             }
@@ -91,7 +91,7 @@ namespace AAMod.Projectiles
             }
             if ((int)projectile.ai[1] % 8 == 0 && projectile.owner == Main.myPlayer)
             {
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 7, mod.ProjectileType<AsgardianIce>(), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0, 7, ModContent.ProjectileType<AsgardianIce>(), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
                 return;
             }
         }
@@ -113,7 +113,7 @@ namespace AAMod.Projectiles
         // chain voodoo
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         { 
-            Texture2D texture = ModContent.GetTexture("AAMod/Projectiles/GlacierBreaker_Chain");
+            Texture2D texture = mod.GetTexture("Chains/GlacierBreaker_Chain");
  
             Vector2 position = projectile.Center;
             Vector2 mountedCenter = Main.player[projectile.owner].MountedCenter;

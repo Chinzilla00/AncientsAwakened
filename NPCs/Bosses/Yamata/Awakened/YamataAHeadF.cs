@@ -25,34 +25,30 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             base.SetDefaults();
             npc.lifeMax = 30000;
-            npc.width = 64;
-            npc.height = 48;
+            npc.width = 76;
+            npc.height = 92;
             npc.npcSlots = 0;
             npc.dontCountMe = true;
             npc.noTileCollide = true;
             npc.boss = false;
             npc.noGravity = true;
             npc.chaseable = false;
-            npc.damage = 250;
+            npc.damage = 210;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
             npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
+            npc.lifeMax = 45000;
+            npc.width = 46;
+            npc.height = 46;
+            isAwakened = true;
+            npc.knockBackResist *= 0.1f;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
             }
             if (AAWorld.downedShen)
             {
-                npc.lifeMax = 50000;
-                npc.damage = 350;
+                npc.damage = 420;
             }
-            
-            npc.lifeMax = 35000;
-            npc.damage = 210;
-            npc.width = 46;
-            npc.height = 46;
-            isAwakened = true;
-            npc.scale *= 2;
-            npc.knockBackResist *= 0.1f;
         }
 
         public float[] internalAI = new float[4];
@@ -85,8 +81,12 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             return 0f;
         }
 
-		public Yamata Body = null;
-        public Yamata Head = null;
+        public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+        {
+            return npc.alpha == 0;
+        }
+
+        public YamataA Body = null;
         public bool killedbyplayer = true;	
 		public bool leftHead = false;
         public bool fireAttack = false;
@@ -100,30 +100,21 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             if (Body == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
-                if (npcBody.type == mod.NPCType<Yamata>() || npcBody.type == mod.NPCType<YamataA>())
+                if (npcBody.type == ModContent.NPCType<YamataA>())
                 {
-                    Body = (Yamata)npcBody.modNPC;
+                    Body = (YamataA)npcBody.modNPC;
                 }
             }
             if (Body == null)
                 return;			
 
             npc.alpha = Body.npc.alpha;
-
-            if (npc.alpha > 0)
-            {
-                npc.damage = 0;
-            }
-            else
-            {
-                npc.damage = npc.defDamage;
-            }
+            
             npc.TargetClosest();
             Player targetPlayer = Main.player[npc.target];
             if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
 
 
-            float playerDistance = targetPlayer == null ? 99999f : Vector2.Distance(targetPlayer.Center, npc.Center);
             if (!Body.npc.active)
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
@@ -162,14 +153,14 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                         internalAI[3] = 0;
                         if (npc.ai[3] == 3 && Main.netMode != 1)
                         {
-                            if (Math.Sign(npc.Center.X - Main.player[npc.target].Center.X) != Math.Sign(npc.ai[1])) //outermost heads enrage at player if they walk away from underneath
+                            if (Math.Sign(npc.Center.X - targetPlayer.Center.X) != Math.Sign(npc.ai[1])) //outermost heads enrage at player if they walk away from underneath
                             {
-                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 5f, mod.ProjectileType("YamataAVenom2"), npc.damage / 4, 0f, Main.myPlayer);
-                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 7f, mod.ProjectileType("YamataABomb"), npc.damage / 4, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(targetPlayer.Center) * 7f, mod.ProjectileType("YamataAVenom2"), npc.damage / 5, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center, npc.DirectionTo(targetPlayer.Center) * 7f, mod.ProjectileType("YamataABomb"), npc.damage / 5, 0f, Main.myPlayer);
                             }
                             else
                             {
-                                Projectile.NewProjectile(npc.Center, Vector2.UnitY * 10, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center, Vector2.UnitY * 10, mod.ProjectileType("AbyssalThunder"), npc.damage / 5, 0f, Main.myPlayer);
                             }
                         }
                     }
@@ -188,7 +179,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
-                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 5f, mod.ProjectileType("YamataAVenom2"), npc.damage / 4, 0f, Main.myPlayer);
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(targetPlayer.Center) * 5f, mod.ProjectileType("YamataAVenom2"), npc.damage / 5, 0f, Main.myPlayer);
                     }
                     if (++internalAI[1] > 240)
                     {
@@ -205,7 +196,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
-                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 20f, mod.ProjectileType("YamataABreath"), npc.damage / 4, 0f, Main.myPlayer);
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(targetPlayer.Center) * 20f, mod.ProjectileType("YamataABreath"), npc.damage / 5, 0f, Main.myPlayer);
                     }
                     if (++internalAI[1] > 180)
                     {
@@ -220,7 +211,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     if (internalAI[1] == npc.ai[3] * 60)
                     {
                         if (Main.netMode != 1)
-                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center), mod.ProjectileType("YamataDeathray"), npc.damage / 4, 0f, Main.myPlayer, 0f, npc.whoAmI);
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(targetPlayer.Center), mod.ProjectileType("YamataDeathray"), npc.damage / 4, 0f, Main.myPlayer, 0f, npc.whoAmI);
                     }
                     if (++internalAI[1] > 360)
                     {
@@ -239,7 +230,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
-                            Projectile.NewProjectile(npc.Center, Vector2.UnitY * 5, mod.ProjectileType("YamataAShockBomb"), npc.damage / 4, 0f, Main.myPlayer, npc.target);
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitY * 5, mod.ProjectileType("YamataAShockBomb"), npc.damage / 5, 0f, Main.myPlayer, npc.target);
                     }
                     if (++internalAI[1] > 420)
                     {
@@ -268,13 +259,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
-                            Projectile.NewProjectile(npc.Center, Vector2.UnitY * 10, mod.ProjectileType("AbyssalThunder"), npc.damage / 4, 0f, Main.myPlayer);
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitY * 10, mod.ProjectileType("AbyssalThunder"), npc.damage / 5, 0f, Main.myPlayer);
                     }
                     if (++internalAI[3] > 20) //outermost heads enrage at player if they walk away from underneath
                     {
                         internalAI[3] = 0;
-                        if (npc.ai[3] == 3 && Math.Sign(npc.Center.X - Main.player[npc.target].Center.X) != Math.Sign(npc.ai[1]) && Main.netMode != 1)
-                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center) * 5f, mod.ProjectileType("YamataAVenom2"), npc.damage / 4, 0f, Main.myPlayer);
+                        if (npc.ai[3] == 3 && Math.Sign(npc.Center.X - targetPlayer.Center.X) != Math.Sign(npc.ai[1]) && Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(targetPlayer.Center) * 5f, mod.ProjectileType("YamataAVenom2"), npc.damage / 5, 0f, Main.myPlayer);
                     }
                     if (++internalAI[1] > 360)
                     {
@@ -387,8 +378,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            Player player = Main.player[npc.target];
-            if (player.vortexStealthActive && projectile.ranged)
+            Player targetPlayer = Main.player[npc.target];
+            if (targetPlayer.vortexStealthActive && projectile.ranged)
             {
                 damage /= 2;
                 crit = false;
@@ -411,39 +402,14 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             rotation = npc.rotation;
         }
-        
-		
 
         public override bool CheckActive()
         {
-            if (NPC.AnyNPCs(mod.NPCType<Yamata>()) || NPC.AnyNPCs(mod.NPCType<YamataA>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<Yamata>()) || NPC.AnyNPCs(ModContent.NPCType<YamataA>()))
             {
                 return false;
             }
             return true;
-        }
-
-        private int HomeOnTarget()
-        {
-            const float homingMaximumRangeInPixels = 400;
-
-            int selectedTarget = -1;
-            for (int i = 0; i < Main.maxNPCs; i++)
-            {
-                NPC n = Main.npc[i];
-                if (n.type == NPCID.Bunny)
-                {
-                    float distance = npc.Distance(n.Center);
-                    if (distance <= homingMaximumRangeInPixels &&
-                        (
-                            selectedTarget == -1 || //there is no selected target
-                            npc.Distance(Main.npc[selectedTarget].Center) > distance) 
-                    )
-                        selectedTarget = i;
-                }
-            }
-
-            return selectedTarget;
         }
     }
 }

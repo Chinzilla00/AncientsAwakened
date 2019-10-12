@@ -51,7 +51,7 @@ namespace AAMod.Items.Summoning.Minions
             }
 
             Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (player.dead) modPlayer.DevilMinion = false;
             if (modPlayer.DevilMinion) projectile.timeLeft = 2;
 
@@ -241,7 +241,7 @@ namespace AAMod.Items.Summoning.Minions
             if (projectile.ai[0] == 0f)
             {
                 float scaleFactor3 = 11f;
-                int num658 = mod.ProjectileType<DevilProj>();
+                int num658 = ModContent.ProjectileType<DevilProj>();
                 if (flag25 && projectile.ai[1] == 0f)
                 {
                     projectile.ai[1] += 1f;

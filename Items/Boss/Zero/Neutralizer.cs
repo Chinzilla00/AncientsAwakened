@@ -78,7 +78,7 @@ Right click to fire normal arrows");
         {
             if (player.altFunctionUse != 2)
             {
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType<Projectiles.Zero.Neutralizer>(), damage, knockBack, Main.myPlayer);
+                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<Projectiles.Zero.Neutralizer>(), damage, knockBack, Main.myPlayer);
                 
                 return false;
             }

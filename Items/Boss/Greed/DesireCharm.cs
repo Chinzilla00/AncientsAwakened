@@ -28,7 +28,7 @@ Caps out at 20% damage");
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player player = Main.player[item.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
             TooltipLine DamageTooltip = new TooltipLine(mod, "Damage", "Current Damage Boost: +" + modPlayer.GreedyDamage + "%");
             tooltips.Add(DamageTooltip);
@@ -38,7 +38,7 @@ Caps out at 20% damage");
 
         public override void UpdateEquip(Player player)
         {
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             modPlayer.GreedCharm = true;
         }
     }

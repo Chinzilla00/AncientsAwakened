@@ -114,17 +114,17 @@ namespace AAMod.Projectiles.Yamata
             Main.PlaySound(SoundID.Item10, projectile.position);
             for (int num579 = 0; num579 < 20; num579++)
             {
-                int num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default, 2f);
+                int num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default, 2f);
                 Main.dust[num580].noGravity = true;
                 Main.dust[num580].velocity *= 2f;
-                num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100);
+                num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100);
                 Main.dust[num580].velocity *= 2f;
             }
 
             int num3;
             for (int num622 = 0; num622 < 20; num622 = num3 + 1)
             {
-                int num623 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0f, 0f, 0);
+                int num623 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataADust>(), 0f, 0f, 0);
                 Dust dust = Main.dust[num623];
                 dust.scale *= 1.1f;
                 Main.dust[num623].noGravity = true;
@@ -132,7 +132,7 @@ namespace AAMod.Projectiles.Yamata
             }
             for (int num624 = 0; num624 < 30; num624 = num3 + 1)
             {
-                int num625 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType<Dusts.YamataADust>(), 0f, 0f, 0);
+                int num625 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataADust>(), 0f, 0f, 0);
                 Dust dust = Main.dust[num625];
                 dust.velocity *= 2.5f;
                 dust = Main.dust[num625];
@@ -161,7 +161,7 @@ namespace AAMod.Projectiles.Yamata
                     float num629 = Main.rand.Next(-35, 36) * 0.02f;
                     num628 *= 10f;
                     num629 *= 10f;
-                    int p = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, num628, num629, mod.ProjectileType<YWSplit>(), projectile.damage * 3, (int)(projectile.knockBack * 0.35), Main.myPlayer, 0f, 0f);
+                    int p = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, num628, num629, ModContent.ProjectileType<YWSplit>(), projectile.damage * 3, (int)(projectile.knockBack * 0.35), Main.myPlayer, 0f, 0f);
                     num3 = num627;
                     Main.projectile[p].timeLeft = 240;
                 }

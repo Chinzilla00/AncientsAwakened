@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Rajah.Supreme
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-            int p = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), mod.ProjectileType<RabbitBoomEXR>(), projectile.damage, projectile.knockBack, projectile.owner);
+            int p = Projectile.NewProjectile(projectile.Center, new Vector2(0, 0), ModContent.ProjectileType<RabbitBoomEXR>(), projectile.damage, projectile.knockBack, projectile.owner);
             Main.projectile[p].Center = projectile.Center;
             float spread = 12f * 0.0174f;
             double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;

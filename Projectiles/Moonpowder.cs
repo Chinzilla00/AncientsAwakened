@@ -25,7 +25,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            int dustType = mod.DustType<AbyssDust>();
+            int dustType = ModContent.DustType<AbyssDust>();
             projectile.velocity *= 0.95f;
             projectile.ai[0] += 1f;
             if (projectile.ai[0] == 180f)
@@ -76,55 +76,55 @@ namespace AAMod.Projectiles
                     {
                         int type = Main.tile[k, l].type;
                         int wall = Main.tile[k, l].wall;
-                        if (type == (ushort)mod.WallType<TorchstoneWall>())
+                        if (type == (ushort)ModContent.WallType<TorchstoneWall>())
                         {
                             Main.tile[k, l].wall = WallID.Stone;
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == (ushort)mod.WallType<TorchsandstoneWall>())
+                        else if (type == (ushort)ModContent.WallType<TorchsandstoneWall>())
                         {
                             Main.tile[k, l].wall = WallID.Sandstone;
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == (ushort)mod.WallType<TorchsandHardenedWall>())
+                        else if (type == (ushort)ModContent.WallType<TorchsandHardenedWall>())
                         {
                             Main.tile[k, l].wall = WallID.HardenedSand;
                             WorldGen.SquareWallFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<Torchstone>())
+                        else if (type == ModContent.TileType<Torchstone>())
                         {
                             Main.tile[k, l].type = 1;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<InfernoGrass>())
+                        else if (type == ModContent.TileType<InfernoGrass>())
                         {
                             Main.tile[k, l].type = 2;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<Torchice>())
+                        else if (type == ModContent.TileType<Torchice>())
                         {
                             Main.tile[k, l].type = 161;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<Torchsandstone>())
+                        else if (type == ModContent.TileType<Torchsandstone>())
                         {
                             Main.tile[k, l].type = 396;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<Torchsand>())
+                        else if (type == ModContent.TileType<Torchsand>())
                         {
                             Main.tile[k, l].type = 53;
                             WorldGen.SquareTileFrame(k, l, true);
                             NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (type == mod.TileType<TorchsandHardened>())
+                        else if (type == ModContent.TileType<TorchsandHardened>())
                         {
                             Main.tile[k, l].type = 397;
                             WorldGen.SquareTileFrame(k, l, true);

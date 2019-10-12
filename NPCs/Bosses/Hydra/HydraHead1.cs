@@ -104,7 +104,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 	        if (bodyNPC == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
-                if (npcBody.type == mod.NPCType<Hydra>())
+                if (npcBody.type == ModContent.NPCType<Hydra>())
                 {
                     bodyNPC = npcBody;
                 }
@@ -138,7 +138,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
 
 
-            if (!targetPlayer.GetModPlayer<AAPlayer>(mod).ZoneMire)
+            if (!targetPlayer.GetModPlayer<AAPlayer>().ZoneMire)
             {
                 npc.damage = 80;
                 npc.defense = 100;
@@ -188,6 +188,14 @@ namespace AAMod.NPCs.Bosses.Hydra
                         int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("HydraBreath"), damage, 0f, Main.myPlayer);
                         Main.projectile[projID].netUpdate = true;
                     }
+                }
+                if ((!middleHead && npc.ai[1] >= aiTimerFire) || (middleHead && npc.ai[1] >= 100 && npc.ai[1] % 10 == 0))
+                {
+                    npc.frame.Y = 54;
+                }
+                else
+                {
+                    npc.frame.Y = 0;
                 }
                 if (npc.ai[1] >= 200) //pick random spot to move head to
                 {

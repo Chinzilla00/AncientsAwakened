@@ -38,7 +38,7 @@ namespace AAMod.Items.Boss.Grips
             }
             if (Main.rand.Next(20) == 0)
             {
-                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>(mod);
+                AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PHMDevArmor();
             }
             if (Main.rand.Next(3) == 0)

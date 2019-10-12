@@ -30,7 +30,6 @@ namespace AAMod
         public static int BoneAmmo = 10000;
 
         // Hotkeys
-        public static ModHotKey InfinityHotKey;
         public static ModHotKey AccessoryAbilityKey;
         public static ModHotKey ArmorAbilityKey;
         public static ModHotKey Rift;
@@ -250,7 +249,7 @@ namespace AAMod
             Logger.InfoFormat("{0} AA log", Name);
 
             instance = this;
-            GoblinSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ItemType<Items.Currency.GoblinSoul>()));
+            GoblinSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.GoblinSoul>()));
             BoneAmmo = ItemID.Bone;
             if (Main.rand == null)
                 Main.rand = new UnifiedRandom();
@@ -262,8 +261,6 @@ namespace AAMod
             GameShaders.Armor.BindShader(ItemType("DiscordianInfernoDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorHades")).UseColor(0.88f, 0f, 1f).UseSecondaryColor(0.66f, 0f, 1f);
             GameShaders.Armor.BindShader(ItemType("AbyssalWrathDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorHades").UseColor(146f / 255f, 30f / 255f, 68f / 255f).UseSecondaryColor(105f / 255f, 20f / 255f, 50f / 255f));
             GameShaders.Armor.BindShader(ItemType("BlazingFuryDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorHades")).UseColor(Color.SkyBlue.R / 255f, Color.SkyBlue.G / 255f, Color.SkyBlue.B / 255f).UseSecondaryColor(Color.DeepSkyBlue.R / 255f, Color.DeepSkyBlue.G / 255f, Color.DeepSkyBlue.B / 255f);
-
-            InfinityHotKey = RegisterHotKey("Snap", "G");
 
             Rift = RegisterHotKey("Rift Home", "C");
             RiftReturn = RegisterHotKey("Rift Back", "X");
@@ -315,7 +312,6 @@ namespace AAMod
             PremultiplyTexture(GetTexture("Backgrounds/AthenaBolt"));
             PremultiplyTexture(GetTexture("Backgrounds/AthenaFlash"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Zero/ZeroShield"));
-            PremultiplyTexture(GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier"));
             PremultiplyTexture(GetTexture("Projectiles/RadiumStar"));
             PremultiplyTexture(GetTexture("Projectiles/Stars"));
             PremultiplyTexture(GetTexture("NPCs/Bosses/Toad/ToadBubble"));
@@ -449,7 +445,6 @@ namespace AAMod
         {
             CleanupStaticArrays();
             instance = null;
-            InfinityHotKey = null;
             Rift = null;
             RiftReturn = null;
             AccessoryAbilityKey = null;

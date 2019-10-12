@@ -39,7 +39,7 @@ namespace AAMod.Items.Armor.Imp
 
             player.setBonus = "Your minions set enemies ablaze";
 
-            player.GetModPlayer<AAPlayer>(mod).impSet = true;
+            player.GetModPlayer<AAPlayer>().impSet = true;
         }
 
         public override void AddRecipes()

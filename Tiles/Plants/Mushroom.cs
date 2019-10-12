@@ -19,7 +19,7 @@ namespace AAMod.Tiles.Plants
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.addTile(Type);
             drop = ItemID.Mushroom;
-            dustType = mod.DustType<Dusts.MushDust>();
+            dustType = ModContent.DustType<Dusts.MushDust>();
             soundType = 6;
         }
 

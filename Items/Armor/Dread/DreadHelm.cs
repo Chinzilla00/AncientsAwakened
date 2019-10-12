@@ -62,7 +62,7 @@ Your ranged attacks inflict Moonraze on your target";
             player.buffImmune[44] = true;
             player.buffImmune[67] = true;
             player.AddBuff(BuffID.Shine, 2);
-            player.GetModPlayer<AAPlayer>(mod).dreadSet = true;
+            player.GetModPlayer<AAPlayer>().dreadSet = true;
 		}
 
 		public override void AddRecipes()

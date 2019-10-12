@@ -16,7 +16,7 @@ namespace AAMod.Tiles.Plants
 			Main.tileMergeDirt[Type] = true;
 			Main.tileLighted[Type] = false;
 
-			dustType = mod.DustType<Dusts.BogwoodDust>();
+			dustType = ModContent.DustType<Dusts.BogwoodDust>();
 			soundType = 6;
 
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
