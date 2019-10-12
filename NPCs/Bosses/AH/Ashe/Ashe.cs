@@ -13,6 +13,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
     [AutoloadBossHead]
     public class Ashe : ModNPC
     {
+        public int OrbiterCount = Main.expertMode ? 10 : 8;
+
+        bool Health1 = false;
+        bool Health2 = false;
+
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ashe Akuma");
@@ -232,7 +237,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     goto case 0;
             }
 
-            if (npc.ai[0] == 4 || npc.ai[0] == 10)
+            if (npc.ai[0] == 4 || npc.ai[0] == 9)
             {
                 npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X);
             }
@@ -308,7 +313,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else if (npc.ai[0] == 1 || npc.ai[0] == 6 || npc.ai[0] == 11)
             {
-                if (Frame < 16)
+                if (Frame < 16 || Frame > 19)
                 {
                     Frame = 16;
                 }
@@ -316,10 +321,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     npc.frameCounter = 0;
                     Frame++;
-                }
-                if (Frame > 23)
-                {
-                    Frame = 23;
                 }
             }
             npc.frame.Y = Frame * frameHeight;
@@ -391,11 +392,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             return  1 + (NPC.CountNPCS(ModContent.NPCType<AsheOrbiter>()) / 15);
         }
-
-        public int OrbiterCount = Main.expertMode ? 10 : 8;
-
-        bool Health1 = false;
-        bool Health2 = false;
 
         public void FireMagic(NPC npc)
         {
@@ -587,7 +583,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D Tex = Main.npcTexture[npc.type];
-            Texture2D Glow = mod.GetTexture("Glowmasks/Sisters/Ashe2_Glow");
+            Texture2D Glow = mod.GetTexture("Glowmasks/Ashe_Glow");
 
             Texture2D RingTex = mod.GetTexture("NPCs/Bosses/AH/Ashe/AsheRing1");
             Texture2D RingTex1 = mod.GetTexture("NPCs/Bosses/AH/Ashe/AsheRing2");
