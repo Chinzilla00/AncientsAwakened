@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.AH.Haruka
 {
-    public class AsheSpawn : ModNPC
+    public class HarukaSpawn : ModNPC
     {
         public override void SetStaticDefaults()
         {
