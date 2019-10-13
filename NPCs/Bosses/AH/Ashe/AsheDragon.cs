@@ -181,7 +181,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
 
                 npc.rotation = (float)Math.Atan2(playerCenterY, playerCenterX) + 1.57f;
-                num53 = (float)Math.Sqrt(playerCenterX * playerCenterX + playerCenterY * playerCenterY);
                 int num54 = 42;
                 num53 = (num53 - num54) / num53;
                 playerCenterX *= num53;
@@ -192,7 +191,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else
             {
-                num53 = (float)Math.Sqrt(playerCenterX * playerCenterX + playerCenterY * playerCenterY);
                 float num56 = Math.Abs(playerCenterX);
                 float num57 = Math.Abs(playerCenterY);
                 float num58 = num37 / num53;
