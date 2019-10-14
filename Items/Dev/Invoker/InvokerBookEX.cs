@@ -86,11 +86,10 @@ Get all of the materials' effect
 			player.lifeRegen += 26;
             player.lifeRegenTime += 2;
 
-            player.endurance += 0.2f;
-
             player.maxTurrets++;
 
             player.longInvince = true;
+            
             player.buffImmune[46] = true;
             player.noKnockback = true;
             player.fireWalk = true;
@@ -127,7 +126,6 @@ Get all of the materials' effect
             recipe.AddIngredient(ItemID.FrozenTurtleShell, 1);
             recipe.AddIngredient(ItemID.CrossNecklace, 1);
             recipe.AddIngredient(ItemID.AnkhShield, 1);
-            recipe.AddIngredient(ItemID.WormScarf, 1);
             recipe.AddIngredient(ItemID.PaladinsShield, 1);
             recipe.AddIngredient(ItemID.SpectreBar, 60);
             recipe.AddIngredient(mod, "EXSoul", 1);
