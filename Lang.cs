@@ -1185,7 +1185,7 @@ namespace AAMod
                         case "AHSpawn9":
                         return "别再叫我遥酱了...从现在起. ";
                         case "AsheDowned":
-                        return "哦啊. . ! 很疼, 你知道吗!";
+                        return "哦啊. . ! 很疼, 你这个小鬼!";
                         case "HarukaDowned":
                         return "啊. . ! 哦啊...";
                         case "Akuma1":
@@ -1838,7 +1838,7 @@ namespace AAMod
                         return "Please don't call me Hakie again...ever.";
 
                         case "AsheDowned":
-                        return "OW..! THAT HURT, YOU KNOW!";
+                        return "OW..! THAT HURT, YOU MEANIE!";
                         case "HarukaDowned":
                         return "Rgh..! Ow...";
 
