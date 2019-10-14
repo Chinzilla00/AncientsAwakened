@@ -1488,7 +1488,7 @@ namespace AAMod
                         case "YamataTransition5":
                         return "八歧大蛇已经觉醒!";
                         case "YamataTransition6":
-                        return "现在有七个头了！啊哈哈哈哈哈哈哈哈哈!!!!!";
+                        return "七头重生！啊哈哈哈哈哈哈哈哈哈!!!!!";
                         case "YamataTransition7":
                         return "你开始感到来自灵魂的压力...";
                         case "YamataA1":
