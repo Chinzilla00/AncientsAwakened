@@ -86,7 +86,6 @@ Legendry Weapon.";
 				item.noMelee = false;
 				Item.staff[item.type] = false;
 				item.useStyle = 1;
-				item.summon = true;
 				item.damage = (int)(200 * player.minionDamage);
 				return true;
 			}
@@ -95,7 +94,6 @@ Legendry Weapon.";
 				item.noMelee = true;
 				Item.staff[item.type] = true;
 				item.useStyle = 5;
-				item.summon = false;
 				return true;
 			}
 			return true;
