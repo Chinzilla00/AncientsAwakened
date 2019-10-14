@@ -391,7 +391,7 @@ namespace AAMod.Items.Dev.Invoker
 				if(projectile.Hitbox.Intersects(Main.npc[i].Hitbox))
 				{
 					Main.npc[i].immune[projectile.owner] = 0;
-					Main.npc[i].GetGlobalNPC<InvokedGlobalNPC>(mod).CaligulaSoulClaw = true;
+					Main.npc[i].GetGlobalNPC<InvokedGlobalNPC>().CaligulaSoulClaw = true;
 				}
 			}
 		}

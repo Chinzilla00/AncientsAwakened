@@ -26,7 +26,7 @@ Get all of the materials' effect
             string text = "";
             text += "You can control the True ability of the Invoker now\nWhen you hold the Invoker Staff, the death enemy's soul will heal you\nYou can release the death enemy's damage soul";
             
-            if(!Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>(mod).DarkCaligula)
+            if(!Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().DarkCaligula)
             text += "\nAleister's note: \nI need more powerful souls, the doragon, the huge rabit, the strange machine, more, more! Defeat them!";
             else
             text += "\nLeft click to use the book. Summon the Invoked Caligula.";
@@ -60,18 +60,18 @@ Get all of the materials' effect
         public override bool CanUseItem(Player player)
 		{
             bool canuse = false;
-            if(player.GetModPlayer<InvokerPlayer>(mod).SpringInvoker && player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula) 
+            if(player.GetModPlayer<InvokerPlayer>().SpringInvoker && player.GetModPlayer<InvokerPlayer>().DarkCaligula) 
             {
-                canuse = player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula;
+                canuse = player.GetModPlayer<InvokerPlayer>().DarkCaligula;
             }
             return canuse;
         }
 
         public override bool UseItem(Player player)
 		{
-            if(player.GetModPlayer<InvokerPlayer>(mod).SpringInvoker && player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula) 
+            if(player.GetModPlayer<InvokerPlayer>().SpringInvoker && player.GetModPlayer<InvokerPlayer>().DarkCaligula) 
             {
-                player.GetModPlayer<InvokerPlayer>(mod).DarkCaligula = false;
+                player.GetModPlayer<InvokerPlayer>().DarkCaligula = false;
                 player.AddBuff(mod.BuffType("InvokedCaligulaSafe"), 3600);
             }
             return true;
