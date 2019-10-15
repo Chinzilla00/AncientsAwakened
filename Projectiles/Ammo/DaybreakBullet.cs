@@ -7,7 +7,7 @@ namespace AAMod.Projectiles.Ammo
 {
     public class DaybreakBullet : ModProjectile
     {
-        //Thank you Qwerty3.14 for letting us use his Oricalcum bullet code.
+        
         public override void SetDefaults()
         {
             projectile.width = 4;

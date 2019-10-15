@@ -62,8 +62,11 @@ Dark, yet still barely visible");
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = "";
+            
+            
+            player.setBonus = "Damage nearby enemies \n 2% of the damage dealt will heal you\n"+ (int)(100 * player.magicDamage) + " Magic Damage\n" + (player.magicCrit) +"% critical strike chance";
             player.GetModPlayer<DarkmatterMaskEffects>().setBonus = true;
+            player.GetModPlayer<DarkmatterMaskEffects>().sunSiphon = false;
             player.armorEffectDrawShadowLokis = true;
         }
 
@@ -80,9 +83,8 @@ Dark, yet still barely visible");
     public class DarkmatterMaskEffects : ModPlayer
     {
         public bool setBonus = false;
-        public int timer;
-        public int auraFrame = 0;
-        public int auraFrameCount = 4;
+        public int[] npcCooldown = new int[Main.npc.Length];
+        public bool sunSiphon = false;
         public override void ResetEffects()
         {
             setBonus = false;
@@ -90,43 +92,31 @@ Dark, yet still barely visible");
         }
         public override void PreUpdate()
         {
-
-            timer++;
-            if (timer % 4 == 0)
+            if(setBonus)
             {
-                auraFrame++;
-                if (auraFrame >= auraFrameCount)
+                for (int n = 0; n < Main.npc.Length; n++)
                 {
-                    auraFrame = 0;
+                    if (npcCooldown[n] > 0)
+                    {
+                        npcCooldown[n]--;
+                    }
+                    if (Main.npc[n].CanBeChasedBy() && npcCooldown[n] == 0 && (Main.npc[n].Center - player.Center).Length() < 300)
+                    {
+                        
+                        npcCooldown[n] = 30;
+                        int type = mod.ProjectileType("DarkLeech");
+                        if (sunSiphon)
+                        {
+                            type = mod.ProjectileType("SunSiphon");
+                        }
+                        
+                        Projectile.NewProjectile(Main.npc[n].Center, Vector2.Zero, type, (int)(100f * player.magicDamage), 0f, player.whoAmI, n);
+                    }
                 }
             }
+            
         }
-        public static readonly PlayerLayer Portal = new PlayerLayer("AAMod", "Portal", PlayerLayer.MiscEffectsBack, delegate (PlayerDrawInfo drawInfo)
-        {
-
-            Player drawPlayer = drawInfo.drawPlayer;
-            Mod mod = ModLoader.GetMod("AAMod");
-            Texture2D texture = mod.GetTexture("Items/Armor/Darkmatter/Aura");
-
-            if (drawPlayer.GetModPlayer<DarkmatterMaskEffects>().setBonus)
-            {
-                Vector2 Center = drawInfo.position + new Vector2(drawPlayer.width / 2, drawPlayer.height / 2)  - Main.screenPosition;
-
-                DrawData data = new DrawData(texture, Center, texture.Frame(1, drawPlayer.GetModPlayer<DarkmatterMaskEffects>().auraFrameCount, 0, drawPlayer.GetModPlayer<DarkmatterMaskEffects>().auraFrame), Color.White, 0f, new Vector2(texture.Size().X, texture.Size().Y / 4) * .5f, 1f, drawInfo.spriteEffects, 0);
-                data.shader = drawInfo.bodyArmorShader;
-                Main.playerDrawData.Add(data);
-            }
-        });
-        public override void ModifyDrawLayers(List<PlayerLayer> layers)
-        {
-
-
-            int frontLayer = layers.FindIndex(PlayerLayer => PlayerLayer.Name.Equals("MiscEffectsBack"));
-            if (frontLayer != -1)
-            {
-                Portal.visible = true;
-                layers.Insert(frontLayer + 1, Portal);
-            }
-        }
+        
     }
+    
 }

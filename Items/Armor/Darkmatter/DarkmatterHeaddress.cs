@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-
+using System;
 
 namespace AAMod.Items.Armor.Darkmatter
 {
@@ -62,15 +62,8 @@ Dark, yet still barely visible");
 		public override void UpdateArmorSet(Player player)
 		{
 
-            player.setBonus = @"Increases max number of minions by 6
-Your minions electrocute enemies
-8% increased damage resistance at night";
-            if (!Main.dayTime)
-            {
-                player.endurance += .08f;
-            }
-            player.maxMinions += 6;
-            player.GetModPlayer<AAPlayer>().darkmatterSetSu = true;
+            player.setBonus = "Minions will ocasionaly attempt to distrupt enemy projectiles";
+            player.GetModPlayer<HeadressEffects>().setBonus = true;
             player.armorEffectDrawShadowLokis = true;
         }
 
@@ -84,4 +77,101 @@ Your minions electrocute enemies
             recipe.AddRecipe();
         }
 	}
+    public class HeadressEffects : ModPlayer
+    {
+        public bool setBonus = false;
+        public override void ResetEffects()
+        {
+            setBonus = false;
+
+        }
+    }
+    public class DarkMinions : GlobalProjectile
+    {
+        //power settings
+        const int cooldownRate = 120;
+        const float radius = 300;
+        const int damageReductionPerBlast = 30;
+        //
+
+        int cooldown = 0;
+        public int reduceDamage = 0;
+        public override bool InstancePerEntity
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override bool PreAI(Projectile projectile)
+        {
+            
+            if(cooldown>0)
+            {
+                cooldown--;
+            }
+            if(projectile.minion && projectile.minionSlots >0 && projectile.active && Main.player[projectile.owner].GetModPlayer<HeadressEffects>().setBonus && cooldown == 0)
+            {
+                
+                for(int p =0; p < Main.projectile.Length; p++)
+                {
+                    if((Main.projectile[p].Center-projectile.Center).Length() < radius - 100 && Main.projectile[p].active && Main.projectile[p].hostile && Main.projectile[p].damage>0)
+                    {
+                        DarkBlast(projectile);
+                        break;
+                    }
+                }
+            }
+            if(reduceDamage > EstimatedDamage(projectile))
+            {
+                projectile.Kill();
+            }
+            return base.PreAI(projectile);
+        }
+        void DarkBlast(Projectile projectile)
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                float theta = Main.rand.NextFloat(-(float)Math.PI, (float)Math.PI);
+                Dust dust = Dust.NewDustPerfect(projectile.Center, mod.DustType("DarkmatterDust"), PolarVector(radius / 30, theta));
+                dust.noGravity = true;
+            }
+            cooldown = (int)(cooldownRate / projectile.minionSlots);
+            for (int p = 0; p < Main.projectile.Length; p++)
+            {
+                if((Main.projectile[p].Center - projectile.Center).Length() < radius && Main.projectile[p].active && Main.projectile[p].hostile && Main.projectile[p].damage > 0)
+                {
+                    Main.projectile[p].GetGlobalProjectile<DarkMinions>().reduceDamage += damageReductionPerBlast;
+                }
+            }
+        }
+        int EstimatedDamage(Projectile projectile)
+        {
+            return projectile.damage * (Main.expertMode ? 4 : 2);
+        }
+        public override Color? GetAlpha(Projectile projectile, Color lightColor)
+        {
+            if(projectile.GetGlobalProjectile<DarkMinions>().reduceDamage >0)
+            {
+                float v = (projectile.GetGlobalProjectile<DarkMinions>().reduceDamage / (float)EstimatedDamage(projectile));
+
+                lightColor.R = (byte)(lightColor.R * (1f - (lightColor.R * v * .8f)));
+                lightColor.G = (byte)(lightColor.G * (1f - (lightColor.R * v * .8f)));
+                lightColor.B = (byte)(lightColor.B * (1f - (lightColor.R * v * .8f)));
+
+                return lightColor;
+            }
+            return null;
+        }
+        public override void ModifyHitPlayer(Projectile projectile, Player target, ref int damage, ref bool crit)
+        {
+            damage -= (int)(reduceDamage * (Main.expertMode ? .25f : .5f));
+        }
+        public static Vector2 PolarVector(float radius, float theta)
+        {
+            return new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta)) * radius;
+        }
+
+
+    }
 }

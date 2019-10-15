@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -35,19 +37,9 @@ Shines with the light of a starry night sky");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			
-			player.setBonus = @"Increases max number of minions by 7
-Being hit causes stars from the heavans to fall around you and increases your movement speed
-30% increased movement speed during the day";
-            if (Main.dayTime)
-            {
-                player.moveSpeed += .3f;
-            }
-            player.maxMinions += 7;
-            player.panic = true;
-            player.starCloak = true;
-            player.GetModPlayer<AAPlayer>().Radium = true;
-            player.GetModPlayer<AAPlayer>().radiumSu = true;
+
+            player.setBonus = "Minions will ocasionaly deal damage to nearby enemies\n" + (int)(DarkMinions.baseBlastDamage * player.minionDamage) + " Summon Damage";
+            player.GetModPlayer<HatEffects>().setBonus = true;
         }
 
 		public override void AddRecipes()
@@ -60,4 +52,70 @@ Being hit causes stars from the heavans to fall around you and increases your mo
             recipe.AddRecipe();
         }
 	}
+    public class HatEffects : ModPlayer
+    {
+        public bool setBonus = false;
+        public override void ResetEffects()
+        {
+            setBonus = false;
+
+        }
+    }
+    public class DarkMinions : GlobalProjectile
+    {
+        //power settings
+        const int cooldownRate = 120;
+        const float radius = 300;
+        public const int baseBlastDamage = 200;
+        //
+
+        int cooldown = 0;
+        public override bool InstancePerEntity
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public override bool PreAI(Projectile projectile)
+        {
+
+            if (cooldown > 0)
+            {
+                cooldown--;
+            }
+            if (projectile.minion && projectile.minionSlots > 0 && projectile.active && Main.player[projectile.owner].GetModPlayer<HatEffects>().setBonus && cooldown == 0)
+            {
+
+                for (int n = 0; n < Main.npc.Length; n++)
+                {
+                    if ((Main.npc[n].Center - projectile.Center).Length() < radius - 100 && Main.npc[n].CanBeChasedBy())
+                    {
+                        SunBlast(projectile);
+                        break;
+                    }
+                }
+            }
+            
+            return base.PreAI(projectile);
+        }
+        void SunBlast(Projectile projectile)
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                float theta = Main.rand.NextFloat(-(float)Math.PI, (float)Math.PI);
+                Dust dust = Dust.NewDustPerfect(projectile.Center, mod.DustType("RadiumDust"), PolarVector(radius / 30, theta));
+                dust.noGravity = true;
+            }
+            cooldown = (int)(cooldownRate / projectile.minionSlots);
+            Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType("RadiumSetbonusBlast"), (int)(baseBlastDamage * Main.player[projectile.owner].minionDamage), 0f, projectile.owner, radius);
+            
+        }
+        public static Vector2 PolarVector(float radius, float theta)
+        {
+            return new Vector2((float)Math.Cos(theta), (float)Math.Sin(theta)) * radius;
+        }
+
+
+    }
 }

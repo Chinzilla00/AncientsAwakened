@@ -8,7 +8,7 @@ namespace AAMod.Projectiles
 {
     public class SThunderBullet : ModProjectile
 	{
-        //Thank you Qwerty3.14 for letting us use his Oricalcum bullet code.
+        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Supercharged ThunderBullet");

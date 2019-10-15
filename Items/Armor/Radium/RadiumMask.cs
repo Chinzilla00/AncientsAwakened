@@ -1,3 +1,4 @@
+using AAMod.Items.Armor.Darkmatter;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -36,20 +37,9 @@ Shines with the light of a starry night sky");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"200 increased maximum mana
-20% reduced mana usage
-Being hit causes stars from the heavans to fall around you and increases your movement speed
-30% increased movement speed during the day";
-            if (Main.dayTime)
-            {
-                player.moveSpeed += .3f;
-            }
-            player.GetModPlayer<AAPlayer>().Radium = true;
-            player.GetModPlayer<AAPlayer>().radiumMa = true;
-            player.statManaMax2 += 200;
-            player.manaCost *= 0.80f;
-            player.panic = true;
-            player.starCloak = true;
+            player.GetModPlayer<DarkmatterMaskEffects>().setBonus = true;
+            player.GetModPlayer<DarkmatterMaskEffects>().sunSiphon = true;
+            player.setBonus = "Damage nearby enemies \n 50% of the damage dealt will restore mana\n If mana is full you'll get mana overload buff instead\n" + (int)(100 * player.magicDamage) + " Magic Damage\n" + (player.magicCrit) + "% critical strike chance";
         }
 
 		public override void AddRecipes()

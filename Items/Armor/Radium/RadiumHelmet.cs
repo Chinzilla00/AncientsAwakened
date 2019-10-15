@@ -1,3 +1,7 @@
+using AAMod.Items.Armor.Darkmatter;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -36,20 +40,26 @@ Shines with the light of a starry night sky");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			
-			player.setBonus = @"15% increased melee critical chance and speed
-Being hit causes stars from the heavans to fall around you and increases your movement speed
-30% increased movement speed during the day";
-            if (Main.dayTime)
+            const float effectRange = 500;
+            player.setBonus = "Nearby enemies will recieve more damage";
+            if (Main.netMode != 0) //don't bother with this part on singleplayer
             {
-                player.moveSpeed += .3f;
+                for (int p = 0; p < Main.player.Length; p++)
+                {
+                    if (Main.player[p].active && (Main.player[p].Center - player.Center).Length() < effectRange && player.team != Main.player[p].team)
+                    {
+                        Main.player[p].GetModPlayer<HelmetEffects>().ShieldTime = 2;
+                        Main.player[p].GetModPlayer<HelmetEffects>().badShield = true;
+                    }
+                }
             }
-            player.GetModPlayer<AAPlayer>().Radium = true;
-            player.GetModPlayer<AAPlayer>().radiumMe = true;
-            player.meleeSpeed += 0.15f;
-            player.meleeCrit += 15;
-            player.panic = true;
-            player.starCloak = true;
+            for(int n = 0; n < Main.npc.Length; n++)
+            {
+                if ((Main.npc[n].Center - player.Center).Length() < effectRange && Main.npc[n].CanBeChasedBy(ignoreDontTakeDamage: false))
+                {
+                    Main.npc[n].GetGlobalNPC<RadiumWeaken>().BrokenShield = 2;
+                }
+            }
         }
 
 		public override void AddRecipes()
@@ -62,4 +72,50 @@ Being hit causes stars from the heavans to fall around you and increases your mo
             recipe.AddRecipe();
         }
 	}
+    public class RadiumWeaken : GlobalNPC
+    {
+        public override bool InstancePerEntity
+        {
+            get
+            {
+                return true;
+            }
+        }
+        public int BrokenShield = 0;
+        public override void ResetEffects(NPC npc)
+        {
+            if(BrokenShield > 0)
+            {
+                BrokenShield--;
+            }
+        }
+        public float yetAnotherTrigCounter = 0;
+        public override void AI(NPC npc)
+        {
+            yetAnotherTrigCounter += (float)Math.PI / 60;
+        }
+        public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
+        {
+            if(BrokenShield > 0)
+            {
+                damage = (int)(damage * 1.4f);
+            }
+        }
+        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            if (BrokenShield > 0)
+            {
+                damage = (int)(damage * 1.4f);
+            }
+        }
+        public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Color drawColor)
+        {
+            if(BrokenShield > 0)
+            {
+                Texture2D texture = mod.GetTexture("Items/Armor/Radium/RadiumShield");
+                spriteBatch.Draw(texture, npc.Top + Vector2.UnitY * -30 - Main.screenPosition, null, Color.White, 0f, texture.Size() * .5f, 1f + (.1f * (float)Math.Sin(yetAnotherTrigCounter)), SpriteEffects.None, 0f);
+            }
+            
+        }
+    }
 }
