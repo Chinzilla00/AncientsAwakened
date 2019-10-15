@@ -38,7 +38,7 @@ namespace AAMod.Tiles.Chests
             name.SetDefault("Doomsday Chest");
             AddMapEntry(new Color(150, 75, 0), name, MapChestName);
             name = CreateMapEntryName(Name + "_Locked"); // With multiple map entries, you need unique translation keys.
-            name.SetDefault("Locked Doomsday Chest");
+            name.SetDefault("{$Mods.AAMod.Common.DoomsdayChest_Locked}");
             AddMapEntry(new Color(0, 141, 63), name, MapChestName);
             dustType = mod.DustType("DoomDust");
             disableSmartCursor = true;

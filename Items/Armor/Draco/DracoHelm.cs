@@ -74,10 +74,7 @@ The blazing fury of the Inferno rests in this armor");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"'Blazing fury consumes you'
-You are immune to all ice-related debuffs
-You glow like the blazing fire in your soul
-Your Melee attacks inflict Daybreak on your target";
+			player.setBonus = Lang.ArmorBonus("DracoHelmBonus");
 
             player.buffImmune[46] = true;
             player.buffImmune[47] = true;

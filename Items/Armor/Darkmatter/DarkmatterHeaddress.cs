@@ -62,6 +62,7 @@ Dark, yet still barely visible");
 		public override void UpdateArmorSet(Player player)
 		{
 
+
             player.setBonus = "Minions will ocasionaly attempt to distrupt enemy projectiles";
             player.GetModPlayer<HeadressEffects>().setBonus = true;
             player.armorEffectDrawShadowLokis = true;

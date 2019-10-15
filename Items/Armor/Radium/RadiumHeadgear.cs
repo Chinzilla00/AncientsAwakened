@@ -42,6 +42,7 @@ Shines with the light of a starry night sky");
 
             player.setBonus = "A sun portal hovers above your head, shooting sun blasts when you shoot. \nSun blasts deal 50% of your weapon's damage, and ignite them";
 
+
             player.GetModPlayer<VisorEffects>().setBonus = true;
             player.GetModPlayer<VisorEffects>().sunPortal = true;
         }

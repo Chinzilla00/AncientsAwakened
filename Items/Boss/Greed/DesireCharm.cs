@@ -30,7 +30,7 @@ Caps out at 20% damage");
             Player player = Main.player[item.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
-            TooltipLine DamageTooltip = new TooltipLine(mod, "Damage", "Current Damage Boost: +" + modPlayer.GreedyDamage + "%");
+            TooltipLine DamageTooltip = new TooltipLine(mod, "Damage", Lang.GreedTooltip("CurrentDamageBoost:+") + modPlayer.GreedyDamage + "%");
             tooltips.Add(DamageTooltip);
 
             base.ModifyTooltips(tooltips);

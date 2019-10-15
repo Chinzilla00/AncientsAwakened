@@ -74,7 +74,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.ai[1] = 0;
                 RespawnArms1 = true;
                 RespawnArms();
-                if (Main.netMode != 1) AAMod.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
+                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroBoss10"), Color.Red, false);
                 npc.netUpdate = true;
             }
             if (npc.life <= (int)(npc.lifeMax * .33f) && !RespawnArms2 && Main.netMode != 1)
@@ -83,7 +83,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 npc.ai[1] = 0;
                 RespawnArms2 = true;
                 RespawnArms();
-                if (Main.netMode != 1) AAMod.Chat("RE-ESTABLISHING WEAP0N UNITS", Color.Red, false);
+                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroBoss10"), Color.Red, false);
                 npc.netUpdate = true;
             }
 
@@ -100,7 +100,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
                 if (Main.expertMode && Main.netMode != 1) 
                 {
-                    if (Main.netMode != 1) AAMod.Chat("PHYSICAL ZER0 UNIT IN CRITICAL C0NDITI0N. DISCARDING AND ENGAGING D00MSDAY PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroBoss1"), Color.Red.R, Color.Red.G, Color.Red.B);
                     int z = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ZeroProtocol"), 0, 0, 0, 0, 0, npc.target) ;
                     Main.npc[z].Center = npc.Center;
 
@@ -108,11 +108,10 @@ namespace AAMod.NPCs.Bosses.Zero
                     Main.projectile[b].Center = npc.Center;
 
                     npc.netUpdate = true;
-
                 }
                 if (!Main.expertMode)
                 {
-                    if (Main.netMode != 1) AAMod.Chat("D00MSDAY PR0T0CALL MALFUNCTI0N. MAIN.EXPERT M0DE = FALSE.", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroBoss2"), Color.Red.R, Color.Red.G, Color.Red.B);
                 }
             }
         }
@@ -146,7 +145,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 Distance = 0;
                 npc.netUpdate = true;
             }
-			
         }
 
         public override void NPCLoot()
@@ -159,7 +157,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 if (!AAWorld.downedZero)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("You feel as though you are being watched...", Color.PaleVioletRed);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ZeroBoss3"), Color.PaleVioletRed);
                 }
                 AAWorld.downedZero = true;
                 npc.DropLoot(mod.ItemType("ApocalyptitePlate"), 2, 4);
@@ -341,7 +339,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 return;
             }
-
             if (ShieldScale < .5f)
             {
                 ShieldScale += .05f;

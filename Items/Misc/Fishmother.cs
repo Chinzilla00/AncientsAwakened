@@ -30,8 +30,8 @@
 
         public override void AnglerQuestChat(ref string description, ref string catchLocation)
         {
-            description = "Okay so, I was walking through the Inferno looking for something hot for one of my epic pranks, when I saw this fat fish underwater, boiling the water around it. I thought 'PERFECT!' but I couldn't catch it because I didn't have my rod on me. Go get it, slave.";
-            catchLocation = "Caught anywhere in the Inferno";
+            description = Lang.questFish("Fishmother");
+            catchLocation = Lang.questFish("FishmotherLocation");
         }
     }
 }

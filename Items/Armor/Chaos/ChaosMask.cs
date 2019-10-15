@@ -39,8 +39,7 @@ Allows you to breath underwater");
 
         public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"While submerged in liquids, your magic abilities are increased drastically
-You can swim and liquid does not affect your movement";
+			player.setBonus = Lang.ArmorBonus("ChaosMaskBonus");
 			if (player.wet)
 			{
 				player.AddBuff(mod.BuffType("ChaosBuff"), 2);

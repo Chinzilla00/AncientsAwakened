@@ -392,7 +392,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AsheVanish>(), 0);
             Main.npc[DeathAnim].velocity = npc.velocity;
-            if (Main.netMode != 1) BaseUtility.Chat("OW..! THAT HURT, YOU MEANIE!", new Color(102, 20, 48));
+            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AsheDowned"), new Color(102, 20, 48));
             npc.value = 0f;
             npc.boss = false;
         }

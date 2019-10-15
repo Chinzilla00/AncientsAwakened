@@ -34,8 +34,7 @@ namespace AAMod.Items.Armor.Doomite
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"+1 Max Minion
-A void searcher fights by your side";
+            player.setBonus = Lang.ArmorBonus("DoomiteVisorBonus");
             player.maxMinions += 1;
             player.GetModPlayer<AAPlayer>().doomite = true;
             if (player.whoAmI == Main.myPlayer)

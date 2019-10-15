@@ -111,7 +111,7 @@ namespace AAMod.NPCs.Bosses.Athena
                             {
                                 if (internalAI[3] == 60)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat("Hmpf..!", Color.CornflowerBlue);
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena1"), Color.CornflowerBlue);
                                 }
 
                                 if (internalAI[3] == 180)
@@ -119,24 +119,24 @@ namespace AAMod.NPCs.Bosses.Athena
                                     string s = "";
                                     if (Main.ActivePlayersCount > 1)
                                     {
-                                        s = "s";
+                                        s = Lang.BossChat("Athena2");
                                     }
-                                    if (Main.netMode != 1) BaseUtility.Chat("You! Earthwalker" + s + "!", Color.CornflowerBlue);
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena3") + s + "!", Color.CornflowerBlue);
                                 }
 
                                 if (internalAI[3] == 300)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat("My seraphs tell me you've been attacking them! Why?!", Color.CornflowerBlue);
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena4"), Color.CornflowerBlue);
                                 }
 
                                 if (internalAI[3] == 420)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat("I'm gonna teach you a lesson, you little brat!", Color.CornflowerBlue);
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena5"), Color.CornflowerBlue);
                                 }
 
                                 if (internalAI[3] >= 420)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat("En Garde!", Color.CornflowerBlue);
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena6"), Color.CornflowerBlue);
                                     internalAI[2] = 1;
                                     npc.netUpdate = true;
                                 }
@@ -145,17 +145,17 @@ namespace AAMod.NPCs.Bosses.Athena
                             {
                                 if (internalAI[3] == 60)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat("...So. You came.", Color.CornflowerBlue);
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena12"), Color.CornflowerBlue);
                                 }
 
                                 if (internalAI[3] == 180)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat("It's high time I won my honor back..!", Color.CornflowerBlue);
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena13"), Color.CornflowerBlue);
                                 }
 
                                 if (internalAI[3] == 300)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat("En Garde!", Color.CornflowerBlue);
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena14"), Color.CornflowerBlue);
                                     internalAI[2] = 1;
                                     npc.netUpdate = true;
                                 }
@@ -164,12 +164,12 @@ namespace AAMod.NPCs.Bosses.Athena
                             {
                                 if (internalAI[3] == 60)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat("Sigh...", Color.CornflowerBlue);
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena7"), Color.CornflowerBlue);
                                 }
 
                                 if (internalAI[3] >= 180)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat("Lets just get this overwith. I don't have all day.", Color.CornflowerBlue);
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena8"), Color.CornflowerBlue);
                                     internalAI[2] = 1;
                                     npc.netUpdate = true;
                                 }
@@ -190,7 +190,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     npc.TargetClosest();
                     if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 5000 || !modPlayer.ZoneAcropolis)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("And stay away...idiot.", Color.CornflowerBlue);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena9"), Color.CornflowerBlue);
                         int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaFlee>());
                         Main.npc[p].Center = npc.Center;
                         npc.active = false;
@@ -488,7 +488,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     Main.npc[a].Center = npc.Center;
                     int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
                     Main.projectile[b].Center = npc.Center;
-                    if (Main.netMode != 1) BaseUtility.Chat("No more kidding around, the storms are calling, and they're coming for you!", Color.Cyan);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena10"), Color.Cyan);
 
                     Main.projectile[b].netUpdate = true;
                 }
@@ -511,7 +511,8 @@ namespace AAMod.NPCs.Bosses.Athena
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
             }
 
-            if (Main.netMode != 1) BaseUtility.Chat("OW! Fine, fine..! I'll leave you alone! Geez, you don't let up, do you.", Color.CornflowerBlue);
+
+            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena11"), Color.CornflowerBlue);
             int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaFlee>());
             Main.npc[p].Center = npc.Center;
 

@@ -50,16 +50,7 @@ A dark hood infused with the shadow of midnight");
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = @"Increase 30% melee speed and projectile velocity
-Your melee weapons have chance to throw daggers
-Your ranged weapons have chance to shoot extra arrows
-Dagger/arrow can decrease enemies 20 defense and increase 10% damage from player";
-            
-            //@"Slash and Stalk.
-            //18% increased Melee and Ranged damage
-            //25% decreased ammo consumption
-            //Enemies are less likely to target you
-            //you can do a swift dash";
+            player.setBonus = Lang.ArmorBonus("AssassinBonus");
             //Double tap down to go into stealth mode
             //Movement is not impeded while in stealth mode
             //Melee and Ranged damage increased while in stealth";

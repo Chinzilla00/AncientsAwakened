@@ -41,12 +41,12 @@ Can only be used in a surface glowing mushroom biome");
         {
             if (!player.ZoneGlowshroom && player.Center.Y > Main.worldSurface)
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The toadstool croaks..?", Color.Blue, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ToadstoolFalse"), Color.Blue, false);
                 return false;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<TruffleToad>()))
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Truffle Toad croaks", Color.Blue, false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ToadstoolTrue"), Color.Blue, false);
                 return false;
             }
             return true;

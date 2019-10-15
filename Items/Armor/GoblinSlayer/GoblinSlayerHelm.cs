@@ -32,9 +32,7 @@ namespace AAMod.Items.Armor.GoblinSlayer
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"500% increased damage and knockback to goblins
-80% damage resistance from goblins
-'I hunt goblins or nothing.'";
+			player.setBonus = Lang.ArmorBonus("GoblinSlayerHelmBonus");
             player.GetModPlayer<AAPlayer>().goblinSlayer = true;
             int num = 0;
             num += player.bodyFrame.Y / 56;

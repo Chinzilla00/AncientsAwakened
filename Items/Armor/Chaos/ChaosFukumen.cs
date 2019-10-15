@@ -33,13 +33,8 @@ namespace AAMod.Items.Armor.Chaos
             return body.type == mod.ItemType("ChaosDou") && legs.type == mod.ItemType("ChaosGreaves");
         }
 
-        public override void UpdateArmorSet(Player player)
-		{
-            player.setBonus = @"Your ranged attacks are imbued with the chaos of Dragonfire and Bogtoxin
-25% increased ranged damage
-Enemies are less likely to target you
-Night Vision and hunter effects
-25% reduced ammo consumption";
+        public override void UpdateArmorSet(Player player){
+            player.setBonus = Lang.ArmorBonus("ChaosFukumenBonus");
             player.rangedDamage += .25f;
             player.aggro -= 7;
             player.GetModPlayer<AAPlayer>().ChaosRa = true;

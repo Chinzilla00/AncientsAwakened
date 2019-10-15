@@ -70,27 +70,27 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (npc.ai[0] == 180)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("Surprised to see us again, Kid?", new Color(180, 41, 32));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn1"), new Color(180, 41, 32));
             }
 
             if (npc.ai[0] == 360)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("NYEHEHEHEHEH..! Yes..! Must be shocking to see us here..! But this time, we have a little tricksie up our sleeves..!", new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn2"), new Color(45, 46, 70));
             }
 
             if (npc.ai[0] == 540)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("That Sigil you just used gave us back our full power, which will let us reach our true, powerful form..!", new Color(180, 41, 32));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn3"), new Color(180, 41, 32));
             }
 
             if (npc.ai[0] == 720)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("We used to be the same being..! But then a Terrarian wretch like you split our soul in half..! But now...heheheh...", new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn4"), new Color(45, 46, 70));
             }
             if (npc.ai[0] == 900)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("WE ARE COMPLETE AGAIN", new Color(180, 41, 32));
-                if (Main.netMode != 1) BaseUtility.Chat("WE ARE COMPLETE AGAIN", new Color(45, 46, 70));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn5"), new Color(180, 41, 32));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn5"), new Color(45, 46, 70));
             }
 
             if (dustx > 0 && npc.ai[0] >= 900)
@@ -104,17 +104,17 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (npc.ai[0] == 960)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("Heh....heheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn6"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
             if (npc.ai[0] == 1140)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("You've made a grave mistake, child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn7"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
             if (npc.ai[0] == 1320)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("For you see....", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn8"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
             }
 
             if (npc.ai[0] >= 1500)
@@ -124,19 +124,19 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (npc.ai[0] == 1520)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("I AM SHEN DORAGON, EMPEROR OF CHAOS AND ANARCHY!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn9"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
             if (npc.ai[0] == 1700)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("And you, my child...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn10"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             }
 
             if (npc.ai[0] >= 1880)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("WILL PERISH!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenSpawn11"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                 SummonShen();
                 npc.active = false;
             }
@@ -336,29 +336,29 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (npc.ai[1] == 180)
                 {
-                    BaseUtility.Chat("Split again...", new Color(180, 41, 32));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath1"), new Color(180, 41, 32));
                 }
 
                 if (npc.ai[1] == 360)
                 {
-                    BaseUtility.Chat("This is YOUR fault you insolent worm..! I knew we should have been more aggressive but NOOOOOOOOO..! YOU said we could squash them without even trying!", new Color(45, 46, 70));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath2"), new Color(45, 46, 70));
                 }
 
                 if (npc.ai[1] == 540)
                 {
-                    string Name = Main.netMode != 0 ? "Warriors" : player.name;
-                    BaseUtility.Chat(Name + ", you will face our fury again one day...either when we gain enough power again...", new Color(180, 41, 32));
+                    string Name = Main.netMode != 0 ? Lang.BossChat("ShenDeath3") : player.name;
+                    BaseUtility.Chat(Name + Lang.BossChat("ShenDeath4"), new Color(180, 41, 32));
                 }
 
                 if (npc.ai[1] == 720)
                 {
-                    BaseUtility.Chat("...or you decide to use that Sigil again..!", new Color(45, 46, 70));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath5"), new Color(45, 46, 70));
                 }
 
                 if (npc.ai[1] == 899)
                 {
-                    BaseUtility.Chat("Your choice, child.", new Color(45, 46, 70));
-                    BaseUtility.Chat("Your choice, child.", new Color(180, 41, 32));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath6"), new Color(45, 46, 70));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath6"), new Color(180, 41, 32));
                 }
 
                 if (npc.ai[1] >= 900)
@@ -373,31 +373,31 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (npc.ai[1] == 180)
                 {
-                    BaseUtility.Chat("YOU IMBECILE! WE LOST AGAAAAAAAAAAAAIN!!!", new Color(45, 46, 70));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath7"), new Color(45, 46, 70));
                 }
 
                 if (npc.ai[1] == 360)
                 {
-                    BaseUtility.Chat("Rgh, my head...", new Color(180, 41, 32));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath8"), new Color(180, 41, 32));
                 }
 
                 if (npc.ai[1] == 540)
                 {
-                    string Name = Main.netMode != 0 ? " BUNCH OF CLOWNS" : player.Male ? ", BOY" : ", GIRL";
-                    BaseUtility.Chat("And YOU" + Name + "! NEXT TIME I'M GONNA SLIT YOUR HEADS OFF!!!", new Color(45, 46, 70));
+                    string Name = Main.netMode != 0 ? Lang.BossChat("ShenDeath9") : player.Male ? Lang.BossChat("boy") : Lang.BossChat("girl");
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath10") + Name + Lang.BossChat("ShenDeath11"), new Color(45, 46, 70));
                 }
 
                 if (npc.ai[1] == 720)
                 {
-                    BaseUtility.Chat("And trust us, kid.", new Color(180, 41, 32));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath12"), new Color(180, 41, 32));
                 }
 
                 if (npc.ai[1] == 899)
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat("There's always a next time.", new Color(45, 46, 70));
-                        BaseUtility.Chat("There's always a next time.", new Color(180, 41, 32));
+                        BaseUtility.Chat(Lang.BossChat("ShenDeath13"), new Color(45, 46, 70));
+                        BaseUtility.Chat(Lang.BossChat("ShenDeath13"), new Color(180, 41, 32));
                     }
                 }
                 if (npc.ai[1] >= 900)
@@ -463,27 +463,27 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (npc.ai[0] == 375)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Heh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenTransition1"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     npc.netUpdate = true;
                 }
                 if (npc.ai[0] == 475)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Heheheh...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenTransition2"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     npc.netUpdate = true;
                 }
                 if (npc.ai[0] == 600)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("HAHAHAHAHAHAHA!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenTransition3"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     npc.netUpdate = true;
                 }
                 if (npc.ai[0] == 820)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("Have you forgotten about our last battles...?", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenTransition4"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     npc.netUpdate = true;
                 }
                 if (npc.ai[0] == 960)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("There's always a last stand, kiddo...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenTransition5"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     npc.netUpdate = true;
                 }
                 if (npc.ai[0] >= 1100)
@@ -492,7 +492,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 }
                 if (npc.ai[0] == 1100)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("But now, you stand in my path...", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenTransition6"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     npc.netUpdate = true;
                 }
                 if (npc.ai[0] >= 1400)
@@ -546,8 +546,8 @@ namespace AAMod.NPCs.Bosses.Shen
         public void SummonShen()
         {
             Player player = Main.player[npc.target];
-            if (Main.netMode != 1) BaseUtility.Chat("Shen Doragon has been Awakened!", Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
-            if (Main.netMode != 1) BaseUtility.Chat("SO YOU WILL BURN IN THE FLAMES OF DISCORDIAN HELL!!!", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenTransition7"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("ShenTransition8"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
             int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
             Main.projectile[b].Center = npc.Center;

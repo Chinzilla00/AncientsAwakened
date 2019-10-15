@@ -28,8 +28,8 @@
 
         public override void AnglerQuestChat(ref string description, ref string catchLocation)
         {
-            description = "I hate the Mire. I can't see a thing in there unless it's past my bedtime, but I know there's a killer fish in there that I want that has, get this, THREE HEADS. Can you go get it for me?";
-            catchLocation = "Caught anywhere in the Mire";
+            description = Lang.questFish("TriHeadedKoi");
+            catchLocation = Lang.questFish("TriHeadedKoiLocation");
         }
     }
 }

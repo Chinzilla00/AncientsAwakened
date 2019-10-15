@@ -70,17 +70,17 @@ N0N-C0NSUMABLE");
             {
                 if (NPC.AnyNPCs(mod.NPCType("Zero")))
                 {
-                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("ERR0R. ZER0 UNIT ALREADY ACTIVE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroFalse"), new Color(255, 0, 0), false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType("ZeroProtocol")))
                 {
-                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("ERR0R. ZER0 UNIT ALREADY ACTIVE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
+                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroFalse"), new Color(255, 0, 0), false);
                     return false;
                 }
                 return true;
             }
-            if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("ERR0R. PLAYER.GETM0DPLAYER<AAPLAYER>(M0D).Z0NEV0ID == FALSE. PLEASE TRY AGAIN LATER.", new Color(255, 0, 0), false);
+            if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroVoidZoneFalse"), new Color(255, 0, 0), false);
             return false;
         }
 
@@ -88,20 +88,20 @@ N0N-C0NSUMABLE");
         {
             if (!AAWorld.downedZero && !Main.expertMode)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroTesseractTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
             }
 
             if (!AAWorld.downedZero && Main.expertMode)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroTesseractTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (!Main.expertMode && AAWorld.downedZero)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroTesseractDownedTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (Main.expertMode && AAWorld.downedZero)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.", Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroTesseractDownedTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
             }
 
             if (Main.netMode != 1)

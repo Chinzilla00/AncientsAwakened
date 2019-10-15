@@ -30,8 +30,7 @@ namespace AAMod.Items.Armor.Raider
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = @"You cannot be knocked back
-As your health goes down, your damage resistance goes up";
+            player.setBonus = Lang.ArmorBonus("RaiderChestBonus");
             player.noKnockback = true;
             player.endurance += (1 - (player.statLife / player.statLifeMax)) * .1f;
         }

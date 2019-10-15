@@ -44,9 +44,7 @@ The power of discordian rage radiates from this armor");
 		}
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"'Chaos empowers you'
-As your health decreases, your melee damage and defense increase
-Your attacks raze your oponents with the flames of Chaos";
+            player.setBonus = Lang.ArmorBonus("PerfectChaosKabutoBonus");
             player.GetModPlayer<AAPlayer>().perfectChaosMe = true;
             player.AddBuff(mod.BuffType("ChaosWrath"), 2);
         }

@@ -35,10 +35,7 @@ namespace AAMod.Items.Armor.Chaos
 
         public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"10% increased melee speed
-Enemies are more likely to target you
-Enemies that strike you are set ablaze
-Your Swung weapons inflicts them with Bogtoxin and Dragonflame";
+			player.setBonus = Lang.ArmorBonus("ChaosKabutoBonus");
             player.meleeSpeed += .1f;
             player.aggro += 4;
             player.GetModPlayer<AAPlayer>().kindledSet = true;

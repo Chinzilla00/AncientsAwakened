@@ -37,7 +37,7 @@ namespace AAMod.Items.Armor.Mushium
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = @"Potion Sickness time is cut by 25%";
+            player.setBonus = Lang.ArmorBonus("MushiumHatBonus");
             player.pStone = true;
 		}
 

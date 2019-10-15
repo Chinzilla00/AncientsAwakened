@@ -66,7 +66,7 @@ namespace AAMod.NPCs.Bosses.Greed
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat("YOU..! YOU LITTLE--", Color.Goldenrod);
+                        BaseUtility.Chat(Lang.BossChat("GreedTransition1"), Color.Goldenrod);
                     }
 
                     npc.netUpdate = true;
@@ -75,25 +75,25 @@ namespace AAMod.NPCs.Bosses.Greed
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat("THATS IT, I'VE HAD IT!", Color.Goldenrod);
+                        BaseUtility.Chat(Lang.BossChat("GreedTransition2"), Color.Goldenrod);
                     }
                 }
                 else if (npc.ai[0] == 500)
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat("YOU TRY TO STEAL MY SHINIES, AND NOW...!", Color.Goldenrod);
+                        BaseUtility.Chat(Lang.BossChat("GreedTransition3"), Color.Goldenrod);
                     }
 
                     npc.netUpdate = true;
                 }
                 else if (npc.ai[0] >= 610)
                 {
-                    AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GreedA"), true, npc.Center, "Greed", false);
+                    AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GreedA"), true, npc.Center, Lang.BossChat("GreedAName"), false);
 
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat("I WILL STEAL YOUR LIFE! HEEHEEHEEHEEHEEHEEHEEHEEHEEHEE!!!", Color.Goldenrod);
+                        BaseUtility.Chat(Lang.BossChat("GreedTransition4"), Color.Goldenrod);
                     }
 
                     npc.netUpdate = true;

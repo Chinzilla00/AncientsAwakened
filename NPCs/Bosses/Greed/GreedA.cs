@@ -431,7 +431,7 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 if (loludided == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("EEEEEEEEEEEEEEEGH THE LIGHT OF THE SURFACE! TOO BRIGHT! TOO BRIGHT!", Color.Goldenrod);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("GreedFalse1"), Color.Goldenrod);
                     loludided = true;
                 }
                 npc.velocity.Y = npc.velocity.Y + 1f;
@@ -442,7 +442,7 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 if (loludided == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("AND STAY AWAY FROM MY GLORIOUS RICHES YOU LITTLE THIEF!", Color.Goldenrod);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("GreedFalse2"), Color.Goldenrod);
                     loludided = true;
                 }
                 npc.velocity.Y = npc.velocity.Y - 1f;

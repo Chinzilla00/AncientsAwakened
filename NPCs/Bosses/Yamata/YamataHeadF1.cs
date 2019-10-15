@@ -239,7 +239,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         {
             if (npc.life <= 0)
             {
-                CombatText.NewText(npc.getRect(), new Color(45, 46, 70), "OWIE!!!", true, false);
+                CombatText.NewText(npc.getRect(), new Color(45, 46, 70), Lang.BossChat("Yamata16"), true, false);
             }
         }
 

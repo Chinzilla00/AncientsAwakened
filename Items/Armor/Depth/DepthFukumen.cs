@@ -38,9 +38,7 @@ Weightless as shadow itself");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"Enemies are less likely to target you
-20% decreased ammo consumption
-Nightvision";
+            player.setBonus = Lang.ArmorBonus("DepthFukumenBonus");
             player.aggro -= 3;
             player.ammoCost80 = true;
             player.nightVision = true;

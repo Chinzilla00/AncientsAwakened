@@ -83,19 +83,19 @@ namespace AAMod.NPCs.TownNPCs
             int Goblin = NPC.FindFirstNPC(NPCID.GoblinTinkerer);
 			if (Goblin >= 0 && Main.rand.Next(4) == 0)
 			{
-                chat.Add("I don't trust " + Main.npc[Goblin].GivenName + ". There's just something about him that I don't like...");
+                chat.Add(Lang.TownNPCGoblinSlayer("GoblinSlayerChat1") + Main.npc[Goblin].GivenName + Lang.TownNPCGoblinSlayer("GoblinSlayerChat2"));
             }
             int DD2Bartender = NPC.FindFirstNPC(NPCID.DD2Bartender);
             if (DD2Bartender >= 0 && Main.rand.Next(4) == 0)
             {
-                return Main.npc[DD2Bartender].GivenName + " tells me that where he's from, they kill goblins a lot. I wish to visit this place sometime. Sounds glorious.";
+                return Main.npc[DD2Bartender].GivenName + Lang.TownNPCGoblinSlayer("GoblinSlayerChat3");
             }
-            chat.Add("I don't like goblins.");
-            chat.Add("Seen any goblins I can kill?");
-            chat.Add("Goblins are a scourge on this earth.");
-            chat.Add("Find any good goblin dens to raid?");
-            chat.Add("Why do I hate goblins? Because they're goblins.");
-            chat.Add("Hey, while you're out there, can you kill some goblins for me? Give me their souls and I'll trade you for some of my extra goblin slaying gear.");
+            chat.Add(Lang.TownNPCGoblinSlayer("GoblinSlayerChat4"));
+            chat.Add(Lang.TownNPCGoblinSlayer("GoblinSlayerChat5"));
+            chat.Add(Lang.TownNPCGoblinSlayer("GoblinSlayerChat6"));
+            chat.Add(Lang.TownNPCGoblinSlayer("GoblinSlayerChat7"));
+            chat.Add(Lang.TownNPCGoblinSlayer("GoblinSlayerChat8"));
+            chat.Add(Lang.TownNPCGoblinSlayer("GoblinSlayerChat9"));
             return chat; 
         }
         

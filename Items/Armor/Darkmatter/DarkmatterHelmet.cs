@@ -63,6 +63,7 @@ Dark, yet still barely visible");
 
 		public override void UpdateArmorSet(Player player)
 		{
+
             const float effectRange = 500;
 			player.setBonus = "You and nearby allies recieve 40% less damage";
             for(int p =0; p < Main.player.Length; p++)

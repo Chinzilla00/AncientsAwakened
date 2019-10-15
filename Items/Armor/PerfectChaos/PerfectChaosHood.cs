@@ -47,9 +47,7 @@ The power of discordian rage radiates from this hood");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"'Chaos empowers you'
-As your health decreases, your magic damage increases and your mana consumption decreases
-Your magic attacks raze your oponents with the flames of discordian hell";
+            player.setBonus = Lang.ArmorBonus("PerfectChaosHoodBonus");
             player.GetModPlayer<AAPlayer>().perfectChaosMa = true;
             player.AddBuff(mod.BuffType("ChaosWrath"), 2);
         }

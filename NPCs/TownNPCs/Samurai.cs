@@ -96,30 +96,30 @@ namespace AAMod.NPCs.TownNPCs
             int TravellingMerchant = NPC.FindFirstNPC(NPCID.TravellingMerchant);
 			if (TravellingMerchant >= 0 && Main.rand.Next(4) == 0)
 			{
-                chat.Add("I've known " + Main.npc[TravellingMerchant].GivenName + " for a while. He's quite the man of culture.");
+                chat.Add(Lang.TownNPCSamurai("SamuraiChat1") + Main.npc[TravellingMerchant].GivenName + Lang.TownNPCSamurai("SamuraiChat2"));
             }
             int DD2Bartender = NPC.FindFirstNPC(NPCID.DD2Bartender);
             if (DD2Bartender >= 0 && Main.rand.Next(4) == 0)
             {
-                return "I'm not really a fan of " + Main.npc[DD2Bartender].GivenName + "'s ale. It's a bit strong for my taste. I prefer Sake to be entirely honest.";
+                return Lang.TownNPCSamurai("SamuraiChat3") + Main.npc[DD2Bartender].GivenName + Lang.TownNPCSamurai("SamuraiChat4");
             }
-            chat.Add("The chaos biomes weren't always so.... err.... chaotic.");
-            chat.Add("Have you seen my sword? I can't seem to find it anywhere.");
-            chat.Add("We used to be the most powerful nation in all of terraria... then... HE came...");
-			chat.Add("I remember my old master giving me wise words such as: 'YOU ARE TRYING TO VIEW FLASH CONTENT BUT YOU DO NOT HAVE A FLASH PLAYER INSTALLED'... I’m still trying to figure that one out.");
-			chat.Add("I'll be honest, I get half my lines from fortune cookies. Want one?");
-			chat.Add("If you refuse to accept anything but the best, you very often get it.");
-			chat.Add("Change can hurt, but it leads a path to something better.");
-			chat.Add("You cannot love life until you live the life you love.");
-			chat.Add("Land is always on the mind of a flying bird.");
-			chat.Add("Our deeds determine us, as much as we determine our deeds.");
-			chat.Add("Never give up. You're not a failure if you don't give up.");
-			chat.Add("You already know the answer to the questions lingering inside your head.");
-			chat.Add("It is now, and in this world, that we must live.");
-			chat.Add("You can make your own happiness.");
-			chat.Add("If winter comes, can spring be far behind?");
-			chat.Add("A stranger is a friend you have not spoken to yet.");
-			chat.Add("Your shoes will make you happy today.");
+            chat.Add(Lang.TownNPCSamurai("SamuraiChat5"));
+            chat.Add(Lang.TownNPCSamurai("SamuraiChat6"));
+            chat.Add(Lang.TownNPCSamurai("SamuraiChat7"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat8"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat9"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat10"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat11"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat12"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat13"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat14"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat15"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat16"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat17"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat18"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat19"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat20"));
+			chat.Add(Lang.TownNPCSamurai("SamuraiChat21"));
             return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
         }
         

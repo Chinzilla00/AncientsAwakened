@@ -37,32 +37,32 @@ Immunity to fall damage");
 
             if (modPlayer.MeleeHighest(player))
             {
-                DamageType = "Melee";
+                DamageType = Lang.RajahSPTooltip("Melee");
                 damageColor = Color.Firebrick;
             }
             else if (modPlayer.RangedHighest(player))
             {
-                DamageType = "Ranged";
+                DamageType = Lang.RajahSPTooltip("Ranged");
                 damageColor = Color.SeaGreen;
             }
             else if (modPlayer.MagicHighest(player))
             {
-                DamageType = "Magic";
+                DamageType = Lang.RajahSPTooltip("Magic");
                 damageColor = Color.Violet;
             }
             else if (modPlayer.SummonHighest(player))
             {
-                DamageType = "Summoning";
+                DamageType = Lang.RajahSPTooltip("Summoning");
                 damageColor = Color.Cyan;
             }
             else if (modPlayer.ThrownHighest(player))
             {
-                DamageType = "Throwing";
+                DamageType = Lang.RajahSPTooltip("Throwing");
                 damageColor = Color.DarkOrange;
             }
 
             string DamageAmount = (10 * DamageBoost(player)) + "% ";
-            TooltipLine DamageTooltip = new TooltipLine(mod, "Damage Type", "Current Damage Boost: +" + DamageAmount + DamageType + " Damage")
+            TooltipLine DamageTooltip = new TooltipLine(mod, "Damage Type", Lang.RajahSPTooltip("CurrentDamageBoost:+") + DamageAmount + DamageType + Lang.RajahSPTooltip("Damage"))
             {
                 overrideColor = damageColor
             };

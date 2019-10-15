@@ -35,8 +35,7 @@ namespace AAMod.Items.Armor.Chaos
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"+4 Minion slots
-A void scout hunts down your foes for you";
+            player.setBonus = Lang.ArmorBonus("ChaosVisorBonus");
             player.maxMinions += 4;
             player.GetModPlayer<AAPlayer>().doomite = true;
             if (player.whoAmI == Main.myPlayer)

@@ -301,7 +301,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote1) ? "TASTE ACID YOU UNBEARABLE MAGGOT!!!" : "STOP MOVING AND LET ME MELT YOU!!!", new Color(45, 46, 70));
+                    if (Main.netMode != 1) AAMod.Chat((!Quote1) ? Lang.BossChat("YamataHead1") : Lang.BossChat("YamataHead2"), new Color(45, 46, 70));
                     QuoteSaid = true;
                     Quote1 = true;
                 }
@@ -311,7 +311,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote3) ? "Down Down DOWN THE VENOM GOES!!! When it will it stop? WHO KNOWS?!" : "DIEDIEDIEDIEDIEDIEDIEDIIIIIIIIIIIIIIIE!!!", new Color(45, 46, 70));
+                    if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("YamataHead3") : Lang.BossChat("YamataHead4"), new Color(45, 46, 70));
                     QuoteSaid = true;
                     Quote3 = true;
                 }
@@ -321,7 +321,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote3) ? "BAM! BOOM! I'LL BLOW YOU INTO NEXT SUNDAY!!!" : "NGAAAAAAAAAAAAAAAAAH!!!", new Color(45, 46, 70));
+                    if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("YamataHead5") : Lang.BossChat("YamataHead6"), new Color(45, 46, 70));
                     QuoteSaid = true;
                     Quote3 = true;
                 }
@@ -331,7 +331,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote4) ? ("GET THEM! EAT THEM! JUST GET " + (player.Male ? "HIM" : "HER") + " OUT OF MY FACE!!!") : "I’VE EATEN RABBITS MORE INTIMIDATING THAN YOU!", new Color(45, 46, 70));
+                    if (Main.netMode != 1) AAMod.Chat((!Quote4) ? (Lang.BossChat("YamataHead7") + (player.Male ? Lang.BossChat("male2") : Lang.BossChat("fimale2")) + Lang.BossChat("YamataHead8")) : Lang.BossChat("YamataHead9"), new Color(45, 46, 70));
                     QuoteSaid = true;
                     Quote4 = true;
                 }

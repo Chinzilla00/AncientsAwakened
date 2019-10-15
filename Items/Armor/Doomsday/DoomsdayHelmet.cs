@@ -74,11 +74,7 @@ The power to destroy entire planets rests in this armor");
 		public override void UpdateArmorSet(Player player)
 		{
 			
-			player.setBonus = @"Life termination systems activated
-You detect all hostile life around you
-You can see in the dark much more easily
-Your magic attacks are strong enough to weaken your enemies defense for a time
-Mana usage reduced by 30%";
+			player.setBonus = Lang.ArmorBonus("DoomsdayHelmetBonus");
 
             player.manaCost *= .7f;
             player.AddBuff(BuffID.Hunter, 2);

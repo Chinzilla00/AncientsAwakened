@@ -69,11 +69,11 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             Main.npc[DeathAnim].velocity = npc.velocity;
             if (!NPC.AnyNPCs(ModContent.NPCType<AkumaA>()))
             {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat("Papa, NO! HEY! YOU! I'm gonna bake you alive next time we meet..!", new Color(102, 20, 48));
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("AkumaAAshe1"), new Color(102, 20, 48));
                 return;
             }
             npc.DropLoot(ModContent.ItemType<Items.Blocks.DaybreakIncineriteOre>(), Main.rand.Next(10, 25));
-            if (Main.netMode != 1) BaseMod.BaseUtility.Chat("OW, you Jerk..! I'm out!", new Color(102, 20, 48));
+            if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossChat("AkumaAAshe2"), new Color(102, 20, 48));
         }
 
         public override void BossLoot(ref string name, ref int potionType)

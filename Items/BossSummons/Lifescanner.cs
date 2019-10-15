@@ -38,12 +38,12 @@ Can only be used in the Void");
         {
             if (!player.GetModPlayer<AAPlayer>().ZoneVoid)
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Lifescanner doesn't do anything.", new Color(216, 60, 0), false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("LifescannerFalse"), new Color(216, 60, 0), false);
                 return false;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Sagittarius.Sagittarius>()) || NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Sagittarius.SagittariusFree>()))
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("The Lifescanner doesn't do anything.", new Color(216, 60, 0), false);
+                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("LifescannerFalse"), new Color(216, 60, 0), false);
                 return false;
             }
             return true;

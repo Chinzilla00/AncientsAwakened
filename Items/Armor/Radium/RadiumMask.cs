@@ -40,6 +40,7 @@ Shines with the light of a starry night sky");
             player.GetModPlayer<DarkmatterMaskEffects>().setBonus = true;
             player.GetModPlayer<DarkmatterMaskEffects>().sunSiphon = true;
             player.setBonus = "Damage nearby enemies \n 50% of the damage dealt will restore mana\n If mana is full you'll get mana overload buff instead\n" + (int)(100 * player.magicDamage) + " Magic Damage\n" + (player.magicCrit) + "% critical strike chance";
+
         }
 
 		public override void AddRecipes()
