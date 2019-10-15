@@ -152,7 +152,7 @@ namespace AAMod
         public bool perfectChaosSu;
         public bool Assassin;
         public bool AbyssalStealth;
-        public bool AssassinStealth;
+        //public bool AssassinStealth;
         public bool Witch;
         public bool Tied;
         public bool TiedHead;
@@ -390,7 +390,7 @@ namespace AAMod
             DarkmatterSet = false;
             perfectChaos = false;
             Assassin = false;
-            AssassinStealth = false;
+            //AssassinStealth = false;
             AbyssalStealth = false;
             Witch = false;
             Tied = false;
@@ -1052,7 +1052,7 @@ namespace AAMod
                     EmberRain(player);
                 }
             }
-
+            /* 
             if (Assassin)
             {
                 bool flag14 = false;
@@ -1134,6 +1134,7 @@ namespace AAMod
                     }
                 }
             }
+            */
         }
 
         public override void PostUpdateBuffs()
@@ -1169,6 +1170,82 @@ namespace AAMod
                 }
             }
         }
+
+        public override void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
+		{
+            float RandomX = 50f;
+            float RandomY = 25f;
+            bool flag = player.itemAnimation > 0 && ItemLoader.CanUseItem(player.inventory[player.selectedItem], player);
+            if(flag && player.inventory[player.selectedItem].melee && Assassin && Main.rand.Next(200) == 0 && player.whoAmI == Main.myPlayer)
+            {
+                Vector2 SpeedVector = Main.MouseWorld - player.RotatedRelativePoint(player.MountedCenter, true);
+                SpeedVector.Normalize();
+                if (SpeedVector.HasNaNs())
+                {
+                    SpeedVector = Vector2.UnitX * player.direction;
+                }
+                SpeedVector *= 15f;
+                Vector2[] Spwanposition = new Vector2[3];
+                Spwanposition[0] = new Vector2(player.Center.X + player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY,RandomY));
+                Spwanposition[1] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY,RandomY));
+                Spwanposition[2] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY,RandomY));
+                for (int i = 0; i < 3; i++)
+                {
+                    Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, SpeedVector.X, SpeedVector.Y, mod.ProjectileType("AssassinDagger"), (int)(player.inventory[player.selectedItem].damage * 1.3), 2f, player.whoAmI, 0f, 1f);
+                    float round = 16f;
+					int k = 0;
+					while ((float)k < round)
+					{
+						Vector2 vector12 = Vector2.UnitX * 0f;
+						vector12 += -Vector2.UnitY.RotatedBy((double)((float)k * (6.28318548f / round)), default(Vector2)) * new Vector2(1f, 4f);
+						vector12 = vector12.RotatedBy((double)SpeedVector.ToRotation(), default(Vector2));
+						int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default(Color), 1f);
+						Main.dust[Dusti].scale = 1.5f;
+						Main.dust[Dusti].noGravity = true;
+						Main.dust[Dusti].position = Spwanposition[i] + vector12;
+						Main.dust[Dusti].velocity = vector12.SafeNormalize(Vector2.UnitY) * 1f;
+						k++;
+					}
+                }
+            }
+        }
+        public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		{
+            if(item.ranged && Assassin)
+            {
+                speedX *= 1.3f;
+                speedY *= 1.3f;
+                Vector2 SpeedVector = new Vector2(speedX, speedY);
+                if(Main.rand.Next(10) == 0 && player.whoAmI == Main.myPlayer)
+                {
+                    float RandomX = 50f;
+                    float RandomY = 25f;
+                    Vector2[] Spwanposition = new Vector2[3];
+                    Spwanposition[0] = new Vector2(player.Center.X + player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY,RandomY));
+                    Spwanposition[1] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY,RandomY));
+                    Spwanposition[2] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY,RandomY));
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, speedX, speedY, mod.ProjectileType("AssassinArrow"), (int)(item.damage * 1.3), 2f, player.whoAmI, 0f, 1f);
+                        float round = 16f;
+                        int k = 0;
+                        while ((float)k < round)
+                        {
+                            Vector2 vector12 = Vector2.UnitX * 0f;
+                            vector12 += -Vector2.UnitY.RotatedBy((double)((float)k * (6.28318548f / round)), default(Vector2)) * new Vector2(1f, 4f);
+                            vector12 = vector12.RotatedBy((double)SpeedVector.ToRotation(), default(Vector2));
+                            int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default(Color), 1f);
+                            Main.dust[Dusti].scale = 1.5f;
+                            Main.dust[Dusti].noGravity = true;
+                            Main.dust[Dusti].position = Spwanposition[i] + vector12;
+                            Main.dust[Dusti].velocity = vector12.SafeNormalize(Vector2.UnitY) * 1f;
+                            k++;
+                        }
+                    }
+                }
+            }
+			return true;
+		}
 
         public void AAHorizontalMovement()
         {
@@ -2183,7 +2260,7 @@ namespace AAMod
                     }
                 }
             }
-
+            /* 
             if (Assassin)
             {
                 if (!player.mount.Active)
@@ -2191,6 +2268,7 @@ namespace AAMod
                     AssassinStealth = !AssassinStealth;
                 }
             }
+            */
 
             if (SagShield)
             {
