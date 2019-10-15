@@ -1171,12 +1171,12 @@ namespace AAMod
             }
         }
 
-        public override void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
+        public override void PostUpdate()
 		{
             float RandomX = 50f;
             float RandomY = 25f;
             bool flag = player.itemAnimation > 0 && ItemLoader.CanUseItem(player.inventory[player.selectedItem], player);
-            if(flag && player.inventory[player.selectedItem].melee && Assassin && Main.rand.Next(200) == 0 && player.whoAmI == Main.myPlayer)
+            if(flag && player.inventory[player.selectedItem].melee && player.GetModPlayer<AAPlayer>().Assassin && Main.rand.Next(200) == 0 && player.whoAmI == Main.myPlayer)
             {
                 Vector2 SpeedVector = Main.MouseWorld - player.RotatedRelativePoint(player.MountedCenter, true);
                 SpeedVector.Normalize();
@@ -1189,7 +1189,8 @@ namespace AAMod
                 Spwanposition[0] = new Vector2(player.Center.X + player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY,RandomY));
                 Spwanposition[1] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY,RandomY));
                 Spwanposition[2] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY,RandomY));
-                for (int i = 0; i < 3; i++)
+                int i = 0;
+                while (i < 3)
                 {
                     Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, SpeedVector.X, SpeedVector.Y, mod.ProjectileType("AssassinDagger"), (int)(player.inventory[player.selectedItem].damage * 1.3), 2f, player.whoAmI, 0f, 1f);
                     float round = 16f;
@@ -1206,6 +1207,7 @@ namespace AAMod
 						Main.dust[Dusti].velocity = vector12.SafeNormalize(Vector2.UnitY) * 1f;
 						k++;
 					}
+                    i++;
                 }
             }
         }
