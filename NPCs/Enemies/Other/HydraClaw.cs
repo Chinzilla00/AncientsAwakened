@@ -78,7 +78,11 @@ namespace AAMod.NPCs.Enemies.Other
 
         public override void NPCLoot()
         {
-            npc.DropLoot(mod.ItemType("HydraClaw"), Main.rand.Next(0, 1));
+            if(Main.rand.NextBool())
+            {
+                npc.DropLoot(mod.ItemType("HydraClaw"), 1);
+            }
+            
         }
     }
 }

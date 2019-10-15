@@ -2,7 +2,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-
+using Terraria.DataStructures;
+using System.Collections.Generic;
 
 namespace AAMod.Items.Armor.Darkmatter
 {
@@ -61,14 +62,9 @@ Dark, yet still barely visible");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = Lang.ArmorBonus("DarkmatterMaskBonus");
-            if (!Main.dayTime)
-            {
-                player.endurance += .08f;
-            }
-            player.statManaMax2 += 200;
-            player.manaCost *= 0.80f;
-            player.GetModPlayer<AAPlayer>().darkmatterSetMa = true;
+            player.setBonus = "Damage nearby enemies \n 2% of the damage dealt will heal you\n"+ (int)(100 * player.magicDamage) + " Magic Damage\n" + (player.magicCrit) +"% critical strike chance";
+            player.GetModPlayer<DarkmatterMaskEffects>().setBonus = true;
+            player.GetModPlayer<DarkmatterMaskEffects>().sunSiphon = false;
             player.armorEffectDrawShadowLokis = true;
         }
 
@@ -82,4 +78,43 @@ Dark, yet still barely visible");
             recipe.AddRecipe();
         }
 	}
+    public class DarkmatterMaskEffects : ModPlayer
+    {
+        public bool setBonus = false;
+        public int[] npcCooldown = new int[Main.npc.Length];
+        public bool sunSiphon = false;
+        public override void ResetEffects()
+        {
+            setBonus = false;
+            
+        }
+        public override void PreUpdate()
+        {
+            if(setBonus)
+            {
+                for (int n = 0; n < Main.npc.Length; n++)
+                {
+                    if (npcCooldown[n] > 0)
+                    {
+                        npcCooldown[n]--;
+                    }
+                    if (Main.npc[n].CanBeChasedBy() && npcCooldown[n] == 0 && (Main.npc[n].Center - player.Center).Length() < 300)
+                    {
+                        
+                        npcCooldown[n] = 30;
+                        int type = mod.ProjectileType("DarkLeech");
+                        if (sunSiphon)
+                        {
+                            type = mod.ProjectileType("SunSiphon");
+                        }
+                        
+                        Projectile.NewProjectile(Main.npc[n].Center, Vector2.Zero, type, (int)(100f * player.magicDamage), 0f, player.whoAmI, n);
+                    }
+                }
+            }
+            
+        }
+        
+    }
+    
 }

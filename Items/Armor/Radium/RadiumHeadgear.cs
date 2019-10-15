@@ -1,3 +1,4 @@
+using AAMod.Items.Armor.Darkmatter;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -39,14 +40,11 @@ Shines with the light of a starry night sky");
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = Lang.ArmorBonus("RadiumHeadgearBonus");
+            player.setBonus = "A sun portal hovers above your head, shooting sun blasts when you shoot. \nSun blasts deal 50% of your weapon's damage, and ignite them";
 
-            player.GetModPlayer<AAPlayer>().Radium = true;
-            player.GetModPlayer<AAPlayer>().radiumRa = true;
-            player.ammoCost75 = true;
-            player.rangedCrit += 20;
-            player.panic = true;
-            player.starCloak = true;
+
+            player.GetModPlayer<VisorEffects>().setBonus = true;
+            player.GetModPlayer<VisorEffects>().sunPortal = true;
         }
 
         public override void AddRecipes()

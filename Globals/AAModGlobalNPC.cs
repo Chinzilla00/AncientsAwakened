@@ -36,6 +36,7 @@ namespace AAMod
         public bool DynaEnergy1 = false;
         public bool DynaEnergy2 = false;
         public bool Spear = false;
+        public bool AssassinHurt = false;
 
         public static int Toad = -1;
         public static int Rose = -1;
@@ -66,6 +67,7 @@ namespace AAMod
             DynaEnergy1 = false;
             DynaEnergy2 = false;
             Spear = false;
+            AssassinHurt = false;
         }
 
         public override void SetDefaults(NPC npc)
@@ -117,6 +119,11 @@ namespace AAMod
             {
                 npc.defense *= (int).8f;
             }
+
+            if(AssassinHurt)
+			{
+				npc.defense -= 20;
+			}
 
             
 
@@ -178,6 +185,15 @@ namespace AAMod
                 }
             }
         }
+
+        public override bool StrikeNPC(NPC npc, ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
+		{
+			if(AssassinHurt)
+			{
+				damage *= 1.1f;
+			}
+			return true;
+		}
 
         internal ILog Logging = LogManager.GetLogger("AAMod");
 

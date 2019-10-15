@@ -13,25 +13,17 @@ namespace AAMod.Items.Dev.Invoker
 		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("The Book of the Law");
+            DisplayName.SetDefault("Aleister Book");
             Tooltip.SetDefault(@"A Legendary Book of Aleister 'Mega Therion'.
 Increase 10% minion damage
-Increase 2 minion slots");
+Increase 2 minion slots
+Maybe you need other items to help you get more power from this book.
+Aleister's note: 
+I need more powerful souls, *****,*********,**********");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
-            string text = "";
-            text += "You can control the True ability of the Invoker now\nWhen you hold the Invoker Staff, the death enemy's soul will heal you\nYou can release the death enemy's damage soul";
-            if(!Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().DarkCaligula)
-            text += "\nAleister's note: \nI need more powerful souls, the doragon, the huge rabit, the strange machine, more, more! Defeat them!";
-            else
-            text += "\nLeft click to use the book. Summon the Invoked Caligula.";
-
-            TooltipLine line = new TooltipLine(mod, "newtooltip", text);
-            list.RemoveAt(2);
-            list.Insert(2,line);
-
             foreach (TooltipLine line2 in list)
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
@@ -56,22 +48,7 @@ Increase 2 minion slots");
 
         public override bool CanUseItem(Player player)
 		{
-            bool canuse = false;
-            if(player.GetModPlayer<InvokerPlayer>().Thebookoflaw && player.GetModPlayer<InvokerPlayer>().DarkCaligula) 
-            {
-                canuse = player.GetModPlayer<InvokerPlayer>().DarkCaligula;
-            }
-            return canuse;
-        }
-
-        public override bool UseItem(Player player)
-		{
-            if(player.GetModPlayer<InvokerPlayer>().Thebookoflaw && player.GetModPlayer<InvokerPlayer>().DarkCaligula) 
-            {
-                player.GetModPlayer<InvokerPlayer>().DarkCaligula = false;
-                player.AddBuff(mod.BuffType("InvokedCaligulaSafe"), 3600);
-            }
-            return true;
+            return false;
         }
         
         public override void UpdateEquip(Player player)
@@ -96,7 +73,7 @@ Increase 2 minion slots");
 			TileObjectData.addTile(Type);
 			drop = mod.ItemType("InvokerBook");
 			ModTranslation modTranslation = CreateMapEntryName(null);
-			modTranslation.SetDefault("The Book of the Law");
+			modTranslation.SetDefault("Aleister Book");
 			AddMapEntry(Color.Gold, modTranslation);
 			animationFrameHeight = 16;
 		}
@@ -106,7 +83,7 @@ Increase 2 minion slots");
 			Player localPlayer = Main.LocalPlayer;
 			localPlayer.noThrow = 2;
 			localPlayer.showItemIcon = true;
-			localPlayer.showItemIcon2 = mod.ItemType("InvokerBook");
+			localPlayer.showItemIcon2 = base.mod.ItemType("InvokerBook");
 		}
 
         public override void RightClick(int i, int j)
