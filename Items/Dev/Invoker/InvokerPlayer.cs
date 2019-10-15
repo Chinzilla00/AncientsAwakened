@@ -170,7 +170,7 @@ namespace AAMod.Items.Dev.Invoker
 				if(soul == mod.NPCType("ShenA")) soulcount ++;
 				if(soul == mod.NPCType("SupremeRajah")) soulcount ++;
 			}
-			if(soulcount == 5)
+			if(soulcount >= 5)
 			{
 				DarkCaligula = true;
 			}

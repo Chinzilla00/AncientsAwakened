@@ -277,22 +277,45 @@ Legendry Weapon.";
 			Rectangle rectangle = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
 
 			double Realdamage = Main.CalculateDamage(projectile.damage, 0);
-			if(target.life <= Realdamage) target.life -= target.life - 1;
+
+			Main.player[Main.myPlayer].dpsDamage += (int)Realdamage;
+
+			Color damagecolor = crit ? CombatText.DamagedHostileCrit : CombatText.DamagedHostile;
+			CombatText.NewText(new Rectangle((int)target.position.X, (int)target.position.Y, target.width, target.height), damagecolor, (int)Realdamage, false, false);
+			
+			if (!target.immortal)
+			{
+				if (target.realLife >= 0)
+				{
+					Main.npc[target.realLife].life -= (int)Realdamage;
+					target.life = Main.npc[target.realLife].life;
+					target.lifeMax = Main.npc[target.realLife].lifeMax;
+				}
+				else
+				{
+					target.life -= (int)Realdamage;
+				}
+			}
+
+			/* 
+			if(target.life <= Realdamage) target.life -= target.life;
 			else target.life -= (int)Realdamage;
 
 			if(target.realLife >= 0)
 			{
-				if(Main.npc[target.realLife].life <= Realdamage) Main.npc[target.realLife].life -= Main.npc[target.realLife].life - 1;
+				if(Main.npc[target.realLife].life <= Realdamage) Main.npc[target.realLife].life -= Main.npc[target.realLife].life;
 				else Main.npc[target.realLife].life -= (int)Realdamage;
 			}
+			*/
 
-			Main.player[Main.myPlayer].dpsDamage += (int)Realdamage;
-
-			damage = 1;
-
-			Color damagecolor = crit ? CombatText.DamagedHostileCrit : CombatText.DamagedHostile;
-			CombatText.NewText(new Rectangle((int)target.position.X, (int)target.position.Y, target.width, target.height), damagecolor, (int)Realdamage, false, false);
-
+			if (target.realLife >= 0)
+			{
+				Main.npc[target.realLife].checkDead();
+			}
+			else
+			{
+				target.checkDead();
+			}
 
 			if (projectile.owner == Main.myPlayer)
 			{
@@ -442,6 +465,7 @@ Legendry Weapon.";
 				
 				if(npc.realLife >= 0) 
 				{
+					if(npc.type == 13) Main.npc[npc.realLife].boss = true;
 					Main.npc[npc.realLife].NPCLoot();//This need change in AAMod
 					for(int i = 0; i < 200 ; i++)
 					{
@@ -482,22 +506,26 @@ Legendry Weapon.";
 
 			if(npc.boss)
 			{
+				bool flag = (Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") || Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == ItemID.RodofDiscord) && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().SpringInvoker && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw;
 				if(npc.life/npc.lifeMax > 0.95)
 				{
 					CaligulaSoulFight = true;
 				}
-
-				if(InvokerPlayer.CaligulaSoul.Contains(npc.type))
+				else if(InvokerPlayer.CaligulaSoul.Contains(npc.type))
 				{
 					CaligulaSoulFight = false;
 				}
-				
-				bool flag = (Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") || Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == ItemID.RodofDiscord) && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().SpringInvoker && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw;
-				bool flag2 = npc.life < 50000 && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().InvokedCaligula;
-				
-				if(!flag || !flag2)
+				else if(!flag)
 				{
 					CaligulaSoulFight = false;
+				}
+				else if(npc.life < 50000)
+				{
+					if(!Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().InvokedCaligula) CaligulaSoulFight = false;
+				}
+				else
+				{
+					CaligulaSoulFight = true;
 				}
 			}
 
@@ -738,21 +766,45 @@ Legendry Weapon.";
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
 			double Realdamage = Main.CalculateDamage(projectile.damage, 0);
-			if(target.life <= Realdamage) target.life -= target.life - 1;
+
+			Main.player[Main.myPlayer].dpsDamage += (int)Realdamage;
+
+			Color damagecolor = crit ? CombatText.DamagedHostileCrit : CombatText.DamagedHostile;
+			CombatText.NewText(new Rectangle((int)target.position.X, (int)target.position.Y, target.width, target.height), damagecolor, (int)Realdamage, false, false);
+			
+			if (!target.immortal)
+			{
+				if (target.realLife >= 0)
+				{
+					Main.npc[target.realLife].life -= (int)Realdamage;
+					target.life = Main.npc[target.realLife].life;
+					target.lifeMax = Main.npc[target.realLife].lifeMax;
+				}
+				else
+				{
+					target.life -= (int)Realdamage;
+				}
+			}
+
+			/* 
+			if(target.life <= Realdamage) target.life -= target.life;
 			else target.life -= (int)Realdamage;
 
 			if(target.realLife >= 0)
 			{
-				if(Main.npc[target.realLife].life <= Realdamage) Main.npc[target.realLife].life -= Main.npc[target.realLife].life - 1;
+				if(Main.npc[target.realLife].life <= Realdamage) Main.npc[target.realLife].life -= Main.npc[target.realLife].life;
 				else Main.npc[target.realLife].life -= (int)Realdamage;
 			}
+			*/
 
-			Main.player[Main.myPlayer].dpsDamage += (int)Realdamage;
-
-			damage = 1;
-
-			Color damagecolor = crit ? CombatText.DamagedHostileCrit : CombatText.DamagedHostile;
-			CombatText.NewText(new Rectangle((int)target.position.X, (int)target.position.Y, target.width, target.height), damagecolor, (int)Realdamage, false, false);
+			if (target.realLife >= 0)
+			{
+				Main.npc[target.realLife].checkDead();
+			}
+			else
+			{
+				target.checkDead();
+			}
 		}
 	}
 	public class InvokedHeal : ModProjectile
