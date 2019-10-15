@@ -65,7 +65,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.height = 90;
             npc.aiStyle = -1;
             npc.damage = 0;
-            npc.lifeMax = 550000;
+            npc.lifeMax = 650000;
             npc.defense = 999999;
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -98,7 +98,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            npc.damage = 0;
+            damage = 0;
             return false;
         }
 
