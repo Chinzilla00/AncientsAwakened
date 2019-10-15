@@ -13,7 +13,7 @@ namespace AAMod.Items.Dev.Invoker
 	{
 		public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Invoker Staff");
+            DisplayName.SetDefault("Aleister Staff");
 			Tooltip.SetDefault("");
 
             Item.staff[item.type] = true;
@@ -86,7 +86,6 @@ Legendry Weapon.";
 				item.noMelee = false;
 				Item.staff[item.type] = false;
 				item.useStyle = 1;
-				item.summon = true;
 				item.damage = (int)(200 * player.minionDamage);
 				return true;
 			}
@@ -95,7 +94,6 @@ Legendry Weapon.";
 				item.noMelee = true;
 				Item.staff[item.type] = true;
 				item.useStyle = 5;
-				item.summon = false;
 				return true;
 			}
 			return true;
@@ -107,7 +105,7 @@ Legendry Weapon.";
 			{
 				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("InvokerStaffproj"), (int)damage, knockBack, player.whoAmI, 0f, 0f);
 			}
-			if (player.altFunctionUse == 2 && player.GetModPlayer<InvokerPlayer>().Thebookoflaw)
+			if (player.altFunctionUse == 2 && player.GetModPlayer<InvokerPlayer>().SpringInvoker)
 			{
 				if(!player.GetModPlayer<InvokerPlayer>().InvokerMadness)
 				{
@@ -126,7 +124,7 @@ Legendry Weapon.";
 
 		public override bool AltFunctionUse(Player player)
 		{
-			return (!(!player.GetModPlayer<InvokerPlayer>().DarkCaligula && player.GetModPlayer<InvokerPlayer>().InvokedCaligula) && player.GetModPlayer<InvokerPlayer>().Thebookoflaw);
+			return (!(!player.GetModPlayer<InvokerPlayer>().DarkCaligula && player.GetModPlayer<InvokerPlayer>().InvokedCaligula) && player.GetModPlayer<InvokerPlayer>().SpringInvoker);
 		}
 
     }
@@ -279,22 +277,45 @@ Legendry Weapon.";
 			Rectangle rectangle = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
 
 			double Realdamage = Main.CalculateDamage(projectile.damage, 0);
-			if(target.life <= Realdamage) target.life -= target.life - 1;
+
+			Main.player[Main.myPlayer].dpsDamage += (int)Realdamage;
+
+			Color damagecolor = crit ? CombatText.DamagedHostileCrit : CombatText.DamagedHostile;
+			CombatText.NewText(new Rectangle((int)target.position.X, (int)target.position.Y, target.width, target.height), damagecolor, (int)Realdamage, false, false);
+			
+			if (!target.immortal)
+			{
+				if (target.realLife >= 0)
+				{
+					Main.npc[target.realLife].life -= (int)Realdamage;
+					target.life = Main.npc[target.realLife].life;
+					target.lifeMax = Main.npc[target.realLife].lifeMax;
+				}
+				else
+				{
+					target.life -= (int)Realdamage;
+				}
+			}
+
+			/* 
+			if(target.life <= Realdamage) target.life -= target.life;
 			else target.life -= (int)Realdamage;
 
 			if(target.realLife >= 0)
 			{
-				if(Main.npc[target.realLife].life <= Realdamage) Main.npc[target.realLife].life -= Main.npc[target.realLife].life - 1;
+				if(Main.npc[target.realLife].life <= Realdamage) Main.npc[target.realLife].life -= Main.npc[target.realLife].life;
 				else Main.npc[target.realLife].life -= (int)Realdamage;
 			}
+			*/
 
-			Main.player[Main.myPlayer].dpsDamage += (int)Realdamage;
-
-			damage = 1;
-
-			Color damagecolor = crit ? CombatText.DamagedHostileCrit : CombatText.DamagedHostile;
-			CombatText.NewText(new Rectangle((int)target.position.X, (int)target.position.Y, target.width, target.height), damagecolor, (int)Realdamage, false, false);
-
+			if (target.realLife >= 0)
+			{
+				Main.npc[target.realLife].checkDead();
+			}
+			else
+			{
+				target.checkDead();
+			}
 
 			if (projectile.owner == Main.myPlayer)
 			{
@@ -410,10 +431,12 @@ Legendry Weapon.";
 		public bool IsBeingBanished = false;
 		public int BanishCount = 0;
 		public bool CaligulaSoulFight = false;
+		public bool CaligulaSoulClaw = false;
 
 		public override void ResetEffects(NPC npc)
 		{
-			this.Banished = false;
+			Banished = false;
+			CaligulaSoulClaw = false;
 		}
 
 		public void BanishAction(NPC npc)
@@ -442,6 +465,7 @@ Legendry Weapon.";
 				
 				if(npc.realLife >= 0) 
 				{
+					if(npc.type == 13) Main.npc[npc.realLife].boss = true;
 					Main.npc[npc.realLife].NPCLoot();//This need change in AAMod
 					for(int i = 0; i < 200 ; i++)
 					{
@@ -482,19 +506,26 @@ Legendry Weapon.";
 
 			if(npc.boss)
 			{
-				CaligulaSoulFight = true;
-
-				if(InvokerPlayer.CaligulaSoul.Contains(npc.type))
+				bool flag = (Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") || Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == ItemID.RodofDiscord) && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().SpringInvoker && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw;
+				if(npc.life/npc.lifeMax > 0.95)
+				{
+					CaligulaSoulFight = true;
+				}
+				else if(InvokerPlayer.CaligulaSoul.Contains(npc.type))
 				{
 					CaligulaSoulFight = false;
 				}
-				
-				bool flag = Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw;
-				bool flag2 = npc.life < 50000 && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().InvokedCaligula;
-				
-				if(!flag || !flag2)
+				else if(!flag)
 				{
 					CaligulaSoulFight = false;
+				}
+				else if(npc.life < 50000)
+				{
+					if(!Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().InvokedCaligula) CaligulaSoulFight = false;
+				}
+				else
+				{
+					CaligulaSoulFight = true;
 				}
 			}
 
@@ -529,7 +560,7 @@ Legendry Weapon.";
 		
 		public override bool PreNPCLoot(NPC npc)
 		{
-			if(Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw)
+			if(Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().SpringInvoker && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw)
 			{
             	//Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().BanishProjClear = true; // Just for test.
 				float nump7 = 4f;
@@ -580,7 +611,7 @@ Legendry Weapon.";
 				{
 					if((npc.realLife >= 0 && npc.realLife == npc.whoAmI) || npc.realLife < 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y, nump8, nump9, mod.ProjectileType("InvokedDamage"), npc.damage * 20, 0f, Main.player[Main.myPlayer].whoAmI, num6, 0f);
 				}
-				if(npc.GetGlobalNPC<InvokedGlobalNPC>().CaligulaSoulFight && !Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().DarkCaligula && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().InvokedCaligula && (npc.type == mod.NPCType("ZeroProtocol") || npc.type == mod.NPCType("YamataA") || npc.type == mod.NPCType("AkumaA") || npc.type == mod.NPCType("ShenA") || npc.type == mod.NPCType("SupremeRajah")))
+				if(npc.GetGlobalNPC<InvokedGlobalNPC>().CaligulaSoulFight && npc.GetGlobalNPC<InvokedGlobalNPC>().CaligulaSoulClaw && !Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().DarkCaligula && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().InvokedCaligula && (npc.type == mod.NPCType("ZeroProtocol") || npc.type == mod.NPCType("YamataA") || npc.type == mod.NPCType("AkumaA") || npc.type == mod.NPCType("ShenA") || npc.type == mod.NPCType("SupremeRajah")))
 				{
 					Projectile.NewProjectile(npc.Center.X, npc.Center.Y, nump8, nump9, mod.ProjectileType("InvokedDamage"), 0, 0f, Main.player[Main.myPlayer].whoAmI, Main.player[Main.myPlayer].whoAmI, npc.type);
 				}
@@ -651,7 +682,6 @@ Legendry Weapon.";
 		public override void AI()
         {
 			time += 1;
-			int num0;
 			if (time >= 60)
 			{
 				if(projectile.ai[1] == 0f)
@@ -662,7 +692,7 @@ Legendry Weapon.";
 					{
 						int[] array2 = new int[200];
 						int num569 = 0;
-						for (int num570 = 0; num570 < 200; num570 = num0 + 1)
+						for (int num570 = 0; num570 < 200; num570 ++)
 						{
 							if (Main.npc[num570].CanBeChasedBy(this, true))
 							{
@@ -670,11 +700,9 @@ Legendry Weapon.";
 								if (num571 < 800f)
 								{
 									array2[num569] = num570;
-									num0 = num569;
-									num569 = num0 + 1;
+									num569 ++;
 								}
 							}
-							num0 = num570;
 						}
 						if (num569 == 0)
 						{
@@ -722,19 +750,15 @@ Legendry Weapon.";
 					projectile.velocity.Y = (projectile.velocity.Y * 15f + num495) / 16f;
 				}
 			}
-			for (int num577 = 0; num577 < 5; num577 = num0 + 1)
+			for (int num577 = 0; num577 < 5; num577 ++)
 			{
 				float num578 = projectile.velocity.X * 0.2f * num577;
 				float num579 = -(projectile.velocity.Y * 0.2f) * num577;
 				int num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 175, 0f, 0f, 20, Color.DarkBlue, 2f);
 				Main.dust[num580].noGravity = true;
-				Dust dust3 = Main.dust[num580];
-				dust3.velocity *= 0f;
-				Dust dust74 = Main.dust[num580];
-				dust74.position.X -= num578;
-				Dust dust75 = Main.dust[num580];
-				dust75.position.Y -= num579;
-				num0 = num577;
+				Main.dust[num580].velocity *= 0f;
+				Main.dust[num580].position.X = Main.dust[num580].position.X - num578;
+				Main.dust[num580].position.Y = Main.dust[num580].position.Y - num579;
 			}
 			return;
 		}
@@ -742,21 +766,45 @@ Legendry Weapon.";
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
 			double Realdamage = Main.CalculateDamage(projectile.damage, 0);
-			if(target.life <= Realdamage) target.life -= target.life - 1;
+
+			Main.player[Main.myPlayer].dpsDamage += (int)Realdamage;
+
+			Color damagecolor = crit ? CombatText.DamagedHostileCrit : CombatText.DamagedHostile;
+			CombatText.NewText(new Rectangle((int)target.position.X, (int)target.position.Y, target.width, target.height), damagecolor, (int)Realdamage, false, false);
+			
+			if (!target.immortal)
+			{
+				if (target.realLife >= 0)
+				{
+					Main.npc[target.realLife].life -= (int)Realdamage;
+					target.life = Main.npc[target.realLife].life;
+					target.lifeMax = Main.npc[target.realLife].lifeMax;
+				}
+				else
+				{
+					target.life -= (int)Realdamage;
+				}
+			}
+
+			/* 
+			if(target.life <= Realdamage) target.life -= target.life;
 			else target.life -= (int)Realdamage;
 
 			if(target.realLife >= 0)
 			{
-				if(Main.npc[target.realLife].life <= Realdamage) Main.npc[target.realLife].life -= Main.npc[target.realLife].life - 1;
+				if(Main.npc[target.realLife].life <= Realdamage) Main.npc[target.realLife].life -= Main.npc[target.realLife].life;
 				else Main.npc[target.realLife].life -= (int)Realdamage;
 			}
+			*/
 
-			Main.player[Main.myPlayer].dpsDamage += (int)Realdamage;
-
-			damage = 1;
-
-			Color damagecolor = crit ? CombatText.DamagedHostileCrit : CombatText.DamagedHostile;
-			CombatText.NewText(new Rectangle((int)target.position.X, (int)target.position.Y, target.width, target.height), damagecolor, (int)Realdamage, false, false);
+			if (target.realLife >= 0)
+			{
+				Main.npc[target.realLife].checkDead();
+			}
+			else
+			{
+				target.checkDead();
+			}
 		}
 	}
 	public class InvokedHeal : ModProjectile
@@ -802,20 +850,15 @@ Legendry Weapon.";
 			num495 *= num496;
 			projectile.velocity.X = (projectile.velocity.X * 15f + num494) / 16f;
 			projectile.velocity.Y = (projectile.velocity.Y * 15f + num495) / 16f;
-			int num3;
-			for (int num502 = 0; num502 < 5; num502 = num3 + 1)
+			for (int num502 = 0; num502 < 5; num502 ++)
 			{
 				float num503 = projectile.velocity.X * 0.2f * num502;
 				float num504 = -(projectile.velocity.Y * 0.2f) * num502;
 				int num505 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 175, 0f, 0f, 20, Color.OrangeRed, 1.3f);
 				Main.dust[num505].noGravity = true;
-				Dust dust3 = Main.dust[num505];
-				dust3.velocity *= 0f;
-				Dust dust72 = Main.dust[num505];
-				dust72.position.X -= num503;
-				Dust dust73 = Main.dust[num505];
-				dust73.position.Y -= num504;
-				num3 = num502;
+				Main.dust[num505].velocity *= 0f;
+				Main.dust[num505].position.X = Main.dust[num505].position.X - num503;
+				Main.dust[num505].position.Y = Main.dust[num505].position.Y - num504;
 			}
 			return;
 		}
