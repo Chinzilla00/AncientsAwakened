@@ -511,7 +511,7 @@ namespace AAMod
                         }
 
                         Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
-                        SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                        SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), Language.GetTextValue("Mods.AAMod.Common.RajahRabbit"));
 
                     }
 
@@ -523,7 +523,7 @@ namespace AAMod
                         }
 
                         Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
-                        SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                        SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), Language.GetTextValue("Mods.AAMod.Common.RajahRabbit"));
                     }
 
                     if (bunnyKills % 50 == 0 && bunnyKills % 100 != 0)
