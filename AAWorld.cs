@@ -578,7 +578,6 @@ namespace AAMod
                 Terrarium(progress);
             }));
 
-
             tasks.Insert(shiniesIndex2 + 7, new PassLegacy("Acropolis", delegate (GenerationProgress progress)
             {
                 Acropolis(progress);
