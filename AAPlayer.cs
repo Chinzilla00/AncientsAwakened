@@ -1135,44 +1135,6 @@ namespace AAMod
                 }
             }
             */
-        }
-
-        public override void PostUpdateBuffs()
-        {
-            if (player.mount.Active || player.mount.Cart)
-            {
-                player.dashDelay = 60;
-                AADash = 0;
-            }
-        }
-
-        public override void PostUpdateEquips()
-        {
-            if (player.mount.Active || player.mount.Cart)
-            {
-                player.dashDelay = 60;
-                AADash = 0;
-            }
-        }
-
-        public override void PostUpdateRunSpeeds()
-        {
-            if (player.pulley && AADash > 0)
-            {
-                AADashMovement();
-            }
-            else if (player.grappling[0] == -1 && !player.tongued)
-            {
-                AAHorizontalMovement();
-                if (AADash > 0)
-                {
-                    AADashMovement();
-                }
-            }
-        }
-
-        public override void PostUpdate()
-		{
             float RandomX = 50f;
             float RandomY = 25f;
             bool flag = player.itemAnimation > 0 && ItemLoader.CanUseItem(player.inventory[player.selectedItem], player);
@@ -1208,6 +1170,40 @@ namespace AAMod
 						k++;
 					}
                     i++;
+                }
+            }
+        }
+
+        public override void PostUpdateBuffs()
+        {
+            if (player.mount.Active || player.mount.Cart)
+            {
+                player.dashDelay = 60;
+                AADash = 0;
+            }
+        }
+
+        public override void PostUpdateEquips()
+        {
+            if (player.mount.Active || player.mount.Cart)
+            {
+                player.dashDelay = 60;
+                AADash = 0;
+            }
+        }
+
+        public override void PostUpdateRunSpeeds()
+        {
+            if (player.pulley && AADash > 0)
+            {
+                AADashMovement();
+            }
+            else if (player.grappling[0] == -1 && !player.tongued)
+            {
+                AAHorizontalMovement();
+                if (AADash > 0)
+                {
+                    AADashMovement();
                 }
             }
         }
