@@ -8,12 +8,12 @@ namespace AAMod
 
         public static AAConfigClient Instance; // See ExampleConfigServer.Instance for info.
 
-        [Label("Disable AA Town NPCs")]
-        [Tooltip("Disables this mod's town npcs from spawning, for those who'd prefer to have other npcs spawn quicker. Note: This does not affect Anubis due to him being key to progression.")]
+        [Label("{$Mods.AAMod.Common.AATownNPC}")]
+        [Tooltip("{$Mods.AAMod.Common.AATownNPCInfo}")]
         public bool NoAATownNPC;
 
-        [Label("Disable Boss Dialogue")]
-        [Tooltip("Disables dialogue from bosses to prevent chatspam. Also makes animations that have boss dialogue go by a little quicker.")]
+        [Label("{$Mods.AAMod.Common.DisableBossDialogue}")]
+        [Tooltip("{$Mods.AAMod.Common.DisableBossDialogueInfo}")]
         public bool NoBossDialogue;
     }
 }

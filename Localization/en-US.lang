@@ -1,4 +1,17 @@
-locked chest
+//InvokerInfo
+
+Common.InvokerBookEX1=You can control the True ability of the Invoker now\nWhen you hold the Invoker Staff, the death enemy's soul will heal you\nYou can release the death enemy's damage soul
+Common.InvokerBookEX2=\nAleister's note: \nI need more powerful souls, the doragon, the huge rabit, the strange machine, more, more! Defeat them!
+Common.InvokerBookEX3=\nLeft click to use the book. Summon the Invoked Caligula.
+
+Common.InvokerStaff1=Strange. All is strange. \nSwinging a weapon causes summon damage?\nReally?\nLegendry Weapon.
+Common.InvokerStaff2=Left click to shoot a invoker bolt.\nRight click to banish all of the enemies according to your basic banish damage.\nBanishing enemies can heal you according to their maxlife.\nBut at what cost?\nLegendry Weapon.
+Common.InvokerDamage1= banish 
+Common.InvokerDamage2= summon 
+
+Common.CaligulaSoul=Powerful Soul Steal!
+
+//lockedchest
 
 Common.InfernoChest_Locked=Locked Inferno Chest
 
@@ -8,7 +21,7 @@ Common.DoomsdayChest_Locked=Locked Doomsday Chest
 
 Common.GreedChest_Locked=Locked Greed Chest
 
-hotkey
+//hotkey
 
 Common.InfinityHotKey=Snap
 Common.Rifthotkey=Rift Home
@@ -16,5 +29,39 @@ Common.RiftReturnhotkey=Rift Back
 Common.AccessoryAbilityKey=AA Accessory Ability
 Common.ArmorAbilityKey=AA Armor Ability
 Common.TimeStonehotKey=Time Stone
+
+//BossName
+
+Common.MushroomMonarch=The Mushroom Monarch
+Common.FeudalFungus=The Feudal Fungus
+Common.Broodmother=The Broodmother
+Common.Hydra=The Hydra
+Common.GripsofChaos=The Grips of Chaos
+Common.SubzeroSerpent=The Subzero Serpent
+Common.TruffleToad=The Truffle Toad
+Common.Sagittarius=Sagittarius
+Common.Skeletron=Skeletron
+Common.RajahRabbit=Rajah Rabbit
+Common.DesertDjinn=The Desert Djinn
+Common.Plantera=Plantera
+Common.Athena=Athena
+Common.Greed=Greed
+Common.Akuma=Akuma, Draconian Demon
+Common.AkumaA=Oni Akuma
+Common.Yamata=Yamata, Dread Nightmare
+Common.YamataA=Yamata no Orochi 
+Common.ShenDoragon=Shen Doragon; Discordian Doomsayer
+Common.SupremeRajah=Rajah Rabbit
+
+//AAConfig
+
+Common.AATownNPC=Disable AA Town NPCs
+Common.AATownNPCInfo=Disables this mod's town npcs from spawning, for those who'd prefer to have other npcs spawn quicker. Note: This does not affect Anubis due to him being key to progression.
+Common.DisableBossDialogue=Disable Boss Dialogue
+Common.DisableBossDialogueInfo=Disables dialogue from bosses to prevent chatspam. Also makes animations that have boss dialogue go by a little quicker.
+
+
+
+
 
 

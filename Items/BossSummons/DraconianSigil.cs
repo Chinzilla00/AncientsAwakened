@@ -93,7 +93,7 @@ Non-Consumable");
             {
                 if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianSignalTrue2"), new Color(180, 41, 32));
             }
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Akuma"), true, 0, 0, "Akuma, Draconian Demon", false);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Akuma"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Akuma"), false);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), player.position);
             return true;
         }

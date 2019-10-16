@@ -32,7 +32,7 @@ Only useable during the day");
 
         public override bool UseItem(Player player)
         {
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Broodmother"), true, 0, 0, "The Broodmother", false);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Broodmother"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Broodmother"), false);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
