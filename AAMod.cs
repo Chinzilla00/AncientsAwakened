@@ -231,6 +231,8 @@ namespace AAMod
                 calamityLoaded = true;
             if (js != null)
                 jsLoaded = true;
+
+            Array.Resize(ref AASets.Goblins, NPCLoader.NPCCount);
         }
 
         public static void PremultiplyTexture(Texture2D texture)

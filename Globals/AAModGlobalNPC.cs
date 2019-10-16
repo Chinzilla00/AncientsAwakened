@@ -535,7 +535,7 @@ namespace AAMod
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }
