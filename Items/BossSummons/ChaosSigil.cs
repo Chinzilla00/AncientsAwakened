@@ -1,6 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using AAMod.NPCs.Bosses.Shen;
 using System.Collections.Generic;
 using BaseMod;

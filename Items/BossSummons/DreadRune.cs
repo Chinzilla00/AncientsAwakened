@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using BaseMod;
+using Terraria.Localization;
 
 namespace AAMod.Items.BossSummons
 {

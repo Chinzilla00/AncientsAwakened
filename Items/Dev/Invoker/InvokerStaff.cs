@@ -5,6 +5,7 @@ using Terraria.ID;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Dev.Invoker

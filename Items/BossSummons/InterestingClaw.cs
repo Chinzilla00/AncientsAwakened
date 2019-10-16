@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.NPCs.Bosses.Grips;
+using Terraria.Localization;
 
 namespace AAMod.Items.BossSummons
 {

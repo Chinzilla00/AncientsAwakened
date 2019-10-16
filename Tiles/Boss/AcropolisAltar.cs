@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.Localization;
 using AAMod.NPCs.Bosses.Athena;
 
 namespace AAMod.Tiles.Boss

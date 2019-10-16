@@ -20,7 +20,6 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.Utilities;
-using Terraria.Localization;
 
 namespace AAMod
 {

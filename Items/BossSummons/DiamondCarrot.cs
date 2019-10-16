@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using AAMod.NPCs.Bosses.Rajah;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
