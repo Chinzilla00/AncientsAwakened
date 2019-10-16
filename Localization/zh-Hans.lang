@@ -5553,5 +5553,30 @@ Common.AATownNPCInfo=取消远古觉醒NPC的生成, 用于玩家希望其他npc
 Common.DisableBossDialogue=远古觉醒Boss对话取消
 Common.DisableBossDialogueInfo=阻止Boss对话的生成. 也会让已有的Boss对话速度加快.
 
+//AARecipeGroup
+
+Common.darkmatterhelmet=暗物质头盔
+Common.radiumhelmet=镭光头盔
+Common.goldbar=金/铂金锭
+Common.celestialcraftingstation=天界工作台
+Common.ancientmaterial=远古材料
+Common.superancientmaterial=原古材料
+Common.worldevilmaterial=困难模式邪恶材料
+Common.hardmodeforge=困难模式熔炉
+Common.chaosclaw=混沌之爪
+Common.ironbar=铁/铅锭
+Common.copperbar=铜/锡锭
+Common.silverbar=银/钨金锭
+Common.evilbar=邪恶锭
+Common.chaosbar=混沌锭
+Common.EvilorChaosBar=混沌或邪恶锭
+Common.ancientcraftingstation=远古工作台
+Common.evilsummonstaff=邪恶召唤杖
+Common.altar=祭坛
+Common.ChaosLeggings=混沌级护腿
+Common.ChaosChestpiece=混沌级护胸
+Common.hardmodeanvil=困难模式砧
+Common.hardmodeforge=困难模式熔炉
+
 
 

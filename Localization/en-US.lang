@@ -53,6 +53,31 @@ Common.YamataA=Yamata no Orochi
 Common.ShenDoragon=Shen Doragon; Discordian Doomsayer
 Common.SupremeRajah=Rajah Rabbit
 
+//AARecipeGroup
+
+Common.darkmatterhelmet= darkmatter helmet
+Common.radiumhelmet= radium helmet
+Common.goldbar= gold bar
+Common.celestialcraftingstation= celestial crafting station
+Common.ancientmaterial= ancient material
+Common.superancientmaterial= superancient material
+Common.worldevilmaterial= world evil material
+Common.hardmodeforge= hardmode forge
+Common.chaosclaw= chaos claw
+Common.ironbar= iron bar
+Common.copperbar= copper bar
+Common.silverbar= silver bar
+Common.evilbar= evil bar
+Common.chaosbar= chaos bar
+Common.EvilorChaosBar= evil/chaos bar
+Common.ancientcraftingstation= ancient crafting station
+Common.evilsummonstaff= evil summon staff
+Common.altar= altar
+Common.ChaosLeggings= Chaos Leggings
+Common.ChaosChestpiece= Chaos Chestpiece
+Common.hardmodeanvil= hardmode anvil
+Common.hardmodeforge= hardmode forge
+
 //AAConfig
 
 Common.AATownNPC=Disable AA Town NPCs
