@@ -674,7 +674,7 @@ ItemName.DoomsdayChestplate=末日突击装甲
 ItemTooltip.DoomsdayChestplate=增加35%召唤物伤害\n装甲内栖宿着毁灭行星之力
 
 ItemName.DoomsdayHelmet=末日突击面具
-ItemTooltip.DoomsdayHelmet=增加25%召唤物暴击率\n装甲内栖宿着毁灭行星之力
+ItemTooltip.DoomsdayHelmet=增加25%魔法伤害\增加18%魔法暴击率\n装甲内栖宿着毁灭行星之力
 
 ItemName.DoomsdayLeggings=末日突击护胫
 ItemTooltip.DoomsdayLeggings=增加18%移动速度\n增加20%召唤物伤害\n装甲内栖宿着毁灭行星之力
