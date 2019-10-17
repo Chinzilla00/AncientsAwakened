@@ -42,7 +42,7 @@ Shines with the light of a starry night sky");
 		{
             const float effectRange = 500;
             player.setBonus = Lang.ArmorBonus("RadiumHelmetBonus");
-            if (Main.netMode != 0) //don't bother with this part on singleplayer
+            if (Main.netMode != 0)
             {
                 for (int p = 0; p < Main.player.Length; p++)
                 {

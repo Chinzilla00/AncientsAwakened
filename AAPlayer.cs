@@ -1052,93 +1052,11 @@ namespace AAMod
                     EmberRain(player);
                 }
             }
-            /* 
-            if (Assassin)
-            {
-                bool flag14 = false;
 
-                if (AssassinStealth)
-                {
-                    float num29 = player.stealth;
-
-                    player.stealth -= 0.04f;
-                    if (player.stealth < 0f)
-                    {
-                        player.stealth = 0f;
-                    }
-                    else
-                    {
-                        flag14 = true;
-                    }
-
-                    if (player.stealth == 0f && num29 != player.stealth && Main.netMode == NetmodeID.MultiplayerClient)
-                    {
-                        NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
-                    }
-
-                    player.rangedDamage += (1f - player.stealth) * 0.8f;
-                    player.meleeDamage += (1f - player.stealth) * 0.8f;
-                    player.rangedCrit += (int)((1f - player.stealth) * 20f);
-                    player.meleeCrit += (int)((1f - player.stealth) * 20f);
-                    player.aggro -= (int)((1f - player.stealth) * 1200f);
-
-                    if (player.mount.Active)
-                    {
-                        AssassinStealth = false;
-                    }
-                }
-                else
-                {
-                    float num30 = player.stealth;
-
-                    player.stealth += 0.04f;
-                    if (player.stealth > 1f)
-                    {
-                        player.stealth = 1f;
-                    }
-                    else
-                    {
-                        flag14 = true;
-                    }
-
-                    if (player.stealth == 1f && num30 != player.stealth && Main.netMode == NetmodeID.MultiplayerClient)
-                    {
-                        NetMessage.SendData(84, -1, -1, null, player.whoAmI, 0f, 0f, 0f, 0, 0, 0);
-                    }
-                }
-
-                if (flag14)
-                {
-                    if (Main.rand.Next(2) == 0)
-                    {
-                        Vector2 vector = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                        Dust dust = Main.dust[Dust.NewDust(player.Center - vector * 30f, 0, 0, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 0)];
-
-                        dust.noGravity = true;
-                        dust.position = player.Center - vector * Main.rand.Next(5, 11);
-                        dust.velocity = vector.RotatedBy(1.5707963705062866) * 4f;
-                        dust.scale = 0.5f + Main.rand.NextFloat();
-                        dust.fadeIn = 0.5f;
-                    }
-
-                    if (Main.rand.Next(2) == 0)
-                    {
-                        Vector2 vector2 = Vector2.UnitY.RotatedByRandom(6.2831854820251465);
-                        Dust dust2 = Main.dust[Dust.NewDust(player.Center - vector2 * 30f, 0, 0, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 0)];
-
-                        dust2.noGravity = true;
-                        dust2.position = player.Center - vector2 * 12f;
-                        dust2.velocity = vector2.RotatedBy(-1.5707963705062866) * 2f;
-                        dust2.scale = 0.5f + Main.rand.NextFloat();
-                        dust2.fadeIn = 0.5f;
-                    }
-                }
-            }
-            */
             float RandomX = 50f;
             float RandomY = 25f;
             bool flag = player.itemAnimation > 0 && ItemLoader.CanUseItem(player.inventory[player.selectedItem], player);
-            if(flag && player.inventory[player.selectedItem].melee && player.GetModPlayer<AAPlayer>().Assassin && Main.rand.Next(200) == 0 && player.whoAmI == Main.myPlayer)
+            if (flag && player.inventory[player.selectedItem].melee && player.GetModPlayer<AAPlayer>().Assassin && Main.rand.Next(200) == 0 && player.whoAmI == Main.myPlayer)
             {
                 Vector2 SpeedVector = Main.MouseWorld - player.RotatedRelativePoint(player.MountedCenter, true);
                 SpeedVector.Normalize();
@@ -1148,27 +1066,27 @@ namespace AAMod
                 }
                 SpeedVector *= 15f;
                 Vector2[] Spwanposition = new Vector2[3];
-                Spwanposition[0] = new Vector2(player.Center.X + player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY,RandomY));
-                Spwanposition[1] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY,RandomY));
-                Spwanposition[2] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY,RandomY));
+                Spwanposition[0] = new Vector2(player.Center.X + player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY, RandomY));
+                Spwanposition[1] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY, RandomY));
+                Spwanposition[2] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY, RandomY));
                 int i = 0;
                 while (i < 3)
                 {
                     Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, SpeedVector.X, SpeedVector.Y, mod.ProjectileType("AssassinDagger"), (int)(player.inventory[player.selectedItem].damage * 1.3), 2f, player.whoAmI, 0f, 1f);
                     float round = 16f;
-					int k = 0;
-					while ((float)k < round)
-					{
-						Vector2 vector12 = Vector2.UnitX * 0f;
-						vector12 += -Vector2.UnitY.RotatedBy((double)((float)k * (6.28318548f / round)), default(Vector2)) * new Vector2(1f, 4f);
-						vector12 = vector12.RotatedBy((double)SpeedVector.ToRotation(), default(Vector2));
-						int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default(Color), 1f);
-						Main.dust[Dusti].scale = 1.5f;
-						Main.dust[Dusti].noGravity = true;
-						Main.dust[Dusti].position = Spwanposition[i] + vector12;
-						Main.dust[Dusti].velocity = vector12.SafeNormalize(Vector2.UnitY) * 1f;
-						k++;
-					}
+                    int k = 0;
+                    while ((float)k < round)
+                    {
+                        Vector2 vector12 = Vector2.UnitX * 0f;
+                        vector12 += -Vector2.UnitY.RotatedBy((double)((float)k * (6.28318548f / round)), default(Vector2)) * new Vector2(1f, 4f);
+                        vector12 = vector12.RotatedBy((double)SpeedVector.ToRotation(), default(Vector2));
+                        int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default(Color), 1f);
+                        Main.dust[Dusti].scale = 1.5f;
+                        Main.dust[Dusti].noGravity = true;
+                        Main.dust[Dusti].position = Spwanposition[i] + vector12;
+                        Main.dust[Dusti].velocity = vector12.SafeNormalize(Vector2.UnitY) * 1f;
+                        k++;
+                    }
                     i++;
                 }
             }

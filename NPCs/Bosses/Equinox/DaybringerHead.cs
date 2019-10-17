@@ -475,17 +475,6 @@ namespace AAMod.NPCs.Bosses.Equinox
                     }
                     internalAI[0] = 1;
                 }
-                npc.localAI[0] += 1f;
-                if (npc.localAI[0] >= 360f)
-                {
-                    npc.localAI[0] = 0f;
-                    npc.TargetClosest(true);
-                    npc.netUpdate = true;
-                    int damage = expertMode ? 50 : 70;
-                    float xPos = (Main.rand.Next(2) == 0 ? npc.position.X + 300f : npc.position.X - 300f);
-                    Vector2 vector2 = new Vector2(xPos, npc.position.Y + Main.rand.Next(-300, 301));
-                    Projectile.NewProjectile(vector2.X, vector2.Y, 0f, 0f, 465, damage, 0f, Main.myPlayer, 0f, 0f);
-                }
             }
             if (Main.player[npc.target].dead)
             {

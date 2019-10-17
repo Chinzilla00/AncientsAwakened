@@ -492,7 +492,7 @@ namespace AAMod
                     {
                         if (Main.rand.NextBool(100))
                         {
-                            npc.DropLoot(mod.ItemType("TerraCrystal"));
+                            npc.DropLoot(mod.ItemType("ChaosCrystal"));
                         }
                     }
                 }
@@ -535,10 +535,9 @@ namespace AAMod
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Logging.DebugFormat(e.StackTrace);
-                Logging.DebugFormat(npc.type.ToString());
+
             }
             
         }
