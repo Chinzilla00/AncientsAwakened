@@ -48,7 +48,7 @@ namespace AAMod.Items.BossSummons
         public override bool UseItem(Player player)
         {
             int overrideDirection = Main.rand.Next(2) == 0 ? -1 : 1;
-            SpawnBoss(player, mod.NPCType("Rajah"), true, player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, -1200), "Rajah Rabbit");
+            SpawnBoss(player, mod.NPCType("Rajah"), true, player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, -1200), Language.GetTextValue("Mods.AAMod.Common.RajahRabbit"));
             return true;
         }
 

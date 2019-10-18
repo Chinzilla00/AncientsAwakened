@@ -63,7 +63,7 @@ Dark, yet still barely visible");
 		{
 
 
-            player.setBonus = "Minions will ocasionaly attempt to distrupt enemy projectiles";
+            player.setBonus = Lang.ArmorBonus("DarkmatterHeaddressBonus");
             player.GetModPlayer<HeadressEffects>().setBonus = true;
             player.armorEffectDrawShadowLokis = true;
         }

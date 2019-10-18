@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using BaseMod;
@@ -32,7 +33,7 @@ Can only be used in a surface glowing mushroom biome");
 
         public override bool UseItem(Player player)
         {
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("TruffleToad"), true, 0, 0, "The Truffle Toad", false);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("TruffleToad"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.TruffleToad"), false);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

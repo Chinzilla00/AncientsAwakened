@@ -68,7 +68,7 @@ namespace AAMod.Tiles.Chests
                 Player player = Main.player[BaseMod.BaseAI.GetPlayer(new Vector2(i, j), -1)];
                 AAWorld.OpenedChest = 2;
                 if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.GreedChest("GreedChest3"), Color.Goldenrod);
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Greed"), false, 0, 0, "Greed");
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Greed"), false, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Greed"));
             }
             dustType = this.dustType;
             return true;
