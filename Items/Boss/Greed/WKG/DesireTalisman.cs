@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 using Terraria;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Boss.Greed
+namespace AAMod.Items.Boss.Greed.WKG
 {
     public class DesireTalisman : BaseAAItem
     {

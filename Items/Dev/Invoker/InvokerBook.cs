@@ -83,7 +83,7 @@ I need more powerful souls, *****,*********,**********");
 			Player localPlayer = Main.LocalPlayer;
 			localPlayer.noThrow = 2;
 			localPlayer.showItemIcon = true;
-			localPlayer.showItemIcon2 = base.mod.ItemType("InvokerBook");
+			localPlayer.showItemIcon2 = mod.ItemType("InvokerBook");
 		}
 
         public override void RightClick(int i, int j)

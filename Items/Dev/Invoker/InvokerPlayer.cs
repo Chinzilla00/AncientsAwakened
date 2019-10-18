@@ -196,13 +196,13 @@ namespace AAMod.Items.Dev.Invoker
 			}
 			if (InvokerShow)
 			{
-				base.player.legs = mod.GetEquipSlot("InvokerLegs", EquipType.Legs);
-				base.player.body = mod.GetEquipSlot("InvokerBody", EquipType.Body);
-				base.player.head = mod.GetEquipSlot("InvokerHead", EquipType.Head);
+                player.legs = mod.GetEquipSlot("InvokerLegs", EquipType.Legs);
+                player.body = mod.GetEquipSlot("InvokerBody", EquipType.Body);
+                player.head = mod.GetEquipSlot("InvokerHead", EquipType.Head);
 			}
 			if (SpringInvoker)
 			{
-				if ((double)Math.Abs(player.velocity.X) < 0.05 && (double)Math.Abs(player.velocity.Y) < 0.05 && (player.itemAnimation == 0 || player.inventory[player.selectedItem].type == mod.ItemType("InvokerStaff")))
+				if (Math.Abs(player.velocity.X) < 0.05 && Math.Abs(player.velocity.Y) < 0.05 && (player.itemAnimation == 0 || player.inventory[player.selectedItem].type == mod.ItemType("InvokerStaff")))
 				{
 					if(player.lifeRegen < 0) player.lifeRegen /= 2;
 					if (player.lifeRegenTime > 90 && player.lifeRegenTime < 1800)
@@ -211,7 +211,7 @@ namespace AAMod.Items.Dev.Invoker
 					}
 					player.lifeRegenTime += 4;
 					player.lifeRegen += 4;
-					float Shine = (float)(player.lifeRegenTime - 3000);
+					float Shine = player.lifeRegenTime - 3000;
 					Shine /= 300f;
 					if (Shine > 0f)
 					{
@@ -220,7 +220,7 @@ namespace AAMod.Items.Dev.Invoker
 							Shine = 30f;
 						}
 					}
-					player.lifeRegen += (int)Math.Round((double)Shine);
+					player.lifeRegen += (int)Math.Round(Shine);
 					if (player.lifeRegen > 0 && player.statLife < player.statLifeMax2)
 					{
 						player.lifeRegenCount++;
@@ -230,9 +230,9 @@ namespace AAMod.Items.Dev.Invoker
 							Main.dust[num5].noGravity = true;
 							Main.dust[num5].velocity *= 0.75f;
 							Main.dust[num5].fadeIn = 1.3f;
-							Vector2 vector = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+							Vector2 vector = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 							vector.Normalize();
-							vector *= (float)Main.rand.Next(50, 100) * 0.04f;
+							vector *= Main.rand.Next(50, 100) * 0.04f;
 							Main.dust[num5].velocity = vector;
 							vector.Normalize();
 							vector *= 34f;
@@ -241,12 +241,12 @@ namespace AAMod.Items.Dev.Invoker
 					}
 				}
 				
-				if((double)player.statLife <= (double)player.statLifeMax2 * 0.5)
+				if(player.statLife <= player.statLifeMax2 * 0.5)
 				{
 					player.iceBarrier= true;
 				}
 
-				if ((float)player.statLife > (float)player.statLifeMax2 * 0.25f)
+				if (player.statLife > player.statLifeMax2 * 0.25f)
 				{
 					player.hasPaladinShield = true;
 					if (player.whoAmI != Main.myPlayer && player.miscCounter % 10 == 0)
@@ -256,7 +256,7 @@ namespace AAMod.Items.Dev.Invoker
 						{
 							float num = player.position.X - Main.player[myPlayer].position.X;
 							float num2 = player.position.Y - Main.player[myPlayer].position.Y;
-							float num3 = (float)Math.Sqrt((double)(num * num + num2 * num2));
+							float num3 = (float)Math.Sqrt(num * num + num2 * num2);
 							if (num3 < 800f)
 							{
 								Main.player[myPlayer].AddBuff(43, 20, true);
@@ -267,9 +267,9 @@ namespace AAMod.Items.Dev.Invoker
 			}
 			if (InvokedCaligula)
 			{
-				base.player.legs = mod.GetEquipSlot("InvokedCaligulaLegs", EquipType.Legs);
-				base.player.body = mod.GetEquipSlot("InvokedCaligulaBody", EquipType.Body);
-				base.player.head = mod.GetEquipSlot("InvokedCaligulaHead", EquipType.Head);
+                player.legs = mod.GetEquipSlot("InvokedCaligulaLegs", EquipType.Legs);
+                player.body = mod.GetEquipSlot("InvokedCaligulaBody", EquipType.Body);
+                player.head = mod.GetEquipSlot("InvokedCaligulaHead", EquipType.Head);
 				
 				if(Main.mouseLeft && player.inventory[player.selectedItem].damage > 0)
 				{

@@ -4,7 +4,6 @@ namespace AAMod.Items.Boss.Greed
 {
     public class GreedBag : BaseAAItem
 	{
-        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Treasure Bag");

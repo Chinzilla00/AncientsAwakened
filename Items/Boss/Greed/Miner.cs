@@ -9,7 +9,6 @@ namespace AAMod.Items.Boss.Greed
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("MINE-er");
-            Tooltip.SetDefault("Mines ores faster (Not Working yet)");
         }
 
         public override void SetDefaults()

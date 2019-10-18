@@ -196,7 +196,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             Player player = Main.player[npc.target];
             if (npc.dontTakeDamage)
             {
-                MoonlordDeathDrama.RequestLight(((float)deathTimer / 300f), npc.Center);
+                MoonlordDeathDrama.RequestLight((deathTimer / 300f), npc.Center);
                 npc.dontTakeDamage = true;
                 npc.damage = 0;
                 npc.defense = 0;
@@ -209,7 +209,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     if (Main.rand.Next(2) == 0)
                     {
                         Main.dust[num7].scale = 0.5f;
-                        Main.dust[num7].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+                        Main.dust[num7].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                     }
                 }
                 deathTimer++;
@@ -227,7 +227,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         if (Main.rand.Next(2) == 0)
                         {
                             Main.dust[num7].scale = 0.5f;
-                            Main.dust[num7].fadeIn = 1f + (float)Main.rand.Next(10) * 0.1f;
+                            Main.dust[num7].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
                         }
                     }
                 }

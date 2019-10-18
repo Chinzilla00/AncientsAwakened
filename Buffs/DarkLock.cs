@@ -33,7 +33,7 @@ namespace AAMod.Buffs
             {
                 Texture2D DarkX = new Texture2D(Main.graphics.GraphicsDevice, npc.width, npc.height);
                 Color[] dataColors = new Color[npc.width * npc.height];
-                float ratio = (float)npc.height/(float)npc.width;
+                float ratio = npc.height / (float)npc.width;
                 for (int x = 0; x < npc.width; x++)
                 {
                     for (int y = 0; y < npc.height; y++)
