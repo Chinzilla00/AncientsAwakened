@@ -15,6 +15,7 @@ namespace AAMod.Tiles.Ore
             Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
             Main.tileSpelunker[Type] = true;
+            Main.tileValue[Type] = 840; 
             Main.tileBlockLight[Type] = true;
             Main.tileMerge[TileID.Mud][Type] = true;
             soundType = 21;

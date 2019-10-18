@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Greed.WKG
 {
@@ -32,7 +33,6 @@ namespace AAMod.Items.Boss.Greed.WKG
             }
             return true;
         }
-
         public bool PickCheck(Tile tile, int pickPower)
         {
             ModTile tile2 = TileLoader.GetTile(tile.type);

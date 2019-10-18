@@ -13,6 +13,7 @@ namespace AAMod.Tiles.Ore
         {
             Main.tileSolid[Type] = true;
             Main.tileMergeDirt[Type] = false;
+            Main.tileValue[Type] = 870; 
             soundType = 21;
             drop = mod.ItemType("DiscordiumOre");   //put your CustomBlock name
             dustType = mod.DustType("DoomDust");

@@ -60,6 +60,3 @@ namespace AAMod.Projectiles.Yamata
 
     }
 }
-
-    }
-}
