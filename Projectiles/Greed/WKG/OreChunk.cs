@@ -27,16 +27,6 @@ namespace AAMod.Projectiles.Greed.WKG
             Main.projFrames[projectile.type] = 23;
 		}
 
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            if ((projectile.velocity.X != oldVelocity.X && (oldVelocity.X < -3f || oldVelocity.X > 3f)) || (projectile.velocity.Y != oldVelocity.Y && (oldVelocity.Y < -3f || oldVelocity.Y > 3f)))
-            {
-                Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-                Main.PlaySound(0, (int)projectile.Center.X, (int)projectile.Center.Y, 1, 1f, 0f);
-            }
-            return false;
-        }
-
         public override void AI()
         {
             OreEffect();
