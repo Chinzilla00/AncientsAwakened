@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 using AAMod.Items.Blocks;
 using BaseMod;
 
-namespace AAMod.Items.Boss.Greed.WKG
+namespace AAMod.Items.Boss.Greed
 {
     public class OreCannon : BaseAAItem
     {
@@ -27,14 +27,14 @@ namespace AAMod.Items.Boss.Greed.WKG
             item.useTime = 45;
             item.useAnimation = 45;
             item.useStyle = 5;
-            item.shoot = 10;
-            item.useAmmo = AmmoID.Bullet;
             item.knockBack = 0;
             item.value = Item.sellPrice(5, 0, 0, 0);
+			item.shoot = 10;
             item.rare = 8;
             item.UseSound = SoundID.Item14;
             item.shootSpeed = 12f;
-            item.expert = true; item.expertOnly = true;
+            item.expert = true; 
+			item.expertOnly = true;
             item.autoReuse = true;
         }
 
@@ -75,21 +75,59 @@ namespace AAMod.Items.Boss.Greed.WKG
         public override bool CanUseItem(Player player)
         {
             int itemIndex = -1;
-            if (BasePlayer.HasItem(player, Ores, ref itemIndex, default, false, false))
-            {
-                Item itemFired = player.inventory[itemIndex];
+			if (player.itemAnimation == 0)
+			{
+				if (BasePlayer.HasItem(player, Ores, ref itemIndex, default, false, false))
+				{
+					Item itemFired = player.inventory[itemIndex];
 
-                BasePlayer.ReduceSlot(player, itemIndex, 1);
-
-
-                return projType > 0;
-            }
+					BasePlayer.ReduceSlot(player, itemIndex, 1);
+					
+					if (itemFired.type == ItemID.CopperOre) projType = 0;
+					if (itemFired.type == ItemID.TinOre) projType = 1;
+					if (itemFired.type == ItemID.IronOre) projType = 2;
+					if (itemFired.type == ItemID.LeadOre) projType = 3;
+					if (itemFired.type == ItemID.SilverOre) projType = 4;
+					if (itemFired.type == ItemID.TungstenOre) projType = 5;
+					if (itemFired.type == ItemID.GoldOre) projType = 6;
+					if (itemFired.type == ItemID.PlatinumOre) projType = 7;
+					if (itemFired.type == ItemID.Meteorite) projType = 8;
+					if (itemFired.type == ItemID.DemoniteOre) projType = 9;
+					if (itemFired.type == ItemID.CrimtaneOre) projType = 10;
+					if (itemFired.type == mod.ItemType("Abyssium")) projType = 11;
+					if (itemFired.type == mod.ItemType("Incinerite")) projType = 12;
+					if (itemFired.type == ItemID.Hellstone) projType = 13;
+					if (itemFired.type == ItemID.CobaltOre) projType = 14;
+					if (itemFired.type == ItemID.PalladiumOre) projType = 15;
+					if (itemFired.type == ItemID.MythrilOre) projType = 16;
+					if (itemFired.type == ItemID.OrichalcumOre) projType = 17;
+					if (itemFired.type == ItemID.AdamantiteOre) projType = 18;
+					if (itemFired.type == ItemID.TitaniumOre) projType = 19;
+					if (itemFired.type == mod.ItemType("HallowedOre")) projType = 20;
+					if (itemFired.type == ItemID.ChlorophyteOre) projType = 21;
+					if (itemFired.type == ItemID.LunarOre) projType = 22;
+					return true;
+				}
+			}
             return false;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-            Projectile.NewProjectile(position.X, position.Y, speedX * 1f, speedY * 1f, mod.ProjectileType("ChaosShot1"), damage, knockBack, player.whoAmI, 0, 1);
+            int p = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("OreChunk"), damage, knockBack, player.whoAmI);
+			Main.projectile[p].ai[1] = projType;
+            if (Main.projectile[p].ai[1] == 10)
+            {
+                Main.projectile[p].knockBack *= 1.5f;
+            }
+            if (Main.projectile[p].ai[1] == 19)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI, 0, 5);
+                }
+            }
             return false;
 		}
 

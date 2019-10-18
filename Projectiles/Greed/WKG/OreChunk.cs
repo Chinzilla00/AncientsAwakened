@@ -3,6 +3,8 @@ using Terraria;
 using BaseMod;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AAMod.Dusts;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Projectiles.Greed.WKG
 {
@@ -10,12 +12,12 @@ namespace AAMod.Projectiles.Greed.WKG
     {
         public override void SetDefaults()
         {
-            projectile.width = 32;
-            projectile.height = 34;
-            projectile.aiStyle = 14;
+            projectile.width = 16;
+            projectile.height = 16;
+			projectile.aiStyle = 14;
             projectile.friendly = true;
             projectile.penetrate = 6;
-            projectile.magic = true;
+            projectile.ranged = true;
             projectile.ignoreWater = true;
         }
 
@@ -37,24 +39,105 @@ namespace AAMod.Projectiles.Greed.WKG
 
         public override void AI()
         {
-            projectile.ai[0] += 1f;
-            if (projectile.ai[0] > 15f)
+            OreEffect();
+            if (projectile.velocity.X > 0)
             {
-                projectile.ai[0] = 15f;
-                if (projectile.velocity.Y == 0f && projectile.velocity.X != 0f)
-                {
-                    projectile.velocity.X = projectile.velocity.X * 0.97f;
-                    if (projectile.velocity.X > -0.01 && projectile.velocity.X < 0.01)
-                    {
-                        projectile.Kill();
-                    }
-                }
-                projectile.velocity.Y = projectile.velocity.Y + 0.2f;
+                projectile.direction = 1;
             }
-            projectile.rotation += projectile.velocity.X * 0.05f;
-            if (projectile.velocity.Y > 16f)
+            else
             {
-                projectile.velocity.Y = 16f;
+                projectile.direction = -1;
+            }
+            projectile.rotation += .2f * projectile.direction;
+
+            for (int m = projectile.oldPos.Length - 1; m > 0; m--)
+            {
+                projectile.oldPos[m] = projectile.oldPos[m - 1];
+            }
+            projectile.oldPos[0] = projectile.position;
+        }
+
+        public override void PostAI()
+        {
+            projectile.frame = (int)projectile.ai[1];
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 23, 0, 0);
+            if (projectile.ai[0] == 9 || projectile.ai[0] == 11 || projectile.ai[0] == 22)
+            {
+                BaseDrawing.DrawAfterimage(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, 1, projectile.rotation, projectile.direction, 23, frame, .8f, 1, 4, true, 0, 0, lightColor);
+            }
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 23, frame, lightColor, true);
+            return false;
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            int DustType = DType();
+            if (projectile.ai[0] == 8)
+            {
+                for (int num291 = 0; num291 < 5; num291++)
+                {
+                    int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Fire, 0f, 0f, 100, default, 2.1f);
+                    Main.dust[num292].velocity *= 2f;
+                    Main.dust[num292].noGravity = true;
+                };
+            }
+            if (projectile.ai[0] == 21)
+            {
+                for (int s = 0; s < 3; s++)
+                {
+                    Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<OreSpores>(), projectile.damage, projectile.knockBack, Main.myPlayer,0, s);
+                }
+            }
+            if (projectile.ai[0] == 22)
+            {
+                Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<LuminiteBlast>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
+            }
+            for (int num468 = 0; num468 < 4; num468++)
+            {
+                float VelX = -projectile.velocity.X * 0.2f;
+                float VelY = -projectile.velocity.Y * 0.2f;
+                num468 = Dust.NewDust(projectile.Center, projectile.width, projectile.height, DustType, VelX, VelY);
+            }
+        }
+
+        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            switch ((int)projectile.ai[1])
+            {
+                case 6:
+                case 7:
+                    target.AddBuff(BuffID.Midas, 180);
+                    break;
+
+                case 12:
+                case 13:
+                    target.AddBuff(BuffID.OnFire, 180);
+                    break;
+            }
+        }
+
+        public void OreEffect()
+        {
+            switch ((int)projectile.ai[1])
+            {
+                case 9:
+                case 11: projectile.extraUpdates = 1;
+                    break;
+                case 13:
+                case 14:
+                    for (int num291 = 0; num291 < 5; num291++)
+                    {
+                        int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Fire, 0f, 0f, 100);
+                        Main.dust[num292].velocity *= 2f;
+                        Main.dust[num292].noGravity = true;
+                    };
+                    break;
+                case 22: projectile.extraUpdates = 2;
+                    break;
             }
         }
 
@@ -110,39 +193,62 @@ namespace AAMod.Projectiles.Greed.WKG
                 default:
                     goto case 0;
             }
-
         }
 
-        public override void PostAI()
+        public int DType()
         {
-            projectile.frame = (int)projectile.ai[1];
-        }
-
-        public override bool PreDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color lightColor)
-        {
-            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 23, 0, 0);
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 7, frame, lightColor, true);
-            return false;
-        }
-
-        public override bool PreKill(int timeLeft)
-        {
-            int pieCut = 20;
-            for (int m = 0; m < pieCut; m++)
+            switch ((int)projectile.ai[1])
             {
-                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.ShroomDust>(), 0f, 0f, 100, Color.White, 1.6f);
-                Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / (float)pieCut * 6.28f);
-                Main.dust[dustID].noLight = false;
-                Main.dust[dustID].noGravity = true;
+                case 0:
+                    return DustID.Copper;
+                case 1:
+                    return DustID.Tin;
+                case 2:
+                    return DustID.Iron;
+                case 3:
+                    return DustID.Lead;
+                case 4:
+                    return DustID.Silver;
+                case 5:
+                    return DustID.Tungsten;
+                case 6:
+                    return DustID.Gold;
+                case 7:
+                    return DustID.Platinum;
+                case 8:
+                    return DustID.t_Meteor;
+                case 9:
+                    return 14;
+                case 10:
+                    return 117;
+                case 11:
+                    return ModContent.DustType<IncineriteDust>();
+                case 12:
+                    return ModContent.DustType<AbyssiumDust>();
+                case 13:
+                    return DustID.Fire;
+                case 14:
+                    return 48;
+                case 15:
+                    return 144;
+                case 16:
+                    return 49;
+                case 17:
+                    return 145;
+                case 18:
+                    return 50;
+                case 19:
+                    return 146;
+                case 20:
+                    return DustID.Gold;
+                case 21:
+                    return 128;
+                case 22:
+                    return ModContent.DustType<LuminiteDust>();
+                default:
+                    goto case 0;
             }
-            for (int m = 0; m < pieCut; m++)
-            {
-                int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.ShroomDust>(), 0f, 0f, 100, Color.White, 2f);
-                Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)pieCut * 6.28f);
-                Main.dust[dustID].noLight = false;
-                Main.dust[dustID].noGravity = true;
-            }
-            return true;
+
         }
     }
 }

@@ -26,6 +26,7 @@ namespace AAMod.Items.Boss.Greed
             item.rare = 8;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
+            item.scale *= 1.3f;
         }
 
         public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)
