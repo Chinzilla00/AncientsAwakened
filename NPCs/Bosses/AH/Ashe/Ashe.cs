@@ -193,7 +193,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     goto case 0;
             }
 
-            if (npc.ai[0] != 4 || npc.ai[0] != 9)
+            if (npc.ai[0] != 7)
             {
                 npc.rotation = 0;
             }
