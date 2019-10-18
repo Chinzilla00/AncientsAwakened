@@ -1,6 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using AAMod.NPCs.Bosses.Shen;
 using System.Collections.Generic;
 using BaseMod;
@@ -82,7 +83,7 @@ Non-Consumable");
             {
                 if (Main.netMode != 1) BaseUtility.Chat(AAWorld.downedShen ? Lang.BossSummonsInfo("ChaosSigilTrue1") : Lang.BossSummonsInfo("ChaosSigilTrue2"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
 
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Shen"), true, 0, 0, "Shen Doragon; Discordian Doomsayer", false);
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Shen"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.ShenDoragon"), false);
             }
             if (!AAWorld.ShenSummoned)
             {

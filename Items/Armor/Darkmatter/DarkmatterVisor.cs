@@ -50,7 +50,7 @@ Dark, yet still barely visible");
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = "An unstable portal hovers above your head, shooting dark blasts when you shoot. \nDark blasts deal 30% of your weapon's damage, weakens enemies, and occasional dark locks them";
+            player.setBonus = Lang.ArmorBonus("DarkmatterVisorBonus");
             player.GetModPlayer<VisorEffects>().setBonus = true;
             player.GetModPlayer<VisorEffects>().sunPortal = false;
             player.armorEffectDrawShadowLokis = true;

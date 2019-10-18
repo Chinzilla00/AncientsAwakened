@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace AAMod.NPCs.Critters
 {
@@ -40,13 +41,13 @@ namespace AAMod.NPCs.Critters
             {
                 if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossSummonsInfo("RoyalRabbit1"), 107, 137, 179);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
-                AAModGlobalNPC.SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                AAModGlobalNPC.SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), Language.GetTextValue("Mods.AAMod.Common.RajahRabbit"));
             }
             if (bunnyKills % 100 == 0 && bunnyKills >= 1000)
             {
                 if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossSummonsInfo("RoyalRabbit2") + player.name.ToUpper() + "!!!", 107, 137, 179);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
-                AAModGlobalNPC.SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), "Rajah Rabbit");
+                AAModGlobalNPC.SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), Language.GetTextValue("Mods.AAMod.Common.RajahRabbit"));
             }
         }
         public override void HitEffect(int hitDirection, double damage)
