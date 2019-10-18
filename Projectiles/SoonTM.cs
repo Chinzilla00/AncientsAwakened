@@ -1,27 +1,28 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles
 {
-    class SoonTM : ModProjectile
+    class SoonTM : Javelin
     {
         public override void SetDefaults()
         {
-            projectile.width = 22;
-            projectile.height = 24;
+            projectile.width = 10;
+            projectile.height = 10;
+            projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.magic = true;
-            projectile.ignoreWater = true;
-            projectile.tileCollide = true;
-            projectile.penetrate = -1;
-            projectile.timeLeft = 900;
-            projectile.friendly = true;
-            projectile.hostile = false;
+            projectile.penetrate = 1;
+            projectile.GetGlobalProjectile<Buffs.ImplaingProjectile>().CanImpale = true;
+            projectile.GetGlobalProjectile<Buffs.ImplaingProjectile>().damagePerImpaler = 10;
+            maxStickingJavelins = 45;
+            rotationOffset = (float)Math.PI / 4;
         }
 
-        public override void AI()
+        public override void PostAI()
         {
             const int aislotHomingCooldown = 0;
             const int homingDelay = 10;
@@ -67,26 +68,7 @@ namespace AAMod.Projectiles
             return selectedTarget;
         }
 
-        public bool StuckInEnemy = false;
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(ModContent.BuffType<Buffs.DynaEnergy1>(), 60);
-            Rectangle myRect = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
-            bool flag3 = projectile.Colliding(myRect, target.getRect());
-            if (!target.boss)
-            {
-                Main.npc[(int)projectile.ai[1]].AddBuff(ModContent.BuffType<Buffs.SpearStuck>(), 100000);
-                if (flag3 && !StuckInEnemy)
-                {
-                    StuckInEnemy = true;
-                    projectile.ai[0] = 1f;
-                    projectile.ai[1] = target.whoAmI;
-                    projectile.velocity = (target.Center - projectile.Center) * 0.75f;
-                    projectile.netUpdate = true;
-                }
-            }
-        }
-
+        
         public override void Kill(int timeleft)
         {
             int pieCut = 20;

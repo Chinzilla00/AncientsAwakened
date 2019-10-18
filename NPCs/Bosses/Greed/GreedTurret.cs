@@ -1,9 +1,5 @@
-using AAMod.NPCs.Bosses.Greed;
-using BaseMod;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.IO;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;

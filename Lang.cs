@@ -1,19 +1,4 @@
-using AAMod.Backgrounds;
-using AAMod.Globals;
-using BaseMod;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using Terraria;
-using Terraria.GameContent.UI;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ModLoader;
-using Terraria.UI;
-using Terraria.Utilities;
 using Terraria.Localization;
 
 namespace AAMod

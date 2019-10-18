@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using Terraria;
-using Terraria.GameContent.Achievements;
 using Terraria.ID;
 using Terraria.ModLoader;
 

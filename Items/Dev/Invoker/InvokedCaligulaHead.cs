@@ -1,9 +1,8 @@
-using System;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Dev.Invoker
 {
-	[AutoloadEquip(EquipType.Head)]
+    [AutoloadEquip(EquipType.Head)]
 	public class InvokedCaligulaHead : EquipTexture
 	{
 		public override bool DrawHead()

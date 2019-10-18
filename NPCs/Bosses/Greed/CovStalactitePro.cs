@@ -1,12 +1,9 @@
-using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.ID;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Greed
 {
-	public class CovStalactitePro : ModProjectile
+    public class CovStalactitePro : ModProjectile
 	{
         public override void SetStaticDefaults()
         {

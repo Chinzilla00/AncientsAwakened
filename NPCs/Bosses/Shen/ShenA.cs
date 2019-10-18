@@ -7,7 +7,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
-using Terraria.GameContent.Events;
 
 namespace AAMod.NPCs.Bosses.Shen
 {

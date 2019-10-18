@@ -3,7 +3,6 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using System;
 
 namespace AAMod.Items.Dev.Invoker
 {

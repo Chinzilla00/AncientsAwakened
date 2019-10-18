@@ -1,10 +1,10 @@
-using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using Terraria.ModLoader;
 using Terraria;
 using Terraria.ID;
 
 namespace AAMod.Items.Blocks
 {
-	public class ShenABox : BaseAAItem
+    public class ShenABox : BaseAAItem
 	{
         
 		public override void SetStaticDefaults()
