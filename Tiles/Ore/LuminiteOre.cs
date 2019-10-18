@@ -14,6 +14,7 @@ namespace AAMod.Tiles.Ore
             Main.tileSpelunker[Type] = true;
             Main.tileBlockLight[Type] = true;
             Main.tileLighted[Type] = true;
+            Main.tileValue[Type] = 820; 
             drop = ItemID.LunarOre;
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Luminite Ore");
