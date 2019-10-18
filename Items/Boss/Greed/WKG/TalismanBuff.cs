@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Boss.Greed
+namespace AAMod.Items.Boss.Greed.WKG
 {
     public class TalismanBuff : ModBuff
 	{

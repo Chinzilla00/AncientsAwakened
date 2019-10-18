@@ -103,7 +103,7 @@ Legendry Weapon.";
 		{
 			if (player.altFunctionUse != 2 && player.GetModPlayer<InvokerPlayer>().Thebookoflaw)
 			{
-				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("InvokerStaffproj"), (int)damage, knockBack, player.whoAmI, 0f, 0f);
+				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("InvokerStaffproj"), damage, knockBack, player.whoAmI, 0f, 0f);
 			}
 			if (player.altFunctionUse == 2 && player.GetModPlayer<InvokerPlayer>().SpringInvoker)
 			{

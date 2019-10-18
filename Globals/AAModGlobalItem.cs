@@ -189,7 +189,7 @@ namespace AAMod
                 }
                 else if (modPlayer.GreedTalisman)
                 {
-                    player.AddBuff(ModContent.BuffType<Items.Boss.Greed.TalismanBuff>(), 240);
+                    player.AddBuff(ModContent.BuffType<Items.Boss.Greed.WKG.TalismanBuff>(), 240);
                     if (modPlayer.GreedyDamage < 40)
                     {
                         modPlayer.GreedyDamage += 1;
@@ -201,8 +201,6 @@ namespace AAMod
 
         public static void OpenAACrate(Player player, int CrateType)
         {
-            Mod mod = AAMod.instance;
-
             bool noRareItem = true;
             while (noRareItem)
             {

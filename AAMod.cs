@@ -53,9 +53,6 @@ namespace AAMod
 
         public static SpriteFont fontMouseText;
 
-        public static int[] SNAKETYPES = new int[0];
-        public static int[] SERPENTTYPES = new int[0];
-
         public static bool thoriumLoaded = false;
         public static bool calamityLoaded = false;
         public static bool gRealmLoaded = false;
