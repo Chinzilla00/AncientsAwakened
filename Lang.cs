@@ -3354,7 +3354,8 @@ namespace AAMod
                         case "RadiumHatBonus2":
                         return "召唤伤害";
                         case "RadiumHeadgearBonus":
-                        return @"你的头上生成一个太阳传送门\n你射击时，会发出太阳爆破弹
+                        return @"你的头上生成一个太阳传送门
+你射击时，会发出太阳爆破弹
 太阳爆破弹伤害为你的武器的伤害50%, 会对敌人造成燃烧";
                         case "RadiumHelmetBonus":
                         return "附近的敌人将会受到更多的伤害";
