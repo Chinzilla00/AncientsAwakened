@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Greed.WKG
 {
@@ -25,19 +26,19 @@ namespace AAMod.Items.Boss.Greed.WKG
         }
 
         public override bool CanUseItem(Player player)
-		{
+        {
             Tile tile = Main.tile[Player.tileTargetX, Player.tileTargetY];
             if(Main.tileValue[tile.type] > 0  && PickCheck(tile, item.pick))
             {
                 player.PickTile(Player.tileTargetX, Player.tileTargetY, 5000);
             }
-			return true;
-		}
+            return true;
+        }
 
-        public bool PickCheck(Tile tile, int pickPower)
-        {
+		public bool PickCheck(Tile tile, int pickPower)
+		{
 			ModTile tile2 = TileLoader.GetTile(tile.type);
-            if (tile.type == 211 && pickPower < 200)
+ 			if (tile.type == 211 && pickPower < 200)
 			{
 				return false;
 			}
