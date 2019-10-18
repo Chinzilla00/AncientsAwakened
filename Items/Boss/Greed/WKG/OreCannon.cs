@@ -6,14 +6,15 @@ using Microsoft.Xna.Framework;
 using AAMod.Items.Blocks;
 using BaseMod;
 
-namespace AAMod.Items.Boss.Greed
+namespace AAMod.Items.Boss.Greed.WKG
 {
     public class OreCannon : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ore Cannon");
-            Tooltip.SetDefault("Uses Ore as Ammunition");
+            Tooltip.SetDefault(@"Uses Ore as Ammunition
+Certain ores have special effects when shot");
         }
 
         public override void SetDefaults()
@@ -30,9 +31,9 @@ namespace AAMod.Items.Boss.Greed
             item.knockBack = 0;
             item.value = Item.sellPrice(5, 0, 0, 0);
 			item.shoot = 10;
-            item.rare = 8;
+            item.rare = 11;
             item.UseSound = SoundID.Item14;
-            item.shootSpeed = 12f;
+            item.shootSpeed = 14f;
             item.expert = true; 
 			item.expertOnly = true;
             item.autoReuse = true;
