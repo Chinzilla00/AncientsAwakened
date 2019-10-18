@@ -65,7 +65,7 @@ Dark, yet still barely visible");
 		{
 
             const float effectRange = 500;
-			player.setBonus = Lang.ArmorBonus("DarkmatterHelmetBonus");
+			player.setBonus = "You and nearby allies recieve 40% less damage";
             for(int p =0; p < Main.player.Length; p++)
             {
                 if(Main.player[p].active && (Main.player[p].Center - player.Center).Length() < effectRange && player.team == Main.player[p].team)

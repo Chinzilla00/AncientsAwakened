@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using BaseMod;
-using Terraria.Localization;
 
 namespace AAMod.Items.BossSummons
 {
@@ -47,7 +46,7 @@ Non-Consumable");
 		{
             if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DreadRuneTrue1"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
             if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DreadRuneTrue2"), new Color(146, 30, 68));
-            DreadSigil.SpawnBoss(player, ModContent.NPCType<NPCs.Bosses.Yamata.Awakened.YamataA>(), false, new Vector2(player.Center.X, player.Center.Y - 100), Language.GetTextValue("Mods.AAMod.Common.YamataA"));
+            DreadSigil.SpawnBoss(player, ModContent.NPCType<NPCs.Bosses.Yamata.Awakened.YamataA>(), false, new Vector2(player.Center.X, player.Center.Y - 100), "Yamata, Dread Nightmare");
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/YamataRoar"), player.position);
             return true;
 		}

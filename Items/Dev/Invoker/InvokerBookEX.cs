@@ -3,7 +3,6 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using System;
 
 namespace AAMod.Items.Dev.Invoker
@@ -25,12 +24,12 @@ Get all of the materials' effect
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             string text = "";
-            text += Language.GetTextValue("Mods.AAMod.Common.InvokerBookEX1");
+            text += "You can control the True ability of the Invoker now\nWhen you hold the Invoker Staff, the death enemy's soul will heal you\nYou can release the death enemy's damage soul";
             
             if(!Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().DarkCaligula)
-            text += Language.GetTextValue("Mods.AAMod.Common.InvokerBookEX2");
+            text += "\nAleister's note: \nI need more powerful souls, the doragon, the huge rabit, the strange machine, more, more! Defeat them!";
             else
-            text += Language.GetTextValue("Mods.AAMod.Common.InvokerBookEX3");
+            text += "\nLeft click to use the book. Summon the Invoked Caligula.";
 
             TooltipLine line = new TooltipLine(mod, "newtooltip", text);
             list.RemoveAt(2);

@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 using AAMod.NPCs.Bosses.Rajah;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
@@ -77,7 +76,7 @@ Non-consumable");
                 if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossSummonsInfo("DiamondCarrotRajahText2") + Name + "!", 107, 137, 179);
             }
             int overrideDirection = Main.rand.Next(2) == 0 ? -1 : 1;
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("SupremeRajah"), false, player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, -1200), Language.GetTextValue("Mods.AAMod.Common.SupremeRajah"));
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("SupremeRajah"), false, player.Center + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, -1200), "Rajah Rabbit");
             return true;
         }
 

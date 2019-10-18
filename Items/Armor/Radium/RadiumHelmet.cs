@@ -41,7 +41,7 @@ Shines with the light of a starry night sky");
 		public override void UpdateArmorSet(Player player)
 		{
             const float effectRange = 500;
-            player.setBonus = Lang.ArmorBonus("RadiumHelmetBonus");
+            player.setBonus = "Nearby enemies will recieve more damage";
             if (Main.netMode != 0)
             {
                 for (int p = 0; p < Main.player.Length; p++)

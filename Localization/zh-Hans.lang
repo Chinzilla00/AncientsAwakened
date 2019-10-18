@@ -674,7 +674,7 @@ ItemName.DoomsdayChestplate=末日突击装甲
 ItemTooltip.DoomsdayChestplate=增加35%召唤物伤害\n装甲内栖宿着毁灭行星之力
 
 ItemName.DoomsdayHelmet=末日突击面具
-ItemTooltip.DoomsdayHelmet=增加25%魔法伤害\增加18%魔法暴击率\n装甲内栖宿着毁灭行星之力
+ItemTooltip.DoomsdayHelmet=增加25%召唤物暴击率\n装甲内栖宿着毁灭行星之力
 
 ItemName.DoomsdayLeggings=末日突击护胫
 ItemTooltip.DoomsdayLeggings=增加18%移动速度\n增加20%召唤物伤害\n装甲内栖宿着毁灭行星之力
@@ -2365,7 +2365,7 @@ ItemTooltip.Neutralizer=发射反弹激光，墙壁反弹使得它们会变得�
 ItemName.RealityCannon=现实破坏炮
 ItemTooltip.RealityCannon=快速射出深色激光
 
-ItemName.RiftShredder=世界割裂臂
+ItemName.RiftShredder=世界割裂器
 ItemTooltip.RiftShredder=发射虚空之星，撕裂路过的一切现实
 
 ItemName.TeslaHand=破损武器-0
@@ -2686,26 +2686,9 @@ ItemTooltip.CursedSickleEX=在你周围旋转着一把诅咒镰刀，撕碎敌�
 
 // AAMod.Items.Dev.Invoker
 
-ItemName.InvokerBook=阿莱斯特原典
-ItemTooltip.InvokerBook=“大兽”阿莱斯特的传世之书\n增加10%召唤伤害\n增加2召唤上限\n也许你需要其他的物品才能让你从这本书中获得更多的能力\n阿莱斯特的笔记: \n我需要更多强大的灵魂, *****,*********,**********
-
-ItemName.InvokerBookEX=法之圣典
-ItemTooltip.InvokerBookEX=“大兽”阿莱斯特的传世之书\n增加10%召唤伤害\n增加2召唤上限\n获得所有材料的效果
-
-Common.InvokerBookEX1=你现在掌控了召唤师的真正力量了\n你手持阿莱斯特之杖时, 死亡敌人的灵魂会治愈你\n你可以释放敌人的伤害性灵魂
-Common.InvokerBookEX2="\n阿莱斯特的笔记: \n我需要更多强大的灵魂, 神龙, 巨兔, 奇怪的机械, 更多的, 更多的灵魂! 打败它们!"
-Common.InvokerBookEX3="\n左键使用这本书. 召唤出召唤兽卡利古拉."
+ItemName.InvokerBook=法之圣典
 
 ItemName.InvokerStaff=阿莱斯特之杖
-
-Common.InvokerStaff1=奇怪了. 真是奇了怪了. \n挥动武器造成召唤伤害? \n当真如此? \n传奇武器
-Common.InvokerStaff2=左键发射召唤之矢.\n右键根据你的基础召唤伤害放逐所有的敌人.\n放逐敌人会根据它们的生命上限治愈你. \n但是代价是什么? \n传奇武器
-Common.InvokerDamage1= 放逐
-Common.InvokerDamage2= 召唤
-
-Common.CaligulaSoul=窃得强大的灵魂!
-
-MapObject.InvokerBookTile=阿莱斯特原典
 
 // AAMod.Items.DevTools
 
@@ -3749,7 +3732,7 @@ ItemTooltip.Scourge=将子弹变成咒焰弹\n24%几率不消耗弹药!
 ItemName.SharkLauncher=鲨鱼喷枪
 ItemTooltip.SharkLauncher=发射锁定目标的致命鲨鱼\n食人鱼枪EX
 
-ItemName.ShootingStar=流星
+ItemName.ShootingStar=射星
 
 ItemName.SingularityCannon=奇点加农
 
@@ -5522,61 +5505,6 @@ Common.RiftReturnhotkey=裂位返程
 Common.AccessoryAbilityKey=远古觉醒饰品能力
 Common.ArmorAbilityKey=远古觉醒套装能力
 Common.TimeStonehotKey=时间宝石
-
-//BossName
-
-Common.MushroomMonarch=赤孢皇
-Common.FeudalFungus=真菌帝
-Common.Broodmother=育母炎龙
-Common.Hydra=九头渊蛇
-Common.GripsofChaos=混沌双爪
-Common.SubzeroSerpent=绝零冰蛇
-Common.TruffleToad=松露蟾蜍
-Common.Sagittarius=虚空人马
-Common.Skeletron=骷髅王
-Common.RajahRabbit=巨兔王公
-Common.DesertDjinn=沙漠巨灵
-Common.Plantera=世纪之花
-Common.Athena=雅典娜
-Common.Greed=金食饕餮
-Common.Akuma=邪鬼巨龙
-Common.AkumaA=狂煞魔豪鬼
-Common.Yamata=八歧大蛇
-Common.YamataA=八俣远吕智
-Common.ShenDoragon=上神应龙
-Common.SupremeRajah=巨兔王公
-
-//AAConfig
-
-Common.AATownNPC=远古觉醒城镇NPC生成禁止
-Common.AATownNPCInfo=取消远古觉醒NPC的生成, 用于玩家希望其他npc能更快刷新. 注释: 这个不会影响阿努比斯的生成, 因为他是游戏流程的关键.
-Common.DisableBossDialogue=远古觉醒Boss对话取消
-Common.DisableBossDialogueInfo=阻止Boss对话的生成. 也会让已有的Boss对话速度加快.
-
-//AARecipeGroup
-
-Common.darkmatterhelmet=暗物质头盔
-Common.radiumhelmet=镭光头盔
-Common.goldbar=金/铂金锭
-Common.celestialcraftingstation=天界工作台
-Common.ancientmaterial=远古材料
-Common.superancientmaterial=原古材料
-Common.worldevilmaterial=困难模式邪恶材料
-Common.hardmodeforge=困难模式熔炉
-Common.chaosclaw=混沌之爪
-Common.ironbar=铁/铅锭
-Common.copperbar=铜/锡锭
-Common.silverbar=银/钨金锭
-Common.evilbar=邪恶锭
-Common.chaosbar=混沌锭
-Common.EvilorChaosBar=混沌或邪恶锭
-Common.ancientcraftingstation=远古工作台
-Common.evilsummonstaff=邪恶召唤杖
-Common.altar=祭坛
-Common.ChaosLeggings=混沌级护腿
-Common.ChaosChestpiece=混沌级护胸
-Common.hardmodeanvil=困难模式砧
-Common.hardmodeforge=困难模式熔炉
 
 
 

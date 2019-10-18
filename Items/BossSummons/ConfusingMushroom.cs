@@ -3,7 +3,6 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using AAMod.NPCs.Bosses.MushroomMonarch;
 using Terraria.ModLoader;
-using Terraria.Localization;
 using BaseMod;
 
 namespace AAMod.Items.BossSummons
@@ -33,7 +32,7 @@ Can only be used in a glowing mushroom biome");
 
         public override bool UseItem(Player player)
         {
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("FeudalFungus"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.FeudalFungus"), false);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("FeudalFungus"), true, 0, 0, "The Feudal Fungus", false);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }

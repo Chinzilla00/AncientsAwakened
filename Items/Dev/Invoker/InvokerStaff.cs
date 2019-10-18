@@ -5,7 +5,6 @@ using Terraria.ID;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using Terraria.Localization;
 
 
 namespace AAMod.Items.Dev.Invoker
@@ -27,11 +26,18 @@ namespace AAMod.Items.Dev.Invoker
 			Player player = Main.player[Main.myPlayer];
 			if(!player.GetModPlayer<InvokerPlayer>().Thebookoflaw)
 			{
-				text += Language.GetTextValue("Mods.AAMod.Common.InvokerStaff1");
+				text += @"Strange. All is strange. 
+Swinging a weapon causes summon damage?
+Really?
+Legendry Weapon.";
 			}
 			else
 			{
-				text += Language.GetTextValue("Mods.AAMod.Common.InvokerStaff2");
+				text += @"Left click to shoot a invoker bolt.
+Right click to banish all of the enemies according to your basic banish damage.
+Banishing enemies can heal you according to their maxlife.
+But at what cost?
+Legendry Weapon.";
 			}
 			foreach (TooltipLine tooltipLine in tooltips)
 			{
@@ -42,11 +48,11 @@ namespace AAMod.Items.Dev.Invoker
 					string damageWord = splitText.Last();
 					if(Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw) 
 					{
-						tooltipLine.text = damageValue + Language.GetTextValue("Mods.AAMod.Common.InvokerDamage1") + damageWord;
+						tooltipLine.text = damageValue + " banish " + damageWord;
 					}
 					else 
 					{
-						tooltipLine.text = damageValue + Language.GetTextValue("Mods.AAMod.Common.InvokerDamage2") + damageWord;
+						tooltipLine.text = damageValue + " summon " + damageWord;
 					}
 				}
 				if (tooltipLine != null && tooltipLine.Name == "Tooltip0")
@@ -733,7 +739,7 @@ namespace AAMod.Items.Dev.Invoker
 						{
 							Player player = Main.player[num492];
 							player.GetModPlayer<InvokerPlayer>().CaligulaSoul.Add((int)projectile.ai[1]) ;
-							CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), Color.DarkGray, Language.GetTextValue("Mods.AAMod.Common.CaligulaSoul"), false, false);
+							CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), Color.DarkGray, "Powerful Soul Steal!", false, false);
 						}
 						projectile.Kill();
 					}

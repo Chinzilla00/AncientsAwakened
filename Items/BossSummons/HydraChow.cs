@@ -4,7 +4,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
-using Terraria.Localization;
 
 namespace AAMod.Items.BossSummons
 {
@@ -42,7 +41,7 @@ Can only be used at night");
 
         public override bool UseItem(Player player)
         {
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Hydra"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Hydra"), false);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Hydra"), true, 0, 0, "The Hydra", false);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
 		}

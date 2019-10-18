@@ -37,7 +37,7 @@ Shines with the light of a starry night sky");
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = Lang.ArmorBonus("RadiumHatBonus1") + (int)(DarkMinions.baseBlastDamage * player.minionDamage) + Lang.ArmorBonus("RadiumHatBonus2");
+            player.setBonus = "Minions will ocasionaly deal damage to nearby enemies\n" + (int)(DarkMinions.baseBlastDamage * player.minionDamage) + " Summon Damage";
             player.GetModPlayer<HatEffects>().setBonus = true;
         }
 

@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 using AAMod.NPCs.Bosses.Grips;
 
 namespace AAMod.Items.BossSummons
@@ -58,7 +57,7 @@ Can only be used at night");
 
         public override bool UseItem(Player player)
         {
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosBlue"), true, 1, 0, Language.GetTextValue("Mods.AAMod.Common.GripsofChaos"), true);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosBlue"), true, 1, 0, "The Grips of Chaos", true);
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosRed"), false, -1, 0, "", true);
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
