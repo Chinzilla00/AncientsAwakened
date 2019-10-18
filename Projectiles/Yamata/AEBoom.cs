@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using System;
 
 namespace AAMod.Projectiles.Yamata
 {
@@ -27,7 +26,7 @@ namespace AAMod.Projectiles.Yamata
             projectile.hostile = false;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            projectile.timeLeft = 30;
+            projectile.timeLeft = 600;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 20;
             projectile.magic = true;
@@ -38,7 +37,7 @@ namespace AAMod.Projectiles.Yamata
             if (++projectile.frameCounter >= 5)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 3)
+                if (++projectile.frame >= 6)
                 {
                     projectile.Kill();
 
@@ -56,20 +55,11 @@ namespace AAMod.Projectiles.Yamata
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-            float spread = 12f * 0.0174f;
-            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
-            double deltaAngle = spread / 15;
-            double offsetAngle;
-            int i;
-            for (i = 0; i < 7; i++)
-            {
-                offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 7f), (float)(Math.Cos(offsetAngle) * 7f), mod.ProjectileType("AcidBall"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 7f), (float)(-Math.Cos(offsetAngle) * 7f), mod.ProjectileType("AcidBall"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-            }
-    projectile.timeLeft = 30;
+            projectile.timeLeft = 0;
         }
+
+    }
+}
 
     }
 }
