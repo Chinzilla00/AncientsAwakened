@@ -3239,17 +3239,20 @@ namespace AAMod
                         case "PerfectChaosVisorBonus":
                         return "“混沌赐予你力量”\n随着你的生命减少， 你的远程伤害和暴击率增加\n你的远程攻击对敌人造成冥昧业火";
                         case "DarkmatterHeaddressBonus":
-                        return @"增加6召唤上限
-你的召唤物会电击敌人
-夜晚增加8%伤害减免";
-                        case "DarkmatterHelmBonus":
-                        return "增加30%投掷速度和暴击率\r\n你的投掷武器会电击敌人\r\n夜晚增加8%伤害减免";
+                        return @"你的召唤物有机会消灭敌人的弹幕";
                         case "DarkmatterHelmetBonus":
-                        return "增加15%近战暴击率和近战速度\r\n你的近战武器会电击敌人\r\n夜晚增加8%伤害减免";
-                        case "DarkmatterMaskBonus":
-                        return "增加200魔力上限\r\n减少20%魔力消耗\r\n你的魔法攻击会电击敌人\r\n夜晚增加8%伤害减免";
+                        return "你和附近的盟友减少40%受到的伤害";
+                        case "DarkmatterMaskBonus1":
+                        return "受到来自敌人的伤害\n 受到伤害的2%会回复你的生命\n";
+                        case "DarkmatterMaskBonus2":
+                        return "魔法伤害\n";
+                        case "DarkmatterMaskBonus3":
+                        return "%暴击率";
                         case "DarkmatterVisorBonus":
-                        return "减少25%弹药消耗\r\n增加20%远程暴击率\r\n你的远程武器会电击敌人\r\n夜晚增加8%伤害减免";
+                        return @"你的头上生成一个不稳定的传送门
+当你射击时会发射黑暗爆破弹. 
+黑暗爆破弹伤害为你武器的伤害的30%, 
+可以弱化敌人, 有机会对敌人造成黑暗封锁";
                         case "DeathlySkullBonus":
                         return "如死般默然, 使得怪物更少瞄准你\r\n减少20%弹药消耗";
                         case "DemonHoodBonus":
@@ -3346,16 +3349,22 @@ namespace AAMod
                         return "+2召唤上限\r\n你可以进行闪电般的冲刺";
                         case "Paladin_HelmetBonus":
                         return "+100生命上限\r\n获得圣骑士盾效果";
-                        case "RadiumHatBonus":
-                        return "+7召唤上限\r\n受到攻击会有星星从天堂坠落并增加你的移动速度\r\n白天增加30%移动速度";
+                        case "RadiumHatBonus1":
+                        return "召唤物有几率对周围的敌人也造成伤害\n";
+                        case "RadiumHatBonus2":
+                        return "召唤伤害";
                         case "RadiumHeadgearBonus":
-                        return "减少25%弹药消耗\r\n增加20%远程暴击率\r\n受到攻击会有星星从天堂坠落并增加你的移动速度";
-                        case "RadiumHelmBonus":
-                        return "增加30%投掷暴击率和速度\r\n受到攻击会有星星从天堂坠落并增加你的移动速度\r\n白天增加30%移动速度";
+                        return @"你的头上生成一个太阳传送门
+你射击时，会发出太阳爆破弹
+太阳爆破弹伤害为你的武器的伤害50%, 会对敌人造成燃烧";
                         case "RadiumHelmetBonus":
-                        return "增加15%近战暴击率和速度\r\n受到攻击会有星星从天堂坠落并增加你的移动速度\r\n白天增加30%移动速度";
-                        case "RadiumMaskBonus":
-                        return "+200魔力上限\r\n减少20%魔力消耗\r\n受到攻击会有星星从天堂坠落并增加你的移动速度\r\n白天增加30%移动速度";
+                        return "附近的敌人将会受到更多的伤害";
+                        case "RadiumMaskBonus1":
+                        return "受到敌人伤害时\n 受到伤害的50%将回复魔力值\n如果处于最大魔力值时, 你获得魔力超载buff\n";
+                        case "RadiumMaskBonus2":
+                        return "魔法伤害\n";
+                        case "RadiumMaskBonus3":
+                        return "%暴击率";
                         case "RaiderChestBonus":
                         return "你不会被击退\r\n随着你的生命值降低, 你的伤害减免将提高";
                         case "StarcloudHeadgearBonus":
@@ -3477,27 +3486,18 @@ Your minions raze your oponents with the flames of discordian hell";
 As your health decreases, your ranged damage and critical chance increases
 Your ranged attacks raze your oponents with the flames of discordian hell";
                         case "DarkmatterHeaddressBonus":
-                        return @"Increases max number of minions by 6
-Your minions electrocute enemies
-8% increased damage resistance at night";
-                        case "DarkmatterHelmBonus":
-                        return @"30% throwing crit chance and velocity
-Your thrown weapons electrocute enemies
-8% increased damage resistance at night";
+                        return @"Minions will ocasionaly attempt to distrupt enemy projectiles";
                         case "DarkmatterHelmetBonus":
-                        return @"15% increased melee critical chance and speed
-Your melee weapons electrocute enemies
-8% increased damage resistance at night";
-                        case "DarkmatterMaskBonus":
-                        return  @"200 increased maximum mana
-20% reduced mana usage
-Your Magic spells electrocute enemies
-8% increased damage resistance at night";
+                        return @"You and nearby allies recieve 40% less damage";
+                        case "DarkmatterMaskBonus1":
+                        return "Damage nearby enemies \n 2% of the damage dealt will heal you\n";
+                        case "DarkmatterMaskBonus2":
+                        return " Magic Damage\n";
+                        case "DarkmatterMaskBonus3":
+                        return "% critical strike chance";
                         case "DarkmatterVisorBonus":
-                        return @"25% decreased ammo consumption
-20% increased ranged critical chance
-Your ranged ammunition electrocute enemies
-8% increased damage resistance at night";
+                        return @"An unstable portal hovers above your head, shooting dark blasts when you shoot. 
+Dark blasts deal 30% of your weapon's damage, weakens enemies, and occasional dark locks them";
                         case "DeathlySkullBonus":
                         return @"You are as quiet as death itself, making enemies less likely to target you
 20% Reduced Ammo Consumption";
@@ -3648,27 +3648,21 @@ You can do a lightning-quick dash";
                         case "Paladin_HelmetBonus":
                         return @"+100 Health
 Effects of the Paladin's Shield";
-                        case "RadiumHatBonus":
-                        return @"Increases max number of minions by 7
-Being hit causes stars from the heavans to fall around you and increases your movement speed
-30% increased movement speed during the day";
+                        case "RadiumHatBonus1":
+                        return "Minions will ocasionaly deal damage to nearby enemies\n";
+                        case "RadiumHatBonus2":
+                        return " Summon Damage";
                         case "RadiumHeadgearBonus":
-                        return @"25% decreased ammo consumption
-20% increased ranged critical chance
-Being hit causes stars from the heavans to fall around you and increases your movement speed";
-                        case "RadiumHelmBonus":
-                        return @"30% throwing crit chance and velocity
-Being hit causes stars from the heavans to fall around you and increases your movement speed
-30% increased movement speed during the day";
+                        return @"A sun portal hovers above your head, shooting sun blasts when you shoot. 
+Sun blasts deal 50% of your weapon's damage, and ignite them";
                         case "RadiumHelmetBonus":
-                        return @"15% increased melee critical chance and speed
-Being hit causes stars from the heavans to fall around you and increases your movement speed
-30% increased movement speed during the day";
-                        case "RadiumMaskBonus":
-                        return @"200 increased maximum mana
-20% reduced mana usage
-Being hit causes stars from the heavans to fall around you and increases your movement speed
-30% increased movement speed during the day";
+                        return "Nearby enemies will recieve more damage";
+                        case "RadiumMaskBonus1":
+                        return "Damage nearby enemies \n 50% of the damage dealt will restore mana\n If mana is full you'll get mana overload buff instead\n";
+                        case "RadiumMaskBonus2":
+                        return " Magic Damage\n";
+                        case "RadiumMaskBonus3":
+                        return "% critical strike chance";
                         case "RaiderChestBonus":
                         return @"You cannot be knocked back
 As your health goes down, your damage resistance goes up";

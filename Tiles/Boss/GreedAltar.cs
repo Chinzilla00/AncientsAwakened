@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.Localization;
 using AAMod.NPCs.Bosses.Greed;
 
 namespace AAMod.Tiles.Boss
@@ -59,11 +60,11 @@ namespace AAMod.Tiles.Boss
                         item.stack--;
                         if (AAWorld.downedGreed)
                         {
-                            AAModGlobalNPC.SpawnBoss(player, ModContent.NPCType<Greed>(), true, 0, 0, "Greed");
+                            AAModGlobalNPC.SpawnBoss(player, ModContent.NPCType<Greed>(), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Greed"));
                         }
                         else
                         {
-                            AAModGlobalNPC.SpawnBoss(player, ModContent.NPCType<GreedSpawn>(), false, new Vector2(i * 16, (j * 16) - 200), "Greed");
+                            AAModGlobalNPC.SpawnBoss(player, ModContent.NPCType<GreedSpawn>(), false, new Vector2(i * 16, (j * 16) - 200), Language.GetTextValue("Mods.AAMod.Common.Greed"));
                         }
                     }
                 }
