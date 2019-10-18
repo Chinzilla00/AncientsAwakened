@@ -40,7 +40,7 @@ Shines with the light of a starry night sky");
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = "A sun portal hovers above your head, shooting sun blasts when you shoot. \nSun blasts deal 50% of your weapon's damage, and ignite them";
+            player.setBonus = Lang.ArmorBonus("RadiumHeadgearBonus");
 
 
             player.GetModPlayer<VisorEffects>().setBonus = true;

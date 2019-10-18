@@ -60,7 +60,7 @@ Dark, yet still barely visible");
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = "Damage nearby enemies \n 2% of the damage dealt will heal you\n"+ (int)(100 * player.magicDamage) + " Magic Damage\n" + (player.magicCrit) +"% critical strike chance";
+            player.setBonus = Lang.ArmorBonus("DarkmatterMaskBonus1") + (int)(100 * player.magicDamage) + Lang.ArmorBonus("DarkmatterMaskBonus2") + (player.magicCrit) + Lang.ArmorBonus("DarkmatterMaskBonus2");
             player.GetModPlayer<DarkmatterMaskEffects>().setBonus = true;
             player.GetModPlayer<DarkmatterMaskEffects>().sunSiphon = false;
             player.armorEffectDrawShadowLokis = true;
