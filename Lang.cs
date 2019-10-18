@@ -3206,12 +3206,10 @@ namespace AAMod
 减少20%弹药消耗
 敌人减少瞄准你的可能性";
                         case "AssassinBonus":
-                        return  @"悄声走近, 突然刺杀
-增加18%远程/近战伤害
-减少25%弹药消耗
-双击下键进入隐形状态
-隐形状态下移动不受阻碍
-隐形状态下近战和远程伤害增加";
+                        return  @"增加30%近战速度和弹药速度
+你使用近战武器时有几率投掷匕首
+你使用远程武器时有几率发射额外箭矢
+匕首/箭矢会削减敌人20防御并增加10%受到的伤害";
                         case "AtlanteanBonus":
                         return @"完全处于液体中时, 你的魔法能力和防御力提升";
                         case "BlazingBonus":
@@ -3432,11 +3430,10 @@ namespace AAMod
 20% decreased ammo consumption
 Enemies are less likely to target you";
                         case "AssassinBonus":
-                        return  @"Slash and Stalk.
-18% increased Melee and Ranged damage
-25% decreased ammo consumption
-Enemies are less likely to target you
-you can do a swift dash";
+                        return @"Increase 30% melee speed and projectile velocity
+Your melee weapons have chance to throw daggers
+Your ranged weapons have chance to shoot extra arrows
+Dagger/arrow can decrease enemies 20 defense and increase 10% damage received";
                         case "AtlanteanBonus":
                         return @"While submerged in liquids, your magic abilities and defense are enhanced";
                         case "BlazingBonus":
