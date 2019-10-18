@@ -14,7 +14,7 @@ namespace AAMod.Projectiles.Greed.WKG
         {
             projectile.width = 16;
             projectile.height = 16;
-			projectile.aiStyle = 14;
+			projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.penetrate = 6;
             projectile.ranged = true;
@@ -86,7 +86,7 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<LuminiteBlast>(), projectile.damage, projectile.knockBack, projectile.owner, 0, 0);
             }
-            for (int num468 = 0; num468 < 4; num468++)
+            for (int num468 = 0; num468 < 5; num468++)
             {
                 float VelX = -projectile.velocity.X * 0.2f;
                 float VelY = -projectile.velocity.Y * 0.2f;
