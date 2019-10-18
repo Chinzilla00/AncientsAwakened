@@ -14,6 +14,7 @@ namespace AAMod.Tiles.Ore
             Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
             Main.tileSpelunker[Type] = true;
+            Main.tileValue[Type] = 340; 
             Main.tileMerge[Type][mod.TileType("Torchstone")] = true;
             Main.tileBlockLight[Type] = true;  //true for block to emit light
             Main.tileLighted[Type] = true;

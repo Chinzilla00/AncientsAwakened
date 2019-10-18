@@ -16,6 +16,7 @@ namespace AAMod.Tiles.Ore
             Main.tileBlendAll[Type] = false;
             Main.tileBlockLight[Type] = true;  
             Main.tileLighted[Type] = true;
+            Main.tileValue[Type] = 830; 
             soundType = 21;
             drop = mod.ItemType("RadiumOre");
             dustType = mod.DustType("RadiumDust");

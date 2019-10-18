@@ -9,6 +9,7 @@ namespace AAMod.Items.Boss.Greed
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("MINE-er");
+			Tooltip.SetDefault("Mines ores faster");
         }
 
         public override void SetDefaults()
@@ -32,7 +33,7 @@ namespace AAMod.Items.Boss.Greed
         public override bool CanUseItem(Player player)
 		{
             Tile tile = Main.tile[Player.tileTargetX, Player.tileTargetY];
-            if(Main.tileValue[tile.type] > 0  && PickCheck(tile, item.pick))
+            if(Main.tileValue[tile.type] > 0 && PickCheck(tile, item.pick))
             {
                 player.PickTile(Player.tileTargetX, Player.tileTargetY, 5000);
             }

@@ -1944,9 +1944,6 @@ ItemName.CovetiteCoin=欲晶币
 ItemName.DesireCharm=贪欲挂饰
 ItemTooltip.DesireCharm=拾取硬币时增加1%伤害持续4秒\n再拾取时再增加1%伤害并重置计时\n伤害增加上限20%
 
-ItemName.DesireTalisman=贪欲护身符
-ItemTooltip.DesireTalisman=你每次攻击敌人, 都造成5真实伤害(无种类伤害)
-
 ItemName.GildedGlock=鎏金格洛克手枪
 ItemTooltip.GildedGlock=使用钱币作为子弹
 
@@ -1958,7 +1955,7 @@ ItemName.GreedBag=宝藏袋
 ItemName.GreedTrophy=金食饕餮纪念章
 
 ItemName.Miner=掘-矿
-ItemTooltip.Miner=挖矿更快 (暂未实现效果)
+ItemTooltip.Miner=挖矿更快
 
 ItemName.StoneScarf=坚石围巾
 ItemTooltip.StoneScarf=增加20%伤害减免
@@ -1966,12 +1963,26 @@ ItemTooltip.StoneScarf=增加20%伤害减免
 ItemName.StoneShell=硬岩壳
 ItemTooltip.StoneShell=比基岩硬，比浮岩轻
 
+ItemName.StoneSlammer=重岩锤
+ItemTooltip.StoneSlammer=对飞行敌人必定暴击\n并且会把它从天上砸下来
+
+//AAMod.Items.Boss.Greed.WKG
+
+ItemName.GreedABag=宝藏袋
+
+ItemName.DesireTalisman=贪欲护身符
+ItemTooltip.DesireTalisman=拾取硬币时增加1%伤害持续4秒\n再拾取时再增加1%伤害并重置计时\n伤害增加上限20%\n提升金币拾取范围\n商店会打折\n攻击敌人会掉落额外的金币
+
 BuffName.TalismanBuff=冷酷金欲
 BuffDescription.TalismanBuff=钱！好多的钱！大量的钱！
 
+ItemName.OreCannon=加里有矿
+ItemTooltip.OreCannon=用矿石做炮弹
+
+ItemName.Unearther=发掘者
+
 ItemName.WormIdol=视虫唯神
 ItemTooltip.WormIdol=一个刻画某种蠕虫之神的远古雕像\n在底部好像有个能装某个球的槽
-
 
 // AAMod.Items.Boss.Hydra
 
@@ -2281,6 +2292,9 @@ ItemTooltip.AbyssalYari=划分昼夜的两种传奇长矛中的一种
 
 ItemName.AbyssArrow=宵暗箭
 ItemTooltip.AbyssArrow=无月之夜的黑暗将敌人致盲\n造成蚀月\n无消耗
+
+ItemName.AE=渊流喷影
+ItemTooltip.AE=喷射出会让敌人爆裂而死的深渊酸液\n消耗凝胶
 
 ItemName.Crescent=新月
 ItemTooltip.Crescent=比月光更快\n造成蚀月
@@ -3648,7 +3662,7 @@ ItemName.BoneBow=骨弓
 ItemTooltip.BoneBow=将木箭变成骨箭
 
 ItemName.Bonesaw=骨质冲锋枪
-ItemTooltip.Bonesaw=将子弹变为脓血弹\n(译者注：然而实际好像并不会打出脓血弹?)\n16%几率不消耗子弹
+ItemTooltip.Bonesaw=将子弹变为灵液弹\n16%几率不消耗子弹
 
 ItemName.Bubbleshot=潭渊泡泡枪
 
