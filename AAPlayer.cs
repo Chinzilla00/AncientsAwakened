@@ -2131,7 +2131,7 @@ namespace AAMod
             }
         }
 
-        public virtual float UseTimeMultiplier(Item item, Player player)
+        public override float UseTimeMultiplier(Item item)
         {
             float multiplier = 1f;
 
