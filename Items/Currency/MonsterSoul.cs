@@ -38,7 +38,7 @@ namespace AAMod.Items.Currency
     {
         public static Color color = Color.DarkGray;
 
-        public NSouls(int coinItemID) : base(coinItemID, 999L)
+        public MSouls(int coinItemID) : base(coinItemID, 999L)
         {
         }
 

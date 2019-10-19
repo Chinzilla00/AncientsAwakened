@@ -12,6 +12,7 @@ using AAMod.NPCs.Bosses.Serpent;
 using AAMod.NPCs.Enemies.Snow;
 using AAMod.NPCs.Enemies.Sky;
 using AAMod.NPCs.Enemies.Cavern;
+using AAMod.Items.Currency;
 using System;
 using Terraria.Localization;
 using log4net;
@@ -538,6 +539,44 @@ namespace AAMod
                         BaseMod.BaseUtility.Chat(Lang.BossSummonsInfo("RajahGlobalInfo3"), 107, 137, 179);
                     }
                 }
+            }
+
+            if (Main.bloodMoon)
+            {
+                if (Main.rand.Next(8) == 0) npc.DropLoot(ModContent.ItemType<BloodRune>());
+            }
+
+            if ((npc.type >= 212 && npc.type <= 216) || npc.type == NPCID.Parrot || npc.type == NPCID.PirateShip)
+            {
+                if (Main.rand.Next(8) == 0) npc.DropLoot(ModContent.ItemType<PirateBooty>());
+            }
+
+            if (npc.type == NPCID.Frankenstein || npc.type == NPCID.Vampire || npc.type == NPCID.VampireBat || npc.type == NPCID.SwampThing ||
+                npc.type == NPCID.CreatureFromTheDeep || npc.type == NPCID.Fritz || npc.type == NPCID.Reaper || npc.type == NPCID.ThePossessed ||
+                npc.type == NPCID.Mothron || npc.type == NPCID.Butcher || npc.type == NPCID.DeadlySphere || npc.type == NPCID.DrManFly ||
+                npc.type == NPCID.Nailhead || npc.type == NPCID.Psycho || npc.type == NPCID.Eyezor)
+            {
+                if (Main.rand.Next(8) == 0) npc.DropLoot(ModContent.ItemType<MonsterSoul>());
+            }
+
+            if ((npc.type >= 212 && npc.type <= 216) || npc.type == NPCID.Parrot || npc.type == NPCID.PirateShip)
+            {
+                if (Main.rand.Next(8) == 0) npc.DropLoot(ModContent.ItemType<PirateBooty>());
+            }
+
+            if ((npc.type >= 305 && npc.type <= 315) || ((npc.type >= 325 && npc.type <= 330) && npc.type !=  328))
+            {
+                if (Main.rand.Next(8)== 0) npc.DropLoot(ModContent.ItemType<HalloweenTreat>());
+            }
+
+            if (npc.type >= 338 && npc.type <= 351)
+            {
+                if (Main.rand.Next(8) == 0) npc.DropLoot(ModContent.ItemType<ChristmasCheer>());
+            }
+
+            if (npc.type >= 381 && npc.type <= 392 && npc.type != 384)
+            {
+                if (Main.rand.Next(8) == 0) npc.DropLoot(ModContent.ItemType<MartianCredit>());
             }
         }
 
