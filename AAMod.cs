@@ -27,6 +27,13 @@ namespace AAMod
     {
         // Miscellaneous
         public static int GoblinSoul = -1;
+        public static int BloodRune = -1;
+        public static int PirateBooty = -1;
+        public static int MonsterSoul = -1;
+        public static int HalloweenTreat = -1;
+        public static int ChristmasCheer = -1;
+        public static int MartianCredit = -1;
+
         public static int BoneAmmo = 10000;
 
         // Hotkeys
@@ -249,6 +256,13 @@ namespace AAMod
 
             instance = this;
             GoblinSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.GoblinSoul>()));
+            BloodRune = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.BloodRune>()));
+            PirateBooty = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.PirateBooty>()));
+            MonsterSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.MonsterSoul>()));
+            HalloweenTreat = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.HalloweenTreat>()));
+            ChristmasCheer = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.ChristmasCheer>()));
+            MartianCredit = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.MartianCredit>()));
+
             BoneAmmo = ItemID.Bone;
             if (Main.rand == null)
                 Main.rand = new UnifiedRandom();

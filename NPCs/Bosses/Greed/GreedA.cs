@@ -526,14 +526,17 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void NPCLoot()
         {
+            AAWorld.downedGreedA = true;
             if (!Main.expertMode)
             {
-                AAWorld.downedSerpent = true;
-                npc.DropLoot(mod.ItemType("CovetiteCoin"), 10, 15);
-                string[] lootTable = { };
+                if (Main.rand.Next(7) == 0)
+                {
+                    npc.DropLoot(mod.ItemType("GreedMask"));
+                }
+                string[] lootTable = { "GildedGlock", "Miner", "StoneSlammer", "Unearther" };
                 int loot = Main.rand.Next(lootTable.Length);
-                //npc.DropLoot(Items.Vanity.Mask.GreedMask.type, 1f / 7);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
+                npc.DropLoot(mod.ItemType("WormIdol"));
             }
             if (Main.expertMode)
             {

@@ -1,8 +1,8 @@
 using Terraria;
 
-namespace AAMod.Items.Boss.Greed
+namespace AAMod.Items.Boss.Greed.WKG
 {
-    public class GreedBag : BaseAAItem
+    public class GreedABag : BaseAAItem
 	{
         public override void SetStaticDefaults()
         {
@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Greed
 			item.rare = 11;
 			item.expert = true; item.expertOnly = true;
         }
-        public override int BossBagNPC => mod.NPCType("Greed");
+        public override int BossBagNPC => mod.NPCType("GreedA");
 
         public override bool CanRightClick()
 		{
@@ -35,13 +35,13 @@ namespace AAMod.Items.Boss.Greed
             if (Main.rand.Next(20) == 0)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
-                modPlayer.PPDevArmor();
+                modPlayer.PMLDevArmor();
             }
-            string[] lootTable = { "GildedGlock", "Miner", "StoneSlammer", "Unearther"};
+            string[] lootTable = { "OreCannon", "Unearther", "OreStaff", "Earthbreaker" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
-            player.QuickSpawnItem(mod.ItemType("CovetiteCoin"), Main.rand.Next(60, 150));
-            player.QuickSpawnItem(mod.ItemType("DesireCharm"));
+            player.QuickSpawnItem(mod.ItemType("WormIdol"));
+            player.QuickSpawnItem(mod.ItemType("DesireTalisman"));
         }
 	}
 }

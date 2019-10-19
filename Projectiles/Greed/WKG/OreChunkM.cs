@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Projectiles.Greed.WKG
 {
-    public class OreChunk : ModProjectile
+    public class OreChunkM : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -16,18 +16,25 @@ namespace AAMod.Projectiles.Greed.WKG
             projectile.height = 16;
 			projectile.aiStyle = -1;
             projectile.friendly = true;
-            projectile.penetrate = 6;
-            projectile.ranged = true;
+            projectile.penetrate = -1;
+            projectile.magic = true;
             projectile.ignoreWater = true;
+            projectile.aiStyle = 14;
         }
 
 		public override void SetStaticDefaults()
 		{
 		    DisplayName.SetDefault("Ore");
             Main.projFrames[projectile.type] = 23;
-		}
+        }
 
-        public override void AI()
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            projectile.Kill();
+            return true;
+        }
+
+        public override void PostAI()
         {
             OreEffect();
             if (projectile.velocity.X > 0)
@@ -45,10 +52,6 @@ namespace AAMod.Projectiles.Greed.WKG
                 projectile.oldPos[m] = projectile.oldPos[m - 1];
             }
             projectile.oldPos[0] = projectile.position;
-        }
-
-        public override void PostAI()
-        {
             projectile.frame = (int)projectile.ai[1];
         }
 
@@ -79,12 +82,16 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 for (int s = 0; s < 3; s++)
                 {
-                    Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<OreSpores>(), projectile.damage, projectile.knockBack, Main.myPlayer, 0, s);
+                    int a = Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<OreSpores>(), projectile.damage, projectile.knockBack, Main.myPlayer, 0, s);
+                    Main.projectile[a].ranged = false;
+                    Main.projectile[a].magic = true;
                 }
             }
             if (projectile.ai[1] == 22)
             {
-                Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<LuminiteBlast>(), projectile.damage, projectile.knockBack, Main.myPlayer, 0, 0);
+                int a = Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<LuminiteBlast>(), projectile.damage, projectile.knockBack, Main.myPlayer, 0, 0);
+                Main.projectile[a].ranged = false;
+                Main.projectile[a].magic = true;
             }
             for (int num468 = 0; num468 < 5; num468++)
             {
@@ -127,6 +134,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     };
                     break;
                 case 22: projectile.extraUpdates = 2;
+                    projectile.penetrate = 0;
                     break;
             }
         }

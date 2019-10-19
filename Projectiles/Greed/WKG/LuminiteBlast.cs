@@ -21,7 +21,7 @@ namespace AAMod.Projectiles.Greed.WKG
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
-            projectile.melee = true;
+            projectile.ranged = true;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 15;
         }
@@ -33,7 +33,7 @@ namespace AAMod.Projectiles.Greed.WKG
 
         public override void AI()
         {
-            if (++projectile.frameCounter >= 5)
+            if (++projectile.frameCounter >= 3)
             {
                 projectile.frameCounter = 0;
                 if (++projectile.frame >= 6)

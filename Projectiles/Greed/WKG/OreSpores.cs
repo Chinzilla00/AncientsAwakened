@@ -23,6 +23,7 @@ namespace AAMod.Projectiles.Greed.WKG
             projectile.timeLeft = 3600;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
+            projectile.ranged = true;
         }
 
         public override void AI()

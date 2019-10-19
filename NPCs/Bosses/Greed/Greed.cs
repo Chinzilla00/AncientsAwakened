@@ -441,10 +441,6 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void NPCLoot()
         {
-            if (!AAWorld.downedGreed && ModLoader.GetMod("CalamityMod") != null)
-            {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GreedLore"));
-            }
             AAWorld.downedGreed = true;
             if (NPC.downedMoonlord)
             {
