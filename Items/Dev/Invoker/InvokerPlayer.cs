@@ -404,7 +404,7 @@ namespace AAMod.Items.Dev.Invoker
 			crit = true;
 			if(player.GetModPlayer<InvokerPlayer>().DarkCaligula)
 			{
-				String Lifelength = target.lifeMax + "";
+                string Lifelength = target.lifeMax + "";
 				int regen = (Main.rand.Next(2) == 0 ? 2*(Lifelength.Length + 1) : (Lifelength.Length + 1));
 				player.statLife += regen;
 				player.HealEffect(regen, true);

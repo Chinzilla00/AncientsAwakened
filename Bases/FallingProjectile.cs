@@ -8,7 +8,7 @@ namespace AAMod
 {
     abstract class FallingProjectile : ModProjectile
     {
-        public abstract String name { get; }
+        public abstract string name { get; }
         public abstract int Tile { get; }
 
         public override void SetStaticDefaults()

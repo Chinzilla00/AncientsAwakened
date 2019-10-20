@@ -5,7 +5,7 @@ namespace AAMod
 {
     public class Lang
     {
-        public static string Worldtext(String WorldInfo)
+        public static string Worldtext(string WorldInfo)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -97,7 +97,7 @@ namespace AAMod
                 }
             return "";
         }
-        public static string AAPlayerChat(String PlayerInfo)
+        public static string AAPlayerChat(string PlayerInfo)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -153,7 +153,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string Newtext(String Newtext)
+        public static string Newtext(string Newtext)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -164,7 +164,7 @@ namespace AAMod
             return"";
         }
 
-        public static string GreedChest(String Greed)
+        public static string GreedChest(string Greed)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -193,7 +193,7 @@ namespace AAMod
             return"";
         }
 
-        public static string BossSummonName(String Boss)
+        public static string BossSummonName(string Boss)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -203,7 +203,8 @@ namespace AAMod
                 }
             return"";
         }
-        public static string GlobalNPCSInfo(String NPCsummon)
+
+        public static string GlobalNPCSInfo(string NPCsummon)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -223,71 +224,8 @@ namespace AAMod
                 }
             return"";
         }
-        public static string TownNPCStanLee(String StanLee)
-        {
-            if(Language.ActiveCulture == GameCulture.Chinese)
-                {
-                    switch(StanLee)
-                    {
-                        case "StanLeeName":
-                        return "插画绘师";
-                        case "StanLeeChat1":
-                        return "你知道, 我想一个人可以有所作为. -牛津纳菲尔德学院如是说";
-                        case "StanLeeChat2":
-                        return "我觉得你高了";
-                        case "StanLeeChat3":
-                        return "你看见我的鞋了吗? ";
-                        case "StanLeeChat4":
-                        return "曾经我也是保安， 但是， 呃……后来我被解雇了……";
-                        case "StanLeeChat5":
-                        return "精益求精. ";
-                        case "StanLeeChat6":
-                        return "嘿， 如果你有报纸的话， 我可以借体育栏目看看吗? ";
-                        case "StanLeeChat7":
-                        return "我记得当我是一个邮车司机的时候， 我要送一些邮件给名人. 我想， 他叫托尼…史塔克? ";
-                        case "StanLeeChat8":
-                        return "哈……!太搞笑了!";
-                        case "StanLeeChat9":
-                        return "喔!很合身";
-                        case "StanLeeChat10":
-                        return "别逼我用鞭子抽你， 你这个小混蛋. ";
-                        case "StanLeeChat11":
-                        return "你有毛病吗， 你以前从没见过宇宙飞船? ";
-                    }
-                }
-            else
-                {
-                    switch(StanLee)
-                    {
-                        case "StanLeeName":
-                        return "Illustrator";
-                        case "StanLeeChat1":
-                        return "You know, I guess one person can make a difference. 'Nuff said.";
-                        case "StanLeeChat2":
-                        return "I thought you'd be taller.";
-                        case "StanLeeChat3":
-                        return "Have you seen my shoe?";
-                        case "StanLeeChat4":
-                        return "And then there was this one time I was a security guard, but uh...then I got fired...";
-                        case "StanLeeChat5":
-                        return "Excelsior.";
-                        case "StanLeeChat6":
-                        return "Hey, if you got a newspaper, could I borrow the sports section?";
-                        case "StanLeeChat7":
-                        return "I remember when I was a mail truck driver, got to deliver some mail to some famous guy. I think his name was Tony...Stank?";
-                        case "StanLeeChat8":
-                        return "HAH..! THAT'S HILARIOUS!";
-                        case "StanLeeChat9":
-                        return "Wow, nice suit.";
-                        case "StanLeeChat10":
-                        return "Don't make me whip ya, you little punk.";
-                        case "StanLeeChat11":
-                        return "Whats'a matter with you, ya never seen a spaceship before?";
-                    }
-                }
-            return"";
-        }
-        public static string TownNPCAnubis(String Anubis)
+
+        public static string TownNPCAnubis(string Anubis)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -730,7 +668,8 @@ namespace AAMod
                 }
             return"";
         }
-        public static string TownNPCGoblinSlayer(String GoblinSlayer)
+
+        public static string TownNPCGoblinSlayer(string GoblinSlayer)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -782,11 +721,16 @@ namespace AAMod
                         return "Why do I hate goblins? Because they're goblins.";
                         case "GoblinSlayerChat9":
                         return "Hey, while you're out there, can you kill some goblins for me? Give me their souls and I'll trade you for some of my extra goblin slaying gear.";
-                    }
+                        case "GoblinSlayerChat10":
+                        return "Souka.";
+                        case "GoblinSlayerChat11":
+                        return "There are other armies invading this land like those dreaded goblins. Fortunately, beating the snot out of those little twerps has prepared me. Bring me some special things from them and I'll give you some of the stuff I've picked up from them.";
+
                 }
+            }
             return"";
         }
-        public static string TownNPCLovecraftian(String Lovecraftian)
+        public static string TownNPCLovecraftian(string Lovecraftian)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -930,7 +874,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string TownNPCMushman(String Mushman)
+        public static string TownNPCMushman(string Mushman)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -1015,7 +959,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string TownNPCSamurai(String Samurai)
+        public static string TownNPCSamurai(string Samurai)
         {
             if(Language.ActiveCulture == GameCulture.English)
                 {
@@ -1115,7 +1059,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string BossChat(String BossInfo)
+        public static string BossChat(string BossInfo)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -2438,7 +2382,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string BossSummonsInfo(String BossName)
+        public static string BossSummonsInfo(string BossName)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -2782,7 +2726,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string BossCheck(String Boss)
+        public static string BossCheck(string Boss)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -2978,7 +2922,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string ItemsInfo(String Itemsname)
+        public static string ItemsInfo(string Itemsname)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -3014,7 +2958,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string RajahSPTooltip(String RajahSash)
+        public static string RajahSPTooltip(string RajahSash)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -3070,7 +3014,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string GreedTooltip(String Greed)
+        public static string GreedTooltip(string Greed)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -3090,7 +3034,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string questFish(String questFishtext)
+        public static string questFish(string questFishtext)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -3122,7 +3066,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string TilesInfo(String Tiles)
+        public static string TilesInfo(string Tiles)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -3195,7 +3139,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string ArmorBonus(String Armorname)
+        public static string ArmorBonus(string Armorname)
         {
             if (Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -3755,7 +3699,7 @@ The Fire spirit becomes more powerful the less mana you have";
                 }
             return "";
         }
-        public static string WorldBuild(String Info)
+        public static string WorldBuild(string Info)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
             {

@@ -39,7 +39,7 @@ namespace AAMod.Items.Boss.Greed
 
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-            if (target.velocity.Y != 0)
+            if (target.velocity.Y != 0 && target.knockBackResist > 0)
             {
                 target.velocity.Y += (knockBack * 1.5f) * target.knockBackResist;
                 target.velocity.X = 0;

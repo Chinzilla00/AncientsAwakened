@@ -39,8 +39,11 @@ If the enemy hits the ground after being hit, they will take damage");
             if (target.velocity.Y != 0)
             {
                 crit = true;
-                target.AddBuff(ModContent.BuffType<Buffs.Falling>(), 120);
-                target.GetGlobalNPC<Buffs.FallDamage>().damage = damage;
+                if (target.knockBackResist > 0 || !target.boss)
+                {
+                    target.AddBuff(ModContent.BuffType<Buffs.Falling>(), 120);
+                    target.GetGlobalNPC<Buffs.FallDamage>().damage = damage;
+                }
             }
         }
 
@@ -48,8 +51,11 @@ If the enemy hits the ground after being hit, they will take damage");
         {
             if (target.velocity.Y != 0)
             {
-                target.velocity.Y += (knockBack * 1.5f) * target.knockBackResist;
-                target.velocity.X = 0;
+                if (target.knockBackResist > 0 || !target.boss)
+                {
+                    target.velocity.Y += (knockBack * 1.5f) * target.knockBackResist;
+                    target.velocity.X = 0;
+                }
                 int num = 4;
                 for (int k = 0; k < 10; k++)
                 {

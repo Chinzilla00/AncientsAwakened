@@ -105,58 +105,15 @@ namespace AAMod.NPCs.TownNPCs
             chat.Add(Lang.TownNPCGoblinSlayer("GoblinSlayerChat7"));
             chat.Add(Lang.TownNPCGoblinSlayer("GoblinSlayerChat8"));
             chat.Add(Lang.TownNPCGoblinSlayer("GoblinSlayerChat9"));
+            chat.Add(Lang.TownNPCGoblinSlayer("GoblinSlayerChat10"));
+            if (NPC.downedPirates || NPC.downedMartians || DownedBools.downedOgre)
+            {
+                chat.Add(Lang.TownNPCGoblinSlayer("GoblinSlayerChat11"));
+            }
             return chat; 
         }
-        
 
-		public override void SetChatButtons(ref string button, ref string button2)
-		{
-			button = Language.GetTextValue("LegacyInterface.28");
-
-            string GobShop = Language.GetTextValue("Goblin Loot");
-            string BloodShop = Language.GetTextValue("Blood Moon Loot");
-            string OOAShop = Language.GetTextValue("Old One's Army Loot");
-            string PirateShop = Language.GetTextValue("Pirate Loot");
-            string EclipseShop = Language.GetTextValue("Eclipse Loot");
-            string PumpShop = Language.GetTextValue("Halloween Loot");
-            string FrostShop = Language.GetTextValue("Christmas Loot");
-            string MartianShop = Language.GetTextValue("Martian Loot");
-
-            string ShopsChanger = Language.GetTextValue("Change Shop Type");
-            if (Goblin)
-            {
-                button = GobShop;
-            }
-            if (Blood)
-            {
-                button = BloodShop;
-            }
-            if (OOA)
-            {
-                button = OOAShop;
-            }
-            if (Pirate)
-            {
-                button = PirateShop;
-            }
-            if (Eclipse)
-            {
-                button = EclipseShop;
-            }
-            if (Pumpkin)
-            {
-                button = PumpShop;
-            }
-            if (Frost)
-            {
-                button = FrostShop;
-            }
-            if (Martian)
-            {
-                button = MartianShop;
-            }
-            button2 = ShopsChanger;
-        }
+        public static int ChatNumber = 0;
 
         public void ResetBools()
         {
@@ -171,54 +128,75 @@ namespace AAMod.NPCs.TownNPCs
             Martian = false;
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        public override void SetChatButtons(ref string button, ref string button2)
 		{
-			if (firstButton)
-			{
-				shop = true;
-			}
+			button = Language.GetTextValue("Change Shop Type");
+
+            string GobShop = Language.GetTextValue("Goblin Loot");
+            string BloodShop = Language.GetTextValue("Blood Moon Loot");
+            string OOAShop = Language.GetTextValue("Old One's Army Loot");
+            string PirateShop = Language.GetTextValue("Pirate Loot");
+            string EclipseShop = Language.GetTextValue("Eclipse Loot");
+            string PumpShop = Language.GetTextValue("Halloween Loot");
+            string FrostShop = Language.GetTextValue("Christmas Loot");
+            string MartianShop = Language.GetTextValue("Martian Loot");
+
+            if (ChatNumber == 0)
+            {
+                button2 = GobShop;
+                Goblin = true;
+            }
+            else if (ChatNumber == 1)
+            {
+                button2 = BloodShop;
+                Blood = true;
+            }
+            else if (ChatNumber == 2)
+            {
+                button2 = OOAShop;
+                OOA = true;
+            }
+            else if (ChatNumber == 3)
+            {
+                button2 = PirateShop;
+                Pirate = true;
+            }
+            else if (ChatNumber == 4)
+            {
+                button2 = EclipseShop;
+                Eclipse = true;
+            }
+            else if (ChatNumber == 5)
+            {
+                button2 = PumpShop;
+                Pumpkin = true;
+            }
+            else if (ChatNumber == 6)
+            {
+                button2 = FrostShop;
+                Frost = true;
+            }
+            else if (ChatNumber == 7)
+            {
+                button2 = MartianShop;
+                Frost = true;
+            }
+        }
+
+        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        {
+            if (firstButton)
+            {
+                ResetBools();
+                ChatNumber += 1;
+                if (ChatNumber > 7)
+                {
+                    ChatNumber = 0;
+                }
+            }
             else
             {
-                if (Goblin)
-                {
-                    ResetBools();
-                    Blood = true;
-                }
-                else if (Blood)
-                {
-                    ResetBools();
-                    OOA = true;
-                }
-                else if (OOA)
-                {
-                    ResetBools();
-                    Pirate = true;
-                }
-                else if (Pirate)
-                {
-                    ResetBools();
-                    Eclipse = true;
-                }
-                else if (Eclipse)
-                {
-                    ResetBools();
-                    Pumpkin = true;
-                }
-                else if (Pumpkin)
-                {
-                    ResetBools();
-                    Frost = true;
-                }
-                else if (Frost)
-                {
-                    ResetBools();
-                    Martian = true;
-                }
-                else if (Martian)
-                {
-                    ResetBools();
-                    Goblin = true;
-                }
+                shop = true;
             }
 		}
 

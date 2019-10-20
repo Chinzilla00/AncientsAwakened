@@ -23,7 +23,7 @@ namespace AAMod.Items.Dev.Invoker
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
-			String text = "";
+            string text = "";
 			Player player = Main.player[Main.myPlayer];
 			if(!player.GetModPlayer<InvokerPlayer>().Thebookoflaw)
 			{
