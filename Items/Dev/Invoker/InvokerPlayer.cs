@@ -158,6 +158,16 @@ namespace AAMod.Items.Dev.Invoker
 				player.statDefense *= 2;
 			}
 		}
+		public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+			if (DarkCaligula && Thebookoflaw && SpringInvoker)
+            {
+                if (AAMod.AccessoryAbilityKey.JustPressed)
+                {
+                    player.AddBuff(mod.BuffType("InvokedCaligulaSafe"), 3600);
+                }
+            }
+		}
 		public override void FrameEffects()
 		{
 			int soulcount = 0;

@@ -56,26 +56,6 @@ Get all of the materials' effect
             item.useTime = 30;
             item.useAnimation = 30;
         }
-
-        public override bool CanUseItem(Player player)
-		{
-            bool canuse = false;
-            if(player.GetModPlayer<InvokerPlayer>().SpringInvoker && player.GetModPlayer<InvokerPlayer>().DarkCaligula) 
-            {
-                canuse = player.GetModPlayer<InvokerPlayer>().DarkCaligula;
-            }
-            return canuse;
-        }
-
-        public override bool UseItem(Player player)
-		{
-            if(player.GetModPlayer<InvokerPlayer>().SpringInvoker && player.GetModPlayer<InvokerPlayer>().DarkCaligula) 
-            {
-                player.GetModPlayer<InvokerPlayer>().DarkCaligula = false;
-                player.AddBuff(mod.BuffType("InvokedCaligulaSafe"), 3600);
-            }
-            return true;
-        }
         
         public override void UpdateAccessory(Player player, bool hideVisual)
 		{
