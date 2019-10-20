@@ -15,7 +15,7 @@ namespace AAMod.Items.Dev.Invoker
             base.SetStaticDefaults();
             DisplayName.SetDefault("The Book of the Law");
             Tooltip.SetDefault(@"A Legendary Book of Aleister 'Mega Therion'.
-Increase 87% minion damage
+Increase 30% minion damage
 Increase 2 minion slots
 Get all of the materials' effect
 ");
@@ -79,29 +79,13 @@ Get all of the materials' effect
         
         public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-            player.minionDamage += .87f;
+            player.minionDamage += .3f;
             player.maxMinions += 2;
             player.minionKB += 2f;
 
 			player.lifeRegen += 26;
-            player.lifeRegenTime += 2;
 
             player.maxTurrets++;
-
-            player.longInvince = true;
-            
-            player.buffImmune[46] = true;
-            player.noKnockback = true;
-            player.fireWalk = true;
-            player.buffImmune[33] = true;
-            player.buffImmune[36] = true;
-            player.buffImmune[30] = true;
-            player.buffImmune[20] = true;
-            player.buffImmune[32] = true;
-            player.buffImmune[31] = true;
-            player.buffImmune[35] = true;
-            player.buffImmune[23] = true;
-            player.buffImmune[22] = true;
             
 
             InvokerPlayer InvokerPlayer = InvokerPlayer.ModPlayer(player);
@@ -122,11 +106,6 @@ Get all of the materials' effect
             recipe.AddIngredient(mod, "InvokerPants", 1);
 			recipe.AddIngredient(ItemID.SquireGreatHelm, 1);
             recipe.AddIngredient(ItemID.SquireAltShirt, 1);
-			recipe.AddIngredient(ItemID.ShinyStone, 1);
-            recipe.AddIngredient(ItemID.FrozenTurtleShell, 1);
-            recipe.AddIngredient(ItemID.CrossNecklace, 1);
-            recipe.AddIngredient(ItemID.AnkhShield, 1);
-            recipe.AddIngredient(ItemID.PaladinsShield, 1);
             recipe.AddIngredient(ItemID.SpectreBar, 60);
             recipe.AddIngredient(mod, "EXSoul", 1);
 			recipe.AddTile(mod, "ACS");
