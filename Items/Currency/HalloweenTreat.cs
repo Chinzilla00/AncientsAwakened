@@ -40,7 +40,7 @@ namespace AAMod.Items.Currency
                 color2.B,
                 Language.GetText(Lang.ItemsInfo("HalloweenTreatBuyprice")),
                 price,
-                (price == 1 ? Lang.ItemsInfo("HalloweenTreat") : Lang.ItemsInfo("HalloweenTreat"))
+                price == 1 ? Lang.ItemsInfo("HalloweenTreat") : Lang.ItemsInfo("HalloweenTreat")
             });
         }
     }

@@ -53,7 +53,7 @@ If the enemy hits the ground after being hit, they will take damage");
             {
                 if (target.knockBackResist > 0 || !target.boss)
                 {
-                    target.velocity.Y += (knockBack * 1.5f) * target.knockBackResist;
+                    target.velocity.Y += knockBack * 1.5f * target.knockBackResist;
                     target.velocity.X = 0;
                 }
                 int num = 4;
@@ -61,7 +61,7 @@ If the enemy hits the ground after being hit, they will take damage");
                 {
                     Dust dust = Main.dust[Dust.NewDust(target.position, target.width, target.height, DustID.Gold)];
                     Dust expr_16B_cp_0 = dust;
-                    expr_16B_cp_0.velocity.Y -= (3f + num * 1.5f);
+                    expr_16B_cp_0.velocity.Y -= 3f + num * 1.5f;
                     Dust expr_18D_cp_0 = dust;
                     expr_18D_cp_0.velocity.Y *= Main.rand.NextFloat();
                     dust.scale += num * 0.03f;
@@ -70,7 +70,7 @@ If the enemy hits the ground after being hit, they will take damage");
                 {
                     Dust dust2 = Main.dust[Dust.NewDust(target.position, target.width, target.height, DustID.Gold)];
                     Dust expr_1EA_cp_0 = dust2;
-                    expr_1EA_cp_0.velocity.Y -= (1f + num);
+                    expr_1EA_cp_0.velocity.Y -= 1f + num;
                     Dust expr_206_cp_0 = dust2;
                     expr_206_cp_0.velocity.Y *= Main.rand.NextFloat();
                 }

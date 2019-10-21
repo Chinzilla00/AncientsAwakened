@@ -564,7 +564,7 @@ namespace AAMod
                 if (Main.rand.Next(8) == 0) npc.DropLoot(ModContent.ItemType<PirateBooty>());
             }
 
-            if ((npc.type >= 305 && npc.type <= 315) || ((npc.type >= 325 && npc.type <= 330) && npc.type !=  328))
+            if ((npc.type >= 305 && npc.type <= 315) || (npc.type >= 325 && npc.type <= 330 && npc.type !=  328))
             {
                 if (Main.rand.Next(8)== 0) npc.DropLoot(ModContent.ItemType<HalloweenTreat>());
             }

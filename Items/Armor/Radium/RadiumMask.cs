@@ -39,7 +39,7 @@ Shines with the light of a starry night sky");
 		{
             player.GetModPlayer<DarkmatterMaskEffects>().setBonus = true;
             player.GetModPlayer<DarkmatterMaskEffects>().sunSiphon = true;
-            player.setBonus = Lang.ArmorBonus("RadiumMaskBonus1") + (int)(100 * player.magicDamage) + Lang.ArmorBonus("RadiumMaskBonus2") + (player.magicCrit) + Lang.ArmorBonus("RadiumMaskBonus3");
+            player.setBonus = Lang.ArmorBonus("RadiumMaskBonus1") + (int)(100 * player.magicDamage) + Lang.ArmorBonus("RadiumMaskBonus2") + player.magicCrit + Lang.ArmorBonus("RadiumMaskBonus3");
 
         }
 

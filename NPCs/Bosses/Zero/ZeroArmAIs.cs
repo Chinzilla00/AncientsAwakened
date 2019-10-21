@@ -109,7 +109,7 @@ namespace AAMod.NPCs.Bosses.Zero
                         {
                             float num451 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - Center.X;
                             float num452 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - Center.Y;
-                            float num453 = (float)Math.Sqrt((num451 * num451 + num452 * num452));
+                            float num453 = (float)Math.Sqrt(num451 * num451 + num452 * num452);
                             num453 = 7f / num453;
                             num451 *= num453;
                             num452 *= num453;

@@ -154,7 +154,7 @@ Dark, yet still barely visible");
         {
             if(projectile.GetGlobalProjectile<DarkMinions>().reduceDamage >0)
             {
-                float v = (projectile.GetGlobalProjectile<DarkMinions>().reduceDamage / (float)EstimatedDamage(projectile));
+                float v = projectile.GetGlobalProjectile<DarkMinions>().reduceDamage / (float)EstimatedDamage(projectile);
 
                 lightColor.R = (byte)(lightColor.R * (1f - (lightColor.R * v * .8f)));
                 lightColor.G = (byte)(lightColor.G * (1f - (lightColor.R * v * .8f)));

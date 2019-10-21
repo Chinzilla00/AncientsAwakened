@@ -41,14 +41,14 @@ namespace AAMod.Items.Boss.Greed
         {
             if (target.velocity.Y != 0 && target.knockBackResist > 0)
             {
-                target.velocity.Y += (knockBack * 1.5f) * target.knockBackResist;
+                target.velocity.Y += knockBack * 1.5f * target.knockBackResist;
                 target.velocity.X = 0;
                 int num = 4;
                 for (int k = 0; k < 10; k++)
                 {
                     Dust dust = Main.dust[Dust.NewDust(target.position, target.width, target.height, DustID.Dirt)];
                     Dust expr_16B_cp_0 = dust;
-                    expr_16B_cp_0.velocity.Y -= (3f + num * 1.5f);
+                    expr_16B_cp_0.velocity.Y -= 3f + num * 1.5f;
                     Dust expr_18D_cp_0 = dust;
                     expr_18D_cp_0.velocity.Y *= Main.rand.NextFloat();
                     dust.scale += num * 0.03f;
@@ -57,7 +57,7 @@ namespace AAMod.Items.Boss.Greed
                 {
                     Dust dust2 = Main.dust[Dust.NewDust(target.position, target.width, target.height, DustID.Dirt)];
                     Dust expr_1EA_cp_0 = dust2;
-                    expr_1EA_cp_0.velocity.Y -= (1f + num);
+                    expr_1EA_cp_0.velocity.Y -= 1f + num;
                     Dust expr_206_cp_0 = dust2;
                     expr_206_cp_0.velocity.Y *= Main.rand.NextFloat();
                 }

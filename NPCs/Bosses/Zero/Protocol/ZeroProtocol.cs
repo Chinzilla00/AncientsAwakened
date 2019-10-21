@@ -196,7 +196,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             Player player = Main.player[npc.target];
             if (npc.dontTakeDamage)
             {
-                MoonlordDeathDrama.RequestLight((deathTimer / 300f), npc.Center);
+                MoonlordDeathDrama.RequestLight(deathTimer / 300f, npc.Center);
                 npc.dontTakeDamage = true;
                 npc.damage = 0;
                 npc.defense = 0;
@@ -204,7 +204,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Main.rand.NextFloat(-12f, 12f), Main.rand.NextFloat(-12f, 12f), mod.ProjectileType("Static"), 0, 0, Main.myPlayer, npc.direction > 0 ? -1f : 1f, 6f);
                 for (int j = 0; j < 10; j++)
                 {
-                    int num7 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 109, 0f, 0f, 100, default(Color), 2f);
+                    int num7 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 109, 0f, 0f, 100, default, 2f);
                     Main.dust[num7].velocity *= 14f;
                     if (Main.rand.Next(2) == 0)
                     {
@@ -222,7 +222,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     npc.active = false;
                     for (int j = 0; j < 200; j++)
                     {
-                        int num7 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 235, 0f, 0f, 100, default(Color), 2f);
+                        int num7 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 235, 0f, 0f, 100, default, 2f);
                         Main.dust[num7].velocity *= 30f;
                         if (Main.rand.Next(2) == 0)
                         {

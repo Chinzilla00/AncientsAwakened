@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Athena
+namespace AAMod.NPCs.Bosses.Athena.Olympian
 {
     public class AthenaLight : ModNPC
     {
@@ -49,8 +49,8 @@ namespace AAMod.NPCs.Bosses.Athena
                 npc.ai[1] = 0;
                 tPos.X = player.Center.X;
                 tPos.Y = player.Center.Y - 70;
-                npc.velocity.X += (npc.DirectionTo(tPos).X * Vector2.Distance(npc.Center, tPos) / 600 / 2);
-                npc.velocity.Y += (npc.DirectionTo(tPos).Y * Vector2.Distance(npc.Center, tPos) / 600 / 2 * 3);
+                npc.velocity.X += npc.DirectionTo(tPos).X * Vector2.Distance(npc.Center, tPos) / 600 / 2;
+                npc.velocity.Y += npc.DirectionTo(tPos).Y * Vector2.Distance(npc.Center, tPos) / 600 / 2 * 3;
             }
             else
             {

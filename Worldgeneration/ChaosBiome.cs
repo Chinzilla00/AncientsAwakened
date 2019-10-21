@@ -899,6 +899,44 @@ namespace AAMod.Worldgeneration
         }
     }
 
+    public class AcropolisCloud : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            Mod mod = AAMod.instance;
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
+            {
+                [new Color(255, 255, 0)] = mod.TileType("AcropolisClouds"),
+                [Color.Black] = -1 //don't touch when genning		
+            };
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/AcropolisClouds"), colorToTile, null, null, null, null);
+
+            gen.Generate(origin.X, origin.Y, true, true);
+            return true;
+        }
+    }
+
+    public class AcropolisCloud1 : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            Mod mod = AAMod.instance;
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
+            {
+                [new Color(255, 255, 0)] = mod.TileType("AcropolisClouds"),
+                [Color.Black] = -1 //don't touch when genning		
+            };
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/AcropolisClouds1"), colorToTile, null, null, null, null);
+
+            gen.Generate(origin.X, origin.Y, true, true);
+            return true;
+        }
+    }
+
     public class Parthenan : MicroBiome
     {
         public override bool Place(Point origin, StructureMap structures)

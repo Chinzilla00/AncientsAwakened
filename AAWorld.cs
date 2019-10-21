@@ -23,6 +23,7 @@ namespace AAMod
 {
     public class AAWorld : ModWorld
     {
+        #region Variables
         public static int SmashDragonEgg = 2;
         public static int SmashHydraPod = 2;
         public static int OpenedChest = 2;
@@ -128,9 +129,13 @@ namespace AAMod
         public static int RabbitKills = 0;
         public static bool TimeStopped = false;
         public static double PausedTime = 0;
+        #endregion
 
+        #region Save/Load
         public override void Initialize()
         {
+            ClearClouds();
+
             //Bosses
             downedAnubis = false;
             downedAthena = false;
@@ -524,6 +529,21 @@ namespace AAMod
             SmashDragonEgg = reader.ReadInt32();
         }
 
+        public static void ClearClouds()
+        {
+            for (int j = 0; j < Main.maxTilesX; j++)
+            {
+                for (int k = 0; k < Main.maxTilesY; k++)
+                {
+                    if (Main.tile[j, k].active() && Main.tile[j, k].type == (ushort)ModContent.TileType<AcropolisClouds>())
+                    {
+                        WorldGen.KillTile(j, k, false, false, true);
+                    }
+                }
+            }
+        }
+
+        #endregion
 
         private string NumberRand(int size)
         {
@@ -1414,7 +1434,7 @@ namespace AAMod
 
         private void Acropolis(GenerationProgress progress)
         {
-            progress.Message = "Amassing Treasure";
+            progress.Message = "Floating the Acropolis";
             Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
             Acropolis biome = new Acropolis();
             biome.Place(origin, WorldGen.structures);

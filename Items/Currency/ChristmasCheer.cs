@@ -52,7 +52,7 @@ namespace AAMod.Items.Currency
                 color2.B,
                 Language.GetText(Lang.ItemsInfo("ChristmasCheerBuyprice")),
                 price,
-                (price == 1 ? Lang.ItemsInfo("ChristmasCheer") : Lang.ItemsInfo("ChristmasCheer"))
+                price == 1 ? Lang.ItemsInfo("ChristmasCheer") : Lang.ItemsInfo("ChristmasCheer")
             });
         }
     }

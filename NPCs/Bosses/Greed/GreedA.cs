@@ -169,7 +169,7 @@ namespace AAMod.NPCs.Bosses.Greed
                         {
                             Main.PlaySound(mod.GetLegacySoundSlot(Terraria.ModLoader.SoundType.Custom, "Sounds/Custom/Quake1").WithVolume(.7f).WithPitchVariance(.1f));
                         }
-                        int proj = Projectile.NewProjectile(player.Center.X, player.Center.Y - 100, 0f, 0f, mod.ProjectileType("WarningPro"), 43, 0, Main.myPlayer, (npc.life > (int)(npc.lifeMax * 0.5f) ? 0 : 1), 0);
+                        int proj = Projectile.NewProjectile(player.Center.X, player.Center.Y - 100, 0f, 0f, mod.ProjectileType("WarningPro"), 43, 0, Main.myPlayer, npc.life > (int)(npc.lifeMax * 0.5f) ? 0 : 1, 0);
                         Main.projectile[proj].netUpdate = true;
                         npc.netUpdate = true;
                     }
@@ -399,9 +399,9 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
 
             int tileX = (int)(npc.position.X / 16f) - 1;
-            int tileCenterX = (int)((npc.Center.X) / 16f) + 2;
+            int tileCenterX = (int)(npc.Center.X / 16f) + 2;
             int tileY = (int)(npc.position.Y / 16f) - 1;
-            int tileCenterY = (int)((npc.Center.Y) / 16f) + 2;
+            int tileCenterY = (int)(npc.Center.Y / 16f) + 2;
             if (tileX < 0) { tileX = 0; }
             if (tileCenterX > Main.maxTilesX) { tileCenterX = Main.maxTilesX; }
             if (tileY < 0) { tileY = 0; }
@@ -846,9 +846,9 @@ namespace AAMod.NPCs.Bosses.Greed
             }
 
             int tileX = (int)(npc.position.X / 16f) - 1;
-            int tileCenterX = (int)((npc.Center.X) / 16f) + 2;
+            int tileCenterX = (int)(npc.Center.X / 16f) + 2;
             int tileY = (int)(npc.position.Y / 16f) - 1;
-            int tileCenterY = (int)((npc.Center.Y) / 16f) + 2;
+            int tileCenterY = (int)(npc.Center.Y / 16f) + 2;
             if (tileX < 0) { tileX = 0; }
             if (tileCenterX > Main.maxTilesX) { tileCenterX = Main.maxTilesX; }
             if (tileY < 0) { tileY = 0; }

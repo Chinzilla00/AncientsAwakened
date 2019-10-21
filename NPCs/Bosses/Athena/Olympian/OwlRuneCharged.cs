@@ -5,7 +5,7 @@ using BaseMod;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AAMod.NPCs.Bosses.Athena
+namespace AAMod.NPCs.Bosses.Athena.Olympian
 {
 	public class OwlRuneCharged : ModNPC
     {

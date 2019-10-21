@@ -52,7 +52,7 @@ namespace AAMod.Items.Currency
                 color2.B,
                 Language.GetText(Lang.ItemsInfo("BloodRuneBuyprice")),
                 price,
-                (price == 1 ? Lang.ItemsInfo("BloodRune") : Lang.ItemsInfo("BloodRunes"))
+                price == 1 ? Lang.ItemsInfo("BloodRune") : Lang.ItemsInfo("BloodRunes")
             });
         }
     }

@@ -41,9 +41,9 @@ namespace AAMod.Projectiles.Greed
 			}
 			if (!Main.player[projectile.owner].active || Main.player[projectile.owner].dead || projs.Length > 2) { projectile.Kill(); return; }
 			Target();
-            BaseAI.AIMinionFlier(projectile, ref projectile.ai, player, false, false, false, 40, 40, 400, 800, 1f, 10f, 10f, !CanShoot(target), false, (proj, owner) => { return (target == player ? null : target); }, Shoot);
-			projectile.position -= (player.oldPosition - player.position);
-			if (CanShoot(target)) { projectile.spriteDirection = (projectile.Center.X > target.Center.X ? -1 : 1); }
+            BaseAI.AIMinionFlier(projectile, ref projectile.ai, player, false, false, false, 40, 40, 400, 800, 1f, 10f, 10f, !CanShoot(target), false, (proj, owner) => { return target == player ? null : target; }, Shoot);
+			projectile.position -= player.oldPosition - player.position;
+			if (CanShoot(target)) { projectile.spriteDirection = projectile.Center.X > target.Center.X ? -1 : 1; }
 		}
 
 		public bool CanShoot(Entity target)

@@ -306,9 +306,9 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
 
             int tileX = (int)(npc.position.X / 16f) - 1;
-            int tileCenterX = (int)((npc.Center.X) / 16f) + 2;
+            int tileCenterX = (int)(npc.Center.X / 16f) + 2;
             int tileY = (int)(npc.position.Y / 16f) - 1;
-            int tileCenterY = (int)((npc.Center.Y) / 16f) + 2;
+            int tileCenterY = (int)(npc.Center.Y / 16f) + 2;
             if (tileX < 0) { tileX = 0; }
             if (tileCenterX > Main.maxTilesX) { tileCenterX = Main.maxTilesX; }
             if (tileY < 0) { tileY = 0; }
@@ -698,9 +698,9 @@ namespace AAMod.NPCs.Bosses.Greed
             }
 
             int tileX = (int)(npc.position.X / 16f) - 1;
-            int tileCenterX = (int)((npc.Center.X) / 16f) + 2;
+            int tileCenterX = (int)(npc.Center.X / 16f) + 2;
             int tileY = (int)(npc.position.Y / 16f) - 1;
-            int tileCenterY = (int)((npc.Center.Y) / 16f) + 2;
+            int tileCenterY = (int)(npc.Center.Y / 16f) + 2;
             if (tileX < 0) { tileX = 0; }
             if (tileCenterX > Main.maxTilesX) { tileCenterX = Main.maxTilesX; }
             if (tileY < 0) { tileY = 0; }

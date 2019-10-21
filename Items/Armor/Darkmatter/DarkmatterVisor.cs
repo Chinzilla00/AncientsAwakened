@@ -99,11 +99,11 @@ Dark, yet still barely visible");
                 {
                     if(sunPortal)
                     {
-                        Projectile.NewProjectile(player.Center + portalOffset, (Main.MouseWorld - (player.Center + portalOffset)).SafeNormalize(-Vector2.UnitY) * player.HeldItem.shootSpeed, mod.ProjectileType("SunSphere"), (int)((player.HeldItem.damage * player.rangedDamage) * .5f), 2f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center + portalOffset, (Main.MouseWorld - (player.Center + portalOffset)).SafeNormalize(-Vector2.UnitY) * player.HeldItem.shootSpeed, mod.ProjectileType("SunSphere"), (int)(player.HeldItem.damage * player.rangedDamage * .5f), 2f, player.whoAmI);
                     }
                     else
                     {
-                        Projectile.NewProjectile(player.Center + portalOffset, (Main.MouseWorld - (player.Center + portalOffset)).SafeNormalize(-Vector2.UnitY) * player.HeldItem.shootSpeed, mod.ProjectileType("DarkmatterSphere"), (int)((player.HeldItem.damage * player.rangedDamage) * .3f), 2f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center + portalOffset, (Main.MouseWorld - (player.Center + portalOffset)).SafeNormalize(-Vector2.UnitY) * player.HeldItem.shootSpeed, mod.ProjectileType("DarkmatterSphere"), (int)(player.HeldItem.damage * player.rangedDamage * .3f), 2f, player.whoAmI);
                     }
                     
                 }

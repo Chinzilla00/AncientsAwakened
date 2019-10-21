@@ -52,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Greed
                 if (++npc.ai[1] >= 80)
                 {
                     Main.PlaySound(SoundID.DD2_BetsyFireballShot, (int)npc.position.X, (int)npc.position.Y);
-                    int proj = Projectile.NewProjectile(npcCenter.X, npcCenter.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                    int proj = Projectile.NewProjectile(npcCenter.X, npcCenter.Y, (float)(Math.Cos(rotation) * Speed * -1), (float)(Math.Sin(rotation) * Speed * -1), type, damage, 0f, 0);
                     Main.projectile[proj].netUpdate = true;
                     npc.ai[1] = 0;
                 }
@@ -66,9 +66,9 @@ namespace AAMod.NPCs.Bosses.Greed
                 if (++npc.ai[1] >= 120)
                 {
                     Main.PlaySound(SoundID.DD2_BetsyFireballShot, (int)npc.position.X, (int)npc.position.Y);
-                    int proj = Projectile.NewProjectile(npcCenter.X, npcCenter.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
-                    int proj2 = Projectile.NewProjectile(npcCenter.X, npcCenter.Y, (float)((Math.Cos(rotation) * Speed) * -1) + 2, (float)((Math.Sin(rotation) * Speed) * -1) + 2, type, damage, 0f, 0);
-                    int proj3 = Projectile.NewProjectile(npcCenter.X, npcCenter.Y, (float)((Math.Cos(rotation) * Speed) * -1) - 2, (float)((Math.Sin(rotation) * Speed) * -1) - 2, type, damage, 0f, 0);
+                    int proj = Projectile.NewProjectile(npcCenter.X, npcCenter.Y, (float)(Math.Cos(rotation) * Speed * -1), (float)(Math.Sin(rotation) * Speed * -1), type, damage, 0f, 0);
+                    int proj2 = Projectile.NewProjectile(npcCenter.X, npcCenter.Y, (float)(Math.Cos(rotation) * Speed * -1) + 2, (float)(Math.Sin(rotation) * Speed * -1) + 2, type, damage, 0f, 0);
+                    int proj3 = Projectile.NewProjectile(npcCenter.X, npcCenter.Y, (float)(Math.Cos(rotation) * Speed * -1) - 2, (float)(Math.Sin(rotation) * Speed * -1) - 2, type, damage, 0f, 0);
                     Main.projectile[proj].netUpdate = true;
                     npc.ai[1] = 0;
                 }
@@ -77,12 +77,12 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 int type = ModContent.ProjectileType<DesireBeam>();
                 float Speed = 10f;
-                float rotation = (float)Math.Atan2(npcCenter.Y - (player.Center.Y), npcCenter.X - (player.Center.X));
+                float rotation = (float)Math.Atan2(npcCenter.Y - player.Center.Y, npcCenter.X - player.Center.X);
 
                 if (++npc.ai[1] >= 200)
                 {
                     Main.PlaySound(SoundID.DD2_BetsysWrathShot, (int)npc.position.X, (int)npc.position.Y);
-                    int proj = Projectile.NewProjectile(npcCenter.X, npcCenter.Y, (float)((Math.Cos(rotation) * Speed) * -1), (float)((Math.Sin(rotation) * Speed) * -1), type, damage, 0f, 0);
+                    int proj = Projectile.NewProjectile(npcCenter.X, npcCenter.Y, (float)(Math.Cos(rotation) * Speed * -1), (float)(Math.Sin(rotation) * Speed * -1), type, damage, 0f, 0);
                     Main.projectile[proj].netUpdate = true;
                     npc.ai[1] = 0;
                 }

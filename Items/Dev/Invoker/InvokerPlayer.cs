@@ -224,9 +224,9 @@ namespace AAMod.Items.Dev.Invoker
 					if (player.lifeRegen > 0 && player.statLife < player.statLifeMax2)
 					{
 						player.lifeRegenCount++;
-						if ((Main.rand.Next(30000) < player.lifeRegenTime || Main.rand.Next(30) == 0))
+						if (Main.rand.Next(30000) < player.lifeRegenTime || Main.rand.Next(30) == 0)
 						{
-							int num5 = Dust.NewDust(player.position, player.width, player.height, 55, 0f, 0f, 200, default(Color), 0.5f);
+							int num5 = Dust.NewDust(player.position, player.width, player.height, 55, 0f, 0f, 200, default, 0.5f);
 							Main.dust[num5].noGravity = true;
 							Main.dust[num5].velocity *= 0.75f;
 							Main.dust[num5].fadeIn = 1.3f;
@@ -380,7 +380,7 @@ namespace AAMod.Items.Dev.Invoker
 			Lighting.AddLight(vector21, 0.8f, 0.8f, 0.8f);
 			if (Main.rand.Next(3) == 0)
 			{
-				int num2 = Dust.NewDust(vector21 - projectile.Size / 2f, projectile.width, projectile.height, 63, projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 2f);
+				int num2 = Dust.NewDust(vector21 - projectile.Size / 2f, projectile.width, projectile.height, 63, projectile.velocity.X, projectile.velocity.Y, 100, default, 2f);
 				Main.dust[num2].noGravity = true;
 				Main.dust[num2].position -= projectile.velocity;
 			}
@@ -405,7 +405,7 @@ namespace AAMod.Items.Dev.Invoker
 			if(player.GetModPlayer<InvokerPlayer>().DarkCaligula)
 			{
                 string Lifelength = target.lifeMax + "";
-				int regen = (Main.rand.Next(2) == 0 ? 2*(Lifelength.Length + 1) : (Lifelength.Length + 1));
+				int regen = Main.rand.Next(2) == 0 ? 2*(Lifelength.Length + 1) : (Lifelength.Length + 1);
 				player.statLife += regen;
 				player.HealEffect(regen, true);
 				if (player.statLife > player.statLifeMax2)

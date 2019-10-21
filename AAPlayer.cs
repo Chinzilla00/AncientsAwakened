@@ -3,6 +3,7 @@ using AAMod.Items;
 using AAMod.NPCs.Bosses.Akuma;
 using AAMod.NPCs.Bosses.Akuma.Awakened;
 using AAMod.NPCs.Bosses.Athena;
+using AAMod.NPCs.Bosses.Athena.Olympian;
 using AAMod.NPCs.Bosses.Shen;
 using AAMod.NPCs.Bosses.Yamata;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
@@ -498,6 +499,8 @@ namespace AAMod
 
         #endregion
 
+        #region Biomes
+
         public override void UpdateBiomes()
         {
             ZoneTower = player.ZoneTowerSolar || player.ZoneTowerNebula || player.ZoneTowerStardust || player.ZoneTowerVortex;
@@ -611,6 +614,8 @@ namespace AAMod
             ZoneHoard = zoneByte2[2];
             ZoneAcropolis = zoneByte2[3];
         }
+
+        #endregion
 
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
@@ -1078,9 +1083,9 @@ namespace AAMod
                     while (k < round)
                     {
                         Vector2 vector12 = Vector2.UnitX * 0f;
-                        vector12 += -Vector2.UnitY.RotatedBy(k * (6.28318548f / round), default(Vector2)) * new Vector2(1f, 4f);
-                        vector12 = vector12.RotatedBy(SpeedVector.ToRotation(), default(Vector2));
-                        int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default(Color), 1f);
+                        vector12 += -Vector2.UnitY.RotatedBy(k * (6.28318548f / round), default) * new Vector2(1f, 4f);
+                        vector12 = vector12.RotatedBy(SpeedVector.ToRotation(), default);
+                        int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default, 1f);
                         Main.dust[Dusti].scale = 1.5f;
                         Main.dust[Dusti].noGravity = true;
                         Main.dust[Dusti].position = Spwanposition[i] + vector12;
@@ -1149,9 +1154,9 @@ namespace AAMod
                         while (k < round)
                         {
                             Vector2 vector12 = Vector2.UnitX * 0f;
-                            vector12 += -Vector2.UnitY.RotatedBy(k * (6.28318548f / round), default(Vector2)) * new Vector2(1f, 4f);
-                            vector12 = vector12.RotatedBy(SpeedVector.ToRotation(), default(Vector2));
-                            int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default(Color), 1f);
+                            vector12 += -Vector2.UnitY.RotatedBy(k * (6.28318548f / round), default) * new Vector2(1f, 4f);
+                            vector12 = vector12.RotatedBy(SpeedVector.ToRotation(), default);
+                            int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default, 1f);
                             Main.dust[Dusti].scale = 1.5f;
                             Main.dust[Dusti].noGravity = true;
                             Main.dust[Dusti].position = Spwanposition[i] + vector12;
@@ -1728,7 +1733,7 @@ namespace AAMod
                     case 17:
                         player.QuickSpawnItem(mod.ItemType("GibsSkull"));
                         player.QuickSpawnItem(mod.ItemType("GibsPlate"));
-                        player.QuickSpawnItem(mod.ItemType("GribsShorts"));
+                        player.QuickSpawnItem(mod.ItemType("GibsShorts"));
 
                         if (dropType >= 1)
                         {
@@ -1754,7 +1759,7 @@ namespace AAMod
                     case 19:
                         player.QuickSpawnItem(mod.ItemType("CursedHood"));
                         player.QuickSpawnItem(mod.ItemType("CursedRobe"));
-                        player.QuickSpawnItem(mod.ItemType("CursedPaints"));
+                        player.QuickSpawnItem(mod.ItemType("CursedPants"));
 
                         if (dropType >= 1)
                         {
@@ -2152,7 +2157,6 @@ namespace AAMod
 
             return multiplier;
         }
-
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {

@@ -82,7 +82,7 @@ namespace AAMod.NPCs.Enemies.Sky
             }
 
             npc.spriteDirection = npc.direction;
-			npc.rotation = (npc.velocity.X * 0.05f);
+			npc.rotation = npc.velocity.X * 0.05f;
 		}
 
 		public override void FindFrame(int frameHeight)

@@ -196,7 +196,7 @@ namespace AAMod.Projectiles
                 bool hitEffect = projectile.localAI[0] % 30f == 0f; // if true, perform a hit effect
                 int projTargetIndex = (int)TargetWhoAmI;
                 if (projectile.localAI[0] >= 60 * aiFactor// If it's time for projectile javelin to die, kill it
-                    || (projTargetIndex < 0 || projTargetIndex >= 200)) // If the index is past its limits, kill it
+                    || projTargetIndex < 0 || projTargetIndex >= 200) // If the index is past its limits, kill it
                 {
                     killProj = true;
                 }

@@ -40,7 +40,7 @@ namespace AAMod.Items.Currency
                 color2.B,
                 Language.GetText(Lang.ItemsInfo("PirateBootyBuyprice")),
                 price,
-                (price == 1 ? Lang.ItemsInfo("PirateBooty") : Lang.ItemsInfo("PirateBooty"))
+                price == 1 ? Lang.ItemsInfo("PirateBooty") : Lang.ItemsInfo("PirateBooty")
             });
         }
     }

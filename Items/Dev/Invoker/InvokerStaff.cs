@@ -118,7 +118,7 @@ namespace AAMod.Items.Dev.Invoker
 
 		public override bool AltFunctionUse(Player player)
 		{
-			return (!(!player.GetModPlayer<InvokerPlayer>().DarkCaligula && player.GetModPlayer<InvokerPlayer>().InvokedCaligula) && player.GetModPlayer<InvokerPlayer>().SpringInvoker);
+			return !(!player.GetModPlayer<InvokerPlayer>().DarkCaligula && player.GetModPlayer<InvokerPlayer>().InvokedCaligula) && player.GetModPlayer<InvokerPlayer>().SpringInvoker;
 		}
 
     }
