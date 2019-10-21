@@ -103,7 +103,7 @@ namespace AAMod.Items.Dev.Invoker
 			{
 				if(!player.GetModPlayer<InvokerPlayer>().InvokerMadness)
 				{
-					player.AddBuff(mod.BuffType("InvokerofMadness"), player.GetModPlayer<InvokerPlayer>().Thebookoflaw? 30 : 300);
+					player.AddBuff(mod.BuffType("InvokerofMadness"), 30);
 					player.GetModPlayer<InvokerPlayer>().BanishDamage = item.damage * 5;
 					player.GetModPlayer<InvokerPlayer>().banishing = true;
 				}
@@ -512,10 +512,6 @@ namespace AAMod.Items.Dev.Invoker
 				else if(!flag)
 				{
 					CaligulaSoulFight = false;
-				}
-				else if(npc.life < 50000)
-				{
-					if(!Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().InvokedCaligula) CaligulaSoulFight = false;
 				}
 				else
 				{

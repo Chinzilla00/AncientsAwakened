@@ -6,6 +6,7 @@ using System.IO;
 using System.Collections.Generic;
 using Terraria.ID;
 using Terraria.ModLoader.IO;
+using Terraria.GameInput;
 
 namespace AAMod.Items.Dev.Invoker
 {
@@ -146,7 +147,6 @@ namespace AAMod.Items.Dev.Invoker
 		public bool InvokerMadness;
 		public bool Thebookoflaw;
 		public bool BanishProjClear;
-		private int selfbanished = 0;
 		private int InvokedCaligulaClaw = 0;
 		private int ClawDir = 0;
 
@@ -158,6 +158,16 @@ namespace AAMod.Items.Dev.Invoker
 				player.statLifeMax2 *= 2;
 				player.statDefense *= 2;
 			}
+		}
+		public override void ProcessTriggers(TriggersSet triggersSet)
+        {
+			if (DarkCaligula && Thebookoflaw && SpringInvoker)
+            {
+                if (AAMod.AccessoryAbilityKey.JustPressed)
+                {
+                    player.AddBuff(mod.BuffType("InvokedCaligulaSafe"), 3600);
+                }
+            }
 		}
 		public override void FrameEffects()
 		{
@@ -174,96 +184,15 @@ namespace AAMod.Items.Dev.Invoker
 			{
 				DarkCaligula = true;
 			}
-			//if (!Thebookoflaw)
-			if ((banishing || selfbanished > 0) && !DarkCaligula)
-			{
-				int k = 0;
-				if(selfbanished == 0) k = Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, 0f, mod.ProjectileType("InvokedRune"), 0, 0f, Main.player[Main.myPlayer].whoAmI, 2f, player.whoAmI);
-				selfbanished ++;
-				if(selfbanished > 60) {player.AddBuff(mod.BuffType("InvokedCaligula"), 10800); selfbanished = 0;}
-			}
 			if (Thebookoflaw && DarkCaligula)
 			{
-				for (int i = 0; i < 22; i++)
-				{
-					if (player.buffType[i] == mod.BuffType("InvokedCaligula"))
-					{
-						player.ClearBuff(mod.BuffType("InvokedCaligula"));
-						player.AddBuff(mod.BuffType("InvokedCaligulaSafe"), 3600);
-						break;
-					}
-				}
+				player.AddBuff(mod.BuffType("InvokedCaligulaSafe"), 3600);
 			}
 			if (InvokerShow)
 			{
                 player.legs = mod.GetEquipSlot("InvokerLegs", EquipType.Legs);
                 player.body = mod.GetEquipSlot("InvokerBody", EquipType.Body);
                 player.head = mod.GetEquipSlot("InvokerHead", EquipType.Head);
-			}
-			if (SpringInvoker)
-			{
-				if (Math.Abs(player.velocity.X) < 0.05 && Math.Abs(player.velocity.Y) < 0.05 && (player.itemAnimation == 0 || player.inventory[player.selectedItem].type == mod.ItemType("InvokerStaff")))
-				{
-					if(player.lifeRegen < 0) player.lifeRegen /= 2;
-					if (player.lifeRegenTime > 90 && player.lifeRegenTime < 1800)
-					{
-						player.lifeRegenTime = 1800;
-					}
-					player.lifeRegenTime += 4;
-					player.lifeRegen += 4;
-					float Shine = player.lifeRegenTime - 3000;
-					Shine /= 300f;
-					if (Shine > 0f)
-					{
-						if (Shine > 30f)
-						{
-							Shine = 30f;
-						}
-					}
-					player.lifeRegen += (int)Math.Round(Shine);
-					if (player.lifeRegen > 0 && player.statLife < player.statLifeMax2)
-					{
-						player.lifeRegenCount++;
-						if (Main.rand.Next(30000) < player.lifeRegenTime || Main.rand.Next(30) == 0)
-						{
-							int num5 = Dust.NewDust(player.position, player.width, player.height, 55, 0f, 0f, 200, default, 0.5f);
-							Main.dust[num5].noGravity = true;
-							Main.dust[num5].velocity *= 0.75f;
-							Main.dust[num5].fadeIn = 1.3f;
-							Vector2 vector = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
-							vector.Normalize();
-							vector *= Main.rand.Next(50, 100) * 0.04f;
-							Main.dust[num5].velocity = vector;
-							vector.Normalize();
-							vector *= 34f;
-							Main.dust[num5].position = player.Center - vector;
-						}
-					}
-				}
-				
-				if(player.statLife <= player.statLifeMax2 * 0.5)
-				{
-					player.iceBarrier= true;
-				}
-
-				if (player.statLife > player.statLifeMax2 * 0.25f)
-				{
-					player.hasPaladinShield = true;
-					if (player.whoAmI != Main.myPlayer && player.miscCounter % 10 == 0)
-					{
-						int myPlayer = Main.myPlayer;
-						if (Main.player[myPlayer].team == player.team && player.team != 0)
-						{
-							float num = player.position.X - Main.player[myPlayer].position.X;
-							float num2 = player.position.Y - Main.player[myPlayer].position.Y;
-							float num3 = (float)Math.Sqrt(num * num + num2 * num2);
-							if (num3 < 800f)
-							{
-								Main.player[myPlayer].AddBuff(43, 20, true);
-							}
-						}
-					}
-				}
 			}
 			if (InvokedCaligula)
 			{

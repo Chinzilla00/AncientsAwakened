@@ -144,9 +144,6 @@ BuffDescription.InfinityBurnout=它们应该冲着我的头砍
 BuffName.InfinityOverload=无限超载
 BuffDescription.InfinityOverload=对你来说，你手中的无限宝石过于强大
 
-BuffName.InvokedCaligula=召唤兽·卡利古拉
-BuffDescription.InvokedCaligula=第一个被召唤的怪兽就是你自己
-
 BuffName.InvokedCaligulaSafe=召唤兽·卡利古拉
 BuffDescription.InvokedCaligulaSafe=你的利爪猛击敌人并且能够治疗你
 
