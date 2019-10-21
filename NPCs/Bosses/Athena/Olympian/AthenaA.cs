@@ -287,6 +287,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                     }
                     break;
                 default:
+                    npc.ai[0] = 0;
                     goto case 0;
 
             }
@@ -333,14 +334,14 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             {
                 int num88 = Dust.NewDust(position, num84, height3, DustID.Electric, 0f, 0f, 50, default, 3.7f);
                 Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
-                Main.dust[num88].noGravity = true;
+                Main.dust[num88].noGravity = false;
                 Main.dust[num88].noLight = true;
                 Main.dust[num88].velocity *= 3f;
                 Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
                 num88 = Dust.NewDust(position, num84, height3, DustID.Electric, 0f, 0f, 25, default, 1.5f);
                 Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].velocity *= 2f;
-                Main.dust[num88].noGravity = true;
+                Main.dust[num88].noGravity = false;
                 Main.dust[num88].fadeIn = 1f;
                 Main.dust[num88].color = Color.Black * 0.5f;
                 Main.dust[num88].noLight = true;
@@ -350,7 +351,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             {
                 int num90 = Dust.NewDust(position, num84, height3, DustID.Electric, 0f, 0f, 0, default, 2.7f);
                 Main.dust[num90].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
-                Main.dust[num90].noGravity = true;
+                Main.dust[num88].noGravity = false;
                 Main.dust[num90].noLight = true;
                 Main.dust[num90].velocity *= 3f;
                 Main.dust[num90].velocity += npc.DirectionTo(Main.dust[num90].position) * 2f;
@@ -359,7 +360,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             {
                 int num92 = Dust.NewDust(position, num84, height3, DustID.Electric, 0f, 0f, 0, default, 1.5f);
                 Main.dust[num92].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
-                Main.dust[num92].noGravity = true;
+                Main.dust[num88].noGravity = false;
                 Main.dust[num92].velocity *= 3f;
                 Main.dust[num92].velocity += npc.DirectionTo(Main.dust[num92].position) * 3f;
             }
