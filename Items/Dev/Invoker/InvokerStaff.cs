@@ -624,7 +624,6 @@ namespace AAMod.Items.Dev.Invoker
 					bool KILL = false;
 					if (p.active && p.type != ModContent.ProjectileType<InvokedHeal>() && p.type != ModContent.ProjectileType<InvokedDamage>() && p.type != ModContent.ProjectileType<InvokerStaffproj>() && p.type != ModContent.ProjectileType<InvokedRune>())
 					{
-						//if(Main.netMode != 0 && p.owner != Main.clientPlayer.whoAmI) KILL = true;
 						KILL = true;
 					}
 					if (KILL) 
@@ -632,16 +631,6 @@ namespace AAMod.Items.Dev.Invoker
 						if(p.damage != 0 && !p.friendly) 
 						{
 							Projectile.NewProjectile(p.Center.X, p.Center.Y, 0, 0, mod.ProjectileType("InvokedHeal"), 0, 0f, Main.player[Main.myPlayer].whoAmI, Main.player[Main.myPlayer].whoAmI, (int)(p.damage * 0.1));
-							/* 
-							float reflect1 = 0f;
-							float reflect2 = 0f;
-							if(p.ai[0] == Main.myPlayer) reflect1 = p.owner;
-							if(p.ai[1] == Main.myPlayer) reflect2 = p.owner;
-							if(p.ai[0] != Main.myPlayer && p.ai[1] != Main.myPlayer) {reflect1 = p.ai[0]; reflect2 = p.ai[1];}
-							int R = Projectile.NewProjectile(Main.player[Main.myPlayer].Center.X, Main.player[Main.myPlayer].Center.Y, -p.velocity.X, -p.velocity.Y, p.type, p.damage * 10000, p.knockBack, Main.myPlayer, reflect1, reflect2);
-							Main.projectile[R].friendly = true;
-							Main.projectile[R].playerImmune[R] = 60;
-							*/
 						}
 						p.active = false;
 						p.Kill();
