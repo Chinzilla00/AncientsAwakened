@@ -628,6 +628,7 @@ namespace AAMod.Items.Dev.Invoker
 					}
 					if (KILL) 
 					{
+                        
 						if(p.damage != 0 && !p.friendly) 
 						{
 							Projectile.NewProjectile(p.Center.X, p.Center.Y, 0, 0, mod.ProjectileType("InvokedHeal"), 0, 0f, Main.player[Main.myPlayer].whoAmI, Main.player[Main.myPlayer].whoAmI, (int)(p.damage * 0.1));
