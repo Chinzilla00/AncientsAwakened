@@ -27,7 +27,6 @@ Dark, yet still barely visible");
             item.value = 300000;
             item.rare = 11;
             item.defense = 26;
-
         }
 
         public override void UpdateEquip(Player player)

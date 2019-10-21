@@ -2136,7 +2136,7 @@ namespace AAMod
             }
         }
 
-        public override float UseTimeMultiplier(Item item)
+        /*public override float UseTimeMultiplier(Item item)
         {
             float multiplier = 1f;
 
@@ -2156,7 +2156,7 @@ namespace AAMod
             }
 
             return multiplier;
-        }
+        }*/
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {

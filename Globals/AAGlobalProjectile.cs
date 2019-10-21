@@ -36,15 +36,6 @@ namespace AAMod
             return false;
         }
 
-        public override bool PreAI(Projectile projectile)
-        {
-            if (projectile.type == ProjectileID.PureSpray)
-            {
-                Main.NewText("Spray");
-            }
-            return true;
-        }
-
         public override void PostAI(Projectile projectile)
         {
             if (projectile.type == ProjectileID.PureSpray)
