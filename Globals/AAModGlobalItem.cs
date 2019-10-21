@@ -104,6 +104,15 @@ namespace AAMod
             }
         }
 
+        public override bool Shoot(Item item, Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            if (item.type == ItemID.Clentaminator)
+            {
+                Main.NewText(type);
+            }
+            return base.Shoot(item, player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
+        }
+
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
             if (player.HeldItem.type == ModContent.ItemType<Items.Usable.CodeMagnetWeak>())
