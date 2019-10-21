@@ -64,6 +64,8 @@ namespace AAMod
         public static Vector2 shipPos = new Vector2(0, 0);
         public string nums = "1234567890";
         public static bool ModContentGenerated;
+
+        public static bool CloudCheck = false;
         //Messages
         public static bool AMessage;
         public static bool Empowered;
@@ -134,8 +136,6 @@ namespace AAMod
         #region Save/Load
         public override void Initialize()
         {
-            ClearClouds();
-
             //Bosses
             downedAnubis = false;
             downedAthena = false;
@@ -186,6 +186,7 @@ namespace AAMod
             MireCenter = -Vector2.One;
             SmashDragonEgg = 2;
             SmashHydraPod = 2;
+            CloudCheck = false;
             //Squid Lady
             squid1 = 0;
             squid2 = 0;
@@ -866,8 +867,6 @@ namespace AAMod
             }
         }
 
-        
-
         public void VoidIslands(GenerationProgress progress)
         {
             progress.Message = "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0" + NumberRand(1) + "0";
@@ -1140,6 +1139,11 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (!CloudCheck)
+            {
+                ClearClouds();
+                CloudCheck = true;
+            }
             if (NPC.downedMoonlord && !AthenaHerald && !downedAthenaA)
             {
                 if (HeraldTimer > 0)

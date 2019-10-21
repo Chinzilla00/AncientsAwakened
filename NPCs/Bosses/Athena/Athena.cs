@@ -94,7 +94,7 @@ namespace AAMod.NPCs.Bosses.Athena
             Player player = Main.player[npc.target];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
-            Vector2 Acropolis = new Vector2(Origin.X + 79, Origin.Y + 79) * 16;
+            Vector2 Acropolis = new Vector2(Origin.X + (80 * 16), Origin.Y + (79 * 16));
 
             //Preamble Shite 
             if (internalAI[2] != 1)
@@ -353,65 +353,65 @@ namespace AAMod.NPCs.Bosses.Athena
         public Vector2 CloudPick()
         {
             int CloudChoice = Main.rand.Next(12);
-            Vector2 Cloud1 = new Vector2(Origin.X + 80, Origin.Y + 12);
-            Vector2 Cloud2 = new Vector2(Origin.X + 110, Origin.Y + 23);
-            Vector2 Cloud3 = new Vector2(Origin.X + 130, Origin.Y + 42);
-            Vector2 Cloud4 = new Vector2(Origin.X + 139, Origin.Y + 66);
-            Vector2 Cloud5 = new Vector2(Origin.X + 134, Origin.Y + 96);
-            Vector2 Cloud6 = new Vector2(Origin.X + 109, Origin.Y + 119);
-            Vector2 Cloud7 = new Vector2(Origin.X + 80, Origin.Y + 129);
-            Vector2 Cloud8 = new Vector2(Origin.X + 43, Origin.Y + 117);
-            Vector2 Cloud9 = new Vector2(Origin.X + 24, Origin.Y + 96);
-            Vector2 Cloud10 = new Vector2(Origin.X + 19, Origin.Y + 68);
-            Vector2 Cloud11 = new Vector2(Origin.X + 33, Origin.Y + 44);
-            Vector2 Cloud12 = new Vector2(Origin.X + 50, Origin.Y + 20);
+            Vector2 Cloud1 = new Vector2(Origin.X + (80 * 16), Origin.Y + (12 * 16));
+            Vector2 Cloud2 = new Vector2(Origin.X + (110 * 16), Origin.Y + (23 * 16));
+            Vector2 Cloud3 = new Vector2(Origin.X + (130 * 16), Origin.Y + (42 * 16));
+            Vector2 Cloud4 = new Vector2(Origin.X + (139 * 16), Origin.Y + (66 * 16));
+            Vector2 Cloud5 = new Vector2(Origin.X + (134 * 16), Origin.Y + (96 * 16));
+            Vector2 Cloud6 = new Vector2(Origin.X + (109 * 16), Origin.Y + (119 * 16));
+            Vector2 Cloud7 = new Vector2(Origin.X + (80 * 16), Origin.Y + (129 * 16));
+            Vector2 Cloud8 = new Vector2(Origin.X + (43 * 16), Origin.Y + (117 * 16));
+            Vector2 Cloud9 = new Vector2(Origin.X + (24 * 16), Origin.Y + (96 * 16));
+            Vector2 Cloud10 = new Vector2(Origin.X + (19 * 16), Origin.Y + (68 * 16));
+            Vector2 Cloud11 = new Vector2(Origin.X + (33 * 16), Origin.Y + (44 * 16));
+            Vector2 Cloud12 = new Vector2(Origin.X + (50 * 16), Origin.Y + (20 * 16));
             if (CloudChoice == 1)
             {
-                return Cloud2 * 16;
+                return Cloud2;
             }
             else if (CloudChoice == 2)
             {
-                return Cloud3 * 16;
+                return Cloud3;
             }
             else if (CloudChoice == 3)
             {
-                return Cloud4 * 16;
+                return Cloud4;
             }
             else if (CloudChoice == 4)
             {
-                return Cloud5 * 16;
+                return Cloud5;
             }
             else if (CloudChoice == 5)
             {
-                return Cloud6 * 16;
+                return Cloud6;
             }
             else if (CloudChoice == 6)
             {
-                return Cloud7 * 16;
+                return Cloud7;
             }
             else if (CloudChoice == 7)
             {
-                return Cloud8 * 16;
+                return Cloud8;
             }
             else if (CloudChoice == 8)
             {
-                return Cloud9 * 16;
+                return Cloud9;
             }
             else if (CloudChoice == 9)
             {
-                return Cloud10 * 16;
+                return Cloud10;
             }
             else if (CloudChoice == 10)
             {
-                return Cloud11 * 16;
+                return Cloud11;
             }
             else if (CloudChoice == 11)
             {
-                return Cloud12 * 16;
+                return Cloud12;
             }
             else
             {
-                return Cloud1 * 16;
+                return Cloud1;
             }
 
         }

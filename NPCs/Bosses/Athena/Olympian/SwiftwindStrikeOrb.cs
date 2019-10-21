@@ -1,9 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using BaseMod;
 using Terraria.ID;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Athena.Olympian
 {
@@ -20,6 +18,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             projectile.aiStyle = -1;
             projectile.width = 28;
             projectile.height = 28;
+            projectile.tileCollide = false;
         }
 
         public override void AI()
@@ -57,10 +56,9 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             }
         }
 
-        public override bool PreDraw(SpriteBatch sb, Color drawColor)
+        public override Color? GetAlpha(Color lightColor)
         {
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[projectile.type], 0, projectile, projectile.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
-            return false;
+            return ColorUtils.COLOR_GLOWPULSE;
         }
     }
 }

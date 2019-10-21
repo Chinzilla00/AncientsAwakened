@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Athena
         public override void AI()
         {
             Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
-            Vector2 Acropolis = new Vector2(Origin.X + (76 * 16), Origin.Y + (72 * 16));
+            Vector2 Acropolis = new Vector2(Origin.X + (80 * 16), Origin.Y + (79 * 16));
             npc.TargetClosest();
             if (Main.netMode != 1)
             {

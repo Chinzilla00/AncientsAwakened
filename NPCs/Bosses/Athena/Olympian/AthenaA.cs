@@ -41,6 +41,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             npc.boss = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AthenaA");
             bossBag = ModContent.ItemType<Items.Boss.Athena.AthenaBag>();
+            npc.noTileCollide = true;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -98,7 +99,13 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                 case 0:
                     if (!AliveCheck(player))
                         break;
-                    BaseAI.AISkull(npc, ref internalAI, false, 5, 300, .011f, .02f);
+                    targetPos = player.Center;
+                    targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.Y -= 200;
+                    MoveToVector2(targetPos);
+
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<AthenaMagic>(), ref npc.ai[1], 50, npc.damage / 2, 10, true);
+
                     if (internalAI[3]++ >= 250 && Main.netMode != 1)
                     {
                         int Choice = Main.rand.Next(2);
@@ -130,6 +137,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                     }
                     if (npc.ai[2]++ > 560)
                     {
+                        Teleport(1);
                         npc.ai[0]++;
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
@@ -140,8 +148,8 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                     if (!AliveCheck(player))
                         break;
                     targetPos = player.Center;
-                    targetPos.X += 1000 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y += 500;
+                    targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.Y -= 200;
                     MoveToVector2(targetPos);
 
                     BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<SwiftwindStrikeSpear>(), ref npc.ai[1], 100, npc.damage / 2, 10, true);
@@ -158,8 +166,8 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                 case 2:
                     if (!AliveCheck(player))
                         break;
-                    if (!AliveCheck(player))
-                        break;
+
+                    npc.velocity *= 0;
                     if (npc.ai[2] == 0)
                     {
                         Teleport(0);
@@ -206,6 +214,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                         }
                         else
                         {
+                            Teleport(2);
                             npc.ai[0]++;
                             npc.ai[1] = 0;
                             npc.ai[2] = 0;
@@ -215,19 +224,19 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                     break;
                 case 3:
                     targetPos = player.Center;
-                    targetPos.X += 1000 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.X -= 500 * (npc.Center.X < targetPos.X ? -1 : 1);
                     targetPos.Y += 500;
                     MoveToVector2(targetPos);
 
                     if (npc.ai[1]++ == 120)
                     {
-                        int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("VoidBlast"), damage, 3);
+                        int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("RuneSpawn"), damage, 3);
                         Main.projectile[a].Center = npc.Center;
-                        int b = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("VoidBlast"), damage, 3);
+                        int b = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("RuneSpawn"), damage, 3);
                         Main.projectile[b].Center = npc.Center;
-                        int c = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-12f, 0f), mod.ProjectileType("VoidBlast"), damage, 3);
+                        int c = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("RuneSpawn"), damage, 3);
                         Main.projectile[c].Center = npc.Center;
-                        int d = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0f), mod.ProjectileType("VoidBlast"), damage, 3);
+                        int d = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("RuneSpawn"), damage, 3);
                         Main.projectile[d].Center = npc.Center;
                     }
                     if (npc.ai[1] > 180)
@@ -358,9 +367,16 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             {
                 npc.position = CloudPick();
             }
+            else if (where == 1)
+            {
+                Vector2 targetPos = Main.player[npc.target].Center;
+                targetPos.X += 500 * (npc.Center.X < targetPos.X ? 1 : -1);
+                targetPos.Y -= 200;
+                npc.position = targetPos;
+            }
             else
             {
-                npc.position = new Vector2(Origin.X + 79, Origin.Y + 79) * 16;
+                npc.position = new Vector2(Origin.X + (79 * 16), Origin.Y + (79 * 16));
             }
 
             position = npc.Center + (Vector2.One * -20f);
@@ -410,52 +426,52 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
         public Vector2 CloudPick()
         {
             int CloudChoice = Main.rand.Next(8);
-            Vector2 Cloud1 = new Vector2(Origin.X + 80, Origin.Y + 12);
-            Vector2 Cloud2 = new Vector2(Origin.X + 120, Origin.Y + 34);
-            Vector2 Cloud3 = new Vector2(Origin.X + 139, Origin.Y + 66);
-            Vector2 Cloud4 = new Vector2(Origin.X + 126, Origin.Y + 106);
-            Vector2 Cloud5 = new Vector2(Origin.X + 80, Origin.Y + 129);
-            Vector2 Cloud6 = new Vector2(Origin.X + 33, Origin.Y + 107);
-            Vector2 Cloud7 = new Vector2(Origin.X + 19, Origin.Y + 68);
-            Vector2 Cloud8 = new Vector2(Origin.X + 37, Origin.Y + 37);
+            Vector2 Cloud1 = new Vector2(Origin.X + (80 * 16), Origin.Y + (12 * 16));
+            Vector2 Cloud2 = new Vector2(Origin.X + (120 * 16), Origin.Y + (34 * 16));
+            Vector2 Cloud3 = new Vector2(Origin.X + (139 * 16), Origin.Y + (66 * 16));
+            Vector2 Cloud4 = new Vector2(Origin.X + (126 * 16), Origin.Y + (106 * 16));
+            Vector2 Cloud5 = new Vector2(Origin.X + (80 * 16), Origin.Y + (129 * 16));
+            Vector2 Cloud6 = new Vector2(Origin.X + (33 * 16), Origin.Y + (107 * 16));
+            Vector2 Cloud7 = new Vector2(Origin.X + (19 * 16), Origin.Y + (68 * 16));
+            Vector2 Cloud8 = new Vector2(Origin.X + (37 * 16), Origin.Y + (37 * 16));
             if (CloudChoice == 1)
             {
-                return Cloud2 * 16;
+                return Cloud2;
             }
             else if (CloudChoice == 2)
             {
-                return Cloud3 * 16;
+                return Cloud3;
             }
             else if (CloudChoice == 3)
             {
-                return Cloud4 * 16;
+                return Cloud4;
             }
             else if (CloudChoice == 4)
             {
-                return Cloud5 * 16;
+                return Cloud5;
             }
             else if (CloudChoice == 5)
             {
-                return Cloud6 * 16;
+                return Cloud6;
             }
             else if (CloudChoice == 6)
             {
-                return Cloud7 * 16;
+                return Cloud7;
             }
             else if (CloudChoice == 7)
             {
-                return Cloud8 * 16;
+                return Cloud8;
             }
             else
             {
-                return Cloud1 * 16;
+                return Cloud1;
             }
         }
 
         private bool AliveCheck(Player player)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
-            Vector2 Acropolis = new Vector2(Origin.X + 79, Origin.Y + 79) * 16;
+            Vector2 Acropolis = new Vector2(Origin.X + (79 * 16), Origin.Y + (79 * 16));
             if (player.dead || !player.active || Vector2.Distance(npc.position, player.position) > 5000 || !modPlayer.ZoneAcropolis || Vector2.Distance(Acropolis, player.position) > 1280)
             {
                 npc.TargetClosest();

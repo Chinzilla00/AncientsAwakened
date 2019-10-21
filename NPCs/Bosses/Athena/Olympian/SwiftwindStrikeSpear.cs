@@ -19,6 +19,8 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             projectile.hostile = true;
             projectile.aiStyle = -1;
             projectile.penetrate = 1;
+            projectile.tileCollide = false;
+            projectile.extraUpdates = 1;
         }
 
         public override void Kill(int timeLeft)
