@@ -5641,6 +5641,16 @@ Common.AATownNPCInfo=取消远古觉醒NPC的生成, 用于玩家希望其他npc
 Common.DisableBossDialogue=远古觉醒Boss对话取消
 Common.DisableBossDialogueInfo=阻止Boss对话的生成. 也会让已有的Boss对话速度加快.
 
+//AAWorldBuild
+
+Common.AAWorldBuildAltars=安置混沌祭坛
+Common.AAWorldBuildChaos=混沌蔓延
+Common.AAWorldBuildInferno=把土壤焦化成燎狱
+Common.AAWorldBuildMire=给潭渊蓄水
+Common.AAWorldBuildTerrarium=建筑泰拉心球
+Common.AAWorldBuildAcropolis=漂浮卫城
+Common.AAWorldBuildHoard=聚积宝藏
+
 //AARecipeGroup
 
 Common.darkmatterhelmet=暗物质头盔

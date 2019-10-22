@@ -83,6 +83,16 @@ Common.YamataA=Yamata no Orochi
 Common.ShenDoragon=Shen Doragon; Discordian Doomsayer
 Common.SupremeRajah=Rajah Rabbit
 
+//AAWorldBuild
+
+Common.AAWorldBuildAltars=Placing Chaos Altars
+Common.AAWorldBuildChaos=Spreading Chaos
+Common.AAWorldBuildInferno=Scorching the Inferno
+Common.AAWorldBuildMire=Flooding the Mire
+Common.AAWorldBuildTerrarium=Constructing the Terrarium
+Common.AAWorldBuildAcropolis=Floating the Acropolis
+Common.AAWorldBuildHoard=Amassing Treasure
+
 //AARecipeGroup
 
 Common.darkmatterhelmet= darkmatter helmet

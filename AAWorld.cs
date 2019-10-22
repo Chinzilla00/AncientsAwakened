@@ -972,7 +972,7 @@ namespace AAMod
 
         private void Altars(GenerationProgress progress)
         {
-            progress.Message = Lang.WorldBuild("Info1");
+            progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildAltars");
             for (int num = 0; num < Main.maxTilesX / 390; num++)
             {
                 int xAxis = WorldGen.genRand.Next(200, Main.maxTilesX - 200);
@@ -1400,9 +1400,9 @@ namespace AAMod
 
             MireCenter = mirePos;
 
-            progress.Message = Lang.WorldBuild("Info2");
+            progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildChaos");
 
-            progress.Message = Lang.WorldBuild("Info3");
+            progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildInferno");
 
             {
                 Point origin = new Point((int)infernoPos.X, (int)infernoPos.Y);
@@ -1413,7 +1413,7 @@ namespace AAMod
                 biome.Place(origin, WorldGen.structures);
             }
 
-            progress.Message = Lang.WorldBuild("Info4");
+            progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildMire");
 
             {
                 Point origin = new Point((int)mirePos.X, (int)mirePos.Y);
@@ -1427,7 +1427,7 @@ namespace AAMod
 
         private void Terrarium(GenerationProgress progress)
         {
-            progress.Message = Lang.WorldBuild("Info5");
+            progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildTerrarium");
             Point origin = new Point((int)(Main.maxTilesX * 0.5f), (int)(Main.maxTilesY * 0.4f));
             origin.Y = BaseWorldGen.GetFirstTileFloor(origin.X, origin.Y, true);
             TerrariumDelete delete = new TerrariumDelete();
@@ -1438,7 +1438,7 @@ namespace AAMod
 
         private void Acropolis(GenerationProgress progress)
         {
-            progress.Message = "Floating the Acropolis";
+            progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildAcropolis");
             Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
             Acropolis biome = new Acropolis();
             biome.Place(origin, WorldGen.structures);
@@ -1446,7 +1446,7 @@ namespace AAMod
 
         private void Hoard(GenerationProgress progress)
         {
-            progress.Message = "Amassing Treasure";
+            progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildHoard");
             Point origin = new Point((int)(Main.maxTilesX * 0.3f), (int)(Main.maxTilesY * 0.65f));
             Hoard biome = new Hoard();
             HoardClear delete = new HoardClear();
