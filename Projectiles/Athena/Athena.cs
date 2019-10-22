@@ -8,10 +8,9 @@ namespace AAMod.Projectiles.Athena
 {
     public class Athena : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 4;
+            Main.projFrames[projectile.type] = 14;
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
@@ -20,10 +19,9 @@ namespace AAMod.Projectiles.Athena
         public override void SetDefaults()
         {
             projectile.netImportant = true;
-            projectile.width = 22;
-            projectile.height = 50;
+            projectile.width = 104;
+            projectile.height = 132;
             projectile.friendly = true;
-            Main.projPet[projectile.type] = true;
             projectile.minion = true;
             projectile.minionSlots = 1;
             projectile.penetrate = -1;
@@ -33,24 +31,15 @@ namespace AAMod.Projectiles.Athena
         }
 
         int dust = 3;
+        int currentFrame = 0;
+        int frame = 0;
 
         public override void AI()
         {
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 8)
-            {
-                projectile.frameCounter = 0;
-                projectile.frame += 1;
-            }
-            if (projectile.frame > 4)
-            {
-                projectile.frame = 0;
-            }
-
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (player.dead) modPlayer.Athena = false;
-            if (modPlayer.Seraph) projectile.timeLeft = 2;
+            if (modPlayer.Athena) projectile.timeLeft = 2;
 
             dust--;
             if (dust >= 0)
@@ -58,7 +47,7 @@ namespace AAMod.Projectiles.Athena
                 int num501 = 4;
                 for (int num502 = 0; num502 < num501; num502++)
                 {
-                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, ModContent.DustType<NPCs.Bosses.Athena.Feather>(), 0f, 0f, 0, AAColor.Hallow, 1f);
+                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, ModContent.DustType<NPCs.Bosses.Athena.Feather>(), 0f, 0f, 0, default, 1f);
                     Main.dust[num503].velocity *= 2f;
                 }
             }
@@ -84,7 +73,7 @@ namespace AAMod.Projectiles.Athena
             float num637 = 0.05f;
             for (int num638 = 0; num638 < 1000; num638++)
             {
-                bool flag23 = Main.projectile[num638].type == mod.ProjectileType("Seraph");
+                bool flag23 = Main.projectile[num638].type == mod.ProjectileType("Athena");
                 if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < projectile.width)
                 {
                     if (projectile.position.X < Main.projectile[num638].position.X)
@@ -151,6 +140,25 @@ namespace AAMod.Projectiles.Athena
                     }
                 }
             }
+            projectile.frameCounter++;
+            if (projectile.frameCounter >= 8)
+            {
+                projectile.frameCounter = 0;
+                currentFrame++;
+                if (currentFrame > 6)
+                {
+                    currentFrame = 0;
+                }
+            }
+            if (flag25)
+            {
+                frame = currentFrame + 7;
+            }
+            else
+            {
+                frame = currentFrame;
+            }
+            projectile.frame = frame;
             float num647 = num634;
             if (flag25)
             {
@@ -233,10 +241,46 @@ namespace AAMod.Projectiles.Athena
             }
             if (projectile.ai[0] == 0f)
             {
-                float scaleFactor3 = 24f;
-                int num658 = ModContent.ProjectileType<Feather>();
+                float scaleFactor3 = 14f;
                 if (flag25 && projectile.ai[1] == 0f)
                 {
+                    int num658 = Main.rand.Next(5);
+                    switch (num658)
+                    {
+                        case 0:
+                            num658 = ModContent.ProjectileType<StormMagic>();
+                            break;
+                        case 1:
+                            num658 = ModContent.ProjectileType<Feather>();
+                            float spread = 45f * 0.0174f;
+                            Vector2 dir = Vector2.Normalize(projectile.Center - vector46);
+                            dir *= 14f;
+                            float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                            double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
+                            double deltaAngle = spread / 6f;
+                            for (int i = 0; i < 3; i++)
+                            {
+                                double offsetAngle = startAngle + (deltaAngle * i);
+                                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), num658, projectile.damage, 5, Main.myPlayer);
+                            }
+                            return;
+                        case 2:
+                            num658 = ModContent.ProjectileType<RGust>();
+                            break;
+                        case 3:
+                            if (!AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<AthenaHurricane>()) && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<HurricaneSpawn>()))
+                            {
+                                num658 = ModContent.ProjectileType<HurricaneSpawn>();
+                            }
+                            else
+                            {
+                                goto case 1;
+                            }
+                            break;
+                        case 4:
+                            num658 = ModContent.ProjectileType<GaleArrow>();
+                            break;
+                    }
                     projectile.ai[1] += 1f;
                     if (Main.myPlayer == projectile.owner && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, vector46, 0, 0))
                     {
@@ -244,6 +288,14 @@ namespace AAMod.Projectiles.Athena
                         value19.Normalize();
                         value19 *= scaleFactor3;
                         int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, num658, projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+
+                        Main.projectile[num659].hostile = false;
+                        Main.projectile[num659].friendly = false;
+                        Main.projectile[num659].melee = false;
+                        Main.projectile[num659].ranged = false;
+                        Main.projectile[num659].magic = false;
+                        Main.projectile[num659].minion = true;
+
                         Main.projectile[num659].timeLeft = 300;
                         projectile.netUpdate = true;
                     }

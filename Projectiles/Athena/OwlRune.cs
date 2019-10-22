@@ -25,7 +25,6 @@ namespace AAMod.Projectiles.Athena
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
-            projectile.velocity = Vector2.Zero;
 
             if (projectile.ai[0] < 0f)
             {
@@ -200,6 +199,7 @@ namespace AAMod.Projectiles.Athena
                     }
                 }
             }
+            projectile.velocity = Vector2.Zero;
         }
 
         public float Rotation = 0;

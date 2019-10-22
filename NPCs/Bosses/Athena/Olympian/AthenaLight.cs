@@ -38,10 +38,10 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                 npc.life = 0;
                 npc.checkDead();
             }
-            if (npc.alpha > 100)
-			{
-				npc.alpha -= 10;
-			}
+            else
+            {
+                npc.alpha = 100;
+            }
             Player player = Main.player[npc.target];
             if (!Main.player[npc.target].dead)
             {

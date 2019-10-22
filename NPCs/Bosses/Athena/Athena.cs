@@ -41,6 +41,7 @@ namespace AAMod.NPCs.Bosses.Athena
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Athena");
             npc.alpha = 255;
             npc.noTileCollide = true;
+            bossBag = mod.ItemType("AthenaBag");
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

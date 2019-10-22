@@ -70,9 +70,8 @@ namespace AAMod.Projectiles
                 Vector2 vector69 = value38 + projectile.velocity * 16f * 150f;
                 int num816 = (int)vector69.X >> 4;
                 int num817 = (int)vector69.Y >> 4;
-                Tuple<int, int> tuple;
                 float num818;
-                if (!Collision.TupleHitLine(num814, num815, num816, num817, 0, 0, new List<Tuple<int, int>>(), out tuple))
+                if (!Collision.TupleHitLine(num814, num815, num816, num817, 0, 0, new List<Tuple<int, int>>(), out Tuple<int, int> tuple))
                     num818 = new Vector2(Math.Abs(num814 - tuple.Item1), Math.Abs(num815 - tuple.Item2)).Length() * 16f;
                 else if (tuple.Item1 == num816 && tuple.Item2 == num817)
                     num818 = 2400f;

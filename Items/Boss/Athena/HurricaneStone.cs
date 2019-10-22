@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.Athena
             item.damage = 200;
             item.useStyle = 1;
             item.shootSpeed = 14f;
-            item.shoot = mod.ProjectileType("ChargedOwlRune");
+            item.shoot = mod.ProjectileType("OwlRuneCharged");
             item.width = 64;
             item.height = 64;
             item.UseSound = SoundID.Item78;

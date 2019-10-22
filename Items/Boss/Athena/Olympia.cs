@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Athena
 {
@@ -19,7 +20,8 @@ namespace AAMod.Items.Boss.Athena
 			item.rare = 8;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
-            item.shoot = mod.ProjectileType("Skyrazor");
-		}
+            item.shoot = ModContent.ProjectileType<Projectiles.Athena.Skyrazor>();
+            item.shootSpeed = 10;
+        }
 	}
 }
