@@ -610,38 +610,6 @@ namespace AAMod.Items.Dev.Invoker
 		}
 		
 	}
-	
-	public class InvokedProjClear : GlobalProjectile
-	{
-		public override bool Autoload(ref string name) => true;
-		public override bool PreAI(Projectile projectile)
-		{
-			if (Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().BanishProjClear)
-			{
-				for (int q = 0; q < 1000; q++)
-				{
-					Projectile p = Main.projectile[q];
-					bool KILL = false;
-					if (p.active && p.type != ModContent.ProjectileType<InvokedHeal>() && p.type != ModContent.ProjectileType<InvokedDamage>() && p.type != ModContent.ProjectileType<InvokerStaffproj>() && p.type != ModContent.ProjectileType<InvokedRune>())
-					{
-						KILL = true;
-					}
-					if (KILL) 
-					{
-                        
-						if(p.damage != 0 && !p.friendly) 
-						{
-							Projectile.NewProjectile(p.Center.X, p.Center.Y, 0, 0, mod.ProjectileType("InvokedHeal"), 0, 0f, Main.player[Main.myPlayer].whoAmI, Main.player[Main.myPlayer].whoAmI, (int)(p.damage * 0.1));
-						}
-						p.active = false;
-						p.Kill();
-					}
-				}
-			}
-			return base.PreAI(projectile);
-		}
-	}
-	
 
 	public class InvokedDamage : ModProjectile
 	{

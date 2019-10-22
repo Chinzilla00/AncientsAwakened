@@ -44,9 +44,9 @@ namespace AAMod.Items.Currency
                 color2.R,
                 color2.G,
                 color2.B,
-                Language.GetText(Lang.ItemsInfo("MartianCreditBuyprice")),
+                Language.GetTextValue("Mods.AAMod.Common.PlayerBuyPrice"),
                 price,
-                price == 1 ? Lang.ItemsInfo("MartianCredit") : Lang.ItemsInfo("MartianCredit")
+                price == 1 ? Language.GetTextValue("Mods.AAMod.Common.MartianCredit") : Language.GetTextValue("Mods.AAMod.Common.MartianCredits")
             });
         }
     }

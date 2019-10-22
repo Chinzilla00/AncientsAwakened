@@ -106,7 +106,7 @@ Demise EX");
         {
             if (Main.rand.Next(20) == 0 && (!target.boss || !NPCID.Sets.TechnicallyABoss[target.type]))
             {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.ItemsInfo("DemiseEXInfo"), new Color(77, 20, 102));
+                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DemiseEXInfo"), new Color(77, 20, 102));
                 target.life = 0;
                 int p = Projectile.NewProjectile((int)target.Center.X, (int)target.Center.Y, 0, 0, ModContent.ProjectileType<Projectiles.DemiseBlast>(), item.damage, item.knockBack, Main.myPlayer);
                 Main.projectile[p].Center = target.Center;

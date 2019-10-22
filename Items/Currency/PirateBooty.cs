@@ -38,9 +38,9 @@ namespace AAMod.Items.Currency
                 color2.R,
                 color2.G,
                 color2.B,
-                Language.GetText(Lang.ItemsInfo("PirateBootyBuyprice")),
+                Language.GetTextValue("Mods.AAMod.Common.PlayerBuyPrice"),
                 price,
-                price == 1 ? Lang.ItemsInfo("PirateBooty") : Lang.ItemsInfo("PirateBooty")
+                price == 1 ? Language.GetTextValue("Mods.AAMod.Common.PirateBooty") : Language.GetTextValue("Mods.AAMod.Common.PirateBooties")
             });
         }
     }

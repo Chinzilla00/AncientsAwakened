@@ -2781,7 +2781,7 @@ namespace AAMod
                         case "GreedInfo":
                         return "在欲望金窟的原欲祭坛\n处召唤.";
                         case "Athena":
-                        return "天城鸟妖神";
+                        return "穹武鸮姬";
                         case "AthenaInfo":
                         return " 在天穹卫城的天鸮祭坛\n上召唤.";
                         case "AthenaA":
@@ -2918,42 +2918,6 @@ namespace AAMod
                         return "Rajah Rabbit's Revenge";
                         case "RajahRabbitRevengeInfo":
                         return " or every 100 rabbit kills after 1000.";
-                    }
-                }
-            return"";
-        }
-        public static string ItemsInfo(string Itemsname)
-        {
-            if(Language.ActiveCulture == GameCulture.Chinese)
-                {
-                    switch(Itemsname)
-                    {
-                        case "GoblinDollInfo":
-                        return "灵魂宝石在你手中具象化";
-                        case "GoblinSoulBuyprice":
-                        return "购买价格:";
-                        case "GoblinSoul":
-                        return "哥布林亡魂";
-                        case "GoblinSouls":
-                        return "哥布林亡魂";
-                        case "DemiseEXInfo":
-                        return "被击中的敌人灵魂爆裂";
-                    }
-                }
-            else
-                {
-                    switch(Itemsname)
-                    {
-                        case "GoblinDollInfo":
-                        return "The soul stone materializes in your hand";
-                        case "GoblinSoulBuyprice":
-                        return "Buy price:";
-                        case "GoblinSoul":
-                        return "Goblin Soul";
-                        case "GoblinSouls":
-                        return "Goblin Souls";
-                        case "DemiseEXInfo":
-                        return "The struck enemy's soul bursts";
                     }
                 }
             return"";

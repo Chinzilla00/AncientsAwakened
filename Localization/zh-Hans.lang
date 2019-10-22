@@ -1689,17 +1689,54 @@ ItemName.SauceStatue=蛇雕像
 
 ItemName.TailsStatue=狡狐雕像
 
+
 // AAMod.Items.Boss.Anubis
+
 
 ItemName.AnubisBag=宝藏袋
 
+ItemName.AnubisTrophy=阿努比斯纪念章
+
 ItemName.ForsakenFragment=逝落碎片
+
+
+//AAMod.Items.Boss.Athena
+
+
+ItemName.AthenaABag=宝藏袋
+
+ItemName.AthenaBag=宝藏袋
+
+ItemName.AthenaTrophy=雅典娜纪念章
+
+ItemName.DivineWindCharm=神风石
+ItemTooltip.DivineWindCharm=召唤天鸮符文哨兵
+
+ItemName.GaleForce=天残罡风
+
+ItemName.GoddessFeather=神妖鸟羽
+
+ItemName.GaleOfWings=翅岚
+
+ItemName.HurricaneStone=飓风石
+ItemTooltip.HurricaneStone=召唤蓄能天鸮符文哨兵
+
+ItemName.Olympia=奥林匹娅
+
+ItemName.RazorwindLongbow=刃风长弓
+ItemTooltip.RazorwindLongbow=将木箭转化为具有高击退的烈风矢
+
+ItemName.SkycutterKopis=裂穹弯刀
+ItemTooltip.SkycutterKopis=(译者注：Kopis，一种古希腊的弯刀)
+
+ItemName.Windfury=神风天怒
+ItemTooltip.Windfury=将木箭转化为具有高击退无限穿透的狂风箭
+
 
 // AAMod.Items.Boss.AH
 
 
 ItemName.AHBag=宝藏袋
-ItemTooltip.AHBag={$CommonItemTooltip.RightClickToOpen}
 
 ItemName.AsheSatchel=艾希的挎包
 ItemTooltip.AsheSatchel=右键打开\n内含一套愤怒女巫长袍
@@ -1805,16 +1842,6 @@ ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n增加10%伤害减免,
 
 ItemName.YOTD=龙年大吉
 ItemTooltip.YOTD=发射绚烂的烟花吸引同伴驱赶敌人\n“邪鬼巨龙牌安全烟花,朝脸发射也没伤害!文明放烟花,安全你我他!”
-
-// AAMod.Items.Boss.Athena
-
-ItemName.AthenaBag=宝藏袋
-
-ItemName.GoddessFeather=神妖鸟羽
-
-ItemName.GaleOfWings=翅岚
-
-ItemName.AthenaABag=宝藏袋
 
 // AAMod.Items.Boss.Broodmother
 
@@ -1951,7 +1978,7 @@ ItemName.GreedBag=宝藏袋
 
 ItemName.GreedTrophy=金食饕餮纪念章
 
-ItemName.Miner=掘-矿
+ItemName.Miner=掘矿器
 ItemTooltip.Miner=挖矿更快
 
 ItemName.StoneScarf=坚石围巾
@@ -1966,6 +1993,11 @@ ItemTooltip.StoneSlammer=对飞行敌人必定暴击\n并且会把它从天上�
 //AAMod.Items.Boss.Greed.WKG
 
 ItemName.GreedABag=宝藏袋
+
+ItemName.Earthbreaker=撼地者
+ItemTooltip.Earthbreaker=对飞行敌人必定暴击并且会把它从天上砸下来\n冲击力有50%几率将敌人砸晕\n敌人被砸到地上时会有坠落伤害
+
+ItemName.OreStaff=矿石法杖
 
 ItemName.DesireTalisman=贪欲护身符
 ItemTooltip.DesireTalisman=拾取硬币时增加1%伤害持续4秒\n再拾取时再增加1%伤害并重置计时\n伤害增加上限20%\n提升金币拾取范围\n商店会打折\n攻击敌人会掉落额外的金币
@@ -2519,8 +2551,26 @@ ItemTooltip.ZeroTesseract=注.释.\n不.稳.定.  含.有.死.亡.缔.造.者.�
 // AAMod.Items.Currency
 
 
+ItemName.BloodRune=血浸符文
+ItemTooltip.BloodRune=一个据说浸染了古代生物鲜血的奇石
+
+ItemName.ChristmasCheer=圣诞祝元
+ItemTooltip.ChristmasCheer=纯粹的快乐和纯真的善良
+
 ItemName.GoblinSoul=哥布林亡魂
 ItemTooltip.GoblinSoul=哥布林的魂魄
+
+ItemName.HalloweenTreat=万圣怪糖
+ItemTooltip.HalloweenTreat=非常不错的款待。但是不要吃，可能受到了诅咒
+
+ItemName.MartianCredit=火星造物
+ItemTooltip.MartianCredit=好像是火星人的货币卡
+
+ItemName.MonsterSoul=凶兽之魂
+ItemTooltip.MonsterSoul=非常恐怖的凶兽的精魂
+
+ItemName.PirateBooty=海盗战利品
+ItemTooltip.PirateBooty=制作精良的金币
 
 
 // AAMod.Items.Dev
@@ -2578,6 +2628,8 @@ ItemTooltip.Demise=曾经被魔王使用的传说之剑
 
 ItemName.DemiseEX=灾灭浩劫
 ItemTooltip.DemiseEX=一把曾经为恶魔领主所用万能大剑\n左键释放毁灭性恶魔能量\n右键从空中降下灾难性剑气\n真正的近战攻击有几率瞬间吞噬敌人的灵魂\n终亡 EX
+
+Common.DemiseEXInfo=被击中的敌人灵魂爆裂
 
 ItemName.EnderStaff=焚天法杖
 ItemTooltip.EnderStaff=召唤一个旋转焚天结构粉碎敌人\n我觉得天是紫的\n-Ender
@@ -4647,19 +4699,19 @@ NPCName.AncientLungTail=远古之伴龙
 
 // AAMod.NPCs.Bosses.Athena
 
-NPCName.Athena=天城鸟妖神 雅典娜
+NPCName.Athena=穹武鸮姬 雅典娜
 
-NPCName.AthenaFlee=天城鸟妖神 雅典娜
+NPCName.AthenaFlee=穹武鸮姬 雅典娜
 
-NPCName.AthenaA=觉醒的奥林匹亚之神 雅典娜
+NPCName.AthenaA=奥林匹亚女神 觉醒雅典娜
 
-NPCName.AthenaDark=天城鸟妖神的暗影
+NPCName.AthenaDark=穹武鸮姬的暗影
 
-NPCName.AthenaLight=天城鸟妖神的光影
+NPCName.AthenaLight=穹武鸮姬的光影
 
-NPCName.AthenaDefeat=被打败的鸟妖神 雅典娜
+NPCName.AthenaDefeat=被打败的鸮姬 雅典娜
 
-NPCName.AthenaDefeat2=被打败的鸟妖神 雅典娜
+NPCName.AthenaDefeat2=被打败的鸮姬 雅典娜
 
 NPCName.OlympianDragon=卫城飞龙
 
@@ -5524,6 +5576,31 @@ MapObject.OroborosDoorOpen=虚环木门
 
 
 // AAMod.Tiles.Trophy
+
+//CurrencyItems
+
+Common.PlayerBuyPrice=购买价格:
+
+Common.BloodRune=血浸符文
+Common.BloodRunes=血浸符文
+
+Common.ChristmasCheer=圣诞祝元
+Common.ChristmasCheers=圣诞祝元
+
+Common.GoblinSoul=哥布林亡魂
+Common.GoblinSouls=哥布林亡魂
+
+Common.HalloweenTreat=万圣怪糖
+Common.HalloweenTreats=万圣怪糖
+
+Common.MartianCredit=火星造物
+Common.MartianCredits=火星造物
+
+Common.MonsterSoul=凶兽之魂
+Common.MonsterSouls=凶兽之魂
+
+Common.PirateBooty=海盗战利品
+Common.PirateBootys=海盗战利品
 
 //hotkey
 
