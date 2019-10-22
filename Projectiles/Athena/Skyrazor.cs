@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Athena
 {
-    public class SkyRazor : ModProjectile
+    public class Skyrazor : ModProjectile
     {
         public override void SetStaticDefaults()
         {
