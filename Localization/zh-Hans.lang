@@ -2466,7 +2466,7 @@ ItemName.Gigataser=机甲脉冲枪
 ItemTooltip.Gigataser=发射虚空激光\n按住充能\n充能时间越长，穿透力越大
 
 ItemName.OmegaVolley=欧米茄排炮
-ItemTooltip.OmegaVolley=发射一排极其精准的声波子弹\n33%几率不消耗弹药
+ItemTooltip.OmegaVolley=发射一排极其快速而又精准的声波子弹\n每10发子弹会射出额外的两发强化子弹\n33%几率不消耗弹药
 
 // AAMod.Items.BossSummons
 
@@ -2690,7 +2690,7 @@ ItemName.GentlemansRapier=绅士长剑
 ItemTooltip.GentlemansRapier=发射诡异的小花顶帽子\n右键前刺,左键挥动\n“真诡异”\n-Tied
 
 ItemName.GroxNote=GRealm广告
-ItemTooltip.GroxNote=“Want more AA content and more Grox-filled fun? Go play GRealm!”\n（译者注：广告,不翻译,意思就是你想制作AA就去联系GRealm工作组吧）\n-Grox The Great
+ItemTooltip.GroxNote=“Want more AA content and more Grox-filled fun? Go play GRealm!”\n（译者注：广告, 意思就是推广一下Grox自己一个名叫GRealm的mod）\n-Grox The Great
 
 ItemName.HallamDevWeapon=最终棱喵
 ItemTooltip.HallamDevWeapon=在光标位置召唤一个传说的彩虹猫\n沿着光标发射彩虹喵\n警告： 这会让你的游戏跳帧!\n棱喵EX
@@ -2770,7 +2770,7 @@ ItemName.InvokerBook=阿莱斯特原典
 ItemTooltip.InvokerBook=“大兽”阿莱斯特的传世之书\n增加10%召唤伤害\n增加2召唤上限\n也许你需要其他的物品才能让你从这本书中获得更多的能力\n阿莱斯特的笔记: \n我需要更多强大的灵魂, *****,*********,**********
 
 ItemName.InvokerBookEX=法之圣典
-ItemTooltip.InvokerBookEX=“大兽”阿莱斯特的传世之书\n增加10%召唤伤害\n增加2召唤上限\n获得所有材料的效果
+ItemTooltip.InvokerBookEX=“大兽”阿莱斯特的传世之书\n增加30%召唤伤害\n增加2召唤上限\n获得所有材料的效果
 
 Common.InvokerBookEX1=你现在掌控了召唤师的真正力量了\n你手持阿莱斯特之杖时, 死亡敌人的灵魂会治愈你\n你可以释放敌人的伤害性灵魂
 Common.InvokerBookEX2="\n阿莱斯特的笔记: \n我需要更多强大的灵魂, 神龙, 巨兔, 奇怪的机械, 更多的, 更多的灵魂! 打败它们!"

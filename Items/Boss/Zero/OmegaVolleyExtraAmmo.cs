@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -7,8 +8,15 @@ using System;
 
 namespace AAMod.Items.Boss.Zero
 {
-	public class OmegaVolleyAmmo : ModProjectile
+	public class OmegaVolleyExtraAmmo : ModProjectile
 	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Omega Shoot");     
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
+			ProjectileID.Sets.TrailingMode[projectile.type] = 0;        
+		}
+
 		public override void SetDefaults()
 		{
 			projectile.width = 4;               
@@ -18,7 +26,7 @@ namespace AAMod.Items.Boss.Zero
 			projectile.hostile = false;         
 			projectile.ranged = true;           
 			projectile.timeLeft = 600;          
-			projectile.alpha = 255;             
+			projectile.alpha = 0;             
 			projectile.light = 0f;            
 			projectile.ignoreWater = true;          
 			projectile.tileCollide = true;          
@@ -29,8 +37,29 @@ namespace AAMod.Items.Boss.Zero
 		private int homingtime = 3;
 		private int homingDelay = 5;
 
+		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+		{
+			Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+			for (int k = 0; k < projectile.oldPos.Length; k++)
+			{
+				Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+				Color color = projectile.GetAlpha(lightColor) * ((projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+				spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+			}
+			return true;
+		}
+
 		public override void AI()
         {
+			Player projOwner = Main.player[projectile.owner];
+           	projectile.direction = projOwner.direction;
+           	projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
+
+            if (projectile.spriteDirection == -1)
+            {
+               projectile.rotation -= MathHelper.ToRadians(180f);
+            }
+
 			float num167 = (float)Math.Sqrt((double)(projectile.velocity.X * projectile.velocity.X + projectile.velocity.Y * projectile.velocity.Y));
 			float num168 = projectile.ai[0];
 			if (num168 == 0f)
@@ -130,7 +159,7 @@ namespace AAMod.Items.Boss.Zero
 			}
 			
 			//Just use dust to show the effect. Waiting for the sprits.
-			for (int num165 = 0; num165 < 10; num165++)
+			for (int num165 = 0; num165 < 5; num165++)
 			{
 				float x2 = projectile.position.X - projectile.velocity.X / 10f * (float)num165;
 				float y2 = projectile.position.Y - projectile.velocity.Y / 10f * (float)num165;
