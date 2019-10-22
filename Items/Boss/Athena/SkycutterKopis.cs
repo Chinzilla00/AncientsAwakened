@@ -5,9 +5,12 @@ namespace AAMod.Items.Boss.Athena
 {
     public class SkycutterKopis : BaseAAItem
 	{
-		public override void SetDefaults()
-		{
+        public override void SetStaticDefaults()
+        {
             DisplayName.SetDefault("Skycutter Kopis");
+        }
+        public override void SetDefaults()
+		{
 			item.damage = 70;
 			item.melee = true;
 			item.width = 40;
@@ -21,6 +24,7 @@ namespace AAMod.Items.Boss.Athena
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.shoot = mod.ProjectileType("Skyblade");
+            item.shootSpeed = 10;
 		}
 	}
 }

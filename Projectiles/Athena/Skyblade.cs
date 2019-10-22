@@ -22,7 +22,7 @@ namespace AAMod.Projectiles.Athena
             projectile.tileCollide = true;
             projectile.melee = true;
             projectile.ignoreWater = true;
-            projectile.extraUpdates = 2;
+            projectile.extraUpdates = 1;
             projectile.aiStyle = -1;
         }
 
@@ -61,9 +61,9 @@ namespace AAMod.Projectiles.Athena
                 }
             }
 
-            for (int num468 = 0; num468 < 20; num468++)
+            for (int num468 = 0; num468 < 10; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, 100, 0f, 0f, 0, Color.White, 1f);
+                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, 76, 0f, 0f, 0, Color.White, 1f);
                 Main.dust[num469].noGravity = true;
                 Main.dust[num469].alpha = 20;
             }

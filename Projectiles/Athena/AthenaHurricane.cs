@@ -24,7 +24,7 @@ namespace AAMod.Projectiles.Athena
             projectile.tileCollide = false;
             projectile.penetrate = -1;
             projectile.timeLeft = 1200;
-            projectile.minion = true;
+            projectile.magic = true;
         }
 
         public override void AI()
@@ -190,11 +190,11 @@ namespace AAMod.Projectiles.Athena
 
     public class HurricaneSpawn : ModProjectile
     {
-        public override string Texture => "AAMod/Projectiles/Athena/Tornado";
+        public override string Texture => "AAMod/Projectiles/Athena/Gale";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hurricane");
-            Main.projFrames[projectile.type] = 6;
+            DisplayName.SetDefault("Gale");
+            Main.projFrames[projectile.type] = 4;
         }
 
         public override void SetDefaults()
@@ -203,7 +203,7 @@ namespace AAMod.Projectiles.Athena
             projectile.height = 38;
             projectile.friendly = true;
             projectile.hostile = false;
-            projectile.minion = true;
+            projectile.magic = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.penetrate = 4;
@@ -219,7 +219,7 @@ namespace AAMod.Projectiles.Athena
             {
                 projectile.frame++;
                 projectile.frameCounter = 0;
-                if (projectile.frame > 5)
+                if (projectile.frame > 3)
                 {
                     projectile.frame = 0;
                 }
@@ -244,7 +244,12 @@ namespace AAMod.Projectiles.Athena
         {
             Main.PlaySound(SoundID.Item10, projectile.position);
 
-            Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<AthenaHurricane>(), projectile.damage, 0, Main.myPlayer);
+            int h = Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<AthenaHurricane>(), projectile.damage, 0, Main.myPlayer);
+            if (projectile.minion)
+            {
+                Main.projectile[h].magic = false;
+                Main.projectile[h].minion = true;
+            }
             for (int num579 = 0; num579 < 20; num579++)
             {
                 int num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 76, -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default, 2f);

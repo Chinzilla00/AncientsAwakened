@@ -31,9 +31,12 @@ namespace AAMod.Projectiles.Athena
 
         public override void AI()
         {
+            projectile.rotation =
+            projectile.velocity.ToRotation() +
+            MathHelper.ToRadians(90f);
             if (projectile.alpha < 255)
             {
-                projectile.alpha--;
+                projectile.alpha++;
             }
             else
             {

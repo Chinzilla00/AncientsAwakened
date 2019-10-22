@@ -10,7 +10,7 @@ namespace AAMod.Projectiles.Athena
     {
         public override void SetStaticDefaults()
         {
-            Main.projFrames[projectile.type] = 4;
+            Main.projFrames[projectile.type] = 14;
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
@@ -32,20 +32,11 @@ namespace AAMod.Projectiles.Athena
         }
 
         int dust = 3;
+        int currentFrame = 0;
+        int frame = 0;
 
         public override void AI()
         {
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 8)
-            {
-                projectile.frameCounter = 0;
-                projectile.frame += 1;
-            }
-            if (projectile.frame > 4)
-            {
-                projectile.frame = 0;
-            }
-
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             if (player.dead) modPlayer.Athena = false;
@@ -57,7 +48,7 @@ namespace AAMod.Projectiles.Athena
                 int num501 = 4;
                 for (int num502 = 0; num502 < num501; num502++)
                 {
-                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, ModContent.DustType<NPCs.Bosses.Athena.Feather>(), 0f, 0f, 0, AAColor.Hallow, 1f);
+                    int num503 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 16f), projectile.width, projectile.height - 16, ModContent.DustType<NPCs.Bosses.Athena.Feather>(), 0f, 0f, 0, default, 1f);
                     Main.dust[num503].velocity *= 2f;
                 }
             }
@@ -150,6 +141,25 @@ namespace AAMod.Projectiles.Athena
                     }
                 }
             }
+            projectile.frameCounter++;
+            if (projectile.frameCounter >= 8)
+            {
+                projectile.frameCounter = 0;
+                currentFrame++;
+                if (currentFrame > 6)
+                {
+                    currentFrame = 0;
+                }
+            }
+            if (flag25)
+            {
+                frame = currentFrame + 7;
+            }
+            else
+            {
+                frame = currentFrame;
+            }
+            projectile.frame = frame;
             float num647 = num634;
             if (flag25)
             {
@@ -259,7 +269,7 @@ namespace AAMod.Projectiles.Athena
                     case 3:
                         if (!AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<AthenaHurricane>()) && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<HurricaneSpawn>()))
                         {
-                            num658 = ModContent.ProjectileType<HurricaneGust>();
+                            num658 = ModContent.ProjectileType<HurricaneSpawn>();
                         }
                         else
                         {

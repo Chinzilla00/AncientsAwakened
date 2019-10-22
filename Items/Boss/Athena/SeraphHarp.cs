@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Athena
 {
-    public class SeraphHarp : ModItem
+    public class SeraphHarp : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
@@ -26,7 +26,7 @@ Seraph is boosted by minion damage");
         public override bool CanEquipAccessory(Player player, int slot)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
-            if (modPlayer.Seraph)
+            if (modPlayer.Athena)
             {
                 return false;
             }
@@ -35,18 +35,19 @@ Seraph is boosted by minion damage");
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
-            modPlayer.Athena = true;
 			if (player.whoAmI == Main.myPlayer)
 			{
-				if (player.FindBuffIndex(mod.BuffType("Seraph")) == -1)
-				{
-					player.AddBuff(mod.BuffType("Seraph"), 3600, true);
-				}
-				if (player.ownedProjectileCounts[mod.ProjectileType("Seraph")] < 1)
-				{
-					Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("Seraph"), (int)(60f * player.minionDamage), 2f, Main.myPlayer, 0f, 0f);
-				}
+                if (!hideVisual)
+                {
+                    if (player.FindBuffIndex(mod.BuffType("Seraph")) == -1)
+                    {
+                        player.AddBuff(mod.BuffType("Seraph"), 3600, true);
+                    }
+                    if (player.ownedProjectileCounts[mod.ProjectileType("Seraph")] < 1)
+                    {
+                        Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("Seraph"), (int)(60f * player.minionDamage), 2f, Main.myPlayer, 0f, 0f);
+                    }
+                }
 			}
 		}
 	}

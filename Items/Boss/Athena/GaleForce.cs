@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.Athena
             item.autoReuse = true;
             item.useTime = 28;
             item.useAnimation = 28;
-            item.shoot = mod.ProjectileType("Gale");
+            item.shoot = mod.ProjectileType("HurricaneSpawn");
             item.shootSpeed = 9f;    
         }   
 
@@ -31,12 +31,6 @@ namespace AAMod.Items.Boss.Athena
         {
           DisplayName.SetDefault("Gale Force");
           Tooltip.SetDefault("");
-        }
-
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-            Projectile.NewProjectile(player.Center, new Vector2(speedX, speedY), item.shoot, item.damage, item.knockBack, Main.myPlayer);
-            return false;
         }
     }
 }

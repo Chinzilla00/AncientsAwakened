@@ -11,8 +11,8 @@ namespace AAMod.Items.Boss.Athena
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Discordium");
-            Tooltip.SetDefault("The World Chaoses melded together into a single, powerful bar");
+            DisplayName.SetDefault("Star Chart");
+            Tooltip.SetDefault("A map of the solar system up to this planet.");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 8));
         }
 
