@@ -204,7 +204,7 @@ namespace AAMod.Projectiles.Athena
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.magic = true;
-            projectile.tileCollide = false;
+            projectile.tileCollide = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 4;
             projectile.timeLeft = 160;
