@@ -34,7 +34,7 @@ namespace AAMod.Items.Boss.Zero
 		{
 			DisplayName.SetDefault("Omega Volley");
 			Tooltip.SetDefault(@"Shoots an insanely accurate volley of sonic bullets quickly
-Every ten shots, it can shoot two extra bullet.
+Every ten shots, it can shoot two extra bullets.
 33% chance to not consume ammo");
         }
 
