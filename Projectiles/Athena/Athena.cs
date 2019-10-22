@@ -19,10 +19,9 @@ namespace AAMod.Projectiles.Athena
         public override void SetDefaults()
         {
             projectile.netImportant = true;
-            projectile.width = 22;
-            projectile.height = 50;
+            projectile.width = 104;
+            projectile.height = 132;
             projectile.friendly = true;
-            Main.projPet[projectile.type] = true;
             projectile.minion = true;
             projectile.minionSlots = 1;
             projectile.penetrate = -1;
@@ -243,45 +242,45 @@ namespace AAMod.Projectiles.Athena
             if (projectile.ai[0] == 0f)
             {
                 float scaleFactor3 = 14f;
-                int num658 = Main.rand.Next(5);
-                switch (num658)
-                {
-                    case 0:
-                        num658 = ModContent.ProjectileType<StormMagic>();
-                        break;
-                    case 1:
-                        num658 = ModContent.ProjectileType<Feather>();
-                        float spread = 45f * 0.0174f;
-                        Vector2 dir = Vector2.Normalize(projectile.Center - vector46);
-                        dir *= 14f;
-                        float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
-                        double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
-                        double deltaAngle = spread / 6f;
-                        for (int i = 0; i < 3; i++)
-                        {
-                            double offsetAngle = startAngle + (deltaAngle * i);
-                            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), num658, projectile.damage, 5, Main.myPlayer);
-                        }
-                        return;
-                    case 2:
-                        num658 = ModContent.ProjectileType<RGust>();
-                        break;
-                    case 3:
-                        if (!AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<AthenaHurricane>()) && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<HurricaneSpawn>()))
-                        {
-                            num658 = ModContent.ProjectileType<HurricaneSpawn>();
-                        }
-                        else
-                        {
-                            goto case 1;
-                        }
-                        break;
-                    case 4:
-                        num658 = ModContent.ProjectileType<GaleArrow>();
-                        break;
-                }
                 if (flag25 && projectile.ai[1] == 0f)
                 {
+                    int num658 = Main.rand.Next(5);
+                    switch (num658)
+                    {
+                        case 0:
+                            num658 = ModContent.ProjectileType<StormMagic>();
+                            break;
+                        case 1:
+                            num658 = ModContent.ProjectileType<Feather>();
+                            float spread = 45f * 0.0174f;
+                            Vector2 dir = Vector2.Normalize(projectile.Center - vector46);
+                            dir *= 14f;
+                            float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                            double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
+                            double deltaAngle = spread / 6f;
+                            for (int i = 0; i < 3; i++)
+                            {
+                                double offsetAngle = startAngle + (deltaAngle * i);
+                                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), num658, projectile.damage, 5, Main.myPlayer);
+                            }
+                            return;
+                        case 2:
+                            num658 = ModContent.ProjectileType<RGust>();
+                            break;
+                        case 3:
+                            if (!AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<AthenaHurricane>()) && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<HurricaneSpawn>()))
+                            {
+                                num658 = ModContent.ProjectileType<HurricaneSpawn>();
+                            }
+                            else
+                            {
+                                goto case 1;
+                            }
+                            break;
+                        case 4:
+                            num658 = ModContent.ProjectileType<GaleArrow>();
+                            break;
+                    }
                     projectile.ai[1] += 1f;
                     if (Main.myPlayer == projectile.owner && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, vector46, 0, 0))
                     {
