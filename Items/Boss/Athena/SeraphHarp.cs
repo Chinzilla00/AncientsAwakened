@@ -8,7 +8,8 @@ namespace AAMod.Items.Boss.Athena
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Seraph Harp");
-			Tooltip.SetDefault("Summons a seraph to fight for you");
+			Tooltip.SetDefault(@"Summons a seraph to fight for you
+Seraph is boosted by minion damage");
 		}
 
 	    public override void SetDefaults()
@@ -44,7 +45,7 @@ namespace AAMod.Items.Boss.Athena
 				}
 				if (player.ownedProjectileCounts[mod.ProjectileType("Seraph")] < 1)
 				{
-					Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("Seraph"), (int)(100f * player.minionDamage), 2f, Main.myPlayer, 0f, 0f);
+					Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("Seraph"), (int)(60f * player.minionDamage), 2f, Main.myPlayer, 0f, 0f);
 				}
 			}
 		}

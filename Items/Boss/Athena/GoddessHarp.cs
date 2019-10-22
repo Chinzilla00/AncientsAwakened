@@ -8,8 +8,9 @@ namespace AAMod.Items.Boss.Athena
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Goddess Harp");
-			Tooltip.SetDefault("Summons the seraph queen herself to fight with you");
-		}
+			Tooltip.SetDefault(@"Summons the seraph queen herself to fight with you
+Athena is boosted by minion damage");
+        }
 
 	    public override void SetDefaults()
 	    {
