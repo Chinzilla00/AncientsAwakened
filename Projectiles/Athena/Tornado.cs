@@ -10,7 +10,6 @@ namespace AAMod.Projectiles.Athena
     {
     	public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Athena");
             Main.projFrames[projectile.type] = 6;
         }
     	
