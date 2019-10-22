@@ -1,6 +1,14 @@
 
 // AAMod.Buffs
 
+BuffName.Athena=雅典娜
+BuffDescription.Athena=我现在姑且帮你，总有一天我会揍扁你
+
+BuffName.Seraph=六翼天使
+BuffDescription.Seraph=好动的小不点
+
+BuffName.Broodmini=哺育小龙
+BuffDescription.Broodmini=小宝宝
 
 BuffName.AtlanteanBuff=亚特兰蒂斯之力
 BuffDescription.AtlanteanBuff=你的战斗能力提升了
@@ -1709,6 +1717,12 @@ ItemName.AthenaBag=宝藏袋
 
 ItemName.AthenaTrophy=雅典娜纪念章
 
+ItemName.SeraphHarp=六翼天琴
+ItemTooltip.SeraphHarp=召唤一个六翼天使为你而战
+
+ItemName.GoddessHarp=神御天琴
+ItemTooltip.GoddessHarp=召唤六翼天使女王亲自为你而战
+
 ItemName.DivineWindCharm=神风石
 ItemTooltip.DivineWindCharm=召唤天鸮符文哨兵
 
@@ -1731,6 +1745,9 @@ ItemTooltip.SkycutterKopis=(译者注：Kopis，一种古希腊的弯刀)
 
 ItemName.Windfury=神风天怒
 ItemTooltip.Windfury=将木箭转化为具有高击退无限穿透的狂风箭
+
+ItemName.StarChart=星象绘景
+ItemTooltip.StarChart=太阳系和这个星球的地图
 
 
 // AAMod.Items.Boss.AH
