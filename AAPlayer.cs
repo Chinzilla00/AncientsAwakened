@@ -76,6 +76,8 @@ namespace AAMod
         public bool MiniZero = false;
         public bool TerraSummon = false;
         public bool DragonSpirit = false;
+        public bool Seraph = false;
+        public bool Athena = false;
 
         // Biome bools.
         public bool ZoneMire = false;
@@ -358,6 +360,8 @@ namespace AAMod
             MiniZero = false;
             TerraSummon = false;
             DragonSpirit = false;
+            Seraph = false;
+            Athena = false;
         }
 
         private void ResetArmorEffect()
