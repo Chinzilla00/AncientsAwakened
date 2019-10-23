@@ -502,7 +502,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                             if (internalAI[1] >= 410)
                             {
                                 if (Main.netMode != 1) BaseUtility.Chat("Let's go!", Color.Gold);
-                                internalAI[2] = 1;
+                                internalAI[0] = 1;
                                 Teleport();
                                 npc.netUpdate = true;
                             }
