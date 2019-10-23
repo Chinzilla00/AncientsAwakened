@@ -5,31 +5,23 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CSkies.NPCs.Bosses.FurySoul
+namespace AAMod.NPCs.Bosses.Anubis
 {
-    public class Furyrang : ModProjectile
+    public class Scepter : ModProjectile
 	{
         public override void SetDefaults()
         {
-            projectile.width = 66;
-            projectile.height = 66;
+            projectile.width = 50;
+            projectile.height = 50;
             projectile.aiStyle = -1;
             projectile.timeLeft = 3600;
             projectile.hostile = true;
             projectile.tileCollide = false;
-            projectile.damage = 1;
             projectile.penetrate = -1;
             projectile.melee = true;
         }
 
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
-
         public int master = -1;
-		
-		public int dustDelay = 0;
 
 		public override void AI()
 		{
@@ -48,7 +40,42 @@ namespace CSkies.NPCs.Bosses.FurySoul
                 Main.dust[dustnumber].velocity *= 0.3f;
             }
 
-            BaseAI.AIBoomerang(projectile, ref projectile.ai, Main.npc[master].position, Main.npc[master].width, Main.npc[master].height, true, 40, 35, 8f, .3f, true);
-		}
-	}
+            BaseAI.AIBoomerang(projectile, ref projectile.ai, Main.npc[master].position, Main.npc[master].width, Main.npc[master].height, true, 40, 45, 3f, .3f, true);
+
+            ReflectProjectiles(projectile.Hitbox);
+        }
+
+        public void ReflectProjectiles(Rectangle myRect)
+        {
+            for (int i = 0; i < 1000; i++)
+            {
+                if (Main.projectile[i].active && Main.projectile[i].CanReflect())
+                {
+                    Rectangle hitbox = Main.projectile[i].Hitbox;
+                    if (myRect.Intersects(hitbox))
+                    {
+                        Main.PlaySound(SoundID.NPCHit4, Main.projectile[i].position);
+                        for (int j = 0; j < 3; j++)
+                        {
+                            int num = Dust.NewDust(Main.projectile[i].position, Main.projectile[i].width, Main.projectile[i].height, DustID.Gold, 0f, 0f, 0, default, 1f);
+                            Main.dust[num].velocity *= 0.3f;
+                        }
+                        Main.projectile[i].hostile = true;
+                        Main.projectile[i].friendly = false;
+                        Vector2 vector = Main.player[Main.projectile[i].owner].Center - Main.projectile[i].Center;
+                        vector.Normalize();
+                        vector *= Main.projectile[i].oldVelocity.Length();
+                        Main.projectile[i].velocity = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
+                        Main.projectile[i].velocity.Normalize();
+                        Main.projectile[i].velocity *= vector.Length();
+                        Main.projectile[i].velocity += vector * 20f;
+                        Main.projectile[i].velocity.Normalize();
+                        Main.projectile[i].velocity *= vector.Length();
+                        Main.projectile[i].damage /= 2;
+                        Main.projectile[i].penetrate = 1;
+                    }
+                }
+            }
+        }
+    }
 }

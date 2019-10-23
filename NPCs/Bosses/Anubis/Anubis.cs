@@ -27,8 +27,9 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.lifeMax = 50000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
-            npc.knockBackResist = 0.4f;
+            npc.knockBackResist = 0f;
             npc.boss = true;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
         }
 
         public float[] internalAI = new float[4];
@@ -67,9 +68,13 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
             if (internalAI[0] != 1)
             {
+                npc.noGravity = false;
                 Preamble();
                 return;
             }
+            npc.noGravity = true;
+
+            Player player = Main.player[npc.target];
 
             if (npc.life < npc.lifeMax / 3 && internalAI[2] == 0)
             {
@@ -128,8 +133,206 @@ namespace AAMod.NPCs.Bosses.Anubis
             switch (npc.ai[0])
             {
                 case 0:
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<Runeblast>(), ref npc.ai[3], 80, npc.damage / 2, 10, true);
+
+                    if (npc.ai[3] == 40)
+                    {
+                        Teleport();
+                    }
+
+                    if (npc.ai[1] >= 260)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        Teleport();
+                    }
+                    break;
+                case 1:
+
+                    if (npc.ai[1] == 10)
+                    {
+                        int m = NPC.NewNPC((int)npc.position.X + 100, (int)npc.position.Y, ModContent.NPCType<MinionCircle>());
+                        Main.npc[m].Center = new Vector2(npc.Center.X + 100, npc.Center.Y);
+
+                        int n = NPC.NewNPC((int)npc.position.X - 100, (int)npc.position.Y, ModContent.NPCType<MinionCircle>());
+                        Main.npc[n].Center = new Vector2(npc.Center.X - 100, npc.Center.Y);
+
+                        if (npc.life > npc.lifeMax / 2)
+                        {
+                            int o = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 100, ModContent.NPCType<MinionCircle>());
+                            Main.npc[o].Center = new Vector2(npc.Center.X , npc.Center.Y + 100);
+
+                            int p  = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 100, ModContent.NPCType<MinionCircle>());
+                            Main.npc[p].Center = new Vector2(npc.Center.X, npc.Center.Y - 100);
+                        }
+                    }
+
+                    if (npc.ai[1] >= 160)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        Teleport();
+                    }
+                    break;
+                case 2:
+
+                    if (npc.ai[1] == 120)
+                    {
+                        BaseAI.FireProjectile(player.position, npc.position, ModContent.ProjectileType<Scepter>(), npc.damage / 2, 8, 10, -1);
+                    }
+                    if (npc.ai[1] == 140)
+                    {
+                        ScepterTeleport();
+                    }
+
+                    if (npc.ai[1] > 140 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Scepter>()))
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        Teleport();
+                    }
 
                     break;
+
+                case 3:
+                    if (npc.life > npc.lifeMax * (2/3))
+                    {
+                        if (npc.ai[1] == 60)
+                        {
+                            if (Main.rand.Next(2) == 0)
+                            {
+                                int l = Projectile.NewProjectile(player.position + new Vector2(-400, 0), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
+                                int r = Projectile.NewProjectile(player.position + new Vector2(400, 0), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
+                                Main.projectile[l].ai[1] = r;
+                                Main.projectile[l].Center = player.Center + new Vector2(-400, 0);
+                                Main.projectile[r].ai[1] = l;
+                                Main.projectile[r].Center = player.Center + new Vector2(400, 0);
+                            }
+                            else
+                            {
+                                int u = Projectile.NewProjectile(player.position + new Vector2(0, -400), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 2, 0);
+                                int d = Projectile.NewProjectile(player.position + new Vector2(0, 400), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 3, 0);
+                                Main.projectile[u].ai[1] = d;
+                                Main.projectile[u].Center = player.Center + new Vector2(0, -400);
+                                Main.projectile[d].ai[1] = u;
+                                Main.projectile[d].Center = player.Center + new Vector2(0, 400);
+                            }
+                        }
+
+                        if (npc.ai[1] > 120 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
+                        {
+                            npc.ai[0]++;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                            npc.ai[3] = 0;
+                            Teleport();
+                        }
+                    }
+                    else if (npc.life < npc.lifeMax * (2 / 3))
+                    {
+                        if (npc.ai[1] == 50)
+                        {
+                            int l = Projectile.NewProjectile(player.position + new Vector2(-400, 0), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
+                            int r = Projectile.NewProjectile(player.position + new Vector2(400, 0), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
+                            Main.projectile[l].ai[1] = r;
+                            Main.projectile[l].Center = player.Center + new Vector2(-400, 0);
+                            Main.projectile[r].ai[1] = l;
+                            Main.projectile[r].Center = player.Center + new Vector2(400, 0);
+                        }
+                        if (npc.ai[1] == 100)
+                        {
+                            int u = Projectile.NewProjectile(player.position + new Vector2(0, -400), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 2, 0);
+                            int d = Projectile.NewProjectile(player.position + new Vector2(0, 400), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 3, 0);
+                            Main.projectile[u].ai[1] = d;
+                            Main.projectile[u].Center = player.Center + new Vector2(0, -400);
+                            Main.projectile[d].ai[1] = u;
+                            Main.projectile[d].Center = player.Center + new Vector2(0, 400);
+                        }
+                        if (npc.ai[1] > 180 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
+                        {
+                            npc.ai[0]++;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                            npc.ai[3] = 0;
+                            Teleport();
+                        }
+                    }
+                    else if (npc.life < npc.lifeMax / 3)
+                    {
+                        if (npc.ai[1] % 40 == 0)
+                        {
+                            if (Main.rand.Next(2) == 0)
+                            {
+                                int l = Projectile.NewProjectile(player.position + new Vector2(-400, 0), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
+                                int r = Projectile.NewProjectile(player.position + new Vector2(400, 0), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
+                                Main.projectile[l].ai[1] = r;
+                                Main.projectile[l].Center = player.Center + new Vector2(-400, 0);
+                                Main.projectile[r].ai[1] = l;
+                                Main.projectile[r].Center = player.Center + new Vector2(400, 0);
+                            }
+                            else
+                            {
+                                int u = Projectile.NewProjectile(player.position + new Vector2(0, -400), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 2, 0);
+                                int d = Projectile.NewProjectile(player.position + new Vector2(0, 400), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 3, 0);
+                                Main.projectile[u].ai[1] = d;
+                                Main.projectile[u].Center = player.Center + new Vector2(0, -400);
+                                Main.projectile[d].ai[1] = u;
+                                Main.projectile[d].Center = player.Center + new Vector2(0, 400);
+                            }
+                        }
+
+                        if (npc.ai[1] > 270 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
+                        {
+                            npc.ai[0]++;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                            npc.ai[3] = 0;
+                            Teleport();
+                        }
+                    }
+                    break;
+                default:
+                    npc.ai[0] = 0;
+                    goto case 0;
+            }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frameCounter++;
+            if (npc.frameCounter > 6)
+            {
+                npc.frame.Y += frameHeight;
+            }
+            if (internalAI[0] == 0)
+            {
+                if (npc.velocity.Y == 0)
+                {
+                    if (npc.frame.Y < frameHeight * 4 || npc.frame.Y > frameHeight * 8)
+                    {
+                        npc.frame.Y = 4;
+                    }
+                }
+                else
+                {
+                    if (npc.frame.Y > frameHeight * 3)
+                    {
+                        npc.frame.Y = 0;
+                    }
+                }
+            }
+            else
+            {
+                if (npc.frame.Y > frameHeight * 3)
+                {
+                    npc.frame.Y = 0;
+                }
             }
         }
 
@@ -188,7 +391,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                  posY = Main.rand.Next(100, 400);
             }
 
-            npc.position = new Vector2(targetPos.X + posX, targetPos.Y + posY);
+            npc.position = new Vector2(targetPos.X + posX, targetPos.Y - posY);
             int pieCut = 20;
             Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 10);
             for (int m = 0; m < pieCut; m++)
@@ -310,13 +513,14 @@ namespace AAMod.NPCs.Bosses.Anubis
                             if (internalAI[1] >= 410)
                             {
                                 if (Main.netMode != 1) BaseUtility.Chat("Let's go!", Color.Gold);
-                                internalAI[2] = 1;
+                                internalAI[0] = 1;
                                 Teleport();
                                 npc.netUpdate = true;
                             }
                         }
                         else
                         {
+                            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
                             if (Main.netMode != 1) BaseUtility.Chat("A rematch eh? Alright, this should be fun!", Color.Gold);
                             internalAI[0] = 1;
                             Teleport();

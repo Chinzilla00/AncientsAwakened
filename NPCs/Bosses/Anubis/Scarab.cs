@@ -33,13 +33,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.knockBackResist = 0.2f;
             npc.noGravity = true;
         }
-
-		public override void NPCLoot()
-		{
-			bool willDropMore = (Main.rand.NextDouble() <= (Main.expertMode ? 60 : 55));
-            BaseAI.DropItem(npc, mod.ItemType("MantidCarapace"), 1 + (willDropMore ? (Main.rand.Next(3) + (Main.expertMode ? 2 : 0)) : 0), 5, 100, true);
-		}
-
+        
         public override void HitEffect(int hitDirection, double damage)
 		{
 			if (Main.netMode == 2) { return; }

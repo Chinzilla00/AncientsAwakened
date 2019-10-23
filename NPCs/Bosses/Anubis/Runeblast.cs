@@ -14,8 +14,8 @@ namespace AAMod.NPCs.Bosses.Anubis
             projectile.height = 32;
             projectile.aiStyle = -1;
             projectile.penetrate = 1;
-            projectile.friendly = true;
-            projectile.hostile = false;
+            projectile.friendly = false;
+            projectile.hostile = true;
             projectile.extraUpdates = 1;
         }
 

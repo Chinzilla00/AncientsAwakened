@@ -272,6 +272,7 @@ namespace AAMod
         public bool WorldgenReminder = false;
         public bool DemonSun = false;
         public bool AnubisBook = false;
+        public bool GivenAnuSummon = false;
 
         #endregion
 
@@ -280,6 +281,7 @@ namespace AAMod
         {
             var saved = new List<string>();
             if (AnubisBook) saved.Add("Book");
+            if (GivenAnuSummon) saved.Add("Stick");
             return new TagCompound
             {
                 { "saved", saved }
@@ -290,6 +292,7 @@ namespace AAMod
         {
             var downed = tag.GetList<string>("saved");
             AnubisBook = downed.Contains("Book");
+            GivenAnuSummon = downed.Contains("Stick");
         }
 
         #endregion
@@ -498,7 +501,8 @@ namespace AAMod
             ZoneStars = false;
             ZoneHoard = false;
             ZoneAcropolis = false;
-            WorldgenReminder = false;
+            WorldgenReminder = false; 
+            GivenAnuSummon = false;
         }
 
         #endregion
