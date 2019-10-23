@@ -1285,7 +1285,7 @@ namespace AAMod
                     }
                 }
             }
-            if (NPC.downedPlantBoss)
+            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
             {
                 if (!AMessage)
                 {

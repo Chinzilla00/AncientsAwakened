@@ -14,8 +14,8 @@ namespace AAMod.NPCs.Bosses.Anubis
             projectile.height = 32;
             projectile.aiStyle = -1;
             projectile.penetrate = 1;
-            projectile.friendly = true;
-            projectile.hostile = false;
+            projectile.friendly = false;
+            projectile.hostile = true;
             projectile.extraUpdates = 1;
         }
 
@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Anubis
         public override void AI()
         {
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
-            int dustType = ModContent.DustType<Dusts.JudgementDust>()
+            int dustType = ModContent.DustType<Dusts.JudgementDust>();
             if (projectile.localAI[0] == 0f)
             {
                 projectile.localAI[0] = 1f;

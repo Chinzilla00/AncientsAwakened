@@ -1,3 +1,4 @@
+using BaseMod;
 using Terraria;
 using Terraria.GameContent.Events;
 using Terraria.ID;
@@ -353,7 +354,7 @@ namespace AAMod.NPCs.TownNPCs
         public static string BossChat()
         {
             Player player = Main.LocalPlayer;
-            Mod mod = AAMod.instance;
+            AAPlayer mPlayer = player.GetModPlayer<AAPlayer>();
             if (Mushroom)
             {
                 return AAWorld.downedMonarch ? Lang.TownNPCAnubis("downedMonarchY") : 
@@ -391,6 +392,12 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (AnubisB)
             {
+                if (!BasePlayer.HasItem(player, ModContent.ItemType<Items.BossSummons.Scepter>()))
+                {
+                    player.QuickSpawnItem(ModContent.ItemType<Items.BossSummons.Scepter>(), 1);
+                    return "You LOST the scepter?! I can't go handing these things out like candy, you know! Anyways, here's another one."; 
+                }
+
                 return AAWorld.downedAnubis ? "You could have gone a little easier on me, ya know. My back still hurts from that." :
                     "I hear there’s this lorekeeper guy that’s really jacked and handsome, and all the ladies love him for his amazing soul-judging abilities. What a guy.";
             }
@@ -521,6 +528,7 @@ namespace AAMod.NPCs.TownNPCs
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
             Player player = Main.LocalPlayer;
+            AAPlayer mPlayer = player.GetModPlayer<AAPlayer>();
 
             if (player.head == ModContent.ItemType<Items.Vanity.Mask.AnubisMask>() && Main.rand.Next(5) == 0)
             {
@@ -590,6 +598,15 @@ namespace AAMod.NPCs.TownNPCs
             if (ConfusedZombie >= 0)
             {
                 chat.Add(Lang.TownNPCAnubis("AnubisChat30") + Main.npc[ConfusedZombie].GivenName + Lang.TownNPCAnubis("AnubisChat31"));
+            }
+
+            if (AAWorld.AMessage && !BasePlayer.HasItem(player, ModContent.ItemType<Items.BossSummons.Scepter>()))
+            {
+                if (!mPlayer.GivenAnuSummon)
+                {
+                    player.QuickSpawnItem(ModContent.ItemType<Items.BossSummons.Scepter>(), 1);
+                    return "Hey, thanks for getting back to me. I wanna test your strength. After you thrashed those mechanical meatheads, I'm interested in seeing how you fair against someone like me. Here, take this scepter and go use it in the desert on the surface whenever you're ready. I'm ready whenever.";
+                }
             }
 
             return chat;
