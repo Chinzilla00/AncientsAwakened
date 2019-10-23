@@ -20,6 +20,7 @@ namespace AAMod.Tiles
             TileID.Sets.NeedsGrassFraming[Type] = true;
             dustType = mod.DustType("Mushdust");
 			AddMapEntry(new Color(100, 100, 0));
+            drop = ItemID.DirtBlock;
 		}
         
 		public override int SaplingGrowthType(ref int style)

@@ -1586,9 +1586,9 @@ namespace AAMod
                         return "DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!!";
                         */
                         case "ShenA11":
-                        return "Hmpf..! Here we are again, gettin' close to the end of the line. I'm not holding back!";
+                        return "呼..! 又到这个地步, 离终点越来越近了. 我可不会心慈手软!";
                         case "ShenA12":
-                        return "Hm..?! You haven't kicked the bucket yet? Well then...Let's change that!";
+                        return "哈..?! 你还没当场去世? 那好...我们换种玩法!";
                         case "ShenA13":
                         return "游戏收尾才越发动人心弦, 记住了, 孩子!";
                         case "ShenA14":
