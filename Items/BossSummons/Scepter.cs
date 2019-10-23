@@ -30,25 +30,20 @@ Can only be used in the desert on the surface
             item.consumable = false;
         }
 
-        public override bool UseItem(Player player)
-        {
-            NPC.NewNPC((int)player.position.X + Main.rand.Next(-300, 300), (int)player.position.Y - 400, ModContent.NPCType<Anubis>());
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
-            return true;
-        }
-
         public override bool CanUseItem(Player player)
         {
             if (!player.ZoneDesert || player.ZoneUndergroundDesert)
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("You wave the staff around like a psychopath. Nothing happens.", Color.Gold, false);
-                return false;
+                return true;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<Anubis>()))
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Uh...what are you doing?", Color.Gold, false);
                 return false;
             }
+            NPC.NewNPC((int)player.position.X + Main.rand.Next(-300, 300), (int)player.position.Y - 400, ModContent.NPCType<Anubis>());
+            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
         }
     }

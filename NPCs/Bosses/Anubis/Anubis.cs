@@ -323,7 +323,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                 {
                     if (npc.frame.Y > frameHeight * 3)
                     {
-                        npc.frame.Y = 3;
+                        npc.frame.Y = 0;
                     }
                 }
             }
@@ -331,7 +331,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             {
                 if (npc.frame.Y > frameHeight * 3)
                 {
-                    npc.frame.Y = 3;
+                    npc.frame.Y = 0;
                 }
             }
         }
@@ -391,7 +391,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                  posY = Main.rand.Next(100, 400);
             }
 
-            npc.position = new Vector2(targetPos.X + posX, targetPos.Y + posY);
+            npc.position = new Vector2(targetPos.X + posX, targetPos.Y - posY);
             int pieCut = 20;
             Main.PlaySound(2, (int)npc.position.X, (int)npc.position.Y, 10);
             for (int m = 0; m < pieCut; m++)
