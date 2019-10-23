@@ -27,8 +27,9 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.lifeMax = 50000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
-            npc.knockBackResist = 0.4f;
+            npc.knockBackResist = 0f;
             npc.boss = true;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
         }
 
         public float[] internalAI = new float[4];
@@ -309,11 +310,21 @@ namespace AAMod.NPCs.Bosses.Anubis
             {
                 npc.frame.Y += frameHeight;
             }
-            if (npc.collideY)
+            if (internalAI[0] == 0)
             {
-                if (npc.frame.Y < frameHeight * 4 || npc.frame.Y > frameHeight * 8)
+                if (npc.velocity.Y == 0)
                 {
-                    npc.frame.Y = 4;
+                    if (npc.frame.Y < frameHeight * 4 || npc.frame.Y > frameHeight * 8)
+                    {
+                        npc.frame.Y = 4;
+                    }
+                }
+                else
+                {
+                    if (npc.frame.Y > frameHeight * 3)
+                    {
+                        npc.frame.Y = 3;
+                    }
                 }
             }
             else
@@ -509,6 +520,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                         }
                         else
                         {
+                            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
                             if (Main.netMode != 1) BaseUtility.Chat("A rematch eh? Alright, this should be fun!", Color.Gold);
                             internalAI[0] = 1;
                             Teleport();
