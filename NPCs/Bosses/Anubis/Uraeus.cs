@@ -12,8 +12,8 @@ namespace AAMod.NPCs.Bosses.Anubis
 			npc.damage = 40;
 			npc.npcSlots = 5f;
             npc.damage = 45;
-            npc.width = 32;
-            npc.height = 32;
+            npc.width = 50;
+            npc.height = 50;
             npc.defense = 20;
             npc.lifeMax = 500;
             npc.knockBackResist = 0f;
@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Anubis
         public override void AI()
         {
             Player player = Main.player[npc.target];
-			BaseAI.AIWorm(npc, new int[]{ mod.NPCType("Uraeus"), mod.NPCType("UraeusBody"), mod.NPCType("UraeusBody") }, 5, 0f, 10f, 0.07f, true, false, true, true, true);
+			BaseAI.AIWorm(npc, new int[]{ mod.NPCType("Uraeus"), mod.NPCType("UraeusBody"), mod.NPCType("UraeusTail") }, 7, 0f, 10f, 0.07f, true, false, true, true, true);
         }
 
         public override void HitEffect(int hitDirection, double damage)

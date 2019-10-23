@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Anubis
         }
         public override void Kill(int timeLeft)
         {
-            int dustType = ModContent.DustType<Rune>();
+            int dustType = ModContent.DustType<Dusts.JudgementDust>();
             int pieCut = 20;
             for (int m = 0; m < pieCut; m++)
             {

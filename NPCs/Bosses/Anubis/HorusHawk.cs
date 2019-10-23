@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Anubis
         {
             npc.width = 42;
             npc.height = 38;
-            npc.value = BaseUtility.CalcValue(0, 5, 0, 0);
+            npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
             npc.lifeMax = 500;
@@ -34,12 +34,6 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.knockBackResist = 0.2f;
             npc.noGravity = true;
         }
-
-		public override void NPCLoot()
-		{
-			bool willDropMore = (Main.rand.NextDouble() <= (Main.expertMode ? 60 : 55));
-            BaseAI.DropItem(npc, mod.ItemType("MantidCarapace"), 1 + (willDropMore ? (Main.rand.Next(3) + (Main.expertMode ? 2 : 0)) : 0), 5, 100, true);
-		}
 
         public override void HitEffect(int hitDirection, double damage)
 		{
@@ -76,7 +70,7 @@ namespace AAMod.NPCs.Bosses.Anubis
 
 			Player player = Main.player[npc.target];
 
-            npc.direction = player.Center.X < npc.Center.X ? 1 : -1;
+            npc.direction = npc.spriteDirection = npc.velocity.X > 0 ? 1 : -1;
 
             switch (npc.ai[2])
             {
