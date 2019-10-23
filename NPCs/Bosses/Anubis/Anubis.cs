@@ -66,6 +66,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             {
                 npc.TargetClosest();
             }
+
             if (internalAI[0] != 1)
             {
                 npc.noGravity = false;
@@ -73,9 +74,29 @@ namespace AAMod.NPCs.Bosses.Anubis
                 return;
             }
 
-            npc.velocity.Y *= 0;
-
+            npc.dontTakeDamage = false;
             npc.noGravity = true;
+
+            if (internalAI[3] == 0)
+            {
+                npc.velocity.Y += 0.002f;
+                if (npc.velocity.Y > .1f)
+                {
+                    internalAI[3] = 1f;
+                    npc.netUpdate = true;
+                }
+            }
+            else
+            if (internalAI[3] == 1)
+            {
+                npc.velocity.Y -= 0.002f;
+                if (npc.velocity.Y < -.1f)
+                {
+                    internalAI[3] = 0f;
+                    npc.netUpdate = true;
+                }
+            }
+
 
             Player player = Main.player[npc.target];
 
@@ -320,7 +341,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                 {
                     if (npc.frame.Y < frameHeight * 4 || npc.frame.Y > frameHeight * 8)
                     {
-                        npc.frame.Y = 4;
+                        npc.frame.Y = frameHeight * 4;
                     }
                 }
                 else
