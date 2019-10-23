@@ -72,6 +72,9 @@ namespace AAMod.NPCs.Bosses.Anubis
                 Preamble();
                 return;
             }
+
+            npc.velocity.Y *= 0;
+
             npc.noGravity = true;
 
             Player player = Main.player[npc.target];
@@ -159,7 +162,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                         int n = NPC.NewNPC((int)npc.position.X - 100, (int)npc.position.Y, ModContent.NPCType<MinionCircle>());
                         Main.npc[n].Center = new Vector2(npc.Center.X - 100, npc.Center.Y);
 
-                        if (npc.life > npc.lifeMax / 2)
+                        if (npc.life < npc.lifeMax / 2)
                         {
                             int o = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 100, ModContent.NPCType<MinionCircle>());
                             Main.npc[o].Center = new Vector2(npc.Center.X , npc.Center.Y + 100);
@@ -182,7 +185,7 @@ namespace AAMod.NPCs.Bosses.Anubis
 
                     if (npc.ai[1] == 120)
                     {
-                        BaseAI.FireProjectile(player.position, npc.position, ModContent.ProjectileType<Scepter>(), npc.damage / 2, 8, 10, -1);
+                        BaseAI.FireProjectile(player.position, npc.position, ModContent.ProjectileType<Scepter>(), npc.damage / 2, 14, 10, -1);
                     }
                     if (npc.ai[1] == 140)
                     {
@@ -308,6 +311,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.frameCounter++;
             if (npc.frameCounter > 6)
             {
+                npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
             }
             if (internalAI[0] == 0)
@@ -512,6 +516,7 @@ namespace AAMod.NPCs.Bosses.Anubis
 
                             if (internalAI[1] >= 410)
                             {
+                                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
                                 if (Main.netMode != 1) BaseUtility.Chat("Let's go!", Color.Gold);
                                 internalAI[0] = 1;
                                 Teleport();

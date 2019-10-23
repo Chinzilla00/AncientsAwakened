@@ -67,7 +67,7 @@ namespace AAMod.NPCs.Bosses.Anubis
 			}
 			npc.oldPos[0] = npc.position;
             BaseAI.AIFlier(npc, ref npc.ai, false, 0.3f, 0.2f, 6f, 4.5f, false, 250);
-			if (npc.ai[0] < 200 && player != null && player.active && !player.dead) { BaseAI.LookAt(player.Center, npc, 1); } else { if (npc.timeLeft > 10) { npc.timeLeft = 10; } npc.spriteDirection = npc.direction; }
+			if (npc.ai[0] < 200 && player != null && player.active && !player.dead) { BaseAI.LookAt(player.Center, npc, 1); }
 		}
 
 		public override bool PreDraw(SpriteBatch sb, Color dColor)

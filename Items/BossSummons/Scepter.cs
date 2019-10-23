@@ -30,7 +30,7 @@ Can only be used in the desert on the surface
             item.consumable = false;
         }
 
-        public override bool CanUseItem(Player player)
+        public override bool UseItem(Player player)
         {
             if (!player.ZoneDesert || player.ZoneUndergroundDesert)
             {
@@ -40,7 +40,7 @@ Can only be used in the desert on the surface
             if (NPC.AnyNPCs(ModContent.NPCType<Anubis>()))
             {
                 if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Uh...what are you doing?", Color.Gold, false);
-                return false;
+                return true;
             }
             NPC.NewNPC((int)player.position.X + Main.rand.Next(-300, 300), (int)player.position.Y - 400, ModContent.NPCType<Anubis>());
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);

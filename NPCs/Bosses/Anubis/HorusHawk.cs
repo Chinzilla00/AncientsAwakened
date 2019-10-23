@@ -16,7 +16,7 @@ namespace AAMod.NPCs.Bosses.Anubis
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Horus Hawk");
-            Main.npcFrameCount[npc.type] = 3;
+            Main.npcFrameCount[npc.type] = 4;
 		}
 
         public override void SetDefaults()

@@ -21,6 +21,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             projectile.friendly = false;
             projectile.hostile = true;
             projectile.extraUpdates = 1;
+            projectile.tileCollide = false;
         }
 
         public override void AI()
@@ -51,6 +52,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
             else if (projectile.ai[0] == 2)
             {
+                projectile.rotation += 1.57079637f;
                 if (projectile.velocity.Y < 12)
                 {
                     projectile.velocity.Y += .5f;
@@ -58,6 +60,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
             else if (projectile.ai[0] == 3)
             {
+                projectile.rotation += 1.57079637f;
                 if (projectile.velocity.Y > -12)
                 {
                     projectile.velocity.Y -= .5f;

@@ -11,6 +11,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             dust.noGravity = true;
             dust.frame = new Rectangle(0, Main.rand.Next(8) * 20, 16, 20);
             dust.scale *= .8f;
+            dust.velocity *= 2;
         }
 
         public override bool Update(Dust dust)
