@@ -49,7 +49,25 @@ namespace AAMod.NPCs.Bosses.Anubis
                         npc.ai[0] = 0;
                         npc.ai[1] = 1;
 
-                        int Type = Main.rand.Next(2) == 0 ? ModContent.NPCType<HorusHawk>() : ModContent.NPCType<Scarab>();
+                        int Type = Main.rand.Next(2);
+
+                        if (!NPC.AnyNPCs(ModContent.NPCType<Uraeus>()))
+                        {
+                            Type = Main.rand.Next(3);
+                        }
+
+                        switch (Type)
+                        {
+                            case 0:
+                                Type = ModContent.NPCType<HorusHawk>();
+                                break;
+                            case 1:
+                                Type = ModContent.NPCType<Scarab>();
+                                break;
+                            case 2:
+                                Type = ModContent.NPCType<Uraeus>();
+                                break;
+                        }
 
                         int m = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, Type);
                         Main.npc[m].Center = npc.Center;

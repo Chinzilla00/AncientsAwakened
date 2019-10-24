@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                 Main.dust[dustnumber].velocity *= 0.3f;
             }
 
-            BaseAI.AIBoomerang(projectile, ref projectile.ai, Main.npc[master].position, Main.npc[master].width, Main.npc[master].height, true, 40, 45, 3f, .3f, true);
+            BaseAI.AIBoomerang(projectile, ref projectile.ai, Main.npc[master].position, Main.npc[master].width, Main.npc[master].height, true, 40, 45, 10f, 1f, true);
 
             ReflectProjectiles(projectile.Hitbox);
         }

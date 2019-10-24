@@ -14,7 +14,6 @@ namespace AAMod.NPCs.Bosses.Anubis
             projectile.height = 32;
             projectile.aiStyle = -1;
             projectile.penetrate = 1;
-            projectile.friendly = false;
             projectile.hostile = true;
             projectile.extraUpdates = 1;
         }
@@ -39,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Anubis
         }
         public override void Kill(int timeLeft)
         {
-            int dustType = ModContent.DustType<Rune>();
+            int dustType = ModContent.DustType<Dusts.JudgementDust>();
             int pieCut = 20;
             for (int m = 0; m < pieCut; m++)
             {

@@ -3,7 +3,7 @@ using Terraria;
 
 namespace AAMod.NPCs.Bosses.Anubis
 {
-    public class UraeusBody : Uraeus
+    public class UraeusTail : Uraeus
     {
 		public override void SetStaticDefaults()
 		{
