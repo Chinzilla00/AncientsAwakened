@@ -15,6 +15,7 @@ namespace AAMod.Tiles
             Main.tileMerge[Type][mod.TileType("Apocalyptite")] = true;
             Terraria.ID.TileID.Sets.Conversion.Stone[Type] = true;
             Main.tileMergeDirt[Type] = true;
+            Main.tileBlockLight[Type] = true;
             SetModTree(new OroborosTree());
             soundType = 21;
             drop = mod.ItemType("DoomstoneB");   //put your CustomBlock name
