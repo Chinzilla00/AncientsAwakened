@@ -11,6 +11,7 @@ namespace AAMod.Tiles.Ore
         {
             Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
+            Main.tileValue[Type] = 360; 
             Main.tileSpelunker[Type] = true;
             Main.tileBlockLight[Type] = true;
             //true for block to emit light

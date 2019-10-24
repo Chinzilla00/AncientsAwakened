@@ -1,5 +1,4 @@
-﻿using AAMod.Items.BossSummons;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 using Terraria.ModLoader;
 

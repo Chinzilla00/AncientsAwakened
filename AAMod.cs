@@ -20,7 +20,6 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.Utilities;
-using Terraria.Localization;
 
 namespace AAMod
 {
@@ -28,6 +27,13 @@ namespace AAMod
     {
         // Miscellaneous
         public static int GoblinSoul = -1;
+        public static int BloodRune = -1;
+        public static int PirateBooty = -1;
+        public static int MonsterSoul = -1;
+        public static int HalloweenTreat = -1;
+        public static int ChristmasCheer = -1;
+        public static int MartianCredit = -1;
+
         public static int BoneAmmo = 10000;
 
         // Hotkeys
@@ -53,9 +59,6 @@ namespace AAMod
         internal TerratoolEXUI TerratoolEXState;
 
         public static SpriteFont fontMouseText;
-
-        public static int[] SNAKETYPES = new int[0];
-        public static int[] SERPENTTYPES = new int[0];
 
         public static bool thoriumLoaded = false;
         public static bool calamityLoaded = false;
@@ -231,6 +234,8 @@ namespace AAMod
                 calamityLoaded = true;
             if (js != null)
                 jsLoaded = true;
+
+            Array.Resize(ref AASets.Goblins, NPCLoader.NPCCount);
         }
 
         public static void PremultiplyTexture(Texture2D texture)
@@ -251,6 +256,13 @@ namespace AAMod
 
             instance = this;
             GoblinSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.GoblinSoul>()));
+            BloodRune = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.BloodRune>()));
+            PirateBooty = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.PirateBooty>()));
+            MonsterSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.MonsterSoul>()));
+            HalloweenTreat = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.HalloweenTreat>()));
+            ChristmasCheer = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.ChristmasCheer>()));
+            MartianCredit = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.MartianCredit>()));
+
             BoneAmmo = ItemID.Bone;
             if (Main.rand == null)
                 Main.rand = new UnifiedRandom();

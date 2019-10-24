@@ -1,5 +1,4 @@
 using Terraria.ModLoader;
-using System.Collections.Generic;
 using Terraria.ID;
 
 namespace AAMod.Items.Blocks

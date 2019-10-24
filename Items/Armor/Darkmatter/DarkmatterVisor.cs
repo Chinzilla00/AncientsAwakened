@@ -1,10 +1,8 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 
@@ -29,7 +27,6 @@ Dark, yet still barely visible");
             item.value = 300000;
             item.rare = 11;
             item.defense = 26;
-
         }
 
         public override void UpdateEquip(Player player)
@@ -50,7 +47,7 @@ Dark, yet still barely visible");
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = "An unstable portal hovers above your head, shooting dark blasts when you shoot. \nDark blasts deal 30% of your weapon's damage, weakens enemies, and occasional dark locks them";
+            player.setBonus = Lang.ArmorBonus("DarkmatterVisorBonus");
             player.GetModPlayer<VisorEffects>().setBonus = true;
             player.GetModPlayer<VisorEffects>().sunPortal = false;
             player.armorEffectDrawShadowLokis = true;
@@ -101,11 +98,11 @@ Dark, yet still barely visible");
                 {
                     if(sunPortal)
                     {
-                        Projectile.NewProjectile(player.Center + portalOffset, (Main.MouseWorld - (player.Center + portalOffset)).SafeNormalize(-Vector2.UnitY) * player.HeldItem.shootSpeed, mod.ProjectileType("SunSphere"), (int)((player.HeldItem.damage * player.rangedDamage) * .5f), 2f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center + portalOffset, (Main.MouseWorld - (player.Center + portalOffset)).SafeNormalize(-Vector2.UnitY) * player.HeldItem.shootSpeed, mod.ProjectileType("SunSphere"), (int)(player.HeldItem.damage * player.rangedDamage * .5f), 2f, player.whoAmI);
                     }
                     else
                     {
-                        Projectile.NewProjectile(player.Center + portalOffset, (Main.MouseWorld - (player.Center + portalOffset)).SafeNormalize(-Vector2.UnitY) * player.HeldItem.shootSpeed, mod.ProjectileType("DarkmatterSphere"), (int)((player.HeldItem.damage * player.rangedDamage) * .3f), 2f, player.whoAmI);
+                        Projectile.NewProjectile(player.Center + portalOffset, (Main.MouseWorld - (player.Center + portalOffset)).SafeNormalize(-Vector2.UnitY) * player.HeldItem.shootSpeed, mod.ProjectileType("DarkmatterSphere"), (int)(player.HeldItem.damage * player.rangedDamage * .3f), 2f, player.whoAmI);
                     }
                     
                 }
@@ -130,8 +127,10 @@ Dark, yet still barely visible");
             {
                 Vector2 Center = drawInfo.position + new Vector2(drawPlayer.width / 2, drawPlayer.height / 2) + drawPlayer.GetModPlayer<VisorEffects>().portalOffset - Main.screenPosition;
 
-                DrawData data = new DrawData(texture, Center, texture.Frame(1, drawPlayer.GetModPlayer<VisorEffects>().portalFrameCount, 0, drawPlayer.GetModPlayer<VisorEffects>().portalFrame), Color.White, 0f, new Vector2(texture.Size().X, texture.Size().Y / 4) * .5f, 1f, drawInfo.spriteEffects, 0);
-                data.shader = drawInfo.bodyArmorShader;
+                DrawData data = new DrawData(texture, Center, texture.Frame(1, drawPlayer.GetModPlayer<VisorEffects>().portalFrameCount, 0, drawPlayer.GetModPlayer<VisorEffects>().portalFrame), Color.White, 0f, new Vector2(texture.Size().X, texture.Size().Y / 4) * .5f, 1f, drawInfo.spriteEffects, 0)
+                {
+                    shader = drawInfo.bodyArmorShader
+                };
                 Main.playerDrawData.Add(data);
             }
         });

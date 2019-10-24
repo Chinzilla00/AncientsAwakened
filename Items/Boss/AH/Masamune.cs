@@ -7,7 +7,8 @@ namespace AAMod.Items.Boss.AH
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Masamune");
-            Tooltip.SetDefault(@"Left click to quickly slash at your foes with the blade ignore their Iflames");
+            Tooltip.SetDefault(@"Left click to quickly slash at your foes with the blade ignore their Iflames
+Right click to shoot a blade wave");
 		}
 
 		public override void SetDefaults()

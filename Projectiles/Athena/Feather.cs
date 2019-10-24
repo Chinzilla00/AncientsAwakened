@@ -14,7 +14,7 @@ namespace AAMod.Projectiles.Athena
             projectile.width = 16;
             projectile.height = 16;
             projectile.aiStyle = -1;
-            projectile.melee = true;
+            projectile.minion = true;
             projectile.penetrate = 3;
             projectile.friendly = true;
         }

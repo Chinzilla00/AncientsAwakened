@@ -7,6 +7,7 @@ using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using AAMod.NPCs.Enemies.Sky;
+using AAMod.Worldgeneration;
 
 namespace AAMod.NPCs.Bosses.Athena
 {
@@ -40,6 +41,7 @@ namespace AAMod.NPCs.Bosses.Athena
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Athena");
             npc.alpha = 255;
             npc.noTileCollide = true;
+            bossBag = mod.ItemType("AthenaBag");
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -93,7 +95,7 @@ namespace AAMod.NPCs.Bosses.Athena
             Player player = Main.player[npc.target];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
-            Vector2 Acropolis = new Vector2(Origin.X + (76 * 16), Origin.Y + (72 * 16));
+            Vector2 Acropolis = new Vector2(Origin.X + (80 * 16), Origin.Y + (79 * 16));
 
             //Preamble Shite 
             if (internalAI[2] != 1)
@@ -136,8 +138,13 @@ namespace AAMod.NPCs.Bosses.Athena
 
                                 if (internalAI[3] >= 420)
                                 {
+                                    Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
+                                    AcropolisCloud biome = new AcropolisCloud();
+                                    biome.Place(origin, WorldGen.structures);
+
                                     if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena6"), Color.CornflowerBlue);
                                     internalAI[2] = 1;
+
                                     npc.netUpdate = true;
                                 }
                             }
@@ -169,6 +176,10 @@ namespace AAMod.NPCs.Bosses.Athena
 
                                 if (internalAI[3] >= 180)
                                 {
+                                    Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
+                                    AcropolisCloud biome = new AcropolisCloud();
+                                    biome.Place(origin, WorldGen.structures);
+
                                     if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena8"), Color.CornflowerBlue);
                                     internalAI[2] = 1;
                                     npc.netUpdate = true;
@@ -190,6 +201,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     npc.TargetClosest();
                     if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 5000 || !modPlayer.ZoneAcropolis)
                     {
+                        AAWorld.ClearClouds();
                         if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena9"), Color.CornflowerBlue);
                         int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaFlee>());
                         Main.npc[p].Center = npc.Center;
@@ -342,18 +354,18 @@ namespace AAMod.NPCs.Bosses.Athena
         public Vector2 CloudPick()
         {
             int CloudChoice = Main.rand.Next(12);
-            Vector2 Cloud1 = new Vector2(Origin.X + (73 * 16), Origin.Y + (8 * 16));
-            Vector2 Cloud2 = new Vector2(Origin.X + (43 * 16), Origin.Y + (19 * 16));
-            Vector2 Cloud3 = new Vector2(Origin.X + (25 * 16), Origin.Y + (39 * 16));
-            Vector2 Cloud4 = new Vector2(Origin.X + (14 * 16), Origin.Y + (61 * 16));
-            Vector2 Cloud5 = new Vector2(Origin.X + (20 * 16), Origin.Y + (93 * 16));
-            Vector2 Cloud6 = new Vector2(Origin.X + (45 * 16), Origin.Y + (114 * 16));
-            Vector2 Cloud7 = new Vector2(Origin.X + (73 * 16), Origin.Y + (122 * 16));
-            Vector2 Cloud8 = new Vector2(Origin.X + (110 * 16), Origin.Y + (112 * 16));
-            Vector2 Cloud9 = new Vector2(Origin.X + (128 * 16), Origin.Y + (92 * 16));
-            Vector2 Cloud10 = new Vector2(Origin.X + (135 * 16), Origin.Y + (63 * 16));
-            Vector2 Cloud11 = new Vector2(Origin.X + (122 * 16), Origin.Y + (38 * 16));
-            Vector2 Cloud12 = new Vector2(Origin.X + (101 * 16), Origin.Y + (18 * 16));
+            Vector2 Cloud1 = new Vector2(Origin.X + (80 * 16), Origin.Y + (12 * 16));
+            Vector2 Cloud2 = new Vector2(Origin.X + (110 * 16), Origin.Y + (23 * 16));
+            Vector2 Cloud3 = new Vector2(Origin.X + (130 * 16), Origin.Y + (42 * 16));
+            Vector2 Cloud4 = new Vector2(Origin.X + (139 * 16), Origin.Y + (66 * 16));
+            Vector2 Cloud5 = new Vector2(Origin.X + (134 * 16), Origin.Y + (96 * 16));
+            Vector2 Cloud6 = new Vector2(Origin.X + (109 * 16), Origin.Y + (119 * 16));
+            Vector2 Cloud7 = new Vector2(Origin.X + (80 * 16), Origin.Y + (129 * 16));
+            Vector2 Cloud8 = new Vector2(Origin.X + (43 * 16), Origin.Y + (117 * 16));
+            Vector2 Cloud9 = new Vector2(Origin.X + (24 * 16), Origin.Y + (96 * 16));
+            Vector2 Cloud10 = new Vector2(Origin.X + (19 * 16), Origin.Y + (68 * 16));
+            Vector2 Cloud11 = new Vector2(Origin.X + (33 * 16), Origin.Y + (44 * 16));
+            Vector2 Cloud12 = new Vector2(Origin.X + (50 * 16), Origin.Y + (20 * 16));
             if (CloudChoice == 1)
             {
                 return Cloud2;
@@ -475,6 +487,8 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override void NPCLoot()
         {
+            AAWorld.ClearClouds();
+
             if (NPC.downedMoonlord)
             {
                 if (!AAWorld.downedAthenaA)
@@ -484,7 +498,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
                 else
                 {
-                    int a = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaA>());
+                    int a = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<Olympian.AthenaA>());
                     Main.npc[a].Center = npc.Center;
                     int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
                     Main.projectile[b].Center = npc.Center;

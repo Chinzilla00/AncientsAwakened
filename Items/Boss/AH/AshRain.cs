@@ -73,7 +73,7 @@ Right click to detonate fireballs");
 		{
             if (player.altFunctionUse != 2)
 			{
-				int P = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("FireMagic"), (int)damage, knockBack, player.whoAmI, 0f, 0f);
+				int P = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("FireMagic"), damage, knockBack, player.whoAmI, 0f, 0f);
                 AshRainFire.Add(P);
 			}
 			return false;

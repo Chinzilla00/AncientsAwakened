@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using AAMod.Worldgeneration;
 
 namespace AAMod.NPCs.Bosses.Athena
 {
@@ -36,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Athena
         public override void AI()
         {
             Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
-            Vector2 Acropolis = new Vector2(Origin.X + (76 * 16), Origin.Y + (72 * 16));
+            Vector2 Acropolis = new Vector2(Origin.X + (80 * 16), Origin.Y + (79 * 16));
             npc.TargetClosest();
             if (Main.netMode != 1)
             {
@@ -116,8 +117,12 @@ namespace AAMod.NPCs.Bosses.Athena
                             else
                             if (npc.ai[0] >= 1200)
                             {
+                                Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
+                                AcropolisCloud1 biome = new AcropolisCloud1();
+                                biome.Place(origin, WorldGen.structures);
+
                                 if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat9"), Color.CornflowerBlue);
-                                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], ModContent.NPCType<AthenaA>(), false, npc.Center);
+                                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], ModContent.NPCType<Olympian.AthenaA>(), false, npc.Center);
 
                                 int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer);
                                 Main.projectile[b].Center = npc.Center;

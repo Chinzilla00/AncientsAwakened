@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
+using Terraria.Localization;
 
 namespace AAMod.Tiles.Boss
 {
@@ -87,7 +88,7 @@ namespace AAMod.Tiles.Boss
             {
                 Player player = Main.player[BaseMod.BaseAI.GetPlayer(new Vector2(i, j), -1)];
                 AAWorld.SmashDragonEgg = 2;
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Broodmother"), false, 0, 0, "The Broodmother");
+                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Broodmother"), false, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Broodmother"));
             }
         }
 

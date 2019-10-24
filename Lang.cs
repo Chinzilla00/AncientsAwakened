@@ -1,26 +1,11 @@
-using AAMod.Backgrounds;
-using AAMod.Globals;
-using BaseMod;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using Terraria;
-using Terraria.GameContent.UI;
-using Terraria.Graphics.Effects;
-using Terraria.Graphics.Shaders;
-using Terraria.ModLoader;
-using Terraria.UI;
-using Terraria.Utilities;
 using Terraria.Localization;
 
 namespace AAMod
 {
     public class Lang
     {
-        public static string Worldtext(String WorldInfo)
+        public static string Worldtext(string WorldInfo)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -112,7 +97,7 @@ namespace AAMod
                 }
             return "";
         }
-        public static string AAPlayerChat(String PlayerInfo)
+        public static string AAPlayerChat(string PlayerInfo)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -168,7 +153,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string Newtext(String Newtext)
+        public static string Newtext(string Newtext)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -179,7 +164,7 @@ namespace AAMod
             return"";
         }
 
-        public static string GreedChest(String Greed)
+        public static string GreedChest(string Greed)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -208,7 +193,7 @@ namespace AAMod
             return"";
         }
 
-        public static string BossSummonName(String Boss)
+        public static string BossSummonName(string Boss)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -218,7 +203,8 @@ namespace AAMod
                 }
             return"";
         }
-        public static string GlobalNPCSInfo(String NPCsummon)
+
+        public static string GlobalNPCSInfo(string NPCsummon)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -238,71 +224,8 @@ namespace AAMod
                 }
             return"";
         }
-        public static string TownNPCStanLee(String StanLee)
-        {
-            if(Language.ActiveCulture == GameCulture.Chinese)
-                {
-                    switch(StanLee)
-                    {
-                        case "StanLeeName":
-                        return "插画绘师";
-                        case "StanLeeChat1":
-                        return "你知道, 我想一个人可以有所作为. -牛津纳菲尔德学院如是说";
-                        case "StanLeeChat2":
-                        return "我觉得你高了";
-                        case "StanLeeChat3":
-                        return "你看见我的鞋了吗? ";
-                        case "StanLeeChat4":
-                        return "曾经我也是保安， 但是， 呃……后来我被解雇了……";
-                        case "StanLeeChat5":
-                        return "精益求精. ";
-                        case "StanLeeChat6":
-                        return "嘿， 如果你有报纸的话， 我可以借体育栏目看看吗? ";
-                        case "StanLeeChat7":
-                        return "我记得当我是一个邮车司机的时候， 我要送一些邮件给名人. 我想， 他叫托尼…史塔克? ";
-                        case "StanLeeChat8":
-                        return "哈……!太搞笑了!";
-                        case "StanLeeChat9":
-                        return "喔!很合身";
-                        case "StanLeeChat10":
-                        return "别逼我用鞭子抽你， 你这个小混蛋. ";
-                        case "StanLeeChat11":
-                        return "你有毛病吗， 你以前从没见过宇宙飞船? ";
-                    }
-                }
-            else
-                {
-                    switch(StanLee)
-                    {
-                        case "StanLeeName":
-                        return "Illustrator";
-                        case "StanLeeChat1":
-                        return "You know, I guess one person can make a difference. 'Nuff said.";
-                        case "StanLeeChat2":
-                        return "I thought you'd be taller.";
-                        case "StanLeeChat3":
-                        return "Have you seen my shoe?";
-                        case "StanLeeChat4":
-                        return "And then there was this one time I was a security guard, but uh...then I got fired...";
-                        case "StanLeeChat5":
-                        return "Excelsior.";
-                        case "StanLeeChat6":
-                        return "Hey, if you got a newspaper, could I borrow the sports section?";
-                        case "StanLeeChat7":
-                        return "I remember when I was a mail truck driver, got to deliver some mail to some famous guy. I think his name was Tony...Stank?";
-                        case "StanLeeChat8":
-                        return "HAH..! THAT'S HILARIOUS!";
-                        case "StanLeeChat9":
-                        return "Wow, nice suit.";
-                        case "StanLeeChat10":
-                        return "Don't make me whip ya, you little punk.";
-                        case "StanLeeChat11":
-                        return "Whats'a matter with you, ya never seen a spaceship before?";
-                    }
-                }
-            return"";
-        }
-        public static string TownNPCAnubis(String Anubis)
+
+        public static string TownNPCAnubis(string Anubis)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -745,7 +668,8 @@ namespace AAMod
                 }
             return"";
         }
-        public static string TownNPCGoblinSlayer(String GoblinSlayer)
+
+        public static string TownNPCGoblinSlayer(string GoblinSlayer)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -797,11 +721,16 @@ namespace AAMod
                         return "Why do I hate goblins? Because they're goblins.";
                         case "GoblinSlayerChat9":
                         return "Hey, while you're out there, can you kill some goblins for me? Give me their souls and I'll trade you for some of my extra goblin slaying gear.";
-                    }
+                        case "GoblinSlayerChat10":
+                        return "Souka.";
+                        case "GoblinSlayerChat11":
+                        return "There are other armies invading this land like those dreaded goblins. Fortunately, beating the snot out of those little twerps has prepared me. Bring me some special things from them and I'll give you some of the stuff I've picked up from them.";
+
                 }
+            }
             return"";
         }
-        public static string TownNPCLovecraftian(String Lovecraftian)
+        public static string TownNPCLovecraftian(string Lovecraftian)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -945,7 +874,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string TownNPCMushman(String Mushman)
+        public static string TownNPCMushman(string Mushman)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -1030,7 +959,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string TownNPCSamurai(String Samurai)
+        public static string TownNPCSamurai(string Samurai)
         {
             if(Language.ActiveCulture == GameCulture.English)
                 {
@@ -1130,7 +1059,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string BossChat(String BossInfo)
+        public static string BossChat(string BossInfo)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -1657,9 +1586,9 @@ namespace AAMod
                         return "DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!!";
                         */
                         case "ShenA11":
-                        return "Hmpf..! Here we are again, gettin' close to the end of the line. I'm not holding back!";
+                        return "呼..! 又到这个地步, 离终点越来越近了. 我可不会心慈手软!";
                         case "ShenA12":
-                        return "Hm..?! You haven't kicked the bucket yet? Well then...Let's change that!";
+                        return "哈..?! 你还没当场去世? 那好...我们换种玩法!";
                         case "ShenA13":
                         return "游戏收尾才越发动人心弦, 记住了, 孩子!";
                         case "ShenA14":
@@ -2453,7 +2382,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string BossSummonsInfo(String BossName)
+        public static string BossSummonsInfo(string BossName)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -2797,7 +2726,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string BossCheck(String Boss)
+        public static string BossCheck(string Boss)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -2852,7 +2781,7 @@ namespace AAMod
                         case "GreedInfo":
                         return "在欲望金窟的原欲祭坛\n处召唤.";
                         case "Athena":
-                        return "天城鸟妖神";
+                        return "穹武鸮姬";
                         case "AthenaInfo":
                         return " 在天穹卫城的天鸮祭坛\n上召唤.";
                         case "AthenaA":
@@ -2993,43 +2922,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string ItemsInfo(String Itemsname)
-        {
-            if(Language.ActiveCulture == GameCulture.Chinese)
-                {
-                    switch(Itemsname)
-                    {
-                        case "GoblinDollInfo":
-                        return "灵魂宝石在你手中具象化";
-                        case "GoblinSoulBuyprice":
-                        return "购买价格:";
-                        case "GoblinSoul":
-                        return "哥布林亡魂";
-                        case "GoblinSouls":
-                        return "哥布林亡魂";
-                        case "DemiseEXInfo":
-                        return "被击中的敌人灵魂爆裂";
-                    }
-                }
-            else
-                {
-                    switch(Itemsname)
-                    {
-                        case "GoblinDollInfo":
-                        return "The soul stone materializes in your hand";
-                        case "GoblinSoulBuyprice":
-                        return "Buy price:";
-                        case "GoblinSoul":
-                        return "Goblin Soul";
-                        case "GoblinSouls":
-                        return "Goblin Souls";
-                        case "DemiseEXInfo":
-                        return "The struck enemy's soul bursts";
-                    }
-                }
-            return"";
-        }
-        public static string RajahSPTooltip(String RajahSash)
+        public static string RajahSPTooltip(string RajahSash)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -3085,7 +2978,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string GreedTooltip(String Greed)
+        public static string GreedTooltip(string Greed)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -3105,7 +2998,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string questFish(String questFishtext)
+        public static string questFish(string questFishtext)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -3137,7 +3030,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string TilesInfo(String Tiles)
+        public static string TilesInfo(string Tiles)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -3210,7 +3103,7 @@ namespace AAMod
                 }
             return"";
         }
-        public static string ArmorBonus(String Armorname)
+        public static string ArmorBonus(string Armorname)
         {
             if (Language.ActiveCulture == GameCulture.Chinese)
                 {
@@ -3221,12 +3114,10 @@ namespace AAMod
 减少20%弹药消耗
 敌人减少瞄准你的可能性";
                         case "AssassinBonus":
-                        return  @"悄声走近, 突然刺杀
-增加18%远程/近战伤害
-减少25%弹药消耗
-双击下键进入隐形状态
-隐形状态下移动不受阻碍
-隐形状态下近战和远程伤害增加";
+                        return  @"增加30%近战速度和弹药速度
+你使用近战武器时有几率投掷匕首
+你使用远程武器时有几率发射额外箭矢
+匕首/箭矢会削减敌人20防御并增加10%受到的伤害";
                         case "AtlanteanBonus":
                         return @"完全处于液体中时, 你的魔法能力和防御力提升";
                         case "BlazingBonus":
@@ -3254,17 +3145,20 @@ namespace AAMod
                         case "PerfectChaosVisorBonus":
                         return "“混沌赐予你力量”\n随着你的生命减少， 你的远程伤害和暴击率增加\n你的远程攻击对敌人造成冥昧业火";
                         case "DarkmatterHeaddressBonus":
-                        return @"增加6召唤上限
-你的召唤物会电击敌人
-夜晚增加8%伤害减免";
-                        case "DarkmatterHelmBonus":
-                        return "增加30%投掷速度和暴击率\r\n你的投掷武器会电击敌人\r\n夜晚增加8%伤害减免";
+                        return @"你的召唤物有机会消灭敌人的弹幕";
                         case "DarkmatterHelmetBonus":
-                        return "增加15%近战暴击率和近战速度\r\n你的近战武器会电击敌人\r\n夜晚增加8%伤害减免";
-                        case "DarkmatterMaskBonus":
-                        return "增加200魔力上限\r\n减少20%魔力消耗\r\n你的魔法攻击会电击敌人\r\n夜晚增加8%伤害减免";
+                        return "你和附近的盟友减少40%受到的伤害";
+                        case "DarkmatterMaskBonus1":
+                        return "受到来自敌人的伤害\n 受到伤害的2%会回复你的生命\n";
+                        case "DarkmatterMaskBonus2":
+                        return "魔法伤害\n";
+                        case "DarkmatterMaskBonus3":
+                        return "%暴击率";
                         case "DarkmatterVisorBonus":
-                        return "减少25%弹药消耗\r\n增加20%远程暴击率\r\n你的远程武器会电击敌人\r\n夜晚增加8%伤害减免";
+                        return @"你的头上生成一个不稳定的传送门
+当你射击时会发射黑暗爆破弹. 
+黑暗爆破弹伤害为你武器的伤害的30%, 
+可以弱化敌人, 有机会对敌人造成黑暗封锁";
                         case "DeathlySkullBonus":
                         return "如死般默然, 使得怪物更少瞄准你\r\n减少20%弹药消耗";
                         case "DemonHoodBonus":
@@ -3361,16 +3255,22 @@ namespace AAMod
                         return "+2召唤上限\r\n你可以进行闪电般的冲刺";
                         case "Paladin_HelmetBonus":
                         return "+100生命上限\r\n获得圣骑士盾效果";
-                        case "RadiumHatBonus":
-                        return "+7召唤上限\r\n受到攻击会有星星从天堂坠落并增加你的移动速度\r\n白天增加30%移动速度";
+                        case "RadiumHatBonus1":
+                        return "召唤物有几率对周围的敌人也造成伤害\n";
+                        case "RadiumHatBonus2":
+                        return "召唤伤害";
                         case "RadiumHeadgearBonus":
-                        return "减少25%弹药消耗\r\n增加20%远程暴击率\r\n受到攻击会有星星从天堂坠落并增加你的移动速度";
-                        case "RadiumHelmBonus":
-                        return "增加30%投掷暴击率和速度\r\n受到攻击会有星星从天堂坠落并增加你的移动速度\r\n白天增加30%移动速度";
+                        return @"你的头上生成一个太阳传送门
+你射击时，会发出太阳爆破弹
+太阳爆破弹伤害为你的武器的伤害50%, 会对敌人造成燃烧";
                         case "RadiumHelmetBonus":
-                        return "增加15%近战暴击率和速度\r\n受到攻击会有星星从天堂坠落并增加你的移动速度\r\n白天增加30%移动速度";
-                        case "RadiumMaskBonus":
-                        return "+200魔力上限\r\n减少20%魔力消耗\r\n受到攻击会有星星从天堂坠落并增加你的移动速度\r\n白天增加30%移动速度";
+                        return "附近的敌人将会受到更多的伤害";
+                        case "RadiumMaskBonus1":
+                        return "受到敌人伤害时\n 受到伤害的50%将回复魔力值\n如果处于最大魔力值时, 你获得魔力超载buff\n";
+                        case "RadiumMaskBonus2":
+                        return "魔法伤害\n";
+                        case "RadiumMaskBonus3":
+                        return "%暴击率";
                         case "RaiderChestBonus":
                         return "你不会被击退\r\n随着你的生命值降低, 你的伤害减免将提高";
                         case "StarcloudHeadgearBonus":
@@ -3438,11 +3338,10 @@ namespace AAMod
 20% decreased ammo consumption
 Enemies are less likely to target you";
                         case "AssassinBonus":
-                        return  @"Slash and Stalk.
-18% increased Melee and Ranged damage
-25% decreased ammo consumption
-Enemies are less likely to target you
-you can do a swift dash";
+                        return @"Increase 30% melee speed and projectile velocity
+Your melee weapons have chance to throw daggers
+Your ranged weapons have chance to shoot extra arrows
+Dagger/arrow can decrease enemies 20 defense and increase 10% damage received";
                         case "AtlanteanBonus":
                         return @"While submerged in liquids, your magic abilities and defense are enhanced";
                         case "BlazingBonus":
@@ -3492,27 +3391,18 @@ Your minions raze your oponents with the flames of discordian hell";
 As your health decreases, your ranged damage and critical chance increases
 Your ranged attacks raze your oponents with the flames of discordian hell";
                         case "DarkmatterHeaddressBonus":
-                        return @"Increases max number of minions by 6
-Your minions electrocute enemies
-8% increased damage resistance at night";
-                        case "DarkmatterHelmBonus":
-                        return @"30% throwing crit chance and velocity
-Your thrown weapons electrocute enemies
-8% increased damage resistance at night";
+                        return @"Minions will ocasionaly attempt to distrupt enemy projectiles";
                         case "DarkmatterHelmetBonus":
-                        return @"15% increased melee critical chance and speed
-Your melee weapons electrocute enemies
-8% increased damage resistance at night";
-                        case "DarkmatterMaskBonus":
-                        return  @"200 increased maximum mana
-20% reduced mana usage
-Your Magic spells electrocute enemies
-8% increased damage resistance at night";
+                        return @"You and nearby allies recieve 40% less damage";
+                        case "DarkmatterMaskBonus1":
+                        return "Damage nearby enemies \n 2% of the damage dealt will heal you\n";
+                        case "DarkmatterMaskBonus2":
+                        return " Magic Damage\n";
+                        case "DarkmatterMaskBonus3":
+                        return "% critical strike chance";
                         case "DarkmatterVisorBonus":
-                        return @"25% decreased ammo consumption
-20% increased ranged critical chance
-Your ranged ammunition electrocute enemies
-8% increased damage resistance at night";
+                        return @"An unstable portal hovers above your head, shooting dark blasts when you shoot. 
+Dark blasts deal 30% of your weapon's damage, weakens enemies, and occasional dark locks them";
                         case "DeathlySkullBonus":
                         return @"You are as quiet as death itself, making enemies less likely to target you
 20% Reduced Ammo Consumption";
@@ -3663,27 +3553,21 @@ You can do a lightning-quick dash";
                         case "Paladin_HelmetBonus":
                         return @"+100 Health
 Effects of the Paladin's Shield";
-                        case "RadiumHatBonus":
-                        return @"Increases max number of minions by 7
-Being hit causes stars from the heavans to fall around you and increases your movement speed
-30% increased movement speed during the day";
+                        case "RadiumHatBonus1":
+                        return "Minions will ocasionaly deal damage to nearby enemies\n";
+                        case "RadiumHatBonus2":
+                        return " Summon Damage";
                         case "RadiumHeadgearBonus":
-                        return @"25% decreased ammo consumption
-20% increased ranged critical chance
-Being hit causes stars from the heavans to fall around you and increases your movement speed";
-                        case "RadiumHelmBonus":
-                        return @"30% throwing crit chance and velocity
-Being hit causes stars from the heavans to fall around you and increases your movement speed
-30% increased movement speed during the day";
+                        return @"A sun portal hovers above your head, shooting sun blasts when you shoot. 
+Sun blasts deal 50% of your weapon's damage, and ignite them";
                         case "RadiumHelmetBonus":
-                        return @"15% increased melee critical chance and speed
-Being hit causes stars from the heavans to fall around you and increases your movement speed
-30% increased movement speed during the day";
-                        case "RadiumMaskBonus":
-                        return @"200 increased maximum mana
-20% reduced mana usage
-Being hit causes stars from the heavans to fall around you and increases your movement speed
-30% increased movement speed during the day";
+                        return "Nearby enemies will recieve more damage";
+                        case "RadiumMaskBonus1":
+                        return "Damage nearby enemies \n 50% of the damage dealt will restore mana\n If mana is full you'll get mana overload buff instead\n";
+                        case "RadiumMaskBonus2":
+                        return " Magic Damage\n";
+                        case "RadiumMaskBonus3":
+                        return "% critical strike chance";
                         case "RaiderChestBonus":
                         return @"You cannot be knocked back
 As your health goes down, your damage resistance goes up";
@@ -3779,7 +3663,7 @@ The Fire spirit becomes more powerful the less mana you have";
                 }
             return "";
         }
-        public static string WorldBuild(String Info)
+        public static string WorldBuild(string Info)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
             {

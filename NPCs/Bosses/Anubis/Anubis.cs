@@ -4,6 +4,8 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.Items.Boss.Anubis;
+using BaseMod;
+using System.IO;
 
 namespace AAMod.NPCs.Bosses.Anubis
 {
@@ -12,362 +14,594 @@ namespace AAMod.NPCs.Bosses.Anubis
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Anubis Legendscribe");
-	        Main.npcFrameCount[npc.type] = 13;		
-		}
-		
-		public override void SetDefaults()
+            Main.npcFrameCount[npc.type] = 9;
+        }
+
+        public override void SetDefaults()
         {
-            npc.npcSlots = 5f;
-            npc.width = 38;
-            npc.height = 38;
-            npc.damage = 35;
-            npc.defense = 25;
-            npc.lifeMax = 6000;
-            npc.value = Item.buyPrice(0, 0, 0, 0);
-            npc.knockBackResist = 0f;
+            npc.width = 76;
+            npc.height = 100;
             npc.aiStyle = -1;
-            animationType = 10;
-            npc.behindTiles = true;
-            npc.noGravity = true;
-            npc.noTileCollide = true;
-            npc.HitSound = SoundID.NPCHit5;
-            npc.DeathSound = SoundID.NPCDeath7;
-            npc.netAlways = true;
+            npc.damage = 35;
+            npc.defense = 40;
+            npc.lifeMax = 50000;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath6;
+            npc.knockBackResist = 0f;
             npc.boss = true;
-            bossBag = ModContent.ItemType<AnubisBag>();
-            npc.dontCountMe = true;
-		}
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
+        }
+
+        public float[] internalAI = new float[4];
+
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            {
+                writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
+                internalAI[2] = reader.ReadFloat();
+                internalAI[3] = reader.ReadFloat();
+            }
+        }
+
+        public int LocustCount = Main.expertMode ? 6 : 4;
 
         public override void AI()
         {
-            bool notMoving = false;
-            if (npc.velocity.X == 0f)
+            if (!npc.HasPlayerTarget)
             {
-                notMoving = true;
-            }
-            if (npc.justHit)
-            {
-                notMoving = false;
+                npc.TargetClosest();
             }
 
-            npc.TargetClosest(true);
+            Player player = Main.player[npc.target];
 
-            float WalkAcceleration = 6f;
+            if (player.Center.X < npc.Center.X)
+            {
+                npc.direction = npc.spriteDirection = 1;
+            }
+            else
+            {
+                npc.direction = npc.spriteDirection = -1;
+            }
 
-            if (npc.velocity.X < -WalkAcceleration || npc.velocity.X > WalkAcceleration)
+            if (internalAI[0] != 1)
             {
-                if (npc.velocity.Y == 0f)
+                npc.noGravity = false;
+                Preamble();
+                return;
+            }
+
+            npc.dontTakeDamage = false;
+            npc.noGravity = true;
+
+            if (internalAI[3] == 0)
+            {
+                npc.velocity.Y += 0.002f;
+                if (npc.velocity.Y > .1f)
                 {
-                    npc.velocity *= 0.8f;
+                    internalAI[3] = 1f;
+                    npc.netUpdate = true;
                 }
             }
-            else if (npc.velocity.X < WalkAcceleration && npc.direction == 1)
+            else
+            if (internalAI[3] == 1)
             {
-                npc.velocity.X = npc.velocity.X + 0.07f;
-                if (npc.velocity.X > WalkAcceleration)
+                npc.velocity.Y -= 0.002f;
+                if (npc.velocity.Y < -.1f)
                 {
-                    npc.velocity.X = WalkAcceleration;
-                }
-            }
-            else if (npc.velocity.X > -WalkAcceleration && npc.direction == -1)
-            {
-                npc.velocity.X = npc.velocity.X - 0.07f;
-                if (npc.velocity.X < -WalkAcceleration)
-                {
-                    npc.velocity.X = -WalkAcceleration;
-                }
-            }
-            if (npc.velocity.Y == 0f)
-            {
-                npc.ai[2] = 0f;
-            }
-            if (npc.velocity.Y != 0f && npc.ai[2] == 1f)
-            {
-                npc.TargetClosest(true);
-                npc.spriteDirection = -npc.direction;
-                if (Collision.CanHit(npc.Center, 0, 0, Main.player[npc.target].Center, 0, 0))
-                {
-                    float num82 = Main.player[npc.target].Center.X - npc.direction * 400 - npc.Center.X;
-                    float num83 = Main.player[npc.target].Bottom.Y - npc.Bottom.Y;
-                    if (num82 < 0f && npc.velocity.X > 0f)
-                    {
-                        npc.velocity.X = npc.velocity.X * 0.9f;
-                    }
-                    else if (num82 > 0f && npc.velocity.X < 0f)
-                    {
-                        npc.velocity.X = npc.velocity.X * 0.9f;
-                    }
-                    if (num82 < 0f && npc.velocity.X > -5f)
-                    {
-                        npc.velocity.X = npc.velocity.X - 0.1f;
-                    }
-                    else if (num82 > 0f && npc.velocity.X < 5f)
-                    {
-                        npc.velocity.X = npc.velocity.X + 0.1f;
-                    }
-                    if (npc.velocity.X > 6f)
-                    {
-                        npc.velocity.X = 6f;
-                    }
-                    if (npc.velocity.X < -6f)
-                    {
-                        npc.velocity.X = -6f;
-                    }
-                    if (num83 < -20f && npc.velocity.Y > 0f)
-                    {
-                        npc.velocity.Y = npc.velocity.Y * 0.8f;
-                    }
-                    else if (num83 > 20f && npc.velocity.Y < 0f)
-                    {
-                        npc.velocity.Y = npc.velocity.Y * 0.8f;
-                    }
-                    if (num83 < -20f && npc.velocity.Y > -5f)
-                    {
-                        npc.velocity.Y = npc.velocity.Y - 0.3f;
-                    }
-                    else if (num83 > 20f && npc.velocity.Y < 5f)
-                    {
-                        npc.velocity.Y = npc.velocity.Y + 0.3f;
-                    }
-                }
-                if (Main.rand.Next(3) == 0)
-                {
-                    Vector2 position = npc.Center + new Vector2(npc.direction * -14, -8f) - Vector2.One * 4f;
-                    Vector2 velocity = new Vector2(npc.direction * -6, 12f) * 0.2f + Utils.RandomVector2(Main.rand, -1f, 1f) * 0.1f;
-                    Dust dust6 = Main.dust[Dust.NewDust(position, 8, 8, 229, velocity.X, velocity.Y, 100, Color.Transparent, 1f + Main.rand.NextFloat() * 0.5f)];
-                    dust6.noGravity = true;
-                    dust6.velocity = velocity;
-                    dust6.customData = this;
-                }
-                for (int num84 = 0; num84 < 200; num84++)
-                {
-                    if (num84 != npc.whoAmI && Main.npc[num84].active && Main.npc[num84].type == npc.type && Math.Abs(npc.position.X - Main.npc[num84].position.X) + Math.Abs(npc.position.Y - Main.npc[num84].position.Y) < npc.width)
-                    {
-                        if (npc.position.X < Main.npc[num84].position.X)
-                        {
-                            npc.velocity.X = npc.velocity.X - 0.05f;
-                        }
-                        else
-                        {
-                            npc.velocity.X = npc.velocity.X + 0.05f;
-                        }
-                        if (npc.position.Y < Main.npc[num84].position.Y)
-                        {
-                            npc.velocity.Y = npc.velocity.Y - 0.05f;
-                        }
-                        else
-                        {
-                            npc.velocity.Y = npc.velocity.Y + 0.05f;
-                        }
-                    }
-                }
-            }
-            else if (Main.player[npc.target].Center.Y + 100f < npc.position.Y && Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
-            {
-                npc.velocity.Y = -5f;
-                npc.ai[2] = 1f;
-            }
-            if (Main.netMode != 1)
-            {
-                npc.localAI[2] += 1f;
-                if (npc.localAI[2] >= 360 + Main.rand.Next(360) && npc.Distance(Main.player[npc.target].Center) < 400f && Math.Abs(npc.DirectionTo(Main.player[npc.target].Center).Y) < 0.5f && Collision.CanHitLine(npc.Center, 0, 0, Main.player[npc.target].Center, 0, 0))
-                {
-                    npc.localAI[2] = 0f;
-                    Vector2 vector13 = npc.Center + new Vector2(npc.direction * 30, 2f);
-                    Vector2 vector14 = npc.DirectionTo(Main.player[npc.target].Center) * 7f;
-                    if (vector14.HasNaNs())
-                    {
-                        vector14 = new Vector2(npc.direction * 8, 0f);
-                    }
-                    int num85 = Main.expertMode ? 50 : 75;
-                    for (int num86 = 0; num86 < 4; num86++)
-                    {
-                        Vector2 vector15 = vector14 + Utils.RandomVector2(Main.rand, -0.8f, 0.8f);
-                        Projectile.NewProjectile(vector13.X, vector13.Y, vector15.X - 5, vector15.Y - 5, mod.ProjectileType(""), num85, 1f, Main.myPlayer, 0f, 0f);
-                    }
+                    internalAI[3] = 0f;
+                    npc.netUpdate = true;
                 }
             }
 
-            bool flag23 = false;
-            if (npc.velocity.Y == 0f)
+            if (npc.life < npc.lifeMax / 3 && internalAI[2] == 0)
             {
-                int num167 = (int)(npc.position.Y + npc.height + 7f) / 16;
-                int num168 = (int)npc.position.X / 16;
-                int num169 = (int)(npc.position.X + npc.width) / 16;
-                for (int num170 = num168; num170 <= num169; num170++)
+                if (Main.netMode != 1)
                 {
-                    if (Main.tile[num170, num167] == null)
+                    for (int m = 0; m < LocustCount; m++)
                     {
-                        return;
-                    }
-                    if (Main.tile[num170, num167].nactive() && Main.tileSolid[Main.tile[num170, num167].type])
-                    {
-                        flag23 = true;
-                        break;
-                    }
-                }
-            }
-
-            if (npc.velocity.Y >= 0f)
-            {
-                int num171 = 0;
-                if (npc.velocity.X < 0f)
-                {
-                    num171 = -1;
-                }
-                if (npc.velocity.X > 0f)
-                {
-                    num171 = 1;
-                }
-                Vector2 position2 = npc.position;
-                position2.X += npc.velocity.X;
-                int num172 = (int)((position2.X + npc.width / 2 + (npc.width / 2 + 1) * num171) / 16f);
-                int num173 = (int)((position2.Y + npc.height - 1f) / 16f);
-                if (Main.tile[num172, num173] == null)
-                {
-                    Main.tile[num172, num173] = new Tile();
-                }
-                if (Main.tile[num172, num173 - 1] == null)
-                {
-                    Main.tile[num172, num173 - 1] = new Tile();
-                }
-                if (Main.tile[num172, num173 - 2] == null)
-                {
-                    Main.tile[num172, num173 - 2] = new Tile();
-                }
-                if (Main.tile[num172, num173 - 3] == null)
-                {
-                    Main.tile[num172, num173 - 3] = new Tile();
-                }
-                if (Main.tile[num172, num173 + 1] == null)
-                {
-                    Main.tile[num172, num173 + 1] = new Tile();
-                }
-                if (Main.tile[num172 - num171, num173 - 3] == null)
-                {
-                    Main.tile[num172 - num171, num173 - 3] = new Tile();
-                }
-                if (num172 * 16 < position2.X + npc.width && num172 * 16 + 16 > position2.X && ((Main.tile[num172, num173].nactive() && !Main.tile[num172, num173].topSlope() && !Main.tile[num172, num173 - 1].topSlope() && Main.tileSolid[Main.tile[num172, num173].type] && !Main.tileSolidTop[Main.tile[num172, num173].type]) || (Main.tile[num172, num173 - 1].halfBrick() && Main.tile[num172, num173 - 1].nactive())) && (!Main.tile[num172, num173 - 1].nactive() || !Main.tileSolid[Main.tile[num172, num173 - 1].type] || Main.tileSolidTop[Main.tile[num172, num173 - 1].type] || (Main.tile[num172, num173 - 1].halfBrick() && (!Main.tile[num172, num173 - 4].nactive() || !Main.tileSolid[Main.tile[num172, num173 - 4].type] || Main.tileSolidTop[Main.tile[num172, num173 - 4].type]))) && (!Main.tile[num172, num173 - 2].nactive() || !Main.tileSolid[Main.tile[num172, num173 - 2].type] || Main.tileSolidTop[Main.tile[num172, num173 - 2].type]) && (!Main.tile[num172, num173 - 3].nactive() || !Main.tileSolid[Main.tile[num172, num173 - 3].type] || Main.tileSolidTop[Main.tile[num172, num173 - 3].type]) && (!Main.tile[num172 - num171, num173 - 3].nactive() || !Main.tileSolid[Main.tile[num172 - num171, num173 - 3].type]))
-                {
-                    float num174 = num173 * 16;
-                    if (Main.tile[num172, num173].halfBrick())
-                    {
-                        num174 += 8f;
-                    }
-                    if (Main.tile[num172, num173 - 1].halfBrick())
-                    {
-                        num174 -= 8f;
-                    }
-                    if (num174 < position2.Y + npc.height)
-                    {
-                        float num175 = position2.Y + npc.height - num174;
-                        float num176 = 16.1f;
-                        if (num175 <= num176)
+                        int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Locust"), 0);
+                        Main.npc[npcID].Center = npc.Center;
+                        Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
+                        Main.npc[npcID].velocity *= 8f;
+                        Main.npc[npcID].ai[0] = m;
+                        Main.npc[npcID].netUpdate2 = true;
+                        if (!Main.expertMode)
                         {
-                            npc.gfxOffY += npc.position.Y + npc.height - num174;
-                            npc.position.Y = num174 - npc.height;
-                            if (num175 < 9f)
+                            Main.npc[npcID].ai[2] = 0;
+                            if (m == 0 || m == 2)
                             {
-                                npc.stepSpeed = 1f;
+                                Main.npc[npcID].ai[2] = 40;
+                            }
+                        }
+                        else
+                        {
+                            Main.npc[npcID].ai[2] = 0;
+                            if (m == 0 || m == 3)
+                            {
+                                Main.npc[npcID].ai[2] = 40;
+                            }
+                            else if (m == 2 || m == 4)
+                            {
+                                Main.npc[npcID].ai[2] = 80;
+                            }
+                        }
+                        int dustType = ModContent.DustType<Dusts.JudgementDust>();
+                        int pieCut = 20;
+                        for (int i = 0; i < pieCut; i++)
+                        {
+                            int dustID = Dust.NewDust(Main.npc[npcID].position, Main.npc[npcID].width, Main.npc[npcID].height, dustType, 0f, 0f, 100, Color.White, 1.6f);
+                            Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(6f, 0f), i / (float)pieCut * 6.28f);
+                            Main.dust[dustID].noLight = false;
+                            Main.dust[dustID].noGravity = true;
+                        }
+                        for (int i = 0; i < pieCut; i++)
+                        {
+                            int dustID = Dust.NewDust(Main.npc[npcID].position, Main.npc[npcID].width, Main.npc[npcID].height, dustType, 0f, 0f, 100, Color.White, 2f);
+                            Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(9f, 0f), i / (float)pieCut * 6.28f);
+                            Main.dust[dustID].noLight = false;
+                            Main.dust[dustID].noGravity = true;
+                        }
+                    }
+                }
+            }
+
+            npc.ai[1]++;
+
+            switch (npc.ai[0])
+            {
+                case 0:
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<Runeblast>(), ref npc.ai[3], 80, npc.damage / 2, 10, true);
+
+                    if (npc.ai[3] == 40)
+                    {
+                        Teleport();
+                    }
+
+                    if (npc.ai[1] >= 260)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        Teleport();
+                    }
+                    break;
+                case 1:
+
+                    if (npc.ai[1] == 10)
+                    {
+                        if (Main.rand.Next(2) == 0 && npc.life < npc.lifeMax * (2/3))
+                        {
+                            if (npc.life < npc.lifeMax / 3)
+                            {
+                                int a = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<EyeSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 200, npc.Center.Y);
+                                Main.npc[a].Center = npc.Center;
+                                int b = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<EyeSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 200, npc.Center.Y);
+                                Main.npc[b].Center = npc.Center;
+                                int c = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<EyeSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y - 200);
+                                Main.npc[c].Center = npc.Center;
                             }
                             else
                             {
-                                npc.stepSpeed = 2f;
+                                int a = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<EyeSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 200, npc.Center.Y);
+                                Main.npc[a].Center = npc.Center;
+                                int b = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<EyeSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 200, npc.Center.Y);
+                                Main.npc[b].Center = npc.Center;
                             }
-                        }
-                    }
-                }
-            }
-            if (flag23)
-            {
-                int num177 = (int)((npc.position.X + npc.width / 2 + (npc.width / 2 + 16) * npc.direction) / 16f);
-                int num178 = (int)((npc.position.Y + npc.height - 15f) / 16f);
-
-
-                if (Main.tile[num177, num178] == null)
-                {
-                    Main.tile[num177, num178] = new Tile();
-                }
-                if (Main.tile[num177, num178 - 1] == null)
-                {
-                    Main.tile[num177, num178 - 1] = new Tile();
-                }
-                if (Main.tile[num177, num178 - 2] == null)
-                {
-                    Main.tile[num177, num178 - 2] = new Tile();
-                }
-                if (Main.tile[num177, num178 - 3] == null)
-                {
-                    Main.tile[num177, num178 - 3] = new Tile();
-                }
-                if (Main.tile[num177, num178 + 1] == null)
-                {
-                    Main.tile[num177, num178 + 1] = new Tile();
-                }
-                if (Main.tile[num177 + npc.direction, num178 - 1] == null)
-                {
-                    Main.tile[num177 + npc.direction, num178 - 1] = new Tile();
-                }
-                if (Main.tile[num177 + npc.direction, num178 + 1] == null)
-                {
-                    Main.tile[num177 + npc.direction, num178 + 1] = new Tile();
-                }
-                if (Main.tile[num177 - npc.direction, num178 + 1] == null)
-                {
-                    Main.tile[num177 - npc.direction, num178 + 1] = new Tile();
-                }
-                Main.tile[num177, num178 + 1].halfBrick();
-                int num180 = npc.spriteDirection;
-
-                num180 *= -1;
-                if ((npc.velocity.X < 0f && num180 == -1) || (npc.velocity.X > 0f && num180 == 1))
-                {
-                    if (npc.height >= 32 && Main.tile[num177, num178 - 2].nactive() && Main.tileSolid[Main.tile[num177, num178 - 2].type])
-                    {
-                        if (Main.tile[num177, num178 - 3].nactive() && Main.tileSolid[Main.tile[num177, num178 - 3].type])
-                        {
-                            npc.velocity.Y = -8f;
-                            npc.netUpdate = true;
                         }
                         else
                         {
-                            npc.velocity.Y = -7f;
-                            npc.netUpdate = true;
+                            int m = NPC.NewNPC((int)npc.position.X + 100, (int)npc.position.Y, ModContent.NPCType<MinionCircle>());
+                            Main.npc[m].Center = new Vector2(npc.Center.X + 100, npc.Center.Y);
+
+                            int n = NPC.NewNPC((int)npc.position.X - 100, (int)npc.position.Y, ModContent.NPCType<MinionCircle>());
+                            Main.npc[n].Center = new Vector2(npc.Center.X - 100, npc.Center.Y);
+
+                            if (npc.life < npc.lifeMax / 2)
+                            {
+                                int o = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 100, ModContent.NPCType<MinionCircle>());
+                                Main.npc[o].Center = new Vector2(npc.Center.X, npc.Center.Y + 100);
+
+                                int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 100, ModContent.NPCType<MinionCircle>());
+                                Main.npc[p].Center = new Vector2(npc.Center.X, npc.Center.Y - 100);
+                            }
                         }
                     }
-                    else if (Main.tile[num177, num178 - 1].nactive() && Main.tileSolid[Main.tile[num177, num178 - 1].type])
+
+                    if (npc.ai[1] >= 160)
                     {
-                        npc.velocity.Y = -6f;
-                        npc.netUpdate = true;
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        Teleport();
                     }
-                    else if (npc.position.Y + npc.height - num178 * 16 > 20f && Main.tile[num177, num178].nactive() && !Main.tile[num177, num178].topSlope() && Main.tileSolid[Main.tile[num177, num178].type])
+                    break;
+                case 2:
+
+                    if (npc.ai[1] == 120)
                     {
-                        npc.velocity.Y = -5f;
-                        npc.netUpdate = true;
+                        BaseAI.FireProjectile(player.position, npc.position, ModContent.ProjectileType<Scepter>(), npc.damage / 2, 14, 10, -1);
                     }
-                    else if (npc.directionY < 0 && (!Main.tile[num177, num178 + 1].nactive() || !Main.tileSolid[Main.tile[num177, num178 + 1].type]) && (!Main.tile[num177 + npc.direction, num178 + 1].nactive() || !Main.tileSolid[Main.tile[num177 + npc.direction, num178 + 1].type]))
+                    if (npc.ai[1] == 160)
                     {
-                        npc.velocity.Y = -8f;
-                        npc.velocity.X = npc.velocity.X * 1.5f;
-                        npc.netUpdate = true;
+                        ScepterTeleport();
                     }
-                    
-                    if (npc.velocity.Y == 0f && notMoving && npc.ai[3] == 1f)
+
+                    if (npc.ai[1] > 140 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Scepter>()))
                     {
-                        npc.velocity.Y = -5f;
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        Teleport();
                     }
+
+                    break;
+
+                case 3:
+                    if (npc.life > npc.lifeMax * (2/3))
+                    {
+                        if (npc.ai[1] == 60)
+                        {
+                            if (Main.rand.Next(2) == 0)
+                            {
+                                int l = Projectile.NewProjectile(player.position + new Vector2(-800, 0), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
+                                int r = Projectile.NewProjectile(player.position + new Vector2(800, 0), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
+                                Main.projectile[l].ai[1] = r;
+                                Main.projectile[l].Center = player.Center + new Vector2(-800, 0);
+                                Main.projectile[r].ai[1] = l;
+                                Main.projectile[r].Center = player.Center + new Vector2(800, 0);
+                            }
+                            else
+                            {
+                                int u = Projectile.NewProjectile(player.position + new Vector2(0, -800), Vector2.Zero, ModContent.ProjectileType<Block1>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
+                                int d = Projectile.NewProjectile(player.position + new Vector2(0, 800), Vector2.Zero, ModContent.ProjectileType<Block1>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
+                                Main.projectile[u].ai[1] = d;
+                                Main.projectile[u].Center = player.Center + new Vector2(0, -800);
+                                Main.projectile[d].ai[1] = u;
+                                Main.projectile[d].Center = player.Center + new Vector2(0, 800);
+                            }
+                        }
+
+                        if (npc.ai[1] > 120 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
+                        {
+                            npc.ai[0]++;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                            npc.ai[3] = 0;
+                            Teleport();
+                        }
+                    }
+                    else if (npc.life < npc.lifeMax * (2 / 3))
+                    {
+                        if (npc.ai[1] == 50)
+                        {
+                            int l = Projectile.NewProjectile(player.position + new Vector2(-800, 0), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
+                            int r = Projectile.NewProjectile(player.position + new Vector2(800, 0), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
+                            Main.projectile[l].ai[1] = r;
+                            Main.projectile[l].Center = player.Center + new Vector2(-800, 0);
+                            Main.projectile[r].ai[1] = l;
+                            Main.projectile[r].Center = player.Center + new Vector2(800, 0);
+                        }
+                        if (npc.ai[1] == 100)
+                        {
+                            int u = Projectile.NewProjectile(player.position + new Vector2(0, -800), Vector2.Zero, ModContent.ProjectileType<Block1>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
+                            int d = Projectile.NewProjectile(player.position + new Vector2(0, 800), Vector2.Zero, ModContent.ProjectileType<Block1>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
+                            Main.projectile[u].ai[1] = d;
+                            Main.projectile[u].Center = player.Center + new Vector2(0, -800);
+                            Main.projectile[d].ai[1] = u;
+                            Main.projectile[d].Center = player.Center + new Vector2(0, 800);
+                        }
+                        if (npc.ai[1] > 180 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
+                        {
+                            npc.ai[0]++;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                            npc.ai[3] = 0;
+                            Teleport();
+                        }
+                    }
+                    else if (npc.life < npc.lifeMax / 3)
+                    {
+                        if (npc.ai[1] % 40 == 0)
+                        {
+                            if (Main.rand.Next(2) == 0)
+                            {
+                                int l = Projectile.NewProjectile(player.position + new Vector2(-800, 0), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
+                                int r = Projectile.NewProjectile(player.position + new Vector2(800, 0), Vector2.Zero, ModContent.ProjectileType<Block>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
+                                Main.projectile[l].ai[1] = r;
+                                Main.projectile[l].Center = player.Center + new Vector2(-800, 0);
+                                Main.projectile[r].ai[1] = l;
+                                Main.projectile[r].Center = player.Center + new Vector2(800, 0);
+                            }
+                            else
+                            {
+                                int u = Projectile.NewProjectile(player.position + new Vector2(0, -800), Vector2.Zero, ModContent.ProjectileType<Block1>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
+                                int d = Projectile.NewProjectile(player.position + new Vector2(0, 800), Vector2.Zero, ModContent.ProjectileType<Block1>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
+                                Main.projectile[u].ai[1] = d;
+                                Main.projectile[u].Center = player.Center + new Vector2(0, -800);
+                                Main.projectile[d].ai[1] = u;
+                                Main.projectile[d].Center = player.Center + new Vector2(0, 800);
+                            }
+                        }
+
+                        if (npc.ai[1] > 270 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
+                        {
+                            npc.ai[0]++;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                            npc.ai[3] = 0;
+                            Teleport();
+                        }
+                    }
+                    break;
+                default:
+                    npc.ai[0] = 0;
+                    goto case 0;
+            }
+        }
+
+        public void AliveCheck(Player player)
+        {
+            if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f || !player.ZoneDesert)
+            {
+                npc.TargetClosest();
+                if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f || !player.ZoneDesert)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat("HAH! Get hosed-- er, sanded.", Color.Gold);
+                    int a = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<TownNPCs.Anubis>());
+                    Main.npc[a].Center = npc.Center;
+                    npc.active = false;
                 }
             }
         }
 
-        public override bool PreNPCLoot()
-		{
-			return false;
-		}
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frameCounter++;
+            if (npc.frameCounter > 6)
+            {
+                npc.frameCounter = 0;
+                npc.frame.Y += frameHeight;
+            }
+            if (internalAI[0] == 0)
+            {
+                if (npc.velocity.Y == 0)
+                {
+                    if (npc.frame.Y < frameHeight * 4 || npc.frame.Y > frameHeight * 8)
+                    {
+                        npc.frame.Y = frameHeight * 4;
+                    }
+                }
+                else
+                {
+                    if (npc.frame.Y > frameHeight * 3)
+                    {
+                        npc.frame.Y = 0;
+                    }
+                }
+            }
+            else
+            {
+                if (npc.frame.Y > frameHeight * 3)
+                {
+                    npc.frame.Y = 0;
+                }
+            }
+        }
 
-		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
-		{
-			return false;
-		}
+        public void Teleport()
+        {
+            Vector2 position = npc.Center + (Vector2.One * -20f);
+            int num84 = 40;
+            int height3 = num84;
+            for (int num85 = 0; num85 < 3; num85++)
+            {
+                int num86 = Dust.NewDust(position, num84, height3, 240, 0f, 0f, 100, default, 1.5f);
+                Main.dust[num86].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+            }
+            for (int num87 = 0; num87 < 15; num87++)
+            {
+                int num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 50, default, 3.7f);
+                Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                Main.dust[num88].noGravity = true;
+                Main.dust[num88].noLight = true;
+                Main.dust[num88].velocity *= 3f;
+                Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
+                num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 25, default, 1.5f);
+                Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                Main.dust[num88].velocity *= 2f;
+                Main.dust[num88].noGravity = true;
+                Main.dust[num88].fadeIn = 1f;
+                Main.dust[num88].color = Color.Black * 0.5f;
+                Main.dust[num88].noLight = true;
+                Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * 8f;
+            }
+            for (int num89 = 0; num89 < 10; num89++)
+            {
+                int num90 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 2.7f);
+                Main.dust[num90].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
+                Main.dust[num90].noGravity = true;
+                Main.dust[num90].noLight = true;
+                Main.dust[num90].velocity *= 3f;
+                Main.dust[num90].velocity += npc.DirectionTo(Main.dust[num90].position) * 2f;
+            }
+            for (int num91 = 0; num91 < 30; num91++)
+            {
+                int num92 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 1.5f);
+                Main.dust[num92].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
+                Main.dust[num92].noGravity = true;
+                Main.dust[num92].velocity *= 3f;
+                Main.dust[num92].velocity += npc.DirectionTo(Main.dust[num92].position) * 3f;
+            }
+
+            Player player = Main.player[npc.target];
+            Vector2 targetPos = player.Center;
+            int posX = Main.rand.Next(-400, 400);
+
+            int posY = Main.rand.Next(0, 400);
+            if (posX > -100 && posX < 100)
+            {
+                 posY = Main.rand.Next(100, 400);
+            }
+
+            npc.position = new Vector2(targetPos.X + posX, targetPos.Y - posY);
+            int pieCut = 20;
+            Main.PlaySound(SoundID.Item14, npc.position);
+            for (int m = 0; m < pieCut; m++)
+            {
+                int dustID = Dust.NewDust(new Vector2(npc.Center.X - 1, npc.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.JudgementDust>(), 0f, 0f, 100, Color.White, 1.6f);
+                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / (float)pieCut * 6.28f);
+                Main.dust[dustID].noLight = false;
+                Main.dust[dustID].noGravity = true;
+            }
+            for (int m = 0; m < pieCut; m++)
+            {
+                int dustID = Dust.NewDust(new Vector2(npc.Center.X - 1, npc.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.JudgementDust>(), 0f, 0f, 100, Color.White, 2f);
+                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)pieCut * 6.28f);
+                Main.dust[dustID].noLight = false;
+                Main.dust[dustID].noGravity = true;
+            }
+        }
+
+        public void ScepterTeleport()
+        {
+            Vector2 position = npc.Center + (Vector2.One * -20f);
+            int num84 = 40;
+            int height3 = num84;
+            for (int num85 = 0; num85 < 3; num85++)
+            {
+                int num86 = Dust.NewDust(position, num84, height3, 240, 0f, 0f, 100, default, 1.5f);
+                Main.dust[num86].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+            }
+            for (int num87 = 0; num87 < 15; num87++)
+            {
+                int num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 50, default, 3.7f);
+                Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                Main.dust[num88].noGravity = true;
+                Main.dust[num88].noLight = true;
+                Main.dust[num88].velocity *= 3f;
+                Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
+                num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 25, default, 1.5f);
+                Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                Main.dust[num88].velocity *= 2f;
+                Main.dust[num88].noGravity = true;
+                Main.dust[num88].fadeIn = 1f;
+                Main.dust[num88].color = Color.Black * 0.5f;
+                Main.dust[num88].noLight = true;
+                Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * 8f;
+            }
+            for (int num89 = 0; num89 < 10; num89++)
+            {
+                int num90 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 2.7f);
+                Main.dust[num90].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
+                Main.dust[num90].noGravity = true;
+                Main.dust[num90].noLight = true;
+                Main.dust[num90].velocity *= 3f;
+                Main.dust[num90].velocity += npc.DirectionTo(Main.dust[num90].position) * 2f;
+            }
+            for (int num91 = 0; num91 < 30; num91++)
+            {
+                int num92 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 1.5f);
+                Main.dust[num92].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
+                Main.dust[num92].noGravity = true;
+                Main.dust[num92].velocity *= 3f;
+                Main.dust[num92].velocity += npc.DirectionTo(Main.dust[num92].position) * 3f;
+            }
+
+            Vector2 targetPos = Main.player[npc.target].Center;
+            targetPos.X += 300 * (npc.Center.X < targetPos.X ? 1 : -1);
+            targetPos.Y -= 300;
+            npc.position = targetPos;
+
+            int pieCut = 20;
+            for (int m = 0; m < pieCut; m++)
+            {
+                int dustID = Dust.NewDust(new Vector2(npc.Center.X - 1, npc.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.JudgementDust>(), 0f, 0f, 100, Color.White, 1f);
+                Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / (float)pieCut * 6.28f);
+                Main.dust[dustID].noLight = false;
+                Main.dust[dustID].noGravity = true;
+            }
+            for (int m = 0; m < pieCut; m++)
+            {
+                int dustID = Dust.NewDust(new Vector2(npc.Center.X - 1, npc.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.JudgementDust>(), 0f, 0f, 100, Color.White, 1.5f);
+                Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)pieCut * 6.28f);
+                Main.dust[dustID].noLight = false;
+                Main.dust[dustID].noGravity = true;
+            }
+        }
+
+        public void Preamble()
+        {
+            npc.dontTakeDamage = true;
+
+            npc.ai[3] = 39;
+            if (Main.netMode != 1)
+            {
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
+                if (npc.velocity.Y == 0)
+                {
+                    if (internalAI[1]++ < 420)
+                    {
+                        if (!AAWorld.downedAnubis)
+                        {
+                            if (internalAI[1] == 60)
+                            {
+                                string s = Main.ActivePlayersCount > 1 ? "guys" : "bud";
+                                if (Main.netMode != 1) BaseUtility.Chat("Well, " + s + ". Here we are.", Color.Gold);
+                            }
+
+                            if (internalAI[1] == 150)
+                            {
+                                if (Main.netMode != 1) BaseUtility.Chat("I hope you're ready for a real fight.", Color.Gold);
+                            }
+
+                            if (internalAI[1] == 240)
+                            {
+                                if (Main.netMode != 1) BaseUtility.Chat("Especially since I'm in my superior form.", Color.Gold);
+                            }
+
+                            if (internalAI[1] == 320)
+                            {
+                                if (Main.netMode != 1) BaseUtility.Chat("You ready? I won't hesitate to slap you silly!", Color.Gold);
+                            }
+
+                            if (internalAI[1] >= 410)
+                            {
+                                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
+                                if (Main.netMode != 1) BaseUtility.Chat("Let's go!", Color.Gold);
+                                internalAI[0] = 1;
+                                Teleport();
+                                npc.netUpdate = true;
+                            }
+                        }
+                        else
+                        {
+                            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
+                            if (Main.netMode != 1) BaseUtility.Chat("A rematch eh? Alright, this should be fun!", Color.Gold);
+                            internalAI[0] = 1;
+                            Teleport();
+                            npc.netUpdate = true;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

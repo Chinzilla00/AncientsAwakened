@@ -1,6 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using AAMod.NPCs.Bosses.Akuma.Awakened;
 using AAMod.NPCs.Bosses.Akuma;
 using System.Collections.Generic;
@@ -80,7 +81,7 @@ Non-Consumable");
         {
             if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianRuneTrue1"), new Color(175, 75, 255));
             if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianRuneTrue2"), Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, 0, 0, "Akuma, Draconian Demon", false);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, 0, 0, Language.GetTextValue("Mods.AAMod.Common.AkumaA"), false);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), player.position);
             return true;
         }

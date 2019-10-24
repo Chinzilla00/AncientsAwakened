@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 using AAMod.NPCs.Bosses.Athena;
+using AAMod.NPCs.Bosses.Athena.Olympian;
 
 namespace AAMod.NPCs.Enemies.Sky
 {
@@ -82,7 +83,7 @@ namespace AAMod.NPCs.Enemies.Sky
             }
 
             npc.spriteDirection = npc.direction;
-			npc.rotation = (npc.velocity.X * 0.05f);
+			npc.rotation = npc.velocity.X * 0.05f;
 		}
 
 		public override void FindFrame(int frameHeight)

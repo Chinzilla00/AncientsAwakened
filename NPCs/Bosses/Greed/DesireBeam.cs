@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System;
 using System.IO;
 using Terraria;
-using Terraria.GameContent.Achievements;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -89,12 +88,12 @@ namespace AAMod.NPCs.Bosses.Greed
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
             float collisionPoint = 0f;
-            return (Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), projectile.Center, projectile.Center + projectile.velocity * LaserLength, projHitbox.Width, ref collisionPoint));
+            return Collision.CheckAABBvLineCollision(targetHitbox.TopLeft(), targetHitbox.Size(), projectile.Center, projectile.Center + projectile.velocity * LaserLength, projHitbox.Width, ref collisionPoint);
         }
         public override bool? CanCutTiles()
         {
             DelegateMethods.tilecut_0 = Terraria.Enums.TileCuttingContext.AttackProjectile;
-            Utils.PlotTileLine(projectile.Center, projectile.Center + projectile.velocity * LaserLength, (float)projectile.width * projectile.scale * 2, new Utils.PerLinePoint(CutTilesAndBreakWalls));
+            Utils.PlotTileLine(projectile.Center, projectile.Center + projectile.velocity * LaserLength, projectile.width * projectile.scale * 2, new Utils.PerLinePoint(CutTilesAndBreakWalls));
             return true;
         }
 
@@ -117,22 +116,22 @@ namespace AAMod.NPCs.Bosses.Greed
             Vector2 arg_AF99_2 = projectile.Center + new Vector2(0, projectile.gfxOffY) - Main.screenPosition;
             Rectangle? sourceRectangle2 = null;
             spriteBatch.Draw(arg_AF99_1, arg_AF99_2, sourceRectangle2, color44, projectile.rotation, texture2D19.Size() / 2f, new Vector2(Math.Min(projectile.ai[1], charge) / charge, 1f), SpriteEffects.None, 0f);
-            num228 -= (float)(texture2D19.Height / 2 + texture2D21.Height) * projectile.scale;
+            num228 -= (texture2D19.Height / 2 + texture2D21.Height) * projectile.scale;
             Vector2 value20 = projectile.Center + new Vector2(0, projectile.gfxOffY);
-            value20 += projectile.velocity * projectile.scale * (float)texture2D19.Height / 2f;
+            value20 += projectile.velocity * projectile.scale * texture2D19.Height / 2f;
             if (num228 > 0f)
             {
                 float num229 = 0f;
                 Microsoft.Xna.Framework.Rectangle rectangle7 = new Microsoft.Xna.Framework.Rectangle(0, 16 * (projectile.timeLeft / 3 % 5), texture2D20.Width, 16);
                 while (num229 + 1f < num228)
                 {
-                    if (num228 - num229 < (float)rectangle7.Height)
+                    if (num228 - num229 < rectangle7.Height)
                     {
                         rectangle7.Height = (int)(num228 - num229);
                     }
-                    Main.spriteBatch.Draw(texture2D20, value20 - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(rectangle7), color44, projectile.rotation, new Vector2((float)(rectangle7.Width / 2), 0f), new Vector2(Math.Min(projectile.ai[1], charge) / charge, 1f), SpriteEffects.None, 0f);
-                    num229 += (float)rectangle7.Height * projectile.scale;
-                    value20 += projectile.velocity * (float)rectangle7.Height * projectile.scale;
+                    Main.spriteBatch.Draw(texture2D20, value20 - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(rectangle7), color44, projectile.rotation, new Vector2(rectangle7.Width / 2, 0f), new Vector2(Math.Min(projectile.ai[1], charge) / charge, 1f), SpriteEffects.None, 0f);
+                    num229 += rectangle7.Height * projectile.scale;
+                    value20 += projectile.velocity * rectangle7.Height * projectile.scale;
                     rectangle7.Y += 16;
                     if (rectangle7.Y + rectangle7.Height > texture2D20.Height)
                     {

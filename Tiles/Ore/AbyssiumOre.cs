@@ -12,6 +12,7 @@ namespace AAMod.Tiles.Ore
         {
             Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
+            Main.tileValue[Type] = 330; 
             Main.tileSpelunker[Type] = true;
             Main.tileMerge[Type][mod.TileType("Depthstone")] = true;
             Main.tileBlockLight[Type] = true;

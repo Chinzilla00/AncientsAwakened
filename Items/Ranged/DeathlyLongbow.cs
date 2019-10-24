@@ -15,7 +15,7 @@ namespace AAMod.Items.Ranged
 
         public override void SetDefaults()
         {
-            item.damage = 33; //This is the amount of damage the item does
+            item.damage = 33; 
             item.noMelee = true; //This makes sure the bow doesn't do melee damage
             item.ranged = true; //This causes your bow to do ranged damage
             item.width = 22; //Hitbox width

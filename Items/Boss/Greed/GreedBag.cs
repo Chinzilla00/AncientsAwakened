@@ -4,7 +4,6 @@ namespace AAMod.Items.Boss.Greed
 {
     public class GreedBag : BaseAAItem
 	{
-        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Treasure Bag");
@@ -31,7 +30,7 @@ namespace AAMod.Items.Boss.Greed
 		{
             if (Main.rand.Next(7) == 0)
             {
-                //player.QuickSpawnItem(mod.ItemType("GreedMask"));
+                player.QuickSpawnItem(mod.ItemType("GreedMask"));
             }
             if (Main.rand.Next(20) == 0)
             {

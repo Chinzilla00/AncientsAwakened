@@ -849,7 +849,7 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             int pID = -1;
             if (damage == -1) { Projectile proj = new Projectile(); proj.SetDefaults(projType); damage = proj.damage; }
-            bool properSide = (codable is NPC ? Main.netMode != 1 : codable is Projectile ? ((Projectile)codable).owner == Main.myPlayer : true);
+            bool properSide = codable is NPC ? Main.netMode != 1 : codable is Projectile ? ((Projectile)codable).owner == Main.myPlayer : true;
             if (properSide)
             {
                 Vector2 targetCenter = position + new Vector2(width * 0.5f, height * 0.5f);

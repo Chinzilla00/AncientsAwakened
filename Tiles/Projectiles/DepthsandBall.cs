@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod.Tiles;
 
 namespace AAMod.Tiles.Projectiles
 {

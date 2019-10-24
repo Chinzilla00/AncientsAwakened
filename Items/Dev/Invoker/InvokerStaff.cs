@@ -5,6 +5,7 @@ using Terraria.ID;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Dev.Invoker
@@ -22,22 +23,15 @@ namespace AAMod.Items.Dev.Invoker
 
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
-			String text = "";
+            string text = "";
 			Player player = Main.player[Main.myPlayer];
 			if(!player.GetModPlayer<InvokerPlayer>().Thebookoflaw)
 			{
-				text += @"Strange. All is strange. 
-Swinging a weapon causes summon damage?
-Really?
-Legendry Weapon.";
+				text += Language.GetTextValue("Mods.AAMod.Common.InvokerStaff1");
 			}
 			else
 			{
-				text += @"Left click to shoot a invoker bolt.
-Right click to banish all of the enemies according to your basic banish damage.
-Banishing enemies can heal you according to their maxlife.
-But at what cost?
-Legendry Weapon.";
+				text += Language.GetTextValue("Mods.AAMod.Common.InvokerStaff2");
 			}
 			foreach (TooltipLine tooltipLine in tooltips)
 			{
@@ -48,11 +42,11 @@ Legendry Weapon.";
 					string damageWord = splitText.Last();
 					if(Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw) 
 					{
-						tooltipLine.text = damageValue + " banish " + damageWord;
+						tooltipLine.text = damageValue + Language.GetTextValue("Mods.AAMod.Common.InvokerDamage1") + damageWord;
 					}
 					else 
 					{
-						tooltipLine.text = damageValue + " summon " + damageWord;
+						tooltipLine.text = damageValue + Language.GetTextValue("Mods.AAMod.Common.InvokerDamage2") + damageWord;
 					}
 				}
 				if (tooltipLine != null && tooltipLine.Name == "Tooltip0")
@@ -103,13 +97,13 @@ Legendry Weapon.";
 		{
 			if (player.altFunctionUse != 2 && player.GetModPlayer<InvokerPlayer>().Thebookoflaw)
 			{
-				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("InvokerStaffproj"), (int)damage, knockBack, player.whoAmI, 0f, 0f);
+				Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("InvokerStaffproj"), damage, knockBack, player.whoAmI, 0f, 0f);
 			}
 			if (player.altFunctionUse == 2 && player.GetModPlayer<InvokerPlayer>().SpringInvoker)
 			{
 				if(!player.GetModPlayer<InvokerPlayer>().InvokerMadness)
 				{
-					player.AddBuff(mod.BuffType("InvokerofMadness"), player.GetModPlayer<InvokerPlayer>().Thebookoflaw? 30 : 300);
+					player.AddBuff(mod.BuffType("InvokerofMadness"), 30);
 					player.GetModPlayer<InvokerPlayer>().BanishDamage = item.damage * 5;
 					player.GetModPlayer<InvokerPlayer>().banishing = true;
 				}
@@ -124,7 +118,7 @@ Legendry Weapon.";
 
 		public override bool AltFunctionUse(Player player)
 		{
-			return (!(!player.GetModPlayer<InvokerPlayer>().DarkCaligula && player.GetModPlayer<InvokerPlayer>().InvokedCaligula) && player.GetModPlayer<InvokerPlayer>().SpringInvoker);
+			return !(!player.GetModPlayer<InvokerPlayer>().DarkCaligula && player.GetModPlayer<InvokerPlayer>().InvokedCaligula) && player.GetModPlayer<InvokerPlayer>().SpringInvoker;
 		}
 
     }
@@ -519,10 +513,6 @@ Legendry Weapon.";
 				{
 					CaligulaSoulFight = false;
 				}
-				else if(npc.life < 50000)
-				{
-					if(!Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().InvokedCaligula) CaligulaSoulFight = false;
-				}
 				else
 				{
 					CaligulaSoulFight = true;
@@ -620,48 +610,6 @@ Legendry Weapon.";
 		}
 		
 	}
-	
-	public class InvokedProjClear : GlobalProjectile
-	{
-		public override bool Autoload(ref string name) => true;
-		public override bool PreAI(Projectile projectile)
-		{
-			if (Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().BanishProjClear)
-			{
-				for (int q = 0; q < 1000; q++)
-				{
-					Projectile p = Main.projectile[q];
-					bool KILL = false;
-					if (p.active && p.type != ModContent.ProjectileType<InvokedHeal>() && p.type != ModContent.ProjectileType<InvokedDamage>() && p.type != ModContent.ProjectileType<InvokerStaffproj>() && p.type != ModContent.ProjectileType<InvokedRune>())
-					{
-						//if(Main.netMode != 0 && p.owner != Main.clientPlayer.whoAmI) KILL = true;
-						KILL = true;
-					}
-					if (KILL) 
-					{
-						if(p.damage != 0 && !p.friendly) 
-						{
-							Projectile.NewProjectile(p.Center.X, p.Center.Y, 0, 0, mod.ProjectileType("InvokedHeal"), 0, 0f, Main.player[Main.myPlayer].whoAmI, Main.player[Main.myPlayer].whoAmI, (int)(p.damage * 0.1));
-							/* 
-							float reflect1 = 0f;
-							float reflect2 = 0f;
-							if(p.ai[0] == Main.myPlayer) reflect1 = p.owner;
-							if(p.ai[1] == Main.myPlayer) reflect2 = p.owner;
-							if(p.ai[0] != Main.myPlayer && p.ai[1] != Main.myPlayer) {reflect1 = p.ai[0]; reflect2 = p.ai[1];}
-							int R = Projectile.NewProjectile(Main.player[Main.myPlayer].Center.X, Main.player[Main.myPlayer].Center.Y, -p.velocity.X, -p.velocity.Y, p.type, p.damage * 10000, p.knockBack, Main.myPlayer, reflect1, reflect2);
-							Main.projectile[R].friendly = true;
-							Main.projectile[R].playerImmune[R] = 60;
-							*/
-						}
-						p.active = false;
-						p.Kill();
-					}
-				}
-			}
-			return base.PreAI(projectile);
-		}
-	}
-	
 
 	public class InvokedDamage : ModProjectile
 	{
@@ -739,7 +687,7 @@ Legendry Weapon.";
 						{
 							Player player = Main.player[num492];
 							player.GetModPlayer<InvokerPlayer>().CaligulaSoul.Add((int)projectile.ai[1]) ;
-							CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), Color.DarkGray, "Powerful Soul Steal!", false, false);
+							CombatText.NewText(new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height), Color.DarkGray, Language.GetTextValue("Mods.AAMod.Common.CaligulaSoul"), false, false);
 						}
 						projectile.Kill();
 					}

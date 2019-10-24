@@ -1,4 +1,3 @@
-using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -193,7 +192,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     goto case 0;
             }
 
-            if (npc.ai[0] != 4 || npc.ai[0] != 9)
+            if (npc.ai[0] != 7)
             {
                 npc.rotation = 0;
             }
@@ -220,7 +219,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.frameCounter = 0;
                 Frame++;
             }
-            else if (npc.ai[0] == 4 || npc.ai[0] == 7)
+            else if (npc.ai[0] == 7)
             {
                 if (Frame < 8)
                 {
@@ -450,7 +449,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 FlyingPositive = false;
                 FlyingNegative = true;
             }
-            if (npc.ai[0] == 4 || npc.ai[0] == 7)
+            if (npc.ai[0] == 7)
             {
                 npc.direction = npc.velocity.X > 0 ? 1 : -1;
             }

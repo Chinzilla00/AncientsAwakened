@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
+using Terraria.GameContent.Events;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -16,6 +17,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public static int type;
         public int damage = 0;
         public bool PlayerDead = false;
+        public int deathTimer = 0;
 
         public override void SetStaticDefaults()
         {
@@ -107,6 +109,11 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void HitEffect(int hitDirection, double damage)
         {
+            if (npc.life <= 0)
+            {
+                npc.life = 1;
+                npc.dontTakeDamage = true;
+            }
             if (damage > 30)
             {
                 int TeleportChance = 100 * (npc.life / npc.lifeMax);
@@ -187,6 +194,45 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         {
             npc.TargetClosest();
             Player player = Main.player[npc.target];
+            if (npc.dontTakeDamage)
+            {
+                MoonlordDeathDrama.RequestLight(deathTimer / 300f, npc.Center);
+                npc.dontTakeDamage = true;
+                npc.damage = 0;
+                npc.defense = 0;
+                npc.velocity = new Vector2(0f, 0f);
+                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, Main.rand.NextFloat(-12f, 12f), Main.rand.NextFloat(-12f, 12f), mod.ProjectileType("Static"), 0, 0, Main.myPlayer, npc.direction > 0 ? -1f : 1f, 6f);
+                for (int j = 0; j < 10; j++)
+                {
+                    int num7 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 109, 0f, 0f, 100, default, 2f);
+                    Main.dust[num7].velocity *= 14f;
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        Main.dust[num7].scale = 0.5f;
+                        Main.dust[num7].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                    }
+                }
+                deathTimer++;
+                if (deathTimer == 1)
+                    Main.PlaySound(SoundLoader.customSoundType, (int)player.position.X, (int)player.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/ZPDeath"));
+                if (deathTimer == 130)
+                {
+                    npc.NPCLoot();
+                    npc.life = 0;
+                    npc.active = false;
+                    for (int j = 0; j < 200; j++)
+                    {
+                        int num7 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, 235, 0f, 0f, 100, default, 2f);
+                        Main.dust[num7].velocity *= 30f;
+                        if (Main.rand.Next(2) == 0)
+                        {
+                            Main.dust[num7].scale = 0.5f;
+                            Main.dust[num7].fadeIn = 1f + Main.rand.Next(10) * 0.1f;
+                        }
+                    }
+                }
+                return;
+            }
 
             bool tooFar = Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 10000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 10000f;
 

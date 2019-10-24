@@ -63,7 +63,7 @@ Dark, yet still barely visible");
 		{
 
 
-            player.setBonus = "Minions will ocasionaly attempt to distrupt enemy projectiles";
+            player.setBonus = Lang.ArmorBonus("DarkmatterHeaddressBonus");
             player.GetModPlayer<HeadressEffects>().setBonus = true;
             player.armorEffectDrawShadowLokis = true;
         }
@@ -123,7 +123,7 @@ Dark, yet still barely visible");
                     }
                 }
             }
-            if(reduceDamage > EstimatedDamage(projectile))
+            if(projectile.damage >0 && projectile.hostile && reduceDamage > EstimatedDamage(projectile))
             {
                 projectile.Kill();
             }
@@ -154,7 +154,7 @@ Dark, yet still barely visible");
         {
             if(projectile.GetGlobalProjectile<DarkMinions>().reduceDamage >0)
             {
-                float v = (projectile.GetGlobalProjectile<DarkMinions>().reduceDamage / (float)EstimatedDamage(projectile));
+                float v = projectile.GetGlobalProjectile<DarkMinions>().reduceDamage / (float)EstimatedDamage(projectile);
 
                 lightColor.R = (byte)(lightColor.R * (1f - (lightColor.R * v * .8f)));
                 lightColor.G = (byte)(lightColor.G * (1f - (lightColor.R * v * .8f)));

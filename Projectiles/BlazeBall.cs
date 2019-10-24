@@ -91,7 +91,7 @@ namespace AAMod.Projectiles
                 num28 = 270;
             }
             projectile.position = projectile.Center;
-            projectile.width = (projectile.height = 16 * num27);
+            projectile.width = projectile.height = 16 * num27;
             projectile.Center = projectile.position;
             projectile.Damage();
             Main.PlaySound(SoundID.Item100, projectile.position);

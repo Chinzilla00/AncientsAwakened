@@ -27,10 +27,10 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             if (Main.rand.Next(3) == 0)
             {
-                Dust.NewDust(projectile.position, projectile.width, projectile.height, 72, projectile.velocity.X * 0.25f, projectile.velocity.Y * 0.25f, 150, default(Microsoft.Xna.Framework.Color), 0.7f);
+                Dust.NewDust(projectile.position, projectile.width, projectile.height, 72, projectile.velocity.X * 0.25f, projectile.velocity.Y * 0.25f, 150, default, 0.7f);
             }
 
             projectile.velocity.Y = projectile.velocity.Y + 0.08f;

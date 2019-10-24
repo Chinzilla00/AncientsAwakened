@@ -892,9 +892,47 @@ namespace AAMod.Worldgeneration
 
             gen.Generate(origin.X, origin.Y, true, true);
 
-            WorldGen.PlaceObject(origin.X + 74, origin.Y + 82, (ushort)mod.TileType("AcropolisAltar"));
-            NetMessage.SendObjectPlacment(-1, origin.X + 74, origin.Y + 82, (ushort)mod.TileType("AcropolisAltar"), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 79, origin.Y + 87, (ushort)mod.TileType("AcropolisAltar"));
+            NetMessage.SendObjectPlacment(-1, origin.X + 79, origin.Y + 87, (ushort)mod.TileType("AcropolisAltar"), 0, 0, -1, -1);
 
+            return true;
+        }
+    }
+
+    public class AcropolisCloud : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            Mod mod = AAMod.instance;
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
+            {
+                [new Color(255, 255, 0)] = mod.TileType("AcropolisClouds"),
+                [Color.Black] = -1 //don't touch when genning		
+            };
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/AcropolisClouds"), colorToTile, null, null, null, null);
+
+            gen.Generate(origin.X, origin.Y, true, true);
+            return true;
+        }
+    }
+
+    public class AcropolisCloud1 : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            Mod mod = AAMod.instance;
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
+            {
+                [new Color(255, 255, 0)] = mod.TileType("AcropolisClouds"),
+                [Color.Black] = -1 //don't touch when genning		
+            };
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/AcropolisClouds1"), colorToTile, null, null, null, null);
+
+            gen.Generate(origin.X, origin.Y, true, true);
             return true;
         }
     }

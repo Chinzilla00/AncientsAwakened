@@ -1,7 +1,6 @@
 using System;
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Greed
@@ -26,10 +25,10 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void AI()
         {
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             if (Main.rand.Next(4) == 0)
             {
-                int DustID2 = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 57, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 20, default(Color), 1f);
+                int DustID2 = Dust.NewDust(projectile.position + projectile.velocity, projectile.width, projectile.height, 57, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 20, default, 1f);
                 Main.dust[DustID2].noGravity = true;
             }
         }
@@ -37,7 +36,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             for (int i = 0; i < 3; i++)
             {
-                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 57, 0f, 0f, 100, default(Color), 1.5f);
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 57, 0f, 0f, 100, default, 1.5f);
                 Main.dust[dustIndex].velocity *= 1.4f;
             }
         }

@@ -3,6 +3,7 @@ using AAMod.Items;
 using AAMod.NPCs.Bosses.Akuma;
 using AAMod.NPCs.Bosses.Akuma.Awakened;
 using AAMod.NPCs.Bosses.Athena;
+using AAMod.NPCs.Bosses.Athena.Olympian;
 using AAMod.NPCs.Bosses.Shen;
 using AAMod.NPCs.Bosses.Yamata;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
@@ -75,6 +76,8 @@ namespace AAMod
         public bool MiniZero = false;
         public bool TerraSummon = false;
         public bool DragonSpirit = false;
+        public bool Seraph = false;
+        public bool Athena = false;
 
         // Biome bools.
         public bool ZoneMire = false;
@@ -269,6 +272,7 @@ namespace AAMod
         public bool WorldgenReminder = false;
         public bool DemonSun = false;
         public bool AnubisBook = false;
+        public bool GivenAnuSummon = false;
 
         #endregion
 
@@ -277,6 +281,7 @@ namespace AAMod
         {
             var saved = new List<string>();
             if (AnubisBook) saved.Add("Book");
+            if (GivenAnuSummon) saved.Add("Stick");
             return new TagCompound
             {
                 { "saved", saved }
@@ -287,6 +292,7 @@ namespace AAMod
         {
             var downed = tag.GetList<string>("saved");
             AnubisBook = downed.Contains("Book");
+            GivenAnuSummon = downed.Contains("Stick");
         }
 
         #endregion
@@ -357,6 +363,8 @@ namespace AAMod
             MiniZero = false;
             TerraSummon = false;
             DragonSpirit = false;
+            Seraph = false;
+            Athena = false;
         }
 
         private void ResetArmorEffect()
@@ -493,10 +501,13 @@ namespace AAMod
             ZoneStars = false;
             ZoneHoard = false;
             ZoneAcropolis = false;
-            WorldgenReminder = false;
+            WorldgenReminder = false; 
+            GivenAnuSummon = false;
         }
 
         #endregion
+
+        #region Biomes
 
         public override void UpdateBiomes()
         {
@@ -611,6 +622,8 @@ namespace AAMod
             ZoneHoard = zoneByte2[2];
             ZoneAcropolis = zoneByte2[3];
         }
+
+        #endregion
 
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
@@ -1075,12 +1088,12 @@ namespace AAMod
                     Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, SpeedVector.X, SpeedVector.Y, mod.ProjectileType("AssassinDagger"), (int)(player.inventory[player.selectedItem].damage * 1.3), 2f, player.whoAmI, 0f, 1f);
                     float round = 16f;
                     int k = 0;
-                    while ((float)k < round)
+                    while (k < round)
                     {
                         Vector2 vector12 = Vector2.UnitX * 0f;
-                        vector12 += -Vector2.UnitY.RotatedBy((double)((float)k * (6.28318548f / round)), default(Vector2)) * new Vector2(1f, 4f);
-                        vector12 = vector12.RotatedBy((double)SpeedVector.ToRotation(), default(Vector2));
-                        int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default(Color), 1f);
+                        vector12 += -Vector2.UnitY.RotatedBy(k * (6.28318548f / round), default) * new Vector2(1f, 4f);
+                        vector12 = vector12.RotatedBy(SpeedVector.ToRotation(), default);
+                        int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default, 1f);
                         Main.dust[Dusti].scale = 1.5f;
                         Main.dust[Dusti].noGravity = true;
                         Main.dust[Dusti].position = Spwanposition[i] + vector12;
@@ -1125,7 +1138,7 @@ namespace AAMod
                 }
             }
         }
-
+        
         public override bool Shoot(Item item, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
             if(item.ranged && Assassin)
@@ -1146,12 +1159,12 @@ namespace AAMod
                         Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, speedX, speedY, mod.ProjectileType("AssassinArrow"), (int)(item.damage * 1.3), 2f, player.whoAmI, 0f, 1f);
                         float round = 16f;
                         int k = 0;
-                        while ((float)k < round)
+                        while (k < round)
                         {
                             Vector2 vector12 = Vector2.UnitX * 0f;
-                            vector12 += -Vector2.UnitY.RotatedBy((double)((float)k * (6.28318548f / round)), default(Vector2)) * new Vector2(1f, 4f);
-                            vector12 = vector12.RotatedBy((double)SpeedVector.ToRotation(), default(Vector2));
-                            int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default(Color), 1f);
+                            vector12 += -Vector2.UnitY.RotatedBy(k * (6.28318548f / round), default) * new Vector2(1f, 4f);
+                            vector12 = vector12.RotatedBy(SpeedVector.ToRotation(), default);
+                            int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default, 1f);
                             Main.dust[Dusti].scale = 1.5f;
                             Main.dust[Dusti].noGravity = true;
                             Main.dust[Dusti].position = Spwanposition[i] + vector12;
@@ -1728,7 +1741,7 @@ namespace AAMod
                     case 17:
                         player.QuickSpawnItem(mod.ItemType("GibsSkull"));
                         player.QuickSpawnItem(mod.ItemType("GibsPlate"));
-                        player.QuickSpawnItem(mod.ItemType("GribsShorts"));
+                        player.QuickSpawnItem(mod.ItemType("GibsShorts"));
 
                         if (dropType >= 1)
                         {
@@ -1754,7 +1767,7 @@ namespace AAMod
                     case 19:
                         player.QuickSpawnItem(mod.ItemType("CursedHood"));
                         player.QuickSpawnItem(mod.ItemType("CursedRobe"));
-                        player.QuickSpawnItem(mod.ItemType("CursedPaints"));
+                        player.QuickSpawnItem(mod.ItemType("CursedPants"));
 
                         if (dropType >= 1)
                         {
@@ -2131,7 +2144,7 @@ namespace AAMod
             }
         }
 
-        public virtual float UseTimeMultiplier(Item item, Player player)
+        /*public override float UseTimeMultiplier(Item item)
         {
             float multiplier = 1f;
 
@@ -2151,8 +2164,7 @@ namespace AAMod
             }
 
             return multiplier;
-        }
-
+        }*/
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {

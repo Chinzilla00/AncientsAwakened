@@ -7,6 +7,7 @@ using Terraria.Graphics.Effects;
 using Terraria.Utilities;
 using BaseMod;
 using AAMod.NPCs.Bosses.Athena;
+using AAMod.NPCs.Bosses.Athena.Olympian;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
