@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Anubis
         public override void AI()
         {
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
-            int dustType = ModContent.DustType<Dusts.JudgementDust>();
+            int dustType = ModContent.DustType<Dusts.JudgementDust>()
             if (Main.rand.Next(3) == 0)
             {
                 int dustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.White, 2f);
