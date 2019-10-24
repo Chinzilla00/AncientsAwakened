@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.width = 76;
             npc.height = 100;
             npc.aiStyle = -1;
-            npc.damage = 70;
+            npc.damage = 35;
             npc.defense = 40;
             npc.lifeMax = 50000;
             npc.HitSound = SoundID.NPCHit1;
