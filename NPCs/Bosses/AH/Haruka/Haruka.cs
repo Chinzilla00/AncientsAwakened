@@ -569,7 +569,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         for (int i = 0; i < strikebackproj; i++)
                         {
                             double offsetAngle = startAngle + (deltaAngle * i);
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 3f, baseSpeed * (float)Math.Cos(offsetAngle) * 3f, ModContent.ProjectileType<HarukaArrow>(), damage, 0, Main.myPlayer);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), ModContent.ProjectileType<HarukaArrow>(), damage, 0, Main.myPlayer);
                         }
                     }
                     strikebackproj = 0;
