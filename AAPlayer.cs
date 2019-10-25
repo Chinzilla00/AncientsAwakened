@@ -76,6 +76,8 @@ namespace AAMod
         public bool MiniZero = false;
         public bool TerraSummon = false;
         public bool DragonSpirit = false;
+        public bool Seraph = false;
+        public bool Athena = false;
 
         // Biome bools.
         public bool ZoneMire = false;
@@ -228,6 +230,7 @@ namespace AAMod
         public bool IB = false;
         public bool Spear = false;
         public bool AkumaPain = false;
+        public bool FFlames = false;
 
         //buffs
         public bool Glitched = false;
@@ -270,6 +273,7 @@ namespace AAMod
         public bool WorldgenReminder = false;
         public bool DemonSun = false;
         public bool AnubisBook = false;
+        public bool GivenAnuSummon = false;
 
         #endregion
 
@@ -278,6 +282,7 @@ namespace AAMod
         {
             var saved = new List<string>();
             if (AnubisBook) saved.Add("Book");
+            if (GivenAnuSummon) saved.Add("Stick");
             return new TagCompound
             {
                 { "saved", saved }
@@ -288,6 +293,7 @@ namespace AAMod
         {
             var downed = tag.GetList<string>("saved");
             AnubisBook = downed.Contains("Book");
+            GivenAnuSummon = downed.Contains("Stick");
         }
 
         #endregion
@@ -358,6 +364,8 @@ namespace AAMod
             MiniZero = false;
             TerraSummon = false;
             DragonSpirit = false;
+            Seraph = false;
+            Athena = false;
         }
 
         private void ResetArmorEffect()
@@ -462,6 +470,7 @@ namespace AAMod
             AkumaPain = false;
             Greed1 = false;
             Greed2 = false;
+            FFlames = false;
         }
 
         private void ResetPetsEffect()
@@ -494,7 +503,8 @@ namespace AAMod
             ZoneStars = false;
             ZoneHoard = false;
             ZoneAcropolis = false;
-            WorldgenReminder = false;
+            WorldgenReminder = false; 
+            GivenAnuSummon = false;
         }
 
         #endregion
@@ -2406,6 +2416,18 @@ namespace AAMod
                     player.moveSpeed *= .58f;
                 }
             }
+
+            if (FFlames)
+            {
+                if (player.lifeRegen > 0)
+                {
+                    player.lifeRegen = 0;
+                }
+
+                player.lifeRegenTime = 0;
+                player.lifeRegen -= 20;
+            }
+
 
             if (CursedHellfire)
             {

@@ -20,7 +20,8 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             projectile.aiStyle = -1;
             projectile.penetrate = 1;
             projectile.tileCollide = false;
-            projectile.extraUpdates = 1;
+            projectile.extraUpdates = 2;
+            projectile.timeLeft = 120;
         }
 
         public override void Kill(int timeLeft)
@@ -48,7 +49,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             }
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
 
-            if (projectile.ai[0]++ > 20)
+            if (projectile.ai[0]++ > 10)
             {
                 projectile.ai[0] = 0;
                 Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<SwiftwindStrikeOrb>(), projectile.damage / 2, 5, Main.myPlayer, 0, 0);

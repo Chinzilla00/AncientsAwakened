@@ -39,7 +39,8 @@ namespace AAMod.Items.Accessories
 
         public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-            player.moveSpeed += 1.5f;
+            player.maxRunSpeed *= 0.5f + player.moveSpeed;
+            player.runAcceleration *= 0.5f + player.moveSpeed;
 		}
 		
 		

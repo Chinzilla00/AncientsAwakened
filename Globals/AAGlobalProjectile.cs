@@ -49,8 +49,6 @@ namespace AAMod
 
         public static void Convert(int i, int j, int size = 4)
         {
-            Mod mod = AAMod.instance;
-
             for (int k = i - size; k <= i + size; k++)
             {
                 for (int l = j - size; l <= j + size; l++)

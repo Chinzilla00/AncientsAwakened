@@ -50,9 +50,9 @@ namespace AAMod.Items.Currency
                 color2.R,
                 color2.G,
                 color2.B,
-                Language.GetText(Lang.ItemsInfo("BloodRuneBuyprice")),
+                Language.GetTextValue("Mods.AAMod.Common.PlayerBuyPrice"),
                 price,
-                price == 1 ? Lang.ItemsInfo("BloodRune") : Lang.ItemsInfo("BloodRunes")
+                price == 1 ? Language.GetTextValue("Mods.AAMod.Common.BloodRune") : Language.GetTextValue("Mods.AAMod.Common.BloodRunes")
             });
         }
     }

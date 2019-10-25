@@ -69,8 +69,7 @@ namespace AAMod.Projectiles
                     {"Dan", 24},
                     {"Sume", 25}
                 };
-                int someNumber;
-                if (LaserHue.TryGetValue(playerName, out someNumber))
+                if (LaserHue.TryGetValue(playerName, out int someNumber))
                 {
                     switch (someNumber)
                     {

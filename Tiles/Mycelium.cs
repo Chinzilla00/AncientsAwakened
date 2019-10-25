@@ -17,9 +17,11 @@ namespace AAMod.Tiles
             TileID.Sets.Conversion.Grass[Type] = true;
             SetModTree(new MushroomTree());
             Main.tileBlendAll[Type] = true;
+            Main.tileBlockLight[Type] = true;
             TileID.Sets.NeedsGrassFraming[Type] = true;
             dustType = mod.DustType("Mushdust");
 			AddMapEntry(new Color(100, 100, 0));
+            drop = ItemID.DirtBlock;
 		}
         
 		public override int SaplingGrowthType(ref int style)
@@ -45,8 +47,7 @@ namespace AAMod.Tiles
 
         public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int random = -1, int direction = -1)
         {
-            TileObject toBePlaced;
-            if (!TileObject.CanPlace(x, y, type, style, direction, out toBePlaced, false))
+            if (!TileObject.CanPlace(x, y, type, style, direction, out TileObject toBePlaced, false))
             {
                 return false;
             }

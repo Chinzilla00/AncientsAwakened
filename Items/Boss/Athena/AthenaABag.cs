@@ -43,6 +43,7 @@ namespace AAMod.Items.Boss.Athena
             string[] lootTable = { "HurricaneStone", "Olympia", "Windfury", "GaleForce" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
+            player.QuickSpawnItem(mod.ItemType("StarChart"));
         }
     }
 }

@@ -38,9 +38,9 @@ namespace AAMod.Items.Currency
                 color2.R,
                 color2.G,
                 color2.B,
-                Language.GetText(Lang.ItemsInfo("HalloweenTreatBuyprice")),
+                Language.GetTextValue("Mods.AAMod.Common.PlayerBuyPrice"),
                 price,
-                price == 1 ? Lang.ItemsInfo("HalloweenTreat") : Lang.ItemsInfo("HalloweenTreat")
+                price == 1 ? Language.GetTextValue("Mods.AAMod.Common.HalloweenTreat") : Language.GetTextValue("Mods.AAMod.Common.HalloweenTreats")
             });
         }
     }

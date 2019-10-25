@@ -42,6 +42,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AthenaA");
             bossBag = ModContent.ItemType<Items.Boss.Athena.AthenaBag>();
             npc.noTileCollide = true;
+            bossBag = mod.ItemType("AthenaABag");
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -351,7 +352,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             {
                 int num90 = Dust.NewDust(position, num84, height3, DustID.Electric, 0f, 0f, 0, default, 2.7f);
                 Main.dust[num90].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
-                Main.dust[num88].noGravity = false;
+                Main.dust[num90].noGravity = false;
                 Main.dust[num90].noLight = true;
                 Main.dust[num90].velocity *= 3f;
                 Main.dust[num90].velocity += npc.DirectionTo(Main.dust[num90].position) * 2f;
@@ -360,7 +361,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             {
                 int num92 = Dust.NewDust(position, num84, height3, DustID.Electric, 0f, 0f, 0, default, 1.5f);
                 Main.dust[num92].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
-                Main.dust[num88].noGravity = false;
+                Main.dust[num92].noGravity = false;
                 Main.dust[num92].velocity *= 3f;
                 Main.dust[num92].velocity += npc.DirectionTo(Main.dust[num92].position) * 3f;
             }
@@ -473,10 +474,10 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             Vector2 Acropolis = new Vector2(Origin.X + (79 * 16), Origin.Y + (79 * 16));
-            if (player.dead || !player.active || Vector2.Distance(npc.position, player.position) > 5000 || !modPlayer.ZoneAcropolis || Vector2.Distance(Acropolis, player.position) > 1280)
+            if (player.dead || !player.active || Vector2.Distance(npc.position, player.position) > 6000 || !modPlayer.ZoneAcropolis || Vector2.Distance(Acropolis, player.position) > 1500)
             {
                 npc.TargetClosest();
-                if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 5000 || !modPlayer.ZoneAcropolis || Vector2.Distance(Acropolis, player.position) > 1280)
+                if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 6000 || !modPlayer.ZoneAcropolis || Vector2.Distance(Acropolis, player.position) > 1500)
                 {
                     AAWorld.ClearClouds();
                     if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaA1"), Color.CornflowerBlue);

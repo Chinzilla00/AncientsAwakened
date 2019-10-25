@@ -1586,9 +1586,9 @@ namespace AAMod
                         return "DIE ALREADY YOU INSIGNIFICANT LITTLE WORM!!";
                         */
                         case "ShenA11":
-                        return "Hmpf..! Here we are again, gettin' close to the end of the line. I'm not holding back!";
+                        return "呼..! 又到这个地步, 离终点越来越近了. 我可不会心慈手软!";
                         case "ShenA12":
-                        return "Hm..?! You haven't kicked the bucket yet? Well then...Let's change that!";
+                        return "哈..?! 你还没当场去世? 那好...我们换种玩法!";
                         case "ShenA13":
                         return "游戏收尾才越发动人心弦, 记住了, 孩子!";
                         case "ShenA14":
@@ -2781,7 +2781,7 @@ namespace AAMod
                         case "GreedInfo":
                         return "在欲望金窟的原欲祭坛\n处召唤.";
                         case "Athena":
-                        return "天城鸟妖神";
+                        return "穹武鸮姬";
                         case "AthenaInfo":
                         return " 在天穹卫城的天鸮祭坛\n上召唤.";
                         case "AthenaA":
@@ -2918,42 +2918,6 @@ namespace AAMod
                         return "Rajah Rabbit's Revenge";
                         case "RajahRabbitRevengeInfo":
                         return " or every 100 rabbit kills after 1000.";
-                    }
-                }
-            return"";
-        }
-        public static string ItemsInfo(string Itemsname)
-        {
-            if(Language.ActiveCulture == GameCulture.Chinese)
-                {
-                    switch(Itemsname)
-                    {
-                        case "GoblinDollInfo":
-                        return "灵魂宝石在你手中具象化";
-                        case "GoblinSoulBuyprice":
-                        return "购买价格:";
-                        case "GoblinSoul":
-                        return "哥布林亡魂";
-                        case "GoblinSouls":
-                        return "哥布林亡魂";
-                        case "DemiseEXInfo":
-                        return "被击中的敌人灵魂爆裂";
-                    }
-                }
-            else
-                {
-                    switch(Itemsname)
-                    {
-                        case "GoblinDollInfo":
-                        return "The soul stone materializes in your hand";
-                        case "GoblinSoulBuyprice":
-                        return "Buy price:";
-                        case "GoblinSoul":
-                        return "Goblin Soul";
-                        case "GoblinSouls":
-                        return "Goblin Souls";
-                        case "DemiseEXInfo":
-                        return "The struck enemy's soul bursts";
                     }
                 }
             return"";

@@ -1,3 +1,5 @@
+using BaseMod;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.GameContent.Events;
 using Terraria.ID;
@@ -60,7 +62,10 @@ namespace AAMod.NPCs.TownNPCs
             for (int k = 0; k < 255; k++)
             {
                 Player player = Main.player[k];
-                if (player.active)
+                if (player.active && !NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Anubis>()) && 
+                    !NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Forsaken.FATransition>()) &&
+                    !NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Forsaken.FATransition2>()) &&
+                    !NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Forsaken.ForsakenAnubis>()))
                 {
                     return true;
                 }
@@ -348,12 +353,62 @@ namespace AAMod.NPCs.TownNPCs
 			}
 		}
 
+        public override bool PreAI()
+        {
+            if (NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Anubis>()))
+            {
+                Vector2 position = npc.Center + (Vector2.One * -20f);
+                int num84 = 40;
+                int height3 = num84;
+                for (int num85 = 0; num85 < 3; num85++)
+                {
+                    int num86 = Dust.NewDust(position, num84, height3, 240, 0f, 0f, 100, default, 1.5f);
+                    Main.dust[num86].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                }
+                for (int num87 = 0; num87 < 15; num87++)
+                {
+                    int num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 50, default, 3.7f);
+                    Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                    Main.dust[num88].noGravity = true;
+                    Main.dust[num88].noLight = true;
+                    Main.dust[num88].velocity *= 3f;
+                    Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
+                    num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 25, default, 1.5f);
+                    Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                    Main.dust[num88].velocity *= 2f;
+                    Main.dust[num88].noGravity = true;
+                    Main.dust[num88].fadeIn = 1f;
+                    Main.dust[num88].color = Color.Black * 0.5f;
+                    Main.dust[num88].noLight = true;
+                    Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * 8f;
+                }
+                for (int num89 = 0; num89 < 10; num89++)
+                {
+                    int num90 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 2.7f);
+                    Main.dust[num90].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
+                    Main.dust[num90].noGravity = true;
+                    Main.dust[num90].noLight = true;
+                    Main.dust[num90].velocity *= 3f;
+                    Main.dust[num90].velocity += npc.DirectionTo(Main.dust[num90].position) * 2f;
+                }
+                for (int num91 = 0; num91 < 30; num91++)
+                {
+                    int num92 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 1.5f);
+                    Main.dust[num92].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
+                    Main.dust[num92].noGravity = true;
+                    Main.dust[num92].velocity *= 3f;
+                    Main.dust[num92].velocity += npc.DirectionTo(Main.dust[num92].position) * 3f;
+                }
+                npc.active = false;
+            }
+            return false;
+        }
+
         public static bool DoG => CalamityMod.World.CalamityWorld.downedDoG;
 
         public static string BossChat()
         {
             Player player = Main.LocalPlayer;
-            Mod mod = AAMod.instance;
             if (Mushroom)
             {
                 return AAWorld.downedMonarch ? Lang.TownNPCAnubis("downedMonarchY") : 
@@ -391,6 +446,12 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (AnubisB)
             {
+                if (!BasePlayer.HasItem(player, ModContent.ItemType<Items.BossSummons.Scepter>()))
+                {
+                    player.QuickSpawnItem(ModContent.ItemType<Items.BossSummons.Scepter>(), 1);
+                    return "You LOST the scepter?! I can't go handing these things out like candy, you know! Anyways, here's another one."; 
+                }
+
                 return AAWorld.downedAnubis ? "You could have gone a little easier on me, ya know. My back still hurts from that." :
                     "I hear there’s this lorekeeper guy that’s really jacked and handsome, and all the ladies love him for his amazing soul-judging abilities. What a guy.";
             }
@@ -521,6 +582,7 @@ namespace AAMod.NPCs.TownNPCs
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
             Player player = Main.LocalPlayer;
+            AAPlayer mPlayer = player.GetModPlayer<AAPlayer>();
 
             if (player.head == ModContent.ItemType<Items.Vanity.Mask.AnubisMask>() && Main.rand.Next(5) == 0)
             {
@@ -590,6 +652,16 @@ namespace AAMod.NPCs.TownNPCs
             if (ConfusedZombie >= 0)
             {
                 chat.Add(Lang.TownNPCAnubis("AnubisChat30") + Main.npc[ConfusedZombie].GivenName + Lang.TownNPCAnubis("AnubisChat31"));
+            }
+
+            if (AAWorld.AMessage && !BasePlayer.HasItem(player, ModContent.ItemType<Items.BossSummons.Scepter>()))
+            {
+                if (!mPlayer.GivenAnuSummon)
+                {
+                    mPlayer.GivenAnuSummon = true;
+                    player.QuickSpawnItem(ModContent.ItemType<Items.BossSummons.Scepter>(), 1);
+                    return "Hey, thanks for getting back to me. I wanna test your strength. After you thrashed those mechanical meatheads, I'm interested in seeing how you fair against someone like me. Here, take this scepter and go use it in the desert on the surface whenever you're ready. I'm ready whenever.";
+                }
             }
 
             return chat;

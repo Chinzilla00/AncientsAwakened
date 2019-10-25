@@ -11,6 +11,36 @@ Common.InvokerDamage2= summon
 
 Common.CaligulaSoul=Powerful Soul Steal!
 
+//Items
+
+Common.DemiseEXInfo=The struck enemy's soul bursts
+
+
+//CurrencyItems
+
+Common.PlayerBuyPrice=Buy price:
+
+Common.BloodRune=Blood Rune
+Common.BloodRunes=Blood Runes
+
+Common.ChristmasCheer=Christmas Cheer
+Common.ChristmasCheers=Christmas Cheers
+
+Common.GoblinSoul=Goblin Soul
+Common.GoblinSouls=Goblin Souls
+
+Common.HalloweenTreat=Halloween Treat
+Common.HalloweenTreats=Halloween Treats
+
+Common.MartianCredit=Martian Credit
+Common.MartianCredits=Martian Credits
+
+Common.MonsterSoul=Monster Soul
+Common.MonsterSouls=Monster Souls
+
+Common.PirateBooty=Pirate Booty
+Common.PirateBootys=Pirate Booties
+
 //lockedchest
 
 Common.InfernoChest_Locked=Locked Inferno Chest
@@ -52,6 +82,16 @@ Common.Yamata=Yamata, Dread Nightmare
 Common.YamataA=Yamata no Orochi 
 Common.ShenDoragon=Shen Doragon; Discordian Doomsayer
 Common.SupremeRajah=Rajah Rabbit
+
+//AAWorldBuild
+
+Common.AAWorldBuildAltars=Placing Chaos Altars
+Common.AAWorldBuildChaos=Spreading Chaos
+Common.AAWorldBuildInferno=Scorching the Inferno
+Common.AAWorldBuildMire=Flooding the Mire
+Common.AAWorldBuildTerrarium=Constructing the Terrarium
+Common.AAWorldBuildAcropolis=Floating the Acropolis
+Common.AAWorldBuildHoard=Amassing Treasure
 
 //AARecipeGroup
 

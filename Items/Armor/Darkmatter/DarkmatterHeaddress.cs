@@ -123,7 +123,7 @@ Dark, yet still barely visible");
                     }
                 }
             }
-            if(reduceDamage > EstimatedDamage(projectile))
+            if(projectile.damage >0 && projectile.hostile && reduceDamage > EstimatedDamage(projectile))
             {
                 projectile.Kill();
             }

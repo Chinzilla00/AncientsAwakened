@@ -24,7 +24,7 @@ namespace AAMod.Items.Boss.Athena
             item.autoReuse = true;
             item.useTime = 28;
             item.useAnimation = 28;
-            item.shoot = mod.ProjectileType("Gale");
+            item.shoot = mod.ProjectileType("Tornado");
             item.shootSpeed = 9f;    
         }   
 

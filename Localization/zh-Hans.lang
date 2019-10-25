@@ -1,6 +1,14 @@
 
 // AAMod.Buffs
 
+BuffName.Athena=雅典娜
+BuffDescription.Athena=我现在姑且帮你，总有一天我会揍扁你
+
+BuffName.Seraph=六翼天使
+BuffDescription.Seraph=好动的小不点
+
+BuffName.Broodmini=哺育小龙
+BuffDescription.Broodmini=小宝宝
 
 BuffName.AtlanteanBuff=亚特兰蒂斯之力
 BuffDescription.AtlanteanBuff=你的战斗能力提升了
@@ -1472,6 +1480,9 @@ ItemTooltip.HaphestusForge=*拍一拍熔炉顶* 这小东西竟然可以容纳�
 ItemName.HellstoneAnvil=狱石砧
 ItemTooltip.HellstoneAnvil=这东西会着火吗？
 
+ItemName.HoardBox=八音盒(欲望金窟)
+ItemTooltip.HoardBox=播放 'Cavern of Coveted Treasures' by OmegaFerretMusic
+
 ItemName.HydraBox=八音盒(九头渊蛇)
 ItemTooltip.HydraBox=播放 'Abyssal Wrath' by Spectral Aves
 
@@ -1689,17 +1700,63 @@ ItemName.SauceStatue=蛇雕像
 
 ItemName.TailsStatue=狡狐雕像
 
+
 // AAMod.Items.Boss.Anubis
+
 
 ItemName.AnubisBag=宝藏袋
 
+ItemName.AnubisTrophy=阿努比斯纪念章
+
 ItemName.ForsakenFragment=逝落碎片
+
+
+//AAMod.Items.Boss.Athena
+
+
+ItemName.AthenaABag=宝藏袋
+
+ItemName.AthenaBag=宝藏袋
+
+ItemName.AthenaTrophy=雅典娜纪念章
+
+ItemName.SeraphHarp=六翼天琴
+ItemTooltip.SeraphHarp=召唤一个六翼天使为你而战
+
+ItemName.GoddessHarp=神御天琴
+ItemTooltip.GoddessHarp=召唤六翼天使女王亲自为你而战
+
+ItemName.DivineWindCharm=神风石
+ItemTooltip.DivineWindCharm=召唤天鸮符文哨兵
+
+ItemName.GaleForce=天残罡风
+
+ItemName.GoddessFeather=神妖鸟羽
+
+ItemName.GaleOfWings=翅岚
+
+ItemName.HurricaneStone=飓风石
+ItemTooltip.HurricaneStone=召唤蓄能天鸮符文哨兵
+
+ItemName.Olympia=奥林匹娅
+
+ItemName.RazorwindLongbow=刃风长弓
+ItemTooltip.RazorwindLongbow=将木箭转化为具有高击退的烈风矢
+
+ItemName.SkycutterKopis=裂穹弯刀
+ItemTooltip.SkycutterKopis=(译者注：Kopis，一种古希腊的弯刀)
+
+ItemName.Windfury=神风天怒
+ItemTooltip.Windfury=将木箭转化为具有高击退无限穿透的狂风箭
+
+ItemName.StarChart=星象绘景
+ItemTooltip.StarChart=太阳系和这个星球的地图
+
 
 // AAMod.Items.Boss.AH
 
 
 ItemName.AHBag=宝藏袋
-ItemTooltip.AHBag={$CommonItemTooltip.RightClickToOpen}
 
 ItemName.AsheSatchel=艾希的挎包
 ItemTooltip.AsheSatchel=右键打开\n内含一套愤怒女巫长袍
@@ -1805,16 +1862,6 @@ ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n增加10%伤害减免,
 
 ItemName.YOTD=龙年大吉
 ItemTooltip.YOTD=发射绚烂的烟花吸引同伴驱赶敌人\n“邪鬼巨龙牌安全烟花,朝脸发射也没伤害!文明放烟花,安全你我他!”
-
-// AAMod.Items.Boss.Athena
-
-ItemName.AthenaBag=宝藏袋
-
-ItemName.GoddessFeather=神妖鸟羽
-
-ItemName.GaleOfWings=翅岚
-
-ItemName.AthenaABag=宝藏袋
 
 // AAMod.Items.Boss.Broodmother
 
@@ -1951,7 +1998,7 @@ ItemName.GreedBag=宝藏袋
 
 ItemName.GreedTrophy=金食饕餮纪念章
 
-ItemName.Miner=掘-矿
+ItemName.Miner=掘矿器
 ItemTooltip.Miner=挖矿更快
 
 ItemName.StoneScarf=坚石围巾
@@ -1966,6 +2013,11 @@ ItemTooltip.StoneSlammer=对飞行敌人必定暴击\n并且会把它从天上�
 //AAMod.Items.Boss.Greed.WKG
 
 ItemName.GreedABag=宝藏袋
+
+ItemName.Earthbreaker=撼地者
+ItemTooltip.Earthbreaker=对飞行敌人必定暴击并且会把它从天上砸下来\n冲击力有50%几率将敌人砸晕\n敌人被砸到地上时会有坠落伤害
+
+ItemName.OreStaff=矿石法杖
 
 ItemName.DesireTalisman=贪欲护身符
 ItemTooltip.DesireTalisman=拾取硬币时增加1%伤害持续4秒\n再拾取时再增加1%伤害并重置计时\n伤害增加上限20%\n提升金币拾取范围\n商店会打折\n攻击敌人会掉落额外的金币
@@ -2417,7 +2469,7 @@ ItemName.Gigataser=机甲脉冲枪
 ItemTooltip.Gigataser=发射虚空激光\n按住充能\n充能时间越长，穿透力越大
 
 ItemName.OmegaVolley=欧米茄排炮
-ItemTooltip.OmegaVolley=发射一排极其精准的声波子弹\n33%几率不消耗弹药
+ItemTooltip.OmegaVolley=发射一排极其快速而又精准的声波子弹\n每10发子弹会射出额外的两发强化子弹\n33%几率不消耗弹药
 
 // AAMod.Items.BossSummons
 
@@ -2500,6 +2552,9 @@ ItemTooltip.PlanteraFlower=召唤世纪之花\n只能在丛林地下召唤
 ItemName.PlatinumCarrot=十克拉胡罗卜
 ItemTooltip.PlatinumCarrot=召唤一个凶猛的惩罚者
 
+ItemName.Scepter=拉的神杖
+ItemTooltip.Scepter=召唤阿努比斯\n只能在沙漠表面使用\n“我，呃emmm...从我一个鸟朋友那借来的”
+
 ItemName.ScrapHeap=电子垃圾堆
 ItemTooltip.ScrapHeap=一大堆金属垃圾\n召唤食腐者-双头狗俄耳托斯电子X型\n只能在晚上使用
 
@@ -2519,8 +2574,26 @@ ItemTooltip.ZeroTesseract=注.释.\n不.稳.定.  含.有.死.亡.缔.造.者.�
 // AAMod.Items.Currency
 
 
+ItemName.BloodRune=血浸符文
+ItemTooltip.BloodRune=一个据说浸染了古代生物鲜血的奇石
+
+ItemName.ChristmasCheer=圣诞祝元
+ItemTooltip.ChristmasCheer=纯粹的快乐和纯真的善良
+
 ItemName.GoblinSoul=哥布林亡魂
 ItemTooltip.GoblinSoul=哥布林的魂魄
+
+ItemName.HalloweenTreat=万圣怪糖
+ItemTooltip.HalloweenTreat=非常不错的款待。但是不要吃，可能受到了诅咒
+
+ItemName.MartianCredit=火星造物
+ItemTooltip.MartianCredit=好像是火星人的货币卡
+
+ItemName.MonsterSoul=凶兽之魂
+ItemTooltip.MonsterSoul=非常恐怖的凶兽的精魂
+
+ItemName.PirateBooty=海盗战利品
+ItemTooltip.PirateBooty=制作精良的金币
 
 
 // AAMod.Items.Dev
@@ -2579,6 +2652,8 @@ ItemTooltip.Demise=曾经被魔王使用的传说之剑
 ItemName.DemiseEX=灾灭浩劫
 ItemTooltip.DemiseEX=一把曾经为恶魔领主所用万能大剑\n左键释放毁灭性恶魔能量\n右键从空中降下灾难性剑气\n真正的近战攻击有几率瞬间吞噬敌人的灵魂\n终亡 EX
 
+Common.DemiseEXInfo=被击中的敌人灵魂爆裂
+
 ItemName.EnderStaff=焚天法杖
 ItemTooltip.EnderStaff=召唤一个旋转焚天结构粉碎敌人\n我觉得天是紫的\n-Ender
 
@@ -2621,7 +2696,7 @@ ItemName.GentlemansRapier=绅士长剑
 ItemTooltip.GentlemansRapier=发射诡异的小花顶帽子\n右键前刺,左键挥动\n“真诡异”\n-Tied
 
 ItemName.GroxNote=GRealm广告
-ItemTooltip.GroxNote=“Want more AA content and more Grox-filled fun? Go play GRealm!”\n（译者注：广告,不翻译,意思就是你想制作AA就去联系GRealm工作组吧）\n-Grox The Great
+ItemTooltip.GroxNote=“Want more AA content and more Grox-filled fun? Go play GRealm!”\n（译者注：广告, 意思就是推广一下Grox自己一个名叫GRealm的mod）\n-Grox The Great
 
 ItemName.HallamDevWeapon=最终棱喵
 ItemTooltip.HallamDevWeapon=在光标位置召唤一个传说的彩虹猫\n沿着光标发射彩虹喵\n警告： 这会让你的游戏跳帧!\n棱喵EX
@@ -2701,7 +2776,7 @@ ItemName.InvokerBook=阿莱斯特原典
 ItemTooltip.InvokerBook=“大兽”阿莱斯特的传世之书\n增加10%召唤伤害\n增加2召唤上限\n也许你需要其他的物品才能让你从这本书中获得更多的能力\n阿莱斯特的笔记: \n我需要更多强大的灵魂, *****,*********,**********
 
 ItemName.InvokerBookEX=法之圣典
-ItemTooltip.InvokerBookEX=“大兽”阿莱斯特的传世之书\n增加10%召唤伤害\n增加2召唤上限\n获得所有材料的效果
+ItemTooltip.InvokerBookEX=“大兽”阿莱斯特的传世之书\n增加30%召唤伤害\n增加2召唤上限\n获得所有材料的效果
 
 Common.InvokerBookEX1=你现在掌控了召唤师的真正力量了\n你手持阿莱斯特之杖时, 死亡敌人的灵魂会治愈你\n你可以释放敌人的伤害性灵魂
 Common.InvokerBookEX2="\n阿莱斯特的笔记: \n我需要更多强大的灵魂, 神龙, 巨兔, 奇怪的机械, 更多的, 更多的灵魂! 打败它们!"
@@ -3631,7 +3706,7 @@ ItemName.ReaperArrow=幽魂箭
 ItemTooltip.ReaperArrow=这个箭矢可以穿墙
 
 ItemName.TerraArrow=泰拉箭
-ItemTooltip.TerraArrow=击中敌人返回\n无消耗
+ItemTooltip.TerraArrow=跟踪敌人\n无消耗
 
 
 // AAMod.Items.Ranged
@@ -4559,6 +4634,30 @@ NPCName.SpacePlaceholder=深空之门
 
 NPCName.Anubis=阿努比斯 史诗记述者
 
+NPCName.EyeSentry=禁忌之眼
+
+NPCName.Locust=禁忌蝗群
+
+NPCName.MinionCircle=禁忌之环
+
+NPCName.HorusHawk=荷鲁斯暗隼
+
+NPCName.Scarab=法老圣甲虫
+
+NPCName.Uraeus=眼镜神蛇
+
+NPCName.UraeusBody=眼镜神蛇
+
+NPCName.UraeusTail=眼镜神蛇
+
+// AAMod.NPCs.Bosses.Anubis.Forsaken
+
+NPCName.FATransition=阿努比斯 史诗记述者
+
+NPCName.FATransition2=阿努比斯 史诗记述者
+
+NPCName.ForsakenAnubis=阿努比斯 逝落之裁决
+
 // AAMod.NPCs.Bosses.AH.Ashe
 
 NPCName.AsheSpawn=燎狱魔女 邪鬼艾希
@@ -4588,6 +4687,8 @@ NPCName.AsheVanish=燎狱魔女 邪鬼艾希
 
 
 NPCName.Haruka=潭渊妖女 八歧遥香
+
+NPCName.HarukaClone=潭渊妖女 八歧遥香
 
 NPCName.HarukaVanish=潭渊妖女 八歧遥香
 
@@ -4647,19 +4748,19 @@ NPCName.AncientLungTail=远古之伴龙
 
 // AAMod.NPCs.Bosses.Athena
 
-NPCName.Athena=天城鸟妖神 雅典娜
+NPCName.Athena=穹武鸮姬 雅典娜
 
-NPCName.AthenaFlee=天城鸟妖神 雅典娜
+NPCName.AthenaFlee=穹武鸮姬 雅典娜
 
-NPCName.AthenaA=觉醒的奥林匹亚之神 雅典娜
+NPCName.AthenaA=奥林匹亚女神 觉醒雅典娜
 
-NPCName.AthenaDark=天城鸟妖神的暗影
+NPCName.AthenaDark=穹武鸮姬的暗影
 
-NPCName.AthenaLight=天城鸟妖神的光影
+NPCName.AthenaLight=穹武鸮姬的光影
 
-NPCName.AthenaDefeat=被打败的鸟妖神 雅典娜
+NPCName.AthenaDefeat=被打败的鸮姬 雅典娜
 
-NPCName.AthenaDefeat2=被打败的鸟妖神 雅典娜
+NPCName.AthenaDefeat2=被打败的鸮姬 雅典娜
 
 NPCName.OlympianDragon=卫城飞龙
 
@@ -5525,6 +5626,31 @@ MapObject.OroborosDoorOpen=虚环木门
 
 // AAMod.Tiles.Trophy
 
+//CurrencyItems
+
+Common.PlayerBuyPrice=购买价格:
+
+Common.BloodRune=血浸符文
+Common.BloodRunes=血浸符文
+
+Common.ChristmasCheer=圣诞祝元
+Common.ChristmasCheers=圣诞祝元
+
+Common.GoblinSoul=哥布林亡魂
+Common.GoblinSouls=哥布林亡魂
+
+Common.HalloweenTreat=万圣怪糖
+Common.HalloweenTreats=万圣怪糖
+
+Common.MartianCredit=火星造物
+Common.MartianCredits=火星造物
+
+Common.MonsterSoul=凶兽之魂
+Common.MonsterSouls=凶兽之魂
+
+Common.PirateBooty=海盗战利品
+Common.PirateBootys=海盗战利品
+
 //hotkey
 
 Common.InfinityHotKey=响指
@@ -5563,6 +5689,16 @@ Common.AATownNPC=远古觉醒城镇NPC生成禁止
 Common.AATownNPCInfo=取消远古觉醒NPC的生成, 用于玩家希望其他npc能更快刷新. 注释: 这个不会影响阿努比斯的生成, 因为他是游戏流程的关键.
 Common.DisableBossDialogue=远古觉醒Boss对话取消
 Common.DisableBossDialogueInfo=阻止Boss对话的生成. 也会让已有的Boss对话速度加快.
+
+//AAWorldBuild
+
+Common.AAWorldBuildAltars=安置混沌祭坛
+Common.AAWorldBuildChaos=混沌蔓延
+Common.AAWorldBuildInferno=把土壤焦化成燎狱
+Common.AAWorldBuildMire=给潭渊蓄水
+Common.AAWorldBuildTerrarium=建筑泰拉心球
+Common.AAWorldBuildAcropolis=漂浮卫城
+Common.AAWorldBuildHoard=聚积宝藏
 
 //AARecipeGroup
 
