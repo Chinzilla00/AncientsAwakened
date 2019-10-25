@@ -1,4 +1,6 @@
 ﻿using BaseMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -12,8 +14,8 @@ namespace AAMod.NPCs.Bosses.Anubis
 			npc.damage = 40;
 			npc.npcSlots = 5f;
             npc.damage = 45;
-            npc.width = 50;
-            npc.height = 50;
+            npc.width = 32;
+            npc.height = 32;
             npc.defense = 20;
             npc.lifeMax = 500;
             npc.knockBackResist = 0f;
@@ -47,6 +49,12 @@ namespace AAMod.NPCs.Bosses.Anubis
                     Dust.NewDust(npc.position, npc.width, npc.height, DustID.GoldCoin, hitDirection, -1f, 0);
                 }
             }
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc, drawColor, true);
+            return false;
         }
     }
 }

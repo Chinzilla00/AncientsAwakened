@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BaseMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 
 namespace AAMod.NPCs.Bosses.Anubis
@@ -24,6 +26,12 @@ namespace AAMod.NPCs.Bosses.Anubis
 		public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
 		{
 			return false;
-		}	
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc, drawColor, true);
+            return false;
+        }
     }
 }

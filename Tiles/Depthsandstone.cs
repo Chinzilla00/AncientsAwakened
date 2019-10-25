@@ -10,6 +10,7 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
             Main.tileBlendAll[Type] = true;
+            Main.tileBlockLight[Type] = true;
             Terraria.ID.TileID.Sets.Conversion.Sandstone[Type] = true;
             Main.tileLighted[Type] = false;
             dustType = mod.DustType("DeepAbyssiumDust");

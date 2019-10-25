@@ -7,14 +7,14 @@ using AAMod.Items.Boss.Anubis;
 using BaseMod;
 using System.IO;
 
-namespace AAMod.NPCs.Bosses.Anubis
+namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 {
-    public class Anubis : ModNPC
+    public class ForsakenAnubis : ModNPC
     {
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Anubis Legendscribe");
-            Main.npcFrameCount[npc.type] = 9;
+			DisplayName.SetDefault("Anubis; Forsaken Judge");
+            Main.npcFrameCount[npc.type] = 4;
         }
 
         public override void SetDefaults()
@@ -22,14 +22,14 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.width = 76;
             npc.height = 100;
             npc.aiStyle = -1;
-            npc.damage = 35;
-            npc.defense = 40;
-            npc.lifeMax = 50000;
+            npc.damage = 55;
+            npc.defense = 60;
+            npc.lifeMax = 1200000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
             npc.knockBackResist = 0f;
             npc.boss = true;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AnubisA");
         }
 
         public float[] internalAI = new float[4];
@@ -78,32 +78,25 @@ namespace AAMod.NPCs.Bosses.Anubis
                 npc.direction = npc.spriteDirection = -1;
             }
 
-            if (internalAI[0] != 1)
-            {
-                npc.noGravity = false;
-                Preamble();
-                return;
-            }
-
             npc.dontTakeDamage = false;
             npc.noGravity = true;
 
-            if (internalAI[3] == 0)
+            if (internalAI[0] == 0)
             {
                 npc.velocity.Y += 0.002f;
                 if (npc.velocity.Y > .1f)
                 {
-                    internalAI[3] = 1f;
+                    internalAI[0] = 1f;
                     npc.netUpdate = true;
                 }
             }
             else
-            if (internalAI[3] == 1)
+            if (internalAI[0] == 1)
             {
                 npc.velocity.Y -= 0.002f;
                 if (npc.velocity.Y < -.1f)
                 {
-                    internalAI[3] = 0f;
+                    internalAI[0] = 0f;
                     npc.netUpdate = true;
                 }
             }
@@ -167,14 +160,9 @@ namespace AAMod.NPCs.Bosses.Anubis
             {
                 case 0:
 
-                    int proj = Main.rand.Next(50) == 0 ? ModContent.ProjectileType<Pumpkin>() : ModContent.ProjectileType<Runeblast>();
+                    int proj = Main.rand.Next(2) == 0 ? ModContent.ProjectileType<ForsakenBlast>() : ModContent.ProjectileType<ForsakenSkull>();
 
                     int damage = npc.damage / 2;
-                    if (npc.ai[3] == 0 && proj == ModContent.ProjectileType<Pumpkin>())
-                    {
-                        CombatText.NewText(npc.Hitbox, Color.Gold, "YEET", true); 
-                        damage = 300;
-                    }
 
                     BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, proj, ref npc.ai[3], 80, damage, 10, true);
 
@@ -200,19 +188,23 @@ namespace AAMod.NPCs.Bosses.Anubis
                         {
                             if (npc.life < npc.lifeMax / 3)
                             {
-                                int a = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<EyeSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 200, npc.Center.Y);
+                                int a = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 200, npc.Center.Y);
                                 Main.npc[a].Center = npc.Center;
-                                int b = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<EyeSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 200, npc.Center.Y);
+                                int b = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 200, npc.Center.Y);
                                 Main.npc[b].Center = npc.Center;
-                                int c = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<EyeSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y - 200);
+                                int c = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y - 200);
                                 Main.npc[c].Center = npc.Center;
+                                int d = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y + 200);
+                                Main.npc[d].Center = npc.Center;
                             }
                             else
                             {
-                                int a = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<EyeSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 200, npc.Center.Y);
+                                int a = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 180, npc.Center.Y - 60);
                                 Main.npc[a].Center = npc.Center;
-                                int b = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<EyeSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 200, npc.Center.Y);
+                                int b = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 180, npc.Center.Y - 60);
                                 Main.npc[b].Center = npc.Center;
+                                int c = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y - 200);
+                                Main.npc[c].Center = npc.Center;
                             }
                         }
                         else
@@ -247,14 +239,14 @@ namespace AAMod.NPCs.Bosses.Anubis
 
                     if (npc.ai[1] == 120)
                     {
-                        BaseAI.FireProjectile(player.position, npc.position, ModContent.ProjectileType<Scepter>(), npc.damage / 2, 14, 10, -1);
+                        BaseAI.FireProjectile(player.position, npc.position, ModContent.ProjectileType<ForsakenStaff>(), npc.damage / 2, 14, 10, -1);
                     }
                     if (npc.ai[1] == 160)
                     {
                         ScepterTeleport();
                     }
 
-                    if (npc.ai[1] > 140 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Scepter>()))
+                    if (npc.ai[1] > 140 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<ForsakenStaff>()))
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
@@ -375,7 +367,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                 npc.TargetClosest();
                 if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f || !player.ZoneDesert)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("HAH! Get hosed-- er, sanded.", Color.Gold);
+                    if (Main.netMode != 1) BaseUtility.Chat("...Sorry, but you aren't ready yet.", Color.ForestGreen);
                     int a = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<TownNPCs.Anubis>());
                     Main.npc[a].Center = npc.Center;
                     npc.active = false;
@@ -390,26 +382,6 @@ namespace AAMod.NPCs.Bosses.Anubis
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
-            }
-            if (internalAI[0] == 0)
-            {
-                if (npc.velocity.Y == 0)
-                {
-                    if (npc.frame.Y < frameHeight * 4 || npc.frame.Y > frameHeight * 8)
-                    {
-                        npc.frame.Y = frameHeight * 4;
-                    }
-                }
-                else
-                {
-                    if (npc.frame.Y > frameHeight * 3)
-                    {
-                        npc.frame.Y = 0;
-                    }
-                }
-            }
-            else
-            {
                 if (npc.frame.Y > frameHeight * 3)
                 {
                     npc.frame.Y = 0;
@@ -429,13 +401,13 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
             for (int num87 = 0; num87 < 15; num87++)
             {
-                int num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 50, default, 3.7f);
+                int num88 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 50, default, 3.7f);
                 Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].noGravity = true;
                 Main.dust[num88].noLight = true;
                 Main.dust[num88].velocity *= 3f;
                 Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
-                num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 25, default, 1.5f);
+                num88 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 25, default, 1.5f);
                 Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].velocity *= 2f;
                 Main.dust[num88].noGravity = true;
@@ -446,7 +418,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
             for (int num89 = 0; num89 < 10; num89++)
             {
-                int num90 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 2.7f);
+                int num90 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 0, default, 2.7f);
                 Main.dust[num90].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
                 Main.dust[num90].noGravity = true;
                 Main.dust[num90].noLight = true;
@@ -455,7 +427,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
             for (int num91 = 0; num91 < 30; num91++)
             {
-                int num92 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 1.5f);
+                int num92 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 0, default, 1.5f);
                 Main.dust[num92].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
                 Main.dust[num92].noGravity = true;
                 Main.dust[num92].velocity *= 3f;
@@ -503,13 +475,13 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
             for (int num87 = 0; num87 < 15; num87++)
             {
-                int num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 50, default, 3.7f);
+                int num88 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 50, default, 3.7f);
                 Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].noGravity = true;
                 Main.dust[num88].noLight = true;
                 Main.dust[num88].velocity *= 3f;
                 Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
-                num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 25, default, 1.5f);
+                num88 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 25, default, 1.5f);
                 Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].velocity *= 2f;
                 Main.dust[num88].noGravity = true;
@@ -520,7 +492,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
             for (int num89 = 0; num89 < 10; num89++)
             {
-                int num90 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 2.7f);
+                int num90 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 0, default, 2.7f);
                 Main.dust[num90].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
                 Main.dust[num90].noGravity = true;
                 Main.dust[num90].noLight = true;
@@ -529,7 +501,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
             for (int num91 = 0; num91 < 30; num91++)
             {
-                int num92 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 1.5f);
+                int num92 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 0, default, 1.5f);
                 Main.dust[num92].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
                 Main.dust[num92].noGravity = true;
                 Main.dust[num92].velocity *= 3f;
@@ -555,63 +527,6 @@ namespace AAMod.NPCs.Bosses.Anubis
                 Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)pieCut * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
-            }
-        }
-
-        public void Preamble()
-        {
-            npc.dontTakeDamage = true;
-
-            npc.ai[3] = 39;
-            if (Main.netMode != 1)
-            {
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
-                if (npc.velocity.Y == 0)
-                {
-                    if (internalAI[1]++ < 420)
-                    {
-                        if (!AAWorld.downedAnubis)
-                        {
-                            if (internalAI[1] == 60)
-                            {
-                                string s = Main.ActivePlayersCount > 1 ? "guys" : "bud";
-                                if (Main.netMode != 1) BaseUtility.Chat("Well, " + s + ". Here we are.", Color.Gold);
-                            }
-
-                            if (internalAI[1] == 150)
-                            {
-                                if (Main.netMode != 1) BaseUtility.Chat("I hope you're ready for a real fight.", Color.Gold);
-                            }
-
-                            if (internalAI[1] == 240)
-                            {
-                                if (Main.netMode != 1) BaseUtility.Chat("Especially since I'm in my superior form.", Color.Gold);
-                            }
-
-                            if (internalAI[1] == 320)
-                            {
-                                if (Main.netMode != 1) BaseUtility.Chat("You ready? I won't hesitate to slap you silly!", Color.Gold);
-                            }
-
-                            if (internalAI[1] >= 410)
-                            {
-                                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
-                                if (Main.netMode != 1) BaseUtility.Chat("Let's go!", Color.Gold);
-                                internalAI[0] = 1;
-                                Teleport();
-                                npc.netUpdate = true;
-                            }
-                        }
-                        else
-                        {
-                            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
-                            if (Main.netMode != 1) BaseUtility.Chat("A rematch eh? Alright, this should be fun!", Color.Gold);
-                            internalAI[0] = 1;
-                            Teleport();
-                            npc.netUpdate = true;
-                        }
-                    }
-                }
             }
         }
     }

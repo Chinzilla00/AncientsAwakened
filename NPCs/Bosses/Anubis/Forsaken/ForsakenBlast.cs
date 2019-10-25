@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Anubis
 {
-    public class Runeblast : ModProjectile
+    public class ForsakenBlast : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Anubis
         public override void AI()
         {
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
-            int dustType = ModContent.DustType<Dusts.JudgementDust>();
+            int dustType = ModContent.DustType<Dusts.ForsakenDust>();
             if (projectile.localAI[0] == 0f)
             {
                 projectile.localAI[0] = 1f;
@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Anubis
         }
         public override void Kill(int timeLeft)
         {
-            int dustType = ModContent.DustType<Dusts.JudgementDust>();
+            int dustType = ModContent.DustType<Dusts.ForsakenDust>();
             int pieCut = 20;
             for (int m = 0; m < pieCut; m++)
             {

@@ -12,7 +12,8 @@ namespace AAMod.Tiles
 		public override void SetDefaults()
 		{
 			Main.tileSolid[Type] = true;
-			SetModTree(new BogwoodTree());
+            Main.tileBlockLight[Type] = true;
+            SetModTree(new BogwoodTree());
 			Main.tileBlendAll[Type] = true;
             Main.tileMerge[TileID.Mud][Type] = true;
             TileID.Sets.NeedsGrassFraming[Type] = true;

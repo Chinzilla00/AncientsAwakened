@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Anubis
 {
-    public class Runeblast : ModProjectile
+    public class Pumpkin : ModProjectile
     {
         public override void SetDefaults()
         {
@@ -18,23 +18,10 @@ namespace AAMod.NPCs.Bosses.Anubis
             projectile.extraUpdates = 1;
         }
 
-
         public override void AI()
         {
             projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
-            int dustType = ModContent.DustType<Dusts.JudgementDust>();
-            if (projectile.localAI[0] == 0f)
-            {
-                projectile.localAI[0] = 1f;
-                Main.PlaySound(SoundID.DD2_BetsyFireballShot, projectile.Center);
-            }
-            if (Main.rand.Next(3) == 0)
-            {
-                int dustID2 = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustType, 0f, 0f, 100, Color.White, 2f);
-                Main.dust[dustID2].velocity = -projectile.velocity * 0.5f;
-                Main.dust[dustID2].noLight = false;
-                Main.dust[dustID2].noGravity = true;
-            }
+            projectile.rotation += .3f * projectile.direction;
         }
         public override void Kill(int timeLeft)
         {
