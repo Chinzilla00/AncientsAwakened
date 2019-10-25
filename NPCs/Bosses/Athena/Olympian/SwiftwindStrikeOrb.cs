@@ -19,6 +19,8 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             projectile.width = 28;
             projectile.height = 28;
             projectile.tileCollide = false;
+            projectile.friendly = false; 
+			projectile.hostile = true;
         }
 
         public override void AI()
