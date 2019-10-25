@@ -99,6 +99,60 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
             damage = 0;
+            
+            int dust1 = ModContent.DustType<Dusts.YamataADust>();
+            int dust2 = ModContent.DustType<Dusts.YamataADust>();
+            if (npc.life <= 0)
+            {
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
+                Main.dust[dust1].velocity *= 0.5f;
+                Main.dust[dust1].scale *= 1.3f;
+                Main.dust[dust1].fadeIn = 1f;
+                Main.dust[dust1].noGravity = false;
+                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0);
+                Main.dust[dust2].velocity *= 0.5f;
+                Main.dust[dust2].scale *= 1.3f;
+                Main.dust[dust2].fadeIn = 1f;
+                Main.dust[dust2].noGravity = true;
+
+            }
+            if (!AAWorld.downedYamata)
+            {
+                if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA6"), new Color(146, 30, 68));
+                    threeQuarterHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA7"), new Color(146, 30, 68));
+                    HalfHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 10 && tenthHealth == false)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA8"), new Color(146, 30, 68));
+                    tenthHealth = true;
+                }
+            }
+            if (AAWorld.downedYamata)
+            {
+                if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA9"), new Color(146, 30, 68));
+                    threeQuarterHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA10"), new Color(146, 30, 68));
+                    HalfHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 10 && tenthHealth == false)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA11"), new Color(146, 30, 68));
+                    tenthHealth = true;
+                }
+            }
+
             return false;
         }
 
@@ -391,6 +445,23 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             bottomVisualOffset = new Vector2(Math.Min(3f, Math.Abs(npc.velocity.X)), 0f) * (npc.velocity.X < 0 ? 1 : -1);
             UpdateLimbs();
+            
+            if (npc.life <= npc.lifeMax / 2 && !spawnHaruka)
+            {
+                spawnHaruka = true;
+                if (AAWorld.downedYamata)
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA14"), new Color(72, 78, 117));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA15"), new Color(146, 30, 68));
+                    AAModGlobalNPC.SpawnBoss(playerTarget, mod.NPCType("HarukaY"), false, 0, 0);
+                }
+                else
+                {
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA16"), new Color(146, 30, 68));
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA17"), new Color(72, 78, 117));
+                    AAModGlobalNPC.SpawnBoss(playerTarget, mod.NPCType("HarukaY"), false, 0, 0);
+                }
+            }
         }
 
         public void AIMovementRunAway()
@@ -659,77 +730,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             BaseDrawing.DrawAfterimage(sb, mod.GetTexture("Glowmasks/YamataA_Glow"), 0, npc, 0.8f, 1f, 4, false, 0f, 0f, AAColor.COLOR_WHITEFADE1);
 
             DrawHead(sb, "NPCs/Bosses/Yamata/Awakened/YamataAHead", "Glowmasks/YamataAHead_Glow", TrueHead, dColor, false);
-        }
-
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            int dust1 = ModContent.DustType<Dusts.YamataADust>();
-            int dust2 = ModContent.DustType<Dusts.YamataADust>();
-            if (npc.life <= 0)
-            {
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
-                Main.dust[dust1].velocity *= 0.5f;
-                Main.dust[dust1].scale *= 1.3f;
-                Main.dust[dust1].fadeIn = 1f;
-                Main.dust[dust1].noGravity = false;
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0);
-                Main.dust[dust2].velocity *= 0.5f;
-                Main.dust[dust2].scale *= 1.3f;
-                Main.dust[dust2].fadeIn = 1f;
-                Main.dust[dust2].noGravity = true;
-
-            }
-            if (!AAWorld.downedYamata)
-            {
-                if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA6"), new Color(146, 30, 68));
-                    threeQuarterHealth = true;
-                }
-                if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA7"), new Color(146, 30, 68));
-                    HalfHealth = true;
-                }
-                if (npc.life <= npc.lifeMax / 10 && tenthHealth == false)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA8"), new Color(146, 30, 68));
-                    tenthHealth = true;
-                }
-            }
-            if (AAWorld.downedYamata)
-            {
-                if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA9"), new Color(146, 30, 68));
-                    threeQuarterHealth = true;
-                }
-                if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA10"), new Color(146, 30, 68));
-                    HalfHealth = true;
-                }
-                if (npc.life <= npc.lifeMax / 10 && tenthHealth == false)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA11"), new Color(146, 30, 68));
-                    tenthHealth = true;
-                }
-            }
-
-            if (npc.life <= npc.lifeMax / 2 && !spawnHaruka)
-            {
-                spawnHaruka = true;
-                if (AAWorld.downedYamata)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA14"), new Color(72, 78, 117));
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA15"), new Color(146, 30, 68));
-                    AAModGlobalNPC.SpawnBoss(playerTarget, mod.NPCType("HarukaY"), false, 0, 0);
-                    return;
-                }
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA16"), new Color(146, 30, 68));
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA17"), new Color(72, 78, 117));
-                AAModGlobalNPC.SpawnBoss(playerTarget, mod.NPCType("HarukaY"), false, 0, 0);
-            }
         }
 
         public bool spawnHaruka = false;
