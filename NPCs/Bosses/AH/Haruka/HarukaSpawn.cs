@@ -10,8 +10,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ashe Akuma");     
-            Main.npcFrameCount[npc.type] = 16;     
+            DisplayName.SetDefault("Haruka Yamata");     
+            Main.npcFrameCount[npc.type] = 4;     
         }
 
         public override void SetDefaults()
@@ -39,10 +39,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             if (npc.frameCounter++ > 10)
             {
                 npc.frameCounter = 0;
-                if (Frame++ > 15)
-                {
-                    Frame = 12;
-                }
+                Frame++;
             }
             npc.frame.Y = frameHeight * Frame;
         }
