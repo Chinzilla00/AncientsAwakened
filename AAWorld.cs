@@ -104,6 +104,8 @@ namespace AAMod
         public static bool downedGreed;
         public static bool downedGreedA;
         public static bool AthenaHerald;
+
+        public static bool AnubisAwakened;
         //Points
         public static Point WHERESDAVOIDAT;
 
@@ -166,6 +168,8 @@ namespace AAMod
             SistersSummoned = false;
             downedRajah = false;
             AthenaHerald = false;
+
+            AnubisAwakened = false;
             //World Changes
             TerrariumEnemies = NPC.downedBoss2;
             ChaosOres = downedGrips;
@@ -272,6 +276,8 @@ namespace AAMod
             if (downedGreedA) downed.Add("WOOOORMS");
             if (AthenaHerald) downed.Add("BitchBird");
 
+            if (AnubisAwakened) downed.Add("AnuA");
+
             return new TagCompound {
                 {"downed", downed},
 				{"MCenter", MireCenter },
@@ -338,6 +344,8 @@ namespace AAMod
             downedGreed = downed.Contains("GimmeGimme");
             downedGreedA = downed.Contains("WOOOORMS");
             AthenaHerald = downed.Contains("BitchBird");
+
+            AnubisAwakened = downed.Contains("AnuA");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -433,6 +441,7 @@ namespace AAMod
             flags5[0] = AthenaHerald;
             flags5[1] = downedAthenaA;
             flags5[2] = downedGreedA;
+            flags5[3] = AnubisAwakened;
             writer.Write(flags5);
 
             writer.WriteVector2(MireCenter);
@@ -505,6 +514,7 @@ namespace AAMod
             AthenaHerald = flags5[0];
             downedAthenaA = flags5[1];
             downedGreedA = flags5[2];
+            AnubisAwakened = flags5[3];
 
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		

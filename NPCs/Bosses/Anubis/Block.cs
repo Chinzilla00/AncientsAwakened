@@ -22,7 +22,6 @@ namespace AAMod.NPCs.Bosses.Anubis
             projectile.penetrate = -1;
             projectile.friendly = false;
             projectile.hostile = true;
-            projectile.extraUpdates = 1;
             projectile.tileCollide = false;
         }
 
@@ -80,7 +79,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                 {
                     if (projectile.velocity.X > -12)
                     {
-                        projectile.velocity.X -= .1f;
+                        projectile.velocity.X -= .05f;
                     }
                     projectile.direction = projectile.spriteDirection = -1;
                 }

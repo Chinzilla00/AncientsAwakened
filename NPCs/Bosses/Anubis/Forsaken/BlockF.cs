@@ -1,14 +1,14 @@
 ﻿using BaseMod;
 using Microsoft.Xna.Framework;
-using Terraria;
+using Microsoft.Xna.Framework.Graphics;
 using System.IO;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework.Graphics;
 
-namespace AAMod.NPCs.Bosses.Anubis
+namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 {
-    public class Block1 : ModProjectile
+    public class BlockF : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -16,12 +16,13 @@ namespace AAMod.NPCs.Bosses.Anubis
         }
         public override void SetDefaults()
         {
-            projectile.width = 208;
-            projectile.height = 64;
+            projectile.width = 64;
+            projectile.height = 208;
             projectile.aiStyle = -1;
             projectile.penetrate = -1;
             projectile.friendly = false;
             projectile.hostile = true;
+            projectile.extraUpdates = 1;
             projectile.tileCollide = false;
         }
 
@@ -52,6 +53,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                 projectile.oldPos[m] = projectile.oldPos[m - 1];
             }
             projectile.oldPos[0] = projectile.position;
+
             if (projectile.frame < 5)
             {
                 if (projectile.frameCounter++ > 3)
@@ -69,16 +71,16 @@ namespace AAMod.NPCs.Bosses.Anubis
             {
                 if (projectile.ai[0] == 0)
                 {
-                    if (projectile.velocity.Y < 12)
+                    if (projectile.velocity.X < 16)
                     {
-                        projectile.velocity.Y += .05f;
+                        projectile.velocity.X += .1f;
                     }
                 }
                 else if (projectile.ai[0] == 1)
                 {
-                    if (projectile.velocity.Y > -12)
+                    if (projectile.velocity.X > -16)
                     {
-                        projectile.velocity.Y -= .05f;
+                        projectile.velocity.X -= .1f;
                     }
                     projectile.direction = projectile.spriteDirection = -1;
                 }
@@ -88,7 +90,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                 {
                     for (int m = 0; m < 40; m++)
                     {
-                        Dust.NewDust(projectile.position, projectile.width, projectile.height, 32, 0f, 0f, 100, default, 1.6f);
+                        Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 100, default, 1.6f);
                     }
                     clearCheck.Kill();
                     projectile.Kill();
@@ -98,10 +100,6 @@ namespace AAMod.NPCs.Bosses.Anubis
 
         public override void Kill(int timeLeft)
         {
-            for (int m = 0; m < 40; m++)
-            {
-                Dust.NewDust(projectile.position, projectile.width, projectile.height, 32, 0f, 0f, 100, default, 1.6f);
-            }
             Main.PlaySound(SoundID.Item62, (int)projectile.position.X, (int)projectile.position.Y);
         }
 
@@ -109,7 +107,7 @@ namespace AAMod.NPCs.Bosses.Anubis
         {
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
 
-            BaseDrawing.DrawAfterimage(sb, Main.projectileTexture[projectile.type], 0, projectile, 2f, 1f, (int)projectile.velocity.Y, true, 0f, 0f, dColor, frame, 6);
+            BaseDrawing.DrawAfterimage(sb, Main.projectileTexture[projectile.type], 0, projectile, 2f, 1f, (int)projectile.velocity.X, true, 0f, 0f, dColor, Color.LightGreen, 6);
 
 
             BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 6, frame, dColor, true);

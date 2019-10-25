@@ -383,6 +383,26 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
         }
 
+        public override void NPCLoot()
+        {
+            if (NPC.downedMoonlord)
+            {
+                if (!AAWorld.AnubisAwakened)
+                {
+                    AAWorld.AnubisAwakened = true;
+                    NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<Forsaken.FATransition>());
+                }
+                else
+                {
+                    NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<Forsaken.FATransition>());
+                }
+            }
+            else
+            {
+                NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<TownNPCs.Anubis>());
+            }
+        }
+
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;

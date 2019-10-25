@@ -21,8 +21,8 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
         public override void SetDefaults()
         {
             projectile.tileCollide = false;
-            projectile.width = 30;
-            projectile.height = 30;
+            projectile.width = 32;
+            projectile.height = 40;
             projectile.aiStyle = -1;
             projectile.penetrate = -1;
             projectile.friendly = false;
@@ -45,11 +45,9 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             NPC anubis = Main.npc[body];
             if (anubis == null || anubis.life <= 0 || !anubis.active || anubis.type != ModContent.NPCType<ForsakenAnubis>()) { projectile.active = false; return; }
 
-            Player player = Main.player[anubis.target];
-
             projectile.rotation += .1f;
 
-            int glyph = ((ForsakenAnubis)anubis.modNPC).LocustCount;
+            int glyph = ((ForsakenAnubis)anubis.modNPC).RuneCount;
 
             if (rotValue == -1f) rotValue = projectile.ai[0] % glyph * ((float)Math.PI * 2f / glyph);
             rotValue += 0.04f;

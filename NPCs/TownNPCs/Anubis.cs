@@ -62,7 +62,10 @@ namespace AAMod.NPCs.TownNPCs
             for (int k = 0; k < 255; k++)
             {
                 Player player = Main.player[k];
-                if (player.active)
+                if (player.active && !NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Anubis>()) && 
+                    !NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Forsaken.FATransition>()) &&
+                    !NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Forsaken.FATransition2>()) &&
+                    !NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Forsaken.ForsakenAnubis>()))
                 {
                     return true;
                 }
