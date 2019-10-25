@@ -178,7 +178,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public override void AI()
         {
             Player player = Main.player[npc.target];
-            if (!Main.expertMode)
+            if (Main.expertMode)
             {
                 damage = npc.damage / 4;
             }
