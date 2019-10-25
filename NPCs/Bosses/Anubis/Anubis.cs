@@ -58,6 +58,12 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
         }
 
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.75f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 0.85f);
+        }
+
         public int LocustCount = Main.expertMode ? 6 : 4;
 
         public override void AI()

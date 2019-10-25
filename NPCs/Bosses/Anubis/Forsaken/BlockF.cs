@@ -107,7 +107,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
         {
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
 
-            BaseDrawing.DrawAfterimage(sb, Main.projectileTexture[projectile.type], 0, projectile, 2f, 1f, (int)projectile.velocity.X, true, 0f, 0f, dColor, Color.LightGreen, 6);
+            BaseDrawing.DrawAfterimage(sb, Main.projectileTexture[projectile.type], 0, projectile, 2f, 1f, (int)projectile.velocity.X, true, 0f, 0f, Color.LightGreen, frame, 6);
 
 
             BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 6, frame, dColor, true);

@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             npc.aiStyle = -1;
             npc.damage = 55;
             npc.defense = 60;
-            npc.lifeMax = 1200000;
+            npc.lifeMax = 180000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
             npc.knockBackResist = 0f;
@@ -56,6 +56,12 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
             }
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.75f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 0.85f);
         }
 
         public int RuneCount = 9;
@@ -148,14 +154,14 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 
                     int damage = npc.damage / 2;
 
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, proj, ref npc.ai[3], 80, damage, 10, true);
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, proj, ref npc.ai[3], 60, damage, 10, true);
 
-                    if (npc.ai[3] == 40)
+                    if (npc.ai[3] == 30)
                     {
                         Teleport();
                     }
 
-                    if (npc.ai[1] >= 260)
+                    if (npc.ai[1] >= 200)
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
@@ -221,7 +227,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         }
                     }
 
-                    if (npc.ai[1] >= 160)
+                    if (npc.ai[1] >= 130)
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
@@ -236,12 +242,12 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     {
                         BaseAI.FireProjectile(player.position, npc.position, ModContent.ProjectileType<ForsakenStaff>(), npc.damage / 2, 14, 10, -1);
                     }
-                    if (npc.ai[1] == 160)
+                    if (npc.ai[1] == 140)
                     {
                         ScepterTeleport();
                     }
 
-                    if (npc.ai[1] > 140 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<ForsakenStaff>()))
+                    if (npc.ai[1] > 160 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<ForsakenStaff>()))
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
@@ -255,7 +261,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 case 3:
                     if (npc.life > npc.lifeMax / 2)
                     {
-                        if (npc.ai[1] == 50)
+                        if (npc.ai[1] == 40)
                         {
                             int l = Projectile.NewProjectile(player.position + new Vector2(-800, 0), Vector2.Zero, ModContent.ProjectileType<BlockF>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
                             int r = Projectile.NewProjectile(player.position + new Vector2(800, 0), Vector2.Zero, ModContent.ProjectileType<BlockF>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
@@ -264,7 +270,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                             Main.projectile[r].ai[1] = l;
                             Main.projectile[r].Center = player.Center + new Vector2(800, 0);
                         }
-                        if (npc.ai[1] == 100)
+                        if (npc.ai[1] == 80)
                         {
                             int u = Projectile.NewProjectile(player.position + new Vector2(0, -800), Vector2.Zero, ModContent.ProjectileType<BlockF1>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
                             int d = Projectile.NewProjectile(player.position + new Vector2(0, 800), Vector2.Zero, ModContent.ProjectileType<BlockF1>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
@@ -273,7 +279,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                             Main.projectile[d].ai[1] = u;
                             Main.projectile[d].Center = player.Center + new Vector2(0, 800);
                         }
-                        if (npc.ai[1] > 180 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
+                        if (npc.ai[1] > 160 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
                         {
                             npc.ai[0]++;
                             npc.ai[1] = 0;
@@ -284,7 +290,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     }
                     else
                     {
-                        if (npc.ai[1] % 40 == 0)
+                        if (npc.ai[1] % 30 == 0)
                         {
                             if (Main.rand.Next(2) == 0)
                             {
@@ -306,7 +312,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                             }
                         }
 
-                        if (npc.ai[1] > 270 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<BlockF>()))
+                        if (npc.ai[1] > 240 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<BlockF>()))
                         {
                             npc.ai[0]++;
                             npc.ai[1] = 0;

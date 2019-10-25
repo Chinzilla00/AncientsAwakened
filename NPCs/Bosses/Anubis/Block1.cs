@@ -107,7 +107,7 @@ namespace AAMod.NPCs.Bosses.Anubis
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 6, 0, 0);
 
             BaseDrawing.DrawAfterimage(sb, Main.projectileTexture[projectile.type], 0, projectile, 2f, 1f, (int)projectile.velocity.Y, true, 0f, 0f, dColor, frame, 6);
 

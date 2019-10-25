@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 if (Main.netMode != 1)
                 {
                     npc.ai[0]++;
-                    if (npc.ai[0] >= 150)
+                    if (npc.ai[0] >= 120)
                     {
                         npc.ai[0] = 0;
                         npc.ai[1] = 1;
