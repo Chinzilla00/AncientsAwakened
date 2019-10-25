@@ -14,17 +14,12 @@ namespace AAMod.Items.Tools
             item.useAnimation = 30;
             item.useTime = 24;
             item.autoReuse = true;
-            item.width = 24;
-            item.height = 28;
             item.damage = 7;
             item.hammer = 50;
             item.UseSound = SoundID.Item1;
             item.knockBack = 3f;
             item.value = 10000;
             item.melee = true;
-            item.UseSound = SoundID.Item1;
-            item.autoReuse = true;
-            item.useTurn = true;
         }
 
         public override void SetStaticDefaults()
