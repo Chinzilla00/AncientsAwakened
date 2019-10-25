@@ -17,7 +17,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 			projectile.timeLeft = 1200;
 			projectile.penetrate = 1;
             projectile.extraUpdates = 1;
-            projectile.aiStyle = -1;
+            projectile.aiStyle = 1;
 		}
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
