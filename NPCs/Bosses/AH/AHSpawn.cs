@@ -121,6 +121,7 @@ namespace AAMod.NPCs.Bosses.AH
             {
                 if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AHSpawn9"), new Color(72, 78, 117));
                 Main.npc[BaseAI.GetNPC(npc.Center, mod.NPCType("HarukaSpawn"), -1)].Transform(mod.NPCType("Haruka"));
+                SpawnBoss(player, "Haruka");
                 npc.active = false;
             }
         }

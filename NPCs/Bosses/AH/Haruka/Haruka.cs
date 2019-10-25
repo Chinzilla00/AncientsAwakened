@@ -188,6 +188,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
 
             Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
+            npc.direction = npc.spriteDirection = npc.position.X < player.position.X ? 1 : -1;
             int Ashe = NPC.CountNPCS(mod.NPCType("Ashe"));
             bool flag = player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f;
             if (Ashe == 0 && flag)

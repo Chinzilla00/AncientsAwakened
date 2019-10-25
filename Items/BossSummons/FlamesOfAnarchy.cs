@@ -65,10 +65,9 @@ Non-Consumable");
             else
             {
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AHSpawn"), false, 0, 0);
+                AAWorld.SistersSummoned = true;
                 return true;
             }
-
-            AAWorld.SistersSummoned = true;
         }
 
         public override void AddRecipes()

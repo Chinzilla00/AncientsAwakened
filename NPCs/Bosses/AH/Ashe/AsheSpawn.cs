@@ -10,7 +10,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Haruka Yamata");     
+            DisplayName.SetDefault("Ashe Akuma");     
             Main.npcFrameCount[npc.type] = 16;     
         }
 
