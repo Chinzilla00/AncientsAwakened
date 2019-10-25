@@ -1480,6 +1480,9 @@ ItemTooltip.HaphestusForge=*拍一拍熔炉顶* 这小东西竟然可以容纳�
 ItemName.HellstoneAnvil=狱石砧
 ItemTooltip.HellstoneAnvil=这东西会着火吗？
 
+ItemName.HoardBox=八音盒(欲望金窟)
+ItemTooltip.HoardBox=播放 'Cavern of Coveted Treasures' by OmegaFerretMusic
+
 ItemName.HydraBox=八音盒(九头渊蛇)
 ItemTooltip.HydraBox=播放 'Abyssal Wrath' by Spectral Aves
 
@@ -2548,6 +2551,9 @@ ItemTooltip.PlanteraFlower=召唤世纪之花\n只能在丛林地下召唤
 
 ItemName.PlatinumCarrot=十克拉胡罗卜
 ItemTooltip.PlatinumCarrot=召唤一个凶猛的惩罚者
+
+ItemName.Scepter=拉的神杖
+ItemTooltip.Scepter=召唤阿努比斯\n只能在沙漠表面使用\n“我，呃emmm...从我一个鸟朋友那借来的”
 
 ItemName.ScrapHeap=电子垃圾堆
 ItemTooltip.ScrapHeap=一大堆金属垃圾\n召唤食腐者-双头狗俄耳托斯电子X型\n只能在晚上使用
@@ -4630,19 +4636,27 @@ NPCName.Anubis=阿努比斯 史诗记述者
 
 NPCName.EyeSentry=禁忌之眼
 
-NPCName.Locust=逝落飞蝗
+NPCName.Locust=禁忌蝗群
 
 NPCName.MinionCircle=禁忌之环
 
 NPCName.HorusHawk=荷鲁斯暗隼
 
-NPCName.Scarab=逝落圣甲虫
+NPCName.Scarab=法老圣甲虫
 
 NPCName.Uraeus=眼镜神蛇
 
 NPCName.UraeusBody=眼镜神蛇
 
 NPCName.UraeusTail=眼镜神蛇
+
+// AAMod.NPCs.Bosses.Anubis.Forsaken
+
+NPCName.FATransition=阿努比斯 史诗记述者
+
+NPCName.FATransition2=阿努比斯 史诗记述者
+
+NPCName.ForsakenAnubis=阿努比斯 逝落之裁决
 
 // AAMod.NPCs.Bosses.AH.Ashe
 
@@ -4673,6 +4687,8 @@ NPCName.AsheVanish=燎狱魔女 邪鬼艾希
 
 
 NPCName.Haruka=潭渊妖女 八歧遥香
+
+NPCName.HarukaClone=潭渊妖女 八歧遥香
 
 NPCName.HarukaVanish=潭渊妖女 八歧遥香
 
