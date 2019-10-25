@@ -42,7 +42,6 @@ Non-Consumable");
         public override bool UseItem(Player player)
         {
             Main.PlaySound(SoundID.Roar, player.position, 0);
-            AAWorld.SistersSummoned = true;
 
             if (AAWorld.SistersSummoned && !AAWorld.downedSisters)
             {
@@ -68,6 +67,8 @@ Non-Consumable");
                 AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AHSpawn"), false, 0, 0);
                 return true;
             }
+
+            AAWorld.SistersSummoned = true;
         }
 
         public override void AddRecipes()
