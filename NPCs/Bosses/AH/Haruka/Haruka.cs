@@ -203,6 +203,14 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 return;
             }
+
+            if(SHADOWCONTER <= 0)
+            {
+                npc.dontTakeDamage = false;
+                SHADOWCONTER = 0;
+                Shadowdashcounter = 0;
+            }
+
             if (Invisible)
             {
                 if (npc.alpha < 255)
@@ -383,13 +391,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     internalAI[0] = AISTATE_SLASH;
                     Shadowdashcounter = 0;
                 }
-            }
-
-            if(SHADOWCONTER <= 0)
-            {
-                npc.dontTakeDamage = false;
-                SHADOWCONTER = 0;
-                Shadowdashcounter = 0;
             }
 
 
