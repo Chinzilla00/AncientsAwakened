@@ -19,5 +19,10 @@ namespace AAMod.Buffs
 		{
 			player.GetModPlayer<AAPlayer>().FFlames = true;
 		}
+
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            npc.GetGlobalNPC<AAModGlobalNPC>().FFlames = true;
+        }
     }
 }

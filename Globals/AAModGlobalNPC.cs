@@ -38,6 +38,7 @@ namespace AAMod
         public bool DynaEnergy2 = false;
         public bool Spear = false;
         public bool AssassinHurt = false;
+        public bool FFlames = false;
 
         public static int Toad = -1;
         public static int Rose = -1;
@@ -69,6 +70,7 @@ namespace AAMod
             DynaEnergy2 = false;
             Spear = false;
             AssassinHurt = false;
+            FFlames = false;
         }
 
         public override void SetDefaults(NPC npc)
@@ -117,8 +119,6 @@ namespace AAMod
 				npc.defense -= 20;
 			}
 
-            
-
             bool shen = npc.type == ModContent.NPCType<Shen>() || npc.type == ModContent.NPCType<ShenA>();
 
             ApplyDPSDebuff(terraBlaze, shen ? 46 : 26, shen ? 30 : 10, ref npc.lifeRegen, ref damage);
@@ -130,6 +130,7 @@ namespace AAMod
             ApplyDPSDebuff(Moonraze, 200, ref npc.lifeRegen);
             ApplyDPSDebuff(Hydratoxin, Math.Abs((int)npc.velocity.X), ref npc.lifeRegen);
             ApplyDPSDebuff(Electrified, 40, ref npc.lifeRegen);
+            ApplyDPSDebuff(FFlames, 40 * (npc.life / npc.lifeMax), ref npc.lifeRegen);
         }
 
         public void ApplyDPSDebuff(bool debuff, int lifeRegenValue, int damageValue, ref int lifeRegen, ref int damage)
@@ -583,6 +584,21 @@ namespace AAMod
         public override void DrawEffects(NPC npc, ref Color drawColor)
         {
             Rectangle hitbox = npc.Hitbox;
+            if (FFlames)
+            {
+                if (Main.rand.Next(4) < 3)
+                {
+                    int dust = Dust.NewDust(npc.position - new Vector2(2f, 2f), npc.width + 4, npc.height + 4, mod.DustType("ForsakenDust"), npc.velocity.X * 0.4f, npc.velocity.Y * 0.4f, 100, default, 2f);
+                    Main.dust[dust].noGravity = true;
+                    Main.dust[dust].velocity *= 1.8f;
+                    Main.dust[dust].velocity.Y -= 0.5f;
+                    if (Main.rand.Next(4) == 0)
+                    {
+                        Main.dust[dust].noGravity = false;
+                        Main.dust[dust].scale *= 0.5f;
+                    }
+                }
+            }
             if (CursedHellfire)
             {
                 if (Main.rand.Next(4) < 3)
