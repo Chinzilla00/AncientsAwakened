@@ -15,12 +15,12 @@ namespace AAMod.Tiles.Trees
         public override Texture2D GetTexture()
         {
             
-            return mod.GetTexture("Tiles/RazePalmTree");
+            return mod.GetTexture("Tiles/Trees/RazePalmTree");
         }
 
         public override Texture2D GetTopTextures()
         {
-            return mod.GetTexture("Tiles/RazePalmTreetops");
+            return mod.GetTexture("Tiles/Trees/RazePalmTreetops");
         }
     }
 }

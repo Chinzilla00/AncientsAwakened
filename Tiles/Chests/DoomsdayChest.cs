@@ -266,7 +266,7 @@ namespace AAMod.Tiles.Chests
         public override void PostDraw(int x, int y, SpriteBatch sb)
         {
             Tile tile = Main.tile[x, y];
-            Texture2D LockTex = mod.GetTexture("Tiles/DoomsdayChestLockedFrame");
+            Texture2D LockTex = mod.GetTexture("Tiles/Chests/DoomsdayChestLockedFrame");
             Texture2D glowTex = mod.GetTexture("Glowmasks/DoomsdayChest_Glow");
 
             int frameX = tile != null && tile.active() ? tile.frameX + (Main.tileFrame[Type] * 36) : 0;

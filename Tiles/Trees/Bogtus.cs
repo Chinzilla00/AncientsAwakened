@@ -9,7 +9,7 @@ namespace AAMod.Tiles.Trees
 
         public override Texture2D GetTexture()
 		{
-			return mod.GetTexture("Tiles/Bogtus");
+			return mod.GetTexture("Tiles/Trees/Bogtus");
 		}
     }
 }

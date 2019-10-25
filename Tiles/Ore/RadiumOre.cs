@@ -51,7 +51,7 @@ namespace AAMod.Tiles.Ore
             else
             {
                 glowtex = mod.GetTexture("Glowmasks/DarkmatterOre_Glow");
-                BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/DarkmatterOre"), x, y, true, false, false);
+                BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/Ore/DarkmatterOre"), x, y, true, false, false);
                 BaseDrawing.DrawTileTexture(spriteBatch, glowtex, x, y, true, false, false, null, AAGlobalTile.GetDarkmatterColorBright);
             }
             Tile tile = Main.tile[x, y];
