@@ -3700,7 +3700,7 @@ ItemName.ReaperArrow=幽魂箭
 ItemTooltip.ReaperArrow=这个箭矢可以穿墙
 
 ItemName.TerraArrow=泰拉箭
-ItemTooltip.TerraArrow=击中敌人返回\n无消耗
+ItemTooltip.TerraArrow=跟踪敌人\n无消耗
 
 
 // AAMod.Items.Ranged
@@ -4631,6 +4631,10 @@ NPCName.Anubis=阿努比斯 史诗记述者
 NPCName.EyeSentry=禁忌之眼
 
 NPCName.Locust=逝落飞蝗
+
+NPCName.MinionCircle=禁忌之环
+
+NPCName.HorusHawk=荷鲁斯暗隼
 
 NPCName.Scarab=逝落圣甲虫
 

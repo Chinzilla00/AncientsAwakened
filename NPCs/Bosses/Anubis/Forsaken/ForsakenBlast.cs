@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Anubis
+namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 {
     public class ForsakenBlast : ModProjectile
     {
