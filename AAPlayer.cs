@@ -230,6 +230,7 @@ namespace AAMod
         public bool IB = false;
         public bool Spear = false;
         public bool AkumaPain = false;
+        public bool FFlames = false;
 
         //buffs
         public bool Glitched = false;
@@ -469,6 +470,7 @@ namespace AAMod
             AkumaPain = false;
             Greed1 = false;
             Greed2 = false;
+            FFlames = false;
         }
 
         private void ResetPetsEffect()
@@ -2144,7 +2146,7 @@ namespace AAMod
             }
         }
 
-        /*public override float UseTimeMultiplier(Item item)
+        public override float UseTimeMultiplier(Item item)
         {
             float multiplier = 1f;
 
@@ -2164,7 +2166,7 @@ namespace AAMod
             }
 
             return multiplier;
-        }*/
+        }
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {
@@ -2414,6 +2416,18 @@ namespace AAMod
                     player.moveSpeed *= .58f;
                 }
             }
+
+            if (FFlames)
+            {
+                if (player.lifeRegen > 0)
+                {
+                    player.lifeRegen = 0;
+                }
+
+                player.lifeRegenTime = 0;
+                player.lifeRegen -= 20;
+            }
+
 
             if (CursedHellfire)
             {
