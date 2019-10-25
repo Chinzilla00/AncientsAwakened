@@ -64,7 +64,7 @@ namespace AAMod.Items.Boss.Anubis
             }
             player.QuickSpawnItem(mod.ItemType("ForsakenFragment"), Main.rand.Next(8, 16));
             player.QuickSpawnItem(mod.ItemType(""));
-            string[] lootTable = { "Judgment", "NeithsString", "ForsakenStaff", "JackalsWrath", "Sandthrower", "SentryOfTheEye" };
+            string[] lootTable = { "Judgment", "NeithsString", "DesertStaff", "JackalsWrath", "Sandthrower", "SentryOfTheEye" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
         }
