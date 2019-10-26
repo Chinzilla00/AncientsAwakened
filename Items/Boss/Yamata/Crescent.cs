@@ -8,8 +8,6 @@ namespace AAMod.Items.Boss.Yamata
 {
     public class Crescent : BaseAAItem
     {
-
-        
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Crescent");
@@ -20,7 +18,7 @@ Inflicts Moonraze");
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.Terrarian);
-            item.damage = 300;                            
+            item.damage = 300;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 2;
             item.knockBack = 1;
