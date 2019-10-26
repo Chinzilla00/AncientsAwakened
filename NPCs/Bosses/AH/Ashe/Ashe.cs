@@ -56,9 +56,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
 
             npc.direction = npc.spriteDirection = npc.position.X < player.position.X ? 1 : -1;
-            RingEffects(); FireMagic(npc);
+            RingEffects();
 
-            npc.damage *= VortexDamage();
+            npc.damage = (Main.expertMode? 300 : 150) * VortexDamage();
 
             Vector2 targetPos;
 
@@ -222,6 +222,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 case 12:
                     if (!AliveCheck(player))
                         break;
+                    FireMagic(npc);
                     IdlePhase();
                     break;
                 default:
@@ -391,6 +392,17 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             if (Main.netMode != 1)
             {
+                if (Health)
+                {
+                    for(int i = 0; i < 200; i++)
+                    {
+                        if(Main.npc[i].type == mod.NPCType("AsheOrbiter"))
+                        {
+                            Main.npc[i].life = 0;
+                            Main.npc[i].active = false;
+                        } 
+                    }
+                }
                 const float distance = 125f;
                 float rotation = 2f * (float)Math.PI / OrbiterCount;
                 if (Health && npc.life >= npc.lifeMax * .66f)
@@ -424,6 +436,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         if (Main.netMode == 2 && n < 200)
                             NetMessage.SendData(23, -1, -1, null, n);
                     }
+                    OrbiterCount -= 2;
                 }
             }
         }
@@ -631,7 +644,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     scale = 1f;
 
-                    if(!NPC.AnyNPCs(ModContent.NPCType<AsheOrbiter>()))
+                    if(NPC.CountNPCS(ModContent.NPCType<AsheOrbiter>()) < OrbiterCount)
                     {
                         Health = true;
                     }
@@ -677,7 +690,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
 
-            if(scale >= 1f || scale2 >= 1f)
+            if(scale2 >= 1f)
             {
                 npc.dontTakeDamage = true;
             }
