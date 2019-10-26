@@ -3,10 +3,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityMod.Items.Weapons
+namespace AAMod.Items.Boss.Anubis.Forsaken
 {
-    public class CursedFury : ModItem
-	{
+    public class CursedFury : BaseAAItem
+    {
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cursed Flamefury");
