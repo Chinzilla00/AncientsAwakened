@@ -385,7 +385,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                damage *= (int).2;
+                damage = (int)(damage * .2f);
             }
             else if (projectile.penetrate >= 1)
             {
