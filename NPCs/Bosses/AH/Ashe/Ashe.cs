@@ -58,7 +58,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.direction = npc.spriteDirection = npc.position.X < player.position.X ? 1 : -1;
             RingEffects();
 
-            npc.damage = (Main.expertMode? 300 : 150) * VortexDamage();
+            npc.damage = (Main.expertMode? 180 : 150) * VortexDamage();
 
             Vector2 targetPos;
 
