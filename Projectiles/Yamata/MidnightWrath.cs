@@ -41,6 +41,5 @@ namespace AAMod.Projectiles.Yamata
                 Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), 0f, 0f, 46, default, 1.381579f);
             }
         }
-        
     }
 }

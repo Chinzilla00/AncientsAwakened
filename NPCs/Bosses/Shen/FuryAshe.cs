@@ -599,7 +599,7 @@ namespace AAMod.NPCs.Bosses.Shen
             Texture2D RingTex1 = mod.GetTexture("NPCs/Bosses/AH/Ashe/AsheRing2");
             Texture2D RitualTex = mod.GetTexture("NPCs/Bosses/AH/Ashe/AsheRitual");
             Texture2D ShieldTex = mod.GetTexture("NPCs/Bosses/AH/Ashe/AsheShield");
-            Texture2D Barrier = mod.GetTexture("NPCs/Bosses/AH/Ashe/AsheBarrier");
+            Texture2D Barrier = mod.GetTexture("NPCs/Bosses/Shen/AsheBarrier");
             Rectangle RingFrame = new Rectangle(0, 0, RingTex.Width, RingTex.Height);
             Rectangle RitualFrame = new Rectangle(0, 0, RitualTex.Width, RitualTex.Height);
             Rectangle BarrierFrame = new Rectangle(0, 0, ShieldTex.Width, ShieldTex.Height);
