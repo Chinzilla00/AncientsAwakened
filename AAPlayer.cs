@@ -168,6 +168,8 @@ namespace AAMod
         public bool Olympian = false;
 
         // Accessory bools
+		public bool artifactJudgement;
+		public int artifactJudgementCharge = 0;
         public bool clawsOfChaos;
         public bool HydraPendant;
         public bool demonGauntlet;
@@ -370,6 +372,7 @@ namespace AAMod
 
         private void ResetArmorEffect()
         {
+			artifactJudgement = false;
             MoonSet = false;
             valkyrieSet = false;
             kindledSet = false;
@@ -643,12 +646,25 @@ namespace AAMod
             }
         }
 
+		public override void OnHitByProjectile(Projectile proj, int damage, bool crit)
+		{
+			if (artifactJudgement)
+			{
+				artifactJudgementCharge += damage;
+			}
+		}
+
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
             if (DragonsGuard)
             {
                 npc.AddBuff(BuffID.OnFire, 120);
             }
+			
+			if (artifactJudgement)
+			{
+				artifactJudgementCharge += damage;
+			}
 
             if (fleshrendSet && Main.rand.Next(2) == 0)
             {
@@ -785,6 +801,11 @@ namespace AAMod
                     player.dash = 0;
                 }
             }
+			if (artifactJudgementCharge >= 250)
+			{
+				player.AddBuff(mod.BuffType("EyeOfJudgement"), 900);
+				artifactJudgementCharge = 0;
+			}
             if (!Greed1 && !Greed2)
             {
                 GreedyDamage = 0;
