@@ -24,7 +24,7 @@ namespace AAMod.Projectiles.Anubis.Forsaken
             projectile.timeLeft = 100;
             projectile.aiStyle = -1;
 			projectile.ranged = true;
-            projectile.extraUpdates = true;
+            projectile.extraUpdates = 2;
         }
         
         public override void AI()

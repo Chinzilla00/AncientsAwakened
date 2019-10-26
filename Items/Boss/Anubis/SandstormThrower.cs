@@ -3,14 +3,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace CalamityMod.Items.Weapons
+namespace AAMod.Items.Boss.Anubis
 {
-    public class CursedFury : ModItem
+    public class SandstormThrower : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Cursed Flamefury");
-			Tooltip.SetDefault("50% chance to not consume gel");
+			Tooltip.SetDefault("300% chance to not consume gel");
 		}
 
 	    public override void SetDefaults()
@@ -28,25 +28,20 @@ namespace CalamityMod.Items.Weapons
             item.value = Item.buyPrice(0, 1, 0, 0);
             item.rare = 11;
             item.autoReuse = true;
-			item.shoot = mod.ProjectileType("ForsakenFlame");
+			item.shoot = ModContent.ProjectileType<Projectiles.Anubis.SandstormFlame>();
 			item.shootSpeed = 10f;
 			item.useAmmo = 23;
 		}
 
 	    public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-		{
-	        for (int index = 0; index < 2; ++index)
-	        {
-	            float SpeedX = speedX + Main.rand.Next(-25, 26) * 0.05f;
-	            float SpeedY = speedY + Main.rand.Next(-25, 26) * 0.05f;
-                Projectile.NewProjectile(position.X, position.Y, SpeedX, SpeedY, type, damage, knockBack, player.whoAmI, 0.0f, 0.0f);
-            }
-	    	return false;
+        {
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI, 0.0f, 0.0f);
+            return false;
 		}
 
 	    public override bool ConsumeAmmo(Player player)
 	    {
-	    	if (Main.rand.Next(0, 100) < 50)
+	    	if (Main.rand.Next(0, 100) < 30)
 	    		return false;
 	    	return true;
 	    }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Terraria.UI;
 using AAMod.Items.Boss.Akuma;
-using Terraria.ModLoader;
 
 namespace AAMod.UI
 {
@@ -21,7 +20,7 @@ namespace AAMod.UI
 
         public override UIState State => AAMod.instance.TerratoolAState;
 
-        public override int HeldItemType => ModContent.ItemType<AkumaTerratool>();
+        public override int HeldItemType => AAMod.instance.ItemType("AkumaTerratool");
 
         public override void ButtonClicked(int index)
         {

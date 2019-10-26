@@ -21,7 +21,7 @@ namespace AAMod.UI
 
         public override UIState State => AAMod.instance.TerratoolEXState;
 
-        public override int HeldItemType => ModContent.ItemType<TerratoolEX>();
+        public override int HeldItemType => AAMod.instance.ItemType("TerratoolEX");
 
         public override void ButtonClicked(int index)
         {

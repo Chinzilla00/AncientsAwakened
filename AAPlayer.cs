@@ -2597,7 +2597,7 @@ namespace AAMod
         {
             if (Main.rand.Next(4) == 0 && drawInfo.shadow == 0f)
             {
-                int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("ForsakenDust"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, 1.5f);
+                int dust = Dust.NewDust(drawInfo.position - new Vector2(2f, 2f), player.width + 4, player.height + 4, mod.DustType("ForsakenDust"), player.velocity.X * 0.4f, player.velocity.Y * 0.4f, 100, default, 1.5f);
 
                 Main.dust[dust].noGravity = true;
                 Main.dust[dust].velocity *= 1.8f;
