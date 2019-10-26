@@ -2,9 +2,9 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AAMod.Items.Boss.Anubis
+namespace AAMod.Items.Boss.Anubis.Forsaken
 {
-    public class AnubisBag : BaseAAItem
+    public class FAnubisBag : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
@@ -22,7 +22,7 @@ namespace AAMod.Items.Boss.Anubis
             item.rare = 10;
         }
 
-        public override int BossBagNPC => mod.NPCType("Anubis");
+        public override int BossBagNPC => mod.NPCType("ForsakenAnubis");
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
@@ -54,16 +54,16 @@ namespace AAMod.Items.Boss.Anubis
         {
             if (Main.rand.Next(7) == 0)
             {
-                player.QuickSpawnItem(mod.ItemType("AnubisMask"));
+                player.QuickSpawnItem(mod.ItemType("FAnubisMask"));
             }
             if (Main.rand.Next(20) == 0)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
-                modPlayer.HMDevArmor();
+                modPlayer.PMLDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("ForsakenFragment"), Main.rand.Next(8, 16));
             player.QuickSpawnItem(mod.ItemType(""));
-            string[] lootTable = { "Judgment", "NeithsString", "DesertStaff", "JackalsWrath", "Sandthrower", "SentryOfTheEye" };
+            string[] lootTable = { "Verdict", "Lifeline", "ForsakenStaff", "JackalsWrath", "CursedFury", "HorusCane" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
         }
