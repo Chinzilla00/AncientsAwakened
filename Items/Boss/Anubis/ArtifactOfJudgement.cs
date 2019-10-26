@@ -38,10 +38,12 @@ You will get major damage and speed boosts while Eye is active");
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			Player player = Main.player[Main.myPlayer];
-			string text1 = "Charge is " + (int)player.GetModPlayer<AAPlayer>().artifactJudgementCharge;
-			TooltipLine line = new TooltipLine(mod, "text1", text1);
-			line.overrideColor = Color.Yellow;
-			tooltips.Insert(5,line);
+			string text1 = "Charge is " + player.GetModPlayer<AAPlayer>().artifactJudgementCharge;
+            TooltipLine line = new TooltipLine(mod, "text1", text1)
+            {
+                overrideColor = Color.Yellow
+            };
+            tooltips.Insert(5,line);
 		}
     }
 }

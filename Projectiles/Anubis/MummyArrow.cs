@@ -24,6 +24,7 @@ namespace AAMod.Projectiles.Anubis
 			projectile.ignoreWater = false;
 			projectile.tileCollide = true;
             projectile.arrow = true;
+            projectile.extraUpdates = true;
 		}
 
         public override void Kill(int timeleft)

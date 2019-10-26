@@ -28,6 +28,8 @@ namespace AAMod.Items.Boss.Anubis
 			item.shootSpeed = 14f;
 			item.value = 10000;
 			item.melee = true;
+            item.noMelee = true;
+            item.noUseGraphic = true;
 		}
 	}
 }
