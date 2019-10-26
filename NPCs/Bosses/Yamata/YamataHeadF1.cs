@@ -258,7 +258,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
             if (projectile.penetrate == -1 && !projectile.minion)
             {
-                projectile.damage *= (int).2;
+                damage *= (int).2;
             }
             else if (projectile.penetrate >= 1)
             {
