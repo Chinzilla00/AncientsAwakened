@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.ModLoader;
 using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
-using AAMod.NPCs.Enemies.Sky;
 
 namespace AAMod.NPCs.Bosses.Anubis
 {

@@ -13,7 +13,7 @@ namespace AAMod.Items.Currency
         {
             DisplayName.SetDefault("Monster Soul");
             Tooltip.SetDefault("The soul of a terrifying Monster");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 8));
             ItemID.Sets.AnimatesAsSoul[item.type] = true;
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;

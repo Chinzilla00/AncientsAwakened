@@ -1,5 +1,4 @@
 using Terraria;
-using Terraria.ID;
 using Microsoft.Xna.Framework;
 using AAMod.NPCs.Bosses.Anubis;
 using Terraria.ModLoader;

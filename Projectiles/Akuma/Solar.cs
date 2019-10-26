@@ -30,7 +30,7 @@ namespace AAMod.Projectiles.Akuma   //The directory for your .cs and .png; Examp
         {
             projectile.extraUpdates = 2;
             projectile.width = 16;
-            projectile.height = 16;    
+            projectile.height = 16;
             projectile.aiStyle = 99;
             projectile.friendly = true;
             projectile.penetrate = -1;
@@ -49,9 +49,35 @@ namespace AAMod.Projectiles.Akuma   //The directory for your .cs and .png; Examp
             dust2 = Main.dust[Dust.NewDust(position, projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaADust>(), 0f, 0f, 0, default, 1f)];
             dust1.noGravity = true;
             dust2.noGravity = true;
+
+            Player player = Main.player[projectile.owner];
+            if (Main.myPlayer == projectile.owner)
+            {
+                if (Main.rand.Next(35) == 0)
+                {
+                    float num78 = (float)Main.mouseX + Main.screenPosition.X - projectile.Center.X;
+                    float num79 = (float)Main.mouseY + Main.screenPosition.Y - projectile.Center.Y;
+                    Vector2 value2 = new Vector2(num78, num79);
+                    value2.Normalize();
+                    Vector2 value3 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+                    value3.Normalize();
+                    value2 = value2 * 6f + value3;
+                    value2.Normalize();
+                    value2 *= 10f;
+                    float num91 = (float)Main.rand.Next(10, 50) * 0.001f;
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        num91 *= -1f;
+                    }
+                    float num92 = (float)Main.rand.Next(10, 50) * 0.001f;
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        num92 *= -1f;
+                    }
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value2.X, value2.Y, mod.ProjectileType("FireTentacle"), projectile.damage * (int)1.25f, projectile.knockBack, player.whoAmI, num92, num91);
+                }
+            }
         }
-
-
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {

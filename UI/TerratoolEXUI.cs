@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Terraria.UI;
-using AAMod.Items.Tools;
-using Terraria.ModLoader;
 
 namespace AAMod.UI
 {

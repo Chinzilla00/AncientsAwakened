@@ -1,7 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using Terraria.UI;
-using AAMod.Items.Boss.Shen;
-using Terraria.ModLoader;
 
 namespace AAMod.UI
 {

@@ -19,10 +19,10 @@ namespace AAMod.Items.Boss.Serpent
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 3;
             item.mana = 9;
-            item.UseSound = SoundID.Item1;
+            item.UseSound = SoundID.Item8;
             item.autoReuse = true;
-            item.shoot = ProjectileID.CrystalBullet;
-            item.shootSpeed = 5f;
+            item.shoot = mod.ProjectileType("IciclePro");
+            item.shootSpeed = 9f;
         }
 
 		public override void SetStaticDefaults()

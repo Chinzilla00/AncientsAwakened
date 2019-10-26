@@ -1,5 +1,3 @@
-using Microsoft.Xna.Framework;
-using Terraria;
 using Terraria.ID;
 
 namespace AAMod.Items.Boss.Anubis
@@ -28,6 +26,8 @@ namespace AAMod.Items.Boss.Anubis
 			item.shootSpeed = 14f;
 			item.value = 10000;
 			item.melee = true;
+            item.noMelee = true;
+            item.noUseGraphic = true;
 		}
 	}
 }
