@@ -1,7 +1,5 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Anubis
@@ -24,7 +22,6 @@ namespace AAMod.Projectiles.Anubis
 			projectile.ignoreWater = false;
 			projectile.tileCollide = true;
             projectile.arrow = true;
-            projectile.extraUpdates = true;
 		}
 
         public override void Kill(int timeleft)
