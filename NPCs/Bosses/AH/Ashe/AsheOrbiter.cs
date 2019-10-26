@@ -72,7 +72,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             npc.oldPos[0] = npc.position;
 
-            if (rotValue == -1f) rotValue = npc.ai[0] % ((Ashe)ashe.modNPC).OrbiterCount * ((float)Math.PI * 2f / ((Ashe)ashe.modNPC).OrbiterCount);
+            if (rotValue == -1f) rotValue = npc.ai[3];
             rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
             npc.Center = BaseUtility.RotateVector(ashe.Center, ashe.Center + new Vector2(140f, 0f), rotValue);

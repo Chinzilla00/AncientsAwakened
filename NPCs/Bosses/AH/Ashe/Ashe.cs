@@ -14,8 +14,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
     {
         public int OrbiterCount = Main.expertMode ? 10 : 8;
 
-        bool Health1 = false;
-        bool Health2 = false;
+        bool Health = false;
 
         public override void SetStaticDefaults()
         {
@@ -59,6 +58,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.direction = npc.spriteDirection = npc.position.X < player.position.X ? 1 : -1;
             RingEffects(); FireMagic(npc);
 
+            npc.damage *= VortexDamage();
+
             Vector2 targetPos;
 
             switch (npc.ai[0])
@@ -75,7 +76,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     MoveToPoint(wantedVelocity);
 
                     BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-5, 5), Main.rand.Next(-5, 5)), player.width, player.height, ModContent.ProjectileType<AsheShot>(), ref npc.ai[2], 60, npc.damage / 2, 12, false);
-
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
                         AIChange();
@@ -95,20 +95,37 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     if (!AliveCheck(player))
                         break;
 
-                    wantedVelocity = player.Center - new Vector2(pos, 0);
+                    int firepos = 0;
+                    if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
+                    {
+                        firepos = 150;
+                    }
+                    else
+                    {
+                        firepos = -150;
+                    }
+
+                    wantedVelocity = player.Center - new Vector2(firepos, 0);
 
                     MoveToPoint(wantedVelocity);
 
                     BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<Akuma.AkumaBreath>(), ref npc.ai[2], 10, npc.damage / 2, 12, false);
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
+                        npc.ai[1] = 0;
                         AIChange();
                     }
                     break;
-                case 5:
+                case 5: //draw dash frame
                     if (!AliveCheck(player))
                         break;
-                    IdlePhase();
+                    MoveToPoint(wantedVelocity);
+                    if (++npc.ai[1] > 30)
+                    {
+                        npc.ai[1] = 0;
+                        npc.ai[0]++;
+                        npc.netUpdate = true;
+                    }
                     break;
                 case 6: //prepare for fishron dash
                     if (!AliveCheck(player))
@@ -120,9 +137,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         npc.ai[0]++;
                         npc.ai[1] = 0;
                         npc.netUpdate = true;
-                        npc.velocity = npc.DirectionTo(player.Center) * 40;
+                        npc.velocity = npc.DirectionTo(player.Center) * (npc.life < npc.lifeMax/3 ? 50:40);
+                        if(npc.velocity.Length() < 40f)
+                        {
+                            npc.velocity = Vector2.Normalize(npc.velocity) * (npc.life < npc.lifeMax/3 ? 50:40);
+                        }
                     }
-                    npc.rotation = 0;
                     break;
 
                 case 7: //dashing
@@ -140,9 +160,16 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     {
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
-                        if (++npc.ai[3] >= 3) //dash three times
+                        if (++npc.ai[3] >= (npc.life < npc.lifeMax/3 ? 4:3)) //dash three/Four times
                         {
-                            npc.ai[0]++;
+                            if(npc.life < npc.lifeMax / 3)
+                            {
+                                npc.ai[0] = Main.rand.Next(4) == 0? 4:9;
+                            }
+                            else
+                            {
+                                npc.ai[0]++;
+                            }
                             npc.ai[3] = 0;
                         }
                         else
@@ -165,14 +192,18 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], 60, npc.damage / 2, 12, false);
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
+                        if (npc.life < npc.lifeMax / 3 && Main.rand.Next(3) == 0)
+                        {
+                            goto case 5;
+                        }
                         AIChange();
                     }
                     break;
                 case 10:
                     if (NPC.AnyNPCs(ModContent.NPCType<AsheDragon>()))
                     {
-                        npc.ai[0] = 0;
-                        goto case 0;
+                        npc.ai[0] = 12;
+                        goto case 12;
                     }
                     if (!AliveCheck(player))
                         break;
@@ -181,18 +212,24 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 case 11:
                     if (!AliveCheck(player))
                         break;
+                    MoveToPoint(wantedVelocity);
                     if (npc.ai[1]++ > 200)
                     {
                         NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AsheDragon>());
                         AIChange();
                     }
                     break;
+                case 12:
+                    if (!AliveCheck(player))
+                        break;
+                    IdlePhase();
+                    break;
                 default:
                     npc.ai[0] = 0;
                     goto case 0;
             }
 
-            if (npc.ai[0] != 7)
+            if (npc.ai[0] != 6 && npc.ai[0] != 7)
             {
                 npc.rotation = 0;
             }
@@ -214,28 +251,16 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void FindFrame(int frameHeight)
         {
-            if (npc.frameCounter++ >= 7)
+            if (npc.ai[0] == 1 || npc.ai[0] == 4 || npc.ai[0] == 9)
             {
-                npc.frameCounter = 0;
-                Frame++;
-            }
-            else if (npc.ai[0] == 7)
-            {
-                if (Frame < 8)
+                if (npc.frameCounter++ >= 10)
                 {
-                    Frame = 8;
-                }
-                if (Frame >= 14)
-                {
-                    Frame = 12;
+                    npc.frameCounter = 0;
+                    Frame++;
                 }
             }
-            else if (npc.ai[0] == 1 || npc.ai[0] == 4 || npc.ai[0] == 8)
+            else if (npc.ai[0] == 5)
             {
-                if (Frame < 15 || Frame > 18)
-                {
-                    Frame = 16;
-                }
                 if (npc.frameCounter++ >= 10)
                 {
                     npc.frameCounter = 0;
@@ -244,23 +269,46 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else
             {
-                if (!FlyingBack)
+                if (npc.frameCounter++ >= 7)
                 {
-                    if (Frame > 3)
-                    {
-                        Frame = 0;
-                    }
+                    npc.frameCounter = 0;
+                    Frame++;
                 }
-                else
+            }
+            
+            if (npc.ai[0] == 5)
+            {
+                if (Frame < 8 || Frame > 10)
                 {
-                    if (Frame >= 8)
-                    {
-                        Frame = 0;
-                    }
-                    if (Frame < 4)
-                    {
-                        Frame = 4;
-                    }
+                    Frame = 8;
+                }
+            }
+            else if (npc.ai[0] == 6 || npc.ai[0] == 7)
+            {
+                if (Frame >= 14 || Frame < 11)
+                {
+                    Frame = 11;
+                }
+            }
+            else if (npc.ai[0] == 1 || npc.ai[0] == 4 || npc.ai[0] == 9)
+            {
+                if (Frame < 15 || Frame > 18)
+                {
+                    Frame = 15;
+                }
+            }
+            else if (!FlyingBack)
+            {
+                if (Frame > 3)
+                {
+                    Frame = 0;
+                }
+            }
+            else
+            {
+                if (Frame >= 8 || Frame < 4)
+                {
+                    Frame = 4;
                 }
             }
 
@@ -268,6 +316,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 Frame = 0;
             }
+
             npc.frame.Y = Frame * frameHeight;
         }
 
@@ -344,9 +393,20 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 const float distance = 125f;
                 float rotation = 2f * (float)Math.PI / OrbiterCount;
-                if (Health1 && npc.life < npc.lifeMax * (2 / 3))
+                if (Health && npc.life >= npc.lifeMax * .66f)
                 {
-                    Health1 = true;
+                    Health = false;
+                    rotation = 2f * (float)Math.PI / 4;
+                    for (int m = 0; m < 4; m++)
+                    {
+                        int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
+                        if (Main.netMode == 2 && n < 200)
+                            NetMessage.SendData(23, -1, -1, null, n);
+                    }
+                }
+                if (Health && npc.life < npc.lifeMax * .66f && npc.life >= npc.lifeMax * .33f)
+                {
+                    Health = false;
                     for (int m = 0; m < OrbiterCount; m++)
                     {
                         int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
@@ -354,10 +414,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                             NetMessage.SendData(23, -1, -1, null, n);
                     }
                 }
-                if (Health2 && npc.life < npc.lifeMax / 3)
+                if (Health && npc.life < npc.lifeMax * .33f)
                 {
                     OrbiterCount += 2;
-                    Health2 = true;
+                    Health = false;
                     for (int m = 0; m < OrbiterCount; m++)
                     {
                         int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
@@ -449,7 +509,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 FlyingPositive = false;
                 FlyingNegative = true;
             }
-            if (npc.ai[0] == 7)
+            if (npc.ai[0] == 6 || npc.ai[0] == 7)
             {
                 npc.direction = npc.velocity.X > 0 ? 1 : -1;
             }
@@ -565,11 +625,16 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         private void RingEffects()
         {
             RingRotation += 0.02f;
-            if (npc.ai[0] == 13 || NPC.AnyNPCs(ModContent.NPCType<AsheOrbiter>()))
+            if (npc.ai[0] == 12 || NPC.AnyNPCs(ModContent.NPCType<AsheOrbiter>()))
             {
                 if (scale >= 1f)
                 {
                     scale = 1f;
+
+                    if(!NPC.AnyNPCs(ModContent.NPCType<AsheOrbiter>()))
+                    {
+                        Health = true;
+                    }
                 }
                 else
                 {
@@ -589,7 +654,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
 
-            if (npc.ai[0] == 1 || npc.ai[0] == 6 || npc.ai[0] == 11 || npc.ai[0] == 13)
+            if (npc.ai[0] == 1 || npc.ai[0] == 6 || npc.ai[0] == 11)
             {
                 if (scale2 >= 1f)
                 {
@@ -610,6 +675,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     scale2 = 0;
                 }
+            }
+
+            if(scale >= 1f || scale2 >= 1f)
+            {
+                npc.dontTakeDamage = true;
+            }
+            else
+            {
+                npc.dontTakeDamage = false;
             }
         }
 

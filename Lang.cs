@@ -72,7 +72,7 @@ namespace AAMod
                         case "downedSistersInfo":
                         return "Chaotic energy grows in the deepest parts of the world.";
                         case "downedBoss2Info":
-                        return "You hear a hum of harmony from the Terrarium after the defeat of a great AMessage...";
+                        return "You hear a hum of harmony from the Terrarium after the defeat of a great demon...";
                         case "downedBoss3Info1":
                         return "Bones of the ancient past burst with energy!";
                         case "downedBoss3Info2":
