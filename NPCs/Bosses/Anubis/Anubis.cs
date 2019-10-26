@@ -30,6 +30,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.knockBackResist = 0f;
             npc.boss = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
+            bossBag = mod.ItemType("AnubisBag");
         }
 
         public float[] internalAI = new float[4];
@@ -406,6 +407,28 @@ namespace AAMod.NPCs.Bosses.Anubis
             else
             {
                 NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<TownNPCs.Anubis>());
+            }
+
+            if (Main.rand.Next(10) == 0)
+            {
+                npc.DropLoot(mod.ItemType("AnubisTrophy"));
+            }
+
+            if (!Main.expertMode)
+            {
+                npc.DropBossBags();
+            }
+            else
+            {
+                if (Main.rand.Next(7) == 0)
+                {
+                    npc.DropLoot(mod.ItemType("AnubisMask"));
+                }
+                npc.DropLoot(mod.ItemType("ForsakenFragment"), Main.rand.Next(8, 16));
+                npc.DropLoot(mod.ItemType("ArtifactOfJudgment"));
+                string[] lootTable = { "Judgment", "NeithsString", "DesertStaff", "JackalsWrath", "Sandthrower", "SentryOfTheEye" };
+                int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
             }
         }
 

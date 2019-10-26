@@ -9,13 +9,13 @@ namespace AAMod.Items.Boss.Anubis
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Cursed Flamefury");
-			Tooltip.SetDefault("300% chance to not consume gel");
+			DisplayName.SetDefault("Sandthrower");
+			Tooltip.SetDefault("30% chance to not consume gel");
 		}
 
 	    public override void SetDefaults()
 	    {
-			item.damage = 70;
+			item.damage = 30;
 			item.ranged = true;
 			item.width = 80;
 			item.height = 38;
@@ -26,10 +26,10 @@ namespace AAMod.Items.Boss.Anubis
 			item.knockBack = 4f;
 			item.UseSound = SoundID.Item34;
             item.value = Item.buyPrice(0, 1, 0, 0);
-            item.rare = 11;
+            item.rare = 6;
             item.autoReuse = true;
 			item.shoot = ModContent.ProjectileType<Projectiles.Anubis.SandstormFlame>();
-			item.shootSpeed = 10f;
+			item.shootSpeed = 12f;
 			item.useAmmo = 23;
 		}
 

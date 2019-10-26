@@ -331,6 +331,23 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
         public override void NPCLoot()
         {
             NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<TownNPCs.Anubis>());
+
+            if (!Main.expertMode)
+            {
+                npc.DropBossBags();
+            }
+            else
+            {
+                if (Main.rand.Next(7) == 0)
+                {
+                    npc.DropLoot(mod.ItemType("FAnubisMask"));
+                }
+                npc.DropLoot(mod.ItemType("ForsakenFragment"), Main.rand.Next(8, 16));
+                npc.DropLoot(mod.ItemType("ArtifactOfJudgment"));
+                string[] lootTable = { "Judgment", "NeithsString", "DesertStaff", "JackalsWrath", "Sandthrower", "SentryOfTheEye" };
+                int loot = Main.rand.Next(lootTable.Length);
+                npc.DropLoot(mod.ItemType(lootTable[loot]));
+            }
         }
 
         public void AliveCheck(Player player)
