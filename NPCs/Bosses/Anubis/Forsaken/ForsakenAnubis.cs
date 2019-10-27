@@ -115,11 +115,11 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         for (int m = 0; m < RuneCount; m++)
                         {
                             int p = Projectile.NewProjectile(npc.Center, Vector2.Zero, mod.ProjectileType("CurseGlyphs"), npc.damage / 2, 0, Main.myPlayer);
-                            Main.npc[p].Center = npc.Center;
-                            Main.npc[p].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
-                            Main.npc[p].velocity *= 8f;
-                            Main.npc[p].ai[0] = m;
-                            Main.npc[p].netUpdate2 = true;
+                            Main.projectile[p].Center = npc.Center;
+                            Main.projectile[p].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
+                            Main.projectile[p].velocity *= 8f;
+                            Main.projectile[p].ai[0] = m;
+                            Main.projectile[p].netUpdate2 = true;
                             int dustType = ModContent.DustType<Dusts.JudgementDust>();
                             int pieCut = 20;
                             for (int i = 0; i < pieCut; i++)
