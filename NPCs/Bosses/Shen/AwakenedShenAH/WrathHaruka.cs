@@ -253,6 +253,8 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 InvisTimer1 = 800;
 
                 InvisTimer2 = 1100;
+
+                if(Main.expertMode) internalAI[6]++;
             }
             if (npc.life < npc.lifeMax * .33f)
             {
@@ -260,7 +262,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
                 InvisTimer2 = 900;
 
-                if(Main.expertMode) internalAI[6]++;
+                if(Main.expertMode) internalAI[6]+=2;
             }
             if (internalAI[5] > InvisTimer1)
             {
