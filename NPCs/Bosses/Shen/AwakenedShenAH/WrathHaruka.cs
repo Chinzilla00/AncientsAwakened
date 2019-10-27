@@ -71,8 +71,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
         public int SHADOWCONTER = 0;
 
-        public int SHADOWSLASHDIRECTION = -1;
-
         public int strikebackproj = 0;
 
         public override void SendExtraAI(BinaryWriter writer)
@@ -388,7 +386,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 if(SHADOWCONTER >= 180)
                 {
                     SHADOWDOG = false;
-                    SHADOWSLASHDIRECTION = Main.rand.Next(2);
                     internalAI[0] = AISTATE_SLASH;
                     if(internalAI[6] >= 800)
                     {
@@ -749,9 +746,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             {
                 if(SHADOWCONTER > 0)
                 {
-                    if(SHADOWSLASHDIRECTION == 0) LOOPPOINT(player.Center + new Vector2(500f, 0), player.Center - new Vector2(500f, 0));
-                    else if(SHADOWSLASHDIRECTION == 1) LOOPPOINT(player.Center + new Vector2(0, 500f), player.Center - new Vector2(0, 500f));
-                    else MoveToPoint(player.Center);
+                    LOOPPOINT(player.Center + new Vector2(500f, 0), player.Center - new Vector2(500f, 0));
                 }
                 else
                 {
@@ -762,9 +757,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             {
                 if(SHADOWCONTER > 0)
                 {
-                    if(SHADOWSLASHDIRECTION == 0) LOOPPOINT(player.Center + new Vector2(500f, 0), player.Center - new Vector2(500f, 0));
-                    else if(SHADOWSLASHDIRECTION == 1) LOOPPOINT(player.Center + new Vector2(0, 500f), player.Center - new Vector2(0, 500f));
-                    else MoveToPoint(player.Center);
+                    LOOPPOINT(player.Center + new Vector2(500f, 0), player.Center - new Vector2(500f, 0));
                 }
                 else
                 {
