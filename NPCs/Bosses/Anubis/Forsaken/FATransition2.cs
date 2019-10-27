@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
                 if (npc.velocity.Y == 0)
                 {
-                    for (int a = 0; a < 2; a++)
+                    for (int a = 0; a < 8; a++)
                     {
                         Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 200, default, 1.3f);
                     }
@@ -60,7 +60,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     }
                     if (npc.ai[1] >= 90)
                     {
-                        int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
+                        int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 0, Main.myPlayer, 0, 10);
                         Main.projectile[b].Center = npc.Center;
 
                         NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<ForsakenAnubis>());

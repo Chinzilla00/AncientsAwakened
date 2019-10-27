@@ -23,7 +23,6 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.alpha = 255;
-            projectile.extraUpdates = 1;
         }
 
         public override void AI()
@@ -48,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 
             projectile.ai[0]++;
 
-            if (projectile.ai[0] > 120)
+            if (projectile.ai[0] > 60)
             {
                 projectile.Kill();
             }
