@@ -25,6 +25,8 @@ namespace AAMod.Projectiles.Anubis.Forsaken
             projectile.aiStyle = -1;
 			projectile.ranged = true;
             projectile.extraUpdates = 2;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 15;
         }
         
         public override void AI()
@@ -55,9 +57,9 @@ namespace AAMod.Projectiles.Anubis.Forsaken
                     for (int num298 = 0; num298 < 3; num298++)
                     {
                         int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, num297, projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100);
+                        Main.dust[num299].noGravity = true;
                         if (Main.rand.Next(3) == 0)
                         {
-                            Main.dust[num299].noGravity = true;
                             Main.dust[num299].scale *= 3f;
                             Dust expr_DD5D_cp_0 = Main.dust[num299];
                             expr_DD5D_cp_0.velocity.X *= 2f;
@@ -71,10 +73,6 @@ namespace AAMod.Projectiles.Anubis.Forsaken
                         expr_DE02_cp_0.velocity.Y *= 1.2f;
                         Main.dust[num299].scale *= num296;
                         Main.dust[num299].velocity += projectile.velocity;
-                        if (!Main.dust[num299].noGravity)
-                        {
-                            Main.dust[num299].velocity *= 0.5f;
-                        }
                     }
                 }
             }

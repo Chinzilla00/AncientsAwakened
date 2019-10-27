@@ -25,8 +25,30 @@ namespace AAMod.Projectiles.Anubis
 	
         public override void AI()
         {
-			Player player = Main.player[projectile.owner];
-			for (int i = 0; i < 200; i++)
+            if (projectile.scale < 1f) projectile.scale += 0.01f;
+            if (projectile.alpha > 0) projectile.alpha -= 5;
+
+            if (projectile.ai[1] == 0)
+            {
+                projectile.velocity.Y += 0.005f;
+                if (projectile.velocity.Y > .1f)
+                {
+                    projectile.ai[1] = 1f;
+                    projectile.netUpdate = true;
+                }
+            }
+            else
+            if (projectile.ai[1] == 1)
+            {
+                projectile.velocity.Y -= 0.005f;
+                if (projectile.velocity.Y < -.1f)
+                {
+                    projectile.ai[1] = 0f;
+                    projectile.netUpdate = true;
+                }
+            }
+
+            for (int i = 0; i < 200; i++)
             {
                 NPC target = Main.npc[i];
  
