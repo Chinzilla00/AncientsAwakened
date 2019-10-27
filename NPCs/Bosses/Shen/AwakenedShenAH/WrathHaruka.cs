@@ -71,6 +71,8 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
         public int SHADOWCONTER = 0;
 
+        public int SHADOWSLASHDIRECTION = -1;
+
         public int strikebackproj = 0;
 
         public override void SendExtraAI(BinaryWriter writer)
@@ -386,6 +388,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 if(SHADOWCONTER >= 180)
                 {
                     SHADOWDOG = false;
+                    SHADOWSLASHDIRECTION = Main.rand.Next(2);
                     internalAI[0] = AISTATE_SLASH;
                     if(internalAI[6] >= 800)
                     {
@@ -594,6 +597,8 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             }
             else if (internalAI[0] == AISTATE_SPIN)
             {
+                internalAI[4]++;
+                
                 if(SHADOWCONTER > 0)
                 {
                     SHADOWCONTER--;
@@ -620,8 +625,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     {
                         internalAI[5] -= 120;
                     }
-
-                    internalAI[4]++;
 
                     if (SelectPoint)
                     {
@@ -723,18 +726,18 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
-                npc.damage = 180;
+                npc.damage = 150;
                 npc.defense = 300;
             }
             else if (internalAI[0] == AISTATE_Shadowkilling) //Melee Damage/Speed boost
             {
-                npc.damage = 120;
+                npc.damage = 90;
                 npc.defense = 9999;
             }
             else //Reset Stats
             {
                 npc.defense = npc.defDefense;
-                npc.damage = 80;
+                npc.damage = 60;
             }
 
 
@@ -746,7 +749,9 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             {
                 if(SHADOWCONTER > 0)
                 {
-                    LOOPPOINT(player.Center + new Vector2(500f, 0), player.Center - new Vector2(500f, 0));
+                    if(SHADOWSLASHDIRECTION == 0) LOOPPOINT(player.Center + new Vector2(500f, 0), player.Center - new Vector2(500f, 0));
+                    else if(SHADOWSLASHDIRECTION == 1) LOOPPOINT(player.Center + new Vector2(0, 500f), player.Center - new Vector2(0, 500f));
+                    else MoveToPoint(player.Center);
                 }
                 else
                 {
@@ -757,7 +762,9 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             {
                 if(SHADOWCONTER > 0)
                 {
-                    LOOPPOINT(player.Center + new Vector2(500f, 0), player.Center - new Vector2(500f, 0));
+                    if(SHADOWSLASHDIRECTION == 0) LOOPPOINT(player.Center + new Vector2(500f, 0), player.Center - new Vector2(500f, 0));
+                    else if(SHADOWSLASHDIRECTION == 1) LOOPPOINT(player.Center + new Vector2(0, 500f), player.Center - new Vector2(0, 500f));
+                    else MoveToPoint(player.Center);
                 }
                 else
                 {
@@ -1046,6 +1053,10 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             if (Vector2.Distance(npc.Center, point) > 500)
             {
                 moveSpeed = 25f;
+                if(SHADOWCONTER > 0)
+                {
+                    moveSpeed = 55f;
+                }
             }
             if (internalAI[0] == AISTATE_SLASH)
             {
