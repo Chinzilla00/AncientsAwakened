@@ -1738,7 +1738,7 @@ ItemTooltip.CursedFury=50%几率不消耗凝胶
 
 ItemName.FAnubisBag=宝藏袋
 
-ItemName.FAnubisTrophy=逝落裁决者纪念章
+ItemName.FAnubisTrophy=逝落断罪师纪念章
 
 
 //AAMod.Items.Boss.Athena
@@ -4686,7 +4686,9 @@ NPCName.FATransition=阿努比斯 史诗记述者
 
 NPCName.FATransition2=阿努比斯 史诗记述者
 
-NPCName.ForsakenAnubis=阿努比斯 逝落之裁决
+NPCName.ForsakenAnubis=阿努比斯 逝落之断罪师
+
+NPCName.ForsakenSun=逝落之阳
 
 // AAMod.NPCs.Bosses.AH.Ashe
 
