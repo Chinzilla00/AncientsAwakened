@@ -1,40 +1,38 @@
-using Terraria;
-using Terraria.ModLoader;
 using System;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
 
-namespace AAMod.Projectiles.Anubis
+namespace AAMod.Projectiles.Anubis.Forsaken
 {
-    public class EyeOfJudgement : ModProjectile
-	{
+    public class EyeOfForsaken : ModProjectile
+    {
+        public override void SetDefaults()
+        {
+            projectile.width = 56;
+            projectile.height = 42;
+			projectile.tileCollide = false;
+            projectile.timeLeft = 900;
+            projectile.ignoreWater = true;
+            projectile.sentry = true;
+            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
+        }
+
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Eye of Judgement");
-			projectile.light = 0.5f;
+			DisplayName.SetDefault("Eye of the Forsaken");
 		}
-
-		public override void SetDefaults()
-		{
-			projectile.width = 56;
-			projectile.height = 42;
-			projectile.penetrate = -1;
-			projectile.timeLeft = 900;
-			projectile.tileCollide = false;
-			projectile.hostile = false;
-			projectile.friendly = false;
-			projectile.extraUpdates = 0;
-		}
-		
-		public override void AI()
-		{
+	
+        public override void AI()
+        {
 			Player player = Main.player[projectile.owner];
 			projectile.Center = player.Center;
 			projectile.position.Y = player.Center.Y-90;
 			projectile.spriteDirection = player.direction;
-			if (player.dead || !player.HasBuff(mod.BuffType("EyeOfJudgement")))
+			if (player.dead || !player.HasBuff(mod.BuffType("EyeOfForsaken")))
 			{
 				projectile.Kill();
 			}
-			
 			for (int i = 0; i < 200; i++)
             {
                 NPC target = Main.npc[i];
@@ -51,7 +49,7 @@ namespace AAMod.Projectiles.Anubis
 
                         shootToX *= distance * 3;
                         shootToY *= distance * 3;
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX*4, shootToY*4, 668, projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX*4, shootToY*4, mod.ProjectileType("ForsakenFrag"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
                         projectile.ai[0] = 0f;
                     }
                 }
