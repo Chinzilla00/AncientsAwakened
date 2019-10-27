@@ -41,7 +41,7 @@ namespace AAMod.Projectiles.Anubis.Forsaken
             {
                 Dust dust1;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.JudgementDust>(), 0, 0, 0, Color.White, 1f)];
+                dust1 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.ForsakenDust>(), 0, 0, 0, Color.White, 1f)];
                 dust1.noGravity = true;
             }
 			if (projectile.localAI[0] == 0f)
@@ -90,7 +90,7 @@ namespace AAMod.Projectiles.Anubis.Forsaken
             {
                 Dust dust1;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.JudgementDust>(), 0, 0, 0, Color.White, 1f)];
+                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.ForsakenDust>(), 0, 0, 0, Color.White, 1f)];
                 dust1.noGravity = true;
             }
 			for (int h = 0; h < 3; h++)
