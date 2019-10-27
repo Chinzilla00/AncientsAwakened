@@ -330,6 +330,11 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
         {
             NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<TownNPCs.Anubis>());
 
+            if (Main.rand.Next(10) == 0)
+            {
+                npc.DropLoot(mod.ItemType("FAnubisTrophy"));
+            }
+
             if (!Main.expertMode)
             {
                 npc.DropBossBags();
