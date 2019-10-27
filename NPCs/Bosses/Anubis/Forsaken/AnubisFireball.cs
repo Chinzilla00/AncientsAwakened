@@ -42,7 +42,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 
             if (projectile.ai[0]++ > 180)
             {
-                projectile.Kill()
+                projectile.Kill();
             }
 		}
 
