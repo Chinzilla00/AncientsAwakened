@@ -18,6 +18,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 				writer.Write(internalAI[0]);
 				writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
             }
 		}
 
@@ -29,6 +30,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 				internalAI[0] = reader.ReadFloat();
 				internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
+                internalAI[3] = reader.ReadFloat();
             }	
 		}	
 
@@ -50,7 +52,6 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.height = 108;
             npc.npcSlots = 1f;
             npc.boss = true;
-            npc.stairFall = true;
             npc.lavaImmune = true;
             npc.noGravity = false;
             npc.noTileCollide = false;
@@ -71,7 +72,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         }
 
         public static int AISTATE_WALK = 0, AISTATE_JUMP = 1, AISTATE_CHARGE = 2, AISTATE_FLY = 3;
-		public float[] internalAI = new float[3];
+		public float[] internalAI = new float[4];
 		
         public override void AI()
         {
@@ -147,7 +148,23 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 npc.spriteDirection = 1;
             }
 
-            if ((player.Center.Y - npc.Center.Y) < -100f || (player.Center - npc.Center).Length() > 500f)
+            if ((player.Center.Y - npc.Center.Y) > 100f && internalAI[1] != AISTATE_FLY) // player is below the npc.
+            {
+                internalAI[3] = internalAI[1]; //record the action
+                internalAI[1] = AISTATE_WALK;
+                npc.ai = new float[4];
+                npc.netUpdate = true;
+            }
+            else if(internalAI[1] != AISTATE_WALK)
+            {
+                internalAI[3] = internalAI[1];
+            }
+            else
+            {
+                internalAI[1] = internalAI[3];
+            }
+
+            if ((player.Center.Y - npc.Center.Y) < -100f)
             {
                 internalAI[1] = AISTATE_FLY;
                 npc.ai = new float[4];
@@ -173,15 +190,10 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                     npc.ai = new float[4];
                     npc.netUpdate = true;
                 }
-                else if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
-                {
-                    internalAI[1] = AISTATE_FLY;
-                    npc.ai = new float[4];
-                    npc.netUpdate = true;
-                }
 			}
 			if(internalAI[1] == AISTATE_WALK) //fighter
 			{
+                npc.noGravity = false;
                 if (Main.netMode != 1)
                 {
                     internalAI[2]++;
@@ -189,10 +201,12 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 if ((player.Center.Y - npc.Center.Y) > 60f) // player is below the npc.
                 {
                     npc.noTileCollide = true;
-                }else
+                }
+                else
                 {
                     npc.noTileCollide = false;
                 }
+
                 if (NPC.CountNPCS(ModContent.NPCType<RedMushling>()) < 4)
                 {
                     for (int i = 0; i < 2; i++)
@@ -206,6 +220,8 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 			}else
 			if(internalAI[1] == AISTATE_JUMP)//jumper
 			{
+                npc.noGravity = false;
+                npc.noTileCollide = false;
 				if(npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
                 BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -8f, 6f, -10f);				
 			}
@@ -215,7 +231,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 npc.noGravity = true;
                 BaseAI.AISpaceOctopus(npc, ref npc.ai, .05f, 8, 250, 0, null);
                 npc.rotation = 0;
-                if ((player.Center.Y - npc.Center.Y) > 60f)
+                if ((player.Center.Y - npc.Center.Y) > 30f)
                 {
                     npc.rotation = 0;
                     npc.noGravity = false;
