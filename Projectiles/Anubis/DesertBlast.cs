@@ -1,7 +1,6 @@
 using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Anubis
@@ -16,8 +15,8 @@ namespace AAMod.Projectiles.Anubis
         public override void SetDefaults()
         {
             projectile.melee = true;
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 32;
+            projectile.height = 32;
             projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.hostile = false;
@@ -42,7 +41,7 @@ namespace AAMod.Projectiles.Anubis
             {
                 Dust dust1;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, DustID.Sandnado, 0, 0, 0, Color.Orange, 1f)];
+                dust1 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.JudgementDust>(), 0, 0, 0, Color.White, 1f)];
                 dust1.noGravity = true;
             }
         }
@@ -54,7 +53,7 @@ namespace AAMod.Projectiles.Anubis
             {
                 Dust dust1;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, DustID.Sandnado, 0, 0, 0, Color.Orange, 1f)];
+                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.JudgementDust>(), 0, 0, 0, Color.White, 1f)];
                 dust1.noGravity = true;
             }
 			for (int h = 0; h < 3; h++)

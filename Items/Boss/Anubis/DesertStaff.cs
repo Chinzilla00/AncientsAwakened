@@ -1,4 +1,7 @@
+using Terraria;
 using Terraria.ID;
+using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Anubis
 {
@@ -8,6 +11,7 @@ namespace AAMod.Items.Boss.Anubis
 		{
             DisplayName.SetDefault("Desert Staff");
 			Tooltip.SetDefault("Shoots enchanted sand bolt which explodes into bouncing balls on hit");
+			Item.staff[item.type] = true;
 		}
 
 		public override void SetDefaults()

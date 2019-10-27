@@ -1,14 +1,10 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 using System;
 
 namespace AAMod.Projectiles.Anubis
 {
-	public class EyeOfJudgement : ModProjectile
+    public class EyeOfJudgement : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{
@@ -21,7 +17,7 @@ namespace AAMod.Projectiles.Anubis
 			projectile.width = 56;
 			projectile.height = 42;
 			projectile.penetrate = -1;
-			projectile.timeLeft = 3600;
+			projectile.timeLeft = 900;
 			projectile.tileCollide = false;
 			projectile.hostile = false;
 			projectile.friendly = false;

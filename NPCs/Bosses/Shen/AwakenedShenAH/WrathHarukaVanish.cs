@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace AAMod.NPCs.Bosses.Shen
+namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 {
     public class WrathHarukaVanish : ModNPC
     {

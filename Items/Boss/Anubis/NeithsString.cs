@@ -33,7 +33,9 @@ namespace AAMod.Items.Boss.Anubis
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Neith's String");
-            Tooltip.SetDefault("Shoots 2 arrows at once\nCan occasionally shoot ``Judgement arrow``, which lowers enemy defense");
+            Tooltip.SetDefault(@"Shoots 2 arrows at once
+Can occasionally shoot ``Judgement arrow``, which lowers enemy defense
+Converts wooden arrows into slower, but high-damaging mummy arrows");
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -43,8 +45,17 @@ namespace AAMod.Items.Boss.Anubis
 			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
 			for (int i = 0; i < numberProjectiles; i++)
 			{
-				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * 1f;
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                if (type == ProjectileID.WoodenArrowFriendly)
+                {
+                    type = ModContent.ProjectileType<Projectiles.Anubis.MummyArrow>();
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * 1f;
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X * .7f, perturbedSpeed.Y * .7f, type, (int)(damage * 1.5f), knockBack, player.whoAmI);
+                }
+                else
+                {
+                    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * 1f;
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                }
 			}
 			if (Main.rand.NextBool(5))
 			{

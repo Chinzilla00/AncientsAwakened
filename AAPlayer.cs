@@ -170,6 +170,8 @@ namespace AAMod
         // Accessory bools
 		public bool artifactJudgement;
 		public int artifactJudgementCharge = 0;
+		public bool artifactGuilt;
+		public int artifactGuiltCharge = 0;
         public bool clawsOfChaos;
         public bool HydraPendant;
         public bool demonGauntlet;
@@ -373,6 +375,7 @@ namespace AAMod
         private void ResetArmorEffect()
         {
 			artifactJudgement = false;
+			artifactGuilt = false;
             MoonSet = false;
             valkyrieSet = false;
             kindledSet = false;
@@ -630,6 +633,14 @@ namespace AAMod
 
         #endregion
 
+		public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit) 
+		{
+			if (npc.HasBuff(mod.BuffType("ForsakenWeak")))
+			{
+				damage -= damage/5;
+			}
+		}
+
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
         {
             if (Palladium)
@@ -644,6 +655,35 @@ namespace AAMod
             {
                 player.AddBuff(BuffID.RapidHealing, 300);
             }
+			if (target.HasBuff(mod.BuffType("Forsaken")) && proj.type == mod.ProjectileType("EnchancedMummyArrow"))
+            {
+				float num1 = 9f;
+				Vector2 vector2 = new Vector2(player.position.X + (float)player.width * 0.5f, player.position.Y + (float)player.height * 0.5f);
+				float f1 = target.Center.X - vector2.X;
+				float f2 = target.Center.Y - vector2.Y;
+				float num4 = (float)Math.Sqrt((double)f1 * (double)f1 + (double)f2 * (double)f2);
+				float num5;
+				if (float.IsNaN(f1) && float.IsNaN(f2) || (double)f1 == 0.0 && (double)f2 == 0.0)
+				{
+					f1 = (float)player.direction;
+					f2 = 0.0f;
+					num5 = num1;
+				}
+				else
+					num5 = num1 / num4;
+				float SpeedX = f1 * num5;
+				float SpeedY = f2 * num5;
+				
+				float numberProjectiles = 3;
+				float rotation = MathHelper.ToRadians(3);
+				vector2 += Vector2.Normalize(new Vector2(SpeedX, SpeedY)) * 45f;
+				for (int i = 0; i < numberProjectiles; i++)
+				{
+					Vector2 perturbedSpeed = new Vector2(SpeedX, SpeedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * 1f;
+					Projectile.NewProjectile(vector2.X, vector2.Y, perturbedSpeed.X*2, perturbedSpeed.Y*2, mod.ProjectileType("ForsakenArrow"), damage, knockback, player.whoAmI);
+				}
+				target.buffImmune[mod.BuffType("Forsaken")] = true;
+			}
         }
 
 		public override void OnHitByProjectile(Projectile proj, int damage, bool crit)
@@ -651,6 +691,10 @@ namespace AAMod
 			if (artifactJudgement)
 			{
 				artifactJudgementCharge += damage;
+			}
+			if (artifactGuilt)
+			{
+				artifactGuiltCharge += damage;
 			}
 		}
 
@@ -664,6 +708,10 @@ namespace AAMod
 			if (artifactJudgement)
 			{
 				artifactJudgementCharge += damage;
+			}
+			if (artifactGuilt)
+			{
+				artifactGuiltCharge += damage;
 			}
 
             if (fleshrendSet && Main.rand.Next(2) == 0)
@@ -805,6 +853,11 @@ namespace AAMod
 			{
 				player.AddBuff(mod.BuffType("EyeOfJudgement"), 900);
 				artifactJudgementCharge = 0;
+			}
+			if (artifactGuiltCharge >= 250)
+			{
+				player.AddBuff(mod.BuffType("EyeOfForsaken"), 900);
+				artifactGuiltCharge = 0;
 			}
             if (!Greed1 && !Greed2)
             {

@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
-using AAMod.NPCs.Enemies.Sky;
 
 namespace AAMod.NPCs.Bosses.Athena.Olympian
 {

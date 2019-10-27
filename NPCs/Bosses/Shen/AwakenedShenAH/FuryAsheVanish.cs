@@ -6,7 +6,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.Shen
+namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 {
     public class FuryAsheVanish : ModNPC
     {

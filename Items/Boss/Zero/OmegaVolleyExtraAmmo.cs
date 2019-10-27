@@ -1,6 +1,5 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,7 +7,7 @@ using System;
 
 namespace AAMod.Items.Boss.Zero
 {
-	public class OmegaVolleyExtraAmmo : ModProjectile
+    public class OmegaVolleyExtraAmmo : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

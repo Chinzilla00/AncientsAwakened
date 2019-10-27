@@ -1,15 +1,11 @@
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using System;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace AAMod.Projectiles.Anubis
 {
-	public class TheEye : ModProjectile
+    public class TheEye : ModProjectile
     {
         public override void SetDefaults()
         {
