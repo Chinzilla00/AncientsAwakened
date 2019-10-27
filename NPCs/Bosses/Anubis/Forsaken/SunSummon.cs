@@ -59,7 +59,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             int MinionType = ModContent.NPCType<HorusSentry>();
 
             int Minion = NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, MinionType, 0);
-            Main.npc[Minion].netUpdate2 = true;\
+            Main.npc[Minion].netUpdate2 = true;
         }
     }
 }
