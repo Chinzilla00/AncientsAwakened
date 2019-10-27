@@ -1710,6 +1710,36 @@ ItemName.AnubisTrophy=阿努比斯纪念章
 
 ItemName.ForsakenFragment=逝落碎片
 
+ItemName.ArtifactOfJudgement=裁决造物
+ItemTooltip.ArtifactOfJudgement=你受到伤害时会进行充能\n充能值达到250后会召唤一只“裁决之眼”并重置充能\n当裁决之眼存在时，你的主要攻击伤害和移动速度增加
+
+ItemName.DesertStaff=大漠权杖
+ItemTooltip.DesertStaff=发射会在击中时爆裂出反弹球的附魔沙矢
+
+ItemName.JackalsWrath=胡狼之怒
+ItemTooltip.JackalsWrath=挥动时发射穿墙回旋幻影刃
+
+ItemName.Judgment=神罚
+ItemTooltip.Judgment=击中敌人时释放附魔沙雨
+
+ItemName.NeithsString=奈特神弦弓
+ItemTooltip.NeithsString=一次发射两支箭矢\n有几率发射能降低敌人防御的裁决之矢\n将木箭转化成速度慢伤害高的木乃伊箭\n(译者注：Neith，古埃及狩猎之神奈特)
+
+ItemName.SandstormThrower=沙火喷枪
+ItemTooltip.SandstormThrower=30%几率不消耗凝胶
+
+ItemName.SentryOfTheEye=真眼之哨
+ItemTooltip.SentryOfTheEye=召唤一个眼睛哨兵
+
+// AAMod.Items.Boss.Anubis.Forsaken
+
+ItemName.CursedFury=咒火狂怒
+ItemTooltip.CursedFury=50%几率不消耗凝胶
+
+ItemName.FAnubisBag=宝藏袋
+
+ItemName.FAnubisTrophy=逝落裁决者纪念章
+
 
 //AAMod.Items.Boss.Athena
 
