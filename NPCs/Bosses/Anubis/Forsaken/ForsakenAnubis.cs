@@ -177,13 +177,13 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         {
                             if (npc.life < npc.lifeMax / 3)
                             {
-                                int a = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 200, npc.Center.Y);
+                                int a = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X - 150, npc.Center.Y);
                                 Main.npc[a].Center = npc.Center;
-                                int b = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 200, npc.Center.Y);
+                                int b = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X + 150, npc.Center.Y);
                                 Main.npc[b].Center = npc.Center;
-                                int c = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y - 200);
+                                int c = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y - 150);
                                 Main.npc[c].Center = npc.Center;
-                                int d = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y + 200);
+                                int d = Projectile.NewProjectile(npc.position, Vector2.Zero, ModContent.ProjectileType<HorusSummon>(), 0, 0, Main.myPlayer, npc.Center.X, npc.Center.Y + 150);
                                 Main.npc[d].Center = npc.Center;
                             }
                             else
@@ -271,7 +271,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         float rotation = 2f * (float)Math.PI / Max;
                         Vector2 vel = npc.velocity;
                         vel.Normalize();
-                        vel *= 17f;
+                        vel *= 10f;
                         int type = mod.ProjectileType("SunSummon");
                         for (int i = 0; i < Max; i++)
                         {
@@ -410,44 +410,44 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         {
                             if (npc.life > npc.lifeMax / 2)
                             {
-                                int l = Projectile.NewProjectile(player.position + new Vector2(-400, 0), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
-                                Main.projectile[l].Center = player.Center + new Vector2(-400, 0);
+                                int l = Projectile.NewProjectile(player.position + new Vector2(-250, 0), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[l].Center = player.Center + new Vector2(-200, 0);
                                 Kaboom(Main.projectile[l]);
-                                int r = Projectile.NewProjectile(player.position + new Vector2(400, 0), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
-                                Main.projectile[r].Center = player.Center + new Vector2(400, 0);
+                                int r = Projectile.NewProjectile(player.position + new Vector2(250, 0), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[r].Center = player.Center + new Vector2(250, 0);
                                 Kaboom(Main.projectile[r]);
-                                int u = Projectile.NewProjectile(player.position + new Vector2(0, -400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
-                                Main.projectile[u].Center = player.Center + new Vector2(0, -400);
+                                int u = Projectile.NewProjectile(player.position + new Vector2(0, -250), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[u].Center = player.Center + new Vector2(0, -250);
                                 Kaboom(Main.projectile[u]);
-                                int d = Projectile.NewProjectile(player.position + new Vector2(0, 400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
-                                Main.projectile[d].Center = player.Center + new Vector2(0, 400);
+                                int d = Projectile.NewProjectile(player.position + new Vector2(0, 250), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[d].Center = player.Center + new Vector2(0, 250);
                                 Kaboom(Main.projectile[d]);
                             }
                             else
                             {
-                                int a = Projectile.NewProjectile(player.position + new Vector2(-400, 0), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
-                                Main.projectile[a].Center = player.Center + new Vector2(-400, 0);
+                                int a = Projectile.NewProjectile(player.position + new Vector2(-250, 0), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[a].Center = player.Center + new Vector2(-250, 0);
                                 Kaboom(Main.projectile[a]);
-                                int b = Projectile.NewProjectile(player.position + new Vector2(400, 0), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
-                                Main.projectile[b].Center = player.Center + new Vector2(400, 0);
+                                int b = Projectile.NewProjectile(player.position + new Vector2(250, 0), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[b].Center = player.Center + new Vector2(250, 0);
                                 Kaboom(Main.projectile[b]);
-                                int c = Projectile.NewProjectile(player.position + new Vector2(0, -400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
-                                Main.projectile[c].Center = player.Center + new Vector2(0, -400);
+                                int c = Projectile.NewProjectile(player.position + new Vector2(0, -250), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[c].Center = player.Center + new Vector2(0, -250);
                                 Kaboom(Main.projectile[c]);
-                                int d = Projectile.NewProjectile(player.position + new Vector2(0, 400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
-                                Main.projectile[d].Center = player.Center + new Vector2(0, 400);
+                                int d = Projectile.NewProjectile(player.position + new Vector2(0, 250), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[d].Center = player.Center + new Vector2(0, 250);
                                 Kaboom(Main.projectile[d]);
-                                int e = Projectile.NewProjectile(player.position + new Vector2(-400, 400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
-                                Main.projectile[e].Center = player.Center + new Vector2(-400, 400);
+                                int e = Projectile.NewProjectile(player.position + new Vector2(-250, 250), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[e].Center = player.Center + new Vector2(-250, 250);
                                 Kaboom(Main.projectile[e]);
-                                int f = Projectile.NewProjectile(player.position + new Vector2(400, 400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
-                                Main.projectile[f].Center = player.Center + new Vector2(400, 400);
+                                int f = Projectile.NewProjectile(player.position + new Vector2(250, 250), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[f].Center = player.Center + new Vector2(250, 250);
                                 Kaboom(Main.projectile[f]);
-                                int g = Projectile.NewProjectile(player.position + new Vector2(400, -400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
-                                Main.projectile[g].Center = player.Center + new Vector2(400, -400);
+                                int g = Projectile.NewProjectile(player.position + new Vector2(250, -250), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[g].Center = player.Center + new Vector2(250, -250);
                                 Kaboom(Main.projectile[g]);
-                                int h = Projectile.NewProjectile(player.position + new Vector2(-400, -400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
-                                Main.projectile[h].Center = player.Center + new Vector2(-400, -400);
+                                int h = Projectile.NewProjectile(player.position + new Vector2(-250, -250), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[h].Center = player.Center + new Vector2(-250, -250);
                                 Kaboom(Main.projectile[h]);
                             }
                         }

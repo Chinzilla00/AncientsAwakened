@@ -9,6 +9,7 @@ using AAMod.NPCs.Bosses.Yamata;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.Zero.Protocol;
+using AAMod.NPCs.Bosses.Anubis.Forsaken;
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -539,10 +540,12 @@ namespace AAMod
             bool useShen = NPC.AnyNPCs(ModContent.NPCType<Shen>()) && !useShenA;
             bool useAkuma = NPC.AnyNPCs(ModContent.NPCType<AkumaA>()) || AkumaAltar;
             bool useYamata = NPC.AnyNPCs(ModContent.NPCType<YamataA>()) || YamataAltar;
-            bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen && !useShenA;
-            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen && !useShenA;
-            bool useVoid = (ZoneVoid || VoidUnit) && !useShen && !useShenA;
+            bool useAnu = NPC.AnyNPCs(ModContent.NPCType<ForsakenAnubis>());
+            bool useMire = (ZoneMire || MoonAltar) && !useYamata && !useShen && !useShenA && !useAnu;
+            bool useInferno = (ZoneInferno || SunAltar) && !useAkuma && !useShen && !useShenA && !useAnu;
+            bool useVoid = (ZoneVoid || VoidUnit) && !useShen && !useShenA && !useAnu;
 
+            player.ManageSpecialBiomeVisuals("AAMod:AnubisSky", useAnu);
             player.ManageSpecialBiomeVisuals("AAMod:AthenaSky", useAthena);
             player.ManageSpecialBiomeVisuals("AAMod:ShenSky", useShen);
             player.ManageSpecialBiomeVisuals("AAMod:ShenASky", useShenA);

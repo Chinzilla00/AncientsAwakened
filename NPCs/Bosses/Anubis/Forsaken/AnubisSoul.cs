@@ -17,15 +17,13 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
         {
             projectile.width = 48;
             projectile.height = 30;
-            projectile.friendly = true;
             projectile.melee = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;
             projectile.alpha = 0;
             projectile.penetrate = 1;
             projectile.timeLeft = 900;
-            projectile.friendly = true;
-            projectile.hostile = false;
+            projectile.hostile = true;
             
         }
 

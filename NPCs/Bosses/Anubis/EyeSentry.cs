@@ -28,6 +28,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.DeathSound = SoundID.NPCDeath51;
             npc.knockBackResist = 0.7f;
             npc.alpha = 255;
+            npc.noGravity = true;
         }
 
         public override void AI()

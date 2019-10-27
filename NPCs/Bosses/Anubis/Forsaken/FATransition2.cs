@@ -14,6 +14,8 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 
         public override void SetDefaults()
         {
+            npc.width = 72;
+            npc.height = 100;
             npc.npcSlots = 1000;
             npc.aiStyle = -1;
             npc.defense = 1;

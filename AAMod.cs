@@ -422,6 +422,14 @@ namespace AAMod
             YamataSky.SkyTex = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/YamataStars");
             YamataSky.BeamTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/YamataBeam");
 
+            Filters.Scene["AAMod:AnubisSky"] = new Filter(new AnubisSkyData("FilterMiniTower").UseColor(.2f, .5f, .2f).UseOpacity(0.5f), EffectPriority.VeryHigh);
+            SkyManager.Instance["AAMod:AnubisSky"] = new AnubisSky();
+            AnubisSky.BeamTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AnubisBeam");
+            for (int a = 0; a < 8; a++)
+            {
+                AnubisSky.RuneTextures[a] = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Runes/Rune" + a);
+            }
+
             ReplaceItemTexture(3460, "Resprites/Luminite");
             ReplaceItemTexture(512, "Resprites/SoulOfNight");
 
