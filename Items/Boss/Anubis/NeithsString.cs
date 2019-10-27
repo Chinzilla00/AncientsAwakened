@@ -22,7 +22,7 @@ namespace AAMod.Items.Boss.Anubis
             item.shoot = 10;
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 2;
-            item.rare = 11;
+            item.rare = 6;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 25f;

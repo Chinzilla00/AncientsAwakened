@@ -23,7 +23,7 @@ namespace AAMod.Items.Boss.Anubis
 			item.useAnimation = 15;
 			item.useStyle = 1;
 			item.value = 100000;
-			item.rare = 11;
+			item.rare = 6;
             item.knockBack = 4;
             item.autoReuse = true;
 			item.UseSound = SoundID.Item1;

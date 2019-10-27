@@ -26,7 +26,7 @@ namespace AAMod.Items.Boss.Anubis
             item.noMelee = true;
             item.value = Item.sellPrice(0, 0, 27, 0);
             item.knockBack = 7.5f;
-            item.rare = 11;
+            item.rare = 6;
             item.summon = true;
             item.mana = 30;
             item.sentry = true;

@@ -24,6 +24,7 @@ namespace AAMod.Projectiles.Anubis.Forsaken
 			projectile.tileCollide = false;
 			projectile.usesLocalNPCImmunity = true;
 			projectile.localNPCHitCooldown = 0;
+            projectile.extraUpdates = 1;
 		}
 		
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) {

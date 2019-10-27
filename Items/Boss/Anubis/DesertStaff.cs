@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.Anubis
 			item.noMelee = true;
 			item.knockBack = 5;
 			item.value = 10000;
-			item.rare = 11;
+			item.rare = 6;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("DesertBlast");

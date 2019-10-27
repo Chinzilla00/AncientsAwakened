@@ -22,12 +22,23 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
             item.shoot = 10;
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 2;
-            item.rare = 11;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 25f;
             item.value = Item.buyPrice(0, 1, 0, 0);
+            item.rare = 9;
+            AARarity = 12;
+        }
 
+        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
+        {
+            foreach (Terraria.ModLoader.TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
 
         public override void SetStaticDefaults()

@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
+using System;
 using System.IO;
 
 namespace AAMod.NPCs.Bosses.Anubis.Forsaken
@@ -257,6 +258,58 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     break;
 
                 case 3:
+
+                    int Max = 3;
+
+                    if (npc.life < npc.lifeMax / 2)
+                    {
+                        Max = 4;
+                    }
+
+                    if (npc.ai[1] > 120 &&  Main.netMode != 1)
+                    {
+                        float rotation = 2f * (float)Math.PI / Max;
+                        Vector2 vel = npc.velocity;
+                        vel.Normalize();
+                        vel *= 17f;
+                        int type = mod.ProjectileType("SunSummon");
+                        for (int i = 0; i < Max; i++)
+                        {
+                            vel = vel.RotatedBy(rotation);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, vel.X, vel.Y, type, 0, 4, Main.myPlayer, npc.direction > 0 ? -1f : 1f, 6f);
+                        }
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        Teleport();
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 4:
+
+                    int proj1 = ModContent.ProjectileType<AnubisSoul>();
+
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, proj1, ref npc.ai[3], 100, npc.damage / 2, 10, true);
+
+                    if (npc.ai[3] == 50)
+                    {
+                        Teleport();
+                    }
+
+                    if (npc.ai[1] >= 320)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        Teleport();
+                    }
+
+                    break;
+
+                case 5:
                     if (npc.life > npc.lifeMax / 2)
                     {
                         if (npc.ai[1] == 40)
@@ -320,6 +373,95 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         }
                     }
                     break;
+
+                case 6:
+                    if (npc.life > npc.lifeMax / 2)
+                    {
+                        if (npc.ai[1] == 40)
+                        {
+                            int l = Projectile.NewProjectile(player.position + new Vector2(-800, 0), Vector2.Zero, ModContent.ProjectileType<BlockF>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
+                            int r = Projectile.NewProjectile(player.position + new Vector2(800, 0), Vector2.Zero, ModContent.ProjectileType<BlockF>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
+                            Main.projectile[l].ai[1] = r;
+                            Main.projectile[l].Center = player.Center + new Vector2(-800, 0);
+                            Main.projectile[r].ai[1] = l;
+                            Main.projectile[r].Center = player.Center + new Vector2(800, 0);
+                        }
+                        if (npc.ai[1] == 80)
+                        {
+                            int u = Projectile.NewProjectile(player.position + new Vector2(0, -800), Vector2.Zero, ModContent.ProjectileType<BlockF1>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
+                            int d = Projectile.NewProjectile(player.position + new Vector2(0, 800), Vector2.Zero, ModContent.ProjectileType<BlockF1>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
+                            Main.projectile[u].ai[1] = d;
+                            Main.projectile[u].Center = player.Center + new Vector2(0, -800);
+                            Main.projectile[d].ai[1] = u;
+                            Main.projectile[d].Center = player.Center + new Vector2(0, 800);
+                        }
+                        if (npc.ai[1] > 160 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
+                        {
+                            npc.ai[0]++;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                            npc.ai[3] = 0;
+                            Teleport();
+                        }
+                    }
+                    else
+                    {
+                        if (npc.ai[1] == 120)
+                        {
+                            if (npc.life > npc.lifeMax / 2)
+                            {
+                                int l = Projectile.NewProjectile(player.position + new Vector2(-400, 0), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[l].Center = player.Center + new Vector2(-400, 0);
+                                Kaboom(Main.projectile[l]);
+                                int r = Projectile.NewProjectile(player.position + new Vector2(400, 0), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[r].Center = player.Center + new Vector2(400, 0);
+                                Kaboom(Main.projectile[r]);
+                                int u = Projectile.NewProjectile(player.position + new Vector2(0, -400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[u].Center = player.Center + new Vector2(0, -400);
+                                Kaboom(Main.projectile[u]);
+                                int d = Projectile.NewProjectile(player.position + new Vector2(0, 400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[d].Center = player.Center + new Vector2(0, 400);
+                                Kaboom(Main.projectile[d]);
+                            }
+                            else
+                            {
+                                int a = Projectile.NewProjectile(player.position + new Vector2(-400, 0), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[a].Center = player.Center + new Vector2(-400, 0);
+                                Kaboom(Main.projectile[a]);
+                                int b = Projectile.NewProjectile(player.position + new Vector2(400, 0), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[b].Center = player.Center + new Vector2(400, 0);
+                                Kaboom(Main.projectile[b]);
+                                int c = Projectile.NewProjectile(player.position + new Vector2(0, -400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[c].Center = player.Center + new Vector2(0, -400);
+                                Kaboom(Main.projectile[c]);
+                                int d = Projectile.NewProjectile(player.position + new Vector2(0, 400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[d].Center = player.Center + new Vector2(0, 400);
+                                Kaboom(Main.projectile[d]);
+                                int e = Projectile.NewProjectile(player.position + new Vector2(-400, 400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[e].Center = player.Center + new Vector2(-400, 400);
+                                Kaboom(Main.projectile[e]);
+                                int f = Projectile.NewProjectile(player.position + new Vector2(400, 400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[f].Center = player.Center + new Vector2(400, 400);
+                                Kaboom(Main.projectile[f]);
+                                int g = Projectile.NewProjectile(player.position + new Vector2(400, -400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[g].Center = player.Center + new Vector2(400, -400);
+                                Kaboom(Main.projectile[g]);
+                                int h = Projectile.NewProjectile(player.position + new Vector2(-400, -400), Vector2.Zero, ModContent.ProjectileType<AnubisFireball>(), npc.damage / 2, 7, Main.myPlayer);
+                                Main.projectile[h].Center = player.Center + new Vector2(-400, -400);
+                                Kaboom(Main.projectile[h]);
+                            }
+                        }
+                    }
+                    if (npc.ai[1] > 180)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        Teleport();
+                    }
+                    break;
+
                 default:
                     npc.ai[0] = 0;
                     goto case 0;
@@ -453,6 +595,52 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)pieCut * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
+            }
+        }
+
+        public void Kaboom(Projectile p)
+        {
+            Vector2 position = p.Center + (Vector2.One * -20f);
+            int num84 = 40;
+            int height3 = num84;
+            for (int num85 = 0; num85 < 3; num85++)
+            {
+                int num86 = Dust.NewDust(position, num84, height3, 240, 0f, 0f, 100, default, 1.5f);
+                Main.dust[num86].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+            }
+            for (int num87 = 0; num87 < 15; num87++)
+            {
+                int num88 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 50, default, 3.7f);
+                Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                Main.dust[num88].noGravity = true;
+                Main.dust[num88].noLight = true;
+                Main.dust[num88].velocity *= 3f;
+                Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
+                num88 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 25, default, 1.5f);
+                Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                Main.dust[num88].velocity *= 2f;
+                Main.dust[num88].noGravity = true;
+                Main.dust[num88].fadeIn = 1f;
+                Main.dust[num88].color = Color.Black * 0.5f;
+                Main.dust[num88].noLight = true;
+                Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * 8f;
+            }
+            for (int num89 = 0; num89 < 10; num89++)
+            {
+                int num90 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 0, default, 2.7f);
+                Main.dust[num90].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
+                Main.dust[num90].noGravity = true;
+                Main.dust[num90].noLight = true;
+                Main.dust[num90].velocity *= 3f;
+                Main.dust[num90].velocity += npc.DirectionTo(Main.dust[num90].position) * 2f;
+            }
+            for (int num91 = 0; num91 < 30; num91++)
+            {
+                int num92 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 0, default, 1.5f);
+                Main.dust[num92].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
+                Main.dust[num92].noGravity = true;
+                Main.dust[num92].velocity *= 3f;
+                Main.dust[num92].velocity += npc.DirectionTo(Main.dust[num92].position) * 3f;
             }
         }
 

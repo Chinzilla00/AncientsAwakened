@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Anubis
 			item.height = 28;
 			item.damage = 115;
 			item.UseSound = SoundID.Item71;
-			item.rare = 11;
+			item.rare = 6;
 			item.shoot = mod.ProjectileType("PhantomBlade");
 			item.shootSpeed = 14f;
 			item.value = 10000;

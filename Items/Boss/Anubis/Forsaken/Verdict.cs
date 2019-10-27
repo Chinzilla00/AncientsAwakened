@@ -15,23 +15,34 @@ Creates 2 forsaken phantom blades which hit enemy horizontally as well");
 
 		public override void SetDefaults()
 		{
-			item.damage = 140;
+			item.damage = 220;
 			item.melee = true;
 			item.crit = 10;
 			item.width = 96;
 			item.height = 92;
-			item.useTime = 15;
-			item.useAnimation = 15;
+			item.useTime = 30;
+			item.useAnimation = 30;
 			item.useStyle = 1;
 			item.value = 100000;
-			item.rare = 11;
             item.knockBack = 4;
             item.autoReuse = true;
 			item.UseSound = SoundID.Item1;
-			item.scale = 1.1f;
-		}
-		
-		public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
+            item.rare = 9;
+            AARarity = 12;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
+        {
+            foreach (Terraria.ModLoader.TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
+
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockback, bool crit)
 		{
 			Vector2 vel1 = new Vector2(0, -1);
 			vel1 *= 8f;

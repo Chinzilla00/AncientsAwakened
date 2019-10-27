@@ -23,7 +23,8 @@ You will get major damage and speed boosts while Eye is active");
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 11;
             item.accessory = true;
-            
+            item.expert = true;
+            item.expertOnly = true;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
