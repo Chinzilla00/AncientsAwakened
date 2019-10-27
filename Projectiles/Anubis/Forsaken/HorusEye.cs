@@ -34,7 +34,7 @@ namespace AAMod.Projectiles.Anubis.Forsaken
             if (projectile.ai[1] == 0)
             {
                 projectile.velocity.Y += 0.005f;
-                if (projectile.velocity.Y > .1f)
+                if (projectile.velocity.Y > .2f)
                 {
                     projectile.ai[1] = 1f;
                     projectile.netUpdate = true;
@@ -44,7 +44,7 @@ namespace AAMod.Projectiles.Anubis.Forsaken
             if (projectile.ai[1] == 1)
             {
                 projectile.velocity.Y -= 0.005f;
-                if (projectile.velocity.Y < -.1f)
+                if (projectile.velocity.Y < -.2f)
                 {
                     projectile.ai[1] = 0f;
                     projectile.netUpdate = true;
