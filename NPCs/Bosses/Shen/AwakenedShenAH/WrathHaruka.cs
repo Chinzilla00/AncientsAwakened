@@ -1085,12 +1085,13 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             npc.velocity *= velMultiplier;
         }
 
-        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
             if(strikebackproj > 0 && internalAI[0] == AISTATE_SPIN)
             {
-                damage = 0;
+                damage = 0.0;
             }
+            return false;
         }
 
         public override void BossLoot(ref string name, ref int potionType)
