@@ -50,6 +50,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.height = 108;
             npc.npcSlots = 1f;
             npc.boss = true;
+            npc.stairFall = true;
             npc.lavaImmune = true;
             npc.noGravity = false;
             npc.noTileCollide = false;
@@ -145,6 +146,14 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             {
                 npc.spriteDirection = 1;
             }
+
+            if ((player.Center.Y - npc.Center.Y) < -100f || (player.Center - npc.Center).Length() > 500f)
+            {
+                internalAI[1] = AISTATE_FLY;
+                npc.ai = new float[4];
+                npc.netUpdate = true;
+            }
+
 			if(Main.netMode != 1)
 			{
                 if (!Main.dayTime)
@@ -177,6 +186,13 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 {
                     internalAI[2]++;
                 }
+                if ((player.Center.Y - npc.Center.Y) > 60f) // player is below the npc.
+                {
+                    npc.noTileCollide = true;
+                }else
+                {
+                    npc.noTileCollide = false;
+                }
                 if (NPC.CountNPCS(ModContent.NPCType<RedMushling>()) < 4)
                 {
                     for (int i = 0; i < 2; i++)
@@ -199,7 +215,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 npc.noGravity = true;
                 BaseAI.AISpaceOctopus(npc, ref npc.ai, .05f, 8, 250, 0, null);
                 npc.rotation = 0;
-                if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                if ((player.Center.Y - npc.Center.Y) > 60f)
                 {
                     npc.rotation = 0;
                     npc.noGravity = false;
@@ -209,12 +225,13 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                     npc.netUpdate = true;
                     npc.noTileCollide = false;
                 }
-            }else //charger
-			{			
+            }
+            else //charger
+			{
                 BaseAI.AICharger(npc, ref npc.ai, 0.07f, 10f, false, 30);				
 			}
         }
-
+        
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = ItemID.LesserHealingPotion;

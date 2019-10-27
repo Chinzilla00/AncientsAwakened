@@ -1064,12 +1064,13 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             potionType = 0;
         }
 
-        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
             if(strikebackproj > 0 && internalAI[0] == AISTATE_SPIN)
             {
-                damage = 0;
+                damage = 0.0;
             }
+            return false;
         }
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
