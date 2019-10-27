@@ -85,7 +85,7 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.netUpdate = true;
             }
 
-            if (NPC.AnyNPCs(ModContent.NPCType<FuryAshe>()) || NPC.AnyNPCs(ModContent.NPCType<WrathHaruka>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<AwakenedShenAH.FuryAshe>()) || NPC.AnyNPCs(ModContent.NPCType<AwakenedShenAH.WrathHaruka>()))
             {
                 if (npc.alpha > 50)
                 {
