@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.Graphics;
 using Terraria.Graphics.Effects;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Backgrounds
 {
@@ -19,8 +20,8 @@ namespace AAMod.Backgrounds
 
         public override void OnLoad()
         {
-            PlanetTexture = TextureManager.Load("Backgrounds/Moon");
-            SkyTexture = TextureManager.Load("Backgrounds/MireSky");
+            PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Moon");
+            SkyTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/MireSky");
         }
 
         public override void Update(GameTime gameTime)

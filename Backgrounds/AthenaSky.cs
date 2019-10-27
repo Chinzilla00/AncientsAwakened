@@ -38,8 +38,8 @@ namespace AAMod.Backgrounds
 
         public override void OnLoad()
         {
-            boltTexture = TextureManager.Load("Backgrounds/AthenaBolt");
-            flashTexture = TextureManager.Load("Backgrounds/AthenaFlash");
+            boltTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AthenaBolt");
+            flashTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AthenaFlash");
         }
 
         public override void Update(GameTime gameTime)

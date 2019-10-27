@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics;
 using Terraria.Graphics.Effects;
+using Terraria.ModLoader;
 using Terraria.Utilities;
 
 namespace AAMod.Backgrounds
@@ -34,9 +35,9 @@ namespace AAMod.Backgrounds
 
         public override void OnLoad()
         {
-            PlanetTexture = TextureManager.Load("Backgrounds/AkumaSun");
-            MeteorTexture = TextureManager.Load("Backgrounds/AkumaAMeteor");
-            SkyTex = TextureManager.Load("Backgrounds/SkyTex");
+            PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AkumaSun");
+            MeteorTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AkumaAMeteor");
+            SkyTex = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/SkyTex");
         }
 
         private readonly float num = 1200f;

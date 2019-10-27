@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics;
 using Terraria.Graphics.Effects;
+using Terraria.ModLoader;
 using Terraria.Utilities;
 
 namespace AAMod.Backgrounds
@@ -21,7 +22,7 @@ namespace AAMod.Backgrounds
 
         public override void OnLoad()
         {
-            PlanetTexture = TextureManager.Load("Backgrounds/Aurora");
+            PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Aurora");
         }
 
         public override void Update(GameTime gameTime)

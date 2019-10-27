@@ -35,10 +35,10 @@ namespace AAMod.Backgrounds
 
         public override void OnLoad()
         {
-            PlanetTexture = TextureManager.Load("Backgrounds/Sun");
-            demonSun = TextureManager.Load("Backgrounds/DemonSun");
-            MeteorTexture = TextureManager.Load("Backgrounds/AkumaMeteors");
-            SkyTex = TextureManager.Load("Backgrounds/SkyTex");
+            PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Sun");
+            demonSun = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/DemonSun");
+            MeteorTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AkumaMeteor");
+            SkyTex = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/SkyTex");
         }
 
         public override void Update(GameTime gameTime)

@@ -6,6 +6,7 @@ using Terraria.Graphics;
 using Terraria.Graphics.Effects;
 using Terraria.Utilities;
 using BaseMod;
+using Terraria.ModLoader;
 //using AAMod.NPCs.Bosses.Infinity;
 
 namespace AAMod.Backgrounds
@@ -44,15 +45,15 @@ namespace AAMod.Backgrounds
 
         public override void OnLoad()
         {
-            PlanetTexture = TextureManager.Load("Backgrounds/VoidBH");
-            Asteroids1 = TextureManager.Load("Backgrounds/Asteroids1");
-            Asteroids2 = TextureManager.Load("Backgrounds/Asteroids2");
-            Asteroids3 = TextureManager.Load("Backgrounds/Asteroids3");
-            Echo = TextureManager.Load("Backgrounds/Echo");
-            LB = TextureManager.Load("Backgrounds/LB");
-            boltTexture = TextureManager.Load("Backgrounds/VoidBolt");
-            flashTexture = TextureManager.Load("Backgrounds/VoidFlash");
-            Stars =  TextureManager.Load("Backgrounds/Void_Starfield");
+            PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/VoidBH");
+            Asteroids1 = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Asteroids1");
+            Asteroids2 = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Asteroids2");
+            Asteroids3 = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Asteroids3");
+            Echo = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Echo");
+            LB = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/LB");
+            boltTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/VoidBolt");
+            flashTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/VoidFlash");
+            Stars = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Void_Starfield");
         }
 
         public override void Update(GameTime gameTime)

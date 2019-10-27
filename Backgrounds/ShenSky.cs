@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics;
 using Terraria.Graphics.Effects;
+using Terraria.ModLoader;
 using Terraria.Utilities;
 
 namespace AAMod.Backgrounds
@@ -32,8 +33,8 @@ namespace AAMod.Backgrounds
 
         public override void OnLoad()
         {
-            MeteorTexture = TextureManager.Load("Backgrounds/ShenMeteor");
-            SkyTex = TextureManager.Load("Backgrounds/ShenBg");
+            MeteorTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/ShenMeteor");
+            SkyTex = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/ShenBg");
         }
         public override void Update(GameTime gameTime)
         {
