@@ -51,14 +51,14 @@ Forsaken arrows lower enemy contact damage");
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-			Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<Projectiles.Anubis.Forsaken.EnchancedMummyArrow>(), (int)(damage * 1.5f), knockBack, player.whoAmI);
+			Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
 			float numberProjectiles = 2;
 			float rotation = MathHelper.ToRadians(4);
 			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
 			for (int i = 0; i < numberProjectiles; i++)
 			{
 				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * 1f;
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<Projectiles.Anubis.Forsaken.EnchancedMummyArrowD>(), (int)(damage * 1.5f), knockBack, player.whoAmI);
+				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<Projectiles.Anubis.Forsaken.EnchancedMummyArrowD>(), damage, knockBack, player.whoAmI);
 			}
             return false;
         }

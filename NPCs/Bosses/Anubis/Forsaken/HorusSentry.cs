@@ -28,13 +28,14 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             npc.DeathSound = SoundID.NPCDeath51;
             npc.knockBackResist = 0.7f;
             npc.alpha = 255;
+            npc.noGravity = true;
         }
 
         public override void AI()
         {
             npc.TargetClosest();
             Player player = Main.player[npc.target];
-            int FrameHeight = 26;
+            int FrameHeight = 48;
             if (npc.localAI[0] == 0f)
             {
                 Main.PlaySound(SoundID.Item121, npc.position);

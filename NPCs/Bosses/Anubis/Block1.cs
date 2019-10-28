@@ -111,7 +111,6 @@ namespace AAMod.NPCs.Bosses.Anubis
 
             BaseDrawing.DrawAfterimage(sb, Main.projectileTexture[projectile.type], 0, projectile, 2f, 1f, (int)projectile.velocity.Y, true, 0f, 0f, dColor, frame, 6);
 
-
             BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 6, frame, dColor, true);
             return false;
         }

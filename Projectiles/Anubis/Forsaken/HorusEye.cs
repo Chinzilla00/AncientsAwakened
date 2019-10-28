@@ -17,7 +17,8 @@ namespace AAMod.Projectiles.Anubis.Forsaken
             projectile.ignoreWater = true;
             projectile.sentry = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
-			projectile.scale = 0.5f;
+			projectile.scale = 0.1f;
+            projectile.alpha = 255;
         }
 
 		public override void SetStaticDefaults()
@@ -27,9 +28,30 @@ namespace AAMod.Projectiles.Anubis.Forsaken
 	
         public override void AI()
         {
-			Player player = Main.player[projectile.owner];
 			if (projectile.scale < 1f) projectile.scale += 0.01f;
-			for (int i = 0; i < 200; i++)
+            if (projectile.alpha > 0) projectile.alpha -= 5;
+
+            if (projectile.ai[1] == 0)
+            {
+                projectile.velocity.Y += 0.005f;
+                if (projectile.velocity.Y > .2f)
+                {
+                    projectile.ai[1] = 1f;
+                    projectile.netUpdate = true;
+                }
+            }
+            else
+            if (projectile.ai[1] == 1)
+            {
+                projectile.velocity.Y -= 0.005f;
+                if (projectile.velocity.Y < -.2f)
+                {
+                    projectile.ai[1] = 0f;
+                    projectile.netUpdate = true;
+                }
+            }
+
+            for (int i = 0; i < 200; i++)
             {
                 NPC target = Main.npc[i];
  

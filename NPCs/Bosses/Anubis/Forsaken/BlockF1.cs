@@ -66,18 +66,18 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 projectile.frame = 5;
             }
 
-            if (internalAI[0]++ > 90)
+            if (internalAI[0]++ > 60)
             {
                 if (projectile.ai[0] == 0)
                 {
-                    if (projectile.velocity.Y < 12)
+                    if (projectile.velocity.Y < 116)
                     {
                         projectile.velocity.Y += .1f;
                     }
                 }
                 else if (projectile.ai[0] == 1)
                 {
-                    if (projectile.velocity.Y > -12)
+                    if (projectile.velocity.Y > -16)
                     {
                         projectile.velocity.Y -= .1f;
                     }
@@ -87,9 +87,9 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 Projectile clearCheck = Main.projectile[(int)projectile.ai[1]];
                 if (Collision.CheckAABBvAABBCollision(projectile.position, projectile.Size, clearCheck.position, clearCheck.Size))
                 {
-                    for (int m = 0; m < 40; m++)
+                    for (int m = 0; m < 80; m++)
                     {
-                        Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 100, default, 1.6f);
+                        Dust.NewDust(projectile.position, projectile.width, projectile.height, 32, 0f, 0f, 100, new Color(32, 32, 46), 1.6f);
                     }
                     clearCheck.Kill();
                     projectile.Kill();
