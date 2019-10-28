@@ -22,9 +22,9 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             npc.height = 60;
             npc.friendly = false;
             npc.dontTakeDamage = true;
-            npc.damage = 90;
+            npc.damage = 200;
             npc.defense = 9999;
-            npc.lifeMax = 150000;
+            npc.lifeMax = 130000;
             npc.HitSound = SoundID.NPCHit1;
             npc.knockBackResist = 0f;
             for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -36,6 +36,12 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             npc.lavaImmune = true;
             npc.netAlways = true;
             npc.noGravity = true;
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 0.9f);
         }
 
 

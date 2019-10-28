@@ -725,18 +725,18 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
-                npc.damage = 150;
+                npc.damage = 180;
                 npc.defense = 300;
             }
             else if (internalAI[0] == AISTATE_Shadowkilling) //Melee Damage/Speed boost
             {
-                npc.damage = 90;
+                npc.damage = 200;
                 npc.defense = 9999;
             }
             else //Reset Stats
             {
                 npc.defense = npc.defDefense;
-                npc.damage = 60;
+                npc.damage = 80;
             }
 
 
@@ -919,6 +919,8 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 ShadowNPC[1] = NPC.NewNPC((int)spawnpoint[k1].X, (int)spawnpoint[k1].Y, ModContent.NPCType<WrathHarukaClone>());
                 ShadowNPC[2] = NPC.NewNPC((int)spawnpoint[k2].X, (int)spawnpoint[k2].Y, ModContent.NPCType<WrathHarukaClone>());
                 npc.alpha = 250;
+                Main.npc[ShadowNPC[1]].boss = true;
+                Main.npc[ShadowNPC[2]].boss = true;
                 Main.npc[ShadowNPC[1]].alpha = npc.alpha;
                 Main.npc[ShadowNPC[2]].alpha = npc.alpha;
                 Main.npc[ShadowNPC[1]].life = Main.npc[ShadowNPC[0]].life;
@@ -973,6 +975,8 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     shoot *= 14f;
                     Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, shoot.X, shoot.Y, projType, damage*1, 5, Main.myPlayer);
                 }
+                Main.npc[ShadowNPC[1]].boss = false;
+                Main.npc[ShadowNPC[2]].boss = false;
                 Main.npc[ShadowNPC[1]].active = false;
                 Main.npc[ShadowNPC[2]].active = false;
                 

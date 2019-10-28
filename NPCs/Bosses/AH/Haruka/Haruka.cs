@@ -719,7 +719,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             else if (internalAI[0] == AISTATE_Shadowkilling) //Melee Damage/Speed boost
             {
-                npc.damage = 120;
+                npc.damage = 200;
                 npc.defense = 9999;
             }
             else //Reset Stats
@@ -903,6 +903,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 npc.alpha = 250;
                 Main.npc[ShadowNPC[1]].alpha = npc.alpha;
                 Main.npc[ShadowNPC[2]].alpha = npc.alpha;
+                Main.npc[ShadowNPC[1]].boss = true;
+                Main.npc[ShadowNPC[2]].boss = true;
                 Main.npc[ShadowNPC[1]].life = Main.npc[ShadowNPC[0]].life;
                 Main.npc[ShadowNPC[2]].life = Main.npc[ShadowNPC[0]].life;
                 SpawnClone = false;
@@ -955,6 +957,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     shoot *= 14f;
                     Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, shoot.X, shoot.Y, projType, damage*1, 5, Main.myPlayer);
                 }
+                Main.npc[ShadowNPC[1]].boss = false;
+                Main.npc[ShadowNPC[2]].boss = false;
                 Main.npc[ShadowNPC[1]].active = false;
                 Main.npc[ShadowNPC[2]].active = false;
                 
