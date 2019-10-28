@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             npc.defense = 12;    //boss defense
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
             npc.value = Item.sellPrice(0, 0, 50, 0);
-            npc.aiStyle = 26;
+            npc.aiStyle = -1;
             npc.width = 74;
             npc.height = 108;
             npc.npcSlots = 1f;
@@ -164,7 +164,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 internalAI[1] = internalAI[3];
             }
 
-            if ((player.Center.Y - npc.Center.Y) < -100f)
+            if ((player.Center.Y - npc.Center.Y) < -150f && (internalAI[1] == AISTATE_WALK || internalAI[1] == AISTATE_CHARGE))
             {
                 internalAI[1] = AISTATE_FLY;
                 npc.ai = new float[4];
