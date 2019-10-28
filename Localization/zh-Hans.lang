@@ -1736,9 +1736,27 @@ ItemTooltip.SentryOfTheEye=召唤一个眼睛哨兵
 ItemName.CursedFury=咒火狂怒
 ItemTooltip.CursedFury=50%几率不消耗凝胶
 
+ItemName.ArtifactOfGuilt=罪域魂物
+ItemTooltip.ArtifactOfGuilt=你受到伤害时会进行充能\n充能值达到250后会召唤一只“逝落之眼”并重置充能\n当逝落之眼存在时，你的主要攻击伤害和移动速度增加
+
 ItemName.FAnubisBag=宝藏袋
 
 ItemName.FAnubisTrophy=逝落断罪师纪念章
+
+ItemName.ForsakenStaff=逝落之杖
+ItemTooltip.ForsakenStaff=发射两枚跟踪会在爆炸后分裂出碎片的逝落能量弹
+
+ItemName.HorusCane=荷鲁斯藤杖
+ItemTooltip.HorusCane=召唤荷鲁斯之眼哨兵
+
+ItemName.Lifeline=命脉弓
+ItemTooltip.Lifeline=一次性发射3支木乃伊箭\n有两支初始箭射中目标会发射“逝落之矢”\n逝落之矢会降低敌人的碰撞伤害
+
+ItemName.Soulsplitter=灵魂劈裂者
+ItemTooltip.Soulsplitter=挥动时发射3束穿墙回旋幻影刃
+
+ItemName.Verdict=最终审判
+ItemTooltip.Verdict=击中敌人时释放附魔沙雨\n同时产生2个逝落幻影刃在水平方向攻击敌人
 
 
 //AAMod.Items.Boss.Athena
@@ -2809,7 +2827,7 @@ ItemName.InvokerBookEX=法之圣典
 ItemTooltip.InvokerBookEX=“大兽”阿莱斯特的传世之书\n增加30%召唤伤害\n增加2召唤上限\n获得所有材料的效果
 
 Common.InvokerBookEX1=你现在掌控了召唤师的真正力量了\n你手持阿莱斯特之杖时, 死亡敌人的灵魂会治愈你\n你可以释放敌人的伤害性灵魂
-Common.InvokerBookEX2="\n阿莱斯特的笔记: \n我需要更多强大的灵魂, 神龙, 巨兔, 奇怪的机械, 更多的, 更多的灵魂! 打败它们!"
+Common.InvokerBookEX2=\n阿莱斯特的笔记: \n"我需要更多强大的灵魂, 神龙, 巨兔, 奇怪的机械, 更多的, 更多的灵魂! 打败它们!"
 Common.InvokerBookEX3="\n左键使用这本书. 召唤出召唤兽卡利古拉."
 
 ItemName.InvokerStaff=阿莱斯特之杖
@@ -4509,6 +4527,8 @@ ItemName.BroodmotherMask=育母炎龙面具
 ItemName.DaybringerMask=启明虫面具
 
 ItemName.DjinnMask=沙漠巨灵面具
+
+ItemName.FAnubisMask=断罪师面具
 
 ItemName.FungusMask=真菌帝面具
 
