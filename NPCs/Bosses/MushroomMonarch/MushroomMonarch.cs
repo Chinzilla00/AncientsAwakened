@@ -148,7 +148,12 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 npc.spriteDirection = 1;
             }
 
-            if (((player.Center.Y - npc.Center.Y) < -150f && (internalAI[1] == AISTATE_WALK || internalAI[1] == AISTATE_CHARGE))|| Collision.SolidCollision(npc.Center - new Vector2(0,npc.height/2 + 20), npc.width, npc.height))
+            if (npc.velocity.X == 0)
+            {
+                internalAI[1] = AISTATE_JUMP;
+                
+            }
+            else if (((player.Center.Y - npc.Center.Y) < -150f && (internalAI[1] == AISTATE_WALK || internalAI[1] == AISTATE_CHARGE)) || Collision.SolidCollision(new Vector2(npc.Center.X, npc.position.Y - npc.height/2 + 10), npc.width, npc.height))
             {
                 internalAI[1] = AISTATE_FLY;
                 npc.ai = new float[4];
@@ -216,22 +221,41 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                     }
                     internalAI[2] = 0;
                 }
-                AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, 0, 0.07f, 3f, 3, 4, 60, true, 10, 60, true, null, false);				
+                AAAI.InfernoFighterAI(npc, ref npc.ai, true, false, 0, 0.07f, 3f, 3, 4, 60, true, 10, 60, true, null, false);	
 			}else
 			if(internalAI[1] == AISTATE_JUMP)//jumper
 			{
                 npc.noGravity = false;
                 npc.noTileCollide = false;
-				if(npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
-                BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -8f, 6f, -10f);				
+                if(npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
+                BaseAI.AISlime(npc, ref npc.ai, true, 30, 6f, -8f, 6f, -10f);
+								
 			}
             else if (internalAI[1] == AISTATE_FLY)//fly
             {
                 npc.noTileCollide = true;
                 npc.noGravity = true;
-                BaseAI.AISpaceOctopus(npc, ref npc.ai, .05f, 8, 250, 0, null);
+                if((player.Center.Y - npc.Center.Y) > 60f)
+                {  
+                    if (NPC.CountNPCS(ModContent.NPCType<RedMushling>()) < 6)
+                    {
+                        for (int i = 0; i < 2; i++)
+                        {
+                            int Minion = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<RedMushling>(), 0);
+                            Main.npc[Minion].netUpdate = true;
+                        }
+                    }
+                    MoveToPoint(player.Center);
+                    
+                }
+                else
+                {
+                    BaseAI.AISpaceOctopus(npc, ref npc.ai, .05f, 8, 250, 0, null);
+                }
+                
+                
                 npc.rotation = 0;
-                if ((player.Center.Y - npc.Center.Y) > 30f && !Collision.SolidCollision(npc.Center - new Vector2(0,npc.height/2 + 20), npc.width, npc.height))
+                if ((player.Center.Y - npc.Center.Y) > 30f && !Collision.SolidCollision(new Vector2(npc.Center.X, npc.position.Y - npc.height/2 + 10), npc.width, npc.height))
                 {
                     npc.rotation = 0;
                     npc.noGravity = false;
@@ -248,6 +272,36 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 			}
         }
         
+        public void MoveToPoint(Vector2 point)
+        {
+            float moveSpeed = 8f;
+            if (Vector2.Distance(npc.Center, point) > 500)
+            {
+                moveSpeed = 12f;
+            }
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
+        }
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = ItemID.LesserHealingPotion;
