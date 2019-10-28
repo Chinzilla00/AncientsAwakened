@@ -155,6 +155,12 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 npc.ai = new float[4];
                 npc.netUpdate = true;
             }
+            else if (((player.Center.Y - npc.Center.Y) < -150f && (internalAI[1] == AISTATE_WALK || internalAI[1] == AISTATE_CHARGE))|| Collision.SolidCollision(npc.Center - new Vector2(0,npc.height/2), npc.width, npc.height))
+            {
+                internalAI[1] = AISTATE_FLY;
+                npc.ai = new float[4];
+                npc.netUpdate = true;
+            }
             else if(internalAI[1] != AISTATE_WALK)
             {
                 internalAI[3] = internalAI[1];
@@ -164,13 +170,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 internalAI[1] = internalAI[3];
             }
 
-            if ((player.Center.Y - npc.Center.Y) < -150f && (internalAI[1] == AISTATE_WALK || internalAI[1] == AISTATE_CHARGE))
-            {
-                internalAI[1] = AISTATE_FLY;
-                npc.ai = new float[4];
-                npc.netUpdate = true;
-            }
-
+            
 			if(Main.netMode != 1)
 			{
                 if (!Main.dayTime)
