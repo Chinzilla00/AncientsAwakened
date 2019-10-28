@@ -148,16 +148,16 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 npc.spriteDirection = 1;
             }
 
-            if ((player.Center.Y - npc.Center.Y) > 100f && internalAI[1] != AISTATE_FLY) // player is below the npc.
+            if (((player.Center.Y - npc.Center.Y) < -150f && (internalAI[1] == AISTATE_WALK || internalAI[1] == AISTATE_CHARGE))|| Collision.SolidCollision(npc.Center - new Vector2(0,npc.height/2 + 20), npc.width, npc.height))
             {
-                internalAI[3] = internalAI[1]; //record the action
-                internalAI[1] = AISTATE_WALK;
+                internalAI[1] = AISTATE_FLY;
                 npc.ai = new float[4];
                 npc.netUpdate = true;
             }
-            else if (((player.Center.Y - npc.Center.Y) < -150f && (internalAI[1] == AISTATE_WALK || internalAI[1] == AISTATE_CHARGE))|| Collision.SolidCollision(npc.Center - new Vector2(0,npc.height/2), npc.width, npc.height))
+            else if ((player.Center.Y - npc.Center.Y) > 100f && internalAI[1] != AISTATE_FLY) // player is below the npc.
             {
-                internalAI[1] = AISTATE_FLY;
+                internalAI[3] = internalAI[1]; //record the action
+                internalAI[1] = AISTATE_WALK;
                 npc.ai = new float[4];
                 npc.netUpdate = true;
             }
@@ -231,7 +231,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 npc.noGravity = true;
                 BaseAI.AISpaceOctopus(npc, ref npc.ai, .05f, 8, 250, 0, null);
                 npc.rotation = 0;
-                if ((player.Center.Y - npc.Center.Y) > 30f)
+                if ((player.Center.Y - npc.Center.Y) > 30f && !Collision.SolidCollision(npc.Center - new Vector2(0,npc.height/2 + 20), npc.width, npc.height))
                 {
                     npc.rotation = 0;
                     npc.noGravity = false;
