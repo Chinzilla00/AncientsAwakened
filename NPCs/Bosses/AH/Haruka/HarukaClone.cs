@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.height = 60;
             npc.friendly = false;
             npc.dontTakeDamage = true;
-            npc.damage = 120;
+            npc.damage = 200;
             npc.defense = 9999;
             npc.lifeMax = 150000;
             npc.HitSound = SoundID.NPCHit1;
@@ -36,6 +36,12 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.lavaImmune = true;
             npc.netAlways = true;
             npc.noGravity = true;
+        }
+
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
+        {
+            npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
+            npc.damage = (int)(npc.damage * 0.9f);
         }
 
 

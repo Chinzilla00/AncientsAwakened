@@ -58,7 +58,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.direction = npc.spriteDirection = npc.position.X < player.position.X ? 1 : -1;
             RingEffects();
 
-            npc.damage = (Main.expertMode? 180 : 150) * VortexDamage();
+            npc.damage = npc.defDamage * VortexDamage();
 
             Vector2 targetPos;
 
@@ -690,7 +690,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
 
-            if(scale2 >= 1f)
+            if(scale >= 1f || scale2 >= 1f)
             {
                 npc.dontTakeDamage = true;
             }

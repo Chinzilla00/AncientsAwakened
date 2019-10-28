@@ -725,18 +725,18 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
-                npc.damage = 150;
+                npc.damage = 180;
                 npc.defense = 300;
             }
             else if (internalAI[0] == AISTATE_Shadowkilling) //Melee Damage/Speed boost
             {
-                npc.damage = 90;
+                npc.damage = 200;
                 npc.defense = 9999;
             }
             else //Reset Stats
             {
                 npc.defense = npc.defDefense;
-                npc.damage = 60;
+                npc.damage = 80;
             }
 
 

@@ -719,7 +719,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             else if (internalAI[0] == AISTATE_Shadowkilling) //Melee Damage/Speed boost
             {
-                npc.damage = 120;
+                npc.damage = 200;
                 npc.defense = 9999;
             }
             else //Reset Stats
