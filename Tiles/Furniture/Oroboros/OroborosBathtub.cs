@@ -22,8 +22,8 @@ namespace AAMod.Tiles.Furniture.Oroboros
 			AddMapEntry(new Color(70, 0, 10), name);
 			dustType = mod.DustType("DoomDust");
 			disableSmartCursor = true;
-			adjTiles = new int[]{ TileID.Bathtubs };
-			bed = true;
+            TileID.Sets.HasOutlines[Type] = false;
+            adjTiles = new int[]{ TileID.Bathtubs };
 		}
 
 		public override bool HasSmartInteract()
@@ -49,7 +49,7 @@ namespace AAMod.Tiles.Furniture.Oroboros
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/OroborosBathtub_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.Red, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            Main.spriteBatch.Draw(mod.GetTexture("Tiles/Furniture/Oroboros/OroborosBathtub_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), AAColor.Glow, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
         }
 	}
 }

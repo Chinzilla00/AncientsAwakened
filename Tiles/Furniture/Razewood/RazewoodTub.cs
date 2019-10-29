@@ -18,7 +18,6 @@ namespace AAMod.Tiles.Furniture.Razewood
 			name.SetDefault("Razewood Bathtub");
             AddMapEntry(new Color(205, 62, 12), name);
             dustType = mod.DustType("RazewoodDust");
-			
 		}
 
 		

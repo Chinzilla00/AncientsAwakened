@@ -22,7 +22,7 @@ namespace AAMod.Items.Blocks.RazewoodF
             item.useStyle = 1;
             item.consumable = true;
             item.value = 250;
-            item.createTile = mod.TileType("RazewoodBookcase");
+            item.createTile = mod.TileType("RazewoodBookshelf");
         }
         public override void AddRecipes()
         {

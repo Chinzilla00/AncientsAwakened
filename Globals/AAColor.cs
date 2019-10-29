@@ -25,10 +25,6 @@ namespace AAMod
 
         public static Color Glow => BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, Color.White, Color.Transparent, Color.Transparent, Color.White);
 
-        public static Color Heartstone => BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, Color.HotPink, Color.Transparent, Color.Transparent, Color.HotPink);
-
-        public static Color Starcrystal => BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, Color.DeepSkyBlue, Color.Transparent, Color.Transparent, Color.DeepSkyBlue);
-
         public static Color Flash => BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, Color.Transparent, Color.White, Color.Transparent, Color.White, Color.Transparent, Color.Transparent, Color.Transparent);
 
         public static Color Akuma => new Color(146, 37, 30);

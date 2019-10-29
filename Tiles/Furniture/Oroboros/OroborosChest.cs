@@ -1,5 +1,7 @@
 using System;
+using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.Enums;
@@ -196,6 +198,21 @@ namespace AAMod.Tiles.Furniture.Oroboros
                 player.showItemIcon = false;
                 player.showItemIcon2 = 0;
             }
+        }
+
+
+        public Color White(Color color)
+        {
+            return Color.White;
+        }
+
+        public override void PostDraw(int x, int y, SpriteBatch sb)
+        {
+            Tile tile = Main.tile[x, y];
+            Texture2D glowTex = mod.GetTexture("Tiles/Furniture/Oroboros/OroborosChest_Glow");
+            int frameX = tile != null && tile.active() ? tile.frameX + (Main.tileFrame[Type] * 38) : 0;
+
+            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, tile.frameY, false, false, false, null, White);
         }
     }
 }
