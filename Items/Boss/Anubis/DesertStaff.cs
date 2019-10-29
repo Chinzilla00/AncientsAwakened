@@ -14,14 +14,14 @@ namespace AAMod.Items.Boss.Anubis
 
 		public override void SetDefaults()
 		{
-			item.damage = 100;
+			item.damage = 60;
 			item.magic = true;
 			item.mana = 10;
 			item.width = 76;
 			item.height = 76;
-			item.useTime = 15;
-			item.useAnimation = 15;
-			item.useStyle = 1;
+			item.useTime = 25;
+			item.useAnimation = 25;
+			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 5;
 			item.value = 10000;

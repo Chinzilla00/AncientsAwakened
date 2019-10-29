@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.aiStyle = -1;
             npc.damage = 35;
             npc.defense = 40;
-            npc.lifeMax = 50000;
+            npc.lifeMax = 29500;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
             npc.knockBackResist = 0f;

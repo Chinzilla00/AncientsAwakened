@@ -25,7 +25,7 @@ namespace AAMod.Items.Accessories.Wings
 		
 		public override void UpdateAccessory(Player player, bool hideVisual)
 		{
-			player.wingTimeMax = 220;
+			player.wingTimeMax = 250;
 		}
 
 		public override void VerticalWingSpeeds(Player player, ref float ascentWhenFalling, ref float ascentWhenRising,

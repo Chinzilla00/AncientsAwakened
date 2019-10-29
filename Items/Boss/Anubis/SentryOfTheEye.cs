@@ -17,7 +17,7 @@ namespace AAMod.Items.Boss.Anubis
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("TheEye");
-            item.damage = 150;
+            item.damage = 65;
             item.width = 50;
             item.height = 50;
             item.UseSound = SoundID.Item44;

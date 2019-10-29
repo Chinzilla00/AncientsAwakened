@@ -10,14 +10,14 @@ namespace AAMod.Items.Boss.Anubis
 
         public override void SetDefaults()
         {
-            item.damage = 60;
+            item.damage = 35;
             item.noMelee = true;
             item.ranged = true;
             item.width = 42;
             item.height = 60;
 
-            item.useTime = 10;
-            item.useAnimation = 10;
+            item.useTime = 25;
+            item.useAnimation = 25;
             item.useStyle = 5;
             item.shoot = 10;
             item.useAmmo = AmmoID.Arrow;
