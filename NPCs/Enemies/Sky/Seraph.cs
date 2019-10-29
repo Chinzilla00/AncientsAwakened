@@ -57,7 +57,7 @@ namespace AAMod.NPCs.Enemies.Sky
             {
                 FriendlyAI();
                 Rectangle rectangle = new Rectangle((int)Main.player[npc.target].position.X, (int)Main.player[npc.target].position.Y, Main.player[npc.target].width, Main.player[npc.target].height);
-                Rectangle rectangle2 = new Rectangle((int)npc.position.X - 100, (int)npc.position.Y - 100, npc.width + 200, npc.height + 200);
+                Rectangle rectangle2 = new Rectangle((int)npc.position.X - 100, (int)npc.position.Y - 100, npc.width + 600, npc.height + 600);
                 if (rectangle2.Intersects(rectangle) || npc.life < npc.lifeMax)
                 {
                     npc.TargetClosest(true);
