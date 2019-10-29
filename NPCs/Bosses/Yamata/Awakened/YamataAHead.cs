@@ -285,6 +285,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     npc.netUpdate = true;
                     goto case 0;
             }
+            
+            if (YamataA.TeleportMeBitch)
+            {
+                YamataA.TeleportMeBitch = false;
+                npc.Center = Body.npc.Center;
+                return;
+            }
         }
     }
 }

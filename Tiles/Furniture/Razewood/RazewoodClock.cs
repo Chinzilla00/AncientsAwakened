@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -33,7 +34,7 @@ namespace AAMod.Tiles.Furniture.Razewood
 
         public override bool NewRightClick(int x, int y)
         {
-            Main.NewText("Maybe making a clock out of burned wood wasn't such a good idea. It doesn't even work.", 205, 62, 12);
+            Main.NewText(Language.GetTextValue("Mods.AAMod.Common.RazewoodClockGetTime"), 205, 62, 12);
             return true;
         }
 
