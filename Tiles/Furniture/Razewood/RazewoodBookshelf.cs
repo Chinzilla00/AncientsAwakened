@@ -8,7 +8,7 @@ using Terraria.DataStructures;
 
 namespace AAMod.Tiles.Furniture.Razewood
 {
-    public class RazewoodBookcase : ModTile
+    public class RazewoodBookshelf : ModTile
 	{
 		public override void SetDefaults()
 		{

@@ -8,7 +8,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AAMod.Tiles.Furniture.BogwoodF
+namespace AAMod.Tiles.Furniture.Bogwood
 {
     public class BogwoodChest : ModTile
 	{

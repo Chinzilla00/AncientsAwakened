@@ -2,7 +2,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks.RazewoodF
 {
-    public class RazewoodBench : ModItem
+    public class RazewoodWorkbench : ModItem
     {
         public override void SetStaticDefaults()
         {
@@ -27,7 +27,6 @@ namespace AAMod.Items.Blocks.RazewoodF
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("Razewood"), 10);
-            //recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();
 

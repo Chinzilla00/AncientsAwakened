@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks.RazewoodF
 {
-    public class RazewoodBookcase : ModItem
+    public class RazewoodBookshelf : ModItem
     {
         public override void SetStaticDefaults()
         {

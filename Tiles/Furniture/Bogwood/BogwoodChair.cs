@@ -5,7 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace AAMod.Tiles.Furniture.BogwoodF
+namespace AAMod.Tiles.Furniture.Bogwood
 {
     public class BogwoodChair : ModTile
 	{
