@@ -390,6 +390,14 @@ namespace AAMod.NPCs.Bosses.Yamata
                         TeleportMe6 = true;
                         TeleportMeBitch = true;
                         npc.Center = tele;
+                        npc.dontTakeDamage = true;
+                        TrueHead.dontTakeDamage = true;
+                        Head2.dontTakeDamage = true;
+                        Head3.dontTakeDamage = true;
+                        Head4.dontTakeDamage = true;
+                        Head5.dontTakeDamage = true;
+                        Head6.dontTakeDamage = true;
+                        Head7.dontTakeDamage = true;
                     }
                 }
                 else
@@ -398,6 +406,14 @@ namespace AAMod.NPCs.Bosses.Yamata
                     SayTheLineYamata = 300;
                     if (npc.alpha <= 0)
                     {
+                        npc.dontTakeDamage = false;
+                        TrueHead.dontTakeDamage = false;
+                        Head2.dontTakeDamage = false;
+                        Head3.dontTakeDamage = false;
+                        Head4.dontTakeDamage = false;
+                        Head5.dontTakeDamage = false;
+                        Head6.dontTakeDamage = false;
+                        Head7.dontTakeDamage = false;
                         npc.alpha = 0;
                     }
                 }
