@@ -36,16 +36,26 @@ namespace AAMod.Tiles.Furniture.Oroboros
 		{
 			Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("OroborosLamp"));
 		}
+
+
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
-            Tile tile = Main.tile[i, j];
+            Color color = new Color(100, 100, 100, 0);
+            int frameX = Main.tile[i, j].frameX;
+            int frameY = Main.tile[i, j].frameY;
+            int width = 20;
+            int offsetY = -2;
+            int height = 20;
+            int offsetX = 2;
             Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
             if (Main.drawToScreen)
             {
                 zero = Vector2.Zero;
             }
-            int height = tile.frameY == 36 ? 18 : 16;
-            Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/OroborosLamp_Glow"), new Vector2((i * 16) - (int)Main.screenPosition.X, (j * 16) - (int)Main.screenPosition.Y) + zero, new Rectangle(tile.frameX, tile.frameY, 16, height), Color.Red, 0f, Vector2.Zero, 1f, SpriteEffects.None, 0f);
+            for (int k = 0; k < 7; k++)
+            {
+                Main.spriteBatch.Draw(mod.GetTexture("Tiles/Furniture/Oroboros/OroborosLamp_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X + offsetX - (width - 16f) / 2f, j * 16 - (int)Main.screenPosition.Y + offsetY) + zero, new Rectangle(frameX, frameY, width, height), color, 0f, default, 1f, SpriteEffects.None, 0f);
+            }
         }
     }
 }

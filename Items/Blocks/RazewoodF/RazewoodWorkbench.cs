@@ -21,7 +21,7 @@ namespace AAMod.Items.Blocks.RazewoodF
             item.useStyle = 1;
             item.consumable = true;
             item.value = 250;
-            item.createTile = mod.TileType("RazewoodBench");
+            item.createTile = mod.TileType("RazewoodWorkbench");
         }
         public override void AddRecipes()
         {
