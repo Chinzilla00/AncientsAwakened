@@ -81,8 +81,8 @@ namespace AAMod.NPCs.Bosses.Yamata
             else
             {
                 projectile.ai[0] += 1f;
-                projectile.width += 5;
-                projectile.height += 5;
+                projectile.width += 6;
+                projectile.height += 6;
             }
             projectile.rotation += 0.3f * projectile.direction;
         }

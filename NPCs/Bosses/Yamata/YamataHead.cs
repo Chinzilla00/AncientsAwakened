@@ -282,13 +282,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 Yamata.TeleportMeBitch = false;
                 npc.Center = yamata.npc.Center;
-                for (int i = 0; i < 5; ++i)
-                {
-                    if (Main.netMode != 1)
-                    {
-                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 2f, PlayerPosY * 2f, mod.ProjectileType("YamataBreath"), projDamage, 0f, Main.myPlayer);
-                    }
-                }
                 return;
             }
         }
