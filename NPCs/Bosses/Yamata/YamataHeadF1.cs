@@ -151,36 +151,78 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 Body.TeleportMe1 = false;
                 npc.Center = Body.npc.Center;
+                for (int i = 0; i < 5; ++i)
+                {
+                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
+                    Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
+                    dir *= 5f;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), Main.expertMode ? npc.damage / 4 : npc.damage / 2, 0f, Main.myPlayer);
+                }
                 return;
             }
             if (Body.TeleportMe2)
             {
                 Body.TeleportMe2 = false;
                 npc.Center = Body.npc.Center;
+                for (int i = 0; i < 5; ++i)
+                {
+                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
+                    Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
+                    dir *= 5f;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), Main.expertMode ? npc.damage / 4 : npc.damage / 2, 0f, Main.myPlayer);
+                }
                 return;
             }
             if (Body.TeleportMe3)
             {
                 Body.TeleportMe3 = false;
                 npc.Center = Body.npc.Center;
+                for (int i = 0; i < 5; ++i)
+                {
+                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
+                    Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
+                    dir *= 5f;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), Main.expertMode ? npc.damage / 4 : npc.damage / 2, 0f, Main.myPlayer);
+                }
                 return;
             }
             if (Body.TeleportMe4)
             {
                 Body.TeleportMe4 = false;
                 npc.Center = Body.npc.Center;
+                for (int i = 0; i < 5; ++i)
+                {
+                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
+                    Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
+                    dir *= 5f;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), Main.expertMode ? npc.damage / 4 : npc.damage / 2, 0f, Main.myPlayer);
+                }
                 return;
             }
             if (Body.TeleportMe5)
             {
                 Body.TeleportMe5 = false;
                 npc.Center = Body.npc.Center;
+                for (int i = 0; i < 5; ++i)
+                {
+                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
+                    Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
+                    dir *= 5f;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), Main.expertMode ? npc.damage / 4 : npc.damage / 2, 0f, Main.myPlayer);
+                }
                 return;
             }
             if (Body.TeleportMe6)
             {
                 Body.TeleportMe6 = false;
                 npc.Center = Body.npc.Center;
+                for (int i = 0; i < 5; ++i)
+                {
+                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
+                    Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
+                    dir *= 5f;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, isAwakened ? mod.ProjectileType("YamataABreath") : mod.ProjectileType("YamataBreath"), Main.expertMode ? npc.damage / 4 : npc.damage / 2, 0f, Main.myPlayer);
+                }
                 return;
             }
 

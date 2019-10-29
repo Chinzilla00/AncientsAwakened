@@ -113,6 +113,44 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
             damage = 0;
+
+            if (!AAWorld.downedYamata)
+            {
+                if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
+                {
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata10"), new Color(45, 46, 70));
+                    threeQuarterHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
+                {
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata11"), new Color(45, 46, 70));
+                    HalfHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
+                {
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata12"), new Color(45, 46, 70));
+                    quarterHealth = true;
+                }
+            }
+            if (AAWorld.downedYamata)
+            {
+                if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
+                {
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata13"), new Color(45, 46, 70));
+                    threeQuarterHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
+                {
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata14"), new Color(45, 46, 70));
+                    HalfHealth = true;
+                }
+                if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
+                {
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata15"), new Color(45, 46, 70));
+                    quarterHealth = true;
+                }
+            }
+            
             return false;
         }
 
@@ -343,7 +381,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     if (npc.alpha >= 255)
                     {
                         npc.alpha = 255;
-                        Vector2 tele = new Vector2(playerTarget.Center.X, playerTarget.Center.Y);
+                        Vector2 tele = playerTarget.Center + new Vector2(0, -100) +  (playerTarget.velocity == new Vector2(0,0)? new Vector2(0,0) : Vector2.Normalize(playerTarget.velocity) * playerTarget.velocity.Length() * 54.33f);
                         TeleportMe1 = true;
                         TeleportMe2 = true;
                         TeleportMe3 = true;
@@ -352,6 +390,14 @@ namespace AAMod.NPCs.Bosses.Yamata
                         TeleportMe6 = true;
                         TeleportMeBitch = true;
                         npc.Center = tele;
+                        npc.dontTakeDamage = true;
+                        TrueHead.dontTakeDamage = true;
+                        Head2.dontTakeDamage = true;
+                        Head3.dontTakeDamage = true;
+                        Head4.dontTakeDamage = true;
+                        Head5.dontTakeDamage = true;
+                        Head6.dontTakeDamage = true;
+                        Head7.dontTakeDamage = true;
                     }
                 }
                 else
@@ -360,6 +406,14 @@ namespace AAMod.NPCs.Bosses.Yamata
                     SayTheLineYamata = 300;
                     if (npc.alpha <= 0)
                     {
+                        npc.dontTakeDamage = false;
+                        TrueHead.dontTakeDamage = false;
+                        Head2.dontTakeDamage = false;
+                        Head3.dontTakeDamage = false;
+                        Head4.dontTakeDamage = false;
+                        Head5.dontTakeDamage = false;
+                        Head6.dontTakeDamage = false;
+                        Head7.dontTakeDamage = false;
                         npc.alpha = 0;
                     }
                 }
@@ -643,48 +697,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY) + topVisualOffset, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, lightColor, false);
             
             DrawHead(sb, headTex, "Glowmasks/YamataHead_Glow", TrueHead, dColor, false);
-        }
-
-
-
-        public override void HitEffect(int hitDirection, double damage)
-        {
-            if (!AAWorld.downedYamata)
-            {
-                if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
-                {
-                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata10"), new Color(45, 46, 70));
-                    threeQuarterHealth = true;
-                }
-                if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
-                {
-                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata11"), new Color(45, 46, 70));
-                    HalfHealth = true;
-                }
-                if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
-                {
-                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata12"), new Color(45, 46, 70));
-                    quarterHealth = true;
-                }
-            }
-            if (AAWorld.downedYamata)
-            {
-                if (npc.life <= (npc.lifeMax / 4 * 3) && threeQuarterHealth == false)
-                {
-                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata13"), new Color(45, 46, 70));
-                    threeQuarterHealth = true;
-                }
-                if (npc.life <= npc.lifeMax / 2 && HalfHealth == false)
-                {
-                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata14"), new Color(45, 46, 70));
-                    HalfHealth = true;
-                }
-                if (npc.life <= npc.lifeMax / 4 && quarterHealth == false)
-                {
-                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Yamata15"), new Color(45, 46, 70));
-                    quarterHealth = true;
-                }
-            }
         }
     }
 

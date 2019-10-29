@@ -1662,6 +1662,46 @@ ItemTooltip.ShenABox=播放 'Blaze of Glory' by Charlie Debnam
 ItemName.SABox=八音盒(不屈远古)
 ItemTooltip.SABox=播放 'Dark Matter 02' from Pokemon Super Mystery Dungeon
 
+// AAMod.Items.Blocks.RazewoodF
+
+ItemName.RazewoodBed=燎火木床
+
+ItemName.RazewoodBookshelf=燎火木书架
+
+ItemName.RazewoodCandelabra=燎火木烛台
+
+ItemName.RazewoodCandle=燎火木烛台
+
+ItemName.RazewoodCandle=燎火木蜡烛
+
+ItemName.RazewoodChair=燎火木椅
+
+ItemName.RazewoodChandelier=燎火木吊灯
+
+ItemName.RazewoodChest=燎火木宝箱
+
+ItemName.RazewoodClock=燎火木钟
+
+ItemName.RazewoodCouch=燎火木沙发
+
+ItemName.RazewoodDoor=燎火木门
+
+ItemName.RazewoodDresser=燎火木梳妆台
+
+ItemName.RazewoodLamp=燎火木灯
+
+ItemName.RazewoodLantern=燎火木灯笼
+
+ItemName.RazewoodPiano=燎火木钢琴
+
+ItemName.RazewoodSink=燎火木水池
+
+ItemName.RazewoodTable=燎火木桌
+
+ItemName.RazewoodTub=燎火木浴缸
+
+ItemName.RazewoodWorkbench=燎火木工作台
+
 
 // AAMod.Items.Blocks.Statues
 
@@ -5430,6 +5470,49 @@ MapObject.BogwoodChair=污泽木椅
 MapObject.BogwoodChest=污泽木宝箱
 
 MapObject.BogwoodDoorOpen=污泽木门
+
+// AAMod.Tiles.RazewoodF
+
+
+MapObject.RazewoodBed=燎火木床
+
+MapObject.RazewoodBookshelf=燎火木书架
+
+MapObject.RazewoodCandelabra=燎火木烛台
+
+MapObject.RazewoodCandle=燎火木烛台
+
+MapObject.RazewoodCandle=燎火木蜡烛
+
+MapObject.RazewoodChair=燎火木椅
+
+MapObject.RazewoodChandelier=燎火木吊灯
+
+MapObject.RazewoodChest=燎火木宝箱
+
+MapObject.RazewoodClock=燎火木钟
+
+Common.RazewoodClockGetTime=用烧焦的木头做一个钟可不是好主意. 这玩意根本不工作.
+
+MapObject.RazewoodCouch=燎火木沙发
+
+MapObject.RazewoodDoor=燎火木门
+
+MapObject.RazewoodDresser=燎火木梳妆台
+
+MapObject.RazewoodLamp=燎火木灯
+
+MapObject.RazewoodLantern=燎火木灯笼
+
+MapObject.RazewoodPiano=燎火木钢琴
+
+MapObject.RazewoodSink=燎火木水池
+
+MapObject.RazewoodTable=燎火木桌
+
+MapObject.RazewoodTub=燎火木浴缸
+
+MapObject.RazewoodWorkbench=燎火木工作台
 
 
 // AAMod.Tiles.Crates

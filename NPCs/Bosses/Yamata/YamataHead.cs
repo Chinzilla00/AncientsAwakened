@@ -26,8 +26,8 @@ namespace AAMod.NPCs.Bosses.Yamata
 			npc.lifeMax = 550000;
             npc.damage = 150;
             npc.defense = 100;
-            npc.width = 120;
-            npc.height = 128;
+            npc.width = 78;
+            npc.height = 60;
             npc.npcSlots = 0;
             npc.noTileCollide = true;
             npc.noGravity = true;
@@ -144,13 +144,6 @@ namespace AAMod.NPCs.Bosses.Yamata
 			npc.timeLeft = 100;
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
-		
-            if (Yamata.TeleportMeBitch)
-            {
-                Yamata.TeleportMeBitch = false;
-                npc.Center = yamata.npc.Center;
-                return;
-            }
             
             npc.alpha = Body.alpha;
             if (npc.alpha > 0)
@@ -284,6 +277,20 @@ namespace AAMod.NPCs.Bosses.Yamata
             npc.velocity = moveTo * moveSpeedBoost;
             npc.rotation = 0;
             npc.position += Body.position - Body.oldPosition;
+
+            if (Yamata.TeleportMeBitch)
+            {
+                Yamata.TeleportMeBitch = false;
+                npc.Center = yamata.npc.Center;
+                for (int i = 0; i < 5; ++i)
+                {
+                    if (Main.netMode != 1)
+                    {
+                        Projectile.NewProjectile(PlayerDistance.X, PlayerDistance.Y, PlayerPosX * 2f, PlayerPosY * 2f, mod.ProjectileType("YamataBreath"), projDamage, 0f, Main.myPlayer);
+                    }
+                }
+                return;
+            }
         }
 
 

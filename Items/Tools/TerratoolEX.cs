@@ -40,22 +40,29 @@ Terratool EX");
 
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse == 2 && Main.mouseRight && Main.mouseRightRelease)
             {
+                item.autoReuse = false;
                 item.noUseGraphic = true;
                 AAMod.instance.TerratoolEXState.ToggleUI(AAMod.instance.TerratoolInterface);
                 item.pick = 0;
                 item.axe = 0;
                 item.hammer = 0;
                 item.damage = 0;
+                return false;
             }
-            else
+            else if(player.altFunctionUse != 2)
             {
+                item.autoReuse = true;
                 item.noUseGraphic = false;
                 item.pick = UI.TerratoolEXUI.Pick;
                 item.axe = UI.TerratoolEXUI.Axe;
                 item.hammer = UI.TerratoolEXUI.Hammer;
                 item.damage = 120;
+            }
+            else
+            {
+                return false;
             }
             return true;
         }

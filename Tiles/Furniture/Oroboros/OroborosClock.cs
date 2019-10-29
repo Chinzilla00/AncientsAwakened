@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
@@ -80,7 +81,7 @@ namespace AAMod.Tiles.Furniture.Oroboros
 					intTime = 12;
 				}
 				//Whack it all together to get a HH:MM format
-				var newText = string.Concat("Time: ", intTime, ":", text2, " ", text);
+				var newText = string.Concat(Language.GetTextValue("CLI.Time"), intTime, ":", text2, " ", text);
 				if (Main.netMode != 1) BaseMod.BaseUtility.Chat(newText, 255, 240, 20);
 			}
 		}

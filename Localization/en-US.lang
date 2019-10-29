@@ -41,6 +41,10 @@ Common.MonsterSouls=Monster Souls
 Common.PirateBooty=Pirate Booty
 Common.PirateBootys=Pirate Booties
 
+//AAMod.Tiles.RazewoodF
+
+Common.RazewoodClockGetTime=Maybe making a clock out of burned wood wasn't such a good idea. It doesn't even work.
+
 //lockedchest
 
 Common.InfernoChest_Locked=Locked Inferno Chest

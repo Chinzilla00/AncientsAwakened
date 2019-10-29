@@ -19,8 +19,8 @@ namespace AAMod.Items.Boss.Anubis
 			item.ranged = true;
 			item.width = 80;
 			item.height = 38;
-			item.useTime = 5;
-			item.useAnimation = 10;
+			item.useTime = 3;
+			item.useAnimation = 5;
 			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 4f;
