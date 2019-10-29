@@ -687,7 +687,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         }
                         if(strikebackproj != 0)
                         {
-                            startAngle -= .1d * (int)(strikebackproj/2);
+                            startAngle -= .1d * (strikebackproj / 2);
                             deltaAngle = spread / 3f;
                             for (int i = 0; i < strikebackproj; i++)
                             {

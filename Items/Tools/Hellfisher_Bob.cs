@@ -25,7 +25,7 @@ namespace AAMod.Items.Tools
 				num2 += Main.player[projectile.owner].gfxOffY;
 				int type = Main.player[projectile.owner].inventory[Main.player[projectile.owner].selectedItem].type;
 				float gravDir = Main.player[projectile.owner].gravDir;
-				num += (float)(43 * Main.player[projectile.owner].direction);
+				num += 43 * Main.player[projectile.owner].direction;
 				if (Main.player[projectile.owner].direction < 0)
 				{
 					num -= 13f;
@@ -37,10 +37,10 @@ namespace AAMod.Items.Tools
 				}
 				Vector2 value = new Vector2(num, num2);
 				value = Main.player[projectile.owner].RotatedRelativePoint(value + new Vector2(8f), true) - new Vector2(8f);
-				float num3 = projectile.position.X + (float)projectile.width * 0.5f - value.X;
-				float num4 = projectile.position.Y + (float)projectile.height * 0.5f - value.Y;
-				Math.Sqrt((double)(num3 * num3 + num4 * num4));
-				float rotation = (float)Math.Atan2((double)num4, (double)num3) - 1.57f;
+				float num3 = projectile.position.X + projectile.width * 0.5f - value.X;
+				float num4 = projectile.position.Y + projectile.height * 0.5f - value.Y;
+				Math.Sqrt(num3 * num3 + num4 * num4);
+				float rotation = (float)Math.Atan2(num4, num3) - 1.57f;
 				bool flag = true;
 				if (num3 == 0f && num4 == 0f)
 				{
@@ -48,19 +48,19 @@ namespace AAMod.Items.Tools
 				}
 				else
 				{
-					float num5 = (float)Math.Sqrt((double)(num3 * num3 + num4 * num4));
+					float num5 = (float)Math.Sqrt(num3 * num3 + num4 * num4);
 					num5 = 12f / num5;
 					num3 *= num5;
 					num4 *= num5;
 					value.X -= num3;
 					value.Y -= num4;
-					num3 = projectile.position.X + (float)projectile.width * 0.5f - value.X;
-					num4 = projectile.position.Y + (float)projectile.height * 0.5f - value.Y;
+					num3 = projectile.position.X + projectile.width * 0.5f - value.X;
+					num4 = projectile.position.Y + projectile.height * 0.5f - value.Y;
 				}
 				while (flag)
 				{
 					float num6 = 12f;
-					float num7 = (float)Math.Sqrt((double)(num3 * num3 + num4 * num4));
+					float num7 = (float)Math.Sqrt(num3 * num3 + num4 * num4);
 					float num8 = num7;
 					if (float.IsNaN(num7) || float.IsNaN(num8))
 					{
@@ -78,8 +78,8 @@ namespace AAMod.Items.Tools
 						num4 *= num7;
 						value.X += num3;
 						value.Y += num4;
-						num3 = projectile.position.X + (float)projectile.width * 0.5f - value.X;
-						num4 = projectile.position.Y + (float)projectile.height * 0.1f - value.Y;
+						num3 = projectile.position.X + projectile.width * 0.5f - value.X;
+						num4 = projectile.position.Y + projectile.height * 0.1f - value.Y;
 						if (num8 > 12f)
 						{
 							float num9 = 0.3f;
@@ -126,7 +126,7 @@ namespace AAMod.Items.Tools
 						}
 						rotation = (float)Math.Atan2(num4, num3) - 1.57f;
 						Color color = Lighting.GetColor((int)value.X / 16, (int)(value.Y / 16f), new Color(216, 81, 47, 100));
-						Main.spriteBatch.Draw(Main.fishingLineTexture, new Vector2(value.X - Main.screenPosition.X + (float)Main.fishingLineTexture.Width * 0.5f, value.Y - Main.screenPosition.Y + (float)Main.fishingLineTexture.Height * 0.5f), new Rectangle?(new Rectangle(0, 0, Main.fishingLineTexture.Width, (int)num6)), color, rotation, new Vector2((float)Main.fishingLineTexture.Width * 0.5f, 0f), 1f, SpriteEffects.None, 0f);
+						Main.spriteBatch.Draw(Main.fishingLineTexture, new Vector2(value.X - Main.screenPosition.X + Main.fishingLineTexture.Width * 0.5f, value.Y - Main.screenPosition.Y + Main.fishingLineTexture.Height * 0.5f), new Rectangle?(new Rectangle(0, 0, Main.fishingLineTexture.Width, (int)num6)), color, rotation, new Vector2(Main.fishingLineTexture.Width * 0.5f, 0f), 1f, SpriteEffects.None, 0f);
 					}
 				}
 			}

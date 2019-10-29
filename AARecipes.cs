@@ -157,6 +157,12 @@ namespace AAMod
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(ItemID.RodofDiscord);
             recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(ItemID.EmptyBucket, 1);
+            recipe.AddTile(ModContent.TileType<Tiles.Furniture.Razewood.RazewoodSink>());
+            recipe.SetResult(ItemID.LavaBucket);
+            recipe.AddRecipe();
             #endregion
         }
 

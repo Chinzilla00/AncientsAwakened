@@ -1,13 +1,13 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Blocks
+namespace AAMod.Items.Blocks.RazewoodF
 {
-    public class BogwoodChest : BaseAAItem
+    public class RazewoodChest : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Bogwood Chest");
+            DisplayName.SetDefault("Razewood Chest");
 		}
 
 		public override void SetDefaults()
@@ -23,7 +23,7 @@ namespace AAMod.Items.Blocks
             item.useStyle = 1;
 			item.consumable = true;
 			item.value = 500;
-			item.createTile = mod.TileType("BogwoodChest");
+			item.createTile = mod.TileType("RazewoodChest");
 		}
 
 		public override void AddRecipes()
@@ -31,7 +31,7 @@ namespace AAMod.Items.Blocks
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.IronBar, 2);
-                recipe.AddIngredient(null, "Bogwood", 12);
+                recipe.AddIngredient(null, "Razewood", 12);
                 recipe.AddTile(TileID.WorkBenches);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
@@ -39,7 +39,7 @@ namespace AAMod.Items.Blocks
             {
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(ItemID.LeadBar, 2);
-                recipe.AddIngredient(null, "Bogwood", 12);
+                recipe.AddIngredient(null, "Razewood", 12);
                 recipe.AddTile(TileID.WorkBenches);
                 recipe.SetResult(this);
                 recipe.AddRecipe();

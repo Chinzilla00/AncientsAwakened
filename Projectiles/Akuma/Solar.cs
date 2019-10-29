@@ -55,21 +55,21 @@ namespace AAMod.Projectiles.Akuma   //The directory for your .cs and .png; Examp
             {
                 if (Main.rand.Next(35) == 0)
                 {
-                    float num78 = (float)Main.mouseX + Main.screenPosition.X - projectile.Center.X;
-                    float num79 = (float)Main.mouseY + Main.screenPosition.Y - projectile.Center.Y;
+                    float num78 = Main.mouseX + Main.screenPosition.X - projectile.Center.X;
+                    float num79 = Main.mouseY + Main.screenPosition.Y - projectile.Center.Y;
                     Vector2 value2 = new Vector2(num78, num79);
                     value2.Normalize();
-                    Vector2 value3 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+                    Vector2 value3 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
                     value3.Normalize();
                     value2 = value2 * 6f + value3;
                     value2.Normalize();
                     value2 *= 10f;
-                    float num91 = (float)Main.rand.Next(10, 50) * 0.001f;
+                    float num91 = Main.rand.Next(10, 50) * 0.001f;
                     if (Main.rand.Next(2) == 0)
                     {
                         num91 *= -1f;
                     }
-                    float num92 = (float)Main.rand.Next(10, 50) * 0.001f;
+                    float num92 = Main.rand.Next(10, 50) * 0.001f;
                     if (Main.rand.Next(2) == 0)
                     {
                         num92 *= -1f;

@@ -19,7 +19,7 @@ namespace AAMod.Projectiles.Serpent
             Main.PlaySound(SoundID.Item27, projectile.position);
             for (int i = 0; i < 4; i++)
             {
-                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.Ice, 0f, 0f, 100, default(Color), 1.5f);
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, DustID.Ice, 0f, 0f, 100, default, 1.5f);
                 Main.dust[dustIndex].velocity *= 1.9f;
             }
         }

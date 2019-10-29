@@ -52,9 +52,9 @@ namespace AAMod.Projectiles.Akuma
 			projectile.scale = 1f - projectile.localAI[0];
 			projectile.width = (int)(20f * projectile.scale);
 			projectile.height = projectile.width;
-			projectile.position.X = center10.X - (float)(projectile.width / 2);
-			projectile.position.Y = center10.Y - (float)(projectile.height / 2);
-			if ((double)projectile.localAI[0] < 0.1)
+			projectile.position.X = center10.X - projectile.width / 2;
+			projectile.position.Y = center10.Y - projectile.height / 2;
+			if (projectile.localAI[0] < 0.1)
 			{
 				projectile.localAI[0] += 0.01f;
 			}
@@ -78,7 +78,7 @@ namespace AAMod.Projectiles.Akuma
 			if (projectile.scale < 1f)
 			{
 				int num897 = 0;
-				while ((float)num897 < projectile.scale * 10f)
+				while (num897 < projectile.scale * 10f)
 				{
 					int num898 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaADust>(), projectile.velocity.X, projectile.velocity.Y, 100);
 					Main.dust[num898].position = (Main.dust[num898].position + projectile.Center) / 2f;

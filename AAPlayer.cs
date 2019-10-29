@@ -661,14 +661,14 @@ namespace AAMod
 			if (target.HasBuff(mod.BuffType("Forsaken")) && proj.type == mod.ProjectileType("EnchancedMummyArrow"))
             {
 				float num1 = 9f;
-				Vector2 vector2 = new Vector2(player.position.X + (float)player.width * 0.5f, player.position.Y + (float)player.height * 0.5f);
+				Vector2 vector2 = new Vector2(player.position.X + player.width * 0.5f, player.position.Y + player.height * 0.5f);
 				float f1 = target.Center.X - vector2.X;
 				float f2 = target.Center.Y - vector2.Y;
-				float num4 = (float)Math.Sqrt((double)f1 * (double)f1 + (double)f2 * (double)f2);
+				float num4 = (float)Math.Sqrt(f1 * (double)f1 + f2 * (double)f2);
 				float num5;
-				if (float.IsNaN(f1) && float.IsNaN(f2) || (double)f1 == 0.0 && (double)f2 == 0.0)
+				if (float.IsNaN(f1) && float.IsNaN(f2) || f1 == 0.0 && f2 == 0.0)
 				{
-					f1 = (float)player.direction;
+					f1 = player.direction;
 					f2 = 0.0f;
 					num5 = num1;
 				}
@@ -2502,7 +2502,7 @@ namespace AAMod
                 }
 
                 player.lifeRegenTime = 0;
-                player.lifeRegen -= (int)(40 * (player.statLife / player.statLifeMax2));
+                player.lifeRegen -= 40 * (player.statLife / player.statLifeMax2);
             }
 
 

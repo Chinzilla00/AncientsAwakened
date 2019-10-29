@@ -85,7 +85,7 @@ Every ten shots, it can shoot two extra bullets.
 					{
 						value9 -= vector7;
 					}
-					float keepspeed = (float)Math.Sqrt((double)(speedX * speedX + speedY * speedY));
+					float keepspeed = (float)Math.Sqrt(speedX * speedX + speedY * speedY);
 					int num121 = Projectile.NewProjectile(vector2.X + value9.X, vector2.Y + value9.Y, speedX, speedY, mod.ProjectileType("OmegaVolleyExtraAmmo"), damage, knockBack, player.whoAmI, 0.0f, 0.0f);
 					Main.projectile[num121].noDropItem = true;
 				}
