@@ -144,7 +144,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             if (npc.ai[2] >= 400)
             {
-                npc.ai[2] = 0;
+                npc.ai[2] = 180; //attack much more aggressively
             }
 
             if (npc.life <= npc.lifeMax / 2 && !spawnAshe)
@@ -446,7 +446,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             else if (internalAI[1] == 2)
             {
-                int Fireballs = Main.expertMode ? 20 : 15;
+                //int Fireballs = Main.expertMode ? 20 : 15;
                 if (!QuoteSaid && sayQuote)
                 {
                     if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("AkumaA17") : Lang.BossChat("AkumaA18") , Color.DeepSkyBlue);
@@ -455,10 +455,17 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 }
                 if (npc.ai[2] == 330 || npc.ai[2] == 360 || npc.ai[2] == 390)
                 {
-                    for (int Loops = 0; Loops < Fireballs; Loops++)
+                    /*for (int Loops = 0; Loops < Fireballs; Loops++)
                     {
                         AkumaAttacks.Eruption(npc, mod);
-                    }
+                    }*/
+                    Main.NewText("spit fragball");
+                    Vector2 spawnPos = npc.Center;
+                    spawnPos.X += 250 * (npc.Center.X < player.Center.X ? 1 : -1);
+                    Vector2 vel = (player.Center - spawnPos) / 30;
+                    if (vel.Length() < 25)
+                        vel = Vector2.Normalize(vel) * 25;
+                    Projectile.NewProjectile(spawnPos, vel, ModContent.ProjectileType<AkumaAFireballFrag>(), npc.damage / 4, 0f, Main.myPlayer);
                 }
             }
             else if (internalAI[1] == 3)
@@ -470,6 +477,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                         AkumaAttacks.SpawnLung(player, mod, true);
                         MinionCount += 1;
                     }
+
+                    Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<AkumaALakitu>(), npc.damage / 4, 0f, Main.myPlayer, npc.target);
                 }
             }
             else if (internalAI[1] == 4)
@@ -480,9 +489,11 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     QuoteSaid = true;
                     Quote4 = true;
                 }
-                if (npc.ai[2] == 350)
+                if (npc.ai[2] == 310)
                 {
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, ModContent.ProjectileType<AFireProjHostile>(), damage, 3, Main.myPlayer);
+                    Main.NewText("fire deathray");
+                    Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity), ModContent.ProjectileType<AkumaADeathray>(), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
+                    //Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, ModContent.ProjectileType<AFireProjHostile>(), damage, 3, Main.myPlayer);
                 }
             }
             else
@@ -499,6 +510,22 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     {
                         NPC.NewNPC((int)(player.position.X + Main.rand.Next(700)), (int)(player.position.Y + Main.rand.Next(700)), ModContent.NPCType<SunA>());
                     }
+                }
+                if (npc.ai[2] % 20 == 0)
+                {
+                    Main.NewText("segment flames");
+                    bool fire = false;
+                    for (int i = 0; i < Main.maxNPCs; i++)
+                        if (Main.npc[i].active && Main.npc[i].realLife == npc.whoAmI)
+                        {
+                            fire = !fire;
+                            if (fire)
+                            {
+                                const float speed = 2f;
+                                Projectile.NewProjectile(Main.npc[i].Center, speed * Main.npc[i].velocity.RotatedBy(Math.PI / 2), ModContent.ProjectileType<AkumaABreath>(), Main.npc[i].damage / 4, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(Main.npc[i].Center, -speed * Main.npc[i].velocity.RotatedBy(Math.PI / 2), ModContent.ProjectileType<AkumaABreath>(), Main.npc[i].damage / 4, 0f, Main.myPlayer);
+                            }
+                        }
                 }
             }
         }
