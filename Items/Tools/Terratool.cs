@@ -39,22 +39,29 @@ You may only have a maximum of 2 tool types active");
 
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse == 2 && Main.mouseRight && Main.mouseRightRelease)
             {
+                item.autoReuse = false;
                 item.noUseGraphic = true;
                 AAMod.instance.TerratoolTState.ToggleUI(AAMod.instance.TerratoolInterface);
                 item.pick = 0;
                 item.axe = 0;
                 item.hammer = 0;
                 item.damage = 0;
+                return false;
             }
-            else
+            else if(player.altFunctionUse != 2)
             {
+                item.autoReuse = true;
                 item.noUseGraphic = false;
                 item.pick = UI.TerratoolTUI.Pick;
                 item.axe = UI.TerratoolTUI.Axe;
                 item.hammer = UI.TerratoolTUI.Hammer;
                 item.damage = 60;
+            }
+            else
+            {
+                return false;
             }
             return true;
         }
