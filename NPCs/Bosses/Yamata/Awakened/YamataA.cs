@@ -412,7 +412,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     if (npc.alpha >= 255)
                     {
                         npc.alpha = 255;
-                        Vector2 tele = new Vector2(playerTarget.Center.X, playerTarget.Center.Y);
+                        Vector2 tele = playerTarget.Center + new Vector2(0, -100) +  (playerTarget.velocity == new Vector2(0,0)? new Vector2(0,0) : Vector2.Normalize(playerTarget.velocity) * playerTarget.velocity.Length() * 54.33f);
                         TeleportMe1 = true;
                         TeleportMe2 = true;
                         TeleportMe3 = true;

@@ -9,8 +9,8 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override string Texture => "AAMod/BlankTex";
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 20;
+            projectile.height = 20;
             projectile.friendly = false;
             projectile.hostile = true;
             projectile.ignoreWater = true;

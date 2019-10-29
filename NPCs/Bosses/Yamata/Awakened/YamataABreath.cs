@@ -87,6 +87,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             else
             {
                 projectile.ai[0] += 1f;
+                projectile.width += 5;
+                projectile.height += 5;
             }
             projectile.rotation += 0.3f * projectile.direction;
         }
