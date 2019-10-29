@@ -1,7 +1,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Blocks.Razewood
+namespace AAMod.Items.Blocks.RazewoodF
 {
     public class RazewoodTub : ModItem
     {
