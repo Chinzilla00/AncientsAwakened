@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Shen
         {
             DisplayName.SetDefault("Chaos Soul");
             Tooltip.SetDefault("Solid discord, symbolizing unrest and Anarchy itself");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 4));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 7));
             ItemID.Sets.ItemNoGravity[item.type] = true;
 
         }
@@ -25,7 +25,8 @@ namespace AAMod.Items.Boss.Shen
             item.maxStack = 999;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 9;
-            item.expert = true; item.expertOnly = true;
+            item.expert = true; 
+            item.expertOnly = true;
             item.alpha = 25;
         }
 
