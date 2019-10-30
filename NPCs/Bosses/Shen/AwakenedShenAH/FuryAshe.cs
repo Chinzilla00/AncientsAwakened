@@ -226,7 +226,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     }
                     break;
                 case 10:
-                    if (NPC.AnyNPCs(ModContent.NPCType<AsheDragon>()))
+                    if (NPC.CountNPCS(ModContent.NPCType<AsheDragon>()) < 2)
                     {
                         npc.ai[0] = 12;
                         goto case 12;
