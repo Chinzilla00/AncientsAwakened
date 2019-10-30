@@ -1723,6 +1723,11 @@ namespace AAMod
                         break;
 
                     case 11:
+
+                        if (dropType >= 4)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("LizTerratool"));
+                        }
                         player.QuickSpawnItem(mod.ItemType("LizEars"));
                         player.QuickSpawnItem(mod.ItemType("LizShirt"));
                         player.QuickSpawnItem(mod.ItemType("LizBoots"));
@@ -1794,6 +1799,12 @@ namespace AAMod
                         break;
 
                     case 15:
+
+                        if (dropType >= 4)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("GroviteTerratool"));
+                        }
+
                         player.QuickSpawnItem(mod.ItemType("AngryPirateHood"));
                         player.QuickSpawnItem(mod.ItemType("AngryPirateCofferplate"));
                         player.QuickSpawnItem(mod.ItemType("AngryPirateBoots"));
