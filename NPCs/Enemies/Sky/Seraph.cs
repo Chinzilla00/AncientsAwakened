@@ -171,10 +171,10 @@ namespace AAMod.NPCs.Enemies.Sky
                     npc.velocity.X = 4f;
                 }
             }
-            if (npc.directionY == -1 && (double)npc.velocity.Y > -1.5)
+            if (npc.directionY == -1 && npc.velocity.Y > -1.5)
             {
                 npc.velocity.Y = npc.velocity.Y - 0.04f;
-                if ((double)npc.velocity.Y > 1.5)
+                if (npc.velocity.Y > 1.5)
                 {
                     npc.velocity.Y = npc.velocity.Y - 0.05f;
                 }
@@ -182,15 +182,15 @@ namespace AAMod.NPCs.Enemies.Sky
                 {
                     npc.velocity.Y = npc.velocity.Y + 0.03f;
                 }
-                if ((double)npc.velocity.Y < -1.5)
+                if (npc.velocity.Y < -1.5)
                 {
                     npc.velocity.Y = -1.5f;
                 }
             }
-            else if (npc.directionY == 1 && (double)npc.velocity.Y < 1.5)
+            else if (npc.directionY == 1 && npc.velocity.Y < 1.5)
             {
                 npc.velocity.Y = npc.velocity.Y + 0.04f;
-                if ((double)npc.velocity.Y < -1.5)
+                if (npc.velocity.Y < -1.5)
                 {
                     npc.velocity.Y = npc.velocity.Y + 0.05f;
                 }
@@ -198,7 +198,7 @@ namespace AAMod.NPCs.Enemies.Sky
                 {
                     npc.velocity.Y = npc.velocity.Y - 0.03f;
                 }
-                if ((double)npc.velocity.Y > 1.5)
+                if (npc.velocity.Y > 1.5)
                 {
                     npc.velocity.Y = 1.5f;
                 }

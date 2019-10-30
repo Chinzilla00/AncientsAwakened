@@ -1,5 +1,6 @@
 using BaseMod;
 using Microsoft.Xna.Framework;
+using System.IO;
 using Terraria;
 using Terraria.GameContent.Events;
 using Terraria.ID;
@@ -32,7 +33,27 @@ namespace AAMod.NPCs.TownNPCs
 			NPCID.Sets.HatOffsetY[npc.type] = 3;
 		}
 
-		public override void SetDefaults()
+        public float internalAI = 0;
+
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            {
+                writer.Write(internalAI);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                internalAI = reader.ReadFloat();
+            }
+        }
+
+        public override void SetDefaults()
 		{
 			npc.townNPC = true;
 			npc.friendly = true;
@@ -75,12 +96,8 @@ namespace AAMod.NPCs.TownNPCs
 
 		public override string TownNPCName()
 		{
-			switch (WorldGen.genRand.Next(4))
-			{
-                default:
-					return "Anubis";
-			}
-		}
+            return "Anubis";
+        }
 
         public static bool SwitchInfo = false;
         public static bool DoNext = false;
@@ -357,51 +374,103 @@ namespace AAMod.NPCs.TownNPCs
         {
             if (NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Anubis>()))
             {
-                Vector2 position = npc.Center + (Vector2.One * -20f);
-                int num84 = 40;
-                int height3 = num84;
-                for (int num85 = 0; num85 < 3; num85++)
-                {
-                    int num86 = Dust.NewDust(position, num84, height3, 240, 0f, 0f, 100, default, 1.5f);
-                    Main.dust[num86].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
-                }
-                for (int num87 = 0; num87 < 15; num87++)
-                {
-                    int num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 50, default, 3.7f);
-                    Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
-                    Main.dust[num88].noGravity = true;
-                    Main.dust[num88].noLight = true;
-                    Main.dust[num88].velocity *= 3f;
-                    Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
-                    num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 25, default, 1.5f);
-                    Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
-                    Main.dust[num88].velocity *= 2f;
-                    Main.dust[num88].noGravity = true;
-                    Main.dust[num88].fadeIn = 1f;
-                    Main.dust[num88].color = Color.Black * 0.5f;
-                    Main.dust[num88].noLight = true;
-                    Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * 8f;
-                }
-                for (int num89 = 0; num89 < 10; num89++)
-                {
-                    int num90 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 2.7f);
-                    Main.dust[num90].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
-                    Main.dust[num90].noGravity = true;
-                    Main.dust[num90].noLight = true;
-                    Main.dust[num90].velocity *= 3f;
-                    Main.dust[num90].velocity += npc.DirectionTo(Main.dust[num90].position) * 2f;
-                }
-                for (int num91 = 0; num91 < 30; num91++)
-                {
-                    int num92 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 1.5f);
-                    Main.dust[num92].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
-                    Main.dust[num92].noGravity = true;
-                    Main.dust[num92].velocity *= 3f;
-                    Main.dust[num92].velocity += npc.DirectionTo(Main.dust[num92].position) * 3f;
-                }
+                TPDust();
                 npc.active = false;
             }
+            if (Vector2.Distance(npc.position, new Vector2(npc.homeTileX, npc.homeTileY)) > 3000 && internalAI < 240 && !npc.homeless)
+            {
+                internalAI++;
+                if (internalAI >= 240)
+                {
+                    bool flag4 = true;
+                    int num3 = npc.homeTileY;
+                    for (int k = 0; k < 2; k++)
+                    {
+                        Rectangle rectangle = new Rectangle((int)(npc.position.X + npc.width / 2 - NPC.sWidth / 2 - NPC.safeRangeX), (int)(npc.position.Y + npc.height / 2 - NPC.sHeight / 2 - NPC.safeRangeY), NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
+                        if (k == 1)
+                        {
+                            rectangle = new Rectangle(npc.homeTileX * 16 + 8 - NPC.sWidth / 2 - NPC.safeRangeX, num3 * 16 + 8 - NPC.sHeight / 2 - NPC.safeRangeY, NPC.sWidth + NPC.safeRangeX * 2, NPC.sHeight + NPC.safeRangeY * 2);
+                        }
+                        for (int l = 0; l < 255; l++)
+                        {
+                            if (Main.player[l].active)
+                            {
+                                Rectangle rectangle2 = new Rectangle((int)Main.player[l].position.X, (int)Main.player[l].position.Y, Main.player[l].width, Main.player[l].height);
+                                if (rectangle2.Intersects(rectangle))
+                                {
+                                    flag4 = false;
+                                    break;
+                                }
+                            }
+                            if (!flag4)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    if (flag4)
+                    {
+                        if (!Collision.SolidTiles(npc.homeTileX - 1, npc.homeTileX + 1, num3 - 3, num3 - 1))
+                        {
+                            TPDust();
+                            CombatText.NewText(npc.Hitbox, Color.Gold, "I'm headed home. Peace.");
+                            npc.velocity.X = 0f;
+                            npc.velocity.Y = 0f;
+                            npc.position.X = npc.homeTileX * 16 + 8 - npc.width / 2;
+                            npc.position.Y = num3 * 16 - npc.height - 0.1f;
+                            npc.netUpdate = true;
+                            internalAI = 0;
+                        }
+                    }
+                }
+            }
             return false;
+        }
+
+        public void TPDust()
+        {
+            Vector2 position = npc.Center + (Vector2.One * -20f);
+            int num84 = 40;
+            int height3 = num84;
+            for (int num85 = 0; num85 < 3; num85++)
+            {
+                int num86 = Dust.NewDust(position, num84, height3, 240, 0f, 0f, 100, default, 1.5f);
+                Main.dust[num86].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+            }
+            for (int num87 = 0; num87 < 15; num87++)
+            {
+                int num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 50, default, 3.7f);
+                Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                Main.dust[num88].noGravity = true;
+                Main.dust[num88].noLight = true;
+                Main.dust[num88].velocity *= 3f;
+                Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
+                num88 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 25, default, 1.5f);
+                Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                Main.dust[num88].velocity *= 2f;
+                Main.dust[num88].noGravity = true;
+                Main.dust[num88].fadeIn = 1f;
+                Main.dust[num88].color = Color.Black * 0.5f;
+                Main.dust[num88].noLight = true;
+                Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * 8f;
+            }
+            for (int num89 = 0; num89 < 10; num89++)
+            {
+                int num90 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 2.7f);
+                Main.dust[num90].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
+                Main.dust[num90].noGravity = true;
+                Main.dust[num90].noLight = true;
+                Main.dust[num90].velocity *= 3f;
+                Main.dust[num90].velocity += npc.DirectionTo(Main.dust[num90].position) * 2f;
+            }
+            for (int num91 = 0; num91 < 30; num91++)
+            {
+                int num92 = Dust.NewDust(position, num84, height3, DustID.GoldCoin, 0f, 0f, 0, default, 1.5f);
+                Main.dust[num92].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
+                Main.dust[num92].noGravity = true;
+                Main.dust[num92].velocity *= 3f;
+                Main.dust[num92].velocity += npc.DirectionTo(Main.dust[num92].position) * 3f;
+            }
         }
 
         public static bool DoG => CalamityMod.World.CalamityWorld.downedDoG;

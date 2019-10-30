@@ -78,7 +78,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             projectile.rotation = num804 - 1.57079637f;
             projectile.velocity = num804.ToRotationVector2();
             float num805 = 3f;
-            float num806 = (float)projectile.width;
+            float num806 = projectile.width;
             Vector2 samplingPoint = projectile.Center;
             if (vector78.HasValue)
             {
@@ -101,7 +101,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 float num810 = projectile.velocity.ToRotation() + ((Main.rand.Next(2) == 1) ? -1f : 1f) * 1.57079637f;
                 float num811 = (float)Main.rand.NextDouble() * 2f + 2f;
-                Vector2 vector80 = new Vector2((float)Math.Cos((double)num810) * num811, (float)Math.Sin((double)num810) * num811);
+                Vector2 vector80 = new Vector2((float)Math.Cos(num810) * num811, (float)Math.Sin(num810) * num811);
                 int num812 = Dust.NewDust(vector79, 0, 0, 244, vector80.X, vector80.Y, 0, default(Color), 1f);
                 Main.dust[num812].noGravity = true;
                 Main.dust[num812].scale = 1.7f;
@@ -109,7 +109,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             if (Main.rand.Next(5) == 0)
             {
-                Vector2 value29 = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * (float)projectile.width;
+                Vector2 value29 = projectile.velocity.RotatedBy(1.5707963705062866, default(Vector2)) * ((float)Main.rand.NextDouble() - 0.5f) * projectile.width;
                 int num813 = Dust.NewDust(vector79 + value29 - Vector2.One * 4f, 8, 8, 244, 0f, 0f, 100, default(Color), 1.5f);
                 Dust dust = Main.dust[num813];
                 dust.velocity *= 0.5f;
@@ -135,22 +135,22 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             Vector2 arg_ABD8_2 = projectile.Center - Main.screenPosition;
             Microsoft.Xna.Framework.Rectangle? sourceRectangle2 = null;
             arg_ABD8_0.Draw(arg_ABD8_1, arg_ABD8_2, sourceRectangle2, color44, projectile.rotation, texture2D19.Size() / 2f, projectile.scale, SpriteEffects.None, 0f);
-            num223 -= (float)(texture2D19.Height / 2 + texture2D21.Height) * projectile.scale;
+            num223 -= (texture2D19.Height / 2 + texture2D21.Height) * projectile.scale;
             Vector2 value20 = projectile.Center;
-            value20 += projectile.velocity * projectile.scale * (float)texture2D19.Height / 2f;
+            value20 += projectile.velocity * projectile.scale * texture2D19.Height / 2f;
             if (num223 > 0f)
             {
                 float num224 = 0f;
                 Microsoft.Xna.Framework.Rectangle rectangle7 = new Microsoft.Xna.Framework.Rectangle(0, 16 * (projectile.timeLeft / 3 % 5), texture2D20.Width, 16);
                 while (num224 + 1f < num223)
                 {
-                    if (num223 - num224 < (float)rectangle7.Height)
+                    if (num223 - num224 < rectangle7.Height)
                     {
                         rectangle7.Height = (int)(num223 - num224);
                     }
-                    Main.spriteBatch.Draw(texture2D20, value20 - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(rectangle7), color44, projectile.rotation, new Vector2((float)(rectangle7.Width / 2), 0f), projectile.scale, SpriteEffects.None, 0f);
-                    num224 += (float)rectangle7.Height * projectile.scale;
-                    value20 += projectile.velocity * (float)rectangle7.Height * projectile.scale;
+                    Main.spriteBatch.Draw(texture2D20, value20 - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(rectangle7), color44, projectile.rotation, new Vector2(rectangle7.Width / 2, 0f), projectile.scale, SpriteEffects.None, 0f);
+                    num224 += rectangle7.Height * projectile.scale;
+                    value20 += projectile.velocity * rectangle7.Height * projectile.scale;
                     rectangle7.Y += 16;
                     if (rectangle7.Y + rectangle7.Height > texture2D20.Height)
                     {
@@ -170,7 +170,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             DelegateMethods.tilecut_0 = TileCuttingContext.AttackProjectile;
             Vector2 unit = projectile.velocity;
-            Utils.PlotTileLine(projectile.Center, projectile.Center + unit * projectile.localAI[1], (float)projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CutTiles));
+            Utils.PlotTileLine(projectile.Center, projectile.Center + unit * projectile.localAI[1], projectile.width * projectile.scale, new Utils.PerLinePoint(DelegateMethods.CutTiles));
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)

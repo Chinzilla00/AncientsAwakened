@@ -8,7 +8,7 @@ namespace AAMod.Items.Armor.Champion
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Chaos Slayer Hood");
+            DisplayName.SetDefault("Champion Hood");
             Tooltip.SetDefault(@"32% increased Magic damage
 10% increased non-magic damage
 25% increased Magic critical strike chance

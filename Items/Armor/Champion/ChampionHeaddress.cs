@@ -8,7 +8,7 @@ namespace AAMod.Items.Armor.Champion
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Chaos Slayer Mask");
+            DisplayName.SetDefault("Champion Headdress");
             Tooltip.SetDefault(@"70% increased minion damage
 10% increased non-minion damage
 +7 maximum Minions
@@ -45,7 +45,8 @@ The armor of a champion feared across the land");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"";
+            player.setBonus = @"Baron Bunny fights by your side as an ally to rabbit kind
+As you lose health, Baron Bunny's will to fight becomes stronger.";
         }
 
 

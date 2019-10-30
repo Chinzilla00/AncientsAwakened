@@ -55,8 +55,8 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 3000;
-            npc.damage = 30;
+            npc.lifeMax = 2000;
+            npc.damage = 20;
             npc.defense = 10;
             npc.knockBackResist = 0f;
             npc.value = Item.sellPrice(0, 5, 0, 0);

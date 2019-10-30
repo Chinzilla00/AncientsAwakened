@@ -79,6 +79,7 @@ namespace AAMod
         public bool DragonSpirit = false;
         public bool Seraph = false;
         public bool Athena = false;
+        public bool Baron = false;
 
         // Biome bools.
         public bool ZoneMire = false;
@@ -371,6 +372,7 @@ namespace AAMod
             DragonSpirit = false;
             Seraph = false;
             Athena = false;
+            Baron = false;
         }
 
         private void ResetArmorEffect()
