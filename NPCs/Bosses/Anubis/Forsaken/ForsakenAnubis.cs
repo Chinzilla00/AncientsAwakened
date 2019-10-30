@@ -29,6 +29,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             npc.knockBackResist = 0f;
             npc.boss = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AnubisA");
+            bossBag = ModContent.ItemType<Items.Boss.Anubis.Forsaken.ForsakenStaff>();
         }
 
         public float[] internalAI = new float[4];
@@ -148,7 +149,6 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             switch (npc.ai[0])
             {
                 case 0:
-
                     int proj = Main.rand.Next(2) == 0 ? ModContent.ProjectileType<ForsakenBlast>() : ModContent.ProjectileType<ForsakenSkull>();
 
                     int damage = npc.damage / 2;

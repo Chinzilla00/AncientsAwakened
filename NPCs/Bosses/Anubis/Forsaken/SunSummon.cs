@@ -36,12 +36,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             projectile.knockBack = 0;
 
 
-            if (projectile.localAI[1] == 0f)
-            {
-                projectile.localAI[1] = 1f;
-                projectile.ai[1] = projectile.velocity.Length();
-                projectile.netUpdate = true;
-            }
+            projectile.ai[1] = projectile.velocity.Length();
 
             projectile.velocity = projectile.velocity.RotatedBy(projectile.ai[1] / (2 * Math.PI * projectile.ai[0] * ++projectile.localAI[0]));
 
