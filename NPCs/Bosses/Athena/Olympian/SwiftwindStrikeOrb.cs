@@ -21,6 +21,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             projectile.tileCollide = false;
             projectile.friendly = false; 
 			projectile.hostile = true;
+            projectile.timeLeft = 180;
         }
 
         public override void AI()

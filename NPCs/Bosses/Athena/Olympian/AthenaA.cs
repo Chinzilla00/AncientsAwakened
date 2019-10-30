@@ -86,8 +86,8 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
 
             if (internalAI[2] == 0 && npc.life < npc.lifeMax / 3 && Main.netMode != 1)
             {
-                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], ModContent.NPCType<AthenaDark>(), false, npc.Center);
-                AAModGlobalNPC.SpawnBoss(Main.player[npc.target], ModContent.NPCType<AthenaLight>(), false, npc.Center);
+                NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaDark>());
+                NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaLight>());
                 internalAI[2] = 1;
                 npc.netUpdate = true;
             }
@@ -225,7 +225,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                 case 3:
                     targetPos = player.Center;
                     targetPos.X -= 500 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y += 500;
+                    targetPos.Y -= 500;
                     MoveToVector2(targetPos);
 
                     if (npc.ai[1]++ == 120)

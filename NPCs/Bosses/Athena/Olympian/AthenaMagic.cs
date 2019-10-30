@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
 
         public override void AI()
         {
-            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
+            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(180f);
             if (projectile.frameCounter++ > 5)
             {
                 projectile.frameCounter = 0;
@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 3, 0, 0);
-            BaseDrawing.DrawAfterimage(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, .5f, 1f, 10, false, 0f, 0f, new Color(35, 23, 87), frame, 3);
+            BaseDrawing.DrawAfterimage(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, .5f, 1f, 10, false, 0f, 0f, Color.White, frame, 3);
             BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 3, frame, Color.White, false);
             return false;
         }
