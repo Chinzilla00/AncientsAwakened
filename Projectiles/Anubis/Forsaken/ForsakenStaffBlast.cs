@@ -37,11 +37,10 @@ namespace AAMod.Projectiles.Anubis.Forsaken
         {
             Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 1f / 255f, (255 - projectile.alpha) * 0.7f / 255f, (255 - projectile.alpha) * 0f / 255f);
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
-            for (int num339 = 0; num339 < 16; num339++)
+            for (int num339 = 0; num339 < 2; num339++)
             {
                 Dust dust1;
-                Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.ForsakenDust>(), 0, 0, 0, Color.White, 1f)];
+                dust1 = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.ForsakenDust>(), 0, 0, 0, Color.White, 1.5f)];
                 dust1.noGravity = true;
             }
 			if (projectile.localAI[0] == 0f)

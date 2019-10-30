@@ -1015,13 +1015,13 @@ namespace AAMod
             {
                 ItemID.MythrilAnvil, ItemID.OrichalcumAnvil
             });
-            RecipeGroup.RegisterGroup("AAMod:HAnvil", group19);
+            RecipeGroup.RegisterGroup("AAMod:HAnvil", group20);
 
             RecipeGroup group21 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " +  Language.GetTextValue("Mods.AAMod.Common.hardmodeforge"), new int[]
             {
                 ItemID.AdamantiteForge, ItemID.TitaniumForge
             });
-            RecipeGroup.RegisterGroup("AAMod:HForge", group19);
+            RecipeGroup.RegisterGroup("AAMod:HForge", group21);
 
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {
