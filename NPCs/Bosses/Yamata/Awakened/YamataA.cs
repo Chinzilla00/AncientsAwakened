@@ -438,7 +438,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     if (npc.alpha <= 0)
                     {
                         npc.alpha = 0;
-                        npc.dontTakeDamage = true;
+                        npc.dontTakeDamage = false;
                         TrueHead.dontTakeDamage = false;
                         Head2.dontTakeDamage = false;
                         Head3.dontTakeDamage = false;
