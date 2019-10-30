@@ -241,8 +241,8 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     MoveToPoint(wantedVelocity);
                     if (npc.ai[1]++ > 200)
                     {
-                        NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 100f, ModContent.NPCType<Shenling>());
-                        NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 100f, ModContent.NPCType<Shenling>());
+                        NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 100, ModContent.NPCType<Shenling>());
+                        NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 100, ModContent.NPCType<Shenling>());
                         AIChange();
                     }
                     break;
