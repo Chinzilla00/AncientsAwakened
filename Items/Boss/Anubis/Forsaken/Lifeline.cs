@@ -44,21 +44,28 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lifeline");
-            Tooltip.SetDefault(@"Shoots 3 enchanced Mummy arrows at once
-Shoots ``Forsaken arrows`` burst if at least 2 initial arrows hit the target
+            Tooltip.SetDefault(@"Shoots 2 enchanced Mummy arrows alongside with normal
+Shoots ``Forsaken arrows`` burst if 2 enchanted arrows hit the target
 Forsaken arrows lower enemy contact damage");
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-			Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<Projectiles.Anubis.Forsaken.EnchancedMummyArrow>(), damage, knockBack, player.whoAmI); // Enchanted Mummy Arrow as projectile should be here for Forsaken arrows burst mechanic. 
+			Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI); 
 			float numberProjectiles = 2;
-			float rotation = MathHelper.ToRadians(4);
+			float rotation = MathHelper.ToRadians(3);
 			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;
 			for (int i = 0; i < numberProjectiles; i++)
 			{
 				Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * 1f;
-				Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<Projectiles.Anubis.Forsaken.EnchancedMummyArrowD>(), damage, knockBack, player.whoAmI);
+				if (i == 0)
+				{
+					Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<Projectiles.Anubis.Forsaken.EnchancedMummyArrowD>(), damage, knockBack, player.whoAmI);
+				}
+				if (i == 1)
+				{
+					Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<Projectiles.Anubis.Forsaken.EnchancedMummyArrow>(), damage, knockBack, player.whoAmI);
+				}
 			}
             return false;
         }
