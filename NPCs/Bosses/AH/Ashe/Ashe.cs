@@ -14,12 +14,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
     {
         public int OrbiterCount = Main.expertMode ? 10 : 8;
 
-        bool Health = false;
+        public bool Health = false;
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ashe Akuma");
-            Main.npcFrameCount[npc.type] = 19;
+            Main.npcFrameCount[npc.type] = 24;
         }
 
         public override void SetDefaults()
@@ -49,6 +49,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public int[] Vortexes = null;
 
+        public bool RuneCrash = false;
+
         public override void AI()
         {
             Player player = Main.player[npc.target];
@@ -75,7 +77,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
                     MoveToPoint(wantedVelocity);
 
-                    BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-5, 5), Main.rand.Next(-5, 5)), player.width, player.height, ModContent.ProjectileType<AsheShot>(), ref npc.ai[2], 60, npc.damage / 2, 12, false);
+                    BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, ModContent.ProjectileType<AsheShot>(), ref npc.ai[2], 12, npc.damage / 2, 12, false);
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
                         AIChange();
@@ -98,11 +100,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     int firepos = 0;
                     if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
                     {
-                        firepos = 150;
+                        firepos = 100;
                     }
                     else
                     {
-                        firepos = -150;
+                        firepos = -100;
                     }
 
                     wantedVelocity = player.Center - new Vector2(firepos, 0);
@@ -173,7 +175,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                             npc.ai[3] = 0;
                         }
                         else
+                        {
                             npc.ai[0]--;
+                        }
                         npc.netUpdate = true;
                     }
                     npc.rotation = npc.velocity.ToRotation();
@@ -188,13 +192,30 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 case 9:
                     if (!AliveCheck(player))
                         break;
-                    MoveToPoint(wantedVelocity);
-                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], 60, npc.damage / 2, 12, false);
+                    
+                    if (npc.ai[1] >= 100)
+                    {
+                        MoveToPoint(player.Center + new Vector2((player.velocity.X > 0? 1 : -1) * 250, -150));
+                    }
+                    else
+                    {
+                        MoveToPoint(wantedVelocity);
+                    }
+                    if (npc.life > npc.lifeMax / 3 || npc.ai[1] < 100)
+                    {
+                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], npc.life < npc.lifeMax * 0.666f ? 20 : 60, npc.damage / 2, 12, false);
+                    }
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
-                        if (npc.life < npc.lifeMax / 3 && Main.rand.Next(3) == 0)
+                        if (npc.life < npc.lifeMax / 3)
                         {
-                            goto case 5;
+                            for(int i = 0; i < 8; i++)
+                            {
+                                Vector2 shoot = new Vector2((float)Math.Sin(i * 0.25f * 3.1415926f), (float)Math.Cos(i * 0.25f * 3.1415926f));
+                                shoot *= 16f;
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<AsheFire>(), npc.damage / 2, 5, Main.myPlayer);
+                            }
+                            if(Main.rand.Next(3) == 0) goto case 5;
                         }
                         AIChange();
                     }
@@ -233,6 +254,29 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             if (npc.ai[0] != 6 && npc.ai[0] != 7)
             {
                 npc.rotation = 0;
+            }
+
+            if (npc.ai[0] == 2 || npc.ai[0] == 3 || npc.ai[0] == 8)
+            {
+                if((npc.ai[1] == 0 && (Main.rand.Next(4) == 0 || npc.life < npc.lifeMax * 0.66f && Main.rand.Next(2) == 0)) || npc.life < npc.lifeMax * 0.33f) RuneCrash = true;
+            }
+            else
+            {
+                RuneCrash = false;
+            }
+
+            if (RuneCrash)
+            {
+                if(npc.ai[2]++ > 5)
+                {
+                    Vector2 Runeposition = new Vector2(0,0);
+                    Runeposition = player.Center + new Vector2((250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Sin(5.18f * Main.rand.Next(30) * 3.1415926f), (250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Cos(5.18f * Main.rand.Next(30) * 3.1415926f));
+                    
+                    float RunepositionX = Runeposition.X;
+                    float RunepositionY = Runeposition.Y;
+                    NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage, npc.whoAmI, player.whoAmI);
+                    npc.ai[2] = 0;
+                }
             }
         }
 
@@ -291,11 +335,35 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     Frame = 11;
                 }
             }
-            else if (npc.ai[0] == 1 || npc.ai[0] == 4 || npc.ai[0] == 9)
+            else if (npc.ai[0] == 1 || npc.ai[0] == 4)
             {
                 if (Frame < 15 || Frame > 18)
                 {
                     Frame = 15;
+                }
+            }
+            else if (npc.ai[0] == 9)
+            {
+                if (npc.life < npc.lifeMax / 3 && npc.ai[1] >= (Main.expertMode ? 140 : 240))
+                {
+                    if (Frame > 23 || Frame < 20)
+                    {
+                        Frame = 20;
+                    }
+                }
+                else
+                {
+                    if (Frame < 15 || Frame > 18)
+                    {
+                        Frame = 15;
+                    }
+                }
+            }
+            else if (RuneCrash)
+            {
+                if (Frame < 19 || Frame > 20)
+                {
+                    Frame = 19;
                 }
             }
             else if (!FlyingBack)
@@ -313,7 +381,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
 
-            if (Frame > 18)
+            if (Frame > 23)
             {
                 Frame = 0;
             }
@@ -496,15 +564,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public void ChangePos()
         {
-            npc.ai[1] = Main.rand.Next(2);
-            if (npc.ai[1] == 0)
-            {
-                pos = -250;
-            }
-            else
-            {
-                pos = 250;
-            }
+            pos = - pos;
             npc.netUpdate = false;
         }
 
@@ -570,7 +630,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 20f;
+            float moveSpeed = 25f;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
             float length = dist == Vector2.Zero ? 0f : dist.Length();
@@ -667,7 +727,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
 
-            if (npc.ai[0] == 1 || npc.ai[0] == 6 || npc.ai[0] == 11)
+            if (npc.ai[0] == 1 || npc.ai[0] == 6 || npc.ai[0] == 11 || RuneCrash)
             {
                 if (scale2 >= 1f)
                 {

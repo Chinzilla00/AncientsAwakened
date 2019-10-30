@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             projectile.penetrate = -1;
             projectile.friendly = false;
             projectile.hostile = true;
-            projectile.tileCollide = false;
+            projectile.tileCollide = true;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
         }
@@ -54,6 +54,12 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         {
             projectile.timeLeft = 0;
         }
+
+        public override void ModifyDamageHitbox(ref Rectangle hitbox)
+		{
+            hitbox.X += 98;
+            hitbox.Y += 98;
+		}
 
     }
 }

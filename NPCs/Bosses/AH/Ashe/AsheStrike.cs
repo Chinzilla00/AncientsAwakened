@@ -55,5 +55,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             projectile.timeLeft = 0;
         }
 
+        public override void ModifyDamageHitbox(ref Rectangle hitbox)
+		{
+            hitbox.X += 98;
+            hitbox.Y += 98;
+		}
+
     }
 }

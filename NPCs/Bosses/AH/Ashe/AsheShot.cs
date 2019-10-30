@@ -15,8 +15,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
     	
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 25;
+            projectile.height = 25;
             projectile.friendly = false;
             projectile.hostile = true;
             projectile.ignoreWater = true;
@@ -26,7 +26,16 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void AI()
         {
-            projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
+            if(projectile.ai[0] != 0 || projectile.ai[1] != 0)
+            {
+                projectile.scale = 0.8f;
+                projectile.rotation = new Vector2(projectile.ai[0], projectile.ai[1]).ToRotation() + 1.57079637f;
+                projectile.position += 0.05f * Vector2.Normalize(new Vector2(projectile.ai[0], projectile.ai[1]));
+            }
+            else
+            {
+                projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
+            }
         }
         public override Color? GetAlpha(Color lightColor)
         {
@@ -35,7 +44,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void Kill(int timeLeft)
         {
-            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
+            if(projectile.ai[0] == 0 && projectile.ai[1] == 0) Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
             float spread = 45f * 0.0174f;
             double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - (spread / 2);
             double deltaAngle = spread / 8f;

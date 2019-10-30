@@ -14,8 +14,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 20;
+            projectile.width = 30;
+            projectile.height = 30;
             projectile.friendly = false;
             projectile.hostile = true;
             projectile.scale = 1.1f;
@@ -108,5 +108,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             Projectile.NewProjectile(projectile.Center - new Vector2(0, 115), new Vector2(0, 0), ModContent.ProjectileType<AsheStrike>(), projectile.damage, 5);
             projectile.active = false;
         }
+
+        public override void ModifyDamageHitbox(ref Rectangle hitbox)
+		{
+            hitbox.X += 35;
+            hitbox.Y += 35;
+		}
     }
 }

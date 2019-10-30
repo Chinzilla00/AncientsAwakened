@@ -1140,7 +1140,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             if (Invisible) return false;
             
             BaseDrawing.DrawTexture(spritebatch, Slash, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 28, npc.frame, dColor, false);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 28, npc.frame, Color.White, false);
 
             BaseDrawing.DrawAfterimage(spritebatch, glowTex, 0, npc, 1f, 1f, 7, true, 0f, 0f, AAColor.YamataA);
             return false;
