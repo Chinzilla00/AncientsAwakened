@@ -15,14 +15,14 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
 
 		public override void SetDefaults()
 		{
-			item.damage = 110;
+			item.damage = 90;
 			item.magic = true;
 			item.mana = 10;
 			item.width = 76;
 			item.height = 76;
 			item.useTime = 15;
 			item.useAnimation = 15;
-			item.useStyle = 1;
+			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 5;
 			item.value = 10000;
