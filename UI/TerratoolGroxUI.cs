@@ -11,11 +11,11 @@ namespace AAMod.UI
 
         public static int Axe = 0;
 
-        public override Texture2D ButtonImages => AAMod.instance.GetTexture("UI/Tools/ToolUIE");
+        public override Texture2D ButtonImages => AAMod.instance.GetTexture("UI/Tools/ToolUIG");
 
-        public override Texture2D ButtonOnImage => AAMod.instance.GetTexture("UI/Tools/ToolButtonE");
+        public override Texture2D ButtonOnImage => AAMod.instance.GetTexture("UI/Tools/ToolButtonG");
 
-        public override Texture2D ButtonOffImage => AAMod.instance.GetTexture("UI/Tools/ToolButtonEOff");
+        public override Texture2D ButtonOffImage => AAMod.instance.GetTexture("UI/Tools/ToolButtonGOff");
 
         public override UIState State => AAMod.instance.TerratoolKipState;
 
