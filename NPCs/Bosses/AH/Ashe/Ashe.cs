@@ -109,7 +109,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
                     MoveToPoint(wantedVelocity);
 
-                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<Akuma.AkumaBreath>(), ref npc.ai[2], 10, npc.damage / 2, 24, false);
+                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 2, 24, false);
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
                         npc.ai[1] = 0;
