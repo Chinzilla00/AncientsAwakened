@@ -40,8 +40,8 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             npc.lavaImmune = true;
             npc.netAlways = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA");
-            npc.noGravity = false;
-            npc.noTileCollide = false;
+            npc.noGravity = true;
+            npc.noTileCollide = true;
         }
 
 

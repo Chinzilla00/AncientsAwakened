@@ -1376,8 +1376,6 @@ ItemTooltip.BinaryReassembler=现实从未如此容易操纵\n也可以当作所
 
 ItemName.Bogwood=污泽木
 
-ItemName.BogwoodChest=污泽木宝箱
-
 ItemName.HydratoxinTorch=毒潭火把
 
 ItemName.BroodBox=八音盒(育母炎龙)
@@ -1701,6 +1699,44 @@ ItemName.RazewoodTable=燎火木桌
 ItemName.RazewoodTub=燎火木浴缸
 
 ItemName.RazewoodWorkbench=燎火木工作台
+
+// AAMod.Items.Blocks.BogwoodF
+
+ItemName.BogwoodBench=污泽木工作台
+
+ItemName.BogwoodCandle=污泽木蜡烛
+
+ItemName.BogwoodChest=污泽木宝箱
+
+ItemName.BogwoodCandle=燎火木烛台
+
+ItemName.BogwoodChair=燎火木椅
+
+ItemName.BogwoodChandelier=燎火木吊灯
+
+ItemName.BogwoodChest=燎火木宝箱
+
+ItemName.BogwoodClock=燎火木钟
+
+ItemName.BogwoodCouch=燎火木沙发
+
+ItemName.BogwoodDoor=燎火木门
+
+ItemName.BogwoodDresser=燎火木梳妆台
+
+ItemName.BogwoodLamp=燎火木灯
+
+ItemName.BogwoodLantern=燎火木灯笼
+
+ItemName.BogwoodPiano=燎火木钢琴
+
+ItemName.BogwoodSink=燎火木水池
+
+ItemName.BogwoodTable=燎火木桌
+
+ItemName.BogwoodTub=燎火木浴缸
+
+ItemName.BogwoodWorkbench=燎火木工作台
 
 
 // AAMod.Items.Blocks.Statues
@@ -4750,6 +4786,14 @@ NPCName.ForsakenAnubis=阿努比斯 逝落之断罪师
 
 NPCName.ForsakenSun=逝落之阳
 
+NPCName.CurseCircle=咒缚之环
+
+NPCName.CursedScarab=咒缚圣甲虫
+
+NPCName.CursedLocust=咒缚蝗群
+
+NPCName.Naddaha=咒缚唤女娜黛哈
+
 // AAMod.NPCs.Bosses.AH.Ashe
 
 NPCName.AsheSpawn=燎狱魔女 邪鬼艾希
@@ -4779,6 +4823,8 @@ NPCName.AsheVanish=燎狱魔女 邪鬼艾希
 
 
 NPCName.Haruka=潭渊妖女 八歧遥香
+
+NPCName.HarukaSpawan=潭渊妖女 八歧遥香
 
 NPCName.HarukaClone=潭渊妖女 八歧遥香
 
@@ -5472,7 +5518,6 @@ MapObject.BogwoodChest=污泽木宝箱
 MapObject.BogwoodDoorOpen=污泽木门
 
 // AAMod.Tiles.RazewoodF
-
 
 MapObject.RazewoodBed=燎火木床
 

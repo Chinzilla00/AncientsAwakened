@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Haruka Yamata");     
+            DisplayName.SetDefault("Wrath Haruka");     
             Main.npcFrameCount[npc.type] = 17;     
         }
 

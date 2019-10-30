@@ -36,6 +36,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.lavaImmune = true;
             npc.netAlways = true;
             npc.noGravity = true;
+            npc.noTileCollide = true;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

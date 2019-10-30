@@ -42,6 +42,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.netAlways = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AH");
             npc.noGravity = true;
+            npc.noTileCollide = true;
             bossBag = mod.ItemType("AHBag");
         }
 
