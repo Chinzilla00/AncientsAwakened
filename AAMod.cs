@@ -56,6 +56,8 @@ namespace AAMod
         internal TerratoolZUI TerratoolZState;
         internal TerratoolSUI TerratoolSState;
         internal TerratoolKipUI TerratoolKipState;
+        internal TerratoolLizUI TerratoolLizState;
+        internal TerratoolGroxUI TerratoolGroxState;
         internal TerratoolEXUI TerratoolEXState;
 
         public static SpriteFont fontMouseText;
@@ -304,6 +306,10 @@ namespace AAMod
             TerratoolSState.Activate();
             TerratoolKipState = new TerratoolKipUI();
             TerratoolKipState.Activate();
+            TerratoolLizState = new TerratoolLizUI();
+            TerratoolLizState.Activate();
+            TerratoolGroxState = new TerratoolGroxUI();
+            TerratoolGroxState.Activate();
             TerratoolEXState = new TerratoolEXUI();
             TerratoolEXState.Activate();
 

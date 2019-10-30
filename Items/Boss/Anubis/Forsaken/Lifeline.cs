@@ -10,7 +10,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
 
         public override void SetDefaults()
         {
-            item.damage = 75;
+            item.damage = 60;
             item.noMelee = true;
             item.ranged = true;
             item.width = 42;
@@ -51,7 +51,7 @@ Forsaken arrows lower enemy contact damage");
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-			Projectile.NewProjectile(position.X, position.Y, speedX, speedY, type, damage, knockBack, player.whoAmI);
+			Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<Projectiles.Anubis.Forsaken.EnchancedMummyArrow>(), damage, knockBack, player.whoAmI); // Enchanted Mummy Arrow as projectile should be here for Forsaken arrows burst mechanic. 
 			float numberProjectiles = 2;
 			float rotation = MathHelper.ToRadians(4);
 			position += Vector2.Normalize(new Vector2(speedX, speedY)) * 45f;

@@ -683,7 +683,7 @@ namespace AAMod
 				for (int i = 0; i < numberProjectiles; i++)
 				{
 					Vector2 perturbedSpeed = new Vector2(SpeedX, SpeedY).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1))) * 1f;
-					Projectile.NewProjectile(vector2.X, vector2.Y, perturbedSpeed.X*2, perturbedSpeed.Y*2, mod.ProjectileType("ForsakenArrow"), damage, knockback, player.whoAmI);
+					Projectile.NewProjectile(vector2.X, vector2.Y, perturbedSpeed.X*2, perturbedSpeed.Y*2, mod.ProjectileType("ForsakenArrow"), damage/2, knockback, player.whoAmI);
 				}
 				target.buffImmune[mod.BuffType("Forsaken")] = true;
 			}
@@ -1723,6 +1723,11 @@ namespace AAMod
                         break;
 
                     case 11:
+
+                        if (dropType >= 4)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("LizTerratool"));
+                        }
                         player.QuickSpawnItem(mod.ItemType("LizEars"));
                         player.QuickSpawnItem(mod.ItemType("LizShirt"));
                         player.QuickSpawnItem(mod.ItemType("LizBoots"));
@@ -1794,6 +1799,12 @@ namespace AAMod
                         break;
 
                     case 15:
+
+                        if (dropType >= 4)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("GroviteTerratool"));
+                        }
+
                         player.QuickSpawnItem(mod.ItemType("AngryPirateHood"));
                         player.QuickSpawnItem(mod.ItemType("AngryPirateCofferplate"));
                         player.QuickSpawnItem(mod.ItemType("AngryPirateBoots"));
