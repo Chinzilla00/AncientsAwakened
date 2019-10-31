@@ -22,6 +22,9 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             projectile.tileCollide = true;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
+
+            drawOffsetX = -49;
+			drawOriginOffsetY = -49;
         }
 
         public override void AI()
