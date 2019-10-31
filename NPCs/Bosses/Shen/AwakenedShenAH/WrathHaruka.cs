@@ -697,6 +697,10 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         }
                         strikebackproj = 0;
                     }
+                    else if(internalAI[4] > 100)
+                    {
+                        MovePoint = wantedVelocity;
+                    }
                 }
             }
             else if (internalAI[0] == AISTATE_Shadowkilling)
@@ -949,8 +953,8 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 while(k < 3)
                 {
                     dist[k] = ShadowkingPosition - Main.npc[ShadowNPC[k]].Center;
-                    if(k == 0) npc.velocity = Vector2.Normalize(dist[k]) * 20f;
-                    else Main.npc[ShadowNPC[k]].velocity = Vector2.Normalize(dist[k]) * 20f;
+                    if(k == 0) npc.velocity = Vector2.Normalize(dist[k]) * 15f;
+                    else Main.npc[ShadowNPC[k]].velocity = Vector2.Normalize(dist[k]) * 15f;
                     if (ShadowkingPosition.X > Main.npc[ShadowNPC[k]].Center.X)
                     {
                         Main.npc[ShadowNPC[k]].direction = 1;
