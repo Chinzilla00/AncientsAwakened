@@ -1700,43 +1700,50 @@ ItemName.RazewoodTub=燎火木浴缸
 
 ItemName.RazewoodWorkbench=燎火木工作台
 
+ItemName.RazewoodPlatform=燎火木平台
+
 // AAMod.Items.Blocks.BogwoodF
 
-ItemName.BogwoodBench=污泽木工作台
+ItemName.BogwoodBench=污泽木凳
 
 ItemName.BogwoodCandle=污泽木蜡烛
 
 ItemName.BogwoodChest=污泽木宝箱
 
-ItemName.BogwoodCandle=燎火木烛台
+ItemName.BogwoodCouch=污泽木沙发
 
-ItemName.BogwoodChair=燎火木椅
+ItemName.BogwoodDoor=污泽木门
 
-ItemName.BogwoodChandelier=燎火木吊灯
+ItemName.BogwoodLantern=污泽木灯笼
 
-ItemName.BogwoodChest=燎火木宝箱
+ItemName.BogwoodPlatform=污泽木平台
 
-ItemName.BogwoodClock=燎火木钟
+ItemName.BogwoodWall=污泽木墙
 
-ItemName.BogwoodCouch=燎火木沙发
+// AAMod.Items.Blocks.Oroboros
 
-ItemName.BogwoodDoor=燎火木门
+ItemName.OroborosBathtub=虚环木浴缸
 
-ItemName.BogwoodDresser=燎火木梳妆台
+ItemName.OroborosBed=虚环木床
 
-ItemName.BogwoodLamp=燎火木灯
+ItemName.OroborosBookshelf=虚环木书架
 
-ItemName.BogwoodLantern=燎火木灯笼
+ItemName.OroborosCandle=虚环木蜡烛
 
-ItemName.BogwoodPiano=燎火木钢琴
+ItemName.OroborosChair=虚环木椅
 
-ItemName.BogwoodSink=燎火木水池
+ItemName.OroborosClock=虚环木钟
 
-ItemName.BogwoodTable=燎火木桌
+ItemName.OroborosDoor=虚环木门
 
-ItemName.BogwoodTub=燎火木浴缸
+ItemName.OroborosLamp=虚环木灯
 
-ItemName.BogwoodWorkbench=燎火木工作台
+ItemName.OroborosLantern=虚环木灯笼
+
+ItemName.OroborosPlatform=虚环木平台
+
+ItemName.OroborosWorkbench=虚环木工作台
+
 
 
 // AAMod.Items.Blocks.Statues
@@ -5252,7 +5259,7 @@ NPCName.ZeroDeactivated=奇异机械
 
 NPCName.NullZP=无械-0型
 
-NPCName.ZeroProtocol=零械临界单元 零.之.始.约.协.议
+NPCName.ZeroProtocol=零械汇编器 零.之.始.约.协.议
 
 
 // AAMod.NPCs.Critters
@@ -5516,6 +5523,46 @@ MapObject.BogwoodChair=污泽木椅
 MapObject.BogwoodChest=污泽木宝箱
 
 MapObject.BogwoodDoorOpen=污泽木门
+
+MapObject.BogwoodBench=污泽木凳
+
+MapObject.BogwoodCandle=污泽木蜡烛
+
+MapObject.BogwoodChest=污泽木宝箱
+
+MapObject.BogwoodCouch=污泽木沙发
+
+MapObject.BogwoodDoor=污泽木门
+
+MapObject.BogwoodLantern=污泽木灯笼
+
+MapObject.BogwoodPlatform=污泽木平台
+
+MapObject.BogwoodWall=污泽木墙
+
+// AAMod.Tiles.Oroboros
+
+MapObject.OroborosBathtub=虚环木浴缸
+
+MapObject.OroborosBed=虚环木床
+
+MapObject.OroborosBookshelf=虚环木书架
+
+MapObject.OroborosCandle=虚环木蜡烛
+
+MapObject.OroborosChair=虚环木椅
+
+MapObject.OroborosClock=虚环木钟
+
+MapObject.OroborosDoor=虚环木门
+
+MapObject.OroborosLamp=虚环木灯
+
+MapObject.OroborosLantern=虚环木灯笼
+
+MapObject.OroborosPlatform=虚环木平台
+
+MapObject.OroborosWorkbench=虚环木工作台
 
 // AAMod.Tiles.RazewoodF
 
