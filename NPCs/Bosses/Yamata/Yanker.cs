@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.penetrate = 4; //
-            projectile.timeLeft = 300;
+            projectile.timeLeft = 100;
             projectile.aiStyle = 1; //
             aiType = ProjectileID.Bullet;
         }
@@ -72,7 +72,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 int foundTarget = HomeOnTarget();
                 if (foundTarget != -1)
                 {
-                    NPC n = Main.npc[foundTarget];
+                    Player n = Main.player[(int)projectile.ai[1]];
                     Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
                     projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }

@@ -339,8 +339,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            int frameCount = /*npc.type == Terraria.ModLoader.ModContent.NPCType<AsheDragon>() ? 3 :*/ 1;
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, frameCount, npc.frame, new Color(Color.White.R, Color.White.G, Color.White.B, 100), true);
+        //    int frameCount = /*npc.type == Terraria.ModLoader.ModContent.NPCType<AsheDragon>() ? 3 :*/ 1;
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, Main.npcFrameCount[npc.type], npc.frame, new Color(Color.White.R, Color.White.G, Color.White.B, 100), true);
 
             return false;
         }
@@ -599,6 +599,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float dist = (length - npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
+                npc.direction = dirX < 0f ? 1 : -1;
                 npc.position.X += posX;
                 npc.position.Y += posY;
             }
@@ -739,6 +740,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float dist = (length - npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
+                npc.direction = dirX < 0f ? 1 : -1;
                 npc.position.X += posX;
                 npc.position.Y += posY;
             }
@@ -878,6 +880,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 float dist = (length - npc.width) / length;
                 float posX = dirX * dist;
                 float posY = dirY * dist;
+                npc.direction = dirX < 0f ? 1 : -1;
                 npc.position.X += posX;
                 npc.position.Y += posY;
             }

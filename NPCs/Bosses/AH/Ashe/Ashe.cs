@@ -203,7 +203,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                     if (npc.life > npc.lifeMax / 3 || npc.ai[1] < 100)
                     {
-                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], npc.life < npc.lifeMax * 0.666f ? 20 : 60, npc.damage / 2, 9, false);
+                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], npc.life < npc.lifeMax * 0.666f ? 20 : 60, npc.damage / 2, 8, false);
                     }
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
@@ -212,7 +212,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                             for(int i = 0; i < 8; i++)
                             {
                                 Vector2 shoot = new Vector2((float)Math.Sin(i * 0.25f * 3.1415926f), (float)Math.Cos(i * 0.25f * 3.1415926f));
-                                shoot *= 11f;
+                                shoot *= 8f;
                                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<AsheFire>(), npc.damage / 2, 5, Main.myPlayer);
                             }
                             if(Main.rand.Next(3) == 0) goto case 5;
