@@ -2424,7 +2424,7 @@ ItemName.ShenCache=宝藏箱
 ItemTooltip.ShenCache={$CommonItemTooltip.RightClickToOpen}
 
 ItemName.ShenTerratool=应龙万用工具
-ItemTooltip.ShenTerratool=右键切换工具类型\n现在你可以同时使用两种工具类型\n+25 范围
+ItemTooltip.ShenTerratool=右键切换工具类型\n现在你可以同时使用两种工具类型
 
 ItemName.ShenTrophy=上神应龙纪念章
 
@@ -2926,8 +2926,14 @@ MapObject.InvokerBookTile=阿莱斯特原典
 
 // AAMod.Items.DevTools
 
-ItemName.AlphakipTerratool=两栖生物万用工具
+ItemName.AlphakipTerratool=Alphakip的两栖生物万用工具
 ItemTooltip.AlphakipTerratool=右键切换工具类型\n现在你可以同时使用两种工具类型
+
+ItemName.LizTerratool=Liz的格拉希姆万用工具
+ItemTooltip.LizTerratool=右键切换工具类型\n现在你可以同时使用两种工具类型
+
+ItemName.GroviteTerratool=Gibs的辉绿光岩万用工具
+ItemTooltip.GroviteTerratool=右键切换工具类型\n现在你可以同时使用两种工具类型
 
 ItemName.StormTest=【开发者】Storm Test
 ItemTooltip.StormTest="Tests Shen Doragon's lightning breath"
