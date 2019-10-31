@@ -80,7 +80,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 int ind = NPC.NewNPC((int)(npc.position.X + (double)(npc.width / 2)), (int)npc.position.Y + (npc.height / 2), mod.NPCType("TeslaHand"), npc.whoAmI, npc.ai[0], npc.ai[1], npc.ai[2], npc.ai[3], npc.target);
                 Main.npc[ind].Center = npc.Center;
                 Main.npc[ind].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
-                Main.npc[ind].velocity *= 8f;
                 Main.npc[ind].netUpdate2 = true; Main.npc[ind].netUpdate = true;
             }
         }

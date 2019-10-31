@@ -125,8 +125,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 {
                     if (Main.netMode != 1)
                     {
-                        npc.ai[0] = 0;
-                        internalAI[3] = 1;
+                        Teleport();
                         npc.netUpdate = true;
                     }
                 }
@@ -142,54 +141,43 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/ZeroProtocol_Glow");
-            float Color = Math.Abs(Main.GameUpdateCount) / 0.5f;
-            float Flash = 1f * (float)Math.Sin(Color);
-            Color color1 = Microsoft.Xna.Framework.Color.Lerp(Microsoft.Xna.Framework.Color.Red, Microsoft.Xna.Framework.Color.Black, Flash);
-            Vector2 drawOrigin = new Vector2(Main.npcTexture[npc.type].Width * 0.5f, npc.height * 0.5f);
-            for (int k = 0; k < npc.oldPos.Length; k++)
-            {
-                Texture2D ZeroTrail = mod.GetTexture("NPCs/Bosses/Zero/Protocol/ZeroTrail");
-                Color color = npc.GetAlpha(color1) * ((npc.oldPos.Length - k) / (float)npc.oldPos.Length);
-                spritebatch.Draw(ZeroTrail, npc.position, null, color, npc.rotation, drawOrigin, npc.scale, SpriteEffects.None, 0f);
-            }
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, npc.rotation, -npc.direction, 14, npc.frame, 0f, 0f, color1);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, color1);
+
+            Texture2D tex = Main.npcTexture[npc.type];
+            Texture2D afterimage = mod.GetTexture("NPCs/Bosses/Zero/Protocol/ZeroTrail");
+            Texture2D glowTex = mod.GetTexture("Glowmasks/ZeroProtocol_Glow");
+            if (isCharging)
+            {
+                tex = mod.GetTexture("NPCs/Bosses/Zero/Protocol/ZeroProtocolCharge");
+                afterimage = mod.GetTexture("NPCs/Bosses/Zero/Protocol/ZeroProtocolChargeTrail");
+                glowTex = mod.GetTexture("Glowmasks/ZeroProtocol_Glow");
+            }
+
+            BaseDrawing.DrawAfterimage(spritebatch, afterimage, 0, npc, 1, 1, 8, true, 0, 0, Color.Black, npc.frame, 7);
+            BaseDrawing.DrawTexture(spritebatch, tex, 0, npc, dColor);
+            BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, npc.rotation, -npc.direction, 7, npc.frame, 0f, 0f, AAColor.Oblivion);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, AAColor.Oblivion);
             return false;
-        }
-
-        public float[] internalAI = new float[4];
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            base.SendExtraAI(writer);
-            if (Main.netMode == 2 || Main.dedServ)
-            {
-                writer.Write(internalAI[0]);
-                writer.Write(internalAI[1]);
-                writer.Write(internalAI[2]);
-                writer.Write(internalAI[3]);
-            }
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            base.ReceiveExtraAI(reader);
-            if (Main.netMode == 1)
-            {
-                internalAI[0] = reader.ReadFloat();
-                internalAI[1] = reader.ReadFloat();
-                internalAI[2] = reader.ReadFloat();
-                internalAI[3] = reader.ReadFloat();
-            }
         }
 
         bool isCharging = false;
 
         public override void AI()
         {
+            int Repeats;
+            if (npc.life < npc.life * (2 / 3))
+            {
+                Repeats = 4;
+            }
+            else if (npc.life < npc.life / 3)
+            {
+                Repeats = 5;
+            }
+            else
+            {
+                Repeats = 3;
+            }
             npc.TargetClosest();
             Player player = Main.player[npc.target];
 
@@ -197,7 +185,13 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             {
                 AAWorld.zeroUS = false;
             }
-            
+
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
+            {
+                npc.oldPos[m] = npc.oldPos[m - 1];
+            }
+            npc.oldPos[0] = npc.position;
+
             Vector2 targetPos;
 
             npc.ai[1]++;
@@ -205,6 +199,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             switch (npc.ai[0])
             {
                 case 0:
+                    if (!AliveCheck(player))
+                        break;
                     npc.velocity *= 0;
                     if (npc.ai[2] < 4)
                     {
@@ -226,6 +222,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     break;
 
                 case 1:
+                    if (!AliveCheck(player))
+                        break;
                     if (npc.ai[1] == 210)
                     {
                         for (int a = 0; a < Main.maxNPCs; a++)
@@ -280,6 +278,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     }
                     break;
                 case 4:
+                    if (!AliveCheck(player))
+                        break;
                     if (npc.ai[1] == 30)
                     {
                         int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, mod.ProjectileType("ProtoStar"), damage, 3);
@@ -365,6 +365,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     }
                     break;
                 case 8:
+                    if (!AliveCheck(player))
+                        break;
 
                     if (npc.ai[1] == 90)
                     {
@@ -432,11 +434,54 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     }
                     break;
 
+                case 9:
+                    if (!AliveCheck(player))
+                        break;
+
+                    if (npc.ai[1] % 30 == 0 && npc.ai[1] < 121)
+                    {
+                        Teleport();
+                    }
+
+                    if (npc.ai[1] ==  180)
+                    {
+                        Attack(Main.rand.Next(4));
+                    }
+
+                    if (npc.ai[3] < Repeats)
+                    {
+                        npc.ai[1] = 0;
+                        npc.ai[3]++;
+                    }
+
+                    break;
+
                 default:
                     npc.ai[0] = 0;
                     goto case 0;
             }
-           
+
+            if (isCharging)
+            {
+                npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
+
+                if (npc.ai[0] == 2 || npc.ai[0] == 6)
+                {
+                    Vector2 vector2 = new Vector2(npc.position.X + (npc.width * 0.5f), npc.position.Y + (npc.height * 0.5f));
+                    float num1 = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2) - vector2.X;
+                    float num2 = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2) - vector2.Y;
+                    npc.rotation = (float)Math.Atan2(num2, num1) + 1.57f;
+                }
+                else if (npc.ai[0] == 3 || npc.ai[0] == 7)
+                {
+                    npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+                }
+
+            }
+            else
+            {
+                npc.rotation = 0;
+            }
         }
 
         public bool AliveCheck(Player player)
@@ -521,7 +566,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 Main.dust[num86].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
                 Main.dust[num86].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
             }
-            for (int num87 = 0; num87 < 15; num87++)
+            for (int num87 = 0; num87 < 7; num87++)
             {
                 int num88 = Dust.NewDust(position, num84, height3, 226, 0, 0, 100, new Color(), 2f);
                 Main.dust[num88].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
@@ -540,7 +585,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 Main.dust[num88].noLight = true;
                 Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * 8f;
             }
-            for (int num89 = 0; num89 < 10; num89++)
+            for (int num89 = 0; num89 < 5; num89++)
             {
                 int num90 = Dust.NewDust(position, num84, height3, 226, 0, 0, 100, new Color(), 2f);
                 Main.dust[num90].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
@@ -550,7 +595,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 Main.dust[num90].velocity *= 3f;
                 Main.dust[num90].velocity += npc.DirectionTo(Main.dust[num90].position) * 2f;
             }
-            for (int num91 = 0; num91 < 30; num91++)
+            for (int num91 = 0; num91 < 15; num91++)
             {
                 int num92 = Dust.NewDust(position, num84, height3, 226, 0, 0, 100, new Color(), 2f);
                 Main.dust[num92].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
@@ -603,23 +648,9 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 Frame += 1;
             }
 
-            if (internalAI[3] == 1)
+            if (Frame > 6)
             {
-                if (Frame < 7)
-                {
-                    Frame = 7;
-                }
-                if (Frame > 13)
-                {
-                    Frame = 13;
-                }
-            }
-            else
-            {
-                if (Frame > 6)
-                {
-                    Frame = 0;
-                }
+                Frame = 0;
             }
 
             npc.frame.Y = frameHeight * Frame;
