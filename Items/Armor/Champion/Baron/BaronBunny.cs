@@ -315,8 +315,6 @@ namespace AAMod.Items.Armor.Champion.Baron
                 BaseMod.BaseDrawing.DrawTexture(spriteBatch, MeterGlow, shader, projectile.position - new Vector2(44, 0), projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 5, MeterFrame, Color.White, true);
                 BaseMod.BaseDrawing.DrawTexture(spriteBatch, Eyes, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 8, frame, Main.DiscoColor, true);
             }
-
-
             return false;
         }
 
