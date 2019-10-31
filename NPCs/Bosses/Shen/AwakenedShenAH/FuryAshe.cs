@@ -82,7 +82,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
                     MoveToPoint(wantedVelocity);
 
-                    BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, ModContent.ProjectileType<AsheShot>(), ref npc.ai[2], 12, npc.damage / 2, 12, false);
+                    BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, ModContent.ProjectileType<AsheShot>(), ref npc.ai[2], 18, npc.damage / 2, 9, false);
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
                         AIChange();
@@ -208,7 +208,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     }
                     if (npc.life > npc.lifeMax / 3 || npc.ai[1] < 100)
                     {
-                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], npc.life < npc.lifeMax * 0.666f ? 20 : 60, npc.damage / 2, 12, false);
+                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], npc.life < npc.lifeMax * 0.666f ? 20 : 60, npc.damage / 2, 9, false);
                     }
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
@@ -217,7 +217,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                             for(int i = 0; i < 8; i++)
                             {
                                 Vector2 shoot = new Vector2((float)Math.Sin(i * 0.25f * 3.1415926f), (float)Math.Cos(i * 0.25f * 3.1415926f));
-                                shoot *= 16f;
+                                shoot *= 11f;
                                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<AsheFire>(), npc.damage / 2, 5, Main.myPlayer);
                             }
                             if(Main.rand.Next(3) == 0) goto case 5;
@@ -264,7 +264,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
             if (npc.ai[0] == 2 || npc.ai[0] == 3 || npc.ai[0] == 8)
             {
-                if((npc.ai[1] == 0 && (Main.rand.Next(4) == 0 || npc.life < npc.lifeMax * 0.66f && Main.rand.Next(2) == 0)) || npc.life < npc.lifeMax * 0.33f) RuneCrash = true;
+                if((npc.ai[1] == 0 && (Main.rand.Next(6) == 0 || npc.life < npc.lifeMax * 0.66f && Main.rand.Next(3) == 0)) || npc.life < npc.lifeMax * 0.33f) RuneCrash = true;
             }
             else
             {

@@ -22,6 +22,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
+
+            drawOffsetX = -49;
+			drawOriginOffsetY = -49;
         }
 
         public override void AI()
@@ -54,12 +57,5 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             projectile.timeLeft = 0;
         }
-
-        public override void ModifyDamageHitbox(ref Rectangle hitbox)
-		{
-            hitbox.X += 98;
-            hitbox.Y += 98;
-		}
-
     }
 }
