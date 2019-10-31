@@ -1178,7 +1178,7 @@ namespace AAMod
                         case "AkumaA16":
                         return "烈火永不熄灭, 小子!";
                         case "AkumaA17":
-                        return "抬头! 火山喷发了, 小子!";
+                        return "注意点! 火山喷发了, 小子!";
                         case "AkumaA18":
                         return "来了!";
                         case "AkumaA19":
@@ -1400,7 +1400,7 @@ namespace AAMod
                         case "Yamata13":
                         return "我不懂你为什么要一直和我打! 我各方面都比你强!";
                         case "Yamata14":
-                        return "我又有点沮丧!";
+                        return "真 让 人 摸 不 着 头 脑!";
                         case "Yamata15":
                         return "我讨厌和你打! 非常非常非常讨厌!!!";
                         case "YamataHead":
@@ -1450,13 +1450,13 @@ namespace AAMod
                         case "YamataA15":
                         return "我的好闺女. . !";
                         case "YamataA16":
-                        return "哦, 亲爱的. . ! 想帮爸爸打这个小虫子吗? ";
+                        return "哦, 亲爱的. . ! 想帮爸爸拍死这个小虫子吗? ";
                         case "YamataA17":
                         return "哎...是的爸爸";
                         case "HarukaY1":
                         return "爸爸, 你这个白痴……不论怎样, 我不能说我没预料到. ";
                         case "HarukaY2":
-                        return "就这样吧. 我输了, 你来对付他们, 爸爸. ";
+                        return "我尽力了. 我输了, 交给你了, 爸爸. ";
                         case "YamataHead1":
                         return "尝尝酸液的滋味, 你这讨厌的蛆虫!!!!";
                         case "YamataHead2":
@@ -1662,7 +1662,7 @@ namespace AAMod
                         case "ShenDoragon19":
                         return "颇有水平, 孩子.";
                         case "ShenDoragon20":
-                        return "这是? 能力? 难以置信.";
+                        return "这是? 什么样的能力? 难以置信.";
                         case "ShenDoragon21":
                         return "你应该知道你是个真正的勇士. 那就站好让我烤熟了你.";
                         case "ShenDoragon22":
@@ -1709,7 +1709,7 @@ namespace AAMod
                         case "ShenTransition7":
                         return "上神应龙觉醒了!";
                         case "ShenTransition8":
-                        return "你 将 在 混 律 业 火 中 焚 烧 殆 尽!!!";
+                        return "你 将 在 混 律 业 火 中 被 焚 烧 殆 尽!!!";
                     }
                 }
             else
