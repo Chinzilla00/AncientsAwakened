@@ -209,6 +209,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                             npc.ai[1] = 0;
                             npc.ai[2]++;
                             NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<ZeroEcho>());
+                            Teleport();
                         }
                     }
                     else
@@ -224,16 +225,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 case 1:
                     if (!AliveCheck(player))
                         break;
-                    if (npc.ai[1] == 210)
-                    {
-                        for (int a = 0; a < Main.maxNPCs; a++)
-                        {
-                            if (Main.npc[a].type == ModContent.NPCType<ZeroEcho>())
-                            {
-                                Main.npc[a].StrikeNPCNoInteraction(999999, 0, 0);
-                            }
-                        }
-                    }
                     if (npc.ai[1] >= 400)
                     {
                         npc.ai[0]++;
@@ -280,25 +271,26 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 case 4:
                     if (!AliveCheck(player))
                         break;
+                    npc.velocity *= 0;
                     if (npc.ai[1] == 30)
                     {
-                        int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, mod.ProjectileType("ProtoStar"), damage, 3);
+                        int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("ProtoStar"), damage, 3);
                         Main.projectile[a].Center = npc.Center + new Vector2(-100, 0);
-                        int b = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, mod.ProjectileType("ProtoStar"), damage, 3);
+                        int b = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("ProtoStar"), damage, 3);
                         Main.projectile[b].Center = npc.Center + new Vector2(100, 0); ;
-                        int c = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, mod.ProjectileType("ProtoStar"), damage, 3);
+                        int c = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
                         Main.projectile[c].Center = npc.Center + new Vector2(0, 100); ;
-                        int d = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, mod.ProjectileType("ProtoStar"), damage, 3);
+                        int d = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
                         Main.projectile[d].Center = npc.Center + new Vector2(0, -100);
                         if (npc.life < npc.lifeMax / 2)
                         {
-                            int e = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, mod.ProjectileType("ProtoStar"), damage, 3);
+                            int e = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
                             Main.projectile[e].Center = npc.Center + new Vector2(-80, -80);
-                            int f = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, mod.ProjectileType("ProtoStar"), damage, 3);
+                            int f = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
                             Main.projectile[f].Center = npc.Center + new Vector2(80, 80); ;
-                            int g = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, mod.ProjectileType("ProtoStar"), damage, 3);
+                            int g = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
                             Main.projectile[g].Center = npc.Center + new Vector2(-80, 80); ;
-                            int h = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, mod.ProjectileType("ProtoStar"), damage, 3);
+                            int h = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
                             Main.projectile[h].Center = npc.Center + new Vector2(80, -80);
                         }
                     }
@@ -311,27 +303,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         npc.ai[3] = 0;
                     }
                     break;
-                case 5:
-                    if (npc.ai[1] == 210)
-                    {
-                        for (int a = 0; a < Main.maxNPCs; a++)
-                        {
-                            if (Main.npc[a].type == ModContent.NPCType<ZeroEcho>())
-                            {
-                                Main.npc[a].StrikeNPCNoInteraction(999999, 0, 0);
-                            }
-                        }
-                    }
-                    if (npc.ai[1] >= 400)
-                    {
-                        npc.ai[0]++;
-                        npc.ai[1] = 0;
-                        npc.ai[2] = 0;
-                        npc.ai[3] = 0;
-                    }
-
-                    break;
-                case 6: //fly to bottom corner for dash
+                case 5: //fly to bottom corner for dash
 
                     if (!AliveCheck(player))
                         break;
@@ -347,7 +319,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         npc.velocity = npc.DirectionTo(player.Center) * 45;
                     }
                     break;
-                case 7: //dashing
+                case 6: //dashing
                     isCharging = true;
                     if (npc.Center.Y > player.Center.Y - 500 || Math.Abs(npc.Center.X - player.Center.X) > 1000)
                     {
@@ -364,10 +336,10 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         npc.netUpdate = true;
                     }
                     break;
-                case 8:
+                case 7:
                     if (!AliveCheck(player))
                         break;
-
+                    npc.velocity *= 0;
                     if (npc.ai[1] == 90)
                     {
                         if (npc.life > npc.lifeMax / 2)
@@ -434,9 +406,10 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     }
                     break;
 
-                case 9:
+                case 8:
                     if (!AliveCheck(player))
                         break;
+                    npc.velocity *= 0;
 
                     if (npc.ai[1] % 30 == 0 && npc.ai[1] < 121)
                     {

@@ -77,7 +77,11 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     Projectile.NewProjectile(npc.Center, new Vector2(-10, -10), mod.ProjectileType("EchoRay"), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
                 }
             }
-            
+
+            if (zero.ai[0] != 1 || zero.ai[0] != 2)
+            {
+                npc.life = 0;
+            }
         }
 
         public bool AliveCheck(Player player)
