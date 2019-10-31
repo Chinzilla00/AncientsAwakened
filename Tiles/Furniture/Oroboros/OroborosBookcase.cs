@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework.Graphics;
-using BaseMod;
 
 namespace AAMod.Tiles.Furniture.Oroboros
 {

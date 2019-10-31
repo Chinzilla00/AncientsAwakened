@@ -1,15 +1,9 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Terraria.GameContent.Events;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
-using Microsoft.Xna.Framework.Graphics;
-using System.IO;
 using Terraria.Graphics.Shaders;
 
-namespace AAMod.Projectiles.Bosses.Zero.Protocol
+namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
     public class Blast : ModProjectile
     {
