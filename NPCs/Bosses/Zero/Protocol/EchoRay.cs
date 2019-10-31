@@ -9,11 +9,11 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
     public class EchoRay : ModProjectile
     {
-        private const float maxTime = 90;
+        private const float maxTime = 70;
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Echo Blast");
+			DisplayName.SetDefault("Fire Blast");
 		}
     	
         public override void SetDefaults()
@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 projectile.velocity = -Vector2.UnitY;
             }
             int ai1 = (int)projectile.ai[1];
-            if (Main.npc[ai1].active && Main.npc[ai1].type == ModContent.NPCType<ZeroEcho>())
+            if (Main.npc[ai1].active && Main.npc[ai1].type == ModContent.NPCType<ZeroProtocol>())
             {
                 projectile.Center = Main.npc[ai1].Center - Vector2.UnitY * 6f;
             }
@@ -128,10 +128,10 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 return false;
             }
             Texture2D texture2D19 = Main.projectileTexture[projectile.type];
-            Texture2D texture2D20 = mod.GetTexture("NPCs/Bosses/Zero/Protocol/EchoRayBody");
-            Texture2D texture2D21 = mod.GetTexture("NPCs/Bosses/Zero/Protocol/EchoRayEnd");
+            Texture2D texture2D20 = mod.GetTexture("NPCs/Bosses/FurySoul/Flameray2");
+            Texture2D texture2D21 = mod.GetTexture("NPCs/Bosses/FurySoul/Flameray3");
             float num223 = projectile.localAI[1];
-            Color color44 = AAColor.Oblivion * 0.9f;
+            Color color44 = ColorUtils.COLOR_GLOWPULSE * 0.9f;
             SpriteBatch arg_ABD8_0 = Main.spriteBatch;
             Texture2D arg_ABD8_1 = texture2D19;
             Vector2 arg_ABD8_2 = projectile.Center - Main.screenPosition;

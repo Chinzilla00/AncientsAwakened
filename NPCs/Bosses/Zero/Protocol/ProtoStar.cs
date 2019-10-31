@@ -195,7 +195,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
                 Utils.DrawLaser(
                     spritebatch,
-                    mod.GetTexture("NPCs/Bosses/Zero/ProtoStar_Beam"),
+                    mod.GetTexture("NPCs/Bosses/Zero/Protocol/ProtoStar_Beam"),
                     start - Main.screenPosition,
                     end - Main.screenPosition,
                     new Vector2(projectile.ai[1]),

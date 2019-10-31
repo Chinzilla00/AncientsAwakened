@@ -37,12 +37,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
         }
 
-        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
-        {
-            npc.damage = (int)(npc.damage * .7f);
-            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
-        }
-
         public override Color? GetAlpha(Color drawColor)
         {
             return AAColor.Oblivion;
@@ -52,12 +46,9 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void AI()
         {
-            npc.TargetClosest();
-            AliveCheck(Main.player[npc.target]);
-
             if (body == -1)
             {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("ZeroProtocol"), 1000, null);
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("ZeroProtocol"), -1, null);
                 if (npcID >= 0) body = npcID;
             }
 
@@ -66,38 +57,22 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             NPC zero = Main.npc[body];
             if (zero == null || zero.life <= 0 || !zero.active || zero.type != mod.NPCType("ZeroProtocol")) { npc.active = false; return; }
 
-            if (zero.ai[0] == 2)
+            if (zero.ai[0] == 1)
             {
                 npc.ai[0]++;
                 if (npc.ai[0] == 60)
                 {
-                    Projectile.NewProjectile(npc.Center, new Vector2(10, 10), mod.ProjectileType("EchoRay"), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
-                    Projectile.NewProjectile(npc.Center, new Vector2(-10, 10), mod.ProjectileType("EchoRay"), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
-                    Projectile.NewProjectile(npc.Center, new Vector2(10, -10), mod.ProjectileType("EchoRay"), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
-                    Projectile.NewProjectile(npc.Center, new Vector2(-10, -10), mod.ProjectileType("EchoRay"), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
+                    Projectile.NewProjectile(npc.Center, new Vector2(10, 10), ModContent.ProjectileType<EchoRay>(), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
+                    Projectile.NewProjectile(npc.Center, new Vector2(-10, 10), ModContent.ProjectileType<EchoRay>(), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
+                    Projectile.NewProjectile(npc.Center, new Vector2(10, -10), ModContent.ProjectileType<EchoRay>(), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
+                    Projectile.NewProjectile(npc.Center, new Vector2(-10, -10), ModContent.ProjectileType<EchoRay>(), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
                 }
             }
 
-            if (zero.ai[0] != 1 || zero.ai[0] != 2)
+            if (zero.ai[0] != 4 || zero.ai[0] != 5)
             {
                 npc.life = 0;
             }
-        }
-
-        public bool AliveCheck(Player player)
-        {
-            bool tooFar = Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 10000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 10000f;
-            if (player.dead || tooFar)
-            {
-                npc.TargetClosest(true);
-
-                if (Main.player[npc.target].dead || tooFar)
-                {
-                    npc.StrikeNPCNoInteraction(999999, 0, 0);
-                    return false;
-                }
-            }
-            return true;
         }
 
         int Frame = 0;

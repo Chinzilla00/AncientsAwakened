@@ -7,17 +7,16 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
     public class Blast : ModProjectile
     {
-
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 4; 
         }
         public override void SetDefaults()
         {
-            projectile.damage = 0;
+            projectile.damage = 1;
             projectile.width = 38;
             projectile.height = 38;
-            projectile.friendly = false;
+            projectile.hostile = true;
             projectile.aiStyle = -1;
         }
 
@@ -38,20 +37,19 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     projectile.frame = 0;
                 }
             }
-            projectile.ai[1]++;
-            if (projectile.ai[1] == 60)
+            if (projectile.ai[1]++ == 60)
             {
                 if (projectile.ai[0] == 0)
                 {
-                    Projectile.NewProjectile(projectile.Center, new Vector2(10, 0), mod.ProjectileType("EchoRay"), 40, 0f, Main.myPlayer, 0, projectile.whoAmI);
+                    Projectile.NewProjectile(projectile.Center, new Vector2(10, 0), ModContent.ProjectileType<EchoRay>(), 40, 3f, Main.myPlayer, 0, projectile.whoAmI);
                 }
                 else if (projectile.ai[0] == 1)
                 {
-                    Projectile.NewProjectile(projectile.Center, new Vector2(-10, 0), mod.ProjectileType("EchoRay"), 40, 0f, Main.myPlayer, 0, projectile.whoAmI);
+                    Projectile.NewProjectile(projectile.Center, new Vector2(-10, 0), ModContent.ProjectileType<EchoRay>(), 40, 3f, Main.myPlayer, 0, projectile.whoAmI);
                 }
                 else
                 {
-                    Projectile.NewProjectile(projectile.Center, new Vector2(0, -10), mod.ProjectileType("EchoRay"), 40, 0f, Main.myPlayer, 0, projectile.whoAmI);
+                    Projectile.NewProjectile(projectile.Center, new Vector2(0, -10), ModContent.ProjectileType<EchoRay>(), 40, 3f, Main.myPlayer, 0, projectile.whoAmI);
                 }
             }
             if (projectile.ai[1] > 180)
