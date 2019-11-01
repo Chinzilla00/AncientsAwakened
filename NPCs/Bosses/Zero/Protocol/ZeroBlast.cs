@@ -7,7 +7,7 @@ using System;
 
 namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
-    public class ZeroBlast : ModProjectile
+    /*public class ZeroBlast : ModProjectile
     {
 
         private const int chargeTime = 140;
@@ -234,5 +234,5 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 			origin = Vector2.Zero;
 			color = Color.Transparent;
         }
-    }
+    }*/
 }
