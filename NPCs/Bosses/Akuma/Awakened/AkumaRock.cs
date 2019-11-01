@@ -90,17 +90,17 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("AkumaABoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        /*public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             string RockType = Utils.SelectRandom(Main.rand, new string[]
             {
-                "NPCs/Bosses/Akuma/Awakened/AkumaRock", "NPCs/Bosses/Akuma/Awakened/AkumaRock", "NPCs/Bosses/Akuma/Awakened/AkumaRock"
+                "NPCs/Bosses/Akuma/Awakened/AkumaRock", "NPCs/Bosses/Akuma/Awakened/AkumaRock1", "NPCs/Bosses/Akuma/Awakened/AkumaRock2"
             });
 
             Texture2D Rock = mod.GetTexture(RockType);
             float rot = projectile.rotation;
             BaseMod.BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture(RockType), 0, projectile, projectile.GetAlpha(Color.White));
             return false;
-        }
+        }*/
     }
 }

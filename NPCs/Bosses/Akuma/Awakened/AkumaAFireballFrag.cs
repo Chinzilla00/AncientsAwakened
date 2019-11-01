@@ -41,6 +41,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             projectile.timeLeft = 60;
             projectile.aiStyle = -1;
             cooldownSlot = 1;
+            projectile.extraUpdates = 1;
         }
 
         public override void Kill(int timeLeft)

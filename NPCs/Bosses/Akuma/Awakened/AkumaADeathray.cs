@@ -9,7 +9,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 {
     public class AkumaADeathray : ModProjectile
     {
-        private const float maxTime = 180;
+        public float maxTime = 180;
+        public float maxScale = 1f;
 
         public override void SetStaticDefaults()
 		{
@@ -51,7 +52,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 }
                 else
                 {
-                    projectile.velocity = Main.npc[(int)projectile.ai[1]].rotation.ToRotationVector2();
+                    projectile.velocity = (Main.npc[(int)projectile.ai[1]].rotation + (float)Math.PI / 2).ToRotationVector2();
                     projectile.velocity = projectile.velocity.RotatedBy(projectile.ai[0]);
                 }
             }
@@ -64,18 +65,18 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 projectile.velocity = -Vector2.UnitY;
             }
-            if (projectile.localAI[0] == 0f)
+            if (projectile.localAI[0] == 0f && maxScale >= 1)
             {
                 Main.PlaySound(29, (int)projectile.position.X, (int)projectile.position.Y, 104, 1f, 0f);
             }
-            float num801 = 1f;
+            float num801 = maxScale;
             projectile.localAI[0] += 1f;
             if (projectile.localAI[0] >= maxTime)
             {
                 projectile.Kill();
                 return;
             }
-            projectile.scale = (float)Math.Sin(projectile.localAI[0] * 3.14159274f / maxTime) * 5f * num801;
+            projectile.scale = (float)Math.Sin(projectile.localAI[0] * 3.14159274f / maxTime) * 10f * num801;
             if (projectile.scale > num801)
             {
                 projectile.scale = num801;
@@ -197,6 +198,30 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             
+        }
+    }
+
+    public class AkumaADeathraySmall : AkumaADeathray
+    {
+        public override string Texture => "AAMod/NPCs/Bosses/Akuma/Awakened/AkumaADeathray";
+
+        public override void SetDefaults()
+        {
+            base.SetDefaults();
+            maxTime = 60;
+            maxScale = 0.2f;
+        }
+
+        public override bool CanDamage()
+        {
+            return false;
+        }
+
+        public override void Kill(int timeLeft)
+        {
+            if (Main.netMode != 1)
+                Projectile.NewProjectile(projectile.Center, projectile.velocity, ModContent.ProjectileType<AkumaADeathray>(), projectile.damage, projectile.knockBack, projectile.owner, projectile.ai[0], projectile.ai[1]);
+            base.Kill(timeLeft);
         }
     }
 }
