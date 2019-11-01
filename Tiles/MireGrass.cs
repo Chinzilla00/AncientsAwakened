@@ -33,6 +33,12 @@ namespace AAMod.Tiles
                 NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("Darkshroom"), 0, 0, -1, -1);
 
             }
+            if (!Framing.GetTileSafely(i, j - 1).active() && WorldGen.genRand.Next(50) == 0)
+            {
+                PlaceObject(i, j - 1, mod.TileType("BlackLotus"));
+                NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("BlackLotus"), 0, 0, -1, -1);
+
+            }
             if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(40) == 0)
             {
                 if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(20) == 0)

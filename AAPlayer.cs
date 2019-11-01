@@ -202,6 +202,7 @@ namespace AAMod
         public bool ShadowBand = false;
         public bool RajahCape = false;
         public bool olympianWings = false;
+        public bool BlackLotusEmblem = false;
 
         public bool SagShield = false;
         public bool ShieldUp = false;
@@ -443,6 +444,7 @@ namespace AAMod
             HeartP = false;
             HeartS = false;
             HeartA = false;
+            BlackLotusEmblem = false;
             SagShield = false;
             ShieldUp = false;
             DragonsGuard = false;
@@ -1184,7 +1186,77 @@ namespace AAMod
                     i++;
                 }
             }
+
+            if (BlackLotusEmblem && ItemLoader.CanUseItem(player.inventory[player.selectedItem], player) && player.inventory[player.selectedItem].mana > 0 && player.statMana < (int)(player.inventory[player.selectedItem].mana * player.manaCost))
+            {
+                BlackLotusQuickMana();
+            }
         }
+
+        public void BlackLotusQuickMana()
+		{
+			if (player.noItems)
+			{
+				return;
+			}
+			if (player.statMana == player.statManaMax2)
+			{
+				return;
+			}
+			for (int i = 0; i < 58; i++)
+			{
+				if (player.inventory[i].stack > 0 && player.inventory[i].type > 0 && player.inventory[i].healMana > 0 && (player.potionDelay == 0 || !player.inventory[i].potion) && ItemLoader.CanUseItem(player.inventory[i], player))
+				{
+					Main.PlaySound(player.inventory[i].UseSound, player.position);
+					if (player.inventory[i].potion)
+					{
+						if (player.inventory[i].type == 227)
+						{
+							player.potionDelay = player.restorationDelayTime;
+							player.AddBuff(21, player.potionDelay, true);
+						}
+						else
+						{
+							player.potionDelay = player.potionDelayTime;
+							player.AddBuff(21, player.potionDelay, true);
+						}
+					}
+					ItemLoader.UseItem(player.inventory[i], player);
+					player.statLife += player.inventory[i].healLife;
+					player.statMana += player.inventory[i].healMana;
+					if (player.statLife > player.statLifeMax2)
+					{
+						player.statLife = player.statLifeMax2;
+					}
+					if (player.statMana > player.statManaMax2)
+					{
+						player.statMana = player.statManaMax2;
+					}
+					if (player.inventory[i].healLife > 0 && Main.myPlayer == player.whoAmI)
+					{
+						player.HealEffect(player.inventory[i].healLife, true);
+					}
+					if (player.inventory[i].healMana > 0)
+					{
+						player.AddBuff(94, 120, true);
+						if (Main.myPlayer == player.whoAmI)
+						{
+							player.ManaEffect(player.inventory[i].healMana);
+						}
+					}
+					if (ItemLoader.ConsumeItem(player.inventory[i], player))
+					{
+						player.inventory[i].stack--;
+					}
+					if (player.inventory[i].stack <= 0)
+					{
+						player.inventory[i].TurnToAir();
+					}
+					Recipe.FindRecipes();
+					return;
+				}
+			}
+		}
 
         public override void PostUpdateBuffs()
         {
@@ -2999,6 +3071,11 @@ namespace AAMod
                 {
                     string buffName = Main.rand.Next(2) == 0 ? "DragonFire" : "HydraToxin";
                     target.AddBuff(mod.BuffType(buffName), 180);
+                }
+
+                if(BlackLotusEmblem)
+                {
+                    target.AddBuff(mod.BuffType("Moonraze"), 180);
                 }
             }
 
