@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public override void AI()
         {
-            if(!NPC.AnyNPCs(ModContent.NPCType<Haruka>()) || !NPC.AnyNPCs(ModContent.NPCType<HarukaY>()))
+            if(!NPC.AnyNPCs(ModContent.NPCType<Haruka>()) || !NPC.AnyNPCs(ModContent.NPCType<Yamata.Awakened.HarukaY>()))
             {
                 npc.life = 0;
                 npc.active = false;

@@ -7,7 +7,7 @@ using System;
 
 namespace AAMod.NPCs.Bosses.Zero.Protocol
 {
-    public class ProtoStar : ModProjectile
+    public class ZeroBlast : ModProjectile
     {
 
         private const int chargeTime = 140;
