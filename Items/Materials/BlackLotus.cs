@@ -16,7 +16,7 @@ namespace AAMod.Items.Materials
             item.height = 24;
             item.maxStack = 2;
             item.value = Item.sellPrice(0, 30, 0, 0);
-            item.rare = 1;
+            item.rare = 8;
         }
     }
 }
