@@ -21,6 +21,7 @@ namespace AAMod.Items.Blocks
         public override void SetStaticDefaults()
         {
           DisplayName.SetDefault("Orange Ice");
+          Tooltip.SetDefault(@"");
         }
 
     }

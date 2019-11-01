@@ -7,6 +7,7 @@ namespace AAMod.Items.Materials
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("M79 Parts");
+			Tooltip.SetDefault("");
 		}
 
 		public override void SetDefaults()

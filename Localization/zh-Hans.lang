@@ -1627,7 +1627,7 @@ ItemName.TruePaladinsSmeltery=真·圣骑士冶炼炉
 ItemTooltip.TruePaladinsSmeltery=超级熔炉只为最有价值的铁匠准备\n可以当作绝大多数工作站点使用
 
 ItemName.Uranium=铀绿矿
-ItemTooltip.TechneciumBar=(破坏燎狱/潭渊祭坛后,地下洞穴层,绿色)
+ItemTooltip.Uranium=(破坏燎狱/潭渊祭坛后,地下洞穴层,绿色)
 
 ItemName.UraniumAnvil=铀绿砧
 
@@ -1643,7 +1643,7 @@ ItemName.YamataBox=八音盒(八歧大蛇)
 ItemTooltip.YamataBox=播放 'Crescent of Madness' by Saucecoie
 
 ItemName.YtriumOre=钇土矿
-ItemTooltip.TechneciumBar=(破坏燎狱/潭渊祭坛后,地下洞穴层,土黄色)
+ItemTooltip.YtriumOre=(破坏燎狱/潭渊祭坛后,地下洞穴层,土黄色)
 
 ItemName.Zero2Box=八音盒(真·零·无·械)
 ItemTooltip.Zero2Box=播放 'Doomsday Arrives' by Saucecoie
@@ -1833,7 +1833,7 @@ ItemName.HorusCane=荷鲁斯藤杖
 ItemTooltip.HorusCane=召唤荷鲁斯之眼哨兵
 
 ItemName.Lifeline=命脉弓
-ItemTooltip.Lifeline=一次性发射3支木乃伊箭\n有两支初始箭射中目标会发射“逝落之矢”\n逝落之矢会降低敌人的碰撞伤害
+ItemTooltip.Lifeline=发射普通箭支变成2支魔化木乃伊箭\n有两支魔化箭射中目标会发射“逝落之矢”\n逝落之矢会降低敌人的碰撞伤害
 
 ItemName.Soulsplitter=灵魂劈裂者
 ItemTooltip.Soulsplitter=挥动时发射3束穿墙回旋幻影刃

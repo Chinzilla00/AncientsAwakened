@@ -8,6 +8,12 @@ namespace AAMod.Items.Blocks
 {
     public class Apocalyptite : BaseAAItem
     {
+        public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Apocalyptite");
+            Tooltip.SetDefault(@"");
+        }
+
         public override void SetDefaults()
         {
 

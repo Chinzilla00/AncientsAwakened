@@ -8,6 +8,7 @@ namespace AAMod.Items.Boss.Athena
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Skycutter Kopis");
+			Tooltip.SetDefault("");
         }
         public override void SetDefaults()
 		{

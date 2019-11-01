@@ -7,6 +7,7 @@ namespace AAMod.Items.Materials
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Viking Relic");
+			Tooltip.SetDefault("");
 		}
 
 		public override void SetDefaults()
