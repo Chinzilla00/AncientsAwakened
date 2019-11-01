@@ -130,7 +130,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 npc.frame.Y = 0;
             }
-            float dist = npc.Distance(player.Center);
+
+            /*float dist = npc.Distance(player.Center);
             npc.ai[2]++;
             if (npc.ai[2] == 300)
             {
@@ -145,7 +146,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             if (npc.ai[2] >= 400)
             {
                 npc.ai[2] = 180; //attack much more aggressively
-            }
+            }*/
 
             if (npc.life <= npc.lifeMax / 2 && !spawnAshe)
             {
@@ -164,7 +165,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 }
             }
 
-            if (dist > 400 & Main.rand.Next(20) == 1 && npc.ai[1] == 0 && npc.ai[2] < 300)
+            /*if (dist > 400 & Main.rand.Next(20) == 1 && npc.ai[1] == 0 && npc.ai[2] < 300)
             {
                 npc.ai[1] = 1;
             }
@@ -195,7 +196,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     npc.ai[1] = 0;
                     attackTimer = 0;
                 }
-            }
+            }*/
 
             if (npc.alpha != 0)
             {
@@ -214,7 +215,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             if (Main.netMode != 1)
             {
-                if (npc.ai[0] == 0)
+                if (npc.localAI[2] == 0)
                 {
                     npc.realLife = npc.whoAmI;
                     int latestNPC = npc.whoAmI;
@@ -227,23 +228,246 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                         Main.npc[latestNPC].netUpdate = true;
                         Main.npc[latestNPC].ai[2] = Frame[i];
                     }
-                    npc.ai[0] = 1;
+                    npc.localAI[2] = 1;
                     npc.netUpdate2 = true;
                 }
             }
+
             bool collision = true;
 
-            float speed = 15f;
-            float acceleration = 0.13f;
+            Vector2 targetPos;
+            switch ((int)npc.ai[0])
+            {
+                case 0: //chase while breathing fire, original code
+                    if (!npc.HasPlayerTarget)
+                        npc.TargetClosest(true);
+                    targetPos = Main.player[npc.target].Center;
+                    MovementWorm(targetPos, 15f, 0.13f); //original movement
+                    if (++npc.ai[2] > 3)
+                    {
+                        npc.ai[2] = 0;
+                        Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
+                        AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaABreath>(), 2, 2);
+                    }
+                    if (++npc.ai[1] > 240)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
 
-            Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-            float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
-            float targetYPos = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2);
+                case 1: //fly up for overhead meteor rain dash
+                    targetPos = player.Center;
+                    targetPos.X += 700 * (npc.Center.X < player.Center.X ? -1 : 1);
+                    targetPos.Y -= 700;
+                    MovementWorm(targetPos, 15f, 0.26f);
+                    if (++npc.ai[1] > 240 || npc.Center.Y < player.Center.Y - 700) //initiate dash
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = npc.Center.X < player.Center.X ? 1 : -1; //remember which side to end up on
+                        npc.velocity = 15f * Vector2.UnitX * npc.ai[2];
+                        npc.netUpdate = true;
+                    }
+                    break;
 
-            float targetRoundedPosX = (int)(targetXPos / 16.0) * 16;
-            float targetRoundedPosY = (int)(targetYPos / 16.0) * 16;
-            npcCenter.X = (int)(npcCenter.X / 16.0) * 16;
-            npcCenter.Y = (int)(npcCenter.Y / 16.0) * 16;
+                case 2: //meteor rain
+                    targetPos = new Vector2(player.Center.X + npc.ai[2] * 1000, npc.Center.Y);
+                    MovementWorm(targetPos, 30f, 0.13f); //accelerate horizontally
+                    if (++npc.ai[3] > 30)
+                    {
+                        npc.ai[3] = 0;
+                        if (Main.netMode != 1)
+                            Main.NewText("rain shit from body");
+                    }
+                    if (++npc.ai[1] > 240 || (npc.ai[2] > 0 ? npc.Center.X > player.Center.X + 700 : npc.Center.X < player.Center.X - 700))
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 3: //turn around, chase player for a bit
+                    targetPos = player.Center;
+                    MovementWorm(targetPos, 15f, 0.13f);
+                    if (++npc.ai[1] > 90)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                        if (Main.netMode != 1) //fire deathray
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity), ModContent.ProjectileType<AkumaADeathray>(), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
+                    }
+                    break;
+
+                case 4: //currently firing deathray, weaker acceleration
+                    targetPos = player.Center;
+                    MovementWorm(targetPos, 15f, 0.9f);
+                    if (++npc.ai[1] > 180)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 5: //fire lasers from all segments, slower now
+                    targetPos = player.Center;
+                    MovementWorm(targetPos, 10f, 0.26f);
+                    if (npc.ai[1] == 90 && Main.netMode != 1)
+                    {
+                        Main.NewText("segment rays");
+                        bool fire = false;
+                        for (int i = 0; i < Main.maxNPCs; i++)
+                            if (Main.npc[i].active && Main.npc[i].realLife == npc.whoAmI)
+                            {
+                                fire = !fire;
+                                if (fire)
+                                {
+                                    Projectile.NewProjectile(Main.npc[i].Center, (Main.npc[i].rotation + (float)Math.PI / 2).ToRotationVector2(), ModContent.ProjectileType<AkumaADeathray>(), Main.npc[i].damage / 4, 0f, Main.myPlayer, (float)Math.PI / 2, Main.npc[i].whoAmI);
+                                    Projectile.NewProjectile(Main.npc[i].Center, (Main.npc[i].rotation - (float)Math.PI / 2).ToRotationVector2(), ModContent.ProjectileType<AkumaADeathray>(), Main.npc[i].damage / 4, 0f, Main.myPlayer, (float)-Math.PI / 2, Main.npc[i].whoAmI);
+                                }
+                            }
+                    }
+                    if (++npc.ai[1] > 90 + 180)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 6: //go under and prepare for dash
+                    targetPos = player.Center;
+                    targetPos.X += 700 * (npc.Center.X < player.Center.X ? -1 : 1);
+                    targetPos.Y += 700;
+                    MovementWorm(targetPos, 15f, 0.26f);
+                    if (++npc.ai[1] > 240 || npc.Center.Y > player.Center.Y + 700) //initiate dash
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = npc.Center.X < player.Center.X ? 1 : -1; //remember which side to end up on
+                        npc.velocity = 25f * Vector2.UnitX * npc.ai[2];
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 7: //wait till past player
+                    if (++npc.ai[1] > 240 || (npc.ai[2] > 0 ? npc.Center.X > player.Center.X : npc.Center.X < player.Center.X))
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 8: //eruption
+                    npc.velocity *= 0.99f;
+                    if (++npc.ai[2] > 30)
+                    {
+                        Main.NewText("eruption from body");
+                    }
+                    if (++npc.ai[1] > 120)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 9: //lakitu and chase player
+                    if (npc.ai[2] == 0)
+                    {
+                        npc.ai[2] = 1;
+                        Main.NewText("lakitu");
+                        if (Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<AkumaALakitu>(), npc.damage / 4, 0f, Main.myPlayer, npc.target);
+                    }
+                    if (++npc.ai[1] > 300)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                default:
+                    npc.ai[0] = 0;
+                    goto case 0;
+            }
+
+            npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+            if (npc.velocity.X < 0f)
+            {
+                npc.spriteDirection = 1;
+
+            }
+            else
+            {
+                npc.spriteDirection = -1;
+            }
+
+            if (!Main.dayTime)
+            {
+                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA8"), Color.DeepSkyBlue);
+                Main.dayTime = true;
+                Main.time = 0;
+            }
+
+            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            {
+                if (Loludided == false)
+                {
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA9"), new Color(180, 41, 32));
+                    Loludided = true;
+                }
+                npc.velocity.Y = npc.velocity.Y + 1f;
+                if (npc.position.Y > Main.rockLayer * 16.0)
+                {
+                    npc.velocity.Y = npc.velocity.Y + 1f;
+                }
+                if (npc.position.Y > Main.rockLayer * 16.0)
+                {
+                    for (int num957 = 0; num957 < 200; num957++)
+                    {
+                        if (Main.npc[num957].aiStyle == npc.aiStyle)
+                        {
+                            Main.npc[num957].active = false;
+                        }
+                    }
+                }
+            }
+
+            if (collision)
+            {
+                if (npc.localAI[0] != 1)
+                    npc.netUpdate = true;
+                npc.localAI[0] = 1f;
+            }
+            if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0) && !npc.justHit)
+                npc.netUpdate = true;
+
+            return false;
+        }
+
+        public void MovementWorm(Vector2 target, float speed, float acceleration)
+        {
+            Vector2 npcCenter = npc.Center;// new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+            //float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
+            //float targetYPos = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2);
+
+            float targetRoundedPosX = target.X;// (int)(targetXPos / 16.0) * 16;
+            float targetRoundedPosY = target.Y;// (int)(targetYPos / 16.0) * 16;
+            //npcCenter.X = (int)(npcCenter.X / 16.0) * 16;
+            //npcCenter.Y = (int)(npcCenter.Y / 16.0) * 16;
             float dirX = targetRoundedPosX - npcCenter.X;
             float dirY = targetRoundedPosY - npcCenter.Y;
             npc.TargetClosest(true);
@@ -309,59 +533,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                         npc.velocity.X = npc.velocity.X - acceleration;
                 }
             }
-
-            npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
-            if (npc.velocity.X < 0f)
-            {
-                npc.spriteDirection = 1;
-
-            }
-            else
-            {
-                npc.spriteDirection = -1;
-            }
-
-            if (!Main.dayTime)
-            {
-                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA8"), Color.DeepSkyBlue);
-                Main.dayTime = true;
-                Main.time = 0;
-            }
-
-            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
-            {
-                if (Loludided == false)
-                {
-                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA9"), new Color(180, 41, 32));
-                    Loludided = true;
-                }
-                npc.velocity.Y = npc.velocity.Y + 1f;
-                if (npc.position.Y > Main.rockLayer * 16.0)
-                {
-                    npc.velocity.Y = npc.velocity.Y + 1f;
-                }
-                if (npc.position.Y > Main.rockLayer * 16.0)
-                {
-                    for (int num957 = 0; num957 < 200; num957++)
-                    {
-                        if (Main.npc[num957].aiStyle == npc.aiStyle)
-                        {
-                            Main.npc[num957].active = false;
-                        }
-                    }
-                }
-            }
-
-            if (collision)
-            {
-                if (npc.localAI[0] != 1)
-                    npc.netUpdate = true;
-                npc.localAI[0] = 1f;
-            }
-            if ((npc.velocity.X > 0.0 && npc.oldVelocity.X < 0.0 || npc.velocity.X < 0.0 && npc.oldVelocity.X > 0.0 || npc.velocity.Y > 0.0 && npc.oldVelocity.Y < 0.0 || npc.velocity.Y < 0.0 && npc.oldVelocity.Y > 0.0) && !npc.justHit)
-                npc.netUpdate = true;
-
-            return false;
         }
 
         public override void NPCLoot()
@@ -400,7 +571,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public bool Quote5;
         public bool QuoteSaid;
 
-        public void Attack(NPC npc)
+        /*public void Attack(NPC npc)
         {
             Player player = Main.player[npc.target];
             bool sayQuote = Main.rand.Next(4) == 0;
@@ -455,10 +626,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 }
                 if (npc.ai[2] == 330 || npc.ai[2] == 360 || npc.ai[2] == 390)
                 {
-                    /*for (int Loops = 0; Loops < Fireballs; Loops++)
-                    {
-                        AkumaAttacks.Eruption(npc, mod);
-                    }*/
+                    //for (int Loops = 0; Loops < Fireballs; Loops++) AkumaAttacks.Eruption(npc, mod);
                     Main.NewText("spit fragball");
                     Vector2 spawnPos = npc.Center;
                     spawnPos.X += 250 * (npc.Center.X < player.Center.X ? 1 : -1);
@@ -527,7 +695,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                         }
                 }
             }
-        }
+        }*/
 
 
         public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)

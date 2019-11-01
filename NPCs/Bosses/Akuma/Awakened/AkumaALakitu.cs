@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -40,24 +41,30 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             projectile.timeLeft = 600;
             projectile.aiStyle = -1;
             cooldownSlot = 1;
+            projectile.hide = true;
         }
 
         public override void AI()
         {
-            Player player = Main.player[(int)projectile.ai[0]];
-            Vector2 target = player.Center;
-            target.X += projectile.ai[1] > 90 ? -600 : 600;
-            target.Y -= 400;
-            if (++projectile.ai[1] > 180)
-                projectile.ai[1] = 0;
+            projectile.hide = false;
 
-            projectile.velocity = (target - projectile.Center) / 40;
+            Player player = Main.player[(int)projectile.ai[0]];
+
+            projectile.Center = player.Center;
+            projectile.position.Y -= 500;
+            projectile.position.X += (float)Math.Sin(2 * Math.PI / 180 * projectile.ai[1]++);
 
             if (projectile.localAI[0] > 20)
             {
                 projectile.localAI[0] = 0;
                 if (Main.netMode != 1)
                     Projectile.NewProjectile(projectile.Center, Vector2.UnitY * 5, ModContent.ProjectileType<AkumaRock>(), projectile.damage, 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+            }
+
+            if (projectile.localAI[1] == 0)
+            {
+                projectile.localAI[1] = 1;
+                //insert spawn dust here
             }
         }
 

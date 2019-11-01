@@ -40,12 +40,20 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 projectile.velocity = -Vector2.UnitY;
             }
-            if (Main.npc[(int)projectile.ai[1]].active && Main.npc[(int)projectile.ai[1]].type == mod.NPCType("AkumaA"))
+            if (Main.npc[(int)projectile.ai[1]].active && Main.npc[(int)projectile.ai[1]].modNPC is AkumaA)
             {
                 projectile.Center = Main.npc[(int)projectile.ai[1]].Center;
-                projectile.velocity = Vector2.Normalize(Main.npc[(int)projectile.ai[1]].velocity);
-                projectile.position += 30 * projectile.velocity;
-                projectile.position += 10 * projectile.velocity.RotatedBy(Main.npc[(int)projectile.ai[1]].spriteDirection > 0 ? -Math.PI / 2 : Math.PI / 2);
+                if (projectile.ai[0] == 0)
+                {
+                    projectile.velocity = Vector2.Normalize(Main.npc[(int)projectile.ai[1]].velocity);
+                    projectile.position += 30 * projectile.velocity;
+                    projectile.position += 10 * projectile.velocity.RotatedBy(Main.npc[(int)projectile.ai[1]].spriteDirection > 0 ? -Math.PI / 2 : Math.PI / 2);
+                }
+                else
+                {
+                    projectile.velocity = Main.npc[(int)projectile.ai[1]].rotation.ToRotationVector2();
+                    projectile.velocity = projectile.velocity.RotatedBy(projectile.ai[0]);
+                }
             }
             else
             {
