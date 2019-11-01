@@ -3148,9 +3148,9 @@ namespace AAMod
                         case "DarkmatterHelmetBonus":
                         return "你和附近的盟友减少40%受到的伤害";
                         case "DarkmatterMaskBonus1":
-                        return "受到来自敌人的伤害\n 受到伤害的2%会回复你的生命\n";
+                        return "对周围的敌人造成伤害\n造成伤害的2%会回复你的生命\n";
                         case "DarkmatterMaskBonus2":
-                        return "魔法伤害\n";
+                        return "产生的魔法伤害\n";
                         case "DarkmatterMaskBonus3":
                         return "%暴击率";
                         case "DarkmatterVisorBonus":
@@ -3265,7 +3265,7 @@ namespace AAMod
                         case "RadiumHelmetBonus":
                         return "附近的敌人将会受到更多的伤害";
                         case "RadiumMaskBonus1":
-                        return "受到敌人伤害时\n 受到伤害的50%将回复魔力值\n如果处于最大魔力值时, 你获得魔力超载buff\n";
+                        return "对周围的敌人造成伤害\n造成伤害的50%将回复魔力值\n如果处于最大魔力值时, 你获得魔力超载buff\n";
                         case "RadiumMaskBonus2":
                         return "魔法伤害\n";
                         case "RadiumMaskBonus3":
