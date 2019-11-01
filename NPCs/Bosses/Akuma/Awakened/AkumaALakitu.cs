@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             Player player = Main.player[(int)projectile.ai[0]];
             Vector2 target = player.Center;
             target.X += projectile.ai[1] > 90 ? -600 : 600;
-            target.Y -= 600;
+            target.Y -= 400;
             if (++projectile.ai[1] > 180)
                 projectile.ai[1] = 0;
 
@@ -57,7 +57,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 projectile.localAI[0] = 0;
                 if (Main.netMode != 1)
-                    Projectile.NewProjectile(projectile.Center, Vector2.UnitY * 30f, ModContent.ProjectileType<AkumaRock>(), projectile.damage, 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+                    Projectile.NewProjectile(projectile.Center, Vector2.UnitY * 5, ModContent.ProjectileType<AkumaRock>(), projectile.damage, 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
             }
         }
 

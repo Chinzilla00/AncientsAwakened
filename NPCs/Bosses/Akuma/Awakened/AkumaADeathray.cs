@@ -44,6 +44,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             {
                 projectile.Center = Main.npc[(int)projectile.ai[1]].Center;
                 projectile.velocity = Vector2.Normalize(Main.npc[(int)projectile.ai[1]].velocity);
+                projectile.position += 30 * projectile.velocity;
+                projectile.position += 10 * projectile.velocity.RotatedBy(Main.npc[(int)projectile.ai[1]].spriteDirection > 0 ? -Math.PI / 2 : Math.PI / 2);
             }
             else
             {

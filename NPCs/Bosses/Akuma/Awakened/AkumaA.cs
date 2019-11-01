@@ -477,7 +477,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                         AkumaAttacks.SpawnLung(player, mod, true);
                         MinionCount += 1;
                     }
-
+                    Main.NewText("lakitu");
                     Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<AkumaALakitu>(), npc.damage / 4, 0f, Main.myPlayer, npc.target);
                 }
             }
@@ -491,7 +491,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 }
                 if (npc.ai[2] == 310)
                 {
-                    Main.NewText("fire deathray");
                     Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity), ModContent.ProjectileType<AkumaADeathray>(), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
                     //Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, ModContent.ProjectileType<AFireProjHostile>(), damage, 3, Main.myPlayer);
                 }
@@ -511,7 +510,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                         NPC.NewNPC((int)(player.position.X + Main.rand.Next(700)), (int)(player.position.Y + Main.rand.Next(700)), ModContent.NPCType<SunA>());
                     }
                 }
-                if (npc.ai[2] % 20 == 0)
+                if (npc.ai[2] % 10 == 0)
                 {
                     Main.NewText("segment flames");
                     bool fire = false;
@@ -521,9 +520,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                             fire = !fire;
                             if (fire)
                             {
-                                const float speed = 2f;
-                                Projectile.NewProjectile(Main.npc[i].Center, speed * Main.npc[i].velocity.RotatedBy(Math.PI / 2), ModContent.ProjectileType<AkumaABreath>(), Main.npc[i].damage / 4, 0f, Main.myPlayer);
-                                Projectile.NewProjectile(Main.npc[i].Center, -speed * Main.npc[i].velocity.RotatedBy(Math.PI / 2), ModContent.ProjectileType<AkumaABreath>(), Main.npc[i].damage / 4, 0f, Main.myPlayer);
+                                const float speed = 10f;
+                                Projectile.NewProjectile(Main.npc[i].Center, speed * Vector2.UnitX.RotatedBy(Main.npc[i].rotation + Math.PI / 2), ModContent.ProjectileType<AkumaABreath>(), Main.npc[i].damage / 4, 0f, Main.myPlayer);
+                                Projectile.NewProjectile(Main.npc[i].Center, speed * Vector2.UnitX.RotatedBy(Main.npc[i].rotation - Math.PI / 2), ModContent.ProjectileType<AkumaABreath>(), Main.npc[i].damage / 4, 0f, Main.myPlayer);
                             }
                         }
                 }
