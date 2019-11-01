@@ -3150,9 +3150,9 @@ namespace AAMod
                         case "DarkmatterMaskBonus1":
                         return "对周围的敌人造成伤害\n造成伤害的2%会回复你的生命\n";
                         case "DarkmatterMaskBonus2":
-                        return "产生的魔法伤害\n";
+                        return " 魔法伤害\n";
                         case "DarkmatterMaskBonus3":
-                        return "%暴击率";
+                        return "% 暴击率";
                         case "DarkmatterVisorBonus":
                         return @"你的头上生成一个不稳定的传送门
 当你射击时会发射黑暗爆破弹. 
@@ -3267,9 +3267,9 @@ namespace AAMod
                         case "RadiumMaskBonus1":
                         return "对周围的敌人造成伤害\n造成伤害的50%将回复魔力值\n如果处于最大魔力值时, 你获得魔力超载buff\n";
                         case "RadiumMaskBonus2":
-                        return "魔法伤害\n";
+                        return " 魔法伤害\n";
                         case "RadiumMaskBonus3":
-                        return "%暴击率";
+                        return "% 暴击率";
                         case "RaiderChestBonus":
                         return "你不会被击退\r\n随着你的生命值降低, 你的伤害减免将提高";
                         case "StarcloudHeadgearBonus":
