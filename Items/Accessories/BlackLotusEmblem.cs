@@ -18,7 +18,7 @@ Greatly reduce manasick time
 Your magic weapon cause moonraze
 15% increased movement speed
 12% reduced mana usage
-15% increased magic damage");
+22% increased magic damage");
         }
         public override void SetDefaults()
         {
@@ -35,7 +35,7 @@ Your magic weapon cause moonraze
             player.manaMagnet = true;
             player.manaRegenDelay = 0;
 			player.manaCost -= 0.12f;
-			player.magicDamage += 0.15f;
+			player.magicDamage += 0.22f;
             player.moveSpeed += 0.15f;
             player.maxRunSpeed *= 0.15f + player.moveSpeed;
             player.runAcceleration *= 0.15f + player.moveSpeed;
