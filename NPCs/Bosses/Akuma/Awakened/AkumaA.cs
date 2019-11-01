@@ -258,7 +258,26 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                     break;
 
-                case 1: //fly up for overhead meteor rain dash
+                case 1: //chase harder, shoot fragballs
+                    targetPos = player.Center;
+                    MovementWorm(targetPos, 16f, 0.17f);
+                    if (++npc.ai[2] > 90)
+                    {
+                        npc.ai[2] = 0;
+                        Main.NewText("fragballs");
+                        if (Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, 7f * Vector2.Normalize(npc.velocity), ModContent.ProjectileType<AkumaAFireballFrag>(), npc.damage / 4, 0f, Main.myPlayer);
+                    }
+                    if (++npc.ai[1] > 300)
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+
+                case 2: //fly up for overhead meteor rain dash
                     targetPos = player.Center;
                     targetPos.X += 700 * (npc.Center.X < player.Center.X ? -1 : 1);
                     targetPos.Y -= 700;
@@ -273,14 +292,24 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                     break;
 
-                case 2: //meteor rain
+                case 3: //meteor rain
                     targetPos = new Vector2(player.Center.X + npc.ai[2] * 1000, npc.Center.Y);
                     MovementWorm(targetPos, 30f, 0.13f); //accelerate horizontally
                     if (++npc.ai[3] > 30)
                     {
                         npc.ai[3] = 0;
+                        Main.NewText("rain shit from body");
                         if (Main.netMode != 1)
-                            Main.NewText("rain shit from body");
+                        {
+                            bool fire = false;
+                            for (int i = 0; i < Main.maxNPCs; i++)
+                                if (Main.npc[i].active && Main.npc[i].realLife == npc.whoAmI)
+                                {
+                                    fire = !fire;
+                                    if (fire)
+                                        Projectile.NewProjectile(Main.npc[i].Center, 5f * Vector2.UnitY, ModContent.ProjectileType<AkumaRock>(), Main.npc[i].damage / 4, 0f, Main.myPlayer);
+                                }
+                        }
                     }
                     if (++npc.ai[1] > 240 || (npc.ai[2] > 0 ? npc.Center.X > player.Center.X + 700 : npc.Center.X < player.Center.X - 700))
                     {
@@ -292,7 +321,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                     break;
 
-                case 3: //turn around, chase player for a bit
+                case 4: //turn around, chase player for a bit
                     targetPos = player.Center;
                     MovementWorm(targetPos, 15f, 0.13f);
                     if (++npc.ai[1] > 90)
@@ -305,7 +334,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                     break;
 
-                case 4: //currently firing deathray, weaker acceleration
+                case 5: //currently firing deathray, weaker acceleration
                     targetPos = player.Center;
                     MovementWorm(targetPos, 15f, 0.9f);
                     if (++npc.ai[1] > 180)
@@ -316,7 +345,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                     break;
 
-                case 5: //fire lasers from all segments, slower now
+                case 6: //fire lasers from all segments, slower now
                     targetPos = player.Center;
                     MovementWorm(targetPos, 10f, 0.26f);
                     if (npc.ai[1] == 90 && Main.netMode != 1)
@@ -342,7 +371,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                     break;
 
-                case 6: //go under and prepare for dash
+                case 7: //go under and prepare for dash
                     targetPos = player.Center;
                     targetPos.X += 700 * (npc.Center.X < player.Center.X ? -1 : 1);
                     targetPos.Y += 700;
@@ -357,7 +386,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                     break;
 
-                case 7: //wait till past player
+                case 8: //wait till past player
                     if (++npc.ai[1] > 240 || (npc.ai[2] > 0 ? npc.Center.X > player.Center.X : npc.Center.X < player.Center.X))
                     {
                         npc.ai[0]++;
@@ -367,11 +396,22 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                     break;
 
-                case 8: //eruption
+                case 9: //eruption
                     npc.velocity *= 0.99f;
-                    if (++npc.ai[2] > 30)
+                    if (++npc.ai[2] == 30)
                     {
                         Main.NewText("eruption from body");
+                        if (Main.netMode != 1)
+                        {
+                            bool fire = false;
+                            for (int i = 0; i < Main.maxNPCs; i++)
+                                if (Main.npc[i].active && Main.npc[i].realLife == npc.whoAmI)
+                                {
+                                    fire = !fire;
+                                    if (fire)
+                                        Projectile.NewProjectile(Main.npc[i].Center, -10f * Vector2.UnitY, ModContent.ProjectileType<AkumaAMeteor>(), Main.npc[i].damage / 4, 0f, Main.myPlayer);
+                                }
+                        }
                     }
                     if (++npc.ai[1] > 120)
                     {
@@ -382,7 +422,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                     break;
 
-                case 9: //lakitu and chase player
+                case 10: //lakitu and chase player
                     if (npc.ai[2] == 0)
                     {
                         npc.ai[2] = 1;

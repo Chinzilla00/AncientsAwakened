@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
             projectile.hostile = true;
-            projectile.timeLeft = 30;
+            projectile.timeLeft = 60;
             projectile.aiStyle = -1;
             cooldownSlot = 1;
         }
