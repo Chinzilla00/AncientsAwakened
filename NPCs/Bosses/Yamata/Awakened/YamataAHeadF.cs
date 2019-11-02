@@ -185,7 +185,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
                 case 3: //breathe lingering flame
                     internalAI[2] += npc.ai[3];
-                    if (++internalAI[2] > 60)
+                    if (++internalAI[2] > 120)
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
