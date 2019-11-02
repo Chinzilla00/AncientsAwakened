@@ -244,7 +244,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     targetPos = Main.player[npc.target].Center;
                     MovementWorm(targetPos, 15f, 0.13f); //original movement
                     Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
-                    AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaABreath>(), 2, 2);
+                    AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaABreath>(), 2, 4);
                     if (++npc.ai[2] > 90)
                     {
                         npc.ai[2] = 0;
