@@ -435,7 +435,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 {
                     if (Main.netMode != 1)
                     {
-                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AsheVanish>(), 0);
+                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<FuryAsheVanish>(), 0);
                         Main.npc[DeathAnim].velocity = npc.velocity;
                         Main.npc[DeathAnim].netUpdate = true;
                     }
