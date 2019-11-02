@@ -104,11 +104,11 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     int firepos = 0;
                     if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
                     {
-                        firepos = 100;
+                        firepos = 200;
                     }
                     else
                     {
-                        firepos = -100;
+                        firepos = -200;
                     }
 
                     wantedVelocity = player.Center - new Vector2(firepos, 0);
@@ -199,7 +199,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     
                     if (npc.ai[1] >= 100)
                     {
-                        MoveToPoint(player.Center + new Vector2((player.velocity.X > 0? 1 : -1) * 250, -150));
+                        MoveToPoint(player.Center + new Vector2((player.velocity.X > 0? 1 : -1) * 350, -200));
                     }
                     else
                     {
@@ -530,7 +530,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
         public bool FlyingBack = false;
         public bool FlyingPositive = false;
         public bool FlyingNegative = false;
-        public float pos = 250f;
+        public float pos = 350f;
 
         public void ChangePos()
         {
@@ -560,9 +560,9 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             {
                 if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
                 {
-                    if (pos == -250)
+                    if (pos == -350)
                     {
-                        pos = 250;
+                        pos = 350;
                     }
 
                     npc.direction = 1;
@@ -578,9 +578,9 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 }
                 else //If NPC's X position is higher than the player's
                 {
-                    if (pos == 250)
+                    if (pos == 350)
                     {
-                        pos = -250;
+                        pos = -350;
                     }
 
                     npc.direction = -1;

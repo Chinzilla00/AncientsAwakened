@@ -15,7 +15,7 @@ namespace AAMod.Items.Accessories
 @"Increases pickup range for mana stars
 Automatically use mana potions when needed
 Greatly reduce manasick time
-Your magic attacks cause moonraze
+Your magic attacks inflicts moonraze
 15% increased movement speed
 12% reduced mana usage
 15% increased magic damage");
