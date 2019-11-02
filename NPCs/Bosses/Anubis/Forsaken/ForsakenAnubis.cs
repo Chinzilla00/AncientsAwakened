@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             npc.aiStyle = -1;
             npc.damage = 55;
             npc.defense = 60;
-            npc.lifeMax = 180000;
+            npc.lifeMax = 200000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
             npc.knockBackResist = 0f;
