@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             if (Main.netMode != 1)
             {
-                Vector2 vel = Vector2.Normalize(projectile.velocity) * 10;
+                Vector2 vel = Vector2.Normalize(projectile.velocity) * 5;
                 for (int i = 0; i < 6; ++i)
                 {
                     vel = vel.RotatedBy(Math.PI / 3);
