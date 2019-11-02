@@ -146,7 +146,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         npc.velocity = npc.DirectionTo(player.Center) * (npc.life < npc.lifeMax/3 ? 50:40);
                         if(npc.velocity.Length() < 40f)
                         {
-                            npc.velocity = Vector2.Normalize(npc.velocity) * (npc.life < npc.lifeMax/3 ? 50:40);
+                            npc.velocity = Vector2.Normalize(npc.oldVelocity) * (npc.life < npc.lifeMax/3 ? 50:40);
                         }
                     }
                     break;
