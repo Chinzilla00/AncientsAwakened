@@ -111,7 +111,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
                     MoveToPoint(wantedVelocity);
 
-                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 4, 24, false);
+                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 4, 12, false);
                     if (npc.ai[1]++ > 180)
                     {
                         npc.ai[1] = 0;
@@ -594,9 +594,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
                 {
-                    if (pos == -350)
+                    if (pos == -600)
                     {
-                        pos = 350;
+                        pos = 600;
                     }
 
                     npc.direction = 1;
@@ -612,9 +612,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
                 else //If NPC's X position is higher than the player's
                 {
-                    if (pos == 350)
+                    if (pos == 600)
                     {
-                        pos = -350;
+                        pos = -600;
                     }
 
                     npc.direction = -1;

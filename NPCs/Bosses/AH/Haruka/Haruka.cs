@@ -636,7 +636,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 
 
-                if (internalAI[4] > 120)
+                if (internalAI[4] > 180)
                 {
                     npc.frameCounter = 0;
                     Frame = 0;
@@ -690,7 +690,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 else if(internalAI[4] > 100)
                 {
-                    MovePoint = wantedVelocity;
+                    MovePoint = player.Center - new Vector2(pos * 1.5f, 0);
                 }
             }
             else if (internalAI[0] == AISTATE_Shadowkilling)
@@ -736,7 +736,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (internalAI[0] == AISTATE_IDLE || internalAI[0] == AISTATE_PROJ || Invisible) //When charging the player
             {
-                MoveToPoint(wantedVelocity);
+                MoveToPoint(player.Center - new Vector2(pos * 1.5f, 0));
             }
             else if (internalAI[0] == AISTATE_SPIN)
             {
