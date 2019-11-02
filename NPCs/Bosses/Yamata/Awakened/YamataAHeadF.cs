@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.boss = false;
             npc.noGravity = true;
             npc.chaseable = false;
-            npc.damage = 210;
+            npc.damage = 170;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
             npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
             npc.lifeMax = 45000;
@@ -95,26 +95,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
         public override void AI()
         {
-            npc.defDamage = isAwakened ? 200 : 180;
-            if (Body == null)
+            //npc.defDamage = isAwakened ? 200 : 180;
+            NPC npcBody = Main.npc[(int)npc.ai[0]];
+            if (npcBody.active && npcBody.type == ModContent.NPCType<YamataA>())
             {
-                NPC npcBody = Main.npc[(int)npc.ai[0]];
-                if (npcBody.type == ModContent.NPCType<YamataA>())
-                {
-                    Body = (YamataA)npcBody.modNPC;
-                }
+                Body = (YamataA)npcBody.modNPC;
             }
-            if (Body == null)
-                return;			
-
-            npc.alpha = Body.npc.alpha;
-            
-            npc.TargetClosest();
-            Player targetPlayer = Main.player[npc.target];
-            if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
-
-
-            if (!Body.npc.active)
+            else
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghost hands'
                 {
@@ -125,6 +112,13 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 }
                 return;
             }
+
+            npc.alpha = Body.npc.alpha;
+            
+            npc.TargetClosest();
+            Player targetPlayer = Main.player[npc.target];
+            if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
+            
             Vector2 nextTarget = Body.npc.Center + new Vector2(npc.ai[1], npc.ai[2]);
             
             switch ((int)internalAI[0])

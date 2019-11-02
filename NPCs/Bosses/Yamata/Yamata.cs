@@ -366,7 +366,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
 
                 float dist = npc.Distance(playerTarget.Center);
-                if (dist > 800 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
+                if (dist > 1200 || !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
                 {
                     if (Main.netMode != 1 && SayTheLineYamata == 300)
                     {
@@ -381,7 +381,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     if (npc.alpha >= 255)
                     {
                         npc.alpha = 255;
-                        Vector2 tele = playerTarget.Center + new Vector2(0, -100) +  (playerTarget.velocity == new Vector2(0,0)? new Vector2(0,0) : Vector2.Normalize(playerTarget.velocity) * playerTarget.velocity.Length() * 54.33f);
+                        Vector2 tele = playerTarget.Center + new Vector2(0, -200);// +  (playerTarget.velocity == new Vector2(0,0)? new Vector2(0,0) : Vector2.Normalize(playerTarget.velocity) * playerTarget.velocity.Length() * 54.33f);
                         TeleportMe1 = true;
                         TeleportMe2 = true;
                         TeleportMe3 = true;
