@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
 			item.knockBack = 5f;
 			item.width = 24;
 			item.height = 28;
-			item.damage = 100;
+			item.damage = 125;
 			item.UseSound = SoundID.Item71;
 			item.shoot = mod.ProjectileType("Soulsplitter");
 			item.shootSpeed = 14f;

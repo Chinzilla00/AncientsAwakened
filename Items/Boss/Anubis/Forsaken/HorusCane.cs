@@ -17,7 +17,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("HorusEye");
-            item.damage = 200;
+            item.damage = 250;
             item.width = 50;
             item.height = 50;
             item.UseSound = SoundID.Item44;

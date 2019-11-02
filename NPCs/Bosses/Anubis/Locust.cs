@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
-            npc.lifeMax = 5000;
+            npc.lifeMax = 2500;
             npc.defense = 130;
             npc.damage = 5;
             npc.HitSound = SoundID.NPCHit31;
