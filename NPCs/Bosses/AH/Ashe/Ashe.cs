@@ -228,6 +228,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                     else
                     {
+                        npc.ai[0] = 11;
                         goto case 11;
                     }
                     if (!AliveCheck(player))
