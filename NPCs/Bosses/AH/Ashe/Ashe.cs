@@ -423,27 +423,24 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 if (npc.velocity.Y > 0)
                     npc.velocity.Y -= speedModifier * 2;
             }
-            if (Math.Abs(npc.velocity.X) > 30)
+            if (npc.velocity.X > 30 || npc.velocity.X < -30)
                 npc.velocity.X = 30 * Math.Sign(npc.velocity.X);
-            if (Math.Abs(npc.velocity.Y) > 30)
+            if (npc.velocity.Y > 30 || npc.velocity.Y < -30)
                 npc.velocity.Y = 30 * Math.Sign(npc.velocity.Y);
         }
 
         private bool AliveCheck(Player player)
         {
-            if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            if (player.dead || !player.active || (npc.position.X - Main.player[npc.target].position.X) > 6000f || (npc.position.X - Main.player[npc.target].position.X) < -6000f || (npc.position.Y - Main.player[npc.target].position.Y) > 6000f || (npc.position.Y - Main.player[npc.target].position.Y) < -6000f)
             {
                 npc.TargetClosest(true);
-                if (player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+                if (Main.netMode != 1)
                 {
-                    if (Main.netMode != 1)
-                    {
-                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AsheVanish>(), 0);
-                        Main.npc[DeathAnim].velocity = npc.velocity;
-                        Main.npc[DeathAnim].netUpdate = true;
-                    }
-                    npc.active = false;
+                    int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AsheVanish>(), 0);
+                    Main.npc[DeathAnim].velocity = npc.velocity;
+                    Main.npc[DeathAnim].netUpdate = true;
                 }
+                npc.active = false;
                 return false;
             }
             if (npc.timeLeft < 600)
