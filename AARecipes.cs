@@ -159,6 +159,34 @@ namespace AAMod
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "RadiumBar", 1);
+            recipe.AddIngredient(ItemID.LunarOre, 3);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(ItemID.FragmentNebula);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "RadiumBar", 1);
+            recipe.AddIngredient(ItemID.LunarOre, 5);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(ItemID.FragmentSolar);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "DarkMatter", 1);
+            recipe.AddIngredient(ItemID.LunarOre, 3);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(ItemID.FragmentStardust);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "DarkMatter", 1);
+            recipe.AddIngredient(ItemID.LunarOre, 3);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(ItemID.FragmentVortex);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
             recipe.AddIngredient(ItemID.EmptyBucket, 1);
             recipe.AddTile(ModContent.TileType<Tiles.Furniture.Razewood.RazewoodSink>());
             recipe.SetResult(ItemID.LavaBucket);
