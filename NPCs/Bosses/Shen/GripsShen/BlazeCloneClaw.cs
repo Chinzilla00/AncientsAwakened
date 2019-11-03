@@ -109,7 +109,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             }
             int red = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 2);
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], red, projectile.position - new Vector2(0f, projectile.height/2), projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, Alpha, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], red, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, Alpha, true);
             return false;
         }
 
