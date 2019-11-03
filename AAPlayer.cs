@@ -1238,7 +1238,7 @@ namespace AAMod
 					}
 					if (player.inventory[i].healMana > 0)
 					{
-						player.AddBuff(94, 120, true);
+						player.AddBuff(94, 60, true);
 						if (Main.myPlayer == player.whoAmI)
 						{
 							player.ManaEffect(player.inventory[i].healMana);
