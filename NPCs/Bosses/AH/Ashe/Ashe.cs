@@ -113,7 +113,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     
                     if (npc.ai[1] > 60)
                     {
-                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 4, 12, false);
+                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 4, 18, false);
                     }
 
                     if (npc.ai[1]++ > 180)

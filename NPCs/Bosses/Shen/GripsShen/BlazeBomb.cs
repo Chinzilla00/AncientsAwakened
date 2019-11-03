@@ -15,8 +15,8 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 46;
+            projectile.height = 46;
             projectile.friendly = false;
             projectile.hostile = true;
             projectile.scale = 1.1f;
@@ -53,10 +53,10 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                     projectile.frame = 0;
                 }
             }
-            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
+            projectile.rotation += ((float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f)/60f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
-            const float desiredFlySpeedInPixelsPerFrame = 10;
+            const float desiredFlySpeedInPixelsPerFrame = 2;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
