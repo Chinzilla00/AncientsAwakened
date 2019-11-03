@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             return projectile.scale >= 1f;
         }
 
-        public bool proj = false;
+        public int proj = 0;
 
         public override void AI()
         {
@@ -50,27 +50,26 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 
             timer++;
 
-            if(!proj)
+            if(proj == 0)
             {
                 for(int i = 0; i<1000; i++)
                 {
                     if(Main.projectile[i].type == mod.ProjectileType("BlazeBomb"))
                     {
-                        projectile.ai[1] = Main.projectile[i].whoAmI;
-                        proj = true;
+                        proj = Main.projectile[i].whoAmI;
                     }
                 } 
             }
 
             float raydirection = 1f;
             
-            if(proj)
+            if(proj != 0)
             {
-                if(Main.projectile[(int)projectile.ai[1]].active && Main.projectile[(int)projectile.ai[1]].modProjectile is BlazeBomb)
+                if(Main.projectile[proj].active && Main.projectile[proj].modProjectile is BlazeBomb)
                 {
-                    projectile.Center = Main.projectile[(int)projectile.ai[1]].position + new Vector2(Main.projectile[(int)projectile.ai[1]].width/2, Main.projectile[(int)projectile.ai[1]].height/2);
+                    projectile.Center = Main.projectile[proj].position + new Vector2(Main.projectile[proj].width/2, Main.projectile[proj].height/2);
 
-                    Vector2 dir = Vector2.Normalize(Main.player[centerNPC.target].Center - Main.projectile[(int)projectile.ai[1]].Center);
+                    Vector2 dir = Vector2.Normalize(Main.player[centerNPC.target].Center - Main.projectile[proj].Center);
                     if (dir.Y < 0f)
                     {
                         raydirection = -1f;
@@ -78,7 +77,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 
                     //projectile.velocity = Vector2.Normalize(projectile.velocity);
                     projectile.position += 30 * projectile.velocity;
-                    projectile.position += 10 * projectile.velocity.RotatedBy(Main.npc[(int)projectile.ai[1]].spriteDirection > 0 ? -Math.PI / 2 : Math.PI / 2);
+                    projectile.position += 10 * projectile.velocity.RotatedBy(Main.npc[proj].spriteDirection > 0 ? -Math.PI / 2 : Math.PI / 2);
                 }
                 else
                 {
