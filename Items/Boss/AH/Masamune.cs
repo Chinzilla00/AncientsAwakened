@@ -57,6 +57,7 @@ Right click to shoot a blade wave");
                 item.melee = true;
                 item.noMelee = false;
                 item.noUseGraphic = false;
+                item.damage = 250;
                 item.channel = false;
                 item.useAnimation = 15;
                 item.useTime = 15;
