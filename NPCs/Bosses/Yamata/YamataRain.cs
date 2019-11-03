@@ -15,7 +15,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             projectile.hostile = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 6;
-            projectile.extraUpdates = 2;
+            //projectile.extraUpdates = 2;
             projectile.alpha = 255;
         }
 

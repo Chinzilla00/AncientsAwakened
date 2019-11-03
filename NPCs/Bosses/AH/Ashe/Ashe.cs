@@ -26,7 +26,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             npc.width = 40;
             npc.height = 100;
-            npc.damage = 150;
+            npc.damage = 130;
             npc.defense = 40;
             npc.lifeMax = 140000;
             npc.value = Item.sellPrice(0, 12, 0, 0);
@@ -77,7 +77,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
                     MoveToPoint(wantedVelocity);
 
-                    BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, ModContent.ProjectileType<AsheShot>(), ref npc.ai[2], 18, npc.damage / 2, 9, false);
+                    BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, ModContent.ProjectileType<AsheShot>(), ref npc.ai[2], 18, npc.damage / 4, 9, false);
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
                         AIChange();
@@ -100,19 +100,23 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     int firepos = 0;
                     if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
                     {
-                        firepos = 100;
+                        firepos = 500;
                     }
                     else
                     {
-                        firepos = -100;
+                        firepos = -500;
                     }
 
                     wantedVelocity = player.Center - new Vector2(firepos, 0);
 
                     MoveToPoint(wantedVelocity);
+                    
+                    if (npc.ai[1] > 60)
+                    {
+                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 4, 12, false);
+                    }
 
-                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 2, 24, false);
-                    if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
+                    if (npc.ai[1]++ > 180)
                     {
                         npc.ai[1] = 0;
                         AIChange();
@@ -142,7 +146,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         npc.velocity = npc.DirectionTo(player.Center) * (npc.life < npc.lifeMax/3 ? 50:40);
                         if(npc.velocity.Length() < 40f)
                         {
-                            npc.velocity = Vector2.Normalize(npc.velocity) * (npc.life < npc.lifeMax/3 ? 50:40);
+                            npc.velocity = Vector2.Normalize(npc.oldVelocity) * (npc.life < npc.lifeMax/3 ? 50:40);
                         }
                     }
                     break;
@@ -195,7 +199,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     
                     if (npc.ai[1] >= 100)
                     {
-                        MoveToPoint(player.Center + new Vector2((player.velocity.X > 0? 1 : -1) * 250, -150));
+                        MoveToPoint(player.Center + new Vector2((player.velocity.X > 0? 1 : -1) * 600, -300));
                     }
                     else
                     {
@@ -203,7 +207,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                     if (npc.life > npc.lifeMax / 3 || npc.ai[1] < 100)
                     {
-                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], npc.life < npc.lifeMax * 0.666f ? 20 : 60, npc.damage / 2, 8, false);
+                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], npc.life < npc.lifeMax * 0.666f ? 20 : 60, npc.damage / 4, 8, false);
                     }
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
@@ -213,7 +217,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                             {
                                 Vector2 shoot = new Vector2((float)Math.Sin(i * 0.25f * 3.1415926f), (float)Math.Cos(i * 0.25f * 3.1415926f));
                                 shoot *= 8f;
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<AsheFire>(), npc.damage / 2, 5, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<AsheFire>(), npc.damage / 4, 5, Main.myPlayer);
                             }
                             if(Main.rand.Next(3) == 0) goto case 5;
                         }
@@ -228,6 +232,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                     else
                     {
+                        npc.ai[0] = 11;
                         goto case 11;
                     }
                     if (!AliveCheck(player))
@@ -563,7 +568,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public bool FlyingBack = false;
         public bool FlyingPositive = false;
         public bool FlyingNegative = false;
-        public float pos = 250f;
+        public float pos = 350f;
 
         public void ChangePos()
         {
@@ -593,9 +598,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
                 {
-                    if (pos == -250)
+                    if (pos == -600)
                     {
-                        pos = 250;
+                        pos = 600;
                     }
 
                     npc.direction = 1;
@@ -611,9 +616,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
                 else //If NPC's X position is higher than the player's
                 {
-                    if (pos == 250)
+                    if (pos == 600)
                     {
-                        pos = -250;
+                        pos = -600;
                     }
 
                     npc.direction = -1;

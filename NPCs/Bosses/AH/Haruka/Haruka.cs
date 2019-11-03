@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.width = 50;
             npc.height = 60;
             npc.friendly = false;
-            npc.damage = 180;
+            npc.damage = 140;
             npc.defense = 120;
             npc.lifeMax = 150000;
             npc.HitSound = SoundID.NPCHit1;
@@ -167,7 +167,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.6f * bossLifeScale);
-            npc.damage = (int)(npc.damage * 0.9f);
+            npc.damage = (int)(npc.damage * 0.7f);
         }
 
         public bool SetMovePos = false;
@@ -636,7 +636,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 
 
-                if (internalAI[4] > 120)
+                if (internalAI[4] > 180)
                 {
                     npc.frameCounter = 0;
                     Frame = 0;
@@ -690,7 +690,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 else if(internalAI[4] > 100)
                 {
-                    MovePoint = wantedVelocity;
+                    MovePoint = player.Center - new Vector2(pos * 1.5f, 0);
                 }
             }
             else if (internalAI[0] == AISTATE_Shadowkilling)
@@ -719,24 +719,24 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN) //Melee Damage/Speed boost
             {
-                npc.damage = 180;
+                npc.damage = 140;
                 npc.defense = 300;
             }
             else if (internalAI[0] == AISTATE_Shadowkilling) //Melee Damage/Speed boost
             {
-                npc.damage = 200;
+                npc.damage = 150;
                 npc.defense = 9999;
             }
             else //Reset Stats
             {
                 npc.defense = npc.defDefense;
-                npc.damage = 80;
+                npc.damage = npc.defDamage;
             }
 
 
             if (internalAI[0] == AISTATE_IDLE || internalAI[0] == AISTATE_PROJ || Invisible) //When charging the player
             {
-                MoveToPoint(wantedVelocity);
+                MoveToPoint(player.Center - new Vector2(pos * 1.5f, 0));
             }
             else if (internalAI[0] == AISTATE_SPIN)
             {

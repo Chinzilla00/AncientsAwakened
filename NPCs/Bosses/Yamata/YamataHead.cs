@@ -228,7 +228,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.ai[3] = 1;
                 fireTimer = 0;
             }
-            projDamage = Main.expertMode ? (npc.damage / 2) : (npc.damage / 4);
+            projDamage = Main.expertMode ? (npc.damage / 4) : (npc.damage / 2);
             if (npc.ai[3] == 1)
             {
                 attackTimer++;

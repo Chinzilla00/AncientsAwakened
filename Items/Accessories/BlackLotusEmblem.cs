@@ -15,10 +15,10 @@ namespace AAMod.Items.Accessories
 @"Increases pickup range for mana stars
 Automatically use mana potions when needed
 Greatly reduce manasick time
-Your magic attacks cause moonraze
+Your magic attacks inflicts moonraze
 15% increased movement speed
 12% reduced mana usage
-15% increased magic damage");
+18% increased magic damage");
         }
         public override void SetDefaults()
         {
@@ -35,7 +35,7 @@ Your magic attacks cause moonraze
             player.manaMagnet = true;
             player.manaRegenDelay = 0;
 			player.manaCost -= 0.12f;
-			player.magicDamage += 0.15f;
+			player.magicDamage += 0.18f;
             player.moveSpeed += 0.15f;
         }
 

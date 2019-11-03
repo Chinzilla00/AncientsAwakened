@@ -8,7 +8,7 @@ namespace AAMod.Items.Materials
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Black Lotus");
-            Tooltip.SetDefault("It's said that someone offered $16w for this thing.");
+            Tooltip.SetDefault("It's said that someone offered $160000 for this thing.");
         }
         public override void SetDefaults()
         {

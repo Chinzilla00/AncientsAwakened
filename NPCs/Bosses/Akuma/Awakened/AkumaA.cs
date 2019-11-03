@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.damage = 150;
-            npc.defense = 150;
+            npc.defense = 135;
             npc.lifeMax = 600000;
             npc.value = Item.sellPrice(0, 40, 0, 0);
             npc.knockBackResist = 0f;
@@ -244,7 +244,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     targetPos = Main.player[npc.target].Center;
                     MovementWorm(targetPos, 15f, 0.13f); //original movement
                     Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
-                    AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaABreath>(), 2, 2);
+                    AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaABreath>(), 2, 4);
                     if (++npc.ai[2] > 90)
                     {
                         npc.ai[2] = 0;
@@ -347,8 +347,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
                 case 5: //currently firing deathray, weaker acceleration
                     targetPos = player.Center;
-                    MovementWorm(targetPos, 15f, 0.13f);
-                    if (++npc.ai[1] > 180)
+                    MovementWorm(targetPos, 15f, 0.08f);
+                    float difference = npc.velocity.ToRotation() - npc.oldVelocity.ToRotation();
+                    if (++npc.ai[1] > 240)
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
@@ -359,7 +360,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 case 6: //fire lasers from all segments, slower now
                     targetPos = player.Center;
                     MovementWorm(targetPos, 10f, 0.26f);
-                    if (npc.ai[1] == 30 && Main.netMode != 1)
+                    if (npc.ai[1] == 120 - 60 && Main.netMode != 1)
                     {
                         Main.NewText("segment rays");
                         bool fire = true;
@@ -374,13 +375,13 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                                 }
                             }
                     }
-                    if (++npc.ai[2] > 100)
+                    if (++npc.ai[2] > 140)
                     {
                         npc.ai[2] = 0;
                         if (NPC.CountNPCS(ModContent.NPCType<AncientLung>()) < 4)
                             AkumaAttacks.SpawnLung(player, mod, true);
                     }
-                    if (++npc.ai[1] > 90 + 180)
+                    if (++npc.ai[1] > 120 + 180)
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
@@ -416,7 +417,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     break;
 
                 case 9: //eruption
-                    npc.velocity *= 0.985f;
+                    npc.velocity *= 0.9875f;
                     if (++npc.ai[2] == 30)
                     {
                         Main.NewText("eruption from body");
@@ -444,6 +445,24 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
                         npc.netUpdate = true;
+                        Main.NewText("eruption from body");
+                        if (Main.netMode != 1)
+                        {
+                            bool fire = true;
+                            for (int i = 0; i < Main.maxNPCs; i++)
+                                if (Main.npc[i].active && Main.npc[i].realLife == npc.whoAmI)
+                                {
+                                    fire = !fire;
+                                    if (fire)
+                                    {
+                                        Vector2 vel = -5f * Vector2.UnitY;
+                                        vel.X += Main.rand.NextFloat(-1f, 1f);
+                                        vel.Y += Main.rand.NextFloat(-.5f, .5f);
+                                        vel *= 1.5f;
+                                        Projectile.NewProjectile(Main.npc[i].Center, vel, ModContent.ProjectileType<AkumaAMeteor>(), Main.npc[i].damage / 4, 0f, Main.myPlayer, 0f, 1f);
+                                    }
+                                }
+                        }
                     }
                     break;
 

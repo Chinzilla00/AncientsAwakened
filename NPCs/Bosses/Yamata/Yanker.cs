@@ -61,7 +61,7 @@ namespace AAMod.NPCs.Bosses.Yamata
 
             const int aislotHomingCooldown = 0;
             const int homingDelay = 10;
-            const float desiredFlySpeedInPixelsPerFrame = 50;
+            const float desiredFlySpeedInPixelsPerFrame = 12;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
