@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             projectile.rotation += ((float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f)/60f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
-            const float desiredFlySpeedInPixelsPerFrame = 2;
+            const float desiredFlySpeedInPixelsPerFrame = 5;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;

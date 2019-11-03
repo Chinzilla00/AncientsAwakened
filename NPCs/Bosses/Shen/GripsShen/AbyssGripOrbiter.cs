@@ -47,7 +47,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 
         public int timecount = 0;
 
-        public bool proj = false;
+        public int proj = 0;
 
         public bool shooting = false;
 
@@ -56,7 +56,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             Vector2 Center = new Vector2();
             NPC centerNPC = Main.npc[(int)projectile.ai[0]];
 
-            if(!proj) Center = centerNPC.Center;
+            if(proj == 0) Center = centerNPC.Center;
 
             timecount ++;
 
@@ -66,11 +66,10 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                 {
                     Main.projectile[i].Kill();
                 }
-                if(Main.projectile[i].type == mod.ProjectileType("AbyssalBomb") && !proj)
+                if(Main.projectile[i].type == mod.ProjectileType("AbyssalBomb") && proj == 0)
                 {
                     Center = Main.projectile[i].Center;
-                    projectile.ai[0] = Main.projectile[i].whoAmI;
-                    proj = true;
+                    proj = Main.projectile[i].whoAmI;
                 }
             }
 
@@ -81,12 +80,12 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 
 
 
-            if(proj)
+            if(proj != 0)
             {
                 
-                if(Main.projectile[(int)projectile.ai[0]].timeLeft <= 5 || !Main.projectile[(int)projectile.ai[0]].active || shooting) 
+                if(Main.projectile[proj].timeLeft <= 5 || !Main.projectile[proj].active || shooting) 
                 {
-                    projectile.velocity = 18f * Vector2.Normalize(Main.projectile[(int)projectile.ai[0]].DirectionTo(projectile.Center));
+                    projectile.velocity = 18f * Vector2.Normalize(Main.projectile[proj].DirectionTo(projectile.Center));
                     shooting = true;
                 }
                 else
@@ -96,7 +95,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                         projectile.oldPos[m] = projectile.oldPos[m - 1];
                     }
                     projectile.oldPos[0] = projectile.position;
-                    Center = Main.projectile[(int)projectile.ai[0]].Center;
+                    Center = Main.projectile[proj].Center;
                     projectile.Center = BaseUtility.RotateVector(Center, Center + new Vector2(140f, 0f), rotValue);
                 }
             }

@@ -360,6 +360,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             else
             if (npc.ai[0] == 6) //Fire Projectile (Shen Grips)
             {
+                internalAI[0]++;
                 if(BlazeGrip && internalAI[0] < 40)
                 {
                     npc.direction = npc.spriteDirection = npc.position.X < targetPlayer.position.X ? -1 : 1;
@@ -371,7 +372,6 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                     moveSpeed = 22f;
                     Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -ChangingPosY);
                     MoveToPoint(point);
-                    internalAI[0]++;
                 }
                 if (internalAI[0] == 40)
                 {
