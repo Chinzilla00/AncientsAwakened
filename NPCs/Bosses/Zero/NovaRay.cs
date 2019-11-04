@@ -32,8 +32,6 @@ namespace AAMod.NPCs.Bosses.Zero
         public bool runOnce=true;
         public override void AI()
         {
-            
-            
             float rOffset = 0;
             shooter = Main.npc[(int)projectile.ai[0]];
             Player player = Main.player[projectile.owner];
@@ -48,7 +46,6 @@ namespace AAMod.NPCs.Bosses.Zero
             Vector2 diff = new Vector2((float)Math.Cos(shooter.rotation + rOffset) * 14f, (float)Math.Sin(shooter.rotation + rOffset) * 14f);
             diff.Normalize();
             projectile.velocity = diff;
-            projectile.direction = projectile.Center.X > shooter.Center.X ? 1 : -1;
             projectile.netUpdate = true;
 
             projectile.position = new Vector2(shooter.Center.X, shooter.Center.Y) + projectile.velocity * MoveDistance;
