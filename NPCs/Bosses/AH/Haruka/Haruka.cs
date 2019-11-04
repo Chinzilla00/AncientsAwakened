@@ -59,7 +59,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public int damage = 0;
 
-        public int[] internalAI = new int[8];
+        public int[] internalAI = new int[9];
 
         public int[] ShadowNPC = new int[3];
         
@@ -88,6 +88,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 writer.Write(internalAI[5]);
                 writer.Write(internalAI[6]); //Haruka skill counter
                 writer.Write(internalAI[7]); //Haruka Shadow Dash Counter
+                writer.Write(internalAI[8]); //Shadowkilling colddown
                 writer.Write(ProjectileShoot);
                 writer.Write(repeat);
                 writer.Write(SelectPoint);
@@ -111,6 +112,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 internalAI[5] = reader.ReadInt();
                 internalAI[6] = reader.ReadInt();
                 internalAI[7] = reader.ReadInt();
+                internalAI[8] = reader.ReadInt();
                 ProjectileShoot = reader.ReadInt();
                 repeat = reader.ReadInt();
                 isSlashing = reader.ReadBool();
@@ -244,6 +246,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 internalAI[5]++;
                 internalAI[6]++;
                 internalAI[7]++;
+                internalAI[8]++;
             }
 
             int InvisTimer1 = 1000;
@@ -281,7 +284,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                 Vector2 fireTarget = npc.Center;
                 int projType = ModContent.ProjectileType<HarukaProj>();
-                BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*1, 0f, 14f);
+                BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*1, 0f, 12f);
                 internalAI[0] = Main.rand.Next(2);
                 internalAI[5] = 0;
                 npc.netUpdate = true;
@@ -295,6 +298,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             if (internalAI[7] >= 3000)
             {
                 internalAI[7] = 3000;
+            }
+
+            if (internalAI[8] >= 1200)
+            {
+                internalAI[8] = 1200;
             }
             
             if (Invisible)
@@ -356,10 +364,10 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     if(npc.Hitbox.Intersects(Main.projectile[i].Hitbox) && Main.projectile[i].friendly && Main.projectile[i].damage > 0)
                     {
-                        if(internalAI[6] >= 2000)
+                        if(internalAI[6] >= 3500)
                         {
                             Main.projectile[i].Kill();
-                            internalAI[6] -= 2000;
+                            internalAI[6] -= 3500;
                             strikebackproj ++;
                             internalAI[0] = AISTATE_SPIN;
                         }
@@ -406,8 +414,9 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     {
                         internalAI[3] = 0;
                         internalAI[0] = Main.rand.Next(2);
-                        if(internalAI[6] >= 1500 && Main.expertMode)
+                        if(internalAI[6] >= 1500 && internalAI[8] >= 1200 && Main.expertMode)
                         {
+                            internalAI[8] = 0;
                             internalAI[6] -= 1500;
                             Shadowkill = true;
                             Invisible = true;
@@ -636,34 +645,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 
 
-                if (internalAI[4] > 180)
+                if (internalAI[4] == 180)
                 {
-                    npc.frameCounter = 0;
-                    Frame = 0;
-
-                    if(internalAI[6] >= 2000 && Main.expertMode)
-                    {
-                        internalAI[6] -= 2000;
-                        Shadowkill = true;
-                        Invisible = true;
-                    }
-                    else if(Main.rand.Next(2) == 0)
-                    {
-                        internalAI[0] = AISTATE_PROJ;
-                    }
-                    else
-                    {
-                        internalAI[0] = 3;
-                    }
-
-                    internalAI[1] = 0;
-                    internalAI[2] = 0;
-                    internalAI[3] = 0;
-                    internalAI[4] = 0;
-                    pos *= -1f;
-                    npc.ai = new float[4];
-                    npc.netUpdate = true;
-                    
                     int projType = ModContent.ProjectileType<HarukaProj>();
                     float spread = 45f * 0.0174f;
                     Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
@@ -687,6 +670,35 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         }
                     }
                     strikebackproj = 0;
+                }
+                else if(internalAI[4] > 240)
+                {
+                    npc.frameCounter = 0;
+                    Frame = 0;
+
+                    if(internalAI[6] >= 1500 && internalAI[8] >= 1200 && Main.expertMode)
+                    {
+                        internalAI[8] = 0;
+                        internalAI[6] -= 1500;
+                        Shadowkill = true;
+                        Invisible = true;
+                    }
+                    else if(Main.rand.Next(2) == 0)
+                    {
+                        internalAI[0] = AISTATE_PROJ;
+                    }
+                    else
+                    {
+                        internalAI[0] = 3;
+                    }
+
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                    internalAI[3] = 0;
+                    internalAI[4] = 0;
+                    pos *= -1f;
+                    npc.ai = new float[4];
+                    npc.netUpdate = true;
                 }
                 else if(internalAI[4] > 100)
                 {
@@ -746,7 +758,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 if(SHADOWCONTER > 0)
                 {
-                    LOOPPOINT(player.Center + new Vector2(500f, 0), player.Center - new Vector2(500f, 0));
+                    LOOPPOINT(player.Center + new Vector2(0, 500f), player.Center - new Vector2(0, 500f));
                 }
                 else
                 {
@@ -959,7 +971,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 for(int i = 0; i < 16; i++)
                 {
                     shoot = new Vector2((float)Math.Sin(i * 0.125f * Pi), (float)Math.Cos(i * 0.125f * Pi));
-                    shoot *= 14f;
+                    shoot *= 12f;
                     Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, shoot.X, shoot.Y, projType, damage*1, 5, Main.myPlayer);
                 }
                 Main.npc[ShadowNPC[1]].boss = false;
@@ -982,17 +994,17 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             Vector2 playerVelocity = Main.player[npc.target].velocity;
             if(playerVelocity.X < 0)
             {
-                npc.position.X = playerLocation.X - 150f;
+                npc.position.X = playerLocation.X - 250f;
                 npc.position.Y = playerLocation.Y;
             }
             else if(playerVelocity.X > 0)
             {
-                npc.position.X = playerLocation.X + 150f;
+                npc.position.X = playerLocation.X + 250f;
                 npc.position.Y = playerLocation.Y;
             }
             else
             {
-                npc.position.X = playerLocation.X - Main.player[npc.target].direction * 150f;
+                npc.position.X = playerLocation.X - Main.player[npc.target].direction * 250f;
                 npc.position.Y = playerLocation.Y;
             }
         }
@@ -1001,11 +1013,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         {
             Shadowdashcounter ++;
 
-            if(Shadowdashcounter < 20)
+            if(Shadowdashcounter < 40)
             {
                 MoveToPoint(point2);
             }
-            else if(Shadowdashcounter < 40)
+            else if(Shadowdashcounter < 80)
             {
                 MoveToPoint(point1);
             }
@@ -1017,7 +1029,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             else if((npc.Center - point2).Length() < 40f)
             {
                 MoveToPoint(point1);
-                Shadowdashcounter = 21;
+                Shadowdashcounter = 41;
             }
             else
             {
