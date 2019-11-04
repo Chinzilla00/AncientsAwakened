@@ -41,6 +41,7 @@ Right click to detonate fireballs");
             AARarity = 12;
             item.mana = 5;
             item.autoReuse = true;
+            item.shootSpeed = 11f;
         }
 
         
@@ -51,7 +52,6 @@ Right click to detonate fireballs");
             {
                 item.shoot = mod.ProjectileType("FireMagic");
                 item.UseSound = SoundID.Item20;
-                item.shootSpeed = 11f; 
             }
             if (player.altFunctionUse == 2)
             {
