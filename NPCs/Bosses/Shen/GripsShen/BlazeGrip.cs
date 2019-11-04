@@ -23,6 +23,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 			npc.lifeMax = 80000;
             npc.damage = 200;
             npc.defense = 110;
+            npc.boss = true;
             npc.buffImmune[BuffID.OnFire] = true;
 
             offsetBasePoint = new Vector2(-280f, 0f);		
@@ -87,6 +88,17 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
         public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
         {
             target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 180);
+        }
+
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = 0;
+        }
+
+        public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
+        {
+            scale = 1.5f;
+            return null;
         }
     }
 }

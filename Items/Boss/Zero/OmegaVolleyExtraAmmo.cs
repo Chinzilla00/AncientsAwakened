@@ -18,8 +18,9 @@ namespace AAMod.Items.Boss.Zero
 
 		public override void SetDefaults()
 		{
-			projectile.width = 4;               
-			projectile.height = 4;              
+			projectile.width = 20;               
+			projectile.height = 20;
+			projectile.scale = 0.5f;              
 			projectile.aiStyle = -1;             
 			projectile.friendly = true;         
 			projectile.hostile = false;         
@@ -34,7 +35,7 @@ namespace AAMod.Items.Boss.Zero
 		}
 
 		private int homingtime = 3;
-		private int homingDelay = 5;
+		private int homingDelay = 3;
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
@@ -155,18 +156,6 @@ namespace AAMod.Items.Boss.Zero
 				Vector2 speedkeep = projectile.velocity;
 				speedkeep.Normalize();
 				projectile.velocity = speedkeep * projectile.ai[0];
-			}
-			
-			//Just use dust to show the effect. Waiting for the sprits.
-			for (int num165 = 0; num165 < 5; num165++)
-			{
-				float x2 = projectile.position.X - projectile.velocity.X / 10f * num165;
-				float y2 = projectile.position.Y - projectile.velocity.Y / 10f * num165;
-				int num166 = Dust.NewDust(new Vector2(x2, y2), 1, 1, mod.DustType("VoidDust"), 0f, 0f, 0, default, 1f);
-				Main.dust[num166].position.X = x2;
-				Main.dust[num166].position.Y = y2;
-				Main.dust[num166].velocity *= 0f;
-				Main.dust[num166].noGravity = true;
 			}
 			return;
 		}

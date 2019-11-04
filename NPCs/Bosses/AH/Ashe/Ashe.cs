@@ -113,7 +113,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     
                     if (npc.ai[1] > 60)
                     {
-                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 4, 12, false);
+                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 4, 16, false);
                     }
 
                     if (npc.ai[1]++ > 180)
@@ -146,7 +146,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         npc.velocity = npc.DirectionTo(player.Center) * (npc.life < npc.lifeMax/3 ? 50:40);
                         if(npc.velocity.Length() < 40f)
                         {
-                            npc.velocity = Vector2.Normalize(npc.oldVelocity) * (npc.life < npc.lifeMax/3 ? 50:40);
+                            npc.velocity = Vector2.Normalize(npc.velocity) * (npc.life < npc.lifeMax/3 ? 50:40);
                         }
                     }
                     break;
@@ -199,7 +199,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     
                     if (npc.ai[1] >= 100)
                     {
-                        MoveToPoint(player.Center + new Vector2((player.velocity.X > 0? 1 : -1) * 600, -300));
+                        MoveToPoint(player.Center + new Vector2((player.velocity.X > 0? 1 : -1) * 600, -400));
                     }
                     else
                     {
@@ -207,7 +207,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                     if (npc.life > npc.lifeMax / 3 || npc.ai[1] < 100)
                     {
-                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], npc.life < npc.lifeMax * 0.666f ? 20 : 60, npc.damage / 4, 8, false);
+                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], npc.life < npc.lifeMax * 0.666f ? 30 : 60, npc.damage / 4, 8, false);
                     }
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
@@ -278,7 +278,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 if(npc.ai[2]++ > 5)
                 {
                     Vector2 Runeposition = new Vector2(0,0);
-                    Runeposition = player.Center + new Vector2((250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Sin(5.18f * Main.rand.Next(30) * 3.1415926f), (250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Cos(5.18f * Main.rand.Next(30) * 3.1415926f));
+                    Runeposition = npc.Center + new Vector2((250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Sin(5.18f * Main.rand.Next(30) * 3.1415926f), (250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Cos(5.18f * Main.rand.Next(30) * 3.1415926f));
                     
                     float RunepositionX = Runeposition.X;
                     float RunepositionY = Runeposition.Y;
@@ -424,9 +424,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     npc.velocity.Y -= speedModifier * 2;
             }
             if (npc.velocity.X > 30 || npc.velocity.X < -30)
-                npc.velocity.X = 30 * Math.Sign(npc.velocity.X);
+                npc.velocity.X = 30 * (npc.velocity.X > 0 ? 1:-1);
             if (npc.velocity.Y > 30 || npc.velocity.Y < -30)
-                npc.velocity.Y = 30 * Math.Sign(npc.velocity.Y);
+                npc.velocity.Y = 30 * (npc.velocity.Y > 0 ? 1:-1);
         }
 
         private bool AliveCheck(Player player)
@@ -635,7 +635,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public void MoveToPoint(Vector2 point)
         {
-            float moveSpeed = 25f;
+            float moveSpeed = 20f;
             float velMultiplier = 1f;
             Vector2 dist = point - npc.Center;
             float length = dist == Vector2.Zero ? 0f : dist.Length();
@@ -732,7 +732,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 }
             }
 
-            if (npc.ai[0] == 1 || npc.ai[0] == 6 || npc.ai[0] == 11 || RuneCrash)
+            if (npc.ai[0] == 1 || npc.ai[0] == 6 || npc.ai[0] == 11)
             {
                 if (scale2 >= 1f)
                 {

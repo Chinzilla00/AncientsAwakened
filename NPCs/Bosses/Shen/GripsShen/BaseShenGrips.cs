@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             {
                 npc.frame.Y += frameHeight;
                 npc.frameCounter = 0;
-                if (npc.ai[0] == 2 || npc.ai[0] == 3 || npc.ai[0] == 4)
+                if (npc.ai[0] == 2 || npc.ai[0] == 3)
                 {
                     if (npc.frame.Y < 4 * frameHeight || npc.frame.Y > 7 * frameHeight)
                     {
@@ -57,6 +57,13 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 
                 }
                 else if (npc.ai[0] == 5)
+                {
+                    if (npc.frame.Y < 8 * frameHeight || npc.frame.Y > 11 * frameHeight)
+                    {
+                        npc.frame.Y = 8 * frameHeight;
+                    }
+                }
+                else if (npc.ai[0] == 6)
                 {
                     npc.frame.Y = frameHeight * 8;
                     if (internalAI[0] > 8)
@@ -114,16 +121,20 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 		}
 
 		public Vector2 offsetBasePoint = Vector2.Zero;
+
+        public Vector2 Keepmove = Vector2.Zero;
 		public float moveSpeed = 14f;
         public int MinionTimer = 0;
 
-        public float[] internalAI = new float[1];
+        public float[] internalAI = new float[3];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
             if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
             }
         }
 
@@ -133,11 +144,31 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
+                internalAI[2] = reader.ReadFloat();
             }
+        }
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        {
+            if(npc.ai[0] == 3)
+            {
+                if(npc.type == ModContent.NPCType<BlazeGrip>())
+                {
+                    BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 1.5f, 1f, 3, false, 0f, 0f, Color.Red);
+                }
+                else
+                {
+                    BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 1.5f, 1f, 3, false, 0f, 0f, Color.Navy);
+                }
+            }
+            return false;
         }
 
         public override void AI()
 		{
+            bool BlazeGrip = npc.type == ModContent.NPCType<BlazeGrip>();
+
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
@@ -149,6 +180,9 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             npc.TargetClosest();
 			Player targetPlayer = Main.player[npc.target];
 
+            float ChangingPosX = 350f * (targetPlayer.Center.X > npc.Center.X? 1:-1);
+            float ChangingPosY = 350f * (targetPlayer.Center.Y > npc.Center.Y? 1:-1);
+
             if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
             {
                 npc.TargetClosest(false);
@@ -156,118 +190,222 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                 return;
             }
 
-            bool forceChange = false;
-			if(Main.netMode != 1 && npc.ai[0] != 2 && npc.ai[0] != 3)
-			{
-				int stopValue = 100;
-				npc.ai[3]++;
-				if(npc.ai[3] > stopValue) npc.ai[3] = stopValue;
-				forceChange = npc.ai[3] >= stopValue;
-			}
 			if(npc.ai[0] == 1) //move to starting charge position
 			{
-				moveSpeed = 15;
-				Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
+				moveSpeed = 14f;
+				Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -ChangingPosY);
 				MoveToPoint(point);
-				if(Main.netMode != 1 && (Vector2.Distance(npc.Center, point) < 10f || forceChange))
+                internalAI[0] ++;
+				if(Main.netMode != 1 && (Vector2.Distance(npc.Center, point) < 10f || internalAI[0] > 100))
 				{
-                    npc.ai[0] = 5;
+                    npc.ai[0] = 4;
                     npc.ai[1] = 0;
                     npc.ai[2] = 0;
 					npc.ai[3] = 0;
+                    internalAI[0] = 0;
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
 					npc.netUpdate = true;
 				}
 				BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);			
 			}else
-			if(npc.ai[0] == 2) //dive down
+			if(npc.ai[0] == 2) //dive prepare
 			{
-				moveSpeed = 30f;
+                if(internalAI[2] >= 1) internalAI[2] ++;
+				moveSpeed = 22f;
 				Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);
-				Vector2 point = targetCenter - offsetBasePoint + new Vector2(0f, 250f);
-				MoveToPoint(point);
-				if(Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
-				{
-                    npc.ai[0] = 3;
-                    npc.ai[1] = targetPlayer.Center.X;
-                    npc.ai[2] = targetPlayer.Center.Y;
-                    npc.ai[3] = 0;				
-					npc.netUpdate = true;
-				}
-				BaseAI.Look(npc, 0, 0f, 0.1f, false);				
-			}else
-			if(npc.ai[0] == 3) //dive up
-			{
-				moveSpeed = 30f;
-				Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);				
-				Vector2 point = targetCenter + offsetBasePoint + new Vector2(0f, -250f);
-				MoveToPoint(point);
-				if(Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
-				{
-                    bool TripleDive = npc.life < npc.lifeMax / 2;
-                    npc.ai[0] = TripleDive ? 4 : 0;
-                    npc.ai[1] = TripleDive ? targetPlayer.Center.X : 0;
-                    npc.ai[2] = TripleDive ? targetPlayer.Center.Y : 0;
-                    npc.ai[3] = 0;					
-					npc.netUpdate = true;
-				}
-				BaseAI.Look(npc, 0, 0f, 0.1f, false);				
-			}else
-            if (npc.ai[0] == 4) //dive back down
-            {
-                moveSpeed = 30f;
-                Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);
-                Vector2 point = targetCenter - offsetBasePoint + new Vector2(0f, 250f);
-                MoveToPoint(point);
-                if (Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
+				Vector2 point = targetCenter + new Vector2(ChangingPosX, ChangingPosY);
+                Keepmove = point;
+                if(Keepmove != new Vector2(0,0))
                 {
-                    npc.ai[0] = 0;
-                    npc.ai[1] = 0;
-                    npc.ai[2] = 0;
-                    npc.ai[3] = 0;
-                    npc.netUpdate = true;
-                }
-                BaseAI.Look(npc, 0, 0f, 0.1f, false);
-            }
-            else
-            if (npc.ai[0] == 5) //Fire Projectile (Shen Grips)
-            {
-                moveSpeed = 15f;
-                Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -250f);
-                MoveToPoint(point);
-                bool BlazeGrip = npc.type == ModContent.NPCType<BlazeGrip>();
-                if (Main.netMode != 1 && (Vector2.Distance(npc.Center, point) < 10f || forceChange))
-                {
-                    internalAI[0]++;
-                    if (internalAI[0] == 40)
+                    MoveToPoint(Keepmove);
+                    if(Main.netMode != 1)
                     {
-                        BaseAI.FireProjectile(targetPlayer.Center, npc.Center, BlazeGrip ? ModContent.ProjectileType<BlazeBomb>() : ModContent.ProjectileType<AbyssalBomb>(), damage, 2, 9f, -1, Main.myPlayer);
-                    }
-                    if (internalAI[0] > 50)
-                    {
-                        npc.ai[0] = 2;
-                        npc.ai[1] = targetPlayer.Center.X;
-                        npc.ai[2] = targetPlayer.Center.Y;
-                        npc.ai[3] = 0;
-                        internalAI[0] = 0;
+                        Main.PlaySound(SoundID.Roar, npc.position, 0);
+                        npc.ai[0] = 3;			
                         npc.netUpdate = true;
                     }
+                } 
+				else
+                {
+                    npc.ai[0] = 0;
+                    npc.ai[3] = 0;				
+                    npc.netUpdate = true;
+                }
+				BaseAI.Look(npc, 0, 0f, 0.1f, false);				
+			}else
+			if(npc.ai[0] == 3) //diving
+			{
+                if(internalAI[2] >= 1) internalAI[2] ++;
+				moveSpeed = 22f;
+				MoveToPoint(Keepmove);
+				if(Main.netMode != 1 && (Vector2.Distance(npc.Center, Keepmove) < 10f || npc.ai[3] ++ > 60))
+				{
+                    npc.ai[0] = 2;
+                    npc.ai[1] = targetPlayer.Center.X;
+                    npc.ai[2] = targetPlayer.Center.Y;
+                    npc.ai[3] = 0;
+                    if(internalAI[1] ++ > 4 && internalAI[2] == 0)
+                    {
+                        npc.ai[0] = 0;
+                        internalAI[1] = 0;
+                    }
+                    if(internalAI[2] > 200)
+                    {
+                        npc.ai[0] = 6;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;
+                    }
+					npc.netUpdate = true;
+				}			
+			}else
+            if (npc.ai[0] == 4) //Projectile skill
+            {
+                npc.direction = npc.spriteDirection = npc.position.X < targetPlayer.position.X ? -1 : 1;
+                npc.rotation = npc.DirectionTo(targetPlayer.Center).ToRotation() + (npc.position.X < targetPlayer.position.X ? 0 : (float)Math.PI);
+                moveSpeed = 14f;
+				Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(-ChangingPosX, 0);
+				MoveToPoint(point);
+                internalAI[0] ++;
+                if(internalAI[0] == 100)
+                {
+                    if(BlazeGrip)
+                    {
+                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 2, 0f, Main.myPlayer, npc.whoAmI, 0);
+                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)) + 200f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center).RotatedBy(Math.PI / 2)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 2, 0f, Main.myPlayer, npc.whoAmI, (float)1f);
+                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)) + 400f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center).RotatedBy(Math.PI / 2)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 2, 0f, Main.myPlayer, npc.whoAmI, (float)2f);
+                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)) - 200f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center).RotatedBy(Math.PI / 2)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 2, 0f, Main.myPlayer, npc.whoAmI, -(float)1f);
+                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)) - 400f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center).RotatedBy(Math.PI / 2)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 2, 0f, Main.myPlayer, npc.whoAmI, -(float)2f);
+                    }
+                    else
+                    {
+                        for (int m = 0; m < 16; m++)
+                        {
+                            Projectile.NewProjectile(npc.Center, new Vector2(0, 0), mod.ProjectileType("AbyssGripOrbiter"), npc.damage / 2, 0f, Main.myPlayer, npc.whoAmI, 2f * (float)Math.PI / 16 * m);
+                        }
+                    }
+                }
+                
+                if(internalAI[0] > 200)
+                {
+                    if(Main.netMode != 1)
+                    {
+                        npc.ai[0] = 5;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        internalAI[0] = 0;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;		
+                        npc.netUpdate = true;
+                    }
+                }
+            }
+            else
+            if (npc.ai[0] == 5) //Projectile skill2
+            {
+                if(BlazeGrip)
+                {
+                    if(internalAI[2] < 160)
+                    {
+                        BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
+                        moveSpeed = 18f;
+                        Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -ChangingPosY);
+                        MoveToPoint(point);
+                    }
+                    else
+                    {
+                        npc.direction = npc.spriteDirection = npc.position.X < targetPlayer.position.X ? -1 : 1;
+                        npc.rotation += (npc.DirectionTo(targetPlayer.Center).ToRotation()  + (npc.position.X < targetPlayer.position.X ? 0 : (float)Math.PI))/100f;
+                        npc.velocity = new Vector2(0,0);
+                    }
+                    
+
+                    internalAI[2] ++;
+                    if(internalAI[2] == 160)
+                    {
+                        Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
+                        float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
+                        double startAngle = Math.Atan2(dir.X, dir.Y);
+                        double deltaAngle = 45f * 0.0174f;
+                        for (int i = -1; i < 2; i++)
+                        {
+                            double offsetAngle = startAngle + (deltaAngle * i);
+                            Vector2 shootdir = new Vector2(baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle));
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(shootdir), ModContent.ProjectileType<BlazeGripRay>(), npc.damage / 4, 0f, Main.myPlayer, i, npc.whoAmI);
+                        }
+                    }
+                    if(internalAI[2] > 200)
+                    {
+                        npc.ai[0] = 6;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        internalAI[0] = 0;
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;		
+                        npc.netUpdate = true;
+                    }
+
+                }
+                else
+                {
+                    internalAI[2] ++;
+                    npc.ai[0] = 2;
+                    internalAI[1] = 0;
+                    npc.netUpdate = true;
+                }
+
+            }
+            else
+            if (npc.ai[0] == 6) //Fire Projectile (Shen Grips)
+            {
+                internalAI[0]++;
+                if(BlazeGrip && internalAI[0] < 40)
+                {
+                    npc.direction = npc.spriteDirection = npc.position.X < targetPlayer.position.X ? -1 : 1;
+                    npc.rotation += (npc.DirectionTo(targetPlayer.Center).ToRotation()  + (npc.position.X < targetPlayer.position.X ? 0 : (float)Math.PI))/100f;
+                    npc.velocity = new Vector2(0,0);
+                }
+                else
+                {
+                    moveSpeed = 22f;
+                    Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(0f, -ChangingPosY);
+                    MoveToPoint(point);
+                }
+                if (internalAI[0] == 40)
+                {
+                    BaseAI.FireProjectile(targetPlayer.Center, npc.Center, BlazeGrip ? ModContent.ProjectileType<BlazeBomb>() : ModContent.ProjectileType<AbyssalBomb>(), damage, 2, 9f, -1, Main.myPlayer);
+                }
+                if (internalAI[0] > 50)
+                {
+                    npc.ai[0] = 2;
+                    npc.ai[1] = targetPlayer.Center.X;
+                    npc.ai[2] = targetPlayer.Center.Y;
+                    npc.ai[3] = 0;
+                    internalAI[0] = 0;
+                    internalAI[1] = 0;
+                    internalAI[2] = 0;
+                    npc.netUpdate = true;
                 }
                 BaseAI.LookAt(targetPlayer.Center, npc, 0, 0f, 0.1f, false);
             }
             else //standard movement
 			{
-				moveSpeed = 16f;
+				moveSpeed = 14f;
 				Vector2 point = targetPlayer.Center + offsetBasePoint;
 				MoveToPoint(point);
 				if(Main.netMode != 1)
 				{
 					npc.ai[1]++;
-					if(npc.ai[1] > 150)
+					if(npc.ai[1] > 90)
 					{
 						npc.ai[0] = 1;
 						npc.ai[1] = 0;	
 						npc.ai[2] = 0;
-						npc.ai[3] = 0;					
+						npc.ai[3] = 0;	
+                        internalAI[1] = 0;
+                        internalAI[2] = 0;			
 						npc.netUpdate = true;				
 					}
 				}		
@@ -285,11 +423,11 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                 npc.alpha -= 5;
                 if (npc.alpha <= 0)
                 {
-                    if (npc.type == ModContent.NPCType<BlazeGrip>())
+                    if (BlazeGrip)
                     {
                         npc.defense = 110;
                     }
-                    if (npc.type == ModContent.NPCType<AbyssGrip>())
+                    else
                     {
                         npc.defense = 90;
                     }

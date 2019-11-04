@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.height = 60;
             npc.friendly = false;
             npc.dontTakeDamage = true;
-            npc.damage = 200;
+            npc.damage = 150;
             npc.defense = 9999;
             npc.lifeMax = 150000;
             npc.HitSound = SoundID.NPCHit1;
