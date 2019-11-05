@@ -746,9 +746,13 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
 
 
-            if (internalAI[0] == AISTATE_IDLE || internalAI[0] == AISTATE_PROJ || Invisible) //When charging the player
+            if (internalAI[0] == AISTATE_IDLE || Invisible) //When charging the player
             {
-                MoveToPoint(player.Center - new Vector2(pos * 1.5f, 0));
+                MoveToPoint(player.Center - new Vector2(pos, 0));
+            }
+            else if (internalAI[0] == AISTATE_PROJ)
+            {
+                MoveToPoint(player.Center - new Vector2(pos * 2f, 0));
             }
             else if (internalAI[0] == AISTATE_SPIN)
             {
@@ -758,7 +762,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 if(SHADOWCONTER > 0)
                 {
-                    LOOPPOINT(player.Center + new Vector2(0, 500f), player.Center - new Vector2(0, 500f));
+                    LOOPPOINT(player.Center + new Vector2(0, 400f), player.Center - new Vector2(0, 400f));
                 }
                 else
                 {
