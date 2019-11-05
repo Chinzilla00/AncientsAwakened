@@ -34,7 +34,7 @@ namespace AAMod.Projectiles.AH
 
         public override void AI()
         {
-            projectile.spriteDirection = projectile.velocity.X > 0 ? -1 : 1;
+            projectile.spriteDirection = projectile.velocity.X > 0 ? 1 : -1;
             if (projectile.frameCounter++ > 6)
             {
                 projectile.frame++;
@@ -178,11 +178,11 @@ namespace AAMod.Projectiles.AH
             }
             if (foundTarget)
             {
-                projectile.rotation = (position - projectile.Center).ToRotation() - 1.57f;
+                projectile.rotation = (position - projectile.Center).ToRotation() + 1.57f;
             }
             else
             {
-                projectile.rotation = projectile.velocity.ToRotation() - 1.57f;
+                projectile.rotation = projectile.velocity.ToRotation() + 1.57f;
             }
             if (projectile.ai[1] > 0f)
             {
