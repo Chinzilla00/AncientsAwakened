@@ -42,12 +42,12 @@ Can only be used during the day");
         {
             if (!Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("IntimidatingMushroomFalse"), new Color(216, 110, 40), false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("IntimidatingMushroomFalse"), new Color(216, 110, 40), false);
                 return false;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<MushroomMonarch>()))
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("IntimidatingMushroomTrue"), new Color(216, 110, 40), false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("IntimidatingMushroomTrue"), new Color(216, 110, 40), false);
                 return false;
             }
             return true;

@@ -53,22 +53,26 @@ namespace AAMod.Tiles.Chests
 
         public override bool UnlockChest(int i, int j, ref short frameXAdjustment, ref int dustType, ref bool manual)
         {
-            if (AAWorld.OpenedChest == 2)
+            bool Greed = NPC.AnyNPCs(mod.NPCType("Greed")) || NPC.AnyNPCs(mod.NPCType("GreedA")) || NPC.AnyNPCs(mod.NPCType("GreedSpawn")) || NPC.AnyNPCs(mod.NPCType("GreedTransition"));
+            if (!Greed)
             {
-                AAWorld.OpenedChest--;
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.GreedChest("GreedChest1"), Color.DarkGoldenrod);
-            }
-            else if (AAWorld.OpenedChest == 1)
-            {
-                AAWorld.OpenedChest--;
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.GreedChest("GreedChest2"), Color.DarkGoldenrod);
-            }
-            else
-            {
-                Player player = Main.player[BaseMod.BaseAI.GetPlayer(new Vector2(i, j), -1)];
-                AAWorld.OpenedChest = 2;
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.GreedChest("GreedChest3"), Color.Goldenrod);
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Greed"), false, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Greed"));
+                if (AAWorld.OpenedChest == 2)
+                {
+                    AAWorld.OpenedChest--;
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.GreedChest("GreedChest1"), Color.DarkGoldenrod);
+                }
+                else if (AAWorld.OpenedChest == 1)
+                {
+                    AAWorld.OpenedChest--;
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.GreedChest("GreedChest2"), Color.DarkGoldenrod);
+                }
+                else
+                {
+                    Player player = Main.player[BaseMod.BaseAI.GetPlayer(new Vector2(i, j), -1)];
+                    AAWorld.OpenedChest = 2;
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.GreedChest("GreedChest3"), Color.Goldenrod);
+                    AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Greed"), false, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Greed"));
+                }
             }
             dustType = this.dustType;
             return true;

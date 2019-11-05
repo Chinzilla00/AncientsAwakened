@@ -39,7 +39,7 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.DeathSound = new LegacySoundStyle(2, 14);
             npc.netAlways = true;
             npc.boss = true;
-            bossBag = mod.ItemType("GreedBag");
+            bossBag = mod.ItemType("GreedABag");
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/GreedA");
             npc.alpha = 255;
         }
@@ -272,8 +272,8 @@ namespace AAMod.NPCs.Bosses.Greed
 
             bool collision = true;
 
-            float speed = 18f;
-            float acceleration = 0.08f;
+            float speed;
+            float acceleration;
 
             if ((int)internalAI[0] == 3)
             {
@@ -533,7 +533,7 @@ namespace AAMod.NPCs.Bosses.Greed
                 {
                     npc.DropLoot(mod.ItemType("GreedMask"));
                 }
-                string[] lootTable = { "GildedGlock", "Miner", "StoneSlammer", "Unearther" };
+                string[] lootTable = { "OreCannon", "Unearther", "Earthbreaker", "OreStaff" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
                 npc.DropLoot(mod.ItemType("WormIdol"));

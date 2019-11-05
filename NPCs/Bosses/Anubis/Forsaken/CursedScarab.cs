@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
         {
             npc.width = 42;
             npc.height = 38;
-            npc.value = BaseUtility.CalcValue(0, 5, 0, 0);
+            npc.value = BaseUtility.CalcValue(0, 0, 0, 0);
             npc.npcSlots = 1;
             npc.aiStyle = -1;
             npc.lifeMax = 1200;

@@ -41,12 +41,12 @@ namespace AAMod.Items.BossSummons
         {
             if (!player.ZoneDesert)
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DjinnLampDesertFalse"), Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DjinnLampDesertFalse"), Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType("Djinn")))
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DjinnLampTrue"), Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DjinnLampTrue"), Color.Goldenrod.R, Color.Goldenrod.G, Color.Goldenrod.B, false);
                 return false;
             }
             return true;

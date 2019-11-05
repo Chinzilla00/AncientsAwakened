@@ -8,7 +8,7 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Anubis Music Box");
-            Tooltip.SetDefault(@"Plays 'True Blazing Fury' by Kanashii");
+            Tooltip.SetDefault(@"Plays 'Strings of Judgement' by Universe");
         }
 
         public override void SetDefaults()

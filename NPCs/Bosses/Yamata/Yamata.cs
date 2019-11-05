@@ -151,7 +151,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 }
             }
             
-            return false;
+            return true;
         }
 
         public bool Dead = false;

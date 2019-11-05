@@ -67,6 +67,8 @@ namespace AAMod.NPCs.Bosses.Anubis
 
         public override void AI()
         {
+            npc.velocity.X *= 0;
+
             if (!npc.HasPlayerTarget)
             {
                 npc.TargetClosest();

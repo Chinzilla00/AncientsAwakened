@@ -65,7 +65,7 @@ namespace AAMod.Tiles.Boss
             Player player = Main.LocalPlayer;
             int type = ModContent.ItemType<Items.BossSummons.Owl>();
             bool Athena = NPC.AnyNPCs(ModContent.NPCType<Athena>()) || NPC.AnyNPCs(ModContent.NPCType<AthenaFlee>()) || NPC.AnyNPCs(ModContent.NPCType<AthenaDefeat>()) || NPC.AnyNPCs(ModContent.NPCType<AthenaA>());
-            if (BasePlayer.HasItem(player, type, 1) || !Athena)
+            if (BasePlayer.HasItem(player, type, 1) && !Athena)
             {
                 for (int m = 0; m < 50; m++)
                 {

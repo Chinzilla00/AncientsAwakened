@@ -153,7 +153,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 }
             }
 
-            return false;
+            return true;
         }
 
         public override void BossLoot(ref string name, ref int potionType)

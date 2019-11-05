@@ -266,7 +266,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     if (++npc.ai[2] > 60)
                     {
                         npc.ai[2] = 0;
-                        Main.NewText("fragballs");
                         if (Main.netMode != 1)
                             Projectile.NewProjectile(npc.Center, 20f * Vector2.Normalize(npc.velocity), ModContent.ProjectileType<AkumaAFireballFrag>(), npc.damage / 4, 0f, Main.myPlayer);
                     }
@@ -301,7 +300,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     if (++npc.ai[3] > 30)
                     {
                         npc.ai[3] = 0;
-                        Main.NewText("rain shit from body");
                         if (Main.netMode != 1)
                         {
                             bool fire = true;
@@ -362,7 +360,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     MovementWorm(targetPos, 10f, 0.26f);
                     if (npc.ai[1] == 120 - 60 && Main.netMode != 1)
                     {
-                        Main.NewText("segment rays");
                         bool fire = true;
                         for (int i = 0; i < Main.maxNPCs; i++)
                             if (Main.npc[i].active && Main.npc[i].realLife == npc.whoAmI)
@@ -420,7 +417,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     npc.velocity *= 0.9875f;
                     if (++npc.ai[2] == 30)
                     {
-                        Main.NewText("eruption from body");
                         if (Main.netMode != 1)
                         {
                             bool fire = true;
@@ -445,7 +441,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
                         npc.netUpdate = true;
-                        Main.NewText("eruption from body");
                         if (Main.netMode != 1)
                         {
                             bool fire = true;
@@ -472,7 +467,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     if (npc.ai[2] == 0)
                     {
                         npc.ai[2] = 1;
-                        Main.NewText("lakitu");
                         if (Main.netMode != 1)
                             Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<AkumaALakitu>(), npc.damage / 4, 0f, Main.myPlayer, npc.target);
                     }
@@ -656,133 +650,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public bool Quote4;
         public bool Quote5;
         public bool QuoteSaid;
-
-        /*public void Attack(NPC npc)
-        {
-            Player player = Main.player[npc.target];
-            bool sayQuote = Main.rand.Next(4) == 0;
-            if (internalAI[1] == 0)
-            {
-                if (!QuoteSaid && sayQuote)
-                {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote1) ? Lang.BossChat("AkumaA13") : Lang.BossChat("AkumaA14") , Color.DeepSkyBlue);
-                    QuoteSaid = true;
-                    Quote1 = true;
-                }
-                if (npc.ai[2] == 320 || npc.ai[2] == 340 || npc.ai[2] == 360 || npc.ai[2] == 380)
-                {
-                    int Fireballs = Main.expertMode ? 20 : 14;
-                    for (int Loops = 0; Loops < Fireballs; Loops++)
-                    {
-                        AkumaAttacks.Dragonfire(npc, mod, true);
-                    }
-                }
-            }
-            else if (internalAI[1] == 1)
-            {
-                if (!QuoteSaid && sayQuote)
-                {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote2) ? Lang.BossChat("AkumaA15") : Lang.BossChat("AkumaA16") , Color.DeepSkyBlue);
-                    QuoteSaid = true;
-                    Quote2 = true;
-                }
-                if (npc.ai[2] == 350)
-                {
-                    int Fireballs = Main.expertMode ? 5 : 3;
-                    float spread = 45f * 0.0174f;
-                    float baseSpeed = (float)Math.Sqrt((npc.velocity.X * npc.velocity.X) + (npc.velocity.Y * npc.velocity.Y));
-                    double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - .1d;
-                    double deltaAngle = spread / 6f;
-                    double offsetAngle;
-                    for (int i = 0; i < Fireballs; i++)
-                    {
-                        offsetAngle = startAngle + (deltaAngle * i);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle) * 2, baseSpeed * (float)Math.Cos(offsetAngle) * 2, ModContent.ProjectileType<AkumaABomb>(), damage, 3, Main.myPlayer);
-                    }
-                }
-            }
-            else if (internalAI[1] == 2)
-            {
-                //int Fireballs = Main.expertMode ? 20 : 15;
-                if (!QuoteSaid && sayQuote)
-                {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("AkumaA17") : Lang.BossChat("AkumaA18") , Color.DeepSkyBlue);
-                    QuoteSaid = true;
-                    Quote3 = true;
-                }
-                if (npc.ai[2] == 330 || npc.ai[2] == 360 || npc.ai[2] == 390)
-                {
-                    //for (int Loops = 0; Loops < Fireballs; Loops++) AkumaAttacks.Eruption(npc, mod);
-                    Main.NewText("spit fragball");
-                    Vector2 spawnPos = npc.Center;
-                    spawnPos.X += 250 * (npc.Center.X < player.Center.X ? 1 : -1);
-                    Vector2 vel = (player.Center - spawnPos) / 30;
-                    if (vel.Length() < 25)
-                        vel = Vector2.Normalize(vel) * 25;
-                    Projectile.NewProjectile(spawnPos, vel, ModContent.ProjectileType<AkumaAFireballFrag>(), npc.damage / 4, 0f, Main.myPlayer);
-                }
-            }
-            else if (internalAI[1] == 3)
-            {
-                if (npc.ai[2] == 350)
-                {
-                    if (NPC.CountNPCS(ModContent.NPCType<AncientLung>()) < (Main.expertMode ? 3 : 4))
-                    {
-                        AkumaAttacks.SpawnLung(player, mod, true);
-                        MinionCount += 1;
-                    }
-                    Main.NewText("lakitu");
-                    Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<AkumaALakitu>(), npc.damage / 4, 0f, Main.myPlayer, npc.target);
-                }
-            }
-            else if (internalAI[1] == 4)
-            {
-                if (!QuoteSaid && sayQuote)
-                {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote4) ? Lang.BossChat("AkumaA19") : Lang.BossChat("AkumaA20"), Color.DeepSkyBlue);
-                    QuoteSaid = true;
-                    Quote4 = true;
-                }
-                if (npc.ai[2] == 310)
-                {
-                    Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity), ModContent.ProjectileType<AkumaADeathray>(), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
-                    //Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, ModContent.ProjectileType<AFireProjHostile>(), damage, 3, Main.myPlayer);
-                }
-            }
-            else
-            {
-                if (!QuoteSaid && sayQuote)
-                {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote5) ? Lang.BossChat("AkumaA21") : Lang.BossChat("AkumaA22") , Color.DeepSkyBlue);
-                    QuoteSaid = true;
-                    Quote5 = true;
-                }
-                if (npc.ai[2] == 350)
-                {
-                    for (int a = 0; a < 3; a++)
-                    {
-                        NPC.NewNPC((int)(player.position.X + Main.rand.Next(700)), (int)(player.position.Y + Main.rand.Next(700)), ModContent.NPCType<SunA>());
-                    }
-                }
-                if (npc.ai[2] % 10 == 0)
-                {
-                    Main.NewText("segment flames");
-                    bool fire = false;
-                    for (int i = 0; i < Main.maxNPCs; i++)
-                        if (Main.npc[i].active && Main.npc[i].realLife == npc.whoAmI)
-                        {
-                            fire = !fire;
-                            if (fire)
-                            {
-                                const float speed = 10f;
-                                Projectile.NewProjectile(Main.npc[i].Center, speed * Vector2.UnitX.RotatedBy(Main.npc[i].rotation + Math.PI / 2), ModContent.ProjectileType<AkumaABreath>(), Main.npc[i].damage / 4, 0f, Main.myPlayer);
-                                Projectile.NewProjectile(Main.npc[i].Center, speed * Vector2.UnitX.RotatedBy(Main.npc[i].rotation - Math.PI / 2), ModContent.ProjectileType<AkumaABreath>(), Main.npc[i].damage / 4, 0f, Main.myPlayer);
-                            }
-                        }
-                }
-            }
-        }*/
-
 
         public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {

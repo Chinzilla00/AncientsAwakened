@@ -7,8 +7,8 @@ namespace AAMod.Items.DevTools
         public override string Texture => "AAMod/Items/DevTools/AAUndowner";
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("AA Undowner");
-            Tooltip.SetDefault(@"Undowns all AA bosses.
+            DisplayName.SetDefault("AA Downer");
+            Tooltip.SetDefault(@"Downs all AA bosses.
 Non-Consumable");
         }
 

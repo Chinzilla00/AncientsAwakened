@@ -481,7 +481,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 npc.DropLoot(mod.ItemType("FAnubisTrophy"));
             }
 
-            if (!Main.expertMode)
+            if (Main.expertMode)
             {
                 npc.DropBossBags();
             }
@@ -491,9 +491,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 {
                     npc.DropLoot(mod.ItemType("FAnubisMask"));
                 }
-                npc.DropLoot(mod.ItemType("ForsakenFragment"), Main.rand.Next(8, 16));
-                npc.DropLoot(mod.ItemType("ArtifactOfJudgment"));
-                string[] lootTable = { "Judgment", "NeithsString", "DesertStaff", "JackalsWrath", "Sandthrower", "SentryOfTheEye" };
+                string[] lootTable = { "Verdict", "Lifeline", "ForsakenStaff", "Soulsplitter", "CursedFury", "HorusCane" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
             }

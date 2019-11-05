@@ -1,6 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using AAMod.NPCs.Bosses.Anubis;
+using AAMod.NPCs.Bosses.Anubis.Forsaken;
 using Terraria.ModLoader;
 using BaseMod;
 
@@ -33,14 +34,20 @@ Can only be used in the desert on the surface
         {
             if (!player.ZoneDesert || player.ZoneUndergroundDesert)
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("You wave the staff around like a psychopath. Nothing happens.", Color.Gold, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat("You wave the staff around like a psychopath. Nothing happens.", Color.Gold, false);
                 return true;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<Anubis>()))
             {
-                if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat("Uh...what are you doing?", Color.Gold, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat("Uh...what are you doing?", Color.Gold, false);
                 return true;
             }
+
+            if (NPC.AnyNPCs(ModContent.NPCType<FATransition>()) || NPC.AnyNPCs(ModContent.NPCType<FATransition2>()) || NPC.AnyNPCs(ModContent.NPCType<ForsakenAnubis>()))
+            {
+                return true;
+            }
+
 
 
             int a = NPC.NewNPC((int)player.position.X + Main.rand.Next(-300, 300), (int)player.position.Y - 400, ModContent.NPCType<Anubis>());

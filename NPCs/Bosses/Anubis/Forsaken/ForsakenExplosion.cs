@@ -21,7 +21,6 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
-            projectile.melee = true;
         }
 
         public override Color? GetAlpha(Color lightColor)

@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             npc.aiStyle = -1;
             npc.defense = 1;
             npc.knockBackResist = 0f;
-            npc.noGravity = true;
+            npc.noGravity = false;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.boss = true;

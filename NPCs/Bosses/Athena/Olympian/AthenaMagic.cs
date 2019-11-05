@@ -55,7 +55,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
         public override void Kill(int timeleft)
         {
 			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
-            int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, ProjectileID.Electrosphere, projectile.damage, projectile.knockBack, Main.myPlayer);
+            int p = Projectile.NewProjectile((int)projectile.Center.X, (int)projectile.Center.Y, 0, 0, ProjectileID.Electrosphere, 20, projectile.knockBack, Main.myPlayer);
             Main.projectile[p].Center = projectile.Center;
             Main.projectile[p].friendly = false;
             Main.projectile[p].hostile = true;

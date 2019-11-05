@@ -63,7 +63,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
             }
             player.QuickSpawnItem(mod.ItemType("ForsakenFragment"), Main.rand.Next(8, 16));
             player.QuickSpawnItem(mod.ItemType(""));
-            string[] lootTable = { "Verdict", "Lifeline", "ForsakenStaff", "JackalsWrath", "CursedFury", "HorusCane" };
+            string[] lootTable = { "Verdict", "Lifeline", "ForsakenStaff", "Soulsplitter", "CursedFury", "HorusCane" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
         }

@@ -46,17 +46,17 @@ N0N-C0NSUMABLE");
             {
                 if (NPC.AnyNPCs(mod.NPCType("Zero")))
                 {
-                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroFalse"), new Color(255, 0, 0), false);
+                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroFalse"), new Color(255, 0, 0), false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType("ZeroProtocol")))
                 {
-                    if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroFalse"), new Color(255, 0, 0), false);
+                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroFalse"), new Color(255, 0, 0), false);
                     return false;
                 }
                 return true;
             }
-            if (player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroVoidZoneFalse"), new Color(255, 0, 0), false);
+            if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroVoidZoneFalse"), new Color(255, 0, 0), false);
             return false;
         }
 

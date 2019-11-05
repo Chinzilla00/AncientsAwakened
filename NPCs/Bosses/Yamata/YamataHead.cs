@@ -58,7 +58,6 @@ namespace AAMod.NPCs.Bosses.Yamata
         public int f = 1;
         public float TargetDirection = (float)Math.PI / 2;
         public float s = 1;
-        public Projectile Breath;
         public static bool fireAttack;
         private int attackFrame;
         private int attackCounter;
@@ -228,7 +227,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.ai[3] = 1;
                 fireTimer = 0;
             }
-            projDamage = Main.expertMode ? (npc.damage / 4) : (npc.damage / 2);
+            projDamage = npc.damage / 6;
             if (npc.ai[3] == 1)
             {
                 attackTimer++;

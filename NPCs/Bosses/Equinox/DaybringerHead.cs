@@ -439,7 +439,6 @@ namespace AAMod.NPCs.Bosses.Equinox
 
         public void WormAI(bool wormStronger, bool isHead)
         {
-            bool expertMode = Main.expertMode;
             if (npc.ai[3] > 0f)
             {
                 npc.realLife = (int)npc.ai[3];
