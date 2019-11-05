@@ -52,6 +52,7 @@ The power to destroy entire planets rests in this armor");
 		{
 			player.moveSpeed += 0.18f;
             player.statManaMax2 += 120;
+            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .18f;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

@@ -42,6 +42,7 @@ The abyssal wrath of the Mire rests in this armor");
         {
             player.rangedCrit += 24;
             player.moveSpeed *= 1.2f;
+            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .2f;
 		}
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

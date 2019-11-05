@@ -51,6 +51,7 @@ Dark, yet still barely visible");
         public override void UpdateEquip(Player player)
 		{
 			player.moveSpeed += 0.24f;
+            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .24f;
 		}
 
 		public override void AddRecipes()

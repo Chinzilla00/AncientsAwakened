@@ -29,6 +29,7 @@ Weightless as shadow itself");
         {
             player.rangedDamage += .12f;
             player.moveSpeed += .35f;
+            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .35f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

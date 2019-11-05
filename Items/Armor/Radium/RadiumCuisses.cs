@@ -26,6 +26,7 @@ Shines with the light of a starry night sky");
 		public override void UpdateEquip(Player player)
 		{
 			player.moveSpeed += 0.3f;
+			player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .3f;
             Lighting.AddLight(player.Center, 1.0f, 1.0f, 1.0f);
         }
 

@@ -39,6 +39,7 @@ The armor of a champion feared across the land");
         {
             player.allDamage += .15f;
             player.moveSpeed += .5f;
+            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .5f;
         }
 
         public override void AddRecipes()

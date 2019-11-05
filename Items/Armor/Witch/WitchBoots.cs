@@ -43,6 +43,7 @@ Boots enchanted with the firey spirit of a supreme dragon acolyte");
             player.minionDamage += .12f;
             player.moveSpeed += .1f;
             player.maxMinions += 2;
+            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += 12f;
 		}
         
     }

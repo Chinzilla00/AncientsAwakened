@@ -66,6 +66,7 @@ The blazing fury of the Inferno rests in this armor");
 			player.moveSpeed += 0.16f;
 			player.meleeSpeed += 0.15f;
 			player.endurance *= 1.1f;
+            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .16f;
         }
 
         public override void AddRecipes()

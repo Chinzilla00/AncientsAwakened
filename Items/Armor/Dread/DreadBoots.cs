@@ -42,6 +42,7 @@ The abyssal wrath of the Mire rests in this armor");
 			player.moveSpeed *= 1.5f;
             player.ammoCost75 = true;
 			player.endurance *= 1.05f;
+            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .5f;
 		}
 
         public override void AddRecipes()

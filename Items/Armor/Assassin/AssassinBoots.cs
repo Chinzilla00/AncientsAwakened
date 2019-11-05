@@ -43,6 +43,7 @@ Dark boots infused with the shadow of midnight");
             player.rangedDamage += .15f;
             player.moveSpeed += .15f;
             player.meleeSpeed += .08f;
+            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += 0.15f;
 		}
     }
 }

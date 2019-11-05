@@ -282,6 +282,8 @@ namespace AAMod
         public bool AnubisBook = false;
         public bool GivenAnuSummon = false;
 
+        public float MaxMovespeedboost = 0;
+
         #endregion
 
         #region Save/Load
@@ -313,6 +315,8 @@ namespace AAMod
             ResetAccessoryEffect();
             ResetDebuffEffect();
             ResetPetsEffect();
+
+            MaxMovespeedboost = 0;
 
             //EnemyChecks
             IsGoblin = false;
@@ -1278,6 +1282,9 @@ namespace AAMod
 
         public override void PostUpdateRunSpeeds()
         {
+            float movespeedmax = 1f + MaxMovespeedboost;
+            player.maxRunSpeed *= movespeedmax;
+            
             if (player.pulley && AADash > 0)
             {
                 AADashMovement();
@@ -2734,6 +2741,7 @@ namespace AAMod
             Hunted = false;
             Unstable = false;
             Spear = false;
+            MaxMovespeedboost = 0;
         }
 
         public override void MeleeEffects(Item item, Rectangle hitbox)

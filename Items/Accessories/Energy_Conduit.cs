@@ -40,10 +40,8 @@ namespace AAMod.Items.Accessories
         public override void UpdateAccessory(Player player, bool hideVisual)
 		{
             player.moveSpeed += 0.5f;
-            player.maxRunSpeed *= 1.5f;
-            player.runAcceleration *= 1.5f;
+            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += 0.5f;
 		}
-		
 		
 		public override void SetStaticDefaults()
 		{

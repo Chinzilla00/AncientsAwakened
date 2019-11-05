@@ -27,6 +27,7 @@ Weightless as shadow itself");
 		public override void UpdateEquip(Player player)
 		{
 			player.moveSpeed += 0.30f;
+			player.GetModPlayer<AAPlayer>().MaxMovespeedboost += 0.3f;
 		}
 
 		public override void AddRecipes()

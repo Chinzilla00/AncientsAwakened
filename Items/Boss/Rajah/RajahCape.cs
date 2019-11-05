@@ -90,6 +90,7 @@ All effects of the Sash of Vengeance
             player.jumpSpeedBoost += 3.6f;
             player.noFallDmg = true;
             player.moveSpeed += Speed(player);
+            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += Speed(player);
             player.endurance += DamageRes(player);
 
             if (modPlayer.MeleeHighest(player))

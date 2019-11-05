@@ -37,6 +37,7 @@ Your magic attacks inflicts moonraze
 			player.manaCost -= 0.12f;
 			player.magicDamage += 0.18f;
             player.moveSpeed += 0.15f;
+            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += 0.15f;
         }
 
         public override void AddRecipes()
