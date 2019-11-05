@@ -71,14 +71,6 @@ Immunity to fall damage");
             base.ModifyTooltips(tooltips);
         }
 
-        public override void UpdateAccessory(Player player, bool hideVisual)
-        {
-            if (player.wingTime > 0)
-            {
-                player.wingTime += 1;
-            }
-        }
-
         public override void UpdateEquip(Player player)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
@@ -88,7 +80,11 @@ Immunity to fall damage");
             player.jumpSpeedBoost += 3.6f;
             player.noFallDmg = true;
             player.moveSpeed *= 1.4f;
-            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .4f;
+
+            if (player.wingTime > 0)
+            {
+                player.wingTime += 1;
+            }
 
             if (modPlayer.MeleeHighest(player))
             {
