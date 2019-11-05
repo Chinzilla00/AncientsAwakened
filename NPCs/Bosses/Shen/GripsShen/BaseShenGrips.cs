@@ -271,11 +271,11 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                 {
                     if(BlazeGrip)
                     {
-                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 2, 0f, Main.myPlayer, npc.whoAmI, 0);
-                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)) + 200f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center).RotatedBy(Math.PI / 2)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 2, 0f, Main.myPlayer, npc.whoAmI, (float)1f);
-                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)) + 400f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center).RotatedBy(Math.PI / 2)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 2, 0f, Main.myPlayer, npc.whoAmI, (float)2f);
-                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)) - 200f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center).RotatedBy(Math.PI / 2)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 2, 0f, Main.myPlayer, npc.whoAmI, -(float)1f);
-                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)) - 400f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center).RotatedBy(Math.PI / 2)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 2, 0f, Main.myPlayer, npc.whoAmI, -(float)2f);
+                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 3, 0f, Main.myPlayer, npc.whoAmI, 0);
+                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)) + 200f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center).RotatedBy(Math.PI / 2)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 3, 0f, Main.myPlayer, npc.whoAmI, (float)1f);
+                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)) + 400f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center).RotatedBy(Math.PI / 2)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 3, 0f, Main.myPlayer, npc.whoAmI, (float)2f);
+                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)) - 200f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center).RotatedBy(Math.PI / 2)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 3, 0f, Main.myPlayer, npc.whoAmI, -(float)1f);
+                        Projectile.NewProjectile(npc.Center + 50f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center)) - 400f * Vector2.Normalize(npc.DirectionTo(targetPlayer.Center).RotatedBy(Math.PI / 2)), new Vector2(0, 0), mod.ProjectileType("BlazeCloneClaw"), npc.damage / 3, 0f, Main.myPlayer, npc.whoAmI, -(float)2f);
                     }
                     else
                     {
