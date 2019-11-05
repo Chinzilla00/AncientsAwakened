@@ -24,6 +24,7 @@ namespace AAMod.Projectiles.Zero
             projectile.extraUpdates = 2;
             projectile.timeLeft = 1000;
             cooldownSlot = 1;
+            projectile.ranged = true;
         }
 
         public bool playedSound = false;

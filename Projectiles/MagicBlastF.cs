@@ -21,6 +21,7 @@ namespace AAMod.Projectiles
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
+            projectile.magic = true;
             projectile.penetrate = 1;
             projectile.extraUpdates = 1;
         }

@@ -23,6 +23,7 @@ namespace AAMod.Projectiles.Zero
             projectile.penetrate = 1;
             cooldownSlot = 1;
             projectile.damage = 6;
+            projectile.ranged = true;
         }
 
         public override Color? GetAlpha(Color lightColor)

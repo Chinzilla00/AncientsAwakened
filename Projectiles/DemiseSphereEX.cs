@@ -25,7 +25,6 @@ namespace AAMod.Projectiles
 			projectile.penetrate = 1;
 			projectile.timeLeft = 600;
 			projectile.alpha = 20;
-            projectile.tileCollide = false;
 			projectile.ignoreWater = true;
             projectile.tileCollide = true;
         }

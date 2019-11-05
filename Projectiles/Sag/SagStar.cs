@@ -19,6 +19,7 @@ namespace AAMod.Projectiles.Sag
             projectile.penetrate = 1;
             projectile.tileCollide = true;
             projectile.scale *= .8f;
+            projectile.magic = true;
         }
 
 		public override void SetStaticDefaults()

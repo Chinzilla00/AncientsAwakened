@@ -27,7 +27,6 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
             projectile.tileCollide = false;
             projectile.ranged = true;
             projectile.ignoreWater = true;
-            projectile.ranged = true;
         }
 
         public override void AI()

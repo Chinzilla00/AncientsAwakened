@@ -19,6 +19,7 @@ namespace AAMod.Projectiles
             projectile.height = 32;
             projectile.aiStyle = 1;
             projectile.friendly = true;
+            projectile.magic = true;
             projectile.hostile = false;
             projectile.penetrate = 2;
             projectile.timeLeft = 600;

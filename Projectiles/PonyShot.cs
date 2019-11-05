@@ -22,7 +22,7 @@ namespace AAMod.Projectiles
             projectile.height = 5;
             projectile.friendly = true;
             projectile.hostile = false;
-            projectile.melee = true;
+            projectile.magic = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;

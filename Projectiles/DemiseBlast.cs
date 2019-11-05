@@ -21,6 +21,7 @@ namespace AAMod.Projectiles
             projectile.hostile = false;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
+            projectile.melee = true;
             projectile.timeLeft = 600;
         }
 

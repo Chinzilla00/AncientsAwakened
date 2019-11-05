@@ -22,6 +22,7 @@ namespace AAMod.Projectiles.Anubis
 			projectile.hostile = false;
 			projectile.friendly = false;
 			projectile.extraUpdates = 0;
+			projectile.sentry = true;
 		}
 		
 		public override void AI()

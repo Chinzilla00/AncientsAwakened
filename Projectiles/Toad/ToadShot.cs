@@ -22,6 +22,7 @@ namespace AAMod.Projectiles.Toad
             projectile.timeLeft = 600;
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;
+            projectile.ranged = true;
 			projectile.extraUpdates = 1;
             aiType = ProjectileID.WoodenArrowFriendly;
             projectile.penetrate = 2; 

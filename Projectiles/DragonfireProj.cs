@@ -18,6 +18,7 @@ namespace AAMod.Projectiles
             projectile.hostile = false;
             projectile.friendly = true;
             projectile.ignoreWater = true;
+            projectile.ranged = true;
             projectile.penetrate = 1;
             projectile.alpha = 60;
             projectile.timeLeft = 60;

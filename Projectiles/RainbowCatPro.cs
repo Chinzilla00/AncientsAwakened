@@ -36,6 +36,7 @@ namespace AAMod.Projectiles
             projectile.alpha = 20;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
+            projectile.magic = true;
             projectile.timeLeft = 300;
         }
         public override void AI()

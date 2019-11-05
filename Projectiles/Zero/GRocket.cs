@@ -24,6 +24,7 @@ namespace AAMod.Projectiles.Zero
             projectile.penetrate = 1;
             projectile.tileCollide = true;
             projectile.timeLeft = 180;
+            projectile.ranged = true;
 		}
 
         public override void AI()

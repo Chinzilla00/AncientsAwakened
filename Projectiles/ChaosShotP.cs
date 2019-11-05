@@ -21,6 +21,7 @@ namespace AAMod.Projectiles
             projectile.height = 30;
 			projectile.friendly = true;
 			projectile.hostile = false;
+            projectile.melee = true;
             projectile.timeLeft = 600;
             projectile.aiStyle = -1;
         }

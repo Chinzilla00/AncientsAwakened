@@ -18,6 +18,7 @@ namespace AAMod.Projectiles
             projectile.aiStyle = 1;
             aiType = ProjectileID.Bullet;
             projectile.friendly = true;
+            projectile.ranged = true;
             projectile.aiStyle = -1;
 			projectile.width = 14;
 			projectile.height = 18;

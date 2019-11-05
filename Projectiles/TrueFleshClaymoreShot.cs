@@ -13,6 +13,7 @@ namespace AAMod.Projectiles
             projectile.width = 32;
             projectile.height = 32;
 			projectile.friendly = true;
+            projectile.melee = true;
 			projectile.hostile = false;
             projectile.timeLeft = 900;
         }

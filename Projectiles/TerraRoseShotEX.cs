@@ -18,6 +18,7 @@ namespace AAMod.Projectiles
             projectile.friendly = true;
 			projectile.hostile = false;
             projectile.timeLeft = 900;
+            projectile.magic = true;
         }
         private int HomeOnTarget()
         {

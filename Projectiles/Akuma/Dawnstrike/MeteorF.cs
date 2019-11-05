@@ -17,6 +17,7 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.extraUpdates = 1;
+            projectile.ranged = true;
         }
 
 

@@ -21,7 +21,6 @@ namespace AAMod.Projectiles.Zero
             projectile.magic = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 20;
-            projectile.alpha = 130;
             projectile.scale = .01f;
             projectile.alpha = 255;
             projectile.tileCollide = false;

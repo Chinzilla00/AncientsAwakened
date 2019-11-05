@@ -27,6 +27,7 @@ namespace AAMod.Projectiles
             projectile.alpha = 255;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;
+            projectile.ranged = true;
             projectile.extraUpdates = 1000;
             projectile.timeLeft = 120 * (projectile.extraUpdates + 0);
         }

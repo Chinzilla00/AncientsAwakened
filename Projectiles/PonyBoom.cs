@@ -23,6 +23,7 @@ namespace AAMod.Projectiles
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
             projectile.usesLocalNPCImmunity = true;
+            projectile.melee = true;
             projectile.localNPCHitCooldown = 15;
             projectile.scale *= 1.3f;
         }

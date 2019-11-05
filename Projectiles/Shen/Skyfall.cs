@@ -18,7 +18,7 @@ namespace AAMod.Projectiles.Shen
             projectile.height = 10;
             projectile.aiStyle = 0;
             projectile.friendly = true;
-            projectile.magic = true;
+            projectile.ranged = true;
             projectile.tileCollide = false;
             projectile.extraUpdates = 5;
             projectile.penetrate = 1;
