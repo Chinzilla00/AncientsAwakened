@@ -197,7 +197,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     if (!AliveCheck(player))
                         break;
                     
-                    if (npc.ai[1] >= 100)
+                    if (npc.ai[1] == 100)
+                    {
+                        pos = - pos;//ChangePos
+                    }
+                    if (npc.ai[1] > 100)
                     {
                         MoveToPoint(player.Center + new Vector2((player.velocity.X > 0? 1 : -1) * 600, -400));
                     }
