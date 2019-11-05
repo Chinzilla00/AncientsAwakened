@@ -2600,7 +2600,7 @@ ItemName.GenocideCannon=种族灭绝炮
 ItemTooltip.GenocideCannon=发射高爆火箭弹
 
 ItemName.Gigataser=机甲脉冲枪
-ItemTooltip.Gigataser=发射虚空激光\n按住充能\n充能时间越长，穿透力越大
+ItemTooltip.Gigataser=发射虚空激光
 
 ItemName.OmegaVolley=欧米茄排炮
 ItemTooltip.OmegaVolley=发射一排极其快速而又精准的声波子弹\n每10发子弹会射出额外的两发强化子弹\n33%几率不消耗弹药

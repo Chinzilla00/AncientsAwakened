@@ -19,6 +19,7 @@ namespace AAMod.Items.Boss.Yamata
             item.width = 32;
             item.height = 32;
             item.rare = 10;
+            item.expert = true; item.expertOnly = true;
         }
 
         public override int BossBagNPC => mod.NPCType("YamataA");

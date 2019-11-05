@@ -29,6 +29,7 @@ namespace AAMod.Projectiles.Zero
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 0;
             projectile.penetrate = -1;
+            projectile.ranged = true;
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
