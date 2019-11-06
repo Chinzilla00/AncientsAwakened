@@ -4799,7 +4799,7 @@ NPCName.FATransition=阿努比斯 史诗记述者
 
 NPCName.FATransition2=阿努比斯 史诗记述者
 
-NPCName.ForsakenAnubis=阿努比斯 逝落之断罪师
+NPCName.ForsakenAnubis=觉醒之阿努比斯 逝落的断罪师
 
 NPCName.ForsakenSun=逝落之阳
 
@@ -4810,6 +4810,8 @@ NPCName.CursedScarab=咒缚圣甲虫
 NPCName.CursedLocust=咒缚蝗群
 
 NPCName.Naddaha=咒缚唤女娜黛哈
+
+NPCName.HorusSentry=荷鲁斯之眼哨
 
 // AAMod.NPCs.Bosses.AH.Ashe
 
@@ -4835,13 +4837,15 @@ NPCName.AsheOrbiter=狂焰漩涡
 
 NPCName.AsheVanish=燎狱魔女 邪鬼艾希
 
+NPCName.AsheRune=艾希召唤符文
+
 
 // AAMod.NPCs.Bosses.AH.Haruka
 
 
 NPCName.Haruka=潭渊妖女 八歧遥香
 
-NPCName.HarukaSpawan=潭渊妖女 八歧遥香
+NPCName.HarukaSpawn=潭渊妖女 八歧遥香
 
 NPCName.HarukaClone=潭渊妖女 八歧遥香
 
@@ -4881,7 +4885,7 @@ NPCName.AwakenedLungTail=觉醒之伴龙
 
 // AAMod.NPCs.Bosses.Akuma
 
-NPCName.SunA=邪鬼之日
+NPCName.SunA=邪鬼之阳
 
 NPCName.Akuma=远古之邪鬼巨龙 凶煞恶魔
 
@@ -4907,7 +4911,7 @@ NPCName.Athena=穹武鸮姬 雅典娜
 
 NPCName.AthenaFlee=穹武鸮姬 雅典娜
 
-NPCName.AthenaA=奥林匹亚女神 觉醒雅典娜
+NPCName.AthenaA=觉醒之奥林匹亚女武神 雅典娜
 
 NPCName.AthenaDark=穹武鸮姬的暗影
 
@@ -5114,13 +5118,15 @@ NPCName.SagittariusOrbiter=护卫轨道器
 
 // AAMod.NPCs.Bosses.Shen
 
-NPCName.FuryAshe=觉醒燎狱魔女 激怒之邪鬼艾希
+NPCName.FuryAshe=觉醒燎狱魔女 凶怒之邪鬼艾希
 
-NPCName.FuryAsheVanish=觉醒燎狱魔女 激怒之邪鬼艾希
+NPCName.FuryAsheVanish=觉醒燎狱魔女 凶怒之邪鬼艾希
 
-NPCName.WrathHaruka=觉醒潭渊妖女 怨惧之八歧遥香
+NPCName.WrathHaruka=觉醒潭渊妖女 震惧之八歧遥香
 
-NPCName.WrathHarukaVanish=觉醒潭渊妖女 怨惧之八歧遥香
+NPCName.WrathHarukaVanish=觉醒潭渊妖女 震惧之八歧遥香
+
+NPCName.WrathHarukaClone=觉醒潭渊妖女 震惧之八歧遥香
 
 NPCName.ShenDoragon=上神应龙 冥昧末日的预言者
 
