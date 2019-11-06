@@ -645,7 +645,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 }
                 
 
-                if (internalAI[4] == 180)
+                if (internalAI[4] >= 200)
                 {
                     int projType = ModContent.ProjectileType<HarukaProj>();
                     float spread = 45f * 0.0174f;
@@ -670,9 +670,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         }
                     }
                     strikebackproj = 0;
-                }
-                else if(internalAI[4] > 240)
-                {
+
                     npc.frameCounter = 0;
                     Frame = 0;
 
@@ -762,7 +760,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 if(SHADOWCONTER > 0)
                 {
-                    LOOPPOINT(player.Center + new Vector2(0, 400f), player.Center - new Vector2(0, 400f));
+                    LOOPPOINT(player.Center + new Vector2(0, 500f), player.Center - new Vector2(0, 500f));
                 }
                 else
                 {

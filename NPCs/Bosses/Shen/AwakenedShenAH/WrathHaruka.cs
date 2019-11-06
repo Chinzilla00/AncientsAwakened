@@ -645,7 +645,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     }
                     
 
-                    if (internalAI[4] > 120)
+                    if (internalAI[4] > 200)
                     {
                         npc.frameCounter = 0;
                         Frame = 0;
@@ -699,7 +699,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     }
                     else if(internalAI[4] > 100)
                     {
-                        MovePoint = wantedVelocity;
+                        MovePoint = player.Center - new Vector2(pos * 1.5f, 0);
                     }
                 }
             }
@@ -734,7 +734,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             }
             else if (internalAI[0] == AISTATE_Shadowkilling) //Melee Damage/Speed boost
             {
-                npc.damage = 200;
+                npc.damage = 150;
                 npc.defense = 9999;
             }
             else //Reset Stats
@@ -999,17 +999,17 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             Vector2 playerVelocity = Main.player[npc.target].velocity;
             if(playerVelocity.X < 0)
             {
-                npc.position.X = playerLocation.X - 150f;
+                npc.position.X = playerLocation.X - 250f;
                 npc.position.Y = playerLocation.Y;
             }
             else if(playerVelocity.X > 0)
             {
-                npc.position.X = playerLocation.X + 150f;
+                npc.position.X = playerLocation.X + 250f;
                 npc.position.Y = playerLocation.Y;
             }
             else
             {
-                npc.position.X = playerLocation.X - Main.player[npc.target].direction * 150f;
+                npc.position.X = playerLocation.X - Main.player[npc.target].direction * 250f;
                 npc.position.Y = playerLocation.Y;
             }
         }
