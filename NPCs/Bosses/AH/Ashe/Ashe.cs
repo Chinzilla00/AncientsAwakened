@@ -286,7 +286,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     
                     float RunepositionX = Runeposition.X;
                     float RunepositionY = Runeposition.Y;
-                    NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage, npc.whoAmI, player.whoAmI);
+                    NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage / 4, npc.whoAmI, player.whoAmI);
                     npc.ai[2] = 0;
                 }
             }

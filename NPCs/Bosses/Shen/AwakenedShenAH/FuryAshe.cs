@@ -81,7 +81,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
                     MoveToPoint(wantedVelocity);
 
-                    BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, ModContent.ProjectileType<AsheShot>(), ref npc.ai[2], 18, npc.damage / 2, 9, false);
+                    BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, ModContent.ProjectileType<AsheShot>(), ref npc.ai[2], 18, npc.damage / 4, 9, false);
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
                         AIChange();
@@ -104,18 +104,18 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     int firepos = 0;
                     if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
                     {
-                        firepos = 200;
+                        firepos = 500;
                     }
                     else
                     {
-                        firepos = -200;
+                        firepos = -500;
                     }
 
                     wantedVelocity = player.Center - new Vector2(firepos, 0);
 
                     MoveToPoint(wantedVelocity);
 
-                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 2, 24, false);
+                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 4, 16, false);
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
                         npc.ai[1] = 0;
@@ -146,7 +146,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         npc.velocity = npc.DirectionTo(player.Center) * (npc.life < npc.lifeMax/3 ? 50:40);
                         if(npc.velocity.Length() < 40f)
                         {
-                            npc.velocity = Vector2.Normalize(npc.oldVelocity) * (npc.life < npc.lifeMax/3 ? 50:40);
+                            npc.velocity = Vector2.Normalize(npc.velocity) * (npc.life < npc.lifeMax/3 ? 50:40);
                         }
                     }
                     break;
@@ -197,9 +197,13 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     if (!AliveCheck(player))
                         break;
                     
-                    if (npc.ai[1] >= 100)
+                    if (npc.ai[1] == 100)
                     {
-                        MoveToPoint(player.Center + new Vector2((player.velocity.X > 0? 1 : -1) * 350, -200));
+                        pos = - pos;//ChangePos
+                    }
+                    if (npc.ai[1] > 100)
+                    {
+                        MoveToPoint(player.Center + new Vector2((player.velocity.X > 0? 1 : -1) * 600, -400));
                     }
                     else
                     {
@@ -207,7 +211,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     }
                     if (npc.life > npc.lifeMax / 3 || npc.ai[1] < 100)
                     {
-                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], npc.life < npc.lifeMax * 0.666f ? 20 : 60, npc.damage / 2, 8, false);
+                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], npc.life < npc.lifeMax * 0.666f ? 30 : 60, npc.damage / 4, 8, false);
                     }
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
@@ -217,7 +221,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                             {
                                 Vector2 shoot = new Vector2((float)Math.Sin(i * 0.25f * 3.1415926f), (float)Math.Cos(i * 0.25f * 3.1415926f));
                                 shoot *= 8f;
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<AsheFire>(), npc.damage / 2, 5, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<AsheFire>(), npc.damage / 4, 5, Main.myPlayer);
                             }
                             if(Main.rand.Next(3) == 0) goto case 5;
                         }
@@ -279,7 +283,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     
                     float RunepositionX = Runeposition.X;
                     float RunepositionY = Runeposition.Y;
-                    NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage, npc.whoAmI, player.whoAmI);
+                    NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage / 4, npc.whoAmI, player.whoAmI);
                     npc.ai[2] = 0;
                 }
             }
@@ -557,9 +561,9 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             {
                 if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
                 {
-                    if (pos == -350)
+                    if (pos == -600)
                     {
-                        pos = 350;
+                        pos = 600;
                     }
 
                     npc.direction = 1;
@@ -575,9 +579,9 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 }
                 else //If NPC's X position is higher than the player's
                 {
-                    if (pos == 350)
+                    if (pos == 600)
                     {
-                        pos = -350;
+                        pos = -600;
                     }
 
                     npc.direction = -1;
