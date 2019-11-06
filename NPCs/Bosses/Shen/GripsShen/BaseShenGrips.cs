@@ -350,10 +350,26 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                 }
                 else
                 {
-                    internalAI[2] ++;
-                    npc.ai[0] = 2;
-                    internalAI[1] = 0;
-                    npc.netUpdate = true;
+                    moveSpeed = 22f;
+                    Vector2 targetCenter = npc.position;
+                    Vector2 point = targetCenter + new Vector2(ChangingPosX, ChangingPosY);
+                    Keepmove = point;
+                    if(Keepmove != new Vector2(0,0))
+                    {
+                        MoveToPoint(Keepmove);
+                        if(Main.netMode != 1)
+                        {
+                            Main.PlaySound(SoundID.Roar, npc.position, 0);
+                            npc.ai[0] = 3;			
+                            internalAI[2] ++;
+                            internalAI[1] = 0;
+                            npc.netUpdate = true;
+                        }
+                    } 
+                    else
+                    {
+                        Keepmove = targetCenter;
+                    }
                 }
 
             }

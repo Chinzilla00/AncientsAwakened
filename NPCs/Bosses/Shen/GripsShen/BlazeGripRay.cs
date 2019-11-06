@@ -69,11 +69,15 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                 {
                     projectile.Center = Main.projectile[proj].position + new Vector2(Main.projectile[proj].width/2, Main.projectile[proj].height/2);
 
+                    /* 
                     Vector2 dir = Vector2.Normalize(Main.player[centerNPC.target].Center - Main.projectile[proj].Center);
                     if (dir.Y < 0f)
                     {
                         raydirection = -1f;
                     }
+                    */
+
+                    raydirection = Main.player[centerNPC.target].Center.ToRotation() - Main.projectile[proj].Center.ToRotation() > 0? 1f:-1f;
 
                     //projectile.velocity = Vector2.Normalize(projectile.velocity);
                     projectile.position += 30 * projectile.velocity;

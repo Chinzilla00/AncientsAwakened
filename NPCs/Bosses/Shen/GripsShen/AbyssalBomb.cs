@@ -32,11 +32,23 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             return Color.White;
         }
 
+        public int rotate = 0;
+
         public override void AI()
         {
             if (projectile.timeLeft > 0)
             {
                 projectile.timeLeft--;
+            }
+            if (projectile.timeLeft % 90 == 15)
+            {
+                for(int i = 0; i < 16; i++)
+                {
+                    Vector2 shoot = new Vector2((float)Math.Sin((i * 0.125f + rotate * 0.067f) * 3.1415926f), (float)Math.Cos((i * 0.125f + rotate * 0.067f) * 3.1415926f));
+                    shoot *= 16f;
+                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, shoot.X, shoot.Y, mod.ProjectileType("AbyssGripOrbiter2"), projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+                }
+                rotate ++;
             }
             if (projectile.timeLeft == 0)
             {
@@ -56,7 +68,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             const int aislotHomingCooldown = 0;
             const int homingDelay = 0;
-            const float desiredFlySpeedInPixelsPerFrame = 10;
+            const float desiredFlySpeedInPixelsPerFrame = 14;
             const float amountOfFramesToLerpBy = 20; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
