@@ -2275,7 +2275,6 @@ ItemName.RabbitcopterEars=直升飞兔螺旋耳
 ItemTooltip.RabbitcopterEars=允许飞行和滑翔\n“啊,那不是兔耳朵的正确用法,不过很有效”
 
 ItemName.RajahBag=宝藏袋
-ItemTooltip.RajahBag={$CommonItemTooltip.RightClickToOpen}
 
 ItemName.RajahSash=巨兔王公的复仇腰带
 ItemTooltip.RajahSash=每损失10％生命值,你的最高伤害类型提升8％的额外攻击力\n提升跳跃高度和速度\n获得自动跳跃\n免疫坠落伤害
@@ -2294,7 +2293,6 @@ ItemTooltip.RajahCape=每损失10％生命值，你获得以下效果:\n1. 最�
 // AAMod.Items.Boss.Rajah.Supreme
 
 ItemName.RajahCache=宝藏袋
-ItemTooltip.RajahCache={$CommonItemTooltip.RightClickToOpen}
 
 ItemName.Excalihare=断兔圣剑
 
@@ -5929,6 +5927,32 @@ Common.AATownNPCInfo=取消远古觉醒NPC的生成, 用于玩家希望其他npc
 Common.DisableBossDialogue=远古觉醒Boss对话取消
 Common.DisableBossDialogueInfo=阻止Boss对话的生成. 也会让已有的Boss对话速度加快.
 
+//AAPlayerChat
+
+Common.WorldgenReminderInfo1=嘿, 呃…小子？ 如果我哪里错了, 请纠正我, 但我认为你的世界不是由远古觉醒的内容而生成的。 如果我是你, 我会完成一个新的世界。 
+Common.WorldgenReminderInfo2=你 这 个 笨 蛋！你 没 有 生 成 远 古 觉 醒 的 内 容！快 创 造 一 个 新 世 界！呃 啊 啊 啊 啊 啊 啊 啊 啊 啊 啊 啊 啊 啊 啊 啊 啊 啊 啊 啊 啊
+Common.WorldgenReminderInfo3=错0误。 世0界并没有0包含aamod.tmod的内0容。 请0创造0一个新世0界。 
+Common.WorldgenReminderInfo4=嘿！你没有在这个世界上创造出远古觉醒的东西！在我把你炸到火星之前赶紧创造一个新世界！
+Common.WorldgenReminderInfo5=嘿, 呃……这个世界里我看不到任何远古觉醒的内容。 聪明点赶紧创一个新世界。
+Common.WorldgenReminderInfo6=嘿。 说你呢。 另一个次元的人。 你可能在下载了mod之后忘记了创造一个新的世界。 如果你想要所有的mod的内容, 创造一个新的世界。 
+Common.WorldgenReminderInfo7=创造……新世界……否则疯狂的蘑菇人……会压扁……你这个小泰拉人……
+Common.WorldgenReminderInfo8=…凡人。 如果我没有老眼昏花的话, 你的世界就没有远古觉醒的内容。 创造一个新的世界最吼的。
+
+//AAWorldChangeInfo
+
+Common.downedEquinoxInfo=上神之礼在天空中闪耀...
+Common.downedMoonlordInfo1=真正的远古觉醒!
+Common.downedMoonlordInfo2=月球领主的精华在洞穴中闪耀...
+Common.downedMechBossAnyInfo=洞穴中有光闪过...
+Common.downedSistersInfo=混沌能量从地下最深出开始涌出.
+Common.downedBoss2Info=打败强大的恶魔之后你听见泰拉心球中的靡靡之音...
+Common.downedBoss3Info1=远古之骨已经因能量而爆裂!
+Common.downedBoss3Info2=沙漠之风开始酝酿...
+Common.downedBoss3Info3=凛冬之山隆隆作响...
+Common.downedMechBossInfo=嘿, 小子, 是我, 阿努比斯. 帮我个忙，请回来找我, 我想和你说点事.
+Common.downedAllAncientsInfo=真正的冥昧之息在大气中翻涌...
+Common.hardModeInfo=愤怒和怨恨的灵魂被释放了!
+
 //AAWorldBuild
 
 Common.AAWorldBuildAltars=安置混沌祭坛
@@ -5964,5 +5988,51 @@ Common.ChaosChestpiece=混沌级护胸
 Common.hardmodeanvil=困难模式砧
 Common.hardmodeforge=困难模式熔炉
 
+//GlobalNPCSInfo
+
+Common.NPCarrive=到了!
+
+//BossSummonedInfo
+
+Common.RajahGlobalInfo1=杀害无辜者必须受到惩罚!
+Common.RajahGlobalInfo2=你 犯 了 不 可 饶 恕 的 罪 孽! 我 要 把 你 从 这 个 凡 人 的 国 度 里 抹 去! 准 备 好 接 受 真 正 的 痛 苦 和 惩 罚 吧, 
+Common.RajahGlobalInfo3=一个愤怒的生物的眼睛注视着你…
+
+Common.ChaosRuneYamataFalse=一幅凶煞的图像在你脑海中一闪而过...
+Common.ChaosRuneAkumaFalse=一种七头的恐惧在你脑海中一闪而过...
+Common.ChaosRuneFalse=哈!我也希望有两个我能把你干翻!
+Common.ChaosRuneTrue1=上神应龙已经苏醒!
+Common.ChaosRuneTrue2=跳过乐趣时间? 懂了, 我欣赏你, 小子
+
+Common.ChaosSigilFalse1=只有蓝色印迹在发光...
+Common.ChaosSigilFalse2=只有红色印迹在发光...
+Common.ChaosSigilFalse3=哈!我也希望有两个我能把你干翻!
+Common.ChaosSigilFalse4=混沌印迹发着光, 混沌神坛的图像在你的脑海中闪现
+Common.ChaosSigilTrue1=大错特错, 我的孩子...
+Common.ChaosSigilTrue2=哈? ...又来. . ? 好, 让我们把这事安排的明明白白
+
+Common.ConfusingMushroomFalse1=蘑菇发着光, 它的气味让你感到毛骨悚然. 
+Common.ConfusingMushroomFalse2=真菌帝正要宰了你. 
+
+Common.CuriousClawFalse1=混沌双爪已经在这了!
+Common.CuriousClawFalse2=爪子在你手中无力的伸开. 恶心的要死.
+
+Common.DiamondCarrotRajahText1=致 命 错 误, 泰 拉 人!
+Common.DiamondCarrotRajahText2=给我 康 康 你拿了什么, 
+
+Common.DjinnLampDesertFalse1=你擦灯的时候, 它吐着沙子
+Common.DjinnLampDesertFalse2=再怎么擦也没用
+
+Common.DraconianDayTimeFalse=臭小子. 龙不睡觉吗？ 早上再来.
+Common.DraconianRuneFalse1=一幅燎狱顶端焦塔的图像在你脑海一闪而过.
+Common.DraconianRuneFalse2=嘿, 小子, 你应该知道, 那符文只需要用一次就行.
+Common.DraconianRuneInfernoFalse=你只能在燎狱使用那个印迹, 小子.
+Common.DraconianRuneTrue1=你周围的空气开始升温!
+Common.DraconianRuneTrue2=不浪费时间直奔主题...?懂了, 那好, 准备下地狱吧...!
+
+Common.DraconianSigilFalse=嘿, 小子, 你应该知道, 那印迹只需要用一次就行. 
+Common.DraconianSigilInfernoFalse=你只能在燎狱使用那个印迹, 小子.
+Common.DraconianSignalTrue1=呵呵, 我希望你已经准备好感受烈日的愤火了, 小子. 
+Common.DraconianSignalTrue2=又来, 小子？ 你没有更好的事情要做吗？ 你已经打败过我一次了. 好吧, 但我可不会对你心慈手软.
 
 

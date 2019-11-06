@@ -1184,7 +1184,7 @@ namespace AAMod
                 if (RadiumOre == false)
                 {
                     RadiumOre = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedEquinoxInfo"), Color.Violet);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedEquinoxInfo"), Color.Violet);
                     for (int i = 0; i < Main.maxTilesX / 25; ++i)
                     {
                         int X = WorldGen.genRand.Next(50, Main.maxTilesX / 10 * 9); //X position, centre.
@@ -1208,12 +1208,12 @@ namespace AAMod
                 if (Ancients == false)
                 {
                     Ancients = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedMoonlordInfo1"), Color.ForestGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedMoonlordInfo1"), Color.ForestGreen);
                 }
                 if (Luminite == false)
                 {
                     Luminite = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedMoonlordInfo2"), Color.DarkSeaGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedMoonlordInfo2"), Color.DarkSeaGreen);
                     for (int k = 0; k < (int)(Main.maxTilesX * Main.maxTilesY * 6E-05); k++)
                     {
                         WorldGen.OreRunner(WorldGen.genRand.Next(0, Main.maxTilesX), WorldGen.genRand.Next((int)Main.rockLayer, Main.maxTilesY - 200), WorldGen.genRand.Next(5, 9), WorldGen.genRand.Next(6, 10), (ushort)mod.TileType("LuminiteOre"));
@@ -1226,7 +1226,7 @@ namespace AAMod
                 if (HallowedOre == false)
                 {
                     HallowedOre = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedMechBossAnyInfo"), Color.Goldenrod);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedMechBossAnyInfo"), Color.Goldenrod);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1243,7 +1243,7 @@ namespace AAMod
                 if (!DiscordOres)
                 {
                     DiscordOres = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedSistersInfo"), Color.Magenta);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedSistersInfo"), Color.Magenta);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1271,7 +1271,7 @@ namespace AAMod
                 if (!TerrariumEnemies)
                 {
                     TerrariumEnemies = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedBoss2Info"), Color.LimeGreen);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss2Info"), Color.LimeGreen);
                 }
             }
             if (NPC.downedBoss3)
@@ -1279,9 +1279,9 @@ namespace AAMod
                 if (!Dynaskull)
                 {
                     Dynaskull = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedBoss3Info1"), Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedBoss3Info2"), Color.Orange);
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedBoss3Info3"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info1"), Color.DarkOrange.R, Color.DarkOrange.G, Color.DarkOrange.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info2"), Color.Orange);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedBoss3Info3"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B);
                     int x = Main.maxTilesX;
                     int y = Main.maxTilesY;
                     for (int k = 0; k < (int)(x * y * 15E-05); k++)
@@ -1300,7 +1300,7 @@ namespace AAMod
                 if (!AMessage)
                 {
                     AMessage = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedPlantBossInfo4"), Color.Gold.R, Color.Gold.G, Color.Gold.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedMechBossInfo"), Color.Gold.R, Color.Gold.G, Color.Gold.B);
                 }
             }       
 
@@ -1318,7 +1318,7 @@ namespace AAMod
             {
                 if (downedAllAncients == false)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("downedAllAncientsInfo"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedAllAncientsInfo"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B);
                     downedAllAncients = true;
                 }
             }
@@ -1327,7 +1327,7 @@ namespace AAMod
                 if (InfernoStripe == false)
                 {
                     InfernoStripe = true;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("hardModeInfo"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
+                    if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.hardModeInfo"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
                     ConversionHandler.ConvertDown((int)InfernoCenter.X, 0, 120, ConversionType.INFERNO);
                 }
                 if (MireStripe == false)

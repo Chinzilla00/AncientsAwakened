@@ -42,11 +42,11 @@ namespace AAMod.Items.Dev.Invoker
 					string damageWord = splitText.Last();
 					if(Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw) 
 					{
-						tooltipLine.text = damageValue + Language.GetTextValue("Mods.AAMod.Common.InvokerDamage1") + damageWord;
+						tooltipLine.text = damageValue + " " + Language.GetTextValue("Mods.AAMod.Common.InvokerDamage1") + damageWord;
 					}
 					else 
 					{
-						tooltipLine.text = damageValue + Language.GetTextValue("Mods.AAMod.Common.InvokerDamage2") + damageWord;
+						tooltipLine.text = damageValue + " " + Language.GetTextValue("Mods.AAMod.Common.InvokerDamage2") + damageWord;
 					}
 				}
 				if (tooltipLine != null && tooltipLine.Name == "Tooltip0")

@@ -49,24 +49,24 @@ Non-Consumable");
         {
             if (!Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianDayTimeFalse"), new Color(180, 41, 32), false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DraconianDayTimeFalse"), new Color(180, 41, 32), false);
                 return false;
             }
             if (player.GetModPlayer<AAPlayer>().ZoneInferno)
             {
                 if (!AAWorld.downedAkuma && !player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda)
                 {
-                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianRuneInfernoFalse2"), new Color(180, 41, 32), false);
+                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DraconianRuneFalse2"), new Color(180, 41, 32), false);
                     return false;
                 }
                 if (NPC.AnyNPCs(ModContent.NPCType<Akuma>()))
                 {
-                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianSigilFalse"), new Color(180, 41, 32), false);
+                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DraconianSigilFalse"), new Color(180, 41, 32), false);
                     return false;
                 }
                 if (NPC.AnyNPCs(ModContent.NPCType<AkumaA>()))
                 {
-                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianSigilFalse"), new Color(0, 191, 255), false);
+                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DraconianSigilFalse"), new Color(0, 191, 255), false);
                     return false;
                 }
                 for (int m = 0; m < Main.maxProjectiles; m++)
@@ -79,7 +79,7 @@ Non-Consumable");
                 }
                 return true;
             }
-            if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianSigilInfernoFalse"), new Color(180, 41, 32), false);
+            if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DraconianSigilInfernoFalse"), new Color(180, 41, 32), false);
             return false;
         }
 
@@ -88,11 +88,11 @@ Non-Consumable");
 
             if (!AAWorld.downedAkuma)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianSignalTrue1"), new Color(180, 41, 32));
+                if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DraconianSignalTrue1"), new Color(180, 41, 32));
             }
             if (AAWorld.downedAkuma)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("DraconianSignalTrue2"), new Color(180, 41, 32));
+                if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DraconianSignalTrue2"), new Color(180, 41, 32));
             }
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Akuma"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Akuma"), false);
             Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/AkumaRoar"), player.position);
