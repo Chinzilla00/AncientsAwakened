@@ -445,7 +445,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 npc.timeLeft = 10;
             }
-            if (npc.alpha < 255 && npc.ai[0] > 350)
+            if (npc.ai[0] > 350)
             {
                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA");
                 for (int LOOP = 0; LOOP < 8; LOOP++)
@@ -530,7 +530,6 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     npc.alpha -= 5;
                 }
-
 
                 if (npc.ai[0] >= 600)
                 {

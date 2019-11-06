@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using System;
+using Microsoft.Xna.Framework;
 
 namespace AAMod.Projectiles.Anubis
 {
@@ -26,8 +27,9 @@ namespace AAMod.Projectiles.Anubis
 		}
 		
 		public override void AI()
-		{
-			Player player = Main.player[projectile.owner];
+        {
+            Lighting.AddLight(projectile.Center, Color.Gold.R / 255, Color.Gold.G / 255, Color.Gold.B / 255);
+            Player player = Main.player[projectile.owner];
 			projectile.Center = player.Center;
 			projectile.position.Y = player.Center.Y-90;
 			projectile.spriteDirection = player.direction;

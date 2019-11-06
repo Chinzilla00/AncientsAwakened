@@ -10,7 +10,8 @@ namespace AAMod.Items.Summoning
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Blizzard Dragon Staff");
-            Tooltip.SetDefault(@"Summons a blizzard dragon to fight for you");
+            Tooltip.SetDefault(@"Summons a blizzard dragon to fight for you
+Hydra Staff EX");
         }
 
         public override void SetDefaults()

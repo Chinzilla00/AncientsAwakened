@@ -11,7 +11,8 @@ namespace AAMod.Items.Ranged
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Perfect Chaos Bustershot");
-            Tooltip.SetDefault("Fires a piercing dualblast as well as a spread of 10 bullets");
+            Tooltip.SetDefault(@"Fires a piercing dualblast as well as a spread of 10 bullets
+Chaos Bustershot EX");
         }
 
         public override void SetDefaults()

@@ -137,11 +137,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.life <= 0)
-            {
-                npc.life = 1;
-                npc.dontTakeDamage = true;
-            }
             if (damage > 30)
             {
                 int TeleportChance = 100 * (npc.life / npc.lifeMax);

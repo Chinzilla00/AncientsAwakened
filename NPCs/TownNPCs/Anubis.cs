@@ -1,5 +1,6 @@
 using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using Terraria;
 using Terraria.GameContent.Events;
@@ -424,6 +425,15 @@ namespace AAMod.NPCs.TownNPCs
                     }
                 }
             }
+            return false;
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            Texture2D t = mod.GetTexture(AAWorld.downedAnubisA ? "NPCs/TownNPCs/AnubisF" : "NPCs/TownNPCs/Anubis");
+            Texture2D g = mod.GetTexture(AAWorld.downedAnubisA ? "Glowmasks/AnubisF_Glow" : "Glowmasks/Anubis_Glow");
+            BaseDrawing.DrawTexture(spriteBatch, t, 0, npc, drawColor);
+            BaseDrawing.DrawTexture(spriteBatch, g, 0, npc, Color.White);
             return false;
         }
 

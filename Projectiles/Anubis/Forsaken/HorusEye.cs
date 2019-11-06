@@ -28,7 +28,8 @@ namespace AAMod.Projectiles.Anubis.Forsaken
 	
         public override void AI()
         {
-			if (projectile.scale < 1f) projectile.scale += 0.01f;
+            Lighting.AddLight(projectile.Center, Color.DarkSeaGreen.R / 255, Color.DarkSeaGreen.G / 255, Color.DarkSeaGreen.B / 255);
+            if (projectile.scale < 1f) projectile.scale += 0.01f;
             if (projectile.alpha > 0) projectile.alpha -= 5;
 
             if (projectile.ai[1] == 0)
@@ -59,7 +60,7 @@ namespace AAMod.Projectiles.Anubis.Forsaken
                 float shootToY = target.position.Y + target.height * 0.5f - projectile.Center.Y;
                 float distance = (float)Math.Sqrt(shootToX * shootToX + shootToY * shootToY);
 
-                if (projectile.scale >= 1f && distance < 600f && target.catchItem == 0 && !target.friendly && target.active && target.type != 488)
+                if (projectile.scale >= 1f && distance < 600f && target.catchItem == 0 && !target.friendly && target.active && target.type != 488 && Collision.CanHit(projectile.position, projectile.width, projectile.height, target.position, target.width, target.height))
                 {
                     if (projectile.ai[0] > 15f) // Time in (60 = 1 second) 
                     {

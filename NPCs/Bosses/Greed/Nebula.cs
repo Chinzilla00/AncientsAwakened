@@ -12,7 +12,6 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Demise Sphere");
             Main.projFrames[projectile.type] = 4;
 		}
 
@@ -102,6 +101,11 @@ namespace AAMod.NPCs.Bosses.Greed
     public class NebulaBoost : ModProjectile
     {
         public override string Texture => "AAMod/BlankTex";
+
+        public override void SetStaticDefaults()
+        {
+            Main.projFrames[projectile.type] = 4;
+        }
 
         public override void SetDefaults()
         {

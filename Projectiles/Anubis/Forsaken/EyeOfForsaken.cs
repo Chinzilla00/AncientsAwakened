@@ -2,6 +2,7 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace AAMod.Projectiles.Anubis.Forsaken
 {
@@ -25,7 +26,8 @@ namespace AAMod.Projectiles.Anubis.Forsaken
 	
         public override void AI()
         {
-			Player player = Main.player[projectile.owner];
+            Lighting.AddLight(projectile.Center, Color.DarkSeaGreen.R / 255, Color.DarkSeaGreen.G / 255, Color.DarkSeaGreen.B / 255);
+            Player player = Main.player[projectile.owner];
 			projectile.Center = player.Center;
 			projectile.position.Y = player.Center.Y-90;
 			projectile.spriteDirection = player.direction;

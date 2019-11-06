@@ -16,10 +16,14 @@ namespace AAMod.Buffs
 		public override void Update(Player player, ref int buffIndex)
 		{
 			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
-			if (player.ownedProjectileCounts[mod.ProjectileType("Seraph")] > 0)
+			if (player.ownedProjectileCounts[mod.ProjectileType("Seraph")] > 0 && BaseMod.BasePlayer.HasAccessory(player, ModContent.ItemType<Items.Boss.Athena.SeraphHarp>(), true, false))
 			{
 				modPlayer.Seraph = true;
 			}
+            else
+            {
+                modPlayer.Seraph = false;
+            }
 			if (!modPlayer.Seraph)
 			{
 				player.DelBuff(buffIndex);

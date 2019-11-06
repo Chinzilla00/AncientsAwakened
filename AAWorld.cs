@@ -104,6 +104,7 @@ namespace AAMod
         public static bool downedGreed;
         public static bool downedGreedA;
         public static bool AthenaHerald;
+        public static bool downedAnubisA;
 
         public static bool AnubisAwakened;
         //Points
@@ -140,6 +141,7 @@ namespace AAMod
         {
             //Bosses
             downedAnubis = false;
+            downedAnubisA = false;
             downedAthena = false;
             downedAthenaA = false;
             downedGreed = false;
@@ -270,6 +272,7 @@ namespace AAMod
             if (downedRajahsRevenge) downed.Add("Rajah2");
             if (zeroUS) downed.Add("ZUS");
             if (downedAnubis) downed.Add("Doggo");
+            if (downedAnubisA) downed.Add("AngryDoggo");
             if (downedAthena) downed.Add("BirdBitch");
             if (downedAthenaA) downed.Add("BirdBitchA");
             if (downedGreed) downed.Add("GimmeGimme");
@@ -339,6 +342,7 @@ namespace AAMod
             downedRajahsRevenge = downed.Contains("Rajah2");
             zeroUS = downed.Contains("ZUS");
             downedAnubis = downed.Contains("Doggo");
+            downedAnubisA = downed.Contains("AngryDoggo");
             downedAthena = downed.Contains("BirdBitch");
             downedAthenaA = downed.Contains("BirdBitchA");
             downedGreed = downed.Contains("GimmeGimme");
@@ -442,6 +446,7 @@ namespace AAMod
             flags5[1] = downedAthenaA;
             flags5[2] = downedGreedA;
             flags5[3] = AnubisAwakened;
+            flags5[4] = downedAnubisA;
             writer.Write(flags5);
 
             writer.WriteVector2(MireCenter);
@@ -515,6 +520,7 @@ namespace AAMod
             downedAthenaA = flags5[1];
             downedGreedA = flags5[2];
             AnubisAwakened = flags5[3];
+            downedAnubisA = flags5[4];
 
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		
