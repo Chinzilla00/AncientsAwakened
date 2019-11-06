@@ -29,14 +29,14 @@ Used to create ancient crafting stations");
             item.createTile = mod.TileType("TerraCore");
         }
         public override void ModifyTooltips(List<TooltipLine> list)
-    {
-        foreach (TooltipLine line2 in list)
         {
-            if (line2.mod == "Terraria" && line2.Name == "ItemName")
+            foreach (TooltipLine line2 in list)
             {
-                line2.overrideColor = new Color(70, 200, 30);
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
             }
-        }
         }   
 
         public override void AddRecipes()

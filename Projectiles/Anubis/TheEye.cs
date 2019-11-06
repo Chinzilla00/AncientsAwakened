@@ -1,3 +1,4 @@
+using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ID;
@@ -25,6 +26,7 @@ namespace AAMod.Projectiles.Anubis
 	
         public override void AI()
         {
+            Lighting.AddLight(projectile.Center, Color.Gold.R / 255, Color.Gold.G / 255, Color.Gold.B / 255);
             if (projectile.scale < 1f) projectile.scale += 0.01f;
             if (projectile.alpha > 0) projectile.alpha -= 5;
 
@@ -56,9 +58,9 @@ namespace AAMod.Projectiles.Anubis
                 float shootToY = target.position.Y + target.height * 0.5f - projectile.Center.Y;
                 float distance = (float)Math.Sqrt(shootToX * shootToX + shootToY * shootToY);
 
-                if (distance < 600f && target.catchItem == 0 && !target.friendly && target.active && target.type != 488)
+                if (distance < 600f && target.catchItem == 0 && !target.friendly && target.active && target.type != 488 && Collision.CanHit(projectile.position, projectile.width, projectile.height, target.position, target.width, target.height))
                 {
-                    if (projectile.ai[0] > 20f) // Time in (60 = 1 second) 
+                    if (projectile.ai[0] > 20f)
                     {
                         distance = 1.6f / distance;
 

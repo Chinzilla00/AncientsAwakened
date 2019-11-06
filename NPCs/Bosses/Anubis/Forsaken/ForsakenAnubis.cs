@@ -149,6 +149,8 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             switch (npc.ai[0])
             {
                 case 0:
+                    if (!AliveCheck(player))
+                        break;
                     int proj = Main.rand.Next(2) == 0 ? ModContent.ProjectileType<ForsakenBlast>() : ModContent.ProjectileType<ForsakenSkull>();
 
                     int damage = npc.damage / 2;
@@ -170,6 +172,8 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     }
                     break;
                 case 1:
+                    if (!AliveCheck(player))
+                        break;
 
                     if (npc.ai[1] == 10)
                     {
@@ -236,6 +240,8 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     }
                     break;
                 case 2:
+                    if (!AliveCheck(player))
+                        break;
 
                     if (npc.ai[1] == 120)
                     {
@@ -258,6 +264,8 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     break;
 
                 case 3:
+                    if (!AliveCheck(player))
+                        break;
 
                     int Max = 3;
 
@@ -288,6 +296,8 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     break;
 
                 case 4:
+                    if (!AliveCheck(player))
+                        break;
 
                     int proj1 = ModContent.ProjectileType<AnubisSoul>();
 
@@ -310,6 +320,8 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     break;
 
                 case 5:
+                    if (!AliveCheck(player))
+                        break;
                     if (npc.life > npc.lifeMax / 2)
                     {
                         if (npc.ai[1] == 40)
@@ -375,42 +387,8 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     break;
 
                 case 6:
-                    if (npc.ai[1] == 40)
-                    {
-                        int l = Projectile.NewProjectile(player.position + new Vector2(-800, 0), Vector2.Zero, ModContent.ProjectileType<BlockF>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
-                        int r = Projectile.NewProjectile(player.position + new Vector2(800, 0), Vector2.Zero, ModContent.ProjectileType<BlockF>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
-                        Main.projectile[l].ai[1] = r;
-                        Main.projectile[l].Center = player.Center + new Vector2(-800, 0);
-                        Main.projectile[r].ai[1] = l;
-                        Main.projectile[r].Center = player.Center + new Vector2(800, 0);
-                    }
-                    if (npc.ai[1] == 80)
-                    {
-                        int u = Projectile.NewProjectile(player.position + new Vector2(0, -800), Vector2.Zero, ModContent.ProjectileType<BlockF1>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
-                        int d = Projectile.NewProjectile(player.position + new Vector2(0, 800), Vector2.Zero, ModContent.ProjectileType<BlockF1>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
-                        Main.projectile[u].ai[1] = d;
-                        Main.projectile[u].Center = player.Center + new Vector2(0, -800);
-                        Main.projectile[d].ai[1] = u;
-                        Main.projectile[d].Center = player.Center + new Vector2(0, 800);
-                    }
-                    if (npc.ai[1] > 160 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
-                    {
-                        npc.ai[0]++;
-                        npc.ai[1] = 0;
-                        npc.ai[2] = 0;
-                        npc.ai[3] = 0;
-                        Teleport();
-                    }
-                    if (npc.ai[1] > 180)
-                    {
-                        npc.ai[0]++;
-                        npc.ai[1] = 0;
-                        npc.ai[2] = 0;
-                        npc.ai[3] = 0;
-                        Teleport();
-                    }
-                    break;
-                case 7:
+                    if (!AliveCheck(player))
+                        break;
                     if (npc.ai[1] == 120)
                     {
                         if (npc.life > npc.lifeMax / 2)
@@ -497,7 +475,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             }
         }
 
-        public void AliveCheck(Player player)
+        public bool AliveCheck(Player player)
         {
             if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f || !player.ZoneDesert)
             {
@@ -508,8 +486,10 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     int a = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<TownNPCs.Anubis>());
                     Main.npc[a].Center = npc.Center;
                     npc.active = false;
+                    return false;
                 }
             }
+            return true;
         }
 
         public override void FindFrame(int frameHeight)

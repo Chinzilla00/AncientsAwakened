@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.HitSound = SoundID.NPCHit5;
             npc.DeathSound = SoundID.NPCDeath7;
             npc.netAlways = true;
-            npc.value = Item.sellPrice(0, 0, 10, 0);
+            npc.value = Item.sellPrice(0, 0, 0, 0);
         }
 
         public override void AI()

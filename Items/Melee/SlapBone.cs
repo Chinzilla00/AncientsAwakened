@@ -20,7 +20,8 @@ namespace AAMod.Items.Melee
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Slap Bone");
-			Tooltip.SetDefault("The easiest hit will send enemy into space");
+			Tooltip.SetDefault(@"The smallest smack will send your enemies into orbit!
+Slap Hand EX");
 		}
 
 		public override void AddRecipes()

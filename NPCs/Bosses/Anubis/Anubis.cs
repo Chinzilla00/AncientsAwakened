@@ -173,7 +173,8 @@ namespace AAMod.NPCs.Bosses.Anubis
             switch (npc.ai[0])
             {
                 case 0:
-
+                    if (!AliveCheck(player))
+                        break;
                     int proj = Main.rand.Next(50) == 0 ? ModContent.ProjectileType<Pumpkin>() : ModContent.ProjectileType<Runeblast>();
 
                     int damage = npc.damage / 2;
@@ -200,7 +201,8 @@ namespace AAMod.NPCs.Bosses.Anubis
                     }
                     break;
                 case 1:
-
+                    if (!AliveCheck(player))
+                        break;
                     if (npc.ai[1] == 10)
                     {
                         if (Main.rand.Next(2) == 0 && npc.life < npc.lifeMax * (2/3))
@@ -251,7 +253,8 @@ namespace AAMod.NPCs.Bosses.Anubis
                     }
                     break;
                 case 2:
-
+                    if (!AliveCheck(player))
+                        break;
                     if (npc.ai[1] == 120)
                     {
                         BaseAI.FireProjectile(player.position, npc.position, ModContent.ProjectileType<Scepter>(), npc.damage / 2, 14, 10, -1);
@@ -273,6 +276,8 @@ namespace AAMod.NPCs.Bosses.Anubis
                     break;
 
                 case 3:
+                    if (!AliveCheck(player))
+                        break;
                     if (npc.life > npc.lifeMax * (2/3))
                     {
                         if (npc.ai[1] == 60)
@@ -375,7 +380,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
         }
 
-        public void AliveCheck(Player player)
+        public bool AliveCheck(Player player)
         {
             if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f || !player.ZoneDesert)
             {
@@ -386,8 +391,10 @@ namespace AAMod.NPCs.Bosses.Anubis
                     int a = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<TownNPCs.Anubis>());
                     Main.npc[a].Center = npc.Center;
                     npc.active = false;
+                    return false;
                 }
             }
+            return true;
         }
 
         public override void NPCLoot()

@@ -15,7 +15,7 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Toadstool");
             Tooltip.SetDefault(@"Summons the Truffle Toad
-Can only be used in a surface glowing mushroom biome");
+Can only be used in a glowing mushroom biome");
         }
 
         public override void SetDefaults()
@@ -40,7 +40,7 @@ Can only be used in a surface glowing mushroom biome");
 
         public override bool CanUseItem(Player player)
         {
-            if (!player.ZoneGlowshroom && player.Center.Y > Main.worldSurface)
+            if (!player.ZoneGlowshroom)
             {
                 if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ToadstoolFalse"), Color.Blue, false);
                 return false;

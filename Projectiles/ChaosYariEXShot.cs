@@ -18,8 +18,8 @@ namespace AAMod.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 28;
-            projectile.height = 26;
+            projectile.width = 24;
+            projectile.height = 24;
             projectile.aiStyle = -1;
             projectile.timeLeft = 320;
             projectile.friendly = true;
