@@ -16,10 +16,14 @@ namespace AAMod.Buffs
 		public override void Update(Player player, ref int buffIndex)
 		{
 			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
-			if (player.ownedProjectileCounts[mod.ProjectileType("Athena")] > 0)
+			if (player.ownedProjectileCounts[mod.ProjectileType("Athena")] > 0 && BaseMod.BasePlayer.HasAccessory(player, ModContent.ItemType<Items.Boss.Athena.GoddessHarp>(), true, false))
 			{
 				modPlayer.Athena = true;
 			}
+            else
+            {
+                modPlayer.Athena = false;
+            }
 			if (!modPlayer.Athena)
 			{
 				player.DelBuff(buffIndex);
