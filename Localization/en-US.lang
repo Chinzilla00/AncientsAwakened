@@ -157,9 +157,12 @@ Common.DisableBossDialogueInfo=Disables dialogue from bosses to prevent chatspam
 
 //GlobalNPCSInfo
 
-Common.NPCarrive= have awoken!
+Common.NPCarrive= has awoken!
 
 //BossSummonedInfo
+
+Common.BosshasAwoken= has awoken!
+Common.BosshaveAwoken= have awoken!
 
 Common.RajahGlobalInfo1=Those who slaughter the innocent must be PUNISHED!
 Common.RajahGlobalInfo2=YOU HAVE COMMITTED AN UNFORGIVABLE SIN! I SHALL WIPE YOU FROM THIS MORTAL REALM! PREPARE FOR TRUE PAIN AND PUNISHMENT, 
@@ -202,6 +205,58 @@ Common.DraconianSigilInfernoFalse=You can only use that Sigil in the Inferno, ki
 Common.DraconianSignalTrue1=Heh, I hope you’re ready to feel the fury of the blazing sun kid.
 Common.DraconianSignalTrue2=Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.
 
+Common.DragonBellDayTimeFalse=The bell rings on deaf ears. The dragons are asleep now.
+Common.DragonBellFalse1=The Broodmother has already been called
+Common.DragonBellFalse2=The bell rings on deaf ears. The dragons are not here.
+
+Common.DreadRuneTrue1=Yamata has been Awakened!
+Common.DreadRuneTrue2=Yeah, yeah I get it, my first phase is obnoxious. Let's just get this over with..!
+Common.DreadTimeFalse=NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!
+Common.DreadFalse1=An image of the strange tree at the heart of the mire flashes through your mind
+Common.DreadFalse2=WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!
+Common.DreadMireFalse=Hey Dumbo! Mire is that way!
+
+Common.DreadSigilTrue1=You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!
+Common.DreadSigilTrue2=Back for more..?! This time you won't be so lucky you little whelp..!
+Common.DreadSigilMireFalse=You NEED to use that sigil on the altar at the center of the mire! Trust me, nothing bad will happen!
+
+Common.EquinoxWormawoken=The Equinox Worms have awoken!
+
+Common.SistersDownedInfo1=Again..!? Didin't you learn from last time? Oh well, I'm gonna have a ball blasting you to shreds!
+Common.SistersDownedInfo2=Whatever, let's just get this over with.
+Common.SistersInfo1=Sigh... Here we go again...
+Common.SistersInfo2=THIS TIME I'M NOT LOSING! You're gonna feel the taste of defeat you disgusting warm-blood!
+
+Common.HydraChowTimeFalse=Nothing is coming. The creatures of the Mire sleep.
+Common.HydraChowFalse1=The Hydra wants that food.
+Common.HydraChowFalse2=Nothing is coming. Now you look dumb holding out this smelly ball of gunk.
+
+Common.InterestingClawFalse1=The Grips of Chaos are already here!
+Common.InterestingClawFalse2=The claw lays limp in your hand. Nasty.
+
+Common.IntimidatingMushroomFalse1=The mushroom just glares at you and gives you chills just looking at it.
+Common.IntimidatingMushroomFalse2=The mushroom Monarch keeps trying to stomp you
+
+Common.LifescannerFalse=The Lifescanner doesn't do anything.
+
+Common.ScepterBossFalse1=You wave the staff around like a psychopath. Nothing happens.
+Common.ScepterBossFalse2=Uh...what are you doing?
+
+Common.SubzeroCrystalSnowZoneFalse=The crystal shows an image of the nearby ice biome inside of it
+Common.SubzeroCrystalFalse=The Subzero Serpent continues to attack
+
+Common.ToadstoolFalse1=The toadstool croaks..?
+Common.ToadstoolFalse2=The Truffle Toad croaks
+
+Common.ZeroUnitFalse=ERR0R. ZER0 UNIT ALREADY ACTIVE. PLEASE TRY AGAIN LATER.
+Common.ZeroUnitVoidZoneFalse=ERR0R. PLAYER.GETM0DPLAYER<AAPLAYER>(M0D).Z0NEV0ID == FALSE. PLEASE TRY AGAIN LATER.
+Common.ZeroUnitRuneTrue=D00MSDAY PR0T0CALL ACTIVATED MANUALLY. TERMINATI0N SYSTEMS AT FULL P0WER
+
+Common.ZeroTesseractTrue=ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.
+Common.ZeroTesseractDownedTrue=TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.
+
+Common.RoyalRabbitSummoned1=Those who slaughter the innocent must be PUNISHED!
+Common.RoyalRabbitSummoned2=YOU WILL PAY FOR YOUR SINS, 
 
 
 

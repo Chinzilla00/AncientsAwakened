@@ -3460,7 +3460,7 @@ ItemTooltip.ChaosScythe=“一切尽在我掌中”\n传说武器
 
 ItemName.ChaosYari=冥昧枪矛
 
-ItemName.ChaosYariEX=真·冥昧枪矛
+ItemName.ChaosYariEX=真·冥昧枪矛\n冥昧枪矛 EX
 
 ItemName.Chicken=惨叫鸡
 
@@ -3641,7 +3641,7 @@ ItemName.Shadowban=禁忌暗影锤
 ItemTooltip.Shadowban=尽管有这个名字,但这个铁锤的禁忌并不引人注目.
 
 ItemName.SlapBone=骨掌
-ItemTooltip.SlapBone=最简易的攻击也许能把敌人打上天
+ItemTooltip.SlapBone=轻巧的一击就能把敌人打上卫星轨道\n拍拍手 EX
 
 ItemName.SpookySword=阴森木剑
 
@@ -4036,7 +4036,7 @@ ItemTooltip.Unreal=给可以附魔虚幻的武器附魔虚幻\n用魂右键武�
 
 
 ItemName.BlizzardDragonStaff=寒暴龙权杖
-ItemTooltip.BlizzardDragonStaff=召唤一只寒暴龙为你而战
+ItemTooltip.BlizzardDragonStaff=召唤一只寒暴龙为你而战\n寒霜九头蛇 EX
 
 ItemName.CrimsonStaff=血虫权杖
 ItemTooltip.CrimsonStaff=召唤猩红血虫为你而战
@@ -5994,6 +5994,9 @@ Common.NPCarrive=到了!
 
 //BossSummonedInfo
 
+Common.BosshasAwoken=已经苏醒!
+Common.BosshaveAwoken=已经苏醒!
+
 Common.RajahGlobalInfo1=杀害无辜者必须受到惩罚!
 Common.RajahGlobalInfo2=你 犯 了 不 可 饶 恕 的 罪 孽! 我 要 把 你 从 这 个 凡 人 的 国 度 里 抹 去! 准 备 好 接 受 真 正 的 痛 苦 和 惩 罚 吧, 
 Common.RajahGlobalInfo3=一个愤怒的生物的眼睛注视着你…
@@ -6034,5 +6037,58 @@ Common.DraconianSigilFalse=嘿, 小子, 你应该知道, 那印迹只需要用�
 Common.DraconianSigilInfernoFalse=你只能在燎狱使用那个印迹, 小子.
 Common.DraconianSignalTrue1=呵呵, 我希望你已经准备好感受烈日的愤火了, 小子. 
 Common.DraconianSignalTrue2=又来, 小子？ 你没有更好的事情要做吗？ 你已经打败过我一次了. 好吧, 但我可不会对你心慈手软.
+
+Common.DragonBellDayTimeFalse=龙现在已经睡了, 听不见铃铛响.
+Common.DragonBellFalse1=育母炎龙已经被呼唤
+Common.DragonBellFalse2=龙不在这, 听不见铃铛响.
+
+Common.DreadRuneTrue1=八歧大蛇已经觉醒!
+Common.DreadRuneTrue2=是的, 是的, 我明白了, 我第一阶段很讨厌. 让我们用……来解决这个问题!
+Common.DreadTimeFalse=不！我现在不想战斗！我需要舒服的睡眠！晚上来！
+Common.DreadFalse1=一幅潭渊中心怪树的图像在你脑海一闪而过
+Common.DreadFalse2=你究竟在tm干什么? 我已经在这了!!!
+Common.DreadMireFalse=嘿, 小傻子！潭渊那边走！
+
+Common.DreadSigilTrue1=你 胆 敢 进入我的地盘, 泰拉人? !咿哈哈哈哈哈哈哈…!大错特错!
+Common.DreadSigilTrue2=再来要更多战利品……? !这一次你可没那么幸运, 你这个小鬼……!
+Common.DreadSigilMireFalse=你必须在潭渊中心的祭坛上使用! 相信我, 不会出事的!
+
+Common.EquinoxWormawoken=昼夜双虫已经苏醒!
+
+Common.SistersDownedInfo1=又是你...!? 上次还没学乖? 哦好, 我会用一个球把你炸成碎片!
+Common.SistersDownedInfo2=不管怎样, 让我们结束这一切吧. 
+Common.SistersInfo1=咳……再来一次……
+Common.SistersInfo2=这 次 我 不 会 输!你会感觉到失败的味道, 你这可恶的常温动物!
+
+Common.HydraChowTimeFalse=什么也没发生. 潭渊的生物在睡觉.
+Common.HydraChowFalse1=九头蛇想吃那个食物.
+Common.HydraChowFalse2=什么也没发生. 一个拿着又臭又黏糊的球的你宛如一个智障.
+
+Common.InterestingClawFalse1=混沌俩爪子都在这了!
+Common.InterestingClawFalse2=爪子在你手中无力的伸开. 恶心的要死. 呕...
+
+Common.IntimidatingMushroomFalse1=蘑菇和你大眼瞪小眼, 让你浑身冷的发抖.
+Common.IntimidatingMushroomFalse2=赤孢皇正准备踩扁你
+
+Common.LifescannerFalse=生命扫描仪没起作用.
+
+Common.ScepterBossFalse1=你像尼玛个精神病一样挥着这个棍子. 无事发生.
+Common.ScepterBossFalse2=呃...你在搞毛?
+
+Common.SubzeroCrystalSnowZoneFalse=水晶在它里面显示出一幅附近冰地生物群的图像
+Common.SubzeroCrystalFalse=绝零冰蛇正在持续攻击
+
+Common.ToadstoolFalse1=蟾蜍臭菇呱呱叫...? 
+Common.ToadstoolFalse2=松露蟾蜍呱呱叫
+
+Common.ZeroUnitFalse=错 误。 零 单 元 已 经 激 活. 请 稍 后 重 新 尝 试. 
+Common.ZeroUnitVoidZoneFalse=错 误。 读 取 代 码 PLAYER.GETM0DPLAYER<AAPLAYER>(M0D).Z0NEV0ID == FALSE. 请 稍 后 重 新 尝 试. 
+Common.ZeroUnitRuneTrue=末 日 协 议 手 动 激 活. 终 结 系 统 全 功 率 充 能. 
+
+Common.ZeroTesseractTrue=零 单 元 启 动. 加 载 末 日 执 行 层 协 议. 
+Common.ZeroTesseractDownedTrue=目 标 锁 定. 本 次 终 结 你 失 败 的 几 率 为 零, 泰 拉 人. 
+
+Common.RoyalRabbitSummoned1=残害无辜者必须受到惩罚!
+Common.RoyalRabbitSummoned2=你 要 为 你 的 罪 过 付 出 代 价, 
 
 

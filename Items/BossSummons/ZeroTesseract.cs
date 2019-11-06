@@ -2,6 +2,7 @@ using BaseMod;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.Localization;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
@@ -70,17 +71,17 @@ N0N-C0NSUMABLE");
             {
                 if (NPC.AnyNPCs(mod.NPCType("Zero")))
                 {
-                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroFalse"), new Color(255, 0, 0), false);
+                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroUnitFalse"), new Color(255, 0, 0), false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType("ZeroProtocol")))
                 {
-                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroFalse"), new Color(255, 0, 0), false);
+                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroUnitFalse"), new Color(255, 0, 0), false);
                     return false;
                 }
                 return true;
             }
-            if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroVoidZoneFalse"), new Color(255, 0, 0), false);
+            if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroUnitVoidZoneFalse"), new Color(255, 0, 0), false);
             return false;
         }
 
@@ -88,20 +89,20 @@ N0N-C0NSUMABLE");
         {
             if (!AAWorld.downedZero && !Main.expertMode)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroTesseractTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroTesseractTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
             }
 
             if (!AAWorld.downedZero && Main.expertMode)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroTesseractTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroTesseractTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (!Main.expertMode && AAWorld.downedZero)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroTesseractDownedTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroTesseractDownedTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
             }
             if (Main.expertMode && AAWorld.downedZero)
             {
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("ZeroTesseractDownedTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
+                if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroTesseractDownedTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
             }
 
             if (Main.netMode != 1)

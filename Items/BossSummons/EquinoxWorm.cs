@@ -38,12 +38,12 @@ Non-Consumable");
 
         public override bool UseItem(Player player)
         {
-            if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossSummonsInfo("EquinoxWormawoken"), 175, 75, 255, false); }
+            if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken"), 175, 75, 255, false); }
             else if (Main.netMode == 2)
-            if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossSummonsInfo("EquinoxWormawoken"), 175, 75, 255, false); }
+            if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken"), 175, 75, 255, false); }
             else if (Main.netMode == NetmodeID.Server)
             {
-                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(Lang.BossSummonsInfo("EquinoxWormawoken")), new Color(175, 75, 255), -1);
+                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken")), new Color(175, 75, 255), -1);
             }
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("DaybringerHead"), false, 0, 0);
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("NightcrawlerHead"), false, 0, 0);			
