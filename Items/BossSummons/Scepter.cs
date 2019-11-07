@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using AAMod.NPCs.Bosses.Anubis;
 using AAMod.NPCs.Bosses.Anubis.Forsaken;
@@ -34,12 +35,12 @@ Can only be used in the desert on the surface
         {
             if (!player.ZoneDesert || player.ZoneUndergroundDesert)
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat("You wave the staff around like a psychopath. Nothing happens.", Color.Gold, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ScepterBossFalse1"), Color.Gold, false);
                 return true;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<Anubis>()))
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat("Uh...what are you doing?", Color.Gold, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ScepterBossFalse2"), Color.Gold, false);
                 return true;
             }
 

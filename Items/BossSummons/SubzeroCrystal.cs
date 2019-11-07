@@ -42,12 +42,12 @@ namespace AAMod.Items.BossSummons
         {
             if (!player.ZoneSnow)
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("SubzeroCrystalSnowZoneFalse"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SubzeroCrystalSnowZoneFalse"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
                 return false;
             }
             if (NPC.AnyNPCs(mod.NPCType("SerpentHead")))
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("SubzeroCrystalTrue"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.SubzeroCrystalFalse"), Color.Cyan.R, Color.Cyan.G, Color.Cyan.B, false);
                 return false;
             }
             return true;

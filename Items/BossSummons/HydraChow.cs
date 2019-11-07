@@ -51,19 +51,19 @@ Can only be used at night");
 		{
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("HydraChowTimeFalse"), Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.HydraChowTimeFalse"), Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
                 return false;
             }
             if (player.GetModPlayer<AAPlayer>().ZoneMire)
 			{
 				if (NPC.AnyNPCs(mod.NPCType("Hydra")))
 				{
-					if(player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("HydraChowTrue"), Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
+					if(player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.HydraChowFalse1"), Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);
 					return false;
 				}
                 return true;
 			}
-			if(player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("HydraChowFalse"), Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);			
+			if(player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.HydraChowFalse2"), Color.Indigo.R, Color.Indigo.G, Color.Indigo.B, false);			
 			return false;
 		}	
 	}

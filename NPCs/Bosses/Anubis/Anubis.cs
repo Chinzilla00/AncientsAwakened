@@ -421,7 +421,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                 npc.DropLoot(mod.ItemType("AnubisTrophy"));
             }
 
-            if (!Main.expertMode)
+            if (Main.expertMode)
             {
                 npc.DropBossBags();
             }

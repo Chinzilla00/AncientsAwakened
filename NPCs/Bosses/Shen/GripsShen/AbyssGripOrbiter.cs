@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Shen Abyss Orbiter");
+            DisplayName.SetDefault("Abyss Grip Orbiter");
             Main.projFrames[projectile.type] = 4;
         }
 
@@ -80,10 +80,9 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 
 
 
-            if(proj != 0)
+            if(proj != 0 && !shooting)
             {
-                
-                if(Main.projectile[proj].timeLeft <= 5 || !Main.projectile[proj].active || shooting) 
+                if(Main.projectile[proj].timeLeft <= 5 || !Main.projectile[proj].active) 
                 {
                     projectile.velocity = 18f * Vector2.Normalize(Main.projectile[proj].DirectionTo(projectile.Center));
                     shooting = true;
@@ -99,7 +98,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                     projectile.Center = BaseUtility.RotateVector(Center, Center + new Vector2(140f, 0f), rotValue);
                 }
             }
-            else if(centerNPC.active && centerNPC.life > 0 && centerNPC.type == mod.NPCType("AbyssGrip"))
+            else if(centerNPC.active && centerNPC.life > 0 && centerNPC.type == mod.NPCType("AbyssGrip") && !shooting)
             {
                 for (int m = projectile.oldPos.Length - 1; m > 0; m--)
                 {
@@ -107,10 +106,6 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                 }
                 projectile.oldPos[0] = projectile.position;
                 projectile.Center = BaseUtility.RotateVector(Center, Center + new Vector2(140f, 0f), rotValue);
-            }
-            else
-            {
-                projectile.Kill();
             }
             
         }

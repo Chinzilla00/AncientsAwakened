@@ -26,6 +26,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.Utilities;
+using Terraria.Localization;
 
 namespace AAMod
 {
@@ -991,56 +992,56 @@ namespace AAMod
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo1"), new Color(180, 41, 32), false);
+                        BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo1"), new Color(180, 41, 32), false);
                     }
                 }
                 else if (Main.rand.Next(8) == 1)
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo2"), new Color(45, 46, 70), false);
+                        BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo2"), new Color(45, 46, 70), false);
                     }
                 }
                 else if (Main.rand.Next(8) == 2)
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo3"), new Color(255, 0, 0), false);
+                        BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo3"), new Color(255, 0, 0), false);
                     }
                 }
                 else if (Main.rand.Next(8) == 3)
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo4"), new Color(102, 20, 48), false);
+                        BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo4"), new Color(102, 20, 48), false);
                     }
                 }
                 else if (Main.rand.Next(8) == 4)
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo5"), new Color(72, 78, 117), false);
+                        BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo5"), new Color(72, 78, 117), false);
                     }
                 }
                 else if (Main.rand.Next(8) == 5)
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo6"), new Color(128, 0, 0), false);
+                        BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo6"), new Color(128, 0, 0), false);
                     }
                 }
                 else if (Main.rand.Next(8) == 6)
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo7"), new Color(216, 110, 40), false);
+                        BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo7"), new Color(216, 110, 40), false);
                     }
                 }
                 else if (Main.rand.Next(8) == 7)
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat(Lang.AAPlayerChat("WorldgenReminderInfo8"), new Color(43, 46, 61), false);
+                        BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.WorldgenReminderInfo8"), new Color(43, 46, 61), false);
                     }
                 }
 
@@ -2315,6 +2316,7 @@ namespace AAMod
             }
         }
 
+        /* 
         public override float UseTimeMultiplier(Item item)
         {
             float multiplier = 1f;
@@ -2336,6 +2338,7 @@ namespace AAMod
 
             return multiplier;
         }
+        */
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {

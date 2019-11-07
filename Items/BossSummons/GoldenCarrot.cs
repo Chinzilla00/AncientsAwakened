@@ -81,11 +81,11 @@ namespace AAMod.Items.BossSummons
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)
                     {
-                        if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(npcName + Lang.BossSummonsInfo("BossAwoken"), 175, 75, 255, false); }
+                        if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(npcName + Language.GetTextValue("Mods.AAMod.Common.BosshasAwoken"), 175, 75, 255, false); }
                         else
                         if (Main.netMode == NetmodeID.Server)
                         {
-                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + Lang.BossSummonsInfo("BossAwoken")), new Color(175, 75, 255), -1);
+                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + Language.GetTextValue("Mods.AAMod.Common.BosshasAwoken")), new Color(175, 75, 255), -1);
                         }
                     }
                     else

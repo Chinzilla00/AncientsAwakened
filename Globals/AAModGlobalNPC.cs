@@ -514,7 +514,7 @@ namespace AAMod
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseMod.BaseUtility.Chat(Lang.BossSummonsInfo("RajahGlobalInfo1"), 107, 137, 179);
+                        BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.RajahGlobalInfo1"), 107, 137, 179);
                     }
 
                     Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
@@ -526,7 +526,7 @@ namespace AAMod
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseMod.BaseUtility.Chat(Lang.BossSummonsInfo("RajahGlobalInfo2") + player.name.ToUpper() + "!", 107, 137, 179);
+                        BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.RajahGlobalInfo2") + player.name.ToUpper() + "!", 107, 137, 179);
                     }
 
                     Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
@@ -537,7 +537,7 @@ namespace AAMod
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseMod.BaseUtility.Chat(Lang.BossSummonsInfo("RajahGlobalInfo3"), 107, 137, 179);
+                        BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.RajahGlobalInfo3"), 107, 137, 179);
                     }
                 }
             }
@@ -1140,12 +1140,12 @@ namespace AAMod
                         {
                             if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
-                                BaseMod.BaseUtility.Chat(npcName + Lang.GlobalNPCSInfo("NPCarrive"), 175, 75, 255, false);
+                                BaseMod.BaseUtility.Chat(npcName + " " + Language.GetTextValue("Mods.AAMod.Common.NPCarrive"), 175, 75, 255, false);
                             }
                         }
                         else if (Main.netMode == NetmodeID.Server)
                         {
-                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + Lang.GlobalNPCSInfo("NPCarrive")), new Color(175, 75, 255));
+                            NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(npcName + Language.GetTextValue("Mods.AAMod.Common.NPCarrive")), new Color(175, 75, 255));
                         }
                     }
                     else

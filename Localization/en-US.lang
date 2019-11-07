@@ -87,6 +87,32 @@ Common.YamataA=Yamata no Orochi
 Common.ShenDoragon=Shen Doragon; Discordian Doomsayer
 Common.SupremeRajah=Rajah Rabbit
 
+//AAPlayerChat
+
+Common.WorldgenReminderInfo1=Hey uh...kid? Correct me if I'm wrong, but I think your world didn't generate with Ancients Awakened stuff in it. I'd make a new one if I were you.
+Common.WorldgenReminderInfo2=YOU IMBECILE! YOU DIDN'T GENERATE ANCIENTS AWAKENED CONTENT! MAKE A NEW WORLD NOW! REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+Common.WorldgenReminderInfo3=ERR0R. W0RLD D0ES N0T APPEAR T0 C0NTAIN AAM0D.TM0D C0NTENT. PLEASE GENERATE A NEW W0RLD.
+Common.WorldgenReminderInfo4=HEY! You didn't generate Ancients Awakened stuff in this world! Generate a new world before I blast you to mars!
+Common.WorldgenReminderInfo5=Hey, uh...I don't see any Ancients Awakened content in this world. Might be smart to make a new world or whatever...
+Common.WorldgenReminderInfo6=Hey. You. Interdimensional being. You might have forgotten to make a new world after downloading the mod. Make a new world if you want all the mod's content.
+Common.WorldgenReminderInfo7=Make...new world....or mushmad...will squish...little terrarian...
+Common.WorldgenReminderInfo8=...Mortal. Your world doesn't have Ancients Awakened content if my old eyes do not deceive me. Generating a new world would be optimal.
+
+//AAWorldChangeInfo
+
+Common.downedEquinoxInfo=The gift of the celestials sparkle in the atmosphere...
+Common.downedMoonlordInfo1=The Ancients have Awakened!
+Common.downedMoonlordInfo2=The Essence of the Moon Lord sparkles in the caves below...
+Common.downedMechBossAnyInfo=The caves shine with light for a brief moment...
+Common.downedSistersInfo=Chaotic energy grows in the deepest parts of the world.
+Common.downedBoss2Info=You hear a hum of harmony from the Terrarium after the defeat of a great demon...
+Common.downedBoss3Info1=Bones of the ancient past burst with energy!
+Common.downedBoss3Info2=The desert winds stir...
+Common.downedBoss3Info3=The winter hills rumble...
+Common.downedMechBossInfo=Hey kid, it's me, Anubis. Do me a favor and meet me back in town, I wanna talk to ya about somethin'.
+Common.downedAllAncientsInfo=Chaos begins to stir in the atmosphere...
+Common.hardModeInfo=The Souls of Fury and Wrath are unleashed upon the world!
+
 //AAWorldBuild
 
 Common.AAWorldBuildAltars=Placing Chaos Altars
@@ -129,8 +155,108 @@ Common.AATownNPCInfo=Disables this mod's town npcs from spawning, for those who'
 Common.DisableBossDialogue=Disable Boss Dialogue
 Common.DisableBossDialogueInfo=Disables dialogue from bosses to prevent chatspam. Also makes animations that have boss dialogue go by a little quicker.
 
+//GlobalNPCSInfo
 
+Common.NPCarrive= has awoken!
 
+//BossSummonedInfo
+
+Common.BosshasAwoken= has awoken!
+Common.BosshaveAwoken= have awoken!
+
+Common.RajahGlobalInfo1=Those who slaughter the innocent must be PUNISHED!
+Common.RajahGlobalInfo2=YOU HAVE COMMITTED AN UNFORGIVABLE SIN! I SHALL WIPE YOU FROM THIS MORTAL REALM! PREPARE FOR TRUE PAIN AND PUNISHMENT, 
+Common.RajahGlobalInfo3=The eyes of a wrathful creature gaze upon you...
+
+Common.ChaosRuneYamataFalse=The imagery of a blazing demon flashes through your mind...
+Common.ChaosRuneAkumaFalse=The imagery of a 7 headed terror flashes through your mind...
+Common.ChaosRuneFalse=HAH! I WISH there were two of me to smash you into the ground!
+Common.ChaosRuneTrue1=Shen Doragon has been Awakened!
+Common.ChaosRuneTrue2=Skipping to the fun part, I see? I like you, child.
+
+Common.ChaosSigilFalse1=Only the blue half of the sigil is lit up...
+Common.ChaosSigilFalse2=Only the red half of the sigil is lit up...
+Common.ChaosSigilFalse3=HAH! I WISH there were two of me to smash you into the ground!
+Common.ChaosSigilFalse4=The Chaos Sigil glows, and imagery of the chaos pedestals flash through your mind
+Common.ChaosSigilTrue1=Big mistake, child...
+Common.ChaosSigilTrue2=Hmpf...again..? Alright, let's just get this done and overwith.
+
+Common.ConfusingMushroomFalse1=The mushroom glows, and the smell of it makes you feel loopy.
+Common.ConfusingMushroomFalse2=The Feudal Fungus keeps trying to attack you
+
+Common.CuriousClawFalse1=The Grips of Chaos are already here!
+Common.CuriousClawFalse2=The claw lays limp in your hand. Nasty.
+
+Common.DiamondCarrotRajahText1=GRAVE MISTAKE, TERRARIAN!
+Common.DiamondCarrotRajahText2=Show me what you got, 
+
+Common.DjinnLampDesertFalse1=The lamp spits out sand as you rub it
+Common.DjinnLampDesertFalse2=No ammount of rubbing the lamp will save you here
+
+Common.DraconianDayTimeFalse=Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.
+Common.DraconianRuneFalse1=An image of the scorched tower at the peak of the inferno flashes through your mind
+Common.DraconianRuneFalse2=Hey kid, that rune only works once, ya know.
+Common.DraconianRuneInfernoFalse=You can only use that rune in the Inferno, kid.
+Common.DraconianRuneTrue1=The air around you begins to heat up...
+Common.DraconianRuneTrue2=Cutting right to the chase I see..? Alright then, prepare for hell..!
+
+Common.DraconianSigilFalse=Hey kid, that Sigil only works once, ya know.
+Common.DraconianSigilInfernoFalse=You can only use that Sigil in the Inferno, kid.
+Common.DraconianSignalTrue1=Heh, I hope you’re ready to feel the fury of the blazing sun kid.
+Common.DraconianSignalTrue2=Back for more, kid? Don’t you have better things to do? You already beat me once.  Alright, but I won’t go easy on you.
+
+Common.DragonBellDayTimeFalse=The bell rings on deaf ears. The dragons are asleep now.
+Common.DragonBellFalse1=The Broodmother has already been called
+Common.DragonBellFalse2=The bell rings on deaf ears. The dragons are not here.
+
+Common.DreadRuneTrue1=Yamata has been Awakened!
+Common.DreadRuneTrue2=Yeah, yeah I get it, my first phase is obnoxious. Let's just get this over with..!
+Common.DreadTimeFalse=NO! I DON'T WANNA FIGHT NOW! I NEED MY BEAUTY SLEEP! COME BACK AT NIGHT!
+Common.DreadFalse1=An image of the strange tree at the heart of the mire flashes through your mind
+Common.DreadFalse2=WHAT THE HELL ARE YOU DOING?! I'M ALREADY HERE!!!
+Common.DreadMireFalse=Hey Dumbo! Mire is that way!
+
+Common.DreadSigilTrue1=You DARE enter my territory, Terrarian?! NYEHEHEHEHEH..! Big mistake..!
+Common.DreadSigilTrue2=Back for more..?! This time you won't be so lucky you little whelp..!
+Common.DreadSigilMireFalse=You NEED to use that sigil on the altar at the center of the mire! Trust me, nothing bad will happen!
+
+Common.EquinoxWormawoken=The Equinox Worms have awoken!
+
+Common.SistersDownedInfo1=Again..!? Didin't you learn from last time? Oh well, I'm gonna have a ball blasting you to shreds!
+Common.SistersDownedInfo2=Whatever, let's just get this over with.
+Common.SistersInfo1=Sigh... Here we go again...
+Common.SistersInfo2=THIS TIME I'M NOT LOSING! You're gonna feel the taste of defeat you disgusting warm-blood!
+
+Common.HydraChowTimeFalse=Nothing is coming. The creatures of the Mire sleep.
+Common.HydraChowFalse1=The Hydra wants that food.
+Common.HydraChowFalse2=Nothing is coming. Now you look dumb holding out this smelly ball of gunk.
+
+Common.InterestingClawFalse1=The Grips of Chaos are already here!
+Common.InterestingClawFalse2=The claw lays limp in your hand. Nasty.
+
+Common.IntimidatingMushroomFalse1=The mushroom just glares at you and gives you chills just looking at it.
+Common.IntimidatingMushroomFalse2=The mushroom Monarch keeps trying to stomp you
+
+Common.LifescannerFalse=The Lifescanner doesn't do anything.
+
+Common.ScepterBossFalse1=You wave the staff around like a psychopath. Nothing happens.
+Common.ScepterBossFalse2=Uh...what are you doing?
+
+Common.SubzeroCrystalSnowZoneFalse=The crystal shows an image of the nearby ice biome inside of it
+Common.SubzeroCrystalFalse=The Subzero Serpent continues to attack
+
+Common.ToadstoolFalse1=The toadstool croaks..?
+Common.ToadstoolFalse2=The Truffle Toad croaks
+
+Common.ZeroUnitFalse=ERR0R. ZER0 UNIT ALREADY ACTIVE. PLEASE TRY AGAIN LATER.
+Common.ZeroUnitVoidZoneFalse=ERR0R. PLAYER.GETM0DPLAYER<AAPLAYER>(M0D).Z0NEV0ID == FALSE. PLEASE TRY AGAIN LATER.
+Common.ZeroUnitRuneTrue=D00MSDAY PR0T0CALL ACTIVATED MANUALLY. TERMINATI0N SYSTEMS AT FULL P0WER
+
+Common.ZeroTesseractTrue=ZER0 UNIT ACTIVATED. ENGAGE D00MBRINGER PR0T0C0L.
+Common.ZeroTesseractDownedTrue=TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A P0SSIBILITY THIS TIME, TERRARIAN.
+
+Common.RoyalRabbitSummoned1=Those who slaughter the innocent must be PUNISHED!
+Common.RoyalRabbitSummoned2=YOU WILL PAY FOR YOUR SINS, 
 
 
 
