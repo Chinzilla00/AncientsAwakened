@@ -38,8 +38,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             {
                 npc.buffImmune[k] = true;
             }
-			leftHead = false;
-			middleHead = true;
+            Head = 0;
         }
 
         public bool SetLife = false;
@@ -74,34 +73,30 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void NPCLoot()
         {
-            if (npc.type == mod.NPCType("HydraHead2"))
+            Item.NewItem(npc.Hitbox, ModContent.ItemType<Items.Blocks.Abyssium>(), Main.rand.Next(16, 26));
+            if (!Main.expertMode)
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGoreB"), 1f);
+                Item.NewItem(npc.Hitbox, ModContent.ItemType<Items.Boss.Hydra.HydraHide>(), Main.rand.Next(3, 7));
             }
             else
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGoreR"), 1f);
+                Item.NewItem(npc.Hitbox, ModContent.ItemType<Items.Boss.Hydra.HydraHide>(), Main.rand.Next(7, 17));
             }
-            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore1"), 1f);
-            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore2"), 1f);
-            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore3"), 1f);
-            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore4"), 1f);
         }
 
+        public int Head = 0;
         public Hydra Body => (bodyNPC != null && bodyNPC.modNPC is Hydra) ? (Hydra)bodyNPC.modNPC : null;
-        public NPC bodyNPC = null;	
-        public bool middleHead = false;
-        public bool leftHead = false;
+        public NPC bodyNPC = null;
         public int damage = 0;
 
-        public int distFromBodyX = 60; //how far from the body to centeralize the movement points. (X coord)
-        public int distFromBodyY = 110; //how far from the body to centeralize the movement points. (Y coord)
-        public int movementVariance = 40; //how far from the center point to move.
+        public int movementVariance = 40;
         public bool fireAttack = false;
 
         public override void AI()
         {
-	        if (bodyNPC == null)
+            bool middleHead = Head == 0 || Head == 4 || Head == 5; 
+            bool leftHead = Head == 2 || Head == 7 || Head == 8;
+            if (bodyNPC == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
                 if (npcBody.type == ModContent.NPCType<Hydra>())
@@ -136,8 +131,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             Player targetPlayer = Main.player[npc.target];
 
             if (targetPlayer == null || !targetPlayer.active || targetPlayer.dead) targetPlayer = null; //deliberately set to null
-
-
+            
             if (!targetPlayer.GetModPlayer<AAPlayer>().ZoneMire)
             {
                 npc.damage = 80;
@@ -148,6 +142,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 npc.damage = 40;
                 npc.defense = 0;
             }
+
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
@@ -162,7 +157,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 npc.ai[1]++;
                 int aiTimerFire = npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100; //aiTimerFire is different per head by using whoAmI (which is usually different) 
                 if (leftHead) aiTimerFire += 30;
-                if (middleHead)
+                else
                 {
                     aiTimerFire = 100;
                 }
@@ -205,7 +200,9 @@ namespace AAMod.NPCs.Bosses.Hydra
                     npc.netUpdate = true;
                 }
             }
-            Vector2 nextTarget = Body.npc.Center + new Vector2(middleHead ? 0 : leftHead ? -distFromBodyX : distFromBodyX, -distFromBodyY) + new Vector2(npc.ai[2], npc.ai[3]);
+
+            Vector2 nextTarget = Body.npc.Center + HeadPos() + new Vector2(npc.ai[2], npc.ai[3]);
+
 			float dist = Vector2.Distance(nextTarget, npc.Center);
             if (dist < 40f)
             {
@@ -225,7 +222,31 @@ namespace AAMod.NPCs.Bosses.Hydra
             }
             npc.position += Body.npc.position - Body.npc.oldPosition;
             npc.spriteDirection = -1;
-            BaseDrawing.AddLight(npc.Center, leftHead ? new Color(255, 84, 84) : new Color(48, 232, 232));
+        }
+
+        public Vector2 HeadPos()
+        {
+            switch (Head)
+            {
+                default:
+                    return new Vector2(0, -110);
+                case 1:
+                    return new Vector2(80, -100);
+                case 2:
+                    return new Vector2(-80, -100);
+                case 3:
+                    return new Vector2(-30, -110);
+                case 4:
+                    return new Vector2(30, -110);
+                case 5:
+                    return new Vector2(70, -100);
+                case 6:
+                    return new Vector2(90, -90);
+                case 7:
+                    return new Vector2(-70, -100);
+                case 8:
+                    return new Vector2(-90, -90);
+            }
         }
 
         public float moveSpeed = 16f; 
@@ -243,11 +264,6 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.velocity *= velMultiplier;
         }
 
-        public override bool PreDraw(SpriteBatch sb, Color lightColor)
-        {
-            return false;
-        }
-
         public override void BossHeadRotation(ref float rotation)
         {
             rotation = npc.rotation;
@@ -255,7 +271,55 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override bool PreNPCLoot()
         {
+            if (npc.type == mod.NPCType("HydraHead1"))
+            {
+                int a = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead4>(), 0, bodyNPC.whoAmI);
+                Body.Head4 = Main.npc[a];
+                int b = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead5>(), 0, bodyNPC.whoAmI);
+                Body.Head5 = Main.npc[b];
+                return false;
+            }
+            if (npc.type == mod.NPCType("HydraHead2"))
+            {
+                int a = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead6>(), 0, bodyNPC.whoAmI);
+                Body.Head6 = Main.npc[a];
+                int b = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead7>(), 0, bodyNPC.whoAmI);
+                Body.Head7 = Main.npc[b];
+                return false;
+            }
+            if (npc.type == mod.NPCType("HydraHead3"))
+            {
+                int a = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead8>(), 0, bodyNPC.whoAmI);
+                Body.Head8 = Main.npc[a];
+                int b = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead9>(), 0, bodyNPC.whoAmI);
+                Body.Head9 = Main.npc[b];
+                return false;
+            }
+            else 
+            {
+                return true;
+            }
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
             return false;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            if (npc.type == mod.NPCType("HydraHead2"))
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGoreB"), 1f);
+            }
+            else
+            {
+                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGoreR"), 1f);
+            }
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore1"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore2"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore3"), 1f);
+            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore4"), 1f);
         }
     }
 }

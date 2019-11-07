@@ -16,6 +16,12 @@ namespace AAMod.NPCs.Bosses.Hydra
         public NPC Head1;
         public NPC Head2;
         public NPC Head3;
+        public NPC Head4;
+        public NPC Head5;
+        public NPC Head6;
+        public NPC Head7;
+        public NPC Head8;
+        public NPC Head9;
         public bool HeadsSpawned = false;
 
         public override void SetStaticDefaults()
@@ -99,7 +105,8 @@ namespace AAMod.NPCs.Bosses.Hydra
 					Head3.netUpdate = true;
 					HeadsSpawned = true;
 				}
-			}else
+			}
+            else
 			{
 				if(!HeadsSpawned)
 				{
@@ -136,7 +143,10 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void AI()
         {
-            bool noHeads = !NPC.AnyNPCs(ModContent.NPCType<HydraHead1>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead2>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead3>());
+            bool noHeads = !NPC.AnyNPCs(ModContent.NPCType<HydraHead1>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead2>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead3>()) &&
+                !NPC.AnyNPCs(ModContent.NPCType<HydraHead4>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead5>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead6>()) &&
+                !NPC.AnyNPCs(ModContent.NPCType<HydraHead7>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead8>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead9>());
+
             if (HeadsSpawned && noHeads)
             {
                 if (Main.netMode != 1)
@@ -248,7 +258,6 @@ namespace AAMod.NPCs.Bosses.Hydra
             }
         }
 
-
         public override void FindFrame(int frameHeight)
         {
             if (npc.velocity.X != 0)
@@ -331,7 +340,6 @@ namespace AAMod.NPCs.Bosses.Hydra
             return null;
         }
 
-
         public void DrawHead(SpriteBatch spriteBatch, string headTexture, string glowMaskTexture, NPC head, Color drawColor)
         {
             if (head != null && head.active && head.modNPC != null && head.modNPC is HydraHead1)
@@ -353,11 +361,8 @@ namespace AAMod.NPCs.Bosses.Hydra
             int frameWidth = 152;
             frameBottom = BaseDrawing.GetFrame(0, frameWidth, 44, 0, 2);
 
-            if (Head2 != null && Head3 != null)
-            { 
-                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead2", "Glowmasks/HydraHead2_Glow", Head2, dColor);
-                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead3", "Glowmasks/HydraHead3_Glow", Head3, dColor);
-            }
+            HeadDraw(sb, dColor);
+
             string tailTex = "NPCs/Bosses/Hydra/HydraTail";
             BaseDrawing.DrawTexture(sb, mod.GetTexture(tailTex), 0, npc.position + new Vector2(0f, npc.gfxOffY - 30), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 1, frameBottom, dColor, false);
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position + new Vector2(0f, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, Main.npcFrameCount[npc.type], npc.frame, dColor, false);
@@ -367,6 +372,49 @@ namespace AAMod.NPCs.Bosses.Hydra
                 DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead1", "Glowmasks/HydraHead1_Glow", Head1, dColor); //draw main head last!
             }
             return false;
+        }
+
+        public void HeadDraw(SpriteBatch sb, Color dColor)
+        {
+            if (Head2 != null)
+            {
+                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead2", "Glowmasks/HydraHead2_Glow", Head2, dColor);
+            }
+
+            if (Head3 != null)
+            {
+                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead3", "Glowmasks/HydraHead3_Glow", Head3, dColor);
+            }
+
+            if (Head4 != null)
+            {
+                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead4", "Glowmasks/HydraHead4_Glow", Head4, dColor);
+            }
+
+            if (Head5 != null)
+            {
+                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead5", "Glowmasks/HydraHead5_Glow", Head5, dColor);
+            }
+
+            if (Head6 != null)
+            {
+                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead6", "Glowmasks/HydraHead6_Glow", Head6, dColor);
+            }
+
+            if (Head7 != null)
+            {
+                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead7", "Glowmasks/HydraHead5_Glow", Head7, dColor);
+            }
+
+            if (Head8 != null)
+            {
+                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead8", "Glowmasks/HydraHead4_Glow", Head8, dColor);
+            }
+
+            if (Head9 != null)
+            {
+                DrawHead(sb, "NPCs/Bosses/Hydra/HydraHead9", "Glowmasks/HydraHead6_Glow", Head9, dColor);
+            }
         }
     }
 }
