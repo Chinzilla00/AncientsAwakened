@@ -356,7 +356,11 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6"), ItemType("SerpentBox"), TileType("SerpentBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis"), ItemType("AnubisBox"), TileType("AnubisBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Acropolis"), ItemType("AcropolisBox"), TileType("AcropolisBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Hoard"), ItemType("HoardBox"), TileType("HoardBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Greed"), ItemType("GreedBox"), TileType("GreedBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme"), ItemType("RajahBox"), TileType("RajahBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GreedA"), ItemType("GreedABox"), TileType("GreedABox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/AnubisA"), ItemType("AnubisFBox"), TileType("AnubisFBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox"), ItemType("Equibox"), TileType("Equibox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Stars"), ItemType("StarBox"), TileType("StarBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Void"), ItemType("VoidBox"), TileType("VoidBox"));
