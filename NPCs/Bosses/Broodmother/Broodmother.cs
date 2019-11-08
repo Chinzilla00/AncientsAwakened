@@ -22,8 +22,8 @@ namespace AAMod.NPCs.Bosses.Broodmother
         public override void SetDefaults()
         {
             npc.aiStyle = 0;
-            npc.width = 352;
-            npc.height = 296;
+            npc.width = 130;
+            npc.height = 164;
             npc.noGravity = true;
             npc.noTileCollide = true;
             npc.chaseable = true;
@@ -120,9 +120,9 @@ namespace AAMod.NPCs.Bosses.Broodmother
             }
             else
             {
-                if (Main.rand.Next(10) == 0)
+                if (Main.rand.Next(7) == 0)
                 {
-                    //Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BroodMask"));
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("BroodMask"));
                 }
                 if (Main.rand.Next(10) == 0)
                 {
@@ -354,6 +354,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 }
             }
         }
+
 		public override void BossHeadSpriteEffects(ref SpriteEffects spriteEffects)
         {
             spriteEffects = npc.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;

@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void SetDefaults()
         {
             npc.width = 40;
-            npc.height = 80;
+            npc.height = 100;
             npc.damage = 80;
             npc.defense = 40;
             npc.lifeMax = 100000;
