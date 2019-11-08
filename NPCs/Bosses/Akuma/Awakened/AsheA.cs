@@ -12,9 +12,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ashe Akuma");
-            Main.npcFrameCount[npc.type] = 19;
+            Main.npcFrameCount[npc.type] = 24;
         }
-
 
         public override void SetDefaults()
         {

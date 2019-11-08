@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Hydra
         public override void SetDefaults()
         {
             npc.npcSlots = 100;
-            npc.width = 152;
+            npc.width = 130;
             npc.height = 116;
             npc.aiStyle = -1;
             npc.damage = 40;
