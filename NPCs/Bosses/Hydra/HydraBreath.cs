@@ -67,7 +67,7 @@ namespace AAMod.NPCs.Bosses.Hydra
                 {
                     for (int num298 = 0; num298 < 5; num298++)
                     {
-                        int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("AbyssDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100);
+                        int num299 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("AbyssDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default, 1.7f);
                         if (Main.rand.Next(6) != 0)
                         {
                             Main.dust[num299].noGravity = true;

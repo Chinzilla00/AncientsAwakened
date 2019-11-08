@@ -14,7 +14,7 @@ namespace AAMod.Items.Boss.AH
 Right click to detonate fireballs");
         }
 
-        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
+        public override void ModifyTooltips(List<Terraria.ModLoader.TooltipLine> list)
         {
             foreach (Terraria.ModLoader.TooltipLine line2 in list)
             {

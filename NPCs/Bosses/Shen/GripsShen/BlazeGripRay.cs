@@ -196,11 +196,11 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             Texture2D texture2D20 = mod.GetTexture("NPCs/Bosses/Shen/GripsShen/BlazeGripRay2");
             Texture2D texture2D21 = mod.GetTexture("NPCs/Bosses/Shen/GripsShen/BlazeGripRay3");
             float num223 = projectile.localAI[1];
-            Microsoft.Xna.Framework.Color color44 = new Microsoft.Xna.Framework.Color(255, 255, 255, 0) * 0.9f;
+            Color color44 = new Color(255, 255, 255, 0) * 0.9f;
             SpriteBatch arg_ABD8_0 = Main.spriteBatch;
             Texture2D arg_ABD8_1 = texture2D19;
             Vector2 arg_ABD8_2 = projectile.Center - Main.screenPosition;
-            Microsoft.Xna.Framework.Rectangle? sourceRectangle2 = null;
+            Rectangle? sourceRectangle2 = null;
             arg_ABD8_0.Draw(arg_ABD8_1, arg_ABD8_2, sourceRectangle2, color44, projectile.rotation, texture2D19.Size() / 2f, projectile.scale, SpriteEffects.None, 0f);
             num223 -= (texture2D19.Height / 2 + texture2D21.Height) * projectile.scale;
             Vector2 value20 = projectile.Center;
@@ -208,7 +208,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             if (num223 > 0f)
             {
                 float num224 = 0f;
-                Microsoft.Xna.Framework.Rectangle rectangle7 = new Microsoft.Xna.Framework.Rectangle(0, 16 * (projectile.timeLeft / 3 % 5), texture2D20.Width, 16);
+                Rectangle rectangle7 = new Rectangle(0, 16 * (projectile.timeLeft / 3 % 5), texture2D20.Width, 16);
                 while (num224 + 1f < num223)
                 {
                     if (num223 - num224 < rectangle7.Height)

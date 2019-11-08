@@ -139,10 +139,10 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             }
             else
             {
-                Alpha.R = (byte)((float)(200f));
-                Alpha.G = (byte)((float)(200f));
-                Alpha.B = (byte)((float)(200f));
-                Alpha.A = (byte)((float)(200f));
+                Alpha.R = (byte)200f;
+                Alpha.G = (byte)200f;
+                Alpha.B = (byte)200f;
+                Alpha.A = (byte)200f;
             }
             int blue = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
             Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);

@@ -7,6 +7,7 @@ using BaseMod;
 using Terraria.ID;
 using Terraria.Audio;
 using System.IO;
+using AAMod.NPCs.Enemies.Mire;
 
 namespace AAMod.NPCs.Bosses.Hydra
 {
@@ -18,6 +19,25 @@ namespace AAMod.NPCs.Bosses.Hydra
             DisplayName.SetDefault("Hydra");
             Main.npcFrameCount[npc.type] = 2;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
+        }
+
+        public float Shoot = 0;
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            {
+                writer.Write(Shoot);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                Shoot = reader.ReadFloat();
+            }
         }
 
         public override void SetDefaults()
@@ -39,25 +59,6 @@ namespace AAMod.NPCs.Bosses.Hydra
                 npc.buffImmune[k] = true;
             }
             Head = 0;
-        }
-
-        public bool SetLife = false;
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            base.SendExtraAI(writer);
-            if (Main.netMode == NetmodeID.Server || Main.dedServ)
-            {
-                writer.Write(SetLife);
-            }
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            base.ReceiveExtraAI(reader);
-            if (Main.netMode == NetmodeID.MultiplayerClient)
-            {
-                SetLife = reader.ReadBool();
-            }
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -94,8 +95,6 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void AI()
         {
-            bool middleHead = Head == 0 || Head == 4 || Head == 5; 
-            bool leftHead = Head == 2 || Head == 7 || Head == 8;
             if (bodyNPC == null)
             {
                 NPC npcBody = Main.npc[(int)npc.ai[0]];
@@ -106,13 +105,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             }
 			if(bodyNPC == null)
 				return;
-            if (!SetLife && Main.netMode != 1)
-            {
-                npc.lifeMax = bodyNPC.life / 3;
-                npc.life = bodyNPC.life / 3;
-                SetLife = true;
-                npc.netUpdate = true;
-            }
+
             if (!bodyNPC.active)
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghosting'
@@ -155,43 +148,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             if (Main.netMode != 1)
             {
                 npc.ai[1]++;
-                int aiTimerFire = npc.whoAmI % 3 == 0 ? 50 : npc.whoAmI % 2 == 0 ? 150 : 100; //aiTimerFire is different per head by using whoAmI (which is usually different) 
-                if (leftHead) aiTimerFire += 30;
-                else
-                {
-                    aiTimerFire = 100;
-                }
 
-                if (targetPlayer != null)
-                {
-                    Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
-                    if (!middleHead && npc.ai[1] == aiTimerFire)
-                    {
-                        dir *= 9f;
-                        for (int i = 0; i < 7; ++i)
-                        {
-                            int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("AcidProj"), damage, 0f, Main.myPlayer);
-                            Main.projectile[projID].netUpdate = true;
-                        }
-                    }
-                    else
-                    if (middleHead && npc.ai[1] >= 100 && npc.ai[1] % 10 == 0)
-                    {
-                        dir *= 6f;
-                        dir.X += Main.rand.Next(-1, 1) * 0.5f;
-                        dir.Y += Main.rand.Next(-1, 1) * 0.5f;
-                        int projID = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, dir.X, dir.Y, mod.ProjectileType("HydraBreath"), damage, 0f, Main.myPlayer);
-                        Main.projectile[projID].netUpdate = true;
-                    }
-                }
-                if ((!middleHead && npc.ai[1] >= aiTimerFire) || (middleHead && npc.ai[1] >= 100 && npc.ai[1] % 10 == 0))
-                {
-                    npc.frame.Y = 54;
-                }
-                else
-                {
-                    npc.frame.Y = 0;
-                }
                 if (npc.ai[1] >= 200) //pick random spot to move head to
                 {
                     npc.ai[1] = 0;
@@ -222,6 +179,86 @@ namespace AAMod.NPCs.Bosses.Hydra
             }
             npc.position += Body.npc.position - Body.npc.oldPosition;
             npc.spriteDirection = -1;
+        }
+
+        public override void PostAI()
+        {
+            if (Main.netMode != 1)
+            {
+                Player player = Main.player[npc.target];
+                bool Red = Head == 5 || Head == 8;
+                bool Yellow = Head == 4 || Head == 6;
+                bool Blue = Head == 3 || Head == 7;
+                bool Green = Head == 0;
+                bool Orange = Head == 1;
+                bool Purple = Head == 2;
+
+                Shoot++;
+
+                int Interval =
+                    Red ? 120 :
+                    Yellow ? 180 :
+                    Blue ? 210 :
+                    Green ? 195 :
+                    Orange ? 150 :
+                    Purple ? 165 :
+                    210;
+
+                int proj =
+                    Red ? ModContent.ProjectileType<HydraBreath>() :
+                    Yellow ? ModContent.ProjectileType<AcidProj>() :
+                    ModContent.ProjectileType<HydraBomb>();
+
+                if (Green)
+                {
+                    proj = Main.rand.Next(2) == 0 ? ModContent.ProjectileType<AcidProj>() : ModContent.ProjectileType<HydraBomb>();
+                }
+                if (Orange)
+                {
+                    proj = Main.rand.Next(2) == 0 ? ModContent.ProjectileType<AcidProj>() : ModContent.ProjectileType<HydraBreath>();
+                }
+                if (Purple)
+                {
+                    proj = Main.rand.Next(2) == 0 ? ModContent.ProjectileType<HydraBomb>() : ModContent.ProjectileType<HydraBreath>();
+                }
+
+                if (Shoot == Interval)
+                {
+                    BaseAI.FireProjectile(player.position, npc.position, proj, npc.damage / 4, 2, 10, -1, Main.myPlayer);
+                }
+
+                if (Shoot >= Interval + 60)
+                {
+                    Shoot = 0;
+                }
+            }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            bool Red = Head == 5 || Head == 8;
+            bool Yellow = Head == 4 || Head == 6;
+            bool Blue = Head == 3 || Head == 7;
+            bool Green = Head == 0;
+            bool Orange = Head == 1;
+            bool Purple = Head == 2;
+
+            int Interval =
+                Red ? 120 :
+                Yellow ? 180 :
+                Blue ? 210 :
+                Green ? 195 :
+                Orange ? 150 :
+                Purple ? 165 :
+                210;
+            if (Shoot >= Interval)
+            {
+                npc.frame.Y = 54;
+            }
+            else
+            {
+                npc.frame.Y = 0;
+            }
         }
 
         public Vector2 HeadPos()

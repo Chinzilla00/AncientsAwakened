@@ -100,10 +100,10 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
             }
             else
             {
-                Alpha.R = (byte)((float)(200f));
-                Alpha.G = (byte)((float)(200f));
-                Alpha.B = (byte)((float)(200f));
-                Alpha.A = (byte)((float)(200f));
+                Alpha.R = (byte)200f;
+                Alpha.G = (byte)200f;
+                Alpha.B = (byte)200f;
+                Alpha.A = (byte)200f;
                 projectile.rotation = projectile.velocity.ToRotation() + (projectile.velocity.X > 0 ? 0 : (float)Math.PI);
                 projectile.direction = projectile.velocity.X > 0 ? -1 : 1;
             }

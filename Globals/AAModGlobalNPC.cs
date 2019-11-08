@@ -130,7 +130,7 @@ namespace AAMod
             ApplyDPSDebuff(Moonraze, 200, ref npc.lifeRegen);
             ApplyDPSDebuff(Hydratoxin, (int)npc.velocity.X * (npc.velocity.X > 0?  1 : -1), ref npc.lifeRegen);
             ApplyDPSDebuff(Electrified, 40, ref npc.lifeRegen);
-            ApplyDPSDebuff(FFlames, (int)(40 * (npc.life / npc.lifeMax)), ref npc.lifeRegen);
+            ApplyDPSDebuff(FFlames, 40 * (npc.life / npc.lifeMax), ref npc.lifeRegen);
         }
 
         public void ApplyDPSDebuff(bool debuff, int lifeRegenValue, int damageValue, ref int lifeRegen, ref int damage)

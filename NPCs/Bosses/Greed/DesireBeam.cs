@@ -122,7 +122,7 @@ namespace AAMod.NPCs.Bosses.Greed
             if (num228 > 0f)
             {
                 float num229 = 0f;
-                Microsoft.Xna.Framework.Rectangle rectangle7 = new Microsoft.Xna.Framework.Rectangle(0, 16 * (projectile.timeLeft / 3 % 5), texture2D20.Width, 16);
+                Rectangle rectangle7 = new Rectangle(0, 16 * (projectile.timeLeft / 3 % 5), texture2D20.Width, 16);
                 while (num229 + 1f < num228)
                 {
                     if (num228 - num229 < rectangle7.Height)
