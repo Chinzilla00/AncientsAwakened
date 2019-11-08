@@ -63,7 +63,7 @@ N0N-C0NSUMABLE");
 
         public override bool UseItem(Player player)
         {
-            if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroRuneTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
+            if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ZeroUnitRuneTrue"), Color.Red.R, Color.Red.G, Color.Red.B);
 
             if (Main.netMode != 1)
             {
