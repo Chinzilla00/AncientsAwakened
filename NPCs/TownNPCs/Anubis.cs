@@ -425,7 +425,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
                 }
             }
-            return false;
+            return true;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
