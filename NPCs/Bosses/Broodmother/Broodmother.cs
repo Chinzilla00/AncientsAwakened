@@ -153,7 +153,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            potionType = ItemID.HealingPotion;   //boss drops
+            potionType = ItemID.HealingPotion;
             AAWorld.downedBrood = true;
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)

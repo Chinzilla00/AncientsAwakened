@@ -450,9 +450,16 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             }
         }
 
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ItemID.SuperHealingPotion;
+        }
+
         public override void NPCLoot()
         {
             NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<TownNPCs.Anubis>());
+
+            AAWorld.downedAnubisA = true;
 
             if (Main.rand.Next(10) == 0)
             {

@@ -397,6 +397,11 @@ namespace AAMod.NPCs.Bosses.Anubis
             return true;
         }
 
+        public override void BossLoot(ref string name, ref int potionType)
+        {
+            potionType = ItemID.GreaterHealingPotion;
+        }
+
         public override void NPCLoot()
         {
             if (NPC.downedMoonlord)
