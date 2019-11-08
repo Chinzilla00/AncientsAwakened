@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             npc.knockBackResist = 0f;
             npc.boss = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AnubisA");
-            bossBag = ModContent.ItemType<Items.Boss.Anubis.Forsaken.ForsakenStaff>();
+            bossBag = ModContent.ItemType<Items.Boss.Anubis.Forsaken.FAnubisBag>();
         }
 
         public float[] internalAI = new float[4];
