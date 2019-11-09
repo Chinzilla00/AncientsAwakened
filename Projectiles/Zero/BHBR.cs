@@ -1,75 +1,96 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.ModLoader;
+using System;
 
 namespace AAMod.Projectiles.Zero
 {
     public class BHBR : ModProjectile
 	{
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Singularity Arrow");    
-		}
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Void Rocket");
+            Main.projFrames[projectile.type] = 3;
+        }
 
 		public override void SetDefaults()
 		{
-			projectile.width = 14;
+            projectile.width = 14;
 			projectile.height = 14;
-			projectile.aiStyle = 1;        
+			projectile.aiStyle = -1;
             projectile.friendly = true;
-            projectile.ranged = true;
-            projectile.ignoreWater = true;
-            projectile.usesLocalNPCImmunity = true;
+            projectile.hostile = false;
             projectile.penetrate = 1;
-            projectile.extraUpdates = 1;
-        }
+            projectile.tileCollide = true;
+            projectile.timeLeft = 180;
+            projectile.ranged = true;
+		}
 
         public override void AI()
         {
-            const int aislotHomingCooldown = 0;
-            const int homingDelay = 0;
-            const float desiredFlySpeedInPixelsPerFrame = 60;
-            const float amountOfFramesToLerpBy = 10; // minimum of 1, please keep in full numbers even though it's a float!
-
-            projectile.ai[aislotHomingCooldown]++;
-            if (projectile.ai[aislotHomingCooldown] > homingDelay)
+            if (++projectile.frameCounter >= 3)
             {
-                projectile.ai[aislotHomingCooldown] = homingDelay; 
-
-                int foundTarget = HomeOnTarget();
-                if (foundTarget != -1)
+                projectile.frameCounter = 0;
+                if (++projectile.frame >= 3)
                 {
-                    NPC n = Main.npc[foundTarget];
-                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
-                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
+                    projectile.frame = 0;
+                }
+            }
+            Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.9f / 255f, (255 - projectile.alpha) * 0f / 255f, (255 - projectile.alpha) * 0.4f / 255f);
+
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
+            projectile.localAI[1]++;
+            if (projectile.localAI[1] >= 60)
+            {
+
+                if (projectile.localAI[0] == 0f)
+                {
+                    AdjustMagnitude(ref projectile.velocity);
+                    projectile.localAI[0] = 1f;
+                }
+                Vector2 move = Vector2.Zero;
+                float distance = 800f;
+                bool target = false;
+                for (int k = 0; k < Main.maxNPCs; k++)
+                {
+                    if (Main.npc[k].active)
+                    {
+                        Vector2 newMove = Main.npc[k].Center - projectile.Center;
+                        float distanceTo = (float)Math.Sqrt(newMove.X * newMove.X + newMove.Y * newMove.Y);
+                        if (distanceTo < distance)
+                        {
+                            move = newMove;
+                            distance = distanceTo;
+                            target = true;
+                        }
+                    }
+                }
+                if (target)
+                {
+                    AdjustMagnitude(ref move);
+                    projectile.velocity = (10 * projectile.velocity + move) / 11f;
+                    AdjustMagnitude(ref projectile.velocity);
                 }
             }
         }
-
-        private int HomeOnTarget()
+        private void AdjustMagnitude(ref Vector2 vector)
         {
-            const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 5000;
-
-            int selectedTarget = -1;
-            for (int i = 0; i < Main.maxNPCs; i++)
+            float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
+            if (magnitude > 13f)
             {
-                NPC n = Main.npc[i];
-                if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
-                {
-                    float distance = projectile.Distance(n.Center);
-                    if (distance <= homingMaximumRangeInPixels &&
-                        (
-                            selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.npc[selectedTarget].Center) > distance) 
-                    )
-                        selectedTarget = i;
-                }
+                vector *= 12f / magnitude;
             }
-
-            return selectedTarget;
         }
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+       {
+            projectile.Kill();
+        {
+            if(target.life<=0)
+           {
+              Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("CycloneF"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);   }
+        } 
+       }
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(SoundID.Item14, projectile.position);
@@ -90,5 +111,5 @@ namespace AAMod.Projectiles.Zero
                 Main.dust[dustIndex].velocity *= 1.4f;
             }
         }
-    }
+	}
 }

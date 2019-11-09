@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Enemies.Other
             npc.height = 24;
             npc.friendly = false;
             npc.damage = 13;
-            npc.defense = 4;
+            npc.defense = 2;
             npc.lifeMax = 20;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
