@@ -244,7 +244,7 @@ namespace AAMod.Items.Summoning.Minions
             if (hasTarget)
             {
                 tex = mod.GetTexture("Items/Summoning/Minions/XiaoDoragonA");
-                BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, projectile, .5f, 1f, 10, false, 0f, 0f, lightColor, frame, 4);
+                BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, projectile, 1f, 1f, 3, true, 0f, 0f, lightColor, frame, 4);
             }
 
 
@@ -254,7 +254,7 @@ namespace AAMod.Items.Summoning.Minions
             {
                 Texture2D g = mod.GetTexture("Glowmasks/XiaoDoragon_Glow");
                 BaseDrawing.DrawTexture(spriteBatch, g, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, -projectile.direction, 4, frame, AAColor.Shen2, true);
-                BaseDrawing.DrawAfterimage(spriteBatch, g, 0, projectile, .5f, 1f, 10, false, 0f, 0f, AAColor.Shen2, frame, 4);
+                BaseDrawing.DrawAfterimage(spriteBatch, g, 0, projectile, 1f, 1f, 3, true, 0f, 0f, AAColor.Shen2, frame, 4);
             }
             return false;
         }

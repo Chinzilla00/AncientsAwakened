@@ -25,19 +25,13 @@ namespace AAMod.Items.Summoning.Minions
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return Color.White
+            return Color.White;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            for (int num468 = 0; num468 < 3; num468++)
-            {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, 1, ModContent.DustType<Dusts.DiscordLight>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 100, default, 2.5f);
-                Main.dust[num469].noGravity = true;
-                Main.dust[num469].velocity *= 2f;
-            }
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("XiaoExplosion"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            int p = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("XiaoExplosion"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Main.projectile[p].Center = target.Center;
 
             target.AddBuff(ModContent.BuffType<Buffs.DiscordInferno>(), 200);
         }
