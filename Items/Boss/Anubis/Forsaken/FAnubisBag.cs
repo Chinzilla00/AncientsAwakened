@@ -61,7 +61,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PMLDevArmor();
             }
-            player.QuickSpawnItem(mod.ItemType("SoulFragment"), Main.rand.Next(8, 16));
+            player.QuickSpawnItem(mod.ItemType("SoulFragment"), Main.rand.Next(10, 20));
             player.QuickSpawnItem(mod.ItemType("ArtifactOfGuilt"));
             string[] lootTable = { "Verdict", "Lifeline", "ForsakenStaff", "Soulsplitter", "CursedFury", "HorusCane" };
             int loot = Main.rand.Next(lootTable.Length);

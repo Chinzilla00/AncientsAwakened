@@ -476,6 +476,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 {
                     npc.DropLoot(mod.ItemType("FAnubisMask"));
                 }
+                npc.DropLoot(mod.ItemType("SoulFragment"), Main.rand.Next(8, 16));
                 string[] lootTable = { "Verdict", "Lifeline", "ForsakenStaff", "Soulsplitter", "CursedFury", "HorusCane" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
