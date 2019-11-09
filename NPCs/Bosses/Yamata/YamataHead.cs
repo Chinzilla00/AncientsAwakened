@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Yamata
         public override void SetDefaults()
         {
 			npc.lifeMax = 550000;
-            npc.damage = 150;
+            npc.damage = 90;
             npc.defense = 100;
             npc.width = 78;
             npc.height = 60;
@@ -36,10 +36,6 @@ namespace AAMod.NPCs.Bosses.Yamata
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
-            }
-            if (AAWorld.downedShen)
-            {
-                npc.damage = 350;
             }
         }
 

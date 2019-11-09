@@ -78,16 +78,6 @@ namespace AAMod.NPCs.Bosses.Greed
             npc.TargetClosest();
             Player player = Main.player[npc.target];
 
-            if (npc.HasBuff(ModContent.BuffType<BuffA>()))
-            {
-                npc.damage = (int)(npc.defDamage * 1.15f);
-            }
-
-            if (npc.HasBuff(ModContent.BuffType<BuffD>()))
-            {
-                npc.defDefense = (int)(npc.defDefense * 1.15f);
-            }
-
             damage = npc.damage / 2;
 
 
@@ -582,19 +572,6 @@ namespace AAMod.NPCs.Bosses.Greed
                 }
                 color.A = Main.mouseTextColor;
                 BaseDrawing.DrawTexture(spritebatch, glow, 0, npc, color);
-            }
-
-            rot += .1f;
-
-            if (npc.HasBuff(ModContent.BuffType<BuffA>()))
-            {
-                Rectangle frame = BaseDrawing.GetFrame(BoostFrame, Atk.Width, Atk.Height / 4, 0, 0);
-                BaseDrawing.DrawTexture(spritebatch, Atk, 0, npc.position, npc.width, npc.height, npc.scale, rot, 0, 4, frame, ColorUtils.COLOR_GLOWPULSE, true);
-            }
-            if (npc.HasBuff(ModContent.BuffType<BuffD>()))
-            {
-                Rectangle frame = BaseDrawing.GetFrame(BoostFrame, Def.Width, Def.Height / 4, 0, 0);
-                BaseDrawing.DrawTexture(spritebatch, Def, 0, npc.position, npc.width, npc.height, npc.scale, rot, 0, 4, frame, ColorUtils.COLOR_GLOWPULSE, true);
             }
 
             npc.position.Y -= npc.height * 0.5f;

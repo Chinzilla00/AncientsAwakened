@@ -33,7 +33,8 @@ namespace AAMod
     public partial class AAPlayer : ModPlayer
     {
         #region Variables
-        //Minions
+
+        #region Minions
         public bool FireSpirit = false;
         public bool ImpServant = false;
         public bool ImpSlave = false;
@@ -81,8 +82,10 @@ namespace AAMod
         public bool Seraph = false;
         public bool Athena = false;
         public bool Baron = false;
+        public bool Xiao = false;
+        #endregion
 
-        // Biome bools.
+        #region Biome bools.
         public bool ZoneMire = false;
         public bool ZoneInferno = false;
         public bool ZoneVoid = false;
@@ -110,8 +113,9 @@ namespace AAMod
 
         public bool RadiumStars = false;
         public bool Darkmatter = false;
+        #endregion
 
-        // Armor bools.
+        #region Armor bools.
         public bool MoonSet;
         public bool goblinSlayer;
         public bool IsGoblin;
@@ -169,9 +173,10 @@ namespace AAMod
         public bool ChaosMa = false;
         public bool ChaosSu = false;
         public bool Olympian = false;
+        #endregion
 
-        // Accessory bools
-		public bool artifactJudgement;
+        #region Accessory bools
+        public bool artifactJudgement;
 		public int artifactJudgementCharge = 0;
 		public bool artifactGuilt;
 		public int artifactGuiltCharge = 0;
@@ -211,8 +216,9 @@ namespace AAMod
 
         public bool GreedCharm;
         public bool GreedTalisman;
+        #endregion
 
-        //debuffs
+        #region debuffs
         public bool CursedHellfire = false;
         public bool infinityOverload = false;
         public bool discordInferno = false;
@@ -239,14 +245,16 @@ namespace AAMod
         public bool Spear = false;
         public bool AkumaPain = false;
         public bool FFlames = false;
+        #endregion
 
-        //buffs
+        #region buffs
         public bool Glitched = false;
         public bool Greed1 = false;
         public bool Greed2 = false;
         public float GreedyDamage = 0;
+        #endregion
 
-        //pets
+        #region pets
         public bool Broodmini = false;
         public bool Raidmini = false;
         public bool MiniProbe = false;
@@ -257,24 +265,23 @@ namespace AAMod
         public bool BoomBoi = false;
         public bool DragonSoul = false;
         public bool Glowmoss = false;
+        #endregion
 
         //NPCcount
         public static int yamata = -1;
 
-        //Colors
+        #region Colors
         public static Color IncineriteColor = new Color((int)(242 * 0.7f), (int)(107 * 0.7f), 0);
         public static Color ZeroColor = new Color((int)(233 * 0.7f), (int)(53 * 0.7f), (int)(53 * 0.7f));
         public static Color groviteColor = new Color(138, (int)(39 * 0.7f), (int)(196 * 0.7f));
-
         public static bool[] groviteGlow = new bool[255];
 
-        //IZ Death count
         public static int ZeroKills = 0;
 
-        //Stat Boosts
         public int ManaLantern = 0;
+        #endregion
 
-        //Misc
+        #region Misc
         public bool Compass = false;
         public Vector2 RiftPos = new Vector2(0, 0);
         public int PrismCooldown = 0;
@@ -284,6 +291,7 @@ namespace AAMod
         public bool GivenAnuSummon = false;
 
         public float MaxMovespeedboost = 0;
+        #endregion
 
         #endregion
 
@@ -379,6 +387,7 @@ namespace AAMod
             Seraph = false;
             Athena = false;
             Baron = false;
+            Xiao = false;
         }
 
         private void ResetArmorEffect()
@@ -2315,30 +2324,31 @@ namespace AAMod
                 knockback += 5f;
             }
         }
-
-        /* 
+ 
         public override float UseTimeMultiplier(Item item)
         {
             float multiplier = 1f;
 
-            if (HydraPendant)
+            if (item.damage > 0)
             {
-                multiplier *= 1.15f;
-            }
+                if (HydraPendant)
+                {
+                    multiplier *= 1.15f;
+                }
 
-            while (item.useTime / multiplier < 1)
-            {
-                multiplier -= .1f;
-            }
+                while (item.useTime / multiplier < 1)
+                {
+                    multiplier -= .1f;
+                }
 
-            while (item.useAnimation / multiplier < 2)
-            {
-                multiplier -= .1f;
+                while (item.useAnimation / multiplier < 2)
+                {
+                    multiplier -= .1f;
+                }
             }
 
             return multiplier;
         }
-        */
 
         public override void ProcessTriggers(TriggersSet triggersSet)
         {

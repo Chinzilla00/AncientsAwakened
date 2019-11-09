@@ -43,7 +43,7 @@ Certain ores have special effects when shot");
             return new Vector2(-4, -3);
         }
 
-        int[] Ores = new int[]
+        readonly int[] Ores = new int[]
         {
             ItemID.CopperOre,
             ItemID.TinOre,
@@ -67,7 +67,12 @@ Certain ores have special effects when shot");
             ItemID.TitaniumOre,
             ModContent.ItemType<HallowedOre>(),
             ItemID.ChlorophyteOre,
-            ItemID.LunarOre
+            ItemID.LunarOre,
+            ModContent.ItemType<DarkmatterOre>(),
+            ModContent.ItemType<RadiumOre>(),
+            ModContent.ItemType<DaybreakIncineriteOre>(),
+            ModContent.ItemType<EventideAbyssiumOre>(),
+            ModContent.ItemType<Apocalyptite>()
         };
 
         public int projType = -1;
@@ -106,7 +111,12 @@ Certain ores have special effects when shot");
 					if (itemFired.type == mod.ItemType("HallowedOre")) projType = 20;
 					if (itemFired.type == ItemID.ChlorophyteOre) projType = 21;
 					if (itemFired.type == ItemID.LunarOre) projType = 22;
-					return true;
+                    if (itemFired.type == mod.ItemType("DarkmatterOre")) projType = 23;
+                    if (itemFired.type == mod.ItemType("RadiumOre")) projType = 24;
+                    if (itemFired.type == mod.ItemType("DaybreakIncineriteOre")) projType = 25;
+                    if (itemFired.type == mod.ItemType("EventideAbyssiumOre")) projType = 26;
+                    if (itemFired.type == mod.ItemType("Apocalyptite")) projType = 27;
+                    return true;
 				}
 			}
             return false;
