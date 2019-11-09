@@ -1,5 +1,7 @@
 using System;
+using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -18,8 +20,8 @@ namespace AAMod.Items.Summoning.Minions
 
         public override void SetDefaults()
         {
-            projectile.width = 34;
-            projectile.height = 26;
+            projectile.width = 44;
+            projectile.height = 38;
             projectile.netImportant = true;
             projectile.friendly = true;
             projectile.ignoreWater = true;
@@ -32,6 +34,7 @@ namespace AAMod.Items.Summoning.Minions
         }
 
         public int FrameTimer = 0;
+        bool hasTarget = false;
 
         public override void AI()
         {
@@ -77,7 +80,7 @@ namespace AAMod.Items.Summoning.Minions
                 }
             }
             Vector2 TargetCenter = projectile.position;
-            bool hasTarget = false;
+            hasTarget = false;
             if (projectile.ai[0] != 1f)
             {
                 projectile.tileCollide = false;
@@ -208,6 +211,12 @@ namespace AAMod.Items.Summoning.Minions
 
         public override void PostAI()
         {
+            for (int m = projectile.oldPos.Length - 1; m > 0; m--)
+            {
+                projectile.oldPos[m] = projectile.oldPos[m - 1];
+            }
+            projectile.oldPos[0] = projectile.position;
+
             projectile.frameCounter++;
             if (projectile.frameCounter >= 5)
             {
@@ -220,5 +229,34 @@ namespace AAMod.Items.Summoning.Minions
             }
         }
 
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Texture2D tex = Main.projectileTexture[projectile.type];
+
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
+
+
+            if (projectile.direction == 1)
+            {
+                tex = mod.GetTexture("Items/Summoning/Minions/XiaoDoragonBlue");
+            }
+
+            if (hasTarget)
+            {
+                tex = mod.GetTexture("Items/Summoning/Minions/XiaoDoragonA");
+                BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, projectile, .5f, 1f, 10, false, 0f, 0f, lightColor, frame, 4);
+            }
+
+
+            BaseDrawing.DrawTexture(spriteBatch, tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, -projectile.direction, 4, frame, lightColor, true);
+
+            if (hasTarget)
+            {
+                Texture2D g = mod.GetTexture("Glowmasks/XiaoDoragon_Glow");
+                BaseDrawing.DrawTexture(spriteBatch, g, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, -projectile.direction, 4, frame, AAColor.Shen2, true);
+                BaseDrawing.DrawAfterimage(spriteBatch, g, 0, projectile, .5f, 1f, 10, false, 0f, 0f, AAColor.Shen2, frame, 4);
+            }
+            return false;
+        }
     }
 }

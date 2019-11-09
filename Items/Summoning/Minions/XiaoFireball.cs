@@ -9,6 +9,7 @@ namespace AAMod.Items.Summoning.Minions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Xiao Fireball");
+            Main.projFrames[projectile.type] = 4;
         }
 
         public override void SetDefaults()
@@ -20,6 +21,11 @@ namespace AAMod.Items.Summoning.Minions
             projectile.tileCollide = true;
             projectile.extraUpdates = 2;
             projectile.timeLeft = 120 * projectile.extraUpdates;
+        }
+
+        public override Color? GetAlpha(Color lightColor)
+        {
+            return Color.White
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -42,13 +48,23 @@ namespace AAMod.Items.Summoning.Minions
             {
                 float num573 = projectile.velocity.X * 0.2f * num572;
                 float num574 = -(projectile.velocity.Y * 0.2f) * num572;
-                int num575 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.Discord>(), 0f, 0f, 100, default, 1f);
+                int num575 = Dust.NewDust(Vector2.Zero, projectile.width, projectile.height, ModContent.DustType<Dusts.Discord>(), 0f, 0f, 100, default, 1f);
                 Main.dust[num575].noGravity = true;
                 Main.dust[num575].velocity *= 0f;
                 Dust expr_178B4_cp_0 = Main.dust[num575];
                 expr_178B4_cp_0.position.X -= num573;
                 Dust expr_178D3_cp_0 = Main.dust[num575];
                 expr_178D3_cp_0.position.Y -= num574;
+            }
+
+            if (projectile.frameCounter++ > 5)
+            {
+                projectile.frameCounter = 0;
+                projectile.frame++;
+                if (projectile.frame > 3)
+                {
+                    projectile.frame = 0;
+                }
             }
         }
 
