@@ -21,6 +21,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.tileCollide = true;
             projectile.extraUpdates = 2;
             projectile.timeLeft = 120 * projectile.extraUpdates;
+            projectile.friendly = true;
         }
 
         public override Color? GetAlpha(Color lightColor)
