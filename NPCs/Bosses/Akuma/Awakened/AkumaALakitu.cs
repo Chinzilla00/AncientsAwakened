@@ -64,7 +64,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             if (projectile.localAI[1] == 0)
             {
                 projectile.localAI[1] = 1;
-                //insert spawn dust here
             }
         }
 
