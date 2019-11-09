@@ -17,7 +17,7 @@ namespace AAMod.Projectiles
             projectile.penetrate = 1;
             projectile.GetGlobalProjectile<Buffs.ImplaingProjectile>().CanImpale = true;
             projectile.GetGlobalProjectile<Buffs.ImplaingProjectile>().damagePerImpaler = 30;
-            maxStickingJavelins = 1;
+            maxStickingJavelins = 3;
             rotationOffset = (float)Math.PI / 4;
         }
 
