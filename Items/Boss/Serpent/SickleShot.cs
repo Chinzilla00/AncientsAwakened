@@ -10,7 +10,7 @@ namespace AAMod.Items.Boss.Serpent
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Sickleshot");
-            Tooltip.SetDefault("Shoots 2 waves of 2 ice arrows with high velocity in short succession");
+            Tooltip.SetDefault("Shoots 2 ice arrows with high velocity ");
         }
 
         public override void SetDefaults()
@@ -31,7 +31,7 @@ namespace AAMod.Items.Boss.Serpent
             item.rare = 3;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
-            item.shootSpeed = 8f;
+            item.shootSpeed = 30f;
 
         }
 

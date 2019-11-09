@@ -20,8 +20,8 @@ namespace AAMod.Items.Ranged
             item.ranged = true;
             item.width = 50;
             item.height = 20;
-            item.useTime = 45;
-            item.useAnimation = 45;
+            item.useTime = 40;
+            item.useAnimation = 40;
             item.useStyle = 5;
             item.shoot = 10;
             item.useAmmo = AmmoID.Bullet;

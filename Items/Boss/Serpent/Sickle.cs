@@ -11,8 +11,8 @@ namespace AAMod.Items.Boss.Serpent
             item.magic = true;
             item.width = 24;
             item.height = 28; 
-            item.useTime = 23;  
-            item.useAnimation = 23;
+            item.useTime = 17;  
+            item.useAnimation = 17;
             item.useStyle = 5;
             item.noMelee = true; 
             item.knockBack = 1;
