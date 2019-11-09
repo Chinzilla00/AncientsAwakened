@@ -297,7 +297,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 case 3: //meteor rain
                     targetPos = new Vector2(player.Center.X + npc.ai[2] * 1000, npc.Center.Y);
                     MovementWorm(targetPos, 30f, 0.26f); //accelerate horizontally
-                    if (++npc.ai[3] > 30)
+                    if (++npc.ai[3] > 40)
                     {
                         npc.ai[3] = 0;
                         if (Main.netMode != 1)
@@ -309,7 +309,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                                     fire = !fire;
                                     if (fire)
                                     {
-                                        Vector2 vel = 5f * Vector2.UnitY;
+                                        Vector2 vel = 4f * Vector2.UnitY;
                                         vel.X += Main.rand.NextFloat(-1f, 1f);
                                         vel.Y += Main.rand.NextFloat(-1f, 1f);
                                         Projectile.NewProjectile(Main.npc[i].Center, vel, ModContent.ProjectileType<AkumaRock>(), Main.npc[i].damage / 4, 0f, Main.myPlayer);
@@ -319,6 +319,22 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     }
                     if (++npc.ai[1] > 240 || (npc.ai[2] > 0 ? npc.Center.X > player.Center.X + 700 : npc.Center.X < player.Center.X - 700))
                     {
+                        if (Main.netMode != 1)
+                        {
+                            bool fire = true;
+                            for (int i = 0; i < Main.maxNPCs; i++)
+                                if (Main.npc[i].active && Main.npc[i].realLife == npc.whoAmI)
+                                {
+                                    fire = !fire;
+                                    if (fire)
+                                    {
+                                        Vector2 vel = 4f * Vector2.UnitY;
+                                        vel.X += Main.rand.NextFloat(-1f, 1f);
+                                        vel.Y += Main.rand.NextFloat(-1f, 1f);
+                                        Projectile.NewProjectile(Main.npc[i].Center, vel, ModContent.ProjectileType<AkumaRock>(), Main.npc[i].damage / 4, 0f, Main.myPlayer);
+                                    }
+                                }
+                        }
                         npc.ai[0]++;
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
