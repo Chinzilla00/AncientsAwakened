@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         public override void SetDefaults()
         {
             npc.lifeMax = 570000;
-            npc.damage = 150;
+            npc.damage = 100;
             npc.defense = 100;
             npc.width = 78;
             npc.height = 60;

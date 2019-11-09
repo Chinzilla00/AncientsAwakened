@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.boss = false;
             npc.noGravity = true;
             npc.chaseable = false;
-            npc.damage = 170;
+            npc.damage = 90;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
             npc.DeathSound = mod.GetLegacySoundSlot(SoundType.NPCKilled, "Sounds/Sounds/YamataRoar");
             npc.lifeMax = 45000;
@@ -43,10 +43,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
-            }
-            if (AAWorld.downedShen)
-            {
-                npc.damage = 420;
             }
         }
 

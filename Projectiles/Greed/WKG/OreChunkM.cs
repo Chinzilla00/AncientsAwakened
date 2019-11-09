@@ -21,20 +21,13 @@ namespace AAMod.Projectiles.Greed.WKG
             projectile.ignoreWater = true;
             projectile.aiStyle = 14;
         }
-
-		public override void SetStaticDefaults()
-		{
-		    DisplayName.SetDefault("Ore");
-            Main.projFrames[projectile.type] = 23;
-        }
-
-        public override bool OnTileCollide(Vector2 oldVelocity)
+        public override void SetStaticDefaults()
         {
-            projectile.Kill();
-            return true;
+            DisplayName.SetDefault("Ore");
+            Main.projFrames[projectile.type] = 28;
         }
 
-        public override void PostAI()
+        public override void AI()
         {
             OreEffect();
             if (projectile.velocity.X > 0)
@@ -52,17 +45,21 @@ namespace AAMod.Projectiles.Greed.WKG
                 projectile.oldPos[m] = projectile.oldPos[m - 1];
             }
             projectile.oldPos[0] = projectile.position;
+        }
+
+        public override void PostAI()
+        {
             projectile.frame = (int)projectile.ai[1];
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 23, 0, 0);
-            if (projectile.ai[1] == 9 || projectile.ai[1] == 11 || projectile.ai[1] == 22)
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 28, 0, 0);
+            if (projectile.ai[1] == 9 || projectile.ai[1] == 11 || projectile.ai[1] == 22 || projectile.ai[1] == 26)
             {
-                BaseDrawing.DrawAfterimage(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, 1, projectile.rotation, projectile.direction, 23, frame, .8f, 1, 4, true, 0, 0, lightColor);
+                BaseDrawing.DrawAfterimage(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, 1, projectile.rotation, projectile.direction, 28, frame, .8f, 1, 4, true, 0, 0, lightColor);
             }
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 23, frame, lightColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 28, frame, lightColor, true);
             return false;
         }
 
@@ -93,6 +90,24 @@ namespace AAMod.Projectiles.Greed.WKG
                 Main.projectile[a].ranged = false;
                 Main.projectile[a].magic = true;
             }
+            if (projectile.ai[1] == 25)
+            {
+                int a = Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<DaybreakBlast>(), projectile.damage, projectile.knockBack * 3, Main.myPlayer, 0, 0);
+                Main.projectile[a].ranged = false;
+                Main.projectile[a].magic = true;
+            }
+            if (projectile.ai[1] == 27)
+            {
+                for (int v = 0; v < 4; v++)
+                {
+                    int x = Main.rand.Next(-6, 6);
+                    int y = -Main.rand.Next(3, 5);
+                    int p = Projectile.NewProjectile(projectile.position, new Vector2(x, y), ModContent.ProjectileType<AFrag>(), projectile.damage, 0, Main.myPlayer, 0, Main.rand.Next(23));
+                    Main.projectile[p].Center = projectile.Center;
+                    Main.projectile[p].ranged = false;
+                    Main.projectile[p].magic = true;
+                }
+            }
             for (int num468 = 0; num468 < 5; num468++)
             {
                 float VelX = -projectile.velocity.X * 0.2f;
@@ -106,14 +121,14 @@ namespace AAMod.Projectiles.Greed.WKG
             switch ((int)projectile.ai[1])
             {
                 case 6:
-                case 7:
-                    target.AddBuff(BuffID.Midas, 180);
-                    break;
+                case 7: target.AddBuff(BuffID.Midas, 180); break;
 
                 case 12:
-                case 13:
-                    target.AddBuff(BuffID.OnFire, 180);
-                    break;
+                case 13: target.AddBuff(BuffID.OnFire, 180); break;
+
+                case 23: target.AddBuff(ModContent.BuffType<Buffs.Electrified>(), 180); break;
+                case 25: target.AddBuff(BuffID.Daybreak, 180); break;
+                case 26: target.AddBuff(ModContent.BuffType<Buffs.Moonraze>(), 180); break;
             }
         }
 
@@ -122,7 +137,9 @@ namespace AAMod.Projectiles.Greed.WKG
             switch ((int)projectile.ai[1])
             {
                 case 9:
-                case 11: projectile.extraUpdates = 1;
+                case 11:
+                case 24:
+                    projectile.extraUpdates = 1;
                     break;
                 case 13:
                 case 14:
@@ -133,8 +150,9 @@ namespace AAMod.Projectiles.Greed.WKG
                         Main.dust[num292].noGravity = true;
                     };
                     break;
-                case 22: projectile.extraUpdates = 2;
-                    projectile.penetrate = 0;
+                case 22:
+                case 26:
+                    projectile.extraUpdates = 2;
                     break;
             }
         }
@@ -188,6 +206,16 @@ namespace AAMod.Projectiles.Greed.WKG
                     return 75;
                 case 22:
                     return 110;
+                case 23:
+                    return 130;
+                case 24:
+                    return 170;
+                case 25:
+                    return 160;
+                case 26:
+                    return 130;
+                case 27:
+                    return 150;
                 default:
                     goto case 0;
             }
@@ -243,6 +271,16 @@ namespace AAMod.Projectiles.Greed.WKG
                     return 128;
                 case 22:
                     return ModContent.DustType<LuminiteDust>();
+                case 23:
+                    return ModContent.DustType<DarkmatterDust>();
+                case 24:
+                    return ModContent.DustType<RadiumDust>();
+                case 25:
+                    return ModContent.DustType<DaybreakIncineriteDust>();
+                case 26:
+                    return ModContent.DustType<YamataDust>();
+                case 27:
+                    return ModContent.DustType<VoidDust>();
                 default:
                     goto case 0;
             }
