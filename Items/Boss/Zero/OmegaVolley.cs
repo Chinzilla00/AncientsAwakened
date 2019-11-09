@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Zero
 			item.shoot = 10;
 			item.useAmmo = AmmoID.Bullet;
 			item.UseSound = SoundID.Item41;
-			item.damage = 60;
+			item.damage = 90;
 			item.shootSpeed = 32f;
 			item.noMelee = true;
 			item.value = Item.sellPrice(0, 30, 0, 0);
