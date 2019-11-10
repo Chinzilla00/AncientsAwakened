@@ -892,6 +892,14 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 npc.velocity.Y = 30 * Math.Sign(npc.velocity.Y);
         }
 
+        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
+        {
+            if (Main.rand.Next(3) == 0)
+            {
+                target.AddBuff(ModContent.BuffType<Buffs.Unstable>(), 180);
+            }
+        }
+
         int Frame = 0;
         public override void FindFrame(int frameHeight)
         {

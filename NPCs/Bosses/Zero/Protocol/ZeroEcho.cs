@@ -95,6 +95,14 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             npc.frame.Y = frameHeight * Frame;
         }
 
+        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
+        {
+            if (Main.rand.Next(3) == 0)
+            {
+                target.AddBuff(ModContent.BuffType<Buffs.Unstable>(), 180);
+            }
+        }
+
         public void SpawnDust()
         {
             Vector2 position = npc.Center + (Vector2.One * -20f);

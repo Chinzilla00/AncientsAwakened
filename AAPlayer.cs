@@ -1293,6 +1293,12 @@ namespace AAMod
         public override void PostUpdateRunSpeeds()
         {
             float movespeedmax = 1f + MaxMovespeedboost;
+
+            if(Unstable)
+            {
+                movespeedmax *= Main.rand.NextFloat(.65f, .9f);
+            }
+
             player.maxRunSpeed *= movespeedmax;
             
             if (player.pulley && AADash > 0)
@@ -2572,8 +2578,17 @@ namespace AAMod
 
             if (Unstable)
             {
-                player.confused = true;
-                player.moveSpeed *= Main.rand.NextFloat(.25f, 2f);
+                bool flag = player.controlLeft;
+                bool flag2 = player.controlJump;
+                player.controlLeft = player.controlRight;
+                player.controlRight = flag;
+                player.controlJump = player.controlDown;
+                player.controlDown = flag2;
+                player.moveSpeed *= Main.rand.NextFloat(.55f, .9f);
+                if(player.velocity.Y > 0)
+                {
+                    player.velocity.Y *= Main.rand.NextFloat(.5f, 1.1f);
+                }
             }
 
             if (infinityOverload)
