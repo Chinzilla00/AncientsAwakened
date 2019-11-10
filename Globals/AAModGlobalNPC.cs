@@ -828,6 +828,14 @@ namespace AAMod
 
         public override void EditSpawnPool(IDictionary<int, float> pool, NPCSpawnInfo spawnInfo)
         {
+            if (spawnInfo.player.ZoneTowerNebula || spawnInfo.player.ZoneTowerSolar || spawnInfo.player.ZoneTowerStardust || spawnInfo.player.ZoneTowerVortex || 
+                Main.eclipse || 
+                Main.invasionType == InvasionID.MartianMadness ||
+                Main.invasionType == InvasionID.CachedPumpkinMoon ||
+                Main.invasionType == InvasionID.CachedFrostMoon)
+            {
+                return;
+            }
             if (spawnInfo.player.GetModPlayer<AAPlayer>().ZoneStars)
             {
                 pool.Add(Main.dayTime ? mod.NPCType("Sunwatcher") : mod.NPCType("Nightguard"), .2f);
