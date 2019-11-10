@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public override void SetDefaults()
         {
             npc.lifeMax = 600000;
-            npc.damage = 110;
+            npc.damage = 120;
             npc.defense = 70;
             npc.knockBackResist = 0f;
             npc.width = 170;
@@ -508,7 +508,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                             npc.ai[3] = 0f;
                         }
 
-                        if(npc.ai[1] < 100)
+                        if(npc.ai[1] < 70)
                         {
                             npc.rotation = npc.DirectionTo(player.Center).ToRotation() + (float)Math.PI/2;
                         }
