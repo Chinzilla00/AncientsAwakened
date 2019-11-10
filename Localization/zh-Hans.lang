@@ -283,7 +283,7 @@ BuffDescription.TiedemiesBuff=“它为你照明”
 BuffName.Unstable=不安定
 BuffDescription.Unstable=Y你角色的c代o码de变得不un稳sta定ble
 
-BuffName.UnstableSoul=不安之魂
+BuffName.UnstableSoul=无法安定的灵魂
 BuffDescription.UnstableSoul=你现在变得空虚\n你的无敌帧更多但是减少防御
 
 BuffName.YamataAGravity=真渊重力

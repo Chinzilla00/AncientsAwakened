@@ -161,6 +161,8 @@ namespace AAMod.NPCs.Bosses.Shen
             Player player = Main.player[npc.target];
             Vector2 targetPos;
 
+            if(!AliveCheck(player)) return;
+
             #region ProjIDs
 
             int AccelR = ModContent.ProjectileType<FireballAccelR>();
@@ -645,6 +647,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (npc.timeLeft > 60)
                         npc.timeLeft = 60;
                     npc.velocity.Y -= 1f;
+                    if (npc.velocity.Y < -10) npc.active = false;
                     return false;
                 }
             }
