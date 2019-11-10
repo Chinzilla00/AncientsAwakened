@@ -219,6 +219,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void AI()
         {
+            
             int Repeats;
             if (npc.life < npc.life * (2 / 3))
             {
@@ -240,6 +241,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
+
+            if (!AliveCheck(player)) return;
 
             if(Counter[0] >= 4000)
             {
@@ -278,6 +281,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 switch (npc.ai[0])
                 {
                     case 0:
+                        if (!AliveCheck(player))
+                            break;
                         float spread = 45f * 0.0174f;
                         Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
                         dir *= 12f;
@@ -301,6 +306,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         }
                         break;
                     case 1:
+                        if (!AliveCheck(player))
+                            break;
                         if (npc.ai[2] % 30 == 0 && npc.ai[2] < 121)
                         {
                             Teleport(3);
@@ -323,6 +330,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
                         break;
                     case 2:
+                        if (!AliveCheck(player))
+                            break;
                         npc.velocity *= 0;
                         if (npc.ai[2] == 160)
                         {
@@ -397,7 +406,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         }
                         break;
                     case 3:
-
+                        if (!AliveCheck(player))
+                            break;
                         if (npc.ai[2] == (npc.life < npc.lifeMax / 2 ? 200 : 300))
                         {
                             Teleport(3);
@@ -445,6 +455,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
                         break;
                     case 4:
+                        if (!AliveCheck(player))
+                            break;
                         if (npc.ai[2] < (npc.life < npc.lifeMax / 2 ? 360 : 270))
                         {
                             if (npc.ai[3] ++  > 30)
@@ -512,6 +524,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         break;
                     
                     default:
+                        if (!AliveCheck(player))
+                            break;
                         npc.ai[0] = 0;
                         goto case 0;
                 }

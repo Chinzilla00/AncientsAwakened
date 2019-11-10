@@ -63,6 +63,8 @@ namespace AAMod.NPCs.Bosses.Shen
             Player player = Main.player[npc.target];
             Vector2 targetPos;
 
+            if(!AliveCheck(player)) return;
+
             Dashing = false;
             if (Roaring) roarTimer--;
 
@@ -490,6 +492,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.timeLeft = 60;
                     npc.velocity.Y -= 1f;
                     return false;
+                    if (npc.velocity.Y < -10) npc.active = false;
                 }
             }
             if (npc.timeLeft < 600)
