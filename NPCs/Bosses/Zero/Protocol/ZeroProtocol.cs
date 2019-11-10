@@ -552,7 +552,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 npc.position = player.Center - new Vector2(0, 600);
                 npc.velocity *= 0;
 
-                if(npc.ai[2] == 120)
+                if(npc.ai[2] == 240)
                 {
                     NPC.NewNPC((int)player.Center.X, (int)player.Center.Y + 300, ModContent.NPCType<ZeroEcho>());
                     NPC.NewNPC((int)player.Center.X, (int)player.Center.Y - 300, ModContent.NPCType<ZeroEcho>());
@@ -564,7 +564,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     NPC.NewNPC((int)player.Center.X - 300, (int)player.Center.Y + 300, ModContent.NPCType<ZeroEcho>());
                 }
                 
-                if(npc.ai[2] == 180)
+                if(npc.ai[2] == 400)
                 {
                     for(int i = 0; i< 1000; i++)
                     {
