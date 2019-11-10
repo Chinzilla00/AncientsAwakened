@@ -422,7 +422,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if ((playerDistance < playerTooFarDist - 100f) && Math.Abs(npc.velocity.X) > 12f) npc.velocity.X *= 0.8f;
                 if ((playerDistance < playerTooFarDist - 100f) && Math.Abs(npc.velocity.Y) > 12f) npc.velocity.Y *= 0.8f;
                 if (npc.velocity.Y > 7f) npc.velocity.Y *= 0.75f;
-                AIMovementNormal();
+                AIMovementNormal(playerDistance);
             }
             else
             {
@@ -447,7 +447,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             }
         }
 
-        public void AIMovementNormal(float playerDistance = -1f)
+        public void AIMovementNormal(float playerDistance)
         {
             bool playerTooFar = playerDistance > playerTooFarDist;
             YamataBody(npc, ref npc.ai, true, 0.2f, 3.5f, 8f, 0.07f, 1.5f, 4);

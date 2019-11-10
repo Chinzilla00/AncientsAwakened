@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Graphics.Shaders;
@@ -37,22 +37,25 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     projectile.frame = 0;
                 }
             }
-            if (projectile.ai[1]++ == 60)
+            if (projectile.ai[1]++ == 120)
             {
-                if (projectile.ai[0] == 0)
+                switch (projectile.ai[0])
                 {
-                    Projectile.NewProjectile(projectile.Center, new Vector2(10, 0), ModContent.ProjectileType<EchoRay>(), 40, 3f, Main.myPlayer, 0, projectile.whoAmI);
-                }
-                else if (projectile.ai[0] == 1)
-                {
-                    Projectile.NewProjectile(projectile.Center, new Vector2(-10, 0), ModContent.ProjectileType<EchoRay>(), 40, 3f, Main.myPlayer, 0, projectile.whoAmI);
-                }
-                else
-                {
-                    Projectile.NewProjectile(projectile.Center, new Vector2(0, -10), ModContent.ProjectileType<EchoRay>(), 40, 3f, Main.myPlayer, 0, projectile.whoAmI);
+                    case 0f:
+                        Projectile.NewProjectile(projectile.Center, new Vector2(10, 0), ModContent.ProjectileType<EchoRay>(), 70, 3f, Main.myPlayer, 0, projectile.whoAmI);
+                        break;
+                    case 1f:
+                        Projectile.NewProjectile(projectile.Center, new Vector2(-10, 0), ModContent.ProjectileType<EchoRay>(), 70, 3f, Main.myPlayer, 0, projectile.whoAmI);
+                        break;
+                    case 2f:
+                        Projectile.NewProjectile(projectile.Center, new Vector2(0, 10), ModContent.ProjectileType<EchoRay>(), 70, 3f, Main.myPlayer, 0, projectile.whoAmI);
+                        break;
+                    default:
+                        Projectile.NewProjectile(projectile.Center, new Vector2(0, -10), ModContent.ProjectileType<EchoRay>(), 70, 3f, Main.myPlayer, 0, projectile.whoAmI);
+                        break;
                 }
             }
-            if (projectile.ai[1] > 180)
+            if (projectile.ai[1] > 240)
             {
                 projectile.Kill();
             }

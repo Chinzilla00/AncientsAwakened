@@ -1369,7 +1369,10 @@ ItemName.AncientForge=远古锻造炉
 ItemTooltip.AncientForge=充满远古魔力的熔炉
 
 ItemName.AnubisBox=八音盒(阿努比斯)
-ItemTooltip.AnubisBox=播放 'True Blazing Fury' by Kanashii
+ItemTooltip.AnubisBox=播放 'Strings of Judgement' by Universe
+
+ItemName.AnubisFBox=八音盒(逝落的断罪师)
+ItemTooltip.AnubisFBox=播放 'Wrath of the Forsaken' by Universe
 
 ItemName.Apocalyptite=启示矿
 ItemTooltip.Apocalyptite=(虚空浮岛)
@@ -1465,6 +1468,12 @@ ItemTooltip.GripsBox=播放 'Twin Terror' by Spectral Aves
 ItemName.GreedLantern=石灯笼
 
 ItemName.GreedChest=贪婪宝箱
+
+ItemName.GreedABox=八音盒(万蟲王)
+ItemTooltip.GreedABox=播放 'Ira De Riquezas Perdidas' by Universe
+
+ItemName.GreedBox=八音盒(金食饕餮)
+ItemTooltip.GreedBox=播放 'Drums of Desire' by Universe
 
 ItemName.HallowedAnvil=神圣砧
 ItemTooltip.HallowedAnvil=一个神圣的砧
@@ -1818,6 +1827,8 @@ ItemName.SentryOfTheEye=真眼之哨
 ItemTooltip.SentryOfTheEye=召唤一个眼睛哨兵
 
 // AAMod.Items.Boss.Anubis.Forsaken
+
+ItemName.SoulFragment=灵魂罪片
 
 ItemName.CursedFury=咒火狂怒
 ItemTooltip.CursedFury=50%几率不消耗凝胶
@@ -2543,8 +2554,8 @@ ItemTooltip.Battery=当作弹药\n无消耗
 ItemName.BHB=黑洞爆裂枪
 ItemTooltip.BHB=这个武器发射3发爆破弹并随机发射一枚跟踪火箭弹
 
-ItemName.BrokenCode=破失代码
-ItemTooltip.BrokenCode=让你有5秒故障时间(译者注：当前版本实际是3秒恐慌)\n获得故障\n免疫不安定\n在冷却时间内，你的速度会提高，但你会失去无敌帧\n“你看上去不太好”
+ItemName.BrokenCode=崩溃乱码
+ItemTooltip.BrokenCode=让你有5秒故障裂位时间\n使用钩爪可以产生故障裂位\n免疫不安定\n在冷却时间内，你的速度提高，并获得无敌帧\n在冷却时间内，你的魔法/召唤武器不消耗魔力，并增加20%伤害\n“你看上去不太好”
 
 ItemName.DoomPortal=厄劫之门
 ItemTooltip.DoomPortal=召唤一个小厄劫零约之械为你而战
@@ -2851,7 +2862,7 @@ ItemTooltip.PoniumStaffEX=Ponium法杖EX
 ItemName.Prismeow=棱喵
 ItemTooltip.Prismeow=发射彩虹猫\n“天啊!”\n-Hallam
 
-ItemName.Placeholder=占位符法器
+ItemName.Placeholder=占个位
 ItemTooltip.Placeholder=“他们即将死去 SoonTM”\n-Fargo
 
 ItemName.SkrallStaff=Skrall之杖
@@ -5652,6 +5663,10 @@ MapObject.AkumaABox=八音盒
 
 MapObject.AkumaBox=八音盒
 
+MapObject.AnubisBox=八音盒
+
+MapObject.AnubisFBox=八音盒
+
 MapObject.AncientForge=远古锻造炉
 
 MapObject.Apocalyptite=启示矿石
@@ -5729,6 +5744,10 @@ MapObject.GreedChest=贪婪宝箱
 Common.GreedChest_Locked=上锁贪婪宝箱
 
 MapObject.GreedAltar=原欲祭坛
+
+MapObject.GreedABox=八音盒
+
+MapObject.GreedBox=八音盒
 
 MapObject.HallowedAnvil=神圣砧
 

@@ -17,6 +17,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public static int type;
         public int damage = 0;
         public bool PlayerDead = false;
+
+        public bool Counterattack = false;
         public int deathTimer = 0;
 
         public override void SetStaticDefaults()
@@ -29,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public override void SetDefaults()
         {
             npc.lifeMax = 600000;
-            npc.damage = 150;
+            npc.damage = 110;
             npc.defense = 70;
             npc.knockBackResist = 0f;
             npc.width = 170;
@@ -63,6 +65,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public float[] Move = new float[4];
         public float[] start = new float[1];
         public float[] Minion = new float[1];
+        public int[] Counter = new int[3];
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -73,6 +76,9 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 writer.Write(Move[1]);
                 writer.Write(Move[2]);
                 writer.Write(Move[3]);
+                writer.Write(Counter[0]); //the hit TP counter
+                writer.Write(Counter[1]); //the charge counter
+                writer.Write(Counter[3]); //the pointchange counter
             }
         }
 
@@ -85,6 +91,9 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 Move[1] = reader.ReadFloat();
                 Move[2] = reader.ReadFloat();
                 Move[3] = reader.ReadFloat();
+                Counter[0] = reader.ReadInt();
+                Counter[1] = reader.ReadInt();
+                Counter[2] = reader.ReadInt();
             }
         }
 
@@ -137,9 +146,23 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (damage > 30)
+            if (Counter[0] > 3000 && npc.ai[0] != 4 && npc.ai[0] != 2 && !isCharging)
             {
-                int TeleportChance = 100 * (npc.life / npc.lifeMax);
+                if (Main.netMode != 1)
+                {
+                    Teleport(Main.rand.Next(2) == 0? 1:2);
+                    npc.ai[0] = 4;
+                    npc.ai[1] = 0;
+                    npc.ai[2] = 0;
+                    npc.ai[3] = 0;
+                    Counter[0] = 0;
+                    Counterattack = true;
+                    npc.netUpdate = true;
+                }
+            }
+            else if(npc.ai[0] != 4 && npc.ai[0] != 2 && !isCharging && Main.rand.Next(100) == 0)
+            {
+                int TeleportChance = 1000 * (npc.life / npc.lifeMax);
                 if (TeleportChance < 5)
                 {
                     TeleportChance = 5;
@@ -176,11 +199,23 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 afterimage = mod.GetTexture("NPCs/Bosses/Zero/Protocol/ZeroProtocolChargeTrail");
                 glowTex = mod.GetTexture("Glowmasks/ZeroProtocol_Glow");
             }
-
-            BaseDrawing.DrawAfterimage(spritebatch, afterimage, 0, npc, 1, 1, 8, true, 0, 0, Color.Black, npc.frame, 7);
-            BaseDrawing.DrawTexture(spritebatch, tex, 0, npc, dColor);
-            BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, npc.rotation, npc.direction, 7, npc.frame, 0f, 0f, AAColor.Oblivion);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, AAColor.Oblivion);
+            
+            if(npc.ai[0] == 4 && NPC.CountNPCS(mod.NPCType("ZeroEcho")) > 0 && !Counterattack)
+            {
+                npc.dontTakeDamage = true;
+            }
+            else
+            {
+                BaseDrawing.DrawAfterimage(spritebatch, afterimage, 0, npc, 1, 1, 8, true, 0, 0, Color.Black, npc.frame, 7);
+                BaseDrawing.DrawTexture(spritebatch, tex, 0, npc, dColor);
+                if(!isCharging)
+                {
+                    BaseDrawing.DrawAura(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, npc.rotation, npc.direction, 7, npc.frame, 0f, 0f, AAColor.Oblivion);
+                    BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, AAColor.Oblivion);
+                }
+                npc.dontTakeDamage = false;
+            }
+            
             return false;
         }
 
@@ -191,18 +226,39 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             int Repeats;
             if (npc.life < npc.life * (2 / 3))
             {
+                Counter[0] ++;
+                Counter[1] ++;
                 Repeats = 4;
             }
             else if (npc.life < npc.life / 3)
             {
+                Counter[0] ++;
+                Counter[1] ++;
                 Repeats = 5;
             }
             else
             {
+                Counter[0] += 2;
+                Counter[1] += 2;
                 Repeats = 3;
             }
-            npc.TargetClosest();
+            npc.TargetClosest(true);
             Player player = Main.player[npc.target];
+
+            if(Counter[0] >= 4000)
+            {
+                Counter[0] = 4000;
+            }
+
+            if(Counter[1] >= 6000)
+            {
+                Counter[1] = 0;
+                isCharging = true;
+                npc.ai[0] = 5;
+                npc.ai[1] = 0;
+                npc.ai[2] = 0;
+                npc.ai[3] = 0;
+            }
 
             if (Main.netMode != 1)
             {
@@ -217,7 +273,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
             int Changerate = npc.life < npc.lifeMax / 2 ? 150 : 120;
 
-            if (npc.ai[2]++ > Changerate)
+            if (npc.ai[2]++ > Changerate && !Counterattack)
             {
                 if (npc.ai[0] != 0)
                 {
@@ -232,12 +288,15 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
                         double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
                         double deltaAngle = spread / 6f;
-                        for (int i = 0; i < 3; i++)
+                        if (npc.ai[2] % 30 == 0)
                         {
-                            if (npc.ai[2] % Main.rand.Next(10) == 0 && Main.rand.Next(2) == 0)
+                            for (int i = 0; i < 3; i++)
                             {
-                                double offsetAngle = startAngle + (deltaAngle * i);
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), ModContent.ProjectileType<StaticSphere>(), npc.damage / 4, 5, Main.myPlayer);
+                                if (npc.ai[2] % Main.rand.Next(10) == 0 && Main.rand.Next(2) == 0)
+                                {
+                                    double offsetAngle = startAngle + (deltaAngle * i);
+                                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), ModContent.ProjectileType<StaticSphere>(), npc.damage / 4, 5, Main.myPlayer);
+                                }
                             }
                         }
                         if (npc.ai[2] > 271)
@@ -248,7 +307,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     case 1:
                         if (npc.ai[2] % 30 == 0 && npc.ai[2] < 121)
                         {
-                            Teleport();
+                            Teleport(3);
                         }
 
                         if (npc.ai[2] == 240)
@@ -269,64 +328,71 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         break;
                     case 2:
                         npc.velocity *= 0;
-                        if (npc.ai[2] == 90)
+                        if (npc.ai[2] == 160)
                         {
+                            for(int i = 0; i< 1000; i++)
+                            {
+                                if(!Main.projectile[i].minion)
+                                {
+                                    Main.projectile[i].Kill();
+                                }
+                            }
                             if (npc.life > npc.lifeMax / 2)
                             {
                                 if (Main.rand.Next(2) == 0)
                                 {
-                                    int yPos = -300;
-                                    for (int z = 0; z < 6; z++)
-                                    {
-                                        int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3);
 
-                                        int dir1 = -1;
-                                        if (player.Center.X < npc.Center.X)
-                                        {
-                                            dir1 = 1;
-                                            Main.projectile[a].ai[0] = 1;
-                                        }
-                                        Main.projectile[a].Center = npc.Center + (new Vector2(100, yPos) * dir1);
-                                        yPos += 100;
+                                    int xPos = -900;
+                                    int yPos = -900;
+
+                                    for (int z = 0; z < 13; z++)
+                                    {
+                                        int a1 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer, 0f, 0f);
+                                        int a2 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer, 1f, 0f);
+                                        Main.projectile[a1].Center = player.Center + new Vector2(-300, yPos);
+                                        Main.projectile[a2].Center = player.Center + new Vector2(300, yPos);
+                                        yPos += 150;
                                     }
                                 }
                                 else
                                 {
-                                    int xPos = -300;
-                                    for (int z = 0; z < 6; z++)
+                                    int dir1 = Main.rand.Next(2) == 0 ? 1:-1;
+                                    int xPos = -900;
+                                    int yPos = -900;
+
+                                    for (int z = 0; z < 13; z++)
                                     {
-                                        int h = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, 255, 2);
-                                        Main.projectile[h].Center = npc.Center + (new Vector2(xPos, 100));
-                                        xPos += 100;
+                                        int h1 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer , 2f, 0f);
+                                        int h2 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer , 3f, 0f);
+                                        Main.projectile[h1].Center = player.Center + new Vector2(xPos, -300);
+                                        Main.projectile[h2].Center = player.Center + new Vector2(xPos, 300);
+                                        xPos += 150;
                                     }
                                 }
                             }
                             else
                             {
-                                int yPos = -300;
-                                for (int z = 0; z < 6; z++)
+                                int xPos = -900;
+                                int yPos = -900;
+                                for (int z = 0; z < 13; z++)
                                 {
-                                    int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3);
-
-                                    int dir1 = -1;
-                                    if (player.Center.X < npc.Center.X)
-                                    {
-                                        dir1 = 1;
-                                        Main.projectile[a].ai[0] = 1;
-                                    }
-                                    Main.projectile[a].Center = npc.Center + (new Vector2(100, yPos) * dir1);
-                                    yPos += 100;
+                                    int a1 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer, 0f, 0f);
+                                    int a2 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer, 1f, 0f);
+                                    Main.projectile[a1].Center = player.Center + new Vector2(-300, yPos);
+                                    Main.projectile[a2].Center = player.Center + new Vector2(300, yPos);
+                                    yPos += 150;
                                 }
-                                int xPos = -300;
-                                for (int z = 0; z < 6; z++)
+                                for (int z = 0; z < 13; z++)
                                 {
-                                    int h = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, 255, 2);
-                                    Main.projectile[h].Center = npc.Center + (new Vector2(xPos, 100));
-                                    xPos += 100;
+                                    int h1 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer , 2f, 0f);
+                                    int h2 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer , 3f, 0f);
+                                    Main.projectile[h1].Center = player.Center + new Vector2(xPos, -300);
+                                    Main.projectile[h2].Center = player.Center + new Vector2(xPos, 300);
+                                    xPos += 150;
                                 }
                             }
                         }
-                        if (npc.ai[2] > 220)
+                        if (npc.ai[2] > 400)
                         {
                             npc.ai[0]++;
                             npc.ai[1] = 0;
@@ -336,75 +402,246 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         break;
                     case 3:
 
-                        if (npc.ai[2] == 30)
+                        if (npc.ai[2] == (npc.life < npc.lifeMax / 2 ? 200 : 300))
                         {
+                            Teleport(3);
                             int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("ProtoStar"), damage, 3);
                             Main.projectile[a].Center = npc.Center + new Vector2(-100, 0);
                             int b = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("ProtoStar"), damage, 3);
-                            Main.projectile[b].Center = npc.Center + new Vector2(100, 0); ;
-                            int c = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
-                            Main.projectile[c].Center = npc.Center + new Vector2(0, 100); ;
+                            Main.projectile[b].Center = npc.Center + new Vector2(100, 0);
+                            int c = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
+                            Main.projectile[c].Center = npc.Center + new Vector2(0, 100);
                             int d = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
                             Main.projectile[d].Center = npc.Center + new Vector2(0, -100);
                             if (npc.life < npc.lifeMax / 2)
                             {
+                                int a1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[a1].Center = npc.Center + new Vector2(-100, 0);
+                                int b1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[b1].Center = npc.Center + new Vector2(100, 0);
+                                int c1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[c1].Center = npc.Center + new Vector2(0, 100);
+                                int d1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[d1].Center = npc.Center + new Vector2(0, -100);
                                 int e = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
                                 Main.projectile[e].Center = npc.Center + new Vector2(-80, -80);
-                                int f = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[f].Center = npc.Center + new Vector2(80, 80); ;
-                                int g = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[g].Center = npc.Center + new Vector2(-80, 80); ;
+                                int e1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[e1].Center = npc.Center + new Vector2(-80, -80);
+                                int f = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[f].Center = npc.Center + new Vector2(80, 80);
+                                int f1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[f1].Center = npc.Center + new Vector2(80, 80);
+                                int g = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[g].Center = npc.Center + new Vector2(-80, 80);
+                                int g1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[g1].Center = npc.Center + new Vector2(-80, 80);
                                 int h = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
                                 Main.projectile[h].Center = npc.Center + new Vector2(80, -80);
+                                int h1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[h1].Center = npc.Center + new Vector2(80, -80);
                             }
                         }
 
-                        if (npc.ai[2] > 120)
+                        if (npc.ai[2] > (npc.life < npc.lifeMax / 2 ? 260 : 360))
                         {
                             AIChange();
                         }
 
                         break;
                     case 4:
-                        if (npc.ai[1] < 4)
+                        if (npc.ai[2] < (npc.life < npc.lifeMax / 2 ? 360 : 270))
                         {
-                            if (npc.ai[2] > 60)
+                            if (npc.ai[3] ++  > 30)
                             {
-                                npc.ai[1]++;
-                                npc.ai[2] = 0;
-                                NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<ZeroEcho>());
-                                Teleport();
+                                npc.ai[3] = 0;
+                                Teleport(0);
+                                NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<ZeroEcho>());
                             }
+                        }
+                        if(npc.ai[2] == (npc.life < npc.lifeMax / 2 ? 400 : 310))
+                        {
+                            npc.ai[1] = 1f;
                         }
                         else
                         {
-                            npc.ai[0]++;
+                            npc.ai[1] = 0f;
+                        }
+                        if(npc.ai[2] >= (npc.life < npc.lifeMax / 2 ? 480 : 390))
+                        {
+                            npc.ai[0] = 1;
                             npc.ai[1] = 0;
                             npc.ai[2] = 0;
                             npc.ai[3] = 0;
                         }
-
                         break;
 
                     case 5:
                         if (!AliveCheck(player))
                             break;
-                        if (npc.ai[1] >= 400)
+                        
+                        if (npc.ai[1]++ == 100)
                         {
-                            npc.ai[0]++;
+                            for(int i = 0; i< 1000; i++)
+                            {
+                                if(!Main.projectile[i].minion)
+                                {
+                                    Main.projectile[i].Kill();
+                                }
+                            }
+                            
+                            if (Main.netMode != 1) AAMod.Chat(@"===C A R N A G E===", Color.Red.R, Color.Red.G, Color.Red.B);
+                            Projectile.NewProjectile(npc.Center - 30 * npc.DirectionTo(player.Center), 10f * npc.DirectionTo(player.Center), ModContent.ProjectileType<EchoRay>(), npc.damage/2, 3f, Main.myPlayer, 0, npc.whoAmI);
+                            npc.ai[3] = 1f;
+                        }
+                        else
+                        {
+                            npc.ai[3] = 0f;
+                        }
+
+                        if(npc.ai[1] < 100)
+                        {
+                            npc.rotation = npc.DirectionTo(player.Center).ToRotation() + (float)Math.PI/2;
+                        }
+
+                        if (npc.ai[1] >= 190)
+                        {
+                            isCharging = false;
+                            npc.ai[0] = 1;
                             npc.ai[1] = 0;
                             npc.ai[2] = 0;
                             npc.ai[3] = 0;
                         }
                         break;
+                    
                     default:
                         npc.ai[0] = 0;
                         goto case 0;
                 }
             }
+            else if(isCharging)
+            {
+                if(npc.ai[2] == 10)
+                {
+
+                    if (Main.netMode != 1) AAMod.Chat(@"SELF-ORGNAZATION CHARGING COMPLETED...", Color.Red.R, Color.Red.G, Color.Red.B);
+                }
+                if(npc.ai[2] == 30)
+                {
+                    if (Main.netMode != 1) AAMod.Chat(@"BOOTING IN SELF ORGNAZATI0N MODE...", Color.Red.R, Color.Red.G, Color.Red.B);
+                }
+                if(npc.ai[2] == 60)
+                {
+                    if (Main.netMode != 1) AAMod.Chat(@"ALL0W C:\TERRARIA\AAMOD\ZERO\PROTOCOL\SELF-ORGNAZATION.exe ? <Y/N>...", Color.Red.R, Color.Red.G, Color.Red.B);
+                }
+                if(npc.ai[2] == 110)
+                {
+                    if (Main.netMode != 1) AAMod.Chat(@"[Y]", Color.Red.R, Color.Red.G, Color.Red.B);
+                }
+                npc.rotation = npc.DirectionTo(player.Center).ToRotation() + (float)Math.PI/2;
+                if(npc.ai[2] % (npc.life < npc.lifeMax / 2? 30:60) == 10)
+                {
+                    Teleport(3);
+                    NPC.NewNPC((int)player.Center.X + 50 * Main.rand.Next(4, 8) * (Main.rand.Next(2) == 0? -1:1), (int)player.Center.Y + 50 * Main.rand.Next(4, 8) * (Main.rand.Next(2) == 0? -1:1), ModContent.NPCType<ZeroMini>());
+                }
+                npc.ai[1] = 0f;
+                npc.ai[3] = 0f;
+            }
+            else if(Counterattack)
+            {
+                npc.ai[2] ++;
+                npc.position = player.Center - new Vector2(0, 600);
+                npc.velocity *= 0;
+
+                if(npc.ai[2] == 120)
+                {
+                    NPC.NewNPC((int)player.Center.X, (int)player.Center.Y + 300, ModContent.NPCType<ZeroEcho>());
+                    NPC.NewNPC((int)player.Center.X, (int)player.Center.Y - 300, ModContent.NPCType<ZeroEcho>());
+                    NPC.NewNPC((int)player.Center.X + 300, (int)player.Center.Y, ModContent.NPCType<ZeroEcho>());
+                    NPC.NewNPC((int)player.Center.X - 300, (int)player.Center.Y, ModContent.NPCType<ZeroEcho>());
+                    NPC.NewNPC((int)player.Center.X + 300, (int)player.Center.Y + 300, ModContent.NPCType<ZeroEcho>());
+                    NPC.NewNPC((int)player.Center.X - 300, (int)player.Center.Y - 300, ModContent.NPCType<ZeroEcho>());
+                    NPC.NewNPC((int)player.Center.X + 300, (int)player.Center.Y - 300 , ModContent.NPCType<ZeroEcho>());
+                    NPC.NewNPC((int)player.Center.X - 300, (int)player.Center.Y + 300, ModContent.NPCType<ZeroEcho>());
+                }
+                
+                if(npc.ai[2] == 180)
+                {
+                    for(int i = 0; i< 1000; i++)
+                    {
+                        if(!Main.projectile[i].minion)
+                        {
+                            Main.projectile[i].Kill();
+                        }
+                    }
+                    npc.ai[1] = 1f;
+                }
+                else
+                {
+                    npc.ai[1] = 0f;
+                }
+
+                if(npc.ai[2] > 330)
+                {
+                    Counterattack = false;
+                    npc.ai[0] = 2;
+                    npc.ai[1] = 0;
+                    npc.ai[2] = 0;
+                    npc.ai[3] = 0;
+                }
+                
+            }
             else
             {
-                BaseAI.AISkull(npc, ref Move, true, 14, 350, .04f, .05f);
+                //BaseAI.AISkull(npc, ref Move, true, 14, 350, .04f, .05f); I think this AI is too hard to use.
+
+                Vector2 point = player.Center;
+
+                if(Counter[2] % 120 == 0)
+                {
+                    switch (Main.rand.Next(8))
+                    {
+                        case 0:
+                            point = player.Center + new Vector2(200f, 200f);
+                            break;
+                        case 1:
+                            point = player.Center + new Vector2(200f, -200f);
+                            break;
+                        case 2:
+                            point = player.Center + new Vector2(-200f, 200f);
+                            break;
+                        case 3:
+                            point = player.Center + new Vector2(-200f, -200f);
+                            break;
+                        case 4:
+                            point = player.Center + new Vector2(0, 200f);
+                            break;
+                        case 5:
+                            point = player.Center + new Vector2(0, -200f);
+                            break;
+                        case 6:
+                            point = player.Center + new Vector2(200f, 0);
+                            break;
+                        case 7:
+                            point = player.Center + new Vector2(-200f, 0);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if(Counter[2] ++ >= 240)
+                {
+                    Counter[2] = 0;
+                }
+
+                if((npc.Center - player.Center).Length() > 300f)
+                {
+                    MoveToPoint(player.Center);
+                }
+                else
+                {
+                    MoveToPoint(point);
+                }
+
                 int Frequency = Main.rand.Next(30, 50);
                 if (npc.life < npc.lifeMax / 2)
                 {
@@ -424,7 +661,49 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 }
             }
 
-            npc.rotation = 0;
+            if((npc.Center - player.Center).Length() > 2000 && !isCharging && !Counterattack)
+            {
+                Teleport(0);
+            }
+
+            if(npc.ai[0] != 5)
+            {
+                npc.direction = npc.spriteDirection = 1;
+                npc.rotation = 0;
+            }
+        }
+
+        public void MoveToPoint(Vector2 point)
+        {
+            float moveSpeed = 12f;
+
+            if (Vector2.Distance(npc.Center, point) > 500)
+            {
+                moveSpeed = 20f;
+            }
+
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 100f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            if (length < 50f)
+            {
+                moveSpeed *= 0.5f;
+            }
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
         }
 
         private void AIChange()
@@ -436,19 +715,19 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 npc.ai[2] = 0;
                 if (npc.ai[0] == 2 || npc.ai[0] == 4)
                 {
-                    Teleport();
+                    Teleport(Main.rand.Next(2) == 0? 1:2);
                 }
                 else if ((npc.life < npc.lifeMax * (3 / 4)) && Main.rand.Next(3) == 0)
                 {
-                    Teleport();
+                    Teleport(Main.rand.Next(2) == 0? 1:2);
                 }
                 else if ((npc.life < npc.lifeMax / 2) && Main.rand.Next(2) == 0)
                 {
-                    Teleport();
+                    Teleport(Main.rand.Next(2) == 0? 1:2);
                 }
                 if (npc.life < npc.lifeMax / 4)
                 {
-                    Teleport();
+                    Teleport(Main.rand.Next(2) == 0? 1:2);
                 }
                 npc.netUpdate = true;
             }
@@ -457,15 +736,15 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public bool AliveCheck(Player player)
         {
             bool tooFar = Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 10000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 10000f;
-            if (player.dead || tooFar)
+            if (player.dead || tooFar || !player.active)
             {
                 npc.TargetClosest(true);
 
-                if (Main.player[npc.target].dead || tooFar)
+                if (Main.player[npc.target].dead || !Main.player[npc.target].active || tooFar)
                 {
                     if (!PlayerDead)
                     {
-                        if (player.dead)
+                        if (player.dead || !player.active)
                         {
                             if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroAwakened6"), Color.Red.R, Color.Red.G, Color.Red.B);
                         }
@@ -481,6 +760,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         npc.timeLeft = 10;
                     }
                     if (npc.position.Y + npc.height - npc.velocity.Y <= 0 && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
+                    npc.active = false;
                     return false;
                 }
             }
@@ -510,15 +790,17 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     safe = true;
                 }
             }
-            if (a == 1)
+            else if (a == 1)
             {
                 targetPos.X += 430 * (npc.Center.X > targetPos.X ? -1 : 1);
                 targetPos.Y -= 430;
+                npc.position = new Vector2(targetPos.X, targetPos.Y);
             }
-            if (a == 2)
+            else if (a == 2)
             {
                 targetPos.X += 430 * (npc.Center.X > targetPos.X ? -1 : 1);
                 targetPos.Y += 430;
+                npc.position = new Vector2(targetPos.X, targetPos.Y);
             }
             else
             {
