@@ -539,18 +539,18 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 }
                 if(npc.ai[2] == 30)
                 {
-                    if (Main.netMode != 1) AAMod.Chat(@"BOOTING IN SELF ORGNAZATI0N MODE...", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) AAMod.Chat(@"BOOTING IN SELF ORGNAZATION MODE...", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
                 if(npc.ai[2] == 60)
                 {
-                    if (Main.netMode != 1) AAMod.Chat(@"ALL0W C:\TERRARIA\AAMOD\ZERO\PROTOCOL\SELF-ORGNAZATION.EXE ? <Y/N>...", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) AAMod.Chat(@"ALLOW C:\TERRARIA\AAMOD\ZERO\PROTOCOL\SELF-ORGNAZATION.EXE ? <Y/N>...", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
                 if(npc.ai[2] == 110)
                 {
                     if (Main.netMode != 1) AAMod.Chat(@"[Y]", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
                 npc.rotation = npc.DirectionTo(player.Center).ToRotation() + (float)Math.PI/2;
-                if(npc.ai[2] % (npc.life < npc.lifeMax / 2? 30:60) == 10)
+                if(npc.ai[2] % (npc.life < npc.lifeMax / 2? 40:60) == 10)
                 {
                     Teleport(3);
                     NPC.NewNPC((int)player.Center.X + 50 * Main.rand.Next(4, 8) * (Main.rand.Next(2) == 0? -1:1), (int)player.Center.Y + 50 * Main.rand.Next(4, 8) * (Main.rand.Next(2) == 0? -1:1), ModContent.NPCType<ZeroMini>());
