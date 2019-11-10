@@ -13,15 +13,15 @@ namespace AAMod.Items.Summoning.Minions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Xiao Doragon");
-			Main.projFrames[projectile.type] = 4;
+			Main.projFrames[projectile.type] = 5;
             ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
 
         public override void SetDefaults()
         {
-            projectile.width = 44;
-            projectile.height = 38;
+            projectile.width = 96;
+            projectile.height = 70;
             projectile.netImportant = true;
             projectile.friendly = true;
             projectile.ignoreWater = true;
@@ -223,7 +223,7 @@ namespace AAMod.Items.Summoning.Minions
                 projectile.frameCounter = 0;
                 projectile.frame++;
             }
-            if (projectile.frame > 3)
+            if (projectile.frame > 4)
             {
                 projectile.frame = 0;
             }
@@ -233,7 +233,7 @@ namespace AAMod.Items.Summoning.Minions
         {
             Texture2D tex = Main.projectileTexture[projectile.type];
 
-            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 5, 0, 0);
 
 
             if (projectile.direction == 1)
@@ -244,16 +244,16 @@ namespace AAMod.Items.Summoning.Minions
             if (hasTarget)
             {
                 tex = mod.GetTexture("Items/Summoning/Minions/XiaoDoragonA");
-                BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, projectile, 1f, 1f, 3, true, 0f, 0f, lightColor, frame, 4);
+                BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, projectile, 1f, 1f, 3, true, 0f, 0f, lightColor, frame, 5);
             }
 
 
-            BaseDrawing.DrawTexture(spriteBatch, tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, -projectile.direction, 4, frame, lightColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, -projectile.direction, 5, frame, lightColor, true);
 
             if (hasTarget)
             {
                 Texture2D g = mod.GetTexture("Glowmasks/XiaoDoragon_Glow");
-                BaseDrawing.DrawTexture(spriteBatch, g, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, -projectile.direction, 4, frame, AAColor.Shen2, true);
+                BaseDrawing.DrawTexture(spriteBatch, g, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, -projectile.direction, 5, frame, AAColor.Shen2, true);
                 BaseDrawing.DrawAfterimage(spriteBatch, g, 0, projectile, 1f, 1f, 3, true, 0f, 0f, AAColor.Shen2, frame, 4);
             }
             return false;
