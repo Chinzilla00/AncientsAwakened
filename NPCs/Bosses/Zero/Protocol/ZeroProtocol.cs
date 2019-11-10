@@ -490,7 +490,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                             }
                             
                             if (Main.netMode != 1) AAMod.Chat(@"===C A R N A G E===", Color.Red.R, Color.Red.G, Color.Red.B);
-                            Projectile.NewProjectile(npc.Center - 30 * npc.DirectionTo(player.Center), 10f * npc.DirectionTo(player.Center), ModContent.ProjectileType<EchoRay>(), npc.damage/2, 3f, Main.myPlayer, 0, npc.whoAmI);
+                            Projectile.NewProjectile(npc.Center, 10f * npc.DirectionTo(player.Center), ModContent.ProjectileType<EchoRay>(), npc.damage/2, 3f, Main.myPlayer, 0, npc.whoAmI);
                             npc.ai[3] = 1f;
                         }
                         else
