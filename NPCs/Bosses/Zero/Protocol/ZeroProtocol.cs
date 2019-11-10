@@ -903,7 +903,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         int Frame = 0;
         public override void FindFrame(int frameHeight)
         {
-            if (npc.frameCounter++ > 10)
+            if (npc.frameCounter++ > 3)
             {
                 npc.frameCounter = 0;
                 Frame += 1;
