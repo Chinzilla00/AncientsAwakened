@@ -2585,7 +2585,7 @@ namespace AAMod
                 player.controlJump = player.controlDown;
                 player.controlDown = flag2;
                 player.moveSpeed *= Main.rand.NextFloat(.55f, .9f);
-                if(player.velocity.Y > 0)
+                if(player.velocity.Y < 0)
                 {
                     player.velocity.Y *= Main.rand.NextFloat(.5f, 1.1f);
                 }
