@@ -108,6 +108,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         }
         public Texture2D AkumaTex = null;
 
+        public bool spawnAshe = false;
+
         public override bool PreAI()
         {
             Player player = Main.player[npc.target];
@@ -146,26 +148,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             if (npc.ai[2] >= 400)
             {
                 npc.ai[2] = 180; //attack much more aggressively
-            }*/
-
-            if (npc.life <= npc.lifeMax / 2 && !spawnAshe)
-            {
-                spawnAshe = true;
-                if (AAWorld.downedAkuma)
-                {
-                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA1"), Color.DeepSkyBlue);
-                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA2"), new Color(102, 20, 48));
-                    AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AsheA"), false, 0, 0);
-                }
-                else
-                {
-                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA3"), new Color(102, 20, 48));
-                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA4"), Color.DeepSkyBlue);
-                    AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AsheA"), false, 0, 0);
-                }
             }
 
-            /*if (dist > 400 & Main.rand.Next(20) == 1 && npc.ai[1] == 0 && npc.ai[2] < 300)
+            if (dist > 400 & Main.rand.Next(20) == 1 && npc.ai[1] == 0 && npc.ai[2] < 300)
             {
                 npc.ai[1] = 1;
             }
@@ -468,7 +453,21 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     {
                         npc.ai[2] = 1;
                         if (Main.netMode != 1)
-                            Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<AkumaALakitu>(), npc.damage / 4, 0f, Main.myPlayer, npc.target);
+                            Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<AsheA>(), npc.damage / 4, 0f, Main.myPlayer, npc.target); 
+                        if (!spawnAshe)
+                        {
+                            spawnAshe = true;
+                            if (AAWorld.downedAkuma)
+                            {
+                                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA1"), Color.DeepSkyBlue);
+                                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA2"), new Color(102, 20, 48));
+                            }
+                            else
+                            {
+                                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA3"), new Color(102, 20, 48));
+                                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA4"), Color.DeepSkyBlue);
+                            }
+                        }
                     }
                     if (++npc.ai[1] > 300)
                     {
@@ -715,8 +714,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 Main.dust[dust2].noGravity = true;
             }
         }
-
-        public bool spawnAshe = false;
 
 
         public int roarTimer = 0;
