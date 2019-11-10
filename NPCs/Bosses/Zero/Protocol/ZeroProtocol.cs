@@ -531,7 +531,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 }
                 if(npc.ai[2] == 60)
                 {
-                    if (Main.netMode != 1) AAMod.Chat(@"ALL0W C:\TERRARIA\AAMOD\ZERO\PROTOCOL\SELF-ORGNAZATION.exe ? <Y/N>...", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) AAMod.Chat(@"ALL0W C:\TERRARIA\AAMOD\ZERO\PROTOCOL\SELF-ORGNAZATION.EXE ? <Y/N>...", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
                 if(npc.ai[2] == 110)
                 {
@@ -580,7 +580,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     npc.ai[1] = 0f;
                 }
 
-                if(npc.ai[2] > 330)
+                if(npc.ai[2] > 430)
                 {
                     Counterattack = false;
                     npc.ai[0] = 2;
