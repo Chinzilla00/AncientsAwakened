@@ -160,20 +160,16 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     npc.netUpdate = true;
                 }
             }
-            else if(npc.ai[0] != 4 && npc.ai[0] != 2 && !isCharging && Main.rand.Next(100) == 0)
+            else if(npc.ai[0] != 4 && npc.ai[0] != 2 && !isCharging)
             {
                 int TeleportChance = 1000 * (npc.life / npc.lifeMax);
-                if (TeleportChance < 5)
+                if (TeleportChance < 10)
                 {
-                    TeleportChance = 5;
+                    TeleportChance = 10;
                 }
                 if (Main.rand.Next(TeleportChance) == 0)
                 {
-                    if (Main.netMode != 1)
-                    {
-                        Teleport();
-                        npc.netUpdate = true;
-                    }
+                    Teleport(0);
                 }
             }
             if (npc.life <= 0 && !Main.expertMode)
@@ -479,6 +475,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         if (!AliveCheck(player))
                             break;
                         
+                        Counterattack = false;
+                        
                         if (npc.ai[1]++ == 100)
                         {
                             for(int i = 0; i< 1000; i++)
@@ -543,6 +541,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     Teleport(3);
                     NPC.NewNPC((int)player.Center.X + 50 * Main.rand.Next(4, 8) * (Main.rand.Next(2) == 0? -1:1), (int)player.Center.Y + 50 * Main.rand.Next(4, 8) * (Main.rand.Next(2) == 0? -1:1), ModContent.NPCType<ZeroMini>());
                 }
+                Counterattack = false;
                 npc.ai[1] = 0f;
                 npc.ai[3] = 0f;
             }
@@ -735,7 +734,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public bool AliveCheck(Player player)
         {
-            bool tooFar = Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 10000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 10000f;
+            bool tooFar = Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 8000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 8000f;
             if (player.dead || tooFar || !player.active)
             {
                 npc.TargetClosest(true);
@@ -760,7 +759,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         npc.timeLeft = 10;
                     }
                     if (npc.position.Y + npc.height - npc.velocity.Y <= 0 && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate2 = true; }
-                    npc.active = false;
                     return false;
                 }
             }
