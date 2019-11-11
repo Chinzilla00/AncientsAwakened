@@ -605,9 +605,9 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             else
             {
-                //BaseAI.AISkull(npc, ref Move, true, 14, 350, .04f, .05f); I think this AI is too hard to use.
+                BaseAI.AISkull(npc, ref Move, true, 14, 350, .04f, .05f); //I think this AI is too hard to use.
 
-                Vector2 point = player.Center;
+                /*Vector2 point = player.Center;
 
                 if(Counter[2] % 120 == 0)
                 {
@@ -653,7 +653,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 else
                 {
                     MoveToPoint(point);
-                }
+                }*/
 
                 int Frequency = Main.rand.Next(30, 50);
                 if (npc.life < npc.lifeMax / 2)

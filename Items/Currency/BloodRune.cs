@@ -4,6 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.GameContent.UI;
 using Terraria.Localization;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Currency
 {
@@ -13,12 +14,9 @@ namespace AAMod.Items.Currency
         {
             DisplayName.SetDefault("Blood Rune");
             Tooltip.SetDefault("An ancient stone said to contain the blood of an ancient being");
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 11));
-            ItemID.Sets.AnimatesAsSoul[item.type] = true;
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }
-
 
         public override void PostUpdate()
         {
@@ -33,7 +31,31 @@ namespace AAMod.Items.Currency
             item.value = 1000;
             item.rare = 3;
         }
+
+        static int counter = 0;
+        static int cframe = 0;
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            if (counter++ > 4)
+            {
+                cframe++;
+                counter = 0;
+                if (cframe > 10)
+                {
+                    cframe = 0;
+                }
+            }
+
+            Texture2D itemTex = mod.GetTexture("Items/Currency/BloodRuneA");
+
+            Rectangle iframe = BaseMod.BaseDrawing.GetFrame(cframe, itemTex.Width, itemTex.Height / 11, 0, 0);
+
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, itemTex, 0, item.position, item.width, item.height, scale, rotation, item.direction, 11, iframe, lightColor, true);
+            return false;
+        }
     }
+
     public class BRune : CustomCurrencySingleCoin
     {
         public static Color color = Color.DarkRed;

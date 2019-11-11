@@ -4,6 +4,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.GameContent.UI;
 using Terraria.Localization;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Currency
 {
@@ -32,6 +33,29 @@ namespace AAMod.Items.Currency
             item.maxStack = 999;
             item.value = 1000;
             item.rare = 7;
+        }
+
+        static int counter = 0;
+        static int cframe = 0;
+
+        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        {
+            if (counter++ > 4)
+            {
+                cframe++;
+                counter = 0;
+                if (cframe > 7)
+                {
+                    cframe = 0;
+                }
+            }
+
+            Texture2D itemTex = mod.GetTexture("Items/Currency/MonsterSoulA");
+
+            Rectangle iframe = BaseMod.BaseDrawing.GetFrame(cframe, itemTex.Width, itemTex.Height / 8, 0, 0);
+
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, itemTex, 0, item.position, item.width, item.height, scale, rotation, item.direction, 8, iframe, lightColor, true);
+            return false;
         }
     }
     public class MSouls : CustomCurrencySingleCoin
