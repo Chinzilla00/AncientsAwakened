@@ -551,8 +551,6 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             Texture2D texture = Main.npcTexture[npc.type];
             Texture2D glow = mod.GetTexture("Glowmasks/GreedA_Glow");
-            Texture2D Atk = mod.GetTexture("NPCs/Bosses/Greed/ABoost");
-            Texture2D Def = mod.GetTexture("NPCs/Bosses/Greed/DBoost");
 
             npc.position.Y += npc.height * 0.5f;
 
