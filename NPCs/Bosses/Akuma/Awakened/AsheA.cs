@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ashe Akuma");
-            Main.projFrames[projectile.type] = 13;
+            Main.projFrames[projectile.type] = 12;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -71,6 +71,11 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     Main.dust[dustID].noLight = false;
                     Main.dust[dustID].noGravity = true;
                 }
+            }
+
+            if (!NPC.AnyNPCs(ModContent.NPCType<AkumaA>()))
+            {
+                projectile.Kill()
             }
         }
 
