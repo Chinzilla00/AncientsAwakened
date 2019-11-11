@@ -267,6 +267,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         {
             if (npc.frameCounter++ < (16 - npc.velocity.X))
             {
+                npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
                 if (npc.frame.Y > frameHeight * 3)
                 {

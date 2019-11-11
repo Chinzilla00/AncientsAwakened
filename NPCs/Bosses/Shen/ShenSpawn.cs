@@ -265,7 +265,9 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             if (npc.ai[1] > 240)
             {
-                npc.life = 0;
+                int i = AAWorld.downedShen ? 0 : 1;
+                NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<ShenDeath>(), 0, i);
+                npc.active = false;
                 npc.netUpdate = true;
             }
             else
@@ -283,12 +285,6 @@ namespace AAMod.NPCs.Bosses.Shen
                     }
                 }
             }
-        }
-
-        public override void NPCLoot()
-        {
-            int i = AAWorld.downedShen ? 0 : 1;
-            NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<ShenDeath>(), 0, i);
         }
     }
 

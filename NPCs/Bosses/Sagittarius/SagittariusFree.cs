@@ -10,7 +10,7 @@ using System.IO;
 namespace AAMod.NPCs.Bosses.Sagittarius
 {
     [AutoloadBossHead]
-    public class SagittariusFree : Sagittarius
+    public class SagittariusFree : ModNPC
 	{
         public int damage = 0;
 
@@ -38,6 +38,9 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.alpha = 255;
             bossBag = mod.ItemType("SagBag");
         }
+
+        public float[] internalAI = new float[5];
+        public float[] shootAI = new float[1];
         
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -86,17 +89,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             if (internalAI[3] > 0)
             {
                 internalAI[3]--;
-            }
-
-            npc.frameCounter++;
-            if (npc.frameCounter > 30)
-            {
-                npc.frame.Y += 72;
-                npc.frameCounter = 0;
-                if (npc.frame.Y > 72 * 4)
-                {
-                    npc.frame.Y = 0;
-                }
             }
 
             if (Main.player[npc.target].dead && Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 5000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 5000f)
@@ -299,6 +291,21 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             else
             {
                 npc.DropBossBags();
+            }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+
+            npc.frameCounter++;
+            if (npc.frameCounter > 10)
+            {
+                npc.frameCounter = 0;
+                npc.frame.Y += frameHeight;
+                if (npc.frame.Y > frameHeight * 4)
+                {
+                    npc.frame.Y = 0;
+                }
             }
         }
 
