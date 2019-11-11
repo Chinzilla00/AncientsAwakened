@@ -65,10 +65,10 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
             if (zero.ai[1] == 1f)
             {
-                Projectile.NewProjectile(npc.Center + new Vector2(30, 30), new Vector2(10, 10), ModContent.ProjectileType<EchoRay>(), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
-                Projectile.NewProjectile(npc.Center + new Vector2(-30, 30), new Vector2(-10, 10), ModContent.ProjectileType<EchoRay>(), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
-                Projectile.NewProjectile(npc.Center + new Vector2(30, -30), new Vector2(10, -10), ModContent.ProjectileType<EchoRay>(), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
-                Projectile.NewProjectile(npc.Center + new Vector2(-30, -30), new Vector2(-10, -10), ModContent.ProjectileType<EchoRay>(), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
+                Projectile.NewProjectile(npc.Center + new Vector2(30, 30), new Vector2(10, 10), ModContent.ProjectileType<EchoRay>(), 70, 0f, Main.myPlayer, 0, npc.whoAmI);
+                Projectile.NewProjectile(npc.Center + new Vector2(-30, 30), new Vector2(-10, 10), ModContent.ProjectileType<EchoRay>(), 70, 0f, Main.myPlayer, 0, npc.whoAmI);
+                Projectile.NewProjectile(npc.Center + new Vector2(30, -30), new Vector2(10, -10), ModContent.ProjectileType<EchoRay>(), 70, 0f, Main.myPlayer, 0, npc.whoAmI);
+                Projectile.NewProjectile(npc.Center + new Vector2(-30, -30), new Vector2(-10, -10), ModContent.ProjectileType<EchoRay>(), 70, 0f, Main.myPlayer, 0, npc.whoAmI);
             }
 
             if (zero.ai[0] != 4)

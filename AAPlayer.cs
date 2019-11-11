@@ -2579,16 +2579,15 @@ namespace AAMod
             if (Unstable)
             {
                 bool flag = player.controlLeft;
-                bool flag2 = player.controlJump;
+                bool flag2 = player.controlJump || player.controlUp;
                 player.controlLeft = player.controlRight;
                 player.controlRight = flag;
                 player.controlJump = player.controlDown;
+                player.controlUp = player.controlDown;
                 player.controlDown = flag2;
                 player.moveSpeed *= Main.rand.NextFloat(.55f, .9f);
-                if(player.velocity.Y < 0)
-                {
-                    player.velocity.Y *= Main.rand.NextFloat(.5f, 1.1f);
-                }
+                player.wingTimeMax = (int)(player.wingTimeMax / Main.rand.NextFloat(.8f, 2f));
+                Player.jumpSpeed /= Main.rand.NextFloat(.8f, 2f);
             }
 
             if (infinityOverload)

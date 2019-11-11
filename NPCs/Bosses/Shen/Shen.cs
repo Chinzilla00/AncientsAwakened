@@ -646,8 +646,8 @@ namespace AAMod.NPCs.Bosses.Shen
                 {
                     if (npc.timeLeft > 60)
                         npc.timeLeft = 60;
-                    npc.velocity.Y -= 1f;
-                    if (npc.velocity.Y < -10) npc.active = false;
+                    BaseAI.KillNPC(npc);
+                    npc.netUpdate2 = true;
                     return false;
                 }
             }
