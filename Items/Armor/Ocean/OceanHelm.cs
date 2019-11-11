@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Ocean
 {
@@ -37,7 +38,7 @@ namespace AAMod.Items.Armor.Ocean
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = Lang.ArmorBonus("OceanHelmBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.OceanHelmBonus");
             if (player.wet && !player.lavaWet && !player.honeyWet)
             {
                 player.magicDamage += 0.2f;

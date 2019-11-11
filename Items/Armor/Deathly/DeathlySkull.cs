@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Deathly
@@ -36,7 +37,7 @@ namespace AAMod.Items.Armor.Deathly
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = Lang.ArmorBonus("DeathlySkullBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DeathlySkullBonus");
 
             player.aggro -= 5;
             player.ammoCost80 = true;

@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Blazing
@@ -36,7 +37,7 @@ Forged in the flames of the blazing sun");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = Lang.ArmorBonus("BlazingBonus");
+			player.setBonus = Language.GetTextValue("Mods.AAMod.Common.BlazingBonus");
             player.endurance = .05f;
             player.aggro += 4;
             player.GetModPlayer<AAPlayer>().kindledSet = true;

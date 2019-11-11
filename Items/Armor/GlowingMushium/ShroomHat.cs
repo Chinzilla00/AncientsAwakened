@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.GlowingMushium
@@ -38,7 +39,7 @@ namespace AAMod.Items.Armor.GlowingMushium
 		public override void UpdateArmorSet(Player player)
 		{
 
-            player.setBonus = Lang.ArmorBonus("ShroomHatBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.ShroomHatBonus");
 
             player.buffImmune[BuffID.ManaSickness] = true;
 		}

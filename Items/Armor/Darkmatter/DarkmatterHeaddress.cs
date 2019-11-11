@@ -3,6 +3,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Darkmatter
 {
@@ -63,7 +64,7 @@ Dark, yet still barely visible");
 		{
 
 
-            player.setBonus = Lang.ArmorBonus("DarkmatterHeaddressBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DarkmatterHeaddressBonus");
             player.GetModPlayer<HeadressEffects>().setBonus = true;
             player.armorEffectDrawShadowLokis = true;
         }

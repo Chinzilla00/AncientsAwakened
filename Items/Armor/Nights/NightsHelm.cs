@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Nights
@@ -37,7 +38,7 @@ namespace AAMod.Items.Armor.Nights
 		public override void UpdateArmorSet(Player player)
 		{
 			
-			player.setBonus = Lang.ArmorBonus("NightsHelmBonus");
+			player.setBonus = Language.GetTextValue("Mods.AAMod.Common.NightsHelmBonus");
             player.moveSpeed += 0.22f;
             player.panic = true;
 		}

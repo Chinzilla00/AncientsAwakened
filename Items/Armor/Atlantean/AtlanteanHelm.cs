@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ID;
 
@@ -38,7 +39,7 @@ Allows to breath underwater");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = Lang.ArmorBonus("AtlanteanBonus");
+			player.setBonus = Language.GetTextValue("Mods.AAMod.Common.AtlanteanBonus");
 			if (player.wet)
 			{
 				player.AddBuff(mod.BuffType("AtlanteanBuff"), 2);

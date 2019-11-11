@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Mushium
@@ -37,7 +38,7 @@ namespace AAMod.Items.Armor.Mushium
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = Lang.ArmorBonus("MushiumHatBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.MushiumHatBonus");
             player.pStone = true;
 		}
 

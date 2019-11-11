@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Dynaskull
@@ -37,7 +38,7 @@ namespace AAMod.Items.Armor.Dynaskull
 		public override void UpdateArmorSet(Player player)
 		{
 
-            player.setBonus = Lang.ArmorBonus("DynaskullBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DynaskullBonus");
             
 			player.GetModPlayer<AAPlayer>().DynaskullSet = true;
 		}

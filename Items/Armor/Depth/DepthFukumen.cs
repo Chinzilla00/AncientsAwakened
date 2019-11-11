@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Depth
 {
@@ -38,7 +39,7 @@ Weightless as shadow itself");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = Lang.ArmorBonus("DepthFukumenBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DepthFukumenBonus");
             player.aggro -= 3;
             player.ammoCost80 = true;
             player.nightVision = true;

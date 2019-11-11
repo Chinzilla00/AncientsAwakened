@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Hoodlum
 {
@@ -32,7 +33,7 @@ Hopping Mad.");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = Lang.ArmorBonus("HoodlumHoodBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.HoodlumHoodBonus");
             if (player.statLife <= player.statLifeMax2 * .5f)
             {
                 player.moveSpeed += .5f;

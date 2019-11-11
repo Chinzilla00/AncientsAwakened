@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Fleshrend
@@ -37,7 +38,7 @@ namespace AAMod.Items.Armor.Fleshrend
 		public override void UpdateArmorSet(Player player)
 		{
 
-            player.setBonus = Lang.ArmorBonus("FleshrendHelmBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.FleshrendHelmBonus");
 
             player.crimsonRegen = true;
 			player.GetModPlayer<AAPlayer>().fleshrendSet = true;

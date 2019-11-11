@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria;
+using Terraria.Localization;
 using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Rajah
@@ -37,32 +38,32 @@ Immunity to fall damage");
 
             if (modPlayer.MeleeHighest(player))
             {
-                DamageType = Lang.RajahSPTooltip("Melee");
+                DamageType = Language.GetTextValue("Mods.AAMod.Common.RajahSPTooltipMelee");
                 damageColor = Color.Firebrick;
             }
             else if (modPlayer.RangedHighest(player))
             {
-                DamageType = Lang.RajahSPTooltip("Ranged");
+                DamageType = Language.GetTextValue("Mods.AAMod.Common.RajahSPTooltipRanged");
                 damageColor = Color.SeaGreen;
             }
             else if (modPlayer.MagicHighest(player))
             {
-                DamageType = Lang.RajahSPTooltip("Magic");
+                DamageType = Language.GetTextValue("Mods.AAMod.Common.RajahSPTooltipMagic");
                 damageColor = Color.Violet;
             }
             else if (modPlayer.SummonHighest(player))
             {
-                DamageType = Lang.RajahSPTooltip("Summoning");
+                DamageType = Language.GetTextValue("Mods.AAMod.Common.RajahSPTooltipSummoning");
                 damageColor = Color.Cyan;
             }
             else if (modPlayer.ThrownHighest(player))
             {
-                DamageType = Lang.RajahSPTooltip("Throwing");
+                DamageType = Language.GetTextValue("Mods.AAMod.Common.RajahSPTooltipThrowing");
                 damageColor = Color.DarkOrange;
             }
 
             string DamageAmount = (10 * DamageBoost(player)) + "% ";
-            TooltipLine DamageTooltip = new TooltipLine(mod, "Damage Type", Lang.RajahSPTooltip("CurrentDamageBoost:+") + DamageAmount + DamageType + Lang.RajahSPTooltip("Damage"))
+            TooltipLine DamageTooltip = new TooltipLine(mod, "Damage Type", Language.GetTextValue("Mods.AAMod.Common.RajahSPDamageBoost") + DamageAmount + DamageType + Language.GetTextValue("Mods.AAMod.Common.RajahSPDamageInfo"))
             {
                 overrideColor = damageColor
             };

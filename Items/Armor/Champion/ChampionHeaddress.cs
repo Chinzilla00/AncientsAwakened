@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Champion
 {
@@ -45,8 +46,7 @@ The armor of a champion feared across the land");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"Baron Bunny fights by your side as an ally to rabbit kind
-As you lose health, Baron Bunny's will to fight becomes stronger.";
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.ChampionHeaddressBonus");
         }
 
 

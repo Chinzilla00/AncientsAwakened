@@ -2,6 +2,7 @@ using AAMod.Items.Armor.Darkmatter;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Radium
@@ -40,7 +41,7 @@ Shines with the light of a starry night sky");
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = Lang.ArmorBonus("RadiumHeadgearBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.RadiumHeadgearBonus");
 
 
             player.GetModPlayer<VisorEffects>().setBonus = true;

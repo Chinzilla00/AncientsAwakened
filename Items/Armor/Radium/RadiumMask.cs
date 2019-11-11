@@ -1,6 +1,7 @@
 using AAMod.Items.Armor.Darkmatter;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Radium
@@ -39,7 +40,7 @@ Shines with the light of a starry night sky");
 		{
             player.GetModPlayer<DarkmatterMaskEffects>().setBonus = true;
             player.GetModPlayer<DarkmatterMaskEffects>().sunSiphon = true;
-            player.setBonus = Lang.ArmorBonus("RadiumMaskBonus1") + (int)(100 * player.magicDamage) + Lang.ArmorBonus("RadiumMaskBonus2") + player.magicCrit + Lang.ArmorBonus("RadiumMaskBonus3");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.RadiumMaskBonus1") + (int)(100 * player.magicDamage) + " " + Language.GetTextValue("Mods.AAMod.Common.RadiumMaskBonus2") + player.magicCrit + Language.GetTextValue("Mods.AAMod.Common.RadiumMaskBonus3");
 
         }
 

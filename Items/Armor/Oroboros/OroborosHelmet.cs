@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Oroboros
@@ -30,8 +31,8 @@ namespace AAMod.Items.Armor.Oroboros
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = Lang.ArmorBonus("OroborosHelmetBonus");
-            item.defense = 7;
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.OroborosHelmetBonus");
+            player.statDefense += 3;
         }
 
         public override void AddRecipes()

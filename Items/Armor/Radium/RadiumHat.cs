@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Radium
@@ -37,7 +38,7 @@ Shines with the light of a starry night sky");
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = Lang.ArmorBonus("RadiumHatBonus1") + (int)(DarkMinions.baseBlastDamage * player.minionDamage) + Lang.ArmorBonus("RadiumHatBonus2");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.RadiumHatBonus1") + (int)(DarkMinions.baseBlastDamage * player.minionDamage) + " " + Language.GetTextValue("Mods.AAMod.Common.RadiumHatBonus2");
             player.GetModPlayer<HatEffects>().setBonus = true;
         }
 

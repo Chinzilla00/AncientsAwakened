@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Tribal
@@ -38,7 +39,7 @@ Increases maximum mana by 20");
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = Lang.ArmorBonus("TribalHatBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.TribalHatBonus");
 
             player.manaCost *= 0.7f;
             player.manaFlower = true;
