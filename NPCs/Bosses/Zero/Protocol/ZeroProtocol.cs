@@ -605,55 +605,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             else
             {
-                BaseAI.AISkull(npc, ref Move, true, 14, 350, .04f, .05f); //I think this AI is too hard to use.
-
-                /*Vector2 point = player.Center;
-
-                if(Counter[2] % 120 == 0)
-                {
-                    switch (Main.rand.Next(8))
-                    {
-                        case 0:
-                            point = player.Center + new Vector2(200f, 200f);
-                            break;
-                        case 1:
-                            point = player.Center + new Vector2(200f, -200f);
-                            break;
-                        case 2:
-                            point = player.Center + new Vector2(-200f, 200f);
-                            break;
-                        case 3:
-                            point = player.Center + new Vector2(-200f, -200f);
-                            break;
-                        case 4:
-                            point = player.Center + new Vector2(0, 200f);
-                            break;
-                        case 5:
-                            point = player.Center + new Vector2(0, -200f);
-                            break;
-                        case 6:
-                            point = player.Center + new Vector2(200f, 0);
-                            break;
-                        case 7:
-                            point = player.Center + new Vector2(-200f, 0);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                if(Counter[2] ++ >= 240)
-                {
-                    Counter[2] = 0;
-                }
-
-                if((npc.Center - player.Center).Length() > 300f)
-                {
-                    MoveToPoint(player.Center);
-                }
-                else
-                {
-                    MoveToPoint(point);
-                }*/
+                BaseAI.AISkull(npc, ref Move, true, 14, 350, .04f, .05f);
 
                 int Frequency = Main.rand.Next(30, 50);
                 if (npc.life < npc.lifeMax / 2)
@@ -684,39 +636,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 npc.direction = npc.spriteDirection = 1;
                 npc.rotation = 0;
             }
-        }
-
-        public void MoveToPoint(Vector2 point)
-        {
-            float moveSpeed = 12f;
-
-            if (Vector2.Distance(npc.Center, point) > 500)
-            {
-                moveSpeed = 20f;
-            }
-
-            float velMultiplier = 1f;
-            Vector2 dist = point - npc.Center;
-            float length = dist == Vector2.Zero ? 0f : dist.Length();
-            if (length < moveSpeed)
-            {
-                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
-            }
-            if (length < 200f)
-            {
-                moveSpeed *= 0.5f;
-            }
-            if (length < 100f)
-            {
-                moveSpeed *= 0.5f;
-            }
-            if (length < 50f)
-            {
-                moveSpeed *= 0.5f;
-            }
-            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
-            npc.velocity *= moveSpeed;
-            npc.velocity *= velMultiplier;
         }
 
         private void AIChange()
