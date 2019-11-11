@@ -35,7 +35,7 @@ namespace AAMod.Items.Boss.Sagittarius
 		
 		public override void UseStyle(Player player)
 		{
-			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem)
 			{
 				player.AddBuff(mod.BuffType("SagOrbiter"), 2, true);
 			}

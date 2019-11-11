@@ -37,7 +37,7 @@ Summons 2 segments for each minion slot");
 		
 		public override void UseStyle(Player player)
 		{
-			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem)
 			{
 				player.AddBuff(item.buffType, 3600, true);
 			}
