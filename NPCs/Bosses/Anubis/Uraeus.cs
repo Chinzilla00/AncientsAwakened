@@ -14,8 +14,8 @@ namespace AAMod.NPCs.Bosses.Anubis
 			npc.damage = 40;
 			npc.npcSlots = 5f;
             npc.damage = 45;
-            npc.width = 32;
-            npc.height = 32;
+            npc.width = 20;
+            npc.height = 20;
             npc.defense = 20;
             npc.lifeMax = 500;
             npc.knockBackResist = 0f;

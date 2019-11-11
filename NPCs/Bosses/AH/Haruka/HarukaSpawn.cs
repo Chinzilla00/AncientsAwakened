@@ -40,6 +40,10 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 npc.frameCounter = 0;
                 Frame++;
+                if (Frame++ > 3)
+                {
+                    Frame = 0;
+                }
             }
             npc.frame.Y = frameHeight * Frame;
         }
@@ -48,8 +52,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/AsheSpawn_Glow");
             
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 16, npc.frame, dColor, true);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 16, npc.frame, Color.White, true);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 4, npc.frame, dColor, true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 4, npc.frame, Color.White, true);
             return false;
         }
     }

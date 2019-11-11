@@ -39,9 +39,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             if (npc.frameCounter++ > 10)
             {
                 npc.frameCounter = 0;
-                if (Frame++ > 3)
+                Frame++;
+                if (Frame > 15)
                 {
-                    Frame = 0;
+                    Frame = 12;
                 }
             }
             npc.frame.Y = frameHeight * Frame;
@@ -49,7 +50,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/HarukaSpawn_Glow");
+            Texture2D glowTex = mod.GetTexture("Glowmasks/AsheSpawn_Glow");
             
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 16, npc.frame, dColor, true);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 16, npc.frame, Color.White, true);
