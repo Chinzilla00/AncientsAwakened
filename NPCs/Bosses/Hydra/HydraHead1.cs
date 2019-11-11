@@ -345,18 +345,10 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void HitEffect(int hitDirection, double damage)
         {
-            if (npc.type == mod.NPCType("HydraHead2"))
+            if (npc.life <= 0)
             {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGoreB"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/HydraGoreHead"), 1f);
             }
-            else
-            {
-                Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGoreR"), 1f);
-            }
-            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore1"), 1f);
-            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore2"), 1f);
-            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore3"), 1f);
-            Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/HydraHeadGore4"), 1f);
         }
     }
 }

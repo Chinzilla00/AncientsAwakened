@@ -746,6 +746,8 @@ namespace AAMod.NPCs.Bosses.Serpent
                 {
                     Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.SnowDustLight>(), hitDirection, -1f, 0, default, 1f);
                 }
+
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/SZSGoreHead"), 1f);
             }
         }
 
@@ -815,7 +817,6 @@ namespace AAMod.NPCs.Bosses.Serpent
             npc.alpha = 50;
             npc.dontCountMe = true;
         }
-
 
         public override void AI()
         {
@@ -1176,6 +1177,23 @@ namespace AAMod.NPCs.Bosses.Serpent
                 return false;
             }
             return true;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            for (int x = 0; x < 5; x++)
+            {
+                Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.IceDust>(), hitDirection, -1f, 0, default, 1f);
+            }
+            if (npc.life == 0)
+            {
+                for (int x = 0; x < 5; x++)
+                {
+                    Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.SnowDustLight>(), hitDirection, -1f, 0, default, 1f);
+                }
+
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/SZSGoreBody"), 1f);
+            }
         }
     }
 
@@ -1541,6 +1559,23 @@ namespace AAMod.NPCs.Bosses.Serpent
                 return false;
             }
             return true;
+        }
+
+        public override void HitEffect(int hitDirection, double damage)
+        {
+            for (int x = 0; x < 5; x++)
+            {
+                Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.IceDust>(), hitDirection, -1f, 0, default, 1f);
+            }
+            if (npc.life == 0)
+            {
+                for (int x = 0; x < 5; x++)
+                {
+                    Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.SnowDustLight>(), hitDirection, -1f, 0, default, 1f);
+                }
+
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/SZSGoreTail"), 1f);
+            }
         }
     }
 }
