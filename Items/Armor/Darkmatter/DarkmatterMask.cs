@@ -61,7 +61,7 @@ Dark, yet still barely visible");
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DarkmatterMaskBonus1") + (int)(100 * player.magicDamage) + " " + Language.GetTextValue("Mods.AAMod.Common.DarkmatterMaskBonus2") + Language.GetTextValue("Mods.AAMod.Common.DarkmatterMaskBonus3");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DarkmatterMaskBonus1") + (int)(100 * player.magicDamage) + " " + Language.GetTextValue("Mods.AAMod.Common.DarkmatterMaskBonus2") + player.magicCrit + Language.GetTextValue("Mods.AAMod.Common.DarkmatterMaskBonus3");
             player.GetModPlayer<DarkmatterMaskEffects>().setBonus = true;
             player.GetModPlayer<DarkmatterMaskEffects>().sunSiphon = false;
             player.armorEffectDrawShadowLokis = true;
