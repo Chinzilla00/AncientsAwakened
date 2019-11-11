@@ -2586,10 +2586,8 @@ namespace AAMod
                 player.controlUp = player.controlDown;
                 player.controlDown = flag2;
                 player.moveSpeed *= Main.rand.NextFloat(.55f, .9f);
-                if(player.velocity.Y < 0)
-                {
-                    player.velocity.Y *= Main.rand.NextFloat(.7f, 1.4f);
-                }
+                player.wingTimeMax = (int)(player.wingTimeMax / Main.rand.NextFloat(.8f, 2f));
+                Player.jumpSpeed /= Main.rand.NextFloat(.8f, 2f);
             }
 
             if (infinityOverload)
