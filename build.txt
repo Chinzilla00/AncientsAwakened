@@ -8,4 +8,4 @@ hideResources = true
 includeSource = false
 modReferences = BaseMod
 homepage = https://discord.gg/MmpCpj4
-weakReferences = ThoriumMod@1.6.0.4, CalamityMod@1.4.2.104, SpiritMod@1.3.5.4, FargowiltasSouls@1.0.0, GRealm@1.9.0.1
+weakReferences = ThoriumMod@1.6.0.4, CalamityMod@1.4.2.104, SpiritMod@1.3.5.4, FargowiltasSouls@1.0.0, GRealm@1.9.0.1, Redemption@0.7.5.3
