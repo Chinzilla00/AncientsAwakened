@@ -67,6 +67,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public float[] Minion = new float[1];
         public int[] Counter = new int[3];
 
+        Vector2 ShootDir = new Vector2(0,0);
+
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -318,7 +320,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                             Teleport(3);
                         }
 
-                        if (npc.ai[2] == 240)
+                        if (npc.ai[2] % 60 == 30)
                         {
                             Attack(Main.rand.Next(4));
                         }
@@ -510,7 +512,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                             }
                             
                             if (Main.netMode != 1) AAMod.Chat(@"===C A R N A G E===", Color.Red.R, Color.Red.G, Color.Red.B);
-                            Projectile.NewProjectile(npc.position, 10f * npc.DirectionTo(player.Center), ModContent.ProjectileType<EchoRay>(), 100, 3f, Main.myPlayer, 0, npc.whoAmI);
+                            if (ShootDir == new Vector2(0,0)) ShootDir = npc.DirectionTo(player.Center);
+                            Projectile.NewProjectile(npc.position, 10f * ShootDir, ModContent.ProjectileType<EchoRay>(), 100, 3f, Main.myPlayer, 0, npc.whoAmI);
                             npc.ai[3] = 1f;
                         }
                         else
@@ -518,7 +521,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                             npc.ai[3] = 0f;
                         }
 
-                        if(npc.ai[1] < 70)
+                        if(npc.ai[1] < 85)
                         {
                             if(npc.ai[2] % (npc.life < npc.lifeMax / 2? 40:60) == 10)
                             {
@@ -526,6 +529,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                                 NPC.NewNPC((int)player.Center.X + 50 * Main.rand.Next(4, 6) * (Main.rand.Next(2) == 0? -1:1), (int)player.Center.Y + 50 * Main.rand.Next(4, 6) * (Main.rand.Next(2) == 0? -1:1), ModContent.NPCType<ZeroMini>());
                             }
                             npc.rotation = npc.DirectionTo(player.Center).ToRotation() + (float)Math.PI/2;
+                            ShootDir = npc.DirectionTo(player.Center);
                         }
 
                         if (npc.ai[1] >= 190)
