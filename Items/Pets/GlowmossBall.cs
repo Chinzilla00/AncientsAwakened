@@ -9,7 +9,7 @@ namespace AAMod.Items.Pets
 		{
 			DisplayName.SetDefault("Glowing Moss Ball");
 			Tooltip.SetDefault(@"Summons a glowmoss ball
-Donï¿½t ask what makes it glow, Trust me");
+Don’t ask what makes it glow, Trust me");
 		}
 
 		public override void SetDefaults()
@@ -30,7 +30,7 @@ Donï¿½t ask what makes it glow, Trust me");
 
 		public override void UseStyle(Player player)
 		{
-			if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem)
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
 			{
 				player.AddBuff(item.buffType, 3600, true);
 			}

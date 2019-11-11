@@ -42,12 +42,12 @@ Can only be used in a glowing mushroom biome");
         {
             if (!player.ZoneGlowshroom)
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ToadstoolFalse1"), Color.Blue, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ToadstoolFalse1"), Color.Blue, false);
                 return false;
             }
             if (NPC.AnyNPCs(ModContent.NPCType<TruffleToad>()))
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ToadstoolFalse2"), Color.Blue, false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ToadstoolFalse2"), Color.Blue, false);
                 return false;
             }
             return true;

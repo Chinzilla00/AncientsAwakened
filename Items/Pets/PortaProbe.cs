@@ -22,7 +22,7 @@ namespace AAMod.Items.Pets
 
 		public override void UseStyle(Player player)
 		{
-			if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem)
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
 			{
 				player.AddBuff(item.buffType, 90000, true);
             }

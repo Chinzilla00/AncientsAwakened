@@ -45,7 +45,7 @@ namespace AAMod.Items.Boss.AH
 
         public override void UseStyle(Player player)
 		{
-			if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem)
+			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
 			{
 				player.AddBuff(mod.BuffType("Orbiters"), 2, true);
 			}
