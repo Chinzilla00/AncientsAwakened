@@ -166,13 +166,22 @@ namespace AAMod.NPCs.Bosses.Broodmother
 			bool isDead = npc.life <= 0;
             if (isDead)          //this make so when the npc has 0 life(dead) he will spawn this
             {
-                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGore1"), 1f);
-                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGore4"), 1f);
-                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGore2"), 1f);
-                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGore2"), 1f);
-                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGore2"), 1f);
-                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGore2"), 1f);
-				for(int m = 0; m < 12; m++)
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGoreBack"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGoreHand"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGoreHand"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGoreHead"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGorePlate1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGorePlate2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGorePlate3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGoreWingchunk1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGoreWingchunk2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGoreWingchunk3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGoreWingchunk4"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGoreWingchunk1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGoreWingchunk2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGoreWingchunk3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGoreWingchunk4"), 1f);
+                for (int m = 0; m < 12; m++)
 				{
 					Vector2 offset = new Vector2(Main.rand.Next(npc.width), Main.rand.Next(npc.height));
 					Gore.NewGore(npc.position + offset, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/BroodGore3"), 1f + (float)Main.rand.NextDouble() * 0.5f);
@@ -359,6 +368,7 @@ namespace AAMod.NPCs.Bosses.Broodmother
         {
             spriteEffects = npc.spriteDirection == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         }
+
         public void MoveToPoint(Vector2 point)
         {
             float moveSpeed = 9f;
