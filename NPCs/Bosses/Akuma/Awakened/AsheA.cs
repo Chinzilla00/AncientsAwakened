@@ -75,7 +75,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
 
             if (!NPC.AnyNPCs(ModContent.NPCType<AkumaA>()))
             {
-                projectile.Kill()
+                projectile.Kill();
             }
         }
 

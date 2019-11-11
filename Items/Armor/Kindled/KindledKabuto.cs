@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Kindled
@@ -30,7 +31,7 @@ namespace AAMod.Items.Armor.Kindled
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = Lang.ArmorBonus("KindledKabutoBonus");
+			player.setBonus = Language.GetTextValue("Mods.AAMod.Common.KindledKabutoBonus");
             player.endurance *= 1.05f;
             player.GetModPlayer<AAPlayer>().kindledSet = true;
         }

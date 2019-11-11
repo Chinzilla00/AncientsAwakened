@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Radium
@@ -41,7 +42,7 @@ Shines with the light of a starry night sky");
 		public override void UpdateArmorSet(Player player)
 		{
             const float effectRange = 500;
-            player.setBonus = Lang.ArmorBonus("RadiumHelmetBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.RadiumHelmetBonus");
             if (Main.netMode != 0)
             {
                 for (int p = 0; p < Main.player.Length; p++)

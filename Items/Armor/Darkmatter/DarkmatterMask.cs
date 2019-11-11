@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Darkmatter
 {
@@ -60,7 +61,7 @@ Dark, yet still barely visible");
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = Lang.ArmorBonus("DarkmatterMaskBonus1") + (int)(100 * player.magicDamage) + Lang.ArmorBonus("DarkmatterMaskBonus2") + player.magicCrit + Lang.ArmorBonus("DarkmatterMaskBonus3");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DarkmatterMaskBonus1") + (int)(100 * player.magicDamage) + " " + Language.GetTextValue("Mods.AAMod.Common.DarkmatterMaskBonus2") + Language.GetTextValue("Mods.AAMod.Common.DarkmatterMaskBonus3");
             player.GetModPlayer<DarkmatterMaskEffects>().setBonus = true;
             player.GetModPlayer<DarkmatterMaskEffects>().sunSiphon = false;
             player.armorEffectDrawShadowLokis = true;

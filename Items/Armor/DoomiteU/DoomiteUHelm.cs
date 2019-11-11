@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.DoomiteU
@@ -31,14 +32,14 @@ namespace AAMod.Items.Armor.DoomiteU
 
 		public override void UpdateArmorSet(Player player)
 		{
-		    player.setBonus = Lang.ArmorBonus("DoomiteUHelmBonus");
-            player.maxMinions += 1;
+		    player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DoomiteUHelmBonus");
+            player.maxMinions += 2;
+			player.minionKB += 1f;
         }
 		
 		public override void UpdateEquip(Player player)
 		{
             player.minionDamage += 0.05f;
-			player.minionKB += 1f;
 		}
 		
 		public override void AddRecipes()

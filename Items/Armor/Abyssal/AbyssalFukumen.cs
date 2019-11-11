@@ -1,4 +1,5 @@
 using Terraria;
+using Terraria.Localization;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -39,7 +40,7 @@ Weightless as shadow itself");
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = Lang.ArmorBonus("AbyssalBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.AbyssalBonus");
             player.GetModPlayer<AAPlayer>().depthSet = true;
             player.aggro -= 3;
             player.ammoCost80 = true;

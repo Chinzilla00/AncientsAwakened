@@ -450,6 +450,7 @@ ItemTooltip.AbyssalGi=增加40%移动速度\n如暗影般没有质量
 ItemName.AbyssalHakama=沉渊袴裤
 ItemTooltip.AbyssalHakama=增加30%移动速度\n如暗影般没有质量
 
+Common.AbyssalBonus=你的远程攻击造成九头蛇毒\n减少20%弹药消耗\n敌人减少瞄准你的可能性
 
 // AAMod.Items.Armor.Assassin
 
@@ -463,6 +464,7 @@ ItemTooltip.AssassinHood=增加13%远程/近战伤害和暴击率\n子夜魅影�
 ItemName.AssassinShirt=子夜刺客紧身衣
 ItemTooltip.AssassinShirt=增加14%远程/近战伤害和暴击率\n减少20%弹药消耗\n子夜魅影融入深色装备中
 
+Common.AssassinBonus=增加30%近战速度和弹药速度\n你使用近战武器时有几率投掷匕首\n你使用远程武器时有几率发射额外箭矢\n匕首/箭矢会削减敌人20防御并增加10%受到的伤害
 
 // AAMod.Items.Armor.Atlantean
 
@@ -476,6 +478,7 @@ ItemTooltip.AtlanteanHelm=减少15%魔法消耗\n允许在水下呼吸
 ItemName.AtlanteanPlate=亚特兰蒂斯胸甲
 ItemTooltip.AtlanteanPlate=增加15%魔法伤害\n亚特兰蒂斯之力在其中颤动
 
+Common.AtlanteanBonus=完全处于液体中时, 你的魔法能力和防御力提升
 
 // AAMod.Items.Armor.Blazing
 
@@ -489,6 +492,30 @@ ItemTooltip.BlazingKabuto=增加2%伤害减免\n在燎日之焰中锻造
 ItemName.BlazingSuneate=怒炎臑当
 ItemTooltip.BlazingSuneate=增加2%伤害减免\n在燎日之焰中锻造\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
 
+Common.BlazingBonus=增加5%伤害减免\n敌人更容易瞄准你\n你挥动的武器对敌人造成燃烧
+
+// AAMod.Items.Armor.Champion
+
+ItemName.ChampionChestplate=捍卫者胸甲
+ItemTooltip.ChampionChestplate=增加15%伤害\n纵横于这片土地上的捍卫者盔甲
+
+ItemName.ChampionGreaves=捍卫者护胫
+ItemTooltip.ChampionGreaves=增加50%移动速度\n增加15%伤害\n纵横于这片土地上的捍卫者盔甲
+
+ItemName.ChampionHeaddress=捍卫者头饰
+ItemTooltip.ChampionHeaddress=增加70%召唤物伤害\n增加10%非召唤物伤害\n+7召唤上限\n+2哨兵上限\n纵横于这片土地上的捍卫者盔甲
+
+ItemName.ChampionHelmet=捍卫者巨盔
+ItemTooltip.ChampionHelmet=增加35%近战伤害和暴击率\n增加10%非近战伤害\n增加18%近战速度\n纵横于这片土地上的捍卫者盔甲
+
+ItemName.ChampionHood=捍卫者兜帽
+ItemTooltip.ChampionHood=增加32%魔法伤害\n增加10%非魔法伤害\n增加25%魔法暴击率\n减少25%魔法消耗\n+150魔力上限\n纵横于这片土地上的捍卫者盔甲
+
+ItemName.ChampionMask=捍卫者面具
+ItemTooltip.ChampionMask=增加55%远程伤害\n增加44%远程暴击率\n增加10%非远程伤害\n减少25%弹药消耗\n纵横于这片土地上的捍卫者盔甲
+
+Common.ChampionHeaddressBonus=男爵兔兔作为你的盟友而战\n随着你生命值减少, 男爵兔兔的攻击能力会强化.
+
 // AAMod.Items.Armor.Chaos
 
 ItemName.ChaosDou=混元道甲
@@ -500,20 +527,22 @@ ItemTooltip.ChaosFukumen=增加24%远程暴击率
 ItemName.ChaosGreaves=混元护胫
 ItemTooltip.ChaosGreaves=增加10%移动速度\n增加7%伤害
 
-ItemName.ChaosHelm=混元头盔
-ItemTooltip.ChaosHelm=增加15%近战速度
-
 ItemName.ChaosKabuto=混元盔胄
 ItemTooltip.ChaosKabuto=增加10%近战伤害
 
 ItemName.ChaosMask=混元面具
 ItemTooltip.ChaosMask=减少30%魔法消耗\n允许你在水下呼吸
 
-ItemName.ChaosSkull=混元龙颅
-ItemTooltip.ChaosSkull=增加24%远程伤害
-
 ItemName.ChaosVisor=混元视镜
 ItemTooltip.ChaosVisor=增加30%召唤伤害
+
+Common.ChaosFukumenBonus=你的远程攻击混合燎狱龙炎和九头蛇毒\n增加25%远程伤害\n敌人更不容易瞄准你\n夜视和狩猎效果\n减少25%弹药消耗
+
+Common.ChaosKabutoBonus=增加10%近战速度\n敌人更容易瞄准你\n攻击你的敌人受到灼伤\n你挥动武器造成燎狱龙炎和九头蛇毒
+
+Common.ChaosMaskBonus=完全浸入水中时, 你的魔法能力极大提升\n你可以畅通无阻的游泳
+
+Common.ChaosVisorBonus=+4召唤上限\n一个虚空猎手为你而战
 
 // AAMod.Items.Armor.PerfectChaos
 
@@ -534,6 +563,12 @@ ItemTooltip.PerfectChaosVisor=增加45%远程伤害\n增加38%远程暴击率\n�
 
 ItemName.PerfectChaosPlate=冥昧抹杀者胸甲
 ItemTooltip.PerfectChaosPlate=增加15%伤害减免\n允许你在水下呼吸
+
+Common.PerfectChaosHoodBonus=“混沌赐予你力量”\n随着你的生命减少， 你的魔法伤害增加， 魔力消耗降低\n你的魔法攻击对敌人造成冥昧业火
+Common.PerfectChaosKabutoBonus=“混沌赐予你力量”\n随着你的生命减少， 你的近战伤害和防御力增加\n你的近战攻击对敌人造成冥昧业火
+Common.PerfectChaosMaskBonus=“混沌赐予你力量”\n随着你的生命减少， 你的召唤物伤害增加\n你的召唤物攻击对敌人造成冥昧业火
+Common.PerfectChaosVisorBonus=“混沌赐予你力量”\n随着你的生命减少， 你的远程伤害和暴击率增加\n你的远程攻击对敌人造成冥昧业火
+
 
 // AAMod.Items.Armor.Darkmatter
 
@@ -559,6 +594,15 @@ ItemTooltip.DarkmatterMask=增加9%魔法伤害\n黑暗，依旧触不可及
 ItemName.DarkmatterVisor=暗物质头饰
 ItemTooltip.DarkmatterVisor=增加10%远程伤害\n黑暗，依旧触不可及
 
+Common.DarkmatterHeaddressBonus=你的召唤物有机会消灭敌人的弹幕
+
+Common.DarkmatterHelmetBonus=你和附近的盟友减少40%受到的伤害
+
+Common.DarkmatterMaskBonus1=对周围的敌人造成伤害\n造成伤害的2%会回复你的生命\n造成
+Common.DarkmatterMaskBonus2=魔法伤害\n
+Common.DarkmatterMaskBonus3=%暴击率
+
+Common.DarkmatterVisorBonus=你的头上生成一个不稳定的传送门\n当你射击时会发射黑暗爆破弹. \n黑暗爆破弹伤害为你武器的伤害的30%, \n可以弱化敌人, 有机会对敌人造成黑暗封锁
 
 // AAMod.Items.Armor.Deathly
 
@@ -571,6 +615,8 @@ ItemTooltip.DeathlyRibguard=增加9%远程伤害
 
 ItemName.DeathlySkull=死寂头护骨
 ItemTooltip.DeathlySkull=增加9%远程伤害
+
+Common.DeathlySkullBonus=如死般默然, 使得怪物更少瞄准你\n减少20%弹药消耗
 
 
 // AAMod.Items.Armor.Demon
@@ -585,6 +631,8 @@ ItemTooltip.DemonGarb=增加9%召唤伤害
 ItemName.DemonHood=恶魔兜帽
 ItemTooltip.DemonHood=增加9%召唤伤害\n+2召唤上限
 
+Common.DemonHoodBonus=你的召唤物会让敌人燃烧\n你周围总会有一个小鬼恶魔\n小鬼恶魔不占用你的召唤上限
+
 
 // AAMod.Items.Armor.Depth
 
@@ -597,6 +645,8 @@ ItemTooltip.DepthGi=增加40%移动速度\n如暗影般轻盈
 
 ItemName.DepthHakama=深暗袴裤
 ItemTooltip.DepthHakama=增加15%移动速度\n如暗影般轻盈
+
+Common.DepthFukumenBonus=怪物减少攻击你的可能性\n减少20%弹药消耗\n夜视
 
 
 // AAMod.Items.Armor.Dev.Alphakip
@@ -611,45 +661,9 @@ ItemTooltip.FishDiverJacketA=这件夹克隔热良好，你可以保持干燥地
 ItemName.FishDiverMaskA=如鱼得水呼吸头盔
 ItemTooltip.FishDiverMaskA=我听说你喜欢宝可梦沼跃鱼？\n增加20%近战/远程伤害和暴击率\n增加13%伤害减免和近战速度\n允许水下呼吸
 
-
-// AAMod.Items.Armor.Dev.Alphakip.Shiny
-
-
-ItemName.SFishDiverBootsA=闪鱼入水脚蹼
-ItemTooltip.SFishDiverBootsA=现在有脚蹼了!\n增加20%近战/远程伤害和暴击率\n增加13%伤害减免和近战速度\n增加35%移动速度\n减少20%弹药消耗
-
-ItemName.SFishDiverJacketA=闪鱼入水紧身夹克
-ItemTooltip.SFishDiverJacketA=这件夹克隔热良好，你可以保持干燥地坐在海里\n增加20%近战/远程伤害和暴击率\n增加13%伤害减免和近战速度\n减少25%弹药消耗
-
-ItemName.SFishDiverMaskA=闪鱼入水呼吸头盔
-ItemTooltip.SFishDiverMaskA=我听说你喜欢宝可梦沼跃鱼？\n增加20%近战/远程伤害和暴击率\n增加13%伤害减免和近战速度\n允许水下呼吸
-
-
-// AAMod.Items.Armor.Dev.Moon
-
-
-ItemName.MoonBootsA=月亮魔法靴
-ItemTooltip.MoonBootsA=增加24%魔法伤害和暴击率\n+200魔力上限\n减少15%魔力消耗\n增加28%移动速度
-
-ItemName.MoonHoodA=月亮魔法面罩
-ItemTooltip.MoonHoodA=增加24%魔法伤害和暴击率\n+200魔力上限\n减少15%魔力消耗
-
-ItemName.MoonRobeA=月亮魔法长袍
-ItemTooltip.MoonRobeA=增加24%魔法伤害和暴击率\n+200魔力上限\n减少15%魔力消耗
-
-// AAMod.Items.Armor.Dev.Tied
-
-ItemName.TiedsLeggingsA=Tied阴森灵长裤
-ItemTooltip.TiedsLeggingsA=如幽灵般的完美跟踪\n增加25%近战伤害和暴击率\n增加13%近战速度\n增加50%移动速度
-
-ItemName.TiedsMaskA=Tied阴森灵颅骨
-ItemTooltip.TiedsMaskA=如幽灵般的完美跟踪\n增加25%近战伤害和暴击率\n增加13%近战速度
-
-ItemName.TiedsSuitA=Tied阴森灵上装
-ItemTooltip.TiedsSuitA=如幽灵般的完美跟踪\n增加24%近战伤害和暴击率
+Common.DepthFukumenBonus=怪物减少攻击你的可能性\n减少20%弹药消耗\n夜视
 
 // AAMod.Items.Armor.Doomite
-
 
 ItemName.DoomiteBreastplate=厄劫护胸
 ItemTooltip.DoomiteBreastplate=+1召唤上限
@@ -660,6 +674,7 @@ ItemTooltip.DoomiteGreaves=+1召唤上限
 ItemName.DoomiteVisor=厄劫面具
 ItemTooltip.DoomiteVisor=+1召唤上限
 
+Common.DoomiteVisorBonus=+1召唤上限\n一个虚空搜索者为你而战
 
 // AAMod.Items.Armor.DoomiteU
 
@@ -672,6 +687,7 @@ ItemTooltip.DoomiteUHelm=增加5%召唤伤害
 ItemName.DoomiteUPlate=暗劫末日胸甲
 ItemTooltip.DoomiteUPlate=增加6%召唤伤害
 
+Common.DoomiteUHelmBonus=+2召唤上限\n提升你的召唤物击退
 
 // AAMod.Items.Armor.Doomsday
 
@@ -687,6 +703,9 @@ ItemTooltip.DoomsdayHelmet=增加25%魔法伤害\增加18%魔法暴击率\n装�
 ItemName.DoomsdayLeggings=末日突击护胫
 ItemTooltip.DoomsdayLeggings=增加18%移动速度\n增加20%召唤物伤害\n装甲内栖宿着毁灭行星之力
 
+Common.DoomsdayMaskBonus=生命终结系统启动\n你可以探测到周围所有的敌对生物\n增强黑暗中的视觉能力\n你的召唤物对敌人造成一段时间的防御力削弱\n+5召唤上限
+Common.DoomsdayHelmetBonus=生命终结系统启动\n你可以探测到周围所有的敌对生物\n增强黑暗中的视觉能力\n你的魔法攻击对敌人造成一段时间的防御力削弱\n减少30%魔力消耗
+
 
 // AAMod.Items.Armor.Draco
 
@@ -700,6 +719,7 @@ ItemTooltip.DracoLeggings=增加16%移动速度\n增加16%近战速度\n增加10
 ItemName.DracoPlate=炙戮道甲
 ItemTooltip.DracoPlate=增加25%近战伤害\n增加10%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
 
+Common.DracoHelmBonus=“狂焰之怒充满了你的身体”\n你免疫所有冰系debuff\n你的灵魂灼烧如同狂焰之怒\n你的近战攻击对目标造成破晓
 
 // AAMod.Items.Armor.Dread
 
@@ -713,6 +733,7 @@ ItemTooltip.DreadHelm=增加24%远程暴击率\n增加20%移动速度\n装甲中
 ItemName.DreadPlate=惧之月武服
 ItemTooltip.DreadPlate=增加35%远程伤害\n增加20%移动速度\n装甲中栖宿着潭渊的沉渊之怒
 
+Common.DreadHelmBonus=“沉渊之怒让你大发雷霆”\n你免疫所有火系debuff\n你如天上恐惧之月般发光\n你的远程伤害对目标造成蚀月
 
 // AAMod.Items.Armor.Dynaskull
 
@@ -726,6 +747,8 @@ ItemTooltip.DynaskullGreaves=增加10%远程暴击率
 ItemName.DynaskullRibguard=王骨护胸
 ItemTooltip.DynaskullRibguard=增加15%远程伤害
 
+Common.DynaskullBonus=你的远程弹道相当强大, 震荡力使得目标混乱
+
 
 // AAMod.Items.Armor.Fleshrend
 
@@ -738,6 +761,8 @@ ItemTooltip.FleshrendHelm=增加7%近战伤害
 
 ItemName.FleshrendPlate=戮肉者胸甲
 ItemTooltip.FleshrendPlate=增加7%近战伤害
+
+Common.FleshrendHelmBonus=受到敌人攻击会产生血泉喷裂对周围敌人造成伤害\n提高生命回复速度
 
 
 // AAMod.Items.Armor.Fulgurite
@@ -771,6 +796,8 @@ ItemTooltip.ShroomPants=增加2%魔力回复
 ItemName.ShroomShirt=荧菌衫
 ItemTooltip.ShroomShirt=增加2%魔力回复
 
+Common.ShroomHatBonus=你对法力病免疫
+
 
 // AAMod.Items.Armor.GoblinSlayer
 
@@ -784,6 +811,8 @@ ItemTooltip.GoblinSlayerGreaves=对哥布林族的巨大仇恨萦绕着这个护
 ItemName.GoblinSlayerHelm=哥布林杀手头盔
 ItemTooltip.GoblinSlayerHelm=对哥布林族的巨大仇恨萦绕着这个头盔
 
+Common.GoblinSlayerHelmBonus=对哥布林增加500%伤害和击退\n增加80%对哥布林的伤害减免\n“我只想猎杀哥布林”
+
 // AAMod.Items.Armor.Hoodlum
 
 ItemName.HoodlumHood=跳跳流氓兔兜帽
@@ -794,6 +823,8 @@ ItemTooltip.HoodlumPants=增加10%移动速度\n增加9%近战暴击率\n+1召�
 
 ItemName.HoodlumShirt=跳跳流氓兔衬衫
 ItemTooltip.HoodlumShirt=增加10%近战速度\n+1召唤上限\n敌人更容易瞄准你\n疯狂的跳吧
+
+Common.HoodlumHoodBonus=生命值低于一半时， 移动速度、近战伤害和召唤伤害将增加50%
 
 
 // AAMod.Items.Armor.Heartstone
@@ -821,6 +852,8 @@ ItemTooltip.ImpGarb=增加7%召唤伤害
 ItemName.ImpHood=小鬼兜帽
 ItemTooltip.ImpHood=增加7%召唤伤害\n+1召唤上限
 
+Common.ImpHoodBonus=你的召唤物对敌人造成燃烧
+
 // AAMod.Items.Armor.Leviathan
 
 ItemName.LeviathanGreaves=利维坦护胫
@@ -844,6 +877,8 @@ ItemTooltip.KindledKabuto=在燎日之焰中锻造
 
 ItemName.KindledSuneate=激燃臑当
 ItemTooltip.KindledSuneate=在燎日之焰中锻造\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
+
+Common.KindledKabutoBonus=增加5%伤害减免\n你挥动的武器对敌人造成灼伤
 
 
 // AAMod.Items.Armor.Madness
@@ -896,6 +931,8 @@ ItemTooltip.MushiumPants=增加2%生命回复
 ItemName.MushiumShirt=赤孢衫
 ItemTooltip.MushiumShirt=增加2%生命回复
 
+Common.MushiumHatBonus=药水病的时间减少25%
+
 
 // AAMod.Items.Armor.Nightmare
 
@@ -921,6 +958,8 @@ ItemTooltip.NightsHelm=增加9%近战速度
 ItemName.NightsPlate=夜之护胸
 ItemTooltip.NightsPlate=增加9%近战速度
 
+Common.NightsHelmBonus=受到敌人攻击让你获得速度狂潮, 短时间内提高移动速度\n增加22%移动速度
+
 
 // AAMod.Items.Armor.Ocean
 
@@ -933,6 +972,8 @@ ItemTooltip.OceanHelm=增加20魔力上限\n增加2%魔法伤害
 
 ItemName.OceanShirt=海洋胸甲
 ItemTooltip.OceanShirt=增加20魔力上限\n增加2%魔法伤害
+
+Common.OceanHelmBonus=完全处于水中时增加20%魔法伤害并且减少15%魔力消耗
 
 // AAMod.Items.Armor.Olympian
 
@@ -955,6 +996,8 @@ ItemName.OroborosBoots=虚环木护胫
 ItemName.OroborosChestplate=虚环木胸甲
 
 ItemName.OroborosHelmet=虚环木头盔
+
+Common.OroborosHelmetBonus=+3防御力
 
 
 // AAMod.Items.Armor.Paints
@@ -999,6 +1042,16 @@ ItemTooltip.UraniumPaint=+100魔力上限\n增加40%召唤伤害
 ItemName.YttriumPaint=钇土脸部涂装
 ItemTooltip.YttriumPaint=+50魔力上限\n增加8%移动速度\n增加15%召唤伤害
 
+Common.AdamantitePaintBonus=+4召唤上限
+Common.ChlorophytePaintBonus=+6召唤上限\n向周围的敌人发射水晶叶
+Common.CobaltPaintBonus=+2召唤上限
+Common.HallowedPaintBonus=+6召唤上限
+Common.MythrilPaintBonus=+3召唤上限
+Common.OrichalcumPaintBonus=花瓣会落在你的目标身上, 造成额外伤害\n+2召唤上限
+Common.PalladiumPaintBonus=+1召唤上限\n击中敌人后, 极大增加生命回复
+Common.TerraPaintBonus=+7召唤上限
+Common.TitaniumPaintBonus=+4召唤上限\n你的召唤物攻击敌人后你获得短暂无敌
+
 
 // AAMod.Items.Armor.Paladin
 
@@ -1037,6 +1090,17 @@ ItemTooltip.RadiumMask=增加12%魔法伤害\n你就是夜空中最闪亮的一�
 ItemName.RadiumPlatemail=镭光板甲
 ItemTooltip.RadiumPlatemail=增加25%伤害\n你就是夜空中最闪亮的一颗星
 
+Common.RadiumHatBonus1=召唤物有几率对周围的敌人也造成伤害\n
+Common.RadiumHatBonus2=召唤伤害
+
+Common.RadiumHeadgearBonus=你的头上生成一个太阳传送门\n你射击时，会发出太阳爆破弹\n太阳爆破弹伤害为你的武器的伤害50%, 会对敌人造成燃烧
+
+Common.RadiumHelmetBonus=附近的敌人将会受到更多的伤害
+
+Common.RadiumMaskBonus1=对周围的敌人造成伤害\n造成伤害的50%将回复魔力值\n如果处于最大魔力值时, 你获得魔力超载buff\n造成
+Common.RadiumMaskBonus2=魔法伤害\n
+Common.RadiumMaskBonus3=% 暴击率
+
 
 // AAMod.Items.Armor.Raider
 
@@ -1048,6 +1112,8 @@ ItemName.RaiderHelm=突袭者护头
 
 ItemName.RaiderLegs=突袭者护胫
 ItemTooltip.RaiderLegs=增加10%近战暴击率\n减少10%移动速度
+
+Common.RaiderChestBonus=你不会被击退\n随着你的生命值降低, 你的伤害减免将提高
 
 
 // AAMod.Items.Armor.Starcloud
@@ -1106,6 +1172,8 @@ ItemTooltip.TribalHat=增加8%魔法暴击率\n+20魔力上限
 
 ItemName.TribalKilt=部落褶裙
 ItemTooltip.TribalKilt=增加8%魔法暴击率\n+20魔力上限
+
+Common.TribalHatBonus=你有幸获得大自然的馈赠, 让你自动使用魔力药剂\n减少30%魔法消耗
 
 
 // AAMod.Items.Armor.TrueAbyssal
@@ -1305,6 +1373,8 @@ ItemName.VikingHelm=维京海盗头盔
 
 ItemName.VikingPlate=维京海盗胸甲
 
+Common.VikingPlateBonus=增加4%伤害减免
+
 
 // AAMod.Items.Armor.Witch
 
@@ -1317,6 +1387,8 @@ ItemTooltip.WitchHood=+120魔力上限\n减少20%魔力消耗\n+2召唤上限\n�
 
 ItemName.WitchRobe=愤怒女巫长袍
 ItemTooltip.WitchRobe=增加10%魔法/召唤伤害\n增加10%暴击率\n+2召唤上限\n被至尊龙侍从的灼热灵魂所迷恋的长袍
+
+Common.WitchHoodBonus=炽痛与灼烧\n增加20%魔法/召唤伤害\n+4召唤上限\n一个狱焰之灵保护着你\n越少的法力, 使得狱焰之灵更强大
 
 
 // AAMod.Items.Armor.Ytrium
@@ -1808,6 +1880,8 @@ ItemName.ForsakenFragment=逝落碎片
 ItemName.ArtifactOfJudgement=裁决造物
 ItemTooltip.ArtifactOfJudgement=你受到伤害时会进行充能\n充能值达到250后会召唤一只“裁决之眼”并重置充能\n当裁决之眼存在时，你的主要攻击伤害和移动速度增加
 
+Common.ArtifactOfJudgementInfo=充能值为
+
 ItemName.DesertStaff=大漠权杖
 ItemTooltip.DesertStaff=发射会在击中时爆裂出反弹球的附魔沙矢
 
@@ -1835,6 +1909,8 @@ ItemTooltip.CursedFury=50%几率不消耗凝胶
 
 ItemName.ArtifactOfGuilt=罪域魂物
 ItemTooltip.ArtifactOfGuilt=你受到伤害时会进行充能\n充能值达到250后会召唤一只“逝落之眼”并重置充能\n当逝落之眼存在时，你的主要攻击伤害和移动速度增加
+
+Common.ArtifactOfGuiltInfo=充能值为
 
 ItemName.FAnubisBag=宝藏袋
 
@@ -2133,6 +2209,8 @@ ItemName.CovetiteCoin=欲晶币
 ItemName.DesireCharm=贪欲挂饰
 ItemTooltip.DesireCharm=拾取硬币时增加1%伤害持续4秒\n再拾取时再增加1%伤害并重置计时\n伤害增加上限20%
 
+Common.DesireCharmInfo=当前伤害提升: +
+
 ItemName.GildedGlock=鎏金格洛克手枪
 ItemTooltip.GildedGlock=使用钱币作为子弹
 
@@ -2166,6 +2244,8 @@ ItemName.OreStaff=矿石法杖
 
 ItemName.DesireTalisman=贪欲护身符
 ItemTooltip.DesireTalisman=拾取硬币时增加1%伤害持续4秒\n再拾取时再增加1%伤害并重置计时\n伤害增加上限20%\n提升金币拾取范围\n商店会打折\n攻击敌人会掉落额外的金币
+
+Common.DesireTalismanInfo=当前伤害提升: +
 
 BuffName.TalismanBuff=冷酷金欲
 BuffDescription.TalismanBuff=钱！好多的钱！大量的钱！
@@ -2300,6 +2380,25 @@ ItemTooltip.RajahPelt=令人惊讶的毛皮耐久度
 
 ItemName.RajahCape=王公兔的至尊斗篷
 ItemTooltip.RajahCape=每损失10％生命值，你获得以下效果:\n1. 最高伤害提升类型再获得12%伤害加成\n2. 提升5%移动速度\n3. 增加4%伤害减免\n复仇腰带的所有效果\n“你被无辜的保护者视为合格的继承者”
+
+Common.RajahSPTooltipMelee=近战
+
+Common.RajahSPTooltipRanged=远程
+
+Common.RajahSPTooltipMagic=魔法
+
+Common.RajahSPTooltipSummoning=召唤
+
+Common.RajahSPTooltipThrowing=投掷
+
+Common.RajahSPDamageInfo=伤害
+
+Common.RajahSPDamageBoost=当前伤害提升: +
+
+Common.RajahSPSpeedBoost=当前速度增加: +
+
+Common.RajahSPDamageResistance=当前伤害减免增加: +
+
 
 // AAMod.Items.Boss.Rajah.Supreme
 

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Darkmatter
@@ -47,7 +48,7 @@ Dark, yet still barely visible");
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = Lang.ArmorBonus("DarkmatterVisorBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DarkmatterVisorBonus");
             player.GetModPlayer<VisorEffects>().setBonus = true;
             player.GetModPlayer<VisorEffects>().sunPortal = false;
             player.armorEffectDrawShadowLokis = true;

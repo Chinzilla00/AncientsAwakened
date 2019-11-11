@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace AAMod.Items.Boss.Anubis
 {
@@ -35,7 +36,7 @@ You will get major damage and speed boosts while Eye is active");
 		public override void ModifyTooltips(List<TooltipLine> tooltips)
 		{
 			Player player = Main.player[Main.myPlayer];
-			string text1 = "Charge is " + player.GetModPlayer<AAPlayer>().artifactJudgementCharge;
+			string text1 = Language.GetTextValue("Mods.AAMod.Common.ArtifactOfJudgementInfo") + player.GetModPlayer<AAPlayer>().artifactJudgementCharge;
             TooltipLine line = new TooltipLine(mod, "text1", text1)
             {
                 overrideColor = Color.Yellow

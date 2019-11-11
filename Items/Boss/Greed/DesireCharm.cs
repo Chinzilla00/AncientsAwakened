@@ -1,5 +1,6 @@
 using Terraria.ModLoader;
 using Terraria;
+using Terraria.Localization;
 using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Greed
@@ -30,7 +31,7 @@ Caps out at 20% damage");
             Player player = Main.player[item.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
-            TooltipLine DamageTooltip = new TooltipLine(mod, "Damage", Lang.GreedTooltip("CurrentDamageBoost:+") + modPlayer.GreedyDamage + "%");
+            TooltipLine DamageTooltip = new TooltipLine(mod, "Damage", Language.GetTextValue("Mods.AAMod.Common.DesireCharmInfo") + modPlayer.GreedyDamage + "%");
             tooltips.Add(DamageTooltip);
 
             base.ModifyTooltips(tooltips);

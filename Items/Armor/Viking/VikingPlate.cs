@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Viking
 {
@@ -34,7 +35,7 @@ namespace AAMod.Items.Armor.Viking
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = Lang.ArmorBonus("VikingPlateBonus");
+			player.setBonus = Language.GetTextValue("Mods.AAMod.Common.VikingPlateBonus");
             player.endurance += .04f;
         }
 		

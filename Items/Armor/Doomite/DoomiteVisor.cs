@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Doomite
 {
@@ -34,7 +35,7 @@ namespace AAMod.Items.Armor.Doomite
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = Lang.ArmorBonus("DoomiteVisorBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DoomiteVisorBonus");
             player.maxMinions += 1;
             player.GetModPlayer<AAPlayer>().doomite = true;
             if (player.whoAmI == Main.myPlayer)

@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.PerfectChaos
 {
@@ -44,7 +45,7 @@ The power of discordian rage radiates from this armor");
 		}
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = Lang.ArmorBonus("PerfectChaosKabutoBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.PerfectChaosKabutoBonus");
             player.GetModPlayer<AAPlayer>().perfectChaosMe = true;
             player.AddBuff(mod.BuffType("ChaosWrath"), 2);
         }

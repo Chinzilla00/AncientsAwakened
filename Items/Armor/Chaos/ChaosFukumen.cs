@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Chaos
 {
@@ -34,7 +35,7 @@ namespace AAMod.Items.Armor.Chaos
         }
 
         public override void UpdateArmorSet(Player player){
-            player.setBonus = Lang.ArmorBonus("ChaosFukumenBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.ChaosFukumenBonus");
             player.rangedDamage += .25f;
             player.aggro -= 7;
             player.GetModPlayer<AAPlayer>().ChaosRa = true;

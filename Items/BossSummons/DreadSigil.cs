@@ -84,7 +84,7 @@ Non-Consumable");
                 }
 				if (NPC.AnyNPCs(mod.NPCType("Yamata")))
 				{
-					if(player.whoAmI == Main.myPlayer) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DreadFalse2"), new Color(45, 46, 70), false);
+					if(player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DreadFalse2"), new Color(45, 46, 70), false);
 					return false;
 				}
                 if (NPC.AnyNPCs(mod.NPCType("YamataA")))

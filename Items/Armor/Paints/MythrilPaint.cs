@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Paints
 {
@@ -41,8 +42,7 @@ namespace AAMod.Items.Armor.Paints
 
         public override void UpdateArmorSet(Player player)
         {
-
-            player.setBonus = Lang.ArmorBonus("MythrilPaintBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.MythrilPaintBonus");
             player.maxMinions += 3;
         }
 

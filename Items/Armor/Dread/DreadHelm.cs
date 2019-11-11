@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Dread
@@ -53,7 +54,7 @@ The abyssal wrath of the Mire rests in this armor");
 		public override void UpdateArmorSet(Player player)
 		{
 			
-			player.setBonus = Lang.ArmorBonus("DreadHelmBonus");
+			player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DreadHelmBonus");
 
             player.buffImmune[24] = true;
             player.buffImmune[39] = true;

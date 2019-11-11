@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Paints
@@ -44,7 +45,7 @@ namespace AAMod.Items.Armor.Paints
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = Lang.ArmorBonus("ChlorophytePaintBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.ChlorophytePaintBonus");
             player.AddBuff(BuffID.LeafCrystal, 2);
             player.maxMinions += 6;
         }

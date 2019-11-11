@@ -1,5 +1,6 @@
 using Terraria.ModLoader;
 using Terraria;
+using Terraria.Localization;
 using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Greed.WKG
@@ -33,7 +34,7 @@ Hitting enemies will sometimes drop extra coins");
             Player player = Main.player[item.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 
-            TooltipLine DamageTooltip = new TooltipLine(mod, "Damage", Lang.GreedTooltip("CurrentDamageBoost:+") + modPlayer.GreedyDamage + "%");
+            TooltipLine DamageTooltip = new TooltipLine(mod, "Damage", Language.GetTextValue("Mods.AAMod.Common.DesireTalismanInfo") + modPlayer.GreedyDamage + "%");
             tooltips.Add(DamageTooltip);
 
             base.ModifyTooltips(tooltips);

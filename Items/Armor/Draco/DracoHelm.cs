@@ -3,6 +3,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Draco
@@ -74,7 +75,7 @@ The blazing fury of the Inferno rests in this armor");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = Lang.ArmorBonus("DracoHelmBonus");
+			player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DracoHelmBonus");
 
             player.buffImmune[46] = true;
             player.buffImmune[47] = true;
