@@ -56,24 +56,24 @@ Non-Consumable");
         {
             if (Main.dayTime)
             {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DreadTimeFalse"), new Color(45, 46, 70), false);
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DreadTimeFalse"), new Color(45, 46, 70), false);
                 return false;
             }
             if (player.GetModPlayer<AAPlayer>().ZoneMire)
             {
                 if (!player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake && !AAWorld.downedYamata)
                 {
-                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DreadFalse1"), Color.Indigo, false);
+                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DreadFalse1"), Color.Indigo, false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType("Yamata")))
                 {
-                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DreadFalse2"), new Color(45, 46, 70), false);
+                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DreadFalse2"), new Color(45, 46, 70), false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType("YamataA")))
                 {
-                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DreadFalse2"), new Color(146, 30, 68), false);
+                    if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DreadFalse2"), new Color(146, 30, 68), false);
                     return false;
                 }
                 if (NPC.AnyNPCs(mod.NPCType("YamataTransition")))
@@ -82,7 +82,7 @@ Non-Consumable");
                 }
                 return true;
             }
-            if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DreadMireFalse"), new Color(45, 46, 70), false);
+            if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DreadMireFalse"), new Color(45, 46, 70), false);
             return false;
         }
 		
