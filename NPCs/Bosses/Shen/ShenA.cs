@@ -701,8 +701,8 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public bool DownedRag => ThoriumMod.ThoriumWorld.downedRealityBreaker;
         public bool DownedScal => CalamityMod.World.CalamityWorld.downedSCal;
-        //public bool DownedMantid => GRealm.MWorld.downedMatriarch;
-        //public bool DownedNeb => Redemption.RedeWorld.downedNebuleus;
+        public bool DownedMantid => GRealm.MWorld.downedMatriarch;
+        public bool DownedNeb => Redemption.RedeWorld.downedNebuleus;
         public bool DownedOverseer => SpiritMod.MyWorld.downedOverseer;
         //public bool DownedDuo => JetshiftMod.JetshiftWorld.downedCosmicMystery;
 
@@ -724,13 +724,13 @@ namespace AAMod.NPCs.Bosses.Shen
                 Text.Add("Considering you put that angsty witch in her place, gotta hand it to ya.");
             }
 
-            if (AAMod.gRealmLoaded)// && DownedMantid)
+            if (AAMod.gRealmLoaded) && DownedMantid)
             {
                 a = true;
                 Text.Add("Seeing you squashed that oversided insect in the jungle, that's quite a head-turner.");
             }
 
-            if (AAMod.redeLoaded) // && DownedNeb)
+            if (AAMod.redeLoaded) && DownedNeb)
             {
                 a = true;
                 Text.Add("However, after you walloped that cosmic prude, even I was taken aback by that level of skill.");
