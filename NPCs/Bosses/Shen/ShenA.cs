@@ -724,13 +724,13 @@ namespace AAMod.NPCs.Bosses.Shen
                 Text.Add("Considering you put that angsty witch in her place, gotta hand it to ya.");
             }
 
-            if (AAMod.gRealmLoaded) && DownedMantid)
+            if (AAMod.gRealmLoaded && DownedMantid)
             {
                 a = true;
                 Text.Add("Seeing you squashed that oversided insect in the jungle, that's quite a head-turner.");
             }
 
-            if (AAMod.redeLoaded) && DownedNeb)
+            if (AAMod.redeLoaded && DownedNeb)
             {
                 a = true;
                 Text.Add("However, after you walloped that cosmic prude, even I was taken aback by that level of skill.");
