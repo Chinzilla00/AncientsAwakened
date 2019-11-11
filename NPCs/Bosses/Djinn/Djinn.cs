@@ -468,6 +468,11 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
             if (npc.life <= 0)
             {
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/DjinnGore1"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/DjinnGore2"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/DjinnGore3"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/DjinnGore4"), 1f);
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/DjinnGore5"), 1f);
                 for (int Loop = 0; Loop < 5; Loop++)
                 {
                     int d = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 0);
