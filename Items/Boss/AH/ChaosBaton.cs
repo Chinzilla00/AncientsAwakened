@@ -73,13 +73,14 @@ namespace AAMod.Items.Boss.AH
             return true;
         }
 
-        public override bool UseItem(Player player)
+        public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2)
+            if (player.altFunctionUse == 2 && player.controlUseItem && player.releaseUseItem)
             {
                 player.MinionNPCTargetAim();
+                player.UpdateMinionTarget();
             }
-            return base.UseItem(player);
+            return true;
         }
 
         public override void AddRecipes()

@@ -33,7 +33,6 @@ namespace AAMod.Projectiles.AH
 
         public override void AI()
         {
-            projectile.spriteDirection = projectile.velocity.X > 0 ? 1 : -1;
             if (projectile.frameCounter++ > 6)
             {
                 projectile.frame++;
@@ -90,10 +89,11 @@ namespace AAMod.Projectiles.AH
 			{
 				projectile.tileCollide = false;
 			}
-			for (int num645 = 0; num645 < 200; num645++)
+
+			if (player.HasMinionAttackTargetNPC)
 			{
-				NPC target = Main.npc[num645];
-				if (target.CanBeChasedBy(projectile, false))
+				NPC target = Main.npc[player.MinionAttackTargetNPC];
+                if (target.CanBeChasedBy(projectile, false))
 				{
 					float distance = Vector2.Distance(target.Center, projectile.Center);
 					if (((Vector2.Distance(projectile.Center, position) > distance && distance < radius) || !foundTarget) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, target.position, target.width, target.height))
@@ -101,6 +101,23 @@ namespace AAMod.Projectiles.AH
 						radius = distance;
 						position = target.Center;
 						foundTarget = true;
+					}
+				}
+			}
+			else
+			{
+				for (int num645 = 0; num645 < 200; num645++)
+				{
+					NPC target = Main.npc[num645];
+					if (target.CanBeChasedBy(projectile, false))
+					{
+						float distance = Vector2.Distance(target.Center, projectile.Center);
+						if (((Vector2.Distance(projectile.Center, position) > distance && distance < radius) || !foundTarget) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, target.position, target.width, target.height))
+						{
+							radius = distance;
+							position = target.Center;
+							foundTarget = true;
+						}
 					}
 				}
 			}
@@ -177,10 +194,12 @@ namespace AAMod.Projectiles.AH
 			}
 			if (foundTarget)
             {
+				projectile.spriteDirection = (position - projectile.Center).X > 0 ? 1 : -1;
                 projectile.rotation = (position - projectile.Center).ToRotation() + 1.57f;
 			}
 			else
 			{
+				projectile.spriteDirection = projectile.velocity.X > 0 ? 1 : -1;
 				projectile.rotation = projectile.velocity.ToRotation() + 1.57f;
 			}
 			if (projectile.ai[1] > 0f)

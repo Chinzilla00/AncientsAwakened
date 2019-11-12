@@ -57,8 +57,8 @@ BuffDescription.CyberClaw=召唤电子之爪为你而战
 BuffName.DemonBuff=恶魔领主
 BuffDescription.DemonBuff=你命令一个小恶魔跟在你周围
 
-BuffName.DemonMinion=小恶魔
-BuffDescription.DemonMinion=召唤一个小恶魔为你而战
+BuffName.DemonMinion=恶魔
+BuffDescription.DemonMinion=召唤一个恶魔为你而战
 
 BuffName.DestinedToDie=命终
 
@@ -166,6 +166,9 @@ BuffDescription.LungMinion=召唤一条古龙为你而战
 
 BuffName.MadnessElemental=癫狂元素
 BuffDescription.MadnessElemental=召唤一个癫狂元素为你而战
+
+BuffName.ManaOverload=魔法过载
+BuffDescription.ManaOverload=魔法攻击速度加倍
 
 BuffName.MB=月光蜂
 BuffDescription.MB=plz don't sue Erilipah
@@ -282,6 +285,9 @@ BuffDescription.TiedemiesBuff=“它为你照明”
 
 BuffName.Unstable=不安定
 BuffDescription.Unstable=Y你角色的c代o码de变得不un稳sta定ble
+
+BuffName.XiaoDoragon=小神龙
+BuffDescription.XiaoDoragon=召唤小冥昧龙为你而战
 
 BuffName.UnstableSoul=无法安定的灵魂
 BuffDescription.UnstableSoul=你现在变得空虚\n你的无敌帧更多但是减少防御
@@ -645,21 +651,6 @@ ItemTooltip.DepthGi=增加40%移动速度\n如暗影般轻盈
 
 ItemName.DepthHakama=深暗袴裤
 ItemTooltip.DepthHakama=增加15%移动速度\n如暗影般轻盈
-
-Common.DepthFukumenBonus=怪物减少攻击你的可能性\n减少20%弹药消耗\n夜视
-
-
-// AAMod.Items.Armor.Dev.Alphakip
-
-
-ItemName.FishDiverBootsA=如鱼得水脚蹼
-ItemTooltip.FishDiverBootsA=现在有脚蹼了!\n增加20%近战/远程伤害和暴击率\n增加13%伤害减免和近战速度\n增加35%移动速度\n减少20%弹药消耗
-
-ItemName.FishDiverJacketA=如鱼得水紧身夹克
-ItemTooltip.FishDiverJacketA=这件夹克隔热良好，你可以保持干燥地坐在海里\n增加20%近战/远程伤害和暴击率\n增加13%伤害减免和近战速度\n减少25%弹药消耗
-
-ItemName.FishDiverMaskA=如鱼得水呼吸头盔
-ItemTooltip.FishDiverMaskA=我听说你喜欢宝可梦沼跃鱼？\n增加20%近战/远程伤害和暴击率\n增加13%伤害减免和近战速度\n允许水下呼吸
 
 Common.DepthFukumenBonus=怪物减少攻击你的可能性\n减少20%弹药消耗\n夜视
 
@@ -4147,6 +4138,9 @@ ItemTooltip.Unreal=给可以附魔虚幻的武器附魔虚幻\n用魂右键武�
 
 ItemName.BlizzardDragonStaff=寒暴龙权杖
 ItemTooltip.BlizzardDragonStaff=召唤一只寒暴龙为你而战\n寒霜九头蛇 EX
+
+ItemName.ChaosRitualEX=冥昧神仪
+ItemTooltip.ChaosRitualEX=召唤小冥昧龙为你而战
 
 ItemName.CrimsonStaff=血虫权杖
 ItemTooltip.CrimsonStaff=召唤猩红血虫为你而战

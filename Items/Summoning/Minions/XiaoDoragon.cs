@@ -89,9 +89,9 @@ namespace AAMod.Items.Summoning.Minions
             {
                 projectile.tileCollide = false;
             }
-            for (int targetID = 0; targetID < 200; targetID++)
-            {
-                NPC target = Main.npc[targetID];
+            if (player.HasMinionAttackTargetNPC)
+			{
+				NPC target = Main.npc[player.MinionAttackTargetNPC];
                 if (target.CanBeChasedBy(projectile, false))
                 {
                     float Distance = Vector2.Distance(target.Center, projectile.Center);
@@ -102,7 +102,24 @@ namespace AAMod.Items.Summoning.Minions
                         hasTarget = true;
                     }
                 }
-            }
+			}
+			else
+			{
+				for (int targetID = 0; targetID < 200; targetID++)
+                {
+                    NPC target = Main.npc[targetID];
+                    if (target.CanBeChasedBy(projectile, false))
+                    {
+                        float Distance = Vector2.Distance(target.Center, projectile.Center);
+                        if (((Vector2.Distance(projectile.Center, TargetCenter) > Distance && Distance < minRange) || !hasTarget) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, target.position, target.width, target.height))
+                        {
+                            minRange = Distance;
+                            TargetCenter = target.Center;
+                            hasTarget = true;
+                        }
+                    }
+                }
+			}
             float inRange = Range;
             if (hasTarget)
             {
@@ -175,7 +192,15 @@ namespace AAMod.Items.Summoning.Minions
                 }
             }
 
-            projectile.spriteDirection = projectile.direction;
+            if(hasTarget)
+            {
+                projectile.spriteDirection = projectile.direction * ((TargetCenter - projectile.Center).X > 0? -1: 1);
+            }
+            else
+            {
+                projectile.spriteDirection = projectile.direction * (projectile.velocity.X > 0? -1: 1);
+            }
+            
 
             if (projectile.ai[1] > 0f)
             {
