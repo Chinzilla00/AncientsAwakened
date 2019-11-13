@@ -4161,7 +4161,7 @@ ItemName.DoomiteSignalC=厄劫雷达
 ItemTooltip.DoomiteSignalC=召唤一个厄劫雷达探针为你而战
 
 ItemName.DragonriderStaff=唤龙槊
-ItemTooltip.DragonriderStaff=召唤星焰龙为你而战
+ItemTooltip.DragonriderStaff=召唤狱焰龙为你而战
 
 ItemName.EaterStaff=吞噬者权杖
 ItemTooltip.EaterStaff=召唤一个恶魔吞噬者为你而战
@@ -4185,10 +4185,10 @@ ItemName.ProbeControlUnit=虚空探头控制单元
 ItemTooltip.ProbeControlUnit=召唤一个虚空探头为你而战
 
 ItemName.SkullStaff=骷髅魔杖
-ItemTooltip.SkullStaff=召唤一个水生骷髅为你而战\n(地牢骷髅掉落)
+ItemTooltip.SkullStaff=召唤一个地牢骷髅为你而战\n(地牢骷髅掉落)
 
 ItemName.TerraStaff=泰拉权杖
-ItemTooltip.TerraStaff=召唤一个泰拉恶魔为你而战
+ItemTooltip.TerraStaff=召唤一个泰拉邪恶女巫为你而战
 
 ItemName.TerraGauntlet=泰拉手套
 ItemTooltip.TerraGauntlet=召唤一个泰拉心球飞鱿，泰拉心之球，泰拉心球爬虫或者泰拉编织者为你而战
