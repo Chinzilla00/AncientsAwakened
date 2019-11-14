@@ -158,6 +158,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
+            npc.TargetClosest(true);
             Player player = Main.player[npc.target];
             Vector2 targetPos;
 
@@ -639,7 +640,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
         private bool AliveCheck(Player player)
         {
-            if ((!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f) && npc.localAI[3] > 0)
+            if ((!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f))
             {
                 npc.TargetClosest();
                 if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f)
