@@ -206,10 +206,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     break;
 
                 case 4: //shoot direct aim deathrays
-                    if (internalAI[1] == npc.ai[3] * 60)
+                    if (internalAI[1] == npc.ai[3] * 60 - 30)
                     {
                         if (Main.netMode != 1)
-                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center), mod.ProjectileType("YamataDeathray"), npc.damage / 4, 0f, Main.myPlayer, 0f, npc.whoAmI);
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(Main.player[npc.target].Center), mod.ProjectileType("YamataDeathraySmall"), npc.damage / 4, 0f, Main.myPlayer, 0f, npc.whoAmI);
                     }
                     if (++internalAI[1] > 360)
                     {

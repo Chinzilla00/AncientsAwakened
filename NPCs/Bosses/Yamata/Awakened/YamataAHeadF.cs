@@ -123,16 +123,20 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
                     //insert charging dust here
 
+                    if (internalAI[1] == 180 - 30)
+                    {
+                        if (Main.netMode != 1)
+                        {
+                            float ai0 = (float)Math.PI * 2 / 300 * (npc.ai[3] == 2 ? 1 : -1) * Math.Sign(npc.ai[1]);
+                            Projectile.NewProjectile(npc.Center, Vector2.UnitY, mod.ProjectileType("YamataWaveDeathraySmall"), npc.damage / 4, 0f, Main.myPlayer, ai0, npc.whoAmI);
+                        }
+                    }
+
                     if (++internalAI[1] > 180)
                     {
                         internalAI[0]++;
                         internalAI[1] = 0;
                         npc.netUpdate = true;
-                        if (Main.netMode != 1)
-                        {
-                            float ai0 = (float)Math.PI * 2 / 300 * (npc.ai[3] == 2 ? 1 : -1) * Math.Sign(npc.ai[1]);
-                            Projectile.NewProjectile(npc.Center, Vector2.UnitY, mod.ProjectileType("YamataWaveDeathray"), npc.damage / 4, 0f, Main.myPlayer, ai0, npc.whoAmI);
-                        }
                     }
                     break;
 
@@ -197,10 +201,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     break;
 
                 case 4: //shoot direct aim deathrays
-                    if (internalAI[1] == npc.ai[3] * 60)
+                    if (internalAI[1] == npc.ai[3] * 60 - 30)
                     {
                         if (Main.netMode != 1)
-                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(targetPlayer.Center), mod.ProjectileType("YamataDeathray"), npc.damage / 4, 0f, Main.myPlayer, 0f, npc.whoAmI);
+                            Projectile.NewProjectile(npc.Center, npc.DirectionTo(targetPlayer.Center), mod.ProjectileType("YamataDeathraySmall"), npc.damage / 4, 0f, Main.myPlayer, 0f, npc.whoAmI);
                     }
                     if (++internalAI[1] > 360)
                     {
