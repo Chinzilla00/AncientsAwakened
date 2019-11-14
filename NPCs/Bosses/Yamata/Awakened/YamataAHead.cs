@@ -149,6 +149,12 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             switch ((int)internalAI[0])
             {
                 case 0: //while other heads are charging
+                    if (internalAI[3] == 0)
+                    {
+                        internalAI[3] = 1;
+                        if (Main.netMode != 1)
+                            Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<YamataHarukaProj>(), npc.damage / 4, 0f, Main.myPlayer, npc.target);
+                    }
                     if (++internalAI[2] > 60)
                     {
                         internalAI[2] = 0;
@@ -160,6 +166,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                         internalAI[0]++;
                         internalAI[1] = 0;
                         internalAI[2] = 0;
+                        internalAI[3] = 0;
                         npc.netUpdate = true;
                     }
                     break;
