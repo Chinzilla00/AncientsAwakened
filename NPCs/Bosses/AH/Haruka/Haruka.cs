@@ -803,7 +803,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
-            if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH)
+            if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN)
             {
                 if (npc.frameCounter > 4)
                 {
