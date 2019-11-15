@@ -97,12 +97,20 @@ namespace AAMod.Items.Summoning.Minions.Terra
 
         public void Target()
         {
+            Player player = Main.player[projectile.owner];
             Vector2 startPos = Main.player[projectile.owner].Center;
             if (target != null && target != Main.player[projectile.owner] && !CanTarget(target, startPos))
             {
                 target = null;
             }
-            if (target == null || target == Main.player[projectile.owner])
+            if (player.HasMinionAttackTargetNPC)
+			{
+				NPC targetNPC = Main.npc[player.MinionAttackTargetNPC];
+                float prevDist = 900;
+                float dist = Vector2.Distance(startPos, targetNPC.Center);
+                if (CanTarget(targetNPC, startPos) && dist < prevDist) { target = targetNPC; prevDist = dist; }
+			}
+            else if (target == null || target == Main.player[projectile.owner])
             {
                 int[] npcs = BaseAI.GetNPCs(startPos, -1, default, 900);
                 float prevDist = 900;

@@ -112,9 +112,9 @@ namespace AAMod.Projectiles.Rajah
             {
                 projectile.tileCollide = false;
             }
-            for (int num645 = 0; num645 < 200; num645++)
-            {
-                NPC nPC2 = Main.npc[num645];
+            if (player.HasMinionAttackTargetNPC)
+			{
+				NPC nPC2 = Main.npc[player.MinionAttackTargetNPC];
                 if (nPC2.CanBeChasedBy(projectile, false))
                 {
                     float num646 = Vector2.Distance(nPC2.Center, projectile.Center);
@@ -123,6 +123,23 @@ namespace AAMod.Projectiles.Rajah
                         num633 = num646;
                         vector46 = nPC2.Center;
                         flag25 = true;
+                    }
+                }
+			}
+			else
+			{
+                for (int num645 = 0; num645 < 200; num645++)
+                {
+                    NPC nPC2 = Main.npc[num645];
+                    if (nPC2.CanBeChasedBy(projectile, false))
+                    {
+                        float num646 = Vector2.Distance(nPC2.Center, projectile.Center);
+                        if (((Vector2.Distance(projectile.Center, vector46) > num646 && num646 < num633) || !flag25) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, nPC2.position, nPC2.width, nPC2.height))
+                        {
+                            num633 = num646;
+                            vector46 = nPC2.Center;
+                            flag25 = true;
+                        }
                     }
                 }
             }

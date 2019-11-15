@@ -81,7 +81,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
                     MoveToPoint(wantedVelocity);
 
-                    BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, ModContent.ProjectileType<AsheShot>(), ref npc.ai[2], 18, npc.damage / 4, 9, false);
+                    BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, mod.ProjectileType("DiscordianInferno"), ref npc.ai[2], 22, npc.damage / 4, 9, false);
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
                         AIChange();
@@ -115,7 +115,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
                     MoveToPoint(wantedVelocity);
 
-                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 4, 16, false);
+                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, mod.ProjectileType("ShenABreath"), ref npc.ai[2], 5, npc.damage / 4, 16, false);
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
                         npc.ai[1] = 0;
@@ -146,7 +146,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         npc.velocity = npc.DirectionTo(player.Center) * (npc.life < npc.lifeMax/3 ? 50:40);
                         if(npc.velocity.Length() < 40f)
                         {
-                            npc.velocity = Vector2.Normalize(npc.velocity) * (npc.life < npc.lifeMax/3 ? 50:40);
+                            npc.velocity = Vector2.Normalize(targetPos) * (npc.life < npc.lifeMax/3 ? 50:40);
                         }
                     }
                     break;
@@ -158,8 +158,8 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         if (Main.netMode != 1)
                         {
                             const float ai0 = 0.01f;
-                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(Math.PI / 2), mod.ProjectileType("AsheSpell"), npc.damage / 4, 0f, Main.myPlayer, ai0);
-                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(-Math.PI / 2), mod.ProjectileType("AsheSpell"), npc.damage / 4, 0f, Main.myPlayer, ai0);
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
+                            Projectile.NewProjectile(npc.Center, Vector2.Normalize(npc.velocity).RotatedBy(-Math.PI / 2), mod.ProjectileType("ShenFireballAccel"), npc.damage / 4, 0f, Main.myPlayer, ai0);
                         }
                     }
                     if (++npc.ai[1] > 40)
@@ -211,7 +211,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     }
                     if (npc.life > npc.lifeMax / 3 || npc.ai[1] < 100)
                     {
-                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFire>(), ref npc.ai[2], npc.life < npc.lifeMax * 0.666f ? 30 : 60, npc.damage / 4, 8, false);
+                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<FuryAsheFire>(), ref npc.ai[2], npc.life < npc.lifeMax * 0.666f ? 30 : 60, npc.damage / 4, 8, false);
                     }
                     if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
                     {
@@ -221,7 +221,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                             {
                                 Vector2 shoot = new Vector2((float)Math.Sin(i * 0.25f * 3.1415926f), (float)Math.Cos(i * 0.25f * 3.1415926f));
                                 shoot *= 8f;
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<AsheFire>(), npc.damage / 4, 5, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<FuryAsheFire>(), npc.damage / 4, 5, Main.myPlayer);
                             }
                             if(Main.rand.Next(3) == 0) goto case 5;
                         }
@@ -229,7 +229,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     }
                     break;
                 case 10:
-                    if (NPC.CountNPCS(ModContent.NPCType<AsheDragon>()) < 2)
+                    if (NPC.CountNPCS(ModContent.NPCType<Shenling>()) < 2)
                     {
                         npc.ai[0] = 12;
                         goto case 12;
@@ -459,7 +459,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
         public static int VortexDamage()
         {
-            return  1 + (NPC.CountNPCS(ModContent.NPCType<AsheOrbiter>()) / 15);
+            return  1 + (NPC.CountNPCS(ModContent.NPCType<FuryAsheOrbiter>()) / 15);
         }
 
         public void FireMagic(NPC npc)
@@ -470,7 +470,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 {
                     for(int i = 0; i < 200; i++)
                     {
-                        if(Main.npc[i].type == mod.NPCType("AsheOrbiter"))
+                        if(Main.npc[i].type == mod.NPCType("FuryAsheOrbiter"))
                         {
                             Main.npc[i].life = 0;
                             Main.npc[i].active = false;
@@ -485,7 +485,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     rotation = 2f * (float)Math.PI / 4;
                     for (int m = 0; m < 4; m++)
                     {
-                        int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
+                        int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("FuryAsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
                         if (Main.netMode == 2 && n < 200)
                             NetMessage.SendData(23, -1, -1, null, n);
                     }
@@ -495,7 +495,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     Health = false;
                     for (int m = 0; m < OrbiterCount; m++)
                     {
-                        int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
+                        int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("FuryAsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
                         if (Main.netMode == 2 && n < 200)
                             NetMessage.SendData(23, -1, -1, null, n);
                     }
@@ -506,7 +506,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     Health = false;
                     for (int m = 0; m < OrbiterCount; m++)
                     {
-                        int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("AsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
+                        int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("FuryAsheOrbiter"), 0, npc.whoAmI, distance, 300, rotation * m);
                         if (Main.netMode == 2 && n < 200)
                             NetMessage.SendData(23, -1, -1, null, n);
                     }
@@ -667,13 +667,13 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
         private void RingEffects()
         {
             RingRotation += 0.02f;
-            if (npc.ai[0] == 12 || NPC.AnyNPCs(ModContent.NPCType<AsheOrbiter>()))
+            if (npc.ai[0] == 12 || NPC.AnyNPCs(ModContent.NPCType<FuryAsheOrbiter>()))
             {
                 if (scale >= 1f)
                 {
                     scale = 1f;
 
-                    if(NPC.CountNPCS(ModContent.NPCType<AsheOrbiter>()) < OrbiterCount)
+                    if(NPC.CountNPCS(ModContent.NPCType<FuryAsheOrbiter>()) < OrbiterCount)
                     {
                         Health = true;
                     }

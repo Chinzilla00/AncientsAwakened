@@ -278,7 +278,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 Backstab();
                 Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                 Vector2 fireTarget = npc.Center;
-                int projType = ModContent.ProjectileType<HarukaProj>();
+                int projType = ModContent.ProjectileType<WrathHarukaProj>();
                 BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*1, 0f, 14f);
                 internalAI[0] = Main.rand.Next(2);
                 internalAI[5] = 0;
@@ -520,7 +520,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     {
                         Vector2 targetCenter = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
                         Vector2 fireTarget = npc.Center;
-                        int projType = ModContent.ProjectileType<HarukaProj>();
+                        int projType = ModContent.ProjectileType<WrathHarukaProj>();
                         BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*1, 0f, 14f);
                         npc.netUpdate = true;
                     }
@@ -673,7 +673,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         npc.ai = new float[4];
                         npc.netUpdate = true;
                         
-                        int projType = ModContent.ProjectileType<HarukaProj>();
+                        int projType = ModContent.ProjectileType<WrathHarukaProj>();
                         float spread = 45f * 0.0174f;
                         Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
                         dir *= 14f;
@@ -806,7 +806,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
-            if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH)
+            if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN)
             {
                 if (npc.frameCounter > 4)
                 {
@@ -972,7 +972,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, 0, 0, ModContent.ProjectileType<HarukaStrike>(), damage*1, 5, Main.myPlayer);
 
                 Vector2 shoot = Vector2.Zero;
-                int projType = ModContent.ProjectileType<HarukaProj>();
+                int projType = ModContent.ProjectileType<WrathHarukaProj>();
                 for(int i = 0; i < 16; i++)
                 {
                     shoot = new Vector2((float)Math.Sin(i * 0.125f * Pi), (float)Math.Cos(i * 0.125f * Pi));

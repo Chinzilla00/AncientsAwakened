@@ -41,6 +41,21 @@ namespace AAMod.Items.Summoning
 			}
 		}
 
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            if (player.altFunctionUse == 2 && player.controlUseItem && player.releaseUseItem)
+            {
+                player.MinionNPCTargetAim();
+                player.UpdateMinionTarget();
+            }
+            return true;
+        }
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             //to fix tail disapearing meme
