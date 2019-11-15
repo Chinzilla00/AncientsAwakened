@@ -716,31 +716,31 @@ namespace AAMod.NPCs.Bosses.Shen
             if (AAMod.thoriumLoaded && DownedRag)
             {
                 a = true;
-                Text.Add("You know, I was watching you beat down that god-sphere and its 3 goons. Gotta admit, pretty impressive.");
+                Text.Add(Lang.BossChat("ShenAThorium"));
             }
 
             if (AAMod.calamityLoaded && DownedScal)
             {
                 a = true;
-                Text.Add("Considering you put that angsty witch in her place, gotta hand it to ya.");
+                Text.Add(Lang.BossChat("ShenACalamity"));
             }
 
             if (AAMod.gRealmLoaded && DownedMantid)
             {
                 a = true;
-                Text.Add("Seeing you squashed that oversided insect in the jungle, that's quite a head-turner.");
+                Text.Add(Lang.BossChat("ShenAGRealm"));
             }
 
             if (AAMod.redeLoaded && DownedNeb)
             {
                 a = true;
-                Text.Add("However, after you walloped that cosmic prude, even I was taken aback by that level of skill.");
+                Text.Add(Lang.BossChat("ShenARedemption"));
             }
 
             if (AAMod.spiritLoaded && DownedOverseer)
             {
                 a = true;
-                Text.Add("Now that I think about it, though, you cracking open that overseer like an egg? Quite the strength that had to have needed.");
+                Text.Add(Lang.BossChat("ShenASpirit"));
             }
 
             /*if (AAMod.jsLoaded && DownedDuo)
@@ -751,7 +751,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (!a)
             {
-                Text.Add("Everything you've torn down, gods and monsters alike, I respect that.");
+                Text.Add(Lang.BossChat("ShenANoMod"));
             }
             return Text;
         }

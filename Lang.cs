@@ -273,17 +273,27 @@ namespace AAMod
                         case "SetChatButtons20":
                         return "宝石持有者";
                         case "SetChatButtons21":
-                        return "Squakin' Headache";
+                        return "吵得头疼的婊子";
                         case "SetChatButtons22":
-                        return "What a Worm";
+                        return "一条大虫子";
                         case "SetChatButtons23":
-                        return "Hopping Hoodlum";
+                        return "兔子恶棍";
                         case "SetChatButtons24":
-                        return "Harpy Hags are back";
+                        return "鸟妖女人又来了";
                         case "SetChatButtons25":
-                        return "Riches and R.I.P. you";
+                        return "拿钱, 送命";
                         case "SetChatButtons26":
-                        return "Wrath of the Wabbit";
+                        return "战兔之怒";
+
+                        case "GetBookChat":
+                        return @"你找到啦! 我的限量典藏版传记! 太感谢了, 哥们. 知道吗? 这书作为礼物, 就送给你了. 这, 我再给你签个名.
+...哎呀，我不小心用了我的符文羽毛笔签了名。哦，没事，这东西有魔力.";
+                        case "GetSummonItemChat":
+                        return "嘿，感谢你回来找我. 我想试试你的能力. 你打败那些机械怪物之后，我想看看是不是有实力和像我一样的人战斗. 拿着这把权杖，准备好了就去沙漠里用. 我时刻准备就绪.";
+
+                        case "CombatTextChat":
+                        return "我回家了. 真安静.";
+
                         case "downedMonarchY":
                         return "…就这样? ";
                         case "downedMonarchN":
@@ -307,7 +317,7 @@ namespace AAMod
                         case "downedDjinnY":
                         return "哈！你这个沙子废物, 看看现在谁强！";
                         case "downedDjinnN":
-                        return "那 个 狗 娘 养--哦, 嗨。 对不起, 我只是有点生气, 因为我和沙漠巨灵发生了一场小争执。 你能去教教那个会魔法的傻瓜和他的蠢货打手们别对着我伸肌肉了吗？ ";
+                        return "那 个 狗 娘 养--哦, 嗨。 对不起, 我只是有点生气, 因为我和沙漠巨灵发生了一场小争执。 你能去教教那个会魔法的傻瓜和他的蠢货打手们别对着我秀肌肉了吗？ ";
                         case "downedSerpentY":
                         return "希望你没有被“冻伤”！*砰-咚-锵*（译者注：打击乐中用来活跃气氛的节拍伴奏）...我知道那得一瘸一拐。 ";
                         case "downedSerpentN":
@@ -328,10 +338,38 @@ namespace AAMod
                         return "除掉昼夜虫干得不错。 不过我可以告诉你现在好像过了一个星期。 希望我没有错过护士的预约…";
                         case "downedEquinoxN":
                         return "喜欢虫子？ 我也不喜欢, 你猜怎么着？ 有两个虫子控制日夜的流动, 而且很强力。 祝你好运。 ";
-                        case "AnubisB":
-                        return "我听说有个万人迷家伙帅的一批, 而且所有的女人都爱他, 因为他有惊人的灵魂判断力。 好家伙！";
+                        case "AnubisScapterLost":
+                        return "你把杖给弄 丢 了?! 我可没法像发糖一样天天给你弄一个, 懂吗! 还好, 我还有一个.";
+                        case "downedAnubisBY":
+                        return "你出手可以轻点，懂吗。我现在背还疼着";
+                        case "downedAnubisBN":
+                        return "我听说有个万人迷家伙帅的一批, 而且所有的女人都爱他, 因为他有惊人的灵魂判断力。 真尼玛牛逼！";
+                        case "downedAthenaY":
+                        return "感天谢地, 你终于让那堆烦人的臭鸟闭嘴了! 他们要是再敢冲我嚷嚷，我就抓一只做成烤鸡当晚餐";
+                        case "downedAthenaN":
+                        return "你知道那些整天在天上叽叽喳喳的臭鸟吗? 好，有一种叫六翼鸟妖的完全就不会闭嘴!!! 在东边的天宫里有一个她们的头. 要是你能给她来两拳，也许她们就可以闭上她们的臭嘴";
+                        case "downedRajahY":
+                        return "你打败了王公兔? 漂亮, 是, 我以前一直以为它是神, 所以我觉得你是没法打败它的..!";
+                        case "downedRajahN":
+                        return "嘿，你知道那些总是蹦蹦跳跳的兔子吗？如果我是你，我不会骚扰他们。这里有一个传说，有一个“守护者”，一直在保护它们远离危险。为什么是传说？因为很明显没人能活着从它手里出来。简洁的故事，嗯？";
+                        case "downedGreedYBookY":
+                        return "嘿，谢谢你把我的书拿回来。前一阵子金食饕餮偷它可能是因为我用来装裱它用了金亮的外皮。看看那个山洞，也许他还偷了别的东西？";
+                        case "downedGreedYBookN":
+                        return "嘿 啊...你找到我的东西了吗? 没? 把那的赃物堆好好翻翻, 我敢确定就在那.";
+                        case "downedGreedN":
+                        return "嘿 啊, 在地下有一个巨大的金洞里面充满了琳琅满目的财宝, 但它被一条很小气的虫子看着. 你应该去瞅瞅有没有什么战利品, 不过嗯...那里面还有我的东西. 你可以去帮我取回来吗? 别担心你不认识, 当你看见它的时候, 你就会知道那是我的东西.";
+                        case "downedAthenaAY":
+                        return "哈? 你问我Varian? 我有些年头没听过这个词了...太久远我都忘了这个名字了. 虽然我好像能记起来什么人一直在四处闲逛...";
+                        case "downedAthenaAN":
+                        return "嘿, 那个烦人的小鸟妖找你了吗? 很抱歉向她透露了你的位置, 主要是她一直在我耳边嚷嚷. 不管怎么样, 雅典娜好像确实想重比一场. 保持警惕, 哥们. 我觉得这是个陷阱";
+                        case "GreedACalamityMod":
+                        return "你应该知道, 你和神明吞噬者的战斗让我有点想到了金食饕餮...我是说想象一下. 它们都可以虫洞穿越而且喜欢吃东西. 它们可能是...啊, 那可太不可思议了...或者..?";
+                        case "downedGreedAY":
+                        return "所以它一直在隐藏它的真实实力. 我想知道为什么, 虽然...大概是, 它想躲着什么东西..?";
+                        case "downedGreedAN":
+                        return "你知道吗, 我依稀记得一个有关贪婪的虫子偷走你的垃圾的故事. 当它再一次出现时，它会比你把它打的屁滚尿流的时候强得多. 也许随着时间的推移它变得越来越菜...？或者...不，那不可能...";
                         case "downedSistersY":
-                        return "漂亮！你给那俩宠坏的小孩好好上了一课！那俩没看见这个！";
+                        return "漂亮！你给那俩宠坏的小孩好好上了一课！那俩没尝过苦头！";
                         case "downedSistersN":
                         return "还记得育母炎龙和九头渊蛇？ 好, 那俩有女儿。 而且她们讨厌“男 人”。 。 ！每次我去混沌之地的时候, 这俩都会等在那毁了我的一天！你去给她们俩点教训？ ";
                         case "downedAkumaY":
@@ -502,6 +540,16 @@ namespace AAMod
                         return "Riches and R.I.P. you";
                         case "SetChatButtons26":
                         return "Wrath of the Wabbit";
+
+                        case "GetBookChat":
+                        return @"You got it! My limited edition copy of my esteemed biogrophy! Thanks, pal. You know what? As a gift, you can have it. Here, I'll even autograph it for you.
+...Whoops, I accidentally used my runic quill to sign it. Oh well, now it's magic.";
+                        case "GetSummonItemChat":
+                        return "Hey, thanks for getting back to me. I wanna test your strength. After you thrashed those mechanical meatheads, I'm interested in seeing how you fair against someone like me. Here, take this scepter and go use it in the desert on the surface whenever you're ready. I'm ready whenever.";
+
+                        case "CombatTextChat":
+                        return "I'm headed home. Peace.";
+
                         case "downedMonarchY":
                         return "...that was it?";
                         case "downedMonarchN":
@@ -546,8 +594,36 @@ namespace AAMod
                         return "Nice job taking out the Equinox worms. I could tell you did because it's like a week later now. I hope I didn't miss my nurse's appointment...";
                         case "downedEquinoxN":
                         return "Like worms? Me neither, but guess what? There are 2 big ones that control the flow of day and night, and they're tough buggers. Good luck.";
-                        case "AnubisB":
+                        case "AnubisScapterLost":
+                        return "You LOST the scepter?! I can't go handing these things out like candy, you know! Anyways, here's another one.";
+                        case "downedAnubisBY":
+                        return "You could have gone a little easier on me, ya know. My back still hurts from that.";
+                        case "downedAnubisBN":
                         return "I hear there’s this lorekeeper guy that’s really jacked and handsome, and all the ladies love him for his amazing soul-judging abilities. What a guy.";
+                        case "downedAthenaY":
+                        return "Thank the Equinox, you shut those annoying little squakers up! I was about to roast one of them over a spit and have fried chicken for dinner if they shrieked at me one more time.";
+                        case "downedAthenaN":
+                        return "You know those screechin' harpies up in the sky? Well there are these REALLY obnoxious ones called seraphs who just WILL NOT SHUT UP!!! They have a leader in that sky palace to the east. Maybe if you give her the ol' one-two, they'll shut their yappers.";
+                        case "downedGreedYBookY":
+                        return "Hey thanks for getting my book back. Greed stole it a while ago, probably because of the gold highlights I used to bind it. Look around that cave, maybe there's some other stuff he's stolen?";
+                        case "downedGreedYBookN":
+                        return "Hey uh...did you find my thing yet? No? Just dig around in that loot pile down there, I'm sure it's there somewhere.";
+                        case "downedGreedN":
+                        return "Hey uh, there's this HUGE hoard of treasure underground somewhere with lots of gold in it, but it's guarded by this really stingy worm. You should go check it out for a boatload of booty, but uh...there's something of mine down there. Could you go get it for me? Don't worry, when you see it, you'll know it's mine.";
+                        case "downedRajahY":
+                        return "You bested Rajah? Pft, yeah right, I've seen him trounce supposed gods before, there is no way you beat him..!";
+                        case "downedRajahN":
+                        return "Hey, you know those bunnies that hop around all the time? I uh...I wouldn't harass them if I were you. There's a legend around here of a sort of 'Guardian' of sorts that prtotects them from danger. Why is it a legend? Because apparently nobody has ever fought this thing and lived. Neat story, eh?";
+                        case "downedAthenaAY":
+                        return "Huh? What's a Varian you ask? That's something I haven't heard in years...so long ago that I barely even remember the name. Although I do recall something about another one kicking around somewhere...";
+                        case "downedAthenaAN":
+                        return "Hey, did that annoying little witch find you? Sorry for telling her where you were, she wouldn't stop screeching in my ear. Anyways, looks like Athena wants a rematch. Stay on your guard, bud. This seems like a trap...";
+                        case "GreedACalamityMod":
+                        return "Ya know, you duking it out with the Devourer of Gods reminded me of Greed a bit...I mean think about it. They both have wormhole capabilities and they both adapt to what they eat. Could they possibly be...nah, that'd be rediculous...or..?";
+                        case "downedGreedAY":
+                        return "So he WAS hiding his true power all along. I wonder why, though...could he be hiding from something, perhaps..?";
+                        case "downedGreedAN":
+                        return "You know, I seem to remember a story about ol' grabby-mc-steal-your-crap. When he first showed up in these parts, he was much stronger than he was when you kicked his rear end. Maybe he got weaker as time went on..? Or maybe...nah, that couldn't be it.";
                         case "downedSistersY":
                         return "Nice, you taught those two spoiled brats a lesson! Those two didn't see it coming!";
                         case "downedSistersN":
@@ -1207,6 +1283,47 @@ namespace AAMod
                         case "AkumaTransition6":
                         return "你周围的空气开始升温...";
 
+                        case "AnubisFalse":
+                        return "哈! 再回去练练吧-- 或者, 打磨一下自己.";
+
+                        case "AnubisGuys":
+                        return "伙计们";
+                        case "Anubisbud":
+                        return "哥们";
+
+                        case "Anubis1":
+                        return "好, ";
+                        case "Anubis2":
+                        return ". 到地方了.";
+                        case "Anubis3":
+                        return "我希望你已经准备好了真正的战斗.";
+                        case "Anubis4":
+                        return "尤其是因为我现在处于我的超强形态.";
+                        case "Anubis5":
+                        return "准备好了吗? 我拿巴掌抽你的时候可不会手下留情!";
+                        case "Anubis6":
+                        return "开始吧!";
+                        case "Anubis7":
+                        return "再比一次吗? 好, 那可太有意思了!";
+
+                        case "AnubisTransition1":
+                        return "...呼哈...";
+                        case "AnubisTransition2":
+                        return "...好了.";
+                        case "AnubisTransition3":
+                        return "我觉得...是时候了.";
+                        case "AnubisTransition4":
+                        return "有些事情已经无法阻止了.";
+                        case "AnubisTransition5":
+                        return "如果你想要和这个世界上的黑暗势力搏杀的话...";
+                        case "AnubisTransition6":
+                        return "我就必须确认你已经完全准备好了, 因为...倘若你还没准备好...";
+                        case "AnubisTransition7":
+                        return "...为你好，有些东西你还是不碰为妙.";
+
+                        case "FAnubis":
+                        return "...对不起, 看来你还没准备好.";
+
                         case "Athena1":
                         return "哈..!";
                         case "Athena2":
@@ -1226,7 +1343,7 @@ namespace AAMod
                         case "Athena9":
                         return "那就滚远点...白痴.";
                         case "Athena10":
-                        return "不跟你闹着玩了, 我所呼唤的风暴即将冲你而来!";
+                        return "不跟你闹着玩了, 电闪雷鸣, 风暴降临!";
                         case "Athena11":
                         return "哦! 好, 好..! 我不打扰你了! 看在上帝的份上, 你给我小心着点, 懂吗?";
                         case "Athena12":
@@ -1280,7 +1397,7 @@ namespace AAMod
                         return "一切平安.";
 
                         case "SeraphHerald1":
-                        return "嘿! 地 上 的 凡 人! 对 你, 你 这 个 臭 傻 X!";
+                        return "嘿! 地 上 的 凡 人! 对, 就是你, 你 这 个 臭 傻 X!";
                         case "SeraphHerald2":
                         return "雅典娜女王要求你立即再次去天穹卫城觐见!";
                         case "SeraphHerald3":
@@ -1319,7 +1436,7 @@ namespace AAMod
                         case "GreedTransition4":
                         return "我 要 你 的 命! 呵 呵 呵 呵 呵!!!";
                         case "GreedAName":
-                        return "觉醒金食饕餮";
+                        return "鎏金万蟲王";
 
                         case "Rajah1":
                         return "正 义 不 会 被 欺 骗";
@@ -1545,6 +1662,15 @@ namespace AAMod
                         return "目 标 被 毁 灭. 返 回 初 始 轨 道. ";
                         case "ZeroAwakened7":
                         return "目 标 丢 失. 返 回 初 始 轨 道. ";
+                        case "ZeroAwakened8":
+                        return @"自 组 织 充 能 完 成...";
+                        case "ZeroAwakened9":
+                        return @"以 自 组 织 模 式 启 动 系 统...";
+                        case "ZeroAwakened10":
+                        return @"允 许 程 序 C:\TERRARIA\AAMOD\ZERO\PROTOCOL\SELF-ORGNAZATION.EXE ? <Y/N>...";
+                        case "ZeroAwakened11":
+                        return @"=== 屠 杀 开 始 ===";
+
                         case "ZeroDeath1":
                         return "任 务 失 败. 向 基 地 发 送 遇 难 信 号. ";
                         case "ZeroDeath2":
@@ -1596,6 +1722,19 @@ namespace AAMod
                         return "正是如此! 尾声将至, 所以你不敢退缩!";
                         case "ShenA16":
                         return "这不可能--! 怎么回事?!";
+
+                        case "ShenAThorium":
+                        return "你知道吗, 我一直关注着你击败灾难之灵和它的三个使徒. 不得不说, 非常令人深刻.";
+                        case "ShenACalamity":
+                        return "考虑到你把那个狂怒的至尊灾厄之影女巫安排的明明白白, 我还是由衷地恭喜你.";
+                        case "ShenAGRealm":
+                        return "我看到你在丛林里踩扁了那只让人头疼的昆虫了.";
+                        case "ShenARedemption":
+                        return "不过, 在你击溃了宇宙天使之后, 连我都被你的水平吓到了.";
+                        case "ShenASpirit":
+                        return "现在我一想, 虽然, 你把魂灵的监察者像一个鸡蛋一样踩碎了, 那也是相当需要力气的.";
+                        case "ShenANoMod":
+                        return "你所击败的一切, 无论神明或是怪兽, 都使我尊敬你.";
 
                         case "ShenDeath1":
                         return "重新分离...";
@@ -1861,6 +2000,47 @@ namespace AAMod
                         return "IT ONLY MAKES THEM STRONGER!";
                         case "AkumaTransition6":
                         return "The air around you begins to heat up...";
+
+                        case "AnubisFalse":
+                        return "HAH! Get hosed-- er, sanded.";
+
+                        case "AnubisGuys":
+                        return "guys";
+                        case "Anubisbud":
+                        return "bud";
+
+                        case "Anubis1":
+                        return "Well, ";
+                        case "Anubis2":
+                        return ". Here we are.";
+                        case "Anubis3":
+                        return "I hope you're ready for a real fight.";
+                        case "Anubis4":
+                        return "Especially since I'm in my superior form.";
+                        case "Anubis5":
+                        return "You ready? I won't hesitate to slap you silly!";
+                        case "Anubis6":
+                        return "Let's go!";
+                        case "Anubis7":
+                        return "A rematch eh? Alright, this should be fun!";
+
+                        case "AnubisTransition1":
+                        return "...hrgh...";
+                        case "AnubisTransition2":
+                        return "...alright.";
+                        case "AnubisTransition3":
+                        return "I think...it's time.";
+                        case "AnubisTransition4":
+                        return "No more stops being pulled.";
+                        case "AnubisTransition5":
+                        return "If you're gonna be taking on the dark forces of the world...";
+                        case "AnubisTransition6":
+                        return "I need to make sure you're ready, because...unless you're ready...";
+                        case "AnubisTransition7":
+                        return "...Some things should stay locked away for your own good.";
+
+                        case "FAnubis":
+                        return "...Sorry, but you aren't ready yet.";
 
                         case "Athena1":
                         return "Hmpf..!";
@@ -2135,9 +2315,9 @@ namespace AAMod
                         case "YamataHead8":
                         return " OUT OF MY FACE!!!";
                         case "YamataHead9":
-                        return "I�VE EATEN RABBITS MORE INTIMIDATING THAN YOU!";
+                        return "I HAVE EATEN RABBITS MORE INTIMIDATING THAN YOU!";
                         case "YamataHead10":
-                        return "HOPE YOU BROUGHT YOUR UMBRELLA! BECAUSE IT�S RAINING PAIN!!! NYEHEHEHEHEHEHEHEH!!!";
+                        return "HOPE YOU BROUGHT YOUR UMBRELLA! BECAUSE IT'S RAINING PAIN!!! NYEHEHEHEHEHEHEHEH!!!";
                         case "YamataHead11":
                         return "DOWN COMES THE VENOM!!!NYEHEHEHEHEHEHEHEH!";
                         case "YamataHead12":
@@ -2149,7 +2329,7 @@ namespace AAMod
                         case "YamataHead15":
                         return "WHOOPS! DROPPED ACID AGAIN! NYEHEHEHEHEHEHEHEHEHEHEHEH";
                         case "YamataHead16":
-                        return "NYAAAAAAAH! YOU WON�T LIVE THROUGH THIS ONE!";
+                        return "NYAAAAAAAH! YOU WON'T LIVE THROUGH THIS ONE!";
                         case "YamataHead17":
                         return "COME ON!!! STAND STILL SO I CAN BLOW YOU TO MARS!";
                         case "YamataHead18":
@@ -2209,6 +2389,15 @@ namespace AAMod
                         return "TARGET NEUTRALIZED. RETURNING T0 0RBIT.";
                         case "ZeroAwakened7":
                         return "TARGET L0ST. RETURNING T0 0RBIT.";
+                        case "ZeroAwakened8":
+                        return @"SELF-ORGNAZATION CHARGING COMPLETED...";
+                        case "ZeroAwakened9":
+                        return @"BOOTING IN SELF ORGNAZATION MODE...";
+                        case "ZeroAwakened10":
+                        return @"ALLOW C:\TERRARIA\AAMOD\ZERO\PROTOCOL\SELF-ORGNAZATION.EXE ? <Y/N>...";
+                        case "ZeroAwakened11":
+                        return @"===C A R N A G E===";
+
                         case "ZeroDeath1":
                         return "MISSI0N FAILED. SENDING DISTRESS SIGNAL T0 H0ME BASE.";
                         case "ZeroDeath2":
@@ -2260,6 +2449,19 @@ namespace AAMod
                         return "This is it! The end is near, so don't you dare hold back!";
                         case "ShenA16":
                         return "This can't be--! How?!";
+
+                        case "ShenAThorium":
+                        return "You know, I was watching you beat down that god-sphere and its 3 goons. Gotta admit, pretty impressive.";
+                        case "ShenACalamity":
+                        return "Considering you put that angsty witch in her place, gotta hand it to ya.";
+                        case "ShenAGRealm":
+                        return "Seeing you squashed that oversided insect in the jungle, that's quite a head-turner.";
+                        case "ShenARedemption":
+                        return "However, after you walloped that cosmic prude, even I was taken aback by that level of skill.";
+                        case "ShenASpirit":
+                        return "Now that I think about it, though, you cracking open that overseer like an egg? Quite the strength that had to have needed.";
+                        case "ShenANoMod":
+                        return "Everything you've torn down, gods and monsters alike, I respect that.";
 
                         case "ShenDeath1":
                         return "Split again...";
@@ -2748,7 +2950,7 @@ namespace AAMod
                         case "FeudalFungus":
                         return "真菌帝";
                         case "FeudalFungusInfo":
-                        return " 在荧光蘑菇地, 或者在晚上召唤";
+                        return " 在荧光蘑菇地召唤";
                         case "GripsofChaos":
                         return "混沌双爪";
                         case "Broodmother":
@@ -2778,15 +2980,27 @@ namespace AAMod
                         case "Greed":
                         return "金食饕餮";
                         case "GreedInfo":
-                        return "在欲望金窟的原欲祭坛\n处召唤.";
+                        return " 在欲望金窟的原欲祭坛\n处召唤. 或者打开3个欲望金窟的贪欲宝箱";
                         case "Athena":
                         return "穹武鸮姬";
                         case "AthenaInfo":
                         return " 在天穹卫城的天鸮祭坛\n上召唤.";
+                        case "Anubis":
+                        return "阿努比斯 史诗记述者";
+                        case "AnubisInfo":
+                        return " 在沙漠中召唤";
                         case "AthenaA":
-                        return "鸟妖神的复仇";
+                        return "复仇的鸮姬";
                         case "AthenaAInfo":
-                        return " 在天穹卫城的天鸮祭坛上召唤, 月球领主后";
+                        return "月球领主后击败穹武鸮姬";
+                        case "GreedA":
+                        return "鎏金万蟲王";
+                        case "GreedAInfo":
+                        return "月球领主后击败金食饕餮";
+                        case "AnubisA":
+                        return "逝落断罪师";
+                        case "AnubisAInfo":
+                        return "月球领主后击败阿努比斯";
                         case "Retriever":
                         return "捕猎者-电子猎犬爪";
                         case "TechnoTruffle":
@@ -2844,7 +3058,7 @@ namespace AAMod
                         case "FeudalFungus":
                         return "The Feudal Fungus";
                         case "FeudalFungusInfo":
-                        return " in a Glowing Mushroom Biome or at night";
+                        return " in a Glowing Mushroom Biome";
                         case "GripsofChaos":
                         return "Grips of Chaos";
                         case "Broodmother":
@@ -2871,18 +3085,30 @@ namespace AAMod
                         return "Truffle Toad";
                         case "TruffleToadInfo":
                         return " in a glowing mushroom biome";
-                        case "Athena":
-                        return "Athena";
                         case "Greed":
                         return "Greed";
                         case "GreedInfo":
-                        return " at the Altar of Desire in the Hoard.";
+                        return " at the Altar of Desire in the Hoard, or open 3 Greed Chests in Hoard.";
+                        case "Athena":
+                        return "Athena";
                         case "AthenaInfo":
                         return " at the owl altar in the Acropolis.";
+                        case "Anubis":
+                        return "Anubis Legendscribe";
+                        case "AnubisInfo":
+                        return " in the desert";
                         case "AthenaA":
                         return "Athena Rematch";
                         case "AthenaAInfo":
-                        return " at the owl altar in the Acropolis Post-moon lord.";
+                        return "Defeat Athena post-Moon Lord";
+                        case "GreedA":
+                        return "Worm King Greed";
+                        case "GreedAInfo":
+                        return "Defeat Greed post-Moon Lord";
+                        case "AnubisA":
+                        return "Forsaken Anubis";
+                        case "AnubisAInfo":
+                        return "Defeat Anubis post-Moon Lord";
                         case "Retriever":
                         return "Retriever";
                         case "TechnoTruffle":

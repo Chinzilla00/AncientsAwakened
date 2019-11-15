@@ -183,6 +183,12 @@ Common.AccessoryAbilityKey=AA Accessory Ability
 Common.ArmorAbilityKey=AA Armor Ability
 Common.TimeStonehotKey=Time Stone
 
+//TownNPCName
+
+Common.GoblinSlayer=Goblin Slayer
+
+Common.Anubis=Legendscribe
+
 //BossName
 
 Common.MushroomMonarch=The Mushroom Monarch
@@ -376,8 +382,6 @@ Common.ZeroTesseractDownedTrue=TARGET L0CKED. FAILURE T0 TERMINATE Y0U IS N0T A 
 
 Common.RoyalRabbitSummoned1=Those who slaughter the innocent must be PUNISHED!
 Common.RoyalRabbitSummoned2=YOU WILL PAY FOR YOUR SINS, 
-
-//
 
 
 

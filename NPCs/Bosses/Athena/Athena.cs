@@ -488,6 +488,7 @@ namespace AAMod.NPCs.Bosses.Athena
         public override void NPCLoot()
         {
             AAWorld.ClearClouds();
+            AAWorld.downedAthena = true;
 
             if (NPC.downedMoonlord)
             {
@@ -529,8 +530,6 @@ namespace AAMod.NPCs.Bosses.Athena
             if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena11"), Color.CornflowerBlue);
             int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaFlee>());
             Main.npc[p].Center = npc.Center;
-
-            AAWorld.downedAthena = true;
         }
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)

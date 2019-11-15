@@ -7,6 +7,7 @@ using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
+using Terraria.Localization;
 
 namespace AAMod.NPCs.TownNPCs
 {
@@ -17,7 +18,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override bool Autoload(ref string name)
         {
-            name = "Legendscribe";
+            name = Language.GetTextValue("Mods.AAMod.Common.Anubis");
             return mod.Properties.Autoload;
 		}
 
@@ -173,15 +174,15 @@ namespace AAMod.NPCs.TownNPCs
 
             string AnubisT = Lang.TownNPCAnubis("SetChatButtons14");
 
-            string AthenaT = "Squakin' Headache";
+            string AthenaT = Lang.TownNPCAnubis("SetChatButtons21");
 
-            string GreedT = "What a Worm";
+            string GreedT = Lang.TownNPCAnubis("SetChatButtons22");
 
-            string RajahT = "Hopping Hoodlum";
+            string RajahT = Lang.TownNPCAnubis("SetChatButtons23");
 
-            string AthenaAT = "Harpy Hags are back";
+            string AthenaAT = Lang.TownNPCAnubis("SetChatButtons24");
 
-            string GreedAT = "Riches and R.I.P. you";
+            string GreedAT = Lang.TownNPCAnubis("SetChatButtons25");
 
             string EquinoxT = Lang.TownNPCAnubis("SetChatButtons13");
 
@@ -195,7 +196,7 @@ namespace AAMod.NPCs.TownNPCs
 
             string ShenT = Lang.TownNPCAnubis("SetChatButtons19");
 
-            string RajahCT = "Wrath of the Wabbit";
+            string RajahCT = Lang.TownNPCAnubis("SetChatButtons26");
             
             button = SwitchInfoT;
 
@@ -360,8 +361,7 @@ namespace AAMod.NPCs.TownNPCs
                         player.inventory[Item] = new Item();
                     }
 
-                    Main.npcChatText = @"You got it! My limited edition copy of my esteemed biogrophy! Thanks, pal. You know what? As a gift, you can have it. Here, I'll even autograph it for you.
-...Whoops, I accidentally used my runic quill to sign it. Oh well, now it's magic.";
+                    Main.npcChatText = Lang.TownNPCAnubis("GetBookChat");
                     //player.QuickSpawnItem(Terraria.ModLoader.ModContent.ItemType<Items.Magic.AnubisTome>(), 1);
 
                     Main.PlaySound(24, -1, -1, 1);
@@ -414,7 +414,7 @@ namespace AAMod.NPCs.TownNPCs
                         if (!Collision.SolidTiles(npc.homeTileX - 1, npc.homeTileX + 1, num3 - 3, num3 - 1))
                         {
                             TPDust();
-                            CombatText.NewText(npc.Hitbox, Color.Gold, "I'm headed home. Peace.");
+                            CombatText.NewText(npc.Hitbox, Color.Gold, Lang.TownNPCAnubis("CombatTextChat"));
                             npc.velocity.X = 0f;
                             npc.velocity.Y = 0f;
                             npc.position.X = npc.homeTileX * 16 + 8 - npc.width / 2;
@@ -528,32 +528,32 @@ namespace AAMod.NPCs.TownNPCs
                 if (!BasePlayer.HasItem(player, ModContent.ItemType<Items.BossSummons.Scepter>()))
                 {
                     player.QuickSpawnItem(ModContent.ItemType<Items.BossSummons.Scepter>(), 1);
-                    return "You LOST the scepter?! I can't go handing these things out like candy, you know! Anyways, here's another one."; 
+                    return Lang.TownNPCAnubis("AnubisScapterLost"); 
                 }
 
-                return AAWorld.downedAnubis ? "You could have gone a little easier on me, ya know. My back still hurts from that." :
-                    "I hear there’s this lorekeeper guy that’s really jacked and handsome, and all the ladies love him for his amazing soul-judging abilities. What a guy.";
+                return AAWorld.downedAnubis ? Lang.TownNPCAnubis("downedAnubisBY") :
+                    Lang.TownNPCAnubis("downedAnubisBN");
             }
             else if (Athena)
             {
-                return AAWorld.downedAthena ? "Thank the Equinox, you shut those annoying little squakers up! I was about to roast one of them over a spit and have fried chicken for dinner if they shrieked at me one more time." :
-                    "You know those screechin' harpies up in the sky? Well there are these REALLY obnoxious ones called seraphs who just WILL NOT SHUT UP!!! They have a leader in that sky palace to the east. Maybe if you give her the ol' one-two, they'll shut their yappers.";
+                return AAWorld.downedAthena ? Lang.TownNPCAnubis("downedAthenaY") :
+                    Lang.TownNPCAnubis("downedAthenaN");
             }
             else if (Greed)
             {
-                return AAWorld.downedGreed ? (player.GetModPlayer<AAPlayer>().AnubisBook ? "Hey thanks for getting my book back. Greed stole it a while ago, probably because of the gold highlights I used to bind it. Look around that cave, maybe there's some other stuff he's stolen?" : 
-                    "Hey uh...did you find my thing yet? No? Just dig around in that loot pile down there, I'm sure it's there somewhere.") :
-                    "Hey uh, there's this HUGE hoard of treasure underground somewhere with lots of gold in it, but it's guarded by this really stingy worm. You should go check it out for a boatload of booty, but uh...there's something of mine down there. Could you go get it for me? Don't worry, when you see it, you'll know it's mine.";
+                return AAWorld.downedGreed ? (player.GetModPlayer<AAPlayer>().AnubisBook ? Lang.TownNPCAnubis("downedGreedYBookY") : 
+                    Lang.TownNPCAnubis("downedGreedYBookN")) :
+                    Lang.TownNPCAnubis("downedGreedN");
             }
             else if (Rajah)
             {
-                return AAWorld.downedRajah ? "You bested Rajah? Pft, yeah right, I've seen him trounce supposed gods before, there is no way you beat him..!" :
-                    "Hey, you know those bunnies that hop around all the time? I uh...I wouldn't harass them if I were you. There's a legend around here of a sort of 'Guardian' of sorts that prtotects them from danger. Why is it a legend? Because apparently nobody has ever fought this thing and lived. Neat story, eh?";
+                return AAWorld.downedRajah ? Lang.TownNPCAnubis("downedRajahY") :
+                    Lang.TownNPCAnubis("downedRajahN");
             }
             else if (AthenaA)
             {
-                return AAWorld.downedAthenaA ? "Huh? What's a Varian you ask? That's something I haven't heard in years...so long ago that I barely even remember the name. Although I do recall something about another one kicking around somewhere..." :
-                    "Hey, did that annoying little witch find you? Sorry for telling her where you were, she wouldn't stop screeching in my ear. Anyways, looks like Athena wants a rematch. Stay on your guard, bud. This seems like a trap...";
+                return AAWorld.downedAthenaA ? Lang.TownNPCAnubis("downedAthenaAY") :
+                    Lang.TownNPCAnubis("downedAthenaAN");
             }
             else if (GreedA)
             {
@@ -563,11 +563,11 @@ namespace AAMod.NPCs.TownNPCs
                     Mod calamity = ModLoader.GetMod("CalamityMod");
                     if (calamity != null && DoG && AAWorld.downedGreedA)
                     {
-                        return "Ya know, you duking it out with the Devourer of Gods reminded me of Greed a bit...I mean think about it. They both have wormhole capabilities and they both adapt to what they eat. Could they possibly be...nah, that'd be rediculous...or..?";
+                        return Lang.TownNPCAnubis("GreedACalamityMod");
                     }
                 }
-                return AAWorld.downedGreedA ? "So he WAS hiding his true power all along. I wonder why, though...could he be hiding from something, perhaps..?" :
-                    "You know, I seem to remember a story about ol' grabby-mc-steal-your-crap. When he first showed up in these parts, he was much stronger than he was when you kicked his rear end. Maybe he got weaker as time went on..? Or maybe...nah, that couldn't be it.";
+                return AAWorld.downedGreedA ? Lang.TownNPCAnubis("downedGreedAY") :
+                    Lang.TownNPCAnubis("downedGreedAN");
             }
             else if (Equinox)
             {
@@ -739,7 +739,7 @@ namespace AAMod.NPCs.TownNPCs
                 {
                     mPlayer.GivenAnuSummon = true;
                     player.QuickSpawnItem(ModContent.ItemType<Items.BossSummons.Scepter>(), 1);
-                    return "Hey, thanks for getting back to me. I wanna test your strength. After you thrashed those mechanical meatheads, I'm interested in seeing how you fair against someone like me. Here, take this scepter and go use it in the desert on the surface whenever you're ready. I'm ready whenever.";
+                    return Lang.TownNPCAnubis("GetSummonItemChat");
                 }
             }
 

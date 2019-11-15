@@ -22,7 +22,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override bool Autoload(ref string name)
 		{
-			name = "Goblin Slayer";
+			name = Language.GetTextValue("Mods.AAMod.Common.GoblinSlayer");
 			return mod.Properties.Autoload;
 		}
 

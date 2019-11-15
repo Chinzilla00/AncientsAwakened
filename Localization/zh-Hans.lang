@@ -5613,7 +5613,9 @@ NPCName.Vortex=虚空绞杀者-铰刀
 // AAMod.NPCs.TownNPCs
 
 ===UNKNWN===
-NPCName.GoblinSlayer=哥布林杀手
+Common.GoblinSlayer=哥布林杀手
+
+Common.Anubis=史诗记述者
 
 ===UNKNWN===
 NPCName.Lovecraftian=洛夫克拉夫特星人

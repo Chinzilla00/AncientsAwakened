@@ -511,7 +511,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                                 }
                             }
                             
-                            if (Main.netMode != 1) AAMod.Chat(@"===C A R N A G E===", Color.Red.R, Color.Red.G, Color.Red.B);
+                            if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroAwakened11"), Color.Red.R, Color.Red.G, Color.Red.B);
                             if (ShootDir == new Vector2(0,0)) ShootDir = npc.DirectionTo(player.Center);
                             Projectile.NewProjectile(npc.position, 10f * ShootDir, ModContent.ProjectileType<EchoRay>(), 100, 3f, Main.myPlayer, 0, npc.whoAmI);
                             npc.ai[3] = 1f;
@@ -554,15 +554,12 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 if(npc.ai[2] == 10)
                 {
 
-                    if (Main.netMode != 1) AAMod.Chat(@"SELF-ORGNAZATION CHARGING COMPLETED...", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroAwakened8"), Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroAwakened9"), Color.Red.R, Color.Red.G, Color.Red.B);
                 }
-                if(npc.ai[2] == 30)
+                if(npc.ai[2] == 40)
                 {
-                    if (Main.netMode != 1) AAMod.Chat(@"BOOTING IN SELF ORGNAZATION MODE...", Color.Red.R, Color.Red.G, Color.Red.B);
-                }
-                if(npc.ai[2] == 60)
-                {
-                    if (Main.netMode != 1) AAMod.Chat(@"ALLOW C:\TERRARIA\AAMOD\ZERO\PROTOCOL\SELF-ORGNAZATION.EXE ? <Y/N>...", Color.Red.R, Color.Red.G, Color.Red.B);
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroAwakened10"), Color.Red.R, Color.Red.G, Color.Red.B);
                 }
                 if(npc.ai[2] == 110)
                 {

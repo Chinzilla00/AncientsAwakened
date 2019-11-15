@@ -64,6 +64,7 @@ Get all of the materials' effect
             player.minionKB += 2f;
 
 			player.lifeRegen += 26;
+            player.lifeRegenTime += 2;
 
             player.maxTurrets++;
             
@@ -86,6 +87,9 @@ Get all of the materials' effect
             recipe.AddIngredient(mod, "InvokerPants", 1);
 			recipe.AddIngredient(ItemID.SquireGreatHelm, 1);
             recipe.AddIngredient(ItemID.SquireAltShirt, 1);
+            recipe.AddIngredient(ItemID.ShinyStone, 1);
+            recipe.AddIngredient(ItemID.FrozenTurtleShell, 1);
+            recipe.AddIngredient(ItemID.PaladinsShield, 1);
             recipe.AddIngredient(ItemID.SpectreBar, 60);
             recipe.AddIngredient(mod, "EXSoul", 1);
 			recipe.AddTile(mod, "ACS");

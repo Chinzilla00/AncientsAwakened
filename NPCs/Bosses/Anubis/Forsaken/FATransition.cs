@@ -44,38 +44,38 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     npc.ai[1]++;
                     if (npc.ai[1] == 120)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("...hrgh...", Color.Gold);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AnubisTransition1"), Color.Gold);
                     }
 
                     if (npc.ai[1] == 240)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("...alright.", Color.Gold);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AnubisTransition2"), Color.Gold);
                     }
 
                     if (npc.ai[1] == 360)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("I think...it's time.", Color.Gold);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AnubisTransition3"), Color.Gold);
                     }
 
                     if (npc.ai[1] == 480)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("No more stops being pulled.", Color.Gold);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AnubisTransition4"), Color.Gold);
                     }
 
                     if (npc.ai[1] == 600)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("If you're gonna be taking on the dark forces of the world...", Color.Gold);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AnubisTransition5"), Color.Gold);
                     }
 
                     if (npc.ai[1] == 720)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("I need to make sure you're ready, because...unless you're ready...", Color.Gold);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AnubisTransition6"), Color.Gold);
                         music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AnubisA");
                     }
 
                     if (npc.ai[1] == 840)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat("...Some things should stay locked away for your own good.", Color.ForestGreen);
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AnubisTransition7"), Color.ForestGreen);
                     }
 
                     if (npc.ai[1] >= 900)

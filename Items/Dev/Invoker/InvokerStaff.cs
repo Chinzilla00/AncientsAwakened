@@ -103,7 +103,7 @@ namespace AAMod.Items.Dev.Invoker
 			{
 				if(!player.GetModPlayer<InvokerPlayer>().InvokerMadness)
 				{
-					player.AddBuff(mod.BuffType("InvokerofMadness"), 30);
+					player.AddBuff(mod.BuffType("InvokerofMadness"), player.GetModPlayer<InvokerPlayer>().DarkCaligula? 30:3000);
 					player.GetModPlayer<InvokerPlayer>().BanishDamage = item.damage * 5;
 					player.GetModPlayer<InvokerPlayer>().banishing = true;
 				}
@@ -264,6 +264,12 @@ namespace AAMod.Items.Dev.Invoker
 					projectile.Kill();
 				}
 			}
+
+			for(int i=0; i < 200; i++)
+			{
+				if(projectile.Hitbox.Intersects(Main.npc[i].Hitbox) && Main.npc[i].dontTakeDamage)
+				Main.npc[i].dontTakeDamage = false;
+			}
         }
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -271,6 +277,24 @@ namespace AAMod.Items.Dev.Invoker
 			Rectangle rectangle = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
 
 			double Realdamage = Main.CalculateDamage(projectile.damage, 0);
+
+			if(Main.player[projectile.owner].GetModPlayer<InvokerPlayer>().SpringInvoker)
+			{
+				if (target.realLife >= 0)
+				{
+					if(Main.npc[target.realLife].StrikeNPC((int)(damage * .1f), knockback, hitDirection, crit, false, false) < .01f * projectile.damage)
+					{
+						Realdamage = Main.npc[target.realLife].lifeMax * .01f;
+					}
+				}
+				else
+				{
+					if(target.StrikeNPC(damage, knockback, hitDirection, crit, false, false) < .01f * projectile.damage)
+					{
+						Realdamage = target.lifeMax * .01f;
+					}
+				}
+			}
 
 			Main.player[Main.myPlayer].dpsDamage += (int)Realdamage;
 
@@ -425,12 +449,10 @@ namespace AAMod.Items.Dev.Invoker
 		public bool IsBeingBanished = false;
 		public int BanishCount = 0;
 		public bool CaligulaSoulFight = false;
-		public bool CaligulaSoulClaw = false;
 
 		public override void ResetEffects(NPC npc)
 		{
 			Banished = false;
-			CaligulaSoulClaw = false;
 		}
 
 		public void BanishAction(NPC npc)
@@ -500,6 +522,10 @@ namespace AAMod.Items.Dev.Invoker
 
 			if(npc.boss)
 			{
+				if(!InvokerPlayer.nohit)
+				{
+					InvokerPlayer.nohit = false;
+				}
 				bool flag = (Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == mod.ItemType("InvokerStaff") || Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].type == ItemID.RodofDiscord) && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().SpringInvoker && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().Thebookoflaw;
 				if(npc.life/npc.lifeMax > 0.95)
 				{
@@ -513,9 +539,9 @@ namespace AAMod.Items.Dev.Invoker
 				{
 					CaligulaSoulFight = false;
 				}
-				else
+				else if(!InvokerPlayer.nohit)
 				{
-					CaligulaSoulFight = true;
+					CaligulaSoulFight = false;
 				}
 			}
 
@@ -601,7 +627,7 @@ namespace AAMod.Items.Dev.Invoker
 				{
 					if((npc.realLife >= 0 && npc.realLife == npc.whoAmI) || npc.realLife < 0) Projectile.NewProjectile(npc.Center.X, npc.Center.Y, nump8, nump9, mod.ProjectileType("InvokedDamage"), npc.damage * 20, 0f, Main.player[Main.myPlayer].whoAmI, num6, 0f);
 				}
-				if(npc.GetGlobalNPC<InvokedGlobalNPC>().CaligulaSoulFight && npc.GetGlobalNPC<InvokedGlobalNPC>().CaligulaSoulClaw && !Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().DarkCaligula && Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().InvokedCaligula && (npc.type == mod.NPCType("ZeroProtocol") || npc.type == mod.NPCType("YamataA") || npc.type == mod.NPCType("AkumaA") || npc.type == mod.NPCType("ShenA") || npc.type == mod.NPCType("SupremeRajah")))
+				if(npc.GetGlobalNPC<InvokedGlobalNPC>().CaligulaSoulFight && !Main.player[Main.myPlayer].GetModPlayer<InvokerPlayer>().DarkCaligula && (npc.type == mod.NPCType("ZeroProtocol") || npc.type == mod.NPCType("YamataA") || npc.type == mod.NPCType("AkumaA") || npc.type == mod.NPCType("ShenA") || npc.type == mod.NPCType("SupremeRajah")))
 				{
 					Projectile.NewProjectile(npc.Center.X, npc.Center.Y, nump8, nump9, mod.ProjectileType("InvokedDamage"), 0, 0f, Main.player[Main.myPlayer].whoAmI, Main.player[Main.myPlayer].whoAmI, npc.type);
 				}
@@ -707,6 +733,11 @@ namespace AAMod.Items.Dev.Invoker
 				Main.dust[num580].velocity *= 0f;
 				Main.dust[num580].position.X = Main.dust[num580].position.X - num578;
 				Main.dust[num580].position.Y = Main.dust[num580].position.Y - num579;
+			}
+			for(int i=0; i < 200; i++)
+			{
+				if(projectile.Hitbox.Intersects(Main.npc[i].Hitbox) && Main.npc[i].dontTakeDamage)
+				Main.npc[i].dontTakeDamage = false;
 			}
 			return;
 		}

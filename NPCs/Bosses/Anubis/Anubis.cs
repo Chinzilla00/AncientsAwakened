@@ -387,7 +387,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                 npc.TargetClosest();
                 if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f || !player.ZoneDesert)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat("HAH! Get hosed-- er, sanded.", Color.Gold);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AnubisFalse"), Color.Gold);
                     int a = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<TownNPCs.Anubis>());
                     Main.npc[a].Center = npc.Center;
                     npc.active = false;
@@ -404,6 +404,8 @@ namespace AAMod.NPCs.Bosses.Anubis
 
         public override void NPCLoot()
         {
+            AAWorld.downedAnubis = true;
+
             if (NPC.downedMoonlord)
             {
                 if (!AAWorld.AnubisAwakened)
@@ -415,6 +417,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                 {
                     NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<Forsaken.FATransition>());
                 }
+                return;
             }
             else
             {
@@ -635,29 +638,29 @@ namespace AAMod.NPCs.Bosses.Anubis
                         {
                             if (internalAI[1] == 60)
                             {
-                                string s = Main.ActivePlayersCount > 1 ? "guys" : "bud";
-                                if (Main.netMode != 1) BaseUtility.Chat("Well, " + s + ". Here we are.", Color.Gold);
+                                string s = Main.ActivePlayersCount > 1 ? Lang.BossChat("AnubisGuys") : Lang.BossChat("Anubisbud");
+                                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Anubis1") + s + Lang.BossChat("Anubis2"), Color.Gold);
                             }
 
                             if (internalAI[1] == 150)
                             {
-                                if (Main.netMode != 1) BaseUtility.Chat("I hope you're ready for a real fight.", Color.Gold);
+                                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Anubis3"), Color.Gold);
                             }
 
                             if (internalAI[1] == 240)
                             {
-                                if (Main.netMode != 1) BaseUtility.Chat("Especially since I'm in my superior form.", Color.Gold);
+                                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Anubis4"), Color.Gold);
                             }
 
                             if (internalAI[1] == 320)
                             {
-                                if (Main.netMode != 1) BaseUtility.Chat("You ready? I won't hesitate to slap you silly!", Color.Gold);
+                                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Anubis5"), Color.Gold);
                             }
 
                             if (internalAI[1] >= 410)
                             {
                                 music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
-                                if (Main.netMode != 1) BaseUtility.Chat("Let's go!", Color.Gold);
+                                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Anubis6"), Color.Gold);
                                 internalAI[0] = 1;
                                 Teleport();
                                 npc.netUpdate = true;
@@ -666,7 +669,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                         else
                         {
                             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
-                            if (Main.netMode != 1) BaseUtility.Chat("A rematch eh? Alright, this should be fun!", Color.Gold);
+                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Anubis7"), Color.Gold);
                             internalAI[0] = 1;
                             Teleport();
                             npc.netUpdate = true;
