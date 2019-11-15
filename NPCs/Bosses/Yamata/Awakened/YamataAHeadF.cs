@@ -123,7 +123,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 
                     //insert charging dust here
 
-                    if (internalAI[1] == 180 - 30)
+                    if (internalAI[1] == 180 - 60)
                     {
                         if (Main.netMode != 1)
                         {

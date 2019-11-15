@@ -155,12 +155,12 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                         if (Main.netMode != 1)
                             Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<YamataHarukaProj>(), npc.damage / 4, 0f, Main.myPlayer, npc.target);
                     }
-                    if (++internalAI[2] > 60)
+                    /*if (++internalAI[2] > 60)
                     {
                         internalAI[2] = 0;
                         if (Main.netMode != 1)
                             Projectile.NewProjectile(npc.Center, Vector2.UnitY * 5, mod.ProjectileType("YamataAShockBomb"), npc.damage / 6, 0f, Main.myPlayer, npc.target);
-                    }
+                    }*/
                     if (++internalAI[1] > 180)
                     {
                         internalAI[0]++;

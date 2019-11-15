@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
     public class YamataWaveDeathraySmall : ModProjectile
     {
-        private const float maxTime = 30;
+        private const float maxTime = 60;
         private float timer = 0;
 
         public override void SetStaticDefaults()
@@ -57,7 +57,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             {
                 Main.PlaySound(29, (int)Main.player[Main.myPlayer].Center.X, (int)Main.player[Main.myPlayer].Center.Y, 104, 1f, 0f);
             }
-            float num801 = 1f;
+            float num801 = 0.5f;
             projectile.localAI[0] += 1f;
             if (projectile.localAI[0] >= maxTime)
             {

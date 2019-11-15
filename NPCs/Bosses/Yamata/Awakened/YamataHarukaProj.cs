@@ -36,21 +36,22 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
 
             Player player = Main.player[ai0];
-            if (++projectile.ai[1] < 120) //move beside player
+            const float dashTime = 90;
+            if (++projectile.ai[1] <= dashTime) //move beside player
             {
                 Vector2 target = player.Center;
                 target.X += projectile.Center.X < player.Center.X ? -400 : 400;
                 MoveToPoint(target);
-                if (projectile.ai[1] == 120) //dash
+                if (projectile.ai[1] == dashTime) //dash
                 {
-                    projectile.velocity = projectile.DirectionTo(player.Center) * 30;
+                    projectile.velocity = projectile.DirectionTo(player.Center) * 22;
                     projectile.netUpdate = true;
                 }
             }
             else
             {
-                projectile.velocity *= 0.99f;
-                if (projectile.ai[1] > 60)
+                projectile.velocity *= 0.98f;
+                if (projectile.ai[1] > dashTime + 60)
                 {
                     projectile.ai[1] = 0;
                     projectile.netUpdate = true;
