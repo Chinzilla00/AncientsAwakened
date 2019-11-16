@@ -354,6 +354,9 @@ ItemTooltip.IronBoots=允许飞行\n穿戴者步履如飞\n免疫坠落伤害
 ItemName.Lantern=灯笼
 ItemTooltip.Lantern=驱散潭渊雾气
 
+ItemName.OldOneCharm=旧日坠饰
+ItemTooltip.OldOneCharm=使用饰品能力键跳过旧日军团事件中间的准备时间\n增加12%召唤伤害\n增加最大炮台上限\n旧日军团入侵期间, 增加22%召唤伤害
+
 ItemName.MindStone=心灵宝石
 ItemTooltip.MindStone=减少50%魔力消耗\n+200魔力上限\n“简单的微积分”\n(白昼启明虫掉落)
 
