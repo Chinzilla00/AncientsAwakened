@@ -158,7 +158,20 @@ Common.MonsterSoul=Monster Soul
 Common.MonsterSouls=Monster Souls
 
 Common.PirateBooty=Pirate Booty
-Common.PirateBootys=Pirate Booties
+Common.PirateBooties=Pirate Booties
+
+//GoblinSlayerShop
+
+Common.GoblinSlayerShopChangeShopType=Change Shop Type
+
+Common.GoblinSlayerShopGoblinLoot=Goblin Loot
+Common.GoblinSlayerShopBloodMoonLoot=Blood Moon Loot
+Common.GoblinSlayerShopOldOneArmyLoot=Old One's Army Loot
+Common.GoblinSlayerShopPirateLoot=Pirate Loot
+Common.GoblinSlayerShopEclipseLoot=Eclipse Loot
+Common.GoblinSlayerShopHalloweenLoot=Halloween Loot
+Common.GoblinSlayerShopChristmasLoot=Christmas Loot
+Common.GoblinSlayerShopMartianLoot=Martian Loot
 
 //AAMod.Tiles.RazewoodF
 

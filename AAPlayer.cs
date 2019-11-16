@@ -216,6 +216,8 @@ namespace AAMod
 
         public bool GreedCharm;
         public bool GreedTalisman;
+
+        public bool OldOneCharm = false;
         #endregion
 
         #region debuffs
@@ -469,6 +471,7 @@ namespace AAMod
             Greed1 = false;
             Greed2 = false;
             olympianWings = false;
+            OldOneCharm = false;
         }
 
         private void ResetDebuffEffect()
@@ -1163,41 +1166,44 @@ namespace AAMod
                 }
             }
 
-            float RandomX = 50f;
-            float RandomY = 25f;
-            bool flag = player.itemAnimation > 0 && ItemLoader.CanUseItem(player.inventory[player.selectedItem], player);
-            if (flag && player.inventory[player.selectedItem].melee && player.GetModPlayer<AAPlayer>().Assassin && Main.rand.Next(200) == 0 && player.whoAmI == Main.myPlayer)
+            if(player.GetModPlayer<AAPlayer>().Assassin)
             {
-                Vector2 SpeedVector = Main.MouseWorld - player.RotatedRelativePoint(player.MountedCenter, true);
-                SpeedVector.Normalize();
-                if (SpeedVector.HasNaNs())
+                float RandomX = 50f;
+                float RandomY = 25f;
+                bool flag = player.itemAnimation > 0 && ItemLoader.CanUseItem(player.inventory[player.selectedItem], player);
+                if (flag && player.inventory[player.selectedItem].melee && Main.rand.Next(200) == 0 && player.whoAmI == Main.myPlayer)
                 {
-                    SpeedVector = Vector2.UnitX * player.direction;
-                }
-                SpeedVector *= 15f;
-                Vector2[] Spwanposition = new Vector2[3];
-                Spwanposition[0] = new Vector2(player.Center.X + player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY, RandomY));
-                Spwanposition[1] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY, RandomY));
-                Spwanposition[2] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY, RandomY));
-                int i = 0;
-                while (i < 3)
-                {
-                    Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, SpeedVector.X, SpeedVector.Y, mod.ProjectileType("AssassinDagger"), (int)(player.inventory[player.selectedItem].damage * 1.3), 2f, player.whoAmI, 0f, 1f);
-                    float round = 16f;
-                    int k = 0;
-                    while (k < round)
+                    Vector2 SpeedVector = Main.MouseWorld - player.RotatedRelativePoint(player.MountedCenter, true);
+                    SpeedVector.Normalize();
+                    if (SpeedVector.HasNaNs())
                     {
-                        Vector2 vector12 = Vector2.UnitX * 0f;
-                        vector12 += -Vector2.UnitY.RotatedBy(k * (6.28318548f / round), default) * new Vector2(1f, 4f);
-                        vector12 = vector12.RotatedBy(SpeedVector.ToRotation(), default);
-                        int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default, 1f);
-                        Main.dust[Dusti].scale = 1.5f;
-                        Main.dust[Dusti].noGravity = true;
-                        Main.dust[Dusti].position = Spwanposition[i] + vector12;
-                        Main.dust[Dusti].velocity = vector12.SafeNormalize(Vector2.UnitY) * 1f;
-                        k++;
+                        SpeedVector = Vector2.UnitX * player.direction;
                     }
-                    i++;
+                    SpeedVector *= 15f;
+                    Vector2[] Spwanposition = new Vector2[3];
+                    Spwanposition[0] = new Vector2(player.Center.X + player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY, RandomY));
+                    Spwanposition[1] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY, RandomY));
+                    Spwanposition[2] = new Vector2(player.Center.X - player.direction * Main.rand.NextFloat(25f, RandomX), player.Center.Y - Main.rand.NextFloat(-RandomY, RandomY));
+                    int i = 0;
+                    while (i < 3)
+                    {
+                        Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, SpeedVector.X, SpeedVector.Y, mod.ProjectileType("AssassinDagger"), (int)(player.inventory[player.selectedItem].damage * 1.3), 2f, player.whoAmI, 0f, 1f);
+                        float round = 16f;
+                        int k = 0;
+                        while (k < round)
+                        {
+                            Vector2 vector12 = Vector2.UnitX * 0f;
+                            vector12 += -Vector2.UnitY.RotatedBy(k * (6.28318548f / round), default) * new Vector2(1f, 4f);
+                            vector12 = vector12.RotatedBy(SpeedVector.ToRotation(), default);
+                            int Dusti = Dust.NewDust(Spwanposition[i], 0, 0, mod.DustType("AcidDust"), 0f, 0f, 0, default, 1f);
+                            Main.dust[Dusti].scale = 1.5f;
+                            Main.dust[Dusti].noGravity = true;
+                            Main.dust[Dusti].position = Spwanposition[i] + vector12;
+                            Main.dust[Dusti].velocity = vector12.SafeNormalize(Vector2.UnitY) * 1f;
+                            k++;
+                        }
+                        i++;
+                    }
                 }
             }
 
@@ -2399,6 +2405,14 @@ namespace AAMod
                 }
             }
 
+            if (OldOneCharm)
+            {
+                if (AAMod.AccessoryAbilityKey.JustPressed && DD2Event.Ongoing && DD2Event.TimeLeftBetweenWaves > 0)
+                {
+                    DD2Event.TimeLeftBetweenWaves = 0;
+                }
+            }
+
             if (ChaosRa2)
             {
                 if (AAMod.ArmorAbilityKey.JustPressed && AbilityCD == 0)
@@ -2756,6 +2770,7 @@ namespace AAMod
 			{
 				return false;
 			}
+            return true;
         }
 
         public override void UpdateDead()

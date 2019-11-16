@@ -28,7 +28,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Goblin Slayer");
+            DisplayName.SetDefault(Language.GetTextValue("Mods.AAMod.Common.GoblinSlayer"));
             Main.npcFrameCount[npc.type] = 26;
             NPCID.Sets.ExtraFramesCount[npc.type] = 10;
             NPCID.Sets.AttackFrameCount[npc.type] = 5;
@@ -130,16 +130,16 @@ namespace AAMod.NPCs.TownNPCs
 
         public override void SetChatButtons(ref string button, ref string button2)
 		{
-			button = Language.GetTextValue("Change Shop Type");
+			button = Language.GetTextValue("Mods.AAMod.Common.GoblinSlayerShopChangeShopType");
 
-            string GobShop = Language.GetTextValue("Goblin Loot");
-            string BloodShop = Language.GetTextValue("Blood Moon Loot");
-            string OOAShop = Language.GetTextValue("Old One's Army Loot");
-            string PirateShop = Language.GetTextValue("Pirate Loot");
-            string EclipseShop = Language.GetTextValue("Eclipse Loot");
-            string PumpShop = Language.GetTextValue("Halloween Loot");
-            string FrostShop = Language.GetTextValue("Christmas Loot");
-            string MartianShop = Language.GetTextValue("Martian Loot");
+            string GobShop = Language.GetTextValue("Mods.AAMod.Common.GoblinSlayerShopGoblinLoot");
+            string BloodShop = Language.GetTextValue("Mods.AAMod.Common.GoblinSlayerShopBloodMoonLoot");
+            string OOAShop = Language.GetTextValue("Mods.AAMod.Common.GoblinSlayerShopOldOneArmyLoot");
+            string PirateShop = Language.GetTextValue("Mods.AAMod.Common.GoblinSlayerShopPirateLoot");
+            string EclipseShop = Language.GetTextValue("Mods.AAMod.Common.GoblinSlayerShopEclipseLoot");
+            string PumpShop = Language.GetTextValue("Mods.AAMod.Common.GoblinSlayerShopHalloweenLoot");
+            string FrostShop = Language.GetTextValue("Mods.AAMod.Common.GoblinSlayerShopChristmasLoot");
+            string MartianShop = Language.GetTextValue("Mods.AAMod.Common.GoblinSlayerShopMartianLoot");
 
             if (ChatNumber == 0)
             {
@@ -283,6 +283,10 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (OOA)
             {
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Accessories.OldOneCharm>());
+                shop.item[nextSlot].shopCustomPrice = new int?(5);
+                shop.item[nextSlot].shopSpecialCurrency = CustomCurrencyID.DefenderMedals;
+                nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.WarTableBanner);
                 shop.item[nextSlot].shopCustomPrice = new int?(2);
                 shop.item[nextSlot].shopSpecialCurrency = CustomCurrencyID.DefenderMedals;

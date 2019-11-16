@@ -5121,6 +5121,12 @@ NPCName.Hydra=九头渊蛇
 NPCName.HydraHead1=潭渊蛇头
 NPCName.HydraHead2=潭渊蛇头
 NPCName.HydraHead3=潭渊蛇头
+NPCName.HydraHead4=潭渊蛇头
+NPCName.HydraHead5=潭渊蛇头
+NPCName.HydraHead6=潭渊蛇头
+NPCName.HydraHead7=潭渊蛇头
+NPCName.HydraHead8=潭渊蛇头
+NPCName.HydraHead9=潭渊蛇头
 
 
 // AAMod.NPCs.Bosses.MushroomMonarch
@@ -5249,6 +5255,8 @@ NPCName.ShenTransition=觉醒之冥昧
 NPCName.ShenDefeat=冥昧之败
 
 NPCName.ShenDeath=冥昧的陨落
+
+NPCName.FuryAsheOrbiter=狂焰漩涡
 
 NPCName.Shenling=上神游龙
 NPCName.ShenlingBody1=上神游龙
@@ -5381,9 +5389,13 @@ NPCName.ZeroDeactivated=奇异机械
 // AAMod.NPCs.Bosses.Zero.Protocol
 
 
-NPCName.NullZP=无械-0型
+NPCName.NullZP=无械-0
 
 NPCName.ZeroProtocol=零械汇编器 零.之.始.约.协.议
+
+NPCName.ZeroEcho=戒木零0-回音
+
+NPCName.ZeroMini=零械自组织源 零.之.自.组.织.协.议
 
 
 // AAMod.NPCs.Critters
@@ -5987,6 +5999,19 @@ MapObject.OroborosDoorOpen=虚环木门
 
 // AAMod.Tiles.Trophy
 
+//GoblinSlayerShop
+
+Common.GoblinSlayerShopChangeShopType=切换商店类型
+
+Common.GoblinSlayerShopGoblinLoot=哥布林事件掉落
+Common.GoblinSlayerShopBloodMoonLoot=血月事件掉落
+Common.GoblinSlayerShopOldOneArmyLoot=旧日军团事件掉落
+Common.GoblinSlayerShopPirateLoot=海盗事件掉落
+Common.GoblinSlayerShopEclipseLoot=日食事件掉落
+Common.GoblinSlayerShopHalloweenLoot=南瓜月事件掉落
+Common.GoblinSlayerShopChristmasLoot=霜月事件掉落
+Common.GoblinSlayerShopMartianLoot=火星人事件掉落
+
 //CurrencyItems
 
 Common.PlayerBuyPrice=购买价格:
@@ -6010,7 +6035,7 @@ Common.MonsterSoul=凶兽之魂
 Common.MonsterSouls=凶兽之魂
 
 Common.PirateBooty=海盗战利品
-Common.PirateBootys=海盗战利品
+Common.PirateBooties=海盗战利品
 
 //hotkey
 
