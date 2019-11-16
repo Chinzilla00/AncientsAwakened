@@ -2409,7 +2409,11 @@ namespace AAMod
             {
                 if (AAMod.AccessoryAbilityKey.JustPressed && DD2Event.Ongoing && DD2Event.TimeLeftBetweenWaves > 0)
                 {
-                    DD2Event.TimeLeftBetweenWaves = 0;
+                    DD2Event.TimeLeftBetweenWaves = 60;
+                    if (Main.netMode == 1)
+                    {
+                        AANet.SendNetMessage(AANet.DD2EventTime, (byte)DD2Event.TimeLeftBetweenWaves);
+                    }
                 }
             }
 

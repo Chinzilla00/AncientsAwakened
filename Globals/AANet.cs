@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using Terraria;
 using Terraria.ID;
+using Terraria.GameContent.Events;
 
 namespace AAMod
 {
@@ -12,6 +13,7 @@ namespace AAMod
         public const byte SummonNPCFromClient = 0;
 	    public const byte UpdateLovecraftianCount = 1;
         public const byte GenOre = 2;
+        public const byte DD2EventTime = 3;
 
         public static bool DEBUG = true;
 
@@ -46,6 +48,10 @@ namespace AAMod
 				{
 					LovecraftianCount(bb, whoAmI);
 				}
+                else if (msg == DD2EventTime)
+                {
+                    DD2Event.TimeLeftBetweenWaves = bb.ReadByte();
+                }
             }
             catch (Exception e)
             {

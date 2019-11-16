@@ -179,7 +179,7 @@ namespace AAMod.NPCs.TownNPCs
             else if (ChatNumber == 7)
             {
                 button2 = MartianShop;
-                Frost = true;
+                Martian = true;
             }
         }
 
@@ -642,70 +642,76 @@ namespace AAMod.NPCs.TownNPCs
             else if (Martian)
             {
                 shop.item[nextSlot].SetDefaults(ItemID.MartianConduitPlating);
+                shop.item[nextSlot].shopCustomPrice = new int?(5);
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.MartianCostumeMask);
                 shop.item[nextSlot].shopCustomPrice = new int?(5);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.MartianCostumeShirt);
                 shop.item[nextSlot].shopCustomPrice = new int?(5);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.MartianCostumePants);
                 shop.item[nextSlot].shopCustomPrice = new int?(5);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.MartianUniformHelmet);
                 shop.item[nextSlot].shopCustomPrice = new int?(5);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.MartianUniformTorso);
                 shop.item[nextSlot].shopCustomPrice = new int?(5);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.MartianUniformPants);
                 shop.item[nextSlot].shopCustomPrice = new int?(5);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.BrainScrambler);
                 shop.item[nextSlot].shopCustomPrice = new int?(30);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.InfluxWaver);
                 shop.item[nextSlot].shopCustomPrice = new int?(40);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.Xenopopper);
                 shop.item[nextSlot].shopCustomPrice = new int?(40);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.ElectrosphereLauncher);
                 shop.item[nextSlot].shopCustomPrice = new int?(40);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.LaserMachinegun);
                 shop.item[nextSlot].shopCustomPrice = new int?(40);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.ChargedBlasterCannon);
                 shop.item[nextSlot].shopCustomPrice = new int?(40);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.XenoStaff);
                 shop.item[nextSlot].shopCustomPrice = new int?(40);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.LaserDrill);
                 shop.item[nextSlot].shopCustomPrice = new int?(40);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.AntiGravityHook);
                 shop.item[nextSlot].shopCustomPrice = new int?(40);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.CosmicCarKey);
                 shop.item[nextSlot].shopCustomPrice = new int?(50);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.GoblinSoul;
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Accessories.Energy_Conduit>());
+                shop.item[nextSlot].shopCustomPrice = new int?(50);
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
             }
         }
