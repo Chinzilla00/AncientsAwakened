@@ -642,7 +642,7 @@ namespace AAMod.NPCs.TownNPCs
             else if (Martian)
             {
                 shop.item[nextSlot].SetDefaults(ItemID.MartianConduitPlating);
-                shop.item[nextSlot].shopCustomPrice = new int?(5);
+                shop.item[nextSlot].shopCustomPrice = new int?(1);
                 shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.MartianCostumeMask);
