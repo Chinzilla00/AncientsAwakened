@@ -15,6 +15,7 @@ namespace AAMod.Buffs
         public override void Update(Player player, ref int buffIndex)
         {
             player.GetModPlayer<AAPlayer>().ShieldUp = true;
+            player.lifeRegen += 14;
         }
     }
 }

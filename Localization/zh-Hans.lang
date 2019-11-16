@@ -1777,6 +1777,8 @@ ItemName.RazewoodWorkbench=燎火木工作台
 
 ItemName.RazewoodPlatform=燎火木平台
 
+ItemName.RazewoodWall=燎火木墙
+
 // AAMod.Items.Blocks.BogwoodF
 
 ItemName.BogwoodBench=污泽木凳
@@ -2341,6 +2343,8 @@ ItemName.RaiderTrophy=创世哺育之母纪念章
 
 // AAMod.Items.Boss.Rajah
 
+ItemName.ChampionPlate=捍卫者护板
+ItemTooltip.ChampionPlate=从捍佑矿石锻造而来
 
 ItemName.BaneOfTheBunny=杀戮兔兔
 ItemTooltip.BaneOfTheBunny=右键当作矛进行刺杀\n左键当作长矛投掷\n投掷长矛之后立即再投掷

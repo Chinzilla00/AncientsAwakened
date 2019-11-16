@@ -2750,6 +2750,14 @@ namespace AAMod
             }
         }
 
+        public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
+		{
+            if (ShieldUp)
+			{
+				return false;
+			}
+        }
+
         public override void UpdateDead()
         {
             infinityOverload = false;

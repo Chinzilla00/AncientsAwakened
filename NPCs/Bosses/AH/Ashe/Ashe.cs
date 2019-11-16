@@ -146,7 +146,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         npc.velocity = npc.DirectionTo(player.Center) * (npc.life < npc.lifeMax/3 ? 50:40);
                         if(npc.velocity.Length() < 40f)
                         {
-                            npc.velocity = Vector2.Normalize(targetPos) * (npc.life < npc.lifeMax/3 ? 50:40);
+                            npc.velocity = Vector2.Normalize(npc.DirectionTo(targetPos)) * (npc.life < npc.lifeMax/3 ? 50:40);
                         }
                     }
                     break;
