@@ -22,7 +22,8 @@ namespace AAMod.Projectiles.Ammo
 			projectile.friendly = true;         
 			projectile.hostile = false;        
 			projectile.ranged = true;           
-			projectile.penetrate = 50;           
+			projectile.penetrate = 50; 
+                        projectile.usesLocalNPCImmunity = false;        
 			projectile.timeLeft = 600;          
 			projectile.alpha = 255;             
 			projectile.light = 0.5f;            
@@ -35,11 +36,13 @@ namespace AAMod.Projectiles.Ammo
                      Vector2? initialVel = null;
                      public override void AI()
                        {
-                         if (initialPos == null && initialVel == null)
-                          {
-                            initialPos = projectile.position;
-                            initialVel = projectile.velocity;
-                          }
+                     Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.9f / 255f, (255 - projectile.alpha) * 0.05f / 255f, (255 - projectile.alpha) * 0.1f / 255f);
+                         
+                          if (initialPos == null && initialVel == null)
+                           {
+                             initialPos = projectile.position;
+                             initialVel = projectile.velocity;
+                           }
                        }
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
@@ -55,11 +58,19 @@ namespace AAMod.Projectiles.Ammo
 
             public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
           {
+            target.immune[projectile.owner] = 1;
             target.AddBuff(mod.BuffType("Moonraze"), 500);
 
             if (target.defense < 300 && !target.boss)
             {
                 damage += target.defense * 2;
+            }
+            {
+                int num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default, 2f);
+                Main.dust[num580].noGravity = true;
+                Main.dust[num580].velocity *= 1.5f;
+                num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100);
+                Main.dust[num580].velocity *= 1.5f;
             }
           }
 
