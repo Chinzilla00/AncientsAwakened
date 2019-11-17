@@ -18,7 +18,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override bool Autoload(ref string name)
         {
-            name = Language.GetTextValue("Mods.AAMod.Common.Anubis");
+            name = "Legendscribe";
             return mod.Properties.Autoload;
 		}
 

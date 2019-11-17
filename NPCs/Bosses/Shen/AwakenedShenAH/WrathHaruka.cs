@@ -448,7 +448,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     if (internalAI[2] == 5 && internalAI[1] == 3 && Main.netMode != 1)
                     {
                         repeat -= 1;
-                        int projType = ModContent.ProjectileType<HarukaKunai>();
+                        int projType = mod.ProjectileType("HarukaKunai");
                         float spread = 45f * 0.0174f;
                         Vector2 dir = Vector2.Normalize(player.Center - npc.Center);
                         dir *= 14f;
@@ -692,7 +692,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                             for (int i = 0; i < strikebackproj; i++)
                             {
                                 double offsetAngle = startAngle + (deltaAngle * i);
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), ModContent.ProjectileType<HarukaArrow>(), damage, 0, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("HarukaArrow"), damage, 0, Main.myPlayer);
                             }
                         }
                         strikebackproj = 0;
@@ -969,7 +969,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
             if(internalAI[4] >= 70 || Main.npc[ShadowNPC[1]].Hitbox.Intersects(Main.npc[ShadowNPC[0]].Hitbox) || Main.npc[ShadowNPC[1]].Hitbox.Intersects(Main.npc[ShadowNPC[2]].Hitbox) || Main.npc[ShadowNPC[2]].Hitbox.Intersects(Main.npc[ShadowNPC[0]].Hitbox))
             {
-                Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, 0, 0, ModContent.ProjectileType<HarukaStrike>(), damage*1, 5, Main.myPlayer);
+                Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, 0, 0, mod.ProjectileType("HarukaStrike"), damage*1, 5, Main.myPlayer);
 
                 Vector2 shoot = Vector2.Zero;
                 int projType = ModContent.ProjectileType<WrathHarukaProj>();

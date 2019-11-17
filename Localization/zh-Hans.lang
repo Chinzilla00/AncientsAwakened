@@ -2048,6 +2048,8 @@ ItemTooltip.DragonSlasher=很慢,但是具有强力击退并对目标造成流�
 ItemName.Daystorm=破晓风暴
 ItemTooltip.Daystorm=在烈火燎原的风暴中焚尽你的敌人
 
+ItemName.EventideBullet=渊宵弹
+
 ItemName.LungStaff=古龙之杖
 ItemTooltip.LungStaff=召唤一条古龙为你而战
 
@@ -5632,7 +5634,7 @@ NPCName.Vortex=虚空绞杀者-铰刀
 // AAMod.NPCs.TownNPCs
 
 ===UNKNWN===
-Common.GoblinSlayer=哥布林杀手
+Common.GoblinSlayerName=哥布林杀手
 
 Common.Anubis=史诗记述者
 

@@ -22,13 +22,13 @@ namespace AAMod.NPCs.TownNPCs
 
         public override bool Autoload(ref string name)
 		{
-			name = Language.GetTextValue("Mods.AAMod.Common.GoblinSlayer");
+			name = "Goblin Slayer";
 			return mod.Properties.Autoload;
 		}
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.AAMod.Common.GoblinSlayer"));
+            DisplayName.SetDefault("Goblin Slayer");
             Main.npcFrameCount[npc.type] = 26;
             NPCID.Sets.ExtraFramesCount[npc.type] = 10;
             NPCID.Sets.AttackFrameCount[npc.type] = 5;
