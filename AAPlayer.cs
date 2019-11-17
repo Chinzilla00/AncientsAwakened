@@ -1170,7 +1170,7 @@ namespace AAMod
             {
                 float RandomX = 50f;
                 float RandomY = 25f;
-                bool flag = player.itemAnimation > 0 && ItemLoader.CanUseItem(player.inventory[player.selectedItem], player);
+                bool flag = player.itemAnimation > 0;
                 if (flag && player.inventory[player.selectedItem].melee && Main.rand.Next(200) == 0 && player.whoAmI == Main.myPlayer)
                 {
                     Vector2 SpeedVector = Main.MouseWorld - player.RotatedRelativePoint(player.MountedCenter, true);
@@ -1207,7 +1207,7 @@ namespace AAMod
                 }
             }
 
-            if (BlackLotusEmblem && ItemLoader.CanUseItem(player.inventory[player.selectedItem], player) && player.inventory[player.selectedItem].mana > 0 && player.statMana < (int)(player.inventory[player.selectedItem].mana * player.manaCost))
+            if (BlackLotusEmblem && player.inventory[player.selectedItem].mana > 0 && player.statMana < (int)(player.inventory[player.selectedItem].mana * player.manaCost))
             {
                 BlackLotusQuickMana();
             }
