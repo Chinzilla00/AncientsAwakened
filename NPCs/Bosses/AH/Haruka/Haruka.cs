@@ -760,7 +760,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 if(SHADOWCONTER > 0)
                 {
-                    LOOPPOINT(player.Center + new Vector2(0, 500f), player.Center - new Vector2(0, 500f));
+                    LOOPPOINT(player.Center + new Vector2(0, 700f), player.Center - new Vector2(0, 700f));
                 }
                 else
                 {
@@ -1023,20 +1023,22 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 MoveToPoint(point1);
             }
-            else if((npc.Center - point1).Length() < 40f)
-            {
-                MoveToPoint(point2);
-                Shadowdashcounter = 0;
-            }
-            else if((npc.Center - point2).Length() < 40f)
-            {
-                MoveToPoint(point1);
-                Shadowdashcounter = 41;
-            }
             else
             {
                 Shadowdashcounter = 0;
             }
+
+            if(Math.Abs(npc.Center.Y - point1.Y) < 150f)
+            {
+                MoveToPoint(point2);
+                Shadowdashcounter = 0;
+            }
+            else if(Math.Abs(npc.Center.Y - point2.Y) < 150f)
+            {
+                MoveToPoint(point1);
+                Shadowdashcounter = 41;
+            }
+            
         }
 
         public void MoveToPoint(Vector2 point)
@@ -1055,7 +1057,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 moveSpeed = 25f;
                 if(SHADOWCONTER > 0)
                 {
-                    moveSpeed = 55f;
+                    moveSpeed = 70f;
                 }
             }
             float velMultiplier = 1f;

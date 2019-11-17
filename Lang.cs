@@ -1679,6 +1679,7 @@ namespace AAMod
                         return "信 号 发 送 中...";
                         case "ZeroDeath4":
                         return "收 到 遇 难 信 号. ";
+                        
                         case "FuryAshe1":
                         return "爸, 不! 你要为此付出代价, ";
                         case "FuryAshe2":

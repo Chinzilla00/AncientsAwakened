@@ -299,7 +299,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 int num63 = 0;
                 if (Vector2.Normalize(Main.player[npc.target].Center - npc.Center).ToRotation().AngleTowards(npc.velocity.ToRotation(), (float)Math.PI / 2) == npc.velocity.ToRotation() && num62 < 350f)
                 {
-                    num63 = 4;
+                    num63 = 15;
                 }
 
                 if (num63 > npc.frameCounter)
@@ -317,11 +317,29 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     npc.frameCounter = 0.0;
                 }
 
-                if (npc.frameCounter > 4.0)
+                if (npc.frameCounter > 15.0)
                 {
-                    npc.frameCounter = 4.0;
+                    npc.frameCounter = 15.0;
                 }
             }
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            int Frame = 0;
+            if(npc.frameCounter < 5.0)
+            {
+                Frame = 0;
+            }
+            else if(npc.frameCounter < 10.0)
+            {
+                Frame = 1;
+            }
+            else
+            {
+                Frame = 2;
+            }
+            npc.frame.Y = Frame * frameHeight;
         }
 
         public override void NPCLoot()

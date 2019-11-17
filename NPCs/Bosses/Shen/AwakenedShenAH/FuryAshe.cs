@@ -437,7 +437,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 npc.TargetClosest(true);
                 if (Main.netMode != 1)
                 {
-                    int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<AsheVanish>(), 0);
+                    int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<FuryAsheVanish>(), 0);
                     Main.npc[DeathAnim].velocity = npc.velocity;
                     Main.npc[DeathAnim].netUpdate = true;
                 }
@@ -518,6 +518,24 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
         public override void BossLoot(ref string name, ref int potionType)
         {
             potionType = 0;
+        }
+
+        private readonly bool DontSayDeathLine = false;
+
+        public override void NPCLoot()
+        {
+            if (DontSayDeathLine)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("FuryAshe1") + Main.LocalPlayer.name + "!", new Color(102, 20, 48));
+            }
+            else
+            {
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("FuryAshe2"), new Color(102, 20, 48));
+            }
+            int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<FuryAsheVanish>(), 0);
+            Main.npc[DeathAnim].velocity = npc.velocity;
+            npc.value = 0f;
+            npc.boss = false;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
