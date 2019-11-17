@@ -254,7 +254,7 @@ namespace AAMod.NPCs.TownNPCs
                 shop.item[nextSlot].shopCustomPrice = new int?(5);
                 shop.item[nextSlot].shopSpecialCurrency = AAMod.BloodRune;
                 nextSlot++;
-                shop.item[nextSlot].SetDefaults(ItemID.TheBrideHat);
+                shop.item[nextSlot].SetDefaults(ItemID.TheBrideDress);
                 shop.item[nextSlot].shopCustomPrice = new int?(5);
                 shop.item[nextSlot].shopSpecialCurrency = AAMod.BloodRune;
                 nextSlot++;
