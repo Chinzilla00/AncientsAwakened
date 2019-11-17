@@ -2003,7 +2003,7 @@ ItemName.HeartOfSorrow=渊哀之心
 ItemTooltip.HeartOfSorrow=随着生命值减少，远程和近战攻击会变强\n近战和远程攻击会产生九头蛇毒\n低于2/3最大生命值, 你的移动速度加倍\n低于1/3最大生命值, 你的近战和远程攻击会产生“蚀月”来代替 “中毒”
 
 ItemName.Masamune=冈崎正宗之刃
-ItemTooltip.Masamune=造成蚀月\n(译者注：正宗，镰仓末期日本著名刀匠)
+ItemTooltip.Masamune=左键快速击杀敌人无视敌人的无敌帧\n右键发出剑气波\n(译者注：正宗，镰仓末期日本著名刀匠)
 
 ItemName.MizuArashi=水岚
 ItemTooltip.MizuArashi=有1/15的几率发射渊水之魂\n魂击造成两倍伤害, 穿透物块并且最多穿透10个敌人\n77%几率不消耗箭矢
