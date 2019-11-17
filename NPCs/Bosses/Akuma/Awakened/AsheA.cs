@@ -38,7 +38,16 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         {
             projectile.hide = false;
 
-            Frames();
+            Frames(); 
+            
+            if (projectile.velocity.X < 0)
+            {
+                projectile.spriteDirection = -1;
+            }
+            else if (projectile.velocity.X > 0)
+            {
+                projectile.spriteDirection = 1;
+            }
 
             Player player = Main.player[(int)projectile.ai[0]];
 
@@ -160,10 +169,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 else if (projectile.localAI[0] < 64)
                 {
                     projectile.frame = 11;
-                }
-                else if (projectile.localAI[0] < 67)
-                {
-                    projectile.frame = 12;
                 }
                 else
                 {

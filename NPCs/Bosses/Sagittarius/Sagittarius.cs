@@ -265,13 +265,16 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override void FindFrame(int frameHeight)
         {
-            if (npc.frameCounter++ < (16 - npc.velocity.X))
+            if (npc.velocity.X != 0)
             {
-                npc.frameCounter = 0;
-                npc.frame.Y += frameHeight;
-                if (npc.frame.Y > frameHeight * 3)
+                if (npc.frameCounter++ < 8)
                 {
-                    npc.frame.Y = 0;
+                    npc.frameCounter = 0;
+                    npc.frame.Y += frameHeight;
+                    if (npc.frame.Y > frameHeight * 3)
+                    {
+                        npc.frame.Y = 0;
+                    }
                 }
             }
         }

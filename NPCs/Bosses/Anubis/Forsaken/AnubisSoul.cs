@@ -17,7 +17,6 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
         {
             projectile.width = 48;
             projectile.height = 30;
-            projectile.melee = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;
             projectile.alpha = 0;

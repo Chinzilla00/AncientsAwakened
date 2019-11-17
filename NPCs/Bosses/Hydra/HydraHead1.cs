@@ -308,34 +308,34 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override bool PreNPCLoot()
         {
-            if (npc.type == mod.NPCType("HydraHead1"))
+            if (bodyNPC != null)
             {
-                int a = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead4>(), 0, bodyNPC.whoAmI);
-                Body.Head4 = Main.npc[a];
-                int b = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead5>(), 0, bodyNPC.whoAmI);
-                Body.Head5 = Main.npc[b];
-                return false;
+                if (npc.type == mod.NPCType("HydraHead1"))
+                {
+                    int a = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead4>(), 0, bodyNPC.whoAmI);
+                    Body.Head4 = Main.npc[a];
+                    int b = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead5>(), 0, bodyNPC.whoAmI);
+                    Body.Head5 = Main.npc[b];
+                    return false;
+                }
+                if (npc.type == mod.NPCType("HydraHead2"))
+                {
+                    int a = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead6>(), 0, bodyNPC.whoAmI);
+                    Body.Head6 = Main.npc[a];
+                    int b = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead7>(), 0, bodyNPC.whoAmI);
+                    Body.Head7 = Main.npc[b];
+                    return false;
+                }
+                if (npc.type == mod.NPCType("HydraHead3"))
+                {
+                    int a = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead8>(), 0, bodyNPC.whoAmI);
+                    Body.Head8 = Main.npc[a];
+                    int b = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead9>(), 0, bodyNPC.whoAmI);
+                    Body.Head9 = Main.npc[b];
+                    return false;
+                }
             }
-            if (npc.type == mod.NPCType("HydraHead2"))
-            {
-                int a = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead6>(), 0, bodyNPC.whoAmI);
-                Body.Head6 = Main.npc[a];
-                int b = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead7>(), 0, bodyNPC.whoAmI);
-                Body.Head7 = Main.npc[b];
-                return false;
-            }
-            if (npc.type == mod.NPCType("HydraHead3"))
-            {
-                int a = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead8>(), 0, bodyNPC.whoAmI);
-                Body.Head8 = Main.npc[a];
-                int b = NPC.NewNPC((int)bodyNPC.Center.X, (int)bodyNPC.Center.Y, ModContent.NPCType<HydraHead9>(), 0, bodyNPC.whoAmI);
-                Body.Head9 = Main.npc[b];
-                return false;
-            }
-            else 
-            {
-                return true;
-            }
+            return true;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)

@@ -542,14 +542,16 @@ namespace AAMod.NPCs.Bosses.Shen
                     npc.DropLoot(Items.Vanity.Mask.ShenAMask.type, 1f / 7);
                     if (!AAWorld.downedShen)
                     {
-                        npc.DropLoot(ModContent.ItemType<Items.BossSummons.ChaosRune>(), 1f / 7);
-                        AAModGlobalNPC.SpawnBoss(Main.player[npc.target], mod.NPCType("ShenDefeat"), false, npc.Center, "");
+                        npc.DropLoot(ModContent.ItemType<Items.BossSummons.ChaosRune>());
                     }
+
                     BaseAI.DropItem(npc, mod.ItemType("ShenATrophy"), 1, 1, 15, true);
+
                     if (!NPC.AnyNPCs(ModContent.NPCType<ShenDefeat>()))
                     {
                         NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<ShenDefeat>());
                     }
+
                     npc.DropBossBags();
                 }
             }

@@ -18,7 +18,6 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             projectile.hostile = true;
             projectile.tileCollide = false;
             projectile.penetrate = -1;
-            projectile.melee = true;
         }
 
         public int master = -1;

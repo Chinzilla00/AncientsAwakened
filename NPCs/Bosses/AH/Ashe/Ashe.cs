@@ -97,7 +97,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     if (!AliveCheck(player))
                         break;
 
-                    int firepos = 0;
+                    int firepos;
                     if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
                     {
                         firepos = 500;
@@ -199,7 +199,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     
                     if (npc.ai[1] == 100)
                     {
-                        pos = - pos;//ChangePos
+                        pos = - pos;
                     }
                     if (npc.ai[1] > 100)
                     {
@@ -229,6 +229,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                     break;
                 case 10:
+                    if (!AliveCheck(player))
+                        break;
                     if (NPC.AnyNPCs(ModContent.NPCType<AsheDragon>()))
                     {
                         npc.ai[0] = 12;
@@ -239,9 +241,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         npc.ai[0] = 11;
                         goto case 11;
                     }
-                    if (!AliveCheck(player))
-                        break;
-                    break;
                 case 11:
                     if (!AliveCheck(player))
                         break;

@@ -404,9 +404,7 @@ namespace AAMod.NPCs.Bosses.Anubis
 
         public override void NPCLoot()
         {
-            AAWorld.downedAnubis = true;
-
-            if (NPC.downedMoonlord)
+            if (NPC.downedMoonlord && AAWorld.downedAnubis)
             {
                 if (!AAWorld.AnubisAwakened)
                 {
@@ -445,6 +443,8 @@ namespace AAMod.NPCs.Bosses.Anubis
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
             }
+
+            AAWorld.downedAnubis = true;
         }
 
         public override void FindFrame(int frameHeight)
