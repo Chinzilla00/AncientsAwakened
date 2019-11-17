@@ -35,7 +35,7 @@ namespace AAMod.Projectiles.Ammo
 		}
                        public override void AI()
                        {
-                        Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.9f / 255f, (255 - projectile.alpha) * 0.05f / 255f, (255 - projectile.alpha) * 0.1f / 255f);
+                        Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 1f / 255f, (0 - projectile.alpha) * 1f / 0f, (0 - projectile.alpha) * 1f / 0f);
                        }
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
                        {
@@ -69,6 +69,13 @@ namespace AAMod.Projectiles.Ammo
 		{
 			Collision.HitTiles(projectile.position + projectile.velocity, projectile.velocity, projectile.width, projectile.height);
 			Main.PlaySound(SoundID.Item10, projectile.position);
+            {
+                int num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default, 2f);
+                Main.dust[num580].noGravity = true;
+                Main.dust[num580].velocity *= 1.5f;
+                num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataADust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100);
+                Main.dust[num580].velocity *= 1.5f;
+            }
 		}
 	}
 }

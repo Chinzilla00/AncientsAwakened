@@ -36,8 +36,7 @@ namespace AAMod.Projectiles.Ammo
                      Vector2? initialVel = null;
                      public override void AI()
                        {
-                     Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.9f / 255f, (255 - projectile.alpha) * 0.05f / 255f, (255 - projectile.alpha) * 0.1f / 255f);
-                         
+                        Lighting.AddLight(projectile.Center, (103 - projectile.alpha) * 1f / 100f, (0 - projectile.alpha) * 1f / 0f, (100 - projectile.alpha) * 1f / 100f);
                           if (initialPos == null && initialVel == null)
                            {
                              initialPos = projectile.position;
@@ -80,6 +79,13 @@ namespace AAMod.Projectiles.Ammo
                 {
                   Projectile.NewProjectile((Vector2)initialPos, (Vector2)initialVel, mod.ProjectileType("EventideBullet1"), projectile.damage, projectile.knockBack, projectile.owner);
                 }
+             {
+                int num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default, 2f);
+                Main.dust[num580].noGravity = true;
+                Main.dust[num580].velocity *= 1.5f;
+                num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100);
+                Main.dust[num580].velocity *= 1.5f;
+             }
             }
 	}
 }
