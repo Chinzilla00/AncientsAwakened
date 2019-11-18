@@ -53,9 +53,9 @@ The power of discordian rage radiates from this hood");
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage *= 1.45f;
+            player.rangedDamage += .45f;
             player.rangedCrit += 38;
-            player.endurance *= 1.1f;
+            player.endurance += .1f;
             player.ammoCost75 = true;
         }
 

@@ -14,7 +14,7 @@ namespace AAMod.Items.Armor.Draco
 			DisplayName.SetDefault("Draconian Sun Greaves");
 			Tooltip.SetDefault(@"16% increased movement speed
 15% increased melee speed
-10% increased damage resistance
+5% increased damage resistance
 The blazing fury of the Inferno rests in this armor");
 
 		}
@@ -65,7 +65,7 @@ The blazing fury of the Inferno rests in this armor");
 		{
 			player.moveSpeed += 0.16f;
 			player.meleeSpeed += 0.15f;
-			player.endurance *= 1.1f;
+			player.endurance += .05f;
             player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .16f;
         }
 

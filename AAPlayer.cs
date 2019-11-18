@@ -789,11 +789,7 @@ namespace AAMod
                 || npc.type == NPCID.BoundGoblin
                 || npc.type == NPCID.GoblinTinkerer)
             {
-                player.endurance *= 1.8f;
-            }
-            else
-            {
-                player.endurance *= 1f;
+                player.endurance += .8f;
             }
         }
 

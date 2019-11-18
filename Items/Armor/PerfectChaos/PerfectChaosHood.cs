@@ -55,9 +55,9 @@ The power of discordian rage radiates from this hood");
 
         public override void UpdateEquip(Player player)
         {
-            player.magicDamage *= 1.32f;
+            player.magicDamage += .32f;
             player.magicCrit += 20;
-            player.endurance *= 1.1f;
+            player.endurance += .1f;
             player.manaCost *= .7f;
             player.statManaMax2 += 150;
         }

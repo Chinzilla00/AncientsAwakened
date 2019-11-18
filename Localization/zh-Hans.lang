@@ -705,13 +705,13 @@ Common.DoomsdayHelmetBonus=生命终结系统启动\n你可以探测到周围所
 
 
 ItemName.DracoHelm=炙戮盔胄
-ItemTooltip.DracoHelm=增加20%近战暴击率\n增加10%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoHelm=增加20%近战暴击率\n增加5%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
 
 ItemName.DracoLeggings=炙戮护腿
-ItemTooltip.DracoLeggings=增加16%移动速度\n增加16%近战速度\n增加10%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoLeggings=增加16%移动速度\n增加16%近战速度\n增加5%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
 
 ItemName.DracoPlate=炙戮道甲
-ItemTooltip.DracoPlate=增加25%近战伤害\n增加10%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoPlate=增加25%近战伤害\n增加5%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
 
 Common.DracoHelmBonus=“狂焰之怒充满了你的身体”\n你免疫所有冰系debuff\n你的灵魂灼烧如同狂焰之怒\n你的近战攻击对目标造成破晓
 
@@ -2077,7 +2077,7 @@ ItemTooltip.SunStaff=向你的敌人降下燎炎和怒火\n造成破晓
 ItemName.SunStorm=燎焰风暴
 
 ItemName.TaiyangBaolei=太阳堡垒
-ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n增加10%伤害减免,你的近战和魔法攻击对敌人造成灼伤\n白天,增加20%伤害减免你的近战和魔法攻击造成破晓来代替着火\n(译者注：绝了,这个装备的英文原名就是taiyangbaolei)
+ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n增加5%伤害减免,你的近战和魔法攻击对敌人造成灼伤\n白天,增加10%伤害减免你的近战和魔法攻击造成破晓来代替着火\n(译者注：绝了,这个装备的英文原名就是taiyangbaolei)
 
 ItemName.YOTD=龙年大吉
 ItemTooltip.YOTD=发射绚烂的烟花吸引同伴驱赶敌人\n“邪鬼巨龙牌安全烟花,朝脸发射也没伤害!文明放烟花,安全你我他!”

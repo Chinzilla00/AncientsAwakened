@@ -166,6 +166,26 @@ namespace AAMod
                 }
             }
 
+            if (item.type == ItemID.WormScarf ||  item.type == ModContent.ItemType<StoneScarf>())
+            {
+                if (slot < 10)
+                {
+                    int maxAccessoryIndex = 5 + player.extraAccessorySlots;
+                    for (int i = 3; i < 3 + maxAccessoryIndex; i++)
+                    {
+                        if (slot != i && player.armor[i].type == ItemID.WormScarf)
+                        {
+                            return false;
+                        }
+
+                        if (slot != i && player.armor[i].type == ModContent.ItemType<StoneScarf>())
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+
             return true;
         }
 

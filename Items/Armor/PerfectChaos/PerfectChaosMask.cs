@@ -54,8 +54,8 @@ The power of discordian rage radiates from this hood");
 
         public override void UpdateEquip(Player player)
         {
-            player.minionDamage *= 1.7f;
-            player.endurance *= 1.05f;
+            player.minionDamage += .7f;
+            player.endurance += .05f;
             player.maxMinions += 6;
             player.maxTurrets += 2;
         }
