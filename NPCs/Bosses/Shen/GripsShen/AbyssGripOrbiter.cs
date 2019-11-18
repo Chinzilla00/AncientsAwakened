@@ -107,6 +107,11 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                 projectile.oldPos[0] = projectile.position;
                 projectile.Center = BaseUtility.RotateVector(Center, Center + new Vector2(140f, 0f), rotValue);
             }
+            else if((!centerNPC.active || centerNPC.life <= 0 || centerNPC.type != mod.NPCType("AbyssGrip")) && !shooting)
+            {
+                projectile.velocity = 18f * Vector2.Normalize(centerNPC.DirectionTo(projectile.Center));
+                shooting = true;
+            }
             
         }
 

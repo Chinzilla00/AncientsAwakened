@@ -342,13 +342,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         npc.velocity *= 0;
                         if (npc.ai[2] == 160)
                         {
-                            for(int i = 0; i< 1000; i++)
-                            {
-                                if(!Main.projectile[i].minion)
-                                {
-                                    Main.projectile[i].Kill();
-                                }
-                            }
                             if (npc.life > npc.lifeMax / 2)
                             {
                                 if (Main.rand.Next(2) == 0)
@@ -503,13 +496,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         
                         if (npc.ai[1]++ == 100)
                         {
-                            for(int i = 0; i< 1000; i++)
-                            {
-                                if(!Main.projectile[i].minion)
-                                {
-                                    Main.projectile[i].Kill();
-                                }
-                            }
                             
                             if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroAwakened11"), Color.Red.R, Color.Red.G, Color.Red.B);
                             if (ShootDir == new Vector2(0,0)) ShootDir = npc.DirectionTo(player.Center);
@@ -595,13 +581,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 
                 if(npc.ai[2] == 300)
                 {
-                    for(int i = 0; i< 1000; i++)
-                    {
-                        if(!Main.projectile[i].minion)
-                        {
-                            Main.projectile[i].Kill();
-                        }
-                    }
                     npc.ai[1] = 1f;
                 }
                 else
