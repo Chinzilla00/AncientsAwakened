@@ -39,8 +39,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.damage = (int)(npc.damage * .7f);
-            npc.lifeMax = (int)(npc.lifeMax * 0.5f * bossLifeScale);
+            npc.lifeMax = (int)(npc.lifeMax * 0.5f);
         }
 
         public override Color? GetAlpha(Color drawColor)

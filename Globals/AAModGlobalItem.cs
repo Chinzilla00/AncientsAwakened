@@ -119,7 +119,7 @@ namespace AAMod
 
         public override bool CanEquipAccessory(Item item, Player player, int slot)
         {
-            if (item.type == ItemID.AnkhShield || item.type == ItemID.ObsidianShield || item.type == ModContent.ItemType<TaiyangBaolei>())
+            if (item.type == ItemID.AnkhShield || item.type == ItemID.ObsidianShield || item.type == ModContent.ItemType<TaiyangBaolei>() || item.type == mod.ItemType("Duality"))
             {
                 if (slot < 10)
                 {
@@ -138,6 +138,11 @@ namespace AAMod
                         }
 
                         if (slot != i && player.armor[i].type == ModContent.ItemType<TaiyangBaolei>())
+                        {
+                            return false;
+                        }
+
+                        if (slot != i && player.armor[i].type == mod.ItemType("Duality"))
                         {
                             return false;
                         }
@@ -166,7 +171,7 @@ namespace AAMod
                 }
             }
 
-            if (item.type == ItemID.WormScarf ||  item.type == ModContent.ItemType<StoneScarf>())
+            if (item.type == ItemID.WormScarf ||  item.type == mod.ItemType("StoneScarf"))
             {
                 if (slot < 10)
                 {
@@ -178,7 +183,7 @@ namespace AAMod
                             return false;
                         }
 
-                        if (slot != i && player.armor[i].type == ModContent.ItemType<StoneScarf>())
+                        if (slot != i && player.armor[i].type == mod.ItemType("StoneScarf"))
                         {
                             return false;
                         }
