@@ -264,12 +264,6 @@ namespace AAMod.Items.Dev.Invoker
 					projectile.Kill();
 				}
 			}
-
-			for(int i=0; i < 200; i++)
-			{
-				if(projectile.Hitbox.Intersects(Main.npc[i].Hitbox) && Main.npc[i].dontTakeDamage)
-				Main.npc[i].dontTakeDamage = false;
-			}
         }
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -733,11 +727,6 @@ namespace AAMod.Items.Dev.Invoker
 				Main.dust[num580].velocity *= 0f;
 				Main.dust[num580].position.X = Main.dust[num580].position.X - num578;
 				Main.dust[num580].position.Y = Main.dust[num580].position.Y - num579;
-			}
-			for(int i=0; i < 200; i++)
-			{
-				if(projectile.Hitbox.Intersects(Main.npc[i].Hitbox) && Main.npc[i].dontTakeDamage)
-				Main.npc[i].dontTakeDamage = false;
 			}
 			return;
 		}
