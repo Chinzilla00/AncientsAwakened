@@ -98,7 +98,7 @@ namespace AAMod.NPCs.Bosses.Athena
             Vector2 Acropolis = new Vector2(Origin.X + (80 * 16), Origin.Y + (79 * 16));
 
             //Preamble Shite 
-            if (internalAI[2] == 0)
+            if (internalAI[2] != 1)
             {
                 npc.dontTakeDamage = true;
                 if (Main.netMode != 1)
@@ -106,96 +106,90 @@ namespace AAMod.NPCs.Bosses.Athena
                     music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
                     if (Vector2.Distance(npc.Center, Acropolis) < 10)
                     {
-                        internalAI[2] = 1;
-                        npc.netUpdate = true;
-                        return;
+                        npc.velocity *= 0;
+                        if (internalAI[3]++ < 420)
+                        {
+                            if (!AAWorld.downedAthena)
+                            {
+                                if (internalAI[3] == 60)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena1"), Color.CornflowerBlue);
+                                }
+
+                                if (internalAI[3] == 180)
+                                {
+                                    string s = "";
+                                    if (Main.ActivePlayersCount > 1)
+                                    {
+                                        s = Lang.BossChat("Athena2");
+                                    }
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena3") + s + "!", Color.CornflowerBlue);
+                                }
+
+                                if (internalAI[3] == 300)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena4"), Color.CornflowerBlue);
+                                }
+
+                                if (internalAI[3] == 420)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena5"), Color.CornflowerBlue);
+                                }
+
+                                if (internalAI[3] >= 420)
+                                {
+                                    Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
+                                    AcropolisCloud biome = new AcropolisCloud();
+                                    biome.Place(origin, WorldGen.structures);
+
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena6"), Color.CornflowerBlue);
+                                    internalAI[2] = 1;
+
+                                    npc.netUpdate = true;
+                                }
+                            }
+                            else if (AAWorld.AthenaHerald && !AAWorld.downedAthenaA)
+                            {
+                                if (internalAI[3] == 60)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena12"), Color.CornflowerBlue);
+                                }
+
+                                if (internalAI[3] == 180)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena13"), Color.CornflowerBlue);
+                                }
+
+                                if (internalAI[3] == 300)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena14"), Color.CornflowerBlue);
+                                    internalAI[2] = 1;
+                                    npc.netUpdate = true;
+                                }
+                            }
+                            else
+                            {
+                                if (internalAI[3] == 60)
+                                {
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena7"), Color.CornflowerBlue);
+                                }
+
+                                if (internalAI[3] >= 180)
+                                {
+                                    Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
+                                    AcropolisCloud biome = new AcropolisCloud();
+                                    biome.Place(origin, WorldGen.structures);
+
+                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena8"), Color.CornflowerBlue);
+                                    internalAI[2] = 1;
+                                    npc.netUpdate = true;
+                                }
+                            }
+                        }
                     }
                     else
                     {
                         MoveToVector2(Acropolis);
-                    }
-                }
-            }
-            else if (internalAI[2] == 1)
-            {
-                npc.velocity *= 0;
-                if (internalAI[3]++ < 420)
-                {
-                    if (!AAWorld.downedAthena)
-                    {
-                        if (internalAI[3] == 60)
-                        {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena1"), Color.CornflowerBlue);
-                        }
-
-                        if (internalAI[3] == 180)
-                        {
-                            string s = "";
-                            if (Main.ActivePlayersCount > 1)
-                            {
-                                s = Lang.BossChat("Athena2");
-                            }
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena3") + s + "!", Color.CornflowerBlue);
-                        }
-
-                        if (internalAI[3] == 300)
-                        {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena4"), Color.CornflowerBlue);
-                        }
-
-                        if (internalAI[3] == 420)
-                        {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena5"), Color.CornflowerBlue);
-                        }
-
-                        if (internalAI[3] >= 420)
-                        {
-                            Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
-                            AcropolisCloud biome = new AcropolisCloud();
-                            biome.Place(origin, WorldGen.structures);
-
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena6"), Color.CornflowerBlue);
-                            internalAI[2] = 1;
-
-                            npc.netUpdate = true;
-                        }
-                    }
-                    else if (AAWorld.AthenaHerald && !AAWorld.downedAthenaA)
-                    {
-                        if (internalAI[3] == 60)
-                        {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena12"), Color.CornflowerBlue);
-                        }
-
-                        if (internalAI[3] == 180)
-                        {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena13"), Color.CornflowerBlue);
-                        }
-
-                        if (internalAI[3] == 300)
-                        {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena14"), Color.CornflowerBlue);
-                            internalAI[2] = 1;
-                            npc.netUpdate = true;
-                        }
-                    }
-                    else
-                    {
-                        if (internalAI[3] == 60)
-                        {
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena7"), Color.CornflowerBlue);
-                        }
-
-                        if (internalAI[3] >= 180)
-                        {
-                            Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
-                            AcropolisCloud biome = new AcropolisCloud();
-                            biome.Place(origin, WorldGen.structures);
-
-                            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena8"), Color.CornflowerBlue);
-                            internalAI[2] = 1;
-                            npc.netUpdate = true;
-                        }
                     }
                 }
             }
