@@ -111,12 +111,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
                     MoveToPoint(wantedVelocity);
                     
-                    if (npc.ai[1] > 60)
+                    if (npc.ai[1] > 60 && npc.ai[1] <= 180)
                     {
                         BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 4, 16, false);
                     }
 
-                    if (npc.ai[1]++ > 180)
+                    if (npc.ai[1]++ > (npc.life < npc.lifeMax/2 ? 180:300))
                     {
                         npc.ai[1] = 0;
                         AIChange();
@@ -297,7 +297,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
             MoveToPoint(wantedVelocity);
 
-            if (npc.ai[1]++ > (Main.expertMode ? 180 : 280))
+            if (npc.ai[1]++ > (Main.expertMode ? 240 : 340))
             {
                 AIChange();
             }

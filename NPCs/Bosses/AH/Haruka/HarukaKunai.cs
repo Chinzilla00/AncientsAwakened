@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIThrownWeapon(projectile, ref projectile.ai, false, 40);
+            BaseMod.BaseAI.AIThrownWeapon(projectile, ref projectile.ai, projectile.timeLeft < 1160, 800);
         }
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)

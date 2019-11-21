@@ -187,7 +187,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                         for (int i = 0; i < 3; i++)
                         {
                             double offsetAngle = startAngle + (deltaAngle * i);
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage * 1, 5, Main.myPlayer);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, npc.damage / 2, 5, Main.myPlayer);
                         }
                     }
                     if (npc.ai[2] == 180 && npc.life < npc.lifeMax / 2)
@@ -202,7 +202,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                         for (int i = 0; i < 3; i++)
                         {
                             double offsetAngle = startAngle + (deltaAngle * i);
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage * 1, 5, Main.myPlayer);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, npc.damage / 2, 5, Main.myPlayer);
                         }
                     }
                     if (npc.ai[2] > 220)
@@ -230,13 +230,13 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
 
                     if (npc.ai[1]++ == 120)
                     {
-                        int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("RuneSpawn"), damage, 3);
+                        int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("RuneSpawn"), npc.damage / 2, 3);
                         Main.projectile[a].Center = npc.Center;
-                        int b = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("RuneSpawn"), damage, 3);
+                        int b = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("RuneSpawn"), npc.damage / 2, 3);
                         Main.projectile[b].Center = npc.Center;
-                        int c = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("RuneSpawn"), damage, 3);
+                        int c = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("RuneSpawn"), npc.damage / 2, 3);
                         Main.projectile[c].Center = npc.Center;
-                        int d = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("RuneSpawn"), damage, 3);
+                        int d = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("RuneSpawn"), npc.damage / 2, 3);
                         Main.projectile[d].Center = npc.Center;
                     }
                     if (npc.ai[1] > 180)

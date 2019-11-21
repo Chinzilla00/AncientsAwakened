@@ -276,7 +276,7 @@ namespace AAMod.Items.Dev.Invoker
 			{
 				if (target.realLife >= 0)
 				{
-					if(Main.npc[target.realLife].StrikeNPC((int)(damage * .1f), knockback, hitDirection, crit, false, false) < .01f * projectile.damage)
+					if(Main.npc[target.realLife].StrikeNPC((int)(damage * .1f), knockback, hitDirection, crit, false, false) < .01f * projectile.damage && Realdamage < Main.npc[target.realLife].lifeMax * .01f)
 					{
 						Realdamage = Main.npc[target.realLife].lifeMax * .01f;
 					}
@@ -508,7 +508,7 @@ namespace AAMod.Items.Dev.Invoker
 				if (p.active && p.type == ModContent.ProjectileType<InvokerStaffproj>() && p.ai[0] == 1f && npc == Main.npc[num9]) 
 				{
 					InvokedCount++;
-					npc.lifeRegen -= 10;
+					npc.lifeRegen -= 10 * InvokedCount;
 				}
 			}
 

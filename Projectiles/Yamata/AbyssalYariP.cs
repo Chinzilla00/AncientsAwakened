@@ -90,6 +90,7 @@ namespace AAMod.Projectiles.Yamata
             }
 
             //change to make more/less projectiles
+            /*
             for (int i = 0; i < 2; i++)
             {
                 float screenY = Main.screenPosition.Y;
@@ -106,6 +107,13 @@ namespace AAMod.Projectiles.Yamata
                 velocityY *= num6;
                 Projectile p = Projectile.NewProjectileDirect(new Vector2(screenX, screenY), new Vector2(velocityX, velocityY), ModContent.ProjectileType<YariProj>(), damage, 0f, player.whoAmI);
                 p.tileCollide = false;
+            }
+            */
+            for (int i = 0; i < 8; i++)
+            {
+                Vector2 pos = new Vector2((float)Math.Sin(i * 0.25f * (float)Math.PI), (float)Math.Cos(i * 0.25f * (float)Math.PI));
+                pos *= 100f;
+                Projectile.NewProjectile(target.Center.X + pos.X, target.Center.Y + pos.Y, 0, 0, mod.ProjectileType("AbyssalYariP2"), damage, 0, Main.myPlayer, i, target.whoAmI);
             }
         }
     }

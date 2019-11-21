@@ -144,8 +144,14 @@ namespace AAMod.NPCs.Bosses.Greed
                         if (NPC.CountNPCS(ModContent.NPCType<GreedTurret>()) < 2)
                         {
                             int A = Main.rand.Next(-600, 600);
-                            int Minion = NPC.NewNPC((int)player.Center.X + A, (int)player.Center.Y + A, ModContent.NPCType<GreedTurret>(), 0);
-                            Main.npc[Minion].netUpdate = true;
+                            int tileCheck1 = (int)((player.Center.X + A)/16f);
+                            int tileCheck2 = (int)((player.Center.Y + A)/16f);
+                            Tile TileCollide = Main.tile[tileCheck1, tileCheck2];
+                            if(!TileCollide.active() || !Main.tileSolid[(int)TileCollide.type])
+                            {
+                                int Minion = NPC.NewNPC((int)player.Center.X + A, (int)player.Center.Y + A, ModContent.NPCType<GreedTurret>(), 0);
+                                Main.npc[Minion].netUpdate = true;
+                            }
                         }
                     }
                     break;
