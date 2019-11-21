@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.friendly = false;
             npc.damage = 140;
             npc.defense = 120;
-            npc.lifeMax = 150000;
+            npc.lifeMax = 130000;
             npc.HitSound = SoundID.NPCHit1;
             npc.value = Item.sellPrice(0, 12, 0, 0);
             npc.knockBackResist = 0f;

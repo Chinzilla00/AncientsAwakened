@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.height = 100;
             npc.damage = 130;
             npc.defense = 40;
-            npc.lifeMax = 140000;
+            npc.lifeMax = 120000;
             npc.value = Item.sellPrice(0, 12, 0, 0);
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
