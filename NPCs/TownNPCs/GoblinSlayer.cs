@@ -496,6 +496,10 @@ namespace AAMod.NPCs.TownNPCs
                 shop.item[nextSlot].SetDefaults(ItemID.SpookyWood);
                 shop.item[nextSlot].value = 50;
                 nextSlot++;
+                shop.item[nextSlot].SetDefaults(ItemID.GoodieBag);
+                shop.item[nextSlot].shopCustomPrice = new int?(15);
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.HalloweenTreat;
+                nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.ScarecrowHat);
                 shop.item[nextSlot].shopCustomPrice = new int?(5);
                 shop.item[nextSlot].shopSpecialCurrency = AAMod.HalloweenTreat;
@@ -510,6 +514,14 @@ namespace AAMod.NPCs.TownNPCs
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.JackOLanternMask);
                 shop.item[nextSlot].shopCustomPrice = new int?(10);
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.HalloweenTreat;
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(ItemID.BloodyMachete);
+                shop.item[nextSlot].shopCustomPrice = new int?(20);
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.HalloweenTreat;
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(ItemID.BladedGlove);
+                shop.item[nextSlot].shopCustomPrice = new int?(20);
                 shop.item[nextSlot].shopSpecialCurrency = AAMod.HalloweenTreat;
                 nextSlot++;
                 if (NPC.downedHalloweenTree)
@@ -570,6 +582,10 @@ namespace AAMod.NPCs.TownNPCs
                     shop.item[nextSlot].shopSpecialCurrency = AAMod.HalloweenTreat;
                     nextSlot++;
                 }
+                shop.item[nextSlot].SetDefaults(ItemID.MagicalPumpkinSeed);
+                shop.item[nextSlot].shopCustomPrice = new int?(60);
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.HalloweenTreat;
+                nextSlot++;
             }
             else if (Frost)
             {
@@ -583,6 +599,18 @@ namespace AAMod.NPCs.TownNPCs
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.ElfPants);
                 shop.item[nextSlot].shopCustomPrice = new int?(5);
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.ChristmasCheer;
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(ItemID.SnowGlobe);
+                shop.item[nextSlot].shopCustomPrice = new int?(10);
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.ChristmasCheer;
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(ItemID.Present);
+                shop.item[nextSlot].shopCustomPrice = new int?(15);
+                shop.item[nextSlot].shopSpecialCurrency = AAMod.ChristmasCheer;
+                nextSlot++;
+                shop.item[nextSlot].SetDefaults(ItemID.GiantBow);
+                shop.item[nextSlot].shopCustomPrice = new int?(30);
                 shop.item[nextSlot].shopSpecialCurrency = AAMod.ChristmasCheer;
                 nextSlot++;
                 if (NPC.downedChristmasTree)
@@ -642,8 +670,7 @@ namespace AAMod.NPCs.TownNPCs
             else if (Martian)
             {
                 shop.item[nextSlot].SetDefaults(ItemID.MartianConduitPlating);
-                shop.item[nextSlot].shopCustomPrice = new int?(1);
-                shop.item[nextSlot].shopSpecialCurrency = AAMod.MartianCredit;
+                shop.item[nextSlot].value = 50;
                 nextSlot++;
                 shop.item[nextSlot].SetDefaults(ItemID.MartianCostumeMask);
                 shop.item[nextSlot].shopCustomPrice = new int?(5);
