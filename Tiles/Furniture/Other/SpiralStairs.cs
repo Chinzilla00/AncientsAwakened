@@ -12,21 +12,23 @@ namespace AAMod.Tiles.Furniture.Other
 	{
 		public override void SetDefaults()
 		{
-			Main.tileFrameImportant[Type] = true;
-			Main.tileSolid[Type] = false;
-            dustType = DustID.t_LivingWood;
-			TileObjectData.newTile.Height = 4;
-			TileObjectData.newTile.Width = 2;
-			TileObjectData.newTile.Origin = new Point16(0, 4);
-            TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidTile, TileObjectData.newTile.Width, 0);
-            TileObjectData.newTile.AnchorBottom = default;
-			TileObjectData.newTile.LavaDeath = false;
-			TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16, 16};
-			TileObjectData.newTile.CoordinateWidth = 16;
-			TileObjectData.newTile.CoordinatePadding = 2;
-			TileObjectData.addTile(Type);
-			AddMapEntry(new Color(58, 48, 42));
-
+            dustType = DustID.t_LivingWood; 
+            Main.tileFrameImportant[Type] = true;
+            Main.tileNoAttach[Type] = false;
+            Main.tileLavaDeath[Type] = true;
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style2xX);
+            TileObjectData.newTile.Height = 5;
+            TileObjectData.newTile.CoordinateHeights = new[]
+            {
+                16,
+                16,
+                16,
+                16,
+                16
+            };
+            TileObjectData.addTile(Type);
+            ModTranslation name = CreateMapEntryName();
+            AddMapEntry(new Color(58, 48, 42), name);
 		}
 
 		public override void NumDust(int i, int j, bool fail, ref int num)
