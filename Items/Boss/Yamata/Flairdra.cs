@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
+using System;
 
 namespace AAMod.Items.Boss.Yamata
 {
@@ -69,6 +70,22 @@ Inflicts Moonraze");
                 SpriteEffects.None,
                 0f
             );
+        }
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        {
+            float spread =100f * 0.0174f;
+            float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
+            double startAngle = Math.Atan2(speedX, speedY) - .1d;
+            double deltaAngle = spread / 25f;
+            double offsetAngle;
+            for (int i = 0; i < 7; i++)
+            {
+                offsetAngle = startAngle + (deltaAngle * i);
+                int proj = Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
+                Main.projectile[proj].ranged = false;
+                Main.projectile[proj].melee = true;
+            }
+            return false;
         }
 
         public override void AddRecipes()
