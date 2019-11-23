@@ -47,7 +47,7 @@ namespace AAMod.Projectiles.Yamata
             }
             Main.player[projectile.owner].itemRotation = (vector54 * -1f * projectile.direction).ToRotation();
             projectile.spriteDirection = (vector54.X > 0f) ? -1 : 1;
-            if (projectile.ai[0] == 0f && vector54.Length() > 400f)
+            if (projectile.ai[0] == 0f && vector54.Length() > 600f)
             {
                 projectile.ai[0] = 1f;
             }
@@ -59,7 +59,7 @@ namespace AAMod.Projectiles.Yamata
                     projectile.Kill();
                     return;
                 }
-                if (num687 > 600f)
+                if (num687 > 800f)
                 {
                     projectile.ai[0] = 2f;
                 }
@@ -81,12 +81,22 @@ namespace AAMod.Projectiles.Yamata
             {
                 projectile.alpha = 0;
             }
+            if ((int)projectile.ai[1] % 4 == 0 && projectile.owner == Main.myPlayer)
+            {
+                Vector2 vector55 = vector54 * -1f;
+                vector55.Normalize();
+                vector55 *= (float)Main.rand.Next(45, 65) * 0.1f;
+                vector55 = vector55.RotatedBy((Main.rand.NextDouble() - 0.5) * 1.5707963705062866, default(Vector2));
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, vector55.X, vector55.Y, mod.ProjectileType("FlairdraCyclone"), projectile.damage, projectile.knockBack, projectile.owner, -10f, 0f);
+                return;
+            }
         }
 
         public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
 		{
             if (Main.netMode != 1 && Main.rand.Next(2) == 0)
             {
+            target.immune[projectile.owner] = 1;
                 Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
                 float spread = 12f * 0.0174f;
                 double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
