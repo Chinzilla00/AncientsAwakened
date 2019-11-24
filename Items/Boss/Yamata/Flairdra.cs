@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.Yamata
         {
             
             DisplayName.SetDefault("Flairdra");
-            Tooltip.SetDefault(@"Explodes into wrathful souls on hit
+            Tooltip.SetDefault(@"Be the hydra.
 Inflicts Moonraze");
         }
 
@@ -29,7 +29,7 @@ Inflicts Moonraze");
             item.useAnimation = 12;
             item.useTime = 12;
             item.knockBack = 3.5f;
-            item.damage = 200;
+            item.damage = 160;
             item.noUseGraphic = true;
             item.shoot = mod.ProjectileType("Flairdra");
             item.shootSpeed = 24f;

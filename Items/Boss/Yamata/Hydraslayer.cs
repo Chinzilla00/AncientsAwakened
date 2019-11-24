@@ -20,7 +20,7 @@ Inflicts Moonrazed");
         
         public override void SetDefaults()
         {
-            item.shoot = mod.ProjectileType("YWProjectile");
+            item.shoot = mod.ProjectileType("PhantomSword");
             item.damage = 220;            
             item.melee = true;            
             item.width = 86;              
@@ -37,62 +37,28 @@ Inflicts Moonrazed");
             item.rare = 9; AARarity = 13;
         }
 
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
-                texture,
-                new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
-        }
 
-        public override void ModifyTooltips(List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
+            float numberProjectiles = 1; // This defines how many projectiles to shot
+            if (Main.netMode != 1)
             {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity13;
-                }
+                numberProjectiles = 2 + Main.rand.Next(3);
             }
-        }
 
-        int shoot = 0;
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockback)
-        {
-            shoot++;
-            if (shoot % 2 != 0) return false;
+            float rotation = MathHelper.ToRadians(60);
+            //position = new Vector2(player.position.X + ((Main.rand.Next(11) - 20) * player.direction), player.position.Y + (Main.rand.Next(5) - 10)); //this defines the distance of the projectiles form the player when the projectile spawns
 
-            shoot = 0;
-            return true;
-        }
-
-        public void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(mod.BuffType("Moonraze"), 600);
-        }
-        
-        public override void AddRecipes()  //How to craft this sword
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "EventideAbyssium", 5);
-            recipe.AddIngredient(null, "DreadScale", 5);
-            recipe.AddIngredient(ItemID.TheHorsemansBlade);
-            recipe.AddTile(null, "ACS");
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            for (int i = 0; i < numberProjectiles; i++)
+            {
+                if (Main.netMode != 1)
+                {
+                    position = new Vector2(player.position.X - ((Main.rand.Next(61) + 40) * player.direction), player.position.Y - (Main.rand.Next(91) - 40)); //this defines the distance of the projectiles form the player when the projectile spawns
+                    Vector2 perturbedSpeed = Vector2.Normalize(new Vector2((Main.MouseWorld.X - position.X) + (Main.rand.Next(41) - 20), (Main.MouseWorld.Y - position.Y) + (Main.rand.Next(41) - 20))) * 15f; // This defines the projectile roatation and speed. .4f == projectile speed
+                }
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+            }
+            return false;
         }
     }
 }
