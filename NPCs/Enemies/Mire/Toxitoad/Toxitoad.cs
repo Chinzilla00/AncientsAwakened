@@ -28,6 +28,7 @@ namespace AAMod.NPCs.Enemies.Mire.Toxitoad
             npc.knockBackResist = 0.1f;
             npc.aiStyle = 3;
             aiType = NPCID.GoblinScout;
+            npc.rarity = 2;
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

@@ -330,7 +330,7 @@ ItemTooltip.AshProofVest3=临时性移除燎烬之狱的效果
 ItemName.BotchedBand=拙急饰带
 ItemTooltip.BotchedBand=增加10%移动速度和伤害
 
-ItemName.BlackLotusEmblem=黑玫瑰徽章
+ItemName.BlackLotusEmblem=黑莲花徽章
 ItemTooltip.BlackLotusEmblem=提升魔力星拾取范围\n在需要时自动快速补充魔力\n极大减少魔力病持续时间\n你的魔法攻击造成蚀月\n增加15%移动速度\n减少12%魔力消耗\n增加18%魔法伤害
 
 ItemName.DemonGauntlet=恶魔手套
@@ -1657,6 +1657,8 @@ ItemTooltip.SiegeBox=播放 'Storming S.I.E.G.E.' by Karamitasu
 ItemName.Soul_Forge=精魂熔炉
 ItemTooltip.Soul_Forge=用于特殊制作
 
+ItemName.SpiralStairs=旋梯
+
 ItemName.StarBox=八音盒(漫天星辰)
 ItemTooltip.StarBox=播放 'Galactic Gift' by OmegaFerretMusic
 
@@ -2601,8 +2603,8 @@ ItemTooltip.EternalTwilight=垂暮弓EX
 
 ItemName.FallingTwilight=垂暮弓
 
-ItemName.Flairdra=海德拉喷发刃
-ItemTooltip.Flairdra=向敌人火箭般冲击之后留下回旋叶刃\n造成蚀月
+ItemName.Flairdra=海尔德拉链球
+ItemTooltip.Flairdra=成为海德拉\n造成蚀月
 
 ItemName.Hydraslayer=九头蛇屠戮之刃
 ItemTooltip.Hydraslayer=用于打败潭渊的多头怪物\n造成蚀月

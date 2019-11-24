@@ -31,6 +31,7 @@ namespace AAMod.NPCs.Critters
             banner = npc.type;
             bannerItem = ItemID.BunnyBanner;
             npc.catchItem = (short)mod.ItemType("RoyalRabbit");
+            npc.rarity = 2;
         }
 
         public override void NPCLoot()

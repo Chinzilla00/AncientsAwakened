@@ -55,8 +55,8 @@ Inflicts Moonrazed");
                 {
                     position = new Vector2(player.position.X - ((Main.rand.Next(61) + 40) * player.direction), player.position.Y - (Main.rand.Next(91) - 40)); //this defines the distance of the projectiles form the player when the projectile spawns
                     Vector2 perturbedSpeed = Vector2.Normalize(new Vector2((Main.MouseWorld.X - position.X) + (Main.rand.Next(41) - 20), (Main.MouseWorld.Y - position.Y) + (Main.rand.Next(41) - 20))) * 15f; // This defines the projectile roatation and speed. .4f == projectile speed
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
                 }
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
             }
             return false;
         }

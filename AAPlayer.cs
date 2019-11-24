@@ -243,6 +243,7 @@ namespace AAMod
         public bool YamataAGravity = false;
         public bool Hunted = false;
         public bool Unstable = false;
+        public bool UnstableOn = false;
         public bool IB = false;
         public bool Spear = false;
         public bool AkumaPain = false;
@@ -856,6 +857,8 @@ namespace AAMod
 
         public float TimeScale = 0;
 
+        public int UnstableCounter = 0;
+
         public override void PostUpdate()
         {
             if (olympianWings && player.dash < 1)
@@ -942,6 +945,50 @@ namespace AAMod
                 if (ShieldScale <= 0f)
                 {
                     ShieldScale = 0f;
+                }
+            }
+
+            if(Unstable)
+            {
+                if(Main.rand.Next(100) == 0)
+                {
+                    UnstableOn = true;
+                }
+
+                if(UnstableOn)
+                {
+                    player.headPosition.Y -= 1f;
+                    player.headPosition.X += .75f;
+                    player.bodyPosition.Y += 1.85f;
+                    player.bodyPosition.X -= 1.15f;
+                    player.legPosition.Y += 1f;
+                    player.legPosition.X -= .6f;
+                    UnstableCounter ++;
+                }
+                else
+                {
+                    player.headPosition = Vector2.Zero;
+                    player.bodyPosition = Vector2.Zero;
+                    player.legPosition = Vector2.Zero;
+                }
+
+                if(UnstableCounter > 20)
+                {
+                    UnstableCounter = 0;
+                    UnstableOn = false;
+                    if(player.velocity.X > 0) player.velocity.X -= 15f;
+                    else if(player.velocity.X < 0) player.velocity.X += 15f;
+                    if(player.velocity.Y > 0) player.velocity.Y -= 15f;
+                    else if(player.velocity.Y < 0) player.velocity.Y += 15f;
+                    Vector2 position = player.Center + (Vector2.One * -20f);
+                    int num84 = 40;
+                    int height3 = num84;
+                    for (int num85 = 0; num85 < 3; num85++)
+                    {
+                        int num86 = Dust.NewDust(position, num84, height3, 226, 0f, 0f, 100, default, 1.5f);
+                        Main.dust[num86].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
+                        Main.dust[num86].position = player.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                    }
                 }
             }
 
@@ -2592,16 +2639,9 @@ namespace AAMod
 
             if (Unstable)
             {
-                bool flag = player.controlLeft;
-                bool flag2 = player.controlJump || player.controlUp;
-                player.controlLeft = player.controlRight;
-                player.controlRight = flag;
-                player.controlJump = player.controlDown;
-                player.controlUp = player.controlDown;
-                player.controlDown = flag2;
                 player.moveSpeed *= Main.rand.NextFloat(.55f, .9f);
-                player.wingTimeMax = (int)(player.wingTimeMax / Main.rand.NextFloat(.8f, 2f));
-                Player.jumpSpeed /= Main.rand.NextFloat(.8f, 2f);
+                player.wingTimeMax = (int)(player.wingTimeMax / Main.rand.NextFloat(1.2f, 2f));
+                Player.jumpSpeed /= Main.rand.NextFloat(1.2f, 2f);
             }
 
             if (infinityOverload)
