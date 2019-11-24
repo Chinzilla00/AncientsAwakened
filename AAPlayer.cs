@@ -950,7 +950,7 @@ namespace AAMod
 
             if(Unstable)
             {
-                if(Main.rand.Next(100) == 0)
+                if(Main.rand.Next(200) == 0 && !UnstableOn)
                 {
                     UnstableOn = true;
                 }
