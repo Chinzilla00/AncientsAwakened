@@ -63,6 +63,7 @@ namespace AAMod.Items.Materials
                         };
                     }
                 }
+                item.active = false;
             }
         }
     }
