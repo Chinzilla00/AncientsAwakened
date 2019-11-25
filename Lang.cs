@@ -1694,7 +1694,7 @@ namespace AAMod
                         case "ShenA2":
                         return "搞清楚你的位置, 泰拉人. 你自作自受. 仪式, 符文? 全都是你自己.";
                         case "ShenA3":
-                        return "Brawlin' till the very end.";
+                        return "一切总将在争端中结束.";
                         case "ShenA4":
                         return "你为何要再起争端? 为力量? 还是荣耀?";
                         case "ShenA5":

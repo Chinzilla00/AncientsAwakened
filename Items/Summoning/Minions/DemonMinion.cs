@@ -81,10 +81,7 @@ namespace AAMod.Items.Summoning.Minions
             num *= Main.essScale;
             Lighting.AddLight(projectile.Center, 1f * num, 0f * num, 0.15f * num);
             projectile.rotation = projectile.velocity.X * 0.04f;
-            if (Math.Abs(projectile.velocity.X) > 0.2)
-            {
-                projectile.spriteDirection = -projectile.direction;
-            }
+
             float num633 = 700f;
             float num634 = 800f;
             float num635 = 1200f;
@@ -176,6 +173,16 @@ namespace AAMod.Items.Summoning.Minions
                     }
                 }
             }
+            
+            if(flag25)
+            {
+                projectile.spriteDirection = ((vector46 - projectile.Center).X > 0? -1: 1);
+            }
+            else
+            {
+                projectile.spriteDirection =(projectile.velocity.X > 0? -1: 1);
+            }
+
             float num647 = num634;
             if (flag25)
             {

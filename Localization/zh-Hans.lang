@@ -1638,6 +1638,8 @@ ItemTooltip.RottedDynastyWood=都烂糊了！
 
 ItemName.RottedShingles=腐烂王朝瓦
 
+ItemName.RoyalBunnyCage=王冠兔兔笼
+
 ItemName.ScorchedDynastyWood=烧焦王朝木
 
 ItemName.ScorchedShingles=烧焦王朝瓦
@@ -5766,6 +5768,10 @@ MapObject.InfernoCrate=燎狱宝箱
 MapObject.MireCrate=潭渊宝箱
 
 MapObject.VoidCrate=虚空宝箱
+
+// AAMod.Tiles.Decoration
+
+MapObject.RoyalBunnyCage=王冠兔兔笼
 
 
 // AAMod.Tiles
