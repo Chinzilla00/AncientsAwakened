@@ -6,7 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
-namespace AAMod.Items.Boss.Yamata
+namespace AAMod.Projectiles.Yamata
 {
 
     public class PhantomSword : ModProjectile

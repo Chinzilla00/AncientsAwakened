@@ -47,8 +47,6 @@ Inflicts Moonrazed");
             }
 
             float rotation = MathHelper.ToRadians(60);
-            //position = new Vector2(player.position.X + ((Main.rand.Next(11) - 20) * player.direction), player.position.Y + (Main.rand.Next(5) - 10)); //this defines the distance of the projectiles form the player when the projectile spawns
-
             for (int i = 0; i < numberProjectiles; i++)
             {
                 if (Main.netMode != 1)

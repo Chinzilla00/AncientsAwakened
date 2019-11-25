@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ModLoader;
 using System;
 
-namespace AAMod.Items.Boss.Yamata
+namespace AAMod.Projectiles.Yamata
 {
     public class AbyssalYariP2 : ModProjectile
     {
