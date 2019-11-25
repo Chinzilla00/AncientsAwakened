@@ -14,6 +14,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Hydra Chow");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"Just holding this makes you gag
 Summons the Hydra
 Can only be used at night");

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Localization;
+using Terraria.ID;
 
 namespace AAMod.Items.BossSummons
 {
@@ -14,6 +15,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("ERR0R_NULL");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"ACTIVATES THE GR0UND ZER0 C0DE F0R THE NEAREST ZER0 UNIT
 N0N-C0NSUMABLE");
         }

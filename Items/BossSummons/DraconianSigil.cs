@@ -6,6 +6,7 @@ using AAMod.NPCs.Bosses.Akuma;
 using AAMod.NPCs.Bosses.Akuma.Awakened;
 using System.Collections.Generic;
 using BaseMod;
+using Terraria.ID;
 
 namespace AAMod.Items.BossSummons
 {
@@ -15,6 +16,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Draconian Sun Sigil");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"An ornate tablet said to contain the radiant power of a thousand suns
 Summons Akuma
 Only Usable during the day in the inferno

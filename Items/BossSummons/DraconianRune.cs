@@ -6,6 +6,7 @@ using AAMod.NPCs.Bosses.Akuma.Awakened;
 using AAMod.NPCs.Bosses.Akuma;
 using System.Collections.Generic;
 using BaseMod;
+using Terraria.ID;
 
 namespace AAMod.Items.BossSummons
 {
@@ -14,6 +15,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Draconian Sun Rune");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"An enchanted tablet bursting with flaming chaotic energy
 Summons Akuma Awakened
 Only Usable during the day in the inferno

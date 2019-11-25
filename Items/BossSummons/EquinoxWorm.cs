@@ -5,6 +5,7 @@ using AAMod.NPCs.Bosses.Equinox;
 using Terraria.Localization;
 using Microsoft.Xna.Framework;
 
+
 namespace AAMod.Items.BossSummons
 {
     public class EquinoxWorm : BaseAAItem
@@ -12,6 +13,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Equinox Worm");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"A worm created using celestial materials
 Summons the Equinox Worms
 Non-Consumable");

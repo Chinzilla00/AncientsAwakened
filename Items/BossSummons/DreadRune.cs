@@ -7,6 +7,7 @@ using Terraria;
 using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Localization;
+using Terraria.ID;
 
 namespace AAMod.Items.BossSummons
 {
@@ -16,6 +17,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dread Moon Rune");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"An enchanted tablet radiating dark chaotic energy
 Summons Yamata no Orochi
 Can only be used in the mire at night

@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.Localization;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.BossSummons
 {
@@ -15,6 +16,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Doomsday Tesseract");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"DESCRIPTI0NHERE
 UNSTABLE. C0NTAINS C0DE T0 ACTIVATE THE BRINGER 0F DEATH
 N0N-C0NSUMABLE");
