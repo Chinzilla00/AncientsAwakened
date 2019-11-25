@@ -5,6 +5,7 @@ using AAMod.NPCs.Bosses.Anubis;
 using AAMod.NPCs.Bosses.Anubis.Forsaken;
 using Terraria.ModLoader;
 using BaseMod;
+using Terraria.ID;
 
 namespace AAMod.Items.BossSummons
 {
@@ -13,6 +14,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ra's Scepter");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"Summons Anubis
 Can only be used in the desert on the surface
 'I uh...borrowed this from a bird friend of mine.'");

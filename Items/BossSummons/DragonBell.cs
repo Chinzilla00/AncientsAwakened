@@ -13,6 +13,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ancient Bell");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"An ornately crafted bell
 Summons the Broodmother in the Inferno
 Only useable during the day");

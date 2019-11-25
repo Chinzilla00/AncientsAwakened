@@ -191,14 +191,14 @@ namespace AAMod.Items.Summoning.Minions
                     projectile.velocity.Y = -0.05f;
                 }
             }
-
+            
             if(hasTarget)
             {
-                projectile.spriteDirection = projectile.direction * ((TargetCenter - projectile.Center).X > 0? -1: 1);
+                projectile.spriteDirection = ((TargetCenter - projectile.Center).X > 0? -1: 1);
             }
             else
             {
-                projectile.spriteDirection = projectile.direction * (projectile.velocity.X > 0? -1: 1);
+                projectile.spriteDirection =(projectile.velocity.X > 0? -1: 1);
             }
             
 
@@ -261,7 +261,7 @@ namespace AAMod.Items.Summoning.Minions
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 5, 0, 0);
 
 
-            if (projectile.direction == 1)
+            if (projectile.spriteDirection == 1)
             {
                 tex = mod.GetTexture("Items/Summoning/Minions/XiaoDoragonBlue");
             }
@@ -269,17 +269,17 @@ namespace AAMod.Items.Summoning.Minions
             if (hasTarget)
             {
                 tex = mod.GetTexture("Items/Summoning/Minions/XiaoDoragonA");
-                BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, 1f, projectile.rotation, -projectile.direction, 5, frame, 1, 1, 5, true);
+                BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, 1f, projectile.rotation, projectile.spriteDirection, 5, frame, 1, 1, 5, true);
             }
 
 
-            BaseDrawing.DrawTexture(spriteBatch, tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, -projectile.direction, 5, frame, lightColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 5, frame, lightColor, true);
 
             if (hasTarget)
             {
                 Texture2D g = mod.GetTexture("Glowmasks/XiaoDoragon_Glow");
-                BaseDrawing.DrawTexture(spriteBatch, g, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, -projectile.direction, 5, frame, AAColor.Shen2, true);
-                BaseDrawing.DrawAfterimage(spriteBatch, g, 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, 1f, projectile.rotation, -projectile.direction, 5, frame, 1, 1, 5, true, 0, 0, AAColor.Shen2);
+                BaseDrawing.DrawTexture(spriteBatch, g, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 5, frame, AAColor.Shen2, true);
+                BaseDrawing.DrawAfterimage(spriteBatch, g, 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, 1f, projectile.rotation, projectile.spriteDirection, 5, frame, 1, 1, 5, true, 0, 0, AAColor.Shen2);
             }
             return false;
         }

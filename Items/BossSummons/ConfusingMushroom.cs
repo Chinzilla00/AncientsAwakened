@@ -14,6 +14,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Confusing Looking Mushroom");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"Summons the Feudal Fungus
 Can only be used in a glowing mushroom biome");
         }

@@ -5,6 +5,7 @@ using Terraria.Localization;
 using AAMod.NPCs.Bosses.Shen;
 using System.Collections.Generic;
 using BaseMod;
+using Terraria.ID;
 
 namespace AAMod.Items.BossSummons
 {
@@ -14,6 +15,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Chaos Sigil");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"A cursed tablet filled with unstable magic
 Summons the chaos emperor
 Non-Consumable");

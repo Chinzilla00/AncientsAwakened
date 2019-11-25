@@ -8,6 +8,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Golden Grub");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"Summons Greed
 Can only be used in Greed's Hoard at the Altar of Desire
 'It's really shiny.'");

@@ -14,6 +14,7 @@ namespace AAMod.Items.BossSummons
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Interesting Looking Claw");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"It's oddly Clammy
 Can only be used at night");
 		}

@@ -8,6 +8,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Owl Statue");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"Summons Athena
 Can only be used in the Acropolis at the Owl Altar
 'It stares into your soul.'");

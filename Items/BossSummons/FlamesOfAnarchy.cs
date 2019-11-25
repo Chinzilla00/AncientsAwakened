@@ -15,6 +15,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Flames of Anarchy");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"The flames of chaos burn in this antique china
 Calls upon the Sisters of Discord
 Non-Consumable");

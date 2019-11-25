@@ -6,6 +6,7 @@ using AAMod.NPCs.Bosses.Shen;
 using System.Collections.Generic;
 using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
 
 namespace AAMod.Items.BossSummons
 {
@@ -15,6 +16,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Chaos Rune");
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
             Tooltip.SetDefault(@"A cursed tablet bursting with chaotic energy
 Summons Shen Doragon's true awakened form
 Non-Consumable");
