@@ -16,7 +16,7 @@ namespace AAMod.Items.BossSummons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Chaos Rune");
-            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
+            ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13;
             Tooltip.SetDefault(@"A cursed tablet bursting with chaotic energy
 Summons Shen Doragon's true awakened form
 Non-Consumable");
