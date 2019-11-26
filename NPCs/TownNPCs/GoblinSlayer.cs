@@ -493,9 +493,12 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (Pumpkin)
             {
-                shop.item[nextSlot].SetDefaults(ItemID.SpookyWood);
-                shop.item[nextSlot].value = 50;
-                nextSlot++;
+                if (NPC.downedHalloweenTree)
+                {
+                    shop.item[nextSlot].SetDefaults(ItemID.SpookyWood);
+                    shop.item[nextSlot].value = 50;
+                    nextSlot++;
+                }
                 shop.item[nextSlot].SetDefaults(ItemID.GoodieBag);
                 shop.item[nextSlot].shopCustomPrice = new int?(15);
                 shop.item[nextSlot].shopSpecialCurrency = AAMod.HalloweenTreat;
@@ -526,6 +529,9 @@ namespace AAMod.NPCs.TownNPCs
                 nextSlot++;
                 if (NPC.downedHalloweenTree)
                 {
+                    shop.item[nextSlot].SetDefaults(ItemID.SpookyWood);
+                    shop.item[nextSlot].value = 50;
+                    nextSlot++;
                     shop.item[nextSlot].SetDefaults(ItemID.StakeLauncher);
                     shop.item[nextSlot].shopCustomPrice = new int?(20);
                     shop.item[nextSlot].shopSpecialCurrency = AAMod.HalloweenTreat;
