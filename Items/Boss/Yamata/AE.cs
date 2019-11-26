@@ -18,8 +18,8 @@ namespace AAMod.Items.Boss.Yamata
 	    {
             item.damage = 350;
             item.ranged = true;
-            item.width = 98;
-            item.height = 28;
+            item.width = 76;
+            item.height = 34;
             item.useTime = 2;
             item.useAnimation = 10;
             item.useStyle = 5;
