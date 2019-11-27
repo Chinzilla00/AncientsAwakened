@@ -58,7 +58,7 @@ namespace AAMod.Items.Boss.Equinox
             player.magicCrit += 5;
             player.pickSpeed -= 0.35f;
             player.minionKB += 0.75f;
-            player.allDamage += 0.35f;
+            player.allDamage += 0.17f;
             player.thrownCrit += 5;
         }
         
