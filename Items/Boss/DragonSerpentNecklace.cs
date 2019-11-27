@@ -34,7 +34,7 @@ Ignores 5 Enemy defense");
             recipe.AddRecipe();
         }
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.endurance += .07f;
             player.allDamage += .07f;

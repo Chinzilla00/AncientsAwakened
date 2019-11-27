@@ -38,8 +38,16 @@ namespace AAMod.Items.Boss.Equinox
                 0f
             );
         }
+        
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Radiant Star");
+            Tooltip.SetDefault(
+@"Gives immensely increased stats during the day
+'It's Shiny'");
+        }
 
-        public override void UpdateEquip(Player player)
+		public override void UpdateAccessory(Player player, bool hideVisual)
         {
             if (Main.dayTime)
             {
@@ -54,19 +62,6 @@ namespace AAMod.Items.Boss.Equinox
                 player.allDamage += 0.17f;
                 player.thrownCrit += 4;
             }
-        }
-
-        
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Radiant Star");
-            Tooltip.SetDefault(
-@"Gives immensely increased stats during the day
-'It's Shiny'");
-        }
-
-		public override void UpdateAccessory(Player player, bool hideVisual)
-        {
             player.GetModPlayer<AAPlayer>().RStar = true;
         }
 

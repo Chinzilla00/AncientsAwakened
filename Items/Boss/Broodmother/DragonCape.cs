@@ -46,7 +46,7 @@ namespace AAMod.Items.Boss.Broodmother
             );
         }
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.endurance += .07f;
         }

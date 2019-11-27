@@ -21,7 +21,7 @@ namespace AAMod.Items.Boss.Hydra
             item.expert = true; item.expertOnly = true;
         }
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.allDamage += .07f;
         }

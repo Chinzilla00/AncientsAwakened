@@ -24,7 +24,7 @@ Don't eat it");
             item.expert = true; item.expertOnly = true;
         }
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
                 player.statLifeMax2 += 50;
         }

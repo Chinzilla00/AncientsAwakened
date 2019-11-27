@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Serpent
             item.expert = true; item.expertOnly = true;
         }
 
-        public override void UpdateEquip(Player p)
+        public override void UpdateAccessory(Player p, bool hideVisual)
         {
 			if(p.ZoneRain && p.ZoneSnow)
 			{

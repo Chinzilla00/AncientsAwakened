@@ -26,7 +26,7 @@ Increased jump height");
             item.expert = true; item.expertOnly = true;
         }
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.autoJump = true;
             Player.jumpHeight = 25;

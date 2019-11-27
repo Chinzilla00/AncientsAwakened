@@ -51,7 +51,7 @@ I need more powerful souls, *****,*********,**********");
             return false;
         }
         
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.minionDamage += .1f;
             player.maxMinions += 2;

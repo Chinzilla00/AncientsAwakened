@@ -15,7 +15,7 @@ namespace AAMod.Items.Accessories
             item.accessory = true;
         }
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.moveSpeed += .1f;
             player.allDamage += .1f;

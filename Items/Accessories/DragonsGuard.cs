@@ -16,7 +16,7 @@ namespace AAMod.Items.Accessories
             item.defense = 3;
         }
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<AAPlayer>().DragonsGuard = true;
         }

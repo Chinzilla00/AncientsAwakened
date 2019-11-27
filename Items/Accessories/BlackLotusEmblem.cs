@@ -29,7 +29,7 @@ Your magic attacks inflicts moonraze
             item.accessory = true;
         }
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<AAPlayer>().BlackLotusEmblem = true;
             player.manaMagnet = true;

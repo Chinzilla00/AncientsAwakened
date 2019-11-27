@@ -17,7 +17,7 @@ namespace AAMod.Items.Accessories
             item.defense = 1;
         }
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.noKnockback = true;
         }

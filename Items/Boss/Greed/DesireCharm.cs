@@ -37,7 +37,7 @@ Caps out at 20% damage");
             base.ModifyTooltips(tooltips);
         }
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             modPlayer.GreedCharm = true;

@@ -82,7 +82,7 @@ All effects of the Sash of Vengeance
             base.ModifyTooltips(tooltips);
         }
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 

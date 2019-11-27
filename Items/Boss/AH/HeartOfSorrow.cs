@@ -25,7 +25,7 @@ Below 1/3 of your maximum life, your melee and ranged attacks inflict Moonraze i
             item.defense = 3;
         }
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.meleeDamage +=  1 - player.statLife / player.statLifeMax;
             player.rangedDamage += 1 - player.statLife / player.statLifeMax;

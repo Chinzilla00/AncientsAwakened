@@ -25,7 +25,7 @@ Below 1/3 of your maximum life, your magic attacks and minions inflict Daybroken
         }
         
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.magicDamage += 1 - player.statLife / player.statLifeMax;
             player.minionDamage += 1 - player.statLife / player.statLifeMax;

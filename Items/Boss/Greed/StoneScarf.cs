@@ -24,7 +24,7 @@ namespace AAMod.Items.Boss.Greed
             item.expert = true;
         }
 
-        public override void UpdateEquip(Player player)
+        public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.endurance += .2f;
         }

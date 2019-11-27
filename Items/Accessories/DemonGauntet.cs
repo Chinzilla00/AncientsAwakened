@@ -35,14 +35,6 @@ Inflicts Ichor in Crimson Worlds/Cursed Flame in Corruption worlds");
             item.defense = 8;
             
         }
-
-        public override void UpdateEquip(Player player)
-        {
-            player.meleeDamage += 0.14f;
-            player.meleeSpeed += 0.1f;
-            player.aggro += 5;
-        }
-
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
@@ -91,6 +83,9 @@ Inflicts Ichor in Crimson Worlds/Cursed Flame in Corruption worlds");
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
+            player.meleeDamage += 0.14f;
+            player.meleeSpeed += 0.1f;
+            player.aggro += 5;
             player.GetModPlayer<AAPlayer>().demonGauntlet = true;
         }
 

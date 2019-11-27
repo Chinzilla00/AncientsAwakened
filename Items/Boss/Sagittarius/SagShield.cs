@@ -23,7 +23,7 @@ Shield has a 5 minute cooldown");
             item.expert = true; item.expertOnly = true;
         }
 
-        public override void UpdateEquip(Player p)
+        public override void UpdateAccessory(Player p, bool hideVisual)
         {
             p.GetModPlayer<AAPlayer>().SagShield = true;
         }

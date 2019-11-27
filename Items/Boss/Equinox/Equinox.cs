@@ -48,7 +48,7 @@ namespace AAMod.Items.Boss.Equinox
             );
         }
 
-        public override void UpdateEquip(Player player)
+		public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.lifeRegen += 6;
             player.statDefense += 9;
@@ -60,11 +60,6 @@ namespace AAMod.Items.Boss.Equinox
             player.minionKB += 0.75f;
             player.allDamage += 0.17f;
             player.thrownCrit += 5;
-        }
-        
-
-		public override void UpdateAccessory(Player player, bool hideVisual)
-        {
             player.nightVision = true;
             player.GetModPlayer<AAPlayer>().RStar = true;
         }
