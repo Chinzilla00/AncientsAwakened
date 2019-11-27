@@ -162,39 +162,39 @@ All effects of the Sash of Vengeance
         {
             if (player.statLife <= player.statLifeMax2 * .1f)
             {
-                return .36f;
+                return .18f;
             }
             else if (player.statLife <= player.statLifeMax2 * .2f)
             {
-                return .32f;
+                return .16f;
             }
             else if (player.statLife <= player.statLifeMax2 * .3f)
             {
-                return .28f;
+                return .14f;
             }
             else if (player.statLife <= player.statLifeMax2 * .4f)
             {
-                return .24f;
+                return .12f;
             }
             else if (player.statLife <= player.statLifeMax2 * .5f)
             {
-                return .20f;
+                return .1f;
             }
             else if (player.statLife <= player.statLifeMax2 * .6f)
             {
-                return .16f;
+                return .08f;
             }
             else if (player.statLife <= player.statLifeMax2 * .7f)
             {
-                return .12f;
+                return .06f;
             }
             else if (player.statLife <= player.statLifeMax2 * .8f)
             {
-                return .08f;
+                return .04f;
             }
             else if (player.statLife <= player.statLifeMax2 * .9f)
             {
-                return .04f;
+                return .02f;
             }
 
             return 0f;
