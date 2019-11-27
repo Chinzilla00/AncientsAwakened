@@ -26,7 +26,7 @@ Forged in the flames of the blazing sun");
 		
 		public override void UpdateEquip(Player player)
         {
-            player.endurance += 0.2f;
+            player.endurance += 0.1f;
         }
 
         public override void AddRecipes()

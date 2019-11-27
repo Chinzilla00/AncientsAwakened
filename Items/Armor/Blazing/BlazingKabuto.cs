@@ -27,7 +27,7 @@ Forged in the flames of the blazing sun");
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance += .02f;
+            player.endurance += .01f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
