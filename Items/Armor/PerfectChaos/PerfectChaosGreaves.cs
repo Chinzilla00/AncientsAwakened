@@ -39,7 +39,7 @@ The power of discordian rage radiates from this armor");
 
         public override void UpdateEquip(Player player)
         {
-            player.endurance += .15f;
+            player.endurance += .3f;
             player.moveSpeed += .45f;
         }
 
