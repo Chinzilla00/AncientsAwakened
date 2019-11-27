@@ -19,7 +19,6 @@ namespace AAMod.Buffs
 			player.magicCrit += 10;
 			player.manaCost -= 0.15f;
 			player.statDefense += 10;
-			player.endurance += 0.15f;
         }
     }
 }

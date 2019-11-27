@@ -1678,7 +1678,7 @@ ItemTooltip.TechneciumOre=(译者注：锝，人类首个人工合成的元素�
 ItemName.TerraCore=泰拉核心
 ItemTooltip.TerraCore=将大多数制作站点合成一个\n用于创造远古工作台
 
-ItemName.TerraPrismStation=泰拉注射机
+ItemName.TerraPrismStation=无限核心
 ItemTooltip.TerraPrismStation=用于将你所拥有的生态的能力注入生态棱镜中
 
 ItemName.TerrariumBox=八音盒(泰拉心球)
@@ -5969,7 +5969,7 @@ MapObject.TechneciumOre=闪锝矿石头
 
 MapObject.TerraCore=泰拉核心
 
-MapObject.TerraPrism=泰拉注射机
+MapObject.TerraPrism=无限核心
 
 MapObject.TerrariumBox=八音盒
 

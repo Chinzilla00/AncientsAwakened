@@ -60,25 +60,25 @@ namespace AAMod.Buffs
             }
             else if (modPlayer.perfectChaosMe)
             {
-                if (player.statLife <= player.statLifeMax2 * .8f)
+                if (player.statLife <= player.statLifeMax2 * .2f)
                 {
-                    player.endurance += .05f;
-                    player.meleeDamage += .1f;
-                }
-                else if (player.statLife <= player.statLifeMax2 * .6f)
-                {
-                    player.endurance += .1f;
-                    player.meleeDamage += .2f;
+                    player.endurance += .10f;
+                    player.meleeDamage += .4f;
                 }
                 else if (player.statLife <= player.statLifeMax2 * .4f)
                 {
-                    player.endurance += .12f;
+                    player.endurance += .08f;
                     player.meleeDamage += .3f;
                 }
-                else if (player.statLife <= player.statLifeMax2 * .2f)
+                else if (player.statLife <= player.statLifeMax2 * .6f)
                 {
-                    player.endurance += .15f;
-                    player.meleeDamage += .4f;
+                    player.endurance += .06f;
+                    player.meleeDamage += .2f;
+                }
+                if (player.statLife <= player.statLifeMax2 * .8f)
+                {
+                    player.endurance += .03f;
+                    player.meleeDamage += .1f;
                 }
             }
             else if (modPlayer.perfectChaosMa)
