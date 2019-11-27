@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Blazing
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blazing Kabuto");
-			Tooltip.SetDefault(@"2% increased Damage Resistance
+			Tooltip.SetDefault(@"1% increased Damage Resistance
 Forged in the flames of the blazing sun");
         }
 
