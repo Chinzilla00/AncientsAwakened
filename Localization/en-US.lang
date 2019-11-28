@@ -49,7 +49,7 @@ Common.AssassinBonus=Increase 30% melee speed and projectile velocity\nYour mele
 
 Common.AtlanteanBonus=While submerged in liquids, your magic abilities and defense are enhanced
 
-Common.BlazingBonus=5% increased damage resistance\nEnemies are more likely to target you\nYour Swung weapons set your enemies ablaze
+Common.BlazingBonus=Enemies are more likely to target you\nYour Swung weapons set your enemies ablaze
 
 Common.ChampionHeaddressBonus=Baron Bunny fights by your side as an ally to rabbit kind\nAs you lose health, Baron Bunny's will to fight becomes stronger.
 
@@ -94,7 +94,7 @@ Common.HoodlumHoodBonus=Reaching below half heath multiplies your movement speed
 
 Common.ImpHoodBonus=Your minions set enemies ablaze
 
-Common.KindledKabutoBonus=5% increased damage resistance\nYour Swung weapons set your enemies ablaze
+Common.KindledKabutoBonus=2% increased damage resistance\nYour Swung weapons set your enemies ablaze
 
 Common.MushiumHatBonus=Potion Sickness time is cut by 25%
 
@@ -131,7 +131,7 @@ Common.RaiderChestBonus=You cannot be knocked back\nAs your health goes down, yo
 
 Common.TribalHatBonus=You are blessed with a gift of nature, allowing you to autodrink mana potions\nMana usage lowered by 30%
 
-Common.VikingPlateBonus=4% Increased damage resistance
+Common.VikingPlateBonus=3% Increased damage resistance
 
 Common.WitchHoodBonus=Scorch and Burn.\n20% Increased Magic and Minion damage\n+4 max minions\nA Fire spirit protects you\nThe Fire spirit becomes more powerful the less mana you have
 

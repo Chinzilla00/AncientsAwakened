@@ -14,7 +14,7 @@ namespace AAMod.Items.Armor.Draco
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Draconian Sun Dao");
 			Tooltip.SetDefault(@"25% increased melee damage
-5% increased damage resistance
+3% increased damage resistance
 The blazing fury of the Inferno rests in this armor");
 		}
 
@@ -63,7 +63,7 @@ The blazing fury of the Inferno rests in this armor");
         public override void UpdateEquip(Player player)
 		{
 			player.meleeDamage += .25f;
-			player.endurance += .05f;
+			player.endurance += .03f;
         }
 
 		public override void AddRecipes()

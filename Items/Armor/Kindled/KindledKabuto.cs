@@ -32,7 +32,7 @@ namespace AAMod.Items.Armor.Kindled
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = Language.GetTextValue("Mods.AAMod.Common.KindledKabutoBonus");
-            player.endurance += .05f;
+            player.endurance += .02f;
             player.GetModPlayer<AAPlayer>().kindledSet = true;
         }
 

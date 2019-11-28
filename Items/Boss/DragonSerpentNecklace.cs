@@ -10,7 +10,7 @@ namespace AAMod.Items.Boss
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Dragon Serpent Necklace");
-            Tooltip.SetDefault(@"7% increased damage and damage resistance
+            Tooltip.SetDefault(@"7% increased damage and 3% increased damage resistance
 Ignores 5 Enemy defense");
         }
         public override void SetDefaults()
@@ -36,7 +36,7 @@ Ignores 5 Enemy defense");
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.endurance += .07f;
+            player.endurance += .03f;
             player.allDamage += .07f;
             player.GetModPlayer<AAPlayer>().clawsOfChaos = true;
         }
@@ -53,6 +53,14 @@ Ignores 5 Enemy defense");
                         return false;
                     }
                     if (slot != i && player.armor[i].type == ModContent.ItemType<Hydra.HydraPendant>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == ItemID.WormScarf)
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == mod.ItemType("StoneScarf"))
                     {
                         return false;
                     }

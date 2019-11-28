@@ -493,15 +493,15 @@ Common.AtlanteanBonus=完全处于液体中时, 你的魔法能力和防御力�
 
 
 ItemName.BlazingDou=怒炎道甲
-ItemTooltip.BlazingDou=增加2%伤害减免\n在燎日之焰中锻造
+ItemTooltip.BlazingDou=增加1%伤害减免\n在燎日之焰中锻造
 
 ItemName.BlazingKabuto=怒炎盔胄
 ItemTooltip.BlazingKabuto=增加2%伤害减免\n在燎日之焰中锻造
 
 ItemName.BlazingSuneate=怒炎臑当
-ItemTooltip.BlazingSuneate=增加2%伤害减免\n在燎日之焰中锻造\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
+ItemTooltip.BlazingSuneate=增加1%伤害减免\n在燎日之焰中锻造\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
 
-Common.BlazingBonus=增加5%伤害减免\n敌人更容易瞄准你\n你挥动的武器对敌人造成燃烧
+Common.BlazingBonus=敌人更容易瞄准你\n你挥动的武器对敌人造成燃烧
 
 // AAMod.Items.Armor.Champion
 
@@ -556,22 +556,22 @@ Common.ChaosVisorBonus=+4召唤上限\n一个虚空猎手为你而战
 // AAMod.Items.Armor.PerfectChaos
 
 ItemName.PerfectChaosGreaves=冥昧抹杀者护胫
-ItemTooltip.PerfectChaosGreaves=增加45%移动速度\n增加15%伤害减免\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosGreaves=增加45%移动速度\n增加2%伤害减免\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosHood=冥昧抹杀者兜帽
-ItemTooltip.PerfectChaosHood=增加32%魔法伤害\n增加20%魔法暴击率\n增加10%伤害减免\n减少30%魔法消耗\n+150魔法上限\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosHood=增加32%魔法伤害\n增加20%魔法暴击率\n增加2%伤害减免\n减少30%魔法消耗\n+150魔法上限\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosKabuto=冥昧抹杀者盔胄
-ItemTooltip.PerfectChaosKabuto=增加30%近战伤害和暴击率\n增加15%伤害减免\n增加15近战速度\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosKabuto=增加30%近战伤害和暴击率\n增加5%伤害减免\n增加15近战速度\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosMask=冥昧抹杀者面具
-ItemTooltip.PerfectChaosMask=增加70%召唤伤害\n增加5%伤害减免\n+6召唤上限\n+2炮台上限\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosMask=增加70%召唤伤害\n增加1%伤害减免\n+6召唤上限\n+2炮台上限\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosVisor=冥昧抹杀者视镜
-ItemTooltip.PerfectChaosVisor=增加45%远程伤害\n增加38%远程暴击率\n增加12%伤害减免\n减少25%弹药消耗\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosVisor=增加45%远程伤害\n增加38%远程暴击率\n增加3%伤害减免\n减少25%弹药消耗\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosPlate=冥昧抹杀者胸甲
-ItemTooltip.PerfectChaosPlate=增加15%伤害减免\n允许你在水下呼吸
+ItemTooltip.PerfectChaosPlate=增加4%伤害减免\n允许你在水下呼吸
 
 Common.PerfectChaosHoodBonus=“混沌赐予你力量”\n随着你的生命减少， 你的魔法伤害增加， 魔力消耗降低\n你的魔法攻击对敌人造成冥昧业火
 Common.PerfectChaosKabutoBonus=“混沌赐予你力量”\n随着你的生命减少， 你的近战伤害和防御力增加\n你的近战攻击对敌人造成冥昧业火
@@ -705,13 +705,13 @@ Common.DoomsdayHelmetBonus=生命终结系统启动\n你可以探测到周围所
 
 
 ItemName.DracoHelm=炙戮盔胄
-ItemTooltip.DracoHelm=增加20%近战暴击率\n增加5%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoHelm=增加20%近战暴击率\n增加3%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
 
 ItemName.DracoLeggings=炙戮护腿
-ItemTooltip.DracoLeggings=增加16%移动速度\n增加16%近战速度\n增加5%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoLeggings=增加16%移动速度\n增加16%近战速度\n增加3%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
 
 ItemName.DracoPlate=炙戮道甲
-ItemTooltip.DracoPlate=增加25%近战伤害\n增加5%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoPlate=增加25%近战伤害\n增加3%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
 
 Common.DracoHelmBonus=“狂焰之怒充满了你的身体”\n你免疫所有冰系debuff\n你的灵魂灼烧如同狂焰之怒\n你的近战攻击对目标造成破晓
 
@@ -719,7 +719,7 @@ Common.DracoHelmBonus=“狂焰之怒充满了你的身体”\n你免疫所有�
 
 
 ItemName.DreadBoots=惧之月袴裤
-ItemTooltip.DreadBoots=增加50%移动速度\n减少25%弹药消耗\n增加5%伤害减免\n装甲中栖宿着潭渊的沉渊之怒
+ItemTooltip.DreadBoots=增加50%移动速度\n减少25%弹药消耗\n装甲中栖宿着潭渊的沉渊之怒
 
 ItemName.DreadHelm=惧之月假面
 ItemTooltip.DreadHelm=增加24%远程暴击率\n增加20%移动速度\n装甲中栖宿着潭渊的沉渊之怒
@@ -872,7 +872,7 @@ ItemTooltip.KindledKabuto=在燎日之焰中锻造
 ItemName.KindledSuneate=激燃臑当
 ItemTooltip.KindledSuneate=在燎日之焰中锻造\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
 
-Common.KindledKabutoBonus=增加5%伤害减免\n你挥动的武器对敌人造成灼伤
+Common.KindledKabutoBonus=增加2%伤害减免\n你挥动的武器对敌人造成灼伤
 
 
 // AAMod.Items.Armor.Madness
@@ -1367,7 +1367,7 @@ ItemName.VikingHelm=维京海盗头盔
 
 ItemName.VikingPlate=维京海盗胸甲
 
-Common.VikingPlateBonus=增加4%伤害减免
+Common.VikingPlateBonus=增加3%伤害减免
 
 
 // AAMod.Items.Armor.Witch
@@ -2081,7 +2081,7 @@ ItemTooltip.SunStaff=向你的敌人降下燎炎和怒火\n造成破晓
 ItemName.SunStorm=燎焰风暴
 
 ItemName.TaiyangBaolei=太阳堡垒
-ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n增加5%伤害减免,你的近战和魔法攻击对敌人造成灼伤\n白天,增加10%伤害减免你的近战和魔法攻击造成破晓来代替着火\n(译者注：绝了,这个装备的英文原名就是taiyangbaolei)
+ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n你的近战和魔法攻击对敌人造成灼伤\n白天,增加5%伤害减免你的近战和魔法攻击造成破晓来代替着火\n(译者注：绝了,这个装备的英文原名就是taiyangbaolei)
 
 ItemName.YOTD=龙年大吉
 ItemTooltip.YOTD=发射绚烂的烟花吸引同伴驱赶敌人\n“邪鬼巨龙牌安全烟花,朝脸发射也没伤害!文明放烟花,安全你我他!”

@@ -62,22 +62,22 @@ namespace AAMod.Buffs
             {
                 if (player.statLife <= player.statLifeMax2 * .2f)
                 {
-                    player.endurance += .10f;
+                    player.endurance += .06f;
                     player.meleeDamage += .4f;
                 }
                 else if (player.statLife <= player.statLifeMax2 * .4f)
                 {
-                    player.endurance += .08f;
+                    player.endurance += .045f;
                     player.meleeDamage += .3f;
                 }
                 else if (player.statLife <= player.statLifeMax2 * .6f)
                 {
-                    player.endurance += .06f;
+                    player.endurance += .03f;
                     player.meleeDamage += .2f;
                 }
                 if (player.statLife <= player.statLifeMax2 * .8f)
                 {
-                    player.endurance += .03f;
+                    player.endurance += .015f;
                     player.meleeDamage += .1f;
                 }
             }

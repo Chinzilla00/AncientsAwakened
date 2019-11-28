@@ -13,7 +13,7 @@ namespace AAMod.Items.Armor.PerfectChaos
         {
             DisplayName.SetDefault("Chaos Slayer Mask");
             Tooltip.SetDefault(@"70% increased minion damage
-5% increased damage resistance
+1% increased damage resistance
 +6 maximum Minions
 +2 maximum sentries 
 The power of discordian rage radiates from this hood");
@@ -55,7 +55,7 @@ The power of discordian rage radiates from this hood");
         public override void UpdateEquip(Player player)
         {
             player.minionDamage += .7f;
-            player.endurance += .03f;
+            player.endurance += .01f;
             player.maxMinions += 6;
             player.maxTurrets += 2;
         }

@@ -14,7 +14,7 @@ namespace AAMod.Items.Armor.PerfectChaos
             DisplayName.SetDefault("Chaos Slayer Hood");
             Tooltip.SetDefault(@"32% increased Magic damage
 20% increased Magic critical strike chance
-10% increased damage resistance
+2% increased damage resistance
 30% reduced Mana consumption
 150 increased maximum mana
 The power of discordian rage radiates from this hood");
@@ -57,7 +57,7 @@ The power of discordian rage radiates from this hood");
         {
             player.magicDamage += .32f;
             player.magicCrit += 20;
-            player.endurance += .05f;
+            player.endurance += .02f;
             player.manaCost *= .7f;
             player.statManaMax2 += 150;
         }

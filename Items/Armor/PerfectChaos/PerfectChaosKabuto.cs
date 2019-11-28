@@ -13,7 +13,7 @@ namespace AAMod.Items.Armor.PerfectChaos
         {
             DisplayName.SetDefault("Chaos Slayer Kabuto");
             Tooltip.SetDefault(@"30% increased Melee damage & critical strike chance
-15% increased damage resistance
+5% increased damage resistance
 15% increased melee speed
 The power of discordian rage radiates from this armor");
         }
@@ -54,7 +54,7 @@ The power of discordian rage radiates from this armor");
         {
             player.meleeDamage += .3f;
             player.meleeCrit += 30;
-            player.endurance += .09f;
+            player.endurance += .05f;
             player.meleeSpeed += .15f;
         }
 

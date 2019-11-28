@@ -80,7 +80,7 @@ Grants a strong dash that shreds through enemies in a fiery blaze of glory");
             player.spikedBoots = 2;
             modPlayer.clawsOfChaos = true;
             player.moveSpeed += 2f;
-            player.endurance += 0.1f;
+            player.endurance += 0.06f;
             player.dash = 3;
             player.moveSpeed += player.GetModPlayer<AAPlayer>().ZoneMire ? .5f : 0f;
             item.defense = player.GetModPlayer<AAPlayer>().ZoneInferno ? 18 : 8;
