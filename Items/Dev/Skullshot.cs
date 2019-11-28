@@ -107,15 +107,16 @@ Uses Bullets and Bones as ammo
         {
             if (player.altFunctionUse != 2)
             {
-                float spread = Main.rand.Next(20, 51) * 0.0174f;
+                float spread = Main.rand.Next(20, 30) * 0.0174f;
                 float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
                 double startAngle = Math.Atan2(speedX, speedY) - .1d;
                 double deltaAngle = spread / 6f;
                 double offsetAngle;
                 for (int i = 0; i < Main.rand.Next(5, 11); i++)
                 {
+                    float randomSpeed = baseSpeed + Main.rand.NextFloat() * 1.5f;
                     offsetAngle = startAngle + (deltaAngle * i);
-                    Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
+                    Projectile.NewProjectile(position.X, position.Y, randomSpeed * (float)Math.Sin(offsetAngle), randomSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
                 }
             }
             else
