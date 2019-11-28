@@ -187,17 +187,16 @@ namespace AAMod
                         {
                             return false;
                         }
-
-                        if (slot != i && player.armor[i].type == mod.ItemType("DragonCape"))
+                        if (slot != i && player.armor[i].type == ModContent.ItemType<Items.Boss.DragonSerpentNecklace>())
                         {
                             return false;
                         }
-
-                        if (slot != i && player.armor[i].type == mod.ItemType("DragonSerpentNecklace"))
+                        if (slot != i && player.armor[i].type == ModContent.ItemType<Items.Boss.Broodmother.DragonCape>())
                         {
                             return false;
                         }
                     }
+
                 }
             }
 

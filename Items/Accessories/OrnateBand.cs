@@ -13,18 +13,13 @@ namespace AAMod.Items.Accessories
             item.value = Item.sellPrice(0, 8, 0, 0);
             item.rare = 6;
             item.accessory = true;
-        }
-
-        public override void UpdateAccessory(Player player, bool hideVisual)
-        {
-            player.endurance += 0.05f;
+            item.defense = 8;
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ornate Band");
-            Tooltip.SetDefault(
-@"5% Increased damage resistance");
+            Tooltip.SetDefault("");
         }
 
     }

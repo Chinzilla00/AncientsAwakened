@@ -1,5 +1,6 @@
 using Terraria;
 using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Broodmother
 {
@@ -66,7 +67,7 @@ namespace AAMod.Items.Boss.Broodmother
                     {
                         return false;
                     }
-                    if (slot != i && player.armor[i].type == mod.ItemType("StoneScarf"))
+                    if (slot != i && player.armor[i].type == ModContent.ItemType<Greed.StoneScarf>())
                     {
                         return false;
                     }
