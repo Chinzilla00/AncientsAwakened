@@ -65,7 +65,7 @@ The blazing fury of the Inferno rests in this armor");
         public override void UpdateEquip(Player player)
 		{
 			player.meleeCrit += 20;
-            player.endurance += .05f;
+            player.endurance += .03f;
 		}
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

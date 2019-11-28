@@ -36,7 +36,7 @@ Ignores 5 Enemy defense");
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.endurance += .07f;
+            player.endurance += .03f;
             player.allDamage += .07f;
             player.GetModPlayer<AAPlayer>().clawsOfChaos = true;
         }
@@ -53,6 +53,14 @@ Ignores 5 Enemy defense");
                         return false;
                     }
                     if (slot != i && player.armor[i].type == ModContent.ItemType<Hydra.HydraPendant>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == ItemID.WormScarf)
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == ModContent.ItemType<Greed.StoneScarf>())
                     {
                         return false;
                     }

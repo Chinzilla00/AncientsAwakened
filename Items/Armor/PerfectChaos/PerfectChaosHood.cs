@@ -57,7 +57,7 @@ The power of discordian rage radiates from this hood");
         {
             player.magicDamage += .32f;
             player.magicCrit += 20;
-            player.endurance += .05f;
+            player.endurance += .02f;
             player.manaCost *= .7f;
             player.statManaMax2 += 150;
         }

@@ -15,7 +15,6 @@ namespace AAMod.Items.Boss.Rajah
             Tooltip.SetDefault(@"Every 10% of health lost gives you:
 1. 12% extra attack power to your highest damage type boost
 2. 5% increased movement speed
-3. 4% damage resistance
 All effects of the Sash of Vengeance
 'You have been deemed a worthy successor by the Champion of the Innocent'");
         }
@@ -75,10 +74,6 @@ All effects of the Sash of Vengeance
             TooltipLine SpeedTooltip = new TooltipLine(mod, "Damage Type", Language.GetTextValue("Mods.AAMod.Common.RajahSPSpeedBoost") + SpeedAmount);
             tooltips.Add(SpeedTooltip);
 
-            string ResAmount = (10 * DamageRes(player)) + "% ";
-            TooltipLine ResTooltip = new TooltipLine(mod, "Damage Type", Language.GetTextValue("Mods.AAMod.Common.RajahSPDamageResistance") + ResAmount);
-            tooltips.Add(ResTooltip);
-
             base.ModifyTooltips(tooltips);
         }
 
@@ -92,7 +87,6 @@ All effects of the Sash of Vengeance
             player.noFallDmg = true;
             player.moveSpeed += Speed(player);
             player.GetModPlayer<AAPlayer>().MaxMovespeedboost += Speed(player);
-            player.endurance += DamageRes(player);
 
             if (modPlayer.MeleeHighest(player))
             {
@@ -153,48 +147,6 @@ All effects of the Sash of Vengeance
             else if (player.statLife <= player.statLifeMax2 * .9f)
             {
                 return .12f;
-            }
-
-            return 0f;
-        }
-
-        public float DamageRes(Player player)
-        {
-            if (player.statLife <= player.statLifeMax2 * .1f)
-            {
-                return .18f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .2f)
-            {
-                return .16f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .3f)
-            {
-                return .14f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .4f)
-            {
-                return .12f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .5f)
-            {
-                return .1f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .6f)
-            {
-                return .08f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .7f)
-            {
-                return .06f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .8f)
-            {
-                return .04f;
-            }
-            else if (player.statLife <= player.statLifeMax2 * .9f)
-            {
-                return .02f;
             }
 
             return 0f;

@@ -55,7 +55,7 @@ The power of discordian rage radiates from this hood");
         {
             player.rangedDamage += .45f;
             player.rangedCrit += 38;
-            player.endurance += .06f;
+            player.endurance += .03f;
             player.ammoCost75 = true;
         }
 

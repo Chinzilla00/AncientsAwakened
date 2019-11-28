@@ -82,13 +82,6 @@ Immunity to fall damage");
             player.noFallDmg = true;
             player.moveSpeed *= 1.4f;
 
-            /* //This will cause flytime bug, so I delete it.
-            if (player.wingTime > 0)
-            {
-                player.wingTime += 1;
-            }
-            */
-
             if (modPlayer.MeleeHighest(player))
             {
                 player.meleeDamage += DamageBoost(player);

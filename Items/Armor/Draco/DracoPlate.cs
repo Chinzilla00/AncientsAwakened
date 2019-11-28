@@ -63,7 +63,7 @@ The blazing fury of the Inferno rests in this armor");
         public override void UpdateEquip(Player player)
 		{
 			player.meleeDamage += .25f;
-			player.endurance += .05f;
+			player.endurance += .03f;
         }
 
 		public override void AddRecipes()

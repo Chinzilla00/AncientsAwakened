@@ -1,5 +1,6 @@
 using Terraria;
 using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Broodmother
 {
@@ -59,6 +60,14 @@ namespace AAMod.Items.Boss.Broodmother
                 for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                 {
                     if (slot != i && player.armor[i].type == ModContent.ItemType<DragonSerpentNecklace>())
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == ItemID.WormScarf)
+                    {
+                        return false;
+                    }
+                    if (slot != i && player.armor[i].type == ModContent.ItemType<Greed.StoneScarf>())
                     {
                         return false;
                     }

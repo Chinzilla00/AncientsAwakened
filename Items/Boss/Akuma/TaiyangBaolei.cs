@@ -12,8 +12,8 @@ namespace AAMod.Items.Boss.Akuma
         {
             DisplayName.SetDefault("Taiyang Baolei");
             Tooltip.SetDefault(@"Makes you immune to almost all debuffs
-You gain 5% damage resistance and your melee & magic attacks set enemies ablaze
-During the day, you gain 10% damage resistance and your melee & magic attacks inflict daybroken instead of 'On Fire!'");
+Your melee & magic attacks set enemies ablaze
+During the day, you gain 6% damage resistance and your melee & magic attacks inflict daybroken instead of 'On Fire!'");
         }
 
         public override void SetDefaults()
@@ -168,13 +168,9 @@ During the day, you gain 10% damage resistance and your melee & magic attacks in
             player.buffImmune[mod.BuffType("DragonFire")] = true;
             player.buffImmune[mod.BuffType("BurningAsh")] = true;
             player.noKnockback = true;
-            if (!Main.dayTime)
+            if (Main.dayTime)
             {
-                player.endurance += 0.05f;
-            }
-            else
-            {
-                player.endurance += 0.1f;
+                player.endurance += 0.06f;
             }
         }
     }
