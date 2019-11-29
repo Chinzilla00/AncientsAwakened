@@ -22,7 +22,9 @@ namespace AAMod.Tiles.Ore
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("Abyssium");   //put your CustomBlock name
             dustType = mod.DustType("AbyssiumDust");
-            AddMapEntry(new Color(0, 0, 51));
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Abyssium Ore");
+            AddMapEntry(new Color(0, 0, 51), name);
 			minPick = 65;
         }
 
