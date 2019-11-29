@@ -50,19 +50,14 @@ namespace AAMod.Items.Boss.Yamata
         {
             return !(player.itemAnimation < item.useAnimation - 1);
         }
-
-        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+        
+        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            float spread = 20f * 0.1f;
-            float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
-            double startAngle = Math.Atan2(speedX, speedY) - .1d;
-            double deltaAngle = spread / 6f;
-            double offsetAngle;
-            for (int i = 0; i < 4; i++)
+            if (!(player.itemAnimation == 1))
             {
-                float randomSpeed = baseSpeed - Main.rand.NextFloat() * 1f;
-                offsetAngle = startAngle + (deltaAngle * i);
-                Projectile.NewProjectile(position.X, position.Y, randomSpeed * (float)Math.Sin(offsetAngle), randomSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
+                float SpeedX = speedX + Main.rand.Next(-25, 26) * 0.05f;
+                float SpeedY = speedY + Main.rand.Next(-25, 26) * 0.05f;
+                Projectile.NewProjectile(position.X, position.Y, SpeedX, SpeedY, ModContent.ProjectileType<YamataSoul>(), damage, knockBack, player.whoAmI, 0.0f, 0.0f);
             }
             return false;
         }
