@@ -24,6 +24,8 @@ namespace AAMod.Projectiles.Akuma
             projectile.friendly = true;
             projectile.ranged = true;
             projectile.timeLeft = 100;
+            projectile.tileCollide = false;
+            projectile.ignoreWater = true;
         }
 
         public float[] internalAI = new float[1];
