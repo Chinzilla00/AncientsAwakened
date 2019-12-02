@@ -22,7 +22,7 @@ namespace AAMod.Projectiles.Akuma
             projectile.friendly = true;
             projectile.alpha = 255;
             projectile.scale = 1f;
-            projectile.timeLeft = 600;
+            projectile.timeLeft = 500;
             projectile.magic = true;
             projectile.ignoreWater = true;
             
