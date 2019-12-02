@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Projectiles
+namespace AAmod.Projectiles
 {
 
     public class BogOrb : ModProjectile
@@ -26,17 +26,19 @@ namespace AAMod.Projectiles
         }
         public override void AI()
         {
-            Lighting.AddLight(projectile.Center, 1f, 0.1f, 1f);
+            projectile.rotation = ((float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f);
+            Lighting.AddLight(projectile.Center, 0.1f, 0.1f, 1f);
                 if (Main.rand.Next(2) == 0)
                 {
-                    Dust.NewDust(projectile.Center, projectile.width/2, projectile.height/2, 72, projectile.velocity.X * 0.25f, projectile.velocity.Y * 0.25f, 150, default, 0.7f);
+                    Dust.NewDust(projectile.Center, projectile.width/2, projectile.height/2, mod.DustType("AbyssDust"), projectile.velocity.X * 0.25f, projectile.velocity.Y * 0.25f, 150, default, 0.7f);
                 }
                 float magnitude = (float)Math.Sqrt(projectile.velocity.X * projectile.velocity.X + projectile.velocity.Y * projectile.velocity.Y);
             if (magnitude > 0.5f)
             {
                     projectile.velocity.X /= 1.005f;
                     projectile.velocity.Y /= 1.005f;
-                }
+            }
+                projectile.velocity.Y += 0.05f;
         }
 
         public override void Kill(int timeLeft)
@@ -44,11 +46,17 @@ namespace AAMod.Projectiles
             Main.PlaySound(SoundID.Item54, projectile.position);
             if (Main.netMode != 1)
             {
-                for (int k = 0; k < Main.rand.Next(21) + 10; k++)
+                for (int k = 0; k < Main.rand.Next(3) + 5; k++)
                 {
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Main.rand.Next(401) - 200) / 100, (float)(Main.rand.Next(400) - 1600) / 100, mod.ProjectileType("Drop"), projectile.damage, 2f, projectile.owner,0f,0f);
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Main.rand.Next(171) - 85) / 100, (float)(Main.rand.Next(176) - 900) / 100, mod.ProjectileType("Drop"), projectile.damage, 2f, projectile.owner,0f,0f);
                 }
             }
         }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) // Want some Venom?
+        {
+            //target.AddBuff(BuffID.Venom, 180);
+        }
+
     }
 }

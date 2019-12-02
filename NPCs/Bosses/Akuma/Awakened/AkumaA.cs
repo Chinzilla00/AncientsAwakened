@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.netAlways = true;
             npc.damage = 150;
             npc.defense = 135;
-            npc.lifeMax = 600000;
+            npc.lifeMax = 640000;
             npc.value = Item.sellPrice(0, 40, 0, 0);
             npc.knockBackResist = 0f;
             npc.boss = true;

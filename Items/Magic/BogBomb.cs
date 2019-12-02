@@ -6,13 +6,13 @@ namespace AAMod.Items.Magic        //We need this to basically indicate the fold
     {
         public override void SetDefaults()
         {
-            item.damage = 20; //Projectile Damage
+            item.damage = 90; //Projectile Damage
             item.magic = true; //It's a magic tome
             item.mana = 12; //It will use that much
             item.width = 8;
             item.height = 8;
-            item.useTime = 20;
-            item.useAnimation = 20;
+            item.useTime = 40;
+            item.useAnimation = 40;
             item.useStyle = 5;
             item.noMelee = true; //Why would you hit anyone with a book?
             item.knockBack = 4;

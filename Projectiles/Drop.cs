@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Projectiles
+namespace AAmod.Projectiles
 {
 
     public class Drop : ModProjectile
@@ -23,14 +23,24 @@ namespace AAMod.Projectiles
             projectile.ignoreWater = true;
             projectile.damage = 10;
             projectile.scale = 1f;
+            projectile.usesIDStaticNPCImmunity = false;
+            projectile.usesLocalNPCImmunity = true;
+        }
+
+        private const int AI_Timer_Slot = 1;
+
+        public float AI_Timer
+        {
+            get => projectile.ai[AI_Timer_Slot];
+            set => projectile.ai[AI_Timer_Slot] = value;
         }
 
         public override void AI()
         {
-            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
-            if (Main.rand.Next(3) == 0)
+            projectile.rotation = ((float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f) + ((float)System.Math.PI);
+            if (Main.rand.Next(12) == 0)
             {
-                Dust.NewDust(projectile.position, projectile.width, projectile.height, 72, projectile.velocity.X * 0.25f, projectile.velocity.Y * 0.25f, 150, default, 0.7f);
+                Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("AbyssDust"), projectile.velocity.X * 0.25f, projectile.velocity.Y * 0.25f, 150, default, 0.7f);
             }
 
             projectile.velocity.Y = projectile.velocity.Y + 0.08f;
@@ -48,5 +58,11 @@ namespace AAMod.Projectiles
         {
             Main.PlaySound(SoundID.NPCHit3, projectile.position);
         }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit) // Want some Venom?
+        {
+        //target.AddBuff(BuffID.Venom, 180);
+        }
+
     }
 }
