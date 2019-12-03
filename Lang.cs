@@ -203,6 +203,39 @@ namespace AAMod
             return"";
         }
 
+        public static string Hotkey(string key)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+                {
+                    switch(key)
+                    {
+                        case "Rifthotkey":
+                        return "Rift Home";
+                        case "RiftReturnhotkey":
+                        return "Rift Back";
+                        case "AccessoryAbilityKey":
+                        return "AA Accessory Ability";
+                        case "ArmorAbilityKey":
+                        return "AA Armor Ability";
+                    }
+                }
+            else
+                {
+                    switch(key)
+                    {
+                        case "Rifthotkey":
+                        return "裂位回家";
+                        case "RiftReturnhotkey":
+                        return "裂位返程";
+                        case "AccessoryAbilityKey":
+                        return "远古觉醒饰品能力";
+                        case "ArmorAbilityKey":
+                        return "远古觉醒套装能力";
+                    }
+                }
+            return"";
+        }
+
         public static string GlobalNPCSInfo(string NPCsummon)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)

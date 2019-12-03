@@ -277,11 +277,11 @@ namespace AAMod
             GameShaders.Armor.BindShader(ItemType("AbyssalWrathDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorHades").UseColor(146f / 255f, 30f / 255f, 68f / 255f).UseSecondaryColor(105f / 255f, 20f / 255f, 50f / 255f));
             GameShaders.Armor.BindShader(ItemType("BlazingFuryDye"), new ArmorShaderData(Main.PixelShaderRef, "ArmorHades")).UseColor(Color.SkyBlue.R / 255f, Color.SkyBlue.G / 255f, Color.SkyBlue.B / 255f).UseSecondaryColor(Color.DeepSkyBlue.R / 255f, Color.DeepSkyBlue.G / 255f, Color.DeepSkyBlue.B / 255f);
 
-            Rift = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.Rifthotkey"), "C");
-            RiftReturn = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.RiftReturnhotkey"), "X");
+            Rift = RegisterHotKey(Lang.Hotkey("Rifthotkey"), "C");
+            RiftReturn = RegisterHotKey(Lang.Hotkey("RiftReturnhotkey"), "X");
 
-            AccessoryAbilityKey = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.AccessoryAbilityKey"), "U");
-            ArmorAbilityKey = RegisterHotKey(Language.GetTextValue("Mods.AAMod.Common.ArmorAbilityKey"), "Y");
+            AccessoryAbilityKey = RegisterHotKey(Lang.Hotkey("AccessoryAbilityKey"), "U");
+            ArmorAbilityKey = RegisterHotKey(Lang.Hotkey("ArmorAbilityKey"), "Y");
 
             if (!Main.dedServ)
             {
