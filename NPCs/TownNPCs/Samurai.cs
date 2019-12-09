@@ -170,6 +170,12 @@ namespace AAMod.NPCs.TownNPCs
                     nextSlot++;
                 }
             }
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Potions.LuckyCracker>());
+            shop.item[nextSlot].value = 2000000;
+			nextSlot++;
+            shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Potions.RoninPotion>());
+            shop.item[nextSlot].value = 50000;
+			nextSlot++;
 			shop.item[nextSlot].SetDefaults(ItemID.Sake);
 			nextSlot++;
 			shop.item[nextSlot].SetDefaults(ItemID.Pho);

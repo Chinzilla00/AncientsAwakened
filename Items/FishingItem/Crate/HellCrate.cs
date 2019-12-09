@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 
-namespace AAMod.Items.Usable
+namespace AAMod.Items.FishingItem.Crate
 {
-    public class MireCrate : BaseAAItem
+    public class HellCrate : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -17,12 +17,12 @@ namespace AAMod.Items.Usable
             item.useStyle = 1;
             item.consumable = true;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.createTile = mod.TileType("MireCrate");
+            item.createTile = mod.TileType("HellCrate");
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mire Crate");
+            DisplayName.SetDefault("Hell Crate");
             Tooltip.SetDefault("Right click to open");
         }
 
@@ -33,36 +33,42 @@ namespace AAMod.Items.Usable
 
         public override void RightClick(Player player)
         {
-            if (Main.rand.Next(6) == 0)
+            if(Main.rand.Next(3) == 0)
             {
-                int item = Main.rand.Next(3);
+                int item = Main.rand.Next(4);
 
+                if (Main.rand.Next(50) == 1)
+                {
+                    item = ItemID.Drax;
+                    goto skipitem;
+                }
                 switch (item)
                 {
                     case 0:
-                        item = mod.ItemType("HydrasSpear");
+                        item = ItemID.DarkLance;
                         break;
                     case 1:
-                        item = mod.ItemType("HydraTrishot");
+                        item = ItemID.HellwingBow;
                         break;
-
+                    case 2:
+                        item = ItemID.FlowerofFire;
+                        break;
                     default:
-                        item = mod.ItemType("VenomSpray");
+                        item = ItemID.Sunfury;
                         break;
                 }
+                skipitem:
 
                 int index = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item, 1, false, -1, false, false);
-                int index1 = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("AbyssiumBar"), Main.rand.Next(0, 12));
 
                 if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
                     NetMessage.SendData(21, -1, -1, null, index, 1f, 0f, 0f, 0, 0, 0);
-                    NetMessage.SendData(21, -1, -1, null, index1, 1f, 0f, 0f, 0, 0, 0);
                 }
             }
-
+            
             //bypass all checks and spawn defaults
-            AAModGlobalItem.OpenAACrate(player, 1);
+            player.openCrate(4000);
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 
-namespace AAMod.Items.Usable
+namespace AAMod.Items.FishingItem.Crate
 {
-    public class DesertCrate : BaseAAItem
+    public class IceCrate : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -17,12 +17,12 @@ namespace AAMod.Items.Usable
             item.useStyle = 1;
             item.consumable = true;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.createTile = mod.TileType("DesertCrate");
+            item.createTile = mod.TileType("IceCrate");
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Desert Crate");
+            DisplayName.SetDefault("Ice Crate");
             Tooltip.SetDefault("Right click to open");
         }
 
@@ -35,26 +35,37 @@ namespace AAMod.Items.Usable
         {
             if(Main.rand.Next(3) == 0)
             {
-                int item = Main.rand.Next(4);
+                int item = Main.rand.Next(8);
 
                 switch (item)
                 {
                     case 0:
-                        item = ItemID.FlyingCarpet;
+                        item = ItemID.BlizzardinaBottle;
                         break;
                     case 1:
-                        item = ItemID.SandstorminaBottle;
+                        item = ItemID.IceBoomerang;
+                        break;
+                    case 2:
+                        item = ItemID.IceBlade;
+                        break;
+                    case 3:
+                        item = ItemID.IceSkates;
+                        break;
+                    case 4:
+                        item = ItemID.SnowballCannon;
+                        break;
+                    case 5:
+                        item = ItemID.FlurryBoots;
+                        break;
+                    case 6:
+                        item = ItemID.IceMirror;
                         break;
                     default:
-                        item = ItemID.PharaohsMask;
+                        item = ItemID.Fish;
                         break;
                 }
 
                 int index = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item, 1, false, -1, false, false);
-                if (item == ItemID.PharaohsMask)
-                {
-                    Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, ItemID.PharaohsRobe, 1, false, -1, false, false);
-                }
 
                 if (Main.netMode == NetmodeID.MultiplayerClient)
                 {

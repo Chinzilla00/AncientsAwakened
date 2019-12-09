@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 
-namespace AAMod.Items.Melee
+namespace AAMod.Items.FishingItem
 {
     public class SwimmingHydra : BaseAAItem
 	{

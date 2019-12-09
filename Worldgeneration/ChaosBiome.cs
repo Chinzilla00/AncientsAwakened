@@ -810,6 +810,12 @@ namespace AAMod.Worldgeneration
                 ItemID.LuckyCoin,
             };
 
+            int[] Loot2 = new int[]
+            {
+                ModContent.ItemType<Items.Armor.AncientGold.AncientGoldBody>(),
+                ModContent.ItemType<Items.Armor.AncientGold.AncientGoldLeg>(),
+            };
+
             if (PlacementSuccess >= 0)
             {
                 Chest chest = Main.chest[PlacementSuccess];
@@ -828,6 +834,10 @@ namespace AAMod.Worldgeneration
                 else if (specialItem == 3)
                 {
                     type = ModContent.ItemType<Items.Misc.AnubisBook>();
+                }
+                else if (genRand0.Next(100) < 2f)
+                {
+                    type = Utils.Next(genRand0, Loot2);
                 }
                 else
                 {

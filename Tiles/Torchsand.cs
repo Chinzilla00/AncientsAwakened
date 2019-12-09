@@ -16,6 +16,7 @@ namespace AAMod.Tiles
             Main.tileMergeDirt[Type] = true;
             Main.tileBlendAll[Type] = true;
             Main.tileBlockLight[Type] = true;
+            Main.tileSand[Type] = true;
             drop = mod.ItemType("Torchsand");
             soundStyle = 18;
             AddMapEntry(new Color(50, 35, 22));

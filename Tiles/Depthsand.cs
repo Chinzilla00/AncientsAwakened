@@ -13,6 +13,7 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
             Main.tileMergeDirt[Type] = true;
+            Main.tileSand[Type] = true;
             drop = mod.ItemType("Depthsand");
             Main.tileBlendAll[Type] = true;
             Main.tileBlockLight[Type] = true;

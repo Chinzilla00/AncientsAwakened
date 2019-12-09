@@ -2081,7 +2081,7 @@ ItemTooltip.SunStaff=向你的敌人降下燎炎和怒火\n造成破晓
 ItemName.SunStorm=燎焰风暴
 
 ItemName.TaiyangBaolei=太阳堡垒
-ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n你的近战和魔法攻击对敌人造成灼伤\n白天,增加5%伤害减免你的近战和魔法攻击造成破晓来代替着火\n(译者注：绝了,这个装备的英文原名就是taiyangbaolei)
+ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n你的近战和魔法攻击对敌人造成灼伤\n白天,增加5%伤害减免\n你的近战和魔法攻击造成破晓来代替着火\n(译者注：绝了,这个装备的英文原名就是taiyangbaolei)
 
 ItemName.YOTD=龙年大吉
 ItemTooltip.YOTD=发射绚烂的烟花吸引同伴驱赶敌人\n“邪鬼巨龙牌安全烟花,朝脸发射也没伤害!文明放烟花,安全你我他!”
@@ -3450,8 +3450,8 @@ ItemName.RelicBar=古遗锭
 ItemName.RoyalRabbit=王冠兔兔
 ItemTooltip.RoyalRabbit=在一个突袭惩罚者的直接保护下
 
-ItemName.ShinyCharm=闪耀魔力
-ItemTooltip.ShinyCharm=可以让你的某些武器闪耀化的神奇魔法
+ItemName.ShinyCharm=闪耀魔饰
+ItemTooltip.ShinyCharm=可以让你的某些武器闪耀化的稀有坠饰
 
 ItemName.SnowMana=冰霜魔力
 
@@ -6088,6 +6088,8 @@ Common.AATownNPC=远古觉醒城镇NPC生成禁止
 Common.AATownNPCInfo=取消远古觉醒NPC的生成, 用于玩家希望其他npc能更快刷新. 注释: 这个不会影响阿努比斯的生成, 因为他是游戏流程的关键.
 Common.DisableBossDialogue=远古觉醒Boss对话取消
 Common.DisableBossDialogueInfo=阻止Boss对话的生成. 也会让已有的Boss对话速度加快.
+Common.AAStyleMainPage=AA风格主菜单禁止
+Common.AAStyleMainPageInfo=取消AA风格的主菜单, 改回原版主题
 
 //AAPlayerChat
 

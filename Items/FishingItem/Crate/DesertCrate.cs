@@ -1,9 +1,9 @@
 ﻿using Terraria;
 using Terraria.ID;
 
-namespace AAMod.Items.Usable
+namespace AAMod.Items.FishingItem.Crate
 {
-    public class HellCrate : BaseAAItem
+    public class DesertCrate : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -17,12 +17,12 @@ namespace AAMod.Items.Usable
             item.useStyle = 1;
             item.consumable = true;
             item.value = Item.sellPrice(0, 1, 0, 0);
-            item.createTile = mod.TileType("HellCrate");
+            item.createTile = mod.TileType("DesertCrate");
         }
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hell Crate");
+            DisplayName.SetDefault("Desert Crate");
             Tooltip.SetDefault("Right click to open");
         }
 
@@ -37,29 +37,24 @@ namespace AAMod.Items.Usable
             {
                 int item = Main.rand.Next(4);
 
-                if (Main.rand.Next(50) == 1)
-                {
-                    item = ItemID.Drax;
-                    goto skipitem;
-                }
                 switch (item)
                 {
                     case 0:
-                        item = ItemID.DarkLance;
+                        item = ItemID.FlyingCarpet;
                         break;
                     case 1:
-                        item = ItemID.HellwingBow;
-                        break;
-                    case 2:
-                        item = ItemID.FlowerofFire;
+                        item = ItemID.SandstorminaBottle;
                         break;
                     default:
-                        item = ItemID.Sunfury;
+                        item = ItemID.PharaohsMask;
                         break;
                 }
-                skipitem:
 
                 int index = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item, 1, false, -1, false, false);
+                if (item == ItemID.PharaohsMask)
+                {
+                    Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, ItemID.PharaohsRobe, 1, false, -1, false, false);
+                }
 
                 if (Main.netMode == NetmodeID.MultiplayerClient)
                 {
