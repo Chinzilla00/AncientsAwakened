@@ -9,6 +9,7 @@ namespace AAMod.Items.Potions
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Ronin Potion");
+			Tooltip.SetDefault("When you don't get hurt, you will have 3s immune time");
 		}
 		
 		public override void SetDefaults()

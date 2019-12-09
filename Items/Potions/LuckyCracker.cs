@@ -8,7 +8,7 @@ namespace AAMod.Items.Potions
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Lucky Cracker");
-			Tooltip.SetDefault("She said this can make you lucky. Do you trust her?");
+			Tooltip.SetDefault("She said it can make you lucky. Do you trust her?");
 		}
 		
 		public override void SetDefaults()

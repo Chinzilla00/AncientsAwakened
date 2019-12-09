@@ -51,6 +51,9 @@ BuffDescription.ChaosWrath=伤痛只会让你更强
 BuffName.CursedHellfire=诅咒狱炎
 BuffDescription.CursedHellfire=你的血肉在烧灼中消散
 
+BuffName.CrasyLucky=好运？
+BuffDescription.CrasyLucky=你对这个世界开始感到陌生
+
 BuffName.CyberClaw=电子之爪
 BuffDescription.CyberClaw=召唤电子之爪为你而战
 
@@ -214,6 +217,9 @@ BuffDescription.ReaperCD=你现在不能用这个武器的冲刺技能
 
 BuffName.RealityBent=弯曲裂位
 BuffDescription.RealityBent=你周围的空间被扭曲了
+
+BuffName.Ronin=浪人
+BuffDescription.Ronin=你不会受到任何伤害
 
 BuffName.RoyalKitten=皇族小猫
 BuffDescription.RoyalKitten=“真漂亮!”
@@ -460,6 +466,16 @@ ItemName.AbyssalHakama=沉渊袴裤
 ItemTooltip.AbyssalHakama=增加30%移动速度\n如暗影般没有质量
 
 Common.AbyssalBonus=你的远程攻击造成九头蛇毒\n减少20%弹药消耗\n敌人减少瞄准你的可能性
+
+// AAMod.Items.Armor.AncientGold
+
+ItemName.AncientGoldBody=远古金链甲
+ItemTooltip.AncientGoldBody=你有可能从石头里挖出金币
+
+ItemName.AncientGoldLeg=远古金护胫
+ItemTooltip.AncientGoldLeg=你有更多机会遇到金生物
+
+Common.AncientGoldSetBonus=如果你有足够多的钱，那么你会以丢失所有钱的代价挡住一次攻击
 
 // AAMod.Items.Armor.Assassin
 
@@ -1135,6 +1151,21 @@ ItemTooltip.StarcrystalHelm=+20魔法上限
 ItemName.StarcrystalPlate=星晶护胸
 ItemTooltip.StarcrystalPlate=+20魔法上限
 
+// AAMod.Items.Armor.StripeMan
+
+ItemName.StripeManHat=幸运条纹人帽
+ItemTooltip.StripeManHat=穿戴提供光照\n获得建筑师发明背包的效果\n你可以从石头里挖出矿\n你可以把任何沙子放进提炼机中
+
+ItemName.StripeManShirt=幸运条纹人衫
+ItemTooltip.StripeManShirt=获取所有信息\n你可以从石头里挖出金币\n你有更高的可能性遇到稀有生物\n从罐子中你有可能获得更好的东西\n如果你有足够多的钱，那么你会以丢失所有钱的代价挡住一次攻击\n获得北极潜水头盔的效果
+
+ItemName.StripeManPants=幸运条纹人裤
+ItemTooltip.StripeManPants=获得所有钓鱼必备技能\n一钩抓两鱼\n额外一抓有更多机会获得板条箱
+
+Common.StripeManSetBonus1=你改变了大自然的随机性规则\n你会成为一个幸运儿? 亦或是一个倒霉蛋\n按下套装能力键改变世界的随机系统:
+Common.StripeManSetBonusactive=已激活
+Common.StripeManSetBonusunactive=未激活
+Common.StripeManSetBonus2="那人已经与我们相似，能知道善恶。\n现在恐怕他伸手又摘生命树的果子吃，就永远活着。"
 
 // AAMod.Items.Armor.Technecium
 
@@ -3910,6 +3941,12 @@ ItemTooltip.Seashroom=闻起来像鱼的味道
 ItemName.Carrot=胡萝卜
 ItemTooltip.Carrot=对你的视力好
 
+ItemName.LuckyCracker=幸运薄饼
+ItemTooltip.LuckyCracker=她说这东西能让你运气变好，你信她的话吗？
+
+ItemName.RoninPotion=浪人药剂
+ItemTooltip.RoninPotion=你满血时获得3秒无敌时间
+
 ItemName.DragonfireFlask=燎狱龙炎烧瓶
 ItemTooltip.DragonfireFlask=近战攻击造成龙炎
 
@@ -3921,6 +3958,69 @@ ItemName.HydratoxinFlask=九头蛇毒烧瓶
 ItemTooltip.HydratoxinFlask=近战攻击造成九头蛇毒
 
 ItemName.TheBigOne=大.药.瓶
+
+// AAMod.Items.Potions.LuckyPotions
+
+ItemName.luckycalmingpotion=幸运镇静药剂
+ItemTooltip.luckycalmingpotion=降低敌人的攻击性
+
+BuffName.luckycalming=镇静
+BuffDescription.luckycalming=降低敌人的攻击性
+
+ItemName.luckyendurancepotion=幸运忍耐药剂
+ItemTooltip.luckyendurancepotion=减少10%受到的伤害\n增加10%防御力
+
+BuffName.luckyendurance=忍耐
+BuffDescription.luckyendurance=提升你的耐力
+
+ItemName.luckyironskinpotion=幸运铁皮药剂
+ItemTooltip.luckyironskinpotion=增加9防御力
+
+BuffName.luckyironskin=钢化皮肤
+BuffDescription.luckyironskin=增加9防御力
+
+ItemName.luckylifeforcepotion=幸运生命力药剂
+ItemTooltip.luckylifeforcepotion=增加21%生命上限
+
+BuffName.luckylifeforce=生命之力
+BuffDescription.luckylifeforce=增加21%生命上限
+
+ItemName.luckyragepotion=幸运暴怒药剂
+ItemTooltip.luckyragepotion=增加11%暴击率
+
+BuffName.luckyrage=暴怒
+BuffDescription.luckyrage=增加11%暴击率
+
+ItemName.luckyregenerationpotion=幸运再生药剂
+ItemTooltip.luckyregenerationpotion=提供生命再生
+
+BuffName.luckyregeneration=再生
+BuffDescription.luckyregeneration=提供生命再生
+
+ItemName.luckysummoningpotion=幸运召唤药剂
+ItemTooltip.luckysummoningpotion=提升你哨兵和召唤物上限
+
+BuffName.luckysummoning=召唤术
+BuffDescription.luckysummoning=提升你哨兵和召唤物上限
+
+ItemName.luckyswiftnesspotion=幸运敏捷药剂
+ItemTooltip.luckyswiftnesspotion=提升26%移动速度
+
+BuffName.luckyswiftness=敏捷
+BuffDescription.luckyswiftness=提升26%移动速度
+
+ItemName.luckythornspotion=幸运荆棘药剂
+ItemTooltip.luckythornspotion=攻击者受到反伤
+
+BuffName.luckythorns=荆棘
+BuffDescription.luckythorns=攻击者受到反伤
+
+ItemName.luckywrathpotion=幸运怒气药剂
+ItemTooltip.luckywrathpotion=增加11%伤害
+
+BuffName.luckywrath=怒气
+BuffDescription.luckywrath=增加11%伤害
+
 
 
 // AAMod.Items.Ranged.Ammo

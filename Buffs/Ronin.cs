@@ -8,7 +8,7 @@ namespace AAMod.Buffs
         public override void SetDefaults()
         {
             DisplayName.SetDefault("Ronin");
-            Description.SetDefault("You can't be hit");
+            Description.SetDefault("You wont take any damage");
             Main.debuff[Type] = false;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoSave[Type] = false;
