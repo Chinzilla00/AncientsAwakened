@@ -113,6 +113,14 @@ namespace AAMod
                 return false;
             }
 
+            if (type == 28)
+            {
+                if(Main.player[Main.myPlayer].GetModPlayer<AAPlayer>().StripeManSpawn)
+                {
+                    PotsDropMethod(i, j);
+                }
+            }
+
             return base.Drop(i, j, type);
         }
 
@@ -163,6 +171,26 @@ namespace AAMod
             }
 
             return base.CanKillTile(i, j, type, ref blockDamaged);
+        }
+
+        public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
+        {
+            if (Main.player[Main.myPlayer].GetModPlayer<AAPlayer>().StripeManOre)
+            {
+                if(TileID.Sets.Conversion.Stone[type])
+                {
+                    int k = DropOreMethod(i, j, type);
+                    if(k != 0) Item.NewItem(i * 16, j * 16, 32, 32, k, 1, false, 0, false, false);
+                }
+            }
+
+            if (Main.player[Main.myPlayer].GetModPlayer<AAPlayer>().AncientGoldBody)
+            {
+                if(TileID.Sets.Conversion.Stone[type] && Main.rand.Next(50) == 0)
+                {
+                    Item.NewItem(i * 16, j * 16, 32, 32, ItemID.GoldCoin, 1, false, 0, false, false);
+                }
+            }
         }
 
         public override bool CanExplode(int i, int j, int type)
@@ -226,6 +254,490 @@ namespace AAMod
             }
 
             return false;
+        }
+
+        public static void PotsDropMethod(int i, int j)
+        {
+            int itemcreat = 0;
+            if (WorldGen.genRand.Next(30) == 0 || (Main.rand.Next(30) == 0 && Main.expertMode))
+            {
+                if (WorldGen.genRand.Next(20) == 0)
+                {
+                    int rand = WorldGen.genRand.Next(100);
+                    if (rand == 0)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 678, 1, false, 0, false, false);
+                    }
+                    else
+                    {
+                        int rand2 = WorldGen.genRand.Next(3);
+                        if(rand2 == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2352, 1, false, 0, false, false);
+                        }
+                        if(rand2 == 1)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2353, 1, false, 0, false, false);
+                        }
+                        if(rand2 == 2)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2756, 1, false, 0, false, false);
+                        }
+                    }
+                }
+                if(Main.rand.Next(1000) == 0)
+                {
+                    int k = Config.LuckyOre.Keys.Count;
+                    foreach (int itempotion in Config.LuckyPotion.Keys)
+			        {
+                        if(Main.rand.Next(k) == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, itempotion, 1, false, 0, false, false);
+                            break;
+                        }
+                        k -= 1;
+                    }
+                }
+                else if (Main.tile[i, j].liquid > 0)
+                {
+                    int rand = WorldGen.genRand.Next(3);
+                    if (rand == 0)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2354, 1, false, 0, false, false);
+                    }
+                    if (rand == 1)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2355, 1, false, 0, false, false);
+                    }
+                    if (rand >= 2)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2356, 1, false, 0, false, false);
+                    }
+                }
+                else if ((double)j < Main.worldSurface)
+                {
+                    int rand = WorldGen.genRand.Next(12);
+                    if (rand == 0)
+                    {
+                        if(Main.rand.Next(100) == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckyironskinpotion"), 1, false, 0, false, false);
+                        }
+                        else
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 292, 1, false, 0, false, false);
+                        }
+                    }
+                    if (rand == 1)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 298, 1, false, 0, false, false);
+                    }
+                    if (rand == 2)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 299, 1, false, 0, false, false);
+                    }
+                    if (rand == 3)
+                    {
+                        if(Main.Next(100) == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckyswiftnesspotion"), 1, false, 0, false, false);
+                        }
+                        else
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 290, 1, false, 0, false, false);
+                        }
+                    }
+                    if (rand == 4)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2322, 1, false, 0, false, false);
+                    }
+                    if (rand == 5)
+                    {
+                        if(Main.rand.Next(100) == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckycalmingpotion"), 1, false, 0, false, false);
+                        }
+                        else
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2324, 1, false, 0, false, false);
+                        }
+                    }
+                    if (rand == 6)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2325, 1, false, 0, false, false);
+                    }
+                    if (rand == 7 || rand == 8)
+                    {
+                        if(Main.Next(100) == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckywrathpotion"), 1, false, 0, false, false);
+                        }
+                        else
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2349, 1, false, 0, false, false);
+                        }
+                    }
+                    if (rand >= 9)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2350, 1, false, 0, false, false);
+                    }
+                }
+                else if ((double)j < Main.rockLayer)
+                {
+                    if (Main.player[Main.myPlayer].ZoneJungle)
+                    {
+                        int rand2 = WorldGen.genRand.Next(3);
+                        if (rand2 == 0)
+                        {
+                            if(Main.rand.Next(100) == 0)
+                            {
+                                itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckysummoningpotion"), 1, false, 0, false, false);
+                            }
+                            else
+                            {
+                                itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2328, 1, false, 0, false, false);
+                            }
+                        }
+                        else
+                        {
+                            if(Main.Next(100) == 0)
+                            {
+                                itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckythornspotion"), 1, false, 0, false, false);
+                            }
+                            else
+                            {
+                                itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 301, 1, false, 0, false, false);
+                            }
+                        }
+                    }
+                    else if (Main.player[Main.myPlayer].ZoneSnow)
+                    {
+                        if (WorldGen.genRand.Next(2) == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2359, 1, false, 0, false, false);
+                        }
+                    }
+                    int rand = WorldGen.genRand.Next(12);
+                    if (rand == 0)
+                    {
+                        if(Main.rand.Next(100) == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckyregeneration"), 1, false, 0, false, false);
+                        }
+                        else
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 289, 1, false, 0, false, false);
+                        }
+                    }
+                    if (rand == 1)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 298, 1, false, 0, false, false);
+                    }
+                    if (rand == 2)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 299, 1, false, 0, false, false);
+                    }
+                    if (rand == 3)
+                    {
+                        if(Main.rand.Next(100) == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckyswiftnesspotion"), 1, false, 0, false, false);
+                        }
+                        else
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 290, 1, false, 0, false, false);
+                        }
+                    }
+                    if (rand == 4)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 303, 1, false, 0, false, false);
+                    }
+                    if (rand == 5)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 291, 1, false, 0, false, false);
+                    }
+                    if (rand == 6)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 304, 1, false, 0, false, false);
+                    }
+                    if (rand == 7)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2322, 1, false, 0, false, false);
+                    }
+                    if (rand == 8)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2329, 1, false, 0, false, false);
+                    }
+                    if (rand == 9)
+                    {
+                        if(Main.rand.Next(100) == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckyendurancepotion"), 1, false, 0, false, false);
+                        }
+                        else
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2346, 1, false, 0, false, false);
+                        }
+                    }
+                    if (rand >= 10)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2350, 1, false, 0, false, false);
+                    }
+                }
+                else if (j < Main.maxTilesY - 200)
+                {
+                    int rand = WorldGen.genRand.Next(15);
+                    if (rand == 0)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 296, 1, false, 0, false, false);
+                    }
+                    if (rand == 1)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 295, 1, false, 0, false, false);
+                    }
+                    if (rand == 2)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 299, 1, false, 0, false, false);
+                    }
+                    if (rand == 3)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 302, 1, false, 0, false, false);
+                    }
+                    if (rand == 4)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 303, 1, false, 0, false, false);
+                    }
+                    if (rand == 5)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 305, 1, false, 0, false, false);
+                    }
+                    if (rand == 6)
+                    {
+                        if(Main.rand.Next(100) == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckythornspotion"), 1, false, 0, false, false);
+                        }
+                        else
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 301, 1, false, 0, false, false);
+                        }
+                    }
+                    if (rand == 7)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 302, 1, false, 0, false, false);
+                    }
+                    if (rand == 8)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 297, 1, false, 0, false, false);
+                    }
+                    if (rand == 9)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 304, 1, false, 0, false, false);
+                    }
+                    if (rand == 10)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2322, 1, false, 0, false, false);
+                    }
+                    if (rand == 11)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2323, 1, false, 0, false, false);
+                    }
+                    if (rand == 12)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2327, 1, false, 0, false, false);
+                    }
+                    if (rand == 13)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2329, 1, false, 0, false, false);
+                    }
+                    if (rand == 14)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2350, 1, false, 0, false, false);
+                    }
+                }
+                else
+                {
+                    int rand = WorldGen.genRand.Next(16);
+                    if (rand == 0)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 296, 1, false, 0, false, false);
+                    }
+                    if (rand == 1)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 295, 1, false, 0, false, false);
+                    }
+                    if (rand == 2)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 293, 1, false, 0, false, false);
+                    }
+                    if (rand == 3)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 288, 1, false, 0, false, false);
+                    }
+                    if (rand == 4)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 294, 1, false, 0, false, false);
+                    }
+                    if (rand == 5)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 297, 1, false, 0, false, false);
+                    }
+                    if (rand == 6)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 304, 1, false, 0, false, false);
+                    }
+                    if (rand == 7)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 305, 1, false, 0, false, false);
+                    }
+                    if (rand == 8)
+                    {
+                        if(Main.rand.Next(100) == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckythornspotion"), 1, false, 0, false, false);
+                        }
+                        else
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 301, 1, false, 0, false, false);
+                        }
+                    }
+                    if (rand == 9)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 302, 1, false, 0, false, false);
+                    }
+                    if (rand == 10)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 288, 1, false, 0, false, false);
+                    }
+                    if (rand == 11)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 300, 1, false, 0, false, false);
+                    }
+                    if (rand == 12)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2323, 1, false, 0, false, false);
+                    }
+                    if (rand == 13)
+                    {
+                        itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2326, 1, false, 0, false, false);
+                    }
+                    if (rand == 14)
+                    {
+                        if(Main.rand.Next(100) == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckyragepotion"), 1, false, 0, false, false);
+                        }
+                        else
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2347, 1, false, 0, false, false);
+                        }
+                    }
+                    if (rand == 15)
+                    {
+                        if(Main.rand.Next(5) == 0)
+                        {
+                            if(Main.rand.Next(100) == 0)
+                            {
+                                itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckylifeforcepotion"), 1, false, 0, false, false);
+                            }
+                            else
+                            {
+                                itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2345, 1, false, 0, false, false);
+                            }
+                        }
+                        else if (Main.rand.Next(2) == 0)
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2326, 1, false, 0, false, false);
+                        }
+                        else
+                        {
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2323, 1, false, 0, false, false);
+                        }
+                    }
+                }
+            }
+            if (Main.netMode == 1 && itemcreat > 0)
+            {
+                NetMessage.SendData(21, -1, -1, null, itemcreat, 1f, 0f, 0f, 0, 0, 0);
+            }
+        }
+
+        public static int DropOreMethod(int x, int y, int type)
+        {
+            float ChanceBalance = 1;
+            int SecondDrop = Config.LuckyOre.Keys.Count;
+            foreach (int itemtype in Config.LuckyOre.Keys)
+			{
+				float chance = Config.LuckyOre[itemtype];
+                chance -= Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem].pick;
+                chance = chance/ChanceBalance * 100f;
+                if(chance < 100 && !(itemtype == ItemID.DemoniteOre || itemtype == ItemID.CrimtaneOre || itemtype == mod.ItemType("Abyssium") || itemtype == mod.ItemType("Incinerite") || itemtype == mod.ItemType("Apocalyptite")))
+                {
+                    if(Utils.NextFloat(Main.rand, SecondDrop) < 1)
+                    {
+                        int itemcreat = Item.NewItem(x * 16, y * 16, 32, 32, itemtype, 1, false, 0, false, false);
+                        if (Main.netMode == 1)
+                        {
+                            NetMessage.SendData(21, -1, -1, null, itemcreat, 1f, 0f, 0f, 0, 0, 0);
+                        }
+                    }
+                    SecondDrop -= 1;
+                    continue;
+                }
+                else if(itemtype == ItemID.DemoniteOre || itemtype == ItemID.CrimtaneOre)
+                {
+                    if(Utils.NextFloat(Main.rand, chance) < 1 && (type == TileID.Crimstone || type == TileID.Ebonstone))
+                    {
+                        return itemtype;
+                    }
+                }
+                else if(itemtype == mod.ItemType("Abyssium"))
+                {
+                    if(Utils.NextFloat(Main.rand, chance) < 1 && type == mod.TileType("Depthstone"))
+                    {
+                        return itemtype;
+                    }
+                }
+                else if(itemtype == mod.ItemType("Incinerite"))
+                {
+                    if(Utils.NextFloat(Main.rand, chance) < 1 && type == mod.TileType("Torchstone"))
+                    {
+                        return itemtype;
+                    }
+                }
+                else if(itemtype == mod.ItemType("Apocalyptite"))
+                {
+                    if(Utils.NextFloat(Main.rand, chance) < 1 && type == mod.TileType("Doomstone") && AAWorld.downedZero)
+                    {
+                        return itemtype;
+                    }
+                }
+                else if(!Main.hardMode)
+                {
+                    if(Config.LuckyOre[itemtype] <= 500)
+                    {
+                        if(Utils.NextFloat(Main.rand, chance) < 1)
+                        {
+                            return itemtype;
+                        }
+                    }
+                }
+                else
+                {
+                    chance /= 2 * (1 + (NPC.downedPlantBoss? 1 : 0) + (NPC.downedMoonlord? 1 : 0) + (AAWorld.downedEquinox? 1 : 0) + (AAWorld.downedShen? 1 : 0));
+                    int digcheck = 500 + (NPC.downedPlantBoss? 200 : 0) + (NPC.downedMoonlord? 110 : 0) + (AAWorld.downedEquinox? 20 : 0);
+                    bool flag = Config.LuckyOre[itemtype] <= digcheck;
+                    if(flag || AAWorld.downedShen)
+                    {
+                        if(Utils.NextFloat(Main.rand, chance) < 1)
+                        {
+                            return itemtype;
+                        }
+                    }
+                }
+                ChanceBalance = 1 - 1/chance;
+            }
+            return 0;
         }
     }
 }

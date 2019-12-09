@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 
-namespace AAMod.Items.Usable
+namespace AAMod.Items.FishingItem.Crate
 {
     public class InfernoCrate : BaseAAItem
     {

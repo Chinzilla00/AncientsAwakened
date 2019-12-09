@@ -116,6 +116,13 @@ namespace AAMod
         #endregion
 
         #region Armor bools.
+        public bool AncientGoldBody = false;
+        public bool AncientGoldLeg = false;
+        public bool AncientGoldSet = false;
+        public bool StripeManFish = false;
+        public bool StripeManOre = false;
+        public bool StripeManSpawn = false;
+        public bool StripeManSet = false;
         public bool MoonSet;
         public bool goblinSlayer;
         public bool IsGoblin;
@@ -216,7 +223,6 @@ namespace AAMod
 
         public bool GreedCharm;
         public bool GreedTalisman;
-
         public bool OldOneCharm = false;
         #endregion
 
@@ -251,10 +257,17 @@ namespace AAMod
         #endregion
 
         #region buffs
+
+        public bool Ronin = false;
         public bool Glitched = false;
         public bool Greed1 = false;
         public bool Greed2 = false;
         public float GreedyDamage = 0;
+
+        public bool luckycalm = false;
+        public bool luckythorns = false;
+        public bool StripeCrasyLucky = false;
+        public bool CrasyLucky = false;
         #endregion
 
         #region pets
@@ -325,6 +338,7 @@ namespace AAMod
             ResetMinionEffect();
             ResetArmorEffect();
             ResetAccessoryEffect();
+            ResetBuffEffect();
             ResetDebuffEffect();
             ResetPetsEffect();
 
@@ -438,6 +452,13 @@ namespace AAMod
             ChaosMa = false;
             ChaosSu = false;
             Olympian = false;
+            AncientGoldBody = false;
+            AncientGoldLeg = false;
+            AncientGoldSet = false;
+            StripeManFish = false;
+            StripeManOre = false;
+            StripeManSpawn = false;
+            StripeManSet = false;
         }
 
         private void ResetAccessoryEffect()
@@ -473,6 +494,14 @@ namespace AAMod
             Greed2 = false;
             olympianWings = false;
             OldOneCharm = false;
+        }
+
+        private void ResetBuffEffect()
+        {
+            Ronin = false;
+            luckycalm = false;
+            luckythorns = false;
+            CrasyLucky = false;
         }
 
         private void ResetDebuffEffect()
@@ -664,6 +693,20 @@ namespace AAMod
 			{
 				damage -= damage/5;
 			}
+
+            if(luckythorns)
+            {
+                if (player.whoAmI == Main.myPlayer && !player.immune && !npc.dontTakeDamage)
+                {
+                    int RDamage = (int)((float)npc.damage * player.allDamage * 0.433f);
+                    int direc = -1;
+                    if (npc.position.X + (float)(npc.width / 2) < player.position.X + (float)(player.width / 2))
+                    {
+                        direc = 1;
+                    }
+                    player.ApplyDamageToNPC(npc, RDamage, 10f, -direc, false);
+                }
+            }
 		}
 
         public override void OnHitNPC(Item item, NPC target, int damage, float knockback, bool crit)
@@ -818,6 +861,11 @@ namespace AAMod
                     caughtType = mod.ItemType("MireCrate");
                 }
 
+                if (liquidType == 0 && player.GetModPlayer<AAPlayer>().ZoneVoid)
+                {
+                    caughtType = mod.ItemType("VoidCrate");
+                }
+
                 if (liquidType == 0 && player.GetModPlayer<AAPlayer>().ZoneHoard)
                 {
                     caughtType = ItemID.GoldenCrate;
@@ -848,6 +896,11 @@ namespace AAMod
             {
                 caughtType = mod.ItemType("SwimmingHydra");
             }
+
+            if ((Main.rand.Next(3000) == 0 && liquidType == 0 && player.fishingSkill >= 100)|| (Main.rand.Next(1000) == 0 && player.accFishingLine && player.accTackleBox))
+            {
+                caughtType = mod.ItemType("ShinyCharmFish");
+            }
         }
 
         public int[] Charges = null;
@@ -861,6 +914,11 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (Ronin)
+            {
+                player.immune = true;
+                player.immuneTime = 60;
+            }
             if (olympianWings && player.dash < 1)
             {
                 if (player.velocity.Y != 0)
@@ -1254,6 +1312,93 @@ namespace AAMod
             {
                 BlackLotusQuickMana();
             }
+
+            if (player.controlQuickHeal && player.releaseQuickHeal)
+            {
+                SpecialQuickHeal();
+            }
+
+            if (StripeManSet)
+            {
+                if(AAMod.ArmorAbilityKey.JustPressed)
+                {
+                    StripeCrasyLucky = !StripeCrasyLucky;
+                }
+            }
+
+            if (StripeCrasyLucky || CrasyLucky)
+            {
+                if(StripeCrasyLucky) StripeCrasyLucky = true;
+                Main.rand = new AAFakeRand();
+            }
+            else
+            {
+                StripeCrasyLucky = false;
+                Main.rand = new UnifiedRandom();
+            }
+        }
+
+        public void SpecialQuickHeal()
+        {
+            if (player.noItems)
+			{
+				return;
+			}
+            Item item = player.QuickHeal_GetItemToUse();
+			if (item == null)
+			{
+				return;
+			}
+			if (player.statLife == player.statLifeMax2 || player.potionDelay > 0 || item != mod.ItemType("RoninPotion"))
+			{
+				return;
+			}
+			Main.PlaySound(item.UseSound, this.position);
+			if (item.potion)
+			{
+				if (item.type == 227)
+				{
+					player.potionDelay = player.restorationDelayTime;
+					player.AddBuff(21, player.potionDelay, true);
+				}
+				else
+				{
+					player.potionDelay = player.potionDelayTime;
+					player.AddBuff(21, player.potionDelay, true);
+				}
+			}
+			ItemLoader.UseItem(item, this);
+			player.statLife += item.healLife;
+			player.statMana += item.healMana;
+			if (player.statLife > player.statLifeMax2)
+			{
+				player.statLife = player.statLifeMax2;
+			}
+			if (player.statMana > player.statManaMax2)
+			{
+				player.statMana = player.statManaMax2;
+			}
+			if (item.healLife > 0 && Main.myPlayer == player.whoAmI)
+			{
+				player.HealEffect(item.healLife, true);
+			}
+			if (item.healMana > 0)
+			{
+				player.AddBuff(94, Player.manaSickTime, true);
+				if (Main.myPlayer == player.whoAmI)
+				{
+					player.ManaEffect(item.healMana);
+				}
+			}
+			if (ItemLoader.ConsumeItem(item, player))
+			{
+				item.stack--;
+			}
+			if (item.stack <= 0)
+			{
+				item.TurnToAir();
+			}
+			Recipe.FindRecipes();
         }
 
         public void BlackLotusQuickMana()
@@ -1320,6 +1465,7 @@ namespace AAMod
 				}
 			}
 		}
+
 
         public override void PostUpdateBuffs()
         {
@@ -2453,7 +2599,7 @@ namespace AAMod
                 if (AAMod.AccessoryAbilityKey.JustPressed && DD2Event.Ongoing && DD2Event.TimeLeftBetweenWaves > 0)
                 {
                     DD2Event.TimeLeftBetweenWaves = 60;
-                    if (Main.netMode == 1)
+                    if (Main.netMode != 0)
                     {
                         AANet.SendNetMessage(AANet.DD2EventTime, (byte)DD2Event.TimeLeftBetweenWaves);
                     }
@@ -2810,6 +2956,41 @@ namespace AAMod
 			{
 				return false;
 			}
+            if (Ronin)
+            {
+                return false;
+            }
+            if (AncientGoldSet)
+            {
+                if(player.BuyItemOld(damage * 10000))
+                {
+                    for (int i = 0; i < 54; i++)
+                    {
+                        if (player.inventory[i].type == 71)
+                        {
+                            player.inventory[i].stack = 0;
+                            player.inventory[i].TurnToAir();
+                        }
+                        if (player.inventory[i].type == 72)
+                        {
+                            player.inventory[i].stack = 0;
+                            player.inventory[i].TurnToAir();
+                        }
+                        if (player.inventory[i].type == 73)
+                        {
+                            player.inventory[i].stack = 0;
+                            player.inventory[i].TurnToAir();
+                        }
+                        if (player.inventory[i].type == 74)
+                        {
+                            player.inventory[i].stack = 0;
+                            player.inventory[i].TurnToAir();
+                        }
+                    }
+                    damage = 0;
+                    return false;
+                }
+            }
             return true;
         }
 

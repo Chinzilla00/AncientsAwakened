@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using System.Collections.Generic;
 using AAMod.Items.Boss.Akuma;
 using AAMod.Items.Boss.Grips;
 using AAMod.Items;
@@ -208,6 +209,71 @@ namespace AAMod
 
         }
 
+        public override void RightClick(Item item, Player player)
+		{
+            if(item.type == ItemID.GoldenCrate)
+            {
+                if(Main.rand.Next(20) == 0)
+                {
+                    switch(Main.rand.Next(20))
+                    {
+                        case 0:
+                            player.QuickSpawnItem(ItemID.AnglerEarring, 1);
+                            break;
+                        case 1:
+                            player.QuickSpawnItem(ItemID.HighTestFishingLine, 1);
+                            break;
+                        case 2:
+                            player.QuickSpawnItem(ItemID.TackleBox, 1);
+                            break;
+                        case 3:
+                            player.QuickSpawnItem(ItemID.AnglerHat, 1);
+                            break;
+                        case 4:
+                            player.QuickSpawnItem(ItemID.AnglerVest, 1);
+                            break;
+                        case 5:
+                            player.QuickSpawnItem(ItemID.AnglerPants, 1);
+                            break;
+                        case 6:
+                            player.QuickSpawnItem(ItemID.FishermansGuide, 1);
+                            break;
+                        case 7:
+                            player.QuickSpawnItem(ItemID.WeatherRadio, 1);
+                            break;
+                        case 8:
+                            player.QuickSpawnItem(ItemID.Sextant, 1);
+                            break;
+                        case 9:
+                            player.QuickSpawnItem(ItemID.GoldenFishingRod, 1);
+                            break;
+                        case 10:
+                            player.QuickSpawnItem(ItemID.GoldenBugNet, 1);
+                            break;
+                        case 11:
+                            player.QuickSpawnItem(ItemID.FishHook, 1);
+                            break;
+                        case 12:
+                            player.QuickSpawnItem(ItemID.FuzzyCarrot, 1);
+                            break;
+                        case 13:
+                            player.QuickSpawnItem(ItemID.FinWings, 1);
+                            break;
+                        case 14:
+                            player.QuickSpawnItem(ItemID.BottomlessBucket, 1);
+                            break;
+                        case 15:
+                            player.QuickSpawnItem(ItemID.SuperAbsorbantSponge, 1);
+                            break;
+                        default:
+                            player.QuickSpawnItem(ItemID.HotlineFishingHook, 1);
+                            break;
+
+                    }
+                }
+            }
+		}
+
         public override bool OnPickup(Item item, Player player)
         {
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
@@ -324,6 +390,709 @@ namespace AAMod
             }
             return true;
         }
+    }
+
+    public class ExtractinatorItem : GlobalItem
+    {
+        public override bool UseItem(Item item, Player player)
+		{
+            if(player.GetModPlayer<AAPlayer>().StripeManOre)
+            {
+                int tileTargetX = (int)(((float)Main.mouseX + Main.screenPosition.X) / 16f);
+				int tileTargetY = (int)(((float)Main.mouseY + Main.screenPosition.Y) / 16f);
+                if(Main.tile[tileTargetX, tileTargetY].active() && Main.tile[tileTargetX, tileTargetY].type == 219 && item.createTile > 0 && (Main.tileSand[item.createTile] || TileID.Sets.Conversion.Sand[item.createTile]))
+                {
+                    bool flag = player.position.X / 16f - (float)Player.tileRangeX - (float)player.inventory[player.selectedItem].tileBoost - (float)player.blockRange <= (float)Player.tileTargetX && (player.position.X + (float)player.width) / 16f + (float)Player.tileRangeX + (float)player.inventory[player.selectedItem].tileBoost - 1f + (float)player.blockRange >= (float)Player.tileTargetX && player.position.Y / 16f - (float)Player.tileRangeY - (float)player.inventory[player.selectedItem].tileBoost - (float)player.blockRange <= (float)Player.tileTargetY && (player.position.Y + (float)player.height) / 16f + (float)Player.tileRangeY + (float)player.inventory[player.selectedItem].tileBoost - 2f + (float)player.blockRange >= (float)Player.tileTargetY;
+                    if(flag && player.itemTime == 0 && player.itemAnimation > 0 && player.controlUseItem)
+                    {
+                        player.itemTime = (int)((float)player.inventory[player.selectedItem].useTime / PlayerHooks.TotalUseTimeMultiplier(player, player.inventory[player.selectedItem]));
+					    Main.PlaySound(7, -1, -1, 1, 1f, 0f);
+                        ExtractinatorUse2(item.type);
+                        if(player.GetModPlayer<AAPlayer>().StripeManSet)
+                        {
+                            if(Main.rand.Next(1000) == 0)
+                            {
+                                AAGlobalTile.DropOreMethod(tileTargetX, tileTargetY, mod.ItemType("Apocalyptite"));
+                            }
+                        }
+                        for (int i = 0; i < 58; i++)
+                        {
+                            if (player.inventory[i].type == item.type && player.inventory[i].stack > 0)
+                            {
+                                player.inventory[i].stack--;
+                                if (player.inventory[i].stack <= 0)
+                                {
+                                    player.inventory[i].SetDefaults(0, false);
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            
+			return false;
+		}
+        public void ExtractinatorUse2(int extractType)
+		{
+            int result = 0;
+            int stack = 1;
+            if(extractType == ItemID.EbonsandBlock)
+            {
+                if(Main.rand.Next(10) == 0)
+                {
+                    result = 56;
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        stack += Main.rand.Next(2);
+                    }
+                    if (Main.rand.Next(10) == 0)
+                    {
+                        stack += Main.rand.Next(3);
+                    }
+                    if (Main.rand.Next(15) == 0)
+                    {
+                        stack += Main.rand.Next(4);
+                    }
+                }
+            }
+            else if(extractType == ItemID.CrimsandBlock)
+            {
+                if(Main.rand.Next(10) == 0)
+                {
+                    result = 880;
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        stack += Main.rand.Next(2);
+                    }
+                    if (Main.rand.Next(10) == 0)
+                    {
+                        stack += Main.rand.Next(3);
+                    }
+                    if (Main.rand.Next(15) == 0)
+                    {
+                        stack += Main.rand.Next(4);
+                    }
+                }
+            }
+            else if(extractType == mod.ItemType("Depthsand"))
+            {
+                if(Main.rand.Next(10) == 0)
+                {
+                    result = mod.ItemType("Abyssium");
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        stack += Main.rand.Next(2);
+                    }
+                    if (Main.rand.Next(10) == 0)
+                    {
+                        stack += Main.rand.Next(3);
+                    }
+                    if (Main.rand.Next(15) == 0)
+                    {
+                        stack += Main.rand.Next(4);
+                    }
+                }
+            }
+            else if(extractType == mod.ItemType("Torchsand"))
+            {
+                if(Main.rand.Next(10) == 0)
+                {
+                    result = mod.ItemType("Incinerite");
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        stack += Main.rand.Next(2);
+                    }
+                    if (Main.rand.Next(10) == 0)
+                    {
+                        stack += Main.rand.Next(3);
+                    }
+                    if (Main.rand.Next(15) == 0)
+                    {
+                        stack += Main.rand.Next(4);
+                    }
+                }
+            }
+            else if(extractType == ItemID.PearlsandBlock)
+            {
+                if(Main.rand.Next(10) == 0)
+                {
+                    result = Main.rand.Next(2) == 0? 1104 : 364;
+
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        stack += Main.rand.Next(2);
+                    }
+                    if (Main.rand.Next(10) == 0)
+                    {
+                        stack += Main.rand.Next(3);
+                    }
+                    if (Main.rand.Next(15) == 0)
+                    {
+                        stack += Main.rand.Next(4);
+                    }
+                }
+                else if(Main.rand.Next(10) == 0)
+                {
+                    result = Main.rand.Next(2) == 0? 1105 : 365;
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        stack += Main.rand.Next(2);
+                    }
+                    if (Main.rand.Next(10) == 0)
+                    {
+                        stack += Main.rand.Next(3);
+                    }
+                    if (Main.rand.Next(15) == 0)
+                    {
+                        stack += Main.rand.Next(4);
+                    }
+                }
+                else if(Main.rand.Next(10) == 0)
+                {
+                    result = Main.rand.Next(2) == 0? 1106 : 366;
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        stack += Main.rand.Next(2);
+                    }
+                    if (Main.rand.Next(10) == 0)
+                    {
+                        stack += Main.rand.Next(3);
+                    }
+                    if (Main.rand.Next(15) == 0)
+                    {
+                        stack += Main.rand.Next(4);
+                    }
+                }
+            }
+            if(result == 0)
+            {
+                if (Main.rand.Next(10) == 0)
+                {
+                    result = 3380;
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        stack += Main.rand.Next(2);
+                    }
+                    if (Main.rand.Next(10) == 0)
+                    {
+                        stack += Main.rand.Next(3);
+                    }
+                    if (Main.rand.Next(15) == 0)
+                    {
+                        stack += Main.rand.Next(4);
+                    }
+                }
+                else if (Main.rand.Next(2) == 0)
+                {
+                    if (Main.rand.Next(12000) == 0)
+                    {
+                        result = 74;
+                        if (Main.rand.Next(14) == 0)
+                        {
+                            stack += Main.rand.Next(0, 2);
+                        }
+                        if (Main.rand.Next(14) == 0)
+                        {
+                            stack += Main.rand.Next(0, 2);
+                        }
+                        if (Main.rand.Next(14) == 0)
+                        {
+                            stack += Main.rand.Next(0, 2);
+                        }
+                    }
+                    else if (Main.rand.Next(800) == 0)
+                    {
+                        result = 73;
+                        if (Main.rand.Next(6) == 0)
+                        {
+                            stack += Main.rand.Next(1, 21);
+                        }
+                        if (Main.rand.Next(6) == 0)
+                        {
+                            stack += Main.rand.Next(1, 21);
+                        }
+                        if (Main.rand.Next(6) == 0)
+                        {
+                            stack += Main.rand.Next(1, 21);
+                        }
+                        if (Main.rand.Next(6) == 0)
+                        {
+                            stack += Main.rand.Next(1, 21);
+                        }
+                        if (Main.rand.Next(6) == 0)
+                        {
+                            stack += Main.rand.Next(1, 20);
+                        }
+                    }
+                    else if (Main.rand.Next(60) == 0)
+                    {
+                        result = 72;
+                        if (Main.rand.Next(4) == 0)
+                        {
+                            stack += Main.rand.Next(5, 26);
+                        }
+                        if (Main.rand.Next(4) == 0)
+                        {
+                            stack += Main.rand.Next(5, 26);
+                        }
+                        if (Main.rand.Next(4) == 0)
+                        {
+                            stack += Main.rand.Next(5, 26);
+                        }
+                        if (Main.rand.Next(4) == 0)
+                        {
+                            stack += Main.rand.Next(5, 25);
+                        }
+                    }
+                    else
+                    {
+                        result = 71;
+                        if (Main.rand.Next(3) == 0)
+                        {
+                            stack += Main.rand.Next(10, 26);
+                        }
+                        if (Main.rand.Next(3) == 0)
+                        {
+                            stack += Main.rand.Next(10, 26);
+                        }
+                        if (Main.rand.Next(3) == 0)
+                        {
+                            stack += Main.rand.Next(10, 26);
+                        }
+                        if (Main.rand.Next(3) == 0)
+                        {
+                            stack += Main.rand.Next(10, 25);
+                        }
+                    }
+                }
+                else if (Main.rand.Next(4000) == 0)
+                {
+                    result = 1242;
+                }
+                else if (Main.rand.Next(25) == 0)
+                {
+                    result = Main.rand.Next(6);
+                    if (result == 0)
+                    {
+                        result = 181;
+                    }
+                    else if (result == 1)
+                    {
+                        result = 180;
+                    }
+                    else if (result == 2)
+                    {
+                        result = 177;
+                    }
+                    else if (result == 3)
+                    {
+                        result = 179;
+                    }
+                    else if (result == 4)
+                    {
+                        result = 178;
+                    }
+                    else
+                    {
+                        result = 182;
+                    }
+                    if (Main.rand.Next(20) == 0)
+                    {
+                        stack += Main.rand.Next(0, 2);
+                    }
+                    if (Main.rand.Next(30) == 0)
+                    {
+                        stack += Main.rand.Next(0, 3);
+                    }
+                    if (Main.rand.Next(40) == 0)
+                    {
+                        stack += Main.rand.Next(0, 4);
+                    }
+                    if (Main.rand.Next(50) == 0)
+                    {
+                        stack += Main.rand.Next(0, 5);
+                    }
+                    if (Main.rand.Next(60) == 0)
+                    {
+                        stack += Main.rand.Next(0, 6);
+                    }
+                }
+                else if (Main.rand.Next(50) == 0)
+                {
+                    result = 999;
+                    if (Main.rand.Next(20) == 0)
+                    {
+                        stack += Main.rand.Next(0, 2);
+                    }
+                    if (Main.rand.Next(30) == 0)
+                    {
+                        stack += Main.rand.Next(0, 3);
+                    }
+                    if (Main.rand.Next(40) == 0)
+                    {
+                        stack += Main.rand.Next(0, 4);
+                    }
+                    if (Main.rand.Next(50) == 0)
+                    {
+                        stack += Main.rand.Next(0, 5);
+                    }
+                    if (Main.rand.Next(60) == 0)
+                    {
+                        stack += Main.rand.Next(0, 6);
+                    }
+                }
+                else if (Main.rand.Next(3) == 0)
+                {
+                    if (Main.rand.Next(5000) == 0)
+                    {
+                        result = 74;
+                        if (Main.rand.Next(10) == 0)
+                        {
+                            stack += Main.rand.Next(0, 3);
+                        }
+                        if (Main.rand.Next(10) == 0)
+                        {
+                            stack += Main.rand.Next(0, 3);
+                        }
+                        if (Main.rand.Next(10) == 0)
+                        {
+                            stack += Main.rand.Next(0, 3);
+                        }
+                        if (Main.rand.Next(10) == 0)
+                        {
+                            stack += Main.rand.Next(0, 3);
+                        }
+                        if (Main.rand.Next(10) == 0)
+                        {
+                            stack += Main.rand.Next(0, 3);
+                        }
+                    }
+                    else if (Main.rand.Next(400) == 0)
+                    {
+                        result = 73;
+                        if (Main.rand.Next(5) == 0)
+                        {
+                            stack += Main.rand.Next(1, 21);
+                        }
+                        if (Main.rand.Next(5) == 0)
+                        {
+                            stack += Main.rand.Next(1, 21);
+                        }
+                        if (Main.rand.Next(5) == 0)
+                        {
+                            stack += Main.rand.Next(1, 21);
+                        }
+                        if (Main.rand.Next(5) == 0)
+                        {
+                            stack += Main.rand.Next(1, 21);
+                        }
+                        if (Main.rand.Next(5) == 0)
+                        {
+                            stack += Main.rand.Next(1, 20);
+                        }
+                    }
+                    else if (Main.rand.Next(30) == 0)
+                    {
+                        result = 72;
+                        if (Main.rand.Next(3) == 0)
+                        {
+                            stack += Main.rand.Next(5, 26);
+                        }
+                        if (Main.rand.Next(3) == 0)
+                        {
+                            stack += Main.rand.Next(5, 26);
+                        }
+                        if (Main.rand.Next(3) == 0)
+                        {
+                            stack += Main.rand.Next(5, 26);
+                        }
+                        if (Main.rand.Next(3) == 0)
+                        {
+                            stack += Main.rand.Next(5, 25);
+                        }
+                    }
+                    else
+                    {
+                        result = 71;
+                        if (Main.rand.Next(2) == 0)
+                        {
+                            stack += Main.rand.Next(10, 26);
+                        }
+                        if (Main.rand.Next(2) == 0)
+                        {
+                            stack += Main.rand.Next(10, 26);
+                        }
+                        if (Main.rand.Next(2) == 0)
+                        {
+                            stack += Main.rand.Next(10, 26);
+                        }
+                        if (Main.rand.Next(2) == 0)
+                        {
+                            stack += Main.rand.Next(10, 25);
+                        }
+                    }
+                }
+                else
+                {
+                    result = Main.rand.Next(8);
+                    if (result == 0)
+                    {
+                        result = 12;
+                    }
+                    else if (result == 1)
+                    {
+                        result = 11;
+                    }
+                    else if (result == 2)
+                    {
+                        result = 14;
+                    }
+                    else if (result == 3)
+                    {
+                        result = 13;
+                    }
+                    else if (result == 4)
+                    {
+                        result = 699;
+                    }
+                    else if (result == 5)
+                    {
+                        result = 700;
+                    }
+                    else if (result == 6)
+                    {
+                        result = 701;
+                    }
+                    else
+                    {
+                        result = 702;
+                    }
+                    if (Main.rand.Next(20) == 0)
+                    {
+                        stack += Main.rand.Next(0, 2);
+                    }
+                    if (Main.rand.Next(30) == 0)
+                    {
+                        stack += Main.rand.Next(0, 3);
+                    }
+                    if (Main.rand.Next(40) == 0)
+                    {
+                        stack += Main.rand.Next(0, 4);
+                    }
+                    if (Main.rand.Next(50) == 0)
+                    {
+                        stack += Main.rand.Next(0, 5);
+                    }
+                    if (Main.rand.Next(60) == 0)
+                    {
+                        stack += Main.rand.Next(0, 6);
+                    }
+                }
+            }
+            if (result > 0)
+            {
+                Vector2 vector = Main.ReverseGravitySupport(Main.MouseScreen, 0f) + Main.screenPosition;
+                int number = Item.NewItem((int)vector.X, (int)vector.Y, 1, 1, result, stack, false, -1, false, false);
+                if (Main.netMode == 1)
+                {
+                    NetMessage.SendData(21, -1, -1, null, number, 1f, 0f, 0f, 0, 0, 0);
+                }
+            }
+        }
+        public override void ExtractinatorUse(int extractType, ref int resultType, ref int resultStack)
+		{
+            int result = 0;
+            int stack = 1;
+            if(extractType == ItemID.SlushBlock)
+            {
+                if(Main.rand.Next(50) == 0)
+                {
+                    result = mod.ItemType("VikingRelic");
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        stack += Main.rand.Next(2);
+                    }
+                    if (Main.rand.Next(10) == 0)
+                    {
+                        stack += Main.rand.Next(3);
+                    }
+                    if (Main.rand.Next(15) == 0)
+                    {
+                        stack += Main.rand.Next(4);
+                    }
+                }
+            }
+            else if(extractType == ItemID.DesertFossil)
+            {
+                if(Main.rand.Next(50) == 0)
+                {
+                    result = mod.ItemType("DynaskullOre");
+                    if (Main.rand.Next(5) == 0)
+                    {
+                        stack += Main.rand.Next(2);
+                    }
+                    if (Main.rand.Next(10) == 0)
+                    {
+                        stack += Main.rand.Next(3);
+                    }
+                    if (Main.rand.Next(15) == 0)
+                    {
+                        stack += Main.rand.Next(4);
+                    }
+                }
+            }
+
+            if(Main.player[Main.myPlayer].GetModPlayer<AAPlayer>().StripeManOre)
+            {
+                if(extractType == ItemID.DesertFossil || extractType == ItemID.SlushBlock || extractType == ItemID.SiltBlock)
+                {
+                    if (Main.rand.Next(10) == 0)
+                    {
+                        result = 3380;
+                        stack += 6;
+                    }
+                    else if (Main.rand.Next(10) == 0)
+                    {
+                        if (Main.rand.Next(500) == 0)
+                        {
+                            result = 74;
+                            stack += 3;
+                        }
+                        else if (Main.rand.Next(200) == 0)
+                        {
+                            result = 73;
+                            stack += 99;
+                        }
+                        else
+                        {
+                            result = 72;
+                            stack += 99;
+                        }
+                    }
+                    else if (Main.rand.Next(100) == 0)
+                    {
+                        result = 1242;
+                    }
+                    else if (Main.rand.Next(30) == 0)
+                    {
+                        if(Main.rand.Next(2) == 0)
+                        {
+                            result = mod.ItemType("DynaskullOre");
+                            stack += 1;
+                            if (Main.rand.Next(5) == 0)
+                            {
+                                stack += Main.rand.Next(2);
+                            }
+                            if (Main.rand.Next(10) == 0)
+                            {
+                                stack += Main.rand.Next(3);
+                            }
+                            if (Main.rand.Next(15) == 0)
+                            {
+                                stack += Main.rand.Next(4);
+                            }
+                        }
+                        else
+                        {
+                            result = mod.ItemType("VikingRelic");
+                            stack += 1;
+                            if (Main.rand.Next(5) == 0)
+                            {
+                                stack += Main.rand.Next(2);
+                            }
+                            if (Main.rand.Next(10) == 0)
+                            {
+                                stack += Main.rand.Next(3);
+                            }
+                            if (Main.rand.Next(15) == 0)
+                            {
+                                stack += Main.rand.Next(4);
+                            }
+                        }
+                    }
+                    else if (Main.rand.Next(300) == 0)
+                    {
+                        switch(Main.rand.Next(8))
+                        {
+                            case 0: result=12; return;
+                            case 1: result=11; return;
+                            case 2: result=14; return;
+                            case 3: result=13; return;
+                            case 4: result=699; return;
+                            case 5: result=700; return;
+                            case 6: result=701; return;
+                            default: result=702; return;
+                        }
+                        stack += 5;
+                        if (Main.rand.Next(5) == 0)
+                        {
+                            stack += 5;
+                        }
+                        if (Main.rand.Next(10) == 0)
+                        {
+                            stack += 5;
+                        }
+                        if (Main.rand.Next(15) == 0)
+                        {
+                            stack += 5;
+                        }
+                    }
+                    else if (Main.rand.Next(20) == 0)
+                    {
+                        result = 999;
+                        stack += 5;
+                        if (Main.rand.Next(10) == 0)
+                        {
+                            stack += 5;
+                        }
+                        if (Main.rand.Next(20) == 0)
+                        {
+                            stack += 5;
+                        }
+                    }
+                    else
+                    {
+                        switch(Main.rand.Next(6))
+                        {
+                            case 0: result=181; return;
+                            case 1: result=180; return;
+                            case 2: result=177; return;
+                            case 3: result=179; return;
+                            case 4: result=178; return;
+                            default: result=182; return;
+                        }
+                        stack += 15;
+                    }
+                }
+            }
+                
+            if (stack > 99)
+            {
+                stack = 99;
+            }
+            if (result == 1242)
+            {
+                stack = 1;
+            }
+
+            if (result > 0)
+			{
+                resultType = result;
+                resultStack = stack;
+            }
+            /*
+            if (result > 0)
+			{
+				Vector2 vector = Main.ReverseGravitySupport(Main.MouseScreen, 0f) + Main.screenPosition;
+				int number = Item.NewItem((int)vector.X, (int)vector.Y, 1, 1, resultType, resultStack, false, -1, false, false);
+				if (Main.netMode == 1)
+				{
+					NetMessage.SendData(21, -1, -1, null, number, 1f, 0f, 0f, 0, 0, 0);
+				}
+			}
+            */
+		}
     }
 
     public class InvokerCaligulaItem : GlobalItem

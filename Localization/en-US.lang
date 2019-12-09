@@ -43,6 +43,8 @@ Common.RajahSPDamageResistance=Current Damage Resistance: +
 
 //ArmorBonus
 
+Common.AncientGoldSetBonus=If you have enough money, you can resist an attack by losting all your money.
+
 Common.AbyssalBonus=Your ranged attacks are imbued with the poisonous properties of hydra venom\n20% decreased ammo consumption\nEnemies are less likely to target you
 
 Common.AssassinBonus=Increase 30% melee speed and projectile velocity\nYour melee weapons have chance to throw daggers\nYour ranged weapons have chance to shoot extra arrows\nDagger/arrow can decrease enemies' 20 defense and increase 10% damage hitting on them
@@ -87,6 +89,11 @@ Common.DynaskullBonus=Your ranged projectiles have so much power behind them, th
 Common.FleshrendHelmBonus=Being hit by enemies triggers a bloodsplosion that damages all enemies around you\nIncreased life regen
 
 Common.ShroomHatBonus=You are immune to Mana Sickness
+
+Common.StripeManSetBonus1=You change the rule of Nature's randomicity\nYou will be a lucky guy? Or an unfortunate man.\nPress the Armor Ability Key to change the world's random system:
+Common.StripeManSetBonusactive=ACTIVATED
+Common.StripeManSetBonusunactive=UNACTIVATED
+Common.StripeManSetBonus2="Behold, the man is become as one of us, to know good and evil.\nAnd now, lest he put forth his hand, and take also of the tree of life, and eat, and live for ever"
 
 Common.GoblinSlayerHelmBonus=500% increased damage and knockback to goblins\n80% damage resistance from goblins\n'I hunt goblins or nothing.'
 
@@ -290,6 +297,8 @@ Common.AATownNPC=Disable AA Town NPCs
 Common.AATownNPCInfo=Disables this mod's town npcs from spawning, for those who'd prefer to have other npcs spawn quicker. Note: This does not affect Anubis due to him being key to progression.
 Common.DisableBossDialogue=Disable Boss Dialogue
 Common.DisableBossDialogueInfo=Disables dialogue from bosses to prevent chatspam. Also makes animations that have boss dialogue go by a little quicker.
+Common.AAStyleMainPage=Disable the AA style Main Menu
+Common.AAStyleMainPageInfo=Disable the AA style Main Menu, back to the Vanilla menu.
 
 //GlobalNPCSInfo
 

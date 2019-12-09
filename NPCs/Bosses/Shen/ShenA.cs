@@ -543,6 +543,7 @@ namespace AAMod.NPCs.Bosses.Shen
                     if (!AAWorld.downedShen)
                     {
                         npc.DropLoot(ModContent.ItemType<Items.BossSummons.ChaosRune>());
+                        AAWorld.downedShen = true;
                     }
 
                     BaseAI.DropItem(npc, mod.ItemType("ShenATrophy"), 1, 1, 15, true);

@@ -254,6 +254,9 @@ namespace AAMod
 
         public override void Load()
         {
+            Main.versionNumber = "Terraria v1.3.5.2/AncientsAwakened v" + instance.Version.ToString();
+
+            Config.Load();
             Logger.InfoFormat("{0} AA log", Name);
 
             instance = this;
@@ -282,6 +285,15 @@ namespace AAMod
 
             AccessoryAbilityKey = RegisterHotKey(Lang.Hotkey("AccessoryAbilityKey"), "U");
             ArmorAbilityKey = RegisterHotKey(Lang.Hotkey("ArmorAbilityKey"), "Y");
+
+            //Main.logoTexture = AAMod.instance.GetTexture("AATitle");
+			//Main.logo2Texture = AAMod.instance.GetTexture("AATitle");
+
+            BackupVanillaBG(171);
+            BackupVanillaBG(172);
+            BackupVanillaBG(173);
+            BackupVanillaBG(24);
+            BackupVanillaBG(25);
 
             if (!Main.dedServ)
             {
@@ -460,6 +472,46 @@ namespace AAMod
         private Texture2D sunTextureBackup = null;
         private Texture2D sun3TextureBackup = null;
         public Dictionary<int, Texture2D> vanillaTextureBackups = new Dictionary<int, Texture2D>();
+        public Dictionary<int, Texture2D> vanillaBGBackups = new Dictionary<int, Texture2D>();
+
+        public override void PostAddRecipes()
+		{
+            LuckyCheckProgress();
+			Config.SaveConfig();
+		}
+
+        private void LuckyCheckProgress()
+        {
+            Config.LuckyOre.Clear();
+            Config.LuckyPotion.Clear();
+            Config.ListRareNpc.Clear();
+            Item item = new Item();
+            for (int i = -48; i < ItemLoader.ItemCount; i++)
+			{
+				item.netDefaults(i);
+                if(item.createTile > 0 && Main.tileValue[item.createTile] > 0 && !Main.tileContainer[item.createTile] && item.createTile != 441 && item.createTile != 468)
+                {
+                    Config.LuckyOre.Add(item.type, Main.tileValue[item.createTile]);
+                }
+                if(item.buffType > 0 && item.buffType != 26 && item.buffTime > 0)
+                {
+                    Config.LuckyPotion.Add(item.type, item.value);
+                }
+            }
+            NPC npc = new NPC();
+            for (int i = -65; i < NPCLoader.NPCCount; i++)
+			{
+				if (i != 0)
+				{
+					npc.SetDefaults(i, -1);
+                }
+                if (npc.rarity >= 1)
+                {
+                    Config.ListRareNpc.Add(i);
+                }
+            }
+        }
+
         public void ReplaceItemTexture(int id, string texturePath)
         {
             vanillaTextureBackups.Add(id, Main.itemTexture[id]);
@@ -473,9 +525,23 @@ namespace AAMod
             }
         }
 
+        public void BackupVanillaBG(int id)
+        {
+            vanillaBGBackups.Add(id, Main.backgroundTexture[id]);
+        }
+
+        public void ResetBGTexture(int id)
+        {
+            if (vanillaBGBackups.ContainsKey(id))
+            {
+                Main.backgroundTexture[id] = vanillaBGBackups[id];
+            }
+        }
+
         public override void Unload()
         {
-            CleanupStaticArrays();
+            AAMenuset = false;
+            CleanAAmenu();
             instance = null;
             Rift = null;
             RiftReturn = null;
@@ -486,6 +552,8 @@ namespace AAMod
             {
                 UnloadClient();
             }
+            
+            CleanupStaticArrays();
         }
 
         public void UnloadClient()
@@ -497,6 +565,18 @@ namespace AAMod
                 Main.sunTexture = sunTextureBackup;
             if (sun3TextureBackup != null)
                 Main.sun3Texture = sun3TextureBackup;
+        }
+
+        public void CleanAAmenu()
+        {
+            SkyManager.Instance.Deactivate("AAMod:AkumaSky", new object[0]);
+            SkyManager.Instance.Deactivate("AAMod:YamataSky", new object[0]);
+            SkyManager.Instance.Deactivate("AAMod:VoidSky", new object[0]);
+            ResetBGTexture(171);
+            ResetBGTexture(172);
+            ResetBGTexture(173);
+            ResetBGTexture(24);
+            ResetBGTexture(25);
         }
 
         public void CleanupStaticArrays()
@@ -556,6 +636,100 @@ namespace AAMod
                 TerratoolInterface.Update(gameTime);
             }
         }
+
+        public override void PostUpdateInput()
+		{
+            if(Main.gameMenu && Main.menuMode >= 0)
+            {
+                /* 
+                if(AAConfigClient.Instance.AAStyleMainPage)
+                {
+                    Main.logoTexture = AAMod.instance.GetTexture("AATitle");
+                    Main.logo2Texture = AAMod.instance.GetTexture("AATitle");
+                }
+                else
+                {
+                    Main.logoTexture = ModContent.GetTexture("Logo");
+                    Main.logo2Texture = ModContent.GetTexture("Logo2");
+                }
+                */
+                if(Main.menuMode == 0)
+                {
+                    AAMenuset = true;
+                }
+                if(AAConfigClient.Instance.AAStyleMainPage && (Main.bgStyle == 1 || Main.bgStyle == 0) && AAMenuset)
+                {
+                    AAMenuReset = true;
+                    WorldGen.setBG(0, 6);
+                    switch(Main.moonPhase % 3)
+                    {
+                        case 0:
+                            Main.treeBG[0] = 173;
+                            Main.backgroundTexture[171] = ModContent.GetTexture("Terraria/Background_" + 171);
+                            Main.backgroundTexture[172] = ModContent.GetTexture("Terraria/Background_" + 172);
+                            Main.backgroundTexture[173] = ModContent.GetTexture("Terraria/Background_" + 173);
+                            Main.backgroundTexture[24] = ModContent.GetTexture("Terraria/Background_" + 24);
+                            Main.backgroundTexture[25] = ModContent.GetTexture("Terraria/Background_" + 25);
+                            break;
+                        case 1:
+                            if(Main.dayTime)
+                            {
+                                SkyManager.Instance.Activate("AAMod:AkumaSky",default(Vector2), new object[0]);
+                            }
+                            else
+                            {
+                                SkyManager.Instance.Activate("AAMod:YamataSky",default(Vector2), new object[0]);
+                            }
+                            if(Main.dayTime && AAConfigClient.Instance.AAStyleMainPage)
+                            {
+                                Main.backgroundTexture[171] = AAMod.instance.GetTexture("Backgrounds/InfernoBG");
+                                Main.backgroundTexture[172] = AAMod.instance.GetTexture("Backgrounds/InfernoBG");
+                            }
+                            else if(!Main.dayTime && AAConfigClient.Instance.AAStyleMainPage)
+                            {
+                                Main.backgroundTexture[24] = AAMod.instance.GetTexture("Backgrounds/MireBG");
+                                Main.backgroundTexture[25] = AAMod.instance.GetTexture("Backgrounds/MireFG2");
+                            }
+                            Main.backgroundTexture[173] = AAMod.instance.GetTexture("BlankTex");
+                            break;
+                        case 2:
+                            SkyManager.Instance.Activate("AAMod:VoidSky",default(Vector2), new object[0]);
+                            Main.backgroundTexture[171] = AAMod.instance.GetTexture("BlankTex");
+                            Main.backgroundTexture[172] = AAMod.instance.GetTexture("BlankTex");
+                            Main.backgroundTexture[173] = AAMod.instance.GetTexture("BlankTex");
+                            Main.backgroundTexture[24] = AAMod.instance.GetTexture("BlankTex");
+                            Main.backgroundTexture[25] = AAMod.instance.GetTexture("BlankTex");
+                            break;
+                        default:
+                            goto case 0;
+                            break;
+                    }
+                }
+                else if(AAMenuReset)
+                {
+                    SkyManager.Instance.Deactivate("AAMod:AkumaSky", new object[0]);
+                    SkyManager.Instance.Deactivate("AAMod:YamataSky", new object[0]);
+                    SkyManager.Instance.Deactivate("AAMod:VoidSky", new object[0]);
+                    AAMenuReset = false;
+                    Main.backgroundTexture[171] = ModContent.GetTexture("Terraria/Background_" + 171);
+                    Main.backgroundTexture[172] = ModContent.GetTexture("Terraria/Background_" + 172);
+                    Main.backgroundTexture[173] = ModContent.GetTexture("Terraria/Background_" + 173);
+                    Main.backgroundTexture[24] = ModContent.GetTexture("Terraria/Background_" + 24);
+                    Main.backgroundTexture[25] = ModContent.GetTexture("Terraria/Background_" + 25);
+                }
+            }
+            else if(AAMenuReset)
+            {
+                AAMenuReset = false;
+                Main.backgroundTexture[171] = ModContent.GetTexture("Terraria/Background_" + 171);
+                Main.backgroundTexture[172] = ModContent.GetTexture("Terraria/Background_" + 172);
+                Main.backgroundTexture[173] = ModContent.GetTexture("Terraria/Background_" + 173);
+                Main.backgroundTexture[24] = ModContent.GetTexture("Terraria/Background_" + 24);
+                Main.backgroundTexture[25] = ModContent.GetTexture("Terraria/Background_" + 25);
+            }
+		}
+        public bool AAMenuset = false;
+        public bool AAMenuReset = true;
 
         public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
         {

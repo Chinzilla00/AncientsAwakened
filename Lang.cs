@@ -174,7 +174,7 @@ namespace AAMod
                         case "GreedChest2":
                         return "你听到一声尖啸在洞穴中回荡...";
                         case "GreedChest3":
-                        return "把 老 子 的 东 西 放 下 你 这 个 贼 野 人!!!";
+                        return "把 老 子 的 东 西 放 下， 你 这 个 野 猴 子 小 偷!!!";
                     }
                 }
             else
