@@ -256,7 +256,7 @@ namespace AAMod
             return false;
         }
 
-        public static void PotsDropMethod(int i, int j)
+        public void PotsDropMethod(int i, int j)
         {
             int itemcreat = 0;
             if (WorldGen.genRand.Next(30) == 0 || (Main.rand.Next(30) == 0 && Main.expertMode))
@@ -321,7 +321,8 @@ namespace AAMod
                     {
                         if(Main.rand.Next(100) == 0)
                         {
-                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckyironskinpotion"), 1, false, 0, false, false);
+                            int rarepotion = ModContent.ItemType<Items.Potions.LuckyPotions.luckyironskinpotion>();
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, rarepotion, 1, false, 0, false, false);
                         }
                         else
                         {
@@ -338,9 +339,10 @@ namespace AAMod
                     }
                     if (rand == 3)
                     {
-                        if(Main.Next(100) == 0)
+                        if(Main.rand.Next(100) == 0)
                         {
-                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckyswiftnesspotion"), 1, false, 0, false, false);
+                            int rarepotion = ModContent.ItemType<Items.Potions.LuckyPotions.luckyswiftnesspotion>();
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, rarepotion, 1, false, 0, false, false);
                         }
                         else
                         {
@@ -355,7 +357,8 @@ namespace AAMod
                     {
                         if(Main.rand.Next(100) == 0)
                         {
-                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckycalmingpotion"), 1, false, 0, false, false);
+                            int rarepotion = ModContent.ItemType<Items.Potions.LuckyPotions.luckycalmingpotion>();
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, rarepotion, 1, false, 0, false, false);
                         }
                         else
                         {
@@ -368,9 +371,10 @@ namespace AAMod
                     }
                     if (rand == 7 || rand == 8)
                     {
-                        if(Main.Next(100) == 0)
+                        if(Main.rand.Next(100) == 0)
                         {
-                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckywrathpotion"), 1, false, 0, false, false);
+                            int rarepotion = ModContent.ItemType<Items.Potions.LuckyPotions.luckywrathpotion>();
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, rarepotion, 1, false, 0, false, false);
                         }
                         else
                         {
@@ -391,7 +395,8 @@ namespace AAMod
                         {
                             if(Main.rand.Next(100) == 0)
                             {
-                                itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckysummoningpotion"), 1, false, 0, false, false);
+                                int rarepotion = ModContent.ItemType<Items.Potions.LuckyPotions.luckysummoningpotion>();
+                                itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, rarepotion, 1, false, 0, false, false);
                             }
                             else
                             {
@@ -400,9 +405,10 @@ namespace AAMod
                         }
                         else
                         {
-                            if(Main.Next(100) == 0)
+                            if(Main.rand.Next(100) == 0)
                             {
-                                itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckythornspotion"), 1, false, 0, false, false);
+                                int rarepotion = ModContent.ItemType<Items.Potions.LuckyPotions.luckythornspotion>();
+                                itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, rarepotion, 1, false, 0, false, false);
                             }
                             else
                             {
@@ -422,7 +428,8 @@ namespace AAMod
                     {
                         if(Main.rand.Next(100) == 0)
                         {
-                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckyregeneration"), 1, false, 0, false, false);
+                            int rarepotion = ModContent.ItemType<Items.Potions.LuckyPotions.luckyregenerationpotion>();
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, rarepotion, 1, false, 0, false, false);
                         }
                         else
                         {
@@ -441,7 +448,8 @@ namespace AAMod
                     {
                         if(Main.rand.Next(100) == 0)
                         {
-                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckyswiftnesspotion"), 1, false, 0, false, false);
+                            int rarepotion = ModContent.ItemType<Items.Potions.LuckyPotions.luckyswiftnesspotion>();
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, rarepotion, 1, false, 0, false, false);
                         }
                         else
                         {
@@ -472,7 +480,8 @@ namespace AAMod
                     {
                         if(Main.rand.Next(100) == 0)
                         {
-                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckyendurancepotion"), 1, false, 0, false, false);
+                            int rarepotion = ModContent.ItemType<Items.Potions.LuckyPotions.luckyendurancepotion>();
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, rarepotion, 1, false, 0, false, false);
                         }
                         else
                         {
@@ -515,7 +524,8 @@ namespace AAMod
                     {
                         if(Main.rand.Next(100) == 0)
                         {
-                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckythornspotion"), 1, false, 0, false, false);
+                            int rarepotion = ModContent.ItemType<Items.Potions.LuckyPotions.luckythornspotion>();
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, rarepotion, 1, false, 0, false, false);
                         }
                         else
                         {
@@ -594,7 +604,8 @@ namespace AAMod
                     {
                         if(Main.rand.Next(100) == 0)
                         {
-                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckythornspotion"), 1, false, 0, false, false);
+                            int rarepotion = ModContent.ItemType<Items.Potions.LuckyPotions.luckythornspotion>();
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, rarepotion, 1, false, 0, false, false);
                         }
                         else
                         {
@@ -625,7 +636,8 @@ namespace AAMod
                     {
                         if(Main.rand.Next(100) == 0)
                         {
-                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckyragepotion"), 1, false, 0, false, false);
+                            int rarepotion = ModContent.ItemType<Items.Potions.LuckyPotions.luckyragepotion>();
+                            itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, rarepotion, 1, false, 0, false, false);
                         }
                         else
                         {
@@ -638,7 +650,8 @@ namespace AAMod
                         {
                             if(Main.rand.Next(100) == 0)
                             {
-                                itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("luckylifeforcepotion"), 1, false, 0, false, false);
+                                int rarepotion = ModContent.ItemType<Items.Potions.LuckyPotions.luckylifeforcepotion>();
+                                itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, rarepotion, 1, false, 0, false, false);
                             }
                             else
                             {
@@ -662,7 +675,7 @@ namespace AAMod
             }
         }
 
-        public static int DropOreMethod(int x, int y, int type)
+        public int DropOreMethod(int x, int y, int type)
         {
             float ChanceBalance = 1;
             int SecondDrop = Config.LuckyOre.Keys.Count;

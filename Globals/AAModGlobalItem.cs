@@ -408,13 +408,6 @@ namespace AAMod
                         player.itemTime = (int)((float)player.inventory[player.selectedItem].useTime / PlayerHooks.TotalUseTimeMultiplier(player, player.inventory[player.selectedItem]));
 					    Main.PlaySound(7, -1, -1, 1, 1f, 0f);
                         ExtractinatorUse2(item.type);
-                        if(player.GetModPlayer<AAPlayer>().StripeManSet)
-                        {
-                            if(Main.rand.Next(1000) == 0)
-                            {
-                                AAGlobalTile.DropOreMethod(tileTargetX, tileTargetY, mod.ItemType("Apocalyptite"));
-                            }
-                        }
                         for (int i = 0; i < 58; i++)
                         {
                             if (player.inventory[i].type == item.type && player.inventory[i].stack > 0)

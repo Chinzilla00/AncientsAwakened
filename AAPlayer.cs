@@ -1349,11 +1349,11 @@ namespace AAMod
 			{
 				return;
 			}
-			if (player.statLife == player.statLifeMax2 || player.potionDelay > 0 || item != mod.ItemType("RoninPotion"))
+			if (player.statLife == player.statLifeMax2 || player.potionDelay > 0 || item.type != mod.ItemType("RoninPotion"))
 			{
 				return;
 			}
-			Main.PlaySound(item.UseSound, this.position);
+			Main.PlaySound(item.UseSound, player.position);
 			if (item.potion)
 			{
 				if (item.type == 227)
@@ -1367,7 +1367,7 @@ namespace AAMod
 					player.AddBuff(21, player.potionDelay, true);
 				}
 			}
-			ItemLoader.UseItem(item, this);
+			ItemLoader.UseItem(item, player);
 			player.statLife += item.healLife;
 			player.statMana += item.healMana;
 			if (player.statLife > player.statLifeMax2)
