@@ -326,6 +326,7 @@ namespace AAMod
             {
                 BackupVanillaBG(-1);
                 BackupVanillaBG(-2);
+                BackupVanillaBG(-3);
             }
 
             BackupVanillaBG(0);
@@ -548,6 +549,10 @@ namespace AAMod
             {
                 vanillaBGBackups.Add(-2, Main.logo2Texture);
             }
+            else if(id == -3)
+            {
+                vanillaBGBackups.Add(-3, Main.sunTexture);
+            }
            
         }
 
@@ -566,6 +571,10 @@ namespace AAMod
                 else if(id == -2)
                 {
                     Main.logo2Texture = vanillaBGBackups[-2];
+                }
+                else if(id == -3)
+                {
+                    Main.sunTexture = vanillaBGBackups[-3];
                 }
             }
         }
@@ -759,14 +768,15 @@ namespace AAMod
                     {
                         case 0:
                             Main.numClouds = 10;
-                            if(Main.dayTime && (Main.LogoA < 3 || Main.LogoA >= 253))
+                            if(Main.LogoB <= 255)
                             {
                                 Main.logoTexture = ModContent.GetTexture("Terraria/Logo");
                             }
-                            if(!Main.dayTime && (Main.LogoB < 3 || Main.LogoB >= 253))
+                            if(Main.LogoB < 10 || (!Main.dayTime && Main.LogoA <= 255))
                             {
                                 Main.logo2Texture = ModContent.GetTexture("Terraria/Logo2");
                             }
+                            Main.sunTexture = ModContent.GetTexture("Terraria/Sun");
                             if(SkyManager.Instance["AAMod:InfernoSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:InfernoSky", new object[0]);
                             if(SkyManager.Instance["AAMod:MireSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:MireSky", new object[0]);
                             if(SkyManager.Instance["AAMod:VoidSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:VoidSky", new object[0]);
@@ -793,17 +803,17 @@ namespace AAMod
                             Main.numClouds = 0;
                             if(Main.dayTime)
                             {
-                                if(SkyManager.Instance["AAMod:InfernoSky"] != null) SkyManager.Instance.Activate("AAMod:InfernoSky", default(Vector2), new object[0]);
+                                Main.sunTexture = instance.GetTexture("Backgrounds/Sun");
                             }
                             else
                             {
                                 if(SkyManager.Instance["AAMod:MireSky"] != null) SkyManager.Instance.Activate("AAMod:MireSky",default(Vector2), new object[0]);
                             }
-                            if(Main.dayTime && (Main.LogoA < 3 || Main.LogoA >= 253))
+                            if(Main.LogoB <= 255)
                             {
                                 Main.logoTexture = instance.GetTexture("UI/LogoInferno");
                             }
-                            if(!Main.dayTime && (Main.LogoB < 3 || Main.LogoB >= 253))
+                            if(Main.LogoB < 10 || (!Main.dayTime && Main.LogoA <= 255))
                             {
                                 Main.logo2Texture = instance.GetTexture("UI/LogoMire");
                             }
@@ -826,6 +836,14 @@ namespace AAMod
                             break;
                         case 2:
                             Main.numClouds = 0;
+                            if(Main.LogoB <= 255)
+                            {
+                                Main.logoTexture = instance.GetTexture("UI/LogoVoid");
+                            }
+                            if(Main.LogoB < 10 || (!Main.dayTime && Main.LogoA <= 255))
+                            {
+                                Main.logo2Texture = instance.GetTexture("UI/LogoVoid");
+                            }
                             if(SkyManager.Instance["AAMod:VoidSky"] != null) SkyManager.Instance.Activate("AAMod:VoidSky",default(Vector2), new object[0]);
                             if(Main.dayTime && (Main.bgAlpha2[0] < 0.10f || Main.bgAlpha2[0] == 1f))
                             {
@@ -850,9 +868,9 @@ namespace AAMod
                 }
                 else if(AAMenuReset)
                 {
-                    if(SkyManager.Instance["AAMod:InfernoSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:InfernoSky", new object[0]);
                     if(SkyManager.Instance["AAMod:MireSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:MireSky", new object[0]);
                     if(SkyManager.Instance["AAMod:VoidSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:VoidSky", new object[0]);
+                    Main.sunTexture = ModContent.GetTexture("Terraria/Sun");
                     Main.logoTexture = ModContent.GetTexture("Terraria/Logo");
                     Main.logo2Texture = ModContent.GetTexture("Terraria/Logo2");
                     AAMenuReset = false;
@@ -870,6 +888,7 @@ namespace AAMod
             else if(AAMenuReset)
             {
                 AAMenuReset = false;
+                Main.sunTexture = ModContent.GetTexture("Terraria/Sun");
                 Main.backgroundTexture[0] = ModContent.GetTexture("Terraria/Background_" + 0);
                 Main.backgroundTexture[171] = ModContent.GetTexture("Terraria/Background_" + 171);
                 Main.backgroundTexture[172] = ModContent.GetTexture("Terraria/Background_" + 172);
