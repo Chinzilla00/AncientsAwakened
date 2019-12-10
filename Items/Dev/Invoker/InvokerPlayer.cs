@@ -258,7 +258,7 @@ namespace AAMod.Items.Dev.Invoker
 						player.lifeRegenCount++;
 						if ((Main.rand.Next(30000) < player.lifeRegenTime || Main.rand.Next(30) == 0))
 						{
-							int num5 = Dust.NewDust(player.position, player.width, player.height, 55, 0f, 0f, 200, default(Color), 0.5f);
+							int num5 = Dust.NewDust(player.position, player.width, player.height, 55, 0f, 0f, 200, default, 0.5f);
 							Main.dust[num5].noGravity = true;
 							Main.dust[num5].velocity *= 0.75f;
 							Main.dust[num5].fadeIn = 1.3f;

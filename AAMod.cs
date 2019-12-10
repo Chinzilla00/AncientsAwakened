@@ -801,52 +801,51 @@ namespace AAMod
                             }
                             if(Main.dayTime && (Main.LogoA < 3 || Main.LogoA >= 253))
                             {
-                                Main.logoTexture = AAMod.instance.GetTexture("UI/LogoInferno");
+                                Main.logoTexture = instance.GetTexture("UI/LogoInferno");
                             }
                             if(!Main.dayTime && (Main.LogoB < 3 || Main.LogoB >= 253))
                             {
-                                Main.logo2Texture = AAMod.instance.GetTexture("UI/LogoMire");
+                                Main.logo2Texture = instance.GetTexture("UI/LogoMire");
                             }
                             if(Main.dayTime && (Main.bgAlpha2[0] < 0.10f || Main.bgAlpha2[0] == 1f))
                             {
-                                Main.backgroundTexture[0] = AAMod.instance.GetTexture("Backgrounds/InfernoSky");
-                                Main.backgroundTexture[171] = AAMod.instance.GetTexture("Backgrounds/InfernoBG");
-                                Main.backgroundTexture[172] = AAMod.instance.GetTexture("Backgrounds/InfernoBG");
+                                Main.backgroundTexture[0] = instance.GetTexture("Backgrounds/InfernoSky");
+                                Main.backgroundTexture[171] = instance.GetTexture("Backgrounds/InfernoBG");
+                                Main.backgroundTexture[172] = instance.GetTexture("Backgrounds/InfernoBG");
                             }
                             if(!Main.dayTime && (Main.bgAlpha2[2] < 0.10f || Main.bgAlpha2[2] == 1f))
                             {
-                                Main.backgroundTexture[0] = AAMod.instance.GetTexture("Backgrounds/YamataStars");
-                                Main.backgroundTexture[24] = AAMod.instance.GetTexture("Backgrounds/MireBG");
-                                Main.backgroundTexture[25] = AAMod.instance.GetTexture("Backgrounds/MireFG2");
-                                Main.backgroundTexture[56] = AAMod.instance.GetTexture("Backgrounds/MireFG1");
-                                Main.backgroundTexture[57] = AAMod.instance.GetTexture("Backgrounds/MireFG1");
-                                Main.backgroundTexture[58] = AAMod.instance.GetTexture("Backgrounds/MireFG1");
+                                Main.backgroundTexture[0] = instance.GetTexture("Backgrounds/YamataStars");
+                                Main.backgroundTexture[24] = instance.GetTexture("Backgrounds/MireBG");
+                                Main.backgroundTexture[25] = instance.GetTexture("Backgrounds/MireFG2");
+                                Main.backgroundTexture[56] = instance.GetTexture("Backgrounds/MireFG1");
+                                Main.backgroundTexture[57] = instance.GetTexture("Backgrounds/MireFG1");
+                                Main.backgroundTexture[58] = instance.GetTexture("Backgrounds/MireFG1");
                             }
-                            Main.backgroundTexture[173] = AAMod.instance.GetTexture("BlankTex");
+                            Main.backgroundTexture[173] = instance.GetTexture("BlankTex");
                             break;
                         case 2:
                             Main.numClouds = 0;
                             if(SkyManager.Instance["AAMod:VoidSky"] != null) SkyManager.Instance.Activate("AAMod:VoidSky",default(Vector2), new object[0]);
                             if(Main.dayTime && (Main.bgAlpha2[0] < 0.10f || Main.bgAlpha2[0] == 1f))
                             {
-                                Main.backgroundTexture[0] = AAMod.instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[171] = AAMod.instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[172] = AAMod.instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[173] = AAMod.instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[0] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[171] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[172] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[173] = instance.GetTexture("BlankTex");
                             }
                             if(!Main.dayTime && (Main.bgAlpha2[2] < 0.10f || Main.bgAlpha2[2] == 1f))
                             {
-                                Main.backgroundTexture[0] = AAMod.instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[24] = AAMod.instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[25] = AAMod.instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[56] = AAMod.instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[57] = AAMod.instance.GetTexture("BlankTex");
-                                Main.backgroundTexture[58] = AAMod.instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[0] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[24] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[25] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[56] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[57] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[58] = instance.GetTexture("BlankTex");
                             }
                             break;
                         default:
                             goto case 0;
-                            break;
                     }
                 }
                 else if(AAMenuReset)

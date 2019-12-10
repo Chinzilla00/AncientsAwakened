@@ -100,7 +100,7 @@ namespace AAMod.Items.Tools
 							{
 								num9 = 0f;
 							}
-							num10 = 1f - base.projectile.localAI[0] / 100f;
+							num10 = 1f - projectile.localAI[0] / 100f;
 							num9 *= num10;
 							if (num4 > 0f)
 							{
@@ -109,7 +109,7 @@ namespace AAMod.Items.Tools
 							}
 							else
 							{
-								num10 = Math.Abs(base.projectile.velocity.X) / 3f;
+								num10 = Math.Abs(projectile.velocity.X) / 3f;
 								if (num10 > 1f)
 								{
 									num10 = 1f;

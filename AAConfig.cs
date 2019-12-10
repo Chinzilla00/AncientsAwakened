@@ -34,33 +34,33 @@ namespace AAMod
 	{
 		public static void Load()
 		{
-			if (!Config.ReadConfig())
+			if (!ReadConfig())
 			{
-				Config.SetDefaults();
+                SetDefaults();
 				ModContent.GetInstance<AAMod>().Logger.Warn("Couldn't find config file! Creating a new one...");
 			}
-			Config.SaveConfig();
+            SaveConfig();
 		}
 
         private static readonly string ConfigPath = Path.Combine(Main.SavePath, "Mod Configs", "AAConfig.json");
-		private static Preferences Configuration = new Preferences(Config.ConfigPath, false, false);
+		private static Preferences Configuration = new Preferences(ConfigPath, false, false);
 
         public static void SetDefaults()
 		{
-            Config.LuckyOre = new Dictionary<int, int>();
-            Config.LuckyPotion = new Dictionary<int, int>();
-            Config.ListRareNpc = new List<int>();
+            LuckyOre = new Dictionary<int, int>();
+            LuckyPotion = new Dictionary<int, int>();
+            ListRareNpc = new List<int>();
         }
 
         public static bool ReadConfig()
 		{
-			if (Config.Configuration.Load())
+			if (Configuration.Load())
 			{
                 try
                 {
-                    Config.Configuration.Get<Dictionary<int, int>>("LuckyOreMine", ref Config.LuckyOre);
-                    Config.Configuration.Get<Dictionary<int, int>>("LuckyPotionGet", ref Config.LuckyPotion);
-                    Config.Configuration.Get<List<int>>("RareNpcList", ref Config.ListRareNpc);
+                    Configuration.Get<Dictionary<int, int>>("LuckyOreMine", ref LuckyOre);
+                    Configuration.Get<Dictionary<int, int>>("LuckyPotionGet", ref LuckyPotion);
+                    Configuration.Get<List<int>>("RareNpcList", ref ListRareNpc);
                 }
 				catch
                 {
@@ -73,11 +73,11 @@ namespace AAMod
 
         public static void SaveConfig()
 		{
-            Config.Configuration.Clear();
-			Config.Configuration.Put("LuckyOreMine", Config.LuckyOre);
-			Config.Configuration.Put("LuckyPotionGet", Config.LuckyPotion);
-            Config.Configuration.Put("RareNpcList", Config.ListRareNpc);
-            Config.Configuration.Save(true);
+            Configuration.Clear();
+            Configuration.Put("LuckyOreMine", LuckyOre);
+            Configuration.Put("LuckyPotionGet", LuckyPotion);
+            Configuration.Put("RareNpcList", ListRareNpc);
+            Configuration.Save(true);
         }
 
         public static Dictionary<int, int> LuckyOre = new Dictionary<int, int>();

@@ -41,7 +41,7 @@ namespace AAMod.Projectiles.Yamata
 
         public override void AI()           //this make that the projectile will face the corect way
         {                                                           // |
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f + ((float)System.Math.PI * 0.25f);
+            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f + ((float)Math.PI * 0.25f);
             if (projectile.localAI[0] == 0f)
             {
                 AdjustMagnitude(ref projectile.velocity);
