@@ -29,7 +29,7 @@ namespace AAMod
             num79 *= num80;
             float num115 = num79 + (Main.rand.Next(41) * 0.02f);
             int projType = Awakened ? mod.ProjectileType("AkumaAMeteor") : mod.ProjectileType("AkumaMeteor");
-            Projectile.NewProjectile(vector2.X, vector2.Y, 0, num115 * 1.5f, projType, npc.damage / 2, 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+            Projectile.NewProjectile(vector2.X, vector2.Y, 0, num115 * 1.5f, projType, npc.damage / 4, 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
         }
 
         public static void SpawnLung(Player player, Mod mod, bool isAwakened)
@@ -63,7 +63,7 @@ namespace AAMod
             num80 = num72 / num80;
             num79 *= num80;
             float num115 = num79 + (Main.rand.Next(41) * 0.02f);
-            Projectile.NewProjectile(vector2.X, vector2.Y, 0, num115 * 2f, mod.ProjectileType("AkumaRock"), (int)(npc.damage / 2f), 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
+            Projectile.NewProjectile(vector2.X, vector2.Y, 0, num115 * 2f, mod.ProjectileType("AkumaRock"), npc.damage / 4, 0, player.whoAmI, 0f, 0.5f + ((float)Main.rand.NextDouble() * 0.3f));
         }
     }
 }

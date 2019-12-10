@@ -1042,7 +1042,7 @@ namespace AAMod.Worldgeneration
 			Vector2 value = new Vector2((float)origin.X + (_width / 2), origin.Y);
 			Vector2 value2 = new Vector2(x, y);
 			float num = Vector2.Distance(value2, value);
-			float num2 = Math.Max(0f, Math.Min(1f, (num - this._innerRadius) / (this._outerRadius - this._innerRadius)));
+			float num2 = Math.Max(0f, Math.Min(1f, (num - _innerRadius) / (_outerRadius - _innerRadius)));
 			if (_random.NextDouble() > num2)
 			{
 				return UnitApply(origin, x, y, args);

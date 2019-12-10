@@ -25,31 +25,31 @@ Non-Consumable");
 
         public override bool UseItem(Player player)
         {
-            AAWorld.downedAkuma = false;
-            AAWorld.downedAllAncients = false;
-            AAWorld.downedAshe = false;
-            AAWorld.downedBrood = false;
-            AAWorld.downedDB = false;
-            AAWorld.downedNC = false;
-            AAWorld.downedDjinn = false;
-            AAWorld.downedEquinox = false;
-            AAWorld.downedFungus = false;
-            AAWorld.downedGrips = false;
-            AAWorld.downedHaruka = false;
-            AAWorld.downedHydra = false;
-            AAWorld.downedMonarch = false;
-            AAWorld.downedRajah = false;
-            AAWorld.downedSag = false;
-            AAWorld.downedSAncient = false;
-            AAWorld.downedSerpent = false;
-            AAWorld.downedShen = false;
-            AAWorld.downedSisters = false;
-            AAWorld.downedYamata = false;
-            AAWorld.downedZero = false;
-            AAWorld.downedRajahsRevenge = false;
-            AAWorld.downedAthena = false;
-            AAWorld.downedAnubis = false;
-            AAWorld.downedGreed = false;
+            AAWorld.downedAkuma = true;
+            AAWorld.downedAllAncients = true;
+            AAWorld.downedAshe = true;
+            AAWorld.downedBrood = true;
+            AAWorld.downedDB = true;
+            AAWorld.downedNC = true;
+            AAWorld.downedDjinn = true;
+            AAWorld.downedEquinox = true;
+            AAWorld.downedFungus = true;
+            AAWorld.downedGrips = true;
+            AAWorld.downedHaruka = true;
+            AAWorld.downedHydra = true;
+            AAWorld.downedMonarch = true;
+            AAWorld.downedRajah = true;
+            AAWorld.downedSag = true;
+            AAWorld.downedSAncient = true;
+            AAWorld.downedSerpent = true;
+            AAWorld.downedShen = true;
+            AAWorld.downedSisters = true;
+            AAWorld.downedYamata = true;
+            AAWorld.downedZero = true;
+            AAWorld.downedRajahsRevenge = true;
+            AAWorld.downedAthena = true;
+            AAWorld.downedAnubis = true;
+            AAWorld.downedGreed = true;
             return true;
         }
     }

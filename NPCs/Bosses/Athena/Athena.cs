@@ -339,7 +339,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
             }
 
-            if (player.Center.X < npc.Center.X)
+            if (player.Center.X < npc.Center.X + 32)
             {
                 npc.direction = -1;
             }

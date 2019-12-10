@@ -22,7 +22,7 @@ namespace AAMod.Items.Walls
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Doomsday Curcuit Wall");
+            DisplayName.SetDefault("Doomsday Circuit Wall");
         }
         public override void AddRecipes()
         {

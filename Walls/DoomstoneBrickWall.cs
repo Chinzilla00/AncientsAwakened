@@ -8,8 +8,9 @@ namespace AAMod.Walls
     public class DoomstoneBrickWall : ModWall
 	{
 		public override void SetDefaults()
-		{
-			dustType = mod.DustType("DoomDust");
+        {
+            Main.wallLight[Type] = true;
+            dustType = mod.DustType("DoomDust");
 			AddMapEntry(new Color(10, 10, 10));
             soundType = 21;
             drop = mod.ItemType("DoomstoneBrickWall");

@@ -10,8 +10,8 @@ namespace AAMod.Projectiles
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Laser");     
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
+			DisplayName.SetDefault("Laser");
+            ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
 			ProjectileID.Sets.TrailingMode[projectile.type] = 0;        
 		}
 
@@ -24,11 +24,10 @@ namespace AAMod.Projectiles
 			projectile.hostile = false;         
 			projectile.ranged = true;           
 			projectile.timeLeft = 600;          
-			projectile.alpha = 255;             //The transparency of the projectile, 255 for completely transparent. (aiStyle 1 quickly fades the projectile in)
+			projectile.alpha = 255;
 			projectile.light = 0f;            
-			projectile.ignoreWater = true;          //Does the projectile's speed be influenced by water?
-			projectile.tileCollide = true;          //Can the projectile collide with tiles?
-			projectile.extraUpdates = 1;            
+			projectile.ignoreWater = true;
+			projectile.tileCollide = true;        
 			aiType = ProjectileID.Bullet;           
 		}
 		

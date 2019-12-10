@@ -9,7 +9,7 @@ namespace AAMod.Items.Blocks
         {
             DisplayName.SetDefault("Furniture Dynamo");
             Tooltip.SetDefault(@"Combines all funiture-crafting stations into one block
-Now you don't have to clutter your base with 7 crafting stations!");
+Now you don't have to clutter your base with 12 crafting stations!");
         }
 
         public override void SetDefaults()

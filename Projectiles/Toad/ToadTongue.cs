@@ -138,7 +138,7 @@ namespace AAMod.Projectiles.Toad
 		{
             Player player = Main.player[projectile.owner];
             float TargetVelocity = 0;
-            if (projectile.ai[0] == 1f)
+            if (projectile.ai[0] == 1f && !target.boss)
             {
                 if (player.Center.X > target.Center.X)
                 {

@@ -30,7 +30,7 @@ namespace AAMod.Items.Ranged.Ammo
 		{
 			ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.ExplodingBullet, 500);
-			recipe.AddIngredient(mod.ItemType("DaybreakIncinerite"), 1);
+			recipe.AddIngredient(mod.ItemType("EventideAbyssium"), 1);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this, 500);
 			recipe.AddRecipe();

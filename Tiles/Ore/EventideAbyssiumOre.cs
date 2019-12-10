@@ -21,7 +21,7 @@ namespace AAMod.Tiles.Ore
             soundType = 21;
             TileID.Sets.JungleSpecial[Type] = true;
             Main.tileLighted[Type] = true;
-            drop = mod.ItemType("EventideAbyssiumOre");   //put your CustomBlock name
+            drop = mod.ItemType("EventideAbyssiumOre");   
             dustType = mod.DustType("YamataDust");
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Eventide Abyssium Ore");
@@ -32,7 +32,7 @@ namespace AAMod.Tiles.Ore
         public override void PostDraw(int x, int y, SpriteBatch sb)
         {
             Tile tile = Main.tile[x, y];
-            if (glow && tile != null && tile.active() && tile.type == this.Type)
+            if (glow && tile != null && tile.active() && tile.type == Type)
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/EventideAbyssiumOre_Glow");
                 BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetYamataColorDim2);

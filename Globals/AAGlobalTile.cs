@@ -314,7 +314,7 @@ namespace AAMod
                         itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2356, 1, false, 0, false, false);
                     }
                 }
-                else if ((double)j < Main.worldSurface)
+                else if (j < Main.worldSurface)
                 {
                     int rand = WorldGen.genRand.Next(12);
                     if (rand == 0)
@@ -386,7 +386,7 @@ namespace AAMod
                         itemcreat = Item.NewItem(i * 16, j * 16, 16, 16, 2350, 1, false, 0, false, false);
                     }
                 }
-                else if ((double)j < Main.rockLayer)
+                else if (j < Main.rockLayer)
                 {
                     if (Main.player[Main.myPlayer].ZoneJungle)
                     {

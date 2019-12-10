@@ -439,9 +439,9 @@ namespace AAMod
                 npc.DropLoot(ItemID.Bone, Main.rand.Next(30, 45));
             }
 
-            if ((npc.type == NPCID.ArmoredViking || npc.type == NPCID.UndeadViking) && NPC.downedBoss3)
+            if ((npc.type == NPCID.ArmoredViking || npc.type == NPCID.UndeadViking) && NPC.downedBoss3 && Main.rand.Next(3) == 0)
             {
-                npc.DropLoot(ModContent.ItemType<Items.Materials.VikingRelic>(), Main.rand.Next(0, 3));
+                npc.DropLoot(ModContent.ItemType<Items.Materials.VikingRelic>(), Main.rand.Next(1, 3));
             }
 
             if (AASets.Goblins[npc.type] && NPC.downedGoblins)
@@ -1075,10 +1075,10 @@ namespace AAMod
 
         public void VanillaNPCSpawn(Player player)
         {
-            int spawnRangeXMin = (int)(player.position.X / 16f) - (int)((double)(NPC.sWidth / 16) * 0.7);
-            int spawnRangeXMax = (int)(player.position.X / 16f) + (int)((double)(NPC.sWidth / 16) * 0.7);
-            int spawnRangeYMin = (int)(player.position.Y / 16f) - (int)((double)(NPC.sHeight / 16) * 0.7);
-            int spawnRangeYMax = (int)(player.position.Y / 16f) + (int)((double)(NPC.sHeight / 16) * 0.7);
+            int spawnRangeXMin = (int)(player.position.X / 16f) - (int)(NPC.sWidth / 16 * 0.7);
+            int spawnRangeXMax = (int)(player.position.X / 16f) + (int)(NPC.sWidth / 16 * 0.7);
+            int spawnRangeYMin = (int)(player.position.Y / 16f) - (int)(NPC.sHeight / 16 * 0.7);
+            int spawnRangeYMax = (int)(player.position.Y / 16f) + (int)(NPC.sHeight / 16 * 0.7);
 
             int x = Main.rand.Next(spawnRangeXMin, spawnRangeXMax);
 			int y = Main.rand.Next(spawnRangeYMin, spawnRangeYMax);
@@ -1114,7 +1114,7 @@ namespace AAMod
                     npcid = NPC.NewNPC(x * 16 + 8, y * 16, 290, 0, 0f, 0f, 0f, 0f, 255);
                 }
             }
-            else if ((double)y <= Main.worldSurface && Main.dayTime && Main.eclipse)
+            else if (y <= Main.worldSurface && Main.dayTime && Main.eclipse)
 			{
                 bool flag = false;
                 if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
@@ -1126,10 +1126,8 @@ namespace AAMod
                     npcid = NPC.NewNPC(x * 16 + 8, y * 16, 477, 0, 0f, 0f, 0f, 0f, 255);
                 }
             }
-            else if ((double)y <= Main.worldSurface)
+            else if (y <= Main.worldSurface)
 			{
-                bool flag = NPC.AnyDanger();
-
                 if (player.ZoneSnow && Main.hardMode && Main.cloudAlpha > 0f && Main.rand.Next(15) == 0)
                 {
                     npcid = NPC.NewNPC(x * 16 + 8, y * 16, 243, 0, 0f, 0f, 0f, 0f, 255);
@@ -1164,7 +1162,7 @@ namespace AAMod
                     }
                 }
             }
-            else if (Main.hardMode && (double)y > Main.worldSurface && Main.rand.Next(40) == 0)
+            else if (Main.hardMode && y > Main.worldSurface && Main.rand.Next(40) == 0)
             {
                 if (Main.rand.Next(2) == 0 && player.ZoneCorrupt)
                 {
@@ -1208,7 +1206,7 @@ namespace AAMod
                 {
                     npcid = NPC.NewNPC(x * 16 + 8, y * 16, 195, 0, 0f, 0f, 0f, 0f, 255);
                 }
-                if ((double)y > (Main.rockLayer + (double)Main.maxTilesY) / 2.0 && Main.rand.Next(50) == 0)
+                if (y > (Main.rockLayer + Main.maxTilesY) / 2.0 && Main.rand.Next(50) == 0)
                 {
                     npcid = NPC.NewNPC(x * 16 + 8, y * 16, 45, 0, 0f, 0f, 0f, 0f, 255);
                 }
@@ -1226,10 +1224,10 @@ namespace AAMod
             if (player.GetModPlayer<AAPlayer>().luckycalm)
 			{
 				spawnRate = (int)((double)spawnRate * 30f);
-				maxSpawns = (int)((float)maxSpawns * 0.009f);
+				maxSpawns = (int)(maxSpawns * 0.009f);
             }
 
-            if(!player.GetModPlayer<AAPlayer>().luckycalm && player.GetModPlayer<AAPlayer>().StripeManSpawn && !player.calmed && player.active && !player.dead && player.activeNPCs < (float)maxSpawns && Main.rand.NextDouble()*(spawnRate/1.333f) < 1 )
+            if(!player.GetModPlayer<AAPlayer>().luckycalm && player.GetModPlayer<AAPlayer>().StripeManSpawn && !player.calmed && player.active && !player.dead && player.activeNPCs < maxSpawns && Main.rand.NextDouble()*(spawnRate/1.333f) < 1 )
             {
                 VanillaNPCSpawn(player);
             }
@@ -1389,8 +1387,6 @@ namespace AAMod
             {
                 npcCenter = player.Center;
             }
-
-            Mod mod = AAMod.instance;
 
             int RajahType = ModContent.NPCType<Rajah>();
             if (NPC.killCount[NPCID.Bunny] >= 1000)

@@ -17,7 +17,7 @@ namespace AAMod.Tiles.Ore
             TileID.Sets.Ore[Type] = true;
             soundType = 21;
             Main.tileLighted[Type] = true;
-            drop = mod.ItemType("Prism");   //put your CustomBlock name
+            drop = mod.ItemType("Prism");   
             dustType = DustID.Stone;
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Prism Ore");

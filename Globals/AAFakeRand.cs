@@ -49,7 +49,7 @@ namespace AAMod
 
 		protected override double Sample()
 		{
-			return (double)InternalSample() * 4.6566128752457969E-10;
+			return InternalSample() * 4.6566128752457969E-10;
 		}
 		private int InternalSample()
 		{
@@ -89,7 +89,7 @@ namespace AAMod
 			{
 				num = -num;
 			}
-			double num2 = (double)num;
+			double num2 = num;
 			num2 += 2147483646.0;
 			return num2 / 4294967293.0;
 		}
@@ -99,20 +99,20 @@ namespace AAMod
 			{
 				throw new ArgumentOutOfRangeException("minValue", "minValue must be less than maxValue");
 			}
-			long numfake = (long)((maxValue - minValue) * 2);
-            long num = (long)maxValue - (long)minValue;
+			long numfake = (maxValue - minValue) * 2;
+            long num = maxValue - (long)minValue;
 			double result = 0.0;
 			if (numfake <= 2147483647L)
 			{
-				result = Sample() * (double)numfake;
+				result = Sample() * numfake;
                 if (result > num && result <= num * 1.7) return minValue;
 				else if(result > num * 1.7) return maxValue - 1;
 				return (int)(result) + minValue;
 			}
-			result = GetSampleForLargeRange() * (double)numfake;
+			result = GetSampleForLargeRange() * numfake;
             if (result >= num && result <= num * 1.7) return minValue;
 			else if(result > num * 1.7) return maxValue - 1;
-			return (int)((long)(result) + (long)minValue);
+			return (int)((long)(result) + minValue);
 		}
 		public override int Next(int maxValue)
 		{
@@ -120,8 +120,8 @@ namespace AAMod
 			{
 				throw new ArgumentOutOfRangeException("maxValue", "maxValue must be positive.");
 			}
-            long numfake = (long)(maxValue * 2);
-			double result = Sample() * (double)numfake;
+            long numfake = maxValue * 2;
+			double result = Sample() * numfake;
             if (result >= maxValue && result <= maxValue * 1.7) return 0;
 			else if(result > maxValue * 1.7) return maxValue - 1;
 			return (int)result;

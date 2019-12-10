@@ -19,10 +19,15 @@ namespace AAMod.Projectiles
             aiType = 132;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 10;
+            projectile.alpha = 255;
         }
 
         public override void AI()
         {
+            if (projectile.alpha > 0)
+            {
+                projectile.alpha -= 5;
+            }
             const int aislotHomingCooldown = 0;
             const int homingDelay = 10;
             const float desiredFlySpeedInPixelsPerFrame = 60;

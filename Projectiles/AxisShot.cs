@@ -40,7 +40,7 @@ namespace AAMod.Projectiles
 			if (projectile.owner == Main.myPlayer)
 			{
 				projectile.localAI[0] += 1f;
-				if (projectile.localAI[0] >= 4f)
+				if (projectile.localAI[0] >= 8f)
 				{
 					projectile.localAI[0] = 0f;
 					int num566 = 0;

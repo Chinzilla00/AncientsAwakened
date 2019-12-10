@@ -30,7 +30,7 @@ namespace AAMod.Items.Armor.Doomite
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DoomiteUPlate", 5);
+            recipe.AddIngredient(null, "DoomiteUPlate");
             recipe.AddIngredient(null, "Doomite", 10);
             recipe.AddIngredient(ItemID.Coral, 8);
             recipe.AddIngredient(ItemID.FossilOre, 8);

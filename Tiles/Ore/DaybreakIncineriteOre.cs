@@ -22,7 +22,7 @@ namespace AAMod.Tiles.Ore
             //true for block to emit light
             soundType = 21;
             Main.tileLighted[Type] = true;
-            drop = mod.ItemType("DaybreakIncineriteOre");   //put your CustomBlock name
+            drop = mod.ItemType("DaybreakIncineriteOre");   
             dustType = mod.DustType("AkumaADust");
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Daybreak Incinerite Ore");
@@ -33,7 +33,7 @@ namespace AAMod.Tiles.Ore
         public override void PostDraw(int x, int y, SpriteBatch sb)
         {
             Tile tile = Main.tile[x, y];
-            if (glow && tile != null && tile.active() && tile.type == this.Type)
+            if (glow && tile != null && tile.active() && tile.type == Type)
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/DaybreakIncineriteOre_Glow");
                 BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetAkumaColorBright);

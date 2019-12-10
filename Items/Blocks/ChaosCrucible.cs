@@ -13,8 +13,7 @@ namespace AAMod.Items.Blocks
         {
             
             DisplayName.SetDefault("Chaos Crucible");
-            Tooltip.SetDefault(@"Even chaos requires a steady hand and a gigantic forge to work with
-also acts as all vanilla crafting stations");
+            Tooltip.SetDefault(@"Even chaos requires a steady hand and a gigantic forge to work with");
         }
 
         public override void SetDefaults()

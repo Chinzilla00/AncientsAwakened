@@ -20,7 +20,7 @@ namespace AAMod.Tiles.Ore
             TileID.Sets.JungleSpecial[Type] = true;
             soundType = 21;
             Main.tileLighted[Type] = true;
-            drop = mod.ItemType("Abyssium");   //put your CustomBlock name
+            drop = mod.ItemType("Abyssium");   
             dustType = mod.DustType("AbyssiumDust");
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Abyssium Ore");

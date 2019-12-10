@@ -11,7 +11,6 @@ namespace AAMod.Items.Dev
         {
             DisplayName.SetDefault("Thunder Lord");
             Tooltip.SetDefault(@"Fires off Thundershots and has a rare chance to shoot a Supercharged Thundershot that calls down Thunder from the sky
-
 Storm Rifle EX");
         }
 

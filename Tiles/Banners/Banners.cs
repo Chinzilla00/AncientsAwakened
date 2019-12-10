@@ -23,7 +23,7 @@ namespace AAMod.Tiles.Banners
 			TileObjectData.newTile.CoordinatePadding = 0;		
 			TileObjectData.newTile.AnchorTop = new AnchorData(AnchorType.SolidBottom, TileObjectData.newTile.Width, 0);			
             TileObjectData.newTile.StyleHorizontal = true;
-            TileObjectData.addTile(this.Type);
+            TileObjectData.addTile(Type);
 			dustType = -1;
 			disableSmartCursor = true;
 			ModTranslation name = CreateMapEntryName();

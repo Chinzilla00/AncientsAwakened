@@ -53,8 +53,11 @@ namespace AAMod.Projectiles     //We need this to basically indicate the folder 
             player.itemTime = 2;
             player.itemAnimation = 2;
             player.itemRotation = projectile.rotation;
-            int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Electric); 
-            Main.dust[dust].velocity /= 1f;
+            if (Main.rand.Next(4) == 0)
+            {
+                int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Electric, 0, 0, 0, default, .1f);
+                Main.dust[dust].velocity /= 2f;
+            }
  
         }
 

@@ -10,9 +10,9 @@ namespace AAMod.Tiles
         {
             Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
-			Main.tileBlendAll[this.Type] = false;
+			Main.tileBlendAll[Type] = false;
             Main.tileBlockLight[Type] = true;
-            drop = mod.ItemType("ScorchedDynastyWood");   //put your CustomBlock name
+            drop = mod.ItemType("ScorchedDynastyWood");   
             AddMapEntry(new Color(153, 100, 0));
 			minPick = 0;
         }

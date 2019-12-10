@@ -1,6 +1,7 @@
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -32,7 +33,17 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
 
         public override void AI()
         {
-            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(180f);
+            if (projectile.velocity.X < 0f)
+            {
+                projectile.spriteDirection = -1;
+                projectile.rotation = (float)Math.Atan2(-projectile.velocity.Y, -projectile.velocity.X);
+            }
+            else
+            {
+                projectile.spriteDirection = 1;
+                projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X);
+            }
+
             if (projectile.frameCounter++ > 5)
             {
                 projectile.frameCounter = 0;

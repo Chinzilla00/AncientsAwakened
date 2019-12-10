@@ -18,7 +18,7 @@ namespace AAMod.Tiles
             Main.tileBlockLight[Type] = true;
             SetModTree(new OroborosTree());
             soundType = 21;
-            drop = mod.ItemType("DoomstoneB");   //put your CustomBlock name
+            drop = mod.ItemType("DoomstoneB");   
             dustType = mod.DustType("DoomDust");
             AddMapEntry(new Color(40, 20, 20));
 			minPick = 60;

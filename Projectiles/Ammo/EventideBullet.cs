@@ -15,7 +15,8 @@ namespace AAMod.Projectiles.Ammo
 			ProjectileID.Sets.TrailingMode[projectile.type] = 1;        
 		}
 
-		public override void SetDefaults() {
+		public override void SetDefaults() 
+        {
 			projectile.width = 10;               
 			projectile.height = 8;              
 			projectile.aiStyle = 1;             
@@ -32,31 +33,33 @@ namespace AAMod.Projectiles.Ammo
 			projectile.extraUpdates = 10;            
 			aiType = ProjectileID.Bullet;      
 		}
-                     Vector2? initialPos = null;
-                     Vector2? initialVel = null;
-                     public override void AI()
-                       {
-                        Lighting.AddLight(projectile.Center, (103 - projectile.alpha) * 1f / 100f, (0 - projectile.alpha) * 1f / 0f, (100 - projectile.alpha) * 1f / 100f);
-                          if (initialPos == null && initialVel == null)
-                           {
-                             initialPos = projectile.position;
-                             initialVel = projectile.velocity;
-                           }
-                       }
 
-		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-                       {
+        Vector2? initialPos = null;
+        Vector2? initialVel = null;
+        public override void AI()
+        {
+            Lighting.AddLight(projectile.Center, (103 - projectile.alpha) * 1f / 100f, (0 - projectile.alpha) * 1f / 0f, (100 - projectile.alpha) * 1f / 100f);
+            if (initialPos == null && initialVel == null)
+            {
+                initialPos = projectile.position;
+                initialVel = projectile.velocity;
+            }
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        { 
 			Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
-			for (int k = 0; k < projectile.oldPos.Length; k++) {
+			for (int k = 0; k < projectile.oldPos.Length; k++) 
+            {
 				Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-				Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
+				Color color = projectile.GetAlpha(lightColor) * ((projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
 				spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
 			}
 			return true;
 		}
 
-            public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
-          {
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
             target.immune[projectile.owner] = 1;
             target.AddBuff(mod.BuffType("Moonraze"), 500);
 
@@ -71,21 +74,19 @@ namespace AAMod.Projectiles.Ammo
                 num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100);
                 Main.dust[num580].velocity *= 1.5f;
             }
-          }
+        }
 
-           public override void Kill(int timeLeft)
+        public override void Kill(int timeLeft)
+        {
+            if (initialPos != null && initialVel != null)
             {
-                if (initialPos != null && initialVel != null)
-                {
-                  Projectile.NewProjectile((Vector2)initialPos, (Vector2)initialVel, mod.ProjectileType("EventideBullet1"), projectile.damage, projectile.knockBack, projectile.owner);
-                }
-             {
-                int num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default, 2f);
-                Main.dust[num580].noGravity = true;
-                Main.dust[num580].velocity *= 1.5f;
-                num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100);
-                Main.dust[num580].velocity *= 1.5f;
-             }
+                Projectile.NewProjectile((Vector2)initialPos, (Vector2)initialVel, mod.ProjectileType("EventideBullet1"), projectile.damage, projectile.knockBack, projectile.owner);
             }
-	}
+            int num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100, default, 2f);
+            Main.dust[num580].noGravity = true;
+            Main.dust[num580].velocity *= 1.5f;
+            num580 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), -projectile.velocity.X * 0.2f, -projectile.velocity.Y * 0.2f, 100);
+            Main.dust[num580].velocity *= 1.5f;
+        }
+    }
 }

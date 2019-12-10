@@ -18,7 +18,7 @@ namespace AAMod.Tiles.Ore
             Main.tileValue[Type] = 860; 
             SetModTree(new OroborosTree());
             soundType = 21;
-            drop = mod.ItemType("Apocalyptite");   //put your CustomBlock name
+            drop = mod.ItemType("Apocalyptite");   
             dustType = mod.DustType("DoomDust");
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Apocalyptite Ore");

@@ -58,15 +58,15 @@ namespace AAMod
                         int projectileX = (int)(projectile.Center.X / 16f);
 			            int projectileY = (int)(projectile.Center.Y / 16f);
                         int WorldHeightType;
-                        if ((double)projectileY < Main.worldSurface * 0.5)
+                        if (projectileY < Main.worldSurface * 0.5)
                         {
                             WorldHeightType = 0;
                         }
-                        else if ((double)projectileY < Main.worldSurface)
+                        else if (projectileY < Main.worldSurface)
                         {
                             WorldHeightType = 1;
                         }
-                        else if ((double)projectileY < Main.rockLayer)
+                        else if (projectileY < Main.rockLayer)
                         {
                             WorldHeightType = 2;
                         }
@@ -181,8 +181,8 @@ namespace AAMod
                         }
                         else
                         {
-                            item.position.X = projectile.Center.X - (float)(item.width / 2);
-                            item.position.Y = projectile.Center.Y - (float)(item.height / 2);
+                            item.position.X = projectile.Center.X - item.width / 2;
+                            item.position.Y = projectile.Center.Y - item.height / 2;
                             item.active = true;
                             ItemText.NewText(item, 0, false, false);
                         }

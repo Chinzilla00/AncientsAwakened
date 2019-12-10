@@ -9,19 +9,19 @@ namespace AAMod.Tiles.Bars
     {
         public override void SetDefaults()
         {
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
-            Main.tileFrameImportant[Type] = true;
-            Main.tileNoAttach[Type] = false;
-            Main.tileSolidTop[Type] = true;
+            soundType = 21;
+
+            Main.tileShine[Type] = 1100;
             Main.tileSolid[Type] = true;
-            Main.tileLavaDeath[Type] = true;
-            TileObjectData.newTile.Height = 1;
-            TileObjectData.newTile.CoordinateHeights = new[] { 16 };
-            TileObjectData.newTile.CoordinateWidth = 16;
+            Main.tileSolidTop[Type] = true;
+            Main.tileFrameImportant[Type] = true;
+
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style1x1);
             TileObjectData.newTile.StyleHorizontal = true;
-            TileObjectData.newTile.StyleWrapLimit = 111;
+            TileObjectData.newTile.LavaDeath = false;
             TileObjectData.addTile(Type);
-            drop = mod.ItemType("DaybreakIncinerite");   //put your CustomBlock name
+
+            drop = mod.ItemType("DaybreakIncinerite");   
             dustType = ModContent.DustType<Dusts.DaybreakIncineriteDust>();
             AddMapEntry(new Color(160, 100, 0));
 			minPick = 0;

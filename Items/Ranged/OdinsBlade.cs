@@ -31,15 +31,5 @@ namespace AAMod.Items.Ranged
             item.value = 100000;
             item.rare = 7;
         }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "SnowMana");
-            recipe.AddIngredient(ItemID.BorealWood, 1);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this, 50);
-            recipe.AddRecipe();
-        }
     }
 }

@@ -398,14 +398,14 @@ namespace AAMod
 		{
             if(player.GetModPlayer<AAPlayer>().StripeManOre)
             {
-                int tileTargetX = (int)(((float)Main.mouseX + Main.screenPosition.X) / 16f);
-				int tileTargetY = (int)(((float)Main.mouseY + Main.screenPosition.Y) / 16f);
+                int tileTargetX = (int)((Main.mouseX + Main.screenPosition.X) / 16f);
+				int tileTargetY = (int)((Main.mouseY + Main.screenPosition.Y) / 16f);
                 if(Main.tile[tileTargetX, tileTargetY].active() && Main.tile[tileTargetX, tileTargetY].type == 219 && item.createTile > 0 && (Main.tileSand[item.createTile] || TileID.Sets.Conversion.Sand[item.createTile]))
                 {
-                    bool flag = player.position.X / 16f - (float)Player.tileRangeX - (float)player.inventory[player.selectedItem].tileBoost - (float)player.blockRange <= (float)Player.tileTargetX && (player.position.X + (float)player.width) / 16f + (float)Player.tileRangeX + (float)player.inventory[player.selectedItem].tileBoost - 1f + (float)player.blockRange >= (float)Player.tileTargetX && player.position.Y / 16f - (float)Player.tileRangeY - (float)player.inventory[player.selectedItem].tileBoost - (float)player.blockRange <= (float)Player.tileTargetY && (player.position.Y + (float)player.height) / 16f + (float)Player.tileRangeY + (float)player.inventory[player.selectedItem].tileBoost - 2f + (float)player.blockRange >= (float)Player.tileTargetY;
+                    bool flag = player.position.X / 16f - Player.tileRangeX - player.inventory[player.selectedItem].tileBoost - player.blockRange <= Player.tileTargetX && (player.position.X + player.width) / 16f + Player.tileRangeX + player.inventory[player.selectedItem].tileBoost - 1f + player.blockRange >= Player.tileTargetX && player.position.Y / 16f - Player.tileRangeY - player.inventory[player.selectedItem].tileBoost - player.blockRange <= Player.tileTargetY && (player.position.Y + player.height) / 16f + Player.tileRangeY + player.inventory[player.selectedItem].tileBoost - 2f + player.blockRange >= Player.tileTargetY;
                     if(flag && player.itemTime == 0 && player.itemAnimation > 0 && player.controlUseItem)
                     {
-                        player.itemTime = (int)((float)player.inventory[player.selectedItem].useTime / PlayerHooks.TotalUseTimeMultiplier(player, player.inventory[player.selectedItem]));
+                        player.itemTime = (int)(player.inventory[player.selectedItem].useTime / PlayerHooks.TotalUseTimeMultiplier(player, player.inventory[player.selectedItem]));
 					    Main.PlaySound(7, -1, -1, 1, 1f, 0f);
                         ExtractinatorUse2(item.type);
                         for (int i = 0; i < 58; i++)

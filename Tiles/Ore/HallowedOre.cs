@@ -13,7 +13,7 @@ namespace AAMod.Tiles.Ore
 			Main.tileMergeDirt[Type] = true;
             Main.tileValue[Type] = 670; 
             Main.tileSpelunker[Type] = true;
-            Main.tileBlendAll[this.Type] = false;
+            Main.tileBlendAll[Type] = false;
             Main.tileBlockLight[Type] = true;  //true for block to emit light
             Main.tileLighted[Type] = true;
             drop = mod.ItemType("HallowedOre"); 

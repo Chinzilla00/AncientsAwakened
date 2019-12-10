@@ -586,6 +586,7 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
+            bool Underground = player.Center.Y > 3200f;
             bool useAthena = NPC.AnyNPCs(ModContent.NPCType<AthenaA>());
             bool useShenA = NPC.AnyNPCs(ModContent.NPCType<ShenA>());
             bool useShen = NPC.AnyNPCs(ModContent.NPCType<Shen>()) && !useShenA;
@@ -602,14 +603,18 @@ namespace AAMod
             player.ManageSpecialBiomeVisuals("AAMod:ShenASky", useShenA);
             player.ManageSpecialBiomeVisuals("AAMod:AkumaSky", useAkuma);
             player.ManageSpecialBiomeVisuals("AAMod:YamataSky", useYamata);
-            player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
+
+            if (!Underground)
+            {
+                player.ManageSpecialBiomeVisuals("AAMod:InfernoSky", useInferno);
+                player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
+            }
 
             if (Main.UseHeatDistortion)
             {
                 player.ManageSpecialBiomeVisuals("HeatDistortion", useAkuma || useInferno);
             }
 
-            player.ManageSpecialBiomeVisuals("AAMod:MireSky", useMire);
             player.ManageSpecialBiomeVisuals("AAMod:VoidSky", useVoid);
         }
 
@@ -698,9 +703,9 @@ namespace AAMod
             {
                 if (player.whoAmI == Main.myPlayer && !player.immune && !npc.dontTakeDamage)
                 {
-                    int RDamage = (int)((float)npc.damage * player.allDamage * 0.433f);
+                    int RDamage = (int)(npc.damage * player.allDamage * 0.433f);
                     int direc = -1;
-                    if (npc.position.X + (float)(npc.width / 2) < player.position.X + (float)(player.width / 2))
+                    if (npc.position.X + npc.width / 2 < player.position.X + player.width / 2)
                     {
                         direc = 1;
                     }
@@ -2781,6 +2786,17 @@ namespace AAMod
 
                 player.lifeRegenTime = 0;
                 player.lifeRegen -= 2;
+            }
+
+            if (SagShield)
+            {
+                if (player.lifeRegen > 0)
+                {
+                    player.lifeRegen = 0;
+                }
+
+                player.lifeRegenTime = 0;
+                player.lifeRegen += 2;
             }
 
             if (Unstable)

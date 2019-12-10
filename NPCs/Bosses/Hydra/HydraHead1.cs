@@ -93,6 +93,12 @@ namespace AAMod.NPCs.Bosses.Hydra
         public int movementVariance = 40;
         public bool fireAttack = false;
 
+        public override bool PreAI()
+        {
+
+            return true;
+        }
+
         public override void AI()
         {
             if (bodyNPC == null)
@@ -106,7 +112,9 @@ namespace AAMod.NPCs.Bosses.Hydra
 			if(bodyNPC == null)
 				return;
 
-            if (!bodyNPC.active)
+            AssignHead();
+
+            if (!bodyNPC.active || !NPC.AnyNPCs(ModContent.NPCType<Hydra>()))
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghosting'
                 {
@@ -179,6 +187,34 @@ namespace AAMod.NPCs.Bosses.Hydra
             }
             npc.position += Body.npc.position - Body.npc.oldPosition;
             npc.spriteDirection = -1;
+        }
+
+        public void AssignHead()
+        {
+            if (npc.type == ModContent.NPCType<HydraHead4>() && Body.Head4 == null)
+            {
+                Body.Head4 = Main.npc[npc.whoAmI];
+            }
+            if (npc.type == ModContent.NPCType<HydraHead5>() && Body.Head5 == null)
+            {
+                Body.Head5 = Main.npc[npc.whoAmI];
+            }
+            if (npc.type == ModContent.NPCType<HydraHead6>() && Body.Head6 == null)
+            {
+                Body.Head6 = Main.npc[npc.whoAmI];
+            }
+            if (npc.type == ModContent.NPCType<HydraHead7>() && Body.Head7 == null)
+            {
+                Body.Head7 = Main.npc[npc.whoAmI];
+            }
+            if (npc.type == ModContent.NPCType<HydraHead8>() && Body.Head8 == null)
+            {
+                Body.Head8 = Main.npc[npc.whoAmI];
+            }
+            if (npc.type == ModContent.NPCType<HydraHead9>() && Body.Head9 == null)
+            {
+                Body.Head9 = Main.npc[npc.whoAmI];
+            }
         }
 
         public override void PostAI()

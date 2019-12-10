@@ -19,7 +19,7 @@ namespace AAMod.Tiles.Ore
             Main.tileBlockLight[Type] = true;  //true for block to emit light
             Main.tileLighted[Type] = true;
             soundType = 21;
-            drop = mod.ItemType("Incinerite");   //put your CustomBlock name
+            drop = mod.ItemType("Incinerite");   
             dustType = mod.DustType("IncineriteDust");
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Incinerite Ore");
@@ -42,7 +42,7 @@ namespace AAMod.Tiles.Ore
         public override void PostDraw(int x, int y, SpriteBatch sb)
         {
             Tile tile = Main.tile[x, y];
-            if (tile != null && tile.active() && tile.type == this.Type)
+            if (tile != null && tile.active() && tile.type == Type)
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/IncineriteOre_glow");
                 BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetIncineriteColorDim);

@@ -16,7 +16,7 @@ namespace AAMod.Tiles
             Main.tileBlockLight[Type] = true;
             soundType = 21;
             dustType = mod.DustType("RazewoodDust");
-            drop = mod.ItemType("Torchice");   //put your CustomBlock name
+            drop = mod.ItemType("Torchice");   
             AddMapEntry(new Color(50, 35, 0));
             TileID.Sets.Ices[Type] = true;
         }

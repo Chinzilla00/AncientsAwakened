@@ -11,7 +11,7 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = false;
             Main.tileBlockLight[Type] = true;
-            drop = mod.ItemType("ScorchedShingles");   //put your CustomBlock name
+            drop = mod.ItemType("ScorchedShingles");   
             AddMapEntry(new Color(153, 50, 0));
         }
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)

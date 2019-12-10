@@ -68,6 +68,7 @@ Hold down and jump to hover for an extended period of time
             {
                 player.wingFrame = 0;
             }
+
             if (player.controlDown && player.controlJump && player.wingTime > 0f && !player.merman)
             {
                 player.velocity.Y *= 0.01f;

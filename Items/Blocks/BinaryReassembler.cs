@@ -12,8 +12,7 @@ namespace AAMod.Items.Blocks
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Binary Fragmentation Reassembler");
-            Tooltip.SetDefault(@"Reality has never been so easy to manipulate
-also acts as all vanilla crafting stations");
+            Tooltip.SetDefault(@"Reality has never been so easy to manipulate");
         }
 
         public override void SetDefaults()

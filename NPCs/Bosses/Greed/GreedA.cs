@@ -147,7 +147,7 @@ namespace AAMod.NPCs.Bosses.Greed
                             int tileCheck1 = (int)((player.Center.X + A)/16f);
                             int tileCheck2 = (int)((player.Center.Y + A)/16f);
                             Tile TileCollide = Main.tile[tileCheck1, tileCheck2];
-                            if(!TileCollide.active() || !Main.tileSolid[(int)TileCollide.type])
+                            if(!TileCollide.active() || !Main.tileSolid[TileCollide.type])
                             {
                                 int Minion = NPC.NewNPC((int)player.Center.X + A, (int)player.Center.Y + A, ModContent.NPCType<GreedTurret>(), 0);
                                 Main.npc[Minion].netUpdate = true;

@@ -13,7 +13,7 @@ namespace AAMod.Tiles.Ore
             Main.tileBlockLight[Type] = false;
             Main.tileValue[Type] = 370; 
             Main.tileSpelunker[Type] = true;
-            drop = mod.ItemType("VikingRelic");   //put your CustomBlock name
+            drop = mod.ItemType("VikingRelic");   
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Viking Relic");
             AddMapEntry(new Color(58, 68, 102), name);

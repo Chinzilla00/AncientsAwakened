@@ -15,7 +15,7 @@ namespace AAMod.Tiles.Ore
             Main.tileMergeDirt[Type] = false;
             Main.tileValue[Type] = 870; 
             soundType = 21;
-            drop = mod.ItemType("DiscordiumOre");   //put your CustomBlock name
+            drop = mod.ItemType("DiscordiumOre");   
             dustType = mod.DustType("DoomDust");
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Discordium Ore");

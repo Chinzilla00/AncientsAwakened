@@ -21,7 +21,7 @@ namespace AAMod.Tiles
             minPick = 65;
             TileID.Sets.JungleSpecial[Type] = true;
             dustType = mod.DustType("DeepAbyssiumDust");
-            drop = mod.ItemType("Depthstone");   //put your CustomBlock name
+            drop = mod.ItemType("Depthstone");   
             AddMapEntry(new Color(27, 19, 50));
         }
     }

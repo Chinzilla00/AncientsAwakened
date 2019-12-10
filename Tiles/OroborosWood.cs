@@ -13,7 +13,7 @@ namespace AAMod.Tiles
             //true for block to emit light
             soundType = 21;
             Main.tileBlockLight[Type] = true;
-            drop = mod.ItemType("OroborosWood");   //put your CustomBlock name
+            drop = mod.ItemType("OroborosWood");   
             dustType = mod.DustType("DoomDust");
             AddMapEntry(new Color(60, 60, 60));
         }

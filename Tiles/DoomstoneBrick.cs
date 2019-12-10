@@ -14,7 +14,7 @@ namespace AAMod.Tiles
             Main.tileBlockLight[Type] = true;
             //true for block to emit light
             soundType = 21;
-            drop = mod.ItemType("DoomstoneBrick");   //put your CustomBlock name
+            drop = mod.ItemType("DoomstoneBrick");   
             dustType = mod.DustType("DoomDust");
             AddMapEntry(new Color(40, 20, 20));
 			minPick = 225;

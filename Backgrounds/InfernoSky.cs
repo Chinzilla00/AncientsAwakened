@@ -154,21 +154,21 @@ namespace AAMod.Backgrounds
             for (int i = 0; i < Meteors.Length; i++)
             {
                 float num = i / (float)Meteors.Length;
-                Meteors[i].Position.X = num * (Main.maxTilesX * 16f) + this._random.NextFloat() * 40f - 20f;
-                Meteors[i].Position.Y = this._random.NextFloat() * -((float)Main.worldSurface * 16f + 10000f) - 10000f;
-                if (this._random.Next(3) != 0)
+                Meteors[i].Position.X = num * (Main.maxTilesX * 16f) + _random.NextFloat() * 40f - 20f;
+                Meteors[i].Position.Y = _random.NextFloat() * -((float)Main.worldSurface * 16f + 10000f) - 10000f;
+                if (_random.Next(3) != 0)
                 {
-                    Meteors[i].Depth = this._random.NextFloat() * 3f + 1.8f;
+                    Meteors[i].Depth = _random.NextFloat() * 3f + 1.8f;
                 }
                 else
                 {
-                    Meteors[i].Depth = this._random.NextFloat() * 5f + 4.8f;
+                    Meteors[i].Depth = _random.NextFloat() * 5f + 4.8f;
                 }
-                Meteors[i].FrameCounter = this._random.Next(12);
-                Meteors[i].Scale = this._random.NextFloat() * 0.5f + 1f;
+                Meteors[i].FrameCounter = _random.Next(12);
+                Meteors[i].Scale = _random.NextFloat() * 0.5f + 1f;
                 Meteors[i].StartX = Meteors[i].Position.X;
             }
-            Array.Sort(Meteors, new Comparison<Meteor>(this.SortMethod));
+            Array.Sort(Meteors, new Comparison<Meteor>(SortMethod));
         }
         private int SortMethod(Meteor meteor1, Meteor meteor2)
         {

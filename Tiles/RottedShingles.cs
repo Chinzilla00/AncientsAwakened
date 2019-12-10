@@ -11,7 +11,7 @@ namespace AAMod.Tiles
             Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = false;
             Main.tileBlockLight[Type] = true;
-            drop = mod.ItemType("RottedShingles");   //put your CustomBlock name
+            drop = mod.ItemType("RottedShingles");   
             AddMapEntry(new Color(0, 0, 50));
 			minPick = 0;
         }

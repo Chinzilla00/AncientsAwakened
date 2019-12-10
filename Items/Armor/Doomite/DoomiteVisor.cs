@@ -54,7 +54,7 @@ namespace AAMod.Items.Armor.Doomite
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "DoomiteUHelm", 5);
+            recipe.AddIngredient(null, "DoomiteUHelm");
             recipe.AddIngredient(null, "Doomite", 5);
             recipe.AddIngredient(ItemID.Coral, 5);
             recipe.AddIngredient(ItemID.FossilOre, 5);

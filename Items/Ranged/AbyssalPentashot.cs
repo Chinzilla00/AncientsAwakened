@@ -2,6 +2,7 @@ using Terraria;
 using System;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Ranged
 {
@@ -15,7 +16,7 @@ namespace AAMod.Items.Ranged
 
         public override void SetDefaults()
         {
-            item.damage = 15;
+            item.damage = 20;
             item.noMelee = true;
             item.ranged = true;
             item.width = 50;
@@ -32,7 +33,7 @@ namespace AAMod.Items.Ranged
             item.shootSpeed = 12f;
         }
 
-		public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 		    float spread = 20f * 0.0174f;
 		    float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));

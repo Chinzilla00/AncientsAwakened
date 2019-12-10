@@ -43,10 +43,10 @@ You can put any sand into the Extractinator");
 				Player.tileRangeY += 4;
 			}
 
-			Vector2 vector = new Vector2((float)(player.width / 2 + 8 * player.direction), 2f);
+			Vector2 vector = new Vector2(player.width / 2 + 8 * player.direction, 2f);
 			if (player.fullRotation != 0f)
 			{
-				vector = vector.RotatedBy((double)player.fullRotation, player.fullRotationOrigin);
+				vector = vector.RotatedBy(player.fullRotation, player.fullRotationOrigin);
 			}
 			int i = (int)(player.position.X + vector.X) / 16;
 			int j = (int)(player.position.Y + vector.Y) / 16;

@@ -1351,7 +1351,7 @@ namespace AAMod
             Main.snowTiles += tileCounts[ModContent.TileType<Torchice>()] + tileCounts[ModContent.TileType<IndigoIce>()] + tileCounts[ModContent.TileType<TorchAsh>()];
             mireTiles = tileCounts[ModContent.TileType<MireGrass>()]+ tileCounts[ModContent.TileType<Depthstone>()] + tileCounts[ModContent.TileType<Depthsand>()] + tileCounts[ModContent.TileType<Depthsandstone>()] + tileCounts[ModContent.TileType<DepthsandHardened>()] + tileCounts[ModContent.TileType<IndigoIce>()];
             infernoTiles = tileCounts[ModContent.TileType<InfernoGrass>()]+ tileCounts[ModContent.TileType<Torchstone>()] + tileCounts[ModContent.TileType<Torchsand>()] + tileCounts[ModContent.TileType<Torchsandstone>()] + tileCounts[ModContent.TileType<TorchsandHardened>()] + tileCounts[ModContent.TileType<Torchice>()] + tileCounts[ModContent.TileType<TorchAsh>()];
-            voidTiles = tileCounts[ModContent.TileType<Doomstone>()] + tileCounts[ModContent.TileType<Apocalyptite>()];
+            voidTiles = tileCounts[ModContent.TileType<Doomstone>()] + tileCounts[ModContent.TileType<Apocalyptite>()] + tileCounts[ModContent.TileType<Doomgrass>()] + tileCounts[ModContent.TileType<DoomstoneB>()];
             mushTiles = tileCounts[ModContent.TileType<Mycelium>() ];
             Main.jungleTiles += mireTiles;
             pagodaTiles = tileCounts[ModContent.TileType<ScorchedDynastyWoodS>()] + tileCounts[ModContent.TileType<ScorchedShinglesS>()];
