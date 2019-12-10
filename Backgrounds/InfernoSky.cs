@@ -83,12 +83,12 @@ namespace AAMod.Backgrounds
                         if (Main.time < 27000.0)
                         {
                             num26 = Math.Pow(1.0 - Main.time / 54000.0 * 2.0, 2.0);
-                            num21 = (int)(bgTop + num26 * 250.0 + 180.0);
+                            num21 = (int)(bgTop + num26 * 250.0 + 220.0);
                         }
                         else
                         {
                             num26 = Math.Pow((Main.time / 54000.0 - 0.5) * 2.0, 2.0);
-                            num21 = (int)(bgTop + num26 * 250.0 + 180.0);
+                            num21 = (int)(bgTop + num26 * 250.0 + 220.0);
                         }
                         num22 = (float)(1.2 - num26 * 0.4);
                     }

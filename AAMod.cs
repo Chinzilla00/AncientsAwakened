@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Diagnostics;
 using Terraria;
 using Terraria.GameContent.UI;
 using Terraria.Graphics.Effects;
@@ -20,6 +21,7 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.Utilities;
+using ReLogic.Graphics;
 
 namespace AAMod
 {
@@ -286,21 +288,6 @@ namespace AAMod
             AccessoryAbilityKey = RegisterHotKey(Lang.Hotkey("AccessoryAbilityKey"), "U");
             ArmorAbilityKey = RegisterHotKey(Lang.Hotkey("ArmorAbilityKey"), "Y");
 
-            if(AAConfigClient.Instance.AAStyleMainPage)
-            {
-                BackupVanillaBG(-1);
-                BackupVanillaBG(-2);
-                Main.logoTexture = instance.GetTexture("UI/LogoInferno");
-                Main.logo2Texture = instance.GetTexture("UI/LogoMire");
-            }
-
-            BackupVanillaBG(0);
-            BackupVanillaBG(171);
-            BackupVanillaBG(172);
-            BackupVanillaBG(173);
-            BackupVanillaBG(24);
-            BackupVanillaBG(25);
-
             if (!Main.dedServ)
             {
                 LoadClient();
@@ -334,6 +321,22 @@ namespace AAMod
             Ref<Effect> screenRef = new Ref<Effect>(GetEffect("Effects/Shockwave"));
             Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.VeryHigh);
             Filters.Scene["Shockwave"].Load();
+
+            if(AAConfigClient.Instance.AAStyleMainPage)
+            {
+                BackupVanillaBG(-1);
+                BackupVanillaBG(-2);
+            }
+
+            BackupVanillaBG(0);
+            BackupVanillaBG(171);
+            BackupVanillaBG(172);
+            BackupVanillaBG(173);
+            BackupVanillaBG(24);
+            BackupVanillaBG(25);
+            BackupVanillaBG(56);
+            BackupVanillaBG(57);
+            BackupVanillaBG(58);
 
             PremultiplyTexture(GetTexture("Backgrounds/VoidBH"));
             PremultiplyTexture(GetTexture("Backgrounds/Moon"));
@@ -570,19 +573,23 @@ namespace AAMod
         public override void Unload()
         {
             AAMenuset = false;
-            CleanAAmenu();
+            if(SkyManager.Instance["AAMod:AkumaSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:AkumaSky", new object[0]);
+            if(SkyManager.Instance["AAMod:MireSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:MireSky", new object[0]);
+            if(SkyManager.Instance["AAMod:VoidSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:VoidSky", new object[0]);
+
+            if (!Main.dedServ)
+            {
+                CleanAAmenu();
+                UnloadClient();
+            }
+            
+            CleanupStaticArrays();
+
             instance = null;
             Rift = null;
             RiftReturn = null;
             AccessoryAbilityKey = null;
             ArmorAbilityKey = null;
-
-            if (!Main.dedServ)
-            {
-                UnloadClient();
-            }
-            
-            CleanupStaticArrays();
         }
 
         public void UnloadClient()
@@ -602,15 +609,15 @@ namespace AAMod
             ResetBGTexture(-2);
             //Main.logoTexture = ModContent.GetTexture("Logo");
             //Main.logo2Texture = ModContent.GetTexture("Logo2");
-            SkyManager.Instance.Deactivate("AAMod:AkumaSky", new object[0]);
-            SkyManager.Instance.Deactivate("AAMod:YamataSky", new object[0]);
-            SkyManager.Instance.Deactivate("AAMod:VoidSky", new object[0]);
             ResetBGTexture(0);
             ResetBGTexture(171);
             ResetBGTexture(172);
             ResetBGTexture(173);
             ResetBGTexture(24);
             ResetBGTexture(25);
+            ResetBGTexture(56);
+            ResetBGTexture(57);
+            ResetBGTexture(58);
         }
 
         public void CleanupStaticArrays()
@@ -671,64 +678,171 @@ namespace AAMod
             }
         }
 
+        public void ParteonInfo()
+        {
+            for (int num109 = 0; num109 < 5; num109 ++)
+            {
+                int b = (byte.MaxValue + Main.tileColor.R * 2) / 3;
+			    Microsoft.Xna.Framework.Color color = new Microsoft.Xna.Framework.Color(b, b, b, 255);
+                Microsoft.Xna.Framework.Color color11 = Microsoft.Xna.Framework.Color.Black;
+                int R = (int)(color11.R);
+                int G = (int)(color11.G);
+                int B = (int)(color11.B);
+                int A = (int)(color11.B);
+                if (num109 == 4)
+                {
+                    color11 = color;
+                    R = (int)((byte.MaxValue + color11.R) / 2);
+                    G = (int)((byte.MaxValue + color11.R) / 2);
+                    B = (int)((byte.MaxValue + color11.R) / 2);
+                }
+                A = (int)((float)color11.A * 0.3f);
+                color11 = new Microsoft.Xna.Framework.Color(R, G, B, A);
+                int num110 = 0;
+                int num111 = 0;
+                if (num109 == 0)
+                {
+                    num110 = -2;
+                }
+                if (num109 == 1)
+                {
+                    num110 = 2;
+                }
+                if (num109 == 2)
+                {
+                    num111 = -2;
+                }
+                if (num109 == 3)
+                {
+                    num111 = 2;
+                }
+                string text6 = "Thank for your support: ";
+                string webtext = "patreon.com/alphakip";
+                Vector2 vector6 = Main.fontMouseText.MeasureString(text6);
+                vector6.X *= 0.5f;
+                vector6.Y *= 0.5f;
+                DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontMouseText, text6, new Vector2((float)Main.screenWidth - vector6.X + (float)num110 - 10f, (float)Main.screenHeight - vector6.Y + (float)num111 - 2f), color11, 0f, vector6, 1f, SpriteEffects.None, 0f);
+                if (num109 == 4)
+				{
+					color11 = new Microsoft.Xna.Framework.Color(127, 191, 191, 76);
+				}
+                Vector2 vector8 = Main.fontMouseText.MeasureString(webtext);
+                DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontMouseText, text6, new Vector2((float)Main.screenWidth - vector6.X + (float)num110 - 10f, (float)Main.screenHeight - vector6.Y + (float)num111 - 2f), color11, 0f, vector6, 1f, SpriteEffects.None, 0f);
+                if (num109 == 4 && Main.mouseLeftRelease && Main.mouseLeft && new Microsoft.Xna.Framework.Rectangle((int)vector6.X + 10, Main.screenHeight - (int)vector8.Y - 2, (int)vector8.X, (int)vector6.Y).Contains(new Microsoft.Xna.Framework.Point(Main.mouseX, Main.mouseY)))
+                {
+                    Main.PlaySound(10, -1, -1, 1, 1f, 0f);
+                    Process.Start("https://www.patreon.com/alphakip");
+                }
+            }
+        }
+
         public override void PostUpdateInput()
 		{
             if(Main.gameMenu && Main.menuMode >= 0)
             {
+                string text = "If you like AAmod, thanks for your support: ";
+                string webtext = "patreon.com/alphakip";
+                Main.versionNumber = "Terraria v1.3.5.2\nAncientsAwakened v" + instance.Version.ToString() + "\n" + text + webtext;
                 if(Main.menuMode == 0)
                 {
                     AAMenuset = true;
                 }
+                if(Main.menuMode >= 10002 && Main.menuMode <= 10006)
+                {
+                    AAMenuset = false;
+                }
                 if(AAConfigClient.Instance.AAStyleMainPage && (Main.bgStyle == 1 || Main.bgStyle == 0) && AAMenuset)
                 {
-                    if(AAConfigClient.Instance.AAStyleMainPage)
-                    {
-                        Main.logoTexture = instance.GetTexture("UI/LogoInferno");
-                        Main.logo2Texture = instance.GetTexture("UI/LogoMire");
-                    }
                     AAMenuReset = true;
                     WorldGen.setBG(0, 6);
                     switch(Main.moonPhase % 3)
                     {
                         case 0:
-                            Main.treeBG[0] = 173;
-                            Main.backgroundTexture[0] = ModContent.GetTexture("Terraria/Background_" + 0);
-                            Main.backgroundTexture[171] = ModContent.GetTexture("Terraria/Background_" + 171);
-                            Main.backgroundTexture[172] = ModContent.GetTexture("Terraria/Background_" + 172);
-                            Main.backgroundTexture[173] = ModContent.GetTexture("Terraria/Background_" + 173);
-                            Main.backgroundTexture[24] = ModContent.GetTexture("Terraria/Background_" + 24);
-                            Main.backgroundTexture[25] = ModContent.GetTexture("Terraria/Background_" + 25);
+                            Main.numClouds = 10;
+                            if(Main.dayTime && (Main.LogoA < 3 || Main.LogoA >= 253))
+                            {
+                                Main.logoTexture = ModContent.GetTexture("Terraria/Logo");
+                            }
+                            if(!Main.dayTime && (Main.LogoB < 3 || Main.LogoB >= 253))
+                            {
+                                Main.logo2Texture = ModContent.GetTexture("Terraria/Logo2");
+                            }
+                            if(SkyManager.Instance["AAMod:InfernoSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:InfernoSky", new object[0]);
+                            if(SkyManager.Instance["AAMod:MireSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:MireSky", new object[0]);
+                            if(SkyManager.Instance["AAMod:VoidSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:VoidSky", new object[0]);
+
+                            if(Main.dayTime && (Main.bgAlpha2[0] < 0.10f || Main.bgAlpha2[0] == 1f))
+                            {
+                                Main.treeBG[0] = 173;
+                                Main.backgroundTexture[0] = ModContent.GetTexture("Terraria/Background_" + 0);
+                                Main.backgroundTexture[171] = ModContent.GetTexture("Terraria/Background_" + 171);
+                                Main.backgroundTexture[172] = ModContent.GetTexture("Terraria/Background_" + 172);
+                                Main.backgroundTexture[173] = ModContent.GetTexture("Terraria/Background_" + 173);
+                            }
+                            if(!Main.dayTime && (Main.bgAlpha2[2] < 0.10f || Main.bgAlpha2[2] == 1f))
+                            {
+                                Main.backgroundTexture[0] = ModContent.GetTexture("Terraria/Background_" + 0);
+                                Main.backgroundTexture[24] = ModContent.GetTexture("Terraria/Background_" + 24);
+                                Main.backgroundTexture[25] = ModContent.GetTexture("Terraria/Background_" + 25);
+                                Main.backgroundTexture[56] = ModContent.GetTexture("Terraria/Background_" + 56);
+                                Main.backgroundTexture[57] = ModContent.GetTexture("Terraria/Background_" + 57);
+                                Main.backgroundTexture[58] = ModContent.GetTexture("Terraria/Background_" + 58);
+                            }
                             break;
                         case 1:
+                            Main.numClouds = 0;
                             if(Main.dayTime)
                             {
-                                SkyManager.Instance.Activate("AAMod:AkumaSky",default, new object[0]);
+                                if(SkyManager.Instance["AAMod:InfernoSky"] != null) SkyManager.Instance.Activate("AAMod:InfernoSky", default(Vector2), new object[0]);
                             }
                             else
                             {
-                                SkyManager.Instance.Activate("AAMod:YamataSky",default, new object[0]);
+                                if(SkyManager.Instance["AAMod:MireSky"] != null) SkyManager.Instance.Activate("AAMod:MireSky",default(Vector2), new object[0]);
                             }
-                            if(Main.dayTime && AAConfigClient.Instance.AAStyleMainPage)
+                            if(Main.dayTime && (Main.LogoA < 3 || Main.LogoA >= 253))
                             {
-                                Main.backgroundTexture[0] = instance.GetTexture("Backgrounds/SkyTex");
+                                Main.logoTexture = instance.GetTexture("UI/LogoInferno");
+                            }
+                            if(!Main.dayTime && (Main.LogoB < 3 || Main.LogoB >= 253))
+                            {
+                                Main.logo2Texture = instance.GetTexture("UI/LogoMire");
+                            }
+                            if(Main.dayTime && (Main.bgAlpha2[0] < 0.10f || Main.bgAlpha2[0] == 1f))
+                            {
+                                Main.backgroundTexture[0] = instance.GetTexture("Backgrounds/InfernoSky");
                                 Main.backgroundTexture[171] = instance.GetTexture("Backgrounds/InfernoBG");
                                 Main.backgroundTexture[172] = instance.GetTexture("Backgrounds/InfernoBG");
                             }
-                            else if(!Main.dayTime && AAConfigClient.Instance.AAStyleMainPage)
+                            if(!Main.dayTime && (Main.bgAlpha2[2] < 0.10f || Main.bgAlpha2[2] == 1f))
                             {
                                 Main.backgroundTexture[0] = instance.GetTexture("Backgrounds/YamataStars");
                                 Main.backgroundTexture[24] = instance.GetTexture("Backgrounds/MireBG");
                                 Main.backgroundTexture[25] = instance.GetTexture("Backgrounds/MireFG2");
+                                Main.backgroundTexture[56] = instance.GetTexture("Backgrounds/MireFG1");
+                                Main.backgroundTexture[57] = instance.GetTexture("Backgrounds/MireFG1");
+                                Main.backgroundTexture[58] = instance.GetTexture("Backgrounds/MireFG1");
                             }
                             Main.backgroundTexture[173] = instance.GetTexture("BlankTex");
                             break;
                         case 2:
-                            SkyManager.Instance.Activate("AAMod:VoidSky", default, new object[0]);
-                            Main.backgroundTexture[171] = instance.GetTexture("BlankTex");
-                            Main.backgroundTexture[172] = instance.GetTexture("BlankTex");
-                            Main.backgroundTexture[173] = instance.GetTexture("BlankTex");
-                            Main.backgroundTexture[24] = instance.GetTexture("BlankTex");
-                            Main.backgroundTexture[25] = instance.GetTexture("BlankTex");
+                            Main.numClouds = 0;
+                            if(SkyManager.Instance["AAMod:VoidSky"] != null) SkyManager.Instance.Activate("AAMod:VoidSky",default(Vector2), new object[0]);
+                            if(Main.dayTime && (Main.bgAlpha2[0] < 0.10f || Main.bgAlpha2[0] == 1f))
+                            {
+                                Main.backgroundTexture[0] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[171] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[172] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[173] = instance.GetTexture("BlankTex");
+                            }
+                            if(!Main.dayTime && (Main.bgAlpha2[2] < 0.10f || Main.bgAlpha2[2] == 1f))
+                            {
+                                Main.backgroundTexture[0] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[24] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[25] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[56] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[57] = instance.GetTexture("BlankTex");
+                                Main.backgroundTexture[58] = instance.GetTexture("BlankTex");
+                            }
                             break;
                         default:
                             goto case 0;
@@ -736,11 +850,11 @@ namespace AAMod
                 }
                 else if(AAMenuReset)
                 {
+                    if(SkyManager.Instance["AAMod:InfernoSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:InfernoSky", new object[0]);
+                    if(SkyManager.Instance["AAMod:MireSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:MireSky", new object[0]);
+                    if(SkyManager.Instance["AAMod:VoidSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:VoidSky", new object[0]);
                     Main.logoTexture = ModContent.GetTexture("Terraria/Logo");
                     Main.logo2Texture = ModContent.GetTexture("Terraria/Logo2");
-                    SkyManager.Instance.Deactivate("AAMod:AkumaSky", new object[0]);
-                    SkyManager.Instance.Deactivate("AAMod:YamataSky", new object[0]);
-                    SkyManager.Instance.Deactivate("AAMod:VoidSky", new object[0]);
                     AAMenuReset = false;
                     Main.backgroundTexture[0] = ModContent.GetTexture("Terraria/Background_" + 0);
                     Main.backgroundTexture[171] = ModContent.GetTexture("Terraria/Background_" + 171);
@@ -748,6 +862,9 @@ namespace AAMod
                     Main.backgroundTexture[173] = ModContent.GetTexture("Terraria/Background_" + 173);
                     Main.backgroundTexture[24] = ModContent.GetTexture("Terraria/Background_" + 24);
                     Main.backgroundTexture[25] = ModContent.GetTexture("Terraria/Background_" + 25);
+                    Main.backgroundTexture[56] = ModContent.GetTexture("Terraria/Background_" + 56);
+                    Main.backgroundTexture[57] = ModContent.GetTexture("Terraria/Background_" + 57);
+                    Main.backgroundTexture[58] = ModContent.GetTexture("Terraria/Background_" + 58);
                 }
             }
             else if(AAMenuReset)
@@ -759,6 +876,9 @@ namespace AAMod
                 Main.backgroundTexture[173] = ModContent.GetTexture("Terraria/Background_" + 173);
                 Main.backgroundTexture[24] = ModContent.GetTexture("Terraria/Background_" + 24);
                 Main.backgroundTexture[25] = ModContent.GetTexture("Terraria/Background_" + 25);
+                Main.backgroundTexture[56] = ModContent.GetTexture("Terraria/Background_" + 56);
+                Main.backgroundTexture[57] = ModContent.GetTexture("Terraria/Background_" + 57);
+                Main.backgroundTexture[58] = ModContent.GetTexture("Terraria/Background_" + 58);
             }
 		}
         public bool AAMenuset = false;
