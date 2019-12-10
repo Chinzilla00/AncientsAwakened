@@ -210,20 +210,6 @@ namespace AAMod
                     switch(key)
                     {
                         case "Rifthotkey":
-                        return "Rift Home";
-                        case "RiftReturnhotkey":
-                        return "Rift Back";
-                        case "AccessoryAbilityKey":
-                        return "AA Accessory Ability";
-                        case "ArmorAbilityKey":
-                        return "AA Armor Ability";
-                    }
-                }
-            else
-                {
-                    switch(key)
-                    {
-                        case "Rifthotkey":
                         return "裂位回家";
                         case "RiftReturnhotkey":
                         return "裂位返程";
@@ -231,6 +217,20 @@ namespace AAMod
                         return "远古觉醒饰品能力";
                         case "ArmorAbilityKey":
                         return "远古觉醒套装能力";
+                    }
+                }
+            else
+                {
+                    switch(key)
+                    {
+                        case "Rifthotkey":
+                        return "Rift Home";
+                        case "RiftReturnhotkey":
+                        return "Rift Back";
+                        case "AccessoryAbilityKey":
+                        return "AA Accessory Ability";
+                        case "ArmorAbilityKey":
+                        return "AA Armor Ability";
                     }
                 }
             return"";
