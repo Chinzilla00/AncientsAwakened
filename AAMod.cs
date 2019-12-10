@@ -290,8 +290,8 @@ namespace AAMod
             {
                 BackupVanillaBG(-1);
                 BackupVanillaBG(-2);
-                Main.logoTexture = AAMod.instance.GetTexture("UI/LogoInferno");
-                Main.logo2Texture = AAMod.instance.GetTexture("UI/LogoMire");
+                Main.logoTexture = instance.GetTexture("UI/LogoInferno");
+                Main.logo2Texture = instance.GetTexture("UI/LogoMire");
             }
 
             BackupVanillaBG(0);
@@ -683,8 +683,8 @@ namespace AAMod
                 {
                     if(AAConfigClient.Instance.AAStyleMainPage)
                     {
-                        Main.logoTexture = AAMod.instance.GetTexture("UI/LogoInferno");
-                        Main.logo2Texture = AAMod.instance.GetTexture("UI/LogoMire");
+                        Main.logoTexture = instance.GetTexture("UI/LogoInferno");
+                        Main.logo2Texture = instance.GetTexture("UI/LogoMire");
                     }
                     AAMenuReset = true;
                     WorldGen.setBG(0, 6);
@@ -702,37 +702,36 @@ namespace AAMod
                         case 1:
                             if(Main.dayTime)
                             {
-                                SkyManager.Instance.Activate("AAMod:AkumaSky",default(Vector2), new object[0]);
+                                SkyManager.Instance.Activate("AAMod:AkumaSky",default, new object[0]);
                             }
                             else
                             {
-                                SkyManager.Instance.Activate("AAMod:YamataSky",default(Vector2), new object[0]);
+                                SkyManager.Instance.Activate("AAMod:YamataSky",default, new object[0]);
                             }
                             if(Main.dayTime && AAConfigClient.Instance.AAStyleMainPage)
                             {
-                                Main.backgroundTexture[0] = AAMod.instance.GetTexture("Backgrounds/SkyTex");
-                                Main.backgroundTexture[171] = AAMod.instance.GetTexture("Backgrounds/InfernoBG");
-                                Main.backgroundTexture[172] = AAMod.instance.GetTexture("Backgrounds/InfernoBG");
+                                Main.backgroundTexture[0] = instance.GetTexture("Backgrounds/SkyTex");
+                                Main.backgroundTexture[171] = instance.GetTexture("Backgrounds/InfernoBG");
+                                Main.backgroundTexture[172] = instance.GetTexture("Backgrounds/InfernoBG");
                             }
                             else if(!Main.dayTime && AAConfigClient.Instance.AAStyleMainPage)
                             {
-                                Main.backgroundTexture[0] = AAMod.instance.GetTexture("Backgrounds/YamataStars");
-                                Main.backgroundTexture[24] = AAMod.instance.GetTexture("Backgrounds/MireBG");
-                                Main.backgroundTexture[25] = AAMod.instance.GetTexture("Backgrounds/MireFG2");
+                                Main.backgroundTexture[0] = instance.GetTexture("Backgrounds/YamataStars");
+                                Main.backgroundTexture[24] = instance.GetTexture("Backgrounds/MireBG");
+                                Main.backgroundTexture[25] = instance.GetTexture("Backgrounds/MireFG2");
                             }
-                            Main.backgroundTexture[173] = AAMod.instance.GetTexture("BlankTex");
+                            Main.backgroundTexture[173] = instance.GetTexture("BlankTex");
                             break;
                         case 2:
-                            SkyManager.Instance.Activate("AAMod:VoidSky",default(Vector2), new object[0]);
-                            Main.backgroundTexture[171] = AAMod.instance.GetTexture("BlankTex");
-                            Main.backgroundTexture[172] = AAMod.instance.GetTexture("BlankTex");
-                            Main.backgroundTexture[173] = AAMod.instance.GetTexture("BlankTex");
-                            Main.backgroundTexture[24] = AAMod.instance.GetTexture("BlankTex");
-                            Main.backgroundTexture[25] = AAMod.instance.GetTexture("BlankTex");
+                            SkyManager.Instance.Activate("AAMod:VoidSky", default, new object[0]);
+                            Main.backgroundTexture[171] = instance.GetTexture("BlankTex");
+                            Main.backgroundTexture[172] = instance.GetTexture("BlankTex");
+                            Main.backgroundTexture[173] = instance.GetTexture("BlankTex");
+                            Main.backgroundTexture[24] = instance.GetTexture("BlankTex");
+                            Main.backgroundTexture[25] = instance.GetTexture("BlankTex");
                             break;
                         default:
                             goto case 0;
-                            break;
                     }
                 }
                 else if(AAMenuReset)

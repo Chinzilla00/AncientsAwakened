@@ -37,7 +37,7 @@ namespace AAmod.Projectiles
 
         public override void AI()
         {
-            projectile.rotation = ((float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f) + ((float)System.Math.PI);
+            projectile.rotation = ((float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f) + ((float)Math.PI);
             if (Main.rand.Next(12) == 0)
             {
                 Dust.NewDust(projectile.position, projectile.width, projectile.height, mod.DustType("AbyssDust"), projectile.velocity.X * 0.25f, projectile.velocity.Y * 0.25f, 150, default, 0.7f);
