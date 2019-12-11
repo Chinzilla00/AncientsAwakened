@@ -17,10 +17,10 @@ namespace AAMod.Buffs
         {
             player.buffTime[buffIndex] = 1800000;
             player.GetModPlayer<AAPlayer>().Cerberus = true;
-            bool petProjectileNotSpawned = player.ownedProjectileCounts[mod.ProjectileType("Cerberus")] <= 0;
+            bool petProjectileNotSpawned = player.ownedProjectileCounts[ModContent.ProjectileType<Items.Pets.Cerberus>()] <= 0;
             if (petProjectileNotSpawned && player.whoAmI == Main.myPlayer)
             {
-                Projectile.NewProjectile(player.position.X + player.width / 2, player.position.Y + player.height / 2, 0f, 0f, mod.ProjectileType("Cerberus"), 0, 0f, player.whoAmI, 0f, 0f);
+                Projectile.NewProjectile(player.position.X + player.width / 2, player.position.Y + player.height / 2, 0f, 0f, ModContent.ProjectileType<Items.Pets.Cerberus>(), 0, 0f, player.whoAmI, 0f, 0f);
             }
         }
     }

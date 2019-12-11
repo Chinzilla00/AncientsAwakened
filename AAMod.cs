@@ -694,18 +694,18 @@ namespace AAMod
                 int b = (byte.MaxValue + Main.tileColor.R * 2) / 3;
 			    Microsoft.Xna.Framework.Color color = new Microsoft.Xna.Framework.Color(b, b, b, 255);
                 Microsoft.Xna.Framework.Color color11 = Microsoft.Xna.Framework.Color.Black;
-                int R = (int)(color11.R);
-                int G = (int)(color11.G);
-                int B = (int)(color11.B);
-                int A = (int)(color11.B);
+                int R = color11.R;
+                int G = color11.G;
+                int B = color11.B;
+                int A = color11.B;
                 if (num109 == 4)
                 {
                     color11 = color;
-                    R = (int)((byte.MaxValue + color11.R) / 2);
-                    G = (int)((byte.MaxValue + color11.R) / 2);
-                    B = (int)((byte.MaxValue + color11.R) / 2);
+                    R = (byte.MaxValue + color11.R) / 2;
+                    G = (byte.MaxValue + color11.R) / 2;
+                    B = (byte.MaxValue + color11.R) / 2;
                 }
-                A = (int)((float)color11.A * 0.3f);
+                A = (int)(color11.A * 0.3f);
                 color11 = new Microsoft.Xna.Framework.Color(R, G, B, A);
                 int num110 = 0;
                 int num111 = 0;
@@ -730,13 +730,13 @@ namespace AAMod
                 Vector2 vector6 = Main.fontMouseText.MeasureString(text6);
                 vector6.X *= 0.5f;
                 vector6.Y *= 0.5f;
-                DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontMouseText, text6, new Vector2((float)Main.screenWidth - vector6.X + (float)num110 - 10f, (float)Main.screenHeight - vector6.Y + (float)num111 - 2f), color11, 0f, vector6, 1f, SpriteEffects.None, 0f);
+                DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontMouseText, text6, new Vector2(Main.screenWidth - vector6.X + num110 - 10f, Main.screenHeight - vector6.Y + num111 - 2f), color11, 0f, vector6, 1f, SpriteEffects.None, 0f);
                 if (num109 == 4)
 				{
 					color11 = new Microsoft.Xna.Framework.Color(127, 191, 191, 76);
 				}
                 Vector2 vector8 = Main.fontMouseText.MeasureString(webtext);
-                DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontMouseText, text6, new Vector2((float)Main.screenWidth - vector6.X + (float)num110 - 10f, (float)Main.screenHeight - vector6.Y + (float)num111 - 2f), color11, 0f, vector6, 1f, SpriteEffects.None, 0f);
+                DynamicSpriteFontExtensionMethods.DrawString(Main.spriteBatch, Main.fontMouseText, text6, new Vector2(Main.screenWidth - vector6.X + num110 - 10f, Main.screenHeight - vector6.Y + num111 - 2f), color11, 0f, vector6, 1f, SpriteEffects.None, 0f);
                 if (num109 == 4 && Main.mouseLeftRelease && Main.mouseLeft && new Microsoft.Xna.Framework.Rectangle((int)vector6.X + 10, Main.screenHeight - (int)vector8.Y - 2, (int)vector8.X, (int)vector6.Y).Contains(new Microsoft.Xna.Framework.Point(Main.mouseX, Main.mouseY)))
                 {
                     Main.PlaySound(10, -1, -1, 1, 1f, 0f);

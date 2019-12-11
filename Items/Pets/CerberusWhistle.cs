@@ -1,6 +1,6 @@
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Pets
 {
@@ -15,8 +15,8 @@ namespace AAMod.Items.Pets
 		public override void SetDefaults()
 		{
 			item.CloneDefaults(ItemID.ZephyrFish);
-			item.shoot = mod.ProjectileType("Cerberus");
-            item.buffType = mod.BuffType("Cerberus");
+			item.shoot = ModContent.ProjectileType<Cerberus>();
+            item.buffType = ModContent.BuffType<Buffs.Cerberus>();
             item.noUseGraphic = true;
 		}
 
