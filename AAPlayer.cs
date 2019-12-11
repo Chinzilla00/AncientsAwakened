@@ -281,6 +281,7 @@ namespace AAMod
         public bool BoomBoi = false;
         public bool DragonSoul = false;
         public bool Glowmoss = false;
+        public bool Cerberus = false;
         #endregion
 
         //NPCcount
@@ -543,6 +544,7 @@ namespace AAMod
             BoomBoi = false;
             DragonSoul = false;
             Glowmoss = false;
+            Cerberus = false;
         }
 
         public override void Initialize()
