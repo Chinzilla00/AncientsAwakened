@@ -51,7 +51,7 @@ namespace AAMod.Items.Pets
 
             int y15 = 40 * projectile.frame;
 
-            Main.spriteBatch.Draw(Main.projectileTexture[projectile.type], new Vector2(projectile.position.X - Main.screenPosition.X + num149 + -18, projectile.position.Y - Main.screenPosition.Y + projectile.height / 2 + projectile.gfxOffY), new Rectangle?(new Rectangle(0, y15, Main.projectileTexture[projectile.type].Width, 40 - 1)), projectile.GetAlpha(color25), projectile.rotation, new Vector2(num149, projectile.height / 2 + 8), projectile.scale, spriteEffects, 0f);
+            Main.spriteBatch.Draw(Main.projectileTexture[projectile.type], new Vector2(projectile.position.X - Main.screenPosition.X + num149 + -18, projectile.position.Y - Main.screenPosition.Y + projectile.height / 2 + projectile.gfxOffY), new Rectangle?(new Rectangle(0, y15, Main.projectileTexture[projectile.type].Width, 40 - 1)), projectile.GetAlpha(lightColor), projectile.rotation, new Vector2(num149, projectile.height / 2 + 8), projectile.scale, spriteEffects, 0f);
 
             return false;
         }
