@@ -238,6 +238,63 @@ namespace AAMod
                     }
                 }
             }
+
+            if(Main.player[Main.myPlayer].GetModPlayer<AAPlayer>().StripeManSpawn)
+            {
+                if(Main.rand.Next(800) == 0 && j >= WorldGen.worldSurfaceLow)
+                {
+                    if (Main.tile[i, j + 1].active() && Main.tileSolid[Main.tile[i, j].type] && !Main.tile[i, j - 1].lava())
+                    {
+                        int style = WorldGen.genRand.Next(0, 4);
+                        int tiletype = 0;
+                        if (j < Main.maxTilesY - 5)
+                        {
+                            tiletype = (int)Main.tile[i, j + 1].type;
+                        }
+                        if (tiletype == 147 || tiletype == 161 || tiletype == 162)
+                        {
+                            style = WorldGen.genRand.Next(4, 7);
+                        }
+                        if (tiletype == 60)
+                        {
+                            style = WorldGen.genRand.Next(7, 10);
+                        }
+                        if (Main.wallDungeon[(int)Main.tile[i, j].wall])
+                        {
+                            style = WorldGen.genRand.Next(10, 13);
+                        }
+                        if (tiletype == 41 || tiletype == 43 || tiletype == 44)
+                        {
+                            style = WorldGen.genRand.Next(10, 13);
+                        }
+                        if (tiletype == 22 || tiletype == 23 || tiletype == 25)
+                        {
+                            style = WorldGen.genRand.Next(16, 19);
+                        }
+                        if (tiletype == 199 || tiletype == 203 || tiletype == 204 || tiletype == 200)
+                        {
+                            style = WorldGen.genRand.Next(22, 25);
+                        }
+                        if (tiletype == 367)
+                        {
+                            style = WorldGen.genRand.Next(31, 34);
+                        }
+                        if (tiletype == 226)
+                        {
+                            style = WorldGen.genRand.Next(28, 31);
+                        }
+                        if (j > Main.maxTilesY - 200)
+                        {
+                            style = WorldGen.genRand.Next(13, 16);
+                        }
+                        if (WorldGen.PlacePot(i, j, 28, style))
+                        {
+                            NetMessage.SendObjectPlacment(-1, i, j, 28, 0, 0, -1, -1);
+                        }
+                    }
+                }
+                
+            }
         }
 
         public static bool PlaceObject(int x, int y, int type, bool mute = false, int style = 0, int random = -1, int direction = -1)

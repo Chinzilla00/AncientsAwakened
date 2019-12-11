@@ -1320,7 +1320,7 @@ namespace AAMod
                 BlackLotusQuickMana();
             }
 
-            if (player.controlQuickHeal && player.releaseQuickHeal)
+            if (player.controlQuickHeal)
             {
                 SpecialQuickHeal();
             }
@@ -1351,12 +1351,20 @@ namespace AAMod
 			{
 				return;
 			}
-            Item item = player.QuickHeal_GetItemToUse();
+            Item item = new Item();
+            for (int i = 0; i < 58; i++)
+			{
+                item = player.inventory[i];
+				if (item.type == mod.ItemType("RoninPotion") && ItemLoader.CanUseItem(item, player))
+				{
+                    break;
+                }
+            }
 			if (item == null)
 			{
 				return;
 			}
-			if ((player.statLife == player.statLifeMax2 || player.potionDelay > 0) && item.type != mod.ItemType("RoninPotion"))
+			if (player.potionDelay > 0 || (player.statLife == player.statLifeMax2 && item.type != mod.ItemType("RoninPotion")))
 			{
 				return;
 			}
