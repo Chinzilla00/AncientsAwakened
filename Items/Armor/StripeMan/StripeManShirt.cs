@@ -33,6 +33,7 @@ Have the effect of Arctic Diving Gear");
         {
             player.GetModPlayer<AAPlayer>().StripeManSpawn = true;
 			player.GetModPlayer<AAPlayer>().AncientGoldBody = true;
+			player.GetModPlayer<AAPlayer>().AncientGoldSet = true;
 
 			player.accWatch = 3;
 			player.accDepthMeter = 1;

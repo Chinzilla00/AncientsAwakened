@@ -2775,6 +2775,20 @@ namespace AAMod
         public int RiftTimer;
         public int RiftDamage = 10;
 
+        public override void UpdateLifeRegen()
+        {
+            if (SagShield)
+            {
+                if (player.lifeRegen < 0)
+                {
+                    player.lifeRegen = 0;
+                }
+
+                player.lifeRegenTime = 0;
+                player.lifeRegen += 2;
+            }
+        }
+
         public override void UpdateBadLifeRegen()
         {
             if (Spear)
@@ -2786,17 +2800,6 @@ namespace AAMod
 
                 player.lifeRegenTime = 0;
                 player.lifeRegen -= 2;
-            }
-
-            if (SagShield)
-            {
-                if (player.lifeRegen > 0)
-                {
-                    player.lifeRegen = 0;
-                }
-
-                player.lifeRegenTime = 0;
-                player.lifeRegen += 2;
             }
 
             if (Unstable)
@@ -2978,7 +2981,27 @@ namespace AAMod
             }
             if (AncientGoldSet)
             {
-                if(player.BuyItemOld(damage * 10000))
+                long num = 0;
+                for (int i = 0; i < 54; i++)
+                {
+                    if (player.inventory[i].type == 71)
+                    {
+                        num += (long)player.inventory[i].stack;
+                    }
+                    if (player.inventory[i].type == 72)
+                    {
+                        num += (long)(player.inventory[i].stack * 100);
+                    }
+                    if (player.inventory[i].type == 73)
+                    {
+                        num += (long)(player.inventory[i].stack * 10000);
+                    }
+                    if (player.inventory[i].type == 74)
+                    {
+                        num += (long)(player.inventory[i].stack * 1000000);
+                    }
+                }
+                if(num >= damage * 10000)
                 {
                     for (int i = 0; i < 54; i++)
                     {

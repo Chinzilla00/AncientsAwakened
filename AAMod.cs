@@ -693,7 +693,7 @@ namespace AAMod
             {
                 string text = "If you like AAmod, thanks for your support: ";
                 string webtext = "patreon.com/alphakip";
-                Main.versionNumber = "Terraria v1.3.5.2\nAncientsAwakened v" + instance.Version.ToString() + "\n" + text + "\n" + webtext;
+                Main.versionNumber = "Terraria v1.3.5.2\nAncientsAwakened v" + instance.Version.ToString() + "\n" + text + webtext;
                 if(Main.menuMode == 0)
                 {
                     AAMenuset = true;
