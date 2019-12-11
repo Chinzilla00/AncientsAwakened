@@ -1356,7 +1356,7 @@ namespace AAMod
 			{
 				return;
 			}
-			if (player.statLife == player.statLifeMax2 || player.potionDelay > 0 || item.type != mod.ItemType("RoninPotion"))
+			if ((player.statLife == player.statLifeMax2 || player.potionDelay > 0) && item.type != mod.ItemType("RoninPotion"))
 			{
 				return;
 			}

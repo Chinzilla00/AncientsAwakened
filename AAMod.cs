@@ -256,7 +256,9 @@ namespace AAMod
 
         public override void Load()
         {
-            Main.versionNumber = "Terraria v1.3.5.2/AncientsAwakened v" + instance.Version.ToString();
+            string text = "If you like AAmod, thanks for your support: ";
+            string webtext = "patreon.com/alphakip";
+            Main.versionNumber = "Terraria v1.3.5.2\nAncientsAwakened v" + instance.Version.ToString() + "\n" + text + webtext;
 
             Config.Load();
             Logger.InfoFormat("{0} AA log", Name);
@@ -581,8 +583,8 @@ namespace AAMod
 
         public override void Unload()
         {
+            Main.versionNumber = "Terraria v1.3.5.2";
             AAMenuset = false;
-            if(SkyManager.Instance["AAMod:AkumaSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:AkumaSky", new object[0]);
             if(SkyManager.Instance["AAMod:MireSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:MireSky", new object[0]);
             if(SkyManager.Instance["AAMod:VoidSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:VoidSky", new object[0]);
 
@@ -691,9 +693,6 @@ namespace AAMod
 		{
             if(Main.gameMenu && Main.menuMode >= 0)
             {
-                string text = "If you like AAmod, thanks for your support: ";
-                string webtext = "patreon.com/alphakip";
-                Main.versionNumber = "Terraria v1.3.5.2\nAncientsAwakened v" + instance.Version.ToString() + "\n" + text + webtext;
                 if(Main.menuMode == 0)
                 {
                     AAMenuset = true;
@@ -764,6 +763,7 @@ namespace AAMod
                                 Main.backgroundTexture[0] = instance.GetTexture("Backgrounds/InfernoSky");
                                 Main.backgroundTexture[171] = instance.GetTexture("Backgrounds/InfernoBG");
                                 Main.backgroundTexture[172] = instance.GetTexture("Backgrounds/InfernoBG");
+                                Main.backgroundTexture[173] = instance.GetTexture("Backgrounds/InfernoBG");
                             }
                             if(!Main.dayTime && (Main.bgAlpha2[2] < 0.10f || Main.bgAlpha2[2] == 1f))
                             {
@@ -774,7 +774,6 @@ namespace AAMod
                                 Main.backgroundTexture[57] = instance.GetTexture("Backgrounds/MireFG1");
                                 Main.backgroundTexture[58] = instance.GetTexture("Backgrounds/MireFG1");
                             }
-                            Main.backgroundTexture[173] = instance.GetTexture("BlankTex");
                             break;
                         case 2:
                             Main.numClouds = 0;

@@ -99,19 +99,19 @@ namespace AAMod
 			{
 				throw new ArgumentOutOfRangeException("minValue", "minValue must be less than maxValue");
 			}
-			long numfake = (maxValue - minValue) * 2;
+			long numfake = (long)((maxValue - minValue) * 1.3f);
             long num = maxValue - (long)minValue;
 			double result = 0.0;
 			if (numfake <= 2147483647L)
 			{
 				result = Sample() * numfake;
-                if (result > num && result <= num * 1.7) return minValue;
+                if (result > num && result <= num * 1.2) return minValue;
 				else if(result > num * 1.7) return maxValue - 1;
 				return (int)(result) + minValue;
 			}
 			result = GetSampleForLargeRange() * numfake;
-            if (result >= num && result <= num * 1.7) return minValue;
-			else if(result > num * 1.7) return maxValue - 1;
+            if (result >= num && result <= num * 1.2) return minValue;
+			else if(result > num * 1.2) return maxValue - 1;
 			return (int)((long)(result) + minValue);
 		}
 		public override int Next(int maxValue)
@@ -120,17 +120,17 @@ namespace AAMod
 			{
 				throw new ArgumentOutOfRangeException("maxValue", "maxValue must be positive.");
 			}
-            long numfake = maxValue * 2;
+            long numfake = (long)(maxValue * 1.3f);
 			double result = Sample() * numfake;
-            if (result >= maxValue && result <= maxValue * 1.7) return 0;
-			else if(result > maxValue * 1.7) return maxValue - 1;
+            if (result >= maxValue && result <= maxValue * 1.2) return 0;
+			else if(result > maxValue * 1.2) return maxValue - 1;
 			return (int)result;
 		}
 		public override double NextDouble()
 		{
-            double result = Sample() * 2;
-            if(result >= 1 && result <= 1.7) return 0.0;
-			else if(result > 1.7) return 0.999999;
+            double result = Sample() * 1.3f;
+            if(result >= 1 && result <= 1.2) return 0.0;
+			else if(result > 1.2) return 0.999999;
 			return result;
 		}
 		private const int MBIG = 2147483647;
