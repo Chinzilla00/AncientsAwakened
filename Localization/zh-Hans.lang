@@ -30,6 +30,9 @@ BuffDescription.Broodmini=小宝宝
 BuffName.BurningAsh=燎狱之烬
 BuffDescription.BurningAsh=灰烬正在灼烧你的皮肤
 
+BuffName.Cerberus=刻耳泊洛斯
+BuffDescription.Cerberus=“哇哦，那并不可怕”
+
 BuffName.Clueless=浓雾
 BuffDescription.Clueless=你什么也看不见
 
@@ -3936,6 +3939,9 @@ ItemTooltip.RoyalStar=召唤一只非常漂亮的小猫
 
 ItemName.Seashroom=海松露
 ItemTooltip.Seashroom=闻起来像鱼的味道
+
+ItemName.CerberusWhistle=冥界哨
+ItemTooltip.CerberusWhistle=召唤冥王的护卫犬
 
 
 // AAMod.Items.Potions
