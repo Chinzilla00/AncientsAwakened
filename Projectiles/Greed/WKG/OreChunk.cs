@@ -150,6 +150,8 @@ namespace AAMod.Projectiles.Greed.WKG
         public void OreEffect()
         {
             int k = (int)projectile.ai[1];
+            Item item = new Item();
+            item.SetDefaults(k, false);
             if(k == ItemID.DemoniteOre || k == mod.ItemType("Abyssium") || k == mod.ItemType("RadiumOre"))
             {
                 projectile.extraUpdates = 1;
@@ -176,7 +178,7 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 projectile.extraUpdates = 2;
             }
-            else if(Config.LuckyOre[k] > 650)
+            else if(Config.LuckyOre[k] > 650 && item.modItem.mod != ModLoader.GetMod("AAMod") && item.modItem.mod != ModLoader.GetMod("ModLoader"))
             {
                 int dustid = DustID.Copper;
                 switch (WorldGen.genRand.Next(18))
