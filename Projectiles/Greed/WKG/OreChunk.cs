@@ -181,7 +181,7 @@ namespace AAMod.Projectiles.Greed.WKG
             else if(Config.LuckyOre[k] > 650 && item.modItem.mod != ModLoader.GetMod("AAMod") && item.modItem.mod != ModLoader.GetMod("ModLoader"))
             {
                 int dustid = DustID.Copper;
-                switch (WorldGen.genRand.Next(18))
+                switch (WorldGen.genRand.Next(10))
                 {
                     case 0:
                         dustid = DustID.Copper; break;
@@ -202,25 +202,9 @@ namespace AAMod.Projectiles.Greed.WKG
                     case 8:
                         dustid = DustID.t_Meteor; break;
                     case 9:
-                        dustid = ModContent.DustType<LuminiteDust>(); break;
-                    case 10:
-                        dustid = ModContent.DustType<DarkmatterDust>(); break;
-                    case 11:
-                        dustid = ModContent.DustType<RadiumDust>(); break;
-                    case 12:
-                        dustid = ModContent.DustType<DaybreakIncineriteDust>(); break;
-                    case 13:
-                        dustid = ModContent.DustType<YamataDust>(); break;
-                    case 14:
-                        dustid = ModContent.DustType<VoidDust>(); break;
-                    case 15:
-                        dustid = ModContent.DustType<IncineriteDust>(); break;
-                    case 16:
-                        dustid = ModContent.DustType<AbyssiumDust>(); break;
-                    case 17:
                         dustid = DustID.Fire; break;
                 }
-                for (int num291 = 0; num291 < 5; num291++)
+                for (int num291 = 0; num291 < 3; num291++)
                 {
                     int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustid, 0f, 0f, 100);
                     Main.dust[num292].velocity *= 2f;
