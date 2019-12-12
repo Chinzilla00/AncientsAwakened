@@ -20,7 +20,7 @@ namespace AAMod.Items.Materials
             item.useStyle = 1;
             item.consumable = true;
             item.createTile = mod.TileType("RadiantIncinerite");
-			
+            item.value = Item.sellPrice(0, 1, 0, 0);
         }
 
         

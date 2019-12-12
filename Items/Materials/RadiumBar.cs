@@ -22,6 +22,7 @@ namespace AAMod.Items.Materials
             item.useStyle = 1;
             item.consumable = true;
             item.createTile = mod.TileType("RadiumBarTile");
+            item.value = Terraria.Item.sellPrice(0, 2, 0, 0);
         }
         public override void AddRecipes()
         {                                                   

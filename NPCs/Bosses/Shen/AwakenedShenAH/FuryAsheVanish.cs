@@ -55,17 +55,10 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/FuryAsheVanish_Glow2");
-            Texture2D eyeTex = mod.GetTexture("Glowmasks/FuryAsheVanish_Glow1");
-
-            int blue = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
-            int red = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
-            int purple = GameShaders.Armor.GetShaderIdFromItemId(ModContent.ItemType<Items.Dyes.DiscordianDye>());
+            Texture2D glowTex = mod.GetTexture("Glowmasks/FuryAsheVanish_Glow");
 
             BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 17, npc.frame, npc.GetAlpha(dColor), true);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, purple, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 17, npc.frame, Color.White, true);
-            BaseDrawing.DrawTexture(spritebatch, eyeTex, blue, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 17, npc.frame, Color.White, true);
-            BaseDrawing.DrawAfterimage(spritebatch, eyeTex, blue, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 17);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 17, npc.frame, Color.White, true);
             return false;
         }
     }

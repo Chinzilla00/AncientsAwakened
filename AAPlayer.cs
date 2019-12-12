@@ -986,12 +986,10 @@ namespace AAMod
 
             if (SagCooldown > 0)
             {
-                player.noItems = true;
                 SagCooldown--;
             }
             else
             {
-                player.noItems = false;
                 SagCooldown = 0;
             }
 
