@@ -205,15 +205,10 @@ namespace AAMod
         }
 
         public override void OpenVanillaBag(string context, Player player, int arg)
-        {
-
-        }
-
-        public override void RightClick(Item item, Player player)
 		{
-            if(item.type == ItemID.GoldenCrate)
+            if(context == "crate" && arg == ItemID.GoldenCrate)
             {
-                if(Main.rand.Next(20) == 0)
+                if(Main.rand.Next(5) == 0)
                 {
                     switch(WorldGen.genRand.Next(20))
                     {

@@ -6197,8 +6197,8 @@ Common.AATownNPC=远古觉醒城镇NPC生成禁止
 Common.AATownNPCInfo=取消远古觉醒NPC的生成, 用于玩家希望其他npc能更快刷新. 注释: 这个不会影响阿努比斯的生成, 因为他是游戏流程的关键.
 Common.DisableBossDialogue=远古觉醒Boss对话取消
 Common.DisableBossDialogueInfo=阻止Boss对话的生成. 也会让已有的Boss对话速度加快.
-Common.AAStyleMainPage=远古觉醒风格主菜单禁止
-Common.AAStyleMainPageInfo=取消远古觉醒风格的主菜单, 改回原版主题。如果你想和其他大型模组一同游玩，建议禁止。
+Common.AAStyleMainPage=远古觉醒风格主菜单
+Common.AAStyleMainPageInfo=使用远古觉醒风格的主菜单替换原版主题。如果你想和其他大型模组一同游玩，建议禁止。
 
 //AAPlayerChat
 

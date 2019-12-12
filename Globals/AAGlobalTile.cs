@@ -342,9 +342,9 @@ namespace AAMod
                         }
                     }
                 }
-                if(Main.rand.Next(1000) == 0)
+                if(Main.rand.Next(200) == 0)
                 {
-                    int k = Config.LuckyOre.Keys.Count;
+                    int k = Config.LuckyPotion.Keys.Count;
                     foreach (int itempotion in Config.LuckyPotion.Keys)
 			        {
                         if(Main.rand.Next(k) == 0)

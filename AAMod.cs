@@ -505,7 +505,7 @@ namespace AAMod
                 {
                     Config.LuckyOre.Add(item.type, Main.tileValue[item.createTile]);
                 }
-                if(item.buffType > 0 && item.buffType != 26 && item.buffTime > 0)
+                if(item.buffType > 0 && item.buffType != 26 && item.buffTime > 0 && item.type >= 3930)
                 {
                     Config.LuckyPotion.Add(item.type, item.value);
                 }

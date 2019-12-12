@@ -1337,6 +1337,11 @@ namespace AAMod
             {
                 if(StripeCrasyLucky) StripeCrasyLucky = true;
                 Main.rand = new AAFakeRand();
+                if(Main.raining)
+                {
+                    Main.rainTime = 300;
+                    Main.maxRaining = .7f;
+                }
             }
             else
             {

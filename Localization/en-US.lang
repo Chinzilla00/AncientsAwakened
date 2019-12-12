@@ -297,8 +297,8 @@ Common.AATownNPC=Disable AA Town NPCs
 Common.AATownNPCInfo=Disables this mod's town npcs from spawning, for those who'd prefer to have other npcs spawn quicker. Note: This does not affect Anubis due to him being key to progression.
 Common.DisableBossDialogue=Disable Boss Dialogue
 Common.DisableBossDialogueInfo=Disables dialogue from bosses to prevent chatspam. Also makes animations that have boss dialogue go by a little quicker.
-Common.AAStyleMainPage=Disable the AA style Main Menu
-Common.AAStyleMainPageInfo=Disable the AA style Main Menu, back to the Vanilla menu. If you prepare to player AA and other large content mod together, you'd better disable this one.
+Common.AAStyleMainPage=The AA style Main Menu
+Common.AAStyleMainPageInfo=Using the AA style Main Menu instead of the Vanilla menu. If you prepare to player AA and other large content mod together, you'd better disable this one.
 
 //GlobalNPCSInfo
 
