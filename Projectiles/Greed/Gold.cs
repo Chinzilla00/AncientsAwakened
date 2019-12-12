@@ -19,7 +19,7 @@ namespace AAMod.Projectiles.Greed
             projectile.height = 12;
             projectile.friendly = true;
             projectile.aiStyle = -1;
-            projectile.ranged = true;
+            projectile.magic = true;
             projectile.penetrate = 6;
         }
 

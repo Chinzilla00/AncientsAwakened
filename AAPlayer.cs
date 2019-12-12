@@ -588,7 +588,7 @@ namespace AAMod
 
         public override void UpdateBiomeVisuals()
         {
-            bool Underground = player.Center.Y > 3200f;
+            bool Underground = player.Center.Y > Main.worldSurface * 16;
             bool useAthena = NPC.AnyNPCs(ModContent.NPCType<AthenaA>());
             bool useShenA = NPC.AnyNPCs(ModContent.NPCType<ShenA>());
             bool useShen = NPC.AnyNPCs(ModContent.NPCType<Shen>()) && !useShenA;
