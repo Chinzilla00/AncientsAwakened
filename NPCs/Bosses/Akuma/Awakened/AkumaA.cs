@@ -679,7 +679,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             AkumaTex = Main.npcTexture[npc.type];
             if (npc.type == ModContent.NPCType<AkumaA>())
             {
-                if (npc.ai[1] == 1 || npc.ai[2] >= 400)
+                if (npc.ai[0] == 0 || npc.ai[0] == 4)
                 {
                     AkumaTex = mod.GetTexture("NPCs/Bosses/Akuma/Awakened/AkumaA1");
                 }
@@ -703,7 +703,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingOceanDye);
             }
 
-            Texture2D HeadGlow = (npc.ai[1] == 1 || npc.ai[2] >= 500) ? glowTex1 : glowTex;
+            Texture2D HeadGlow = (npc.ai[0] == 0 || npc.ai[0] == 4) ? glowTex1 : glowTex;
 
             Texture2D myGlowTex = npc.type == ModContent.NPCType<AkumaA>() ? HeadGlow : glowTex2;
             BaseDrawing.DrawTexture(spriteBatch, AkumaTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 3, npc.frame, npc.GetAlpha(drawColor), true);
