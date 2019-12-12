@@ -14,7 +14,7 @@ namespace AAMod.Items.Boss.Shen
             Tooltip.SetDefault(@"Chaos flares from this ancient talisman
 Combines the effects of the Taiyang Baolei and the Naitokurosu, while granting their strongest effects at all times
 Your attacks inflict Discordian Inferno
-Enemies that hit you are inflicted with Discordian Inferno
+Enemies that you hit are inflicted with Discordian Inferno
 You are immune to Terrablaze, Dragonfire, Hydratoxin, Discordian Inferno
 Attack is multiplied by 15%
 While in the chaos biomes, your attack multiplier is increased to 30%

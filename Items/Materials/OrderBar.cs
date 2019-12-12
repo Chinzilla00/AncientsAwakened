@@ -21,6 +21,7 @@ namespace AAMod.Items.Materials
             item.useStyle = 1;
             item.consumable = true;
             item.createTile = mod.TileType("OrderBar");
+            item.value = Terraria.Item.sellPrice(0, 1, 0, 0);
         }
     }
 }

@@ -28,7 +28,9 @@ namespace AAMod.Projectiles
 			projectile.light = 0f;            
 			projectile.ignoreWater = true;
 			projectile.tileCollide = true;        
-			aiType = ProjectileID.Bullet;           
+			aiType = ProjectileID.Bullet;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.idStaticNPCHitCooldown = 18;
 		}
 		
 		public override Color? GetAlpha(Color lightColor)

@@ -8,11 +8,10 @@ namespace AAMod.Items.Materials
     {
         public override void SetDefaults()
         {
-
             item.width = 32;
             item.height = 30;
             item.maxStack = 99;
-			
+			item.value = Terraria.Item.sellPrice(0, 3, 0, 0);
         }
 
         public override void SetStaticDefaults()

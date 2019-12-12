@@ -71,13 +71,9 @@ namespace AAMod.Projectiles
 
             return selectedTarget;
         }
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Color.White;
-        }
+
         public override void SetStaticDefaults()
         {
-
             DisplayName.SetDefault("Unity Beam");
 		}
 	

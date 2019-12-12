@@ -24,6 +24,7 @@ namespace AAMod.Items.Materials
             item.useStyle = 1;
             item.consumable = true;
             item.createTile = mod.TileType("Darkmatter");
+            item.value = Item.sellPrice(0, 2, 0, 0);
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

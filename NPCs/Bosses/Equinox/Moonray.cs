@@ -28,7 +28,6 @@ namespace AAMod.NPCs.Bosses.Equinox
         }
 
 		public bool playedSound = false;		
-		public int dontDrawDelay = 2;		
         public override void AI()
         {
 			if(!playedSound)
@@ -53,7 +52,9 @@ namespace AAMod.NPCs.Bosses.Equinox
 		public override Color? GetAlpha(Color lightColor)
 		{
 			return Color.White;
-		}
+        }
+
+        public int dontDrawDelay = 2;
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {

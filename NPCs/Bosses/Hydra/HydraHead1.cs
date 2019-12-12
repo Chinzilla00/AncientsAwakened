@@ -344,7 +344,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override bool PreNPCLoot()
         {
-            if (bodyNPC != null)
+            if (bodyNPC != null || NPC.AnyNPCs(ModContent.NPCType<Hydra>()))
             {
                 if (npc.type == mod.NPCType("HydraHead1"))
                 {

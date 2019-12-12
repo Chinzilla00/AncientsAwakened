@@ -651,6 +651,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D Tex = Main.npcTexture[npc.type];
+            Texture2D Glow = mod.GetTexture("Glowmasks/FuryAshe_Glow");
 
             Texture2D RingTex = mod.GetTexture("NPCs/Bosses/AH/Ashe/AsheRing1");
             Texture2D RingTex1 = mod.GetTexture("NPCs/Bosses/AH/Ashe/AsheRing2");
@@ -672,6 +673,8 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             }
 
             BaseDrawing.DrawTexture(spritebatch, Tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, Main.npcFrameCount[npc.type], npc.frame, dColor, true);
+
+            BaseDrawing.DrawTexture(spritebatch, Glow, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, Main.npcFrameCount[npc.type], npc.frame, Color.White, true);
 
             return false;
         }

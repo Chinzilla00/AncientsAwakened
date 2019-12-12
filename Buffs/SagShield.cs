@@ -16,6 +16,7 @@ namespace AAMod.Buffs
         {
             player.GetModPlayer<AAPlayer>().ShieldUp = true;
             player.lifeRegen += 14;
+            player.noItems = true;
         }
     }
 }

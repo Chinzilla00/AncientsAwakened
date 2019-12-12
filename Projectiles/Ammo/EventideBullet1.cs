@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -38,6 +39,9 @@ namespace AAMod.Projectiles.Ammo
         {
             Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 1f / 255f, (0 - projectile.alpha) * 1f / 0f, (0 - projectile.alpha) * 1f / 0f);
         }
+
+        public int dontDrawDelay = 2;
+
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
@@ -47,8 +51,11 @@ namespace AAMod.Projectiles.Ammo
                 Color color = projectile.GetAlpha(lightColor) * ((projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
                 spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
             }
-            return true;
+
+            dontDrawDelay = Math.Max(0, dontDrawDelay - 1);
+            return dontDrawDelay == 0;
         }
+
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             target.immune[projectile.owner] = 1;
