@@ -140,15 +140,5 @@ Certain ores have special effects when shot");
             }
             return false;
 		}
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "ChaosShot", 1);
-            recipe.AddIngredient(null, "EXSoul", 1);
-            recipe.AddTile(null, "ACS");
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
     }
 }

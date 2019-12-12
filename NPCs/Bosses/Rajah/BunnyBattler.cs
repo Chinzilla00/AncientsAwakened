@@ -107,6 +107,12 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public override void PostAI()
         {
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
+            {
+                npc.oldPos[m] = npc.oldPos[m - 1];
+            }
+            npc.oldPos[0] = npc.position;
+
             if (NPC.AnyNPCs(ModContent.NPCType<Rajah>()) ||
                 NPC.AnyNPCs(ModContent.NPCType<Rajah2>()) ||
                 NPC.AnyNPCs(ModContent.NPCType<Rajah3>()) ||
@@ -174,6 +180,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.lifeMax = 900;
         }
     }
+
     public class BunnyBattler4 : BunnyBattler
     {
         public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBattler";

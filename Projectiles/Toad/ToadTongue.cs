@@ -138,18 +138,21 @@ namespace AAMod.Projectiles.Toad
 		{
             Player player = Main.player[projectile.owner];
             float TargetVelocity = 0;
-            if (projectile.ai[0] == 1f && !target.boss)
+            if (!target.boss)
             {
-                if (player.Center.X > target.Center.X)
+                if (projectile.ai[0] == 1f)
                 {
-                    TargetVelocity = 10 * target.knockBackResist;
+                    if (player.Center.X > target.Center.X)
+                    {
+                        TargetVelocity = 10 * target.knockBackResist;
+                    }
+                    else
+                    {
+                        TargetVelocity = -10 * target.knockBackResist;
+                    }
                 }
-                else
-                {
-                    TargetVelocity = -10 * target.knockBackResist;
-                }
+                target.velocity = new Vector2(TargetVelocity, 0);
             }
-            target.velocity = new Vector2(TargetVelocity, 0);
         }
 		
 		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)

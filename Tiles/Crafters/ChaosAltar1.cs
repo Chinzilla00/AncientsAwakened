@@ -27,9 +27,8 @@ namespace AAMod.Tiles.Crafters
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
         {
-            //delte this and you die
             Player player = Main.LocalPlayer;
-            if (!Main.hardMode)
+            if (!Main.hardMode || player.HeldItem.hammer < 80)
             {
                 if (blockDamaged == true)
                 {

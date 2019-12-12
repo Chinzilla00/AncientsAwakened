@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -45,6 +46,7 @@ namespace AAMod.Projectiles.Ammo
                 initialVel = projectile.velocity;
             }
         }
+        public int dontDrawDelay = 2;
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         { 
@@ -54,9 +56,11 @@ namespace AAMod.Projectiles.Ammo
 				Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
 				Color color = projectile.GetAlpha(lightColor) * ((projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
 				spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
-			}
-			return true;
-		}
+            }
+
+            dontDrawDelay = Math.Max(0, dontDrawDelay - 1);
+            return dontDrawDelay == 0;
+        }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
