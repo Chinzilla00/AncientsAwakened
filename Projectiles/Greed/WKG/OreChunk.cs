@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.Dusts;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace AAMod.Projectiles.Greed.WKG
 {
@@ -12,8 +13,8 @@ namespace AAMod.Projectiles.Greed.WKG
     {
         public override void SetDefaults()
         {
-            projectile.width = 16;
-            projectile.height = 16;
+            projectile.width = 10;
+            projectile.height = 10;
 			projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.penetrate = 6;
@@ -24,7 +25,6 @@ namespace AAMod.Projectiles.Greed.WKG
 		public override void SetStaticDefaults()
 		{
 		    DisplayName.SetDefault("Ore");
-            Main.projFrames[projectile.type] = 28;
 		}
 
         public override void AI()
@@ -47,26 +47,38 @@ namespace AAMod.Projectiles.Greed.WKG
             projectile.oldPos[0] = projectile.position;
         }
 
-        public override void PostAI()
-        {
-            projectile.frame = (int)projectile.ai[1];
-        }
-
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 28, 0, 0);
-            if (projectile.ai[1] == 9 || projectile.ai[1] == 11 || projectile.ai[1] == 22 || projectile.ai[1] == 26)
+            Vector2 drawOrigin = new Vector2(Main.itemTexture[(int)projectile.ai[1]].Width * 0.5f, projectile.height * 0.5f);
+			for (int k = 0; k < 3; k++)
+			{
+				Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
+				Color color = projectile.GetAlpha(lightColor) * ((3 - k) / (float)3);
+				spriteBatch.Draw(Main.itemTexture[(int)projectile.ai[1]], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+			}
+            
+            /*
+            Rectangle frame = BaseDrawing.GetFrame(1, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 0);
+
+            if (projectile.ai[1] == ItemID.DemoniteOre || projectile.ai[1] == mod.ItemType("Abyssium") || projectile.ai[1] == ItemID.LunarOre || projectile.ai[1] == mod.ItemType("EventideAbyssiumOre"))
             {
-                BaseDrawing.DrawAfterimage(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, 1, projectile.rotation, projectile.direction, 28, frame, .8f, 1, 4, true, 0, 0, lightColor);
+                BaseDrawing.DrawAfterimage(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, 1, projectile.rotation, projectile.direction, 1, frame, .8f, 1, 4, true, 0, 0, lightColor);
             }
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 28, frame, lightColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 1, frame, lightColor, true);
+            */
             return false;
         }
 
         public override void Kill(int timeLeft)
         {
             int DustType = DType();
-            if (projectile.ai[1] == 8)
+            for (int num468 = 0; num468 < 5; num468++)
+            {
+                float VelX = -projectile.velocity.X * 0.2f;
+                float VelY = -projectile.velocity.Y * 0.2f;
+                Dust.NewDust(projectile.Center, projectile.width, projectile.height, DustType, VelX, VelY);
+            }
+            if (projectile.ai[1] == ItemID.Meteorite)
             {
                 for (int num291 = 0; num291 < 5; num291++)
                 {
@@ -75,22 +87,22 @@ namespace AAMod.Projectiles.Greed.WKG
                     Main.dust[num292].noGravity = true;
                 };
             }
-            if (projectile.ai[1] == 21)
+            else if (projectile.ai[1] == ItemID.ChlorophyteOre)
             {
                 for (int s = 0; s < 3; s++)
                 {
                     Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<OreSpores>(), projectile.damage, projectile.knockBack, Main.myPlayer, 0, s);
                 }
             }
-            if (projectile.ai[1] == 22)
+            else if (projectile.ai[1] == ItemID.LunarOre)
             {
                 Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<LuminiteBlast>(), projectile.damage, projectile.knockBack, Main.myPlayer, 0, 0);
             }
-            if (projectile.ai[1] == 25)
+            else if (projectile.ai[1] == mod.ItemType("DaybreakIncineriteOre"))
             {
                 Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<DaybreakBlast>(), projectile.damage, projectile.knockBack * 3, Main.myPlayer, 0, 0);
             }
-            if (projectile.ai[1] == 27)
+            else if (projectile.ai[1] == mod.ItemType("Apocalyptite"))
             {
                 for (int v = 0; v < 4; v++)
                 {
@@ -100,62 +112,127 @@ namespace AAMod.Projectiles.Greed.WKG
                     Main.projectile[p].Center = projectile.Center;
                 }
             }
-            for (int num468 = 0; num468 < 5; num468++)
+            else
             {
-                float VelX = -projectile.velocity.X * 0.2f;
-                float VelY = -projectile.velocity.Y * 0.2f;
-                num468 = Dust.NewDust(projectile.Center, projectile.width, projectile.height, DustType, VelX, VelY);
+                return;
             }
         }
 
         public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
-            switch ((int)projectile.ai[1])
+            int k = (int)projectile.ai[1];
+            if(k == ItemID.GoldOre || k == ItemID.PlatinumOre)
             {
-                case 6:
-                case 7:
-                    target.AddBuff(BuffID.Midas, 180); break;
-
-                case 12:
-                case 13:
-                    target.AddBuff(BuffID.OnFire, 180); break;
-
-                case 23: target.AddBuff(ModContent.BuffType<Buffs.Electrified>(), 180); break;
-                case 25: target.AddBuff(BuffID.Daybreak, 180); break;
-                case 26: target.AddBuff(ModContent.BuffType<Buffs.Moonraze>(), 180); break;
+                target.AddBuff(BuffID.Midas, 180);
+            }
+            else if(k == mod.ItemType("Incinerite") || k == ItemID.Hellstone)
+            {
+                target.AddBuff(BuffID.OnFire, 180);
+            }
+            else if(k == mod.ItemType("DarkmatterOre"))
+            {
+                target.AddBuff(ModContent.BuffType<Buffs.Electrified>(), 180);
+            }
+            else if(k == mod.ItemType("DaybreakIncineriteOre"))
+            {
+                target.AddBuff(BuffID.Daybreak, 180);
+            }
+            else if(k == mod.ItemType("EventideAbyssiumOre"))
+            {
+                target.AddBuff(ModContent.BuffType<Buffs.Moonraze>(), 180);
+            }
+            else
+            {
+                return;
             }
         }
 
         public void OreEffect()
         {
-            switch ((int)projectile.ai[1])
+            int k = (int)projectile.ai[1];
+            Item item = new Item();
+            item.SetDefaults(k, false);
+            if(k == ItemID.DemoniteOre || k == mod.ItemType("Abyssium") || k == mod.ItemType("RadiumOre"))
             {
-                case 9:
-                case 11:
-                case 24: projectile.extraUpdates = 1;
-                    break;
-                case 13:
-                case 14:
-                    for (int num291 = 0; num291 < 5; num291++)
-                    {
-                        int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Fire, 0f, 0f, 100);
-                        Main.dust[num292].velocity *= 2f;
-                        Main.dust[num292].noGravity = true;
-                    };
-                    break;
-                case 25: projectile.penetrate = 1;
-                    break;
-                case 22:
-                    projectile.penetrate = 1; 
-                    projectile.extraUpdates = 2;
-                    break;
-                case 26: projectile.extraUpdates = 2;
-                    break;
+                projectile.extraUpdates = 1;
+            }
+            else if(k == ItemID.Hellstone || k == ItemID.CobaltOre)
+            {
+                for (int num291 = 0; num291 < 5; num291++)
+                {
+                    int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Fire, 0f, 0f, 100);
+                    Main.dust[num292].velocity *= 2f;
+                    Main.dust[num292].noGravity = true;
+                };
+            }
+            else if(k == mod.ItemType("DaybreakIncineriteOre"))
+            {
+                projectile.penetrate = 1;
+            }
+            else if(k == ItemID.LunarOre)
+            {
+                projectile.penetrate = 1; 
+                projectile.extraUpdates = 2;
+            }
+            else if(k == mod.ItemType("EventideAbyssiumOre"))
+            {
+                projectile.extraUpdates = 2;
+            }
+            else if(Config.LuckyOre[k] > 650 && item.modItem.mod != ModLoader.GetMod("AAMod") && item.modItem.mod != ModLoader.GetMod("ModLoader"))
+            {
+                int dustid = DustID.Copper;
+                switch (WorldGen.genRand.Next(10))
+                {
+                    case 0:
+                        dustid = DustID.Copper; break;
+                    case 1:
+                        dustid = DustID.Tin; break;
+                    case 2:
+                        dustid = DustID.Iron; break;
+                    case 3:
+                        dustid = DustID.Lead; break;
+                    case 4:
+                        dustid = DustID.Silver; break;
+                    case 5:
+                        dustid = DustID.Tungsten; break;
+                    case 6:
+                        dustid = DustID.Gold; break;
+                    case 7:
+                        dustid = DustID.Platinum; break;
+                    case 8:
+                        dustid = DustID.t_Meteor; break;
+                    case 9:
+                        dustid = DustID.Fire; break;
+                }
+                for (int num291 = 0; num291 < 3; num291++)
+                {
+                    int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, dustid, 0f, 0f, 100);
+                    Main.dust[num292].velocity *= 2f;
+                    Main.dust[num292].noGravity = true;
+                };
+            }
+            else
+            {
+                return;
             }
         }
 
         public int Damage()
         {
+            int orevalue = 0;
+            if(Config.LuckyOre.TryGetValue((int)projectile.ai[1], out orevalue))
+            {
+                return (int)Math.Exp(orevalue * 0.67/100);
+            }
+            else if((int)projectile.ai[1] == ItemID.Hellstone)
+            {
+                return (int)Math.Exp(500 * 0.67/100);
+            }
+            else
+            {
+                return (int)Math.Exp(100 * 0.67/100);
+            }
+            /* 
             switch ((int)projectile.ai[1])
             {
                 case 0:
@@ -216,10 +293,175 @@ namespace AAMod.Projectiles.Greed.WKG
                 default:
                     goto case 0;
             }
+            */
         }
 
         public int DType()
         {
+            int k = (int)projectile.ai[1];
+            if(k == ItemID.CopperOre)
+            {
+                return DustID.Copper;
+            }
+            else if(k == ItemID.TinOre)
+            {
+                return DustID.Tin;
+            }
+            else if(k == ItemID.IronOre)
+            {
+                return DustID.Iron;
+            }
+            else if(k == ItemID.LeadOre)
+            {
+                return DustID.Lead;
+            }
+            else if(k == ItemID.SilverOre)
+            {
+                return DustID.Silver;
+            }
+            else if(k == ItemID.TungstenOre)
+            {
+                return DustID.Tungsten;
+            }
+            else if(k == ItemID.GoldOre)
+            {
+                return DustID.Gold;
+            }
+            else if(k == ItemID.PlatinumOre)
+            {
+                return DustID.Platinum;
+            }
+            else if(k == ItemID.Meteorite)
+            {
+                return DustID.t_Meteor;
+            }
+            else if (k == ItemID.DemoniteOre)
+            {
+                return 14;
+            }
+            else if (k == ItemID.CrimtaneOre)
+            {
+                return 117;
+            }
+            else if (k == mod.ItemType("Abyssium"))
+            {
+                return ModContent.DustType<AbyssiumDust>();
+            }
+            else if (k == mod.ItemType("Incinerite"))
+            {
+                return ModContent.DustType<IncineriteDust>();
+            }
+            else if (k == ItemID.Hellstone)
+            {
+                return DustID.Fire;
+            }
+            else if (k == ItemID.CobaltOre)
+            {
+                return 48;
+            }
+            else if (k == ItemID.PalladiumOre)
+            {
+                return 144;
+            }
+            else if (k == ItemID.MythrilOre)
+            {
+                return 49;
+            }
+            else if (k == ItemID.OrichalcumOre)
+            {
+                return 145;
+            }
+            else if (k == ItemID.AdamantiteOre)
+            {
+                return 50;
+            }
+            else if (k == ItemID.TitaniumOre)
+            {
+                return 146;
+            }
+            else if (k == mod.ItemType("HallowedOre"))
+            {
+                return DustID.Gold;
+            }
+            else if (k == ItemID.ChlorophyteOre)
+            {
+                return 128;
+            }
+            else if (k == ItemID.LunarOre)
+            {
+                return ModContent.DustType<LuminiteDust>();
+            }
+            else if (k == mod.ItemType("DarkmatterOre"))
+            {
+                return ModContent.DustType<DarkmatterDust>();
+            }
+            else if (k == mod.ItemType("RadiumOre"))
+            {
+                return ModContent.DustType<RadiumDust>();
+            }
+            else if (k == mod.ItemType("DaybreakIncineriteOre"))
+            {
+                return ModContent.DustType<DaybreakIncineriteDust>();
+            }
+            else if (k == mod.ItemType("EventideAbyssiumOre"))
+            {
+                return ModContent.DustType<YamataDust>();
+            }
+            else if (k == mod.ItemType("Apocalyptite"))
+            {
+                return ModContent.DustType<VoidDust>();
+            }
+            else if (Config.LuckyOre[k] <= 300)
+            {
+                return DustID.Copper;
+            }
+            else if (Config.LuckyOre[k] <= 700)
+            {
+                return DustID.Gold;
+            }
+            else
+            {
+                switch (WorldGen.genRand.Next(18))
+                {
+                    case 0:
+                        return DustID.Copper;
+                    case 1:
+                        return DustID.Tin;
+                    case 2:
+                        return DustID.Iron;
+                    case 3:
+                        return DustID.Lead;
+                    case 4:
+                        return DustID.Silver;
+                    case 5:
+                        return DustID.Tungsten;
+                    case 6:
+                        return DustID.Gold;
+                    case 7:
+                        return DustID.Platinum;
+                    case 8:
+                        return DustID.t_Meteor;
+                    case 9:
+                        return ModContent.DustType<LuminiteDust>();
+                    case 10:
+                        return ModContent.DustType<DarkmatterDust>();
+                    case 11:
+                        return ModContent.DustType<RadiumDust>();
+                    case 12:
+                        return ModContent.DustType<DaybreakIncineriteDust>();
+                    case 13:
+                        return ModContent.DustType<YamataDust>();
+                    case 14:
+                        return ModContent.DustType<VoidDust>();
+                    case 15:
+                        return ModContent.DustType<IncineriteDust>();
+                    case 16:
+                        return ModContent.DustType<AbyssiumDust>();
+                    case 17:
+                        return DustID.Fire;
+                }
+            }
+
             switch ((int)projectile.ai[1])
             {
                 case 0:

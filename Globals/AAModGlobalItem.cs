@@ -215,7 +215,7 @@ namespace AAMod
             {
                 if(Main.rand.Next(20) == 0)
                 {
-                    switch(Main.rand.Next(20))
+                    switch(WorldGen.genRand.Next(20))
                     {
                         case 0:
                             player.QuickSpawnItem(ItemID.AnglerEarring, 1);

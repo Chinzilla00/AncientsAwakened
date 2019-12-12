@@ -2251,7 +2251,7 @@ ItemName.GildedGlock=鎏金格洛克手枪
 ItemTooltip.GildedGlock=使用钱币作为子弹
 
 ItemName.GoldDigger=黄金发掘机
-ItemTooltip.GoldDigger=发射一束碰到砖块会产生金币喷泉的弹幕\n喷泉越活跃产生的金币越少
+ItemTooltip.GoldDigger=发射一束碰到砖块会产生伤害金币喷泉的法束\n喷泉越活跃产生的伤害金币越少
 
 ItemName.GreedBag=宝藏袋
 

@@ -20,7 +20,6 @@ namespace AAMod.Projectiles.Greed
             projectile.magic = true;
             projectile.penetrate = -1;
             projectile.ignoreWater = true;
-            projectile.tileCollide = true;
         }
 
         public override void AI()
@@ -50,7 +49,7 @@ namespace AAMod.Projectiles.Greed
 
         public override void Kill(int timeLeft)
         {
-            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, 0, 0, mod.ProjectileType("CoinFountain"), projectile.damage, 1);
+            Projectile.NewProjectile(projectile.position.X - 30f, projectile.position.Y - 30f, 0, 0, mod.ProjectileType("GoldFountain"), projectile.damage, 1, projectile.owner, 0, 0);
         }
     }
 }
