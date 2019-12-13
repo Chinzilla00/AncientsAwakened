@@ -475,7 +475,10 @@ namespace AAMod.Projectiles.Greed.WKG
             }
             else if(k == ItemID.ChlorophyteOre)
             {
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X * 0.1f, projectile.velocity.Y * 0.1f, 228, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                for(int shootid = 0; shootid < 4; shootid++)
+                {
+                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X * Main.rand.Next(-3, 3) * 0.1f, projectile.velocity.Y * Main.rand.Next(-3, 3) * 0.1f, 228, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                }
                 target.AddBuff(BuffID.Poisoned, 240);
                 target.AddBuff(BuffID.Venom, 240);
             }
@@ -494,7 +497,7 @@ namespace AAMod.Projectiles.Greed.WKG
                         Main.projectile[p].ai[0] = 1f;
                     }
                 }
-                if(projectile.ai[0] != 1f) Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<LuminiteBlast>(), projectile.damage, projectile.knockBack, Main.myPlayer, 0, 0);
+                if(projectile.ai[0] != 1f) Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<LuminiteBlast>(), (int)(projectile.damage / 2.5), projectile.knockBack, Main.myPlayer, 0, 0);
             }
             else if(k == mod.ItemType("DarkmatterOre"))
             {
@@ -503,7 +506,7 @@ namespace AAMod.Projectiles.Greed.WKG
             else if(k == mod.ItemType("DaybreakIncineriteOre"))
             {
                 target.AddBuff(BuffID.Daybreak, 400);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("FireProjBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("FireProjBoom"), (int)(projectile.damage / 2.5), projectile.knockBack, projectile.owner, 0f, 0f);
                 projectile.ai[0] = 1f;
             }
             else if(k == mod.ItemType("EventideAbyssiumOre"))
