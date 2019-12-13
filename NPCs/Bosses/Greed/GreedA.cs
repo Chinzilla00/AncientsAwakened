@@ -476,6 +476,8 @@ namespace AAMod.NPCs.Bosses.Greed
             return false;
         }
 
+        public bool truehit = false;
+
         public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
         {
             if (item.pick > 0)
@@ -772,7 +774,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            damage *= .05f;
+            if(truehit) damage *= .05f; truehit = false;
             return true;
         }
 

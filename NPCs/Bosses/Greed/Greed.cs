@@ -387,11 +387,14 @@ namespace AAMod.NPCs.Bosses.Greed
             return false;
         }
 
+        public bool truehit = false;
+
         public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
         {
             if (item.pick > 0)
             {
                 npc.StrikeNPC(damage + item.pick, knockback, 0, true);
+                truehit = true;
             }
         }
 
@@ -643,9 +646,18 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            damage *= .05f;
+            if(truehit) damage *= .05f; truehit = false;
             return true;
         }
+
+        public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		{
+            if (projectile.type == mod.ProjectileType("OreChunk") && projectile.ai[1] == ItemID.GoldOre && npc.ai[2] == 6)
+            {
+                damage += (int)(npc.defense * (Main.expertMode? .75 : .5f));
+                truehit = true;
+            }
+		}
 
         public override bool PreAI()
         {

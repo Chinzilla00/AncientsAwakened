@@ -29,8 +29,23 @@ namespace AAMod.Items.Boss.Greed
         {
             DisplayName.SetDefault("Gold Digger");
             Tooltip.SetDefault(@"Fires a projectile that, upon collision with a tile, creates a fountain of coins
-Fountains will spit less coins the more fountains are active");
+Fountains will spit less coins the more fountains are active
+RightClick to clear all fountains");
             Item.staff[item.type] = true;
         }
+
+        public override bool CanUseItem(Player player)
+		{
+            if (player.altFunctionUse == 2)
+            {
+                return false;
+            }
+            return base.CanUseItem(player);
+        }
+        
+        public override bool AltFunctionUse(Player player)
+		{
+			return true;
+		}
     }
 }

@@ -21,22 +21,20 @@ namespace AAMod.Projectiles.Greed
             projectile.magic = true;
             projectile.penetrate = -1;
             projectile.alpha = 255;
-            projectile.timeLeft = 3600;
+            projectile.timeLeft = 180;
             projectile.tileCollide = false;
         }
-
-        public int timecount = 180;
 
         public override void AI()
         {
             projectile.rotation += .1f;
             if (projectile.alpha > 0)
             {
-                timecount = 180;
+                projectile.timeLeft = 180;
                 projectile.alpha -= 5;
             }
 
-            if (timecount < 60)
+            if (projectile.timeLeft < 60)
             {
                 projectile.alpha += 5;
             }
@@ -48,6 +46,12 @@ namespace AAMod.Projectiles.Greed
                 Projectile.NewProjectile(projectile.position.X + 30f, projectile.position.Y + 30f, Main.rand.Next(-3, 4), Main.rand.Next(-3, 10), ModContent.ProjectileType<Gold>(), projectile.damage, 1, projectile.owner, 0, 0);
                 projectile.ai[0] = 0;
                 projectile.netUpdate = true;
+            }
+
+            Player player = Main.player[projectile.owner];
+            if(player.inventory[player.selectedItem].type == mod.ItemType("GoldDigger") && player.altFunctionUse == 2 && player.controlUseItem)
+            {
+                projectile.Kill();
             }
         }
     }

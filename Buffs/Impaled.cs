@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Buffs
 {
@@ -25,7 +26,11 @@ namespace AAMod.Buffs
             int impaleDamage = 0;
             for (int i = 0; i < 1000; i++)
             {
-                if (Main.projectile[i].active && Main.projectile[i].GetGlobalProjectile<ImplaingProjectile>().CanImpale && Main.projectile[i].ai[0] == 1f && Main.projectile[i].ai[1] == npc.whoAmI)
+                if (
+                    Main.projectile[i].active && Main.projectile[i].GetGlobalProjectile<ImplaingProjectile>().CanImpale && 
+                    ((Main.projectile[i].ai[0] == 1f && Main.projectile[i].ai[1] == npc.whoAmI) || 
+                    (Main.projectile[i].type == mod.ProjectileType("OreChunk") && Main.projectile[i].ai[0] == 1f && Main.projectile[i].ai[1] == ItemID.TungstenOre && Main.projectile[i].localAI[1] == npc.whoAmI))
+                )
                 {
 
                     impaleDamage += Main.projectile[i].GetGlobalProjectile<ImplaingProjectile>().damagePerImpaler;

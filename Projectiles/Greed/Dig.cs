@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
 
 namespace AAMod.Projectiles.Greed
 {
@@ -49,7 +50,8 @@ namespace AAMod.Projectiles.Greed
 
         public override void Kill(int timeLeft)
         {
-            Projectile.NewProjectile(projectile.position.X - 30f, projectile.position.Y - 30f, 0, 0, mod.ProjectileType("GoldFountain"), projectile.damage, 1, projectile.owner, 0, 0);
+            Vector2 vector = Vector2.Normalize(projectile.velocity);
+            Projectile.NewProjectile(projectile.position.X - vector.X * 20f, projectile.position.Y - vector.Y * 20f, 0, 0, mod.ProjectileType("GoldFountain"), projectile.damage, 1, projectile.owner, 0, 0);
         }
     }
 }
