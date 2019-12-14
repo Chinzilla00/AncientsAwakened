@@ -123,6 +123,22 @@ namespace AAMod.Projectiles.Greed.WKG
                     projectile.velocity = - projectile.velocity;
                 }
             }
+            else if(k == ItemID.AdamantiteOre)
+            {
+                bool flag = false;
+                if(projectile.velocity == Vector2.Zero) projectile.Kill();
+                else if(projectile.velocity.Length() < 8f) projectile.velocity = Vector2.Normalize(projectile.velocity) * 8f;
+                Vector2 velocity = Collision.TileCollision(projectile.position, projectile.velocity, projectile.width, projectile.height, true, true, 1);;
+                if (velocity != projectile.velocity)
+				{
+					flag = true;
+				}
+                if (flag && ProjectileLoader.OnTileCollide(projectile, projectile.velocity))
+			    {
+                    if(velocity.Y != projectile.velocity.Y) projectile.velocity.Y = 0;
+                    if(velocity.X != projectile.velocity.X) projectile.velocity.X = 0;
+                }
+            }
             else if(k == mod.ItemType("DaybreakIncineriteOre"))
             {
                 if(projectile.ai[0] == 1f)
@@ -317,6 +333,10 @@ namespace AAMod.Projectiles.Greed.WKG
             else if(k == ItemID.GoldOre || k == ItemID.PlatinumOre)
             {
                 target.AddBuff(BuffID.Midas, 180);
+                if(k == ItemID.GoldOre)
+                {
+                    damage += (int)(target.defense * (Main.expertMode? 0.75f : 0.5f));
+                }
                 if(k == ItemID.PlatinumOre && Main.rand.Next(5) == 0)
                 {
                     int itemcreat = 0;
