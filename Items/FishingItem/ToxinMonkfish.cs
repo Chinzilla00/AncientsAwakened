@@ -6,12 +6,12 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.FishingItem
 {
-    public class SharpeningLavaFish : BaseAAItem
+    public class ToxinMonkfish : BaseAAItem
     {
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sharpening Lava Fish");
+            DisplayName.SetDefault("Toxin Monkfish");
         }
 
         public override void SetDefaults()
@@ -28,7 +28,7 @@ namespace AAMod.Items.FishingItem
             item.useStyle = 1;
             item.consumable = true;
             item.value = 128000;
-            item.createTile = mod.TileType("SharpeningLavaFishTile");
+            item.createTile = mod.TileType("ToxinMonkfishTile");
         }
     }
 }
