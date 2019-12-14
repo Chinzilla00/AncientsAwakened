@@ -173,7 +173,7 @@ namespace AAMod.Projectiles.Greed.WKG
                         }
                     }
                 }
-                else if(projectile.localAI[0] == 2)
+                else if(projectile.localAI[0] >= 2)
                 {
                     projectile.ai[0]++;
                     if (projectile.ai[0] > 20)
