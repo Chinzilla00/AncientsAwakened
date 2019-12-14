@@ -23,6 +23,7 @@ namespace AAMod.Tiles.Crafters
             TileObjectData.newTile.AnchorInvalidTiles = new[] { 127 };
 			TileObjectData.newTile.StyleHorizontal = true;
 			TileObjectData.newTile.LavaDeath = false;
+            TileObjectData.newTile.DrawYOffset = 2;
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
             name.SetDefault("Sharpening Lava Fish");
@@ -33,14 +34,28 @@ namespace AAMod.Tiles.Crafters
             {
                 TileID.LunarCraftingStation,
                 mod.TileType("SharpeningLavaFishTile")
-
             };
+            animationFrameHeight = 38;
         }
 
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
-            frame = Main.tileFrame[TileID.SharpeningStation];
+            frameCounter++;
+			if (frameCounter >= 10)
+			{
+				frameCounter = 0;
+				frame++;
+				if (frame >= 4)
+				{
+					frame = 0;
+				}
+			}
         }
+
+        public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height)
+		{
+            offsetY = 2;
+		}
 
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
@@ -56,6 +71,14 @@ namespace AAMod.Tiles.Crafters
             player.AddBuff(74, 36000, true);
 			Main.PlaySound(SoundID.Item37, player.position);
         }
+
+        public override void MouseOver(int i, int j)
+        {
+			Player player = Main.LocalPlayer;
+			player.noThrow = 2;
+			player.showItemIcon = true;
+			player.showItemIcon2 = mod.ItemType("SharpeningLavaFish");
+		}
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {

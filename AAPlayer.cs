@@ -894,9 +894,16 @@ namespace AAMod
                 caughtType = mod.ItemType("Fishmother");
             }
 
-            if (Main.rand.Next(50) == 0 && player.GetModPlayer<AAPlayer>().ZoneInferno && Main.hardMode)
+            if (player.GetModPlayer<AAPlayer>().ZoneInferno)
             {
-                caughtType = mod.ItemType("ScorchShark");
+                if(Main.rand.Next(50) == 0 && Main.hardMode)
+                {
+                    caughtType = mod.ItemType("ScorchShark");
+                }
+                else if(Main.rand.Next(49) == 0)
+                {
+                    caughtType = mod.ItemType("SharpeningLavaFish");
+                }
             }
 
             if (Main.rand.Next(50) == 0 && player.GetModPlayer<AAPlayer>().ZoneMire && Main.hardMode)
