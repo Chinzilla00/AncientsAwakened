@@ -884,24 +884,43 @@ namespace AAMod
                 }
             }
 
-            if (questFish == mod.ItemType("TriHeadedKoi") && Main.rand.NextBool())
+            if (questFish == mod.ItemType("TriHeadedKoi") && player.GetModPlayer<AAPlayer>().ZoneInferno && Main.rand.NextBool())
             {
                 caughtType = mod.ItemType("TriHeadedKoi");
             }
 
-            if (questFish == mod.ItemType("Fishmother") && Main.rand.NextBool())
+            if (questFish == mod.ItemType("Fishmother") && player.GetModPlayer<AAPlayer>().ZoneMire && Main.rand.NextBool())
             {
                 caughtType = mod.ItemType("Fishmother");
             }
 
-            if (Main.rand.Next(50) == 0 && player.GetModPlayer<AAPlayer>().ZoneInferno && Main.hardMode)
+            if (questFish == mod.ItemType("GlitchFish") && player.GetModPlayer<AAPlayer>().ZoneVoid && Main.rand.NextBool())
             {
-                caughtType = mod.ItemType("ScorchShark");
+                caughtType = mod.ItemType("GlitchFish");
             }
 
-            if (Main.rand.Next(50) == 0 && player.GetModPlayer<AAPlayer>().ZoneMire && Main.hardMode)
+            if (player.GetModPlayer<AAPlayer>().ZoneInferno)
             {
-                caughtType = mod.ItemType("SwimmingHydra");
+                if(Main.rand.Next(50) == 0 && Main.hardMode)
+                {
+                    caughtType = mod.ItemType("ScorchShark");
+                }
+                else if(Main.rand.Next(49) == 0)
+                {
+                    caughtType = mod.ItemType("SharpeningLavaFish");
+                }
+            }
+
+            if (player.GetModPlayer<AAPlayer>().ZoneMire && Main.hardMode)
+            {
+                if(Main.rand.Next(50) == 0 && Main.hardMode)
+                {
+                    caughtType = mod.ItemType("SwimmingHydra");
+                }
+                else if(Main.rand.Next(49) == 0)
+                {
+                    caughtType = mod.ItemType("ToxinMonkfish");
+                }
             }
 
             if ((Main.rand.Next(3000) == 0 && liquidType == 0 && player.fishingSkill >= 100)|| (Main.rand.Next(1000) == 0 && player.accFishingLine && player.accTackleBox))

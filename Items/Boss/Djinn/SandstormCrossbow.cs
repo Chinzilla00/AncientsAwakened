@@ -19,9 +19,9 @@ namespace AAMod.Items.Boss.Djinn
 	        item.ranged = true;
 	        item.width = 40;
 	        item.height = 26;
-	        item.useTime = 15;
+	        item.useTime = 19;
 	        item.reuseDelay = 0;
-	        item.useAnimation = 15;
+	        item.useAnimation = 19;
 	        item.useStyle = 5;
 	        item.noMelee = true;
 	        item.knockBack = 2.5f;

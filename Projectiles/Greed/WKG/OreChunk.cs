@@ -123,6 +123,22 @@ namespace AAMod.Projectiles.Greed.WKG
                     projectile.velocity = - projectile.velocity;
                 }
             }
+            else if(k == ItemID.AdamantiteOre)
+            {
+                bool flag = false;
+                if(projectile.velocity == Vector2.Zero) projectile.Kill();
+                else if(projectile.velocity.Length() < 8f) projectile.velocity = Vector2.Normalize(projectile.velocity) * 8f;
+                Vector2 velocity = Collision.TileCollision(projectile.position, projectile.velocity, projectile.width, projectile.height, true, true, 1);;
+                if (velocity != projectile.velocity)
+				{
+					flag = true;
+				}
+                if (flag && ProjectileLoader.OnTileCollide(projectile, projectile.velocity))
+			    {
+                    if(velocity.Y != projectile.velocity.Y) projectile.velocity.Y = 0;
+                    if(velocity.X != projectile.velocity.X) projectile.velocity.X = 0;
+                }
+            }
             else if(k == mod.ItemType("DaybreakIncineriteOre"))
             {
                 if(projectile.ai[0] == 1f)
@@ -155,7 +171,7 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 if(projectile.localAI[0] == 1)
                 {
-                    const int homingDelay = 10;
+                    const int homingDelay = 20;
                     const float desiredFlySpeedInPixelsPerFrame = 60;
                     const float amountOfFramesToLerpBy = 20;
 
@@ -165,12 +181,20 @@ namespace AAMod.Projectiles.Greed.WKG
                         projectile.ai[0] = homingDelay;
 
                         int foundTarget = HomeOnTarget();
-                        if (foundTarget != -1 && foundTarget != projectile.localAI[1])
+                        if (foundTarget != -1)
                         {
                             NPC n = Main.npc[foundTarget];
                             Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
                             projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                         }
+                    }
+                }
+                else if(projectile.localAI[0] >= 2)
+                {
+                    projectile.ai[0]++;
+                    if (projectile.ai[0] > 20)
+                    {
+                        projectile.localAI[0] = 1;
                     }
                 }
             }
@@ -309,6 +333,10 @@ namespace AAMod.Projectiles.Greed.WKG
             else if(k == ItemID.GoldOre || k == ItemID.PlatinumOre)
             {
                 target.AddBuff(BuffID.Midas, 180);
+                if(k == ItemID.GoldOre)
+                {
+                    damage += (int)(target.defense * (Main.expertMode? 0.75f : 0.5f));
+                }
                 if(k == ItemID.PlatinumOre && Main.rand.Next(5) == 0)
                 {
                     int itemcreat = 0;
@@ -513,8 +541,9 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 target.AddBuff(ModContent.BuffType<Buffs.Moonraze>(), 400);
 
-                projectile.localAI[1] = target.whoAmI;
-                projectile.localAI[0] = 1f;
+                projectile.localAI[0] ++;
+
+                if(projectile.velocity.Length() < 10f) projectile.velocity = 10 * Vector2.Normalize(projectile.velocity);
             }
             else
             {
@@ -547,6 +576,13 @@ namespace AAMod.Projectiles.Greed.WKG
             else if(k == mod.ItemType("EventideAbyssiumOre"))
             {
                 projectile.extraUpdates = 2;
+                projectile.tileCollide = false;
+                for (int num291 = 0; num291 < 5; num291++)
+                {
+                    int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.Moonraze>(), 0f, 0f, 100);
+                    Main.dust[num292].velocity *= 2f;
+                    Main.dust[num292].noGravity = true;
+                };
             }
             else if(k >= 3930 && Config.LuckyOre[k] > 650 && item.modItem.mod != ModLoader.GetMod("AAMod"))
             {

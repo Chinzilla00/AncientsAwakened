@@ -3271,6 +3271,10 @@ namespace AAMod
                         return "我讨厌潭渊. 在我睡觉时间以外什么也看不见, 但是我知道那有一条杀人鱼, 那东西有, 三 个 头. 你能去给我抓来吗?";
                         case "TriHeadedKoiLocation":
                         return "潭渊的任何位置";
+                        case "GlitchFish":
+                        return "我曾经一觉醒来看见我头上的恐怖岛屿里有条奇怪的鱼，大概在西边。你去给我抓过来。你说为什么空岛上会有水？自己想办法。";
+                        case "GlitchFishLocation":
+                        return "虚空的任何位置";
                     }
                 }
             else
@@ -3285,6 +3289,10 @@ namespace AAMod
                         return "I hate the Mire. I can't see a thing in there unless it's past my bedtime, but I know there's a killer fish in there that I want that has, get this, THREE HEADS. Can you go get it for me?";
                         case "TriHeadedKoiLocation":
                         return "Caught anywhere in the Mire";
+                        case "GlitchFish":
+                        return "I once woke up and saw a strange fish in the water of the scary island over my head in the sky, probably in the West. You go get it for me. You ask why there are waters in sky island? Find your own way.";
+                        case "GlitchFishLocation":
+                        return "Caught anywhere in the Void";
                     }
                 }
             return"";

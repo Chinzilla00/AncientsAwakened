@@ -8,39 +8,40 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles.Crafters
 {
-    public class SharpeningLavaFishTile : ModTile
+    public class ToxinMonkfishTile : ModTile
     {
         public override void SetDefaults()
         {
+            Main.tileLighted[Type] = true;
             Main.tileSolidTop[Type] = false;
             Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = true;
             Main.tileTable[Type] = true;
             Main.tileLavaDeath[Type] = false;
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
             TileObjectData.newTile.Origin = new Point16(1, 1);
-			TileObjectData.newTile.CoordinateHeights = new[] { 16, 16 };
+			TileObjectData.newTile.CoordinateHeights = new[] { 16, 16, 18 };
             TileObjectData.newTile.AnchorInvalidTiles = new[] { 127 };
 			TileObjectData.newTile.StyleHorizontal = true;
-			TileObjectData.newTile.LavaDeath = false;
-            TileObjectData.newTile.DrawYOffset = 2;
+			TileObjectData.newTile.LavaDeath = true;
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Sharpening Lava Fish");
+            name.SetDefault("Toxin Monkfish");
             dustType = ModContent.DustType<Dusts.RadiumDust>();
-            AddMapEntry(new Color(223, 113, 38), name);
+            AddMapEntry(new Color(93, 163, 79), name);
             disableSmartCursor = false;
             adjTiles = new int[]
             {
-                mod.TileType("SharpeningLavaFishTile")
+                TileID.AlchemyTable,
+                mod.TileType("ToxinMonkfishTile")
             };
-            animationFrameHeight = 38;
+            animationFrameHeight = 54;
         }
 
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
             frameCounter++;
-			if (frameCounter >= 10)
+			if (frameCounter >= 4)
 			{
 				frameCounter = 0;
 				frame++;
@@ -51,24 +52,18 @@ namespace AAMod.Tiles.Crafters
 			}
         }
 
-        public override void SetDrawPositions(int i, int j, ref int width, ref int offsetY, ref int height)
-		{
-            offsetY = 2;
-		}
-
         public override void ModifyLight(int i, int j, ref float r, ref float g, ref float b)
         {
-            r = .99f;
-            g = .44f;
-            b = .15f;
+            r = 0.36f;
+            g = 0.64f;
+            b = 0.31f;
         }
 
         public override void RightClick(int i, int j)
         {
             Player player = Main.player[Main.myPlayer];
-            player.AddBuff(159, 36000, true);
-            player.AddBuff(74, 36000, true);
-			Main.PlaySound(SoundID.Item37, player.position);
+            player.AddBuff(mod.BuffType("HydratoxinFlaskBuff"), 36000, true);
+			Main.PlaySound(7, (int)player.position.X, (int)player.position.Y, 1, 1f, 0f);
         }
 
         public override void MouseOver(int i, int j)
@@ -76,12 +71,12 @@ namespace AAMod.Tiles.Crafters
 			Player player = Main.LocalPlayer;
 			player.noThrow = 2;
 			player.showItemIcon = true;
-			player.showItemIcon2 = mod.ItemType("SharpeningLavaFish");
+			player.showItemIcon2 = mod.ItemType("ToxinMonkfish");
 		}
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
         {
-            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("SharpeningLavaFish"));
+            Item.NewItem(i * 16, j * 16, 32, 16, mod.ItemType("ToxinMonkfish"));
         }
     }
 }
