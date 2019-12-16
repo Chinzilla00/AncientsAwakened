@@ -144,12 +144,12 @@ namespace AAMod.Projectiles.Akuma.Dawnstrike
             if (chargeLevel == 3)
             {
                 type = ModContent.ProjectileType<FireA>();
-                damage = projectile.damage * 2;
+                damage = projectile.damage * 1.5f;
             }
             else if (chargeLevel == 2)
             {
                 type = ModContent.ProjectileType<AMeteor>();
-                damage = projectile.damage * 1.5f;
+                damage = projectile.damage * 1.3f;
             }
             else
             {
