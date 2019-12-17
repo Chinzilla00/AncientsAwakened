@@ -481,10 +481,7 @@ namespace AAMod.NPCs.Bosses.Yamata
                     }
                     if (ai[2] >= 60f)
                     {
-                        ai[2] = -200f;
-                        npc.direction *= -1;
-                        npc.velocity.X *= -1f;
-                        npc.collideX = false;
+                        ai[2] = 0f;
                     }
                 }
                 else
@@ -543,7 +540,6 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (npc.velocity.Y < -maxSpeedY) { npc.velocity.Y = -maxSpeedY; }
             }
 
-
             if (!ignoreWet && npc.wet)
             {
                 npc.velocity.Y -= moveInterval;
@@ -600,6 +596,8 @@ namespace AAMod.NPCs.Bosses.Yamata
                 if (npc.velocity.Y < 0f) { npc.velocity.Y -= hoverInterval - 0.01f; }
                 if ((double)npc.velocity.Y > hoverMaxSpeed) { npc.velocity.Y = hoverMaxSpeed; }
             }
+
+            
         }
 
         public bool TargetClosest()

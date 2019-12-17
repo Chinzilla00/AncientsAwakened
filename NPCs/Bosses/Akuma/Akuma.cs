@@ -138,7 +138,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 QuoteSaid = false;
                 Roar(roarTimerMax, false);
-                internalAI[1] = Main.rand.Next(5);
+                internalAI[1] = Main.rand.Next(3);
             }
             if (internalAI[0] > 300)
             {
@@ -404,8 +404,6 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public void Attack(NPC npc)
         {
-            Player player = Main.player[npc.target];
-
             bool sayQuote = Main.rand.Next(4) == 0;
             if (internalAI[1] == 0)
             {
@@ -429,23 +427,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid && sayQuote)
                 {
-                    if (!Quote2) if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Akuma6"), new Color(180, 41, 32));
-                    QuoteSaid = true;
-                    Quote2 = true;
-                }
-                if (internalAI[0] == 350)
-                {
-                    if (NPC.CountNPCS(ModContent.NPCType<AncientLung>()) < (Main.expertMode ? 3 : 4))
-                    {
-                        AkumaAttacks.SpawnLung(player, mod, false);
-                        MinionCount += 1;
-                    }
-                }
-            }
-            else if (internalAI[1] == 2)
-            {
-                if (!QuoteSaid && sayQuote)
-                {
                     if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("Akuma7") : Main.rand.Next(4) == 0 ? Lang.BossChat("Akuma8") : "", new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote3 = true;
@@ -453,22 +434,6 @@ namespace AAMod.NPCs.Bosses.Akuma
                 if (internalAI[0] == 350)
                 {
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, npc.velocity.X * 2, npc.velocity.Y, ModContent.ProjectileType<AkumaFireProj>(), damage, 3, Main.myPlayer);
-                }
-            }
-            else if (internalAI[1] == 3)
-            {
-                if (!QuoteSaid && sayQuote)
-                {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote4) ? Lang.BossChat("Akuma9") : Main.rand.Next(4) == 0 ? Lang.BossChat("Akuma10") : "", new Color(180, 41, 32));
-                    QuoteSaid = true;
-                    Quote4 = true;
-                }
-                if (internalAI[0] == 350)
-                {
-                    for (int a = 0; a < 2; a++)
-                    {
-                        NPC.NewNPC((int)(player.position.X + Main.rand.Next(400)), (int)(player.position.Y + Main.rand.Next(400)), ModContent.NPCType<Sun>());
-                    }
                 }
             }
             else
