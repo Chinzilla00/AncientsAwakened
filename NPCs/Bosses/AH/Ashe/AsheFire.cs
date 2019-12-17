@@ -61,14 +61,26 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             projectile.ai[aislotHomingCooldown]++;
             if (projectile.ai[aislotHomingCooldown] > homingDelay)
             {
-                projectile.ai[aislotHomingCooldown] = homingDelay; 
+                projectile.ai[aislotHomingCooldown] = homingDelay;
 
                 int foundTarget = HomeOnTarget();
-                if (foundTarget != -1)
+                if(projectile.ai[1] == 0)
                 {
-                    Player target = Main.player[foundTarget];
-                    Vector2 desiredVelocity = projectile.DirectionTo(target.Center) * desiredFlySpeedInPixelsPerFrame;
-                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
+                    if (foundTarget != -1)
+                    {
+                        Player target = Main.player[foundTarget];
+                        Vector2 desiredVelocity = projectile.DirectionTo(target.Center) * desiredFlySpeedInPixelsPerFrame;
+                        projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
+                    }
+                }
+                else if(projectile.ai[1] == 1)
+                {
+                    if (foundTarget != -1)
+                    {
+                        NPC n = Main.npc[foundTarget];
+                        Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
+                        projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
+                    }
                 }
             }
         }
@@ -78,22 +90,44 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         {
             const bool homingCanAimAtWetEnemies = true;
             const float homingMaximumRangeInPixels = 500;
-
+            
             int selectedTarget = -1;
-            for (int i = 0; i < Main.maxPlayers; i++)
+
+            if(projectile.ai[1] == 0)
             {
-                Player target = Main.player[i];
-                if (target.active && (!target.wet || homingCanAimAtWetEnemies))
+                for (int i = 0; i < Main.maxPlayers; i++)
                 {
-                    float distance = projectile.Distance(target.Center);
-                    if (distance <= homingMaximumRangeInPixels &&
-                        (
-                            selectedTarget == -1 || //there is no selected target
-                            projectile.Distance(Main.player[selectedTarget].Center) > distance) 
-                    )
-                        selectedTarget = i;
+                    Player target = Main.player[i];
+                    if (target.active && (!target.wet || homingCanAimAtWetEnemies))
+                    {
+                        float distance = projectile.Distance(target.Center);
+                        if (distance <= homingMaximumRangeInPixels &&
+                            (
+                                selectedTarget == -1 || //there is no selected target
+                                projectile.Distance(Main.player[selectedTarget].Center) > distance) 
+                        )
+                            selectedTarget = i;
+                    }
                 }
             }
+            else if(projectile.ai[1] == 1)
+            {
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC n = Main.npc[i];
+                    if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
+                    {
+                        float distance = projectile.Distance(n.Center);
+                        if (distance <= homingMaximumRangeInPixels &&
+                            (
+                                selectedTarget == -1 || //there is no selected target
+                                projectile.Distance(Main.npc[selectedTarget].Center) > distance) 
+                        )
+                            selectedTarget = i;
+                    }
+                }
+            }
+            
 
             return selectedTarget;
         }
@@ -105,7 +139,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-            Projectile.NewProjectile(projectile.Center - new Vector2(0, 95), new Vector2(0, 0), ModContent.ProjectileType<AsheStrike>(), projectile.damage, 5);
+            int id = Projectile.NewProjectile(projectile.Center - new Vector2(0, 95), new Vector2(0, 0), ModContent.ProjectileType<AsheStrike>(), projectile.damage, 5);
+            if(projectile.ai[1] == 1)
+            {
+                Main.projectile[id].hostile = false;
+                Main.projectile[id].friendly = true;
+            }
             projectile.active = false;
         }
     }

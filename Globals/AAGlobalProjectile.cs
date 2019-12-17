@@ -11,6 +11,8 @@ namespace AAMod
     public class AAGlobalProjectile : GlobalProjectile
     {
 
+        public override bool InstancePerEntity => true;
+
         public static int CountProjectiles(int type)
         {
             int num = 0;
@@ -37,9 +39,24 @@ namespace AAMod
 
             return false;
         }
-
+        
         public override void PostAI(Projectile projectile)
         {
+            if ((projectile.minion || projectile.sentry) && !ProjectileID.Sets.StardustDragon[projectile.type])
+			{
+				if (setDefMinionDamage)
+				{
+					DefMinionDamageMultiply = Main.player[projectile.owner].minionDamage + Main.player[projectile.owner].allDamage - 1f;
+					DefMinionDamage = (int)(projectile.damage / DefMinionDamageMultiply);
+					setDefMinionDamage = false;
+				}
+				if ((Main.player[projectile.owner].minionDamage + Main.player[projectile.owner].allDamage - 1f) != DefMinionDamageMultiply)
+				{
+					int damage = (int)(DefMinionDamage * (Main.player[projectile.owner].minionDamage + Main.player[projectile.owner].allDamage - 1f));
+                    if(damage <= 0) damage = 1;
+					projectile.damage = damage;
+				}
+			}
             if (projectile.type == ProjectileID.PureSpray)
             {
                 Convert((int)(projectile.position.X + (projectile.width / 2)) / 16, (int)(projectile.position.Y + (projectile.height / 2)) / 16);
@@ -242,5 +259,11 @@ namespace AAMod
                 }
             }
         }
+
+        private bool setDefMinionDamage = true;
+
+        public float DefMinionDamageMultiply = 1f;
+
+		public int DefMinionDamage;
     }
 }

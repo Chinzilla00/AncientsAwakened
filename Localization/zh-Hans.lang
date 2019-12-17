@@ -1416,7 +1416,7 @@ ItemTooltip.WitchHood=+120魔力上限\n减少20%魔力消耗\n+2召唤上限\n�
 ItemName.WitchRobe=愤怒女巫长袍
 ItemTooltip.WitchRobe=增加10%魔法/召唤伤害\n增加10%暴击率\n+2召唤上限\n被至尊龙侍从的灼热灵魂所迷恋的长袍
 
-Common.WitchHoodBonus=炽痛与灼烧\n增加20%魔法/召唤伤害\n+4召唤上限\n一个狱焰之灵保护着你\n越少的法力, 使得狱焰之灵更强大
+Common.WitchHoodBonus=炽痛与灼烧\n增加20%魔法/召唤伤害\n+4召唤上限\n一个狱焰之灵保护着你\n越少的法力, 使得狱焰之灵更强大\n按下套装能力键释放火焰的力量\n(只有当你手持魔法或者召唤武器才会生效)
 
 
 // AAMod.Items.Armor.Ytrium
@@ -3141,6 +3141,10 @@ ItemTooltip.DoomsdayDye=这种染料使用后有一种出现异常的感觉
 
 ItemName.ShinyCharmFish=闪耀魔饰鱼
 ItemTooltip.ShinyCharmFish=一种稀有的鱼
+
+ItemName.SharpeningLavaFish=利锋熔鱼
+
+ItemName.ToxinMonkfish=毒源鮟鱇
 
 // AAMod.Items.Flasks
 

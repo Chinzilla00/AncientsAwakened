@@ -180,6 +180,10 @@ namespace AAMod
         public bool ChaosMa = false;
         public bool ChaosSu = false;
         public bool Olympian = false;
+
+        public bool AsheFlame;
+        public float AsheFlameScale = 0f;
+        public int AsheCooldown = 0;
         #endregion
 
         #region Accessory bools
@@ -443,6 +447,7 @@ namespace AAMod
             Assassin = false;
             //AssassinStealth = false;
             AbyssalStealth = false;
+            AsheFlame = false;
             Witch = false;
             Tied = false;
             TiedHead = false;
@@ -931,6 +936,8 @@ namespace AAMod
 
         public int[] Charges = null;
         public int[] Spheres = null;
+
+
         public float ShieldScale = 0;
         public float RingRotation = 0;
 
@@ -1003,6 +1010,8 @@ namespace AAMod
                 EmitDust();
             }
 
+            #region SagShieldDrawMethod
+
             if (SagCooldown > 0)
             {
                 SagCooldown--;
@@ -1029,6 +1038,54 @@ namespace AAMod
                     ShieldScale = 0f;
                 }
             }
+
+            if (ShieldScale > 0f || TimeScale > 0f)
+            {
+                RingRotation += .05f;
+            }
+
+            if (ShieldScale > 0)
+            {
+                RingRotation += .05f;
+            }
+
+            #endregion
+
+            #region AsheFlameDrawMethod
+
+            if (AsheCooldown > 0)
+            {
+                AsheCooldown--;
+            }
+            else
+            {
+                AsheCooldown = 0;
+            }
+
+            if (AsheFlame)
+            {
+                RingRotation += .05f;
+                AsheFlameScale += .02f;
+                if (AsheFlameScale >= 1f)
+                {
+                    AsheFlameScale = 1f;
+                }
+            }
+            else
+            {
+                AsheFlameScale -= .02f;
+                if (AsheFlameScale <= 0f)
+                {
+                    AsheFlameScale = 0f;
+                }
+            }
+
+            if (AsheFlameScale > 0f)
+            {
+                RingRotation += .05f;
+            }
+
+            #endregion
 
             if(Unstable)
             {
@@ -1077,16 +1134,6 @@ namespace AAMod
             if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Equinox.DaybringerHead>()) || NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Equinox.NightcrawlerHead>()))
             {
                 TimeScale = 0;
-            }
-
-            if (ShieldScale > 0f || TimeScale > 0f)
-            {
-                RingRotation += .05f;
-            }
-
-            if (ShieldScale > 0)
-            {
-                RingRotation += .05f;
             }
 
             if (Orbiters)
@@ -2626,6 +2673,28 @@ namespace AAMod
                 {
                     player.AddBuff(ModContent.BuffType<SagShield>(), 300);
                     SagCooldown = 5400;
+                }
+            }
+
+            if (Witch)
+            {
+                if (AAMod.ArmorAbilityKey.JustPressed && AsheCooldown == 0)
+                {
+                    Main.PlaySound(29, (int)player.position.X, (int)player.position.Y, 104, 1f, 0f);
+                    if(player.inventory[player.selectedItem].magic || player.inventory[player.selectedItem].summon)
+                    {
+                        for(int i = 0; i < 8; i++)
+                        {
+                            Vector2 shoot = new Vector2((float)Math.Sin(i * 0.25f * 3.1415926f), (float)Math.Cos(i * 0.25f * 3.1415926f));
+                            shoot *= 8f;
+                            int id = Projectile.NewProjectile(player.Center.X, player.Center.Y, shoot.X, shoot.Y, mod.ProjectileType("AsheFire"), player.inventory[player.selectedItem].damage, 5, Main.myPlayer, 0f, 1f);
+                            Main.projectile[id].magic = true;
+                            Main.projectile[id].hostile = false;
+                            Main.projectile[id].friendly = true;
+                        }
+                    }
+                    player.AddBuff(ModContent.BuffType<AsheFlame>(), 900);
+                    AsheCooldown = 5400;
                 }
             }
 
@@ -4215,6 +4284,13 @@ namespace AAMod
                 BaseDrawing.DrawTexture(Main.spriteBatch, RingGlow, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>().ShieldScale, drawPlayer.GetModPlayer<AAPlayer>().RingRotation, 0, 1, new Rectangle(0, 0, RingGlow.Width, RingGlow.Height), ColorUtils.COLOR_GLOWPULSE, true);
             }
 
+            if (drawPlayer.GetModPlayer<AAPlayer>().AsheFlameScale > 0)
+            {
+                Texture2D Shield = mod.GetTexture("NPCs/Bosses/AH/Ashe/AsheShield");
+                int red = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
+                BaseDrawing.DrawTexture(Main.spriteBatch, Shield, red, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>().AsheFlameScale, drawPlayer.GetModPlayer<AAPlayer>().RingRotation, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), true);
+            }
+        
             if (drawPlayer.GetModPlayer<AAPlayer>().TimeScale > 0)
             {
                 Texture2D Ring = mod.GetTexture("Items/Accessories/TimeRing");

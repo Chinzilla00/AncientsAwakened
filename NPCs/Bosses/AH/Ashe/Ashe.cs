@@ -221,7 +221,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                             {
                                 Vector2 shoot = new Vector2((float)Math.Sin(i * 0.25f * 3.1415926f), (float)Math.Cos(i * 0.25f * 3.1415926f));
                                 shoot *= 8f;
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<AsheFire>(), npc.damage / 4, 5, Main.myPlayer);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<AsheFire>(), npc.damage / 4, 5, Main.myPlayer, 0f, 0f);
                             }
                             if(Main.rand.Next(3) == 0) goto case 5;
                         }
