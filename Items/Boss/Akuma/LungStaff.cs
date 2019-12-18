@@ -73,9 +73,7 @@ namespace AAMod.Items.Boss.Akuma
                 return false;
             }
 
-            Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.minionSlots > 0).ToList().ForEach(x => { slotsUsed += x.minionSlots; });
-
-            if (player.maxMinions - slotsUsed < 1) return false;
+            if (player.maxMinions - player.slotsMinions < 0.5) return false;
 			
 			player.AddBuff(mod.BuffType("LungMinion"), 2, true);
 
@@ -105,6 +103,8 @@ namespace AAMod.Items.Boss.Akuma
                     }
                 }
             }
+
+
             if (num184 == -1 && num185 == -1)
             {
                 num81 = 0f;
@@ -128,13 +128,10 @@ namespace AAMod.Items.Boss.Akuma
                 int previous = (int) Main.projectile[num185].ai[0];
                 int current = 0;
 
-                for (int i = 0; i < (int)((player.maxMinions - player.slotsMinions) * 2); i++)
-                {
-                    current = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("LungBody"), damage, knockBack, player.whoAmI,
-                        Projectile.GetByUUID(Main.myPlayer, previous), 0f);
+                current = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("LungBody"), damage, knockBack, player.whoAmI,
+                Projectile.GetByUUID(Main.myPlayer, previous), 0f);
 
-                    previous = current;
-                }
+                previous = current;
 
                 Main.projectile[current].localAI[1] = num185;
                 
