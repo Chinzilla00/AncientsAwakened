@@ -134,8 +134,8 @@ namespace AAMod.Projectiles.Akuma.Lung
                 if (vector132.Length() < 500f && vector132.Length() >= 100f && projectile.velocity.X / vector132.X > 0)
                 {
                     flaming = true;
-                    Vector2 shootspeed = Vector2.Normalize(projectile.velocity) * 15f;
-                    Projectile.NewProjectile(projectile.position.X, projectile.position.Y, shootspeed.X, shootspeed.Y, mod.ProjectileType("DragonfireProj"), projectile.damage, 0, projectile.owner);
+                    Vector2 shootspeed = Vector2.Normalize(projectile.velocity) * 40f;
+                    Projectile.NewProjectile(projectile.position.X + projectile.velocity.X, projectile.position.Y + projectile.velocity.Y, shootspeed.X, shootspeed.Y, mod.ProjectileType("DragonfireProj"), projectile.damage, 0, projectile.owner);
                 }
                 else
                 {
@@ -144,8 +144,12 @@ namespace AAMod.Projectiles.Akuma.Lung
                 if (vector132.Length() < 300f) scaleFactor15 = 0.8f;
                 if (vector132.Length() > nPC14.Size.Length() * 0.75f)
                 {
-                    projectile.velocity += Vector2.Normalize(vector132) * scaleFactor15 * 3f;
+                    projectile.velocity += Vector2.Normalize(vector132) * scaleFactor15 * 1.5f;
                     if (Vector2.Dot(projectile.velocity, vector132) < 0.25f) projectile.velocity *= 0.8f;
+                }
+                if (projectile.velocity.X / vector132.X < 0)
+                {
+                    projectile.velocity += Vector2.Normalize(vector132).RotatedBy((float)(Math.PI / 16)) * scaleFactor15 * 1.5f;
                 }
 
                 float num1046 = 30f;
@@ -212,7 +216,7 @@ namespace AAMod.Projectiles.Akuma.Lung
             projectile.timeLeft = 18000;
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             projectile.timeLeft *= 5;
-            projectile.minionSlots = .25f;
+            projectile.minionSlots = .5f;
             projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion = true;
         }
         public override Color? GetAlpha(Color lightColor)
