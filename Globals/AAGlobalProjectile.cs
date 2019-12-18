@@ -42,7 +42,7 @@ namespace AAMod
         
         public override void PostAI(Projectile projectile)
         {
-            if ((projectile.minion || projectile.sentry) && !ProjectileID.Sets.StardustDragon[projectile.type])
+            if ((projectile.minion || projectile.sentry) && !ProjectileID.Sets.StardustDragon[projectile.type] && !LongMinion)
 			{
 				if (setDefMinionDamage)
 				{
@@ -261,6 +261,8 @@ namespace AAMod
         }
 
         private bool setDefMinionDamage = true;
+
+        public bool LongMinion = false;
 
         public float DefMinionDamageMultiply = 1f;
 

@@ -58,6 +58,10 @@ namespace AAMod.Items.Summoning
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
+            if (player.altFunctionUse == 2)
+            {
+                return false;
+            }
             //to fix tail disapearing meme
             float slotsUsed = 0;
 
@@ -112,7 +116,7 @@ namespace AAMod.Items.Summoning
                 }
 
                 Main.projectile[current].localAI[1] = tailCheck;
-
+                
                 Main.projectile[tailCheck].ai[0] = current;
                 Main.projectile[tailCheck].netUpdate = true;
                 Main.projectile[tailCheck].ai[1] = 1f;

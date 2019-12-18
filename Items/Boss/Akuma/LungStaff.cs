@@ -72,6 +72,11 @@ namespace AAMod.Items.Boss.Akuma
             {
                 return false;
             }
+
+            if(player.maxMinions - player.slotsMinions < 0.25f)
+            {
+                return false;
+            }
 			
 			player.AddBuff(mod.BuffType("LungMinion"), 2, true);
 
@@ -110,7 +115,7 @@ namespace AAMod.Items.Boss.Akuma
                 int num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, num74, num76, num77, Main.myPlayer, 0f, 0f);
                 num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, ModContent.ProjectileType<LungBody>(), num76, num77, Main.myPlayer, num187, 0f);
                 int num188 = num187;
-				for (int z = 0; z < player.maxMinions; z++)
+				for (int z = 0; z < (int)((player.maxMinions - player.slotsMinions) * 4); z++)
 				{
 					num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, ModContent.ProjectileType<LungBody>(), num76, num77, Main.myPlayer, num187, 0f);
 					Main.projectile[num188].localAI[1] = num187;
@@ -118,6 +123,25 @@ namespace AAMod.Items.Boss.Akuma
 				}
                 num187 = Projectile.NewProjectile(vector2.X, vector2.Y, num81, num82, ModContent.ProjectileType<LungTail>(), num76, num77, Main.myPlayer, num187, 0f);
                 Main.projectile[num188].localAI[1] = num187;
+            }
+            else
+            {
+                int previous = (int) Main.projectile[num185].ai[0];
+                int current = 0;
+
+                for (int i = 0; i < (int)((player.maxMinions - player.slotsMinions) * 4); i++)
+                {
+                    current = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("LungBody"), damage, knockBack, player.whoAmI,
+                        Projectile.GetByUUID(Main.myPlayer, previous), 0f);
+
+                    previous = current;
+                }
+
+                Main.projectile[current].localAI[1] = num185;
+                
+                Main.projectile[num185].ai[0] = current;
+                Main.projectile[num185].netUpdate = true;
+                Main.projectile[num185].ai[1] = 1f;
             }
             return false;
         }

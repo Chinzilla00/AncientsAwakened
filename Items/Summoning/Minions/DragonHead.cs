@@ -25,6 +25,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.tileCollide = false;
             projectile.alpha = 255;
             projectile.netImportant = true;
+            projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion = true;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -163,6 +164,9 @@ namespace AAMod.Items.Summoning.Minions
                     projectile.alpha = 0;
                 }
             }
+
+            float DamageBoost = Main.player[projectile.owner].minionDamage + Main.player[projectile.owner].allDamage - 1f;
+            projectile.damage = (int)(DamageBoost > 0f? (projectile.localAI[0] * 25 * DamageBoost) : 1);
         }
     }
 }

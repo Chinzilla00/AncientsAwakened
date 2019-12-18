@@ -26,6 +26,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.alpha = 255;
             projectile.netImportant = true;
             projectile.hide = true;
+            projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion = true;
         }
 
         public override Color? GetAlpha(Color lightColor)
@@ -140,6 +141,8 @@ namespace AAMod.Items.Summoning.Minions
             projectile.Center = projectile.position;
             if (vector134 != Vector2.Zero) projectile.Center = value67 - Vector2.Normalize(vector134) * scaleFactor16 * scaleFactor17;
             projectile.spriteDirection = vector134.X > 0f ? 1 : -1;
+
+            projectile.damage = Main.projectile[byUUID].damage;
         }
     }
 }
