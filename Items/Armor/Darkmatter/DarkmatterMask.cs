@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Terraria.Localization;
@@ -65,6 +66,17 @@ Dark, yet still barely visible");
             player.GetModPlayer<DarkmatterMaskEffects>().setBonus = true;
             player.GetModPlayer<DarkmatterMaskEffects>().sunSiphon = false;
             player.armorEffectDrawShadowLokis = true;
+            
+            for (int i = 0; i < 15; i++)
+            {
+                Vector2 offset = new Vector2();
+                double angle = Main.rand.NextDouble() * 2d * Math.PI;
+                offset.X += (float)(Math.Sin(angle) * 300);
+                offset.Y += (float)(Math.Cos(angle) * 300);
+                Dust dust = Main.dust[Dust.NewDust(player.Center + offset - new Vector2(4, 4), 0, 0,  mod.DustType("DarkmatterDust"), 0, 0, 100, default(Color), 1f)];
+                dust.velocity = player.velocity;
+                dust.noGravity = true;
+            }
         }
 
 		public override void AddRecipes()

@@ -139,6 +139,47 @@ namespace AAMod.Projectiles.Greed.WKG
                     if(velocity.X != projectile.velocity.X) projectile.velocity.X = 0;
                 }
             }
+            else if(k == mod.ItemType("DarkmatterOre"))
+            {
+                int num5 = Dust.NewDust(projectile.position + projectile.velocity, projectile.width * 3, projectile.height * 3, ModContent.DustType<DarkmatterDust>() , 0f, 0f, 200, default(Color), 0.5f);
+                Main.dust[num5].noGravity = true;
+                Main.dust[num5].velocity *= 0.75f;
+                Main.dust[num5].fadeIn = 1.3f;
+                Vector2 vector = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+                vector.Normalize();
+                vector *= (float)Main.rand.Next(50, 100) * 0.04f;
+                Main.dust[num5].velocity = vector;
+                vector.Normalize();
+                vector *= 34f;
+                Main.dust[num5].position = projectile.Center - vector;
+
+                if(projectile.ai[0]++ > 800)
+                {
+                    projectile.Kill();
+                }
+
+                for (int i = 0; i < 20; i++)
+                {
+                    Vector2 offset = new Vector2();
+                    double angle = Main.rand.NextDouble() * 2d * Math.PI;
+                    offset.X += (float)(Math.Sin(angle) * 200);
+                    offset.Y += (float)(Math.Cos(angle) * 200);
+                    Dust dust = Main.dust[Dust.NewDust(projectile.Center - projectile.velocity + offset, 0, 0,  ModContent.DustType<DarkmatterDust>(), 0, 0, 100, default(Color), 1f)];
+                    dust.velocity = projectile.velocity;
+                    dust.noGravity = true;
+                }
+
+                if(projectile.ai[0] % 20 == 10)
+                {
+                    for(int n = 0; n < 200; n++)
+                    {
+                        if(!Main.npc[n].townNPC && !Main.npc[n].dontTakeDamage && (Main.npc[n].position - projectile.position).Length() < 200)
+                        {
+                            Main.player[projectile.owner].ApplyDamageToNPC(Main.npc[n], (int)(projectile.damage / 10), 0, 1, false);
+                        }
+                    }
+                }
+            }
             else if(k == mod.ItemType("DaybreakIncineriteOre"))
             {
                 if(projectile.ai[0] == 1f)
@@ -196,6 +237,25 @@ namespace AAMod.Projectiles.Greed.WKG
                     {
                         projectile.localAI[0] = 1;
                     }
+                }
+            }
+            else if(k == mod.ItemType("Apocalyptite"))
+            {
+                if((projectile.ai[0] ++) % 40 == 20)
+                {
+                    for(int i = 0; i < 6; i++)
+                    {
+                        Vector2 vector82 = new Vector2(projectile.velocity.X, projectile.velocity.Y);
+                        float ai = Main.rand.Next(100);
+                        Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(3.1415f * 2));
+                        Vector2 vector84 = Vector2.Normalize(vector83.RotatedByRandom(0.8)) * 14f;
+                        int id = Projectile.NewProjectile(projectile.position.X + projectile.velocity.X, projectile.position.Y  + projectile.velocity.Y, vector84.X * 2, vector84.Y * 2, ModContent.ProjectileType<Projectiles.Zero.ZeroTaze>(), projectile.damage / 2, 0f, Main.myPlayer, vector83.ToRotation(), ai);
+                        Main.projectile[id].timeLeft = 30;
+                    }
+                }
+                if(projectile.ai[0] > 800)
+                {
+                    projectile.Kill();
                 }
             }
         }

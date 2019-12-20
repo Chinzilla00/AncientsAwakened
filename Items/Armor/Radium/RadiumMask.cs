@@ -1,4 +1,6 @@
 using AAMod.Items.Armor.Darkmatter;
+using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.Localization;
@@ -42,6 +44,16 @@ Shines with the light of a starry night sky");
             player.GetModPlayer<DarkmatterMaskEffects>().sunSiphon = true;
             player.setBonus = Language.GetTextValue("Mods.AAMod.Common.RadiumMaskBonus1") + (int)(100 * player.magicDamage) + " " + Language.GetTextValue("Mods.AAMod.Common.RadiumMaskBonus2") + player.magicCrit + Language.GetTextValue("Mods.AAMod.Common.RadiumMaskBonus3");
 
+			for (int i = 0; i < 15; i++)
+            {
+                Vector2 offset = new Vector2();
+                double angle = Main.rand.NextDouble() * 2d * Math.PI;
+                offset.X += (float)(Math.Sin(angle) * 300);
+                offset.Y += (float)(Math.Cos(angle) * 300);
+                Dust dust = Main.dust[Dust.NewDust(player.Center + offset - new Vector2(4, 4), 0, 0,  mod.DustType("RadiumDust"), 0, 0, 100, default(Color), 1f)];
+                dust.velocity = player.velocity;
+                dust.noGravity = true;
+            }
         }
 
 		public override void AddRecipes()
