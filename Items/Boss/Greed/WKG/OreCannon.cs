@@ -147,7 +147,7 @@ Certain ores have special effects when shot");
                 for (int i = 0; i < 2; i++)
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("OreChunk"), damage + Damage(), knockBack, player.whoAmI, 0, ItemID.TitaniumOre);
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("OreChunk"), damage + (int)(Damage() * 0.8), knockBack, player.whoAmI, 0, ItemID.TitaniumOre);
                 }
             }
             else if(Main.projectile[p].ai[1] == ItemID.LunarOre)
