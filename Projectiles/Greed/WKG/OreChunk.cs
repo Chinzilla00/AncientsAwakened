@@ -110,6 +110,29 @@ namespace AAMod.Projectiles.Greed.WKG
                     }
                 }
             }
+            else if(k == mod.ItemType("Abyssium"))
+            {
+                if(projectile.ai[0]++ > 800)
+                {
+                    projectile.Kill();
+                }
+                if(projectile.ai[0] % 60 == 30)
+                {
+                    for(int shoot = 0; shoot < 3; shoot ++)
+                    {
+                        float num82 = (float)Main.mouseX + Main.screenPosition.X;
+						float num83 = (float)Main.mouseY + Main.screenPosition.Y;
+                        Vector2 vector17 = new Vector2(num82, num83);
+                        vector17.X += (float)Main.rand.Next(-30, 31) * 0.04f;
+                        vector17.Y += (float)Main.rand.Next(-30, 31) * 0.03f;
+                        vector17.Normalize();
+                        vector17 *= (float)Main.rand.Next(70, 91) * 0.1f;
+                        vector17.X += (float)Main.rand.Next(-30, 31) * 0.04f;
+                        vector17.Y += (float)Main.rand.Next(-30, 31) * 0.03f;
+                        Projectile.NewProjectile(projectile.position.X, projectile.position.Y, vector17.X, vector17.Y, 523, projectile.damage, 0, Main.myPlayer, (float)Main.rand.Next(20), 0f);
+                    }
+                }
+            }
             else if(k == ItemID.CobaltOre)
             {
                 bool flag = false;
@@ -184,17 +207,14 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 if(projectile.ai[0] == 1f)
                 {
-                    if(projectile.localAI[0] >= 30f)
+                    if(projectile.localAI[0]++ >= 15f)
                     {
+                        projectile.localAI[0] = 0f;
                         Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<DaybreakBlast>(), projectile.damage, projectile.knockBack * 3, Main.myPlayer, 0, 0);
                     }
                     else if(projectile.localAI[0] <= 0f)
                     {
                         projectile.localAI[0] = 0f;
-                    }
-                    else
-                    {
-                        projectile.localAI[0] ++;
                     }
                 }
             }
@@ -206,7 +226,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     projectile.ai[0] = 600;
                 }
                 projectile.velocity += Vector2.Normalize(projectile.velocity);
-                projectile.damage += (int)(projectile.ai[0] / 2);
+                projectile.damage = (int)((1 + (projectile.ai[0] / 600)) * projectile.damage);
             }
             else if(k == mod.ItemType("EventideAbyssiumOre"))
             {
@@ -456,22 +476,6 @@ namespace AAMod.Projectiles.Greed.WKG
             else if(k == mod.ItemType("Abyssium"))
             {
                 target.AddBuff(BuffID.Venom, 180);
-                if (Main.rand.Next(5) == 0)
-                {
-                    for(int shoot = 0; shoot < 3; shoot ++)
-                    {
-                        float num82 = (float)Main.mouseX + Main.screenPosition.X;
-						float num83 = (float)Main.mouseY + Main.screenPosition.Y;
-                        Vector2 vector17 = new Vector2(num82, num83);
-                        vector17.X += (float)Main.rand.Next(-30, 31) * 0.04f;
-                        vector17.Y += (float)Main.rand.Next(-30, 31) * 0.03f;
-                        vector17.Normalize();
-                        vector17 *= (float)Main.rand.Next(70, 91) * 0.1f;
-                        vector17.X += (float)Main.rand.Next(-30, 31) * 0.04f;
-                        vector17.Y += (float)Main.rand.Next(-30, 31) * 0.03f;
-                        Projectile.NewProjectile(projectile.position.X, projectile.position.Y, vector17.X, vector17.Y, 523, damage, 0, Main.myPlayer, (float)Main.rand.Next(20), 0f);
-                    }
-                }
             }
             else if(k == mod.ItemType("DynaskullOre"))
             {
@@ -538,9 +542,10 @@ namespace AAMod.Projectiles.Greed.WKG
 
                 for(int i = 0; i < 200; i++)
                 {
-                    if((Main.npc[i].Center - target.Center).Length() < 400f && !Main.npc[i].friendly && !Main.npc[i].townNPC && !Main.npc[i].dontTakeDamage && Main.npc[i] != target)
+                    if((Main.npc[i].Center - target.Center).Length() < 200f && !Main.npc[i].friendly && !Main.npc[i].townNPC && !Main.npc[i].dontTakeDamage && Main.npc[i] != target)
                     {
                         projectile.velocity = target.DirectionTo(Main.npc[i].Center) * projectile.velocity.Length();
+                        break;
                     }
                 }
             }
@@ -555,10 +560,9 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 //target.AddBuff(BuffID.Slow, 180);
                 Player player = Main.player[projectile.owner];
-                if(projectile.ai[0] != 0)
+                if(projectile.ai[0] < 2f)
                 {
-                    int p = Projectile.NewProjectile(player.Center.X, player.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("OreChunk"), projectile.damage, projectile.knockBack, projectile.owner, 0f, mod.ItemType("HallowedOre"));
-                    Main.projectile[p].ai[0] = 1f;
+                    int p = Projectile.NewProjectile(player.Center.X, player.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("OreChunk"), projectile.damage, projectile.knockBack, projectile.owner, ++projectile.ai[0], mod.ItemType("HallowedOre"));
                 }
             }
             else if(k == ItemID.ChlorophyteOre)
@@ -578,7 +582,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     vector = Vector2.Normalize(vector);
                     for(int newone = -1; newone <= 1; newone += 2)
                     {
-                        int p = Projectile.NewProjectile(projectile.Center.X + vector.X * 40f, projectile.Center.Y + vector.Y * 40f, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("OreChunk"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0f, ItemID.LunarOre);
+                        int p = Projectile.NewProjectile(projectile.Center.X + vector.X * 40f * newone, projectile.Center.Y + vector.Y * 40f * newone, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("OreChunk"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0f, ItemID.LunarOre);
                         Main.projectile[p].scale /= 2;
                         Main.projectile[p].width /= 2;
                         Main.projectile[p].height /= 2;
@@ -594,7 +598,7 @@ namespace AAMod.Projectiles.Greed.WKG
             else if(k == mod.ItemType("DaybreakIncineriteOre"))
             {
                 target.AddBuff(BuffID.Daybreak, 400);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("FireProjBoom"), (int)(projectile.damage / 2.5), projectile.knockBack, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("DaybreakBlast"), (int)(projectile.damage / 2.5), projectile.knockBack, projectile.owner, 0f, 0f);
                 projectile.ai[0] = 1f;
             }
             else if(k == mod.ItemType("EventideAbyssiumOre"))

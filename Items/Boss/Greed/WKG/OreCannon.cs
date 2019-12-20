@@ -84,10 +84,10 @@ Certain ores have special effects when shot");
             if (Main.projectile[p].ai[1] == ItemID.TinOre || Main.projectile[p].ai[1] == ItemID.CopperOre)
             {
                 Main.projectile[p].velocity *= .5f;
-            }
-            else if (Main.projectile[p].ai[1] == ItemID.TinOre)
-            {
-                Main.projectile[p].knockBack *= 1.3f;
+                if (Main.projectile[p].ai[1] == ItemID.TinOre)
+                {
+                    Main.projectile[p].knockBack *= 1.3f;
+                }
             }
             else if(Main.projectile[p].ai[1] == ItemID.SilverOre)
             {
@@ -156,7 +156,7 @@ Certain ores have special effects when shot");
             }
             else if(Main.projectile[p].ai[1] == mod.ItemType("RadiumOre"))
             {
-                Main.projectile[p].velocity /= 2;
+                Main.projectile[p].velocity /= 10;
             }
             return false;
 		}
