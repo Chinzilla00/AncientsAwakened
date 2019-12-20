@@ -225,8 +225,11 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     projectile.ai[0] = 600;
                 }
-                projectile.velocity += Vector2.Normalize(projectile.velocity);
-                projectile.damage = (int)((1 + (projectile.ai[0] / 600)) * projectile.damage);
+                else
+                {
+                    projectile.damage += 4;
+                }
+                projectile.velocity += Vector2.Normalize(projectile.velocity) * 0.03f;
             }
             else if(k == mod.ItemType("EventideAbyssiumOre"))
             {

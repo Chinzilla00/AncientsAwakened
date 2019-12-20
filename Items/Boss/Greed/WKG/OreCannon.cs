@@ -156,7 +156,8 @@ Certain ores have special effects when shot");
             }
             else if(Main.projectile[p].ai[1] == mod.ItemType("RadiumOre"))
             {
-                Main.projectile[p].velocity /= 10;
+                Main.projectile[p].damage = (int)(Main.projectile[p].damage / 1.3);
+                Main.projectile[p].velocity /= 2;
             }
             return false;
 		}
@@ -166,15 +167,15 @@ Certain ores have special effects when shot");
             int orevalue = 0;
             if(Config.LuckyOre.TryGetValue(projType, out orevalue))
             {
-                return (int)Math.Exp(orevalue * 0.91/100);
+                return (int)Math.Exp(orevalue * 0.94/100);
             }
             else if(projType == ItemID.Hellstone)
             {
-                return (int)Math.Exp(500 * 0.91/100);
+                return (int)Math.Exp(500 * 0.94/100);
             }
             else
             {
-                return (int)Math.Exp(100 * 0.91/100);
+                return (int)Math.Exp(100 * 0.94/100);
             }
         }
     }
