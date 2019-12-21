@@ -136,14 +136,14 @@ namespace AAMod.Projectiles.Akuma.Lung
                     flaming = true;
                     Vector2 shootspeed = Vector2.Normalize(projectile.velocity) * 20f;
                     Vector2 shootpos = Vector2.Normalize(projectile.velocity).RotatedBy((float)Math.PI / 2 * projectile.direction) * projectile.height / 2;
-                    Projectile.NewProjectile(projectile.position.X + projectile.velocity.X + shootpos.X, projectile.position.Y + projectile.velocity.Y + shootpos.Y, shootspeed.X, shootspeed.Y, mod.ProjectileType("DragonfireProj"), projectile.damage, 0, projectile.owner);
+                    Projectile.NewProjectile(projectile.position.X + projectile.velocity.X + shootpos.X, projectile.position.Y + projectile.velocity.Y + shootpos.Y, shootspeed.X, shootspeed.Y, mod.ProjectileType("DragonfireProj"), (int)(projectile.damage / 1.5), 0, projectile.owner);
                 }
                 else
                 {
                     flaming = false;
                 }
                 if (vector132.Length() < 300f) scaleFactor15 = 0.8f;
-                if (vector132.Length() > nPC14.Size.Length() * 0.75f)
+                if (vector132.Length() > (nPC14.Size.Length() * 0.75f + 100f))
                 {
                     projectile.velocity += Vector2.Normalize(vector132) * scaleFactor15 * 1.5f;
                     if (Vector2.Dot(projectile.velocity, vector132) < 0.25f) projectile.velocity *= 0.8f;
