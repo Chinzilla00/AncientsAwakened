@@ -18,17 +18,17 @@ namespace AAMod.Items.Boss.Akuma
 		{
 			item.damage = 225;
 			item.magic = true;
-			item.mana = 6;
+			item.mana = 4;
 			item.width = 100;
 			item.height = 100;
-			item.useTime = 10;
-			item.useAnimation = 10;
+			item.useTime = 7;
+			item.useAnimation = 7;
 			item.useStyle = 5;
 			item.noMelee = true; 
 			item.knockBack = 0;
             item.value = Item.sellPrice(0, 7, 0, 0);
             item.rare = 8;
-			item.UseSound = SoundID.Item5;
+			item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Dayshot");
 			item.autoReuse = true;
 			item.shoot = 10;
 			item.shootSpeed = 10f;
@@ -49,11 +49,12 @@ namespace AAMod.Items.Boss.Akuma
             }
             shoot++;
 
-            if (shoot % 6 != 0) return false;
+            if (shoot % 6 != 2) return false;
 
             if (shoot >= 6)
             {
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("AMeteor"), damage * 2, knockBack, player.whoAmI);
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5));
+                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("Dayser"), damage * 2, knockBack, player.whoAmI);
                 shoot = 0;
             }
             shoot = 0;
