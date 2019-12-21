@@ -24,14 +24,14 @@ Inflicts Daybroken");
             item.melee = true;
             item.width = 86;
             item.height = 86;
-            item.useTime = 18;
-            item.useAnimation = 18;     
+            item.useTime = 120;
+            item.useAnimation = 120;     
             item.useStyle = 1;
             item.knockBack = 6.5f;
             item.value = Item.sellPrice(0, 30, 0, 0);
 			item.UseSound = SoundID.Item20;
             item.autoReuse = true;
-            item.useTurn = true;
+			item.useTurn = true;
             item.rare = 9;
             AARarity = 13;
         }
@@ -57,35 +57,54 @@ Inflicts Daybroken");
             }
         }
 
+		public override bool UseItem(Player player)
+		{
+			if (Main.rand.NextBool(5))
+			{
+				Main.PlaySound(2, player.Center, 124);
+				for (int num120 = 0; num120 < 1; num120++)
+				{
+					Vector2 vector12 = new Vector2(0,0);
+					if (player.direction == 1)
+					{
+						vector12 = new Vector2(player.Center.X + Main.rand.Next(150,300), player.Center.Y);
+					}
+					if (player.direction == -1)
+					{
+						vector12 = new Vector2(player.Center.X - Main.rand.Next(150,300), player.Center.Y);
+					}
+					Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
+					float num75 = 20f;
+					float num119 = vector12.Y;
+					if (num119 > player.Center.Y - 200f)
+					{
+						num119 = player.Center.Y - 200f;
+					}
+					vector2 = player.Center + new Vector2(-(float)Main.rand.Next(0, 401) * player.direction, -600f);
+					vector2.Y -= 100;
+					Vector2 vector13 = vector12 - vector2;
+					if (vector13.Y < 0f)
+					{
+						vector13.Y *= -1f;
+					}
+					if (vector13.Y < 20f)
+					{
+						vector13.Y = 20f;
+					}
+					vector13.Normalize();
+					vector13 *= num75;
+					float num82 = vector13.X;
+					float num83 = vector13.Y;
+					float speedX5 = num82;
+					float speedY6 = num83 + Main.rand.Next(-40, 41) * 0.02f;
+					Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType("FireProj"), item.damage/5, item.knockBack, Main.myPlayer);
+				}
+			}
+			return base.UseItem(player);
+		}
+
         public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
         {
-			Main.PlaySound(2, target.Center, 124);
-            Vector2 vector12 = new Vector2(target.Center.X, target.Center.Y);
-			Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-			float num75 = 20f;
-			float num119 = vector12.Y;
-			if (num119 > player.Center.Y - 200f)
-			{
-				num119 = player.Center.Y - 200f;
-			}
-            vector2 = player.Center + new Vector2(-(float)Main.rand.Next(0, 401) * player.direction, -600f);
-            vector2.Y -= 100;
-            Vector2 vector13 = vector12 - vector2;
-            if (vector13.Y < 0f)
-            {
-                vector13.Y *= -1f;
-            }
-            if (vector13.Y < 20f)
-            {
-                vector13.Y = 20f;
-            }
-            vector13.Normalize();
-            vector13 *= num75;
-            float num82 = vector13.X;
-            float num83 = vector13.Y;
-            float speedX5 = num82;
-            float speedY6 = num83 + Main.rand.Next(-40, 41) * 0.02f;
-            Projectile.NewProjectile(vector2.X, vector2.Y, speedX5, speedY6, mod.ProjectileType("FireProj"), damage, knockBack, Main.myPlayer);
             target.AddBuff(BuffID.Daybreak, 600);
         }
         

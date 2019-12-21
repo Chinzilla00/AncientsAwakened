@@ -58,12 +58,6 @@ namespace AAMod.Projectiles.Akuma
         {
             target.AddBuff(BuffID.Daybreak, 600);
 			Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 14);
-			int p = Projectile.NewProjectile(target.Center.X, target.Center.Y, 0f, 0f, mod.ProjectileType("AkumaExp"), projectile.damage*2, projectile.knockBack, projectile.owner);
-			Main.projectile[p].melee = true;
-			Main.projectile[p].friendly = true;
-			Main.projectile[p].hostile = false;
-			Main.projectile[p].usesLocalNPCImmunity = true;
-			Main.projectile[p].localNPCHitCooldown = 6;
         }
 
         public override void AI()
@@ -127,6 +121,10 @@ namespace AAMod.Projectiles.Akuma
                 dust1.noGravity = true;
                 dust2.noGravity = true;
             }
+			if (projectile.timeLeft == 80)
+			{
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("SunSpearProj"), projectile.damage, projectile.knockBack, projectile.owner);
+			}
         }
     }
 }
