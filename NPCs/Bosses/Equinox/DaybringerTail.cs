@@ -8,7 +8,8 @@ namespace AAMod.NPCs.Bosses.Equinox
 		{
             base.SetDefaults();
             npc.dontCountMe = true;
-		}
+            npc.npcSlots = 0;
+        }
 
         public override bool PreNPCLoot()
 		{
