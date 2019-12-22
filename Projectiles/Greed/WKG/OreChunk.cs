@@ -116,20 +116,44 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     projectile.Kill();
                 }
-                if(projectile.ai[0] % 60 == 30)
+                if(projectile.ai[0] % 30 == 15)
                 {
-                    for(int shoot = 0; shoot < 3; shoot ++)
+                    for(int shoot = 0; shoot < 6; shoot ++)
                     {
-                        float num82 = (float)Main.mouseX + Main.screenPosition.X;
-						float num83 = (float)Main.mouseY + Main.screenPosition.Y;
-                        Vector2 vector17 = new Vector2(num82, num83);
-                        vector17.X += (float)Main.rand.Next(-30, 31) * 0.04f;
-                        vector17.Y += (float)Main.rand.Next(-30, 31) * 0.03f;
+                        Vector2 vector17 = projectile.velocity;
                         vector17.Normalize();
                         vector17 *= (float)Main.rand.Next(70, 91) * 0.1f;
                         vector17.X += (float)Main.rand.Next(-30, 31) * 0.04f;
                         vector17.Y += (float)Main.rand.Next(-30, 31) * 0.03f;
                         Projectile.NewProjectile(projectile.position.X, projectile.position.Y, vector17.X, vector17.Y, 523, projectile.damage, 0, Main.myPlayer, (float)Main.rand.Next(20), 0f);
+                    }
+                }
+            }
+            else if(k == ItemID.Hellstone)
+            {
+                if(projectile.ai[0]++ > 800)
+                {
+                    projectile.Kill();
+                }
+                if(projectile.ai[0] % 20 == 10)
+                {
+                    for(int i = 0; i < 10; i++)
+                    {
+                        Vector2 vector109 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f + 30f);
+                        float num824 = projectile.position.X - vector109.X;
+                        float num825 = projectile.position.Y - vector109.Y;
+                        num824 += (float)Main.rand.Next(-20, 51);
+                        num825 += (float)Main.rand.Next(20, 51);
+                        num825 *= 0.2f;
+                        float num826 = (float)Math.Sqrt((double)(num824 * num824 + num825 * num825));
+                        num824 *= num826;
+                        num825 *= num826;
+                        num824 *= 1f + (float)Main.rand.Next(-30, 31) * 0.01f;
+                        num825 *= 1f + (float)Main.rand.Next(-30, 31) * 0.01f;
+                        int p = Projectile.NewProjectile(vector109.X, vector109.Y, num824, num825, Main.rand.Next(326, 329), projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+                        Main.projectile[p].ranged = true;
+                        Main.projectile[p].hostile = false;
+                        Main.projectile[p].friendly = true;
                     }
                 }
             }
@@ -292,6 +316,11 @@ namespace AAMod.Projectiles.Greed.WKG
 				Color color = projectile.GetAlpha(lightColor) * ((3 - k) / (float)3);
 				spriteBatch.Draw(Main.itemTexture[(int)projectile.ai[1]], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
 			}
+
+            if (projectile.ai[1] == ItemID.DemoniteOre || projectile.ai[1] == mod.ItemType("Abyssium") || projectile.ai[1] == ItemID.LunarOre || projectile.ai[1] == mod.ItemType("EventideAbyssiumOre"))
+            {
+                spriteBatch.Draw(Main.itemTexture[(int)projectile.ai[1]], projectile.position, null, lightColor, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+            }
             
             /*
             Rectangle frame = BaseDrawing.GetFrame(1, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 0);
@@ -322,6 +351,19 @@ namespace AAMod.Projectiles.Greed.WKG
                     Main.dust[num292].velocity *= 2f;
                     Main.dust[num292].noGravity = true;
                 };
+            }
+            else if (projectile.ai[1] == mod.ItemType("Abyssium"))
+            {
+                for(int shoot = 0; shoot < 3; shoot ++)
+                {
+                    Vector2 vector17 = projectile.velocity;
+                    vector17.Normalize();
+                    vector17 *= (float)Main.rand.Next(70, 91) * 0.1f;
+                    vector17.X += (float)Main.rand.Next(-30, 31) * 0.04f;
+                    vector17.Y += (float)Main.rand.Next(-30, 31) * 0.03f;
+                    int id = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, vector17.X, vector17.Y, 523, projectile.damage, 0, Main.myPlayer, (float)Main.rand.Next(20), 0f);
+                    Main.projectile[id].tileCollide = false;
+                }
             }
             else if (projectile.ai[1] == ItemID.ChlorophyteOre)
             {
