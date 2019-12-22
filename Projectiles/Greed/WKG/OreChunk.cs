@@ -309,10 +309,14 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 if (projectile.ai[1] == ModSupport.GetModItem("CalamityMod", "ChaoticOre").item.type)
                 {
+                    if(projectile.ai[0]++ > 800)
+                    {
+                        projectile.Kill();
+                    }
                     if (Main.rand.Next(30) == 0)
                     {
                         int projtype = ModSupport.GetModProjectile("CalamityMod", "LavaChunk").projectile.type;
-                        int p = Projectile.NewProjectile(projectile.Center.X + projectile.velocity.X, projectile.Center.Y + projectile.velocity.Y, 0f, 0.1f, projtype, 25, 2f, projectile.owner, 0f, 0f);
+                        int p = Projectile.NewProjectile(projectile.Center.X + projectile.velocity.X, projectile.Center.Y + projectile.velocity.Y, 0f, 0.1f, projtype, projectile.damage, 2f, projectile.owner, 0f, 0f);
                         Main.projectile[p].ranged = true;
                         Main.projectile[p].hostile = false;
                         Main.projectile[p].friendly = true;
