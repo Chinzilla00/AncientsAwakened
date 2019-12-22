@@ -483,7 +483,7 @@ namespace AAMod.NPCs.TownNPCs
             }
         }
 
-        public static bool DoG => CalamityMod.World.CalamityWorld.downedDoG;
+        public static bool DoG => (bool)ModSupport.GetModWorldConditions("CalamityMod", "CalamityWorld", "downedDoG", false, true);
 
         public static string BossChat()
         {
@@ -557,11 +557,9 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (GreedA)
             {
-                if (ModLoader.GetMod("CalamityMod") != null)
+                if (ModSupport.GetMod("CalamityMod") != null)
                 {
-                    
-                    Mod calamity = ModLoader.GetMod("CalamityMod");
-                    if (calamity != null && DoG && AAWorld.downedGreedA)
+                    if (DoG && AAWorld.downedGreedA)
                     {
                         return Lang.TownNPCAnubis("GreedACalamityMod");
                     }
@@ -647,16 +645,16 @@ namespace AAMod.NPCs.TownNPCs
 
         public override string GetChat()
         {
-            Mod GRealm = ModLoader.GetMod("Grealm");
-            Mod Fargos = ModLoader.GetMod("Fargowiltas");
-            Mod Redemption = ModLoader.GetMod("Redemption");
-            Mod Thorium = ModLoader.GetMod("ThoriumMod");
+            Mod GRealm = ModSupport.GetMod("Grealm");
+            Mod Fargos = ModSupport.GetMod("Fargowiltas");
+            Mod Redemption = ModSupport.GetMod("Redemption");
+            Mod Thorium = ModSupport.GetMod("ThoriumMod");
 
-            int HordeZombie = GRealm == null ? -1 : NPC.FindFirstNPC(GRealm.NPCType("HordeZombie"));
-            int Mutant = Fargos == null ? -1 : NPC.FindFirstNPC(Fargos.NPCType("Mutant"));
-            int Newb = Redemption == null ? -1 : NPC.FindFirstNPC(Redemption.NPCType("Newb"));
-            int Cobbler = Thorium == null ? -1 : NPC.FindFirstNPC(Thorium.NPCType("Cobbler"));
-            int ConfusedZombie = Thorium == null ? -1 : NPC.FindFirstNPC(Thorium.NPCType("ConfusedZombie"));
+            int HordeZombie = GRealm == null ? -1 : NPC.FindFirstNPC(ModSupport.GetModNPC("GRealm", "HordeZombie").npc.type);
+            int Mutant = Fargos == null ? -1 : NPC.FindFirstNPC(ModSupport.GetModNPC("Fargowiltas", "Mutant").npc.type);
+            int Newb = Redemption == null ? -1 : NPC.FindFirstNPC(ModSupport.GetModNPC("Redemption", "Newb").npc.type);
+            int Cobbler = Thorium == null ? -1 : NPC.FindFirstNPC(ModSupport.GetModNPC("ThoriumMod", "Cobbler").npc.type);
+            int ConfusedZombie = Thorium == null ? -1 : NPC.FindFirstNPC(ModSupport.GetModNPC("ThoriumMod", "ConfusedZombie").npc.type);
 
             WeightedRandom<string> chat = new WeightedRandom<string>();
 

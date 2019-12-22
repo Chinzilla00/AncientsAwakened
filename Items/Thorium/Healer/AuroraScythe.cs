@@ -64,7 +64,7 @@ Grants 1 soul essence on direct hit");
 
         public override void UpdateInventory(Player player)
         {
-            if (!AAMod.thoriumLoaded)
+            if (ModSupport.GetMod("ThoriumMod") == null)
             {
                 item.TurnToAir();
             }
@@ -93,7 +93,7 @@ Grants 1 soul essence on direct hit");
 
         public override void AddRecipes()
         {
-            if (!AAMod.thoriumLoaded) return;
+            if (ModSupport.GetMod("ThoriumMod") == null) return;
             ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(1306);
             recipe.AddIngredient(ItemID.AdamantiteBar, 8);

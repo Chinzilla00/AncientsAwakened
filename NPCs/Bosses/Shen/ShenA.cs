@@ -703,11 +703,11 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
-        public bool DownedRag => ThoriumMod.ThoriumWorld.downedRealityBreaker;
-        public bool DownedScal => CalamityMod.World.CalamityWorld.downedSCal;
-        public bool DownedMantid => GRealm.MWorld.downedMatriarch;
-        public bool DownedNeb => Redemption.RedeWorld.downedNebuleus;
-        public bool DownedOverseer => SpiritMod.MyWorld.downedOverseer;
+        public bool DownedRag => (bool)ModSupport.GetModWorldConditions("ThoriumMod", "ThoriumWorld", "downedRealityBreaker", false, true);
+        public bool DownedScal => (bool)ModSupport.GetModWorldConditions("CalamityMod", "CalamityWorld", "downedSCal", false, true);
+        public bool DownedMantid => (bool)ModSupport.GetModWorldConditions("GRealm", "MWorld", "downedMatriarch", false, true);
+        public bool DownedNeb => (bool)ModSupport.GetModWorldConditions("Redemption", "RedeWorld", "downedNebuleus", false, true);
+        public bool DownedOverseer => (bool)ModSupport.GetModWorldConditions("SpiritMod", "MyWorld", "downedOverseer", false, true);
         //public bool DownedDuo => JetshiftMod.JetshiftWorld.downedCosmicMystery;
 
         public string BossDialogue()
@@ -716,31 +716,31 @@ namespace AAMod.NPCs.Bosses.Shen
 
             bool a = false;
 
-            if (AAMod.thoriumLoaded && DownedRag)
+            if (ModSupport.GetMod("ThoriumMod") != null && DownedRag)
             {
                 a = true;
                 Text.Add(Lang.BossChat("ShenAThorium"));
             }
 
-            if (AAMod.calamityLoaded && DownedScal)
+            if (ModSupport.GetMod("CalamityMod") != null && DownedScal)
             {
                 a = true;
                 Text.Add(Lang.BossChat("ShenACalamity"));
             }
 
-            if (AAMod.gRealmLoaded && DownedMantid)
+            if (ModSupport.GetMod("GRealm") != null && DownedMantid)
             {
                 a = true;
                 Text.Add(Lang.BossChat("ShenAGRealm"));
             }
 
-            if (AAMod.redeLoaded && DownedNeb)
+            if (ModSupport.GetMod("Redemption") != null && DownedNeb)
             {
                 a = true;
                 Text.Add(Lang.BossChat("ShenARedemption"));
             }
 
-            if (AAMod.spiritLoaded && DownedOverseer)
+            if (ModSupport.GetMod("SpiritMod") != null && DownedOverseer)
             {
                 a = true;
                 Text.Add(Lang.BossChat("ShenASpirit"));

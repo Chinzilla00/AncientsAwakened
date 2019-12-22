@@ -305,6 +305,20 @@ namespace AAMod.Projectiles.Greed.WKG
                     projectile.Kill();
                 }
             }
+            else if(ModSupport.GetMod("CalamityMod") != null)
+            {
+                if (projectile.ai[1] == ModSupport.GetModItem("CalamityMod", "ChaoticOre").item.type)
+                {
+                    if (Main.rand.Next(30) == 0)
+                    {
+                        int projtype = ModSupport.GetModProjectile("CalamityMod", "LavaChunk").projectile.type;
+                        int p = Projectile.NewProjectile(projectile.Center.X + projectile.velocity.X, projectile.Center.Y + projectile.velocity.Y, 0f, 0.1f, projtype, 25, 2f, projectile.owner, 0f, 0f);
+                        Main.projectile[p].ranged = true;
+                        Main.projectile[p].hostile = false;
+                        Main.projectile[p].friendly = true;
+                    }
+                }
+            }
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
@@ -386,8 +400,36 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     int x = Main.rand.Next(-6, 6);
                     int y = -Main.rand.Next(3, 5);
-                    int p = Projectile.NewProjectile(projectile.position, new Vector2(x, y), ModContent.ProjectileType<AFrag>(), projectile.damage, 0, Main.myPlayer, 0, Main.rand.Next(23));
+                    int p = Projectile.NewProjectile(projectile.position, new Vector2(x, y), ModContent.ProjectileType<AFrag>(), projectile.damage, 0, projectile.owner, 0, Main.rand.Next(23));
                     Main.projectile[p].Center = projectile.Center;
+                }
+            }
+            else if(ModSupport.GetMod("CalamityMod") != null)
+            {
+                if(projectile.ai[1] == ModSupport.GetModItem("CalamityMod", "CryonicOre").item.type)
+                {
+                    Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27, 1f, 0f);
+					float num36 = 0.783f;
+					double num37 = Math.Atan2((double)projectile.velocity.X, (double)projectile.velocity.Y) - (double)(num36 / 2f);
+					double num38 = (double)(num36 / 8f);
+					for (int num40 = 0; num40 < 8; num40++)
+                    {
+                        float num41 = (float)Main.rand.Next(1, 7);
+                        float num42 = (float)Main.rand.Next(1, 7);
+                        double num43 = num37 + num38 * (double)(num40 + num40 * num40) / 2.0 + (double)(32f * (float)num40);
+                        int num44 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(num43) * 5.0), (float)(Math.Cos(num43) * 5.0) + num41, 90, projectile.damage, 1f, projectile.owner, 0f, 0f);
+                        int num45 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-(float)Math.Sin(num43) * 5.0), (float)(-(float)Math.Cos(num43) * 5.0) + num42, 90, projectile.damage, 1f, projectile.owner, 0f, 0f);
+                        Main.projectile[num44].ranged = true;
+                        Main.projectile[num45].ranged = true;
+                    }
+                }
+                else if (projectile.ai[1] == ModSupport.GetModItem("CalamityMod", "ChaoticOre").item.type)
+                {
+                    Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 74, 1f, 0f);
+                    int projtype = ModSupport.GetModProjectile("CalamityMod", "ChaosBlaze").projectile.type;
+					int p = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, projtype, (int)(projectile.damage / 3), 1f, projectile.owner, 0f, 0f);
+                    Main.projectile[p].ranged = true;
+					return;
                 }
             }
             else
@@ -654,6 +696,39 @@ namespace AAMod.Projectiles.Greed.WKG
 
                 if(projectile.velocity.Length() < 10f) projectile.velocity = 10 * Vector2.Normalize(projectile.velocity);
             }
+            else if(ModSupport.GetMod("CalamityMod") != null)
+            {
+                if(k == ModSupport.GetModItem("CalamityMod", "AerialiteOre").item.type)
+                {
+                    for (int i = 0; i < 4; i++)
+					{
+						float num = target.position.X + (float)Main.rand.Next(-400, 400);
+						float num2 = target.position.Y - (float)Main.rand.Next(500, 800);
+						Vector2 vector = new Vector2(num, num2);
+						float num3 = target.position.X + (float)(target.width / 2) - vector.X;
+						float num4 = target.position.Y + (float)(target.height / 2) - vector.Y;
+						num3 += (float)Main.rand.Next(-100, 101);
+						float num5 = (float)20;
+						float num6 = (float)Math.Sqrt((double)(num3 * num3 + num4 * num4));
+						num6 = num5 / num6;
+						num3 *= num6;
+						num4 *= num6;
+                        int projtype = ModSupport.GetModProjectile("CalamityMod", "StickyFeatherAero").projectile.type;
+						Projectile.NewProjectile(num, num2, num3, num4, projtype, projectile.damage, 1f, projectile.owner, 0f, 0f);
+					}
+                }
+                else if(k == ModSupport.GetModItem("CalamityMod", "CryonicOre").item.type)
+                {
+                    target.AddBuff(24, 240, false);
+                    target.AddBuff(44, 240, false);
+                    int bufftype = ModSupport.GetModBuff("CalamityMod", "GlacialState").Type;
+                    target.AddBuff(bufftype, 120, false);
+                }
+                else if(k == ModSupport.GetModItem("CalamityMod", "ChaoticOre").item.type)
+                {
+                    target.AddBuff(24, 720, false);
+                }
+            }
             else
             {
                 return;
@@ -692,6 +767,36 @@ namespace AAMod.Projectiles.Greed.WKG
                     Main.dust[num292].velocity *= 2f;
                     Main.dust[num292].noGravity = true;
                 };
+            }
+            else if(ModSupport.GetMod("CalamityMod") != null)
+            {
+                if(k == ModSupport.GetModItem("CalamityMod", "AerialiteOre").item.type)
+                {
+                    for (int num291 = 0; num291 < 5; num291++)
+                    {
+                        int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.t_Slime, 0f, 0f, 100);
+                        Main.dust[num292].velocity *= 2f;
+                        Main.dust[num292].noGravity = true;
+                    };
+                }
+                else if(k == ModSupport.GetModItem("CalamityMod", "CryonicOre").item.type)
+                {
+                    for (int num291 = 0; num291 < 5; num291++)
+                    {
+                        int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.BlueCrystalShard, 0f, 0f, 100);
+                        Main.dust[num292].velocity *= 2f;
+                        Main.dust[num292].noGravity = true;
+                    };
+                }
+                else if(k == ModSupport.GetModItem("CalamityMod", "ChaoticOre").item.type)
+                {
+                    for (int num291 = 0; num291 < 5; num291++)
+                    {
+                        int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Fire, 0f, 0f, 100);
+                        Main.dust[num292].velocity *= 2f;
+                        Main.dust[num292].noGravity = true;
+                    };
+                }
             }
             else if(k >= 3930 && Config.LuckyOre[k] > 650 && item.modItem.mod != ModLoader.GetMod("AAMod"))
             {

@@ -298,7 +298,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     internalAI[3] = 0;
                     npc.ai[2] = 0;
-                    if (AAMod.thoriumLoaded && Main.rand.Next(7) == 0)
+                    if (ModSupport.GetMod("ThoriumMod") != null && Main.rand.Next(7) == 0)
                     {
                         npc.ai[3] = 7;
                     }

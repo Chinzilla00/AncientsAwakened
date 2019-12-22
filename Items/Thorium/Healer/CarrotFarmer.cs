@@ -62,7 +62,7 @@ Grants 1 soul essence on direct hit");
 
         public override void UpdateInventory(Player player)
         {
-            if (!AAMod.thoriumLoaded)
+            if (ModSupport.GetMod("ThoriumMod") == null)
             {
                 item.TurnToAir();
             }

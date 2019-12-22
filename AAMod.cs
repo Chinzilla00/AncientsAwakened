@@ -64,13 +64,6 @@ namespace AAMod
 
         public static SpriteFont fontMouseText;
 
-        public static bool thoriumLoaded = false;
-        public static bool calamityLoaded = false;
-        public static bool gRealmLoaded = false;
-        public static bool redeLoaded = false;
-        public static bool spiritLoaded = false;
-        public static bool jsLoaded = false;
-
 
         internal static AAMod instance;
         public static AAMod self = null;
@@ -218,26 +211,6 @@ namespace AAMod
         public override void PostSetupContent()
         {
             WeakReferences.PerformModSupport();
-
-            Mod Thorium = ModLoader.GetMod("ThoriumMod");
-            Mod Calamity = ModLoader.GetMod("CalamityMod");
-            Mod GRealm = ModLoader.GetMod("GRealm");
-            Mod Rede = ModLoader.GetMod("Redemption");
-            Mod Spirit = ModLoader.GetMod("SpiritMod");
-            Mod js = ModLoader.GetMod("JetshiftMod");
-
-            if (Thorium != null)
-                thoriumLoaded = true;
-            if (Calamity != null)
-                calamityLoaded = true;
-            if (GRealm != null)
-                gRealmLoaded = true;
-            if (Rede != null)
-                redeLoaded = true;
-            if (Spirit != null)
-                calamityLoaded = true;
-            if (js != null)
-                jsLoaded = true;
 
             Array.Resize(ref AASets.Goblins, NPCLoader.NPCCount);
         }
@@ -718,7 +691,6 @@ namespace AAMod
                                 Main.logo2Texture = ModContent.GetTexture("Terraria/Logo2");
                             }
                             Main.sunTexture = ModContent.GetTexture("Terraria/Sun");
-                            if(SkyManager.Instance["AAMod:InfernoSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:InfernoSky", new object[0]);
                             if(SkyManager.Instance["AAMod:MireSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:MireSky", new object[0]);
                             if(SkyManager.Instance["AAMod:VoidSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:VoidSky", new object[0]);
 
@@ -830,6 +802,8 @@ namespace AAMod
             {
                 AAMenuReset = false;
                 Main.sunTexture = ModContent.GetTexture("Terraria/Sun");
+                if(SkyManager.Instance["AAMod:MireSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:MireSky", new object[0]);
+                if(SkyManager.Instance["AAMod:VoidSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:VoidSky", new object[0]);
                 Main.backgroundTexture[0] = ModContent.GetTexture("Terraria/Background_" + 0);
                 Main.backgroundTexture[171] = ModContent.GetTexture("Terraria/Background_" + 171);
                 Main.backgroundTexture[172] = ModContent.GetTexture("Terraria/Background_" + 172);

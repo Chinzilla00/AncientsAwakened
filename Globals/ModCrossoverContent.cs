@@ -5,12 +5,13 @@ using Terraria.ModLoader;
 using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
 using AAMod.Items;
+using System;
+using System.Reflection;
 
 namespace AAMod
 {
     public class ModSupport
     {
-        public static Mod thorium = null, calamity = null, redemption = null;
 
         public static FieldInfo CRevengence = null, CDeath = null, CDefiled = null;
 
@@ -74,17 +75,6 @@ namespace AAMod
             }
         }*/
 
-        public static bool ModInstalled(string name)
-        {
-            switch (name)
-            {
-                case "CalamityMod": return calamity != null;
-                case "ThoriumMod": return thorium != null;
-                case "Redemption": return redemption != null;
-                default: return false;
-            }
-        }
-
         public static bool forceBlackMapBG = false;
         public static Texture2D forceBlackMapTexture = null;
 
@@ -93,11 +83,161 @@ namespace AAMod
             return forceBlackMapBG ? Main.mapTexture : null;
         }
 
-        public static void SetupSupport()
-        {
-            thorium = ModLoader.GetMod("ThoriumMod");
-            calamity = ModLoader.GetMod("CalamityMod");
-            redemption = ModLoader.GetMod("Redemption");
+        public static Mod GetMod(string modname)
+		{
+            if(ModLoader.GetMod(modname) != null)
+			{
+                return ModLoader.GetMod(modname);
+            }
+            return null;
+        }
+
+        public static ModItem GetModItem(string modname, string itemname)
+		{
+			ModItem item = new ModItem();
+			if(ModLoader.GetMod(modname) != null)
+			{
+				Mod mod = ModLoader.GetMod(modname);
+				try
+				{
+					item = mod.GetItem(itemname);
+				}
+				catch(Exception)
+				{
+					item = null;
+					throw new Exception("Can't find this item" + itemname);
+				}
+			}
+
+			return item;
+		}
+
+        public static ModNPC GetModNPC(string modname, string npcname)
+		{
+			ModNPC npc = new ModNPC();
+			if(ModLoader.GetMod(modname) != null)
+			{
+				Mod mod = ModLoader.GetMod(modname);
+				try
+				{
+					npc = mod.GetNPC(npcname);
+				}
+				catch(Exception)
+				{
+					npc = null;
+					throw new Exception("Can't find this npc" + npcname);
+				}
+			}
+
+			return npc;
+		}
+
+        public static ModProjectile GetModProjectile(string modname, string projname)
+		{
+			ModProjectile projectile = new ModProjectile();
+			if(ModLoader.GetMod(modname) != null)
+			{
+				Mod mod = ModLoader.GetMod(modname);
+				try
+				{
+					projectile = mod.GetProjectile(projname);
+				}
+				catch(Exception)
+				{
+					projectile = null;
+					throw new Exception("Can't find this projectile" + projname);
+				}
+			}
+
+			return projectile;
+		}
+
+        public static ModDust GetModDust(string modname, string dustname)
+		{
+            ModDust dust = new ModDust();
+			if(ModLoader.GetMod(modname) != null)
+			{
+				Mod mod = ModLoader.GetMod(modname);
+				try
+				{
+					dust = mod.GetDust(dustname);
+				}
+				catch(Exception)
+				{
+					dust = null;
+					throw new Exception("Can't find this projectile" + dustname);
+				}
+			}
+
+			return dust;
+        }
+
+        public static ModBuff GetModBuff(string modname, string buffname)
+		{
+            ModBuff buff = new ModBuff();
+			if(ModLoader.GetMod(modname) != null)
+			{
+				Mod mod = ModLoader.GetMod(modname);
+				try
+				{
+					buff = mod.GetBuff(buffname);
+				}
+				catch(Exception)
+				{
+					buff = null;
+					throw new Exception("Can't find this buff" + buffname);
+				}
+			}
+
+			return buff;
+        }
+
+        public static object GetModWorldConditions(string modname, string worldname, string ConditionName, bool nopub = false, bool sta = false)
+		{
+			object condition = null;
+            if(ModLoader.GetMod(modname) != null)
+			{
+                Mod mod = ModLoader.GetMod(modname);
+				try
+				{
+					ModWorld world = mod.GetModWorld(worldname);
+					if(world != null)
+					{
+						BindingFlags binding = (sta? BindingFlags.Static : BindingFlags.Instance) | (nopub? BindingFlags.NonPublic : BindingFlags.Public);
+						condition = world.GetType().GetField(ConditionName, binding).GetValue(world);
+					}
+				}
+				catch(Exception)
+				{
+					condition = null;
+					throw new Exception("Error in reading world data.");
+				}
+            }
+			return condition;
+        }
+
+        public static object GetModPlayerConditions(string modname, string playername, string ConditionName, bool nopub = false, bool sta = false)
+		{
+            object condition = false;
+            if(ModLoader.GetMod(modname) != null)
+			{
+                Mod mod = ModLoader.GetMod(modname);
+				try
+				{
+					ModPlayer player = Main.player[Main.myPlayer].GetModPlayer(mod, playername);
+					if(player != null)
+					{
+						BindingFlags binding = (sta? BindingFlags.Static : BindingFlags.Instance) | (nopub? BindingFlags.NonPublic : BindingFlags.Public);
+						condition = (bool)player.GetType().GetField(ConditionName, binding).GetValue(player);
+					}
+				}
+				catch(Exception)
+				{
+					condition = false;
+					throw new Exception("Error in reading modplayer data.");
+				}
+            }
+			return condition;
         }
     }
 
@@ -107,7 +247,7 @@ namespace AAMod
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
-            if (!ModSupport.ModInstalled(crossoverModName))
+            if (ModSupport.GetMod(crossoverModName) != null)
             {
                 TooltipLine error = new TooltipLine(mod, "Error", "WARNING: ITEM WILL NOT FUNCTION WITHOUT " + crossoverModName.ToUpper() + " ENABLED!")
                 {
@@ -125,18 +265,18 @@ namespace AAMod
         {
             get
             {
-                if (ModSupport.thorium != null)
+                if (ModSupport.GetMod("ThoriumMod") != null)
                 {
-                    float? boost = (float?)ModSupport.thorium.Call("GetRadiantBoost", player.whoAmI);
+                    float? boost = (float?)ModSupport.GetMod("ThoriumMod").Call("GetRadiantBoost", player.whoAmI);
                     if (boost != null) return (float)boost;
                 }
                 return 1f;
             }
             set
             {
-                if (ModSupport.thorium != null)
+                if (ModSupport.GetMod("ThoriumMod") != null)
                 {
-                    ModSupport.thorium.Call("SetRadiantBoost", player.whoAmI, value);
+                    ModSupport.GetMod("ThoriumMod").Call("SetRadiantBoost", player.whoAmI, value);
                 }
             }
         }
@@ -144,18 +284,18 @@ namespace AAMod
         {
             get
             {
-                if (ModSupport.thorium != null)
+                if (ModSupport.GetMod("ThoriumMod") != null)
                 {
-                    int? boost = (int?)ModSupport.thorium.Call("GetRadiantCrit", player.whoAmI);
+                    int? boost = (int?)ModSupport.GetMod("ThoriumMod").Call("GetRadiantCrit", player.whoAmI);
                     if (boost != null) return (int)boost;
                 }
                 return 0;
             }
             set
             {
-                if (ModSupport.thorium != null)
+                if (ModSupport.GetMod("ThoriumMod") != null)
                 {
-                    ModSupport.thorium.Call("SetRadiantCrit", player.whoAmI, value);
+                    ModSupport.GetMod("ThoriumMod").Call("SetRadiantCrit", player.whoAmI, value);
                 }
             }
         }
@@ -163,18 +303,18 @@ namespace AAMod
         {
             get
             {
-                if (ModSupport.thorium != null)
+                if (ModSupport.GetMod("ThoriumMod") != null)
                 {
-                    int? boost = (int?)ModSupport.thorium.Call("GetHealBonus", player.whoAmI);
+                    int? boost = (int?)ModSupport.GetMod("ThoriumMod").Call("GetHealBonus", player.whoAmI);
                     if (boost != null) return (int)boost;
                 }
                 return 0;
             }
             set
             {
-                if (ModSupport.thorium != null)
+                if (ModSupport.GetMod("ThoriumMod") != null)
                 {
-                    ModSupport.thorium.Call("SetHealBonus", player.whoAmI, value);
+                    ModSupport.GetMod("ThoriumMod").Call("SetHealBonus", player.whoAmI, value);
                 }
             }
         }
@@ -186,18 +326,18 @@ namespace AAMod
         {
             get
             {
-                if (ModSupport.redemption != null)
+                if (ModSupport.GetMod("Redemption") != null)
                 {
-                    float? boost = (float?)ModSupport.redemption.Call("GetDruidicBoost", player.whoAmI);
+                    float? boost = (float?)ModSupport.GetMod("Redemption").Call("GetDruidicBoost", player.whoAmI);
                     if (boost != null) return (float)boost;
                 }
                 return 1f;
             }
             set
             {
-                if (ModSupport.redemption != null)
+                if (ModSupport.GetMod("Redemption") != null)
                 {
-                    ModSupport.redemption.Call("SetDruidicBoost", player.whoAmI, value);
+                    ModSupport.GetMod("Redemption").Call("SetDruidicBoost", player.whoAmI, value);
                 }
             }
         }
@@ -205,18 +345,18 @@ namespace AAMod
         {
             get
             {
-                if (ModSupport.redemption != null)
+                if (ModSupport.GetMod("Redemption") != null)
                 {
-                    int? boost = (int?)ModSupport.redemption.Call("GetDruidicCrit", player.whoAmI);
+                    int? boost = (int?)ModSupport.GetMod("Redemption").Call("GetDruidicCrit", player.whoAmI);
                     if (boost != null) return (int)boost;
                 }
                 return 0;
             }
             set
             {
-                if (ModSupport.redemption != null)
+                if (ModSupport.GetMod("Redemption") != null)
                 {
-                    ModSupport.redemption.Call("SetDruidicCrit", player.whoAmI, value);
+                    ModSupport.GetMod("Redemption").Call("SetDruidicCrit", player.whoAmI, value);
                 }
             }
         }
