@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Akuma
 		{
 			item.damage = 225;
 			item.magic = true;
-			item.mana = 4;
+			item.mana = 9;
 			item.width = 100;
 			item.height = 100;
 			item.useTime = 7;
@@ -31,7 +31,7 @@ namespace AAMod.Items.Boss.Akuma
 			item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Dayshot");
 			item.autoReuse = true;
 			item.shoot = 10;
-			item.shootSpeed = 10f;
+			item.shootSpeed = 30;
         }
 
         public override Vector2? HoldoutOffset()

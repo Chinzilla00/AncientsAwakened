@@ -21,7 +21,7 @@ The abyssal wrath of the Mire rests in this armor");
 			item.width = 30;
 			item.height = 20;
 			item.value = 3000000;
-			item.defense = 40;
+			item.defense = 44;
             item.rare = 9;
             AARarity = 13;
         }
