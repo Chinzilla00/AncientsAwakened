@@ -297,12 +297,9 @@ namespace AAMod
             Filters.Scene["Shockwave"] = new Filter(new ScreenShaderData(screenRef, "Shockwave"), EffectPriority.VeryHigh);
             Filters.Scene["Shockwave"].Load();
 
-            if(AAConfigClient.Instance.AAStyleMainPage)
-            {
-                BackupVanillaBG(-1);
-                BackupVanillaBG(-2);
-                BackupVanillaBG(-3);
-            }
+            BackupVanillaBG(-1);
+            BackupVanillaBG(-2);
+            BackupVanillaBG(-3);
 
             BackupVanillaBG(0);
             BackupVanillaBG(171);
@@ -558,8 +555,6 @@ namespace AAMod
         {
             Main.versionNumber = "Terraria v1.3.5.2";
             AAMenuset = false;
-            if(SkyManager.Instance["AAMod:MireSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:MireSky", new object[0]);
-            if(SkyManager.Instance["AAMod:VoidSky"].IsActive()) SkyManager.Instance.Deactivate("AAMod:VoidSky", new object[0]);
 
             if (!Main.dedServ)
             {
@@ -591,6 +586,7 @@ namespace AAMod
         {
             ResetBGTexture(-1);
             ResetBGTexture(-2);
+            ResetBGTexture(-3);
             //Main.logoTexture = ModContent.GetTexture("Logo");
             //Main.logo2Texture = ModContent.GetTexture("Logo2");
             ResetBGTexture(0);
@@ -701,10 +697,6 @@ namespace AAMod
                                 Main.backgroundTexture[171] = ModContent.GetTexture("Terraria/Background_" + 171);
                                 Main.backgroundTexture[172] = ModContent.GetTexture("Terraria/Background_" + 172);
                                 Main.backgroundTexture[173] = ModContent.GetTexture("Terraria/Background_" + 173);
-                            }
-                            if(!Main.dayTime && (Main.bgAlpha2[2] < 0.10f || Main.bgAlpha2[2] == 1f))
-                            {
-                                Main.backgroundTexture[0] = ModContent.GetTexture("Terraria/Background_" + 0);
                                 Main.backgroundTexture[24] = ModContent.GetTexture("Terraria/Background_" + 24);
                                 Main.backgroundTexture[25] = ModContent.GetTexture("Terraria/Background_" + 25);
                                 Main.backgroundTexture[56] = ModContent.GetTexture("Terraria/Background_" + 56);
@@ -736,15 +728,15 @@ namespace AAMod
                                 Main.backgroundTexture[171] = instance.GetTexture("Backgrounds/InfernoBG");
                                 Main.backgroundTexture[172] = instance.GetTexture("Backgrounds/InfernoBG");
                                 Main.backgroundTexture[173] = instance.GetTexture("Backgrounds/InfernoBG");
-                            }
-                            if(!Main.dayTime && (Main.bgAlpha2[2] < 0.10f || Main.bgAlpha2[2] == 1f))
-                            {
-                                Main.backgroundTexture[0] = instance.GetTexture("Backgrounds/YamataStars");
                                 Main.backgroundTexture[24] = instance.GetTexture("Backgrounds/MireBG");
                                 Main.backgroundTexture[25] = instance.GetTexture("Backgrounds/MireFG2");
                                 Main.backgroundTexture[56] = instance.GetTexture("Backgrounds/MireFG1");
                                 Main.backgroundTexture[57] = instance.GetTexture("Backgrounds/MireFG1");
                                 Main.backgroundTexture[58] = instance.GetTexture("Backgrounds/MireFG1");
+                            }
+                            if(!Main.dayTime && (Main.bgAlpha2[2] < 0.10f || Main.bgAlpha2[2] == 1f))
+                            {
+                                Main.backgroundTexture[0] = instance.GetTexture("Backgrounds/YamataStars");
                             }
                             break;
                         case 2:
@@ -764,10 +756,6 @@ namespace AAMod
                                 Main.backgroundTexture[171] = instance.GetTexture("BlankTex");
                                 Main.backgroundTexture[172] = instance.GetTexture("BlankTex");
                                 Main.backgroundTexture[173] = instance.GetTexture("BlankTex");
-                            }
-                            if(!Main.dayTime && (Main.bgAlpha2[2] < 0.10f || Main.bgAlpha2[2] == 1f))
-                            {
-                                Main.backgroundTexture[0] = instance.GetTexture("BlankTex");
                                 Main.backgroundTexture[24] = instance.GetTexture("BlankTex");
                                 Main.backgroundTexture[25] = instance.GetTexture("BlankTex");
                                 Main.backgroundTexture[56] = instance.GetTexture("BlankTex");
