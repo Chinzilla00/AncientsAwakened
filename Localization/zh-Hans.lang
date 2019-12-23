@@ -2091,8 +2091,8 @@ ItemName.EventideBullet=宵暗弹
 ItemName.LungStaff=古龙之杖
 ItemTooltip.LungStaff=召唤一条古龙为你而战
 
-ItemName.MorningGlory=光荣之晨
-ItemTooltip.MorningGlory=触及敌人时爆炸
+ItemName.MorningGlory=晨曦荣光
+ItemTooltip.MorningGlory=飞行时分裂成幻影刺矛
 
 ItemName.RadiantDawn=曜光破晓弓
 ItemTooltip.RadiantDawn=长按发射更多箭矢

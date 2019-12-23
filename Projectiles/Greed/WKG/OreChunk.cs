@@ -732,6 +732,41 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     target.AddBuff(24, 720, false);
                 }
+                else if(k == ModSupport.GetModItem("CalamityMod", "ExodiumClusterOre").item.type)
+                {
+                    int bufftype1 = ModSupport.GetModBuff("CalamityMod", "Horror").Type;
+                    int bufftype2 = ModSupport.GetModBuff("CalamityMod", "MarkedforDeath").Type;
+                    target.AddBuff(bufftype1, 240, false);
+                    target.AddBuff(bufftype2, 240, false);
+                    if(!target.immortal)
+                    {
+                        int rangedLevel = (int)ModSupport.GetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "rangedLevel", false, false);
+                        if(rangedLevel < 12500)
+                        {
+                            rangedLevel += 2;
+                            ModSupport.SetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "rangedLevel", rangedLevel, false, false);
+                        }
+                    }
+                    bool revenge = (bool)ModSupport.GetModWorldConditions("CalamityMod", "CalamityWorld", "revenge", false, true);
+                    if(revenge)
+                    {
+                        bool Death = (bool)ModSupport.GetModWorldConditions("CalamityMod", "CalamityWorld", "death", false, true);
+                        int stress = (int)ModSupport.GetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "stress", false, false);
+                        bool rageMode = (bool)ModSupport.GetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "rageMode", false, false);
+                        int adrenaline = (int)ModSupport.GetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "adrenaline", false, false);
+                        bool adrenalineMode = (bool)ModSupport.GetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "adrenalineMode", false, false);
+                        if(stress < 10000 && !rageMode)
+                        {
+                            stress += Death? 350 : 150;
+                            ModSupport.SetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "stress", stress, false, false);
+                        }
+                        if(adrenaline < 10000 && !adrenalineMode)
+                        {
+                            adrenaline += Death? 350 : 150;
+                            ModSupport.SetModPlayerConditions("CalamityMod", Main.player[projectile.owner], "CalamityPlayer", "adrenaline", adrenaline, false, false);
+                        }
+                    }
+                }
             }
             else
             {
