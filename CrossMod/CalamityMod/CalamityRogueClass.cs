@@ -234,6 +234,7 @@ namespace AAMod
 		public override bool InstancePerEntity => true;
 		public override bool CloneNewInstances => true;
 		public bool rogue;
+		public bool stealthStrike = false;
         public override void SetDefaults(Projectile projectile)
 		{
 			if (ModSupport.GetMod("CalamityMod") != null)
