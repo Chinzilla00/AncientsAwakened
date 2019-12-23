@@ -16,6 +16,7 @@ namespace AAMod.Items.Armor.Draco
 			DisplayName.SetDefault("Draconian Sun Kabuto");
 			Tooltip.SetDefault(@"20% increased melee critical chance
 3% increased damage resistance
++25 Max Life
 The blazing fury of the Inferno rests in this armor");
 
 		}
@@ -66,7 +67,8 @@ The blazing fury of the Inferno rests in this armor");
 		{
 			player.meleeCrit += 20;
             player.endurance += .03f;
-		}
+            player.statLifeMax2 += 25;
+        }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
 		{

@@ -12,6 +12,7 @@ namespace AAMod.Items.Armor.Witch
             Tooltip.SetDefault(@"10% increased magic/minion damage 
 10% increased critical strike chance
 +2 Max Minions
++30 Max Life
 A robe enchanted with the firey spirit of a supreme dragon acolyte");
         }
 
@@ -42,9 +43,11 @@ A robe enchanted with the firey spirit of a supreme dragon acolyte");
             player.magicDamage += .1f;
             player.minionDamage += .1f;
             player.maxMinions += 2;
+            player.statLifeMax2 += 30;
+
         }
 
-		public override void DrawHands(ref bool drawHands, ref bool drawArms)
+        public override void DrawHands(ref bool drawHands, ref bool drawArms)
 		{
 			drawHands = true;
 		}

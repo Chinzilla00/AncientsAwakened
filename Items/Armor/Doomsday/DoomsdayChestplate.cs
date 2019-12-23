@@ -14,6 +14,7 @@ namespace AAMod.Items.Armor.Doomsday
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Doomsday Assault Armor");
 			Tooltip.SetDefault(@"5% decreased mana usage
++50 Max Life
 The power to destroy entire planets rests in this armor");
 		}
 
@@ -62,6 +63,7 @@ The power to destroy entire planets rests in this armor");
         public override void UpdateEquip(Player player)
 		{
 			player.manaCost *= .95f;
+            player.statLifeMax2 += 50;
         }
 
 		public override void AddRecipes()

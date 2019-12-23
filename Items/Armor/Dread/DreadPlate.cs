@@ -13,6 +13,7 @@ namespace AAMod.Items.Armor.Dread
 			DisplayName.SetDefault("Dread Moon Gi");
 			Tooltip.SetDefault(@"35% increased ranged damage
 20% increased movement speed
++50 Max Life
 The abyssal wrath of the Mire rests in this armor");
 		}
 
@@ -42,6 +43,7 @@ The abyssal wrath of the Mire rests in this armor");
             player.rangedDamage *= 1.35f;
             player.moveSpeed *= 1.2f;
             player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .2f;
+            player.statLifeMax2 += 50;
         }
 
         public override void AddRecipes()
