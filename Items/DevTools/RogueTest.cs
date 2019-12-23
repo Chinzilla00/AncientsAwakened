@@ -32,7 +32,7 @@ namespace AAMod.Items.DevTools
             item.expert = true; item.expertOnly = true;
 			item.shoot = mod.ProjectileType("Noodle");
 			item.shootSpeed = 9f;
-            ModSupport.SetModGlobalItemConditions("CalamityMod", item, "CalamityGlobalItem", "rogue", true, false, false); //Set rogue damage
+            item.GetGlobalItem<RogueItem>().rogue = true; //Set rogue damage
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -40,7 +40,7 @@ namespace AAMod.Items.DevTools
             if (ModSupport.GetMod("CalamityMod") != null)
             {
                 int num = Projectile.NewProjectile(position, new Vector2(speedX, speedY), mod.ProjectileType("Noodle"), damage, knockBack, player.whoAmI, 0f, 1f);
-                ModSupport.SetModGlobalProjConditions("CalamityMod", Main.projectile[num], "CalamityGlobalProjectile", "rogue", true, false, false);
+                Main.projectile[num].GetGlobalProjectile<RogueProj>().rogue = true;
                 if (player.GetModPlayer<RoguePlayer>().StealthStrikeAvailable) //Stealth Strike
                 {
                     float scaleFactor = 15f;

@@ -338,7 +338,7 @@ namespace AAMod
             }
         }
 
-        public static object GetModGlobalProjConditions(string modname, Projectile proj, string globalprojname, string ConditionName, object Set_value, bool nopub = false, bool sta = false)
+        public static object GetModGlobalProjConditions(string modname, Projectile proj, string globalprojname, string ConditionName, bool nopub = false, bool sta = false)
 		{
             object condition = null;
             if(ModLoader.GetMod(modname) != null)
