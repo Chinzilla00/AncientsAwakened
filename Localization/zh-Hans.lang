@@ -490,7 +490,7 @@ ItemName.AssassinHood=子夜刺客面罩
 ItemTooltip.AssassinHood=增加13%远程/近战伤害和暴击率\n子夜魅影融入深色面罩中
 
 ItemName.AssassinShirt=子夜刺客紧身衣
-ItemTooltip.AssassinShirt=增加14%远程/近战伤害和暴击率\n减少20%弹药消耗\n子夜魅影融入深色装备中
+ItemTooltip.AssassinShirt=增加14%远程/近战伤害和暴击率\n减少20%弹药消耗\n+50生命上限\n子夜魅影融入深色装备中
 
 Common.AssassinBonus=增加30%近战速度和弹药速度\n你使用近战武器时有几率投掷匕首\n你使用远程武器时有几率发射额外箭矢\n匕首/箭矢会削减敌人20防御并增加10%受到的伤害
 
@@ -581,16 +581,16 @@ ItemName.PerfectChaosHood=冥昧抹杀者兜帽
 ItemTooltip.PerfectChaosHood=增加32%魔法伤害\n增加20%魔法暴击率\n增加2%伤害减免\n减少30%魔法消耗\n+150魔法上限\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosKabuto=冥昧抹杀者盔胄
-ItemTooltip.PerfectChaosKabuto=增加30%近战伤害和暴击率\n增加5%伤害减免\n增加15近战速度\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosKabuto=增加30%近战伤害和暴击率\n增加5%伤害减免\n增加15近战速度\n+25生命上限\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosMask=冥昧抹杀者面具
 ItemTooltip.PerfectChaosMask=增加70%召唤伤害\n增加1%伤害减免\n+6召唤上限\n+2炮台上限\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosVisor=冥昧抹杀者视镜
-ItemTooltip.PerfectChaosVisor=增加45%远程伤害\n增加38%远程暴击率\n增加3%伤害减免\n减少25%弹药消耗\n从这个盔甲中散发着冥昭瞢暗之力
+ItemTooltip.PerfectChaosVisor=增加45%远程伤害\n增加38%远程暴击率\n增加3%伤害减免\n减少25%弹药消耗\n+15生命上限\n从这个盔甲中散发着冥昭瞢暗之力
 
 ItemName.PerfectChaosPlate=冥昧抹杀者胸甲
-ItemTooltip.PerfectChaosPlate=增加4%伤害减免\n允许你在水下呼吸
+ItemTooltip.PerfectChaosPlate=增加4%伤害减免\n+75生命上限\n允许你在水下呼吸
 
 Common.PerfectChaosHoodBonus=“混沌赐予你力量”\n随着你的生命减少， 你的魔法伤害增加， 魔力消耗降低\n你的魔法攻击对敌人造成冥昧业火
 Common.PerfectChaosKabutoBonus=“混沌赐予你力量”\n随着你的生命减少， 你的近战伤害和防御力增加\n你的近战攻击对敌人造成冥昧业火
@@ -708,7 +708,7 @@ ItemName.DoomsdayMask=末日突击视镜
 ItemTooltip.DoomsdayMask=增加50%召唤物伤害\n装甲内栖宿着毁灭行星之力
 
 ItemName.DoomsdayChestplate=末日突击装甲
-ItemTooltip.DoomsdayChestplate=增加35%召唤物伤害\n装甲内栖宿着毁灭行星之力
+ItemTooltip.DoomsdayChestplate=增加35%召唤物伤害\n+50生命上限\n装甲内栖宿着毁灭行星之力
 
 ItemName.DoomsdayHelmet=末日突击面具
 ItemTooltip.DoomsdayHelmet=增加25%魔法伤害\增加18%魔法暴击率\n装甲内栖宿着毁灭行星之力
@@ -724,13 +724,13 @@ Common.DoomsdayHelmetBonus=生命终结系统启动\n你可以探测到周围所
 
 
 ItemName.DracoHelm=炙戮盔胄
-ItemTooltip.DracoHelm=增加20%近战暴击率\n增加3%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoHelm=增加20%近战暴击率\n增加3%伤害减免\n+25生命上限\n装甲中栖宿着燎狱的狂焰之怒
 
 ItemName.DracoLeggings=炙戮护腿
-ItemTooltip.DracoLeggings=增加16%移动速度\n增加16%近战速度\n增加3%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoLeggings=增加16%移动速度\n增加16%近战速度\n增加3%伤害减免\n+25生命上限\n装甲中栖宿着燎狱的狂焰之怒
 
 ItemName.DracoPlate=炙戮道甲
-ItemTooltip.DracoPlate=增加25%近战伤害\n增加3%伤害减免\n装甲中栖宿着燎狱的狂焰之怒
+ItemTooltip.DracoPlate=增加25%近战伤害\n增加3%伤害减免\n+25生命上限\n装甲中栖宿着燎狱的狂焰之怒
 
 Common.DracoHelmBonus=“狂焰之怒充满了你的身体”\n你免疫所有冰系debuff\n你的灵魂灼烧如同狂焰之怒\n你的近战攻击对目标造成破晓
 
@@ -741,10 +741,10 @@ ItemName.DreadBoots=惧之月袴裤
 ItemTooltip.DreadBoots=增加50%移动速度\n减少25%弹药消耗\n装甲中栖宿着潭渊的沉渊之怒
 
 ItemName.DreadHelm=惧之月假面
-ItemTooltip.DreadHelm=增加24%远程暴击率\n增加20%移动速度\n装甲中栖宿着潭渊的沉渊之怒
+ItemTooltip.DreadHelm=增加24%远程暴击率\n增加20%移动速度\n+15生命上限\n装甲中栖宿着潭渊的沉渊之怒
 
 ItemName.DreadPlate=惧之月武服
-ItemTooltip.DreadPlate=增加35%远程伤害\n增加20%移动速度\n装甲中栖宿着潭渊的沉渊之怒
+ItemTooltip.DreadPlate=增加35%远程伤害\n增加20%移动速度\n+50生命上限\n装甲中栖宿着潭渊的沉渊之怒
 
 Common.DreadHelmBonus=“沉渊之怒让你大发雷霆”\n你免疫所有火系debuff\n你如天上恐惧之月般发光\n你的远程伤害对目标造成蚀月
 
@@ -1414,7 +1414,7 @@ ItemName.WitchHood=愤怒女巫兜帽
 ItemTooltip.WitchHood=+120魔力上限\n减少20%魔力消耗\n+2召唤上限\n增加10%魔法/召唤伤害\n增加10%魔法暴击率\n被至尊龙侍从的灼热灵魂所迷恋的兜帽
 
 ItemName.WitchRobe=愤怒女巫长袍
-ItemTooltip.WitchRobe=增加10%魔法/召唤伤害\n增加10%暴击率\n+2召唤上限\n被至尊龙侍从的灼热灵魂所迷恋的长袍
+ItemTooltip.WitchRobe=增加10%魔法/召唤伤害\n增加10%暴击率\n+2召唤上限\n+30生命上限\n被至尊龙侍从的灼热灵魂所迷恋的长袍
 
 Common.WitchHoodBonus=炽痛与灼烧\n增加20%魔法/召唤伤害\n+4召唤上限\n一个狱焰之灵保护着你\n越少的法力, 使得狱焰之灵更强大\n按下套装能力键释放火焰的力量\n(只有当你手持魔法或者召唤武器才会生效)
 
