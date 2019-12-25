@@ -13,13 +13,17 @@ namespace AAMod.Items.Accessories
             item.value = Item.sellPrice(0, 8, 0, 0);
             item.rare = 6;
             item.accessory = true;
-            item.defense = 8;
+        }
+
+        public override void UpdateAccessory(Player player, bool hideVisual)
+        {
+            player.statLifeMax2 += 50;
         }
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ornate Band");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("+50 Max Life");
         }
 
     }
