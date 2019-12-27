@@ -20,7 +20,7 @@ namespace AAMod.Projectiles.Akuma
             projectile.height = 24;
             projectile.friendly = true;
             projectile.penetrate = -1;
-            projectile.ranged = true;
+            projectile.melee = true;
 			projectile.timeLeft = 180;
         }
 		
@@ -36,7 +36,7 @@ namespace AAMod.Projectiles.Akuma
 			
 			if (projectile.ai[1] != -1f) projectile.ai[0]++;
 			
-			if (projectile.ai[0] == 35f)
+			if (projectile.ai[0] == 25f)
 			{
 				projectile.ai[0] = 0f;
 				int numberProjectiles = 2;

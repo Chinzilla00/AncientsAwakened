@@ -15,6 +15,7 @@ namespace AAMod.Items.Armor.PerfectChaos
             Tooltip.SetDefault(@"30% increased Melee damage & critical strike chance
 5% increased damage resistance
 15% increased melee speed
++25 Max Life
 The power of discordian rage radiates from this armor");
         }
 
@@ -56,6 +57,7 @@ The power of discordian rage radiates from this armor");
             player.meleeCrit += 30;
             player.endurance += .05f;
             player.meleeSpeed += .15f;
+            player.statLifeMax2 += 25;
         }
 
         public override void AddRecipes()

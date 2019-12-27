@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using System.Reflection;
 using Microsoft.Xna.Framework.Graphics;
 using AAMod.Items;
 using System;
@@ -165,7 +164,7 @@ namespace AAMod
 				catch(Exception)
 				{
 					dust = null;
-					throw new Exception("Can't find this projectile" + dustname);
+					throw new Exception("Can't find this dust" + dustname);
 				}
 			}
 
@@ -204,40 +203,188 @@ namespace AAMod
 					if(world != null)
 					{
 						BindingFlags binding = (sta? BindingFlags.Static : BindingFlags.Instance) | (nopub? BindingFlags.NonPublic : BindingFlags.Public);
-						condition = world.GetType().GetField(ConditionName, binding).GetValue(world);
+						return world.GetType().GetField(ConditionName, binding).GetValue(world);
 					}
 				}
-				catch(Exception)
+				catch
 				{
-					condition = null;
+					return null;
 					throw new Exception("Error in reading world data.");
 				}
             }
 			return condition;
         }
 
-        public static object GetModPlayerConditions(string modname, string playername, string ConditionName, bool nopub = false, bool sta = false)
+        public static void SetModWorldConditions(string modname, string worldname, string ConditionName, object Set_value, bool nopub = false, bool sta = false)
 		{
-            object condition = false;
             if(ModLoader.GetMod(modname) != null)
 			{
                 Mod mod = ModLoader.GetMod(modname);
 				try
 				{
-					ModPlayer player = Main.player[Main.myPlayer].GetModPlayer(mod, playername);
+					ModWorld world = mod.GetModWorld(worldname);
+					if(world != null)
+					{
+						BindingFlags binding = (sta? BindingFlags.Static : BindingFlags.Instance) | (nopub? BindingFlags.NonPublic : BindingFlags.Public);
+						FieldInfo field = world.GetType().GetField(ConditionName, binding);
+                        if(field.FieldType == Set_value.GetType())
+                        {
+                            field.SetValue(world, Set_value);
+                        }
+					}
+				}
+				catch
+				{
+					throw new Exception("Error in setting world data.");
+				}
+            }
+        }
+
+        public static object GetModPlayerConditions(string modname, Player player, string playername, string ConditionName, bool nopub = false, bool sta = false)
+		{
+            object condition = null;
+            if(ModLoader.GetMod(modname) != null)
+			{
+                Mod mod = ModLoader.GetMod(modname);
+				try
+				{
+					ModPlayer modplayer = player.GetModPlayer(mod, playername);
 					if(player != null)
 					{
 						BindingFlags binding = (sta? BindingFlags.Static : BindingFlags.Instance) | (nopub? BindingFlags.NonPublic : BindingFlags.Public);
-						condition = (bool)player.GetType().GetField(ConditionName, binding).GetValue(player);
+						return modplayer.GetType().GetField(ConditionName, binding).GetValue(modplayer);
 					}
 				}
-				catch(Exception)
+				catch
 				{
-					condition = false;
+					return null;
 					throw new Exception("Error in reading modplayer data.");
 				}
             }
 			return condition;
+        }
+
+        public static void SetModPlayerConditions(string modname, Player player, string playername, string ConditionName, object Set_value, bool nopub = false, bool sta = false)
+		{
+            if(ModLoader.GetMod(modname) != null)
+			{
+                Mod mod = ModLoader.GetMod(modname);
+				try
+				{
+					ModPlayer modplayer = player.GetModPlayer(mod, playername);
+					if(player != null)
+					{
+						BindingFlags binding = (sta? BindingFlags.Static : BindingFlags.Instance) | (nopub? BindingFlags.NonPublic : BindingFlags.Public);
+						FieldInfo field = modplayer.GetType().GetField(ConditionName, binding);
+                        if(field.FieldType == Set_value.GetType())
+                        {
+                            field.SetValue(modplayer, Set_value);
+                        }
+					}
+				}
+				catch
+				{
+					throw new Exception("Error in setting modplayer data.");
+				}
+            }
+        }
+
+        public static object GetModGlobalItemConditions(string modname, Item item, string globalitemname, string ConditionName, bool nopub = false, bool sta = false)
+		{
+            object condition = null;
+            if(ModLoader.GetMod(modname) != null)
+			{
+                Mod mod = ModLoader.GetMod(modname);
+				try
+				{
+					GlobalItem global = item.GetGlobalItem(mod, globalitemname);
+					if(global != null)
+					{
+						BindingFlags binding = (sta? BindingFlags.Static : BindingFlags.Instance) | (nopub? BindingFlags.NonPublic : BindingFlags.Public);
+						return global.GetType().GetField(ConditionName, binding).GetValue(global);
+					}
+				}
+				catch
+				{
+					return null;
+					throw new Exception("Error in reading globalitem data.");
+				}
+            }
+			return condition;
+        }
+
+        public static void SetModGlobalItemConditions(string modname, Item item, string globalitemname, string ConditionName, object Set_value, bool nopub = false, bool sta = false)
+		{
+            if(ModLoader.GetMod(modname) != null)
+			{
+                Mod mod = ModLoader.GetMod(modname);
+				try
+				{
+					GlobalItem global = item.GetGlobalItem(mod, globalitemname);
+					if(global != null)
+					{
+						BindingFlags binding = (sta? BindingFlags.Static : BindingFlags.Instance) | (nopub? BindingFlags.NonPublic : BindingFlags.Public);
+						FieldInfo field = global.GetType().GetField(ConditionName, binding);
+                        if(field.FieldType == Set_value.GetType())
+                        {
+                            field.SetValue(global, Set_value);
+                        }
+					}
+				}
+				catch
+				{
+					throw new Exception("Error in setting globalitem data.");
+				}
+            }
+        }
+
+        public static object GetModGlobalProjConditions(string modname, Projectile proj, string globalprojname, string ConditionName, bool nopub = false, bool sta = false)
+		{
+            object condition = null;
+            if(ModLoader.GetMod(modname) != null)
+			{
+                Mod mod = ModLoader.GetMod(modname);
+				try
+				{
+					GlobalProjectile global = proj.GetGlobalProjectile(mod, globalprojname);
+					if(global != null)
+					{
+						BindingFlags binding = (sta? BindingFlags.Static : BindingFlags.Instance) | (nopub? BindingFlags.NonPublic : BindingFlags.Public);
+						return global.GetType().GetField(ConditionName, binding).GetValue(global);
+					}
+				}
+				catch
+				{
+					return null;
+					throw new Exception("Error in reading globalproj data.");
+				}
+            }
+			return condition;
+        }
+
+        public static void SetModGlobalProjConditions(string modname, Projectile proj, string globalprojname, string ConditionName, object Set_value, bool nopub = false, bool sta = false)
+		{
+            if(ModLoader.GetMod(modname) != null)
+			{
+                Mod mod = ModLoader.GetMod(modname);
+				try
+				{
+					GlobalProjectile global = proj.GetGlobalProjectile(mod, globalprojname);
+					if(global != null)
+					{
+						BindingFlags binding = (sta? BindingFlags.Static : BindingFlags.Instance) | (nopub? BindingFlags.NonPublic : BindingFlags.Public);
+						FieldInfo field = global.GetType().GetField(ConditionName, binding);
+                        if(field.FieldType == Set_value.GetType())
+                        {
+                            field.SetValue(global, Set_value);
+                        }
+					}
+				}
+				catch
+				{
+					throw new Exception("Error in setting globalitem data.");
+				}
+            }
         }
     }
 

@@ -16,6 +16,7 @@ namespace AAMod.Items.Armor.PerfectChaos
 38% increased ranged critical strike chance
 3% increased damage resistance
 25% reduced ammo consumption
++15 Max Life
 The power of discordian rage radiates from this hood");
         }
 
@@ -57,6 +58,7 @@ The power of discordian rage radiates from this hood");
             player.rangedCrit += 38;
             player.endurance += .03f;
             player.ammoCost75 = true;
+            player.statLifeMax2 += 15;
         }
 
         public override void AddRecipes()

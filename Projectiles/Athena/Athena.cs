@@ -254,7 +254,7 @@ namespace AAMod.Projectiles.Athena
                             num658 = ModContent.ProjectileType<Feather>();
                             float spread = 45f * 0.0174f;
                             Vector2 dir = Vector2.Normalize(projectile.Center - vector46);
-                            dir *= 14f;
+                            dir *= -14f;
                             float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
                             double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
                             double deltaAngle = spread / 6f;
@@ -290,7 +290,7 @@ namespace AAMod.Projectiles.Athena
                         int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, num658, projectile.damage, 0f, Main.myPlayer, 0f, 0f);
 
                         Main.projectile[num659].hostile = false;
-                        Main.projectile[num659].friendly = false;
+                        Main.projectile[num659].friendly = true;
                         Main.projectile[num659].melee = false;
                         Main.projectile[num659].ranged = false;
                         Main.projectile[num659].magic = false;

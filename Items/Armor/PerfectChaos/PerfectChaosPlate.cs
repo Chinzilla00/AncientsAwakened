@@ -13,6 +13,7 @@ namespace AAMod.Items.Armor.PerfectChaos
             base.SetStaticDefaults();
             DisplayName.SetDefault("Chaos Slayer Plate");
             Tooltip.SetDefault(@"4% increased damage resistance
++75 Max Life
 The power of discordian rage radiates from this armor");
         }
 
@@ -42,6 +43,7 @@ The power of discordian rage radiates from this armor");
 		{
             player.endurance += .04f;
             player.meleeSpeed += .15f;
+            player.statLifeMax2 += 75;
         }
 		
 		public override void AddRecipes()

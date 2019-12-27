@@ -13,7 +13,8 @@ namespace AAMod.Items.Armor.Doomsday
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Doomsday Assault Armor");
-			Tooltip.SetDefault(@"35% decreased mana usage
+			Tooltip.SetDefault(@"5% decreased mana usage
++50 Max Life
 The power to destroy entire planets rests in this armor");
 		}
 
@@ -22,7 +23,7 @@ The power to destroy entire planets rests in this armor");
 			item.width = 30;
 			item.height = 20;
 			item.value = 3000000;
-			item.defense = 35;
+			item.defense = 38;
             item.rare = 9;
             AARarity = 13;
         }
@@ -61,7 +62,8 @@ The power to destroy entire planets rests in this armor");
 
         public override void UpdateEquip(Player player)
 		{
-			player.manaCost *= .65f;
+			player.manaCost *= .95f;
+            player.statLifeMax2 += 50;
         }
 
 		public override void AddRecipes()

@@ -15,6 +15,7 @@ namespace AAMod.Items.Armor.Draco
 			DisplayName.SetDefault("Draconian Sun Dao");
 			Tooltip.SetDefault(@"25% increased melee damage
 3% increased damage resistance
++25 Max Life
 The blazing fury of the Inferno rests in this armor");
 		}
 
@@ -63,10 +64,12 @@ The blazing fury of the Inferno rests in this armor");
         public override void UpdateEquip(Player player)
 		{
 			player.meleeDamage += .25f;
-			player.endurance += .03f;
+            player.endurance += .03f;
+            player.statLifeMax2 += 25;
+
         }
 
-		public override void AddRecipes()
+        public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(null, "DaybreakIncinerite", 20);

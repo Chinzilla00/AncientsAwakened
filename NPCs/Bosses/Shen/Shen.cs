@@ -32,7 +32,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.netAlways = true;
             npc.knockBackResist = 0f;
             npc.damage = 155;
-            npc.defense = 130;
+            npc.defense = 90;
             npc.lifeMax = 1000000;
             if (Main.expertMode)
             {

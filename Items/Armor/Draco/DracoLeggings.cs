@@ -15,6 +15,7 @@ namespace AAMod.Items.Armor.Draco
 			Tooltip.SetDefault(@"16% increased movement speed
 15% increased melee speed
 3% increased damage resistance
++25 Max Life
 The blazing fury of the Inferno rests in this armor");
 
 		}
@@ -67,6 +68,7 @@ The blazing fury of the Inferno rests in this armor");
 			player.meleeSpeed += 0.15f;
 			player.endurance += .03f;
             player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .16f;
+            player.statLifeMax2 += 25;
         }
 
         public override void AddRecipes()
