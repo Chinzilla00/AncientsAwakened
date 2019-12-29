@@ -180,6 +180,15 @@ namespace AAMod
             }
         }
 
+        public override bool PreAI(NPC npc)
+        {
+            if(npctype != 395 && (npc.boss || npc.type == 13 || npc.type == 15))
+            {
+                Main.player[Main.myPlayer].GetModPlayer<AAPlayer>().bossactive = true;
+            }
+            return base.PreAI(npc);
+        }
+
         public override bool StrikeNPC(NPC npc, ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
 		{
 			if(AssassinHurt)

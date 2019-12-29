@@ -312,7 +312,10 @@ namespace AAMod
         public bool AnubisBook = false;
         public bool GivenAnuSummon = false;
 
+        public float spellbookDamage = 1f;
         public float MaxMovespeedboost = 0;
+        public bool bossactive = false;
+        public bool nohitplayer = true;
         #endregion
 
         #endregion
@@ -348,7 +351,9 @@ namespace AAMod
             ResetDebuffEffect();
             ResetPetsEffect();
 
+            spellbookDamage = 1f;
             MaxMovespeedboost = 0;
+            bossactive = false;
 
             //EnemyChecks
             IsGoblin = false;
@@ -949,6 +954,10 @@ namespace AAMod
 
         public override void PostUpdate()
         {
+            if (!bossactive)
+            {
+                nohitplayer = true;
+            }
             if (Ronin)
             {
                 player.immune = true;
@@ -3072,6 +3081,10 @@ namespace AAMod
 
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
 		{
+            if (bossactive)
+            {
+                nohitplayer = false;
+            }
             if (ShieldUp)
 			{
 				return false;
@@ -3153,6 +3166,7 @@ namespace AAMod
             Unstable = false;
             Spear = false;
             MaxMovespeedboost = 0;
+            spellbookDamage = 1f;
         }
 
         public override void MeleeEffects(Item item, Rectangle hitbox)

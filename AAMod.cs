@@ -456,9 +456,18 @@ namespace AAMod
         public Dictionary<int, Texture2D> vanillaTextureBackups = new Dictionary<int, Texture2D>();
         public Dictionary<int, Texture2D> vanillaBGBackups = new Dictionary<int, Texture2D>();
 
+        public static bool AAloadedOnly = true;
+
         public override void PostAddRecipes()
 		{
             LuckyCheckProgress();
+            foreach(Mod mo in ModLoader.Mods)
+            {
+                if(mo.Name != "ModLoader" && mo.Name != "AAMod" && mo.Name != "BaseMod")
+                {
+                    AAloadedOnly = false;
+                }
+            }
 			Config.SaveConfig();
 		}
 

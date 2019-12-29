@@ -27,7 +27,7 @@ namespace AAMod.Items.Magic.SpellBook
 
         public override void AI()
 		{
-			if (Main.player[projectile.owner].dead || !Main.player[projectile.owner].GetModPlayer<AAPlayer>().SpellBookofRagnarok || Main.player[projectile.owner].ownedProjectileCounts[ModContent.ProjectileType<SpellBookofRagnarokProj>()] > 1)
+			if (Main.player[projectile.owner].dead || !Main.player[projectile.owner].GetModPlayer<Items.Magic.SpellBook.spellbookplayer>().effectRagnarok || !Main.player[projectile.owner].GetModPlayer<AAPlayer>().SpellBookofRagnarok || Main.player[projectile.owner].ownedProjectileCounts[ModContent.ProjectileType<SpellBookofRagnarokProj>()] > 1)
 			{
 				projectile.active = false;
 				projectile.Kill();
@@ -53,6 +53,14 @@ namespace AAMod.Items.Magic.SpellBook
 			if (projectile.alpha < 0)
 			{
 				projectile.alpha = 0;
+			}
+			if (projectile.timeLeft < 50)
+			{
+				projectile.alpha += 5;
+				if (projectile.alpha > 255)
+				{
+					projectile.alpha = 255;
+				}
 			}
 			if (projectile.direction == 0)
 			{

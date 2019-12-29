@@ -11,7 +11,11 @@ namespace AAMod.Items.Magic.SpellBook
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("SpellBook of Ragnarok");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault(@"Increase 20% spellbook damage
+After a shooting turn, put the spellbook back in your inventory automatically
+According to the number of spellbook used in this turn, you get the following effect:
+5 spellbooks: Increase 30% your spellbook damage
+10 spellbooks: Summon a rune on your head");
         }
         public override void SetDefaults()
         {
@@ -25,6 +29,7 @@ namespace AAMod.Items.Magic.SpellBook
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<AAPlayer>().SpellBookofRagnarok = true;
+            player.GetModPlayer<AAPlayer>().spellbookDamage += .2f;
         }
 
         public override void AddRecipes()

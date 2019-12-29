@@ -14,12 +14,12 @@ namespace AAMod.Items.Magic.SpellBook
 			DisplayName.SetDefault("Spellbook of Alman");
 			Tooltip.SetDefault(@"Copy a non-magical weapon in your inventory
 If this book is copied and consumed by the SpellBook of Sefer, you get the following effects:
-Copy and shoot a projectile in the world");
+Copy and shoot a hostile projectile in the world");
 		}
 
 		public override void SetDefaults()
 		{
-			item.damage = 415;
+			item.damage = 90;
 			item.mana = 12;
 			item.useStyle = 5;
 			item.shootSpeed = 12f;
@@ -36,6 +36,7 @@ Copy and shoot a projectile in the world");
 			item.value = Item.sellPrice(0, 25, 26, 0);
 			item.magic = true;
 			item.reuseDelay = 20;
+			item.GetGlobalItem<AAModGlobalItem>().AAOnly = true;
 		}
 
 		public override void AddRecipes()

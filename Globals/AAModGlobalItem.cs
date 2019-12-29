@@ -12,6 +12,12 @@ namespace AAMod
 {
     public class AAModGlobalItem : GlobalItem
 	{
+        public override bool InstancePerEntity => true;
+		public override bool CloneNewInstances => true;
+		public bool AAOnly = false;
+        public bool NOHitPlayer = false;
+        public bool HardCoreMode = false;
+        public bool spellbookmagic = false;
         public override void SetDefaults(Item item)
         {
             if (item.type == ItemID.SoulofNight)
@@ -103,8 +109,38 @@ namespace AAMod
                     }
                 }
             }
+            if(item.magic && item.useStyle == 5 && !Item.staff[item.type] && (item.width > item.height * 0.8f) && (item.width < item.height * 1.25))
+            {
+                spellbookmagic = true;
+            }
         }
 
+        public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
+		{
+            if(AAOnly)
+            {
+                TooltipLine line = new TooltipLine(mod, "AAOnly", "AAMod Loaded Only Item");
+			    tooltips.Insert(tooltips.Count,line);
+            }
+            if(NOHitPlayer)
+            {
+                TooltipLine line = new TooltipLine(mod, "NOHitPlayer", "NohitPlayer bonus item");
+			    tooltips.Insert(tooltips.Count,line);
+            }
+            if(HardCoreMode)
+            {
+                TooltipLine line = new TooltipLine(mod, "HardCoreMode", "HardCoreMode Item");
+			    tooltips.Insert(tooltips.Count,line);
+            }
+		}
+
+        public override void GetWeaponDamage(Item item, Player player, ref int damage)
+		{
+            if(spellbookmagic)
+            {
+                damage = (int)(item.damage * player.magicDamage * player.GetModPlayer<AAPlayer>().spellbookDamage);
+            }
+		}
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
             if (player.HeldItem.type == ModContent.ItemType<Items.Usable.CodeMagnetWeak>())

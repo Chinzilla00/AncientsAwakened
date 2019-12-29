@@ -104,6 +104,29 @@ Right click to put these magic weapon back in your inventory");
 			
 			if(player.GetModPlayer<Items.Magic.SpellBook.spellbookplayer>().effectSpellBook || (player.itemAnimation == 0 && (player.altFunctionUse == 2 || (player.GetModPlayer<AAPlayer>().SpellBookofRagnarok && (usetimetotal - 1) * item.mana * player.manaCost > player.statManaMax2) || flag2)))
 			{
+				if(player.GetModPlayer<AAPlayer>().SpellBookofRagnarok) 
+				{
+					
+					player.GetModPlayer<Items.Magic.SpellBook.spellbookplayer>().effectRagnarok = true;
+					player.GetModPlayer<Items.Magic.SpellBook.spellbookplayer>().spellbooknum = usetimetotal;
+					if(usetimetotal >= 5)
+					{
+						bool hasbuff = false;
+						for (int j = 0; j < 22; j++)
+						{
+							if (player.buffType[j] == mod.BuffType("SpellBookofRagnarok"))
+							{
+								hasbuff = true;
+								player.buffTime[j] = 600;
+								break;
+							}
+						}
+						if(!hasbuff)
+						{
+							player.AddBuff(mod.BuffType("SpellBookofRagnarok"), 600);
+						}
+					}
+				}
 				usetimetotal = 0;
 				foreach(int spelltype in spellbookused)
 				{
@@ -143,23 +166,6 @@ Right click to put these magic weapon back in your inventory");
 			return true;
 		}
 
-		private void SpawnRagnarok(Player player)
-		{
-			bool flag = false;
-			for (int j = 0; j < 1000; j ++)
-			{
-				if (Main.projectile[j].active && Main.projectile[j].owner == player.whoAmI && Main.projectile[j].type ==  ModContent.ProjectileType<SpellBookofRagnarokProj>())
-				{
-					flag = true;
-					Main.projectile[j].timeLeft = 600;
-				}
-			}
-			if (!flag)
-			{
-				Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, ModContent.ProjectileType<SpellBookofRagnarokProj>(), (int)((300 + item.damage + spellbookdamage) * player.magicDamage), 0f, Main.myPlayer, 0f, 0f);
-			}
-		}
-
 		public override void UpdateInventory(Player player)
         {
 			if(spellbooktype >= 0 && (Main.ingameOptionsWindow || player.inventory[player.selectedItem].type != item.type || Main.HoverItem.type == item.type))
@@ -197,10 +203,6 @@ Right click to put these magic weapon back in your inventory");
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
-			if(player.GetModPlayer<AAPlayer>().SpellBookofRagnarok && usetimetotal >= 2)
-			{
-				SpawnRagnarok(player);
-			}
 			bool hasbuff = false;
 			for (int j = 0; j < 22; j++)
 			{

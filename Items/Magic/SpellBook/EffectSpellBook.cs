@@ -46,13 +46,15 @@ namespace AAMod.Items.Magic.SpellBook
 	public class spellbookplayer : ModPlayer
 	{
 		public bool effectSpellBook = false;
+		public bool effectRagnarok = false;
 		public List<Item> ShootSustainedeffect = new List<Item>();
-
+		public int spellbooknum = 0;
 		public bool SpellBookofIridescen = false;
 
 		public override void ResetEffects()
         {
 			effectSpellBook = false;
+			effectRagnarok = false;
 		}
 
 		public override void PostUpdate()
@@ -86,6 +88,10 @@ namespace AAMod.Items.Magic.SpellBook
 			else
 			{
 				ShootSustainedeffect.Clear();
+			}
+			if(!effectRagnarok)
+			{
+				spellbooknum = 0;
 			}
 		}
 
