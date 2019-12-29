@@ -42,22 +42,30 @@ namespace AAMod.Items.Boss.Akuma
         int shoot = 0;
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            for (int i = 0; i < 3; i++)
-            {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
-                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("Dayser"), damage, knockBack, player.whoAmI);
-            }
-            shoot++;
+            //for (int i = 0; i < 3; i++)
+            //{
+            //    Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(10));
+            //    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("Dayser"), damage, knockBack, player.whoAmI);
+            //}
+            if (shoot++ > 6) shoot = 0;
 
-            if (shoot % 6 != 2) return false;
-
-            if (shoot >= 6)
+            for (int i = 0; i < 4; i++)
             {
-                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5));
-                Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("Dayser"), damage * 2, knockBack, player.whoAmI);
-                shoot = 0;
+                Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15)) * .5f;
+                Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("Daystormbullet"), damage, knockBack, player.whoAmI);
             }
-            shoot = 0;
+
+            if (Main.rand.Next(3) == 0)
+            {
+                //Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(5));
+                //Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("Dayser"), damage * 2, knockBack, player.whoAmI);
+                //shoot = 0;
+                for (int i = 0; i < Main.rand.Next(2); i++)
+                {
+                    Vector2 perturbedSpeed2 = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(15));
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed2.X, perturbedSpeed2.Y, mod.ProjectileType("DaystormbulletA"), (int)(damage * 1.5f), knockBack, player.whoAmI);
+                }
+            }
             return false;
         }
 

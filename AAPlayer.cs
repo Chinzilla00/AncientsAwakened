@@ -228,6 +228,7 @@ namespace AAMod
         public bool GreedCharm;
         public bool GreedTalisman;
         public bool OldOneCharm = false;
+        public bool SpellBookofRagnarok;
         #endregion
 
         #region debuffs
@@ -500,6 +501,7 @@ namespace AAMod
             Greed2 = false;
             olympianWings = false;
             OldOneCharm = false;
+            SpellBookofRagnarok = false;
         }
 
         private void ResetBuffEffect()

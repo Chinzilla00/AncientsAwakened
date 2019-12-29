@@ -40,7 +40,8 @@ namespace AAMod.Items.Magic
               for (int i = 0; i < numberProjectiles; i++)
               {
                   Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20)); 
-                  Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                  int p = Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
+                  Main.projectile[p].magic = true;
               }
               return false;
         }  

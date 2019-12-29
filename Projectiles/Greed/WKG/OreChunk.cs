@@ -1022,7 +1022,10 @@ namespace AAMod.Projectiles.Greed.WKG
         {
             int k = (int)projectile.ai[1];
             Item item = new Item();
-            item.SetDefaults(k, false);
+            if(k > 0)
+            {
+                item.SetDefaults(k, false);
+            }
             if(k == ItemID.DemoniteOre || k == mod.ItemType("Abyssium") || k == mod.ItemType("RadiumOre"))
             {
                 projectile.extraUpdates = 1;

@@ -30,6 +30,14 @@ namespace AAMod.Projectiles.Akuma
 
         public override void AI()
         {
+            if (projectile.alpha > 0)
+            {
+                projectile.alpha -= 25;
+            }
+            if (projectile.alpha < 0)
+            {
+                projectile.alpha = 0;
+            }
             projectile.frameCounter++;
             if (projectile.frameCounter > 4)
             {
@@ -51,12 +59,16 @@ namespace AAMod.Projectiles.Akuma
                 projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X);
             }
 
-            int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, ModContent.DustType<Dusts.InfinityOverloadB>(), projectile.velocity.X * 0.2f,
-                projectile.velocity.Y * 0.2f, 100, new Color(86, 191, 188), 2f);
-            Main.dust[dustId].noGravity = true;
-            int dustId3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, ModContent.DustType<Dusts.InfinityOverloadB>(), projectile.velocity.X * 0.2f,
-                projectile.velocity.Y * 0.2f, 100, new Color(86, 191, 188), 2f);
-            Main.dust[dustId3].noGravity = true;
+            if(projectile.alpha < 150)
+            {
+                
+                int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, ModContent.DustType<Dusts.InfinityOverloadB>(), projectile.velocity.X * 0.2f,
+                    projectile.velocity.Y * 0.2f, 100, new Color(86, 191, 188), 2f);
+                Main.dust[dustId].noGravity = true;
+                int dustId3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 2f), projectile.width, projectile.height + 5, ModContent.DustType<Dusts.InfinityOverloadB>(), projectile.velocity.X * 0.2f,
+                    projectile.velocity.Y * 0.2f, 100, new Color(86, 191, 188), 2f);
+                Main.dust[dustId3].noGravity = true;
+            }
 
             const int aislotHomingCooldown = 0;
             const int homingDelay = 10;

@@ -370,7 +370,7 @@ ItemName.MindStone=心灵宝石
 ItemTooltip.MindStone=减少50%魔力消耗\n+200魔力上限\n“简单的微积分”\n(白昼启明虫掉落)
 
 ItemName.OrnateBand=华丽珠环
-ItemTooltip.OrnateBand=增加5%伤害减免
+ItemTooltip.OrnateBand=+50生命上限
 
 ItemName.PalladiumShield=钯金盾
 ItemTooltip.PalladiumShield=使你免疫击退
@@ -2659,8 +2659,8 @@ ItemTooltip.Sevenshot=发射6颗子弹和1颗毁灭性月亮爆破弹\n50%几率
 
 ItemName.ThrowingCrescent=新月投刃
 
-ItemName.Toxibomb=潭渊深毒爆弹
-ItemTooltip.Toxibomb=发射爆炸性精神炸弹
+ItemName.Toxibomb=深渊毒爆
+ItemTooltip.Toxibomb=发射爆炸性猛毒炸弹
 
 ItemName.YamataATrophy=觉醒之八歧大蛇纪念章
 
@@ -3223,10 +3223,10 @@ ItemTooltip.AtlanteanTrident=发射三发魔法水箭
 ItemName.BlazePike=怒焰法矛
 ItemTooltip.BlazePike=摸上去非常烫手
 
-ItemName.BogBomb=潭渊毒爆弹
+ItemName.BogBomb=潭渊毒爆
 ItemTooltip.BogBomb=发射一颗爆弹对触碰的敌人造成中毒
 
-ItemName.CrystalTome=水晶法书
+ItemName.CrystalTome=明晶法典
 ItemTooltip.CrystalTome=抛射魔力碎晶
 
 ItemName.Depthsprayer=深海喷流杖
