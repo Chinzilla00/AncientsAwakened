@@ -25,10 +25,10 @@ namespace AAMod.Buffs
 			}
 			if(modPlayer.spellbooknum >= 10)
 			{
-				SpawnRagnarok(player);
+				SpawnRagnarok(player, modPlayer.spellbooknum);
 			}
         }
-		private void SpawnRagnarok(Player player)
+		private void SpawnRagnarok(Player player, int spellbooknum)
 		{
 			bool flag = false;
 			for (int j = 0; j < 1000; j ++)
@@ -37,11 +37,12 @@ namespace AAMod.Buffs
 				{
 					flag = true;
 					Main.projectile[j].timeLeft = 600;
+					Main.projectile[j].damage = (int)((300 + player.inventory[player.selectedItem].damage) * player.magicDamage * (1 + spellbooknum * .1f));
 				}
 			}
 			if (!flag)
 			{
-				Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("SpellBookofRagnarokProj"), (int)((300 + player.inventory[player.selectedItem].damage) * player.magicDamage), 0f, Main.myPlayer, 0f, 0f);
+				Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("SpellBookofRagnarokProj"),  (int)((300 + player.inventory[player.selectedItem].damage) * player.magicDamage * (1 + spellbooknum * .1f)), 0f, Main.myPlayer, 0f, 0f);
 			}
 		}
 	}

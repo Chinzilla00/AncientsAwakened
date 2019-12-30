@@ -3210,6 +3210,42 @@ ItemName.DragonsGrip=龙之握
 ===UNKNWN===
 ItemName.BaseAAItem=
 
+// AAMod.Items.Magic.SpellBook
+
+ItemName.SpellBookofSefer=创始之魔导书
+ItemTooltip.SpellBookofSefer=依次复制并消耗你背包中的非法杖类魔法武器\n右键将消耗的武器放回你的背包
+
+ItemName.SpellbookofAlman=蜡版之魔导书
+ItemTooltip.SpellbookofAlman=复制你背包中一个非魔法武器的弹幕\n这本书被创始之魔导书复制并消耗时你获得以下效果:\n复制并发射当前世界上的一种敌对弹幕
+
+ItemName.SpellBookofApocal=末示之魔导书
+ItemTooltip.SpellBookofApocal=发射能在墙上回弹的旋转星\n这本书被创始之魔导书复制并消耗时你获得以下效果:\n在这一发射轮次中，你的魔法弹幕获得跟踪效果
+
+ItemName.SpellbookofGoetia=恶神之魔导书
+
+ItemName.SpellBookofHygro=水卜之魔导书
+
+ItemName.SpellBookofInvocerb=祷冥之魔导书
+
+ItemName.SpellBookofRageziel=怒源之魔导书
+
+ItemName.SpellBookofSylent=林默之魔导书
+
+ItemName.SpellBookofCursim=猩咒之魔导书
+ItemTooltip.SpellBookofCursim=喷洒灵液降低敌人防御\n这本书被创始之魔导书复制并消耗时你获得以下效果:\n在这一发射轮次中，你的魔法弹幕伤害增加并破坏敌人的防御
+
+ItemName.SpellBookofEbontten=腐檀之魔导书
+ItemTooltip.SpellBookofEbontten=发射咒火球\n这本书被创始之魔导书复制并消耗时你获得以下效果:\n在这一发射轮次中，你的魔法弹幕会在一段时间后分裂
+
+ItemName.SpellBookofIridescen=虹彩之魔导书
+ItemTooltip.SpellBookofIridescen=发射彩虹和一束神圣箭\n这本书被创始之魔导书复制并消耗时你获得以下效果:\n在这一发射轮次中，你受到超过你生命值的伤害时，你免疫此次伤害
+
+ItemName.SpellBookofNecro=死灵之魔导书
+ItemTooltip.SpellBookofNecro=发射幽魂追踪你的敌人\n这本书被创始之魔导书复制并消耗时你获得以下效果:\n在这一发射轮次中，你的魔法弹幕会把敌人的灵魂打出来
+
+ItemName.SpellBookofRagnarok=魔导书的神判
+ItemTooltip.SpellBookofRagnarok=增加20%魔法书的伤害\n发射轮次结束时，自动将使用过的魔导书放回你的背包\n那之后根据你使用的数量你获得以下效果:\n5本，增加30%魔法书伤害\n10本，在你的头上召唤一个符文
+
 
 // AAMod.Items.Magic
 

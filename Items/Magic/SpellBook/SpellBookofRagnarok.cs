@@ -13,7 +13,8 @@ namespace AAMod.Items.Magic.SpellBook
             DisplayName.SetDefault("SpellBook of Ragnarok");
             Tooltip.SetDefault(@"Increase 20% spellbook damage
 After a shooting turn, put the spellbook back in your inventory automatically
-According to the number of spellbook used in this turn, you get the following effect:
+According to the number of spellbook used in this turn, 
+you get the following effect:
 5 spellbooks: Increase 30% your spellbook damage
 10 spellbooks: Summon a rune on your head");
         }

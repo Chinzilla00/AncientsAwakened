@@ -13,7 +13,7 @@ namespace AAMod.Items.Magic.SpellBook
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("SpellBook of Sefer");
-			Tooltip.SetDefault(@"Copy and consume the square magic weapon in your inventory one by one
+			Tooltip.SetDefault(@"Copy and consume the non-staff magic weapon in your inventory one by one
 Right click to put these magic weapon back in your inventory");
 		}
 
@@ -73,7 +73,7 @@ Right click to put these magic weapon back in your inventory");
 					{
 						Item itemshoot = player.inventory[m];
 						
-						if (itemshoot != null && itemshoot.stack > 0 && itemshoot.magic && itemshoot.useStyle == 5 && !Item.staff[itemshoot.type] && itemshoot.shoot > 0 && itemshoot.type != mod.ItemType("SpellBookofSefer") && (itemshoot.width > itemshoot.height * 0.8f) && (itemshoot.width < itemshoot.height * 1.25)) 
+						if (itemshoot != null && itemshoot.stack > 0 && itemshoot.magic && itemshoot.useStyle == 5 && !Item.staff[itemshoot.type] && itemshoot.shoot > 0 && itemshoot.type != mod.ItemType("SpellBookofSefer") && itemshoot.width < itemshoot.height * 1.25) 
 						{
 							spellbookindex = m;
 							spellbookdamage = itemshoot.damage;
