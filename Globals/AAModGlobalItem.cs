@@ -109,7 +109,7 @@ namespace AAMod
                     }
                 }
             }
-            if(item.magic && item.useStyle == 5 && !Item.staff[item.type] && itemshoot.width < itemshoot.height * 1.25)
+            if(item.magic && item.useStyle == 5 && !Item.staff[item.type] && item.width < item.height * 1.25)
             {
                 spellbookmagic = true;
             }
