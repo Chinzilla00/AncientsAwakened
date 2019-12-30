@@ -182,7 +182,7 @@ namespace AAMod
 
         public override bool PreAI(NPC npc)
         {
-            if(npctype != 395 && (npc.boss || npc.type == 13 || npc.type == 15))
+            if(npc.type != 395 && (npc.boss || npc.type == 13 || npc.type == 15))
             {
                 Main.player[Main.myPlayer].GetModPlayer<AAPlayer>().bossactive = true;
             }
