@@ -38,7 +38,7 @@ Now you don't have to clutter your base with 12 crafting stations!");
             recipe.AddIngredient(ItemID.HeavyWorkBench, 1);
             recipe.AddIngredient(ItemID.HoneyDispenser, 1);
             recipe.AddIngredient(ItemID.IceMachine, 1);
-            recipe.AddIngredient(TileID.LivingLoom, 1);
+            recipe.AddIngredient(ItemID.LivingLoom, 1);
             recipe.AddIngredient(ItemID.MeatGrinder, 1);
             recipe.AddIngredient(ItemID.SkyMill, 1);
             recipe.AddIngredient(ItemID.Solidifier, 1);
