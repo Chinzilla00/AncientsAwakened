@@ -2113,6 +2113,7 @@ ItemName.SunStaff=燎阳权杖
 ItemTooltip.SunStaff=向你的敌人降下燎炎和怒火\n造成破晓
 
 ItemName.SunStorm=燎焰风暴
+ItemTooltip.SunStorm=发射环绕火球, 在一段时间后追踪敌人
 
 ItemName.TaiyangBaolei=太阳堡垒
 ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n你的近战和魔法攻击对敌人造成灼伤\n白天,增加5%伤害减免\n你的近战和魔法攻击造成破晓来代替着火\n(译者注：绝了,这个装备的英文原名就是taiyangbaolei)
@@ -3651,7 +3652,8 @@ ItemTooltip.ChaosScythe=“一切尽在我掌中”\n传说武器
 
 ItemName.ChaosYari=冥昧枪矛
 
-ItemName.ChaosYariEX=真·冥昧枪矛\n冥昧枪矛 EX
+ItemName.ChaosYariEX=真·冥昧枪矛
+ItemTooltip.ChaosYariEX=冥昧枪矛 EX
 
 ItemName.Chicken=惨叫鸡
 
