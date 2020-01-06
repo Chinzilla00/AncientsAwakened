@@ -108,12 +108,29 @@ namespace AAMod.Projectiles.Yamata
                 Projectile p = Projectile.NewProjectileDirect(new Vector2(screenX, screenY), new Vector2(velocityX, velocityY), ModContent.ProjectileType<YariProj>(), damage, 0f, player.whoAmI);
                 p.tileCollide = false;
             }
-            */
             for (int i = 0; i < 8; i++)
             {
                 Vector2 pos = new Vector2((float)Math.Sin(i * 0.25f * (float)Math.PI), (float)Math.Cos(i * 0.25f * (float)Math.PI));
                 pos *= 100f;
                 Projectile.NewProjectile(target.Center.X + pos.X, target.Center.Y + pos.Y, 0, 0, mod.ProjectileType("AbyssalYariP2"), damage, 0, Main.myPlayer, i, target.whoAmI);
+            }
+            */
+            for (int i = 0; i < 8; i++)
+            {
+                float screenY = Main.screenPosition.Y;
+                screenY += Main.rand.Next(Main.screenHeight);
+                Vector2 vector = new Vector2(screenX, screenY);
+                float velocityX = target.Center.X - vector.X;
+                float velocityY = target.Center.Y - vector.Y;
+                velocityX += Main.rand.Next(-50, 51) * 0.1f;
+                velocityY += Main.rand.Next(-50, 51) * 0.1f;
+                int num5 = 24;
+                float num6 = (float)Math.Sqrt(velocityX * velocityX + velocityY * velocityY);
+                num6 = num5 / num6;
+                velocityX *= num6;
+                velocityY *= num6;
+                Projectile p = Projectile.NewProjectileDirect(new Vector2(screenX, screenY), new Vector2(velocityX, velocityY), ModContent.ProjectileType<AbyssalYariP2>(), damage, 0f, player.whoAmI);
+                p.tileCollide = false;
             }
         }
     }

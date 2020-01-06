@@ -342,6 +342,9 @@ ItemTooltip.BotchedBand=增加10%移动速度和伤害
 ItemName.BlackLotusEmblem=黑莲花徽章
 ItemTooltip.BlackLotusEmblem=提升魔力星拾取范围\n在需要时自动快速补充魔力\n极大减少魔力病持续时间\n你的魔法攻击造成蚀月\n增加15%移动速度\n减少12%魔力消耗\n增加18%魔法伤害
 
+ItemName.CursedEyeofSoulBinder=写魂的咒眼
+ItemTooltip.CursedEyeofSoulBinder=使用饰品能力键跳过旧日军团事件中间的准备时间\n增加21%召唤伤害\n增加最大召唤上限\n增加最大炮台上限\n+50生命上限\n你的召唤物可以攻击敌人的灵魂\n旧日军团入侵期间, 增加31%召唤伤害
+
 ItemName.DemonGauntlet=恶魔手套
 ItemTooltip.DemonGauntlet=敌人更有可能瞄准你\n增加14%近战伤害和速度\n增加近战击退\n近战攻击会根据世界生成邪恶产生Debuff\n猩红灵液/腐地咒焰
 
