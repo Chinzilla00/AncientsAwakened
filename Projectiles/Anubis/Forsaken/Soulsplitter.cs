@@ -27,7 +27,12 @@ namespace AAMod.Projectiles.Anubis.Forsaken
 			projectile.tileCollide = false;
         }
 
-		public override bool OnTileCollide(Vector2 oldVelocity)
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            projectile.damage *= 2 / 3;
+        }
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
 		{
 			BaseAI.TileCollideBoomerang(projectile, ref projectile.velocity, false);
 			return false;

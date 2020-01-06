@@ -37,7 +37,7 @@ namespace AAMod.Items.Boss.Greed
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PPDevArmor();
             }
-            string[] lootTable = { "GildedGlock", "Miner", "StoneSlammer", "Unearther"};
+            string[] lootTable = { "GildedGlock", "Miner", "StoneSlammer", "GoldDigger"};
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
             player.QuickSpawnItem(mod.ItemType("CovetiteCoin"), Main.rand.Next(60, 150));

@@ -35,7 +35,7 @@ Can only be used in the desert on the surface
 
         public override bool UseItem(Player player)
         {
-            if (!player.ZoneDesert || player.ZoneUndergroundDesert)
+            if (!player.ZoneDesert && !player.ZoneUndergroundDesert)
             {
                 if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ScepterBossFalse1"), Color.Gold, false);
                 return true;

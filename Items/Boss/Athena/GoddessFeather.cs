@@ -11,6 +11,7 @@ namespace AAMod.Items.Boss.Athena
             item.width = 22;
             item.height = 22;
             item.maxStack = 99;
+            item.value = 50000;
             item.rare = 7;
         }
     }

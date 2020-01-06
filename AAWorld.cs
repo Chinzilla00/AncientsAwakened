@@ -1194,7 +1194,7 @@ namespace AAMod
                     for (int i = 0; i < Main.maxTilesX / 25; ++i)
                     {
                         int X = WorldGen.genRand.Next(50, Main.maxTilesX / 10 * 9); //X position, centre.
-                        int Y = WorldGen.genRand.Next(10, 100); //Y position, centre.
+                        int Y = WorldGen.genRand.Next(50, 150); //Y position, centre.
                         int radius = WorldGen.genRand.Next(2, 5); //Radius.
                         for (int x = X - radius; x <= X + radius; x++)
                         {

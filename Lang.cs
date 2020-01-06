@@ -2188,7 +2188,7 @@ namespace AAMod
                         case "GreedTransition4":
                         return "I WILL STEAL YOUR LIFE! HEEHEEHEEHEEHEEHEEHEEHEEHEEHEE!!!";
                         case "GreedAName":
-                        return "Greed";
+                        return "Worm King Greed";
 
                         case "Rajah1":
                         return "JUSTICE CANNOT BE CHEATED";

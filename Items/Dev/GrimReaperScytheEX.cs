@@ -89,11 +89,11 @@ Scythe of the Grim Reaper EX");
 					}
 					if (type == mod.ProjectileType("GrimReaperScytheEX") && player.HasBuff(mod.BuffType("ReaperImmune2")))
 					{
-						int num125 = Projectile.NewProjectile(vector2.X + vector15.X, vector2.Y + vector15.Y, num82, num83, type, damage/15, knockBack, player.whoAmI);
+						Projectile.NewProjectile(vector2.X + vector15.X, vector2.Y + vector15.Y, num82, num83, type, damage/15, knockBack, player.whoAmI);
 					}
 					else
 					{
-						int num125 = Projectile.NewProjectile(vector2.X + vector15.X, vector2.Y + vector15.Y, num82, num83, type, damage, knockBack, player.whoAmI);
+						Projectile.NewProjectile(vector2.X + vector15.X, vector2.Y + vector15.Y, num82, num83, type, damage, knockBack, player.whoAmI);
 					}
 				}
 			}

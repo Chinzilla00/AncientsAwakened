@@ -15,7 +15,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 		public bool isAwakened = false;
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Yamata");
+            DisplayName.SetDefault("Yamata no Orochi");
             Main.npcFrameCount[npc.type] = 3;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }

@@ -75,6 +75,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             return npc.alpha == 0;
         }
 
+        bool spawnHaruka = false;
+
         public override void AI()
         {
             if (Body == null)
@@ -154,6 +156,12 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                         internalAI[3] = 1;
                         if (Main.netMode != 1)
                             Projectile.NewProjectile(npc.Center, Vector2.Zero, ModContent.ProjectileType<YamataHarukaProj>(), npc.damage / 4, 0f, Main.myPlayer, npc.target);
+
+
+                        if (npc.life <= npc.lifeMax / 2 && !spawnHaruka)
+                        {
+                            spawnHaruka = true;
+                        }
                     }
                     /*if (++internalAI[2] > 60)
                     {

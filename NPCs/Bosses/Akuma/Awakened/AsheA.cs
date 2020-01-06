@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 projectile.direction = -1;
                 projectile.spriteDirection = -1;
             }
-            else if (projectile.velocity.X > 0)
+            else
             {
                 projectile.direction = 1;
                 projectile.spriteDirection = 1;

@@ -11,7 +11,7 @@ namespace AAMod.Items.Boss.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Blackhole Blaster");
-            Tooltip.SetDefault(@"this weapon shoots in a 3 round burst and randomly shoots a homing rocket that explode)");
+            Tooltip.SetDefault(@"this weapon shoots in a 3 round burst and randomly shoots a homing rocket that explode");
         }
 
         public override void SetDefaults()

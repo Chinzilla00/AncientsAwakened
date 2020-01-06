@@ -52,7 +52,7 @@ namespace AAMod.Items.Currency
 
             Texture2D itemTex = mod.GetTexture("Items/Currency/MonsterSoulA");
 
-            Rectangle iframe = BaseMod.BaseDrawing.GetFrame(cframe, itemTex.Width, itemTex.Height / 8, 0, 0);
+            Rectangle iframe = BaseMod.BaseDrawing.GetFrame(cframe, itemTex.Width, itemTex.Height, 0, 0);
 
             BaseMod.BaseDrawing.DrawTexture(spriteBatch, itemTex, 0, item.position, item.width, item.height, scale, rotation, item.direction, 8, iframe, lightColor, true);
             return false;

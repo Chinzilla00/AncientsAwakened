@@ -461,23 +461,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
             bottomVisualOffset = new Vector2(Math.Min(3f, Math.Abs(npc.velocity.X)), 0f) * (npc.velocity.X < 0 ? 1 : -1);
             UpdateLimbs();
-            
-            if (npc.life <= npc.lifeMax / 2 && !spawnHaruka)
-            {
-                spawnHaruka = true;
-                if (AAWorld.downedYamata)
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA14"), new Color(72, 78, 117));
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA15"), new Color(146, 30, 68));
-                    AAModGlobalNPC.SpawnBoss(playerTarget, mod.NPCType("HarukaY"), false, 0, 0);
-                }
-                else
-                {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA16"), new Color(146, 30, 68));
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("YamataA17"), new Color(72, 78, 117));
-                    AAModGlobalNPC.SpawnBoss(playerTarget, mod.NPCType("HarukaY"), false, 0, 0);
-                }
-            }
         }
 
         public void AIMovementRunAway()

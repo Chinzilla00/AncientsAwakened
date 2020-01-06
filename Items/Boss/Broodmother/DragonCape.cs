@@ -67,10 +67,6 @@ namespace AAMod.Items.Boss.Broodmother
                     {
                         return false;
                     }
-                    if (slot != i && player.armor[i].type == ModContent.ItemType<Greed.StoneScarf>())
-                    {
-                        return false;
-                    }
                 }
             }
             return true;

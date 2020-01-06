@@ -7,8 +7,8 @@ namespace AAMod.Buffs
 	{
 		public override void SetDefaults()
 		{
-			DisplayName.SetDefault("Infinity Overload");
-			Description.SetDefault("The infinity stone in your hand is too powerful for you");
+			DisplayName.SetDefault("Elemental Overload");
+			Description.SetDefault("The elements lash out against your very being");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoSave[Type] = true;

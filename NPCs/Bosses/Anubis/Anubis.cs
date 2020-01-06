@@ -380,6 +380,8 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
         }
 
+        int deathtimer = 0;
+
         public bool AliveCheck(Player player)
         {
             if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f || !player.ZoneDesert)
@@ -387,11 +389,19 @@ namespace AAMod.NPCs.Bosses.Anubis
                 npc.TargetClosest();
                 if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f || !player.ZoneDesert)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AnubisFalse"), Color.Gold);
-                    int a = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<TownNPCs.Anubis>());
-                    Main.npc[a].Center = npc.Center;
-                    npc.active = false;
+                    deathtimer++;
+                    if (Main.netMode != 1 && deathtimer > 120)
+                    {
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AnubisFalse"), Color.Gold);
+                        int a = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<TownNPCs.Anubis>());
+                        Main.npc[a].Center = npc.Center;
+                        npc.active = false;
+                    }
                     return false;
+                }
+                else
+                {
+                    deathtimer = 0;
                 }
             }
             return true;
@@ -531,9 +541,9 @@ namespace AAMod.NPCs.Bosses.Anubis
             int posX = Main.rand.Next(-400, 400);
 
             int posY = Main.rand.Next(0, 400);
-            if (posX > -100 && posX < 100)
+            if (posX > -150 && posX < 150)
             {
-                 posY = Main.rand.Next(100, 400);
+                 posY = Main.rand.Next(150, 400);
             }
 
             npc.position = new Vector2(targetPos.X + posX, targetPos.Y - posY);

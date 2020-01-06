@@ -42,6 +42,10 @@ namespace AAMod.NPCs.Bosses.Greed
             bossBag = mod.ItemType("GreedABag");
             music = mod.GetSoundSlot(Terraria.ModLoader.SoundType.Music, "Sounds/Music/GreedA");
             npc.alpha = 255;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
         public float[] internalAI = new float[6];

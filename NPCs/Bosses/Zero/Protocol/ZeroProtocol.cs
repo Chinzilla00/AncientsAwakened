@@ -50,6 +50,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             musicPriority = MusicPriority.BossHigh;
             npc.netAlways = true;
             bossBag = mod.ItemType("ZeroBag");
+            npc.npcSlots = 200;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;

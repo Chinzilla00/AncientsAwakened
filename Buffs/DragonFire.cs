@@ -9,7 +9,7 @@ namespace AAMod.Buffs
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault("Dragon Fire");
-			Description.SetDefault("Reduced Damage");
+			Description.SetDefault("Your damage output is reduced");
 			Main.debuff[Type] = true;
 			Main.pvpBuff[Type] = true;
 			Main.buffNoSave[Type] = true;

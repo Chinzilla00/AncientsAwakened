@@ -25,6 +25,7 @@ namespace AAMod.Items.Boss.Shen
 			item.rare = 11;
 			item.knockBack = 3f;
 			item.ranged = true;
+            item.useAmmo = AmmoID.Bullet;
             AARarity = 14;
         }
 
@@ -42,14 +43,20 @@ namespace AAMod.Items.Boss.Shen
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Draconic Ripper");
-			Tooltip.SetDefault("Shoots dozens of high-caliber teeth"
-			+"\nIgnores enemy defense");
+			Tooltip.SetDefault(@"Shoots dozens of high-caliber teeth
+Ignores enemy defense
+50% chance to not consume ammo");
         }
 		
 		public override Vector2? HoldoutOffset()
 		{
 			return new Vector2(-10, -2);
-		}
+        }
+
+        public override bool ConsumeAmmo(Player player)
+        {
+            return Main.rand.NextFloat() >= .5f;
+        }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
