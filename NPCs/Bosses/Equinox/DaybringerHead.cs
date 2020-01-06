@@ -141,7 +141,6 @@ namespace AAMod.NPCs.Bosses.Equinox
             if (isHead)
             {
                 HandleDayNightCycle();
-                drawOffsetY = -34;
             }
             bool isDay = Main.dayTime;
             bool wormStronger = (nightcrawler && !isDay) || (!nightcrawler && isDay);
@@ -186,6 +185,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
             if (wormStronger)
             {
+                wormDistance = -52f;
                 aiCount = !nightcrawler ? 6 : 4;
                 moveSpeedMax = !nightcrawler ? 20f : 16f;
                 npc.damage = 300;
@@ -298,7 +298,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                             }
                         }
                     }
-                    if(Math.Abs(npc.DirectionTo(target.Center).ToRotation() - npc.velocity.ToRotation()) < 0.5f && (npc.Center - target.Center).Length() < 1000f && internalAI[1] % 330 == 0)
+                    if(Math.Abs(npc.DirectionTo(target.Center).ToRotation() - npc.velocity.ToRotation()) < 0.5f && (npc.Center - target.Center).Length() < 900f && !isDeathRay)
                     {
                         isDeathRay = true;
                         npc.netUpdate = true;
@@ -576,8 +576,12 @@ namespace AAMod.NPCs.Bosses.Equinox
         {
             bool wormStronger = (nightcrawler && !Main.dayTime) || (!nightcrawler && Main.dayTime);
             Texture2D tex = Main.npcTexture[npc.type];
+            npc.width = 68;
+            npc.height = 68;
             if (wormStronger)
             {
+                npc.width = 136;
+                npc.height = 136;
                 string texName = "NPCs/Bosses/Equinox/";
                 if (npc.type == mod.NPCType("DaybringerHead")) { texName += "DaybringerHeadBig"; }
                 else
