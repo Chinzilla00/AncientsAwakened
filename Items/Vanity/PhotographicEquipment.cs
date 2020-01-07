@@ -45,8 +45,8 @@ namespace AAMod.Items.Vanity
         {
             ascentWhenFalling = 0.85f;
             ascentWhenRising = 0.15f;
-            maxCanAscendMultiplier = 1f;
-            maxAscentMultiplier = 1f;
+            maxCanAscendMultiplier = .5f;
+            maxAscentMultiplier = .5f;
             constantAscend = 1f;
         }
 
