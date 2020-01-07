@@ -108,7 +108,7 @@ namespace AAMod.Backgrounds
 
     public class SilhouetteWorld : ModWorld
     {
-        public static bool SilouetteMode = !Main.dayTime && Main.LocalPlayer.GetModPlayer<AAPlayer>().ZoneMire && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+        public static bool SilouetteMode = !Main.gameMenu && !Main.dayTime && Main.LocalPlayer.GetModPlayer<AAPlayer>().ZoneMire && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
 
         public override void PreUpdate()
         {
