@@ -1040,7 +1040,7 @@ namespace AAMod
                     {
                         switch(Main.rand.Next(8))
                         {
-                            case 0: result=12; return;
+                            case 0: result = 12; return;
                             case 1: result=11; return;
                             case 2: result=14; return;
                             case 3: result=13; return;
