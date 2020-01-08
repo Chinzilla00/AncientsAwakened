@@ -59,8 +59,15 @@ Can only be used at night");
 
         public override bool UseItem(Player player)
         {
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosBlue"), true, 1, 0, Language.GetTextValue("Mods.AAMod.Common.GripsofChaos"), true);
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosRed"), false, -1, 0, "", true);
+            if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.GripsofChaos"), 175, 75, 255, false); }
+            else if (Main.netMode == 2)
+            if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.GripsofChaos"), 175, 75, 255, false); }
+            else if (Main.netMode == NetmodeID.Server)
+            {
+                NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.AAMod.Common.GripsofChaos")), new Color(175, 75, 255), -1);
+            }
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosBlue"), true, 1, 0);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosRed"), false, -1, 0);
             Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
