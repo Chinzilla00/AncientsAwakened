@@ -483,6 +483,8 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             }
         }
 
+        int deathtimer = 0;
+
         public bool AliveCheck(Player player)
         {
             if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f || !player.ZoneDesert)
@@ -490,11 +492,19 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 npc.TargetClosest();
                 if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f || !player.ZoneDesert)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("FAnubis"), Color.ForestGreen);
-                    int a = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<TownNPCs.Anubis>());
-                    Main.npc[a].Center = npc.Center;
-                    npc.active = false;
+                    deathtimer++;
+                    if (Main.netMode != 1 && deathtimer > 120)
+                    {
+                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("FAnubis"), Color.ForestGreen);
+                        int a = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<TownNPCs.Anubis>());
+                        Main.npc[a].Center = npc.Center;
+                        npc.active = false;
+                    }
                     return false;
+                }
+                else
+                {
+                    deathtimer = 0;
                 }
             }
             return true;
