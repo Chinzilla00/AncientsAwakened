@@ -16,12 +16,12 @@ namespace AAMod.Items.DevTools.Cinematic
 			mountData.fatigueMax = int.MaxValue;
 			mountData.fallDamage = 0f;
 			mountData.usesHover = true;
-			mountData.runSpeed = speed;
-			mountData.dashSpeed = speed;
-			mountData.acceleration = speed;
-			mountData.swimSpeed = speed;
+			mountData.runSpeed = 3;
+			mountData.dashSpeed = 3;
+			mountData.acceleration = 3;
+			mountData.swimSpeed = 3;
 			mountData.jumpHeight = 8;
-			mountData.jumpSpeed = speed;
+			mountData.jumpSpeed = 3;
 			mountData.blockExtraJumps = true;
 			mountData.totalFrames = 1;
 			int[] array = new int[mountData.totalFrames];

@@ -34,7 +34,7 @@ namespace AAMod.Tiles.Furniture.Oroboros
 			adjTiles = new int[] { TileID.GrandfatherClocks };
 		}
 
-		public override void RightClick(int x, int y)
+		public override bool NewRightClick(int i, int j)
 		{
 			{
 				string text = "AM";
@@ -84,6 +84,7 @@ namespace AAMod.Tiles.Furniture.Oroboros
 				var newText = string.Concat(Language.GetTextValue("CLI.Time_Command") + ": ", intTime, ":", text2, " ", text);
 				if (Main.netMode != 1) BaseMod.BaseUtility.Chat(newText, 255, 240, 20);
 			}
+			return true;
 		}
 
 		public override void NearbyEffects(int i, int j, bool closer)

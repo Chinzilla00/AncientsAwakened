@@ -137,7 +137,8 @@ namespace AAMod.Items.Dev.Invoker
 			item.thrown = false;
 			item.summon = false;
 		}
-        public override void ModifyWeaponDamage(Player player, ref float add, ref float mult)
+
+		public override void ModifyWeaponDamage(Player player, ref float add, ref float mult, ref float flat)
 		{
 			mult *= InvokerPlayer.ModPlayer(player).BanishDamageMult;
 		}

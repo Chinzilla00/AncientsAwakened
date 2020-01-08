@@ -45,10 +45,11 @@ namespace AAMod.Tiles.Decoration
             frameCounter = Main.tileFrameCounter[TileID.LunarMonolith];
         }
 
-        public override void RightClick(int i, int j)
+        public override bool NewRightClick(int i, int j)
         {
             Main.PlaySound(SoundID.Mech, i * 16, j * 16, 0);
             HitWire(i, j);
+            return true;
         }
 
         public override void MouseOver(int i, int j)

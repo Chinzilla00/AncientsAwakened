@@ -59,11 +59,12 @@ namespace AAMod.Tiles.Crafters
             b = 0.31f;
         }
 
-        public override void RightClick(int i, int j)
+        public override bool NewRightClick(int i, int j)
         {
             Player player = Main.player[Main.myPlayer];
             player.AddBuff(mod.BuffType("HydratoxinFlaskBuff"), 36000, true);
 			Main.PlaySound(7, (int)player.position.X, (int)player.position.Y, 1, 1f, 0f);
+            return true;
         }
 
         public override void MouseOver(int i, int j)

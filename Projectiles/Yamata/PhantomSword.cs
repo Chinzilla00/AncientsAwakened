@@ -49,7 +49,6 @@ namespace AAMod.Projectiles.Yamata
             }
 
             Vector2 move = Vector2.Zero;
-            bool target = false;
             AI_Timer++;
             if (AI_Timer >= 20)
             {

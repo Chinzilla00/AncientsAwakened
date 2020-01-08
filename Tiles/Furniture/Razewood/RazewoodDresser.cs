@@ -47,7 +47,7 @@ namespace AAMod.Tiles.Furniture.Razewood
 			return true;
 		}
 
-		public override void RightClick(int i, int j)
+		public override bool NewRightClick(int i, int j)
 		{
 			Player player = Main.LocalPlayer;
 			if (Main.tile[Player.tileTargetX, Player.tileTargetY].frameY == 0)
@@ -134,6 +134,7 @@ namespace AAMod.Tiles.Furniture.Razewood
 				Main.dresserY = Player.tileTargetY;
 				Main.OpenClothesWindow();
 			}
+			return true;
 		}
 
 		public override void MouseOverFar(int i, int j)

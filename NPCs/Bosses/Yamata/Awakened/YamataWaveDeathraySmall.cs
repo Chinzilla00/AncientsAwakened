@@ -10,7 +10,6 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
     public class YamataWaveDeathraySmall : ModProjectile
     {
         private const float maxTime = 60;
-        private float timer = 0;
 
         public override void SetStaticDefaults()
         {

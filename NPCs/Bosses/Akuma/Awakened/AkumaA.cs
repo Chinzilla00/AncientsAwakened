@@ -14,7 +14,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
     public class AkumaA : ModNPC
     {
         public bool Loludided;
-        private bool weakness = false;
         public int fireTimer = 0;
         public int damage = 0;
 
@@ -81,8 +80,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 potionType = 0;
             }
         }
-
-        private int attackTimer;
         public static int MinionCount = 0;
 
         public float[] internalAI = new float[4];

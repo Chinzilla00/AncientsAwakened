@@ -41,15 +41,15 @@ namespace AAMod.Tiles.Decoration
 			Item.NewItem(i * 16, j * 16, 32, 32, mod.ItemType("AvesInABox"));
 		}
 
-		public override void RightClick(int i, int j)
-		{
-			Player player = Main.LocalPlayer;
+        public override bool NewRightClick(int i, int j)
+        {
             if (Quack == false)
             {
                 QuackTimer = 90;
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/QUAK"));
             }
             Quack = true;
+            return true;
 		}
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {

@@ -86,10 +86,11 @@ I need more powerful souls, *****,*********,**********");
 			localPlayer.showItemIcon2 = mod.ItemType("InvokerBook");
 		}
 
-        public override void RightClick(int i, int j)
+        public override bool NewRightClick(int i, int j)
 		{
             Item.NewItem(i * 16, j * 16, 16, 16, mod.ItemType("InvokerBook"), 1, false, 0, false, false);
             WorldGen.KillTile(i, j, false, false, true);
+            return true;
 		}
     }
 

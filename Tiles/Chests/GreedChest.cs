@@ -129,7 +129,7 @@ namespace AAMod.Tiles.Chests
             Chest.DestroyChest(i, j);
         }
 
-        public override void RightClick(int i, int j)
+        public override bool NewRightClick(int i, int j)
         {
             Player player = Main.LocalPlayer;
             Tile tile = Main.tile[i, j];
@@ -214,6 +214,7 @@ namespace AAMod.Tiles.Chests
                     }
                 }
             }
+            return true;
         }
 
         public override void MouseOver(int i, int j)

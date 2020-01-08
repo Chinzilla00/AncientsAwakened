@@ -42,11 +42,11 @@ namespace AAMod.Tiles.Boss
             }
         }
 
-        public override void RightClick(int i, int j)
+        public override bool NewRightClick(int i, int j)
         {
             if (NPC.AnyNPCs(mod.NPCType("Greed")) || NPC.AnyNPCs(mod.NPCType("GreedSpawn")) || NPC.AnyNPCs(mod.NPCType("GreedA")) || NPC.AnyNPCs(mod.NPCType("GreedTransition")))
             {
-                return;
+                return true;
             }
             Player player = Main.LocalPlayer;
             int type = ModContent.ItemType<Items.BossSummons.GoldenGrub>();
@@ -69,6 +69,7 @@ namespace AAMod.Tiles.Boss
                     }
                 }
             }
+            return true;
         }
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)

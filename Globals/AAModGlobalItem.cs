@@ -141,6 +141,7 @@ namespace AAMod
                 damage = (int)(item.damage * player.magicDamage * player.GetModPlayer<AAPlayer>().spellbookDamage);
             }
 		}
+
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
             if (player.HeldItem.type == ModContent.ItemType<Items.Usable.CodeMagnetWeak>())

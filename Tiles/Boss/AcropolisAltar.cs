@@ -60,7 +60,7 @@ namespace AAMod.Tiles.Boss
 
         public Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
 
-        public override void RightClick(int i, int j)
+        public override bool NewRightClick(int i, int j)
         {
             Player player = Main.LocalPlayer;
             int type = ModContent.ItemType<Items.BossSummons.Owl>();
@@ -77,6 +77,7 @@ namespace AAMod.Tiles.Boss
                     }
                 }
             }
+            return true;
         }
 
         // SpawnBoss(player, mod.NPCType("MyBoss"), true, 0, 0, "DerpyBoi 2", false);

@@ -33,8 +33,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             return Color.White;
         }
 
-        bool DidntHitPlayer = false;
-
         public override void AI()
         {
             if (projectile.timeLeft > 0)
@@ -43,7 +41,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             }
             if (projectile.timeLeft == 0)
             {
-                DidntHitPlayer = true;
                 projectile.Kill();
             }
 

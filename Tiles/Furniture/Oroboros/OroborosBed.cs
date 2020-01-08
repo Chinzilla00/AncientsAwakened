@@ -41,7 +41,7 @@ namespace AAMod.Tiles.Furniture.Oroboros
 			Item.NewItem(i * 16, j * 16, 64, 32, mod.ItemType("OroborosBed"));
 		}
 
-		public override void RightClick(int i, int j)
+		public override bool NewRightClick(int i, int j)
 		{
 			Player player = Main.LocalPlayer;
 			Tile tile = Main.tile[i, j];
@@ -63,6 +63,7 @@ namespace AAMod.Tiles.Furniture.Oroboros
 				player.ChangeSpawn(spawnX, spawnY);
 				if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.TilesInfo("Spawnpointset"), 255, 240, 20, false);
 			}
+			return true;
         }
 
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
