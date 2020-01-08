@@ -379,7 +379,6 @@ namespace AAMod.Globals
 
             if (bossChecklist != null)
             {
-
                 #region Still working this out. Boss Checklist is fucked
                 /*#region Mushroom Monarch
                 bossChecklist.Call("AddBoss", 0f, mod.NPCType("MushroomMonarch"), mod,
