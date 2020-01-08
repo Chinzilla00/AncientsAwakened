@@ -54,13 +54,13 @@ namespace AAMod.Items.Vanity
         {
             if (player.controlDown && player.controlJump && player.wingTime > 0f)
             {
-                speed = 15f;
-                acceleration *= 10f;
+                speed = 1f;
+                acceleration *= 1f;
             }
             else
             {
-                speed = 10f;
-                acceleration *= 6.25f;
+                speed = 1f;
+                acceleration *= 1f;
             }
         }
 
