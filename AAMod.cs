@@ -69,6 +69,8 @@ namespace AAMod
         public static AAMod self = null;
         internal ILog Logging = LogManager.GetLogger("AAMod");
 
+        public static bool isFullyReady;
+
         public AAMod()
         {
             Properties = new ModProperties()
@@ -213,6 +215,8 @@ namespace AAMod
             WeakReferences.PerformModSupport();
 
             Array.Resize(ref AASets.Goblins, NPCLoader.NPCCount);
+
+            isFullyReady = true;
         }
 
         public static void PremultiplyTexture(Texture2D texture)
@@ -578,6 +582,8 @@ namespace AAMod
             RiftReturn = null;
             AccessoryAbilityKey = null;
             ArmorAbilityKey = null;
+
+            isFullyReady = false;
         }
 
         public void UnloadClient()
@@ -669,7 +675,11 @@ namespace AAMod
 
         public override void PostUpdateInput()
 		{
-            if(Main.gameMenu && Main.menuMode >= 0)
+            if (!isFullyReady)
+            {
+                return;
+            }
+            if (Main.gameMenu && Main.menuMode >= 0)
             {
                 if(Main.menuMode == 0)
                 {
@@ -679,7 +689,7 @@ namespace AAMod
                 {
                     AAMenuset = false;
                 }
-                if(AAConfigClient.Instance.AAStyleMainPage && (Main.bgStyle == 1 || Main.bgStyle == 0) && AAMenuset)
+                if(AAConfigClient.Instance != null && AAConfigClient.Instance.AAStyleMainPage && (Main.bgStyle == 1 || Main.bgStyle == 0) && AAMenuset)
                 {
                     AAMenuReset = true;
                     WorldGen.setBG(0, 6);

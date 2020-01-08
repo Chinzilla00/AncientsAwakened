@@ -14,7 +14,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
     public class FuryAshe : ModNPC
     {
         public int OrbiterCount = Main.expertMode ? 16 : 10;
-        private float moveSpeed = 15f;
 
         public override void SetStaticDefaults()
         {

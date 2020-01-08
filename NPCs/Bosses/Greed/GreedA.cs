@@ -557,8 +557,6 @@ namespace AAMod.NPCs.Bosses.Greed
             rotation = npc.rotation;
         }
 
-        float rot = 0;
-
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D texture = Main.npcTexture[npc.type];

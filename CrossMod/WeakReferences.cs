@@ -1,6 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using System.Collections.Generic;
 using Terraria.ModLoader;
+using AAMod.Items.Vanity.Mask;
+using AAMod.Items.BossSummons;
+using AAMod.Items.Blocks;
+using AAMod.Items.Flasks;
+using AAMod.Items.Usable;
 
 namespace AAMod.Globals
 {
@@ -369,31 +375,190 @@ namespace AAMod.Globals
         {
             Mod bossChecklist = ModLoader.GetMod("BossChecklist");
 
+            AAMod mod = AAMod.instance;
+
             if (bossChecklist != null)
             {
+
+                #region Still working this out. Boss Checklist is fucked
+                /*#region Mushroom Monarch
+                bossChecklist.Call("AddBoss", 0f, mod.NPCType("MushroomMonarch"), mod,
+                    Lang.BossCheck("MushroomMonarch"),
+                    (Func<bool>)(() => AAWorld.downedMonarch),
+                    ModContent.ItemType<IntimidatingMushroom>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.MonarchTrophy>(),
+                        ModContent.ItemType<MonarchMask>(),
+                        ModContent.ItemType<MonarchBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.MonarchBag>(),
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.HeartyTruffle>(),
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.Mushium>(),
+                        ModContent.ItemType<SporeSac>()
+                    },
+                    Lang.BossCheck("Usean") + "[i: " + ModContent.ItemType<IntimidatingMushroom>() + "]" + Lang.BossCheck("MushroomMonarchInfo"),
+                    "The Mushroom Monarch escapes into the sky",
+                    "AAMod/CrossMod/BossChecklist/Monarch",
+                    "AAMod/NPCs/Bosses/MushroomMonarch/MushroomMonarch_Head_Boss",
+                    null);
+                #endregion
+
+                #region Feudal Fungus
+                bossChecklist.Call("AddBoss", 0.1f, mod.NPCType("FeudalFungus"), mod,
+                    Lang.BossCheck("FeudalFungus"),
+                    (Func<bool>)(() => AAWorld.downedFungus),
+                    ModContent.ItemType<ConfusingMushroom>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.FungusTrophy>(),
+                        ModContent.ItemType<FungusMask>(),
+                        ModContent.ItemType<FungusBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.FungusBag>(),
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.MagicTruffle>(),
+                        ModContent.ItemType<Items.Boss.MushroomMonarch.GlowingMushium>(),
+                        ModContent.ItemType<GlowingSporeSac>()
+                    },
+                    Lang.BossCheck("Usean") + "[i: " + ModContent.ItemType<ConfusingMushroom>() + "]" + Lang.BossCheck("FeudalFungusInfo"),
+                    "The Feudal Fungus vanishes",
+                    "AAMod/CrossMod/BossChecklist/Fungus",
+                    "AAMod/NPCs/Bosses/MushroomMonarch/FeudalFungus_Head_Boss",
+                    null);
+                #endregion
+
+                #region Grips
+                bossChecklist.Call("AddBoss", 2f, mod.NPCType("FeudalFungus"), mod,
+                    Lang.BossCheck("FeudalFungus"),
+                    (Func<bool>)(() => AAWorld.downedGrips),
+                    ModContent.ItemType<CuriousClaw>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Grips.GripTrophyBlue>(),
+                        ModContent.ItemType<Items.Boss.Grips.GripTrophyRed>(),
+                        ModContent.ItemType<GripMaskBlue>(),
+                        ModContent.ItemType<GripMaskRed>(),
+                        ModContent.ItemType<GripsBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Grips.GripBag>(),
+                        ModContent.ItemType<Items.Boss.Grips.ClawOfChaos>(),
+                        ModContent.ItemType<Items.Boss.Grips.ClawBaton>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("CuriousClaw") + "]" + Lang.BossCheck("or") + "[i:" + AAMod.instance.ItemType("InterestingClaw") + "]" + Lang.BossCheck("atnight"),
+                    "The Grips fly away, having dealt with you",
+                    "AAMod/CrossMod/BossChecklist/Grips",
+                    "AAMod/CrossMod/BossChecklist/GripsHead",
+                    null);
+                #endregion
+
+                #region Truffle Toad
+                bossChecklist.Call("AddBoss", 2.5f, mod.NPCType("TruffleToad"), mod,
+                    Lang.BossCheck("TruffleToad"),
+                    (Func<bool>)(() => AAWorld.downedToad),
+                    ModContent.ItemType<Toadstool>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Toad.ToadTrophy>(),
+                        ModContent.ItemType<ToadMask>(),
+                        ModContent.ItemType<ToadBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Toad.ToadBag>(),
+                        ModContent.ItemType<Items.Boss.Toad.ToadLeg>(),
+                        ModContent.ItemType<Items.Boss.Toad.ToadTongue>(),
+                        ModContent.ItemType<Items.Boss.Toad.Todegun>(),
+                        ModContent.ItemType<Items.Boss.Toad.MushrockStaff>(),
+                        ModContent.ItemType<GlowingSporeSac>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Toadstool") + "]" + Lang.BossCheck("TruffleToadInfo"),
+                    "The Truffle Toad croaks, then vanishes",
+                    "AAMod/CrossMod/BossChecklist/Toad",
+                    "AAMod/NPCs/Bosses/Toad/TruffleToad_Head_Boss",
+                    null);
+                #endregion
+
+                #region Broodmother
+                bossChecklist.Call("AddBoss", 3.5f, mod.NPCType("Broodmother"), mod,
+                    Lang.BossCheck("Broodmother"),
+                    (Func<bool>)(() => AAWorld.downedBrood),
+                    ModContent.ItemType<DragonBell>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Broodmother.BroodmotherTrophy>(),
+                        ModContent.ItemType<BroodmotherMask>(),
+                        ModContent.ItemType<BroodBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Broodmother.BroodBag>(),
+                        ModContent.ItemType<Items.Boss.Broodmother.DragonCape>(),
+                        ModContent.ItemType<Items.Boss.Broodmother.BroodScale>(),
+                        ModContent.ItemType<Incinerite>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DragonBell") + "]" + Lang.BossCheck("BroodmotherInfo"),
+                    "The Broodmother returns to the fiery depths",
+                    "AAMod/CrossMod/BossChecklist/Brood",
+                    "AAMod/NPCs/Bosses/Broodmother/Broodmother_Head_Boss",
+                    null);
+                #endregion
+
+                #region Hydra
+                bossChecklist.Call("AddBoss", 3.5f, mod.NPCType("Hydra"), mod,
+                    Lang.BossCheck("Hydra"),
+                    (Func<bool>)(() => AAWorld.downedHydra),
+                    ModContent.ItemType<HydraChow>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Hydra.HydraTrophy>(),
+                        ModContent.ItemType<HydraMask1>(),
+                        ModContent.ItemType<HydraBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Hydra.HydraBag>(),
+                        ModContent.ItemType<Items.Boss.Hydra.HydraPendant>(),
+                        ModContent.ItemType<Items.Boss.Hydra.HydraHide>(),
+                        ModContent.ItemType<Abyssium>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("HydraChow") + "]" + Lang.BossCheck("HydraInfo"),
+                    "The Hydra slinks back into her dark lair",
+                    "AAMod/CrossMod/BossChecklist/Hydra",
+                    "AAMod/NPCs/Bosses/Hydra/HydraHead1_Head_Boss",
+                    null);
+                #endregion*/
+
+                #endregion
+
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("MushroomMonarch"), 0f, (Func<bool>)(() => AAWorld.downedMonarch), Lang.BossCheck("Usean") + "[i:" + AAMod.instance.ItemType("IntimidatingMushroom") + "]" + Lang.BossCheck("MushroomMonarchInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("FeudalFungus"), 0.1f, (Func<bool>)(() => AAWorld.downedFungus), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("ConfusingMushroom") + "]" + Lang.BossCheck("FeudalFungusInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("GripsofChaos"), 2f, (Func<bool>)(() => AAWorld.downedGrips), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("CuriousClaw") + "]"+ Lang.BossCheck("or") + "[i:" + AAMod.instance.ItemType("InterestingClaw") + "]" + Lang.BossCheck("atnight"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("FeudalFungus"), 0.1f, (Func<bool>)(() => AAWorld.downedFungus), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ConfusingMushroom") + "]" + Lang.BossCheck("FeudalFungusInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("GripsofChaos"), 2f, (Func<bool>)(() => AAWorld.downedGrips), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("CuriousClaw") + "]" + Lang.BossCheck("or") + "[i:" + AAMod.instance.ItemType("InterestingClaw") + "]" + Lang.BossCheck("atnight"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("TruffleToad"), 3f, (Func<bool>)(() => AAWorld.downedToad), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Toadstool") + "]" + Lang.BossCheck("TruffleToadInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Broodmother"), 3.5f, (Func<bool>)(() => AAWorld.downedBrood), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("DragonBell") + "]" + Lang.BossCheck("BroodmotherInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Hydra"), 3.5f, (Func<bool>)(() => AAWorld.downedHydra), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("HydraChow") + "]" + Lang.BossCheck("HydraInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("SubzeroSerpent"), 5.5f, (Func<bool>)(() => AAWorld.downedSerpent), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("SubzeroCrystal") + "]" + Lang.BossCheck("SubzeroSerpentInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("DesertDjinn"), 5.5f, (Func<bool>)(() => AAWorld.downedDjinn), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("DjinnLamp") + "]" + Lang.BossCheck("DesertDjinnInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Sagittarius"), 5.7f, (Func<bool>)(() => AAWorld.downedSag), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("Lifescanner") + "]" + Lang.BossCheck("SagittariusInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Broodmother"), 3.5f, (Func<bool>)(() => AAWorld.downedBrood), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DragonBell") + "]" + Lang.BossCheck("BroodmotherInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Hydra"), 3.5f, (Func<bool>)(() => AAWorld.downedHydra), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("HydraChow") + "]" + Lang.BossCheck("HydraInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("SubzeroSerpent"), 5.5f, (Func<bool>)(() => AAWorld.downedSerpent), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("SubzeroCrystal") + "]" + Lang.BossCheck("SubzeroSerpentInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("DesertDjinn"), 5.5f, (Func<bool>)(() => AAWorld.downedDjinn), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DjinnLamp") + "]" + Lang.BossCheck("DesertDjinnInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Sagittarius"), 5.7f, (Func<bool>)(() => AAWorld.downedSag), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Lifescanner") + "]" + Lang.BossCheck("SagittariusInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Anubis"), 9.5f, (Func<bool>)(() => AAWorld.downedAnubis), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Scepter") + "]" + Lang.BossCheck("AnubisInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Athena"), 11.5f, (Func<bool>)(() => AAWorld.downedAthena), Lang.BossCheck("Usean")+"[i:" + AAMod.instance.ItemType("Owl") + "]" + Lang.BossCheck("AthenaInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Greed"), 11.5f, (Func<bool>)(() => AAWorld.downedGreed), Lang.BossCheck("Usea") +"[i:" + AAMod.instance.ItemType("GoldenGrub") + "]"+ Lang.BossCheck("GreedInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("RajahRabbit"), 12.1f, (Func<bool>)(() => AAWorld.downedRajah), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("GoldenCarrot") + "]" + Lang.BossCheck("RajahRabbitInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Athena"), 11.5f, (Func<bool>)(() => AAWorld.downedAthena), Lang.BossCheck("Usean") + "[i:" + AAMod.instance.ItemType("Owl") + "]" + Lang.BossCheck("AthenaInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Greed"), 11.5f, (Func<bool>)(() => AAWorld.downedGreed), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("GoldenGrub") + "]" + Lang.BossCheck("GreedInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("RajahRabbit"), 12.1f, (Func<bool>)(() => AAWorld.downedRajah), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("GoldenCarrot") + "]" + Lang.BossCheck("RajahRabbitInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("AthenaA"), 14.2f, (Func<bool>)(() => AAWorld.downedAthenaA), Lang.BossCheck("AthenaAInfo"), (Func<bool>)(() => AAWorld.AthenaHerald));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("GreedA"), 14.4f, (Func<bool>)(() => AAWorld.downedGreedA), Lang.BossCheck("GreedAInfo"), (Func<bool>)(() => AAWorld.AthenaHerald));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("AnubisA"), 15f, (Func<bool>)(() => AAWorld.downedAnubisA), Lang.BossCheck("AnubisAInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("NightcrawlerDaybringer"), 15f, (Func<bool>)(() => AAWorld.downedEquinox), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("EquinoxWorm") + "]");
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("SistersofDiscord"), 16.1f, (Func<bool>)(() => AAWorld.downedSisters), Lang.BossCheck("Usethe")+"[i:" + AAMod.instance.ItemType("FlamesOfAnarchy") + "]");
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Yamata"), 16.2f, (Func<bool>)(() => AAWorld.downedYamata), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("DreadSigil") + "]" + Lang.BossCheck("YamataInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Akuma"), 16.3f, (Func<bool>)(() => AAWorld.downedAkuma), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("DraconianSigil") + "]" + Lang.BossCheck("AkumaInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Zero"), 16.4f, (Func<bool>)(() => AAWorld.downedZero), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("ZeroTesseract") + "]" + Lang.BossCheck("ZeroInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("ShenDoragon"), 20f, (Func<bool>)(() => AAWorld.downedShen), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("ChaosSigil") + "]");
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("RajahRabbitRevenge"), 40f, (Func<bool>)(() => AAWorld.downedRajahsRevenge), Lang.BossCheck("Usea")+"[i:" + AAMod.instance.ItemType("DiamondCarrot") + "]" + Lang.BossCheck("RajahRabbitRevengeInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("NightcrawlerDaybringer"), 15f, (Func<bool>)(() => AAWorld.downedEquinox), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("EquinoxWorm") + "]");
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("SistersofDiscord"), 16.1f, (Func<bool>)(() => AAWorld.downedSisters), Lang.BossCheck("Usethe") + "[i:" + AAMod.instance.ItemType("FlamesOfAnarchy") + "]");
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Yamata"), 16.2f, (Func<bool>)(() => AAWorld.downedYamata), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DreadSigil") + "]" + Lang.BossCheck("YamataInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Akuma"), 16.3f, (Func<bool>)(() => AAWorld.downedAkuma), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DraconianSigil") + "]" + Lang.BossCheck("AkumaInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Zero"), 16.4f, (Func<bool>)(() => AAWorld.downedZero), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ZeroTesseract") + "]" + Lang.BossCheck("ZeroInfo"));
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("ShenDoragon"), 20f, (Func<bool>)(() => AAWorld.downedShen), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ChaosSigil") + "]");
+                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("RajahRabbitRevenge"), 40f, (Func<bool>)(() => AAWorld.downedRajahsRevenge), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DiamondCarrot") + "]" + Lang.BossCheck("RajahRabbitRevengeInfo"));
 
                 // SlimeKing = 1f;
                 // EyeOfCthulhu = 2f;
@@ -411,31 +576,6 @@ namespace AAMod.Globals
                 // Moonlord = 14f;
             }
         }
-        
-        // Unused as of now, till Achievements Libs is more stable and support more reliable.
-        /*private static void PerformAchievementsLibsSupport()
-        {
-            Mod DradonIsDum = ModLoader.GetMod("AchievementLibs");
-
-            if (DradonIsDum != null)
-            {
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Doin' Shrooms", "Defeat the feudal fungus, the Mushroom Monarch", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedMonarch);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Get a Grip", "Defeat the claws of catastrophe, the Grips of Chaos", AAMod.instance.GetTexture("Achievements/Grips"), AAWorld.downedGrips);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Magmatic Meltdown", "Defeat the magmatic matriarch, the Broodmother", AAMod.instance.GetTexture("Achievements/Brood"), AAWorld.downedBrood);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Amphibious Atrocity", "Defeat the three-headed horror, the Hydra", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedHydra);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Slithering Snowmongerer", "Defeat the Snow-burrowing Snake, the Subzero Serpent", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedSerpent);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Sandskrit Sandman", "Defeat majin of magic, the Desert Djinn", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedDjinn);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Equinox Eradicator", "Defeat the time-turning worms, the Equinox Duo", AAMod.instance.GetTexture("Achievements/Equinox"), AAWorld.downedEquinox);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Clockwork Catastrophe", "Defeat the destructive doomsday construct, Zero", AAMod.instance.GetTexture("Achievements/Zero"), AAWorld.downedZero);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Doom Slayer", "Destroy Zero's true, dark form, Zero Protocol", AAMod.instance.GetTexture("Achievements/ZeroA"), AAWorld.downedZero && Main.expertMode);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Trial By Fire", "Defeat the draconian demon of the Inferno, Akuma", AAMod.instance.GetTexture("Achievements/Akuma"), AAWorld.downedAkuma);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Serpent Slayer", "Slay Akuma's true, blazing form, Akuma Awakened", AAMod.instance.GetTexture("Achievements/Akuma"), AAWorld.downedAkuma && Main.expertMode);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Crescent of Madness", "Defeat the dread nightmare of the Mire, Yamata", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedYamata);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Hydra Slayer", "Slay Yamata's true, abyssal form, Yamata Awakened", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedYamata && Main.expertMode);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Unyielding Discord", "Defeat the discordian doomsayer of chaos, Shen Doragon", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedShen);
-                DradonIsDum.Call("AddAchievementWithoutReward", AAMod.instance, "Dragon Slayer", "Slay Shen Doragon's true, chaotic form, Shen Doragon Awakened", AAMod.instance.GetTexture("BlankTex"), AAWorld.downedShen && Main.expertMode);
-            }
-        }*/
 
         private static void PerformCencusSupport()
         {
