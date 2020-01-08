@@ -179,23 +179,14 @@ namespace AAMod.NPCs.Bosses.Equinox
             float moveSpeedMax = 16f;
             npc.damage = 200;
             npc.defense = 100;
-            if (AAWorld.downedAllAncients)
-            {
-                npc.defense = 150;
-            }
+
             if (wormStronger)
             {
                 wormDistance = -52f;
                 aiCount = !nightcrawler ? 6 : 4;
                 moveSpeedMax = !nightcrawler ? 20f : 16f;
-                npc.damage = 300;
+                npc.damage = 240;
                 npc.defense = !nightcrawler ? 120 : 150;
-                if (AAWorld.downedAllAncients)
-                {
-                    moveSpeedMax = !nightcrawler ? 25f : 16f;
-                    npc.damage = 300;
-                    npc.defense = !nightcrawler ? 120 : 200;
-                }
             }
             
             Player target = Main.player[npc.target];
