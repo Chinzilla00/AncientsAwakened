@@ -106,11 +106,11 @@ Certain ores have special effects when shot");
                 }
                 for (int num91 = 0; num91 < num90; num91++)
                 {
-                    Vector2 vector2 = new Vector2(player.position.X + (float)player.width * 0.5f + (float)Main.rand.Next(201) * -(float)player.direction + ((float)Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
-                    vector2.X = (vector2.X * 10f + player.Center.X) / 11f + (float)Main.rand.Next(-100, 101);
-                    vector2.Y -= (float)(150 * num91);
-                    float num82 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
-                    float num83 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+                    Vector2 vector2 = new Vector2(player.position.X + player.width * 0.5f + Main.rand.Next(201) * -(float)player.direction + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
+                    vector2.X = (vector2.X * 10f + player.Center.X) / 11f + Main.rand.Next(-100, 101);
+                    vector2.Y -= 150 * num91;
+                    float num82 = Main.mouseX + Main.screenPosition.X - vector2.X;
+                    float num83 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
                     if (num83 < 0f)
                     {
                         num83 *= -1f;
@@ -119,10 +119,10 @@ Certain ores have special effects when shot");
                     {
                         num83 = 20f;
                     }
-                    float num92 = num82 + (float)Main.rand.Next(-40, 41) * 0.03f;
-                    float speedY2 = num83 + (float)Main.rand.Next(-40, 41) * 0.03f;
-                    num92 *= (float)Main.rand.Next(75, 150) * 0.01f;
-                    vector2.X += (float)Main.rand.Next(-50, 51);
+                    float num92 = num82 + Main.rand.Next(-40, 41) * 0.03f;
+                    float speedY2 = num83 + Main.rand.Next(-40, 41) * 0.03f;
+                    num92 *= Main.rand.Next(75, 150) * 0.01f;
+                    vector2.X += Main.rand.Next(-50, 51);
                     Vector2 speedfinal = Vector2.Normalize(new Vector2(num92, speedY2)) * (new Vector2(speedX, speedY)).Length();
                     Projectile.NewProjectile(vector2.X, vector2.Y, speedfinal.X, speedfinal.Y, mod.ProjectileType("OreChunk"), damage + Damage(), knockBack, player.whoAmI, 0f, ItemID.Meteorite);
                 }

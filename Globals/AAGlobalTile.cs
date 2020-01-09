@@ -249,7 +249,7 @@ namespace AAMod
                         int tiletype = 0;
                         if (j < Main.maxTilesY - 5)
                         {
-                            tiletype = (int)Main.tile[i, j + 1].type;
+                            tiletype = Main.tile[i, j + 1].type;
                         }
                         if (tiletype == 147 || tiletype == 161 || tiletype == 162)
                         {
@@ -259,7 +259,7 @@ namespace AAMod
                         {
                             style = WorldGen.genRand.Next(7, 10);
                         }
-                        if (Main.wallDungeon[(int)Main.tile[i, j].wall])
+                        if (Main.wallDungeon[Main.tile[i, j].wall])
                         {
                             style = WorldGen.genRand.Next(10, 13);
                         }

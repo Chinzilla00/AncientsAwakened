@@ -291,7 +291,7 @@ namespace AAMod.Items.Dev.Invoker
 				}
 			}
 
-			Realdamage = (double)Main.DamageVar((int)Realdamage);
+			Realdamage = Main.DamageVar((int)Realdamage);
 
 			//Main.player[Main.myPlayer].dpsDamage += (int)Realdamage;
 			Main.player[projectile.owner].addDPS((int)Realdamage);

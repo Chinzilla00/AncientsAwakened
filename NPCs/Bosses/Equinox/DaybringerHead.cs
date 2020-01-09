@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 		public override void SetDefaults()
 		{
             npc.lifeMax = 125000;
-            npc.damage = 200;
+            npc.damage = 100;
             npc.defense = 100;
             npc.value = Item.sellPrice(0, 10, 0, 0);
             for (int k = 0; k < npc.buffImmune.Length; k++)
@@ -177,7 +177,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             float wormDistance = -26f;
             int aiCount = 2;
             float moveSpeedMax = 16f;
-            npc.damage = 200;
+            npc.damage = 100;
             npc.defense = 100;
 
             if (wormStronger)
@@ -185,7 +185,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                 wormDistance = -52f;
                 aiCount = !nightcrawler ? 6 : 4;
                 moveSpeedMax = !nightcrawler ? 20f : 16f;
-                npc.damage = 240;
+                npc.damage = 140;
                 npc.defense = !nightcrawler ? 120 : 150;
             }
             
@@ -230,16 +230,16 @@ namespace AAMod.NPCs.Bosses.Equinox
                         {
                             if(Main.player[playerid].active && !Main.player[playerid].dead && Main.player[playerid] != null && Main.player[playerid].ownedProjectileCounts[mod.ProjectileType("DaybringerStars")] <= 0)
                             {
-                                Projectile.NewProjectile(Main.player[playerid].Center.X - 200f, Main.player[playerid].Center.Y - 300f, 0, 0, mod.ProjectileType("DaybringerStars"), (int)(npc.damage / 6), 5, playerid, -200f, playerid);
-                                Projectile.NewProjectile(Main.player[playerid].Center.X, Main.player[playerid].Center.Y - 300f, 0, 0, mod.ProjectileType("DaybringerStars"), (int)(npc.damage / 6), 5, playerid, 0, playerid);
-                                Projectile.NewProjectile(Main.player[playerid].Center.X + 200f, Main.player[playerid].Center.Y - 300f, 0, 0, mod.ProjectileType("DaybringerStars"), (int)(npc.damage / 6), 5, playerid, 200f, playerid);
+                                Projectile.NewProjectile(Main.player[playerid].Center.X - 200f, Main.player[playerid].Center.Y - 300f, 0, 0, mod.ProjectileType("DaybringerStars"), npc.damage / 6, 5, playerid, -200f, playerid);
+                                Projectile.NewProjectile(Main.player[playerid].Center.X, Main.player[playerid].Center.Y - 300f, 0, 0, mod.ProjectileType("DaybringerStars"), npc.damage / 6, 5, playerid, 0, playerid);
+                                Projectile.NewProjectile(Main.player[playerid].Center.X + 200f, Main.player[playerid].Center.Y - 300f, 0, 0, mod.ProjectileType("DaybringerStars"), npc.damage / 6, 5, playerid, 200f, playerid);
                             }
                         }
                     }
                     if(Math.Abs(npc.DirectionTo(target.Center).ToRotation() - npc.velocity.ToRotation()) < 0.7f && internalAI[0] % 360 == 0)
                     {
                         Vector2 speed = Vector2.Normalize(npc.velocity) * 5f;
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, speed.X, speed.Y, mod.ProjectileType("DaybringerSun"), (int)(npc.damage / 6), 1, 255);
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, speed.X, speed.Y, mod.ProjectileType("DaybringerSun"), npc.damage / 6, 1, 255);
                     }
                     if(internalAI[0] % 120 == 30)
                     {
@@ -248,9 +248,9 @@ namespace AAMod.NPCs.Bosses.Equinox
                             if (Main.npc[i].active && Main.npc[i].type == mod.NPCType("DaybringerBody") && Main.npc[i].realLife == npc.whoAmI)
                             {
                                 Vector2 speed = Vector2.Normalize(new Vector2(1f, 0f).RotatedBy(Main.npc[i].rotation + 3.1415f)) * 12f;
-                                Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("DayBringerDarts"), (int)(npc.damage / 6), 0, Main.myPlayer);
+                                Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("DayBringerDarts"), npc.damage / 6, 0, Main.myPlayer);
                                 speed = -speed;
-                                Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("DayBringerDarts"), (int)(npc.damage / 6), 0, Main.myPlayer);
+                                Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("DayBringerDarts"), npc.damage / 6, 0, Main.myPlayer);
                             }
                         }
                     }
@@ -261,9 +261,9 @@ namespace AAMod.NPCs.Bosses.Equinox
                             if (Main.npc[i].active && Main.npc[i].type == mod.NPCType("DaybringerBody") && Main.npc[i].realLife == npc.whoAmI)
                             {
                                 Vector2 speed = Vector2.Normalize(new Vector2(1f, 0f).RotatedBy(Main.npc[i].rotation + 3.1415f)) * 8f;
-                                Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("DaybringerOrb"), (int)(npc.damage / 6), 0, Main.myPlayer, 0, npc.whoAmI);
+                                Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("DaybringerOrb"), npc.damage / 6, 0, Main.myPlayer, 0, npc.whoAmI);
                                 speed = -speed;
-                                Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("DaybringerOrb"), (int)(npc.damage / 6), 0, Main.myPlayer, 0, npc.whoAmI);
+                                Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("DaybringerOrb"), npc.damage / 6, 0, Main.myPlayer, 0, npc.whoAmI);
                             }
                         }
                     }
@@ -285,7 +285,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                         {
                             if(Main.player[playerid].active && !Main.player[playerid].dead && Main.player[playerid] != null && Main.player[playerid].ownedProjectileCounts[mod.ProjectileType("DaybringerStars")] <= 0)
                             {
-                                Projectile.NewProjectile(Main.player[playerid].Center.X + Main.rand.Next(-5, 5) * 40f, Main.player[playerid].Center.Y + Main.rand.Next(-5, 5) * 40f, 0, 0, mod.ProjectileType("NightclawerCloud"), (int)(npc.damage / 6), 0, 255);
+                                Projectile.NewProjectile(Main.player[playerid].Center.X + Main.rand.Next(-5, 5) * 40f, Main.player[playerid].Center.Y + Main.rand.Next(-5, 5) * 40f, 0, 0, mod.ProjectileType("NightclawerCloud"), npc.damage / 6, 0, 255);
                             }
                         }
                     }
@@ -302,7 +302,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                     speed = (Main.rand.Next(2) == 0 ? 1: -1) * speed;
                     float ai = Main.rand.Next(120);
                     Vector2 speedR = Vector2.Normalize(speed.RotatedByRandom(0.6)) * 20f;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, speedR.X, speedR.Y, mod.ProjectileType("NightclawerLaser"), (int)(npc.damage / 6), 0, Main.myPlayer, speed.ToRotation() + 1000f, ai);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, speedR.X, speedR.Y, mod.ProjectileType("NightclawerLaser"), npc.damage / 6, 0, Main.myPlayer, speed.ToRotation() + 1000f, ai);
                 }
                 if(internalAI[1] % 380 == 90)
                 {
@@ -311,9 +311,9 @@ namespace AAMod.NPCs.Bosses.Equinox
                         if (Main.npc[i].active && Main.npc[i].type == mod.NPCType("NightcrawlerBody") && Main.npc[i].realLife == npc.whoAmI)
                         {
                             Vector2 speed = Vector2.Normalize(new Vector2(1f, 0f).RotatedBy(Main.npc[i].rotation + 3.1415f)) * .5f;
-                            Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("NightclawerScythe"), (int)(npc.damage / 6), 0, Main.myPlayer, npc.rotation, (float)npc.spriteDirection);
+                            Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("NightclawerScythe"), npc.damage / 6, 0, Main.myPlayer, npc.rotation, npc.spriteDirection);
                             speed = -speed;
-                            Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("NightclawerScythe"), (int)(npc.damage / 6), 0, Main.myPlayer, npc.rotation, (float)npc.spriteDirection);
+                            Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("NightclawerScythe"), npc.damage / 6, 0, Main.myPlayer, npc.rotation, npc.spriteDirection);
                         }
                     }
                 }

@@ -9,7 +9,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero");
-            Main.projFrames[projectile.type] = 9;
+            Main.projFrames[projectile.type] = 7;
         }
         public override void SetDefaults()
         {
@@ -29,10 +29,10 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroDeath1"), Color.Red.R, Color.Red.G, Color.Red.B);
                 linesaid = true;
             }
-            if (++projectile.frameCounter >= 7)
+            if (++projectile.frameCounter >= 6)
             {
                 projectile.frameCounter = 0;
-                if (++projectile.frame >= 9)
+                if (++projectile.frame >= 7)
                 {
                     projectile.Kill();
                    

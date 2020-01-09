@@ -62,7 +62,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             if(projectile.velocity.Length() < .01f && (projectile.localAI[0] ++ > 120))
             {
                 projectile.ai[0] = 1f;
-                projectile.velocity = projectile.DirectionTo(target.Center + target.velocity * (float)((projectile.Center - target.Center).Length()/6f)) * 6f;
+                projectile.velocity = projectile.DirectionTo(target.Center + target.velocity * ((projectile.Center - target.Center).Length() / 6f)) * 6f;
             }
         }
 

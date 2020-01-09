@@ -122,10 +122,10 @@ namespace AAMod.Projectiles.Greed.WKG
                     {
                         Vector2 vector17 = projectile.velocity;
                         vector17.Normalize();
-                        vector17 *= (float)Main.rand.Next(70, 91) * 0.1f;
-                        vector17.X += (float)Main.rand.Next(-30, 31) * 0.04f;
-                        vector17.Y += (float)Main.rand.Next(-30, 31) * 0.03f;
-                        Projectile.NewProjectile(projectile.position.X, projectile.position.Y, vector17.X, vector17.Y, 523, projectile.damage, 0, Main.myPlayer, (float)Main.rand.Next(20), 0f);
+                        vector17 *= Main.rand.Next(70, 91) * 0.1f;
+                        vector17.X += Main.rand.Next(-30, 31) * 0.04f;
+                        vector17.Y += Main.rand.Next(-30, 31) * 0.03f;
+                        Projectile.NewProjectile(projectile.position.X, projectile.position.Y, vector17.X, vector17.Y, 523, projectile.damage, 0, Main.myPlayer, Main.rand.Next(20), 0f);
                     }
                 }
             }
@@ -139,17 +139,17 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     for(int i = 0; i < 10; i++)
                     {
-                        Vector2 vector109 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f + 30f);
+                        Vector2 vector109 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f + 30f);
                         float num824 = projectile.position.X - vector109.X;
                         float num825 = projectile.position.Y - vector109.Y;
-                        num824 += (float)Main.rand.Next(-20, 51);
-                        num825 += (float)Main.rand.Next(20, 51);
+                        num824 += Main.rand.Next(-20, 51);
+                        num825 += Main.rand.Next(20, 51);
                         num825 *= 0.2f;
-                        float num826 = (float)Math.Sqrt((double)(num824 * num824 + num825 * num825));
+                        float num826 = (float)Math.Sqrt(num824 * num824 + num825 * num825);
                         num824 *= num826;
                         num825 *= num826;
-                        num824 *= 1f + (float)Main.rand.Next(-30, 31) * 0.01f;
-                        num825 *= 1f + (float)Main.rand.Next(-30, 31) * 0.01f;
+                        num824 *= 1f + Main.rand.Next(-30, 31) * 0.01f;
+                        num825 *= 1f + Main.rand.Next(-30, 31) * 0.01f;
                         int p = Projectile.NewProjectile(vector109.X, vector109.Y, num824, num825, Main.rand.Next(326, 329), projectile.damage, 0f, Main.myPlayer, 0f, 0f);
                         Main.projectile[p].ranged = true;
                         Main.projectile[p].hostile = false;
@@ -192,9 +192,9 @@ namespace AAMod.Projectiles.Greed.WKG
                 Main.dust[num5].noGravity = true;
                 Main.dust[num5].velocity *= 0.75f;
                 Main.dust[num5].fadeIn = 1.3f;
-                Vector2 vector = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+                Vector2 vector = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
                 vector.Normalize();
-                vector *= (float)Main.rand.Next(50, 100) * 0.04f;
+                vector *= Main.rand.Next(50, 100) * 0.04f;
                 Main.dust[num5].velocity = vector;
                 vector.Normalize();
                 vector *= 34f;
@@ -222,7 +222,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     {
                         if(!Main.npc[n].townNPC && !Main.npc[n].dontTakeDamage && (Main.npc[n].position - projectile.position).Length() < 200)
                         {
-                            Main.player[projectile.owner].ApplyDamageToNPC(Main.npc[n], (int)(projectile.damage / 10), 0, 1, false);
+                            Main.player[projectile.owner].ApplyDamageToNPC(Main.npc[n], projectile.damage / 10, 0, 1, false);
                         }
                     }
                 }
@@ -332,12 +332,12 @@ namespace AAMod.Projectiles.Greed.WKG
                     {
                         for (int j = 0; j < 3; j++)
                         {
-                            float num13 = projectile.position.X + (float)Main.rand.Next(-400, 400);
-                            float num14 = projectile.position.Y - (float)Main.rand.Next(500, 800);
+                            float num13 = projectile.position.X + Main.rand.Next(-400, 400);
+                            float num14 = projectile.position.Y - Main.rand.Next(500, 800);
                             Vector2 vector2 = new Vector2(num13, num14);
-                            float num15 = projectile.position.X + (float)(projectile.width / 2) - vector2.X;
-                            float num16 = projectile.position.Y + (float)(projectile.height / 2) - vector2.Y;
-                            num15 += (float)Main.rand.Next(-100, 101);
+                            float num15 = projectile.position.X + projectile.width / 2 - vector2.X;
+                            float num16 = projectile.position.Y + projectile.height / 2 - vector2.Y;
+                            num15 += Main.rand.Next(-100, 101);
                             float num17 = 25f;
                             int num18 = Main.rand.Next(3);
                             if (num18 == 0)
@@ -352,7 +352,7 @@ namespace AAMod.Projectiles.Greed.WKG
                             {
                                 num18 = 12;
                             }
-                            float num19 = (float)Math.Sqrt((double)(num15 * num15 + num16 * num16));
+                            float num19 = (float)Math.Sqrt(num15 * num15 + num16 * num16);
                             num19 = num17 / num19;
                             num15 *= num19;
                             num16 *= num19;
@@ -445,10 +445,10 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     Vector2 vector17 = projectile.velocity;
                     vector17.Normalize();
-                    vector17 *= (float)Main.rand.Next(70, 91) * 0.1f;
-                    vector17.X += (float)Main.rand.Next(-30, 31) * 0.04f;
-                    vector17.Y += (float)Main.rand.Next(-30, 31) * 0.03f;
-                    int id = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, vector17.X, vector17.Y, 523, projectile.damage, 0, Main.myPlayer, (float)Main.rand.Next(20), 0f);
+                    vector17 *= Main.rand.Next(70, 91) * 0.1f;
+                    vector17.X += Main.rand.Next(-30, 31) * 0.04f;
+                    vector17.Y += Main.rand.Next(-30, 31) * 0.03f;
+                    int id = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, vector17.X, vector17.Y, 523, projectile.damage, 0, Main.myPlayer, Main.rand.Next(20), 0f);
                     Main.projectile[id].tileCollide = false;
                 }
             }
@@ -483,13 +483,13 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 27, 1f, 0f);
 					float num36 = 0.783f;
-					double num37 = Math.Atan2((double)projectile.velocity.X, (double)projectile.velocity.Y) - (double)(num36 / 2f);
-					double num38 = (double)(num36 / 8f);
+					double num37 = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - num36 / 2f;
+					double num38 = num36 / 8f;
 					for (int num40 = 0; num40 < 8; num40++)
                     {
-                        float num41 = (float)Main.rand.Next(1, 7);
-                        float num42 = (float)Main.rand.Next(1, 7);
-                        double num43 = num37 + num38 * (double)(num40 + num40 * num40) / 2.0 + (double)(32f * (float)num40);
+                        float num41 = Main.rand.Next(1, 7);
+                        float num42 = Main.rand.Next(1, 7);
+                        double num43 = num37 + num38 * (num40 + num40 * num40) / 2.0 + 32f * num40;
                         int num44 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(num43) * 5.0), (float)(Math.Cos(num43) * 5.0) + num41, 90, projectile.damage, 1f, projectile.owner, 0f, 0f);
                         int num45 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-(float)Math.Sin(num43) * 5.0), (float)(-(float)Math.Cos(num43) * 5.0) + num42, 90, projectile.damage, 1f, projectile.owner, 0f, 0f);
                         Main.projectile[num44].ranged = true;
@@ -501,7 +501,7 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 74, 1f, 0f);
                     int projtype = ModSupport.GetModProjectile("CalamityMod", "ChaosBlaze").projectile.type;
-					int p = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, projtype, (int)(projectile.damage / 3), 1f, projectile.owner, 0f, 0f);
+					int p = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, projtype, projectile.damage / 3, 1f, projectile.owner, 0f, 0f);
                     Main.projectile[p].ranged = true;
 					return;
                 }
@@ -523,14 +523,14 @@ namespace AAMod.Projectiles.Greed.WKG
                     }
                     int num42 = 12;
                     float num43 = MathHelper.ToRadians(30f);
-                    double num44 = Math.Atan2((double)projectile.velocity.X, (double)projectile.velocity.Y) - (double)(num43 / 2f);
-                    double num45 = (double)(num43 / (float)num42);
+                    double num44 = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - num43 / 2f;
+                    double num45 = num43 / num42;
                     float num46 = 6f;
                     for (int n = 0; n < 6; n++)
                     {
                         int projtype = ModSupport.GetModProjectile("CalamityMod", "BrimstoneBarrage").projectile.type;
-                        double num47 = num44 + num45 * (double)(n + n * n) / 2.0 + (double)(32f * (float)n) + 0.5f * Main.rand.NextDouble();
-                        int id1 = Projectile.NewProjectile(vector5.X, vector5.Y, (float)(Math.Sin(num47) * (double)num46), (float)(Math.Cos(num47) * (double)num46), projtype, projectile.damage, 0f, projectile.owner, 1f, 0f);
+                        double num47 = num44 + num45 * (n + n * n) / 2.0 + 32f * n + 0.5f * Main.rand.NextDouble();
+                        int id1 = Projectile.NewProjectile(vector5.X, vector5.Y, (float)(Math.Sin(num47) * num46), (float)(Math.Cos(num47) * num46), projtype, projectile.damage, 0f, projectile.owner, 1f, 0f);
                         int id2 = Projectile.NewProjectile(vector5.X, vector5.Y, (float)(-(float)Math.Sin(num47) * (double)num46), (float)(-(float)Math.Cos(num47) * (double)num46), projtype, projectile.damage, 0f, projectile.owner, 1f, 0f);
                         Main.projectile[id1].hostile = false;
                         Main.projectile[id1].friendly = true;
@@ -553,14 +553,14 @@ namespace AAMod.Projectiles.Greed.WKG
                     int num21 = Main.rand.Next(2, 4);
 					for (int i = 0; i < num21; i++)
 					{
-						Vector2 vector3 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+						Vector2 vector3 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 						while (vector3.X == 0f && vector3.Y == 0f)
 						{
-							vector3 = new Vector2((float)Main.rand.Next(-100, 101), (float)Main.rand.Next(-100, 101));
+							vector3 = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
 						}
 						vector3.Normalize();
-						vector3 *= (float)Main.rand.Next(70, 101) * 0.1f;
-						int num22 = Projectile.NewProjectile(projectile.position.X + (float)(projectile.width / 2), projectile.position.Y + (float)(projectile.height / 2), vector3.X, vector3.Y, 206, projectile.damage / 2, 0f, projectile.owner, 0f, 0f);
+						vector3 *= Main.rand.Next(70, 101) * 0.1f;
+						int num22 = Projectile.NewProjectile(projectile.position.X + projectile.width / 2, projectile.position.Y + projectile.height / 2, vector3.X, vector3.Y, 206, projectile.damage / 2, 0f, projectile.owner, 0f, 0f);
 						Main.projectile[num22].magic = false;
                         Main.projectile[num22].ranged = true;
 						Main.projectile[num22].netUpdate = true;
@@ -692,17 +692,17 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     for(int shoot = 0; shoot < 3; shoot ++)
                     {
-                        Vector2 vector109 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f + 30f);
+                        Vector2 vector109 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f + 30f);
                         float num824 = projectile.position.X - vector109.X;
                         float num825 = projectile.position.Y - vector109.Y;
-                        num824 += (float)Main.rand.Next(-20, 51);
-                        num825 += (float)Main.rand.Next(20, 51);
+                        num824 += Main.rand.Next(-20, 51);
+                        num825 += Main.rand.Next(20, 51);
                         num825 *= 0.2f;
-                        float num826 = (float)Math.Sqrt((double)(num824 * num824 + num825 * num825));
+                        float num826 = (float)Math.Sqrt(num824 * num824 + num825 * num825);
                         num824 *= num826;
                         num825 *= num826;
-                        num824 *= 1f + (float)Main.rand.Next(-30, 31) * 0.01f;
-                        num825 *= 1f + (float)Main.rand.Next(-30, 31) * 0.01f;
+                        num824 *= 1f + Main.rand.Next(-30, 31) * 0.01f;
+                        num825 *= 1f + Main.rand.Next(-30, 31) * 0.01f;
                         int p = Projectile.NewProjectile(vector109.X, vector109.Y, num824, num825, Main.rand.Next(326, 329), damage, 0f, Main.myPlayer, 0f, 0f);
                         Main.projectile[p].ranged = true;
                         Main.projectile[p].hostile = false;
@@ -737,17 +737,17 @@ namespace AAMod.Projectiles.Greed.WKG
                 target.AddBuff(BuffID.OnFire, 1200);
                 for(int shoot = 0; shoot < 7; shoot ++)
                 {
-                    Vector2 vector109 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f + 30f);
+                    Vector2 vector109 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f + 30f);
                     float num824 = projectile.position.X - vector109.X;
                     float num825 = projectile.position.Y - vector109.Y;
-                    num824 += (float)Main.rand.Next(-20, 51);
-                    num825 += (float)Main.rand.Next(20, 51);
+                    num824 += Main.rand.Next(-20, 51);
+                    num825 += Main.rand.Next(20, 51);
                     num825 *= 0.2f;
-                    float num826 = (float)Math.Sqrt((double)(num824 * num824 + num825 * num825));
+                    float num826 = (float)Math.Sqrt(num824 * num824 + num825 * num825);
                     num824 *= num826;
                     num825 *= num826;
-                    num824 *= 1f + (float)Main.rand.Next(-30, 31) * 0.01f;
-                    num825 *= 1f + (float)Main.rand.Next(-30, 31) * 0.01f;
+                    num824 *= 1f + Main.rand.Next(-30, 31) * 0.01f;
+                    num825 *= 1f + Main.rand.Next(-30, 31) * 0.01f;
                     int p = Projectile.NewProjectile(vector109.X, vector109.Y, num824, num825, Main.rand.Next(326, 329), damage, 0f, Main.myPlayer, 0f, 0f);
                     Main.projectile[p].ranged = true;
                     Main.projectile[p].hostile = false;
@@ -852,14 +852,14 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     for (int i = 0; i < 4; i++)
 					{
-						float num = target.position.X + (float)Main.rand.Next(-400, 400);
-						float num2 = target.position.Y - (float)Main.rand.Next(500, 800);
+						float num = target.position.X + Main.rand.Next(-400, 400);
+						float num2 = target.position.Y - Main.rand.Next(500, 800);
 						Vector2 vector = new Vector2(num, num2);
-						float num3 = target.position.X + (float)(target.width / 2) - vector.X;
-						float num4 = target.position.Y + (float)(target.height / 2) - vector.Y;
-						num3 += (float)Main.rand.Next(-100, 101);
-						float num5 = (float)20;
-						float num6 = (float)Math.Sqrt((double)(num3 * num3 + num4 * num4));
+						float num3 = target.position.X + target.width / 2 - vector.X;
+						float num4 = target.position.Y + target.height / 2 - vector.Y;
+						num3 += Main.rand.Next(-100, 101);
+						float num5 = 20;
+						float num6 = (float)Math.Sqrt(num3 * num3 + num4 * num4);
 						num6 = num5 / num6;
 						num3 *= num6;
 						num4 *= num6;
@@ -880,12 +880,12 @@ namespace AAMod.Projectiles.Greed.WKG
                     target.AddBuff(bufftype, 360, false);
                     for (int j = 0; j < 6; j++)
 					{
-						float num13 = target.position.X + (float)Main.rand.Next(-400, 400);
-						float num14 = target.position.Y - (float)Main.rand.Next(500, 800);
+						float num13 = target.position.X + Main.rand.Next(-400, 400);
+						float num14 = target.position.Y - Main.rand.Next(500, 800);
 						Vector2 vector2 = new Vector2(num13, num14);
-						float num15 = target.position.X + (float)(target.width / 2) - vector2.X;
-						float num16 = target.position.Y + (float)(target.height / 2) - vector2.Y;
-						num15 += (float)Main.rand.Next(-100, 101);
+						float num15 = target.position.X + target.width / 2 - vector2.X;
+						float num16 = target.position.Y + target.height / 2 - vector2.Y;
+						num15 += Main.rand.Next(-100, 101);
 						float num17 = 25f;
 						int num18 = Main.rand.Next(3);
 						if (num18 == 0)
@@ -900,7 +900,7 @@ namespace AAMod.Projectiles.Greed.WKG
 						{
 							num18 = 12;
 						}
-						float num19 = (float)Math.Sqrt((double)(num15 * num15 + num16 * num16));
+						float num19 = (float)Math.Sqrt(num15 * num15 + num16 * num16);
 						num19 = num17 / num19;
 						num15 *= num19;
 						num16 *= num19;
@@ -921,13 +921,13 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     Main.PlaySound(3, (int)projectile.position.X, (int)projectile.position.Y, 1, 1f, 0f);
 					float num46 = 0.783f;
-					double num47 = Math.Atan2((double)projectile.velocity.X, (double)projectile.velocity.Y) - (double)(num46 / 2f);
-					double num48 = (double)(num46 / 8f);
+					double num47 = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - num46 / 2f;
+					double num48 = num46 / 8f;
                     for (int num50 = 0; num50 < 4; num50++)
                     {
                         float x2 = Utils.NextBool(Main.rand, 2) ? (projectile.Center.X + 100f) : (projectile.Center.X - 100f);
-                        Vector2 vector5 = new Vector2(x2, projectile.Center.Y + (float)Main.rand.Next(-100, 101));
-                        double num51 = num47 + num48 * (double)(num50 + num50 * num50) / 2.0 + (double)(32f * (float)num50);
+                        Vector2 vector5 = new Vector2(x2, projectile.Center.Y + Main.rand.Next(-100, 101));
+                        double num51 = num47 + num48 * (num50 + num50 * num50) / 2.0 + 32f * num50;
                         int num52 = Projectile.NewProjectile(vector5.X, vector5.Y, (float)(Math.Sin(num51) * 5.0), (float)(Math.Cos(num51) * 5.0), 567, projectile.damage, 2f, projectile.owner, 0f, 0f);
                         Main.projectile[num52].ranged = true;
                         Main.projectile[num52].usesLocalNPCImmunity = true;
@@ -943,9 +943,9 @@ namespace AAMod.Projectiles.Greed.WKG
                     int num3 = 9 + Main.rand.Next(3);
                     for (int i = 0; i < num3; i++)
                     {
-                        float num4 = 0.025f * (float)i;
-                        float num5 = projectile.velocity.X + (float)Main.rand.Next(-25, 26) * num4;
-                        float num6 = projectile.velocity.Y + (float)Main.rand.Next(-25, 26) * num4;
+                        float num4 = 0.025f * i;
+                        float num5 = projectile.velocity.X + Main.rand.Next(-25, 26) * num4;
+                        float num6 = projectile.velocity.Y + Main.rand.Next(-25, 26) * num4;
                         float num7 = projectile.velocity.Length();
                         num7 = 14f / num7;
                         num5 *= num7;
@@ -1106,7 +1106,7 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     for (int num291 = 0; num291 < 3; num291++)
                     {
-                        int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 74, projectile.velocity.X * 0.2f + (float)(projectile.direction * 3), projectile.velocity.Y * 0.2f, 100, default(Color), 0.75f);
+                        int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 74, projectile.velocity.X * 0.2f + projectile.direction * 3, projectile.velocity.Y * 0.2f, 100, default(Color), 0.75f);
                         Main.dust[num292].noGravity = true;
                     };
                 }

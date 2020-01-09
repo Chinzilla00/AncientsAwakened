@@ -1,6 +1,8 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.ID;
+
 namespace AAMod.Items.Boss.Zero
 {
     public class ZeroBag : BaseAAItem
@@ -23,7 +25,7 @@ namespace AAMod.Items.Boss.Zero
             item.rare = 10;
         }
 
-        public override int BossBagNPC => mod.NPCType("Zero");
+        public override int BossBagNPC => mod.NPCType("ZeroProtocol");
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
@@ -52,7 +54,7 @@ namespace AAMod.Items.Boss.Zero
 		}
 
 		public override void OpenBossBag(Player player)
-		{
+        {
             if (Main.rand.Next(7) == 0)
             {
                 player.QuickSpawnItem(mod.ItemType("ZeroMask"));

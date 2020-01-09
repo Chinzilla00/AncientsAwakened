@@ -12,7 +12,7 @@ namespace AAMod
 		{
             if(type == BuffID.BrokenArmor && !npc.boss)
             {
-                npc.defense = (int)(npc.defense / 2);
+                npc.defense = npc.defense / 2;
             }
             if(type == BuffID.Weak && !npc.boss)
             {

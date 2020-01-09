@@ -20,7 +20,8 @@ Grapple to Glitch
 Grants immunity to the Unstable debuff
 While cooldown is occurring, your speed is increased, you gain invincibility frames
 While cooldown is occurring, your magic/summon weapons require no mana and have 20% increased damage
-'You don't look so good'");
+'You don't look so good'
+WARNING: May permanently displace appendages until game restart. This is a feature.");
             // ticksperframe, frameCount
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 36));
             ItemID.Sets.ItemNoGravity[item.type] = true;

@@ -59,7 +59,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 projectile.direction = 1;
             }
-            projectile.rotation += (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) * 0.025f * (float)projectile.direction;
+            projectile.rotation += (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) * 0.025f * projectile.direction;
         }
 
         public override Color? GetAlpha(Color lightColor)

@@ -29,6 +29,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.boss = true;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis");
             bossBag = mod.ItemType("AnubisBag");
+            npc.value = Item.sellPrice(0, 1, 0, 0);
         }
 
         public float[] internalAI = new float[4];

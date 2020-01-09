@@ -102,13 +102,13 @@ namespace AAMod.NPCs.Bosses.Equinox
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
-			Color color = Lighting.GetColor((int)((double)projectile.position.X + (double)projectile.width * 0.5) / 16, (int)(((double)projectile.position.Y + (double)projectile.height * 0.5) / 16.0));
-			Vector2 vector = projectile.position + new Vector2((float)projectile.width, (float)projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
+			Color color = Lighting.GetColor((int)(projectile.position.X + projectile.width * 0.5) / 16, (int)((projectile.position.Y + projectile.height * 0.5) / 16.0));
+			Vector2 vector = projectile.position + new Vector2(projectile.width, projectile.height) / 2f + Vector2.UnitY * projectile.gfxOffY - Main.screenPosition;
 			Texture2D texture2D = Main.projectileTexture[projectile.type];
 			Rectangle rectangle = Utils.Frame(texture2D, 1, Main.projFrames[projectile.type], 0, projectile.frame);
 			Color alpha = projectile.GetAlpha(color);
 			Vector2 origin = Utils.Size(rectangle) / 2f;
-			float scaleFactor = (float)Math.Cos((double)(6.2831855f * (projectile.localAI[0] / 60f))) + 3f + 3f;
+			float scaleFactor = (float)Math.Cos(6.2831855f * (projectile.localAI[0] / 60f)) + 3f + 3f;
 			for (float num = 0f; num < 2; num += 1f)
 			{
 				SpriteBatch spriteBatch2 = Main.spriteBatch;

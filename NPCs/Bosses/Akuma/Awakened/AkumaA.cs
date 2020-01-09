@@ -130,56 +130,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 npc.frame.Y = 0;
             }
 
-            /*float dist = npc.Distance(player.Center);
-            npc.ai[2]++;
-            if (npc.ai[2] == 300)
-            {
-                QuoteSaid = false;
-                Roar(roarTimerMax, false);
-                internalAI[1] = Main.rand.Next(6);
-            }
-            if (npc.ai[2] > 300)
-            {
-                Attack(npc);
-            }
-            if (npc.ai[2] >= 400)
-            {
-                npc.ai[2] = 180; //attack much more aggressively
-            }
-
-            if (dist > 400 & Main.rand.Next(20) == 1 && npc.ai[1] == 0 && npc.ai[2] < 300)
-            {
-                npc.ai[1] = 1;
-            }
-            if (npc.ai[1] == 1)
-            {
-                attackTimer++;
-                if ((attackTimer == 20 || attackTimer == 50 || attackTimer == 79) && npc.HasBuff(BuffID.Wet))
-                {
-                    for (int spawnDust = 0; spawnDust < 2; spawnDust++)
-                    {
-                        int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), 0f, 0f, 90, default, 2f);
-                        Main.dust[num935].noGravity = true;
-                        Main.dust[num935].velocity.Y -= 1f;
-                    }
-                    if (weakness == false)
-                    {
-                        weakness = true;
-                        if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("AkumaA7"), Color.DeepSkyBlue);
-                    }
-                }
-                else if (!npc.HasBuff(BuffID.Wet))
-                {
-                    Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
-                    AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaABreath>(), 2, 2);
-                }
-                if (attackTimer >= 80)
-                {
-                    npc.ai[1] = 0;
-                    attackTimer = 0;
-                }
-            }*/
-
             if (npc.alpha != 0)
             {
                 for (int spawnDust = 0; spawnDust < 2; spawnDust++)
@@ -338,7 +288,6 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 case 5: //currently firing deathray, weaker acceleration
                     targetPos = player.Center;
                     MovementWorm(targetPos, 15f, 0.08f);
-                    float difference = npc.velocity.ToRotation() - npc.oldVelocity.ToRotation();
                     if (++npc.ai[1] > 240)
                     {
                         npc.ai[0]++;
@@ -668,7 +617,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             AkumaTex = Main.npcTexture[npc.type];
             if (npc.type == ModContent.NPCType<AkumaA>())
             {
-                if (npc.ai[0] == 0 || npc.ai[0] == 4)
+                if (npc.ai[0] == 0 || npc.ai[0] == 1 || npc.ai[0] == 5 || npc.ai[0] == 9)
                 {
                     AkumaTex = mod.GetTexture("NPCs/Bosses/Akuma/Awakened/AkumaA1");
                 }

@@ -280,11 +280,11 @@ namespace AAMod
 				return;
 			}
 			int num2 = 1000;
-			if (Main.player[Main.myPlayer].ghostDmg > (float)num2)
+			if (Main.player[Main.myPlayer].ghostDmg > num2)
 			{
 				return;
 			}
-			Main.player[Main.myPlayer].ghostDmg += (float)num;
+			Main.player[Main.myPlayer].ghostDmg += num;
 			int[] array = new int[200];
 			int num3 = 0;
 			int num4 = 0;
@@ -292,7 +292,7 @@ namespace AAMod
 			{
 				if (Main.npc[i].CanBeChasedBy(projectile, false))
 				{
-					float num5 = Math.Abs(Main.npc[i].position.X + (float)(Main.npc[i].width / 2) - projectile.position.X + (float)(projectile.width / 2)) + Math.Abs(Main.npc[i].position.Y + (float)(Main.npc[i].height / 2) - projectile.position.Y + (float)(projectile.height / 2));
+					float num5 = Math.Abs(Main.npc[i].position.X + Main.npc[i].width / 2 - projectile.position.X + projectile.width / 2) + Math.Abs(Main.npc[i].position.Y + Main.npc[i].height / 2 - projectile.position.Y + projectile.height / 2);
 					if (num5 < 800f)
 					{
 						if (Collision.CanHit(projectile.position, 1, 1, Main.npc[i].position, Main.npc[i].width, Main.npc[i].height) && num5 > 50f)
@@ -322,13 +322,13 @@ namespace AAMod
 				num6 = array[Main.rand.Next(num3)];
 			}
 			float num7 = 4f;
-			float num8 = (float)Main.rand.Next(-100, 101);
-			float num9 = (float)Main.rand.Next(-100, 101);
-			float num10 = (float)Math.Sqrt((double)(num8 * num8 + num9 * num9));
+			float num8 = Main.rand.Next(-100, 101);
+			float num9 = Main.rand.Next(-100, 101);
+			float num10 = (float)Math.Sqrt(num8 * num8 + num9 * num9);
 			num10 = num7 / num10;
 			num8 *= num10;
 			num9 *= num10;
-			Projectile.NewProjectile(Position.X, Position.Y, num8, num9, 356, num, 0f, projectile.owner, (float)num6, 0f);
+			Projectile.NewProjectile(Position.X, Position.Y, num8, num9, 356, num, 0f, projectile.owner, num6, 0f);
 		}
 
         private bool setDefMinionDamage = true;

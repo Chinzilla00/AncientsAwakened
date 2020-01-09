@@ -42,8 +42,8 @@ namespace AAMod.Projectiles.Akuma
             if(projectile.alpha < 150)
             for (int num165 = 0; num165 < 2; num165 ++)
             {
-                float x2 = projectile.position.X + projectile.width / 2 - projectile.velocity.X / 2f * (float)num165;
-				float y2 = projectile.position.Y + projectile.height / 2 - projectile.velocity.Y / 2f * (float)num165;
+                float x2 = projectile.position.X + projectile.width / 2 - projectile.velocity.X / 2f * num165;
+				float y2 = projectile.position.Y + projectile.height / 2 - projectile.velocity.Y / 2f * num165;
                 int num166 = Dust.NewDust(new Vector2(projectile.position.X + projectile.width / 2, projectile.position.Y + projectile.height / 2), projectile.width, projectile.height + 5, mod.DustType("AkumaDust"), projectile.velocity.X * 0.2f,
                     projectile.velocity.Y * 0.2f, 0, default(Color), 2f);
                 Main.dust[num166].alpha = projectile.alpha;
@@ -52,7 +52,7 @@ namespace AAMod.Projectiles.Akuma
                 Main.dust[num166].velocity *= 0f;
                 Main.dust[num166].noGravity = true;
             }
-            float num167 = (float)Math.Sqrt((double)(projectile.velocity.X * projectile.velocity.X + projectile.velocity.Y * projectile.velocity.Y));
+            float num167 = (float)Math.Sqrt(projectile.velocity.X * projectile.velocity.X + projectile.velocity.Y * projectile.velocity.Y);
             float num168 = projectile.localAI[0];
             if (num168 == 0f)
             {
@@ -77,12 +77,12 @@ namespace AAMod.Projectiles.Akuma
                 int num;
                 for (int num173 = 0; num173 < 200; num173 = num + 1)
                 {
-                    if (Main.npc[num173].CanBeChasedBy(projectile, false) && (projectile.ai[1] == 0f || projectile.ai[1] == (float)(num173 + 1)))
+                    if (Main.npc[num173].CanBeChasedBy(projectile, false) && (projectile.ai[1] == 0f || projectile.ai[1] == num173 + 1))
                     {
-                        float num174 = Main.npc[num173].position.X + (float)(Main.npc[num173].width / 2);
-                        float num175 = Main.npc[num173].position.Y + (float)(Main.npc[num173].height / 2);
-                        float num176 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num174) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num175);
-                        if (num176 < num171 && Collision.CanHit(new Vector2(projectile.position.X + (float)(projectile.width / 2), projectile.position.Y + (float)(projectile.height / 2)), 1, 1, Main.npc[num173].position, Main.npc[num173].width, Main.npc[num173].height))
+                        float num174 = Main.npc[num173].position.X + Main.npc[num173].width / 2;
+                        float num175 = Main.npc[num173].position.Y + Main.npc[num173].height / 2;
+                        float num176 = Math.Abs(projectile.position.X + projectile.width / 2 - num174) + Math.Abs(projectile.position.Y + projectile.height / 2 - num175);
+                        if (num176 < num171 && Collision.CanHit(new Vector2(projectile.position.X + projectile.width / 2, projectile.position.Y + projectile.height / 2), 1, 1, Main.npc[num173].position, Main.npc[num173].width, Main.npc[num173].height))
                         {
                             num171 = num176;
                             num169 = num174;
@@ -95,7 +95,7 @@ namespace AAMod.Projectiles.Akuma
                 }
                 if (flag4)
                 {
-                    projectile.ai[1] = (float)(num172 + 1);
+                    projectile.ai[1] = num172 + 1;
                 }
                 flag4 = false;
             }
@@ -104,14 +104,14 @@ namespace AAMod.Projectiles.Akuma
                 int num177 = (int)(projectile.ai[1] - 1f);
                 if (Main.npc[num177].active && Main.npc[num177].CanBeChasedBy(projectile, true) && !Main.npc[num177].dontTakeDamage)
                 {
-                    float num178 = Main.npc[num177].position.X + (float)(Main.npc[num177].width / 2);
-                    float num179 = Main.npc[num177].position.Y + (float)(Main.npc[num177].height / 2);
-                    float num180 = Math.Abs(projectile.position.X + (float)(projectile.width / 2) - num178) + Math.Abs(projectile.position.Y + (float)(projectile.height / 2) - num179);
+                    float num178 = Main.npc[num177].position.X + Main.npc[num177].width / 2;
+                    float num179 = Main.npc[num177].position.Y + Main.npc[num177].height / 2;
+                    float num180 = Math.Abs(projectile.position.X + projectile.width / 2 - num178) + Math.Abs(projectile.position.Y + projectile.height / 2 - num179);
                     if (num180 < 1000f)
                     {
                         flag4 = true;
-                        num169 = Main.npc[num177].position.X + (float)(Main.npc[num177].width / 2);
-                        num170 = Main.npc[num177].position.Y + (float)(Main.npc[num177].height / 2);
+                        num169 = Main.npc[num177].position.X + Main.npc[num177].width / 2;
+                        num170 = Main.npc[num177].position.Y + Main.npc[num177].height / 2;
                     }
                 }
                 else
@@ -126,16 +126,16 @@ namespace AAMod.Projectiles.Akuma
             if (flag4)
             {
                 float num181 = num168;
-                Vector2 vector19 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+                Vector2 vector19 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
                 float num182 = num169 - vector19.X;
                 float num183 = num170 - vector19.Y;
-                float num184 = (float)Math.Sqrt((double)(num182 * num182 + num183 * num183));
+                float num184 = (float)Math.Sqrt(num182 * num182 + num183 * num183);
                 num184 = num181 / num184;
                 num182 *= num184;
                 num183 *= num184;
                 int num185 = 8;
-                projectile.velocity.X = (projectile.velocity.X * (float)(num185 - 1) + num182) / (float)num185;
-                projectile.velocity.Y = (projectile.velocity.Y * (float)(num185 - 1) + num183) / (float)num185;
+                projectile.velocity.X = (projectile.velocity.X * (num185 - 1) + num182) / num185;
+                projectile.velocity.Y = (projectile.velocity.Y * (num185 - 1) + num183) / num185;
             }
         }
 

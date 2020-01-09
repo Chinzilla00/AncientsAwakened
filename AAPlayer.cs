@@ -2227,7 +2227,7 @@ namespace AAMod
                             player.QuickSpawnItem(mod.ItemType("GibsJet"));
                         }
 
-                        if (dropType >= 2)
+                        if (dropType >= 3)
                         {
                             player.QuickSpawnItem(Main.rand.Next(2) == 0 ? mod.ItemType("Skullshot") : mod.ItemType("GibsFemur"));
                         }
@@ -3102,19 +3102,19 @@ namespace AAMod
                 {
                     if (player.inventory[i].type == 71)
                     {
-                        num += (long)player.inventory[i].stack;
+                        num += player.inventory[i].stack;
                     }
                     if (player.inventory[i].type == 72)
                     {
-                        num += (long)(player.inventory[i].stack * 100);
+                        num += player.inventory[i].stack * 100;
                     }
                     if (player.inventory[i].type == 73)
                     {
-                        num += (long)(player.inventory[i].stack * 10000);
+                        num += player.inventory[i].stack * 10000;
                     }
                     if (player.inventory[i].type == 74)
                     {
-                        num += (long)(player.inventory[i].stack * 1000000);
+                        num += player.inventory[i].stack * 1000000;
                     }
                 }
                 if(num >= damage * 10000)
