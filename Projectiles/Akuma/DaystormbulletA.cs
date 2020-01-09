@@ -22,10 +22,12 @@ namespace AAMod.Projectiles.Akuma
             projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.penetrate = 1;
-            projectile.tileCollide = false;
+            projectile.tileCollide = true;
             projectile.magic = true;
             projectile.ignoreWater = true;
             projectile.alpha = 255;
+            projectile.timeLeft = 500;
+
         }
 
         public override void AI()
