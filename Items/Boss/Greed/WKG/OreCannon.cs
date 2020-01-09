@@ -1,9 +1,6 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using AAMod.Items.Blocks;
-using BaseMod;
 using System;
 
 namespace AAMod.Items.Boss.Greed.WKG

@@ -7,7 +7,6 @@ using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
-using Terraria.Localization;
 
 namespace AAMod.NPCs.TownNPCs
 {

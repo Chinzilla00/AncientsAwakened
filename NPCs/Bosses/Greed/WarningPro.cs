@@ -1,6 +1,5 @@
 using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
 namespace AAMod.NPCs.Bosses.Greed

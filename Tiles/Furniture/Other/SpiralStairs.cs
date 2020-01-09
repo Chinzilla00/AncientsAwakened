@@ -1,6 +1,4 @@
 using Microsoft.Xna.Framework;
-using Terraria.Enums;
-using Terraria.DataStructures;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,7 +6,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles.Furniture.Other
 {
-	public class SpiralStairs : ModTile
+    public class SpiralStairs : ModTile
 	{
 		public override void SetDefaults()
 		{

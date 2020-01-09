@@ -3,7 +3,6 @@ using Terraria;
 using Terraria.ModLoader;
 using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
-using Terraria.ID;
 
 namespace AAMod.Projectiles.Athena
 {

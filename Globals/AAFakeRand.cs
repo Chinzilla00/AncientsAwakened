@@ -1,11 +1,5 @@
-using BaseMod;
-using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
 using System;
-using Terraria;
-using Terraria.ID;
 using Terraria.Utilities;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod
 {

@@ -2,7 +2,6 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using AAMod.NPCs.Bosses.AH.Ashe;
 using System;
 
 namespace AAMod.NPCs.Bosses.Akuma.Awakened

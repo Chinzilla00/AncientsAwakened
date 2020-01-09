@@ -1,10 +1,8 @@
 using Microsoft.Xna.Framework;
-using System.IO;
 using System;
 using Terraria;
 using BaseMod;
 using Terraria.ModLoader;
-using Terraria.ID;
 
 namespace AAMod.Projectiles.Akuma
 {

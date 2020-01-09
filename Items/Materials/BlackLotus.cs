@@ -1,4 +1,3 @@
-using Terraria.ModLoader;
 using Terraria;
 
 namespace AAMod.Items.Materials

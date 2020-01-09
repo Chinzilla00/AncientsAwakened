@@ -7,6 +7,7 @@ using AAMod.Items.BossSummons;
 using AAMod.Items.Blocks;
 using AAMod.Items.Flasks;
 using AAMod.Items.Usable;
+using AAMod.Items.Materials;
 
 namespace AAMod.Globals
 {
@@ -379,8 +380,7 @@ namespace AAMod.Globals
 
             if (bossChecklist != null)
             {
-                #region Still working this out. Boss Checklist is fucked
-                /*#region Mushroom Monarch
+                #region Mushroom Monarch
                 bossChecklist.Call("AddBoss", 0f, mod.NPCType("MushroomMonarch"), mod,
                     Lang.BossCheck("MushroomMonarch"),
                     (Func<bool>)(() => AAWorld.downedMonarch),
@@ -401,8 +401,7 @@ namespace AAMod.Globals
                     Lang.BossCheck("Usean") + "[i: " + ModContent.ItemType<IntimidatingMushroom>() + "]" + Lang.BossCheck("MushroomMonarchInfo"),
                     "The Mushroom Monarch escapes into the sky",
                     "AAMod/CrossMod/BossChecklist/Monarch",
-                    "AAMod/NPCs/Bosses/MushroomMonarch/MushroomMonarch_Head_Boss",
-                    null);
+                    "AAMod/NPCs/Bosses/MushroomMonarch/MushroomMonarch_Head_Boss");
                 #endregion
 
                 #region Feudal Fungus
@@ -426,13 +425,12 @@ namespace AAMod.Globals
                     Lang.BossCheck("Usean") + "[i: " + ModContent.ItemType<ConfusingMushroom>() + "]" + Lang.BossCheck("FeudalFungusInfo"),
                     "The Feudal Fungus vanishes",
                     "AAMod/CrossMod/BossChecklist/Fungus",
-                    "AAMod/NPCs/Bosses/MushroomMonarch/FeudalFungus_Head_Boss",
-                    null);
+                    "AAMod/NPCs/Bosses/MushroomMonarch/FeudalFungus_Head_Boss");
                 #endregion
 
                 #region Grips
-                bossChecklist.Call("AddBoss", 2f, mod.NPCType("FeudalFungus"), mod,
-                    Lang.BossCheck("FeudalFungus"),
+                bossChecklist.Call("AddBoss", 2f, mod.NPCType("GripOfChaosRed"), mod,
+                    Lang.BossCheck("GripsofChaos"),
                     (Func<bool>)(() => AAWorld.downedGrips),
                     ModContent.ItemType<CuriousClaw>(),
                     new List<int>
@@ -452,8 +450,7 @@ namespace AAMod.Globals
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("CuriousClaw") + "]" + Lang.BossCheck("or") + "[i:" + AAMod.instance.ItemType("InterestingClaw") + "]" + Lang.BossCheck("atnight"),
                     "The Grips fly away, having dealt with you",
                     "AAMod/CrossMod/BossChecklist/Grips",
-                    "AAMod/CrossMod/BossChecklist/GripsHead",
-                    null);
+                    "AAMod/CrossMod/BossChecklist/GripsHead");
                 #endregion
 
                 #region Truffle Toad
@@ -479,8 +476,7 @@ namespace AAMod.Globals
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Toadstool") + "]" + Lang.BossCheck("TruffleToadInfo"),
                     "The Truffle Toad croaks, then vanishes",
                     "AAMod/CrossMod/BossChecklist/Toad",
-                    "AAMod/NPCs/Bosses/Toad/TruffleToad_Head_Boss",
-                    null);
+                    "AAMod/NPCs/Bosses/Toad/TruffleToad_Head_Boss");
                 #endregion
 
                 #region Broodmother
@@ -504,8 +500,7 @@ namespace AAMod.Globals
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DragonBell") + "]" + Lang.BossCheck("BroodmotherInfo"),
                     "The Broodmother returns to the fiery depths",
                     "AAMod/CrossMod/BossChecklist/Brood",
-                    "AAMod/NPCs/Bosses/Broodmother/Broodmother_Head_Boss",
-                    null);
+                    "AAMod/NPCs/Bosses/Broodmother/Broodmother_Head_Boss");
                 #endregion
 
                 #region Hydra
@@ -531,19 +526,96 @@ namespace AAMod.Globals
                     "AAMod/CrossMod/BossChecklist/Hydra",
                     "AAMod/NPCs/Bosses/Hydra/HydraHead1_Head_Boss",
                     null);
-                #endregion*/
-
                 #endregion
 
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("MushroomMonarch"), 0f, (Func<bool>)(() => AAWorld.downedMonarch), Lang.BossCheck("Usean") + "[i:" + AAMod.instance.ItemType("IntimidatingMushroom") + "]" + Lang.BossCheck("MushroomMonarchInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("FeudalFungus"), 0.1f, (Func<bool>)(() => AAWorld.downedFungus), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ConfusingMushroom") + "]" + Lang.BossCheck("FeudalFungusInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("GripsofChaos"), 2f, (Func<bool>)(() => AAWorld.downedGrips), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("CuriousClaw") + "]" + Lang.BossCheck("or") + "[i:" + AAMod.instance.ItemType("InterestingClaw") + "]" + Lang.BossCheck("atnight"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("TruffleToad"), 3f, (Func<bool>)(() => AAWorld.downedToad), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Toadstool") + "]" + Lang.BossCheck("TruffleToadInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Broodmother"), 3.5f, (Func<bool>)(() => AAWorld.downedBrood), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DragonBell") + "]" + Lang.BossCheck("BroodmotherInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Hydra"), 3.5f, (Func<bool>)(() => AAWorld.downedHydra), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("HydraChow") + "]" + Lang.BossCheck("HydraInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("SubzeroSerpent"), 5.5f, (Func<bool>)(() => AAWorld.downedSerpent), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("SubzeroCrystal") + "]" + Lang.BossCheck("SubzeroSerpentInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("DesertDjinn"), 5.5f, (Func<bool>)(() => AAWorld.downedDjinn), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DjinnLamp") + "]" + Lang.BossCheck("DesertDjinnInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Sagittarius"), 5.7f, (Func<bool>)(() => AAWorld.downedSag), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Lifescanner") + "]" + Lang.BossCheck("SagittariusInfo"));
+                #region Serpent
+                bossChecklist.Call("AddBoss", 5.5f, mod.NPCType("SerpentHead"), mod,
+                    Lang.BossCheck("SubzeroSerpent"),
+                    (Func<bool>)(() => AAWorld.downedSerpent),
+                    ModContent.ItemType<SubzeroCrystal>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Serpent.SerpentTrophy>(),
+                        ModContent.ItemType<SerpentMask>(),
+                        ModContent.ItemType<SerpentBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Serpent.SerpentBag>(),
+                        ModContent.ItemType<Items.Boss.Serpent.ArcticMedallion>(),
+                        ModContent.ItemType<Items.Boss.Serpent.BlizzardBuster>(),
+                        ModContent.ItemType<Items.Boss.Serpent.Icepick>(),
+                        ModContent.ItemType<Items.Boss.Serpent.SerpentSpike>(),
+                        ModContent.ItemType<Items.Boss.Serpent.SerpentSting>(),
+                        ModContent.ItemType<Items.Boss.Serpent.Sickle>(),
+                        ModContent.ItemType<Items.Boss.Serpent.SickleShot>(),
+                        ModContent.ItemType<Items.Boss.Serpent.SnakeStaff>(),
+                        ModContent.ItemType<Items.Boss.Serpent.SnowflakeShuriken>(),
+                        ModContent.ItemType<Items.Boss.Serpent.SubzeroSlasher>(),
+                        ModContent.ItemType<SnowMana>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("SubzeroCrystal") + "]" + Lang.BossCheck("SubzeroSerpentInfo"),
+                    "The Subzero Serpent burrows back down into the snow",
+                    "AAMod/CrossMod/BossChecklist/Serpent1",
+                    "AAMod/NPCs/Bosses/Serpent/SerpentHead_Head_Boss");
+                #endregion
+
+                #region Djinn
+                bossChecklist.Call("AddBoss", 5.5f, mod.NPCType("Djinn"), mod,
+                    Lang.BossCheck("DesertDjinn"),
+                    (Func<bool>)(() => AAWorld.downedDjinn),
+                    ModContent.ItemType<DjinnLamp>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Sagittarius.SagittariusTrophy>(),
+                        ModContent.ItemType<DjinnMask>(),
+                        ModContent.ItemType<DjinnBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Sagittarius.SagittariusBag>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.SandstormMedallion>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.SagittariusBag>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.Sagittariuserang>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.Sandagger>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.SandLamp>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.SandScepter>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.SandstormCrossbow>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.SultanScimitar>(),
+                        ModContent.ItemType<DesertMana>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DjinnLamp") + "]" + Lang.BossCheck("DesertDjinnInfo"),
+                    "The Desert Djinn flexes upon you triumphantly",
+                    "AAMod/CrossMod/BossChecklist/Djinn",
+                    "AAMod/NPCs/Bosses/Djinn/Djinn_Head_Boss");
+                #endregion
+
+                #region Sagittarius
+                bossChecklist.Call("AddBoss", 5.7f, mod.NPCType("Sagittarius"), mod,
+                    Lang.BossCheck("Sagittarius"),
+                    (Func<bool>)(() => AAWorld.downedSag),
+                    ModContent.ItemType<Lifescanner>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Sagittarius.SagTrophy>(),
+                        ModContent.ItemType<SagMask>(),
+                        ModContent.ItemType<SagBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Sagittarius.SagBag>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.SagShield>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.Legg>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.NeutronStaff>(),
+                        ModContent.ItemType<Items.Boss.Sagittarius.SagCore>(),
+                        ModContent.ItemType<Doomite>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Lifescanner") + "]" + Lang.BossCheck("SagittariusInfo"),
+                    "Sagittarius gallops off into the endless darkness...",
+                    "AAMod/CrossMod/BossChecklist/Sag",
+                    "AAMod/NPCs/Bosses/Sagittarius/Sagittarius_Head_Boss");
+                #endregion
+
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Anubis"), 9.5f, (Func<bool>)(() => AAWorld.downedAnubis), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Scepter") + "]" + Lang.BossCheck("AnubisInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Athena"), 11.5f, (Func<bool>)(() => AAWorld.downedAthena), Lang.BossCheck("Usean") + "[i:" + AAMod.instance.ItemType("Owl") + "]" + Lang.BossCheck("AthenaInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Greed"), 11.5f, (Func<bool>)(() => AAWorld.downedGreed), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("GoldenGrub") + "]" + Lang.BossCheck("GreedInfo"));

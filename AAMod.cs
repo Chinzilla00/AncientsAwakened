@@ -11,7 +11,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Diagnostics;
 using Terraria;
 using Terraria.GameContent.UI;
 using Terraria.Graphics.Effects;
@@ -21,7 +20,6 @@ using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.UI;
 using Terraria.Utilities;
-using ReLogic.Graphics;
 
 namespace AAMod
 {
@@ -352,6 +350,7 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Djinn"), ItemType("DjinnBox"), TileType("DjinnBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/TODE"), ItemType("ToadBox"), TileType("ToadBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6"), ItemType("SerpentBox"), TileType("SerpentBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Sagittarius"), ItemType("SagBox"), TileType("SagBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis"), ItemType("AnubisBox"), TileType("AnubisBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Acropolis"), ItemType("AcropolisBox"), TileType("AcropolisBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Hoard"), ItemType("HoardBox"), TileType("HoardBox"));
