@@ -23,8 +23,8 @@ namespace AAMod.NPCs.Bosses.Shen
         {
             base.SetDefaults();
             npc.damage = 160;
-            npc.defense = 100;
-            npc.lifeMax = 1200000;
+            npc.defense = 80;
+            npc.lifeMax = 1000000;
             npc.value = Item.sellPrice(1, 0, 0, 0);
             bossBag = mod.ItemType("ShenCache");
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA");

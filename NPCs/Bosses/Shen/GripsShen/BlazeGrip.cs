@@ -20,9 +20,9 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 	    public override void SetDefaults()
         {
 			base.SetDefaults();
-			npc.lifeMax = 80000;
+			npc.lifeMax = 70000;
             npc.damage = 200;
-            npc.defense = 110;
+            npc.defense = 60;
             npc.boss = true;
             npc.buffImmune[BuffID.OnFire] = true;
 

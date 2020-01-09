@@ -567,21 +567,21 @@ namespace AAMod.Globals
                     ModContent.ItemType<DjinnLamp>(),
                     new List<int>
                     {
-                        ModContent.ItemType<Items.Boss.Sagittarius.SagittariusTrophy>(),
+                        ModContent.ItemType<Items.Boss.Djinn.DjinnTrophy>(),
                         ModContent.ItemType<DjinnMask>(),
                         ModContent.ItemType<DjinnBox>()
                     },
                     new List<int>
                     {
-                        ModContent.ItemType<Items.Boss.Sagittarius.SagittariusBag>(),
-                        ModContent.ItemType<Items.Boss.Sagittarius.SandstormMedallion>(),
-                        ModContent.ItemType<Items.Boss.Sagittarius.SagittariusBag>(),
-                        ModContent.ItemType<Items.Boss.Sagittarius.Sagittariuserang>(),
-                        ModContent.ItemType<Items.Boss.Sagittarius.Sandagger>(),
-                        ModContent.ItemType<Items.Boss.Sagittarius.SandLamp>(),
-                        ModContent.ItemType<Items.Boss.Sagittarius.SandScepter>(),
-                        ModContent.ItemType<Items.Boss.Sagittarius.SandstormCrossbow>(),
-                        ModContent.ItemType<Items.Boss.Sagittarius.SultanScimitar>(),
+                        ModContent.ItemType<Items.Boss.Djinn.DjinnBag>(),
+                        ModContent.ItemType<Items.Boss.Djinn.SandstormMedallion>(),
+                        ModContent.ItemType<Items.Boss.Djinn.DjinnBag>(),
+                        ModContent.ItemType<Items.Boss.Djinn.Djinnerang>(),
+                        ModContent.ItemType<Items.Boss.Djinn.Sandagger>(),
+                        ModContent.ItemType<Items.Boss.Djinn.SandLamp>(),
+                        ModContent.ItemType<Items.Boss.Djinn.SandScepter>(),
+                        ModContent.ItemType<Items.Boss.Djinn.SandstormCrossbow>(),
+                        ModContent.ItemType<Items.Boss.Djinn.SultanScimitar>(),
                         ModContent.ItemType<DesertMana>()
                     },
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DjinnLamp") + "]" + Lang.BossCheck("DesertDjinnInfo"),
@@ -616,13 +616,121 @@ namespace AAMod.Globals
                     "AAMod/NPCs/Bosses/Sagittarius/Sagittarius_Head_Boss");
                 #endregion
 
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Anubis"), 9.5f, (Func<bool>)(() => AAWorld.downedAnubis), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Scepter") + "]" + Lang.BossCheck("AnubisInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Athena"), 11.5f, (Func<bool>)(() => AAWorld.downedAthena), Lang.BossCheck("Usean") + "[i:" + AAMod.instance.ItemType("Owl") + "]" + Lang.BossCheck("AthenaInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Greed"), 11.5f, (Func<bool>)(() => AAWorld.downedGreed), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("GoldenGrub") + "]" + Lang.BossCheck("GreedInfo"));
+                #region Anubis
+                bossChecklist.Call("AddBoss", 9.7f, mod.NPCType("Anubis"), mod,
+                    Lang.BossCheck("Anubis"),
+                    (Func<bool>)(() => AAWorld.downedAnubis),
+                    ModContent.ItemType<Scepter>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Anubis.AnubisTrophy>(),
+                        ModContent.ItemType<AnubisMask>(),
+                        ModContent.ItemType<AnubisBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Anubis.AnubisBag>(),
+                        ModContent.ItemType<Items.Boss.Anubis.ArtifactOfJudgement>(),
+                        ModContent.ItemType<Items.Boss.Anubis.Judgment>(),
+                        ModContent.ItemType<Items.Boss.Anubis.JackalsWrath>(),
+                        ModContent.ItemType<Items.Boss.Anubis.NeithsString>(),
+                        ModContent.ItemType<Items.Boss.Anubis.SandstormThrower>(),
+                        ModContent.ItemType<Items.Boss.Anubis.DesertStaff>(),
+                        ModContent.ItemType<Items.Boss.Anubis.SentryOfTheEye>(),
+                        ModContent.ItemType<Items.Boss.Anubis.ForsakenFragment>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Scepter") + "]" + Lang.BossCheck("AnubisInfo"),
+                    "",
+                    "AAMod/CrossMod/BossChecklist/Anubis",
+                    "AAMod/NPCs/Bosses/Anubis/Anubis_Head_Boss");
+                #endregion
+
+                #region Athena
+                bossChecklist.Call("AddBoss", 11.5f, mod.NPCType("Athena"), mod,
+                    Lang.BossCheck("Athena"),
+                    (Func<bool>)(() => AAWorld.downedAthena),
+                    ModContent.ItemType<Scepter>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Athena.AthenaTrophy>(),
+                        ModContent.ItemType<AthenaMask>(),
+                        ModContent.ItemType<AthenaBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Athena.AthenaBag>(),
+                        ModContent.ItemType<Items.Boss.Athena.GoddessHarp>(),
+                        ModContent.ItemType<Items.Boss.Athena.SkycutterKopis>(),
+                        ModContent.ItemType<Items.Boss.Athena.RazorwindLongbow>(),
+                        ModContent.ItemType<Items.Boss.Athena.GaleOfWings>(),
+                        ModContent.ItemType<Items.Boss.Athena.DivineWindCharm>(),
+                        ModContent.ItemType<Items.Boss.Athena.GoddessFeather>()
+                    },
+                    Lang.BossCheck("Usean") + "[i:" + AAMod.instance.ItemType("Owl") + "]" + Lang.BossCheck("AthenaInfo"),
+                    "",
+                    "AAMod/CrossMod/BossChecklist/Athena",
+                    "AAMod/NPCs/Bosses/Athena/Athena_Head_Boss");
+                #endregion
+
+                #region Greed
+                bossChecklist.Call("AddBoss", 11.5f, mod.NPCType("Greed"), mod,
+                    Lang.BossCheck("Greed"),
+                    (Func<bool>)(() => AAWorld.downedGreed),
+                    ModContent.ItemType<GoldenGrub>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Greed.GreedTrophy>(),
+                        ModContent.ItemType<GreedMask>(),
+                        ModContent.ItemType<GreedBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Greed.GreedBag>(),
+                        ModContent.ItemType<Items.Boss.Greed.DesireCharm>(),
+                        ModContent.ItemType<Items.Boss.Greed.StoneSlammer>(),
+                        ModContent.ItemType<Items.Boss.Greed.GildedGlock>(),
+                        ModContent.ItemType<Items.Boss.Greed.GoldDigger>(),
+                        ModContent.ItemType<Items.Boss.Greed.StoneShell>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("GoldenGrub") + "]" + Lang.BossCheck("GreedInfo"),
+                    "",
+                    "AAMod/CrossMod/BossChecklist/Greed",
+                    "AAMod/NPCs/Bosses/Greed/Greed_Head_Boss");
+                #endregion
+
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("RajahRabbit"), 12.1f, (Func<bool>)(() => AAWorld.downedRajah), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("GoldenCarrot") + "]" + Lang.BossCheck("RajahRabbitInfo"));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("AthenaA"), 14.2f, (Func<bool>)(() => AAWorld.downedAthenaA), Lang.BossCheck("AthenaAInfo"), (Func<bool>)(() => AAWorld.AthenaHerald));
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("GreedA"), 14.4f, (Func<bool>)(() => AAWorld.downedGreedA), Lang.BossCheck("GreedAInfo"), (Func<bool>)(() => AAWorld.AthenaHerald));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("AnubisA"), 15f, (Func<bool>)(() => AAWorld.downedAnubisA), Lang.BossCheck("AnubisAInfo"));
+
+                #region Anubis
+                bossChecklist.Call("AddBoss", 9.7f, mod.NPCType("AnubisA"), mod,
+                    Lang.BossCheck("AnubisA"),
+                    (Func<bool>)(() => AAWorld.downedAnubisA),
+                    ModContent.ItemType<Scepter>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Anubis.Forsaken.FAnubisTrophy>(),
+                        ModContent.ItemType<FAnubisMask>(),
+                        ModContent.ItemType<AnubisFBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Anubis.Forsaken.FAnubisBag>(),
+                        ModContent.ItemType<Items.Boss.Anubis.Forsaken.ArtifactOfGuilt>(),
+                        ModContent.ItemType<Items.Boss.Anubis.Forsaken.Verdict>(),
+                        ModContent.ItemType<Items.Boss.Anubis.Forsaken.Soulsplitter>(),
+                        ModContent.ItemType<Items.Boss.Anubis.Forsaken.Lifeline>(),
+                        ModContent.ItemType<Items.Boss.Anubis.Forsaken.CursedFury>(),
+                        ModContent.ItemType<Items.Boss.Anubis.Forsaken.ForsakenStaff>(),
+                        ModContent.ItemType<Items.Boss.Anubis.Forsaken.HorusCane>(),
+                        ModContent.ItemType<Items.Boss.Anubis.Forsaken.SoulFragment>()
+                    },
+                    Lang.BossCheck("AnubisAInfo"),
+                    "",
+                    "AAMod/CrossMod/BossChecklist/FAnubis",
+                    "AAMod/NPCs/Bosses/Anubis/Forsaken/ForsakenAnubis_Head_Boss");
+                #endregion
+
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("NightcrawlerDaybringer"), 15f, (Func<bool>)(() => AAWorld.downedEquinox), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("EquinoxWorm") + "]");
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("SistersofDiscord"), 16.1f, (Func<bool>)(() => AAWorld.downedSisters), Lang.BossCheck("Usethe") + "[i:" + AAMod.instance.ItemType("FlamesOfAnarchy") + "]");
                 bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Yamata"), 16.2f, (Func<bool>)(() => AAWorld.downedYamata), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DreadSigil") + "]" + Lang.BossCheck("YamataInfo"));
