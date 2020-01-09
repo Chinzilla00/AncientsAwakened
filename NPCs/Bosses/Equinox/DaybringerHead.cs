@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 		public override void SetDefaults()
 		{
             npc.lifeMax = 125000;
-            npc.damage = 100;
+            npc.damage = 125;
             npc.defense = 100;
             npc.value = Item.sellPrice(0, 10, 0, 0);
             for (int k = 0; k < npc.buffImmune.Length; k++)
