@@ -30,7 +30,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
             projectile.timeLeft = 360;
             projectile.penetrate = -1;
-            projectile.extraUpdates = 3; //THE SECRET TO GOING VERY FAST (updates per frame)
+            projectile.extraUpdates = 5; //THE SECRET TO GOING VERY FAST (updates per frame)
 
             projectile.friendly = false;
             projectile.hostile = true;

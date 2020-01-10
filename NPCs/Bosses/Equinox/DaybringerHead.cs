@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.Equinox
     [AutoloadBossHead]	
 	public class DaybringerHead : ModNPC
 	{
-        public float[] customAI = new float[2];		
+        public float[] customAI = new float[4];		
 		public bool nightcrawler = false;
 		public override void SetStaticDefaults()
 		{
@@ -56,7 +56,10 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
+                writer.Write(internalAI[3]);
                 writer.Write(isDeathRay);
+                writer.Write(isShootingSun);
             }
         }
 
@@ -67,7 +70,10 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 internalAI[0] = reader.ReadFloat(); //DaybringerCounter
                 internalAI[1] = reader.ReadFloat(); //NightclawerCounter
+                internalAI[2] = reader.ReadFloat();
+                internalAI[3] = reader.ReadFloat();
                 isDeathRay = reader.ReadBoolean();
+                isShootingSun = reader.ReadBoolean();
             }
         }
 
@@ -104,13 +110,13 @@ namespace AAMod.NPCs.Bosses.Equinox
                     Main.dayRate = 15;
                 }
             }else
-            if (daybringerExists && !nightcrawlerExists)
+            if ((daybringerExists && !nightcrawlerExists) || isShootingSun)
             {
                 Main.fastForwardTime = true;
                 Main.dayTime = true;
                 Main.dayRate = 0;
             }else
-            if (!daybringerExists && nightcrawlerExists)
+            if ((!daybringerExists && nightcrawlerExists) || isDeathRay)
             {
                 Main.fastForwardTime = true;
                 Main.dayTime = false;
@@ -122,6 +128,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
 		}
         bool isDeathRay = false;
+        bool isShootingSun = false;
 		bool prevWormStronger = false;
 		bool initCustom = false;
         public override bool PreAI()
@@ -191,7 +198,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             
             Player target = Main.player[npc.target];
             
-            if (npc.type == mod.NPCType("NightcrawlerHead") && isDeathRay && Math.Abs(npc.DirectionTo(target.Center).ToRotation() - npc.velocity.ToRotation()) < 0.1f)
+            if (nightcrawler && isDeathRay)
             {
                 goto DeathRayCheck;
             }
@@ -203,6 +210,10 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
             goto Normal;
             DeathRayCheck:
+            if (internalAI[2] ++ < 300)
+            {
+
+            }
             for(int deathRay = 0; deathRay < Main.maxProjectiles; deathRay++)
             {
                 if(Main.projectile[deathRay].active && Main.projectile[deathRay].type == mod.ProjectileType("NightclawerDeathraySmall") || Main.projectile[deathRay].type == mod.ProjectileType("NightclawerDeathray") && Main.projectile[deathRay].ai[1] == npc.whoAmI)
@@ -285,12 +296,14 @@ namespace AAMod.NPCs.Bosses.Equinox
                             }
                         }
                     }
+                    /*
                     if(Math.Abs(npc.DirectionTo(target.Center).ToRotation() - npc.velocity.ToRotation()) < 0.5f && (npc.Center - target.Center).Length() < 900f && !isDeathRay)
                     {
                         isDeathRay = true;
                         npc.netUpdate = true;
                         if (Main.netMode != 1) Projectile.NewProjectile(npc.position, Vector2.Normalize(npc.velocity), mod.ProjectileType("NightclawerDeathraySmall"), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
                     }
+                    */
                 }
                 if(internalAI[1] % 120 == 90 && npc.type == mod.NPCType("NightcrawlerBody") && Main.rand.Next(15) == 0)
                 {
@@ -314,8 +327,9 @@ namespace AAMod.NPCs.Bosses.Equinox
                     }
                 }
 
-                if(internalAI[1] > 1000)
+                if(internalAI[1] > 1200)
                 {
+                    isDeathRay = true;
                     internalAI[1] = 0f;
                 }
             }

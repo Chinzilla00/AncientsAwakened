@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.StripeMan
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("StripeMan Lucky Shirt");
+			DisplayName.SetDefault("Stripeman's Lucky Shirt");
             Tooltip.SetDefault(@"Displays everything
 You have chance to get gold coins in stoneblocks
 You have more chance to meet with rare creatures.
