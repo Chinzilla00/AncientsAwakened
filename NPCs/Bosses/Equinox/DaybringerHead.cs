@@ -177,24 +177,20 @@ namespace AAMod.NPCs.Bosses.Equinox
             float wormDistance = -26f;
             int aiCount = 2;
             float moveSpeedMax = 16f;
-            npc.damage = 100;
+            npc.damage = 125;
             npc.defense = 100;
 
             if (wormStronger)
             {
                 wormDistance = -52f;
                 aiCount = !nightcrawler ? 6 : 4;
-                moveSpeedMax = !nightcrawler ? 20f : 16f;
-                npc.damage = 140;
+                moveSpeedMax = !nightcrawler ? 15f : 12f;
+                npc.damage = 150;
                 npc.defense = !nightcrawler ? 120 : 150;
             }
             
             Player target = Main.player[npc.target];
-
-            if (!isHead && NPC.CountNPCS(ModContent.NPCType<Equiprobe>()) < 15)
-            {
-                SpawnProbe();
-            }
+            
             if (npc.type == mod.NPCType("NightcrawlerHead") && isDeathRay && Math.Abs(npc.DirectionTo(target.Center).ToRotation() - npc.velocity.ToRotation()) < 0.1f)
             {
                 goto DeathRayCheck;
@@ -230,9 +226,9 @@ namespace AAMod.NPCs.Bosses.Equinox
                         {
                             if(Main.player[playerid].active && !Main.player[playerid].dead && Main.player[playerid] != null && Main.player[playerid].ownedProjectileCounts[mod.ProjectileType("DaybringerStars")] <= 0)
                             {
-                                Projectile.NewProjectile(Main.player[playerid].Center.X - 200f, Main.player[playerid].Center.Y - 300f, 0, 0, mod.ProjectileType("DaybringerStars"), npc.damage / 6, 5, playerid, -200f, playerid);
+                                Projectile.NewProjectile(Main.player[playerid].Center.X - 200f, Main.player[playerid].Center.Y + 200f, 0, 0, mod.ProjectileType("DaybringerStars"), npc.damage / 6, 5, playerid, -200f, playerid);
                                 Projectile.NewProjectile(Main.player[playerid].Center.X, Main.player[playerid].Center.Y - 300f, 0, 0, mod.ProjectileType("DaybringerStars"), npc.damage / 6, 5, playerid, 0, playerid);
-                                Projectile.NewProjectile(Main.player[playerid].Center.X + 200f, Main.player[playerid].Center.Y - 300f, 0, 0, mod.ProjectileType("DaybringerStars"), npc.damage / 6, 5, playerid, 200f, playerid);
+                                Projectile.NewProjectile(Main.player[playerid].Center.X + 200f, Main.player[playerid].Center.Y + 200f, 0, 0, mod.ProjectileType("DaybringerStars"), npc.damage / 6, 5, playerid, 200f, playerid);
                             }
                         }
                     }
@@ -254,11 +250,11 @@ namespace AAMod.NPCs.Bosses.Equinox
                             }
                         }
                     }
-                    if(internalAI[0] % 450 == 200)
+                    if(internalAI[0] % 120 == 60)
                     {
                         for (int i = 0; i < Main.maxNPCs; i+=4)
                         {
-                            if (Main.npc[i].active && Main.npc[i].type == mod.NPCType("DaybringerBody") && Main.npc[i].realLife == npc.whoAmI)
+                            if (Main.npc[i].active && Main.npc[i].type == mod.NPCType("DaybringerBody") && Main.npc[i].realLife == npc.whoAmI && Main.rand.Next(15) == 0)
                             {
                                 Vector2 speed = Vector2.Normalize(new Vector2(1f, 0f).RotatedBy(Main.npc[i].rotation + 3.1415f)) * 8f;
                                 Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("DaybringerOrb"), npc.damage / 6, 0, Main.myPlayer, 0, npc.whoAmI);
@@ -324,24 +320,6 @@ namespace AAMod.NPCs.Bosses.Equinox
                 }
             }
             return false;
-        }
-
-        public int probeCounter = -1;
-        public void SpawnProbe()
-        {
-			if(probeCounter == -1)
-				probeCounter = 500 + Main.rand.Next(750);
-			if(Main.netMode == NetmodeID.MultiplayerClient || npc.whoAmI % 3 != 0) return;
-			probeCounter = Math.Max(0, probeCounter - 1);
-            if (probeCounter <= 0)
-            {
-				probeCounter = 500 + Main.rand.Next(750);
-				if(BaseAI.GetNPCs(npc.Center, mod.NPCType("Equiprobe"), 8000f).Length < 6)
-				{
-					int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("Equiprobe"), 0);
-					Main.npc[npcID].netUpdate = true;
-				}
-            }
         }
 
 		public int playerTooFarDist = 16000; //1000 tile radius, these worms move fast!		
