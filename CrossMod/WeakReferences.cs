@@ -8,6 +8,7 @@ using AAMod.Items.Blocks;
 using AAMod.Items.Flasks;
 using AAMod.Items.Usable;
 using AAMod.Items.Materials;
+using Terraria;
 
 namespace AAMod.Globals
 {
@@ -640,7 +641,7 @@ namespace AAMod.Globals
                         ModContent.ItemType<Items.Boss.Anubis.ForsakenFragment>()
                     },
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Scepter") + "]" + Lang.BossCheck("AnubisInfo"),
-                    "",
+                    null,
                     "AAMod/CrossMod/BossChecklist/Anubis",
                     "AAMod/NPCs/Bosses/Anubis/Anubis_Head_Boss");
                 #endregion
@@ -649,7 +650,7 @@ namespace AAMod.Globals
                 bossChecklist.Call("AddBoss", 11.5f, mod.NPCType("Athena"), mod,
                     Lang.BossCheck("Athena"),
                     (Func<bool>)(() => AAWorld.downedAthena),
-                    ModContent.ItemType<Scepter>(),
+                    ModContent.ItemType<Owl>(),
                     new List<int>
                     {
                         ModContent.ItemType<Items.Boss.Athena.AthenaTrophy>(),
@@ -659,7 +660,7 @@ namespace AAMod.Globals
                     new List<int>
                     {
                         ModContent.ItemType<Items.Boss.Athena.AthenaBag>(),
-                        ModContent.ItemType<Items.Boss.Athena.GoddessHarp>(),
+                        ModContent.ItemType<Items.Boss.Athena.SeraphHarp>(),
                         ModContent.ItemType<Items.Boss.Athena.SkycutterKopis>(),
                         ModContent.ItemType<Items.Boss.Athena.RazorwindLongbow>(),
                         ModContent.ItemType<Items.Boss.Athena.GaleOfWings>(),
@@ -667,7 +668,7 @@ namespace AAMod.Globals
                         ModContent.ItemType<Items.Boss.Athena.GoddessFeather>()
                     },
                     Lang.BossCheck("Usean") + "[i:" + AAMod.instance.ItemType("Owl") + "]" + Lang.BossCheck("AthenaInfo"),
-                    "",
+                    null,
                     "AAMod/CrossMod/BossChecklist/Athena",
                     "AAMod/NPCs/Bosses/Athena/Athena_Head_Boss");
                 #endregion
@@ -690,20 +691,98 @@ namespace AAMod.Globals
                         ModContent.ItemType<Items.Boss.Greed.StoneSlammer>(),
                         ModContent.ItemType<Items.Boss.Greed.GildedGlock>(),
                         ModContent.ItemType<Items.Boss.Greed.GoldDigger>(),
+                        ModContent.ItemType<Items.Boss.Greed.Miner>(),
                         ModContent.ItemType<Items.Boss.Greed.StoneShell>()
                     },
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("GoldenGrub") + "]" + Lang.BossCheck("GreedInfo"),
-                    "",
+                    null,
                     "AAMod/CrossMod/BossChecklist/Greed",
                     "AAMod/NPCs/Bosses/Greed/Greed_Head_Boss");
                 #endregion
 
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("RajahRabbit"), 12.1f, (Func<bool>)(() => AAWorld.downedRajah), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("GoldenCarrot") + "]" + Lang.BossCheck("RajahRabbitInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("AthenaA"), 14.2f, (Func<bool>)(() => AAWorld.downedAthenaA), Lang.BossCheck("AthenaAInfo"), (Func<bool>)(() => AAWorld.AthenaHerald));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("GreedA"), 14.4f, (Func<bool>)(() => AAWorld.downedGreedA), Lang.BossCheck("GreedAInfo"), (Func<bool>)(() => AAWorld.AthenaHerald));
+                #region Rajah Rabbit
+                bossChecklist.Call("AddBoss", 11.5f, mod.NPCType("Rajah"), mod,
+                    Lang.BossCheck("RajahRabbit"),
+                    (Func<bool>)(() => AAWorld.downedRajah),
+                    ModContent.ItemType<GoldenCarrot>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Rajah.RajahTrophy>(),
+                        ModContent.ItemType<RajahMask>(),
+                        ModContent.ItemType<RajahBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Rajah.RajahBag>(),
+                        ModContent.ItemType<Items.Boss.Rajah.RajahSash>(),
+                        ModContent.ItemType<Items.Boss.Rajah.BaneOfTheBunny>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Punisher>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Bunzooka>(),
+                        ModContent.ItemType<Items.Boss.Rajah.RoyalScepter>(),
+                        ModContent.ItemType<Items.Boss.Rajah.CottonCane>(),
+                        ModContent.ItemType<Items.Boss.Rajah.RabbitcopterEars>(),
+                        ModContent.ItemType<Items.Boss.Rajah.RajahPelt>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("GoldenCarrot") + "]" + Lang.BossCheck("RajahRabbitInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/Rajah",
+                    "AAMod/NPCs/Bosses/Rajah/Rajah_Head_Boss");
+                #endregion
 
-                #region Anubis
-                bossChecklist.Call("AddBoss", 9.7f, mod.NPCType("AnubisA"), mod,
+                #region Olympian Athena
+                bossChecklist.Call("AddBoss", 11.5f, mod.NPCType("AthenaA"), mod,
+                    Lang.BossCheck("AthenaA"),
+                    (Func<bool>)(() => AAWorld.downedAthenaA),
+                    ModContent.ItemType<Owl>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<AthenaABox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Athena.AthenaABag>(),
+                        ModContent.ItemType<Items.Boss.Athena.GoddessHarp>(),
+                        ModContent.ItemType<Items.Boss.Athena.Olympia>(),
+                        ModContent.ItemType<Items.Boss.Athena.Windfury>(),
+                        ModContent.ItemType<Items.Boss.Athena.GaleForce>(),
+                        ModContent.ItemType<Items.Boss.Athena.HurricaneStone>(),
+                        ModContent.ItemType<Items.Boss.Athena.StarChart>()
+                    },
+                    Lang.BossCheck("AthenaAInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/AthenaA",
+                    "AAMod/NPCs/Bosses/Athena/Olympian/AthenaA_Head_Boss",
+                    (Func<bool>)(() => AAWorld.AthenaHerald));
+                #endregion
+
+                #region Worm King Greed
+                bossChecklist.Call("AddBoss", 11.5f, mod.NPCType("GreedA"), mod,
+                    Lang.BossCheck("GreedA"),
+                    (Func<bool>)(() => AAWorld.downedGreedA),
+                    ModContent.ItemType<GoldenGrub>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<GreedABox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Greed.WKG.GreedABag>(),
+                        ModContent.ItemType<Items.Boss.Greed.WKG.DesireTalisman>(),
+                        ModContent.ItemType<Items.Boss.Greed.WKG.Earthbreaker>(),
+                        ModContent.ItemType<Items.Boss.Greed.WKG.OreCannon>(),
+                        ModContent.ItemType<Items.Boss.Greed.WKG.OreStaff>(),
+                        ModContent.ItemType<Items.Boss.Greed.WKG.Unearther>(),
+                        ModContent.ItemType<Items.Boss.Greed.WKG.WormIdol>()
+                    },
+                    Lang.BossCheck("GreedAInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/GreedA",
+                    "AAMod/NPCs/Bosses/Greed/GreedA_Head_Boss",
+                    (Func<bool>)(() => AAWorld.AthenaHerald));
+                #endregion
+
+                #region Forsaken Anubis
+                bossChecklist.Call("AddBoss", 11.7f, mod.NPCType("AnubisA"), mod,
                     Lang.BossCheck("AnubisA"),
                     (Func<bool>)(() => AAWorld.downedAnubisA),
                     ModContent.ItemType<Scepter>(),
@@ -726,18 +805,316 @@ namespace AAMod.Globals
                         ModContent.ItemType<Items.Boss.Anubis.Forsaken.SoulFragment>()
                     },
                     Lang.BossCheck("AnubisAInfo"),
-                    "",
+                    null,
                     "AAMod/CrossMod/BossChecklist/FAnubis",
                     "AAMod/NPCs/Bosses/Anubis/Forsaken/ForsakenAnubis_Head_Boss");
                 #endregion
 
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("NightcrawlerDaybringer"), 15f, (Func<bool>)(() => AAWorld.downedEquinox), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("EquinoxWorm") + "]");
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("SistersofDiscord"), 16.1f, (Func<bool>)(() => AAWorld.downedSisters), Lang.BossCheck("Usethe") + "[i:" + AAMod.instance.ItemType("FlamesOfAnarchy") + "]");
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Yamata"), 16.2f, (Func<bool>)(() => AAWorld.downedYamata), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DreadSigil") + "]" + Lang.BossCheck("YamataInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Akuma"), 16.3f, (Func<bool>)(() => AAWorld.downedAkuma), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DraconianSigil") + "]" + Lang.BossCheck("AkumaInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("Zero"), 16.4f, (Func<bool>)(() => AAWorld.downedZero), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ZeroTesseract") + "]" + Lang.BossCheck("ZeroInfo"));
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("ShenDoragon"), 20f, (Func<bool>)(() => AAWorld.downedShen), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ChaosSigil") + "]");
-                bossChecklist.Call("AddBossWithInfo", Lang.BossCheck("RajahRabbitRevenge"), 40f, (Func<bool>)(() => AAWorld.downedRajahsRevenge), Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DiamondCarrot") + "]" + Lang.BossCheck("RajahRabbitRevengeInfo"));
+                #region Equinox Worms
+                bossChecklist.Call("AddBoss", 15f, mod.NPCType("DaybringerHead"), mod,
+                    Lang.BossCheck("NightcrawlerDaybringer"),
+                    (Func<bool>)(() => AAWorld.downedEquinox),
+                    ModContent.ItemType<EquinoxWorm>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Equinox.DBTrophy>(),
+                        ModContent.ItemType<Items.Boss.Equinox.NCTrophy>(),
+                        ModContent.ItemType<DaybringerMask>(),
+                        ModContent.ItemType<NightcrawlerMask>(),
+                        ModContent.ItemType<Equibox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Equinox.EquinoxBag>(),
+                        ModContent.ItemType<Items.Boss.Equinox.RadiantStar>(),
+                        ModContent.ItemType<Items.Boss.Equinox.DarkVoid>(),
+                        ModContent.ItemType<Stardust>(),
+                        ModContent.ItemType<DarkEnergy>(),
+                        ModContent.ItemType<DarkmatterOre>(),
+                        ModContent.ItemType<RadiumOre>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("EquinoxWorm") + "]",
+                    null,
+                    "AAMod/CrossMod/BossChecklist/Equinox",
+                    "AAMod/CrossMod/BossChecklist/EquinoxHead");
+                #endregion
+
+                #region Ashe & Haruka
+                bossChecklist.Call("AddBoss", 15.9f, mod.NPCType("Ashe"), mod,
+                    Lang.BossCheck("SistersofDiscord"),
+                    (Func<bool>)(() => AAWorld.downedSisters),
+                    ModContent.ItemType<FlamesOfAnarchy>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.AH.AsheTrophy>(),
+                        ModContent.ItemType<Items.Boss.AH.HarukaTrophy>(),
+                        ModContent.ItemType<SistersBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.AH.AHBag>(),
+                        ModContent.ItemType<Items.Boss.AH.HeartOfPassion>(),
+                        ModContent.ItemType<Items.Boss.AH.HeartOfSorrow>(),
+                        ModContent.ItemType<Items.Boss.AH.AshRain>(),
+                        ModContent.ItemType<Items.Boss.AH.FuryFlame>(),
+                        ModContent.ItemType<Items.Boss.AH.FireSpiritStaff>(),
+                        ModContent.ItemType<Items.Boss.AH.AsheSatchel>(),
+                        ModContent.ItemType<Items.Boss.AH.HarukaKunai>(),
+                        ModContent.ItemType<Items.Boss.AH.Masamune>(),
+                        ModContent.ItemType<Items.Boss.AH.MizuArashi>(),
+                        ModContent.ItemType<Items.Boss.AH.HarukaBox>()
+                    },
+                    Lang.BossCheck("Usethe") + "[i:" + AAMod.instance.ItemType("FlamesOfAnarchy") + "]",
+                    null,
+                    "AAMod/CrossMod/BossChecklist/AH",
+                    "AAMod/CrossMod/BossChecklist/AHHead");
+                #endregion
+
+                #region Akuma
+                bossChecklist.Call("AddBoss", 16.1f, mod.NPCType("Akuma"), mod,
+                    Lang.BossCheck("Akuma"),
+                    (Func<bool>)(() => AAWorld.downedAkuma),
+                    ModContent.ItemType<DraconianSigil>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Akuma.AkumaTrophy>(),
+                        ModContent.ItemType<AkumaMask>(),
+                        ModContent.ItemType<AkumaBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Akuma.ReignOfFire>(),
+                        ModContent.ItemType<Items.Boss.Akuma.DragonSlasher>(),
+                        ModContent.ItemType<Items.Boss.Akuma.Daycrusher>(),
+                        ModContent.ItemType<Items.Boss.Akuma.SunSpear>(),
+                        ModContent.ItemType<Items.Boss.Akuma.Solar>(),
+                        ModContent.ItemType<Items.Boss.Akuma.MorningGlory>(),
+                        ModContent.ItemType<Items.Boss.Akuma.RadiantDawn>(),
+                        ModContent.ItemType<Items.Boss.Akuma.YOTD>(),
+                        ModContent.ItemType<Items.Boss.Akuma.DaybreakArrow>(),
+                        ModContent.ItemType<Items.Boss.Akuma.Dawnstrike>(),
+                        ModContent.ItemType<Items.Boss.Akuma.SunStorm>(),
+                        ModContent.ItemType<Items.Boss.Akuma.Daystorm>(),
+                        ModContent.ItemType<Items.Boss.Akuma.LungStaff>(),
+                        ModContent.ItemType<Items.Boss.Akuma.AkumaTerratool>(),
+                        ModContent.ItemType<Items.Boss.Akuma.CrucibleScale>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DraconianSigil") + "]" + Lang.BossCheck("AkumaInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/Akuma",
+                    "AAMod/NPCs/Bosses/Akuma/Akuma_Head_Boss");
+
+                bossChecklist.Call("AddBoss", 16.2f, mod.NPCType("AkumaA"), mod,
+                    "Akuma Awakened",
+                    (Func<bool>)(() => AAWorld.downedAkuma),
+                    ModContent.ItemType<DraconianRune>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Akuma.AkumaATrophy>(),
+                        ModContent.ItemType<AkumaAMask>(),
+                        ModContent.ItemType<AkumaABox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Akuma.AkumaBag>(),
+                        ModContent.ItemType<Items.Boss.Akuma.TaiyangBaolei>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DraconianRune") + "]" + Lang.BossCheck("AkumaInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/AkumaA",
+                    "AAMod/NPCs/Bosses/Akuma/Awakened/AkumaA_Head_Boss",
+                    (Func<bool>)(() => AAWorld.downedAkuma && Main.expertMode));
+                #endregion
+
+                #region Yamata
+                bossChecklist.Call("AddBoss", 16.3f, mod.NPCType("Yamata"), mod,
+                    Lang.BossCheck("Yamata"),
+                    (Func<bool>)(() => AAWorld.downedYamata),
+                    ModContent.ItemType<DreadSigil>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Yamata.YamataTrophy>(),
+                        ModContent.ItemType<YamataMask>(),
+                        ModContent.ItemType<YamataBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Yamata.AbyssalYari>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Hydraslayer>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Flairdra>(),
+                        ModContent.ItemType<Items.Boss.Yamata.HydraStabber>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Crescent>(),
+                        ModContent.ItemType<Items.Boss.Yamata.AE>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Darksprayer>(),
+                        ModContent.ItemType<Items.Boss.Yamata.FallingTwilight>(),
+                        ModContent.ItemType<Items.Boss.Yamata.MidnightWrath>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Sevenshot>(),
+                        ModContent.ItemType<Items.Boss.Yamata.ThrowingCrescent>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Toxibomb>(),
+                        ModContent.ItemType<Items.Boss.Yamata.YamataTerratool>(),
+                        ModContent.ItemType<Items.Boss.Yamata.DreadScale>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DreadSigil") + "]" + Lang.BossCheck("YamataInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/Yamata",
+                    "AAMod/NPCs/Bosses/Yamata/YamataHead_Head_Boss");
+
+                bossChecklist.Call("AddBoss", 16.4f, mod.NPCType("YamataA"), mod,
+                    "Yamata Awakened",
+                    (Func<bool>)(() => AAWorld.downedYamata),
+                    ModContent.ItemType<DreadRune>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Yamata.YamataATrophy>(),
+                        ModContent.ItemType<YamataAMask>(),
+                        ModContent.ItemType<YamataABox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Yamata.YamataBag>(),
+                        ModContent.ItemType<Items.Boss.Yamata.Naitokurosu>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DreadRune") + "]" + Lang.BossCheck("YamataInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/YamataA",
+                    "AAMod/NPCs/Bosses/Yamata/Awakened/YamataAHead_Head_Boss",
+                    (Func<bool>)(() => AAWorld.downedYamata && Main.expertMode));
+                #endregion
+                
+                #region Zero
+                bossChecklist.Call("AddBoss", 16.5f, mod.NPCType("Zero"), mod,
+                    Lang.BossCheck("Zero"),
+                    (Func<bool>)(() => AAWorld.downedZero),
+                    ModContent.ItemType<ZeroTesseract>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Zero.ZeroTrophy>(),
+                        ModContent.ItemType<ZeroMask>(),
+                        ModContent.ItemType<ZeroBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Zero.RiftShredder>(),
+                        ModContent.ItemType<Items.Boss.Zero.EventHorizon>(),
+                        ModContent.ItemType<Items.Boss.Zero.Vortex>(),
+                        ModContent.ItemType<Items.Boss.Zero.BHB>(),
+                        ModContent.ItemType<Items.Boss.Zero.GenocideCannon>(),
+                        ModContent.ItemType<Items.Boss.Zero.Gigataser>(),
+                        ModContent.ItemType<Items.Boss.Zero.Neutralizer>(),
+                        ModContent.ItemType<Items.Boss.Zero.OmegaVolley>(),
+                        ModContent.ItemType<Items.Boss.Zero.RealityCannon>(),
+                        ModContent.ItemType<Items.Boss.Zero.TeslaHand>(),
+                        ModContent.ItemType<Items.Boss.Zero.ZeroArrow>(),
+                        ModContent.ItemType<Items.Boss.Zero.Battery>(),
+                        ModContent.ItemType<Items.Boss.Zero.VoidStar>(),
+                        ModContent.ItemType<Items.Boss.Zero.DoomRay>(),
+                        ModContent.ItemType<Items.Boss.Zero.DoomPortal>(),
+                        ModContent.ItemType<Items.Boss.Zero.ZeroTerratool>(),
+                        ModContent.ItemType<Items.Boss.Zero.UnstableSingularity>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ZeroTesseract") + "]" + Lang.BossCheck("ZeroInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/Zero",
+                    "AAMod/NPCs/Bosses/Zero/Zero_Head_Boss");
+
+                bossChecklist.Call("AddBoss", 16.6f, mod.NPCType("ZeroA"), mod,
+                    "Zero Awakened",
+                    (Func<bool>)(() => AAWorld.downedZero),
+                    ModContent.ItemType<ZeroRune>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Zero.ZeroATrophy>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Zero.ZeroBag>(),
+                        ModContent.ItemType<Items.Boss.Zero.BrokenCode>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ZeroRune") + "]" + Lang.BossCheck("ZeroInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/ZeroProtocol",
+                    "AAMod/NPCs/Bosses/Zero/Protocol/ZeroProtocol_Head_Boss",
+                    (Func<bool>)(() => AAWorld.downedZero && Main.expertMode));
+                #endregion
+
+                #region Champion Rajah Rabbit
+                bossChecklist.Call("AddBoss", 17.5f, mod.NPCType("SupremeRajah"), mod,
+                    Lang.BossCheck("RajahRabbitRevenge"),
+                    (Func<bool>)(() => AAWorld.downedRajahsRevenge),
+                    ModContent.ItemType<GoldenCarrot>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<SRajahBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.RajahCache>(),
+                        ModContent.ItemType<Items.Boss.Rajah.RajahCape>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.Excalihare>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.BaneOfTheBunnyEX>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.PunisherEX>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.FluffyFury>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.BunzookaEX>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.RabbitsWrath>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.RoyalScepterEX>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.CottonCaneEX>(),
+                        ModContent.ItemType<Items.Boss.Rajah.Supreme.ChampionPlate>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DiamondCarrot") + "]" + Lang.BossCheck("RajahRabbitRevengeInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/CRajah",
+                    "AAMod/NPCs/Bosses/Rajah/SupremeRajah_Head_Boss");
+                #endregion
+
+                #region Shen
+                bossChecklist.Call("AddBoss", 20f, mod.NPCType("Shen"), mod,
+                    Lang.BossCheck("ShenDoragon"),
+                    (Func<bool>)(() => AAWorld.downedShen),
+                    ModContent.ItemType<ChaosSigil>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Shen.ShenTrophy>(),
+                        ModContent.ItemType<ShenMask>(),
+                        ModContent.ItemType<ShenBox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Shen.ChaosSlayer>(),
+                        ModContent.ItemType<Items.Boss.Shen.Astroid>(),
+                        ModContent.ItemType<Items.Boss.Shen.Timesplitter>(),
+                        ModContent.ItemType<Items.Boss.Shen.DraconicRipper>(),
+                        ModContent.ItemType<Items.Boss.Shen.FlamingTwilight>(),
+                        ModContent.ItemType<Items.Boss.Shen.Skyfall>(),
+                        ModContent.ItemType<Items.Boss.Shen.MeteorStrike>(),
+                        ModContent.ItemType<Items.Boss.Shen.ShenTerratool>(),
+                        ModContent.ItemType<Items.Boss.Shen.ChaosScale>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ChaosSigil") + "]",
+                    null,
+                    "AAMod/CrossMod/BossChecklist/Shen",
+                    "AAMod/NPCs/Bosses/Shen/Shen_Head_Boss");
+
+                bossChecklist.Call("AddBoss", 20.1f, mod.NPCType("ShenA"), mod,
+                    "Shen Doragon Awakened",
+                    (Func<bool>)(() => AAWorld.downedShen),
+                    ModContent.ItemType<ChaosRune>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Shen.ShenATrophy>(),
+                        ModContent.ItemType<ShenAMask>(),
+                        ModContent.ItemType<ShenABox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Shen.ShenCache>(),
+                        ModContent.ItemType<Items.Boss.Shen.Duality>()
+                    },
+                    Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ChaosRune") + "]",
+                    null,
+                    "AAMod/CrossMod/BossChecklist/ShenA",
+                    "AAMod/NPCs/Bosses/Shen/Protocol/ShenA_Head_Boss",
+                    (Func<bool>)(() => AAWorld.downedShen && Main.expertMode));
+                #endregion
 
                 // SlimeKing = 1f;
                 // EyeOfCthulhu = 2f;

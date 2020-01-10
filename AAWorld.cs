@@ -1160,7 +1160,7 @@ namespace AAMod
                 ClearClouds();
                 CloudCheck = true;
             }
-            if (NPC.downedMoonlord && !AthenaHerald && !downedAthenaA)
+            if (downedAnubisA && !AthenaHerald && !downedAthenaA)
             {
                 if (HeraldTimer > 0)
                 {
