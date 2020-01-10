@@ -230,9 +230,9 @@ namespace AAMod.NPCs.Bosses.Equinox
                         {
                             if(Main.player[playerid].active && !Main.player[playerid].dead && Main.player[playerid] != null && Main.player[playerid].ownedProjectileCounts[mod.ProjectileType("DaybringerStars")] <= 0)
                             {
-                                Projectile.NewProjectile(Main.player[playerid].Center.X - 200f, Main.player[playerid].Center.Y - 300f, 0, 0, mod.ProjectileType("DaybringerStars"), npc.damage / 6, 5, playerid, -200f, playerid);
+                                Projectile.NewProjectile(Main.player[playerid].Center.X - 200f, Main.player[playerid].Center.Y + 300f, 0, 0, mod.ProjectileType("DaybringerStars"), npc.damage / 6, 5, playerid, -200f, playerid);
                                 Projectile.NewProjectile(Main.player[playerid].Center.X, Main.player[playerid].Center.Y - 300f, 0, 0, mod.ProjectileType("DaybringerStars"), npc.damage / 6, 5, playerid, 0, playerid);
-                                Projectile.NewProjectile(Main.player[playerid].Center.X + 200f, Main.player[playerid].Center.Y - 300f, 0, 0, mod.ProjectileType("DaybringerStars"), npc.damage / 6, 5, playerid, 200f, playerid);
+                                Projectile.NewProjectile(Main.player[playerid].Center.X + 200f, Main.player[playerid].Center.Y + 300f, 0, 0, mod.ProjectileType("DaybringerStars"), npc.damage / 6, 5, playerid, 200f, playerid);
                             }
                         }
                     }

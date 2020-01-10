@@ -231,19 +231,6 @@ namespace AAMod.Projectiles.Serpent
             if (player.dead) modPlayer.SnakeMinion = false;
             if (modPlayer.SnakeMinion) projectile.timeLeft = 2;
 
-            //D U S T
-            /*if (Main.rand.Next(30) == 0)
-            {
-                int num1039 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 135, 0f, 0f, 0, default, 2f);
-                Main.dust[num1039].noGravity = true;
-                Main.dust[num1039].fadeIn = 2f;
-                Point point4 = Main.dust[num1039].position.ToTileCoordinates();
-                if (WorldGen.InWorld(point4.X, point4.Y, 5) && WorldGen.SolidTile(point4.X, point4.Y))
-                {
-                    Main.dust[num1039].noLight = true;
-                }
-            }*/
-
             bool flag67 = false;
             Vector2 value67 = Vector2.Zero;
             float num1052 = 0f;
@@ -335,6 +322,7 @@ namespace AAMod.Projectiles.Serpent
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             projectile.timeLeft *= 5;
             projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion = true;
+            projectile.minionSlots = 0;
         }
         public override Color? GetAlpha(Color lightColor)
         {
@@ -372,7 +360,6 @@ namespace AAMod.Projectiles.Serpent
                 projectile.active = false;
                 return;
             }
-
 
             int num1038 = 30;
             if (player.dead) modPlayer.SnakeMinion = false;

@@ -10,7 +10,7 @@ namespace AAMod.Items.Armor.StripeMan
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("StripeMan Lucky Pants");
+			DisplayName.SetDefault("Stripeman's Lucky Pants");
             Tooltip.SetDefault(@"Get all of the fisher skill effects
 When fish swallowed the hook, you can get an extra fish.
 You have more chance to get a crate among the extra booty");

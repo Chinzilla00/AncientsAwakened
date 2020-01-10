@@ -34,6 +34,11 @@ namespace AAMod.Projectiles.Anubis.Forsaken
 			return false;
 		}
 
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            projectile.damage = (int)(projectile.damage / .9f);
+        }
+
         public override void AI()
         {
             Player p = Main.player[projectile.owner];
