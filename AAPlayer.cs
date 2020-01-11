@@ -1014,7 +1014,7 @@ namespace AAMod
             }
             else
             {
-                Main.sunTexture = mod.GetTexture("Backgrounds/Sun1");
+                Main.sunTexture = ModContent.GetTexture("Terraria/Sun");;
                 Main.sun3Texture = mod.GetTexture("Backgrounds/Sun3");
             }
 

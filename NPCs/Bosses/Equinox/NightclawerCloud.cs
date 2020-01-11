@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                 }
             }
 
-            if(projectile.ai[0] % 60 == 10)
+            if(projectile.ai[0] % 40 == 20)
             {
                 Vector2 speed = new Vector2(1f, 0f).RotatedBy((float)(Main.rand.NextDouble() * 3.1415f)) * 6f;
                 Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, speed.X, speed.Y, mod.ProjectileType("NightcrawlerNothing"), projectile.damage, 0, Main.myPlayer);

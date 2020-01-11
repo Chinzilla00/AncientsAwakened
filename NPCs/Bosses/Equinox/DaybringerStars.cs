@@ -41,8 +41,14 @@ namespace AAMod.NPCs.Bosses.Equinox
 
             Player player = Main.player[(int)projectile.ai[1]];
 
-
-            projectile.Center = player.Center + new Vector2(projectile.ai[0], -300f);
+            if(projectile.ai[0] == 0)
+            {
+                projectile.Center = player.Center + new Vector2(projectile.ai[0], -300f);
+            }
+            else
+            {
+                projectile.Center = player.Center + new Vector2(projectile.ai[0], 200f);
+            }
         }
 
         public override void Kill(int timeLeft)
@@ -77,19 +83,19 @@ namespace AAMod.NPCs.Bosses.Equinox
             int height3 = num84;
             for (int num85 = 0; num85 < 3; num85++)
             {
-                int num86 = Dust.NewDust(position, num84, height3, 1, 0f, 0f, 100, default, 1.5f);
+                int num86 = Dust.NewDust(position, num84, height3, 6, 0f, 0f, 100, default, 1.5f);
                 Main.dust[num86].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num86].color = new Color(250, 244, 171);
             }
             for (int num87 = 0; num87 < 7; num87++)
             {
-                int num88 = Dust.NewDust(position, num84, height3, 1, 0, 0, 100, new Color(), 2f);
+                int num88 = Dust.NewDust(position, num84, height3, 6, 0, 0, 100, new Color(), 2f);
                 Main.dust[num88].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].noGravity = true;
                 Main.dust[num88].velocity *= 3f;
                 Main.dust[num88].velocity += projectile.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
                 Main.dust[num88].color = new Color(250, 244, 171);
-                num88 = Dust.NewDust(position, num84, height3, 1, 0, 0, 100, new Color(), 2f);
+                num88 = Dust.NewDust(position, num84, height3, 6, 0, 0, 100, new Color(), 2f);
                 Main.dust[num88].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].velocity *= 2f;
                 Main.dust[num88].noGravity = true;

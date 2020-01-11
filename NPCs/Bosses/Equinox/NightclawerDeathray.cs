@@ -41,12 +41,12 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 projectile.velocity = -Vector2.UnitY;
             }
-            if (Main.npc[(int)projectile.ai[1]].active && Main.npc[(int)projectile.ai[1]].type == mod.NPCType("NightcrawlerHead") && !Main.dayTime)
+            if (Main.npc[(int)projectile.ai[1]].active && (Main.npc[(int)projectile.ai[1]].type == mod.NPCType("NightcrawlerBody")) && !Main.dayTime)
             {
-                projectile.Center = Main.npc[(int)projectile.ai[1]].Center;
                 if (projectile.ai[0] == 0)
                 {
-                    projectile.velocity = Vector2.Normalize(Main.npc[(int)projectile.ai[1]].velocity);
+                    Vector2 speed = Vector2.Normalize(new Vector2(1f, 0f).RotatedBy(Main.npc[(int)projectile.ai[1]].rotation + 3.1415f)) * 8f;
+                    projectile.velocity = speed;
                     projectile.position += 30 * projectile.velocity;
                     projectile.position += 10 * projectile.velocity.RotatedBy(Main.npc[(int)projectile.ai[1]].spriteDirection > 0 ? -Math.PI / 2 : Math.PI / 2);
                 }
@@ -55,6 +55,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                     projectile.velocity = (Main.npc[(int)projectile.ai[1]].rotation + (float)Math.PI / 2).ToRotationVector2();
                     projectile.velocity = projectile.velocity.RotatedBy(projectile.ai[0]);
                 }
+                projectile.Center = Main.npc[(int)projectile.ai[1]].Center;
             }
             else
             {

@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             projectile.scale = 1f;
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
-			projectile.timeLeft = 20;
+			projectile.timeLeft = 180;
         }	
         public override void AI()
         {
@@ -30,10 +30,10 @@ namespace AAMod.NPCs.Bosses.Equinox
                 projectile.Kill();
             }
 
-            int dustId = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 10f), projectile.width, projectile.height + 5, 1, projectile.velocity.X * 0.2f,
+            int dustId = Dust.NewDust(new Vector2(projectile.Center.X + 9f, projectile.Center.Y), projectile.width, projectile.height + 10, 6, projectile.velocity.X * 0.2f,
                 projectile.velocity.Y * 0.2f, 100, new Color(250, 244, 171), 2f);
             Main.dust[dustId].noGravity = true;
-            int dustId3 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y + 10f), projectile.width, projectile.height + 5, 1, projectile.velocity.X * 0.2f,
+            int dustId3 = Dust.NewDust(new Vector2(projectile.Center.X + 9f, projectile.Center.Y), projectile.width, projectile.height + 10, 6, projectile.velocity.X * 0.2f,
                 projectile.velocity.Y * 0.2f, 100, new Color(250, 244, 171), 2f);
             Main.dust[dustId3].noGravity = true;
         }

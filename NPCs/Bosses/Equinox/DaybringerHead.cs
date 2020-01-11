@@ -13,7 +13,7 @@ namespace AAMod.NPCs.Bosses.Equinox
     [AutoloadBossHead]	
 	public class DaybringerHead : ModNPC
 	{
-        public float[] customAI = new float[4];		
+        public float[] customAI = new float[1];		
 		public bool nightcrawler = false;
 		public override void SetStaticDefaults()
 		{
@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             bossBag = mod.ItemType("DBBag");
 		}
 
-        public float[] internalAI = new float[2];
+        public float[] internalAI = new float[5];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -58,8 +58,8 @@ namespace AAMod.NPCs.Bosses.Equinox
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
+                writer.Write(internalAI[4]);
                 writer.Write(isDeathRay);
-                writer.Write(isShootingSun);
             }
         }
 
@@ -72,8 +72,8 @@ namespace AAMod.NPCs.Bosses.Equinox
                 internalAI[1] = reader.ReadFloat(); //NightclawerCounter
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
+                internalAI[4] = reader.ReadFloat(); //DaybringerPosCheck
                 isDeathRay = reader.ReadBoolean();
-                isShootingSun = reader.ReadBoolean();
             }
         }
 
@@ -100,23 +100,32 @@ namespace AAMod.NPCs.Bosses.Equinox
 			bool nightcrawlerExists = NPC.AnyNPCs(ModContent.NPCType<NightcrawlerHead>());
 			if (daybringerExists && nightcrawlerExists)
             {
-                if (Main.expertMode)
+                if((npc.type == mod.NPCType("DaybringerHead") && Main.dayTime && !preShootingSun) || (npc.type == mod.NPCType("NightcrawlerHead") && !Main.dayTime && !preDeathRay))
                 {
-                    Main.fastForwardTime = true;
-                    Main.dayRate = 20;
-                }else
+                    if (Main.expertMode)
+                    {
+                        Main.fastForwardTime = true;
+                        Main.dayRate = 20;
+                    }else
+                    {
+                        Main.fastForwardTime = true;
+                        Main.dayRate = 15;
+                    }
+                }
+                else if((npc.type == mod.NPCType("DaybringerHead") && preShootingSun) || (npc.type == mod.NPCType("NightcrawlerHead") && preDeathRay))
                 {
-                    Main.fastForwardTime = true;
-                    Main.dayRate = 15;
+                    Main.dayRate = 0;
+                    Main.fastForwardTime = false;
+                    Main.time --;
                 }
             }else
-            if ((daybringerExists && !nightcrawlerExists) || isShootingSun)
+            if ((daybringerExists && !nightcrawlerExists))
             {
                 Main.fastForwardTime = true;
                 Main.dayTime = true;
                 Main.dayRate = 0;
             }else
-            if ((!daybringerExists && nightcrawlerExists) || isDeathRay)
+            if ((!daybringerExists && nightcrawlerExists))
             {
                 Main.fastForwardTime = true;
                 Main.dayTime = false;
@@ -127,16 +136,24 @@ namespace AAMod.NPCs.Bosses.Equinox
                 Main.fastForwardTime = false;
             }
 		}
+        bool preDeathRay = false;
         bool isDeathRay = false;
-        bool isShootingSun = false;
+        bool preShootingSun = false;
 		bool prevWormStronger = false;
 		bool initCustom = false;
         public override bool PreAI()
         {
             if(nightcrawler)
             {
-                Lighting.AddLight((int)(npc.Center.X / 16f), (int)(npc.Center.Y / 16f), .37f, .8f, .89f);
+                for(int i = -2; i < 2; i++)
+                {
+                    for(int j = -2; j < 2; j++)
+                    {
+                        Lighting.AddLight((int)(npc.Center.X / 16f) + i, (int)(npc.Center.Y / 16f) + j, .37f, .8f, .89f);
+                    }
+                }
             }
+
             if (Main.netMode != 1 && !initCustom)
             {
                 initCustom = true;
@@ -198,10 +215,51 @@ namespace AAMod.NPCs.Bosses.Equinox
             
             Player target = Main.player[npc.target];
             
-            if (nightcrawler && isDeathRay)
+            if (npc.type == mod.NPCType("NightcrawlerHead"))
             {
-                goto DeathRayCheck;
+                if(isDeathRay)
+                {
+                    npc.TargetClosest(false);
+                    goto ExtraAI;
+                }
+                if(preDeathRay)
+                {
+                    npc.defense = 400;
+                    if((npc.Center - target.Center).Length() < 400f)
+                    {
+                        isDeathRay = true;
+                    }
+                    moveSpeedMax = target.velocity.Length() > 0? (target.velocity.Length() + 30f) : 30f;
+                }
             }
+            if (npc.type == mod.NPCType("DaybringerHead"))
+            {
+                if(preShootingSun)
+                {
+                    npc.defense = 400;
+                    npc.TargetClosest(false);
+                    goto ExtraAI;
+                }
+            }
+            if (npc.type != mod.NPCType("NightcrawlerHead") && nightcrawler && preDeathRay)
+            {
+                npc.defense = 400;
+                if(internalAI[2]++ > 600)
+                {
+                    internalAI[2] = 0;
+                    preDeathRay = false;
+                }
+            }
+            if (npc.type != mod.NPCType("DaybringerHead") && !nightcrawler && preShootingSun)
+            {
+                npc.defense = 400;
+                if(internalAI[3]++ > 600)
+                {
+                    internalAI[3] = 0;
+                    preShootingSun = false;
+                }
+            }
+
             for (int m = 0; m < aiCount; m++)
             {
                 int Length = nightcrawler ? 24 : 30;
@@ -209,24 +267,123 @@ namespace AAMod.NPCs.Bosses.Equinox
                 BaseAI.AIWorm(npc, wormTypes, Length, wormDistance, moveSpeedMax, 0.07f, true, false, false, false, false, false);
             }
             goto Normal;
-            DeathRayCheck:
-            if (internalAI[2] ++ < 300)
-            {
 
-            }
-            for(int deathRay = 0; deathRay < Main.maxProjectiles; deathRay++)
+            ExtraAI:
+            if(npc.type == mod.NPCType("NightcrawlerHead"))
             {
-                if(Main.projectile[deathRay].active && Main.projectile[deathRay].type == mod.ProjectileType("NightclawerDeathraySmall") || Main.projectile[deathRay].type == mod.ProjectileType("NightclawerDeathray") && Main.projectile[deathRay].ai[1] == npc.whoAmI)
+                Vector2 newvelocity = npc.velocity + Vector2.Normalize(npc.velocity.RotatedBy((float)Math.PI/2)) * 0.039f;
+                npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 1.57f;
+                npc.velocity = Vector2.Normalize(newvelocity) * 4f;
+                
+                if (internalAI[2]++ == 320)
                 {
-                    return false;
+                    for (int i = 0; i < Main.maxNPCs; i+=2)
+                    {
+                        if (Main.npc[i].active && Main.npc[i].type == mod.NPCType("NightcrawlerBody") && Main.npc[i].realLife == npc.whoAmI)
+                        {
+                            Main.npc[i].netUpdate = true;
+                            if (Main.netMode != 1)
+                            {
+                                Vector2 speed = Vector2.Normalize(new Vector2(1f, 0f).RotatedBy(Main.npc[i].rotation + 3.1415f)) * 8f;
+                                Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, speed.X, speed.Y, mod.ProjectileType("NightclawerDeathraySmall"), npc.damage / 4, 0, Main.myPlayer, 0, i);
+                            }
+                        }
+                    }
+                }
+                if (internalAI[2] >= 320)
+                {
+                    for(int deathRay = 0; deathRay < Main.maxProjectiles; deathRay++)
+                    {
+                        if(Main.projectile[deathRay].active && Main.projectile[deathRay].type == mod.ProjectileType("NightclawerDeathraySmall") || Main.projectile[deathRay].type == mod.ProjectileType("NightclawerDeathray") && Main.projectile[deathRay].ai[1] == npc.whoAmI)
+                        {
+                            return false;
+                        }
+                    }
+                }
+
+                if(internalAI[2] > 600)
+                {
+                    internalAI[2] = 0;
+                    isDeathRay = false;
+                    preDeathRay = false;
                 }
             }
-            isDeathRay = false;
+            if(npc.type == mod.NPCType("DaybringerHead"))
+            {
+                Vector2 targetpos = target.Center - new Vector2(800f, 1000f);
+                Vector2 targetpos2 = target.Center - new Vector2(-800f, 1000f);
+                if(internalAI[4] == 0)
+                {
+                    if(Math.Abs(npc.Center.X - targetpos.X) + Math.Abs(npc.Center.Y - targetpos.Y) < 100f)
+                    {
+                        internalAI[4] = 1f;
+                        targetpos = targetpos2;
+                        for (int i = 0; i < Main.maxNPCs; i+= 4)
+                        {
+                            if (Main.npc[i].active && Main.npc[i].type == mod.NPCType("DaybringerBody") && Main.npc[i].realLife == npc.whoAmI)
+                            {
+                                Vector2 speed = Vector2.Normalize(new Vector2(1f, 0f).RotatedBy(Main.npc[i].rotation + 3.1415f)) * 8f;
+                                Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, -speed.X, -speed.Y, mod.ProjectileType("DaybringerSun"), npc.damage / 6, 1, 255);
+                            }
+                        }
+                    }
+                }
+                else if(internalAI[4] == 1)
+                {
+                    targetpos = targetpos2;
+                    if(Math.Abs(npc.Center.X - targetpos.X) + Math.Abs(npc.Center.Y - targetpos.Y) < 100f)
+                    {
+                        internalAI[4] = 0f;
+                        targetpos = target.Center - new Vector2(800f, 1000f);
+                        for (int i = 0; i < Main.maxNPCs; i+= 4)
+                        {
+                            if (Main.npc[i].active && Main.npc[i].type == mod.NPCType("DaybringerBody") && Main.npc[i].realLife == npc.whoAmI)
+                            {
+                                Vector2 speed = Vector2.Normalize(new Vector2(1f, 0f).RotatedBy(Main.npc[i].rotation + 3.1415f)) * 8f;
+                                Projectile.NewProjectile(Main.npc[i].Center.X, Main.npc[i].Center.Y, -speed.X, -speed.Y, mod.ProjectileType("DaybringerSun"), npc.damage / 6, 1, 255);
+                            }
+                        }
+                    }
+                }
+                if (npc.Center.X < targetpos.X)
+                {
+                    npc.velocity.X += 0.5f;
+                    if (npc.velocity.X < 0)
+                        npc.velocity.X += 0.5f * 2;
+                }
+                else
+                {
+                    npc.velocity.X -= 0.5f;
+                    if (npc.velocity.X > 0)
+                        npc.velocity.X -= 0.5f * 2;
+                }
+                if (npc.Center.Y < targetpos.Y)
+                {
+                    npc.velocity.Y += 0.5f;
+                    if (npc.velocity.Y < 0)
+                        npc.velocity.Y += 0.5f * 2;
+                }
+                else
+                {
+                    npc.velocity.Y -= 0.5f;
+                    if (npc.velocity.Y > 0)
+                        npc.velocity.Y -= 0.5f * 2;
+                }
+                npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 1.57f;
+
+                if(internalAI[3]++ > 600)
+                {
+                    internalAI[3] = 0;
+                    preShootingSun = false;
+                }
+            }
+            return false;
+
             Normal:
             npc.spriteDirection = 1;
             prevWormStronger = wormStronger;
 
-            if(isDay)
+            if(isDay && !preShootingSun)
             {
                 internalAI[0] += 1f;
                 if(isHead && npc.type == mod.NPCType("DaybringerHead"))
@@ -243,14 +400,9 @@ namespace AAMod.NPCs.Bosses.Equinox
                             }
                         }
                     }
-                    if(Math.Abs(npc.DirectionTo(target.Center).ToRotation() - npc.velocity.ToRotation()) < 0.7f && internalAI[0] % 360 == 0)
-                    {
-                        Vector2 speed = Vector2.Normalize(npc.velocity) * 5f;
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, speed.X, speed.Y, mod.ProjectileType("DaybringerSun"), npc.damage / 6, 1, 255);
-                    }
                     if(internalAI[0] % 120 == 30)
                     {
-                        for (int i = 0; i < Main.maxNPCs; i++)
+                        for (int i = 0; i < Main.maxNPCs; i += 2)
                         {
                             if (Main.npc[i].active && Main.npc[i].type == mod.NPCType("DaybringerBody") && Main.npc[i].realLife == npc.whoAmI)
                             {
@@ -276,17 +428,19 @@ namespace AAMod.NPCs.Bosses.Equinox
                     }
                 }
 
-                if(internalAI[0] > 1000)
+                if(internalAI[0] > 1200)
                 {
+                    preShootingSun = true;
                     internalAI[0] = 0f;
                 }
             }
-            else
+            if(!isDay && !preDeathRay)
             {
                 internalAI[1] += 1f;
                 if(isHead && npc.type == mod.NPCType("NightcrawlerHead"))
                 {
-                    if(internalAI[1] % 300 == 0)
+                    /*
+                    if(internalAI[1] % 150 == 0)
                     {
                         for(int playerid = 0; playerid < 255; playerid++)
                         {
@@ -295,13 +449,6 @@ namespace AAMod.NPCs.Bosses.Equinox
                                 Projectile.NewProjectile(Main.player[playerid].Center.X + Main.rand.Next(-5, 5) * 40f, Main.player[playerid].Center.Y + Main.rand.Next(-5, 5) * 40f, 0, 0, mod.ProjectileType("NightclawerCloud"), npc.damage / 6, 0, 255);
                             }
                         }
-                    }
-                    /*
-                    if(Math.Abs(npc.DirectionTo(target.Center).ToRotation() - npc.velocity.ToRotation()) < 0.5f && (npc.Center - target.Center).Length() < 900f && !isDeathRay)
-                    {
-                        isDeathRay = true;
-                        npc.netUpdate = true;
-                        if (Main.netMode != 1) Projectile.NewProjectile(npc.position, Vector2.Normalize(npc.velocity), mod.ProjectileType("NightclawerDeathraySmall"), npc.damage / 4, 0f, Main.myPlayer, 0, npc.whoAmI);
                     }
                     */
                 }
@@ -329,8 +476,8 @@ namespace AAMod.NPCs.Bosses.Equinox
 
                 if(internalAI[1] > 1200)
                 {
-                    isDeathRay = true;
                     internalAI[1] = 0f;
+                    if(Main.hardMode) preDeathRay = true;
                 }
             }
             return false;

@@ -361,6 +361,10 @@ namespace AAMod.Projectiles.Greed.WKG
                     }
                 }
             }
+            else if(ModSupport.GetMod("Redemption") != null)
+            {
+                
+            }
             else if(projectile.ai[1] >= 3930 && ItemLoader.GetItem((int) projectile.ai[1]).mod != null)
 			{
                 try

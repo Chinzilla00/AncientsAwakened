@@ -22,7 +22,7 @@ namespace AAMod
         [Tooltip("$Mods.AAMod.Common.DisableBossDialogueInfo")]
         public bool NoBossDialogue;
 
-        [DefaultValue(true)]
+        [DefaultValue(false)]
         [Label("$Mods.AAMod.Common.AAStyleMainPage")]
         [Tooltip("$Mods.AAMod.Common.AAStyleMainPageInfo")]
         public bool AAStyleMainPage;

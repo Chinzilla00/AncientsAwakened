@@ -91,10 +91,10 @@ namespace AAMod.NPCs.Bosses.Equinox
                 //emit dust
                 for (int i = 0; i < 5; i++)
                 {
-                    int d1 = Dust.NewDust(projectile.position + new Vector2(projectile.width / 2, projectile.height / 2) + projectile.velocity * muzzleDist, 1, 1, 1, 0f, 0f, 100, new Color(250, 244, 171), 1.5f);
+                    int d1 = Dust.NewDust(projectile.position + new Vector2(projectile.width / 2, projectile.height / 2) + projectile.velocity * muzzleDist, 1, 1, 6, 0f, 0f, 100, new Color(250, 244, 171), 1.5f);
                     Main.dust[d1].noGravity = true;
                     Main.dust[d1].velocity *= 0.4f;
-                    d1 = Dust.NewDust(endPos + new Vector2(projectile.width / 2, projectile.height / 2), 0, 0, 1, 0f, 0f, 100, new Color(250, 244, 171), 1f);
+                    d1 = Dust.NewDust(endPos + new Vector2(projectile.width / 2, projectile.height / 2), 0, 0, 6, 0f, 0f, 100, new Color(250, 244, 171), 1f);
                     Main.dust[d1].noGravity = true;
                     Main.dust[d1].velocity *= 0.4f;
                 }

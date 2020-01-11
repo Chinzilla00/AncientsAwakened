@@ -49,6 +49,10 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 projectile.velocity *= 1.05f;
             }
+            if (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y) < 30f)
+            {
+                projectile.velocity *= 1.012f;
+            }
             if (projectile.velocity.X < 0f)
             {
                 projectile.direction = -1;

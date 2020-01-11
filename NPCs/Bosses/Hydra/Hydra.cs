@@ -143,20 +143,6 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void AI()
         {
-            bool noHeads = !NPC.AnyNPCs(ModContent.NPCType<HydraHead1>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead2>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead3>()) &&
-                !NPC.AnyNPCs(ModContent.NPCType<HydraHead4>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead5>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead6>()) &&
-                !NPC.AnyNPCs(ModContent.NPCType<HydraHead7>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead8>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead9>());
-
-            if (HeadsSpawned && noHeads)
-            {
-                if (Main.netMode != 1)
-                {
-                    npc.life = 0;
-                    npc.checkDead();
-                    npc.netUpdate = true;
-                }
-                return;
-            }
 
             if (Main.dayTime)
             {
@@ -236,6 +222,22 @@ namespace AAMod.NPCs.Bosses.Hydra
             {
                 runningAway = true;
                 AIMovementRunAway();
+                return;
+            }
+            
+            bool noHeads = !NPC.AnyNPCs(ModContent.NPCType<HydraHead1>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead2>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead3>()) &&
+                !NPC.AnyNPCs(ModContent.NPCType<HydraHead4>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead5>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead6>()) &&
+                !NPC.AnyNPCs(ModContent.NPCType<HydraHead7>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead8>()) && !NPC.AnyNPCs(ModContent.NPCType<HydraHead9>());
+
+            if (HeadsSpawned && noHeads)
+            {
+                if (Main.netMode != 1)
+                {
+                    npc.life = 0;
+                    npc.checkDead();
+                    npc.netUpdate = true;
+                }
+                return;
             }
         }
 
