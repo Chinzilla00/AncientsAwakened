@@ -439,7 +439,6 @@ namespace AAMod.NPCs.Bosses.Equinox
                 internalAI[1] += 1f;
                 if(isHead && npc.type == mod.NPCType("NightcrawlerHead"))
                 {
-                    /*
                     if(internalAI[1] % 150 == 0)
                     {
                         for(int playerid = 0; playerid < 255; playerid++)
@@ -450,7 +449,6 @@ namespace AAMod.NPCs.Bosses.Equinox
                             }
                         }
                     }
-                    */
                 }
                 if(internalAI[1] % 120 == 90 && npc.type == mod.NPCType("NightcrawlerBody") && Main.rand.Next(15) == 0)
                 {

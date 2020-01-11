@@ -1696,6 +1696,9 @@ ItemTooltip.SiegeBox=播放 'Storming S.I.E.G.E.' by Karamitasu
 ItemName.Soul_Forge=精魂熔炉
 ItemTooltip.Soul_Forge=用于特殊制作
 
+ItemName.SistersBox=八音盒(混沌姐妹)
+ItemTooltip.SistersBox=播放 'Sisters of Anarchy' by Shadow Figure
+
 ItemName.SpiralStairs=旋梯
 
 ItemName.StarBox=八音盒(漫天星辰)
@@ -2194,6 +2197,9 @@ ItemTooltip.UltibladeTyphoon=发射3个快速回旋的剃刃风暴\n水刃龙卷
 
 ItemName.DarkVoid=深空之星
 ItemTooltip.DarkVoid=晚上你的属性提升\n“漆黑而又怪异”
+
+ItemName.EquinoxBag=宝藏袋
+ItemTooltip.EquinoxBag={$CommonItemTooltip.RightClickToOpen}\n根据一天中时间的不同产生掉落物
 
 ItemName.DBBag=宝藏袋
 ItemTooltip.DBBag={$CommonItemTooltip.RightClickToOpen}
@@ -6062,6 +6068,8 @@ MapObject.MireUBox=八音盒
 MapObject.MonarchBox=八音盒
 
 MapObject.MushBox=八音盒
+
+MapObject.SistersBox=八音盒
 
 MapObject.OroborosChestC1=虚环木宝箱
 
