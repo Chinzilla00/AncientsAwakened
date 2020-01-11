@@ -14,7 +14,7 @@ namespace AAMod.Items.Boss.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Morning Glory");
-            Tooltip.SetDefault("Splits into phantom piercing spears while travelling");
+            Tooltip.SetDefault("Splits into 4 additional phantom piercing spears on throw");
         }
 
         public override void SetDefaults()

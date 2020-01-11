@@ -3,6 +3,7 @@ using System;
 using Terraria;
 using BaseMod;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Projectiles.Akuma
 {
@@ -10,6 +11,7 @@ namespace AAMod.Projectiles.Akuma
 	{
 		float rot = 0f;
 		float rotInit = -1f;
+		bool released = false;
 		
 		public override void SetStaticDefaults()
 		{
@@ -20,7 +22,7 @@ namespace AAMod.Projectiles.Akuma
         {
             projectile.width = 30;
             projectile.height = 30;
-            projectile.timeLeft = 180;
+            projectile.timeLeft = 300;
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.tileCollide = false;
@@ -60,20 +62,49 @@ namespace AAMod.Projectiles.Akuma
             }
 			
 			Player player = Main.player[projectile.owner];
-			
+			if (player == Main.player[projectile.owner])
+			{
+				if (player.altFunctionUse == 2)
+				{
+					released = true;
+					float num1 = 12f;
+					Vector2 vector2 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
+					float f1 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
+					float f2 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+					if ((double)player.gravDir == -1.0)
+						f2 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector2.Y;
+					float num4 = (float)Math.Sqrt((double)f1 * (double)f1 + (double)f2 * (double)f2);
+					float num5;
+					if (float.IsNaN(f1) && float.IsNaN(f2) || (double)f1 == 0.0 && (double)f2 == 0.0)
+					{
+						f1 = (float)projectile.direction;
+						f2 = 0.0f;
+						num5 = num1;
+					}
+					else
+						num5 = num1 / num4;
+					float SpeedX = f1 * num5;
+					float SpeedY = f2 * num5;
+					projectile.velocity.X = SpeedX;
+					projectile.velocity.Y = SpeedY;
+				}
+			}
 			projectile.ai[0]++;
-			if (projectile.ai[0] < 30 )
+			if (projectile.ai[0] < 30 && !released)
             {
 				if (projectile.active) { SetRot(); }
 				BaseAI.AIRotate(projectile, ref projectile.rotation, ref rot, player.Center, true, 60f, 20f, 0.07f, true);
 			}
-			if (projectile.ai[0] >= 30 )
+			if (projectile.ai[0] >= 30)
             {
 				int foundTarget1 = HomeOnTarget();
-				if (foundTarget1 == -1)
+				if (!released)
 				{
-					if (projectile.active) { SetRot(); }
-					BaseAI.AIRotate(projectile, ref projectile.rotation, ref rot, player.Center, true, 60f, 20f, 0.07f, true);
+					if (foundTarget1 == -1)
+					{
+						if (projectile.active) { SetRot(); }
+						BaseAI.AIRotate(projectile, ref projectile.rotation, ref rot, player.Center, true, 60f, 20f, 0.07f, true);
+					}
 				}
 			}
             if (projectile.position.HasNaNs())
@@ -150,7 +181,7 @@ namespace AAMod.Projectiles.Akuma
         private int HomeOnTarget()
         {
             const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 400;
+            const float homingMaximumRangeInPixels = 300;
 
             int selectedTarget = -1;
             for (int i = 0; i < Main.maxNPCs; i++)

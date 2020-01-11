@@ -14,8 +14,8 @@ namespace AAMod.Projectiles.Akuma
 
         public override void SetDefaults()
         {
-            projectile.width = 64;
-            projectile.height = 80;
+            projectile.width = 176;
+            projectile.height = 176;
             projectile.penetrate = -1;
             projectile.friendly = true;
             projectile.hostile = false;

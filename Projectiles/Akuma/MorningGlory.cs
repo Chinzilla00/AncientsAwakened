@@ -22,13 +22,14 @@ namespace AAMod.Projectiles.Akuma
             projectile.penetrate = -1;
             projectile.melee = true;
 			projectile.timeLeft = 180;
+			projectile.usesLocalNPCImmunity = true;
+			projectile.localNPCHitCooldown = 1;
         }
 		
         private const int alphaReduction = 25;
-
+		
         public override void AI()
-        {
-						
+        {	
 			if (projectile.ai[1] != -1f) projectile.rotation =
 				projectile.velocity.ToRotation() + (float)Math.PI / 2 + (float)Math.PI / 4;
 			if (projectile.ai[1] == -1f) projectile.rotation =
@@ -36,22 +37,22 @@ namespace AAMod.Projectiles.Akuma
 			
 			if (projectile.ai[1] != -1f) projectile.ai[0]++;
 			
-			if (projectile.ai[0] == 25f)
+			if (projectile.ai[0] == 1f || projectile.ai[0] == 3f)
 			{
-				projectile.ai[0] = 0f;
 				int numberProjectiles = 2;
-				float rotation = MathHelper.ToRadians(3);
+				float rotation = MathHelper.ToRadians(1);
+				if (projectile.ai[0] == 3f) rotation = MathHelper.ToRadians(2);
 				for (int i = 0; i < numberProjectiles; i++)
 				{
 					Vector2 perturbedSpeed = new Vector2(projectile.velocity.X, projectile.velocity.Y).RotatedBy(MathHelper.Lerp(-rotation, rotation, i / (numberProjectiles - 1)));
 					int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, perturbedSpeed.X, perturbedSpeed.Y, ModContent.ProjectileType<MorningGlory>(),  projectile.damage, projectile.knockBack, projectile.owner, 0, -1f);
 					Main.projectile[proj].usesLocalNPCImmunity = true;
-					Main.projectile[proj].localNPCHitCooldown = 1;
+					Main.projectile[proj].localNPCHitCooldown = 10;
 					Main.projectile[proj].penetrate = -1;
-					Main.projectile[proj].velocity *= 0.5f;
+					Main.projectile[proj].rotation = projectile.velocity.ToRotation() + (float)Math.PI / 2 + (float)Math.PI / 4;
 				}
 			}
-			
+
 			if (projectile.ai[1] != -1f)
 			{
 				if (projectile.alpha > 0)
@@ -65,7 +66,6 @@ namespace AAMod.Projectiles.Akuma
 			}
 			if (projectile.ai[1] == -1f)
 			{
-				projectile.velocity *= 1.03f;
 				projectile.alpha += 2;
 				if (projectile.alpha >= 255)
 				{
