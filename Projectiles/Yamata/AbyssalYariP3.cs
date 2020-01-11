@@ -65,7 +65,7 @@ namespace AAMod.Projectiles.Yamata
             {
                 screenX += Main.screenWidth;
             }
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 2; i++)
             {
                 float screenY = Main.screenPosition.Y;
                 screenY += Main.rand.Next(Main.screenHeight);

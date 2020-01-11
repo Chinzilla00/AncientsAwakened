@@ -115,7 +115,7 @@ namespace AAMod.Projectiles.Yamata
                 Projectile.NewProjectile(target.Center.X + pos.X, target.Center.Y + pos.Y, 0, 0, mod.ProjectileType("AbyssalYariP2"), damage, 0, Main.myPlayer, i, target.whoAmI);
             }
             */
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 3; i++)
             {
                 float screenY = Main.screenPosition.Y;
                 screenY += Main.rand.Next(Main.screenHeight);
