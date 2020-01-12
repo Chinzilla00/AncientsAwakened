@@ -15,7 +15,6 @@ namespace AAMod.Items.Armor.Champion.Baron
 		{
 			DisplayName.SetDefault("Baron Bunny");
 			Main.projFrames[projectile.type] = 8;
-            projectile.minionSlots = 0;
         }
     	
         public override void SetDefaults()
@@ -25,7 +24,6 @@ namespace AAMod.Items.Armor.Champion.Baron
             projectile.netImportant = true;
             projectile.friendly = true;
             projectile.ignoreWater = true;
-            projectile.minionSlots = 0;
             projectile.timeLeft = 18000;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
