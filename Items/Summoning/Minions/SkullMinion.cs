@@ -24,7 +24,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.minion = true;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
-            projectile.minionSlots = 0;
+            projectile.minionSlots = 1;
         }
         
         public override void AI()
