@@ -21,6 +21,7 @@ namespace AAMod.NPCs.Enemies.Other
             npc.noGravity = true;
             npc.noTileCollide = false;
             npc.knockBackResist = 0.5f;
+            npc.value = Item.sellPrice(0, 0, 8, 30);
             npc.npcSlots = 0f;
             npc.lavaImmune = true;
             npc.netAlways = true;
