@@ -11,7 +11,6 @@ namespace AAMod.Items.Armor.Doomite
 		{
 			DisplayName.SetDefault("Searcher");
 			Main.projFrames[projectile.type] = 5;
-            projectile.minionSlots = 0;
         }
     	
         public override void SetDefaults()
@@ -21,7 +20,6 @@ namespace AAMod.Items.Armor.Doomite
             projectile.netImportant = true;
             projectile.friendly = true;
             projectile.ignoreWater = true;
-            projectile.minionSlots = 0;
             projectile.timeLeft = 18000;
             projectile.penetrate = -1;
             projectile.tileCollide = false;

@@ -21,6 +21,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             projectile.friendly = false;
             projectile.hostile = true;
             projectile.ignoreWater = true;
+            projectile.tileCollide = false;
             projectile.penetrate = -11;
             projectile.extraUpdates = 1;
             projectile.scale = 1.1f;
