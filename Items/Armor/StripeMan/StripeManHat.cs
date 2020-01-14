@@ -60,7 +60,8 @@ You can put any sand into the Extractinator");
 
 		public override void UpdateArmorSet(Player player)
 		{
-			if(player.GetModPlayer<AAPlayer>().StripeCrasyLucky)
+			string active = "";
+			if (player.GetModPlayer<AAPlayer>().StripeCrasyLucky)
 			{
 				active = Language.GetTextValue("Mods.AAMod.Common.StripeManSetBonusactive");
 			}
