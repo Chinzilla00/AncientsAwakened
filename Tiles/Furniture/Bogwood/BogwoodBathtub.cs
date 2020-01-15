@@ -5,7 +5,7 @@ using Terraria.ObjectData;
 
 namespace AAMod.Tiles.Furniture.Bogwood
 {
-    public class BogwoodTub : ModTile
+    public class BogwoodBathtub : ModTile
 	{
 		public override void SetDefaults()
 		{

@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Blocks.BogwoodF
 {
-    public class BogwoodTub : ModItem
+    public class BogwoodBathtub : ModItem
     {
         public override void SetStaticDefaults()
         {
