@@ -22,7 +22,7 @@ namespace AAMod.Items.Blocks.BogwoodF
             item.useStyle = 1;
             item.consumable = true;
             item.value = 250;
-            item.createTile = mod.TileType("BogwoodTub");
+            item.createTile = mod.TileType("BogwoodBathtub");
         }
         public override void AddRecipes()
         {
