@@ -117,10 +117,6 @@ namespace AAMod.NPCs.Bosses.Athena
                             else
                             if (npc.ai[0] >= 1200)
                             {
-                                Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
-                                AcropolisCloud1 biome = new AcropolisCloud1();
-                                biome.Place(origin, WorldGen.structures);
-
                                 if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AthenaDefeat9"), Color.CornflowerBlue);
                                 AAModGlobalNPC.SpawnBoss(Main.player[npc.target], ModContent.NPCType<Olympian.AthenaA>(), false, npc.Center);
 

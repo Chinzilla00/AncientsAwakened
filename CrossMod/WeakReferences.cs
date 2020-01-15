@@ -782,8 +782,8 @@ namespace AAMod.Globals
                 #endregion
 
                 #region Forsaken Anubis
-                bossChecklist.Call("AddBoss", 11.7f, mod.NPCType("AnubisA"), mod,
-                    Lang.BossCheck("AnubisA"),
+                bossChecklist.Call("AddBoss", 11.7f, mod.NPCType("ForsakenAnubis"), mod,
+                    Lang.BossCheck("ForsakenAnubis"),
                     (Func<bool>)(() => AAWorld.downedAnubisA),
                     ModContent.ItemType<Scepter>(),
                     new List<int>
@@ -1017,8 +1017,8 @@ namespace AAMod.Globals
                     "AAMod/CrossMod/BossChecklist/Zero",
                     "AAMod/NPCs/Bosses/Zero/Zero_Head_Boss");
 
-                bossChecklist.Call("AddBoss", 16.6f, mod.NPCType("ZeroA"), mod,
-                    "Zero Awakened",
+                bossChecklist.Call("AddBoss", 16.6f, mod.NPCType("ZeroProtocol"), mod,
+                    "Zero Protocol",
                     (Func<bool>)(() => AAWorld.downedZero),
                     ModContent.ItemType<ZeroRune>(),
                     new List<int>

@@ -295,7 +295,7 @@ namespace AAMod.Projectiles.Greed.WKG
                         float ai = Main.rand.Next(100);
                         Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(3.1415f * 2));
                         Vector2 vector84 = Vector2.Normalize(vector83.RotatedByRandom(0.8)) * 14f;
-                        int id = Projectile.NewProjectile(projectile.position.X + projectile.velocity.X, projectile.position.Y  + projectile.velocity.Y, vector84.X * 2, vector84.Y * 2, ModContent.ProjectileType<Projectiles.Zero.ZeroTaze>(), projectile.damage / 2, 0f, Main.myPlayer, vector83.ToRotation(), ai);
+                        int id = Projectile.NewProjectile(projectile.position.X + projectile.velocity.X, projectile.position.Y  + projectile.velocity.Y, vector84.X * 2, vector84.Y * 2, ModContent.ProjectileType<Zero.ZeroTaze>(), projectile.damage / 2, 0f, Main.myPlayer, vector83.ToRotation(), ai);
                         Main.projectile[id].timeLeft = 30;
                     }
                 }
@@ -1052,7 +1052,7 @@ namespace AAMod.Projectiles.Greed.WKG
                 projectile.tileCollide = false;
                 for (int num291 = 0; num291 < 5; num291++)
                 {
-                    int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.Moonraze>(), 0f, 0f, 100);
+                    int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Moonraze>(), 0f, 0f, 100);
                     Main.dust[num292].velocity *= 2f;
                     Main.dust[num292].noGravity = true;
                 };
