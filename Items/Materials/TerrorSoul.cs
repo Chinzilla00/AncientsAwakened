@@ -11,8 +11,7 @@ namespace AAMod.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Snow Mana");
-            // ticksperframe, frameCount
+            DisplayName.SetDefault("Terror Soul");
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 3));
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;

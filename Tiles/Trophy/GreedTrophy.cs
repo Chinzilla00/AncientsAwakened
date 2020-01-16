@@ -24,5 +24,11 @@ namespace AAMod.Tiles.Trophy
 		{
             Item.NewItem(i * 16, j * 16, 48, 48, mod.ItemType("GreedTrophy"));
         }
-	}
+
+        public override bool Slope(int i, int j)
+        {
+            return false;
+        }
+
+    }
 }

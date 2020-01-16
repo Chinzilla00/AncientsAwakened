@@ -292,7 +292,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
 
             }
 
-            if (player.Center.X < npc.Center.X + 100)
+            if (player.Center.X < npc.Center.X + 200)
             {
                 npc.direction = -1;
             }

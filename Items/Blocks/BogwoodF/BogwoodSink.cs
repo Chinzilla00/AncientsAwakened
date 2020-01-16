@@ -28,7 +28,7 @@ namespace AAMod.Items.Blocks.BogwoodF
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("Bogwood"), 6);
-            recipe.AddIngredient(ItemID.LavaBucket);
+            recipe.AddIngredient(ItemID.WaterBucket);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -22,13 +22,12 @@ namespace AAMod.Items.Blocks.BogwoodF
             item.useStyle = 1;
             item.consumable = true;
             item.value = 250;
-            item.createTile = mod.TileType("BogwoodCandle");
+            item.createTile = mod.TileType("BogwoodChair");
         }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(mod.ItemType("Bogwood"), 4);
-            recipe.AddIngredient(ItemID.Torch, 1);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();

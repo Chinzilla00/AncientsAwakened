@@ -35,8 +35,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             return Color.White;
         }
 
-        bool DidntHitPlayer = false;
-
         public override void AI()
         {
             if (projectile.timeLeft > 0)
@@ -45,7 +43,6 @@ namespace AAMod.NPCs.Bosses.Akuma
             }
             if (projectile.timeLeft == 0)
             {
-                DidntHitPlayer = true;
                 projectile.Kill();
             }
 
@@ -101,21 +98,11 @@ namespace AAMod.NPCs.Bosses.Akuma
             double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
             double deltaAngle = spread / 4f;
             double offsetAngle;
-            int i;
-            if (projectile.owner == Main.myPlayer && !DidntHitPlayer)
+            for (int i = 0; i < 2; i++)
             {
-                for (i = 0; i < 3; i++)
-                {
-                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("Flameburst"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("Flameburst"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                }
-                for (i = 0; i < 2; i++)
-                {
-                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingFireball"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingFireball"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                }
+                offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingFireball"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-Math.Sin(offsetAngle) * 6f), (float)(-Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingFireball"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
             }
             Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("AkumaBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
         }

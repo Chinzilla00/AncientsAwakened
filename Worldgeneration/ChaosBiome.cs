@@ -719,7 +719,7 @@ namespace AAMod.Worldgeneration
                 [Color.Black] = -1
             };
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/GreedNest"), colorToTile, mod.GetTexture("Worldgeneration/GreedNestWalls"), colorToWall, null, mod.GetTexture("Worldgeneration/GreedNestSlopes"));
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/GreedNest"), colorToTile, mod.GetTexture("Worldgeneration/GreedNestWalls"), colorToWall, null);
 
             gen.Generate(origin.X, origin.Y, true, true);
 
