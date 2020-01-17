@@ -104,7 +104,15 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             if (isSupreme)
             {
-                damage *= .5f;
+                bool SupremeAttacking = npc.ai[3] != 0 && npc.ai[3] < 6;
+                if (SupremeAttacking)
+                {
+                    damage *= 1 - (npc.life / npc.lifeMax);
+                }
+                else
+                {
+                    damage *= .7f;
+                }
             }
             return true;
         }
@@ -143,6 +151,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         }
 
         private bool SayLine = false;
+        private bool DefenseLine = false;
 
         public override void AI()
         {
@@ -165,33 +174,42 @@ namespace AAMod.NPCs.Bosses.Rajah
                 npc.netUpdate = true;
             }
 
-            if (isSupreme && npc.life <= npc.lifeMax / 7 && !SayLine && Main.netMode != 1)
+            if (isSupreme)
             {
-                SayLine = true;
-                string Name;
+                if (npc.ai[3] != 0 && !DefenseLine && !AAWorld.downedRajahsRevenge && Main.netMode != 1)
+                {
+                    DefenseLine = true;
+                    BaseUtility.Chat("Rajah glows with furious energy as he attacks, strengthening his defenses", Color.MediumPurple);
 
-                int bunnyKills = NPC.killCount[Item.NPCtoBanner(NPCID.Bunny)];
-                if (bunnyKills >= 100 && !AAWorld.downedRajahsRevenge)
-                {
-                    Name = "MUDERER";
                 }
-                else
+                if (npc.life <= npc.lifeMax / 7 && !SayLine && Main.netMode != 1)
                 {
-                    if (Main.netMode != 0)
+                    SayLine = true;
+                    string Name;
+
+                    int bunnyKills = NPC.killCount[Item.NPCtoBanner(NPCID.Bunny)];
+                    if (bunnyKills >= 100 && !AAWorld.downedRajahsRevenge)
                     {
-                        Name = "Terrarians";
-                    }
-                    else if (!AAWorld.downedRajahsRevenge)
-                    {
-                        Name = "Terrarian";
+                        Name = "MUDERER";
                     }
                     else
                     {
-                        Name = Main.LocalPlayer.name;
+                        if (Main.netMode != 0)
+                        {
+                            Name = "Terrarians";
+                        }
+                        else if (!AAWorld.downedRajahsRevenge)
+                        {
+                            Name = "Terrarian";
+                        }
+                        else
+                        {
+                            Name = Main.LocalPlayer.name;
+                        }
                     }
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Rajah5") + Name.ToUpper() + Lang.BossChat("Rajah6"), 107, 137, 179);
+                    music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand");
                 }
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Rajah5") + Name.ToUpper() + Lang.BossChat("Rajah6"), 107, 137, 179);
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand");
             }
 
             Player player = Main.player[npc.target];
@@ -982,6 +1000,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
             bool RageMode = !isSupreme && npc.life < npc.lifeMax / 7;
+            bool SupremeAttacking = isSupreme && npc.ai[3] != 0 && npc.ai[3] < 6;
             bool SupremeRageMode = isSupreme && npc.life < npc.lifeMax / 7;
             RajahTexture();
             if (isSupreme && isDashing)
@@ -993,7 +1012,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 Color RageColor = BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, Color.Firebrick, drawColor, Color.Firebrick);
                 BaseDrawing.DrawAura(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, -5f, RageColor);
             }
-            else if (SupremeRageMode)
+            else if (SupremeAttacking)
             {
                 BaseDrawing.DrawAura(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, -5f, Main.DiscoColor);
             }
