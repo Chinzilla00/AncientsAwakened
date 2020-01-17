@@ -1402,38 +1402,6 @@ namespace AAMod
             {
                 RajahType = ModContent.NPCType<SupremeRajah>();
             }
-            else if (NPC.killCount[NPCID.Bunny] >= 900)
-            {
-                RajahType = ModContent.NPCType<Rajah9>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 800)
-            {
-                RajahType = ModContent.NPCType<Rajah8>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 700)
-            {
-                RajahType = ModContent.NPCType<Rajah7>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] > 600)
-            {
-                RajahType = ModContent.NPCType<Rajah6>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 500)
-            {
-                RajahType = ModContent.NPCType<Rajah5>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 400)
-            {
-                RajahType = ModContent.NPCType<Rajah4>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 300)
-            {
-                RajahType = ModContent.NPCType<Rajah3>();
-            }
-            else if (NPC.killCount[NPCID.Bunny] >= 200)
-            {
-                RajahType = ModContent.NPCType<Rajah2>();
-            }
 
             if (Main.netMode != 1)
             {

@@ -156,7 +156,7 @@ namespace AAMod.Globals
                 yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Djinn"));
 
                 // Rajah
-                string[] rajahTypes = new string[] { "Rajah", "Rajah2", "Rajah3", "Rajah4", "Rajah5", "Rajah6", "Rajah7", "Rajah8", "Rajah9", "SupremeRajah" };
+                string[] rajahTypes = new string[] { "Rajah", "SupremeRajah" };
                 foreach (string rajahType in rajahTypes)
                 {
                     yabhb.Call("hbStart");

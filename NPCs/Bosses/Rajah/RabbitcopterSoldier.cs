@@ -54,14 +54,6 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void PostAI()
         {
             if (NPC.AnyNPCs(ModContent.NPCType<Rajah>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah2>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah3>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah6>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah9>()) ||
                    NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
             {
                 if (npc.alpha > 0)
@@ -113,14 +105,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.noGravity = true;
             npc.rotation = ((npc.rotation * 9f) + (npc.velocity.X * 0.1f)) / 10f;
             if (!(NPC.AnyNPCs(ModContent.NPCType<Rajah>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah2>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah3>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah6>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah9>()) ||
                 NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>())))
             {
                 if (npc.timeLeft > 5)
@@ -357,40 +341,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
         }
     }
-    public class RabbitcopterSoldier1 : RabbitcopterSoldier
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 110;
-            npc.defense = 30;
-            npc.lifeMax = 500;
-        }
-    }
     public class RabbitcopterSoldier2 : RabbitcopterSoldier
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 130;
-            npc.defense = 40;
-            npc.lifeMax = 650;
-        }
-    }
-    public class RabbitcopterSoldier3 : RabbitcopterSoldier
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 150;
-            npc.defense = 50;
-            npc.lifeMax = 750;
-        }
-    }
-    public class RabbitcopterSoldier4 : RabbitcopterSoldier
     {
         public override string Texture => "AAMod/NPCs/Bosses/Rajah/RabbitcopterSoldier";
         public override void SetDefaults()

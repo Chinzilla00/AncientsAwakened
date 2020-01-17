@@ -88,14 +88,6 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void PostAI()
         {
             if (NPC.AnyNPCs(ModContent.NPCType<Rajah>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah2>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah3>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah6>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) ||
-                   NPC.AnyNPCs(ModContent.NPCType<Rajah9>()) ||
                    NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
             {
                 if (npc.alpha > 0)
@@ -121,40 +113,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
         }
     }
-    public class BunnyBrawler1 : BunnyBrawler
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBrawler";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 120;
-            npc.defense = 70;
-            npc.lifeMax = 600;
-        }
-    }
     public class BunnyBrawler2 : BunnyBrawler
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBrawler";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 140;
-            npc.defense = 70;
-            npc.lifeMax = 800;
-        }
-    }
-    public class BunnyBrawler3 : BunnyBrawler
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBrawler";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 155;
-            npc.defense = 90;
-            npc.lifeMax = 1200;
-        }
-    }
-    public class BunnyBrawler4 : BunnyBrawler
     {
         public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBrawler";
         public override void SetDefaults()

@@ -46,38 +46,6 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     rajah = (Rajah)npcBody.modNPC;
                 }
-                else if (npcBody.type == ModContent.NPCType<Rajah2>())
-                {
-                    rajah = (Rajah2)npcBody.modNPC;
-                }
-                else if (npcBody.type == ModContent.NPCType<Rajah3>())
-                {
-                    rajah = (Rajah3)npcBody.modNPC;
-                }
-                else if (npcBody.type == ModContent.NPCType<Rajah4>())
-                {
-                    rajah = (Rajah4)npcBody.modNPC;
-                }
-                else if (npcBody.type == ModContent.NPCType<Rajah5>())
-                {
-                    rajah = (Rajah5)npcBody.modNPC;
-                }
-                else if (npcBody.type == ModContent.NPCType<Rajah6>())
-                {
-                    rajah = (Rajah6)npcBody.modNPC;
-                }
-                else if (npcBody.type == ModContent.NPCType<Rajah7>())
-                {
-                    rajah = (Rajah7)npcBody.modNPC;
-                }
-                else if (npcBody.type == ModContent.NPCType<Rajah8>())
-                {
-                    rajah = (Rajah8)npcBody.modNPC;
-                }
-                else if (npcBody.type == ModContent.NPCType<Rajah9>())
-                {
-                    rajah = (Rajah9)npcBody.modNPC;
-                }
                 else if (npcBody.type == ModContent.NPCType<SupremeRajah>())
                 {
                     rajah = (SupremeRajah)npcBody.modNPC;

@@ -104,42 +104,38 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             if (isSupreme)
             {
-                damage *= .3f;
+                damage *= .7f;
             }
             return true;
         }
 
         public float ProjSpeed()
         {
-            if (isSupreme)
+            if (npc.life < (npc.lifeMax * .85f)) //The lower the health, the more damage is done
             {
-                return 16f;
-            }
-            else if (npc.life < (npc.lifeMax * .85f)) //The lower the health, the more damage is done
-            {
-                return 10f;
+                return isSupreme ? 12f : 10f;
             }
             if (npc.life < (npc.lifeMax * .7f))
             {
-                return 11f;
+                return isSupreme ? 13f : 11f;
             }
             if (npc.life < (npc.lifeMax * .65f))
             {
-                return 12f;
+                return isSupreme ? 14f : 12f;
             }
             if (npc.life < (npc.lifeMax * .4f))
             {
-                return 13f;
+                return isSupreme ? 15f : 13f;
             }
             if (npc.life < (npc.lifeMax * .25f))
             {
-                return 14f;
+                return isSupreme ? 16f : 14f;
             }
             if (npc.life < (npc.lifeMax * .1f))
             {
-                return 16f;
+                return isSupreme ? 16f : 15f;
             }
-            return 9f;
+            return isSupreme ? 11f : 9f;
         }
 
         private bool SayLine = false;
@@ -1056,117 +1052,6 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
 
     [AutoloadBossHead]
-    public class Rajah2 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 80;
-            npc.defense = 60;
-            npc.lifeMax = 80000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah3 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 80;
-            npc.defense = 70;
-            npc.lifeMax = 100000;
-            npc.life = 100000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah4 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 100;
-            npc.defense = 90;
-            npc.lifeMax = 200000;
-            npc.life = 200000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah5 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 130;
-            npc.defense = 100;
-            npc.lifeMax = 300000;
-            npc.life = 300000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah6 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 180;
-            npc.defense = 150;
-            npc.lifeMax = 500000;
-            npc.life = 500000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah7 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 210;
-            npc.defense = 170;
-            npc.lifeMax = 700000;
-            npc.life = 700000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah8 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 250;
-            npc.defense = 180;
-            npc.lifeMax = 900000;
-            npc.life = 900000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah9 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 290;
-            npc.defense = 230;
-            npc.lifeMax = 1000000;
-            npc.life = 1000000;
-        }
-    }
-
-    [AutoloadBossHead]
     public class SupremeRajah : Rajah
     {
         public override string Texture => "AAMod/NPCs/Bosses/Rajah/Supreme/SupremeRajah";
@@ -1182,8 +1067,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             base.SetDefaults();
             npc.damage = 310;
             npc.defense = 0;
-            npc.lifeMax = 2600000;
-            npc.life = 2600000;
+            npc.lifeMax = 2000000;
+            npc.life = 2000000;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/SupremeRajah");
             bossBag = mod.ItemType("RajahCache");
             isSupreme = true;
