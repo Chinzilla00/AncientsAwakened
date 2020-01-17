@@ -120,7 +120,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 float dist = npc.Distance(player.Center);
                 if (dist > 800)
                 {
-                    npc.alpha += 5;
+                    npc.alpha += 3;
                     if (npc.alpha >= 255)
                     {
                         Vector2 tele = new Vector2(player.Center.X + (Main.rand.Next(2) == 0 ? 300 : -300), player.Center.Y - 16);
@@ -130,7 +130,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 }
                 else
                 {
-                    npc.alpha -= 3;
+                    npc.alpha -= 5;
                     if (npc.alpha <= 0)
                     {
                         npc.alpha = 0;
