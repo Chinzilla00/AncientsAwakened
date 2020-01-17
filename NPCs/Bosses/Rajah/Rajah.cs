@@ -104,15 +104,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             if (isSupreme)
             {
-                bool SupremeAttacking = npc.ai[3] != 0 && npc.ai[3] < 6;
-                if (SupremeAttacking)
-                {
-                    damage *= 1 - (npc.life / npc.lifeMax);
-                }
-                else
-                {
-                    damage *= .7f;
-                }
+                damage *= .3f;
             }
             return true;
         }
@@ -1000,7 +992,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
             bool RageMode = !isSupreme && npc.life < npc.lifeMax / 7;
-            bool SupremeAttacking = isSupreme && npc.ai[3] != 0 && npc.ai[3] < 6;
             bool SupremeRageMode = isSupreme && npc.life < npc.lifeMax / 7;
             RajahTexture();
             if (isSupreme && isDashing)
@@ -1012,7 +1003,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 Color RageColor = BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, Color.Firebrick, drawColor, Color.Firebrick);
                 BaseDrawing.DrawAura(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, -5f, RageColor);
             }
-            else if (SupremeAttacking)
+            else if (SupremeRageMode)
             {
                 BaseDrawing.DrawAura(spriteBatch, RajahTex, 0, npc.position, npc.width, npc.height, auraPercent, 1f, 1f, 0f, npc.direction, 8, npc.frame, 0f, -5f, Main.DiscoColor);
             }
