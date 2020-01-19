@@ -427,7 +427,8 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("Akuma7") : Main.rand.Next(4) == 0 ? Lang.BossChat("Akuma8") : "", new Color(180, 41, 32));
+                    if (!Quote3 || Main.rand.Next(4) == 0)
+                        if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("Akuma7") : Lang.BossChat("Akuma8"), new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote3 = true;
                 }
@@ -440,7 +441,8 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote5) ? Lang.BossChat("Akuma13") : Main.rand.Next(4) == 0 ? Lang.BossChat("Akuma14") : "", new Color(180, 41, 32));
+                    if (!Quote5 || Main.rand.Next(4) == 0)
+                        if (Main.netMode != 1) AAMod.Chat((!Quote5) ? Lang.BossChat("Akuma13") : Lang.BossChat("Akuma14"), new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote5 = true;
                 }
