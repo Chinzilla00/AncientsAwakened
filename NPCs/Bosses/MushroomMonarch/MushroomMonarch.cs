@@ -270,6 +270,25 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 			{
                 BaseAI.AICharger(npc, ref npc.ai, 0.07f, 10f, false, 30);				
 			}
+
+            if (!Main.dayTime)
+            {
+                Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
+                npc.active = false;
+                return;
+            }
+
+            if (player.dead || !player.active || Vector2.Distance(player.Center, npc.Center) > 3000)
+            {
+                npc.TargetClosest();
+
+                if (player.dead || !player.active || Vector2.Distance(player.Center, npc.Center) > 3000)
+                {
+                    Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
+                    npc.active = false;
+                    return;
+                }
+            }
         }
         
         public void MoveToPoint(Vector2 point)
