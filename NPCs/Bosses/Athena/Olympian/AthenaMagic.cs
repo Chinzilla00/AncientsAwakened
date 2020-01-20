@@ -35,11 +35,11 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
         {
             if (projectile.velocity.X < 0f)
             {
-                projectile.spriteDirection = -1;
+                projectile.spriteDirection = 1;
             }
             else
             {
-                projectile.spriteDirection = 1;
+                projectile.spriteDirection = -1;
             }
             projectile.rotation = (float)Math.Atan2(-projectile.velocity.Y, -projectile.velocity.X);
 

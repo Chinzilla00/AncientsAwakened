@@ -366,7 +366,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             }
             if (where == 0)
             {
-                npc.position = CloudPick();
+                npc.Center = CloudPick();
             }
             else if (where == 1)
             {

@@ -783,7 +783,7 @@ namespace AAMod.Globals
 
                 #region Forsaken Anubis
                 bossChecklist.Call("AddBoss", 11.7f, mod.NPCType("ForsakenAnubis"), mod,
-                    Lang.BossCheck("ForsakenAnubis"),
+                    "Forsaken Anubis",
                     (Func<bool>)(() => AAWorld.downedAnubisA),
                     ModContent.ItemType<Scepter>(),
                     new List<int>
