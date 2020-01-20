@@ -223,12 +223,15 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                     }
                     break;
                 case 3:
-                    targetPos = player.Center;
-                    targetPos.X -= 500 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y -= 500;
-                    MoveToVector2(targetPos);
 
-                    if (npc.ai[1]++ == 120)
+                    if (npc.ai[1]++ < 120)
+                    {
+                        targetPos = player.Center;
+                        targetPos.X -= 500 * (npc.Center.X < targetPos.X ? -1 : 1);
+                        targetPos.Y -= 500;
+                        MoveToVector2(targetPos);
+                    }
+                    else
                     {
                         int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("RuneSpawn"), npc.damage / 2, 3);
                         Main.projectile[a].Center = npc.Center;
