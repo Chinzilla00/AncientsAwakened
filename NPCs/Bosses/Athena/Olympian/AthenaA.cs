@@ -228,14 +228,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
 
                     targetPos = player.Center;
                     targetPos.Y -= 500;
-                    if (Vector2.Distance(npc.Center, targetPos) > 100)
-                    {
-                        MoveToVector2(targetPos);
-                    }
-                    else
-                    {
-                        npc.velocity *= .96f;
-                    }
+                    MoveToVector2(targetPos);
 
                     if (npc.ai[1] == 120)
                     {
