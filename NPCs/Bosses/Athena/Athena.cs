@@ -220,7 +220,7 @@ namespace AAMod.NPCs.Bosses.Athena
                         npc.ai[3]++;
                     }
 
-                    if (Vector2.Distance(player.Center, Acropolis) > 480)
+                    if (Vector2.Distance(player.Center, Acropolis) > 1280)
                     {
                         if (npc.ai[2] == 0 && Main.netMode != 1)
                         {

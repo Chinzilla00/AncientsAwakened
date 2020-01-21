@@ -11,7 +11,6 @@ namespace AAMod.Items.Summoning.Minions
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Crimtane Crimera");
-            Main.projFrames[projectile.type] = 2;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
         }
@@ -82,16 +81,6 @@ namespace AAMod.Items.Summoning.Minions
                 projectile.ai[1] += 1f;
                 projectile.extraUpdates = 1;
                 projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
-                projectile.frameCounter++;
-                if (projectile.frameCounter > 5)
-                {
-                    projectile.frame++;
-                    projectile.frameCounter = 0;
-                }
-                if (projectile.frame > 1)
-                {
-                    projectile.frame = 0;
-                }
                 if (projectile.ai[1] > 40f)
                 {
                     projectile.ai[1] = 1f;
@@ -228,15 +217,6 @@ namespace AAMod.Items.Summoning.Minions
                         projectile.netUpdate = true;
                         return;
                     }
-                }
-            }
-            if (projectile.frameCounter > 10)
-            {
-                projectile.frame++;
-                projectile.frameCounter = 0;
-                if (projectile.frame > 1)
-                {
-                    projectile.frame = 0;
                 }
             }
         }
