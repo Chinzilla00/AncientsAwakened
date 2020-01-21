@@ -227,7 +227,6 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                     npc.ai[1]++;
 
                     targetPos = player.Center;
-                    targetPos.X -= 500 * (npc.Center.X < targetPos.X ? -1 : 1);
                     targetPos.Y -= 500;
                     if (Vector2.Distance(npc.Center, targetPos) > 100)
                     {
