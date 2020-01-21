@@ -224,14 +224,21 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                     break;
                 case 3:
 
-                    if (npc.ai[1]++ < 120)
+                    npc.ai[1]++;
+
+                    targetPos = player.Center;
+                    targetPos.X -= 500 * (npc.Center.X < targetPos.X ? -1 : 1);
+                    targetPos.Y -= 500;
+                    if (Vector2.Distance(npc.Center, targetPos) > 100)
                     {
-                        targetPos = player.Center;
-                        targetPos.X -= 500 * (npc.Center.X < targetPos.X ? -1 : 1);
-                        targetPos.Y -= 500;
                         MoveToVector2(targetPos);
                     }
                     else
+                    {
+                        npc.velocity *= .96f;
+                    }
+
+                    if (npc.ai[1] == 120)
                     {
                         int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("RuneSpawn"), npc.damage / 2, 3);
                         Main.projectile[a].Center = npc.Center;
@@ -532,7 +539,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
 
         public void MoveToVector2(Vector2 p)
         {
-            float moveSpeed = 21f;
+            float moveSpeed = 16f;
             float velMultiplier = 1f;
             Vector2 dist = p - npc.Center;
             float length = dist == Vector2.Zero ? 0f : dist.Length();

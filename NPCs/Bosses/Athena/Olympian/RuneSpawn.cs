@@ -27,7 +27,6 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
 			projectile.alpha = 20;
             projectile.tileCollide = false;
 			projectile.ignoreWater = true;
-            projectile.tileCollide = true;
             projectile.extraUpdates = 1;
         }
 
