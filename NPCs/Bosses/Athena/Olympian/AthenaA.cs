@@ -150,7 +150,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                     targetPos = player.Center;
                     targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
                     targetPos.Y -= 200;
-                    MoveToVector2(targetPos);
+                        MoveToVector2(targetPos);
 
                     BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<SwiftwindStrikeSpear>(), ref npc.ai[1], 100, npc.damage / 2, 10, true);
 

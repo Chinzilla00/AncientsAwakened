@@ -7,6 +7,7 @@ using Terraria.GameContent.Events;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
+using AAMod.NPCs.Bosses.Anubis.Forsaken;
 
 namespace AAMod.NPCs.TownNPCs
 {
@@ -85,9 +86,9 @@ namespace AAMod.NPCs.TownNPCs
             {
                 Player player = Main.player[k];
                 if (player.active && !NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Anubis>()) && 
-                    !NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Forsaken.FATransition>()) &&
-                    !NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Forsaken.FATransition2>()) &&
-                    !NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Forsaken.ForsakenAnubis>()))
+                    !NPC.AnyNPCs(ModContent.NPCType<FATransition>()) &&
+                    !NPC.AnyNPCs(ModContent.NPCType<FATransition2>()) &&
+                    !NPC.AnyNPCs(ModContent.NPCType<ForsakenAnubis>()))
                 {
                     return true;
                 }
@@ -98,6 +99,10 @@ namespace AAMod.NPCs.TownNPCs
 		public override string TownNPCName()
 		{
             return "Anubis";
+        }
+
+        public override void PostAI()
+        {
         }
 
         public static bool SwitchInfo = false;
@@ -372,7 +377,10 @@ namespace AAMod.NPCs.TownNPCs
 
         public override bool PreAI()
         {
-            if (NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Anubis>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<Bosses.Anubis.Anubis>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<FATransition>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<FATransition2>()) ||
+                NPC.AnyNPCs(ModContent.NPCType<ForsakenAnubis>()))
             {
                 TPDust();
                 npc.active = false;
