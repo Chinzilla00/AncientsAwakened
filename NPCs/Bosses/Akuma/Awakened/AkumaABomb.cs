@@ -86,26 +86,11 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(mod.BuffType("DragonFire"), 600);
-            Kill(0);
         }
 
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
-            /*float spread = 12f * 0.0174f;
-            double startAngle = Math.Atan2(projectile.velocity.X, projectile.velocity.Y) - spread / 2;
-            double deltaAngle = spread / 4f;
-            double betaAngle = spread / 7f;
-            double offsetAngle;
-            int i;
-            if (projectile.owner == Main.myPlayer && !DidntHitPlayer)
-            {
-                for (i = 0; i < 3; i++)
-                {
-                    offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("HomingFireballA"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-                }
-            }*/
             Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("AkumaABoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
             
         }
