@@ -65,7 +65,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             npc.height = 90;
             npc.aiStyle = -1;
             npc.damage = 0;
-            npc.lifeMax = 570000;
+            npc.lifeMax = 480000;
             npc.defense = 999999;
             npc.knockBackResist = 0f;
             npc.boss = true;

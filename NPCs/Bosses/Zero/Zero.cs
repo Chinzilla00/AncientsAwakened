@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             npc.damage = 59;
             npc.defense = 200;
-            npc.lifeMax = 600000;
+            npc.lifeMax = 450000;
             if (Main.expertMode)
             {
                 npc.value = 0;

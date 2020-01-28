@@ -1067,9 +1067,9 @@ namespace AAMod.NPCs.Bosses.Rajah
             base.SetDefaults();
             npc.damage = 310;
             npc.defense = 0;
-            npc.lifeMax = 2000000;
-            npc.life = 2000000;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/SupremeRajah");
+            npc.lifeMax = 1200000;
+            npc.life = 1200000;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Rajah");
             bossBag = mod.ItemType("RajahCache");
             isSupreme = true;
             npc.value = Item.sellPrice(3, 0, 0, 0);

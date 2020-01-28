@@ -577,7 +577,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
                 else if (npc.ai[0] > 130)
                 {
-                    npc.velocity.Y = -6f;
+                    npc.velocity.Y -= 6f;
                 }
                 if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate = true; }
             }
