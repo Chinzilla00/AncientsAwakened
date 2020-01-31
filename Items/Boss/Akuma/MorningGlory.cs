@@ -22,13 +22,13 @@ namespace AAMod.Items.Boss.Akuma
 
             item.shoot = mod.ProjectileType("MorningGlory");
             item.shootSpeed = 18f;
-            item.damage = 250;
+            item.damage = 210;
             item.knockBack = 4f;
             item.melee = true;
             item.useStyle = 1;
             item.UseSound = SoundID.Item20;
-            item.useAnimation = 13;
-            item.useTime = 13;
+            item.useAnimation = 19;
+            item.useTime = 19;
             item.width = 30;
             item.height = 30;
             item.noUseGraphic = true;

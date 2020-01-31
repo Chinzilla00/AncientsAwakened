@@ -20,13 +20,13 @@ Inflicts daybroken");
 
         public override void SetDefaults()
         {
-            item.damage =350;
+            item.damage = 280;
             item.melee = true;
             item.width = 96;
             item.height = 96;
             item.scale = 1.1f;
-            item.useTime = 17;
-            item.useAnimation = 17;
+            item.useTime = 20;
+            item.useAnimation = 20;
             item.knockBack = 4.7f;
             item.UseSound = SoundID.Item20;
             item.noMelee = true;
