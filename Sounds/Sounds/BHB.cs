@@ -12,7 +12,7 @@ namespace AvesMod.Sounds.Sounds
                 return null;
             soundInstance.Volume = volume * 1f;
             soundInstance.Pan = pan;
-            soundInstance.Pitch = Main.rand.Next(1, 1) * .05f;
+            soundInstance.Pitch = Main.rand.Next(3, -3) * .05f;
             return soundInstance;
         }
     }
