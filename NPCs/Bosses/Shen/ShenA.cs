@@ -88,6 +88,12 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.netUpdate = true;
             }
 
+            if (!NPC.AnyNPCs(mod.NPCType("ShenAHitbox")))
+            {
+                int hitbox = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("ShenAHitbox"), 0, (float)npc.whoAmI, 0f, 0f, 0f, 255);
+                Main.npc[hitbox].netUpdate = true;
+            }
+
             if (NPC.AnyNPCs(ModContent.NPCType<AwakenedShenAH.FuryAshe>()) || NPC.AnyNPCs(ModContent.NPCType<AwakenedShenAH.WrathHaruka>()))
             {
                 if (npc.alpha > 50)
@@ -757,6 +763,10 @@ namespace AAMod.NPCs.Bosses.Shen
                 Text.Add(Lang.BossChat("ShenANoMod"));
             }
             return Text;
+        }
+        public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+        {
+            return false;
         }
 
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
