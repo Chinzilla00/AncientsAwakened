@@ -69,6 +69,11 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void Kill(int timeLeft)
         {
+            for (int i = 0; i < 3; i++)
+            {
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 2f);
+                Main.dust[dustIndex].velocity *= 1.4f;
+            }
             if (Main.netMode != 1)
             {
                 Vector2 vel = Vector2.Normalize(projectile.velocity);

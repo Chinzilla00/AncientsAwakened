@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Shen.Projectiles
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
             projectile.hostile = true;
-            projectile.timeLeft = 600;
+            projectile.timeLeft = 240;
             projectile.aiStyle = -1;
             cooldownSlot = 1;
         }
@@ -55,6 +55,14 @@ namespace AAMod.NPCs.Bosses.Shen.Projectiles
                 projectile.netUpdate = true;
                 Player target = Main.player[Player.FindClosest(projectile.position, projectile.width, projectile.height)];
                 projectile.velocity = projectile.DirectionTo(target.Center + target.velocity * 30) * 30;
+            }
+        }
+        public override void Kill(int timeLeft)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, default(Color), 2f);
+                Main.dust[dustIndex].velocity *= 1.4f;
             }
         }
 
@@ -98,7 +106,7 @@ namespace AAMod.NPCs.Bosses.Shen.Projectiles
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
             projectile.hostile = true;
-            projectile.timeLeft = 600;
+            projectile.timeLeft = 240;
             projectile.aiStyle = -1;
             cooldownSlot = 1;
         }
@@ -115,6 +123,14 @@ namespace AAMod.NPCs.Bosses.Shen.Projectiles
                 projectile.netUpdate = true;
                 Player target = Main.player[Player.FindClosest(projectile.position, projectile.width, projectile.height)];
                 projectile.velocity = projectile.DirectionTo(target.Center + target.velocity * 30) * 30;
+            }
+        }
+        public override void Kill(int timeLeft)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default(Color), 2f);
+                Main.dust[dustIndex].velocity *= 1.4f;
             }
         }
 
