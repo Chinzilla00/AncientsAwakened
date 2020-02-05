@@ -51,10 +51,7 @@ namespace AAMod.NPCs.Bosses.Shen.Projectiles
 
             Vector2 acceleration = projectile.velocity.RotatedBy(Math.PI / 2);
             acceleration *= projectile.ai[1];
-            if (projectile.velocity.X < 5 && projectile.velocity.Y < 5)
-            {
-                projectile.velocity += acceleration;
-            }
+            projectile.velocity += acceleration;
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
@@ -109,10 +106,7 @@ namespace AAMod.NPCs.Bosses.Shen.Projectiles
 
             Vector2 acceleration = projectile.velocity.RotatedBy(Math.PI / 2);
             acceleration *= projectile.ai[1];
-            if (projectile.velocity.X < 5 && projectile.velocity.Y < 5)
-            {
-                projectile.velocity += acceleration;
-            }
+            projectile.velocity += acceleration;
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
