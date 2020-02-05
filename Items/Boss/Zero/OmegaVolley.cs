@@ -14,14 +14,14 @@ namespace AAMod.Items.Boss.Zero
 			item.useStyle = 5;
 			item.autoReuse = true;
 			item.useAnimation = 2;
-			item.useTime = 4;
+			item.useTime = 5;
             item.reuseDelay = 2;
 			item.width = 72;
 			item.height = 34;
 			item.shoot = 10;
 			item.useAmmo = AmmoID.Bullet;
 			item.UseSound = SoundID.Item41;
-			item.damage = 90;
+			item.damage = 95;
 			item.shootSpeed = 32f;
 			item.noMelee = true;
 			item.value = Item.sellPrice(0, 30, 0, 0);
