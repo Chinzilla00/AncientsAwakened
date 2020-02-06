@@ -23,7 +23,7 @@ Right click and hold to release and aim manually");
             item.autoReuse = true;
             item.mana = 15;
             item.useStyle = 5;
-            item.damage = 145;
+            item.damage = 450;
             item.useAnimation = 30;
             item.useTime = 30;
             item.width = 40;

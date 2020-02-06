@@ -21,8 +21,8 @@ namespace AAMod.Items.Boss.Akuma
         {
 
             item.shoot = mod.ProjectileType("MorningGlory");
-            item.shootSpeed = 18f;
-            item.damage = 210;
+            item.shootSpeed = 24f;
+            item.damage = 197;
             item.knockBack = 4f;
             item.melee = true;
             item.useStyle = 1;
