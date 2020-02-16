@@ -206,7 +206,7 @@ namespace AAMod.Items.Summoning.Minions
 			{
 				projectile.ai[1] += Main.rand.Next(1, 4);
 			}
-			if (projectile.ai[1] > 90f)
+			if (projectile.ai[1] > 160f)
 			{
 				projectile.ai[1] = 0f;
 				projectile.netUpdate = true;

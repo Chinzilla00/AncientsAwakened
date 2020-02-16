@@ -32,7 +32,7 @@ Grants 1 soul essence on direct hit");
             item.useTime = 25;
             item.UseSound = SoundID.Item1;
             item.damage = 10;
-            item.knockBack = 6;
+            item.knockBack = 4;
 			item.noMelee = true;
 			item.noUseGraphic = true;
 			item.autoReuse = true;

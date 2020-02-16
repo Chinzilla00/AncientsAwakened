@@ -14,8 +14,8 @@ namespace AAMod.Items.Melee.Gem
             item.melee = true;            
             item.width = 58;              
             item.height = 60;             
-            item.useTime = 20;          
-            item.useAnimation = 20;     
+            item.useTime = 30;          
+            item.useAnimation = 30;     
             item.useStyle = 1;        
             item.knockBack = 5;      
             item.value = 3000;        
@@ -37,7 +37,7 @@ namespace AAMod.Items.Melee.Gem
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockback)
         {
             shoot++;
-            if (shoot % 2 != 0) return false;
+            if (shoot % 3 != 0) return false;
 
             shoot = 0;
             return true;

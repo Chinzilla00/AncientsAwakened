@@ -35,7 +35,7 @@ namespace AAMod.Projectiles.Zero
 			int num = Dust.NewDust(projectile.position, projectile.width, projectile.height, 235, Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-1f, 1f), 6, new Color(0, 127, 0, 255), projectile.scale * 1.5f);
             Main.dust[num].noGravity = true;
             Main.dust[num].velocity *= 1.5f;
-            projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+            projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
 		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity)

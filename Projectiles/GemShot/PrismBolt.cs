@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Projectiles.GemShot
 {
@@ -29,18 +30,12 @@ namespace AAMod.Projectiles.GemShot
             projectile.tileCollide = true;
         }
 
-        public override Color? GetAlpha(Color lightColor)
-        {
-            return Main.DiscoColor;
-        }
-
         public override void AI()
         {
             Lighting.AddLight(projectile.Center, (Main.DiscoR - projectile.alpha) * 0.8f / 255f, (Main.DiscoG - projectile.alpha) * 0.4f / 255f, (Main.DiscoB - projectile.alpha) * 0f / 255f);
             for (int num339 = 0; num339 < 4; num339++)
             {
                 Dust dust1;
-                Vector2 position = projectile.position;
                 dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AbyssDust>(), 0, 0, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1f)];
                 dust1.noGravity = true;
             }
@@ -95,10 +90,15 @@ namespace AAMod.Projectiles.GemShot
             for (int num506 = 0; num506 < 15; num506++)
             {
                 Dust dust1;
-                Vector2 position = projectile.position;
                 dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AbyssDust>(), 0, 0, 0, new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB), 1f)];
                 dust1.noGravity = true;
             }
         }
-	}
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, Main.DiscoColor, true);
+            return false;
+        }
+    }
 }

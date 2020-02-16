@@ -272,7 +272,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             if(npc.type == mod.NPCType("NightcrawlerHead"))
             {
                 Vector2 newvelocity = npc.velocity + Vector2.Normalize(npc.velocity.RotatedBy((float)Math.PI/2)) * 0.039f;
-                npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 1.57f;
+                npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
                 npc.velocity = Vector2.Normalize(newvelocity) * 4f;
                 
                 if (internalAI[2]++ == 320)
@@ -369,7 +369,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                     if (npc.velocity.Y > 0)
                         npc.velocity.Y -= 0.5f * 2;
                 }
-                npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 1.57f;
+                npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
 
                 if(internalAI[3]++ > 600)
                 {

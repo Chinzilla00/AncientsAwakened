@@ -23,12 +23,12 @@ namespace AAMod.Items.Ranged
 			item.height = 24;
 			item.shoot = mod.ProjectileType("M79P");
 			item.UseSound = SoundID.Item61;
-			item.damage = 150;
+			item.damage = 180;
 			item.shootSpeed = 11f;
 			item.noMelee = true;
 			item.value = 50000;
 			item.knockBack = 6f;
-			item.rare = 3;
+			item.rare = 8;
 			item.ranged = true;
 			item.useAmmo = mod.ItemType("M79Round");
 		}

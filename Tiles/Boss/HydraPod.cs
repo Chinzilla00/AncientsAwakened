@@ -87,7 +87,14 @@ namespace AAMod.Tiles.Boss
             {
                 Player player = Main.player[BaseMod.BaseAI.GetPlayer(new Vector2(i, j), -1)];
                 AAWorld.SmashHydraPod = 2;
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Hydra"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Hydra"));
+                if (!Main.dayTime)
+                {
+                    AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Hydra"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Hydra"));
+                }
+                else
+                {
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("You hear hissing, but it scuttles away into the fog...", Color.Blue);
+                }
             }
         }
 

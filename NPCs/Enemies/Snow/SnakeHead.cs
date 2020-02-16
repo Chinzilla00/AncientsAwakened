@@ -92,7 +92,10 @@ namespace AAMod.NPCs.Enemies.Snow
         }
         public override void NPCLoot()
         {
-            npc.DropLoot(mod.ItemType("SubzeroCrystal"));
+            if (Main.rand.Next(4) == 0)
+            {
+                npc.DropLoot(ModContent.ItemType<Items.BossSummons.SubzeroCrystal>());
+            }
         }
     }
 }

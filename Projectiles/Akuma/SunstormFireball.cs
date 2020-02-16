@@ -68,16 +68,16 @@ namespace AAMod.Projectiles.Akuma
 				{
 					released = true;
 					float num1 = 12f;
-					Vector2 vector2 = new Vector2(projectile.position.X + (float)projectile.width * 0.5f, projectile.position.Y + (float)projectile.height * 0.5f);
-					float f1 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
-					float f2 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
-					if ((double)player.gravDir == -1.0)
-						f2 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector2.Y;
-					float num4 = (float)Math.Sqrt((double)f1 * (double)f1 + (double)f2 * (double)f2);
+					Vector2 vector2 = new Vector2(projectile.position.X + projectile.width * 0.5f, projectile.position.Y + projectile.height * 0.5f);
+					float f1 = Main.mouseX + Main.screenPosition.X - vector2.X;
+					float f2 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
+					if (player.gravDir == -1.0)
+						f2 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector2.Y;
+					float num4 = (float)Math.Sqrt(f1 * (double)f1 + f2 * (double)f2);
 					float num5;
-					if (float.IsNaN(f1) && float.IsNaN(f2) || (double)f1 == 0.0 && (double)f2 == 0.0)
+					if (float.IsNaN(f1) && float.IsNaN(f2) || f1 == 0.0 && f2 == 0.0)
 					{
-						f1 = (float)projectile.direction;
+						f1 = projectile.direction;
 						f2 = 0.0f;
 						num5 = num1;
 					}

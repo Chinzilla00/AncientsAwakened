@@ -27,6 +27,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.Utilities;
 using Terraria.Localization;
+using Terraria.Audio;
 
 namespace AAMod
 {
@@ -2655,6 +2656,7 @@ namespace AAMod
                 {
                     if (player.inventory[m].type == ModContent.ItemType<Items.Usable.RiftMirror>())
                     {
+                        Main.PlaySound(new LegacySoundStyle(2, 6), player.position);
                         player.Spawn();
                     }
                 }
@@ -2666,19 +2668,11 @@ namespace AAMod
                 {
                     if (player.inventory[m].type == ModContent.ItemType<Items.Usable.RiftMirror>())
                     {
+                        Main.PlaySound(new LegacySoundStyle(2, 6), player.position);
                         player.position = RiftPos;
                     }
                 }
             }
-            /* 
-            if (Assassin)
-            {
-                if (!player.mount.Active)
-                {
-                    AssassinStealth = !AssassinStealth;
-                }
-            }
-            */
 
             if (SagShield)
             {

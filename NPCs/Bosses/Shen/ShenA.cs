@@ -90,7 +90,7 @@ namespace AAMod.NPCs.Bosses.Shen
 
             if (!NPC.AnyNPCs(mod.NPCType("ShenAHitbox")))
             {
-                int hitbox = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("ShenAHitbox"), 0, (float)npc.whoAmI, 0f, 0f, 0f, 255);
+                int hitbox = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("ShenAHitbox"), 0, npc.whoAmI, 0f, 0f, 0f, 255);
                 Main.npc[hitbox].netUpdate = true;
             }
 

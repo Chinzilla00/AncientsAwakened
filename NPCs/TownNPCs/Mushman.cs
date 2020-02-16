@@ -175,7 +175,7 @@ namespace AAMod.NPCs.TownNPCs
                 int DyePink = player.FindItem(ItemID.PinkPricklyPear);
                 int DyeGray = player.FindItem(ItemID.BlackInk);
 
-                string[] lootTable = { "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "Pink" };
+                string[] lootTable = { "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "Pink", "Brown" };
                 int loot = Main.rand.Next(lootTable.Length);
 
                 if (Special >= 0)

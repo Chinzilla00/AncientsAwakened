@@ -19,7 +19,7 @@ namespace AAMod.Items.Summoning
             item.useStyle = 1;
             item.shootSpeed = 14f;
             item.shoot = mod.ProjectileType("DemonEater");
-            item.damage = 13;
+            item.damage = 9;
             item.width = 32;
             item.height = 32;
             item.UseSound = SoundID.Item44;

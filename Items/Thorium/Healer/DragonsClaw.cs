@@ -28,11 +28,11 @@ Grants 1 soul essence on direct hit");
             item.value = BaseUtility.CalcValue(0, 5, 50, 50);
 
             item.useStyle = 1;
-            item.useAnimation = 25;
-            item.useTime = 25;
+            item.useAnimation = 27;
+            item.useTime = 27;
             item.UseSound = SoundID.Item1;
-            item.damage = 11;
-            item.knockBack = 6;
+            item.damage = 14;
+            item.knockBack = 8;
 			item.noMelee = true;
 			item.noUseGraphic = true;
 			item.autoReuse = true;

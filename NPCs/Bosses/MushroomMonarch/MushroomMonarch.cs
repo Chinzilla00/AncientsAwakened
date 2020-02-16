@@ -76,8 +76,26 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 		
         public override void AI()
         {
-            Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
+            npc.TargetClosest();
 
+            Player player = Main.player[npc.target];
+
+            if (player == null)
+            {
+                npc.TargetClosest();
+            }
+
+            if (player.dead || !player.active || Vector2.Distance(player.Center, npc.Center) > 5000)
+            {
+                npc.TargetClosest();
+
+                if (player.dead || !player.active || Vector2.Distance(player.Center, npc.Center) > 5000)
+                {
+                    Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
+                    npc.active = false;
+                    return;
+                }
+            }
 
             float dist = npc.Distance(player.Center);
 
@@ -276,18 +294,6 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
                 npc.active = false;
                 return;
-            }
-
-            if (player.dead || !player.active || Vector2.Distance(player.Center, npc.Center) > 3000)
-            {
-                npc.TargetClosest();
-
-                if (player.dead || !player.active || Vector2.Distance(player.Center, npc.Center) > 3000)
-                {
-                    Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
-                    npc.active = false;
-                    return;
-                }
             }
         }
         

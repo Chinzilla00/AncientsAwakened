@@ -415,9 +415,9 @@ namespace AAMod
                 }
             }
 
-            if (npc.type == NPCID.AngryBones || npc.type == NPCID.DarkCaster)
+            if (npc.type == NPCID.TacticalSkeleton || npc.type == NPCID.SkeletonSniper || npc.type == NPCID.SkeletonCommando)
             {
-                if (Main.rand.Next(200) == 0)
+                if (Main.rand.Next(50) == 0)
                 {
                     npc.DropLoot(mod.ItemType("M79Parts"));
                 }
