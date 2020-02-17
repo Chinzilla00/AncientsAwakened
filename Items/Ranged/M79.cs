@@ -16,9 +16,9 @@ namespace AAMod.Items.Ranged
 		public override void SetDefaults()
 		{
 			item.useStyle = 5;
-			item.autoReuse = false;
-			item.useAnimation = 75;
-			item.useTime = 75;
+			item.autoReuse = true;
+			item.useAnimation = 65;
+			item.useTime = 65;
 			item.width = 68;
 			item.height = 24;
 			item.shoot = mod.ProjectileType("M79P");

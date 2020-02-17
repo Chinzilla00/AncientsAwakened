@@ -17,8 +17,8 @@ namespace AAMod.Projectiles.GemShot
         public override void SetDefaults()
         {
             projectile.melee = true;
-            projectile.width = 14;
-            projectile.height = 14;
+            projectile.width = 34;
+            projectile.height = 34;
             projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.hostile = false;

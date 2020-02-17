@@ -2013,7 +2013,7 @@ namespace AAMod
                         break;
 
                     case 2:
-                        player.QuickSpawnItem(mod.ItemType("PonyHead"));
+                        player.QuickSpawnItem(mod.ItemType("PonyMask"));
                         player.QuickSpawnItem(mod.ItemType("PonyBody"));
                         player.QuickSpawnItem(mod.ItemType("PonyHoofs"));
 
@@ -2303,6 +2303,11 @@ namespace AAMod
                         player.QuickSpawnItem(ItemID.ReaperHood);
                         player.QuickSpawnItem(ItemID.ReaperRobe);
 
+                        if (dropType >= 3)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("GrimReaperScythe" + addonEX));
+                        }
+
                         spawnedDevItems = true;
                         break;
 
@@ -2347,6 +2352,10 @@ namespace AAMod
                         }
 
                         spawnedDevItems = true;
+                        break;
+                    case 28:
+                        player.QuickSpawnItem(mod.ItemType("CCHood"));
+                        player.QuickSpawnItem(mod.ItemType("CCRobe"));
                         break;
 
                     default:

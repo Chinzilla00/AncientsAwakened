@@ -453,6 +453,8 @@ namespace AAMod
             AddEquipTexture(new InvokerHead(), null, EquipType.Head, "InvokerHead", "AAMod/Items/Vanity/Invoker/InvokerHood_Head", "", "");
             AddEquipTexture(new InvokerBody(), null, EquipType.Body, "InvokerBody", "AAMod/Items/Vanity/Invoker/InvokerRobe_Body", "AAMod/Items/Vanity/Invoker/InvokerRobe_Arms", "");
             AddEquipTexture(new InvokerLegs(), null, EquipType.Legs, "InvokerLegs", "AAMod/Items/Vanity/Invoker/InvokerPants_Legs", "", "");
+
+            AddEquipTexture(null, EquipType.Legs, "CCRobe_Legs", "AAMod/Items/Vanity/CC/CCRobe_Legs");
         }
 
         //DO NOT MAKE THESE STATIC! DOING SO WILL PREVENT WHAT IT FIXES FROM HAPPENING.
