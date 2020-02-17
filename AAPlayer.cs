@@ -2356,7 +2356,7 @@ namespace AAMod
                     case 28:
                         player.QuickSpawnItem(mod.ItemType("CCHood"));
                         player.QuickSpawnItem(mod.ItemType("CCRobe"));
-                        spawnedDevItems = false;
+                        spawnedDevItems = true;
                         break;
 
                     default:
