@@ -9,8 +9,10 @@ namespace AAMod.Items.Vanity.CC
 	[AutoloadEquip(EquipType.Head)]
 	public class CCHood : ModItem
 	{
-		public override void SetStaticDefaults() {
-			Tooltip.SetDefault("This is a modded helmet.");
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Dread Cultist Robe");
+			Tooltip.SetDefault("The robe of a crazy lizard enthusiast");
 		}
 
 		public override void SetDefaults() {

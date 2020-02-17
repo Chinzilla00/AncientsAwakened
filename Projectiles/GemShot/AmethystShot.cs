@@ -35,7 +35,7 @@ namespace AAMod.Projectiles.GemShot
             for (int num339 = 0; num339 < 16; num339++)
             {
                 Dust dust1;
-                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AbyssDust>(), 0, 0, 0, Color.Purple, 1f)];
+                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AbyssDust>(), 0, 0, 0, Color.Purple, 1f)];
                 dust1.noGravity = true;
             }
         }
@@ -46,7 +46,7 @@ namespace AAMod.Projectiles.GemShot
             for (int num506 = 0; num506 < 15; num506++)
             {
                 Dust dust1;
-                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AbyssDust>(), 0, 0, 0, Color.Purple, 1f)];
+                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.AbyssDust>(), 0, 0, 0, Color.Purple, 1f)];
                 dust1.noGravity = true;
             }
         }

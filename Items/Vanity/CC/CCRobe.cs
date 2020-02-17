@@ -7,6 +7,11 @@ namespace AAMod.Items.Vanity.CC
 	[AutoloadEquip(EquipType.Body)]
 	internal class CCRobe : ModItem
 	{
+		public override void SetStaticDefaults()
+		{
+			DisplayName.SetDefault("Dread Cultist Mask");
+			Tooltip.SetDefault("The hood of a crazy lizard enthusiast");
+		}
 		public override void SetDefaults() 
 		{
 			item.width = 18;
