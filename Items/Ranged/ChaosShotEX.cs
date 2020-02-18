@@ -52,7 +52,7 @@ Chaos Bustershot EX");
 		    for (int i = 0; i < 10; i++)
 		    {
 		    	offsetAngle = startAngle + (deltaAngle * i);
-		    	Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
+		    	Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), type, damage, knockBack, Main.myPlayer);
             }
             for (int m = 0; m < 2; m++)
             {

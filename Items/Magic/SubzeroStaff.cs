@@ -58,7 +58,7 @@ namespace AAMod.Items.Magic
                 num82 *= num83;
                 float speedX4 = num81 + Main.rand.Next(-40, 41) * 0.02f;
                 float speedY5 = num82 + Main.rand.Next(-40, 41) * 0.02f;
-                Projectile.NewProjectile(vector2.X, vector2.Y, speedX4, speedY5, type, damage, knockBack, item.owner, 0f, Main.rand.Next(5));
+                Projectile.NewProjectile(vector2.X, vector2.Y, speedX4, speedY5, type, damage, knockBack, Main.myPlayer, 0f, Main.rand.Next(5));
             }
             return false;
         }
