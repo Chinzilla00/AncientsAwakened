@@ -142,7 +142,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                     soundPlayed = true;
                     Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0);
                 }
-                npc.damage = 1000;
+                npc.damage = 200;
                 npc.defense = 1000;
                 npc.ai[3]++;
                 BaseAI.AIFlier(npc, ref npc.ai, true, 0.3f, 0.3f, 16f, 16f, false, 300);
@@ -172,6 +172,7 @@ namespace AAMod.NPCs.Bosses.Djinn
 
             if (Main.netMode != 1)
             {
+                npc.damage = 30;
                 internalAI[1]++;
                 if (internalAI[1] >= 300)
                 {
@@ -187,6 +188,7 @@ namespace AAMod.NPCs.Bosses.Djinn
 
             if (internalAI[0] == 0)
             {
+                npc.damage = 30;
                 npc.ai[3]++;
                 npc.velocity.X = 0;
                 npc.velocity.Y = 0;

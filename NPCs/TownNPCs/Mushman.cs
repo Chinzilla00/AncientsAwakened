@@ -86,7 +86,6 @@ namespace AAMod.NPCs.TownNPCs
             return num >= 100;
         }
 
-
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
             if (!AAConfigClient.Instance.NoAATownNPC)
@@ -482,7 +481,6 @@ namespace AAMod.NPCs.TownNPCs
             nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.MushroomGrassSeeds);
             nextSlot++;
-
             shop.item[nextSlot].SetDefaults(ItemID.LesserHealingPotion);
             nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.LesserManaPotion);
@@ -496,13 +494,6 @@ namespace AAMod.NPCs.TownNPCs
                 nextSlot++;
             }
 
-            if (NPC.downedBoss3 == true)
-            {
-                shop.item[nextSlot].SetDefaults(ItemID.HealingPotion);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(ItemID.ManaPotion);
-                nextSlot++;
-            }
             if (Main.hardMode == true)
             {
                 shop.item[nextSlot].SetDefaults(ItemID.GreaterHealingPotion);

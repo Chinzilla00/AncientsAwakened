@@ -17,7 +17,7 @@ namespace AAMod.Items.Tools
         {
             item.useStyle = 5;
             item.useAnimation = 25;
-            item.useTime = 18;
+            item.useTime = 15;
             item.shootSpeed = 36f;
             item.knockBack = 1f;
             item.width = 20;
