@@ -14,7 +14,6 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Broken Weapon");
-            Main.npcFrameCount[npc.type] = 2;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
@@ -52,21 +51,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 return false;
             }
             return true;
-        }
-
-
-        public override void FindFrame(int frameHeight)
-        {
-            if (npc.velocity.Y == 0.0)
-                npc.spriteDirection = npc.direction;
-            ++npc.frameCounter;
-            if (npc.frameCounter >= 8.0)
-            {
-                npc.frameCounter = 0.0;
-                npc.frame.Y += frameHeight;
-                if (npc.frame.Y / frameHeight >= 2)
-                    npc.frame.Y = 0;
-            }
         }
 
         public int body = -1;

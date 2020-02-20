@@ -15,7 +15,6 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Rift Shredder");
-            Main.npcFrameCount[npc.type] = 2;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
@@ -79,20 +78,6 @@ namespace AAMod.NPCs.Bosses.Zero
             if (Main.netMode == 1)
             {
                 internalAI[0] = reader.ReadFloat();
-            }
-        }
-
-        public override void FindFrame(int frameHeight)
-        {
-            if (npc.velocity.Y == 0.0)
-                npc.spriteDirection = npc.direction;
-            ++npc.frameCounter;
-            if (npc.frameCounter >= 8.0)
-            {
-                npc.frameCounter = 0.0;
-                npc.frame.Y += frameHeight;
-                if (npc.frame.Y / frameHeight >= 2)
-                    npc.frame.Y = 0;
             }
         }
 
