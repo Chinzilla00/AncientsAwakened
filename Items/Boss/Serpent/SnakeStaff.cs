@@ -34,7 +34,7 @@ Summons 2 segments for each minion slot");
             item.buffType = mod.BuffType("SnakeMinion");
             item.summon = true;
         }
-		
+
 		public override void UseStyle(Player player)
 		{
 			if (player.whoAmI == Main.myPlayer && player.itemTime == 0)
@@ -46,7 +46,7 @@ Summons 2 segments for each minion slot");
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             //to fix tail disapearing meme
-            float slotsUsed = 0;
+            float slotsUsed = -1;
 
             Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.minionSlots > 0).ToList().ForEach(x => { slotsUsed += x.minionSlots; });
 
