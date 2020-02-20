@@ -40,8 +40,8 @@ namespace AAMod.Projectiles.Zero
         {
           for (int num163 = 0; num163 < 10; num163++) // Spawns 10 dust every ai update (I have projectile.extraUpdates = 1; so it may actually be 20 dust per ai update)
                     {
-                        float x2 = projectile.position.X- projectile.velocity.X / -10f * num163;
-                        float y2 = projectile.position.Y- projectile.velocity.Y / -8f * num163;
+                        float x2 = projectile.Center.X- projectile.velocity.X / -10f * num163;
+                        float y2 = projectile.Center.Y- projectile.velocity.Y / -8f * num163;
                         int num164 = Dust.NewDust(new Vector2(x2, y2), 1, 1, ModContent.DustType<Dusts.RealityDust>(), 0f, 0f, 0, default(Color), 1f);
                         Main.dust[num164].alpha = projectile.alpha;
                         Main.dust[num164].position.X = x2;
