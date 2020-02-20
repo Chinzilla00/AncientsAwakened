@@ -9,7 +9,7 @@ namespace AAMod.Buffs
 		{
 			DisplayName.SetDefault("Terra's Guidance");
 			Description.SetDefault(@"Fall damage is negated
-You are so awestruck by the glow of the terrarium that you can't think of anything to build here.");
+Your feet glow with the power of the terrarium, preventing fall damage");
 			Main.buffNoSave[Type] = true;
             Main.debuff[Type] = true;
 			Main.buffNoTimeDisplay[Type] = true;

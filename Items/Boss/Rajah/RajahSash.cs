@@ -140,7 +140,7 @@ Immunity to fall damage");
             }
             else if (player.statLife <= player.statLifeMax * .9f)
             {
-                return .8f;
+                return .08f;
             }
             else
             {

@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Projectiles.Zero
@@ -73,7 +74,7 @@ namespace AAMod.Projectiles.Zero
             {
                 NPC target = Main.npc[i];
 
-                if (target.active && Vector2.Distance(projectile.Center, target.Center) < 6000)
+                if (target.active && Vector2.Distance(projectile.Center, target.Center) < 6000 && !target.friendly && !target.boss && !NPCID.Sets.TechnicallyABoss[target.type])
                 {
                     float num3 = 10f;
                     Vector2 vector = new Vector2(target.position.X + target.width / 2, target.position.Y + target.height / 2);

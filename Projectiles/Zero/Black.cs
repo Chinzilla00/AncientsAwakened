@@ -27,7 +27,7 @@ namespace AAMod.Projectiles.Zero
             projectile.timeLeft = 600;
 			projectile.scale = 1f;
 			aiType = 14;
-      flag1 = true;
+			flag1 = true;
         }
         public bool flag1;
 		public override void AI()
@@ -40,11 +40,6 @@ namespace AAMod.Projectiles.Zero
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
 		{
-      if(flag1 = true)
-      {
-      Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, Main.rand.NextFloat(-2f,2f), Main.rand.NextFloat(-2f,2f), mod.ProjectileType("CycloneF"), projectile.damage / 3, 0.0f, Main.myPlayer, 0.0f, 0.0f);
-      flag1 = false;
-      }
 			projectile.damage = (int)(projectile.damage * 1.25);
 			projectile.width = 70;
 			projectile.height = 70;
@@ -55,7 +50,20 @@ namespace AAMod.Projectiles.Zero
 				Main.dust[num].noGravity = true;
 				Main.dust[num].velocity *= 1.5f;
 			}
+			if (flag1)
+			{
+				flag1 = false;
+				projectile.netUpdate = true;
+			}
 			return false;
+		}
+
+		public override void Kill(int a)
+		{
+			if (!flag1)
+			{
+				Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f), mod.ProjectileType("CycloneF"), projectile.damage / 3, 0.0f, Main.myPlayer, 0.0f, 0.0f);
+			}
 		}
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)

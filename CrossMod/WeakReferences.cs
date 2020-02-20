@@ -155,6 +155,22 @@ namespace AAMod.Globals
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Djinn"));
 
+                // Greed
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/GreedBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/GreedBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/GreedBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Goldenrod,
+                    Color.Goldenrod,
+                    Color.Goldenrod);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Greed"));
+
                 // Rajah
                 string[] rajahTypes = new string[] { "Rajah", "SupremeRajah" };
                 foreach (string rajahType in rajahTypes)
@@ -173,7 +189,23 @@ namespace AAMod.Globals
                     yabhb.Call("hbSetBossHeadCentre", 50, 32);
                     yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                     yabhb.Call("hbFinishSingle", AAMod.instance.NPCType(rajahType));
-                }             
+                }
+
+                // Worm King Greed
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/WKGBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/WKGBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/WKGBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Goldenrod,
+                    Color.Goldenrod,
+                    Color.Goldenrod);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Greed"));
 
                 // Daybringer
                 yabhb.Call("hbStart");
@@ -1107,7 +1139,7 @@ namespace AAMod.Globals
                     new List<int>
                     {
                         ModContent.ItemType<Items.Boss.Shen.ShenCache>(),
-                        ModContent.ItemType<Items.Boss.Shen.Duality>()
+                        ModContent.ItemType<Items.Boss.Shen.ChaosSoul>()
                     },
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("ChaosRune") + "]",
                     null,

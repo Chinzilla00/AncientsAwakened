@@ -925,7 +925,7 @@ namespace AAMod
 
             RecipeGroup group5 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " +  Language.GetTextValue("Mods.AAMod.Common.superancientmaterial"), new int[]
             {
-                AAMod.instance.ItemType("ChaosSoul")
+                AAMod.instance.ItemType("ChaosScale")
             });
             RecipeGroup.RegisterGroup("AAMod:SuperAncientMaterials", group5);
             

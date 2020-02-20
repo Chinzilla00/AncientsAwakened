@@ -157,7 +157,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (fireAttack == true)
             {
                 attackTimer++;
-                if ((attackTimer == 20 || attackTimer == 50 || attackTimer == 79) && npc.HasBuff(BuffID.Wet))
+                if ((attackTimer % 20 == 0) && npc.HasBuff(BuffID.Wet))
                 {
                     for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                     {
