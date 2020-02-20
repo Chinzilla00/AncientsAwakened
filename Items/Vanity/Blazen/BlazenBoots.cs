@@ -12,7 +12,7 @@ namespace AAMod.Items.Vanity.Blazen
 		{
             base.SetStaticDefaults();
             DisplayName.SetDefault("Tactical Assault Boots");
-            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Testers!'");
+            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Developers!'");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

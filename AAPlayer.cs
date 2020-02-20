@@ -2358,6 +2358,13 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("CCRobe"));
                         spawnedDevItems = true;
                         break;
+                    case 29:
+                        player.QuickSpawnItem(mod.ItemType("DellyWig"));
+                        player.QuickSpawnItem(mod.ItemType("DellyShirt"));
+                        player.QuickSpawnItem(mod.ItemType("DellyBoots"));
+
+                        spawnedDevItems = true;
+                        break;
 
                     default:
                         spawnedDevItems = false;
