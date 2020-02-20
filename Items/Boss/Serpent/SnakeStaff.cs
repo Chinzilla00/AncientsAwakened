@@ -46,7 +46,7 @@ Summons 2 segments for each minion slot");
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
             //to fix tail disapearing meme
-            float slotsUsed = -1;
+            float slotsUsed = 0;
 
             Main.projectile.Where(x => x.active && x.owner == player.whoAmI && x.minionSlots > 0).ToList().ForEach(x => { slotsUsed += x.minionSlots; });
 
@@ -73,7 +73,7 @@ Summons 2 segments for each minion slot");
 
                 int previous = 0;
 
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 3; i++)
                 {
                     current = Projectile.NewProjectile(position.X, position.Y, 0, 0, mod.ProjectileType("SerpentBody"), damage, knockBack, player.whoAmI, current, 0f);
                     previous = current;

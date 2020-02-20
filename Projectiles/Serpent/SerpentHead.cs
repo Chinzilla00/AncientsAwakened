@@ -414,7 +414,7 @@ namespace AAMod.Projectiles.Serpent
             projectile.position = projectile.Center;
             projectile.width = projectile.height = (int)(num1038 * projectile.scale);
             projectile.Center = projectile.position;
-            if (vector134 != Vector2.Zero) projectile.Center = value67 - Vector2.Normalize(vector134) * 35;
+            if (vector134 != Vector2.Zero) projectile.Center = value67 - Vector2.Normalize(vector134) * 31;
             projectile.spriteDirection = vector134.X > 0f ? 1 : -1;
         }
     }
