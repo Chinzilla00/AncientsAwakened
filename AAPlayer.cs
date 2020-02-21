@@ -899,12 +899,12 @@ namespace AAMod
                 }
             }
 
-            if (questFish == mod.ItemType("TriHeadedKoi") && player.GetModPlayer<AAPlayer>().ZoneInferno && Main.rand.NextBool())
+            if (questFish == mod.ItemType("TriHeadedKoi") && player.GetModPlayer<AAPlayer>().ZoneMire && Main.rand.NextBool())
             {
                 caughtType = mod.ItemType("TriHeadedKoi");
             }
 
-            if (questFish == mod.ItemType("Fishmother") && player.GetModPlayer<AAPlayer>().ZoneMire && Main.rand.NextBool())
+            if (questFish == mod.ItemType("Fishmother") && player.GetModPlayer<AAPlayer>().ZoneInferno && Main.rand.NextBool())
             {
                 caughtType = mod.ItemType("Fishmother");
             }
