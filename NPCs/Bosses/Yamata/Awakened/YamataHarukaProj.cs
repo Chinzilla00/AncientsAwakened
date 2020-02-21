@@ -12,11 +12,11 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 			DisplayName.SetDefault("Haruka Yamata");
             Main.projFrames[projectile.type] = 11;
 		}
-    	
+
         public override void SetDefaults()
         {
-            projectile.width = 50;
-            projectile.height = 60;
+            projectile.width = 82;
+            projectile.height = 74;
             projectile.hostile = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
@@ -41,6 +41,9 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
 
             Player player = Main.player[ai0];
+            if (projectile.Center.X > player.Center.X) projectile.direction = 1;
+            else projectile.direction = -1;
+            projectile.spriteDirection = projectile.direction;
             if (++projectile.ai[1] <= dashTime) //move beside player
             {
                 Vector2 target = player.Center;
@@ -67,7 +70,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
         {
             if (projectile.frameCounter++ > 5)
             {
-                projectile.frame++;
+              projectile.frameCounter = 0;
+              projectile.frame++;
             }
 
             if (projectile.ai[1] <= dashTime)
