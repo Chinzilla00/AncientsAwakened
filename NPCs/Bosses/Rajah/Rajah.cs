@@ -155,7 +155,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             WeaponPos = new Vector2(npc.Center.X + (npc.direction == 1 ? -78 : 78), npc.Center.Y - 9);
             StaffPos = new Vector2(npc.Center.X + (npc.direction == 1 ? 78 : -78), npc.Center.Y - 9);
             if (Roaring) roarTimer--;
-            
+
             if (Main.netMode != 1 && npc.type == ModContent.NPCType<SupremeRajah>() && isSupreme == false)
             {
                 isSupreme = true;
@@ -262,7 +262,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 npc.direction = -1;
             }
-            if (player.Center.Y < npc.position.Y - 30f || TileBelowEmpty() || 
+            if (player.Center.Y < npc.position.Y - 30f || TileBelowEmpty() ||
                 !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height) ||
                 Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 2000 || isDashing)
             {
@@ -372,7 +372,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, ModContent.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
 
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, ModContent.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
-                                    
+
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, ModContent.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                 }
                             }
@@ -501,7 +501,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     }
                 }
             }
-            
+
             if (Main.expertMode)
             {
                 if (npc.life < (npc.lifeMax * .85f)) //The lower the health, the more damage is done
@@ -910,7 +910,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 }
                 else
                 {
-                    npc.DropLoot(ModContent.ItemType<RajahPelt>(), Main.rand.Next(15, 31));
+                    npc.DropLoot(ModContent.ItemType<ChampionPlate>(), Main.rand.Next(15, 31));
                     string[] lootTable = { "Excalihare", "FluffyFury", "RabbitsWrath" };
                     int loot = Main.rand.Next(lootTable.Length);
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
@@ -958,7 +958,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * .6f); 
+            npc.damage = (int)(npc.damage * .6f);
         }
 
         public void RajahTexture()

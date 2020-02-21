@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Blazing
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Blazing Dao");
-			Tooltip.SetDefault(@"1% increased damage resistance
+			Tooltip.SetDefault(@"1% increased Damage Desistance
 Forged in the flames of the blazing sun");
 		}
 
