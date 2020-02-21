@@ -67,7 +67,7 @@ namespace AAMod.NPCs.Bosses.Zero
         }
 
         public override void HitEffect(int hitDirection, double damage)
-        {          
+        {
             if (npc.life <= (int)(npc.lifeMax * .66f) && !RespawnArms1 && Main.netMode != 1)
             {
                 WeaponCount += 1;
@@ -99,7 +99,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
-                if (Main.expertMode && Main.netMode != 1) 
+                if (Main.expertMode && Main.netMode != 1)
                 {
                     if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroBoss1"), Color.Red.R, Color.Red.G, Color.Red.B);
                     int z = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ZeroProtocol"), 0, 0, 0, 0, 0, npc.target) ;
@@ -463,7 +463,8 @@ namespace AAMod.NPCs.Bosses.Zero
                     {
                         int TeleportPos = Main.rand.Next(5);
                         int VoidHeight = 140;
-                        Vector2 Origin = new Vector2((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, VoidHeight);
+                        Point spawnTilePos = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, VoidHeight);
+                        Vector2 Origin = new Vector2(spawnTilePos.X * 16, spawnTilePos.Y * 16);
 
                         switch (TeleportPos)
                         {
@@ -665,10 +666,3 @@ namespace AAMod.NPCs.Bosses.Zero
         }
     }
 }
-
-
-
-
-
-
-
