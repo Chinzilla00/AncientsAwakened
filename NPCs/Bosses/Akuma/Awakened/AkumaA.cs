@@ -193,7 +193,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                             if (weakness == false)
                             {
                                 weakness = true;
-                                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Akuma1"), new Color(180, 41, 32));
+                                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Akuma1"), Color.DeepSkyBlue);
                             }
                         }
                     }

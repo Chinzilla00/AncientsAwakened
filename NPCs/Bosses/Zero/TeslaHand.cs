@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetDefaults()
         {
             npc.width = 40;
-            npc.height = 70;
+            npc.height = 44;
             npc.damage = 56;
             npc.defense = 55;
             npc.HitSound = SoundID.NPCHit4;

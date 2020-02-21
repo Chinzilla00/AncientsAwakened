@@ -1021,9 +1021,9 @@ namespace AAMod
             {
                 AAMod.instance.ItemType("BlazingSuneate"),
                 AAMod.instance.ItemType("AbyssalHakama"),
-                AAMod.instance.ItemType("AtlanteanBoots"),
+                AAMod.instance.ItemType("AtlanteanGreaves"),
                 AAMod.instance.ItemType("DoomiteGreaves"),
-                AAMod.instance.ItemType("RaiderBoots"),
+                AAMod.instance.ItemType("RaiderLegs"),
                 AAMod.instance.ItemType("DynaskullGreaves")
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosBoots", group18);
@@ -1034,7 +1034,7 @@ namespace AAMod
                 AAMod.instance.ItemType("AbyssalGi"),
                 AAMod.instance.ItemType("AtlanteanPlate"),
                 AAMod.instance.ItemType("DoomiteBreastplate"),
-                AAMod.instance.ItemType("RaiderPlate"),
+                AAMod.instance.ItemType("RaiderChest"),
                 AAMod.instance.ItemType("DynaskullRibguard")
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosPlates", group19);

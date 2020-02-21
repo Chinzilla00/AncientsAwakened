@@ -55,6 +55,8 @@ namespace AAMod.Items.Magic
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("OceanTrident"));
 			recipe.AddIngredient(mod.ItemType("BlazePike"));
+			recipe.AddIngredient(mod.ItemType("SandLamp"));
+			recipe.AddIngredient(mod.ItemType("NeutronStaff"));
 			recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -62,6 +64,8 @@ namespace AAMod.Items.Magic
 			recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("OceanTrident"));
 			recipe.AddIngredient(mod.ItemType("SludgeShot"));
+			recipe.AddIngredient(mod.ItemType("Sickle"));
+			recipe.AddIngredient(mod.ItemType("NeutronStaff"));
 			recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
