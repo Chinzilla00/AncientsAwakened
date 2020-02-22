@@ -790,7 +790,7 @@ namespace AAMod
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
-            if (DragonsGuard)
+            if (DragonsGuard || ChaosMe)
             {
                 npc.AddBuff(BuffID.OnFire, 120);
             }
