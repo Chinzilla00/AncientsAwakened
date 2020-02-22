@@ -579,9 +579,9 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (npc.ai[3] == 3)
                 {
                     npc.frameCounter++;
-                    if (npc.frameCounter > 4)
+                    if (npc.frameCounter < 4)
                     {
-                        npc.frameCounter++;
+                        npc.frameCounter = 0;
                         npc.frame.Y += frameHeight;
                     }
                     if (npc.frame.Y < frameHeight * 2 || npc.frame.Y > frameHeight * 6)
