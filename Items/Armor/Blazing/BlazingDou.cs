@@ -26,11 +26,11 @@ Forged in the flames of the blazing sun");
 			item.defense = 8;
 		}
 
-		public override void UpdateEquip(Player player)
-		{
-			player.endurance += 0.02f;
-            player.meleeDamage += 0.02f;       
-
+        public override void UpdateEquip(Player player)
+        {
+            player.endurance += 0.02f;
+            player.meleeDamage += 0.02f;
+        }
 		public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

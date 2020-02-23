@@ -32,7 +32,7 @@ Allows you to breath underwater");
 			player.manaCost -= 0.3f;
             player.magicDamage += 0.20f;
             player.gills = true;
-            player.magicCrit += 0.20f;
+            player.magicCrit += 20;
 
         }
 
