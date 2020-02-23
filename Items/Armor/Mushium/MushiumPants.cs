@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Mushium
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Mushium Pants");
-            Tooltip.SetDefault("2% Increased life regeneration");
+            Tooltip.SetDefault("1% Increased life regeneration");
 
         }
 
@@ -27,7 +27,7 @@ namespace AAMod.Items.Armor.Mushium
 
 		public override void UpdateEquip(Player player)
         {
-            player.lifeRegen += 2;
+            player.lifeRegen += 1;
         }
 
 		public override void AddRecipes()

@@ -21,7 +21,7 @@ Weightless as shadow itself");
 			item.height = 18;
 			item.value = 10000;
 			item.rare = 3;
-			item.defense = 5;
+			item.defense = 7;
 		}
 
 		public override void UpdateEquip(Player player)

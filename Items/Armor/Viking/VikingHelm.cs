@@ -19,7 +19,7 @@ namespace AAMod.Items.Armor.Viking
 			item.height = 24;
             item.value = Item.sellPrice(0, 0, 5, 0);
             item.rare = 3;
-            item.defense = 6;
+            item.defense = 8;
         }
 		
 		public override void AddRecipes()

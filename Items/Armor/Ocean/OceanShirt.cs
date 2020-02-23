@@ -11,7 +11,7 @@ namespace AAMod.Items.Armor.Ocean
 		{
 			DisplayName.SetDefault("Ocean Chestplate");
 			Tooltip.SetDefault(@"Increases maximum mana by 20
-2% increased magic damage");
+5% increased magic damage");
 		}
 
 		public override void SetDefaults()
@@ -20,13 +20,13 @@ namespace AAMod.Items.Armor.Ocean
 			item.height = 24;
 			item.value = Item.sellPrice (0, 0, 5, 0);
 			item.rare = 3;
-			item.defense = 5;
+			item.defense = 4;
 		}
 		
 		public override void UpdateEquip(Player player)
 		{
             player.statManaMax2 += 20;
-            player.magicDamage += 0.02f;
+            player.magicDamage += 0.05f;
 		}
 		
 		public override void AddRecipes()

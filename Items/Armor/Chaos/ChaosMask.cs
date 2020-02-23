@@ -14,6 +14,7 @@ namespace AAMod.Items.Armor.Chaos
 			DisplayName.SetDefault("Chaos Mask");
             Tooltip.SetDefault(@"Decreases mana usage by 30%
 Increases magic damage by 20%
+Increases magic crit by 20%
 Allows you to breath underwater");
         }
 
@@ -31,7 +32,9 @@ Allows you to breath underwater");
 			player.manaCost -= 0.3f;
             player.magicDamage += 0.20f;
             player.gills = true;
-		}
+            player.magicCrit += 0.20f;
+
+        }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {

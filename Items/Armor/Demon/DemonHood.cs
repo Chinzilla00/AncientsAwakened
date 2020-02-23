@@ -12,8 +12,7 @@ namespace AAMod.Items.Armor.Demon
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Demon Cowl");
-            Tooltip.SetDefault(@"9% Increased Minion damage
-+2 Minion slots");
+            Tooltip.SetDefault(@"9% Increased Minion damage");
         }
 
         public override void SetDefaults()
@@ -28,7 +27,6 @@ namespace AAMod.Items.Armor.Demon
         public override void UpdateEquip(Player player)
         {
             player.minionDamage += 0.09f;
-            player.maxMinions += 2;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

@@ -19,7 +19,7 @@ namespace AAMod.Items.Armor.DoomiteU
 			item.height = 24;
 			item.value = Item.sellPrice(0, 0, 5, 0);
 			item.rare = 3;
-			item.defense = 5;
+			item.defense = 3;
 		}
 
 		public override void AddRecipes()

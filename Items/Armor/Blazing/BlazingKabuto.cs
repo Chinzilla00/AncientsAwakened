@@ -13,6 +13,7 @@ namespace AAMod.Items.Armor.Blazing
 		{
 			DisplayName.SetDefault("Blazing Kabuto");
 			Tooltip.SetDefault(@"1% increased Damage Resistance
+3% increased Melee Damage
 Forged in the flames of the blazing sun");
         }
 
@@ -28,6 +29,7 @@ Forged in the flames of the blazing sun");
         public override void UpdateEquip(Player player)
         {
             player.endurance += .01f;
+            player.meleeDamage += 0.03f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

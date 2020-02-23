@@ -11,7 +11,8 @@ namespace AAMod.Items.Armor.Demon
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Demon Garb");
-            Tooltip.SetDefault("9% Increased Minion damage");
+            Tooltip.SetDefault(@"9% Increased Minion damage
+                +2 minion slots");
         }
 
         public override void SetDefaults()
@@ -26,6 +27,8 @@ namespace AAMod.Items.Armor.Demon
         public override void UpdateEquip(Player player)
         {
             player.minionDamage += 0.09f;
+            player.maxMinions += 2;
+
         }
 
         public override void AddRecipes()
