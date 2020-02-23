@@ -40,6 +40,7 @@ namespace AAMod.Items.Armor.Chaos
             player.meleeSpeed += .1f;
             player.aggro += 4;
             player.GetModPlayer<AAPlayer>().kindledSet = true;
+            player.GetModPlayer<AAPlayer>().ChaosMe = true;
         }
 
         public override void AddRecipes()
