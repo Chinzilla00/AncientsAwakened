@@ -3642,6 +3642,8 @@ namespace AAMod
             }
         }
 
+        #region Highest Damage check
+
         public bool MeleeHighest(Player player)
         {
             return player.meleeDamage > player.rangedDamage &&
@@ -3681,6 +3683,8 @@ namespace AAMod
                 player.thrownDamage > player.minionDamage &&
                 player.thrownDamage > player.meleeDamage;
         }
+
+        #endregion
     }
 
     public class MimicSummon : ModPlayer
