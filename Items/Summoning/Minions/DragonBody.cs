@@ -35,6 +35,11 @@ namespace AAMod.Items.Summoning.Minions
             return Color.White;
         }
 
+        public override void OnHitNPC(NPC npc, int damage, float knockback, bool crit)
+        {
+            npc.immune[projectile.owner] = 6;
+        }
+
         public override void DrawBehind(int index, List<int> drawCacheProjsBehindNPCsAndTiles, List<int> drawCacheProjsBehindNPCs, List<int> drawCacheProjsBehindProjectiles,
             List<int> drawCacheProjsOverWiresUI)
         {
