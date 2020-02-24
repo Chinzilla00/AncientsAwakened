@@ -155,6 +155,22 @@ namespace AAMod.Globals
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Djinn"));
 
+                //Anubis
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/AnuBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/AnuBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/AnuBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Cyan,
+                    Color.Cyan,
+                    Color.Cyan);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Anubis"));
+
                 // Greed
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
@@ -190,6 +206,22 @@ namespace AAMod.Globals
                     yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                     yabhb.Call("hbFinishSingle", AAMod.instance.NPCType(rajahType));
                 }
+                
+                //Forsaken Anubis
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/FAnuBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/FAnuBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/FAnuBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.MediumAquamarine,
+                    Color.MediumAquamarine,
+                    Color.MediumAquamarine);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("ForsakenAnubis"));
 
                 // Worm King Greed
                 yabhb.Call("hbStart");
