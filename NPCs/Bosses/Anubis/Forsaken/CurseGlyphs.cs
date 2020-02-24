@@ -64,8 +64,8 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 		public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 9, 0, 0);
-            BaseDrawing.DrawAfterimage(sb, Main.npcTexture[projectile.type], 0, projectile, 3f, 0.9f, 4, true, 0f, 0f, Color.White, frame, 9);
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, projectile.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
+            BaseDrawing.DrawAfterimage(sb, Main.projectileTexture[projectile.type], 0, projectile, 3f, 0.9f, 4, true, 0f, 0f, Color.White, frame, 9);
+            BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, projectile.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
             return false;
 		}		
 	}

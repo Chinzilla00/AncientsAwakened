@@ -85,7 +85,6 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 600);
-            Kill(0);
         }
 
         public override void Kill(int timeleft)

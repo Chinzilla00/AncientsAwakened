@@ -8,7 +8,7 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Desert Djinn Music Box");
-            Tooltip.SetDefault(@"Plays 'Sand Smackdown' by Frogtism");
+            Tooltip.SetDefault(@"Plays 'Sand Smackdown' by Universe");
         }
 
         public override void SetDefaults()

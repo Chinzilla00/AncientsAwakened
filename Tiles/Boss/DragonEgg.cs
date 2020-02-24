@@ -88,7 +88,14 @@ namespace AAMod.Tiles.Boss
             {
                 Player player = Main.player[BaseMod.BaseAI.GetPlayer(new Vector2(i, j), -1)];
                 AAWorld.SmashDragonEgg = 2;
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Broodmother"), false, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Broodmother"));
+                if (Main.dayTime)
+                {
+                    AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Broodmother"), false, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Broodmother"));
+                }
+                else
+                {
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("You hear a tired, quiet roar, and then...snoring..?", Color.DarkOrange);
+                }
             }
         }
 

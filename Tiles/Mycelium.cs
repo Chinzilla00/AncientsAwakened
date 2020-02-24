@@ -32,7 +32,7 @@ namespace AAMod.Tiles
 
         public override void RandomUpdate(int i, int j)
         {
-            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(50) == 0)
+            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(30) == 0)
             {
                 PlaceObject(i, j - 1, mod.TileType("Mushroom"));
                 NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("Mushroom"), 0, 0, -1, -1);

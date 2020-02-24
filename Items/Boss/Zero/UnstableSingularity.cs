@@ -13,13 +13,13 @@ namespace AAMod.Items.Boss.Zero
             DisplayName.SetDefault("Unstable Singularity");
             Tooltip.SetDefault("Barely stable enough to hold");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(4, 18));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 6));
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Oblivion;
+            return AAColor.COLOR_WHITEFADE1;
         }
 
         public override void SetDefaults()
@@ -44,7 +44,7 @@ namespace AAMod.Items.Boss.Zero
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, AAColor.Oblivion.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, Color.Red.ToVector3() * 0.55f * Main.essScale);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace AAMod.Items.Boss.Akuma
         {
             DisplayName.SetDefault("Taiyang Baolei");
             Tooltip.SetDefault(@"Makes you immune to almost all debuffs
+Allows you to do a fiery, explosive dash
 Your melee & magic attacks set enemies ablaze
 During the day, you gain 6% damage resistance and your melee & magic attacks inflict daybroken instead of 'On Fire!'");
         }

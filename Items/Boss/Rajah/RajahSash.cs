@@ -62,7 +62,7 @@ Immunity to fall damage");
                 damageColor = Color.DarkOrange;
             }
 
-            string DamageAmount = (10 * DamageBoost(player)) + "% ";
+            string DamageAmount = (100 * DamageBoost(player)) + "% ";
             TooltipLine DamageTooltip = new TooltipLine(mod, "Damage Type", Language.GetTextValue("Mods.AAMod.Common.RajahSPDamageBoost") + DamageAmount + DamageType + Language.GetTextValue("Mods.AAMod.Common.RajahSPDamageInfo"))
             {
                 overrideColor = damageColor
@@ -140,7 +140,7 @@ Immunity to fall damage");
             }
             else if (player.statLife <= player.statLifeMax * .9f)
             {
-                return .8f;
+                return .08f;
             }
             else
             {

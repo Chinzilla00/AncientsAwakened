@@ -18,7 +18,7 @@ namespace AAMod.Items.Armor.Chaos
 		{
             item.width = 22;
             item.height = 16;
-            item.defense = 22;
+            item.defense = 20;
             item.rare = 7;
         }
 

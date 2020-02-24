@@ -63,7 +63,7 @@ Inflicts Daybroken");
 			{
 				Main.PlaySound(2, player.Center, 124);
 				Vector2 vector12 = new Vector2(0,0);
-				vector12 = new Vector2((float)Main.mouseX + Main.screenPosition.X, player.Center.Y);
+				vector12 = new Vector2(Main.mouseX + Main.screenPosition.X, player.Center.Y);
 				Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
 				float num75 = 20f;
 				float num119 = vector12.Y;

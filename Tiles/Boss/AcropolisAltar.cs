@@ -83,7 +83,6 @@ namespace AAMod.Tiles.Boss
         // SpawnBoss(player, mod.NPCType("MyBoss"), true, 0, 0, "DerpyBoi 2", false);
         public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 Pos = default, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
         {
-            Mod mod = AAMod.instance;
             if (overrideDirection == 0)
                 overrideDirection = Main.rand.Next(2) == 0 ? -1 : 1;
             if (overrideDirectionY == 0)
@@ -95,6 +94,7 @@ namespace AAMod.Tiles.Boss
             }
             AAModGlobalNPC.SpawnBoss(player, bossType, spawnMessage, npcCenter, overrideDisplayName, namePlural);
         }
+
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)
         {

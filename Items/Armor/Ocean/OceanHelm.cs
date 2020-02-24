@@ -13,7 +13,8 @@ namespace AAMod.Items.Armor.Ocean
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Ocean Helmet");
             Tooltip.SetDefault(@"Increases maximum mana by 20
-2% increased magic damage");
+You can breath in water
+5% increased magic damage");
         }
 
 		public override void SetDefaults()
@@ -22,13 +23,14 @@ namespace AAMod.Items.Armor.Ocean
 			item.height = 24;
             item.value = Item.sellPrice(0, 0, 5, 0);
             item.rare = 3;
-            item.defense = 4;
+            item.defense = 2;
         }
 
         public override void UpdateEquip(Player player)
         {
             player.statManaMax2 += 20;
-            player.magicDamage += 0.02f;
+            player.magicDamage += 0.05f;
+            player.breath = player.breathMax -1;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

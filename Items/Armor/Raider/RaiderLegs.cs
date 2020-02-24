@@ -10,6 +10,7 @@ namespace AAMod.Items.Armor.Raider
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Raider Greaves");
+            DisplayName.SetDefault(" ");
         }
 
 		public override void SetDefaults()

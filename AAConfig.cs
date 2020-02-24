@@ -56,9 +56,9 @@ namespace AAMod
 			{
                 try
                 {
-                    Configuration.Get<Dictionary<int, int>>("LuckyOreMine", ref LuckyOre);
-                    Configuration.Get<Dictionary<int, int>>("LuckyPotionGet", ref LuckyPotion);
-                    Configuration.Get<List<int>>("RareNpcList", ref ListRareNpc);
+                    Configuration.Get("LuckyOreMine", ref LuckyOre);
+                    Configuration.Get("LuckyPotionGet", ref LuckyPotion);
+                    Configuration.Get("RareNpcList", ref ListRareNpc);
                 }
 				catch
                 {

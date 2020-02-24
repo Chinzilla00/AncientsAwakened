@@ -37,11 +37,18 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
             projectile.hostile = true;
-            projectile.timeLeft = 600;
+            projectile.timeLeft = 240;
             projectile.aiStyle = -1;
             cooldownSlot = 1;
         }
-
+        public override void Kill(int timeLeft)
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                int dustIndex = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.Discord>(), 0f, 0f, 100, default(Color), 2f);
+                Main.dust[dustIndex].velocity *= 1.4f;
+            }
+        }
         public override void AI()
         {
             if (--projectile.ai[0] == 0)

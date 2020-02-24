@@ -16,7 +16,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 		{
             base.SetDefaults();
 			nightcrawler = true;
-            bossBag = mod.ItemType("NCBag");			
+			bossBag = mod.ItemType("EquinoxBag");
 		}
     }
 }

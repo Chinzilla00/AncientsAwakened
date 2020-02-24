@@ -13,7 +13,7 @@ namespace AAMod.Items.Armor.Abyssal
             base.SetStaticDefaults();
             DisplayName.SetDefault("Abyssal Fukumen");
             Tooltip.SetDefault(@"35% increased movement speed
-12% increased ranged damage
+15% increased ranged damage
 Weightless as shadow itself");
         }
 
@@ -23,12 +23,12 @@ Weightless as shadow itself");
 			item.height = 20;
 			item.value = 10000;
 			item.rare = 3;
-			item.defense = 5;
+			item.defense = 6;
 		}
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage += .12f;
+            player.rangedDamage += .15f;
             player.moveSpeed += .35f;
             player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .35f;
         }

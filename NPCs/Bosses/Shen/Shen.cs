@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Shen
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.knockBackResist = 0f;
-            npc.damage = 155;
+            npc.damage = 110;
             npc.defense = 70;
             npc.lifeMax = 800000;
             npc.value = Item.sellPrice(20, 0, 0, 0);
@@ -123,7 +123,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
         }
 
-	    public int Side;
+        public int Side;
         public bool Health4 = false;
         public bool Health3 = false;
         public bool Health2 = false;
@@ -155,7 +155,7 @@ namespace AAMod.NPCs.Bosses.Shen
             Player player = Main.player[npc.target];
             Vector2 targetPos;
 
-            if(!AliveCheck(player)) return;
+            if (!AliveCheck(player)) return;
 
             #region ProjIDs
 
@@ -199,6 +199,12 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.width = normalWidth;
                 npc.Center = center;
                 npc.netUpdate = true;
+            }
+
+            if (!NPC.AnyNPCs(mod.NPCType("ShenHitbox")))
+            {
+                int hitbox = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("ShenHitbox"), 0, npc.whoAmI, 0f, 0f, 0f, 255);
+                Main.npc[hitbox].netUpdate = true;
             }
 
             if (NPC.AnyNPCs(ModContent.NPCType<GripsShen.BlazeGrip>()) || NPC.AnyNPCs(ModContent.NPCType<GripsShen.AbyssGrip>()))
@@ -840,6 +846,10 @@ namespace AAMod.NPCs.Bosses.Shen
 
             //deoffset
             npc.position.Y -= 130f;
+            return false;
+        }
+        public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+        {
             return false;
         }
         public static int ShootPeriodic(Entity codable, Vector2 position, int width, int height, int projType, ref float delayTimer, float delayTimerMax = 100f, int damage = -1, float speed = 10f, bool checkCanHit = true)

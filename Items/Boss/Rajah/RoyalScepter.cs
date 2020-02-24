@@ -43,7 +43,7 @@ namespace AAMod.Items.Boss.Rajah
 		    for (int i = 0; i < 3; i++)
 		    {
 		    	offsetAngle = startAngle + (deltaAngle * i);
-		    	int proj = Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
+		    	int proj = Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), type, damage, knockBack, Main.myPlayer);
                 Main.projectile[proj].ranged = false;
                 Main.projectile[proj].magic = false;
             }

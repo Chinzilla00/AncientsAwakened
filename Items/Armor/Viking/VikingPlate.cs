@@ -20,7 +20,7 @@ namespace AAMod.Items.Armor.Viking
 			item.height = 24;
 			item.value = Item.sellPrice (0, 0, 5, 0);
 			item.rare = 3;
-			item.defense = 7;
+			item.defense = 9;
 		}
 		
 		public override void UpdateEquip(Player player)
@@ -36,7 +36,7 @@ namespace AAMod.Items.Armor.Viking
 		public override void UpdateArmorSet(Player player)
 		{
 			player.setBonus = Language.GetTextValue("Mods.AAMod.Common.VikingPlateBonus");
-            player.endurance += .03f;
+            player.endurance += .04f;
         }
 		
 		public override void AddRecipes()

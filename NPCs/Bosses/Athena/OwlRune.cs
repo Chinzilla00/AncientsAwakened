@@ -69,8 +69,21 @@ namespace AAMod.NPCs.Bosses.Athena
                     }
                 }
                 npc.TargetClosest();
-                Player player = Main.player[npc.target];
-                BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<SeraphFeather>(), ref npc.ai[2], 15, npc.damage / 4, 10, false);
+                if (npc.ai[2]++ == 15)
+                {
+                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), ModContent.ProjectileType<SeraphFeather>(), 0, 0);
+                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), ModContent.ProjectileType<SeraphFeather>(), 0, 0);
+                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), ModContent.ProjectileType<SeraphFeather>(), 0, 0);
+                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), ModContent.ProjectileType<SeraphFeather>(), 0, 0);
+                }
+                else if (npc.ai[2] >= 30)
+                {
+                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 8f), ModContent.ProjectileType<SeraphFeather>(), 0, 0);
+                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 0f), ModContent.ProjectileType<SeraphFeather>(), 0, 0);
+                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -8f), ModContent.ProjectileType<SeraphFeather>(), 0, 0);
+                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 0f), ModContent.ProjectileType<SeraphFeather>(), 0, 0);
+                    npc.ai[2] = 0;
+                }
             }
             else
             {

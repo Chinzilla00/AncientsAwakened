@@ -27,7 +27,8 @@ namespace AAMod.Items.Blocks.BogwoodF
         }
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
+            ModRecipe recipe;
+            recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "Bogwood");
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this, 4);

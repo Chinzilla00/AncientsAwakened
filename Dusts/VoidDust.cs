@@ -6,6 +6,11 @@ namespace AAMod.Dusts
 {
     public class VoidDust : ModDust
 	{
+		public override void OnSpawn(Dust dust)
+		{
+			dust.scale *= 0.7f;
+			dust.noGravity = true;
+		}
 		public override bool MidUpdate(Dust dust)
 		{
 			if (!dust.noLight)

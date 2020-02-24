@@ -209,7 +209,7 @@ namespace AAMod
                 }
             }
 
-            if (item.type == ItemID.WormScarf ||  item.type == mod.ItemType("StoneScarf"))
+            if (item.type == ItemID.WormScarf)
             {
                 if (slot < 10)
                 {
@@ -217,11 +217,6 @@ namespace AAMod
                     for (int i = 3; i < 3 + maxAccessoryIndex; i++)
                     {
                         if (slot != i && player.armor[i].type == ItemID.WormScarf)
-                        {
-                            return false;
-                        }
-
-                        if (slot != i && player.armor[i].type == mod.ItemType("StoneScarf"))
                         {
                             return false;
                         }

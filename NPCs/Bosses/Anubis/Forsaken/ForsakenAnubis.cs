@@ -13,13 +13,13 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Anubis; Forsaken Judge");
-            Main.npcFrameCount[npc.type] = 4;
+            Main.npcFrameCount[npc.type] = 12;
         }
 
         public override void SetDefaults()
         {
-            npc.width = 76;
-            npc.height = 100;
+            npc.width = 88;
+            npc.height = 160;
             npc.aiStyle = -1;
             npc.damage = 55;
             npc.defense = 60;
@@ -514,13 +514,23 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
-            if (npc.frameCounter > 6)
+            if (npc.frameCounter > 7)
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
-                if (npc.frame.Y > frameHeight * 3)
+                if (AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<ForsakenStaff>()))
                 {
-                    npc.frame.Y = 0;
+                    if (npc.frame.Y > frameHeight * 11 || npc.frame.Y < frameHeight * 6 )
+                    {
+                        npc.frame.Y = 6;
+                    }
+                }
+                else
+                {
+                    if (npc.frame.Y > frameHeight * 6)
+                    {
+                        npc.frame.Y = 0;
+                    }
                 }
             }
         }

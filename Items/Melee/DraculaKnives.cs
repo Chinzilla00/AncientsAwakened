@@ -51,7 +51,7 @@ Vampire Knives EX");
             for (int i = 0; i < 5; i++)
             {
                 offsetAngle = startAngle + (deltaAngle * i);
-                Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
+                Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, Main.myPlayer);
             }
             return true;
             /*Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);

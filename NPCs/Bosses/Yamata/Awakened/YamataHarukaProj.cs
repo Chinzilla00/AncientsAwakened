@@ -7,18 +7,16 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {
     public class YamataHarukaProj : ModProjectile
     {
-        public override string Texture => "AAMod/NPCs/Bosses/Yamata/Awakened/HarukaY";
-
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Haruka Yamata");
-            Main.projFrames[projectile.type] = 28;
+            Main.projFrames[projectile.type] = 11;
 		}
-    	
+
         public override void SetDefaults()
         {
-            projectile.width = 50;
-            projectile.height = 60;
+            projectile.width = 82;
+            projectile.height = 74;
             projectile.hostile = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
@@ -27,6 +25,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             projectile.aiStyle = -1;
         }
 
+        const float dashTime = 90;
         public override void AI()
         {
             if (!NPC.AnyNPCs(ModContent.NPCType<YamataA>()))
@@ -42,7 +41,9 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
             }
 
             Player player = Main.player[ai0];
-            const float dashTime = 90;
+            if (projectile.Center.X > player.Center.X) projectile.direction = 1;
+            else projectile.direction = -1;
+            projectile.spriteDirection = projectile.direction;
             if (++projectile.ai[1] <= dashTime) //move beside player
             {
                 Vector2 target = player.Center;
@@ -61,6 +62,34 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 {
                     projectile.ai[1] = 0;
                     projectile.netUpdate = true;
+                }
+            }
+        }
+
+        public override void PostAI()
+        {
+            if (projectile.frameCounter++ > 5)
+            {
+              projectile.frameCounter = 0;
+              projectile.frame++;
+            }
+
+            if (projectile.ai[1] <= dashTime)
+            {
+                if (projectile.frame >= 4)
+                {
+                    projectile.frame = 0;
+                }
+            }
+            else
+            {
+                if (projectile.frame < 4)
+                {
+                    projectile.frame = 4;
+                }
+                if (projectile.frame >= 11)
+                {
+                    projectile.frame = 7;
                 }
             }
         }

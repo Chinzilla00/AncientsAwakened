@@ -36,12 +36,12 @@ namespace AAMod.Projectiles.Thorium
 			
 			if (player.direction > 0)
 			{
-				projectile.rotation += 0.35f;
+				projectile.rotation += 0.45f;
 				projectile.spriteDirection = 1;
 			}
 			else
 			{
-				projectile.rotation -= 0.35f;
+				projectile.rotation -= 0.45f;
 				projectile.spriteDirection = -1;
 			}
 			

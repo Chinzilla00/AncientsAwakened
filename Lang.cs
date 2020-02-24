@@ -2516,7 +2516,7 @@ namespace AAMod
                         case "ShenDeath9":
                         return "BUNCH OF CLOWNS";
                         case "ShenDeath10":
-                        return "And YOU, ";
+                        return "And YOU";
                         case "ShenDeath11":
                         return "! NEXT TIME I'M GONNA TEAR YOUR HEADS OFF!!!";
                         case "ShenDeath12":

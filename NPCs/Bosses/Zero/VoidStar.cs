@@ -15,7 +15,6 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Void Star");
-            Main.npcFrameCount[npc.type] = 2;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
         public override void SetDefaults()
@@ -141,7 +140,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             Texture2D tex = Main.npcTexture[npc.type];
             Texture2D glowTex = mod.GetTexture("Glowmasks/VoidStarZ");
-            BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, npc, 1, 1, 6, true, 0, 0, Color.DarkRed, npc.frame, 2);
+            BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, npc, 1, 1, 6, true, 0, 0, Color.DarkRed, npc.frame);
             BaseDrawing.DrawTexture(spriteBatch, tex, 0, npc, drawColor);
             BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, AAColor.ZeroShield);
             return false;

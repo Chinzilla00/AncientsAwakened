@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Bosses.Anubis
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Anubis Legendscribe");
-            Main.npcFrameCount[npc.type] = 9;
+            Main.npcFrameCount[npc.type] = 11;
         }
 
         public override void SetDefaults()
@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Anubis
             npc.aiStyle = -1;
             npc.damage = 35;
             npc.defense = 40;
-            npc.lifeMax = 29500;
+            npc.lifeMax = 30000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
             npc.knockBackResist = 0f;
@@ -468,6 +468,17 @@ namespace AAMod.NPCs.Bosses.Anubis
             }
             if (internalAI[0] == 0)
             {
+                if (internalAI[1] >= 240 && internalAI[1] < 320)
+                {
+                    if (npc.frame.Y < frameHeight * 9)
+                    {
+                        npc.frame.Y = 9;
+                    }
+                    if (npc.frame.Y >= 10)
+                    {
+                        npc.frame.Y = 10;
+                    }
+                }
                 if (npc.velocity.Y == 0)
                 {
                     if (npc.frame.Y < frameHeight * 4 || npc.frame.Y > frameHeight * 8)

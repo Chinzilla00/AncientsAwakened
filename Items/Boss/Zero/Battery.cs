@@ -15,7 +15,7 @@ namespace AAMod.Items.Boss.Zero
             Tooltip.SetDefault(@"Acts as a bullet
 Non-consumable");
 
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(10, 10));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(10, 4));
         }
 
         public override void SetDefaults()

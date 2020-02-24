@@ -138,10 +138,6 @@ namespace AAMod.NPCs.Bosses.Athena
 
                                 if (internalAI[3] >= 420)
                                 {
-                                    Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
-                                    AcropolisCloud biome = new AcropolisCloud();
-                                    biome.Place(origin, WorldGen.structures);
-
                                     if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena6"), Color.CornflowerBlue);
                                     internalAI[2] = 1;
 
@@ -176,10 +172,6 @@ namespace AAMod.NPCs.Bosses.Athena
 
                                 if (internalAI[3] >= 180)
                                 {
-                                    Point origin = new Point((int)(Main.maxTilesX * 0.65f), 100);
-                                    AcropolisCloud biome = new AcropolisCloud();
-                                    biome.Place(origin, WorldGen.structures);
-
                                     if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena8"), Color.CornflowerBlue);
                                     internalAI[2] = 1;
                                     npc.netUpdate = true;
@@ -201,7 +193,6 @@ namespace AAMod.NPCs.Bosses.Athena
                     npc.TargetClosest();
                     if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 5000 || !modPlayer.ZoneAcropolis)
                     {
-                        AAWorld.ClearClouds();
                         if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena9"), Color.CornflowerBlue);
                         int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaFlee>());
                         Main.npc[p].Center = npc.Center;
@@ -229,7 +220,7 @@ namespace AAMod.NPCs.Bosses.Athena
                         npc.ai[3]++;
                     }
 
-                    if (Vector2.Distance(player.Center, Acropolis) > 480)
+                    if (Vector2.Distance(player.Center, Acropolis) > 1280)
                     {
                         if (npc.ai[2] == 0 && Main.netMode != 1)
                         {
@@ -354,18 +345,18 @@ namespace AAMod.NPCs.Bosses.Athena
         public Vector2 CloudPick()
         {
             int CloudChoice = Main.rand.Next(12);
-            Vector2 Cloud1 = new Vector2(Origin.X + (80 * 16), Origin.Y + (12 * 16));
-            Vector2 Cloud2 = new Vector2(Origin.X + (110 * 16), Origin.Y + (23 * 16));
-            Vector2 Cloud3 = new Vector2(Origin.X + (130 * 16), Origin.Y + (42 * 16));
-            Vector2 Cloud4 = new Vector2(Origin.X + (139 * 16), Origin.Y + (66 * 16));
-            Vector2 Cloud5 = new Vector2(Origin.X + (134 * 16), Origin.Y + (96 * 16));
-            Vector2 Cloud6 = new Vector2(Origin.X + (109 * 16), Origin.Y + (119 * 16));
-            Vector2 Cloud7 = new Vector2(Origin.X + (80 * 16), Origin.Y + (129 * 16));
-            Vector2 Cloud8 = new Vector2(Origin.X + (43 * 16), Origin.Y + (117 * 16));
-            Vector2 Cloud9 = new Vector2(Origin.X + (24 * 16), Origin.Y + (96 * 16));
-            Vector2 Cloud10 = new Vector2(Origin.X + (19 * 16), Origin.Y + (68 * 16));
-            Vector2 Cloud11 = new Vector2(Origin.X + (33 * 16), Origin.Y + (44 * 16));
-            Vector2 Cloud12 = new Vector2(Origin.X + (50 * 16), Origin.Y + (20 * 16));
+            Vector2 Cloud1 = new Vector2(Origin.X + (79 * 16), Origin.Y + (10 * 16));
+            Vector2 Cloud2 = new Vector2(Origin.X + (112 * 16), Origin.Y + (19 * 16));
+            Vector2 Cloud3 = new Vector2(Origin.X + (135 * 16), Origin.Y + (40 * 16));
+            Vector2 Cloud4 = new Vector2(Origin.X + (140 * 16), Origin.Y + (69 * 16));
+            Vector2 Cloud5 = new Vector2(Origin.X + (135 * 16), Origin.Y + (99 * 16));
+            Vector2 Cloud6 = new Vector2(Origin.X + (112 * 16), Origin.Y + (120 * 16));
+            Vector2 Cloud7 = new Vector2(Origin.X + (79 * 16), Origin.Y + (129 * 16));
+            Vector2 Cloud8 = new Vector2(Origin.X + (46 * 16), Origin.Y + (120 * 16));
+            Vector2 Cloud9 = new Vector2(Origin.X + (23 * 16), Origin.Y + (99 * 16));
+            Vector2 Cloud10 = new Vector2(Origin.X + (18 * 16), Origin.Y + (69 * 16));
+            Vector2 Cloud11 = new Vector2(Origin.X + (23 * 16), Origin.Y + (40 * 16));
+            Vector2 Cloud12 = new Vector2(Origin.X + (46 * 16), Origin.Y + (19 * 16));
             if (CloudChoice == 1)
             {
                 return Cloud2;
@@ -487,7 +478,6 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override void NPCLoot()
         {
-            AAWorld.ClearClouds();
             AAWorld.downedAthena = true;
 
             if (NPC.downedMoonlord)
@@ -587,7 +577,7 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
                 else if (npc.ai[0] > 130)
                 {
-                    npc.velocity.Y = -6f;
+                    npc.velocity.Y -= 6f;
                 }
                 if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate = true; }
             }

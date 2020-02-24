@@ -14,7 +14,6 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Reality Cannon");
-            Main.npcFrameCount[npc.type] = 2;
             NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
 
@@ -56,19 +55,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 return false;
             }
             return true;
-        }
-
-
-        public override void FindFrame(int frameHeight)
-        {
-            ++npc.frameCounter;
-            if (npc.frameCounter >= 8.0)
-            {
-                npc.frameCounter = 0.0;
-                npc.frame.Y += frameHeight;
-                if (npc.frame.Y / frameHeight >= 2)
-                    npc.frame.Y = 0;
-            }
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -151,7 +137,7 @@ namespace AAMod.NPCs.Bosses.Zero
         {
             Texture2D tex = Main.npcTexture[npc.type];
             Texture2D glowTex = mod.GetTexture("Glowmasks/RealityCannonZ");
-            BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, npc, 1, 1, 6, true, 0, 0, Color.DarkRed, npc.frame, 2);
+            BaseDrawing.DrawAfterimage(spriteBatch, tex, 0, npc, 1, 1, 6, true, 0, 0, Color.DarkRed, npc.frame);
             BaseDrawing.DrawTexture(spriteBatch, tex, 0, npc, drawColor);
             BaseDrawing.DrawTexture(spriteBatch, glowTex, 0, npc, AAColor.ZeroShield);
             return false;

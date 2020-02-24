@@ -45,14 +45,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             int MinionType = ModContent.NPCType<RabbitcopterSoldier>();
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
             {
-                MinionType = ModContent.NPCType<RabbitcopterSoldier4>();
-            }
-            else if (NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah9>()))
-            {
-                MinionType = ModContent.NPCType<RabbitcopterSoldier3>();
-            }
-            else if (NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah6>()))
-            {
                 MinionType = ModContent.NPCType<RabbitcopterSoldier2>();
             }
 
@@ -91,7 +83,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             projectile.velocity *= velMultiplier;
         }
     }
-
 
     public class BunnySummon2 : ModProjectile
     {
@@ -133,14 +124,6 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             int MinionType = ModContent.NPCType<BunnyBrawler>();
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
-            {
-                MinionType = ModContent.NPCType<BunnyBrawler4>();
-            }
-            else if (NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah9>()))
-            {
-                MinionType = ModContent.NPCType<BunnyBrawler3>();
-            }
-            else if (NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah6>()))
             {
                 MinionType = ModContent.NPCType<BunnyBrawler2>();
             }
@@ -221,14 +204,6 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             int MinionType = ModContent.NPCType<BunnyBattler>();
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
-            {
-                MinionType = ModContent.NPCType<BunnyBattler4>();
-            }
-            else if (NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah9>()))
-            {
-                MinionType = ModContent.NPCType<BunnyBattler3>();
-            }
-            else if (NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) || NPC.AnyNPCs(ModContent.NPCType<Rajah6>()))
             {
                 MinionType = ModContent.NPCType<BunnyBattler2>();
             }

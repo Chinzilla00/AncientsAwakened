@@ -925,7 +925,7 @@ namespace AAMod
 
             RecipeGroup group5 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " +  Language.GetTextValue("Mods.AAMod.Common.superancientmaterial"), new int[]
             {
-                AAMod.instance.ItemType("ChaosSoul")
+                AAMod.instance.ItemType("ChaosScale")
             });
             RecipeGroup.RegisterGroup("AAMod:SuperAncientMaterials", group5);
             
@@ -1021,9 +1021,9 @@ namespace AAMod
             {
                 AAMod.instance.ItemType("BlazingSuneate"),
                 AAMod.instance.ItemType("AbyssalHakama"),
-                AAMod.instance.ItemType("AtlanteanBoots"),
+                AAMod.instance.ItemType("AtlanteanGreaves"),
                 AAMod.instance.ItemType("DoomiteGreaves"),
-                AAMod.instance.ItemType("RaiderBoots"),
+                AAMod.instance.ItemType("RaiderLegs"),
                 AAMod.instance.ItemType("DynaskullGreaves")
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosBoots", group18);
@@ -1034,7 +1034,7 @@ namespace AAMod
                 AAMod.instance.ItemType("AbyssalGi"),
                 AAMod.instance.ItemType("AtlanteanPlate"),
                 AAMod.instance.ItemType("DoomiteBreastplate"),
-                AAMod.instance.ItemType("RaiderPlate"),
+                AAMod.instance.ItemType("RaiderChest"),
                 AAMod.instance.ItemType("DynaskullRibguard")
             });
             RecipeGroup.RegisterGroup("AAMod:ChaosPlates", group19);

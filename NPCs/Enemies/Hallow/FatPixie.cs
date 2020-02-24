@@ -80,6 +80,10 @@ namespace AAMod.NPCs.Enemies.Hallow
 			{
 				jumpWidth = 8f;
 				jumpHeight = -25f;
+                if (npc.ai[0] >= 0)
+                {
+                    CombatText.NewText(npc.Hitbox, Color.LightGoldenrodYellow, "YEET");
+                }
 			}
             BaseAI.AISlime(npc, ref npc.ai, false, 150, 4f, 2f, jumpWidth, jumpHeight);
 			BaseDrawing.AddLight(npc.Center, new Color(212, 208, 107), 2f);
@@ -91,8 +95,18 @@ namespace AAMod.NPCs.Enemies.Hallow
 				Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ItemID.PixieDust, Main.rand.Next(5, 7));
         }
 
-		public override bool PreDraw(SpriteBatch sb, Color dColor)
-		{
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+        public bool saythelinezero = false;
+
+        public override bool PreDraw(SpriteBatch sb, Color dColor)
+        {
+            if (npc.whoAmI % 30 == 0)
+            {
+                if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+                else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+                BaseDrawing.DrawAura(sb, Main.npcTexture[npc.type], 0, npc, auraPercent, 1f, 0f, 0f, Color.Gold);
+            }
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, Color.White);
 			return false;
 		}

@@ -22,8 +22,6 @@ While cooldown is occurring, your speed is increased, you gain invincibility fra
 While cooldown is occurring, your magic/summon weapons require no mana and have 20% increased damage
 'You don't look so good'
 WARNING: May permanently displace appendages until game restart. This is a feature.");
-            // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 36));
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }
 
@@ -52,7 +50,7 @@ WARNING: May permanently displace appendages until game restart. This is a featu
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Oblivion;
+            return AAColor.COLOR_WHITEFADE1;
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -134,7 +132,7 @@ WARNING: May permanently displace appendages until game restart. This is a featu
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, AAColor.Oblivion.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, Color.Red.ToVector3() * 0.55f * Main.essScale);
         }
     }
 }

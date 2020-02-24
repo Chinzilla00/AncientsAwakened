@@ -104,45 +104,42 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             if (isSupreme)
             {
-                damage *= .5f;
+                damage *= .7f;
             }
             return true;
         }
 
         public float ProjSpeed()
         {
-            if (isSupreme)
+            if (npc.life < (npc.lifeMax * .85f)) //The lower the health, the more damage is done
             {
-                return 16f;
-            }
-            else if (npc.life < (npc.lifeMax * .85f)) //The lower the health, the more damage is done
-            {
-                return 10f;
+                return isSupreme ? 12f : 10f;
             }
             if (npc.life < (npc.lifeMax * .7f))
             {
-                return 11f;
+                return isSupreme ? 13f : 11f;
             }
             if (npc.life < (npc.lifeMax * .65f))
             {
-                return 12f;
+                return isSupreme ? 14f : 12f;
             }
             if (npc.life < (npc.lifeMax * .4f))
             {
-                return 13f;
+                return isSupreme ? 15f : 13f;
             }
             if (npc.life < (npc.lifeMax * .25f))
             {
-                return 14f;
+                return isSupreme ? 16f : 14f;
             }
             if (npc.life < (npc.lifeMax * .1f))
             {
-                return 16f;
+                return isSupreme ? 16f : 15f;
             }
-            return 9f;
+            return isSupreme ? 11f : 9f;
         }
 
         private bool SayLine = false;
+        private bool DefenseLine = false;
 
         public override void AI()
         {
@@ -158,40 +155,49 @@ namespace AAMod.NPCs.Bosses.Rajah
             WeaponPos = new Vector2(npc.Center.X + (npc.direction == 1 ? -78 : 78), npc.Center.Y - 9);
             StaffPos = new Vector2(npc.Center.X + (npc.direction == 1 ? 78 : -78), npc.Center.Y - 9);
             if (Roaring) roarTimer--;
-            
+
             if (Main.netMode != 1 && npc.type == ModContent.NPCType<SupremeRajah>() && isSupreme == false)
             {
                 isSupreme = true;
                 npc.netUpdate = true;
             }
 
-            if (isSupreme && npc.life <= npc.lifeMax / 7 && !SayLine && Main.netMode != 1)
+            if (isSupreme)
             {
-                SayLine = true;
-                string Name;
+                if (npc.ai[3] != 0 && !DefenseLine && !AAWorld.downedRajahsRevenge && Main.netMode != 1)
+                {
+                    DefenseLine = true;
+                    BaseUtility.Chat("Rajah glows with furious energy as he attacks, strengthening his defenses", Color.MediumPurple);
 
-                int bunnyKills = NPC.killCount[Item.NPCtoBanner(NPCID.Bunny)];
-                if (bunnyKills >= 100 && !AAWorld.downedRajahsRevenge)
-                {
-                    Name = "MUDERER";
                 }
-                else
+                if (npc.life <= npc.lifeMax / 7 && !SayLine && Main.netMode != 1)
                 {
-                    if (Main.netMode != 0)
+                    SayLine = true;
+                    string Name;
+
+                    int bunnyKills = NPC.killCount[Item.NPCtoBanner(NPCID.Bunny)];
+                    if (bunnyKills >= 100 && !AAWorld.downedRajahsRevenge)
                     {
-                        Name = "Terrarians";
-                    }
-                    else if (!AAWorld.downedRajahsRevenge)
-                    {
-                        Name = "Terrarian";
+                        Name = "MUDERER";
                     }
                     else
                     {
-                        Name = Main.LocalPlayer.name;
+                        if (Main.netMode != 0)
+                        {
+                            Name = "Terrarians";
+                        }
+                        else if (!AAWorld.downedRajahsRevenge)
+                        {
+                            Name = "Terrarian";
+                        }
+                        else
+                        {
+                            Name = Main.LocalPlayer.name;
+                        }
                     }
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Rajah5") + Name.ToUpper() + Lang.BossChat("Rajah6"), 107, 137, 179);
+                    music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand");
                 }
-                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Rajah5") + Name.ToUpper() + Lang.BossChat("Rajah6"), 107, 137, 179);
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand");
             }
 
             Player player = Main.player[npc.target];
@@ -256,7 +262,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 npc.direction = -1;
             }
-            if (player.Center.Y < npc.position.Y - 30f || TileBelowEmpty() || 
+            if (player.Center.Y < npc.position.Y - 30f || TileBelowEmpty() ||
                 !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height) ||
                 Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 2000 || isDashing)
             {
@@ -366,7 +372,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, ModContent.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
 
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, ModContent.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
-                                    
+
                                     Projectile.NewProjectile(StaffPos, Vector2.Zero, ModContent.ProjectileType<BunnySummon3>(), 0, 0, Main.myPlayer, Main.rand.Next((int)npc.Center.X - 500, (int)npc.Center.X + 500), Main.rand.Next((int)npc.Center.Y - 200, (int)npc.Center.Y - 50));
                                 }
                             }
@@ -495,7 +501,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     }
                 }
             }
-            
+
             if (Main.expertMode)
             {
                 if (npc.life < (npc.lifeMax * .85f)) //The lower the health, the more damage is done
@@ -904,7 +910,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 }
                 else
                 {
-                    npc.DropLoot(ModContent.ItemType<RajahPelt>(), Main.rand.Next(15, 31));
+                    npc.DropLoot(ModContent.ItemType<Items.Boss.Rajah.Supreme.ChampionPlate>(), Main.rand.Next(15, 31));
                     string[] lootTable = { "Excalihare", "FluffyFury", "RabbitsWrath" };
                     int loot = Main.rand.Next(lootTable.Length);
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
@@ -952,7 +958,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * 0.8f * bossLifeScale);  //boss life scale in expertmode
-            npc.damage = (int)(npc.damage * .6f); 
+            npc.damage = (int)(npc.damage * .6f);
         }
 
         public void RajahTexture()
@@ -1046,117 +1052,6 @@ namespace AAMod.NPCs.Bosses.Rajah
     }
 
     [AutoloadBossHead]
-    public class Rajah2 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 80;
-            npc.defense = 60;
-            npc.lifeMax = 80000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah3 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 80;
-            npc.defense = 70;
-            npc.lifeMax = 100000;
-            npc.life = 100000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah4 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 100;
-            npc.defense = 90;
-            npc.lifeMax = 200000;
-            npc.life = 200000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah5 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 130;
-            npc.defense = 100;
-            npc.lifeMax = 300000;
-            npc.life = 300000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah6 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 180;
-            npc.defense = 150;
-            npc.lifeMax = 500000;
-            npc.life = 500000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah7 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 210;
-            npc.defense = 170;
-            npc.lifeMax = 700000;
-            npc.life = 700000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah8 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 250;
-            npc.defense = 180;
-            npc.lifeMax = 900000;
-            npc.life = 900000;
-        }
-    }
-
-    [AutoloadBossHead]
-    public class Rajah9 : Rajah
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/Rajah";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 290;
-            npc.defense = 230;
-            npc.lifeMax = 1000000;
-            npc.life = 1000000;
-        }
-    }
-
-    [AutoloadBossHead]
     public class SupremeRajah : Rajah
     {
         public override string Texture => "AAMod/NPCs/Bosses/Rajah/Supreme/SupremeRajah";
@@ -1172,9 +1067,9 @@ namespace AAMod.NPCs.Bosses.Rajah
             base.SetDefaults();
             npc.damage = 310;
             npc.defense = 0;
-            npc.lifeMax = 2600000;
-            npc.life = 2600000;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/SupremeRajah");
+            npc.lifeMax = 1200000;
+            npc.life = 1200000;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Rajah");
             bossBag = mod.ItemType("RajahCache");
             isSupreme = true;
             npc.value = Item.sellPrice(3, 0, 0, 0);

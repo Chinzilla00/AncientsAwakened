@@ -38,7 +38,7 @@ namespace AAMod.Items.Ranged
             for (int i = 0; i < 3; i++)
             {
                 offsetAngle = startAngle + (deltaAngle * i);
-                Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("RadiumArrow"), damage, knockBack, item.owner);
+                Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), mod.ProjectileType("RadiumArrow"), damage, knockBack, Main.myPlayer);
             }
             return true;
         }

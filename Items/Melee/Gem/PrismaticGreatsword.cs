@@ -11,14 +11,14 @@ namespace AAMod.Items.Melee.Gem   //where is located
         public override void SetDefaults()
         {
 
-            item.damage = 42;            
+            item.damage = 48;            
             item.melee = true;            
             item.width = 58;              
             item.height = 60;             
-            item.useTime = 16;          
-            item.useAnimation = 16;     
+            item.useTime = 20;          
+            item.useAnimation = 20;     
             item.useStyle = 1;        
-            item.knockBack = 5;      
+            item.knockBack = 5;
             item.value = 20000;        
             item.rare = 4;
             item.UseSound = new LegacySoundStyle(2, 8, Terraria.Audio.SoundType.Sound);
@@ -54,8 +54,9 @@ namespace AAMod.Items.Melee.Gem   //where is located
             recipe.AddIngredient(null, "SapphireGreatsword", 1);
             recipe.AddIngredient(null, "TopazGreatsword", 1);
             recipe.AddIngredient(null, "AmberGreatsword", 1);
-            recipe.AddIngredient(null, "DiamondGreatsword", 1); ;
-            recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(null, "DiamondGreatsword", 1);
+            recipe.AddIngredient(ItemID.BeamSword);
+            recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();
 

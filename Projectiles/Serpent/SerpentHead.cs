@@ -361,15 +361,14 @@ namespace AAMod.Projectiles.Serpent
                 return;
             }
 
-            int num1038 = 30;
+
             if (player.dead) modPlayer.SnakeMinion = false;
             if (modPlayer.SnakeMinion) projectile.timeLeft = 2;
+            int num1038 = 30;
 
             bool flag67 = false;
             Vector2 value67 = Vector2.Zero;
             float num1052 = 0f;
-            float scaleFactor16 = 0f;
-            float scaleFactor17 = 1f;
             if (projectile.ai[1] == 1f)
             {
                 projectile.ai[1] = 0f;
@@ -382,9 +381,6 @@ namespace AAMod.Projectiles.Serpent
                 flag67 = true;
                 value67 = Main.projectile[byUUID].Center;
                 num1052 = Main.projectile[byUUID].rotation;
-                float num1053 = MathHelper.Clamp(Main.projectile[byUUID].scale, 0f, 50f);
-                scaleFactor17 = num1053;
-                scaleFactor16 = 16f;
                 Main.projectile[byUUID].localAI[0] = projectile.localAI[0] + 1f;
                 if (Main.projectile[byUUID].type != mod.ProjectileType("SerpentHead")) Main.projectile[byUUID].localAI[1] = projectile.whoAmI;
                 if (projectile.owner == player.whoAmI && Main.projectile[byUUID].type == mod.ProjectileType("SerpentHead"))
@@ -397,14 +393,12 @@ namespace AAMod.Projectiles.Serpent
 
             if (!flag67) return;
             if (projectile.alpha > 0)
-            {
                 for (int num1054 = 0; num1054 < 2; num1054++)
                 {
                     int num1055 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 135, 0f, 0f, 100, default, 2f);
                     Main.dust[num1055].noGravity = true;
                     Main.dust[num1055].noLight = true;
                 }
-            }
 
             projectile.alpha -= 42;
             if (projectile.alpha < 0) projectile.alpha = 0;
@@ -418,13 +412,10 @@ namespace AAMod.Projectiles.Serpent
 
             projectile.rotation = vector134.ToRotation() + 1.57079637f;
             projectile.position = projectile.Center;
-            projectile.scale = scaleFactor17;
             projectile.width = projectile.height = (int)(num1038 * projectile.scale);
             projectile.Center = projectile.position;
-            if (vector134 != Vector2.Zero) projectile.Center = value67 - Vector2.Normalize(vector134) * scaleFactor16 * scaleFactor17;
+            if (vector134 != Vector2.Zero) projectile.Center = value67 - Vector2.Normalize(vector134) * 31;
             projectile.spriteDirection = vector134.X > 0f ? 1 : -1;
-
-            projectile.damage = Main.projectile[byUUID].damage;
         }
     }
 }

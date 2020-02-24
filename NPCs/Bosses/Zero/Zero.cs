@@ -17,14 +17,14 @@ namespace AAMod.NPCs.Bosses.Zero
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Zero");
-            Main.npcFrameCount[npc.type] = 2;
+            Main.npcFrameCount[npc.type] = 7;
         }
 
         public override void SetDefaults()
         {
             npc.damage = 59;
             npc.defense = 200;
-            npc.lifeMax = 600000;
+            npc.lifeMax = 450000;
             if (Main.expertMode)
             {
                 npc.value = 0;
@@ -67,12 +67,13 @@ namespace AAMod.NPCs.Bosses.Zero
         }
 
         public override void HitEffect(int hitDirection, double damage)
-        {          
+        {
             if (npc.life <= (int)(npc.lifeMax * .66f) && !RespawnArms1 && Main.netMode != 1)
             {
                 WeaponCount += 1;
                 npc.ai[1] = 0;
                 RespawnArms1 = true;
+
                 RespawnArms();
                 if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroBoss10"), Color.Red, false);
                 npc.netUpdate = true;
@@ -98,7 +99,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
-                if (Main.expertMode && Main.netMode != 1) 
+                if (Main.expertMode && Main.netMode != 1)
                 {
                     if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroBoss1"), Color.Red.R, Color.Red.G, Color.Red.B);
                     int z = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ZeroProtocol"), 0, 0, 0, 0, 0, npc.target) ;
@@ -458,7 +459,33 @@ namespace AAMod.NPCs.Bosses.Zero
                 }
                 else
                 {
-                    if (npc.life > npc.lifeMax / 4)
+                    if (npc.ai[2] == 5)
+                    {
+                        int TeleportPos = Main.rand.Next(5);
+                        int VoidHeight = 140;
+                        Point spawnTilePos = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, VoidHeight);
+                        Vector2 Origin = new Vector2(spawnTilePos.X * 16, spawnTilePos.Y * 16);
+
+                        switch (TeleportPos)
+                        {
+                            case 0:
+                                npc.position = Origin;
+                                break;
+                            case 1:
+                                npc.position = Origin + new Vector2(0, 640);
+                                break;
+                            case 2:
+                                npc.position = Origin + new Vector2(0, -640);
+                                break;
+                            case 3:
+                                npc.position = Origin + new Vector2(640, 0);
+                                break;
+                            case 4:
+                                npc.position = Origin + new Vector2(-640, 0);
+                                break;
+                        }
+                    }
+                    if (npc.life > npc.lifeMax / 2)
                     {
                         if (npc.ai[2] == 80 || npc.ai[2] == 240) // + lasers
                         {
@@ -543,13 +570,29 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void FindFrame(int frameHeight)
         {
-            if (npc.ai[1] != 0)
+            if (npc.ai[1] == 0)
             {
                 npc.frame.Y = 0;
             }
             else
             {
-                npc.frame.Y = frameHeight;
+                if (npc.ai[3] == 3)
+                {
+                    npc.frameCounter++;
+                    if (npc.frameCounter < 4)
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y += frameHeight;
+                    }
+                    if (npc.frame.Y < frameHeight * 2 || npc.frame.Y > frameHeight * 6)
+                    {
+                        npc.frame.Y = frameHeight * 2;
+                    }
+                }
+                else
+                {
+                    npc.frame.Y = frameHeight;
+                }
             }
         }
 
@@ -623,10 +666,3 @@ namespace AAMod.NPCs.Bosses.Zero
         }
     }
 }
-
-
-
-
-
-
-

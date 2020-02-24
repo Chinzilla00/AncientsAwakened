@@ -158,7 +158,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 internalAI[4] = Main.rand.Next(2);
                 if (internalAI[2] == 2)
                 {
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("SagittariusFree3"), Color.PaleVioletRed);
+                    CombatText.NewText(npc.Hitbox, Color.PaleVioletRed, Lang.BossChat("SagittariusFree3"));
                 }
                 npc.ai = new float[4];
                 npc.netUpdate = true;

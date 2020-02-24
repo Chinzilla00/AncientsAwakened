@@ -16,19 +16,19 @@ namespace AAMod.Items.Ranged
 		public override void SetDefaults()
 		{
 			item.useStyle = 5;
-			item.autoReuse = false;
-			item.useAnimation = 75;
-			item.useTime = 75;
+			item.autoReuse = true;
+			item.useAnimation = 65;
+			item.useTime = 65;
 			item.width = 68;
 			item.height = 24;
 			item.shoot = mod.ProjectileType("M79P");
 			item.UseSound = SoundID.Item61;
-			item.damage = 150;
+			item.damage = 180;
 			item.shootSpeed = 11f;
 			item.noMelee = true;
 			item.value = 50000;
 			item.knockBack = 6f;
-			item.rare = 3;
+			item.rare = 8;
 			item.ranged = true;
 			item.useAmmo = mod.ItemType("M79Round");
 		}

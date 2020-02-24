@@ -45,7 +45,7 @@ namespace AAMod.Items.Magic
             for (int i = 0; i < 3; i++)
             {
                 offsetAngle = startAngle + (deltaAngle * i);
-                Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, item.owner);
+                Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), item.shoot, damage, knockBack, Main.myPlayer);
             }
             return false;
         }
@@ -55,6 +55,8 @@ namespace AAMod.Items.Magic
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("OceanTrident"));
 			recipe.AddIngredient(mod.ItemType("BlazePike"));
+			recipe.AddIngredient(mod.ItemType("SandLamp"));
+			recipe.AddIngredient(mod.ItemType("NeutronStaff"));
 			recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
@@ -62,6 +64,8 @@ namespace AAMod.Items.Magic
 			recipe = new ModRecipe(mod);
 			recipe.AddIngredient(mod.ItemType("OceanTrident"));
 			recipe.AddIngredient(mod.ItemType("SludgeShot"));
+			recipe.AddIngredient(mod.ItemType("Sickle"));
+			recipe.AddIngredient(mod.ItemType("NeutronStaff"));
 			recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();

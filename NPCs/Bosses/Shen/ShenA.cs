@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Shen
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 160;
+            npc.damage = 130;
             npc.defense = 80;
             npc.lifeMax = 1000000;
             npc.value = Item.sellPrice(1, 0, 0, 0);
@@ -86,6 +86,12 @@ namespace AAMod.NPCs.Bosses.Shen
                 npc.width = normalWidth;
                 npc.Center = center;
                 npc.netUpdate = true;
+            }
+
+            if (!NPC.AnyNPCs(mod.NPCType("ShenAHitbox")))
+            {
+                int hitbox = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("ShenAHitbox"), 0, npc.whoAmI, 0f, 0f, 0f, 255);
+                Main.npc[hitbox].netUpdate = true;
             }
 
             if (NPC.AnyNPCs(ModContent.NPCType<AwakenedShenAH.FuryAshe>()) || NPC.AnyNPCs(ModContent.NPCType<AwakenedShenAH.WrathHaruka>()))
@@ -757,6 +763,10 @@ namespace AAMod.NPCs.Bosses.Shen
                 Text.Add(Lang.BossChat("ShenANoMod"));
             }
             return Text;
+        }
+        public override bool CanHitPlayer(Player target, ref int cooldownSlot)
+        {
+            return false;
         }
 
         public override bool PreDraw(SpriteBatch sb, Color drawColor)

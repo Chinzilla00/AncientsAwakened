@@ -54,15 +54,6 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             {
                 npc.alpha = 0;
             }
-
-            if (!Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
-            {
-                npc.noTileCollide = true;
-            }
-            else
-            {
-                npc.noTileCollide = false;
-            }
         }
 
         public override void NPCLoot()

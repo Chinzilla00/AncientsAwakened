@@ -64,11 +64,11 @@ namespace AAMod.Projectiles.Akuma
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Texture2D texture = mod.GetTexture("Projectiles/Akuma/FireProj1");
-			if (projectile.ai[0] == 2f) texture = mod.GetTexture("Projectiles/Akuma/FireProj2");
-			if (projectile.ai[0] == 3f) texture = mod.GetTexture("Projectiles/Akuma/FireProj3");
-			if (projectile.ai[0] == 4f) texture = mod.GetTexture("Projectiles/Akuma/FireProj4");
-			if (projectile.ai[0] == 5f) texture = mod.GetTexture("Projectiles/Akuma/FireProj5");
+            Texture2D texture = mod.GetTexture("Projectiles/Akuma/FireProjEX1");
+			if (projectile.ai[0] == 2f) texture = mod.GetTexture("Projectiles/Akuma/FireProjEX2");
+			if (projectile.ai[0] == 3f) texture = mod.GetTexture("Projectiles/Akuma/FireProjEX3");
+			if (projectile.ai[0] == 4f) texture = mod.GetTexture("Projectiles/Akuma/FireProjEX4");
+			if (projectile.ai[0] == 5f) texture = mod.GetTexture("Projectiles/Akuma/FireProjEX5");
             spriteBatch.Draw(texture, new Vector2(projectile.Center.X - Main.screenPosition.X, projectile.Center.Y - Main.screenPosition.Y + 2),
                         new Rectangle(0, 0, texture.Width, texture.Height), Color.White, projectile.rotation,
                         new Vector2(projectile.width * 0.5f, projectile.height * 0.5f), 1f, SpriteEffects.None, 0f);

@@ -42,9 +42,9 @@ namespace AAMod.Items.Ranged
 		    for (int i = 0; i < 6; i++)
 		    {
 		    	offsetAngle = startAngle + (deltaAngle * i);
-		    	Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), type, damage, knockBack, item.owner);
+		    	Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), type, damage, knockBack, Main.myPlayer);
             }
-            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<Projectiles.Shadowshot>(), (int)(damage * 1.0f), knockBack, item.owner);
+            Projectile.NewProjectile(position.X, position.Y, speedX, speedY, ModContent.ProjectileType<Projectiles.Shadowshot>(), (int)(damage * 1.0f), knockBack, Main.myPlayer);
             return false;
 		}
 

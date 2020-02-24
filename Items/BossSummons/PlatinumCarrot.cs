@@ -35,14 +35,6 @@ namespace AAMod.Items.BossSummons
         public override bool CanUseItem(Player player)
         {
             return !(NPC.AnyNPCs(ModContent.NPCType<Rajah>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah2>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah3>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah6>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah9>()) ||
                 NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()));
         }
 

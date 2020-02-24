@@ -35,7 +35,7 @@ namespace AAMod.NPCs.TownNPCs
             npc.townNPC = true;
             npc.friendly = true;
             npc.width = 18;
-            npc.height = 56;
+            npc.height = 40;
             npc.aiStyle = 7;
             npc.damage = 40;
             npc.defense = 38;
@@ -85,7 +85,6 @@ namespace AAMod.NPCs.TownNPCs
             }
             return num >= 100;
         }
-
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
@@ -175,7 +174,7 @@ namespace AAMod.NPCs.TownNPCs
                 int DyePink = player.FindItem(ItemID.PinkPricklyPear);
                 int DyeGray = player.FindItem(ItemID.BlackInk);
 
-                string[] lootTable = { "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "Pink" };
+                string[] lootTable = { "Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Gray", "Pink", "Brown" };
                 int loot = Main.rand.Next(lootTable.Length);
 
                 if (Special >= 0)
@@ -482,7 +481,6 @@ namespace AAMod.NPCs.TownNPCs
             nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.MushroomGrassSeeds);
             nextSlot++;
-
             shop.item[nextSlot].SetDefaults(ItemID.LesserHealingPotion);
             nextSlot++;
             shop.item[nextSlot].SetDefaults(ItemID.LesserManaPotion);
@@ -496,13 +494,6 @@ namespace AAMod.NPCs.TownNPCs
                 nextSlot++;
             }
 
-            if (NPC.downedBoss3 == true)
-            {
-                shop.item[nextSlot].SetDefaults(ItemID.HealingPotion);
-                nextSlot++;
-                shop.item[nextSlot].SetDefaults(ItemID.ManaPotion);
-                nextSlot++;
-            }
             if (Main.hardMode == true)
             {
                 shop.item[nextSlot].SetDefaults(ItemID.GreaterHealingPotion);

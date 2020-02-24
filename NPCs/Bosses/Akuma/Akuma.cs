@@ -39,8 +39,8 @@ namespace AAMod.NPCs.Bosses.Akuma
             npc.netAlways = true;
             npc.knockBackResist = 0f;
             npc.damage = 140;
-            npc.defense = 120;
-            npc.lifeMax = 590000;
+            npc.defense = 80;
+            npc.lifeMax = 400000;
             if (Main.expertMode)
             {
                 npc.value = Item.sellPrice(0, 0, 0, 0);
@@ -157,7 +157,7 @@ namespace AAMod.NPCs.Bosses.Akuma
             if (fireAttack == true)
             {
                 attackTimer++;
-                if ((attackTimer == 20 || attackTimer == 50 || attackTimer == 79) && npc.HasBuff(BuffID.Wet))
+                if ((attackTimer % 20 == 0) && npc.HasBuff(BuffID.Wet))
                 {
                     for (int spawnDust = 0; spawnDust < 2; spawnDust++)
                     {
@@ -427,7 +427,8 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("Akuma7") : Main.rand.Next(4) == 0 ? Lang.BossChat("Akuma8") : "", new Color(180, 41, 32));
+                    if (!Quote3 || Main.rand.Next(4) == 0)
+                        if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("Akuma7") : Lang.BossChat("Akuma8"), new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote3 = true;
                 }
@@ -440,7 +441,8 @@ namespace AAMod.NPCs.Bosses.Akuma
             {
                 if (!QuoteSaid && sayQuote)
                 {
-                    if (Main.netMode != 1) AAMod.Chat((!Quote5) ? Lang.BossChat("Akuma13") : Main.rand.Next(4) == 0 ? Lang.BossChat("Akuma14") : "", new Color(180, 41, 32));
+                    if (!Quote5 || Main.rand.Next(4) == 0)
+                        if (Main.netMode != 1) AAMod.Chat((!Quote5) ? Lang.BossChat("Akuma13") : Lang.BossChat("Akuma14"), new Color(180, 41, 32));
                     QuoteSaid = true;
                     Quote5 = true;
                 }

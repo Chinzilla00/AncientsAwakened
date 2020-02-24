@@ -65,7 +65,6 @@ namespace AAMod
         public string nums = "1234567890";
         public static bool ModContentGenerated;
 
-        public static bool CloudCheck = false;
         //Messages
         public static bool AMessage;
         public static bool Empowered;
@@ -192,7 +191,6 @@ namespace AAMod
             MireCenter = -Vector2.One;
             SmashDragonEgg = 2;
             SmashHydraPod = 2;
-            CloudCheck = false;
             //Squid Lady
             squid1 = 0;
             squid2 = 0;
@@ -544,20 +542,6 @@ namespace AAMod
             RabbitKills = reader.ReadInt32();
             SmashHydraPod = reader.ReadInt32();
             SmashDragonEgg = reader.ReadInt32();
-        }
-
-        public static void ClearClouds()
-        {
-            for (int j = 0; j < Main.maxTilesX; j++)
-            {
-                for (int k = 0; k < Main.maxTilesY; k++)
-                {
-                    if (Main.tile[j, k].active() && Main.tile[j, k].type == (ushort)ModContent.TileType<AcropolisClouds>())
-                    {
-                        WorldGen.KillTile(j, k, false, false, true);
-                    }
-                }
-            }
         }
 
         #endregion
@@ -1155,11 +1139,6 @@ namespace AAMod
 
         public override void PostUpdate()
         {
-            if (!CloudCheck)
-            {
-                ClearClouds();
-                CloudCheck = true;
-            }
             if (downedAnubisA && !AthenaHerald && !downedAthenaA)
             {
                 if (HeraldTimer > 0)
@@ -1359,7 +1338,7 @@ namespace AAMod
             terraTiles = tileCounts[ModContent.TileType<TerraCrystal>()] + tileCounts[ModContent.TileType<TerraWood>()] + tileCounts[ModContent.TileType<TerraLeaves>()];
             Radium = tileCounts[ModContent.TileType<RadiumOre>()];
             HoardTiles = tileCounts[ModContent.TileType<GreedBrick>()] + tileCounts[ModContent.TileType<GreedStone>()];
-            CloudTiles = tileCounts[ModContent.TileType<AcropolisBlock>()] + tileCounts[ModContent.TileType<AcropolisAltarBlock>()] + tileCounts[ModContent.TileType<AcropolisClouds>()];
+            CloudTiles = tileCounts[ModContent.TileType<AcropolisBlock>()] + tileCounts[ModContent.TileType<AcropolisAltarBlock>()];
         }
 
         private void MireAndInferno(GenerationProgress progress)

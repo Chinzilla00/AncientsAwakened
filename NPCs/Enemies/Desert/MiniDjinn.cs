@@ -131,7 +131,10 @@ namespace AAMod.NPCs.Enemies.Desert
 
         public override void NPCLoot()
         {
-            npc.DropLoot(ModContent.ItemType<Items.BossSummons.DjinnLamp>());
+            if (Main.rand.Next(4) == 0)
+            {
+                npc.DropLoot(ModContent.ItemType<Items.BossSummons.DjinnLamp>());
+            }
         }
     }
 }

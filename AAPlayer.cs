@@ -27,6 +27,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.Utilities;
 using Terraria.Localization;
+using Terraria.Audio;
 
 namespace AAMod
 {
@@ -789,7 +790,7 @@ namespace AAMod
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
-            if (DragonsGuard)
+            if (DragonsGuard || ChaosMe)
             {
                 npc.AddBuff(BuffID.OnFire, 120);
             }
@@ -898,12 +899,12 @@ namespace AAMod
                 }
             }
 
-            if (questFish == mod.ItemType("TriHeadedKoi") && player.GetModPlayer<AAPlayer>().ZoneInferno && Main.rand.NextBool())
+            if (questFish == mod.ItemType("TriHeadedKoi") && player.GetModPlayer<AAPlayer>().ZoneMire && Main.rand.NextBool())
             {
                 caughtType = mod.ItemType("TriHeadedKoi");
             }
 
-            if (questFish == mod.ItemType("Fishmother") && player.GetModPlayer<AAPlayer>().ZoneMire && Main.rand.NextBool())
+            if (questFish == mod.ItemType("Fishmother") && player.GetModPlayer<AAPlayer>().ZoneInferno && Main.rand.NextBool())
             {
                 caughtType = mod.ItemType("Fishmother");
             }
@@ -2012,7 +2013,7 @@ namespace AAMod
                         break;
 
                     case 2:
-                        player.QuickSpawnItem(mod.ItemType("PonyHead"));
+                        player.QuickSpawnItem(mod.ItemType("PonyMask"));
                         player.QuickSpawnItem(mod.ItemType("PonyBody"));
                         player.QuickSpawnItem(mod.ItemType("PonyHoofs"));
 
@@ -2302,6 +2303,11 @@ namespace AAMod
                         player.QuickSpawnItem(ItemID.ReaperHood);
                         player.QuickSpawnItem(ItemID.ReaperRobe);
 
+                        if (dropType >= 3)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("GrimReaperScythe" + addonEX));
+                        }
+
                         spawnedDevItems = true;
                         break;
 
@@ -2344,6 +2350,18 @@ namespace AAMod
                         {
                             player.QuickSpawnItem(mod.ItemType("GameRaider"));
                         }
+
+                        spawnedDevItems = true;
+                        break;
+                    case 28:
+                        player.QuickSpawnItem(mod.ItemType("CCHood"));
+                        player.QuickSpawnItem(mod.ItemType("CCRobe"));
+                        spawnedDevItems = true;
+                        break;
+                    case 29:
+                        player.QuickSpawnItem(mod.ItemType("DellyWig"));
+                        player.QuickSpawnItem(mod.ItemType("DellyShirt"));
+                        player.QuickSpawnItem(mod.ItemType("DellyBoots"));
 
                         spawnedDevItems = true;
                         break;
@@ -2655,6 +2673,7 @@ namespace AAMod
                 {
                     if (player.inventory[m].type == ModContent.ItemType<Items.Usable.RiftMirror>())
                     {
+                        Main.PlaySound(new LegacySoundStyle(2, 6), player.position);
                         player.Spawn();
                     }
                 }
@@ -2666,19 +2685,11 @@ namespace AAMod
                 {
                     if (player.inventory[m].type == ModContent.ItemType<Items.Usable.RiftMirror>())
                     {
+                        Main.PlaySound(new LegacySoundStyle(2, 6), player.position);
                         player.position = RiftPos;
                     }
                 }
             }
-            /* 
-            if (Assassin)
-            {
-                if (!player.mount.Active)
-                {
-                    AssassinStealth = !AssassinStealth;
-                }
-            }
-            */
 
             if (SagShield)
             {

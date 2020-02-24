@@ -114,14 +114,6 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.oldPos[0] = npc.position;
 
             if (NPC.AnyNPCs(ModContent.NPCType<Rajah>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah2>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah3>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah4>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah5>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah6>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah7>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah8>()) ||
-                NPC.AnyNPCs(ModContent.NPCType<Rajah9>()) ||
                 NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
             {
                 if (npc.alpha > 0)
@@ -147,41 +139,8 @@ namespace AAMod.NPCs.Bosses.Rajah
             }
         }
     }
-    public class BunnyBattler1 : BunnyBattler
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBattler";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 100;
-            npc.defense = 40;
-            npc.lifeMax = 400;
-        }
-    }
-    public class BunnyBattler2 : BunnyBattler
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBattler";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 130;
-            npc.defense = 50;
-            npc.lifeMax = 600;
-        }
-    }
-    public class BunnyBattler3 : BunnyBattler
-    {
-        public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBattler";
-        public override void SetDefaults()
-        {
-            base.SetDefaults();
-            npc.damage = 140;
-            npc.defense = 60;
-            npc.lifeMax = 900;
-        }
-    }
 
-    public class BunnyBattler4 : BunnyBattler
+    public class BunnyBattler2 : BunnyBattler
     {
         public override string Texture => "AAMod/NPCs/Bosses/Rajah/BunnyBattler";
         public override void SetDefaults()

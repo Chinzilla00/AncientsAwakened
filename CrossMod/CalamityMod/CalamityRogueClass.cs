@@ -67,8 +67,8 @@ namespace AAMod
 					{
 						' '
 					});
-					string str = source.First<string>();
-					string str2 = source.Last<string>();
+					string str = source.First();
+					string str2 = source.Last();
 					tooltipLine.text = str + " rogue " + str2;
 				}
 			}

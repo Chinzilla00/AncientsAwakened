@@ -22,7 +22,7 @@ namespace AAMod.Items.Armor.Nights
 			item.height = 28;
 			item.value = 90000;
 			item.rare = 4;
-			item.defense = 8;
+			item.defense = 6;
 		}
 		
 		public override void UpdateEquip(Player player)

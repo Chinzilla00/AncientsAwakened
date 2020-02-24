@@ -16,6 +16,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public bool Loludided;
         public int fireTimer = 0;
         public int damage = 0;
+        private bool weakness;
 
         public override void SetStaticDefaults()
         {
@@ -32,8 +33,8 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
             npc.aiStyle = -1;
             npc.netAlways = true;
             npc.damage = 150;
-            npc.defense = 135;
-            npc.lifeMax = 640000;
+            npc.defense = 90;
+            npc.lifeMax = 500000;
             npc.value = Item.sellPrice(0, 40, 0, 0);
             npc.knockBackResist = 0f;
             npc.boss = true;
@@ -177,6 +178,29 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                     MovementWorm(targetPos, 15f, 0.13f); //original movement
                     Main.PlaySound(2, (int)npc.Center.X, (int)npc.Center.Y, 20);
                     AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaABreath>(), 2, 4);
+                    if (npc.HasBuff(BuffID.Wet))
+                    {
+                        fireTimer++;
+
+                        if (fireTimer % 20 == 0)
+                        {
+                            for (int spawnDust = 0; spawnDust < 2; spawnDust++)
+                            {
+                                int num935 = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, mod.DustType("MireBubbleDust"), 0f, 0f, 90, default, 2f);
+                                Main.dust[num935].noGravity = true;
+                                Main.dust[num935].velocity.Y -= 1f;
+                            }
+                            if (weakness == false)
+                            {
+                                weakness = true;
+                                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("Akuma1"), Color.DeepSkyBlue);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        AAAI.BreatheFire(npc, true, ModContent.ProjectileType<AkumaBreath>(), 2, 4);
+                    }
                     if (++npc.ai[1] > 240)
                     {
                         npc.ai[0]++;
