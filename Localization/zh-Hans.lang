@@ -463,7 +463,7 @@ ItemTooltip.OlympianWings=可飞行和滑翔\n飞行中可冲刺
 
 
 ItemName.AbyssalFukumen=沉渊假面
-ItemTooltip.AbyssalFukumen=增加35%移动速度\n增加12%远程伤害\n如暗影般没有质量
+ItemTooltip.AbyssalFukumen=增加35%移动速度\n增加15%远程伤害\n如暗影般没有质量
 
 ItemName.AbyssalGi=沉渊武服
 ItemTooltip.AbyssalGi=增加40%移动速度\n如暗影般没有质量
@@ -515,13 +515,13 @@ Common.AtlanteanBonus=完全处于液体中时, 你的魔法能力和防御力�
 
 
 ItemName.BlazingDou=怒炎道甲
-ItemTooltip.BlazingDou=增加1%伤害减免\n在燎日之焰中锻造
+ItemTooltip.BlazingDou=增加2%伤害减免\n增加2%近战伤害\n在燎日之焰中锻造
 
 ItemName.BlazingKabuto=怒炎盔胄
-ItemTooltip.BlazingKabuto=增加2%伤害减免\n在燎日之焰中锻造
+ItemTooltip.BlazingKabuto=增加1%伤害减免\n增加3%近战伤害\n在燎日之焰中锻造
 
 ItemName.BlazingSuneate=怒炎臑当
-ItemTooltip.BlazingSuneate=增加1%伤害减免\n在燎日之焰中锻造\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
+ItemTooltip.BlazingSuneate=增加1%伤害减免\n增加2%近战伤害\n在燎日之焰中锻造
 
 Common.BlazingBonus=敌人更容易瞄准你\n你挥动的武器对敌人造成燃烧
 
@@ -562,7 +562,7 @@ ItemName.ChaosKabuto=混元盔胄
 ItemTooltip.ChaosKabuto=增加10%近战伤害
 
 ItemName.ChaosMask=混元面具
-ItemTooltip.ChaosMask=减少30%魔法消耗\n允许你在水下呼吸
+ItemTooltip.ChaosMask=减少30%魔法消耗\n增加20%魔法暴击率\n允许你在水下呼吸
 
 ItemName.ChaosVisor=混元视镜
 ItemTooltip.ChaosVisor=增加30%召唤伤害
@@ -657,10 +657,10 @@ ItemName.DemonBoots=恶魔步足
 ItemTooltip.DemonBoots=增加9%召唤伤害
 
 ItemName.DemonGarb=恶魔外套
-ItemTooltip.DemonGarb=增加9%召唤伤害
+ItemTooltip.DemonGarb=增加9%召唤伤害\n+2召唤上限
 
 ItemName.DemonHood=恶魔兜帽
-ItemTooltip.DemonHood=增加9%召唤伤害\n+2召唤上限
+ItemTooltip.DemonHood=增加9%召唤伤害
 
 Common.DemonHoodBonus=你的召唤物会让敌人燃烧\n你周围总会有一个小鬼恶魔\n小鬼恶魔不占用你的召唤上限
 
@@ -758,10 +758,10 @@ ItemName.Dynaskull=王骨护头
 ItemTooltip.Dynaskull=减少20%弹药消耗
 
 ItemName.DynaskullGreaves=王骨护腿
-ItemTooltip.DynaskullGreaves=增加10%远程暴击率
+ItemTooltip.DynaskullGreaves=增加12%远程暴击率
 
 ItemName.DynaskullRibguard=王骨护胸
-ItemTooltip.DynaskullRibguard=增加15%远程伤害
+ItemTooltip.DynaskullRibguard=增加13%远程伤害
 
 Common.DynaskullBonus=你的远程弹道相当强大, 震荡力使得目标混乱
 
@@ -892,7 +892,7 @@ ItemName.KindledKabuto=激燃盔胄
 ItemTooltip.KindledKabuto=在燎日之焰中锻造
 
 ItemName.KindledSuneate=激燃臑当
-ItemTooltip.KindledSuneate=在燎日之焰中锻造\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
+ItemTooltip.KindledSuneate=在燎日之焰中锻造
 
 Common.KindledKabutoBonus=增加2%伤害减免\n你挥动的武器对敌人造成灼伤
 
@@ -939,10 +939,10 @@ ItemName.MechLeggos=机械护胫
 
 
 ItemName.MushiumHat=赤孢帽
-ItemTooltip.MushiumHat=增加2%生命回复
+ItemTooltip.MushiumHat=增加1%生命回复
 
 ItemName.MushiumPants=赤孢裤
-ItemTooltip.MushiumPants=增加2%生命回复
+ItemTooltip.MushiumPants=增加1%生命回复
 
 ItemName.MushiumShirt=赤孢衫
 ItemTooltip.MushiumShirt=增加2%生命回复
@@ -981,13 +981,13 @@ Common.NightsHelmBonus=受到敌人攻击让你获得速度狂潮, 短时间内�
 
 
 ItemName.OceanBoots=海洋护胫
-ItemTooltip.OceanBoots=增加20魔力上限\n增加2%魔法伤害
+ItemTooltip.OceanBoots=增加20魔力上限\n增加5%魔法伤害\n你可以在水上行走
 
 ItemName.OceanHelm=海洋头盔
-ItemTooltip.OceanHelm=增加20魔力上限\n增加2%魔法伤害
+ItemTooltip.OceanHelm=增加20魔力上限\n增加5%魔法伤害\n你可以在水中呼吸
 
 ItemName.OceanShirt=海洋胸甲
-ItemTooltip.OceanShirt=增加20魔力上限\n增加2%魔法伤害
+ItemTooltip.OceanShirt=增加20魔力上限\n增加5%魔法伤害
 
 Common.OceanHelmBonus=完全处于水中时增加20%魔法伤害并且减少15%魔力消耗
 
@@ -1243,7 +1243,7 @@ ItemName.TrueBlazingKabuto=邪鬼盔胄
 ItemTooltip.TrueBlazingKabuto=增加5%伤害减免
 
 ItemName.TrueBlazingSuneate=邪鬼臑当
-ItemTooltip.TrueBlazingSuneate=增加5%伤害减免\n增加5%移动速度\n(译者注：suneate,臑当,日本甲胄的组成部分之一,类似于护腿)
+ItemTooltip.TrueBlazingSuneate=增加5%伤害减免\n增加5%移动速度
 
 
 // AAMod.Items.Armor.TrueCopper
@@ -1404,7 +1404,7 @@ ItemName.VikingHelm=维京海盗头盔
 
 ItemName.VikingPlate=维京海盗胸甲
 
-Common.VikingPlateBonus=增加3%伤害减免
+Common.VikingPlateBonus=增加4%伤害减免
 
 
 // AAMod.Items.Armor.Witch
@@ -1524,7 +1524,7 @@ ItemTooltip.Depthstone=潮
 ItemName.DiscordianTorch=冥昧火把
 
 ItemName.DjinnBox=八音盒(沙漠巨灵)
-ItemTooltip.DjinnBox=播放 'Sand Smackdown' by Frogtism
+ItemTooltip.DjinnBox=播放 'Sand Smackdown' by Universe
 
 ItemName.DoomsdayChest=末日宝箱
 
@@ -1828,21 +1828,47 @@ ItemName.RazewoodWall=燎火木墙
 
 // AAMod.Items.Blocks.BogwoodF
 
+ItemName.BogwoodBathtub=污泽木浴缸
+
 ItemName.BogwoodBench=污泽木凳
+
+ItemName.BogwoodBed=污泽木床
+
+ItemName.BogwoodBookshelf=污泽木书架
+
+ItemName.BogwoodCandelabra=污泽木烛台
 
 ItemName.BogwoodCandle=污泽木蜡烛
 
+ItemName.BogwoodChair=污泽木椅
+
+ItemName.BogwoodChandelier=污泽木吊灯
+
 ItemName.BogwoodChest=污泽木宝箱
+
+ItemName.BogwoodClock=污泽木钟
 
 ItemName.BogwoodCouch=污泽木沙发
 
 ItemName.BogwoodDoor=污泽木门
 
+ItemName.BogwoodDresser=污泽木梳妆台
+
 ItemName.BogwoodLantern=污泽木灯笼
+
+ItemName.BogwoodLamp=污泽木灯
+
+ItemName.BogwoodPiano=污泽木钢琴
+
+ItemName.BogwoodSink=污泽木水池
 
 ItemName.BogwoodPlatform=污泽木平台
 
+ItemName.BogwoodTable=污泽木桌
+
 ItemName.BogwoodWall=污泽木墙
+
+ItemName.BogwoodWorkbench=污泽木工作台
 
 // AAMod.Items.Blocks.Oroboros
 
@@ -2122,7 +2148,7 @@ ItemName.SunStorm=燎焰风暴
 ItemTooltip.SunStorm=发射环绕火球, 在一段时间后追踪敌人
 
 ItemName.TaiyangBaolei=太阳堡垒
-ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n你的近战和魔法攻击对敌人造成灼伤\n白天,增加5%伤害减免\n你的近战和魔法攻击造成破晓来代替着火\n(译者注：绝了,这个装备的英文原名就是taiyangbaolei)
+ItemTooltip.TaiyangBaolei=你对几乎所有debuff免疫\n允许你进行猛烈的爆炸冲刺\n你的近战和魔法攻击对敌人造成灼伤\n白天,增加5%伤害减免\n你的近战和魔法攻击造成破晓来代替着火\n(译者注：绝了,这个装备的英文原名就是taiyangbaolei)
 
 ItemName.YOTD=龙年大吉
 ItemTooltip.YOTD=发射绚烂的烟花吸引同伴驱赶敌人\n“邪鬼巨龙牌安全烟花,朝脸发射也没伤害!文明放烟花,安全你我他!”
@@ -2652,7 +2678,7 @@ ItemName.FallingTwilight=垂暮弓
 ItemName.Flairdra=海尔德拉链球
 ItemTooltip.Flairdra=成为海德拉\n造成蚀月
 
-ItemName.Hydraslayer=九头蛇屠戮之刃
+ItemName.Hydraslayer=天丛云剑
 ItemTooltip.Hydraslayer=用于打败潭渊的多头怪物\n造成蚀月
 
 ItemName.HydraStabber=九头蛇锥刀
@@ -3548,6 +3574,8 @@ ItemTooltip.SoulOfSmite=燎狱生物的精华
 ItemName.SeraphFeather=六翼天羽
 ItemTooltip.SeraphFeather=六翼鸟妖的银色羽毛
 
+ItemName.SearingSpark=白雪魔力
+
 ItemName.SoulOfSpite=渊怨之魂
 ItemTooltip.SoulOfSpite=潭渊生物的精华
 
@@ -3556,10 +3584,14 @@ ItemName.StarcloudBar=云辰锭
 ItemName.Stardust=放射光子
 ItemTooltip.Stardust=深空宇宙的碎片
 
+ItemName.SwampKoi=污泽锦鲤
+
 ItemName.TechneciumBar=闪锝锭
 ItemTooltip.TechneciumBar=(译者注：锝，人类首个人工合成的元素，用氘原子核去“轰击”钼得到)
 
 ItemName.TerraShard=泰拉碎片
+
+ItemName.TerrorSoul=惊怖之魂
 
 ItemName.UraniumBar=铀绿锭
 
@@ -4769,12 +4801,30 @@ ItemTooltip.PonyHoofs=“非常适合冒充远古觉醒的开发者!”
 ItemName.PonyMask=奇怪的马面具
 ItemTooltip.PonyMask=“非常适合冒充远古觉醒的开发者!”
 
+// AAMod.Items.Vanity.CC
+
+ItemName.CCHood=惧月教徒面具
+ItemTooltip.CCHood=一副蜥蜴狂徒的面具\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.CCRobe=惧月教徒长袍
+ItemTooltip.CCRobe=一套蜥蜴狂徒的长袍\n“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Dallin
 
 
 ItemName.FezLordsBag=菲斯的包裹
 ItemTooltip.FezLordsBag=右键打开 \n“模仿菲斯的所有必需品!”
+
+//AAMod.Items.Vanity.Delly
+
+ItemName.DellyBoots=影裤
+ItemTooltip.DellyBoots=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.DellyShirt=影衫
+ItemTooltip.DellyShirt=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.DellyWig=影发
+ItemTooltip.DellyWig=“非常适合冒充远古觉醒的开发者!”
 
 
 // AAMod.Items.Vanity.Eliza
@@ -4853,13 +4903,13 @@ ItemTooltip.HalTux=这件礼服纯手工\n“非常适合冒充远古觉醒的�
 // AAMod.Items.Vanity.Invoker
 
 ItemName.InvokerHood=召唤师兜帽
-ItemTooltip.InvokerHood=“大兽”阿莱斯特的附魔兜帽\n“非常适合冒充远古觉醒的捐赠者!”
+ItemTooltip.InvokerHood=“大兽”阿莱斯特的附魔兜帽\n“非常适合冒充远古觉醒的开发者!”
 
 ItemName.InvokerPants=召唤师长裤
-ItemTooltip.InvokerPants=“大兽”阿莱斯特的附魔长裤\n“非常适合冒充远古觉醒的捐赠者!”
+ItemTooltip.InvokerPants=“大兽”阿莱斯特的附魔长裤\n“非常适合冒充远古觉醒的开发者!”
 
 ItemName.InvokerRobe=召唤师法衣
-ItemTooltip.InvokerRobe=“大兽”阿莱斯特的附魔法衣\n“非常适合冒充远古觉醒的捐赠者!”
+ItemTooltip.InvokerRobe=“大兽”阿莱斯特的附魔法衣\n“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Universe
 
@@ -5415,7 +5465,11 @@ NPCName.ShenDoragon=上神应龙 冥昧末日的预言者
 
 NPCName.Shen=上神应龙 冥昧末日的预言者
 
+NPCName.ShenHitbox=上神应龙 冥昧末日的预言者
+
 NPCName.ShenA=觉醒之上神应龙 冥昭瞢暗的化身
+
+NPCName.ShenAHitbox=觉醒之上神应龙 冥昭瞢暗的化身
 
 NPCName.ShenSpawn=冥昧之息
 
@@ -5654,6 +5708,8 @@ NPCName.Mosster=潭渊藓怪
 
 NPCName.Newt=潭渊蝾螈
 
+NPCName.Soulsucker=灵魂吸食者
+
 
 // AAMod.NPCs.Enemies.Mire.Toxitoad
 
@@ -5824,28 +5880,47 @@ MapObject.ThixxieBanner=Banner
 
 // AAMod.Tiles.BogwoodF
 
-
-MapObject.BogwoodChair=污泽木椅
-
-MapObject.BogwoodChest=污泽木宝箱
-
-MapObject.BogwoodDoorOpen=污泽木门
+ItemName.BogwoodBathtub=污泽木浴缸
 
 MapObject.BogwoodBench=污泽木凳
 
+MapObject.BogwoodBed=污泽木床
+
+MapObject.BogwoodBookshelf=污泽木书架
+
+MapObject.BogwoodCandelabra=污泽木烛台
+
 MapObject.BogwoodCandle=污泽木蜡烛
 
+MapObject.BogwoodChair=污泽木椅
+
+MapObject.BogwoodChandelier=污泽木吊灯
+
 MapObject.BogwoodChest=污泽木宝箱
+
+MapObject.BogwoodClock=污泽木钟
 
 MapObject.BogwoodCouch=污泽木沙发
 
 MapObject.BogwoodDoor=污泽木门
 
+MapObject.BogwoodDresser=污泽木梳妆台
+
 MapObject.BogwoodLantern=污泽木灯笼
+
+MapObject.BogwoodLamp=污泽木灯
+
+MapObject.BogwoodPiano=污泽木钢琴
+
+MapObject.BogwoodSink=污泽木水池
 
 MapObject.BogwoodPlatform=污泽木平台
 
+MapObject.BogwoodTable=污泽木桌
+
 MapObject.BogwoodWall=污泽木墙
+
+MapObject.BogwoodWorkbench=污泽木工作台
 
 // AAMod.Tiles.Oroboros
 

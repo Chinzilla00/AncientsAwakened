@@ -75,7 +75,7 @@ namespace AAMod.NPCs.Enemies.Other
         }
         public override void NPCLoot()
         {
-            npc.DropLoot(mod.ItemType("DragonClaw"), Main.rand.Next(0, 1));
+            npc.DropLoot(mod.ItemType("DragonClaw"), 1);
         }
     }
 }

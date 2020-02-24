@@ -32,8 +32,8 @@ namespace AAMod.Items.Accessories
             DisplayName.SetDefault("CursedEye of SoulBinder");
             Tooltip.SetDefault(@"Pressing the accessory ability hotkey helps player skip the time between old one army two waves.
 Increase 21% minion damage
-Increases your max number of minions
-Increases your max number of sentries
+Increase your max number of minions
+Increase your max number of sentries
 +50 Max Life
 Your minions can strike the enemy's soul
 While Old One's Army is on, increase 31% minion damage.");

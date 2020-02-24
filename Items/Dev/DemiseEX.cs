@@ -13,7 +13,7 @@ namespace AAMod.Items.Dev
 			Tooltip.SetDefault(@"An almighty greatblade that was once wielded by the demon lord
 Left Click to unleash destructive demonic energy
 Right Click to unleash catastrophic blades that fall from the sky
-True Melee Strikes have a chance to instantly devour an enemy�s soul
+True Melee Strikes have a chance to instantly devour an enemy's soul
 Demise EX");
 		}
 		public override void SetDefaults()

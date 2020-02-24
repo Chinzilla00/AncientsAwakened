@@ -138,7 +138,7 @@ Common.RaiderChestBonus=You cannot be knocked back\nAs your health goes down, yo
 
 Common.TribalHatBonus=You are blessed with a gift of nature, allowing you to autodrink mana potions\nMana usage lowered by 30%
 
-Common.VikingPlateBonus=3% Increased damage resistance
+Common.VikingPlateBonus=4% Increased damage resistance
 
 Common.WitchHoodBonus=Scorch and Burn.\n20% Increased Magic and Minion damage\n+4 max minions\nA Fire spirit protects you\nThe Fire spirit becomes more powerful the less mana you have\nPress the Armor AbilityKey to release the Flame Power\n(Only works when you hold magic or summon weapon)
 

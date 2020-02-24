@@ -47,7 +47,7 @@ namespace AAMod.Items.Armor.Deathly
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "ImpHood", 1);
+                recipe.AddIngredient(ItemID.NecroHelmet, 1);
                 recipe.AddIngredient(ItemID.JungleSpores, 5);
                 recipe.AddIngredient(ItemID.ShadowScale, 5);
                 recipe.AddIngredient(null, "DevilSilk", 5);
@@ -57,7 +57,7 @@ namespace AAMod.Items.Armor.Deathly
             }
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "ImpHood", 1);
+                recipe.AddIngredient(ItemID.NecroHelmet, 1);
                 recipe.AddIngredient(ItemID.JungleSpores, 5);
                 recipe.AddIngredient(ItemID.TissueSample, 5);
                 recipe.AddIngredient(null, "DevilSilk", 5);

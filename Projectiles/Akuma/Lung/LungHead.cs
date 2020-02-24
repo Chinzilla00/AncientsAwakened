@@ -59,6 +59,11 @@ namespace AAMod.Projectiles.Akuma.Lung
 
         public bool flaming = false;
 
+        public override void OnHitNPC(NPC npc, int damage, float knockback, bool crit)
+        {
+            npc.immune[projectile.owner] = 6;
+        }
+
         public override void AI()
         {
             Player player = Main.player[projectile.owner];
@@ -136,7 +141,9 @@ namespace AAMod.Projectiles.Akuma.Lung
                     flaming = true;
                     Vector2 shootspeed = Vector2.Normalize(projectile.velocity) * 20f;
                     Vector2 shootpos = Vector2.Normalize(projectile.velocity).RotatedBy((float)Math.PI / 2 * projectile.direction) * projectile.height / 2;
-                    Projectile.NewProjectile(projectile.position.X + projectile.velocity.X + shootpos.X, projectile.position.Y + projectile.velocity.Y + shootpos.Y, shootspeed.X, shootspeed.Y, mod.ProjectileType("DragonfireProj"), (int)(projectile.damage / 1.5), 0, projectile.owner);
+                    int fire = Projectile.NewProjectile(projectile.position.X + projectile.velocity.X + shootpos.X, projectile.position.Y + projectile.velocity.Y + shootpos.Y, shootspeed.X, shootspeed.Y, mod.ProjectileType("DragonfireProj"), (int)(projectile.damage / 1.5), 0, projectile.owner);
+                    Main.projectile[fire].minion = true;
+                    Main.projectile[fire].minionSlots = 0f;
                 }
                 else
                 {
@@ -239,6 +246,11 @@ namespace AAMod.Projectiles.Akuma.Lung
                 projectile.GetAlpha(Color.White), projectile.rotation, new Vector2(texture2D13.Width / 2f, num214 / 2f), projectile.scale,
                 projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             return false;
+        }
+
+        public override void OnHitNPC(NPC npc, int damage, float knockback, bool crit)
+        {
+            npc.immune[projectile.owner] = 6;
         }
 
         public override void AI()
@@ -389,6 +401,11 @@ namespace AAMod.Projectiles.Akuma.Lung
                 projectile.GetAlpha(Color.White), projectile.rotation, new Vector2(texture2D13.Width / 2f, num214 / 2f), projectile.scale,
                 projectile.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             return false;
+        }
+
+        public override void OnHitNPC(NPC npc, int damage, float knockback, bool crit)
+        {
+            npc.immune[projectile.owner] = 6;
         }
 
         public override void AI()

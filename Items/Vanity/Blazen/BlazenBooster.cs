@@ -16,7 +16,7 @@ namespace AAMod.Items.Vanity.Blazen
             DisplayName.SetDefault("Tactical Assault Booster");
             Tooltip.SetDefault(@"Allows flight and slow fall
 Hold up to rocket faster
-'Great for impersonating Ancients Awakened Testers!'");
+'Great for impersonating Ancients Awakened Developers!'");
 		}
 
 		public override void SetDefaults()
