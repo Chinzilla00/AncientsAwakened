@@ -709,7 +709,9 @@ namespace AAMod
 
         #endregion
 
-		public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit) 
+        #region Hit Effects
+
+        public override void ModifyHitByNPC(NPC npc, ref int damage, ref bool crit) 
 		{
 			if (npc.HasBuff(mod.BuffType("ForsakenWeak")))
 			{
@@ -794,15 +796,15 @@ namespace AAMod
             {
                 npc.AddBuff(BuffID.OnFire, 120);
             }
-			
-			if (artifactJudgement)
-			{
-				artifactJudgementCharge += damage;
-			}
-			if (artifactGuilt)
-			{
-				artifactGuiltCharge += damage;
-			}
+
+            if (artifactJudgement)
+            {
+                artifactJudgementCharge += damage;
+            }
+            if (artifactGuilt)
+            {
+                artifactGuiltCharge += damage;
+            }
 
             if (fleshrendSet && Main.rand.Next(2) == 0)
             {
@@ -858,6 +860,128 @@ namespace AAMod
                 player.endurance += .8f;
             }
         }
+
+        public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
+        {
+            if (goblinSlayer)
+            {
+                if (target.type == NPCID.GoblinArcher
+                    || target.type == NPCID.GoblinPeon
+                    || target.type == NPCID.GoblinScout
+                    || target.type == NPCID.GoblinSorcerer
+                    || target.type == NPCID.GoblinSummoner
+                    || target.type == NPCID.GoblinThief
+                    || target.type == NPCID.GoblinWarrior
+                    || target.type == NPCID.DD2GoblinBomberT1
+                    || target.type == NPCID.DD2GoblinBomberT2
+                    || target.type == NPCID.DD2GoblinBomberT3
+                    || target.type == NPCID.DD2GoblinT1
+                    || target.type == NPCID.DD2GoblinT2
+                    || target.type == NPCID.DD2GoblinBomberT3
+                    || target.type == NPCID.BoundGoblin
+                    || target.type == NPCID.GoblinTinkerer)
+                {
+                    damage *= 5;
+                    IsGoblin = true;
+                }
+            }
+
+            if (perfectChaosMe)
+            {
+                target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
+            }
+
+            if (valkyrieSet)
+            {
+                target.AddBuff(BuffID.Frostburn, 180);
+                target.AddBuff(BuffID.Chilled, 180);
+            }
+
+            if (Baolei)
+            {
+                int buff = Main.dayTime ? BuffID.Daybreak : BuffID.OnFire;
+                target.AddBuff(buff, 1000);
+            }
+
+            if (Naitokurosu)
+            {
+                int buff = Main.dayTime ? BuffID.Venom : ModContent.BuffType<Moonraze>();
+                target.AddBuff(buff, 1000);
+            }
+
+            if (Duality)
+            {
+                int buff = Main.dayTime ? BuffID.Daybreak : ModContent.BuffType<Moonraze>();
+                target.AddBuff(buff, 1000);
+            }
+
+            if (darkmatterSetMe)
+            {
+                target.AddBuff(mod.BuffType("Electrified"), 500);
+            }
+
+            if (kindledSet)
+            {
+                player.magmaStone = true;
+            }
+
+            if (clawsOfChaos)
+            {
+                player.ApplyDamageToNPC(target, 5, 0, 0, false);
+            }
+
+            if (DiscordShredder)
+            {
+                player.ApplyDamageToNPC(target, 30, 0, 0, false);
+                target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
+            }
+
+            if (demonGauntlet)
+            {
+                int buff = WorldGen.crimson ? BuffID.Ichor : BuffID.CursedInferno;
+                target.AddBuff(buff, 180);
+            }
+
+            if (HeartP && player.statLife > (player.statLifeMax / 3))
+            {
+                target.AddBuff(ModContent.BuffType<DragonFire>(), 600);
+            }
+            else if (HeartP && player.statLife < (player.statLifeMax / 3))
+            {
+                target.AddBuff(BuffID.Daybreak, 600);
+            }
+
+            if (HeartS && player.statLife > (player.statLifeMax / 3))
+            {
+                target.AddBuff(ModContent.BuffType<HydraToxin>(), 600);
+            }
+            else if (HeartS && player.statLife < (player.statLifeMax / 3))
+            {
+                target.AddBuff(ModContent.BuffType<Moonraze>(), 600);
+            }
+
+            if (dracoSet)
+            {
+                target.AddBuff(BuffID.Daybreak, 600);
+            }
+
+            if (Alpha && !target.boss)
+            {
+                target.AddBuff(BuffID.Wet, 600);
+            }
+
+            if (player.HasBuff(mod.BuffType("DragonfireFlaskBuff")))
+            {
+                target.AddBuff(mod.BuffType("DragonFire"), 900);
+            }
+
+            if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")))
+            {
+                target.AddBuff(mod.BuffType("Hydratoxin"), 900);
+            }
+        }
+
+        #endregion
 
         public override void CatchFish(Item fishingRod, Item bait, int power, int liquidType, int poolSize, int worldLayer, int questFish, ref int caughtType, ref bool junk)
         {
@@ -946,7 +1070,6 @@ namespace AAMod
 
         public int[] Charges = null;
         public int[] Spheres = null;
-
 
         public float ShieldScale = 0;
         public float RingRotation = 0;
@@ -1564,7 +1687,6 @@ namespace AAMod
 			}
 		}
 
-
         public override void PostUpdateBuffs()
         {
             if (player.mount.Active || player.mount.Cart)
@@ -1801,6 +1923,8 @@ namespace AAMod
             }
         }
 
+        #region Dust Effects
+
         public static void EmitDust()
         {
             if (Main.gamePaused)
@@ -1931,6 +2055,209 @@ namespace AAMod
                 num15++;
             }
         }
+
+        public static void AshRain(Player player)
+        {
+            if (Main.gamePaused)
+            {
+                return;
+            }
+
+            if ((player.GetModPlayer<AAPlayer>().ZoneInferno || player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda) && player.GetModPlayer<AAPlayer>().AshCurse)
+            {
+                if (!player.GetModPlayer<AAPlayer>().AshRemover || !(player.ZoneSkyHeight || player.ZoneOverworldHeight))
+                {
+                    player.AddBuff(ModContent.BuffType<BurningAsh>(), 5);
+                }
+
+                if (AAWorld.infernoTiles > 0 && Main.LocalPlayer.position.Y < Main.worldSurface * 16.0)
+                {
+                    int maxValue = 800 / AAWorld.infernoTiles;
+                    float num = Main.screenWidth / (float)Main.maxScreenW;
+                    int num2 = (int)(500f * num);
+                    num2 = (int)(num2 * (1f + 2f * Main.cloudAlpha));
+                    float num3 = 1f + 50f * Main.cloudAlpha;
+                    int num4 = 0;
+
+                    while (num4 < num3)
+                    {
+                        try
+                        {
+                            if (Ashes >= num2 * (Main.gfxQuality / 2f + 0.5f) + num2 * 0.1f)
+                            {
+                                break;
+                            }
+
+                            if (Main.rand.Next(maxValue) == 0)
+                            {
+                                int num5 = Main.rand.Next(Main.screenWidth + 1000) - 500;
+                                int num6 = (int)Main.screenPosition.Y - Main.rand.Next(50);
+
+                                if (Main.LocalPlayer.velocity.Y > 0f)
+                                {
+                                    num6 -= (int)Main.LocalPlayer.velocity.Y;
+                                }
+
+                                if (Main.rand.Next(5) == 0)
+                                {
+                                    num5 = Main.rand.Next(500) - 500;
+                                }
+                                else if (Main.rand.Next(5) == 0)
+                                {
+                                    num5 = Main.rand.Next(500) + Main.screenWidth;
+                                }
+
+                                if (num5 < 0 || num5 > Main.screenWidth)
+                                {
+                                    num6 += Main.rand.Next((int)(Main.screenHeight * 0.8)) + (int)(Main.screenHeight * 0.1);
+                                }
+
+                                num5 += (int)Main.screenPosition.X;
+
+                                int num7 = num5 / 16;
+                                int num8 = num6 / 16;
+
+                                if (Main.tile[num7, num8] != null && Main.tile[num7, num8].wall == 0)
+                                {
+                                    int dust = Dust.NewDust(new Vector2(num5, num6), 10, 10, ModContent.DustType<Dusts.AshRain>(), 0f, 0f, 0);
+                                    Main.dust[dust].velocity.Y = 3f + Main.rand.Next(30) * 0.1f;
+
+                                    Dust expr_292_cp_0 = Main.dust[dust];
+                                    expr_292_cp_0.velocity.Y *= Main.dust[dust].scale;
+
+                                    if (!player.GetModPlayer<AAPlayer>().AshCurse)
+                                    {
+                                        Main.dust[dust].velocity.X = Main.rand.Next(-10, 10) * 0.1f;
+
+                                        Dust expr_2EC_cp_0 = Main.dust[dust];
+                                        expr_2EC_cp_0.velocity.X += Main.windSpeed * Main.cloudAlpha * 10f;
+                                    }
+                                    else
+                                    {
+                                        Main.dust[dust].velocity.X = (Main.cloudAlpha + 0.5f) * 25f + Main.rand.NextFloat() * 0.2f - 0.1f;
+
+                                        Dust expr_370_cp_0 = Main.dust[dust];
+                                        expr_370_cp_0.velocity.Y *= 0.5f;
+                                    }
+
+                                    Dust expr_38E_cp_0 = Main.dust[dust];
+                                    expr_38E_cp_0.velocity.Y *= 1f + 0.3f * Main.cloudAlpha;
+
+                                    Main.dust[dust].scale += Main.cloudAlpha * 0.2f;
+                                    Main.dust[dust].velocity *= 1f + Main.cloudAlpha * 0.5f;
+                                }
+                            }
+                        }
+                        catch
+                        {
+                        }
+
+                        num4++;
+                    }
+                }
+            }
+        }
+
+        public static void EmberRain(Player player)
+        {
+            if (Main.gamePaused)
+            {
+                return;
+            }
+
+            if ((player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake) && AAWorld.downedAllAncients && !AAWorld.downedShen)
+            {
+                if (Main.LocalPlayer.position.Y < Main.worldSurface * 16.0)
+                {
+                    int maxValue = 8;
+                    float num = Main.screenWidth / (float)Main.maxScreenW;
+                    int num2 = (int)(500f * num);
+                    num2 = (int)(num2 * (1f + 2f * Main.cloudAlpha));
+                    float num3 = 1f + 50f * Main.cloudAlpha;
+                    int num4 = 0;
+
+                    while (num4 < num3)
+                    {
+                        try
+                        {
+                            if (Ashes >= num2 * (Main.gfxQuality / 2f + 0.5f) + num2 * 0.1f)
+                            {
+                                break;
+                            }
+
+                            if (Main.rand.Next(maxValue) == 0)
+                            {
+                                int num5 = Main.rand.Next(Main.screenWidth + 1000) - 500;
+                                int num6 = (int)Main.screenPosition.Y - Main.rand.Next(50);
+
+                                if (Main.LocalPlayer.velocity.Y > 0f)
+                                {
+                                    num6 -= (int)Main.LocalPlayer.velocity.Y;
+                                }
+
+                                if (Main.rand.Next(5) == 0)
+                                {
+                                    num5 = Main.rand.Next(500) - 500;
+                                }
+                                else if (Main.rand.Next(5) == 0)
+                                {
+                                    num5 = Main.rand.Next(500) + Main.screenWidth;
+                                }
+
+                                if (num5 < 0 || num5 > Main.screenWidth)
+                                {
+                                    num6 += Main.rand.Next((int)(Main.screenHeight * 0.8)) + (int)(Main.screenHeight * 0.1);
+                                }
+
+                                num5 += (int)Main.screenPosition.X;
+
+                                int num7 = num5 / 16;
+                                int num8 = num6 / 16;
+
+                                if (Main.tile[num7, num8] != null && Main.tile[num7, num8].wall == 0)
+                                {
+                                    int dust = Dust.NewDust(new Vector2(num5, num6), 10, 10, ModContent.DustType<Dusts.Discord>(), 0f, 0f, 0);
+                                    Main.dust[dust].velocity.Y = 3f + Main.rand.Next(30) * 0.1f;
+
+                                    Dust expr_292_cp_0 = Main.dust[dust];
+                                    expr_292_cp_0.velocity.Y *= Main.dust[dust].scale;
+
+                                    if (!player.GetModPlayer<AAPlayer>().AshCurse)
+                                    {
+                                        Main.dust[dust].velocity.X = Main.rand.Next(-10, 10) * 0.1f;
+
+                                        Dust expr_2EC_cp_0 = Main.dust[dust];
+                                        expr_2EC_cp_0.velocity.X += Main.windSpeed * Main.cloudAlpha * 10f;
+                                    }
+                                    else
+                                    {
+                                        Main.dust[dust].velocity.X = (Main.cloudAlpha + 0.5f) * 25f + Main.rand.NextFloat() * 0.2f - 0.1f;
+
+                                        Dust expr_370_cp_0 = Main.dust[dust];
+                                        expr_370_cp_0.velocity.Y *= 0.5f;
+                                    }
+
+                                    Dust expr_38E_cp_0 = Main.dust[dust];
+                                    expr_38E_cp_0.velocity.Y *= 1f + 0.3f * Main.cloudAlpha;
+
+                                    Main.dust[dust].scale += Main.cloudAlpha * 0.2f;
+                                    Main.dust[dust].velocity *= 1f + Main.cloudAlpha * 0.5f;
+                                }
+                            }
+                        }
+                        catch
+                        {
+                        }
+
+                        num4++;
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region Dev Armor
 
         public void DropDevArmor(int dropType)
         {
@@ -2398,6 +2725,8 @@ namespace AAMod
             DropDevArmor(4);
         }
 
+        #endregion
+
         public override void PreUpdate()
         {
             groviteGlow[player.whoAmI] = false;
@@ -2419,205 +2748,6 @@ namespace AAMod
                     if (Main.rand.Next(5) == 0)
                     {
                         Main.rainTime++;
-                    }
-                }
-            }
-        }
-
-        public static void AshRain(Player player)
-        {
-            if (Main.gamePaused)
-            {
-                return;
-            }
-
-            if ((player.GetModPlayer<AAPlayer>().ZoneInferno || player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda) && player.GetModPlayer<AAPlayer>().AshCurse)
-            {
-                if (!player.GetModPlayer<AAPlayer>().AshRemover || !(player.ZoneSkyHeight || player.ZoneOverworldHeight))
-                {
-                    player.AddBuff(ModContent.BuffType<BurningAsh>(), 5);
-                }
-
-                if (AAWorld.infernoTiles > 0 && Main.LocalPlayer.position.Y < Main.worldSurface * 16.0)
-                {
-                    int maxValue = 800 / AAWorld.infernoTiles;
-                    float num = Main.screenWidth / (float)Main.maxScreenW;
-                    int num2 = (int)(500f * num);
-                    num2 = (int)(num2 * (1f + 2f * Main.cloudAlpha));
-                    float num3 = 1f + 50f * Main.cloudAlpha;
-                    int num4 = 0;
-
-                    while (num4 < num3)
-                    {
-                        try
-                        {
-                            if (Ashes >= num2 * (Main.gfxQuality / 2f + 0.5f) + num2 * 0.1f)
-                            {
-                                break;
-                            }
-
-                            if (Main.rand.Next(maxValue) == 0)
-                            {
-                                int num5 = Main.rand.Next(Main.screenWidth + 1000) - 500;
-                                int num6 = (int)Main.screenPosition.Y - Main.rand.Next(50);
-
-                                if (Main.LocalPlayer.velocity.Y > 0f)
-                                {
-                                    num6 -= (int)Main.LocalPlayer.velocity.Y;
-                                }
-
-                                if (Main.rand.Next(5) == 0)
-                                {
-                                    num5 = Main.rand.Next(500) - 500;
-                                }
-                                else if (Main.rand.Next(5) == 0)
-                                {
-                                    num5 = Main.rand.Next(500) + Main.screenWidth;
-                                }
-
-                                if (num5 < 0 || num5 > Main.screenWidth)
-                                {
-                                    num6 += Main.rand.Next((int)(Main.screenHeight * 0.8)) + (int)(Main.screenHeight * 0.1);
-                                }
-
-                                num5 += (int)Main.screenPosition.X;
-
-                                int num7 = num5 / 16;
-                                int num8 = num6 / 16;
-
-                                if (Main.tile[num7, num8] != null && Main.tile[num7, num8].wall == 0)
-                                {
-                                    int dust = Dust.NewDust(new Vector2(num5, num6), 10, 10, ModContent.DustType<Dusts.AshRain>(), 0f, 0f, 0);
-                                    Main.dust[dust].velocity.Y = 3f + Main.rand.Next(30) * 0.1f;
-
-                                    Dust expr_292_cp_0 = Main.dust[dust];
-                                    expr_292_cp_0.velocity.Y *= Main.dust[dust].scale;
-
-                                    if (!player.GetModPlayer<AAPlayer>().AshCurse)
-                                    {
-                                        Main.dust[dust].velocity.X = Main.rand.Next(-10, 10) * 0.1f;
-
-                                        Dust expr_2EC_cp_0 = Main.dust[dust];
-                                        expr_2EC_cp_0.velocity.X += Main.windSpeed * Main.cloudAlpha * 10f;
-                                    }
-                                    else
-                                    {
-                                        Main.dust[dust].velocity.X = (Main.cloudAlpha + 0.5f) * 25f + Main.rand.NextFloat() * 0.2f - 0.1f;
-
-                                        Dust expr_370_cp_0 = Main.dust[dust];
-                                        expr_370_cp_0.velocity.Y *= 0.5f;
-                                    }
-
-                                    Dust expr_38E_cp_0 = Main.dust[dust];
-                                    expr_38E_cp_0.velocity.Y *= 1f + 0.3f * Main.cloudAlpha;
-
-                                    Main.dust[dust].scale += Main.cloudAlpha * 0.2f;
-                                    Main.dust[dust].velocity *= 1f + Main.cloudAlpha * 0.5f;
-                                }
-                            }
-                        }
-                        catch
-                        {
-                        }
-
-                        num4++;
-                    }
-                }
-            }
-        }
-
-        public static void EmberRain(Player player)
-        {
-            if (Main.gamePaused)
-            {
-                return;
-            }
-
-            if ((player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda || player.GetModPlayer<AAPlayer>().ZoneRisingMoonLake) && AAWorld.downedAllAncients && !AAWorld.downedShen)
-            {
-                if (Main.LocalPlayer.position.Y < Main.worldSurface * 16.0)
-                {
-                    int maxValue = 8;
-                    float num = Main.screenWidth / (float)Main.maxScreenW;
-                    int num2 = (int)(500f * num);
-                    num2 = (int)(num2 * (1f + 2f * Main.cloudAlpha));
-                    float num3 = 1f + 50f * Main.cloudAlpha;
-                    int num4 = 0;
-
-                    while (num4 < num3)
-                    {
-                        try
-                        {
-                            if (Ashes >= num2 * (Main.gfxQuality / 2f + 0.5f) + num2 * 0.1f)
-                            {
-                                break;
-                            }
-
-                            if (Main.rand.Next(maxValue) == 0)
-                            {
-                                int num5 = Main.rand.Next(Main.screenWidth + 1000) - 500;
-                                int num6 = (int)Main.screenPosition.Y - Main.rand.Next(50);
-
-                                if (Main.LocalPlayer.velocity.Y > 0f)
-                                {
-                                    num6 -= (int)Main.LocalPlayer.velocity.Y;
-                                }
-
-                                if (Main.rand.Next(5) == 0)
-                                {
-                                    num5 = Main.rand.Next(500) - 500;
-                                }
-                                else if (Main.rand.Next(5) == 0)
-                                {
-                                    num5 = Main.rand.Next(500) + Main.screenWidth;
-                                }
-
-                                if (num5 < 0 || num5 > Main.screenWidth)
-                                {
-                                    num6 += Main.rand.Next((int)(Main.screenHeight * 0.8)) + (int)(Main.screenHeight * 0.1);
-                                }
-
-                                num5 += (int)Main.screenPosition.X;
-
-                                int num7 = num5 / 16;
-                                int num8 = num6 / 16;
-
-                                if (Main.tile[num7, num8] != null && Main.tile[num7, num8].wall == 0)
-                                {
-                                    int dust = Dust.NewDust(new Vector2(num5, num6), 10, 10, ModContent.DustType<Dusts.Discord>(), 0f, 0f, 0);
-                                    Main.dust[dust].velocity.Y = 3f + Main.rand.Next(30) * 0.1f;
-
-                                    Dust expr_292_cp_0 = Main.dust[dust];
-                                    expr_292_cp_0.velocity.Y *= Main.dust[dust].scale;
-
-                                    if (!player.GetModPlayer<AAPlayer>().AshCurse)
-                                    {
-                                        Main.dust[dust].velocity.X = Main.rand.Next(-10, 10) * 0.1f;
-
-                                        Dust expr_2EC_cp_0 = Main.dust[dust];
-                                        expr_2EC_cp_0.velocity.X += Main.windSpeed * Main.cloudAlpha * 10f;
-                                    }
-                                    else
-                                    {
-                                        Main.dust[dust].velocity.X = (Main.cloudAlpha + 0.5f) * 25f + Main.rand.NextFloat() * 0.2f - 0.1f;
-
-                                        Dust expr_370_cp_0 = Main.dust[dust];
-                                        expr_370_cp_0.velocity.Y *= 0.5f;
-                                    }
-
-                                    Dust expr_38E_cp_0 = Main.dust[dust];
-                                    expr_38E_cp_0.velocity.Y *= 1f + 0.3f * Main.cloudAlpha;
-
-                                    Main.dust[dust].scale += Main.cloudAlpha * 0.2f;
-                                    Main.dust[dust].velocity *= 1f + Main.cloudAlpha * 0.5f;
-                                }
-                            }
-                        }
-                        catch
-                        {
-                        }
-
-                        num4++;
                     }
                 }
             }
@@ -2768,126 +2898,6 @@ namespace AAMod
             if (AbilityCD != 0)
             {
                 AbilityCD--;
-            }
-        }
-
-        public override void ModifyHitNPC(Item item, NPC target, ref int damage, ref float knockback, ref bool crit)
-        {
-            if (goblinSlayer)
-            {
-                if (target.type == NPCID.GoblinArcher
-                    || target.type == NPCID.GoblinPeon
-                    || target.type == NPCID.GoblinScout
-                    || target.type == NPCID.GoblinSorcerer
-                    || target.type == NPCID.GoblinSummoner
-                    || target.type == NPCID.GoblinThief
-                    || target.type == NPCID.GoblinWarrior
-                    || target.type == NPCID.DD2GoblinBomberT1
-                    || target.type == NPCID.DD2GoblinBomberT2
-                    || target.type == NPCID.DD2GoblinBomberT3
-                    || target.type == NPCID.DD2GoblinT1
-                    || target.type == NPCID.DD2GoblinT2
-                    || target.type == NPCID.DD2GoblinBomberT3
-                    || target.type == NPCID.BoundGoblin
-                    || target.type == NPCID.GoblinTinkerer)
-                {
-                    damage *= 5;
-                    IsGoblin = true;
-                }
-            }
-
-            if (perfectChaosMe)
-            {
-                target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
-            }
-
-            if (valkyrieSet)
-            {
-                target.AddBuff(BuffID.Frostburn, 180);
-                target.AddBuff(BuffID.Chilled, 180);
-            }
-
-            if (Baolei)
-            {
-                int buff = Main.dayTime ? BuffID.Daybreak : BuffID.OnFire;
-                target.AddBuff(buff, 1000);
-            }
-
-            if (Naitokurosu)
-            {
-                int buff = Main.dayTime ? BuffID.Venom : ModContent.BuffType<Moonraze>();
-                target.AddBuff(buff, 1000);
-            }
-
-            if (Duality)
-            {
-                int buff = Main.dayTime ? BuffID.Daybreak : ModContent.BuffType<Moonraze>();
-                target.AddBuff(buff, 1000);
-            }
-
-            if (darkmatterSetMe)
-            {
-                target.AddBuff(mod.BuffType("Electrified"), 500);
-            }
-
-            if (kindledSet)
-            {
-                player.magmaStone = true;
-            }
-
-            if (clawsOfChaos)
-            {
-                player.ApplyDamageToNPC(target, 5, 0, 0, false);
-            }
-
-            if (DiscordShredder)
-            {
-                player.ApplyDamageToNPC(target, 30, 0, 0, false);
-                target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
-            }
-
-            if (demonGauntlet)
-            {
-                int buff = WorldGen.crimson ? BuffID.Ichor : BuffID.CursedInferno;
-                target.AddBuff(buff, 180);
-            }
-
-            if (HeartP && player.statLife > (player.statLifeMax / 3))
-            {
-                target.AddBuff(ModContent.BuffType<DragonFire>(), 600);
-            }
-            else if (HeartP && player.statLife < (player.statLifeMax / 3))
-            {
-                target.AddBuff(BuffID.Daybreak, 600);
-            }
-
-            if (HeartS && player.statLife > (player.statLifeMax / 3))
-            {
-                target.AddBuff(ModContent.BuffType<HydraToxin>(), 600);
-            }
-            else if (HeartS && player.statLife < (player.statLifeMax / 3))
-            {
-                target.AddBuff(ModContent.BuffType<Moonraze>(), 600);
-            }
-
-            if (dracoSet)
-            {
-                target.AddBuff(BuffID.Daybreak, 600);
-            }
-
-            if (Alpha && !target.boss)
-            {
-                target.AddBuff(BuffID.Wet, 600);
-            }
-
-            if (player.HasBuff(mod.BuffType("DragonfireFlaskBuff")))
-            {
-                target.AddBuff(mod.BuffType("DragonFire"), 900);
-            }
-
-            if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")))
-            {
-                target.AddBuff(mod.BuffType("Hydratoxin"), 900);
             }
         }
 
