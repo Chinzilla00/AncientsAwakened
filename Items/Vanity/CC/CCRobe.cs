@@ -9,8 +9,9 @@ namespace AAMod.Items.Vanity.CC
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dread Cultist Mask");
-			Tooltip.SetDefault("The hood of a crazy lizard enthusiast");
+			DisplayName.SetDefault("Dread Cultist Robe");
+			Tooltip.SetDefault(@"The hood of a crazy lizard enthusiast
+'Great for impersonating Ancients Awakened Developers!'");
 		}
 		public override void SetDefaults() 
 		{

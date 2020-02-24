@@ -10,15 +10,14 @@ namespace AAMod.Items.Boss.Serpent
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Snake Staff");
-            Tooltip.SetDefault(
-                @"Summons a Snow Serpent to fight for you
+            Tooltip.SetDefault(@"Summons a Snow Serpent to fight for you
 Summons 2 segments for each minion slot");
         }
 
         public override void SetDefaults()
         {
             item.mana = 10;
-            item.damage = 10;
+            item.damage = 11;
             item.useStyle = 1;
             item.shootSpeed = 10f;
             item.shoot = mod.ProjectileType("SerpentHead");

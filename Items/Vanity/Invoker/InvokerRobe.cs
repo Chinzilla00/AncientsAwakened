@@ -12,7 +12,7 @@ namespace AAMod.Items.Vanity.Invoker
             base.SetStaticDefaults();
             DisplayName.SetDefault("Invoker Robe");
             Tooltip.SetDefault(@"The enchanted robe of Aleister the 'Mega Therion'
-Great for impersonating Awakened Donators!");
+Great for impersonating Awakened Developers!");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

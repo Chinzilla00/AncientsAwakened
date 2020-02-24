@@ -166,7 +166,7 @@ namespace AAMod.Items.Summoning.Minions
             }
 
             float DamageBoost = Main.player[projectile.owner].minionDamage + Main.player[projectile.owner].allDamage - 1f;
-            projectile.damage = (int)(DamageBoost > 0f? (projectile.localAI[0] * 25 * DamageBoost) : 1);
+            projectile.damage = (int)(DamageBoost > 0f? (projectile.localAI[0] * 50 * DamageBoost) : 1);
         }
     }
 }

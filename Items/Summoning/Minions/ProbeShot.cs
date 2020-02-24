@@ -18,13 +18,13 @@ namespace AAMod.Items.Summoning.Minions
         {
             projectile.width = 10;
             projectile.height = 10;
-            projectile.hostile = true;
             projectile.scale = 2f;
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
             projectile.extraUpdates = 2;
             projectile.timeLeft = 1000;
             projectile.minion = true;
+            projectile.minionSlots = 0f;
             cooldownSlot = 1;
         }
 

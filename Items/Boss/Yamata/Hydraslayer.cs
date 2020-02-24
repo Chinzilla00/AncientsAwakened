@@ -9,7 +9,7 @@ namespace AAMod.Items.Boss.Yamata   //where is located
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Hydra Slayer");
+            DisplayName.SetDefault("Amenomuraku");
             Tooltip.SetDefault(@"Used to defeat the multi-headed monstrosities of the abyss
 Inflicts Moonrazed");
         }
