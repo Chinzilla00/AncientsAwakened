@@ -151,7 +151,7 @@ namespace AAMod
 
             if (player.HeldItem.type == ModContent.ItemType<Items.Usable.CodeMagnet>())
             {
-                grabRange += 1920;
+                grabRange += 810;
             }
         }
 
