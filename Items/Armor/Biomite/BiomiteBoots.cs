@@ -24,7 +24,7 @@ namespace AAMod.Items.Armor.Biomite
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "PurityShard", 20);
+			recipe.AddIngredient(null, "TerraShard", 20);
 			recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
