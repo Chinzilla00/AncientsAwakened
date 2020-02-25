@@ -52,6 +52,7 @@ Shoots alternating fireballs of Ichor and Cursed Flames");
                 proj = 1;
             }
             Projectile.NewProjectile(position, new Vector2(speedX, speedY), type, damage, knockBack, Main.myPlayer, proj);
+            return false;
         }
 
         public override void AddRecipes()
