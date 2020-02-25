@@ -135,14 +135,6 @@ namespace AAMod
             }
 		}
 
-        public override void GetWeaponDamage(Item item, Player player, ref int damage)
-		{
-            if(spellbookmagic)
-            {
-                damage = (int)(item.damage * player.magicDamage * player.GetModPlayer<AAPlayer>().spellbookDamage);
-            }
-		}
-
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
             Item HeldItem = player.HeldItem;
@@ -1048,19 +1040,6 @@ namespace AAMod
                             case 6: result=701; return;
                             default: result=702; return;
                         }
-                        stack += 5;
-                        if (Main.rand.Next(5) == 0)
-                        {
-                            stack += 5;
-                        }
-                        if (Main.rand.Next(10) == 0)
-                        {
-                            stack += 5;
-                        }
-                        if (Main.rand.Next(15) == 0)
-                        {
-                            stack += 5;
-                        }
                     }
                     else if (Main.rand.Next(20) == 0)
                     {
@@ -1086,7 +1065,6 @@ namespace AAMod
                             case 4: result=178; return;
                             default: result=182; return;
                         }
-                        stack += 15;
                     }
                 }
             }
