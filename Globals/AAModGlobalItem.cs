@@ -7,6 +7,7 @@ using AAMod.Items.Boss.Akuma;
 using AAMod.Items.Boss.Grips;
 using AAMod.Items;
 using AAMod.Items.Dev.Invoker;
+using AAMod.Items.Usable;
 
 namespace AAMod
 {
@@ -144,14 +145,11 @@ namespace AAMod
 
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
-            if (player.HeldItem.type == ModContent.ItemType<Items.Usable.CodeMagnetWeak>())
-            {
-                grabRange += 250;
-            }
-
-            if (player.HeldItem.type == ModContent.ItemType<Items.Usable.CodeMagnet>())
+            Item HeldItem = player.HeldItem;
+            if (HeldItem.type == ModContent.ItemType<CodeMagnet>() && ((CodeMagnet)HeldItem.modItem).On)
             {
                 grabRange += 810;
+                item.velocity *= 2;
             }
         }
 
