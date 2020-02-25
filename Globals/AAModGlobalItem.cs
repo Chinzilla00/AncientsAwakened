@@ -146,10 +146,16 @@ namespace AAMod
         public override void GrabRange(Item item, Player player, ref int grabRange)
         {
             Item HeldItem = player.HeldItem;
-            if (HeldItem.type == ModContent.ItemType<CodeMagnet>() && ((CodeMagnet)HeldItem.modItem).On)
+            if (HeldItem.type == ModContent.ItemType<CodeMagnet>())
             {
-                grabRange += 810;
-                item.velocity *= 2;
+                if (((CodeMagnet)HeldItem.modItem).On)
+                {
+                    grabRange += 810;
+                    if (Vector2.Distance(player.position, item.position) < grabRange)
+                    {
+                        item.velocity *= 2;
+                    }
+                }
             }
         }
 
