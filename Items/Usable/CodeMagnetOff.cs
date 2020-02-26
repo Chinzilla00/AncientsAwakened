@@ -1,15 +1,16 @@
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Usable
 {
-    public class CodeMagnet : BaseAAItem
+    public class CodeMagnetOff : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Binary Code Magnet");
 			Tooltip.SetDefault(@"Pulls items to you by moving its code closer to you
-Use the item to turn it off");
+Right click the item to turn it on");
 		}
 
         public override void SetDefaults()
@@ -27,7 +28,17 @@ Use the item to turn it off");
 
         public override void RightClick(Player player)
         {
-            player.QuickSpawnItem(ModContent.ItemType<CodeMagnetOff>());
+            player.QuickSpawnItem(ModContent.ItemType<CodeMagnet>());
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "DoomiteScrap", 20);
+            recipe.AddIngredient(null, "Doomite", 20);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
         }
     }
 }

@@ -26,8 +26,11 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         {
             if (Main.expertMode && !AAWorld.downedZero && !linesaid)
             {
-                if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroDeath1"), Color.Red.R, Color.Red.G, Color.Red.B);
-                linesaid = true;
+                if (Main.netMode != 1)
+                {
+                    AAMod.Chat(Lang.BossChat("ZeroDeath1"), Color.Red.R, Color.Red.G, Color.Red.B);
+                    linesaid = true;
+                }
             }
             if (++projectile.frameCounter >= 6)
             {

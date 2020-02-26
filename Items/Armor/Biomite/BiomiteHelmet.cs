@@ -1,12 +1,11 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Biomite
 {
-	[AutoloadEquip(EquipType.Head)]
+    [AutoloadEquip(EquipType.Head)]
 	public class BiomiteHelmet : BaseAAItem
 	{
 		public override void SetStaticDefaults()

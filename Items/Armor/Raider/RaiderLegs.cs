@@ -8,9 +8,9 @@ namespace AAMod.Items.Armor.Raider
 	public class RaiderLegs : BaseAAItem
 	{
 		public override void SetStaticDefaults()
-		{
-			DisplayName.SetDefault("Raider Greaves");
-            DisplayName.SetDefault(" ");
+        {
+            base.SetStaticDefaults();
+            DisplayName.SetDefault("Raider Greaves");
         }
 
 		public override void SetDefaults()

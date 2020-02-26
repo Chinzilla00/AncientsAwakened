@@ -140,14 +140,7 @@ namespace AAMod
             Item HeldItem = player.HeldItem;
             if (HeldItem.type == ModContent.ItemType<CodeMagnet>())
             {
-                if (((CodeMagnet)HeldItem.modItem).On)
-                {
-                    grabRange += 810;
-                    if (Vector2.Distance(player.position, item.position) < grabRange)
-                    {
-                        item.velocity *= 2;
-                    }
-                }
+                grabRange += 810;
             }
         }
 

@@ -27,7 +27,7 @@ namespace AAMod.Items.Pets
         public override bool PreAI()
         {
             Player player = Main.player[projectile.owner];
-            player.blackCat = false; // Relic from aiType
+            player.blackCat = false;
             return true;
         }
 
@@ -39,9 +39,9 @@ namespace AAMod.Items.Pets
             {
                 modPlayer.Mudkip = false;
             }
-            if (!(modPlayer.Mudkip || modPlayer.Alpha))
+            if (modPlayer.Mudkip)
             {
-                projectile.active = false;
+                projectile.timeLeft = 2;
             }
         }
     }

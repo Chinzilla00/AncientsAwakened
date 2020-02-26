@@ -12,7 +12,7 @@ namespace AAMod.Items.Armor.Demon
         {
             DisplayName.SetDefault("Demon Garb");
             Tooltip.SetDefault(@"9% Increased Minion damage
-                +2 minion slots");
++2 minion slots");
         }
 
         public override void SetDefaults()

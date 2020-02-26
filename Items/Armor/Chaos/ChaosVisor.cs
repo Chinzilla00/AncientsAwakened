@@ -38,16 +38,15 @@ namespace AAMod.Items.Armor.Chaos
         {
             player.setBonus = Language.GetTextValue("Mods.AAMod.Common.ChaosVisorBonus");
             player.maxMinions += 4;
-            player.GetModPlayer<AAPlayer>().doomite = true;
             if (player.whoAmI == Main.myPlayer)
             {
-                if (player.FindBuffIndex(mod.BuffType("ScoutMinion")) == -1)
+                if (player.FindBuffIndex(mod.BuffType("DragonSpirit")) == -1)
                 {
-                    player.AddBuff(mod.BuffType("ScoutMinion"), 3600, true);
+                    player.AddBuff(mod.BuffType("DragonSpirit"), 3600, true);
                 }
-                if (player.ownedProjectileCounts[mod.ProjectileType("ScoutMinion")] < 1)
+                if (player.ownedProjectileCounts[mod.ProjectileType("DragonSpirit")] < 1)
                 {
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("ScoutMinion"), 55, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("DragonSpirit"), 55, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
         }

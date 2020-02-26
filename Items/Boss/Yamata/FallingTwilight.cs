@@ -2,7 +2,6 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using AAMod.Projectiles.Yamata;
 using System.Collections.Generic;
 
 namespace AAMod.Items.Boss.Yamata

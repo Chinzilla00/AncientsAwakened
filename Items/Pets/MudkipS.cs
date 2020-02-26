@@ -36,9 +36,9 @@ namespace AAMod.Items.Pets
             {
                 modPlayer.MudkipS = false;
             }
-            if (!(modPlayer.MudkipS || modPlayer.Alpha))
+            if (modPlayer.MudkipS)
             {
-                projectile.active = false;
+                projectile.timeLeft = 2;
             }
         }
     }
