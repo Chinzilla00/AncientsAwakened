@@ -11,6 +11,7 @@ namespace AAMod.Projectiles
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Flare of Evil");
+            Main.projFrames[projectile.type] = 2;
 		}
 
 		public override void SetDefaults()
@@ -21,7 +22,7 @@ namespace AAMod.Projectiles
             projectile.friendly = true;
             projectile.light = 0.8f;
             projectile.alpha = 100;
-            projectile.magic = true;
+            projectile.melee = true;
             projectile.penetrate = 2;
         }
 

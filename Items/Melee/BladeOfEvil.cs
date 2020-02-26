@@ -23,6 +23,7 @@ namespace AAMod.Items.Melee
             item.autoReuse = true;
             item.useTurn = true;
             item.shoot = ModContent.ProjectileType<Projectiles.EvilFlare>();
+            item.shootSpeed = 9;
         }
 
 		public override void MeleeEffects(Player player, Rectangle hitbox)
