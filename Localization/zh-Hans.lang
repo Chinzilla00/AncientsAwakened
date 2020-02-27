@@ -1120,16 +1120,7 @@ Common.RadiumMaskBonus3=% 暴击率
 
 // AAMod.Items.Armor.Raider
 
-
-ItemName.RaiderChest=突袭者护胸
-ItemTooltip.RaiderChest=减少15%近战伤害\n
-
-ItemName.RaiderHelm=突袭者护头
-
-ItemName.RaiderLegs=突袭者护胫
-ItemTooltip.RaiderLegs=增加10%近战暴击率\n减少10%移动速度
-
-Common.RaiderChestBonus=你不会被击退\n随着你的生命值降低, 你的伤害减免将提高
+// Temporarilly removed
 
 
 // AAMod.Items.Armor.Starcloud
