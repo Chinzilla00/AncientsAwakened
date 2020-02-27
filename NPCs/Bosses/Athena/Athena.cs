@@ -51,6 +51,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public float[] internalAI = new float[4];
         public float[] FlyAI = new float[2];
+        public Vector2 MoveVector2;
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -63,6 +64,8 @@ namespace AAMod.NPCs.Bosses.Athena
                 writer.Write(internalAI[3]);
                 writer.Write(FlyAI[0]);
                 writer.Write(FlyAI[1]);
+                writer.Write(MoveVector2.X);
+                writer.Write(MoveVector2.Y);
             }
         }
 
@@ -77,9 +80,10 @@ namespace AAMod.NPCs.Bosses.Athena
                 internalAI[3] = reader.ReadFloat();
                 FlyAI[0] = reader.ReadFloat();
                 FlyAI[1] = reader.ReadFloat();
+                MoveVector2.X = reader.ReadFloat();
+                MoveVector2.Y = reader.ReadFloat();
             }
         }
-        public Vector2 MoveVector2;
         public override void AI()
         {
             if (Main.expertMode)
@@ -96,20 +100,21 @@ namespace AAMod.NPCs.Bosses.Athena
 
             Vector2 Acropolis = new Vector2(Origin.X + (80 * 16), Origin.Y + (79 * 16));
 
-            if (Main.netMode != 0) //Dont do Preamble in multiplayer
+            /*if (Main.netMode != 0) //Dont do Preamble in multiplayer
             {
                 internalAI[2] = 1;
-            }
+            }*/
             //Preamble Shite 
+
             if (internalAI[2] != 1)
             {
                 npc.dontTakeDamage = true;
-                if (Main.netMode != 1)
+                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
+                if (Vector2.Distance(npc.Center, Acropolis) < 10)
                 {
-                    music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
-                    if (Vector2.Distance(npc.Center, Acropolis) < 10)
+                    npc.velocity *= 0;
+                    if (Main.netMode != 1)
                     {
-                        npc.velocity *= 0;
                         if (internalAI[3]++ < 420)
                         {
                             if (!AAWorld.downedAthena)
@@ -182,10 +187,10 @@ namespace AAMod.NPCs.Bosses.Athena
                             }
                         }
                     }
-                    else
-                    {
-                        MoveToVector2(Acropolis);
-                    }
+                }
+                else
+                {
+                    MoveToVector2(Acropolis);
                 }
             }
             else
@@ -244,19 +249,28 @@ namespace AAMod.NPCs.Bosses.Athena
 
                     if (npc.ai[3] > 600)
                     {
-                        internalAI[1] = 1;
-                        npc.ai[0] = 0;
-                        npc.ai[1] = 0;
-                        npc.ai[2] = 0;
-                        npc.ai[3] = 0;
-                        MoveVector2 = CloudPick();
+                        if (Main.netMode != 1)
+                        {
+                            internalAI[1] = 1;
+                            npc.ai[0] = 0;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                            npc.ai[3] = 0;
+                            MoveVector2 = CloudPick();
+                            npc.netUpdate = true;
+                        }
                     }
                 }
                 else //Cloud Phase
                 {
+                    if (MoveVector2 == new Vector2(0, 0) && Main.netMode != 1)
+                    {
+                        MoveVector2 = CloudPick();
+                        npc.netUpdate = true;
+                    }
+                    npc.ai[1]++;
                     if (Main.netMode != 1)
                     {
-                        npc.ai[1]++;
                         if (npc.ai[1] == 300)
                         {
                             if (Main.rand.Next(5) == 0)
@@ -274,7 +288,7 @@ namespace AAMod.NPCs.Bosses.Athena
                             npc.netUpdate = true;
                         }
                     }
-                    if(Vector2.Distance(npc.Center, MoveVector2) < 10)
+                    if (Vector2.Distance(npc.Center, MoveVector2) < 10)
                     {
                         if (npc.ai[2] == 1 && Main.netMode != 1)
                         {

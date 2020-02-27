@@ -1139,7 +1139,7 @@ namespace AAMod
             else
             {
                 Main.sunTexture = ModContent.GetTexture("Terraria/Sun");;
-                Main.sun3Texture = mod.GetTexture("Backgrounds/Sun3");
+                Main.sun3Texture = ModContent.GetTexture("Terraria/Sun3");
             }
 
             if (player.ZoneSandstorm && (ZoneInferno || ZoneMire))

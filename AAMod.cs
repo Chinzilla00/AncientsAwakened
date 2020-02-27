@@ -231,9 +231,9 @@ namespace AAMod
 
         public override void Load()
         {
-            string text = "If you like AAmod, thanks for your support: ";
+            /*string text = "If you like AAmod, thanks for your support: ";
             string webtext = "patreon.com/alphakip";
-            Main.versionNumber = "Terraria v1.3.5.2\nAncientsAwakened v" + instance.Version.ToString() + "\n" + text + webtext;
+            Main.versionNumber = "Terraria v1.3.5.2\nAncientsAwakened v" + instance.Version.ToString() + "\n" + text + webtext;*/
 
             Config.Load();
             Logger.InfoFormat("{0} AA log", Name);
