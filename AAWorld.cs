@@ -312,10 +312,7 @@ namespace AAMod
             downedMonarch = downed.Contains("MUSHMAN");
             downedGrips = downed.Contains("GrabbyHands");
             downedBrood = downed.Contains("Nacho");
-            downedHydra = downed.Contains("Hydra");
-            NPC.downedBoss3 = downed.Contains("Dynaskull");
-            NPC.downedMechBossAny = downed.Contains("MechBoss");
-            NPC.downedMoonlord = downed.Contains("MoonLord");
+            downedHydra = downed.Contains("Hydra");\
             AMessage = downed.Contains("AMessage");
             downedEquinox = downed.Contains("Equinox");
             downedAncient = downed.Contains("A");
