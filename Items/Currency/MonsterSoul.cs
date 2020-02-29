@@ -42,7 +42,7 @@ namespace AAMod.Items.Currency
             {
                 cframe++;
                 counter = 0;
-                if (cframe > 10)
+                if (cframe > 7)
                 {
                     cframe = 0;
                 }
