@@ -10,7 +10,7 @@ namespace AAMod.Items.Ranged
         
         public override void SetDefaults()
         {
-            item.damage = 44;
+            item.damage = 50;
             item.noMelee = true;
             item.ranged = true;
             item.width = 58;
@@ -18,10 +18,9 @@ namespace AAMod.Items.Ranged
             item.useTime = 25;
             item.useAnimation = 25;
             item.useStyle = 5;
-            item.shoot = 85;
-            item.knockBack = 0;
-            item.value = 10;
-            item.rare = 5;
+            item.shoot = ModContent.ProjectileType<Projectiles.Vulcan>();
+            item.knockBack = 4;
+            item.rare = 3;
             item.UseSound = SoundID.Item34;
             item.autoReuse = false;
             item.shootSpeed = 10f;
@@ -36,7 +35,7 @@ namespace AAMod.Items.Ranged
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("The Vulcan");
-            Tooltip.SetDefault("Consumes Gel");
+            Tooltip.SetDefault("Turns Gel into an explosive lob of magma");
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -54,7 +53,8 @@ namespace AAMod.Items.Ranged
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.Obsidian, 40);
 			recipe.AddIngredient(ItemID.HellstoneBar, 20);
-			recipe.AddTile(TileID.Anvils);
+            recipe.AddIngredient(ItemID.IllegalGunParts, 1);
+            recipe.AddTile(TileID.Anvils);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

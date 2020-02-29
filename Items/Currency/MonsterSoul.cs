@@ -33,16 +33,16 @@ namespace AAMod.Items.Currency
             item.rare = 7;
         }
 
-        static int counter = 0;
-        static int cframe = 0;
+        int counter = 0;
+        int cframe = 0;
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            if (counter++ > 4)
+            if (counter++ > 7)
             {
                 cframe++;
                 counter = 0;
-                if (cframe > 7)
+                if (cframe > 10)
                 {
                     cframe = 0;
                 }

@@ -35,7 +35,7 @@ namespace AAMod.Tiles
             if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(30) == 0)
             {
                 PlaceObject(i, j - 1, mod.TileType("Mushroom"));
-                NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("Mushroom"), 0, 0, -1, -1);
+                NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("Mushroom"), Main.rand.Next(5), 0, -1, -1);
             }
             if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(1000) == 0)
             {

@@ -151,7 +151,7 @@ namespace AAMod
             recipe.AddRecipe();
 
             recipe = GetNewRecipe();
-            recipe.AddIngredient(ItemID.SoulofLight, 15);
+            recipe.AddIngredient(ItemID.SoulofLight, 60);
             recipe.AddIngredient(ItemID.Pearlwood, 5);
             recipe.AddIngredient(ItemID.CrystalShard, 30);
             recipe.AddTile(TileID.MythrilAnvil);
