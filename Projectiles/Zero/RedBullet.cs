@@ -35,7 +35,7 @@ namespace AAMod.Projectiles.Zero
                     {
                         float x2 = projectile.Center.X- projectile.velocity.X / -10f * num163;
                         float y2 = projectile.Center.Y- projectile.velocity.Y / -10f * num163;
-                        int num164 = Dust.NewDust(new Vector2(x2, y2), 1, 1, ModContent.DustType<Dusts.RealityDust>(), 0f, 0f, 0, default(Color), 1f);
+                        int num164 = Dust.NewDust(new Vector2(x2, y2), 1, 1, ModContent.DustType<Dusts.RealityDust>(), 0f, 0f, 0, default, 1f);
                         Main.dust[num164].alpha = projectile.alpha;
                         Main.dust[num164].position.X = x2;
                         Main.dust[num164].position.Y = y2;

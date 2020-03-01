@@ -25,6 +25,7 @@ namespace AAMod.Projectiles.Akuma
             projectile.ignoreWater = true;
             projectile.timeLeft = 500;
             projectile.alpha = 255;
+            projectile.extraUpdates = 1;
         }
 
         public override void AI()
@@ -40,12 +41,11 @@ namespace AAMod.Projectiles.Akuma
                 projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(-90f);
             }
             if(projectile.alpha < 150)
-            for (int num165 = 0; num165 < 2; num165 ++)
             {
-                float x2 = projectile.position.X + projectile.width / 2 - projectile.velocity.X / 2f * num165;
-				float y2 = projectile.position.Y + projectile.height / 2 - projectile.velocity.Y / 2f * num165;
+                float x2 = projectile.position.X + projectile.width / 2 - projectile.velocity.X / 2f;
+				float y2 = projectile.position.Y + projectile.height / 2 - projectile.velocity.Y / 2f;
                 int num166 = Dust.NewDust(new Vector2(projectile.position.X + projectile.width / 2, projectile.position.Y + projectile.height / 2), projectile.width, projectile.height + 5, mod.DustType("AkumaDust"), projectile.velocity.X * 0.2f,
-                    projectile.velocity.Y * 0.2f, 0, default(Color), 2f);
+                    projectile.velocity.Y * 0.2f, 0, default, 2f);
                 Main.dust[num166].alpha = projectile.alpha;
                 Main.dust[num166].position.X = x2;
 				Main.dust[num166].position.Y = y2;

@@ -59,7 +59,7 @@ namespace AAMod.Projectiles
         {
             projectile.frame = (int)projectile.ai[0];
             int DustType = projectile.ai[0] == 1 ? DustID.GoldFlame : 75;
-            int num102 = Dust.NewDust(new Vector2(projectile.position.X + projectile.velocity.X, projectile.position.Y + projectile.velocity.Y), projectile.width, projectile.height, DustType, projectile.velocity.X, projectile.velocity.Y, 100, default(Color), 3f * projectile.scale);
+            int num102 = Dust.NewDust(new Vector2(projectile.position.X + projectile.velocity.X, projectile.position.Y + projectile.velocity.Y), projectile.width, projectile.height, DustType, projectile.velocity.X, projectile.velocity.Y, 100, default, 3f * projectile.scale);
             Main.dust[num102].noGravity = true;
             projectile.ai[1] += 1f;
 

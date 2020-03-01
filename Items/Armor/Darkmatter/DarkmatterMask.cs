@@ -73,7 +73,7 @@ Dark, yet still barely visible");
                 double angle = Main.rand.NextDouble() * 2d * Math.PI;
                 offset.X += (float)(Math.Sin(angle) * 300);
                 offset.Y += (float)(Math.Cos(angle) * 300);
-                Dust dust = Main.dust[Dust.NewDust(player.Center + offset - new Vector2(4, 4), 0, 0,  mod.DustType("DarkmatterDust"), 0, 0, 100, default(Color), 1f)];
+                Dust dust = Main.dust[Dust.NewDust(player.Center + offset - new Vector2(4, 4), 0, 0,  mod.DustType("DarkmatterDust"), 0, 0, 100, default, 1f)];
                 dust.velocity = player.velocity;
                 dust.noGravity = true;
             }

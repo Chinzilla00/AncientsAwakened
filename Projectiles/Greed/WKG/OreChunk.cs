@@ -187,7 +187,7 @@ namespace AAMod.Projectiles.Greed.WKG
             }
             else if(k == mod.ItemType("DarkmatterOre"))
             {
-                int num5 = Dust.NewDust(projectile.position + projectile.velocity, projectile.width * 3, projectile.height * 3, ModContent.DustType<DarkmatterDust>() , 0f, 0f, 200, default(Color), 0.5f);
+                int num5 = Dust.NewDust(projectile.position + projectile.velocity, projectile.width * 3, projectile.height * 3, ModContent.DustType<DarkmatterDust>() , 0f, 0f, 200, default, 0.5f);
                 Main.dust[num5].noGravity = true;
                 Main.dust[num5].velocity *= 0.75f;
                 Main.dust[num5].fadeIn = 1.3f;
@@ -210,7 +210,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     double angle = Main.rand.NextDouble() * 2d * Math.PI;
                     offset.X += (float)(Math.Sin(angle) * 200);
                     offset.Y += (float)(Math.Cos(angle) * 200);
-                    Dust dust = Main.dust[Dust.NewDust(projectile.Center - projectile.velocity + offset, 0, 0,  ModContent.DustType<DarkmatterDust>(), 0, 0, 100, default(Color), 1f)];
+                    Dust dust = Main.dust[Dust.NewDust(projectile.Center - projectile.velocity + offset, 0, 0,  ModContent.DustType<DarkmatterDust>(), 0, 0, 100, default, 1f)];
                     dust.velocity = projectile.velocity;
                     dust.noGravity = true;
                 }
@@ -1100,7 +1100,7 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     for (int num291 = 0; num291 < 5; num291++)
                     {
-                        int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 235, 0f, -1f, 90, default(Color), 3f);
+                        int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 235, 0f, -1f, 90, default, 3f);
                         Main.dust[num292].velocity *= 2f;
                         Main.dust[num292].noGravity = true;
                     };
@@ -1109,7 +1109,7 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     for (int num291 = 0; num291 < 3; num291++)
                     {
-                        int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 74, projectile.velocity.X * 0.2f + projectile.direction * 3, projectile.velocity.Y * 0.2f, 100, default(Color), 0.75f);
+                        int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 74, projectile.velocity.X * 0.2f + projectile.direction * 3, projectile.velocity.Y * 0.2f, 100, default, 0.75f);
                         Main.dust[num292].noGravity = true;
                     };
                 }
@@ -1117,7 +1117,7 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     for (int num291 = 0; num291 < 2; num291++)
                     {
-                        int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 157, 0f, -1f, 90, default(Color), 3f);
+                        int num292 = Dust.NewDust(projectile.position, projectile.width, projectile.height, 157, 0f, -1f, 90, default, 3f);
                         Main.dust[num292].noGravity = true;
                     };
                 }
