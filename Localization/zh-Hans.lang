@@ -511,6 +511,14 @@ ItemTooltip.AtlanteanPlate=增加15%魔法伤害\n亚特兰蒂斯之力在其中
 
 Common.AtlanteanBonus=完全处于液体中时, 你的魔法能力和防御力提升
 
+//AAMod.Items.Armor.Biomite
+
+ItemName.BiomiteHelmet=源态护头盔
+
+ItemName.BiomiteBoots=源态护胫腿
+
+ItemName.BiomitePlate=源态晶鳞甲
+
 // AAMod.Items.Armor.Blazing
 
 
@@ -573,7 +581,7 @@ Common.ChaosKabutoBonus=增加10%近战速度\n敌人更容易瞄准你\n攻击�
 
 Common.ChaosMaskBonus=完全浸入水中时, 你的魔法能力极大提升\n你可以畅通无阻的游泳
 
-Common.ChaosVisorBonus=+4召唤上限\n一个虚空猎手为你而战
+Common.ChaosVisorBonus=+4召唤上限\n一个极具破坏力的龙之灵魂为你而战
 
 // AAMod.Items.Armor.PerfectChaos
 
@@ -1120,7 +1128,13 @@ Common.RadiumMaskBonus3=% 暴击率
 
 // AAMod.Items.Armor.Raider
 
-// Temporarilly removed
+ItemName.RaiderChest=突袭者护胸
+
+ItemName.RaiderHelm=突袭者护头
+
+ItemName.RaiderLegs=突袭者护胫
+
+Common.RaiderChestBonus=你不会被击退\n随着你的生命值降低, 你的伤害减免将提高
 
 
 // AAMod.Items.Armor.Starcloud
@@ -2528,7 +2542,7 @@ ItemName.Battery=不稳定能量胞腔
 ItemTooltip.Battery=当作弹药\n无消耗
 
 ItemName.BHB=黑洞爆裂枪
-ItemTooltip.BHB=这个武器发射3发爆破弹并随机发射一枚跟踪火箭弹
+ItemTooltip.BHB=随机发射一枚触及砖块时会爆炸产生漩涡的火箭弹
 
 ItemName.BrokenCode=崩溃乱码
 ItemTooltip.BrokenCode=让你有5秒故障裂位时间\n使用钩爪可以产生故障裂位\n免疫不安定\n在冷却时间内，你的速度提高，并获得无敌帧\n在冷却时间内，你的魔法/召唤武器不消耗魔力，并增加20%伤害\n“你看上去不太好”
@@ -3466,7 +3480,7 @@ ItemTooltip.Axis=被长矛击中的敌人将被雪花包围\n北极EX
 ItemName.BackScratcher=背刺虎爪
 
 ItemName.BladeOfEvil=猩魔之刃
-ItemTooltip.BladeOfEvil=腐化与猩红的完美结合
+ItemTooltip.BladeOfEvil=腐化与猩红的完美结合\n交替发射灵液和咒火球
 
 ItemName.BlazingDawn=赤晓之刃
 ItemTooltip.BlazingDawn=你也可以叫它“灿烂的黎明”
@@ -4101,10 +4115,10 @@ ItemTooltip.TerraBallista=将木箭变为泰拉箭
 ItemName.TheSquirter=喷流者
 ItemTooltip.TheSquirter=不消耗弹药
 
-ItemName.TheVulcano=武尔坎喷火枪
-ItemTooltip.TheVulcano=消耗凝胶\n(译者注：武尔坎,火神)
+ItemName.TheVulcano=武尔坎火神枪
+ItemTooltip.TheVulcano=消耗凝胶\n将凝胶转化为爆炸熔岩
 
-ItemName.Toxithrower=喷毒者
+ItemName.Toxithrower=流毒喷枪
 ItemTooltip.Toxithrower=使用凝胶作为子弹
 
 ItemName.TrueDeathlyLongbow=真·死神长弓
@@ -4427,7 +4441,10 @@ ItemName.BrownSolution=棕红溶液
 ItemTooltip.BrownSolution=环境改造枪专用\n扩散赤蘑菇地
 
 ItemName.CodeMagnet=二进制代码磁铁
-ItemTooltip.CodeMagnet=“通过代码向你移动，将物体向你拉近”
+ItemTooltip.CodeMagnet=“通过代码向你移动，将物体向你拉近”\n右键此物品关闭
+
+ItemName.CodeMagnetOff=二进制代码磁铁
+ItemTooltip.CodeMagnetOff=“通过代码向你移动，将物体向你拉近”\n右键此物品开启
 
 ItemName.DeepGreenSolution=深绿溶液
 ItemTooltip.DeepGreenSolution=环境改造枪专用\\n将丛林变为森林

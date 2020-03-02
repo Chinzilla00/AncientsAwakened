@@ -9,7 +9,7 @@ namespace AAMod.Items.Usable
         {
             DisplayName.SetDefault("Binary Code Magnet");
 			Tooltip.SetDefault(@"Pulls items to you by moving its code closer to you
-Use the item to turn it off");
+Right click the item to turn it off");
 		}
 
         public override void SetDefaults()
