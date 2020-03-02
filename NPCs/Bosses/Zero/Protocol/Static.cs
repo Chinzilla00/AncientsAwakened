@@ -25,14 +25,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             projectile.timeLeft = 900;
         }
 
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
-        {
-            if (Main.rand.Next(3) == 0)
-            {
-                target.AddBuff(ModContent.BuffType<Buffs.Unstable>(), 360);
-            }
-        }
-
         int a = 0;
 
         public override void PostAI()

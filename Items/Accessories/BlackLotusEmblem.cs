@@ -46,7 +46,7 @@ Your magic attacks inflicts moonraze
             recipe.AddIngredient(null, "BlackLotus", 1);
             recipe.AddIngredient(null, "ShadowBand", 1);
             recipe.AddIngredient(null, "SoulOfSpite", 10);
-            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddTile(null, "HallowedAnvil");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

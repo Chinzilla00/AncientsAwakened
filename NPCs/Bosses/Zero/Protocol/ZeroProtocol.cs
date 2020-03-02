@@ -791,46 +791,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
         }
 
-        private void Movement(Vector2 targetPos, float speedModifier)
-        {
-            if (npc.Center.X < targetPos.X)
-            {
-                npc.velocity.X += speedModifier;
-                if (npc.velocity.X < 0)
-                    npc.velocity.X += speedModifier * 2;
-            }
-            else
-            {
-                npc.velocity.X -= speedModifier;
-                if (npc.velocity.X > 0)
-                    npc.velocity.X -= speedModifier * 2;
-            }
-            if (npc.Center.Y < targetPos.Y)
-            {
-                npc.velocity.Y += speedModifier;
-                if (npc.velocity.Y < 0)
-                    npc.velocity.Y += speedModifier * 2;
-            }
-            else
-            {
-                npc.velocity.Y -= speedModifier;
-                if (npc.velocity.Y > 0)
-                    npc.velocity.Y -= speedModifier * 2;
-            }
-            if (Math.Abs(npc.velocity.X) > 30)
-                npc.velocity.X = 30 * Math.Sign(npc.velocity.X);
-            if (Math.Abs(npc.velocity.Y) > 30)
-                npc.velocity.Y = 30 * Math.Sign(npc.velocity.Y);
-        }
-
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
-        {
-            if (Main.rand.Next(3) == 0)
-            {
-                target.AddBuff(ModContent.BuffType<Buffs.Unstable>(), 360);
-            }
-        }
-
         int Frame = 0;
         public override void FindFrame(int frameHeight)
         {

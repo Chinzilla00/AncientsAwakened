@@ -50,6 +50,7 @@ namespace AAMod.Items.Melee
                 item.autoReuse = true;
                 item.channel = false;
                 item.shoot = ModContent.ProjectileType<Projectiles.AsgardianIce>();
+                item.shootSpeed = 10;
             }
             else
             {

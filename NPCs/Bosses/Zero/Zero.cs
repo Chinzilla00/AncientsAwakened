@@ -22,9 +22,9 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void SetDefaults()
         {
-            npc.damage = 59;
-            npc.defense = 200;
-            npc.lifeMax = 450000;
+            npc.damage = 50;
+            npc.defense = 150;
+            npc.lifeMax = 350000;
             if (Main.expertMode)
             {
                 npc.value = 0;
@@ -579,7 +579,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (npc.ai[3] == 3)
                 {
                     npc.frameCounter++;
-                    if (npc.frameCounter < 4)
+                    if (npc.frameCounter > 4)
                     {
                         npc.frameCounter = 0;
                         npc.frame.Y += frameHeight;

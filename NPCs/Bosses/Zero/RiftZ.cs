@@ -20,19 +20,26 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.alpha = 255;
             projectile.tileCollide = false;
             projectile.penetrate = 1;
+            projectile.timeLeft = 180;
         }
 
         public override void AI()
         {
             projectile.rotation += 0.03f;
-
-            if (projectile.alpha > 30)
+            if (projectile.timeLeft > 40)
             {
-                projectile.alpha -= 3;
+                if (projectile.alpha > 30)
+                {
+                    projectile.alpha -= 3;
+                }
+                else
+                {
+                    projectile.alpha = 30;
+                }
             }
             else
             {
-                projectile.alpha = 30;
+                projectile.alpha += 3;
             }
 
             const int aislotHomingCooldown = 0;

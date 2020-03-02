@@ -16,7 +16,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         }
         public override void SetDefaults()
         {
-            npc.lifeMax = 5000;
+            npc.lifeMax = 1000;
             npc.damage = 110;
             npc.defense = 70;
             npc.knockBackResist = 0f;
@@ -92,14 +92,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
 
             npc.frame.Y = frameHeight * Frame;
-        }
-
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
-        {
-            if (Main.rand.Next(3) == 0)
-            {
-                target.AddBuff(ModContent.BuffType<Buffs.Unstable>(), 360);
-            }
         }
 
         public void SpawnDust()

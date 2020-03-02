@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
         {
 			base.SetDefaults();
 			npc.lifeMax = 60000;
-            npc.damage = 150;
+            npc.damage = 80;
             npc.defense = 50;
             npc.boss = true;
             npc.buffImmune[BuffID.Poisoned] = true;

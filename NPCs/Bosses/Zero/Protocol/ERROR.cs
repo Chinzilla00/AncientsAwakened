@@ -31,14 +31,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             return AAColor.Oblivion;
         }
 
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
-        {
-            if (Main.rand.Next(3) == 0)
-            {
-                target.AddBuff(ModContent.BuffType<Buffs.Unstable>(), 360);
-            }
-        }
-
         public override void AI()
         {
             projectile.velocity *= 0.98f;

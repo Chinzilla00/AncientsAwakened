@@ -657,7 +657,7 @@ namespace AAMod.NPCs.TownNPCs
             Mod Redemption = ModSupport.GetMod("Redemption");
             Mod Thorium = ModSupport.GetMod("ThoriumMod");
 
-            int HordeZombie = GRealm == null ? -1 : NPC.FindFirstNPC(ModSupport.GetModNPC("GRealm", "HordeZombie").npc.type);
+            //int HordeZombie = GRealm == null ? -1 : NPC.FindFirstNPC(ModSupport.GetModNPC("GRealm", "HordeZombie").npc.type);
             int Mutant = Fargos == null ? -1 : NPC.FindFirstNPC(ModSupport.GetModNPC("Fargowiltas", "Mutant").npc.type);
             int Newb = Redemption == null ? -1 : NPC.FindFirstNPC(ModSupport.GetModNPC("Redemption", "Newb").npc.type);
             int Cobbler = Thorium == null ? -1 : NPC.FindFirstNPC(ModSupport.GetModNPC("ThoriumMod", "Cobbler").npc.type);
@@ -713,10 +713,10 @@ namespace AAMod.NPCs.TownNPCs
                 chat.Add(Lang.TownNPCAnubis("AnubisChat21"));
             }
 
-            if (HordeZombie >= 0)
+            /*if (HordeZombie >= 0)
             {
                 chat.Add(Lang.TownNPCAnubis("AnubisChat23") + Main.npc[HordeZombie].GivenName + Lang.TownNPCAnubis("AnubisChat24"));
-            }
+            }*/
 
             if (Mutant >= 0)
             {

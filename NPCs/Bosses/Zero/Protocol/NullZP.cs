@@ -24,7 +24,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             npc.height = 40;
             npc.damage = 50;
             npc.defense = 9999999;
-            npc.lifeMax = 35;
+            npc.lifeMax = 10;
             npc.HitSound = mod.GetLegacySoundSlot(SoundType.NPCHit, "Sounds/Sounds/Glitch");
             npc.DeathSound = SoundID.NPCDeath6;
             npc.alpha = 70;
@@ -37,7 +37,15 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 		public int frameCounter = 0;
 		public override void PostAI()
 		{
-			
+            if (!NPC.AnyNPCs(ModContent.NPCType<ZeroProtocol>()))
+            {
+                npc.alpha++;
+
+                if (npc.alpha >= 255)
+                {
+                    npc.active = false;
+                }
+            }
 			npc.frame = new Rectangle(0, frameCount * 40, 36, 38);
 			npc.spriteDirection = npc.velocity.X > 0 ? -1 : 1;
 			npc.rotation = npc.velocity.X * 0.25f;

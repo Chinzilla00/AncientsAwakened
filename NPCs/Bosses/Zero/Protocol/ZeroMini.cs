@@ -226,14 +226,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             DeathDust();
         }
 
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
-        {
-            if (Main.rand.Next(3) == 0)
-            {
-                target.AddBuff(ModContent.BuffType<Buffs.Unstable>(), 360);
-            }
-        }
-
         public void DeathDust()
         {
             Vector2 position = npc.Center + (Vector2.One * -20f);

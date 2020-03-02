@@ -75,16 +75,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
         }
 
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
-        {
-            if (Main.rand.Next(3) == 0)
-            {
-                target.AddBuff(ModContent.BuffType<Buffs.Unstable>(), 360);
-            }
-        }
-
-
-
         private int HomeOnTarget()
         {
             const bool homingCanAimAtWetEnemies = true;

@@ -255,8 +255,6 @@ namespace AAMod
         public bool YamataGravity = false;
         public bool YamataAGravity = false;
         public bool Hunted = false;
-        public bool Unstable = false;
-        public bool UnstableOn = false;
         public bool IB = false;
         public bool Spear = false;
         public bool AkumaPain = false;
@@ -539,7 +537,6 @@ namespace AAMod
             YamataGravity = false;
             YamataAGravity = false;
             Hunted = false;
-            Unstable = false;
             IB = false;
             Spear = false;
             AkumaPain = false;
@@ -1078,8 +1075,6 @@ namespace AAMod
 
         public float TimeScale = 0;
 
-        public int UnstableCounter = 0;
-
         public override void PostUpdate()
         {
             if (!bossactive)
@@ -1225,50 +1220,6 @@ namespace AAMod
             }
 
             #endregion
-
-            if(Unstable)
-            {
-                if(Main.rand.Next(200) == 0 && !UnstableOn)
-                {
-                    UnstableOn = true;
-                }
-
-                if(UnstableOn)
-                {
-                    player.headPosition.Y -= 1f;
-                    player.headPosition.X += .75f;
-                    player.bodyPosition.Y += 1.85f;
-                    player.bodyPosition.X -= 1.15f;
-                    player.legPosition.Y += 1f;
-                    player.legPosition.X -= .6f;
-                    UnstableCounter ++;
-                }
-                else
-                {
-                    player.headPosition = Vector2.Zero;
-                    player.bodyPosition = Vector2.Zero;
-                    player.legPosition = Vector2.Zero;
-                }
-
-                if(UnstableCounter > 20)
-                {
-                    UnstableCounter = 0;
-                    UnstableOn = false;
-                    if(player.velocity.X > 0) player.velocity.X -= 15f;
-                    else if(player.velocity.X < 0) player.velocity.X += 15f;
-                    if(player.velocity.Y > 0) player.velocity.Y -= 15f;
-                    else if(player.velocity.Y < 0) player.velocity.Y += 15f;
-                    Vector2 position = player.Center + (Vector2.One * -20f);
-                    int num84 = 40;
-                    int height3 = num84;
-                    for (int num85 = 0; num85 < 3; num85++)
-                    {
-                        int num86 = Dust.NewDust(position, num84, height3, 226, 0f, 0f, 100, default, 1.5f);
-                        Main.dust[num86].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
-                        Main.dust[num86].position = player.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
-                    }
-                }
-            }
 
             if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Equinox.DaybringerHead>()) || NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Equinox.NightcrawlerHead>()))
             {
@@ -1710,11 +1661,6 @@ namespace AAMod
         public override void PostUpdateRunSpeeds()
         {
             float movespeedmax = 1f + MaxMovespeedboost;
-
-            if(Unstable)
-            {
-                movespeedmax *= Main.rand.NextFloat(.65f, .9f);
-            }
 
             player.maxRunSpeed *= movespeedmax;
             
@@ -2932,13 +2878,6 @@ namespace AAMod
                 player.lifeRegen -= 2;
             }
 
-            if (Unstable)
-            {
-                player.moveSpeed *= Main.rand.NextFloat(.55f, .9f);
-                player.wingTimeMax = (int)(player.wingTimeMax / Main.rand.NextFloat(1.2f, 2f));
-                Player.jumpSpeed /= Main.rand.NextFloat(1.2f, 2f);
-            }
-
             if (infinityOverload)
             {
                 player.lifeRegen -= 60;
@@ -3183,7 +3122,6 @@ namespace AAMod
             YamataGravity = false;
             YamataAGravity = false;
             Hunted = false;
-            Unstable = false;
             Spear = false;
             MaxMovespeedboost = 0;
             spellbookDamage = 1f;
