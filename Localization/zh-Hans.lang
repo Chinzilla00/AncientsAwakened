@@ -167,6 +167,9 @@ BuffDescription.InvokerofMadness=疯狂的召唤师
 BuffName.Irradiated=辐射
 BuffDescription.Irradiated=你的生命值持续减少
 
+BuffName.K9=K9单位
+BuffDescription.K9=汪！
+
 BuffName.LungMinion=古龙
 BuffDescription.LungMinion=召唤一条古龙为你而战
 
@@ -3819,8 +3822,10 @@ ItemName.DragonsSoul=狱龙魂
 ItemTooltip.DragonsSoul=召唤一个狱龙之魂\n感觉很热,不过很舒服...
 
 ItemName.GlowmossBall=发光青苔球
-ItemTooltip.GlowmossBall=召唤一个发光青苔球
-Emmm,整个又湿又软...
+ItemTooltip.GlowmossBall=召唤一个发光青苔球\nEmmm,整个又湿又软...
+
+ItemName.K9Collar=K9项圈
+ItemTooltip.K9Collar=召唤一只机械小奶狗
 
 ItemName.MudkipBall=沼跃鱼精灵球
 ItemTooltip.MudkipBall=似乎里面已经有东西了
