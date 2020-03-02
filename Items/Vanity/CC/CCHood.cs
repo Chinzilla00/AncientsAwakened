@@ -1,16 +1,19 @@
+using Terraria;
+using Terraria.ID;
 using System.Collections.Generic;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Vanity.CC
 {
-    [AutoloadEquip(EquipType.Head)]
+	[AutoloadEquip(EquipType.Head)]
 	public class CCHood : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dread Cultist Robe");
-			Tooltip.SetDefault("The robe of a crazy lizard enthusiast");
+			DisplayName.SetDefault("Dread Cultist Mask");
+			Tooltip.SetDefault(@"The mask of a crazy lizard enthusiast
+'Great for impersonating Ancients Awakened Developers!'");
 		}
 
 		public override void SetDefaults() {
