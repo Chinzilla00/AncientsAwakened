@@ -23,11 +23,6 @@ namespace AAMod.Buffs
 			{
 				Projectile.NewProjectile(player.position.X + player.width / 2, player.position.Y + player.height / 2, 0f, 0f, mod.ProjectileType("MudkipS"), 0, 0f, player.whoAmI, 0f, 0f);
 			}
-            if (!player.GetModPlayer<AAPlayer>().Alpha || !player.GetModPlayer<AAPlayer>().MudkipS)
-            {
-                player.DelBuff(buffIndex);
-                buffIndex--;
-            }
         }
 	}
 }

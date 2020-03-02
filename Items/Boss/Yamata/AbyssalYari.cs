@@ -51,20 +51,5 @@ namespace AAMod.Items.Boss.Yamata
         {
             return player.ownedProjectileCounts[item.shoot] < 1; // This is to ensure the spear doesn't bug out when using autoReuse = true
         }
-
-        public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-		{
-		    float spread = 15f * 0.0174f;
-		    float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY)) * 3f;
-            double startAngle = Math.Atan2(speedX, speedY) - .5d;
-		    double deltaAngle = spread;
-		    double offsetAngle;
-		    for (int i = 0; i < 2; i++)
-		    {
-		    	offsetAngle = startAngle + (deltaAngle * i);
-		    	Projectile.NewProjectile(position.X, position.Y, baseSpeed*(float)Math.Sin(offsetAngle), baseSpeed*(float)Math.Cos(offsetAngle), mod.ProjectileType("AbyssalYariP3"), damage, knockBack, Main.myPlayer);
-		    }
-		    return true;
-		}
     }
 }

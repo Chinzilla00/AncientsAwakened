@@ -4,14 +4,11 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Pets
 {
-    /// <summary>
-    /// ALPHA THIS IS NOT AN ITEM
-    /// </summary>
     public class Mudkip : ModProjectile
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mudkip"); // Automatic from .lang files
+            DisplayName.SetDefault("Mudkip");
             Main.projFrames[projectile.type] = 11;
             Main.projPet[projectile.type] = true;
         }

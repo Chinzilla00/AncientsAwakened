@@ -18,10 +18,13 @@ namespace AAMod.Projectiles.Yamata
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.tileCollide = false;
-            projectile.penetrate = 1;
+            projectile.penetrate = -1;
             projectile.ownerHitCheck = true;
             projectile.melee = true;
-            projectile.timeLeft = 80;
+            projectile.timeLeft = 90;
+            projectile.extraUpdates = 3;
+            projectile.usesLocalNPCImmunity = true;
+            projectile.localNPCHitCooldown = 8;
         }
 
         public override void SetStaticDefaults()
@@ -31,6 +34,7 @@ namespace AAMod.Projectiles.Yamata
 
         public override void AI()
         {
+            Lighting.AddLight(projectile.Center, Color.DarkRed.R / 100, Color.DarkRed.G / 100, Color.DarkRed.B / 180);
             for (int m = projectile.oldPos.Length - 1; m > 0; m--)
             {
                 projectile.oldPos[m] = projectile.oldPos[m - 1];
@@ -46,7 +50,7 @@ namespace AAMod.Projectiles.Yamata
 			projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + .25f * (float)Math.PI;
 			for (int i = 0; i < 3; i++)
 			{
-				int d = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("YamataDust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100);
+				int d = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, mod.DustType("YamataADust"), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100);
 				if (Main.rand.Next(6) != 0)
 				{
 					Main.dust[d].noGravity = true;
@@ -59,16 +63,6 @@ namespace AAMod.Projectiles.Yamata
 					Main.dust[d].velocity.Y *= 1.2f;
 				}
 			}
-            projectile.ai[0] += 1f;
-            if (projectile.ai[0] >= 20f)
-            {
-                projectile.velocity.Y = projectile.velocity.Y + 0.4f;
-                projectile.velocity.X = projectile.velocity.X * 0.9991f;
-            }
-            if (projectile.velocity.Y > 16f)
-            {
-                projectile.velocity.Y = 16f;
-            }
         }
 
         public override void OnHitNPC (NPC target, int damage, float knockback, bool crit)
@@ -95,13 +89,13 @@ namespace AAMod.Projectiles.Yamata
             }
             for (int num87 = 0; num87 < 15; num87++)
             {
-                int num88 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 200, default, 3.7f);
+                int num88 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.YamataADust>(), 0f, 0f, 200, default, 3.7f);
                 Main.dust[num88].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].noGravity = true;
                 Main.dust[num88].noLight = true;
                 Main.dust[num88].velocity *= 3f;
                 Main.dust[num88].velocity += projectile.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
-                num88 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.YamataDust>(), 0f, 0f, 100, default, 1.5f);
+                num88 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.YamataADust>(), 0f, 0f, 100, default, 1.5f);
                 Main.dust[num88].position = projectile.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
                 Main.dust[num88].velocity *= 2f;
                 Main.dust[num88].noGravity = true;
@@ -112,7 +106,7 @@ namespace AAMod.Projectiles.Yamata
             }
             for (int num89 = 0; num89 < 10; num89++)
             {
-                int num90 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.AbyssDust>(), 0f, 0f, 0, default, 2.7f);
+                int num90 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.YamataADust>(), 0f, 0f, 0, default, 2.7f);
                 Main.dust[num90].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation(), default) * num84 / 2f);
                 Main.dust[num90].noGravity = true;
                 Main.dust[num90].noLight = true;
@@ -121,7 +115,7 @@ namespace AAMod.Projectiles.Yamata
             }
             for (int num91 = 0; num91 < 30; num91++)
             {
-                int num92 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.YamataDust>(), 0f, 0f, 0, default, 1.5f);
+                int num92 = Dust.NewDust(position, num84, height3, ModContent.DustType<Dusts.YamataADust>(), 0f, 0f, 0, default, 1.5f);
                 Main.dust[num92].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation(), default) * num84 / 2f);
                 Main.dust[num92].noGravity = true;
                 Main.dust[num92].velocity *= 3f;
@@ -135,8 +129,7 @@ namespace AAMod.Projectiles.Yamata
             for (int k = 0; k < projectile.oldPos.Length; k++)
             {
                 Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-                Color color = projectile.GetAlpha(lightColor) * ((projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
-                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+                spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, new Color(Color.White.R, Color.White.G, Color.White.B, 20 * k), projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
             }
             return true;
         }

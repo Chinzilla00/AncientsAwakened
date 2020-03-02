@@ -362,7 +362,7 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/AthenaA"), ItemType("AthenaABox"), TileType("AthenaABox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/AnubisA"), ItemType("AnubisFBox"), TileType("AnubisFBox"));
                 //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox"), ItemType("Equibox"), TileType("Equibox"));
-                //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Stars"), ItemType("StarBox"), TileType("StarBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Stars"), ItemType("StarBox"), TileType("StarBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/AH"), ItemType("SistersBox"), TileType("SistersBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/VoidButNowItsSpooky"), ItemType("FateBox"), TileType("FateBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shrines"), ItemType("LakeBox"), TileType("LakeBox"));
@@ -734,7 +734,7 @@ namespace AAMod
                             }
                             else
                             {
-                                if(SkyManager.Instance["AAMod:MireSky"] != null) SkyManager.Instance.Activate("AAMod:MireSky",default(Vector2), new object[0]);
+                                if(SkyManager.Instance["AAMod:MireSky"] != null) SkyManager.Instance.Activate("AAMod:MireSky",default, new object[0]);
                             }
                             if(Main.LogoB <= 255)
                             {
@@ -771,7 +771,7 @@ namespace AAMod
                             {
                                 Main.logo2Texture = instance.GetTexture("UI/LogoVoid");
                             }
-                            if(SkyManager.Instance["AAMod:VoidSky"] != null) SkyManager.Instance.Activate("AAMod:VoidSky",default(Vector2), new object[0]);
+                            if(SkyManager.Instance["AAMod:VoidSky"] != null) SkyManager.Instance.Activate("AAMod:VoidSky",default, new object[0]);
                             if(Main.dayTime && (Main.bgAlpha2[0] < 0.10f || Main.bgAlpha2[0] == 1f))
                             {
                                 Main.backgroundTexture[0] = instance.GetTexture("BlankTex");
@@ -988,13 +988,13 @@ namespace AAMod
                 }
             }
 
-            /*if (Ancients.ZoneStars)
+            if (Ancients.ZoneStars)
             {
                 priority = MusicPriority.Event;
                 music = GetSoundSlot(SoundType.Music, "Sounds/Music/Stars");
 
                 return;
-            }*/
+            }
 
             if (Ancients.Terrarium)
             {

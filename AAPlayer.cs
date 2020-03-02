@@ -289,6 +289,7 @@ namespace AAMod
         public bool DragonSoul = false;
         public bool Glowmoss = false;
         public bool Cerberus = false;
+        public bool K9 = false;
         #endregion
 
         //NPCcount
@@ -560,6 +561,7 @@ namespace AAMod
             DragonSoul = false;
             Glowmoss = false;
             Cerberus = false;
+            K9 = false;
         }
 
         public override void Initialize()
@@ -2371,12 +2373,6 @@ namespace AAMod
                         break;
 
                     case 4:
-                        if (dropType >= 3)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("CordesDuFuret_Notes"));
-                        }
-
-                        spawnedDevItems = true;
                         break;
 
                     case 5:
@@ -2412,6 +2408,7 @@ namespace AAMod
 
                     case 8:
                         player.QuickSpawnItem(mod.ItemType("FezLordsBag"));
+                        player.QuickSpawnItem(mod.ItemType("K9Collar"));
 
                         if (dropType >= 3)
                         {
