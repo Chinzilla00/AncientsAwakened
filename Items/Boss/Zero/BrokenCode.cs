@@ -16,7 +16,6 @@ namespace AAMod.Items.Boss.Zero
             DisplayName.SetDefault("Broken Code");
             Tooltip.SetDefault(@"Allows you to glitch with a 5 second cooldown
 Grapple to Glitch
-Grants immunity to the Unstable debuff
 While cooldown is occurring, your speed is increased, you gain invincibility frames
 While cooldown is occurring, your magic/summon weapons require no mana and have 20% increased damage
 'You don't look so good'
@@ -54,7 +53,6 @@ WARNING: May permanently displace appendages until game restart. This is a featu
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.buffImmune[ModContent.BuffType<Buffs.Unstable>()] = true;
             if (player.controlHook && CodeCD == 0 && Main.myPlayer == player.whoAmI)
             {
                 Vector2 vector32;

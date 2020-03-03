@@ -354,8 +354,8 @@ ItemTooltip.DemonGauntlet=敌人更有可能瞄准你\n增加14%近战伤害和�
 ItemName.DragonsGuard=龙之守卫
 ItemTooltip.DragonsGuard=攻击你的敌人会着火
 
-ItemName.DwarvenGauntlet=矮人星手套
-ItemTooltip.DwarvenGauntlet=敌人更有可能瞄准你\n增加18%近战伤害和速度\n增加近战击退\n拥有这个手套可以让你无超载控制无限宝石(译者注：你也想当灭霸？)\n“让我亲自动手好了！”
+ItemName.DragonstrideBoots=龙虬靴
+ItemTooltip.DragonstrideBoots=允许飞行，快速移动和冰上行走\n增加12%移动速度\n提供水和岩浆上的行走能力\n可以免疫灼伤和10秒岩浆中的呼吸能力\n获得游泳能力\n允许爬墙
 
 ItemName.Energy_Conduit=能量导管
 ItemTooltip.Energy_Conduit=增加50%移动速度
@@ -2548,7 +2548,7 @@ ItemName.BHB=黑洞爆裂枪
 ItemTooltip.BHB=随机发射一枚触及砖块时会爆炸产生漩涡的火箭弹
 
 ItemName.BrokenCode=崩溃乱码
-ItemTooltip.BrokenCode=让你有5秒故障裂位时间\n使用钩爪可以产生故障裂位\n免疫不安定\n在冷却时间内，你的速度提高，并获得无敌帧\n在冷却时间内，你的魔法/召唤武器不消耗魔力，并增加20%伤害\n“你看上去不太好”
+ItemTooltip.BrokenCode=让你有5秒故障裂位时间\n使用钩爪可以产生故障裂位\n在冷却时间内，你的速度提高，并获得无敌帧\n在冷却时间内，你的魔法/召唤武器不消耗魔力，并增加20%伤害\n“你看上去不太好”
 
 ItemName.DoomPortal=厄劫之门
 ItemTooltip.DoomPortal=召唤一个小厄劫零约之械为你而战
@@ -3764,7 +3764,7 @@ ItemName.Voidsaber=虚空军刀
 
 ItemName.Xiphos=希弗斯决斗者之剑
 
-ItemName.Yogan=溶岩
+ItemName.Yogan=熔岩
 ItemTooltip.Yogan=击中时点燃敌人
 
 ItemName.YtriumHalberd=钇土长戟

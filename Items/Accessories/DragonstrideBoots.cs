@@ -15,7 +15,7 @@ namespace AAMod.Items.Accessories
 12% increased movement speed
 Provides the ability to walk on water and lava
 Grants immunity to fire blocks and 10 seconds of immunity to lava
-rants the ability to swim
+Grants the ability to swim
 Allows the ability to climb walls");
         }
 
@@ -31,6 +31,7 @@ Allows the ability to climb walls");
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.moveSpeed += .12f;
+            player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .12f;
             player.waterWalk = true;
             player.fireWalk = true;
             player.lavaMax += 600;
