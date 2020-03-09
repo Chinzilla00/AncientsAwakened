@@ -2,15 +2,15 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Vanity.Universe
+namespace AAMod.Items.Vanity.Charlie
 {
     [AutoloadEquip(EquipType.Head)]
-	public class CursedHood : BaseAAItem
+	public class CharlieCowl : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Cursed Reaper Hood");
+            DisplayName.SetDefault("Wraith Cowl");
             Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Devs!'");
         }
 
@@ -20,7 +20,7 @@ namespace AAMod.Items.Vanity.Universe
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(29, 109, 124);
+                    line2.overrideColor = new Color(60, 12, 98);
                 }
             }
         }
@@ -29,7 +29,7 @@ namespace AAMod.Items.Vanity.Universe
         {
             item.width = 18;
             item.height = 20;
-            item.rare = 9;
+            item.rare = 11;
             item.vanity = true;
         }
 	}

@@ -2319,6 +2319,14 @@ namespace AAMod
                         break;
 
                     case 4:
+                        player.QuickSpawnItem(mod.ItemType("CharlieCowl"));
+                        player.QuickSpawnItem(mod.ItemType("CharlieCloak"));
+                        player.QuickSpawnItem(mod.ItemType("CharlieBoots"));
+
+                        if (dropType >= 3)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("SoulSiphon"));
+                        }
                         break;
 
                     case 5:

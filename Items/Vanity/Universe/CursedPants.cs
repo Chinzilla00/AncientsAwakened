@@ -11,7 +11,7 @@ namespace AAMod.Items.Vanity.Universe
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Cursed Reaper Boots");
-            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Contributors!'");
+            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Devs!'");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
