@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Toad
             npc.height = 40;
             npc.aiStyle = -1;
             npc.damage = 0;
-            npc.defense = 50;
+            npc.defense = 12;
             npc.lifeMax = 100;
             npc.knockBackResist = 0f;
             npc.npcSlots = 0f;

@@ -62,15 +62,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.5f / 255f, (255 - projectile.alpha) * 0f / 255f, (255 - projectile.alpha) * 0.15f / 255f);
         }
 
-
-        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
-        {
-            if (Main.rand.Next(3) == 0)
-            {
-                target.AddBuff(ModContent.BuffType<Buffs.Unstable>(), 360);
-            }
-        }
-
         public override void Kill(int timeLeft)
         {
             if (Main.netMode != 2)
