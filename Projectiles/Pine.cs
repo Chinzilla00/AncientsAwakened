@@ -32,7 +32,7 @@ namespace AAMod.Projectiles
 
         public override void PostAI()
         {
-            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(45f);
+            projectile.rotation = projectile.velocity.ToRotation() + MathHelper.ToRadians(90f);
         }
 
         public override void Kill(int timeleft)
