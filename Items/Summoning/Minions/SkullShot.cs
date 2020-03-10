@@ -22,7 +22,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.alpha = 255;
             projectile.penetrate = 1;
             projectile.extraUpdates = 2;
-            projectile.magic = true;
+            projectile.minion = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
         }

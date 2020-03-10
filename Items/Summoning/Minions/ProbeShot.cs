@@ -24,7 +24,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.extraUpdates = 2;
             projectile.timeLeft = 1000;
             projectile.minion = true;
-            projectile.minionSlots = 0f;
+            projectile.friendly = true;
             cooldownSlot = 1;
         }
 
