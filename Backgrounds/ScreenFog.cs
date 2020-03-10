@@ -42,7 +42,7 @@ namespace AAMod.Backgrounds
 				fadeOpacity -= 0.05f;
 				if(fadeOpacity < 0f) fadeOpacity = 0f;
 			}
-			if(backgroundFog)
+			if(!backgroundFog)
 			{
 				dayTimeOpacity = Main.dayTime ? BaseUtility.MultiLerp((float)Main.time / 52000f, 0.5f, 1f, 1f, 1f, 1f, 1f, 0.5f) : 0.5f;		
 				dayTimeOpacity *= 0.7f; //make it fadier as it's in the background
@@ -57,7 +57,6 @@ namespace AAMod.Backgrounds
         {
 			if(fadeOpacity == 0f) return; //don't draw if no fog
             if(setSB) Main.spriteBatch.Begin();
-            Mod mod = AAMod.instance;
             Player player = Main.LocalPlayer;
 
             Color DefaultFog = new Color(62, 68, 100);
@@ -108,10 +107,10 @@ namespace AAMod.Backgrounds
 
     public class SilhouetteWorld : ModWorld
     {
-        public static bool SilouetteMode = !Main.gameMenu && !Main.dayTime && Main.LocalPlayer.GetModPlayer<AAPlayer>().ZoneMire && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
-
         public override void PreUpdate()
         {
+            bool SilouetteMode = Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()); // && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+
             if (SilouetteMode)
             {
                 foreach (Dust dust in Main.dust)
@@ -125,7 +124,9 @@ namespace AAMod.Backgrounds
     {
         public override void PostDraw(Projectile projectile, SpriteBatch spriteBatch, Color lightColor)
         {
-            if (SilhouetteWorld.SilouetteMode)
+            bool SilouetteMode = Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()); // && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+
+            if (SilouetteMode)
             {
                 Main.spriteBatch.End();
                 Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.EffectMatrix);
@@ -133,7 +134,9 @@ namespace AAMod.Backgrounds
         }
         public override bool PreDraw(Projectile projectile, SpriteBatch spriteBatch, Color lightColor)
         {
-            if (SilhouetteWorld.SilouetteMode)
+            bool SilouetteMode = Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()); // && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+
+            if (SilouetteMode)
             {
                 Main.spriteBatch.End();
                 Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
@@ -146,7 +149,9 @@ namespace AAMod.Backgrounds
     {
         public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Color lightColor)
         {
-            if (SilhouetteWorld.SilouetteMode)
+            bool SilouetteMode = Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()); // && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+
+            if (SilouetteMode)
             {
                 Main.spriteBatch.End();
                 Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.EffectMatrix);
@@ -154,7 +159,9 @@ namespace AAMod.Backgrounds
         }
         public override bool PreDraw(NPC npc, SpriteBatch spriteBatch, Color lightColor)
         {
-            if (SilhouetteWorld.SilouetteMode)
+            bool SilouetteMode = Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()); // && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+
+            if (SilouetteMode)
             {
                 Main.spriteBatch.End();
                 Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
@@ -167,7 +174,9 @@ namespace AAMod.Backgrounds
     {
         public override void PostDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            if (SilhouetteWorld.SilouetteMode)
+            bool SilouetteMode = Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()); // && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+
+            if (SilouetteMode)
             {
                 Main.spriteBatch.End();
                 Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.EffectMatrix);
@@ -175,7 +184,9 @@ namespace AAMod.Backgrounds
         }
         public override bool PreDrawInInventory(Item item, SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            if (SilhouetteWorld.SilouetteMode)
+            bool SilouetteMode = Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()); // && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+
+            if (SilouetteMode)
             {
                 Main.spriteBatch.End();
                 Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
@@ -186,7 +197,9 @@ namespace AAMod.Backgrounds
         }
         public override void PostDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
-            if (SilhouetteWorld.SilouetteMode)
+            bool SilouetteMode = Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()); // && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+
+            if (SilouetteMode)
             {
                 Main.spriteBatch.End();
                 Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.EffectMatrix);
@@ -194,7 +207,9 @@ namespace AAMod.Backgrounds
         }
         public override bool PreDrawInWorld(Item item, SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            if (SilhouetteWorld.SilouetteMode)
+            bool SilouetteMode = Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()); // && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+
+            if (SilouetteMode)
             {
                 Main.spriteBatch.End();
                 Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
@@ -210,7 +225,9 @@ namespace AAMod.Backgrounds
         {
             if (i * 16 > Main.screenPosition.X - 16 && i * 16 < Main.screenPosition.X + Main.screenWidth + 16 && j * 16 > Main.screenPosition.Y - 16 && j * 16 < Main.screenPosition.Y + Main.screenHeight + 16)
             {
-                if (SilhouetteWorld.SilouetteMode)
+                bool SilouetteMode = Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()); // && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+
+                if (SilouetteMode)
                 {
                     Main.spriteBatch.End();
                     Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.EffectMatrix);
@@ -222,7 +239,9 @@ namespace AAMod.Backgrounds
         {
             if (i * 16 > Main.screenPosition.X - 16 && i * 16 < Main.screenPosition.X + Main.screenWidth + 16 && j * 16 > Main.screenPosition.Y - 16 && j * 16 < Main.screenPosition.Y + Main.screenHeight + 16)
             {
-                if (SilhouetteWorld.SilouetteMode)
+                bool SilouetteMode = Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()); // && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+
+                if (SilouetteMode)
                 {
                     Main.spriteBatch.End();
                     Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);
@@ -239,7 +258,9 @@ namespace AAMod.Backgrounds
         {
             if (i * 16 > Main.screenPosition.X - 16 && i * 16 < Main.screenPosition.X + Main.screenWidth + 16 && j * 16 > Main.screenPosition.Y - 16 && j * 16 < Main.screenPosition.Y + Main.screenHeight + 16)
             {
-                if (SilhouetteWorld.SilouetteMode)
+                bool SilouetteMode = Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()); // && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+
+                if (SilouetteMode)
                 {
                     Main.spriteBatch.End();
                     Main.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, Main.GameViewMatrix.EffectMatrix);
@@ -250,7 +271,9 @@ namespace AAMod.Backgrounds
         {
             if (i * 16 > Main.screenPosition.X - 16 && i * 16 < Main.screenPosition.X + Main.screenWidth + 16 && j * 16 > Main.screenPosition.Y - 16 && j * 16 < Main.screenPosition.Y + Main.screenHeight + 16)
             {
-                if (SilhouetteWorld.SilouetteMode)
+                bool SilouetteMode = Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()); // && (!BasePlayer.HasAccessory(Main.LocalPlayer, AAMod.instance.ItemType("Lantern"), true, false) || !AAWorld.downedYamata);
+
+                if (SilouetteMode)
                 {
                     Main.spriteBatch.End();
                     Main.spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.LinearClamp, DepthStencilState.Default, RasterizerState.CullNone, null, Main.GameViewMatrix.ZoomMatrix);

@@ -50,8 +50,8 @@ namespace AAMod.Backgrounds
         {
             return mod.GetBackgroundSlot("Backgrounds/MireFG1");
         }
-		
-		public override bool PreDrawCloseBackground(SpriteBatch spriteBatch)
+
+        public override bool PreDrawCloseBackground(SpriteBatch spriteBatch)
 		{
             Color DefaultFog = new Color(120, 120, 200);
             Color YamataFog = new Color(200, 100, 100);
@@ -60,7 +60,7 @@ namespace AAMod.Backgrounds
 
             mireBGFog.Update(mod.GetTexture("Backgrounds/FogTex"));
 			mireBGFog.Draw(mod.GetTexture("Backgrounds/FogTex"), true, YamataA ? YamataFog : DefaultFog);
-			return true;
+            return Main.dayTime ? false : true;
 		}
     }
 }

@@ -18,8 +18,8 @@ namespace AAMod.Backgrounds
 
             bool YamataA = NPC.AnyNPCs(ModContent.NPCType<YamataA>());
 
-            mireFog.Update(mod.GetTexture("Backgrounds/FogTex"));
-            mireFog.Draw(mod.GetTexture("Backgrounds/FogTex"), false, YamataA ? YamataFog : Color.White, true);
+            //mireFog.Update(mod.GetTexture("Backgrounds/FogTex"));
+            //mireFog.Draw(mod.GetTexture("Backgrounds/FogTex"), false, YamataA ? YamataFog : Color.White, true);
         }
     }
 }

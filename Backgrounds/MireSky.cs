@@ -10,7 +10,6 @@ namespace AAMod.Backgrounds
 {
     public class MireSky : CustomSky
     {
-
         public static Texture2D PlanetTexture;
         public static Texture2D SkyTexture;
         public static Texture2D BGTexture;
