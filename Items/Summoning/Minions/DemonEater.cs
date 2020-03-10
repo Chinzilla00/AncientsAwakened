@@ -196,11 +196,11 @@ namespace AAMod.Items.Summoning.Minions
 			}
 			if (flag25)
 			{
-				projectile.rotation = (vector46 - projectile.Center).ToRotation() + 3.14159274f;
+				projectile.rotation = (vector46 - projectile.Center).ToRotation();
 			}
 			else
 			{
-				projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
+				projectile.rotation = projectile.velocity.ToRotation();
 			}
 
             if (projectile.ai[1] > 0f)

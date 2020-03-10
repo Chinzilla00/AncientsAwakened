@@ -2846,6 +2846,9 @@ ItemTooltip.MagicAcornEX=吸引松鼠与你为荣耀而战\n“多人游戏 = �
 ItemName.MobianBuster=莫比安破坏枪
 ItemTooltip.MobianBuster=标准的莫比安爆破枪\n按住使用按钮充电,发射一个强大的充能炮!\n“记住,当你松开扳机时,是充能子弹先发射,而不是反过来!”\n-Tails
 
+ItemName.PineBreaker=松针破坏者
+ItemTooltip.PineBreaker=“我不喜欢蛋”\n-Planterror
+
 ItemName.PoniumStaff=Ponium法杖
 ItemTooltip.PoniumStaff=“如果我曾经见过这个该死的 啊啊啊啊啊”\n-Beg
 
@@ -4633,6 +4636,17 @@ ItemTooltip.CCHood=一副蜥蜴狂徒的面具\n“非常适合冒充远古觉�
 
 ItemName.CCRobe=惧月教徒长袍
 ItemTooltip.CCRobe=一套蜥蜴狂徒的长袍\n“非常适合冒充远古觉醒的开发者!”
+
+// AAMod.Items.Vanity.Charlie
+
+ItemName.CharlieCowl=魅影风帽
+ItemTooltip.CharlieCowl=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.CharlieCloak=魅影斗篷
+ItemTooltip.CharlieCloak=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.CharlieBoots=魅影幽靴
+ItemTooltip.CharlieBoots=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Dallin
 

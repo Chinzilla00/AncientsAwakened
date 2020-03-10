@@ -31,6 +31,7 @@ namespace AAMod.Items.Summoning.Minions
         {
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = Main.player[projectile.owner].GetModPlayer<AAPlayer>();
+            player.AddBuff(mod.BuffType("SkullMinion"), 3600);
             if (player.dead)
             {
                 modPlayer.ImpServant = false;
@@ -187,14 +188,9 @@ namespace AAMod.Items.Summoning.Minions
                 }
             }
             projectile.rotation = projectile.velocity.X * 0.05f;
-            if (projectile.velocity.X > 0f)
-            {
-                projectile.spriteDirection = projectile.direction = 1;
-            }
-            else if (projectile.velocity.X < 0f)
-            {
-                projectile.spriteDirection = projectile.direction = -1;
-            }
+
+            projectile.spriteDirection = (projectile.velocity.X > 0? -1: 1);
+
             if (projectile.ai[1] > 0f)
             {
                 projectile.ai[1] += 1f;
