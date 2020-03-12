@@ -29,7 +29,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             npc.aiStyle = -1;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCDeath14;
-            music = MusicID.Boss3;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Sag");
             npc.knockBackResist = 0f;
             npc.noGravity = true;
             npc.noTileCollide = true;

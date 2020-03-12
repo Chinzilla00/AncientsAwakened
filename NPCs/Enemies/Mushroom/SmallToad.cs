@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
-namespace AAMod.NPCs.Bosses.Toad
+namespace AAMod.NPCs.Enemis.Mushroom
 {
     public class TinyToad : ModNPC
     {
@@ -108,31 +108,15 @@ namespace AAMod.NPCs.Bosses.Toad
             }
         }
 
-        public override void PostAI()
+
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (NPC.AnyNPCs(ModContent.NPCType<TruffleToad>()))
-            {
-                if (npc.alpha > 0)
-                {
-                    npc.alpha -= 5;
-                }
-                else
-                {
-                    npc.alpha = 0;
-                }
-            }
-            else
-            {
-                npc.dontTakeDamage = true;
-                if (npc.alpha < 255)
-                {
-                    npc.alpha += 5;
-                }
-                else
-                {
-                    npc.active = false;
-                }
-            }
+            return spawnInfo.player.ZoneGlowshroom && AAWorld.downedFungus ? .3f : 0f;
+        }
+
+        public override void NPCLoot()
+        {
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Boss.MushroomMonarch.GlowingMushium>(), Main.rand.Next(1, 5));
         }
     }
 }

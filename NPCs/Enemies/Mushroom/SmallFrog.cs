@@ -5,11 +5,11 @@ using BaseMod;
 
 namespace AAMod.NPCs.Bosses.Toad
 {
-    public class TinyToad : ModNPC
+    public class SmallFrog : ModNPC
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Tiny Toad");
+            DisplayName.SetDefault("Fungus Frog");
             Main.npcFrameCount[npc.type] = 7;
         }
 
@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             for (int m = 0; m < (isDead ? 35 : 6); m++)
             {
-                int dustType = ModContent.DustType<Dusts.ShroomDust>();
+                int dustType = ModContent.DustType<Dusts.MushDust>();
                 Dust.NewDust(npc.position, npc.width, npc.height, dustType, npc.velocity.X * 0.2f, npc.velocity.Y * 0.2f, 100, default, isDead ? 2f : 1.5f);
             }
         }
@@ -76,7 +76,7 @@ namespace AAMod.NPCs.Bosses.Toad
                     npc.spriteDirection = 1;
                 }
             }
-            if (npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
+            if (npc.ai[0] < -10) npc.ai[0] = -10;
             BaseAI.AISlime(npc, ref npc.ai, false, 30, 6f, -6f, 6f, -8f);
         }
 
@@ -108,31 +108,14 @@ namespace AAMod.NPCs.Bosses.Toad
             }
         }
 
-        public override void PostAI()
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
-            if (NPC.AnyNPCs(ModContent.NPCType<TruffleToad>()))
-            {
-                if (npc.alpha > 0)
-                {
-                    npc.alpha -= 5;
-                }
-                else
-                {
-                    npc.alpha = 0;
-                }
-            }
-            else
-            {
-                npc.dontTakeDamage = true;
-                if (npc.alpha < 255)
-                {
-                    npc.alpha += 5;
-                }
-                else
-                {
-                    npc.active = false;
-                }
-            }
+            return spawnInfo.player.GetModPlayer<AAPlayer>().ZoneMush && AAWorld.downedMonarch ? .3f : 0f;
+        }
+
+        public override void NPCLoot()
+        {
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, ModContent.ItemType<Items.Boss.MushroomMonarch.Mushium>(), Main.rand.Next(1, 5));
         }
     }
 }
