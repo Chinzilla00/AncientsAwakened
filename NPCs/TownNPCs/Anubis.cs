@@ -688,7 +688,7 @@ namespace AAMod.NPCs.TownNPCs
             chat.Add(Lang.TownNPCAnubis("AnubisChat10"));
             chat.Add(Lang.TownNPCAnubis("AnubisChat11") + (WorldGen.crimson ? Lang.TownNPCAnubis("AnubisChat12") : Lang.TownNPCAnubis("AnubisChat13")) + Lang.TownNPCAnubis("AnubisChat14"));
             chat.Add(Lang.TownNPCAnubis("AnubisChat15"));
-            chat.Add("...and then, he flips it over, and it turns out this guy turned himself into get this; a pickle. Bloody funniest sh*t I've ever seen. Huh? Who am I talking to? I dunno.");
+            chat.Add(Lang.TownNPCAnubis("AnubisChat32"));
 
 
 

@@ -617,6 +617,8 @@ namespace AAMod
                         return "别问";
                         case "AnubisChat31":
                         return ", 他的商品哪来的. 很讨厌. ";
+                        case "AnubisChat32":
+                        return "...然后他把它翻了过来，原来他把他自己变成了一根腌咸菜，这是我见过的最搞笑的臭狗*。我在和谁说话？我也不知道";
                     }
                 }
             else if(Language.ActiveCulture == GameCulture.Russian)
@@ -874,6 +876,8 @@ namespace AAMod
                         return "Не спрашивай";
                         case "AnubisChat31":
                         return "где он достает свое барахло? Оно такое мерзкое. ";
+                        case "AnubisChat32":
+                        return "...И затем, он перевернул все, и оказалось что он превратил себя в;это огурец. Самое смешное дерьмо, которое я видел. Хах? С кем я гвоорю? Без понятия.";
 
                     }
                 }
@@ -1134,6 +1138,8 @@ namespace AAMod
                         return "Don't ask ";
                         case "AnubisChat31":
                         return " where he gets his merch. It's nasty.";
+                        case "AnubisChat32":
+                        return "...and then, he flips it over, and it turns out this guy turned himself into get this; a pickle. Bloody funniest sh*t I've ever seen. Huh? Who am I talking to? I dunno.";
                     }
                 }
             return"";
