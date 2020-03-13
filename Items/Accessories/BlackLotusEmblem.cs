@@ -31,7 +31,6 @@ Your magic attacks inflicts moonraze
         {
             player.GetModPlayer<AAPlayer>().BlackLotusEmblem = true;
             player.manaMagnet = true;
-            player.manaRegenDelay = 0;
 			player.manaCost -= 0.12f;
 			player.magicDamage += 0.18f;
             player.moveSpeed += 0.15f;

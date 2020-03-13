@@ -8,8 +8,8 @@ namespace AAMod.Items.Boss.Rajah
     {
         public override void SetDefaults()
         {
-            item.mana = 5;
-            item.damage = 80;
+            item.mana = 10;
+            item.damage = 74;
             item.useStyle = 5;
             item.shootSpeed = 9f;
             item.shoot = Terraria.ModLoader.ModContent.ProjectileType<Projectiles.Rajah.Carrot>();
