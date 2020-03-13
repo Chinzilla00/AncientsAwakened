@@ -280,8 +280,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 if(npc.ai[2]++ > 5)
                 {
-                    Vector2 Runeposition = new Vector2(0,0);
-                    Runeposition = npc.Center + new Vector2((250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Sin(5.18f * Main.rand.Next(30) * 3.1415926f), (250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Cos(5.18f * Main.rand.Next(30) * 3.1415926f));
+                    Vector2 Runeposition = npc.Center + new Vector2((250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Sin(5.18f * Main.rand.Next(30) * 3.1415926f), (250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Cos(5.18f * Main.rand.Next(30) * 3.1415926f));
                     
                     float RunepositionX = Runeposition.X;
                     float RunepositionY = Runeposition.Y;

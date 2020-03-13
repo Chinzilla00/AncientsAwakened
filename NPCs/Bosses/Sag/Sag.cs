@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using BaseMod;
 using System.IO;
 
-namespace AAMod.NPCs.Bosses.Sagittarius
+namespace AAMod.NPCs.Bosses.Sag
 {
     [AutoloadBossHead]
     public class Sag : ModNPC
@@ -15,7 +15,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Sagittarius");
-            Main.npcFrameCount[npc.type] = 12;
+            Main.npcFrameCount[npc.type] = 9;
 		}
 
 		public override void SetDefaults()
@@ -37,6 +37,7 @@ namespace AAMod.NPCs.Bosses.Sagittarius
         }
 
         public float[] internalAI = new float[4];
+        Vector2 targetPos;
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -46,6 +47,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
+                writer.Write(targetPos.X);
+                writer.Write(targetPos.Y);
             }
         }
 
@@ -58,8 +61,11 @@ namespace AAMod.NPCs.Bosses.Sagittarius
                 internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
+                targetPos.X = reader.ReadFloat();
+                targetPos.Y = reader.ReadFloat();
             }
         }
+
 
         public override void AI()
         {
@@ -69,9 +75,6 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
 
             Player player = Main.player[npc.target];
-
-            if (!DeathCheck())
-                return;
 
             #region Direction & Alpha
 
@@ -94,22 +97,125 @@ namespace AAMod.NPCs.Bosses.Sagittarius
             }
 
             #endregion
-            
+
+            int speed = npc.life < npc.lifeMax / 3 ? 12 : 10;
+            float interval = npc.life < npc.lifeMax / 3 ? .018f : .015f;
+
+            switch ((int)npc.ai[0])
+            {
+                case 0:
+                    if (!DeathCheck())
+                        return;
+                    BaseAI.AISkull(npc, ref internalAI, true, speed, 400, interval, .025f); 
+                    break;
+
+                case 1:
+                    if (!DeathCheck())
+                        return;
+                    if (++npc.ai[1] > 30)
+                    {
+                        targetPos = player.Center;
+                        targetPos.X += 1000 * (npc.Center.X < targetPos.X ? -1 : 1);
+                        Movement(targetPos, 0.8f);
+                        if (npc.ai[1] > 180 || Math.Abs(npc.Center.Y - targetPos.Y) < 50) //initiate dash
+                        {
+                            npc.ai[0]++;
+                            npc.ai[1] = 0;
+                            npc.netUpdate = true;
+                            npc.velocity.X = -40 * (npc.Center.X < player.Center.X ? -1 : 1);
+                            npc.velocity.Y *= 0.1f;
+                        }
+                    }
+                    else
+                    {
+                        npc.velocity *= 0.9f; //decelerate briefly
+                    }
+                    npc.rotation = 0;
+                    break;
+
+                case 2:
+
+                    if (++npc.ai[1] > 240 || (Math.Sign(npc.velocity.X) > 0 ? npc.Center.X > player.Center.X + 900 : npc.Center.X < player.Center.X - 900))
+                    {
+                        npc.ai[0] = 0;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                        npc.ai[3] = 0;
+                        npc.netUpdate = true;
+                    }
+                    break;
+                default:
+                    npc.ai[0] = 0;
+                    goto case 0;
 
 
+
+            }
             npc.rotation = 0;
             npc.noTileCollide = true;
         }
 
+        private void Movement(Vector2 targetPos, float speedModifier)
+        {
+            if (npc.Center.X < targetPos.X)
+            {
+                npc.velocity.X += speedModifier;
+                if (npc.velocity.X < 0)
+                    npc.velocity.X += speedModifier * 2;
+            }
+            else
+            {
+                npc.velocity.X -= speedModifier;
+                if (npc.velocity.X > 0)
+                    npc.velocity.X -= speedModifier * 2;
+            }
+            if (npc.Center.Y < targetPos.Y)
+            {
+                npc.velocity.Y += speedModifier;
+                if (npc.velocity.Y < 0)
+                    npc.velocity.Y += speedModifier * 2;
+            }
+            else
+            {
+                npc.velocity.Y -= speedModifier;
+                if (npc.velocity.Y > 0)
+                    npc.velocity.Y -= speedModifier * 2;
+            }
+            if (Math.Abs(npc.velocity.X) > 30)
+                npc.velocity.X = 30 * Math.Sign(npc.velocity.X);
+            if (Math.Abs(npc.velocity.Y) > 30)
+                npc.velocity.Y = 30 * Math.Sign(npc.velocity.Y);
+        }
+
         public override void FindFrame(int frameHeight)
         {
-            if (npc.velocity.X != 0)
+            int frameSpeed = npc.ai[0] == 2 ? 8 : 5;
+            if (npc.ai[0] != 1)
             {
-                if (npc.frameCounter++ > 8)
+                if (npc.velocity.X != 0)
+                {
+                    if (npc.frameCounter++ > frameSpeed)
+                    {
+                        npc.frameCounter = 0;
+                        npc.frame.Y += frameHeight;
+                        if (npc.frame.Y > frameHeight * 3)
+                        {
+                            npc.frame.Y = 0;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (npc.frame.Y < frameHeight * 4)
+                {
+                    npc.frame.Y = frameHeight * 4;
+                }
+                if (npc.frameCounter++ > frameSpeed)
                 {
                     npc.frameCounter = 0;
                     npc.frame.Y += frameHeight;
-                    if (npc.frame.Y > frameHeight * 3)
+                    if (npc.frame.Y > frameHeight * 8)
                     {
                         npc.frame.Y = 0;
                     }
@@ -167,8 +273,8 @@ namespace AAMod.NPCs.Bosses.Sagittarius
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 12, npc.frame, dColor, true);
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Sagittarius_Glow"), 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 12, npc.frame, ColorUtils.COLOR_GLOWPULSE, true);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 9, npc.frame, dColor, true);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Sag_Glow"), 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 9, npc.frame, ColorUtils.COLOR_GLOWPULSE, true);
             return false;
         }
 
