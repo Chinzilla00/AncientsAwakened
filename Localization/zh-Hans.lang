@@ -5281,6 +5281,7 @@ NPCName.BlazeClawM=炽焰之爪
 
 // AAMod.NPCs.Bosses.Sagittarius
 
+NPCName.Sag=射手座-虚空人马
 
 NPCName.Sagittarius=射手座-虚空人马
 
@@ -5568,6 +5569,10 @@ NPCName.MushroomZombie=赤孢僵尸
 NPCName.MushroomZombie2=赤孢僵尸
 
 NPCName.ShroomJelly=赤孢水母
+
+NPCName.SmallFrog=赤孢蛙
+
+NPCName.TinyToad=真菌小蟾蜍
 
 
 // AAMod.NPCs.Enemies.Other

@@ -44,10 +44,6 @@ namespace AAMod.Items.Dev.Invoker
 					{
 						tooltipLine.text = damageValue + " " + Language.GetTextValue("Mods.AAMod.Common.InvokerDamage1") + damageWord;
 					}
-					else 
-					{
-						tooltipLine.text = damageValue + " " + Language.GetTextValue("Mods.AAMod.Common.InvokerDamage2") + damageWord;
-					}
 				}
 				if (tooltipLine != null && tooltipLine.Name == "Tooltip0")
 				{
@@ -81,9 +77,10 @@ namespace AAMod.Items.Dev.Invoker
 				Item.staff[item.type] = false;
 				item.useStyle = 1;
 				item.damage = (int)(200 * player.minionDamage);
+				item.summon = true;
 				return true;
 			}
-			if(player.GetModPlayer<InvokerPlayer>().Thebookoflaw)
+			else if(player.GetModPlayer<InvokerPlayer>().Thebookoflaw)
 			{
 				item.noMelee = true;
 				Item.staff[item.type] = true;
