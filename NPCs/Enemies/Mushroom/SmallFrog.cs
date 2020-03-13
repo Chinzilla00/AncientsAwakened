@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
-namespace AAMod.NPCs.Bosses.Toad
+namespace AAMod.NPCs.Enemies.Mushroom
 {
     public class SmallFrog : ModNPC
     {

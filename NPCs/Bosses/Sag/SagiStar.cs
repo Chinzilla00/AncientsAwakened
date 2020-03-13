@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Sag
 {
-    public class SagStar : ModProjectile
+    public class SagiStar : ModProjectile
     {
         public override void SetDefaults()
         {
