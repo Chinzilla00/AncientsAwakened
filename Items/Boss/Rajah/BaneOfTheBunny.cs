@@ -15,7 +15,7 @@ Throwing Javelins right after a spear thrust throws javelins faster for a moment
 
 		public override void SetDefaults()
 		{
-            item.damage = 270;
+            item.damage = 100;
             item.melee = true;
             item.width = 92; 
             item.height = 92;
