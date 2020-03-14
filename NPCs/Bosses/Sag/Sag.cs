@@ -187,9 +187,19 @@ namespace AAMod.NPCs.Bosses.Sag
             }
             if (npc.ai[0] == 2)
             {
-                if (npc.rotation < npc.velocity.X * 0.05f)
+                if (npc.velocity.X > 0)
                 {
-                    npc.rotation += .01f * npc.direction;
+                    if (npc.rotation < npc.velocity.X * 0.05f)
+                    {
+                        npc.rotation += .01f * npc.direction;
+                    }
+                }
+                else
+                {
+                    if (npc.rotation > npc.velocity.X * 0.05f)
+                    {
+                        npc.rotation += .01f * npc.direction;
+                    }
                 }
             }
             else
