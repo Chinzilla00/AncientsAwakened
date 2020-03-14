@@ -9,12 +9,10 @@ namespace AAMod.Items.Magic
     {
         public override void SetDefaults()
         {
-
             item.damage = 90;                        
             item.magic = true;                     
             item.width = 32;
             item.height = 32;
-
             item.useTime = 20;
             item.useAnimation = 20;
             item.useStyle = 1;        
@@ -22,7 +20,7 @@ namespace AAMod.Items.Magic
             item.knockBack = 3;
             item.value = Item.sellPrice(0, 1, 0, 0);
             item.rare = 6;
-            item.mana = 4;             
+            item.mana = 20;             
             item.UseSound = SoundID.Item21;            
             item.autoReuse = true;
             item.shoot = mod.ProjectileType ("ElectricitySpellP");  

@@ -19,7 +19,7 @@ namespace AAMod.NPCs.Bosses.Sag
             projectile.penetrate = 1;
             projectile.aiStyle = -1;
             projectile.timeLeft = 600;
-            projectile.tileCollide = false;
+            projectile.tileCollide = true;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -82,7 +82,7 @@ namespace AAMod.NPCs.Bosses.Sag
                 }
             }
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 5, 0, 0);
-            SagiStar.DrawAfterimage(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, projectile.scale, projectile.rotation, projectile.direction, 5, frame, 0.8f, 1f, 7, true, 0, 0, true, Color.White);
+            SagiStar.DrawAfterimage(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.oldPos, projectile.scale, projectile.rotation, projectile.direction, 5, frame, 1.2f, 1f, 4, true, 0, 0, true, Color.White);
             BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 5, frame, Color.White, true);
             return false;
         }

@@ -294,7 +294,7 @@ namespace AAMod.NPCs.Bosses.Sag
             int frameSpeed; ;
             if (npc.ai[0] != 1)
             {
-                frameSpeed = 9 - (int)npc.velocity.X;
+                frameSpeed = 12 - (int)npc.velocity.X;
                 if (npc.velocity.X != 0)
                 {
                     if (npc.frameCounter++ > frameSpeed)
@@ -310,7 +310,7 @@ namespace AAMod.NPCs.Bosses.Sag
             }
             else
             {
-                frameSpeed = 5;
+                frameSpeed = 7;
                 if (npc.frame.Y < frameHeight * 4)
                 {
                     npc.frame.Y = frameHeight * 4;
