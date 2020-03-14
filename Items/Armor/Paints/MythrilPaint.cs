@@ -50,7 +50,7 @@ namespace AAMod.Items.Armor.Paints
         {
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ItemID.OrichalcumBar, 6);
+                recipe.AddIngredient(ItemID.MythrilBar, 6);
                 recipe.AddIngredient(ItemID.BottledWater, 1);
                 recipe.AddTile(TileID.BewitchingTable);
                 recipe.SetResult(this);

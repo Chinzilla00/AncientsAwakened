@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using BaseMod;
 using Terraria.Graphics.Shaders;
 using System;
+using System.IO;
 
 namespace AAMod.NPCs.Bosses.AH.Ashe
 {
@@ -568,6 +569,24 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         public bool FlyingPositive = false;
         public bool FlyingNegative = false;
         public float pos = 350f;
+
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            {
+                writer.Write(pos);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                pos = reader.ReadFloat();
+            }
+        }
 
         public void ChangePos()
         {

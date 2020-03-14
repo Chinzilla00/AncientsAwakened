@@ -490,18 +490,18 @@ namespace AAMod.NPCs.Bosses.Zero
                         if (npc.ai[2] == 80 || npc.ai[2] == 240) // + lasers
                         {
                             Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(0f, -12f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(0f, 12f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
                         }
                         if (npc.ai[2] == 160 || npc.ai[2] == 320) // x lasers
                         {
                             Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
                         }
                     }
                     else
@@ -509,41 +509,41 @@ namespace AAMod.NPCs.Bosses.Zero
                         if (npc.ai[2] == 80) // + lasers
                         {
                             Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(0f, -12f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(0f, 12f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
                         }
                         else if (npc.ai[2] == 160)
                         {
                             Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(0f, -12f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(0f, 12f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
                         }
                         else if (npc.ai[2] == 240)
                         {
                             Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
                         }
                         else if (npc.ai[2] == 320)
                         {
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
-                            Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(0f, -12f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(0f, 12f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(12f, 0f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-8f, 8f), mod.ProjectileType("ZeroBlast"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
                         }
                     }
                     if (Main.netMode != 1)

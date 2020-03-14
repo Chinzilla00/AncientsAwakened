@@ -11,7 +11,7 @@ namespace AAMod.Items.Materials
         {
             DisplayName.SetDefault("Snow Mana");
             // ticksperframe, frameCount
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 3));
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 7));
             ItemID.Sets.ItemIconPulse[item.type] = true;
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }

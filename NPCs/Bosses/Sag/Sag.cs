@@ -25,7 +25,7 @@ namespace AAMod.NPCs.Bosses.Sag
             npc.defense = 300;
             npc.damage = 35;
             npc.width = 124;
-            npc.height = 186;
+            npc.height = 206;
             npc.aiStyle = -1;
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCDeath14;
@@ -44,9 +44,6 @@ namespace AAMod.NPCs.Bosses.Sag
             if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
-                writer.Write(internalAI[1]);
-                writer.Write(internalAI[2]);
-                writer.Write(internalAI[3]);
                 writer.Write(targetPos.X);
                 writer.Write(targetPos.Y);
             }
@@ -58,9 +55,6 @@ namespace AAMod.NPCs.Bosses.Sag
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat();
-                internalAI[1] = reader.ReadFloat();
-                internalAI[2] = reader.ReadFloat();
-                internalAI[3] = reader.ReadFloat();
                 targetPos.X = reader.ReadFloat();
                 targetPos.Y = reader.ReadFloat();
             }
@@ -87,27 +81,67 @@ namespace AAMod.NPCs.Bosses.Sag
                 npc.alpha = 0;
             }
 
-            if (player.Center.X > npc.Center.X)
+            if (npc.ai[0] != 2)
             {
-                npc.direction = -1;
+                if (player.Center.X > npc.Center.X)
+                {
+                    npc.direction = 1;
+                }
+                else
+                {
+                    npc.direction = -1;
+                }
             }
             else
             {
-                npc.direction = 1;
+                if (npc.velocity.X > 0)
+                {
+                    npc.direction = 1;
+                }
+                else
+                {
+                    npc.direction = -1;
+                }
             }
 
-            #endregion
+            for (int m = npc.oldPos.Length - 1; m > 0; m--)
+            {
+                npc.oldPos[m] = npc.oldPos[m - 1];
+            }
+            npc.oldPos[0] = npc.position;
 
-            int speed = npc.life < npc.lifeMax / 3 ? 12 : 10;
-            float interval = npc.life < npc.lifeMax / 3 ? .018f : .015f;
+            #endregion
 
             switch ((int)npc.ai[0])
             {
                 case 0:
                     if (!DeathCheck())
                         return;
-                    BaseAI.AISkull(npc, ref internalAI, true, speed, 400, interval, .025f); 
+
+                    int pos;
+                    if (player.Center.X > npc.Center.X) //If NPC's X position is less than the player's
+                    {
+                        pos = 300;
+                    }
+                    else //If NPC's X position is higher than the player's
+                    {
+                        pos = -300;
+                    }
+
+                    Vector2 wantedVelocity = player.Center - new Vector2(pos, 250);
+
+                    MoveToPoint(wantedVelocity);
+
+                    Shooting();
+
+                    if (npc.ai[1]++ > (Main.expertMode ? 480 : 600))
+                    {
+                        npc.ai[0]++;
+                        npc.ai[1] = 0;
+                        npc.ai[2] = 0;
+                    }
                     break;
+
 
                 case 1:
                     if (!DeathCheck())
@@ -116,14 +150,15 @@ namespace AAMod.NPCs.Bosses.Sag
                     {
                         targetPos = player.Center;
                         targetPos.X += 1000 * (npc.Center.X < targetPos.X ? -1 : 1);
-                        Movement(targetPos, 0.8f);
-                        if (npc.ai[1] > 180 || Math.Abs(npc.Center.Y - targetPos.Y) < 50) //initiate dash
+                        Movement(targetPos, 0.5f);
+                        if (npc.ai[1] > 120 || Math.Abs(npc.Center.Y - targetPos.Y) < 16) //initiate dash
                         {
                             npc.ai[0]++;
                             npc.ai[1] = 0;
                             npc.netUpdate = true;
-                            npc.velocity.X = -40 * (npc.Center.X < player.Center.X ? -1 : 1);
-                            npc.velocity.Y *= 0.1f;
+                            int speed = npc.life < npc.lifeMax / 3 ? 15 : 18;
+                            npc.velocity.X = -speed * (npc.Center.X < player.Center.X ? -1 : 1);
+                            npc.velocity.Y *= 0f;
                         }
                     }
                     else
@@ -140,19 +175,86 @@ namespace AAMod.NPCs.Bosses.Sag
                         npc.ai[0] = 0;
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
-                        npc.ai[3] = 0;
+                        npc.ai[3] += 1;
+                        internalAI[0] = 0;
+                        Main.NewText("switching to artillery system set [" + npc.ai[3] + "]");
                         npc.netUpdate = true;
                     }
                     break;
                 default:
                     npc.ai[0] = 0;
                     goto case 0;
-
-
-
             }
-            npc.rotation = 0;
-            npc.noTileCollide = true;
+            if (npc.ai[0] == 2)
+            {
+                if (npc.rotation != npc.velocity.X * 0.05f)
+                npc.rotation += .008f * npc.direction;
+            }
+            else
+            {
+                npc.rotation = 0;
+            }
+        }
+
+        public void Shooting()
+        {
+            Player player = Main.player[npc.target];
+
+            switch ((int)npc.ai[3])
+            {
+                case 0:
+                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<SagShot>(), ref npc.ai[2], 60, npc.damage / 4, 9, false, new Vector2(36 * npc.direction, -51));
+                    break;
+                case 1:
+                    if (Main.netMode != 1)
+                    {
+                        internalAI[0]++;
+                        if (internalAI[0] > 180)
+                        {
+                            internalAI[0] = 0;
+                            npc.netUpdate = true;
+                        }
+                    }
+                    if (internalAI[0] > 120)
+                    {
+                        BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, ModContent.ProjectileType<SagiStar>(), ref npc.ai[2], 20, npc.damage / 4, 9, false, new Vector2(36 * npc.direction, -51));
+                    }
+                    break;
+                case 2:
+                    if (Main.netMode != 1)
+                    {
+                        internalAI[0]++;
+                        if (internalAI[0] > 210)
+                        {
+                            internalAI[0] = 0;
+                            npc.netUpdate = true;
+                        }
+                    }
+                    if (internalAI[0] > 120  && internalAI[0] % 30 == 0)
+                    {
+                        Projectile.NewProjectile(npc.Center, new Vector2(Main.rand.Next(3, 7) * npc.direction, -6f), mod.ProjectileType("SagBomb"), npc.damage / 4, 3);
+                    }
+                    break;
+                case 3:
+                    if (Main.netMode != 1)
+                    {
+                        internalAI[0]++;
+                        if (internalAI[0] > 240)
+                        {
+                            internalAI[0] = 0;
+                            npc.netUpdate = true;
+                        }
+                    }
+                    if (internalAI[0] > 120)
+                    {
+                        BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, ModContent.ProjectileType<SagRocket>(), ref npc.ai[2], 40, npc.damage / 4, 9, false);
+                    }
+                    break;
+                default:
+                    npc.ai[3] = 0;
+                    goto case 0;
+            }
+
         }
 
         private void Movement(Vector2 targetPos, float speedModifier)
@@ -189,9 +291,10 @@ namespace AAMod.NPCs.Bosses.Sag
 
         public override void FindFrame(int frameHeight)
         {
-            int frameSpeed = npc.ai[0] == 2 ? 8 : 5;
+            int frameSpeed; ;
             if (npc.ai[0] != 1)
             {
+                frameSpeed = 9 - (int)npc.velocity.X;
                 if (npc.velocity.X != 0)
                 {
                     if (npc.frameCounter++ > frameSpeed)
@@ -207,6 +310,7 @@ namespace AAMod.NPCs.Bosses.Sag
             }
             else
             {
+                frameSpeed = 5;
                 if (npc.frame.Y < frameHeight * 4)
                 {
                     npc.frame.Y = frameHeight * 4;
@@ -217,7 +321,7 @@ namespace AAMod.NPCs.Bosses.Sag
                     npc.frame.Y += frameHeight;
                     if (npc.frame.Y > frameHeight * 8)
                     {
-                        npc.frame.Y = 0;
+                        npc.frame.Y = frameHeight * 6;
                     }
                 }
             }
@@ -273,8 +377,12 @@ namespace AAMod.NPCs.Bosses.Sag
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 9, npc.frame, dColor, true);
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Sag_Glow"), 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 9, npc.frame, ColorUtils.COLOR_GLOWPULSE, true);
+            if (npc.ai[0] == 2)
+            {
+                BaseDrawing.DrawAfterimage(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 9, npc.frame, 1f, 1f, 7, true, 0, 0, Color.White);
+            }
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 9, npc.frame, dColor, false);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Sag_Glow"), 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 9, npc.frame, ColorUtils.COLOR_GLOWPULSE, false);
             return false;
         }
 
@@ -301,6 +409,25 @@ namespace AAMod.NPCs.Bosses.Sag
                 npc.DropBossBags();
             }
         }
-        
+
+        public void MoveToPoint(Vector2 point)
+        {
+            float moveSpeed = 9f;
+            float velMultiplier = 1f;
+            Vector2 dist = point - npc.Center;
+            float length = dist == Vector2.Zero ? 0f : dist.Length();
+            if (length < moveSpeed)
+            {
+                velMultiplier = MathHelper.Lerp(0f, 1f, length / moveSpeed);
+            }
+            if (length < 200f)
+            {
+                moveSpeed *= (length / 200f);
+            }
+            npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
+            npc.velocity *= moveSpeed;
+            npc.velocity *= velMultiplier;
+        }
+
     }
 }
