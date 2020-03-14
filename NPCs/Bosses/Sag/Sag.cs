@@ -177,7 +177,7 @@ namespace AAMod.NPCs.Bosses.Sag
                         npc.ai[2] = 0;
                         npc.ai[3] += 1;
                         internalAI[0] = 0;
-                        Main.NewText("switching to artillery system set [" + npc.ai[3] + "]");
+                        Main.NewText("switching to artillery system set [" + npc.ai[3] + 1 + "]");
                         npc.netUpdate = true;
                     }
                     break;
@@ -187,19 +187,9 @@ namespace AAMod.NPCs.Bosses.Sag
             }
             if (npc.ai[0] == 2)
             {
-                if (npc.velocity.X > 0)
+                if (npc.rotation != npc.velocity.X * 0.05f)
                 {
-                    if (npc.rotation < npc.velocity.X * 0.05f)
-                    {
-                        npc.rotation += .01f * npc.direction;
-                    }
-                }
-                else
-                {
-                    if (npc.rotation > npc.velocity.X * 0.05f)
-                    {
-                        npc.rotation += .01f * npc.direction;
-                    }
+                    npc.rotation += .01f * npc.direction;
                 }
             }
             else
