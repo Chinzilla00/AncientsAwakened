@@ -187,8 +187,10 @@ namespace AAMod.NPCs.Bosses.Sag
             }
             if (npc.ai[0] == 2)
             {
-                if (npc.rotation != npc.velocity.X * 0.05f)
-                npc.rotation += .008f * npc.direction;
+                if (npc.rotation < npc.velocity.X * 0.05f)
+                {
+                    npc.rotation += .01f * npc.direction;
+                }
             }
             else
             {
@@ -291,10 +293,10 @@ namespace AAMod.NPCs.Bosses.Sag
 
         public override void FindFrame(int frameHeight)
         {
-            int frameSpeed; ;
+            int frameSpeed;
             if (npc.ai[0] != 1)
             {
-                frameSpeed = 12 - (int)npc.velocity.X;
+                frameSpeed = npc.ai[0] == 2 ? 3 : 12 - (int)npc.velocity.X;
                 if (npc.velocity.X != 0)
                 {
                     if (npc.frameCounter++ > frameSpeed)
