@@ -54,7 +54,7 @@ Every ten shots, it can shoot two extra bullets.
         {
             Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
             float num117 = 0.314159274f * 1.3f;
-            int num118 = 4;
+            int num118 = 3;
             Vector2 vector7 = new Vector2(speedX, speedY);
             vector7.Normalize();
             vector7 *= 20f;
