@@ -15,11 +15,5 @@ namespace AAMod.Walls
             AddMapEntry(new Color(25, 12, 10));
             Terraria.ID.WallID.Sets.Conversion.Stone[Type] = true;
         }
-
-        public override void PostDraw(int x, int y, SpriteBatch sb)
-        {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/TorchstoneWall_Glow");
-            BaseMod.BaseDrawing.DrawWallTexture(sb, glowTex, x, y, false, AAGlobalTile.GetIncineriteColorDim);
-        }
     }
 }

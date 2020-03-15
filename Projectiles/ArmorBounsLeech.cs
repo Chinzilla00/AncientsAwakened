@@ -97,7 +97,7 @@ namespace AAMod.Projectiles
             projectile.tileCollide = false;
             projectile.magic = true;
             dust = mod.DustType("RadiumDust");
-            potencyFactor = .5f;
+            potencyFactor = .25f;
         }
         public override void PlayerBenifit(int potency, Player player)
         {

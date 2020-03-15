@@ -109,12 +109,23 @@ namespace AAMod.NPCs.Bosses.Hydra
                     bodyNPC = npcBody;
                 }
             }
-			if(bodyNPC == null)
+
+            if (!NPC.AnyNPCs(ModContent.NPCType<Hydra>()))
+            {
+                if (Main.netMode != 1) //force a kill to prevent 'ghosting'
+                {
+                    npc.life = 0;
+                    npc.checkDead();
+                    npc.netUpdate = true;
+                }
+                return;
+            }
+			if (bodyNPC == null)
 				return;
 
             AssignHead();
 
-            if (!bodyNPC.active || !NPC.AnyNPCs(ModContent.NPCType<Hydra>()))
+            if (!bodyNPC.active)
             {
                 if (Main.netMode != 1) //force a kill to prevent 'ghosting'
                 {

@@ -372,6 +372,12 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (Pirate)
             {
+                if (Main.hardMode)
+                {
+                    shop.item[nextSlot].SetDefaults(ItemID.PirateMap);
+                    shop.item[nextSlot].shopCustomPrice = Item.sellPrice(0, 1, 0, 0);
+                    nextSlot++;
+                }
                 shop.item[nextSlot].SetDefaults(ItemID.EyePatch);
                 shop.item[nextSlot].shopCustomPrice = new int?(5);
                 shop.item[nextSlot].shopSpecialCurrency = AAMod.PirateBooty;

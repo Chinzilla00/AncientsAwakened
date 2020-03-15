@@ -40,7 +40,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 npc.frameCounter = 0;
                 Frame++;
-                if (Frame++ > 3)
+                if (Frame > 3)
                 {
                     Frame = 0;
                 }

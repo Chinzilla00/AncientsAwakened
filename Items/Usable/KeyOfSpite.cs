@@ -25,7 +25,7 @@ namespace AAMod.Items.Usable
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "SoulOfSpite", 15);
-            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

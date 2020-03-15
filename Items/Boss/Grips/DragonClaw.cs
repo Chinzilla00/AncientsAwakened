@@ -29,7 +29,7 @@ namespace AAMod.Items.Boss.Grips
         }
         public override void AI()
         {
-            projectile.spriteDirection = projectile.velocity.X > 0 ? -1 : 1;
+            projectile.spriteDirection = projectile.velocity.X > 0 ? 1 : -1;
             if (projectile.frameCounter++ > 5)
             {
                 projectile.frame++;

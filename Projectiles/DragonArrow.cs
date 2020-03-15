@@ -31,6 +31,7 @@ namespace AAMod.Projectiles
 			projectile.tileCollide = true;
 			aiType = ProjectileID.WoodenArrowFriendly;
             projectile.arrow = true;
+			projectile.knockBack = 4;
         }
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

@@ -29,7 +29,12 @@ namespace AAMod.Tiles.Furniture.Other
             AddMapEntry(new Color(58, 48, 42), name);
 		}
 
-		public override void NumDust(int i, int j, bool fail, ref int num)
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        {
+            Item.NewItem(i * 16, j * 16, 64, 32, mod.ItemType("SpiralStairs"));
+        }
+
+        public override void NumDust(int i, int j, bool fail, ref int num)
 		{
 			num = fail ? 1 : 3;
 		}

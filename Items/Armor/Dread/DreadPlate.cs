@@ -49,7 +49,7 @@ The abyssal wrath of the Mire rests in this armor");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "EventideAbyssium", 18);
+            recipe.AddIngredient(null, "EventideAbyssium", 20);
             recipe.AddIngredient(null, "DreadScale", 5);
             recipe.AddIngredient(null, "DepthGi", 1);
             recipe.AddTile(null, "ACS");

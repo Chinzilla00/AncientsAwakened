@@ -38,6 +38,7 @@ namespace AAMod.Projectiles.Zero
 
         public override void AI()
         {
+            projectile.spriteDirection = projectile.velocity.X > 0 ? 1 : -1;
             if (projectile.localAI[0] == 0f)
             {
                 int num226 = 36;

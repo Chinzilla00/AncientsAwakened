@@ -45,8 +45,9 @@ namespace AAMod.Items.Magic
 		{
 			ModRecipe recipe = new ModRecipe(mod);
 			recipe.AddIngredient(ItemID.SpellTome);
+			recipe.AddIngredient(ItemID.SpellTome);
 			recipe.AddIngredient(mod.ItemType("Hydratoxin"), 20);
-			recipe.AddIngredient(ItemID.SoulofNight, 15);
+			recipe.AddIngredient(mod.ItemType("SoulOfSpite"), 15);
 			recipe.AddTile(TileID.Bookcases);
 			recipe.SetResult(this);  
 			recipe.AddRecipe();

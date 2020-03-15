@@ -705,7 +705,7 @@ namespace AAMod.NPCs.Bosses.Shen
             }
             if (Health2)
             {
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand");
+               // music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/LastStand");
             }
         }
 

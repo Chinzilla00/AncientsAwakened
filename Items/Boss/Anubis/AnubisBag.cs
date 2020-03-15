@@ -62,7 +62,7 @@ namespace AAMod.Items.Boss.Anubis
                 modPlayer.HMDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("ForsakenFragment"), Main.rand.Next(10, 20));
-            player.QuickSpawnItem(mod.ItemType(""));
+            player.QuickSpawnItem(mod.ItemType("ArtifactOfJudgement"));
             string[] lootTable = { "Judgment", "NeithsString", "DesertStaff", "JackalsWrath", "Sandthrower", "SentryOfTheEye" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));

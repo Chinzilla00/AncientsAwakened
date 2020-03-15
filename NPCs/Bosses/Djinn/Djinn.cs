@@ -475,7 +475,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                 Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/DjinnGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/DjinnGore4"), 1f);
                 Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/DjinnGore5"), 1f);
-                for (int Loop = 0; Loop < 5; Loop++)
+                for (int Loop = 0; Loop < 60; Loop++)
                 {
                     int d = Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust, 0f, 0f, 0);
                     Main.dust[d].velocity.X *= 0f;
@@ -554,8 +554,6 @@ namespace AAMod.NPCs.Bosses.Djinn
             {
                 npc.DropBossBags();
             }
-            npc.value = 0f;
-            npc.boss = false;
         }
         public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {

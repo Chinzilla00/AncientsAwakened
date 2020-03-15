@@ -35,7 +35,7 @@ You can breath in water
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return head.type == mod.ItemType("OceanHelm") && legs.type == mod.ItemType("OceanBoots");
+            return body.type == mod.ItemType("OceanShirt") && legs.type == mod.ItemType("OceanBoots");
         }
 
         public override void UpdateArmorSet(Player player)

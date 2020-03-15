@@ -18,6 +18,7 @@ namespace AAMod.Items.Boss.Zero
 Grapple to Glitch
 While cooldown is occurring, your speed is increased, you gain invincibility frames
 While cooldown is occurring, your magic/summon weapons require no mana and have 20% increased damage
+Teleportation has 1 5 second cooldown
 'You don't look so good'
 WARNING: May permanently displace appendages until game restart. This is a feature.");
             ItemID.Sets.ItemNoGravity[item.type] = true;
@@ -75,15 +76,15 @@ WARNING: May permanently displace appendages until game restart. This is a featu
                         player.Teleport(vector32, 1, 0);
                         NetMessage.SendData(65, -1, -1, null, 0, player.whoAmI, vector32.X, vector32.Y, 1, 0, 0);
                         Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch"));
-                        CodeCD = 300;
+                        CodeCD = 600;
                         player.AddBuff(ModContent.BuffType<Buffs.Glitched>(), 300);
                     }
                 }
             }
-            if (CodeCD > 0)
+            if (CodeCD > 300)
             {
                 CodeCD--;
-                if (CodeCD > 150)
+                if (CodeCD > 450)
                 {
                     player.immuneNoBlink = true;
                 }

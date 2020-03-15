@@ -167,7 +167,7 @@ namespace AAMod
 
             recipe = GetNewRecipe();
             recipe.AddIngredient(null, "RadiumBar", 1);
-            recipe.AddIngredient(ItemID.LunarOre, 5);
+            recipe.AddIngredient(ItemID.LunarOre, 3);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(ItemID.FragmentSolar);
             recipe.AddRecipe();

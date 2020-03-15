@@ -719,11 +719,11 @@ namespace AAMod.Worldgeneration
                 [Color.Black] = -1
             };
 
-            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/GreedNest"), colorToTile, mod.GetTexture("Worldgeneration/GreedNestWalls"), colorToWall, null);
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/GreedNest"), colorToTile, mod.GetTexture("Worldgeneration/GreedNestWalls"), colorToWall);
 
             gen.Generate(origin.X, origin.Y, true, true);
 
-            WorldUtils.Gen(new Point(origin.X - (gen.width / 2), origin.Y - 20), new Shapes.Rectangle(gen.width, gen.height), Actions.Chain(new GenAction[]
+            WorldUtils.Gen(new Point(origin.X, origin.Y), new Shapes.Rectangle(gen.width, gen.height), Actions.Chain(new GenAction[]
 			{
                 new InWorld(),
                 new Actions.SetLiquid(0, 0)

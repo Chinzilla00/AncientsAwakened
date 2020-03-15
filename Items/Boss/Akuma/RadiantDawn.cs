@@ -26,7 +26,7 @@ namespace AAMod.Items.Boss.Akuma
             item.noMelee = true;
             item.rare = 3;
             AARarity = 13;
-            item.shootSpeed = 12f;
+            item.shootSpeed = 8f;
             item.noUseGraphic = true;
         }
 

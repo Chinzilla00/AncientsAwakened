@@ -34,8 +34,7 @@ namespace AAMod.Items.Tools
         public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Coral, 6);   //you need 10 Wood
-			recipe.AddIngredient(ItemID.IronAxe, 1);
+            recipe.AddIngredient(ItemID.Coral, 15); 
             recipe.AddTile(TileID.WorkBenches);   
             recipe.SetResult(this);  
             recipe.AddRecipe();

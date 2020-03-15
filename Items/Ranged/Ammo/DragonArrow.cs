@@ -8,7 +8,7 @@ namespace AAMod.Items.Ranged.Ammo
 		public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Dragon Arrow");
-			Tooltip.SetDefault("Lights your opponents ablaze");
+			Tooltip.SetDefault("Has stronger knockback than most arrows");
 		}
 
 		public override void SetDefaults()

@@ -793,60 +793,8 @@ namespace AAMod.Globals
                     "AAMod/NPCs/Bosses/Rajah/Rajah_Head_Boss");
                 #endregion
 
-                #region Olympian Athena
-                bossChecklist.Call("AddBoss", 11.5f, mod.NPCType("AthenaA"), mod,
-                    Lang.BossCheck("AthenaA"),
-                    (Func<bool>)(() => AAWorld.downedAthenaA),
-                    ModContent.ItemType<Owl>(),
-                    new List<int>
-                    {
-                        ModContent.ItemType<AthenaABox>()
-                    },
-                    new List<int>
-                    {
-                        ModContent.ItemType<Items.Boss.Athena.AthenaABag>(),
-                        ModContent.ItemType<Items.Boss.Athena.GoddessHarp>(),
-                        ModContent.ItemType<Items.Boss.Athena.Olympia>(),
-                        ModContent.ItemType<Items.Boss.Athena.Windfury>(),
-                        ModContent.ItemType<Items.Boss.Athena.GaleForce>(),
-                        ModContent.ItemType<Items.Boss.Athena.HurricaneStone>(),
-                        ModContent.ItemType<Items.Boss.Athena.StarChart>()
-                    },
-                    Lang.BossCheck("AthenaAInfo"),
-                    null,
-                    "AAMod/CrossMod/BossChecklist/AthenaA",
-                    "AAMod/NPCs/Bosses/Athena/Olympian/AthenaA_Head_Boss",
-                    (Func<bool>)(() => AAWorld.AthenaHerald));
-                #endregion
-
-                #region Worm King Greed
-                bossChecklist.Call("AddBoss", 11.5f, mod.NPCType("GreedA"), mod,
-                    Lang.BossCheck("GreedA"),
-                    (Func<bool>)(() => AAWorld.downedGreedA),
-                    ModContent.ItemType<GoldenGrub>(),
-                    new List<int>
-                    {
-                        ModContent.ItemType<GreedABox>()
-                    },
-                    new List<int>
-                    {
-                        ModContent.ItemType<Items.Boss.Greed.WKG.GreedABag>(),
-                        ModContent.ItemType<Items.Boss.Greed.WKG.DesireTalisman>(),
-                        ModContent.ItemType<Items.Boss.Greed.WKG.Earthbreaker>(),
-                        ModContent.ItemType<Items.Boss.Greed.WKG.OreCannon>(),
-                        ModContent.ItemType<Items.Boss.Greed.WKG.OreStaff>(),
-                        ModContent.ItemType<Items.Boss.Greed.WKG.Unearther>(),
-                        ModContent.ItemType<Items.Boss.Greed.WKG.WormIdol>()
-                    },
-                    Lang.BossCheck("GreedAInfo"),
-                    null,
-                    "AAMod/CrossMod/BossChecklist/GreedA",
-                    "AAMod/NPCs/Bosses/Greed/GreedA_Head_Boss",
-                    (Func<bool>)(() => AAWorld.AthenaHerald));
-                #endregion
-
                 #region Forsaken Anubis
-                bossChecklist.Call("AddBoss", 11.7f, mod.NPCType("ForsakenAnubis"), mod,
+                bossChecklist.Call("AddBoss", 15f, mod.NPCType("ForsakenAnubis"), mod,
                     "Forsaken Anubis",
                     (Func<bool>)(() => AAWorld.downedAnubisA),
                     ModContent.ItemType<Scepter>(),
@@ -874,8 +822,60 @@ namespace AAMod.Globals
                     "AAMod/NPCs/Bosses/Anubis/Forsaken/ForsakenAnubis_Head_Boss");
                 #endregion
 
+                #region Olympian Athena
+                bossChecklist.Call("AddBoss", 15.1f, mod.NPCType("AthenaA"), mod,
+                    Lang.BossCheck("AthenaA"),
+                    (Func<bool>)(() => AAWorld.downedAthenaA),
+                    ModContent.ItemType<Owl>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<AthenaABox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Athena.AthenaABag>(),
+                        ModContent.ItemType<Items.Boss.Athena.GoddessHarp>(),
+                        ModContent.ItemType<Items.Boss.Athena.Olympia>(),
+                        ModContent.ItemType<Items.Boss.Athena.Windfury>(),
+                        ModContent.ItemType<Items.Boss.Athena.GaleForce>(),
+                        ModContent.ItemType<Items.Boss.Athena.HurricaneStone>(),
+                        ModContent.ItemType<Items.Boss.Athena.StarChart>()
+                    },
+                    Lang.BossCheck("AthenaAInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/AthenaA",
+                    "AAMod/NPCs/Bosses/Athena/Olympian/AthenaA_Head_Boss",
+                    (Func<bool>)(() => AAWorld.AthenaHerald));
+                #endregion
+
+                #region Worm King Greed
+                bossChecklist.Call("AddBoss", 15.2f, mod.NPCType("GreedA"), mod,
+                    Lang.BossCheck("GreedA"),
+                    (Func<bool>)(() => AAWorld.downedGreedA),
+                    ModContent.ItemType<GoldenGrub>(),
+                    new List<int>
+                    {
+                        ModContent.ItemType<GreedABox>()
+                    },
+                    new List<int>
+                    {
+                        ModContent.ItemType<Items.Boss.Greed.WKG.GreedABag>(),
+                        ModContent.ItemType<Items.Boss.Greed.WKG.DesireTalisman>(),
+                        ModContent.ItemType<Items.Boss.Greed.WKG.Earthbreaker>(),
+                        ModContent.ItemType<Items.Boss.Greed.WKG.OreCannon>(),
+                        ModContent.ItemType<Items.Boss.Greed.WKG.OreStaff>(),
+                        ModContent.ItemType<Items.Boss.Greed.WKG.Unearther>(),
+                        ModContent.ItemType<Items.Boss.Greed.WKG.WormIdol>()
+                    },
+                    Lang.BossCheck("GreedAInfo"),
+                    null,
+                    "AAMod/CrossMod/BossChecklist/GreedA",
+                    "AAMod/NPCs/Bosses/Greed/GreedA_Head_Boss",
+                    (Func<bool>)(() => AAWorld.AthenaHerald));
+                #endregion
+
                 #region Equinox Worms
-                bossChecklist.Call("AddBoss", 15f, mod.NPCType("DaybringerHead"), mod,
+                bossChecklist.Call("AddBoss", 16f, mod.NPCType("DaybringerHead"), mod,
                     Lang.BossCheck("NightcrawlerDaybringer"),
                     (Func<bool>)(() => AAWorld.downedEquinox),
                     ModContent.ItemType<EquinoxWorm>(),
@@ -904,7 +904,7 @@ namespace AAMod.Globals
                 #endregion
 
                 #region Ashe & Haruka
-                bossChecklist.Call("AddBoss", 15.9f, mod.NPCType("Ashe"), mod,
+                bossChecklist.Call("AddBoss", 17f, mod.NPCType("Ashe"), mod,
                     Lang.BossCheck("SistersofDiscord"),
                     (Func<bool>)(() => AAWorld.downedSisters),
                     ModContent.ItemType<FlamesOfAnarchy>(),
@@ -935,7 +935,7 @@ namespace AAMod.Globals
                 #endregion
 
                 #region Akuma
-                bossChecklist.Call("AddBoss", 16.1f, mod.NPCType("Akuma"), mod,
+                bossChecklist.Call("AddBoss", 18f, mod.NPCType("Akuma"), mod,
                     Lang.BossCheck("Akuma"),
                     (Func<bool>)(() => AAWorld.downedAkuma),
                     ModContent.ItemType<DraconianSigil>(),
@@ -991,7 +991,7 @@ namespace AAMod.Globals
                 #endregion
 
                 #region Yamata
-                bossChecklist.Call("AddBoss", 16.3f, mod.NPCType("Yamata"), mod,
+                bossChecklist.Call("AddBoss", 18.1f, mod.NPCType("Yamata"), mod,
                     Lang.BossCheck("Yamata"),
                     (Func<bool>)(() => AAWorld.downedYamata),
                     ModContent.ItemType<DreadSigil>(),
@@ -1046,7 +1046,7 @@ namespace AAMod.Globals
                 #endregion
                 
                 #region Zero
-                bossChecklist.Call("AddBoss", 16.5f, mod.NPCType("Zero"), mod,
+                bossChecklist.Call("AddBoss", 18.2f, mod.NPCType("Zero"), mod,
                     Lang.BossCheck("Zero"),
                     (Func<bool>)(() => AAWorld.downedZero),
                     ModContent.ItemType<ZeroTesseract>(),
@@ -1102,7 +1102,7 @@ namespace AAMod.Globals
                 #endregion
 
                 #region Champion Rajah Rabbit
-                bossChecklist.Call("AddBoss", 17.5f, mod.NPCType("SupremeRajah"), mod,
+                bossChecklist.Call("AddBoss", 19f, mod.NPCType("SupremeRajah"), mod,
                     Lang.BossCheck("RajahRabbitRevenge"),
                     (Func<bool>)(() => AAWorld.downedRajahsRevenge),
                     ModContent.ItemType<GoldenCarrot>(),

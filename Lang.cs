@@ -1282,7 +1282,7 @@ namespace AAMod
                         return "你捂着嘴干什么? 有些东西闻起来比这更难闻. 只不过是腐肉在分解而已. ";
                         case "CrimsonFlaskChat":
                         return "嗯…骨头? 我以前见过这样的. 我来的地方有类似的. ";
-                        case "MeanGreenStewChat":
+                        case "HallowFlaskChat":
                         return "这是什么东西? 它……闪闪发光……? 不管怎样, 我会做更多的研究. 这是一个新烧瓶. ";
                         case "VoidFlaskChat":
                         return "哇, 这太重了!这是啥? 我以前从未见过这种金属. 哦, 对了. 新烧瓶. 在这里. ";
@@ -1352,7 +1352,7 @@ namespace AAMod
                         return "Почему ты затыкаешь нос? Есть вещи, которые пахнет намного хуже чем это. Это же просто гниющая плоть. ";
                         case "CrimsonFlaskChat":
                         return "Хм...Кости? Я уже видела похожие. Похожи на кости из моего мира ";
-                        case "MeanGreenStewChat":
+                        case "HallowFlaskChat":
                         return "Что это? Она... блестящее? В любом случае, я исследую это. Вот новый раствор. ";
                         case "VoidFlaskChat":
                         return "Вау! Вот это тяжелый металл! Никогда такого еще не видела. Ох, да. Новый раствор. Вот. ";
@@ -1399,7 +1399,7 @@ namespace AAMod
                         case "LovecraftianChat6":
                         return "Ever just find things in your tentacles that you don’t know how they got there? No? Just me?";
                         case "LovecraftianChat7":
-                        return "Hey, your world is pretty interesting. Could you bring me some samples from different biomes for me to study ? If you do, I can make some neat stuff to trade with you.";
+                        return "Hey, your world is pretty interesting. Could you bring me some samples from different biomes for me to study? If you do, I can make some neat stuff to trade with you.";
                         case "LovecraftianChat8":
                         return "Oh. This is awkward. Poor ";
                         case "LovecraftianChat9":
@@ -1422,7 +1422,7 @@ namespace AAMod
                         return "Why are you gagging? There are things that smell way worse than this. It's only decomposing flesh.";
                         case "CrimsonFlaskChat":
                         return "Hm...bones? I've seen ones like these before. Similar to ones from where I came.";
-                        case "MeanGreenStewChat":
+                        case "HallowFlaskChat":
                         return "What is this stuff? It's...sparkly..? Whatever, I'll research it a bit more. Here's a new flask.";
                         case "VoidFlaskChat":
                         return "Wow this is heavy! What is this? I've never seen this kind of metal before. Oh right. New flask. Here.";
@@ -3430,7 +3430,7 @@ namespace AAMod
                         case "Athena2Defeat7":
                         return "Dark, chaotic forces are waking up as of late.";
                         case "Athena2Defeat8":
-                        return "hopefully HE doesn't come back...";
+                        return "Hopefully HE doesn't come back...";
                         case "Athena2Defeat9":
                         return "Stay safe.";
 

@@ -533,7 +533,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                                 vel.Y += npc.velocity.Y;
                                 infernoPos += npc.Center;
-                                infernoPos.Y -= 60;
+                                infernoPos.Y -= 20;
                             }
                             //REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
                             float InfernoType;

@@ -297,9 +297,9 @@ namespace AAMod.NPCs.TownNPCs
                     }
                     if (AAWorld.squid6 == 4)
                     {
-                        Main.npcChatText = Lang.TownNPCLovecraftian("MeanGreenStewChat");
-                        player.QuickSpawnItem(mod.ItemType("MeanGreenStew"), 5);
-                        Main.npcChatCornerItem = mod.ItemType("MeanGreenStew");
+                        Main.npcChatText = Lang.TownNPCLovecraftian("HallowFlaskChat");
+                        player.QuickSpawnItem(mod.ItemType("HallowFlask"), 5);
+                        Main.npcChatCornerItem = mod.ItemType("HallowFlask");
                     }
 					if(Main.netMode == NetmodeID.MultiplayerClient)
 					{

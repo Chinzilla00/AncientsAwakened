@@ -10,9 +10,7 @@ namespace AAMod.Projectiles.Toad
         public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.BoulderStaffOfEarth);
-            projectile.penetrate = -1;  
-            projectile.width = 44;
-            projectile.height = 44;
+            projectile.penetrate = 1;  
 			projectile.friendly = true;
 			projectile.hostile = false;
             projectile.timeLeft = 300;
@@ -23,11 +21,6 @@ namespace AAMod.Projectiles.Toad
 		{
 		    DisplayName.SetDefault("Rock");
 		}
-
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            projectile.Kill();
-        }
 
         public override bool PreKill(int timeLeft)
         {
