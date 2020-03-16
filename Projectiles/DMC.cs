@@ -3,24 +3,22 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
+using System;
+using Terraria.ID;
 
 namespace AAMod.Projectiles
 {
     public class DMC : ModProjectile
 	{
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("DMC");
-        }
-        
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            target.AddBuff(mod.BuffType("Electrified"), 500);
-        }
+
+          public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+          {
+              target.AddBuff(mod.BuffType("Electrified"), 500);
+          }
 
         public override void SetDefaults()
         {
-			projectile.aiStyle = -1;
+	    projectile.aiStyle = -1;
             projectile.width = 26;
             projectile.height = 26;
             projectile.friendly = true;
@@ -28,6 +26,7 @@ namespace AAMod.Projectiles
             projectile.penetrate = -1;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 6;
+            projectile.extraUpdates = 3;
         }
 
 		public override bool OnTileCollide(Vector2 oldVelocity)
