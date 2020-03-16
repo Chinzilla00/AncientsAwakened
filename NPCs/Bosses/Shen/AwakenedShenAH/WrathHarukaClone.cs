@@ -58,7 +58,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 1.5f, 1f, 3, false, 0f, 0f, Color.Navy);
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, npc.GetAlpha(dColor), false);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 1, npc.frame, npc.GetAlpha(dColor), false);
             return false;
         }
     }

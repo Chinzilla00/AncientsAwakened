@@ -142,6 +142,7 @@ namespace AAMod.Projectiles.Akuma.Lung
                     Vector2 shootspeed = Vector2.Normalize(projectile.velocity) * 20f;
                     Vector2 shootpos = Vector2.Normalize(projectile.velocity).RotatedBy((float)Math.PI / 2 * projectile.direction) * projectile.height / 2;
                     int fire = Projectile.NewProjectile(projectile.position.X + projectile.velocity.X + shootpos.X, projectile.position.Y + projectile.velocity.Y + shootpos.Y, shootspeed.X, shootspeed.Y, mod.ProjectileType("DragonfireProj"), (int)(projectile.damage / 1.5), 0, projectile.owner);
+                    Main.projectile[fire].ranged = false;
                     Main.projectile[fire].minion = true;
                     Main.projectile[fire].minionSlots = 0f;
                 }

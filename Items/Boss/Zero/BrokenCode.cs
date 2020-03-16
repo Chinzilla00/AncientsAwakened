@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Zero
 Grapple to Glitch
 While cooldown is occurring, your speed is increased, you gain invincibility frames
 While cooldown is occurring, your magic/summon weapons require no mana and have 20% increased damage
-Teleportation has 1 5 second cooldown
+Teleportation has 15 second cooldown
 'You don't look so good'
 WARNING: May permanently displace appendages until game restart. This is a feature.");
             ItemID.Sets.ItemNoGravity[item.type] = true;
