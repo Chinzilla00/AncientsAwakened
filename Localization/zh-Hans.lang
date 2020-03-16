@@ -2547,8 +2547,8 @@ ItemTooltip.Battery=当作弹药\n无消耗
 ItemName.BHB=黑洞爆裂枪
 ItemTooltip.BHB=随机发射一枚触及砖块时会爆炸产生漩涡的火箭弹
 
-ItemName.BrokenCode=崩溃乱码
-ItemTooltip.BrokenCode=让你有5秒故障裂位时间\n使用钩爪可以产生故障裂位\n在冷却时间内，你的速度提高，并获得无敌帧\n在冷却时间内，你的魔法/召唤武器不消耗魔力，并增加20%伤害\n“你看上去不太好”
+ItemName.BrokenCode=代码崩溃
+ItemTooltip.BrokenCode=让你有5秒故障裂位时间\n使用钩爪可以产生故障裂位\n在冷却时间内，你的速度提高，并获得无敌帧\n传送有15秒冷却\n在冷却时间内，你的魔法/召唤武器不消耗魔力，并增加20%伤害\n“你看上去不太好”
 
 ItemName.DoomPortal=厄劫之门
 ItemTooltip.DoomPortal=召唤一个小厄劫零约之械为你而战
@@ -3949,7 +3949,7 @@ ItemTooltip.ChaosArrow=攻击造成随机选择debuff
 ItemName.DarkmatterArrow=暗物质箭
 
 ItemName.DragonArrow=龙焰箭
-ItemTooltip.DragonArrow=将敌人点燃
+ItemTooltip.DragonArrow=比大部分的箭矢击退力都强
 
 ItemName.DragonfireArrow=燎狱龙炎箭
 ItemTooltip.DragonfireArrow=攻击造成龙炎
@@ -5572,7 +5572,7 @@ NPCName.ShroomJelly=赤孢水母
 
 NPCName.SmallFrog=赤孢蛙
 
-NPCName.TinyToad=真菌小蟾蜍
+NPCName.SmallToad=真菌小蟾蜍
 
 
 // AAMod.NPCs.Enemies.Other

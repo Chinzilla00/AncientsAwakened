@@ -300,9 +300,9 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 internalAI[7] = 3000;
             }
 
-            if (internalAI[8] >= 1200)
+            if (internalAI[8] >= 2000)
             {
-                internalAI[8] = 1200;
+                internalAI[8] = 2000;
             }
             
             if (Invisible)
@@ -414,7 +414,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     {
                         internalAI[3] = 0;
                         internalAI[0] = Main.rand.Next(2);
-                        if(internalAI[6] >= 1500 && internalAI[8] >= 1200 && Main.expertMode)
+                        if(internalAI[6] >= 1500 && internalAI[8] >= 2000 && Main.expertMode)
                         {
                             internalAI[8] = 0;
                             internalAI[6] -= 1500;
@@ -899,12 +899,14 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         {
             double Pi = Math.PI;
             Vector2 playerLocation = Main.player[npc.target].position + new Vector2(Main.player[npc.target].width * 0.5f, Main.player[npc.target].height * 0.5f);
+            
+            Vector2[] spawnpoint = new Vector2[3];
+            spawnpoint[0] = playerLocation + 275f * new Vector2((float)Math.Sin(0.5f * Pi), (float)Math.Cos(0.5f * Pi));
+            spawnpoint[1] = playerLocation + 275f * new Vector2((float)Math.Sin(1.16f * Pi), (float)Math.Cos(1.13f * Pi));
+            spawnpoint[2] = playerLocation + 275f * new Vector2((float)Math.Sin(1.83f * Pi), (float)Math.Cos(1.83f * Pi));
+
             if(npc.alpha >= 255 && SpawnClone)
             {
-                Vector2[] spawnpoint = new Vector2[3];
-                spawnpoint[0] = playerLocation + 300f * new Vector2((float)Math.Sin(0.5f * Pi), (float)Math.Cos(0.5f * Pi));
-                spawnpoint[1] = playerLocation + 300f * new Vector2((float)Math.Sin(1.16f * Pi), (float)Math.Cos(1.13f * Pi));
-                spawnpoint[2] = playerLocation + 300f * new Vector2((float)Math.Sin(1.83f * Pi), (float)Math.Cos(1.83f * Pi));
                 int k = Main.rand.Next(3);
                 npc.position = spawnpoint[k];
                 int k1 = k + 1;
@@ -930,50 +932,70 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             else if (npc.alpha > 0)
             {
+                npc.velocity = Main.player[npc.target].velocity;
+                Main.npc[ShadowNPC[1]].velocity = Main.player[npc.target].velocity;
+                Main.npc[ShadowNPC[2]].velocity = Main.player[npc.target].velocity;
+
+                
+
                 npc.alpha -= 8;
                 Main.npc[ShadowNPC[1]].alpha = npc.alpha;
                 Main.npc[ShadowNPC[2]].alpha = npc.alpha;
-                ShadowkingPosition = playerLocation;
             }
             else if(!npc.active || npc.life <= 0)
             {
+                npc.velocity = Main.player[npc.target].velocity;
+                Main.npc[ShadowNPC[1]].velocity = Main.player[npc.target].velocity;
+                Main.npc[ShadowNPC[2]].velocity = Main.player[npc.target].velocity;
+
                 Main.npc[ShadowNPC[1]].active = false;
                 Main.npc[ShadowNPC[2]].active = false;
             }
             else
             {
-                npc.alpha = 0;
-                Main.npc[ShadowNPC[1]].alpha = npc.alpha;
-                Main.npc[ShadowNPC[2]].alpha = npc.alpha;
-                Vector2[] dist = new Vector2[3];
-                int k = 0;
-                while(k < 3)
+                if(internalAI[4] < 90)
                 {
-                    dist[k] = ShadowkingPosition - Main.npc[ShadowNPC[k]].Center;
-                    if(k == 0) npc.velocity = Vector2.Normalize(dist[k]) * 15f;
-                    else Main.npc[ShadowNPC[k]].velocity = Vector2.Normalize(dist[k]) * 15f;
-                    if (ShadowkingPosition.X > Main.npc[ShadowNPC[k]].Center.X)
+                    npc.velocity = Main.player[npc.target].velocity;
+                    Main.npc[ShadowNPC[1]].velocity = Main.player[npc.target].velocity;
+                    Main.npc[ShadowNPC[2]].velocity = Main.player[npc.target].velocity;
+                    
+                    ShadowkingPosition = playerLocation;
+                }
+                else
+                {
+                    npc.alpha = 0;
+                    Main.npc[ShadowNPC[1]].alpha = npc.alpha;
+                    Main.npc[ShadowNPC[2]].alpha = npc.alpha;
+                    Vector2[] dist = new Vector2[3];
+                    int k = 0;
+                    while(k < 3)
                     {
-                        Main.npc[ShadowNPC[k]].direction = 1;
+                        dist[k] = ShadowkingPosition - Main.npc[ShadowNPC[k]].Center;
+                        if(k == 0) npc.velocity = Vector2.Normalize(dist[k]) * 15f;
+                        else Main.npc[ShadowNPC[k]].velocity = Vector2.Normalize(dist[k]) * 15f;
+                        if (ShadowkingPosition.X > Main.npc[ShadowNPC[k]].Center.X)
+                        {
+                            Main.npc[ShadowNPC[k]].direction = 1;
+                        }
+                        else
+                        {
+                            Main.npc[ShadowNPC[k]].direction = -1;
+                        }
+                        k++;
                     }
-                    else
-                    {
-                        Main.npc[ShadowNPC[k]].direction = -1;
-                    }
-                    k++;
                 }
             }
 
-            if(internalAI[4] >= 70 || Main.npc[ShadowNPC[1]].Hitbox.Intersects(Main.npc[ShadowNPC[0]].Hitbox) || Main.npc[ShadowNPC[1]].Hitbox.Intersects(Main.npc[ShadowNPC[2]].Hitbox) || Main.npc[ShadowNPC[2]].Hitbox.Intersects(Main.npc[ShadowNPC[0]].Hitbox))
+            if(internalAI[4] >= 160 || Main.npc[ShadowNPC[1]].Hitbox.Intersects(Main.npc[ShadowNPC[0]].Hitbox) || Main.npc[ShadowNPC[1]].Hitbox.Intersects(Main.npc[ShadowNPC[2]].Hitbox) || Main.npc[ShadowNPC[2]].Hitbox.Intersects(Main.npc[ShadowNPC[0]].Hitbox))
             {
                 Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, 0, 0, ModContent.ProjectileType<HarukaStrike>(), damage*1, 5, Main.myPlayer);
 
                 Vector2 shoot = Vector2.Zero;
                 int projType = ModContent.ProjectileType<HarukaProj>();
-                for(int i = 0; i < 16; i++)
+                for(int i = 0; i < 12; i++)
                 {
-                    shoot = new Vector2((float)Math.Sin(i * 0.125f * Pi), (float)Math.Cos(i * 0.125f * Pi));
-                    shoot *= 12f;
+                    shoot = new Vector2((float)Math.Sin(i * (Pi/6)), (float)Math.Cos(i * (Pi/6)));
+                    shoot *= 10f;
                     Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, shoot.X, shoot.Y, projType, damage*1, 5, Main.myPlayer);
                 }
                 Main.npc[ShadowNPC[1]].boss = false;
@@ -1112,6 +1134,24 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             else if(internalAI[0] == AISTATE_Shadowkilling)
             {
                 BaseDrawing.DrawAfterimage(spritebatch, Main.npcTexture[npc.type], 0, npc, 1.5f, 1f, 3, false, 0f, 0f, Color.Navy);
+
+                if(internalAI[4] < 90)
+                {
+                    Vector2 playerLocation = Main.player[npc.target].Center;
+                    Texture2D texture = mod.GetTexture("NPCs/Bosses/AH/Haruka/Danger!");
+                    float scaleFactor = 1f + internalAI[4] / 30f;
+                    float scaleFactor2 = (float)Math.Cos((double)(6.2831855f * (internalAI[4] / 60f)));
+                    if(scaleFactor < 2.2f)
+                    {
+                        Color Alpha = dColor;
+                        Alpha.R = (byte)((float)(255 - internalAI[4] * 3));
+                        Alpha.G = (byte)((float)(255 - internalAI[4] * 3));
+                        Alpha.B = (byte)((float)(255 - internalAI[4] * 3));
+                        Alpha.A = (byte)((float)(255 - internalAI[4] * 3));
+                        spritebatch.Draw(texture, playerLocation - new Vector2(texture.Width/4 * scaleFactor, texture.Height/4 * scaleFactor + 100f) + Vector2.UnitY * Main.player[npc.target].gfxOffY - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, texture.Width, texture.Height)), npc.GetAlpha(Alpha), 0f, default(Vector2), 0.5f * scaleFactor, SpriteEffects.None, 0f);
+                    }
+                    spritebatch.Draw(texture, playerLocation - new Vector2(texture.Width/4, texture.Height/4 + 100f) + Vector2.UnitY * Main.player[npc.target].gfxOffY - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, texture.Width, texture.Height)), npc.GetAlpha(dColor) * (0.6f + 0.4f * scaleFactor2), 0f, default(Vector2), 0.5f, SpriteEffects.None, 0f);
+                }
             }
             else if(SHADOWDOG && !Invisible)
             {
