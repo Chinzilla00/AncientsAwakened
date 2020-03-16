@@ -64,14 +64,16 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         Vector2 vector = Main.player[Main.projectile[i].owner].Center - Main.projectile[i].Center;
                         vector.Normalize();
                         vector *= Main.projectile[i].oldVelocity.Length();
-                        Main.projectile[i].velocity = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
-                        Main.projectile[i].velocity.Normalize();
-                        Main.projectile[i].velocity *= vector.Length();
-                        Main.projectile[i].velocity += vector * 20f;
-                        Main.projectile[i].velocity.Normalize();
-                        Main.projectile[i].velocity *= vector.Length();
+                        Vector2 reflectvelocity = new Vector2(Main.rand.Next(-100, 101), Main.rand.Next(-100, 101));
+                        reflectvelocity.Normalize();
+                        reflectvelocity *= vector.Length();
+                        reflectvelocity += vector * 20f;
+                        reflectvelocity.Normalize();
+                        reflectvelocity *= vector.Length();
                         Main.projectile[i].damage /= 2;
                         Main.projectile[i].penetrate = 1;
+                        Main.projectile[i].GetGlobalProjectile<AAGlobalProjectile>().reflectvelocity = reflectvelocity;
+                        Main.projectile[i].GetGlobalProjectile<AAGlobalProjectile>().isReflecting = true;
                     }
                 }
             }

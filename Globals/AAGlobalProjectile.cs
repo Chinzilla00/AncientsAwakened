@@ -41,6 +41,12 @@ namespace AAMod
         
         public override void PostAI(Projectile projectile)
         {
+            if (isReflecting && projectile.hostile && !projectile.friendly)
+            {
+                oldvelocity = projectile.velocity;
+                projectile.velocity = reflectvelocity;
+                projectile.rotation += projectile.velocity.ToRotation() - oldvelocity.ToRotation();
+            }
             if ((projectile.minion || projectile.sentry) && !ProjectileID.Sets.StardustDragon[projectile.type] && !LongMinion)
 			{
 				if (setDefMinionDamage)
@@ -329,6 +335,11 @@ namespace AAMod
 			num9 *= num10;
 			Projectile.NewProjectile(Position.X, Position.Y, num8, num9, 356, num, 0f, projectile.owner, num6, 0f);
 		}
+        public Vector2 reflectvelocity = Vector2.Zero;
+
+        private Vector2 oldvelocity = Vector2.Zero;
+
+        public bool isReflecting = false;
 
         private bool setDefMinionDamage = true;
 
