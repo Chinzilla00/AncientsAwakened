@@ -150,7 +150,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 						npc.alpha = 0;
 					}
 				}
-				if (npc.ai[0] >= 375) //after he says 'heh' on the server, change music on the client
+				if (npc.ai[0] >= 300) //after he says 'heh' on the server, change music on the client
 				{
 					music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Akuma2");
 				}				
@@ -175,25 +175,25 @@ namespace AAMod.NPCs.Bosses.Akuma
 				{
 					npc.netUpdate = true;
 				}else
-				if (npc.ai[0] == 375)
+				if (npc.ai[0] == 300)
 				{
 					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaTransition1"), new Color(180, 41, 32));
 					npc.netUpdate = true;
 				}else
-				if (npc.ai[0] == 560)
+				if (npc.ai[0] == 525)
 				{
 					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaTransition2"), new Color(180, 41, 32));
 				}else
-				if(npc.ai[0] == 660) //sync so the color transition occurs
+				if(npc.ai[0] == 750) //sync so the color transition occurs
                 {
                     if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaTransition6"), new Color(175, 75, 255));
                     npc.netUpdate = true;
 				}else
-				if (npc.ai[0] == 900)
+				if (npc.ai[0] == 976)
 				{
 					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaTransition3"), Color.DeepSkyBlue);
 				}else
-				if (npc.ai[0] >= 1100 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
+				if (npc.ai[0] >= 1200 && !NPC.AnyNPCs(mod.NPCType("AkumaA")))
 				{
 					AAModGlobalNPC.SpawnBoss(player, mod.NPCType("AkumaA"), false, npc.Center, "", false);
 					if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AkumaTransition4"), Color.Magenta.R, Color.Magenta.G, Color.Magenta.B);
