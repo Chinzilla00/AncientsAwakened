@@ -15,7 +15,8 @@ namespace AAMod.Items.Armor.Darkmatter
         {
             
             DisplayName.SetDefault("Darkmatter Mask");
-			Tooltip.SetDefault(@"9% increased magic damage
+			Tooltip.SetDefault(@"10% increased magic damage
+15% decreased mana usage
 Dark, yet still barely visible");
 
 		}
@@ -52,7 +53,8 @@ Dark, yet still barely visible");
 		
 		public override void UpdateEquip(Player player)
 		{
-			player.magicDamage += 0.09f;
+			player.magicDamage += 0.10f;
+            player.manaCost *= .85f;
         }
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
