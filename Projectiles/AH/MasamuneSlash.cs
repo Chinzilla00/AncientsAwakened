@@ -21,9 +21,10 @@ namespace AAMod.Projectiles.AH
 			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
 			projectile.penetrate = 5;
             projectile.tileCollide = false;
+			projectile.localNPCHitCooldown = 40;
 		}
 
-        public override void SetStaticDefaults()
+		public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Night Slash");
 		}
