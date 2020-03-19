@@ -631,10 +631,10 @@ ItemName.DarkmatterHelmet=暗物质头盔
 ItemTooltip.DarkmatterHelmet=增加10%近战伤害\n黑暗，依旧触不可及
 
 ItemName.DarkmatterMask=暗物质面罩
-ItemTooltip.DarkmatterMask=增加9%魔法伤害\n黑暗，依旧触不可及
+ItemTooltip.DarkmatterMask=增加10%魔法伤害\n15%减少魔力消耗\n黑暗，依旧触不可及
 
 ItemName.DarkmatterVisor=暗物质头饰
-ItemTooltip.DarkmatterVisor=增加10%远程伤害\n黑暗，依旧触不可及
+ItemTooltip.DarkmatterVisor=增加15%远程伤害\n20%减少弹药消耗\n黑暗，依旧触不可及
 
 Common.DarkmatterHeaddressBonus=你的召唤物有机会消灭敌人的弹幕
 
@@ -722,13 +722,13 @@ ItemName.DoomsdayMask=末日突击视镜
 ItemTooltip.DoomsdayMask=增加50%召唤物伤害\n装甲内栖宿着毁灭行星之力
 
 ItemName.DoomsdayChestplate=末日突击装甲
-ItemTooltip.DoomsdayChestplate=增加35%召唤物伤害\n+50生命上限\n装甲内栖宿着毁灭行星之力
+ItemTooltip.DoomsdayChestplate=减少22%魔力消耗\n+50生命上限\n装甲内栖宿着毁灭行星之力
 
 ItemName.DoomsdayHelmet=末日突击面具
 ItemTooltip.DoomsdayHelmet=增加25%魔法伤害\增加18%魔法暴击率\n装甲内栖宿着毁灭行星之力
 
 ItemName.DoomsdayLeggings=末日突击护胫
-ItemTooltip.DoomsdayLeggings=增加18%移动速度\n增加20%召唤物伤害\n装甲内栖宿着毁灭行星之力
+ItemTooltip.DoomsdayLeggings=增加18%移动速度\n+120魔力上限\n装甲内栖宿着毁灭行星之力
 
 Common.DoomsdayMaskBonus=生命终结系统启动\n你可以探测到周围所有的敌对生物\n增强黑暗中的视觉能力\n你的召唤物对敌人造成一段时间的防御力削弱\n+5召唤上限
 Common.DoomsdayHelmetBonus=生命终结系统启动\n你可以探测到周围所有的敌对生物\n增强黑暗中的视觉能力\n你的魔法攻击对敌人造成一段时间的防御力削弱\n减少30%魔力消耗
@@ -1112,7 +1112,7 @@ ItemName.RadiumHelmet=镭光头盔
 ItemTooltip.RadiumHelmet=增加15%近战伤害\n你就是夜空中最闪亮的一颗星
 
 ItemName.RadiumMask=镭光面罩
-ItemTooltip.RadiumMask=增加12%魔法伤害\n你就是夜空中最闪亮的一颗星
+ItemTooltip.RadiumMask=增加15%魔法伤害\n+80魔力上限\n你就是夜空中最闪亮的一颗星
 
 ItemName.RadiumPlatemail=镭光板甲
 ItemTooltip.RadiumPlatemail=增加25%伤害\n你就是夜空中最闪亮的一颗星
@@ -5135,6 +5135,8 @@ NPCName.NightcrawlerBody=黑夜爬行虫-奈克劳尔
 
 ===UNKNWN===
 NPCName.NightcrawlerTail=黑夜爬行虫-奈克劳尔
+
+NPCName.NCCloud=奈克劳尔云
 
 
 // AAMod.NPCs.Bosses.Grips
