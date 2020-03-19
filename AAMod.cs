@@ -873,8 +873,7 @@ namespace AAMod
             if (zoneShen && AAWorld.downedAllAncients)
             {
                 priority = MusicPriority.Event;
-                //music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingDragon");
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant");
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingDragon");
 
                 return;
             }

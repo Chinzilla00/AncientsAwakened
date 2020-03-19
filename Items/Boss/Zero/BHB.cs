@@ -56,7 +56,7 @@ namespace AAMod.Items.Boss.Zero
             double rotationA = -0.15;
             for (int i = 0; i < Main.rand.Next(2, 4); i++)
             {
-                Vector2 vector = new Vector2(speedX, speedY).RotatedBy(rotationA, default(Vector2));
+                Vector2 vector = new Vector2(speedX, speedY).RotatedBy(rotationA, default);
                 Projectile.NewProjectile(position.X + (vector.X * 4.8f) - 0.2f * vector.Y, position.Y + (vector.Y * 4.8f) + 0.2f * vector.X, vector.X, vector.Y, mod.ProjectileType("RedBullet"), damage, knockBack, player.whoAmI, 0f, 0f);
                 rotationA += Main.rand.NextFloat(0.02f, 0.1f);
             }

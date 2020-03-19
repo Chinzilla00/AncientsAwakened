@@ -1,5 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
+using ReLogic.Utilities;
+using System;
 using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Equinox
@@ -22,69 +26,100 @@ namespace AAMod.NPCs.Bosses.Equinox
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
 			projectile.timeLeft = 200;
-        }
-
+		}
         public override void AI()
-        {
-            Lighting.AddLight((int)(projectile.Center.X / 16f), (int)(projectile.Center.Y / 16f), .37f, .8f, .89f);
-            
-            if(projectile.ai[0] ++ == 5)
-            {
-                SpawnDust();
-            }
+		{
+			Lighting.AddLight((int)(projectile.Center.X / 16f), (int)(projectile.Center.Y / 16f), .37f, .8f, .89f);
+			projectile.ai[0] += 1f;
+			int num123 = Player.FindClosest(projectile.Center, 1, 1);
+			projectile.ai[1] += 1f;
+			if (projectile.ai[1] < 110f && projectile.ai[1] > 30f)
+			{
+				float scaleFactor2 = projectile.velocity.Length();
+				Vector2 vector17 = Main.player[num123].Center - projectile.Center;
+				vector17.Normalize();
+				vector17 *= scaleFactor2;
+				projectile.velocity = (projectile.velocity * 24f + vector17) / 25f;
+				projectile.velocity.Normalize();
+				projectile.velocity *= scaleFactor2;
+			}
+			if (projectile.velocity.Length() < 18f)
+			{
+				projectile.velocity *= 1.02f;
+			}
+			if (projectile.localAI[0] == 0f)
+			{
+				projectile.localAI[0] = 1f;
+				Main.PlaySound(SoundID.Item8, projectile.position);
+				for (int num124 = 0; num124 < 10; num124++)
+				{
+					int num125 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.DarkmatterDust>(), projectile.velocity.X, projectile.velocity.Y, 100, Color.White, 2f);
+					Main.dust[num125].noGravity = true;
+					Main.dust[num125].velocity = projectile.Center - Main.dust[num125].position;
+					Main.dust[num125].velocity.Normalize();
+					Main.dust[num125].velocity *= -5f;
+					Main.dust[num125].velocity += projectile.velocity / 2f;
+				}
+			}
 
-            if(projectile.timeLeft <= 0)
-            {
-                projectile.Kill();
-            }
+			projectile.frame++;
 
-            if (projectile.frameCounter++ > 5)
-            {
-                projectile.frameCounter = 0;
-                projectile.frame++;
-                if (projectile.frame >= 5)
-                {
-                    projectile.frame = 0;
-                }
-            }
+			if (projectile.frame > 4)
+			{
+				projectile.frame = 0;
+			}
+			if (projectile.ai[0] < 0f)
+			{
+				for (int num155 = 0; num155 < 2; num155++)
+				{
+					int num156 = Dust.NewDust(new Vector2(projectile.position.X + 4f, projectile.position.Y + 4f), projectile.width - 8, projectile.height - 8, ModContent.DustType<Dusts.DarkmatterDust>(), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default, 1.5f);
+					Main.dust[num156].position -= projectile.velocity;
+					Main.dust[num156].noGravity = true;
+					Dust expr_7ED9_cp_0 = Main.dust[num156];
+					expr_7ED9_cp_0.velocity.X *= 0.3f;
+					Dust expr_7EF7_cp_0 = Main.dust[num156];
+					expr_7EF7_cp_0.velocity.Y *= 0.3f;
+				}
+			}
+			else
+			{
+				for (int num157 = 0; num157 < 2; num157++)
+				{
+					int num158 = Dust.NewDust(new Vector2(projectile.position.X + 4f, projectile.position.Y + 4f), projectile.width - 8, projectile.height - 8, ModContent.DustType<Dusts.DarkmatterDust>(), projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f, 100, default, 2f);
+					Main.dust[num158].position -= projectile.velocity * 2f;
+					Main.dust[num158].noGravity = true;
+					Dust expr_7FDC_cp_0 = Main.dust[num158];
+					expr_7FDC_cp_0.velocity.X *= 0.3f;
+					Dust expr_7FFA_cp_0 = Main.dust[num158];
+					expr_7FFA_cp_0.velocity.Y *= 0.3f;
+				}
+			}
 
-            
+			if (projectile.ai[0] >= 15f)
+			{
+				projectile.ai[0] = 15f;
+				projectile.velocity.Y = projectile.velocity.Y + 0.1f;
+			}
 
-            projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
-            
-            const int aislotHomingCooldown = 0;
-            const int homingDelay = 9;
-            const float desiredFlySpeedInPixelsPerFrame = 11;
-            const float amountOfFramesToLerpBy = 30; // minimum of 1, please keep in full numbers even though it's a float!
+			projectile.spriteDirection = projectile.direction;
+			if (projectile.direction < 0)
+			{
+				projectile.rotation = (float)Math.Atan2(-projectile.velocity.Y, -projectile.velocity.X);
+			}
+			else
+			{
+				projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X);
+			}
 
-            projectile.ai[aislotHomingCooldown]++;
-            if (projectile.ai[aislotHomingCooldown] > homingDelay)
-            {
-                projectile.ai[aislotHomingCooldown] = homingDelay;
+			projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
 
-                int foundTarget = HomeOnTarget();
-                if(projectile.ai[1] == 0)
-                {
-                    if (foundTarget != -1)
-                    {
-                        Player target = Main.player[foundTarget];
-                        Vector2 desiredVelocity = projectile.DirectionTo(target.Center) * desiredFlySpeedInPixelsPerFrame;
-                        projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
-                    }
-                }
-                else if(projectile.ai[1] == 1)
-                {
-                    if (foundTarget != -1)
-                    {
-                        NPC n = Main.npc[foundTarget];
-                        Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * desiredFlySpeedInPixelsPerFrame;
-                        projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
-                    }
-                }
-            }
-        }
+			if (projectile.velocity.Y > 16f)
+			{
+				projectile.velocity.Y = 16f;
+			}
+		}
 
-        public override Color? GetAlpha(Color lightColor)
+		public override Color? GetAlpha(Color lightColor)
         {
             return new Color(95, 205, 228, 200);
         }
@@ -127,52 +162,6 @@ namespace AAMod.NPCs.Bosses.Equinox
                 Main.dust[num88].noLight = true;
                 Main.dust[num88].velocity += projectile.DirectionTo(Main.dust[num88].position) * 8f;
             }
-        }
-
-        private int HomeOnTarget()
-        {
-            const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 500;
-            
-            int selectedTarget = -1;
-
-            if(projectile.ai[1] == 0)
-            {
-                for (int i = 0; i < Main.maxPlayers; i++)
-                {
-                    Player target = Main.player[i];
-                    if (target.active && (!target.wet || homingCanAimAtWetEnemies))
-                    {
-                        float distance = projectile.Distance(target.Center);
-                        if (distance <= homingMaximumRangeInPixels &&
-                            (
-                                selectedTarget == -1 || //there is no selected target
-                                projectile.Distance(Main.player[selectedTarget].Center) > distance) 
-                        )
-                            selectedTarget = i;
-                    }
-                }
-            }
-            else if(projectile.ai[1] == 1)
-            {
-                for (int i = 0; i < Main.maxNPCs; i++)
-                {
-                    NPC n = Main.npc[i];
-                    if (n.CanBeChasedBy(projectile) && (!n.wet || homingCanAimAtWetEnemies))
-                    {
-                        float distance = projectile.Distance(n.Center);
-                        if (distance <= homingMaximumRangeInPixels &&
-                            (
-                                selectedTarget == -1 || //there is no selected target
-                                projectile.Distance(Main.npc[selectedTarget].Center) > distance) 
-                        )
-                            selectedTarget = i;
-                    }
-                }
-            }
-            
-
-            return selectedTarget;
         }
     }
 }

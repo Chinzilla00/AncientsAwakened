@@ -56,17 +56,17 @@ namespace AAMod.NPCs.Bosses.Equinox
             SpawnDust();
             if(Main.rand.Next(2) == 0)
             {
-                int a = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
-                int b = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
-                int c = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y), new Vector2(-12f, 0), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
-                int d = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y), new Vector2(12f, 0), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
+                int a = Projectile.NewProjectile(projectile.Center, new Vector2(0f, -12f), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
+                int b = Projectile.NewProjectile(projectile.Center, new Vector2(0f, 12f), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
+                int c = Projectile.NewProjectile(projectile.Center, new Vector2(-12f, 0), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
+                int d = Projectile.NewProjectile(projectile.Center, new Vector2(12f, 0), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
             }
             else
             {
-                int a = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
-                int b = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
-                int c = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
-                int d = Projectile.NewProjectile(new Vector2(projectile.Center.X, projectile.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
+                int a = Projectile.NewProjectile(projectile.Center, new Vector2(8f, -8f), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
+                int b = Projectile.NewProjectile(projectile.Center, new Vector2(8f, 8f), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
+                int c = Projectile.NewProjectile(projectile.Center, new Vector2(-8f, 8f), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
+                int d = Projectile.NewProjectile(projectile.Center, new Vector2(-8f, -8f), mod.ProjectileType("DayBringerBlast"), projectile.damage, 3);
             }
             projectile.active = false;
         }
@@ -120,7 +120,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 				Texture2D texture = texture2D;
 				Vector2 value = vector;
 				Vector2 unitY = Vector2.UnitY;
-				spriteBatch2.Draw(texture, value + Utils.RotatedBy(unitY, 0, default(Vector2)) * (num == 0? scaleFactor * 2 : scaleFactor), new Rectangle?(rectangle), num == 0? (alpha * 0.4f) : alpha, projectile.rotation, origin, projectile.scale * (num == 0? 1.2f : 1), SpriteEffects.None, 0f);
+				spriteBatch2.Draw(texture, value + Utils.RotatedBy(unitY, 0, default) * (num == 0? scaleFactor * 2 : scaleFactor), new Rectangle?(rectangle), num == 0? (alpha * 0.4f) : alpha, projectile.rotation, origin, projectile.scale * (num == 0? 1.2f : 1), SpriteEffects.None, 0f);
 			}
 			return false;
 		}

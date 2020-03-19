@@ -45,11 +45,11 @@ namespace AAMod.NPCs.Bosses.Equinox
                 projectile.rotation = projectile.ai[0];
                 projectile.spriteDirection = -(int)projectile.ai[1];
             }
-            if (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y) < 16f)
+            if (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y) < 20)
             {
                 projectile.velocity *= 1.05f;
             }
-            if (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y) < 30f)
+            if (Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y) < 40)
             {
                 projectile.velocity *= 1.012f;
             }

@@ -90,7 +90,7 @@ namespace AAMod.Tiles.Boss
                 AAWorld.SmashDragonEgg = 2;
                 if (Main.dayTime)
                 {
-                    AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Broodmother"), false, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Broodmother"));
+                    AAModGlobalNPC.SpawnBoss(player, mod.NPCType("Broodmother"), true, 0, 0, Language.GetTextValue("Mods.AAMod.Common.Broodmother"));
                 }
                 else
                 {

@@ -30,8 +30,6 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.lavaImmune = true;
         }
 
-		const int frameWidth = 82;
-		const int frameHeight = 76;
 		const int frameHeightPlusFluff = 78; //the 2 pixels per frame
 
         public override void AI()
@@ -39,7 +37,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 			Player player = Main.player[npc.target];
 			float playerDistX = Math.Abs(player.Center.X - npc.Center.X);
 			float playerDistY = Math.Abs(player.Center.Y - npc.Center.Y);
-			bool smashAttack = playerDistX < 35f && playerDistY < 40f;
+			bool smashAttack = playerDistX < 15f && playerDistY < 40f;
             Lighting.AddLight(npc.Center, Color.DarkOrange.R / 255, Color.DarkOrange.G / 255, Color.DarkOrange.B / 255);
 
             if (smashAttack) //Stop moving to smash players

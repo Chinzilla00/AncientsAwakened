@@ -30,6 +30,7 @@ namespace AAMod.NPCs.Bosses.Sag
             npc.HitSound = SoundID.NPCHit4;
             npc.DeathSound = SoundID.NPCDeath14;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Sag");
+            npc.value = 80000f;
             npc.knockBackResist = 0f;
             npc.noGravity = true;
             npc.noTileCollide = true;
@@ -177,7 +178,7 @@ namespace AAMod.NPCs.Bosses.Sag
                         npc.ai[2] = 0;
                         npc.ai[3] += 1;
                         internalAI[0] = 0;
-                        Main.NewText("switching to artillery system set [" + npc.ai[3] + 1 + "]");
+                        Main.NewText("switching to artillery system set [" + (int)(npc.ai[3] + 1) + "]");
                         npc.netUpdate = true;
                     }
                     break;
@@ -205,7 +206,7 @@ namespace AAMod.NPCs.Bosses.Sag
             switch ((int)npc.ai[3])
             {
                 case 0:
-                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<SagShot>(), ref npc.ai[2], 60, npc.damage / 4, 9, false, new Vector2(36 * npc.direction, -51));
+                    BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<SagShot>(), ref npc.ai[2], 60, npc.damage / 4, 9, false, new Vector2(-36 * npc.direction, -51));
                     break;
                 case 1:
                     if (Main.netMode != 1)

@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Bosses.Sag
         public override void SetDefaults()
         {
             projectile.width = 18;
-            projectile.height = 42;
+            projectile.height = 18;
             projectile.damage = 10;
             projectile.friendly = false;
             projectile.hostile = true;

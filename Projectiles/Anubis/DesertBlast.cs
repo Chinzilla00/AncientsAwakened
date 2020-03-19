@@ -53,7 +53,7 @@ namespace AAMod.Projectiles.Anubis
             {
                 Dust dust1;
                 Vector2 position = projectile.position;
-                dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.JudgementDust>(), 0, 0, 0, Color.White, 1f)];
+                dust1 = Main.dust[Dust.NewDust(projectile.Center, projectile.width, projectile.height, ModContent.DustType<Dusts.JudgementDust>(), 0, 0, 0, Color.White, 1f)];
                 dust1.noGravity = true;
             }
 			for (int h = 0; h < 3; h++)

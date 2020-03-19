@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Shen
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
             projectile.hostile = true;
-            projectile.timeLeft = 240;
+            projectile.timeLeft = 350;
             projectile.aiStyle = -1;
             projectile.extraUpdates = 1;
             cooldownSlot = 1;

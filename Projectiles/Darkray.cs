@@ -54,7 +54,7 @@ namespace AAMod.Projectiles
         {
             if (Main.rand.Next(2) == 0)
             {
-                Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.VoidDust>(), 0, 0, 100, default, 1.5f);
+                Dust.NewDust(projectile.Center, projectile.width, projectile.height, ModContent.DustType<Dusts.VoidDust>(), 0, 0, 100, default, 1.5f);
             }
             if (projectile.frameCounter++ > 5)
             {

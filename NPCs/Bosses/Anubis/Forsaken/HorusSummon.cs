@@ -28,7 +28,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
         {
             for (int num468 = 0; num468 < 5; num468++)
             {
-                int num469 = Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), 0, 0, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 0, default, 2f);
+                int num469 = Dust.NewDust(projectile.Center, 0, 0, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 0, default, 2f);
                 Main.dust[num469].noGravity = true;
             }
             projectile.damage = 0;

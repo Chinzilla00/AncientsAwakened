@@ -140,6 +140,7 @@ namespace AAMod.NPCs.Enemies.Mire
                         {
                             Shell = false;
                             npc.netUpdate = true;
+                            ShellTimer = 0;
                         }
                     }
                 }

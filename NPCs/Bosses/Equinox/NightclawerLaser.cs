@@ -24,12 +24,11 @@ namespace AAMod.NPCs.Bosses.Equinox
             projectile.alpha = 255;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
-            projectile.extraUpdates = 4;
+            projectile.extraUpdates = 3;
             projectile.timeLeft = 120 * (projectile.extraUpdates + 1);
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 0;
             projectile.penetrate = -1;
-            projectile.ranged = true;
         }
 
         public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)

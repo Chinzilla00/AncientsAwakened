@@ -40,10 +40,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 npc.frameCounter = 0;
                 Frame++;
-                if (Frame > 15)
-                {
-                    Frame = 12;
-                }
+            }
+            if (Frame > 15)
+            {
+                Frame = 12;
             }
             npc.frame.Y = frameHeight * Frame;
         }

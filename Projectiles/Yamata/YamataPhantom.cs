@@ -68,7 +68,7 @@ namespace AAMod.Projectiles.Yamata
             }
             Dust dust1;
 
-            dust1 = Main.dust[Dust.NewDust(new Vector2(projectile.Center.X, projectile.Center.Y), projectile.width, projectile.height, ModContent.DustType<Dusts.YamataADust>(), 0f, 0f, 46, default, 1.381579f)];
+            dust1 = Main.dust[Dust.NewDust(projectile.Center, projectile.width, projectile.height, ModContent.DustType<Dusts.YamataADust>(), 0f, 0f, 46, default, 1.381579f)];
             dust1.noGravity = true;
 
             const int aislotHomingCooldown = 0;

@@ -16,8 +16,8 @@ namespace AAMod.NPCs.Bosses.Sag
 
         public override void SetDefaults()
         {
-            projectile.width = 14;
-            projectile.height = 14;
+            projectile.width = 28;
+            projectile.height = 28;
             projectile.aiStyle = -1;
             projectile.friendly = false;
             projectile.hostile = true;
@@ -74,6 +74,7 @@ namespace AAMod.NPCs.Bosses.Sag
                 }
             }
         }
+
         private void AdjustMagnitude(ref Vector2 vector)
         {
             float magnitude = (float)Math.Sqrt(vector.X * vector.X + vector.Y * vector.Y);
@@ -82,10 +83,7 @@ namespace AAMod.NPCs.Bosses.Sag
                 vector *= 12f / magnitude;
             }
         }
-        public override void OnHitPlayer(Player target, int damage, bool crit)
-        {
-            projectile.Kill();
-        }
+
         public override void Kill(int timeLeft)
         {
             Main.PlaySound(SoundID.Item14, projectile.position);
