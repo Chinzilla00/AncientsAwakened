@@ -16,7 +16,7 @@ namespace AAMod.Items.Magic
         {
             item.damage = 175;
             item.magic = true;
-            item.mana = 6;
+            item.mana = 25;
             item.width = 64;
             item.height = 64;
             item.useTime = 5;

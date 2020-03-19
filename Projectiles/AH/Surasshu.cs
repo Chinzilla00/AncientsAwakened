@@ -25,7 +25,7 @@ namespace AAMod.Projectiles.AH
             projectile.melee = true;
             projectile.ownerHitCheck = true;
             projectile.usesLocalNPCImmunity = true;
-            projectile.localNPCHitCooldown = 1;
+            projectile.localNPCHitCooldown = 20;
         }
 
         public override void AI()

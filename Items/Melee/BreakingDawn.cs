@@ -16,14 +16,14 @@ namespace AAMod.Items.Melee
 		public override void SetDefaults()
 		{
             
-			item.damage = 200;
+			item.damage = 90;
 			item.melee = true;
 			item.width = 60;
 			item.height = 60;
-			item.useTime = 18;
+			item.useTime = 15;
             item.shoot = mod.ProjectileType("MorningStar");
             item.shootSpeed = 10f;
-            item.useAnimation = 18;
+            item.useAnimation = 15;
 			item.useStyle = 1;
 			item.knockBack = 3;
 			item.value = 500000;

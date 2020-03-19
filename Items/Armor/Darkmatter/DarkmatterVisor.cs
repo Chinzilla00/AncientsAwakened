@@ -17,7 +17,8 @@ namespace AAMod.Items.Armor.Darkmatter
         {
 
             DisplayName.SetDefault("Darkmatter Visor");
-            Tooltip.SetDefault(@"10% increased Ranged damage
+            Tooltip.SetDefault(@"15% increased Ranged damage
+20% decreased ammo consumption 
 Dark, yet still barely visible");
         }
 
@@ -32,7 +33,8 @@ Dark, yet still barely visible");
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage += 0.10f;
+            player.rangedDamage += 0.15f;
+            player.ammoCost80 = true;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

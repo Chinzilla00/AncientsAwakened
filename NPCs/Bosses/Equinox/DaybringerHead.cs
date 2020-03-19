@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
 		public override void SetDefaults()
 		{
-            npc.lifeMax = 125000;
+            npc.lifeMax = 100000;
             npc.damage = 125;
             npc.defense = 100;
             npc.value = Item.sellPrice(0, 10, 0, 0);
@@ -559,7 +559,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
 		{
-			npc.lifeMax = (int)(npc.lifeMax * 0.75f * bossLifeScale);
+			npc.lifeMax = (int)(npc.lifeMax * 0.65f * bossLifeScale);
 			npc.damage = (int)(npc.damage * 0.85f);
 		}
 

@@ -12,7 +12,7 @@ namespace AAMod.Items.Boss.Zero
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Omega Shoot");     
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;    //The length of old position to be recorded
+			ProjectileID.Sets.TrailCacheLength[projectile.type] = 8;    //The length of old position to be recorded
 			ProjectileID.Sets.TrailingMode[projectile.type] = 0;        
 		}
 

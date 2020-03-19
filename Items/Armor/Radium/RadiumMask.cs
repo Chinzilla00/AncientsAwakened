@@ -14,7 +14,8 @@ namespace AAMod.Items.Armor.Radium
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Radium Mask");
-			Tooltip.SetDefault(@"12% increased magic damage
+			Tooltip.SetDefault(@"15% increased magic damage
+Increases maximum mana by 80 
 Shines with the light of a starry night sky");
 
 		}
@@ -30,10 +31,12 @@ Shines with the light of a starry night sky");
 		
 		public override void UpdateEquip(Player player)
 		{
-			player.magicDamage += 0.12f;
+			player.magicDamage += 0.15f;
+            player.statManaMax2 += 80;
+
         }
 
-		public override bool IsArmorSet(Item head, Item body, Item legs)
+        public override bool IsArmorSet(Item head, Item body, Item legs)
         {
             return body.type == mod.ItemType("RadiumPlatemail") && legs.type == mod.ItemType("RadiumCuisses");
         }

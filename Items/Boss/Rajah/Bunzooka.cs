@@ -15,12 +15,12 @@ namespace AAMod.Items.Boss.Rajah
 
         public override void SetDefaults()
         {
-            item.damage = 150;
+            item.damage = 40;
             item.ranged = true;
             item.width = 66;
             item.height = 28;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 32;
+            item.useAnimation = 32;
             item.useStyle = 5;
             item.noMelee = true; //so the item's animation doesn't do damage
             item.knockBack = 7.5f;
