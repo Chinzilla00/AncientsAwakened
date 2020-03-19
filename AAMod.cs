@@ -33,8 +33,11 @@ namespace AAMod
         public static int HalloweenTreat = -1;
         public static int ChristmasCheer = -1;
         public static int MartianCredit = -1;
+        internal static Mod modOverhaul;
+        public static int DustIDSlashFX;
 
         public static int BoneAmmo = 10000;
+
 
         // Hotkeys
         public static ModHotKey AccessoryAbilityKey;
@@ -234,6 +237,8 @@ namespace AAMod
             /*string text = "If you like AAmod, thanks for your support: ";
             string webtext = "patreon.com/alphakip";
             Main.versionNumber = "Terraria v1.3.5.2\nAncientsAwakened v" + instance.Version.ToString() + "\n" + text + webtext;*/
+
+            modOverhaul = ModLoader.GetMod("TerrariaOverhaul");
 
             Config.Load();
             Logger.InfoFormat("{0} AA log", Name);
