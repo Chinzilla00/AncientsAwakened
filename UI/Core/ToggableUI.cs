@@ -11,7 +11,7 @@ namespace AAMod.UI.Core
 
         public virtual void ToggleUI(UserInterface userInterface, UIState state = null)
         {
-            state ??= this;
+            state = state ?? this;
 
             if (userInterface.CurrentState is ToggableUI && userInterface.CurrentState != state)
             {

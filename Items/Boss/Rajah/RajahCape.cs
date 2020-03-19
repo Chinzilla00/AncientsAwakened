@@ -63,7 +63,7 @@ All effects of the Sash of Vengeance
                 damageColor = Color.DarkOrange;
             }
 
-            string DamageAmount = (10 * DamageBoost(player)) + "% ";
+            string DamageAmount = (100 * DamageBoost(player)) + "% ";
             TooltipLine DamageToltip = new TooltipLine(mod, "Damage Type", Language.GetTextValue("Mods.AAMod.Common.RajahSPDamageBoost") + DamageAmount + DamageType + Language.GetTextValue("Mods.AAMod.Common.RajahSPDamageInfo"))
             {
                 overrideColor = damageColor
