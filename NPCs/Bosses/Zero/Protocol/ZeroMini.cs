@@ -94,6 +94,19 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 Projectile.NewProjectile(npc.Center + new Vector2(-30, 30), new Vector2(-10, 10), ModContent.ProjectileType<EchoRay>(), npc.damage / 3, 0f, Main.myPlayer, 6.2831855f / 750f, npc.whoAmI);
                 Projectile.NewProjectile(npc.Center + new Vector2(30, -30), new Vector2(10, -10), ModContent.ProjectileType<EchoRay>(), npc.damage / 3, 0f, Main.myPlayer, 6.2831855f / 750f, npc.whoAmI);
                 Projectile.NewProjectile(npc.Center + new Vector2(-30, -30), new Vector2(-10, -10), ModContent.ProjectileType<EchoRay>(), npc.damage / 3, 0f, Main.myPlayer, 6.2831855f / 750f, npc.whoAmI);
+                npc.ai[0] = 3;
+                npc.ai[1] = 0;
+            }
+            else if(npc.ai[0] == 3)
+            {
+                npc.velocity *= 0;
+                npc.ai[1]++;
+                if(npc.ai[1] >= 90)
+                {
+                    npc.ai[1] = 0;
+                    npc.ai[0] = 1;
+                }
+                return;
             }
             else
             {
@@ -128,37 +141,15 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 npc.ai[2] = 0;
             }
 
-            if(npc.ai[2] % 120 == 0)
+            if(npc.ai[0] != 3 && npc.ai[0] != 2 && npc.ai[0] != 0)
             {
-                switch (Main.rand.Next(4))
-                {
-                    case 0:
-                        point = player.Center + new Vector2(200f, 200f);
-                        break;
-                    case 1:
-                        point = player.Center + new Vector2(200f, -200f);
-                        break;
-                    case 2:
-                        point = player.Center + new Vector2(-200f, 200f);
-                        break;
-                    case 3:
-                        point = player.Center + new Vector2(-200f, -200f);
-                        break;
-                    default:
-                        break;
-                }
-
-            }
-
-            if(npc.ai[0] != 2 && npc.ai[0] != 0)
-            {
-                if((npc.Center - player.Center).Length() > 300f)
+                if((npc.Center - player.Center).Length() > 400f)
                 {
                     MoveToPoint(player.Center);
                 }
                 else
                 {
-                    MoveToPoint(point);
+                    BaseAI.AISkull(npc, ref Move, true, 14, 350, .04f, .05f);
                 }
             }
         }
