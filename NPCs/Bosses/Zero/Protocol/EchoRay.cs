@@ -50,7 +50,10 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             int ai1 = (int)projectile.ai[1];
             if (Main.npc[ai1].active && (Main.npc[ai1].type == ModContent.NPCType<ZeroEcho>() || Main.npc[ai1].type == ModContent.NPCType<ZeroMini>() || Main.npc[ai1].type == ModContent.NPCType<ZeroProtocol>()))
             {
-                projectile.Center = Main.npc[ai1].Center;
+                if(Main.npc[ai1].type != ModContent.NPCType<ZeroProtocol>())
+                {
+                    projectile.Center = Main.npc[ai1].Center;
+                }
             }
             else if (Main.projectile[ai1].active && Main.projectile[ai1].type == ModContent.ProjectileType<Blast>())
             {

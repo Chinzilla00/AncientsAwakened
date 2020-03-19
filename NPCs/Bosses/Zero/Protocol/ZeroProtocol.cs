@@ -468,7 +468,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                             break;
                         if (npc.ai[2] < (npc.life < npc.lifeMax / 2 ? 360 : 270))
                         {
-                            if (npc.ai[3] ++  > 30)
+                            if (npc.ai[3] ++  > 60)
                             {
                                 npc.ai[3] = 0;
                                 Teleport(0);
@@ -502,7 +502,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         {
                             if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroAwakened11"), Color.Red.R, Color.Red.G, Color.Red.B);
                             if (ShootDir == new Vector2(0,0)) ShootDir = npc.DirectionTo(player.Center);
-                            Projectile.NewProjectile(npc.position + 10f * ShootDir, 10f * ShootDir, ModContent.ProjectileType<EchoRay>(), 100, 3f, Main.myPlayer, 0, npc.whoAmI);
+                            Projectile.NewProjectile(npc.Center + 20f * ShootDir, 10f * ShootDir, ModContent.ProjectileType<EchoRay>(), 100, 3f, Main.myPlayer, 0, npc.whoAmI);
                             npc.ai[3] = 1f;
                         }
                         else

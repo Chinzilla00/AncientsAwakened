@@ -2803,7 +2803,7 @@ namespace AAMod
                         return "Речь Кролика Раджи согревает ваше сердце. У вас больше нет желания вредить кроликам. Сделай так, что бы он гордился.";
 
                         case "SagChat":
-                        return "switching to artillery system set";
+                        return "Перенастраиваюсь на артиллерийский набор параметров";
 
                         case "YamataAHead":
                         return "АУЧЬ!!!";
