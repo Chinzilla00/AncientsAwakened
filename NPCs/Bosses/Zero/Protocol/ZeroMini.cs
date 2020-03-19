@@ -154,6 +154,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
         }
 
+        public float[] Move = new float[4];
+
         public void MoveToPoint(Vector2 point)
         {
             float moveSpeed = 12f;
