@@ -352,7 +352,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
                                     int dirY = player.velocity.Y > 0? 1:-1;
 
-                                    int yPos = Math.Abs(player.velocity.Y) > 4f? -500 * dirY : -1500 * dirY;
+                                    int yPos = Math.Abs(player.velocity.Y) > 4f? -500 * dirY : -750 * dirY;
 
                                     for (int z = 0; z < 7; z++)
                                     {
@@ -367,7 +367,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                                 {
                                     int dirX = player.velocity.X > 0? 1:-1;
 
-                                    int xPos = Math.Abs(player.velocity.X) > 4f? -500 * dirX : -1500 * dirX;
+                                    int xPos = Math.Abs(player.velocity.X) > 4f? -500 * dirX : -750 * dirX;
 
                                     for (int z = 0; z < 7; z++)
                                     {
@@ -384,8 +384,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                                 int dirX = player.velocity.X > 0? 1:-1;
                                 int dirY = player.velocity.Y > 0? 1:-1;
 
-                                int xPos = Math.Abs(player.velocity.X) > 4f? -500 * dirX : -1500 * dirX;
-                                int yPos = Math.Abs(player.velocity.Y) > 4f? -500 * dirY : -1500 * dirY;
+                                int xPos = Math.Abs(player.velocity.X) > 4f? -500 * dirX : -750 * dirX;
+                                int yPos = Math.Abs(player.velocity.Y) > 4f? -500 * dirY : -750 * dirY;
 
                                 for (int z = 0; z < 13; z++)
                                 {
@@ -502,7 +502,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         {
                             if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroAwakened11"), Color.Red.R, Color.Red.G, Color.Red.B);
                             if (ShootDir == new Vector2(0,0)) ShootDir = npc.DirectionTo(player.Center);
-                            Projectile.NewProjectile(npc.Center + 20f * ShootDir, 10f * ShootDir, ModContent.ProjectileType<EchoRay>(), 100, 3f, Main.myPlayer, 0, npc.whoAmI);
+                            Projectile.NewProjectile(npc.Center + 60f * ShootDir, 10f * ShootDir, ModContent.ProjectileType<EchoRay>(), 100, 3f, Main.myPlayer, 0, npc.whoAmI);
                             npc.ai[3] = 1f;
                         }
                         else

@@ -60,6 +60,10 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             }
             projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
             Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.5f / 255f, (255 - projectile.alpha) * 0f / 255f, (255 - projectile.alpha) * 0.15f / 255f);
+
+            int dustId = Dust.NewDust(projectile.position, projectile.width, projectile.height + 10, ModContent.DustType<Dusts.VoidDust>(), projectile.velocity.X * 0.2f,
+					projectile.velocity.Y * 0.2f, 100);
+				Main.dust[dustId].noGravity = true;
         }
 
         public override void Kill(int timeLeft)

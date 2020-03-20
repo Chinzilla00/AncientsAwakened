@@ -122,7 +122,8 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 Vector2 shoot = new Vector2((float)Math.Sin(i * 0.125f * (float)Math.PI), (float)Math.Cos(i * 0.125f * (float)Math.PI));
                 shoot *= 12f;
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shoot.X, shoot.Y, 258, projectile.damage, 5, Main.myPlayer);
+                int ball = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shoot.X, shoot.Y, 258, projectile.damage, 5, Main.myPlayer);
+                Main.projectile[ball].timeLeft = 120;
             }
             projectile.active = false;
         }

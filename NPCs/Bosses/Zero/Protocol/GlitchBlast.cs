@@ -44,7 +44,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<GlitchBoom>(), projectile.damage, 2, projectile.owner);
         }
 
-        public virtual void Effects()
+        public void Effects()
         {
             Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.5f / 255f, (255 - projectile.alpha) * 0.05f / 255f, (255 - projectile.alpha) * 0.05f / 255f);
         }

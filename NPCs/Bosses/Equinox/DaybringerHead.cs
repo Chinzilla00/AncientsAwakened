@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             bossBag = mod.ItemType("EquinoxBag");
 		}
 
-        public float[] internalAI = new float[5];
+        public float[] internalAI = new float[7];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -59,6 +59,8 @@ namespace AAMod.NPCs.Bosses.Equinox
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
                 writer.Write(internalAI[4]);
+                writer.Write(internalAI[5]);
+                writer.Write(internalAI[6]);
                 writer.Write(isDeathRay);
                 writer.Write(CloudCooldown);
             }
@@ -74,6 +76,8 @@ namespace AAMod.NPCs.Bosses.Equinox
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
                 internalAI[4] = reader.ReadFloat(); //DaybringerPosCheck
+                internalAI[5] = reader.ReadFloat(); //NightclawerVelocitySave
+                internalAI[6] = reader.ReadFloat(); //NightclawerVelocitySave
                 isDeathRay = reader.ReadBoolean();
                 CloudCooldown = reader.ReadInt();
             }
@@ -114,7 +118,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                         Main.dayRate = 15;
                     }
                 }
-                else if((npc.type == mod.NPCType("DaybringerHead") && preShootingSun) || (npc.type == mod.NPCType("NightcrawlerHead") && preDeathRay))
+                else if((npc.type == mod.NPCType("DaybringerHead") && preShootingSun) || (npc.type == mod.NPCType("NightcrawlerHead") && (preDeathRay || isDeathRay)))
                 {
                     Main.dayRate = 0;
                     Main.fastForwardTime = false;
@@ -126,12 +130,22 @@ namespace AAMod.NPCs.Bosses.Equinox
                 Main.fastForwardTime = true;
                 Main.dayTime = true;
                 Main.dayRate = 0;
+                if(preShootingSun)
+                {
+                    Main.fastForwardTime = false;
+                    Main.time --;
+                }
             }else
             if ((!daybringerExists && nightcrawlerExists))
             {
                 Main.fastForwardTime = true;
                 Main.dayTime = false;
                 Main.dayRate = 0;
+                if(preDeathRay || isDeathRay)
+                {
+                    Main.fastForwardTime = false;
+                    Main.time --;
+                }
             }else
             {
                 Main.dayRate = 1;
@@ -148,6 +162,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
         public override bool PreAI()
         {
+
             if(nightcrawler)
             {
                 for(int i = -2; i < 2; i++)
@@ -173,6 +188,13 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
             bool isDay = Main.dayTime;
             bool wormStronger = (nightcrawler && !isDay) || (!nightcrawler && isDay);
+
+            float wormDistance = -26f;
+            int aiCount = 2;
+            float moveSpeedMax = 16f;
+            npc.damage = 125;
+            npc.defense = 100;
+
             if (wormStronger != prevWormStronger)
             {
                 int dustType = nightcrawler ? ModContent.DustType<NightcrawlerDust>() : ModContent.DustType<DaybringerDust>();
@@ -181,6 +203,22 @@ namespace AAMod.NPCs.Bosses.Equinox
                     int dustID = Dust.NewDust(npc.position, npc.width, npc.height, dustType, (int)(npc.velocity.X * 0.2f), (int)(npc.velocity.Y * 0.2f), 0, default, 1.5f);
                     Main.dust[dustID].noGravity = true;
                 }
+            }
+
+            if (wormStronger)
+            {
+                wormDistance = -52f;
+                aiCount = !nightcrawler ? 6 : 4;
+                moveSpeedMax = !nightcrawler ? 15f : 12f;
+                npc.damage = 150;
+                npc.defense = !nightcrawler ? 120 : 150;
+            }
+
+            for (int m = 0; m < aiCount; m++)
+            {
+                int Length = nightcrawler ? 24 : 30;
+                int[] wormTypes = nightcrawler ? new int[] { mod.NPCType("NightcrawlerHead"), mod.NPCType("NightcrawlerBody"), mod.NPCType("NightcrawlerTail") } : new int[] { mod.NPCType("DaybringerHead"), mod.NPCType("DaybringerBody"), mod.NPCType("DaybringerTail") };
+                BaseAI.AIWorm(npc, wormTypes, Length, wormDistance, moveSpeedMax, 0.07f, true, false, false, false, false, false);
             }
 
             if (isHead) //prevents despawn and allows them to run away
@@ -200,22 +238,33 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
             else
             {
+                if(nightcrawler)
+                {
+                    if(Main.npc[npc.realLife].type != mod.NPCType("NightcrawlerHead"))
+                    {
+                        for(int find = 0; find < 200; find++)
+                        {
+                            if(Main.npc[find].type == mod.NPCType("NightcrawlerHead"))
+                            {
+                                npc.realLife = Main.npc[find].whoAmI;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if(Main.npc[npc.realLife].type != mod.NPCType("DaybringerHead"))
+                    {
+                        for(int find = 0; find < 200; find++)
+                        {
+                            if(Main.npc[find].type == mod.NPCType("DaybringerHead"))
+                            {
+                                npc.realLife = Main.npc[find].whoAmI;
+                            }
+                        }
+                    }
+                }
                 npc.timeLeft = 300; //pieces should not despawn naturally, only despawn when the head does
-            }
-
-            float wormDistance = -26f;
-            int aiCount = 2;
-            float moveSpeedMax = 16f;
-            npc.damage = 125;
-            npc.defense = 100;
-
-            if (wormStronger)
-            {
-                wormDistance = -52f;
-                aiCount = !nightcrawler ? 6 : 4;
-                moveSpeedMax = !nightcrawler ? 15f : 12f;
-                npc.damage = 150;
-                npc.defense = !nightcrawler ? 120 : 150;
             }
             
             Player target = Main.player[npc.target];
@@ -224,7 +273,6 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 if(isDeathRay)
                 {
-                    npc.TargetClosest(false);
                     goto ExtraAI;
                 }
                 if(preDeathRay)
@@ -235,6 +283,8 @@ namespace AAMod.NPCs.Bosses.Equinox
                         isDeathRay = true;
                     }
                     moveSpeedMax = target.velocity.Length() > 0? (target.velocity.Length() + 30f) : 30f;
+                    internalAI[5] = npc.velocity.X;
+                    internalAI[6] = npc.velocity.Y;
                 }
             }
             if (npc.type == mod.NPCType("DaybringerHead"))
@@ -264,22 +314,20 @@ namespace AAMod.NPCs.Bosses.Equinox
                     preShootingSun = false;
                 }
             }
-
-            for (int m = 0; m < aiCount; m++)
-            {
-                int Length = nightcrawler ? 24 : 30;
-                int[] wormTypes = nightcrawler ? new int[] { mod.NPCType("NightcrawlerHead"), mod.NPCType("NightcrawlerBody"), mod.NPCType("NightcrawlerTail") } : new int[] { mod.NPCType("DaybringerHead"), mod.NPCType("DaybringerBody"), mod.NPCType("DaybringerTail") };
-                BaseAI.AIWorm(npc, wormTypes, Length, wormDistance, moveSpeedMax, 0.07f, true, false, false, false, false, false);
-            }
             goto Normal;
 
             ExtraAI:
             if(npc.type == mod.NPCType("NightcrawlerHead"))
             {
+                npc.TargetClosest(false);
+                npc.velocity = new Vector2(internalAI[5], internalAI[6]);
                 Vector2 newvelocity = npc.velocity + Vector2.Normalize(npc.velocity.RotatedBy((float)Math.PI/2)) * 0.039f;
                 npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
                 npc.velocity = Vector2.Normalize(newvelocity) * 4f;
-                
+
+                internalAI[5] = npc.velocity.X;
+                internalAI[6] = npc.velocity.Y;
+
                 if (internalAI[2]++ == 320)
                 {
                     for (int i = 0; i < Main.maxNPCs; i+=2)
@@ -385,6 +433,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             return false;
 
             Normal:
+
             npc.spriteDirection = 1;
             prevWormStronger = wormStronger;
 

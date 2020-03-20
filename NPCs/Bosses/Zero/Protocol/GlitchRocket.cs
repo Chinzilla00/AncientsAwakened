@@ -58,6 +58,10 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 					projectile.velocity *= 1.02f;
 				}
 			}
+			
+			int dustId = Dust.NewDust(projectile.position, projectile.width, projectile.height + 10, ModContent.DustType<Dusts.VoidDust>(), projectile.velocity.X * 0.2f,
+					projectile.velocity.Y * 0.2f, 100);
+				Main.dust[dustId].noGravity = true;
         }
 
         public override void Kill(int timeLeft)
