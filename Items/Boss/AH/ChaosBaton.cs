@@ -48,38 +48,37 @@ namespace AAMod.Items.Boss.AH
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int shootMe = Main.rand.Next(2);
-            {
-                switch (shootMe)
-                {
-                    case 0:
-                        shootMe = mod.ProjectileType("AbyssClaw");
-                        break;
-                    default:
-                        shootMe = mod.ProjectileType("BlazeClaw");
-                        break;
-                }
-            }
-            player.itemTime = item.useTime;
-            Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-            vector2.X = Main.mouseX + Main.screenPosition.X;
-            vector2.Y = Main.mouseY + Main.screenPosition.Y;
-            Projectile.NewProjectile(vector2.X, vector2.Y, 0, 0, shootMe, damage, 5, item.owner, 0f, 0f);
-            return true;
-        }
-
-        public override bool AltFunctionUse(Player player)
-        {
-            return true;
-        }
-
-        public override bool CanUseItem(Player player)
-        {
-            if (player.altFunctionUse == 2 && player.controlUseItem && player.releaseUseItem)
+            if (player.altFunctionUse == 2)
             {
                 player.MinionNPCTargetAim();
                 player.UpdateMinionTarget();
             }
+            else
+            {
+                int shootMe = Main.rand.Next(2);
+                {
+                    switch (shootMe)
+                    {
+                        case 0:
+                            shootMe = mod.ProjectileType("AbyssClaw");
+                            break;
+                        default:
+                            shootMe = mod.ProjectileType("BlazeClaw");
+                            break;
+                    }
+                }
+                player.itemTime = item.useTime;
+                Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
+                vector2.X = Main.mouseX + Main.screenPosition.X;
+                vector2.Y = Main.mouseY + Main.screenPosition.Y;
+                Projectile.NewProjectile(vector2.X, vector2.Y, 0, 0, shootMe, damage, 5, item.owner, 0f, 0f);
+                return true;
+            }
+            return false;
+        }
+
+        public override bool AltFunctionUse(Player player)
+        {
             return true;
         }
 
