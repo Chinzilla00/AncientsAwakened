@@ -21,6 +21,7 @@ namespace AAMod.Items.Summoning.Minions.Terra
             projectile.friendly = true;
             projectile.hostile = false;
             projectile.ignoreWater = true;
+            projectile.minion = true;
             projectile.penetrate = 1;
             projectile.extraUpdates = 1;
         }

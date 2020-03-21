@@ -33,12 +33,17 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
 
         public override void AI()
         {
+            Lighting.AddLight(projectile.Center, (255 - projectile.alpha) * 0.5f / 255f, (255 - projectile.alpha) * 0.05f / 255f, (255 - projectile.alpha) * 0.05f / 255f);
             projectile.velocity *= 0.98f;
             projectile.alpha += 2;
             if (projectile.alpha > 255)
             {
                 projectile.Kill();
             }
+
+            int dustId = Dust.NewDust(projectile.position, projectile.width, projectile.height + 10, ModContent.DustType<Dusts.VoidDust>(), projectile.velocity.X * 0.2f,
+					projectile.velocity.Y * 0.2f, 100);
+				Main.dust[dustId].noGravity = true;
         }
 
         public override bool PreDraw(SpriteBatch sb, Color lightColor)

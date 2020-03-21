@@ -48,7 +48,10 @@ namespace AAMod.Items.Summoning.Minions
                     -projectile.velocity.Y * 0.2f, 100, new Color(86, 191, 188));
                 Main.dust[num469].velocity *= 2f;
             }
-            Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("AcidBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            int id = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("AcidBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Main.projectile[id].minion = true;
+            Main.projectile[id].friendly = true;
+            Main.projectile[id].hostile = false;
         }
     }
 }

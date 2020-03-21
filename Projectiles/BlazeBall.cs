@@ -20,6 +20,7 @@ namespace AAMod.Projectiles
             projectile.height = 16;
             projectile.aiStyle = 131;
             projectile.friendly = true;
+            projectile.minion = true;
             projectile.alpha = 255;
             projectile.penetrate = -1;
             projectile.tileCollide = true;

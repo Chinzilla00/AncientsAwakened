@@ -22,6 +22,7 @@ namespace AAMod.Projectiles.Athena
             projectile.aiStyle = -1;
             projectile.friendly = true;
             projectile.hostile = false;
+            projectile.minion = true;
             projectile.alpha = 255;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;

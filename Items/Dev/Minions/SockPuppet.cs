@@ -194,9 +194,14 @@ namespace AAMod.Items.Dev.Minions
                 }
             }
             projectile.rotation = projectile.velocity.X * 0.04f;
-            if (Math.Abs(projectile.velocity.X) > 0.2)
+
+            if(flag25)
             {
-                projectile.spriteDirection = -projectile.direction;
+                projectile.spriteDirection = ((vector46 - projectile.Center).X > 0? -1: 1);
+            }
+            else
+            {
+                projectile.spriteDirection =(projectile.velocity.X > 0? -1: 1);
             }
 
             if (++projectile.frameCounter >= 10)

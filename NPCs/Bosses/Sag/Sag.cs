@@ -178,7 +178,7 @@ namespace AAMod.NPCs.Bosses.Sag
                         npc.ai[2] = 0;
                         npc.ai[3] += 1;
                         internalAI[0] = 0;
-                        Main.NewText("switching to artillery system set [" + (int)(npc.ai[3] + 1) + "]");
+                        Main.NewText(Lang.BossChat("SagChat") + " [" + (int)(npc.ai[3] + 1) + "]");
                         npc.netUpdate = true;
                     }
                     break;

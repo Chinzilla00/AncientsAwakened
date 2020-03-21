@@ -17,7 +17,7 @@ namespace AAMod.Items.Dev.Minions
             projectile.width = 20;
             projectile.height = 20;
             projectile.friendly = true;
-            projectile.melee = true;
+            projectile.minion = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;
             projectile.alpha = 0;

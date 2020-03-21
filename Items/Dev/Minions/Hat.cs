@@ -16,7 +16,7 @@ namespace AAMod.Items.Dev.Minions
             projectile.penetrate = 1;
             Main.projFrames[projectile.type] = 4;
             projectile.hostile = false;
-            projectile.ranged = true; 
+            projectile.minion = true; 
             projectile.tileCollide = false; 
             projectile.ignoreWater = true;
 			projectile.timeLeft = 90;

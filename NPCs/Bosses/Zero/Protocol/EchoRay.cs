@@ -48,13 +48,22 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 projectile.velocity = -Vector2.UnitY;
             }
             int ai1 = (int)projectile.ai[1];
-            if (Main.npc[ai1].active && (Main.npc[ai1].type == ModContent.NPCType<ZeroEcho>() || Main.npc[ai1].type == ModContent.NPCType<ZeroMini>() || Main.npc[ai1].type == ModContent.NPCType<ZeroProtocol>()))
-            {
-                projectile.Center = Main.npc[ai1].Center;
-            }
-            else if (Main.projectile[ai1].active && Main.projectile[ai1].type == ModContent.ProjectileType<Blast>())
+            
+            if (Main.projectile[ai1].active && Main.projectile[ai1].type == ModContent.ProjectileType<Blast>())
             {
                 projectile.Center = Main.projectile[ai1].Center;
+            }
+            else if (Main.npc[ai1].active && (Main.npc[ai1].type == ModContent.NPCType<ZeroEcho>() || Main.npc[ai1].type == ModContent.NPCType<ZeroMini>() || Main.npc[ai1].type == ModContent.NPCType<ZeroProtocol>()))
+            {
+                projectile.Center = Main.npc[ai1].Center;
+                if(Main.npc[ai1].type == ModContent.NPCType<ZeroEcho>())
+                {
+                    projectile.Center = Main.npc[ai1].Center + 20f * projectile.velocity;
+                }
+                else if(Main.npc[ai1].type == ModContent.NPCType<ZeroProtocol>())
+                {
+                    projectile.Center = Main.npc[ai1].Center + 50f * projectile.velocity;
+                }
             }
             else
             {

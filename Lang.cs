@@ -2077,6 +2077,10 @@ namespace AAMod
                         return "...看你了, 年轻人. ";
                         case "SupremeRajahDefeat16":
                         return "王公兔的讲话温暖了你的内心. 你决定从此不再伤害兔子. 成为他的骄傲. ";
+
+                        case "SagChat":
+                        return "火力系统切换至";
+
                         case "YamataAHead":
                         return "哦呃!!!";
                         case "Yamata1":
@@ -2797,6 +2801,9 @@ namespace AAMod
                         return "...Увидимся, дитя.";
                         case "SupremeRajahDefeat16":
                         return "Речь Кролика Раджи согревает ваше сердце. У вас больше нет желания вредить кроликам. Сделай так, что бы он гордился.";
+
+                        case "SagChat":
+                        return "Перенастраиваюсь на артиллерийский набор параметров";
 
                         case "YamataAHead":
                         return "АУЧЬ!!!";
@@ -3527,6 +3534,9 @@ namespace AAMod
                         return "...See ya, kiddo.";
                         case "SupremeRajahDefeat16":
                         return "Rajah Rabbit's speech warms your heart. You no longer have the will to harm rabbits. Do him proud.";
+
+                        case "SagChat":
+                        return "switching to artillery system set";
 
                         case "YamataAHead":
                         return "OWIE!!!";

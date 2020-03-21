@@ -333,7 +333,9 @@ namespace AAMod
 			num10 = num7 / num10;
 			num8 *= num10;
 			num9 *= num10;
-			Projectile.NewProjectile(Position.X, Position.Y, num8, num9, 356, num, 0f, projectile.owner, num6, 0f);
+			int soul = Projectile.NewProjectile(Position.X, Position.Y, num8, num9, 356, num, 0f, projectile.owner, num6, 0f);
+            Main.projectile[soul].magic = false;
+            Main.projectile[soul].minion = true;
 		}
         public Vector2 reflectvelocity = Vector2.Zero;
 

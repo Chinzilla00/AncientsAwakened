@@ -19,6 +19,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.height = 10;
             projectile.hostile = false;
             projectile.friendly = true;
+            projectile.minion = true;
             projectile.ignoreWater = true;
             projectile.penetrate = 1;
             projectile.alpha = 255;

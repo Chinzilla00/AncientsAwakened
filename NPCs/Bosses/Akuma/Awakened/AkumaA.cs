@@ -602,7 +602,7 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 }
                 if (Main.netMode != 1) AAMod.Chat(AAWorld.downedAkuma ? Lang.BossChat("AkumaA10") : Lang.BossChat("AkumaA11"), Color.DeepSkyBlue.R, Color.DeepSkyBlue.G, Color.DeepSkyBlue.B);
                 AAWorld.downedAkuma = true;
-                if (Main.rand.Next(50) == 0 && AAWorld.downedAllAncients)
+                if (Main.rand.Next(50) == 0 && AAWorld.downedShen)
                 {
                     Item.NewItem((int)npc.Center.X, (int)npc.Center.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }

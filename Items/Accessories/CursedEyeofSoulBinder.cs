@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Accessories
 {
+    [AutoloadEquip(EquipType.Face)]
     public class CursedEyeofSoulBinder : BaseAAItem
     {
         public override void SetDefaults()
