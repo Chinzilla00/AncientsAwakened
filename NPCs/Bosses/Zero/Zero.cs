@@ -102,7 +102,7 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (Main.expertMode && Main.netMode != 1)
                 {
                     if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroBoss1"), Color.Red.R, Color.Red.G, Color.Red.B);
-                    int z = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ZeroProtocol"), 0, 0, 0, 0, 0, npc.target) ;
+                    int z = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ZeroProtocol"), 0, 0, 0, 0, 0, npc.target);
                     Main.npc[z].Center = npc.Center;
 
                     int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
@@ -209,15 +209,62 @@ namespace AAMod.NPCs.Bosses.Zero
             return AAColor.ZeroShield * (Main.mouseTextColor / 255f);
         }
 
+        public int frameCounters;
+        public int normalFrame;
+        public int switchOneFrame;
+        public int openFrame;
+        public int switchTwoFrame;
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
+            Texture2D texture = Main.npcTexture[npc.type];
             Texture2D glowTex = mod.GetTexture("Glowmasks/Zero_Glow");
             Texture2D Shield = mod.GetTexture("NPCs/Bosses/Zero/ZeroShield");
             Texture2D Ring = mod.GetTexture("NPCs/Bosses/Zero/ZeroShieldRing");
             Texture2D RingGlow = mod.GetTexture("Glowmasks/ZeroShieldRing_Glow");
+            Texture2D normalAni = mod.GetTexture("NPCs/Bosses/Zero/Zer01");
+            Texture2D normalGlow = mod.GetTexture("NPCs/Bosses/Zero/Zer01_Glow");
+            Texture2D switchOneAni = mod.GetTexture("NPCs/Bosses/Zero/Zer01to2");
+            Texture2D switchOneGlow = mod.GetTexture("NPCs/Bosses/Zero/Zer01to2_Glow");
+            Texture2D openAni = mod.GetTexture("NPCs/Bosses/Zero/Zer02");
+            Texture2D openGlow = mod.GetTexture("NPCs/Bosses/Zero/Zer02_Glow");
+            Texture2D switchTwoAni = mod.GetTexture("NPCs/Bosses/Zero/Zer02to1");
+            Texture2D switchTwoGlow = mod.GetTexture("NPCs/Bosses/Zero/Zer02to1_Glow");
+            var effects = npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+            Vector2 drawCenter = new Vector2(npc.Center.X, npc.Center.Y);
+            if (npc.ai[1] == 0)
+            {
+                BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
+                BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
+            }
+            else if (npc.ai[1] == 1)
+            {
+                int num214 = normalAni.Height / 5;
+                int y6 = num214 * normalFrame;
+                Main.spriteBatch.Draw(normalAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, normalAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2((float)normalAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(normalGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, normalAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2((float)normalAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            }
+            else if (npc.ai[1] == 2)
+            {
+                int num214 = switchOneAni.Height / 5;
+                int y6 = num214 * switchOneFrame;
+                Main.spriteBatch.Draw(switchOneAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, switchOneAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2((float)switchOneAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(switchOneGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, switchOneAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2((float)switchOneAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            }
+            else if (npc.ai[1] == 3)
+            {
+                int num214 = openAni.Height / 5;
+                int y6 = num214 * openFrame;
+                Main.spriteBatch.Draw(openAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, openAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2((float)openAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(openGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, openAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2((float)openAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            }
+            else if (npc.ai[1] == 4)
+            {
+                int num214 = switchTwoAni.Height / 5;
+                int y6 = num214 * switchTwoFrame;
+                Main.spriteBatch.Draw(switchTwoAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, switchTwoAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2((float)switchTwoAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(switchTwoGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, switchTwoAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2((float)switchTwoAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+            }
 
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
 
             if (ShieldScale > 0)
             {
@@ -270,6 +317,75 @@ namespace AAMod.NPCs.Bosses.Zero
 
         public override void AI()
         {
+            if (npc.ai[1] == 0)
+            {
+                npc.frame.Y = 0;
+            }
+            else if (npc.ai[1] == 1)
+            {
+                if (npc.ai[3] == 3)
+                {
+                    frameCounters = 0;
+                    npc.ai[1]++;
+                }
+                else
+                {
+                    frameCounters++;
+                    if (frameCounters > 4)
+                    {
+                        normalFrame++;
+                        frameCounters = 0;
+                    }
+                    if (normalFrame >= 5)
+                    {
+                        normalFrame = 0;
+                    }
+                }
+            }
+            else if (npc.ai[1] == 2)
+            {
+                frameCounters++;
+                if (frameCounters > 4)
+                {
+                    switchOneFrame++;
+                    frameCounters = 0;
+                }
+                if (switchOneFrame >= 5)
+                {
+                    switchOneFrame = 0;
+                    npc.ai[1]++;
+                }
+            }
+            else if (npc.ai[1] == 3)
+            {
+                if (npc.ai[3] == 3)
+                {
+                    frameCounters++;
+                    if (frameCounters > 4)
+                    {
+                        openFrame++;
+                        frameCounters = 0;
+                    }
+                    if (openFrame >= 5)
+                    {
+                        openFrame = 0;
+                    }
+                }
+                else
+                {
+                    frameCounters++;
+                    if (frameCounters > 4)
+                    {
+                        switchTwoFrame++;
+                        frameCounters = 0;
+                    }
+                    if (switchTwoFrame >= 5)
+                    {
+                        switchTwoFrame = 0;
+                        npc.ai[1] = 1;
+                    }
+                }
+            }
             if (Main.expertMode)
             {
                 damage = npc.damage / 4;
@@ -564,34 +680,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 if (ShieldScale < 0)
                 {
                     ShieldScale = 0;
-                }
-            }
-        }
-
-        public override void FindFrame(int frameHeight)
-        {
-            if (npc.ai[1] == 0)
-            {
-                npc.frame.Y = 0;
-            }
-            else
-            {
-                if (npc.ai[3] == 3)
-                {
-                    npc.frameCounter++;
-                    if (npc.frameCounter > 4)
-                    {
-                        npc.frameCounter = 0;
-                        npc.frame.Y += frameHeight;
-                    }
-                    if (npc.frame.Y < frameHeight * 2 || npc.frame.Y > frameHeight * 6)
-                    {
-                        npc.frame.Y = frameHeight * 2;
-                    }
-                }
-                else
-                {
-                    npc.frame.Y = frameHeight;
                 }
             }
         }
