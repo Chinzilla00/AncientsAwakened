@@ -1158,9 +1158,9 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         Alpha.G = (byte)((float)(255 - internalAI[4] * 3));
                         Alpha.B = (byte)((float)(255 - internalAI[4] * 3));
                         Alpha.A = (byte)((float)(255 - internalAI[4] * 3));
-                        spritebatch.Draw(texture, playerLocation - new Vector2(texture.Width/2 * .6f * scaleFactor, texture.Height/2 * .6f * scaleFactor + 95f) + Vector2.UnitY * Main.player[npc.target].gfxOffY - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, texture.Width, texture.Height)), npc.GetAlpha(Alpha), 0f, default, 0.6f * scaleFactor, SpriteEffects.None, 0f);
+                        spritebatch.Draw(texture, playerLocation - new Vector2(texture.Width/2 * .6f * scaleFactor, texture.Height/2 * .6f * scaleFactor + 95f) + Vector2.UnitY * Main.player[npc.target].gfxOffY - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, texture.Width, texture.Height)), npc.GetAlpha(Alpha), 0f, default, 0.6f * scaleFactor, SpriteEffects.None, 0f);
                     }
-                    spritebatch.Draw(texture, playerLocation - new Vector2(texture.Width/2 * .6f, texture.Height/2 * .6f + 95f) + Vector2.UnitY * Main.player[npc.target].gfxOffY - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, 0, texture.Width, texture.Height)), npc.GetAlpha(dColor) * (0.6f + 0.4f * scaleFactor2), 0f, default, 0.6f, SpriteEffects.None, 0f);
+                    spritebatch.Draw(texture, playerLocation - new Vector2(texture.Width/2 * .6f, texture.Height/2 * .6f + 95f) + Vector2.UnitY * Main.player[npc.target].gfxOffY - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, 0, texture.Width, texture.Height)), npc.GetAlpha(dColor) * (0.6f + 0.4f * scaleFactor2), 0f, default, 0.6f, SpriteEffects.None, 0f);
                 }
             }
             else if(SHADOWDOG && !Invisible)

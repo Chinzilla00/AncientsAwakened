@@ -41,6 +41,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             bossBag = ModContent.ItemType<Items.Boss.Serpent.SerpentBag>();
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Boss6");
             npc.alpha = 50;
+            npc.buffImmune[BuffID.Frostburn] = true;
         }
 
         private bool fireAttack;

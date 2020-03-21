@@ -183,14 +183,14 @@ namespace AAMod
             if (Main.myPlayer == player.whoAmI)
             {
                 Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-                Vector2 value = Vector2.UnitX.RotatedBy((double)player.fullRotation, default(Vector2));
-                float num79 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
-                float num80 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+                Vector2 value = Vector2.UnitX.RotatedBy(player.fullRotation, default(Vector2));
+                float num79 = Main.mouseX + Main.screenPosition.X - vector2.X;
+                float num80 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
                 if (player.gravDir == -1f)
                 {
-                    num80 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector2.Y;
+                    num80 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector2.Y;
                 }
-                player.itemRotation = (float)Math.Atan2((double)(num80 * (float)player.direction), (double)(num79 * (float)player.direction)) - player.fullRotation;
+                player.itemRotation = (float)Math.Atan2(num80 * player.direction, num79 * player.direction) - player.fullRotation;
             }
 
             if (Math.Abs(player.itemRotation) > Math.PI / 2) //swapping then doing it again because lazy and can't be bothered to find in code
@@ -200,14 +200,14 @@ namespace AAMod
                 if (Main.myPlayer == player.whoAmI)
                 {
                     Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-                    Vector2 value = Vector2.UnitX.RotatedBy((double)player.fullRotation, default(Vector2));
-                    float num79 = (float)Main.mouseX + Main.screenPosition.X - vector2.X;
-                    float num80 = (float)Main.mouseY + Main.screenPosition.Y - vector2.Y;
+                    Vector2 value = Vector2.UnitX.RotatedBy(player.fullRotation, default(Vector2));
+                    float num79 = Main.mouseX + Main.screenPosition.X - vector2.X;
+                    float num80 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
                     if (player.gravDir == -1f)
                     {
-                        num80 = Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY - vector2.Y;
+                        num80 = Main.screenPosition.Y + Main.screenHeight - Main.mouseY - vector2.Y;
                     }
-                    player.itemRotation = (float)Math.Atan2((double)(num80 * (float)player.direction), (double)(num79 * (float)player.direction)) - player.fullRotation;
+                    player.itemRotation = (float)Math.Atan2(num80 * player.direction, num79 * player.direction) - player.fullRotation;
                 }
             }
 

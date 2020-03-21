@@ -240,29 +240,29 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 int num214 = normalAni.Height / 5;
                 int y6 = num214 * normalFrame;
-                Main.spriteBatch.Draw(normalAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, normalAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2((float)normalAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
-                Main.spriteBatch.Draw(normalGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, normalAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2((float)normalAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(normalAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, normalAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2(normalAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(normalGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, normalAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2(normalAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             else if (npc.ai[1] == 2)
             {
                 int num214 = switchOneAni.Height / 5;
                 int y6 = num214 * switchOneFrame;
-                Main.spriteBatch.Draw(switchOneAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, switchOneAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2((float)switchOneAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
-                Main.spriteBatch.Draw(switchOneGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, switchOneAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2((float)switchOneAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(switchOneAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, switchOneAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2(switchOneAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(switchOneGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, switchOneAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2(switchOneAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             else if (npc.ai[1] == 3)
             {
                 int num214 = openAni.Height / 5;
                 int y6 = num214 * openFrame;
-                Main.spriteBatch.Draw(openAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, openAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2((float)openAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
-                Main.spriteBatch.Draw(openGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, openAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2((float)openAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(openAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, openAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2(openAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(openGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, openAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2(openAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             else if (npc.ai[1] == 4)
             {
                 int num214 = switchTwoAni.Height / 5;
                 int y6 = num214 * switchTwoFrame;
-                Main.spriteBatch.Draw(switchTwoAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, switchTwoAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2((float)switchTwoAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
-                Main.spriteBatch.Draw(switchTwoGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Microsoft.Xna.Framework.Rectangle(0, y6, switchTwoAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2((float)switchTwoAni.Width / 2f, (float)num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(switchTwoAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, switchTwoAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2(switchTwoAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == -1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(switchTwoGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, switchTwoAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2(switchTwoAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
 
 
