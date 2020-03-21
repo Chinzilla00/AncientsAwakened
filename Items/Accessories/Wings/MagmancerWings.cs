@@ -6,11 +6,11 @@ namespace AAMod.Items.Accessories.Wings
 {
 
     [AutoloadEquip(EquipType.Wings)]
-    public class AquamancerWings : BaseAAItem
+    public class MagmancerWings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Aquamancer Wings");
+            DisplayName.SetDefault("Magmancer Wings");
             Tooltip.SetDefault("Allows flight and slow fall");
         }
 
@@ -80,9 +80,9 @@ namespace AAMod.Items.Accessories.Wings
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.WaterBucket, 5);
+            recipe.AddIngredient(ItemID.LavaBucket, 5);
             recipe.AddIngredient(ItemID.SoulofFlight, 20);
-            recipe.AddIngredient(null, "SoulOfSpite", 25);
+            recipe.AddIngredient(null, "SoulOfSmite", 25);
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);
             recipe.AddRecipe();

@@ -8,7 +8,7 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Akuma Awakened Music Box");
-            Tooltip.SetDefault(@"Plays 'True Blazing Fury' by Kanashii");
+            Tooltip.SetDefault(@"Plays 'Dawn of the Dragon' by Universe");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

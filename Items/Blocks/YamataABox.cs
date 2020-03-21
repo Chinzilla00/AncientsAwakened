@@ -9,8 +9,7 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Yamata Awakened Music Box");
-            Tooltip.SetDefault(@"Plays 'The Ultimate Show' from Super Paper Mario
-Remix by GAMetal");
+            Tooltip.SetDefault(@"Plays 'Abyssal Nightmare' by Universe");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

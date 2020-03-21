@@ -120,7 +120,7 @@ namespace AAMod.NPCs.TownNPCs
 			chat.Add(Lang.TownNPCSamurai("SamuraiChat19"));
 			chat.Add(Lang.TownNPCSamurai("SamuraiChat20"));
 			chat.Add(Lang.TownNPCSamurai("SamuraiChat21"));
-            return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
+            return chat; 
         }
         
 		public override void SetChatButtons(ref string button, ref string button2)

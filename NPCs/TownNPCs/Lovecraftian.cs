@@ -139,7 +139,7 @@ namespace AAMod.NPCs.TownNPCs
 
             //Providing materials
 
-            return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
+            return chat; 
         }
 
         public override void SetChatButtons(ref string button, ref string button2)

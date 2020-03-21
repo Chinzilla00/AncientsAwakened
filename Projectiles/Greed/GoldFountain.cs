@@ -21,22 +21,21 @@ namespace AAMod.Projectiles.Greed
             projectile.magic = true;
             projectile.penetrate = -1;
             projectile.alpha = 255;
-            projectile.timeLeft = 180;
+            projectile.timeLeft = 240;
             projectile.tileCollide = false;
         }
 
         public override void AI()
         {
             projectile.rotation += .1f;
-            if (projectile.alpha > 0)
-            {
-                projectile.timeLeft = 180;
-                projectile.alpha -= 5;
-            }
 
             if (projectile.timeLeft < 60)
             {
                 projectile.alpha += 5;
+            }
+            else
+            {
+                projectile.alpha -= 5;
             }
 
             int FountainCount = AAGlobalProjectile.CountProjectiles(ModContent.ProjectileType<GoldFountain>());

@@ -70,7 +70,7 @@ All effects of the Sash of Vengeance
             };
             tooltips.Add(DamageToltip);
 
-            string SpeedAmount = (10 * Speed(player)) + "% ";
+            string SpeedAmount = (100 * Speed(player)) + "% ";
             TooltipLine SpeedTooltip = new TooltipLine(mod, "Damage Type", Language.GetTextValue("Mods.AAMod.Common.RajahSPSpeedBoost") + SpeedAmount);
             tooltips.Add(SpeedTooltip);
 

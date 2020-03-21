@@ -104,6 +104,7 @@ namespace AAMod
         public static bool downedGreedA;
         public static bool AthenaHerald;
         public static bool downedAnubisA;
+        public static bool downedAABoss;
 
         public static bool AnubisAwakened;
         //Points
@@ -169,6 +170,7 @@ namespace AAMod
             SistersSummoned = false;
             downedRajah = false;
             AthenaHerald = false;
+            downedAABoss = false;
 
             AnubisAwakened = false;
             //World Changes

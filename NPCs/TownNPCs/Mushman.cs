@@ -132,7 +132,7 @@ namespace AAMod.NPCs.TownNPCs
             {
                 return Main.npc[Clothier].GivenName + Lang.TownNPCMushman("MushmanChat6");
             }
-            return chat; // chat is implicitly cast to a string. You can also do "return chat.Get();" if that makes you feel better
+            return chat; 
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
