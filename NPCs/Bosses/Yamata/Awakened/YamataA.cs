@@ -198,7 +198,7 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 
                 npc.DropBossBags();
                 AAWorld.downedYamata = true;
-                if (AAWorld.downedShen)
+                if (Main.rand.Next(50) == 0 && AAWorld.downedShen)
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("EXSoul"));
                 }
