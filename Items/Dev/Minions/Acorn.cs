@@ -18,7 +18,7 @@ namespace AAMod.Items.Dev.Minions
             projectile.width = 10;
             projectile.height = 10;
             projectile.friendly = true;
-            projectile.ranged = true;
+            projectile.minion = true;
             projectile.penetrate = 2;
             projectile.aiStyle = 2;
             projectile.timeLeft = 600;

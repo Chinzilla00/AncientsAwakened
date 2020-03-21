@@ -85,7 +85,7 @@ namespace AAMod.Items.Summoning.Minions
 				Main.projectile[p].localNPCHitCooldown = 1;
 				Main.projectile[p].tileCollide = false;
 				Main.projectile[p].magic = false;
-				Main.projectile[p].melee = true;
+				Main.projectile[p].minion = true;
 			}
         }
     }

@@ -18,7 +18,7 @@ namespace AAMod.Projectiles.AH
             projectile.width = 22;
             projectile.height = 22;
             projectile.friendly = true;
-            projectile.melee = true;
+            projectile.minion = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;
             projectile.alpha = 0;
