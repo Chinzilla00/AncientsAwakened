@@ -51,7 +51,9 @@ namespace AAMod.Projectiles.Anubis.Forsaken
 
                         shootToX *= distance * 3;
                         shootToY *= distance * 3;
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX*4, shootToY*4, mod.ProjectileType("ForsakenFrag"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                        int id = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX*4, shootToY*4, mod.ProjectileType("ForsakenFrag"), projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                        Main.projectile[id].magic = false;
+                        Main.projectile[id].minion = true;
                         projectile.ai[0] = 0f;
                     }
                 }

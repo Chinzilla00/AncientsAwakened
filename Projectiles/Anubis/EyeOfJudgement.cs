@@ -54,8 +54,9 @@ namespace AAMod.Projectiles.Anubis
 
                         shootToX *= distance * 3;
                         shootToY *= distance * 3;
-                        Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX*4, shootToY*4, 668, projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
-                        projectile.ai[0] = 0f;
+                        int id = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shootToX*4, shootToY*4, 668, projectile.damage, projectile.knockBack, Main.myPlayer, 0f, 0f);
+                        Main.projectile[id].minion = true;
+						projectile.ai[0] = 0f;
                     }
                 }
             }

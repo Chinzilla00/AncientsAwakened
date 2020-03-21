@@ -14,7 +14,6 @@ namespace AAMod.Projectiles.Anubis.Forsaken
 
         public override void SetDefaults()
         {
-            projectile.melee = true;
             projectile.width = 32;
             projectile.height = 32;
             projectile.aiStyle = -1;
