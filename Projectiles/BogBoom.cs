@@ -24,7 +24,7 @@ namespace AAMod.Projectiles
             projectile.timeLeft = 600;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 5;
-            projectile.magic = true;
+            projectile.minion = true;
         }
 
         public override void AI()
