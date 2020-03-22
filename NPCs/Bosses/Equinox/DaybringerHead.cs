@@ -48,7 +48,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             bossBag = mod.ItemType("EquinoxBag");
 		}
 
-        public float[] internalAI = new float[7];
+        public float[] internalAI = new float[8];
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -61,6 +61,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                 writer.Write(internalAI[4]);
                 writer.Write(internalAI[5]);
                 writer.Write(internalAI[6]);
+                writer.Write(internalAI[7]);
                 writer.Write(isDeathRay);
                 writer.Write(CloudCooldown);
             }
@@ -78,6 +79,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                 internalAI[4] = reader.ReadFloat(); //DaybringerPosCheck
                 internalAI[5] = reader.ReadFloat(); //NightclawerVelocitySave
                 internalAI[6] = reader.ReadFloat(); //NightclawerVelocitySave
+                internalAI[7] = reader.ReadFloat();
                 isDeathRay = reader.ReadBoolean();
                 CloudCooldown = reader.ReadInt();
             }
@@ -167,7 +169,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             if (Main.netMode != 1 && !initCustom && isHead)
             {
                 initCustom = true;
-                customAI[0] += npc.whoAmI % 7 * 12; //so it doesn't pew all at once
+                internalAI[7] += npc.whoAmI % 7 * 12; //so it doesn't pew all at once
                 npc.velocity.X += 0.1f;
                 npc.velocity.Y -= 4f;
             }
