@@ -1,17 +1,17 @@
 using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
 using System.Collections.Generic;
+using Terraria.ModLoader;
 
-namespace AAMod.Items.Vanity.Invoker
+namespace AAMod.Items.Vanity.Cerberus
 {
-    [AutoloadEquip(EquipType.Body)]
-    public class InvokerRobe : BaseAAItem
-    {
-        public override void SetStaticDefaults()
-        {
+    [AutoloadEquip(EquipType.Legs)]
+	public class InvokerPants : BaseAAItem
+	{
+		public override void SetStaticDefaults()
+		{
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Invoker Robe");
-            Tooltip.SetDefault(@"The enchanted robe of Aleister the 'Mega Therion'
+            DisplayName.SetDefault("Invoker Boots");
+            Tooltip.SetDefault(@"The enchanted boots of Aleister the 'Mega Therion'
 Great for impersonating Awakened Developers!");
         }
 
@@ -28,8 +28,8 @@ Great for impersonating Awakened Developers!");
 
         public override void SetDefaults()
         {
-            item.width = 26;
-            item.height = 20;
+            item.width = 22;
+            item.height = 18;
             item.rare = 9;
             item.vanity = true;
         }
