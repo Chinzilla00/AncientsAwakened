@@ -162,30 +162,20 @@ namespace AAMod.NPCs.Bosses.Equinox
 
         public override bool PreAI()
         {
+            bool isHead = npc.type == mod.NPCType("DaybringerHead") || npc.type == mod.NPCType("NightcrawlerHead");
 
-            if(nightcrawler)
-            {
-                for(int i = -2; i < 2; i++)
-                {
-                    for(int j = -2; j < 2; j++)
-                    {
-                        Lighting.AddLight((int)(npc.Center.X / 16f) + i, (int)(npc.Center.Y / 16f) + j, .37f, .8f, .89f);
-                    }
-                }
-            }
-
-            if (Main.netMode != 1 && !initCustom)
+            if (Main.netMode != 1 && !initCustom && isHead)
             {
                 initCustom = true;
                 customAI[0] += npc.whoAmI % 7 * 12; //so it doesn't pew all at once
                 npc.velocity.X += 0.1f;
                 npc.velocity.Y -= 4f;
             }
-            bool isHead = npc.type == mod.NPCType("DaybringerHead") || npc.type == mod.NPCType("NightcrawlerHead");
             if (isHead)
             {
                 HandleDayNightCycle();
             }
+
             bool isDay = Main.dayTime;
             bool wormStronger = (nightcrawler && !isDay) || (!nightcrawler && isDay);
 

@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Vanity.Blazen
 {
-    public class BlazenBagBag : BaseAAItem
+    public class BlazenBag : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
