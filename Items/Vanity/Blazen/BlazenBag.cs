@@ -8,7 +8,7 @@ namespace AAMod.Items.Vanity.Blazen
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Mud Fish's Bag");
+            DisplayName.SetDefault("Thunder Lord's Bag");
             Tooltip.SetDefault("<right> to open \n'All the essentials for impersonating the Thunder Lord!'");
         }
 

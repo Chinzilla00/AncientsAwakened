@@ -22,7 +22,7 @@ namespace AAMod.NPCs.Bosses.Sag
         {
             npc.lifeMax = 6000;
             npc.boss = true;
-            npc.defense = 300;
+            npc.defense = 20;
             npc.damage = 35;
             npc.width = 124;
             npc.height = 206;
