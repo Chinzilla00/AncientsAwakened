@@ -424,6 +424,9 @@ ItemTooltip.DynaskullWings=可飞行和滑翔
 ItemName.TrueHallowedWings=神圣天翼
 ItemTooltip.TrueHallowedWings=可飞行和滑翔
 
+ItemName.MagmancerWings=熔魔之翼
+ItemTooltip.MagmancerWings=可飞行和滑翔
+
 ItemName.NightmareWings=夜魇之翼
 ItemTooltip.NightmareWings=可飞行和滑翔
 
@@ -1283,7 +1286,7 @@ ItemName.AcropolisBox=八音盒(天穹卫城)
 ItemTooltip.AcropolisBox=播放 'Palace in the Sky' by Turquoise
 
 ItemName.AkumaABox=八音盒(觉醒之邪鬼巨龙)
-ItemTooltip.AkumaABox=播放 'True Blazing Fury' by Kanashii
+ItemTooltip.AkumaABox=播放 'Dawn of the Dragon' by Universe
 
 ItemName.AkumaBox=八音盒(邪鬼巨龙)
 ItemTooltip.AkumaBox=播放 'Trial By Fire' by Saucecoie
@@ -1579,7 +1582,7 @@ ItemTooltip.VoidBox=播放 'What Once Was' by OmegaFerretMusic
 ItemName.VoidUnit=虚空机械单元
 
 ItemName.YamataABox=八音盒(觉醒之八歧大蛇)
-ItemTooltip.YamataABox=播放 'The Ultimate Show' from Super Paper Mario\nRemix by GAMetal
+ItemTooltip.YamataABox=播放 'Abyssal Nightmare' by Universe
 
 ItemName.YamataBox=八音盒(八歧大蛇)
 ItemTooltip.YamataBox=播放 'Crescent of Madness' by Saucecoie
@@ -4558,6 +4561,8 @@ ItemTooltip.CodeMagnetWeak=“通过吸引代码，将物体拉向你”
 
 // AAMod.Items.Vanity.Alphakip
 
+ItemName.AlphaBag=沼跃鱼宝藏袋
+ItemTooltip.AlphaBag=右键打开\n内含冒充沼跃鱼的所有物品
 
 ItemName.FishDiverBoots=Alphakip的脚蹼
 ItemTooltip.FishDiverBoots=实际并不是脚蹼\n“非常适合冒充远古觉醒的开发者!”
@@ -5699,15 +5704,14 @@ NPCName.Vortex=虚空绞杀者-铰刀
 
 // AAMod.NPCs.TownNPCs
 
-===UNKNWN===
+NPCName.Alpha=沼跃鱼
+
 Common.GoblinSlayerName=哥布林杀手
 
 Common.Anubis=史诗记述者
 
-===UNKNWN===
 NPCName.Lovecraftian=洛夫克拉夫特星人
 
-===UNKNWN===
 NPCName.Mushman=赤松露人
 
 ===UNKNWN===
