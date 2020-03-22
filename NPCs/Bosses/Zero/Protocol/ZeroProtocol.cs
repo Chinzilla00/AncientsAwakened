@@ -555,7 +555,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     if (Main.netMode != 1) AAMod.Chat(@"[Y]", Color.Red.R, Color.Red.G, Color.Red.B);
                 }
                 npc.rotation = npc.DirectionTo(player.Center).ToRotation() + (float)Math.PI/2;
-                if(npc.ai[2] % (npc.life < npc.lifeMax / 2? 40:60) == 10)
+                if(npc.ai[2] % (npc.life < npc.lifeMax / 2? 60:80) == 20)
                 {
                     Teleport(3);
                     NPC.NewNPC((int)player.Center.X + 50 * Main.rand.Next(4, 6) * (Main.rand.Next(2) == 0? -1:1), (int)player.Center.Y + 50 * Main.rand.Next(4, 6) * (Main.rand.Next(2) == 0? -1:1), ModContent.NPCType<ZeroMini>());
