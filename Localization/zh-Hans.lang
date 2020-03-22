@@ -1443,7 +1443,7 @@ ItemTooltip.LakeBox=播放 'Lake of Souls' by Rockwizard
 ItemName.MireAltar=潭渊祭坛
 
 ItemName.MireBox=八音盒(潭渊地表)
-ItemTooltip.MireBox=播放 'Where the Darkness Creeps' by OmegaFerretMusic
+ItemTooltip.MireBox=播放 'Moonlit Marsh' by Charlie Debnam
 
 ItemName.MireChest=潭渊宝箱
 
@@ -4816,6 +4816,9 @@ ItemName.MikpinWig=狐皮假发
 ItemTooltip.MikpinWig=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Blazen
+
+ItemName.BlazenBag=雷电领主宝藏袋
+ItemTooltip.BlazenBag=右键打开\n内含冒充雷电领主的所有物品
 
 ItemName.BlazenBooster=战术突击喷气包
 ItemTooltip.BlazenBooster=允许飞行和滑翔\n按住飞的更快\n“非常适合冒充远古觉醒的开发者!”
