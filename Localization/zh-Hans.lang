@@ -4634,6 +4634,20 @@ ItemTooltip.PonyHoofs=“非常适合冒充远古觉醒的开发者!”
 ItemName.PonyMask=奇怪的马面具
 ItemTooltip.PonyMask=“非常适合冒充远古觉醒的开发者!”
 
+// AAMod.Items.Vanity.Cerberus
+
+ItemName.InvokerBag=召唤师宝藏袋
+ItemTooltip.InvokerBag=右键打开\n内含冒充小狗召唤师的所有物品
+
+ItemName.InvokerHood=召唤师兜帽
+ItemTooltip.InvokerHood=“大兽”阿莱斯特的附魔兜帽\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.InvokerPants=召唤师长裤
+ItemTooltip.InvokerPants=“大兽”阿莱斯特的附魔长裤\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.InvokerRobe=召唤师法衣
+ItemTooltip.InvokerRobe=“大兽”阿莱斯特的附魔法衣\n“非常适合冒充远古觉醒的开发者!”
+
 // AAMod.Items.Vanity.CC
 
 ItemName.CCHood=惧月教徒面具
@@ -4734,7 +4748,6 @@ ItemTooltip.AngryPirateSails=这个护腿中放射出对无法编号鱼的愤怒
 
 // AAMod.Items.Vanity.Hallam
 
-
 ItemName.HalHat=Hallam的小礼帽
 ItemTooltip.HalHat=穿上它就会情不自禁地幻想\n“非常适合冒充远古觉醒的开发者!”
 
@@ -4744,16 +4757,16 @@ ItemTooltip.HalTrousers=这条裤子比你想象的贵\n“非常适合冒充远
 ItemName.HalTux=Hallam的花式礼服
 ItemTooltip.HalTux=这件礼服纯手工\n“非常适合冒充远古觉醒的开发者!”
 
-// AAMod.Items.Vanity.Invoker
+// AAMod.Items.Vanity.Hallam.Shiny
 
-ItemName.InvokerHood=召唤师兜帽
-ItemTooltip.InvokerHood=“大兽”阿莱斯特的附魔兜帽\n“非常适合冒充远古觉醒的开发者!”
+ItemName.ShinyHalHat=Hallam的天鹅绒高顶礼帽
+ItemTooltip.ShinyHalHat=穿上它就会情不自禁地幻想\n“非常适合冒充远古觉醒的开发者!”
 
-ItemName.InvokerPants=召唤师长裤
-ItemTooltip.InvokerPants=“大兽”阿莱斯特的附魔长裤\n“非常适合冒充远古觉醒的开发者!”
+ItemName.ShinyHalTrousers=Hallam的天鹅绒时尚长裤
+ItemTooltip.ShinyHalTrousers=这条裤子比你想象的贵\n“非常适合冒充远古觉醒的开发者!”
 
-ItemName.InvokerRobe=召唤师法衣
-ItemTooltip.InvokerRobe=“大兽”阿莱斯特的附魔法衣\n“非常适合冒充远古觉醒的开发者!”
+ItemName.ShinyHalTux=Hallam的天鹅绒花式礼服
+ItemTooltip.ShinyHalTux=这件礼服纯手工\n“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Universe
 
@@ -4765,6 +4778,93 @@ ItemTooltip.CursedPants=“非常适合冒充远古觉醒的开发者!”
 
 ItemName.CursedRobe=诅咒收割者宽袍
 ItemTooltip.CursedRobe=“非常适合冒充远古觉醒的开发者!”
+
+// AAMod.Items.Vanity.Moon
+
+ItemName.MoonBoots=明月靴
+ItemTooltip.MoonBoots=传说中的月亮魔法之靴\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.MoonHood=明月帽
+ItemTooltip.MoonHood=传说中的月亮魔法面罩\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.MoonRobe=明月袍
+ItemTooltip.MoonRobe=传说中的月亮魔法长袍\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.MoonWings=月蜂之翼
+ItemTooltip.MoonWings=允许飞行和滑翔\n“非常适合冒充远古觉醒的开发者!”
+
+// AAMod.Items.Vanity.Moon.Shiny
+
+ItemName.ShinyMoonBoots=明月靴
+ItemTooltip.ShinyMoonBoots=传说中的月亮魔法之靴\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.ShinyMoonHood=明月帽
+ItemTooltip.ShinyMoonHood=传说中的月亮魔法面罩\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.ShinyMoonRobe=明月袍
+ItemTooltip.ShinyMoonRobe=传说中的月亮魔法长袍\n“非常适合冒充远古觉醒的开发者!”
+
+// AAMod.Items.Vanity.Mikpin
+
+ItemName.MikpinCloak=狐皮着装
+ItemTooltip.MikpinCloak=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.MikpinPants=狐皮长裤
+ItemTooltip.MikpinPants=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.MikpinWig=狐皮假发
+ItemTooltip.MikpinWig=“非常适合冒充远古觉醒的开发者!”
+
+// AAMod.Items.Vanity.Blazen
+
+ItemName.BlazenBooster=战术突击喷气包
+ItemTooltip.BlazenBooster=允许飞行和滑翔\n按住飞的更快\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.BlazenBoots=战术突击靴
+ItemTooltip.BlazenBoots=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.BlazenHelmet=战术突击盔
+ItemTooltip.BlazenHelmet=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.BlazenPlate=战术突击甲
+ItemTooltip.BlazenPlate=“非常适合冒充远古觉醒的开发者!”
+
+
+// AAMod.Items.Vanity.Tails
+
+
+ItemName.TailsBody=狐尾衣襟
+ItemTooltip.TailsBody=一个做的类似于某只两尾狐的服饰\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.TailsHead=狐尾头盔
+ItemTooltip.TailsHead=一个做的类似于某只两尾狐的头盔\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.TailsLegs=狐尾绑腿
+ItemTooltip.TailsLegs=一个做的类似于某只两尾狐的绑腿\n“非常适合冒充远古觉醒的开发者!”
+
+
+// AAMod.Items.Vanity.Tied
+
+
+ItemName.TiedsLeggings=幽灵之长裤
+ItemTooltip.TiedsLeggings=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.TiedsMask=幽灵之头骨
+ItemTooltip.TiedsMask=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.TiedsSuit=幽灵之衣装
+ItemTooltip.TiedsSuit=“非常适合冒充远古觉醒的开发者!”
+
+// AAMod.Items.Vanity.Darkpuppey
+
+ItemName.DarkMask=暗之花面具
+ItemTooltip.DarkMask=闻起来像花和…蜂蜜?\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.DarkPants=暗之花长裤
+ItemTooltip.DarkPants=闻起来像花和…蜂蜜?\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.DarkShirt=暗之花短裙
+ItemTooltip.DarkShirt=闻起来像花和…蜂蜜?\n“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity
 
@@ -4835,84 +4935,6 @@ ItemName.YamataAMask=觉醒之八歧大蛇面具
 ItemName.YamataMask=远古之八歧大蛇面具
 
 ItemName.ZeroMask=零械面具
-
-
-// AAMod.Items.Vanity.Moon
-
-
-ItemName.MoonBoots=明月靴
-ItemTooltip.MoonBoots=传说中的月亮魔法之靴\n“非常适合冒充远古觉醒的开发者!”
-
-ItemName.MoonHood=明月帽
-ItemTooltip.MoonHood=传说中的月亮魔法面罩\n“非常适合冒充远古觉醒的开发者!”
-
-ItemName.MoonRobe=明月袍
-ItemTooltip.MoonRobe=传说中的月亮魔法长袍\n“非常适合冒充远古觉醒的开发者!”
-
-ItemName.MoonWings=月蜂之翼
-ItemTooltip.MoonWings=允许飞行和滑翔\n“非常适合冒充远古觉醒的开发者!”
-
-// AAMod.Items.Vanity.Mikpin
-
-ItemName.MikpinCloak=狐皮着装
-ItemTooltip.MikpinCloak=“非常适合冒充远古觉醒的开发者!”
-
-ItemName.MikpinPants=狐皮长裤
-ItemTooltip.MikpinPants=“非常适合冒充远古觉醒的开发者!”
-
-ItemName.MikpinWig=狐皮假发
-ItemTooltip.MikpinWig=“非常适合冒充远古觉醒的开发者!”
-
-// AAMod.Items.Vanity.Blazen
-
-ItemName.BlazenBooster=战术突击喷气包
-ItemTooltip.BlazenBooster=允许飞行和滑翔\n按住飞的更快\n“非常适合冒充远古觉醒的开发者!”
-
-ItemName.BlazenBoots=战术突击靴
-ItemTooltip.BlazenBoots=“非常适合冒充远古觉醒的开发者!”
-
-ItemName.BlazenHelmet=战术突击盔
-ItemTooltip.BlazenHelmet=“非常适合冒充远古觉醒的开发者!”
-
-ItemName.BlazenPlate=战术突击甲
-ItemTooltip.BlazenPlate=“非常适合冒充远古觉醒的开发者!”
-
-
-// AAMod.Items.Vanity.Tails
-
-
-ItemName.TailsBody=狐尾衣襟
-ItemTooltip.TailsBody=一个做的类似于某只两尾狐的服饰\n“非常适合冒充远古觉醒的开发者!”
-
-ItemName.TailsHead=狐尾头盔
-ItemTooltip.TailsHead=一个做的类似于某只两尾狐的头盔\n“非常适合冒充远古觉醒的开发者!”
-
-ItemName.TailsLegs=狐尾绑腿
-ItemTooltip.TailsLegs=一个做的类似于某只两尾狐的绑腿\n“非常适合冒充远古觉醒的开发者!”
-
-
-// AAMod.Items.Vanity.Tied
-
-
-ItemName.TiedsLeggings=幽灵之长裤
-ItemTooltip.TiedsLeggings=“非常适合冒充远古觉醒的开发者!”
-
-ItemName.TiedsMask=幽灵之头骨
-ItemTooltip.TiedsMask=“非常适合冒充远古觉醒的开发者!”
-
-ItemName.TiedsSuit=幽灵之衣装
-ItemTooltip.TiedsSuit=“非常适合冒充远古觉醒的开发者!”
-
-// AAMod.Items.Vanity.Darkpuppey
-
-ItemName.DarkMask=暗之花面具
-ItemTooltip.DarkMask=闻起来像花和…蜂蜜?\n“非常适合冒充远古觉醒的开发者!”
-
-ItemName.DarkPants=暗之花长裤
-ItemTooltip.DarkPants=闻起来像花和…蜂蜜?\n“非常适合冒充远古觉醒的开发者!”
-
-ItemName.DarkShirt=暗之花短裙
-ItemTooltip.DarkShirt=闻起来像花和…蜂蜜?\n“非常适合冒充远古觉醒的开发者!”
 
 
 // AAMod.Items.Walls
