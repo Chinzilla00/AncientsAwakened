@@ -2,14 +2,14 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Vanity.Alphakip
+namespace AAMod.Items.Vanity.Blazen
 {
-    public class AlphaBag : BaseAAItem
+    public class BlazenBagBag : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Mud Fish's Bag");
-            Tooltip.SetDefault("<right> to open \n'All the essentials for impersonating the Fish King!'");
+            Tooltip.SetDefault("<right> to open \n'All the essentials for impersonating the Thunder Lord!'");
         }
 
         public override void SetDefaults()
@@ -28,13 +28,12 @@ namespace AAMod.Items.Vanity.Alphakip
 
  		public override void RightClick(Player player)
 		{
-			player.QuickSpawnItem(ModContent.ItemType<FishDiverMask>());
-            player.QuickSpawnItem(ModContent.ItemType<FishDiverJacket>());
-            player.QuickSpawnItem(ModContent.ItemType<FishDiverBoots>());
-            player.QuickSpawnItem(ModContent.ItemType<Pets.MudkipBall>());
+			player.QuickSpawnItem(ModContent.ItemType<BlazenHelmet>());
+            player.QuickSpawnItem(ModContent.ItemType<BlazenPlate>());
+            player.QuickSpawnItem(ModContent.ItemType<BlazenBoots>());
             if (Main.hardMode)
             {
-                player.QuickSpawnItem(ModContent.ItemType<KipronWings>());
+                player.QuickSpawnItem(ModContent.ItemType<BlazenBooster>());
             }
         }
     }
