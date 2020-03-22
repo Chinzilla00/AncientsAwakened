@@ -452,9 +452,9 @@ namespace AAMod
             AddEquipTexture(new InvokedCaligulaBody(), null, EquipType.Body, "InvokedCaligulaBody", "AAMod/Items/Dev/Invoker/InvokedCaligula_Body", "AAMod/Items/Dev/Invoker/InvokedCaligula_Arms", "");
             AddEquipTexture(new InvokedCaligulaLegs(), null, EquipType.Legs, "InvokedCaligulaLegs", "AAMod/Items/Dev/Invoker/InvokedCaligula_Legs", "", "");
 
-            AddEquipTexture(new InvokerHead(), null, EquipType.Head, "InvokerHead", "AAMod/Items/Vanity/Invoker/InvokerHood_Head", "", "");
-            AddEquipTexture(new InvokerBody(), null, EquipType.Body, "InvokerBody", "AAMod/Items/Vanity/Invoker/InvokerRobe_Body", "AAMod/Items/Vanity/Invoker/InvokerRobe_Arms", "");
-            AddEquipTexture(new InvokerLegs(), null, EquipType.Legs, "InvokerLegs", "AAMod/Items/Vanity/Invoker/InvokerPants_Legs", "", "");
+            AddEquipTexture(new InvokerHead(), null, EquipType.Head, "InvokerHead", "AAMod/Items/Vanity/Cerberus/InvokerHood_Head", "", "");
+            AddEquipTexture(new InvokerBody(), null, EquipType.Body, "InvokerBody", "AAMod/Items/Vanity/Cerberus/InvokerRobe_Body", "AAMod/Items/Vanity/Cerberus/InvokerRobe_Arms", "");
+            AddEquipTexture(new InvokerLegs(), null, EquipType.Legs, "InvokerLegs", "AAMod/Items/Vanity/Cerberus/InvokerPants_Legs", "", "");
 
             AddEquipTexture(null, EquipType.Legs, "CCRobe_Legs", "AAMod/Items/Vanity/CC/CCRobe_Legs");
         }

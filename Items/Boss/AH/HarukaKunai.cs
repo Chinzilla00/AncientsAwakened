@@ -53,8 +53,6 @@ namespace AAMod.Items.Boss.AH
             {
                 offsetAngle = startAngle + (deltaAngle * i);
                 int proj = Projectile.NewProjectile(position.X, position.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, Main.myPlayer);
-                Main.projectile[proj].ranged = false;
-                Main.projectile[proj].magic = true;
             }
             return false;
         }
