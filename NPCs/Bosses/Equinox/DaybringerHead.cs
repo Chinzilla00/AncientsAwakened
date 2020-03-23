@@ -328,15 +328,24 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
             if(npc.type == mod.NPCType("DaybringerHead"))
             {
+                npc.TargetClosest(false);
                 npc.velocity = new Vector2(internalAI[5], internalAI[6]);
-                Vector2 targetpos = target.Center - new Vector2(1000f, 1000f);
-                Vector2 targetpos2 = target.Center - new Vector2(-1000f, 1000f);
+                Vector2 targetpos = target.Center - new Vector2(0, 2000f);
+                Vector2 targetpos2 = target.Center - new Vector2(1000f, 1000f);
+                Vector2 targetpos3 = target.Center - new Vector2(-1000f, 1000f);
                 if(internalAI[4] == 0)
                 {
                     if(Math.Abs(npc.Center.X - targetpos.X) + Math.Abs(npc.Center.Y - targetpos.Y) < 100f)
                     {
                         internalAI[4] = 1f;
-                        targetpos = targetpos2;
+                    }
+                }
+                else if(internalAI[4] == 1)
+                {
+                    targetpos = targetpos2;
+                    if(Math.Abs(npc.Center.X - targetpos.X) + Math.Abs(npc.Center.Y - targetpos.Y) < 100f)
+                    {
+                        internalAI[4] = 2f;
                         for (int i = 0; i < Main.maxNPCs; i+= 3)
                         {
                             if (Main.npc[i].active && Main.npc[i].type == mod.NPCType("DaybringerBody") && Main.npc[i].realLife == npc.whoAmI && AAGlobalProjectile.CountProjectiles(mod.ProjectileType("DaybringerSun")) < 3)
@@ -347,13 +356,12 @@ namespace AAMod.NPCs.Bosses.Equinox
                         }
                     }
                 }
-                else if(internalAI[4] == 1)
+                else if(internalAI[4] == 2)
                 {
-                    targetpos = targetpos2;
+                    targetpos = targetpos3;
                     if(Math.Abs(npc.Center.X - targetpos.X) + Math.Abs(npc.Center.Y - targetpos.Y) < 100f)
                     {
-                        internalAI[4] = 0f;
-                        targetpos = target.Center - new Vector2(1000f, 1000f);
+                        internalAI[4] = 1f;
                         for (int i = 0; i < Main.maxNPCs; i+= 3)
                         {
                             if (Main.npc[i].active && Main.npc[i].type == mod.NPCType("DaybringerBody") && Main.npc[i].realLife == npc.whoAmI && AAGlobalProjectile.CountProjectiles(mod.ProjectileType("DaybringerSun")) < 3)
@@ -389,15 +397,15 @@ namespace AAMod.NPCs.Bosses.Equinox
                         npc.velocity.Y -= 0.5f * 2;
                 }
 
-                if(npc.velocity.X > 10f) npc.velocity.X = 10f;
-                if(npc.velocity.Y > 10f) npc.velocity.Y = 10f;
+                if(npc.velocity.X > 20f) npc.velocity.X = 20f;
+                if(npc.velocity.Y > 20f) npc.velocity.Y = 20f;
 
                 npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
 
                 internalAI[5] = npc.velocity.X;
                 internalAI[6] = npc.velocity.Y;
 
-                if(internalAI[3]++ > 600)
+                if(internalAI[3]++ > 700)
                 {
                     internalAI[3] = 0;
                     internalAI[5] = 0;
