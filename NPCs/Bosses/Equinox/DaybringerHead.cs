@@ -12,8 +12,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 {
     [AutoloadBossHead]	
 	public class DaybringerHead : ModNPC
-	{
-        public float[] customAI = new float[1];		
+	{	
 		public bool nightcrawler = false;
 		public override void SetStaticDefaults()
 		{
@@ -230,32 +229,6 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
             else
             {
-                if(nightcrawler)
-                {
-                    if(Main.npc[npc.realLife].type != mod.NPCType("NightcrawlerHead"))
-                    {
-                        for(int find = 0; find < 200; find++)
-                        {
-                            if(Main.npc[find].type == mod.NPCType("NightcrawlerHead"))
-                            {
-                                npc.realLife = Main.npc[find].whoAmI;
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    if(Main.npc[npc.realLife].type != mod.NPCType("DaybringerHead"))
-                    {
-                        for(int find = 0; find < 200; find++)
-                        {
-                            if(Main.npc[find].type == mod.NPCType("DaybringerHead"))
-                            {
-                                npc.realLife = Main.npc[find].whoAmI;
-                            }
-                        }
-                    }
-                }
                 npc.timeLeft = 300; //pieces should not despawn naturally, only despawn when the head does
             }
             
