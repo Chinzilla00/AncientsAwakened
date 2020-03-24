@@ -40,8 +40,8 @@ namespace AAMod.Tiles.Trophy
         public override void PostDraw(int x, int y, SpriteBatch sb)
         {
             Tile tile = Main.tile[x, y];
-            Texture2D glowTex = mod.GetTexture("Glowmasks/ChaosCrucible_Glow");
-            Texture2D Sphere = mod.GetTexture("Glowmasks/ChaosCrucible_Sphere");
+            Texture2D glowTex = mod.GetTexture("Glowmasks/ZeroATrophy_Glow");
+            Texture2D Sphere = mod.GetTexture("Glowmasks/ZeroATrophy_Glow1");
             int frameY = tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 54) : 0;
 
             BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, tile.frameX, frameY, false, false, false, null, Glow);
