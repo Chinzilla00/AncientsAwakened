@@ -2299,7 +2299,7 @@ Common.RajahSPDamageResistance=当前伤害减免增加: +
 
 // AAMod.Items.Boss.Rajah.Supreme
 
-ItemName.RajahCache=宝藏袋
+ItemName.RajahCache=宝藏箱
 
 ItemName.Excalihare=断兔圣剑
 
@@ -2712,6 +2712,17 @@ ItemTooltip.ZeroTesseract=注.释.\n不.稳.定.  含.有.死.亡.缔.造.者.�
 
 // AAMod.Items.Currency
 
+ItemName.AncientCoin1=远古觉醒便士
+ItemTooltip.AncientCoin1=一枚刻着A的硬币
+
+ItemName.AncientCoin2=远古觉醒币
+ItemTooltip.AncientCoin2=一枚刻着A的红蓝相间硬币
+
+ItemName.AncientCoin3=远古觉醒大奖章
+ItemTooltip.AncientCoin3=一枚刻着A的紫罗兰色币
+
+ItemName.AncientCoinEX=远古觉醒大奖章EX
+ItemTooltip.AncientCoinEX=一枚刻着A的紫罗兰色币
 
 ItemName.BloodRune=血浸符文
 ItemTooltip.BloodRune=一个据说浸染了古代生物鲜血的奇石
@@ -4608,6 +4619,8 @@ ItemTooltip.ApawnPlate=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Aves
 
+ItemName.AvesBag=DJ Duck宝藏袋
+ItemTooltip.AvesBag=右键打开\n内含冒充绿头鸭的所有物品
 
 ItemName.DJDuckHead=DJ Duck的面具
 ItemTooltip.DJDuckHead=“嘎”\n“非常适合冒充远古觉醒的开发者!”
@@ -4650,6 +4663,9 @@ ItemTooltip.InvokerRobe=“大兽”阿莱斯特的附魔法衣\n“非常适合
 
 // AAMod.Items.Vanity.CC
 
+ItemName.CCBox=泥潭狂人的纸皮宝藏箱
+ItemTooltip.CCBox=右键打开\n内含冒充小狗召唤师的所有物品
+
 ItemName.CCHood=惧月教徒面具
 ItemTooltip.CCHood=一副蜥蜴狂徒的面具\n“非常适合冒充远古觉醒的开发者!”
 
@@ -4675,6 +4691,9 @@ ItemTooltip.FezLordsBag=右键打开 \n“模仿菲斯的所有必需品!”
 
 //AAMod.Items.Vanity.Delly
 
+ItemName.DellyBag=虚空之女宝藏袋
+ItemTooltip.DellyBag=右键打开\n内含冒充虚空小公举的所有物品
+
 ItemName.DellyBoots=影裤
 ItemTooltip.DellyBoots=“非常适合冒充远古觉醒的开发者!”
 
@@ -4687,6 +4706,8 @@ ItemTooltip.DellyWig=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Eliza
 
+ItemName.LizBag=黑暗龙宝藏袋
+ItemTooltip.LizBag=右键打开\n内含冒充龙之女皇的所有物品
 
 ItemName.LizBoots=午夜猫装裤
 ItemTooltip.LizBoots=（译者注：快！女装！）\n“非常适合冒充远古觉醒的开发者!”
@@ -4747,6 +4768,9 @@ ItemTooltip.AngryPirateSails=这个护腿中放射出对无法编号鱼的愤怒
 
 
 // AAMod.Items.Vanity.Hallam
+
+ItemName.MagiciansHat=魔术师的礼帽
+ItemTooltip.MagiciansHat=右键打开\n内含冒充发怒猫的所有物品
 
 ItemName.HalHat=Hallam的小礼帽
 ItemTooltip.HalHat=穿上它就会情不自禁地幻想\n“非常适合冒充远古觉醒的开发者!”
@@ -4835,7 +4859,6 @@ ItemTooltip.BlazenPlate=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Tails
 
-
 ItemName.TailsBody=狐尾衣襟
 ItemTooltip.TailsBody=一个做的类似于某只两尾狐的服饰\n“非常适合冒充远古觉醒的开发者!”
 
@@ -4848,6 +4871,8 @@ ItemTooltip.TailsLegs=一个做的类似于某只两尾狐的绑腿\n“非常�
 
 // AAMod.Items.Vanity.Tied
 
+ItemName.OldMagiciansHat=老魔术师的礼帽
+ItemTooltip.OldMagiciansHat=右键打开\n内含冒充绅士骨头男的所有物品
 
 ItemName.TiedsLeggings=幽灵之长裤
 ItemTooltip.TiedsLeggings=“非常适合冒充远古觉醒的开发者!”
@@ -6011,6 +6036,8 @@ MapObject.LuminiteOre=夜明矿石
 
 MapObject.MireBox=八音盒
 
+MapObject.MireDayBox=八音盒
+
 MapObject.MireChest=潭渊宝箱
 
 MapObject.MireUBox=八音盒
@@ -6140,6 +6167,18 @@ Common.GoblinSlayerShopMartianLoot=火星人事件掉落
 //CurrencyItems
 
 Common.PlayerBuyPrice=购买价格:
+
+Common.AncientCoin1=远古觉醒便士
+Common.AncientCoin1s=远古觉醒便士
+
+Common.AncientCoin2=远古觉醒币
+Common.AncientCoin2s=远古觉醒币
+
+Common.AncientCoin3=远古觉醒大奖章
+Common.AncientCoin3s=远古觉醒大奖章
+
+Common.AncientCoinEX=远古觉醒大奖章EX
+Common.AncientCoinEXs=远古觉醒大奖章EX
 
 Common.BloodRune=血浸符文
 Common.BloodRunes=血浸符文
