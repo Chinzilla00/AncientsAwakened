@@ -5,12 +5,12 @@ using Terraria.Localization;
 
 namespace AAMod.Items.Currency
 {
-    public class AncientCoin1 : BaseAAItem
+    public class AncientCoin : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Penny");
-            Tooltip.SetDefault("A silver coin with an A engraved into it");
+            DisplayName.SetDefault("Ancient Coin");
+            Tooltip.SetDefault("A red and blue coin with an A engraved into it");
         }
 
         public override void SetDefaults()
@@ -18,15 +18,15 @@ namespace AAMod.Items.Currency
             item.width = 16;
             item.height = 16;
             item.maxStack = 999;
-            item.rare = 3;
+            item.rare = 6;
         }
     }
 
-    public class ACoin1 : CustomCurrencySingleCoin
+    public class ACoin : CustomCurrencySingleCoin
     {
         public static Color color = Color.LightBlue;
 
-        public ACoin1(int coinItemID) : base(coinItemID, 999L)
+        public ACoin(int coinItemID) : base(coinItemID, 999L)
         {
         }
 
@@ -40,7 +40,7 @@ namespace AAMod.Items.Currency
                 color2.B,
                 Language.GetTextValue("Mods.AAMod.Common.PlayerBuyPrice"),
                 price,
-                price == 1 ? "Ancient Penny" : "s"
+                price == 1 ? "Ancient Coin" : "s"
             });
         }
     }

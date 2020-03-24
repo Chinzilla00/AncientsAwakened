@@ -2472,7 +2472,7 @@ namespace AAMod
                         player.QuickSpawnItem(mod.ItemType("CursedRobe"));
                         player.QuickSpawnItem(mod.ItemType("CursedPants"));
 
-                        if (dropType >= 1)
+                        if (dropType >= 3)
                         {
                             player.QuickSpawnItem(mod.ItemType("CursedSickle" + addonEX));
                         }
@@ -2512,7 +2512,7 @@ namespace AAMod
 
                         player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Blazen.BlazenBag>());
 
-                        if (dropType >= 1)
+                        if (dropType >= 3)
                         {
                             player.QuickSpawnItem(mod.ItemType("ThunderLord" + addonEX));
                         }

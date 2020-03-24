@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
@@ -40,9 +41,19 @@ namespace AAMod.Items.Dev
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            int shoot = Projectile.NewProjectile(position, new Vector2(speedX, speedY), type, damage, knockBack, player.whoAmI);
-			Main.projectile[shoot].melee = false;
-            Main.projectile[shoot].magic = true;
+            float spread = Main.rand.Next(20, 30) * 0.0174f;
+            float baseSpeed = (float)Math.Sqrt((speedX * speedX) + (speedY * speedY));
+            double startAngle = Math.Atan2(speedX, speedY) - .1d;
+            double deltaAngle = spread / 6f;
+            double offsetAngle;
+            for (int i = 0; i < 3; i++)
+            {
+                float randomSpeed = baseSpeed + Main.rand.NextFloat() * 1.5f;
+                offsetAngle = startAngle + (deltaAngle * i);
+                int shoot = Projectile.NewProjectile(position.X, position.Y, randomSpeed * (float)Math.Sin(offsetAngle), randomSpeed * (float)Math.Cos(offsetAngle), type, damage, knockBack, Main.myPlayer);
+                Main.projectile[shoot].melee = false;
+                Main.projectile[shoot].magic = true;
+            }
             return false;
         }
 		

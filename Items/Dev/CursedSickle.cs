@@ -28,7 +28,7 @@ Left click to swing the scythe");
             item.useStyle = 1;
             item.useAnimation = 25;
             item.useTime = 25;
-            item.damage = 70;
+            item.damage = 130;
             item.knockBack = 4;
 			item.noMelee = true;
 			item.noUseGraphic = true;

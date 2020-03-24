@@ -192,36 +192,6 @@ namespace AAMod
             recipe.AddTile(ModContent.TileType<Tiles.Furniture.Razewood.RazewoodSink>());
             recipe.SetResult(ItemID.LavaBucket);
             recipe.AddRecipe();
-
-            recipe = GetNewRecipe();
-            recipe.AddIngredient(null, "AncientCoin1", 10);
-            recipe.SetResult(null, "AncientCoin2");
-            recipe.AddRecipe();
-
-            recipe = GetNewRecipe();
-            recipe.AddIngredient(null, "AncientCoin2", 10);
-            recipe.SetResult(null, "AncientCoin3");
-            recipe.AddRecipe();
-
-            recipe = GetNewRecipe();
-            recipe.AddIngredient(null, "AncientCoin3", 10);
-            recipe.SetResult(null, "AncientCoinEX");
-            recipe.AddRecipe();
-
-            recipe = GetNewRecipe();
-            recipe.AddIngredient(null, "AncientCoinEX", 1);
-            recipe.SetResult(null, "AncientCoin3", 10);
-            recipe.AddRecipe();
-
-            recipe = GetNewRecipe();
-            recipe.AddIngredient(null, "AncientCoin3", 1);
-            recipe.SetResult(null, "AncientCoin2", 10);
-            recipe.AddRecipe();
-
-            recipe = GetNewRecipe();
-            recipe.AddIngredient(null, "AncientCoin2", 1);
-            recipe.SetResult(null, "AncientCoin1", 10);
-            recipe.AddRecipe();
             #endregion
         }
 
@@ -637,6 +607,11 @@ namespace AAMod
             recipe.AddIngredient(ItemID.DefenderMedal, 15);
             recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(ItemID.MusicBoxDD2, 1);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddRecipeGroup("AAMod:DevBag");
+            recipe.SetResult(null, "AncientCoin", 5);
             recipe.AddRecipe();
         }
 
@@ -1088,6 +1063,20 @@ namespace AAMod
                 AAMod.instance.ItemType("ShinyCharmFish")
             });
             RecipeGroup.RegisterGroup("AAMod:ShinyCharm", group22);
+
+            RecipeGroup group23 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " + "Dev Bag", new int[]
+            {
+                AAMod.instance.ItemType("AlphaBag"),
+                AAMod.instance.ItemType("CCBox"),
+                AAMod.instance.ItemType("BlazenBag"),
+                AAMod.instance.ItemType("AvesBag"),
+                AAMod.instance.ItemType("DellyBag"),
+                AAMod.instance.ItemType("OldMagiciansHat"),
+                AAMod.instance.ItemType("MagiciansHat"),
+                AAMod.instance.ItemType("LizBag"),
+                AAMod.instance.ItemType("FezLordsBag")
+            });
+            RecipeGroup.RegisterGroup("AAMod:DevBag", group23);
 
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {
