@@ -1,5 +1,4 @@
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 
 namespace AAMod.Items.Pets

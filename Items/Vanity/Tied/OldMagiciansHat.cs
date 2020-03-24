@@ -45,6 +45,10 @@ namespace AAMod.Items.Vanity.Tied
 			player.QuickSpawnItem(ModContent.ItemType<TiedsMask>());
             player.QuickSpawnItem(ModContent.ItemType<TiedsSuit>());
             player.QuickSpawnItem(ModContent.ItemType<TiedsLeggings>());
+            if (Main.hardMode)
+            {
+                player.QuickSpawnItem(ItemID.BoneWings);
+            }
 
         }
     }

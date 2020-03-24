@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Vanity.Alphakip.Shiny
+namespace AAMod.Items.Vanity.Eliza
 {
 
     [AutoloadEquip(EquipType.Wings)]
-    public class ShinyKipronWings : BaseAAItem
+    public class DragonWings : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Shiny Kipron Wings");
+            DisplayName.SetDefault("Dark Dragon Wings");
             Tooltip.SetDefault(@"Allows flight and slow fall
 Hold down and jump to hover for an extended period of time
 'Great for impersonating Ancients Awakened Devs!'");
-        }
+		}
 
 		public override void SetDefaults()
 		{
@@ -26,13 +26,15 @@ Hold down and jump to hover for an extended period of time
 			item.accessory = true;
 		}
 
+        
+
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             foreach (TooltipLine line2 in list)
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(39, 115, 189);
+                    line2.overrideColor = new Color(121, 21, 214);
                 }
             }
         }
@@ -58,7 +60,6 @@ Hold down and jump to hover for an extended period of time
             {
                 speed = 15f;
                 acceleration *= 10f;
-                player.velocity.Y *= 0f;
             }
             else
             {
@@ -105,15 +106,6 @@ Hold down and jump to hover for an extended period of time
                 }
             }
             return true;
-        }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "KipronWings", 1);
-            recipe.AddRecipeGroup("AAMod:ShinyCharm");
-            recipe.SetResult(this);
-            recipe.AddRecipe();
         }
     }
 }

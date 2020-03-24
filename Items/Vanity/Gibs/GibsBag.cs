@@ -1,14 +1,14 @@
 using Terraria;
-using Terraria.ModLoader;
+using Terraria.ID;
 
-namespace AAMod.Items.Vanity.Blazen
+namespace AAMod.Items.Vanity.Gibs
 {
-    public class BlazenBag : BaseAAItem
+    public class GibsBag : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Thunder Lord's Bag");
-            Tooltip.SetDefault("<right> to open \n'All the essentials for impersonating the Thunder Lord!'");
+            DisplayName.SetDefault("Angry Revnant's Bag");
+            Tooltip.SetDefault("<right> to open \n'All the essentials for impersonating the Raging Revnant!'");
         }
 
         public override void SetDefaults()
@@ -26,13 +26,13 @@ namespace AAMod.Items.Vanity.Blazen
         }
 
  		public override void RightClick(Player player)
-		{
-			player.QuickSpawnItem(ModContent.ItemType<BlazenHelmet>());
-            player.QuickSpawnItem(ModContent.ItemType<BlazenPlate>());
-            player.QuickSpawnItem(ModContent.ItemType<BlazenBoots>());
+        {
+            player.QuickSpawnItem(mod.ItemType("GibsSkull"));
+            player.QuickSpawnItem(mod.ItemType("GibsPlate"));
+            player.QuickSpawnItem(mod.ItemType("GibsShorts"));
             if (Main.hardMode)
             {
-                player.QuickSpawnItem(ModContent.ItemType<BlazenBooster>());
+                player.QuickSpawnItem(mod.ItemType("GibsJet"));
             }
         }
     }

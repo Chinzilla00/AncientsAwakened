@@ -10,7 +10,6 @@ using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.Zero.Protocol;
 using AAMod.NPCs.Bosses.Anubis.Forsaken;
-using AAMod.Items.Materials;
 using AAMod.Items.FishingItem;
 using BaseMod;
 using Microsoft.Xna.Framework;

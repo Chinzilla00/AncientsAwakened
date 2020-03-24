@@ -75,6 +75,7 @@ Hold down and jump to hover for an extended period of time
                 {
                     player.velocity.Y = 1E-05f;
                 }
+                player.wingFrameCounter++;
             }
 
             if (inUse)
@@ -97,6 +98,10 @@ Hold down and jump to hover for an extended period of time
             else
             {
                 player.wingFrame = 0;
+                if (player.velocity.Y != 0)
+                {
+                    player.wingFrame = 2;
+                }
             }
             return true;
         }

@@ -1,6 +1,5 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AAMod.Items.Vanity.Eliza
 {
@@ -34,21 +33,25 @@ namespace AAMod.Items.Vanity.Eliza
                 player.QuickSpawnItem(mod.ItemType("LizShirt"));
                 player.QuickSpawnItem(mod.ItemType("LizBoots"));
                 player.QuickSpawnItem(mod.ItemType("LizScarf"));
+                if (Main.hardMode)
+                {
+                    player.QuickSpawnItem(mod.ItemType("NightingaleWings"));
+                    player.QuickSpawnItem(ItemID.TwilightDye);
+                }
             }
             else
             {
                 player.QuickSpawnItem(mod.ItemType("LizHood"));
                 player.QuickSpawnItem(mod.ItemType("LizRobes"));
                 player.QuickSpawnItem(mod.ItemType("LizSkirt"));
+                if (Main.hardMode)
+                {
+                    player.QuickSpawnItem(mod.ItemType("DragonWings"));
+                    player.QuickSpawnItem(ItemID.TwilightDye);
+                }
             }
             player.QuickSpawnItem(mod.ItemType("RoyalStar"));
             player.QuickSpawnItem(ItemID.TwilightHairDye);
-
-            if (Main.expertMode)
-            {
-                player.QuickSpawnItem(mod.ItemType("NightingaleWings"));
-                player.QuickSpawnItem(ItemID.TwilightDye);
-            }
         }
     }
 }
