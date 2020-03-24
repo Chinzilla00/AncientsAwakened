@@ -57,19 +57,13 @@ namespace AAMod.NPCs.TownNPCs
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
-            if (!AAConfigClient.Instance.NoAATownNPC)
-            {
-                for (int k = 0; k < 255; k++)
-                {
-                    Player player = Main.player[k];
-                    if (player.active)
-                    {
-                        if (spawnable)
-                        {
-                            return true;
-                        }
-                    }
-                }
+			for (int k = 0; k < 255; k++)
+			{
+				Player player = Main.player[k];
+				if (player.active && spawnable)
+				{
+					return true;
+				}
 			}
 			return false;
 		}
