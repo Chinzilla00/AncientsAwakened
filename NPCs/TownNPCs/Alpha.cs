@@ -83,12 +83,10 @@ namespace AAMod.NPCs.TownNPCs
         {
             WeightedRandom<string> chat = new WeightedRandom<string>();
 
-            chat.Add("If I ever hear you say the phrase 'Kwispy', this game's rating will become AO real quick.");
-            chat.Add(@"You think I'm suspicious? I mean you could say I'm a bit
-
-Fishy");
-            chat.Add("Fun fact, I'm not actually a fish. I'm amphibious.");
-            chat.Add("Go ask Anubis about where to go, he's smarter than I am about stuff.");
+            chat.Add(Lang.TownNPCAlpha("AlphaChat1"));
+            chat.Add(Lang.TownNPCAlpha("AlphaChat2"));
+            chat.Add(Lang.TownNPCAlpha("AlphaChat3"));
+            chat.Add(Lang.TownNPCAlpha("AlphaChat4"));
 
 			return chat;
 		}
@@ -96,8 +94,8 @@ Fishy");
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{
-			button = "Vanity Shop";
-			button2 = "Weapon Shop";
+			button = Lang.TownNPCAlpha("AlphaButton1");
+			button2 = Lang.TownNPCAlpha("AlphaButton2");
 		}
 
 		public static bool VanityShop = true;

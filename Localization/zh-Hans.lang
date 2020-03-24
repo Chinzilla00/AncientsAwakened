@@ -2712,17 +2712,8 @@ ItemTooltip.ZeroTesseract=注.释.\n不.稳.定.  含.有.死.亡.缔.造.者.�
 
 // AAMod.Items.Currency
 
-ItemName.AncientCoin1=远古觉醒便士
-ItemTooltip.AncientCoin1=一枚刻着A的硬币
-
-ItemName.AncientCoin2=远古觉醒币
-ItemTooltip.AncientCoin2=一枚刻着A的红蓝相间硬币
-
-ItemName.AncientCoin3=远古觉醒大奖章
-ItemTooltip.AncientCoin3=一枚刻着A的紫罗兰色币
-
-ItemName.AncientCoinEX=远古觉醒大奖章EX
-ItemTooltip.AncientCoinEX=一枚刻着A的紫罗兰色币
+ItemName.AncientCoin=远古觉醒币
+ItemTooltip.AncientCoin=一枚刻着A的红蓝相间硬币
 
 ItemName.BloodRune=血浸符文
 ItemTooltip.BloodRune=一个据说浸染了古代生物鲜血的奇石
@@ -6168,17 +6159,8 @@ Common.GoblinSlayerShopMartianLoot=火星人事件掉落
 
 Common.PlayerBuyPrice=购买价格:
 
-Common.AncientCoin1=远古觉醒便士
-Common.AncientCoin1s=远古觉醒便士
-
-Common.AncientCoin2=远古觉醒币
-Common.AncientCoin2s=远古觉醒币
-
-Common.AncientCoin3=远古觉醒大奖章
-Common.AncientCoin3s=远古觉醒大奖章
-
-Common.AncientCoinEX=远古觉醒大奖章EX
-Common.AncientCoinEXs=远古觉醒大奖章EX
+Common.AncientCoin=远古觉醒币
+Common.AncientCoins=远古觉醒币
 
 Common.BloodRune=血浸符文
 Common.BloodRunes=血浸符文

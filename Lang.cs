@@ -361,6 +361,74 @@ namespace AAMod
             return"";
         }
 
+        public static string TownNPCAlpha(string Alpha)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+                {
+                    switch(Anubis)
+                    {
+                        case "AlphaButton1":
+                        return "开发者时装";
+                        case "AlphaButton2":
+                        return "开发者武器";
+
+                        case "AlphaChat1":
+                        return "如果我听到你说“Kwispy”这个词，这个游戏的评分会很快变成A0";
+                        case "AlphaChat2":
+                        return @"你觉得我很可疑？我知道你的意思是说我像条
+
+咸鱼";
+                        case "AlphaChat3":
+                        return "有趣的事实, 我并不是条鱼. 我是两栖类动物.";
+                        case "AlphaChat4":
+                        return "有问题去问阿努比斯，我只是个一无所知的开发者.";
+                    }
+                }
+            else if(Language.ActiveCulture == GameCulture.Russian)
+                {
+                    switch(Anubis)
+                    {
+                        case "AlphaButton1":
+                        return "Магазин украшений";
+                        case "AlphaButton2":
+                        return "Магазин оружий";
+
+                        case "AlphaChat1":
+                        return "Если я когда-либо услышу тебя говорящего 'Квиспи', рэйтинг этой игры быстро превратится в 18+ .";
+                        case "AlphaChat2":
+                        return @"Ты думаешь я подозрительный? В принципе ты можешь сказать, что я немного 
+                        
+рыбный";
+                        case "AlphaChat3":
+                        return "Забавный факт. Я не настоящая рыба. Я амфибия.";
+                        case "AlphaChat4":
+                        return "Спрашивай Анубиса о том, что делать дальше. Он разбирается лучше меня.";
+                    }
+                }
+            else
+                {
+                    switch(Anubis)
+                    {
+                        case "AlphaButton1":
+                        return "Vanity Shop";
+                        case "AlphaButton2":
+                        return "Weapon Shop";
+
+                        case "AlphaChat1":
+                        return "If I ever hear you say the phrase 'Kwispy', this game's rating will become AO real quick.";
+                        case "AlphaChat2":
+                        return @"You think I'm suspicious? I mean you could say I'm a bit
+
+Fishy";
+                        case "AlphaChat3":
+                        return "Fun fact, I'm not actually a fish. I'm amphibious.";
+                        case "AlphaChat4":
+                        return "Go ask Anubis about where to go, he's smarter than I am about stuff.";
+                    }
+                }
+            return"";
+        }
+
         public static string TownNPCAnubis(string Anubis)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
