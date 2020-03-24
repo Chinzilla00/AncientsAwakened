@@ -34,7 +34,6 @@ namespace AAMod.Items.Vanity.Eliza
                 player.QuickSpawnItem(mod.ItemType("LizShirt"));
                 player.QuickSpawnItem(mod.ItemType("LizBoots"));
                 player.QuickSpawnItem(mod.ItemType("LizScarf"));
-                player.QuickSpawnItem(mod.ItemType("RoyalStar"));
             }
             else
             {

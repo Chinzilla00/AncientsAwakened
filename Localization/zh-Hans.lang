@@ -4695,10 +4695,21 @@ ItemName.DellyWig=影发
 ItemTooltip.DellyWig=“非常适合冒充远古觉醒的开发者!”
 
 
-// AAMod.Items.Vanity.Eliza
+// AAMod.Items.Vanity.Eliza.Dragon
 
-ItemName.LizBag=黑暗龙宝藏袋
+ItemName.LizBag=末影龙宝藏袋
 ItemTooltip.LizBag=右键打开\n内含冒充龙之女皇的所有物品
+
+ItemName.LizHood=末影龙女兜帽
+ItemTooltip.LizHood=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.LizRobes=末影龙女宽袍
+ItemTooltip.LizRobes=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.LizSkirt=末影龙女短裙
+ItemTooltip.LizSkirt=“非常适合冒充远古觉醒的开发者!”
+
+// AAMod.Items.Vanity.Eliza.Cats
 
 ItemName.LizBoots=午夜猫装裤
 ItemTooltip.LizBoots=（译者注：快！女装！）\n“非常适合冒充远古觉醒的开发者!”
