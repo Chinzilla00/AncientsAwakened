@@ -3422,7 +3422,7 @@ ItemName.TerrorSoul=惊怖之魂
 ItemName.UraniumBar=铀绿锭
 
 ItemName.VikingRelic=维京海盗遗物
-ItemTooltip.VikingRelic=(骷髅王后,雪地地下，地图中显示背景色，实际为蓝白色，较难找)
+ItemTooltip.VikingRelic=(骷髅王后,雪地地下)
 
 ItemName.VoidEnergy=虚空能量
 ItemTooltip.VoidEnergy=黑暗和不稳定能量的奇点

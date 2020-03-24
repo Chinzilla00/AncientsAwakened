@@ -99,8 +99,9 @@ namespace AAMod.Projectiles.Shen
 				Main.dust[dustID].noGravity = true;
 			}
 
-            Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, boomType, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
-            Main.PlaySound(SoundID.Item62, (int)projectile.position.X, (int)projectile.position.Y);
+            int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, boomType, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+            Main.projectile[proj].melee = true;
+			Main.PlaySound(SoundID.Item62, (int)projectile.position.X, (int)projectile.position.Y);
         }
         
 

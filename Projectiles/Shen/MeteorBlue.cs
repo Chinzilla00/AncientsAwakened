@@ -26,7 +26,7 @@ namespace AAMod.Projectiles.Shen
             projectile.height = 10;
             projectile.friendly = true;
             projectile.tileCollide = false;
-            projectile.melee = true;
+            projectile.magic = true;
             projectile.extraUpdates = 2;
             projectile.aiStyle = 0;
         }
