@@ -2113,6 +2113,10 @@ Fishy";
                         return "打得不错, ";
                         case "Rajah9":
                         return ". 拿着你的奖励. ";
+
+                        case "SupremeRajahChat":
+                        return "王公兔在攻击时散发巨大的愤怒能量, 强化了他的防御";
+
                         case "SupremeRajahDefeat1":
                         return "呼...";
                         case "SupremeRajahDefeat2":
@@ -2836,6 +2840,9 @@ Fishy";
                         return "Неплохо сражался, ";
                         case "Rajah9":
                         return ". Бери награду.";
+
+                        case "SupremeRajahChat":
+                        return "Атакуя, Раджа горит яростной энергией, усиливая свою защиту";
 
                         case "SupremeRajahDefeat1":
                         return "Ргх...";
@@ -3569,6 +3576,9 @@ Fishy";
                         return "Well fought, ";
                         case "Rajah9":
                         return ". Take your reward.";
+
+                        case "SupremeRajahChat":
+                        return "Rajah glows with furious energy as he attacks, strengthening his defenses";
 
                         case "SupremeRajahDefeat1":
                         return "Rgh...";
