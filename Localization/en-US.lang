@@ -146,17 +146,8 @@ Common.WitchHoodBonus=Scorch and Burn.\n20% Increased Magic and Minion damage\n+
 
 Common.PlayerBuyPrice=Buy price:
 
-Common.AncientCoin1=Ancient Penny
-Common.AncientCoin1s=Ancient Pennies
-
-Common.AncientCoin2=Ancient Coin
-Common.AncientCoin2s=Ancient Coins
-
-Common.AncientCoin3=Ancient Medallion
-Common.AncientCoin3s=Ancient Medallions
-
-Common.AncientCoinEX=Ancient Medallion EX
-Common.AncientCoinEXs=Ancient Medallions EX
+Common.AncientCoin=Ancient Coin
+Common.AncientCoins=Ancient Coins
 
 Common.BloodRune=Blood Rune
 Common.BloodRunes=Blood Runes

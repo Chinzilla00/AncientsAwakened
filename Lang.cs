@@ -365,7 +365,7 @@ namespace AAMod
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
                 {
-                    switch(Anubis)
+                    switch(Alpha)
                     {
                         case "AlphaButton1":
                         return "开发者时装";
@@ -386,7 +386,7 @@ namespace AAMod
                 }
             else if(Language.ActiveCulture == GameCulture.Russian)
                 {
-                    switch(Anubis)
+                    switch(Alpha)
                     {
                         case "AlphaButton1":
                         return "Магазин украшений";
@@ -407,7 +407,7 @@ namespace AAMod
                 }
             else
                 {
-                    switch(Anubis)
+                    switch(Alpha)
                     {
                         case "AlphaButton1":
                         return "Vanity Shop";
