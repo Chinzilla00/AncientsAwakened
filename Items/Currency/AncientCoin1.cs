@@ -40,7 +40,7 @@ namespace AAMod.Items.Currency
                 color2.B,
                 Language.GetTextValue("Mods.AAMod.Common.PlayerBuyPrice"),
                 price,
-                price == 1 ? "Ancient Penny" : "s"
+                price == 1 ? Language.GetTextValue("Mods.AAMod.Common.AncientCoin1") : Language.GetTextValue("Mods.AAMod.Common.AncientCoin1s")
             });
         }
     }

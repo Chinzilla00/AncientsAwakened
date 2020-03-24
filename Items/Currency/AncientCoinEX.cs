@@ -71,7 +71,7 @@ namespace AAMod.Items.Currency
                 color2.B,
                 Language.GetTextValue("Mods.AAMod.Common.PlayerBuyPrice"),
                 price,
-                price == 1 ? "Ancient Coin" : "s"
+                price == 1 ? Language.GetTextValue("Mods.AAMod.Common.AncientCoinEX") : Language.GetTextValue("Mods.AAMod.Common.AncientCoinEXs")
             });
         }
     }

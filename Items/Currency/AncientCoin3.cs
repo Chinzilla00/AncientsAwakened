@@ -9,7 +9,7 @@ namespace AAMod.Items.Currency
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Ancient Medalion");
+            DisplayName.SetDefault("Ancient Medallion");
             Tooltip.SetDefault("A violet coin with an A engraved into it");
         }
 
@@ -40,7 +40,7 @@ namespace AAMod.Items.Currency
                 color2.B,
                 Language.GetTextValue("Mods.AAMod.Common.PlayerBuyPrice"),
                 price,
-                price == 1 ? "Ancient Coin" : "s"
+                price == 1 ? Language.GetTextValue("Mods.AAMod.Common.AncientCoin3") : Language.GetTextValue("Mods.AAMod.Common.AncientCoin3s")
             });
         }
     }
