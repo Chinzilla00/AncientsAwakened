@@ -28,10 +28,20 @@ namespace AAMod.Items.Vanity.Eliza
 
  		public override void RightClick(Player player)
         {
-            player.QuickSpawnItem(mod.ItemType("LizEars"));
-            player.QuickSpawnItem(mod.ItemType("LizShirt"));
-            player.QuickSpawnItem(mod.ItemType("LizBoots"));
-            player.QuickSpawnItem(mod.ItemType("LizScarf"));
+            if (Main.rand.Next(2) == 0)
+            {
+                player.QuickSpawnItem(mod.ItemType("LizEars"));
+                player.QuickSpawnItem(mod.ItemType("LizShirt"));
+                player.QuickSpawnItem(mod.ItemType("LizBoots"));
+                player.QuickSpawnItem(mod.ItemType("LizScarf"));
+                player.QuickSpawnItem(mod.ItemType("RoyalStar"));
+            }
+            else
+            {
+                player.QuickSpawnItem(mod.ItemType("LizHood"));
+                player.QuickSpawnItem(mod.ItemType("LizRobes"));
+                player.QuickSpawnItem(mod.ItemType("LizSkirt"));
+            }
             player.QuickSpawnItem(mod.ItemType("RoyalStar"));
             player.QuickSpawnItem(ItemID.TwilightHairDye);
 

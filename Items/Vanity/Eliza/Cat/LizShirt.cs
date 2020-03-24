@@ -1,19 +1,18 @@
 using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 using Terraria.ModLoader;
+using System.Collections.Generic;
 
-namespace AAMod.Items.Vanity.Eliza
+namespace AAMod.Items.Vanity.Eliza.Cat
 {
-    [AutoloadEquip(EquipType.Neck)]
-	public class LizScarf : BaseAAItem
-	{
-		public override void SetStaticDefaults()
-       
-		{
+    [AutoloadEquip(EquipType.Body)]
+    public class LizShirt : BaseAAItem
+    {
+        public override void SetStaticDefaults()
+        {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Midnight Scarf");
+            DisplayName.SetDefault("Midnight Cat Blouse");
             Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Devs!'");
-		}
+        }
 
 
 
@@ -28,14 +27,17 @@ namespace AAMod.Items.Vanity.Eliza
             }
         }
 
+        public override void DrawHands(ref bool drawHands, ref bool drawArms)
+        {
+            drawHands = true;
+        }
 
         public override void SetDefaults()
         {
-            item.width = 22;
-            item.height = 18;
+            item.width = 26;
+            item.height = 20;
             item.rare = 11;
             item.vanity = true;
-            item.accessory = true;
         }
     }
 }

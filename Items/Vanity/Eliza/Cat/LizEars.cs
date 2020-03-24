@@ -2,20 +2,19 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Vanity.Eliza
-
+namespace AAMod.Items.Vanity.Eliza.Cat
 {
-    [AutoloadEquip(EquipType.Body)]
-    public class LizShirt : BaseAAItem
-    {
-        public override void SetStaticDefaults()
+    [AutoloadEquip(EquipType.Head)]
+	public class LizEars : BaseAAItem
+	{
+		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Midnight Cat Blouse");
-            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Devs!'");
+            DisplayName.SetDefault("Midnight Cat Ears");
+            Tooltip.SetDefault(@"As opposed to normal cat ears
+'Great for impersonating Ancients Awakened Devs!'");
+
         }
-
-
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
@@ -28,17 +27,17 @@ namespace AAMod.Items.Vanity.Eliza
             }
         }
 
-        public override void DrawHands(ref bool drawHands, ref bool drawArms)
-        {
-            drawHands = true;
-        }
 
         public override void SetDefaults()
         {
-            item.width = 26;
+            item.width = 18;
             item.height = 20;
             item.rare = 11;
             item.vanity = true;
+        }
+        public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
+        {
+            drawHair = drawAltHair = true;  //this make so the player hair does not show when the vanity mask is equipped.  add true if you want to show the player hair.
         }
     }
 }
