@@ -4,7 +4,7 @@ Common.InvokerBookEX1=You can control the True ability of the Invoker now\nWhen 
 Common.InvokerBookEX2=\nAleister's note: \nI need more powerful souls, the doragon, the huge rabit, the strange machine, more, more! Defeat them!
 Common.InvokerBookEX3=\nLeft click to use the book. Summon the Invoked Caligula.
 
-Common.InvokerStaff1=Strange. All is strange. \nSwinging a weapon causes summon damage?\nReally?\nLegendry Weapon.
+Common.InvokerStaff1=Strange. All is strange. \nSwinging a weapon causes summon damage?\nReally?\nLegendry Weapon.  -Cerberus
 Common.InvokerStaff2=Left click to shoot a invoker bolt.\nRight click to banish all of the enemies according to your basic banish damage.\nBanishing enemies can heal you according to their maxlife.\nBut at what cost?\nLegendry Weapon.
 Common.InvokerDamage1= banish 
 Common.InvokerDamage2= summon 
@@ -146,17 +146,8 @@ Common.WitchHoodBonus=Scorch and Burn.\n20% Increased Magic and Minion damage\n+
 
 Common.PlayerBuyPrice=Buy price:
 
-Common.AncientCoin1=Ancient Penny
-Common.AncientCoin1s=Ancient Pennies
-
-Common.AncientCoin2=Ancient Coin
-Common.AncientCoin2s=Ancient Coins
-
-Common.AncientCoin3=Ancient Medallion
-Common.AncientCoin3s=Ancient Medallions
-
-Common.AncientCoinEX=Ancient Medallion EX
-Common.AncientCoinEXs=Ancient Medallions EX
+Common.AncientCoin=Ancient Coin
+Common.AncientCoins=Ancient Coins
 
 Common.BloodRune=Blood Rune
 Common.BloodRunes=Blood Runes
@@ -302,6 +293,8 @@ Common.ChaosLeggings= Chaos Leggings
 Common.ChaosChestpiece= Chaos Chestpiece
 Common.hardmodeanvil= hardmode anvil
 Common.hardmodeforge= hardmode forge
+Common.ShinyCharm= Shiny Charm
+Common.DevBag= Dev Bag
 
 //AAConfig
 

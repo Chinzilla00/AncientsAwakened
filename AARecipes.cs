@@ -1057,16 +1057,17 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AAMod:HForge", group21);
 
-            RecipeGroup group22 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " + "Shiny Charm", new int[]
+            RecipeGroup group22 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " + Language.GetTextValue("Mods.AAMod.Common.ShinyCharm"), new int[]
             {
                 AAMod.instance.ItemType("ShinyCharm"),
                 AAMod.instance.ItemType("ShinyCharmFish")
             });
             RecipeGroup.RegisterGroup("AAMod:ShinyCharm", group22);
 
-            RecipeGroup group23 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " + "Dev Bag", new int[]
+            RecipeGroup group23 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " + Language.GetTextValue("Mods.AAMod.Common.DevBag"), new int[]
             {
                 AAMod.instance.ItemType("AlphaBag"),
+                AAMod.instance.ItemType("InvokerBag"),
                 AAMod.instance.ItemType("CCBox"),
                 AAMod.instance.ItemType("BlazenBag"),
                 AAMod.instance.ItemType("AvesBag"),

@@ -2712,17 +2712,8 @@ ItemTooltip.ZeroTesseract=注.释.\n不.稳.定.  含.有.死.亡.缔.造.者.�
 
 // AAMod.Items.Currency
 
-ItemName.AncientCoin1=远古觉醒便士
-ItemTooltip.AncientCoin1=一枚刻着A的硬币
-
-ItemName.AncientCoin2=远古觉醒币
-ItemTooltip.AncientCoin2=一枚刻着A的红蓝相间硬币
-
-ItemName.AncientCoin3=远古觉醒大奖章
-ItemTooltip.AncientCoin3=一枚刻着A的紫罗兰色币
-
-ItemName.AncientCoinEX=远古觉醒大奖章EX
-ItemTooltip.AncientCoinEX=一枚刻着A的紫罗兰色币
+ItemName.AncientCoin=远古觉醒币
+ItemTooltip.AncientCoin=一枚刻着A的红蓝相间硬币
 
 ItemName.BloodRune=血浸符文
 ItemTooltip.BloodRune=一个据说浸染了古代生物鲜血的奇石
@@ -2938,7 +2929,7 @@ Common.InvokerBookEX3="\n左键使用这本书. 召唤出召唤兽卡利古拉."
 ItemName.InvokerStaff=阿莱斯特之杖
 
 Common.InvokerStaff1=奇怪了. 真是奇了怪了. \n挥动武器造成召唤伤害? \n当真如此? \n传奇武器
-Common.InvokerStaff2=左键发射召唤之矢.\n右键根据你的基础召唤伤害放逐所有的敌人.\n放逐敌人会根据它们的生命上限治愈你. \n但是代价是什么? \n传奇武器
+Common.InvokerStaff2=左键发射召唤之矢.\n右键根据你的基础召唤伤害放逐所有的敌人.\n放逐敌人会根据它们的生命上限治愈你. \n但是代价是什么? \n传奇武器 -Cerberus
 Common.InvokerDamage1= 放逐
 Common.InvokerDamage2= 召唤
 
@@ -6168,17 +6159,8 @@ Common.GoblinSlayerShopMartianLoot=火星人事件掉落
 
 Common.PlayerBuyPrice=购买价格:
 
-Common.AncientCoin1=远古觉醒便士
-Common.AncientCoin1s=远古觉醒便士
-
-Common.AncientCoin2=远古觉醒币
-Common.AncientCoin2s=远古觉醒币
-
-Common.AncientCoin3=远古觉醒大奖章
-Common.AncientCoin3s=远古觉醒大奖章
-
-Common.AncientCoinEX=远古觉醒大奖章EX
-Common.AncientCoinEXs=远古觉醒大奖章EX
+Common.AncientCoin=远古觉醒币
+Common.AncientCoins=远古觉醒币
 
 Common.BloodRune=血浸符文
 Common.BloodRunes=血浸符文
@@ -6302,6 +6284,8 @@ Common.ChaosLeggings=混沌级护腿
 Common.ChaosChestpiece=混沌级护胸
 Common.hardmodeanvil=困难模式砧
 Common.hardmodeforge=困难模式熔炉
+Common.ShinyCharm= 闪耀魔力
+Common.DevBag= 开发者包裹
 
 //GlobalNPCSInfo
 
