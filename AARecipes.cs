@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
+using AAMod.Items.Currency;
 
 namespace AAMod
 {
@@ -190,6 +191,36 @@ namespace AAMod
             recipe.AddIngredient(ItemID.EmptyBucket, 1);
             recipe.AddTile(ModContent.TileType<Tiles.Furniture.Razewood.RazewoodSink>());
             recipe.SetResult(ItemID.LavaBucket);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "AncientCoin1", 10);
+            recipe.SetResult(null, "AncientCoin2");
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "AncientCoin2", 10);
+            recipe.SetResult(null, "AncientCoin3");
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "AncientCoin3", 10);
+            recipe.SetResult(null, "AncientCoinEX");
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "AncientCoinEX", 1);
+            recipe.SetResult(null, "AncientCoin3", 10);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "AncientCoin3", 1);
+            recipe.SetResult(null, "AncientCoin2", 10);
+            recipe.AddRecipe();
+
+            recipe = GetNewRecipe();
+            recipe.AddIngredient(null, "AncientCoin2", 1);
+            recipe.SetResult(null, "AncientCoin1", 10);
             recipe.AddRecipe();
             #endregion
         }
@@ -1050,6 +1081,13 @@ namespace AAMod
                 ItemID.AdamantiteForge, ItemID.TitaniumForge
             });
             RecipeGroup.RegisterGroup("AAMod:HForge", group21);
+
+            RecipeGroup group22 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " + "Shiny Charm", new int[]
+            {
+                AAMod.instance.ItemType("ShinyCharm"),
+                AAMod.instance.ItemType("ShinyCharmFish")
+            });
+            RecipeGroup.RegisterGroup("AAMod:ShinyCharm", group22);
 
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {

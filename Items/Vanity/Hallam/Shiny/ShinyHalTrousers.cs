@@ -32,5 +32,14 @@ namespace AAMod.Items.Vanity.Hallam.Shiny
             item.rare = 9;
             item.vanity = true;
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "HalTrousers", 1);
+            recipe.AddRecipeGroup("AAMod:ShinyCharm");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

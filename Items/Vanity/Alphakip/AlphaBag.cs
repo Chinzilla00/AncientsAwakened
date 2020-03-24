@@ -1,6 +1,6 @@
 using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
+using AAMod.Items.Vanity.Alphakip.Shiny;
 
 namespace AAMod.Items.Vanity.Alphakip
 {
@@ -28,6 +28,18 @@ namespace AAMod.Items.Vanity.Alphakip
 
  		public override void RightClick(Player player)
 		{
+            if (player.GetModPlayer<AAPlayer>().ShinyCheck())
+            {
+                player.QuickSpawnItem(ModContent.ItemType<ShinyFishDiverMask>());
+                player.QuickSpawnItem(ModContent.ItemType<ShinyFishDiverJacket>());
+                player.QuickSpawnItem(ModContent.ItemType<ShinyFishDiverBoots>());
+                player.QuickSpawnItem(ModContent.ItemType<Pets.MudkipBallS>());
+                if (Main.hardMode)
+                {
+                    player.QuickSpawnItem(ModContent.ItemType<ShinyKipronWings>());
+                }
+                return;
+            }
 			player.QuickSpawnItem(ModContent.ItemType<FishDiverMask>());
             player.QuickSpawnItem(ModContent.ItemType<FishDiverJacket>());
             player.QuickSpawnItem(ModContent.ItemType<FishDiverBoots>());

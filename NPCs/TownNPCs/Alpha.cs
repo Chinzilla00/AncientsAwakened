@@ -6,7 +6,7 @@ using Terraria.Utilities;
 
 namespace AAMod.NPCs.TownNPCs
 {
-    /*[AutoloadHead]
+    [AutoloadHead]
 	public class Alpha : ModNPC
 	{
         public override string Texture => "AAMod/NPCs/TownNPCs/Alpha";
@@ -119,12 +119,48 @@ Fishy");
 		{
 			if (VanityShop)
 			{
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.CC.CCBox>());
+				shop.item[nextSlot].shopCustomPrice = new int?(5);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin1;
+				nextSlot++;
+
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Blazen.BlazenBag>());
+				shop.item[nextSlot].shopCustomPrice = new int?(3);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin2;
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Aves.AvesBag>());
+				shop.item[nextSlot].shopCustomPrice = new int?(3);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin2;
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Delly.DellyBag>());
+				shop.item[nextSlot].shopCustomPrice = new int?(3);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin2;
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Tied.OldMagiciansHat>());
+				shop.item[nextSlot].shopCustomPrice = new int?(3);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin2;
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Hallam.MagiciansHat>());
+				shop.item[nextSlot].shopCustomPrice = new int?(3);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin2;
+				nextSlot++;
+
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Alphakip.AlphaBag>());
-				shop.item[nextSlot].value = 50000;
+				shop.item[nextSlot].shopCustomPrice = new int?(3);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin3;
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Dallin.FezLordsBag>());
-				shop.item[nextSlot].value = 50000;
+				shop.item[nextSlot].shopCustomPrice = new int?(3);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin3;
 				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Eliza.LizBag>());
+				shop.item[nextSlot].shopCustomPrice = new int?(3);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin3;
+				nextSlot++;
+			}
+			else
+			{
+
 			}
 		}
 
@@ -159,5 +195,5 @@ Fishy");
             randomOffset = 2f;
 
         }
-    }*/
+    }
 }

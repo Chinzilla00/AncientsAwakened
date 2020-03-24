@@ -26,6 +26,10 @@ namespace AAMod
     public class AAMod : Mod
     {
         // Miscellaneous
+        public static int Coin1 = -1;
+        public static int Coin2 = -1;
+        public static int Coin3 = -1;
+        public static int CoinEX = -1;
         public static int GoblinSoul = -1;
         public static int BloodRune = -1;
         public static int PirateBooty = -1;
@@ -241,6 +245,10 @@ namespace AAMod
             Logger.InfoFormat("{0} AA log", Name);
 
             instance = this;
+            Coin1 = CustomCurrencyManager.RegisterCurrency(new Items.Currency.ACoin1(ModContent.ItemType<Items.Currency.AncientCoin1>()));
+            Coin2 = CustomCurrencyManager.RegisterCurrency(new Items.Currency.ACoin2(ModContent.ItemType<Items.Currency.AncientCoin2>()));
+            Coin3 = CustomCurrencyManager.RegisterCurrency(new Items.Currency.ACoin3(ModContent.ItemType<Items.Currency.AncientCoin3>()));
+            CoinEX = CustomCurrencyManager.RegisterCurrency(new Items.Currency.ACoinEX(ModContent.ItemType<Items.Currency.AncientCoinEX>()));
             GoblinSoul = CustomCurrencyManager.RegisterCurrency(new Items.Currency.GSouls(ModContent.ItemType<Items.Currency.GoblinSoul>()));
             BloodRune = CustomCurrencyManager.RegisterCurrency(new Items.Currency.BRune(ModContent.ItemType<Items.Currency.BloodRune>()));
             PirateBooty = CustomCurrencyManager.RegisterCurrency(new Items.Currency.PBooty(ModContent.ItemType<Items.Currency.PirateBooty>()));
@@ -376,7 +384,7 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata"), ItemType("YamataBox"), TileType("YamataBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Yamata2"), ItemType("YamataABox"), TileType("YamataABox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Terrarium"), ItemType("TerrariumBox"), TileType("TerrariumBox"));
-                //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingDragon"), ItemType("SDBox"), TileType("SDBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingDragon"), ItemType("SDBox"), TileType("SDBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/SleepingGiant"), ItemType("SGBox"), TileType("SGBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shen"), ItemType("ShenBox"), TileType("ShenBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/ShenA"), ItemType("ShenABox"), TileType("ShenABox"));

@@ -34,7 +34,6 @@ namespace AAMod.Items.Dyes
             item.value = BaseUtility.CalcValue(0, 10, 0, 0);			
         }
 
-
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

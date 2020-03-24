@@ -101,5 +101,14 @@ Hold down and jump to hover for an extended period of time
             }
             return true;
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "KipronWings", 1);
+            recipe.AddRecipeGroup("AAMod:ShinyCharm");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

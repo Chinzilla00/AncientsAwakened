@@ -38,7 +38,7 @@ namespace AAMod.Items.Vanity.Alphakip.Shiny
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "FishDiverJacket", 1);
-            recipe.AddIngredient(null, "ShinyCharm", 1);
+            recipe.AddRecipeGroup("AAMod:ShinyCharm");
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

@@ -10,6 +10,8 @@ using AAMod.NPCs.Bosses.Yamata.Awakened;
 using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.Zero.Protocol;
 using AAMod.NPCs.Bosses.Anubis.Forsaken;
+using AAMod.Items.Materials;
+using AAMod.Items.FishingItem;
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -830,8 +832,8 @@ namespace AAMod
 
             if (ChaosMe)
             {
-                npc.AddBuff(ModContent.BuffType<DragonFire>(), 180);
-                npc.AddBuff(ModContent.BuffType<HydraToxin>(), 180);
+                npc.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 180);
+                npc.AddBuff(ModContent.BuffType<Buffs.HydraToxin>(), 180);
             }
 
             if (BrokenCode)
@@ -943,7 +945,7 @@ namespace AAMod
 
             if (HeartP && player.statLife > (player.statLifeMax / 3))
             {
-                target.AddBuff(ModContent.BuffType<DragonFire>(), 600);
+                target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 600);
             }
             else if (HeartP && player.statLife < (player.statLifeMax / 3))
             {
@@ -952,7 +954,7 @@ namespace AAMod
 
             if (HeartS && player.statLife > (player.statLifeMax / 3))
             {
-                target.AddBuff(ModContent.BuffType<HydraToxin>(), 600);
+                target.AddBuff(ModContent.BuffType<Buffs.HydraToxin>(), 600);
             }
             else if (HeartS && player.statLife < (player.statLifeMax / 3))
             {
@@ -1061,9 +1063,9 @@ namespace AAMod
                 }
             }
 
-            if ((Main.rand.Next(3000) == 0 && liquidType == 0 && player.fishingSkill >= 100)|| (Main.rand.Next(1000) == 0 && player.accFishingLine && player.accTackleBox))
+            if ((Main.rand.Next(4096) == 0 && liquidType == 0 && player.fishingSkill >= 100)|| (Main.rand.Next(2048) == 0 && player.accFishingLine && player.accTackleBox))
             {
-                caughtType = mod.ItemType("ShinyCharmFish");
+                caughtType = ModContent.ItemType<ShinyCharmFish>();
             }
         }
 
@@ -2224,9 +2226,8 @@ namespace AAMod
                 switch (choice)
                 {
                     case 0:
-                        player.QuickSpawnItem(mod.ItemType("HalHat"));
-                        player.QuickSpawnItem(mod.ItemType("HalTux"));
-                        player.QuickSpawnItem(mod.ItemType("HalTrousers"));
+
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Hallam.MagiciansHat>());
 
                         if (dropType >= 4)
                         {
@@ -2237,51 +2238,16 @@ namespace AAMod
                         break;
 
                     case 1:
-                        string addonA = dropType == 4 ? "A" : "";
-
-                        if (dropType >= 4)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("AlphakipTerratool"));
-                        }
-
-                        if (Main.rand.Next(4000) == 0)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("MudkipBall"));
-
-                            if (dropType < 3)
-                            {
-                                player.QuickSpawnItem(mod.ItemType("ShinyFishDiverMask" + addonA));
-                                player.QuickSpawnItem(mod.ItemType("ShinyFishDiverJacket" + addonA));
-                                player.QuickSpawnItem(mod.ItemType("ShinyFishDiverBoots" + addonA));
-                            }
-
-                            if (dropType >= 1)
-                            {
-                                player.QuickSpawnItem(mod.ItemType("ShinyKipronWings"));
-                            }
-
-                            if (dropType >= 3)
-                            {
-                                player.QuickSpawnItem(mod.ItemType("AmphibianLongsword" + addonEX + "S"));
-                            }
-
-                            spawnedDevItems = true;
-                            break;
-                        }
-
-                        player.QuickSpawnItem(mod.ItemType("MudkipBall"));
-                        player.QuickSpawnItem(mod.ItemType("FishDiverMask" + addonA));
-                        player.QuickSpawnItem(mod.ItemType("FishDiverJacket" + addonA));
-                        player.QuickSpawnItem(mod.ItemType("FishDiverBoots" + addonA));
-
-                        if (dropType >= 1)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("KipronWings"));
-                        }
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Alphakip.AlphaBag>());
 
                         if (dropType >= 3)
                         {
                             player.QuickSpawnItem(mod.ItemType("AmphibianLongsword" + addonEX));
+                        }
+
+                        if (dropType >= 4)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("AlphakipTerratool"));
                         }
 
                         spawnedDevItems = true;
@@ -2352,11 +2318,7 @@ namespace AAMod
                         break;
 
                     case 7:
-                        if (dropType >= 3)
-                        {
-                            player.QuickSpawnItem(mod.ItemType(dropType == 4 ? "DragonShell" : "CharlieShell"));
-                            spawnedDevItems = true;
-                        }
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Delly.DellyBag>());
 
                         break;
 
@@ -2396,18 +2358,8 @@ namespace AAMod
                         {
                             player.QuickSpawnItem(mod.ItemType("LizTerratool"));
                         }
-                        player.QuickSpawnItem(mod.ItemType("LizEars"));
-                        player.QuickSpawnItem(mod.ItemType("LizShirt"));
-                        player.QuickSpawnItem(mod.ItemType("LizBoots"));
-                        player.QuickSpawnItem(mod.ItemType("LizScarf"));
-                        player.QuickSpawnItem(mod.ItemType("RoyalStar"));
-                        player.QuickSpawnItem(ItemID.TwilightHairDye);
 
-                        if (dropType >= 1)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("NightingaleWings"));
-                            player.QuickSpawnItem(ItemID.TwilightDye);
-                        }
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Eliza.LizBag>());
 
                         if (dropType >= 3)
                         {
@@ -2418,14 +2370,8 @@ namespace AAMod
                         break;
 
                     case 12:
-                        player.QuickSpawnItem(mod.ItemType("DJDuckHead"));
-                        player.QuickSpawnItem(mod.ItemType("DJDuckShirt"));
-                        player.QuickSpawnItem(mod.ItemType("DJDuckPants"));
 
-                        if (dropType >= 1)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("DuckstepWings"));
-                        }
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Aves.AvesBag>());
 
                         if (dropType >= 3)
                         {
@@ -2436,9 +2382,8 @@ namespace AAMod
                         break;
 
                     case 13:
-                        player.QuickSpawnItem(mod.ItemType("TiedHat"));
-                        player.QuickSpawnItem(mod.ItemType("TiedHalTux"));
-                        player.QuickSpawnItem(mod.ItemType("TiedTrousers"));
+
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Tied.OldMagiciansHat>());
 
                         if (dropType >= 3)
                         {
@@ -2491,8 +2436,8 @@ namespace AAMod
                         break;
 
                     case 16:
-                        player.QuickSpawnItem(mod.ItemType("GroxNote"));
 
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.CC.CCBox>());
                         spawnedDevItems = true;
                         break;
 
@@ -2564,14 +2509,12 @@ namespace AAMod
                         break;
 
                     case 22:
-                        player.QuickSpawnItem(mod.ItemType("BlazenHelmet"));
-                        player.QuickSpawnItem(mod.ItemType("BlazenPlate"));
-                        player.QuickSpawnItem(mod.ItemType("BlazenBoots"));
+
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Blazen.BlazenBag>());
 
                         if (dropType >= 1)
                         {
                             player.QuickSpawnItem(mod.ItemType("ThunderLord" + addonEX));
-                            player.QuickSpawnItem(mod.ItemType("BlazenBooster"));
                         }
 
                         spawnedDevItems = true;
@@ -2608,14 +2551,8 @@ namespace AAMod
                         break;
 
                     case 26:
-                        player.QuickSpawnItem(mod.ItemType("InvokerRobe"));
-                        player.QuickSpawnItem(mod.ItemType("InvokerPants"));
-                        player.QuickSpawnItem(mod.ItemType("InvokerHood"));
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Cerberus.InvokerBag>());
 
-                        if (dropType >= 1)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("CerberusWhistle"));
-                        }
                         if (dropType >= 3)
                         {
                             player.QuickSpawnItem(mod.ItemType("InvokerStaff"));
@@ -2628,18 +2565,6 @@ namespace AAMod
                         {
                             player.QuickSpawnItem(mod.ItemType("GameRaider"));
                         }
-
-                        spawnedDevItems = true;
-                        break;
-                    case 28:
-                        player.QuickSpawnItem(mod.ItemType("CCHood"));
-                        player.QuickSpawnItem(mod.ItemType("CCRobe"));
-                        spawnedDevItems = true;
-                        break;
-                    case 29:
-                        player.QuickSpawnItem(mod.ItemType("DellyWig"));
-                        player.QuickSpawnItem(mod.ItemType("DellyShirt"));
-                        player.QuickSpawnItem(mod.ItemType("DellyBoots"));
 
                         spawnedDevItems = true;
                         break;
@@ -2852,6 +2777,29 @@ namespace AAMod
             }
         }
 
+        public bool ShinyCheck()
+        {
+            for (int i = 0; i < 58; i++)
+            {
+                Item item = player.inventory[i];
+                if (item.type == mod.ItemType("ShinyCharm"))
+                {
+                    if (Main.rand.Next(2048) == 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+            }
+            if (Main.rand.Next(4096) == 0)
+                return true;
+
+            return false;
+        }
         public int IZHoldTimer = 180;
         public bool InfZ = false;
         public int GetIZHealth = 2500000;

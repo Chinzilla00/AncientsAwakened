@@ -30,7 +30,8 @@ namespace AAMod.Items.Vanity.Dallin
 			player.QuickSpawnItem(ItemID.Fez);	
 			player.QuickSpawnItem(ItemID.TheDoctorsShirt);		
 			player.QuickSpawnItem(ItemID.TheDoctorsPants);
-			player.QuickSpawnItem(ItemID.ReflectiveDye, 3);			
+			player.QuickSpawnItem(ItemID.ReflectiveDye, 3);
+            player.QuickSpawnItem(mod.ItemType("K9Collar"));
         }
     }
 }
