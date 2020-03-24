@@ -167,7 +167,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 if (npc.ai[3] != 0 && !DefenseLine && !AAWorld.downedRajahsRevenge && Main.netMode != 1)
                 {
                     DefenseLine = true;
-                    BaseUtility.Chat("Rajah glows with furious energy as he attacks, strengthening his defenses", Color.MediumPurple);
+                    BaseUtility.Chat(Lang.BossChat("SupremeRajahChat"), Color.MediumPurple);
 
                 }
                 if (npc.life <= npc.lifeMax / 7 && !SayLine && Main.netMode != 1)
