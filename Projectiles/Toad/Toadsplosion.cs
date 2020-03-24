@@ -22,7 +22,7 @@ namespace AAMod.Projectiles.Toad
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.timeLeft = 600;
-            projectile.melee = true;
+            projectile.magic = true;
             projectile.usesLocalNPCImmunity = true;
             projectile.localNPCHitCooldown = 20;
         }

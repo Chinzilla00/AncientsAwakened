@@ -24,7 +24,7 @@ namespace AAMod.Projectiles.Yamata
             projectile.height = 30;
             projectile.friendly = true;
             projectile.hostile = false;
-            projectile.melee = true;
+            projectile.ranged = true;
             projectile.tileCollide = true;
             projectile.ignoreWater = true;
             projectile.timeLeft = 500;

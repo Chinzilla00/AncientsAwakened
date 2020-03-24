@@ -174,6 +174,8 @@ namespace AAMod.Projectiles.Yamata
                     num629 *= 10f;
                     int p = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, num628, num629, ModContent.ProjectileType<YWSplit>(), projectile.damage * 3, (int)(projectile.knockBack * 0.35), Main.myPlayer, 0f, 0f);
                     num3 = num627;
+                    Main.projectile[p].melee = false;
+                    Main.projectile[p].magic = true;
                     Main.projectile[p].timeLeft = 240;
                 }
             }

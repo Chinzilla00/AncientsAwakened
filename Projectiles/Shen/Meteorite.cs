@@ -78,11 +78,13 @@ namespace AAMod.Projectiles.Shen
             }
             if (TileHit)
             {
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 20, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("MeteorStrike"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 20, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("MeteorStrike"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                Main.projectile[proj].melee = true;
             }
             if (EnemyHit)
             {
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 20, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("MeteorBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                int proj = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y + 20, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("MeteorBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                Main.projectile[proj].melee = true;
             }
         }
         
