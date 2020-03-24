@@ -2929,7 +2929,7 @@ Common.InvokerBookEX3="\n左键使用这本书. 召唤出召唤兽卡利古拉."
 ItemName.InvokerStaff=阿莱斯特之杖
 
 Common.InvokerStaff1=奇怪了. 真是奇了怪了. \n挥动武器造成召唤伤害? \n当真如此? \n传奇武器
-Common.InvokerStaff2=左键发射召唤之矢.\n右键根据你的基础召唤伤害放逐所有的敌人.\n放逐敌人会根据它们的生命上限治愈你. \n但是代价是什么? \n传奇武器
+Common.InvokerStaff2=左键发射召唤之矢.\n右键根据你的基础召唤伤害放逐所有的敌人.\n放逐敌人会根据它们的生命上限治愈你. \n但是代价是什么? \n传奇武器 -Cerberus
 Common.InvokerDamage1= 放逐
 Common.InvokerDamage2= 召唤
 
@@ -6284,6 +6284,8 @@ Common.ChaosLeggings=混沌级护腿
 Common.ChaosChestpiece=混沌级护胸
 Common.hardmodeanvil=困难模式砧
 Common.hardmodeforge=困难模式熔炉
+Common.ShinyCharm= 闪耀魔力
+Common.DevBag= 开发者包裹
 
 //GlobalNPCSInfo
 

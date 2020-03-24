@@ -123,6 +123,11 @@ namespace AAMod.NPCs.TownNPCs
 				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
 				nextSlot++;
 
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Cerberus.InvokerBag>());
+				shop.item[nextSlot].shopCustomPrice = new int?(10);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
+				nextSlot++;
+
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Blazen.BlazenBag>());
 				shop.item[nextSlot].shopCustomPrice = new int?(15);
 				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
@@ -173,6 +178,10 @@ namespace AAMod.NPCs.TownNPCs
 					shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
 					nextSlot++;
 					shop.item[nextSlot].SetDefaults(ModContent.ItemType<GameRaider>());
+					shop.item[nextSlot].shopCustomPrice = new int?(25);
+					shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
+					nextSlot++;
+					shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Dev.Invoker.InvokerStaff>());
 					shop.item[nextSlot].shopCustomPrice = new int?(25);
 					shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
 					nextSlot++;
