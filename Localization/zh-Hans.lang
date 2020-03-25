@@ -2947,7 +2947,7 @@ ItemTooltip.AlphakipTerratool=右键切换工具类型\n现在你可以同时使
 ItemName.LizTerratool=Liz的格拉希姆万用工具
 ItemTooltip.LizTerratool=右键切换工具类型\n现在你可以同时使用两种工具类型
 
-ItemName.GroviteTerratool=Gibs的辉绿光岩万用工具
+ItemName.GroviteTerratool=Grox的辉绿光岩万用工具
 ItemTooltip.GroviteTerratool=右键切换工具类型\n现在你可以同时使用两种工具类型
 
 ItemName.StormTest=【开发者】Storm Test
@@ -4762,6 +4762,8 @@ ItemTooltip.GibsJet=允许飞行和滑翔\n按住下和跳跃键可以悬停一�
 
 // AAMod.Items.Vanity.Grox
 
+ItemName.GroviteSeaChest=辉绿海匣
+ItemTooltip.GroviteSeaChest=右键打开\n内含冒充愤怒代码海盗的所有物品
 
 ItemName.AngryPirateBoots=愤怒海盗的护腿
 ItemTooltip.AngryPirateBoots=这个护腿中放射出对无法编号鱼的愤怒\n“非常适合冒充远古觉醒的开发者!”
@@ -4813,6 +4815,9 @@ ItemName.CursedRobe=诅咒收割者宽袍
 ItemTooltip.CursedRobe=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Moon
+
+ItemName.MoonBag=月虫包裹
+ItemTooltip.MoonBag=右键打开\n内含冒充月光蜂的所有物品
 
 ItemName.MoonBoots=明月靴
 ItemTooltip.MoonBoots=传说中的月亮魔法之靴\n“非常适合冒充远古觉醒的开发者!”
@@ -4902,6 +4907,11 @@ ItemTooltip.DarkPants=闻起来像花和…蜂蜜?\n“非常适合冒充远古�
 
 ItemName.DarkShirt=暗之花短裙
 ItemTooltip.DarkShirt=闻起来像花和…蜂蜜?\n“非常适合冒充远古觉醒的开发者!”
+
+// AAMod.Items.Vanity.Ohno
+
+ItemName.ono=哦NO
+ItemTooltip.ono=哦NO
 
 // AAMod.Items.Vanity
 
