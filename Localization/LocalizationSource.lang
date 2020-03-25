@@ -3992,6 +3992,8 @@ ItemTooltip.GibsSkull='Great for impersonating Ancients Awakened Developers!'
 
 // AAMod.Items.Vanity.Grox
 
+ItemName.GroviteSeaChest=Grovite Sea Chest
+ItemTooltip.GroviteSeaChest=<right> to open \n'All the essentials for impersonating the Angry Code Pirate!'
 
 ItemName.AngryPirateBoots=Angry Pirate's Legguards
 ItemTooltip.AngryPirateBoots=Hatred towards fish that can't code radiates from these boots.\n'Great for impersonating Ancients Awakened Devs!'
@@ -4110,6 +4112,8 @@ ItemTooltip.MikpinWig='Great for impersonating Ancients Awakened Testers!'
 
 // AAMod.Items.Vanity.Moon
 
+ItemName.MoonBag=Lunar Insect's Bag
+ItemTooltip.MoonBag=<right> to open \n'All the essentials for impersonating the Moon Bee!'
 
 ItemName.MoonBoots=Lunar Boots
 ItemTooltip.MoonBoots=The boots of a legendary lunar mage\n'Great for impersonating Ancients Awakened Devs!'
@@ -4161,6 +4165,11 @@ ItemTooltip.CursedPants='Great for impersonating Ancients Awakened Contributors!
 
 ItemName.CursedRobe=Cursed Reaper Robe
 ItemTooltip.CursedRobe='Great for impersonating Ancients Awakened Contributors!'
+
+// AAMod.Items.Vanity.Ohno
+
+ItemName.ono=ono
+ItemTooltip.ono=ono
 
 
 // AAMod.Items.Walls
