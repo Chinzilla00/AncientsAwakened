@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -111,6 +112,27 @@ namespace AAMod.Backgrounds
         public override bool IsActive()
         {
             return Active || Intensity > 0.001f;
+        }
+    }
+
+    public class MireSkyData : ScreenShaderData
+    {
+        public MireSkyData(string passName) : base(passName)
+        {
+        }
+
+        private void UpdateMireSky()
+        {
+            if (AAWorld.mireTiles < 100)
+            {
+                return;
+            }
+        }
+
+        public override void Apply()
+        {
+            UpdateMireSky();
+            base.Apply();
         }
     }
 }
