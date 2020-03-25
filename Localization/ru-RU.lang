@@ -2,1721 +2,1720 @@
 // AAMod.Buffs
 
 
-BuffName.AsheFlame=Ashe Flame
-BuffDescription.AsheFlame=You get the flame power of inferno
+BuffName.AsheFlame=Огни Аше
+BuffDescription.AsheFlame=Вы получаете силу огня Инферно
 
-BuffName.Athena=Athena
-BuffDescription.Athena='I'll help you, but but I'll still thrash you someday.'
+BuffName.Athena=Афина
+BuffDescription.Athena=Я помогу тебе, н-но все равно уничтожу тебя когда-нибудь
 
-BuffName.AtlanteanBuff=Atlantean Power
-BuffDescription.AtlanteanBuff=Your magic abilities are increased
+BuffName.AtlanteanBuff=Атлантическая Сила
+BuffDescription.AtlanteanBuff=Ваши магические способности увеличены
 
-BuffName.BabyPhoenix=Baby Phoenix
-BuffDescription.BabyPhoenix=Summons a baby phoenix to fight for you
+BuffName.BabyPhoenix=Малыш Феникс
+BuffDescription.BabyPhoenix=Призывает малыша феникса сражаться за вас
 
-BuffName.BlazingPain=Scorching Pain
-BuffDescription.BlazingPain=Fire debuffs inflict double damage on you
+BuffName.BlazingPain=Палящая боль
+BuffDescription.BlazingPain=Огненные дебаффы наносят вам двойной урон
 
-BuffName.BoomBoi=Boomer
-BuffDescription.BoomBoi=Doesn't actually explode...Yet.
+BuffName.BoomBoi=БУМер
+BuffDescription.BoomBoi=На самом деле не взрывается...пока что.
 
-BuffName.BrokenArmor=Broken Armor
+BuffName.BrokenArmor=Сломанная броня
 
-BuffName.Broodmini=Broodmini
-BuffDescription.Broodmini=Smol bab
+BuffName.Broodmini=Мини-Мать Стаи
+BuffDescription.Broodmini=Милаха
 
-BuffName.BurningAsh=Burning Ash
-BuffDescription.BurningAsh=Ash is melting your skin
+BuffName.BurningAsh=Горящий пепел
+BuffDescription.BurningAsh=Пепел сжигает вашу кожу
 
-BuffName.Cerberus=Cerberus
-BuffDescription.Cerberus='Aww, that isn't so scary!'
+BuffName.Cerberus=Цербер
+BuffDescription.Cerberus=Авв, это даже не страшно
 
-BuffName.ChaosBuff=Chaotic Fury
-BuffDescription.ChaosBuff=Your magic abilities are increased substantially
+BuffName.ChaosBuff=Хаотическая Ярость
+BuffDescription.ChaosBuff=В основном, ваши магические способности увеличены
 
-BuffName.ChaosClaw=Discordian Claw
-BuffDescription.ChaosClaw=Summons a discordian claw to fight for you
+BuffName.ChaosClaw=Коготь Раздора
+BuffDescription.ChaosClaw=Призывает Коготь Раздора сражаться за вас
 
-BuffName.ChaosWrath=Chaotic Wrath
-BuffDescription.ChaosWrath=Pain only makes you stronger
+BuffName.ChaosWrath=Хаотический Гнев
+BuffDescription.ChaosWrath=Боль делает вас сильнее
 
-BuffName.Clueless=Fog
-BuffDescription.Clueless=You can't see a thing
+BuffName.Clueless=Туман
+BuffDescription.Clueless=Ничего не видно
 
-BuffName.CrasyLucky=Lucky?
-BuffDescription.CrasyLucky=You feel the world around you become strange
+BuffName.CrasyLucky=Везучий?
+BuffDescription.CrasyLucky=Вы чувстуете, как мир вокруг вас становиться странным
 
-BuffName.CrimeraMinion=Crimtane Crimera
-BuffDescription.CrimeraMinion=Summons a crimtane crimera to fight for you
+BuffName.CrimeraMinion=Кримтановая Кримера
+BuffDescription.CrimeraMinion=Призывает Кримтановую Кримеру сражаться за вас
 
-BuffName.CrowMinion=Crow
-BuffDescription.CrowMinion=Summons a vicious crow to fight for you
+BuffName.CrowMinion=Ворона
+BuffDescription.CrowMinion=Призывает злобную ворону сражаться за вас
 
-BuffName.CursedHellfire=Cursed Hellfire
-BuffDescription.CursedHellfire=Your flesh and blood are burning away
+BuffName.CursedHellfire=Проклятый Адский огонь
+BuffDescription.CursedHellfire=Ваша плоть и кровь сгорают
 
-BuffName.DapperSquirrel=Dapper Squirrel
-BuffDescription.DapperSquirrel=Now with funny hats
+BuffName.DapperSquirrel=Белка с цилиндром
+BuffDescription.DapperSquirrel=Теперь с смешными шляпами
 
-BuffName.DarkCurse=Dark Curse
-BuffDescription.DarkCurse=You deal significanlty less damage!
+BuffName.DarkCurse=Темное Проклятие
+BuffDescription.DarkCurse=Вы наносите существенно меньше урона!
 
-BuffName.DarkLock=Dark Lock
-BuffDescription.DarkLock=You're locked in place by darkness!
+BuffName.DarkLock=Темный Замок
+BuffDescription.DarkLock=Тьма держит вас в одном месте
 
-BuffName.DemonBuff=Demon Lord
-BuffDescription.DemonBuff=You command a small imp that follows you around.
+BuffName.DemonBuff=Лорд Демон
+BuffDescription.DemonBuff=Вы коммандируете маленьким чертенком, который следует за вами
 
-BuffName.DemonMinion=Demon Buddy
-BuffDescription.DemonMinion=Summons a demon to fight for you
+BuffName.DemonMinion=Демон
+BuffDescription.DemonMinion=Призывает демона сражаться за вас
 
-BuffName.DestinedToDie=Destined To Die
+BuffName.DestinedToDie=Решено умереть
 
-BuffName.DevilMinion=Devil Servant
-BuffDescription.DevilMinion=Summons a devil to fight for you
+BuffName.DevilMinion=Красный Дьявол
+BuffDescription.DevilMinion=Призывает красного дьявола сражаться за вас
 
-BuffName.DiscordInferno=Discordian Inferno
-BuffDescription.DiscordInferno=Your soul is tearing itself apart
+BuffName.DiscordInferno=Пламя Раздора
+BuffDescription.DiscordInferno=Ваша душа разывает себя на части
 
-BuffName.DoomiteProbe=Doomite Probe
-BuffDescription.DoomiteProbe=Summons a doomite probe to fight for you
+BuffName.DoomiteProbe=Роковой Зонд
+BuffDescription.DoomiteProbe=Призывает Роковой Зонд сражаться за вас
 
-BuffName.DoomiteProbeC=Doomite Radio Probe
-BuffDescription.DoomiteProbeC=Summons a doomite radio probe to fight for you
+BuffName.DoomiteProbeC=Роковой Радио Зонд
+BuffDescription.DoomiteProbeC=Призывает Роковой Радио Зонд сражаться за вас
 
-BuffName.DragonFire=Dragon Fire
-BuffDescription.DragonFire=Reduced Damage
+BBuffName.DragonFire=Пламя Дракона
+BuffDescription.DragonFire=Уменьшен урон
 
-BuffName.DragonfireFlaskBuff=Weapon Imbue: Dragonfire
-BuffDescription.DragonfireFlaskBuff=Melee attacks inflict Dragonfire
+BuffName.DragonfireFlaskBuff=Усиление оружия: Пламя Дракона
+BuffDescription.DragonfireFlaskBuff=Оружия ближнего боя накладывают пламя дракона
 
-BuffName.DragonMinion=Flame Dragon
-BuffDescription.DragonMinion=Summons a dragon to fight for you
+BuffName.DragonMinion=Огненный Дракон
+BuffDescription.DragonMinion=Призывает дракона сражаться за вас
 
-BuffName.DragonSoul=Dragon Soul
-BuffDescription.DragonSoul=Burns with the rage of a dragon
+BuffName.DragonSoul=Душа Дракона
+BuffDescription.DragonSoul=Горит гневом дракона
 
-BuffName.DragonSpirit=Dragon Spirit
-BuffDescription.DragonSpirit=Summons a Dragon Spirit to fight for you
+BuffName.DragonSpirit=Дух Дракона
+BuffDescription.DragonSpirit=Призывает Дух Дракона сражаться за вас
 
-BuffName.DustDevil=Dust Devil
-BuffDescription.DustDevil=Summons a dust devil to fight for you
+BuffName.DustDevil=Пыльный Дьявол
+BuffDescription.DustDevil=Призывает Пыльного Дьявола сражаться за вас
 
-BuffName.DynaEnergy1=Dyna-Energy
+BuffName.DynaEnergy1=Дина-Энергия
 
-BuffName.DynaEnergy2=Dyna-Energy
+BuffName.DynaEnergy2=Дина-Энергия
 
-BuffName.EaterMinion=Demon Eater
-BuffDescription.EaterMinion=Summons a demonite eater to fight for you
+BuffName.EaterMinion=Демонитовый Пожиратель
+BuffDescription.EaterMinion=Призывает Демонитовго Пожирателя сражаться за вас
 
-BuffName.Electrified=Electrified
+BuffName.Electrified=Электризован
 
-BuffName.EnderMinionBuff=Ender Minion
-BuffDescription.EnderMinionBuff=Summons a conflagrate construct to fight for you
+BuffName.EnderMinionBuff=Эндер Миньон
+BuffDescription.EnderMinionBuff=Призывает Пожарного Констракта сражаться за вас
 
-BuffName.EnderMinionBuffEX=Ender Minion EX
-BuffDescription.EnderMinionBuffEX=Summons a terra construct to fight for you
+BuffName.EnderMinionBuffEX=Эндер Миньон
+BuffDescription.EnderMinionBuffEX=Призывает Терра Констракта сражаться за вас
 
-BuffName.EyeOfForsaken=Eye of the Forsaken
-BuffDescription.EyeOfForsaken=Eye of the Forsaken is protecting you\nDamage and speed are increased
+BuffName.EyeOfForsaken=Глаз Забытого
+BuffDescription.EyeOfForsaken=Глаз Забытого защищает вас\nУрон и скорость увеличены
 
-BuffName.EyeOfJudgement=Eye of Judgement
-BuffDescription.EyeOfJudgement=Eye of Judgement is protecting you\nDamage and speed are increased
+BuffName.EyeOfJudgement=Глаз Справедливости
+BuffDescription.EyeOfJudgement=Глаз Справедливости защищает вас\nУрон и скорость увеличены
 
-BuffName.Falling=Falling
+BuffName.Falling=Падение
 
-BuffName.FireSpirit=Fire Spirit
-BuffDescription.FireSpirit=Daz Hot
+BuffName.FireSpirit=Дух Огня
+BuffDescription.FireSpirit=Горячь
 
-BuffName.Fishnado=Fishnado
-BuffDescription.Fishnado=Summons a fishnado to fight for you
+BuffName.Fishnado=Рыбонадо
+BuffDescription.Fishnado=Призывает рыбонадо сражаться за вас
 
-BuffName.FlameSoul=Flame Soul
-BuffDescription.FlameSoul=The weaker you are, the harder it fights
+BuffName.FlameSoul=Душа Пламени
+BuffDescription.FlameSoul=Чем слабее вы, тем сильнее она сражается
 
-BuffName.Forsaken=Forsaken
-BuffDescription.Forsaken=You are forsaken
+BuffName.Forsaken=Забытый
+BuffDescription.Forsaken=Вы забыты
 
-BuffName.ForsakenFlames=Forsaken Flames
-BuffDescription.ForsakenFlames=Your sins manifest upon your flesh as flames
+BuffName.ForsakenFlames=Забытые Огни
+BuffDescription.ForsakenFlames=Вы чувствуете на себе тяжесть грехов...и то как огни сжигают их вместе с вами
 
-BuffName.ForsakenWeak=Forsaken Weakening
-BuffDescription.ForsakenWeak=Weakens enemy contact damage
+BuffName.ForsakenWeak=Забытое Ослабление
+BuffDescription.ForsakenWeak=Ослабляет урон касанием
 
-BuffName.Glitched=Glitched
-BuffDescription.Glitched=Your head is like 10 feet in front of you
+BuffName.Glitched=Заглючил
+BuffDescription.Glitched=Ваша голова в 3 метрах от вас
 
-BuffName.Glowmoss=Glowmoss Ball
-BuffDescription.Glowmoss=Don't ask what makes it glows. Trust me.
+BuffName.Glowmoss=Светящиеся Мох
+BuffDescription.Glowmoss=Не спрашивай из-за чего он светиться
 
-BuffName.GripMinion=Grips of Chaos
-BuffDescription.GripMinion=Summons a chaos claw to fight for you
+BuffName.GripMinion=Когти Хаоса
+BuffDescription.GripMinion=Призывает коготь хаоса сражаться за вас
 
-BuffName.HallowedPrism=Hallow Prism
-BuffDescription.HallowedPrism=Summons a prism to fight for you
+BuffName.HallowedPrism=Святая Призма
+BuffDescription.HallowedPrism=Призывает Призму сражаться за вас
 
-BuffName.Hunted=Hunted
-BuffDescription.Hunted=You are being hunted by an abyssal creature\nFlight time and run speed reduced
+BuffName.Hunted=Добыча
+BuffDescription.Hunted=На вас охотиться существо бездны\nВремя полета и скорость снижены
 
-BuffName.HydraToxin=Hydra Toxin
+BuffName.HydraToxin=Гидратоксин
 BuffDescription.HydraToxin=The longer you have it, the faster it festers and eats you away
 
-BuffName.HydratoxinFlaskBuff=Weapon Imbue: Hydratoxin
-BuffDescription.HydratoxinFlaskBuff=Melee attacks inflict hydratoxin
+BuffName.HydratoxinFlaskBuff=Усиление оружия: Гидратоксин
+BuffDescription.HydratoxinFlaskBuff=Оружия ближнего боя накладывают гидратоксин
 
-BuffName.Impaled=Impaled
-BuffDescription.Impaled=Ouch!
+BuffName.Impaled=Проткнут
+BuffDescription.Impaled=Аучь!
 
-BuffName.InfinityBurnout=Infinity Burnout
-BuffDescription.InfinityBurnout=They didn't go for the head.
+BuffName.InfinityBurnout=Сгорание бесконечности
+BuffDescription.InfinityBurnout=Надо было в голову
 
-BuffName.InfinityOverload=Infinity Overload
-BuffDescription.InfinityOverload=The infinity stone in your hand is too powerful for you
+BuffName.InfinityOverload=Перегрузка бесконечности
+BuffDescription.InfinityOverload=Камень Бесконечности слишком силен для вас
 
-BuffName.InvokedCaligulaSafe=Invoked Caligula
-BuffDescription.InvokedCaligulaSafe=Your claw hit the enemy crasily and heal you.
+BuffName.InvokedCaligulaSafe=Призванный Калигула
+BuffDescription.InvokedCaligulaSafe=Ваш коготь безумно бьет врага и лечит вас
 
-BuffName.InvokerofMadness=The Invoker of Madness
-BuffDescription.InvokerofMadness=The Crasy Invoker
+BuffName.InvokerofMadness=Призыватель Безумия
+BuffDescription.InvokerofMadness=Безумный Призыватель
 
-BuffName.Irradiated=Irradiated
-BuffDescription.Irradiated=Your health is burning away
+BuffName.Irradiated=Облученный
+BuffDescription.Irradiated=Ваше здоровье потихоньку сгорает...
 
-BuffName.LungMinion=Ancient Lung
-BuffDescription.LungMinion=Summons an ancient dragon to fight for you
+BuffName.LungMinion=Древний Змий
+BuffDescription.LungMinion=Призывает древнего дракона сражаться за вас
 
-BuffName.ManaOverload=Mana Overload
-BuffDescription.ManaOverload=Double magic attack speed
+BuffName.ManaOverload=Перегрузка манны
+BuffDescription.ManaOverload=Двойная скорость атаки магическими оружиями
 
-BuffName.MB=Lunar Wasp
-BuffDescription.MB=plz don't sue Erilipah
+BuffName.MB=Лунная Оса
+BuffDescription.MB=пж не трогайте Erilipah
 
-BuffName.MiniProbe=Mini Probe
-BuffDescription.MiniProbe=Seeks out life and treasure for you
+BuffName.MiniProbe=Мини-Зонд
+BuffDescription.MiniProbe=Ищет жизнь и сокровища для тебя
 
-BuffName.Moonraze=Moonraze
-BuffDescription.Moonraze=Incinerated by lunar rays
+BuffName.Moonraze=Лунный распад
+BuffDescription.Moonraze=Полыхаете лунными лучами
 
-BuffName.Mudkip=Mudkip
-BuffDescription.Mudkip=So I heard you like mudkips
+BuffName.Mudkip=Мадкип
+BuffDescription.Mudkip=Так, я слышал, что ты любишь мадкипов, не правда ли?
 
-BuffName.MudkipS=Shiny Mudkip
-BuffDescription.MudkipS=So I heard you like mudkips
+BuffName.MudkipS=Шайни Мадкип
+BuffDescription.MudkipS=Так, я слышал, что ты любишь мадкипов, не правда ли?
 
-BuffName.Orbiters=Orbiters
-BuffDescription.Orbiters=Flames orbit you, empowering you
+BuffName.Orbiters=Орбитальные Огни
+BuffDescription.Orbiters=Огни летают вокруг вас, усиливая
 
-BuffName.PrettyPony=Pretty Pony
-BuffDescription.PrettyPony=Its a horse.
+BuffName.PrettyPony=Милый пони
+BuffDescription.PrettyPony=Это лошадь
 
-BuffName.ProbeMinion=Void Probe
-BuffDescription.ProbeMinion=Summons a void probe to fight for you
+BuffName.ProbeMinion=Пустотный Зонд
+BuffDescription.ProbeMinion=Призывает Пустотный Зонд сражаться за вас
 
-BuffName.Protocol=D00M PR0T0C0L
-BuffDescription.Protocol=Summons a baby ZER0 PR0T0C0L to fight for you
+BuffName.Protocol=ПР0Т0К0Л СУДН0Г0 ДНЯ
+BuffDescription.Protocol=Призывает уменьшенную к0пию Зер0 Пр0т0к0л сражаться за других п0льз0вателей
 
-BuffName.RabbitcopterSoldier=Rabbitcopter Soldier
-BuffDescription.RabbitcopterSoldier=Summons a Rabbitcopter Soldier to fight for you
+BuffName.RabbitcopterSoldier=Крололет Солдат
+BuffDescription.RabbitcopterSoldier=Призывает Крололет Солдата сражаться за вас
 
-BuffName.RadiumInferno=Radium Inferno
-BuffDescription.RadiumInferno=Rapidly depleting life
+BuffName.RadiumInferno=Радиевое Инферно
+BuffDescription.RadiumInferno=Быстро истощает жизнь
 
-BuffName.RealityBent=Riftbent
-BuffDescription.RealityBent=The space around you is being distorted
+BuffName.RealityBent=Кривой разрыв
+BuffDescription.RealityBent=Пространство вокруг вас искривляется
 
-BuffName.ReaperCD=Reaper Scythe Immunity Cooldown
-BuffDescription.ReaperCD=You cannot use dashing ability of the weapon now
+BuffName.ReaperCD=Перезарядка иммунитета Косы Жнеца
+BuffDescription.ReaperCD=Сейчас вы не можете использовать способность рывка
 
-BuffName.ReaperImmune=Reaper Scythe immunity
-BuffDescription.ReaperImmune=You are immune to damage and deal 10x damage
+BuffName.ReaperImmune=Иммунитет Косы Жнеца
+BuffDescription.ReaperImmune=У вас иммунитет к урону и вы наносите x10 урона
 
-BuffName.ReaperImmune2=Reaper Scythe immunity
-BuffDescription.ReaperImmune2=You are immune to damage and deal 15x damage
+BuffName.ReaperImmune2=Иммунитет Косы Жнеца
+BuffDescription.ReaperImmune2=У вас иммунитет к урону и вы наносите x15 урона
 
-BuffName.Ronin=Ronin
-BuffDescription.Ronin=You wont take any damage
+BuffName.Ronin=Ронин
+BuffDescription.Ronin=Вы не получите никакой урон
 
-BuffName.RoyalKitten=Royal Kitten
-BuffDescription.RoyalKitten='She's so pretty!'
+BuffName.RoyalKitten=Королевская Кошечка
+BuffDescription.RoyalKitten='Она такая милая!'
 
-BuffName.RoyalRabbit=Royal Rabbit
-BuffDescription.RoyalRabbit=Summons a Royal Rabbit to fight for you
+BuffName.RoyalRabbit=Королевский Кролик
+BuffDescription.RoyalRabbit=Призывает Королевского Кролика сражаться за вас
 
-BuffName.SagOrbiter=Sagittarius Orbiter
-BuffDescription.SagOrbiter=Summons an orbiter to fight for you
+BuffName.SagOrbiter=Орбитальный аппарат Саггитариуса
+BuffDescription.SagOrbiter=Призывает орбитальный аппарат сражаться за вас
 
-BuffName.SagShield=Shields Up
-BuffDescription.SagShield=They can't get in, but your weapons can't get out.
+BuffName.SagShield=Щиты подняты
+BuffDescription.SagShield=Они не могут пробраться, но ваши оружия не могут выбраться
 
-BuffName.Searcher=Searcher Scout
-BuffDescription.Searcher=Summons a searcher to fight for you
+BuffName.Searcher=Искатель-Скаут
+BuffDescription.Searcher=Призывает Искателя-Скаута сражаться за вас
 
-BuffName.Seraph=Seraph
-BuffDescription.Seraph=Small but feisty
+BuffName.Seraph=Серафим
+BuffDescription.Seraph=Маленький, но разражительный
 
-BuffName.Sharkron=Sharkron
-BuffDescription.Sharkron=It won't bite...much...
+BuffName.Sharkron=Акулон
+BuffDescription.Sharkron=Он не будет кусаться...много...
 
-BuffName.Shroomed=SHROOM'D
-BuffDescription.Shroomed=You've been shroomed
+BuffName.Shroomed=ОГРИБНЕН
+BuffDescription.Shroomed=Вы огрибли
 
-BuffName.SkullMinion=Skull Minion
-BuffDescription.SkullMinion=Summons a dungeon skull to fight for you
+BuffName.SkullMinion=Череп-Миньен
+BuffDescription.SkullMinion=Призывает Череп Темницы сражаться за вас
 
-BuffName.SnakeMinion=Snow Serpent
-BuffDescription.SnakeMinion=Summons a snow serpent to fight for you
+BuffName.SnakeMinion=Ледяной Змей
+BuffDescription.SnakeMinion=Призывает Ледяного Змея сражаться за вас
 
 BuffName.Socc=Socc
 BuffDescription.Socc=Socc.
 
-BuffName.SockPuppet=Sock Puppet
-BuffDescription.SockPuppet=Summons a Sock Puppet to fight for you
+BuffName.SockPuppet=Кукла-Носок
+BuffDescription.SockPuppet=Призывает Куклу-Носок сражаться за вас
 
-BuffName.SpearStuck=Speared
-BuffDescription.SpearStuck=There's a spear stuck in you. Ouch.
+BuffName.SpearStuck=Проткнуты копьмем
+BuffDescription.SpearStuck=В вас застряло копье. Ауч.
 
-BuffName.SpellBookofRagnarok=Spellbook of Ragnarok
-BuffDescription.SpellBookofRagnarok=You get the full power of spellbook
+BuffName.SpellBookofRagnarok=Том Рагнарька
+BuffDescription.SpellBookofRagnarok=Вы получили полную силу тома
 
 BuffName.SpellbookofSefer=Spellbook of Sefer
 BuffDescription.SpellbookofSefer=You get the power of spellbook
 
-BuffName.Squirrel=Squirrel
-BuffDescription.Squirrel=Throws nuts
+BuffName.Squirrel=Белка
+BuffDescription.Squirrel=Швыряет орехи
 
-BuffName.Stunned=Stunned
-BuffDescription.Stunned=It's small but has a fiery temper
+BuffName.Stunned=Ошеломленны
+BuffDescription.Stunned=Он маленький, но обладает адским характером
 
-BuffName.Terrablaze=Terrablaze
-BuffDescription.Terrablaze=Incoming damage increased
+BuffName.Terrablaze=Терра-ожог
+BuffDescription.Terrablaze=Получаемый урон увеличен
 
-BuffName.Terrarium=Terra's Guidance
-BuffDescription.Terrarium=Fall damage is negated\nYou are so awestruck by the glow of the terrarium that you can't think of anything to build here.
+BuffName.Terrarium=Помощь от Терры
+BuffDescription.Terrarium=Урон от падения убран\nВас настолько впечатлил Террариум, что у вас нет никакого желания строить здесь
 
-BuffName.TerraSummon=Terra Minions
-BuffDescription.TerraSummon=An array of unity constructs at your disposal
 
-BuffName.TerraWizard=Terra Wizard
-BuffDescription.TerraWizard=Magic
+BuffName.TerraSummon=Терра-Миньоны
+BuffDescription.TerraSummon=Команда констрактов единства под вашим распоряжением
 
-BuffName.TiedemiesBuff=Tiedemies
-BuffDescription.TiedemiesBuff="He will light your way"
+BuffName.TerraWizard=Терра-Колдун
+BuffDescription.TerraWizard=Магия
 
-BuffName.TimeFrozen=Time Frozen
+BuffName.TiedemiesBuff=Тайдмис
+BuffDescription.TiedemiesBuff="Он осветит тебе путь"
 
-BuffName.TrueHallowedPrism=True Hallow Prism
-BuffDescription.TrueHallowedPrism=Summons a holy prism to fight for you
+BuffName.TimeFrozen=Заморозка времени
 
-BuffName.Unstable=Unstable
-BuffDescription.Unstable=Your character's code has become destablized
+BuffName.TrueHallowedPrism=Истинная Святая Призма
+BuffDescription.TrueHallowedPrism=Призывает Святую Призму сражаться за вас
 
-BuffName.UnstableSoul=Unstable Soul
-BuffDescription.UnstableSoul=You are now etheral \nYou have more invincibility frames, but less defense
+BuffName.Unstable=Нестабильный
+BuffDescription.Unstable=Код вашего персонажа был дестабилизирован
 
-BuffName.XiaoDoragon=Xiao Doragon
-BuffDescription.XiaoDoragon=Summons a small chaos dragon to fight for you
+BuffName.UnstableSoul=Нестабильная душа
+BuffDescription.UnstableSoul=Вы теперь бесплотны \nУ вас большая неуязвимость, но меньше защиты
 
-BuffName.YamataAGravity=True Abyssal Gravity
-BuffDescription.YamataAGravity='REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE'
+BuffName.XiaoDoragon=Ксиао Дорагон
+BuffDescription.XiaoDoragon=Призывает маленького хаотического дракона сражаться за вас
 
-BuffName.YamataGravity=Abyssal Gravity
-BuffDescription.YamataGravity='YOU AIN'T GETTIN' AWAY FROM ME, PUNK!'
+BuffName.YamataAGravity=Истинная Бездная Гравитация
+BuffDescription.YamataAGravity='РEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE'
 
-BuffName.Yanked=Yanked
-BuffDescription.Yanked='YOU AREN'T GOING ANYWHERE, YOU LITTLE SISSY!'
+BuffName.YamataGravity=Бездная Гравитация
+BuffDescription.YamataGravity='ТЫ ОТ МЕНЯ НЕ СБЕЖИШЬ, ЗАСРАНЕЦ!'
+
+BuffName.Yanked=Дернутый
+BuffDescription.Yanked='ТЫ НИКУДА НЕ УЙДЕШЬ, МАЛЕНЬКАЯ НЕЖЕНКА!'
 
 
 // AAMod.Items.Armor.Assassin
 
 
-BuffName.AssassinHurt=AssassinHirt
+BuffName.AssassinHurt=Ранение убийцы
 
 
 // AAMod.Items.Armor.Champion.Baron
 
 
-BuffName.BaronBuff=Baron Bunny
-BuffDescription.BaronBuff=Baron Bunny protects you
+BuffName.BaronBuff=Барон-Кролик
+BuffDescription.BaronBuff=Барон-Кролик защищает вас
 
 
 // AAMod.Items.Boss.Greed
 
 
-BuffName.CharmBuff=Desire
-BuffDescription.CharmBuff=MORE COINS, MORE POWER!!!
+BuffName.CharmBuff=Желание
+BuffDescription.CharmBuff=БОЛЬШЕ ДЕНЕГ, БОЛЬШЕ СИЛЫ!!!
 
 
 // AAMod.Items.Boss.Greed.WKG
 
 
-BuffName.TalismanBuff=Ruthless Desire
-BuffDescription.TalismanBuff=MONEY MONEY MONEY!!!
+BuffName.TalismanBuff=Беспощадное Желание
+BuffDescription.TalismanBuff=ДЕНЬГИ! ДЕНЬГИ! ДЕНЬГИ!
 
 
 // AAMod.Items.Dev.Invoker
 
 
-BuffName.Invokedproj=Be Banished
-BuffDescription.Invokedproj=You are marked by Invoked Magic
+BuffName.Invokedproj=Будь изгнан
+BuffDescription.Invokedproj=Вы помечены магией вызова
 
 
 // AAMod.Items.Potions.LuckyPotions
 
 
-BuffName.luckycalming=Calm
-BuffDescription.luckycalming=Reduced enemy aggression
+BuffName.luckycalming=Спокойствие
+BuffDescription.luckycalming=Снижает агрессивность врагов
 
-BuffName.luckyendurance=Endurance
-BuffDescription.luckyendurance=Increase your endurance
+BuffName.luckyendurance=Выносливость
+BuffDescription.luckyendurance=Увеличивает вашу выносливость
 
-BuffName.luckyironskin=Ironskin
-BuffDescription.luckyironskin=Increase defense by 9
+BuffName.luckyironskin=Железная кожа
+BuffDescription.luckyironskin=Увеличивает защиту на 9
 
-BuffName.luckylifeforce=Lifeforce
-BuffDescription.luckylifeforce=21% increased max life
+BuffName.luckylifeforce=Жизненная Сила
+BuffDescription.luckylifeforce=Увеличивает максимальный уровень здоровья на 21%
 
-BuffName.luckyrage=Rage
-BuffDescription.luckyrage=11% increased critical chance
+BuffName.luckyrage=Ярость
+BuffDescription.luckyrage=Увеличивает шанс критического урона на 11%
 
-BuffName.luckyregeneration=Regeneration
-BuffDescription.luckyregeneration=Provides life regeneration
+BuffName.luckyregeneration=Регенерация
+BuffDescription.luckyregeneration=Восстанавливает жизнь
 
-BuffName.luckysummoning=Summoning
-BuffDescription.luckysummoning=Increased max number of minions and turrents
+BuffName.luckysummoning=Призыватель
+BuffDescription.luckysummoning=Увеличено максимальное количество питомцев
 
-BuffName.luckyswiftness=Swiftness
-BuffDescription.luckyswiftness=26% increased movement speed
+BuffName.luckyswiftness=Скорость
+BuffDescription.luckyswiftness=Увеличивает скорость движения на 26%
 
-BuffName.luckythorns=Thorns
-BuffDescription.luckythorns=Attackers also take damage
+BuffName.luckythorns=Шипы
+BuffDescription.luckythorns=Атакующие тоже получают урон
 
-BuffName.luckywrath=Wrath
-BuffDescription.luckywrath=11% increased damage
-
+BuffName.luckywrath=Гнев
+BuffDescription.luckywrath=Увеличивает урон на 11%
 
 // AAMod.Items.Accessories
 
 
-ItemName.AshProofVest0=Ash-Proof Vest
-ItemTooltip.AshProofVest0=Temporary accessory to completly remove Ash Rain
+ItemName.AshProofVest0=Защищающие от пепла одеяние
+ItemTooltip.AshProofVest0=Временный аксессуар, защищающий от дождя из пепла
 
-ItemName.AshProofVest1=Ash-Proof Vest
-ItemTooltip.AshProofVest1=Temporary accessory to completly remove Ash Rain
+ItemName.AshProofVest1=Защищающие от пепла одеяние
+ItemTooltip.AshProofVest1=Временный аксессуар, защищающий от дождя из пепла
 
-ItemName.AshProofVest2=Ash-Proof Vest
-ItemTooltip.AshProofVest2=Temporary accessory to completly remove Ash Rain
+ItemName.AshProofVest2=Защищающие от пепла одеяние
+ItemTooltip.AshProofVest2=Временный аксессуар, защищающий от дождя из пепла
 
-ItemName.AshProofVest3=Ash-Proof Vest
-ItemTooltip.AshProofVest3=Temporary accessory to completly remove Ash Rain
+ItemName.AshProofVest3=Защищающие от пепла одеяние
+ItemTooltip.AshProofVest3=Временный аксессуар, защищающий от дождя из пепла
 
-ItemName.BlackLotusEmblem=Black Lotus Emblem
-ItemTooltip.BlackLotusEmblem=Increases pickup range for mana stars\nAutomatically use mana potions when needed\nGreatly reduce manasick time\nYour magic attacks inflicts moonraze\n15% increased movement speed\n12% reduced mana usage\n18% increased magic damage
+ItemName.BlackLotusEmblem=Эмблема Черного Лотоса
+ItemTooltip.BlackLotusEmblem=Увеличена дальность поднятия звезд маны\nАвтоматический использует зелья маны\nСильно уменьшает длительность Ослабления Волшебства\nВыши магические атаки накладывают Лунный Распад\nУвеличивает скорость движения на 15%\nСнижает использование манны на 12% \nУвеличивает магический урон на 18%
 
-ItemName.BotchedBand=Botched Band
-ItemTooltip.BotchedBand=10% Increased movement speed and damage
+ItemName.BotchedBand=Испорченная повязка
+ItemTooltip.BotchedBand=Увеличивает скорость движения и урон на 10%
 
-ItemName.DemonGauntlet=Demon Gauntlet
-ItemTooltip.DemonGauntlet=Enemies are more likely to target you\n14% Increased Melee Damage\n10% Increased melee speed\nIncreased Melee Knockback\nMelee Attacks Inflict a different debuff depending on your world evil\nInflicts Ichor in Crimson Worlds/Cursed Flame in Corruption worlds
+ItemName.DemonGauntlet=Демоническая Перчатка
+ItemTooltip.DemonGauntlet=Повышает приоритет персонажа для врагов\nУвеличивает урон в ближнем бою на 14%\nУвеличивает скорость атаки в ближнем бою на 10%\nУвеличено отталкивание в ближнем бою\nАтаки в ближнем бою накладывают дебафф, в зависимости от злого биома, который у вас в мире\nНакладывает ихор в мире с кримзоном/Проклятое Пламя в мире с искажением
 
-ItemName.DragonsGuard=Dragon's Guard
-ItemTooltip.DragonsGuard=Enemies that strike you are set ablaze
+ItemName.DragonsGuard=Драконья защита
+ItemTooltip.DragonsGuard=Атакующие горят
 
-ItemName.Energy_Conduit=Energy Conduit
-ItemTooltip.Energy_Conduit=50% increased movement speed
+ItemName.Energy_Conduit=Энергетический канал
+ItemTooltip.Energy_Conduit=Увелчивает скорость движения на 50% 
 
-ItemName.Lantern=Lantern
-ItemTooltip.Lantern=Permanent accessory to partially remove The Fog
+ItemName.Lantern=Фонарь
+ItemTooltip.Lantern=Вечный аксессуар, который от части убирает туман
 
-ItemName.OldOneCharm=Old One Charm
-ItemTooltip.OldOneCharm=Pressing the accessory ability hotkey helps player skip the time between old one army two waves.\nIncrease 12% minion damage\nIncreases your max number of sentries\nWhile Old One's Army is on, increase 22% minion damage.
+ItemName.OldOneCharm=Амулет Старца
+ItemTooltip.OldOneCharm=Активирование способности аксессуара нажатием клавиши помогает игроку пропустить время между двумя волнами Армии Старца\nУвеличивает урон от призыва на 12%\nУвеличивает максимальное количество турелей\nВо время Армии Старца, увеличивает урон от призыва на 12%
 
-ItemName.OrnateBand=Ornate Band
-ItemTooltip.OrnateBand=+50 Max Life
+ItemName.OrnateBand=Витиевая Повязка
+ItemTooltip.OrnateBand=+50 к максимальному здоровью
 
-ItemName.PalladiumShield=Palladium Shield
-ItemTooltip.PalladiumShield=Grants knockback immunity
+ItemName.PalladiumShield=Палладиевый щит
+ItemTooltip.PalladiumShield=Дает иммунитет к отталкиванию
 
-ItemName.ShadowBand=Shadow Band
-ItemTooltip.ShadowBand=15% increased movement speed
+ItemName.ShadowBand=Теневая Повязка
+ItemTooltip.ShadowBand=Увеличивает скорость на 15%
 
 
 // AAMod.Items.Accessories.Wings
 
 
-ItemName.AquamancerWings=Aquamancer Wings
-ItemTooltip.AquamancerWings=Allows flight and slow fall
+ItemName.AquamancerWings=Крылья водного колдуна
+ItemTooltip.AquamancerWings=Позволяют вам летать и поглощают урон от падения
 
-ItemName.DarkmatterJetpack=Darkmatter Booster
-ItemTooltip.DarkmatterJetpack=Allows flight and slow fall
+ItemName.DarkmatterJetpack=Бустер темной материи
+ItemTooltip.DarkmatterJetpack=Позволяют вам летать и поглощают урон от падения
 
-ItemName.DraconianWings=Draconian Sun Wings
-ItemTooltip.DraconianWings=Allows flight and slow fall
+ItemName.DraconianWings=Крылья Драконьего Солнца
+ItemTooltip.DraconianWings=Позволяют вам летать и поглощают урон от падения
 
-ItemName.DreadWings=Dread Moon Wings
-ItemTooltip.DreadWings=Allows flight and slow fall
+ItemName.DreadWings=Крылья Ужасающей Луны
+ItemTooltip.DreadWings=Позволяют вам летать и поглощают урон от падения
 
-ItemName.OlympianWings=Olympian Wings
-ItemTooltip.OlympianWings=Allows flight and slow fall\nGrants a dash while flying
+ItemName.OlympianWings=Олимпийские крылья
+ItemTooltip.OlympianWings=Позволяют вам летать и поглощают урон от падения\nПозволяет совершать рывок во время полета
 
-ItemName.RadiumWings=Radium Wings
-ItemTooltip.RadiumWings=Allows flight and slow fall
+ItemName.RadiumWings=Радиумные крылья
+ItemTooltip.RadiumWings=Позволяют вам летать и поглощают урон от падения
 
-ItemName.VultureWings=Vulture Wings
-ItemTooltip.VultureWings=Allows slow fall
+ItemName.VultureWings=Крылья Стервятника
+ItemTooltip.VultureWings=Позволяют вам летать и поглощают урон от падения
 
-ItemName.WingsofChaos=Wings of Chaos
-ItemTooltip.WingsofChaos=Allows flight and slow fall
+ItemName.WingsofChaos=Крылья Хаоса
+ItemTooltip.WingsofChaos=Позволяют вам летать и поглощают урон от падения
 
-ItemName.ZeroWings=Zero Jet
-ItemTooltip.ZeroWings=Allows flight and slow fall
+ItemName.ZeroWings=Джетпак Зир0
+ItemTooltip.ZeroWings=П0зв0ляют вам летать и п0гл0щают ур0н 0т падения
 
 
 // AAMod.Items.Armor.Abyssal
 
 
-ItemName.AbyssalFukumen=Abyssal Fukumen
-ItemTooltip.AbyssalFukumen=35% increased movement speed\n12% increased ranged damage\nWeightless as shadow itself
+ItemName.AbyssalFukumen=Бездновый Фукумен
+ItemTooltip.AbyssalFukumen=Увеличивает скорость движения на 35%\nУвеличивает дистанционный урон на 12%\nЛегкий как сама тень
 
-ItemName.AbyssalGi=Abyssal Gi
-ItemTooltip.AbyssalGi=40% increased movement speed\nWeightless as shadow itself
+ItemName.AbyssalGi=Бездновый Ги
+ItemTooltip.AbyssalGi=Увеличивает скорость движения на 40%\nЛегкий как сама тень
 
-ItemName.AbyssalHakama=Abyssal Hakama
-ItemTooltip.AbyssalHakama=30% increased movement speed\nWeightless as shadow itself
+ItemName.AbyssalHakama=Бездновая Хакама
+ItemTooltip.AbyssalHakama=Увеличивает скорость движения на 30%\nЛегкая как сама тень
 
 
 // AAMod.Items.Armor.AncientGold
 
 
-ItemName.AncientGoldBody=Ancient Gold Chainmail
-ItemTooltip.AncientGoldBody=You have chance to get gold coins in stoneblocks
+ItemName.AncientGoldBody=Древняя золотая кольчуга
+ItemTooltip.AncientGoldBody=У вас есть шанс получить золотые монетки при добывании камня
 
-ItemName.AncientGoldLeg=Ancient Gold Greaves
-ItemTooltip.AncientGoldLeg=You have more chance to meet with vanilla gold critters.
+ItemName.AncientGoldLeg=Древние золотые сапоги
+ItemTooltip.AncientGoldLeg=У вас повышен шанс встретиться с золотыми животными
 
 
 // AAMod.Items.Armor.Assassin
 
 
-ItemName.AssassinBoots=Midnight Assassin's Boots
-ItemTooltip.AssassinBoots=15% increased ranged/melee damage\n15% increased movement speed\n8% increased melee speed\nDark boots infused with the shadow of midnight
+ItemName.AssassinBoots=Сапоги полуночного убийцы
+ItemTooltip.AssassinBoots=Увеличивает урон в ближнем бою и дистанционный урон на 15%\nУвеличивает скорость движения на 15%\nУвеличивает скорость ближнего боя на 8%\nТемные сапоги слитые с тенью полуночи
 
-ItemName.AssassinHood=Midnight Assassin Hood
-ItemTooltip.AssassinHood=13% increased melee/ranged damage and critical strike chance\nA dark hood infused with the shadow of midnight
+ItemName.AssassinHood=Капюшон полуночного убийцы
+ItemTooltip.AssassinHood=Увеличивает урон в ближнем бою и дистанционный урон, а так же шанс критического удара на 13%\nТемый капюшон, слитый с тенью полуночи
 
-ItemName.AssassinShirt=Midnight Assassin Shirt
-ItemTooltip.AssassinShirt=14% increased melee/ranged damage and critical strike chance\n20% decreased ammo consumption\n+50 Max Life\nA dark armor infused with the shadow of midnight
+ItemName.AssassinShirt=Рубаха полуночного убийцы
+ItemTooltip.AssassinShirt=Увеличивает урон в ближнем бою и дистанционный урон, а так же шанс критического удара на 14%\nШанс 20% не потратить боеприпасы\n+50 к максимальному здоровью\nТемная броня слитая с тенью полуночи
 
 
 // AAMod.Items.Armor.Atlantean
 
 
-ItemName.AtlanteanGreaves=Atlantean Greaves
-ItemTooltip.AtlanteanGreaves=Increases magic critical strike chance by 10%\nAllows to freely move in liquids
+ItemName.AtlanteanGreaves=Атлантиевые сапоги
+ItemTooltip.AtlanteanGreaves=Увеличивает шанс магического критического урона на 10%\nПозволяет свободно передвигаться в жидкостях
 
-ItemName.AtlanteanHelm=Atlantean Helmet
-ItemTooltip.AtlanteanHelm=Decreases mana usage by 15%\nAllows to breath underwater
+ItemName.AtlanteanHelm=Атлантиевый шлем
+ItemTooltip.AtlanteanHelm=Снижает использование манны на 15%\nПозволяет дышать под водой
 
-ItemName.AtlanteanPlate=Atlantean Chestplate
-ItemTooltip.AtlanteanPlate=Increases magic damage by 15%\nIt vibrates with the powers of Atlantis
+ItemName.AtlanteanPlate=Атлантиевый нагрудник
+ItemTooltip.AtlanteanPlate=Увеличивает магический урон на 15%\nВибрирует силой Атлантиса
 
 
 // AAMod.Items.Armor.Blazing
 
 
-ItemName.BlazingDou=Blazing Dao
-ItemTooltip.BlazingDou=1% increased damage resistance\nForged in the flames of the blazing sun
+ItemName.BlazingDou=Полыхающий Дао
+ItemTooltip.BlazingDou=Получаемый урон снижен на 1%\nСкован в огнях полыхающего солнца
 
-ItemName.BlazingKabuto=Blazing Kabuto
-ItemTooltip.BlazingKabuto=1% increased Damage Resistance\nForged in the flames of the blazing sun
+ItemName.BlazingKabuto=Полыхающий Кабуто
+ItemTooltip.BlazingKabuto=Получаемый урон снижен на 1%\nСкован в огнях полыхающего солнца
 
-ItemName.BlazingSuneate=Blazing Suneate
-ItemTooltip.BlazingSuneate=1% increased Damage Resistance\nForged in the flames of the blazing sun
+ItemName.BlazingSuneate=Полыхающий Сунэатэ
+ItemTooltip.BlazingSuneate=Получаемый урон снижен на 1%\nСкован в огнях полыхающего солнца
 
 
 // AAMod.Items.Armor.Champion
 
 
-ItemName.ChampionChestplate=Champion Chestplate
-ItemTooltip.ChampionChestplate=15% increased damage\nThe armor of a champion feared across the land
+ItemName.ChampionChestplate=Нагрудник Чемпиона
+ItemTooltip.ChampionChestplate=Увеличивает урон на 15%\nБроня чемпиона, которого боялись во всей Террарии
 
-ItemName.ChampionGreaves=Champion' Greaves
-ItemTooltip.ChampionGreaves=50% increased movement speed\n15% increased damage\nThe armor of a champion feared across the land
+ItemName.ChampionGreaves=Ботинки Чемпиона
+ItemTooltip.ChampionGreaves=Увеличивает скорость движения на 50%\nУвеличивает урон на 15%\nБроня чемпиона, которого боялись во всей Террарии
 
-ItemName.ChampionHeaddress=Champion Headdress
-ItemTooltip.ChampionHeaddress=70% increased minion damage\n10% increased non-minion damage\n+7 maximum Minions\n+2 maximum sentries \nThe armor of a champion feared across the land
+ItemName.ChampionHeaddress=Головной убор Чемпиона
+ItemTooltip.ChampionHeaddress=Увеличивает урон от призыва на 70% \nУвеличивает все типы урона, кроме призыва, на 10%\n+7 максимум прислуг\n+2 максимум турелей\nБроня чемпиона, которого боялись во всей Террарии
 
-ItemName.ChampionHelmet=Champion Greathelm
-ItemTooltip.ChampionHelmet=35% increased Melee damage & critical strike chance\n10% increased non-melee damage\n18% increased melee speed\nThe armor of a champion feared across the land
+ItemName.ChampionHelmet=Великий шлем Чемпиона
+ItemTooltip.ChampionHelmet=Увеличивает на 35% урон в ближнем бою и шанс критического удара\nУвеличивает все типы урона, кроме урона в ближнем бою, на 10%\nУвеличивает скорость ближнего боя на 18%\nБроня чемпиона, которого боялись во всей Террарии
 
-ItemName.ChampionHood=Champion Hood
-ItemTooltip.ChampionHood=32% increased Magic damage\n10% increased non-magic damage\n25% increased Magic critical strike chance\n25% reduced Mana consumption\n150 increased maximum mana\nThe armor of a champion feared across the land
+ItemName.ChampionHood=Капюшон Чемпиона
+ItemTooltip.ChampionHood=Увеличивает магический урон на 32%\nУвеличивает все типы урона, кроме магического, на 10%\nУвеличивает шанс критического магического урона на 25%\nСнижает использование манны на 25%\nУвеличивает манну на 150\nБроня чемпиона, которого боялись во всей Террарии
 
-ItemName.ChampionMask=Champion Mask
-ItemTooltip.ChampionMask=55% increased ranged damage\n44% increased ranged critical strike chance\n10% increased non-ranged damage\n25% reduced ammo consumption\nThe armor of a champion feared across the land
+ItemName.ChampionMask=Маска Чемпиона
+ItemTooltip.ChampionMask=Увеличивает дистанционный урон на 55%\nУвеличивает шанс критического дистанционного урона на 44%\nУвеличивает все типы урона, кроме дистанционного, на 10%\nШанс 25% не потратить боеприпасы\nБроня чемпиона, которого боялись во всей Террарии
 
 
 // AAMod.Items.Armor.Chaos
 
 
-ItemName.ChaosDou=Chaos Dou
-ItemTooltip.ChaosDou=7% increased damage
+ItemName.ChaosDou=Хаос Доу
+ItemTooltip.ChaosDou=Увеличивает урон на 7%
 
-ItemName.ChaosFukumen=Chaos Fukumen
-ItemTooltip.ChaosFukumen=24% increased ranged critical strike chance
+ItemName.ChaosFukumen=Хаос Фукумен
+ItemTooltip.ChaosFukumen=Увеличивает шанс критического дистанционного урона на 24%
 
-ItemName.ChaosGreaves=Chaos Greaves
-ItemTooltip.ChaosGreaves=10% increased movement speed\n7% increased damage
+ItemName.ChaosGreaves=Хаос Ботинки
+ItemTooltip.ChaosGreaves=Увеличивает скорость движения на 10%\nУвеличивает урон на 7%
 
-ItemName.ChaosKabuto=Chaos Kabuto
-ItemTooltip.ChaosKabuto=25% increased melee damage
+ItemName.ChaosKabuto=Хаос Кабуто
+ItemTooltip.ChaosKabuto=Увеличивает урон в ближнем бою на 25%
 
-ItemName.ChaosMask=Chaos Mask
-ItemTooltip.ChaosMask=Decreases mana usage by 30%\nIncreases magic damage by 20%\nAllows you to breath underwater
+ItemName.ChaosMask=Хаос Маска
+ItemTooltip.ChaosMask=Снижает использование манны на 30%\nУвеличивает магический урон на 20%\nПозволяет дышать под водой
 
-ItemName.ChaosVisor=Chaos Visor
-ItemTooltip.ChaosVisor=30% increased minion damage
+ItemName.ChaosVisor=Хаос Визор
+ItemTooltip.ChaosVisor=Увеличивает урон от призыва на 30% 
 
 
 // AAMod.Items.Armor.Darkmatter
 
 
-ItemName.DarkmatterBreastplate=Darkmatter Breastplate
-ItemTooltip.DarkmatterBreastplate=20% increased damage\nDark, yet still barely visible
+ItemName.DarkmatterBreastplate=Нагрудник Темной Материи
+ItemTooltip.DarkmatterBreastplate=Увеличивает урон на 20%\nТемное, но все еще видимое
 
-ItemName.DarkmatterGreaves=Darkmatter Greaves
-ItemTooltip.DarkmatterGreaves=24% increased movement speed\nDark, yet still barely visible
+ItemName.DarkmatterGreaves=Ботинки Темной Материи
+ItemTooltip.DarkmatterGreaves=Увеличивает скорость движения на 24%\nТемное, но все еще видимое
 
-ItemName.DarkmatterHeaddress=Darkmatter Headress
-ItemTooltip.DarkmatterHeaddress=25% increased minion damage\nDark, yet still barely visible
+ItemName.DarkmatterHeaddress=Головной Убор Темной Материи
+ItemTooltip.DarkmatterHeaddress=Увеличивает урон от призыва на 25% \nТемное, но все еще видимое
 
-ItemName.DarkmatterHelmet=Darkmatter Helmet
-ItemTooltip.DarkmatterHelmet=10% increased melee damage\nDark, yet still barely visible
+ItemName.DarkmatterHelmet=Шлем Темной Материи
+ItemTooltip.DarkmatterHelmet=Увеличивает урон в ближнем бою на 10%\nТемное, но все еще видимое
 
-ItemName.DarkmatterMask=Darkmatter Mask
-ItemTooltip.DarkmatterMask=9% increased magic damage\nDark, yet still barely visible
+ItemName.DarkmatterMask=Маска Темной Материи
+ItemTooltip.DarkmatterMask=Увеличивает магический урон на 9%\nТемное, но все еще видимое
 
-ItemName.DarkmatterVisor=Darkmatter Visor
-ItemTooltip.DarkmatterVisor=10% increased Ranged damage\nDark, yet still barely visible
+ItemName.DarkmatterVisor=Визор Темной Материи
+ItemTooltip.DarkmatterVisor=Увеличивает дистанционный урон на 10%\nТемное, но все еще видимое
 
 
 // AAMod.Items.Armor.Deathly
 
 
-ItemName.DeathlyGreaves=Deathly Greaves
-ItemTooltip.DeathlyGreaves=9% Increased ranged damage
+ItemName.DeathlyGreaves=Смертносные Ботинки
+ItemTooltip.DeathlyGreaves=Увеличивает дистанционный урон на 9%
 
-ItemName.DeathlyRibguard=Deathly Ribguard
-ItemTooltip.DeathlyRibguard=9% Increased ranged damage
+ItemName.DeathlyRibguard=Смертоносные Ребра
+ItemTooltip.DeathlyRibguard=Увеличивает дистанционный урон на 9%
 
-ItemName.DeathlySkull=Deathly Skull
-ItemTooltip.DeathlySkull=9% Increased ranged damage
+ItemName.DeathlySkull=Смертоносный Череп
+ItemTooltip.DeathlySkull=Увеличивает дистанционный урон на 9%
 
 
 // AAMod.Items.Armor.Demon
 
 
-ItemName.DemonBoots=Demon Hoofs
-ItemTooltip.DemonBoots=9% Increased Minion damage
+ItemName.DemonBoots=Копыта Демона
+ItemTooltip.DemonBoots=Увеличивает урон от призыва на 9%
 
-ItemName.DemonGarb=Demon Garb
-ItemTooltip.DemonGarb=9% Increased Minion damage
+ItemName.DemonGarb=Одеяние Демона
+ItemTooltip.DemonGarb=Увеличивает урон от призыва на 9%
 
-ItemName.DemonHood=Demon Cowl
-ItemTooltip.DemonHood=9% Increased Minion damage\n+2 Minion slots
+ItemName.DemonHood=Ряса Демона
+ItemTooltip.DemonHood=Увеличивает урон от призыва на 9%\n+2 максимум прислуг
 
 
 // AAMod.Items.Armor.Depth
 
 
-ItemName.DepthFukumen=Depth Fukumen
-ItemTooltip.DepthFukumen=25% increased movement speed\n8% increased ranged damage\nWeightless as shadow itself
+ItemName.DepthFukumen=Глубинный Фукумен
+ItemTooltip.DepthFukumen=Увеличивает скорость движения на 25%\nУвеличивает дистанционный урон на 8%\nЛегкий как сама тень
 
-ItemName.DepthGi=Depth Gi
-ItemTooltip.DepthGi=40% increased movement speed\nWeightless as shadow itself
+ItemName.DepthGi=Глубинный Ги
+ItemTooltip.DepthGi=Увеличивает скорость движения на 40%\nЛегкий как сама тень
 
-ItemName.DepthHakama=Depth Hakama
-ItemTooltip.DepthHakama=15% increased movement speed\nWeightless as shadow itself
+ItemName.DepthHakama=Глубинный Хакама
+ItemTooltip.DepthHakama=Увеличивает скорость движения на 15%\nЛегкий как сама тень
 
 
 // AAMod.Items.Armor.Doomite
 
 
-ItemName.DoomiteBreastplate=Doomite Plate
-ItemTooltip.DoomiteBreastplate=+1 Minion slot
+ItemName.DoomiteBreastplate=Роковая Пластина
+ItemTooltip.DoomiteBreastplate=+1 максимум прислуг
 
-ItemName.DoomiteGreaves=Doomite Greaves
-ItemTooltip.DoomiteGreaves=+1 Minion slot
+ItemName.DoomiteGreaves=Роковые Ботинки
+ItemTooltip.DoomiteGreaves=+1 максимум прислуг
 
-ItemName.DoomiteVisor=Doomite Visor
-ItemTooltip.DoomiteVisor=+1 Minion slot
+ItemName.DoomiteVisor=Роковой Визор
+ItemTooltip.DoomiteVisor=+1 максимум прислуг
 
 
 // AAMod.Items.Armor.DoomiteU
 
 
-ItemName.DoomiteUGreaves=Dark Doomite Greaves
+ItemName.DoomiteUGreaves=Темные Роковые Ботинки
 
-ItemName.DoomiteUHelm=Dark Doomite Helmet
-ItemTooltip.DoomiteUHelm=Increases minion damage by 5%
+ItemName.DoomiteUHelm=Темный Роковой Шлем
+ItemTooltip.DoomiteUHelm=Увеличивает урон от призыва на 5% 
 
-ItemName.DoomiteUPlate=Dark Doomite Chestplate
-ItemTooltip.DoomiteUPlate=Increases minion damage by 6%
+ItemName.DoomiteUPlate=Темный Роковой Нагрудник
+ItemTooltip.DoomiteUPlate=Увеличивает урон от призыва на 6% 
 
 
 // AAMod.Items.Armor.Doomsday
 
 
-ItemName.DoomsdayChestplate=Doomsday Assault Armor
-ItemTooltip.DoomsdayChestplate=5% decreased mana usage\n+50 Max Life\nThe power to destroy entire planets rests in this armor
+ItemName.DoomsdayChestplate=Штурмовая Броня Судного дня
+ItemTooltip.DoomsdayChestplate=Снижает использование манны на 5%\n+50 к максимальному здоровью\nСила уничтожать целые планеты содержится в этой броне
 
-ItemName.DoomsdayHelmet=Doomsday Assault Visor
-ItemTooltip.DoomsdayHelmet=25% increased magic damage\n18% increased magic critical strike chance\nThe power to destroy entire planets rests in this armor
+ItemName.DoomsdayHelmet=Штурмовой Визор Судного дня
+ItemTooltip.DoomsdayHelmet=Увеличивает магический урон на 25%\nУвеличивает шанс критического магического урона на 18%\nСила уничтожать целые планеты содержится в этой броне
 
-ItemName.DoomsdayLeggings=Doomsday Assault Greaves
-ItemTooltip.DoomsdayLeggings=18% increased movement speed\n120 increased mana\nThe power to destroy entire planets rests in this armor
+ItemName.DoomsdayLeggings=Штурмовые Ботинки Судного дня
+ItemTooltip.DoomsdayLeggings=Увеличивает скорость движения на 18%\nУвеличивает манну на 120\nСила уничтожать целые планеты содержится в этой броне
 
-ItemName.DoomsdayMask=Doomsday Tactical Visor
-ItemTooltip.DoomsdayMask=50% increased minion damage\nThe power to destroy entire planets rests in this armor
+ItemName.DoomsdayMask=Тактический Визор Судного дня
+ItemTooltip.DoomsdayMask=Увеличивает урон от призыва на 50% \nСила уничтожать целые планеты содержится в этой броне
 
 
 // AAMod.Items.Armor.Draco
 
 
-ItemName.DracoHelm=Draconian Sun Kabuto
-ItemTooltip.DracoHelm=20% increased melee critical chance\n3% increased damage resistance\n+25 Max Life\nThe blazing fury of the Inferno rests in this armor
+ItemName.DracoHelm=Кабуто Драконического Солнца
+ItemTooltip.DracoHelm=Увеличивает шанс критического урона в ближнем бою на 20%\nПолучаемый урон снижен на 3%\n+25 к максимальному здоровью\nПолыхающая ярость Инферно содержится в этой броне
 
-ItemName.DracoLeggings=Draconian Sun Greaves
-ItemTooltip.DracoLeggings=16% increased movement speed\n15% increased melee speed\n3% increased damage resistance\n+25 Max Life\nThe blazing fury of the Inferno rests in this armor
+ItemName.DracoLeggings=Ботинки Драконического Солнца
+ItemTooltip.DracoLeggings=Увеличивает скорость движения на 16%\nУвеличивает скорость ближнего боя на 15%\nПолучаемый урон снижен на 3%\n+25 к максимальному здоровью\nПолыхающая ярость Инферно содержится в этой броне
 
-ItemName.DracoPlate=Draconian Sun Dao
-ItemTooltip.DracoPlate=25% increased melee damage\n3% increased damage resistance\n+25 Max Life\nThe blazing fury of the Inferno rests in this armor
+ItemName.DracoPlate=Дао Драконического Солнца
+ItemTooltip.DracoPlate=Увеличивает урон в ближнем бою на 25%\nПолучаемый урон снижен на 3%\n+25 к максимальному здоровью\nПолыхающая ярость Инферно содержится в этой броне
 
 
 // AAMod.Items.Armor.Dread
 
 
-ItemName.DreadBoots=Dread Moon Hakama
-ItemTooltip.DreadBoots=50% increased movement speed\n25% decreased ammo consumption\nThe abyssal wrath of the Mire rests in this armor
+ItemName.DreadBoots=Хакама Ужасающией Луны
+ItemTooltip.DreadBoots=Увеличивает скорость движения на 50%\nШанс 25% не потратить боеприпасы\nБездновый гнев Трясины содержится в этой броне
 
-ItemName.DreadHelm=Dread Moon Fukumen
-ItemTooltip.DreadHelm=24% increased ranged critical chance\n20% increased movement speed\n+15 Max Life\nThe abyssal wrath of the Mire rests in this armor
+ItemName.DreadHelm=Фукумен Ужасающей Луны
+ItemTooltip.DreadHelm=Увеличивает шанс критического дистанционного урона на 24%\nУвеличивает скорость движения на 20%\n+15 к максимальному здоровью\nБездновый гнев Трясины содержится в этой броне
 
-ItemName.DreadPlate=Dread Moon Gi
-ItemTooltip.DreadPlate=35% increased ranged damage\n20% increased movement speed\n+50 Max Life\nThe abyssal wrath of the Mire rests in this armor
+ItemName.DreadPlate=Ги Ужасающей Луны
+ItemTooltip.DreadPlate=Увеличивает дистанционный урон на 35%\nУвеличивает скорость движения на 20%\n+50 к максимальному здоровью\nБездновый гнев Трясины содержится в этой броне
 
 
 // AAMod.Items.Armor.Dynaskull
 
 
-ItemName.Dynaskull=Dynaskull
-ItemTooltip.Dynaskull=20% decreased ammo consumption
+ItemName.Dynaskull=Диночереп
+ItemTooltip.Dynaskull=Шанс 20% не потратить боеприпасы
 
-ItemName.DynaskullGreaves=Dynaskull Greaves
-ItemTooltip.DynaskullGreaves=10% Increased ranged critical chance
+ItemName.DynaskullGreaves=Ботинки Диночерепа
+ItemTooltip.DynaskullGreaves=Увеличивает шанс критического дистанционного урона на 10%
 
-ItemName.DynaskullRibguard=Dynaskull Ribguard
-ItemTooltip.DynaskullRibguard=10% increased ranged damage
+ItemName.DynaskullRibguard=Ребра Диночерепа
+ItemTooltip.DynaskullRibguard=Увеличивает дистанционный урон на 10%
 
 
 // AAMod.Items.Armor.Fleshrend
 
 
-ItemName.FleshrendGreaves=Fleshrend Greaves
-ItemTooltip.FleshrendGreaves=7% increased melee damage
+ItemName.FleshrendGreaves=Ботинки Воплощенной Плоти
+ItemTooltip.FleshrendGreaves=Увеличивает урон в ближнем бою на 7%
 
-ItemName.FleshrendHelm=Fleshrend Helm
-ItemTooltip.FleshrendHelm=7% increased melee damage
+ItemName.FleshrendHelm=Шлем Воплощенной Плоти
+ItemTooltip.FleshrendHelm=Увеличивает урон в ближнем бою на 7%
 
-ItemName.FleshrendPlate=Fleshrend Plate
-ItemTooltip.FleshrendPlate=7% Increased melee damage
+ItemName.FleshrendPlate=Нагрудник Воплощенной Плоти
+ItemTooltip.FleshrendPlate=Увеличивает урон в ближнем бою на 7%
 
 
 // AAMod.Items.Armor.GlowingMushium
 
 
-ItemName.ShroomHat=Glowing Mushroom Hat
-ItemTooltip.ShroomHat=2% increased mana regeneration
+ItemName.ShroomHat=Шляпка Светящегося Гриба
+ItemTooltip.ShroomHat=Увеличивает скорость восстановления манны на 2%
 
-ItemName.ShroomPants=Glowing Mushium Pants
-ItemTooltip.ShroomPants=2% increased mana regeneration
+ItemName.ShroomPants=Штаны Светящегося Гриба
+ItemTooltip.ShroomPants=Увеличивает скорость восстановления манны на 2%
 
-ItemName.ShroomShirt=Glowing Mushium Shirt
-ItemTooltip.ShroomShirt=2% increased mana regeneration
+ItemName.ShroomShirt=Рубаха Светящегося Гриба
+ItemTooltip.ShroomShirt=Увеличивает скорость восстановления манны на 2%
 
 
 // AAMod.Items.Armor.GoblinSlayer
 
 
-ItemName.GoblinSlayerChest=Goblin Slayer's Chestplate
-ItemTooltip.GoblinSlayerChest=An immense hatred of Goblinkind haunts this chestplate
+ItemName.GoblinSlayerChest=Нагрудник Убийцы Гоблинов
+ItemTooltip.GoblinSlayerChest=Невероятная ненависть к гоблинам чуствуется в этом нагруднике
 
-ItemName.GoblinSlayerGreaves=Goblin Slayer's Greaves
-ItemTooltip.GoblinSlayerGreaves=An immense hatred of Goblinkind haunts these greaves
+ItemName.GoblinSlayerGreaves=Ботинки Убийцы Гоблинов
+ItemTooltip.GoblinSlayerGreaves=Невероятная ненависть к гоблинам чуствуется в этих ботинках
 
-ItemName.GoblinSlayerHelm=Goblin Slayer's Helm
-ItemTooltip.GoblinSlayerHelm=An immense hatred of Goblinkind haunts this helm
+ItemName.GoblinSlayerHelm=Шлем Убийцы Гоблинов
+ItemTooltip.GoblinSlayerHelm=Невероятная ненависть к гоблинам чуствуется в этом шлемам
 
 
 // AAMod.Items.Armor.Hoodlum
 
 
-ItemName.HoodlumHood=Hopping Hoodlum Hood
-ItemTooltip.HoodlumHood=18% increased melee & minion Damage\nEnemies are more likely to target you\nHopping Mad.
+ItemName.HoodlumHood=Капюшон Скачущего Громилы
+ItemTooltip.HoodlumHood=Увеличивает урон в ближнем бою и урон от призыва на 18%\nПовышает приоритет персонажа для врагов\nБезумно скачем
 
-ItemName.HoodlumPants=Hopping Hoodlum Paws
-ItemTooltip.HoodlumPants=10% increased movement speed\n9% increased melee critical strike chance\n+1 Max Minion\nEnemies are more likely to target you\nHopping Mad.
+ItemName.HoodlumPants=Лапы Скачущего Громилы
+ItemTooltip.HoodlumPants=Увеличивает скорость движения на 10%\nУвеличивает шанс критического урона в ближнем бою на 9%\n+1 максимум прислуг\nПовышает приоритет персонажа для врагов\nБезумно скачем
 
-ItemName.HoodlumShirt=Hopping Hoodlum Shirt
-ItemTooltip.HoodlumShirt=10% increased melee speed\n+1 max minion\nEnemies are more likely to target you\nHopping Mad.
+ItemName.HoodlumShirt=Рубаха Скачущего Громилы
+ItemTooltip.HoodlumShirt=Увеличивает скорость ближнего боя на 10%\n+1 максимум прислуг\nПовышает приоритет персонажа для врагов\nБезумно скачем
 
 
 // AAMod.Items.Armor.Imp
 
 
-ItemName.ImpBoots=Imp Boots
-ItemTooltip.ImpBoots=7% Increased Minion damage
+ItemName.ImpBoots=Ботинки Беса
+ItemTooltip.ImpBoots=Увеличивает урон от призыва на 7%
 
-ItemName.ImpGarb=Imp Garb
-ItemTooltip.ImpGarb=7% Increased Minion damage
+ItemName.ImpGarb=Одеяние Беса
+ItemTooltip.ImpGarb=Увеличивает урон от призыва на 7%
 
-ItemName.ImpHood=Imp Hood
-ItemTooltip.ImpHood=7% Increased Minion damage \n+1 Minion slot
+ItemName.ImpHood=Капюшон Беса
+ItemTooltip.ImpHood=Увеличивает урон от призыва на 7%\n+1 максимум прислуг
 
 
 // AAMod.Items.Armor.Kindled
 
 
-ItemName.KindledDou=Kindled Dao
-ItemTooltip.KindledDou=Forged in the flames of the blazing sun
+ItemName.KindledDou=Вспыхивающий Дао
+ItemTooltip.KindledDou=Сковано в огнях полыхаюего Солнца
 
-ItemName.KindledKabuto=Kindled Kabuto
-ItemTooltip.KindledKabuto=Forged in the flames of the blazing sun
+ItemName.KindledKabuto=Вспыхивающий Кабуто
+ItemTooltip.KindledKabuto=Сковано в огнях полыхаюего Солнца
 
-ItemName.KindledSuneate=Kindled Suneate
-ItemTooltip.KindledSuneate=Forged in the flames of the blazing sun
+ItemName.KindledSuneate=Вспыхивающий Сунате
+ItemTooltip.KindledSuneate=Сковано в огнях полыхаюего Солнца
 
 
 // AAMod.Items.Armor.Mushium
 
 
-ItemName.MushiumHat=Mushium Hat
-ItemTooltip.MushiumHat=2% Increased life regeneration
+ItemName.MushiumHat=Шляпка Гриба
+ItemTooltip.MushiumHat=Увеличивает восстановление здоровья на 2%
 
-ItemName.MushiumPants=Mushium Pants
-ItemTooltip.MushiumPants=2% Increased life regeneration
+ItemName.MushiumPants=Штаны из Машиума
+ItemTooltip.MushiumPants=Увеличивает восстановление здоровья на 2%
 
-ItemName.MushiumShirt=Mushium Shirt
-ItemTooltip.MushiumShirt=2% Increased life regeneration
+ItemName.MushiumShirt=Рубаха из Машиума
+ItemTooltip.MushiumShirt=Увеличивает восстановление здоровья на 2%
 
 
 // AAMod.Items.Armor.Nights
 
 
-ItemName.NightsGreaves=Night's Greaves
-ItemTooltip.NightsGreaves=9% increased melee speed
+ItemName.NightsGreaves=Ботинки Ночи
+ItemTooltip.NightsGreaves=Увеличивает скорость ближнего боя на 9%
 
-ItemName.NightsHelm=Night's Helm
-ItemTooltip.NightsHelm=9% increased melee speed
+ItemName.NightsHelm=Шлем Ночи
+ItemTooltip.NightsHelm=Увеличивает скорость ближнего боя на 9%
 
-ItemName.NightsPlate=Night's Plate
-ItemTooltip.NightsPlate=9% increased melee speed
+ItemName.NightsPlate=Нагрудник Ночи
+ItemTooltip.NightsPlate=Увеличивает скорость ближнего боя на 9%
 
 
 // AAMod.Items.Armor.Ocean
 
 
-ItemName.OceanBoots=Ocean Greaves
-ItemTooltip.OceanBoots=Increases maximum mana by 20\n2% increased magic damage
+ItemName.OceanBoots=Океанические Штаны
+ItemTooltip.OceanBoots=Увеличивает манну на 20\nУвеличивает магический урон на 2%
 
-ItemName.OceanHelm=Ocean Helmet
-ItemTooltip.OceanHelm=Increases maximum mana by 20\n2% increased magic damage
+ItemName.OceanHelm=Океанический Шлем
+ItemTooltip.OceanHelm=Увеличивает манну на 20\nУвеличивает магический урон на 2%
 
-ItemName.OceanShirt=Ocean Chestplate
-ItemTooltip.OceanShirt=Increases maximum mana by 20\n2% increased magic damage
+ItemName.OceanShirt=Океанический Нагрудник
+ItemTooltip.OceanShirt=Увеличивает манну на 20\nУвеличивает магический урон на 2%
 
 
 // AAMod.Items.Armor.Olympian
 
 
-ItemName.OlympianBoots=Olympian Greaves
-ItemTooltip.OlympianBoots=Increases magic critical strike chance by 15%
+ItemName.OlympianBoots=Олимпийские Ботинки
+ItemTooltip.OlympianBoots=Увеличивает шанс критического магического урона на 15%
 
-ItemName.OlympianHelm=Olympian Helmet
-ItemTooltip.OlympianHelm=Decreases mana usage by 25%
+ItemName.OlympianHelm=Олимпиский Шлем
+ItemTooltip.OlympianHelm=Снижает использование манны на 25%
 
-ItemName.OlympianPlate=Olympian Breastplate
-ItemTooltip.OlympianPlate=Increases magic damage by 20%
+ItemName.OlympianPlate=Олимпиский Нагрудник
+ItemTooltip.OlympianPlate=Увеличивает магический урон на 20%
 
 
 // AAMod.Items.Armor.Oroboros
 
 
-ItemName.OroborosBoots=Oroboros Wood Boots
+ItemName.OroborosBoots=Ботинки из Уроборусного дерева
 
-ItemName.OroborosChestplate=Oroboros Wood Chestplate
+ItemName.OroborosChestplate=Нагрудник из Уроборусного дерева
 
-ItemName.OroborosHelmet=Oroboros Wood Helmet
+ItemName.OroborosHelmet=Шлем из Уроборусного дерева
 
 
 // AAMod.Items.Armor.Paints
 
 
-ItemName.AdamantitePaint=Adamantite Face Paint
-ItemTooltip.AdamantitePaint=30% increased minion damage\n+80 mana
+ItemName.AdamantitePaint=Адамантитовый боевой окрас
+ItemTooltip.AdamantitePaint=Увеличивает урон от призыва на 30%\n+80 манны
 
-ItemName.ChlorophytePaint=Chlorophyte Face Paint
-ItemTooltip.ChlorophytePaint=38% increased minion damage\n+80 mana
+ItemName.ChlorophytePaint=Хлорофитовый боевой окрас
+ItemTooltip.ChlorophytePaint=Увеличивает урон от призыва на 38%\n+80 манны
 
-ItemName.CobaltPaint=Cobalt Face Paint
-ItemTooltip.CobaltPaint=18% increased minion damage\n+40 Mana
+ItemName.CobaltPaint=Кобальтовый боевой окрас
+ItemTooltip.CobaltPaint=Увеличивает урон от призыва на 18%\n+40 манны
 
-ItemName.HallowedPaint=Hallowed Face Paint
-ItemTooltip.HallowedPaint=32% increased minion damage\n+100 mana
+ItemName.HallowedPaint=Святой боевой окрас
+ItemTooltip.HallowedPaint=Увеличивает урон от призыва на 32%\n+100 манны
 
-ItemName.MythrilPaint=Mythril Face Paint
-ItemTooltip.MythrilPaint=26% increased minion damage\n+60 mana
+ItemName.MythrilPaint=Мифриловый боевой окрас
+ItemTooltip.MythrilPaint=Увеличивает урон от призыва на 26%\n+60 манны
 
-ItemName.OrichalcumPaint=Oricalcum Face Paint
-ItemTooltip.OrichalcumPaint=22% increased minion damage\n+80 mana
+ItemName.OrichalcumPaint=Орихалковый боевой окрас
+ItemTooltip.OrichalcumPaint=Увеличивает урон от призыва на 22%\n+80 манны
 
-ItemName.PalladiumPaint=Palladium Face Paint
-ItemTooltip.PalladiumPaint=15% increased minion damage\n+40 Mana
+ItemName.PalladiumPaint=Палладиевый боевой окрас
+ItemTooltip.PalladiumPaint=Увеличивает урон от призыва на 15%\n+40 манны
 
-ItemName.TerraPaint=Terra Face Paint
-ItemTooltip.TerraPaint=42% increased minion damage\n+120 mana
+ItemName.TerraPaint=Терра боевой окрас
+ItemTooltip.TerraPaint=Увеличивает урон от призыва на 42%\n+120 манны
 
-ItemName.TitaniumPaint=Titanium Face Paint
-ItemTooltip.TitaniumPaint=27% increased minion damage\n+100 mana
+ItemName.TitaniumPaint=Титановый боевой окрас
+ItemTooltip.TitaniumPaint=Увеличивает урон от призыва на 27%\n+100 манны
 
 
 // AAMod.Items.Armor.PerfectChaos
 
 
-ItemName.PerfectChaosGreaves=Chaos Slayer Greaves
-ItemTooltip.PerfectChaosGreaves=45% increased movement speed\n2% increased damage resistance\nThe power of discordian rage radiates from this armor
+ItemName.PerfectChaosGreaves=Ботинки Убийцы Хаоса
+ItemTooltip.PerfectChaosGreaves=Увеличивает скорость движения на 45%\nПолучаемый урон снижен на 2%\nСила хаотического гнева содержится в этих ботинках
 
-ItemName.PerfectChaosHood=Chaos Slayer Hood
-ItemTooltip.PerfectChaosHood=32% increased Magic damage\n20% increased Magic critical strike chance\n2% increased damage resistance\n30% reduced Mana consumption\n150 increased maximum mana\nThe power of discordian rage radiates from this hood
+ItemName.PerfectChaosHood=Капюшон Убийцы Хаоса
+ItemTooltip.PerfectChaosHood=Увеличивает магический урон на 32%\nУвеличивает шанс магического критического урона на 20%\nПолучаемый урон снижен на 2%\nСнижает использование манны на 30%\nУвеличивает манну на 150\nСила хаотического гнева содержится в этом капюшоне
 
-ItemName.PerfectChaosKabuto=Chaos Slayer Kabuto
-ItemTooltip.PerfectChaosKabuto=30% increased Melee damage & critical strike chance\n5% increased damage resistance\n15% increased melee speed\n+25 Max Life\nThe power of discordian rage radiates from this armor
+ItemName.PerfectChaosKabuto=Кабуто Убийцы Хаоса
+ItemTooltip.PerfectChaosKabuto=Увеличивает урон и шанс критического удара в ближнем бою на 30%\nПолучаемый урон снижен на 5%\nУвеличивает скорость ближнего боя на 15%\n+25 к максимальному здоровью\nСила хаотического гнева содержится в этом кабуто
 
-ItemName.PerfectChaosMask=Chaos Slayer Mask
-ItemTooltip.PerfectChaosMask=70% increased minion damage\n1% increased damage resistance\n+6 maximum Minions\n+2 maximum sentries \nThe power of discordian rage radiates from this hood
+ItemName.PerfectChaosMask=Маска Убийцы Хаоса
+ItemTooltip.PerfectChaosMask=Увеличивает урон от призыва на 70%\nПолучаемый урон снижен на 1%\n+6 максум прислуг\n+2 максимум турелей\nСила хаотического гнева содержится в этой маске
 
-ItemName.PerfectChaosPlate=Chaos Slayer Plate
-ItemTooltip.PerfectChaosPlate=4% increased damage resistance\n+75 Max Life\nThe power of discordian rage radiates from this armor
+ItemName.PerfectChaosPlate=Нагрудник Убийцы Хаоса
+ItemTooltip.PerfectChaosPlate=Получаемый урон снижен на 4%\n+75 к максимальному здоровью\nСила хаотического гнева содержится в этой броне
 
-ItemName.PerfectChaosVisor=Chaos Slayer Visor
-ItemTooltip.PerfectChaosVisor=45% increased ranged damage\n38% increased ranged critical strike chance\n3% increased damage resistance\n25% reduced ammo consumption\n+15 Max Life\nThe power of discordian rage radiates from this hood
+ItemName.PerfectChaosVisor=Визор Убийцы Хаоса
+ItemTooltip.PerfectChaosVisor=Увеличивает дистанционный урон на 45%\nУвеличивает шанс дистанционного критического урона на 38%\nПолучаемый урон снижен на 3%\nШанс 25% не потратить боеприпасы\n+15 к максимальному здоровью\nСила хаотического гнева содержится в этом визоре
 
 
 // AAMod.Items.Armor.Radium
 
 
-ItemName.RadiumCuisses=Radium Cuisses
-ItemTooltip.RadiumCuisses=30% increased movement speed\nShines with the light of a starry night sky
+ItemName.RadiumCuisses=Радиумные Поножи
+ItemTooltip.RadiumCuisses=Увеличивает скорость движения на 30%\nСверкает светом звездного неба
 
-ItemName.RadiumHat=Radium Hat
-ItemTooltip.RadiumHat=35% increased minion damage\nShines with the light of a starry night sky
+ItemName.RadiumHat=Радиумная Шляпа
+ItemTooltip.RadiumHat=Увеличивает урон от призыва на 35%\nСверкает светом звездного неба
 
-ItemName.RadiumHeadgear=Radium Headgear
-ItemTooltip.RadiumHeadgear=20% increased Ranged damage\nShines with the light of a starry night sky
+ItemName.RadiumHeadgear=Радиумный Головной убор
+ItemTooltip.RadiumHeadgear=Увеличивает дистанционный урон на 20%\nСверкает светом звездного неба
 
-ItemName.RadiumHelmet=Radium Helmet
-ItemTooltip.RadiumHelmet=15% increased melee damage\nShines with the light of a starry night sky
+ItemName.RadiumHelmet=Радиумный Шлем
+ItemTooltip.RadiumHelmet=Увеличивает урон в ближнем бою на 15%\nСверкает светом звездного неба
 
-ItemName.RadiumMask=Radium Mask
-ItemTooltip.RadiumMask=12% increased magic damage\nShines with the light of a starry night sky
+ItemName.RadiumMask=Радиумная Маска
+ItemTooltip.RadiumMask=Увеличивает магический урон на 12%\nСверкает светом звездного неба
 
-ItemName.RadiumPlatemail=Radium Platemail
-ItemTooltip.RadiumPlatemail=25% increased damage \nShines with the light of a starry night sky
+ItemName.RadiumPlatemail=Радиумная Броня
+ItemTooltip.RadiumPlatemail=Увеличивает урон на 25%\nСверкает светом звездного неба
 
 
 // AAMod.Items.Armor.Raider
 
 
-ItemName.RaiderChest=Raider Chestplate
+ItemName.RaiderChest=Нагрудник рейдера
 
-ItemName.RaiderHelm=Raider Helmet
+ItemName.RaiderHelm=Шлем рейдера
 
-ItemName.RaiderLegs=Raider Greaves
+ItemName.RaiderLegs=Ботинки рейдера
 
 
 // AAMod.Items.Armor.StripeMan
 
 
-ItemName.StripeManHat=StripeMan Lucky Hat
-ItemTooltip.StripeManHat=Provides light when worn\nGet the effect of Architect Gizmo Pack\nWhen digging stones, you may get ore from them\nYou can put any sand into the Extractinator
+ItemName.StripeManHat=Везучая Шляпа Человека-полосы
+ItemTooltip.StripeManHat=Создает свет\nЭффект архитектурного набора\nПри копании камней, есть шанс получить руду\nВы можете использовать любой песок на перерабатывателе
 
-ItemName.StripeManPants=StripeMan Lucky Pants
-ItemTooltip.StripeManPants=Get all of the fisher skill effects\nWhen fish swallowed the hook, you can get an extra fish.\nYou have more chance to get a crate among the extra booty
+ItemName.StripeManPants=Везучие Штаны Человека-полосы
+ItemTooltip.StripeManPants=Все умения рыбака\nКогда рыба проглотила крючок, вы можете получить дополнительную рыбу\nВысокий шанс получить ящик с дополнительной рыбы
 
-ItemName.StripeManShirt=StripeMan Lucky Shirt
-ItemTooltip.StripeManShirt=Displays everything\nYou have chance to get gold coins in stoneblocks\nYou have more chance to meet with rare creatures.\nYou have more chance to get better things in pots\nIf you have enough money, you can resist an attack by losting all your money.\nHave the effect of Arctic Diving Gear
+ItemName.StripeManShirt=Везучая Рубаха Человека-полосы
+ItemTooltip.StripeManShirt=Показывает все\nУ вас есть шанс получить золотую монетку с камня\nУ вас есть шанс встретиться с редким существом\nУ вас большии шанс получить что-то хорошее с горшков\nЕсли у вас достаточно денег, вы можете уклониться от урона, потратив все деньги\nЭффект Арктического водолазного костюма
 
 
 // AAMod.Items.Armor.Tribal
 
 
-ItemName.TribalCloak=Tribal Cloak
-ItemTooltip.TribalCloak=8% Increased magic critical chance\nIncreases Maximum Mana by 20
+ItemName.TribalCloak=Накидка Племени
+ItemTooltip.TribalCloak=Увеличивает шанс магического критического урона на 8%\nУвеличивает манну на 20
 
-ItemName.TribalHat=Tribal Hat
-ItemTooltip.TribalHat=8% Increased magic critical chance\nIncreases maximum mana by 20
+ItemName.TribalHat=Шляпа Племени
+ItemTooltip.TribalHat=Увеличивает шанс магического критического урона на 8%\nУвеличивает манну на 20
 
-ItemName.TribalKilt=Tribal Kilt
-ItemTooltip.TribalKilt=8% Increased magic critical chance\nIncreases Maximum Mana by 20
+ItemName.TribalKilt=Кил Плеиени
+ItemTooltip.TribalKilt=Увеличивает шанс магического критического урона на 8%\nУвеличивает манну на 20
 
 
 // AAMod.Items.Armor.Viking
 
 
-ItemName.VikingBoots=Viking Greaves
+ItemName.VikingBoots=Ботинки Викинга
 
-ItemName.VikingHelm=Viking Helmet
+ItemName.VikingHelm=Шлем Викинга
 
-ItemName.VikingPlate=Viking Platemail
+ItemName.VikingPlate=Броня Викинга
 
 
 // AAMod.Items.Armor.Witch
 
 
-ItemName.WitchBoots=Fury Witch's Boots
-ItemTooltip.WitchBoots=12% increased magic/minion damage\n12% increased movement speed\n+2 max minions\nBoots enchanted with the firey spirit of a supreme dragon acolyte
+ItemName.WitchBoots=Ботинки Ведьмы Ярости
+ItemTooltip.WitchBoots=Увеличивает магический урон/урон от призыва на 12%\nУвеличивает скорость движения на 12%\n+2 к максимальному количеству прислуг\nБотинки усиленные огненным духом верховного прислужника дракона
 
-ItemName.WitchHood=Fury Witch's Cowl
-ItemTooltip.WitchHood=+120 Max Mana\nReduced mana consumption by 20%\n+2 Max Minions\n10% increased magic/minion damage \n10% increased magic critical strike chance\nA hood enchanted with the firey spirit of a supreme dragon acolyte
+ItemName.WitchHood=Ряса Ведьмы Ярости
+ItemTooltip.WitchHood=+120 к максимальной манне\nСнижает использование манны на 20% \n+2 к максимальному количеству прислуг\nУвеличивает магический урон/урон от призыва на 10%\nУвеличивает шанс магического критического урона на 10%\nКапюшон усиленный огненным духом верховного прислужника дракона
 
-ItemName.WitchRobe=Fury Witch's Robe
-ItemTooltip.WitchRobe=10% increased magic/minion damage \n10% increased critical strike chance\n+2 Max Minions\n+30 Max Life\nA robe enchanted with the firey spirit of a supreme dragon acolyte
+ItemName.WitchRobe=Роба Ведьмы Ярости
+ItemTooltip.WitchRobe=Увеличивает магический урон/урон от призыва на 10% \nУвеличивает шанс критического урона на 10%\n+2 к максимальному количеству прислуг\n+30 к максимальному здоровью\nРоба усиленная огненным духом верховного прислужника дракона
 
 
 // AAMod.Items.Banners
 
 
-ItemName.Banners=Broken Banner
+ItemName.Banners=Сломанное знамя
 
 ===UNKNWN===
-ItemName.FatPixieBanner=
+ItemName.FatPixieBanner=Знамя толстой фей
 
 ===UNKNWN===
-ItemName.ThixxieBanner=
+ItemName.ThixxieBanner=Знамя ЖИРНОЙ фей
 
 
 // AAMod.Items.Blocks.BogwoodF
 
 
-ItemName.BogwoodBench=Bogwood Couch
+ItemName.BogwoodBench=Лавка из дерева Трясины
 
-ItemName.BogwoodCandle=Bogwood Candle
+ItemName.BogwoodCandle=Свеча из дерева Трясины
 
-ItemName.BogwoodChest=Bogwood Chest
+ItemName.BogwoodChest=Сундук из дерева Трясины
 
-ItemName.BogwoodCouch=Bogwood Couch
+ItemName.BogwoodCouch=Диван из дерева Трясины
 
-ItemName.BogwoodDoor=Bogwood Door
+ItemName.BogwoodDoor=Дверь из дерева Трясины
 
-ItemName.BogwoodLantern=Bogwood Lantern
+ItemName.BogwoodLantern=Фонарь из дерева Трясины
 
-ItemName.BogwoodPlatform=Bogwood Platform
+ItemName.BogwoodPlatform=Платформа из дерева Трясины
 
-ItemName.BogwoodWall=Bogwood Wall
+ItemName.BogwoodWall=Стена из дерева Трясины
 
 
 // AAMod.Items.Blocks
 
 
-ItemName.Abyssium=Abyssium
-ItemTooltip.Abyssium=It's all mushy. Nasty.
+ItemName.Abyssium=Абиссиум
+ItemTooltip.Abyssium=Он весь такой пористый. Мерзость.
 
-ItemName.AcropolisBox=Acropolis Music Box
-ItemTooltip.AcropolisBox=Plays 'Palace in the Sky' by Turquoise
+ItemName.AcropolisBox=Музыкальная шкатулка "Акрополис"
+ItemTooltip.AcropolisBox=Проигрывает 'Palace in the Sky' Turquoise
 
-ItemName.AkumaABox=Akuma Awakened Music Box
-ItemTooltip.AkumaABox=Plays 'True Blazing Fury' by Kanashii
+ItemName.AkumaABox=Музыкальная шкатулка "Акума Драконический Демон"
+ItemTooltip.AkumaABox=Проигрывает 'True Blazing Fury' Kanashii
 
-ItemName.AkumaBox=Akuma Music Box
-ItemTooltip.AkumaBox=Plays 'Trial By Fire' by Saucecoie
+ItemName.AkumaBox=Музыкальная шкатулка "Акума"
+ItemTooltip.AkumaBox=Проигрывает 'Trial By Fire' Saucecoie
 
-ItemName.AnubisBox=Anubis Music Box
-ItemTooltip.AnubisBox=Plays 'Strings of Judgement' by Universe
+ItemName.AnubisBox=Музыкальная шкатулка "Анубис"
+ItemTooltip.AnubisBox=Проигрывает 'Strings of Judgement' Universe
 
-ItemName.AnubisFBox=Forsaken Anubis Music Box
-ItemTooltip.AnubisFBox=Plays 'Wrath of the Forsaken' by Universe
+ItemName.AnubisFBox=Музыкальная шкатулка "Забытый Анубис"
+ItemTooltip.AnubisFBox=Проигрывает 'Wrath of the Forsaken' by Universe
 
-ItemName.Apocalyptite=Apocalyptite
+ItemName.Apocalyptite=Апокалиптит
 
-ItemName.BinaryReassembler=Binary Fragmentation Reassembler
-ItemTooltip.BinaryReassembler=Reality has never been so easy to manipulate
+ItemName.BinaryReassembler=Бинарный Реассемблер Фрагментации
+ItemTooltip.BinaryReassembler=Еще никогда не было так просто манипулировать реальностью
 
-ItemName.Bogwood=Bogwood
+ItemName.Bogwood=Дерево Трясины
 
-ItemName.BroodBox=Broodmother Music Box
-ItemTooltip.BroodBox=Plays 'Blazing Fury' by Spectral Aves
+ItemName.BroodBox=Музыкальная шкатулка "Мать Стаи"
+ItemTooltip.BroodBox=Проигрывает 'Blazing Fury' Spectral Aves
 
-ItemName.ChaosCrucible=Chaos Crucible
-ItemTooltip.ChaosCrucible=Even chaos requires a steady hand and a gigantic forge to work with
+ItemName.ChaosCrucible=Тигель Хаоса
+ItemTooltip.ChaosCrucible=Даже хаос требует твердой руки и огромной печи для работы с ним
 
-ItemName.CorruptAltar=Demon Altar
+ItemName.CorruptAltar=Демонический Алтарь
 
-ItemName.CrimsonAltar=Crimson Altar
+ItemName.CrimsonAltar=Кровавый Алтарь
 
-ItemName.DarkmatterOre=Darkmatter Ore
-ItemTooltip.DarkmatterOre=It feels weightless, yet it still has some kind of mass to it
+ItemName.DarkmatterOre=Руда Темной Материи
+ItemTooltip.DarkmatterOre=Ощущается, будто веса нет, но у нее есть какая-то масса
 
-ItemName.Darkmud=Darkmud
+ItemName.Darkmud=Темная грязь
 
-ItemName.DaybreakIncineriteOre=Daybreak Incinerite Ore
-ItemTooltip.DaybreakIncineriteOre=It's warm to the touch, like a bright summer morning.
+ItemName.DaybreakIncineriteOre=Руда Инцинирита рассвета
+ItemTooltip.DaybreakIncineriteOre=Теплый, как яркое летнее утро.
 
-ItemName.DaybreakTorch=Daybreak Torch
+ItemName.DaybreakTorch=Факел рассвета
 
-ItemName.Depthsand=Depthsand
+ItemName.Depthsand=Глубинный песок
 
-ItemName.DepthsandHardened=Hardened Depthsand
+ItemName.DepthsandHardened=Застывший Глубинный песок
 
-ItemName.Depthsandstone=Depthsandstone
+ItemName.Depthsandstone=Глубинный каменный-песок
 
-ItemName.Depthstone=Depthstone
-ItemTooltip.Depthstone=Dank
+ItemName.Depthstone=Глубинный камень
+ItemTooltip.Depthstone=Сырой
 
-ItemName.DiscordianTorch=Discordian Torch
+ItemName.DiscordianTorch=Факел раздора
 
-ItemName.DjinnBox=Desert Djinn Music Box
-ItemTooltip.DjinnBox=Plays 'Sand Smackdown' by Frogtism
+ItemName.DjinnBox=Музыкальная шкатулка "Пустынный Джинн"
+ItemTooltip.DjinnBox=Проигрывает 'Sand Smackdown' by Frogtism
 
-ItemName.DoomsdayChest=Doomsday Chest
+ItemName.DoomsdayChest=Сундук Судного дня
 
-ItemName.DoomsdayPlating=Doomsday Circuit Plating
+ItemName.DoomsdayPlating=Покрытие Судного дня
 
-ItemName.Doomstone=Charged Doomstone
+ItemName.Doomstone=Заряженный камень рока
 
-ItemName.DoomstoneB=Doomstone
+ItemName.DoomstoneB=Камень рока
 
-ItemName.DoomstoneBrick=Doomstone Brick
+ItemName.DoomstoneBrick=Кирпич из камня рока
 
-ItemName.DragonfireTorch=Dragonfire Torch
+ItemName.DragonfireTorch=Факел драконьего огня
 
-ItemName.DynaskullOre=Dynaskull Fossil
-ItemTooltip.DynaskullOre=The energy of millions of years pulsates through this ancient fossil
+ItemName.DynaskullOre=Ископаемое Диночерепа
+ItemTooltip.DynaskullOre=Энергия миллионов лет пульсирует в этих ископаемых
 
-ItemName.Equibox=Equinox Worms Music Box
-ItemTooltip.Equibox=Plays 'Symphony of the Stars' by OmegaFerretMusic
+ItemName.Equibox=Музыкальная шкатулка "Черви Равноденствия"
+ItemTooltip.Equibox=Проигрывает 'Symphony of the Stars' OmegaFerretMusic
 
-ItemName.EventideAbyssiumOre=Eventide Abyssium Ore
-ItemTooltip.EventideAbyssiumOre=It's cold and wet, like an evening in a swampy marsh
+ItemName.EventideAbyssiumOre=Руда Вечернего Абиссиума
+ItemTooltip.EventideAbyssiumOre=Она холодная и мокрая, как вечер в болоте
 
-ItemName.EventideTorch=Eventide Torch
+ItemName.EventideTorch=Вечерний факел
 
-ItemName.FateBox=True Void Music Box
-ItemTooltip.FateBox=Plays 'Systems Engaged' by OmegaFerretMusic
+ItemName.FateBox=Музыкальная шкатулка Истинной Пустоты
+ItemTooltip.FateBox=Проигрывает 'Systems Engaged' OmegaFerretMusic
 
-ItemName.FungusBox=Feudal Fungus Music Box
-ItemTooltip.FungusBox=Plays 'Bioluminescent Beatdown' by Spectral Aves
+ItemName.FungusBox=Музыкальная шкатулка "Феодальный Гриб"
+ItemTooltip.FungusBox=Проигрывает 'Bioluminescent Beatdown' Spectral Aves
 
-ItemName.FurnitureDynamo=Furniture Dynamo
-ItemTooltip.FurnitureDynamo=Combines all funiture-crafting stations into one block\nNow you don't have to clutter your base with 12 crafting stations!
+ItemName.FurnitureDynamo=Динамо мебели
+ItemTooltip.FurnitureDynamo=Объединяет все крафтовые станции в один блок!\nТеперь вам не придется заполнять свою базу 12 разными крафтовыми станциями!
 
-ItemName.GreedABox=Worm King Music Box
-ItemTooltip.GreedABox=Plays 'Ira De Riquezas Perdidas' by Universe
+ItemName.GreedABox=Музыкальная шкатулка "Король Червей"
+ItemTooltip.GreedABox=Проигрывает 'Ira De Riquezas Perdidas' Universe
 
-ItemName.GreedBox=Greed Music Box
-ItemTooltip.GreedBox=Plays 'Drums of Desire' by Universe
+ItemName.GreedBox=Музыкальная шкатулка "Жадность"
+ItemTooltip.GreedBox=Проигрывает 'Drums of Desire' Universe
 
-ItemName.GreedChest=Greed Chest
+ItemName.GreedChest=Сундук жадности
 
-ItemName.GreedLantern=Stone Lantern
+ItemName.GreedLantern=Каменный фонарь
 
-ItemName.GripsBox=Grips of Chaos Music Box
-ItemTooltip.GripsBox=Plays 'Twin Terror' by Spectral Aves
+ItemName.GripsBox=Музыкальная шкатулка "Тиски Хаоса"
+ItemTooltip.GripsBox=Проигрывает 'Twin Terror' Spectral Aves
 
-ItemName.HallowedAnvil=Hallowed Anvil
-ItemTooltip.HallowedAnvil=A Holy Anvil
+ItemName.HallowedAnvil=Освященная наковальня
+ItemTooltip.HallowedAnvil=Святая наковальня
 
-ItemName.HallowedForge=Hallowed Forge
-ItemTooltip.HallowedForge=It's amazing what this thing CAN'T cook
+ItemName.HallowedForge=Освященная печь
+ItemTooltip.HallowedForge=Потрясает то, что эта штука НЕ МОЖЕТ готовить
 
-ItemName.HallowedOre=Hallowed Ore
-ItemTooltip.HallowedOre=It's super bright
+ItemName.HallowedOre=Освященная руда
+ItemTooltip.HallowedOre=Она супер яркая
 
-ItemName.HaphestusForge=Hephaestus Forge
-ItemTooltip.HaphestusForge=*Slaps top of forge* This baby can fit so many crafting stations in it\nFunctions as a Hellforge, Hellstone Anvil, Alchemy Table, Demon Altar, Tinkerer's Workshop, and a Table and Chair
+ItemName.HaphestusForge=Печь Гефеста
+ItemTooltip.HaphestusForge=*Ложит руку на печку* Эта малышка может вместить себя столько крафтовых станции\nРаботает как Адская печь, Наковальня Адского камня, Алхимическая лаборатория, Демонический/Кровавый алтарь, Мастерская инженера, стул и стол
 
-ItemName.HellstoneAnvil=Hellstone Anvil
-ItemTooltip.HellstoneAnvil=Is this thing supposed to be on fire?
+ItemName.HellstoneAnvil=Наковальня адского камня
+ItemTooltip.HellstoneAnvil=Эта штука должна гореть?
 
-ItemName.HoardBox=Hoard Music Box
-ItemTooltip.HoardBox=Plays 'Cavern of Coveted Treasures' by OmegaFerretMusic
+ItemName.HoardBox=Музыкальная шкатулка "Сокровищница"
+ItemTooltip.HoardBox=Проигрывает 'Cavern of Coveted Treasures' OmegaFerretMusic
 
-ItemName.HydraBox=Hydra Music Box
-ItemTooltip.HydraBox=Plays 'Abyssal Wrath' by Spectral Aves
+ItemName.HydraBox=Музыкальная шкатулка "Гидра"
+ItemTooltip.HydraBox=Проигрывает 'Abyssal Wrath' Spectral Aves
 
-ItemName.HydratoxinTorch=Bogtoxin Torch
+ItemName.HydratoxinTorch=Гидратоксиновый факел
 
-ItemName.Incinerite=Incinerite
-ItemTooltip.Incinerite=This stuff is really friggin' hot. Careful.
+ItemName.Incinerite=Инцинирит
+ItemTooltip.Incinerite=Эта штука очень, черт подери, горячая. Будь осторожен.
 
-ItemName.IndigoIce=Indigo Ice
+ItemName.IndigoIce=Лед индиго
 
-ItemName.InfernoAltar=Dragon Altar
+ItemName.InfernoAltar=Драконический алтарь
 
-ItemName.InfernoBox=Inferno Surface Music Box
-ItemTooltip.InfernoBox=Plays 'Flame-Razed Rock' by Karamitasu
+ItemName.InfernoBox=Музыкальная шкатулка "Инферно"
+ItemTooltip.InfernoBox=Проигрывает 'Flame-Razed Rock' Karamitasu
 
-ItemName.InfernoChest=Inferno Chest
+ItemName.InfernoChest=Сундук Инферно
 
-ItemName.InfernoUBox=Inferno Underground Music Box
-ItemTooltip.InfernoUBox=Plays 'Smolder' by OmegaFerretMusic
+ItemName.InfernoUBox=Музыкальная шкатулка "Подземное Инферно"
+ItemTooltip.InfernoUBox=Проигрывает 'Smolder' OmegaFerretMusic
 
-ItemName.LakeBox=Lake of the Rising Moon Music Box
-ItemTooltip.LakeBox=Plays 'Lake of Souls' by Rockwizard
+ItemName.LakeBox=Музыкальная шкатулка "Озеро поднимающейся Луны"
+ItemTooltip.LakeBox=Проигрывает 'Lake of Souls' Rockwizard
 
-ItemName.MireAltar=Abyss Altar
+ItemName.MireAltar=Бездновый алтарь
 
-ItemName.MireBox=Mire Surface Music Box
-ItemTooltip.MireBox=Plays 'Where the Darkness Creeps' by OmegaFerretMusic
+ItemName.MireBox=Музыкальная шкатулка "Трясина"
+ItemTooltip.MireBox=Проигрывает 'Where the Darkness Creeps' OmegaFerretMusic
 
-ItemName.MireChest=Mire Chest
+ItemName.MireChest=Сундук Трясины
 
-ItemName.MireUBox=Mire Underground Music Box
-ItemTooltip.MireUBox=Plays 'Depths of Despair' by Karamitasu
+ItemName.MireUBox=Музыкальная шкатулка "Подземная Трясина"
+ItemTooltip.MireUBox=Проигрывает 'Depths of Despair' Karamitasu
 
-ItemName.MonarchBox=Mushroom Monarch Music Box
-ItemTooltip.MonarchBox=Plays 'Fungal Face-off' by Spectral Aves
+ItemName.MonarchBox=Музыкальная шкатулка "Грибной Монарх"
+ItemTooltip.MonarchBox=Проигрывает 'Fungal Face-off' Spectral Aves
 
-ItemName.MoonAltar=Dread Moon Altar
+ItemName.MoonAltar=Алтарь ужасающей Луны
 
-ItemName.MoonAltarA=Awakened Moon Altar
+ItemName.MoonAltarA=Алтарь пробудившейся Луны
 
-ItemName.MushBox=Red Mushroom Music Box
-ItemTooltip.MushBox=Plays 'Overgrowth' by Spectral Aves
+ItemName.MushBox=Музыкальная шкатулка "Красные грибы"
+ItemTooltip.MushBox=Проигрывает 'Overgrowth' Spectral Aves
 
-ItemName.MushroomBlock=Mushroom Block
+ItemName.MushroomBlock=Грибной блок
 
-ItemName.OroborosChest=Oroboros Chest
+ItemName.OroborosChest=Уроборусный сундук
 
-ItemName.OroborosWood=Oroboros Wood
+ItemName.OroborosWood=Уроборусная древесина
 
-ItemName.PagodaBox=Pagoda of the Rising Sun Music Box
-ItemTooltip.PagodaBox=Plays 'Scorched Tower' by Rockwizard
+ItemName.PagodaBox=Музыкальная шкатулка "Пагода просыпающегося Солнца"
+ItemTooltip.PagodaBox=Проигрывает 'Scorched Tower' Rockwizard
 
-ItemName.PaladinsSmeltery=Paladin's Smeltery Forge
-ItemTooltip.PaladinsSmeltery=This thing can make a lot of stuff\nFunctions as most hardmode crafting stations + A workbench and heavy workbench
+ItemName.PaladinsSmeltery=Плавильня Паладина
+ItemTooltip.PaladinsSmeltery=Эта штука может сделать многое\nРаботает как хардмодные крафтовые станции + верстак и тяжелый верстак
 
-ItemName.QuantumFusionAccelerator=Quantum Fusion Accelerator
-ItemTooltip.QuantumFusionAccelerator=Launching particles at the speed of sound\nAllows you to work with Dark Matter and Radium
+ItemName.QuantumFusionAccelerator=Квантовый ускоритель синтеза
+ItemTooltip.QuantumFusionAccelerator=Запускает частицы со скоростью звука\nПозволяет работать с Темной материей и Радиумом
 
-ItemName.RadiantArcanum=Radiant Arcanum
-ItemTooltip.RadiantArcanum=Wish upon a star\nAllows you to work with Dark Matter and Radium
+ItemName.RadiantArcanum=Лучезарный Арканум
+ItemTooltip.RadiantArcanum=Загадай желание\nПозволяет работать с Темной материей и Радиумом
 
-ItemName.RadiumOre=Radium Ore
-ItemTooltip.RadiumOre=Twinkles like the stars in the midnight skies
+ItemName.RadiumOre=Радиумная руда
+ItemTooltip.RadiumOre=Сверкает как звезды в ночном небе
 
-ItemName.RajahBox=Rajah Rabbit Music Box
-ItemTooltip.RajahBox=Plays 'JUSTICE' by Spectral Aves
+ItemName.RajahBox=Музыкальная шкатулка "Кролик Раджа"
+ItemTooltip.RajahBox=Проигрывает 'JUSTICE' Spectral Aves
 
-ItemName.Razewood=Razewood
+ItemName.Razewood=Обожженная древесина
 
-ItemName.RottedDynastyWood=Rotted Dynasty Wood
-ItemTooltip.RottedDynastyWood=It's squishy
+ItemName.RottedDynastyWood=Сгнившая дерево династии
+ItemTooltip.RottedDynastyWood=Пористая
 
-ItemName.RottedShingles=Rotted Shingles
+ItemName.RottedShingles=Сгнившая черепица
 
-ItemName.RoyalBunnyCage=Royal Bunny Cage
+ItemName.RoyalBunnyCage=Клетка королевсокого кролика
 
-ItemName.SABox=Unyielding Ancient Music Box
-ItemTooltip.SABox=Plays 'Dark Matter 02' from Pokemon Super Mystery Dungeon
+ItemName.SABox=Музыкальная шкатулка "Несгибаемый Древний"
+ItemTooltip.SABox=Проигрывает 'Dark Matter 02' из Pokemon Super Mystery Dungeon
 
-ItemName.ScorchedDynastyWood=Scorched Dynasty Wood
+ItemName.ScorchedDynastyWood=Выжеженное дерево династии
 
-ItemName.ScorchedShingles=Scorched Dynasty Shingles
+ItemName.ScorchedShingles=Выженные черепицы династии
 
-ItemName.SDBox=Sleeping Dragon Music Box
-ItemTooltip.SDBox=Plays 'Sleeping Dragon' by OmegaFerretMusic
+ItemName.SDBox=Музыкальная шкатулка "Спящий дракон"
+ItemTooltip.SDBox=Проигрывает 'Sleeping Dragon' OmegaFerretMusic
 
-ItemName.SerpentBox=Subzero Serpent Music Box
-ItemTooltip.SerpentBox=Plays 'Burrowing Down' by Charlie Debnam
+ItemName.SerpentBox=Музыкальная шкатулка "Тундровая Змея"
+ItemTooltip.SerpentBox=Проигрывает 'Burrowing Down' Charlie Debnam
 
-ItemName.SGBox=Sleeping Giant Music Box
-ItemTooltip.SGBox=Plays 'Sleeping Giant' by LordCakeSpy
+ItemName.SGBox=Музыкальная шкатулка "Спящий гигант"
+ItemTooltip.SGBox=Проигрывает 'Sleeping Giant' LordCakeSpy
 
-ItemName.ShenABox=Shen Doragon Awakened Music Box
-ItemTooltip.ShenABox=Plays 'Blaze of Glory' by Charlie Debnam
+ItemName.ShenABox=Музыкальная шкатулка "Шен Дорагон Пробужденный"
+ItemTooltip.ShenABox=Проигрывает 'Blaze of Glory' Charlie Debnam
 
-ItemName.ShenBox=Shen Doragon Music Box
-ItemTooltip.ShenBox=Plays 'Unyielding Discord' by Charlie Debnam
+ItemName.ShenBox=Музыкальная шкатулка "Шен Дорагон"
+ItemTooltip.ShenBox=Проигрывает 'Unyielding Discord' Charlie Debnam
 
-ItemName.SpiralStairs=Spiral Stairs
+ItemName.SpiralStairs=Спиральные лестницы
 
-ItemName.SRajahBox=Champion of the Innocent Music Box
-ItemTooltip.SRajahBox=Plays 'Supreme Justice' by OmegaFerretMusic
+ItemName.SRajahBox=Музыкальная шкатулка 'Защитник невинных"
+ItemTooltip.SRajahBox=Проигрывает 'Supreme Justice' OmegaFerretMusic
 
-ItemName.StarBox=Celestial Stars Box
-ItemTooltip.StarBox=Plays 'Interstellar' by OmegaFerretMusic
+ItemName.StarBox=Музыкальная шкатулка "Небесные звезды"
+ItemTooltip.StarBox=Проигрывает 'Interstellar' OmegaFerretMusic
 
-ItemName.SunAltar=Draconic Sun Altar
+ItemName.SunAltar=Алтарь драконического Солнца
 
-ItemName.SunAltarA=Awakened Sun Altar
+ItemName.SunAltarA=Алтарь пробудившегося Солнца
 
-ItemName.TerraCore=Core of Terraria
-ItemTooltip.TerraCore=Combines most crafting stations into one\nUsed to create ancient crafting stations
+ItemName.TerraCore=Ядро Террарии
+ItemTooltip.TerraCore=Объединяет большинство крафтовых станции в одну\nИспользуется для создания древних крафтовых станции
 
-ItemName.TerraPrismStation=Infinity Core
-ItemTooltip.TerraPrismStation=The 'craft-all'.\nCombiles all vanilla and Ancients Awakened crafting stations together
+ItemName.TerraPrismStation=Бесконечное ядро
+ItemTooltip.TerraPrismStation=Крафти все\nОбъединяет все ванильные станции и все станции мода "Древние Пробудились" в одну
 
-ItemName.TerrariumBox=Terrarium Music Box
-ItemTooltip.TerrariumBox=Plays 'Heart of the World' by Quicksilvur feat Charlie Debnam
+ItemName.TerrariumBox=Музыкальная шкатулка "Террариум"
+ItemTooltip.TerrariumBox=Играет 'Heart of the World' Quicksilvur при участии Charlie Debnam
 
-ItemName.ToadBox=Truffle Toad Music Box
-ItemTooltip.ToadBox=Plays 'TODESTOOL' by Spectral Aves
+ItemName.ToadBox=Музыкальная шкатулка "Трюфельная Жаба"
+ItemTooltip.ToadBox=Проигрывает 'TODESTOOL' Spectral Aves
 
-ItemName.TorchAsh=Volcanic Ash
+ItemName.TorchAsh=Вулканический пепел
 
-ItemName.Torchice=Orange Ice
+ItemName.Torchice=Оранжевый лед
 
-ItemName.Torchsand=Torchsand
+ItemName.Torchsand=Факельный песок
 
-ItemName.TorchsandHardened=Hardened Torchsand
+ItemName.TorchsandHardened=Застывший факельный песок
 
-ItemName.Torchsandstone=Torchsandstone
+ItemName.Torchsandstone=Факельный каменный песок
 
-ItemName.Torchstone=Torchstone
-ItemTooltip.Torchstone=Warm to the touch
+ItemName.Torchstone=Факельный камень
+ItemTooltip.Torchstone=Теплый
 
-ItemName.Transmuter=Material Transmuter
-ItemTooltip.Transmuter=Allows for Transmutation of materials into their counterparts
+ItemName.Transmuter=Материальный трансмутатор
+ItemTooltip.Transmuter=Позволяет трансмутировать предметы в их
 
-ItemName.TruePaladinsSmeltery=True Paladin's Smeltery
-ItemTooltip.TruePaladinsSmeltery=A superforge meant for only the worthiest of smiths\nFunctions as most necessary crafting stations
+ItemName.TruePaladinsSmeltery=Истинная плавильня Паладина
+ItemTooltip.TruePaladinsSmeltery=Печь созданная только для самых достоиных из кузнецов\nРаботает как большинство необходиых крафтовых станции
 
-ItemName.VoidBox=Void Music Box
-ItemTooltip.VoidBox=Plays 'What Once Was' by OmegaFerretMusic
+ItemName.VoidBox=Музыкальная шкатулка "Пустота"
+ItemTooltip.VoidBox=Проигрывает 'What Once Was' OmegaFerretMusic
 
-ItemName.VoidUnit=Void Recreation Unit
+ItemName.VoidUnit=Единица воссоздания пустоты
 
-ItemName.YamataABox=Yamata Awakened Music Box
-ItemTooltip.YamataABox=Plays 'The Ultimate Show' from Super Paper Mario\nRemix by GAMetal
+ItemName.YamataABox=Музыкальная шкатулка "Ямата Ужасающий Кошмар"
+ItemTooltip.YamataABox=Проигрывает 'The Ultimate Show' из Super Paper Mario\nРемикс GAMetal
 
-ItemName.YamataBox=Yamata Music Box
-ItemTooltip.YamataBox=Plays 'Crescent of Madness' by Saucecoie
+ItemName.YamataBox=Музыкальная шкатулка "Ямата"
+ItemTooltip.YamataBox=Проигрывает 'Crescent of Madness' Saucecoie
 
-ItemName.Zero2Box=Zero Awakened Music Box
-ItemTooltip.Zero2Box=Plays 'Doomsday Arrives' by Saucecoie
+ItemName.Zero2Box=Музыкальная шкатулка "Зир0 Пр0т0к0л"
+ItemTooltip.Zero2Box=Проигрывает 'Doomsday Arrives' Saucecoie
 
-ItemName.ZeroBox=Zero Music Box
-ItemTooltip.ZeroBox=Plays 'Clockwork Catastrophe' by OmegaFerretMusic
+ItemName.ZeroBox=Музыкальная шкатулка "Зир0"
+ItemTooltip.ZeroBox=Проигрывает 'Clockwork Catastrophe' OmegaFerretMusic
 
 
 // AAMod.Items.Blocks.Oroboros
 
 
-ItemName.OroborosBathtub=Oroboros Bathtub
+ItemName.OroborosBathtub=Уроборусная ванна
 
-ItemName.OroborosBed=Oroboros Bed
+ItemName.OroborosBed=Уроборусная кровать
 
-ItemName.OroborosBookshelf=Oroboros Bookcase
+ItemName.OroborosBookshelf=Уроборусный книжный шкаф
 
-ItemName.OroborosCandle=Oroboros Candle
+ItemName.OroborosCandle=Уроборусная свечька
 
-ItemName.OroborosChair=Oroboros Chair
+ItemName.OroborosChair=Уроборусный стул
 
-ItemName.OroborosClock=Oroboros Clock
+ItemName.OroborosClock=Уроборусные часы
 
-ItemName.OroborosDoor=Oroboros Door
+ItemName.OroborosDoor=Уроборусная дверь
 
-ItemName.OroborosLamp=Oroboros Lamp
+ItemName.OroborosLamp=Уроборусная лампа
 
-ItemName.OroborosLantern=Oroboros Lantern
+ItemName.OroborosLantern=Уроборусный фонарь
 
-ItemName.OroborosPlatform=Oroboros Wood Platform
+ItemName.OroborosPlatform=Уроборусная деревянная платформа
 
-ItemName.OroborosWorkbench=Oroboros Workbench
-
+ItemName.OroborosWorkbench=Уроборусный верстак
 
 // AAMod.Items.Blocks.RazewoodF
 
 
-ItemName.RazewoodBed=Razewood Bed
+ItemName.RazewoodBed=Кровать из обожженной древесины
 
-ItemName.RazewoodBookshelf=Razewood Bookcase
+ItemName.RazewoodBookshelf=Книжный шкаф из обожженной древесины
 
-ItemName.RazewoodCandelabra=Razewood Candelabra
+ItemName.RazewoodCandelabra=Канделябра из обожженной древесины
 
-ItemName.RazewoodCandle=Razewood Candle
+ItemName.RazewoodCandle=Свечка из обожженной древесины
 
-ItemName.RazewoodChair=Razewood Chair
+ItemName.RazewoodChair=Стул из обожженной древесины
 
-ItemName.RazewoodChandelier=Razewood Chandelier
+ItemName.RazewoodChandelier=Люстра из обожженной древесины 
 
-ItemName.RazewoodChest=Razewood Chest
+ItemName.RazewoodChest=Сундук из обожженной древесины
 
-ItemName.RazewoodClock=Razewood Clock
+ItemName.RazewoodClock=Часы из обожженной древесины
 
-ItemName.RazewoodCouch=Razewood Couch
+ItemName.RazewoodCouch=Диван из обожженной древесины
 
-ItemName.RazewoodDoor=Razewood Door
+ItemName.RazewoodDoor=Дверь из обожженной древесины
 
-ItemName.RazewoodDresser=Razewood Dresser
+ItemName.RazewoodDresser=Тумбочка из обожженной древесины
 
-ItemName.RazewoodLamp=Razewood Lamp
+ItemName.RazewoodLamp=Лампа из обожженной древесины
 
-ItemName.RazewoodLantern=Razewood Lantern
+ItemName.RazewoodLantern=Фонарь из обожженной древесины
 
-ItemName.RazewoodPiano=Razewood Piano
+ItemName.RazewoodPiano=Пианино из обожженной древесины
 
-ItemName.RazewoodPlatform=Razewood Platform
+ItemName.RazewoodPlatform=Платформа из обожженной древесины
 
-ItemName.RazewoodSink=Razewood Sink
+ItemName.RazewoodSink=Раковина из обожженной древесины
 
-ItemName.RazewoodTable=Razewood Table
+ItemName.RazewoodTable=Стол из обожженной древесины
 
-ItemName.RazewoodTub=Razewood Bathtub
+ItemName.RazewoodTub=Ванна из обожженной древесины
 
-ItemName.RazewoodWall=Razewood Wall
+ItemName.RazewoodWall=Стена из обожженной древесины
 
-ItemName.RazewoodWorkbench=Razewood Workbench
+ItemName.RazewoodWorkbench=Верстак из обожженной древесины
 
 
 // AAMod.Items.Blocks.Statues
 
 
-ItemName.AlphakipStatue=Fish Knight Statue
+ItemName.AlphakipStatue=Статуя Рыбы-рыцаря
 
-ItemName.AvesStatue=Mallard Meistro Statue
+ItemName.AvesStatue=Статуя Кряква Мейстро
 
-ItemName.BegStatue=Weird Horse Statue
+ItemName.BegStatue=Статуя странной лошади
 
-ItemName.CharlieStatue=Guitar Statue
+ItemName.CharlieStatue=Статуя гитары
 
-ItemName.DallinStatue=Doctor Statue
+ItemName.DallinStatue=Статуя Доктора
 
-ItemName.EnderStatue=Hero of Legend Statue
+ItemName.EnderStatue=Статуя Героя Легенды
 
-ItemName.FargoStatue=Top Hat Squirrel Statue
+ItemName.FargoStatue=Статуя Белки с цилиндром
 
-ItemName.FazerStatue=Sammy Statue
+ItemName.FazerStatue=Статуя Сэмми
 
-ItemName.FerretStatue=Ferret Statue
+ItemName.FerretStatue=Статуя хорька
 
-ItemName.GroxStatue=Guardian Statue
+ItemName.GroxStatue=Статуя Защитника
 
-ItemName.HallamStatue=God of Rainbows Statue
+ItemName.HallamStatue=Статуя Бога Радуг
 
-ItemName.KyuuStatue=Excaligrim Statue
+ItemName.KyuuStatue=Статуя Экскалигримма
 
-ItemName.LCSStatue=Lie Statue
+ItemName.LCSStatue=Статуя лжи
 
-ItemName.LizStatue=Kitty Statue
+ItemName.LizStatue=Статуя кошечки
 
-ItemName.MoonStatue=Wasp Statue
+ItemName.MoonStatue=Статуя осы
 
-ItemName.SauceStatue=Snake Statue
+ItemName.SauceStatue=Статуя змеи
 
-ItemName.TailsStatue=Fox Statue
+ItemName.TailsStatue=Статуя лиса
 
 
 // AAMod.Items.Boss.AH
 
-
-ItemName.AHBag=Treasure Bag
+ItemName.AHBag=Мешок с сокровищами
 ItemTooltip.AHBag={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.AsheSatchel=Ashe's Satchel
-ItemTooltip.AsheSatchel=Right click to open\nContains a set of Fury Witch's robes
+ItemName.AsheSatchel=Ранец Аше
+ItemTooltip.AsheSatchel=Нажмите Щелчок правой клавиши мыши, что бы открыть\nСодержит одения Ведьмы Ярости
 
-ItemName.AsheTrophy=Ashe Trophy
+ItemName.AsheTrophy=Трофей Аше
 
-ItemName.AshRain=Ash Rain
-ItemTooltip.AshRain=Shoots fireball which explodes on hit or after some time\nRight click to detonate fireballs
+ItemName.AshRain=Пепельный Дождь
+ItemTooltip.AshRain=Стреляет огненным шаром, который взрывается через какое-то время\nПравый клик, что бы детонировтаь огненные шары
 
-ItemName.ChaosBaton=Chaos Baton
-ItemTooltip.ChaosBaton=Summons a discordian claw to fight with you
+ItemName.ChaosBaton=Жезл Хаоса
+ItemTooltip.ChaosBaton=Призывает тиски раздора сражаться за вас
 
-ItemName.FireSpiritStaff=Flame Vortex Staff
+ItemName.FireSpiritStaff=Посох Огненного водоворота
 
-ItemName.FuryFlame=Fury Flame
-ItemTooltip.FuryFlame=Allows you to blast explosive flames at your foes
+ItemName.FuryFlame=Огонь Ярости
+ItemTooltip.FuryFlame=Позволяет выстрелить струей взрывного огня в ваших врагов
 
-ItemName.HarukaBox=Haruka's Lockbox
-ItemTooltip.HarukaBox=Right click to open\nContains a set of Midnight Assassin clothes
+ItemName.HarukaBox=Шкатулка Харуки
+ItemTooltip.HarukaBox=Нажмите Щелчок правой клавиши мыши, что бы открыть\nСодержит одеяния Полуночного Убийцы
 
-ItemName.HarukaKunai=Abyssal Kunai
+ItemName.HarukaKunai=Бездновый Кунай
 
-ItemName.HarukaTrophy=Haruka Trophy
+ItemName.HarukaTrophy=Трофей Харуки
 
-ItemName.HeartOfPassion=Heart of Passion
-ItemTooltip.HeartOfPassion=Your magic attacks and minions grow stronger the less health you have\nMagic attacks and Minions inflict Dragonfire\nBelow 2/3 of your maximum life, Your mana regenerates much faster\nBelow 1/3 of your maximum life, your magic attacks and minions inflict Daybroken instead of 'On Fire'
+ItemName.HeartOfPassion=Сердце Страсти
+ItemTooltip.HeartOfPassion=Чем меньше у вас здоровья, тем сильнее ваша магия и прислужники\nМагические атаки и прислужники накладывают огонь дракона\nНиже 2/3 вашего максимального здоровья, ваша манна регенириует намного быстрее\nНиже 1/3 вашего максимального здоровья, ваши магические атаки и прислуги накладывают "Рассвет"
 
-ItemName.HeartOfSorrow=Heart of Sorrow
-ItemTooltip.HeartOfSorrow=Your melee and ranged attacks grow stronger the less health you have\nMelee and Ranged inflict Hydratoxin\nBelow 2/3 of your maximum life, Your movement speed is doubled\nBelow 1/3 of your maximum life, your melee and ranged attacks inflict Moonraze instead of Hydratoxin
+ItemName.HeartOfSorrow=Сердце Печали
+ItemTooltip.HeartOfSorrow=Чем меньше у вас здоровья, тем сильнее ваши атаки в дальнем и ближнем бою\nАтаки в ближнем бою и дальнем бою накладывают гидратоксин\nНиже 2/3 вашего максимального здоровья, ваша скорость движения удвоена\nНиже 1/3 вашего максимального здоровья, ваши атаки в ближнем и дальнем бою накладывают "Лунный распад"
 
-ItemName.Masamune=Masamune
-ItemTooltip.Masamune=Left click to quickly slash at your foes with the blade ignore their Iflames\nRight click to shoot a blade wave
+ItemName.Masamune=Масамуне
+ItemTooltip.Masamune=Нажмите щелчок левой кнопки мыши, что бы быстро ударить по врагам, игнорируя их огни\nНажмите щелчок правой кнопки мыши, что бы выстрелить волной
 
-ItemName.MizuArashi=Mizu Arashi
-ItemTooltip.MizuArashi=Has a 1/15 chance to shoot a Mizu spirit\nSpirits deal 2x damage, pierce up to 10 enemies and go through tiles\n77% not to consume arrows
+ItemName.MizuArashi=Мизу Араши
+ItemTooltip.MizuArashi=Обаладает 1/15 шансом выстрелить духом Мизу\nДухи наносят в два раза больше урона, проходят через 10 врагов и блоки\nШанс 77% не потратить стрелы
 
 
 // AAMod.Items.Boss.Akuma
 
 
-ItemName.AkumaATrophy=Oni Akuma Trophy
+ItemName.AkumaATrophy=Трофей Они Акума
 
 ItemName.AkumaBag=Treasure Bag
 ItemTooltip.AkumaBag={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.AkumaTerratool=Draconian Terratool
-ItemTooltip.AkumaTerratool=Right Click to change tool types\nYou may only have a maximum of 2 tool types active\n+20 tile reach
+ItemName.AkumaTerratool=Драконический Мультинструмент
+ItemTooltip.AkumaTerratool=Правый клик что бы сменить тип инструмента\nМаксимум 2 активных инструмента\n+20 радиус
 
-ItemName.AkumaTrophy=Akuma Trophy
+ItemName.AkumaTrophy=Трофей Акумы
 
-ItemName.CrucibleScale=Crucible Scale
-ItemTooltip.CrucibleScale=The fury of the draconian sun eminates from this scale
+ItemName.CrucibleScale=Чешуйки Испытания
+ItemTooltip.CrucibleScale=Ярость Драконического Солнца исходит из этих чешуек
 
-ItemName.Dawnstrike=Dawnstrike
-ItemTooltip.Dawnstrike=Charge the blaster to fire larger flame blasts
+ItemName.Dawnstrike=Рассветный Удар
+ItemTooltip.Dawnstrike=Заряжайте бластер, что бы выстрелить более большими огненными снарядами
 
-ItemName.DaybreakArrow=Daybreak Arrow
-ItemTooltip.DaybreakArrow=Scorches its target with the heat of the blazing sun\nInflicts Daybroken\nNon-consumable
+ItemName.DaybreakArrow=Стрела Рссвета
+ItemTooltip.DaybreakArrow=Обжигает свою цель жаром полыхающего солнца\nНакладывает "Рассвет"\nНе тратится
 
-ItemName.Daycrusher=Daycrusher
-ItemTooltip.Daycrusher=Slams into foes with the force of a solar mass\nInflicts Daybroken
+ItemName.Daycrusher=Крушитель Дня
+ItemTooltip.Daycrusher=Падает на врагов с массой солнца\nНакладывает "Рассвет"
 
-ItemName.Daystorm=Daystorm
+ItemName.Daystorm=Дневной Шторм
 ItemTooltip.Daystorm=Incinerate your enemies in a storm of scorching fiery mayhem
 
-ItemName.DragonSlasher=Dragon Shiv
-ItemTooltip.DragonSlasher=Slow, but hits like a celestial body\nInflicts Daybroken
+ItemName.DragonSlasher=Драконья Шива
+ItemTooltip.DragonSlasher=Медленная, но бьет как небесное тело\nНакладывает "Рассвет"
 
-ItemName.LungStaff=Ancient Lung Staff
-ItemTooltip.LungStaff=Summons an ancient lung to fight for you
+ItemName.LungStaff=Посох Древнего Змия
+ItemTooltip.LungStaff=Призывает Древнего Змия сражаться за вас
 
-ItemName.MorningGlory=Morning Glory
-ItemTooltip.MorningGlory=Splits into phantom piercing spears while travelling
+ItemName.MorningGlory=Утренние Сияние
+ItemTooltip.MorningGlory=Разделяется на фантомные копья, проходящие насквозь, во время полета
 
-ItemName.RadiantDawn=Radiant Dawn
-ItemTooltip.RadiantDawn=Hold to fire more arrows
+ItemName.RadiantDawn=Лучезарный Рассвет
+ItemTooltip.RadiantDawn=Держите, что бы выстрелить больше стрел
 
-ItemName.ReignOfFire=Reign of Fire
-ItemTooltip.ReignOfFire=Rains fire and fury upon your foes\nInflicts Daybroken
+ItemName.ReignOfFire=Власть Огня
+ItemTooltip.ReignOfFire=Дождем выпускает огонь и ярость на ваших врагов\nНакладывает "Рассвет"
 
-ItemName.ReignOfFireEX=Draconian Fury
-ItemTooltip.ReignOfFireEX=Rains fire and fury upon your foes\nInflicts Daybroken\nReign of Fire EX
+ItemName.ReignOfFireEX=Драконическая Ярость
+ItemTooltip.ReignOfFireEX=Дождем выпускает огонь и ярость на ваших врагов\nНакладывает "Рассвет"\nВласть огня EX
 
-ItemName.Solar=Solar
-ItemTooltip.Solar=Spins with the speed of a planet orbiting the sun\nInflicts daybroken
+ItemName.Solar=Солнечный
+ItemTooltip.Solar=Крутится с скоростью планеты, летающей вокруг солнца\nНакладывает "Рассвет"
 
-ItemName.SunSpear=Sun Partisan
-ItemTooltip.SunSpear=One of two legendary spears used to divide time into day and night\nInflicts daybroken
+ItemName.SunSpear=Протазан Солнца
+ItemTooltip.SunSpear=Одно из легендарных копьев, использованных для разделения времени на день и ночь\nНакладывает "Рассвет"
 
-ItemName.SunStaff=Solar Staff
-ItemTooltip.SunStaff=Rains fire and fury upon your foes\nInflicts Daybroken
+ItemName.SunStaff=Солнечный Посох
+ItemTooltip.SunStaff=Дождем выпускает огонь и ярость на ваших врагов\nНакладывает "Рассвет"
 
-ItemName.SunStorm=Sunstorm
-ItemTooltip.SunStorm=Summons orbiting fireballs which home to enemies after some time
+ItemName.SunStorm=Шторм Солнца
+ItemTooltip.SunStorm=Призывает летающие вокруг вас огненные шары, которые через некоторое время летят в врагов
 
-ItemName.TaiyangBaolei=Taiyang Baolei
-ItemTooltip.TaiyangBaolei=Makes you immune to almost all debuffs\nYour melee & magic attacks set enemies ablaze\nDuring the day, you gain 6% damage resistance and your melee & magic attacks inflict daybroken instead of 'On Fire!'
+ItemName.TaiyangBaolei=Тайанг Бэйолей
+ItemTooltip.TaiyangBaolei=Дает имменитет почти к всем дебаффам\nВаши магические атаки и атаки в ближнем бою поджигают врагов\nДнем, получаемый урон снижен на 6% и ваши магические атаки и атаки в ближнем бою накладывают "Рассвет"
 
-ItemName.YOTD=Year of the Dragon
-ItemTooltip.YOTD=Fires dazzling fireworks to amaze your friends and blow your enemies away!\n'Akuma brand fireworks is not responsible for damage done by shooting fireworks point-blank into enemies' faces.'
+ItemName.YOTD=Год Дракона
+ItemTooltip.YOTD=Стреляет ослепительными фейерверками, которые впечатляют друзей и убивают врагов!  \n'Фейерверки бренда "Акума" не берут ответственность за урон, нанесенный стрельбой вплотную в 'лица' врагов.
 
 
 // AAMod.Items.Boss.Anubis.Forsaken
 
 
-ItemName.ArtifactOfGuilt=Artifact of Guilt
-ItemTooltip.ArtifactOfGuilt=Taking damage builds a charge in the Artifact\nReaching a charge of 250 will summon an ''Eye of the Forsaken'' and reset the charge value\nYou will get major damage and speed boosts while Eye is active
+ItemName.ArtifactOfGuilt=Артефакт вины
+ItemTooltip.ArtifactOfGuilt=Получение урона заряжает артефакт\nПри достижении 250 призовется 'Глаз Правосудия' и заряд сбросится \nВы получите большое увеличение к урону и скорости, пока присутсвует 'Глаз Правосудия'
 
-ItemName.CursedFury=Cursed Flamefury
-ItemTooltip.CursedFury=50% chance to not consume gel
+ItemName.CursedFury=Проклятая Огненная ярость
+ItemTooltip.CursedFury=50% шанс не потратить гель
 
-ItemName.FAnubisBag=Treasure Bag
+ItemName.FAnubisBag=Мешок с сокровищами
 ItemTooltip.FAnubisBag={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.FAnubisTrophy=Forsaken Anubis Trophy
+ItemName.FAnubisTrophy=Трофей Забытого Анубиса
 
-ItemName.ForsakenStaff=Forsaken Staff
-ItemTooltip.ForsakenStaff=Shoots 2 homing blasts of forsaken energy which explode into forsaken sparks
+ItemName.ForsakenStaff=Забытый Посох
+ItemTooltip.ForsakenStaff=Стреляем 2 самонаводящимися снарядами забытой энергии, которые взрываются в забытые искры
 
-ItemName.HorusCane=Horus' Cane
-ItemTooltip.HorusCane=Summons a Horus Eye sentry
+ItemName.HorusCane=Трость Горуса
+ItemTooltip.HorusCane=Призывает глаз Горуса
 
-ItemName.Lifeline=Lifeline
-ItemTooltip.Lifeline=Shoots 2 enchanced Mummy arrows alongside with normal\nShoots ``Forsaken arrows`` burst if 2 enchanted arrows hit the target\nForsaken arrows lower enemy contact damage
+ItemName.Lifeline=Линия жизни
+ItemTooltip.Lifeline=Стреляет 2 заколдованными стрелами мумии вместе с обычными\nСтреляет извержением ``Забытых стрел``, если 2 заколдованные стрелы попадают по цели\nЗабытые стрелы понижают контактный урон противника
 
-ItemName.SoulFragment=Soul Fragment
+ItemName.SoulFragment=Фрагмент Души
 
-ItemName.Soulsplitter=Soulsplitter
-ItemTooltip.Soulsplitter=Shoots out a trio of wall-piercing returning phantom blades on swing
+ItemName.Soulsplitter=Разделитель Души
+ItemTooltip.Soulsplitter=Стреляем тремя, проходящими сквозь стены, возвращающимися фантомными топорами при атаке
 
-ItemName.Verdict=Verdict
-ItemTooltip.Verdict=Releases enchanted sand rain on enemy hit\nCreates 2 forsaken phantom blades which hit enemy horizontally as well
+ItemName.Verdict=Вердикт
+ItemTooltip.Verdict=Выпускает заколдованный песочный дождь при нанесении урона врагу \nВ это же время, создает 2 забытых фантомных топора
 
 
 // AAMod.Items.Boss.Anubis
 
 
-ItemName.AnubisBag=Treasure Bag
+ItemName.AnubisBag=Мешок с сокровищами
 ItemTooltip.AnubisBag={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.AnubisTrophy=Anubis Trophy
+ItemName.AnubisTrophy=Трофей Анубиса
 
-ItemName.ArtifactOfJudgement=Artifact of Judgement
-ItemTooltip.ArtifactOfJudgement=Taking damage builds a charge in the Artifact\nReaching a charge of 250 will summon an ''Eye of Judgement'' and reset the charge value\nYour defense is lowered and speed is raised while the Eye is active
+ItemName.ArtifactOfJudgement=Артефакт Правосудия
+ItemTooltip.ArtifactOfJudgement=Получение урона заряжает артефакт\nПри достижении 250 призовется 'Глаз Правосудия' и заряд сбросится \nВаша защита снижена а скорость повышена, пока действует Глаз
 
-ItemName.DesertStaff=Desert Staff
-ItemTooltip.DesertStaff=Shoots enchanted sand bolt which explodes into bouncing balls on hit
+ItemName.DesertStaff=Посох Пустыни
+ItemTooltip.DesertStaff=Стреляет заколдованными песочными дротиками, которые взрываются в отпрыгивающие шары при нанесении урона
 
-ItemName.ForsakenFragment=Forsaken Fragment
+ItemName.ForsakenFragment=Забытый Фрагмент
 
-ItemName.JackalsWrath=Jackal's Wrath
-ItemTooltip.JackalsWrath=Shoots out a wall-piercing returning phantom blade on swing
+ItemName.JackalsWrath=Гнев Шакала
+ItemTooltip.JackalsWrath=Бросает проходящий сквозь стены топор
 
-ItemName.Judgment=Judgement
-ItemTooltip.Judgment=Releases enchanted sand rain on enemy hit
+ItemName.Judgment=Правосудие
+ItemTooltip.Judgment=Выпускает заколдованный песочный дождь при нанесении урона врагу
 
-ItemName.NeithsString=Neith's String
-ItemTooltip.NeithsString=Shoots 2 arrows at once\nCan occasionally shoot ``Judgement arrow``, which lowers enemy defense\nConverts wooden arrows into slower, but high-damaging mummy arrows
+ItemName.NeithsString=Нить Нейты
+ItemTooltip.NeithsString=Стреляет сразу 2 стрелами\nМожет выстрелить ``Стрелой правосудия``, которая уменьшает защиту врага\nПревращает деревянные стрелы в более медленные, но наносящие много урона стрелы мумии
 
-ItemName.SandstormThrower=Sandthrower
-ItemTooltip.SandstormThrower=30% chance to not consume gel
+ItemName.SandstormThrower=Песокомет
+ItemTooltip.SandstormThrower=30% шанс не потратить гель
 
-ItemName.SentryOfTheEye=Sentry of the Eye
-ItemTooltip.SentryOfTheEye=Summons an eye sentry
+ItemName.SentryOfTheEye=Турель Глаза
+ItemTooltip.SentryOfTheEye=Призывает глаз-турель
+
 
 
 // AAMod.Items.Boss.Athena
 
 
-ItemName.AthenaABag=Treasure Bag
+ItemName.AthenaABag=Мешок с сокровищами
 ItemTooltip.AthenaABag={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.AthenaBag=Treasure Bag
+ItemName.AthenaBag=Мешок с сокровищами
 ItemTooltip.AthenaBag={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.AthenaTrophy=Athena Trophy
+ItemName.AthenaTrophy=Трофей Афины
 
-ItemName.DivineWindCharm=Divine Wind Stone
-ItemTooltip.DivineWindCharm=Summons an owl rune sentry
+ItemName.DivineWindCharm=Божественный камень ветра
+ItemTooltip.DivineWindCharm=Призывает турель-руну совы
 
-ItemName.GaleForce=Gale Force
+ItemName.GaleForce=Сила Шторма
 
-ItemName.GaleOfWings=Gale of Wings
+ItemName.GaleOfWings=Шторм Крыльев
 
-ItemName.GoddessFeather=Goddess Feather
+ItemName.GoddessFeather=Перо богини
 
-ItemName.GoddessHarp=Goddess Harp
-ItemTooltip.GoddessHarp=Summons the seraph queen herself to fight with you\nAthena is boosted by minion damage
+ItemName.GoddessHarp=Арфа богини
+ItemTooltip.GoddessHarp=Призывает саму королеву серафимов сражаться за вас\nАфина усиливается с помощью аксессуаров и брони на призывателя
 
-ItemName.HurricaneStone=Hurricane Stone
-ItemTooltip.HurricaneStone=Summons a charged owl rune sentry
+ItemName.HurricaneStone=Ураганный камень
+ItemTooltip.HurricaneStone=Призывает заряженную турель-руну совы
 
 ===UNKNWN===
-ItemName.Olympia=
+ItemName.Olympia=Олимпиа
 
-ItemName.RazorwindLongbow=Razorwind Longbow
-ItemTooltip.RazorwindLongbow=Replaces wooden arrows with wind arrows with high knockback
+ItemName.RazorwindLongbow=Длинный лук режущего ветра
+ItemTooltip.RazorwindLongbow=Заменяет деревянные стрелы ветряными стрелами, которые обладают сильным отталкиванием
 
-ItemName.SeraphHarp=Seraph Harp
-ItemTooltip.SeraphHarp=Summons a seraph to fight for you\nSeraph is boosted by minion damage
+ItemName.SeraphHarp=Арфа серафима
+ItemTooltip.SeraphHarp=Призывает серафима сражаться за вас\nСерафим усиливается с помощью аксессуаров и брони на призывателя
 
-ItemName.SkycutterKopis=Skycutter Kopis
+ItemName.SkycutterKopis=Копис режущий небеса
 
-ItemName.StarChart=Star Chart
-ItemTooltip.StarChart=A map of the solar system up to this planet.
+ItemName.StarChart=Звездная карта
+ItemTooltip.StarChart=Карта солнечной системы
 
-ItemName.Windfury=Windfury
-ItemTooltip.Windfury=Replaces wooden arrows with gale arrows with high knockback and infinite piercing
+ItemName.Windfury=Ветреная ярость
+ItemTooltip.Windfury=Заменяет деревянные стрелы на стрелы шторма, которые обладают бесконечным пронзанием и сильным отталкиванием
 
 
 // AAMod.Items.Boss.Broodmother
 
 
-ItemName.BroodBag=Treasure Bag
+ItemName.BroodBag=Мешок с сокровищами
 ItemTooltip.BroodBag={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.BroodmotherTrophy=Broodmother Trophy
+ItemName.BroodmotherTrophy=Трофей Матери Стаи
 
-ItemName.BroodScale=Scorched Scale
-ItemTooltip.BroodScale=The scale of a formidable foe
+ItemName.BroodScale=Выжженная чешуйка
+ItemTooltip.BroodScale=Чешуйка грозного врага
 
-ItemName.DragonCape=Dragontamer's Cloak
-ItemTooltip.DragonCape=3% Increased Damage Resistance
+ItemName.DragonCape=Накидка укротителя драконов
+ItemTooltip.DragonCape=Получаемый урон снижен на 3%
 
 
 // AAMod.Items.Boss.Djinn
 
 
-ItemName.DjinnBag=Treasure Bag
+ItemName.DjinnBag=Мешок с сокровищами
 ItemTooltip.DjinnBag={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.Djinnerang=Djinnerang
+ItemName.Djinnerang=Джинноранг
 
-ItemName.DjinnTrophy=Desert Djinn Trophy
+ItemName.DjinnTrophy=Трофей Пустынного Джинна
 
-ItemName.Sandagger=Sandagger
+ItemName.Sandagger=Песочный кинжал
 
-ItemName.SandLamp=Sand Lamp
+ItemName.SandLamp=Песочная лампа
 
-ItemName.SandScepter=Sand Scepter
-ItemTooltip.SandScepter=Summons a dust devil to fight with you
+ItemName.SandScepter=Песочный скипетр
+ItemTooltip.SandScepter=Призывает пыльного демона сражаться за вас
 
-ItemName.SandstormCrossbow=Sandstorm Crossbow
-ItemTooltip.SandstormCrossbow=Replaces arrows with desert bolts
+ItemName.SandstormCrossbow=Арбалет песочной бури
+ItemTooltip.SandstormCrossbow=Заменяет стрелы пустынными снарядами
 
-ItemName.SandstormMedallion=Sandstorm Medallion
-ItemTooltip.SandstormMedallion=Doubles your stats during a Sandstorm
+ItemName.SandstormMedallion=Медальен песчанной бури
+ItemTooltip.SandstormMedallion=Удваивает ваши параметры во время песчанной бури
 
-ItemName.SultanScimitar=Sultan's Scimitar
+ItemName.SultanScimitar=Сабля Султана
 
 
 // AAMod.Items.Boss.EFish
 
 
-ItemName.EFishWings=Emperor Fishron Wings
-ItemTooltip.EFishWings=Allows flight and slow fall
+ItemName.EFishWings=Императорские Крылья Рыброна
+ItemTooltip.EFishWings=Позволяют вам летать и поглощают урон от падения
 
-ItemName.EFlairon=Emperor Flairon
-ItemTooltip.EFlairon=Lets loose an armada of homing bubbles
+ItemName.EFlairon=Императорский Флайрон
+ItemTooltip.EFlairon=Выпускает армаду из самонаводящихся шаров
 
-ItemName.FancyTruffle=Fancy Truffle
-ItemTooltip.FancyTruffle=Attracts a royal creature which flourishes in water & combat
+ItemName.FancyTruffle=Роскошный Трюфель
+ItemTooltip.FancyTruffle=Привлекает королевское существо, которое усиливается в воде и бою
 
-ItemName.FishnadoStaff=Fishnado Staff
+ItemName.FishnadoStaff=Посох Акулонадо
 
-ItemName.Hurricane=Hurricane
-ItemTooltip.Hurricane=Shoots 2 waves of 6 arrows\nYou have a chance to shoot Oceanic Arrow\n66% chance not to consume arrow\nTsunami EX
+ItemName.Hurricane=Ураган
+ItemTooltip.Hurricane=Стреляет 2 волны, которые состоят из 6 стрел\nУ вас есть шанс выстрелить океаническую стрелу\n66% шанс не потратить стрелу\nTsunami EX
 
-ItemName.SoapBlaster=Soap Blaster
-ItemTooltip.SoapBlaster=Rapidly shoots destructive bubbles
+ItemName.SoapBlaster=Пузырный бластер
+ItemTooltip.SoapBlaster=Быстро выстреливает разрушительными пузырями
 
-ItemName.UltibladeTyphoon=Ultiblade Typhoon
-ItemTooltip.UltibladeTyphoon=Casts 3 fast homing razorwheels\nRazorblade Typhoon EX
+ItemName.UltibladeTyphoon=Ультимеч тайфуна
+ItemTooltip.UltibladeTyphoon=Создает 3 быстрых самонаводящихся кольца\nRazorblade Typhoon EX
 
 
 // AAMod.Items.Boss.Equinox
 
 
-ItemName.DarkVoid=Dark Void
-ItemTooltip.DarkVoid=Gives immensely increased stats at night\n'Dark and spooky'
+ItemName.DarkVoid=Темная Пустота
+ItemTooltip.DarkVoid=Чрезвычайно повышает характеристики ночью\n'Темная и страшная'
 
-ItemName.DBBag=Treasure Bag
+ItemName.DBBag=Мешок с сокровищами
 ItemTooltip.DBBag={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.DBTrophy=Daybringer Trophy
+ItemName.DBTrophy=Трофей Приносящего свет
 
-ItemName.Equinox=Equinox
-ItemTooltip.Equinox=Gives immensely increased stats\n'True balance'
+ItemName.Equinox=Равноденствие
+ItemTooltip.Equinox=Чрезвычайно повышает характеристики\n'Истинный баланс'
 
-ItemName.NCBag=Treasure Bag
+ItemName.NCBag=Мешок с сокровищами
 ItemTooltip.NCBag={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.NCTrophy=Nightcrawler Trophy
+ItemName.NCTrophy=Трофей Ночного Ползуна
 
-ItemName.RadiantStar=Radiant Star
-ItemTooltip.RadiantStar=Gives immensely increased stats during the day\n'It's Shiny'
+ItemName.RadiantStar=Лучезарная Звезда
+ItemTooltip.RadiantStar=Чрезвычайно повышает характеристики днем\n'Блестяшка'
 
 
 // AAMod.Items.Boss.Greed

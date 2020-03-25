@@ -455,6 +455,9 @@ ItemTooltip.DraconianWings=Allows flight and slow fall
 ItemName.DreadWings=Dread Moon Wings
 ItemTooltip.DreadWings=Allows flight and slow fall
 
+ItemName.MagmancerWings=Magmancer Wings
+ItemTooltip.MagmancerWings=Allows flight and slow fall
+
 ItemName.OlympianWings=Olympian Wings
 ItemTooltip.OlympianWings=Allows flight and slow fall\nGrants a dash while flying
 
