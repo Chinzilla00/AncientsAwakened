@@ -89,7 +89,7 @@ Hold down and jump to hover for an extended period of time
                 {
                     player.wingFrame++;
                     player.wingFrameCounter = 0;
-                    if (player.wingFrame >= 3)
+                    if (player.wingFrame > 3)
                     {
                         player.wingFrame = 0;
                     }

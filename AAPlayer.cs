@@ -3578,6 +3578,19 @@ namespace AAMod
                 player.head = mod.GetEquipSlot("onoHead", EquipType.Head);
             }
         }
+
+        public override void UpdateVanityAccessories()
+        {
+            for (int n = 13; n < 18 + player.extraAccessorySlots; n++)
+            {
+                Item item = player.armor[n];
+                if (item.type == ModContent.ItemType<Items.Vanity.Ohno.ono>())
+                {
+                    onoHideVanity = false;
+                    onoForceVanity = true;
+                }
+            }
+        }
     }
 
     public class MimicSummon : ModPlayer

@@ -1,15 +1,14 @@
 using Terraria;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace AAMod.Items.Vanity.Ohno
 {
-	public class ohno : ModItem
+    public class ono : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("ohno");
-			Tooltip.SetDefault("ohno");
+			DisplayName.SetDefault("ono");
+			Tooltip.SetDefault("ono");
 		}
 
 		public override void SetDefaults() 
