@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Vanity.Eliza
+namespace AAMod.Items.Vanity.Eliza.Dragon
 {
 
     [AutoloadEquip(EquipType.Wings)]
