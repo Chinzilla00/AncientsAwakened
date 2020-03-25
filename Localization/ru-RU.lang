@@ -1924,8 +1924,8 @@ ItemTooltip.RoyalScepterEX=Shoots a spread of five golden carrots\nRoyal Scepter
 
 // AAMod.Items.Boss.Sagittarius
 
-ItemName.ZeroStar=Zero Star
-ItemTooltip.ZeroStar=A spinning blade of doom
+ItemName.ZeroStar=Нуль Звезда
+ItemTooltip.ZeroStar=Крутящееся лезвие р0ка
 
 ItemName.Legg=Sagittarius' Leg
 ItemTooltip.Legg=It's a piece of metal. You beat things with it. Pretty basic concept.
@@ -3921,21 +3921,20 @@ ItemTooltip.FezLordsBag=<right> to open \n'All the essentials for impersonating 
 
 // AAMod.Items.Vanity.Eliza.Dragon
 
-ItemName.LizBag=Dark Dragon's Bag
-ItemTooltip.LizBag=<right> to open \n'All the essentials for impersonating the Dragon Queen!'
+ItemName.LizBag=Сумка темного дракона
+ItemTooltip.LizBag=Нажмите Щелчок правой клавиши мыши, что бы открыть\n'Предметы первой необходимости для продражания Королеве Драконов!'
 
-ItemName.LizHood=Dark Dragoness' Hood
-ItemTooltip.LizHood='Great for impersonating Ancients Awakened Devs!'
+ItemName.LizHood=Капюшон Темной Драконихи
+ItemTooltip.LizHood='Поможет вам выдать себя за разработчика мода "Древние Пробудились"!'
 
-ItemName.LizRobes=Dark Dragoness' Robes
-ItemTooltip.LizRobes='Great for impersonating Ancients Awakened Devs!'
+ItemName.LizRobes=Робы Темной Драконихи
+ItemTooltip.LizRobes='Поможет вам выдать себя за разработчика мода "Древние Пробудились"!'
 
-ItemName.LizSkirt=Dark Dragoness' Skirt
-ItemTooltip.LizSkirt='Great for impersonating Ancients Awakened Devs!'
+ItemName.LizSkirt=Юбка Темной Драконихи
+ItemTooltip.LizSkirt='Поможет вам выдать себя за разработчика мода "Древние Пробудились"!'
 
-ItemName.DragonWings=Dark Dragon Wings
-ItemTooltip.DragonWings=Allows flight and slow fall\nHold down and jump to hover for an extended period of time\n'Great for impersonating Ancients Awakened Devs!'
-
+ItemName.DragonWings=Крылья Темной Драконихи
+ItemTooltip.DragonWings=Allows flight and slow fall\nПозволяют вам летать и поглощают урон от падения\n'Поможет вам выдать себя за разработчика мода "Древние Пробудились"!'
 
 // AAMod.Items.Vanity.Eliza.Cats
 
@@ -3971,8 +3970,8 @@ ItemTooltip.FargoSuit=soonTM\n'Great for impersonating Ancients Awakened Devs!'
 
 // AAMod.Items.Vanity.Gibs
 
-ItemName.GibsBag=Angry Revnant's Bag
-ItemTooltip.GibsBag=<right> to open \n'All the essentials for impersonating the Raging Revnant!'
+ItemName.GibsBag=Мешок злого Ревенанта
+ItemTooltip.GibsBag=Нажмите Щелчок правой клавиши мыши, что бы открыть\n'Предметы первой необходимости для продражания Злого Ревенанта!'
 
 ItemName.GibsJet=Revenant's Jet Booster
 ItemTooltip.GibsJet=Allows flight and slow fall\nHold down and jump to hover for an extended period of time\n'Great for impersonating Ancients Awakened Developers!'
