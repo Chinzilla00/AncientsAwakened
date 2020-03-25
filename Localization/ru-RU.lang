@@ -1924,6 +1924,8 @@ ItemTooltip.RoyalScepterEX=Shoots a spread of five golden carrots\nRoyal Scepter
 
 // AAMod.Items.Boss.Sagittarius
 
+ItemName.ZeroStar=Zero Star
+ItemTooltip.ZeroStar=A spinning blade of doom
 
 ItemName.Legg=Sagittarius' Leg
 ItemTooltip.Legg=It's a piece of metal. You beat things with it. Pretty basic concept.

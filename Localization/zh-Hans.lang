@@ -2344,6 +2344,8 @@ ItemTooltip.CyberBaton=召唤一个电子之爪为你而战
 
 // AAMod.Items.Boss.Sagittarius
 
+ItemName.ZeroStar=零之星
+ItemTooltip.ZeroStar=旋转的毁灭之刃
 
 ItemName.Legg=人马腿
 ItemTooltip.Legg=一块金属. 用这个攻击东西. 不错的基础概念.
