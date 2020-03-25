@@ -75,13 +75,12 @@ namespace AAMod.Items.Boss.Zero
                 "RiftShredder",
                 "VoidStar",
                 "TeslaHand",
-                "ZeroStar",
                 "Neutralizer",
                 "ZeroTerratool",
                 "DoomPortal",
                 "Gigataser",
-                    "OmegaVolley",
-                    "GenocideCannon"
+                "OmegaVolley",
+                "GenocideCannon"
 
             };
             int loot = Main.rand.Next(lootTable.Length);

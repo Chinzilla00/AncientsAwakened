@@ -10,7 +10,6 @@ namespace AAMod.Items.Boss.Sagittarius
 {
     public class ZeroStar : BaseAAItem
     {
-        
         public override void SetStaticDefaults()
 		{
             DisplayName.SetDefault("Zero Star");
@@ -18,16 +17,16 @@ namespace AAMod.Items.Boss.Sagittarius
         }
 		public override void SetDefaults()
 		{
-	    item.damage = 25;
-	    item.width = 46;
-	    item.height = 46;
-	    item.useTime = 23;
-	    item.useAnimation = 30;
-	    item.useStyle = 1;
-	    item.knockBack = 6;
-	    item.value = Item.sellPrice(0, 30, 0, 0);
+	        item.damage = 25;
+	        item.width = 46;
+	        item.height = 46;
+	        item.useTime = 23;
+	        item.useAnimation = 30;
+	        item.useStyle = 1;
+	        item.knockBack = 6;
+	        item.value = Item.sellPrice(0, 30, 0, 0);
             item.UseSound = SoundID.Item1;
-	    item.autoReuse = true;
+	        item.autoReuse = true;
             item.melee = true;
             item.shoot = mod.ProjectileType("ZeroStarP");
             item.shootSpeed = 20f;
