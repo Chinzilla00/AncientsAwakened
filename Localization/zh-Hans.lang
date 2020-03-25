@@ -2344,6 +2344,8 @@ ItemTooltip.CyberBaton=召唤一个电子之爪为你而战
 
 // AAMod.Items.Boss.Sagittarius
 
+ItemName.ZeroStar=零之星
+ItemTooltip.ZeroStar=旋转的毁灭之刃
 
 ItemName.Legg=人马腿
 ItemTooltip.Legg=一块金属. 用这个攻击东西. 不错的基础概念.
@@ -3011,7 +3013,6 @@ ItemName.SharpeningLavaFish=利锋熔鱼
 ItemName.ToxinMonkfish=毒源鮟鱇
 
 // AAMod.Items.Flasks
-
 
 ItemName.AshJar=燎烬罐
 ItemTooltip.AshJar=扩散燎狱
@@ -4709,6 +4710,9 @@ ItemTooltip.LizRobes=“非常适合冒充远古觉醒的开发者!”
 ItemName.LizSkirt=末影龙女短裙
 ItemTooltip.LizSkirt=“非常适合冒充远古觉醒的开发者!”
 
+ItemName.DragonWings=末影龙翼
+ItemTooltip.DragonWings=允许飞行和滑翔\n按住下和跳跃键可以悬停一段时间\n“非常适合冒充远古觉醒的开发者!”
+
 // AAMod.Items.Vanity.Eliza.Cats
 
 ItemName.LizBoots=午夜猫装裤
@@ -4739,6 +4743,9 @@ ItemName.FargoSuit=小松鼠衣衫
 ItemTooltip.FargoSuit=soonTM\n“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Gibs
+
+ItemName.GibsBag=愤怒归来者宝藏袋
+ItemTooltip.GibsBag=右键打开\n内含冒充愤怒归来者的所有物品
 
 ItemName.GibsPlate=归来者护胸
 ItemTooltip.GibsPlate=“非常适合冒充远古觉醒的开发者!”
