@@ -183,6 +183,11 @@ namespace AAMod
         public bool ChaosSu = false;
         public bool Olympian = false;
 
+        public bool onoPrevious;
+        public bool ono;
+        public bool onoHideVanity;
+        public bool onoForceVanity;
+
         public bool AsheFlame;
         public float AsheFlameScale = 0f;
         public int AsheCooldown = 0;
@@ -366,6 +371,8 @@ namespace AAMod
         {
             Compass = false;
             DemonSun = false;
+            onoPrevious = ono;
+            ono = onoHideVanity = onoForceVanity = false;
         }
 
         private void ResetMinionEffect()
@@ -2411,24 +2418,16 @@ namespace AAMod
                         break;
 
                     case 15:
-
-                        if (dropType >= 4)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("GroviteTerratool"));
-                        }
-
-                        player.QuickSpawnItem(mod.ItemType("AngryPirateHood"));
-                        player.QuickSpawnItem(mod.ItemType("AngryPirateCofferplate"));
-                        player.QuickSpawnItem(mod.ItemType("AngryPirateBoots"));
-
-                        if (dropType >= 1)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("AngryPirateSails"));
-                        }
+                        player.QuickSpawnItem(mod.ItemType("GroviteSeaChest"));
 
                         if (dropType >= 3)
                         {
                             player.QuickSpawnItem(mod.ItemType(dropType == 4 ? "SoccStaff" : "SockStaff"));
+                        }
+
+                        if (dropType >= 4)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("GroviteTerratool"));
                         }
 
                         spawnedDevItems = true;
@@ -2441,14 +2440,7 @@ namespace AAMod
                         break;
 
                     case 17:
-                        player.QuickSpawnItem(mod.ItemType("GibsSkull"));
-                        player.QuickSpawnItem(mod.ItemType("GibsPlate"));
-                        player.QuickSpawnItem(mod.ItemType("GibsShorts"));
-
-                        if (dropType >= 1)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("GibsJet"));
-                        }
+                        player.QuickSpawnItem(mod.ItemType("GibsBag"));
 
                         if (dropType >= 3)
                         {
@@ -3575,6 +3567,17 @@ namespace AAMod
         }
 
         #endregion
+
+
+        public override void FrameEffects()
+        {
+            if (onoForceVanity && !onoHideVanity)
+            {
+                player.legs = mod.GetEquipSlot("onoLeg", EquipType.Legs);
+                player.body = mod.GetEquipSlot("onoBody", EquipType.Body);
+                player.head = mod.GetEquipSlot("onoHead", EquipType.Head);
+            }
+        }
     }
 
     public class MimicSummon : ModPlayer

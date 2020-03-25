@@ -1074,7 +1074,10 @@ namespace AAMod
                 AAMod.instance.ItemType("OldMagiciansHat"),
                 AAMod.instance.ItemType("MagiciansHat"),
                 AAMod.instance.ItemType("LizBag"),
-                AAMod.instance.ItemType("FezLordsBag")
+                AAMod.instance.ItemType("FezLordsBag"),
+                AAMod.instance.ItemType("MoonBag"),
+                AAMod.instance.ItemType("GibsBag"),
+                AAMod.instance.ItemType("GroviteSeaChest")
             });
             RecipeGroup.RegisterGroup("AAMod:DevBag", group23);
 

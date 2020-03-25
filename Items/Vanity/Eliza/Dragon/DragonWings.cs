@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Vanity.Eliza
+namespace AAMod.Items.Vanity.Eliza.Dragon
 {
 
     [AutoloadEquip(EquipType.Wings)]
@@ -25,8 +25,6 @@ Hold down and jump to hover for an extended period of time
 			item.rare = 11;
 			item.accessory = true;
 		}
-
-        
 
         public override void ModifyTooltips(List<TooltipLine> list)
         {
