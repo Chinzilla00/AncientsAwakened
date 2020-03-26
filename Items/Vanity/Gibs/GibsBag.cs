@@ -6,7 +6,7 @@ namespace AAMod.Items.Vanity.Gibs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Angry Revnant's Bag");
+            DisplayName.SetDefault("Angry Revnant's Sarcophagus");
             Tooltip.SetDefault("<right> to open \n'All the essentials for impersonating the Raging Revnant!'");
         }
 
