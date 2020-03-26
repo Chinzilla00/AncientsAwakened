@@ -1,6 +1,7 @@
 ﻿using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.IO;
 using Terraria;
 using Terraria.ID;
@@ -106,7 +107,7 @@ namespace AAMod.NPCs.Bosses.Anubis
         {
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 6, 0, 0);
 
-            BaseDrawing.DrawAfterimage(sb, Main.projectileTexture[projectile.type], 0, projectile, 2f, 1f, (int)projectile.velocity.X, true, 0f, 0f, dColor, frame, 6);
+            BaseDrawing.DrawAfterimage(sb, Main.projectileTexture[projectile.type], 0, projectile, 2f, 1f, Math.Abs((int)projectile.velocity.X), true, 0f, 0f, dColor, frame, 6);
 
 
             BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 6, frame, dColor, true);

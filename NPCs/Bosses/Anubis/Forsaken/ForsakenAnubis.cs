@@ -354,7 +354,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     }
                     else
                     {
-                        if (npc.ai[1] % 30 == 0)
+                        if (npc.ai[1] % 30 == 0 && npc.ai[1] <= 240)
                         {
                             if (Main.rand.Next(2) == 0)
                             {
@@ -527,7 +527,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 }
                 else
                 {
-                    if (npc.frame.Y > frameHeight * 6)
+                    if (npc.frame.Y > frameHeight * 5)
                     {
                         npc.frame.Y = 0;
                     }
@@ -584,7 +584,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             Vector2 targetPos = player.Center;
             int posX = Main.rand.Next(-400, 400);
 
-            int posY = Main.rand.Next(0, 400);
+            int posY = Main.rand.Next(50, 400);
             if (posX > -100 && posX < 100)
             {
                  posY = Main.rand.Next(100, 400);
