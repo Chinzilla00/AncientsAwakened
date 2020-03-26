@@ -233,35 +233,35 @@ namespace AAMod.NPCs.Bosses.Zero
             if (npc.ai[1] == 0)
             {
                 BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-                BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, GetGlowAlpha());
+                BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, AAColor.COLOR_WHITEFADE1);
             }
             else if (npc.ai[1] == 1)
             {
                 int num214 = normalAni.Height / 5;
                 int y6 = num214 * normalFrame;
                 Main.spriteBatch.Draw(normalAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, normalAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2(normalAni.Width / 2f, num214 / 2f), npc.scale, SpriteEffects.None, 0f);
-                Main.spriteBatch.Draw(normalGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, normalAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2(normalAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(normalGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, normalAni.Width, num214)), AAColor.COLOR_WHITEFADE1, npc.rotation, new Vector2(normalAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             else if (npc.ai[1] == 2)
             {
                 int num214 = switchOneAni.Height / 5;
                 int y6 = num214 * switchOneFrame;
                 Main.spriteBatch.Draw(switchOneAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, switchOneAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2(switchOneAni.Width / 2f, num214 / 2f), npc.scale, SpriteEffects.None, 0f);
-                Main.spriteBatch.Draw(switchOneGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, switchOneAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2(switchOneAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(switchOneGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, switchOneAni.Width, num214)), AAColor.COLOR_WHITEFADE1, npc.rotation, new Vector2(switchOneAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             else if (npc.ai[1] == 3)
             {
                 int num214 = openAni.Height / 5;
                 int y6 = num214 * openFrame;
                 Main.spriteBatch.Draw(openAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, openAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2(openAni.Width / 2f, num214 / 2f), npc.scale, SpriteEffects.None, 0f);
-                Main.spriteBatch.Draw(openGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, openAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2(openAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(openGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, openAni.Width, num214)), AAColor.COLOR_WHITEFADE1, npc.rotation, new Vector2(openAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
             else if (npc.ai[1] == 4)
             {
                 int num214 = switchTwoAni.Height / 5;
                 int y6 = num214 * switchTwoFrame;
                 Main.spriteBatch.Draw(switchTwoAni, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, switchTwoAni.Width, num214)), dColor * ((255 - npc.alpha) / 255f), npc.rotation, new Vector2(switchTwoAni.Width / 2f, num214 / 2f), npc.scale, SpriteEffects.None, 0f);
-                Main.spriteBatch.Draw(switchTwoGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, switchTwoAni.Width, num214)), GetGlowAlpha(), npc.rotation, new Vector2(switchTwoAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
+                Main.spriteBatch.Draw(switchTwoGlow, drawCenter - Main.screenPosition, new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, switchTwoAni.Width, num214)), AAColor.COLOR_WHITEFADE1, npc.rotation, new Vector2(switchTwoAni.Width / 2f, num214 / 2f), npc.scale, npc.spriteDirection == 1 ? SpriteEffects.None : SpriteEffects.FlipHorizontally, 0f);
             }
 
 
@@ -269,7 +269,7 @@ namespace AAMod.NPCs.Bosses.Zero
             {
                 BaseDrawing.DrawTexture(spritebatch, Shield, 0, npc.position, npc.width, npc.height, ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), GetGlowAlpha(), true);
                 BaseDrawing.DrawTexture(spritebatch, Ring, 0, npc.position, npc.width, npc.height, ShieldScale * 2, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), dColor, true);
-                BaseDrawing.DrawTexture(spritebatch, RingGlow, 0, npc.position, npc.width, npc.height, ShieldScale * 2, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), GetGlowAlpha(), true);
+                BaseDrawing.DrawTexture(spritebatch, RingGlow, 0, npc.position, npc.width, npc.height, ShieldScale * 2, RingRoatation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), AAColor.COLOR_WHITEFADE1, true);
             }
             return false;
         }
@@ -434,6 +434,15 @@ namespace AAMod.NPCs.Bosses.Zero
                     npc.ai[2]++;
                 }
 
+                if (npc.ai[3] == 3)
+                {
+                    npc.defense = 75;
+                }
+                else
+                {
+                    npc.defense = 150;
+                }
+
                 if (npc.ai[3] == 0)
                 {
                     if (npc.ai[2] % 20 == 0)
@@ -534,7 +543,7 @@ namespace AAMod.NPCs.Bosses.Zero
                                 break;
                         }
                     }
-                    if (npc.life > npc.lifeMax / 2)
+                    if (npc.life > npc.lifeMax * (2 / 3))
                     {
                         if (npc.ai[2] == 80 || npc.ai[2] == 240) // + lasers
                         {
@@ -553,7 +562,7 @@ namespace AAMod.NPCs.Bosses.Zero
                             Projectile.NewProjectile(npc.Center, new Vector2(-8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
                         }
                     }
-                    else
+                    else if (npc.life > npc.lifeMax / 3)
                     {
                         if (npc.ai[2] == 80) // + lasers
                         {
@@ -595,6 +604,47 @@ namespace AAMod.NPCs.Bosses.Zero
                             Projectile.NewProjectile(npc.Center, new Vector2(-8f, -8f), mod.ProjectileType("ZeroBlast"), damage, 3);
                         }
                     }
+                    else
+                    {
+                        if (npc.ai[2] == 80) // + lasers
+                        {
+                            Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
+                            Projectile.NewProjectile(npc.Center, new Vector2(0f, -12f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(0f, 12f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-12f, 0f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(12f, 0f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                        }
+                        else if (npc.ai[2] == 160)
+                        {
+                            Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
+                            Projectile.NewProjectile(npc.Center, new Vector2(8f, 8f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(8f, -8f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-8f, 8f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-8f, -8f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                        }
+                        else if (npc.ai[2] == 240)
+                        {
+                            Main.PlaySound(SoundID.Item73, (int)npc.position.X, (int)npc.position.Y);
+                            Projectile.NewProjectile(npc.Center, new Vector2(0f, -12f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(0f, 12f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-12f, 0f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(12f, 0f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(8f, 8f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(8f, -8f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-8f, 8f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-8f, -8f), mod.ProjectileType("ZeroLaser"), damage, 3);
+                        }
+                        if (Main.netMode != 1)
+                        {
+                            if (npc.ai[2] >= 320)
+                            {
+                                npc.ai[3] = Main.rand.Next(3);
+                                npc.ai[2] = 0;
+                                npc.netUpdate = true;
+                            }
+                        }
+                    }
+
                     if (Main.netMode != 1)
                     {
                         if (npc.ai[2] >= 400)
