@@ -182,6 +182,9 @@ BuffDescription.InvokerofMadness=Безумный Призыватель
 BuffName.Irradiated=Облученный
 BuffDescription.Irradiated=Ваше здоровье потихоньку сгорает...
 
+BuffName.K9=Юнит К9
+BuffDescription.K9=Гав
+
 BuffName.LungMinion=Древний Змий
 BuffDescription.LungMinion=Призывает древнего дракона сражаться за вас
 
@@ -1755,16 +1758,13 @@ ItemTooltip.UltibladeTyphoon=Создает 3 быстрых самонавод�
 ItemName.DarkVoid=Темная Пустота
 ItemTooltip.DarkVoid=Чрезвычайно повышает характеристики ночью\n'Темная и страшная'
 
-ItemName.DBBag=Мешок с сокровищами
-ItemTooltip.DBBag={$CommonItemTooltip.RightClickToOpen}
+ItemName.EquinoxBag=Мешок с сокровищами
+ItemTooltip.EquinoxBag={$CommonItemTooltip.RightClickToOpen}\nСодержит лут в зависимости от времени суток
 
 ItemName.DBTrophy=Трофей Приносящего свет
 
 ItemName.Equinox=Равноденствие
 ItemTooltip.Equinox=Чрезвычайно повышает характеристики\n'Истинный баланс'
-
-ItemName.NCBag=Мешок с сокровищами
-ItemTooltip.NCBag={$CommonItemTooltip.RightClickToOpen}
 
 ItemName.NCTrophy=Трофей Ночного Ползуна
 
