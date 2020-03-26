@@ -156,7 +156,7 @@ BuffName.InfinityBurnout=无限残烬
 BuffDescription.InfinityBurnout=它们应该冲着我的头砍
 
 BuffName.InfinityOverload=无限超载
-BuffDescription.InfinityOverload=对你来说，你手中的无限宝石过于强大
+BuffDescription.InfinityOverload=这些元素对于你的生命造成冲击
 
 BuffName.InvokedCaligulaSafe=召唤兽·卡利古拉
 BuffDescription.InvokedCaligulaSafe=你的利爪猛击敌人并且能够治疗你
@@ -1303,6 +1303,12 @@ ItemTooltip.AnubisFBox=播放 'Wrath of the Forsaken' by Universe
 ItemName.Apocalyptite=启示矿
 ItemTooltip.Apocalyptite=(虚空浮岛)
 
+ItemName.AthenaABox=八音盒(奥林匹亚雅典娜)
+ItemTooltip.AthenaABox=播放 'Goddess of Those Winged' by Turquoise
+
+ItemName.AthenaBox=八音盒(雅典娜)
+ItemTooltip.AthenaBox=播放 'Magisaint' by Turquoise
+
 ItemName.BinaryReassembler=二进制碎片重组机械
 ItemTooltip.BinaryReassembler=现实从未如此容易操纵\n也可以当作所有的普通制作站
 
@@ -1602,8 +1608,8 @@ ItemTooltip.ShenBox=播放 'Unyielding Discord' by Charlie Debnam
 ItemName.ShenABox=八音盒(觉醒应龙)
 ItemTooltip.ShenABox=播放 'Blaze of Glory' by Charlie Debnam
 
-ItemName.SABox=八音盒(不屈远古)
-ItemTooltip.SABox=播放 'Dark Matter 02' from Pokemon Super Mystery Dungeon
+ItemName.SagBox=八音盒(虚空人马)
+ItemTooltip.SagBox=播放 'Zodiac' by OmegaFerretMusic
 
 // AAMod.Items.Blocks.RazewoodF
 
@@ -1716,6 +1722,9 @@ ItemName.OroborosLantern=虚环木灯笼
 ItemName.OroborosPlatform=虚环木平台
 
 ItemName.OroborosWorkbench=虚环木工作台
+
+ItemName.OroborosWall=虚环木墙
+
 
 
 
