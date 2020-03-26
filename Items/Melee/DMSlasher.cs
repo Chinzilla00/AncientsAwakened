@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -58,8 +58,8 @@ namespace AAMod.Items.Melee
 
         public override void UseItemHitbox(Player player, ref Rectangle hitbox, ref bool noHitbox)
         {
-            int height = 64;
-            int length = 68;
+            int height = 80;
+            int length = 132;
             Saber.UseItemHitboxCalculate(player, item, ref hitbox, ref noHitbox, 0.9f, height, length);
         }
 
@@ -98,8 +98,8 @@ namespace AAMod.Items.Melee
         }
         public override void SetDefaults()
         {
-            projectile.width = 120;
-            projectile.height = 80;
+            projectile.width = 136;
+            projectile.height = 66;
             projectile.aiStyle = -1;
             projectile.timeLeft = 60;
             projectile.friendly = true;
@@ -148,6 +148,4 @@ namespace AAMod.Items.Melee
 
     }
 }
-
-
 
