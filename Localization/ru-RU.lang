@@ -170,8 +170,8 @@ BuffDescription.Impaled=Аучь!
 BuffName.InfinityBurnout=Сгорание бесконечности
 BuffDescription.InfinityBurnout=Надо было в голову
 
-BuffName.InfinityOverload=Перегрузка бесконечности
-BuffDescription.InfinityOverload=Камень Бесконечности слишком силен для вас
+BuffName.InfinityOverload=Элементальная перегрузка
+BuffDescription.InfinityOverload=Элементали против самого вашего существования
 
 BuffName.InvokedCaligulaSafe=Призванный Калигула
 BuffDescription.InvokedCaligulaSafe=Ваш коготь безумно бьет врага и лечит вас
@@ -181,6 +181,9 @@ BuffDescription.InvokerofMadness=Безумный Призыватель
 
 BuffName.Irradiated=Облученный
 BuffDescription.Irradiated=Ваше здоровье потихоньку сгорает...
+
+BuffName.K9=Юнит К9
+BuffDescription.K9=Гав
 
 BuffName.LungMinion=Древний Змий
 BuffDescription.LungMinion=Призывает древнего дракона сражаться за вас
@@ -290,8 +293,8 @@ BuffDescription.Stunned=Он маленький, но обладает адск�
 BuffName.Terrablaze=Терра-ожог
 BuffDescription.Terrablaze=Получаемый урон увеличен
 
-BuffName.Terrarium=Помощь от Терры
-BuffDescription.Terrarium=Урон от падения убран\nВас настолько впечатлил Террариум, что у вас нет никакого желания строить здесь
+BuffName.Terrarium=Поддержка Терры
+BuffDescription.Terrarium=Ваша стопа горит энергией Террариума, убирая урон от падения
 
 
 BuffName.TerraSummon=Терра-Миньоны
@@ -415,11 +418,17 @@ ItemTooltip.BlackLotusEmblem=Увеличена дальность поднят�
 ItemName.BotchedBand=Испорченная повязка
 ItemTooltip.BotchedBand=Увеличивает скорость движения и урон на 10%
 
+ItemName.CursedEyeofSoulBinder=Проклятый глаз колдуна душ 
+ItemTooltip.CursedEyeofSoulBinder=Активирование способности аксессуара нажатием клавиши помогает игроку пропустить время между двумя волнами Армии Старца\nУвеличивает урон от призыва на 21%\nУвеличивает максимальное количество прислуг\nУвеличивает максимальное количество турелей\n+50 к максимальному здоровью\nВаши прислуги могут ударить по душе врага\nВо время Армии Старца, увеличивает урон от призыва на 31%
+
 ItemName.DemonGauntlet=Демоническая Перчатка
 ItemTooltip.DemonGauntlet=Повышает приоритет персонажа для врагов\nУвеличивает урон в ближнем бою на 14%\nУвеличивает скорость атаки в ближнем бою на 10%\nУвеличено отталкивание в ближнем бою\nАтаки в ближнем бою накладывают дебафф, в зависимости от злого биома, который у вас в мире\nНакладывает ихор в мире с кримзоном/Проклятое Пламя в мире с искажением
 
 ItemName.DragonsGuard=Драконья защита
 ItemTooltip.DragonsGuard=Атакующие горят
+
+ItemName.DragonstrideBoots=Сапоги драконьего шага
+ItemTooltip.DragonstrideBoots=Дает полет, супер быстрый бег, и усиленную подвижность на льду\nУвеличивает скорость движения на 12%\nПозволяет ходить по воде и лаве\nДает иммунитет к блокам огня и 10 секунд иммунитета к лаве\nПозволяет плавать\nПозволяет карабкаться по стенам
 
 ItemName.Energy_Conduit=Энергетический канал
 ItemTooltip.Energy_Conduit=Увелчивает скорость движения на 50% 
@@ -478,7 +487,7 @@ ItemTooltip.ZeroWings=П0зв0ляют вам летать и п0гл0щают �
 
 
 ItemName.AbyssalFukumen=Бездновый Фукумен
-ItemTooltip.AbyssalFukumen=Увеличивает скорость движения на 35%\nУвеличивает дистанционный урон на 12%\nЛегкий как сама тень
+ItemTooltip.AbyssalFukumen=Увеличивает скорость движения на 35%\nУвеличивает дистанционный урон на 15%\nЛегкий как сама тень
 
 ItemName.AbyssalGi=Бездновый Ги
 ItemTooltip.AbyssalGi=Увеличивает скорость движения на 40%\nЛегкий как сама тень
@@ -523,17 +532,27 @@ ItemName.AtlanteanPlate=Атлантиевый нагрудник
 ItemTooltip.AtlanteanPlate=Увеличивает магический урон на 15%\nВибрирует силой Атлантиса
 
 
+// AAMod.Items.Armor.Biomite
+
+
+ItemName.BiomiteBoots=Биомитовые сапоги
+
+ItemName.BiomiteHelmet=Биомитовый шлем
+
+ItemName.BiomitePlate=Биомитовая кристальная кольчуга
+
+
 // AAMod.Items.Armor.Blazing
 
 
 ItemName.BlazingDou=Полыхающий Дао
-ItemTooltip.BlazingDou=Получаемый урон снижен на 1%\nСкован в огнях полыхающего солнца
+ItemTooltip.BlazingDou=Получаемый урон снижен на 2%\nУвеличивает урон в ближнем бою на 2%\nСкован в огнях полыхающего солнца
 
 ItemName.BlazingKabuto=Полыхающий Кабуто
-ItemTooltip.BlazingKabuto=Получаемый урон снижен на 1%\nСкован в огнях полыхающего солнца
+ItemTooltip.BlazingKabuto=Получаемый урон снижен на 1%\nУвеличивает урон в ближнем бою на 3%\nСкован в огнях полыхающего солнца
 
-ItemName.BlazingSuneate=Полыхающий Сунэатэ
-ItemTooltip.BlazingSuneate=Получаемый урон снижен на 1%\nСкован в огнях полыхающего солнца
+ItemName.BlazingSuneate=Полыхающий Сунате
+ItemTooltip.BlazingSuneate=Получаемый урон снижен на 1%\nУвеличивает урон в ближнем бою на 2%\nСкован в огнях полыхающего солнца
 
 
 // AAMod.Items.Armor.Champion
@@ -573,8 +592,8 @@ ItemTooltip.ChaosGreaves=Увеличивает скорость движени�
 ItemName.ChaosKabuto=Хаос Кабуто
 ItemTooltip.ChaosKabuto=Увеличивает урон в ближнем бою на 25%
 
-ItemName.ChaosMask=Хаос Маска
-ItemTooltip.ChaosMask=Снижает использование манны на 30%\nУвеличивает магический урон на 20%\nПозволяет дышать под водой
+ItemName.ChaosMask=Хаос маска
+ItemTooltip.ChaosMask=Снижает использование манны на 30%\nУвеличивает магический урон на 20%\nУвеличивает шанс магического критического удара на 20%\nПозволяет дышать под водой
 
 ItemName.ChaosVisor=Хаос Визор
 ItemTooltip.ChaosVisor=Увеличивает урон от призыва на 30% 
@@ -596,10 +615,10 @@ ItemName.DarkmatterHelmet=Шлем Темной Материи
 ItemTooltip.DarkmatterHelmet=Увеличивает урон в ближнем бою на 10%\nТемное, но все еще видимое
 
 ItemName.DarkmatterMask=Маска Темной Материи
-ItemTooltip.DarkmatterMask=Увеличивает магический урон на 9%\nТемное, но все еще видимое
+ItemTooltip.DarkmatterMask=Увеличивает магический урон на 10%\n1Снижает использование манны на 15%\nТемное, но все еще видимое
 
 ItemName.DarkmatterVisor=Визор Темной Материи
-ItemTooltip.DarkmatterVisor=Увеличивает дистанционный урон на 10%\nТемное, но все еще видимое
+ItemTooltip.DarkmatterVisor=Увеличивает дистанционный урон на 15%\nШанс 20% не потратить боеприпасы \nТемное, но все еще видимое
 
 
 // AAMod.Items.Armor.Deathly
@@ -622,10 +641,10 @@ ItemName.DemonBoots=Копыта Демона
 ItemTooltip.DemonBoots=Увеличивает урон от призыва на 9%
 
 ItemName.DemonGarb=Одеяние Демона
-ItemTooltip.DemonGarb=Увеличивает урон от призыва на 9%
+ItemTooltip.DemonGarb=Увеличивает урон от призыва на 9%\n+2 максимум прислуг
 
 ItemName.DemonHood=Ряса Демона
-ItemTooltip.DemonHood=Увеличивает урон от призыва на 9%\n+2 максимум прислуг
+ItemTooltip.DemonHood=Увеличивает урон от призыва на 9%
 
 
 // AAMod.Items.Armor.Depth
@@ -670,7 +689,7 @@ ItemTooltip.DoomiteUPlate=Увеличивает урон от призыва н
 
 
 ItemName.DoomsdayChestplate=Штурмовая Броня Судного дня
-ItemTooltip.DoomsdayChestplate=Снижает использование манны на 5%\n+50 к максимальному здоровью\nСила уничтожать целые планеты содержится в этой броне
+ItemTooltip.DoomsdayChestplate=Снижает использование манны на 22%\n+50 к максимальному здоровью\nСила уничтожать целые планеты содержится в этой броне
 
 ItemName.DoomsdayHelmet=Штурмовой Визор Судного дня
 ItemTooltip.DoomsdayHelmet=Увеличивает магический урон на 25%\nУвеличивает шанс критического магического урона на 18%\nСила уничтожать целые планеты содержится в этой броне
@@ -715,10 +734,10 @@ ItemName.Dynaskull=Диночереп
 ItemTooltip.Dynaskull=Шанс 20% не потратить боеприпасы
 
 ItemName.DynaskullGreaves=Ботинки Диночерепа
-ItemTooltip.DynaskullGreaves=Увеличивает шанс критического дистанционного урона на 10%
+ItemTooltip.DynaskullGreaves=Увеличивает шанс критического дистанционного урона на 12%
 
 ItemName.DynaskullRibguard=Ребра Диночерепа
-ItemTooltip.DynaskullRibguard=Увеличивает дистанционный урон на 10%
+ItemTooltip.DynaskullRibguard=Увеличивает дистанционный урон на 13%
 
 
 // AAMod.Items.Armor.Fleshrend
@@ -803,10 +822,10 @@ ItemTooltip.KindledSuneate=Сковано в огнях полыхаюего С�
 
 
 ItemName.MushiumHat=Шляпка Гриба
-ItemTooltip.MushiumHat=Увеличивает восстановление здоровья на 2%
+ItemTooltip.MushiumHat=Увеличивает восстановление здоровья на 1%
 
 ItemName.MushiumPants=Штаны из Машиума
-ItemTooltip.MushiumPants=Увеличивает восстановление здоровья на 2%
+ItemTooltip.MushiumPants=Увеличивает восстановление здоровья на 1%
 
 ItemName.MushiumShirt=Рубаха из Машиума
 ItemTooltip.MushiumShirt=Увеличивает восстановление здоровья на 2%
@@ -828,14 +847,14 @@ ItemTooltip.NightsPlate=Увеличивает скорость ближнего
 // AAMod.Items.Armor.Ocean
 
 
-ItemName.OceanBoots=Океанические Штаны
-ItemTooltip.OceanBoots=Увеличивает манну на 20\nУвеличивает магический урон на 2%
+ItemName.OceanBoots=Океанические сапоги
+ItemTooltip.OceanBoots=Увеличивает манну на 20\nУвеличивает магический урон на 5%\nВы можете ходить по воде
 
-ItemName.OceanHelm=Океанический Шлем
-ItemTooltip.OceanHelm=Увеличивает манну на 20\nУвеличивает магический урон на 2%
+ItemName.OceanHelm=Океанический шлем
+ItemTooltip.OceanHelm=Увеличивает манну на 20\nВы можете дышать под водой\nУвеличивает магический урон на 5%
 
-ItemName.OceanShirt=Океанический Нагрудник
-ItemTooltip.OceanShirt=Увеличивает манну на 20\nУвеличивает магический урон на 2%
+ItemName.OceanShirt=Океанический нагрудник
+ItemTooltip.OceanShirt=Увеличивает манну на 20\nУвеличивает магический урон на 5%
 
 
 // AAMod.Items.Armor.Olympian
@@ -929,8 +948,8 @@ ItemTooltip.RadiumHeadgear=Увеличивает дистанционный у�
 ItemName.RadiumHelmet=Радиумный Шлем
 ItemTooltip.RadiumHelmet=Увеличивает урон в ближнем бою на 15%\nСверкает светом звездного неба
 
-ItemName.RadiumMask=Радиумная Маска
-ItemTooltip.RadiumMask=Увеличивает магический урон на 12%\nСверкает светом звездного неба
+ItemName.RadiumMask=Радиумная маска
+ItemTooltip.RadiumMask=Увеличивает магический урон на 15%\nУвеличивает манну на 80\nСверкает светом звездного неба
 
 ItemName.RadiumPlatemail=Радиумная Броня
 ItemTooltip.RadiumPlatemail=Увеличивает урон на 25%\nСверкает светом звездного неба
@@ -1010,21 +1029,47 @@ ItemName.ThixxieBanner=Знамя ЖИРНОЙ фей
 // AAMod.Items.Blocks.BogwoodF
 
 
+ItemName.BogwoodBathtub=Ванна из дерева Трясины
+
+ItemName.BogwoodBed=Кровать из дерева Трясины
+
 ItemName.BogwoodBench=Лавка из дерева Трясины
 
-ItemName.BogwoodCandle=Свеча из дерева Трясины
+ItemName.BogwoodBookshelf=Шкаф из дерева Трясины
+
+ItemName.BogwoodCandelabra=Канделябра из дерева Трясины
+
+ItemName.BogwoodCandle=Свечка из дерева Трясины
+
+ItemName.BogwoodChair=Стул из дерева Трясины
+
+ItemName.BogwoodChandelier=Люстра из дерева Трясины
 
 ItemName.BogwoodChest=Сундук из дерева Трясины
+
+ItemName.BogwoodClock=Часы из дерева Трясины
 
 ItemName.BogwoodCouch=Диван из дерева Трясины
 
 ItemName.BogwoodDoor=Дверь из дерева Трясины
 
+ItemName.BogwoodDresser=Тумбочка из дерева Трясины
+
+ItemName.BogwoodLamp=Лампа из дерева Трясины
+
 ItemName.BogwoodLantern=Фонарь из дерева Трясины
+
+ItemName.BogwoodPiano=Пианино из дерева Трясины
 
 ItemName.BogwoodPlatform=Платформа из дерева Трясины
 
+ItemName.BogwoodSink=Раковина из дерева Трясины
+
+ItemName.BogwoodTable=Стол из дерева Трясины
+
 ItemName.BogwoodWall=Стена из дерева Трясины
+
+ItemName.BogwoodWorkbench=Верстак из дерева Трясины
 
 
 // AAMod.Items.Blocks
@@ -1036,8 +1081,8 @@ ItemTooltip.Abyssium=Он весь такой пористый. Мерзость
 ItemName.AcropolisBox=Музыкальная шкатулка "Акрополис"
 ItemTooltip.AcropolisBox=Проигрывает 'Palace in the Sky' Turquoise
 
-ItemName.AkumaABox=Музыкальная шкатулка "Акума Драконический Демон"
-ItemTooltip.AkumaABox=Проигрывает 'True Blazing Fury' Kanashii
+ItemName.AkumaABox=Музыкальная шкатулка "Они Акума"
+ItemTooltip.AkumaABox=Проигрывает 'Dawn of the Dragon' Universe
 
 ItemName.AkumaBox=Музыкальная шкатулка "Акума"
 ItemTooltip.AkumaBox=Проигрывает 'Trial By Fire' Saucecoie
@@ -1049,6 +1094,12 @@ ItemName.AnubisFBox=Музыкальная шкатулка "Забытый Ан
 ItemTooltip.AnubisFBox=Проигрывает 'Wrath of the Forsaken' by Universe
 
 ItemName.Apocalyptite=Апокалиптит
+
+ItemName.AthenaABox=Музыкальная шкатулка "Олипийская Афина"
+ItemTooltip.AthenaABox=Проигрывает 'Goddess of Those Winged' Turquoise
+
+ItemName.AthenaBox=Музыкальная шкатулка "Афина"
+ItemTooltip.AthenaBox=Проигрывает 'Magisaint' Turquoise
 
 ItemName.BinaryReassembler=Бинарный Реассемблер Фрагментации
 ItemTooltip.BinaryReassembler=Еще никогда не было так просто манипулировать реальностью
@@ -1087,7 +1138,7 @@ ItemTooltip.Depthstone=Сырой
 ItemName.DiscordianTorch=Факел раздора
 
 ItemName.DjinnBox=Музыкальная шкатулка "Пустынный Джинн"
-ItemTooltip.DjinnBox=Проигрывает 'Sand Smackdown' by Frogtism
+ItemTooltip.DjinnBox=Проигрывает 'Sand Smackdown' by Universe
 
 ItemName.DoomsdayChest=Сундук Судного дня
 
@@ -1178,7 +1229,7 @@ ItemTooltip.LakeBox=Проигрывает 'Lake of Souls' Rockwizard
 ItemName.MireAltar=Бездновый алтарь
 
 ItemName.MireBox=Музыкальная шкатулка "Трясина"
-ItemTooltip.MireBox=Проигрывает 'Where the Darkness Creeps' OmegaFerretMusic
+ItemTooltip.MireBox=Проигрывает 'Moonlit Marsh' by Charlie Debnam
 
 ItemName.MireChest=Сундук Трясины
 
@@ -1250,6 +1301,9 @@ ItemTooltip.ShenABox=Проигрывает 'Blaze of Glory' Charlie Debnam
 ItemName.ShenBox=Музыкальная шкатулка "Шен Дорагон"
 ItemTooltip.ShenBox=Проигрывает 'Unyielding Discord' Charlie Debnam
 
+ItemName.SistersBox=Музыкальная шкатулка "Сестры раздора"
+ItemTooltip.SistersBox=Проигрывает 'Sisters of Anarchy' Shadow Figure
+
 ItemName.SpiralStairs=Спиральные лестницы
 
 ItemName.SRajahBox=Музыкальная шкатулка 'Защитник невинных"
@@ -1299,7 +1353,7 @@ ItemTooltip.VoidBox=Проигрывает 'What Once Was' OmegaFerretMusic
 ItemName.VoidUnit=Единица воссоздания пустоты
 
 ItemName.YamataABox=Музыкальная шкатулка "Ямата Ужасающий Кошмар"
-ItemTooltip.YamataABox=Проигрывает 'The Ultimate Show' из Super Paper Mario\nРемикс GAMetal
+ItemTooltip.YamataABox=Проигрывает 'Abyssal Nightmare' by Universe
 
 ItemName.YamataBox=Музыкальная шкатулка "Ямата"
 ItemTooltip.YamataBox=Проигрывает 'Crescent of Madness' Saucecoie
@@ -1704,16 +1758,13 @@ ItemTooltip.UltibladeTyphoon=Создает 3 быстрых самонавод�
 ItemName.DarkVoid=Темная Пустота
 ItemTooltip.DarkVoid=Чрезвычайно повышает характеристики ночью\n'Темная и страшная'
 
-ItemName.DBBag=Мешок с сокровищами
-ItemTooltip.DBBag={$CommonItemTooltip.RightClickToOpen}
+ItemName.EquinoxBag=Мешок с сокровищами
+ItemTooltip.EquinoxBag={$CommonItemTooltip.RightClickToOpen}\nСодержит лут в зависимости от времени суток
 
 ItemName.DBTrophy=Трофей Приносящего свет
 
 ItemName.Equinox=Равноденствие
 ItemTooltip.Equinox=Чрезвычайно повышает характеристики\n'Истинный баланс'
-
-ItemName.NCBag=Мешок с сокровищами
-ItemTooltip.NCBag={$CommonItemTooltip.RightClickToOpen}
 
 ItemName.NCTrophy=Трофей Ночного Ползуна
 
@@ -1742,9 +1793,6 @@ ItemName.GreedTrophy=Greed Trophy
 
 ItemName.Miner=MINE-er
 ItemTooltip.Miner=Mines ores faster
-
-ItemName.StoneScarf=Stone Scarf
-ItemTooltip.StoneScarf=Reduces damage taken by 20%
 
 ItemName.StoneShell=Stone Shell
 ItemTooltip.StoneShell=Harder than bedrock but lighter than pumice
@@ -1926,8 +1974,6 @@ ItemTooltip.RoyalScepterEX=Shoots a spread of five golden carrots\nRoyal Scepter
 
 // AAMod.Items.Boss.Sagittarius
 
-ItemName.ZeroStar=Нуль Звезда
-ItemTooltip.ZeroStar=Крутящееся лезвие р0ка
 
 ItemName.Legg=Sagittarius' Leg
 ItemTooltip.Legg=It's a piece of metal. You beat things with it. Pretty basic concept.
@@ -1944,6 +1990,9 @@ ItemName.SagShield=Sagittarius Shield
 ItemTooltip.SagShield=Pressing the accessory ability hotkey puts up a barrier around you to protect you from damage\nWhile shielded, you cannot use items\nWhile shielded, your health regeneration is increased dramatically\nShield lasts for 5 seconds\nShield has a 5 minute cooldown
 
 ItemName.SagTrophy=Sagittarius Trophy
+
+ItemName.ZeroStar=Zero Star
+ItemTooltip.ZeroStar=A spinning blade of doom
 
 
 // AAMod.Items.Boss.Serpent
@@ -2000,7 +2049,7 @@ ItemName.ChaosSoul=Chaos Soul
 ItemTooltip.ChaosSoul=Solid discord, symbolizing unrest and Anarchy itself
 
 ItemName.DraconicRipper=Draconic Ripper
-ItemTooltip.DraconicRipper=Shoots dozens of high-caliber teeth\nIgnores enemy defense
+ItemTooltip.DraconicRipper=Shoots dozens of high-caliber teeth\nIgnores enemy defense\n50% chance to not consume ammo
 
 ItemName.Duality=Duality
 ItemTooltip.Duality=Chaos flares from this ancient talisman\nCombines the effects of the Taiyang Baolei and the Naitokurosu, while granting their strongest effects at all times\nYour attacks inflict Discordian Inferno\nYou are immune to Terrablaze, Dragonfire, Hydratoxin, Discordian Inferno\nAttack is multiplied by 15%\nWhile in the chaos biomes, your attack multiplier is increased to 30%\nWhile in the Inferno, your defense is increased by 10\nWhile in the Mire, your speed is increased by 50%\nGrants a strong dash that shreds through enemies in a fiery blaze of glory
@@ -2075,7 +2124,7 @@ ItemName.FallingTwilight=Falling Twilight
 ItemName.Flairdra=Flairdra
 ItemTooltip.Flairdra=Be the hydra.\nInflicts Moonraze
 
-ItemName.Hydraslayer=Hydra Slayer
+ItemName.Hydraslayer=Amenomuraku
 ItemTooltip.Hydraslayer=Used to defeat the multi-headed monstrosities of the abyss\nInflicts Moonrazed
 
 ItemName.HydraStabber=Abyssal Shiv
@@ -2109,17 +2158,14 @@ ItemName.YamataTrophy=Yamata Trophy
 // AAMod.Items.Boss.Zero
 
 
-ItemName.AMR=Anti-matter Rifle
-ItemTooltip.AMR=Fires a laser that bounces between enemies\nHold to charge the rifle\nthe longer the rifle is charged, the more it penetrates
-
 ItemName.Battery=Unstable Power Cell
 ItemTooltip.Battery=Acts as a bullet\nNon-consumable
 
-ItemName.BHB=Blackhole Blaster
-ItemTooltip.BHB=this weapon shoots in a 3 round burst and randomly shoots a homing rocket that explode)
+ItemName.BHB=Black Hole Blaster
+ItemTooltip.BHB=Occasionally fires off a rocket that explodes into a vortex when it collides with a tile
 
 ItemName.BrokenCode=Broken Code
-ItemTooltip.BrokenCode=Allows you to glitch with a 5 second cooldown\nGrapple to Glitch\nGrants immunity to the Unstable debuff\nWhile cooldown is occurring, your speed is increased, you gain invincibility frames\nWhile cooldown is occurring, your magic/summon weapons require no mana and have 20% increased damage\n'You don't look so good'
+ItemTooltip.BrokenCode=Allows you to glitch with a 5 second cooldown\nGrapple to Glitch\nWhile cooldown is occurring, your speed is increased, you gain invincibility frames\nWhile cooldown is occurring, your magic/summon weapons require no mana and have 20% increased damage\nTeleportation has 15 second cooldown\n'You don't look so good'\nWARNING: May permanently displace appendages until game restart. This is a feature.
 
 ItemName.DoomPortal=Doom Portal
 ItemTooltip.DoomPortal=Summons a small Doom Protocol to fight for you
@@ -2264,6 +2310,9 @@ ItemTooltip.ZeroTesseract=DESCRIPTI0NHERE\nUNSTABLE. C0NTAINS C0DE T0 ACTIVATE T
 // AAMod.Items.Currency
 
 
+ItemName.AncientCoin=Ancient Coin
+ItemTooltip.AncientCoin=A red and blue coin with an A engraved into it
+
 ItemName.BloodRune=Blood Rune
 ItemTooltip.BloodRune=An ancient stone said to contain the blood of an ancient being
 
@@ -2325,12 +2374,6 @@ ItemTooltip.CatsEyeRifleEX=Fires Shadow bolts\nDoesn't require ammo\nCat's Eye R
 ItemName.Chronos=Chronos
 ItemTooltip.Chronos=Time Teller EX\nDamage changes based on time of day\nDamage is greatest at Midday and Midnight\n'Time is big ball of wibbly-wobbly timey-wimey yo-yos.'\n-Dallin
 
-ItemName.CordesDuFuret_Axe=Cordes Du Furet
-ItemTooltip.CordesDuFuret_Axe=Right click in inventory to change between firing notes and smashing heads\n'YA ne delayu DRUGOY NULEVOY POVTOR.'
-
-ItemName.CordesDuFuret_Notes=Cordes Du Furet
-ItemTooltip.CordesDuFuret_Notes=Right click in inventory to change between firing notes and smashing heads\n'YA ne delayu DRUGOY NULEVOY POVTOR.'
-
 ItemName.CursedSickle=Cursed Sickle
 ItemTooltip.CursedSickle=Spins a cursed scythe around you that shreds through enemies\nLeft click to swing the scythe
 
@@ -2341,7 +2384,7 @@ ItemName.Demise=Demise
 ItemTooltip.Demise=A legendary sword that was once wielded by the demon king\n Left Click to unleash destructive demonic energy\nRight Click to unleash demon blades that fall from the sky
 
 ItemName.DemiseEX=Catastrophe
-ItemTooltip.DemiseEX=An almighty greatblade that was once wielded by the demon lord\nLeft Click to unleash destructive demonic energy\nRight Click to unleash catastrophic blades that fall from the sky\nTrue Melee Strikes have a chance to instantly devour an enemy�s soul\nDemise EX
+ItemTooltip.DemiseEX=An almighty greatblade that was once wielded by the demon lord\nLeft Click to unleash destructive demonic energy\nRight Click to unleash catastrophic blades that fall from the sky\nTrue Melee Strikes have a chance to instantly devour an enemy's soul\nDemise EX
 
 ItemName.Doragonburedo=Doragonburedo
 ItemTooltip.Doragonburedo='I'm gonna wipe their whole team' \n-Jace
@@ -2406,11 +2449,14 @@ ItemTooltip.MagicAcornEX=Attracts squirrels to fight with you for glory.\n'Multi
 ItemName.MobianBuster=Mobian Buster
 ItemTooltip.MobianBuster=A standard issue Mobian blaster.\nHold the use button to charge, and then release a powerful Charged Shot!\n"Remember, the charged shot fires when you RELEASE the trigger, not the other way around." \n- Tails\n
 
+ItemName.PineBreaker=Pine Breaker
+ItemTooltip.PineBreaker='I don't like egg'\n-Planterror
+
 ItemName.Placeholder=Placeholder
 ItemTooltip.Placeholder='They will die SoonTM'\n-Fargo
 
 ItemName.PoniumStaff=Ponium Staff
-ItemTooltip.PoniumStaff='That�s a f***ing REEEEEEEEE if I�ve ever seen one'\n-Beg
+ItemTooltip.PoniumStaff='That's a f***ing REEEEEEEEE if I've ever seen one'\n-Beg
 
 ItemName.PoniumStaffEX=Ponium Ultiscepter
 ItemTooltip.PoniumStaffEX=Ponium Staff EX
@@ -2472,6 +2518,12 @@ ItemTooltip.GroviteTerratool=Right Click to change tool types\nYou may only have
 
 ItemName.LizTerratool=Galaxium Terratool
 ItemTooltip.LizTerratool=Right Click to change tool types\nYou may only have a maximum of 2 tool types active
+
+
+// AAMod.Items.DevTools.Cinematic
+
+
+ItemName.CinematicMount=Cinematic Mount
 
 
 // AAMod.Items.DevTools
@@ -2725,37 +2777,6 @@ ItemName.WandOfSparkingEX=Starburst Wand
 ItemTooltip.WandOfSparkingEX=Hold to charge the wand\nWand of Sparking EX
 
 
-// AAMod.Items.Magic.SpellBook
-
-
-===UNKNWN===
-ItemName.EffectSpellBook=
-
-ItemName.SpellbookofAlman=Spellbook of Alman
-ItemTooltip.SpellbookofAlman=Copy a non-magical weapon in your inventory\nIf this book is copied and consumed by the SpellBook of Sefer, you get the following effects:\nCopy and shoot a hostile projectile in the world
-
-ItemName.SpellBookofApocal=SpellBook of Apocal
-ItemTooltip.SpellBookofApocal=Fires spinning stars that bounce on walls\nIf this book is copied and consumed by the SpellBook of Sefer, you get the following effects:\nIn this shooting turn, your magic projectiles will get homing effects
-
-ItemName.SpellBookofCursim=SpellBook of Cursim
-ItemTooltip.SpellBookofCursim=Sprays a shower of ichor\nDecreases target's defense\nIf this book is copied and consumed by the SpellBook of Sefer, you get the following effects:\nIn this shooting turn, your magic damage boosts and breaks the enemies' armor
-
-ItemName.SpellBookofEbontten=SpellBook of Ebontten
-ItemTooltip.SpellBookofEbontten=Fires unholy fire balls\nIf this book is copied and consumed by the SpellBook of Sefer, you get the following effects:\nIn this shooting turn, your magic projectiles will split after a while
-
-ItemName.SpellBookofIridescen=SpellBook of Iridescen
-ItemTooltip.SpellBookofIridescen=Shoot a rainbow and a bunch of holy arrow\nIf this book is copied and consumed by the SpellBook of Sefer, you get the following effects:\nIn this shooting turn, when you get the damage exceeding your life, you will avoid this damage.
-
-ItemName.SpellBookofNecro=SpellBook of Necro
-ItemTooltip.SpellBookofNecro=Fires a lost soul to chase your foes\nIf this book is copied and consumed by the SpellBook of Sefer, you get the following effects:\nIn this shooting turn, your magic damage can release the soul of the enemy.
-
-ItemName.SpellBookofRagnarok=SpellBook of Ragnarok
-ItemTooltip.SpellBookofRagnarok=Increase 20% spellbook damage\nAfter a shooting turn, put the spellbook back in your inventory automatically\nAccording to the number of spellbook used in this turn, \nyou get the following effect:\n5 spellbooks: Increase 30% your spellbook damage\n10 spellbooks: Summon a rune on your head
-
-ItemName.SpellBookofSefer=SpellBook of Sefer
-ItemTooltip.SpellBookofSefer=Copy and consume the non-staff magic weapon in your inventory one by one\nRight click to put these magic weapon back in your inventory
-
-
 // AAMod.Items.Materials
 
 
@@ -2875,6 +2896,8 @@ ItemName.RelicBar=Relic Bar
 ItemName.RoyalRabbit=Royal Rabbit
 ItemTooltip.RoyalRabbit=Under direct protection by the Pouncing Punisher
 
+ItemName.SearingSpark=Snow Mana
+
 ItemName.SeraphFeather=Seraph Feather
 ItemTooltip.SeraphFeather=A silvery feather from a harpy seraph
 
@@ -2892,7 +2915,11 @@ ItemTooltip.SoulOfSpite=The essence of Mire creatures
 ItemName.Stardust=Radiant Photon
 ItemTooltip.Stardust=A shard of the heavenly cosmos
 
+ItemName.SwampKoi=Swamp Koi
+
 ItemName.TerraShard=Terra Shard
+
+ItemName.TerrorSoul=Terror Soul
 
 ItemName.VikingRelic=Viking Relic
 
@@ -2960,7 +2987,7 @@ ItemTooltip.Axis=Enemies struck by this spear will be surrounded by snowflakes\n
 ItemName.BackScratcher=Back Scratcher
 
 ItemName.BladeOfEvil=Blade of Evil
-ItemTooltip.BladeOfEvil=The perfect balance between Corruption and Crimson
+ItemTooltip.BladeOfEvil=The perfect balance between Corruption and Crimson\nShoots alternating fireballs of Ichor and Cursed Flames
 
 ItemName.BlazingDawn=Blazing Dawn
 ItemTooltip.BlazingDawn=The Radiant Dawn calls
@@ -3011,6 +3038,8 @@ ItemName.Depthwalker=Depthwalker
 ItemTooltip.Depthwalker=Walk the Hydra
 
 ItemName.DesertScimitar=Desert Scimitar
+
+ItemName.DMSlasher=DarkMatter Slasher
 
 ItemName.DoomiteSaber=Doomite Saber
 
@@ -3134,9 +3163,6 @@ ItemTooltip.TerraBladeEX=Shoots homing projectiles that inflict terrablaze\nTerr
 
 ItemName.TerraShortsword=Terra Broadsword
 
-ItemName.TheFox=The Fox
-ItemTooltip.TheFox=What does it say
-
 ===UNKNWN===
 ItemName.Tizona=
 
@@ -3237,6 +3263,9 @@ ItemTooltip.DragonsSoul=Summons a Dragon Soul\nIt feels hot, but comforting...
 ItemName.GlowmossBall=Glowing Moss Ball
 ItemTooltip.GlowmossBall=Summons a glowmoss ball\nDon�t ask what makes it glow, Trust me
 
+ItemName.K9Collar=K9 Collar
+ItemTooltip.K9Collar=Summons a robotic buddy
+
 ItemName.MudkipBall=Mud Fish Ball
 ItemTooltip.MudkipBall=It seems to have something in it already
 
@@ -3323,7 +3352,7 @@ ItemName.DarkmatterArrow=Darkmatter Arrow
 ItemName.DaybreakBullet=Daybreak Bullet
 
 ItemName.DragonArrow=Dragon Arrow
-ItemTooltip.DragonArrow=Lights your opponents ablaze
+ItemTooltip.DragonArrow=Has stronger knockback than most arrows
 
 ItemName.DragonfireArrow=Dragonfire Arrow
 ItemTooltip.DragonfireArrow=Inflicts Dragonfire debuff on hit
@@ -3500,7 +3529,7 @@ ItemName.TheSquirter=The Squirter
 ItemTooltip.TheSquirter=Doesnt use ammo
 
 ItemName.TheVulcano=The Vulcan
-ItemTooltip.TheVulcano=Consumes Gel
+ItemTooltip.TheVulcano=Turns Gel into an explosive lob of magma
 
 ItemName.Toxithrower=Toxithrower
 ItemTooltip.Toxithrower=Uses gel for ammo
@@ -3662,6 +3691,9 @@ ItemName.DarkmatterPitchet=Darkmatter Pitchet
 
 ItemName.DepthDigger=Depth Digger
 
+ItemName.DoomiteJacksaw=Doomite Jacksaw
+ItemTooltip.DoomiteJacksaw=Engineered for ultimate tree and wall breaking action!
+
 ItemName.DoomiteMiningLaser=Doomite Mining Laser
 
 ItemName.DragonDigger=Dragon Digger
@@ -3740,10 +3772,10 @@ ItemName.BrownSolution=Brown Solution
 ItemTooltip.BrownSolution=Used by the Clentaminator\nSpreads the Red Mushroom biome
 
 ItemName.CodeMagnet=Binary Code Magnet
-ItemTooltip.CodeMagnet='Pulls items to you by moving its code closer to you'
+ItemTooltip.CodeMagnet=Pulls items to you by moving its code closer to you\nRight click the item to turn it off
 
-ItemName.CodeMagnetWeak=Uncharged Code Magnet
-ItemTooltip.CodeMagnetWeak='Pulls items to you by moving its code closer to you'
+ItemName.CodeMagnetOff=Binary Code Magnet
+ItemTooltip.CodeMagnetOff=Pulls items to you by moving its code closer to you\nRight click the item to turn it on
 
 ItemName.DeepGreenSolution=Deep Green Solution
 ItemTooltip.DeepGreenSolution=Used by the Clentaminator\nConverts the jungle into forest
@@ -3828,6 +3860,9 @@ ItemTooltip.YellowSolution=Used by the Clentaminator\nClears the Snow biome
 // AAMod.Items.Vanity.Alphakip
 
 
+ItemName.AlphaBag=Mud Fish's Bag
+ItemTooltip.AlphaBag=<right> to open \n'All the essentials for impersonating the Fish King!'
+
 ItemName.FishDiverBoots=Alphakip's Flippers
 ItemTooltip.FishDiverBoots=Not actually flippers\n'Great for impersonating Ancients Awakened Devs!'
 
@@ -3873,6 +3908,9 @@ ItemTooltip.ApawnPlate='Great for impersonating Ancients Awakened Testers!'
 // AAMod.Items.Vanity.Aves
 
 
+ItemName.AvesBag=DJ Duck's Bag
+ItemTooltip.AvesBag=<right> to open \n'All the essentials for impersonating the Monochrome Mallard!'
+
 ItemName.DJDuckHead=DJ Duck Mask
 ItemTooltip.DJDuckHead='Quek'\n'Great for impersonating Ancients Awakened Devs!'
 
@@ -3902,17 +3940,62 @@ ItemTooltip.PonyMask='Great for impersonating Ancients Awakened Devs!'
 // AAMod.Items.Vanity.Blazen
 
 
+ItemName.BlazenBag=Thunder Lord's Bag
+ItemTooltip.BlazenBag=<right> to open \n'All the essentials for impersonating the Thunder Lord!'
+
 ItemName.BlazenBooster=Tactical Assault Booster
-ItemTooltip.BlazenBooster=Allows flight and slow fall\nHold up to rocket faster\n'Great for impersonating Ancients Awakened Testers!'
+ItemTooltip.BlazenBooster=Allows flight and slow fall\nHold up to rocket faster\n'Great for impersonating Ancients Awakened Developers!'
 
 ItemName.BlazenBoots=Tactical Assault Boots
-ItemTooltip.BlazenBoots='Great for impersonating Ancients Awakened Testers!'
+ItemTooltip.BlazenBoots='Great for impersonating Ancients Awakened Developers!'
 
 ItemName.BlazenHelmet=Tactical Assault Helmet
-ItemTooltip.BlazenHelmet='Great for impersonating Ancients Awakened Testers!'
+ItemTooltip.BlazenHelmet='Great for impersonating Ancients Awakened Developers!'
 
 ItemName.BlazenPlate=Tactical Assault Armor
-ItemTooltip.BlazenPlate='Great for impersonating Ancients Awakened Testers!'
+ItemTooltip.BlazenPlate='Great for impersonating Ancients Awakened Developers!'
+
+
+// AAMod.Items.Vanity.CC
+
+
+ItemName.CCBox=Mire Manic's Cardboard Box
+ItemTooltip.CCBox=<right> to open \n'All the essentials for impersonating the Dread Devotee!'
+
+ItemName.CCHood=Dread Cultist Mask
+ItemTooltip.CCHood=The mask of a crazy lizard enthusiast\n'Great for impersonating Ancients Awakened Developers!'
+
+ItemName.CCRobe=Dread Cultist Robe
+ItemTooltip.CCRobe=The hood of a crazy lizard enthusiast\n'Great for impersonating Ancients Awakened Developers!'
+
+
+// AAMod.Items.Vanity.Cerberus
+
+
+ItemName.InvokerBag=Invoker's Bag
+ItemTooltip.InvokerBag=<right> to open \n'All the essentials for impersonating the Invoker of Pups!'
+
+ItemName.InvokerHood=Invoker Hood
+ItemTooltip.InvokerHood=The enchanted hood of Aleister the 'Mega Therion'\nGreat for impersonating Awakened Developers!
+
+ItemName.InvokerPants=Invoker Boots
+ItemTooltip.InvokerPants=The enchanted boots of Aleister the 'Mega Therion'\nGreat for impersonating Awakened Developers!
+
+ItemName.InvokerRobe=Invoker Robe
+ItemTooltip.InvokerRobe=The enchanted robe of Aleister the 'Mega Therion'\nGreat for impersonating Awakened Developers!
+
+
+// AAMod.Items.Vanity.Charlie
+
+
+ItemName.CharlieBoots=Wraith Boots
+ItemTooltip.CharlieBoots='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.CharlieCloak=Wraith Cloak
+ItemTooltip.CharlieCloak='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.CharlieCowl=Wraith Cowl
+ItemTooltip.CharlieCowl='Great for impersonating Ancients Awakened Devs!'
 
 
 // AAMod.Items.Vanity.Dallin
@@ -3921,24 +4004,24 @@ ItemTooltip.BlazenPlate='Great for impersonating Ancients Awakened Testers!'
 ItemName.FezLordsBag=Fez Lord's Bag
 ItemTooltip.FezLordsBag=<right> to open \n'All the essentials for impersonating the Fez Lord!'
 
-// AAMod.Items.Vanity.Eliza.Dragon
 
-ItemName.LizBag=Сумка темного дракона
-ItemTooltip.LizBag=Нажмите Щелчок правой клавиши мыши, что бы открыть\n'Предметы первой необходимости для подражания Королеве Драконов!'
+// AAMod.Items.Vanity.Delly
 
-ItemName.LizHood=Капюшон Темной Драконихи
-ItemTooltip.LizHood='Поможет вам выдать себя за разработчика мода "Древние Пробудились"!'
 
-ItemName.LizRobes=Робы Темной Драконихи
-ItemTooltip.LizRobes='Поможет вам выдать себя за разработчика мода "Древние Пробудились"!'
+ItemName.DellyBag=Daughter of the Void's Bag
+ItemTooltip.DellyBag=<right> to open \n'All the essentials for impersonating the Void Mistress!'
 
-ItemName.LizSkirt=Юбка Темной Драконихи
-ItemTooltip.LizSkirt='Поможет вам выдать себя за разработчика мода "Древние Пробудились"!'
+ItemName.DellyBoots=Shadow Boots
+ItemTooltip.DellyBoots='Great for impersonating Ancients Awakened Developers!'
 
-ItemName.DragonWings=Крылья Темной Драконихи
-ItemTooltip.DragonWings=Allows flight and slow fall\nПозволяют вам летать и поглощают урон от падения\n'Поможет вам выдать себя за разработчика мода "Древние Пробудились"!'
+ItemName.DellyShirt=Shadow Shirt
+ItemTooltip.DellyShirt='Great for impersonating Ancients Awakened Developers!'
 
-// AAMod.Items.Vanity.Eliza.Cats
+ItemName.DellyWig=Shadow Wig
+ItemTooltip.DellyWig='Great for impersonating Ancients Awakened Developers!'
+
+
+// AAMod.Items.Vanity.Eliza.Cat
 
 
 ItemName.LizBoots=Midnight Cat Boots
@@ -3957,6 +4040,29 @@ ItemName.NightingaleWings=Nightingale Wings
 ItemTooltip.NightingaleWings=Allows flight and slow fall\n'Great for impersonating Ancients Awakened Devs!'
 
 
+// AAMod.Items.Vanity.Eliza.Dragon
+
+
+ItemName.DragonWings=Крылья Темной Драконихи
+ItemTooltip.DragonWings=Allows flight and slow fall\nПозволяют вам летать и поглощают урон от падения\n'Поможет вам выдать себя за разработчика мода "Древние Пробудились"!'
+
+ItemName.LizHood=Капюшон Темной Драконихи
+ItemTooltip.LizHood='Поможет вам выдать себя за разработчика мода "Древние Пробудились"!'
+
+ItemName.LizRobes=Робы Темной Драконихи
+ItemTooltip.LizRobes='Поможет вам выдать себя за разработчика мода "Древние Пробудились"!'
+
+ItemName.LizSkirt=Юбка Темной Драконихи
+ItemTooltip.LizSkirt='Поможет вам выдать себя за разработчика мода "Древние Пробудились"!'
+
+
+// AAMod.Items.Vanity.Eliza
+
+
+ItemName.LizBag=Сумка темного дракона
+ItemTooltip.LizBag=Нажмите Щелчок правой клавиши мыши, что бы открыть\n'Предметы первой необходимости для подражания Королеве Драконов!'
+
+
 // AAMod.Items.Vanity.Fargo
 
 
@@ -3971,6 +4077,7 @@ ItemTooltip.FargoSuit=soonTM\n'Great for impersonating Ancients Awakened Devs!'
 
 
 // AAMod.Items.Vanity.Gibs
+
 
 ItemName.GibsBag=Мешок злого Ревенанта
 ItemTooltip.GibsBag=Нажмите Щелчок правой клавиши мыши, что бы открыть\n'Предметы первой необходимости для подражания Злого Ревенанта!'
@@ -3990,8 +4097,6 @@ ItemTooltip.GibsSkull='Great for impersonating Ancients Awakened Developers!'
 
 // AAMod.Items.Vanity.Grox
 
-ItemName.GroviteSeaChest=Морской сундукс
-ItemTooltip.GroviteSeaChest=Нажмите Щелчок правой клавиши мыши, что бы открыть\n'Предметы первой необходимости для подражания Злого Пирата!'
 
 ItemName.AngryPirateBoots=Angry Pirate's Legguards
 ItemTooltip.AngryPirateBoots=Hatred towards fish that can't code radiates from these boots.\n'Great for impersonating Ancients Awakened Devs!'
@@ -4004,6 +4109,9 @@ ItemTooltip.AngryPirateHood=Hatred towards fish that can't code radiates from th
 
 ItemName.AngryPirateSails=Angry Pirate's Skysails
 ItemTooltip.AngryPirateSails=Allows flight and slow fall\n'Great for impersonating Ancients Awakened Devs!'
+
+ItemName.GroviteSeaChest=Морской сундукс
+ItemTooltip.GroviteSeaChest=Нажмите Щелчок правой клавиши мыши, что бы открыть\n'Предметы первой необходимости для подражания Злого Пирата!'
 
 
 // AAMod.Items.Vanity.Hallam
@@ -4018,18 +4126,21 @@ ItemTooltip.HalTrousers=These pants cost way more than you do\n'Great for impers
 ItemName.HalTux=Hallam's Fancy Tux
 ItemTooltip.HalTux=This tux was woven with pure class\n'Great for impersonating Ancients Awakened Devs!'
 
+ItemName.MagiciansHat=Magician's Top Hat
+ItemTooltip.MagiciansHat=<right> to open \n'All the essentials for impersonating the Mad Cat!'
 
-// AAMod.Items.Vanity.Invoker
+
+// AAMod.Items.Vanity.Hallam.Shiny
 
 
-ItemName.InvokerHood=Invoker Hood
-ItemTooltip.InvokerHood=The enchanted hood of Aleister the 'Mega Therion'\nGreat for impersonating Awakened Donators!
+ItemName.ShinyHalHat=Hallam's Velvet Top Hat
+ItemTooltip.ShinyHalHat=You can't help but feel fancy just wearing this\n'Great for impersonating Ancients Awakened Devs!'
 
-ItemName.InvokerPants=Invoker Boots
-ItemTooltip.InvokerPants=The enchanted boots of Aleister the 'Mega Therion'\nGreat for impersonating Awakened Donators!
+ItemName.ShinyHalTrousers=Hallam's Velvet Trousers
+ItemTooltip.ShinyHalTrousers=These pants cost way more than you do\n'Great for impersonating Ancients Awakened Devs!'
 
-ItemName.InvokerRobe=Invoker Robe
-ItemTooltip.InvokerRobe=The enchanted robe of Aleister the 'Mega Therion'\nGreat for impersonating Awakened Donators!
+ItemName.ShinyHalTux=Hallam's Velvet Tux
+ItemTooltip.ShinyHalTux=This tux was woven with pure class\n'Great for impersonating Ancients Awakened Devs!'
 
 
 // AAMod.Items.Vanity
@@ -4037,6 +4148,9 @@ ItemTooltip.InvokerRobe=The enchanted robe of Aleister the 'Mega Therion'\nGreat
 
 ItemName.HappySunSticker=Happy Sun Sticker
 ItemTooltip.HappySunSticker=:D
+
+ItemName.PhotographicEquipment=Photographic Equipment
+ItemTooltip.PhotographicEquipment=Are you a photographer?
 
 
 // AAMod.Items.Vanity.Mask
@@ -4110,6 +4224,7 @@ ItemTooltip.MikpinWig='Great for impersonating Ancients Awakened Testers!'
 
 // AAMod.Items.Vanity.Moon
 
+
 ItemName.MoonBag=Мешок Лунного Вредителя
 ItemTooltip.MoonBag=Нажмите Щелчок правой клавиши мыши, что бы открыть\n'Предметы первой необходимости для подражания Лунной Пчелы!'
 
@@ -4124,6 +4239,25 @@ ItemTooltip.MoonRobe=The Robe of a legendary lunar mage\n'Great for impersonatin
 
 ItemName.MoonWings=Lunar Wasp Wings
 ItemTooltip.MoonWings=Allows flight and slow fall\n'Great for impersonating Ancients Awakened Devs!'
+
+
+// AAMod.Items.Vanity.Moon.Shiny
+
+
+ItemName.ShinyMoonBoots=Lunar Boots
+ItemTooltip.ShinyMoonBoots=The boots of a legendary lunar mage\n'Great for impersonating Ancients Awakened Devs!'
+
+ItemName.ShinyMoonHood=Lunar Hood
+ItemTooltip.ShinyMoonHood=The hood of a legendary lunar mage\n'Great for impersonating Ancients Awakened Devs!'
+
+ItemName.ShinyMoonRobe=Lunar Robe
+ItemTooltip.ShinyMoonRobe=The Robe of a legendary lunar mage\n'Great for impersonating Ancients Awakened Devs!'
+
+
+// AAMod.Items.Vanity.Ohno
+
+ItemName.ono=онет
+ItemTooltip.ono=онет
 
 
 // AAMod.Items.Vanity.Tails
@@ -4142,6 +4276,9 @@ ItemTooltip.TailsLegs=Leggings made to resemble a certain two-tailed fox.\n'Grea
 // AAMod.Items.Vanity.Tied
 
 
+ItemName.OldMagiciansHat=Old Magician's Top Hat
+ItemTooltip.OldMagiciansHat=<right> to open \n'All the essentials for impersonating the Dapper Bone Man!'
+
 ItemName.TiedsLeggings=Spooky Trousers
 ItemTooltip.TiedsLeggings='Great for impersonating Ancients Awakened Devs!'
 
@@ -4156,18 +4293,13 @@ ItemTooltip.TiedsSuit='Great for impersonating Ancients Awakened Devs!'
 
 
 ItemName.CursedHood=Cursed Reaper Hood
-ItemTooltip.CursedHood='Great for impersonating Ancients Awakened Contributors!'
+ItemTooltip.CursedHood='Great for impersonating Ancients Awakened Devs!'
 
 ItemName.CursedPants=Cursed Reaper Boots
-ItemTooltip.CursedPants='Great for impersonating Ancients Awakened Contributors!'
+ItemTooltip.CursedPants='Great for impersonating Ancients Awakened Devs!'
 
 ItemName.CursedRobe=Cursed Reaper Robe
-ItemTooltip.CursedRobe='Great for impersonating Ancients Awakened Contributors!'
-
-// AAMod.Items.Vanity.Ohno
-
-ItemName.ono=онет
-ItemTooltip.ono=онет
+ItemTooltip.CursedRobe='Great for impersonating Ancients Awakened Devs!'
 
 
 // AAMod.Items.Walls
@@ -4386,6 +4518,8 @@ NPCName.DaybringerTail=
 
 NPCName.Equiprobe=Equiprobe
 
+NPCName.NCCloud=Nightclawer Cloud
+
 ===UNKNWN===
 NPCName.NightcrawlerBody=
 
@@ -4485,70 +4619,19 @@ NPCName.RedMushling=Mushling
 NPCName.BunnyBattler=Rabbid Rabbit
 
 ===UNKNWN===
-NPCName.BunnyBattler1=
-
-===UNKNWN===
 NPCName.BunnyBattler2=
-
-===UNKNWN===
-NPCName.BunnyBattler3=
-
-===UNKNWN===
-NPCName.BunnyBattler4=
 
 NPCName.BunnyBrawler=Bunny Brawler
 
 ===UNKNWN===
-NPCName.BunnyBrawler1=
-
-===UNKNWN===
 NPCName.BunnyBrawler2=
-
-===UNKNWN===
-NPCName.BunnyBrawler3=
-
-===UNKNWN===
-NPCName.BunnyBrawler4=
 
 NPCName.RabbitcopterSoldier=Rabbitcopter Soldier
 
 ===UNKNWN===
-NPCName.RabbitcopterSoldier1=
-
-===UNKNWN===
 NPCName.RabbitcopterSoldier2=
 
-===UNKNWN===
-NPCName.RabbitcopterSoldier3=
-
-===UNKNWN===
-NPCName.RabbitcopterSoldier4=
-
 NPCName.Rajah=Rajah Rabbit
-
-===UNKNWN===
-NPCName.Rajah2=
-
-===UNKNWN===
-NPCName.Rajah3=
-
-===UNKNWN===
-NPCName.Rajah4=
-
-===UNKNWN===
-NPCName.Rajah5=
-
-===UNKNWN===
-NPCName.Rajah6=
-
-===UNKNWN===
-NPCName.Rajah7=
-
-===UNKNWN===
-NPCName.Rajah8=
-
-===UNKNWN===
-NPCName.Rajah9=
 
 NPCName.SupremeRajah=Rajah Rabbit; Champion of the Innocent
 
@@ -4557,6 +4640,12 @@ NPCName.SupremeRajah=Rajah Rabbit; Champion of the Innocent
 
 
 NPCName.SupremeRajahDefeat=Rajah Rabbit
+
+
+// AAMod.NPCs.Bosses.Sag
+
+
+NPCName.Sag=Sagittarius
 
 
 // AAMod.NPCs.Bosses.Sagittarius
@@ -4613,6 +4702,10 @@ NPCName.BlazeGrip=Grip of Blazing Fury
 NPCName.Shen=Shen Doragon; Discordian Doomsayer
 
 NPCName.ShenA=Shen Doragon Awakened
+
+NPCName.ShenAHitbox=Shen Doragon Awakened
+
+NPCName.ShenHitbox=Shen Doragon; Discordian Doomsayer
 
 NPCName.Shenling=Discordian Serpent
 
@@ -4672,11 +4765,9 @@ NPCName.WyrmlingTail2=Wyrmling
 // AAMod.NPCs.Bosses.Yamata.Awakened
 
 
-NPCName.HarukaY=Haruka Yamata
-
 NPCName.YamataAHead=Yamata no Orochi
 
-NPCName.YamataAHeadF=Yamata
+NPCName.YamataAHeadF=Yamata no Orochi
 
 NPCName.YamataSoul=Mire Soul
 
@@ -4832,6 +4923,8 @@ NPCName.Mosster=Mosster
 
 NPCName.Newt=Newt
 
+NPCName.Soulsucker=Soulsucker
+
 
 // AAMod.NPCs.Enemies.Mire.Toxitoad
 
@@ -4851,6 +4944,10 @@ NPCName.MushroomZombie=Mushroom Zombie
 NPCName.MushroomZombie2=Mushroom Zombie
 
 NPCName.ShroomJelly=Mushroom Jelly
+
+NPCName.SmallFrog=Fungus Frog
+
+NPCName.SmallToad=Tiny Toad
 
 
 // AAMod.NPCs.Enemies.Other
@@ -4976,6 +5073,9 @@ NPCName.Vortex=Vortex
 
 
 ===UNKNWN===
+NPCName.Alpha=
+
+===UNKNWN===
 NPCName.Anubis=
 
 NPCName.GoblinSlayer=Goblin Slayer
@@ -5039,6 +5139,10 @@ MapObject.AnubisBox=Music Box
 
 MapObject.AnubisFBox=Music Box
 
+MapObject.AthenaABox=Music Box
+
+MapObject.AthenaBox=Music Box
+
 MapObject.BroodBox=Music Box
 
 MapObject.DjinnBox=Music Box
@@ -5067,6 +5171,8 @@ MapObject.LakeBox=Music Box
 
 MapObject.MireBox=Music Box
 
+MapObject.MireDayBox=Music Box
+
 MapObject.MireUBox=Music Box
 
 MapObject.MonarchBox=Music Box
@@ -5077,7 +5183,7 @@ MapObject.PagodaBox=Music Box
 
 MapObject.RajahBox=Music Box
 
-MapObject.SABox=Music Box
+MapObject.SagBox=Music Box
 
 MapObject.SDBox=Music Box
 
@@ -5088,6 +5194,8 @@ MapObject.SGBox=Music Box
 MapObject.ShenABox=Music Box
 
 MapObject.ShenBox=Music Box
+
+MapObject.SistersBox=Music Box
 
 MapObject.SRajahBox=Music Box
 
@@ -5199,11 +5307,21 @@ MapObject.RoyalBunnyCage=Royal Bunny Cage
 // AAMod.Tiles.Furniture.Bogwood
 
 
+MapObject.BogwoodBathtub=Bogwood Bathtub
+
+MapObject.BogwoodBed=Bogwood Bed
+
 MapObject.BogwoodBench=Bogwood Bench
+
+MapObject.BogwoodBookshelf=Bogwood Bookcase
+
+MapObject.BogwoodCandelabra=Bogwood Candelabra
 
 MapObject.BogwoodCandle=Bogwood Candle
 
 MapObject.BogwoodChair=Bogwood Chair
+
+MapObject.BogwoodChandelier=Bogwood Chandelier
 
 MapObject.BogwoodChest=Bogwood Chest
 
@@ -5213,7 +5331,19 @@ MapObject.BogwoodDoorClosed=Bogwood Door
 
 MapObject.BogwoodDoorOpen=Bogwood Door
 
+MapObject.BogwoodDresser=Bogwood Dresser
+
+MapObject.BogwoodLamp=Bogwood Lamp
+
 MapObject.BogwoodLantern=Bogwood Latern
+
+MapObject.BogwoodPiano=Bogwood Piano
+
+MapObject.BogwoodSink=Bogwood Sink
+
+MapObject.BogwoodTable=Bogwood Table
+
+MapObject.BogwoodWorkbench=Bogwood Workbench
 
 
 // AAMod.Tiles.Furniture.Oroboros
@@ -5346,6 +5476,9 @@ MapObject.OroborosSapling=Oroboros Sapling
 MapObject.RazePalmSapling=Raze Palm Sapling
 
 MapObject.RazewoodSapling=Razewood Sapling
+
+
+// AAMod.Tiles.Trophy
 
 //InvokerInfo
 

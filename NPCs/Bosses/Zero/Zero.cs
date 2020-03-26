@@ -351,7 +351,10 @@ namespace AAMod.NPCs.Bosses.Zero
             }
             else
             {
-                npc.ai[1] = 1;
+                if (npc.ai[1] == 0)
+                {
+                    npc.ai[1] = 1;
+                }
             }
 
             if (Distance < 160f)
