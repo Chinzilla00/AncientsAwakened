@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -59,7 +59,7 @@ namespace AAMod.Items.Melee
         public override void UseItemHitbox(Player player, ref Rectangle hitbox, ref bool noHitbox)
         {
             int height = 64;
-            int length = 80;
+            int length = 68;
             Saber.UseItemHitboxCalculate(player, item, ref hitbox, ref noHitbox, 0.9f, height, length);
         }
 
@@ -79,14 +79,22 @@ namespace AAMod.Items.Melee
     {
         public static Texture2D specialSlash;
         public static int specialProjFrames = 7;
-        readonly int chargeSlashDirection = 1;
+        bool sndOnce = true;
+        int chargeSlashDirection = 1;
 
 
         public override void SetStaticDefaults()
         {
             Main.projFrames[projectile.type] = 7;
             if (Main.netMode == 2) return;
+        Player projOwner = Main.player[projectile.owner];
+          projectile.position.X = projOwner.Center.X - (projectile.width / 2);
+          projectile.position.Y = projOwner.Center.Y - (projectile.height / 2);
             specialSlash = mod.GetTexture("Items/Melee/" + GetType().Name + "2");
+        projectile.direction = projOwner.direction;
+        projectile.spriteDirection = projOwner.direction;
+        projOwner.heldProj = projectile.whoAmI;
+        projOwner.itemTime = projOwner.itemAnimation;
         }
         public override void SetDefaults()
         {
@@ -140,4 +148,6 @@ namespace AAMod.Items.Melee
 
     }
 }
+
+
 
