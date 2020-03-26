@@ -10,7 +10,7 @@ namespace AAMod.Items.Melee
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("DarkMatter Slasher");
+            DisplayName.SetDefault("Darkmatter Slasher");
         }
 
         public override void SetDefaults()
