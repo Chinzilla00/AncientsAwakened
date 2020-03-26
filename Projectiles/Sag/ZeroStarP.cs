@@ -10,45 +10,33 @@ namespace AAMod.Projectiles.Sag
 	{
         public override void SetDefaults()
         {
-            projectile.aiStyle = 3;
-            projectile.width = 46;
-	        projectile.height = 46;
+            projectile.aiStyle = -1;
+            projectile.width = 32;
+	        projectile.height = 32;
 	        projectile.friendly = true;
             projectile.hostile = false;
             projectile.tileCollide = false;
 	        projectile.penetrate = -1;
-	        projectile.timeLeft = 150;
         }
         public float[] internalAI = new float[1];
-        public float[] shootAI = new float[4];
+        public float[] shootAI = new float[1];
 
         public override void AI()
         {
-            const int aislotHomingCooldown = 0;
-            const int homingDelay = 20;
-
-            projectile.ai[aislotHomingCooldown]++;
-            if (projectile.ai[aislotHomingCooldown] > homingDelay)
-            {
-                projectile.ai[aislotHomingCooldown] = homingDelay; 
-            }
-        }
-
- 
-        public override void PostAI()
-        {
+            Player p = Main.player[projectile.owner];
+            BaseAI.AIBoomerang(projectile, ref projectile.ai, p.position, p.width, p.height, true, 20f, 30, 20f, 0.6f, true);
             int Target = BaseAI.GetNPC(projectile.Center, -1, 500);
-            if (Target != -1)
+            if (Target != -1 && !Main.npc[Target].friendly)
             {
                 NPC target = Main.npc[Target];
-                BaseAI.ShootPeriodic(projectile, target.position, 14, 14, ModContent.ProjectileType<Darkray>(), ref internalAI[0], 20, projectile.damage, 4, true);
+                BaseAI.ShootPeriodic(projectile, target.position, 14, 14, ModContent.ProjectileType<Darkray>(), ref internalAI[0], 30, projectile.damage, 7, true);
             }
         }
 
         public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
         {
-            width = 16;
-            height = 16;
+            width = 8;
+            height = 8;
             return true;
         }
 
@@ -56,7 +44,7 @@ namespace AAMod.Projectiles.Sag
         {
             Texture2D Glow = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
             BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Projectiles/Sag/ZeroStarP"), 0, projectile, lightColor, true);
-            BaseDrawing.DrawTexture(spriteBatch, Glow, 0, projectile, AAColor.Oblivion, true);
+            BaseDrawing.DrawTexture(spriteBatch, Glow, 0, projectile, AAColor.COLOR_WHITEFADE1, true);
             return false;
         }
     }

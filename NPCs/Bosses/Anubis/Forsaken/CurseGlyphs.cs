@@ -18,8 +18,8 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
         public override void SetDefaults()
         {
             projectile.tileCollide = false;
-            projectile.width = 32;
-            projectile.height = 40;
+            projectile.width = 16;
+            projectile.height = 16;
             projectile.aiStyle = -1;
             projectile.penetrate = -1;
             projectile.friendly = false;

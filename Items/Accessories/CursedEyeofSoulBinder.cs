@@ -30,7 +30,7 @@ namespace AAMod.Items.Accessories
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("CursedEye of SoulBinder");
+            DisplayName.SetDefault("Cursed Eye of the Soul Binder");
             Tooltip.SetDefault(@"Pressing the accessory ability hotkey helps player skip the time between old one army two waves.
 Increase 21% minion damage
 Increase your max number of minions

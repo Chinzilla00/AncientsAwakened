@@ -494,7 +494,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f || !player.ZoneDesert)
                 {
                     deathtimer++;
-                    if (Main.netMode != 1 && deathtimer > 120)
+                    if (Main.netMode != 1 && deathtimer > 240)
                     {
                         if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("FAnubis"), Color.ForestGreen);
                         int a = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<TownNPCs.Anubis>());
@@ -508,6 +508,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     deathtimer = 0;
                 }
             }
+            deathtimer = 0;
             return true;
         }
 
@@ -518,7 +519,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             {
                 npc.frameCounter = 0;
                 npc.frame.Y += frameHeight;
-                if (AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<ForsakenStaff>()))
+                if (npc.ai[0] == 2 && npc.ai[1] >= 120)
                 {
                     if (npc.frame.Y > frameHeight * 11 || npc.frame.Y < frameHeight * 6 )
                     {
@@ -584,10 +585,10 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             Vector2 targetPos = player.Center;
             int posX = Main.rand.Next(-400, 400);
 
-            int posY = Main.rand.Next(50, 400);
-            if (posX > -100 && posX < 100)
+            int posY = Main.rand.Next(0, 400);
+            if (posX > -150 && posX < 150)
             {
-                 posY = Main.rand.Next(100, 400);
+                posY = Main.rand.Next(150, 400);
             }
 
             npc.position = new Vector2(targetPos.X + posX, targetPos.Y - posY);

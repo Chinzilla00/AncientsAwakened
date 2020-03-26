@@ -391,7 +391,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                 if (!player.active || player.dead || Vector2.Distance(npc.Center, player.Center) > 5000f || !player.ZoneDesert)
                 {
                     deathtimer++;
-                    if (Main.netMode != 1 && deathtimer > 120)
+                    if (Main.netMode != 1 && deathtimer > 240)
                     {
                         if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AnubisFalse"), Color.Gold);
                         int a = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<TownNPCs.Anubis>());
@@ -405,6 +405,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                     deathtimer = 0;
                 }
             }
+            deathtimer = 0;
             return true;
         }
 

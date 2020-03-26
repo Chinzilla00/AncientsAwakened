@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
         public override void SetDefaults()
         {
             projectile.width = 100;
-            projectile.height = 10;
+            projectile.height = 100;
             projectile.aiStyle = -1;
             projectile.timeLeft = 3600;
             projectile.hostile = true;

@@ -27,31 +27,24 @@ namespace AAMod.Items.Boss.Sagittarius
 	        item.autoReuse = true;
             item.melee = true;
             item.shoot = mod.ProjectileType("ZeroStarP");
-            item.shootSpeed = 20f;
+            item.shootSpeed = 10f;
             item.noMelee = true;
             item.noUseGraphic = true;
-            
+            item.rare = 4;
         }
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+
+        public override bool CanUseItem(Player player)
         {
-            Texture2D texture = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-            spriteBatch.Draw
-            (
-                texture,
-                new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                Color.White,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-            );
+            for (int i = 0; i < 1000; ++i)
+            {
+                if (Main.projectile[i].active && Main.projectile[i].owner == Main.myPlayer && Main.projectile[i].type == item.shoot)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
+
         public override void AddRecipes()
         {
             {

@@ -37,7 +37,6 @@ Hold down and jump to hover for an extended period of time
             }
         }
 
-
         public override void UpdateAccessory(Player player, bool hideVisual)
 		{
 			player.wingTimeMax = 300;
@@ -51,6 +50,21 @@ Hold down and jump to hover for an extended period of time
 			maxCanAscendMultiplier = 1f;
 			maxAscentMultiplier = 3f;
 			constantAscend = 0.135f;
+        }
+
+        public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
+        {
+            if (player.controlDown && player.controlJump && player.wingTime > 0f)
+            {
+                speed = 15f;
+                acceleration *= 10f;
+                player.velocity.Y *= 0f;
+            }
+            else
+            {
+                speed = 10f;
+                acceleration *= 6.25f;
+            }
         }
 
         public override bool WingUpdate(Player player, bool inUse)
@@ -78,22 +92,6 @@ Hold down and jump to hover for an extended period of time
                 }
             }
             return true;
-        }
-
-
-        public override void HorizontalWingSpeeds(Player player, ref float speed, ref float acceleration)
-		{
-            if (player.controlDown && player.controlJump && player.wingTime > 0f)
-            {
-                speed = 15f;
-                acceleration *= 10f;
-                player.velocity.Y *= 0f;
-            }
-            else
-            {
-                speed = 10f;
-                acceleration *= 6.25f;
-            }
         }
 	}
 }
