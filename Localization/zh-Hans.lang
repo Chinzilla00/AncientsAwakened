@@ -4753,7 +4753,7 @@ ItemTooltip.FargoSuit=soonTM\n“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Gibs
 
-ItemName.GibsBag=愤怒归来者宝藏袋
+ItemName.GibsBag=愤怒归来者的石棺
 ItemTooltip.GibsBag=右键打开\n内含冒充愤怒归来者的所有物品
 
 ItemName.GibsPlate=归来者护胸
