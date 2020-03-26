@@ -464,6 +464,8 @@ namespace AAMod
         //DO NOT MAKE THESE STATIC! DOING SO WILL PREVENT WHAT IT FIXES FROM HAPPENING.
         private Texture2D sunTextureBackup = null;
         private Texture2D sun3TextureBackup = null;
+
+
         public Dictionary<int, Texture2D> vanillaTextureBackups = new Dictionary<int, Texture2D>();
         public Dictionary<int, Texture2D> vanillaBGBackups = new Dictionary<int, Texture2D>();
 

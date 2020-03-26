@@ -20,19 +20,11 @@ namespace AAMod.Tiles
 
         public override Texture2D GetBranchTextures(int i, int j, int trunkOffset, ref int frame)
         {
-            if (Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()))
-            {
-                return Mod.GetTexture("Tiles/Trees/BogwoodBranchesShadow");
-            }
             return Mod.GetTexture("Tiles/Trees/BogwoodBranches");
         }
 
         public override Texture2D GetTopTextures(int i, int j, ref int frame, ref int frameWidth, ref int frameHeight, ref int xOffsetLeft, ref int yOffset)
         {
-            if (Main.LocalPlayer.HasBuff(ModContent.BuffType<Buffs.Clueless>()))
-            {
-                return Mod.GetTexture("Tiles/Trees/BogwoodTreeTopShadow");
-            }
             return Mod.GetTexture("Tiles/Trees/BogwoodTreeTop");
         }
     }

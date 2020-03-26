@@ -38,6 +38,11 @@ namespace AAMod.Backgrounds
         public override Color OnTileColor(Color inColor)
         {
             Vector4 value = inColor.ToVector4();
+            bool SilouetteMode = !Main.gameMenu && Main.LocalPlayer.GetModPlayer<AAPlayer>().Clueless;
+            if (SilouetteMode)
+            {
+                return new Color(1,1,1);
+            }
             return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
 

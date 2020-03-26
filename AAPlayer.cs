@@ -3502,7 +3502,7 @@ namespace AAMod
 
         public override void ModifyDrawInfo(ref PlayerDrawInfo drawInfo)
         {
-            if (Clueless)
+            /*if (Clueless)
             {
                 drawInfo.upperArmorColor = Color.Black;
                 drawInfo.middleArmorColor = Color.Black;
@@ -3521,7 +3521,7 @@ namespace AAMod
                 drawInfo.bodyGlowMaskColor = Color.Black;
                 drawInfo.armGlowMaskColor = Color.Black;
                 drawInfo.legGlowMaskColor = Color.Black;
-            }
+            }*/
         }
 
         #region Highest Damage check

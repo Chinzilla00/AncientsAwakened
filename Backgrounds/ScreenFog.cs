@@ -105,7 +105,7 @@ namespace AAMod.Backgrounds
     }
 
 
-    public class SilhouetteWorld : ModWorld
+    /*public class SilhouetteWorld : ModWorld
     {
         public bool SilouetteMode = !Main.gameMenu && Main.LocalPlayer.GetModPlayer<AAPlayer>().Clueless;
 
@@ -252,5 +252,5 @@ namespace AAMod.Backgrounds
             }
             return true;
         }
-    }
+    }*/
 }
