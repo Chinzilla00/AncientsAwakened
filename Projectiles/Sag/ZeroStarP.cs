@@ -11,8 +11,8 @@ namespace AAMod.Projectiles.Sag
         public override void SetDefaults()
         {
             projectile.aiStyle = 3;
-            projectile.width = 5;
-	        projectile.height = 5;
+            projectile.width = 46;
+	        projectile.height = 46;
 	        projectile.friendly = true;
             projectile.hostile = false;
             projectile.tileCollide = false;
@@ -43,6 +43,13 @@ namespace AAMod.Projectiles.Sag
                 NPC target = Main.npc[Target];
                 BaseAI.ShootPeriodic(projectile, target.position, 14, 14, ModContent.ProjectileType<Darkray>(), ref internalAI[0], 20, projectile.damage, 4, true);
             }
+        }
+
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+        {
+            width = 16;
+            height = 16;
+            return true;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
