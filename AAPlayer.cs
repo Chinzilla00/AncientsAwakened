@@ -1367,11 +1367,6 @@ namespace AAMod
                 player.AddBuff(BuffID.DryadsWard, 2);
             }
 
-            if (Main.rand.Next(3600) == 0)
-            {
-                VoidGrav = Main.rand.Next(0, 5) + 1;
-            }
-
             if (NPC.AnyNPCs(ModContent.NPCType<ZeroProtocol>()))
             {
                 if (!Filters.Scene["MoonLordShake"].IsActive())
@@ -1380,44 +1375,6 @@ namespace AAMod
                 }
 
                 Filters.Scene["MoonLordShake"].GetShader().UseIntensity(1f);
-            }
-
-            if (player.GetModPlayer<AAPlayer>().ZoneVoid)
-            {
-                if (!BrokenCode)
-                {
-                    if (VoidGrav == 0)
-                    {
-                        VoidGrav = Main.rand.Next(0, 5) + 1;
-                    }
-
-                    switch (VoidGrav)
-                    {
-                        case 1:
-                            player.gravity = 0.1f;
-                            break;
-
-                        case 2:
-                            player.gravity = 0.5f;
-                            break;
-
-                        case 3:
-                            player.gravity = 1f;
-                            break;
-
-                        case 4:
-                            player.gravity = 5f;
-                            break;
-
-                        case 5:
-                            player.gravity = 10f;
-                            break;
-                    }
-                }
-                else
-                {
-                    player.gravity = 1f;
-                }
             }
 
             if (player.GetModPlayer<AAPlayer>().ZoneInferno || player.GetModPlayer<AAPlayer>().ZoneRisingSunPagoda)
