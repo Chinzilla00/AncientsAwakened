@@ -212,6 +212,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                             internalAI[1] = 0;
                             Teleport();
                         }
+                        return;
                     }
 
                     if (npc.ai[1] == 10)
@@ -267,28 +268,6 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                                 Main.npc[o].Center = new Vector2(npc.Center.X, npc.Center.Y + 130);
                             }
                         }
-                    }
-
-                    if (npc.ai[1] >= 130)
-                    {
-                        internalAI[1]++;
-                        if (internalAI[3] < TeleportCount && internalAI[1] >= 30)
-                        {
-                            internalAI[3]++;
-                            internalAI[1] = 0;
-                            Teleport();
-                        }
-                        else
-                        {
-                            npc.ai[0]++;
-                            npc.ai[1] = 0;
-                            npc.ai[2] = 0;
-                            npc.ai[3] = 0;
-                            internalAI[3] = 0;
-                            internalAI[1] = 0;
-                            Teleport();
-                        }
-                        return;
                     }
                     break;
                 case 2:
@@ -351,15 +330,6 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     if (!AliveCheck(player))
                         break;
 
-                    int proj1 = ModContent.ProjectileType<AnubisSoul>();
-
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, proj1, ref npc.ai[3], 100, npc.damage / 2, 10, true);
-
-                    if (npc.ai[3] == 50)
-                    {
-                        Teleport();
-                    }
-
                     if (npc.ai[1] >= 320)
                     {
                         internalAI[1]++;
@@ -382,6 +352,15 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         return;
                     }
 
+                    int proj1 = ModContent.ProjectileType<AnubisSoul>();
+
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, proj1, ref npc.ai[3], 100, npc.damage / 2, 10, true);
+
+                    if (npc.ai[3] == 50)
+                    {
+                        Teleport();
+                    }
+
                     break;
 
                 case 5:
@@ -389,24 +368,6 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         break;
                     if (npc.life > npc.lifeMax / 2)
                     {
-                        if (npc.ai[1] == 40)
-                        {
-                            int l = Projectile.NewProjectile(player.position + new Vector2(-800, 0), Vector2.Zero, ModContent.ProjectileType<BlockF>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
-                            int r = Projectile.NewProjectile(player.position + new Vector2(800, 0), Vector2.Zero, ModContent.ProjectileType<BlockF>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
-                            Main.projectile[l].ai[1] = r;
-                            Main.projectile[l].Center = player.Center + new Vector2(-800, 0);
-                            Main.projectile[r].ai[1] = l;
-                            Main.projectile[r].Center = player.Center + new Vector2(800, 0);
-                        }
-                        if (npc.ai[1] == 80)
-                        {
-                            int u = Projectile.NewProjectile(player.position + new Vector2(0, -800), Vector2.Zero, ModContent.ProjectileType<BlockF1>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
-                            int d = Projectile.NewProjectile(player.position + new Vector2(0, 800), Vector2.Zero, ModContent.ProjectileType<BlockF1>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
-                            Main.projectile[u].ai[1] = d;
-                            Main.projectile[u].Center = player.Center + new Vector2(0, -800);
-                            Main.projectile[d].ai[1] = u;
-                            Main.projectile[d].Center = player.Center + new Vector2(0, 800);
-                        }
                         if (npc.ai[1] > 160 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
                         {
                             internalAI[1]++;
@@ -428,9 +389,48 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                             }
                             return;
                         }
+                        if (npc.ai[1] == 40)
+                        {
+                            int l = Projectile.NewProjectile(player.position + new Vector2(-800, 0), Vector2.Zero, ModContent.ProjectileType<BlockF>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
+                            int r = Projectile.NewProjectile(player.position + new Vector2(800, 0), Vector2.Zero, ModContent.ProjectileType<BlockF>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
+                            Main.projectile[l].ai[1] = r;
+                            Main.projectile[l].Center = player.Center + new Vector2(-800, 0);
+                            Main.projectile[r].ai[1] = l;
+                            Main.projectile[r].Center = player.Center + new Vector2(800, 0);
+                        }
+                        if (npc.ai[1] == 80)
+                        {
+                            int u = Projectile.NewProjectile(player.position + new Vector2(0, -800), Vector2.Zero, ModContent.ProjectileType<BlockF1>(), npc.damage / 2, 7, Main.myPlayer, 0, 0);
+                            int d = Projectile.NewProjectile(player.position + new Vector2(0, 800), Vector2.Zero, ModContent.ProjectileType<BlockF1>(), npc.damage / 2, 7, Main.myPlayer, 1, 0);
+                            Main.projectile[u].ai[1] = d;
+                            Main.projectile[u].Center = player.Center + new Vector2(0, -800);
+                            Main.projectile[d].ai[1] = u;
+                            Main.projectile[d].Center = player.Center + new Vector2(0, 800);
+                        }
                     }
                     else
                     {
+                        if (npc.ai[1] > 240 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<BlockF>()))
+                        {
+                            internalAI[1]++;
+                            if (internalAI[3] < TeleportCount && internalAI[1] >= 30)
+                            {
+                                internalAI[3]++;
+                                internalAI[1] = 0;
+                                Teleport();
+                            }
+                            else
+                            {
+                                npc.ai[0]++;
+                                npc.ai[1] = 0;
+                                npc.ai[2] = 0;
+                                npc.ai[3] = 0;
+                                internalAI[3] = 0;
+                                internalAI[1] = 0;
+                                Teleport();
+                            }
+                            return;
+                        }
                         if (npc.ai[1] % 30 == 0 && npc.ai[1] <= 240)
                         {
                             if (Main.rand.Next(2) == 0)
@@ -453,33 +453,33 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                             }
                         }
 
-                        if (npc.ai[1] > 240 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<BlockF>()))
-                        {
-                            internalAI[1]++;
-                            if (internalAI[3] < TeleportCount && internalAI[1] >= 30)
-                            {
-                                internalAI[3]++;
-                                internalAI[1] = 0;
-                                Teleport();
-                            }
-                            else
-                            {
-                                npc.ai[0]++;
-                                npc.ai[1] = 0;
-                                npc.ai[2] = 0;
-                                npc.ai[3] = 0;
-                                internalAI[3] = 0;
-                                internalAI[1] = 0;
-                                Teleport();
-                            }
-                            return;
-                        }
                     }
                     break;
 
                 case 6:
                     if (!AliveCheck(player))
                         break;
+                    if (npc.ai[1] > 180)
+                    {
+                        internalAI[1]++;
+                        if (internalAI[3] < TeleportCount && internalAI[1] >= 30)
+                        {
+                            internalAI[3]++;
+                            internalAI[1] = 0;
+                            Teleport();
+                        }
+                        else
+                        {
+                            npc.ai[0]++;
+                            npc.ai[1] = 0;
+                            npc.ai[2] = 0;
+                            npc.ai[3] = 0;
+                            internalAI[3] = 0;
+                            internalAI[1] = 0;
+                            Teleport();
+                        }
+                        return;
+                    }
                     if (npc.ai[1] == 120)
                     {
                         if (npc.life > npc.lifeMax / 2)
@@ -524,27 +524,6 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                             Main.projectile[h].Center = player.Center + new Vector2(-200, -200);
                             Kaboom(Main.projectile[h]);
                         }
-                    }
-                    if (npc.ai[1] > 180)
-                    {
-                        internalAI[1]++;
-                        if (internalAI[3] < TeleportCount && internalAI[1] >= 30)
-                        {
-                            internalAI[3]++;
-                            internalAI[1] = 0;
-                            Teleport();
-                        }
-                        else
-                        {
-                            npc.ai[0]++;
-                            npc.ai[1] = 0;
-                            npc.ai[2] = 0;
-                            npc.ai[3] = 0;
-                            internalAI[3] = 0;
-                            internalAI[1] = 0;
-                            Teleport();
-                        }
-                        return;
                     }
                     break;
 
