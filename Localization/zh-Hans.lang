@@ -319,6 +319,8 @@ ItemName.TriHeadedKoi=三头锦鲤
 
 ItemName.Fishmother=育母炎鱼
 
+ItemName.GlitchFish=乱误码鱼
+
 ItemName.AnubisBook=《阿努比斯生命史诗历险记》
 ItemTooltip.AnubisBook=一本非常……有趣的关于阿努比斯的生活和各种不幸遭遇的书.\n也许你把这个给他, 他会给你点东西.
 
@@ -3565,6 +3567,8 @@ ItemTooltip.Depthwalker=与九头蛇同行
 
 ItemName.DesertScimitar=沙漠弯刀
 
+ItemName.DMSlasher=暗物质切割刃
+
 ItemName.Discord=失调
 ItemTooltip.Discord=一把略带混沌的剑
 
@@ -4351,6 +4355,9 @@ ItemName.DarkmatterJackhammer=暗物质手持凿机
 ItemName.DarkmatterPitchet=暗物质镐斧
 
 ItemName.DepthDigger=堑渊镐
+
+ItemName.DoomiteJacksaw=厄劫横锯
+ItemTooltip.DoomiteJacksaw=专门为摧毁最终树木和墙壁而生!
 
 ItemName.DragonDigger=狱龙镐
 ItemTooltip.DragonDigger=龙不会真正挖东西,但这个会
