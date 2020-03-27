@@ -47,6 +47,17 @@ namespace AAMod
                 projectile.velocity = reflectvelocity;
                 projectile.rotation += projectile.velocity.ToRotation() - oldvelocity.ToRotation();
             }
+            if (!projectile.minion && projectile.type > 0 && !projectile.melee && !projectile.magic && !projectile.ranged)
+            {
+                for (int j = 0; j < 1000; j++)
+                {
+                    if (Main.projectile[j].active && Main.projectile[j].sentry && Main.projectile[j].type + 1 == projectile.type)
+                    {
+                        projectile.minion = true;
+                        break;
+                    }
+                }
+            }
             if ((projectile.minion || projectile.sentry) && !ProjectileID.Sets.StardustDragon[projectile.type] && !LongMinion)
 			{
 				if (setDefMinionDamage)
@@ -267,14 +278,14 @@ namespace AAMod
 
         public override void ModifyHitNPC(Projectile projectile, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-             if ((projectile.minion || projectile.sentry) && Main.player[projectile.owner].GetModPlayer<AAPlayer>().CursedEyeofSoulBinder)
-             {
-                int num = Main.rand.Next(2, 4);
-				for(int i = 0; i < num; i++)
-				{
-					ghostHurt(projectile, projectile.damage, new Vector2(target.Center.X, target.Center.Y));
-				}
-             }
+            if (projectile.type != 356 && (projectile.minion || projectile.sentry) && Main.player[projectile.owner].GetModPlayer<AAPlayer>().CursedEyeofSoulBinder)
+            {
+                int num = Main.rand.Next(1, 3);
+                for(int i = 0; i < num; i++)
+                {
+                    ghostHurt(projectile, projectile.damage, new Vector2(target.Center.X, target.Center.Y));
+                }
+            }
 		}
 
         private void ghostHurt(Projectile projectile, int dmg, Vector2 Position)
