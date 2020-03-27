@@ -2296,7 +2296,7 @@ Fishy";
                         case "ZeroBoss2":
                         return "末 日 注 册 协 议 报 错. MAIN. EXPERT M0DE = FALSE. （主程序未检测到专家模式）";
                         case "ZeroBoss3":
-                        return "厄劫石停止发光. 现在你可以挖掘了. ";
+                        return "零械的暗能量影响已经解除，厄劫石可以挖掘了";
                         case "ZeroBoss4":
                         return "初 始 化 备 用 武 器 协 议. ";
                         case "ZeroBoss5":
