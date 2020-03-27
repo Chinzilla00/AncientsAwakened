@@ -81,7 +81,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 writer.Write(Move[3]);
                 writer.Write(Counter[0]); //the hit TP counter
                 writer.Write(Counter[1]); //the charge counter
-                writer.Write(Counter[3]); //the pointchange counter
+                writer.Write(Counter[2]); //the pointchange counter
             }
         }
 
