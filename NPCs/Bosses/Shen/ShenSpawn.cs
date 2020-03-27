@@ -332,29 +332,29 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (npc.ai[1] == 180)
                 {
-                    BaseUtility.Chat(Lang.BossChat("ShenDeath1"), new Color(180, 41, 32));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath1"), new Color(180, 41, 32), false);
                 }
 
                 if (npc.ai[1] == 360)
                 {
-                    BaseUtility.Chat(Lang.BossChat("ShenDeath2"), new Color(45, 46, 70));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath2"), new Color(45, 46, 70), false);
                 }
 
                 if (npc.ai[1] == 540)
                 {
                     string Name = Main.netMode != 0 ? Lang.BossChat("ShenDeath3") : player.name;
-                    BaseUtility.Chat(Name + Lang.BossChat("ShenDeath4"), new Color(180, 41, 32));
+                    BaseUtility.Chat(Name + Lang.BossChat("ShenDeath4"), new Color(180, 41, 32), false);
                 }
 
                 if (npc.ai[1] == 720)
                 {
-                    BaseUtility.Chat(Lang.BossChat("ShenDeath5"), new Color(45, 46, 70));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath5"), new Color(45, 46, 70), false);
                 }
 
                 if (npc.ai[1] == 899)
                 {
-                    BaseUtility.Chat(Lang.BossChat("ShenDeath6"), new Color(45, 46, 70));
-                    BaseUtility.Chat(Lang.BossChat("ShenDeath6"), new Color(180, 41, 32));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath6"), new Color(45, 46, 70), false);
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath6"), new Color(180, 41, 32), false);
                 }
 
                 if (npc.ai[1] >= 900)
@@ -369,31 +369,31 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 if (npc.ai[1] == 180)
                 {
-                    BaseUtility.Chat(Lang.BossChat("ShenDeath7"), new Color(45, 46, 70));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath7"), new Color(45, 46, 70), false);
                 }
 
                 if (npc.ai[1] == 360)
                 {
-                    BaseUtility.Chat(Lang.BossChat("ShenDeath8"), new Color(180, 41, 32));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath8"), new Color(180, 41, 32), false);
                 }
 
                 if (npc.ai[1] == 540)
                 {
                     string Name = Main.netMode != 0 ? Lang.BossChat("ShenDeath9") : player.Male ? Lang.BossChat("boy") : Lang.BossChat("girl");
-                    BaseUtility.Chat(Lang.BossChat("ShenDeath10") + Name + Lang.BossChat("ShenDeath11"), new Color(45, 46, 70));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath10") + Name + Lang.BossChat("ShenDeath11"), new Color(45, 46, 70), false);
                 }
 
                 if (npc.ai[1] == 720)
                 {
-                    BaseUtility.Chat(Lang.BossChat("ShenDeath12"), new Color(180, 41, 32));
+                    BaseUtility.Chat(Lang.BossChat("ShenDeath12"), new Color(180, 41, 32), false);
                 }
 
                 if (npc.ai[1] == 899)
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseUtility.Chat(Lang.BossChat("ShenDeath13"), new Color(45, 46, 70));
-                        BaseUtility.Chat(Lang.BossChat("ShenDeath13"), new Color(180, 41, 32));
+                        BaseUtility.Chat(Lang.BossChat("ShenDeath13"), new Color(45, 46, 70), false);
+                        BaseUtility.Chat(Lang.BossChat("ShenDeath13"), new Color(180, 41, 32), false);
                     }
                 }
                 if (npc.ai[1] >= 900)
