@@ -3765,7 +3765,7 @@ Fishy";
                         case "ZeroBoss2":
                         return "D00MSDAY PR0T0CALL MALFUNCTI0N. MAIN.EXPERT M0DE = FALSE.";
                         case "ZeroBoss3":
-                        return "Doomstone stops glowing. You can now mine it.";
+                        return "Zero's dark influence over the void has been lifted. The doomstone here is now minable.";
                         case "ZeroBoss4":
                         return "INITIALIZING BACKUP WEAPON PR0T0C0L.";
                         case "ZeroBoss5":

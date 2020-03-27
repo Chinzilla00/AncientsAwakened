@@ -99,17 +99,6 @@ namespace AAMod.NPCs.Bosses.Zero
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
                 Gore.NewGore(npc.position, npc.velocity, mod.GetGoreSlot("Gores/ZeroGore3"), 1f);
-                if (Main.expertMode && Main.netMode != 1)
-                {
-                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroBoss1"), Color.Red.R, Color.Red.G, Color.Red.B);
-                    int z = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ZeroProtocol"), 0, 0, 0, 0, 0, npc.target);
-                    Main.npc[z].Center = npc.Center;
-
-                    int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
-                    Main.projectile[b].Center = npc.Center;
-
-                    npc.netUpdate = true;
-                }
                 if (!Main.expertMode)
                 {
                     if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroBoss2"), Color.Red.R, Color.Red.G, Color.Red.B);
@@ -153,6 +142,18 @@ namespace AAMod.NPCs.Bosses.Zero
             if (Main.expertMode)
             {
                 npc.DropLoot(mod.ItemType("ApocalyptitePlate"), 2, 4);
+
+                if (Main.expertMode && Main.netMode != 1)
+                {
+                    if (Main.netMode != 1) AAMod.Chat(Lang.BossChat("ZeroBoss1"), Color.Red.R, Color.Red.G, Color.Red.B);
+                    int z = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("ZeroProtocol"), 0, 0, 0, 0, 0, npc.target);
+                    Main.npc[z].Center = npc.Center;
+
+                    int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
+                    Main.projectile[b].Center = npc.Center;
+
+                    npc.netUpdate = true;
+                }
             }
             else
             {

@@ -15,7 +15,8 @@ namespace AAMod.Tiles.Ore
             Main.tileSolid[Type] = true;
             Main.tileMerge[Type][mod.TileType("Doomstone")] = true;
             Main.tileMergeDirt[Type] = false;
-            Main.tileValue[Type] = 860; 
+            Main.tileValue[Type] = 860;
+            Main.tileBlockLight[Type] = true;
             SetModTree(new OroborosTree());
             soundType = 21;
             drop = mod.ItemType("Apocalyptite");   

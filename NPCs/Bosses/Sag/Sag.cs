@@ -6,6 +6,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 using System.IO;
+using Terraria.Graphics.Shaders;
 
 namespace AAMod.NPCs.Bosses.Sag
 {
@@ -45,6 +46,7 @@ namespace AAMod.NPCs.Bosses.Sag
             if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
+                writer.Write(internalAI[1]);
                 writer.Write(targetPos.X);
                 writer.Write(targetPos.Y);
             }
@@ -56,11 +58,13 @@ namespace AAMod.NPCs.Bosses.Sag
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 internalAI[0] = reader.ReadFloat();
+                internalAI[1] = reader.ReadFloat();
                 targetPos.X = reader.ReadFloat();
                 targetPos.Y = reader.ReadFloat();
             }
         }
 
+        bool lowHealth = false;
 
         public override void AI()
         {
@@ -155,6 +159,7 @@ namespace AAMod.NPCs.Bosses.Sag
                         if (npc.ai[1] > 120 || Math.Abs(npc.Center.Y - targetPos.Y) < 16) //initiate dash
                         {
                             npc.ai[0]++;
+                            npc.rotation += npc.velocity.X * 0.05f;
                             npc.ai[1] = 0;
                             npc.netUpdate = true;
                             int speed = npc.life < npc.lifeMax / 3 ? 15 : 18;
@@ -176,9 +181,8 @@ namespace AAMod.NPCs.Bosses.Sag
                         npc.ai[0] = 0;
                         npc.ai[1] = 0;
                         npc.ai[2] = 0;
-                        npc.ai[3] += 1;
+                        npc.ai[3] = Main.rand.Next(5);
                         internalAI[0] = 0;
-                        Main.NewText(Lang.BossChat("SagChat") + " [" + (int)(npc.ai[3] + 1) + "]");
                         npc.netUpdate = true;
                     }
                     break;
@@ -186,14 +190,27 @@ namespace AAMod.NPCs.Bosses.Sag
                     npc.ai[0] = 0;
                     goto case 0;
             }
-            if (npc.ai[0] == 2)
+
+            if (npc.life < npc.lifeMax / 3 && internalAI[1]++ % 90 == 0)
             {
-                if (npc.rotation != npc.velocity.X * 0.05f)
+                Vector2 SparkPos = npc.Center + new Vector2(Main.rand.Next(-48, 48), 0);
+                Vector2 SparkSpeed = new Vector2(Main.rand.Next(-4, 4), Main.rand.Next(0, 4));
+                Projectile.NewProjectile(SparkPos, SparkSpeed, mod.ProjectileType("SagSpark"), npc.damage / 4, 1);
+
+                for (int num242 = 0; num242 < 5; num242++)
                 {
-                    npc.rotation += .01f * npc.direction;
+                    int num243 = Dust.NewDust(SparkPos, 0, 0, 226, SparkSpeed.X, SparkSpeed.Y, 0, default, 1f);
+                    Main.dust[num243].scale = 0.5f;
+                    Main.dust[num243].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
+                }
+
+                if (!lowHealth && Main.netMode != 1)
+                {
+                    CombatText.NewText(npc.getRect(), new Color(233, 46, 46), "EXTENSIVE BODY DAMAGE DETECTED. PROCEED WITH CAUTION!", true, true);
+                    lowHealth = true;
                 }
             }
-            else
+            if (npc.ai[0] != 2)
             {
                 npc.rotation = 0;
             }
@@ -218,7 +235,7 @@ namespace AAMod.NPCs.Bosses.Sag
                             npc.netUpdate = true;
                         }
                     }
-                    if (internalAI[0] > 120)
+                    if (internalAI[0] > 80)
                     {
                         BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, ModContent.ProjectileType<SagiStar>(), ref npc.ai[2], 20, npc.damage / 4, 9, false, new Vector2(36 * npc.direction, -51));
                     }
@@ -233,7 +250,7 @@ namespace AAMod.NPCs.Bosses.Sag
                             npc.netUpdate = true;
                         }
                     }
-                    if (internalAI[0] > 120  && internalAI[0] % 30 == 0)
+                    if (internalAI[0] > 80 && internalAI[0] % 30 == 0)
                     {
                         Projectile.NewProjectile(npc.Center, new Vector2(Main.rand.Next(3, 7) * npc.direction, -6f), mod.ProjectileType("SagBomb"), npc.damage / 4, 3);
                     }
@@ -248,9 +265,19 @@ namespace AAMod.NPCs.Bosses.Sag
                             npc.netUpdate = true;
                         }
                     }
-                    if (internalAI[0] > 120)
+                    if (internalAI[0] > 80)
                     {
                         BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, ModContent.ProjectileType<SagRocket>(), ref npc.ai[2], 40, npc.damage / 4, 9, false);
+                    }
+                    break;
+                case 4:
+                    if (Main.netMode != 1)
+                    {
+                        internalAI[0]++;
+                    }
+                    if (internalAI[0] > 80)
+                    {
+                        BaseAI.ShootPeriodic(npc, player.Center + new Vector2(Main.rand.Next(-10, 10), Main.rand.Next(-10, 10)), player.width, player.height, ModContent.ProjectileType<SagBlast>(), ref npc.ai[2], 50, npc.damage / 4, 9, false, new Vector2(36 * npc.direction, -51));
                     }
                     break;
                 default:
@@ -362,19 +389,63 @@ namespace AAMod.NPCs.Bosses.Sag
                 Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/SagHeadGore"), 1f);
                 Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/SagLegGore"), 1f);
                 Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/SagLegGore"), 1f);
-                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/SagNeckGore"), 1f);
-                int dust1 = ModContent.DustType<Dusts.VoidDust>();
-                int dust2 = ModContent.DustType<Dusts.VoidDust>();
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust1, 0f, 0f, 0);
-                Main.dust[dust1].velocity *= 0.5f;
-                Main.dust[dust1].scale *= 1.3f;
-                Main.dust[dust1].fadeIn = 1f;
-                Main.dust[dust1].noGravity = false;
-                Dust.NewDust(new Vector2(npc.position.X, npc.position.Y), npc.width, npc.height, dust2, 0f, 0f, 0);
-                Main.dust[dust2].velocity *= 0.5f;
-                Main.dust[dust2].scale *= 1.3f;
-                Main.dust[dust2].fadeIn = 1f;
-                Main.dust[dust2].noGravity = true;
+                Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/SagNeckGore"), 1f); 
+                Vector2 position = npc.Center + (Vector2.One * -20f);
+                int num84 = 40;
+                int height3 = num84;
+                for (int num85 = 0; num85 < 3; num85++)
+                {
+                    int num86 = Dust.NewDust(position, num84, height3, 226, 0f, 0f, 100, default, 1.5f);
+                    Main.dust[num86].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
+                    Main.dust[num86].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                }
+                for (int num87 = 0; num87 < 7; num87++)
+                {
+                    int num88 = Dust.NewDust(position, num84, height3, 226, 0, 0, 100, new Color(), 2f);
+                    Main.dust[num88].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
+                    Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                    Main.dust[num88].noGravity = true;
+                    Main.dust[num88].noLight = true;
+                    Main.dust[num88].velocity *= 3f;
+                    Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * (2f + (Main.rand.NextFloat() * 4f));
+                    num88 = Dust.NewDust(position, num84, height3, 226, 0, 0, 100, new Color(), 2f);
+                    Main.dust[num88].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
+                    Main.dust[num88].position = npc.Center + (Vector2.UnitY.RotatedByRandom(3.1415927410125732) * (float)Main.rand.NextDouble() * num84 / 2f);
+                    Main.dust[num88].velocity *= 2f;
+                    Main.dust[num88].noGravity = true;
+                    Main.dust[num88].fadeIn = 1f;
+                    Main.dust[num88].color = Color.Black * 0.5f;
+                    Main.dust[num88].noLight = true;
+                    Main.dust[num88].velocity += npc.DirectionTo(Main.dust[num88].position) * 8f;
+                }
+                for (int num89 = 0; num89 < 5; num89++)
+                {
+                    int num90 = Dust.NewDust(position, num84, height3, 226, 0, 0, 100, new Color(), 2f);
+                    Main.dust[num90].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
+                    Main.dust[num90].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
+                    Main.dust[num90].noGravity = true;
+                    Main.dust[num90].noLight = true;
+                    Main.dust[num90].velocity *= 3f;
+                    Main.dust[num90].velocity += npc.DirectionTo(Main.dust[num90].position) * 2f;
+                }
+                for (int num91 = 0; num91 < 15; num91++)
+                {
+                    int num92 = Dust.NewDust(position, num84, height3, 226, 0, 0, 100, new Color(), 2f);
+                    Main.dust[num92].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
+                    Main.dust[num92].position = npc.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(npc.velocity.ToRotation(), default) * num84 / 2f);
+                    Main.dust[num92].noGravity = true;
+                    Main.dust[num92].velocity *= 3f;
+                    Main.dust[num92].velocity += npc.DirectionTo(Main.dust[num92].position) * 3f;
+                }
+            }
+            else
+            {
+                for (int num242 = 0; num242 < 3; num242++)
+                {
+                    int num243 = Dust.NewDust(npc.position, npc.width, npc.height, 226, -2.5f * hitDirection, -2.5f, 0, default, 1f);
+                    Main.dust[num243].scale = 0.5f;
+                    Main.dust[num243].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
+                }
             }
         }
 
@@ -405,7 +476,7 @@ namespace AAMod.NPCs.Bosses.Sag
                 string[] lootTable = { "SagCore", "NeutronStaff", "Legg" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
-                Item.NewItem(npc.Center, ModContent.ItemType<Items.Materials.Doomite>(), Main.rand.Next(30, 40));
+                Item.NewItem(npc.Center, ModContent.ItemType<Items.Materials.Doomite>(), Main.rand.Next(20, 30));
             }
             else
             {

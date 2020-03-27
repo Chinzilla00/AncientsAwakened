@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using System;
+using Microsoft.Xna.Framework;
 
 namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 {
@@ -19,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             projectile.penetrate = -1;
             projectile.friendly = false;
             projectile.hostile = true;
-            projectile.tileCollide = false;
+            projectile.tileCollide = true;
             projectile.ignoreWater = true;
             projectile.alpha = 255;
         }
@@ -31,9 +32,9 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                 int num469 = Dust.NewDust(projectile.Center, 0, 0, ModContent.DustType<Dusts.ForsakenDust>(), 0f, 0f, 0, default, 2f);
                 Main.dust[num469].noGravity = true;
             }
+
             projectile.damage = 0;
             projectile.knockBack = 0;
-
 
             projectile.ai[1] = projectile.velocity.Length();
 
@@ -47,12 +48,23 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             }
         }
 
+        bool HitTile = false;
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            HitTile = true;
+            return base.OnTileCollide(oldVelocity);
+        }
+
         public override void Kill(int timeLeft)
         {
             int MinionType = ModContent.NPCType<ForsakenSun>();
 
-            int Minion = NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, MinionType, 0);
-            Main.npc[Minion].netUpdate2 = true;
+            if (!HitTile)
+            {
+                int Minion = NPC.NewNPC((int)projectile.Center.X, (int)projectile.Center.Y, MinionType, 0);
+                Main.npc[Minion].netUpdate = true;
+            }
         }
     }
 }

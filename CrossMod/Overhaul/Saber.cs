@@ -26,7 +26,7 @@ namespace AAMod
         /// <param name="ai1">Set ai1, usually the direction of the slash, or power attack. </param>
         /// <param name="customCharge">Custom function call replacing normal charge effect, using player.itemTime; </param>
         /// <returns>True on the frame of a charged attack</returns>
-        public static bool HoldItemManager(Player player, Item item, int slashProjectileID, Color chargeColour = default(Color), float slashDelay = 0.9f, float ai1 = 1f, Action<Player, bool> customCharge = null, int delaySpeed = 4)
+        public static bool HoldItemManager(Player player, Item item, int slashProjectileID, Color chargeColour = default, float slashDelay = 0.9f, float ai1 = 1f, Action<Player, bool> customCharge = null, int delaySpeed = 4)
         {
             bool charged = false;
             // Attacking
@@ -178,7 +178,7 @@ namespace AAMod
             if (Main.myPlayer == player.whoAmI)
             {
                 Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-                Vector2 value = Vector2.UnitX.RotatedBy(player.fullRotation, default(Vector2));
+                Vector2 value = Vector2.UnitX.RotatedBy(player.fullRotation, default);
                 float num79 = Main.mouseX + Main.screenPosition.X - vector2.X;
                 float num80 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
                 if (player.gravDir == -1f)
@@ -195,7 +195,7 @@ namespace AAMod
                 if (Main.myPlayer == player.whoAmI)
                 {
                     Vector2 vector2 = player.RotatedRelativePoint(player.MountedCenter, true);
-                    Vector2 value = Vector2.UnitX.RotatedBy(player.fullRotation, default(Vector2));
+                    Vector2 value = Vector2.UnitX.RotatedBy(player.fullRotation, default);
                     float num79 = Main.mouseX + Main.screenPosition.X - vector2.X;
                     float num80 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
                     if (player.gravDir == -1f)

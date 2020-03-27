@@ -1510,6 +1510,11 @@ namespace AAMod
                 StripeCrasyLucky = false;
                 Main.rand = new UnifiedRandom();
             }
+
+            if (ZoneVoid)
+            {
+                player.gravity = Player.defaultGravity + .1f;
+            }
         }
 
         public void SpecialQuickHeal()

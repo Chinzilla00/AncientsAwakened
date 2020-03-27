@@ -23,7 +23,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             npc.aiStyle = -1;
             npc.damage = 55;
             npc.defense = 60;
-            npc.lifeMax = 200000;
+            npc.lifeMax = 150000;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath6;
             npc.knockBackResist = 0f;
@@ -69,8 +69,22 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 
         public override void AI()
         {
-            int TeleportCount = npc.life > npc.lifeMax * (2 / 3) ? 0 :
-                npc.life > npc.lifeMax * (1 / 3) ? 1 : 2;
+            int TeleportCount = 0;
+
+            if (npc.life < (int)(npc.lifeMax * .75f))
+            {
+                TeleportCount = 1;
+            }
+
+            if (npc.life < (int)(npc.lifeMax * .5f))
+            {
+                TeleportCount = 2;
+            }
+
+            if (npc.life < (int)(npc.lifeMax * .25f))
+            {
+                TeleportCount = 3;
+            }
 
             if (!npc.HasPlayerTarget)
             {
@@ -159,7 +173,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     if (npc.ai[1] >= 200)
                     {
                         internalAI[1]++;
-                        if (internalAI[3] < TeleportCount && internalAI[1] >= 30)
+                        if (internalAI[3] < TeleportCount && internalAI[1] >= 50)
                         {
                             internalAI[3]++;
                             internalAI[1] = 0;
@@ -196,7 +210,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     if (npc.ai[1] >= 130)
                     {
                         internalAI[1]++;
-                        if (internalAI[3] < TeleportCount && internalAI[1] >= 30)
+                        if (internalAI[3] < TeleportCount && internalAI[1] >= 50)
                         {
                             internalAI[3]++;
                             internalAI[1] = 0;
@@ -333,7 +347,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     if (npc.ai[1] >= 320)
                     {
                         internalAI[1]++;
-                        if (internalAI[3] < TeleportCount && internalAI[1] >= 30)
+                        if (internalAI[3] < TeleportCount && internalAI[1] >= 50)
                         {
                             internalAI[3]++;
                             internalAI[1] = 0;
@@ -371,7 +385,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         if (npc.ai[1] > 160 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<Block>()))
                         {
                             internalAI[1]++;
-                            if (internalAI[3] < TeleportCount && internalAI[1] >= 30)
+                            if (internalAI[3] < TeleportCount && internalAI[1] >= 50)
                             {
                                 internalAI[3]++;
                                 internalAI[1] = 0;
@@ -413,7 +427,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         if (npc.ai[1] > 240 && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<BlockF>()))
                         {
                             internalAI[1]++;
-                            if (internalAI[3] < TeleportCount && internalAI[1] >= 30)
+                            if (internalAI[3] < TeleportCount && internalAI[1] >= 50)
                             {
                                 internalAI[3]++;
                                 internalAI[1] = 0;
@@ -462,7 +476,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     if (npc.ai[1] > 180)
                     {
                         internalAI[1]++;
-                        if (internalAI[3] < TeleportCount && internalAI[1] >= 30)
+                        if (internalAI[3] < TeleportCount && internalAI[1] >= 50)
                         {
                             internalAI[3]++;
                             internalAI[1] = 0;

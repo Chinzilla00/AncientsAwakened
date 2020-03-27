@@ -309,58 +309,43 @@ namespace AAMod.Items.Armor.Witch
             if (player.statLife > (player.statLifeMax * .9f))
             {
                 projectile.damage = 60 + 0;
-                projectile.scale = .2f;
-                return;
             }
-            if (player.statLife > (player.statLifeMax * .8f))
+            else if (player.statLife > (player.statLifeMax * .8f))
             {
                 projectile.damage = 60 + 5;
-                projectile.scale = .3f;
-                return;
             }
-            if (player.statLife > (player.statLifeMax * .7f))
+            else if (player.statLife > (player.statLifeMax * .7f))
             {
                 projectile.damage = 60 + 10;
-                projectile.scale = .4f;
-                return;
             }
-            if (player.statLife > (player.statLifeMax * .6f))
+            else if (player.statLife > (player.statLifeMax * .6f))
             {
                 projectile.damage = 60 + 15;
-                projectile.scale = .5f;
-                return;
             }
-            if (player.statLife > (player.statLifeMax * .5f))
+            else if (player.statLife > (player.statLifeMax * .5f))
             {
                 projectile.damage = 60 + 20;
-                projectile.scale = .6f;
-                return;
             }
-            if (player.statLife > (player.statLifeMax * .4f))
+            else if (player.statLife > (player.statLifeMax * .4f))
             {
                 projectile.damage = 60 + 25;
-                projectile.scale = .7f;
-                return;
             }
-            if (player.statLife > (player.statLifeMax * .3f))
+            else if (player.statLife > (player.statLifeMax * .3f))
             {
                 projectile.damage = 60 + 30;
-                projectile.scale = .8f;
-                return;
             }
-            if (player.statLife > (player.statLifeMax * .2f))
+            else if (player.statLife > (player.statLifeMax * .2f))
             {
                 projectile.damage = 60 + 35;
-                projectile.scale = .9f;
-                return;
             }
-            if (player.statLife > (player.statLifeMax * .1f))
+            else if (player.statLife > (player.statLifeMax * .1f))
             {
                 projectile.damage = 60 + 40;
-                projectile.scale = .10f;
-                return;
             }
-            projectile.damage = 60 + 60;
+            else
+            {
+                projectile.damage = 60 + 60;
+            }
         }
     }
 }
