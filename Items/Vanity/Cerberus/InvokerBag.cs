@@ -7,7 +7,7 @@ namespace AAMod.Items.Vanity.Cerberus
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Invoker's Bag");
+            DisplayName.SetDefault("Pup cerberus' kennel");
             Tooltip.SetDefault("<right> to open \n'All the essentials for impersonating the Invoker of Pups!'");
         }
 
