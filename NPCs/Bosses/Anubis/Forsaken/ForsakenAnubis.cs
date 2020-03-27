@@ -258,27 +258,27 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                         {
                             if (npc.life < npc.lifeMax / 2)
                             {
-                                int m = NPC.NewNPC((int)npc.position.X + 100, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
-                                Main.npc[m].Center = new Vector2(npc.Center.X + 100, npc.Center.Y);
+                                int m = NPC.NewNPC((int)npc.position.X + 130, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
+                                Main.npc[m].Center = new Vector2(npc.Center.X + 130, npc.Center.Y);
 
-                                int n = NPC.NewNPC((int)npc.position.X - 100, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
-                                Main.npc[n].Center = new Vector2(npc.Center.X - 100, npc.Center.Y);
+                                int n = NPC.NewNPC((int)npc.position.X - 130, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
+                                Main.npc[n].Center = new Vector2(npc.Center.X - 130, npc.Center.Y);
 
-                                int o = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 100, ModContent.NPCType<CurseCircle>());
-                                Main.npc[o].Center = new Vector2(npc.Center.X, npc.Center.Y + 100);
+                                int o = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 130, ModContent.NPCType<CurseCircle>());
+                                Main.npc[o].Center = new Vector2(npc.Center.X, npc.Center.Y + 130);
 
-                                int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 100, ModContent.NPCType<CurseCircle>());
-                                Main.npc[p].Center = new Vector2(npc.Center.X, npc.Center.Y - 100);
+                                int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 130, ModContent.NPCType<CurseCircle>());
+                                Main.npc[p].Center = new Vector2(npc.Center.X, npc.Center.Y - 130);
                             }
                             else
                             {
-                                int m = NPC.NewNPC((int)npc.position.X + 100, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
-                                Main.npc[m].Center = new Vector2(npc.Center.X + 100, npc.Center.Y - 30);
+                                int m = NPC.NewNPC((int)npc.position.X + 130, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
+                                Main.npc[m].Center = new Vector2(npc.Center.X + 130, npc.Center.Y - 60);
 
-                                int n = NPC.NewNPC((int)npc.position.X - 100, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
-                                Main.npc[n].Center = new Vector2(npc.Center.X - 100, npc.Center.Y - 30);
+                                int n = NPC.NewNPC((int)npc.position.X - 130, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
+                                Main.npc[n].Center = new Vector2(npc.Center.X - 130, npc.Center.Y - 60);
 
-                                int o = NPC.NewNPC((int)npc.position.X - 100, (int)npc.position.Y, ModContent.NPCType<CurseCircle>());
+                                int o = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 130, ModContent.NPCType<CurseCircle>());
                                 Main.npc[o].Center = new Vector2(npc.Center.X, npc.Center.Y + 130);
                             }
                         }

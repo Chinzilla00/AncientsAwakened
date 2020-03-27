@@ -50,9 +50,15 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             rotValue += 0.04f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
 
-            projectile.Center = BaseUtility.RotateVector(anubis.Center, anubis.Center + new Vector2(100, 0f), rotValue);
+            projectile.Center = BaseUtility.RotateVector(anubis.Center, anubis.Center + new Vector2(130, 0f), rotValue);
 
             projectile.rotation = 0;
+
+            for (int m = projectile.oldPos.Length - 1; m > 0; m--)
+            {
+                projectile.oldPos[m] = projectile.oldPos[m - 1];
+            }
+            projectile.oldPos[0] = projectile.position;
         }
 
 		public override bool PreDraw(SpriteBatch sb, Color dColor)
