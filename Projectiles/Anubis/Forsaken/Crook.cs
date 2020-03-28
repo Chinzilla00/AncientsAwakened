@@ -43,19 +43,23 @@ namespace AAMod.Projectiles.Anubis.Forsaken
             float num489 = player.Center.X - vector36.X;
             float num490 = player.Center.Y - vector36.Y;
             float num491 = (float)Math.Sqrt(num489 * num489 + num490 * num490);
-            if (num491 < 50f && projectile.position.X < player.position.X + player.width && projectile.position.X + projectile.width > player.position.X && projectile.position.Y < player.position.Y + player.height && projectile.position.Y + projectile.height > player.position.Y)
+
+            if (projectile.ai[0] == 1)
             {
-                if (projectile.owner == Main.myPlayer)
+                if (num491 < 50f && projectile.position.X < player.position.X + player.width && projectile.position.X + projectile.width > player.position.X && projectile.position.Y < player.position.Y + player.height && projectile.position.Y + projectile.height > player.position.Y)
                 {
-                    player.HealEffect(HealAmt, false);
-                    player.statLife += 1;
-                    if (player.statLife > player.statLifeMax2)
+                    if (projectile.owner == Main.myPlayer)
                     {
-                        player.statLife = player.statLifeMax2;
+                        player.HealEffect(HealAmt, false);
+                        player.statLife += 1;
+                        if (player.statLife > player.statLifeMax2)
+                        {
+                            player.statLife = player.statLifeMax2;
+                        }
+                        NetMessage.SendData(66, -1, -1, null, projectile.owner, 1, 0f, 0f, 0, 0, 0);
                     }
-                    NetMessage.SendData(66, -1, -1, null, projectile.owner, 1, 0f, 0f, 0, 0, 0);
+                    projectile.Kill();
                 }
-                projectile.Kill();
             }
 
             BaseAI.AIBoomerang(projectile, ref projectile.ai, player.position, player.width, player.height, true, 40, 45, 10, .6f, true);
