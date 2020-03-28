@@ -21,6 +21,8 @@ namespace AAMod
             }
         }
 
+        #region Tile Colors
+
         public static Color GetIncineriteColor(Color color, float min, float max, bool clamp) => GetTimedColor(AAPlayer.IncineriteColor, color, min, max, clamp);
         public static Color GetIncineriteColorDim(Color color) => GetIncineriteColor(color, 0.4f, 1f, false);
         public static Color GetIncineriteColorBright(Color color) => GetIncineriteColor(color, 0.6f, 1f, false);
@@ -100,6 +102,8 @@ namespace AAMod
         public static Color GetRainbowColorDim(Color color) => GetRainbowColor(color, 0.4f, 1f, false);
         public static Color GetRainbowColorBright(Color color) => GetRainbowColor(color, 0.6f, 1f, false);
         public static Color GetRainbowColorBrightInvert(Color color) => GetRainbowColor(color, 1f, 0.6f, true);
+
+        #endregion
 
         public override bool Drop(int i, int j, int type)
         {
