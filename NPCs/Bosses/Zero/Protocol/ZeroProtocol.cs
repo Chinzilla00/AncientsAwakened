@@ -221,10 +221,12 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         {
             if((npc.ai[0] == 4 && NPC.CountNPCS(mod.NPCType("ZeroEcho")) > 0 && !Counterattack) || isCharging)
             {
+                npc.chaseable = false;
                 npc.defense = 9999;
             }
             else
             {
+                npc.chaseable = true;
                 npc.defense = npc.defDefense;
             }
             
