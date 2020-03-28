@@ -221,11 +221,11 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
         {
             if((npc.ai[0] == 4 && NPC.CountNPCS(mod.NPCType("ZeroEcho")) > 0 && !Counterattack) || isCharging)
             {
-                npc.dontTakeDamage = true;
+                npc.defense = 9999;
             }
             else
             {
-                npc.dontTakeDamage = false;
+                npc.defense = npc.defDefense;
             }
             
             int Repeats;
