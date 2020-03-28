@@ -346,7 +346,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         if (npc.ai[2] == 280)
                         {
                             Teleport(3);
-                            npc.dontTakeDamage = true;
                             if (npc.life > npc.lifeMax / 2)
                             {
                                 if (Main.rand.Next(2) == 0)
@@ -409,7 +408,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         }
                         if (npc.ai[2] > 520)
                         {
-                            npc.dontTakeDamage = false;
                             npc.ai[0]++;
                             npc.ai[1] = 0;
                             npc.ai[2] = 0;
