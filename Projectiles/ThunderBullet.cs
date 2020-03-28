@@ -55,7 +55,12 @@ namespace AAMod.Projectiles
             Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
             projectile.localNPCImmunity[target.whoAmI] = -1;
             target.immune[projectile.owner] = 0;
-
+            target.AddBuff(mod.BuffType("Electrified"), 500);
+            if(target.life<=0)
+           {
+              Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("ThunderBoom"), projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);             
+            Main.PlaySound(new Terraria.Audio.LegacySoundStyle(2, 124, Terraria.Audio.SoundType.Sound));
+           }
             for (int k = 0; k < 200; k++)
             {
                 possibleTarget = Main.npc[k];
