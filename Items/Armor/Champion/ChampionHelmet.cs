@@ -46,7 +46,6 @@ The armor of a champion feared across the land");
             player.setBonus = @"";
         }
 
-
         public override void UpdateEquip(Player player)
         {
             player.meleeDamage *= 1.25f;

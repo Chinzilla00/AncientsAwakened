@@ -47,6 +47,19 @@ The armor of a champion feared across the land");
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = Language.GetTextValue("Mods.AAMod.Common.ChampionHeaddressBonus");
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
+            modPlayer.Baron = true;
+            if (player.whoAmI == Main.myPlayer)
+            {
+                if (player.FindBuffIndex(mod.BuffType("BaronBuff")) == -1)
+                {
+                    player.AddBuff(mod.BuffType("BaronBuff"), 3600, true);
+                }
+                if (player.ownedProjectileCounts[mod.ProjectileType("BaronBunny")] < 1)
+                {
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("BaronBunny"), 100, 0f, Main.myPlayer, 0f, 0f);
+                }
+            }
         }
 
 

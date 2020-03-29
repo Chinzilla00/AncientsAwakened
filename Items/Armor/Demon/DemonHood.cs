@@ -36,7 +36,6 @@ namespace AAMod.Items.Armor.Demon
 
         public override void UpdateArmorSet(Player player)
         {
-
             player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DemonHoodBonus");
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             modPlayer.impSet = true;

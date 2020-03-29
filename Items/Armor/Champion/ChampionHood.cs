@@ -43,12 +43,10 @@ The armor of a champion feared across the land");
 			return body.type == mod.ItemType("ChampionPlate") && legs.type == mod.ItemType("ChampionGreaves");
 		}
 
-
         public override void UpdateArmorSet(Player player)
         {
             player.setBonus = @"";
         }
-
 
         public override void UpdateEquip(Player player)
         {
