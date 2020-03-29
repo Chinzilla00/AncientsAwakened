@@ -68,6 +68,8 @@ Hold down and jump to hover for an extended period of time
 
         public override bool WingUpdate(Player player, bool inUse)
         {
+            int fspeed = 6;
+
             if (player.controlDown && player.controlJump && player.wingTime > 0f && !player.merman)
             {
                 player.velocity.Y *= 0.01f;
@@ -75,7 +77,7 @@ Hold down and jump to hover for an extended period of time
                 {
                     player.velocity.Y = 1E-05f;
                 }
-                player.wingFrameCounter++;
+                fspeed = 4;
             }
 
             if (inUse)
@@ -85,7 +87,7 @@ Hold down and jump to hover for an extended period of time
                     player.wingFrame = 2;
                 }
                 player.wingFrameCounter++;
-                if (player.wingFrameCounter > 6)
+                if (player.wingFrameCounter > fspeed)
                 {
                     player.wingFrame++;
                     player.wingFrameCounter = 0;
