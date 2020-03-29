@@ -66,7 +66,7 @@ Can only be used at night");
             {
                 NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.AAMod.Common.GripsofChaos")), new Color(175, 75, 255), -1);
             }
-            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosBlue"), true, 1, 0);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosBlue"), false, 1, 0);
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosRed"), false, -1, 0);
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
             return true;
