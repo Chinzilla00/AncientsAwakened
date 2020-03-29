@@ -48,7 +48,7 @@ The armor of a champion feared across the land");
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage *= 1.45f;
+            player.rangedDamage += .45f;
             player.rangedCrit += 44;
             player.allDamage += .1f;
             player.ammoCost75 = true;
