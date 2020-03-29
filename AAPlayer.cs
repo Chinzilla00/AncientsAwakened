@@ -171,7 +171,6 @@ namespace AAMod
         public bool perfectChaosSu;
         public bool Assassin;
         public bool AbyssalStealth;
-        //public bool AssassinStealth;
         public bool Witch;
         public bool Tied;
         public bool TiedHead;
@@ -182,6 +181,8 @@ namespace AAMod
         public bool ChaosMa = false;
         public bool ChaosSu = false;
         public bool Olympian = false;
+        public bool ChampionMe = false;
+        public bool StoneSoldier = false;
 
         public bool onoPrevious;
         public bool ono;
@@ -349,6 +350,7 @@ namespace AAMod
         #endregion
 
         #region Reset Effects
+
         public override void ResetEffects()
         {
             ResetMinionEffect();
@@ -460,7 +462,6 @@ namespace AAMod
             DarkmatterSet = false;
             perfectChaos = false;
             Assassin = false;
-            //AssassinStealth = false;
             AbyssalStealth = false;
             AsheFlame = false;
             Witch = false;
@@ -480,6 +481,8 @@ namespace AAMod
             StripeManOre = false;
             StripeManSpawn = false;
             StripeManSet = false;
+            ChampionMe = false;
+            StoneSoldier = false;
         }
 
         private void ResetAccessoryEffect()
@@ -746,6 +749,14 @@ namespace AAMod
             {
                 player.AddBuff(BuffID.RapidHealing, 300);
             }
+
+            if (StoneSoldier)
+            {
+                if (target.life <= 0 && Main.rand.Next(80) == 0)
+                {
+                    Projectile.NewProjectile(target.Center, Vector2.Zero, ProjectileID.CoinPortal, 0, 0, Main.myPlayer);
+                }
+            }
         }
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
@@ -754,7 +765,17 @@ namespace AAMod
             {
                 player.AddBuff(BuffID.RapidHealing, 300);
             }
-			if (target.HasBuff(mod.BuffType("Forsaken")) && proj.type == mod.ProjectileType("EnchancedMummyArrow"))
+
+            if (StoneSoldier)
+            {
+                target.AddBuff(BuffID.Midas, 600);
+                if (target.life <= 0 && Main.rand.Next(80) == 0)
+                {
+                    Projectile.NewProjectile(target.Center, Vector2.Zero, ProjectileID.CoinPortal, 0, 0, Main.myPlayer);
+                }
+            }
+
+            if (target.HasBuff(mod.BuffType("Forsaken")) && proj.type == mod.ProjectileType("EnchancedMummyArrow"))
             {
 				float num1 = 9f;
 				Vector2 vector2 = new Vector2(player.position.X + player.width * 0.5f, player.position.Y + player.height * 0.5f);
@@ -985,6 +1006,10 @@ namespace AAMod
             if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")))
             {
                 target.AddBuff(mod.BuffType("Hydratoxin"), 900);
+            }
+            if (StoneSoldier)
+            {
+                target.AddBuff(BuffID.Midas, 600);
             }
         }
 
@@ -1471,6 +1496,26 @@ namespace AAMod
             if (ZoneVoid)
             {
                 player.gravity = Player.defaultGravity + .1f;
+            }
+
+            if (ChampionMe && AAMod.ArmorAbilityKey.JustPressed && !player.HasBuff(ModContent.BuffType<Items.Armor.Champion.RageCool>()))
+            {
+                int BuffLength = 240;
+                if (player.statLife < (int)(player.statLifeMax2 * .75f))
+                {
+                    BuffLength = 360;
+                }
+                if (player.statLife < (int)(player.statLifeMax2 * .5f))
+                {
+                    BuffLength = 480;
+                }
+                if (player.statLife < (int)(player.statLifeMax2 * .25f))
+                {
+                    BuffLength = 600;
+                }
+                player.AddBuff(ModContent.BuffType<Items.Armor.Champion.RageBuff>(), BuffLength);
+                int RageCooldown = BuffLength * 4;
+                player.AddBuff(ModContent.BuffType<Items.Armor.Champion.RageCool>(), RageCooldown);
             }
         }
 

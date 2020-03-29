@@ -11,22 +11,16 @@ namespace AAMod.Items.Armor.Olympian
 		{
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Olympian Helmet");
-            Tooltip.SetDefault(@"Decreases mana usage by 25%");
-        }
+		}
 
 		public override void SetDefaults()
 		{
 			item.width = 22;
 			item.height = 24;
             item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 7;
-            item.defense = 16;
+			item.rare = 6;
+            item.defense = 8;
         }
-		
-		public override void UpdateEquip(Player player)
-		{
-			player.manaCost -= 0.25f;
-		}
 		
 		
 		public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -36,7 +30,13 @@ namespace AAMod.Items.Armor.Olympian
 
         public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"NYI set bonus";
+			player.setBonus = @"'They will fear your precision, yet you will fear the slightest gust'
+60% increased critical strike chance";
+
+			player.meleeCrit += 60;
+			player.rangedCrit += 60;
+			player.magicCrit += 60;
+			player.thrownCrit += 60;
         }
 		
 		public override void AddRecipes()

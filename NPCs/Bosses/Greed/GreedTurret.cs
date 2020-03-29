@@ -1,4 +1,6 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
 using Terraria.Audio;
@@ -12,7 +14,7 @@ namespace AAMod.NPCs.Bosses.Greed
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Singularity of Desire");
-            Main.npcFrameCount[npc.type] = 1;
+            Main.npcFrameCount[npc.type] = 4;
         }
 
         public override void SetDefaults()
@@ -36,6 +38,17 @@ namespace AAMod.NPCs.Bosses.Greed
                 npc.TargetClosest(true);
             }
             int damage = 34;
+
+
+            if (npc.alpha < 0)
+            {
+                npc.alpha = 0;
+            }
+            else
+            {
+                npc.alpha -= 3;
+            }
+
             Vector2 npcCenter = new Vector2(npc.Center.X, npc.Center.Y);
 
             if (npc.ai[0] == 0)
@@ -87,7 +100,25 @@ namespace AAMod.NPCs.Bosses.Greed
                     npc.ai[1] = 0;
                 }
             }
+        }
 
+        public override void FindFrame(int frameHeight)
+        {
+            if (++npc.frameCounter >= 4)
+            {
+                npc.frameCounter = 0;
+                if (++npc.frame.Y >= frameHeight * 3)
+                {
+                    npc.frame.Y = 0;
+                }
+            }
+        }
+
+        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
+        {
+            Rectangle SunFrame = new Rectangle(0, 0, 70, 70);
+            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("NPCs/Bosses/Greed/GreedSpawn"), 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, 0, npc.spriteDirection, 4, SunFrame, npc.GetAlpha(AAColor.COLOR_WHITEFADE1), true);
+            return false;
         }
     }
 }

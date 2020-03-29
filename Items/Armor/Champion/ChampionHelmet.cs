@@ -43,7 +43,14 @@ The armor of a champion feared across the land");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"";
+            player.setBonus = @"`You are the wall that protects the innocent`
+Pressing the armor ability hotkey gives you the 'Defender's Rage' Buff.
+While enraged, you gain more defense as your life gets lower.
+'Defender's Rage' Lasts longer the less health you have
+'Defender's Rage' has a longer cooldown the less health you have
+During Cooldown, your defense is slightly lowered, but your speed is increased";
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
+            modPlayer.ChampionMe = true;
         }
 
         public override void UpdateEquip(Player player)

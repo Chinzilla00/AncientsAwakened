@@ -13,6 +13,7 @@ namespace AAMod.NPCs.Bosses.Greed
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Spark of Greed");
+            Main.npcFrameCount[npc.type] = 4;
         }
 
         public override void SetDefaults()
@@ -43,11 +44,6 @@ namespace AAMod.NPCs.Bosses.Greed
 
             if (Main.netMode != 2) //clientside stuff
             {
-                npc.frameCounter++;
-
-                npc.rotation += .1f;
-                Rotation += .05f;
-
                 if (npc.ai[0] > 175)
                 {
                     npc.alpha -= 3;
@@ -141,15 +137,22 @@ namespace AAMod.NPCs.Bosses.Greed
             return true;
         }
 
-        public float Rotation = 0;
+        public override void FindFrame(int frameHeight)
+        {
+            if (++npc.frameCounter >= 4)
+            {
+                npc.frameCounter = 0;
+                if (++npc.frame.Y >= frameHeight * 3)
+                {
+                    npc.frame.Y = 0;
+                }
+            }
+        }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Rectangle SunFrame = new Rectangle(0, 0, 60, 60);
-            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("NPCs/Bosses/Greed/GreedSpawn2"), 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, -npc.rotation, npc.spriteDirection, 1, SunFrame, npc.GetAlpha(AAColor.COLOR_WHITEFADE1), true);
-            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("NPCs/Bosses/Greed/GreedSpawn1"), 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 1, SunFrame, npc.GetAlpha(AAColor.COLOR_WHITEFADE1), true);
-            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("NPCs/Bosses/Greed/GreedSpawn"), 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, Rotation, npc.spriteDirection, 1, SunFrame, npc.GetAlpha(AAColor.COLOR_WHITEFADE1), true);
-
+            Rectangle SunFrame = new Rectangle(0, 0, 70, 70);
+            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("NPCs/Bosses/Greed/GreedSpawn"), 0, npc.position + new Vector2(0, npc.gfxOffY), npc.width, npc.height, npc.scale, 0, npc.spriteDirection, 4, SunFrame, npc.GetAlpha(AAColor.COLOR_WHITEFADE1), true);
             return false;
         }
     }

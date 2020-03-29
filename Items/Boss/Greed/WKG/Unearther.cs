@@ -6,6 +6,12 @@ namespace AAMod.Items.Boss.Greed.WKG
 {
     public class Unearther : BaseAAItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("MINE-er");
+            Tooltip.SetDefault("Mines ores even faster");
+        }
+
         public override void SetDefaults()
         {
             item.damage = 10;
