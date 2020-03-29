@@ -3543,9 +3543,24 @@ namespace AAMod
 
         public override void UpdateVanityAccessories()
         {
-            for (int n = 13; n < 18 + player.extraAccessorySlots; n++)
+            for (int n = 10; n < 18 + player.extraAccessorySlots; n++)
             {
                 Item item = player.armor[n];
+                if (item.type == mod.ItemType("StripeManShirt"))
+                {
+                    player.accWatch = 3;
+                    player.accDepthMeter = 1;
+                    player.accCompass = 1;
+                    player.accFishFinder = true;
+                    player.accWeatherRadio = true;
+                    player.accCalendar = true;
+                    player.accThirdEye = true;
+                    player.accJarOfSouls = true;
+                    player.accCritterGuide = true;
+                    player.accStopwatch = true;
+                    player.accOreFinder = true;
+                    player.accDreamCatcher = true;
+                }
                 if (item.type == ModContent.ItemType<Items.Vanity.Ohno.ono>())
                 {
                     onoHideVanity = false;
