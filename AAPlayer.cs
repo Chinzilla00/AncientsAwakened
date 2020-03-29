@@ -3551,6 +3551,16 @@ namespace AAMod
                     onoHideVanity = false;
                     onoForceVanity = true;
                 }
+                if (item.type == mod.ItemType("Equinox"))
+                {
+                    player.hideWolf = false;
+                    player.forceWerewolf = true;
+                    if ((player.wet && !player.lavaWet && (!player.mount.Active || player.mount.Type != 3)) || !player.forceWerewolf)
+                    {
+                        player.hideMerman = false;
+                        player.forceMerman = true;
+                    }
+                }
             }
         }
     }

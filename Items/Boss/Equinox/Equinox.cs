@@ -12,7 +12,8 @@ namespace AAMod.Items.Boss.Equinox
         {
             DisplayName.SetDefault("Equinox");
             Tooltip.SetDefault(
-@"Gives immensely increased stats
+@"Turns the holder into a werewolf at night and a merfolk when entering water
+Gives immensely increased stats
 'True balance'");
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }
@@ -62,10 +63,18 @@ namespace AAMod.Items.Boss.Equinox
             player.thrownCrit += 5;
             player.nightVision = true;
             player.GetModPlayer<AAPlayer>().RStar = true;
+            player.accMerman = true;
+            player.wolfAcc = true;
+            if (hideVisual)
+            {
+                player.hideMerman = true;
+                player.hideWolf = true;
+            }
         }
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.CelestialShell, 1);
             recipe.AddIngredient(null, "RadiantStar", 1);
             recipe.AddIngredient(null, "DarkVoid", 1);
             recipe.AddIngredient(null, "Stardust", 20);
