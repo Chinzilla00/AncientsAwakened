@@ -27,6 +27,8 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.value = 2000f;
             animationType = NPCID.PigronCorruption;
             npc.buffImmune[31] = false;
+            banner = npc.type;
+			bannerItem = mod.ItemType("MiregronBanner");
         }
 
 

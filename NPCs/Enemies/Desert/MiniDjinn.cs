@@ -28,6 +28,8 @@ namespace AAMod.NPCs.Enemies.Desert
             npc.knockBackResist = 0.4f;
             npc.noTileCollide = true;
             npc.noGravity = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("MiniDjinnBanner");
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

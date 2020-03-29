@@ -29,6 +29,8 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             aiType = NPCID.Crawdad;
+            banner = npc.type;
+			bannerItem = mod.ItemType("NewtBanner");
         }
         
         private bool tongueAttack;

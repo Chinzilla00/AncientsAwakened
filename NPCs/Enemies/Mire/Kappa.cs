@@ -27,6 +27,8 @@ namespace AAMod.NPCs.Enemies.Mire
 			npc.value = 450f;
 			npc.aiStyle = 0;
 			animationType = NPCID.CreatureFromTheDeep;
+            banner = npc.type;
+			bannerItem = mod.ItemType("KappaBanner");
 		}
 
         public override void NPCLoot()

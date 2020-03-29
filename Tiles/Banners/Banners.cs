@@ -137,23 +137,47 @@ namespace AAMod.Tiles.Banners
 			{
 				switch (style)
 				{
-					case 3: dropName = "Djinn"; break;		
-					case 6: dropName = "Pigron"; break;		
-					case 7: dropName = "Flame Brute"; break;	
+					case 1: dropName = "Scout"; break;
+					//case 2: dropName = "Feral Monster"; break;
+					case 3: dropName = "Mini Djinn"; break;	
+					case 4: dropName = "Blaze Phoenix"; break;			
+					case 5: dropName = "Chaotic Dawn"; break;
+					case 6: dropName = "Dragron"; break;		
+					case 7: dropName = "Flame brute"; break;	
 					case 8: dropName = "Flamespitter"; break;	
 					case 9: dropName = "Infernal Slime"; break;
-					case 10: dropName = "Singemander"; break;
-					case 14: dropName = "Magmalgam"; break;					
-					case 17: dropName = "Pigron"; break;				
-					case 18: dropName = "Murky Slime"; break;			
+					case 10: dropName = "Inferno Salamander"; break;
+					case 11: dropName = "Wyrm"; break;
+					case 12: dropName = "Wyrmling"; break;		
+					//case 13: dropName = "Wyvern"; break;	
+					case 14: dropName = "Magmalgam"; break;	
+					case 15: dropName = "Chaotic Twilight"; break;
+					case 16: dropName = "Kappa"; break;		
+					case 17: dropName = "Miregron"; break;	
+					case 18: dropName = "Mire Slime"; break;					
+					case 19: dropName = "Mosster"; break;
+					case 20: dropName = "Newt"; break;	
 					case 21: dropName = "Abyss Claw"; break;
-					case 22: dropName = "Blaze Claw"; break;	
-					case 28: dropName = "Madness Flier"; break;					
-					case 30: dropName = "Trench Diver"; break;	
-					case 31: dropName = "Trench Shark"; break;
-					case 32: dropName = "Trench Squid"; break;						
-					case 33: dropName = "Snow Serpent"; break;	
-					case 34: dropName = "Terra Knight"; break;		
+					case 22: dropName = "Blaze Claw"; break;		
+					case 23: dropName = "Chaos Dragon"; break;	
+					//case 24: dropName = "Cyber Claw"; break;	
+					case 25: dropName = "Dragon Claw"; break;
+					case 26: dropName = "Elder Dragon"; break;		
+					case 27: dropName = "Hydra Claw"; break;	
+					case 28: dropName = "Madness Bat"; break;					
+					case 29: dropName = "Madness Slime"; break;
+					//case 30: dropName = "Dimension Diver"; break;	
+					//case 31: dropName = "Rift Shark"; break;
+					//case 32: dropName = "Squid"; break;		
+					case 33: dropName = "SnakeHead"; break;	
+					case 34: dropName = "Bladon"; break;	
+					case 35: dropName = "Terra Deadshot"; break;
+					case 36: dropName = "Terra Warlock"; break;		
+					case 37: dropName = "Terra Wizard"; break;	
+					case 38: dropName = "Null"; break;					
+					case 39: dropName = "Searcher"; break;
+					case 40: dropName = "Toxitoad"; break;
+					case 41: dropName = "SagittariusMini"; break;
 				}				
 			}
 			if(!string.IsNullOrEmpty(dropName) && !spaces) dropName = dropName.Replace(" ", null);
@@ -173,15 +197,11 @@ namespace AAMod.Tiles.Banners
         {
             if (closer)
             {
-				string name = GetBannerName(Main.tile[x, y].frameX);
+				string name = GetBannerName(Main.tile[x, y].frameX, true);
 				if(name == null) return;
 
                 Player player = Main.LocalPlayer;	
-				if(name.Contains("Snake")) //worms need to be specific
-				{
-					player.NPCBannerBuff[mod.NPCType(name + "Head")] = true;
-				}else				
-					player.NPCBannerBuff[mod.NPCType(name)] = true;
+				player.NPCBannerBuff[mod.NPCType(name)] = true;
                 player.hasBanner = true;
             }
         }

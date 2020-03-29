@@ -45,6 +45,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.4f;
+            banner = npc.type;
+			bannerItem = mod.ItemType("TerraWarlockBanner");
 
         }
       

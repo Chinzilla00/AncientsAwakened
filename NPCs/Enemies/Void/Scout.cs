@@ -30,6 +30,8 @@ namespace AAMod.NPCs.Enemies.Void
             npc.knockBackResist = 0.3f;
 			npc.noGravity = true;
 			npc.noTileCollide = true;
+			banner = npc.type;
+			bannerItem = mod.ItemType("VoidScoutBanner");
 		}
 
 		public override void HitEffect(int hitDirection, double damage)

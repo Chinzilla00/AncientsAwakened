@@ -26,6 +26,8 @@ namespace AAMod.NPCs.Enemies.Other
             npc.knockBackResist = 0.5f;
             npc.aiStyle = -1;
             npc.noGravity = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("AbyssClawBanner");
         }
 
         public override void AI()

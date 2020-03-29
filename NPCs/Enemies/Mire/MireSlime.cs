@@ -29,6 +29,8 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.lavaImmune = true;
             npc.knockBackResist = 0.5f;
             animationType = 81;
+			banner = npc.type;
+			bannerItem = mod.ItemType("MireSlimeBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)

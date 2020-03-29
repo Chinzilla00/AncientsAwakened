@@ -29,6 +29,8 @@ namespace AAMod.NPCs.Enemies.Mire.Toxitoad
             npc.aiStyle = 3;
             aiType = NPCID.GoblinScout;
             npc.rarity = 2;
+            banner = npc.type;
+			bannerItem = mod.ItemType("ToxitoadBanner");
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

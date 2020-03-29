@@ -28,6 +28,8 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.aiStyle = -1;
             npc.noTileCollide = true;
             npc.noGravity = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("ChaoticTwilightBanner");
         }
 
         public override void AI()

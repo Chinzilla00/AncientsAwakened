@@ -31,6 +31,8 @@ namespace AAMod.NPCs.Enemies.Snow
             npc.netAlways = true;
             npc.value = Item.sellPrice(0, 0, 10, 0);
             npc.buffImmune[BuffID.Frostburn] = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("SnakeBanner");
         }
 
         public override float SpawnChance(NPCSpawnInfo spawnInfo)

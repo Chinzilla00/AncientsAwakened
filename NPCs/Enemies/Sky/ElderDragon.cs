@@ -28,6 +28,8 @@ namespace AAMod.NPCs.Enemies.Sky
             npc.npcSlots = 0f;
             npc.lavaImmune = true;
             npc.netAlways = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("ElderDragonBanner");
         }
 
         public override void AI()

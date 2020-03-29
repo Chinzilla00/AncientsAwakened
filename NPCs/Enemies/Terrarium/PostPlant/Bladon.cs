@@ -26,6 +26,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.4f;
             animationType = NPCID.SolarSolenian;
+            banner = npc.type;
+			bannerItem = mod.ItemType("BladonBanner");
         }
         public override void AI()
         {

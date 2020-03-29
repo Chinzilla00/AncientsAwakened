@@ -31,6 +31,8 @@ namespace AAMod.NPCs.Enemies.Void
             npc.DeathSound = new LegacySoundStyle(4, 14, Terraria.Audio.SoundType.Sound);
             npc.knockBackResist = 0.5f;
             npc.noGravity = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("SearcherBanner");
 
         }
 

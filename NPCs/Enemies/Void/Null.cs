@@ -31,6 +31,8 @@ namespace AAMod.NPCs.Enemies.Void
             npc.value = 7000f;
             npc.knockBackResist = 0.7f;
             npc.noGravity = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("NullBanner");
         }
 
 		public int frameCount = 0;
