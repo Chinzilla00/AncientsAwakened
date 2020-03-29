@@ -27,6 +27,8 @@ namespace AAMod.NPCs.Enemies.Other
             npc.aiStyle = -1;
             npc.noGravity = true;
             npc.lavaImmune = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("BlazeClawBanner");
         }
 
         public override void AI()

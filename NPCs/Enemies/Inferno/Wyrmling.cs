@@ -41,6 +41,8 @@ namespace AAMod.NPCs.Bosses.Wyrmling
             npc.buffImmune[BuffID.OnFire] = true;
             npc.alpha = 255;
             npc.lavaImmune = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("WyrmlingBanner");
         }
         public override bool PreAI()
         {
@@ -285,6 +287,8 @@ namespace AAMod.NPCs.Bosses.Wyrmling
             base.SetDefaults();
             npc.dontCountMe = true;
             npc.alpha = 255;
+            banner = mod.NPCType("Wyrmling");
+			bannerItem = mod.ItemType("WyrmBanner");
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -390,6 +394,8 @@ namespace AAMod.NPCs.Bosses.Wyrmling
             npc.dontCountMe = true;
 
             npc.alpha = 255;
+            banner = mod.NPCType("Wyrmling");
+			bannerItem = mod.ItemType("WyrmBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -495,6 +501,8 @@ namespace AAMod.NPCs.Bosses.Wyrmling
             npc.dontCountMe = true;
 
             npc.alpha = 255;
+            banner = mod.NPCType("Wyrmling");
+			bannerItem = mod.ItemType("WyrmBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)

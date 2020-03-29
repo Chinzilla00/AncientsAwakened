@@ -28,6 +28,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.aiStyle = -1;
             npc.lavaImmune = true;
             npc.buffImmune[BuffID.OnFire] = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("MagmalgamBanner");
         }
 
         public override void AI()

@@ -28,6 +28,8 @@ namespace AAMod.NPCs.Enemies.Other
             npc.knockBackResist = 0.6f;
             npc.aiStyle = -1;
             npc.noGravity = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("HydraClawBanner");
         }
 
         public override void AI()

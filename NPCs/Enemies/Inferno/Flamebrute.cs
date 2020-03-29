@@ -28,6 +28,8 @@ namespace AAMod.NPCs.Enemies.Inferno
 			npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;		
             npc.lavaImmune = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("FlamebruteBanner");
         }
 
 		const int frameHeightPlusFluff = 78; //the 2 pixels per frame

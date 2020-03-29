@@ -32,6 +32,8 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.width = 72;
             npc.height = 78;
             npc.lavaImmune = false;
+            banner = npc.type;
+			bannerItem = mod.ItemType("MossterBanner");
 
         }
 

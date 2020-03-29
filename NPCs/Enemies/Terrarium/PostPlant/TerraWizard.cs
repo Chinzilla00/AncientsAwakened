@@ -26,6 +26,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.4f;
             npc.noGravity = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("TerraWizardBanner");
         }
 
         public float[] shootAI = new float[4];

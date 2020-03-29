@@ -42,6 +42,8 @@ namespace AAMod.NPCs.Bosses.Wyrm
             npc.buffImmune[BuffID.OnFire] = true;
             npc.alpha = 255;
             npc.lavaImmune = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("WyrmBanner");
         }
         public override bool PreAI()
         {
@@ -303,6 +305,8 @@ namespace AAMod.NPCs.Bosses.Wyrm
             base.SetDefaults();
             npc.dontCountMe = true;
             npc.alpha = 255;
+            banner = mod.NPCType("Wyrm");
+			bannerItem = mod.ItemType("WyrmBanner");
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -426,6 +430,8 @@ namespace AAMod.NPCs.Bosses.Wyrm
             npc.dontCountMe = true;
 
             npc.alpha = 255;
+            banner = mod.NPCType("Wyrm");
+			bannerItem = mod.ItemType("WyrmBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -548,6 +554,8 @@ namespace AAMod.NPCs.Bosses.Wyrm
             base.SetDefaults();
             npc.dontCountMe = true;
             npc.alpha = 255;
+            banner = mod.NPCType("Wyrm");
+			bannerItem = mod.ItemType("WyrmBanner");
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -671,6 +679,8 @@ namespace AAMod.NPCs.Bosses.Wyrm
             npc.dontCountMe = true;
 
             npc.alpha = 255;
+            banner = mod.NPCType("Wyrm");
+			bannerItem = mod.ItemType("WyrmBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)

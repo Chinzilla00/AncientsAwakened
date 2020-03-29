@@ -28,6 +28,8 @@ namespace AAMod.NPCs.Enemies.Other
             npc.alpha = 255;
             npc.noTileCollide = true;
             npc.noGravity = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("ChaosDragonBanner");
         }
 
         public override void AI()
