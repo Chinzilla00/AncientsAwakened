@@ -180,7 +180,7 @@ namespace AAMod.Tiles.Banners
 					case 41: dropName = "SagittariusMini"; break;
 				}				
 			}
-			if(!string.IsNullOrEmpty(dropName) && !spaces) dropName = dropName.Replace(" ", null);
+			if(!string.IsNullOrEmpty(dropName)) dropName = dropName.Replace(" ", null);
 			return dropName;
         }
 

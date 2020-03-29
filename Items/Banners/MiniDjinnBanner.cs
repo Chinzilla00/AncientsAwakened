@@ -3,6 +3,10 @@ namespace AAMod.Items.Banners
 {
 	public class MiniDjinnBanner : BaseAAItem
 	{
+		public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Djinn Banner");
+        }
 		// The tooltip for this item is automatically assigned from .lang files
 		public override void SetDefaults() {
 			item.width = 10;
@@ -17,7 +21,7 @@ namespace AAMod.Items.Banners
 			item.rare = 1;
 			item.value = 1000;
 			item.createTile = mod.TileType("Banners");
-			item.placeStyle = 1;        //Place style means which frame(Horizontally, starting from 0) of the tile should be placed
+			item.placeStyle = 3;        //Place style means which frame(Horizontally, starting from 0) of the tile should be placed
 		}
 	}
 }

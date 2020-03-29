@@ -3,7 +3,12 @@ namespace AAMod.Items.Banners
 {
 	public class VoidScoutBanner : BaseAAItem
 	{
+		
 		// The tooltip for this item is automatically assigned from .lang files
+		public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Scout Banner");
+        }
 		public override void SetDefaults() {
 			item.width = 10;
 			item.height = 24;
