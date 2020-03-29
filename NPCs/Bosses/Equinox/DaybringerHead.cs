@@ -242,7 +242,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                 }
                 if(preDeathRay)
                 {
-                    npc.defense = 400;
+                    npc.defense = 9999;
                     if((npc.Center - target.Center).Length() < 400f)
                     {
                         isDeathRay = true;
@@ -256,34 +256,22 @@ namespace AAMod.NPCs.Bosses.Equinox
             {
                 if(preShootingSun)
                 {
-                    npc.defense = 400;
+                    npc.defense = 9999;
                     npc.TargetClosest(false);
                     goto ExtraAI;
                 }
             }
-            if (npc.type != mod.NPCType("NightcrawlerHead") && nightcrawler && preDeathRay)
+
+            if(!isHead)
             {
-                npc.defense = 400;
-                if(internalAI[2]++ > 600)
-                {
-                    internalAI[2] = 0;
-                    preDeathRay = false;
-                }
-            }
-            if (npc.type != mod.NPCType("DaybringerHead") && !nightcrawler && preShootingSun)
-            {
-                npc.defense = 400;
-                if(internalAI[3]++ > 600)
-                {
-                    internalAI[3] = 0;
-                    preShootingSun = false;
-                }
+                npc.defense = Main.npc[npc.realLife].defense;
             }
             goto Normal;
 
             ExtraAI:
             if(npc.type == mod.NPCType("NightcrawlerHead"))
             {
+                npc.defense = 9999;
                 npc.TargetClosest(false);
                 npc.velocity = new Vector2(internalAI[5], internalAI[6]);
                 Vector2 newvelocity = npc.velocity + Vector2.Normalize(npc.velocity.RotatedBy((float)Math.PI/2)) * 0.039f;
@@ -328,11 +316,13 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
             if(npc.type == mod.NPCType("DaybringerHead"))
             {
+                npc.defense = 9999;
                 npc.TargetClosest(false);
                 npc.velocity = new Vector2(internalAI[5], internalAI[6]);
                 Vector2 targetpos = target.Center - new Vector2(0, 2000f);
                 Vector2 targetpos2 = target.Center - new Vector2(1000f, 1000f);
                 Vector2 targetpos3 = target.Center - new Vector2(-1000f, 1000f);
+
                 if(internalAI[4] == 0)
                 {
                     if(Math.Abs(npc.Center.X - targetpos.X) + Math.Abs(npc.Center.Y - targetpos.Y) < 100f)
@@ -372,6 +362,11 @@ namespace AAMod.NPCs.Bosses.Equinox
                         }
                     }
                 }
+                if (internalAI[3] % 100 == 60)
+                {
+                    Vector2 speed = Vector2.Normalize(npc.velocity) * 8f;
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, speed.X, speed.Y, mod.ProjectileType("DaybringerSun"), npc.damage / 4, 1, 255);
+                }
                 if (npc.Center.X < targetpos.X)
                 {
                     npc.velocity.X += 0.5f;
@@ -397,8 +392,8 @@ namespace AAMod.NPCs.Bosses.Equinox
                         npc.velocity.Y -= 0.5f * 2;
                 }
 
-                if(npc.velocity.X > 20f) npc.velocity.X = 20f;
-                if(npc.velocity.Y > 20f) npc.velocity.Y = 20f;
+                if(npc.velocity.X > 30f) npc.velocity.X = 30f;
+                if(npc.velocity.Y > 30f) npc.velocity.Y = 30f;
 
                 npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
 
