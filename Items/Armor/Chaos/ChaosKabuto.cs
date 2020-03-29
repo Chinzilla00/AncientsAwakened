@@ -26,7 +26,7 @@ namespace AAMod.Items.Armor.Chaos
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage *= 1.25f;
+            player.meleeDamage += .25f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)

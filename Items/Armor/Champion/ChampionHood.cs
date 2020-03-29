@@ -50,7 +50,7 @@ The armor of a champion feared across the land");
 
         public override void UpdateEquip(Player player)
         {
-            player.magicDamage *= 1.22f;
+            player.magicDamage += .22f;
             player.allDamage += .1f;
             player.magicCrit += 25;
             player.manaCost *= .75f;

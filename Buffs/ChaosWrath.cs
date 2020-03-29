@@ -43,19 +43,19 @@ namespace AAMod.Buffs
             {
                 if (player.statLife <= player.statLifeMax2 * .2f)
                 {
-                    player.minionDamage *= 1.60f;
+                    player.minionDamage += .60f;
                 }
                 else if (player.statLife <= player.statLifeMax2 * .4f)
                 {
-                    player.minionDamage *= 1.45f;
+                    player.minionDamage += .45f;
                 }
                 else if (player.statLife <= player.statLifeMax2 * .6f)
                 {
-                    player.minionDamage *= 1.3f;
+                    player.minionDamage += .3f;
                 }
                 else if (player.statLife <= player.statLifeMax2 * .8f)
                 {
-                    player.minionDamage *= 1.15f;
+                    player.minionDamage += .15f;
                 }
             }
             else if (modPlayer.perfectChaosMe)
@@ -86,22 +86,22 @@ namespace AAMod.Buffs
                 if (player.statLife <= player.statLifeMax2 * .2f)
                 {
                     player.manaCost *= 0;
-                    player.magicDamage *= 1.4f;
+                    player.magicDamage += .4f;
                 }
                 else if (player.statLife <= player.statLifeMax2 * .4f)
                 {
                     player.manaCost *= .25f;
-                    player.magicDamage *= 1.3f;
+                    player.magicDamage += .3f;
                 }
                 else if (player.statLife <= player.statLifeMax2 * .6f)
                 {
                     player.manaCost *= .5f;
-                    player.magicDamage *= 1.2f;
+                    player.magicDamage += .2f;
                 }
                 else if (player.statLife <= player.statLifeMax2 * .8f)
                 {
                     player.manaCost *= .75f;
-                    player.magicDamage *= 1.1f;
+                    player.magicDamage += .1f;
                 }
             }
             else

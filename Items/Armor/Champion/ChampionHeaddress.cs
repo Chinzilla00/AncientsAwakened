@@ -65,7 +65,7 @@ The armor of a champion feared across the land");
 
         public override void UpdateEquip(Player player)
         {
-            player.minionDamage *= 1.6f;
+            player.minionDamage += .6f;
             player.allDamage += .1f;
             player.maxMinions += 7;
             player.maxTurrets += 2;

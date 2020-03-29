@@ -80,7 +80,7 @@ Immunity to fall damage");
             Player.jumpHeight = 10;
             player.jumpSpeedBoost += 3.6f;
             player.noFallDmg = true;
-            player.moveSpeed *= 1.4f;
+            player.moveSpeed += .4f;
 
             if (modPlayer.MeleeHighest(player))
             {

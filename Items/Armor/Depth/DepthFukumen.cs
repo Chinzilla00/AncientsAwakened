@@ -28,8 +28,8 @@ Weightless as shadow itself");
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage *= 1.08f;
-            player.moveSpeed *= 1.25f;
+            player.rangedDamage += .08f;
+            player.moveSpeed += .25f;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
