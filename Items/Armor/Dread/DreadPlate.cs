@@ -40,8 +40,8 @@ The abyssal wrath of the Mire rests in this armor");
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage *= 1.35f;
-            player.moveSpeed *= 1.2f;
+            player.rangedDamage += .35f;
+            player.moveSpeed += .2f;
             player.GetModPlayer<AAPlayer>().MaxMovespeedboost += .2f;
             player.statLifeMax2 += 50;
         }

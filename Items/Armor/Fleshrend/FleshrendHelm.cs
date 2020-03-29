@@ -27,7 +27,7 @@ namespace AAMod.Items.Armor.Fleshrend
 		
 		public override void UpdateEquip(Player player)
 		{
-            player.meleeDamage *= 1.07f;
+            player.meleeDamage += .07f;
 		}
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)

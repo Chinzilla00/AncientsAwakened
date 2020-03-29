@@ -25,7 +25,7 @@ namespace AAMod.Items.Armor.Radium
 
 		public override void UpdateEquip(Player player)
 		{
-			player.allDamage *= 1.25f;
+			player.allDamage += .25f;
             Lighting.AddLight(player.Center, 1.0f, 1.0f, 1.0f);
         }
 

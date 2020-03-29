@@ -26,7 +26,7 @@ Weightless as shadow itself");
 
         public override void UpdateEquip(Player player)
         {
-            player.moveSpeed *= 1.40f;
+            player.moveSpeed += .40f;
         }
 
         public override void AddRecipes()

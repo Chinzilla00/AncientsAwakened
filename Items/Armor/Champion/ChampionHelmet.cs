@@ -49,10 +49,10 @@ The armor of a champion feared across the land");
 
         public override void UpdateEquip(Player player)
         {
-            player.meleeDamage *= 1.25f;
+            player.meleeDamage += .25f;
             player.meleeCrit += 35;
             player.allDamage += .1f;
-            player.meleeSpeed *= 1.15f;
+            player.meleeSpeed += .15f;
         }
 
         public override void AddRecipes()

@@ -28,7 +28,7 @@ namespace AAMod.Items.Armor.Paints
 		
 		public override void UpdateEquip(Player player)
 		{
-            player.minionDamage *= 1.32f;
+            player.minionDamage += .32f;
             player.statManaMax2 += 100;
 		}
 
