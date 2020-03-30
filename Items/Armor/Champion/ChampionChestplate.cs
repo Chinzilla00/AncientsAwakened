@@ -38,7 +38,7 @@ The armor of a champion feared across the land");
 
         public override void UpdateEquip(Player player)
 		{
-            player.allDamage += 1.15f;
+            player.allDamage += .15f;
         }
 		
 		public override void AddRecipes()

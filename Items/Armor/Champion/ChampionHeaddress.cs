@@ -49,6 +49,7 @@ The armor of a champion feared across the land");
             player.setBonus = Language.GetTextValue("Mods.AAMod.Common.ChampionHeaddressBonus");
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             modPlayer.Baron = true;
+            modPlayer.ChampionSu = true;
             if (player.whoAmI == Main.myPlayer)
             {
                 if (player.FindBuffIndex(mod.BuffType("BaronBuff")) == -1)

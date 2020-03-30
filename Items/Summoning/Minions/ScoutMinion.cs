@@ -28,7 +28,7 @@ namespace AAMod.Items.Summoning.Minions
             projectile.tileCollide = false;
             projectile.timeLeft *= 5;
             projectile.minion = true;
-            projectile.minionSlots = 0;
+            projectile.minionSlots = 1;
         }
 
         public override void AI()

@@ -11,6 +11,7 @@ namespace AAMod.Items.Armor.Champion.Drone
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Carrot");
+            Main.projFrames[projectile.type] = 4;
 		}
 
 		public override void SetDefaults()

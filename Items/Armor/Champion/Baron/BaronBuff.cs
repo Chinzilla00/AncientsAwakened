@@ -20,7 +20,7 @@ namespace AAMod.Items.Armor.Champion.Baron
             {
                 modPlayer.Baron = true;
             }
-            if (!modPlayer.Baron)
+            if (!modPlayer.ChampionSu)
             {
                 player.DelBuff(buffIndex);
                 buffIndex--;

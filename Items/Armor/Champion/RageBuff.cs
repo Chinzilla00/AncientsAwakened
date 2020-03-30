@@ -10,7 +10,6 @@ namespace AAMod.Items.Armor.Champion
             DisplayName.SetDefault("Rajah's Rage");
             Description.SetDefault("A champion of Terraria never backs down");
             Main.buffNoSave[Type] = true;
-            Main.buffNoTimeDisplay[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)

@@ -18,7 +18,7 @@ namespace AAMod.Items.Boss.Sagittarius
 	        item.damage = 25;
 	        item.width = 46;
 	        item.height = 46;
-	        item.useTime = 23;
+	        item.useTime = 30;
 	        item.useAnimation = 30;
 	        item.useStyle = 1;
 	        item.knockBack = 6;

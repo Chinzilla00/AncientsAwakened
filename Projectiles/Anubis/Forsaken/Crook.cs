@@ -44,25 +44,82 @@ namespace AAMod.Projectiles.Anubis.Forsaken
             float num490 = player.Center.Y - vector36.Y;
             float num491 = (float)Math.Sqrt(num489 * num489 + num490 * num490);
 
-            if (projectile.ai[0] == 1)
+            if (player.position == default) { player.position = Main.player[projectile.owner].position; }
+            if (player.width == -1) { player.width = Main.player[projectile.owner].width; }
+            if (player.height == -1) { player.height = Main.player[projectile.owner].height; }
+            Vector2 center = player.position + new Vector2(player.width * 0.5f, player.height * 0.5f);
+            if (projectile.soundDelay == 0)
             {
-                if (num491 < 50f && projectile.position.X < player.position.X + player.width && projectile.position.X + projectile.width > player.position.X && projectile.position.Y < player.position.Y + player.height && projectile.position.Y + projectile.height > player.position.Y)
+                projectile.soundDelay = 8;
+                Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 7);
+            }
+            if (projectile.ai[0] == 0f)
+            {
+                projectile.ai[1] += 1f;
+                if (projectile.ai[1] >= 45)
                 {
-                    if (projectile.owner == Main.myPlayer)
-                    {
-                        player.HealEffect(HealAmt, false);
-                        player.statLife += 1;
-                        if (player.statLife > player.statLifeMax2)
-                        {
-                            player.statLife = player.statLifeMax2;
-                        }
-                        NetMessage.SendData(66, -1, -1, null, projectile.owner, 1, 0f, 0f, 0, 0, 0);
-                    }
-                    projectile.Kill();
+                    projectile.ai[0] = 1f;
+                    projectile.ai[1] = 0f;
+                    projectile.netUpdate = true;
                 }
             }
+            else
+            {
+                projectile.tileCollide = false;
+                float distPlayerX = center.X - projectile.Center.X;
+                float distPlayerY = center.Y - projectile.Center.Y;
+                float distPlayer = (float)Math.Sqrt(distPlayerX * distPlayerX + distPlayerY * distPlayerY);
+                if (distPlayer > 3000f)
+                {
+                    projectile.Kill();
+                }
 
-            BaseAI.AIBoomerang(projectile, ref projectile.ai, player.position, player.width, player.height, true, 40, 45, 10, .6f, true);
+                distPlayer = 40 / distPlayer;
+                distPlayerX *= distPlayer;
+                distPlayerY *= distPlayer;
+                if (projectile.velocity.X < distPlayerX)
+                {
+                    projectile.velocity.X += 10;
+                    if (projectile.velocity.X < 0f && distPlayerX > 0f) { projectile.velocity.X += 10; }
+                }
+                else
+                if (projectile.velocity.X > distPlayerX)
+                {
+                    projectile.velocity.X -= 10;
+                    if (projectile.velocity.X > 0f && distPlayerX < 0f) { projectile.velocity.X -= 10; }
+                }
+                if (projectile.velocity.Y < distPlayerY)
+                {
+                    projectile.velocity.Y += 10;
+                    if (projectile.velocity.Y < 0f && distPlayerY > 0f) { projectile.velocity.Y += 10; }
+                }
+                else
+                if (projectile.velocity.Y > distPlayerY)
+                {
+                    projectile.velocity.Y -= 10;
+                    if (projectile.velocity.Y > 0f && distPlayerY < 0f) { projectile.velocity.Y -= 10; }
+                }
+                if (Main.myPlayer == projectile.owner)
+                {
+                    Rectangle rectangle = projectile.Hitbox;
+                    Rectangle value = new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height);
+                    if (rectangle.Intersects(value))
+                    {
+                        if (projectile.owner == Main.myPlayer)
+                        {
+                            player.HealEffect(HealAmt, false);
+                            player.statLife += 1;
+                            if (player.statLife > player.statLifeMax2)
+                            {
+                                player.statLife = player.statLifeMax2;
+                            }
+                            NetMessage.SendData(66, -1, -1, null, projectile.owner, 1, 0f, 0f, 0, 0, 0);
+                        }
+                        projectile.Kill(); 
+                    }
+                }
+            }
+            projectile.rotation += .6f * projectile.direction;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

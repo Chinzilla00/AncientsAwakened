@@ -42,9 +42,9 @@ namespace AAMod.Items.Summoning.Minions
             {
                 if (player.dead)
                 {
-                    modPlayer.EaterMinion = false;
+                    modPlayer.ChaosConstruct = false;
                 }
-                if (modPlayer.EaterMinion)
+                if (modPlayer.ChaosConstruct)
                 {
                     projectile.timeLeft = 2;
                 }

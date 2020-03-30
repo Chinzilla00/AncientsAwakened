@@ -990,13 +990,16 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, 0, 0, ModContent.ProjectileType<HarukaStrike>(), damage*1, 5, Main.myPlayer);
 
-                Vector2 shoot = Vector2.Zero;
-                int projType = ModContent.ProjectileType<HarukaProj>();
-                for(int i = 0; i < 12; i++)
+                Vector2 shoot;
+                if (Main.netMode != 1)
                 {
-                    shoot = new Vector2((float)Math.Sin(i * (Pi/6)), (float)Math.Cos(i * (Pi/6)));
-                    shoot *= 10f;
-                    Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, shoot.X, shoot.Y, projType, damage*1, 5, Main.myPlayer);
+                    int projType = ModContent.ProjectileType<HarukaProj>();
+                    for (int i = 0; i < 12; i++)
+                    {
+                        shoot = new Vector2((float)Math.Sin(i * (Pi / 6)), (float)Math.Cos(i * (Pi / 6)));
+                        shoot *= 10f;
+                        Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, shoot.X, shoot.Y, projType, damage * 1, 5, Main.myPlayer);
+                    }
                 }
                 Main.npc[ShadowNPC[1]].boss = false;
                 Main.npc[ShadowNPC[2]].boss = false;
@@ -1009,6 +1012,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 internalAI[4] = 0;
                 ShadowkingPosition = Vector2.Zero;
                 internalAI[0] = 3;
+                npc.netUpdate = true;
             }
         }
 

@@ -25,7 +25,7 @@ namespace AAMod.Items.Armor.Champion.Drone
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.ranged = true;
-            projectile.timeLeft = 300;
+            projectile.timeLeft = 48;
         }
 
         public Entity target = null;
@@ -79,7 +79,7 @@ namespace AAMod.Items.Armor.Champion.Drone
 
                 if (projectile.ai[0] > 514)
                 {
-                    Main.player[projectile.owner].AddBuff(mod.BuffType(""), 900);
+                    Main.player[projectile.owner].AddBuff(mod.BuffType("DroneCool"), 900);
                     projectile.Kill();
                 }
             }

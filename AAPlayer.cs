@@ -85,6 +85,7 @@ namespace AAMod
         public bool Athena = false;
         public bool Baron = false;
         public bool Xiao = false;
+        public bool ChaosConstruct = false;
         #endregion
 
         #region Biome bools.
@@ -183,6 +184,8 @@ namespace AAMod
         public bool Olympian = false;
         public bool ChampionMe = false;
         public bool ChampionRa = false;
+        public bool ChampionMa = false;
+        public bool ChampionSu = false;
         public bool StoneSoldier = false;
 
         public bool onoPrevious;
@@ -484,6 +487,8 @@ namespace AAMod
             StripeManSet = false;
             ChampionMe = false;
             ChampionRa = false;
+            ChampionMa = false;
+            ChampionSu = false;
             StoneSoldier = false;
         }
 
