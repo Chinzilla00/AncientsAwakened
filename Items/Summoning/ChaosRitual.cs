@@ -15,7 +15,7 @@ namespace AAMod.Items.Summoning
 
         public override void SetDefaults()
         {
-            item.damage = 45;
+            item.damage = 60;
             item.summon = true;
             item.mana = 10;
             item.width = 26;
@@ -27,9 +27,9 @@ namespace AAMod.Items.Summoning
             item.knockBack = 3;
             item.rare = 8;
             item.UseSound = SoundID.Item44;
-            item.shoot = mod.ProjectileType("ChaosConstruct");
+            item.shoot = ModContent.ProjectileType<Minions.ChaosConstruct>();
             item.shootSpeed = 10f;
-            item.buffType = mod.BuffType("ChaosConstruct");
+            item.buffType = ModContent.BuffType<Buffs.ChaosConstruct>();
             item.autoReuse = true;
         }
 		
@@ -51,7 +51,7 @@ namespace AAMod.Items.Summoning
             Vector2 vector2;
             vector2.X = Main.mouseX + Main.screenPosition.X;
             vector2.Y = Main.mouseY + Main.screenPosition.Y;
-            Projectile.NewProjectile(vector2.X, vector2.Y, 0, 0, mod.ProjectileType("ChaosConstruct"), num73, num74, i, 0f, 0f);
+            Projectile.NewProjectile(vector2.X, vector2.Y, 0, 0, ModContent.ProjectileType<Minions.ChaosConstruct>(), num73, num74, i, 0f, 0f);
             return false;
         }
 

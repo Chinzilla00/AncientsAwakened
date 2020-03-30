@@ -12,7 +12,7 @@ namespace AAMod.Items.Summoning.Minions
     {
     	public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Demon Eater");
+			DisplayName.SetDefault("Chaos Construct");
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
@@ -26,10 +26,9 @@ namespace AAMod.Items.Summoning.Minions
             projectile.friendly = true;
             projectile.ignoreWater = true;
             projectile.minionSlots = 1;
-            projectile.timeLeft = 18000;
+            projectile.timeLeft = 18000 * 5;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
-            projectile.timeLeft *= 5;
             projectile.minion = true;
         }
         public override void AI()

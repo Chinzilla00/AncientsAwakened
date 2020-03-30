@@ -23,7 +23,7 @@ namespace AAMod.Items.Armor.Champion.Drone
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.ranged = true;
-            projectile.timeLeft = 48;
+            projectile.timeLeft = 480;
         }
 
         public Entity target = null;
