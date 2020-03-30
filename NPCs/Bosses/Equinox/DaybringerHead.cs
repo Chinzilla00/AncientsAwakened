@@ -516,7 +516,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                         CloudCooldown = 400;
                         for (int m = 0; m < CloudCount; m++)
                         {
-                            int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("NightclawerCloud"), 0);
+                            int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("NCCloud"), 0);
                             Main.npc[npcID].Center = npc.Center;
                             Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
                             Main.npc[npcID].velocity *= 8f;
