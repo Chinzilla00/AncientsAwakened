@@ -1,6 +1,4 @@
 using Terraria;
-using Terraria.ID;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using BaseMod;
@@ -16,8 +14,8 @@ namespace AAMod.Items.Armor.Champion.Drone
         }
         public override void SetDefaults()
         {
-            projectile.width = 142;
-            projectile.height = 248;
+            projectile.width = 248;
+            projectile.height = 142;
             projectile.penetrate = -1;
             projectile.hostile = false;
             projectile.friendly = false;
@@ -63,7 +61,7 @@ namespace AAMod.Items.Armor.Champion.Drone
                     if (projectile.localAI[0] <= 0)
                     {
                         projectile.localAI[0] = 90f;
-                        Vector2 velocity = BaseUtility.RotateVector(default, new Vector2(10f, 0f), BaseMod.BaseUtility.RotationTo(projectile.Center, target.Center));
+                        Vector2 velocity = BaseUtility.RotateVector(default, new Vector2(10f, 0f), BaseUtility.RotationTo(projectile.Center, target.Center));
                         int projID = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y - 4f, 0f, 0f, ModContent.ProjectileType<RajahDroneShot>(), projectile.damage, 0f, projectile.owner);
                         Main.projectile[projID].velocity = velocity;
                         Main.projectile[projID].netUpdate = true;

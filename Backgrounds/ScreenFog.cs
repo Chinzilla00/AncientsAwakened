@@ -5,7 +5,6 @@ using Terraria;
 using BaseMod;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Terraria.Graphics.Shaders;
 
 namespace AAMod.Backgrounds
 {

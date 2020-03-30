@@ -1,11 +1,10 @@
 using Terraria;
 using Terraria.ID;
-using Terraria.ModLoader;
 using BaseMod;
 
 namespace AAMod.Items.Boss.Anubis.Forsaken
 {
-	public class SoulCrook : BaseAAItem
+    public class SoulCrook : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
