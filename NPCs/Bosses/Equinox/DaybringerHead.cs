@@ -415,7 +415,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.spriteDirection = 1;
             prevWormStronger = wormStronger;
 
-            if (npc.type == ModContent.NPCType<NightcrawlerHead>() && !NPC.AnyNPCs(ModContent.NPCType<NCCloud>()) && CloudCooldown > 0 && Main.netMode != 1)
+            if (npc.type == ModContent.NPCType<NightcrawlerHead>() && NPC.CountNPCS(ModContent.NPCType<NCCloud>()) < CloudCount && CloudCooldown > 0 && Main.netMode != 1)
             {
                 CloudCooldown--;
 
@@ -513,15 +513,22 @@ namespace AAMod.NPCs.Bosses.Equinox
                 {
                     if (Main.netMode != 1 && CloudCooldown <= 0)
                     {
+                        for(int i = 0; i < 200; i++)
+                        {
+                            if(Main.npc[i].type == mod.NPCType("NCCloud"))
+                            {
+                                Main.npc[i].life = 0;
+                                Main.npc[i].NPCLoot();
+                                Main.npc[i].active = false;
+                            } 
+                        }
                         CloudCooldown = 400;
+                        float rotation = 2f * (float)Math.PI / CloudCount;
                         for (int m = 0; m < CloudCount; m++)
                         {
-                            int npcID = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("NCCloud"), 0);
-                            Main.npc[npcID].Center = npc.Center;
-                            Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
-                            Main.npc[npcID].velocity *= 8f;
-                            Main.npc[npcID].ai[3] = m * (2f * (float)Math.PI / CloudCount);
-                            Main.npc[npcID].netUpdate = true;
+                            int n = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("NCCloud"), 0, 0, 0, 0, rotation * m);
+                            if (Main.netMode == 2 && n < 200)
+                                NetMessage.SendData(23, -1, -1, null, n);
                         }
                     }
                 }

@@ -12,20 +12,20 @@ namespace AAMod.NPCs.Bosses.Equinox
     	public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nightclawer Cloud");
-            Main.npcFrameCount[npc.type] = 4;
-		}
+             Main.npcFrameCount[npc.type] = 4;
+        }
 
         public override void SetDefaults()
         {
-            npc.width = 45;
-            npc.height = 45;
-            npc.scale = 1f;
-            npc.noTileCollide = true;
-            npc.defense = 50;
-            npc.life = 1500;
+            npc.width = 46;
+            npc.height = 46;
+            npc.friendly = false;
             npc.damage = 100;
-            npc.aiStyle = -1;
+            npc.lifeMax = 1500;
             npc.noGravity = true;
+            npc.aiStyle = -1;
+            npc.timeLeft = 10;
+            npc.alpha = 255;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
@@ -34,25 +34,41 @@ namespace AAMod.NPCs.Bosses.Equinox
 
         public int body = -1;
         public float rotValue = -1f;
-
-
         public override void AI()
         {
-            Lighting.AddLight((int)(npc.Center.X / 16f), (int)(npc.Center.Y / 16f), .37f, .8f, .89f);
-            
-            if(npc.ai[0] ++ == 5)
+            if (npc.frameCounter++ > 5)
+            {
+                npc.frameCounter = 0;
+                npc.frame.Y += 46;
+                if (npc.frame.Y >= 46 * 4)
+                {
+                    npc.frame.Y = 0;
+                }
+            }
+
+            if (npc.alpha > 0)
+            {
+                npc.alpha -= 10;
+            }
+            else
+            {
+                npc.alpha = 0;
+            }
+
+            if(npc.alpha == 205)
             {
                 SpawnDust();
             }
-
+            npc.noGravity = true;
             if (body == -1)
             {
                 int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("NightcrawlerHead"), 120f, null);
                 if (npcID >= 0) body = npcID;
             }
             if (body == -1) return;
-            NPC NightcrawlerHead = Main.npc[body];
-            if (NightcrawlerHead == null || NightcrawlerHead.life <= 0 || !NightcrawlerHead.active || NightcrawlerHead.type != mod.NPCType("NightcrawlerHead")) { npc.active = false; return; }
+
+            NPC NC = Main.npc[body];
+            if (NC == null || NC.life <= 0 || !NC.active || NC.type != mod.NPCType("NightcrawlerHead")) { npc.active = false; return; }
 
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
@@ -61,8 +77,9 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.oldPos[0] = npc.position;
 
             if (rotValue == -1f) rotValue = npc.ai[3];
-            rotValue += 0.04f;
+            rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
+            npc.Center = BaseUtility.RotateVector(NC.Center, NC.Center + new Vector2(140f, 0f), rotValue);
 
             int aiTimerFire = 0;
 
@@ -86,8 +103,6 @@ namespace AAMod.NPCs.Bosses.Equinox
                 npc.ai[1] = 0;
             }
 
-            npc.Center = BaseUtility.RotateVector(NightcrawlerHead.Center, NightcrawlerHead.Center + new Vector2(140, 0f), rotValue);
-
             if (npc.ai[1] == aiTimerFire)
             {
                 Vector2 speed = new Vector2(1f, 0f).RotatedBy((float)(Main.rand.NextDouble() * 3.1415f)) * 6f;
@@ -97,8 +112,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            BaseDrawing.DrawAfterimage(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 9, npc.frame, 1f, 1f, 7, true, 0, 0, Color.White);
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE));
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
             return false;
         }
 
@@ -108,7 +122,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.active = false;
         }
 
-        public override void OnHitPlayer(Player target, int damage, bool crit)
+        public override void OnHitPlayer(Player target, ref int damage, ref bool crit)
         {
             target.AddBuff(163, 60);
         }

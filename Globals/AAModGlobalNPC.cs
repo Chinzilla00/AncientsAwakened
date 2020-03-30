@@ -1094,130 +1094,133 @@ namespace AAMod
 
             int npcid = 0;
 
-            if (Sandstorm.Happening && player.ZoneSandstorm && TileID.Sets.Conversion.Sand[Main.tile[x, y].type] && NPC.Spawning_SandstoneCheck(x, y))
+            if (!Main.tile[x, y].active())
             {
-                if (Main.hardMode && Main.rand.Next(15) == 0)
+                if (Sandstorm.Happening && player.ZoneSandstorm && TileID.Sets.Conversion.Sand[Main.tile[x, y].type] && NPC.Spawning_SandstoneCheck(x, y))
                 {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 541, 0, 0f, 0f, 0f, 0f, 255);
-                }
-            }
-            else if (player.ZoneDungeon && NPC.downedPlantBoss)
-			{
-                if (Main.rand.Next(15) == 0)
-                {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 287, 0, 0f, 0f, 0f, 0f, 255);
-                }
-                if (Main.rand.Next(10) == 0)
-                {
-                    int Skeletontype = 0;
-                    switch (Main.rand.Next(3))
+                    if (Main.hardMode && Main.rand.Next(15) == 0)
                     {
-                        case 0: Skeletontype = 291; break;
-                        case 1: Skeletontype = 292; break;
-                        case 3: Skeletontype = 293; break;
-                    }
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, Skeletontype, 0, 0f, 0f, 0f, 0f, 255);
-                }
-                if (Main.rand.Next(15) == 0)
-                {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 290, 0, 0f, 0f, 0f, 0f, 255);
-                }
-            }
-            else if (y <= Main.worldSurface && Main.dayTime && Main.eclipse)
-			{
-                bool flag = false;
-                if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-                {
-                    flag = true;
-                }
-                if (flag && Main.rand.Next(40) == 0)
-                {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 477, 0, 0f, 0f, 0f, 0f, 255);
-                }
-            }
-            else if (y <= Main.worldSurface)
-			{
-                if (player.ZoneSnow && Main.hardMode && Main.cloudAlpha > 0f && Main.rand.Next(15) == 0)
-                {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 243, 0, 0f, 0f, 0f, 0f, 255);
-                }
-                if (player.ZoneHoly && Main.hardMode && Main.rand.Next(30) == 0)
-                {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 244, 0, 0f, 0f, 0f, 0f, 255);
-                }
-                if (y <= Main.worldSurface/2 && NPC.AnyDanger() && Main.hardMode && NPC.downedGolemBoss && Main.rand.Next(100) == 0 && !NPC.AnyNPCs(399))
-                {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 399, 0, 0f, 0f, 0f, 0f, 255);
-                }
-                if (Main.hardMode && Main.rand.Next(25) == 0 && Main.bloodMoon)
-                {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 109, 0, 0f, 0f, 0f, 0f, 255);
-                }
-                if (Main.rand.Next(100) == 0 && Main.bloodMoon)
-                {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 53, 0, 0f, 0f, 0f, 0f, 255);
-                }
-                if (Main.rand.Next(100) == 0 && Main.bloodMoon)
-                {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 536, 0, 0f, 0f, 0f, 0f, 255);
-                }
-                
-                if (Main.dayTime)
-                {
-                    if (Main.rand.Next(50) == 0)
-                    {
-                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 1, 0, 0f, 0f, 0f, 0f, 255);
-                        Main.npc[npcid].SetDefaults(-4, -1f);
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 541, 0, 0f, 0f, 0f, 0f, 255);
                     }
                 }
-            }
-            else if (Main.hardMode && y > Main.worldSurface && Main.rand.Next(40) == 0)
-            {
-                if (Main.rand.Next(2) == 0 && player.ZoneCorrupt)
+                else if (player.ZoneDungeon && NPC.downedPlantBoss)
                 {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 473, 0, 0f, 0f, 0f, 0f, 255);
+                    if (Main.rand.Next(15) == 0)
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 287, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                    if (Main.rand.Next(10) == 0)
+                    {
+                        int Skeletontype = 0;
+                        switch (Main.rand.Next(3))
+                        {
+                            case 0: Skeletontype = 291; break;
+                            case 1: Skeletontype = 292; break;
+                            case 3: Skeletontype = 293; break;
+                        }
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, Skeletontype, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                    if (Main.rand.Next(15) == 0)
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 290, 0, 0f, 0f, 0f, 0f, 255);
+                    }
                 }
-                else if (Main.rand.Next(2) == 0 && player.ZoneCrimson)
+                else if (y <= Main.worldSurface && Main.dayTime && Main.eclipse)
                 {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 474, 0, 0f, 0f, 0f, 0f, 255);
+                    bool flag = false;
+                    if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
+                    {
+                        flag = true;
+                    }
+                    if (flag && Main.rand.Next(40) == 0)
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 477, 0, 0f, 0f, 0f, 0f, 255);
+                    }
                 }
-                else if (Main.rand.Next(2) == 0 && player.ZoneHoly)
+                else if (y <= Main.worldSurface)
                 {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 475, 0, 0f, 0f, 0f, 0f, 255);
+                    if (player.ZoneSnow && Main.hardMode && Main.cloudAlpha > 0f && Main.rand.Next(15) == 0)
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 243, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                    if (player.ZoneHoly && Main.hardMode && Main.rand.Next(30) == 0)
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 244, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                    if (y <= Main.worldSurface/2 && NPC.AnyDanger() && Main.hardMode && NPC.downedGolemBoss && Main.rand.Next(100) == 0 && !NPC.AnyNPCs(399))
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 399, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                    if (Main.hardMode && Main.rand.Next(25) == 0 && Main.bloodMoon)
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 109, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                    if (Main.rand.Next(100) == 0 && Main.bloodMoon)
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 53, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                    if (Main.rand.Next(100) == 0 && Main.bloodMoon)
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 536, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                    
+                    if (Main.dayTime)
+                    {
+                        if (Main.rand.Next(50) == 0)
+                        {
+                            npcid = NPC.NewNPC(x * 16 + 8, y * 16, 1, 0, 0f, 0f, 0f, 0f, 255);
+                            Main.npc[npcid].SetDefaults(-4, -1f);
+                        }
+                    }
                 }
-                else
+                else if (Main.hardMode && y > Main.worldSurface && Main.rand.Next(40) == 0)
+                {
+                    if (Main.rand.Next(2) == 0 && player.ZoneCorrupt)
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 473, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                    else if (Main.rand.Next(2) == 0 && player.ZoneCrimson)
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 474, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                    else if (Main.rand.Next(2) == 0 && player.ZoneHoly)
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 475, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                    else
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 85, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                }
+                else if (Main.hardMode && Main.tile[x, y - 1].wall == 2 && Main.rand.Next(10) == 0)
                 {
                     npcid = NPC.NewNPC(x * 16 + 8, y * 16, 85, 0, 0f, 0f, 0f, 0f, 255);
                 }
-            }
-            else if (Main.hardMode && Main.tile[x, y - 1].wall == 2 && Main.rand.Next(10) == 0)
-            {
-                npcid = NPC.NewNPC(x * 16 + 8, y * 16, 85, 0, 0f, 0f, 0f, 0f, 255);
-            }
-            else if (Main.tile[x, y].type == 60 && Main.rand.Next(100) == 0 && !Main.dayTime)
-            {
-                npcid = NPC.NewNPC(x * 16 + 8, y * 16, 52, 0, 0f, 0f, 0f, 0f, 255);
-            }
-            else if (Main.tile[x, y].type == 60 && Main.hardMode && Main.rand.Next(45) == 0 && !Main.dayTime)
-            {
-                npcid = NPC.NewNPC(x * 16 + 8, y * 16, 205, 0, 0f, 0f, 0f, 0f, 255);
-            }
-            else if (y > Main.maxTilesY - 190)
-            {
-                if (Main.hardMode && !NPC.savedTaxCollector && Main.rand.Next(10) == 0 && !NPC.AnyNPCs(534))
+                else if (Main.tile[x, y].type == 60 && Main.rand.Next(100) == 0 && !Main.dayTime)
                 {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 534, 0, 0f, 0f, 0f, 0f, 255);
+                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 52, 0, 0f, 0f, 0f, 0f, 255);
                 }
-            }
-            else if (y <= Main.maxTilesY - 190 && y > Main.rockLayer)
-            {
-                if (Main.rand.Next(50) == 0)
+                else if (Main.tile[x, y].type == 60 && Main.hardMode && Main.rand.Next(45) == 0 && !Main.dayTime)
                 {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 195, 0, 0f, 0f, 0f, 0f, 255);
+                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 205, 0, 0f, 0f, 0f, 0f, 255);
                 }
-                if (y > (Main.rockLayer + Main.maxTilesY) / 2.0 && Main.rand.Next(50) == 0)
+                else if (y > Main.maxTilesY - 190)
                 {
-                    npcid = NPC.NewNPC(x * 16 + 8, y * 16, 45, 0, 0f, 0f, 0f, 0f, 255);
+                    if (Main.hardMode && !NPC.savedTaxCollector && Main.rand.Next(10) == 0 && !NPC.AnyNPCs(534))
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 534, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                }
+                else if (y <= Main.maxTilesY - 190 && y > Main.rockLayer)
+                {
+                    if (Main.rand.Next(50) == 0)
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 195, 0, 0f, 0f, 0f, 0f, 255);
+                    }
+                    if (y > (Main.rockLayer + Main.maxTilesY) / 2.0 && Main.rand.Next(50) == 0)
+                    {
+                        npcid = NPC.NewNPC(x * 16 + 8, y * 16, 45, 0, 0f, 0f, 0f, 0f, 255);
+                    }
                 }
             }
 
