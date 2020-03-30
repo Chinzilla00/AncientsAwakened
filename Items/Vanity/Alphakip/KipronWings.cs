@@ -91,10 +91,6 @@ Hold down and jump to hover for an extended period of time
                 {
                     player.wingFrame++;
                     player.wingFrameCounter = 0;
-                    if (player.wingFrame > 3)
-                    {
-                        player.wingFrame = 0;
-                    }
                 }
             }
             else
@@ -104,6 +100,10 @@ Hold down and jump to hover for an extended period of time
                 {
                     player.wingFrame = 1;
                 }
+            }
+            if (player.wingFrame > 3)
+            {
+                player.wingFrame = 0;
             }
             return true;
         }

@@ -44,7 +44,12 @@ The armor of a champion feared across the land");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"";
+            player.setBonus = @"`Time to hunt the hunters...`
+Pressing the armor ability hotkey summons a R.A.B.I.T. Drone for 8 seconds
+R.A.B.I.T. Drone has a 15 second cooldown
+During Cooldown, your ranged damage and critical chance are increased by 15%";
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
+            modPlayer.ChampionRa = true;
         }
 
         public override void UpdateEquip(Player player)

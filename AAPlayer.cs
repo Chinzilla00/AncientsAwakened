@@ -182,6 +182,7 @@ namespace AAMod
         public bool ChaosSu = false;
         public bool Olympian = false;
         public bool ChampionMe = false;
+        public bool ChampionRa = false;
         public bool StoneSoldier = false;
 
         public bool onoPrevious;
@@ -482,6 +483,7 @@ namespace AAMod
             StripeManSpawn = false;
             StripeManSet = false;
             ChampionMe = false;
+            ChampionRa = false;
             StoneSoldier = false;
         }
 
@@ -1516,6 +1518,20 @@ namespace AAMod
                 player.AddBuff(ModContent.BuffType<Items.Armor.Champion.RageBuff>(), BuffLength);
                 int RageCooldown = BuffLength * 4;
                 player.AddBuff(ModContent.BuffType<Items.Armor.Champion.RageCool>(), RageCooldown);
+            }
+
+            if (player.HasBuff(ModContent.BuffType<Items.Armor.Champion.RageBuff>()))
+            {
+                player.armorEffectDrawShadowLokis = true;
+            }
+
+            if (ChampionRa && AAMod.ArmorAbilityKey.JustPressed && !player.HasBuff(mod.BuffType("DroneCool")) && 
+                !AAGlobalProjectile.AnyProjectiles(mod.ProjectileType("RajahDrone")))
+            {
+                Vector2 vector2;
+                vector2.X = Main.mouseX + Main.screenPosition.X;
+                vector2.Y = Main.mouseY + Main.screenPosition.Y;
+                Projectile.NewProjectile(vector2.X, vector2.Y, 0, 0, mod.ProjectileType("RajahDrone"), (int)(100 * player.rangedDamage), 2, Main.myPlayer, 0f, 0f);
             }
         }
 
