@@ -122,7 +122,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.active = false;
         }
 
-        public override void OnHitPlayer(Player target, ref int damage, ref bool crit)
+        public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             target.AddBuff(163, 60);
         }
