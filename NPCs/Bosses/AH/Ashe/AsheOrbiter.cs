@@ -18,7 +18,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void SetDefaults()
         {
-            npc.lifeMax = 1;
             npc.width = 46;
             npc.height = 46;
             npc.friendly = false;

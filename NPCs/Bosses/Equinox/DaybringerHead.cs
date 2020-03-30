@@ -520,7 +520,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                             Main.npc[npcID].Center = npc.Center;
                             Main.npc[npcID].velocity = new Vector2(MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()), MathHelper.Lerp(-1f, 1f, (float)Main.rand.NextDouble()));
                             Main.npc[npcID].velocity *= 8f;
-                            Main.npc[npcID].ai[0] = m;
+                            Main.npc[npcID].ai[3] = m * (2f * (float)Math.PI / CloudCount);
                             Main.npc[npcID].netUpdate = true;
                         }
                     }

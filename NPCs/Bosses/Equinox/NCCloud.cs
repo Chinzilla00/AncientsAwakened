@@ -12,7 +12,7 @@ namespace AAMod.NPCs.Bosses.Equinox
     	public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Nightclawer Cloud");
-            Main.projFrames[npc.type] = 4;
+            Main.npcFrameCount[npc.type] = 4;
 		}
 
         public override void SetDefaults()
@@ -24,11 +24,16 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.defense = 50;
             npc.life = 1500;
             npc.damage = 100;
+            npc.aiStyle = -1;
+            npc.noGravity = true;
+            for (int k = 0; k < npc.buffImmune.Length; k++)
+            {
+                npc.buffImmune[k] = true;
+            }
         }
 
         public int body = -1;
         public float rotValue = -1f;
-        public Vector2 pos;
 
 
         public override void AI()
@@ -40,34 +45,14 @@ namespace AAMod.NPCs.Bosses.Equinox
                 SpawnDust();
             }
 
-            if (!NPC.AnyNPCs(ModContent.NPCType<NightcrawlerHead>()))
-            {
-                npc.life = 0;
-            }
-
-            npc.noGravity = true;
-
-            if (npc.alpha > 0)
-            {
-                npc.dontTakeDamage = true;
-                npc.chaseable = false;
-            }
-            else
-            {
-                npc.dontTakeDamage = false;
-                npc.chaseable = true;
-            }
-
             if (body == -1)
             {
-                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("NightcrawlerHead"), 400f, null);
+                int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("NightcrawlerHead"), 120f, null);
                 if (npcID >= 0) body = npcID;
             }
             if (body == -1) return;
             NPC NightcrawlerHead = Main.npc[body];
-            if (NightcrawlerHead == null || NightcrawlerHead.life <= 0 || !NightcrawlerHead.active || NightcrawlerHead.type != mod.NPCType("NightcrawlerHead")) { BaseAI.KillNPCWithLoot(npc); return; }
-
-            pos = NightcrawlerHead.Center;
+            if (NightcrawlerHead == null || NightcrawlerHead.life <= 0 || !NightcrawlerHead.active || NightcrawlerHead.type != mod.NPCType("NightcrawlerHead")) { npc.active = false; return; }
 
             for (int m = npc.oldPos.Length - 1; m > 0; m--)
             {
@@ -75,8 +60,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             }
             npc.oldPos[0] = npc.position;
 
-            int probeNumber = ((NightcrawlerHead)NightcrawlerHead.modNPC).CloudCount;
-            if (rotValue == -1f) rotValue = npc.ai[0] % probeNumber * ((float)Math.PI * 2f / probeNumber);
+            if (rotValue == -1f) rotValue = npc.ai[3];
             rotValue += 0.04f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
 
@@ -84,15 +68,15 @@ namespace AAMod.NPCs.Bosses.Equinox
 
             npc.ai[1]++;
 
-            if (npc.ai[0] == 1 || npc.ai[0] == 4 || npc.ai[0] == 7 || npc.ai[0] == 10)
+            if (npc.ai[3] == 1 || npc.ai[3] == 4 || npc.ai[3] == 7 || npc.ai[3] == 10)
             {
                 aiTimerFire = 50;
             }
-            if (npc.ai[0] == 2 || npc.ai[0] == 5 || npc.ai[0] == 8 || npc.ai[0] == 11)
+            if (npc.ai[3] == 2 || npc.ai[3] == 5 || npc.ai[3] == 8 || npc.ai[3] == 11)
             {
                 aiTimerFire = 100;
             }
-            if (npc.ai[0] == 3 || npc.ai[0] == 6 || npc.ai[0] == 9 || npc.ai[0] == 12)
+            if (npc.ai[3] == 3 || npc.ai[3] == 6 || npc.ai[3] == 9 || npc.ai[3] == 12)
             {
                 aiTimerFire = 150;
             }
