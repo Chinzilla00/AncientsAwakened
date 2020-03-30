@@ -62,13 +62,13 @@ namespace AAMod
 			{
 				if (setDefMinionDamage)
 				{
-					DefMinionDamageMultiply = Main.player[projectile.owner].minionDamage + Main.player[projectile.owner].allDamage - 1f;
+					DefMinionDamageMultiply = Main.player[projectile.owner].minionDamage;
 					DefMinionDamage = (int)(projectile.damage / DefMinionDamageMultiply);
 					setDefMinionDamage = false;
 				}
-				if ((Main.player[projectile.owner].minionDamage + Main.player[projectile.owner].allDamage - 1f) != DefMinionDamageMultiply)
+				if (Main.player[projectile.owner].minionDamage != DefMinionDamageMultiply)
 				{
-					int damage = (int)(DefMinionDamage * (Main.player[projectile.owner].minionDamage + Main.player[projectile.owner].allDamage - 1f));
+					int damage = (int)(DefMinionDamage * (Main.player[projectile.owner].minionDamage));
                     if(damage <= 0) damage = 1;
 					projectile.damage = damage;
 				}

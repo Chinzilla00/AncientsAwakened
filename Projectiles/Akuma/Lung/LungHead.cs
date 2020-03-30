@@ -199,7 +199,7 @@ namespace AAMod.Projectiles.Akuma.Lung
                 }
             }
 
-            float DamageBoost = Main.player[projectile.owner].minionDamage + Main.player[projectile.owner].allDamage - 1f;
+            float DamageBoost = Main.player[projectile.owner].minionDamage;
             projectile.damage = (int)(DamageBoost > 0f? ((120 + (projectile.localAI[0] - 1) * 40) * DamageBoost) : 1);
         }
     }
