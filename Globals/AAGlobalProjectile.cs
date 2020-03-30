@@ -62,13 +62,13 @@ namespace AAMod
 			{
 				if (setDefMinionDamage)
 				{
-					DefMinionDamageMultiply = Main.player[projectile.owner].minionDamage + Main.player[projectile.owner].allDamage - 1f;
+					DefMinionDamageMultiply = Main.player[projectile.owner].minionDamage;
 					DefMinionDamage = (int)(projectile.damage / DefMinionDamageMultiply);
 					setDefMinionDamage = false;
 				}
-				if ((Main.player[projectile.owner].minionDamage + Main.player[projectile.owner].allDamage - 1f) != DefMinionDamageMultiply)
+				if (Main.player[projectile.owner].minionDamage != DefMinionDamageMultiply)
 				{
-					int damage = (int)(DefMinionDamage * (Main.player[projectile.owner].minionDamage + Main.player[projectile.owner].allDamage - 1f));
+					int damage = (int)(DefMinionDamage * (Main.player[projectile.owner].minionDamage));
                     if(damage <= 0) damage = 1;
 					projectile.damage = damage;
 				}
@@ -84,7 +84,36 @@ namespace AAMod
                 {
                     Rectangle rectangle = new Rectangle((int)projectile.position.X, (int)projectile.position.Y, projectile.width, projectile.height);
                     Rectangle value = new Rectangle((int)Main.player[projectile.owner].position.X, (int)Main.player[projectile.owner].position.Y, Main.player[projectile.owner].width, Main.player[projectile.owner].height);
-                    if(rectangle.Intersects(value) && projectile.ai[1] > 0f)
+                    if(projectile.ai[0] != 1 && Main.rand.Next(2000) == 0)
+                    {
+                        for(int i = 0; i < 200; i++)
+                        {
+                            Rectangle npcrec = new Rectangle((int)Main.npc[i].position.X, (int)Main.npc[i].position.Y, Main.npc[i].width, Main.npc[i].height);
+                            if(Main.npc[i].active && Main.npc[i].life != 0 && rectangle.Intersects(npcrec))
+                            {
+                                Main.npc[i].NPCLoot();
+                                projectile.ai[0] = 1;
+                                Main.npc[i].active = true;
+                                break;
+                            }
+                        }
+                    }
+                    if(projectile.ai[0] == 1 && projectile.ai[1] == 0)
+                    {
+                        for(int i = 0; i < 400; i++)
+                        {
+                            Rectangle itemrec = new Rectangle((int)Main.item[i].position.X, (int)Main.item[i].position.Y, Main.item[i].width, Main.item[i].height);
+                            if(Main.item[i].active && rectangle.Intersects(itemrec))
+                            {
+                                projectile.ai[1] = Main.item[i].type;
+                                Main.item[i].stack --;
+                                if(Main.item[i].stack == 0) Main.item[i].active = false;
+                                candoublefish = false;
+                                break;
+                            }
+                        }
+                    }
+                    if(candoublefish && rectangle.Intersects(value) && projectile.ai[1] > 0f)
                     {
                         Item item = new Item();
                         int itemtype = 0;
@@ -351,6 +380,8 @@ namespace AAMod
         public Vector2 reflectvelocity = Vector2.Zero;
 
         private Vector2 oldvelocity = Vector2.Zero;
+
+        public bool candoublefish = true;
 
         public bool isReflecting = false;
 

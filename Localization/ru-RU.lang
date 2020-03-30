@@ -861,13 +861,10 @@ ItemTooltip.OceanShirt=Увеличивает манну на 20\nУвеличи
 
 
 ItemName.OlympianBoots=Олимпийские Ботинки
-ItemTooltip.OlympianBoots=Увеличивает шанс критического магического урона на 15%
 
 ItemName.OlympianHelm=Олимпиский Шлем
-ItemTooltip.OlympianHelm=Снижает использование манны на 25%
 
 ItemName.OlympianPlate=Олимпиский Нагрудник
-ItemTooltip.OlympianPlate=Увеличивает магический урон на 20%
 
 
 // AAMod.Items.Armor.Oroboros
@@ -5590,6 +5587,8 @@ Common.MushiumHatBonus=Potion Sickness time is cut by 25%
 Common.NightsHelmBonus=Being hit by enemies Sends you into a speed frenzy, increasing movement speed for a short time\n22% Increased Movement speed
 
 Common.OceanHelmBonus=20% increased magic damage and 15% mana use reduction while submerged in water
+
+Common.OlympianHelmBonus='They will fear your precision, yet you will fear the slightest gust'\n60% increased critical strike chance
 
 Common.OroborosHelmetBonus=+3 Defence
 

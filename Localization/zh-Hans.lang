@@ -1011,13 +1011,12 @@ Common.OceanHelmBonus=完全处于水中时增加20%魔法伤害并且减少15%�
 
 
 ItemName.OlympianBoots=奥林匹亚护胫
-ItemTooltip.OlympianBoots=增加15%魔法暴击率
 
 ItemName.OlympianHelm=奥林匹亚头盔
-ItemTooltip.OlympianHelm=减少25%魔法消耗
 
 ItemName.OlympianPlate=奥林匹亚胸甲
-ItemTooltip.OlympianPlate=增加20%魔法伤害
+
+Common.OlympianHelmBonus=“他们会畏惧你的精准，而你也畏惧微风”\n增加60%暴击率
 
 
 // AAMod.Items.Armor.Oroboros

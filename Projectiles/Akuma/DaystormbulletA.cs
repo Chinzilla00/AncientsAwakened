@@ -154,7 +154,9 @@ namespace AAMod.Projectiles.Akuma
                     -projectile.velocity.Y * 0.2f, 100, new Color(86, 191, 188));
                 Main.dust[num469].velocity *= 2f;
             }
-            Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType("DaybreakBlast"), projectile.damage, projectile.knockBack * 3, Main.myPlayer, 0, 0);
+            int id = Projectile.NewProjectile(projectile.Center, Vector2.Zero, mod.ProjectileType("DaybreakBlast"), projectile.damage, projectile.knockBack * 3, Main.myPlayer, 0, 0);
+            Main.projectile[id].ranged = false;
+            Main.projectile[id].magic = true;
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

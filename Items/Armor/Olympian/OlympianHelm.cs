@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Olympian
 {
@@ -30,8 +31,7 @@ namespace AAMod.Items.Armor.Olympian
 
         public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"'They will fear your precision, yet you will fear the slightest gust'
-60% increased critical strike chance";
+			player.setBonus = Language.GetTextValue("Mods.AAMod.Common.OlympianHelmBonus");
 
 			player.meleeCrit += 60;
 			player.rangedCrit += 60;

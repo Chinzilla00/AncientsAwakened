@@ -91,25 +91,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 Main.dust[num88].noLight = true;
                 Main.dust[num88].velocity += projectile.DirectionTo(Main.dust[num88].position) * 8f;
             }
-            for (int num89 = 0; num89 < 10; num89++)
-            {
-                int num90 = Dust.NewDust(position, num84, height3, 226, 0, 0, 100, new Color(), 2f);
-                Main.dust[num90].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
-                Main.dust[num90].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation(), default) * num84 / 2f);
-                Main.dust[num90].noGravity = true;
-                Main.dust[num90].noLight = true;
-                Main.dust[num90].velocity *= 3f;
-                Main.dust[num90].velocity += projectile.DirectionTo(Main.dust[num90].position) * 2f;
-            }
-            for (int num91 = 0; num91 < 30; num91++)
-            {
-                int num92 = Dust.NewDust(position, num84, height3, 226, 0, 0, 100, new Color(), 2f);
-                Main.dust[num92].shader = GameShaders.Armor.GetSecondaryShader(59, Main.LocalPlayer);
-                Main.dust[num92].position = projectile.Center + (Vector2.UnitX.RotatedByRandom(3.1415927410125732).RotatedBy(projectile.velocity.ToRotation(), default) * num84 / 2f);
-                Main.dust[num92].noGravity = true;
-                Main.dust[num92].velocity *= 3f;
-                Main.dust[num92].velocity += projectile.DirectionTo(Main.dust[num92].position) * 3f;
-            }
         }
     }
 }
