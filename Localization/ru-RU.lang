@@ -861,13 +861,10 @@ ItemTooltip.OceanShirt=Увеличивает манну на 20\nУвеличи
 
 
 ItemName.OlympianBoots=Олимпийские Ботинки
-ItemTooltip.OlympianBoots=Увеличивает шанс критического магического урона на 15%
 
 ItemName.OlympianHelm=Олимпиский Шлем
-ItemTooltip.OlympianHelm=Снижает использование манны на 25%
 
 ItemName.OlympianPlate=Олимпиский Нагрудник
-ItemTooltip.OlympianPlate=Увеличивает магический урон на 20%
 
 
 // AAMod.Items.Armor.Oroboros
