@@ -87,8 +87,8 @@ namespace AAMod.NPCs.Enemies.Mire
         }
 
         public override void NPCLoot()
-		{
-			Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HydraToxin"), Main.rand.Next(1,2));
+        {
+            BaseAI.DropItem(npc, mod.ItemType("TerrorSoul"), Main.expertMode ? 1 + Main.rand.Next(2) : Main.rand.Next(1), 3, 100, true);
         }
 	}
 }

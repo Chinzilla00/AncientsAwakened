@@ -1,70 +1,63 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
+using BaseMod;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Summoning.Minions
 {
-	public class ScoutMinion : ModProjectile
+    public class ChaosConstruct : ModProjectile
     {
     	public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Scout");
-			ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+			DisplayName.SetDefault("Demon Eater");
+            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
+            ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
-		}
+        }
     	
         public override void SetDefaults()
         {
-            projectile.width = 20;
-            projectile.height = 20;
+            projectile.width = 44;
+            projectile.height = 44;
             projectile.netImportant = true;
             projectile.friendly = true;
             projectile.ignoreWater = true;
-            projectile.minionSlots = 0;
+            projectile.minionSlots = 1;
             projectile.timeLeft = 18000;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.timeLeft *= 5;
             projectile.minion = true;
-            projectile.minionSlots = 0;
         }
-
         public override void AI()
         {
-        	if (projectile.localAI[0] == 0f)
-        	{
-        		int num226 = 36;
-				for (int num227 = 0; num227 < num226; num227++)
-				{
-					Vector2 vector6 = Vector2.Normalize(projectile.velocity) * new Vector2(projectile.width / 2f, projectile.height) * 0.75f;
-					vector6 = vector6.RotatedBy((num227 - (num226 / 2 - 1)) * 6.28318548f / num226, default) + projectile.Center;
-					Vector2 vector7 = vector6 - projectile.Center;
-					int num228 = Dust.NewDust(vector6 + vector7, 0, 0, 235, vector7.X * 1.75f, vector7.Y * 1.75f, 100, default, 1.1f);
-					Main.dust[num228].noGravity = true;
-					Main.dust[num228].velocity = vector7;
-				}
-				projectile.localAI[0] += 1f;
-        	}
-        	float num633 = 700f;
+            bool flag64 = projectile.type == mod.ProjectileType("ChaosConstruct");
+            Player player = Main.player[projectile.owner];
+            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
+            player.AddBuff(mod.BuffType("ChaosConstruct"), 3600);
+            if (flag64)
+            {
+                if (player.dead)
+                {
+                    modPlayer.EaterMinion = false;
+                }
+                if (modPlayer.EaterMinion)
+                {
+                    projectile.timeLeft = 2;
+                }
+            }
+
+            float num633 = 700f;
 			float num634 = 800f;
 			float num635 = 1200f;
 			float num636 = 150f;
-			Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = Main.player[projectile.owner].GetModPlayer<AAPlayer>();
-            if (player.dead)
-            {
-                modPlayer.ScoutMinion = false;
-            }
-            if (modPlayer.ScoutMinion)
-            {
-                projectile.timeLeft = 2;
-            }
-            float num637 = 0.05f;
+			float num637 = 0.05f;
 			for (int num638 = 0; num638 < 1000; num638++)
 			{
-				bool flag23 = Main.projectile[num638].type == mod.ProjectileType("ScoutMinion");
+				bool flag23 = Main.projectile[num638].type == mod.ProjectileType("ChaosConstruct");
 				if (num638 != projectile.whoAmI && Main.projectile[num638].active && Main.projectile[num638].owner == projectile.owner && flag23 && Math.Abs(projectile.position.X - Main.projectile[num638].position.X) + Math.Abs(projectile.position.Y - Main.projectile[num638].position.Y) < projectile.width)
 				{
 					if (projectile.position.X < Main.projectile[num638].position.X)
@@ -100,17 +93,33 @@ namespace AAMod.Items.Summoning.Minions
 			{
 				projectile.tileCollide = false;
 			}
-			for (int num645 = 0; num645 < 200; num645++)
+			if (player.HasMinionAttackTargetNPC)
 			{
-				NPC nPC2 = Main.npc[num645];
-				if (nPC2.CanBeChasedBy(projectile, false))
+				NPC nPC2 = Main.npc[player.MinionAttackTargetNPC];
+                if (nPC2.CanBeChasedBy(projectile, false))
 				{
 					float num646 = Vector2.Distance(nPC2.Center, projectile.Center);
 					if (((Vector2.Distance(projectile.Center, vector46) > num646 && num646 < num633) || !flag25) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, nPC2.position, nPC2.width, nPC2.height))
 					{
-						num633 = num646;
 						vector46 = nPC2.Center;
 						flag25 = true;
+					}
+				}
+			}
+			else
+			{
+				for (int num645 = 0; num645 < 200; num645++)
+				{
+					NPC nPC2 = Main.npc[num645];
+					if (nPC2.CanBeChasedBy(projectile, false))
+					{
+						float num646 = Vector2.Distance(nPC2.Center, projectile.Center);
+						if (((Vector2.Distance(projectile.Center, vector46) > num646 && num646 < num633) || !flag25) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, nPC2.position, nPC2.width, nPC2.height))
+						{
+							num633 = num646;
+							vector46 = nPC2.Center;
+							flag25 = true;
+						}
 					}
 				}
 			}
@@ -185,29 +194,14 @@ namespace AAMod.Items.Summoning.Minions
 					projectile.velocity.Y = -0.05f;
 				}
 			}
-			if (flag25)
-			{
-				projectile.rotation = (vector46 - projectile.Center).ToRotation() + 3.14159274f;
-			}
-			else
-			{
-				projectile.rotation = projectile.velocity.ToRotation() + 3.14159274f;
-			}
-			projectile.frameCounter++;
-			if (projectile.frameCounter > 3)
-			{
-				projectile.frame++;
-				projectile.frameCounter = 0;
-			}
-			if (projectile.frame > 2)
-			{
-				projectile.frame = 0;
-			}
+
+			projectile.rotation += projectile.velocity.X * .01f;
+
 			if (projectile.ai[1] > 0f)
 			{
 				projectile.ai[1] += Main.rand.Next(1, 4);
 			}
-			if (projectile.ai[1] > 90f)
+			if (projectile.ai[1] > 160f)
 			{
 				projectile.ai[1] = 0f;
 				projectile.netUpdate = true;
@@ -215,7 +209,6 @@ namespace AAMod.Items.Summoning.Minions
 			if (projectile.ai[0] == 0f)
 			{
 				float scaleFactor3 = 8f;
-				int num658 = mod.ProjectileType("Neutralizer");
 				if (flag25 && projectile.ai[1] == 0f)
 				{
 					projectile.ai[1] += 1f;
@@ -224,14 +217,25 @@ namespace AAMod.Items.Summoning.Minions
 						Vector2 value19 = vector46 - projectile.Center;
 						value19.Normalize();
 						value19 *= scaleFactor3;
-						int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, num658, (int)(projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, 0f);
-                        Main.projectile[num659].ranged = false;
-                        Main.projectile[num659].minion = true;
-                        Main.projectile[num659].timeLeft = 300;
+						Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, ModContent.ProjectileType<ChaosConstructShot>(), (int)(projectile.damage * 0.8f), 0f, Main.myPlayer, 0f, Main.rand.Next(2));
 						projectile.netUpdate = true;
 					}
 				}
 			}
         }
-    }
+
+		public float rot = 0;
+
+		public override bool PreDraw(SpriteBatch spritebatch, Color lightColor)
+		{
+			Texture2D Tex = Main.projectileTexture[projectile.type];
+			Texture2D Glow = mod.GetTexture("Items/Summoning/Minions/ChaosConstruct_Eye");
+
+			Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
+
+			BaseDrawing.DrawTexture(spritebatch, Glow, 0, projectile.position, projectile.width, projectile.height, projectile.scale, 0, 0, 4, frame, Color.White, true);
+			BaseDrawing.DrawTexture(spritebatch, Tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, lightColor, true);
+			return false;
+		}
+	}
 }

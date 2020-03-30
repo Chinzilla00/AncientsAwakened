@@ -10,6 +10,7 @@ namespace AAMod.Projectiles.Greed
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Gold Fountain");
+            Main.projFrames[projectile.type] = 4;
         }
 
         public override void SetDefaults()
@@ -27,7 +28,14 @@ namespace AAMod.Projectiles.Greed
 
         public override void AI()
         {
-            projectile.rotation += .1f;
+            if (++projectile.frameCounter >= 4)
+            {
+                projectile.frameCounter = 0;
+                if (++projectile.frame >= 3)
+                {
+                    projectile.frame = 0;
+                }
+            }
 
             if (projectile.timeLeft < 60)
             {

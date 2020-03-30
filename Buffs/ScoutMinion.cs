@@ -1,6 +1,9 @@
+using Terraria;
+using Terraria.ModLoader;
+
 namespace AAMod.Buffs
 {
-    /*public class ScoutMinion : ModBuff
+    public class ScoutMinion : ModBuff
 	{
 		public override void SetDefaults()
 		{
@@ -17,7 +20,7 @@ namespace AAMod.Buffs
 			{
 				modPlayer.ScoutMinion = true;
 			}
-			if (!modPlayer.TrueDoomite)
+			if (!modPlayer.ScoutMinion)
 			{
 				player.DelBuff(buffIndex);
 				buffIndex--;
@@ -27,5 +30,5 @@ namespace AAMod.Buffs
 				player.buffTime[buffIndex] = 2;
 			}
 		}
-	}*/
+	}
 }

@@ -8,7 +8,7 @@ namespace AAMod.Items.Boss.Greed.WKG
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("MINE-er");
+            DisplayName.SetDefault("Unearther");
             Tooltip.SetDefault("Mines ores even faster");
         }
 

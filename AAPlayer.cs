@@ -1754,7 +1754,7 @@ namespace AAMod
             {
                 if (player.velocity.X < -runSpeed && player.velocity.Y == 0f && !player.mount.Active)
                 {
-                    if (AADash == 1)
+                    if (AADash == 1 && Main.rand.Next(50) == 0)
                     {
                         int dust = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y), player.width + 8, 4, ModContent.DustType<Feather>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default, 1.5f);
                         Main.dust[dust].velocity.X = Main.dust[dust].velocity.X * 0.2f;
@@ -1767,7 +1767,7 @@ namespace AAMod
             {
                 if (player.velocity.X > runSpeed && player.velocity.Y == 0f && !player.mount.Active)
                 {
-                    if (AADash == 1)
+                    if (AADash == 1 && Main.rand.Next(50) == 0)
                     {
                         int dust = Dust.NewDust(new Vector2(player.position.X - 4f, player.position.Y), player.width + 8, 4, ModContent.DustType<Feather>(), -player.velocity.X * 0.5f, player.velocity.Y * 0.5f, 50, default, 1.5f);
                         Main.dust[dust].velocity.X = Main.dust[dust].velocity.X * 0.2f;

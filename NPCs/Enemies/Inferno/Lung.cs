@@ -64,10 +64,10 @@ namespace AAMod.NPCs.Enemies.Inferno
             if (npc.ai[1] >= 1200)
                 npc.ai[1] = 0;
             npc.TargetClosest(true);
-            if (!Main.player[npc.target].active || Main.player[npc.target].dead)
+            if (!player.active || player.dead)
             {
                 npc.TargetClosest(true);
-                if (!Main.player[npc.target].active || Main.player[npc.target].dead)
+                if (!player.active || player.dead)
                 {
                     npc.ai[3]++;
                     npc.velocity.Y = npc.velocity.Y + 0.11f;
@@ -121,8 +121,8 @@ namespace AAMod.NPCs.Enemies.Inferno
 
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
-            float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
-            float targetYPos = Main.player[npc.target].position.Y + (Main.player[npc.target].height / 2);
+            float targetXPos = player.position.X + (player.width / 2);
+            float targetYPos = player.position.Y + (player.height / 2);
 
             float targetRoundedPosX = (int)(targetXPos / 16.0) * 16;
             float targetRoundedPosY = (int)(targetYPos / 16.0) * 16;
@@ -240,7 +240,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
             
 
-            if (Main.player[npc.target].dead || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f)
+            if (player.dead || Math.Abs(npc.position.X - player.position.X) > 6000f || Math.Abs(npc.position.Y - player.position.Y) > 6000f)
             {
                 npc.velocity.Y = npc.velocity.Y + 1f;
                 if (npc.position.Y < 0)
@@ -282,7 +282,7 @@ namespace AAMod.NPCs.Enemies.Inferno
 
         public override void NPCLoot()
         {
-            BaseAI.DropItem(npc, mod.ItemType("CrucibleScale"), Main.expertMode ? 1 + Main.rand.Next(2) : Main.rand.Next(1), 3, 100, true);
+            BaseAI.DropItem(npc, mod.ItemType("SearingSpark"), Main.expertMode ? 1 + Main.rand.Next(2) : Main.rand.Next(1), 3, 100, true);
         }
 
 

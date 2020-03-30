@@ -883,6 +883,11 @@ namespace AAMod
                         pool.Add(mod.NPCType("MagmaSwimmer"), SpawnCondition.WaterCritter.Chance * 0.2f);
                         pool.Add(mod.NPCType("BlazePhoenix"), .1f);
                     }
+
+                    if (AAWorld.downedSisters)
+                    {
+                        pool.Add(mod.NPCType("BlazeClaw"), .05f);
+                    }
                 }
                 else if (spawnInfo.player.position.Y > (Main.worldSurface * 16.0))
                 {
@@ -910,12 +915,7 @@ namespace AAMod
                     }
                 }
 
-                if (AAWorld.downedSisters)
-                {
-                    pool.Add(mod.NPCType("BlazeClaw"), .05f);
-                }
-
-                if (AAWorld.downedAkuma)
+                if (NPC.downedMoonlord)
                 {
                     pool.Add(mod.NPCType("Lung"), .01f);
                 }
@@ -937,6 +937,11 @@ namespace AAMod
                         pool.Add(mod.NPCType("FogAngler"), SpawnCondition.WaterCritter.Chance * 0.05f);
                         pool.Add(mod.NPCType("Toxitoad"), .01f);
                         pool.Add(mod.NPCType("Kappa"), .05f);
+                    }
+
+                    if (AAWorld.downedSisters)
+                    {
+                        pool.Add(mod.NPCType("AbyssClaw"), .02f);
                     }
                 }
                 else if (spawnInfo.player.position.Y > (Main.worldSurface * 16.0))
@@ -964,9 +969,9 @@ namespace AAMod
                     }
                 }
 
-                if (AAWorld.downedSisters)
+                if (NPC.downedMoonlord)
                 {
-                    pool.Add(mod.NPCType("AbyssClaw"), .02f);
+                    pool.Add(mod.NPCType("Soulsucker"), .01f);
                 }
             }
 

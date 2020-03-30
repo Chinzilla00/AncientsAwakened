@@ -92,7 +92,7 @@ namespace AAMod.NPCs.Enemies.Other
 
         public override void NPCLoot()
         {
-            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MadnessFragment"), Main.rand.Next(2,3));
+            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("MadnessFragment"), Main.rand.Next(1,2));
         }
 
     }

@@ -13,7 +13,7 @@ Right click to shoot a blade wave");
 
 		public override void SetDefaults()
 		{
-            item.damage = 200;
+            item.damage = 350;
             item.width = 70; 
             item.height = 80;
             item.melee = true;
@@ -68,6 +68,7 @@ Right click to shoot a blade wave");
             }
             else
             {
+                item.damage = 350;
                 item.melee = true;
                 item.noMelee = true;
                 item.noUseGraphic = true;

@@ -11,7 +11,7 @@ namespace AAMod.Items.Materials
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Snow Mana");
+            DisplayName.SetDefault("Searing Spark");
             // ticksperframe, frameCount
             Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(6, 4));
             ItemID.Sets.ItemIconPulse[item.type] = true;

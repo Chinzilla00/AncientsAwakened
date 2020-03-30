@@ -85,7 +85,7 @@ namespace AAMod.Items.Summoning
 			recipe.AddIngredient(mod, "SandScepter");
 			recipe.AddIngredient(mod, "SnakeStaff");
 			recipe.AddIngredient(mod, "FireStaff");
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 			
@@ -94,7 +94,7 @@ namespace AAMod.Items.Summoning
 			recipe.AddIngredient(mod, "SandScepter");
 			recipe.AddIngredient(mod, "SnakeStaff");
 			recipe.AddIngredient(mod, "HydraStaff");
-			recipe.AddTile(TileID.Anvils);
+			recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
