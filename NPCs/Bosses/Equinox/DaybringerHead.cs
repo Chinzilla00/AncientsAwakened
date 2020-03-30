@@ -711,6 +711,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                         Main.npc[i].immune[projectile.owner] = 10;
                     }
                 }
+                damage = (int)(damage * .44f);
             }
         }
 
