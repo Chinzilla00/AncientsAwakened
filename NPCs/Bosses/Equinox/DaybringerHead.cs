@@ -243,11 +243,39 @@ namespace AAMod.NPCs.Bosses.Equinox
                 if(preDeathRay)
                 {
                     npc.defense = 9999;
-                    if((npc.Center - target.Center).Length() < 400f)
+                    if((npc.Center - target.Center).Length() < 300f)
                     {
                         isDeathRay = true;
                     }
-                    moveSpeedMax = target.velocity.Length() > 0? (target.velocity.Length() + 30f) : 30f;
+
+                    if (npc.Center.X < target.Center.X)
+                    {
+                        npc.velocity.X += 0.5f;
+                        if (npc.velocity.X < 0)
+                            npc.velocity.X += 0.5f * 2;
+                    }
+                    else
+                    {
+                        npc.velocity.X -= 0.5f;
+                        if (npc.velocity.X > 0)
+                            npc.velocity.X -= 0.5f * 2;
+                    }
+                    if (npc.Center.Y < target.Center.Y)
+                    {
+                        npc.velocity.Y += 0.5f;
+                        if (npc.velocity.Y < 0)
+                            npc.velocity.Y += 0.5f * 2;
+                    }
+                    else
+                    {
+                        npc.velocity.Y -= 0.5f;
+                        if (npc.velocity.Y > 0)
+                            npc.velocity.Y -= 0.5f * 2;
+                    }
+
+                    if(npc.velocity.X > 30f) npc.velocity.X = 30f;
+                    if(npc.velocity.Y > 30f) npc.velocity.Y = 30f;
+
                     internalAI[5] = npc.velocity.X;
                     internalAI[6] = npc.velocity.Y;
                 }
@@ -274,14 +302,15 @@ namespace AAMod.NPCs.Bosses.Equinox
                 npc.defense = 9999;
                 npc.TargetClosest(false);
                 npc.velocity = new Vector2(internalAI[5], internalAI[6]);
-                Vector2 newvelocity = npc.velocity + Vector2.Normalize(npc.velocity.RotatedBy((float)Math.PI/2)) * 0.039f;
-                npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
-                npc.velocity = Vector2.Normalize(newvelocity) * 4f;
+                
+                if(internalAI[2] < 90)
+                {
+                    Vector2 newvelocity = npc.velocity + Vector2.Normalize(npc.velocity.RotatedBy((float)Math.PI/2)) * 0.58f;
+                    npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+                    npc.velocity = Vector2.Normalize(newvelocity) * 16f;
+                }
 
-                internalAI[5] = npc.velocity.X;
-                internalAI[6] = npc.velocity.Y;
-
-                if (internalAI[2]++ == 320)
+                if (internalAI[2]++ == 120)
                 {
                     for (int i = 0; i < Main.maxNPCs; i+=2)
                     {
@@ -296,8 +325,11 @@ namespace AAMod.NPCs.Bosses.Equinox
                         }
                     }
                 }
-                if (internalAI[2] >= 320)
+                if (internalAI[2] >= 120)
                 {
+                    Vector2 newvelocity = npc.velocity + Vector2.Normalize(npc.velocity.RotatedBy((float)Math.PI/2)) * 0.039f;
+                    npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+                    npc.velocity = Vector2.Normalize(newvelocity) * 4f;
                     for(int deathRay = 0; deathRay < Main.maxProjectiles; deathRay++)
                     {
                         if(Main.projectile[deathRay].active && Main.projectile[deathRay].type == mod.ProjectileType("NightclawerDeathraySmall") || Main.projectile[deathRay].type == mod.ProjectileType("NightclawerDeathray") && Main.projectile[deathRay].ai[1] == npc.whoAmI)
@@ -307,7 +339,10 @@ namespace AAMod.NPCs.Bosses.Equinox
                     }
                 }
 
-                if(internalAI[2] > 600)
+                internalAI[5] = npc.velocity.X;
+                internalAI[6] = npc.velocity.Y;
+
+                if(internalAI[2] > 400)
                 {
                     internalAI[2] = 0;
                     isDeathRay = false;
@@ -362,7 +397,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                         }
                     }
                 }
-                if (internalAI[3] % 100 == 60)
+                if (internalAI[3] % 200 == 60)
                 {
                     Vector2 speed = Vector2.Normalize(npc.velocity) * 8f;
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, speed.X, speed.Y, mod.ProjectileType("DaybringerSun"), npc.damage / 4, 1, 255);
