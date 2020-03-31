@@ -185,6 +185,7 @@ namespace AAMod
         public bool ChampionMe = false;
         public bool ChampionRa = false;
         public bool ChampionMa = false;
+        public int CarrotBuff = 0;
         public bool ChampionSu = false;
         public bool StoneSoldier = false;
 
@@ -1537,6 +1538,25 @@ namespace AAMod
                 vector2.X = Main.mouseX + Main.screenPosition.X;
                 vector2.Y = Main.mouseY + Main.screenPosition.Y;
                 Projectile.NewProjectile(vector2.X, vector2.Y, 0, 0, mod.ProjectileType("RajahDrone"), (int)(100 * player.rangedDamage), 2, Main.myPlayer, 0f, 0f);
+            }
+        }
+
+        public void CarrotLevelup()
+        {
+            if (player.whoAmI == Main.myPlayer)
+            {
+                for (int i = 0; i < 22; i++)
+                {
+                    if (player.buffType[i] == mod.BuffType("CBoost1") || 
+                        player.buffType[i] == mod.BuffType("CBoost2") ||
+                        player.buffType[i] == mod.BuffType("CBoost3"))
+                    {
+                        player.DelBuff(i);
+                    }
+                }
+                CarrotBuff = (int)MathHelper.Clamp(CarrotBuff + 1, 0f, 3f);
+                player.AddBuff(mod.BuffType("CBoost" + CarrotBuff), 480, true);
+                return;
             }
         }
 
@@ -3442,6 +3462,15 @@ namespace AAMod
                 {
                     target.AddBuff(mod.BuffType("Moonraze"), 180);
                 }
+
+                if (ChampionMa)
+                {
+                    if (Main.rand.Next(30) == 0)
+                    {
+                        int i = Item.NewItem(target.Hitbox, mod.ItemType("CarrotBooster"), 1, false, 0, true);
+                        Main.item[i].velocity = new Vector2(5 * hitDirection, 5 * hitDirection);
+                    }
+                }
             }
 
             if (proj.minion)
@@ -4276,10 +4305,10 @@ namespace AAMod
 
             if (drawPlayer.GetModPlayer<AAPlayer>().ShieldScale > 0)
             {
-                Texture2D Shield = mod.GetTexture("NPCs/Bosses/Sagittarius/SagittariusShield");
+                Texture2D Shield = mod.GetTexture("Textures/SagittariusShield");
                 BaseDrawing.DrawTexture(Main.spriteBatch, Shield, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>().ShieldScale, 0, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), AAColor.ZeroShield, true);
 
-                Texture2D Ring = mod.GetTexture("NPCs/Bosses/Sagittarius/SagittariusFreeRing");
+                Texture2D Ring = mod.GetTexture("Textures/SagittariusRing");
                 BaseDrawing.DrawTexture(Main.spriteBatch, Ring, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>().ShieldScale, drawPlayer.GetModPlayer<AAPlayer>().RingRotation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), true);
 
                 Texture2D RingGlow = mod.GetTexture("Glowmasks/SagittariusFreeRing_Glow");
@@ -4292,11 +4321,13 @@ namespace AAMod
                 int red = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingFlameDye);
                 BaseDrawing.DrawTexture(Main.spriteBatch, Shield, red, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>().AsheFlameScale, drawPlayer.GetModPlayer<AAPlayer>().RingRotation, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), BaseDrawing.GetLightColor(new Vector2(drawPlayer.position.X, drawPlayer.position.Y)), true);
             }
-        
-            if (drawPlayer.GetModPlayer<AAPlayer>().TimeScale > 0)
+
+            int cbuff = drawPlayer.GetModPlayer<AAPlayer>().CarrotBuff;
+
+            if (cbuff > 0)
             {
-                Texture2D Ring = mod.GetTexture("Items/Accessories/TimeRing");
-                BaseDrawing.DrawTexture(Main.spriteBatch, Ring, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>().TimeScale, drawPlayer.GetModPlayer<AAPlayer>().RingRotation, 0, 1, new Rectangle(0, 0, Ring.Width, Ring.Height), AAColor.COLOR_WHITEFADE1, true);
+                Texture2D Shield = mod.GetTexture("Textures/CBoost" + cbuff);
+                BaseDrawing.DrawTexture(Main.spriteBatch, Shield, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>().AsheFlameScale, drawPlayer.GetModPlayer<AAPlayer>().RingRotation, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), Main.DiscoColor, true);
             }
         });
 
