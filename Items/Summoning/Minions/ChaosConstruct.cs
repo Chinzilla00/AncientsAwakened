@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -17,7 +17,7 @@ namespace AAMod.Items.Summoning.Minions
             ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
-    	
+
         public override void SetDefaults()
         {
             projectile.width = 44;
@@ -228,7 +228,7 @@ namespace AAMod.Items.Summoning.Minions
 		public override bool PreDraw(SpriteBatch spritebatch, Color lightColor)
 		{
 			Texture2D Tex = Main.projectileTexture[projectile.type];
-			Texture2D Glow = mod.GetTexture("Items/Summoning/Minions/ChaosConstruct_Eye");
+			Texture2D Glow = mod.GetTexture("Items/Summoning/Minions/ChaosConstructEye");
 
 			Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
 
