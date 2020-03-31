@@ -1019,6 +1019,217 @@ namespace AAMod
             {
                 target.AddBuff(BuffID.Midas, 600);
             }
+
+            if (ChampionMa)
+            {
+                if (Main.rand.Next(30) == 0)
+                {
+                    int i = Item.NewItem(target.Hitbox, mod.ItemType("CarrotBooster"), 1, false, 0, true);
+                    Main.item[i].velocity = new Vector2(Main.rand.Next(-5, 5), Main.rand.Next(-5, 5));
+                }
+            }
+        }
+
+
+        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            if (proj.melee)
+            {
+                if (perfectChaosMe)
+                {
+                    target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
+                }
+
+                if (dracoSet)
+                {
+                    target.AddBuff(BuffID.Daybreak, 600);
+                }
+
+                if (Tied)
+                {
+                    target.AddBuff(BuffID.CursedInferno, 180);
+                }
+
+                if (valkyrieSet)
+                {
+                    target.AddBuff(BuffID.Frostburn, 180);
+                    target.AddBuff(BuffID.Chilled, 180);
+                }
+
+                if (darkmatterSetMe)
+                {
+                    target.AddBuff(mod.BuffType("Electrified"), 500);
+                }
+
+                if (ChaosMe || ChaosMe1)
+                {
+                    string buffName = Main.rand.Next(2) == 0 ? "DragonFire" : "HydraToxin";
+                    target.AddBuff(mod.BuffType(buffName), 180);
+                }
+
+                if (demonGauntlet)
+                {
+                    int buff = WorldGen.crimson ? BuffID.Ichor : BuffID.CursedInferno;
+                    target.AddBuff(buff, 180);
+                }
+
+                if (player.HasBuff(mod.BuffType("DragonfireFlaskBuff")))
+                {
+                    target.AddBuff(mod.BuffType("DragonFire"), 900);
+                }
+
+                if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")))
+                {
+                    target.AddBuff(mod.BuffType("Hydratoxin"), 900);
+                }
+            }
+
+            if (proj.ranged)
+            {
+                if (perfectChaosRa)
+                {
+                    target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
+                }
+
+                if (dreadSet)
+                {
+                    target.AddBuff(ModContent.BuffType<Moonraze>(), 600);
+                }
+
+                if (DynaskullSet && Main.rand.Next(4) == 0)
+                {
+                    target.AddBuff(BuffID.Confused, 180);
+                }
+
+                if (depthSet)
+                {
+                    target.AddBuff(BuffID.Poisoned, 180);
+                }
+
+                if (darkmatterSetRa)
+                {
+                    target.AddBuff(mod.BuffType("Electrified"), 500);
+                }
+
+                if (ChaosRa || ChaosRa2)
+                {
+                    string buffName = Main.rand.Next(2) == 0 ? "DragonFire" : "HydraToxin";
+                    target.AddBuff(mod.BuffType(buffName), 180);
+                }
+            }
+
+            if (proj.magic)
+            {
+                if (MoonSet)
+                {
+                    target.AddBuff(ModContent.BuffType<Moonraze>(), 300);
+                }
+
+                if (zeroSet)
+                {
+                    target.AddBuff(ModContent.BuffType<BrokenArmor>(), 1000);
+                }
+
+                if (perfectChaosMa)
+                {
+                    target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
+                }
+
+                if (darkmatterSetMa)
+                {
+                    target.AddBuff(mod.BuffType("Electrified"), 500);
+                }
+
+                if (ChaosMa)
+                {
+                    string buffName = Main.rand.Next(2) == 0 ? "DragonFire" : "HydraToxin";
+                    target.AddBuff(mod.BuffType(buffName), 180);
+                }
+
+                if (BlackLotusEmblem)
+                {
+                    target.AddBuff(mod.BuffType("Moonraze"), 180);
+                }
+            }
+
+            if (proj.minion)
+            {
+                if (zeroSet1)
+                {
+                    target.AddBuff(ModContent.BuffType<BrokenArmor>(), 1000);
+                }
+
+                if (perfectChaosSu)
+                {
+                    target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
+                }
+
+                if (impSet)
+                {
+                    target.AddBuff(BuffID.OnFire, 180);
+                }
+
+                if (darkmatterSetSu)
+                {
+                    target.AddBuff(mod.BuffType("Electrified"), 500);
+                }
+            }
+
+            if (proj.thrown)
+            {
+                if (darkmatterSetTh)
+                {
+                    target.AddBuff(mod.BuffType("Electrified"), 500);
+                }
+
+                if (Alpha && Main.rand.Next(2) == 0 && !target.boss)
+                {
+                    target.AddBuff(BuffID.Wet, 500);
+                }
+            }
+
+            if (ChampionMa)
+            {
+                if (Main.rand.Next(30) == 0)
+                {
+                    int i = Item.NewItem(target.Hitbox, mod.ItemType("CarrotBooster"), 1, false, 0, true);
+                    Main.item[i].velocity = new Vector2(Main.rand.Next(-5, 5), Main.rand.Next(-5, 5));
+                }
+            }
+
+            if (Baolei && (proj.melee || proj.magic))
+            {
+                int buff = Main.dayTime ? BuffID.Daybreak : BuffID.OnFire;
+                target.AddBuff(buff, 1000);
+            }
+
+            if (Naitokurosu && (proj.ranged || proj.minion))
+            {
+                int buff = Main.dayTime ? BuffID.Venom : ModContent.BuffType<Moonraze>();
+                target.AddBuff(buff, 1000);
+            }
+
+            if (Duality)
+            {
+                int buff = Main.dayTime ? BuffID.Daybreak : ModContent.BuffType<Moonraze>();
+                target.AddBuff(buff, 1000);
+            }
+
+            if (clawsOfChaos)
+            {
+                player.ApplyDamageToNPC(target, 5, 0, 0, false);
+            }
+
+            if (DiscordShredder)
+            {
+                player.ApplyDamageToNPC(target, 30, 0, 0, false);
+                target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
+            }
+
+            if (StoneSoldier)
+            {
+                target.AddBuff(BuffID.Midas, 600);
+            }
         }
 
         #endregion
@@ -3341,202 +3552,6 @@ namespace AAMod
             }
 
             return base.ConsumeAmmo(weapon, ammo);
-        }
-
-        public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            if (proj.melee)
-            {
-                if (perfectChaosMe)
-                {
-                    target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
-                }
-
-                if (dracoSet)
-                {
-                    target.AddBuff(BuffID.Daybreak, 600);
-                }
-
-                if (Tied)
-                {
-                    target.AddBuff(BuffID.CursedInferno, 180);
-                }
-
-                if (valkyrieSet)
-                {
-                    target.AddBuff(BuffID.Frostburn, 180);
-                    target.AddBuff(BuffID.Chilled, 180);
-                }
-
-                if (darkmatterSetMe)
-                {
-                    target.AddBuff(mod.BuffType("Electrified"), 500);
-                }
-
-                if (ChaosMe || ChaosMe1)
-                {
-                    string buffName = Main.rand.Next(2) == 0 ? "DragonFire" : "HydraToxin";
-                    target.AddBuff(mod.BuffType(buffName), 180);
-                }
-
-                if (demonGauntlet)
-                {
-                    int buff = WorldGen.crimson ? BuffID.Ichor : BuffID.CursedInferno;
-                    target.AddBuff(buff, 180);
-                }
-
-                if (player.HasBuff(mod.BuffType("DragonfireFlaskBuff")))
-                {
-                    target.AddBuff(mod.BuffType("DragonFire"), 900);
-                }
-
-                if (player.HasBuff(mod.BuffType("HydratoxinFlaskBuff")))
-                {
-                    target.AddBuff(mod.BuffType("Hydratoxin"), 900);
-                }
-            }
-
-            if (proj.ranged)
-            {
-                if (perfectChaosRa)
-                {
-                    target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
-                }
-
-                if (dreadSet)
-                {
-                    target.AddBuff(ModContent.BuffType<Moonraze>(), 600);
-                }
-
-                if (DynaskullSet && Main.rand.Next(4) == 0)
-                {
-                    target.AddBuff(BuffID.Confused, 180);
-                }
-
-                if (depthSet)
-                {
-                    target.AddBuff(BuffID.Poisoned, 180);
-                }
-
-                if (darkmatterSetRa)
-                {
-                    target.AddBuff(mod.BuffType("Electrified"), 500);
-                }
-
-                if (ChaosRa || ChaosRa2)
-                {
-                    string buffName = Main.rand.Next(2) == 0 ? "DragonFire" : "HydraToxin";
-                    target.AddBuff(mod.BuffType(buffName), 180);
-                }
-            }
-
-            if (proj.magic)
-            {
-                if (MoonSet)
-                {
-                    target.AddBuff(ModContent.BuffType<Moonraze>(), 300);
-                }
-
-                if (zeroSet)
-                {
-                    target.AddBuff(ModContent.BuffType<BrokenArmor>(), 1000);
-                }
-
-                if (perfectChaosMa)
-                {
-                    target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
-                }
-
-                if (darkmatterSetMa)
-                {
-                    target.AddBuff(mod.BuffType("Electrified"), 500);
-                }
-
-                if (ChaosMa)
-                {
-                    string buffName = Main.rand.Next(2) == 0 ? "DragonFire" : "HydraToxin";
-                    target.AddBuff(mod.BuffType(buffName), 180);
-                }
-
-                if(BlackLotusEmblem)
-                {
-                    target.AddBuff(mod.BuffType("Moonraze"), 180);
-                }
-
-                if (ChampionMa)
-                {
-                    if (Main.rand.Next(30) == 0)
-                    {
-                        int i = Item.NewItem(target.Hitbox, mod.ItemType("CarrotBooster"), 1, false, 0, true);
-                        Main.item[i].velocity = new Vector2(5 * hitDirection, 5 * hitDirection);
-                    }
-                }
-            }
-
-            if (proj.minion)
-            {
-                if (zeroSet1)
-                {
-                    target.AddBuff(ModContent.BuffType<BrokenArmor>(), 1000);
-                }
-
-                if (perfectChaosSu)
-                {
-                    target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
-                }
-
-                if (impSet)
-                {
-                    target.AddBuff(BuffID.OnFire, 180);
-                }
-
-                if (darkmatterSetSu)
-                {
-                    target.AddBuff(mod.BuffType("Electrified"), 500);
-                }
-            }
-
-            if (proj.thrown)
-            {
-                if (darkmatterSetTh)
-                {
-                    target.AddBuff(mod.BuffType("Electrified"), 500);
-                }
-
-                if (Alpha && Main.rand.Next(2) == 0 && !target.boss)
-                {
-                    target.AddBuff(BuffID.Wet, 500);
-                }
-            }
-
-            if (Baolei && (proj.melee || proj.magic))
-            {
-                int buff = Main.dayTime ? BuffID.Daybreak : BuffID.OnFire;
-                target.AddBuff(buff, 1000);
-            }
-
-            if (Naitokurosu && (proj.ranged || proj.minion))
-            {
-                int buff = Main.dayTime ? BuffID.Venom : ModContent.BuffType<Moonraze>();
-                target.AddBuff(buff, 1000);
-            }
-
-            if (Duality)
-            {
-                int buff = Main.dayTime ? BuffID.Daybreak : ModContent.BuffType<Moonraze>();
-                target.AddBuff(buff, 1000);
-            }
-
-            if (clawsOfChaos)
-            {
-                player.ApplyDamageToNPC(target, 5, 0, 0, false);
-            }
-
-            if (DiscordShredder)
-            {
-                player.ApplyDamageToNPC(target, 30, 0, 0, false);
-                target.AddBuff(ModContent.BuffType<DiscordInferno>(), 300);
-            }
         }
 
         public override Texture2D GetMapBackgroundImage()

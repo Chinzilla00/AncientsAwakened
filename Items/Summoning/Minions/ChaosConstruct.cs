@@ -18,38 +18,40 @@ namespace AAMod.Items.Summoning.Minions
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
 
-        public override void SetDefaults()
-        {
-            projectile.width = 44;
-            projectile.height = 44;
-            projectile.netImportant = true;
-            projectile.friendly = true;
-            projectile.ignoreWater = true;
-            projectile.minionSlots = 1;
-            projectile.timeLeft = 18000 * 5;
-            projectile.penetrate = -1;
-            projectile.tileCollide = false;
-            projectile.minion = true;
-        }
-        public override void AI()
-        {
-            bool flag64 = projectile.type == mod.ProjectileType("ChaosConstruct");
-            Player player = Main.player[projectile.owner];
-            AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
-            player.AddBuff(mod.BuffType("ChaosConstruct"), 3600);
-            if (flag64)
-            {
-                if (player.dead)
-                {
-                    modPlayer.ChaosConstruct = false;
-                }
-                if (modPlayer.ChaosConstruct)
-                {
-                    projectile.timeLeft = 2;
-                }
-            }
+		public override void SetDefaults()
+		{
+			projectile.width = 44;
+			projectile.height = 44;
+			projectile.timeLeft = 18000;
+			projectile.timeLeft *= 5;
+			projectile.minionSlots = 1f;
+			projectile.penetrate = -1;
+			projectile.tileCollide = false;
+			projectile.timeLeft *= 5;
+			projectile.minion = true;
+			projectile.netImportant = true;
+			projectile.friendly = true;
+			projectile.ignoreWater = true;
+		}
+		public override void AI()
+		{
+			bool flag64 = projectile.type == mod.ProjectileType("ChaosConstruct");
+			Player player = Main.player[projectile.owner];
+			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
+			player.AddBuff(mod.BuffType("ChaosConstruct"), 3600);
+			if (flag64)
+			{
+				if (player.dead)
+				{
+					modPlayer.ChaosConstruct = false;
+				}
+				if (modPlayer.ChaosConstruct)
+				{
+					projectile.timeLeft = 2;
+				}
+			}
 
-            float num633 = 700f;
+			float num633 = 700f;
 			float num634 = 800f;
 			float num635 = 1200f;
 			float num636 = 150f;

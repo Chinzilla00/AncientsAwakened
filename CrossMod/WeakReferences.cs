@@ -155,6 +155,21 @@ namespace AAMod.Globals
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Djinn"));
 
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/ZeroBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/ZeroBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/ZeroBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Red,
+                    Color.Red,
+                    Color.Red);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Sag"));
+
                 //Anubis
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
@@ -656,7 +671,7 @@ namespace AAMod.Globals
                 #endregion
 
                 #region Sagittarius
-                bossChecklist.Call("AddBoss", 5.7f, mod.NPCType("Sagittarius"), mod,
+                bossChecklist.Call("AddBoss", 5.7f, mod.NPCType("Sag"), mod,
                     Lang.BossCheck("Sagittarius"),
                     (Func<bool>)(() => AAWorld.downedSag),
                     ModContent.ItemType<Lifescanner>(),

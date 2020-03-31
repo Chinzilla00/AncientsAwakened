@@ -2,7 +2,6 @@
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
-using Terraria.ModLoader;
 
 namespace AAMod.Items.Armor.Champion.Carrot
 {
@@ -38,6 +37,11 @@ namespace AAMod.Items.Armor.Champion.Carrot
             Lighting.AddLight(item.Center, Main.DiscoColor.ToVector3() * 0.55f * Main.essScale);
         }
 
+        public override void GrabRange(Player player, ref int grabRange)
+        {
+            grabRange += 100;
+        }
+
         public override bool OnPickup(Player player)
         {
             Main.PlaySound(7, (int)player.position.X, (int)player.position.Y, 1, 1f, 0f);
@@ -45,12 +49,8 @@ namespace AAMod.Items.Armor.Champion.Carrot
             {
                 player.GetModPlayer<AAPlayer>().CarrotLevelup();
             }
-            return true;
-        }
-
-        public override void UpdateInventory(Player player)
-        {
             item.TurnToAir();
+            return true;
         }
     }
 }
