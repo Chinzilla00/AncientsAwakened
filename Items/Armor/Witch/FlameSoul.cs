@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -17,7 +17,7 @@ namespace AAMod.Items.Armor.Witch
             ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
         }
-    	
+
         public override void SetDefaults()
         {
             projectile.netImportant = true;
@@ -81,7 +81,7 @@ namespace AAMod.Items.Armor.Witch
             }
             Vector2 vector = projectile.position;
             float num10 = 400f;
-            
+
             bool flag = false;
             int num11 = -1;
             projectile.tileCollide = false;
@@ -250,7 +250,7 @@ namespace AAMod.Items.Armor.Witch
             {
                 float scaleFactor4 = 7f;
                 int num29 = ModContent.ProjectileType<FlameSoulShot>();
-                
+
                 if (flag)
                 {
                     if (Collision.SolidCollision(projectile.position, projectile.width, projectile.height))
@@ -304,8 +304,11 @@ namespace AAMod.Items.Armor.Witch
             glowColorG = BaseMod.BaseUtility.MultiLerp(player.statLife / player.statLifeMax, glowColor.G, glowColor2.G);
             glowColorB = BaseMod.BaseUtility.MultiLerp(player.statLife / player.statLifeMax, glowColor.B, glowColor2.B);
 
-            projectile.scale = BaseMod.BaseUtility.MultiLerp(player.statLife / player.statLifeMax, .1f, .2f, .3f, .4f, .5f, .6f, .7f, .8f, .9f, 1f);
-
+            projectile.scale = (1f-(player.statLife/(float)player.statLifeMax))+0.1f;
+            if(projectile.scale>1f)
+            projectile.scale = 1f;
+            if(projectile.scale<0f)
+            projectile.scale = 0f;
             if (player.statLife > (player.statLifeMax * .9f))
             {
                 projectile.damage = 60 + 0;
