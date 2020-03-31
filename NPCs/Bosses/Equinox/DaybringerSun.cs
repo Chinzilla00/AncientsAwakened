@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             
             const int aislotHomingCooldown = 0;
             const int homingDelay = 15;
-            const float desiredFlySpeedInPixelsPerFrame = 13f;
+            const float desiredFlySpeedInPixelsPerFrame = 12f;
             const float amountOfFramesToLerpBy = 30; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
@@ -73,7 +73,7 @@ namespace AAMod.NPCs.Bosses.Equinox
         private int HomeOnTarget()
         {
             const bool homingCanAimAtWetEnemies = true;
-            const float homingMaximumRangeInPixels = 500;
+            const float homingMaximumRangeInPixels = 3000;
             
             int selectedTarget = -1;
 

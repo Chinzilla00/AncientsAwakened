@@ -397,7 +397,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                         }
                     }
                 }
-                if (internalAI[3] % 100 == 60)
+                if (internalAI[3] % 200 == 60)
                 {
                     Vector2 speed = Vector2.Normalize(npc.velocity) * 8f;
                     Projectile.NewProjectile(npc.Center.X, npc.Center.Y, speed.X, speed.Y, mod.ProjectileType("DaybringerSun"), npc.damage / 4, 1, 255);
