@@ -21,7 +21,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
             projectile.penetrate = -1;
-			projectile.timeLeft = 300;
+			projectile.timeLeft = 400;
         }
 
         public override void AI()
@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             
             const int aislotHomingCooldown = 0;
             const int homingDelay = 15;
-            const float desiredFlySpeedInPixelsPerFrame = 12f;
+            const float desiredFlySpeedInPixelsPerFrame = 13f;
             const float amountOfFramesToLerpBy = 30; // minimum of 1, please keep in full numbers even though it's a float!
 
             projectile.ai[aislotHomingCooldown]++;
@@ -123,7 +123,8 @@ namespace AAMod.NPCs.Bosses.Equinox
                 Vector2 shoot = new Vector2((float)Math.Sin(i * 0.125f * (float)Math.PI), (float)Math.Cos(i * 0.125f * (float)Math.PI));
                 shoot *= 12f;
                 int ball = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, shoot.X, shoot.Y, 258, projectile.damage, 5, Main.myPlayer);
-                Main.projectile[ball].timeLeft = 150;
+                Main.projectile[ball].timeLeft = 1500;
+                Main.projectile[ball].tileCollide = false;
             }
             projectile.active = false;
         }

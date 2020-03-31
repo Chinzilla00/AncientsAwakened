@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.width = 46;
             npc.height = 46;
             npc.friendly = false;
-            npc.damage = 100;
+            npc.damage = 80;
             npc.lifeMax = 1500;
             npc.noGravity = true;
             npc.aiStyle = -1;
