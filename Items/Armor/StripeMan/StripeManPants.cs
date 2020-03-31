@@ -13,6 +13,8 @@ namespace AAMod.Items.Armor.StripeMan
 			DisplayName.SetDefault("Stripeman's Lucky Pants");
             Tooltip.SetDefault(@"Get all of the fisher skill effects
 When fish swallowed the hook, you can get an extra fish.
+Your fishing rod can steal the items from the enemies
+You can use your fishing rod catch the items on the ground  
 You have more chance to get a crate among the extra booty");
         }
 

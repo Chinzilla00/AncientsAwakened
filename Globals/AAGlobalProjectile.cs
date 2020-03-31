@@ -89,7 +89,7 @@ namespace AAMod
                         for(int i = 0; i < 200; i++)
                         {
                             Rectangle npcrec = new Rectangle((int)Main.npc[i].position.X, (int)Main.npc[i].position.Y, Main.npc[i].width, Main.npc[i].height);
-                            if(Main.npc[i].active && Main.npc[i].life != 0 && rectangle.Intersects(npcrec))
+                            if(Main.npc[i].active && Main.npc[i].life != 0 && !Main.npc[i].boss && rectangle.Intersects(npcrec))
                             {
                                 Main.npc[i].NPCLoot();
                                 projectile.ai[0] = 1;
