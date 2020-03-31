@@ -10,7 +10,6 @@ namespace AAMod.Items.Armor.Champion.Carrot
             DisplayName.SetDefault("Champion Boost");
             Description.SetDefault("Increased stats");
             Main.buffNoSave[Type] = true;
-            Main.buffNoTimeDisplay[Type] = true;
         }
 
         public override void Update(Player player, ref int buffIndex)

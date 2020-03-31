@@ -17,13 +17,10 @@ namespace AAMod.Items.Armor.Champion.Carrot
             ItemID.Sets.ItemNoGravity[item.type] = true;
         }
 
-        // TODO -- Velocity Y smaller, post NewItem?
         public override void SetDefaults()
         {
-            Item refItem = new Item();
-            refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
+            item.width = 16;
+            item.height = 16;
             item.maxStack = 999;
         }
 
