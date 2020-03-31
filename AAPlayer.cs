@@ -4341,7 +4341,15 @@ namespace AAMod
 
             if (cbuff > 0)
             {
-                Texture2D Shield = mod.GetTexture("Textures/CBoost" + cbuff);
+                Texture2D Shield = mod.GetTexture("Textures/CBoost1");
+                if (drawPlayer.HasBuff(mod.BuffType("CBoost2")))
+                {
+                    Shield = mod.GetTexture("Textures/CBoost2");
+                }
+                if (drawPlayer.HasBuff(mod.BuffType("CBoost3")))
+                {
+                    Shield = mod.GetTexture("Textures/CBoost3");
+                }
                 BaseDrawing.DrawTexture(Main.spriteBatch, Shield, 0, drawPlayer.position, drawPlayer.width, drawPlayer.height, drawPlayer.GetModPlayer<AAPlayer>().AsheFlameScale, drawPlayer.GetModPlayer<AAPlayer>().RingRotation, 0, 1, new Rectangle(0, 0, Shield.Width, Shield.Height), Main.DiscoColor, true);
             }
         });

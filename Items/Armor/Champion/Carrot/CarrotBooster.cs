@@ -26,12 +26,12 @@ namespace AAMod.Items.Armor.Champion.Carrot
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return Main.DiscoColor;
+            return AAColor.DiscoAlt2();
         }
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.Center, Main.DiscoColor.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(item.Center, AAColor.DiscoAlt2().ToVector3() * 0.55f * Main.essScale);
         }
 
         public override void GrabRange(Player player, ref int grabRange)

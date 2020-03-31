@@ -106,8 +106,7 @@ namespace AAMod
         public static Color DragonFire => BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, new Color(125, 10, 50), new Color(212, 45, 40), new Color(125, 10, 50));
 
         public static Color Uranium => BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, BaseDrawing.GetLightColor(Main.LocalPlayer.position), BaseDrawing.GetLightColor(Main.LocalPlayer.position), Color.Green, Color.Green, BaseDrawing.GetLightColor(Main.LocalPlayer.position));
-
-
+        
         public static Color FlashGlow => BaseUtility.MultiLerpColor(Main.LocalPlayer.miscCounter % 100 / 100f, Color.Transparent, Color.White, Color.White, Color.Transparent);
 
         public static Color Oblivion
@@ -140,6 +139,124 @@ namespace AAMod
                 c.A = 255;
                 return c;
             }
+        }
+
+        public static int DiscoR1 = 0;
+
+        public static int DiscoB1 = 255;
+
+        public static int DiscoG1 = 0;
+
+        public static int DiscoStyle1;
+
+        public static Color DiscoAlt1()
+        {
+            int num2 = 7;
+            if (DiscoStyle1 == 0)
+            {
+                DiscoG1 += num2;
+                if (DiscoG1 >= 255)
+                {
+                    DiscoG1 = 255;
+                    DiscoStyle1++;
+                }
+            }
+            if (DiscoStyle1 == 1)
+            {
+                DiscoR1 -= num2;
+                if (DiscoR1 <= 0)
+                {
+                    DiscoR1 = 0;
+                    DiscoStyle1++;
+                }
+            }
+            if (DiscoStyle1 == 2)
+            {
+                DiscoB1 += num2;
+                if (DiscoB1 >= 255)
+                {
+                    DiscoB1 = 255;
+                    DiscoStyle1++;
+                }
+            }
+            if (DiscoStyle1 == 3)
+            {
+                DiscoG1 -= num2;
+                if (DiscoG1 <= 0)
+                {
+                    DiscoG1 = 0;
+                    DiscoStyle1++;
+                }
+            }
+            if (DiscoStyle1 == 4)
+            {
+                DiscoR1 += num2;
+                if (DiscoR1 >= 255)
+                {
+                    DiscoR1 = 255;
+                    DiscoStyle1++;
+                }
+            }
+            return new Color(DiscoR1, DiscoG1, DiscoB1);
+        }
+
+        public static int DiscoR2 = 0;
+
+        public static int DiscoB2 = 0;
+
+        public static int DiscoG2 = 255;
+
+        public static int DiscoStyle2;
+
+        public static Color DiscoAlt2()
+        {
+            int num2 = 7;
+            if (DiscoStyle2 == 0)
+            {
+                DiscoG1 += num2;
+                if (DiscoG1 >= 255)
+                {
+                    DiscoG1 = 255;
+                    DiscoStyle2++;
+                }
+            }
+            if (DiscoStyle2 == 1)
+            {
+                DiscoR1 -= num2;
+                if (DiscoR1 <= 0)
+                {
+                    DiscoR1 = 0;
+                    DiscoStyle2++;
+                }
+            }
+            if (DiscoStyle2 == 2)
+            {
+                DiscoB1 += num2;
+                if (DiscoB1 >= 255)
+                {
+                    DiscoB1 = 255;
+                    DiscoStyle2++;
+                }
+            }
+            if (DiscoStyle2 == 3)
+            {
+                DiscoG1 -= num2;
+                if (DiscoG1 <= 0)
+                {
+                    DiscoG1 = 0;
+                    DiscoStyle2++;
+                }
+            }
+            if (DiscoStyle2 == 4)
+            {
+                DiscoR1 += num2;
+                if (DiscoR1 >= 255)
+                {
+                    DiscoR1 = 255;
+                    DiscoStyle2++;
+                }
+            }
+            return new Color(DiscoR1, DiscoG1, DiscoB1);
         }
     }
 }
