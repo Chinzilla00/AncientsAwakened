@@ -50,6 +50,10 @@ Striking enemies has a chance to spawn an energy carrot from them
 Each energy carrot picked up boosts your damage, mana regen, and health regen
 Stacks up to 3 times
 Each level increases the boosts of these stats";
+
+            AAPlayer mplayer = player.GetModPlayer<AAPlayer>();
+
+            mplayer.ChampionMa = true;
         }
 
         public override void UpdateEquip(Player player)
