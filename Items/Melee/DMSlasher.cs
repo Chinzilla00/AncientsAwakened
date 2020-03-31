@@ -18,7 +18,7 @@ namespace AAMod.Items.Melee
             item.width = 56;
             item.height = 56;
             item.melee = true;
-            item.damage = 350; 
+            item.damage = 350;
             item.knockBack = 3;
             item.autoReuse = true;
             item.useStyle = 1;
@@ -131,6 +131,7 @@ namespace AAMod.Items.Melee
             }
             projectile.damage = 0;
             projectile.ai[0] += 1f; // Framerate
+            projectile.position += player.velocity;
         }
 
 
@@ -141,11 +142,10 @@ namespace AAMod.Items.Melee
             Color lighting = Lighting.GetColor((int)(player.MountedCenter.X / 16), (int)(player.MountedCenter.Y / 16));
             return Saber.PreDrawSlashAndWeapon(spriteBatch, projectile, weaponItemID, lighting,
                 SlashLogic == 0f ? specialSlash : null,
-                SlashLogic == 0f ? new Color(1f, 255f, 181f, 1f) : lighting, 
+                SlashLogic == 0f ? new Color(1f, 255f, 181f, 1f) : lighting,
                 specialProjFrames,
                 SlashLogic == 0f ? chargeSlashDirection : SlashLogic);
         }
 
     }
 }
-
