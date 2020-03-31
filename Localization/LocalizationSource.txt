@@ -856,13 +856,10 @@ ItemTooltip.OceanShirt=Increases maximum mana by 20\n5% increased magic damage
 
 
 ItemName.OlympianBoots=Olympian Greaves
-ItemTooltip.OlympianBoots=Increases magic critical strike chance by 15%
 
 ItemName.OlympianHelm=Olympian Helmet
-ItemTooltip.OlympianHelm=Decreases mana usage by 25%
 
 ItemName.OlympianPlate=Olympian Breastplate
-ItemTooltip.OlympianPlate=Increases magic damage by 20%
 
 
 // AAMod.Items.Armor.Oroboros
