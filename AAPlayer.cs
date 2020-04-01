@@ -432,6 +432,7 @@ namespace AAMod
             Athena = false;
             Baron = false;
             Xiao = false;
+            ChaosConstruct = false;
         }
 
         private void ResetArmorEffect()
