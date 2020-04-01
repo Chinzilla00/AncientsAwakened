@@ -29,6 +29,28 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.friendly = false;
         }
 
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            {
+                writer.Write(count);
+                writer.Write(Control);
+                writer.Write(SootProj);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                count = reader.ReadInt();
+                Control = reader.ReadInt();
+                SootProj = reader.ReadInt();
+            }
+        }
+
         public int count = 0;
         public int Control = 0;
 
@@ -51,9 +73,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     {
                         Runeshootspeed = 10f * Vector2.Normalize(Main.player[Main.npc[(int)npc.ai[3]].target].position - new Vector2(npc.ai[0], npc.ai[1]));
                     }
-                    SootProj = Projectile.NewProjectile(npc.Center.X + Runeshootspeed.X, npc.Center.Y + Runeshootspeed.Y, 0, 0, ModContent.ProjectileType<AsheShot>(), (int)npc.ai[2]/2, 0, Main.myPlayer, Runeshootspeed.X, Runeshootspeed.Y);
-                    Main.projectile[SootProj].velocity = new Vector2(0,0);
-                    Main.projectile[SootProj].alpha = 0;
+                    if (Main.netMode != 1)
+                    {
+                        SootProj = Projectile.NewProjectile(npc.Center.X + Runeshootspeed.X, npc.Center.Y + Runeshootspeed.Y, 0, 0, ModContent.ProjectileType<AsheShot>(), (int)npc.ai[2]/2, 0, Main.myPlayer, Runeshootspeed.X, Runeshootspeed.Y);
+                        Main.projectile[SootProj].velocity = new Vector2(0,0);
+                        Main.projectile[SootProj].alpha = 0;
+                    }
                 }
                 else if(count < 30)
                 {

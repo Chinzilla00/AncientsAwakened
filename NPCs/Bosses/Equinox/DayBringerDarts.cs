@@ -30,11 +30,9 @@ namespace AAMod.NPCs.Bosses.Equinox
                 projectile.Kill();
             }
 
-            int dustId = Dust.NewDust(projectile.Center, 0, 12, 6, projectile.velocity.X * 0.2f,
-                projectile.velocity.Y * 0.2f, 100, new Color(250, 244, 171), 2f);
+            int dustId = Dust.NewDust(projectile.Center + new Vector2(0, 10f), 10, 12, 6, 0f, 0f, 100, new Color(250, 244, 171), 2f);
             Main.dust[dustId].noGravity = true;
-            int dustId3 = Dust.NewDust(projectile.Center, 0, 12, 6, projectile.velocity.X * 0.2f,
-                projectile.velocity.Y * 0.2f, 100, new Color(250, 244, 171), 2f);
+            int dustId3 = Dust.NewDust(projectile.Center + new Vector2(0, 10f), 10, 12, 6, 0f, 0f, 100, new Color(250, 244, 171), 2f);
             Main.dust[dustId3].noGravity = true;
         }
 
