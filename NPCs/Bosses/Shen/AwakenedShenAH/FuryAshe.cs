@@ -638,6 +638,10 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             {
                 moveSpeed *= 0.5f;
             }
+            if (length < 10f)
+            {
+                moveSpeed *= 0.01f;
+            }
             npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;

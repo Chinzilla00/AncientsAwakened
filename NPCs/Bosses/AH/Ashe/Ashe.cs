@@ -48,8 +48,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             bossBag = mod.ItemType("AHBag");
         }
 
-        public int[] Vortexes = null;
-
         public bool RuneCrash = false;
 
         public override void AI()
@@ -131,7 +129,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     {
                         npc.ai[1] = 0;
                         npc.ai[0]++;
-                        npc.netUpdate = true;
                     }
                     break;
                 case 6: //prepare for fishron dash
@@ -143,7 +140,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
-                        npc.netUpdate = true;
                         npc.velocity = npc.DirectionTo(player.Center) * (npc.life < npc.lifeMax/3 ? 50:40);
                         if(npc.velocity.Length() < 40f)
                         {
@@ -183,7 +179,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         {
                             npc.ai[0]--;
                         }
-                        npc.netUpdate = true;
                     }
                     npc.rotation = npc.velocity.ToRotation();
                     if (npc.velocity.X < 0)
@@ -285,7 +280,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     
                     float RunepositionX = Runeposition.X;
                     float RunepositionY = Runeposition.Y;
-                    NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage / 4, npc.whoAmI, player.whoAmI);
+                    int id = NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage / 4, npc.whoAmI, player.whoAmI);
+                    Main.npc[id].netUpdate = true;
                     npc.ai[2] = 0;
                 }
             }
@@ -457,6 +453,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.ai[1] = 0;
             npc.ai[2] = 0;
             npc.ai[3] = 0;
+            npc.netUpdate = true;
         }
 
         public static int VortexDamage()
@@ -514,6 +511,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                     OrbiterCount -= 2;
                 }
+                npc.netUpdate = true;
             }
         }
 
@@ -576,6 +574,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
                 writer.Write(pos);
+                writer.Write(Health);
+                writer.Write(RuneCrash);
+                writer.Write(OrbiterCount);
             }
         }
 
@@ -585,6 +586,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
                 pos = reader.ReadFloat();
+                Health = reader.ReadBool();
+                RuneCrash = reader.ReadBool();
+                OrbiterCount = reader.ReadInt();
             }
         }
 
@@ -675,6 +679,10 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             if (length < 50f)
             {
                 moveSpeed *= 0.5f;
+            }
+            if (length < 10f)
+            {
+                moveSpeed *= 0.01f;
             }
             npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;

@@ -1,8 +1,9 @@
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+using System.IO;
 using Terraria;
+using Terraria.ID;
 using BaseMod;
 using Terraria.ModLoader;
 
@@ -32,6 +33,26 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
         }
 
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            {
+                writer.Write(body);
+                writer.Write(rotValue);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                body = reader.ReadInt();
+                rotValue = reader.ReadFloat();
+            }
+        }
+
         public int body = -1;
         public float rotValue = -1f;
         public override void AI()
@@ -55,6 +76,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 npc.alpha = 0;
             }
             npc.noGravity = true;
+            body = (int)npc.ai[0];
             if (body == -1)
             {
                 int npcID = BaseAI.GetNPC(npc.Center, mod.NPCType("Ashe"), 120f, null);

@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Graphics.Shaders;
+using System.IO;
 
 namespace AAMod.NPCs.Bosses.AH.Ashe
 {
@@ -29,19 +30,41 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.friendly = false;
         }
 
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            {
+                writer.Write(count);
+                writer.Write(Control);
+                writer.Write(SootProj);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                count = reader.ReadInt();
+                Control = reader.ReadInt();
+                SootProj = reader.ReadInt();
+            }
+        }
+
         public int count = 0;
         public int Control = 0;
 
-        public int SootProj = 0;
+        public int SootProj = -1;
 
         public Vector2 Runeshootspeed = new Vector2();
 
         public override void AI()
         {
+            ServerClientCheck("OK?");
             if (Control == 1)
             {
-
-                if (count == 0)
+                if (SootProj == -1 || count == 0)
                 {
                     if(Main.player[Main.npc[(int)npc.ai[3]].target].position - new Vector2(npc.ai[0], npc.ai[1]) == new Vector2(0f, 0f))
                     {
@@ -51,20 +74,30 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     {
                         Runeshootspeed = 10f * Vector2.Normalize(Main.player[Main.npc[(int)npc.ai[3]].target].position - new Vector2(npc.ai[0], npc.ai[1]));
                     }
-                    SootProj = Projectile.NewProjectile(npc.Center.X + Runeshootspeed.X, npc.Center.Y + Runeshootspeed.Y, 0, 0, ModContent.ProjectileType<AsheShot>(), (int)npc.ai[2]/2, 0, Main.myPlayer, Runeshootspeed.X, Runeshootspeed.Y);
-                    Main.projectile[SootProj].velocity = new Vector2(0,0);
-                    Main.projectile[SootProj].alpha = 0;
+                    if(Main.netMode != 1)
+                    {
+                        SootProj = Projectile.NewProjectile(npc.Center.X + Runeshootspeed.X, npc.Center.Y + Runeshootspeed.Y, 0, 0, ModContent.ProjectileType<AsheShot>(), (int)npc.ai[2]/2, 0, Main.myPlayer, Runeshootspeed.X, Runeshootspeed.Y);
+                        Main.projectile[SootProj].velocity = new Vector2(0,0);
+                        Main.projectile[SootProj].alpha = 0;
+                        npc.netUpdate = true;
+                    }
                 }
-                else if(count < 30)
+                if(count < 30)
                 {
-                    Main.projectile[SootProj].alpha += 8;
-                    if(Main.projectile[SootProj].alpha > 255) Main.projectile[SootProj].alpha = 255;
-                    Main.projectile[SootProj].velocity = new Vector2(0,0);
+                    if(SootProj != -1)
+                    {
+                        Main.projectile[SootProj].alpha += 8;
+                        if(Main.projectile[SootProj].alpha > 255) Main.projectile[SootProj].alpha = 255;
+                        Main.projectile[SootProj].velocity = new Vector2(0,0);
+                    }
                 }
                 else if(count >= 60)
                 {
-                    Main.projectile[SootProj].velocity = new Vector2(Runeshootspeed.X, Runeshootspeed.Y);
-                    Control = 2;
+                    if(SootProj != -1)
+                    {
+                        Main.projectile[SootProj].velocity = new Vector2(Runeshootspeed.X, Runeshootspeed.Y);
+                        Control = 2;
+                    }
                 }
                 count ++;
             }
@@ -98,6 +131,20 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     npc.scale += .04f;
                 }
+            }
+        }
+
+        public static void ServerClientCheck(string q)
+        {
+            if (Main.netMode == 1)
+            {
+                Main.NewText("Client says  " + q, Color.Pink);
+            }
+
+
+            if (Main.netMode == 2) // Server
+            {
+                NetMessage.BroadcastChatMessage(Terraria.Localization.NetworkText.FromLiteral("Server says " + q), Color.Green);
             }
         }
 

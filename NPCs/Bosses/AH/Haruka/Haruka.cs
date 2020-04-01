@@ -89,6 +89,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 writer.Write(internalAI[6]); //Haruka skill counter
                 writer.Write(internalAI[7]); //Haruka Shadow Dash Counter
                 writer.Write(internalAI[8]); //Shadowkilling colddown
+                writer.Write(ShadowNPC[0]);
+                writer.Write(ShadowNPC[1]);
+                writer.Write(ShadowNPC[2]);
+                writer.Write(SHADOWCONTER);
+                writer.Write(strikebackproj);
                 writer.Write(ProjectileShoot);
                 writer.Write(repeat);
                 writer.Write(SelectPoint);
@@ -113,6 +118,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 internalAI[6] = reader.ReadInt();
                 internalAI[7] = reader.ReadInt();
                 internalAI[8] = reader.ReadInt();
+                ShadowNPC[0] = reader.ReadInt();
+                ShadowNPC[1] = reader.ReadInt();
+                ShadowNPC[2] = reader.ReadInt();
+                SHADOWCONTER = reader.ReadInt();
+                strikebackproj = reader.ReadInt();
                 ProjectileShoot = reader.ReadInt();
                 repeat = reader.ReadInt();
                 isSlashing = reader.ReadBool();
@@ -654,21 +664,26 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
                     double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
                     double deltaAngle = spread / 6f;
-                    for (int i = 0; i < 3; i++)
+
+                    if(Main.netMode != 1)
                     {
-                        double offsetAngle = startAngle + (deltaAngle * i);
-                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 0, Main.myPlayer);
-                    }
-                    if(strikebackproj != 0)
-                    {
-                        startAngle -= .1d * (strikebackproj / 2);
-                        deltaAngle = spread / 3f;
-                        for (int i = 0; i < strikebackproj; i++)
+                        for (int i = 0; i < 3; i++)
                         {
                             double offsetAngle = startAngle + (deltaAngle * i);
-                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), ModContent.ProjectileType<HarukaArrow>(), damage, 0, Main.myPlayer);
+                            Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage, 0, Main.myPlayer);
+                        }
+                        if(strikebackproj != 0)
+                        {
+                            startAngle -= .1d * (strikebackproj / 2);
+                            deltaAngle = spread / 3f;
+                            for (int i = 0; i < strikebackproj; i++)
+                            {
+                                double offsetAngle = startAngle + (deltaAngle * i);
+                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), ModContent.ProjectileType<HarukaArrow>(), damage, 0, Main.myPlayer);
+                            }
                         }
                     }
+                    
                     strikebackproj = 0;
 
                     npc.frameCounter = 0;
@@ -905,6 +920,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             spawnpoint[1] = playerLocation + 275f * new Vector2((float)Math.Sin(1.16f * Pi), (float)Math.Cos(1.13f * Pi));
             spawnpoint[2] = playerLocation + 275f * new Vector2((float)Math.Sin(1.83f * Pi), (float)Math.Cos(1.83f * Pi));
 
+            if(!SpawnClone && (ShadowNPC[0] == -1 || ShadowNPC[1] == -1 || ShadowNPC[2] == -1))
+            {
+                return;
+            }
+
             if(npc.alpha >= 255 && SpawnClone)
             {
                 int k = Main.rand.Next(3);
@@ -920,7 +940,9 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     k2 = 0;
                 }
                 ShadowNPC[1] = NPC.NewNPC((int)spawnpoint[k1].X, (int)spawnpoint[k1].Y, ModContent.NPCType<HarukaClone>());
+                NetMessage.SendData(23, -1, -1, null, ShadowNPC[1], 0f, 0f, 0f, 0, 0, 0);
                 ShadowNPC[2] = NPC.NewNPC((int)spawnpoint[k2].X, (int)spawnpoint[k2].Y, ModContent.NPCType<HarukaClone>());
+                NetMessage.SendData(23, -1, -1, null, ShadowNPC[2], 0f, 0f, 0f, 0, 0, 0);
                 npc.alpha = 250;
                 Main.npc[ShadowNPC[1]].alpha = npc.alpha;
                 Main.npc[ShadowNPC[2]].alpha = npc.alpha;
@@ -958,6 +980,8 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     npc.velocity = Main.player[npc.target].velocity;
                     Main.npc[ShadowNPC[1]].velocity = Main.player[npc.target].velocity;
                     Main.npc[ShadowNPC[2]].velocity = Main.player[npc.target].velocity;
+                    Main.npc[ShadowNPC[1]].netUpdate = true;
+                    Main.npc[ShadowNPC[2]].netUpdate = true;
                     
                     ShadowkingPosition = playerLocation;
                 }
@@ -988,11 +1012,10 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if(internalAI[4] >= 160 || Main.npc[ShadowNPC[1]].Hitbox.Intersects(Main.npc[ShadowNPC[0]].Hitbox) || Main.npc[ShadowNPC[1]].Hitbox.Intersects(Main.npc[ShadowNPC[2]].Hitbox) || Main.npc[ShadowNPC[2]].Hitbox.Intersects(Main.npc[ShadowNPC[0]].Hitbox))
             {
-                Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, 0, 0, ModContent.ProjectileType<HarukaStrike>(), damage*1, 5, Main.myPlayer);
-
                 Vector2 shoot;
                 if (Main.netMode != 1)
                 {
+                    Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, 0, 0, ModContent.ProjectileType<HarukaStrike>(), damage*1, 5, Main.myPlayer);
                     int projType = ModContent.ProjectileType<HarukaProj>();
                     for (int i = 0; i < 12; i++)
                     {
@@ -1000,19 +1023,20 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         shoot *= 10f;
                         Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, shoot.X, shoot.Y, projType, damage * 1, 5, Main.myPlayer);
                     }
+                    npc.netUpdate = true;
                 }
+
                 Main.npc[ShadowNPC[1]].boss = false;
                 Main.npc[ShadowNPC[2]].boss = false;
                 Main.npc[ShadowNPC[1]].active = false;
                 Main.npc[ShadowNPC[2]].active = false;
                 
-                ShadowNPC[0] = 0;
-                ShadowNPC[1] = 0;
-                ShadowNPC[2] = 0;
+                ShadowNPC[0] = -1;
+                ShadowNPC[1] = -1;
+                ShadowNPC[2] = -1;
                 internalAI[4] = 0;
                 ShadowkingPosition = Vector2.Zero;
                 internalAI[0] = 3;
-                npc.netUpdate = true;
             }
         }
 
@@ -1104,6 +1128,10 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             if (length < 50f)
             {
                 moveSpeed *= 0.5f;
+            }
+            if (length < 10f)
+            {
+                moveSpeed *= 0.01f;
             }
             npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
