@@ -28,7 +28,7 @@ namespace AAMod.Items.Blocks.Bricks
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "RelicOre", 1);
+            recipe.AddIngredient(null, "VikingRelic", 1);
             recipe.AddIngredient(ItemID.StoneBlock, 1);
             recipe.AddTile(TileID.Furnaces);
             recipe.SetResult(this);

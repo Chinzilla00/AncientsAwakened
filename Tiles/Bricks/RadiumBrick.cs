@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Tiles.Bricks
 {
-    class RadiumBricks : ModTile
+    class RadiumBrick : ModTile
     {
         public override void SetDefaults()
         {

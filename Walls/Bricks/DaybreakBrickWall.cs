@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Walls.Brick
+namespace AAMod.Walls.Bricks
 {
     public class DaybreakBrickWall : ModWall
 	{

@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Tiles.Bricks
 {
-    class EquinoxBricks : ModTile
+    class EquinoxBrick : ModTile
     {
         public override void SetDefaults()
         {
