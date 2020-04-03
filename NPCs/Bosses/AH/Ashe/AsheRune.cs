@@ -61,10 +61,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void AI()
         {
-            ServerClientCheck("OK?");
             if (Control == 1)
             {
-                if (SootProj == -1 || count == 0)
+                if (count == 0)
                 {
                     if(Main.player[Main.npc[(int)npc.ai[3]].target].position - new Vector2(npc.ai[0], npc.ai[1]) == new Vector2(0f, 0f))
                     {
@@ -77,9 +76,13 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     if(Main.netMode != 1)
                     {
                         SootProj = Projectile.NewProjectile(npc.Center.X + Runeshootspeed.X, npc.Center.Y + Runeshootspeed.Y, 0, 0, ModContent.ProjectileType<AsheShot>(), (int)npc.ai[2]/2, 0, Main.myPlayer, Runeshootspeed.X, Runeshootspeed.Y);
+                        if(Main.netMode == 2 && SootProj < 1000)NetMessage.SendData(27, -1, -1, null, SootProj);
+                    }
+                    npc.netUpdate = true;
+                    if(SootProj != -1)
+                    {
                         Main.projectile[SootProj].velocity = new Vector2(0,0);
                         Main.projectile[SootProj].alpha = 0;
-                        npc.netUpdate = true;
                     }
                 }
                 if(count < 30)
@@ -95,8 +98,16 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     if(SootProj != -1)
                     {
-                        Main.projectile[SootProj].velocity = new Vector2(Runeshootspeed.X, Runeshootspeed.Y);
+                        if(Runeshootspeed.X !=0 || Runeshootspeed.Y !=0)
+                        {
+                            Main.projectile[SootProj].velocity = new Vector2(Runeshootspeed.X, Runeshootspeed.Y);
+                        }
+                        else
+                        {
+                            Main.projectile[SootProj].Kill();
+                        }
                         Control = 2;
+                        npc.netUpdate = true;
                     }
                 }
                 count ++;
@@ -126,25 +137,12 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 {
                     npc.alpha = 0;
                     Control = 1;
+                    npc.netUpdate = true;
                 }
                 if (npc.scale < 1)
                 {
                     npc.scale += .04f;
                 }
-            }
-        }
-
-        public static void ServerClientCheck(string q)
-        {
-            if (Main.netMode == 1)
-            {
-                Main.NewText("Client says  " + q, Color.Pink);
-            }
-
-
-            if (Main.netMode == 2) // Server
-            {
-                NetMessage.BroadcastChatMessage(Terraria.Localization.NetworkText.FromLiteral("Server says " + q), Color.Green);
             }
         }
 
