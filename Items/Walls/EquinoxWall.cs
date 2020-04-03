@@ -1,9 +1,9 @@
-using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Walls
 {
-    public class DoomstoneBrickWall : BaseAAItem
+    public class EquinoxWall : BaseAAItem
     {
         public override void SetDefaults()
         {
@@ -16,25 +16,25 @@ namespace AAMod.Items.Walls
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
-            item.createWall = mod.WallType("DoomstoneBrickWall");
+            item.createWall = mod.WallType("EquinoxWall"); //put your CustomBlock Tile name
         }
         
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Doomstone Brick Wall");
+            DisplayName.SetDefault("Equinox Brick Wall");
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Doomstone");
+            recipe.AddIngredient(null, "EquinoxBrick");
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this, 4);
             recipe.AddRecipe();
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(this, 4);
             recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(null, "Doomstone");
+            recipe.SetResult(null, "EquinoxBrick");
             recipe.AddRecipe();
         }
     }

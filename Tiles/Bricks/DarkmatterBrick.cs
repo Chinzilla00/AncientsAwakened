@@ -2,9 +2,9 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Tiles
+namespace AAMod.Tiles.Bricks
 {
-    class AbyssiumBrick : ModTile
+    class DarkmatterBrick : ModTile
     {
         public override void SetDefaults()
         {
@@ -12,9 +12,9 @@ namespace AAMod.Tiles
             Main.tileMergeDirt[Type] = true;
             Main.tileLighted[Type] = true;
             Main.tileBlockLight[Type] = true;
-            drop = mod.ItemType("AbyssiumBrick");   
-            AddMapEntry(new Color(0, 0, 51));
-            dustType = ModContent.DustType<Dusts.AbyssiumDust>();
+            drop = mod.ItemType("DarkmatterBrick");   
+            AddMapEntry(new Color(30, 30, 51));
+            dustType = ModContent.DustType<Dusts.DarkmatterDust>();
         }
     }
 }

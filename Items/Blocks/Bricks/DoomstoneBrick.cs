@@ -1,7 +1,7 @@
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Blocks
+namespace AAMod.Items.Blocks.Bricks
 {
     public class DoomstoneBrick : BaseAAItem
     {

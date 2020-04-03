@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Blocks
+namespace AAMod.Items.Blocks.Bricks
 {
     public class DoomsdayPlating : BaseAAItem
     {

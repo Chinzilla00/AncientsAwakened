@@ -29,7 +29,7 @@ namespace AAMod
         public static Color GetIncineriteColorBrightInvert(Color color) => GetIncineriteColor(color, 1f, 0.6f, true);
 
         public static Color GetZeroColor(Color color, float min, float max, bool clamp) => GetTimedColor(AAColor.ZeroShield, color, min, max, clamp);
-        public static Color GetZeroColorDim(Color color) => GetZeroColor(color, 0.4f, 1f, false);
+        public static Color GetZeroColorDim(Color color) => GetZeroColor(color, 0.4f, .6f, false);
         public static Color GetZeroColorBright(Color color) => GetZeroColor(color, 0.6f, 1f, false);
         public static Color GetZeroColorBrightInvert(Color color) => GetZeroColor(color, 1f, 0.6f, true);
 
