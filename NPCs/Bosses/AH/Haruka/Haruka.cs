@@ -342,7 +342,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 internalAI[3] = 0;
                 internalAI[5] = 0;
                 Invisible = false;
-                npc.netUpdate = true;
             }
             
             if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH)
@@ -386,7 +385,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                             internalAI[7] = 0;
                             SHADOWDOG = true;
                         }
-                        npc.netUpdate = true;
                         break;
                     }
                 }
@@ -437,7 +435,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                             internalAI[6] -= 500;
                         }
                         npc.ai = new float[4];
-                        npc.netUpdate = true;
                     }
                     else if(internalAI[3] >= 95)
                     {
@@ -449,7 +446,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 0;
-                    npc.netUpdate = true;
                 }
             }
             else if (internalAI[0] == AISTATE_PROJ)
@@ -457,7 +453,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 if (ProjectileShoot == -1 && Main.netMode != 1)
                 {
                     ProjectileShoot = Main.rand.Next(2);
-                    npc.netUpdate = true;
                 }
                 if (ProjectileShoot == 0)
                 {
@@ -476,13 +471,11 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                             double offsetAngle = startAngle + (deltaAngle * i);
                             Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage*1, 5, Main.myPlayer);
                         }
-                        npc.netUpdate = true;
                     }
                     if ((internalAI[2] < 4 || internalAI[2] > 6) && Main.netMode != 1) 
                     {
                         internalAI[1] = 0;
                         internalAI[2] = 4;
-                        npc.netUpdate = true;
                     }
                     if (repeat <= 0)
                     {
@@ -498,7 +491,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                             ProjectileShoot -= 1;
                             repeat = 12;
                             npc.ai = new float[4];
-                            npc.netUpdate = true;
                         }
                     }
                 }
@@ -510,7 +502,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         if (internalAI[3] == 100 || internalAI[3] == 200 || internalAI[3] == 299)
                         {
                             isSlashing = true;
-                            npc.netUpdate = true;
                         }
                         if (isSlashing)
                         {
@@ -518,7 +509,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                             {
                                 internalAI[1] = 0;
                                 internalAI[2] = 7;
-                                npc.netUpdate = true;
                             }
                         }
                         else
@@ -527,7 +517,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                             {
                                 internalAI[1] = 0;
                                 internalAI[2] = 0;
-                                npc.netUpdate = true;
                             }
                         }
                     }
@@ -558,7 +547,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                             internalAI[4] = 0;
                             ProjectileShoot -= 1;
                             npc.ai = new float[4];
-                            npc.netUpdate = true;
                         }
                     }
                 }
@@ -605,7 +593,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                                 internalAI[0] = 3;
                             }
                             npc.ai = new float[4];
-                            npc.netUpdate = true;
                         }
                     }
                 }
@@ -639,7 +626,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     MovePoint = player.Center;
                     SelectPoint = false;
-                    npc.netUpdate = true;
                 }
 
                 if (strikebackproj != 0)
@@ -711,7 +697,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     internalAI[4] = 0;
                     pos *= -1f;
                     npc.ai = new float[4];
-                    npc.netUpdate = true;
                 }
                 else if(internalAI[4] > 100)
                 {
@@ -727,7 +712,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     SpawnClone = true;
                 }
                 Shadowkilling();
-                npc.netUpdate = true;
             }
             else
             {
@@ -738,7 +722,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     internalAI[2] = 0;
                     internalAI[3] = 0;
                     npc.ai = new float[4];
-                    npc.netUpdate = true;
                 }
             }
 
@@ -939,17 +922,24 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     k2 = 0;
                 }
-                ShadowNPC[1] = NPC.NewNPC((int)spawnpoint[k1].X, (int)spawnpoint[k1].Y, ModContent.NPCType<HarukaClone>());
-                NetMessage.SendData(23, -1, -1, null, ShadowNPC[1], 0f, 0f, 0f, 0, 0, 0);
-                ShadowNPC[2] = NPC.NewNPC((int)spawnpoint[k2].X, (int)spawnpoint[k2].Y, ModContent.NPCType<HarukaClone>());
-                NetMessage.SendData(23, -1, -1, null, ShadowNPC[2], 0f, 0f, 0f, 0, 0, 0);
+                if(Main.netMode != 1)
+                {
+                    ShadowNPC[1] = NPC.NewNPC((int)spawnpoint[k1].X, (int)spawnpoint[k1].Y, ModContent.NPCType<HarukaClone>());
+                    NetMessage.SendData(23, -1, -1, null, ShadowNPC[1], 0f, 0f, 0f, 0, 0, 0);
+                    ShadowNPC[2] = NPC.NewNPC((int)spawnpoint[k2].X, (int)spawnpoint[k2].Y, ModContent.NPCType<HarukaClone>());
+                    NetMessage.SendData(23, -1, -1, null, ShadowNPC[2], 0f, 0f, 0f, 0, 0, 0);
+                }
+                npc.netUpdate = true;
                 npc.alpha = 250;
-                Main.npc[ShadowNPC[1]].alpha = npc.alpha;
-                Main.npc[ShadowNPC[2]].alpha = npc.alpha;
-                Main.npc[ShadowNPC[1]].boss = true;
-                Main.npc[ShadowNPC[2]].boss = true;
-                Main.npc[ShadowNPC[1]].life = Main.npc[ShadowNPC[0]].life;
-                Main.npc[ShadowNPC[2]].life = Main.npc[ShadowNPC[0]].life;
+                if(ShadowNPC[1] != -1 && ShadowNPC[2] != -1)
+                {
+                    Main.npc[ShadowNPC[1]].alpha = npc.alpha;
+                    Main.npc[ShadowNPC[2]].alpha = npc.alpha;
+                    Main.npc[ShadowNPC[1]].boss = true;
+                    Main.npc[ShadowNPC[2]].boss = true;
+                    Main.npc[ShadowNPC[1]].life = Main.npc[ShadowNPC[0]].life;
+                    Main.npc[ShadowNPC[2]].life = Main.npc[ShadowNPC[0]].life;
+                }
                 SpawnClone = false;
             }
             else if (npc.alpha > 0)

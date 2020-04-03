@@ -109,10 +109,15 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     wantedVelocity = player.Center - new Vector2(firepos, 0);
 
                     MoveToPoint(wantedVelocity);
+
+                    npc.netUpdate = true;
                     
-                    if (npc.ai[1] > 60 && npc.ai[1] <= 180)
+                    if(Main.netMode != 1)
                     {
-                        BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 4, 16, false);
+                        if (npc.ai[1] > 60 && npc.ai[1] <= 180)
+                        {
+                            BaseAI.ShootPeriodic(npc, player.Center, player.width, player.height, ModContent.ProjectileType<AsheFlamethrower>(), ref npc.ai[2], 5, npc.damage / 4, 16, false);
+                        }
                     }
 
                     if (npc.ai[1]++ > (npc.life < npc.lifeMax/2 ? 180:300))
@@ -172,6 +177,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                             else
                             {
                                 npc.ai[0]++;
+                                npc.netUpdate = true;
                             }
                             npc.ai[3] = 0;
                         }
@@ -213,13 +219,20 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     {
                         if (npc.life < npc.lifeMax / 3)
                         {
-                            for(int i = 0; i < 8; i++)
+                            if (Main.netMode != 1)
                             {
-                                Vector2 shoot = new Vector2((float)Math.Sin(i * 0.25f * 3.1415926f), (float)Math.Cos(i * 0.25f * 3.1415926f));
-                                shoot *= 8f;
-                                Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<AsheFire>(), npc.damage / 4, 5, Main.myPlayer, 0f, 0f);
+                                for(int i = 0; i < 8; i++)
+                                {
+                                    Vector2 shoot = new Vector2((float)Math.Sin(i * 0.25f * 3.1415926f), (float)Math.Cos(i * 0.25f * 3.1415926f));
+                                    shoot *= 8f;
+                                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<AsheFire>(), npc.damage / 4, 5, Main.myPlayer, 0f, 0f);
+                                }
                             }
-                            if(Main.rand.Next(3) == 0) goto case 5;
+                            if(Main.rand.Next(3) == 0)
+                            {
+                                npc.netUpdate = true;
+                                goto case 5;
+                            }
                         }
                         AIChange();
                     }
@@ -230,11 +243,13 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     if (NPC.AnyNPCs(ModContent.NPCType<AsheDragon>()))
                     {
                         npc.ai[0] = 12;
+                        npc.netUpdate = true;
                         goto case 12;
                     }
                     else
                     {
                         npc.ai[0] = 11;
+                        npc.netUpdate = true;
                         goto case 11;
                     }
                 case 11:
@@ -243,7 +258,9 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     MoveToPoint(wantedVelocity);
                     if (npc.ai[1]++ > 200)
                     {
-                        NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AsheDragon>());
+                        int id = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AsheDragon>());
+                        if (Main.netMode == 2 && id < 200) NetMessage.SendData(23, -1, -1, null, id);
+                        npc.netUpdate = true;
                         AIChange();
                     }
                     break;
@@ -280,8 +297,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     
                     float RunepositionX = Runeposition.X;
                     float RunepositionY = Runeposition.Y;
-                    int id = NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage / 4, npc.whoAmI, player.whoAmI);
-                    Main.npc[id].netUpdate = true;
+                    if(Main.netMode != 1)
+                    {
+                        int id = NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage / 4, npc.whoAmI, player.whoAmI);
+                        if (Main.netMode == 2 && id < 200) NetMessage.SendData(23, -1, -1, null, id);
+                    }
                     npc.ai[2] = 0;
                 }
             }
@@ -453,7 +473,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             npc.ai[1] = 0;
             npc.ai[2] = 0;
             npc.ai[3] = 0;
-            npc.netUpdate = true;
         }
 
         public static int VortexDamage()
@@ -473,6 +492,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         {
                             Main.npc[i].life = 0;
                             Main.npc[i].active = false;
+                            if (Main.netMode == 2 && i < 200) 
+                            NetMessage.SendData(23, -1, -1, null, i);
                         } 
                     }
                 }
@@ -511,7 +532,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                     OrbiterCount -= 2;
                 }
-                npc.netUpdate = true;
             }
         }
 
@@ -576,7 +596,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 writer.Write(pos);
                 writer.Write(Health);
                 writer.Write(RuneCrash);
-                writer.Write(OrbiterCount);
             }
         }
 
@@ -588,14 +607,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                 pos = reader.ReadFloat();
                 Health = reader.ReadBool();
                 RuneCrash = reader.ReadBool();
-                OrbiterCount = reader.ReadInt();
             }
-        }
-
-        public void ChangePos()
-        {
-            pos = - pos;
-            npc.netUpdate = false;
         }
 
         public override void PostAI()
@@ -655,6 +667,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                 }
                 npc.direction = player.position.X > npc.position.X ? 1 : -1;
+                npc.netUpdate = true;
             }
         }
 
@@ -741,6 +754,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     if(NPC.CountNPCS(ModContent.NPCType<AsheOrbiter>()) < OrbiterCount)
                     {
                         Health = true;
+                        npc.netUpdate = true;
                     }
                 }
                 else

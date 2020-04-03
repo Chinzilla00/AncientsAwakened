@@ -115,6 +115,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         }
 
                         int newNPC = NPC.NewNPC((int)npc.Center.X, (int)(npc.position.Y + npc.height), type, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                        if (Main.netMode == 2 && newNPC < 200) NetMessage.SendData(23, -1, -1, null, newNPC);
                         Main.npc[newNPC].ai[3] = npc.whoAmI;
                         Main.npc[newNPC].realLife = npc.whoAmI;
                         Main.npc[newNPC].ai[1] = npcWhoAmI;
