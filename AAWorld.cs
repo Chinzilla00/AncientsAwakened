@@ -1337,7 +1337,7 @@ namespace AAMod
             terraTiles = tileCounts[ModContent.TileType<TerraCrystal>()] + tileCounts[ModContent.TileType<TerraWood>()] + tileCounts[ModContent.TileType<TerraLeaves>()];
             Radium = tileCounts[ModContent.TileType<RadiumOre>()];
             HoardTiles = tileCounts[ModContent.TileType<GreedBrick>()] + tileCounts[ModContent.TileType<GreedStone>()];
-            CloudTiles = tileCounts[ModContent.TileType<AcropolisBlock>()] + tileCounts[ModContent.TileType<AcropolisAltarBlock>()];
+            CloudTiles = tileCounts[ModContent.TileType<AcropolisBlock>()] + tileCounts[ModContent.TileType<AcropolisBlock2>()];
         }
 
         private void MireAndInferno(GenerationProgress progress)
@@ -1502,6 +1502,12 @@ namespace AAMod
                                 WorldGen.SquareWallFrame(k, l, true);
                                 sendNet = true;
                             }
+                            else if (WallID.Sets.Conversion.Grass[wall])
+                            {
+                                Main.tile[k, l].type = (ushort)ModContent.WallType<InfernoGrassWall>();
+                                WorldGen.SquareWallFrame(k, l);
+                                sendNet = true;
+                            }
                             if (TileID.Sets.Conversion.Stone[type])
                             {
                                 Main.tile[k, l].type = (ushort)ModContent.TileType<Torchstone>();
@@ -1565,6 +1571,12 @@ namespace AAMod
                             {
                                 Main.tile[k, l].wall = (ushort)ModContent.WallType<DepthsandHardenedWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
+                                sendNet = true;
+                            }
+                            else if (WallID.Sets.Conversion.Grass[wall] || wall == WallID.JungleUnsafe || wall == WallID.JungleUnsafe1 || wall == WallID.JungleUnsafe2 || wall == WallID.JungleUnsafe3 || wall == WallID.JungleUnsafe4)
+                            {
+                                Main.tile[k, l].type = (ushort)ModContent.WallType<MireJungleWall>();
+                                WorldGen.SquareWallFrame(k, l);
                                 sendNet = true;
                             }
                             if (TileID.Sets.Conversion.Stone[type])

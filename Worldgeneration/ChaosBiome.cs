@@ -879,7 +879,7 @@ namespace AAMod.Worldgeneration
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
             {
                 [new Color(255, 0, 0)] = mod.TileType("AcropolisBlock"),
-                [new Color(255, 0, 255)] = mod.TileType("AcropolisAltarBlock"),
+                [new Color(128, 128, 128)] = mod.TileType("AcropolisBlock2"),
                 [new Color(255, 255, 0)] = mod.TileType("SkyShard"),
                 [new Color(0, 255, 255)] = TileID.Grass,
                 [new Color(0, 255, 0)] = TileID.Dirt,

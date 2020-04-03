@@ -28,7 +28,7 @@ namespace AAMod.Walls.Bricks
         {
             if (Main.dayTime)
             {
-                BaseDrawing.DrawWallTexture(spriteBatch, Main.tileTexture[Type], x, y, true);
+                BaseDrawing.DrawWallTexture(spriteBatch, Main.wallTexture[Type], x, y, true);
             }
             else
             {

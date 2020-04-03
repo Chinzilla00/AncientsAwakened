@@ -16,7 +16,7 @@ namespace AAMod.Items.Walls
             item.useTime = 10;
             item.useStyle = 1;
             item.consumable = true;
-            item.createWall = mod.WallType("EventideWall"); //put your CustomBlock Tile name
+            item.createWall = mod.WallType("EventideWall");
         }
         
         public override void SetStaticDefaults()
