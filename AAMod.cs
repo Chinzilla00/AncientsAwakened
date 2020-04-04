@@ -38,7 +38,6 @@ namespace AAMod
 
         public static int BoneAmmo = 10000;
 
-
         // Hotkeys
         public static ModHotKey AccessoryAbilityKey;
         public static ModHotKey ArmorAbilityKey;
@@ -406,7 +405,6 @@ namespace AAMod
             VoidSky.Stars = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Void_Starfield");
             VoidSky.SkyTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/SkyTex");
 
-
             Filters.Scene["AAMod:AthenaSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.High);
             SkyManager.Instance["AAMod:AthenaSky"] = new AthenaSky();
             AthenaSky.boltTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AthenaBolt");
@@ -519,6 +517,7 @@ namespace AAMod
             vanillaTextureBackups.Add(id, Main.itemTexture[id]);
             Main.itemTexture[id] = GetTexture(texturePath);
         }
+
         public void ResetItemTexture(int id)
         {
             if (vanillaTextureBackups.ContainsKey(id))
@@ -573,7 +572,6 @@ namespace AAMod
 
         public override void Unload()
         {
-            Main.versionNumber = "Terraria v1.3.5.2";
             AAMenuset = false;
 
             if (!Main.dedServ)
