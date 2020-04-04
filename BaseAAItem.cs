@@ -45,7 +45,6 @@ namespace AAMod.Items
 			}
 		}
 
-
         public override void ModifyTooltips(List<TooltipLine> list)
         {
             if (customNameColor != null)

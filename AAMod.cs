@@ -231,6 +231,8 @@ namespace AAMod
             texture.SetData(buffer);
         }
 
+        public static Texture2D BlockBarier = null;
+
         public override void Load()
         {
             Config.Load();
@@ -439,6 +441,7 @@ namespace AAMod
             ReplaceItemTexture(3460, "Resprites/Luminite");
             ReplaceItemTexture(512, "Resprites/SoulOfNight");
 
+            BlockBarier = GetTexture("Textures/BlockShield");
             sunTextureBackup = Main.sunTexture;
             sun3TextureBackup = Main.sun3Texture;
 
@@ -653,6 +656,8 @@ namespace AAMod
                 YamataSky.PlanetTexture = null;
                 YamataSky.RockTextures = null;
                 YamataSky.SkyTex = null;
+
+                BlockBarier = null;
             }
         }
 
