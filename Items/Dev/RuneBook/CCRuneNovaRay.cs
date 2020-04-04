@@ -4,16 +4,14 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AAMod.NPCs.Bosses.Zero
+namespace AAMod.Items.Dev.RuneBook
 {
-    public class NovaRay : ModProjectile
+    public class CCRuneNovaRay : ModProjectile
     {
+        public override string Texture => "AAMod/NPCs/Bosses/Zero/NovaRay";
         private const float MoveDistance = 70f;
-        
+        public Projectile shooter;
         public float Distance;
-
-
-        public NPC shooter;
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Nova Ray");
@@ -25,24 +23,34 @@ namespace AAMod.NPCs.Bosses.Zero
             projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.hide = false;
-            projectile.friendly = false;
-            projectile.hostile = true;
+            projectile.friendly = true;
+            projectile.hostile = false;
+            projectile.minion = true;
         }
         // The AI of the projectile
-        public bool runOnce=true;
+        float rOffset = 0;
         public override void AI()
         {
-            float rOffset = 0;
-            shooter = Main.npc[(int)projectile.ai[0]];
-            if (!shooter.active || shooter.life <=0)
+            shooter = Main.projectile[(int)projectile.ai[0]];
+            NPC target = Main.npc[(int)projectile.ai[1]];
+            if (!shooter.active || !target.active || target.life < 0)
             {
                 projectile.Kill();
+                return;
             }
 
             #region Set projectile position
 
+            Vector2 shoottarget = target.Center - shooter.Center;
+            shoottarget.Normalize();
+            float rotation = shoottarget.ToRotation();
 
-            Vector2 diff = new Vector2((float)Math.Cos(shooter.rotation + rOffset) * 14f, (float)Math.Sin(shooter.rotation + rOffset) * 14f);
+            rOffset += 0.03f;
+            if(rOffset > (float)Math.PI / 2)
+            {
+                projectile.Kill();
+            }
+            Vector2 diff = new Vector2((float)Math.Cos(rotation - (float)Math.PI / 4 + rOffset) * 14f, (float)Math.Sin(rotation - (float)Math.PI / 4 + rOffset) * 14f);
             diff.Normalize();
             projectile.velocity = diff;
             projectile.netUpdate = true;
@@ -73,11 +81,11 @@ namespace AAMod.NPCs.Bosses.Zero
                 DelegateMethods.CastLight);
 
         }
-        public int colorCounter;
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-                DrawLaser(spriteBatch, Main.projectileTexture[projectile.type], new Vector2(shooter.Center.X, shooter.Center.Y),
-                    projectile.velocity, 10, -1.57f, 1f, (int)MoveDistance);
+            shooter = Main.projectile[(int)projectile.ai[0]];
+            Texture2D projectiletex = mod.GetTexture("NPCs/Bosses/Zero/NovaRay");
+            DrawLaser(spriteBatch, projectiletex, new Vector2(shooter.Center.X, shooter.Center.Y), projectile.velocity, 10, -1.57f, 1f, (int)MoveDistance);
             
             return false;
         }
