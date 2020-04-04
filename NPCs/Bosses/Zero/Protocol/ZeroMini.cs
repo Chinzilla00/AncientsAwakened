@@ -74,28 +74,38 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 npc.ai[1] ++;
                 if(npc.ai[1] % 180 == 60)
                 {
-                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -14f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
-                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 14f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
-                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(14f, 0f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
-                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-14f, 0f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
+                    if(Main.netMode != 1)
+                    {
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -14f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 14f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(14f, 0f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-14f, 0f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
+                    }
                 }
                 if(npc.ai[1] % 180 == 120)
                 {
-                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(10f, -10f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
-                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-10f, -10f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
-                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-10f, 10f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
-                    Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(10f, 10f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
+                    if(Main.netMode != 1)
+                    {
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(10f, -10f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-10f, -10f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-10f, 10f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
+                        Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(10f, 10f), mod.ProjectileType("ProtoStar"), npc.damage/2, 3);
+                    }
                 }
             }
             else if(npc.ai[0] == 2)
             {
                 npc.velocity *= 0;
-                Projectile.NewProjectile(npc.Center + new Vector2(30, 30), new Vector2(10, 10), ModContent.ProjectileType<EchoRay>(), npc.damage / 3, 0f, Main.myPlayer, 6.2831855f / 750f, npc.whoAmI);
-                Projectile.NewProjectile(npc.Center + new Vector2(-30, 30), new Vector2(-10, 10), ModContent.ProjectileType<EchoRay>(), npc.damage / 3, 0f, Main.myPlayer, 6.2831855f / 750f, npc.whoAmI);
-                Projectile.NewProjectile(npc.Center + new Vector2(30, -30), new Vector2(10, -10), ModContent.ProjectileType<EchoRay>(), npc.damage / 3, 0f, Main.myPlayer, 6.2831855f / 750f, npc.whoAmI);
-                Projectile.NewProjectile(npc.Center + new Vector2(-30, -30), new Vector2(-10, -10), ModContent.ProjectileType<EchoRay>(), npc.damage / 3, 0f, Main.myPlayer, 6.2831855f / 750f, npc.whoAmI);
+                if(Main.netMode != 1)
+                {
+                    Projectile.NewProjectile(npc.Center + new Vector2(30, 30), new Vector2(10, 10), ModContent.ProjectileType<EchoRay>(), npc.damage / 3, 0f, Main.myPlayer, 6.2831855f / 750f, npc.whoAmI);
+                    Projectile.NewProjectile(npc.Center + new Vector2(-30, 30), new Vector2(-10, 10), ModContent.ProjectileType<EchoRay>(), npc.damage / 3, 0f, Main.myPlayer, 6.2831855f / 750f, npc.whoAmI);
+                    Projectile.NewProjectile(npc.Center + new Vector2(30, -30), new Vector2(10, -10), ModContent.ProjectileType<EchoRay>(), npc.damage / 3, 0f, Main.myPlayer, 6.2831855f / 750f, npc.whoAmI);
+                    Projectile.NewProjectile(npc.Center + new Vector2(-30, -30), new Vector2(-10, -10), ModContent.ProjectileType<EchoRay>(), npc.damage / 3, 0f, Main.myPlayer, 6.2831855f / 750f, npc.whoAmI);
+                }
                 npc.ai[0] = 3;
                 npc.ai[1] = 0;
+                npc.netUpdate = true;
             }
             else if(npc.ai[0] == 3)
             {
@@ -105,6 +115,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 {
                     npc.ai[1] = 0;
                     npc.ai[0] = 1;
+                    npc.netUpdate = true;
                 }
                 return;
             }

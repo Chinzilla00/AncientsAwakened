@@ -86,6 +86,10 @@ namespace AAMod
         public bool Baron = false;
         public bool Xiao = false;
         public bool ChaosConstruct = false;
+        public bool CCBook = false;
+        public bool CCBookEX = false;
+        public bool WeakCCRune = false;
+        public bool CCRune = false;
         #endregion
 
         #region Biome bools.
@@ -433,6 +437,10 @@ namespace AAMod
             Baron = false;
             Xiao = false;
             ChaosConstruct = false;
+            CCBook = false;
+            CCBookEX = false;
+            WeakCCRune = false;
+            CCRune = false;
         }
 
         private void ResetArmorEffect()
@@ -1659,7 +1667,7 @@ namespace AAMod
                     int i = 0;
                     while (i < 3)
                     {
-                        Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, SpeedVector.X, SpeedVector.Y, mod.ProjectileType("AssassinDagger"), (int)(player.inventory[player.selectedItem].damage * 1.3), 2f, player.whoAmI, 0f, 1f);
+                        if(Main.netMode != 1) Projectile.NewProjectile(Spwanposition[i].X, Spwanposition[i].Y, SpeedVector.X, SpeedVector.Y, mod.ProjectileType("AssassinDagger"), (int)(player.inventory[player.selectedItem].damage * 1.3), 2f, player.whoAmI, 0f, 1f);
                         float round = 16f;
                         int k = 0;
                         while (k < round)
@@ -1716,6 +1724,54 @@ namespace AAMod
             if (ZoneVoid)
             {
                 player.gravity = Player.defaultGravity + .1f;
+            }
+
+            if (CCBook || CCBookEX)
+            {
+                float slotscanuse = player.maxMinions - player.slotsMinions;
+                if (slotscanuse > 1)
+                {
+                    bool RuneControl = player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.BunnyRune>()] > 1 || player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.DiscordRune>()] > 1 || player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.EnergyRune>()] > 1;
+                    bool RuneControlEX = player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.TerraRune>()] > 1 || player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.ChaosRune>()] > 1 || player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.VoidRune>()] > 1;
+                    if (RuneControl || RuneControlEX)
+                    {
+                        player.ClearBuff(ModContent.BuffType<Buffs.CCRune>());
+                    }
+                    if (player.FindBuffIndex(ModContent.BuffType<Buffs.CCRune>()) == -1)
+                    {
+                        player.AddBuff(ModContent.BuffType<Buffs.CCRune>(), 3600, true);
+                    }
+                    if (CCBook)
+                    {
+                        if (player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.BunnyRune>()] < 1 && slotscanuse > 1f)
+                        {
+                            if(Main.netMode != 1) Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, ModContent.ProjectileType<Items.Dev.RuneBook.BunnyRune>(), 0, 0, Main.myPlayer, 0f, 0f);
+                        }
+                        if (player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.DiscordRune>()] < 1 && slotscanuse > 2f)
+                        {
+                            if(Main.netMode != 1) Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, ModContent.ProjectileType<Items.Dev.RuneBook.DiscordRune>(), 50, 4f, Main.myPlayer, 0f, 0f);
+                        }
+                        if (player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.EnergyRune>()] < 1 && slotscanuse > 3f)
+                        {
+                            if(Main.netMode != 1) Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, ModContent.ProjectileType<Items.Dev.RuneBook.EnergyRune>(), 100, 2f, Main.myPlayer, 0f, 0f);
+                        }
+                    }
+                    if (CCBookEX)
+                    {
+                        if (player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.TerraRune>()] < 1 && slotscanuse > 1f)
+                        {
+                            if(Main.netMode != 1) Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, ModContent.ProjectileType<Items.Dev.RuneBook.TerraRune>(), 0, 0, Main.myPlayer, 0f, 0f);
+                        }
+                        if (player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.ChaosRune>()] < 1 && slotscanuse > 2f)
+                        {
+                            if(Main.netMode != 1) Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, ModContent.ProjectileType<Items.Dev.RuneBook.ChaosRune>(), 400, 4f, Main.myPlayer, 0f, 0f);
+                        }
+                        if (player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.VoidRune>()] < 1 && slotscanuse > 3f)
+                        {
+                            if(Main.netMode != 1) Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, ModContent.ProjectileType<Items.Dev.RuneBook.VoidRune>(), 1200, 2f, Main.myPlayer, 0f, 0f);
+                        }
+                    }
+                }
             }
 
             if (ChampionMe && AAMod.ArmorAbilityKey.JustPressed && !player.HasBuff(ModContent.BuffType<Items.Armor.Champion.RageCool>()))
@@ -2696,6 +2752,12 @@ namespace AAMod
                     case 16:
 
                         player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.CC.CCBox>());
+
+                        if (dropType >= 2)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("CCRuneBookPage"));
+                        }
+
                         spawnedDevItems = true;
                         break;
 

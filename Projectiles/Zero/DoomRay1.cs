@@ -89,19 +89,38 @@ namespace AAMod.Projectiles.Zero
             Player player = Main.player[projectile.owner];
             projectile.position = player.Center + projectile.velocity * MOVE_DISTANCE;
             projectile.timeLeft = 2;
-            if (!player.CheckMana(player.inventory[player.selectedItem].mana, true, false))
+            projectile.ai[1] ++;
+            float manadelay = 30f;
+            bool manause = false;
+			if (projectile.ai[1] > 90f)
+			{
+				manadelay = 15f;
+			}
+			if (projectile.ai[1] > 120f)
+			{
+				manadelay = 5f;
+			}
+            if (projectile.ai[1] % manadelay == 0f)
+			{
+				manause = true;
+			}
+            bool flag11 = !manause || player.CheckMana(player.inventory[player.selectedItem].mana, true, false);
+			bool flag12 = player.channel && flag11 && !player.noItems && !player.CCed;
+            if (flag12)
+            {
+                UpdatePlayer(player);
+                ChargeLaser(player);
+
+                if (Charge < MAX_CHARGE) return;
+
+                SetLaserPosition(player);
+                SpawnDusts(player);
+                CastLights();
+            }
+            else
             {
                 projectile.Kill();
             }
-
-            UpdatePlayer(player);
-            ChargeLaser(player);
-
-            if (Charge < MAX_CHARGE) return;
-
-            SetLaserPosition(player);
-            SpawnDusts(player);
-            CastLights();
         }
 
         private void SpawnDusts(Player player)
