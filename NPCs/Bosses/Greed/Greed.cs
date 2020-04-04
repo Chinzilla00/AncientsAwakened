@@ -395,6 +395,7 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
         {
+            timer = 40;
             if (item.pick > 0)
             {
                 npc.StrikeNPC(damage + item.pick, knockback, 0, true);
@@ -402,11 +403,37 @@ namespace AAMod.NPCs.Bosses.Greed
             }
         }
 
+        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+        {
+            timer = 40;
+        }
+
+        int timer = 0;
+
         public override void FindFrame(int frameHeight)
         {
+            if (timer > 0)
+            {
+                timer--;
+            }
+            else
+            {
+                timer = 0;
+            }
             if (npc.type == ModContent.NPCType<GreedBody>())
             {
                 npc.frame.Y = frameHeight * (int)npc.ai[2];
+            }
+            if (npc.type == ModContent.NPCType<Greed>())
+            {
+                if (timer > 0)
+                {
+                    npc.frame.Y = frameHeight;
+                }
+                else
+                {
+                    npc.frame.Y = 0;
+                }
             }
         }
 
@@ -415,6 +442,7 @@ namespace AAMod.NPCs.Bosses.Greed
             potionType = ItemID.GreaterHealingPotion;   //boss drops
             AAWorld.downedSerpent = true;
         }
+
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
         {
             if (npc.type != ModContent.NPCType<Greed>())

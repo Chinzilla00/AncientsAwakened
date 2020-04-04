@@ -27,7 +27,7 @@ namespace AAMod.Tiles.Bricks
             }
             else
             {
-                BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/Bricks/DarkmatterBricks"), x, y, true, false, false);
+                BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/Bricks/DarkmatterBrick"), x, y, true, false, false);
             }
             return false;
         }
