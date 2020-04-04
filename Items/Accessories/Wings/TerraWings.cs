@@ -9,7 +9,7 @@ namespace AAMod.Items.Accessories.Wings
 	{
 		public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("TerraWings Wings");
+            DisplayName.SetDefault("Terra Wings");
             Tooltip.SetDefault(@"Allows flight and slow fall");
         }
 

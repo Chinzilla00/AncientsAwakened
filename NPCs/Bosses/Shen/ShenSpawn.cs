@@ -35,7 +35,10 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
-            npc.TargetClosest();
+            if (!npc.HasNPCTarget)
+            {
+                npc.TargetClosest();
+            }
             Player player = Main.player[npc.target];
             npc.Center = player.Center - new Vector2(0, 300f);
             npc.ai[0]++;

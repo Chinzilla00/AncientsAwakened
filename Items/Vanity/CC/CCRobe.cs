@@ -29,7 +29,7 @@ namespace AAMod.Items.Vanity.CC
 
 		public override void DrawHands(ref bool drawHands, ref bool drawArms) 
 		{
-			drawHands = true;
+			drawHands = false;
 		}
 
 		public override void ModifyTooltips(List<TooltipLine> list)
