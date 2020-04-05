@@ -141,7 +141,6 @@ namespace AAMod.Items.Dev.RuneBook
                     projectile.ai[1] += 1f;
                     if (Main.myPlayer == projectile.owner && Main.player[projectile.owner].statLife < Main.player[projectile.owner].statLifeMax2)
 					{
-						Main.PlaySound(0, (int)projectile.position.X, (int)projectile.position.Y, 6, 1f, 0f);
                         Main.player[projectile.owner].HealEffect(1, false);
                         Main.player[projectile.owner].statLife += 1;
                         if (Main.player[projectile.owner].statLife > Main.player[projectile.owner].statLifeMax2)
