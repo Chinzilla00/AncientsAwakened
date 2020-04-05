@@ -25,6 +25,7 @@ namespace AAMod.Items.Blocks.BogwoodF
         {
             DisplayName.SetDefault("Bogwood Wall");
         }
+
         public override void AddRecipes()
         {
             ModRecipe recipe;
@@ -32,6 +33,7 @@ namespace AAMod.Items.Blocks.BogwoodF
             recipe.AddIngredient(null, "Bogwood");
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this, 4);
+            recipe.AddRecipe();
             recipe = new ModRecipe(mod);
             recipe.AddIngredient(this, 4);
             recipe.AddTile(TileID.WorkBenches);

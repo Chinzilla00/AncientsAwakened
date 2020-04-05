@@ -1081,6 +1081,26 @@ namespace AAMod
             });
             RecipeGroup.RegisterGroup("AAMod:DevBag", group23);
 
+            RecipeGroup group24 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " + "Terra Boots", new int[]
+            {
+                AAMod.instance.ItemType("NightsGreaves"),
+                AAMod.instance.ItemType("FleshrendGreaves"),
+                AAMod.instance.ItemType("TribalKilt"),
+                AAMod.instance.ItemType("DeathlyGreaves"),
+                AAMod.instance.ItemType("DemonBoots")
+            });
+            RecipeGroup.RegisterGroup("AAMod:TerraBoots", group24);
+
+            RecipeGroup group25 = new RecipeGroup(() => Language.GetTextValue("LegacyMisc.37") + " " + "Terra Chestplate", new int[]
+            {
+                AAMod.instance.ItemType("NightsPlate"),
+                AAMod.instance.ItemType("FleshrendPlate"),
+                AAMod.instance.ItemType("TribalCloak"),
+                AAMod.instance.ItemType("DeathlyRibguard"),
+                AAMod.instance.ItemType("DemonGarb")
+            });
+            RecipeGroup.RegisterGroup("AAMod:TerraPlates", group25);
+
             if (RecipeGroup.recipeGroupIDs.ContainsKey("Wood"))
             {
                 int index = RecipeGroup.recipeGroupIDs["Wood"];

@@ -177,21 +177,24 @@ namespace AAMod
         public bool Assassin;
         public bool AbyssalStealth;
         public bool Witch;
-        public bool Tied;
-        public bool TiedHead;
+
         public bool ChaosMe = false;
         public bool ChaosRa = false;
         public bool ChaosMe1 = false;
         public bool ChaosRa2 = false;
         public bool ChaosMa = false;
         public bool ChaosSu = false;
+
         public bool Olympian = false;
+        public bool StoneSoldier = false;
+
         public bool ChampionMe = false;
         public bool ChampionRa = false;
         public bool ChampionMa = false;
         public int CarrotBuff = 0;
         public bool ChampionSu = false;
-        public bool StoneSoldier = false;
+
+        public bool TerraMe = false;
 
         public bool onoPrevious;
         public bool ono;
@@ -479,8 +482,6 @@ namespace AAMod
             AbyssalStealth = false;
             AsheFlame = false;
             Witch = false;
-            Tied = false;
-            TiedHead = false;
             ChaosMe = false;
             ChaosMe1 = false;
             ChaosRa = false;
@@ -500,6 +501,7 @@ namespace AAMod
             ChampionMa = false;
             ChampionSu = false;
             StoneSoldier = false;
+            TerraMe = false;
         }
 
         private void ResetAccessoryEffect()
@@ -837,6 +839,11 @@ namespace AAMod
 
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
+            if (TerraMe)
+            {
+                Projectile.NewProjectile(player.Center, Vector2.Zero, mod.ProjectileType("TerraSphere"), 30, 4, Main.myPlayer, 0, npc.whoAmI);
+            }
+
             if (DragonsGuard || ChaosMe)
             {
                 npc.AddBuff(BuffID.OnFire, 120);
@@ -1052,11 +1059,6 @@ namespace AAMod
                 if (dracoSet)
                 {
                     target.AddBuff(BuffID.Daybreak, 600);
-                }
-
-                if (Tied)
-                {
-                    target.AddBuff(BuffID.CursedInferno, 180);
                 }
 
                 if (valkyrieSet)
@@ -3131,6 +3133,32 @@ namespace AAMod
 
                 player.lifeRegenTime = 0;
                 player.lifeRegen += 2;
+            }
+
+            if (TerraMe)
+            {
+                while (player.lifeRegenCount >= 100)
+                {
+                    player.lifeRegenCount -= 100;
+                    if (player.statLife < player.statLifeMax2)
+                    {
+                        player.statLife++;
+                        for (int i = 0; i < 10; i++)
+                        {
+                            int num6 = Dust.NewDust(player.position, player.width, player.height, 107, 0f, 0f, 175, default, 1.75f);
+                            Main.dust[num6].noGravity = true;
+                            Main.dust[num6].velocity *= 0.75f;
+                            int num7 = Main.rand.Next(-40, 41);
+                            int num8 = Main.rand.Next(-40, 41);
+                            Dust expr_7EE_cp_0 = Main.dust[num6];
+                            expr_7EE_cp_0.position.X = expr_7EE_cp_0.position.X + num7;
+                            Dust expr_80A_cp_0 = Main.dust[num6];
+                            expr_80A_cp_0.position.Y = expr_80A_cp_0.position.Y + num8;
+                            Main.dust[num6].velocity.X = -num7 * 0.075f;
+                            Main.dust[num6].velocity.Y = -num8 * 0.075f;
+                        }
+                    }
+                }
             }
         }
 

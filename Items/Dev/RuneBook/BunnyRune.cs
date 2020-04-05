@@ -101,8 +101,8 @@ namespace AAMod.Items.Dev.RuneBook
 			}
 			if (vector.Length() > 2000f)
 			{
-				projectile.position.X = Main.player[projectile.owner].Center.X - (float)(projectile.width / 2);
-				projectile.position.Y = Main.player[projectile.owner].Center.Y - (float)(projectile.height / 2);
+				projectile.position.X = Main.player[projectile.owner].Center.X - projectile.width / 2;
+				projectile.position.Y = Main.player[projectile.owner].Center.Y - projectile.height / 2;
 				projectile.netUpdate = true;
 			}
 			if (vector.Length() > 150f)
@@ -125,7 +125,7 @@ namespace AAMod.Items.Dev.RuneBook
 
             if (projectile.ai[1] > 0f)
 			{
-				projectile.ai[1] += (float)Main.rand.Next(1, 4);
+				projectile.ai[1] += Main.rand.Next(1, 4);
 			}
 			if (projectile.ai[1] > 220f)
 			{
@@ -149,7 +149,7 @@ namespace AAMod.Items.Dev.RuneBook
                         {
                             Main.player[projectile.owner].statLife = Main.player[projectile.owner].statLifeMax2;
                         }
-                        NetMessage.SendData(66, -1, -1, null, projectile.owner, (float)1, 0f, 0f, 0, 0, 0);
+                        NetMessage.SendData(66, -1, -1, null, projectile.owner, 1, 0f, 0f, 0, 0, 0);
                         projectile.netUpdate = true;
                     }
                 }

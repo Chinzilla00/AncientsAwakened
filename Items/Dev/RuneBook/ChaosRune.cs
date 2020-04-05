@@ -264,7 +264,7 @@ namespace AAMod.Items.Dev.RuneBook
             target.AddBuff(buff, 1200);
             if(Main.dayTime)
             {
-                int id = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("DaybreakBlast"), (int)(projectile.damage / 2), projectile.knockBack, projectile.owner, 0f, 0f);
+                int id = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("DaybreakBlast"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0f, 0f);
                 Main.projectile[id].ranged = false;
                 Main.projectile[id].minion = true;
             }
