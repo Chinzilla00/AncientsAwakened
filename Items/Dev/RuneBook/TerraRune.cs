@@ -18,6 +18,7 @@ namespace AAMod.Items.Dev.RuneBook
         public override void SetDefaults()
         {
             projectile.netImportant = true;
+            projectile.friendly = true;
             projectile.width = 12;
             projectile.height = 22;
             projectile.aiStyle = -1;
@@ -27,7 +28,7 @@ namespace AAMod.Items.Dev.RuneBook
             projectile.timeLeft *= 5;
             projectile.minion = true;
             projectile.minionSlots = 1f;
-            projectile.damage = 0;
+            projectile.damage = 1;
         }
 
         public override void AI()
