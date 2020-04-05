@@ -29,6 +29,8 @@ namespace AAMod.Items.Dev.RuneBook
             projectile.minion = true;
             projectile.minionSlots = 1f;
             projectile.damage = 1;
+            projectile.tileCollide = false;
+            projectile.timeLeft *= 5;
         }
 
         public override void AI()

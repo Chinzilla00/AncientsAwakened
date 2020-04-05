@@ -26,6 +26,8 @@ namespace AAMod.Items.Dev.RuneBook
             projectile.usesLocalNPCImmunity = true;
             projectile.timeLeft = 18000;
             projectile.timeLeft *= 5;
+            projectile.tileCollide = false;
+            projectile.timeLeft *= 5;
             projectile.minion = true;
             projectile.minionSlots = 1f;
             projectile.damage = 1;
