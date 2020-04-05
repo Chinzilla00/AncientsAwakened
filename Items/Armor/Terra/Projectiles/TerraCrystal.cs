@@ -136,6 +136,18 @@ namespace AAMod.Items.Armor.Terra.Projectiles
 						}
 					}
 				}
+                else
+                {
+                    if (player.statLife < player.statLifeMax2)
+                    {
+                        if (Main.rand.Next(3) == 0)
+                        {
+                            Vector2 Vel = (player.Center - player.Center) * 0.05f;
+                            int dustID = Dust.NewDust(projectile.Center, 0, 0, DustID.GoldFlame, Vel.X, Vel.Y, 50);
+                            Main.dust[dustID].noGravity = true;
+                        }
+                    }
+                }
 			}
 			else
 			{

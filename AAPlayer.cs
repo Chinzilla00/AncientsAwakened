@@ -1767,8 +1767,8 @@ namespace AAMod
                     RoseCooldown = 600;
                     float playerY = player.position.X - player.height;
 
-                    Projectile.NewProjectile(new Vector2(player.Center.X - 64, playerY), new Vector2(0, -1), mod.ProjectileType("TerraRoseA"), (int)(50 * player.magicDamage), 4, Main.myPlayer);
-                    Projectile.NewProjectile(new Vector2(player.Center.X + 64, playerY), new Vector2(0, -1), mod.ProjectileType("TerraRoseA"), (int)(50 * player.magicDamage), 4, Main.myPlayer);
+                    Projectile.NewProjectile(new Vector2(player.Center.X - 64, playerY), new Vector2(0, -10), ModContent.ProjectileType<Items.Armor.Terra.Projectiles.TerraRoseA>(), (int)(50 * player.magicDamage), 4, Main.myPlayer);
+                    Projectile.NewProjectile(new Vector2(player.Center.X + 64, playerY), new Vector2(0, -10), ModContent.ProjectileType<Items.Armor.Terra.Projectiles.TerraRoseA>(), (int)(50 * player.magicDamage), Main.myPlayer);
                 }
             }
 

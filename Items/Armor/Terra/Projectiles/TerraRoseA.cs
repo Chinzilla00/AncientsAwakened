@@ -37,8 +37,8 @@ namespace AAMod.Items.Armor.Terra.Projectiles
 
 		public override void AI()
 		{
-			BaseAI.AIVilethorn(projectile, 50, 4, 5);
-			if (projectile.ai[1] == 5)
+			BaseAI.AIVilethorn(projectile, 50, 4, 10);
+			if (projectile.ai[1] == 10)
 			{
 				projectile.frame = 0;
 			}
