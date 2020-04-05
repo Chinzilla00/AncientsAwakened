@@ -1797,7 +1797,7 @@ ItemName.Lifeline=Линия жизни
 ItemTooltip.Lifeline=Стреляет 2 заколдованными стрелами мумии вместе с обычными\nСтреляет извержением ``Забытых стрел``, если 2 заколдованные стрелы попадают по цели\nЗабытые стрелы понижают контактный урон противника
 
 ItemName.SoulCrook=Крюк Судьи Душ
-ItemTooltip.SoulCrook=Phases through tiles\nEvery hit the crook makes heals you when it returns
+ItemTooltip.SoulCrook=Проходит через блоки\nКаждый удар, который крюк наносит, восстановит вам здоровье по возвращению крюка
 
 ItemName.SoulFragment=Фрагмент Души
 
@@ -4525,7 +4525,7 @@ ItemName.DarkmatterWall=Стена кирпичей из темной матер
 
 ItemName.DaybreakWall=Стена рассветных кирпичей
 
-ItemName.DoomiteWall=Doomite Plating Wall
+ItemName.DoomiteWall=Стена из рокового покрытия
 
 ItemName.DoomsdayWall=Стена из покрытия судного дня
 
