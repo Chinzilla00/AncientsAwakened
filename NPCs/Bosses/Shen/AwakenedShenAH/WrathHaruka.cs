@@ -120,10 +120,9 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 SHADOWCONTER = reader.ReadInt();
                 strikebackproj = reader.ReadInt();
                 ProjectileShoot = reader.ReadInt();
-                ProjectileShoot = reader.ReadInt();
                 repeat = reader.ReadInt();
-                isSlashing = reader.ReadBool();
                 SelectPoint = reader.ReadBool();
+                isSlashing = reader.ReadBool();
                 Invisible = reader.ReadBool();
                 SpawnClone = reader.ReadBool();
                 SHADOWDOG = reader.ReadBool();
@@ -199,21 +198,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
             Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
             npc.direction = npc.spriteDirection = npc.position.X < player.position.X ? 1 : -1;
-            int Ashe = NPC.CountNPCS(mod.NPCType("Ashe"));
-            bool flag = player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f;
-            if (Ashe == 0 && flag)
-            {
-                npc.TargetClosest(false);
-                if (Main.netMode != 1)
-                {
-                    int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HarukaVanish>(), 0);
-                    Main.npc[DeathAnim].velocity = npc.velocity;
-                    Main.npc[DeathAnim].netUpdate = true;
-                    npc.active = false;
-                    npc.netUpdate = true;
-                }
-                return;
-            }
 
             if(SHADOWCONTER <= 0)
             {
@@ -283,7 +267,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     npc.netUpdate = true;
                 }
             }
-            if (internalAI[5] > InvisTimer2 && Main.netMode != 1 && internalAI[0] != AISTATE_Shadowkilling)
+            if (internalAI[5] > InvisTimer2 && internalAI[0] != AISTATE_Shadowkilling)
             {
                 Invisible = false;
                 Backstab();
@@ -293,7 +277,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*1, 0f, 14f);
                 internalAI[0] = Main.rand.Next(2);
                 internalAI[5] = 0;
-                npc.netUpdate = true;
             }
 
             if (internalAI[6] >= 6000)
@@ -444,7 +427,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 {
                     internalAI[1] = 0;
                     internalAI[2] = 0;
-                    npc.netUpdate = true;
                 }
             }
             else if (internalAI[0] == AISTATE_PROJ)
@@ -476,7 +458,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     {
                         internalAI[1] = 0;
                         internalAI[2] = 4;
-                        npc.netUpdate = true;
                     }
                     if (repeat <= 0)
                     {
@@ -504,7 +485,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         if (internalAI[3] == 100 || internalAI[3] == 200 || internalAI[3] == 299)
                         {
                             isSlashing = true;
-                            npc.netUpdate = true;
                         }
                         if (isSlashing)
                         {
@@ -533,10 +513,9 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         int projType = ModContent.ProjectileType<WrathHarukaProj>();
                         BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*1, 0f, 14f);
                     }
-                    if (isSlashing && internalAI[2] > 9 && Main.netMode != 1)
+                    if (isSlashing && internalAI[2] > 9)
                     {
                         isSlashing = false;
-                        npc.netUpdate = true;
                     }
                     if (internalAI[3] > 300)
                     {
@@ -592,13 +571,14 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                             {
                                 internalAI[0] = AISTATE_SPIN;
                                 internalAI[6] -= 500;
+                                npc.netUpdate = true;
                             }
                             else
                             {
                                 internalAI[0] = 3;
+                                npc.netUpdate = true;
                             }
                             npc.ai = new float[4];
-                            npc.netUpdate = true;
                         }
                     }
                 }
@@ -638,7 +618,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     {
                         MovePoint = player.Center;
                         SelectPoint = false;
-                        npc.netUpdate = true;
                     }
 
                     if (strikebackproj != 0)
@@ -664,14 +643,17 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                             internalAI[6] -= 2000;
                             Shadowkill = true;
                             Invisible = true;
+                            npc.netUpdate = true;
                         }
                         else if(Main.rand.Next(2) == 0)
                         {
                             internalAI[0] = AISTATE_PROJ;
+                            npc.netUpdate = true;
                         }
                         else
                         {
                             internalAI[0] = 3;
+                            npc.netUpdate = true;
                         }
 
                         internalAI[1] = 0;
@@ -680,7 +662,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         internalAI[4] = 0;
                         pos *= -1f;
                         npc.ai = new float[4];
-                        npc.netUpdate = true;
                         
                         int projType = ModContent.ProjectileType<WrathHarukaProj>();
                         float spread = 45f * 0.0174f;
@@ -734,7 +715,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     internalAI[2] = 0;
                     internalAI[3] = 0;
                     npc.ai = new float[4];
-                    npc.netUpdate = true;
                 }
             }
 
@@ -947,14 +927,15 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     npc.alpha = 250;
                 }
                 npc.netUpdate = true;
-                Main.npc[ShadowNPC[1]].alpha = npc.alpha;
-                Main.npc[ShadowNPC[2]].alpha = npc.alpha;
-                Main.npc[ShadowNPC[1]].boss = true;
-                Main.npc[ShadowNPC[2]].boss = true;
-                Main.npc[ShadowNPC[1]].life = Main.npc[ShadowNPC[0]].life;
-                Main.npc[ShadowNPC[2]].life = Main.npc[ShadowNPC[0]].life;
-                Main.npc[ShadowNPC[1]].netUpdate = true;
-                Main.npc[ShadowNPC[2]].netUpdate = true;
+                if(ShadowNPC[1] != -1 && ShadowNPC[2] != -1)
+                {
+                    Main.npc[ShadowNPC[1]].alpha = npc.alpha;
+                    Main.npc[ShadowNPC[2]].alpha = npc.alpha;
+                    Main.npc[ShadowNPC[1]].boss = true;
+                    Main.npc[ShadowNPC[2]].boss = true;
+                    Main.npc[ShadowNPC[1]].life = Main.npc[ShadowNPC[0]].life;
+                    Main.npc[ShadowNPC[2]].life = Main.npc[ShadowNPC[0]].life;
+                }
                 SpawnClone = false;
             }
             else if (npc.alpha > 0)
@@ -968,8 +949,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 npc.alpha -= 8;
                 Main.npc[ShadowNPC[1]].alpha = npc.alpha;
                 Main.npc[ShadowNPC[2]].alpha = npc.alpha;
-                Main.npc[ShadowNPC[1]].netUpdate = true;
-                Main.npc[ShadowNPC[2]].netUpdate = true;
             }
             else if(!npc.active || npc.life <= 0)
             {
@@ -979,8 +958,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
                 Main.npc[ShadowNPC[1]].active = false;
                 Main.npc[ShadowNPC[2]].active = false;
-                Main.npc[ShadowNPC[1]].netUpdate = true;
-                Main.npc[ShadowNPC[2]].netUpdate = true;
             }
             else
             {
@@ -989,8 +966,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     npc.velocity = Main.player[npc.target].velocity;
                     Main.npc[ShadowNPC[1]].velocity = Main.player[npc.target].velocity;
                     Main.npc[ShadowNPC[2]].velocity = Main.player[npc.target].velocity;
-                    Main.npc[ShadowNPC[1]].netUpdate = true;
-                    Main.npc[ShadowNPC[2]].netUpdate = true;
                     
                     ShadowkingPosition = playerLocation;
                 }
@@ -1016,8 +991,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         }
                         k++;
                     }
-                    Main.npc[ShadowNPC[1]].netUpdate = true;
-                    Main.npc[ShadowNPC[2]].netUpdate = true;
                 }
             }
 
@@ -1036,16 +1009,11 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, shoot.X, shoot.Y, projType, damage*1, 5, Main.myPlayer);
                     }
                 }
-                for(int i = 0; i < 200; i++)
-                {
-                    if(Main.npc[i].type == ModContent.NPCType<WrathHarukaClone>() && Main.npc[i].active)
-                    {
-                        Main.npc[i].boss = false;
-                        Main.npc[i].life = 0;
-                        Main.npc[i].active = false;
-                        Main.npc[i].netUpdate = true;
-                    }
-                }
+
+                Main.npc[ShadowNPC[1]].boss = false;
+                Main.npc[ShadowNPC[2]].boss = false;
+                Main.npc[ShadowNPC[1]].active = false;
+                Main.npc[ShadowNPC[2]].active = false;
                 
                 ShadowNPC[0] = -1;
                 ShadowNPC[1] = -1;
@@ -1076,6 +1044,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 npc.position.X = playerLocation.X - Main.player[npc.target].direction * 250f;
                 npc.position.Y = playerLocation.Y;
             }
+            npc.netUpdate = true;
         }
 
         public void LOOPPOINT(Vector2 point1, Vector2 point2)

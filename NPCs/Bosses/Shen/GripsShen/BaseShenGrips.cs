@@ -322,7 +322,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                     
 
                     internalAI[2] ++;
-                    if(internalAI[2] == 160)
+                    if(internalAI[2] == 160 && Main.netMode != 1)
                     {
                         Vector2 dir = Vector2.Normalize(targetPlayer.Center - npc.Center);
                         float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));

@@ -970,8 +970,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     npc.velocity = Main.player[npc.target].velocity;
                     Main.npc[ShadowNPC[1]].velocity = Main.player[npc.target].velocity;
                     Main.npc[ShadowNPC[2]].velocity = Main.player[npc.target].velocity;
-                    Main.npc[ShadowNPC[1]].netUpdate = true;
-                    Main.npc[ShadowNPC[2]].netUpdate = true;
                     
                     ShadowkingPosition = playerLocation;
                 }
@@ -1013,7 +1011,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                         shoot *= 10f;
                         Projectile.NewProjectile(ShadowkingPosition.X, ShadowkingPosition.Y, shoot.X, shoot.Y, projType, damage * 1, 5, Main.myPlayer);
                     }
-                    npc.netUpdate = true;
                 }
 
                 Main.npc[ShadowNPC[1]].boss = false;
@@ -1027,6 +1024,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 internalAI[4] = 0;
                 ShadowkingPosition = Vector2.Zero;
                 internalAI[0] = 3;
+                npc.netUpdate = true;
             }
         }
 

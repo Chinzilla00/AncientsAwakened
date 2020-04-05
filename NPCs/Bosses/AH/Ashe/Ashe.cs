@@ -109,8 +109,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     wantedVelocity = player.Center - new Vector2(firepos, 0);
 
                     MoveToPoint(wantedVelocity);
-
-                    npc.netUpdate = true;
                     
                     if(Main.netMode != 1)
                     {
@@ -492,8 +490,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                         {
                             Main.npc[i].life = 0;
                             Main.npc[i].active = false;
-                            if (Main.netMode == 2 && i < 200) 
-                            NetMessage.SendData(23, -1, -1, null, i);
                         } 
                     }
                 }

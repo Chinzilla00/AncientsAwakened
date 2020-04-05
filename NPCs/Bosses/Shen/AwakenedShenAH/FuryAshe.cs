@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -172,9 +173,9 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                             else
                             {
                                 npc.ai[0]++;
+                                npc.netUpdate = true;
                             }
                             npc.ai[3] = 0;
-                            npc.netUpdate = true;
                         }
                         else
                         {
@@ -220,15 +221,20 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                                 shoot *= 8f;
                                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, shoot.X, shoot.Y, ModContent.ProjectileType<FuryAsheFire>(), npc.damage / 4, 5, Main.myPlayer);
                             }
-                            if(Main.rand.Next(3) == 0) goto case 5;
+                            if(Main.rand.Next(3) == 0) 
+                            {
+                                npc.netUpdate = true;
+                                goto case 5;
+                            }
                         }
                         AIChange();
                     }
                     break;
                 case 10:
-                    if (NPC.CountNPCS(ModContent.NPCType<Shenling>()) < 2)
+                    if (NPC.CountNPCS(ModContent.NPCType<Shenling>()) >= 2)
                     {
                         npc.ai[0] = 12;
+                        npc.netUpdate = true;
                         goto case 12;
                     }
                     if (!AliveCheck(player))
@@ -246,6 +252,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                             NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 100, ModContent.NPCType<Shenling>());
                             NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 100, ModContent.NPCType<Shenling>());
                         }
+                        npc.netUpdate = true;
                         AIChange();
                     }
                     break;
@@ -285,10 +292,10 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         
                         float RunepositionX = Runeposition.X;
                         float RunepositionY = Runeposition.Y;
-                        NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage / 4, npc.whoAmI, player.whoAmI);
+                        int id = NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage / 4, npc.whoAmI, player.whoAmI);
+                        if (Main.netMode == 2 && id < 200) NetMessage.SendData(23, -1, -1, null, id);
                     }
                     npc.ai[2] = 0;
-                    npc.netUpdate = true;
                 }
             }
         }
@@ -611,6 +618,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     }
                 }
                 npc.direction = player.position.X > npc.position.X ? 1 : -1;
+                npc.netUpdate = true;
             }
         }
 
@@ -686,6 +694,28 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
         public float scale2 = 0;
         public float RingRotation2 = 0;
 
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            {
+                writer.Write(pos);
+                writer.Write(Health);
+                writer.Write(RuneCrash);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                pos = reader.ReadFloat();
+                Health = reader.ReadBool();
+                RuneCrash = reader.ReadBool();
+            }
+        }
+
         private void RingEffects()
         {
             RingRotation += 0.02f;
@@ -698,6 +728,7 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     if(NPC.CountNPCS(ModContent.NPCType<FuryAsheOrbiter>()) < OrbiterCount)
                     {
                         Health = true;
+                        npc.netUpdate = true;
                     }
                 }
                 else
