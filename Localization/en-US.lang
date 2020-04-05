@@ -65,7 +65,7 @@ Common.ChaosKabutoBonus=10% increased melee speed\nEnemies are more likely to ta
 Common.ChaosMaskBonus=While submerged in liquids, your magic abilities are increased drastically\nYou can swim and liquid does not affect your movement
 Common.ChaosVisorBonus=+4 Minion slots\nA dragon soul ravages foes for you
 
-Common.DarkmatterHeaddressBonus=Minions will ocasionaly attempt to distrupt enemy projectiles
+Common.DarkmatterHeaddressBonus=Minions will occasionally attempt to disrupt enemy projectiles
 Common.DarkmatterHelmetBonus=You and nearby allies recieve 40% less damage
 Common.DarkmatterMaskBonus1=Damage nearby enemies \n 2% of the damage dealt will heal you\n
 Common.DarkmatterMaskBonus2=Magic Damage\n
@@ -128,12 +128,12 @@ Common.PalladiumPaintBonus=+1 Minion Slot\nGreatly increases life regeneration a
 Common.TerraPaintBonus=+7 Minion slots
 Common.TitaniumPaintBonus=+4 Minion slots\nBriefly become invulnerable after your minions strike an enemy
 
-Common.PerfectChaosHoodBonus='Chaos empowers you'\nAs your health decreases, your magic damage increases and your mana consumption decreases\nYour magic attacks raze your oponents with the flames of discordian hell
-Common.PerfectChaosKabutoBonus='Chaos empowers you'\nAs your health decreases, your melee damage and defense increase\nYour attacks raze your oponents with the flames of Chaos
-Common.PerfectChaosMaskBonus='Chaos empowers you'\nAs your health decreases, your minion damage increases\nYour minions raze your oponents with the flames of discordian hell
-Common.PerfectChaosVisorBonus='Chaos empowers you'\nAs your health decreases, your ranged damage and critical chance increases\nYour ranged attacks raze your oponents with the flames of discordian hell
+Common.PerfectChaosHoodBonus='Chaos empowers you'\nAs your health decreases, your magic damage increases and your mana consumption decreases\nYour magic attacks raze your opponents with the flames of discordian hell
+Common.PerfectChaosKabutoBonus='Chaos empowers you'\nAs your health decreases, your melee damage and defense increase\nYour attacks raze your opponents with the flames of Chaos
+Common.PerfectChaosMaskBonus='Chaos empowers you'\nAs your health decreases, your minion damage increases\nYour minions raze your opponents with the flames of discordian hell
+Common.PerfectChaosVisorBonus='Chaos empowers you'\nAs your health decreases, your ranged damage and critical chance increases\nYour ranged attacks raze your opponents with the flames of discordian hell
 
-Common.RadiumHatBonus1=Minions will ocasionaly deal damage to nearby enemies\n
+Common.RadiumHatBonus1=Minions will occasionally deal damage to nearby enemies\n
 Common.RadiumHatBonus2=Summon Damage
 Common.RadiumHeadgearBonus=A sun portal hovers above your head, shooting sun blasts when you shoot. \nSun blasts deal 50% of your weapon's damage, and ignite them
 Common.RadiumHelmetBonus=Nearby enemies will recieve more damage

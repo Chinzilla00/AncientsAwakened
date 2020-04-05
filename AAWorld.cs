@@ -210,8 +210,6 @@ namespace AAMod
             squid14 = 0;
             squid15 = 0;
             squid16 = 0;
-
-            //Athena Clouds
         }
 
         public static int Raycast(int x, int y)
@@ -983,14 +981,13 @@ namespace AAMod
                         Tile tile = Main.tile[AltarX, AltarY];
                         int Altar = Main.rand.Next(2);
 
-                        switch (Altar)
+                        if (Altar == 0)
                         {
-                            case 0:
-                                Altar = ModContent.TileType<ChaosAltar1>();
-                                break;
-                            default:
-                                Altar = ModContent.TileType<ChaosAltar2>();
-                                break;
+                            Altar = ModContent.TileType<ChaosAltar1>();
+                        }
+                        else
+                        {
+                            Altar = ModContent.TileType<ChaosAltar2>();
                         }
                         if (Main.rand.Next(15) == 0)
                         {
@@ -1482,7 +1479,7 @@ namespace AAMod
                         int type = Main.tile[k, l].type;
                         int wall = Main.tile[k, l].wall;
                         bool sendNet = false;
-                        if (conversionType == 1)
+                        if (conversionType == 1) //Inferno
                         {
                             if (WallID.Sets.Conversion.Stone[wall])
                             {
@@ -1553,7 +1550,7 @@ namespace AAMod
                             if (sendNet)
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (conversionType == 2)
+                        else if (conversionType == 2) //Mire
                         {
                             if (WallID.Sets.Conversion.Stone[wall])
                             {
@@ -1575,8 +1572,14 @@ namespace AAMod
                             }
                             else if (WallID.Sets.Conversion.Grass[wall] || wall == WallID.JungleUnsafe || wall == WallID.JungleUnsafe1 || wall == WallID.JungleUnsafe2 || wall == WallID.JungleUnsafe3 || wall == WallID.JungleUnsafe4)
                             {
-                                Main.tile[k, l].type = (ushort)ModContent.WallType<MireJungleWall>();
+                                Main.tile[k, l].wall = (ushort)ModContent.WallType<MireJungleWall>();
                                 WorldGen.SquareWallFrame(k, l);
+                                sendNet = true;
+                            }
+                            else if (wall == WallID.LivingLeaf)
+                            {
+                                Main.tile[k, l].wall = (ushort)ModContent.WallType<LivingBogleafWall>();
+                                WorldGen.SquareWallFrame(k, l, true);
                                 sendNet = true;
                             }
                             if (TileID.Sets.Conversion.Stone[type])
@@ -1615,10 +1618,22 @@ namespace AAMod
                                 WorldGen.SquareTileFrame(k, l);
                                 sendNet = true;
                             }
+                            else if (type == TileID.LivingMahogany)
+                            {
+                                Main.tile[k, l].type = (ushort)ModContent.TileType<LivingBogwood>();
+                                WorldGen.SquareTileFrame(k, l);
+                                sendNet = true;
+                            }
+                            else if (type == TileID.LivingMahoganyLeaves)
+                            {
+                                Main.tile[k, l].type = (ushort)ModContent.TileType<LivingBogleaves>();
+                                WorldGen.SquareTileFrame(k, l);
+                                sendNet = true;
+                            }
                             if (sendNet)
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                         }
-                        else if (conversionType == 3)
+                        else if (conversionType == 3) //Void
                         {
                             if (TileID.Sets.Conversion.Stone[type] || TileID.Sets.Conversion.Moss[type])
                             {
@@ -1633,7 +1648,7 @@ namespace AAMod
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }
                         }
-                        else if (conversionType == 4)
+                        else if (conversionType == 4) //Mushroom
                         {
                             if (WallID.Sets.Conversion.Grass[type])
                             {
@@ -1648,7 +1663,7 @@ namespace AAMod
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }
                         }
-                        else if (conversionType == 5)
+                        else if (conversionType == 5) //Fungicide
                         {
                             if (wall == WallID.Mushroom)
                             {

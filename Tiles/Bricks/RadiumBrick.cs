@@ -12,7 +12,7 @@ namespace AAMod.Tiles.Bricks
             Main.tileMergeDirt[Type] = true;
             Main.tileLighted[Type] = true;
             Main.tileBlockLight[Type] = true;
-            drop = mod.ItemType("RadiumBricks");   
+            drop = mod.ItemType("RadiumBrick");   
             AddMapEntry(Color.DarkGoldenrod);
             dustType = ModContent.DustType<Dusts.RadiumDust>();
         }

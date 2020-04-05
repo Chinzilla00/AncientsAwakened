@@ -14,7 +14,7 @@ namespace AAMod.Items.Ranged.Ammo
 		{
 			item.shootSpeed = 5f;
 			item.shoot = ModContent.ProjectileType<Projectiles.Ammo.EventideBullet>();
-			item.damage = 100;
+			item.damage = 25;
 			item.width = 8;
 			item.height = 8;
 			item.maxStack = 999;
