@@ -31,7 +31,6 @@ Non-Consumable");
             item.rare = 11;
         }
 
-
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
@@ -60,7 +59,8 @@ Non-Consumable");
             recipe.AddIngredient(ItemID.LunarBar, 10);
             recipe.AddIngredient(ItemID.FragmentSolar, 5);
             recipe.AddIngredient(ItemID.FragmentStardust, 5);
-            recipe.AddIngredient(null, "SoulFragment", 5);
+            recipe.AddIngredient(null, "StarChart", 1);
+            recipe.AddIngredient(null, "WormIdol", 1);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();

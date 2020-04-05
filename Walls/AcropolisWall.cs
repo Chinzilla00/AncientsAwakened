@@ -10,7 +10,7 @@ namespace AAMod.Walls
 		public override void SetDefaults()
 		{
             Main.wallHouse[Type] = true;
-            dustType = DustID.BlueCrystalShard;
+            dustType = DustID.Marble;
 			AddMapEntry(new Color(0, 0, 25));
 		}
 

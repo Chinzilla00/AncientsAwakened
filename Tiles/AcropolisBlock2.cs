@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Tiles
@@ -13,6 +14,7 @@ namespace AAMod.Tiles
             Main.tileMerge[Type][ModContent.TileType<AcropolisBlock>()] = true;
             Main.tileBlockLight[Type] = true;   
             AddMapEntry(new Color(28, 64, 87));
+            dustType = DustID.BlueCrystalShard;
         }
 
         public override bool CanKillTile(int i, int j, ref bool blockDamaged)

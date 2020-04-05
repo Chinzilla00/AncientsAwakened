@@ -616,6 +616,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                 string[] lootTable = { "HurricaneStone", "Olympia", "Windfury", "GaleForce" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
+                npc.DropLoot(mod.ItemType("StarChart"));
             }
             AAWorld.downedAthenaA = true;
         }

@@ -954,6 +954,7 @@ namespace AAMod.NPCs.Bosses.Greed
                     return npc.defense = 30;
             }
         }
+
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D texture = Main.npcTexture[npc.type];
