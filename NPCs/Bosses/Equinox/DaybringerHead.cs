@@ -317,7 +317,6 @@ namespace AAMod.NPCs.Bosses.Equinox
                     {
                         if (Main.npc[i].active && Main.npc[i].type == mod.NPCType("NightcrawlerBody") && Main.npc[i].realLife == npc.whoAmI)
                         {
-                            Main.npc[i].netUpdate = true;
                             if (Main.netMode != 1)
                             {
                                 Vector2 speed = Vector2.Normalize(new Vector2(1f, 0f).RotatedBy(Main.npc[i].rotation + 3.1415f)) * 8f;
@@ -365,7 +364,6 @@ namespace AAMod.NPCs.Bosses.Equinox
                     if(Math.Abs(npc.Center.X - targetpos.X) + Math.Abs(npc.Center.Y - targetpos.Y) < 100f)
                     {
                         internalAI[4] = 1f;
-                        npc.netUpdate = true;
                     }
                 }
                 else if(internalAI[4] == 1)
@@ -467,7 +465,6 @@ namespace AAMod.NPCs.Bosses.Equinox
                 if (CloudCooldown <= 0)
                 {
                     CloudCooldown = 0;
-                    npc.netUpdate = true;
                 }
             }
 
