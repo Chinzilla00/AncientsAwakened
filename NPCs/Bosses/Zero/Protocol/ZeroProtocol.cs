@@ -343,19 +343,56 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         if (!AliveCheck(player))
                             break;
                         npc.velocity *= 0;
-                        if (npc.ai[2] == 280 && Main.netMode != 1)
+                        if (npc.ai[2] == 280)
                         {
                             Teleport(3);
                             if (npc.life > npc.lifeMax / 2)
                             {
-                                if (Main.rand.Next(2) == 0)
+                                if(Main.netMode != 1)
                                 {
+                                    if (Main.rand.Next(2) == 0)
+                                    {
+                                        int dirY = player.velocity.Y > 0? 1:-1;
 
+                                        int yPos = Math.Abs(player.velocity.Y) > 4f? -500 * dirY : -750 * dirY;
+
+                                        for (int z = 0; z < 7; z++)
+                                        {
+                                            int a1 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer, 0f, 0f);
+                                            int a2 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer, 1f, 0f);
+                                            Main.projectile[a1].Center = player.Center + new Vector2(-500, yPos);
+                                            Main.projectile[a2].Center = player.Center + new Vector2(500, yPos);
+                                            yPos += 250 * dirY;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        int dirX = player.velocity.X > 0? 1:-1;
+
+                                        int xPos = Math.Abs(player.velocity.X) > 4f? -500 * dirX : -750 * dirX;
+
+                                        for (int z = 0; z < 7; z++)
+                                        {
+                                            int h1 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer , 2f, 0f);
+                                            int h2 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer , 3f, 0f);
+                                            Main.projectile[h1].Center = player.Center + new Vector2(xPos, -500);
+                                            Main.projectile[h2].Center = player.Center + new Vector2(xPos, 500);
+                                            xPos += 250 * dirX;
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if(Main.netMode != 1)
+                                {
+                                    int dirX = player.velocity.X > 0? 1:-1;
                                     int dirY = player.velocity.Y > 0? 1:-1;
 
+                                    int xPos = Math.Abs(player.velocity.X) > 4f? -500 * dirX : -750 * dirX;
                                     int yPos = Math.Abs(player.velocity.Y) > 4f? -500 * dirY : -750 * dirY;
 
-                                    for (int z = 0; z < 7; z++)
+                                    for (int z = 0; z < 13; z++)
                                     {
                                         int a1 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer, 0f, 0f);
                                         int a2 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer, 1f, 0f);
@@ -363,14 +400,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                                         Main.projectile[a2].Center = player.Center + new Vector2(500, yPos);
                                         yPos += 250 * dirY;
                                     }
-                                }
-                                else
-                                {
-                                    int dirX = player.velocity.X > 0? 1:-1;
-
-                                    int xPos = Math.Abs(player.velocity.X) > 4f? -500 * dirX : -750 * dirX;
-
-                                    for (int z = 0; z < 7; z++)
+                                    for (int z = 0; z < 13; z++)
                                     {
                                         int h1 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer , 2f, 0f);
                                         int h2 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer , 3f, 0f);
@@ -378,31 +408,6 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                                         Main.projectile[h2].Center = player.Center + new Vector2(xPos, 500);
                                         xPos += 250 * dirX;
                                     }
-                                }
-                            }
-                            else
-                            {
-                                int dirX = player.velocity.X > 0? 1:-1;
-                                int dirY = player.velocity.Y > 0? 1:-1;
-
-                                int xPos = Math.Abs(player.velocity.X) > 4f? -500 * dirX : -750 * dirX;
-                                int yPos = Math.Abs(player.velocity.Y) > 4f? -500 * dirY : -750 * dirY;
-
-                                for (int z = 0; z < 13; z++)
-                                {
-                                    int a1 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer, 0f, 0f);
-                                    int a2 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer, 1f, 0f);
-                                    Main.projectile[a1].Center = player.Center + new Vector2(-500, yPos);
-                                    Main.projectile[a2].Center = player.Center + new Vector2(500, yPos);
-                                    yPos += 250 * dirY;
-                                }
-                                for (int z = 0; z < 13; z++)
-                                {
-                                    int h1 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer , 2f, 0f);
-                                    int h2 = Projectile.NewProjectile(new Vector2(player.Center.X, player.Center.Y), Vector2.Zero, mod.ProjectileType("Blast"), damage, 3, Main.myPlayer , 3f, 0f);
-                                    Main.projectile[h1].Center = player.Center + new Vector2(xPos, -500);
-                                    Main.projectile[h2].Center = player.Center + new Vector2(xPos, 500);
-                                    xPos += 250 * dirX;
                                 }
                             }
                         }
@@ -418,43 +423,46 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     case 3:
                         if (!AliveCheck(player))
                             break;
-                        if (npc.ai[2] == (npc.life < npc.lifeMax / 2 ? 200 : 300) && Main.netMode != 1)
+                        if (npc.ai[2] == (npc.life < npc.lifeMax / 2 ? 200 : 300))
                         {
                             Teleport(3);
-                            int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("ProtoStar"), damage, 3);
-                            Main.projectile[a].Center = npc.Center + new Vector2(-100, 0);
-                            int b = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("ProtoStar"), damage, 3);
-                            Main.projectile[b].Center = npc.Center + new Vector2(100, 0);
-                            int c = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
-                            Main.projectile[c].Center = npc.Center + new Vector2(0, 100);
-                            int d = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
-                            Main.projectile[d].Center = npc.Center + new Vector2(0, -100);
-                            if (npc.life < npc.lifeMax / 2)
+                            if(Main.netMode != 1)
                             {
-                                int a1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[a1].Center = npc.Center + new Vector2(-100, 0);
-                                int b1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[b1].Center = npc.Center + new Vector2(100, 0);
-                                int c1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[c1].Center = npc.Center + new Vector2(0, 100);
-                                int d1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[d1].Center = npc.Center + new Vector2(0, -100);
-                                int e = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[e].Center = npc.Center + new Vector2(-80, -80);
-                                int e1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[e1].Center = npc.Center + new Vector2(-80, -80);
-                                int f = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[f].Center = npc.Center + new Vector2(80, 80);
-                                int f1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[f1].Center = npc.Center + new Vector2(80, 80);
-                                int g = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[g].Center = npc.Center + new Vector2(-80, 80);
-                                int g1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[g1].Center = npc.Center + new Vector2(-80, 80);
-                                int h = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[h].Center = npc.Center + new Vector2(80, -80);
-                                int h1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
-                                Main.projectile[h1].Center = npc.Center + new Vector2(80, -80);
+                                int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[a].Center = npc.Center + new Vector2(-100, 0);
+                                int b = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[b].Center = npc.Center + new Vector2(100, 0);
+                                int c = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[c].Center = npc.Center + new Vector2(0, 100);
+                                int d = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
+                                Main.projectile[d].Center = npc.Center + new Vector2(0, -100);
+                                if (npc.life < npc.lifeMax / 2)
+                                {
+                                    int a1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, 12f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                    Main.projectile[a1].Center = npc.Center + new Vector2(-100, 0);
+                                    int b1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                    Main.projectile[b1].Center = npc.Center + new Vector2(100, 0);
+                                    int c1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
+                                    Main.projectile[c1].Center = npc.Center + new Vector2(0, 100);
+                                    int d1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-12f, 0), mod.ProjectileType("ProtoStar"), damage, 3);
+                                    Main.projectile[d1].Center = npc.Center + new Vector2(0, -100);
+                                    int e = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                    Main.projectile[e].Center = npc.Center + new Vector2(-80, -80);
+                                    int e1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                    Main.projectile[e1].Center = npc.Center + new Vector2(-80, -80);
+                                    int f = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                    Main.projectile[f].Center = npc.Center + new Vector2(80, 80);
+                                    int f1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                    Main.projectile[f1].Center = npc.Center + new Vector2(80, 80);
+                                    int g = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                    Main.projectile[g].Center = npc.Center + new Vector2(-80, 80);
+                                    int g1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                    Main.projectile[g1].Center = npc.Center + new Vector2(-80, 80);
+                                    int h = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(8f, 8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                    Main.projectile[h].Center = npc.Center + new Vector2(80, -80);
+                                    int h1 = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(-8f, -8f), mod.ProjectileType("ProtoStar"), damage, 3);
+                                    Main.projectile[h1].Center = npc.Center + new Vector2(80, -80);
+                                }
                             }
                         }
 
@@ -660,8 +668,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 {
                     Teleport(Main.rand.Next(2) == 0? 1:2);
                 }
-                npc.netUpdate = true;
             }
+            npc.netUpdate = true;
         }
 
         public bool AliveCheck(Player player)

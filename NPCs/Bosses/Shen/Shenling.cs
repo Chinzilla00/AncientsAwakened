@@ -121,12 +121,16 @@ namespace AAMod.NPCs.Bosses.Shen
                         npc.netUpdate = true;
                     }
                     int num10 = ModContent.NPCType<ShenlingTail>();
-                    int num11 = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), num10, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
-                    Main.npc[num11].ai[3] = npc.whoAmI;
-                    Main.npc[num11].realLife = npc.whoAmI;
-                    Main.npc[num11].ai[1] = num9;
-                    Main.npc[num9].ai[0] = num11;
-                    num9 = num11;
+                    if(Main.netMode != 1)
+                    {
+                        int num11 = NPC.NewNPC((int)(npc.position.X + npc.width / 2), (int)(npc.position.Y + npc.height), num10, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                        if (Main.netMode == 2 && num11 < 200) NetMessage.SendData(23, -1, -1, null, num11);
+                        Main.npc[num11].ai[3] = npc.whoAmI;
+                        Main.npc[num11].realLife = npc.whoAmI;
+                        Main.npc[num11].ai[1] = num9;
+                        Main.npc[num9].ai[0] = num11;
+                        num9 = num11;
+                    }
                     npc.netUpdate = true;
                 }
             }

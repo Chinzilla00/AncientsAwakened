@@ -471,7 +471,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                             double offsetAngle = startAngle + (deltaAngle * i);
                             Projectile.NewProjectile(npc.Center.X, npc.Center.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), projType, damage*1, 5, Main.myPlayer);
                         }
-                        npc.netUpdate = true;
                     }
                     if ((internalAI[2] < 4 || internalAI[2] > 6) && Main.netMode != 1) 
                     {
@@ -533,7 +532,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                         Vector2 fireTarget = npc.Center;
                         int projType = ModContent.ProjectileType<WrathHarukaProj>();
                         BaseAI.FireProjectile(targetCenter, fireTarget, projType, damage*1, 0f, 14f);
-                        npc.netUpdate = true;
                     }
                     if (isSlashing && internalAI[2] > 9 && Main.netMode != 1)
                     {
@@ -709,7 +707,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                                 }
                             }
                         }
-                        npc.netUpdate = true;
                         strikebackproj = 0;
                     }
                     else if(internalAI[4] > 100)
@@ -727,7 +724,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     SpawnClone = true;
                 }
                 Shadowkilling();
-                npc.netUpdate = true;
             }
             else
             {
@@ -942,11 +938,15 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                 {
                     k2 = 0;
                 }
-                ShadowNPC[1] = NPC.NewNPC((int)spawnpoint[k1].X, (int)spawnpoint[k1].Y, ModContent.NPCType<WrathHarukaClone>());
-                NetMessage.SendData(23, -1, -1, null, ShadowNPC[1], 0f, 0f, 0f, 0, 0, 0);
-                ShadowNPC[2] = NPC.NewNPC((int)spawnpoint[k2].X, (int)spawnpoint[k2].Y, ModContent.NPCType<WrathHarukaClone>());
-                NetMessage.SendData(23, -1, -1, null, ShadowNPC[2], 0f, 0f, 0f, 0, 0, 0);
-                npc.alpha = 250;
+                if(Main.netMode != 1)
+                {
+                    ShadowNPC[1] = NPC.NewNPC((int)spawnpoint[k1].X, (int)spawnpoint[k1].Y, ModContent.NPCType<WrathHarukaClone>());
+                    NetMessage.SendData(23, -1, -1, null, ShadowNPC[1], 0f, 0f, 0f, 0, 0, 0);
+                    ShadowNPC[2] = NPC.NewNPC((int)spawnpoint[k2].X, (int)spawnpoint[k2].Y, ModContent.NPCType<WrathHarukaClone>());
+                    NetMessage.SendData(23, -1, -1, null, ShadowNPC[2], 0f, 0f, 0f, 0, 0, 0);
+                    npc.alpha = 250;
+                }
+                npc.netUpdate = true;
                 Main.npc[ShadowNPC[1]].alpha = npc.alpha;
                 Main.npc[ShadowNPC[2]].alpha = npc.alpha;
                 Main.npc[ShadowNPC[1]].boss = true;

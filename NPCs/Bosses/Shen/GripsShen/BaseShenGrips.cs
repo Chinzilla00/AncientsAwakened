@@ -267,7 +267,7 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
 				Vector2 point = targetPlayer.Center + offsetBasePoint + new Vector2(-ChangingPosX, 0);
 				MoveToPoint(point);
                 internalAI[0] ++;
-                if(internalAI[0] == 100)
+                if(internalAI[0] == 100 && Main.netMode != 1)
                 {
                     if(BlazeGrip)
                     {
@@ -296,9 +296,9 @@ namespace AAMod.NPCs.Bosses.Shen.GripsShen
                         npc.ai[3] = 0;
                         internalAI[0] = 0;
                         internalAI[1] = 0;
-                        internalAI[2] = 0;		
-                        npc.netUpdate = true;
+                        internalAI[2] = 0;
                     }
+                    npc.netUpdate = true;
                 }
             }
             else

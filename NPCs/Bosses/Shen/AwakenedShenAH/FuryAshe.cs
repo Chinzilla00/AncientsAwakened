@@ -129,7 +129,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     {
                         npc.ai[1] = 0;
                         npc.ai[0]++;
-                        npc.netUpdate = true;
                     }
                     break;
                 case 6: //prepare for fishron dash
@@ -141,7 +140,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     {
                         npc.ai[0]++;
                         npc.ai[1] = 0;
-                        npc.netUpdate = true;
                         npc.velocity = npc.DirectionTo(player.Center) * (npc.life < npc.lifeMax/3 ? 50:40);
                         if(npc.velocity.Length() < 40f)
                         {
@@ -176,12 +174,12 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                                 npc.ai[0]++;
                             }
                             npc.ai[3] = 0;
+                            npc.netUpdate = true;
                         }
                         else
                         {
                             npc.ai[0]--;
                         }
-                        npc.netUpdate = true;
                     }
                     npc.rotation = npc.velocity.ToRotation();
                     if (npc.velocity.X < 0)
@@ -243,8 +241,11 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
                     MoveToPoint(wantedVelocity);
                     if (npc.ai[1]++ > 200)
                     {
-                        NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 100, ModContent.NPCType<Shenling>());
-                        NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 100, ModContent.NPCType<Shenling>());
+                        if(Main.netMode != 1)
+                        {
+                            NPC.NewNPC((int)npc.position.X, (int)npc.position.Y - 100, ModContent.NPCType<Shenling>());
+                            NPC.NewNPC((int)npc.position.X, (int)npc.position.Y + 100, ModContent.NPCType<Shenling>());
+                        }
                         AIChange();
                     }
                     break;
@@ -277,13 +278,17 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
             {
                 if(npc.ai[2]++ > 5)
                 {
-                    Vector2 Runeposition = new Vector2(0,0);
-                    Runeposition = player.Center + new Vector2((250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Sin(5.18f * Main.rand.Next(30) * 3.1415926f), (250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Cos(5.18f * Main.rand.Next(30) * 3.1415926f));
-                    
-                    float RunepositionX = Runeposition.X;
-                    float RunepositionY = Runeposition.Y;
-                    NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage / 4, npc.whoAmI, player.whoAmI);
+                    if(Main.netMode != 1)
+                    {
+                        Vector2 Runeposition = new Vector2(0,0);
+                        Runeposition = player.Center + new Vector2((250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Sin(5.18f * Main.rand.Next(30) * 3.1415926f), (250f + 4f * Main.rand.Next(-7, 7)) * (float)Math.Cos(5.18f * Main.rand.Next(30) * 3.1415926f));
+                        
+                        float RunepositionX = Runeposition.X;
+                        float RunepositionY = Runeposition.Y;
+                        NPC.NewNPC((int)RunepositionX, (int)RunepositionY, ModContent.NPCType<AsheRune>(), 0, RunepositionX, RunepositionY, npc.damage / 4, npc.whoAmI, player.whoAmI);
+                    }
                     npc.ai[2] = 0;
+                    npc.netUpdate = true;
                 }
             }
         }
@@ -549,13 +554,6 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
         public bool FlyingPositive = false;
         public bool FlyingNegative = false;
         public float pos = 350f;
-
-        public void ChangePos()
-        {
-            pos = - pos;
-            npc.netUpdate = false;
-        }
-
         public override void PostAI()
         {
             Player player = Main.player[npc.target];

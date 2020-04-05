@@ -114,14 +114,17 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                             type = ModContent.NPCType<AsheDragonTail>();
                         }
 
-                        int newNPC = NPC.NewNPC((int)npc.Center.X, (int)(npc.position.Y + npc.height), type, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
-                        if (Main.netMode == 2 && newNPC < 200) NetMessage.SendData(23, -1, -1, null, newNPC);
-                        Main.npc[newNPC].ai[3] = npc.whoAmI;
-                        Main.npc[newNPC].realLife = npc.whoAmI;
-                        Main.npc[newNPC].ai[1] = npcWhoAmI;
+                        if(Main.netMode != 1)
+                        {
+                            int newNPC = NPC.NewNPC((int)npc.Center.X, (int)(npc.position.Y + npc.height), type, npc.whoAmI, 0f, 0f, 0f, 0f, 255);
+                            if (Main.netMode == 2 && newNPC < 200) NetMessage.SendData(23, -1, -1, null, newNPC);
+                            Main.npc[newNPC].ai[3] = npc.whoAmI;
+                            Main.npc[newNPC].realLife = npc.whoAmI;
+                            Main.npc[newNPC].ai[1] = npcWhoAmI;
 
-                        Main.npc[npcWhoAmI].ai[0] = newNPC;
-                        npcWhoAmI = newNPC;
+                            Main.npc[npcWhoAmI].ai[0] = newNPC;
+                            npcWhoAmI = newNPC;
+                        }
                         npc.netUpdate = true;
                     }
                 }
