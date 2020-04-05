@@ -6,7 +6,6 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
 using BaseMod;
-using AAMod.NPCs.Bosses.AH.Haruka;
 
 namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 {

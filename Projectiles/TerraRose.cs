@@ -3,14 +3,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
 namespace AAMod.Projectiles
 {
-	public class TerraRose : ModProjectile
+    public class TerraRose : ModProjectile
 	{
 		public static Color lightColor = new Color(0, 150, 50);
 

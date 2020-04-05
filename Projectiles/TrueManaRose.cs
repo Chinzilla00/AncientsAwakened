@@ -1,16 +1,13 @@
-using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
 namespace AAMod.Projectiles
 {
-	public class TrueManaRose : ModProjectile
+    public class TrueManaRose : ModProjectile
 	{
 		public override void SetStaticDefaults()
 		{

@@ -3,12 +3,10 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
-using Terraria.ObjectData;
-using Terraria.ModLoader.IO;
 
 namespace AAMod.Items.Dev.RuneBook
 {
-	public class CCBookofRunes : BaseAAItem
+    public class CCBookofRunes : BaseAAItem
 	{
 		public override void SetStaticDefaults()
         {

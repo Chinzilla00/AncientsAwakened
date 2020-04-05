@@ -1,12 +1,11 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 
-namespace AAMod.Items.Armor.Fleshrend
+namespace AAMod.Items.Armor.Terra
 {
-    [AutoloadEquip(EquipType.Head)]
+	[AutoloadEquip(EquipType.Head)]
 	public class TerraHelm : BaseAAItem
 	{
 		public override void SetStaticDefaults()
