@@ -338,7 +338,7 @@ namespace AAMod.Items.Armor.Terra.Projectiles
                             Vector2 value19 = vector46 - projectile.Center;
                             value19.Normalize();
                             value19 *= scaleFactor3;
-                            int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, num658, projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+                            int num659 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, value19.X, value19.Y, num658, (int)(80 * player.minionDamage), 0f, Main.myPlayer, 0f, 0f);
                             Main.projectile[num659].melee = false; 
                             Main.projectile[num659].minion = true;
                             Main.projectile[num659].minionSlots = 0;
