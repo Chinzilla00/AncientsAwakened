@@ -195,6 +195,11 @@ namespace AAMod
         public bool ChampionSu = false;
 
         public bool TerraMe = false;
+        public bool TerraRa = false;
+        public bool TerraSu = false;
+        public int CrystalMode = 0;
+        public bool TerraMa = false;
+        public int RoseCooldown = 0;
 
         public bool onoPrevious;
         public bool ono;
@@ -502,6 +507,9 @@ namespace AAMod
             ChampionSu = false;
             StoneSoldier = false;
             TerraMe = false;
+            TerraRa = false;
+            TerraSu = false;
+            TerraMa = false;
         }
 
         private void ResetAccessoryEffect()
@@ -780,6 +788,42 @@ namespace AAMod
 
         public override void OnHitNPCWithProj(Projectile proj, NPC target, int damage, float knockback, bool crit)
         {
+            if (TerraRa && proj.ranged && Main.rand.Next(3) == 0)
+            {
+                float screenX;
+                float screenY;
+                if (Main.rand.Next(2) == 0)
+                {
+                    screenX = Main.screenPosition.X;
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        screenX += Main.screenWidth;
+                    }
+                    screenY = Main.screenPosition.Y;
+                    screenY += Main.rand.Next(Main.screenHeight);
+                }
+                else
+                {
+                    screenY = Main.screenPosition.Y;
+                    if (Main.rand.Next(2) == 0)
+                    {
+                        screenY += Main.screenHeight;
+                    }
+                    screenX = Main.screenPosition.X;
+                    screenX += Main.rand.Next(Main.screenWidth);
+                }
+                Vector2 vector = new Vector2(screenX, screenY);
+                float velocityX = target.Center.X - vector.X;
+                float velocityY = target.Center.Y - vector.Y;
+                velocityX += Main.rand.Next(-50, 51) * 0.1f;
+                velocityY += Main.rand.Next(-50, 51) * 0.1f;
+                float num6 = 24 / (float)Math.Sqrt(velocityX * velocityX + velocityY * velocityY);
+                velocityX *= num6;
+                velocityY *= num6;
+                Projectile p = Projectile.NewProjectileDirect(new Vector2(screenX, screenY), new Vector2(velocityX, velocityY), ModContent.ProjectileType<Items.Armor.Terra.Projectiles.TerraBullet>(), damage / 3, 0f, player.whoAmI);
+                p.tileCollide = false;
+            }
+
             if (Palladium)
             {
                 player.AddBuff(BuffID.RapidHealing, 300);
@@ -1699,6 +1743,35 @@ namespace AAMod
                 SpecialQuickHeal();
             }
 
+            if (TerraSu)
+            {
+                if (AAMod.ArmorAbilityKey.JustPressed)
+                {
+                    CrystalMode++;
+                    if (CrystalMode > 2)
+                    {
+                        CrystalMode = 0;
+                    }
+                }
+            }
+
+            if (RoseCooldown > 0)
+            {
+                RoseCooldown--;
+            }
+
+            if (TerraMa && RoseCooldown <= 0)
+            {
+                if (AAMod.ArmorAbilityKey.JustPressed)
+                {
+                    RoseCooldown = 600;
+                    float playerY = player.position.X - player.height;
+
+                    Projectile.NewProjectile(new Vector2(player.Center.X - 64, playerY), new Vector2(0, -1), mod.ProjectileType("TerraRoseA"), (int)(50 * player.magicDamage), 4, Main.myPlayer);
+                    Projectile.NewProjectile(new Vector2(player.Center.X + 64, playerY), new Vector2(0, -1), mod.ProjectileType("TerraRoseA"), (int)(50 * player.magicDamage), 4, Main.myPlayer);
+                }
+            }
+
             if (StripeManSet)
             {
                 if(AAMod.ArmorAbilityKey.JustPressed)
@@ -1808,6 +1881,13 @@ namespace AAMod
                 vector2.X = Main.mouseX + Main.screenPosition.X;
                 vector2.Y = Main.mouseY + Main.screenPosition.Y;
                 Projectile.NewProjectile(vector2.X, vector2.Y, 0, 0, mod.ProjectileType("RajahDrone"), (int)(100 * player.rangedDamage), 2, Main.myPlayer, 0f, 0f);
+            }
+
+            if (TerraSu && CrystalMode == 2)
+            {
+                player.lifeRegen += 12;
+                player.statDefense = (int)(player.statDefense * 1.2f);
+                player.allDamage /= 2;
             }
         }
 

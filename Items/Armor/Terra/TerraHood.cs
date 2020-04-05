@@ -12,8 +12,9 @@ namespace AAMod.Items.Armor.Terra
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Terra Hood");
-            Tooltip.SetDefault(@"8% Increased magic critical chance
-Increases maximum mana by 20");
+            Tooltip.SetDefault(@"Increases maximum mana by 100
+Increases magic damage by 17%
+Increases magic crit by 15%");
         }
 
         public override void SetDefaults()
@@ -21,14 +22,16 @@ Increases maximum mana by 20");
             item.width = 28;
             item.height = 24;
             item.value = 90000;
-            item.rare = 4;
-            item.defense = 7;
+            item.rare = 7;
+            item.defense = 22;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.statManaMax2 += 20;
-            player.magicCrit += 8;
+            player.manaCost -= 0.3f;
+            player.magicDamage += 0.17f;
+            player.magicCrit += 15;
+            player.statManaMax2 += 100;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -38,11 +41,14 @@ Increases maximum mana by 20");
 
         public override void UpdateArmorSet(Player player)
         {
+            player.setBonus = @"You can autodrink mana potions
+Mana usage lowered by 40%
+Pressing the Armor ability hotkey causes 2 terra rose stalks to grow around you.
+Enemies struck by the stalks drop mana stars";
 
-            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.TribalHatBonus");
-
-            player.manaCost *= 0.7f;
+            player.manaCost *= 0.6f;
             player.manaFlower = true;
+            player.GetModPlayer<AAPlayer>().TerraMa = true;
         }
 
         public override void AddRecipes()

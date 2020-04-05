@@ -13,7 +13,8 @@ namespace AAMod.Items.Magic
         {
             DisplayName.SetDefault("Terra Rose");
             Tooltip.SetDefault(@"Some say this staff was used by the legendary hero themselves
-Projectiles go through walls");
+Projectiles go through walls
+Right Clicking fires a piercing rose");
 			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
 
@@ -25,9 +26,9 @@ Projectiles go through walls");
 			item.width = 68;
 			item.height = 60;
 			item.useTime = 12;
-			item.useAnimation = 10;
+			item.useAnimation = 12;
 			item.useStyle = 5;
-			item.noMelee = true; //so the item's animation doesn't do damage
+			item.noMelee = true;
 			item.knockBack = 6;
             item.value = Item.sellPrice(0, 20, 0, 0);
             item.rare = 4;
@@ -35,6 +36,32 @@ Projectiles go through walls");
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("TerraRoseShot");
 			item.shootSpeed = 15f;
+        }
+
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                item.shoot = mod.ProjectileType("TerraRose");
+                item.damage = 40;
+                item.useTime = 30;
+                item.useAnimation = 30;
+                item.knockBack = 1;
+            }
+            else
+            {
+                item.shoot = mod.ProjectileType("TerraRoseShot");
+                item.damage = 150;
+                item.useTime = 12;
+                item.useAnimation = 12;
+                item.knockBack = 6;
+            }
+            return base.CanUseItem(player);
         }
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
@@ -80,10 +107,5 @@ Projectiles go through walls");
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
-
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(0, 0);
-        }
     }
 }

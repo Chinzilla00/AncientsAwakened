@@ -15,7 +15,7 @@ namespace AAMod.Items.Armor.Radium
 		{
 			DisplayName.SetDefault("Radium Mask");
 			Tooltip.SetDefault(@"15% increased magic damage
-Increases maximum mana by 80 
+Increases maximum mana by 100
 Shines with the light of a starry night sky");
 
 		}
@@ -32,7 +32,7 @@ Shines with the light of a starry night sky");
 		public override void UpdateEquip(Player player)
 		{
 			player.magicDamage += 0.15f;
-            player.statManaMax2 += 80;
+            player.statManaMax2 += 100;
 
         }
 

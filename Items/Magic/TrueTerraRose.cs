@@ -13,6 +13,7 @@ namespace AAMod.Items.Magic
             Tooltip.SetDefault(@"Some say this staff was used by the legendary hero themselves
 Projectiles explode on hit
 Projectiles go through walls
+Right Clicking fires a piercing rose
 Terra Rose EX");
 			Item.staff[item.type] = true; //this makes the useStyle animate as a staff instead of as a gun
 		}
@@ -36,8 +37,34 @@ Terra Rose EX");
 			item.shoot = mod.ProjectileType("TerraRoseShotEX");
 			item.shootSpeed = 20f;
         }
-		
-		public override void AddRecipes()
+
+        public override bool AltFunctionUse(Player player)
+        {
+            return true;
+        }
+
+        public override bool CanUseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                item.shoot = mod.ProjectileType("TrueTerraRose");
+                item.damage = 70;
+                item.useTime = 30;
+                item.useAnimation = 30;
+                item.knockBack = 2;
+            }
+            else
+            {
+                item.shoot = mod.ProjectileType("TerraRoseShotEX");
+                item.damage = 500;
+                item.useTime = 10;
+                item.useAnimation = 10;
+                item.knockBack = 6;
+            }
+            return base.CanUseItem(player);
+        }
+
+        public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);      
             recipe.AddIngredient(mod.ItemType("TerraRose"));

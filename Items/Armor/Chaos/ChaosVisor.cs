@@ -21,7 +21,7 @@ namespace AAMod.Items.Armor.Chaos
 			item.height = 24;
             item.value = Item.sellPrice(0, 5, 0, 0);
             item.rare = 7;
-            item.defense = 18;
+            item.defense = 15;
         }
 		
 		public override void UpdateEquip(Player player)

@@ -20,8 +20,8 @@ namespace AAMod.Items.Armor.Terra
             item.width = 24;
             item.height = 20;
             item.value = 9000;
-            item.rare = 4;
-            item.defense = 6;
+            item.rare = 7;
+            item.defense = 18;
         }
 
         public override void UpdateEquip(Player player)
@@ -36,19 +36,16 @@ namespace AAMod.Items.Armor.Terra
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DemonHoodBonus");
+            player.setBonus = @"Summons a Terra Crystal to assist you
+Pressing the armor ability toggles the crystal between offensive, defensive, and support mode
+While in support mode, your defense and life regeneration are increased, but your damage is cut in half";
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
-            modPlayer.impSet = true;
-            modPlayer.demonBonus = true;
+            modPlayer.TerraSu = true;
             if (player.whoAmI == Main.myPlayer)
             {
-                if (player.FindBuffIndex(mod.BuffType("DemonBuff")) == -1)
+                if (player.ownedProjectileCounts[mod.ProjectileType("TerraCrystal")] < 1)
                 {
-                    player.AddBuff(mod.BuffType("DemonBuff"), 3600, true);
-                }
-                if (player.ownedProjectileCounts[mod.ProjectileType("ImpMinion")] < 1)
-                {
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("ImpMinion"), 20, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("TerraCrystal"), 20, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
         }

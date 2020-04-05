@@ -12,7 +12,9 @@ namespace AAMod.Items.Armor.Terra
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Terra Visor");
-            Tooltip.SetDefault("9% Increased ranged damage");
+            Tooltip.SetDefault(@"24% Increased ranged damage
+25% Reduced Ammo Consumption
+Grants hunter & night vision");
         }
 
         public override void SetDefaults()
@@ -20,13 +22,16 @@ namespace AAMod.Items.Armor.Terra
             item.width = 38;
             item.height = 34;
             item.value = 90000;
-            item.rare = 4;
+            item.rare = 7;
             item.defense = 6;
         }
 
         public override void UpdateEquip(Player player)
         {
-            player.rangedDamage += 0.09f;
+            player.rangedDamage += 0.24f;
+            player.rangedDamage += 0.24f;
+            player.ammoCost75 = true;
+            player.nightVision = true;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
@@ -37,10 +42,13 @@ namespace AAMod.Items.Armor.Terra
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DeathlySkullBonus");
+            player.setBonus = @"Enemies less likely to target you
+Ranged critical strike chance increased by 20%
+Striking an enemy with a ranged projectile may cause a terra bullet to fire at the target";
 
             player.aggro -= 5;
-            player.ammoCost80 = true;
+            player.rangedCrit += 20;
+            player.GetModPlayer<AAPlayer>().TerraRa = true;
         }
 
         public override void AddRecipes()
