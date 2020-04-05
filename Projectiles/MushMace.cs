@@ -24,7 +24,7 @@ namespace AAMod.Projectiles
 		
 		public override void AI()
 		{
-            if (projectile.timeLeft == 120)
+            if (projectile.timeLeft == 60)
             {
                 projectile.ai[0] = 1f;
             }
