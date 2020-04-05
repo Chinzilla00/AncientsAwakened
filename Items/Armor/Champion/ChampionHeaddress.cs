@@ -46,7 +46,7 @@ The armor of a champion feared across the land");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = Language.GetTextValue("Mods.AAMod.Common.ChampionHeaddressBonus");
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Equipset.ChampionHeaddressBonus");
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             modPlayer.Baron = true;
             modPlayer.ChampionSu = true;

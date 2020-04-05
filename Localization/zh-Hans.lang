@@ -30,6 +30,9 @@ BuffDescription.Broodmini=小宝宝
 BuffName.BurningAsh=燎狱之烬
 BuffDescription.BurningAsh=灰烬正在灼烧你的皮肤
 
+BuffName.CCRune=符文
+BuffDescription.CCRune=召唤符文为你而战
+
 BuffName.Cerberus=刻耳泊洛斯
 BuffDescription.Cerberus=“哇哦，那并不可怕”
 
@@ -44,6 +47,9 @@ BuffDescription.CrowMinion=召唤一只恶毒乌鸦为你而战
 
 BuffName.ChaosClaw=混沌之爪
 BuffDescription.ChaosClaw=召唤混沌之爪为你而战
+
+BuffName.ChaosConstruct=混沌机构
+BuffDescription.ChaosConstruct=召唤一个混沌机构为你而战
 
 BuffName.ChaosBuff=混沌之怒
 BuffDescription.ChaosBuff=你的魔法能力大量提升
@@ -313,6 +319,42 @@ BuffDescription.YamataGravity=“别 想 远 离 我,臭 小 子!”
 BuffName.Yanked=猛拽
 BuffDescription.Yanked=“小 弟 弟,你 哪 也 去 不 了!”
 
+// AAMod.Items.Armor.Champion.Baron
+
+
+BuffName.BaronBuff=兔兔男爵
+BuffDescription.BaronBuff=兔兔男爵保护你
+
+
+// AAMod.Items.Armor.Champion.Carrot
+
+
+BuffName.CBoost1=捍卫者增幅
+BuffDescription.CBoost1=提升属性
+
+BuffName.CBoost2=捍卫者增幅
+BuffDescription.CBoost2=提升属性
+
+BuffName.CBoost3=捍卫者增幅
+BuffDescription.CBoost3=提升属性
+
+
+// AAMod.Items.Armor.Champion.Drone
+
+
+BuffName.DroneCool=大.兔.子. 单元重载协议
+BuffDescription.DroneCool=重 新 加 载. 提 供 伤 害 补 偿.
+
+
+// AAMod.Items.Armor.Champion
+
+
+BuffName.RageBuff=王公之怒
+BuffDescription.RageBuff=泰拉瑞亚的守护者永不言败
+
+BuffName.RageCool=王公之怒
+BuffDescription.RageCool=泰拉瑞亚的守护者永不言败
+
 // AAMod.Items.Misc
 
 ItemName.TriHeadedKoi=三头锦鲤
@@ -408,6 +450,9 @@ ItemTooltip.TimeStone=减少80%重生时间\n“恐惧，逃避，命运终会�
 ItemName.AquamancerWings=水法之翼
 ItemTooltip.AquamancerWings=可飞行和滑翔
 
+ItemName.ChaosWings=冥昧之翼
+ItemTooltip.ChaosWings=可飞行和滑翔
+
 ItemName.DarkmatterJetpack=暗物质加速器
 ItemTooltip.DarkmatterJetpack=可飞行和滑翔
 
@@ -434,6 +479,9 @@ ItemTooltip.NightmareWings=可飞行和滑翔
 
 ItemName.RadiumWings=镭光之翼
 ItemTooltip.RadiumWings=可飞行和滑翔
+
+ItemName.TerraWings=泰拉之翼
+ItemTooltip.TerraWings=可飞行和滑翔
 
 ItemName.VultureWings=秃鹫之翼
 ItemTooltip.VultureWings=允许缓缓飞行
@@ -541,6 +589,24 @@ ItemTooltip.BlazingSuneate=增加1%伤害减免\n增加2%近战伤害\n在燎日
 
 Common.BlazingBonus=敌人更容易瞄准你\n你挥动的武器对敌人造成燃烧
 
+// AAMod.Items.Armor.Bogwood
+
+
+ItemName.BogwoodBoots=污泽木护胫
+
+ItemName.BogwoodChestplate=污泽木胸甲
+
+ItemName.BogwoodHelmet=污泽木头盔
+
+Equipset.BogwoodHelmet=+1防御力
+
+
+// AAMod.Items.Armor.Champion.Carrot
+
+
+ItemName.CarrotBooster=胡萝卜加速器
+ItemTooltip.CarrotBooster=坚韧但是很脆.
+
 // AAMod.Items.Armor.Champion
 
 ItemName.ChampionChestplate=捍卫者胸甲
@@ -561,7 +627,10 @@ ItemTooltip.ChampionHood=增加32%魔法伤害\n增加10%非魔法伤害\n增加
 ItemName.ChampionMask=捍卫者面具
 ItemTooltip.ChampionMask=增加55%远程伤害\n增加44%远程暴击率\n增加10%非远程伤害\n减少25%弹药消耗\n纵横于这片土地上的捍卫者盔甲
 
-Common.ChampionHeaddressBonus=男爵兔兔作为你的盟友而战\n随着你生命值减少, 男爵兔兔的攻击能力会强化.
+Equipset.ChampionHeaddressBonus=男爵兔兔作为你的盟友而战\n随着你生命值减少, 男爵兔兔的攻击能力会强化.
+Equipset.ChampionHelmetBonus=“你是无辜者的一面护壁”\n按下套装能力键，给予你一个“防卫者之怒”的buff\n在愤怒状态下，你的防御力随着生命值降低而增加\n生命值越低，“防卫者之怒”持续时间越长\n生命值越低，“防卫者之怒”冷却时间越短\n冷却时间内，你的防御轻微减弱，但是你的速度加快
+Equipset.ChampionHoodBonus=能量在你体内四溢...\n攻击敌人有几率生成一个能量萝卜\n捡拾能量萝卜可以增加你的伤害，魔法再生和生命再生\n最多堆叠3层\n每一层都会增加这些属性
+Equipset.ChampionMaskBonus=“是时候狩猎那些猎人了...”\n按下套装能力键，召唤8秒钟的大.兔.子. 单元重载协议\n在冷却时间中，你的远程伤害和暴击率增加15%
 
 // AAMod.Items.Armor.Chaos
 
@@ -1143,6 +1212,31 @@ ItemName.RaiderLegs=突袭者护胫
 
 Common.RaiderChestBonus=你不会被击退\n随着你的生命值降低, 你的伤害减免将提高
 
+// AAMod.Items.Armor.Razewood
+
+
+ItemName.RazewoodBoots=燎火木护胫
+
+ItemName.RazewoodChestplate=燎火木胸甲
+
+ItemName.RazewoodHelmet=燎火木头盔
+
+Equipset.RazewoodHelmet=+1防御力
+
+
+// AAMod.Items.Armor.Stone
+
+
+ItemName.StoneSoldierGreaves=点石成兵护胫
+ItemTooltip.StoneSoldierGreaves=提升15%挖掘速度
+
+ItemName.StoneSoldierMask=点石成兵头盔
+ItemTooltip.StoneSoldierMask=提升10%挖掘速度\n穿戴时提供光照和探矿药剂效果
+
+ItemName.StoneSoldierPlate=点石成兵胸甲
+ItemTooltip.StoneSoldierPlate=提升15%挖掘速度
+
+Equipset.StoneSoldierMaskBonus=“变成一个最原始的吝啬鬼！”\n增加金币捡拾距离，商店纷纷打折\n攻击敌人有时会掉落额外的金币\n敌人死亡时有几率生成一个金币传送门\n对敌人造成点金debuff
 
 // AAMod.Items.Armor.Starcloud
 
@@ -1178,7 +1272,7 @@ ItemName.StripeManShirt=幸运条纹人衫
 ItemTooltip.StripeManShirt=获取所有信息\n你可以从石头里挖出金币\n你有更高的可能性遇到稀有生物\n从罐子中你有可能获得更好的东西\n如果你有足够多的钱，那么你会以丢失所有钱的代价挡住一次攻击\n获得北极潜水头盔的效果
 
 ItemName.StripeManPants=幸运条纹人裤
-ItemTooltip.StripeManPants=获得所有钓鱼必备技能\n一钩抓两鱼\n额外一抓有更多机会获得板条箱
+ItemTooltip.StripeManPants=获得所有钓鱼必备技能\n一钩抓两鱼\n你的鱼竿可以从敌人和怪物身上偷东西\n你可以用你的鱼竿捡地上的东西\n额外一抓有更多机会获得板条箱
 
 Common.StripeManSetBonus1=你改变了大自然的随机性规则\n你会成为一个幸运儿? 亦或是一个倒霉蛋\n按下套装能力键改变世界的随机系统:
 Common.StripeManSetBonusactive=已激活
@@ -1268,13 +1362,116 @@ ItemTooltip.YtriumPlate=增加10%移动速度
 // AAMod.Items.Banners
 
 
-ItemName.Banners= Banner
+===UNKNWN===
+ItemName.AbyssClawBanner=潭渊之爪旗
+
+ItemName.Banners=破旗
 
 ===UNKNWN===
-ItemName.FatPixieBanner=
+ItemName.BladonBanner=泰拉心球骑士旗
 
 ===UNKNWN===
-ItemName.ThixxieBanner=
+ItemName.BlazeClawBanner=炽焰之爪旗
+
+===UNKNWN===
+ItemName.BlazePhoenixBanner=炽焰凤凰旗
+
+===UNKNWN===
+ItemName.ChaosDragonBanner=混沌飞龙旗
+
+===UNKNWN===
+ItemName.ChaoticDawnBanner=混晓之剑旗
+
+===UNKNWN===
+ItemName.ChaoticTwilightBanner=乱暮之剑旗
+
+===UNKNWN===
+ItemName.DragonClawBanner=燎狱龙之爪旗
+
+===UNKNWN===
+ItemName.DragronBanner=燎狱猪龙旗
+
+===UNKNWN===
+ItemName.ElderDragonBanner=长老飞龙旗
+
+===UNKNWN===
+ItemName.FatPixieBanner=小胖精灵旗
+
+===UNKNWN===
+ItemName.FlamebruteBanner=炽焰兽旗
+
+===UNKNWN===
+ItemName.FlamespitterBanner=吐火虫旗
+
+===UNKNWN===
+ItemName.HydraClawBanner=海德拉之爪旗
+
+===UNKNWN===
+ItemName.InfernalSlimeBanner=燎狱史莱姆旗
+
+===UNKNWN===
+ItemName.InfernoSalamanderBanner=灼烧蝾螈旗
+
+===UNKNWN===
+ItemName.KappaBanner=潭渊怪物旗
+
+===UNKNWN===
+ItemName.MadnessBatBanner=癫狂飞行者旗
+
+===UNKNWN===
+ItemName.MadnessSlimeBanner=癫狂史莱姆旗
+
+===UNKNWN===
+ItemName.MagmalgamBanner=熔岩游鱼旗
+
+ItemName.MiniDjinnBanner=沙漠之魂旗
+
+===UNKNWN===
+ItemName.MiregronBanner=潭渊猪龙旗
+
+===UNKNWN===
+ItemName.MireSlimeBanner=潭渊史莱姆旗
+
+===UNKNWN===
+ItemName.MossterBanner=潭渊藓怪旗
+
+===UNKNWN===
+ItemName.NewtBanner=潭渊蝾螈旗
+
+===UNKNWN===
+ItemName.NullBanner=虚-无旗
+
+===UNKNWN===
+ItemName.SearcherBanner=虚空搜索者旗
+
+===UNKNWN===
+ItemName.ShadowScoutBanner=暗影侦察者旗
+
+===UNKNWN===
+ItemName.SnakeBanner=雪蛇旗
+
+===UNKNWN===
+ItemName.TerraDeadshotBanner=泰拉亡命枪手旗
+
+===UNKNWN===
+ItemName.TerraWarlockBanner=泰拉心球邪士旗
+
+===UNKNWN===
+ItemName.TerraWizardBanner=泰拉心球女巫旗
+
+===UNKNWN===
+ItemName.ThixxieBanner=巨胖精灵旗
+
+===UNKNWN===
+ItemName.ToxitoadBanner=剧毒蟾蜍旗
+
+ItemName.VoidScoutBanner=虚空监察者旗
+
+===UNKNWN===
+ItemName.WyrmBanner=燎狱游龙旗
+
+===UNKNWN===
+ItemName.WyrmlingBanner=燎狱游虫旗
 
 
 // AAMod.Items.Blocks
@@ -1358,13 +1555,9 @@ ItemTooltip.DjinnBox=播放 'Sand Smackdown' by Universe
 
 ItemName.DoomsdayChest=末日宝箱
 
-ItemName.DoomsdayPlating=末日电路镀层
-
 ItemName.Doomstone=充能厄劫石
 
 ItemName.DoomstoneB=厄劫石
-
-ItemName.DoomstoneBrick=厄劫石砖
 
 ItemName.DracoAltar=炙烤之日底座
 
@@ -1700,6 +1893,30 @@ ItemName.BogwoodWall=污泽木墙
 
 ItemName.BogwoodWorkbench=污泽木工作台
 
+// AAMod.Items.Blocks.Bricks
+
+
+ItemName.AbyssiumBrick=潭渊砖
+
+ItemName.DarkmatterBrick=暗物质砖
+
+ItemName.DaybreakBrick=炙曦砖
+
+ItemName.DoomsdayPlating=末日电路镀层
+
+ItemName.DoomstoneBrick=厄劫石砖
+
+ItemName.EquinoxBrick=天时砖
+ItemTooltip.EquinoxBrick=根据一天中的时间变换的砖
+
+ItemName.EventideBrick=渊宵砖
+
+ItemName.IncineriteBrick=燎烬砖
+
+ItemName.RadiumBrick=镭光砖
+
+ItemName.RelicBrick=遗物砖
+
 // AAMod.Items.Blocks.Oroboros
 
 ItemName.OroborosBathtub=虚环木浴缸
@@ -1800,6 +2017,9 @@ ItemName.SentryOfTheEye=真眼之哨
 ItemTooltip.SentryOfTheEye=召唤一个眼睛哨兵
 
 // AAMod.Items.Boss.Anubis.Forsaken
+
+ItemName.SoulCrook=判魂弯杖
+ItemTooltip.SoulCrook=穿过砖块\n击中敌人时弯杖可以治愈你
 
 ItemName.SoulFragment=灵魂罪片
 
@@ -2066,7 +2286,7 @@ ItemTooltip.DBBag={$CommonItemTooltip.RightClickToOpen}
 ItemName.DBTrophy=戴布林格纪念章
 
 ItemName.Equinox=昼夜平分符
-ItemTooltip.Equinox=极大提升你的各项属性\n“真正的平衡”
+ItemTooltip.Equinox=晚上变为狼人，入水变为人鱼\n极大提升你的各项属性\n“真正的平衡”
 
 ItemName.NCBag=宝藏袋
 ItemTooltip.NCBag={$CommonItemTooltip.RightClickToOpen}
@@ -2120,7 +2340,7 @@ ItemName.GildedGlock=鎏金格洛克手枪
 ItemTooltip.GildedGlock=使用钱币作为子弹
 
 ItemName.GoldDigger=淘金掘杖
-ItemTooltip.GoldDigger=发射一束碰到砖块会产生伤害金币喷泉的法束\n喷泉越活跃产生的伤害金币越少\n右键取消所有的喷泉
+ItemTooltip.GoldDigger=发射一束碰到砖块会产生伤害金币喷泉的法束\n一次只能有一个喷泉共存
 
 ItemName.GreedBag=宝藏袋
 
@@ -2159,6 +2379,7 @@ ItemName.OreCannon=加里有矿
 ItemTooltip.OreCannon=用矿石做炮弹
 
 ItemName.Unearther=发掘者
+ItemTooltip.Unearther=挖矿更快！
 
 ItemName.WormIdol=视虫唯神
 ItemTooltip.WormIdol=一个刻画某种蠕虫之神的远古雕像\n在底部好像有个能装某个球的槽
@@ -3413,7 +3634,7 @@ ItemTooltip.SoulOfSmite=燎狱生物的精华
 ItemName.SeraphFeather=六翼天羽
 ItemTooltip.SeraphFeather=六翼鸟妖的银色羽毛
 
-ItemName.SearingSpark=白雪魔力
+ItemName.SearingSpark=灼热火花
 
 ItemName.SoulOfSpite=渊怨之魂
 ItemTooltip.SoulOfSpite=潭渊生物的精华
@@ -4187,6 +4408,9 @@ ItemTooltip.Unreal=给可以附魔虚幻的武器附魔虚幻\n用魂右键武�
 ItemName.BlizzardDragonStaff=寒暴龙权杖
 ItemTooltip.BlizzardDragonStaff=召唤一只寒暴龙为你而战\n寒霜九头蛇 EX
 
+ItemName.ChaosRitual=混沌之仪
+ItemTooltip.ChaosRitual=召唤混沌机构为你而战
+
 ItemName.ChaosRitualEX=冥昧神仪
 ItemTooltip.ChaosRitualEX=召唤小冥昧龙为你而战
 
@@ -4207,6 +4431,9 @@ ItemTooltip.DoomiteSignal=召唤一个厄劫探针为你而战
 
 ItemName.DoomiteSignalC=厄劫雷达
 ItemTooltip.DoomiteSignalC=召唤一个厄劫雷达探针为你而战
+
+ItemName.DoomiteSignalO=过载厄劫雷达
+ItemTooltip.DoomiteSignalO=召唤虚空猎手为你而战
 
 ItemName.DragonriderStaff=唤龙槊
 ItemTooltip.DragonriderStaff=召唤狱焰龙为你而战
@@ -4656,7 +4883,7 @@ ItemTooltip.PonyMask=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Cerberus
 
-ItemName.InvokerBag=召唤师宝藏袋
+ItemName.InvokerBag=小刻尔伯洛斯的狗屋
 ItemTooltip.InvokerBag=右键打开\n内含冒充小狗召唤师的所有物品
 
 ItemName.InvokerHood=召唤师兜帽
@@ -4678,6 +4905,12 @@ ItemTooltip.CCHood=一副蜥蜴狂徒的面具\n“非常适合冒充远古觉�
 
 ItemName.CCRobe=惧月教徒长袍
 ItemTooltip.CCRobe=一套蜥蜴狂徒的长袍\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.CCBookofRunes=符文圣典
+ItemTooltip.CCBookofRunes=根据你的召唤栏召唤符文\n玩家有1个召唤栏时召唤泰拉符文\n玩家有2个召唤栏时召唤泰拉和混沌符文\n玩家有3个召唤栏时召唤泰拉，混沌和虚空符文
+
+ItemName.CCRuneBookPage=符文书页
+ItemTooltip.CCRuneBookPage=根据你的召唤栏召唤符文\n玩家有1个召唤栏时召唤兔兔符文\n玩家有2个召唤栏时召唤兔兔和不谐符文\n玩家有3个召唤栏时召唤兔兔，不谐和能量符文
 
 // AAMod.Items.Vanity.Charlie
 
@@ -5001,12 +5234,25 @@ ItemName.ZeroMask=零械面具
 
 // AAMod.Items.Walls
 
+ItemName.DarkmatterWall=暗物质砖墙
+
+ItemName.DaybreakWall=炙曦砖墙
 
 ItemName.DoomiteWall=厄劫镀层砖墙
 
 ItemName.DoomsdayWall=末日回路墙
 
 ItemName.DoomstoneBrickWall=末日砖墙
+
+ItemName.EquinoxWall=天时砖墙
+
+ItemName.EventideWall=渊宵砖墙
+
+ItemName.IncineriteWall=燎烬砖墙
+
+ItemName.RadiumWall=镭光砖墙
+
+ItemName.RelicWall=遗物砖墙
 
 
 // AAMod
@@ -5370,15 +5616,9 @@ NPCName.AbyssClawM=潭渊之爪
 
 NPCName.BlazeClawM=炽焰之爪
 
-// AAMod.NPCs.Bosses.Sagittarius
+// AAMod.NPCs.Bosses.Sag
 
 NPCName.Sag=射手座-虚空人马
-
-NPCName.Sagittarius=射手座-虚空人马
-
-NPCName.SagittariusFree=射手座-虚空人马A型
-
-NPCName.SagittariusOrbiter=护卫轨道器
 
 // AAMod.NPCs.Bosses.Shen
 

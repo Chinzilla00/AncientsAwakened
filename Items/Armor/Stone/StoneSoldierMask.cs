@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Stone
 {
@@ -27,7 +28,6 @@ Provides light & spelunker effect when worn");
 		public override void UpdateEquip(Player player)
 		{
 			player.findTreasure = true;
-			player.findTreasure = true;
 			player.pickSpeed += 0.15f;
 
 			Lighting.AddLight((int)player.Center.X, (int)player.Center.Y, 1f, 0.95f, .8f);
@@ -40,11 +40,7 @@ Provides light & spelunker effect when worn");
 
         public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = @"'Become the primo penny pincher!'
-Increases coin pickup range and shops have lower prices
-Hitting enemies will sometimes drop extra coins
-Enemies have a small chance to spawn a coin portal upon dying
-Attacks inflict enemies with the Midas debuff";
+			player.setBonus = Language.GetTextValue("Mods.AAMod.Equipset.StoneSoldierMaskBonus");
 
 			AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
 			modPlayer.StoneSoldier = true;

@@ -150,7 +150,7 @@ namespace AAMod.Tiles.Banners
 					case 11: dropName = "Wyrm"; break;
 					case 12: dropName = "Wyrmling"; break;		
 					//case 13: dropName = "Wyvern"; break;	
-					case 14: dropName = "Magmalgam"; break;	
+					case 14: dropName = "MagmaSwimmer"; break;	
 					case 15: dropName = "Chaotic Twilight"; break;
 					case 16: dropName = "Kappa"; break;		
 					case 17: dropName = "Miregron"; break;	

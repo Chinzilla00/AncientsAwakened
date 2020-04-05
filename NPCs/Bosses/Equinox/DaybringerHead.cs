@@ -246,6 +246,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                     if((npc.Center - target.Center).Length() < 300f)
                     {
                         isDeathRay = true;
+                        npc.netUpdate = true;
                     }
 
                     if (npc.Center.X < target.Center.X)

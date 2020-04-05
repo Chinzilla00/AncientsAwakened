@@ -28,6 +28,9 @@ BuffDescription.Broodmini=Милаха
 BuffName.BurningAsh=Горящий пепел
 BuffDescription.BurningAsh=Пепел сжигает вашу кожу
 
+BuffName.CCRune=Руны
+BuffDescription.CCRune=Призывает руны вам на помощь
+
 BuffName.Cerberus=Цербер
 BuffDescription.Cerberus=Авв, это даже не страшно
 
@@ -36,6 +39,9 @@ BuffDescription.ChaosBuff=В основном, ваши магические с�
 
 BuffName.ChaosClaw=Коготь Раздора
 BuffDescription.ChaosClaw=Призывает Коготь Раздора сражаться за вас
+
+BuffName.ChaosConstruct=Образ хаоса (Либо творение хаоса. Я не знаю просто, что это)
+BuffDescription.ChaosConstruct=Призывает образ хаоса сражаться на вашей стороне
 
 BuffName.ChaosWrath=Хаотический Гнев
 BuffDescription.ChaosWrath=Боль делает вас сильнее
@@ -251,6 +257,9 @@ BuffDescription.SagOrbiter=Призывает орбитальный аппар�
 BuffName.SagShield=Щиты подняты
 BuffDescription.SagShield=Они не могут пробраться, но ваши оружия не могут выбраться
 
+BuffName.ScoutMinion=Пустотный разведчик
+BuffDescription.ScoutMinion=Призывает пустотного разведчика сражаться на вашей стороне
+
 BuffName.Searcher=Искатель-Скаут
 BuffDescription.Searcher=Призывает Искателя-Скаута сражаться за вас
 
@@ -341,6 +350,37 @@ BuffName.AssassinHurt=Ранение убийцы
 
 BuffName.BaronBuff=Барон-Кролик
 BuffDescription.BaronBuff=Барон-Кролик защищает вас
+
+
+// AAMod.Items.Armor.Champion.Carrot
+
+
+BuffName.CBoost1=Чемпионское усиление
+BuffDescription.CBoost1=Характеристики увеличены
+
+BuffName.CBoost2=Чемпионское усиление
+BuffDescription.CBoost2=Характеристики увеличены
+
+BuffName.CBoost3=Чемпионское усиление
+BuffDescription.CBoost3=Характеристики увеличены
+
+
+// AAMod.Items.Armor.Champion.Drone
+
+
+BuffName.DroneCool=Протокол перезагрузки модуля R.A.B.I.T.
+BuffDescription.DroneCool=ПЕРЕЗАГРУЗКА. ОБЕСПЕЧЕНА КОМПЕНСАЦИЯ УРОНА
+
+
+// AAMod.Items.Armor.Champion
+
+
+BuffName.RageBuff=Ярость Раджа
+BuffDescription.RageBuff=Чемпион Террарии никогда не отступает!
+
+BuffName.RageCool=Ярость Раджа
+BuffDescription.RageCool=Чемпион Террарии никогда не отступает!
+
 
 
 // AAMod.Items.Boss.Greed
@@ -455,6 +495,9 @@ ItemTooltip.ShadowBand=Увеличивает скорость на 15%
 ItemName.AquamancerWings=Крылья водного колдуна
 ItemTooltip.AquamancerWings=Позволяют вам летать и поглощают урон от падения
 
+ItemName.ChaosWings=Крылья хаоса
+ItemTooltip.ChaosWings=Позволяют вам летать и поглощают урон от падения
+
 ItemName.DarkmatterJetpack=Бустер темной материи
 ItemTooltip.DarkmatterJetpack=Позволяют вам летать и поглощают урон от падения
 
@@ -472,6 +515,9 @@ ItemTooltip.OlympianWings=Позволяют вам летать и поглощ
 
 ItemName.RadiumWings=Радиумные крылья
 ItemTooltip.RadiumWings=Позволяют вам летать и поглощают урон от падения
+
+ItemName.TerraWings=Терра-Крылья
+ItemTooltip.TerraWings=Позволяют вам летать и поглощают урон от падения
 
 ItemName.VultureWings=Крылья Стервятника
 ItemTooltip.VultureWings=Позволяют вам летать и поглощают урон от падения
@@ -553,6 +599,23 @@ ItemTooltip.BlazingKabuto=Получаемый урон снижен на 1%\nУ
 
 ItemName.BlazingSuneate=Полыхающий Сунате
 ItemTooltip.BlazingSuneate=Получаемый урон снижен на 1%\nУвеличивает урон в ближнем бою на 2%\nСкован в огнях полыхающего солнца
+
+
+// AAMod.Items.Armor.Bogwood
+
+
+ItemName.BogwoodBoots=Ботинки из дерева Трясины
+
+ItemName.BogwoodChestplate=Нагрудник из дерева Трясины
+
+ItemName.BogwoodHelmet=Шлем из дерева Трясины
+
+
+// AAMod.Items.Armor.Champion.Carrot
+
+
+ItemName.CarrotBooster=Морковный ускоритель
+ItemTooltip.CarrotBooster=Нематериальный, но хрустящий
 
 
 // AAMod.Items.Armor.Champion
@@ -962,6 +1025,19 @@ ItemName.RaiderHelm=Шлем рейдера
 ItemName.RaiderLegs=Ботинки рейдера
 
 
+// AAMod.Items.Armor.Stone
+
+
+ItemName.StoneSoldierGreaves=Поножи каменного солдата
+ItemTooltip.StoneSoldierGreaves=Увеличивают скорость копания на 15%
+
+ItemName.StoneSoldierMask=Шлем каменного солдата
+ItemTooltip.StoneSoldierMask=Увеличивает скорость копания на 10%\nСветится и дает эффект зелья шахтера
+
+ItemName.StoneSoldierPlate=Нагрудник каменного солдата
+ItemTooltip.StoneSoldierPlate=Увеличивает скорость копания на 15%
+
+
 // AAMod.Items.Armor.StripeMan
 
 
@@ -969,7 +1045,7 @@ ItemName.StripeManHat=Везучая Шляпа Человека-полосы
 ItemTooltip.StripeManHat=Создает свет\nЭффект архитектурного набора\nПри копании камней, есть шанс получить руду\nВы можете использовать любой песок на перерабатывателе
 
 ItemName.StripeManPants=Везучие Штаны Человека-полосы
-ItemTooltip.StripeManPants=Все умения рыбака\nКогда рыба проглотила крючок, вы можете получить дополнительную рыбу\nВысокий шанс получить ящик с дополнительной рыбы
+ItemTooltip.StripeManPants=Максимальный уровень рыбалки\nКогда рыба проглотила крючок the hook, вы получаете дополнительную рыбу.\nВаша удочка может воровать у врагов\nВы можете использовать удочку, что бы подбирать предметы с расстояния  \nВысокий шанс получить ящик как дополнительную рыбу
 
 ItemName.StripeManShirt=Везучая Рубаха Человека-полосы
 ItemTooltip.StripeManShirt=Показывает все\nУ вас есть шанс получить золотую монетку с камня\nУ вас есть шанс встретиться с редким существом\nУ вас большии шанс получить что-то хорошее с горшков\nЕсли у вас достаточно денег, вы можете уклониться от урона, потратив все деньги\nЭффект Арктического водолазного костюма
@@ -1014,13 +1090,115 @@ ItemTooltip.WitchRobe=Увеличивает магический урон/ур�
 // AAMod.Items.Banners
 
 
+===UNKNWN===
+ItemName.AbyssClawBanner= Знамя когтя Бездны
+
 ItemName.Banners=Сломанное знамя
 
 ===UNKNWN===
-ItemName.FatPixieBanner=Знамя толстой фей
+ItemName.BladonBanner= Знамя Блэйдона
 
 ===UNKNWN===
-ItemName.ThixxieBanner=Знамя ЖИРНОЙ фей
+ItemName.BlazeClawBanner= Знамя Огненного когтя
+
+===UNKNWN===
+ItemName.BlazePhoenixBanner= Знамя Пламенного Феникса
+
+===UNKNWN===
+ItemName.ChaosDragonBanner= Знамя Дракона Хаоса
+
+===UNKNWN===
+ItemName.ChaoticDawnBanner= Знамя Хаотического Рассвета
+
+===UNKNWN===
+ItemName.ChaoticTwilightBanner= Знамя Хаотических Сумерек
+
+===UNKNWN===
+ItemName.DragonClawBanner= Знамя Драконьего когтя
+
+===UNKNWN===
+ItemName.DragronBanner= Знамя Дракрона
+
+===UNKNWN===
+ItemName.ElderDragonBanner= Знамя Старейшего дракона
+
+===UNKNWN===
+ItemName.FatPixieBanner= Знамя толстой феи
+
+===UNKNWN===
+ItemName.FlamebruteBanner= Знамя пламенного брута
+
+===UNKNWN===
+ItemName.FlamespitterBanner= Знамя огнеплюя
+
+===UNKNWN===
+ItemName.HydraClawBanner= Знамя когтя Гидры
+
+===UNKNWN===
+ItemName.InfernalSlimeBanner= Знамя инфернального слизня
+
+===UNKNWN===
+ItemName.InfernoSalamanderBanner= Знамя саламандры Инферно
+
+===UNKNWN===
+ItemName.KappaBanner= Знамя Каппы
+
+===UNKNWN===
+ItemName.MadnessBatBanner= Знамя летучей мыши безумия
+
+===UNKNWN===
+ItemName.MadnessSlimeBanner= Знамя слизня безумия
+
+===UNKNWN===
+ItemName.MagmalgamBanner= Знамя Магмальгамы
+
+ItemName.MiniDjinnBanner=Знамя Джинна
+
+===UNKNWN===
+ItemName.MiregronBanner= Знамя Трягрона
+
+===UNKNWN===
+ItemName.MireSlimeBanner= Знамя слизня Трясины
+
+===UNKNWN===
+ItemName.MossterBanner= Знамя мохтра (Переведи его, как "мохтер")
+
+===UNKNWN===
+ItemName.NewtBanner= Знамя Ньюта
+
+===UNKNWN===
+ItemName.NullBanner= Знамя Нуля
+
+===UNKNWN===
+ItemName.SearcherBanner= Знамя Искателя
+
+===UNKNWN===
+ItemName.ShadowScoutBanner= Знамя Теневого разведчика
+
+===UNKNWN===
+ItemName.SnakeBanner= Знамя змеи
+
+===UNKNWN===
+ItemName.TerraDeadshotBanner= Знамя Терра-стрелка
+
+===UNKNWN===
+ItemName.TerraWarlockBanner= Знамя Терра-чернокнижника
+
+===UNKNWN===
+ItemName.TerraWizardBanner= Знамя Терра-волшебника
+===UNKNWN===
+ItemName.ThixxieBanner= Знамя ЖИРНОЙ феи
+
+===UNKNWN===
+ItemName.ToxitoadBanner= Знамя токсижабы
+
+ItemName.VoidScoutBanner=Знамя Разведчика
+
+===UNKNWN===
+ItemName.WyrmBanner= Знамя змея
+
+===UNKNWN===
+ItemName.WyrmlingBanner= Знамя змееныша
 
 
 // AAMod.Items.Blocks.BogwoodF
@@ -1067,6 +1245,30 @@ ItemName.BogwoodTable=Стол из дерева Трясины
 ItemName.BogwoodWall=Стена из дерева Трясины
 
 ItemName.BogwoodWorkbench=Верстак из дерева Трясины
+
+// AAMod.Items.Blocks.Bricks
+
+
+ItemName.AbyssiumBrick=Кирпич из абиссиума
+
+ItemName.DarkmatterBrick=Кирпич из темной материи
+
+ItemName.DaybreakBrick=Рассветный кирпич
+
+ItemName.DoomsdayPlating=Покрытие судного дня
+
+ItemName.DoomstoneBrick=Кирпич из камня Рока
+
+ItemName.EquinoxBrick=Кирпич Равноденствия
+ItemTooltip.EquinoxBrick=Меняется в зависимости от времени суток
+
+ItemName.EventideBrick=Вечерний кирпич
+
+ItemName.IncineriteBrick=Кирпич из инсенерита (Блять научите, как правильно это писать, как у тебя переведено)
+
+ItemName.RadiumBrick=Кирпич из радия
+
+ItemName.RelicBrick=Кирпич из реликвии
 
 
 // AAMod.Items.Blocks
@@ -1139,13 +1341,9 @@ ItemTooltip.DjinnBox=Проигрывает 'Sand Smackdown' by Universe
 
 ItemName.DoomsdayChest=Сундук Судного дня
 
-ItemName.DoomsdayPlating=Покрытие Судного дня
-
 ItemName.Doomstone=Заряженный камень рока
 
 ItemName.DoomstoneB=Камень рока
-
-ItemName.DoomstoneBrick=Кирпич из камня рока
 
 ItemName.DragonfireTorch=Факел драконьего огня
 
@@ -1598,6 +1796,9 @@ ItemTooltip.HorusCane=Призывает глаз Горуса
 ItemName.Lifeline=Линия жизни
 ItemTooltip.Lifeline=Стреляет 2 заколдованными стрелами мумии вместе с обычными\nСтреляет извержением ``Забытых стрел``, если 2 заколдованные стрелы попадают по цели\nЗабытые стрелы понижают контактный урон противника
 
+ItemName.SoulCrook=Крюк Судьи Душ
+ItemTooltip.SoulCrook=Phases through tiles\nEvery hit the crook makes heals you when it returns
+
 ItemName.SoulFragment=Фрагмент Души
 
 ItemName.Soulsplitter=Разделитель Души
@@ -1761,7 +1962,7 @@ ItemTooltip.EquinoxBag={$CommonItemTooltip.RightClickToOpen}\nСодержит �
 ItemName.DBTrophy=Трофей Приносящего свет
 
 ItemName.Equinox=Равноденствие
-ItemTooltip.Equinox=Чрезвычайно повышает характеристики\n'Истинный баланс'
+ItemTooltip.Equinox=Превращает игрока в оборотня ночью и в мерфолка при заходе в воду\nБезумно увеличивает характеристики\n'Настоящий баланс'
 
 ItemName.NCTrophy=Трофей Ночного Ползуна
 
@@ -1780,8 +1981,8 @@ ItemTooltip.DesireCharm=Grabbing coins boosts your damage by 1% for 4 seconds\nG
 ItemName.GildedGlock=Gilded Glock
 ItemTooltip.GildedGlock=Uses Coins as Ammo
 
-ItemName.GoldDigger=Gold Digger
-ItemTooltip.GoldDigger=Fires a projectile that, upon collision with a tile, creates a fountain of coins\nFountains will spit less coins the more fountains are active\nRightClick to clear all fountains
+ItemName.GoldDigger=Золотоискатель
+ItemTooltip.GoldDigger=Выпускает снаряд, создающий фонтан из монет при контакте с блоком\nМожет быть активен только один фонтан
 
 ItemName.GreedBag=Treasure Bag
 ItemTooltip.GreedBag={$CommonItemTooltip.RightClickToOpen}
@@ -1800,6 +2001,8 @@ ItemTooltip.StoneSlammer=Hitting an airborne always crits and sends the target f
 
 // AAMod.Items.Boss.Greed.WKG
 
+ItemName.Unearther=Добытчик
+ItemTooltip.Unearther=Копает руду намного быстрее своей обычной скорости
 
 ItemName.DesireTalisman=Talisman of Desire
 ItemTooltip.DesireTalisman=Grabbing coins boosts your damage by 1% for 4 seconds\nGrabbing another coin increases the damage by 1% and resets the countdown\nCaps out at 20% damage\nIncreases coin pickup range \nShops have lower prices\nHitting enemies will sometimes drop extra coins
@@ -2504,6 +2707,16 @@ ItemName.UmbreonSPEX=Umbra
 ItemTooltip.UmbreonSPEX=A dark sword from a dark creature\nBlade of Night EX
 
 
+// AAMod.Items.Dev.RuneBook
+
+
+ItemName.CCBookofRunes=Книга рун
+ItemTooltip.CCBookofRunes=Призывает руны в зависимости от ваших слотов для миньонов\nКогда у игрока только 1 слот, то призывается терра-руна.\nКогда у игрока 2 слота, то призываются терра и хаос руны.\nКогда у игрока 3 слота, то призываются терра, хаос и пустотная руны.
+
+ItemName.CCRuneBookPage=Страница из книги рун
+ItemTooltip.CCRuneBookPage=Призывает руны в зависимости от ваших слотов для миньонов\nКогда у игрока только 1 слот, то призывается кроликовая руна.\nКогда у игрока 2 слота, то призываются кроликовая и раздорная руны.\nКогда у игрока 3 слота, то призываются кроликовая, раздорная и энергетические руны.
+
+
 // AAMod.Items.Dev.Tools
 
 
@@ -2893,7 +3106,7 @@ ItemName.RelicBar=Relic Bar
 ItemName.RoyalRabbit=Royal Rabbit
 ItemTooltip.RoyalRabbit=Under direct protection by the Pouncing Punisher
 
-ItemName.SearingSpark=Snow Mana
+ItemName.SearingSpark=Опаляющая искра
 
 ItemName.SeraphFeather=Seraph Feather
 ItemTooltip.SeraphFeather=A silvery feather from a harpy seraph
@@ -3036,7 +3249,7 @@ ItemTooltip.Depthwalker=Walk the Hydra
 
 ItemName.DesertScimitar=Desert Scimitar
 
-ItemName.DMSlasher=DarkMatter Slasher
+ItemName.DMSlasher=Тесак из темной материи
 
 ItemName.DoomiteSaber=Doomite Saber
 
@@ -3565,6 +3778,9 @@ ItemTooltip.Unreal=Gives a weapon the ''Unreal'' prefix if it is possible\nRight
 ItemName.BlizzardDragonStaff=Blizzard Dragon Staff
 ItemTooltip.BlizzardDragonStaff=Summons a blizzard dragon to fight for you\nHydra Staff EX
 
+ItemName.ChaosRitual=Хаотический ритуал
+ItemTooltip.ChaosRitual=Призывает хаос-констракта сражаться за вас
+
 ItemName.ChaosRitualEX=Perfect Chaos Ritual
 ItemTooltip.ChaosRitualEX=Summons a small chaos dragon to fight for you
 
@@ -3582,6 +3798,9 @@ ItemTooltip.DoomiteSignal=Summons a doomite probe to fight with you
 
 ItemName.DoomiteSignalC=Doomite Radio
 ItemTooltip.DoomiteSignalC=Summons a doomite radio probe to fight with you
+
+ItemName.DoomiteSignalO=Перегруженное роковое радио
+ItemTooltip.DoomiteSignalO=Призывает скаута пустоты сражаться за вас
 
 ItemName.DragonriderStaff=Dragon's Pike
 ItemTooltip.DragonriderStaff=Summons a fire dragon to fight for you
@@ -3969,8 +4188,8 @@ ItemTooltip.CCRobe=The hood of a crazy lizard enthusiast\n'Great for impersonati
 // AAMod.Items.Vanity.Cerberus
 
 
-ItemName.InvokerBag=Invoker's Bag
-ItemTooltip.InvokerBag=<right> to open \n'All the essentials for impersonating the Invoker of Pups!'
+ItemName.InvokerBag=Будка Цербера
+ItemTooltip.InvokerBag=Нажмите Щелчок правой клавиши мыши, что бы открыть\n'Предметы первой необходимости для продражания призывателя песиков!'
 
 ItemName.InvokerHood=Invoker Hood
 ItemTooltip.InvokerHood=The enchanted hood of Aleister the 'Mega Therion'\nGreat for impersonating Awakened Developers!
@@ -4302,11 +4521,25 @@ ItemTooltip.CursedRobe='Great for impersonating Ancients Awakened Devs!'
 // AAMod.Items.Walls
 
 
+ItemName.DarkmatterWall=Стена кирпичей из темной материи
+
+ItemName.DaybreakWall=Стена рассветных кирпичей
+
 ItemName.DoomiteWall=Doomite Plating Wall
 
-ItemName.DoomsdayWall=Doomsday Circuit Wall
+ItemName.DoomsdayWall=Стена из покрытия судного дня
 
-ItemName.DoomstoneBrickWall=Doomsday Brick Wall
+ItemName.DoomstoneBrickWall=Стена кирпичей из камня Рока
+
+ItemName.EquinoxWall=Стена из кирпичей равноденствия
+
+ItemName.EventideWall=Стена из вечерних кирпечей
+
+ItemName.IncineriteWall=Стена кирпичей из инцинирита (вот как писать)
+
+ItemName.RadiumWall=Стена кирпичей из радия
+
+ItemName.RelicWall=Стена кирпичей из реликвии
 
 
 // AAMod
@@ -5532,7 +5765,12 @@ Common.AtlanteanBonus=While submerged in liquids, your magic abilities and defen
 
 Common.BlazingBonus=Enemies are more likely to target you\nYour Swung weapons set your enemies ablaze
 
-Common.ChampionHeaddressBonus=Baron Bunny fights by your side as an ally to rabbit kind\nAs you lose health, Baron Bunny's will to fight becomes stronger.
+Equipset.BogwoodHelmet=+1 защита
+
+Equipset.ChampionHeaddressBonus=Кролик-Барон сражается за вас как союзник из расы кроликов\nЧем меньше у вас здоровье, тем больше у него желаниенабить ебала биться.
+Equipset.ChampionHelmetBonus=Вы-стена, защищающая невинных\nИспользование способности брони накладывает на вас "Гнев защитника".\nКогда вы разозлены, чем меньше у вас здоровья, тем больше у вас защиты.\n"Гнев защитника" продляется с уменьшением вашего здоровья\nЧем меньше у вас здоровья, тем дольше перезарядка "Гнева защитника"\nВо время перезарядки у вас уменьшается защита, но вы ускоряетесь
+Equipset.ChampionHoodBonus=Энергия исходит из вашего тела...\nПри ударе по врагам есть шанс, что из них вылетит энергетическая морковка\nКаждая морковка увеличивает ваш урон/защиту/регенерацию здоровья\nУвеличение усиливается 3 раза\nС каждым усилением эффект становится сильнее
+Equipset.ChampionMaskBonus=Пришло время охотиться на охотников...\nИспользование способности брони призывает модуль R.A.B.I.T.\nУ модуля R.A.B.I.T. 15 секундная перезарядка\nВо время перезарядки, ваш дистанционный урон и шанс дистанционного критического удара увеличены на 15%\nЗАЯЦ, ВОЛК. ЗАЯЦ, ВОЛК!
 
 Common.ChaosFukumenBonus=Your ranged attacks are imbued with the chaos of Dragonfire and Bogtoxin\n25% increased ranged damage\nEnemies are less likely to target you\nNight Vision and hunter effects\n25% reduced ammo consumption
 Common.ChaosKabutoBonus=10% increased melee speed\nEnemies are more likely to target you\nEnemies that strike you are set ablaze\nYour Swung weapons inflicts them with Bogtoxin and Dragonflame
@@ -5588,7 +5826,7 @@ Common.NightsHelmBonus=Being hit by enemies Sends you into a speed frenzy, incre
 
 Common.OceanHelmBonus=20% increased magic damage and 15% mana use reduction while submerged in water
 
-Common.OlympianHelmBonus='They will fear your precision, yet you will fear the slightest gust'\n60% increased critical strike chance
+Common.OlympianHelmBonus='Они будут бояться твоей точности, но ты будешь бояться порыва ветра'\nУвеличивает шанс критического удара на 60%
 
 Common.OroborosHelmetBonus=+3 Defence
 
@@ -5616,6 +5854,10 @@ Common.RadiumMaskBonus2=Magic Damage\n
 Common.RadiumMaskBonus3=% critical strike chance
 
 Common.RaiderChestBonus=You cannot be knocked back\nAs your health goes down, your damage resistance goes up
+
+Equipset.RazewoodHelmet=+1 защита
+
+Equipset.StoneSoldierMaskBonus='Стань жадным!'\nУвеличивает радиус поднятия монеток и цены в магазинах\nПри нанесении урона врагам с ним могут выпасть монетки\nЕсть маленький шанс, что при смерти враги создадут денежный портал\nАтаки накладывают на врагов "Касание Мидаса"
 
 Common.TribalHatBonus=You are blessed with a gift of nature, allowing you to autodrink mana potions\nMana usage lowered by 30%
 
@@ -5818,7 +6060,7 @@ Common.ConfusingMushroomFalse2=The Feudal Fungus keeps trying to attack you
 Common.CuriousClawFalse1=The Grips of Chaos are already here!
 Common.CuriousClawFalse2=The claw lays limp in your hand. Nasty.
 
-Grips.GripsofChaosAwoken=The Grips of Chaos have awoken!
+Grips.GripsofChaosAwoken=Тиски Хаоса пробудились!
 
 Common.DiamondCarrotRajahText1=GRAVE MISTAKE, TERRARIAN!
 Common.DiamondCarrotRajahText2=Show me what you got, 

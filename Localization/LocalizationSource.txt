@@ -28,6 +28,9 @@ BuffDescription.Broodmini=Smol bab
 BuffName.BurningAsh=Burning Ash
 BuffDescription.BurningAsh=Ash is melting your skin
 
+BuffName.CCRune=Rune
+BuffDescription.CCRune=Summons runes to fight for you
+
 BuffName.Cerberus=Cerberus
 BuffDescription.Cerberus='Aww, that isn't so scary!'
 
@@ -36,6 +39,9 @@ BuffDescription.ChaosBuff=Your magic abilities are increased substantially
 
 BuffName.ChaosClaw=Discordian Claw
 BuffDescription.ChaosClaw=Summons a discordian claw to fight for you
+
+BuffName.ChaosConstruct=Chaos Construct
+BuffDescription.ChaosConstruct=Summons a chaos construct to fight for you
 
 BuffName.ChaosWrath=Chaotic Wrath
 BuffDescription.ChaosWrath=Pain only makes you stronger
@@ -248,6 +254,9 @@ BuffDescription.SagOrbiter=Summons an orbiter to fight for you
 BuffName.SagShield=Shields Up
 BuffDescription.SagShield=They can't get in, but your weapons can't get out.
 
+BuffName.ScoutMinion=Void Scout
+BuffDescription.ScoutMinion=Summons a Void Scout to fight for you
+
 BuffName.Searcher=Searcher Scout
 BuffDescription.Searcher=Summons a searcher to fight for you
 
@@ -328,6 +337,36 @@ BuffName.AssassinHurt=AssassinHirt
 
 BuffName.BaronBuff=Baron Bunny
 BuffDescription.BaronBuff=Baron Bunny protects you
+
+
+// AAMod.Items.Armor.Champion.Carrot
+
+
+BuffName.CBoost1=Champion Boost
+BuffDescription.CBoost1=Increased stats
+
+BuffName.CBoost2=Champion Boost
+BuffDescription.CBoost2=Increased stats
+
+BuffName.CBoost3=Champion Boost
+BuffDescription.CBoost3=Increased stats
+
+
+// AAMod.Items.Armor.Champion.Drone
+
+
+BuffName.DroneCool=R.A.B.I.T. Unit Reload Protocol
+BuffDescription.DroneCool=RELOADING. DAMAGE COMPENSATION PROVIDED.
+
+
+// AAMod.Items.Armor.Champion
+
+
+BuffName.RageBuff=Rajah's Rage
+BuffDescription.RageBuff=A champion of Terraria never backs down
+
+BuffName.RageCool=Rajah's Rage
+BuffDescription.RageCool=A champion of Terraria never backs down
 
 
 // AAMod.Items.Boss.Greed
@@ -413,7 +452,7 @@ ItemTooltip.BlackLotusEmblem=Increases pickup range for mana stars\nAutomaticall
 ItemName.BotchedBand=Botched Band
 ItemTooltip.BotchedBand=10% Increased movement speed and damage
 
-ItemName.CursedEyeofSoulBinder=CursedEye of SoulBinder
+ItemName.CursedEyeofSoulBinder=Cursed Eye of the Soul Binder
 ItemTooltip.CursedEyeofSoulBinder=Pressing the accessory ability hotkey helps player skip the time between old one army two waves.\nIncrease 21% minion damage\nIncrease your max number of minions\nIncrease your max number of sentries\n+50 Max Life\nYour minions can strike the enemy's soul\nWhile Old One's Army is on, increase 31% minion damage.
 
 ItemName.DemonGauntlet=Demon Gauntlet
@@ -450,6 +489,9 @@ ItemTooltip.ShadowBand=15% increased movement speed
 ItemName.AquamancerWings=Aquamancer Wings
 ItemTooltip.AquamancerWings=Allows flight and slow fall
 
+ItemName.ChaosWings=Chaos Wings
+ItemTooltip.ChaosWings=Allows flight and slow fall
+
 ItemName.DarkmatterJetpack=Darkmatter Booster
 ItemTooltip.DarkmatterJetpack=Allows flight and slow fall
 
@@ -467,6 +509,9 @@ ItemTooltip.OlympianWings=Allows flight and slow fall\nGrants a dash while flyin
 
 ItemName.RadiumWings=Radium Wings
 ItemTooltip.RadiumWings=Allows flight and slow fall
+
+ItemName.TerraWings=TerraWings Wings
+ItemTooltip.TerraWings=Allows flight and slow fall
 
 ItemName.VultureWings=Vulture Wings
 ItemTooltip.VultureWings=Allows slow fall
@@ -548,6 +593,23 @@ ItemTooltip.BlazingKabuto=1% increased Damage Resistance\n3% increased Melee Dam
 
 ItemName.BlazingSuneate=Blazing Suneate
 ItemTooltip.BlazingSuneate=1% increased Damage Resistance\n2% increased Melee Damage\nForged in the flames of the blazing sun
+
+
+// AAMod.Items.Armor.Bogwood
+
+
+ItemName.BogwoodBoots=Bogwood Boots
+
+ItemName.BogwoodChestplate=Bogwood Chestplate
+
+ItemName.BogwoodHelmet=Bogwood Helmet
+
+
+// AAMod.Items.Armor.Champion.Carrot
+
+
+ItemName.CarrotBooster=Carrot Booster
+ItemTooltip.CarrotBooster=Etheral, but crunchy.
 
 
 // AAMod.Items.Armor.Champion
@@ -957,6 +1019,29 @@ ItemName.RaiderHelm=Raider Helmet
 ItemName.RaiderLegs=Raider Greaves
 
 
+// AAMod.Items.Armor.Razewood
+
+
+ItemName.RazewoodBoots=Razewood Boots
+
+ItemName.RazewoodChestplate=Razewood Chestplate
+
+ItemName.RazewoodHelmet=Razewood Helmet
+
+
+// AAMod.Items.Armor.Stone
+
+
+ItemName.StoneSoldierGreaves=Stone Soldier Greaves
+ItemTooltip.StoneSoldierGreaves=Increases mining speed by 15%
+
+ItemName.StoneSoldierMask=Stone Soldier Helmet
+ItemTooltip.StoneSoldierMask=Increases mining speed by 10%\nProvides light & spelunker effect when worn
+
+ItemName.StoneSoldierPlate=Stone Soldier Breastplate
+ItemTooltip.StoneSoldierPlate=Increases mining speed by 15%
+
+
 // AAMod.Items.Armor.StripeMan
 
 
@@ -964,7 +1049,7 @@ ItemName.StripeManHat=Stripeman's Lucky Hat
 ItemTooltip.StripeManHat=Provides light when worn\nGet the effect of Architect Gizmo Pack\nWhen digging stones, you may get ore from them\nYou can put any sand into the Extractinator
 
 ItemName.StripeManPants=Stripeman's Lucky Pants
-ItemTooltip.StripeManPants=Get all of the fisher skill effects\nWhen fish swallowed the hook, you can get an extra fish.\nYou have more chance to get a crate among the extra booty
+ItemTooltip.StripeManPants=Get all of the fisher skill effects\nWhen fish swallowed the hook, you can get an extra fish.\nYour fishing rod has chance to steal drops from the enemies and npcs\nYou can use your fishing rod to catch the items on the ground  \nYou have more chance to get a crate among the extra booty
 
 ItemName.StripeManShirt=Stripeman's Lucky Shirt
 ItemTooltip.StripeManShirt=Displays everything\nYou have chance to get gold coins in stoneblocks\nYou have more chance to meet with rare creatures.\nYou have more chance to get better things in pots\nIf you have enough money, you can resist an attack by losting all your money.\nHave the effect of Arctic Diving Gear
@@ -1009,13 +1094,116 @@ ItemTooltip.WitchRobe=10% increased magic/minion damage \n10% increased critical
 // AAMod.Items.Banners
 
 
+===UNKNWN===
+ItemName.AbyssClawBanner=
+
 ItemName.Banners=Broken Banner
+
+===UNKNWN===
+ItemName.BladonBanner=
+
+===UNKNWN===
+ItemName.BlazeClawBanner=
+
+===UNKNWN===
+ItemName.BlazePhoenixBanner=
+
+===UNKNWN===
+ItemName.ChaosDragonBanner=
+
+===UNKNWN===
+ItemName.ChaoticDawnBanner=
+
+===UNKNWN===
+ItemName.ChaoticTwilightBanner=
+
+===UNKNWN===
+ItemName.DragonClawBanner=
+
+===UNKNWN===
+ItemName.DragronBanner=
+
+===UNKNWN===
+ItemName.ElderDragonBanner=
 
 ===UNKNWN===
 ItemName.FatPixieBanner=
 
 ===UNKNWN===
+ItemName.FlamebruteBanner=
+
+===UNKNWN===
+ItemName.FlamespitterBanner=
+
+===UNKNWN===
+ItemName.HydraClawBanner=
+
+===UNKNWN===
+ItemName.InfernalSlimeBanner=
+
+===UNKNWN===
+ItemName.InfernoSalamanderBanner=
+
+===UNKNWN===
+ItemName.KappaBanner=
+
+===UNKNWN===
+ItemName.MadnessBatBanner=
+
+===UNKNWN===
+ItemName.MadnessSlimeBanner=
+
+===UNKNWN===
+ItemName.MagmalgamBanner=
+
+ItemName.MiniDjinnBanner=Djinn Banner
+
+===UNKNWN===
+ItemName.MiregronBanner=
+
+===UNKNWN===
+ItemName.MireSlimeBanner=
+
+===UNKNWN===
+ItemName.MossterBanner=
+
+===UNKNWN===
+ItemName.NewtBanner=
+
+===UNKNWN===
+ItemName.NullBanner=
+
+===UNKNWN===
+ItemName.SearcherBanner=
+
+===UNKNWN===
+ItemName.ShadowScoutBanner=
+
+===UNKNWN===
+ItemName.SnakeBanner=
+
+===UNKNWN===
+ItemName.TerraDeadshotBanner=
+
+===UNKNWN===
+ItemName.TerraWarlockBanner=
+
+===UNKNWN===
+ItemName.TerraWizardBanner=
+
+===UNKNWN===
 ItemName.ThixxieBanner=
+
+===UNKNWN===
+ItemName.ToxitoadBanner=
+
+ItemName.VoidScoutBanner=Scout Banner
+
+===UNKNWN===
+ItemName.WyrmBanner=
+
+===UNKNWN===
+ItemName.WyrmlingBanner=
 
 
 // AAMod.Items.Blocks.BogwoodF
@@ -1062,6 +1250,31 @@ ItemName.BogwoodTable=Bogwood Table
 ItemName.BogwoodWall=Bogwood Wall
 
 ItemName.BogwoodWorkbench=Bogwood Workbench
+
+
+// AAMod.Items.Blocks.Bricks
+
+
+ItemName.AbyssiumBrick=Abyssium Brick
+
+ItemName.DarkmatterBrick=Darkmatter Brick
+
+ItemName.DaybreakBrick=Daybreak Brick
+
+ItemName.DoomsdayPlating=Doomsday Circuit Plating
+
+ItemName.DoomstoneBrick=Doomstone Brick
+
+ItemName.EquinoxBrick=Equinox Brick
+ItemTooltip.EquinoxBrick=Changes depending on the time of day
+
+ItemName.EventideBrick=Eventide Brick
+
+ItemName.IncineriteBrick=Incinerite Brick
+
+ItemName.RadiumBrick=Radium Brick
+
+ItemName.RelicBrick=Relic Brick
 
 
 // AAMod.Items.Blocks
@@ -1134,13 +1347,9 @@ ItemTooltip.DjinnBox=Plays 'Sand Smackdown' by Universe
 
 ItemName.DoomsdayChest=Doomsday Chest
 
-ItemName.DoomsdayPlating=Doomsday Circuit Plating
-
 ItemName.Doomstone=Charged Doomstone
 
 ItemName.DoomstoneB=Doomstone
-
-ItemName.DoomstoneBrick=Doomstone Brick
 
 ItemName.DragonfireTorch=Dragonfire Torch
 
@@ -1597,6 +1806,8 @@ ItemTooltip.HorusCane=Summons a Horus Eye sentry
 ItemName.Lifeline=Lifeline
 ItemTooltip.Lifeline=Shoots 2 enchanced Mummy arrows alongside with normal\nShoots ``Forsaken arrows`` burst if 2 enchanted arrows hit the target\nForsaken arrows lower enemy contact damage
 
+ItemName.SoulCrook=Crook of the Soul Judge
+
 ItemName.SoulFragment=Soul Fragment
 
 ItemName.Soulsplitter=Soulsplitter
@@ -1756,7 +1967,7 @@ ItemTooltip.DarkVoid=Gives immensely increased stats at night\n'Dark and spooky'
 ItemName.DBTrophy=Daybringer Trophy
 
 ItemName.Equinox=Equinox
-ItemTooltip.Equinox=Gives immensely increased stats\n'True balance'
+ItemTooltip.Equinox=Turns the holder into a werewolf at night and a merfolk when entering water\nGives immensely increased stats\n'True balance'
 
 ItemName.EquinoxBag=Treasure Bag
 ItemTooltip.EquinoxBag={$CommonItemTooltip.RightClickToOpen}\nContained loot depends on the time of day
@@ -1779,7 +1990,7 @@ ItemName.GildedGlock=Gilded Glock
 ItemTooltip.GildedGlock=Uses Coins as Ammo
 
 ItemName.GoldDigger=Gold Digger
-ItemTooltip.GoldDigger=Fires a projectile that, upon collision with a tile, creates a fountain of coins\nFountains will spit less coins the more fountains are active\nRightClick to clear all fountains
+ItemTooltip.GoldDigger=Fires a projectile that, upon collision with a tile, creates a fountain of coins\nOnly 1 fountain may be active at once
 
 ItemName.GreedBag=Treasure Bag
 ItemTooltip.GreedBag={$CommonItemTooltip.RightClickToOpen}
@@ -1813,8 +2024,8 @@ ItemTooltip.OreCannon=Uses Ore as Ammunition\nCertain ores have special effects 
 
 ItemName.OreStaff=Ore Staff
 
-===UNKNWN===
-ItemName.Unearther=
+ItemName.Unearther=Unearther
+ItemTooltip.Unearther=Mines ores even faster
 
 ItemName.WormIdol=Worm Idol
 ItemTooltip.WormIdol=An ancient statue depicting some form of worm god\nIt has a slot for an orb of some kind on the bottom...
@@ -2502,6 +2713,16 @@ ItemName.UmbreonSPEX=Umbra
 ItemTooltip.UmbreonSPEX=A dark sword from a dark creature\nBlade of Night EX
 
 
+// AAMod.Items.Dev.RuneBook
+
+
+ItemName.CCBookofRunes=The Book of Rune
+ItemTooltip.CCBookofRunes=Summons runes according to your minion slots\nWhen player has 1 minion slot it summons terra rune.\nWhen player has 2 minion slots it summons terra and chaos rune.\nWhen player has 3 minion slots it summons terra, chaos and void rune.
+
+ItemName.CCRuneBookPage=A Page of RuneBook
+ItemTooltip.CCRuneBookPage=Summons runes according to your minion slots\nWhen player has 1 minion slot, it summons bunny rune.\nWhen player has 2 minion slots, it summons bunny and discord rune.\nWhen player has 3 minion slots, it summons bunny, discord and energy rune.
+
+
 // AAMod.Items.Dev.Tools
 
 
@@ -2891,7 +3112,7 @@ ItemName.RelicBar=Relic Bar
 ItemName.RoyalRabbit=Royal Rabbit
 ItemTooltip.RoyalRabbit=Under direct protection by the Pouncing Punisher
 
-ItemName.SearingSpark=Snow Mana
+ItemName.SearingSpark=Searing Spark
 
 ItemName.SeraphFeather=Seraph Feather
 ItemTooltip.SeraphFeather=A silvery feather from a harpy seraph
@@ -3034,7 +3255,7 @@ ItemTooltip.Depthwalker=Walk the Hydra
 
 ItemName.DesertScimitar=Desert Scimitar
 
-ItemName.DMSlasher=DarkMatter Slasher
+ItemName.DMSlasher=Darkmatter Slasher
 
 ItemName.DoomiteSaber=Doomite Saber
 
@@ -3563,6 +3784,9 @@ ItemTooltip.Unreal=Gives a weapon the ''Unreal'' prefix if it is possible\nRight
 ItemName.BlizzardDragonStaff=Blizzard Dragon Staff
 ItemTooltip.BlizzardDragonStaff=Summons a blizzard dragon to fight for you\nHydra Staff EX
 
+ItemName.ChaosRitual=Chaos Ritual
+ItemTooltip.ChaosRitual=Summons a chaos construct to fight with you
+
 ItemName.ChaosRitualEX=Perfect Chaos Ritual
 ItemTooltip.ChaosRitualEX=Summons a small chaos dragon to fight for you
 
@@ -3580,6 +3804,9 @@ ItemTooltip.DoomiteSignal=Summons a doomite probe to fight with you
 
 ItemName.DoomiteSignalC=Doomite Radio
 ItemTooltip.DoomiteSignalC=Summons a doomite radio probe to fight with you
+
+ItemName.DoomiteSignalO=Overloaded Doomite Radio
+ItemTooltip.DoomiteSignalO=Summons a void scout to fight with you
 
 ItemName.DragonriderStaff=Dragon's Pike
 ItemTooltip.DragonriderStaff=Summons a fire dragon to fight for you
@@ -3967,7 +4194,7 @@ ItemTooltip.CCRobe=The hood of a crazy lizard enthusiast\n'Great for impersonati
 // AAMod.Items.Vanity.Cerberus
 
 
-ItemName.InvokerBag=Invoker's Bag
+ItemName.InvokerBag=Pup Cerberus' Kennel
 ItemTooltip.InvokerBag=<right> to open \n'All the essentials for impersonating the Invoker of Pups!'
 
 ItemName.InvokerHood=Invoker Hood
@@ -4301,11 +4528,25 @@ ItemTooltip.CursedRobe='Great for impersonating Ancients Awakened Devs!'
 // AAMod.Items.Walls
 
 
+ItemName.DarkmatterWall=Darkmatter Brick Wall
+
+ItemName.DaybreakWall=Daybreak Brick Wall
+
 ItemName.DoomiteWall=Doomite Plating Wall
 
 ItemName.DoomsdayWall=Doomsday Circuit Wall
 
-ItemName.DoomstoneBrickWall=Doomsday Brick Wall
+ItemName.DoomstoneBrickWall=Doomstone Brick Wall
+
+ItemName.EquinoxWall=Equinox Brick Wall
+
+ItemName.EventideWall=Eventide Brick Wall
+
+ItemName.IncineriteWall=Incinerite Brick Wall
+
+ItemName.RadiumWall=Radium Brick Wall
+
+ItemName.RelicWall=Relic Brick Wall
 
 
 // AAMod
@@ -4642,16 +4883,6 @@ NPCName.SupremeRajahDefeat=Rajah Rabbit
 
 
 NPCName.Sag=Sagittarius
-
-
-// AAMod.NPCs.Bosses.Sagittarius
-
-
-NPCName.Sagittarius=Sagittarius
-
-NPCName.SagittariusFree=Sagittarius-A
-
-NPCName.SagittariusOrbiter=Orbiter
 
 
 // AAMod.NPCs.Bosses.Serpent
@@ -5210,6 +5441,10 @@ MapObject.YamataBox=Music Box
 MapObject.Zero2Box=Music Box
 
 MapObject.ZeroBox=Music Box
+
+
+// AAMod.Tiles.Bricks
+
 
 
 // AAMod.Tiles.Chests

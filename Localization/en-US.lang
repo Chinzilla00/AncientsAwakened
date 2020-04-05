@@ -53,7 +53,12 @@ Common.AtlanteanBonus=While submerged in liquids, your magic abilities and defen
 
 Common.BlazingBonus=Enemies are more likely to target you\nYour Swung weapons set your enemies ablaze
 
-Common.ChampionHeaddressBonus=Baron Bunny fights by your side as an ally to rabbit kind\nAs you lose health, Baron Bunny's will to fight becomes stronger.
+Equipset.BogwoodHelmet=+1 Defense
+
+Equipset.ChampionHeaddressBonus=Baron Bunny fights by your side as an ally to rabbit kind\nAs you lose health, Baron Bunny's will to fight becomes stronger.
+Equipset.ChampionHelmetBonus=`You are the wall that protects the innocent`\nPressing the armor ability hotkey gives you the 'Defender's Rage' Buff.\nWhile enraged, you gain more defense as your life gets lower.\n'Defender's Rage' Lasts longer the less health you have\n'Defender's Rage' has a longer cooldown the less health you have\nDuring Cooldown, your defense is slightly lowered, but your speed is increased
+Equipset.ChampionHoodBonus=Energy Eminates from your body...\nStriking enemies has a chance to spawn an energy carrot from them\nEach energy carrot picked up boosts your damage, mana regen, and health regen\nStacks up to 3 times\nEach level increases the boosts of these stats
+Equipset.ChampionMaskBonus=`Time to hunt the hunters...`\nPressing the armor ability hotkey summons a R.A.B.I.T. Drone for 8 seconds\nR.A.B.I.T. Drone has a 15 second cooldown\nDuring Cooldown, your ranged damage and critical chance are increased by 15%
 
 Common.ChaosFukumenBonus=Your ranged attacks are imbued with the chaos of Dragonfire and Bogtoxin\n25% increased ranged damage\nEnemies are less likely to target you\nNight Vision and hunter effects\n25% reduced ammo consumption
 Common.ChaosKabutoBonus=10% increased melee speed\nEnemies are more likely to target you\nEnemies that strike you are set ablaze\nYour Swung weapons inflicts them with Bogtoxin and Dragonflame
@@ -135,6 +140,10 @@ Common.RadiumHelmetBonus=Nearby enemies will recieve more damage
 Common.RadiumMaskBonus1=Damage nearby enemies \n 50% of the damage dealt will restore mana\n If mana is full you'll get mana overload buff instead\n
 Common.RadiumMaskBonus2=Magic Damage\n
 Common.RadiumMaskBonus3=% critical strike chance
+
+Equipset.RazewoodHelmet=+1 Defense
+
+Equipset.StoneSoldierMaskBonus='Become the primo penny pincher!'\nIncreases coin pickup range and shops have lower prices\nHitting enemies will sometimes drop extra coins\nEnemies have a small chance to spawn a coin portal upon dying\nAttacks inflict enemies with the Midas debuff
 
 Common.RaiderChestBonus=You cannot be knocked back\nAs your health goes down, your damage resistance goes up
 

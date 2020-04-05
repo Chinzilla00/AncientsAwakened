@@ -343,7 +343,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                         if (!AliveCheck(player))
                             break;
                         npc.velocity *= 0;
-                        if (npc.ai[2] == 280)
+                        if (npc.ai[2] == 280 && Main.netMode != 1)
                         {
                             Teleport(3);
                             if (npc.life > npc.lifeMax / 2)
@@ -412,12 +412,13 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                             npc.ai[1] = 0;
                             npc.ai[2] = 0;
                             npc.ai[3] = 0;
+                            npc.netUpdate = true;
                         }
                         break;
                     case 3:
                         if (!AliveCheck(player))
                             break;
-                        if (npc.ai[2] == (npc.life < npc.lifeMax / 2 ? 200 : 300))
+                        if (npc.ai[2] == (npc.life < npc.lifeMax / 2 ? 200 : 300) && Main.netMode != 1)
                         {
                             Teleport(3);
                             int a = Projectile.NewProjectile(new Vector2(npc.Center.X, npc.Center.Y), new Vector2(0f, -12f), mod.ProjectileType("ProtoStar"), damage, 3);
@@ -558,7 +559,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 if(npc.ai[2] % (npc.life < npc.lifeMax / 2? 60:80) == 20)
                 {
                     Teleport(3);
-                    NPC.NewNPC((int)player.Center.X + 50 * Main.rand.Next(4, 6) * (Main.rand.Next(2) == 0? -1:1), (int)player.Center.Y + 50 * Main.rand.Next(4, 6) * (Main.rand.Next(2) == 0? -1:1), ModContent.NPCType<ZeroMini>());
+                    if(Main.netMode != 1) NPC.NewNPC((int)player.Center.X + 50 * Main.rand.Next(4, 6) * (Main.rand.Next(2) == 0? -1:1), (int)player.Center.Y + 50 * Main.rand.Next(4, 6) * (Main.rand.Next(2) == 0? -1:1), ModContent.NPCType<ZeroMini>());
                 }
                 Counterattack = false;
                 npc.ai[1] = 0f;
@@ -570,7 +571,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                 npc.position = player.Center - new Vector2(0, 600);
                 npc.velocity *= 0;
 
-                if(npc.ai[2] == 240)
+                if(npc.ai[2] == 240 && Main.netMode != 1)
                 {
                     NPC.NewNPC((int)player.Center.X, (int)player.Center.Y + 500, ModContent.NPCType<ZeroEcho>());
                     NPC.NewNPC((int)player.Center.X, (int)player.Center.Y - 500, ModContent.NPCType<ZeroEcho>());

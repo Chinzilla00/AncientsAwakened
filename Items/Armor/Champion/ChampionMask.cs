@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Champion
 {
@@ -44,10 +45,7 @@ The armor of a champion feared across the land");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"`Time to hunt the hunters...`
-Pressing the armor ability hotkey summons a R.A.B.I.T. Drone for 8 seconds
-R.A.B.I.T. Drone has a 15 second cooldown
-During Cooldown, your ranged damage and critical chance are increased by 15%";
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Equipset.ChampionMaskBonus");
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             modPlayer.ChampionRa = true;
         }

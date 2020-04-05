@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Bogwood
@@ -30,7 +31,7 @@ namespace AAMod.Items.Armor.Bogwood
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "+1 Defense";
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Equipset.BogwoodHelmet");
             player.statDefense += 1;
         }
 

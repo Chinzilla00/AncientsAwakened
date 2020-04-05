@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
                     projectile.frame = 0;
                 }
             }
-            if (projectile.ai[1]++ == 120)
+            if (projectile.ai[1]++ == 120 && Main.netMode != 1)
             {
                 switch (projectile.ai[0])
                 {

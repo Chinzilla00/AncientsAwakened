@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace AAMod.Items.Armor.Champion
 {
@@ -45,11 +46,7 @@ The armor of a champion feared across the land");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"Energy Eminates from your body...
-Striking enemies has a chance to spawn an energy carrot from them
-Each energy carrot picked up boosts your damage, mana regen, and health regen
-Stacks up to 3 times
-Each level increases the boosts of these stats";
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Equipset.ChampionHoodBonus");
 
             AAPlayer mplayer = player.GetModPlayer<AAPlayer>();
 
