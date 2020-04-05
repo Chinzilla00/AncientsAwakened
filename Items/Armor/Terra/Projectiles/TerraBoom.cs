@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 
 namespace AAMod.Items.Armor.Terra.Projectiles
 {
-    public class TerraBlast : ModProjectile
+    public class TerraBoom : ModProjectile
     {
         public override void SetStaticDefaults()
         {
