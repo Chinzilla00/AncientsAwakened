@@ -48,7 +48,7 @@ namespace AAMod.Tiles.Furniture.Bogwood
 
 		public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType("BogwoodBookcase"));
+			Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType("BogwoodBookshelf"));
 			Chest.DestroyChest(i, j);
 		}
 	}

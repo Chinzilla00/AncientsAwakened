@@ -24,12 +24,12 @@ namespace AAMod.Items.Armor.Biomite
 
 		public override bool IsArmorSet(Item head, Item body, Item legs)
 		{
-			return body.type == mod.ItemType("BiomePlate") && legs.type == mod.ItemType("BiomeBoots");
+			return body.type == mod.ItemType("BiomitePlate") && legs.type == mod.ItemType("BiomiteBoots");
 		}
 
 		public override void UpdateArmorSet(Player player)
 		{
-
+			player.setBonus = "Get the armor setbonus according to the biome you stay" + SetBonus(player);
 		}
 
 		public override void AddRecipes()
@@ -43,34 +43,80 @@ namespace AAMod.Items.Armor.Biomite
 
 		public string SetBonus(Player player)
 		{
-			if (player.GetModPlayer<AAPlayer>().ZoneVoid)
+			string set = "";
+			if (Main.dayTime)
 			{
-				return "";
-			}
-			if (player.GetModPlayer<AAPlayer>().ZoneInferno)
-			{
-				return "";
-			}
-			if (player.GetModPlayer<AAPlayer>().ZoneMire)
-			{
-				return "";
-			}
-			if (player.ZoneHoly)
-			{
-				return "";
-			}
-			if (player.ZoneCorrupt)
-			{
-				return "";
-			}
-			if (player.ZoneCrimson)
-			{
-				return "";
+				player.statLifeMax2 += 20;
+				set += "\nIncreases maximum life by 20";
 			}
 			else
 			{
-				return "";
+				player.statManaMax2 += 20;
+				set += "\nIncreases maximum mana by 20";
 			}
+			if (player.GetModPlayer<AAPlayer>().ZoneVoid)
+			{
+				player.detectCreature = true;
+				set += "\nYou can detect the enemies around you";
+			}
+			if (player.GetModPlayer<AAPlayer>().ZoneInferno)
+			{
+				player.buffImmune[BuffID.OnFire] = true;
+				set += "\nYou immune to 'Onfire!' debuff";
+			}
+			if (player.GetModPlayer<AAPlayer>().ZoneMire)
+			{
+				player.buffImmune[BuffID.Poisoned] = true;
+				set += "\nYou immune to 'Poisoned' debuff";
+			}
+			if (player.GetModPlayer<AAPlayer>().Terrarium)
+			{
+				player.statDefense += 5;
+				set += "\nIncrease 5 defense";
+			}
+			if (player.ZoneMeteor)
+			{
+				player.allDamage += .1f;
+				set += "\nIncrease 10% all of your damage";
+			}
+			if (player.ZoneJungle)
+			{
+				player.manaRegenBonus += 3;
+				set += "\nIncrease your mana regenaration";
+			}
+			if (player.ZoneSnow)
+			{
+				player.buffImmune[BuffID.Chilled] = true;
+				set += "\nYou immune to 'Chilled' debuff";
+			}
+			if (player.ZoneDesert)
+			{
+				player.buffImmune[BuffID.WindPushed] = true;
+				set += "\nYou immune to 'WindPushed' debuff";
+			}
+			if (player.ZoneDungeon)
+			{
+				player.buffImmune[BuffID.Cursed] = true;
+				set += "\nYou immune to 'Cursed' debuff";
+			}
+			if (player.ZoneHoly)
+			{
+				player.buffImmune[BuffID.Slow] = true;
+				player.lifeRegen += 3;
+				set += "\nIncrease your life regenaration\nYou immune to Slow";
+			}
+			if (player.ZoneCorrupt)
+			{
+				player.moveSpeed += .1f;
+				player.GetModPlayer<AAPlayer>().MaxMovespeedboost += 0.1f;
+				set += "\nIncrease 10% movespeed";
+			}
+			if (player.ZoneCrimson)
+			{
+				player.armorPenetration += 5;
+				set += "\nIncrease 5 armor penetration";
+			}
+			return set;
 		}
 	}
 }
