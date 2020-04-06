@@ -38,6 +38,11 @@ Grants hunter & night vision");
             return body.type == mod.ItemType("TerraPlate") && legs.type == mod.ItemType("TerraGreaves");
         }
 
+        public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
+        {
+            drawHair = true;
+        }
+
         public override void UpdateArmorSet(Player player)
         {
 

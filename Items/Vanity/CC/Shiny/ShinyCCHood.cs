@@ -2,19 +2,20 @@ using System.Collections.Generic;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 
-namespace AAMod.Items.Vanity.CC
+namespace AAMod.Items.Vanity.CC.Shiny
 {
     [AutoloadEquip(EquipType.Head)]
-	public class CCHood : ModItem
+	public class ShinyCCHood : ModItem
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Dread Cultist Mask");
-			Tooltip.SetDefault(@"The mask of a crazy lizard enthusiast
+			DisplayName.SetDefault("Draconian Cultist Mask");
+			Tooltip.SetDefault(@"The mask of a crazy dragon enthusiast
 'Great for impersonating Ancients Awakened Developers!'");
 		}
 
-		public override void SetDefaults() {
+		public override void SetDefaults() 
+		{
 			item.width = 18;
 			item.height = 18;
 			item.value = 10000;

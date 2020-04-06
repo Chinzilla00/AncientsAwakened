@@ -458,6 +458,7 @@ namespace AAMod
             AddEquipTexture(new InvokerLegs(), null, EquipType.Legs, "InvokerLegs", "AAMod/Items/Vanity/Cerberus/InvokerPants_Legs", "", "");
 
             AddEquipTexture(null, EquipType.Legs, "CCRobe_Legs", "AAMod/Items/Vanity/CC/CCRobe_Legs");
+            AddEquipTexture(null, EquipType.Legs, "ShinyCCRobe_Legs", "AAMod/Items/Vanity/CC/Shiny/ShinyCCRobe_Legs");
         }
 
         //DO NOT MAKE THESE STATIC! DOING SO WILL PREVENT WHAT IT FIXES FROM HAPPENING.
