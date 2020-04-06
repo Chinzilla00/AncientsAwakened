@@ -12,8 +12,8 @@ namespace AAMod.Items.Ranged
 
             item.autoReuse = true;
             item.useStyle = 5;
-            item.useAnimation = 19;
-            item.useTime = 19;
+            item.useAnimation = 22;
+            item.useTime = 22;
             item.width = 24;
             item.height = 28;
             item.UseSound = SoundID.Item12;
