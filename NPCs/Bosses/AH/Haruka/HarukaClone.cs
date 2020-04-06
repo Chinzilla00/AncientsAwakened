@@ -47,8 +47,15 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public override void AI()
         {
-            if(!NPC.AnyNPCs(ModContent.NPCType<Haruka>()))
+            NPC Haruka = Main.npc[(int)npc.ai[0]];
+            if(!Main.npc[(int)npc.ai[0]].active || Main.npc[(int)npc.ai[0]].life <= 0)
             {
+                npc.life = 0;
+                npc.active = false;
+            }
+            if(((Haruka)Haruka.modNPC).internalAI[0] != 4)
+            {
+                npc.boss = false;
                 npc.life = 0;
                 npc.active = false;
             }

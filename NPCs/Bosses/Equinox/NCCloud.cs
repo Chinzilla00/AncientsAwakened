@@ -2,7 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using System.IO;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.NPCs.Bosses.Equinox
@@ -29,6 +31,26 @@ namespace AAMod.NPCs.Bosses.Equinox
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
                 npc.buffImmune[k] = true;
+            }
+        }
+
+        public override void SendExtraAI(BinaryWriter writer)
+        {
+            base.SendExtraAI(writer);
+            if (Main.netMode == NetmodeID.Server || Main.dedServ)
+            {
+                writer.Write(body);
+                writer.Write(rotValue);
+            }
+        }
+
+        public override void ReceiveExtraAI(BinaryReader reader)
+        {
+            base.ReceiveExtraAI(reader);
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                body = reader.ReadInt();
+                rotValue = reader.ReadFloat();
             }
         }
 
@@ -103,7 +125,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                 npc.ai[1] = 0;
             }
 
-            if (npc.ai[1] == aiTimerFire)
+            if (npc.ai[1] == aiTimerFire && Main.netMode != 1)
             {
                 Vector2 speed = new Vector2(1f, 0f).RotatedBy((float)(Main.rand.NextDouble() * 3.1415f)) * 6f;
                 Projectile.NewProjectile(npc.Center.X, npc.Center.Y, speed.X, speed.Y, mod.ProjectileType("NightcrawlerNothing"), npc.damage / 4, 0, Main.myPlayer);

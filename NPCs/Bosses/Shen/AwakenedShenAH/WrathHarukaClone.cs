@@ -47,8 +47,15 @@ namespace AAMod.NPCs.Bosses.Shen.AwakenedShenAH
 
         public override void AI()
         {
-            if(!NPC.AnyNPCs(ModContent.NPCType<WrathHaruka>()))
+            NPC Haruka = Main.npc[(int)npc.ai[0]];
+            if(!Main.npc[(int)npc.ai[0]].active || Main.npc[(int)npc.ai[0]].life <= 0)
             {
+                npc.life = 0;
+                npc.active = false;
+            }
+            if(((WrathHaruka)Haruka.modNPC).internalAI[0] != 4)
+            {
+                npc.boss = false;
                 npc.life = 0;
                 npc.active = false;
             }
