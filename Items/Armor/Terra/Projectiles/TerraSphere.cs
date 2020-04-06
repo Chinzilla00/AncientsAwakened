@@ -38,12 +38,15 @@ namespace AAMod.Items.Armor.Terra.Projectiles
                 }
             }
 
-            int foundTarget = (int)projectile.ai[1];
-            if (foundTarget != -1)
+            if (projectile.melee)
             {
-                NPC n = Main.npc[foundTarget];
-                Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * 30;
-                projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / 20);
+                int foundTarget = (int)projectile.ai[1];
+                if (foundTarget != -1)
+                {
+                    NPC n = Main.npc[foundTarget];
+                    Vector2 desiredVelocity = projectile.DirectionTo(n.Center) * 30;
+                    projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / 20);
+                }
             }
         }
 

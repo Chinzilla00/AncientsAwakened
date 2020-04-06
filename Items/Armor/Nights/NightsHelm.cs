@@ -13,7 +13,6 @@ namespace AAMod.Items.Armor.Nights
 		{
 			DisplayName.SetDefault("Night's Helm");
 			Tooltip.SetDefault("9% increased melee speed");
-
 		}
 
 		public override void SetDefaults()
@@ -37,7 +36,6 @@ namespace AAMod.Items.Armor.Nights
 
 		public override void UpdateArmorSet(Player player)
 		{
-			
 			player.setBonus = Language.GetTextValue("Mods.AAMod.Common.NightsHelmBonus");
             player.moveSpeed += 0.22f;
             player.panic = true;
@@ -45,17 +43,12 @@ namespace AAMod.Items.Armor.Nights
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe;
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "NightsHelm", 1);
-			recipe.AddIngredient(null, "TerraCrystal", 1);
-            recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
-			recipe = new ModRecipe(mod);
-			recipe.AddIngredient(null, "FleshrendHelm", 1);
-			recipe.AddIngredient(null, "TerraCrystal", 1);
-			recipe.AddTile(TileID.MythrilAnvil);
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.ShadowHelmet, 1);
+			recipe.AddIngredient(ItemID.JungleSpores, 5);
+			recipe.AddIngredient(ItemID.Bone, 5);
+			recipe.AddIngredient(null, "DevilSilk", 5);
+			recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}

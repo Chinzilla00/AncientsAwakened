@@ -3202,6 +3202,8 @@ namespace AAMod
         public int RiftTimer;
         public int RiftDamage = 10;
 
+        public int AARegenCount = 0;
+
         public override void UpdateLifeRegen()
         {
             if (SagShield)
@@ -3217,12 +3219,13 @@ namespace AAMod
 
             if (TerraMe)
             {
-                while (player.lifeRegenCount >= 100)
+                AARegenCount++;
+                while (AARegenCount >= 100)
                 {
-                    player.lifeRegenCount -= 100;
+                    AARegenCount -= 100;
                     if (player.statLife < player.statLifeMax2)
                     {
-                        player.statLife++;
+                        player.statLife += 2;
                         for (int i = 0; i < 10; i++)
                         {
                             int num6 = Dust.NewDust(player.position, player.width, player.height, 107, 0f, 0f, 175, default, 1.75f);
@@ -3741,30 +3744,6 @@ namespace AAMod
             }
 
             return null;
-        }
-
-        public override void ModifyDrawInfo(ref PlayerDrawInfo drawInfo)
-        {
-            /*if (Clueless)
-            {
-                drawInfo.upperArmorColor = Color.Black;
-                drawInfo.middleArmorColor = Color.Black;
-                drawInfo.lowerArmorColor = Color.Black;
-                drawInfo.hairColor = Color.Black;
-                drawInfo.eyeWhiteColor = Color.Black;
-                drawInfo.eyeColor = Color.Black;
-                drawInfo.faceColor = Color.Black;
-                drawInfo.bodyColor = Color.Black;
-                drawInfo.legColor = Color.Black;
-                drawInfo.shirtColor = Color.Black;
-                drawInfo.underShirtColor = Color.Black;
-                drawInfo.pantsColor = Color.Black;
-                drawInfo.shoeColor = Color.Black;
-                drawInfo.headGlowMaskColor = Color.Black;
-                drawInfo.bodyGlowMaskColor = Color.Black;
-                drawInfo.armGlowMaskColor = Color.Black;
-                drawInfo.legGlowMaskColor = Color.Black;
-            }*/
         }
 
         #region Highest Damage check
