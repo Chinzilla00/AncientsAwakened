@@ -37,7 +37,6 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 writer.Write(count);
                 writer.Write(Control);
-                writer.Write(SootProj);
             }
         }
 
@@ -48,14 +47,11 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 count = reader.ReadInt();
                 Control = reader.ReadInt();
-                SootProj = reader.ReadInt();
             }
         }
 
         public int count = 0;
         public int Control = 0;
-
-        public int SootProj = -1;
 
         public Vector2 Runeshootspeed = new Vector2();
 
@@ -75,40 +71,16 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
                     }
                     if(Main.netMode != 1)
                     {
-                        SootProj = Projectile.NewProjectile(npc.Center.X + Runeshootspeed.X, npc.Center.Y + Runeshootspeed.Y, 0, 0, ModContent.ProjectileType<AsheShot>(), (int)npc.ai[2]/2, 0, Main.myPlayer, Runeshootspeed.X, Runeshootspeed.Y);
-                        if(Main.netMode == 2 && SootProj < 1000)NetMessage.SendData(27, -1, -1, null, SootProj);
-                    }
-                    npc.netUpdate = true;
-                    if(SootProj != -1)
-                    {
-                        Main.projectile[SootProj].velocity = new Vector2(0,0);
+                        int SootProj = Projectile.NewProjectile(npc.Center.X + Runeshootspeed.X, npc.Center.Y + Runeshootspeed.Y, Runeshootspeed.X, Runeshootspeed.Y, ModContent.ProjectileType<AsheShot>(), (int)npc.ai[2]/2, 0, Main.myPlayer, npc.whoAmI, 0);
                         Main.projectile[SootProj].alpha = 0;
                     }
+                    npc.netUpdate = true;
                 }
-                if(count < 30)
+                
+                if(count >= 60)
                 {
-                    if(SootProj != -1)
-                    {
-                        Main.projectile[SootProj].alpha += 8;
-                        if(Main.projectile[SootProj].alpha > 255) Main.projectile[SootProj].alpha = 255;
-                        Main.projectile[SootProj].velocity = new Vector2(0,0);
-                    }
-                }
-                else if(count >= 60)
-                {
-                    if(SootProj != -1)
-                    {
-                        if(Runeshootspeed.X !=0 || Runeshootspeed.Y !=0)
-                        {
-                            Main.projectile[SootProj].velocity = new Vector2(Runeshootspeed.X, Runeshootspeed.Y);
-                        }
-                        else
-                        {
-                            Main.projectile[SootProj].Kill();
-                        }
-                        Control = 2;
-                        npc.netUpdate = true;
-                    }
+                    Control = 2;
+                    npc.netUpdate = true;
                 }
                 count ++;
             }

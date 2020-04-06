@@ -26,16 +26,28 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
 
         public override void AI()
         {
-            if(projectile.ai[0] != 0 || projectile.ai[1] != 0)
+            if(Main.npc[(int)projectile.ai[0]].type == mod.NPCType("AsheRune"))
             {
-                projectile.scale = 0.8f;
-                projectile.rotation = new Vector2(projectile.ai[0], projectile.ai[1]).ToRotation() + 1.57079637f;
-                projectile.position += 0.05f * Vector2.Normalize(new Vector2(projectile.ai[0], projectile.ai[1]));
+                if(projectile.ai[1] ++ < 30)
+                {
+                    projectile.alpha += 8;
+                    projectile.scale = 0.8f;
+                    projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
+                    projectile.velocity = Vector2.Normalize(projectile.velocity) * .1f;
+                }
+                else if(projectile.ai[1] > 60)
+                {
+                    projectile.scale = 0.8f;
+                    projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
+                    projectile.velocity = Vector2.Normalize(projectile.velocity) * 10f;
+                }
             }
             else
             {
                 projectile.rotation = projectile.velocity.ToRotation() + 1.57079637f;
             }
+            
+            if(projectile.alpha > 255) projectile.alpha = 255;
         }
         public override Color? GetAlpha(Color lightColor)
         {
