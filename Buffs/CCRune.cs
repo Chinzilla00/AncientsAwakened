@@ -27,7 +27,7 @@ namespace AAMod.Buffs
 				modPlayer.CCRune = true;
 			}
 			float slotscanuse = player.maxMinions - player.slotsMinions;
-			if (CCBook)
+			if (modPlayer.CCBook)
 			{
 				if (player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.BunnyRune>()] < 1 && slotscanuse > 1f)
 				{
@@ -42,7 +42,7 @@ namespace AAMod.Buffs
 					Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, ModContent.ProjectileType<Items.Dev.RuneBook.EnergyRune>(), (int)(100 * player.minionDamage), 2f, player.whoAmI, 0f, 0f);
 				}
 			}
-			if (CCBookEX)
+			if (modPlayer.CCBookEX)
 			{
 				if (player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.TerraRune>()] < 1 && slotscanuse > 1f)
 				{
