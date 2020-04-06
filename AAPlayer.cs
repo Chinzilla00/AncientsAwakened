@@ -2727,7 +2727,6 @@ namespace AAMod
 
                     case 8:
                         player.QuickSpawnItem(mod.ItemType("FezLordsBag"));
-                        player.QuickSpawnItem(mod.ItemType("K9Collar"));
 
                         if (dropType >= 3)
                         {
@@ -2910,7 +2909,6 @@ namespace AAMod
                         {
                             player.QuickSpawnItem(mod.ItemType("ThunderLord" + addonEX));
                         }
-
                         spawnedDevItems = true;
                         break;
 
@@ -2922,7 +2920,6 @@ namespace AAMod
                         {
                             player.QuickSpawnItem(mod.ItemType("GrimReaperScythe" + addonEX));
                         }
-
                         spawnedDevItems = true;
                         break;
 
@@ -2931,7 +2928,6 @@ namespace AAMod
                         {
                             player.QuickSpawnItem(mod.ItemType("UmbralReaper"));
                         }
-
                         spawnedDevItems = true;
                         break;
 
@@ -2940,13 +2936,11 @@ namespace AAMod
                         {
                             player.QuickSpawnItem(mod.ItemType("FuryForger" + addonEX));
                         }
-
                         spawnedDevItems = true;
                         break;
 
                     case 26:
                         player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Cerberus.InvokerBag>());
-
                         if (dropType >= 3)
                         {
                             player.QuickSpawnItem(mod.ItemType("InvokerStaff"));
@@ -2959,10 +2953,11 @@ namespace AAMod
                         {
                             player.QuickSpawnItem(mod.ItemType("GameRaider"));
                         }
-
                         spawnedDevItems = true;
                         break;
-
+                    case 28:
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Pluto.PlutoBag>());
+                        break;
                     default:
                         spawnedDevItems = false;
                         break;

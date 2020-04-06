@@ -112,15 +112,13 @@ namespace AAMod.NPCs.TownNPCs
 			if (VanityShop)
 			{
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.CC.CCBox>());
-				shop.item[nextSlot].shopCustomPrice = new int?(5);
+				shop.item[nextSlot].shopCustomPrice = new int?(15);
 				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
 				nextSlot++;
-
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Cerberus.InvokerBag>());
-				shop.item[nextSlot].shopCustomPrice = new int?(10);
+				shop.item[nextSlot].shopCustomPrice = new int?(15);
 				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
 				nextSlot++;
-
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Blazen.BlazenBag>());
 				shop.item[nextSlot].shopCustomPrice = new int?(15);
 				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;

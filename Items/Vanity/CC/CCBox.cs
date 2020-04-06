@@ -26,8 +26,18 @@ namespace AAMod.Items.Vanity.CC
         }
 
  		public override void RightClick(Player player)
-		{
-			player.QuickSpawnItem(ModContent.ItemType<CCHood>());
+        {
+            if (player.GetModPlayer<AAPlayer>().ShinyCheck())
+            {
+                player.QuickSpawnItem(ModContent.ItemType<Shiny.ShinyCCHood>());
+                player.QuickSpawnItem(ModContent.ItemType<Shiny.ShinyCCRobe>());
+                if (Main.hardMode)
+                {
+                    player.QuickSpawnItem(ModContent.ItemType<Accessories.Wings.MagmancerWings>());
+                }
+                return;
+            }
+            player.QuickSpawnItem(ModContent.ItemType<CCHood>());
             player.QuickSpawnItem(ModContent.ItemType<CCRobe>());
             if (Main.hardMode)
             {
