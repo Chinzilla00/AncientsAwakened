@@ -31,7 +31,11 @@ namespace AAMod.Projectiles
         {
             if (projectile.ai[0] == 0)
             {
-                return new Color(79, 155, 229);
+                return new Color(99, 175, 249);
+            }
+            else if (projectile.ai[0] == 2)
+            {
+                return new Color(141, 105, 193);
             }
             else
             {

@@ -1,18 +1,17 @@
 using Microsoft.Xna.Framework;
-using Terraria.ModLoader;
 using System.Collections.Generic;
+using Terraria.ModLoader;
 
-namespace AAMod.Items.Vanity.Pluto.Shiny
+namespace AAMod.Items.Vanity.Fazer
 {
-    [AutoloadEquip(EquipType.Head)]
-	public class ShinyPlutoMask : BaseAAItem
+    [AutoloadEquip(EquipType.Legs)]
+	public class SammyPants : BaseAAItem
 	{
 		public override void SetStaticDefaults()
-        {
+		{
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Outer God's Ancient Mask");
+            DisplayName.SetDefault("Fluffy Fox Pants");
             Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Devs!'");
-
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -21,26 +20,17 @@ namespace AAMod.Items.Vanity.Pluto.Shiny
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(0, 190, 15);
+                    line2.overrideColor = new Color(30, 70, 130);
                 }
             }
         }
 
         public override void SetDefaults()
         {
-            item.width = 18;
-            item.height = 20;
+            item.width = 22;
+            item.height = 18;
             item.rare = 9;
             item.vanity = true;
-        }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "PlutoMask", 1);
-            recipe.AddRecipeGroup("AAMod:ShinyCharm");
-            recipe.SetResult(this);
-            recipe.AddRecipe();
         }
     }
 }

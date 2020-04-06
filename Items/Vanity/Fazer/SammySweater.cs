@@ -2,17 +2,17 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 
-namespace AAMod.Items.Vanity.Pluto.Shiny
+namespace AAMod.Items.Vanity.Fazer
 
 {
     [AutoloadEquip(EquipType.Body)]
-    public class ShinyPlutoPlate : BaseAAItem
+    public class SammySweater : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("Outer God's Ancient Chestplate");
-            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Devs!'");
+            DisplayName.SetDefault("Fluffy Fox Sweater");
+            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Contributors!'");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
@@ -21,7 +21,7 @@ namespace AAMod.Items.Vanity.Pluto.Shiny
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
-                    line2.overrideColor = new Color(0, 190, 15);
+                    line2.overrideColor = new Color(30, 70, 130);
                 }
             }
         }
@@ -32,14 +32,6 @@ namespace AAMod.Items.Vanity.Pluto.Shiny
             item.height = 20;
             item.rare = 9;
             item.vanity = true;
-        }
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "PlutoPlate", 1);
-            recipe.AddRecipeGroup("AAMod:ShinyCharm");
-            recipe.SetResult(this);
-            recipe.AddRecipe();
         }
     }
 }
