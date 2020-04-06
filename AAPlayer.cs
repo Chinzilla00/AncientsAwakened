@@ -1743,35 +1743,6 @@ namespace AAMod
                 SpecialQuickHeal();
             }
 
-            if (TerraSu)
-            {
-                if (AAMod.ArmorAbilityKey.JustPressed)
-                {
-                    CrystalMode++;
-                    if (CrystalMode > 2)
-                    {
-                        CrystalMode = 0;
-                    }
-                }
-            }
-
-            if (RoseCooldown > 0)
-            {
-                RoseCooldown--;
-            }
-
-            if (TerraMa && RoseCooldown <= 0)
-            {
-                if (AAMod.ArmorAbilityKey.JustPressed)
-                {
-                    RoseCooldown = 600;
-                    float playerY = player.position.X - player.height;
-
-                    Projectile.NewProjectile(new Vector2(player.Center.X - 64, playerY), new Vector2(0, -10), ModContent.ProjectileType<Items.Armor.Terra.Projectiles.TerraRoseA>(), (int)(50 * player.magicDamage), 4, Main.myPlayer);
-                    Projectile.NewProjectile(new Vector2(player.Center.X + 64, playerY), new Vector2(0, -10), ModContent.ProjectileType<Items.Armor.Terra.Projectiles.TerraRoseA>(), (int)(50 * player.magicDamage), Main.myPlayer);
-                }
-            }
-
             if (StripeManSet)
             {
                 if(AAMod.ArmorAbilityKey.JustPressed)
@@ -1883,11 +1854,39 @@ namespace AAMod
                 Projectile.NewProjectile(vector2.X, vector2.Y, 0, 0, mod.ProjectileType("RajahDrone"), (int)(100 * player.rangedDamage), 2, Main.myPlayer, 0f, 0f);
             }
 
-            if (TerraSu && CrystalMode == 2)
+            if (TerraSu)
             {
-                player.lifeRegen += 12;
-                player.statDefense = (int)(player.statDefense * 1.2f);
-                player.allDamage /= 2;
+                if (AAMod.ArmorAbilityKey.JustPressed)
+                {
+                    CrystalMode++;
+                    if (CrystalMode > 2)
+                    {
+                        CrystalMode = 0;
+                    }
+                }
+                if (CrystalMode == 2)
+                {
+                    player.lifeRegen += 12;
+                    player.statDefense = (int)(player.statDefense * 1.2f);
+                    player.allDamage /= 2;
+                }
+            }
+
+            if (RoseCooldown > 0)
+            {
+                RoseCooldown--;
+            }
+
+            if (TerraMa && RoseCooldown <= 0)
+            {
+                if (AAMod.ArmorAbilityKey.JustPressed)
+                {
+                    RoseCooldown = 600;
+                    float playerY = player.position.Y + player.height;
+
+                    Projectile.NewProjectile(new Vector2(player.Center.X - 64, playerY), new Vector2(0, -10), ModContent.ProjectileType<Items.Armor.Terra.Projectiles.TerraRoseA>(), (int)(50 * player.magicDamage), 4, Main.myPlayer);
+                    Projectile.NewProjectile(new Vector2(player.Center.X + 64, playerY), new Vector2(0, -10), ModContent.ProjectileType<Items.Armor.Terra.Projectiles.TerraRoseA>(), (int)(50 * player.magicDamage), 4, Main.myPlayer);
+                }
             }
         }
 
