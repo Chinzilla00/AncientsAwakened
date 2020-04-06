@@ -2765,7 +2765,14 @@ namespace AAMod
 
                         if (dropType >= 3)
                         {
-                            player.QuickSpawnItem(mod.ItemType("CatsEyeRifle" + addonEX));
+                            if (Main.rand.Next(2) == 0)
+                            {
+                                player.QuickSpawnItem(mod.ItemType("CatsEyeRifle" + addonEX));
+                            }
+                            else
+                            {
+                                player.QuickSpawnItem(mod.ItemType(dropType == 4 ? "ArchwitchStaff" : "ArchwitchWand"));
+                            }
                         }
 
                         spawnedDevItems = true;

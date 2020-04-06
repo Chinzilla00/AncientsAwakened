@@ -12,8 +12,8 @@ namespace AAMod.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.width = 16;
-            projectile.height = 16;
+            projectile.width = 8;
+            projectile.height = 8;
             projectile.friendly = true;
             projectile.melee = true;
             projectile.ignoreWater = true;
@@ -28,7 +28,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 2; i++)
             {
                 int dustId = Dust.NewDust(projectile.position, projectile.width, projectile.height, ModContent.DustType<Dusts.ArchwitchDust>(), projectile.velocity.X * 0.2f,
                     projectile.velocity.Y * 0.2f, 100, default, 2f);

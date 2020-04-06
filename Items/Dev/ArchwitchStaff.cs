@@ -9,7 +9,9 @@ namespace AAMod.Items.Dev
         {
             DisplayName.SetDefault("Archwitch's Galactic Scepter");
             Tooltip.SetDefault(@"The staff of the Dragon Queen
-Right-click to spin the scepter, firing off stars at nearby enemies");
+Left-click to spin the scepter, firing off stars at nearby enemies
+Right click to fire explosive magic bolts");
+            Item.staff[item.type] = true;
         }
 
         public override void SetDefaults()
@@ -21,7 +23,7 @@ Right-click to spin the scepter, firing off stars at nearby enemies");
             item.useTime = 10;
             item.useAnimation = 10;
             item.channel = true;
-            item.useStyle = 100;
+            item.useStyle = 5;
             item.knockBack = 6f;
             item.value = Item.buyPrice(0, 40, 0, 0);
             item.rare = 11;                  
@@ -40,27 +42,25 @@ Right-click to spin the scepter, firing off stars at nearby enemies");
         {
             if (player.altFunctionUse == 2)
             {
+                Item.staff[item.type] = true;
+                item.shoot = mod.ProjectileType("ArchwitchStorm");
+                item.shootSpeed = 12;
+                item.noUseGraphic = false;
+                item.channel = false;
+                item.autoReuse = true;
+                item.useTime = 5;
+                item.useAnimation = 15;
+            }
+            else
+            {
                 Item.staff[item.type] = false;
-                item.useStyle = 100;
                 item.shoot = mod.ProjectileType("ArchwitchStaff");
                 item.shootSpeed = 0f;
-                item.noUseGraphic = false;
+                item.noUseGraphic = true;
                 item.channel = true;
                 item.autoReuse = false;
                 item.useTime = 6;
                 item.useAnimation = 6;
-            }
-            else
-            {
-                Item.staff[item.type] = true;
-                item.useStyle = 5;
-                item.shoot = mod.ProjectileType("ArchwitchBlast");
-                item.shootSpeed = 10;
-                item.noUseGraphic = true;
-                item.channel = false;
-                item.autoReuse = true;
-                item.useTime = 10;
-                item.useAnimation = 10;
             }
             return base.CanUseItem(player);
         }
