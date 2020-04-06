@@ -43,7 +43,7 @@ Right Clicking fires a piercing rose");
         {
             if (player.altFunctionUse == 2)
             {
-                item.shoot = mod.ProjectileType("TrueManaRose");
+                item.shoot = mod.ProjectileType("ManaRose");
                 item.damage = 20;
                 item.useTime = 40;
                 item.useAnimation = 40;

@@ -37,7 +37,7 @@ namespace AAMod.Projectiles
 		public override void AI()
 		{
 			BaseAI.AIVilethorn(projectile, 50, 4, 18);
-			if (projectile.ai[1] == 10)
+			if (projectile.ai[1] == 18)
 			{
 				projectile.frame = 0;
 			}
