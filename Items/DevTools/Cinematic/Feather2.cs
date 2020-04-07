@@ -15,7 +15,7 @@ namespace AAMod.Items.DevTools.Cinematic
 
         public override bool Update(Dust dust)
         {
-            if (Collision.SolidCollision(dust.position - Vector2.One * 5f, 10, 10) && dust.fadeIn == 0f)
+            if (Collision.SolidCollision(dust.position, 24, 26) && dust.fadeIn == 0f)
             {
                 dust.velocity *= 0.10f;
             }
@@ -42,6 +42,7 @@ namespace AAMod.Items.DevTools.Cinematic
                     dust.velocity.X -= moveIntervalX;
                 }
                 if (dust.velocity.X > maxSpeedX || dust.velocity.X < -maxSpeedX) dust.velocity.X *= 0.97f;
+                dust.rotation += dust.velocity.X * 0.05f;
             }
 
             return false;
