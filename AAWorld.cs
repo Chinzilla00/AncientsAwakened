@@ -1463,11 +1463,6 @@ namespace AAMod
             modPlayer.YamataAltar = false;
         }
 
-        /* 1 = Inferno
-         * 2 = Mire
-         * 3 = Void
-         * 4 = Mushroom
-         */
         public static void AAConvert(int i, int j, int conversionType, int size = 4)
         {
             for (int k = i - size; k <= i + size; k++)
