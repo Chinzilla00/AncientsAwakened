@@ -42,7 +42,7 @@ namespace AAMod.Items.DevTools.Cinematic
                     dust.velocity.X -= moveIntervalX;
                 }
                 if (dust.velocity.X > maxSpeedX || dust.velocity.X < -maxSpeedX) dust.velocity.X *= 0.97f;
-                dust.rotation += dust.velocity.X * 0.05f;
+                dust.rotation == dust.velocity.X * 0.05f;
             }
 
             return false;
