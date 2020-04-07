@@ -14,7 +14,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
 		public override bool Update(Dust dust)
         {
-            if (Collision.SolidCollision(dust.position - Vector2.One * 5f, 10, 10) && dust.fadeIn == 0f)
+            if (Collision.SolidCollision(dust.position - Vector2.One * 5f, 16, 116) && dust.fadeIn == 0f)
             {
                 dust.scale *= 0.95f;
                 dust.velocity *= 0.10f;
@@ -43,6 +43,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     dust.velocity.X -= moveIntervalX;
                 }
                 if (dust.velocity.X > maxSpeedX || dust.velocity.X < -maxSpeedX) dust.velocity.X *= 0.97f;
+                dust.rotation = dust.velocity.X * 0.07f;
             }
 
             return false;

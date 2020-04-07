@@ -34,76 +34,32 @@ Non-Consumable");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
-            return !NPC.AnyNPCs(ModContent.NPCType<NightcrawlerHead>()) && !NPC.AnyNPCs(ModContent.NPCType<DaybringerHead>());
+            return !NPC.AnyNPCs(ModContent.NPCType<NightcrawlerHead>()) && !NPC.AnyNPCs(ModContent.NPCType<DaybringerHead>()) && !NPC.AnyNPCs(ModContent.NPCType<Tiles.Altar.WormSpawn>());
         }
 
         public override bool UseItem(Player player)
         {
-            if (AAWorld.WormActive || AAWorld.downedEquinox)
-            {
-                if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken"), 175, 75, 255, false); }
-                else if (Main.netMode == 2)
-                    if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken"), 175, 75, 255, false); }
-                    else if (Main.netMode == NetmodeID.Server)
-                    {
-                        NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken")), new Color(175, 75, 255), -1);
-                    }
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("DaybringerHead"), false, 0, 0);
-                AAModGlobalNPC.SpawnBoss(player, mod.NPCType("NightcrawlerHead"), false, 0, 0);
-                Main.PlaySound(SoundID.Roar, player.position, 0);
-            }
-            else
-            {
-                if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat("The Worm's eye flashes briefly, but does nothing.", 75, 175, 255, false); }
-                else if (Main.netMode == 2)
-                    if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat("The Worm's eye flashes briefly, but does nothing.", 75, 175, 255, false); }
-                    else if (Main.netMode == NetmodeID.Server)
-                    {
-                        NetMessage.BroadcastChatMessage(NetworkText.FromLiteral("The Worm's eye flashes briefly, but does nothing."), new Color(75, 175, 255), -1);
-                    }
-            }
+            if (Main.netMode == 0) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken"), 175, 75, 255, false); }
+            else if (Main.netMode == 2)
+                if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken"), 175, 75, 255, false); }
+                else if (Main.netMode == NetmodeID.Server)
+                {
+                    NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.AAMod.Common.EquinoxWormawoken")), new Color(175, 75, 255), -1);
+                }
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("DaybringerHead"), false, 0, 0);
+            AAModGlobalNPC.SpawnBoss(player, mod.NPCType("NightcrawlerHead"), false, 0, 0);
+            Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
-        }
-
-        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
-        { 
-            Texture2D texture = (AAWorld.WormActive || AAWorld.downedEquinox) ? mod.GetTexture("Items/BossSummons/EquinoxWormA") : Main.itemTexture[item.type];
-            spriteBatch.Draw
-                (
-                texture,
-                new Vector2
-                (
-                    item.position.X - Main.screenPosition.X + item.width * 0.5f,
-                    item.position.Y - Main.screenPosition.Y + item.height - texture.Height * 0.5f + 2f
-                ),
-                new Rectangle(0, 0, texture.Width, texture.Height),
-                AAColor.Shen3,
-                rotation,
-                texture.Size() * 0.5f,
-                scale,
-                SpriteEffects.None,
-                0f
-                );
-            return false;
-        }
-
-        public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
-        {
-            Texture2D texture = (AAWorld.WormActive || AAWorld.downedEquinox) ? mod.GetTexture("Items/BossSummons/EquinoxWormA") : Main.itemTexture[item.type];
-            spriteBatch.Draw(texture, position, null, drawColor, 0, origin, scale, SpriteEffects.None, 0f);
-
-            return false;
         }
 
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.MechanicalWorm, 2);
+            recipe.AddIngredient(ItemID.MechanicalWorm, 1);
             recipe.AddIngredient(ItemID.LunarBar, 10);
             recipe.AddIngredient(ItemID.FragmentSolar, 5);
             recipe.AddIngredient(ItemID.FragmentStardust, 5);
-            recipe.AddIngredient(null, "StarChart", 1);
-            recipe.AddIngredient(null, "WormIdol", 1);
+            recipe.AddIngredient(null, "SoulFragment", 5);
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();

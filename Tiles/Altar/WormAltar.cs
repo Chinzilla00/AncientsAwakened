@@ -4,8 +4,6 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria.Localization;
-using AAMod.NPCs.Bosses.Equinox;
 using Terraria.DataStructures;
 using Terraria.Enums;
 
@@ -37,7 +35,7 @@ namespace AAMod.Tiles.Altar
 
         public override void AnimateTile(ref int frame, ref int frameCounter)
         {
-            if (NPC.AnyNPCs(mod.NPCType("DaybringerHead")) || NPC.AnyNPCs(mod.NPCType("NightcrawlerHead")))
+            if (NPC.AnyNPCs(ModContent.NPCType<WormSpawn>()))
             {
                 frame = 1;
             }
@@ -47,23 +45,35 @@ namespace AAMod.Tiles.Altar
             }
         }
 
-        public Vector2 Origin = new Vector2((int)(Main.maxTilesX * 0.65f), 100) * 16;
-
         public override bool NewRightClick(int i, int j)
         {
             Player player = Main.LocalPlayer;
-            int type = ModContent.ItemType<Items.BossSummons.Owl>();
-            bool Worms = NPC.AnyNPCs(ModContent.NPCType<DaybringerHead>()) || NPC.AnyNPCs(ModContent.NPCType<NightcrawlerHead>());
+            int type = ModContent.ItemType<Items.BossSummons.WormIdol>();
+            bool Worms = NPC.AnyNPCs(ModContent.NPCType<WormSpawn>());
             if (BasePlayer.HasItem(player, type, 1) && !Worms)
             {
-                for (int m = 0; m < 50; m++)
+                if (AAWorld.StarActive && AAWorld.GravActive)
                 {
-                    Item item = player.inventory[m];
-                    if (item != null && item.type == type && item.stack >= 1)
+                    for (int m = 0; m < 50; m++)
                     {
-                        item.stack--;
-                        SpawnBoss(player, ModContent.NPCType<WormSpawn>(), false, player.Center);
+                        Item item = player.inventory[m];
+                        if (item != null && item.type == type && item.stack >= 1)
+                        {
+                            item.stack--;
+                            if (AAWorld.WormActive)
+                            {
+                                Item.NewItem(i, j, 72, 72, mod.ItemType("EquinoxWorms"));
+                            }
+                            else
+                            {
+                                SpawnBoss(player, ModContent.NPCType<WormSpawn>(), false, player.Center);
+                            }
+                        }
                     }
+                }
+                else
+                {
+                    BaseUtility.Chat("The idol goes into the slot, but nothing happens.", new Color (75, 175, 255));
                 }
             }
             return true;
@@ -71,11 +81,7 @@ namespace AAMod.Tiles.Altar
 
         public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 Pos = default, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
         {
-            if (overrideDirection == 0)
-                overrideDirection = Main.rand.Next(2) == 0 ? -1 : 1;
-            if (overrideDirectionY == 0)
-                overrideDirectionY = -1;
-            Vector2 npcCenter = Pos + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, 800f * overrideDirectionY);
+            Vector2 npcCenter = Pos;
             AAModGlobalNPC.SpawnBoss(player, bossType, spawnMessage, npcCenter, overrideDisplayName, namePlural);
         }
 

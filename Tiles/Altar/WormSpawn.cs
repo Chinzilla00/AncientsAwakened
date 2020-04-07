@@ -92,6 +92,13 @@ namespace AAMod.Tiles.Altar
                 string name = Main.netMode == 0 ? player.name : "heroes";
 
                 if (Main.netMode != 1) BaseUtility.Chat("Do not expect us to go easy on you, " + name + ".", new Color(0, 255, 181));
+
+                int x = (int)(Main.maxTilesX * 0.15f);
+                Point spawnPos = new Point(x + (37 * 16), 141);
+
+                Item.NewItem(spawnPos.X, spawnPos.Y, npc.width, npc.height, mod.ItemType("EquinoxWorms"));
+
+                AAWorld.WormActive = true;
                 npc.active = false;
             }
         }

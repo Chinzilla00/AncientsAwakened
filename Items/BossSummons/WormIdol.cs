@@ -1,4 +1,4 @@
-namespace AAMod.Items.Boss.Anubis.Forsaken
+namespace AAMod.Items.BossSummons
 {
     public class WormIdol : BaseAAItem
     {
