@@ -10,12 +10,12 @@ namespace AAMod.Items.DevTools.Cinematic
         public override void OnSpawn(Dust dust)
         {
             dust.noGravity = true;
-            dust.frame = new Rectangle(0, 0, 16, 16);
+            dust.frame = new Rectangle(0, 0, 24, 26);
         }
 
         public override bool Update(Dust dust)
         {
-            if (Collision.SolidCollision(dust.position, 24, 26) && dust.fadeIn == 0f)
+            if (Collision.SolidCollision(dust.position, 16, 16) && dust.fadeIn == 0f)
             {
                 dust.velocity *= 0.10f;
             }
