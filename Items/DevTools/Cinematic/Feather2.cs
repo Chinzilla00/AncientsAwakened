@@ -10,7 +10,7 @@ namespace AAMod.Items.DevTools.Cinematic
         public override void OnSpawn(Dust dust)
         {
             dust.noGravity = true;
-            dust.frame = new Rectangle(0, 0, 24, 26);
+            dust.frame = new Rectangle(0, 0, 16, 16);
         }
 
         public override bool Update(Dust dust)
