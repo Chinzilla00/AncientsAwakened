@@ -533,12 +533,12 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 if (Main.rand.Next(7) == 0)
                 {
-                    npc.DropLoot(mod.ItemType("GreedMask"));
+                    npc.DropLoot(mod.ItemType("WKGreedMask"));
                 }
                 string[] lootTable = { "OreCannon", "Unearther", "Earthbreaker", "OreStaff" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
-                npc.DropLoot(mod.ItemType("WormIdol"));
+                npc.DropLoot(mod.ItemType("GravitySphere"));
             }
             if (Main.expertMode)
             {
@@ -546,7 +546,7 @@ namespace AAMod.NPCs.Bosses.Greed
             }
             if (Main.rand.Next(10) == 0)
             {
-                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GreedTrophy"));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("WKGTrophy"));
             }
             npc.value = 0f;
             npc.boss = false;

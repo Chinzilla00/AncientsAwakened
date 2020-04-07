@@ -42,7 +42,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.DeathSound = null;
 			npc.HitSound = SoundID.NPCHit4;
 			npc.DeathSound = SoundID.NPCDeath14;
-            music = MusicID.LunarBoss;
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
             musicPriority = MusicPriority.BossHigh;
             bossBag = mod.ItemType("EquinoxBag");
 		}

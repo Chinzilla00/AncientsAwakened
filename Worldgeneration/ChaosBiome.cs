@@ -909,6 +909,33 @@ namespace AAMod.Worldgeneration
         }
     }
 
+    public class Equinox : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            Mod mod = AAMod.instance;
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
+            {
+                [new Color(255, 0, 0)] = mod.TileType("GreedBrick"),
+                [new Color(0, 255, 255)] = mod.TileType("SkyShard"),
+                [new Color(255, 255, 0)] = mod.TileType("DaybringerBrick"),
+                [new Color(0, 0, 255)] = mod.TileType("NightcrawlerBrick"),
+                [new Color(255, 255, 255)] = -2, //turn into air
+                [Color.Black] = -1 //don't touch when genning		
+            };
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/EquinoxAltar"), colorToTile, null, null, null, mod.GetTexture("Worldgeneration/EquinoxAltarSlope"));
+
+            gen.Generate(origin.X, origin.Y, true, true);
+
+            WorldGen.PlaceObject(origin.X + 79, origin.Y + 86, (ushort)mod.TileType("AcropolisAltar"));
+            NetMessage.SendObjectPlacment(-1, origin.X + 79, origin.Y + 87, (ushort)mod.TileType("AcropolisAltar"), 0, 0, -1, -1);
+
+            return true;
+        }
+    }
+
     public class Parthenan : MicroBiome
     {
         public override bool Place(Point origin, StructureMap structures)

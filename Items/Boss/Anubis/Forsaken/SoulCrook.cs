@@ -16,7 +16,6 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
         {
             item.width = 50;
             item.height = 50;
-            item.maxStack = 5;
             item.useStyle = 1;
             item.useAnimation = 15;
             item.useTime = 15;

@@ -360,7 +360,7 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/GreedA"), ItemType("GreedABox"), TileType("GreedABox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/AthenaA"), ItemType("AthenaABox"), TileType("AthenaABox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/AnubisA"), ItemType("AnubisFBox"), TileType("AnubisFBox"));
-                //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox"), ItemType("Equibox"), TileType("Equibox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox"), ItemType("Equibox"), TileType("Equibox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Stars"), ItemType("StarBox"), TileType("StarBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/AH"), ItemType("SistersBox"), TileType("SistersBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/VoidButNowItsSpooky"), ItemType("FateBox"), TileType("FateBox"));

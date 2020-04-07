@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Greed.WKG
 		{
             if (Main.rand.Next(7) == 0)
             {
-                player.QuickSpawnItem(mod.ItemType("GreedMask"));
+                player.QuickSpawnItem(mod.ItemType("WKGreedMask"));
             }
             if (Main.rand.Next(20) == 0)
             {
@@ -40,7 +40,7 @@ namespace AAMod.Items.Boss.Greed.WKG
             string[] lootTable = { "OreCannon", "Unearther", "OreStaff", "Earthbreaker" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
-            player.QuickSpawnItem(mod.ItemType("WormIdol"));
+            player.QuickSpawnItem(mod.ItemType("GravitySphere"));
             player.QuickSpawnItem(mod.ItemType("DesireTalisman"));
         }
 	}

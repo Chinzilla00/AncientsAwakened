@@ -107,6 +107,9 @@ namespace AAMod
         public static bool downedAABoss;
 
         public static bool AnubisAwakened;
+        public static bool WormActive;
+        public static bool StarActive;
+        public static bool GravActive;
         //Points
         public static Point WHERESDAVOIDAT;
 
@@ -173,6 +176,9 @@ namespace AAMod
             downedAABoss = false;
 
             AnubisAwakened = false;
+            WormActive = false;
+            StarActive = false;
+            GravActive = false;
             //World Changes
             TerrariumEnemies = NPC.downedBoss2;
             ChaosOres = downedGrips;
@@ -278,6 +284,9 @@ namespace AAMod
             if (AthenaHerald) downed.Add("BitchBird");
 
             if (AnubisAwakened) downed.Add("AnuA");
+            if (WormActive) downed.Add("WormA");
+            if (StarActive) downed.Add("StarA");
+            if (GravActive) downed.Add("GravA");
 
             return new TagCompound {
                 {"downed", downed},
@@ -345,6 +354,9 @@ namespace AAMod
             AthenaHerald = downed.Contains("BitchBird");
 
             AnubisAwakened = downed.Contains("AnuA");
+            WormActive = downed.Contains("WormA");
+            WormActive = downed.Contains("StarA");
+            WormActive = downed.Contains("GravA");
             //World Changes
             ChaosOres = downedGrips;
             Dynaskull = NPC.downedBoss3;
@@ -442,6 +454,9 @@ namespace AAMod
             flags5[2] = downedGreedA;
             flags5[3] = AnubisAwakened;
             flags5[4] = downedAnubisA;
+            flags5[5] = WormActive;
+            flags5[6] = StarActive;
+            flags5[7] = GravActive;
             writer.Write(flags5);
 
             writer.WriteVector2(MireCenter);
@@ -516,6 +531,9 @@ namespace AAMod
             downedGreedA = flags5[2];
             AnubisAwakened = flags5[3];
             downedAnubisA = flags5[4];
+            WormActive = flags5[5];
+            StarActive = flags5[6];
+            GravActive = flags5[7];
 
             MireCenter = reader.ReadVector2();
 			InfernoCenter = reader.ReadVector2();		
@@ -556,7 +574,7 @@ namespace AAMod
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
-            int ChaosIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Larva"));
+            int ChaosIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             int shiniesIndex1 = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
 
@@ -609,6 +627,11 @@ namespace AAMod
             tasks.Insert(shiniesIndex2 + 8, new PassLegacy("Altars", delegate (GenerationProgress progress)
             {
                 Altars(progress);
+            }));
+
+            tasks.Insert(shiniesIndex2 + 8, new PassLegacy("Equinox", delegate (GenerationProgress progress)
+            {
+                EquinoxAlt(progress);
             }));
 
             int DungeonChests = tasks.FindIndex((GenPass genpass) => genpass.Name.Equals("Dungeon"));
@@ -1442,6 +1465,14 @@ namespace AAMod
             Hoard biome = new Hoard();
             HoardClear delete = new HoardClear();
             delete.Place(origin, WorldGen.structures);
+            biome.Place(origin, WorldGen.structures);
+        }
+
+        private void EquinoxAlt(GenerationProgress progress)
+        {
+            progress.Message = "Equalizing the Sun and Moon";
+            Point origin = new Point((int)(Main.maxTilesX * 0.15f), 100);
+            Equinox biome = new Equinox();
             biome.Place(origin, WorldGen.structures);
         }
 

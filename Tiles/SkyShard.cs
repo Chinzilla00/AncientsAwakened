@@ -13,7 +13,8 @@ namespace AAMod.Tiles
         public override void SetDefaults()
         {
             Main.tileSolid[Type] = true;
-            Main.tileBlockLight[Type] = true;
+            Main.tileBlockLight[Type] = false;
+            Main.tileSolid[Type] = false;
             Main.tileBlendAll[Type] = false;
             soundType = 21;
             Main.tileLighted[Type] = true;

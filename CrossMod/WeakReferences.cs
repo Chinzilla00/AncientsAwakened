@@ -880,7 +880,7 @@ namespace AAMod.Globals
                         ModContent.ItemType<Items.Boss.Greed.WKG.OreCannon>(),
                         ModContent.ItemType<Items.Boss.Greed.WKG.OreStaff>(),
                         ModContent.ItemType<Items.Boss.Greed.WKG.Unearther>(),
-                        ModContent.ItemType<Items.Boss.Greed.WKG.WormIdol>()
+                        ModContent.ItemType<Items.Boss.Greed.WKG.GravitySphere>()
                     },
                     Lang.BossCheck("GreedAInfo"),
                     null,
@@ -1230,6 +1230,21 @@ namespace AAMod.Globals
                     censusMod.Call("TownNPCCondition", mod.NPCType("Samurai"), "Grips of Chaos defeated");
                     censusMod.Call("TownNPCCondition", mod.NPCType("Goblin Slayer"), "Goblin Army is defeated");
                 }
+            }
+        }
+
+        private static void PerformFargosSetup()
+        {
+            Mod fargos = ModLoader.GetMod("Fargowiltas");
+            if (fargos != null)
+            {
+                // AddSummon, order or value in terms of vanilla bosses, your mod internal name, summon   
+                //item internal name, inline method for retrieving downed value, price to sell for in copper
+
+                fargos.Call("AddSummon", 0f, "AAMod", "IntimidatingMushroom", AAWorld.downedMonarch, 10000);
+                fargos.Call("AddSummon", 0.1f, "AAMod", "ConfusingMushroom", AAWorld.downedFungus, 10000);
+                fargos.Call("AddSummon", 2f, "AAMod", Main.rand.Next(2) == 0 ? "CuriousClaw" : "InterestingClaw", AAWorld.downedGrips, 20000);
+                fargos.Call("AddSummon", 2.5f, "AAMod", "Toadstool", AAWorld.downedToad, 30000);
             }
         }
     }

@@ -1,12 +1,12 @@
-namespace AAMod.Items.Boss.Greed.WKG
+namespace AAMod.Items.Boss.Anubis.Forsaken
 {
     public class WormIdol : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Worm Idol");
-            Tooltip.SetDefault(@"An ancient statue depicting some form of worm god
-It has a slot for an orb of some kind on the bottom...");
+            Tooltip.SetDefault(@"An ancient statue depicting some form of worm god.
+It looks like it hasn't been touched in years");
         }
         public override void SetDefaults()
         {
