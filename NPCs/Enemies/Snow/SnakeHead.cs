@@ -45,7 +45,7 @@ namespace AAMod.NPCs.Enemies.Snow
         public override void AI()
         {
             Player player = Main.player[npc.target];
-			BaseMod.BaseAI.AIWorm(npc, new int[]{ mod.NPCType("SnakeHead"), mod.NPCType("SnakeBody"), mod.NPCType("SnakeTail") }, 9, 8f, 12f, 0.1f, false, false);
+			AAAI.AIWorm(npc, new int[]{ mod.NPCType("SnakeHead"), mod.NPCType("SnakeBody"), mod.NPCType("SnakeTail") }, 9, 8f, 12f, 0.1f, false, false);
             
             if (npc.velocity.X < 0f)
             {

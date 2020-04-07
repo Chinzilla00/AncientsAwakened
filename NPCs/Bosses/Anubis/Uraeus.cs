@@ -33,7 +33,7 @@ namespace AAMod.NPCs.Bosses.Anubis
         public override void AI()
         {
             Player player = Main.player[npc.target];
-			BaseAI.AIWorm(npc, new int[]{ mod.NPCType("Uraeus"), mod.NPCType("UraeusBody"), mod.NPCType("UraeusTail") }, 7, 0f, 10f, 0.07f, true, false, true, true, true);
+			AAAI.AIWorm(npc, new int[]{ mod.NPCType("Uraeus"), mod.NPCType("UraeusBody"), mod.NPCType("UraeusTail") }, 7, 0f, 10f, 0.07f, true, false, true, true, true);
         }
 
         public override void HitEffect(int hitDirection, double damage)

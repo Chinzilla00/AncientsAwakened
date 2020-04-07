@@ -74,11 +74,6 @@ namespace AAMod.Items.Armor.Biomite
 				player.statDefense += 5;
 				set += "\nIncrease 5 defense";
 			}
-			if (player.ZoneMeteor)
-			{
-				player.allDamage += .1f;
-				set += "\nIncrease 10% all of your damage";
-			}
 			if (player.ZoneJungle)
 			{
 				player.manaRegenBonus += 3;
@@ -93,11 +88,6 @@ namespace AAMod.Items.Armor.Biomite
 			{
 				player.buffImmune[BuffID.WindPushed] = true;
 				set += "\nYou immune to 'WindPushed' debuff";
-			}
-			if (player.ZoneDungeon)
-			{
-				player.buffImmune[BuffID.Cursed] = true;
-				set += "\nYou immune to 'Cursed' debuff";
 			}
 			if (player.ZoneHoly)
 			{
