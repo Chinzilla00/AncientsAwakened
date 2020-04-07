@@ -11,7 +11,6 @@ namespace AAMod.Items.Dev.RuneBook
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Bunny Rune");
-            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             Main.projPet[projectile.type] = true;
         }
 
@@ -23,7 +22,6 @@ namespace AAMod.Items.Dev.RuneBook
             projectile.height = 12;
             projectile.aiStyle = -1;
             projectile.penetrate = -1;
-            projectile.usesLocalNPCImmunity = true;
             projectile.timeLeft = 18000;
             projectile.timeLeft *= 5;
             projectile.tileCollide = false;
@@ -36,7 +34,6 @@ namespace AAMod.Items.Dev.RuneBook
         public override void AI()
         {
             Lighting.AddLight((int)(projectile.position.X + projectile.width / 2) / 16, (int)(projectile.position.Y + projectile.height / 2) / 16, 1f, 0.95f, 0.8f);
-            bool flag64 = projectile.type == mod.ProjectileType("BunnyRune");
             Player player = Main.player[projectile.owner];
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             player.AddBuff(mod.BuffType("CCRune"), 3600);
@@ -45,16 +42,13 @@ namespace AAMod.Items.Dev.RuneBook
                 projectile.active = false;
                 return;
             }
-            if (flag64)
+            if (player.dead)
             {
-                if (player.dead)
-                {
-                    modPlayer.WeakCCRune = false;
-                }
-                if (modPlayer.WeakCCRune || modPlayer.CCBook)
-                {
-                    projectile.timeLeft = 2;
-                }
+                modPlayer.WeakCCRune = false;
+            }
+            if (player.HasBuff(mod.BuffType("CCRune")))
+            {
+                projectile.timeLeft = 2;
             }
 
             projectile.timeLeft ++;
@@ -119,7 +113,7 @@ namespace AAMod.Items.Dev.RuneBook
                 vector *= num639;
                 projectile.velocity = (projectile.velocity * 40f + vector) / 52f;
             }
-			else if (projectile.velocity.X == 0f && projectile.velocity.Y == 0f)
+			if (projectile.velocity.X == 0f && projectile.velocity.Y == 0f)
 			{
 				projectile.velocity.X = -0.04f;
 				projectile.velocity.Y = -0.02f;
