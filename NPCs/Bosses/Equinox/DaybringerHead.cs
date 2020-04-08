@@ -473,7 +473,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                 if(isHead && npc.type == mod.NPCType("DaybringerHead"))
                 {
                     internalAI[0] += 1f;
-                    if(internalAI[0] % 360 == 0 && Main.netMode == 1)
+                    if(internalAI[0] % 360 == 0)
                     {
                         for(int playerid = 0; playerid < 255; playerid++)
                         {
@@ -544,7 +544,7 @@ namespace AAMod.NPCs.Bosses.Equinox
 
                     if(internalAI[0] > 1200)
                     {
-                        if(Main.hardMode) preShootingSun = true;
+                        if(Main.expertMode) preShootingSun = true;
                         internalAI[0] = 0f;
                         npc.netUpdate = true;
                     }
@@ -609,7 +609,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                     if(internalAI[1] > 1200)
                     {
                         internalAI[1] = 0f;
-                        if(Main.hardMode) preDeathRay = true;
+                        if(Main.expertMode) preDeathRay = true;
                         npc.netUpdate = true;
                     }
                 }
