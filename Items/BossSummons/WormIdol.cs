@@ -73,7 +73,7 @@ It looks like it hasn't been touched in years");
 
         public override void AI()
         {
-            Vector2 AltarSpawn = new Vector2(Main.maxTilesX * 0.15f, 100);
+            Vector2 AltarSpawn = new Vector2(Main.maxTilesX * 0.15f * 16, 100);
             Player player = Main.player[projectile.owner];
             IdolPointer modPlayer = player.GetModPlayer<IdolPointer>();
 
@@ -90,9 +90,8 @@ It looks like it hasn't been touched in years");
 
             projectile.Center = PlayerPoint;
 
-            float num1 = AltarSpawn.X - player.Center.X;
-            float num2 = AltarSpawn.Y - player.Center.Y;
-            projectile.rotation = (float)Math.Atan2(num2 * 16, num1 * 16) - 1.57f;
+            BaseAI.LookAt(AltarSpawn, projectile, 0);
+            projectile.spriteDirection = 1;
         }
 
         public float auraPercent = 0f;
