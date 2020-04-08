@@ -1,6 +1,7 @@
 using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.DataStructures;
@@ -66,7 +67,6 @@ It looks like it hasn't been touched in years");
             projectile.tileCollide = false;
             projectile.penetrate = -1;
             projectile.timeLeft *= 5;
-            projectile.light = 0.4f;
             projectile.ignoreWater = true;
             projectile.minionSlots = 0;
         }
@@ -90,7 +90,9 @@ It looks like it hasn't been touched in years");
 
             projectile.Center = PlayerPoint;
 
-            projectile.rotation = (AltarSpawn - player.Center).ToRotation();
+            float num1 = AltarSpawn.X - player.Center.X;
+            float num2 = AltarSpawn.Y - player.Center.Y;
+            projectile.rotation = (float)Math.Atan2(num2 * 16, num1 * 16) - 1.57f;
         }
 
         public float auraPercent = 0f;
@@ -101,10 +103,10 @@ It looks like it hasn't been touched in years");
             if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
             else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
 
-            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, 30, 30, 0, 0);
+            Rectangle frame = BaseDrawing.GetFrame(0, 30, 30, 0, 0);
 
             BaseDrawing.DrawAura(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, auraPercent, 1.2f, projectile.scale, projectile.rotation, projectile.direction, 1, frame, 0, 0, Color.White);
-            BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, projectile.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
+            BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, projectile.GetAlpha(ColorUtils.COLOR_GLOWPULSE));
 
             return false;
         }
