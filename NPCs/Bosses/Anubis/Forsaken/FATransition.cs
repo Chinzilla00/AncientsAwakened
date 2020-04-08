@@ -38,13 +38,13 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
             npc.ai[3] = 39;
             if (Main.netMode != 1)
             {
-                music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
                 if (npc.velocity.Y == 0)
                 {
                     npc.ai[1]++;
                     if (npc.ai[1] == 120)
                     {
                         if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AnubisTransition1"), Color.Gold);
+                        music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AnubisA");
                     }
 
                     if (npc.ai[1] == 240)
@@ -70,7 +70,6 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     if (npc.ai[1] == 720)
                     {
                         if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("AnubisTransition6"), Color.Gold);
-                        music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/AnubisA");
                     }
 
                     if (npc.ai[1] == 840)

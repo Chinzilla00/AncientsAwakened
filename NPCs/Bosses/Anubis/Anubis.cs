@@ -185,6 +185,11 @@ namespace AAMod.NPCs.Bosses.Anubis
                         damage = 300;
                     }
 
+                    if (npc.ai[1] == 20)
+                    {
+                        CombatText.NewText(npc.Hitbox, Color.Gold, "Careful! Projectiles hurt.", true);
+                    }
+
                     BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, proj, ref npc.ai[3], 80, damage, 10, true);
 
                     if (npc.ai[3] == 40)
@@ -206,6 +211,8 @@ namespace AAMod.NPCs.Bosses.Anubis
                         break;
                     if (npc.ai[1] == 10)
                     {
+                        CombatText.NewText(npc.Hitbox, Color.Gold, "Let me grab some friends.", true);
+
                         if (Main.rand.Next(2) == 0 && npc.life < npc.lifeMax * (2/3))
                         {
                             if (npc.life < npc.lifeMax / 3)
@@ -256,6 +263,11 @@ namespace AAMod.NPCs.Bosses.Anubis
                 case 2:
                     if (!AliveCheck(player))
                         break;
+
+                    if (npc.ai[1] == 20)
+                    {
+                        CombatText.NewText(npc.Hitbox, Color.Gold, "Catch!", true);
+                    }
                     if (npc.ai[1] == 120)
                     {
                         BaseAI.FireProjectile(player.position, npc.position, ModContent.ProjectileType<Scepter>(), npc.damage / 2, 14, 10, -1);
@@ -279,6 +291,12 @@ namespace AAMod.NPCs.Bosses.Anubis
                 case 3:
                     if (!AliveCheck(player))
                         break;
+
+                    if (npc.ai[1] == 20)
+                    {
+                        CombatText.NewText(npc.Hitbox, Color.Gold, "Smashing, Init?", true);
+                    }
+
                     if (npc.life > npc.lifeMax * (2/3))
                     {
                         if (npc.ai[1] == 60)

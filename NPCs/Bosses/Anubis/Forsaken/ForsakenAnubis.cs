@@ -67,6 +67,8 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 
         public int RuneCount = 9;
 
+        bool text = false;
+
         public override void AI()
         {
             int TeleportCount = 0;
@@ -227,6 +229,12 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                             Teleport();
                         }
                         return;
+                    }
+
+                    if (!text)
+                    {
+                        text = true;
+                        CombatText.NewText(npc.Hitbox, Color.ForestGreen, "No Warnings this time.", true);
                     }
 
                     if (npc.ai[1] == 10)
@@ -555,6 +563,11 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
         public override void NPCLoot()
         {
             NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<TownNPCs.Anubis>());
+
+            if (!AAWorld.downedAnubisA)
+            {
+                if (Main.netMode != 1) BaseUtility.Chat("...You done good, bud. Let's make a game plan moving forward. Come talk to me when you're ready.", Color.ForestGreen);
+            }
 
             AAWorld.downedAnubisA = true;
 

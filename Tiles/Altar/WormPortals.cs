@@ -14,15 +14,14 @@ namespace AAMod.Tiles.Altar
         }
         public override void SetDefaults()
         {
-            npc.width = 100;
-            npc.height = 100;
+            npc.width = 46;
+            npc.height = 46;
             npc.friendly = false;
             npc.lifeMax = 1;
             npc.dontTakeDamage = true;
             npc.noTileCollide = true;
             npc.noGravity = true;
             npc.aiStyle = -1;
-            npc.timeLeft = 10;
             npc.alpha = 255;
             for (int k = 0; k < npc.buffImmune.Length; k++)
             {
@@ -30,26 +29,31 @@ namespace AAMod.Tiles.Altar
             }
         }
 
-        public override bool PreDraw(SpriteBatch spritebatch, Color lightColor)
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color drawColor)
         {
+            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+
             Texture2D DBPortal = mod.GetTexture("Tiles/Altar/DBPortal");
             Texture2D DBPortalBack = mod.GetTexture("Tiles/Altar/DBPortalBack");
             Texture2D DBEyes = mod.GetTexture("Tiles/Altar/DBPortalEyes");
 
-            int diff = Main.LocalPlayer.miscCounter % 50;
-            float diffFloat = diff / 50f;
-            float auraPercent = BaseUtility.MultiLerp(diffFloat, 0f, 1f, 0f);
-
-            BaseDrawing.DrawTexture(spritebatch, DBPortalBack, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 1, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
+            BaseDrawing.DrawTexture(spritebatch, DBPortalBack, 0, npc.position, npc.width, npc.height, npc.scale * 1.2f, npc.rotation, 0, 1, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
             BaseDrawing.DrawTexture(spritebatch, DBPortal, 0, npc.position, npc.width, npc.height, npc.scale, -npc.rotation, 0, 1, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
-            BaseDrawing.DrawAura(spritebatch, DBEyes, 0, npc.position, npc.width, npc.height, auraPercent, 2f, npc.scale, 0f, 0, 1, default, 0, 0, npc.GetAlpha(Color.White));
+            BaseDrawing.DrawTexture(spritebatch, DBEyes, 0, npc.position, npc.width, npc.height, npc.scale, 0, 0, 1, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
 
             return false;
         }
 
         public override void AI()
         {
-            npc.TargetClosest();
+            if (!npc.HasPlayerTarget)
+            {
+                npc.TargetClosest();
+            }
             Player player = Main.player[npc.target];
             MoveToPoint(player.Center - new Vector2(200, 300f));
 
@@ -61,24 +65,35 @@ namespace AAMod.Tiles.Altar
 
             npc.rotation += .1f;
 
-            if (NPC.AnyNPCs(ModContent.NPCType<WormSpawn>()))
+            if (npc.ai[0] != 1)
             {
-                npc.timeLeft = 60;
-                if (npc.alpha > 30)
+                npc.Center = player.Center - new Vector2(200, 300f);
+                npc.ai[0] = 1;
+            }
+
+            npc.ai[1]++;
+            if (npc.ai[1] >= 1880)
+            {
+                npc.timeLeft--;
+                npc.alpha += 5;
+            }
+            else
+            {
+                if (npc.alpha > 100)
                 {
                     npc.alpha -= 3;
                 }
                 else
                 {
-                    npc.alpha = 30;
+                    npc.alpha = 100;
                 }
+                return;
             }
-            else
+
+
+            if (npc.alpha > 255)
             {
-                if (npc.alpha < 255)
-                {
-                    npc.alpha -= 5;
-                }
+                npc.active = false;
             }
         }
 
@@ -120,8 +135,8 @@ namespace AAMod.Tiles.Altar
         }
         public override void SetDefaults()
         {
-            npc.width = 100;
-            npc.height = 100;
+            npc.width = 46;
+            npc.height = 46;
             npc.friendly = false;
             npc.lifeMax = 1;
             npc.dontTakeDamage = true;
@@ -136,26 +151,31 @@ namespace AAMod.Tiles.Altar
             }
         }
 
-        public override bool PreDraw(SpriteBatch spritebatch, Color lightColor)
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color drawColor)
         {
-            Texture2D NCPortal = mod.GetTexture("Tiles/Altar/NCPortalEyes");
-            Texture2D NCPortalBack = mod.GetTexture("Tiles/Altar/NCPortalEyes");
+            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+
+            Texture2D NCPortal = mod.GetTexture("Tiles/Altar/NCPortal");
+            Texture2D NCPortalBack = mod.GetTexture("Tiles/Altar/NCPortalBack");
             Texture2D NCEyes = mod.GetTexture("Tiles/Altar/NCPortalEyes");
 
-            int diff = Main.LocalPlayer.miscCounter % 50;
-            float diffFloat = diff / 50f;
-            float auraPercent = BaseUtility.MultiLerp(diffFloat, 0f, 1f, 0f);
-
-            BaseDrawing.DrawTexture(spritebatch, NCPortalBack, 0, npc.position, npc.width, npc.height, npc.scale, -npc.rotation, 0, 1, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
+            BaseDrawing.DrawTexture(spritebatch, NCPortalBack, 0, npc.position, npc.width, npc.height, npc.scale * 1.2f, -npc.rotation, 0, 1, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
             BaseDrawing.DrawTexture(spritebatch, NCPortal, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 1, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
-            BaseDrawing.DrawAura(spritebatch, NCEyes, 0, npc.position, npc.width, npc.height, auraPercent, 2f, npc.scale, 0f, 0, 1, default, 0, 0, npc.GetAlpha(Color.White));
+            BaseDrawing.DrawTexture(spritebatch, NCEyes, 0, npc.position, npc.width, npc.height, npc.scale, 0, 0, 1, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
 
             return false;
         }
 
         public override void AI()
         {
-            npc.TargetClosest();
+            if (!npc.HasPlayerTarget)
+            {
+                npc.TargetClosest();
+            }
             Player player = Main.player[npc.target];
             MoveToPoint(player.Center - new Vector2(-200, 300f));
 
@@ -167,24 +187,33 @@ namespace AAMod.Tiles.Altar
 
             npc.rotation += .1f;
 
-            if (NPC.AnyNPCs(ModContent.NPCType<WormSpawn>()))
+            if (npc.ai[0] != 1)
             {
-                npc.timeLeft = 60;
-                if (npc.alpha > 30)
+                npc.Center = player.Center - new Vector2(-200, 300f);
+                npc.ai[0] = 1;
+            }
+
+            npc.ai[1]++;
+            if (npc.ai[1] >= 1880)
+            {
+                npc.alpha += 5;
+            }
+            else
+            {
+                if (npc.alpha > 100)
                 {
                     npc.alpha -= 3;
                 }
                 else
                 {
-                    npc.alpha = 30;
+                    npc.alpha = 100;
                 }
+                return;
             }
-            else
+
+            if (npc.alpha > 255)
             {
-                if (npc.alpha < 255)
-                {
-                    npc.alpha -= 5;
-                }
+                npc.active = false;
             }
         }
 

@@ -749,6 +749,16 @@ namespace AAMod.NPCs.TownNPCs
                 }
             }
 
+            if (AAWorld.downedAnubisA && !BasePlayer.HasItem(player, ModContent.ItemType<Items.BossSummons.WormIdol>()))
+            {
+                if (!mPlayer.GivenWormIdol)
+                {
+                    mPlayer.GivenWormIdol = true;
+                    player.QuickSpawnItem(ModContent.ItemType<Items.BossSummons.WormIdol>(), 1);
+                    return "Take this. It's an old artifact that will come in handy soon. It should direct you towards a...special place to the people of this world. read the plaques there. They'll tell you what to do. We got some work to do if we want to clear out some of the major evils in the world.";
+                }
+            }
+
             return chat;
         }
 

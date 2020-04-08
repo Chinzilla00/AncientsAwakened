@@ -83,7 +83,6 @@ namespace AAMod.Tiles.Altar
 
         public override bool NewRightClick(int i, int j)
         {
-            Main.NewText("AltarPlacement");
             Player player = Main.LocalPlayer;
             int type = ModContent.ItemType<Items.Boss.Athena.StarChart>();
             if (BasePlayer.HasItem(player, type, 1) && !AAWorld.StarActive)
@@ -98,6 +97,10 @@ namespace AAMod.Tiles.Altar
                         break;
                     }
                 }
+            }
+            else
+            {
+                BaseUtility.Chat(@"High in the clouds rules the Seraph Queen, guardian of the skies where the creators watch over us.", Color.SkyBlue);
             }
             return true;
         }

@@ -656,7 +656,7 @@ namespace AAMod
 					//spawn pieces (flying)
 					if (fly && isHead && npc.ai[0] == 0f)
 					{
-						npc.ai[3] = (float)npc.whoAmI;
+						npc.ai[3] = npc.whoAmI;
 						npc.realLife = npc.whoAmI;
 						int npcID = npc.whoAmI;
 						for (int m = 1; m < wormLength - 1; m++)
@@ -686,10 +686,10 @@ namespace AAMod
 						{
 							if (!split)
 							{
-								npc.ai[3] = (float)npc.whoAmI;
+								npc.ai[3] = npc.whoAmI;
 								npc.realLife = npc.whoAmI;
 							}
-							npc.ai[2] = (float)(wormLength - 1);							
+							npc.ai[2] = wormLength - 1;							
 						}
 						float ai0 = 0;
 						float ai1 = npc.whoAmI;
@@ -700,14 +700,14 @@ namespace AAMod
 						
 						if (isHead)
 						{
-							npc.ai[0] = (float)NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[1], npc.whoAmI, ai0, ai1, ai2, ai3);
+							npc.ai[0] = NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[1], npc.whoAmI, ai0, ai1, ai2, ai3);
 						}else
 						if (isBody && npc.ai[2] > 0f)
 						{
-							npc.ai[0] = (float)NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[wormLength - (int)npc.ai[2]], npc.whoAmI, ai0, ai1, ai2, ai3);
+							npc.ai[0] = NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[wormLength - (int)npc.ai[2]], npc.whoAmI, ai0, ai1, ai2, ai3);
 						}else
 						{
-							npc.ai[0] = (float)NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[wormTypes.Length - 1], npc.whoAmI, ai0, ai1, ai2, ai3);
+							npc.ai[0] = NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[wormTypes.Length - 1], npc.whoAmI, ai0, ai1, ai2, ai3);
 						}
 						/*if (!split)
 						{
@@ -744,10 +744,10 @@ namespace AAMod
 						int oldType = npc.type;
                         npc.type = wormTypes[0];
                         int npcID = npc.whoAmI;
-                        float lifePercent = (float)npc.life / (float)npc.lifeMax;
+                        float lifePercent = npc.life / (float)npc.lifeMax;
                         float lastPiece = npc.ai[0];
                         npc.SetDefaults(npc.type, -1f);
-                        npc.life = (int)((float)npc.lifeMax * lifePercent);
+                        npc.life = (int)(npc.lifeMax * lifePercent);
                         npc.ai[0] = lastPiece;
                         npc.TargetClosest(true);
                         npc.netUpdate = true;
@@ -760,10 +760,10 @@ namespace AAMod
 						int oldType = npc.type;				
 						npc.type = wormTypes[wormTypes.Length - 1];
 						int npcID = npc.whoAmI;
-						float lifePercent = (float)npc.life / (float)npc.lifeMax;
+						float lifePercent = npc.life / (float)npc.lifeMax;
 						float lastPiece = npc.ai[1];
 						npc.SetDefaults(npc.type, -1f);
-						npc.life = (int)((float)npc.lifeMax * lifePercent);
+						npc.life = (int)(npc.lifeMax * lifePercent);
 						npc.ai[1] = lastPiece;
 						npc.TargetClosest(true);
 						npc.netUpdate = true;
@@ -805,12 +805,12 @@ namespace AAMod
                     for (int tY = tileY; tY < tileCenterY; tY++)
                     {
 						Tile checkTile = BaseWorldGen.GetTileSafely(tX, tY);						
-                        if (checkTile != null && ((checkTile.nactive() && (Main.tileSolid[(int)checkTile.type] || (Main.tileSolidTop[(int)checkTile.type] && checkTile.frameY == 0))) || checkTile.liquid > 64))
+                        if (checkTile != null && ((checkTile.nactive() && (Main.tileSolid[checkTile.type] || (Main.tileSolidTop[checkTile.type] && checkTile.frameY == 0))) || checkTile.liquid > 64))
                         {
                             Vector2 tPos;
-                            tPos.X = (float)(tX * 16);
-                            tPos.Y = (float)(tY * 16);
-                            if (npc.position.X + (float)npc.width > tPos.X && npc.position.X < tPos.X + 16f && npc.position.Y + (float)npc.height > tPos.Y && npc.position.Y < tPos.Y + 16f)
+                            tPos.X = tX * 16;
+                            tPos.Y = tY * 16;
+                            if (npc.position.X + npc.width > tPos.X && npc.position.X < tPos.X + 16f && npc.position.Y + npc.height > tPos.Y && npc.position.Y < tPos.Y + 16f)
                             {
                                 canMove = true;
                                 if (spawnTileDust && Main.rand.Next(100) == 0 && checkTile.nactive())
@@ -848,12 +848,12 @@ namespace AAMod
             Vector2 npcCenter = npc.Center;
             float playerCenterX = Main.player[npc.target].Center.X;
             float playerCenterY = Main.player[npc.target].Center.Y;
-            playerCenterX = (float)((int)(playerCenterX / 16f) * 16); playerCenterY = (float)((int)(playerCenterY / 16f) * 16);
-            npcCenter.X = (float)((int)(npcCenter.X / 16f) * 16); npcCenter.Y = (float)((int)(npcCenter.Y / 16f) * 16);
+            playerCenterX = (int)(playerCenterX / 16f) * 16; playerCenterY = (int)(playerCenterY / 16f) * 16;
+            npcCenter.X = (int)(npcCenter.X / 16f) * 16; npcCenter.Y = (int)(npcCenter.Y / 16f) * 16;
             playerCenterX -= npcCenter.X; playerCenterY -= npcCenter.Y;
-            float dist = (float)Math.Sqrt((double)(playerCenterX * playerCenterX + playerCenterY * playerCenterY));
+            float dist = (float)Math.Sqrt(playerCenterX * playerCenterX + playerCenterY * playerCenterY);
 			isDigging = canMove;
-            if (npc.ai[1] > 0f && npc.ai[1] < (float)Main.npc.Length)
+            if (npc.ai[1] > 0f && npc.ai[1] < Main.npc.Length)
             {
                 try
                 {
@@ -865,15 +865,15 @@ namespace AAMod
                 }
                 if (!rotateAverage || npc.type == wormTypes[0])
                 {
-                    npc.rotation = (float)Math.Atan2((double)playerCenterY, (double)playerCenterX) + 1.57f;
+                    npc.rotation = (float)Math.Atan2(playerCenterY, playerCenterX) + 1.57f;
                 }else
                 {
                     NPC frontNPC = Main.npc[(int)npc.ai[1]];
                     Vector2 rotVec = BaseUtility.RotateVector(frontNPC.Center, frontNPC.Center + new Vector2(0f, 30f), frontNPC.rotation);
                     npc.rotation = BaseUtility.RotationTo(npc.Center, rotVec) + 1.57f;
                 }
-                dist = (float)Math.Sqrt((double)(playerCenterX * playerCenterX + playerCenterY * playerCenterY));
-                dist = (dist - (float)npc.width - (float)partDistanceAddon) / dist;
+                dist = (float)Math.Sqrt(playerCenterX * playerCenterX + playerCenterY * playerCenterY);
+                dist = (dist - npc.width - partDistanceAddon) / dist;
                 playerCenterX *= dist;
                 playerCenterY *= dist;
                 npc.velocity = default(Vector2);
@@ -891,7 +891,7 @@ namespace AAMod
                     npc.TargetClosest(true);
                     npc.velocity.Y = npc.velocity.Y + 0.11f;
                     if (npc.velocity.Y > maxSpeed) { npc.velocity.Y = maxSpeed; }
-                    if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)maxSpeed * 0.4)
+                    if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < maxSpeed * 0.4)
                     {
                         if (npc.velocity.X < 0f) { npc.velocity.X = npc.velocity.X - gravityResist * 1.1f; } else { npc.velocity.X = npc.velocity.X + gravityResist * 1.1f; }
                     }
@@ -917,7 +917,7 @@ namespace AAMod
                         npc.soundDelay = (int)distSoundDelay;
                         Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 1);
                     }
-                    dist = (float)Math.Sqrt((double)(playerCenterX * playerCenterX + playerCenterY * playerCenterY));
+                    dist = (float)Math.Sqrt(playerCenterX * playerCenterX + playerCenterY * playerCenterY);
                     float absPlayerCenterX = Math.Abs(playerCenterX);
                     float absPlayerCenterY = Math.Abs(playerCenterY);
                     float newSpeed = maxSpeed / dist;
@@ -931,12 +931,12 @@ namespace AAMod
                             dontFall = true;
                             if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < maxSpeed) { npc.velocity *= 1.1f; }
                         }
-                        if (npc.position.Y > Main.player[npc.target].position.Y || (double)(Main.player[npc.target].position.Y / 16f) > Main.worldSurface || Main.player[npc.target].dead)
+                        if (npc.position.Y > Main.player[npc.target].position.Y || Main.player[npc.target].position.Y / 16f > Main.worldSurface || Main.player[npc.target].dead)
                         {
                             dontFall = true;
                             if (Math.Abs(npc.velocity.X) < maxSpeed / 2f)
                             {
-                                if (npc.velocity.X == 0f) { npc.velocity.X = npc.velocity.X - (float)npc.direction; }
+                                if (npc.velocity.X == 0f) { npc.velocity.X = npc.velocity.X - npc.direction; }
                                 npc.velocity.X = npc.velocity.X * 1.1f;
                             }
                             else
@@ -953,11 +953,11 @@ namespace AAMod
                             if (npc.velocity.Y < playerCenterY) { npc.velocity.Y = npc.velocity.Y + gravityResist; }
                             else
                                 if (npc.velocity.Y > playerCenterY) { npc.velocity.Y = npc.velocity.Y - gravityResist; }
-                            if ((double)Math.Abs(playerCenterY) < (double)maxSpeed * 0.2 && ((npc.velocity.X > 0f && playerCenterX < 0f) || (npc.velocity.X < 0f && playerCenterX > 0f)))
+                            if (Math.Abs(playerCenterY) < maxSpeed * 0.2 && ((npc.velocity.X > 0f && playerCenterX < 0f) || (npc.velocity.X < 0f && playerCenterX > 0f)))
                             {
                                 if (npc.velocity.Y > 0f) { npc.velocity.Y = npc.velocity.Y + gravityResist * 2f; } else { npc.velocity.Y = npc.velocity.Y - gravityResist * 2f; }
                             }
-                            if ((double)Math.Abs(playerCenterX) < (double)maxSpeed * 0.2 && ((npc.velocity.Y > 0f && playerCenterY < 0f) || (npc.velocity.Y < 0f && playerCenterY > 0f)))
+                            if (Math.Abs(playerCenterX) < maxSpeed * 0.2 && ((npc.velocity.Y > 0f && playerCenterY < 0f) || (npc.velocity.Y < 0f && playerCenterY > 0f)))
                             {
                                 if (npc.velocity.X > 0f) { npc.velocity.X = npc.velocity.X + gravityResist * 2f; } else { npc.velocity.X = npc.velocity.X - gravityResist * 2f; }
                             }
@@ -969,7 +969,7 @@ namespace AAMod
                                 else
                                     if (npc.velocity.X > playerCenterX) { npc.velocity.X = npc.velocity.X - gravityResist * 1.1f; }
 
-                                if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)maxSpeed * 0.5)
+                                if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < maxSpeed * 0.5)
                                 {
                                     if (npc.velocity.Y > 0f) { npc.velocity.Y = npc.velocity.Y + gravityResist; } else { npc.velocity.Y = npc.velocity.Y - gravityResist; }
                                 }
@@ -979,7 +979,7 @@ namespace AAMod
                                 if (npc.velocity.Y < playerCenterY) { npc.velocity.Y = npc.velocity.Y + gravityResist * 1.1f; }
                                 else
                                     if (npc.velocity.Y > playerCenterY) { npc.velocity.Y = npc.velocity.Y - gravityResist * 1.1f; }
-                                if ((double)(Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y)) < (double)maxSpeed * 0.5)
+                                if (Math.Abs(npc.velocity.X) + Math.Abs(npc.velocity.Y) < maxSpeed * 0.5)
                                 {
                                     if (npc.velocity.X > 0f) { npc.velocity.X = npc.velocity.X + gravityResist; } else { npc.velocity.X = npc.velocity.X - gravityResist; }
                                 }
@@ -988,7 +988,7 @@ namespace AAMod
                 }
                 if (!rotateAverage || npc.type == wormTypes[0])
                 {
-                    npc.rotation = (float)Math.Atan2((double)npc.velocity.Y, (double)npc.velocity.X) + 1.57f;
+                    npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
                 }else
                 {
                     NPC frontNPC = Main.npc[(int)npc.ai[1]];

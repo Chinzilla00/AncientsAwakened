@@ -336,6 +336,7 @@ namespace AAMod
         public bool DemonSun = false;
         public bool AnubisBook = false;
         public bool GivenAnuSummon = false;
+        public bool GivenWormIdol = false;
 
         public float spellbookDamage = 1f;
         public float MaxMovespeedboost = 0;
@@ -351,6 +352,7 @@ namespace AAMod
             var saved = new List<string>();
             if (AnubisBook) saved.Add("Book");
             if (GivenAnuSummon) saved.Add("Stick");
+            if (GivenWormIdol) saved.Add("Idol");
             return new TagCompound
             {
                 { "saved", saved }
@@ -362,6 +364,7 @@ namespace AAMod
             var downed = tag.GetList<string>("saved");
             AnubisBook = downed.Contains("Book");
             GivenAnuSummon = downed.Contains("Stick");
+            GivenWormIdol = downed.Contains("Idol");
         }
 
         #endregion
@@ -617,6 +620,7 @@ namespace AAMod
             ZoneAcropolis = false;
             WorldgenReminder = false; 
             GivenAnuSummon = false;
+            GivenWormIdol = false;
         }
 
         #endregion

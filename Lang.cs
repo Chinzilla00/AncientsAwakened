@@ -3541,20 +3541,20 @@ Fishy";
                         case "Greed3":
                         return "You brought me my favorite dish..!";
                         case "Greed4":
-                        return "Golden Grub...";
+                        return "Now, if you don't mind...";
                         case "Greed5":
-                        return "WITH A SIDE OF TERRARIAN!!!";
+                        return "BEGONE FROM MY HOARD!!!";
                         case "GreedName":
                         return "Greed";
 
                         case "GreedTransition1":
                         return "YOU..! YOU LITTLE--";
                         case "GreedTransition2":
-                        return "THATS IT, I'VE HAD IT!";
+                        return "WHY DO YOU REFUSE TO LEAVE ME BE?!";
                         case "GreedTransition3":
                         return "YOU TRY TO STEAL MY SHINIES, AND NOW...!";
                         case "GreedTransition4":
-                        return "I WILL STEAL YOUR LIFE! HEEHEEHEEHEEHEEHEEHEEHEEHEEHEE!!!";
+                        return "I WILL STEAL YOUR LIFE!";
                         case "GreedAName":
                         return "Worm King Greed";
 

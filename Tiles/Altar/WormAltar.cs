@@ -60,11 +60,8 @@ namespace AAMod.Tiles.Altar
                         if (item != null && item.type == type && item.stack >= 1)
                         {
                             item.stack--;
-                            if (AAWorld.WormActive)
-                            {
-                                Item.NewItem(i, j, 72, 72, mod.ItemType("EquinoxWorms"));
-                            }
-                            else
+                            Item.NewItem(i, j, 72, 72, mod.ItemType("EquinoxWorm"));
+                            if (!AAWorld.WormActive)
                             {
                                 SpawnBoss(player, ModContent.NPCType<WormSpawn>(), false, player.Center);
                             }

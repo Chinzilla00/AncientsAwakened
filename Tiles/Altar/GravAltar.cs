@@ -67,6 +67,10 @@ namespace AAMod.Tiles.Altar
                     }
                 }
             }
+            else
+            {
+                BaseUtility.Chat(@"Deep in the caverns of the world lies the worm king, the guardian of the earth that was created to give us life.", Color.SkyBlue);
+            }
             return true;
         }
 
