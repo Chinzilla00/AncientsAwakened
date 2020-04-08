@@ -89,6 +89,8 @@ It looks like it hasn't been touched in years");
 
             projectile.Center = PlayerPoint;
 
+            AltarSpawn += new Vector2(37.5f * 16, 42 * 16);
+
             BaseAI.LookAt(AltarSpawn, projectile, 2, 0, 0, true);
 
             projectile.direction = 1;
