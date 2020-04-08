@@ -90,9 +90,8 @@ It looks like it hasn't been touched in years");
 
             projectile.Center = PlayerPoint;
 
-            BaseAI.LookAt(AltarSpawn, projectile, 0);
+            BaseAI.LookAt(AltarSpawn, projectile, 0, 0, 0, false);
             projectile.spriteDirection = 1;
-            projectile.direction = 1;
         }
 
         public float auraPercent = 0f;
