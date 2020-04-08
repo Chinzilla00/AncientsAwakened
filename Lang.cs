@@ -4605,7 +4605,7 @@ Fishy";
                         return "绝零冰蛇";
                         case "SubzeroSerpentInfo":
                         return " 在夜晚雪地召唤";
-                        case "SubzeroSerpentInfo":
+                        case "SubzeroSerpentInfo2":
                         return "绝零冰蛇在雪中钻洞逃走了";
                         case "DesertDjinn":
                         return "沙漠巨灵";
@@ -4739,7 +4739,7 @@ Fishy";
                         return "Тундровая Змея";
                         case "SubzeroSerpentInfo":
                         return " в биоме Тундры ночью";
-                        case "SubzeroSerpentInfo":
+                        case "SubzeroSerpentInfo2":
                         return "Тудровая Змея закапывается в снег";
                         case "DesertDjinn":
                         return "Пустынный Джинн";
@@ -4873,7 +4873,7 @@ Fishy";
                         return "Subzero Serpent";
                         case "SubzeroSerpentInfo":
                         return " in the Snow biome at night";
-                        case "SubzeroSerpentInfo":
+                        case "SubzeroSerpentInfo2":
                         return "The Subzero Serpent burrows back down into the snow";
                         case "DesertDjinn":
                         return "Desert Djinn";
