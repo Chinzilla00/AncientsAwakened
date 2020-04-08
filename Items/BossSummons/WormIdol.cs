@@ -90,8 +90,9 @@ It looks like it hasn't been touched in years");
 
             projectile.Center = PlayerPoint;
 
-            BaseAI.LookAt(AltarSpawn, projectile, 0, 0, 0, false);
-            projectile.spriteDirection = 1;
+            BaseAI.LookAt(AltarSpawn, projectile, 2, 0, 0, true);
+
+            projectile.direction = 1;
         }
 
         public float auraPercent = 0f;
@@ -104,8 +105,8 @@ It looks like it hasn't been touched in years");
 
             Rectangle frame = BaseDrawing.GetFrame(0, 30, 30, 0, 0);
 
-            BaseDrawing.DrawAura(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, auraPercent, 1.2f, projectile.scale, projectile.rotation, projectile.direction, 1, frame, 0, 0, Color.White);
-            BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, projectile.GetAlpha(ColorUtils.COLOR_GLOWPULSE));
+            BaseDrawing.DrawAura(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, auraPercent, 1.2f, projectile.scale, projectile.rotation, -1, 1, frame, 0, 0, Color.White);
+            BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, -1, 1, frame, projectile.GetAlpha(ColorUtils.COLOR_GLOWPULSE));
 
             return false;
         }
