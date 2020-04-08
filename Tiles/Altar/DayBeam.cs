@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.Enums;
 
-namespace AAMod.Tiles.Altar
+/*namespace AAMod.Tiles.Altar
 {
     public class DayBeam : ModProjectile
     {
@@ -376,4 +376,4 @@ namespace AAMod.Tiles.Altar
 
         }
     }
-}
+}*/

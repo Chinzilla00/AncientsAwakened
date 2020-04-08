@@ -634,7 +634,7 @@ namespace AAMod
             ZoneRisingMoonLake = AAWorld.lakeTiles >= 1;
             ZoneRisingSunPagoda = AAWorld.pagodaTiles >= 1;
             ZoneStars = AAWorld.Radium >= 20;
-            ZoneHoard = AAWorld.HoardTiles > 1;
+            ZoneHoard = AAWorld.HoardTiles > 1 && !ZoneStars;
             ZoneAcropolis = AAWorld.CloudTiles > 1;
         }
 

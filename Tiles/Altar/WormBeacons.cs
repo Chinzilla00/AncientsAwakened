@@ -6,11 +6,11 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using BaseMod;
 
-namespace AAMod.Tiles.Altar
+/*namespace AAMod.Tiles.Altar
 {
 	public class WormBeaconDay : ModNPC
 	{
-        public override string Texture => "AAMod/BlankTes";
+        public override string Texture => "AAMod/BlankTex";
         public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Strange Beacon");
@@ -73,7 +73,7 @@ namespace AAMod.Tiles.Altar
 
     public class WormBeaconNight : ModNPC
     {
-        public override string Texture => "AAMod/BlankTes";
+        public override string Texture => "AAMod/BlankTex";
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Strange Beacon");
@@ -210,9 +210,9 @@ namespace AAMod.Tiles.Altar
             float x = Main.maxTilesX * 0.15f;
             Vector2 spawnPos = new Vector2(x + (30  * 16), 131);
 
-			bool anyBeaconsExist = NPC.AnyNPCs(mod.NPCType("WormBeaconDay"));			
+			bool anyBeaconsExist = NPC.AnyNPCs(ModContent.NPCType<WormBeaconDay>());			
 			if (!anyBeaconsExist)
-			{
+            {
                 int whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, ModContent.NPCType<WormBeaconDay>());
                 DX = (int)spawnPos.X;
 				DY = (int)spawnPos.Y;				
@@ -228,7 +228,7 @@ namespace AAMod.Tiles.Altar
             float x = Main.maxTilesX * 0.15f;
             Vector2 spawnPos = new Vector2(x + (30 * 16), 131);
 
-            bool anyBeaconsExist = NPC.AnyNPCs(mod.NPCType("WormBeaconNight"));
+            bool anyBeaconsExist = NPC.AnyNPCs(ModContent.NPCType<WormBeaconNight>());
             if (!anyBeaconsExist)
             {
                 int whoAmI = NPC.NewNPC((int)spawnPos.X, (int)spawnPos.Y, ModContent.NPCType<WormBeaconNight>());
@@ -241,4 +241,4 @@ namespace AAMod.Tiles.Altar
             }
         }
     }
-}
+}*/

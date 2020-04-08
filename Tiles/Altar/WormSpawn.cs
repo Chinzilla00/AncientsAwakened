@@ -1,5 +1,6 @@
 using BaseMod;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
@@ -15,10 +16,10 @@ namespace AAMod.Tiles.Altar
         }
         public override void SetDefaults()
         {
-            npc.width = 100;
-            npc.height = 100;
+            npc.width = 46;
+            npc.height = 46;
             npc.alpha = 255;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Equinox");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/WormSpawn");
             npc.lifeMax = 1;
             npc.dontTakeDamage = true;
             npc.noGravity = true;
@@ -38,6 +39,16 @@ namespace AAMod.Tiles.Altar
             }
             Player player = Main.player[npc.target];
             npc.Center = player.Center - new Vector2(0, 300f);
+
+            if (!NPC.AnyNPCs(ModContent.NPCType<DBPortal>()))
+            {
+                WormAltar.SpawnBoss(player, ModContent.NPCType<DBPortal>(), false, player.Center);
+            }
+            if (!NPC.AnyNPCs(ModContent.NPCType<NCPortal>()))
+            {
+                WormAltar.SpawnBoss(player, ModContent.NPCType<NCPortal>(), false, player.Center);
+            }
+
             npc.ai[0]++;
 
             string s = Main.netMode == 0 ? "" : "s";
@@ -100,6 +111,7 @@ namespace AAMod.Tiles.Altar
 
                 AAWorld.WormActive = true;
                 npc.active = false;
+                npc.netUpdate = true;
             }
         }
 
@@ -110,6 +122,11 @@ namespace AAMod.Tiles.Altar
                 return false;
             }
             return true;
+        }
+
+        public override bool PreDraw(SpriteBatch spritebatch, Color lightColor)
+        {
+            return false;
         }
     }
 }

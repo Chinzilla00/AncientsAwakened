@@ -54,7 +54,7 @@ namespace AAMod.Tiles.Altar
         {
             Player player = Main.LocalPlayer;
             int type = ModContent.ItemType<Items.Boss.Greed.WKG.GravitySphere>();
-            if (BasePlayer.HasItem(player, type, 1))
+            if (BasePlayer.HasItem(player, type, 1) && !AAWorld.GravActive)
             {
                 for (int m = 0; m < 50; m++)
                 {
@@ -63,6 +63,7 @@ namespace AAMod.Tiles.Altar
                     {
                         item.stack--;
                         AAWorld.GravActive = true;
+                        break;
                     }
                 }
             }

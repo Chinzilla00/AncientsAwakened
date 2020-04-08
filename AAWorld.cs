@@ -1355,7 +1355,7 @@ namespace AAMod
             pagodaTiles = tileCounts[ModContent.TileType<ScorchedDynastyWoodS>()] + tileCounts[ModContent.TileType<ScorchedShinglesS>()];
             lakeTiles = tileCounts[ModContent.TileType<Darkmud>()] + tileCounts[ModContent.TileType<AbyssGrass>()] + tileCounts[ModContent.TileType<AbyssWood>()] + tileCounts[ModContent.TileType<AbyssWoodSolid>()];
             terraTiles = tileCounts[ModContent.TileType<TerraCrystal>()] + tileCounts[ModContent.TileType<TerraWood>()] + tileCounts[ModContent.TileType<TerraLeaves>()];
-            Radium = tileCounts[ModContent.TileType<RadiumOre>()];
+            Radium = tileCounts[ModContent.TileType<RadiumOre>()] + tileCounts[ModContent.TileType<Tiles.Altar.DaybringerBrick>()] + tileCounts[ModContent.TileType<Tiles.Altar.NightcrawlerBrick>()];
             HoardTiles = tileCounts[ModContent.TileType<GreedBrick>()] + tileCounts[ModContent.TileType<GreedStone>()];
             CloudTiles = tileCounts[ModContent.TileType<AcropolisBlock>()] + tileCounts[ModContent.TileType<AcropolisBlock2>()];
         }
