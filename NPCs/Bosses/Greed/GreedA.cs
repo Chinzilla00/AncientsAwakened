@@ -482,11 +482,44 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public bool truehit = false;
 
+        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
+        {
+            MakeSegmentsImmune(npc, projectile.owner);
+        }
+
         public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
         {
             if (item.pick > 0)
             {
                 npc.StrikeNPC(damage + item.pick, knockback, 0, true);
+            }
+            MakeSegmentsImmune(npc, player.whoAmI);
+        }
+
+        public void MakeSegmentsImmune(NPC npc, int id)
+        {
+            if (npc.realLife >= 0)
+            {
+                bool last = false;
+                NPC parent = Main.npc[npc.realLife];
+                parent.lifeRegen = npc.lifeRegen;
+                int i = 0;
+                while (parent.ai[0] > 0 || last)
+                {
+                    parent.immune[id] = npc.immune[id];
+                    for (int j = 0; j < npc.buffType.Length; j++)
+                    {
+                        if (npc.buffType[j] > 0 && npc.buffTime[j] > 0)
+                        {
+                            parent.buffType[j] = npc.buffType[j];
+                            parent.buffTime[j] = npc.buffTime[j];
+                        }
+                    }
+                    if (last) { break; }
+                    parent = Main.npc[(int)parent.ai[0]];
+                    if (parent.ai[0] == 0) { last = true; }
+                    if (i++ > 200) { throw new InvalidOperationException("Recursion detected"); } // Just in case
+                }
             }
         }
 
