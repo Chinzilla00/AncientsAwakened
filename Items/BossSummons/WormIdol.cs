@@ -23,10 +23,9 @@ It looks like it hasn't been touched in years");
             item.height = 16;
             item.maxStack = 99;
             item.rare = 11;
-            item.accessory = true;
         }
 
-        public override void UpdateEquip(Player player)
+        public override void HoldItem(Player player)
         {
             player.GetModPlayer<IdolPointer>().effect = true;
 
