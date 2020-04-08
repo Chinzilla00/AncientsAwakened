@@ -28,6 +28,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             npc.alpha = 255;
             npc.noTileCollide = false;
             npc.noGravity = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("PuritySquidBanner");
         }
         
         public override Color? GetAlpha(Color drawColor)

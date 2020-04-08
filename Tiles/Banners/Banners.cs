@@ -80,7 +80,7 @@ namespace AAMod.Tiles.Banners
 				case "Null": return 38;
 				case "Searcher": return 39;
 				case "Toxitoad": return 40;
-                case "SagittariusMini": return 40;
+                case "SagittariusMini": return 41;
             }
 			return 0; //broken banner
 		}
@@ -132,6 +132,12 @@ namespace AAMod.Tiles.Banners
 				case 39: dropName = "Searcher"; break;
 				case 40: dropName = "Toxitoad"; break;
                 case 41: dropName = "Shadow Scout"; break;
+				case 42: dropName = "Purity Squid"; break;
+				case 43: dropName = "Terra Probe"; break;
+				case 44: dropName = "Terra Watcher"; break;
+				case 45: dropName = "Purity Weaver"; break;
+				case 46: dropName = "Purity Sphere"; break;
+				case 47: dropName = "Terra Serpent"; break;
             }
 			if(spaces) //fix for display names
 			{
@@ -178,6 +184,12 @@ namespace AAMod.Tiles.Banners
 					case 39: dropName = "Searcher"; break;
 					case 40: dropName = "Toxitoad"; break;
 					case 41: dropName = "SagittariusMini"; break;
+					case 42: dropName = "Purity Squid"; break;
+					case 43: dropName = "Terra Probe"; break;
+					case 44: dropName = "Terra Watcher"; break;
+					case 45: dropName = "Purity Weaver"; break;
+					case 46: dropName = "Purity Sphere"; break;
+					case 47: dropName = "Terra Serpent"; break;
 				}				
 			}
 			if(!string.IsNullOrEmpty(dropName)) dropName = dropName.Replace(" ", null);

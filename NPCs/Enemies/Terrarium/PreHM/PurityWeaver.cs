@@ -31,6 +31,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             npc.alpha = 255;
             npc.noGravity = true;
             npc.noTileCollide = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("PurityWeaverBanner");
         }
 
         public override Color? GetAlpha(Color drawColor)
@@ -249,6 +251,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             npc.dontCountMe = true;
 
             npc.alpha = 255;
+            banner = npc.type;
+			bannerItem = mod.ItemType("PurityWeaverBanner");
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -379,6 +383,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             npc.dontCountMe = true;
 
             npc.alpha = 255;
+            banner = npc.type;
+			bannerItem = mod.ItemType("PurityWeaverBanner");
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
