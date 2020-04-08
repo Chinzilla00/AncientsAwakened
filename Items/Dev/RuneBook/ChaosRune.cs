@@ -45,9 +45,9 @@ namespace AAMod.Items.Dev.RuneBook
             {
                 if (player.dead)
                 {
-                    modPlayer.WeakCCRune = false;
+                    modPlayer.CCRune = false;
                 }
-                if (modPlayer.WeakCCRune || modPlayer.CCBookEX)
+                if (modPlayer.CCRune || modPlayer.CCBookEX)
                 {
                     projectile.timeLeft = 2;
                 }

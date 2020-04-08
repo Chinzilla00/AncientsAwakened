@@ -121,7 +121,7 @@ namespace AAMod.Items.Dev.RuneBook
                 if (nPC2.CanBeChasedBy(projectile, false))
                 {
                     float num646 = Vector2.Distance(nPC2.Center, projectile.Center);
-                    if ((num646 < num633 && Main.npc[num645].life > maxlife) && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, nPC2.position, nPC2.width, nPC2.height))
+                    if ((num646 < num633 && Main.npc[num645].life > maxlife) && nPC2.active && nPC2.life > 0 && Collision.CanHitLine(projectile.position, projectile.width, projectile.height, nPC2.position, nPC2.width, nPC2.height))
                     {
                         maxlife = Main.npc[num645].life;
                         target = num645;
@@ -162,9 +162,9 @@ namespace AAMod.Items.Dev.RuneBook
                 {
                     vector.Normalize();
                     vector *= num639;
-                    projectile.velocity = (projectile.velocity * 40f + vector) / 52f;
+                    projectile.velocity = (projectile.velocity + vector * 40f) / 41f;
                 }
-                else if (projectile.velocity.X == 0f && projectile.velocity.Y == 0f)
+                if (projectile.velocity.X == 0f && projectile.velocity.Y == 0f)
                 {
                     projectile.velocity.X = -0.02f;
                     projectile.velocity.Y = -0.01f;

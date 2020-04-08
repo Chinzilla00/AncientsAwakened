@@ -45,7 +45,7 @@ namespace AAMod.Items.Dev.RuneBook
             }
             if (player.dead)
             {
-                modPlayer.WeakCCRune = false;
+                modPlayer.CCRune = false;
             }
             if (player.HasBuff(mod.BuffType("CCRune")))
             {
@@ -108,12 +108,12 @@ namespace AAMod.Items.Dev.RuneBook
 				vector *= num639;
 				projectile.velocity = (projectile.velocity * 40f + vector) / 41f;
 			}
-            else if(vector.Length() < 40f && (projectile.velocity.X != 0f || projectile.velocity.Y != 0f))
-            {
-                vector.Normalize();
-                vector *= num639;
-                projectile.velocity = (projectile.velocity * 40f + vector) / 52f;
-            }
+            else if (vector.Length() > 40f)
+			{
+				vector.Normalize();
+				vector *= num639;
+				projectile.velocity = (projectile.velocity * 40f + vector) / 41f;
+			}
 			if (projectile.velocity.X == 0f && projectile.velocity.Y == 0f)
 			{
 				projectile.velocity.X = -0.04f;
