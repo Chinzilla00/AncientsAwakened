@@ -18,7 +18,7 @@ namespace AAMod.Items.Dev.RuneBook
             projectile.height = 14;
             projectile.timeLeft = 18000;
             projectile.timeLeft *= 5;
-            projectile.minionSlots = 1f;
+            projectile.minionSlots = 0f;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.timeLeft *= 5;
