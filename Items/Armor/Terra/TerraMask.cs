@@ -44,7 +44,7 @@ While in support mode, your defense and life regeneration are increased, but you
             {
                 if (player.ownedProjectileCounts[mod.ProjectileType("TerraCrystal")] < 1)
                 {
-                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("TerraCrystal"), 20, 0f, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("TerraCrystal"), (int)(60 * player.minionDamage), 0f, Main.myPlayer, 0f, 0f);
                 }
             }
         }

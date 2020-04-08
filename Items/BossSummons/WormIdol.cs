@@ -1,3 +1,4 @@
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
@@ -21,10 +22,20 @@ It looks like it hasn't been touched in years");
             item.height = 16;
             item.maxStack = 99;
             item.rare = 11;
+            item.accessory = true;
         }
-        public override void HoldItem(Player player)
+
+        public override void UpdateEquip(Player player)
         {
             player.GetModPlayer<IdolPointer>().effect = true;
+
+            if (player.whoAmI == Main.myPlayer)
+            {
+                if (player.ownedProjectileCounts[mod.ProjectileType("WormPointer")] < 1)
+                {
+                    Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("WormPointer"), 0, 0f, Main.myPlayer, 0f, 0f);
+                }
+            }
         }
     }
 
@@ -32,51 +43,70 @@ It looks like it hasn't been touched in years");
     {
         public bool effect;
 
-        public static Vector2 AltarSpawn = new Vector2(Main.maxTilesX * 0.15f, 100);
-
         public override void ResetEffects()
         {
             effect = false;
         }
+    }
 
-        public static readonly PlayerLayer AltarPointer = new PlayerLayer("AAMod", "LabLegs", PlayerLayer.Legs, delegate (PlayerDrawInfo drawInfo)
+    public class WormPointer : ModProjectile
+    {
+        public override string Texture => "AAMod/Textures/WormPointer";
+        public override void SetStaticDefaults()
         {
-            if (drawInfo.shadow != 0f)
+            DisplayName.SetDefault("Pointer");
+        }
+
+        public override void SetDefaults()
+        {
+            projectile.width = 30;
+            projectile.height = 30;
+            projectile.aiStyle = -1;
+            projectile.friendly = true;
+            projectile.tileCollide = false;
+            projectile.penetrate = -1;
+            projectile.timeLeft *= 5;
+            projectile.light = 0.4f;
+            projectile.ignoreWater = true;
+            projectile.minionSlots = 0;
+        }
+
+        public override void AI()
+        {
+            Vector2 AltarSpawn = new Vector2(Main.maxTilesX * 0.15f, 100);
+            Player player = Main.player[projectile.owner];
+            IdolPointer modPlayer = player.GetModPlayer<IdolPointer>();
+
+            if (!modPlayer.effect)
             {
+                projectile.Kill();
                 return;
             }
-            Player drawPlayer = drawInfo.drawPlayer;
-            Mod mod = ModLoader.GetMod("AAMod");
-            if (drawPlayer.GetModPlayer<IdolPointer>().effect && AltarSpawn.X != Main.maxTilesX * 0.15f && AltarSpawn.Y != 100)
-            {
-                Texture2D texture = mod.GetTexture("Items/BossSummons/WormIdol");
 
-                int drawX = (int)(drawPlayer.position.X - Main.screenPosition.X);
-                int drawY = (int)(drawPlayer.position.Y - Main.screenPosition.Y);
-                Vector2 Position = drawPlayer.position;
-                Vector2 origin = texture.Size() / 2;
-                Vector2 pos = new Vector2((int)(Position.X - Main.screenPosition.X - drawPlayer.bodyFrame.Width / 2 + drawPlayer.width / 2), (int)(Position.Y - Main.screenPosition.Y + drawPlayer.height - drawPlayer.bodyFrame.Height + 4f)) + drawPlayer.bodyPosition + new Vector2(drawPlayer.bodyFrame.Width / 2, drawPlayer.bodyFrame.Height / 2);
-                pos.Y -= drawPlayer.mount.PlayerOffset;
+            Vector2 PlayerPoint = Vector2.Zero;
 
-                float AltarPlace = (AltarSpawn - drawPlayer.Center).ToRotation();
-                DrawData data = new DrawData(texture, pos, new Rectangle(0, 0, (int)texture.Size().X, (int)texture.Size().Y), Color.White, AltarPlace, origin, 1f, 0, 0);
-                //data.shader = drawInfo.legArmorShader;
-                Main.playerDrawData.Add(data);
-            }
-        });
+            PlayerPoint.X = player.Center.X - projectile.width / 2;
+            PlayerPoint.Y = player.Center.Y - projectile.height / 2 + player.gfxOffY - 60f;
 
-        public override void ModifyDrawLayers(List<PlayerLayer> layers)
+            projectile.Center = PlayerPoint;
+
+            projectile.rotation = (AltarSpawn - player.Center).ToRotation();
+        }
+
+        public float auraPercent = 0f;
+        public bool auraDirection = true;
+
+        public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            int legLayer = layers.FindIndex(PlayerLayer => PlayerLayer.Name.Equals("Wings"));
-            if (legLayer != -1 && AltarSpawn.X != Main.maxTilesX * 0.15f * 16 && AltarSpawn.Y != 100)
-            {
-                AltarPointer.visible = true;
-                layers.Insert(legLayer + 1, AltarPointer);
-            }
-            else
-            {
-                AltarPointer.visible = false;
-            }
+            if (auraDirection) { auraPercent += 0.1f; auraDirection = auraPercent < 1f; }
+            else { auraPercent -= 0.1f; auraDirection = auraPercent <= 0f; }
+
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, 30, 30, 0, 0);
+
+            BaseDrawing.DrawAura(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, auraPercent, 1.2f, projectile.scale, projectile.rotation, projectile.direction, 1, frame, 0, 0, Color.White);
+            BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, projectile.GetAlpha(ColorUtils.COLOR_GLOWPULSE), true);
+
+            return false;
         }
     }
 }

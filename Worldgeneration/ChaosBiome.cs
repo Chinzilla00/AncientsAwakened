@@ -918,7 +918,8 @@ namespace AAMod.Worldgeneration
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
             {
                 [new Color(255, 0, 0)] = mod.TileType("GreedBrick"),
-                [new Color(0, 255, 255)] = mod.TileType("SkyShard"),
+                [new Color(0, 255, 255)] = mod.TileType("DayCrystal"),
+                [new Color(0, 255, 0)] = mod.TileType("NightCrystal"),
                 [new Color(255, 255, 0)] = mod.TileType("DaybringerBrick"),
                 [new Color(0, 0, 255)] = mod.TileType("NightcrawlerBrick"),
                 [new Color(255, 255, 255)] = -2, //turn into air
