@@ -4505,6 +4505,58 @@ Fishy";
                 }
             return"";
         }
+        public static string CensusMod(string npc)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+                {
+                    switch(npc)
+                    {
+                        case "Anubis":
+                        return "总是可以";
+                        case "Mushman":
+                        return "打败赤孢皇或者真菌帝后在红蘑菇地中建造一个房子";
+                        case "Lovecraftian":
+                        return "打败克苏鲁之眼";
+                        case "Samurai":
+                        return "打败混沌之爪";
+                        case "GoblinSlayer":
+                        return "打败哥布林军团";
+                    }
+                }
+            else if(Language.ActiveCulture == GameCulture.Russian)
+                {
+                    switch(npc)
+                    {
+                        case "Anubis":
+                        return "Всегда доступен";
+                        case "Mushman":
+                        return "После победы над Грибным Монархом или Феодальным Грибом постройте дом в красном грибном биоме.";
+                        case "Lovecraftian":
+                        return "Победите Глаз Ктулху";
+                        case "Samurai":
+                        return "Победите Тиски Хаоса";
+                        case "GoblinSlayer":
+                        return "Победите армию гоблинов";
+                    }
+                }
+            else
+                {
+                    switch(npc)
+                    {
+                        case "Anubis":
+                        return "Always available";
+                        case "Mushman":
+                        return "After defeating Mushroom Monarch or Feudal Fungus, build a house in a red mushroom biome";
+                        case "Lovecraftian":
+                        return "Eye of Cthulhu defeated";
+                        case "Samurai":
+                        return "Grips of Chaos defeated";
+                        case "GoblinSlayer":
+                        return "Goblin Army is defeated";
+                    }
+                }
+            return "";
+        }
         public static string BossCheck(string Boss)
         {
             if(Language.ActiveCulture == GameCulture.Chinese)
@@ -4524,37 +4576,55 @@ Fishy";
                         case "MushroomMonarch":
                         return "赤孢皇";
                         case "MushroomMonarchInfo":
-                        return " 在白天, 或者地表蘑菇地召唤";
+                        return " 在白天召唤";
+                        case "MushroomMonarchInfo2":
+                        return "赤孢皇逃向天空";
                         case "FeudalFungus":
                         return "真菌帝";
                         case "FeudalFungusInfo":
                         return " 在荧光蘑菇地召唤";
+                        case "FeudalFungusInfo2":
+                        return "真菌帝消失了";
                         case "GripsofChaos":
                         return "混沌双爪";
+                        case "GripsofChaosInfo":
+                        return "和你打了一架之后，爪子飞走了";
                         case "Broodmother":
                         return "育母炎龙";
                         case "BroodmotherInfo":
                         return " 白天期间在燎狱召唤, 或者破坏火山下3个龙蛋";
+                        case "BroodmotherInfo2":
+                        return "育母炎龙回到了火热的深处";
                         case "Hydra":
                         return "九头渊蛇";
                         case "HydraInfo":
                         return " 夜晚在潭渊召唤, 或者破坏潭渊下3个蒴荚";
+                        case "HydraInfo2":
+                        return "九头渊蛇偷偷溜回了她的巢穴";
                         case "SubzeroSerpent":
                         return "绝零冰蛇";
                         case "SubzeroSerpentInfo":
                         return " 在夜晚雪地召唤";
+                        case "SubzeroSerpentInfo2":
+                        return "绝零冰蛇在雪中钻洞逃走了";
                         case "DesertDjinn":
                         return "沙漠巨灵";
                         case "DesertDjinnInfo":
                         return " 白天在沙漠召唤";
+                        case "DesertDjinnInfo2":
+                        return "沙漠巨灵高兴地向你弯着手臂（表示自己是个兄贵）";
                         case "Sagittarius":
                         return "虚空人马";
                         case "SagittariusInfo":
                         return " 在虚空浮岛召唤";
+                        case "SagittariusInfo2":
+                        return "虚空人马走向无尽地黑暗";
                         case "TruffleToad":
                         return "松露蟾蜍";
                         case "TruffleToadInfo":
                         return " 在荧光蘑菇环境召唤";
+                        case "TruffleToadInfo2":
+                        return "松露蟾蜍呱呱叫着然后消失了";
                         case "Greed":
                         return "金食饕餮";
                         case "GreedInfo":
@@ -4599,16 +4669,24 @@ Fishy";
                         return "(远古者)八歧大蛇";
                         case "YamataInfo":
                         return " 在夜晚潭渊召唤";
+                        case "YamataA":
+                        return "(远古者)觉醒之八歧大蛇";
                         case "Akuma":
                         return "(远古者)邪鬼巨龙";
                         case "AkumaInfo":
                         return " 在白天燎狱召唤";
+                        case "AkumaA":
+                        return "(远古者)觉醒之邪鬼巨龙";
                         case "Zero":
                         return "(远古者)零械单元";
                         case "ZeroInfo":
                         return " 在浮岛虚空召唤";
+                        case "ZeroP":
+                        return "(远古者)零之协议";
                         case "ShenDoragon":
                         return "(原古者)上神应龙";
+                        case "ShenDoragonA":
+                        return "(原古者)觉醒之上神应龙";
                         case "RajahRabbitRevenge":
                         return "(原古者)至尊巨兔王公";
                         case "RajahRabbitRevengeInfo":
@@ -4633,36 +4711,54 @@ Fishy";
                         return "Грибной Монарх";
                         case "MushroomMonarchInfo":
                         return " днем.";
+                        case "MushroomMonarchInfo2":
+                        return "Грибной Монарх улетает в небеса";
                         case "FeudalFungus":
                         return "Феодальный Гриб";
                         case "FeudalFungusInfo":
                         return " в святящемся грибном биоме";
+                        case "FeudalFungusInfo2":
+                        return "Феодальный Гриб исчезает";
                         case "GripsofChaos":
                         return "Тиски Хаоса";
+                        case "GripsofChaosInfo":
+                        return "Тиски разлетаются, разобравшись с вами";
                         case "Broodmother":
                         return "Мать Стаи";
                         case "BroodmotherInfo":
                         return " в Инферно днем";
+                        case "BroodmotherInfo2":
+                        return "Мать Стаи возвращается в огненные глубины";
                         case "Hydra":
                         return "Гидра";
                         case "HydraInfo":
                         return " в Трясине ночью";
+                        case "HydraInfo2":
+                        return "Гидра вернулась в ее темное логово";
                         case "SubzeroSerpent":
                         return "Тундровая Змея";
                         case "SubzeroSerpentInfo":
                         return " в биоме Тундры ночью";
+                        case "SubzeroSerpentInfo2":
+                        return "Тудровая Змея закапывается в снег";
                         case "DesertDjinn":
                         return "Пустынный Джинн";
                         case "DesertDjinnInfo":
                         return " в биоме Пустыни днем.";
+                        case "DesertDjinnInfo2":
+                        return "Пустынный Джинн триумфально флексит над вами";
                         case "Sagittarius":
                         return "Саггитариус";
                         case "SagittariusInfo":
                         return " в Пустоте";
+                        case "SagittariusInfo2":
+                        return "Стрелец скачет в бесконечную тьму...";
                         case "TruffleToad":
                         return "Трюфельная Жаба";
                         case "TruffleToadInfo":
                         return " в святящемся грибном биоме";
+                        case "TruffleToadInfo2":
+                        return "Трюфельная Жаба квакает, затем исчезает";
                         case "Greed":
                         return "Жадность";
                         case "GreedInfo":
@@ -4707,16 +4803,24 @@ Fishy";
                         return "Ямата";
                         case "YamataInfo":
                         return " в Трясине ночью";
+                        case "YamataA":
+                        return "Ямата Но Орочи";
                         case "Akuma":
                         return "Akuma";
                         case "AkumaInfo":
                         return " в Инферно днем";
+                        case "AkumaA":
+                        return "Они Акума";
                         case "Zero":
                         return "Зер0";
                         case "ZeroInfo":
                         return " в Пустоте";
+                        case "ZeroP":
+                        return "Зир0 Протокол";
                         case "ShenDoragon":
                         return "Шен Дорагон";
+                        case "ShenDoragonA":
+                        return "Шен Дорагон пробужденный";
                         case "RajahRabbitRevenge":
                         return "Месть Кролика Раджи";
                         case "RajahRabbitRevengeInfo":
@@ -4741,36 +4845,54 @@ Fishy";
                         return "The Mushroom Monarch";
                         case "MushroomMonarchInfo":
                         return " during the day in the Surface Mushroom Biome";
+                        case "MushroomMonarchInfo2":
+                        return "The Mushroom Monarch escapes into the sky";
                         case "FeudalFungus":
                         return "The Feudal Fungus";
                         case "FeudalFungusInfo":
                         return " in a Glowing Mushroom Biome";
+                        case "FeudalFungusInfo2":
+                        return "The Feudal Fungus vanishes";
                         case "GripsofChaos":
                         return "Grips of Chaos";
+                        case "GripsofChaosInfo":
+                        return "The Grips fly away, having dealt with you";
                         case "Broodmother":
                         return "The Broodmother";
                         case "BroodmotherInfo":
                         return " in the Inferno during the day";
+                        case "BroodmotherInfo2":
+                        return "The Broodmother returns to the fiery depths";
                         case "Hydra":
                         return "Hydra";
                         case "HydraInfo":
                         return " in the Mire at night";
+                        case "HydraInfo2":
+                        return "The Hydra slinks back into her dark lair";
                         case "SubzeroSerpent":
                         return "Subzero Serpent";
                         case "SubzeroSerpentInfo":
                         return " in the Snow biome at night";
+                        case "SubzeroSerpentInfo2":
+                        return "The Subzero Serpent burrows back down into the snow";
                         case "DesertDjinn":
                         return "Desert Djinn";
                         case "DesertDjinnInfo":
                         return " in the Desert during the day";
+                        case "DesertDjinnInfo2":
+                        return "The Desert Djinn flexes upon you triumphantly";
                         case "Sagittarius":
                         return "Sagittarius";
                         case "SagittariusInfo":
                         return " in the Void";
+                        case "SagittariusInfo2":
+                        return "Sagittarius gallops off into the endless darkness...";
                         case "TruffleToad":
                         return "Truffle Toad";
                         case "TruffleToadInfo":
                         return " in a glowing mushroom biome";
+                        case "TruffleToadInfo2":
+                        return "The Truffle Toad croaks, then vanishes";
                         case "Greed":
                         return "Greed";
                         case "GreedInfo":
@@ -4815,16 +4937,24 @@ Fishy";
                         return "Yamata";
                         case "YamataInfo":
                         return " in the Mire at night";
+                        case "YamataA":
+                        return "Yamata Awakened";
                         case "Akuma":
                         return "Akuma";
                         case "AkumaInfo":
                         return " in the Inferno during the day";
+                        case "AkumaA":
+                        return "Akuma Awakened";
                         case "Zero":
                         return "Zero";
                         case "ZeroInfo":
                         return " in the Void";
+                        case "ZeroP":
+                        return "Zero Protocol";
                         case "ShenDoragon":
                         return "Shen Doragon";
+                        case "ShenDoragonA":
+                        return "Shen Doragon Awakened";
                         case "RajahRabbitRevenge":
                         return "Rajah Rabbit's Revenge";
                         case "RajahRabbitRevengeInfo":

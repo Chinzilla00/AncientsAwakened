@@ -479,7 +479,7 @@ namespace AAMod.Globals
                         ModContent.ItemType<SporeSac>()
                     },
                     Lang.BossCheck("Usean") + "[i: " + ModContent.ItemType<IntimidatingMushroom>() + "]" + Lang.BossCheck("MushroomMonarchInfo"),
-                    "The Mushroom Monarch escapes into the sky",
+                    Lang.BossCheck("MushroomMonarchInfo2"),
                     "AAMod/CrossMod/BossChecklist/Monarch",
                     "AAMod/NPCs/Bosses/MushroomMonarch/MushroomMonarch_Head_Boss");
                 #endregion
@@ -503,7 +503,7 @@ namespace AAMod.Globals
                         ModContent.ItemType<GlowingSporeSac>()
                     },
                     Lang.BossCheck("Usean") + "[i: " + ModContent.ItemType<ConfusingMushroom>() + "]" + Lang.BossCheck("FeudalFungusInfo"),
-                    "The Feudal Fungus vanishes",
+                    Lang.BossCheck("FeudalFungusInfo2"),
                     "AAMod/CrossMod/BossChecklist/Fungus",
                     "AAMod/NPCs/Bosses/MushroomMonarch/FeudalFungus_Head_Boss");
                 #endregion
@@ -528,7 +528,7 @@ namespace AAMod.Globals
                         ModContent.ItemType<Items.Boss.Grips.ClawBaton>()
                     },
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("CuriousClaw") + "]" + Lang.BossCheck("or") + "[i:" + AAMod.instance.ItemType("InterestingClaw") + "]" + Lang.BossCheck("atnight"),
-                    "The Grips fly away, having dealt with you",
+                    Lang.BossCheck("GripsofChaosInfo"),
                     "AAMod/CrossMod/BossChecklist/Grips",
                     "AAMod/CrossMod/BossChecklist/GripsHead");
                 #endregion
@@ -554,7 +554,7 @@ namespace AAMod.Globals
                         ModContent.ItemType<GlowingSporeSac>()
                     },
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Toadstool") + "]" + Lang.BossCheck("TruffleToadInfo"),
-                    "The Truffle Toad croaks, then vanishes",
+                    Lang.BossCheck("TruffleToadInfo2"),
                     "AAMod/CrossMod/BossChecklist/Toad",
                     "AAMod/NPCs/Bosses/Toad/TruffleToad_Head_Boss");
                 #endregion
@@ -578,7 +578,7 @@ namespace AAMod.Globals
                         ModContent.ItemType<Incinerite>()
                     },
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DragonBell") + "]" + Lang.BossCheck("BroodmotherInfo"),
-                    "The Broodmother returns to the fiery depths",
+                    Lang.BossCheck("BroodmotherInfo2"),
                     "AAMod/CrossMod/BossChecklist/Brood",
                     "AAMod/NPCs/Bosses/Broodmother/Broodmother_Head_Boss");
                 #endregion
@@ -602,7 +602,7 @@ namespace AAMod.Globals
                         ModContent.ItemType<Abyssium>()
                     },
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("HydraChow") + "]" + Lang.BossCheck("HydraInfo"),
-                    "The Hydra slinks back into her dark lair",
+                    Lang.BossCheck("HydraInfo2"),
                     "AAMod/CrossMod/BossChecklist/Hydra",
                     "AAMod/NPCs/Bosses/Hydra/HydraHead1_Head_Boss",
                     null);
@@ -635,7 +635,7 @@ namespace AAMod.Globals
                         ModContent.ItemType<SnowMana>()
                     },
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("SubzeroCrystal") + "]" + Lang.BossCheck("SubzeroSerpentInfo"),
-                    "The Subzero Serpent burrows back down into the snow",
+                    Lang.BossCheck("SubzeroSerpentInfo2"),
                     "AAMod/CrossMod/BossChecklist/Serpent1",
                     "AAMod/NPCs/Bosses/Serpent/SerpentHead_Head_Boss");
                 #endregion
@@ -665,7 +665,7 @@ namespace AAMod.Globals
                         ModContent.ItemType<DesertMana>()
                     },
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("DjinnLamp") + "]" + Lang.BossCheck("DesertDjinnInfo"),
-                    "The Desert Djinn flexes upon you triumphantly",
+                    Lang.BossCheck("DesertDjinnInfo2"),
                     "AAMod/CrossMod/BossChecklist/Djinn",
                     "AAMod/NPCs/Bosses/Djinn/Djinn_Head_Boss");
                 #endregion
@@ -691,7 +691,7 @@ namespace AAMod.Globals
                         ModContent.ItemType<Doomite>()
                     },
                     Lang.BossCheck("Usea") + "[i:" + AAMod.instance.ItemType("Lifescanner") + "]" + Lang.BossCheck("SagittariusInfo"),
-                    "Sagittarius gallops off into the endless darkness...",
+                    Lang.BossCheck("SagittariusInfo2"),
                     "AAMod/CrossMod/BossChecklist/Sag",
                     "AAMod/NPCs/Bosses/Sagittarius/Sagittarius_Head_Boss");
                 #endregion
@@ -810,7 +810,7 @@ namespace AAMod.Globals
 
                 #region Forsaken Anubis
                 bossChecklist.Call("AddBoss", 15f, mod.NPCType("ForsakenAnubis"), mod,
-                    "Forsaken Anubis",
+                    Lang.BossCheck("AnubisA"),
                     (Func<bool>)(() => AAWorld.downedAnubisA),
                     ModContent.ItemType<Scepter>(),
                     new List<int>
@@ -984,7 +984,7 @@ namespace AAMod.Globals
                     "AAMod/NPCs/Bosses/Akuma/Akuma_Head_Boss");
 
                 bossChecklist.Call("AddBoss", 16.2f, mod.NPCType("AkumaA"), mod,
-                    "Akuma Awakened",
+                    Lang.BossCheck("AkumaA"),
                     (Func<bool>)(() => AAWorld.downedAkuma),
                     ModContent.ItemType<DraconianRune>(),
                     new List<int>
@@ -1039,7 +1039,7 @@ namespace AAMod.Globals
                     "AAMod/NPCs/Bosses/Yamata/YamataHead_Head_Boss");
 
                 bossChecklist.Call("AddBoss", 16.4f, mod.NPCType("YamataA"), mod,
-                    "Yamata Awakened",
+                    Lang.BossCheck("YamataA"),
                     (Func<bool>)(() => AAWorld.downedYamata),
                     ModContent.ItemType<DreadRune>(),
                     new List<int>
@@ -1097,7 +1097,7 @@ namespace AAMod.Globals
                     "AAMod/NPCs/Bosses/Zero/Zero_Head_Boss");
 
                 bossChecklist.Call("AddBoss", 16.6f, mod.NPCType("ZeroProtocol"), mod,
-                    "Zero Protocol",
+                    Lang.BossCheck("ZeroP"),
                     (Func<bool>)(() => AAWorld.downedZero),
                     ModContent.ItemType<ZeroRune>(),
                     new List<int>
@@ -1174,7 +1174,7 @@ namespace AAMod.Globals
                     "AAMod/NPCs/Bosses/Shen/Shen_Head_Boss");
 
                 bossChecklist.Call("AddBoss", 20.1f, mod.NPCType("ShenA"), mod,
-                    "Shen Doragon Awakened",
+                    Lang.BossCheck("ShenDoragonA"),
                     (Func<bool>)(() => AAWorld.downedShen),
                     ModContent.ItemType<ChaosRune>(),
                     new List<int>
@@ -1222,13 +1222,13 @@ namespace AAMod.Globals
                 // If you localize your mod, pass in a localized string instead of just English.
                 //censusMod.Call("TownNPCCondition", mod.NPCType("Anubis"), $"Have [i:{ItemType<Items.ExampleItem>()}] or [i:{ItemType<Items.Placeable.ExampleBlock>()}] in inventory and build a house out of [i:{ItemType<Items.Placeable.ExampleBlock>()}] and [i:{ItemType<Items.Placeable.ExampleWall>()}]");
 
-                censusMod.Call("TownNPCCondition", mod.NPCType("Anubis"), "Always available");
+                censusMod.Call("TownNPCCondition", mod.NPCType("Anubis"), Lang.CensusMod("Anubis"));
                 if (!AAConfigClient.Instance.NoAATownNPC)
                 {
-                    censusMod.Call("TownNPCCondition", mod.NPCType("Mushman"), "After defeating Mushroom Monarch or Feudal Fungus, build a house in a red mushroom biome");
-                    censusMod.Call("TownNPCCondition", mod.NPCType("Lovecraftian"), "Eye of Cthulhu defeated");
-                    censusMod.Call("TownNPCCondition", mod.NPCType("Samurai"), "Grips of Chaos defeated");
-                    censusMod.Call("TownNPCCondition", mod.NPCType("Goblin Slayer"), "Goblin Army is defeated");
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Mushman"), Lang.CensusMod("Mushman"));
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Lovecraftian"), Lang.CensusMod("Lovecraftian"));
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Samurai"), Lang.CensusMod("Samurai"));
+                    censusMod.Call("TownNPCCondition", mod.NPCType("Goblin Slayer"), Lang.CensusMod("GoblinSlayer"));
                 }
             }
         }

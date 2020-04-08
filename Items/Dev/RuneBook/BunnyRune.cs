@@ -27,7 +27,7 @@ namespace AAMod.Items.Dev.RuneBook
             projectile.tileCollide = false;
             projectile.timeLeft *= 5;
             projectile.minion = true;
-            projectile.minionSlots = 1f;
+            projectile.minionSlots = 0f;
             projectile.damage = 1;
         }
 
@@ -101,19 +101,13 @@ namespace AAMod.Items.Dev.RuneBook
 				projectile.position.Y = Main.player[projectile.owner].Center.Y - projectile.height / 2;
 				projectile.netUpdate = true;
 			}
-			if (vector.Length() > 150f)
+			else if (vector.Length() > 40f)
 			{
 				vector.Normalize();
 				vector *= num639;
 				projectile.velocity = (projectile.velocity * 40f + vector) / 41f;
 			}
-            else if(vector.Length() < 40f && (projectile.velocity.X != 0f || projectile.velocity.Y != 0f))
-            {
-                vector.Normalize();
-                vector *= num639;
-                projectile.velocity = (projectile.velocity * 40f + vector) / 52f;
-            }
-			if (projectile.velocity.X == 0f && projectile.velocity.Y == 0f)
+			else if (projectile.velocity.X == 0f && projectile.velocity.Y == 0f)
 			{
 				projectile.velocity.X = -0.04f;
 				projectile.velocity.Y = -0.02f;

@@ -72,10 +72,13 @@ namespace AAMod.NPCs.Enemies.Other
 
         public override void NPCLoot()
         {
-            for (int Ammount = 0; Ammount < Main.rand.Next(3); Ammount++)
-            {
-                npc.DropLoot(ModContent.ItemType<Items.Materials.DarkEnergy>());
-            }
+			if(AAWorld.downedEquinox)
+			{
+				for (int Ammount = 0; Ammount < Main.rand.Next(3); Ammount++)
+				{
+					npc.DropLoot(ModContent.ItemType<Items.Materials.DarkEnergy>());
+				}
+			}
         }
 
         public override Color? GetAlpha(Color dColor)

@@ -26,7 +26,7 @@ namespace AAMod.Items.Dev.RuneBook
             projectile.timeLeft = 18000;
             projectile.timeLeft *= 5;
             projectile.minion = true;
-            projectile.minionSlots = 1f;
+            projectile.minionSlots = 0f;
             projectile.damage = 1;
             projectile.tileCollide = false;
             projectile.timeLeft *= 5;
@@ -45,7 +45,7 @@ namespace AAMod.Items.Dev.RuneBook
             }
             if (player.dead)
             {
-                modPlayer.WeakCCRune = false;
+                modPlayer.CCRune = false;
             }
             if (player.HasBuff(mod.BuffType("CCRune")))
             {
@@ -108,12 +108,12 @@ namespace AAMod.Items.Dev.RuneBook
 				vector *= num639;
 				projectile.velocity = (projectile.velocity * 40f + vector) / 41f;
 			}
-            else if(vector.Length() < 40f && (projectile.velocity.X != 0f || projectile.velocity.Y != 0f))
-            {
-                vector.Normalize();
-                vector *= num639;
-                projectile.velocity = (projectile.velocity * 40f + vector) / 52f;
-            }
+            else if (vector.Length() > 40f)
+			{
+				vector.Normalize();
+				vector *= num639;
+				projectile.velocity = (projectile.velocity * 40f + vector) / 41f;
+			}
 			if (projectile.velocity.X == 0f && projectile.velocity.Y == 0f)
 			{
 				projectile.velocity.X = -0.04f;

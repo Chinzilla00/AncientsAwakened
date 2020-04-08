@@ -28,6 +28,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
             npc.noGravity = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("TerraWatcherBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)

@@ -18,7 +18,7 @@ namespace AAMod.Items.Dev.RuneBook
             projectile.height = 14;
             projectile.timeLeft = 18000;
             projectile.timeLeft *= 5;
-            projectile.minionSlots = 1f;
+            projectile.minionSlots = 0f;
             projectile.penetrate = -1;
             projectile.tileCollide = false;
             projectile.timeLeft *= 5;
@@ -45,9 +45,9 @@ namespace AAMod.Items.Dev.RuneBook
             {
                 if (player.dead)
                 {
-                    modPlayer.WeakCCRune = false;
+                    modPlayer.CCRune = false;
                 }
-                if (modPlayer.WeakCCRune || modPlayer.CCBookEX)
+                if (modPlayer.CCRune || modPlayer.CCBookEX)
                 {
                     projectile.timeLeft = 2;
                 }
