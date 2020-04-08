@@ -92,6 +92,7 @@ It looks like it hasn't been touched in years");
 
             BaseAI.LookAt(AltarSpawn, projectile, 0);
             projectile.spriteDirection = 1;
+            projectile.direction = 1;
         }
 
         public float auraPercent = 0f;
