@@ -19,6 +19,7 @@ namespace AAMod.Globals
             PerformHealthBarSupport();
             PerformBossChecklistSupport();
             PerformCencusSupport();
+            PerformFargosSetup();
         }
 
         private static void PerformHealthBarSupport()
@@ -983,7 +984,7 @@ namespace AAMod.Globals
                     "AAMod/CrossMod/BossChecklist/Akuma",
                     "AAMod/NPCs/Bosses/Akuma/Akuma_Head_Boss");
 
-                bossChecklist.Call("AddBoss", 16.2f, mod.NPCType("AkumaA"), mod,
+                bossChecklist.Call("AddBoss", 18.05f, mod.NPCType("AkumaA"), mod,
                     Lang.BossCheck("AkumaA"),
                     (Func<bool>)(() => AAWorld.downedAkuma),
                     ModContent.ItemType<DraconianRune>(),
@@ -1038,7 +1039,7 @@ namespace AAMod.Globals
                     "AAMod/CrossMod/BossChecklist/Yamata",
                     "AAMod/NPCs/Bosses/Yamata/YamataHead_Head_Boss");
 
-                bossChecklist.Call("AddBoss", 16.4f, mod.NPCType("YamataA"), mod,
+                bossChecklist.Call("AddBoss", 18.15f, mod.NPCType("YamataA"), mod,
                     Lang.BossCheck("YamataA"),
                     (Func<bool>)(() => AAWorld.downedYamata),
                     ModContent.ItemType<DreadRune>(),
@@ -1096,7 +1097,7 @@ namespace AAMod.Globals
                     "AAMod/CrossMod/BossChecklist/Zero",
                     "AAMod/NPCs/Bosses/Zero/Zero_Head_Boss");
 
-                bossChecklist.Call("AddBoss", 16.6f, mod.NPCType("ZeroProtocol"), mod,
+                bossChecklist.Call("AddBoss", 18.25f, mod.NPCType("ZeroProtocol"), mod,
                     Lang.BossCheck("ZeroP"),
                     (Func<bool>)(() => AAWorld.downedZero),
                     ModContent.ItemType<ZeroRune>(),
@@ -1241,10 +1242,31 @@ namespace AAMod.Globals
                 // AddSummon, order or value in terms of vanilla bosses, your mod internal name, summon   
                 //item internal name, inline method for retrieving downed value, price to sell for in copper
 
-                fargos.Call("AddSummon", 0f, "AAMod", "IntimidatingMushroom", AAWorld.downedMonarch, 10000);
-                fargos.Call("AddSummon", 0.1f, "AAMod", "ConfusingMushroom", AAWorld.downedFungus, 10000);
-                fargos.Call("AddSummon", 2f, "AAMod", Main.rand.Next(2) == 0 ? "CuriousClaw" : "InterestingClaw", AAWorld.downedGrips, 20000);
-                fargos.Call("AddSummon", 2.5f, "AAMod", "Toadstool", AAWorld.downedToad, 30000);
+                fargos.Call("AddSummon", 0f, "AAMod", "IntimidatingMushroom", AAWorld.downedMonarch, 20000);
+                fargos.Call("AddSummon", 0.1f, "AAMod", "ConfusingMushroom", AAWorld.downedFungus, 20000);
+                fargos.Call("AddSummon", 2f, "AAMod", Main.rand.Next(2) == 0 ? "CuriousClaw" : "InterestingClaw", AAWorld.downedGrips, 80000);
+                fargos.Call("AddSummon", 2.5f, "AAMod", "Toadstool", AAWorld.downedToad, 80000);
+                fargos.Call("AddSummon", 3.5f, "AAMod", "DragonBell", AAWorld.downedBrood, 100000);
+                fargos.Call("AddSummon", 3.5f, "AAMod", "HydraChow", AAWorld.downedHydra, 100000);
+                fargos.Call("AddSummon", 5.5f, "AAMod", "SubzeroCrystal", AAWorld.downedSerpent, 100000);
+                fargos.Call("AddSummon", 5.5f, "AAMod", "DjinnLamp", AAWorld.downedDjinn, 100000);
+                fargos.Call("AddSummon", 5.7f, "AAMod", "Lifescanner", AAWorld.downedSag, 200000);
+                fargos.Call("AddSummon", 9.7f, "AAMod", "Scepter", AAWorld.downedAnubis, 400000);
+                fargos.Call("AddSummon", 9.7f, "AAMod", "Scepter", AAWorld.downedAnubis, 400000);
+                fargos.Call("AddSummon", 11.5f, "AAMod", "Owl", AAWorld.downedAthena, 500000);
+                fargos.Call("AddSummon", 11.5f, "AAMod", "GoldenGrub", AAWorld.downedGreed, 500000);
+                fargos.Call("AddSummon", 11.5f, "AAMod", "GoldenCarrot", AAWorld.downedRajah, 600000);
+                fargos.Call("AddSummon", 16f, "AAMod", "EquinoxWorm", AAWorld.downedEquinox, 1000000);
+                fargos.Call("AddSummon", 17f, "AAMod", "FlamesOfAnarchy", AAWorld.downedSisters, 1000000);
+                fargos.Call("AddSummon", 18f, "AAMod", "DraconianSigil", AAWorld.downedAkuma, 1000000);
+                fargos.Call("AddSummon", 18.05f, "AAMod", "DraconianRune", AAWorld.downedAkuma && Main.expertMode, 2000000);
+                fargos.Call("AddSummon", 18.1f, "AAMod", "DreadSigil", AAWorld.downedYamata, 1000000);
+                fargos.Call("AddSummon", 18.05f, "AAMod", "DreadRune", AAWorld.downedYamata && Main.expertMode, 2000000);
+                fargos.Call("AddSummon", 18.2f, "AAMod", "ZeroTesseract", AAWorld.downedZero, 1000000);
+                fargos.Call("AddSummon", 18.05f, "AAMod", "ZeroRune", AAWorld.downedZero && Main.expertMode, 2000000);
+                fargos.Call("AddSummon", 19f, "AAMod", "DiamondCarrot", AAWorld.downedRajahsRevenge, 2500000);
+                fargos.Call("AddSummon", 20f, "AAMod", "ChaosSigil", AAWorld.downedShen, 2500000);
+                fargos.Call("AddSummon", 20.5f, "AAMod", "ChaosRune", AAWorld.downedShen && Main.expertMode, 4000000);
             }
         }
     }
