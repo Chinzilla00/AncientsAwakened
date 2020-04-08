@@ -72,7 +72,7 @@ It looks like it hasn't been touched in years");
 
         public override void AI()
         {
-            Vector2 AltarSpawn = new Vector2(Main.maxTilesX * 0.15f * 16, 100);
+            Vector2 AltarSpawn = new Vector2(Main.maxTilesX * 0.15f * 16, 100 * 16);
             Player player = Main.player[projectile.owner];
             IdolPointer modPlayer = player.GetModPlayer<IdolPointer>();
 
