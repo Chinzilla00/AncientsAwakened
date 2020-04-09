@@ -11,6 +11,7 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
     {
         public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Charged Owl Rune");
             Main.npcFrameCount[npc.type] = 4;
         }
 

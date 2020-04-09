@@ -343,7 +343,9 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/BroodTheme"), ItemType("BroodBox"), TileType("BroodBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Shroom"), ItemType("MushBox"), TileType("MushBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface"), ItemType("InfernoBox"), TileType("InfernoBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/IN"), ItemType("InfernoNightBox"), TileType("InfernoNightBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface"), ItemType("MireBox"), TileType("MireBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MD"), ItemType("MireDayBox"), TileType("MireDayBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoUnderground"), ItemType("InfernoUBox"), TileType("InfernoUBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MireUnderground"), ItemType("MireUBox"), TileType("MireUBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Void"), ItemType("VoidBox"), TileType("VoidBox"));
@@ -353,7 +355,7 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Sag"), ItemType("SagBox"), TileType("SagBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Anubis"), ItemType("AnubisBox"), TileType("AnubisBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Acropolis"), ItemType("AcropolisBox"), TileType("AcropolisBox"));
-                //AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Hoard"), ItemType("HoardBox"), TileType("HoardBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Hoard"), ItemType("HoardBox"), TileType("HoardBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Greed"), ItemType("GreedBox"), TileType("GreedBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Athena"), ItemType("AthenaBox"), TileType("AthenaBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme"), ItemType("RajahBox"), TileType("RajahBox"));
@@ -897,8 +899,7 @@ namespace AAMod
             if (Ancients.ZoneHoard)
             {
                 priority = MusicPriority.Event;
-                music = MusicID.Temple;
-                //music = GetSoundSlot(SoundType.Music, "Sounds/Music/Hoard");
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Hoard");
                 return;
             }
 
@@ -921,6 +922,14 @@ namespace AAMod
 
                     return;
                 }
+
+                return;
+            }
+
+            if (Ancients.ZoneStars)
+            {
+                priority = MusicPriority.Event;
+                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Stars");
 
                 return;
             }
@@ -993,14 +1002,6 @@ namespace AAMod
 
                     return;
                 }
-            }
-
-            if (Ancients.ZoneStars)
-            {
-                priority = MusicPriority.Event;
-                music = GetSoundSlot(SoundType.Music, "Sounds/Music/Stars");
-
-                return;
             }
 
             if (Ancients.Terrarium)

@@ -105,7 +105,8 @@ namespace AAMod.Worldgen
         {
             Mod mod = AAMod.instance;
             int tileGrass = 0, wallGrass = 0, tileStone = 0, wallStone = 0, tileSand = 0, tileSandHard = 0, wallSandHard = 0, 
-                tileSandstone = 0, wallSandstone = 0, tileIce = 0, tileThorn = 0, tileWood = 0, tileLeaves = 0, wallLeaves = 0;
+                tileSandstone = 0, wallSandstone = 0, tileIce = 0, tileThorn = 0, tileWood = 0, tileLeaves = 0, wallLeaves = 0,
+                livingwoodWall = 0;
 
             switch (conversionType)
             {
@@ -124,6 +125,7 @@ namespace AAMod.Worldgen
                         tileWood = mod.TileType("LivingBogwood");
                         tileLeaves = mod.TileType("LivingBogleaves");
                         wallLeaves = mod.TileType("LivingBogleafWall");
+                        livingwoodWall = mod.TileType("LivingBogwoodWall");
                         break;
                     }
 
@@ -154,13 +156,13 @@ namespace AAMod.Worldgen
             {
                 while (y < (Main.maxTilesY - 50))
                 {
-                    Convert(centerX + x1, y, genWidth, tileGrass, wallGrass, tileStone, wallStone, tileSand, tileSandHard, wallSandHard, tileSandstone, wallSandstone, tileIce, tileThorn, tileWood, tileLeaves, wallLeaves);
+                    Convert(centerX + x1, y, genWidth, tileGrass, wallGrass, tileStone, wallStone, tileSand, tileSandHard, wallSandHard, tileSandstone, wallSandstone, tileIce, tileThorn, tileWood, tileLeaves, wallLeaves, livingwoodWall);
                     y += genWidth * 2;
                 }
             }
         }
 
-        public static void Convert(int i, int j, int size, int tileGrass, int wallGrass, int tileStone, int wallStone, int tileSand, int tileSandHard, int wallSandHard, int tileSandstone, int wallSandstone, int tileIce, int tileThorn, int tileWood, int tileLeaves, int wallLeaves)
+        public static void Convert(int i, int j, int size, int tileGrass, int wallGrass, int tileStone, int wallStone, int tileSand, int tileSandHard, int wallSandHard, int tileSandstone, int wallSandstone, int tileIce, int tileThorn, int tileWood, int tileLeaves, int wallLeaves, int wallWood = 0)
         {
             for (int k = i - size; k <= i + size; k++)
             {
@@ -194,6 +196,11 @@ namespace AAMod.Worldgen
                         else if (wallLeaves != 0 && wall == WallID.LivingLeaf && wall != wallLeaves)
                         {
                             Main.tile[k, l].wall = (ushort)wallLeaves;
+                            NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
+                        }
+                        else if (wallWood != 0 && wall == WallID.LivingWood && wall != wallLeaves)
+                        {
+                            Main.tile[k, l].wall = (ushort)wallWood;
                             NetMessage.SendTileSquare(-1, k, l, 1, TileChangeType.None);
                         }
 

@@ -212,8 +212,62 @@ namespace AAMod.Worldgeneration
             else if (Main.maxTilesX == 6400) { return 2; }
             else if (Main.maxTilesX == 8400) { return 3; }
             return 1; //unknown size, assume small
-        }		
-	}
+        }
+    }
+
+    public class BogwoodCon : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            Mod mod = AAMod.instance;
+            ushort LivingWood = (ushort)ModContent.TileType<LivingBogwood>(), LivingLeaves = (ushort)ModContent.TileType<LivingBogleaves>();
+
+            byte BogwoodWall = (byte)ModContent.WallType<LivingBogwoodWall>(), LeafWall = (byte)ModContent.WallType<LivingBogleafWall>();
+
+            int worldSize = GetWorldSize();
+            int biomeRadius = worldSize == 3 ? 240 : worldSize == 2 ? 200 : 180;
+            Point newOrigin = new Point(origin.X, origin.Y - 10);
+
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //Living Wood.
+			{
+                new InWorld(),
+                new Modifiers.OnlyTiles(new ushort[]{ TileID.LivingMahogany, TileID.LivingWood}),
+                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+                new SetModTile(LivingWood, true, true)
+            }));
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //...and Living Leaves.
+			{
+                new InWorld(),
+                new Modifiers.OnlyTiles(new ushort[]{ TileID.LivingMahoganyLeaves, TileID.LeafBlock}),
+                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+                new SetModTile(LivingLeaves, true, true)
+            }));
+
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[]
+			{
+                new InWorld(),
+                new Modifiers.OnlyWalls(new byte[]{ WallID.LivingWood }),
+                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+                new PlaceModWall(BogwoodWall, true)
+            }));
+            WorldUtils.Gen(newOrigin, new Shapes.Circle(biomeRadius), Actions.Chain(new GenAction[] //Walls
+			{
+                new InWorld(),
+                new Modifiers.OnlyWalls(new byte[]{ WallID.LivingLeaf }),
+                new Modifiers.RadialDither(biomeRadius - 5, biomeRadius),
+                new PlaceModWall(LeafWall, true)
+            }));
+
+            return true;
+        }
+        public static int GetWorldSize()
+        {
+            if (Main.maxTilesX == 4200) { return 1; }
+            else if (Main.maxTilesX == 6400) { return 2; }
+            else if (Main.maxTilesX == 8400) { return 3; }
+            return 1; //unknown size, assume small
+        }
+    }
 
     public class MireDelete : MicroBiome
     {

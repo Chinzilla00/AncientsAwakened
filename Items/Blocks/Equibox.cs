@@ -10,7 +10,7 @@ namespace AAMod.Items.Blocks
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Equinox Worms Music Box");
-            Tooltip.SetDefault(@"Plays 'Symphony of the Stars' by OmegaFerretMusic");
+            Tooltip.SetDefault(@"Plays 'Orbittal Equilibrium' by Charlie Debnam");
         }
 
 		public override void SetDefaults()

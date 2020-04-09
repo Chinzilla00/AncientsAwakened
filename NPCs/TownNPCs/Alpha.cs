@@ -13,7 +13,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override bool Autoload(ref string name)
 		{
-			name = "Mud Fish";
+			name = "Mudfish";
 			return mod.Properties.Autoload;
 		}
 
@@ -286,7 +286,7 @@ namespace AAMod.NPCs.TownNPCs
 
 		public override void NPCLoot()
 		{
-			Item.NewItem(npc.getRect(), ItemID.Katana);
+			Item.NewItem(npc.getRect(), ModContent.ItemType<Items.Pets.MudkipBall>());
 		}
 
 		public override void TownNPCAttackStrength(ref int damage, ref float knockback)
@@ -303,7 +303,7 @@ namespace AAMod.NPCs.TownNPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ProjectileID.Shuriken;
+            projType = ModContent.ProjectileType<Projectiles.AmphibiousProjectile>();
             attackDelay = 1;
         }
 

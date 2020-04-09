@@ -57,7 +57,7 @@ Can only be used during the day");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Mushroom, 15);
+            recipe.AddIngredient(ItemID.Mushroom, 10);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();

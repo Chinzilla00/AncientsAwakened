@@ -39,6 +39,7 @@ namespace AAMod.Items.Boss.Athena
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PMLDevArmor();
             }
+            player.QuickSpawnItem(mod.ItemType("GoddessHarp"));
             player.QuickSpawnItem(mod.ItemType("GoddessFeather"), Main.rand.Next(20, 25));
             string[] lootTable = { "HurricaneStone", "Olympia", "Windfury", "GaleForce" };
             int loot = Main.rand.Next(lootTable.Length);

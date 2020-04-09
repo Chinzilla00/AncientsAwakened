@@ -43,7 +43,7 @@ namespace AAMod.Items.Boss.Athena
         public override void AddRecipes()  
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.Book, 1);
+            recipe.AddIngredient(ItemID.SpellTome, 1);
             recipe.AddIngredient(null, "GoddessFeather", 10);
             recipe.AddTile(TileID.Bookcases);   
             recipe.SetResult(this);  

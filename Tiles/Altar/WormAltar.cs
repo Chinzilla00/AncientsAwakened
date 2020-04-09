@@ -60,7 +60,8 @@ namespace AAMod.Tiles.Altar
                         if (item != null && item.type == type && item.stack >= 1)
                         {
                             item.stack--;
-                            Item.NewItem(i, j, 72, 72, mod.ItemType("EquinoxWorm"));
+                            player.QuickSpawnItem(mod.ItemType("EquinoxWorm"));
+                            BaseUtility.Chat("The Idol shines to life, regaining its original color", new Color(75, 175, 255));
                             if (!AAWorld.WormActive)
                             {
                                 SpawnBoss(player, ModContent.NPCType<WormSpawn>(), false, player.Center);

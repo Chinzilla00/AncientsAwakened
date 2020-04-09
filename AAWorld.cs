@@ -575,7 +575,7 @@ namespace AAMod
         {
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
             int ChaosIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
-            int shiniesIndex1 = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
+            int shiniesIndex1 = tasks.FindIndex(genpass => genpass.Name.Equals("Larva"));
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
 
 
@@ -602,6 +602,11 @@ namespace AAMod
             tasks.Insert(ChaosIndex + 5, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
             {
 				MireAndInferno(progress);
+            }));
+
+            tasks.Insert(shiniesIndex2 + 5, new PassLegacy("LivingBogwoodConvert", delegate (GenerationProgress progress)
+            {
+                BogwoodConvert(progress);
             }));
 
             tasks.Insert(shiniesIndex2 + 6, new PassLegacy("Hoard", delegate (GenerationProgress progress)
@@ -777,7 +782,7 @@ namespace AAMod
                                         Chest chest = Main.chest[PlacementSuccess];
                                         chest.item[0].SetDefaults(mod.ItemType("SingularityCannon"), false);
                                         chest.item[1].SetDefaults(Utils.Next(WorldGen.genRand, new int[]
-                                        { mod.ItemType("VoidEnergy") }), false);
+                                        { mod.ItemType("DoomiteScrap") }), false);
                                         chest.item[1].stack = WorldGen.genRand.Next(11, 20);
                                         Item item = chest.item[2];
                                         UnifiedRandom genRand = WorldGen.genRand;
@@ -1191,16 +1196,21 @@ namespace AAMod
                     if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedEquinoxInfo"), Color.Violet);
                     for (int i = 0; i < Main.maxTilesX / 25; ++i)
                     {
-                        int X = WorldGen.genRand.Next(50, Main.maxTilesX / 10 * 9); //X position, centre.
+                        int X = WorldGen.genRand.Next(50, Main.maxTilesX / 10 * 9);
                         int Y = WorldGen.genRand.Next(50, 150); //Y position, centre.
                         int radius = WorldGen.genRand.Next(2, 5); //Radius.
-                        for (int x = X - radius; x <= X + radius; x++)
+                        bool NotEquinoxPos = X < Main.maxTilesX * .14f && X > Main.maxTilesX * .16f;
+                        bool NotCenter = X < Main.maxTilesX * .47f && X > Main.maxTilesX * .53f;
+                        if (NotEquinoxPos && NotCenter)
                         {
-                            for (int y = Y - radius; y <= Y + radius; y++)
+                            for (int x = X - radius; x <= X + radius; x++)
                             {
-                                if (Vector2.Distance(new Vector2(X, Y), new Vector2(x, y)) <= radius) //Checks if coords are within a circle position
+                                for (int y = Y - radius; y <= Y + radius; y++)
                                 {
-                                    WorldGen.PlaceTile(x, y, ModContent.TileType<RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
+                                    if (Vector2.Distance(new Vector2(X, Y), new Vector2(x, y)) <= radius) //Checks if coords are within a circle position
+                                    {
+                                        WorldGen.PlaceTile(x, y, ModContent.TileType<RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
+                                    }
                                 }
                             }
                         }
@@ -1439,6 +1449,13 @@ namespace AAMod
             }
         }
 
+        private void BogwoodConvert(GenerationProgress progress)
+        {
+            Point origin = new Point((int)mirePos.X, (int)mirePos.Y);
+            BogwoodCon biome = new BogwoodCon();
+            biome.Place(origin, WorldGen.structures);
+        }
+
         private void Terrarium(GenerationProgress progress)
         {
             progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildTerrarium");
@@ -1605,6 +1622,12 @@ namespace AAMod
                             else if (wall == WallID.LivingLeaf)
                             {
                                 Main.tile[k, l].wall = (ushort)ModContent.WallType<LivingBogleafWall>();
+                                WorldGen.SquareWallFrame(k, l, true);
+                                sendNet = true;
+                            }
+                            else if (wall == WallID.LivingWood)
+                            {
+                                Main.tile[k, l].wall = (ushort)ModContent.WallType<LivingBogwoodWall>();
                                 WorldGen.SquareWallFrame(k, l, true);
                                 sendNet = true;
                             }
@@ -1995,6 +2018,12 @@ namespace AAMod
                             else if (wall == ModContent.WallType<TorchsandstoneWall>() || wall == ModContent.WallType<DepthsandstoneWall>())
                             {
                                 Main.tile[k, l].wall = WallID.Sandstone;
+                                WorldGen.SquareWallFrame(k, l, true);
+                                NetMessage.SendTileSquare(-1, k, l, 1);
+                            }
+                            else if (wall == ModContent.WallType<LivingBogwoodWall>())
+                            {
+                                Main.tile[k, l].wall = WallID.LivingWood;
                                 WorldGen.SquareWallFrame(k, l, true);
                                 NetMessage.SendTileSquare(-1, k, l, 1);
                             }

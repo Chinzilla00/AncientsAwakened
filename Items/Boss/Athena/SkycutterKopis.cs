@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Athena
 {
@@ -26,6 +27,23 @@ namespace AAMod.Items.Boss.Athena
 			item.autoReuse = true;
             item.shoot = mod.ProjectileType("Skyblade");
             item.shootSpeed = 10;
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe;
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.SilverBar, 30);
+			recipe.AddIngredient(null, "GoddessFeather", 10);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.TungstenBar, 30);
+			recipe.AddIngredient(null, "GoddessFeather", 10);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
 		}
 	}
 }

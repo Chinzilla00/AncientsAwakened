@@ -9,8 +9,9 @@ namespace AAMod.Items.Dev
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Archwitch's Galactic Scepter");
+            DisplayName.SetDefault("Celestial Wand");
             Tooltip.SetDefault(@"An old wand. It seems to have not been used recently.");
+            Item.staff[item.type] = true;
         }
 
         public override void SetDefaults()
@@ -19,14 +20,14 @@ namespace AAMod.Items.Dev
             item.magic = true;
             item.width = 42;
             item.height = 46;
-            item.useTime = 12;
-            item.useAnimation = 12;
+            item.useTime = 20;
+            item.useAnimation = 20;
             item.useStyle = 5;
             item.knockBack = 6f;
-            item.value = Item.buyPrice(0, 40, 0, 0);
+            item.value = Item.buyPrice(0, 20, 0, 0);
             item.rare = 11;                  
             item.shoot = mod.ProjectileType("ArchwitchSorm");
-            item.noUseGraphic = false;
+            item.shootSpeed = 10;
             item.noMelee = true;
         }
 

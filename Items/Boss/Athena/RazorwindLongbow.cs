@@ -42,5 +42,22 @@ namespace AAMod.Items.Boss.Athena
             }
             return true;
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe;
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.SilverBow, 1);
+            recipe.AddIngredient(null, "GoddessFeather", 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.TungstenBow, 25);
+            recipe.AddIngredient(null, "GoddessFeather", 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
+        }
     }
 }

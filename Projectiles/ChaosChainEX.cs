@@ -180,7 +180,7 @@ namespace AAMod.Projectiles
             Rectangle frame = new Rectangle(0, 0, Tex.Width, Tex.Height);
             for (int i = 0; i < 1000; ++i)
             {
-                if (projectile.ai[0] == 0f)
+                if (projectile.ai[0] == 1f)
                 {
                     BaseDrawing.DrawTexture(spriteBatch, Tex2, 0, projectile.position, projectile.width, projectile.height, projectile.scale, Rot, Dir, 1, frame, lightColor, true);
                 }

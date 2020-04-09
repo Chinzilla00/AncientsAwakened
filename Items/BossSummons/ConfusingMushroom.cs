@@ -76,7 +76,7 @@ Can only be used in a glowing mushroom biome");
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(ItemID.GlowingMushroom, 5);
+            recipe.AddIngredient(ItemID.GlowingMushroom, 10);
             recipe.AddTile(TileID.WorkBenches);
             recipe.SetResult(this, 1);
             recipe.AddRecipe();

@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Sagittarius
             item.expert = true; item.expertOnly = true;
         }
 
-        public override int BossBagNPC => mod.NPCType("Sagittarius");
+        public override int BossBagNPC => mod.NPCType("Sag");
 
         public override bool CanRightClick()
         {
@@ -37,7 +37,7 @@ namespace AAMod.Items.Boss.Sagittarius
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PHMDevArmor();
             }
-            string[] lootTable = { "SagCore", "NeutronStaff","Legg" };
+            string[] lootTable = { "SagCore", "NeutronStaff", "Legg" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));
             player.QuickSpawnItem(mod.ItemType("Doomite"), Main.rand.Next(35, 45));
