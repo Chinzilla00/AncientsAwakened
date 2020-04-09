@@ -234,7 +234,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
                     if (!text)
                     {
                         text = true;
-                        CombatText.NewText(npc.Hitbox, Color.ForestGreen, "No Warnings this time.", true);
+                        CombatText.NewText(npc.Hitbox, Color.ForestGreen, Lang.BossChat("FAnubisCombat"), true);
                     }
 
                     if (npc.ai[1] == 10)
@@ -566,7 +566,7 @@ namespace AAMod.NPCs.Bosses.Anubis.Forsaken
 
             if (!AAWorld.downedAnubisA)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("...You done good, bud. Let's make a game plan moving forward. Come talk to me when you're ready.", Color.ForestGreen);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("FAnubisWin"), Color.ForestGreen);
             }
 
             AAWorld.downedAnubisA = true;

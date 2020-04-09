@@ -1811,6 +1811,9 @@ Fishy";
                         case "girl":
                         return ", 少女";
 
+                        case "FatPixie":
+                        return "扑哧";
+
                         case "AHDeath1":
                         return "啊啊啊啊啊! 别又这样了!!!";
                         case "AHDeath2":
@@ -1963,6 +1966,17 @@ Fishy";
                         case "Anubis7":
                         return "再比一次吗? 好, 那可太有意思了!";
 
+                        case "AnubisCombat1":
+                        return "我靠!";
+                        case "AnubisCombat2":
+                        return "小心点! 被我的弹幕打中可有点疼.";
+                        case "AnubisCombat3":
+                        return "让我摇点人来";
+                        case "AnubisCombat4":
+                        return "接好了!";
+                        case "AnubisCombat5":
+                        return "砸烂你的头, 如何?";
+
                         case "AnubisTransition1":
                         return "...呼哈...";
                         case "AnubisTransition2":
@@ -1980,6 +1994,12 @@ Fishy";
 
                         case "FAnubis":
                         return "...对不起, 看来你还没准备好.";
+
+                        case "FAnubisCombat":
+                        return "这次可没有预警.";
+
+                        case "FAnubisWin":
+                        return "...你做的很好，孩子. 让我们来制定一个前进的计划，准备好了就来找我. ";
 
                         case "Athena1":
                         return "哈..!";
@@ -2151,7 +2171,7 @@ Fishy";
                         return "王公兔的讲话温暖了你的内心. 你决定从此不再伤害兔子. 成为他的骄傲. ";
 
                         case "SagChat":
-                        return "火力系统切换至";
+                        return "检 测 到 身 体 严 重 损 伤. 谨 慎 行 动!";
 
                         case "YamataAHead":
                         return "哦呃!!!";
@@ -2534,6 +2554,9 @@ Fishy";
                         case "girl":
                         return ", GIRL";
 
+                        case "FatPixie":
+                        return "EEEE";
+
                         case "AHDeath1":
                         return "РРРРРРРГХ! НЕТ, ТОЛЬКО НЕ СНОВА!!!";
                         case "AHDeath2":
@@ -2690,6 +2713,17 @@ Fishy";
                         case "Anubis7":
                         return "Хочешь рематч, а? Ладненько, будет весело!";
 
+                        case "AnubisCombat1":
+                        return "ЕЕЕЕЕ";
+                        case "AnubisCombat2":
+                        return "Острожно! Снаряды бьют больно.";
+                        case "AnubisCombat3":
+                        return "Давай я позову друзей.";
+                        case "AnubisCombat4":
+                        return "Лови!";
+                        case "AnubisCombat5":
+                        return "Сокрушительно, не так ли?";
+
                         case "AnubisTransition1":
                         return "...хргх...";
                         case "AnubisTransition2":
@@ -2707,6 +2741,12 @@ Fishy";
 
                         case "FAnubis":
                         return "...Извини, ты еще не готов.";
+
+                        case "FAnubisCombat":
+                        return "В этот раз без предупреждений.";
+
+                        case "FAnubisWin":
+                        return "...Ты справился хорошо, приятель. Давай продвинемся дальше. Поговори со мной, когда будешь готов..";
 
                         case "Athena1":
                         return "Хмпф..!";
@@ -2878,7 +2918,7 @@ Fishy";
                         return "Речь Кролика Раджи согревает ваше сердце. У вас больше нет желания вредить кроликам. Сделай так, что бы он гордился.";
 
                         case "SagChat":
-                        return "Перенастраиваюсь на артиллерийский набор параметров";
+                        return "EXTENSIVE BODY DAMAGE DETECTED. PROCEED WITH CAUTION!";
 
                         case "YamataAHead":
                         return "АУЧЬ!!!";
@@ -3270,6 +3310,9 @@ Fishy";
                         case "girl":
                         return ", GIRL";
 
+                        case "FatPixie":
+                        return "YEET";
+
                         case "AHDeath1":
                         return "RRRRRRRRRGH! NOT AGAIN!!!";
                         case "AHDeath2":
@@ -3426,6 +3469,17 @@ Fishy";
                         case "Anubis7":
                         return "A rematch eh? Alright, this should be fun!";
 
+                        case "AnubisCombat1":
+                        return "YEET";
+                        case "AnubisCombat2":
+                        return "Careful! Projectiles hurt.";
+                        case "AnubisCombat3":
+                        return "Let me grab some friends";
+                        case "AnubisCombat4":
+                        return "Catch!";
+                        case "AnubisCombat5":
+                        return "Smashing, Init?";
+
                         case "AnubisTransition1":
                         return "...hrgh...";
                         case "AnubisTransition2":
@@ -3443,6 +3497,12 @@ Fishy";
 
                         case "FAnubis":
                         return "...Sorry, but you aren't ready yet.";
+
+                        case "FAnubisCombat":
+                        return "No Warnings this time.";
+
+                        case "FAnubisWin":
+                        return "...You done good, bud. Let's make a game plan moving forward. Come talk to me when you're ready.";
 
                         case "Athena1":
                         return "Hmpf..!";
@@ -3614,7 +3674,7 @@ Fishy";
                         return "Rajah Rabbit's speech warms your heart. You no longer have the will to harm rabbits. Do him proud.";
 
                         case "SagChat":
-                        return "switching to artillery system set";
+                        return "EXTENSIVE BODY DAMAGE DETECTED. PROCEED WITH CAUTION!";
 
                         case "YamataAHead":
                         return "OWIE!!!";
@@ -5124,7 +5184,7 @@ Fishy";
                         case "TriHeadedKoiLocation":
                         return "Caught anywhere in the Mire";
                         case "GlitchFish":
-                        return "I once woke up and saw a strange fish in the water of the scary island over my head in the sky, probably in the West. You go get it for me. You ask why there are waters in sky island? Find your own way.";
+                        return "I once woke up and saw a strange fish in the water of the scary island over my head in the sky, probably in the West. You go, get it for me. You ask why there are waters in sky island? Find your own way.";
                         case "GlitchFishLocation":
                         return "Caught anywhere in the Void";
                     }
@@ -5161,10 +5221,14 @@ Fishy";
                         return "龙蛋破碎的声音在火山中回响… ";
                         case "DragonEgg2":
                         return "你听到远处的咆哮…";
+                        case "DragonEgg3":
+                        return "你听见一个疲倦, 安静的吼声, 以及...鼾声..?";
                         case "HydraPod1":
                         return "有东西从破碎的蒴荚中溢出. 真恶心. ";
                         case "HydraPod2":
                         return "你听到附近传来嘶嘶声";
+                        case "HydraPod3":
+                        return "你听见了嘶嘶声, 但是却消失在浓雾中...";
                     }
                 }
             else if(Language.ActiveCulture == GameCulture.Russian)
@@ -5195,10 +5259,14 @@ Fishy";
                         return "Звук ломания яйца эхом проходит через вулкан...";
                         case "DragonEgg2":
                         return "Вы слышите рычание вдалеке...";
+                        case "DragonEgg3":
+                        return "Вы слышите уставший, тихий рык, а затем...храпение..?";
                         case "HydraPod1":
                         return "Все содержимое разливается из кокона. Мерзко.";
                         case "HydraPod2":
                         return "Вы слышите шипение вдалеке...";
+                        case "HydraPod3":
+                        return "Вы слышите шипение, но оно пропадает в тумане";
                     }
                 }
             else
@@ -5229,13 +5297,142 @@ Fishy";
                         return "The sound of the egg breaking echoes through the volcano...";
                         case "DragonEgg2":
                         return "You hear a distant roar...";
+                        case "DragonEgg3":
+                        return "You hear a tired, quiet roar, and then...snoring..?";
                         case "HydraPod1":
                         return "The contents spill from the broken pod. Nasty.";
                         case "HydraPod2":
                         return "You hear hissing somewhere nearby";
+                        case "HydraPod3":
+                        return "You hear hissing, but it scuttles away into the fog...";
 
                     }
                 }
+            return"";
+        }
+
+        public static string TheEquinox(string Info)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+            {
+                switch(Info)
+                {
+                    case "GravAltar":
+                    return @"在世界洞穴的深处躺着一条蟲王, 守护者给予我们生命的土壤.";
+                    case "StarAltar":
+                    return @"统治者云层之上的妖鸟女王, 守护者看护我们的天空.";
+                    case "WormAltar":
+                    return "神像放进插槽, 不过好像没什么事情发生.";
+                    case "s":
+                    return "们";
+                    case "heroes":
+                    return "勇者们";
+                    case "WormSpawn1":
+                    return "看起来有人重新组合了我们的雕像, 亲爱的戴布林格.";
+                    case "WormSpawn2":
+                    return "确实如此. 小东西";
+                    case "WormSpawn3":
+                    return ", 你给我们留下了深刻的印象";
+                    case "WormSpawn4":
+                    return "他们是不是就是我们一直在找的那个?";
+                    case "WormSpawn5":
+                    return "...有可能.";
+                    case "WormSpawn6":
+                    return "年轻人";
+                    case "WormSpawn7":
+                    return ". 我们会给你一次最后的考验.";
+                    case "WormSpawn8":
+                    return "对我们力量的考验.";
+                    case "WormSpawn9":
+                    return "等你准备好了, 就拿着手上的雕像呼唤我们.";
+                    case "WormSpawn10":
+                    return "由于你重新激活了这些信标. 我应该可以轻易找到你";
+                    case "WormSpawn11":
+                    return "不过...";
+                    case "WormSpawn12":
+                    return "不要指望我们会对你手下留情, ";
+                }
+            }
+            else if(Language.ActiveCulture == GameCulture.Russian)
+            {
+                switch(Info)
+                {
+                    case "GravAltar":
+                    return @"Глубоко в пещерах нашего мира спит король червей, защитник земли, который был создан, что бы дать нам жизнь";
+                    case "StarAltar":
+                    return @"Высоко в облаках правит Королева Серафимов, стражник небес, с которых на нас смотрят создатели";
+                    case "WormAltar":
+                    return "Идол вошел, но ничего не случилось.";
+                    case "s":
+                    return "s";
+                    case "heroes":
+                    return "heroes";
+                    case "WormSpawn1":
+                    return "It appears someone has reassembled our idol, dearest Daybringer.";
+                    case "WormSpawn2":
+                    return "It appears so. Little one";
+                    case "WormSpawn3":
+                    return ", you have impressed us greatly";
+                    case "WormSpawn4":
+                    return "Could they be the one we've been searching for..?";
+                    case "WormSpawn5":
+                    return "...possibly.";
+                    case "WormSpawn6":
+                    return "Young one";
+                    case "WormSpawn7":
+                    return ". We would like to provide you with one last test.";
+                    case "WormSpawn8":
+                    return "A test of strength against us.";
+                    case "WormSpawn9":
+                    return "When you are ready, call us forth with the worm statue in your hand.";
+                    case "WormSpawn10":
+                    return "We will be able to find you because of these beacons you reactivated.";
+                    case "WormSpawn11":
+                    return "However...";
+                    case "WormSpawn12":
+                    return "Do not expect us to go easy on you, ";
+                }
+            }
+            else
+            {
+                switch(Info)
+                {
+                    case "GravAltar":
+                    return @"Deep in the caverns of the world lies the worm king, the guardian of the earth that was created to give us life.";
+                    case "StarAltar":
+                    return @"High in the clouds rules the Seraph Queen, guardian of the skies where the creators watch over us.";
+                    case "WormAltar":
+                    return "The idol goes into the slot, but nothing happens.";
+                    case "s":
+                    return "s";
+                    case "heroes":
+                    return "heroes";
+                    case "WormSpawn1":
+                    return "It appears someone has reassembled our idol, dearest Daybringer.";
+                    case "WormSpawn2":
+                    return "It appears so. Little one";
+                    case "WormSpawn3":
+                    return ", you have impressed us greatly";
+                    case "WormSpawn4":
+                    return "Could they be the one we've been searching for..?";
+                    case "WormSpawn5":
+                    return "...possibly.";
+                    case "WormSpawn6":
+                    return "Young one";
+                    case "WormSpawn7":
+                    return ". We would like to provide you with one last test.";
+                    case "WormSpawn8":
+                    return "A test of strength against us.";
+                    case "WormSpawn9":
+                    return "When you are ready, call us forth with the worm statue in your hand.";
+                    case "WormSpawn10":
+                    return "We will be able to find you because of these beacons you reactivated.";
+                    case "WormSpawn11":
+                    return "However...";
+                    case "WormSpawn12":
+                    return "Do not expect us to go easy on you, ";
+                }
+            }
             return"";
         }
         public static string WorldBuild(string Info)

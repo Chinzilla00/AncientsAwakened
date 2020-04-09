@@ -206,7 +206,7 @@ namespace AAMod.NPCs.Bosses.Sag
 
                 if (!lowHealth && Main.netMode != 1)
                 {
-                    CombatText.NewText(npc.getRect(), new Color(233, 46, 46), "EXTENSIVE BODY DAMAGE DETECTED. PROCEED WITH CAUTION!", true, true);
+                    CombatText.NewText(npc.getRect(), new Color(233, 46, 46), Lang.BossChat("SagChat"), true, true);
                     lowHealth = true;
                 }
             }

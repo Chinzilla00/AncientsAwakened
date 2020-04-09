@@ -60,7 +60,7 @@ namespace AAMod.Tiles.Altar
                         if (item != null && item.type == type && item.stack >= 1)
                         {
                             item.stack--;
-                            Item.NewItem(i, j, 72, 72, mod.ItemType("EquinoxWorm"));
+                            Item.NewItem(i * 16, j * 16, 64, 32, mod.ItemType("EquinoxWorm"));
                             if (!AAWorld.WormActive)
                             {
                                 SpawnBoss(player, ModContent.NPCType<WormSpawn>(), false, player.Center);
@@ -70,7 +70,7 @@ namespace AAMod.Tiles.Altar
                 }
                 else
                 {
-                    BaseUtility.Chat("The idol goes into the slot, but nothing happens.", new Color (75, 175, 255));
+                    BaseUtility.Chat(Lang.TheEquinox("WormAltar"), new Color (75, 175, 255));
                 }
             }
             return true;

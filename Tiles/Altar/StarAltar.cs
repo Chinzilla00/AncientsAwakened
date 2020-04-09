@@ -100,7 +100,7 @@ namespace AAMod.Tiles.Altar
             }
             else
             {
-                BaseUtility.Chat(@"High in the clouds rules the Seraph Queen, guardian of the skies where the creators watch over us.", Color.SkyBlue);
+                BaseUtility.Chat(Lang.TheEquinox("StarAltar"), Color.SkyBlue);
             }
             return true;
         }
