@@ -51,58 +51,58 @@ namespace AAMod.Tiles.Altar
 
             npc.ai[0]++;
 
-            string s = Main.netMode == 0 ? "" : "s";
+            string s = Main.netMode == 0 ? "" : Lang.TheEquinox("s");
 
             if (npc.ai[0] == 180)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("It appears someone has reassembled our idol, dearest Daybringer.", new Color(0, 255, 181));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn1"), new Color(0, 255, 181));
             }
 
             if (npc.ai[0] == 360)
             {
 
-                if (Main.netMode != 1) BaseUtility.Chat("It appears so. Little one" + s + ", you have impressed us greatly", new Color(43, 178, 245));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn2") + s + Lang.TheEquinox("WormSpawn3"), new Color(43, 178, 245));
             }
 
             if (npc.ai[0] == 540)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("Could they be the one we've been searching for..?", new Color(0, 255, 181));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn4"), new Color(0, 255, 181));
             }
 
             if (npc.ai[0] == 720)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("...possibly.", new Color(43, 178, 245));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn5"), new Color(43, 178, 245));
             }
             if (npc.ai[0] == 900)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("Young one" + s + ". We would like to provide you with one last test.", new Color(43, 178, 245));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn6") + s + Lang.TheEquinox("WormSpawn7"), new Color(43, 178, 245));
             }
 
             if (npc.ai[0] == 960)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("A test of strength against us.", new Color(0, 255, 181));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn8"), new Color(0, 255, 181));
             }
 
             if (npc.ai[0] == 1140)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("When you are ready, call us forth with the worm statue in your hand.", new Color(43, 178, 245));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn9"), new Color(43, 178, 245));
             }
 
             if (npc.ai[0] == 1320)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("We will be able to find you because of these beacons you reactivated.", new Color(0, 255, 181));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn10"), new Color(0, 255, 181));
             }
 
             if (npc.ai[0] == 1520)
             {
-                if (Main.netMode != 1) BaseUtility.Chat("However...", new Color(0, 255, 181));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn11"), new Color(0, 255, 181));
             }
 
             if (npc.ai[0] >= 1880)
             {
-                string name = Main.netMode == 0 ? player.name : "heroes";
+                string name = Main.netMode == 0 ? player.name : Lang.TheEquinox("heroes");
 
-                if (Main.netMode != 1) BaseUtility.Chat("Do not expect us to go easy on you, " + name + ".", new Color(0, 255, 181));
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.TheEquinox("WormSpawn12") + name + ".", new Color(0, 255, 181));
 
                 AAWorld.WormActive = true;
                 npc.active = false;

@@ -22,7 +22,7 @@ namespace AAMod.Tiles.Altar
             TileObjectData.newTile.CoordinatePadding = 2;
             TileObjectData.addTile(Type);
             ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Altar of Force");
+            name.SetDefault("Altar of The Force");
             AddMapEntry(new Color(10, 10, 80), name);
             disableSmartCursor = true;
             animationFrameHeight = 54;
@@ -69,7 +69,7 @@ namespace AAMod.Tiles.Altar
             }
             else
             {
-                BaseUtility.Chat(@"Deep in the caverns of the world lies the worm king, the guardian of the earth that was created to give us life.", Color.SkyBlue);
+                BaseUtility.Chat(Lang.TheEquinox("GravAltar"), Color.SkyBlue);
             }
             return true;
         }

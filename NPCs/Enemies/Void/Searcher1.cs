@@ -30,6 +30,8 @@ namespace AAMod.NPCs.Enemies.Void
             npc.DeathSound = SoundID.NPCDeath14;
             npc.knockBackResist = 0.5f;
             npc.noGravity = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("StoneSearcherBanner");
 
         }
 

@@ -53,16 +53,24 @@ namespace AAMod.NPCs.Bosses.Equinox
             base.SendExtraAI(writer);
             if (Main.netMode == NetmodeID.Server || Main.dedServ)
             {
-                writer.Write(internalAI[0]);
-                writer.Write(internalAI[1]);
-                writer.Write(internalAI[2]);
-                writer.Write(internalAI[3]);
-                writer.Write(internalAI[4]);
-                writer.Write(internalAI[5]);
-                writer.Write(internalAI[6]);
-                writer.Write(internalAI[7]);
-                writer.Write(isDeathRay);
-                writer.Write(CloudCooldown);
+                if(npc.type == mod.NPCType("DaybringerHead") || npc.type == mod.NPCType("NightcrawlerHead"))
+                {
+                    writer.Write(internalAI[0]);
+                    writer.Write(internalAI[1]);
+                    writer.Write(internalAI[2]);
+                    writer.Write(internalAI[3]);
+                    writer.Write(internalAI[4]);
+                    writer.Write(internalAI[5]);
+                    writer.Write(internalAI[6]);
+                    writer.Write(internalAI[7]);
+                    
+                    writer.Write(preShootingSun);
+                    writer.Write(preDeathRay);
+                    writer.Write(isDeathRay);
+                    writer.Write(CloudCooldown);
+                }
+
+                writer.Write(initCustom);
             }
         }
 
@@ -71,16 +79,24 @@ namespace AAMod.NPCs.Bosses.Equinox
             base.ReceiveExtraAI(reader);
             if (Main.netMode == NetmodeID.MultiplayerClient)
             {
-                internalAI[0] = reader.ReadFloat(); //DaybringerCounter
-                internalAI[1] = reader.ReadFloat(); //NightclawerCounter
-                internalAI[2] = reader.ReadFloat();
-                internalAI[3] = reader.ReadFloat();
-                internalAI[4] = reader.ReadFloat(); //DaybringerPosCheck
-                internalAI[5] = reader.ReadFloat(); //VelocitySave
-                internalAI[6] = reader.ReadFloat(); //VelocitySave
-                internalAI[7] = reader.ReadFloat();
-                isDeathRay = reader.ReadBoolean();
-                CloudCooldown = reader.ReadInt();
+                if(npc.type == mod.NPCType("DaybringerHead") || npc.type == mod.NPCType("NightcrawlerHead"))
+                {
+                    internalAI[0] = reader.ReadFloat(); //DaybringerCounter
+                    internalAI[1] = reader.ReadFloat(); //NightclawerCounter
+                    internalAI[2] = reader.ReadFloat();
+                    internalAI[3] = reader.ReadFloat();
+                    internalAI[4] = reader.ReadFloat(); //DaybringerPosCheck
+                    internalAI[5] = reader.ReadFloat(); //VelocitySave
+                    internalAI[6] = reader.ReadFloat(); //VelocitySave
+                    internalAI[7] = reader.ReadFloat();
+                    
+                    preShootingSun = reader.ReadBoolean();
+                    preDeathRay = reader.ReadBoolean();
+                    isDeathRay = reader.ReadBoolean();
+                    CloudCooldown = reader.ReadInt();
+                }
+
+                initCustom = reader.ReadBoolean();
             }
         }
 
@@ -198,7 +214,12 @@ namespace AAMod.NPCs.Bosses.Equinox
 
             if (wormStronger)
             {
-                wormDistance = -52f;
+                if(Main.netMode == 0) 
+                {
+                    npc.width = 136;
+                    npc.height = 136;
+                    wormDistance = -52f;
+                }
                 aiCount = !nightcrawler ? 6 : 4;
                 moveSpeedMax = !nightcrawler ? 15f : 12f;
                 npc.damage = 150;
@@ -845,8 +866,6 @@ namespace AAMod.NPCs.Bosses.Equinox
             npc.height = 68;
             if (wormStronger)
             {
-                npc.width = 136;
-                npc.height = 136;
                 string texName = "NPCs/Bosses/Equinox/";
                 if (npc.type == mod.NPCType("DaybringerHead")) { texName += "DaybringerHeadBig"; }
                 else

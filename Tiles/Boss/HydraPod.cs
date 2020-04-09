@@ -93,7 +93,7 @@ namespace AAMod.Tiles.Boss
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("You hear hissing, but it scuttles away into the fog...", Color.Blue);
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.TilesInfo("HydraPod3"), Color.Blue);
                 }
             }
         }

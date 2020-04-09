@@ -94,7 +94,7 @@ namespace AAMod.Tiles.Boss
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat("You hear a tired, quiet roar, and then...snoring..?", Color.DarkOrange);
+                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.TilesInfo("DragonEgg3"), Color.DarkOrange);
                 }
             }
         }

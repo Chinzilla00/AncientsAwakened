@@ -84,7 +84,7 @@ namespace AAMod.NPCs.Enemies.Hallow
 				jumpHeight = -25f;
                 if (npc.ai[0] >= 0)
                 {
-                    CombatText.NewText(npc.Hitbox, Color.LightGoldenrodYellow, "YEET");
+                    CombatText.NewText(npc.Hitbox, Color.LightGoldenrodYellow, Lang.BossChat("FatPixie"));
                 }
 			}
             BaseAI.AISlime(npc, ref npc.ai, false, 150, 4f, 2f, jumpWidth, jumpHeight);

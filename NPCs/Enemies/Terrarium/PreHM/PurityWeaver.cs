@@ -14,7 +14,7 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
 
         public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Terra Weaver");
+			DisplayName.SetDefault("Purity Weaver");
         }
 
         public override void SetDefaults()

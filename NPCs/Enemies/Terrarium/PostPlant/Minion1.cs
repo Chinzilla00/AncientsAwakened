@@ -28,6 +28,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             npc.alpha = 255;
             npc.noTileCollide = true;
             npc.noGravity = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("TerraSquidBanner");
         }
 
         public override void AI()

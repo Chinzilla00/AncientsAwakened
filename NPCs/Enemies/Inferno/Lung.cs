@@ -48,6 +48,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             npc.alpha = 255;
             npc.lavaImmune = true;
             npc.buffImmune[BuffID.OnFire] = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("LungBanner");
         }
         public override bool PreAI()
         {
@@ -330,6 +332,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             base.SetDefaults();
             npc.dontCountMe = true;
             npc.alpha = 255;
+            banner = npc.type;
+			bannerItem = mod.ItemType("LungBanner");
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -426,6 +430,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             base.SetDefaults();
             npc.dontCountMe = true;
             npc.alpha = 255;
+            banner = npc.type;
+			bannerItem = mod.ItemType("LungBanner");
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)

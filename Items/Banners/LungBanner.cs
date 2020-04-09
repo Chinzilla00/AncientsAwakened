@@ -1,8 +1,12 @@
 
 namespace AAMod.Items.Banners
 {
-	public class PurityWeaverBanner : BaseAAItem
+	public class LungBanner : BaseAAItem
 	{
+		public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Ancient Lung Banner");
+        }
 		// The tooltip for this item is automatically assigned from .lang files
 		public override void SetDefaults() {
 			item.width = 10;
@@ -17,7 +21,7 @@ namespace AAMod.Items.Banners
 			item.rare = 1;
 			item.value = 1000;
 			item.createTile = mod.TileType("Banners");
-			item.placeStyle = 45;        //Place style means which frame(Horizontally, starting from 0) of the tile should be placed
+			item.placeStyle = 57;        //Place style means which frame(Horizontally, starting from 0) of the tile should be placed
 		}
 	}
 }

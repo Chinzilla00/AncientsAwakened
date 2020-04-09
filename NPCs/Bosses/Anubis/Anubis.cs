@@ -181,13 +181,13 @@ namespace AAMod.NPCs.Bosses.Anubis
                     int damage = npc.damage / 2;
                     if (npc.ai[3] == 0 && proj == ModContent.ProjectileType<Pumpkin>())
                     {
-                        CombatText.NewText(npc.Hitbox, Color.Gold, "YEET", true); 
+                        CombatText.NewText(npc.Hitbox, Color.Gold, Lang.BossChat("AnubisCombat1"), true); 
                         damage = 300;
                     }
 
                     if (npc.ai[1] == 20)
                     {
-                        CombatText.NewText(npc.Hitbox, Color.Gold, "Careful! Projectiles hurt.", true);
+                        CombatText.NewText(npc.Hitbox, Color.Gold, Lang.BossChat("AnubisCombat2"), true);
                     }
 
                     BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, proj, ref npc.ai[3], 80, damage, 10, true);
@@ -211,7 +211,7 @@ namespace AAMod.NPCs.Bosses.Anubis
                         break;
                     if (npc.ai[1] == 10)
                     {
-                        CombatText.NewText(npc.Hitbox, Color.Gold, "Let me grab some friends.", true);
+                        CombatText.NewText(npc.Hitbox, Color.Gold, Lang.BossChat("AnubisCombat3"), true);
 
                         if (Main.rand.Next(2) == 0 && npc.life < npc.lifeMax * (2/3))
                         {
@@ -266,7 +266,7 @@ namespace AAMod.NPCs.Bosses.Anubis
 
                     if (npc.ai[1] == 20)
                     {
-                        CombatText.NewText(npc.Hitbox, Color.Gold, "Catch!", true);
+                        CombatText.NewText(npc.Hitbox, Color.Gold, Lang.BossChat("AnubisCombat4"), true);
                     }
                     if (npc.ai[1] == 120)
                     {
@@ -294,7 +294,7 @@ namespace AAMod.NPCs.Bosses.Anubis
 
                     if (npc.ai[1] == 20)
                     {
-                        CombatText.NewText(npc.Hitbox, Color.Gold, "Smashing, Init?", true);
+                        CombatText.NewText(npc.Hitbox, Color.Gold, Lang.BossChat("AnubisCombat5"), true);
                     }
 
                     if (npc.life > npc.lifeMax * (2/3))
