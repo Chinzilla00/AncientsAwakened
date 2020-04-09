@@ -109,8 +109,8 @@ namespace AAMod
 
         /*
 		 * A method that slowly lowers an NPC's alpha while spawning dust to give a bursting into existence look. Works great with worms.
-		 * 
-		 * DustType: What dust is used 
+		 *
+		 * DustType: What dust is used
          * DustFrequency: How much dust is spawned
 		 * AlphaRate: How fast the npc lowers alpha. The higher it is, the faster the alpha drops
 		 */
@@ -135,8 +135,8 @@ namespace AAMod
 
         /*
 		 * A method that's good for flamethrower-like projectiles
-		 * 
-		 * ProjectileType: What Projectile is used 
+		 *
+		 * ProjectileType: What Projectile is used
          * UseNPCVelocity: Uses the npc's velocity for speed instead of the player's position. Good for worms.
          * SpeedBoost: How much faster the projectile should be (1 = Flamethrower/Yamata)
 		 * DamageReduction: How much to divide damage by to prevent one-shotting projectiles
@@ -176,7 +176,7 @@ namespace AAMod
 
         /*
 		 * A method that handles boss loot & downed bools
-		 * 
+		 *
 		 * Loot: The items you want the boss to have a random chance of dropping. Example: { "Item1", "Item2" }. NoTE: THIS ONLY WORKS WITH MODDED ITEMS.
          * DownedBoss: The Boss's downed bool
          * HasItemDrop: Whether or not the boss drops an item along with it's random chance drop (Such as a material)
@@ -184,7 +184,7 @@ namespace AAMod
          * ItemMin: The minimum ammount of the extra item can drop
          * ItemMax: The maximum ammount of the extra item can drop
 		 * DamageReduction: How much to divide damage by to prevent one-shotting projectiles
-         * HasMask: Whether or not the boss has a mask. 
+         * HasMask: Whether or not the boss has a mask.
 		 */
 
         public static void DownedBoss(NPC npc, Mod mod, string[] Loot, bool DownedBoss, bool HasItemDrop = false, int ItemType = 0, int ItemMin = 0, int ItemMax = 1, bool HasMask = false, bool ExpertMaskDrop = false, bool HasTrophy = false, int MaskType = 0, int TrophyType = 0, bool HasExpertBag = false)
@@ -597,10 +597,10 @@ namespace AAMod
 
         public static void AIWorm(NPC npc, int[] wormTypes, int wormLength = 3, float partDistanceAddon = 0f, float maxSpeed = 8f, float gravityResist = 0.07f, bool fly = false, bool split = false, bool ignoreTiles = false, bool spawnTileDust = true, bool soundEffects = true, bool rotateAverage = false, Action<NPC, int, bool> onChangeType = null)
         {
-			bool diggingDummy = false;			
+			bool diggingDummy = false;
 			AIWorm(npc, ref diggingDummy, wormTypes, wormLength, partDistanceAddon, maxSpeed, gravityResist, fly, split, ignoreTiles, spawnTileDust, soundEffects, rotateAverage, onChangeType);
 		}
-		
+
         public static void AIWorm(NPC npc, ref bool isDigging, int[] wormTypes, int wormLength = 3, float partDistanceAddon = 0f, float maxSpeed = 8f, float gravityResist = 0.07f, bool fly = false, bool split = false, bool ignoreTiles = false, bool spawnTileDust = true, bool soundEffects = true, bool rotateAverage = false, Action<NPC, int, bool> onChangeType = null)
         {
             int[] wtypes = new int[(wormTypes.Length == 1 ? 1 : wormLength)];
@@ -615,7 +615,7 @@ namespace AAMod
 			}
             AIWorm(npc, ref isDigging, wtypes, partDistanceAddon, maxSpeed, gravityResist, fly, split, ignoreTiles, spawnTileDust, soundEffects, rotateAverage, onChangeType);
         }
-		
+
 		public static void AIWorm(NPC npc, int[] wormTypes, float partDistanceAddon = 0f, float maxSpeed = 8f, float gravityResist = 0.07f, bool fly = false, bool split = false, bool ignoreTiles = false, bool spawnTileDust = true, bool soundEffects = true, bool rotateAverage = false, Action<NPC, int, bool> onChangeType = null)
         {
 			bool diggingDummy = false;
@@ -627,16 +627,16 @@ namespace AAMod
 			bool singlePiece = wormTypes.Length == 1;
 			bool isHead = npc.type == wormTypes[0];
 			bool isTail = npc.type == wormTypes[wormTypes.Length - 1];
-			bool isBody = !isHead && !isTail;		
+			bool isBody = !isHead && !isTail;
             int wormLength = wormTypes.Length;
-			
+
             if (split)
             {
                 npc.realLife = -1;
             }else
             if (npc.ai[3] >= 0f)
 				npc.realLife = (int)npc.ai[3];
-			
+
 			if(npc.ai[0] == -1f)
 				npc.ai[0] = npc.whoAmI;
             if (npc.target < 0 || npc.target == 255 || Main.player[npc.target].dead)
@@ -662,11 +662,11 @@ namespace AAMod
 						for (int m = 1; m < wormLength - 1; m++)
 						{
 							int npcType = wormTypes[m];
-							
+
 							float ai0 = 0;
 							float ai1 = npcID;
 							float ai2 = 0;
-							float ai3 = npc.ai[3];							
+							float ai3 = npc.ai[3];
 
 							int newnpcID = NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), npcType, npc.whoAmI, ai0, ai1, ai2, ai3);
 							Main.npc[npcID].ai[0] = newnpcID;
@@ -675,7 +675,7 @@ namespace AAMod
 							//Main.npc[newnpcID].realLife = npc.whoAmI;
 							//Main.npc[newnpcID].ai[1] = (float)npcID;
 							//Main.npc[npcID].ai[0] = (float)newnpcID;
-							//Main.npc[newnpcID].netUpdate = true;							
+							//Main.npc[newnpcID].netUpdate = true;
 							//NetMessage.SendData(23, -1, -1, NetworkText.FromLiteral(""), newnpcID, 0f, 0f, 0f, 0);
 							npcID = newnpcID;
 						}
@@ -689,7 +689,7 @@ namespace AAMod
 								npc.ai[3] = npc.whoAmI;
 								npc.realLife = npc.whoAmI;
 							}
-							npc.ai[2] = wormLength - 1;							
+							npc.ai[2] = wormLength - 1;
 						}
 						float ai0 = 0;
 						float ai1 = npc.whoAmI;
@@ -697,7 +697,7 @@ namespace AAMod
 						float ai3 = npc.ai[3];
 						if(split)
 							npc.ai[3] = 0f;
-						
+
 						if (isHead)
 						{
 							npc.ai[0] = NPC.NewNPC((int)(npc.Center.X), (int)(npc.Center.Y), wormTypes[1], npc.whoAmI, ai0, ai1, ai2, ai3);
@@ -757,7 +757,7 @@ namespace AAMod
                     else
 					if (isBody && !Main.npc[(int)npc.ai[0]].active) //if the body was just split, turn it into a tail
 					{
-						int oldType = npc.type;				
+						int oldType = npc.type;
 						npc.type = wormTypes[wormTypes.Length - 1];
 						int npcID = npc.whoAmI;
 						float lifePercent = npc.life / (float)npc.lifeMax;
@@ -768,7 +768,7 @@ namespace AAMod
 						npc.TargetClosest(true);
 						npc.netUpdate = true;
 						npc.whoAmI = npcID;
-						if(onChangeType != null) onChangeType(npc, oldType, false);						
+						if(onChangeType != null) onChangeType(npc, oldType, false);
 					}
                 }
                 else
@@ -787,7 +787,7 @@ namespace AAMod
                         npc.active = false;
                     }
                 }
-                if (!npc.active && Main.netMode == 2) 
+                if (!npc.active && Main.netMode == 2)
 					NetMessage.SendData(28, -1, -1, NetworkText.FromLiteral(""), npc.whoAmI, 1, 0f, 0f, -1);
             }
             int tileX = (int)(npc.position.X / 16f) - 1;
@@ -804,7 +804,7 @@ namespace AAMod
                 {
                     for (int tY = tileY; tY < tileCenterY; tY++)
                     {
-						Tile checkTile = BaseWorldGen.GetTileSafely(tX, tY);						
+						Tile checkTile = BaseWorldGen.GetTileSafely(tX, tY);
                         if (checkTile != null && ((checkTile.nactive() && (Main.tileSolid[checkTile.type] || (Main.tileSolidTop[checkTile.type] && checkTile.frameY == 0))) || checkTile.liquid > 64))
                         {
                             Vector2 tPos;
@@ -853,7 +853,7 @@ namespace AAMod
             playerCenterX -= npcCenter.X; playerCenterY -= npcCenter.Y;
             float dist = (float)Math.Sqrt(playerCenterX * playerCenterX + playerCenterY * playerCenterY);
 			isDigging = canMove;
-            if (npc.ai[1] > 0f && npc.ai[1] < Main.npc.Length)
+            if (npc.ai[1] >= 0f && npc.ai[1] < Main.npc.Length && npc.type != wormTypes[0])
             {
                 try
                 {
@@ -986,6 +986,7 @@ namespace AAMod
                             }
                     }
                 }
+
                 if (!rotateAverage || npc.type == wormTypes[0])
                 {
                     npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;

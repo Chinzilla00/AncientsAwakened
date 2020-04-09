@@ -180,7 +180,6 @@ namespace AAMod.NPCs.Bosses.Equinox
         public override bool PreAI()
         {
             bool isHead = npc.type == mod.NPCType("DaybringerHead") || npc.type == mod.NPCType("NightcrawlerHead");
-
             if (Main.netMode != 1 && !initCustom)
             {
                 initCustom = true;
