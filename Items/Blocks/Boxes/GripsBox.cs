@@ -1,7 +1,7 @@
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace AAMod.Items.Blocks
+namespace AAMod.Items.Blocks.Boxes
 {
     public class GripsBox : BaseAAItem
 	{

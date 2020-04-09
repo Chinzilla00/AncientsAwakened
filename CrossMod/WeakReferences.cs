@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Terraria.ModLoader;
 using AAMod.Items.Vanity.Mask;
 using AAMod.Items.BossSummons;
+using AAMod.Items.Blocks.Boxes;
 using AAMod.Items.Blocks;
 using AAMod.Items.Flasks;
 using AAMod.Items.Usable;
@@ -1124,7 +1125,7 @@ namespace AAMod.Globals
                     ModContent.ItemType<GoldenCarrot>(),
                     new List<int>
                     {
-                        ModContent.ItemType<SRajahBox>()
+                            ///ModContent.ItemType<SRajahBox>()
                     },
                     new List<int>
                     {
