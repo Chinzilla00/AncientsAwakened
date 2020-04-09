@@ -7,7 +7,7 @@ namespace AAMod.Items.Blocks.Boxes
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Mire Dat Music Box");
+			DisplayName.SetDefault("Mire Day Music Box");
             Tooltip.SetDefault(@"Plays 'Clouded in Mystery' by Charlie Debnam");
         }
 
@@ -19,7 +19,7 @@ namespace AAMod.Items.Blocks.Boxes
 			item.useTime = 10;
 			item.autoReuse = true;
 			item.consumable = true;
-			item.createTile = mod.TileType("MireBox");
+			item.createTile = mod.TileType("MireDayBox");
 			item.width = 24;
 			item.height = 24;
 			item.rare = 4;

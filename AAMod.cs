@@ -345,7 +345,7 @@ namespace AAMod
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoSurface"), ItemType("InfernoBox"), TileType("InfernoBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/IN"), ItemType("InfernoNightBox"), TileType("InfernoNightBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MireSurface"), ItemType("MireBox"), TileType("MireBox"));
-                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MD"), ItemType("MireDayBox"), TileType("MireDayBox"));
+                AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/DM"), ItemType("MireDayBox"), TileType("MireDayBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/InfernoUnderground"), ItemType("InfernoUBox"), TileType("InfernoUBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/MireUnderground"), ItemType("MireUBox"), TileType("MireUBox"));
                 AddMusicBox(GetSoundSlot(SoundType.Music, "Sounds/Music/Void"), ItemType("VoidBox"), TileType("VoidBox"));
