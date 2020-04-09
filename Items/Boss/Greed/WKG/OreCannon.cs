@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using System;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Greed.WKG
 {
@@ -26,14 +27,25 @@ Certain ores have special effects when shot");
             item.useAnimation = 45;
             item.useStyle = 5;
             item.knockBack = 0;
-            item.value = Item.sellPrice(5, 0, 0, 0);
 			item.shoot = 10;
-            item.rare = 11;
             item.UseSound = SoundID.Item14;
             item.shootSpeed = 14f;
             item.expert = true; 
 			item.expertOnly = true;
             item.autoReuse = true;
+            item.rare = 9;
+            AARarity = 12;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
 
         public override Vector2? HoldoutOffset()

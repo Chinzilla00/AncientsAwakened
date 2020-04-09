@@ -24,12 +24,24 @@ namespace AAMod.Items.Boss.Greed.WKG
             item.tileBoost += 4;
             item.useStyle = 1;
             item.knockBack = 3;
-            item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 8;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
+            item.rare = 9;
+            AARarity = 12;
         }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
+
         public override bool CanUseItem(Player player)
         {
             Tile tile = Main.tile[Player.tileTargetX, Player.tileTargetY];

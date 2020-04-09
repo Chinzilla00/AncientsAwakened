@@ -28,19 +28,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
             item.noMelee = true;
             item.shoot = mod.ProjType("Crook");
             item.shootSpeed = 15;
-            item.rare = 9;
-            AARarity = 12;
-        }
-
-        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
-        {
-            foreach (Terraria.ModLoader.TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity12;
-                }
-            }
+            item.rare = 11;
         }
 
         public override bool CanUseItem(Player player)       //this make that you can shoot only 1 boomerang at once

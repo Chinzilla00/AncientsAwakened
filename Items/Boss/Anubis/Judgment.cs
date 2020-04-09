@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Anubis
 {
@@ -45,6 +46,16 @@ namespace AAMod.Items.Boss.Anubis
 			Projectile.NewProjectile(target.Center.X+15, target.Center.Y-16, vel1.X, vel1.Y, mod.ProjectileType("EnchantedSand"), damage/3, 0, Main.myPlayer);
 			Projectile.NewProjectile(target.Center.X+20, target.Center.Y-14, vel1.X, vel1.Y, mod.ProjectileType("EnchantedSand"), damage/3, 0, Main.myPlayer);
 			Projectile.NewProjectile(target.Center.X+25, target.Center.Y-12, vel1.X, vel1.Y, mod.ProjectileType("EnchantedSand"), damage/3, 0, Main.myPlayer);
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<Djinn.SultanScimitar>(), 1);
+			recipe.AddIngredient(null, "ForsakenFragment", 5);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
 		}
 	}
 }

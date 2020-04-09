@@ -1,11 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
-using BaseMod;
-
+﻿
 /*namespace AAMod.Tiles.Altar
 {
 	public class WormBeaconDay : ModNPC

@@ -15,7 +15,6 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
             item.ranged = true;
             item.width = 42;
             item.height = 60;
-
             item.useTime = 14;
             item.useAnimation = 14;
             item.useStyle = 5;
@@ -25,20 +24,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 25f;
-            item.value = Item.buyPrice(0, 1, 0, 0);
-            item.rare = 9;
-            AARarity = 12;
-        }
-
-        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
-        {
-            foreach (TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity12;
-                }
-            }
+            item.rare = 11;
         }
 
         public override void SetStaticDefaults()
@@ -68,6 +54,16 @@ Forsaken arrows lower enemy contact damage");
 				}
 			}
             return false;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<NeithsString>(), 1);
+            recipe.AddIngredient(null, "SoulFragment", 5);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

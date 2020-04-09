@@ -16,7 +16,7 @@ namespace AAMod.Tiles.Boss
             Main.tileSolidTop[Type] = false;
             Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = true;
-            dustType = DustID.BlueCrystalShard;
+            dustType = DustID.Gold;
             Main.tileLavaDeath[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 16 };

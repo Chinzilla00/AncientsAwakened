@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Anubis.Forsaken
 {
@@ -25,27 +26,14 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
 			item.useStyle = 5;
 			item.noMelee = true;
 			item.knockBack = 5;
-			item.value = 10000;
 			item.UseSound = SoundID.Item20;
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("ForsakenStaffBlast");
 			item.shootSpeed = 16f;
-            item.rare = 9;
-            AARarity = 12;
-        }
+			item.rare = 11;
+		}
 
-        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
-        {
-            foreach (Terraria.ModLoader.TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity12;
-                }
-            }
-        }
-
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
+		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
 			float numberProjectiles = 2;
 			float rotation = MathHelper.ToRadians(4);
@@ -56,6 +44,16 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
                 Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI);
 			}
             return false;
-        }
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<DesertStaff>(), 1);
+			recipe.AddIngredient(null, "SoulFragment", 5);
+			recipe.AddTile(TileID.LunarCraftingStation);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
 	}
 }

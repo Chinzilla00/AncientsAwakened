@@ -1,4 +1,5 @@
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Anubis
 {
@@ -28,6 +29,22 @@ namespace AAMod.Items.Boss.Anubis
 			item.melee = true;
             item.noMelee = true;
             item.noUseGraphic = true;
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.GoldAxe, 1);
+			recipe.AddIngredient(null, "ForsakenFragment", 5);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this);
+			recipe.AddRecipe(); 
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.PlatinumAxe, 1);
+			recipe.AddIngredient(null, "ForsakenFragment", 5);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
 		}
 	}
 }

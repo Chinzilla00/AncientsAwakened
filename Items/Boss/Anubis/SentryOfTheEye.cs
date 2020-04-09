@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Anubis
 {
@@ -38,7 +39,6 @@ namespace AAMod.Items.Boss.Anubis
             int num74 = item.shoot;
             int num76 = item.damage;
             float num77 = item.knockBack;
-            int num154 = (int)(Main.mouseX + Main.screenPosition.X) / 16;
             int num155 = (int)(Main.mouseY + Main.screenPosition.Y) / 16;
             if (player.gravDir == -1f)
             {
@@ -62,6 +62,16 @@ namespace AAMod.Items.Boss.Anubis
 			}
 
             return false;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<Djinn.SandScepter>(), 1);
+            recipe.AddIngredient(null, "ForsakenFragment", 5);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

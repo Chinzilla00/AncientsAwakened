@@ -14,10 +14,10 @@ namespace AAMod.Items.Dev.Invoker
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("The Book of the Law");
-            Tooltip.SetDefault(@"A Legendary Book of Aleister 'Mega Therion'.
-Increase 30% minion damage
-Increase 2 minion slots
-Get all of the materials' effect
+            Tooltip.SetDefault(@"A Legendary Book of the Mega Therion.
+30% increased minion damage
++2 minion slots
+Includes the effects of all the pieces used to make this.
 ");
         }
 

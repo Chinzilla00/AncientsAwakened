@@ -16,7 +16,7 @@ namespace AAMod.Tiles.Altar
             Main.tileSolidTop[Type] = false;
             Main.tileFrameImportant[Type] = true;
             Main.tileNoAttach[Type] = true;
-            dustType = DustID.BlueCrystalShard;
+            dustType = DustID.Dirt;
             Main.tileLavaDeath[Type] = false;
             TileObjectData.newTile.Height = 4;
             TileObjectData.newTile.Width = 4;
@@ -61,8 +61,9 @@ namespace AAMod.Tiles.Altar
                         {
                             item.stack--;
                             player.QuickSpawnItem(mod.ItemType("EquinoxWorm"));
-                            BaseUtility.Chat("The Idol shines to life, regaining its original color", new Color(75, 175, 255));
+                            if (!AAWorld.WormActive)
                             {
+                                BaseUtility.Chat("The Idol shines to life, regaining its original coloration", new Color(75, 175, 255));
                                 SpawnBoss(player, ModContent.NPCType<WormSpawn>(), false, player.Center);
                             }
                         }

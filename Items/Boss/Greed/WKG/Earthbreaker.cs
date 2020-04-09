@@ -24,10 +24,21 @@ If the enemy hits the ground after being hit, they will take damage");
 			item.useAnimation = 30;
 			item.useStyle = 1;
 			item.knockBack = 20;
-            item.value = Item.sellPrice(0, 5, 0, 0);
-            item.rare = 11;
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
+            item.rare = 9;
+            AARarity = 12;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
 
         public override void ModifyHitNPC(Player player, NPC target, ref int damage, ref float knockBack, ref bool crit)

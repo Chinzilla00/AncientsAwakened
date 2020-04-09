@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Anubis.Forsaken
 {
@@ -24,24 +25,11 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
             item.useAnimation = 30;
             item.useTime = 30;
             item.noMelee = true;
-            item.value = Item.sellPrice(0, 0, 27, 0);
             item.knockBack = 7.5f;
             item.summon = true;
             item.mana = 30;
             item.sentry = true;
-            item.rare = 9;
-            AARarity = 12;
-        }
-
-        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
-        {
-            foreach (Terraria.ModLoader.TooltipLine line2 in list)
-            {
-                if (line2.mod == "Terraria" && line2.Name == "ItemName")
-                {
-                    line2.overrideColor = AAColor.Rarity12;
-                }
-            }
+            item.rare = 11;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
@@ -74,6 +62,16 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
 			}
 
             return false;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ModContent.ItemType<SentryOfTheEye>(), 1);
+            recipe.AddIngredient(null, "SoulFragment", 5);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

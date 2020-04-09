@@ -11,8 +11,8 @@ namespace AAMod.Items.Dev.RuneBook
 		public override void SetStaticDefaults()
         {
             base.SetStaticDefaults();
-            DisplayName.SetDefault("The Book of Rune");
-            Tooltip.SetDefault(@"Summons runes according to your minion slots
+            DisplayName.SetDefault("The Book of Runes");
+            Tooltip.SetDefault(@"Summons runes according to how many minion slots you have left
 When player has 1 minion slot it summons terra rune.
 When player has 2 minion slots it summons terra and chaos rune.
 When player has 3 minion slots it summons terra, chaos and void rune.");

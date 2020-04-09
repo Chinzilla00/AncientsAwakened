@@ -3625,7 +3625,7 @@ Fishy";
                         case "Rajah3":
                         return "Coward.";
                         case "Rajah4":
-                        return "You win this time, murderer...but I will avenge those you've mercilicely slain...";
+                        return "You win this time, murderer...but I will avenge those you've mercilessly slain...";
                         case "Rajah5":
                         return "THIS ISN'T THE END, ";
                         case "Rajah6":

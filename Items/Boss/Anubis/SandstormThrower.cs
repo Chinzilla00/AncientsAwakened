@@ -44,6 +44,16 @@ namespace AAMod.Items.Boss.Anubis
 	    	if (Main.rand.Next(0, 100) < 30)
 	    		return false;
 	    	return true;
-	    }
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.Sandgun, 1);
+			recipe.AddIngredient(null, "ForsakenFragment", 5);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
 	}
 }

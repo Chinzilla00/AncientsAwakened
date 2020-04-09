@@ -931,8 +931,8 @@ namespace AAMod
 
             if (ChaosMe)
             {
-                npc.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 180);
-                npc.AddBuff(ModContent.BuffType<Buffs.HydraToxin>(), 180);
+                npc.AddBuff(ModContent.BuffType<DragonFire>(), 180);
+                npc.AddBuff(ModContent.BuffType<HydraToxin>(), 180);
             }
 
             if (BrokenCode)
@@ -1044,7 +1044,7 @@ namespace AAMod
 
             if (HeartP && player.statLife > (player.statLifeMax / 3))
             {
-                target.AddBuff(ModContent.BuffType<Buffs.DragonFire>(), 600);
+                target.AddBuff(ModContent.BuffType<DragonFire>(), 600);
             }
             else if (HeartP && player.statLife < (player.statLifeMax / 3))
             {
@@ -1053,7 +1053,7 @@ namespace AAMod
 
             if (HeartS && player.statLife > (player.statLifeMax / 3))
             {
-                target.AddBuff(ModContent.BuffType<Buffs.HydraToxin>(), 600);
+                target.AddBuff(ModContent.BuffType<HydraToxin>(), 600);
             }
             else if (HeartS && player.statLife < (player.statLifeMax / 3))
             {
@@ -1785,11 +1785,11 @@ namespace AAMod
                     bool RuneControlEX = player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.TerraRune>()] > 1 || player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.ChaosRune>()] > 1 || player.ownedProjectileCounts[ModContent.ProjectileType<Items.Dev.RuneBook.VoidRune>()] > 1;
                     if (RuneControl || RuneControlEX)
                     {
-                        player.ClearBuff(ModContent.BuffType<Buffs.CCRune>());
+                        player.ClearBuff(ModContent.BuffType<CCRune>());
                     }
-                    if (player.FindBuffIndex(ModContent.BuffType<Buffs.CCRune>()) == -1)
+                    if (player.FindBuffIndex(ModContent.BuffType<CCRune>()) == -1)
                     {
-                        player.AddBuff(ModContent.BuffType<Buffs.CCRune>(), 3600, true);
+                        player.AddBuff(ModContent.BuffType<CCRune>(), 3600, true);
                     }
                     if (CCBook)
                     {

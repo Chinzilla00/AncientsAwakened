@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Anubis.Forsaken
 {
@@ -33,9 +34,9 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
             AARarity = 12;
         }
 
-        public override void ModifyTooltips(System.Collections.Generic.List<Terraria.ModLoader.TooltipLine> list)
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
         {
-            foreach (Terraria.ModLoader.TooltipLine line2 in list)
+            foreach (TooltipLine line2 in list)
             {
                 if (line2.mod == "Terraria" && line2.Name == "ItemName")
                 {
@@ -60,6 +61,16 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
 	    	if (Main.rand.Next(0, 100) < 50)
 	    		return false;
 	    	return true;
-	    }
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ModContent.ItemType<SandstormThrower>(), 1);
+			recipe.AddIngredient(null, "SoulFragment", 5);
+			recipe.AddTile(TileID.LunarCraftingStation);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
+		}
 	}
 }

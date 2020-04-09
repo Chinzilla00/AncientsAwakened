@@ -14,11 +14,11 @@ namespace AAMod.Items.Dev.Invoker
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Aleister Book");
-            Tooltip.SetDefault(@"A Legendary Book of Aleister 'Mega Therion'.
-Increase 10% minion damage
-Increase 2 minion slots
-Maybe you need other items to help you get more power from this book.
-Aleister's note: 
+            Tooltip.SetDefault(@"A Legendary Book of the Mega Therion.
+10% increased minion damage
++2 minion slots
+Maybe you could make it stronger..?
+There's a note written on the cover: 
 I need more powerful souls, *****,*********,**********");
         }
 

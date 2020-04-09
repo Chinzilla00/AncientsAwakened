@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Localization;
+using Terraria.ID;
 
 namespace AAMod.Tiles.Boss
 {
@@ -59,6 +60,7 @@ namespace AAMod.Tiles.Boss
             else if (thinger == 1)
             {
                 Item.NewItem(i * 16, j * 16, 32, 32, drop2);
+                Item.NewItem(i * 16, j * 16, 32, 32, ItemID.MusketBall, 100);
             }
             else if (thinger == 2)
             {

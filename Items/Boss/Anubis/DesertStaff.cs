@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Anubis
 {
@@ -30,6 +31,16 @@ namespace AAMod.Items.Boss.Anubis
 			item.autoReuse = true;
 			item.shoot = mod.ProjectileType("DesertBlast");
 			item.shootSpeed = 12f;
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.AmberStaff, 1);
+			recipe.AddIngredient(null, "ForsakenFragment", 5);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this);
+			recipe.AddRecipe();
 		}
 	}
 }

@@ -1,6 +1,3 @@
-using Terraria.ModLoader;
-using Terraria.ID;
-using System.Collections.Generic;
 
 /*namespace AAMod.Items.Blocks.Boxes
 {

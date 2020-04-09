@@ -1,7 +1,4 @@
-﻿using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
-
+﻿
 /*namespace AAMod.Items.Materials
 {
     public class VoidEnergy : BaseAAItem
