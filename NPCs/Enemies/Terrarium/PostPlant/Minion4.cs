@@ -31,6 +31,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             npc.alpha = 255;
             npc.noGravity = true;
             npc.noTileCollide = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("TerraWeaverBanner");
         }
         public override bool PreAI()
         {
@@ -234,6 +236,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             npc.dontCountMe = true;
 
             npc.alpha = 255;
+            banner = npc.type;
+			bannerItem = mod.ItemType("TerraWeaverBanner");
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -358,6 +362,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             npc.dontCountMe = true;
 
             npc.alpha = 255;
+            banner = npc.type;
+			bannerItem = mod.ItemType("TerraWeaverBanner");
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)

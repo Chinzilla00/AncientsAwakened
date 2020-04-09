@@ -31,6 +31,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PreHM
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.4f;
             npc.alpha = 255;
+            banner = npc.type;
+			bannerItem = mod.ItemType("PurityCrawlerBanner");
         }
 
         public override void NPCLoot()

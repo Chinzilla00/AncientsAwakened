@@ -26,6 +26,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.PostPlant
             npc.alpha = 255;
             npc.noGravity = true;
             npc.noTileCollide = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("TerraSphereBanner");
         }
 
 

@@ -29,6 +29,8 @@ namespace AAMod.NPCs.Enemies.Void
             npc.knockBackResist = 0f;
             npc.noGravity = true;
             npc.netAlways = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("VortexBanner");
         }
 
         public float Rotation = 0;

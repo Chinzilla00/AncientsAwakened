@@ -138,6 +138,16 @@ namespace AAMod.Tiles.Banners
 				case 45: dropName = "Purity Weaver"; break;
 				case 46: dropName = "Purity Sphere"; break;
 				case 47: dropName = "Terra Serpent"; break;
+				case 48: dropName = "Purity Crawler"; break;
+				case 49: dropName = "Terra Squid"; break;
+				case 50: dropName = "Terra Crawler"; break;
+				case 51: dropName = "Terra Sphere"; break;
+				case 52: dropName = "Terra Weaver"; break;
+				case 53: dropName = "Vortex"; break;
+				case 54: dropName = "Stone Searcher"; break;
+				case 55: dropName = "Night Guard"; break;
+				case 56: dropName = "Sun Watcher"; break;
+				case 57: dropName = "Lung"; break;
             }
 			if(spaces) //fix for display names
 			{
@@ -190,6 +200,16 @@ namespace AAMod.Tiles.Banners
 					case 45: dropName = "Purity Weaver"; break;
 					case 46: dropName = "Purity Sphere"; break;
 					case 47: dropName = "Terra Serpent"; break;
+					case 48: dropName = "Purity Crawler"; break;
+					case 49: dropName = "Minion1"; break;
+					case 50: dropName = "Minion2"; break;
+					case 51: dropName = "Minion3"; break;
+					case 52: dropName = "Minion4"; break;
+					case 53: dropName = "Vortex"; break;
+					case 54: dropName = "Searcher1"; break;
+					case 55: dropName = "Nightguard"; break;
+					case 56: dropName = "Sunwatcher"; break;
+					case 57: dropName = "Lung"; break;
 				}				
 			}
 			if(!string.IsNullOrEmpty(dropName)) dropName = dropName.Replace(" ", null);
