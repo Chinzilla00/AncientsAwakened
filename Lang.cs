@@ -5366,31 +5366,31 @@ Fishy";
                     case "s":
                     return "s";
                     case "heroes":
-                    return "heroes";
+                    return "герои";
                     case "WormSpawn1":
-                    return "It appears someone has reassembled our idol, dearest Daybringer.";
+                    return "Похоже, что кто-то снова собрал наш идол, Дэйбрингер";
                     case "WormSpawn2":
-                    return "It appears so. Little one";
+                    return "Похоже. Смертный";
                     case "WormSpawn3":
-                    return ", you have impressed us greatly";
+                    return ", ты нас сильно впечатлил.";
                     case "WormSpawn4":
-                    return "Could they be the one we've been searching for..?";
+                    return "Может ли этот смертный быть тем, кого мы искали?";
                     case "WormSpawn5":
-                    return "...possibly.";
+                    return "...возможно.";
                     case "WormSpawn6":
-                    return "Young one";
+                    return "Дитя.";
                     case "WormSpawn7":
-                    return ". We would like to provide you with one last test.";
+                    return ". Мы хотим проверить тебя.";
                     case "WormSpawn8":
-                    return "A test of strength against us.";
+                    return "Проверить твою силу против нас.";
                     case "WormSpawn9":
-                    return "When you are ready, call us forth with the worm statue in your hand.";
+                    return "Когда будешь готов, позови нас с помощью этой статуи.";
                     case "WormSpawn10":
-                    return "We will be able to find you because of these beacons you reactivated.";
+                    return "Мы сможем найти тебя с помощью нее.";
                     case "WormSpawn11":
-                    return "However...";
+                    return "Но...";
                     case "WormSpawn12":
-                    return "Do not expect us to go easy on you, ";
+                    return "Не думай, что мы будем добры с тобой,";
                 }
             }
             else
