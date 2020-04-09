@@ -2918,7 +2918,7 @@ Fishy";
                         return "Речь Кролика Раджи согревает ваше сердце. У вас больше нет желания вредить кроликам. Сделай так, что бы он гордился.";
 
                         case "SagChat":
-                        return "EXTENSIVE BODY DAMAGE DETECTED. PROCEED WITH CAUTION!";
+                        return "ОБНАРУЖЕНО ОБШИРНОЕ РАНЕНИЕ ТЕЛА. ПРОДОЛЖАТЬ С ОСТОРОЖНОСТЬЮ";
 
                         case "YamataAHead":
                         return "АУЧЬ!!!";

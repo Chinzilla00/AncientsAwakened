@@ -1470,7 +1470,7 @@ namespace AAMod
 
         private void EquinoxAlt(GenerationProgress progress)
         {
-            progress.Message = "Equalizing the Sun and Moon";
+            progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildEquinoxAlt");
             Point origin = new Point((int)(Main.maxTilesX * 0.15f), 100);
             Equinox biome = new Equinox();
             biome.Place(origin, WorldGen.structures);
