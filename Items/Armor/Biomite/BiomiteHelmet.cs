@@ -29,7 +29,7 @@ namespace AAMod.Items.Armor.Biomite
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Get the armor setbonus according to the biome you stay" + SetBonus(player);
+			player.setBonus = "Provide different setbonuses based on biome you're in" + SetBonus(player);
 		}
 
 		public override void AddRecipes()
@@ -62,7 +62,7 @@ namespace AAMod.Items.Armor.Biomite
 			if (player.GetModPlayer<AAPlayer>().ZoneInferno)
 			{
 				player.buffImmune[BuffID.OnFire] = true;
-				set += "\nYou immune to 'Onfire!' debuff";
+				set += "\nYou immune to 'On fire!' debuff";
 			}
 			if (player.GetModPlayer<AAPlayer>().ZoneMire)
 			{
@@ -87,7 +87,7 @@ namespace AAMod.Items.Armor.Biomite
 			if (player.ZoneDesert)
 			{
 				player.buffImmune[BuffID.WindPushed] = true;
-				set += "\nYou immune to 'WindPushed' debuff";
+				set += "\nYou immune to 'Mighty Wind' debuff";
 			}
 			if (player.ZoneHoly)
 			{
