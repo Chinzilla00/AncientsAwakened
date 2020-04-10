@@ -5323,6 +5323,8 @@ Fishy";
                     return @"统治者云层之上的妖鸟女王, 守护者看护我们的天空.";
                     case "WormAltar":
                     return "神像放进插槽, 不过好像没什么事情发生.";
+                    case "WormAltarOK":
+                    return "神像闪耀着生命的光芒, 焕发出原本的色彩";
                     case "s":
                     return "们";
                     case "heroes":
@@ -5363,6 +5365,8 @@ Fishy";
                     return @"Высоко в облаках правит Королева Серафимов, стражник небес, с которых на нас смотрят создатели";
                     case "WormAltar":
                     return "Идол вошел, но ничего не случилось.";
+                    case "WormAltarOK":
+                    return "Идол оживает, возвращая свой настоящий цвет";
                     case "s":
                     return "s";
                     case "heroes":
@@ -5403,6 +5407,8 @@ Fishy";
                     return @"High in the clouds rules the Seraph Queen, guardian of the skies where the creators watch over us.";
                     case "WormAltar":
                     return "The idol goes into the slot, but nothing happens.";
+                    case "WormAltarOK":
+                    return "The Idol shines to life, regaining its original coloration";
                     case "s":
                     return "s";
                     case "heroes":

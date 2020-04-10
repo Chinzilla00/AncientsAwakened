@@ -63,7 +63,7 @@ namespace AAMod.Tiles.Altar
                             player.QuickSpawnItem(mod.ItemType("EquinoxWorm"));
                             if (!AAWorld.WormActive)
                             {
-                                BaseUtility.Chat("The Idol shines to life, regaining its original coloration", new Color(75, 175, 255));
+                                BaseUtility.Chat(Lang.TheEquinox("WormAltarOK"), new Color(75, 175, 255));
                                 SpawnBoss(player, ModContent.NPCType<WormSpawn>(), false, player.Center);
                             }
                         }
