@@ -1245,7 +1245,7 @@ namespace AAMod.Globals
 
                 fargos.Call("AddSummon", 0f, "AAMod", "IntimidatingMushroom", AAWorld.downedMonarch, 20000);
                 fargos.Call("AddSummon", 0.1f, "AAMod", "ConfusingMushroom", AAWorld.downedFungus, 20000);
-                fargos.Call("AddSummon", 2f, "AAMod", Main.rand.Next(2) == 0 ? "CuriousClaw" : "InterestingClaw", AAWorld.downedGrips, 80000);
+                fargos.Call("AddSummon", 2f, "AAMod", "InterestingClaw", AAWorld.downedGrips, 80000);
                 fargos.Call("AddSummon", 2.5f, "AAMod", "Toadstool", AAWorld.downedToad, 80000);
                 fargos.Call("AddSummon", 3.5f, "AAMod", "DragonBell", AAWorld.downedBrood, 100000);
                 fargos.Call("AddSummon", 3.5f, "AAMod", "HydraChow", AAWorld.downedHydra, 100000);
