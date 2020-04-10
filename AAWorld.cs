@@ -609,7 +609,7 @@ namespace AAMod
                 BogwoodConvert(progress);
             }));
 
-            tasks.Insert(shiniesIndex2 + 9, new PassLegacy("Hoard", delegate (GenerationProgress progress)
+            tasks.Insert(shiniesIndex2 + 8, new PassLegacy("Hoard", delegate (GenerationProgress progress)
             {
                 Hoard(progress);
             }));
