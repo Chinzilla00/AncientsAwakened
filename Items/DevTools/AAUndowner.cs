@@ -49,6 +49,9 @@ Non-Consumable");
             AAWorld.downedAthena = false;
             AAWorld.downedAnubis = false;
             AAWorld.downedGreed = false;
+            AAWorld.downedAthenaA = false;
+            AAWorld.downedAnubisA = false;
+            AAWorld.downedGreedA = false;
             return true;
         }
     }
