@@ -17,8 +17,8 @@ namespace AAMod.Projectiles.Anubis
         }
         public override void SetDefaults()
         {
-            projectile.width = 24;
-            projectile.height = 64;
+            projectile.width = 48;
+            projectile.height = 128;
             projectile.aiStyle = -1;
             projectile.penetrate = -1;
             projectile.friendly = true;
@@ -56,7 +56,7 @@ namespace AAMod.Projectiles.Anubis
 
             if (projectile.frame < 5)
             {
-                if (projectile.frameCounter++ > 3)
+                if (projectile.frameCounter++ > 2)
                 {
                     projectile.frameCounter = 0;
                     projectile.frame++;
@@ -67,20 +67,20 @@ namespace AAMod.Projectiles.Anubis
                 projectile.frame = 5;
             }
 
-            if (internalAI[0]++ > 90)
+            if (internalAI[0]++ > 40)
             {
                 if (projectile.ai[0] == 0)
                 {
                     if (projectile.velocity.X < 12)
                     {
-                        projectile.velocity.X += .05f;
+                        projectile.velocity.X += .1f;
                     }
                 }
                 else if (projectile.ai[0] == 1)
                 {
                     if (projectile.velocity.X > -12)
                     {
-                        projectile.velocity.X -= .05f;
+                        projectile.velocity.X -= .1f;
                     }
                     projectile.direction = projectile.spriteDirection = -1;
                 }
