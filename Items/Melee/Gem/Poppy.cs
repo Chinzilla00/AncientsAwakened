@@ -28,11 +28,6 @@ namespace AAMod.Items.Melee.Gem   //where is located
             item.UseSound = SoundID.Item1;       
             item.autoReuse = true;   
             item.useTurn = true;
-            item.shootSpeed = 16f;
-
-            glowmaskTexture = "Glowmasks/" + GetType().Name + "_Glow";
-            glowmaskDrawType = GLOWMASKTYPE_SWORD;
-            glowmaskDrawColor = Color.White;
         }
 
         public override void AddRecipes()  //How to craft this sword
