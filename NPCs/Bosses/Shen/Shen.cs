@@ -412,6 +412,7 @@ namespace AAMod.NPCs.Bosses.Shen
                         {
                             Vector2 spawnPos = npc.Center;
                             spawnPos.X += 250 * (npc.Center.X < player.Center.X ? 1 : -1);
+                            spawnPos.Y -= 25;
                             Vector2 vel = (player.Center - spawnPos) / 30;
                             if (vel.Length() < 25)
                                 vel = Vector2.Normalize(vel) * 25;
@@ -533,7 +534,7 @@ namespace AAMod.NPCs.Bosses.Shen
                                 if ((dir == -1 && npc.velocity.X < 0) || (dir == 1 && npc.velocity.X > 0)) vel.X += npc.velocity.X;
                                 vel.Y += npc.velocity.Y;
                                 infernoPos += npc.Center;
-                                infernoPos.Y -= 20;
+                                infernoPos.Y -= 70;
                             }
                             //REMEMBER: PROJECTILES DOUBLE DAMAGE so to get an accurate damage count you divide it by 2!
                             float InfernoType;
