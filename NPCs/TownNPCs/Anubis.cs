@@ -366,7 +366,7 @@ namespace AAMod.NPCs.TownNPCs
                     }
 
                     Main.npcChatText = Lang.TownNPCAnubis("GetBookChat");
-                    //player.QuickSpawnItem(Terraria.ModLoader.ModContent.ItemType<Items.Magic.AnubisTome>(), 1);
+                    player.QuickSpawnItem(ModContent.ItemType<Items.Magic.AnubisBlockBook>(), 1);
 
                     Main.PlaySound(24, -1, -1, 1);
                     return;

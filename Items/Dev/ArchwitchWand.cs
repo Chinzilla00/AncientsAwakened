@@ -2,6 +2,7 @@ using Terraria;
 using Terraria.ModLoader;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
+using Terraria.Audio;
 
 namespace AAMod.Items.Dev
 {
@@ -29,6 +30,9 @@ namespace AAMod.Items.Dev
             item.shoot = mod.ProjectileType("ArchwitchSorm");
             item.shootSpeed = 10;
             item.noMelee = true;
+            item.mana = 6;
+            item.UseSound = new LegacySoundStyle(2, 105, Terraria.Audio.SoundType.Sound);
+            item.autoReuse = true;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

@@ -1,7 +1,7 @@
 using Terraria.ModLoader;
 using Terraria.ID;
 
-namespace AAMod.Items.Blocks
+namespace AAMod.Items.Blocks.Boxes
 {
     public class MireBox : BaseAAItem
 	{
@@ -31,8 +31,8 @@ namespace AAMod.Items.Blocks
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.MusicBox);
             recipe.AddIngredient(null, "Bogwood", 20);
-            recipe.AddTile(TileID.WorkBenches);
-            recipe.SetResult(this);
+			recipe.AddTile(TileID.Sawmill);
+			recipe.SetResult(this);
             recipe.AddRecipe();
         }
     }

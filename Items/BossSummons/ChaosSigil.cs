@@ -47,6 +47,11 @@ Non-Consumable");
         // We use the CanUseItem hook to prevent a player from using this item while the boss is present in the world.
         public override bool CanUseItem(Player player)
         {
+            if (!AAWorld.downedAkuma || !AAWorld.downedYamata)
+            {
+                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat("The Sigil does nothing.", Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
+                return false;
+            }
             if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Yamata.Yamata>()) || NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Yamata.Awakened.YamataA>()))
             {
                 if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ChaosSigilFalse1"), Color.DarkMagenta.R, Color.DarkMagenta.G, Color.DarkMagenta.B, false);
@@ -102,6 +107,8 @@ Non-Consumable");
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "DraconianSigil", 1);
             recipe.AddIngredient(null, "DreadSigil", 1);
+            recipe.AddIngredient(null, "CrucibleScale", 5);
+            recipe.AddIngredient(null, "DreadScale", 5);
             recipe.AddIngredient(null, "Discordium", 10);
             recipe.AddTile(null, "ACS");
             recipe.SetResult(this, 1);

@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework; using Microsoft.Xna.Framework.Graphics; using Ter
 using Terraria;
 using Terraria.ID;
 
-namespace AAMod.Items.Blocks
+namespace AAMod.Items.Blocks.Boxes
 {
 	public class Equibox : BaseAAItem
 	{

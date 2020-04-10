@@ -315,7 +315,7 @@ Common.AATownNPCInfo=Disables this mod's town npcs from spawning, for those who'
 Common.DisableBossDialogue=Disable Boss Dialogue
 Common.DisableBossDialogueInfo=Disables dialogue from bosses to prevent chatspam. Also makes animations that have boss dialogue go by a little quicker.
 Common.AAStyleMainPage=The AA style Main Menu
-Common.AAStyleMainPageInfo=Using the AA style Main Menu instead of the Vanilla menu. If you prepare to player AA and other large content mod together, you'd better disable this one.
+Common.AAStyleMainPageInfo=Enables the AA style Main Menu instead of the Vanilla menu. If you wish to play AA and any other large content mod together, you should disable this.
 
 //GlobalNPCSInfo
 

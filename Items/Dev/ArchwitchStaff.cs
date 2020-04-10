@@ -1,4 +1,6 @@
 using Terraria;
+using Terraria.Audio;
+using Terraria.ID;
 
 namespace AAMod.Items.Dev
 {
@@ -49,6 +51,7 @@ Right click to fire explosive magic bolts");
                 item.autoReuse = true;
                 item.useTime = 5;
                 item.useAnimation = 15;
+                item.UseSound = new LegacySoundStyle(2, 105, Terraria.Audio.SoundType.Sound);
             }
             else
             {
@@ -60,6 +63,7 @@ Right click to fire explosive magic bolts");
                 item.autoReuse = false;
                 item.useTime = 6;
                 item.useAnimation = 6;
+                item.UseSound = SoundID.Item1;
             }
             return base.CanUseItem(player);
         }
