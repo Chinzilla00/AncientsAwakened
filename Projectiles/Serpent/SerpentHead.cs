@@ -165,7 +165,7 @@ namespace AAMod.Projectiles.Serpent
             }
 
             float DamageBoost = Main.player[projectile.owner].minionDamage;
-            projectile.damage = (int)(DamageBoost > 0f? ((10 + projectile.localAI[0] - 1) * DamageBoost) : 1);
+            projectile.damage = (int)(DamageBoost > 0f? ((10 + (projectile.localAI[0] > 10? 10 : (projectile.localAI[0] - 1))) * DamageBoost) : 1);
         }
     }
 
