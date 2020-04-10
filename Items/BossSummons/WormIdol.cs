@@ -2,6 +2,7 @@ using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.BossSummons
@@ -33,6 +34,19 @@ It looks like it hasn't been touched in years");
                     Projectile.NewProjectile(player.Center.X, player.Center.Y, 0f, -1f, mod.ProjectileType("WormPointer"), 0, 0f, Main.myPlayer, 0f, 0f);
                 }
             }
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.MechanicalWorm, 1);
+            recipe.AddIngredient(ItemID.LunarBar, 10);
+            recipe.AddIngredient(ItemID.FragmentSolar, 5);
+            recipe.AddIngredient(ItemID.FragmentStardust, 5);
+            recipe.AddIngredient(null, "SoulFragment", 5);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
         }
     }
 

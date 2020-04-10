@@ -8,7 +8,7 @@ namespace AAMod.Items.Boss.Sagittarius
     {
         public override void SetStaticDefaults()
 		{
-            DisplayName.SetDefault("Zero Star");
+            DisplayName.SetDefault("Stalion's Star");
             Tooltip.SetDefault("A spinning blade of doom");
         }
 		public override void SetDefaults()
@@ -49,7 +49,7 @@ namespace AAMod.Items.Boss.Sagittarius
                 ModRecipe recipe = new ModRecipe(mod);
                 recipe.AddIngredient(null, "Doomite", 25);
                 recipe.AddIngredient(null, "DoomiteScrap", 15);
-                recipe.AddTile(null, "ACS");
+                recipe.AddTile(TileID.Anvils);
                 recipe.SetResult(this);
                 recipe.AddRecipe();
             }

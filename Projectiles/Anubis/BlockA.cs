@@ -73,14 +73,14 @@ namespace AAMod.Projectiles.Anubis
                 {
                     if (projectile.velocity.X < 12)
                     {
-                        projectile.velocity.X += .1f;
+                        projectile.velocity.X += .15f;
                     }
                 }
                 else if (projectile.ai[0] == 1)
                 {
                     if (projectile.velocity.X > -12)
                     {
-                        projectile.velocity.X -= .1f;
+                        projectile.velocity.X -= .15f;
                     }
                     projectile.direction = projectile.spriteDirection = -1;
                 }
@@ -107,7 +107,7 @@ namespace AAMod.Projectiles.Anubis
         {
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 6, 0, 0);
 
-            BaseDrawing.DrawAfterimage(sb, Main.projectileTexture[projectile.type], 0, projectile, 2f, 1f, Math.Abs((int)projectile.velocity.X), true, 0f, 0f, dColor, frame, 6);
+            BaseDrawing.DrawAfterimage(sb, Main.projectileTexture[projectile.type], 0, projectile, 2f, 1f, Math.Abs((int)projectile.velocity.X), true, -2f, 0f, dColor, frame, 6);
 
             BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 6, frame, dColor, true);
             return false;

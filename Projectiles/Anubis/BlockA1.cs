@@ -72,14 +72,14 @@ namespace AAMod.Projectiles.Anubis
                 {
                     if (projectile.velocity.Y < 12)
                     {
-                        projectile.velocity.Y += .1f;
+                        projectile.velocity.Y += .15f;
                     }
                 }
                 else if (projectile.ai[0] == 1)
                 {
                     if (projectile.velocity.Y > -12)
                     {
-                        projectile.velocity.Y -= .1f;
+                        projectile.velocity.Y -= .15f;
                     }
                     projectile.direction = projectile.spriteDirection = -1;
                 }
