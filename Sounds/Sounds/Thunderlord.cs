@@ -1,7 +1,8 @@
 using Microsoft.Xna.Framework.Audio;
+using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.Sounds.Sounds
+namespace AvesMod.Sounds.Sounds
 {
     public class Thunderlord : ModSound
     {
@@ -10,6 +11,8 @@ namespace AAMod.Sounds.Sounds
             if (soundInstance.State == SoundState.Playing)
                 return null;
             soundInstance.Volume = volume * 1f;
+            soundInstance.Pan = pan;
+            soundInstance.Pitch = Main.rand.Next(-4, 4) * .05f;
             return soundInstance;
         }
     }
