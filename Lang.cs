@@ -4966,7 +4966,7 @@ Fishy";
                         case "AnubisInfo":
                         return " in the desert";
                         case "AthenaA":
-                        return "Athena Rematch";
+                        return "Olympian Athena";
                         case "AthenaAInfo":
                         return "Defeat Athena post-Moon Lord";
                         case "GreedA":
