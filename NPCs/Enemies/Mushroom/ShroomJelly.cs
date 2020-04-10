@@ -29,6 +29,8 @@ namespace AAMod.NPCs.Enemies.Mushroom
             npc.value = 1000f;
             npc.alpha = 20;
             npc.npcSlots = 0.3f;
+            banner = npc.type;
+			bannerItem = mod.ItemType("ShroomJellyBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)

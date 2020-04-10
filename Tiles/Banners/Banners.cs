@@ -148,6 +148,12 @@ namespace AAMod.Tiles.Banners
 				case 55: dropName = "Night Guard"; break;
 				case 56: dropName = "Sun Watcher"; break;
 				case 57: dropName = "Lung"; break;
+				case 58: dropName = "Mushbug"; break;
+				case 59: dropName = "ShroomJelly"; break;
+				case 60: dropName = "MushroomCrab"; break;
+				case 61: dropName = "MushroomZombie"; break;
+				case 62: dropName = "InfernoSandShark"; break;
+				case 63: dropName = "MireSandShark"; break;
             }
 			if(spaces) //fix for display names
 			{
@@ -210,6 +216,12 @@ namespace AAMod.Tiles.Banners
 					case 55: dropName = "Nightguard"; break;
 					case 56: dropName = "Sunwatcher"; break;
 					case 57: dropName = "Lung"; break;
+					case 58: dropName = "Mushbug"; break;
+					case 59: dropName = "ShroomJelly"; break;
+					case 60: dropName = "MushroomCrab"; break;
+					case 61: dropName = "MushroomZombie"; break;
+					case 62: dropName = "InfernoSandShark"; break;
+					case 63: dropName = "MireSandShark"; break;
 				}				
 			}
 			if(!string.IsNullOrEmpty(dropName)) dropName = dropName.Replace(" ", null);
@@ -234,6 +246,7 @@ namespace AAMod.Tiles.Banners
 
                 Player player = Main.LocalPlayer;	
 				player.NPCBannerBuff[mod.NPCType(name)] = true;
+				if(name == "MushroomZombie") player.NPCBannerBuff[mod.NPCType("MushroomZombie2")] = true;
                 player.hasBanner = true;
             }
         }

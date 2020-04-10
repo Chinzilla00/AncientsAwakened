@@ -8,7 +8,7 @@ namespace AAMod.NPCs.Enemies.Mire
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Sand Shark");
+			DisplayName.SetDefault("Mire Sand Shark");
 			Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.SandShark];
 		}
 
@@ -16,6 +16,8 @@ namespace AAMod.NPCs.Enemies.Mire
 		{
             npc.CloneDefaults(NPCID.SandShark);
             animationType = NPCID.SandShark;
+			banner = npc.type;
+			bannerItem = mod.ItemType("MireSandSharkBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)

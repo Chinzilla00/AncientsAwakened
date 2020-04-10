@@ -8,7 +8,7 @@ namespace AAMod.NPCs.Enemies.Inferno
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Sand Shark");
+            DisplayName.SetDefault("Inferno Sand Shark");
             Main.npcFrameCount[npc.type] = Main.npcFrameCount[NPCID.SandShark];
         }
 
@@ -16,6 +16,8 @@ namespace AAMod.NPCs.Enemies.Inferno
         {
             npc.CloneDefaults(NPCID.SandShark);
             animationType = NPCID.SandShark;
+            banner = npc.type;
+			bannerItem = mod.ItemType("InfernoSandSharkBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)

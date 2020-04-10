@@ -28,6 +28,8 @@ namespace AAMod.NPCs.Enemies.Mushroom
             npc.value = 1300f;
             npc.buffImmune[31] = false;
             npc.npcSlots = 0.3f;
+            banner = npc.type;
+			bannerItem = mod.ItemType("MushroomCrabBanner");
         }
 
         public override void AI()

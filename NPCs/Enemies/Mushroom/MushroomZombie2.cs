@@ -27,6 +27,8 @@ namespace AAMod.NPCs.Enemies.Mushroom
             npc.knockBackResist = 0.4f;
             npc.value = 1000f;
             npc.buffImmune[31] = false;
+            banner = npc.type;
+			bannerItem = mod.ItemType("MushroomZombieBanner");
         }
 
         public override void AI()
