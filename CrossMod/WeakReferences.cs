@@ -1243,31 +1243,31 @@ namespace AAMod.Globals
                 // AddSummon, order or value in terms of vanilla bosses, your mod internal name, summon   
                 //item internal name, inline method for retrieving downed value, price to sell for in copper
 
-                fargos.Call("AddSummon", 0f, "AAMod", "IntimidatingMushroom", AAWorld.downedMonarch, 20000);
-                fargos.Call("AddSummon", 0.1f, "AAMod", "ConfusingMushroom", AAWorld.downedFungus, 20000);
-                fargos.Call("AddSummon", 2f, "AAMod", "InterestingClaw", AAWorld.downedGrips, 80000);
-                fargos.Call("AddSummon", 2.5f, "AAMod", "Toadstool", AAWorld.downedToad, 80000);
-                fargos.Call("AddSummon", 3.5f, "AAMod", "DragonBell", AAWorld.downedBrood, 100000);
-                fargos.Call("AddSummon", 3.5f, "AAMod", "HydraChow", AAWorld.downedHydra, 100000);
-                fargos.Call("AddSummon", 5.5f, "AAMod", "SubzeroCrystal", AAWorld.downedSerpent, 100000);
-                fargos.Call("AddSummon", 5.5f, "AAMod", "DjinnLamp", AAWorld.downedDjinn, 100000);
-                fargos.Call("AddSummon", 5.7f, "AAMod", "Lifescanner", AAWorld.downedSag, 200000);
-                fargos.Call("AddSummon", 9.7f, "AAMod", "Scepter", AAWorld.downedAnubis, 400000);
-                fargos.Call("AddSummon", 9.7f, "AAMod", "Scepter", AAWorld.downedAnubis, 400000);
-                fargos.Call("AddSummon", 11.5f, "AAMod", "Owl", AAWorld.downedAthena, 500000);
-                fargos.Call("AddSummon", 11.5f, "AAMod", "GoldenGrub", AAWorld.downedGreed, 500000);
-                fargos.Call("AddSummon", 11.5f, "AAMod", "GoldenCarrot", AAWorld.downedRajah, 600000);
-                fargos.Call("AddSummon", 16f, "AAMod", "EquinoxWorm", AAWorld.downedEquinox, 1000000);
-                fargos.Call("AddSummon", 17f, "AAMod", "FlamesOfAnarchy", AAWorld.downedSisters, 1000000);
-                fargos.Call("AddSummon", 18f, "AAMod", "DraconianSigil", AAWorld.downedAkuma, 1000000);
-                fargos.Call("AddSummon", 18.05f, "AAMod", "DraconianRune", AAWorld.downedAkuma && Main.expertMode, 2000000);
-                fargos.Call("AddSummon", 18.1f, "AAMod", "DreadSigil", AAWorld.downedYamata, 1000000);
-                fargos.Call("AddSummon", 18.05f, "AAMod", "DreadRune", AAWorld.downedYamata && Main.expertMode, 2000000);
-                fargos.Call("AddSummon", 18.2f, "AAMod", "ZeroTesseract", AAWorld.downedZero, 1000000);
-                fargos.Call("AddSummon", 18.05f, "AAMod", "ZeroRune", AAWorld.downedZero && Main.expertMode, 2000000);
-                fargos.Call("AddSummon", 19f, "AAMod", "DiamondCarrot", AAWorld.downedRajahsRevenge, 2500000);
-                fargos.Call("AddSummon", 20f, "AAMod", "ChaosSigil", AAWorld.downedShen, 2500000);
-                fargos.Call("AddSummon", 20.5f, "AAMod", "ChaosRune", AAWorld.downedShen && Main.expertMode, 4000000);
+                fargos.Call("AddSummon", 0f, "AAMod", "IntimidatingMushroom", (Func<bool>)(() => AAWorld.downedMonarch), 20000);
+                fargos.Call("AddSummon", 0.1f, "AAMod", "ConfusingMushroom",(Func<bool>)(() => AAWorld.downedFungus), 20000);
+                fargos.Call("AddSummon", 2f, "AAMod", "InterestingClaw", (Func<bool>)(() => AAWorld.downedGrips), 80000);
+                fargos.Call("AddSummon", 2.5f, "AAMod", "Toadstool", (Func<bool>)(() => AAWorld.downedToad), 80000);
+                fargos.Call("AddSummon", 3.5f, "AAMod", "DragonBell", (Func<bool>)(() => AAWorld.downedBrood), 100000);
+                fargos.Call("AddSummon", 3.5f, "AAMod", "HydraChow", (Func<bool>)(() => AAWorld.downedHydra), 100000);
+                fargos.Call("AddSummon", 5.5f, "AAMod", "SubzeroCrystal", (Func<bool>)(() => AAWorld.downedSerpent), 100000);
+                fargos.Call("AddSummon", 5.5f, "AAMod", "DjinnLamp", (Func<bool>)(() => AAWorld.downedDjinn), 100000);
+                fargos.Call("AddSummon", 5.7f, "AAMod", "Lifescanner", (Func<bool>)(() => AAWorld.downedSag), 200000);
+                fargos.Call("AddSummon", 9.7f, "AAMod", "Scepter", (Func<bool>)(() => AAWorld.downedAnubis), 400000);
+                fargos.Call("AddSummon", 9.7f, "AAMod", "Scepter", (Func<bool>)(() => AAWorld.downedAnubis), 400000);
+                fargos.Call("AddSummon", 11.5f, "AAMod", "Owl", (Func<bool>)(() => AAWorld.downedAthena), 500000);
+                fargos.Call("AddSummon", 11.5f, "AAMod", "GoldenGrub", (Func<bool>)(() => AAWorld.downedGreed), 500000);
+                fargos.Call("AddSummon", 11.5f, "AAMod", "GoldenCarrot", (Func<bool>)(() => AAWorld.downedRajah), 600000);
+                fargos.Call("AddSummon", 16f, "AAMod", "EquinoxWorm", (Func<bool>)(() => AAWorld.downedEquinox), 1000000);
+                fargos.Call("AddSummon", 17f, "AAMod", "FlamesOfAnarchy", (Func<bool>)(() => AAWorld.downedSisters), 1000000);
+                fargos.Call("AddSummon", 18f, "AAMod", "DraconianSigil", (Func<bool>)(() => AAWorld.downedAkuma), 1000000);
+                fargos.Call("AddSummon", 18.05f, "AAMod", "DraconianRune", (Func<bool>)(() => AAWorld.downedAkuma && Main.expertMode), 2000000);
+                fargos.Call("AddSummon", 18.1f, "AAMod", "DreadSigil", (Func<bool>)(() => AAWorld.downedYamata), 1000000);
+                fargos.Call("AddSummon", 18.05f, "AAMod", "DreadRune", (Func<bool>)(() => AAWorld.downedYamata && Main.expertMode), 2000000);
+                fargos.Call("AddSummon", 18.2f, "AAMod", "ZeroTesseract", (Func<bool>)(() => AAWorld.downedZero), 1000000);
+                fargos.Call("AddSummon", 18.05f, "AAMod", "ZeroRune", (Func<bool>)(() => AAWorld.downedZero && Main.expertMode), 2000000);
+                fargos.Call("AddSummon", 19f, "AAMod", "DiamondCarrot", (Func<bool>)(() => AAWorld.downedRajahsRevenge), 2500000);
+                fargos.Call("AddSummon", 20f, "AAMod", "ChaosSigil", (Func<bool>)(() => AAWorld.downedShen), 2500000);
+                fargos.Call("AddSummon", 20.5f, "AAMod", "ChaosRune", (Func<bool>)(() => AAWorld.downedShen && Main.expertMode), 4000000);
             }
         }
     }
