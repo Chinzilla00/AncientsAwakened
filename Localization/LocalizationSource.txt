@@ -302,9 +302,6 @@ BuffDescription.TerraSummon=An array of unity constructs at your disposal
 BuffName.TerraWizard=Terra Wizard
 BuffDescription.TerraWizard=Magic
 
-BuffName.TiedemiesBuff=Tiedemies
-BuffDescription.TiedemiesBuff="He will light your way"
-
 BuffName.TimeFrozen=Time Frozen
 
 BuffName.TrueHallowedPrism=True Hallow Prism
@@ -362,7 +359,7 @@ BuffDescription.DroneCool=RELOADING. DAMAGE COMPENSATION PROVIDED.
 // AAMod.Items.Armor.Champion
 
 
-BuffName.RageBuff=Rajah's Rage
+BuffName.RageBuff=Defender's Rage
 BuffDescription.RageBuff=A champion of Terraria never backs down
 
 BuffName.RageCool=Rajah's Rage
@@ -510,7 +507,7 @@ ItemTooltip.OlympianWings=Allows flight and slow fall\nGrants a dash while flyin
 ItemName.RadiumWings=Radium Wings
 ItemTooltip.RadiumWings=Allows flight and slow fall
 
-ItemName.TerraWings=TerraWings Wings
+ItemName.TerraWings=Terra Wings
 ItemTooltip.TerraWings=Allows flight and slow fall
 
 ItemName.VultureWings=Vulture Wings
@@ -650,7 +647,7 @@ ItemName.ChaosKabuto=Chaos Kabuto
 ItemTooltip.ChaosKabuto=25% increased melee damage
 
 ItemName.ChaosMask=Chaos Mask
-ItemTooltip.ChaosMask=Decreases mana usage by 30%\nIncreases magic damage by 20%\nIncreases magic crit by 20%\nAllows you to breath underwater
+ItemTooltip.ChaosMask=Increases maximum mana by 80\nIncreases magic damage by 20%\nIncreases magic crit by 20%\nAllows you to breath underwater
 
 ItemName.ChaosVisor=Chaos Visor
 ItemTooltip.ChaosVisor=30% increased minion damage
@@ -1003,7 +1000,7 @@ ItemName.RadiumHelmet=Radium Helmet
 ItemTooltip.RadiumHelmet=15% increased melee damage\nShines with the light of a starry night sky
 
 ItemName.RadiumMask=Radium Mask
-ItemTooltip.RadiumMask=15% increased magic damage\nIncreases maximum mana by 80 \nShines with the light of a starry night sky
+ItemTooltip.RadiumMask=15% increased magic damage\nIncreases maximum mana by 100\nShines with the light of a starry night sky
 
 ItemName.RadiumPlatemail=Radium Platemail
 ItemTooltip.RadiumPlatemail=25% increased damage \nShines with the light of a starry night sky
@@ -1053,6 +1050,28 @@ ItemTooltip.StripeManPants=Get all of the fisher skill effects\nWhen fish swallo
 
 ItemName.StripeManShirt=Stripeman's Lucky Shirt
 ItemTooltip.StripeManShirt=Displays everything\nYou have chance to get gold coins in stoneblocks\nYou have more chance to meet with rare creatures.\nYou have more chance to get better things in pots\nIf you have enough money, you can resist an attack by losting all your money.\nHave the effect of Arctic Diving Gear
+
+
+// AAMod.Items.Armor.Terra
+
+
+ItemName.TerraGreaves=Terra Greaves
+ItemTooltip.TerraGreaves=10% increased movement speed\n5% increased damage
+
+ItemName.TerraHelm=Terra Helm
+ItemTooltip.TerraHelm=22% increased melee damage\n9% increased melee speed
+
+ItemName.TerraHood=Terra Hood
+ItemTooltip.TerraHood=Increases maximum mana by 100\nIncreases magic damage by 17%\nIncreases magic crit by 15%
+
+ItemName.TerraMask=Terra Mask
+ItemTooltip.TerraMask=9% Increased Minion damage
+
+ItemName.TerraPlate=Terra Chestplate
+ItemTooltip.TerraPlate=5% increased damage
+
+ItemName.TerraVisor=Terra Visor
+ItemTooltip.TerraVisor=24% Increased ranged damage\n25% Reduced Ammo Consumption\nGrants hunter & night vision
 
 
 // AAMod.Items.Armor.Tribal
@@ -1136,16 +1155,30 @@ ItemName.FlamebruteBanner=
 ItemName.FlamespitterBanner=
 
 ===UNKNWN===
+ItemName.FogAnglerBanner=
+
+===UNKNWN===
+ItemName.FungusFrogBanner=
+
+===UNKNWN===
 ItemName.HydraClawBanner=
 
 ===UNKNWN===
 ItemName.InfernalSlimeBanner=
 
 ===UNKNWN===
+ItemName.InfernoGhoulBanner=
+
+===UNKNWN===
 ItemName.InfernoSalamanderBanner=
 
 ===UNKNWN===
+ItemName.InfernoSandSharkBanner=
+
+===UNKNWN===
 ItemName.KappaBanner=
+
+ItemName.LungBanner=Ancient Lung Banner
 
 ===UNKNWN===
 ItemName.MadnessBatBanner=
@@ -1159,34 +1192,104 @@ ItemName.MagmalgamBanner=
 ItemName.MiniDjinnBanner=Djinn Banner
 
 ===UNKNWN===
+ItemName.MireGhoulBanner=
+
+===UNKNWN===
 ItemName.MiregronBanner=
+
+===UNKNWN===
+ItemName.MireSandSharkBanner=
 
 ===UNKNWN===
 ItemName.MireSlimeBanner=
 
 ===UNKNWN===
+ItemName.MiresquitoBanner=
+
+===UNKNWN===
 ItemName.MossterBanner=
+
+===UNKNWN===
+ItemName.MushbugBanner=
+
+===UNKNWN===
+ItemName.MushroomCrabBanner=
+
+===UNKNWN===
+ItemName.MushroomZombieBanner=
 
 ===UNKNWN===
 ItemName.NewtBanner=
 
 ===UNKNWN===
+ItemName.NightGuardBanner=
+
+===UNKNWN===
 ItemName.NullBanner=
+
+===UNKNWN===
+ItemName.PurityCrawlerBanner=
+
+===UNKNWN===
+ItemName.PuritySphereBanner=
+
+===UNKNWN===
+ItemName.PuritySquidBanner=
+
+===UNKNWN===
+ItemName.PurityWeaverBanner=
 
 ===UNKNWN===
 ItemName.SearcherBanner=
 
 ===UNKNWN===
+ItemName.SeraphBanner=
+
+===UNKNWN===
 ItemName.ShadowScoutBanner=
+
+===UNKNWN===
+ItemName.ShroomJellyBanner=
 
 ===UNKNWN===
 ItemName.SnakeBanner=
 
 ===UNKNWN===
+ItemName.SoulsuckerBanner=
+
+===UNKNWN===
+ItemName.StoneSearcherBanner=
+
+===UNKNWN===
+ItemName.SunWatcherBanner=
+
+===UNKNWN===
+ItemName.TerraCrawlerBanner=
+
+===UNKNWN===
 ItemName.TerraDeadshotBanner=
+
+ItemName.TerraProbeBanner=Unity Probe Banner
+
+===UNKNWN===
+ItemName.TerraSerpentBanner=
+
+===UNKNWN===
+ItemName.TerraSphereBanner=
+
+===UNKNWN===
+ItemName.TerraSquidBanner=
+
+===UNKNWN===
+ItemName.TerraSquireBanner=
 
 ===UNKNWN===
 ItemName.TerraWarlockBanner=
+
+ItemName.TerraWatcherBanner=Unity Watcher Banner
+
+===UNKNWN===
+ItemName.TerraWeaverBanner=
 
 ===UNKNWN===
 ItemName.TerraWizardBanner=
@@ -1195,9 +1298,15 @@ ItemName.TerraWizardBanner=
 ItemName.ThixxieBanner=
 
 ===UNKNWN===
+ItemName.TinyToadBanner=
+
+===UNKNWN===
 ItemName.ToxitoadBanner=
 
 ItemName.VoidScoutBanner=Scout Banner
+
+===UNKNWN===
+ItemName.VortexBanner=
 
 ===UNKNWN===
 ItemName.WyrmBanner=
@@ -1252,6 +1361,136 @@ ItemName.BogwoodWall=Bogwood Wall
 ItemName.BogwoodWorkbench=Bogwood Workbench
 
 
+// AAMod.Items.Blocks.Boxes
+
+
+ItemName.AcropolisBox=Acropolis Music Box
+ItemTooltip.AcropolisBox=Plays 'Palace in the Sky' by Turquoise
+
+ItemName.AkumaABox=Akuma Awakened Music Box
+ItemTooltip.AkumaABox=Plays 'Dawn of the Dragon' by Universe
+
+ItemName.AkumaBox=Akuma Music Box
+ItemTooltip.AkumaBox=Plays 'Trial By Fire' by Saucecoie
+
+ItemName.AnubisBox=Anubis Music Box
+ItemTooltip.AnubisBox=Plays 'Strings of Judgement' by Universe
+
+ItemName.AnubisFBox=Forsaken Anubis Music Box
+ItemTooltip.AnubisFBox=Plays 'Purgatorium' by Universe
+
+ItemName.AthenaABox=Olympian Athena Music Box
+ItemTooltip.AthenaABox=Plays 'Goddess of Those Winged' by Turquoise
+
+ItemName.AthenaBox=Athena Music Box
+ItemTooltip.AthenaBox=Plays 'Magisaint' by Turquoise
+
+ItemName.BroodBox=Broodmother Music Box
+ItemTooltip.BroodBox=Plays 'Blazing Fury' by Spectral Aves
+
+ItemName.DjinnBox=Desert Djinn Music Box
+ItemTooltip.DjinnBox=Plays 'The Dust Bowl' by Universe
+
+ItemName.Equibox=Equinox Worms Music Box
+ItemTooltip.Equibox=Plays 'Orbittal Equilibrium' by Charlie Debnam
+
+ItemName.FateBox=True Void Music Box
+ItemTooltip.FateBox=Plays 'Nihil' by Charlie Debnam
+
+ItemName.FungusBox=Feudal Fungus Music Box
+ItemTooltip.FungusBox=Plays 'Bioluminescent Beatdown' by Spectral Aves
+
+ItemName.GreedABox=Worm King Music Box
+ItemTooltip.GreedABox=Plays 'Ira De Riquezas Perdidas' by Universe
+
+ItemName.GreedBox=Greed Music Box
+ItemTooltip.GreedBox=Plays 'Gold Digger' by Universe
+
+ItemName.GripsBox=Grips of Chaos Music Box
+ItemTooltip.GripsBox=Plays 'Twin Terror' by Spectral Aves
+
+ItemName.HoardBox=Hoard Music Box
+ItemTooltip.HoardBox=Plays 'Cavern of Coveted Treasures' by OmegaFerretMusic
+
+ItemName.HydraBox=Hydra Music Box
+ItemTooltip.HydraBox=Plays 'Abyssal Wrath' by Spectral Aves
+
+ItemName.InfernoBox=Inferno Surface Music Box
+ItemTooltip.InfernoBox=Plays 'Flame-Razed Rock' by Karamitasu
+
+ItemName.InfernoNightBox=Inferno Night Music Box
+ItemTooltip.InfernoNightBox=Plays 'Burnt to Ashes' by Quicksilvur
+
+ItemName.InfernoUBox=Inferno Underground Music Box
+ItemTooltip.InfernoUBox=Plays 'Smolder' by OmegaFerretMusic
+
+ItemName.LakeBox=Lake of the Rising Moon Music Box
+ItemTooltip.LakeBox=Plays 'Lake of Souls' by Rockwizard
+
+ItemName.MireBox=Mire Surface Music Box
+ItemTooltip.MireBox=Plays 'Moonlit Marsh' by Charlie Debnam
+
+ItemName.MireDayBox=Mire Day Music Box
+ItemTooltip.MireDayBox=Plays 'Clouded in Mystery' by Charlie Debnam
+
+ItemName.MireUBox=Mire Underground Music Box
+ItemTooltip.MireUBox=Plays 'The Deepest Reaches' by Charlie Debnam
+
+ItemName.MonarchBox=Mushroom Monarch Music Box
+ItemTooltip.MonarchBox=Plays 'Fungal Face-off' by Spectral Aves
+
+ItemName.PagodaBox=Pagoda of the Rising Sun Music Box
+ItemTooltip.PagodaBox=Plays 'Scorched Tower' by Rockwizard
+
+ItemName.RajahBox=Rajah Rabbit Music Box
+ItemTooltip.RajahBox=Plays 'JUSTICE' by Spectral Aves
+
+ItemName.SagBox=Sagittarius Music Box
+ItemTooltip.SagBox=Plays 'Zodiac' by OmegaFerretMusic
+
+ItemName.SDBox=Sleeping Dragon Music Box
+ItemTooltip.SDBox=Plays 'Sleeping Dragon' by OmegaFerretMusic
+
+ItemName.SerpentBox=Subzero Serpent Music Box
+ItemTooltip.SerpentBox=Plays 'Burrowing Down' by Charlie Debnam
+
+ItemName.SGBox=Sleeping Giant Music Box
+ItemTooltip.SGBox=Plays 'Sleeping Giant' by LordCakeSpy
+
+ItemName.ShenABox=Shen Doragon Awakened Music Box
+ItemTooltip.ShenABox=Plays 'Blaze of Glory' by Charlie Debnam
+
+ItemName.ShenBox=Shen Doragon Music Box
+ItemTooltip.ShenBox=Plays 'Unyielding Discord' by Charlie Debnam
+
+ItemName.SistersBox=Sisters of Discord Music Box
+ItemTooltip.SistersBox=Plays 'Sisters of Anarchy' by Shadow Figure
+
+ItemName.StarBox=Celestial Stars Box
+ItemTooltip.StarBox=Plays 'Interstellar' by OmegaFerretMusic
+
+ItemName.TerrariumBox=Terrarium Music Box
+ItemTooltip.TerrariumBox=Plays 'Heart of the World' by Quicksilvur feat Charlie Debnam
+
+ItemName.ToadBox=Truffle Toad Music Box
+ItemTooltip.ToadBox=Plays 'TODESTOOL' by Spectral Aves
+
+ItemName.VoidBox=Void Music Box
+ItemTooltip.VoidBox=Plays 'What Once Was' by OmegaFerretMusic
+
+ItemName.YamataABox=Yamata Awakened Music Box
+ItemTooltip.YamataABox=Plays 'Abyssal Nightmare' by Universe
+
+ItemName.YamataBox=Yamata Music Box
+ItemTooltip.YamataBox=Plays 'Crescent of Madness' by Saucecoie
+
+ItemName.Zero2Box=Zero Awakened Music Box
+ItemTooltip.Zero2Box=Plays 'Doomsday Arrives' by Saucecoie
+
+ItemName.ZeroBox=Zero Music Box
+ItemTooltip.ZeroBox=Plays 'Entropy's Envoy' by Charlie Debnam
+
+
 // AAMod.Items.Blocks.Bricks
 
 
@@ -1283,36 +1522,12 @@ ItemName.RelicBrick=Relic Brick
 ItemName.Abyssium=Abyssium
 ItemTooltip.Abyssium=It's all mushy. Nasty.
 
-ItemName.AcropolisBox=Acropolis Music Box
-ItemTooltip.AcropolisBox=Plays 'Palace in the Sky' by Turquoise
-
-ItemName.AkumaABox=Akuma Awakened Music Box
-ItemTooltip.AkumaABox=Plays 'Dawn of the Dragon' by Universe
-
-ItemName.AkumaBox=Akuma Music Box
-ItemTooltip.AkumaBox=Plays 'Trial By Fire' by Saucecoie
-
-ItemName.AnubisBox=Anubis Music Box
-ItemTooltip.AnubisBox=Plays 'Strings of Judgement' by Universe
-
-ItemName.AnubisFBox=Forsaken Anubis Music Box
-ItemTooltip.AnubisFBox=Plays 'Wrath of the Forsaken' by Universe
-
 ItemName.Apocalyptite=Apocalyptite
-
-ItemName.AthenaABox=Olympian Athena Music Box
-ItemTooltip.AthenaABox=Plays 'Goddess of Those Winged' by Turquoise
-
-ItemName.AthenaBox=Athena Music Box
-ItemTooltip.AthenaBox=Plays 'Magisaint' by Turquoise
 
 ItemName.BinaryReassembler=Binary Fragmentation Reassembler
 ItemTooltip.BinaryReassembler=Reality has never been so easy to manipulate
 
 ItemName.Bogwood=Bogwood
-
-ItemName.BroodBox=Broodmother Music Box
-ItemTooltip.BroodBox=Plays 'Blazing Fury' by Spectral Aves
 
 ItemName.ChaosCrucible=Chaos Crucible
 ItemTooltip.ChaosCrucible=Even chaos requires a steady hand and a gigantic forge to work with
@@ -1342,9 +1557,6 @@ ItemTooltip.Depthstone=Dank
 
 ItemName.DiscordianTorch=Discordian Torch
 
-ItemName.DjinnBox=Desert Djinn Music Box
-ItemTooltip.DjinnBox=Plays 'Sand Smackdown' by Universe
-
 ItemName.DoomsdayChest=Doomsday Chest
 
 ItemName.Doomstone=Charged Doomstone
@@ -1356,35 +1568,17 @@ ItemName.DragonfireTorch=Dragonfire Torch
 ItemName.DynaskullOre=Dynaskull Fossil
 ItemTooltip.DynaskullOre=The energy of millions of years pulsates through this ancient fossil
 
-ItemName.Equibox=Equinox Worms Music Box
-ItemTooltip.Equibox=Plays 'Symphony of the Stars' by OmegaFerretMusic
-
 ItemName.EventideAbyssiumOre=Eventide Abyssium Ore
 ItemTooltip.EventideAbyssiumOre=It's cold and wet, like an evening in a swampy marsh
 
 ItemName.EventideTorch=Eventide Torch
 
-ItemName.FateBox=True Void Music Box
-ItemTooltip.FateBox=Plays 'Systems Engaged' by OmegaFerretMusic
-
-ItemName.FungusBox=Feudal Fungus Music Box
-ItemTooltip.FungusBox=Plays 'Bioluminescent Beatdown' by Spectral Aves
-
 ItemName.FurnitureDynamo=Furniture Dynamo
 ItemTooltip.FurnitureDynamo=Combines all funiture-crafting stations into one block\nNow you don't have to clutter your base with 12 crafting stations!
-
-ItemName.GreedABox=Worm King Music Box
-ItemTooltip.GreedABox=Plays 'Ira De Riquezas Perdidas' by Universe
-
-ItemName.GreedBox=Greed Music Box
-ItemTooltip.GreedBox=Plays 'Drums of Desire' by Universe
 
 ItemName.GreedChest=Greed Chest
 
 ItemName.GreedLantern=Stone Lantern
-
-ItemName.GripsBox=Grips of Chaos Music Box
-ItemTooltip.GripsBox=Plays 'Twin Terror' by Spectral Aves
 
 ItemName.HallowedAnvil=Hallowed Anvil
 ItemTooltip.HallowedAnvil=A Holy Anvil
@@ -1401,12 +1595,6 @@ ItemTooltip.HaphestusForge=*Slaps top of forge* This baby can fit so many crafti
 ItemName.HellstoneAnvil=Hellstone Anvil
 ItemTooltip.HellstoneAnvil=Is this thing supposed to be on fire?
 
-ItemName.HoardBox=Hoard Music Box
-ItemTooltip.HoardBox=Plays 'Cavern of Coveted Treasures' by OmegaFerretMusic
-
-ItemName.HydraBox=Hydra Music Box
-ItemTooltip.HydraBox=Plays 'Abyssal Wrath' by Spectral Aves
-
 ItemName.HydratoxinTorch=Bogtoxin Torch
 
 ItemName.Incinerite=Incinerite
@@ -1416,29 +1604,11 @@ ItemName.IndigoIce=Indigo Ice
 
 ItemName.InfernoAltar=Dragon Altar
 
-ItemName.InfernoBox=Inferno Surface Music Box
-ItemTooltip.InfernoBox=Plays 'Flame-Razed Rock' by Karamitasu
-
 ItemName.InfernoChest=Inferno Chest
-
-ItemName.InfernoUBox=Inferno Underground Music Box
-ItemTooltip.InfernoUBox=Plays 'Smolder' by OmegaFerretMusic
-
-ItemName.LakeBox=Lake of the Rising Moon Music Box
-ItemTooltip.LakeBox=Plays 'Lake of Souls' by Rockwizard
 
 ItemName.MireAltar=Abyss Altar
 
-ItemName.MireBox=Mire Surface Music Box
-ItemTooltip.MireBox=Plays 'Moonlit Marsh' by Charlie Debnam
-
 ItemName.MireChest=Mire Chest
-
-ItemName.MireUBox=Mire Underground Music Box
-ItemTooltip.MireUBox=Plays 'Depths of Despair' by Karamitasu
-
-ItemName.MonarchBox=Mushroom Monarch Music Box
-ItemTooltip.MonarchBox=Plays 'Fungal Face-off' by Spectral Aves
 
 ItemName.MoonAltar=Dread Moon Altar
 
@@ -1453,9 +1623,6 @@ ItemName.OroborosChest=Oroboros Chest
 
 ItemName.OroborosWood=Oroboros Wood
 
-ItemName.PagodaBox=Pagoda of the Rising Sun Music Box
-ItemTooltip.PagodaBox=Plays 'Scorched Tower' by Rockwizard
-
 ItemName.PaladinsSmeltery=Paladin's Smeltery Forge
 ItemTooltip.PaladinsSmeltery=This thing can make a lot of stuff\nFunctions as most hardmode crafting stations + A workbench and heavy workbench
 
@@ -1468,9 +1635,6 @@ ItemTooltip.RadiantArcanum=Wish upon a star\nAllows you to work with Dark Matter
 ItemName.RadiumOre=Radium Ore
 ItemTooltip.RadiumOre=Twinkles like the stars in the midnight skies
 
-ItemName.RajahBox=Rajah Rabbit Music Box
-ItemTooltip.RajahBox=Plays 'JUSTICE' by Spectral Aves
-
 ItemName.Razewood=Razewood
 
 ItemName.RottedDynastyWood=Rotted Dynasty Wood
@@ -1480,38 +1644,11 @@ ItemName.RottedShingles=Rotted Shingles
 
 ItemName.RoyalBunnyCage=Royal Bunny Cage
 
-ItemName.SagBox=Sagittarius Music Box
-ItemTooltip.SagBox=Plays 'Zodiac' by OmegaFerretMusic
-
 ItemName.ScorchedDynastyWood=Scorched Dynasty Wood
 
 ItemName.ScorchedShingles=Scorched Dynasty Shingles
 
-ItemName.SDBox=Sleeping Dragon Music Box
-ItemTooltip.SDBox=Plays 'Sleeping Dragon' by OmegaFerretMusic
-
-ItemName.SerpentBox=Subzero Serpent Music Box
-ItemTooltip.SerpentBox=Plays 'Burrowing Down' by Charlie Debnam
-
-ItemName.SGBox=Sleeping Giant Music Box
-ItemTooltip.SGBox=Plays 'Sleeping Giant' by LordCakeSpy
-
-ItemName.ShenABox=Shen Doragon Awakened Music Box
-ItemTooltip.ShenABox=Plays 'Blaze of Glory' by Charlie Debnam
-
-ItemName.ShenBox=Shen Doragon Music Box
-ItemTooltip.ShenBox=Plays 'Unyielding Discord' by Charlie Debnam
-
-ItemName.SistersBox=Sisters of Discord Music Box
-ItemTooltip.SistersBox=Plays 'Sisters of Anarchy' by Shadow Figure
-
 ItemName.SpiralStairs=Spiral Stairs
-
-ItemName.SRajahBox=Champion of the Innocent Music Box
-ItemTooltip.SRajahBox=Plays 'Supreme Justice' by OmegaFerretMusic
-
-ItemName.StarBox=Celestial Stars Box
-ItemTooltip.StarBox=Plays 'Interstellar' by OmegaFerretMusic
 
 ItemName.SunAltar=Draconic Sun Altar
 
@@ -1522,12 +1659,6 @@ ItemTooltip.TerraCore=Combines most crafting stations into one\nUsed to create a
 
 ItemName.TerraPrismStation=Infinity Core
 ItemTooltip.TerraPrismStation=The 'craft-all'.\nCombiles all vanilla and Ancients Awakened crafting stations together
-
-ItemName.TerrariumBox=Terrarium Music Box
-ItemTooltip.TerrariumBox=Plays 'Heart of the World' by Quicksilvur feat Charlie Debnam
-
-ItemName.ToadBox=Truffle Toad Music Box
-ItemTooltip.ToadBox=Plays 'TODESTOOL' by Spectral Aves
 
 ItemName.TorchAsh=Volcanic Ash
 
@@ -1548,22 +1679,7 @@ ItemTooltip.Transmuter=Allows for Transmutation of materials into their counterp
 ItemName.TruePaladinsSmeltery=True Paladin's Smeltery
 ItemTooltip.TruePaladinsSmeltery=A superforge meant for only the worthiest of smiths\nFunctions as most necessary crafting stations
 
-ItemName.VoidBox=Void Music Box
-ItemTooltip.VoidBox=Plays 'What Once Was' by OmegaFerretMusic
-
 ItemName.VoidUnit=Void Recreation Unit
-
-ItemName.YamataABox=Yamata Awakened Music Box
-ItemTooltip.YamataABox=Plays 'Abyssal Nightmare' by Universe
-
-ItemName.YamataBox=Yamata Music Box
-ItemTooltip.YamataBox=Plays 'Crescent of Madness' by Saucecoie
-
-ItemName.Zero2Box=Zero Awakened Music Box
-ItemTooltip.Zero2Box=Plays 'Doomsday Arrives' by Saucecoie
-
-ItemName.ZeroBox=Zero Music Box
-ItemTooltip.ZeroBox=Plays 'Clockwork Catastrophe' by OmegaFerretMusic
 
 
 // AAMod.Items.Blocks.Oroboros
@@ -1712,7 +1828,7 @@ ItemName.HeartOfSorrow=Heart of Sorrow
 ItemTooltip.HeartOfSorrow=Your melee and ranged attacks grow stronger the less health you have\nMelee and Ranged inflict Hydratoxin\nBelow 2/3 of your maximum life, Your movement speed is doubled\nBelow 1/3 of your maximum life, your melee and ranged attacks inflict Moonraze instead of Hydratoxin
 
 ItemName.Masamune=Masamune
-ItemTooltip.Masamune=Left click to quickly slash at your foes with the blade ignore their Iflames\nRight click to shoot a blade wave
+ItemTooltip.Masamune=Left click to quickly slash at your foes with the blade\nIgnores invicibility frames\nRight click to shoot a blade wave
 
 ItemName.MizuArashi=Mizu Arashi
 ItemTooltip.MizuArashi=Has a 1/15 chance to shoot a Mizu spirit\nSpirits deal 2x damage, pierce up to 10 enemies and go through tiles\n77% not to consume arrows
@@ -2016,6 +2132,9 @@ ItemTooltip.DesireTalisman=Grabbing coins boosts your damage by 1% for 4 seconds
 ItemName.Earthbreaker=Earthbreaker
 ItemTooltip.Earthbreaker=Hitting an airborne always crits and sends the target flying into the ground\nConcussive force of the hit also has a 50% chance to confuse the struck enemy\nIf the enemy hits the ground after being hit, they will take damage
 
+ItemName.GravitySphere=Gravity Sphere
+ItemTooltip.GravitySphere=A stone model of the planet, complete with an orbitting moon!
+
 ItemName.GreedABag=Treasure Bag
 ItemTooltip.GreedABag={$CommonItemTooltip.RightClickToOpen}
 
@@ -2027,8 +2146,7 @@ ItemName.OreStaff=Ore Staff
 ItemName.Unearther=Unearther
 ItemTooltip.Unearther=Mines ores even faster
 
-ItemName.WormIdol=Worm Idol
-ItemTooltip.WormIdol=An ancient statue depicting some form of worm god\nIt has a slot for an orb of some kind on the bottom...
+ItemName.WKGTrophy=Worm King Greed Trophy
 
 
 // AAMod.Items.Boss.Grips
@@ -2197,7 +2315,7 @@ ItemTooltip.SagShield=Pressing the accessory ability hotkey puts up a barrier ar
 
 ItemName.SagTrophy=Sagittarius Trophy
 
-ItemName.ZeroStar=Zero Star
+ItemName.ZeroStar=Stalion's Star
 ItemTooltip.ZeroStar=A spinning blade of doom
 
 
@@ -2506,6 +2624,9 @@ ItemTooltip.SubzeroCrystal=Summons the Subzero Serpent
 ItemName.Toadstool=Toadstool
 ItemTooltip.Toadstool=Summons the Truffle Toad\nCan only be used in a glowing mushroom biome
 
+ItemName.WormIdol=Worm Idol
+ItemTooltip.WormIdol=An ancient statue depicting some form of worm god.\nIt looks like it hasn't been touched in years
+
 ItemName.ZeroRune=ERR0R_NULL
 ItemTooltip.ZeroRune=ACTIVATES THE GR0UND ZER0 C0DE F0R THE NEAREST ZER0 UNIT\nN0N-C0NSUMABLE
 
@@ -2545,10 +2666,10 @@ ItemTooltip.PirateBooty=An exceedingly well-crafted gold coin
 
 
 ItemName.InvokerBook=Aleister Book
-ItemTooltip.InvokerBook=A Legendary Book of Aleister 'Mega Therion'.\nIncrease 10% minion damage\nIncrease 2 minion slots\nMaybe you need other items to help you get more power from this book.\nAleister's note: \nI need more powerful souls, *****,*********,**********
+ItemTooltip.InvokerBook=A Legendary Book of the Mega Therion.\n10% increased minion damage\n+2 minion slots\nMaybe you could make it stronger..?\nThere's a note written on the cover: \nI need more powerful souls, *****,*********,**********
 
 ItemName.InvokerBookEX=The Book of the Law
-ItemTooltip.InvokerBookEX=A Legendary Book of Aleister 'Mega Therion'.\nIncrease 30% minion damage\nIncrease 2 minion slots\nGet all of the materials' effect\n
+ItemTooltip.InvokerBookEX=A Legendary Book of the Mega Therion.\n30% increased minion damage\n+2 minion slots\nIncludes the effects of all the pieces used to make this.\n
 
 ItemName.InvokerStaff=Aleister Staff
 
@@ -2570,6 +2691,12 @@ ItemTooltip.AmphibianLongswordEXS=Amphibious Longsword EX
 
 ItemName.AmphibianLongswordS=Amphibious Longsword
 ItemTooltip.AmphibianLongswordS=So I heard you like getting hosed. \n-Alphakip
+
+ItemName.ArchwitchStaff=Archwitch's Galactic Scepter
+ItemTooltip.ArchwitchStaff=The staff of the Dragon Queen\nLeft-click to spin the scepter, firing off stars at nearby enemies\nRight click to fire explosive magic bolts
+
+ItemName.ArchwitchWand=Celestial Wand
+ItemTooltip.ArchwitchWand=An old wand. It seems to have not been used recently.
 
 ItemName.CatsEyeRifle=Cat's Eye Rifle
 ItemTooltip.CatsEyeRifle=Fires Shadow bolts\nDoesn't require ammo\n'QUICK HIDE THE LOLI STASH'\n-Liz
@@ -2716,8 +2843,8 @@ ItemTooltip.UmbreonSPEX=A dark sword from a dark creature\nBlade of Night EX
 // AAMod.Items.Dev.RuneBook
 
 
-ItemName.CCBookofRunes=The Book of Rune
-ItemTooltip.CCBookofRunes=Summons runes according to your minion slots\nWhen player has 1 minion slot it summons terra rune.\nWhen player has 2 minion slots it summons terra and chaos rune.\nWhen player has 3 minion slots it summons terra, chaos and void rune.
+ItemName.CCBookofRunes=The Book of Runes
+ItemTooltip.CCBookofRunes=Summons runes according to how many minion slots you have left\nWhen player has 1 minion slot it summons terra rune.\nWhen player has 2 minion slots it summons terra and chaos rune.\nWhen player has 3 minion slots it summons terra, chaos and void rune.
 
 ItemName.CCRuneBookPage=A Page of RuneBook
 ItemTooltip.CCRuneBookPage=Summons runes according to your minion slots\nWhen player has 1 minion slot, it summons bunny rune.\nWhen player has 2 minion slots, it summons bunny and discord rune.\nWhen player has 3 minion slots, it summons bunny, discord and energy rune.
@@ -2768,7 +2895,7 @@ ItemTooltip.NoodleSword=Top 10 op weapons in video games
 ItemName.RogueTest=[DEV] Rogue Noodle Sword
 ItemTooltip.RogueTest=Top 10 op weapons in video games
 
-ItemName.StormTest=[DEV] Storm Test
+ItemName.StormTest=[DEV] Feather Test
 
 ItemName.TerrariaUndowner=Terraria Undowner
 ItemTooltip.TerrariaUndowner=Undowns all Vanilla bosses.\nNon-Consumable
@@ -2903,6 +3030,11 @@ ItemName.BaseAAItem=
 ItemName.AncientArcanum=Ancient Arcanum
 ItemTooltip.AncientArcanum=Releases a homing miniature quazar that explodes upon hitting an enemy
 
+ItemName.AnubisBlockBook=The Life And Epic Adventures
+of Anubis the Wonder Dog
+~Special Edition~
+ItemTooltip.AnubisBlockBook=Left click to summon blocks that crush at your cursor's position Horizontally\nRight click for vertical blocks instead
+
 ItemName.AtlanteanTrident=Atlantean Trident
 ItemTooltip.AtlanteanTrident=Fires off a tri-shot of water bolts
 
@@ -2947,7 +3079,7 @@ ItemName.MagicFlower=Magic Flower
 ItemTooltip.MagicFlower=Pretty
 
 ItemName.ManaRose=Mana Rose
-ItemTooltip.ManaRose=Long and Magical
+ItemTooltip.ManaRose=Long and Magical\nRight Clicking fires a piercing rose
 
 ItemName.NovaFlare=Nova Flare
 ItemTooltip.NovaFlare=Shoots homing flares from the sky\nLunar Flare EX
@@ -2970,7 +3102,7 @@ ItemName.TerraFocus=Terra Focus
 ItemTooltip.TerraFocus=Fires shots of terra magic at your foes
 
 ItemName.TerraRose=Terra Rose
-ItemTooltip.TerraRose=Some say this staff was used by the legendary hero themselves\nProjectiles go through walls
+ItemTooltip.TerraRose=Some say this staff was used by the legendary hero themselves\nProjectiles go through walls\nRight Clicking fires a piercing rose
 
 ItemName.Toxifang=Toxifang
 ItemTooltip.Toxifang=Shoots Toxic Fangs
@@ -2979,10 +3111,10 @@ ItemName.TrueGong=The True Gong
 ItemTooltip.TrueGong=MORE GONG
 
 ItemName.TrueManaRose=True Mana Rose
-ItemTooltip.TrueManaRose=Pretty in Pink
+ItemTooltip.TrueManaRose=Pretty in Pink\nRight Clicking fires a piercing rose
 
 ItemName.TrueTerraRose=True Terra Rose
-ItemTooltip.TrueTerraRose=Some say this staff was used by the legendary hero themselves\nProjectiles explode on hit\nProjectiles go through walls\nTerra Rose EX
+ItemTooltip.TrueTerraRose=Some say this staff was used by the legendary hero themselves\nProjectiles explode on hit\nProjectiles go through walls\nRight Clicking fires a piercing rose\nTerra Rose EX
 
 ItemName.VenomSpray=Venom Spray
 
@@ -3138,9 +3270,6 @@ ItemName.TerraShard=Terra Shard
 ItemName.TerrorSoul=Terror Soul
 
 ItemName.VikingRelic=Viking Relic
-
-ItemName.VoidEnergy=Void Energy
-ItemTooltip.VoidEnergy=A singularity of dark, unstable energy
 
 ItemName.vulture_feather=Vulture Feather
 
@@ -4191,6 +4320,16 @@ ItemName.CCRobe=Dread Cultist Robe
 ItemTooltip.CCRobe=The hood of a crazy lizard enthusiast\n'Great for impersonating Ancients Awakened Developers!'
 
 
+// AAMod.Items.Vanity.CC.Shiny
+
+
+ItemName.ShinyCCHood=Draconian Cultist Mask
+ItemTooltip.ShinyCCHood=The mask of a crazy dragon enthusiast\n'Great for impersonating Ancients Awakened Developers!'
+
+ItemName.ShinyCCRobe=Draconian Cultist Robe
+ItemTooltip.ShinyCCRobe=The hood of a crazy dragon enthusiast\n'Great for impersonating Ancients Awakened Developers!'
+
+
 // AAMod.Items.Vanity.Cerberus
 
 
@@ -4298,6 +4437,22 @@ ItemName.FargoSuit=Dapper Squirrel Suit
 ItemTooltip.FargoSuit=soonTM\n'Great for impersonating Ancients Awakened Devs!'
 
 
+// AAMod.Items.Vanity.Fazer
+
+
+ItemName.SammyPants=Fluffy Fox Pants
+ItemTooltip.SammyPants='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.SammySweater=Fluffy Fox Sweater
+ItemTooltip.SammySweater='Great for impersonating Ancients Awakened Contributors!'
+
+ItemName.SammyWig=Fluffy Fox Wig
+ItemTooltip.SammyWig='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.WetFurrbag=Wet Furrbag
+ItemTooltip.WetFurrbag=<right> to open \n'All the essentials for impersonating the Funloving Fox!'
+
+
 // AAMod.Items.Vanity.Gibs
 
 
@@ -4371,9 +4526,6 @@ ItemTooltip.ShinyHalTux=This tux was woven with pure class\n'Great for impersona
 ItemName.HappySunSticker=Happy Sun Sticker
 ItemTooltip.HappySunSticker=:D
 
-ItemName.PhotographicEquipment=Photographic Equipment
-ItemTooltip.PhotographicEquipment=Are you a photographer?
-
 
 // AAMod.Items.Vanity.Mask
 
@@ -4423,6 +4575,8 @@ ItemName.ShenAMask=Shen Doragon Awakened Mask
 ItemName.ShenMask=Shen Doragon Mask
 
 ItemName.ToadMask=Truffle Toad Mask
+
+ItemName.WKGreedMask=Worm King Greed Mask
 
 ItemName.YamataAMask=Yamata No Orochi Mask
 
@@ -4481,6 +4635,32 @@ ItemTooltip.ShinyMoonRobe=The Robe of a legendary lunar mage\n'Great for imperso
 
 ItemName.ono=ono
 ItemTooltip.ono=ono
+
+
+// AAMod.Items.Vanity.Pluto
+
+
+ItemName.PlutoBag=Outer God's Bag
+ItemTooltip.PlutoBag=<right> to open \n'All the essentials for impersonating the Dwarf God!'
+
+ItemName.PlutoBoots=Outer God's Greaves
+ItemTooltip.PlutoBoots='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.PlutoMask=Outer God's Mask
+ItemTooltip.PlutoMask='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.PlutoPlate=Outer God's Chestplate
+ItemTooltip.PlutoPlate='Great for impersonating Ancients Awakened Devs!'
+
+
+// AAMod.Items.Vanity.Pluto.Shiny
+
+
+ItemName.ShinyPlutoMask=Outer God's Ancient Mask
+ItemTooltip.ShinyPlutoMask='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.ShinyPlutoPlate=Outer God's Ancient Chestplate
+ItemTooltip.ShinyPlutoPlate='Great for impersonating Ancients Awakened Devs!'
 
 
 // AAMod.Items.Vanity.Tails
@@ -4722,8 +4902,7 @@ NPCName.AthenaDark=Angel Clone
 
 NPCName.AthenaLight=Angel Clone
 
-===UNKNWN===
-NPCName.OwlRuneCharged=
+NPCName.OwlRuneCharged=Charged Owl Rune
 
 
 // AAMod.NPCs.Bosses.Broodmother
@@ -5112,7 +5291,7 @@ NPCName.InfernoMimic=Inferno Mimic
 
 NPCName.InfernoSalamander=Singemander
 
-NPCName.InfernoSandShark=Sand Shark
+NPCName.InfernoSandShark=Inferno Sand Shark
 
 NPCName.Lung=Ancient Lung
 
@@ -5138,7 +5317,7 @@ NPCName.Miregron=Pigron
 
 NPCName.MireMimic=Mire Mimic
 
-NPCName.MireSandShark=Sand Shark
+NPCName.MireSandShark=Mire Sand Shark
 
 NPCName.MireSkulker=Skulker
 
@@ -5273,7 +5452,7 @@ NPCName.PuritySphere=Purity Sphere
 
 NPCName.PuritySquid=Purity Squid
 
-NPCName.PurityWeaver=Terra Weaver
+NPCName.PurityWeaver=Purity Weaver
 
 NPCName.PurityWeaverBody=Terra Weaver
 
@@ -5317,14 +5496,38 @@ NPCName.Mushman=
 NPCName.Samurai=
 
 
-// AAMod.Items.Dev.Invoker
+// AAMod.Tiles.Altar
 
+
+NPCName.DBPortal=Bright Star
+
+NPCName.NCPortal=Black Void
+
+NPCName.WormSpawn=Heavenly Voice
+
+
+// AAMod.Items.Dev.DevTile.Tiles
+
+
+MapObject.CCMireBox=Cardboard Box
+
+MapObject.CerberusKennel=Cerberus Kennel
 
 MapObject.InvokerBookTile=Aleister Book
 
 
 // AAMod
 
+
+
+// AAMod.Tiles.Altar
+
+
+MapObject.GravAltar=Altar of The Force
+
+MapObject.StarAltar=Altar of the Stars
+
+MapObject.WormAltar=Worm Altar
 
 
 // AAMod.Tiles.Banners
@@ -5391,6 +5594,8 @@ MapObject.HoardBox=Music Box
 MapObject.HydraBox=Music Box
 
 MapObject.InfernoBox=Music Box
+
+MapObject.InfernoNightBox=Music Box
 
 MapObject.InfernoUBox=Music Box
 

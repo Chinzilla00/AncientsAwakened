@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Terra
@@ -37,9 +38,7 @@ namespace AAMod.Items.Armor.Terra
 
 		public override void UpdateArmorSet(Player player)
 		{
-            player.setBonus = @"Increased Life Regen
-28% increased melee speed
-Being struck by an enemy causes a terra sphere to home in on the enemy that attacked you";
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Equipset.TerraHelmBonus");
 
 			player.moveSpeed += 0.28f;
 			player.GetModPlayer<AAPlayer>().TerraMe = true;

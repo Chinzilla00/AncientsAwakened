@@ -298,9 +298,6 @@ BuffName.TimeFrozen=时间冻结
 BuffName.TrueHallowedPrism=真·神圣棱镜
 BuffDescription.TrueHallowedPrism=召唤一个神圣棱镜为你而战
 
-BuffName.TiedemiesBuff=Tied精灵
-BuffDescription.TiedemiesBuff=“它为你照明”
-
 BuffName.Unstable=不安定
 BuffDescription.Unstable=Y你角色的c代o码de变得不un稳sta定ble
 
@@ -349,7 +346,7 @@ BuffDescription.DroneCool=重 新 加 载. 提 供 伤 害 补 偿.
 // AAMod.Items.Armor.Champion
 
 
-BuffName.RageBuff=王公之怒
+BuffName.RageBuff=守护者之怒
 BuffDescription.RageBuff=泰拉瑞亚的守护者永不言败
 
 BuffName.RageCool=王公之怒
@@ -647,7 +644,7 @@ ItemName.ChaosKabuto=混元盔胄
 ItemTooltip.ChaosKabuto=增加10%近战伤害
 
 ItemName.ChaosMask=混元面具
-ItemTooltip.ChaosMask=减少30%魔法消耗\n增加20%魔法暴击率\n允许你在水下呼吸
+ItemTooltip.ChaosMask=+80魔力上限\n增加20%魔法暴击率\n允许你在水下呼吸
 
 ItemName.ChaosVisor=混元视镜
 ItemTooltip.ChaosVisor=增加30%召唤伤害
@@ -1185,7 +1182,7 @@ ItemName.RadiumHelmet=镭光头盔
 ItemTooltip.RadiumHelmet=增加15%近战伤害\n你就是夜空中最闪亮的一颗星
 
 ItemName.RadiumMask=镭光面罩
-ItemTooltip.RadiumMask=增加15%魔法伤害\n+80魔力上限\n你就是夜空中最闪亮的一颗星
+ItemTooltip.RadiumMask=增加15%魔法伤害\n+100魔力上限\n你就是夜空中最闪亮的一颗星
 
 ItemName.RadiumPlatemail=镭光板甲
 ItemTooltip.RadiumPlatemail=增加25%伤害\n你就是夜空中最闪亮的一颗星
@@ -1278,6 +1275,32 @@ Common.StripeManSetBonus1=你改变了大自然的随机性规则\n你会成为�
 Common.StripeManSetBonusactive=已激活
 Common.StripeManSetBonusunactive=未激活
 Common.StripeManSetBonus2="那人已经与我们相似，能知道善恶。\n现在恐怕他伸手又摘生命树的果子吃，就永远活着。"
+
+// AAMod.Items.Armor.Terra
+
+
+ItemName.TerraGreaves=泰拉护胫
+ItemTooltip.TerraGreaves=增加10%移动速度\n增加5%伤害
+
+ItemName.TerraHelm=泰拉头盔
+ItemTooltip.TerraHelm=增加22%近战伤害\n增加9%近战速度
+
+ItemName.TerraHood=泰拉兜帽
+ItemTooltip.TerraHood=+100魔力上限\n增加17%魔法伤害\n增加15%魔法暴击率
+
+ItemName.TerraMask=泰拉面具
+ItemTooltip.TerraMask=增加9%召唤伤害
+
+ItemName.TerraPlate=泰拉胸甲
+ItemTooltip.TerraPlate=增加5%伤害
+
+ItemName.TerraVisor=泰拉视镜
+ItemTooltip.TerraVisor=增加24%远程伤害\n减少25%弹药消耗\n获得狩猎夜视能力
+
+Equipset.TerraHelmBonus=增加生命再生\n增加28%近战速度\n对攻击你的敌人产生一个泰拉球追踪攻击
+Equipset.TerraHoodBonus=你自动饮用魔力药水\n减少40%魔力消耗\n按下套装能力键两朵泰拉玫瑰在你周边开放\n被花茎击中的敌人掉落魔力星
+Equipset.TerraMaskBonus=召唤泰拉水晶协助你\n按下套装能力键，切换攻击、防御、支援模式\n支援模式下, 你的防御和生命再生提升, 但是削减一半伤害
+Equipset.TerraVisorBonus=敌人更不容易攻击你\n提升20%远程暴击率\n击中敌人产生一枚泰拉弹
 
 // AAMod.Items.Armor.Technecium
 
@@ -1404,16 +1427,27 @@ ItemName.FlamebruteBanner=炽焰兽旗
 ItemName.FlamespitterBanner=吐火虫旗
 
 ===UNKNWN===
+ItemName.FogAnglerBanner=潭雾鮟鱇旗
+
+===UNKNWN===
+ItemName.FungusFrogBanner=赤孢蛙旗
+
+===UNKNWN===
 ItemName.HydraClawBanner=海德拉之爪旗
 
 ===UNKNWN===
 ItemName.InfernalSlimeBanner=燎狱史莱姆旗
 
 ===UNKNWN===
+ItemName.InfernoGhoulBanner=燎狱食尸鬼旗
+
+===UNKNWN===
 ItemName.InfernoSalamanderBanner=灼烧蝾螈旗
 
 ===UNKNWN===
 ItemName.KappaBanner=潭渊怪物旗
+
+ItemName.LungBanner=古龙旗
 
 ===UNKNWN===
 ItemName.MadnessBatBanner=癫狂飞行者旗
@@ -1427,22 +1461,58 @@ ItemName.MagmalgamBanner=熔岩游鱼旗
 ItemName.MiniDjinnBanner=沙漠之魂旗
 
 ===UNKNWN===
+ItemName.MireGhoulBanner=潭渊食尸鬼旗
+
+===UNKNWN===
 ItemName.MiregronBanner=潭渊猪龙旗
 
 ===UNKNWN===
 ItemName.MireSlimeBanner=潭渊史莱姆旗
 
 ===UNKNWN===
+ItemName.MireSandSharkBanner=潭渊沙鲨旗
+
+===UNKNWN===
+ItemName.MiresquitoBanner=潭渊毒蚊旗
+
+===UNKNWN===
 ItemName.MossterBanner=潭渊藓怪旗
+
+===UNKNWN===
+ItemName.MushbugBanner=赤孢瓢虫旗
+
+===UNKNWN===
+ItemName.MushroomCrabBanner=赤孢甲虫旗
+
+===UNKNWN===
+ItemName.MushroomZombieBanner=赤孢僵尸旗
 
 ===UNKNWN===
 ItemName.NewtBanner=潭渊蝾螈旗
 
 ===UNKNWN===
+ItemName.NightGuardBanner=暗夜护卫旗
+
+===UNKNWN===
 ItemName.NullBanner=虚-无旗
 
 ===UNKNWN===
+ItemName.PurityCrawlerBanner=净源爬虫旗
+
+===UNKNWN===
+ItemName.PuritySphereBanner=净源之球旗
+
+===UNKNWN===
+ItemName.PuritySquidBanner=净源飞鱿旗
+
+===UNKNWN===
+ItemName.PurityWeaverBanner=净源编织者旗
+
+===UNKNWN===
 ItemName.SearcherBanner=虚空搜索者旗
+
+===UNKNWN===
+ItemName.SeraphBanner=六翼鸟妖旗
 
 ===UNKNWN===
 ItemName.ShadowScoutBanner=暗影侦察者旗
@@ -1451,13 +1521,50 @@ ItemName.ShadowScoutBanner=暗影侦察者旗
 ItemName.SnakeBanner=雪蛇旗
 
 ===UNKNWN===
+ItemName.ShroomJellyBanner=赤孢水母旗
+
+===UNKNWN===
+ItemName.SoulsuckerBanner=灵魂吸食者旗
+
+===UNKNWN===
+ItemName.StoneSearcherBanner=废石搜索者旗
+
+===UNKNWN===
+ItemName.SunWatcherBanner=日光看守旗
+
+===UNKNWN===
+ItemName.TerraCrawlerBanner=泰拉心球爬虫旗
+
+===UNKNWN===
 ItemName.TerraDeadshotBanner=泰拉亡命枪手旗
+
+ItemName.TerraProbeBanner=统和探针旗
+
+===UNKNWN===
+ItemName.TerraSerpentBanner=泰拉心球之蛇旗
+
+===UNKNWN===
+ItemName.TerraSphereBanner=泰拉心之球旗
+
+===UNKNWN===
+ItemName.TerraSquidBanner=泰拉心球枪乌贼旗
+
+===UNKNWN===
+ItemName.TerraSquireBanner=泰拉心球护卫旗帜
 
 ===UNKNWN===
 ItemName.TerraWarlockBanner=泰拉心球邪士旗
 
+ItemName.TerraWatcherBanner=统和看守旗
+
+===UNKNWN===
+ItemName.TerraWeaverBanner=泰拉编织者旗
+
 ===UNKNWN===
 ItemName.TerraWizardBanner=泰拉心球女巫旗
+
+===UNKNWN===
+ItemName.TinyToadBanner=真菌小蟾蜍旗
 
 ===UNKNWN===
 ItemName.ThixxieBanner=巨胖精灵旗
@@ -1468,17 +1575,19 @@ ItemName.ToxitoadBanner=剧毒蟾蜍旗
 ItemName.VoidScoutBanner=虚空监察者旗
 
 ===UNKNWN===
+ItemName.VortexBanner=虚空绞杀者旗
+
+===UNKNWN===
 ItemName.WyrmBanner=燎狱游龙旗
 
 ===UNKNWN===
 ItemName.WyrmlingBanner=燎狱游虫旗
 
+ItemName.MireSkulkerBanner=潭渊潜伏者旗
 
-// AAMod.Items.Blocks
+ItemName.ScavengerBanner=拾金婪虫旗帜
 
-
-ItemName.Abyssium=潭渊矿
-ItemTooltip.Abyssium=整个黏糊糊的. 真让人讨厌.\n(地下洞穴层,黑色,少量)
+// AAMod.Items.Blocks.Boxes
 
 ItemName.AcropolisBox=八音盒(天穹卫城)
 ItemTooltip.AcropolisBox=播放 'Palace in the Sky' by Turquoise
@@ -1489,23 +1598,136 @@ ItemTooltip.AkumaABox=播放 'Dawn of the Dragon' by Universe
 ItemName.AkumaBox=八音盒(邪鬼巨龙)
 ItemTooltip.AkumaBox=播放 'Trial By Fire' by Saucecoie
 
-ItemName.AncientForge=远古锻造炉
-ItemTooltip.AncientForge=充满远古魔力的熔炉
-
 ItemName.AnubisBox=八音盒(阿努比斯)
 ItemTooltip.AnubisBox=播放 'Strings of Judgement' by Universe
 
 ItemName.AnubisFBox=八音盒(逝落的断罪师)
-ItemTooltip.AnubisFBox=播放 'Wrath of the Forsaken' by Universe
-
-ItemName.Apocalyptite=启示矿
-ItemTooltip.Apocalyptite=(虚空浮岛)
+ItemTooltip.AnubisFBox=播放 'Purgatorium' by Universe
 
 ItemName.AthenaABox=八音盒(奥林匹亚雅典娜)
 ItemTooltip.AthenaABox=播放 'Goddess of Those Winged' by Turquoise
 
-ItemName.AthenaBox=八音盒(雅典娜)
+ItemName.AthenaBox=八音盒(穹武鸮姬)
 ItemTooltip.AthenaBox=播放 'Magisaint' by Turquoise
+
+ItemName.BroodBox=八音盒(育母炎龙)
+ItemTooltip.BroodBox=播放 'Blazing Fury' by Spectral Aves
+
+ItemName.DjinnBox=八音盒(沙漠巨灵)
+ItemTooltip.DjinnBox=播放 'The Dust Bowl' by Universe
+
+ItemName.Equibox=八音盒(昼夜双虫)
+ItemTooltip.Equibox=播放 'Orbittal Equilibrium' by Charlie Debnam
+
+ItemName.FateBox=八音盒(永劫虚空)
+ItemTooltip.FateBox=播放 'Nihil' by Charlie Debnam
+
+ItemName.FungusBox=八音盒(真菌帝)
+ItemTooltip.FungusBox=播放 'Bioluminescent Beatdown' by Spectral Aves
+
+ItemName.GreedABox=八音盒(鎏金万蟲王)
+ItemTooltip.GreedABox=播放 'Ira De Riquezas Perdidas' by Universe
+
+ItemName.GreedBox=八音盒(金食饕餮)
+ItemTooltip.GreedBox=播放 'Gold Digger' by Universe
+
+ItemName.GripsBox=八音盒(混沌之爪)
+ItemTooltip.GripsBox=播放 'Twin Terror' by Spectral Aves
+
+ItemName.HoardBox=八音盒(欲望金窟)
+ItemTooltip.HoardBox=播放 'Cavern of Coveted Treasures' by OmegaFerretMusic
+
+ItemName.HydraBox=八音盒(九头渊蛇)
+ItemTooltip.HydraBox=播放 'Abyssal Wrath' by Spectral Aves
+
+ItemName.InfernoBox=八音盒(燎狱地表)
+ItemTooltip.InfernoBox=播放 'Flame-Razed Rock' by Karamitasu
+
+ItemName.InfernoNightBox=八音盒(燎狱之夜)
+ItemTooltip.InfernoNightBox=播放 'Burnt to Ashes' by Quicksilvur
+
+ItemName.InfernoUBox=八音盒(燎狱地下)
+ItemTooltip.InfernoUBox=播放 'Smolder' by OmegaFerretMusic
+
+ItemName.LakeBox=八音盒(升月之湖)
+ItemTooltip.LakeBox=播放 'Lake of Souls' by Rockwizard
+
+ItemName.MireBox=八音盒(潭渊地表)
+ItemTooltip.MireBox=播放 'Moonlit Marsh' by Charlie Debnam
+
+ItemName.MireDayBox=八音盒(潭渊之日)
+ItemTooltip.MireDayBox=播放 'Clouded in Mystery' by Charlie Debnam
+
+ItemName.MireUBox=八音盒(潭渊地下)
+ItemTooltip.MireUBox=播放 'The Deepest Reaches' by Charlie Debnam
+
+ItemName.MonarchBox=八音盒(赤孢皇)
+ItemTooltip.MonarchBox=播放 'Fungal Face-off' by Spectral Aves
+
+ItemName.PagodaBox=八音盒(升阳之塔)
+ItemTooltip.PagodaBox=播放 'Scorched Tower' by Rockwizard
+
+ItemName.RajahBox=八音盒(巨兔王公)
+ItemTooltip.RajahBox=播放 'JUSTICE' by Spectral Aves
+
+
+
+ItemName.SagBox=八音盒(虚空人马)
+ItemTooltip.SagBox=播放 'Zodiac' by OmegaFerretMusic
+
+ItemName.SDBox=八音盒(深睡巨龙)
+ItemTooltip.SDBox=播放 'Sleeping Dragon' by OmegaFerretMusic
+
+ItemName.SerpentBox=八音盒(绝零冰蛇)
+ItemTooltip.SerpentBox=播放 'Burrowing Down' by Charlie Debnam
+
+ItemName.SGBox=八音盒(沉睡巨人)
+ItemTooltip.SGBox=播放 'Sleeping Giant' by LordCakeSpy
+
+ItemName.ShenABox=八音盒(觉醒之上神应龙)
+ItemTooltip.ShenABox=播放 'Blaze of Glory' by Charlie Debnam
+
+ItemName.ShenBox=八音盒(上神应龙)
+ItemTooltip.ShenBox=播放 'Unyielding Discord' by Charlie Debnam
+
+ItemName.SistersBox=八音盒(混沌姐妹)
+ItemTooltip.SistersBox=播放 'Sisters of Anarchy' by Shadow Figure
+
+ItemName.StarBox=八音盒(漫天星辰)
+ItemTooltip.StarBox=播放 'Interstellar' by OmegaFerretMusic
+
+ItemName.TerrariumBox=八音盒(泰拉心球)
+ItemTooltip.TerrariumBox=播放 'Heart of the World' by Quicksilvur feat Charlie Debnam
+
+ItemName.ToadBox=八音盒(松露蟾蜍)
+ItemTooltip.ToadBox=播放 'TODESTOOL' by Spectral Aves
+
+ItemName.VoidBox=八音盒(虚空)
+ItemTooltip.VoidBox=播放 'What Once Was' by OmegaFerretMusic
+
+ItemName.YamataABox=八音盒(觉醒之八岐大蛇)
+ItemTooltip.YamataABox=播放 'Abyssal Nightmare' by Universe
+
+ItemName.YamataBox=八音盒(八岐大蛇)
+ItemTooltip.YamataBox=播放 'Crescent of Madness' by Saucecoie
+
+ItemName.Zero2Box=八音盒(零械汇编器)
+ItemTooltip.Zero2Box=播放 'Doomsday Arrives' by Saucecoie
+
+ItemName.ZeroBox=八音盒(零械)
+ItemTooltip.ZeroBox=播放 'Entropy's Envoy' by Charlie Debnam
+
+
+// AAMod.Items.Blocks
+
+ItemName.Abyssium=潭渊矿
+ItemTooltip.Abyssium=整个黏糊糊的. 真让人讨厌.\n(地下洞穴层,黑色,少量)
+
+ItemName.AncientForge=远古锻造炉
+ItemTooltip.AncientForge=充满远古魔力的熔炉
+
+ItemName.Apocalyptite=启示矿
+ItemTooltip.Apocalyptite=(虚空浮岛)
 
 ItemName.BinaryReassembler=二进制碎片重组机械
 ItemTooltip.BinaryReassembler=现实从未如此容易操纵\n也可以当作所有的普通制作站
@@ -1514,18 +1736,12 @@ ItemName.Bogwood=污泽木
 
 ItemName.HydratoxinTorch=毒潭火把
 
-ItemName.BroodBox=八音盒(育母炎龙)
-ItemTooltip.BroodBox=播放 'Blazing Fury' by Spectral Aves
-
 ItemName.ChaosCrucible=混沌坩埚
 ItemTooltip.ChaosCrucible=混沌之力需要一双稳重的手和巨大的工作台来合作\n也可以当作所有的普通制作站
 
 ItemName.CorruptAltar=恶魔祭坛
 
 ItemName.CrimsonAltar=猩红祭坛
-
-ItemName.SRajahBox=八音盒(无辜的保护者)
-ItemTooltip.SRajahBox=播放 'Supreme Justice' by OmegaFerretMusic
 
 ItemName.DarkmatterOre=暗物质簇
 ItemTooltip.DarkmatterOre=感觉上没有质量, 但它仍有一些物质\n(昼夜虫后,夜晚太空)
@@ -1550,9 +1766,6 @@ ItemTooltip.Depthstone=潮
 
 ItemName.DiscordianTorch=冥昧火把
 
-ItemName.DjinnBox=八音盒(沙漠巨灵)
-ItemTooltip.DjinnBox=播放 'Sand Smackdown' by Universe
-
 ItemName.DoomsdayChest=末日宝箱
 
 ItemName.Doomstone=充能厄劫石
@@ -1568,9 +1781,6 @@ ItemName.DragonfireTorch=龙炎火把
 ItemName.DynaskullOre=王骨化石
 ItemTooltip.DynaskullOre=数百万年的能量从这个远古化石中涌出\n(骷髅王后,沙漠洞穴,绿黄色)
 
-ItemName.Equibox=八音盒(昼夜双虫)
-ItemTooltip.Equibox=播放 'Lunala Battle' by Emdasche\nRemix by Charlie Debnam
-
 ItemName.EventideAbyssiumOre=渊宵矿
 ItemTooltip.EventideAbyssiumOre=又冷又湿, 如同遍布泥潭的沼泽中的一晚\n(混沌姐妹后,地下洞穴层,黑色)
 
@@ -1579,27 +1789,12 @@ ItemName.EventideTorch=渊宵火把
 ItemName.FurnitureDynamo=家居集铸点
 ItemTooltip.FurnitureDynamo=将所有的家具铸造位点合成为一个\n现在你不需要在你家里摆7个家具制作点了
 
-ItemName.FateBox=八音盒(永劫虚空)
-ItemTooltip.FateBox=播放 'Systems Engaged' by OmegaFerretMusic
-
 ItemName.FulguriteShard=雷熔碎片
 ItemTooltip.FulguriteShard=数千次闪电的咆哮穿透了这个碎片\n(电子四王击杀一个后,地下洞穴层,紫红色)
-
-ItemName.FungusBox=八音盒(真菌帝)
-ItemTooltip.FungusBox=播放 'Bioluminescent Beatdown' by Spectral Aves
-
-ItemName.GripsBox=八音盒(混沌之握)
-ItemTooltip.GripsBox=播放 'Twin Terror' by Spectral Aves
 
 ItemName.GreedLantern=石灯笼
 
 ItemName.GreedChest=贪婪宝箱
-
-ItemName.GreedABox=八音盒(万蟲王)
-ItemTooltip.GreedABox=播放 'Ira De Riquezas Perdidas' by Universe
-
-ItemName.GreedBox=八音盒(金食饕餮)
-ItemTooltip.GreedBox=播放 'Drums of Desire' by Universe
 
 ItemName.HallowedAnvil=神圣砧
 ItemTooltip.HallowedAnvil=一个神圣的砧
@@ -1616,51 +1811,24 @@ ItemTooltip.HaphestusForge=*拍一拍熔炉顶* 这小东西竟然可以容纳�
 ItemName.HellstoneAnvil=狱石砧
 ItemTooltip.HellstoneAnvil=这东西会着火吗？
 
-ItemName.HoardBox=八音盒(欲望金窟)
-ItemTooltip.HoardBox=播放 'Cavern of Coveted Treasures' by OmegaFerretMusic
-
-ItemName.HydraBox=八音盒(九头渊蛇)
-ItemTooltip.HydraBox=播放 'Abyssal Wrath' by Spectral Aves
-
 ItemName.Incinerite=燎烬矿
 ItemTooltip.Incinerite=这东西真的是相当热. 小心点.\n(地下洞穴层,橙色,少量)
 
 ItemName.InfernoAltar=燎狱祭坛
 
-ItemName.InfernoBox=八音盒(燎狱地表)
-ItemTooltip.InfernoBox=播放'Flame-Razed Rock' by Karamitasu
-
 ItemName.InfernoChest=燎狱宝箱
 
 Common.InfernoChest_Locked=上锁燎狱宝箱
 
-ItemName.InfernoUBox=八音盒(燎狱地下)
-ItemTooltip.InfernoUBox=播放 'Smolder' by OmegaFerretMusic
-
-ItemName.LakeBox=八音盒(潭渊之月)
-ItemTooltip.LakeBox=播放 'Lake of Souls' by Rockwizard
-
 ItemName.MireAltar=潭渊祭坛
-
-ItemName.MireBox=八音盒(潭渊地表)
-ItemTooltip.MireBox=播放 'Moonlit Marsh' by Charlie Debnam
 
 ItemName.MireChest=潭渊宝箱
 
 Common.MireChest_Locked=上锁潭渊宝箱
 
-ItemName.MireUBox=八音盒(潭渊地下)
-ItemTooltip.MireUBox=播放'Depths of Despair' by Karamitasu
-
-ItemName.MonarchBox=八音盒(蘑菇皇)
-ItemTooltip.MonarchBox=播放 'Fungal Face-off' by Spectral Aves
-
 ItemName.MoonAltar=恐惧之月祭坛
 
 ItemName.MoonAltarA=觉醒之月祭坛
-
-ItemName.MushBox=八音盒(红蘑菇地)
-ItemTooltip.MushBox=播放 'Overgrowth' by Spectral Aves
 
 ItemName.MushroomBlock=红菇砖
 
@@ -1669,9 +1837,6 @@ ItemName.Mycelium=菌丝块
 ItemName.OroborosChest=虚环宝箱
 
 ItemName.OroborosWood=虚环木
-
-ItemName.PagodaBox=八音盒(燎狱之塔)
-ItemTooltip.PagodaBox=播放 'Scorched Tower' by Rockwizard
 
 ItemName.PaladinsSmeltery=圣骑士冶炼炉
 ItemTooltip.PaladinsSmeltery=这东西可以制作大部分物品材料\n可以作为大多数血肉之墙后的工作站点以及工作台、重型工作台使用
@@ -1685,13 +1850,7 @@ ItemTooltip.RadiantArcanum=向星星许愿\n允许你加工暗物质簇和镭光
 ItemName.RadiumOre=镭光矿
 ItemTooltip.RadiumOre=如午夜星辰般闪耀\n(昼夜虫后,白天太空)
 
-ItemName.RajahBox=八音盒(巨兔王公)
-ItemTooltip.RajahBox=播放 'Unforseen Consequences' by Spectral Aves
-
 ItemName.Razewood=燎火木
-
-ItemName.RoHBox=八音盒(希望之光)
-ItemTooltip.RoHBox=播放 'Pursuit 2016' from Ace Attorney 6
 
 ItemName.RottedDynastyWood=腐烂王朝木
 ItemTooltip.RottedDynastyWood=都烂糊了！
@@ -1704,28 +1863,10 @@ ItemName.ScorchedDynastyWood=烧焦王朝木
 
 ItemName.ScorchedShingles=烧焦王朝瓦
 
-ItemName.SDBox=八音盒(沉眠之龙)
-ItemTooltip.SDBox=播放 'Sleeping Dragon' by OmegaFerretMusic
-
-ItemName.SerpentBox=八音盒(绝零冰蛇)
-ItemTooltip.SerpentBox=播放 'Burrowing Down' by Charlie Debnam
-
-ItemName.SGBox=八音盒(沉眠的巨人)
-ItemTooltip.SGBox=播放 'Sleeping Giant' by LordCakeSpy
-
-ItemName.SiegeBox=八音盒(赛.格.电.子)
-ItemTooltip.SiegeBox=播放 'Storming S.I.E.G.E.' by Karamitasu
-
 ItemName.Soul_Forge=精魂熔炉
 ItemTooltip.Soul_Forge=用于特殊制作
 
-ItemName.SistersBox=八音盒(混沌姐妹)
-ItemTooltip.SistersBox=播放 'Sisters of Anarchy' by Shadow Figure
-
 ItemName.SpiralStairs=旋梯
-
-ItemName.StarBox=八音盒(漫天星辰)
-ItemTooltip.StarBox=播放 'Galactic Gift' by OmegaFerretMusic
 
 ItemName.StormChest=风暴宝箱
 
@@ -1743,13 +1884,6 @@ ItemTooltip.TerraCore=将大多数制作站点合成一个\n用于创造远古�
 
 ItemName.TerraPrismStation=无限核心
 ItemTooltip.TerraPrismStation=用于将你所拥有的生态的能力注入生态棱镜中
-
-ItemName.TerrariumBox=八音盒(泰拉心球)
-ItemTooltip.TerrariumBox=播放 'Otherworld' by Jonathan Vd Wijngaarden
-
-ItemName.ToadBox=八音盒(松露蟾蜍)
-ItemTooltip.ToadBox=播放 'TODESTOOL' by Spectral Aves
-
 
 ItemName.TorchAsh=火山灰
 
@@ -1776,34 +1910,10 @@ ItemTooltip.Uranium=(破坏燎狱/潭渊祭坛后,地下洞穴层,绿色)
 
 ItemName.UraniumAnvil=铀绿砧
 
-ItemName.VoidBox=八音盒(浮岛虚空)
-ItemTooltip.VoidBox=播放 'What Once Was' by OmegaFerretMusic
-
 ItemName.VoidUnit=虚空机械单元
-
-ItemName.YamataABox=八音盒(觉醒之八歧大蛇)
-ItemTooltip.YamataABox=播放 'Abyssal Nightmare' by Universe
-
-ItemName.YamataBox=八音盒(八歧大蛇)
-ItemTooltip.YamataBox=播放 'Crescent of Madness' by Saucecoie
 
 ItemName.YtriumOre=钇土矿
 ItemTooltip.YtriumOre=(破坏燎狱/潭渊祭坛后,地下洞穴层,土黄色)
-
-ItemName.Zero2Box=八音盒(真·零·无·械)
-ItemTooltip.Zero2Box=播放 'Doomsday Arrives' by Saucecoie
-
-ItemName.ZeroBox=八音盒(零械)
-ItemTooltip.ZeroBox=播放 'Clockwork Catastrophe' by OmegaFerretMusic
-
-ItemName.ShenBox=八音盒(上神应龙)
-ItemTooltip.ShenBox=播放 'Unyielding Discord' by Charlie Debnam
-
-ItemName.ShenABox=八音盒(觉醒应龙)
-ItemTooltip.ShenABox=播放 'Blaze of Glory' by Charlie Debnam
-
-ItemName.SagBox=八音盒(虚空人马)
-ItemTooltip.SagBox=播放 'Zodiac' by OmegaFerretMusic
 
 // AAMod.Items.Blocks.RazewoodF
 
@@ -2365,6 +2475,9 @@ ItemName.GreedABag=宝藏袋
 ItemName.Earthbreaker=撼地者
 ItemTooltip.Earthbreaker=对飞行敌人必定暴击并且会把它从天上砸下来\n冲击力有50%几率将敌人砸晕\n敌人被砸到地上时会有坠落伤害
 
+ItemName.GravitySphere=重力天球
+ItemTooltip.GravitySphere=星球的石头模型, 甚至还有一个月亮在环绕!
+
 ItemName.OreStaff=矿石法杖
 
 ItemName.DesireTalisman=贪欲护身符
@@ -2381,8 +2494,7 @@ ItemTooltip.OreCannon=用矿石做炮弹
 ItemName.Unearther=发掘者
 ItemTooltip.Unearther=挖矿更快！
 
-ItemName.WormIdol=视虫唯神
-ItemTooltip.WormIdol=一个刻画某种蠕虫之神的远古雕像\n在底部好像有个能装某个球的槽
+ItemName.WKGTrophy=鎏金万蟲王纪念章
 
 // AAMod.Items.Boss.Hydra
 
@@ -2575,7 +2687,7 @@ ItemTooltip.CyberBaton=召唤一个电子之爪为你而战
 
 // AAMod.Items.Boss.Sagittarius
 
-ItemName.ZeroStar=零之星
+ItemName.ZeroStar=人马之星
 ItemTooltip.ZeroStar=旋转的毁灭之刃
 
 ItemName.Legg=人马腿
@@ -2936,6 +3048,9 @@ ItemTooltip.SubzeroCrystal=召唤绝零冰蛇
 ItemName.Toadstool=蟾蜍臭菇
 ItemTooltip.Toadstool=召唤松露蟾蜍\n只能在发光蘑菇地中使用
 
+ItemName.WormIdol=视虫唯神
+ItemTooltip.WormIdol=一个刻画某种蠕虫之神的远古雕像\n在底部好像有个能装某个球的槽
+
 ItemName.ZeroRune=错.误_空.值
 ItemTooltip.ZeroRune=启.动.最.近.的.零.代.码.单.位\n不消耗
 
@@ -2986,6 +3101,12 @@ ItemTooltip.AmphibianLongswordEXS=两栖生物大剑EX
 
 ItemName.AmphibianLongswordS=闪耀的两栖生物大剑
 ItemTooltip.AmphibianLongswordS=我听说你喜欢冲澡. \n-Alphakip
+
+ItemName.ArchwitchStaff=龙女巫的天河法杖
+ItemTooltip.ArchwitchStaff=龙之女皇的法杖\n左键旋转法杖向周围的敌人发射星星\n右键发射爆炸魔法矢
+
+ItemName.ArchwitchWand=天界手杖
+ItemTooltip.ArchwitchWand=一个老手杖. 似乎最近没有用过.
 
 ItemName.CatsEyeRifle=猫眼步枪
 ItemTooltip.CatsEyeRifle=发射暗影尖刺\n不消耗子弹\n“快 把 棒 棒 糖 藏 起 来!”\n-Liz
@@ -3349,6 +3470,9 @@ ItemTooltip.SpellBookofRagnarok=增加20%魔法书的伤害\n发射轮次结束�
 ItemName.AncientArcanum=远古奥秘
 ItemTooltip.AncientArcanum=发射一个小型闪电漩涡，触碰敌人时爆炸
 
+ItemName.AnubisBlockBook=传奇狗阿努比斯的生命史诗历险记
+ItemTooltip.AnubisBlockBook=左键向你的光标水平发射石块墙\n右键垂直发射
+
 ItemName.AtlanteanTrident=亚特兰三叉法戟
 ItemTooltip.AtlanteanTrident=发射三发魔法水箭
 
@@ -3393,7 +3517,7 @@ ItemName.MagicFlower=魔力之花
 ItemTooltip.MagicFlower=好看
 
 ItemName.ManaRose=魔法玫瑰
-ItemTooltip.ManaRose=长而充满魔力
+ItemTooltip.ManaRose=长而充满魔力\n右键发射带刺玫瑰
 
 ItemName.NovaFlare=新星耀斑
 ItemTooltip.NovaFlare=追踪寻回之炎从天而降\n月之耀斑EX
@@ -3419,7 +3543,7 @@ ItemName.SubzeroStaff=绝零风暴法杖
 ItemTooltip.SubzeroStaff=暴雪法杖EX
 
 ItemName.TerraRose=泰拉玫瑰
-ItemTooltip.TerraRose=传言说这个法杖只被传说的英雄使用\n可以穿墙
+ItemTooltip.TerraRose=传言说这个法杖只被传说的英雄使用\n可以穿墙\n右键发射带刺玫瑰
 
 ItemName.TerraFocus=泰拉聚焦杖
 ItemTooltip.TerraFocus=向你的敌人发射泰拉魔力
@@ -3434,7 +3558,7 @@ ItemName.TrueManaRose=真·魔法玫瑰
 ItemTooltip.TrueManaRose=粉的像霞
 
 ItemName.TrueTerraRose=真·泰拉玫瑰
-ItemTooltip.TrueTerraRose=传言说这个法杖只被传说的英雄使用\n攻击触碰爆炸\n可以穿墙\n泰拉玫瑰EX
+ItemTooltip.TrueTerraRose=传言说这个法杖只被传说的英雄使用\n攻击触碰爆炸\n可以穿墙\n右键发射带刺玫瑰\n泰拉玫瑰EX
 
 ItemName.VenomSpray=毒液喷流
 
@@ -4912,6 +5036,15 @@ ItemTooltip.CCBookofRunes=根据你的召唤栏召唤符文\n玩家有1个召唤
 ItemName.CCRuneBookPage=符文书页
 ItemTooltip.CCRuneBookPage=根据你的召唤栏召唤符文\n玩家有1个召唤栏时召唤兔兔符文\n玩家有2个召唤栏时召唤兔兔和不谐符文\n玩家有3个召唤栏时召唤兔兔，不谐和能量符文
 
+// AAMod.Items.Vanity.CC.Shiny
+
+
+ItemName.ShinyCCHood=惧月教徒面具
+ItemTooltip.ShinyCCHood=一副蜥蜴狂徒的面具\n“非常适合冒充远古觉醒的开发者!”
+
+ItemName.ShinyCCRobe=惧月教徒长袍
+ItemTooltip.ShinyCCRobe=一套蜥蜴狂徒的长袍\n“非常适合冒充远古觉醒的开发者!”
+
 // AAMod.Items.Vanity.Charlie
 
 ItemName.CharlieCowl=魅影风帽
@@ -4989,6 +5122,21 @@ ItemTooltip.FargoPants=soonTM\n“非常适合冒充远古觉醒的开发者!”
 
 ItemName.FargoSuit=小松鼠衣衫
 ItemTooltip.FargoSuit=soonTM\n“非常适合冒充远古觉醒的开发者!”
+
+// AAMod.Items.Vanity.Fazer
+
+
+ItemName.SammyPants=毛绒狐狸裤
+ItemTooltip.SammyPants=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.SammySweater=毛绒狐狸毛衣
+ItemTooltip.SammySweater=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.SammyWig=毛绒狐狸假发
+ItemTooltip.SammyWig=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.WetFurrbag=湿毛包
+ItemTooltip.WetFurrbag=右键打开\n内含冒充毛绒狐狸的所有物品
 
 // AAMod.Items.Vanity.Gibs
 
@@ -5156,6 +5304,34 @@ ItemTooltip.DarkPants=闻起来像花和…蜂蜜?\n“非常适合冒充远古�
 ItemName.DarkShirt=暗之花短裙
 ItemTooltip.DarkShirt=闻起来像花和…蜂蜜?\n“非常适合冒充远古觉醒的开发者!”
 
+// AAMod.Items.Vanity.Pluto
+
+
+ItemName.PlutoBag=外神包
+ItemTooltip.PlutoBag=右键打开\n内含冒充矮人神的所有物品
+
+ItemName.PlutoBoots=外神护胫
+ItemTooltip.PlutoBoots=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.PlutoMask=外神面具
+ItemTooltip.PlutoMask=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.PlutoPlate=外神胸甲
+ItemTooltip.PlutoPlate=“非常适合冒充远古觉醒的开发者!”
+
+
+// AAMod.Items.Vanity.Pluto.Shiny
+
+ItemName.ShinyPlutoBoots=外神远古护胫
+ItemTooltip.ShinyPlutoBoots=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.ShinyPlutoMask=外神远古面具
+ItemTooltip.ShinyPlutoMask=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.ShinyPlutoPlate=外神远古胸甲
+ItemTooltip.ShinyPlutoPlate=“非常适合冒充远古觉醒的开发者!”
+
+
 // AAMod.Items.Vanity.Ohno
 
 ItemName.ono=哦NO
@@ -5226,6 +5402,8 @@ ItemName.TruffleMask=机械松露面具
 ItemName.ToadMask=松露蟾蜍面具
 
 ItemName.YamataAMask=觉醒之八歧大蛇面具
+
+ItemName.WKGreedMask=万蟲王面具
 
 ItemName.YamataMask=远古之八歧大蛇面具
 
@@ -6041,15 +6219,32 @@ NPCName.Mushman=赤松露人
 ===UNKNWN===
 NPCName.Samurai=武士
 
+// AAMod.Tiles.Altar
 
-// AAMod.Tiles.Banners
+
+MapObject.GravAltar=力量祭坛
+
+MapObject.StarAltar=星辰祭坛
+
+MapObject.WormAltar=蠕虫祭坛
 
 
-MapObject.Banners=Banner
+// AAMod.Tiles.Altar
 
-MapObject.FatPixieBanner=Banner
 
-MapObject.ThixxieBanner=Banner
+NPCName.DBPortal=明亮之星
+
+NPCName.NCPortal=黑色虚空
+
+NPCName.WormSpawn=天堂之声
+
+
+// AAMod.Items.Dev.DevTile.Tiles
+
+
+MapObject.CCMireBox=卡片箱
+
+MapObject.CerberusKennel=刻尔伯洛斯的狗屋
 
 
 // AAMod.Tiles.BogwoodF
@@ -6299,6 +6494,8 @@ MapObject.HydraPod=九头蛇蒴荚
 MapObject.IncineriteOre=燎烬矿石
 
 MapObject.InfernoBox=八音盒
+
+MapObject.InfernoNightBox=八音盒
 
 MapObject.InfernoChest=燎狱宝箱
 

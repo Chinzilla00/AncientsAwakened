@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Terra
@@ -40,10 +41,7 @@ Increases magic crit by 15%");
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"You can autodrink mana potions
-Mana usage lowered by 40%
-Pressing the Armor ability hotkey causes 2 terra rose stalks to grow around you.
-Enemies struck by the stalks drop mana stars";
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Equipset.TerraHoodBonus");
 
             player.manaCost *= 0.6f;
             player.manaFlower = true;

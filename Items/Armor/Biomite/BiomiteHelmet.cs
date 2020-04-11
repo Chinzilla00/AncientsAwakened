@@ -29,7 +29,7 @@ namespace AAMod.Items.Armor.Biomite
 
 		public override void UpdateArmorSet(Player player)
 		{
-			player.setBonus = "Provide different setbonuses based on biome you're in" + SetBonus(player);
+			player.setBonus = Lang.BiomiteArmor("BiomiteArmor1") + SetBonus(player);
 		}
 
 		public override void AddRecipes()
@@ -47,64 +47,64 @@ namespace AAMod.Items.Armor.Biomite
 			if (Main.dayTime)
 			{
 				player.statLifeMax2 += 20;
-				set += "\nIncreases maximum life by 20";
+				set += Lang.BiomiteArmor("BiomiteArmor1");
 			}
 			else
 			{
 				player.statManaMax2 += 20;
-				set += "\nIncreases maximum mana by 20";
+				set += Lang.BiomiteArmor("BiomiteArmor2");
 			}
 			if (player.GetModPlayer<AAPlayer>().ZoneVoid)
 			{
 				player.detectCreature = true;
-				set += "\nYou can detect the enemies around you";
+				set += Lang.BiomiteArmor("BiomiteArmor3");
 			}
 			if (player.GetModPlayer<AAPlayer>().ZoneInferno)
 			{
 				player.buffImmune[BuffID.OnFire] = true;
-				set += "\nYou immune to 'On fire!' debuff";
+				set += Lang.BiomiteArmor("BiomiteArmor4");
 			}
 			if (player.GetModPlayer<AAPlayer>().ZoneMire)
 			{
 				player.buffImmune[BuffID.Poisoned] = true;
-				set += "\nYou immune to 'Poisoned' debuff";
+				set += Lang.BiomiteArmor("BiomiteArmor5");
 			}
 			if (player.GetModPlayer<AAPlayer>().Terrarium)
 			{
 				player.statDefense += 5;
-				set += "\nIncrease 5 defense";
+				set += Lang.BiomiteArmor("BiomiteArmor6");
 			}
 			if (player.ZoneJungle)
 			{
 				player.manaRegenBonus += 3;
-				set += "\nIncrease your mana regenaration";
+				set += Lang.BiomiteArmor("BiomiteArmor7");
 			}
 			if (player.ZoneSnow)
 			{
 				player.buffImmune[BuffID.Chilled] = true;
-				set += "\nYou immune to 'Chilled' debuff";
+				set += Lang.BiomiteArmor("BiomiteArmor8");
 			}
 			if (player.ZoneDesert)
 			{
 				player.buffImmune[BuffID.WindPushed] = true;
-				set += "\nYou immune to 'Mighty Wind' debuff";
+				set += Lang.BiomiteArmor("BiomiteArmor9");
 			}
 			if (player.ZoneHoly)
 			{
 				player.buffImmune[BuffID.Slow] = true;
 				player.lifeRegen += 3;
-				set += "\nIncrease your life regenaration\nYou immune to Slow";
+				set += Lang.BiomiteArmor("BiomiteArmor10");
 			}
 			if (player.ZoneCorrupt)
 			{
 				player.moveSpeed += .1f;
 				player.GetModPlayer<AAPlayer>().MaxMovespeedboost += 0.1f;
-				set += "\nIncrease 10% movespeed";
+				set += Lang.BiomiteArmor("BiomiteArmor11");
 			}
 			if (player.ZoneCrimson)
 			{
 				player.armorPenetration += 5;
-				set += "\nIncrease 5 armor penetration";
+				set += Lang.BiomiteArmor("BiomiteArmor12");
 			}
 			return set;
 		}

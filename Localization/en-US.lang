@@ -100,6 +100,11 @@ Common.StripeManSetBonusactive=ACTIVATED
 Common.StripeManSetBonusunactive=UNACTIVATED
 Common.StripeManSetBonus2="Behold, the man is become as one of us, to know good and evil.\nAnd now, lest he put forth his hand, and take also of the tree of life, and eat, and live for ever"
 
+Equipset.TerraHelmBonus=Increased Life Regen\n28% increased melee speed\nBeing struck by an enemy causes a terra sphere to home in on the enemy that attacked you
+Equipset.TerraHoodBonus=You can autodrink mana potions\nMana usage lowered by 40%\nPressing the Armor ability hotkey causes 2 terra rose stalks to grow around you.\nEnemies struck by the stalks drop mana stars
+Equipset.TerraMaskBonus=Summons a Terra Crystal to assist you\nPressing the armor ability toggles the crystal between offensive, defensive, and support mod\nWhile in support mode, your defense and life regeneration are increased, but your damage is cut in half
+Equipset.TerraVisorBonus=Enemies less likely to target you\nRanged critical strike chance increased by 20%\nStriking an enemy with a ranged projectile may cause a terra bullet to fire at the target
+
 Common.GoblinSlayerHelmBonus=500% increased damage and knockback to goblins\n80% damage resistance from goblins\n'I hunt goblins or nothing.'
 
 Common.HoodlumHoodBonus=Reaching below half heath multiplies your movement speed, melee damage, and minion damage by 50%
