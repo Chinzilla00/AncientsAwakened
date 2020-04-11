@@ -14,10 +14,14 @@ namespace AAMod.Items.Vanity.CC
         public override void SetDefaults()
         {
             item.maxStack = 1;
+            item.useAnimation = 15;
+            item.useTime = 10;
+            item.useStyle = 1;
             item.consumable = true;
             item.width = 32;
             item.height = 32;
-            item.expert = true; item.expertOnly = true;  
+            item.expert = true; item.expertOnly = true;
+            item.createTile = mod.TileType("CCMireBox"); 
         }
 
         public override bool CanRightClick()

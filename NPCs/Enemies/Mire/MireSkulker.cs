@@ -32,6 +32,8 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.noGravity = false;
             npc.noTileCollide = false;
             npc.knockBackResist = .2f;
+            banner = npc.type;
+			bannerItem = mod.ItemType("MireSkulkerBanner");
         }
 
         private bool Shell = false;
