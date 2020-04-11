@@ -16,6 +16,8 @@ namespace AAMod.NPCs.Enemies.Mire
 		{
             npc.CloneDefaults(NPCID.DesertGhoul);
             animationType = NPCID.DesertGhoul;
+			banner = npc.type;
+			bannerItem = mod.ItemType("MireGhoulBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)

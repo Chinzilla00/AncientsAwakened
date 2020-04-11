@@ -154,6 +154,15 @@ namespace AAMod.Tiles.Banners
 				case 61: dropName = "MushroomZombie"; break;
 				case 62: dropName = "InfernoSandShark"; break;
 				case 63: dropName = "MireSandShark"; break;
+				case 64: dropName = "Mire Ghoul"; break;
+				case 65: dropName = "Miresquito"; break;
+				case 66: dropName = "Fog Angler"; break;
+				case 67: dropName = "Soulsucker"; break;
+				case 68: dropName = "Terra Squire"; break;
+				case 69: dropName = "Seraph"; break;
+				case 70: dropName = "Tiny Toad"; break;
+				case 71: dropName = "FungusFrog"; break;
+				case 72: dropName = "Infernal Ghoul"; break;
             }
 			if(spaces) //fix for display names
 			{
@@ -222,6 +231,15 @@ namespace AAMod.Tiles.Banners
 					case 61: dropName = "MushroomZombie"; break;
 					case 62: dropName = "InfernoSandShark"; break;
 					case 63: dropName = "MireSandShark"; break;
+					case 64: dropName = "Mire Ghoul"; break;
+					case 65: dropName = "Miresquito"; break;
+					case 66: dropName = "Fog Angler"; break;
+					case 67: dropName = "Soulsucker"; break;
+					case 68: dropName = "Terra Squire"; break;
+					case 69: dropName = "Seraph"; break;
+					case 70: dropName = "SmallToad"; break;
+					case 71: dropName = "SmallFrog"; break;
+					case 72: dropName = "Infernal Ghoul"; break;
 				}				
 			}
 			if(!string.IsNullOrEmpty(dropName)) dropName = dropName.Replace(" ", null);

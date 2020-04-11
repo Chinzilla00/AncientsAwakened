@@ -32,6 +32,8 @@ namespace AAMod.NPCs.Enemies.Terrarium.Hardmode
             npc.lavaImmune = true;
             aiType = NPCID.GraniteGolem;  //npc behavior
             animationType = NPCID.GraniteGolem;
+            banner = npc.type;
+			bannerItem = mod.ItemType("TerraSquireBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)

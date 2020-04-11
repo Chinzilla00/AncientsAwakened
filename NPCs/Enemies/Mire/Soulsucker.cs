@@ -30,6 +30,8 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.value = 6000f;
             npc.lavaImmune = false;
             npc.knockBackResist = 0.5f;
+            banner = npc.type;
+			bannerItem = mod.ItemType("SoulsuckerBanner");
         }
 
         public override void FindFrame(int frameHeight)

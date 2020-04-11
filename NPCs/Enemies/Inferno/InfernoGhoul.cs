@@ -19,6 +19,8 @@ namespace AAMod.NPCs.Enemies.Inferno
             animationType = NPCID.DesertGhoul;
             npc.lavaImmune = true;
             npc.buffImmune[BuffID.OnFire] = true;
+			banner = npc.type;
+			bannerItem = mod.ItemType("InfernoGhoulBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)

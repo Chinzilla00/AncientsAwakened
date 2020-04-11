@@ -26,6 +26,8 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.value = 5000;
             npc.knockBackResist = .10f;
             npc.aiStyle = -1;
+            banner = npc.type;
+			bannerItem = mod.ItemType("FogAnglerBanner");
         }
 
         public override void AI()

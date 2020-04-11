@@ -26,6 +26,8 @@ namespace AAMod.NPCs.Enemies.Mushroom
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
             npc.alpha = 255;
+            banner = npc.type;
+			bannerItem = mod.ItemType("TinyToadBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)
