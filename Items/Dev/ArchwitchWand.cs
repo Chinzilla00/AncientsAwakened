@@ -17,22 +17,21 @@ namespace AAMod.Items.Dev
 
         public override void SetDefaults()
         {
-            item.damage = 100;
+            item.damage = 120;
             item.magic = true;
-            item.width = 42;
-            item.height = 46;
-            item.useTime = 20;
-            item.useAnimation = 20;
+            item.mana = 5;
+            item.width = 56;
+            item.height = 56;
+            item.useTime = 25;
+            item.useAnimation = 25;
             item.useStyle = 5;
-            item.knockBack = 6f;
-            item.value = Item.buyPrice(0, 20, 0, 0);
-            item.rare = 11;                  
-            item.shoot = mod.ProjectileType("ArchwitchSorm");
-            item.shootSpeed = 10;
             item.noMelee = true;
-            item.mana = 6;
+            item.knockBack = 2;
+            item.rare = 11;
             item.UseSound = new LegacySoundStyle(2, 105, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
+            item.shoot = mod.ProjectileType("ArchwitchSorm");
+            item.shootSpeed = 7f;
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
