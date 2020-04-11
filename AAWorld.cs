@@ -604,7 +604,7 @@ namespace AAMod
 				MireAndInferno(progress);
             }));
 
-            tasks.Insert(shiniesIndex2 + 5, new PassLegacy("LivingBogwoodConvert", delegate (GenerationProgress progress)
+            tasks.Insert(shiniesIndex2 + 8, new PassLegacy("LivingBogwoodConvert", delegate (GenerationProgress progress)
             {
                 BogwoodConvert(progress);
             }));
@@ -1451,6 +1451,7 @@ namespace AAMod
 
         private void BogwoodConvert(GenerationProgress progress)
         {
+            progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildMire");
             Point origin = new Point((int)mirePos.X, (int)mirePos.Y);
             BogwoodCon biome = new BogwoodCon();
             biome.Place(origin, WorldGen.structures);
