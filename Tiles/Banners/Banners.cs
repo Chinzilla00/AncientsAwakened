@@ -163,6 +163,8 @@ namespace AAMod.Tiles.Banners
 				case 70: dropName = "Tiny Toad"; break;
 				case 71: dropName = "FungusFrog"; break;
 				case 72: dropName = "Infernal Ghoul"; break;
+				case 73: dropName = "Mire Skulker"; break;
+				case 74: dropName = "Scavenger"; break;
             }
 			if(spaces) //fix for display names
 			{
@@ -240,6 +242,8 @@ namespace AAMod.Tiles.Banners
 					case 70: dropName = "SmallToad"; break;
 					case 71: dropName = "SmallFrog"; break;
 					case 72: dropName = "Infernal Ghoul"; break;
+					case 73: dropName = "Mire Skulker"; break;
+					case 74: dropName = "Scavenger"; break;
 				}				
 			}
 			if(!string.IsNullOrEmpty(dropName)) dropName = dropName.Replace(" ", null);

@@ -36,6 +36,8 @@ namespace AAMod.NPCs.Enemies.Cavern
             npc.HitSound = new LegacySoundStyle(21, 1);
             npc.DeathSound = new LegacySoundStyle(2, 14);
             npc.netAlways = true;
+            banner = npc.type;
+			bannerItem = mod.ItemType("ScavengerBanner");
         }
 
         public override void AI()
