@@ -1,7 +1,7 @@
 
 namespace AAMod.Items.Banners
 {
-	public class SoulsuckerBanner : BaseAAItem
+	public class TinyToadBanner : BaseAAItem
 	{
 		// The tooltip for this item is automatically assigned from .lang files
 		public override void SetDefaults() {
