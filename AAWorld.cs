@@ -901,7 +901,7 @@ namespace AAMod
             progress.Set(0.1f);
             VoidHeight = 120;
             progress.Set(0.4f);
-            Point center = new Point((Main.maxTilesX / 15 * 14) + (Main.maxTilesX / 15 / 2) - 100, center.Y = VoidHeight);
+            Point center = new Point((Main.maxTilesX / 15 * 13) + (Main.maxTilesX / 15 / 2) - 100, center.Y = VoidHeight);
             WHERESDAVOIDAT = center;
             progress.Set(0.5f);
             Point oldposition = new Point(1, 1);
