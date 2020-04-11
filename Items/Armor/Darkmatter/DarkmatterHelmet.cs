@@ -67,9 +67,10 @@ Dark, yet still barely visible");
 
             const float effectRange = 500;
 			player.setBonus = Language.GetTextValue("Mods.AAMod.Common.DarkmatterHelmetBonus");
+            if(!Main.dayTime && player.GetModPlayer<HelmetEffects>().ShieldCoolDown > 0) player.lifeRegen += 2;
             for(int p =0; p < Main.player.Length; p++)
             {
-                if(Main.player[p].active && (Main.player[p].Center - player.Center).Length() < effectRange && player.team == Main.player[p].team)
+                if(Main.player[p].active && (Main.player[p].Center - player.Center).Length() < effectRange && player.team == Main.player[p].team && Main.player[p].GetModPlayer<HelmetEffects>().ShieldCoolDown <= 0)
                 {
                     Main.player[p].GetModPlayer<HelmetEffects>().ShieldTime = 2;
                     Main.player[p].GetModPlayer<HelmetEffects>().badShield = false;
@@ -91,6 +92,7 @@ Dark, yet still barely visible");
     public class HelmetEffects : ModPlayer
     {
         public int ShieldTime = 0;
+        public int ShieldCoolDown = 0;
         public float yetAnotherTrigCounter = 0;
         public bool badShield = false;
         
@@ -100,11 +102,19 @@ Dark, yet still barely visible");
             {
                 ShieldTime--;
             }
-            
         }
         public override void PreUpdate()
         {
             yetAnotherTrigCounter += (float)Math.PI / 60;
+
+            if (ShieldCoolDown > 0)
+            {
+                ShieldCoolDown--;
+            }
+            else
+            {
+                ShieldCoolDown = 0;
+            }
         }
         public override bool PreHurt(bool pvp, bool quiet, ref int damage, ref int hitDirection, ref bool crit, ref bool customDamage, ref bool playSound, ref bool genGore, ref PlayerDeathReason damageSource)
         {
@@ -117,6 +127,7 @@ Dark, yet still barely visible");
                 else
                 {
                     damage = (int)(damage * .6f);
+                    ShieldCoolDown = 1800;
                 }
                 
             }

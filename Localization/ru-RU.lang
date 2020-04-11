@@ -5778,7 +5778,7 @@ Common.ChaosMaskBonus=While submerged in liquids, your magic abilities are incre
 Common.ChaosVisorBonus=+4 Minion slots\nA dragon soul ravages foes for you
 
 Common.DarkmatterHeaddressBonus=Minions will ocasionaly attempt to distrupt enemy projectiles
-Common.DarkmatterHelmetBonus=You and nearby allies recieve 40% less damage
+Common.DarkmatterHelmetBonus=Темный щит защищает вас.\nВы и ваши союзники получаете на 40% меньше урона, когда щит активен.\nТемный щит перезаряжается 30 секунд.\nРегенрация здоровья увеличина, когда щит перезаряжается ночью.
 Common.DarkmatterMaskBonus1=Damage nearby enemies \n 2% of the damage dealt will heal you\n
 Common.DarkmatterMaskBonus2=Magic Damage\n
 Common.DarkmatterMaskBonus3=% critical strike chance
