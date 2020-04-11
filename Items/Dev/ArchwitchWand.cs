@@ -30,7 +30,7 @@ namespace AAMod.Items.Dev
             item.rare = 11;
             item.UseSound = new LegacySoundStyle(2, 105, Terraria.Audio.SoundType.Sound);
             item.autoReuse = true;
-            item.shoot = mod.ProjectileType("ArchwitchSorm");
+            item.shoot = mod.ProjectileType("ArchwitchStorm");
             item.shootSpeed = 7f;
         }
 
