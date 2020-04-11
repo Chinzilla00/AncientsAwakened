@@ -573,71 +573,82 @@ namespace AAMod
 
         public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
         {
+            
             int shiniesIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Shinies"));
+            if(shiniesIndex > -1)
+            {
+                tasks.Insert(shiniesIndex + 1, new PassLegacy("Prisms", delegate (GenerationProgress progress)
+                {
+                    GenPrisms(progress);
+                }));
+                tasks.Insert(shiniesIndex + 2, new PassLegacy("Abyssium", delegate (GenerationProgress progress)
+                {
+                    GenAbyssium();
+                }));
+                tasks.Insert(shiniesIndex + 3, new PassLegacy("Incinerite", delegate (GenerationProgress progress)
+                {
+                    GenIncinerite();
+                }));
+                tasks.Insert(shiniesIndex + 4, new PassLegacy("Everleaf", delegate (GenerationProgress progress)
+                {
+                    GenEverleaf();
+                }));
+                tasks.Insert(shiniesIndex + 5, new PassLegacy("Relic", delegate (GenerationProgress progress)
+                {
+                    GenRelicOre();
+                }));
+            }
+
             int ChaosIndex = tasks.FindIndex(genpass => genpass.Name.Equals("Micro Biomes"));
+            if(ChaosIndex > -1)
+            {
+                tasks.Insert(ChaosIndex + 1, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
+                {
+                    MireAndInferno(progress);
+                }));
+            }
+
+
             int shiniesIndex1 = tasks.FindIndex(genpass => genpass.Name.Equals("Larva"));
+            
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
+            if(shiniesIndex2 > -1)
+            {
+                tasks.Insert(shiniesIndex2 + 1, new PassLegacy("LivingBogwoodConvert", delegate (GenerationProgress progress)
+                {
+                    BogwoodConvert(progress);
+                }));
 
+                tasks.Insert(shiniesIndex2 + 2, new PassLegacy("Hoard", delegate (GenerationProgress progress)
+                {
+                    Hoard(progress);
+                }));
 
-            tasks.Insert(shiniesIndex + 1, new PassLegacy("Prisms", delegate (GenerationProgress progress)
-            {
-                GenPrisms(progress);
-            }));
-            tasks.Insert(shiniesIndex + 2, new PassLegacy("Abyssium", delegate (GenerationProgress progress)
-            {
-                GenAbyssium();
-            }));
-            tasks.Insert(shiniesIndex + 3, new PassLegacy("Incinerite", delegate (GenerationProgress progress)
-            {
-                GenIncinerite();
-            }));
-            tasks.Insert(shiniesIndex + 4, new PassLegacy("Everleaf", delegate (GenerationProgress progress)
-            {
-                GenEverleaf();
-            }));
-            tasks.Insert(shiniesIndex + 5, new PassLegacy("Relic", delegate (GenerationProgress progress)
-            {
-                GenRelicOre();
-            }));
-            tasks.Insert(ChaosIndex + 5, new PassLegacy("Mire and Inferno", delegate (GenerationProgress progress)
-            {
-				MireAndInferno(progress);
-            }));
+                tasks.Insert(shiniesIndex2 + 3, new PassLegacy("Terrarium", delegate (GenerationProgress progress)
+                {
+                    Terrarium(progress);
+                }));
 
-            tasks.Insert(shiniesIndex2 + 8, new PassLegacy("LivingBogwoodConvert", delegate (GenerationProgress progress)
-            {
-                BogwoodConvert(progress);
-            }));
+                tasks.Insert(shiniesIndex2 + 4, new PassLegacy("Acropolis", delegate (GenerationProgress progress)
+                {
+                    Acropolis(progress);
+                }));
 
-            tasks.Insert(shiniesIndex2 + 8, new PassLegacy("Hoard", delegate (GenerationProgress progress)
-            {
-                Hoard(progress);
-            }));
+                tasks.Insert(shiniesIndex2 + 5, new PassLegacy("Void Islands", delegate (GenerationProgress progress)
+                {
+                    VoidIslands(progress);
+                }));
 
-            tasks.Insert(shiniesIndex2 + 7, new PassLegacy("Terrarium", delegate (GenerationProgress progress)
-            {
-                Terrarium(progress);
-            }));
+                tasks.Insert(shiniesIndex2 + 6, new PassLegacy("Altars", delegate (GenerationProgress progress)
+                {
+                    Altars(progress);
+                }));
 
-            tasks.Insert(shiniesIndex2 + 7, new PassLegacy("Acropolis", delegate (GenerationProgress progress)
-            {
-                Acropolis(progress);
-            }));
-
-            tasks.Insert(shiniesIndex2 + 5, new PassLegacy("Void Islands", delegate (GenerationProgress progress)
-            {
-                VoidIslands(progress);
-            }));
-
-            tasks.Insert(shiniesIndex2 + 8, new PassLegacy("Altars", delegate (GenerationProgress progress)
-            {
-                Altars(progress);
-            }));
-
-            tasks.Insert(shiniesIndex2 + 8, new PassLegacy("Equinox", delegate (GenerationProgress progress)
-            {
-                EquinoxAlt(progress);
-            }));
+                tasks.Insert(shiniesIndex2 + 7, new PassLegacy("Equinox", delegate (GenerationProgress progress)
+                {
+                    EquinoxAlt(progress);
+                }));
+            }
 
             int DungeonChests = tasks.FindIndex((GenPass genpass) => genpass.Name.Equals("Dungeon"));
             if (DungeonChests >= 0)
