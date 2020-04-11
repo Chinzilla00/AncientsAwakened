@@ -10,7 +10,6 @@ namespace AAMod.Walls
 		{
 			dustType = mod.DustType("BogwoodDust");
             AddMapEntry(new Color(25, 12, 10));
-            soundType = 21;
             drop = mod.ItemType("BogwoodWall");
             Main.wallHouse[Type] = true;
         }

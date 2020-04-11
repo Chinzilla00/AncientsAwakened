@@ -28,20 +28,17 @@ namespace AAMod.Tiles
 
         public override void RandomUpdate(int i, int j)
         {
-            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(500) == 0)
+            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(40) == 0)
+            {
+                int style = Main.rand.Next(23);
+                if (PlaceObject(i, j - 1, InfernoFoliage._type, false, style))
+                    NetMessage.SendObjectPlacment(-1, i, j - 1, InfernoFoliage._type, style, 0, -1, -1);
+            }
+            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(1500) == 0)
             {
                 PlaceObject(i, j - 1, mod.TileType("Hotshroom"));
                 NetMessage.SendObjectPlacment(-1, i, j - 1, mod.TileType("Hotshroom"), 0, 0, -1, -1);
 
-            }
-            if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(40) == 0)
-            {
-                if (!Framing.GetTileSafely(i, j - 1).active() && Main.rand.Next(20) == 0)
-                {
-                    int style = Main.rand.Next(23);
-                    if (PlaceObject(i, j - 1, InfernoFoliage._type, false, style))
-                        NetMessage.SendObjectPlacment(-1, i, j - 1, InfernoFoliage._type, style, 0, -1, -1);
-                }
             }
         }
 

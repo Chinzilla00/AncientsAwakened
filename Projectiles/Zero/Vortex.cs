@@ -30,8 +30,8 @@ namespace AAMod.Projectiles.Zero   //The directory for your .cs and .png; Exampl
         public override void SetDefaults()
         {
             projectile.extraUpdates = 5;
-            projectile.width = 48;
-            projectile.height = 48;          
+            projectile.width = 54;
+            projectile.height = 54;          
             projectile.aiStyle = 99;
             projectile.friendly = true;
             projectile.penetrate = -1;
@@ -87,7 +87,7 @@ namespace AAMod.Projectiles.Zero   //The directory for your .cs and .png; Exampl
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 2);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 0);
             BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, lightColor, true);
             return false;
         }

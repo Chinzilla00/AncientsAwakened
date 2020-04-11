@@ -38,6 +38,12 @@ namespace AAMod.Items.Melee
 			recipe.AddIngredient(ItemID.SilverBar, 15);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
+			recipe.AddRecipe(); 
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.ManaCrystal, 5);
+			recipe.AddIngredient(ItemID.TungstenBar, 15);
+			recipe.AddTile(TileID.Anvils);
+			recipe.SetResult(this);
 			recipe.AddRecipe();
 		}
         

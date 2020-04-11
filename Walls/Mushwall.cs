@@ -8,9 +8,6 @@ namespace AAMod.Walls
 {
     public class Mushwall : ModWall
 	{
-        public Texture2D glowTex;
-		public bool glow = true;
-
 		public override void SetDefaults()
 		{
             Main.wallHouse[Type] = true;

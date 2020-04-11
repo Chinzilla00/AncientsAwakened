@@ -132,7 +132,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 					}
 				}
 			}
-			float speed = 3f;
+			float speed = 2f;
 			float acceleration = 0.1f;
 
 			Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
