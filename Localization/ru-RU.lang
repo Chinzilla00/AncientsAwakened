@@ -312,9 +312,6 @@ BuffDescription.TerraSummon=Команда констрактов единств
 BuffName.TerraWizard=Терра-Колдун
 BuffDescription.TerraWizard=Магия
 
-BuffName.TiedemiesBuff=Тайдмис
-BuffDescription.TiedemiesBuff="Он осветит тебе путь"
-
 BuffName.TimeFrozen=Заморозка времени
 
 BuffName.TrueHallowedPrism=Истинная Святая Призма
@@ -375,7 +372,7 @@ BuffDescription.DroneCool=ПЕРЕЗАГРУЗКА. ОБЕСПЕЧЕНА КОМ�
 // AAMod.Items.Armor.Champion
 
 
-BuffName.RageBuff=Ярость Раджа
+BuffName.RageBuff=Гнев Защитника
 BuffDescription.RageBuff=Чемпион Террарии никогда не отступает!
 
 BuffName.RageCool=Ярость Раджа
@@ -656,7 +653,7 @@ ItemName.ChaosKabuto=Хаос Кабуто
 ItemTooltip.ChaosKabuto=Увеличивает урон в ближнем бою на 25%
 
 ItemName.ChaosMask=Хаос маска
-ItemTooltip.ChaosMask=Снижает использование манны на 30%\nУвеличивает магический урон на 20%\nУвеличивает шанс магического критического удара на 20%\nПозволяет дышать под водой
+ItemTooltip.ChaosMask=Увеличивает манну на 80\nУвеличивает магический урон на 20%\nУвеличивает шанс магического критического удара на 20%\nПозволяет дышать под водой
 
 ItemName.ChaosVisor=Хаос Визор
 ItemTooltip.ChaosVisor=Увеличивает урон от призыва на 30% 
@@ -1009,7 +1006,7 @@ ItemName.RadiumHelmet=Радиумный Шлем
 ItemTooltip.RadiumHelmet=Увеличивает урон в ближнем бою на 15%\nСверкает светом звездного неба
 
 ItemName.RadiumMask=Радиумная маска
-ItemTooltip.RadiumMask=Увеличивает магический урон на 15%\nУвеличивает манну на 80\nСверкает светом звездного неба
+ItemTooltip.RadiumMask=Увеличивает магический урон на 15%\nУвеличивает манну на 100\nСверкает светом звездного неба
 
 ItemName.RadiumPlatemail=Радиумная Броня
 ItemTooltip.RadiumPlatemail=Увеличивает урон на 25%\nСверкает светом звездного неба
@@ -1050,6 +1047,26 @@ ItemTooltip.StripeManPants=Максимальный уровень рыбалк�
 ItemName.StripeManShirt=Везучая Рубаха Человека-полосы
 ItemTooltip.StripeManShirt=Показывает все\nУ вас есть шанс получить золотую монетку с камня\nУ вас есть шанс встретиться с редким существом\nУ вас большии шанс получить что-то хорошее с горшков\nЕсли у вас достаточно денег, вы можете уклониться от урона, потратив все деньги\nЭффект Арктического водолазного костюма
 
+// AAMod.Items.Armor.Terra
+
+
+ItemName.TerraGreaves=Терра Сапоги
+ItemTooltip.TerraGreaves=Увеличивает скорость движения на 10%\nУвеличивает урон на 5%
+
+ItemName.TerraHelm=Терра Шлем
+ItemTooltip.TerraHelm=Увеличивает урон в ближнем бою на 22%\nУвеличивает скорость атаки в ближнем бою на 9%
+
+ItemName.TerraHood=Терра Карюшон
+ItemTooltip.TerraHood=Увеличивает манну на 100\nУвеличивает магический урон на 17%\nУвеличивает шанс магического критического урона на 15%
+
+ItemName.TerraMask=Терра Маска
+ItemTooltip.TerraMask=Увеличивает урон от призыва на 9%
+
+ItemName.TerraPlate=Терра Нагрудник
+ItemTooltip.TerraPlate=Увеличивает урон на 5%
+
+ItemName.TerraVisor=Терра Визор
+ItemTooltip.TerraVisor=Увеличивает дистанционный урон на 24%\nШанс 25% не потратить боеприпасы\nНакладывает эффекты от зелья охотника и ночного зрения
 
 // AAMod.Items.Armor.Tribal
 
@@ -1132,16 +1149,27 @@ ItemName.FlamebruteBanner= Знамя пламенного брута
 ItemName.FlamespitterBanner= Знамя огнеплюя
 
 ===UNKNWN===
+ItemName.FogAnglerBanner=Знамя туманного удильщика
+
+===UNKNWN===
+ItemName.FungusFrogBanner=Знамя грибной лягушки
+
+===UNKNWN===
 ItemName.HydraClawBanner= Знамя когтя Гидры
 
 ===UNKNWN===
 ItemName.InfernalSlimeBanner= Знамя инфернального слизня
 
 ===UNKNWN===
+ItemName.InfernoGhoulBanner=Знамя гуля из Инферно
+
+===UNKNWN===
 ItemName.InfernoSalamanderBanner= Знамя саламандры Инферно
 
 ===UNKNWN===
 ItemName.KappaBanner= Знамя Каппы
+
+ItemName.LungBanner=Знамя древнего змия
 
 ===UNKNWN===
 ItemName.MadnessBatBanner= Знамя летучей мыши безумия
@@ -1155,19 +1183,52 @@ ItemName.MagmalgamBanner= Знамя Магмальгамы
 ItemName.MiniDjinnBanner=Знамя Джинна
 
 ===UNKNWN===
+ItemName.MireGhoulBanner=Знамя гуля из Трясины
+
+===UNKNWN===
 ItemName.MiregronBanner= Знамя Трягрона
 
 ===UNKNWN===
 ItemName.MireSlimeBanner= Знамя слизня Трясины
 
 ===UNKNWN===
+ItemName.MireSandSharkBanner=Знамя песчаной акулы из Трясины 
+
+===UNKNWN===
+ItemName.MiresquitoBanner=Знамя комара
+
+===UNKNWN===
 ItemName.MossterBanner= Знамя мохтра (Переведи его, как "мохтер")
+
+===UNKNWN===
+ItemName.MushbugBanner=Знамя грибного жука
+
+===UNKNWN===
+ItemName.MushroomCrabBanner=Знамя грибного краба
+
+===UNKNWN===
+ItemName.MushroomZombieBanner=Знамя грибного зомби
 
 ===UNKNWN===
 ItemName.NewtBanner= Знамя Ньюта
 
 ===UNKNWN===
+ItemName.NightGuardBanner=Знамя ночного стража
+
+===UNKNWN===
 ItemName.NullBanner= Знамя Нуля
+
+===UNKNWN===
+ItemName.PurityCrawlerBanner=Знамя Ползуна Чистоты
+
+===UNKNWN===
+ItemName.PuritySphereBanner=Знамя Сферы Чистоты
+
+===UNKNWN===
+ItemName.PuritySquidBanner=Знамя Кальмара Чистоты
+
+===UNKNWN===
+ItemName.PurityWeaverBanner=Знамя Ткача Чистоты
 
 ===UNKNWN===
 ItemName.SearcherBanner= Знамя Искателя
@@ -1179,13 +1240,54 @@ ItemName.ShadowScoutBanner= Знамя Теневого разведчика
 ItemName.SnakeBanner= Знамя змеи
 
 ===UNKNWN===
+ItemName.SeraphBanner=Знамя Серафима
+
+===UNKNWN===
+ItemName.SoulsuckerBanner=Знамя Душесоса
+
+===UNKNWN===
+ItemName.StoneSearcherBanner=Знамя Каменного Разведчика
+
+===UNKNWN===
+ItemName.SunWatcherBanner=Знамя Солнечного Смотрителя
+
+===UNKNWN===
+ItemName.ShroomJellyBanner=Знамя Грибожельки
+
+===UNKNWN===
+ItemName.TerraCrawlerBanner=Знамя Терра-Ползуна
+
+===UNKNWN===
 ItemName.TerraDeadshotBanner= Знамя Терра-стрелка
+
+ItemName.TerraProbeBanner=Знамя Терра-Дрона
+
+===UNKNWN===
+ItemName.TerraSerpentBanner=Знамя Терра-Змея
+
+===UNKNWN===
+ItemName.TerraSphereBanner=Знамя Терра-Сферы
+
+===UNKNWN===
+ItemName.TerraSquidBanner=Знамя Терра-Кальмара
+
+===UNKNWN===
+ItemName.TerraSquireBanner=Знамя Терра-Щитоносца
 
 ===UNKNWN===
 ItemName.TerraWarlockBanner= Знамя Терра-чернокнижника
 
+ItemName.TerraWatcherBanner=Знамя Терра-Смотрителя
+
 ===UNKNWN===
 ItemName.TerraWizardBanner= Знамя Терра-волшебника
+
+===UNKNWN===
+ItemName.TerraWeaverBanner=Знамя Терра-Ткача
+
+===UNKNWN===
+ItemName.TinyToadBanner=Знамя Маленькой Жабы
+
 ===UNKNWN===
 ItemName.ThixxieBanner= Знамя ЖИРНОЙ феи
 
@@ -1195,10 +1297,146 @@ ItemName.ToxitoadBanner= Знамя токсижабы
 ItemName.VoidScoutBanner=Знамя Разведчика
 
 ===UNKNWN===
+ItemName.VortexBanner=Знамя Вихря
+
+===UNKNWN===
 ItemName.WyrmBanner= Знамя змея
 
 ===UNKNWN===
 ItemName.WyrmlingBanner= Знамя змееныша
+
+ItemName.MireSkulkerBanner= (Кинь поже спрайт этого нечта)
+
+ItemName.ScavengerBanner=Знамя Сборщика
+
+// AAMod.Items.Blocks.Boxes
+
+
+ItemName.AcropolisBox=Acropolis Music Box
+ItemTooltip.AcropolisBox=Plays 'Palace in the Sky' by Turquoise
+
+ItemName.AkumaABox=Akuma Awakened Music Box
+ItemTooltip.AkumaABox=Plays 'Dawn of the Dragon' by Universe
+
+ItemName.AkumaBox=Akuma Music Box
+ItemTooltip.AkumaBox=Plays 'Trial By Fire' by Saucecoie
+
+ItemName.AnubisBox=Anubis Music Box
+ItemTooltip.AnubisBox=Plays 'Strings of Judgement' by Universe
+
+ItemName.AnubisFBox=Forsaken Anubis Music Box
+ItemTooltip.AnubisFBox=Plays 'Purgatorium' by Universe
+
+ItemName.AthenaABox=Olympian Athena Music Box
+ItemTooltip.AthenaABox=Plays 'Goddess of Those Winged' by Turquoise
+
+ItemName.AthenaBox=Athena Music Box
+ItemTooltip.AthenaBox=Plays 'Magisaint' by Turquoise
+
+ItemName.BroodBox=Broodmother Music Box
+ItemTooltip.BroodBox=Plays 'Blazing Fury' by Spectral Aves
+
+ItemName.DjinnBox=Desert Djinn Music Box
+ItemTooltip.DjinnBox=Plays 'The Dust Bowl' by Universe
+
+ItemName.Equibox=Equinox Worms Music Box
+ItemTooltip.Equibox=Plays 'Orbittal Equilibrium' by Charlie Debnam
+
+ItemName.FateBox=True Void Music Box
+ItemTooltip.FateBox=Plays 'Nihil' by Charlie Debnam
+
+ItemName.FungusBox=Feudal Fungus Music Box
+ItemTooltip.FungusBox=Plays 'Bioluminescent Beatdown' by Spectral Aves
+
+ItemName.GreedABox=Worm King Music Box
+ItemTooltip.GreedABox=Plays 'Ira De Riquezas Perdidas' by Universe
+
+ItemName.GreedBox=Greed Music Box
+ItemTooltip.GreedBox=Plays 'Gold Digger' by Universe
+
+ItemName.GripsBox=Grips of Chaos Music Box
+ItemTooltip.GripsBox=Plays 'Twin Terror' by Spectral Aves
+
+ItemName.HoardBox=Hoard Music Box
+ItemTooltip.HoardBox=Plays 'Cavern of Coveted Treasures' by OmegaFerretMusic
+
+ItemName.HydraBox=Hydra Music Box
+ItemTooltip.HydraBox=Plays 'Abyssal Wrath' by Spectral Aves
+
+ItemName.InfernoBox=Inferno Surface Music Box
+ItemTooltip.InfernoBox=Plays 'Flame-Razed Rock' by Karamitasu
+
+ItemName.InfernoNightBox=Inferno Night Music Box
+ItemTooltip.InfernoNightBox=Plays 'Burnt to Ashes' by Quicksilvur
+
+ItemName.InfernoUBox=Inferno Underground Music Box
+ItemTooltip.InfernoUBox=Plays 'Smolder' by OmegaFerretMusic
+
+ItemName.LakeBox=Lake of the Rising Moon Music Box
+ItemTooltip.LakeBox=Plays 'Lake of Souls' by Rockwizard
+
+ItemName.MireBox=Mire Surface Music Box
+ItemTooltip.MireBox=Plays 'Moonlit Marsh' by Charlie Debnam
+
+ItemName.MireDayBox=Mire Day Music Box
+ItemTooltip.MireDayBox=Plays 'Clouded in Mystery' by Charlie Debnam
+
+ItemName.MireUBox=Mire Underground Music Box
+ItemTooltip.MireUBox=Plays 'The Deepest Reaches' by Charlie Debnam
+
+ItemName.MonarchBox=Mushroom Monarch Music Box
+ItemTooltip.MonarchBox=Plays 'Fungal Face-off' by Spectral Aves
+
+ItemName.PagodaBox=Pagoda of the Rising Sun Music Box
+ItemTooltip.PagodaBox=Plays 'Scorched Tower' by Rockwizard
+
+ItemName.RajahBox=Rajah Rabbit Music Box
+ItemTooltip.RajahBox=Plays 'JUSTICE' by Spectral Aves
+
+ItemName.SagBox=Sagittarius Music Box
+ItemTooltip.SagBox=Plays 'Zodiac' by OmegaFerretMusic
+
+ItemName.SDBox=Sleeping Dragon Music Box
+ItemTooltip.SDBox=Plays 'Sleeping Dragon' by OmegaFerretMusic
+
+ItemName.SerpentBox=Subzero Serpent Music Box
+ItemTooltip.SerpentBox=Plays 'Burrowing Down' by Charlie Debnam
+
+ItemName.SGBox=Sleeping Giant Music Box
+ItemTooltip.SGBox=Plays 'Sleeping Giant' by LordCakeSpy
+
+ItemName.ShenABox=Shen Doragon Awakened Music Box
+ItemTooltip.ShenABox=Plays 'Blaze of Glory' by Charlie Debnam
+
+ItemName.ShenBox=Shen Doragon Music Box
+ItemTooltip.ShenBox=Plays 'Unyielding Discord' by Charlie Debnam
+
+ItemName.SistersBox=Sisters of Discord Music Box
+ItemTooltip.SistersBox=Plays 'Sisters of Anarchy' by Shadow Figure
+
+ItemName.StarBox=Celestial Stars Box
+ItemTooltip.StarBox=Plays 'Interstellar' by OmegaFerretMusic
+
+ItemName.TerrariumBox=Terrarium Music Box
+ItemTooltip.TerrariumBox=Plays 'Heart of the World' by Quicksilvur feat Charlie Debnam
+
+ItemName.ToadBox=Truffle Toad Music Box
+ItemTooltip.ToadBox=Plays 'TODESTOOL' by Spectral Aves
+
+ItemName.VoidBox=Void Music Box
+ItemTooltip.VoidBox=Plays 'What Once Was' by OmegaFerretMusic
+
+ItemName.YamataABox=Yamata Awakened Music Box
+ItemTooltip.YamataABox=Plays 'Abyssal Nightmare' by Universe
+
+ItemName.YamataBox=Yamata Music Box
+ItemTooltip.YamataBox=Plays 'Crescent of Madness' by Saucecoie
+
+ItemName.Zero2Box=Zero Awakened Music Box
+ItemTooltip.Zero2Box=Plays 'Doomsday Arrives' by Saucecoie
+
+ItemName.ZeroBox=Zero Music Box
+ItemTooltip.ZeroBox=Plays 'Entropy's Envoy' by Charlie Debnam
 
 
 // AAMod.Items.Blocks.BogwoodF
@@ -2010,6 +2248,9 @@ ItemTooltip.DesireTalisman=Grabbing coins boosts your damage by 1% for 4 seconds
 ItemName.Earthbreaker=Earthbreaker
 ItemTooltip.Earthbreaker=Hitting an airborne always crits and sends the target flying into the ground\nConcussive force of the hit also has a 50% chance to confuse the struck enemy\nIf the enemy hits the ground after being hit, they will take damage
 
+ItemName.GravitySphere=Gravity Sphere
+ItemTooltip.GravitySphere=A stone model of the planet, complete with an orbitting moon!
+
 ItemName.GreedABag=Treasure Bag
 ItemTooltip.GreedABag={$CommonItemTooltip.RightClickToOpen}
 
@@ -2020,6 +2261,8 @@ ItemName.OreStaff=Ore Staff
 
 ===UNKNWN===
 ItemName.Unearther=
+
+ItemName.WKGTrophy=Worm King Greed Trophy
 
 ItemName.WormIdol=Worm Idol
 ItemTooltip.WormIdol=An ancient statue depicting some form of worm god\nIt has a slot for an orb of some kind on the bottom...
@@ -2565,6 +2808,12 @@ ItemTooltip.AmphibianLongswordEXS=Amphibious Longsword EX
 ItemName.AmphibianLongswordS=Amphibious Longsword
 ItemTooltip.AmphibianLongswordS=So I heard you like getting hosed. \n-Alphakip
 
+ItemName.ArchwitchStaff=Archwitch's Galactic Scepter
+ItemTooltip.ArchwitchStaff=The staff of the Dragon Queen\nLeft-click to spin the scepter, firing off stars at nearby enemies\nRight click to fire explosive magic bolts
+
+ItemName.ArchwitchWand=Celestial Wand
+ItemTooltip.ArchwitchWand=An old wand. It seems to have not been used recently.
+
 ItemName.CatsEyeRifle=Cat's Eye Rifle
 ItemTooltip.CatsEyeRifle=Fires Shadow bolts\nDoesn't require ammo\n'QUICK HIDE THE LOLI STASH'\n-Liz
 
@@ -2896,6 +3145,9 @@ ItemName.BaseAAItem=
 
 ItemName.AncientArcanum=Ancient Arcanum
 ItemTooltip.AncientArcanum=Releases a homing miniature quazar that explodes upon hitting an enemy
+
+ItemName.AnubisBlockBook=The Life And Epic Adventures of Anubis the Wonder Dog
+ItemTooltip.AnubisBlockBook=Left click to summon blocks that crush at your cursor's position Horizontally\nRight click for vertical blocks instead
 
 ItemName.AtlanteanTrident=Atlantean Trident
 ItemTooltip.AtlanteanTrident=Fires off a tri-shot of water bolts
@@ -4184,6 +4436,15 @@ ItemTooltip.CCHood=The mask of a crazy lizard enthusiast\n'Great for impersonati
 ItemName.CCRobe=Dread Cultist Robe
 ItemTooltip.CCRobe=The hood of a crazy lizard enthusiast\n'Great for impersonating Ancients Awakened Developers!'
 
+// AAMod.Items.Vanity.CC.Shiny
+
+
+ItemName.ShinyCCHood=Draconian Cultist Mask
+ItemTooltip.ShinyCCHood=The mask of a crazy dragon enthusiast\n'Great for impersonating Ancients Awakened Developers!'
+
+ItemName.ShinyCCRobe=Draconian Cultist Robe
+ItemTooltip.ShinyCCRobe=The hood of a crazy dragon enthusiast\n'Great for impersonating Ancients Awakened Developers!'
+
 
 // AAMod.Items.Vanity.Cerberus
 
@@ -4291,6 +4552,21 @@ ItemTooltip.FargoPants=soonTM\n'Great for impersonating Ancients Awakened Devs!'
 ItemName.FargoSuit=Dapper Squirrel Suit
 ItemTooltip.FargoSuit=soonTM\n'Great for impersonating Ancients Awakened Devs!'
 
+// AAMod.Items.Vanity.Fazer
+
+
+ItemName.SammyPants=Fluffy Fox Pants
+ItemTooltip.SammyPants='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.SammySweater=Fluffy Fox Sweater
+ItemTooltip.SammySweater='Great for impersonating Ancients Awakened Contributors!'
+
+ItemName.SammyWig=Fluffy Fox Wig
+ItemTooltip.SammyWig='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.WetFurrbag=Wet Furrbag
+ItemTooltip.WetFurrbag=<right> to open \n'All the essentials for impersonating the Funloving Fox!'
+
 
 // AAMod.Items.Vanity.Gibs
 
@@ -4357,6 +4633,32 @@ ItemTooltip.ShinyHalTrousers=These pants cost way more than you do\n'Great for i
 
 ItemName.ShinyHalTux=Hallam's Velvet Tux
 ItemTooltip.ShinyHalTux=This tux was woven with pure class\n'Great for impersonating Ancients Awakened Devs!'
+
+// AAMod.Items.Vanity.Pluto
+
+
+ItemName.PlutoBag=Outer God's Bag
+ItemTooltip.PlutoBag=<right> to open \n'All the essentials for impersonating the Dwarf God!'
+
+ItemName.PlutoBoots=Outer God's Greaves
+ItemTooltip.PlutoBoots='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.PlutoMask=Outer God's Mask
+ItemTooltip.PlutoMask='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.PlutoPlate=Outer God's Chestplate
+ItemTooltip.PlutoPlate='Great for impersonating Ancients Awakened Devs!'
+
+
+// AAMod.Items.Vanity.Pluto.Shiny
+
+
+ItemName.ShinyPlutoMask=Outer God's Ancient Mask
+ItemTooltip.ShinyPlutoMask='Great for impersonating Ancients Awakened Devs!'
+
+ItemName.ShinyPlutoPlate=Outer God's Ancient Chestplate
+ItemTooltip.ShinyPlutoPlate='Great for impersonating Ancients Awakened Devs!'
+
 
 
 // AAMod.Items.Vanity
@@ -5319,6 +5621,22 @@ NPCName.Mushman=
 ===UNKNWN===
 NPCName.Samurai=
 
+// AAMod.Tiles.Altar
+
+
+NPCName.DBPortal=Bright Star
+
+NPCName.NCPortal=Black Void
+
+NPCName.WormSpawn=Heavenly Voice
+
+
+// AAMod.Items.Dev.DevTile.Tiles
+
+
+MapObject.CCMireBox=Cardboard Box
+
+MapObject.CerberusKennel=Cerberus Kennel
 
 // AAMod.Items.Dev.Invoker
 
@@ -5394,6 +5712,8 @@ MapObject.HoardBox=Music Box
 MapObject.HydraBox=Music Box
 
 MapObject.InfernoBox=Music Box
+
+MapObject.InfernoNightBox=Music Box
 
 MapObject.InfernoUBox=Music Box
 
@@ -5811,6 +6131,11 @@ Common.StripeManSetBonus1=You change the rule of Nature's randomicity\nYou will 
 Common.StripeManSetBonusactive=ACTIVATED
 Common.StripeManSetBonusunactive=UNACTIVATED
 Common.StripeManSetBonus2="Behold, the man is become as one of us, to know good and evil.\nAnd now, lest he put forth his hand, and take also of the tree of life, and eat, and live for ever"
+
+Equipset.TerraHelmBonus=Увеличивает регенирацию здоровья\nУвеличивает скорость атаки в ближнем бою на 28%\nПри получении урона, в врага, который нанес вам урон, полетит терра сфера
+Equipset.TerraHoodBonus=Вы автоматический пьете зелья манны\nСнижает использование манны на 50%\nИспользование способности брони вызывает 2 стебля терра розы.\nВраги, получившие урон от стеблей, выпадают звезды манны
+Equipset.TerraMaskBonus=Создает Терра Кристал\nИспользование способности брони меняет кристалл между агрессивным, защитным и режимом поддержки\nВ режиме поддержки, ваша защита и регенерация здоровья повышена, но урон в два раза меньше
+Equipset.TerraVisorBonus=Понижена агрессивность врагов против вас\nУвеличивает шанс дистанционного критического урона на 20% \nПопадание по врагу снарядом может вызвать терра пулю, которая полетит во врага
 
 Common.GoblinSlayerHelmBonus=500% increased damage and knockback to goblins\n80% damage resistance from goblins\n'I hunt goblins or nothing.'
 

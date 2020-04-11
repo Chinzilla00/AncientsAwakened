@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Terra
@@ -35,9 +36,7 @@ namespace AAMod.Items.Armor.Terra
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = @"Summons a Terra Crystal to assist you
-Pressing the armor ability toggles the crystal between offensive, defensive, and support mode
-While in support mode, your defense and life regeneration are increased, but your damage is cut in half";
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Equipset.TerraMaskBonus");
             AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
             modPlayer.TerraSu = true;
             if (player.whoAmI == Main.myPlayer)

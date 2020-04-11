@@ -5493,5 +5493,106 @@ Fishy";
             }
             return"";
         }
+
+        public static string BiomiteArmor(string Info)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+            {
+                switch(Info)
+                {
+                    case "BiomiteArmor1":
+                    return "根据你所处的环境提供效果";
+                    case "BiomiteArmor2":
+                    return "\n+20生命上限";
+                    case "BiomiteArmor3":
+                    return "\n+20魔力上限";
+                    case "BiomiteArmor4":
+                    return "\n你可以探测到你周围的敌人";
+                    case "BiomiteArmor5":
+                    return "\n你免疫着火";
+                    case "BiomiteArmor6":
+                    return "\n你免疫中毒";
+                    case "BiomiteArmor7":
+                    return "\n增加5防御力";
+                    case "BiomiteArmor8":
+                    return "\n增加魔力再生";
+                    case "BiomiteArmor9":
+                    return "\n你免疫颤抖";
+                    case "BiomiteArmor10":
+                    return "\n你免疫强风";
+                    case "BiomiteArmor11":
+                    return "\n增加生命再生\n你免疫缓慢";
+                    case "BiomiteArmor12":
+                    return "\n增加10%移动速度";
+                    case "BiomiteArmor13":
+                    return "\n增加5破甲";
+                }
+            }
+            else if(Language.ActiveCulture == GameCulture.Russian)
+            {
+                switch(Info)
+                {
+                    case "BiomiteArmor1":
+                    return "Provide different setbonuses based on biome you're in";
+                    case "BiomiteArmor2":
+                    return "\nIncreases maximum life by 20";
+                    case "BiomiteArmor3":
+                    return "\nIncreases maximum mana by 20";
+                    case "BiomiteArmor4":
+                    return "\nYou can detect the enemies around you";
+                    case "BiomiteArmor5":
+                    return "\nYou immune to 'On fire!' debuff";
+                    case "BiomiteArmor6":
+                    return "\nYou immune to 'Poisoned' debuff";
+                    case "BiomiteArmor7":
+                    return "\nIncrease 5 defense";
+                    case "BiomiteArmor8":
+                    return "\nIncrease your mana regenaration";
+                    case "BiomiteArmor9":
+                    return "\nYou immune to 'Chilled' debuff";
+                    case "BiomiteArmor10":
+                    return "\nYou immune to 'Mighty Wind' debuff";
+                    case "BiomiteArmor11":
+                    return "\nIncrease your life regenaration\nYou immune to Slow";
+                    case "BiomiteArmor12":
+                    return "\nIncrease 10% movespeed";
+                    case "BiomiteArmor13":
+                    return "\nIncrease 5 armor penetration";
+                }
+            }
+            else
+            {
+                switch(Info)
+                {
+                    case "BiomiteArmor1":
+                    return "Provide different setbonuses based on biome you're in";
+                    case "BiomiteArmor2":
+                    return "\nIncreases maximum life by 20";
+                    case "BiomiteArmor3":
+                    return "\nIncreases maximum mana by 20";
+                    case "BiomiteArmor4":
+                    return "\nYou can detect the enemies around you";
+                    case "BiomiteArmor5":
+                    return "\nYou immune to 'On fire!' debuff";
+                    case "BiomiteArmor6":
+                    return "\nYou immune to 'Poisoned' debuff";
+                    case "BiomiteArmor7":
+                    return "\nIncrease 5 defense";
+                    case "BiomiteArmor8":
+                    return "\nIncrease your mana regenaration";
+                    case "BiomiteArmor9":
+                    return "\nYou immune to 'Chilled' debuff";
+                    case "BiomiteArmor10":
+                    return "\nYou immune to 'Mighty Wind' debuff";
+                    case "BiomiteArmor11":
+                    return "\nIncrease your life regenaration\nYou immune to Slow";
+                    case "BiomiteArmor12":
+                    return "\nIncrease 10% movespeed";
+                    case "BiomiteArmor13":
+                    return "\nIncrease 5 armor penetration";
+                }
+            }
+            return"";
+        }
     }
 }

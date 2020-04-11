@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 
 namespace AAMod.Items.Armor.Terra
@@ -46,9 +47,7 @@ Grants hunter & night vision");
         public override void UpdateArmorSet(Player player)
         {
 
-            player.setBonus = @"Enemies less likely to target you
-Ranged critical strike chance increased by 20%
-Striking an enemy with a ranged projectile may cause a terra bullet to fire at the target";
+            player.setBonus = Language.GetTextValue("Mods.AAMod.Equipset.TerraVisorBonus");
 
             player.aggro -= 5;
             player.rangedCrit += 20;
