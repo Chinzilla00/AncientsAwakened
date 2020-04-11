@@ -264,7 +264,9 @@ namespace AAMod
             RiftReturn = RegisterHotKey(Lang.Hotkey("RiftReturnhotkey"), "X");
 
             AccessoryAbilityKey = RegisterHotKey(Lang.Hotkey("AccessoryAbilityKey"), "U");
-            ArmorAbilityKey = RegisterHotKey(Lang.Hotkey("ArmorAbilityKey"), "Y");
+            ArmorAbilityKey = RegisterHotKey(Lang.Hotkey("ArmorAbilityKey"), "Y"); 
+            
+            On.Terraria.Wiring.ActuateForced += Wiring_ActuateForced;
 
             if (!Main.dedServ)
             {
@@ -1021,6 +1023,16 @@ namespace AAMod
 
                 return;
             }
+        }
+
+        private void Wiring_ActuateForced(On.Terraria.Wiring.orig_ActuateForced orig, int i, int j)
+        {
+            if (Main.tile[i, j].type == ModContent.TileType<Tiles.AcropolisBlock2>() || Main.tile[i, j].type == ModContent.TileType<Tiles.AcropolisBlock>() ||
+                Main.tile[i, j].type == ModContent.TileType<Tiles.GreedStone>() || Main.tile[i, j].type == ModContent.TileType<Tiles.GreedBrick>())
+            {
+                return;
+            }
+            orig(i, j);
         }
 
         public static void Chat(string s, Color color, bool sync = true)
