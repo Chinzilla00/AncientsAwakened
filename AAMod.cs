@@ -267,6 +267,7 @@ namespace AAMod
             ArmorAbilityKey = RegisterHotKey(Lang.Hotkey("ArmorAbilityKey"), "Y"); 
             
             On.Terraria.Wiring.ActuateForced += Wiring_ActuateForced;
+            On.Terraria.Wiring.Actuate += Actuate;
 
             if (!Main.dedServ)
             {
@@ -1033,6 +1034,17 @@ namespace AAMod
                 return;
             }
             orig(i, j);
+        }
+
+        private static bool Actuate(On.Terraria.Wiring.orig_Actuate orig, int i, int j)
+        {
+            Tile tile = Main.tile[i, j];
+            if (Main.tile[i, j].type == ModContent.TileType<Tiles.AcropolisBlock2>() || Main.tile[i, j].type == ModContent.TileType<Tiles.AcropolisBlock>() ||
+                Main.tile[i, j].type == ModContent.TileType<Tiles.GreedStone>() || Main.tile[i, j].type == ModContent.TileType<Tiles.GreedBrick>())
+            {
+                return false;
+            }
+            return orig(i, j);
         }
 
         public static void Chat(string s, Color color, bool sync = true)
