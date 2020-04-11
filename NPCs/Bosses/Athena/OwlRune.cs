@@ -16,8 +16,8 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.lifeMax = 1;
             npc.aiStyle = 0;
             npc.damage = Main.expertMode ? 50 : 84;
-            npc.defense = Main.expertMode ? 1 : 1;
-            npc.knockBackResist = 0.2f;
+            npc.defense = 1;
+            npc.knockBackResist = 0f;
             npc.width = 82;
             npc.height = 82;
             npc.value = Item.buyPrice(0, 0, 0, 0);
@@ -103,7 +103,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), false);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 1, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), false);
             return false;
         }
     }
