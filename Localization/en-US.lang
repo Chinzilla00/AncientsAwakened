@@ -66,7 +66,7 @@ Common.ChaosMaskBonus=While submerged in liquids, your magic abilities are incre
 Common.ChaosVisorBonus=+4 Minion slots\nA dragon soul ravages foes for you
 
 Common.DarkmatterHeaddressBonus=Minions will occasionally attempt to disrupt enemy projectiles
-Common.DarkmatterHelmetBonus=You and nearby allies recieve 40% less damage
+Common.DarkmatterHelmetBonus=A Dark Shield protects you.\nYou and nearby allies recieve 40% less damage while active.\nThe Dark Shield has a 30 second cooldown.\nYou have increased life regen while the shield is cooling down at night.
 Common.DarkmatterMaskBonus1=Damage nearby enemies \n 2% of the damage dealt will heal you\n
 Common.DarkmatterMaskBonus2=Magic Damage\n
 Common.DarkmatterMaskBonus3=% critical strike chance

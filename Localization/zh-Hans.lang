@@ -712,7 +712,7 @@ ItemTooltip.DarkmatterVisor=增加15%远程伤害\n20%减少弹药消耗\n黑暗
 
 Common.DarkmatterHeaddressBonus=你的召唤物有机会消灭敌人的弹幕
 
-Common.DarkmatterHelmetBonus=你和附近的盟友减少40%受到的伤害
+Common.DarkmatterHelmetBonus=提供一个护盾，你和附近的盟友减少40%受到的伤害\n护盾有30秒冷却\n护盾冷却期间夜晚增加你的生命回复
 
 Common.DarkmatterMaskBonus1=对周围的敌人造成伤害\n造成伤害的2%会回复你的生命\n造成
 Common.DarkmatterMaskBonus2=魔法伤害\n
@@ -4897,8 +4897,8 @@ ItemTooltip.InvokerRobe=“大兽”阿莱斯特的附魔法衣\n“非常适合
 
 // AAMod.Items.Vanity.CC
 
-ItemName.CCBox=泥潭狂人的纸皮宝藏箱
-ItemTooltip.CCBox=右键打开\n内含冒充小狗召唤师的所有物品
+ItemName.CCBox=泥潭狂人的纸皮箱
+ItemTooltip.CCBox=右键打开\n内含恐惧献祭者的所有物品
 
 ItemName.CCHood=惧月教徒面具
 ItemTooltip.CCHood=一副蜥蜴狂徒的面具\n“非常适合冒充远古觉醒的开发者!”
