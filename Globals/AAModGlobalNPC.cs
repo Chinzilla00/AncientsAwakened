@@ -925,45 +925,45 @@ namespace AAMod
                 ClearPoolWithExceptions(pool);
                 if ((spawnInfo.player.position.Y < (Main.worldSurface * 16.0)) && (!Main.dayTime || AAWorld.downedYamata))
                 {
-                    pool.Add(mod.NPCType("Mosster"), .05f);
-                    pool.Add(mod.NPCType("Newt"), .1f);
-                    pool.Add(mod.NPCType("HydraClaw"), .05f);
-                    pool.Add(mod.NPCType("MireSkulker"), .04f);
-                    pool.Add(mod.NPCType("MireSlime"), .05f);
+                    pool.Add(mod.NPCType("Mosster"), .025f);
+                    pool.Add(mod.NPCType("Newt"), .05f);
+                    pool.Add(mod.NPCType("HydraClaw"), .025f);
+                    pool.Add(mod.NPCType("MireSkulker"), .02f);
+                    pool.Add(mod.NPCType("MireSlime"), .025f);
 
                     if (Main.hardMode)
                     {
                         pool.Add(mod.NPCType("FogAngler"), SpawnCondition.WaterCritter.Chance * 0.05f);
-                        pool.Add(mod.NPCType("Toxitoad"), .01f);
-                        pool.Add(mod.NPCType("Kappa"), .05f);
+                        pool.Add(mod.NPCType("Toxitoad"), .005f);
+                        pool.Add(mod.NPCType("Kappa"), .025f);
                     }
 
                     if (AAWorld.downedSisters)
                     {
-                        pool.Add(mod.NPCType("AbyssClaw"), .02f);
+                        pool.Add(mod.NPCType("AbyssClaw"), .01f);
                     }
                 }
                 else if (spawnInfo.player.position.Y > (Main.worldSurface * 16.0))
                 {
-                    pool.Add(mod.NPCType("Mosster"), .05f);
-                    pool.Add(mod.NPCType("Newt"), .1f);
-                    pool.Add(mod.NPCType("HydraClaw"), .05f);
-                    pool.Add(mod.NPCType("MireSkulker"), .04f);
+                    pool.Add(mod.NPCType("Mosster"), .025f);
+                    pool.Add(mod.NPCType("Newt"), .05f);
+                    pool.Add(mod.NPCType("HydraClaw"), .025f);
+                    pool.Add(mod.NPCType("MireSkulker"), .02f);
 
                     if (Main.hardMode)
                     {
-                        pool.Add(mod.NPCType("FogAngler"), SpawnCondition.WaterCritter.Chance * 0.2f);
-                        pool.Add(mod.NPCType("Miresquito"), .05f);
-                        pool.Add(mod.NPCType("ChaoticTwilight"), .01f);
+                        pool.Add(mod.NPCType("FogAngler"), SpawnCondition.WaterCritter.Chance * 0.1f);
+                        pool.Add(mod.NPCType("Miresquito"), .025f);
+                        pool.Add(mod.NPCType("ChaoticTwilight"), .005f);
 
                         if (spawnInfo.player.ZoneSnow)
                         {
-                            pool.Add(mod.NPCType("Miregron"), .01f);
+                            pool.Add(mod.NPCType("Miregron"), .005f);
                         }
 
                         if (spawnInfo.player.ZoneUndergroundDesert)
                         {
-                            pool.Add(mod.NPCType("MireGhoul"), .05f);
+                            pool.Add(mod.NPCType("MireGhoul"), .025f);
                         }
                     }
                 }

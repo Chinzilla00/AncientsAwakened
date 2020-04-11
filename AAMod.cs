@@ -1028,8 +1028,9 @@ namespace AAMod
 
         private void Wiring_ActuateForced(On.Terraria.Wiring.orig_ActuateForced orig, int i, int j)
         {
-            if (Main.tile[i, j].type == ModContent.TileType<Tiles.AcropolisBlock2>() || Main.tile[i, j].type == ModContent.TileType<Tiles.AcropolisBlock>() ||
-                Main.tile[i, j].type == ModContent.TileType<Tiles.GreedStone>() || Main.tile[i, j].type == ModContent.TileType<Tiles.GreedBrick>())
+            Tile tile = Main.tile[i, j];
+            if (tile.type == ModContent.TileType<Tiles.AcropolisBlock2>() || tile.type == ModContent.TileType<Tiles.AcropolisBlock>() ||
+                tile.type == ModContent.TileType<Tiles.GreedStone>() || tile.type == ModContent.TileType<Tiles.GreedBrick>())
             {
                 return;
             }
@@ -1039,8 +1040,8 @@ namespace AAMod
         private static bool Actuate(On.Terraria.Wiring.orig_Actuate orig, int i, int j)
         {
             Tile tile = Main.tile[i, j];
-            if (Main.tile[i, j].type == ModContent.TileType<Tiles.AcropolisBlock2>() || Main.tile[i, j].type == ModContent.TileType<Tiles.AcropolisBlock>() ||
-                Main.tile[i, j].type == ModContent.TileType<Tiles.GreedStone>() || Main.tile[i, j].type == ModContent.TileType<Tiles.GreedBrick>())
+            if (tile.type == ModContent.TileType<Tiles.AcropolisBlock2>() || tile.type == ModContent.TileType<Tiles.AcropolisBlock>() ||
+                tile.type == ModContent.TileType<Tiles.GreedStone>() || tile.type == ModContent.TileType<Tiles.GreedBrick>())
             {
                 return false;
             }
