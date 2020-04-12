@@ -1,5 +1,4 @@
 using Terraria.ID;
-using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Melee.Gem   //where is located

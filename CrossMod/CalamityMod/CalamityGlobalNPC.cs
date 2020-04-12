@@ -1,9 +1,5 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 using Terraria;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
 
 namespace AAMod
 {

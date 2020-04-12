@@ -1,9 +1,5 @@
-using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using System.Collections.Generic;
 using Terraria;
-using Terraria.ObjectData;
-using Terraria.ModLoader.IO;
 
 namespace AAMod.Items.Dev.DevTile
 {

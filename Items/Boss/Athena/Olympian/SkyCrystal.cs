@@ -1,9 +1,7 @@
 using Terraria;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Blocks.Olympian
+namespace AAMod.Items.Boss.Athena.Olympian
 {
     public class SkyCrystal : BaseAAItem
     {
