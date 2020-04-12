@@ -1965,6 +1965,9 @@ ItemTooltip.SentryOfTheEye=Призывает глаз-турель
 
 // AAMod.Items.Boss.Athena
 
+ItemName.AthenaAMask=
+
+ItemName.AthenaATrophy=
 
 ItemName.AthenaABag=Мешок с сокровищами
 ItemTooltip.AthenaABag={$CommonItemTooltip.RightClickToOpen}

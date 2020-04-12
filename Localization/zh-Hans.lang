@@ -2173,6 +2173,10 @@ ItemTooltip.Verdict=击中敌人时释放附魔沙雨\n同时产生2个逝落幻
 
 //AAMod.Items.Boss.Athena
 
+ItemName.AthenaAMask=女武神面具
+
+ItemName.AthenaATrophy=女武神纪念章
+
 ItemName.AthenaABag=宝藏袋
 
 ItemName.AthenaBag=宝藏袋
