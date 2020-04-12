@@ -17,8 +17,6 @@ namespace AAMod.Projectiles
 
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.RocketSnowmanIV);
-            aiType = ProjectileID.RocketSnowmanIII;
             projectile.width = 28;
             projectile.height = 32;
             projectile.friendly = true;
@@ -74,18 +72,15 @@ namespace AAMod.Projectiles
                     projectile.velocity = Vector2.Lerp(projectile.velocity, desiredVelocity, 1f / amountOfFramesToLerpBy);
                 }
             }
-
             if (projectile.velocity.X < 0f)
             {
-                projectile.direction = -1;
                 projectile.spriteDirection = -1;
-                projectile.rotation = (float)Math.Atan2(-projectile.velocity.Y, -projectile.velocity.X) - 1.57f;
+                projectile.rotation = (float)Math.Atan2(-projectile.velocity.Y, -projectile.velocity.X);
             }
             else
             {
-                projectile.direction = 1;
                 projectile.spriteDirection = 1;
-                projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X) + 1.57f;
+                projectile.rotation = (float)Math.Atan2(projectile.velocity.Y, projectile.velocity.X);
             }
         }
 
@@ -120,7 +115,7 @@ namespace AAMod.Projectiles
         {
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 14, 0, 0);
             BaseDrawing.DrawAfterimage(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, .5f, 1f, 10, false, 0f, 0f, new Color(100, 200, 0, 0), frame, 14);
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 14, frame, Color.White, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 14, frame, Color.White, true);
             return false;
         }
     }
