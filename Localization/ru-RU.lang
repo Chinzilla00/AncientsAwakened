@@ -1358,7 +1358,7 @@ ItemName.GripsBox=Grips of Chaos Music Box
 ItemTooltip.GripsBox=Plays 'Twin Terror' by Spectral Aves
 
 ItemName.HoardBox=Hoard Music Box
-ItemTooltip.HoardBox=Plays 'Cavern of Coveted Treasures' by OmegaFerretMusic
+ItemTooltip.HoardBox=Plays 'Cove' by Universe
 
 ItemName.HydraBox=Hydra Music Box
 ItemTooltip.HydraBox=Plays 'Abyssal Wrath' by Spectral Aves
@@ -1394,10 +1394,10 @@ ItemName.RajahBox=Rajah Rabbit Music Box
 ItemTooltip.RajahBox=Plays 'JUSTICE' by Spectral Aves
 
 ItemName.SagBox=Sagittarius Music Box
-ItemTooltip.SagBox=Plays 'Zodiac' by OmegaFerretMusic
+ItemTooltip.SagBox=Plays 'Event Horizon' by SpectralAves
 
 ItemName.SDBox=Sleeping Dragon Music Box
-ItemTooltip.SDBox=Plays 'Sleeping Dragon' by OmegaFerretMusic
+ItemTooltip.SDBox=Plays 'Sleeping Giants' by LordCakeSpy
 
 ItemName.SerpentBox=Subzero Serpent Music Box
 ItemTooltip.SerpentBox=Plays 'Burrowing Down' by Charlie Debnam
@@ -1415,7 +1415,7 @@ ItemName.SistersBox=Sisters of Discord Music Box
 ItemTooltip.SistersBox=Plays 'Sisters of Anarchy' by Shadow Figure
 
 ItemName.StarBox=Celestial Stars Box
-ItemTooltip.StarBox=Plays 'Interstellar' by OmegaFerretMusic
+ItemTooltip.StarBox=Plays 'Star's Serenade' by Charlie Debnam
 
 ItemName.TerrariumBox=Terrarium Music Box
 ItemTooltip.TerrariumBox=Plays 'Heart of the World' by Quicksilvur feat Charlie Debnam
@@ -1424,7 +1424,7 @@ ItemName.ToadBox=Truffle Toad Music Box
 ItemTooltip.ToadBox=Plays 'TODESTOOL' by Spectral Aves
 
 ItemName.VoidBox=Void Music Box
-ItemTooltip.VoidBox=Plays 'What Once Was' by OmegaFerretMusic
+ItemTooltip.VoidBox=Plays 'Gaze into Darkness' by Charlie Debnam
 
 ItemName.YamataABox=Yamata Awakened Music Box
 ItemTooltip.YamataABox=Plays 'Abyssal Nightmare' by Universe
@@ -1515,41 +1515,22 @@ ItemName.RelicBrick=Кирпич из реликвии
 ItemName.Abyssium=Абиссиум
 ItemTooltip.Abyssium=Он весь такой пористый. Мерзость.
 
-ItemName.AcropolisBox=Музыкальная шкатулка "Акрополис"
-ItemTooltip.AcropolisBox=Проигрывает 'Palace in the Sky' Turquoise
-
-ItemName.AkumaABox=Музыкальная шкатулка "Они Акума"
-ItemTooltip.AkumaABox=Проигрывает 'Dawn of the Dragon' Universe
-
-ItemName.AkumaBox=Музыкальная шкатулка "Акума"
-ItemTooltip.AkumaBox=Проигрывает 'Trial By Fire' Saucecoie
-
-ItemName.AnubisBox=Музыкальная шкатулка "Анубис"
-ItemTooltip.AnubisBox=Проигрывает 'Strings of Judgement' Universe
-
-ItemName.AnubisFBox=Музыкальная шкатулка "Забытый Анубис"
-ItemTooltip.AnubisFBox=Проигрывает 'Wrath of the Forsaken' by Universe
-
 ItemName.Apocalyptite=Апокалиптит
-
-ItemName.AthenaABox=Музыкальная шкатулка "Олипийская Афина"
-ItemTooltip.AthenaABox=Проигрывает 'Goddess of Those Winged' Turquoise
-
-ItemName.AthenaBox=Музыкальная шкатулка "Афина"
-ItemTooltip.AthenaBox=Проигрывает 'Magisaint' Turquoise
 
 ItemName.BinaryReassembler=Бинарный Реассемблер Фрагментации
 ItemTooltip.BinaryReassembler=Еще никогда не было так просто манипулировать реальностью
 
 ItemName.Bogwood=Дерево Трясины
 
-ItemName.BroodBox=Музыкальная шкатулка "Мать Стаи"
-ItemTooltip.BroodBox=Проигрывает 'Blazing Fury' Spectral Aves
-
 ItemName.ChaosCrucible=Тигель Хаоса
 ItemTooltip.ChaosCrucible=Даже хаос требует твердой руки и огромной печи для работы с ним
 
 ItemName.CorruptAltar=Демонический Алтарь
+
+ItemName.CovetiteBrick=Коветитовый кирпич
+
+ItemName.CovetiteOre=Коветитовая руда
+ItemTooltip.CovetiteOre=Только глупец может ее желать. Теперь ясно, почему она есть у Жадности.
 
 ItemName.CrimsonAltar=Кровавый Алтарь
 
@@ -1574,9 +1555,6 @@ ItemTooltip.Depthstone=Сырой
 
 ItemName.DiscordianTorch=Факел раздора
 
-ItemName.DjinnBox=Музыкальная шкатулка "Пустынный Джинн"
-ItemTooltip.DjinnBox=Проигрывает 'Sand Smackdown' by Universe
-
 ItemName.DoomsdayChest=Сундук Судного дня
 
 ItemName.Doomstone=Заряженный камень рока
@@ -1596,27 +1574,12 @@ ItemTooltip.EventideAbyssiumOre=Она холодная и мокрая, как 
 
 ItemName.EventideTorch=Вечерний факел
 
-ItemName.FateBox=Музыкальная шкатулка Истинной Пустоты
-ItemTooltip.FateBox=Проигрывает 'Systems Engaged' OmegaFerretMusic
-
-ItemName.FungusBox=Музыкальная шкатулка "Феодальный Гриб"
-ItemTooltip.FungusBox=Проигрывает 'Bioluminescent Beatdown' Spectral Aves
-
 ItemName.FurnitureDynamo=Динамо мебели
 ItemTooltip.FurnitureDynamo=Объединяет все крафтовые станции в один блок!\nТеперь вам не придется заполнять свою базу 12 разными крафтовыми станциями!
-
-ItemName.GreedABox=Музыкальная шкатулка "Король Червей"
-ItemTooltip.GreedABox=Проигрывает 'Ira De Riquezas Perdidas' Universe
-
-ItemName.GreedBox=Музыкальная шкатулка "Жадность"
-ItemTooltip.GreedBox=Проигрывает 'Drums of Desire' Universe
 
 ItemName.GreedChest=Сундук жадности
 
 ItemName.GreedLantern=Каменный фонарь
-
-ItemName.GripsBox=Музыкальная шкатулка "Тиски Хаоса"
-ItemTooltip.GripsBox=Проигрывает 'Twin Terror' Spectral Aves
 
 ItemName.HallowedAnvil=Освященная наковальня
 ItemTooltip.HallowedAnvil=Святая наковальня
@@ -1633,12 +1596,6 @@ ItemTooltip.HaphestusForge=*Ложит руку на печку* Эта малы
 ItemName.HellstoneAnvil=Наковальня адского камня
 ItemTooltip.HellstoneAnvil=Эта штука должна гореть?
 
-ItemName.HoardBox=Музыкальная шкатулка "Сокровищница"
-ItemTooltip.HoardBox=Проигрывает 'Cavern of Coveted Treasures' OmegaFerretMusic
-
-ItemName.HydraBox=Музыкальная шкатулка "Гидра"
-ItemTooltip.HydraBox=Проигрывает 'Abyssal Wrath' Spectral Aves
-
 ItemName.HydratoxinTorch=Гидратоксиновый факел
 
 ItemName.Incinerite=Инцинирит
@@ -1648,45 +1605,21 @@ ItemName.IndigoIce=Лед индиго
 
 ItemName.InfernoAltar=Драконический алтарь
 
-ItemName.InfernoBox=Музыкальная шкатулка "Инферно"
-ItemTooltip.InfernoBox=Проигрывает 'Flame-Razed Rock' Karamitasu
-
 ItemName.InfernoChest=Сундук Инферно
-
-ItemName.InfernoUBox=Музыкальная шкатулка "Подземное Инферно"
-ItemTooltip.InfernoUBox=Проигрывает 'Smolder' OmegaFerretMusic
-
-ItemName.LakeBox=Музыкальная шкатулка "Озеро поднимающейся Луны"
-ItemTooltip.LakeBox=Проигрывает 'Lake of Souls' Rockwizard
 
 ItemName.MireAltar=Бездновый алтарь
 
-ItemName.MireBox=Музыкальная шкатулка "Трясина"
-ItemTooltip.MireBox=Проигрывает 'Moonlit Marsh' by Charlie Debnam
-
 ItemName.MireChest=Сундук Трясины
-
-ItemName.MireUBox=Музыкальная шкатулка "Подземная Трясина"
-ItemTooltip.MireUBox=Проигрывает 'Depths of Despair' Karamitasu
-
-ItemName.MonarchBox=Музыкальная шкатулка "Грибной Монарх"
-ItemTooltip.MonarchBox=Проигрывает 'Fungal Face-off' Spectral Aves
 
 ItemName.MoonAltar=Алтарь ужасающей Луны
 
 ItemName.MoonAltarA=Алтарь пробудившейся Луны
-
-ItemName.MushBox=Музыкальная шкатулка "Красные грибы"
-ItemTooltip.MushBox=Проигрывает 'Overgrowth' Spectral Aves
 
 ItemName.MushroomBlock=Грибной блок
 
 ItemName.OroborosChest=Уроборусный сундук
 
 ItemName.OroborosWood=Уроборусная древесина
-
-ItemName.PagodaBox=Музыкальная шкатулка "Пагода просыпающегося Солнца"
-ItemTooltip.PagodaBox=Проигрывает 'Scorched Tower' Rockwizard
 
 ItemName.PaladinsSmeltery=Плавильня Паладина
 ItemTooltip.PaladinsSmeltery=Эта штука может сделать многое\nРаботает как хардмодные крафтовые станции + верстак и тяжелый верстак
@@ -1700,9 +1633,6 @@ ItemTooltip.RadiantArcanum=Загадай желание\nПозволяет р�
 ItemName.RadiumOre=Радиумная руда
 ItemTooltip.RadiumOre=Сверкает как звезды в ночном небе
 
-ItemName.RajahBox=Музыкальная шкатулка "Кролик Раджа"
-ItemTooltip.RajahBox=Проигрывает 'JUSTICE' Spectral Aves
-
 ItemName.Razewood=Обожженная древесина
 
 ItemName.RottedDynastyWood=Сгнившая дерево династии
@@ -1712,54 +1642,26 @@ ItemName.RottedShingles=Сгнившая черепица
 
 ItemName.RoyalBunnyCage=Клетка королевсокого кролика
 
-ItemName.SABox=Музыкальная шкатулка "Несгибаемый Древний"
-ItemTooltip.SABox=Проигрывает 'Dark Matter 02' из Pokemon Super Mystery Dungeon
-
 ItemName.ScorchedDynastyWood=Выжеженное дерево династии
 
 ItemName.ScorchedShingles=Выженные черепицы династии
 
-ItemName.SDBox=Музыкальная шкатулка "Спящий дракон"
-ItemTooltip.SDBox=Проигрывает 'Sleeping Dragon' OmegaFerretMusic
-
-ItemName.SerpentBox=Музыкальная шкатулка "Тундровая Змея"
-ItemTooltip.SerpentBox=Проигрывает 'Burrowing Down' Charlie Debnam
-
-ItemName.SGBox=Музыкальная шкатулка "Спящий гигант"
-ItemTooltip.SGBox=Проигрывает 'Sleeping Giant' LordCakeSpy
-
-ItemName.ShenABox=Музыкальная шкатулка "Шен Дорагон Пробужденный"
-ItemTooltip.ShenABox=Проигрывает 'Blaze of Glory' Charlie Debnam
-
-ItemName.ShenBox=Музыкальная шкатулка "Шен Дорагон"
-ItemTooltip.ShenBox=Проигрывает 'Unyielding Discord' Charlie Debnam
-
-ItemName.SistersBox=Музыкальная шкатулка "Сестры раздора"
-ItemTooltip.SistersBox=Проигрывает 'Sisters of Anarchy' Shadow Figure
-
 ItemName.SpiralStairs=Спиральные лестницы
-
-ItemName.SRajahBox=Музыкальная шкатулка 'Защитник невинных"
-ItemTooltip.SRajahBox=Проигрывает 'Supreme Justice' OmegaFerretMusic
-
-ItemName.StarBox=Музыкальная шкатулка "Небесные звезды"
-ItemTooltip.StarBox=Проигрывает 'Interstellar' OmegaFerretMusic
 
 ItemName.SunAltar=Алтарь драконического Солнца
 
 ItemName.SunAltarA=Алтарь пробудившегося Солнца
+
+ItemName.SkycrystalBrick= Кирпич из небесного кристалла
+
+ItemName.SkyCrystal=Небесный кристалл
+ItemTooltip.SkyCrystal=Прекрасный кристалл, который хранит в себе кусочек небес
 
 ItemName.TerraCore=Ядро Террарии
 ItemTooltip.TerraCore=Объединяет большинство крафтовых станции в одну\nИспользуется для создания древних крафтовых станции
 
 ItemName.TerraPrismStation=Бесконечное ядро
 ItemTooltip.TerraPrismStation=Крафти все\nОбъединяет все ванильные станции и все станции мода "Древние Пробудились" в одну
-
-ItemName.TerrariumBox=Музыкальная шкатулка "Террариум"
-ItemTooltip.TerrariumBox=Играет 'Heart of the World' Quicksilvur при участии Charlie Debnam
-
-ItemName.ToadBox=Музыкальная шкатулка "Трюфельная Жаба"
-ItemTooltip.ToadBox=Проигрывает 'TODESTOOL' Spectral Aves
 
 ItemName.TorchAsh=Вулканический пепел
 
@@ -1780,22 +1682,7 @@ ItemTooltip.Transmuter=Позволяет трансмутировать пре�
 ItemName.TruePaladinsSmeltery=Истинная плавильня Паладина
 ItemTooltip.TruePaladinsSmeltery=Печь созданная только для самых достоиных из кузнецов\nРаботает как большинство необходиых крафтовых станции
 
-ItemName.VoidBox=Музыкальная шкатулка "Пустота"
-ItemTooltip.VoidBox=Проигрывает 'What Once Was' OmegaFerretMusic
-
 ItemName.VoidUnit=Единица воссоздания пустоты
-
-ItemName.YamataABox=Музыкальная шкатулка "Ямата Ужасающий Кошмар"
-ItemTooltip.YamataABox=Проигрывает 'Abyssal Nightmare' by Universe
-
-ItemName.YamataBox=Музыкальная шкатулка "Ямата"
-ItemTooltip.YamataBox=Проигрывает 'Crescent of Madness' Saucecoie
-
-ItemName.Zero2Box=Музыкальная шкатулка "Зир0 Пр0т0к0л"
-ItemTooltip.Zero2Box=Проигрывает 'Doomsday Arrives' Saucecoie
-
-ItemName.ZeroBox=Музыкальная шкатулка "Зир0"
-ItemTooltip.ZeroBox=Проигрывает 'Clockwork Catastrophe' OmegaFerretMusic
 
 
 // AAMod.Items.Blocks.Oroboros
@@ -1925,9 +1812,6 @@ ItemName.FireSpiritStaff=Посох Огненного водоворота
 
 ItemName.FuryFlame=Огонь Ярости
 ItemTooltip.FuryFlame=Позволяет выстрелить струей взрывного огня в ваших врагов
-
-ItemName.HarukaBox=Шкатулка Харуки
-ItemTooltip.HarukaBox=Нажмите Щелчок правой клавиши мыши, что бы открыть\nСодержит одеяния Полуночного Убийцы
 
 ItemName.HarukaKunai=Бездновый Кунай
 
@@ -2114,6 +1998,9 @@ ItemTooltip.RazorwindLongbow=Заменяет деревянные стрелы 
 ItemName.SeraphHarp=Арфа серафима
 ItemTooltip.SeraphHarp=Призывает серафима сражаться за вас\nСерафим усиливается с помощью аксессуаров и брони на призывателя
 
+ItemName.StormSphere=Сфера Шторма
+ItemTooltip.StormSphere=Сильно заряженная Варийской Энергией кристальная сфера
+
 ItemName.SkycutterKopis=Копис режущий небеса
 
 ItemName.StarChart=Звездная карта
@@ -2210,8 +2097,6 @@ ItemTooltip.RadiantStar=Чрезвычайно повышает характер
 
 // AAMod.Items.Boss.Greed
 
-
-ItemName.CovetiteCoin=Covetite Coin
 
 ItemName.DesireCharm=Charm of Desire
 ItemTooltip.DesireCharm=Grabbing coins boosts your damage by 1% for 4 seconds\nGrabbing another coin increases the damage by 1% and resets the countdown\nCaps out at 20% damage
@@ -3253,6 +3138,9 @@ ItemTooltip.BlackLotus=It's said that someone offered $160000 for this thing.
 
 ItemName.CovetiteCrystal=Covetite Crystal
 ItemTooltip.CovetiteCrystal=You have a strange desire for this crystal, \ndespite you already owning it.
+
+ItemName.CovetiteBar=Коветитовый слиток
+ItemTooltip.CovetiteBar=Он каким-то образом одновременно блестящий, но и не блестящий. Как Жадность повелся на это?
 
 ItemName.Crystal=Biome Prism
 ItemTooltip.Crystal=A magical prism that can be enhanced with the power of a biome.
@@ -4362,6 +4250,8 @@ ItemTooltip.ShinyKipronWings=Allows flight and slow fall\nHold down and jump to 
 
 // AAMod.Items.Vanity.Apawn
 
+ItemName.ApawnEgg=Яйцо Апавна
+ItemTooltip.ApawnEgg=<right> что бы открыть \n'IЭто пластиковое яйцо. ОООООЧЕЕЕЕЕЕЕЕНЬ БОЛЬШОЕ.!'
 
 ItemName.ApawnBoots=Apawn's Greaves
 ItemTooltip.ApawnBoots='Great for impersonating Ancients Awakened Testers!'
