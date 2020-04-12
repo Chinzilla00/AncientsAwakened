@@ -84,7 +84,7 @@ namespace AAMod.Tiles.Altar
         public override bool NewRightClick(int i, int j)
         {
             Player player = Main.LocalPlayer;
-            int type = ModContent.ItemType<Items.Boss.Athena.StarChart>();
+            int type = ModContent.ItemType<Items.Boss.Athena.Olympian.StarChart>();
             if (BasePlayer.HasItem(player, type, 1) && !AAWorld.StarActive)
             {
                 for (int m = 0; m < 50; m++)
