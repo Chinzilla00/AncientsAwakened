@@ -4,7 +4,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Boss.Athena
+namespace AAMod.Items.Boss.Athena.Olympian
 {
     public class HurricaneStone : BaseAAItem
     {

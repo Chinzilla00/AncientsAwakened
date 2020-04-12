@@ -1,6 +1,6 @@
 using Terraria;
 
-namespace AAMod.Items.Boss.Athena
+namespace AAMod.Items.Boss.Athena.Olympian
 {
     public class AthenaABag : BaseAAItem
     {
@@ -41,6 +41,7 @@ namespace AAMod.Items.Boss.Athena
             }
             player.QuickSpawnItem(mod.ItemType("GoddessHarp"));
             player.QuickSpawnItem(mod.ItemType("GoddessFeather"), Main.rand.Next(20, 25));
+            player.QuickSpawnItem(mod.ItemType("SkyCrystal"), Main.rand.Next(30, 50));
             string[] lootTable = { "HurricaneStone", "Olympia", "Windfury", "GaleForce" };
             int loot = Main.rand.Next(lootTable.Length);
             player.QuickSpawnItem(mod.ItemType(lootTable[loot]));

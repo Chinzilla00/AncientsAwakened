@@ -1,6 +1,6 @@
 using Terraria;
 
-namespace AAMod.Items.Boss.Athena
+namespace AAMod.Items.Boss.Athena.Olympian
 {
     public class GoddessHarp : BaseAAItem
     {
