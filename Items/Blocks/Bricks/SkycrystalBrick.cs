@@ -27,7 +27,7 @@ namespace AAMod.Items.Blocks.Bricks
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "Skycrystal", 1);
+            recipe.AddIngredient(null, "SkyCrystal", 1);
             recipe.AddIngredient(ItemID.StoneBlock, 1);
             recipe.AddTile(TileID.Furnaces);
             recipe.SetResult(this);
