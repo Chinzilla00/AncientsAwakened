@@ -39,6 +39,8 @@ namespace AAMod.Projectiles.Zero   //The directory for your .cs and .png; Exampl
             ProjectileID.Sets.YoyosLifeTimeMultiplier[projectile.type] = 60f;
             ProjectileID.Sets.YoyosMaximumRange[projectile.type] = 1000f;
             ProjectileID.Sets.YoyosTopSpeed[projectile.type] = 15f;
+
+            drawOriginOffsetY = 20;
         }
         int ProjTimer = 0;
 
@@ -88,7 +90,7 @@ namespace AAMod.Projectiles.Zero   //The directory for your .cs and .png; Exampl
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height, 0, 0);
-            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, lightColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position - new Vector2(0, 10f), projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 1, frame, lightColor, true);
             return false;
         }
     }
