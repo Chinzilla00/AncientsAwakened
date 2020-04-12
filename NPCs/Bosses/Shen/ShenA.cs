@@ -60,11 +60,14 @@ namespace AAMod.NPCs.Bosses.Shen
 
         public override void AI()
         {
+            Main.dayTime = false;
+            Main.time = 18000;
+
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
             Vector2 targetPos;
 
-            if(!AliveCheck(player)) return;
+            if (!AliveCheck(player)) return;
 
             Dashing = false;
             if (Roaring) roarTimer--;

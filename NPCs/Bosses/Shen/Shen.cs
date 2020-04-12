@@ -155,6 +155,9 @@ namespace AAMod.NPCs.Bosses.Shen
             Player player = Main.player[npc.target];
             Vector2 targetPos;
 
+            Main.dayTime = false;
+            Main.time = 18000;
+
             if (!AliveCheck(player)) return;
 
             #region ProjIDs
