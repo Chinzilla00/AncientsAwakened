@@ -630,10 +630,12 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
         {
             Texture2D tex = Main.npcTexture[npc.type];
             Texture2D tex2 = mod.GetTexture("Glowmasks/AthenaA_Glow");
+            Texture2D tex3 = mod.GetTexture("Glowmasks/AthenaA_Glow1");
             Color lightColor = BaseDrawing.GetLightColor(npc.Center);
             BaseDrawing.DrawAfterimage(sb, tex, 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
             BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor);
             BaseDrawing.DrawTexture(sb, tex2, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, AAColor.Flash);
+            BaseDrawing.DrawTexture(sb, tex3, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, Color.White);
             return false;
         }
     }
