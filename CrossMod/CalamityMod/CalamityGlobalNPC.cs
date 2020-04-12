@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
@@ -90,6 +91,20 @@ namespace AAMod
                 if (npc.realLife > 0 && Main.npc[npc.realLife].GetGlobalNPC<CalamityGlobalNPC>().CalamityDR < 1f) CalamityDR = Main.npc[npc.realLife].GetGlobalNPC<CalamityGlobalNPC>().CalamityDR;
             }
         }
+
+        public override void ModifyHitPlayer(NPC npc, Player target, ref int damage, ref bool crit)
+		{
+            if (ModSupport.GetMod("CalamityMod") != null)
+			{
+                if (npc.type > 580 && npc.modNPC.mod == ModLoader.GetMod("AAMod") && npc.boss)
+                {
+                    bool revenge = (bool)ModSupport.GetModWorldConditions("CalamityMod", "CalamityWorld", "revenge", false, true);
+                    bool Death = (bool)ModSupport.GetModWorldConditions("CalamityMod", "CalamityWorld", "death", false, true);
+                    damage = (int)(damage * (2f + (revenge? 0.5f:0f) + (Death? 1f:0f)));
+                }
+            }
+        }
+
         public override void ModifyHitByItem(NPC npc, Player player, Item item, ref int damage, ref float knockback, ref bool crit)
         {
             if (ModSupport.GetMod("CalamityMod") != null)
@@ -130,6 +145,22 @@ namespace AAMod
                     {
                         damage = (int)(damage * 2);
                     }
+                }
+            }
+		}
+    }
+
+    public class CalamityGlobalProjectile : GlobalProjectile
+    {
+        public override void ModifyHitPlayer(Projectile projectile, Player target, ref int damage, ref bool crit)
+		{
+            if (ModSupport.GetMod("CalamityMod") != null)
+			{
+                if (projectile.hostile && !projectile.friendly && projectile.type > 714 && projectile.modProjectile.mod == ModLoader.GetMod("AAMod"))
+                {
+                    bool revenge = (bool)ModSupport.GetModWorldConditions("CalamityMod", "CalamityWorld", "revenge", false, true);
+                    bool Death = (bool)ModSupport.GetModWorldConditions("CalamityMod", "CalamityWorld", "death", false, true);
+                    damage = (int)(damage * (2f + (revenge? 0.5f:0f) + (Death? 1f:0f)));
                 }
             }
 		}
