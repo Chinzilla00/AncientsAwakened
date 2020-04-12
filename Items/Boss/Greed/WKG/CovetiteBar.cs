@@ -1,7 +1,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.Items.Materials
+namespace AAMod.Items.Boss.Greed.WKG
 {
     public class CovetiteBar : BaseAAItem
     {
