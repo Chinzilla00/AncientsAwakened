@@ -47,20 +47,6 @@ namespace AAMod.Items.Summoning.Minions
             }
 
             projectile.rotation = projectile.velocity.X * 0.05f;
-            projectile.frameCounter++;
-            if (projectile.frameCounter >= 4)
-            {
-                projectile.frameCounter = 0;
-                projectile.frame++;
-            }
-            if (projectile.frame < 4)
-            {
-                projectile.frame = 4;
-            }
-            if (projectile.frame > 7)
-            {
-                projectile.frame = 4;
-            }
             if (Math.Abs(projectile.velocity.X) > 0.2)
             {
                 projectile.spriteDirection = -projectile.direction;
@@ -183,16 +169,6 @@ namespace AAMod.Items.Summoning.Minions
                 }
                 projectile.friendly = false;
                 projectile.rotation = projectile.velocity.X * 0.05f;
-                projectile.frameCounter++;
-                if (projectile.frameCounter >= 4)
-                {
-                    projectile.frameCounter = 0;
-                    projectile.frame++;
-                }
-                if (projectile.frame > 3)
-                {
-                    projectile.frame = 0;
-                }
                 if (Math.Abs(projectile.velocity.X) > 0.2)
                 {
                     projectile.spriteDirection = -projectile.direction;
@@ -235,6 +211,20 @@ namespace AAMod.Items.Summoning.Minions
                         projectile.velocity *= 1.15f;
                     }
                 }
+            }
+            projectile.frameCounter++;
+            if (projectile.frameCounter >= 4)
+            {
+                projectile.frameCounter = 0;
+                projectile.frame++;
+            }
+            if (projectile.frame < 4)
+            {
+                projectile.frame = 4;
+            }
+            if (projectile.frame > 7)
+            {
+                projectile.frame = 4;
             }
         }
         

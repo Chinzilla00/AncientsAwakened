@@ -29,7 +29,7 @@ namespace AAMod.Items.Boss.Zero
             item.width = 36;
             item.height = 42;
             item.damage = 240;
-            item.UseSound = SoundID.Item116;
+            item.UseSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Glitch");
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.shoot = mod.ProjectileType("Teslashock");
             item.rare = 9; AARarity = 13;

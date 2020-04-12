@@ -862,7 +862,7 @@ namespace AAMod.Globals
                     null,
                     "AAMod/CrossMod/BossChecklist/AthenaA",
                     "AAMod/NPCs/Bosses/Athena/Olympian/AthenaA_Head_Boss",
-                    (Func<bool>)(() => AAWorld.AthenaHerald));
+                    (Func<bool>)(() => AAWorld.downedAnubisA));
                 #endregion
 
                 #region Worm King Greed
@@ -888,7 +888,7 @@ namespace AAMod.Globals
                     null,
                     "AAMod/CrossMod/BossChecklist/GreedA",
                     "AAMod/NPCs/Bosses/Greed/GreedA_Head_Boss",
-                    (Func<bool>)(() => AAWorld.AthenaHerald));
+                    (Func<bool>)(() => AAWorld.downedAnubisA));
                 #endregion
 
                 #region Equinox Worms

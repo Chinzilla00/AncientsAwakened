@@ -5,33 +5,20 @@ using Terraria.ModLoader;
 using BaseMod;
 using Microsoft.Xna.Framework;
 
-namespace AAMod.Projectiles.Zero   //The directory for your .cs and .png; Example: TutorialMOD/Projectiles
+namespace AAMod.Projectiles.Zero
 {
-    public class Vortex : ModProjectile   //make sure the sprite file is named like the class name (CustomYoyoProjectile)
+    public class Vortex : ModProjectile  
     {
-        public short customGlowMask = 0;
         public override void SetStaticDefaults()
         {
-            if (Main.netMode != 2)
-            {
-                Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
-                for (int i = 0; i < Main.glowMaskTexture.Length; i++)
-                {
-                    glowMasks[i] = Main.glowMaskTexture[i];
-                }
-                glowMasks[glowMasks.Length - 1] = mod.GetTexture("Glowmasks/" + GetType().Name + "_Glow");
-                customGlowMask = (short)(glowMasks.Length - 1);
-                Main.glowMaskTexture = glowMasks;
-            }
-            projectile.glowMask = customGlowMask;
             DisplayName.SetDefault("Vortex");
         }
 
         public override void SetDefaults()
         {
             projectile.extraUpdates = 5;
-            projectile.width = 54;
-            projectile.height = 54;          
+            projectile.width = 16;
+            projectile.height = 16;
             projectile.aiStyle = 99;
             projectile.friendly = true;
             projectile.penetrate = -1;
