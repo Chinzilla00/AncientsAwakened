@@ -1305,7 +1305,7 @@ ItemName.WyrmBanner= Знамя змея
 ===UNKNWN===
 ItemName.WyrmlingBanner= Знамя змееныша
 
-ItemName.MireSkulkerBanner= (Кинь поже спрайт этого нечта)
+ItemName.MireSkulkerBanner=Знамя краба из Трясины
 
 ItemName.ScavengerBanner=Знамя Сборщика
 
@@ -4433,17 +4433,17 @@ ItemTooltip.CCBox=<right> to open \n'All the essentials for impersonating the Dr
 ItemName.CCHood=Dread Cultist Mask
 ItemTooltip.CCHood=The mask of a crazy lizard enthusiast\n'Great for impersonating Ancients Awakened Developers!'
 
-ItemName.CCRobe=Dread Cultist Robe
-ItemTooltip.CCRobe=The hood of a crazy lizard enthusiast\n'Great for impersonating Ancients Awakened Developers!'
+ItemName.CCRobe=Роба Культиста Ужаса
+ItemTooltip.CCRobe=Роба сумасшедшего фанатика Яматы\n'Поможет вам выдать себя за разработчика Ancients Awakened!'
 
 // AAMod.Items.Vanity.CC.Shiny
 
 
-ItemName.ShinyCCHood=Draconian Cultist Mask
-ItemTooltip.ShinyCCHood=The mask of a crazy dragon enthusiast\n'Great for impersonating Ancients Awakened Developers!'
+ItemName.ShinyCCHood=Маска Культиста Дракона
+ItemTooltip.ShinyCCHood=Маска сумасшедшего фанатика Акумы\n'Поможет вам выдать себя за разработчика Ancients Awakened!'
 
-ItemName.ShinyCCRobe=Draconian Cultist Robe
-ItemTooltip.ShinyCCRobe=The hood of a crazy dragon enthusiast\n'Great for impersonating Ancients Awakened Developers!'
+ItemName.ShinyCCRobe=Роба Культиста Дракона
+ItemTooltip.ShinyCCRobe=Роба сумасшедшего фанатика Акумы\n'Поможет вам выдать себя за разработчика Ancients Awakened!'
 
 
 // AAMod.Items.Vanity.Cerberus
@@ -4555,17 +4555,17 @@ ItemTooltip.FargoSuit=soonTM\n'Great for impersonating Ancients Awakened Devs!'
 // AAMod.Items.Vanity.Fazer
 
 
-ItemName.SammyPants=Fluffy Fox Pants
-ItemTooltip.SammyPants='Great for impersonating Ancients Awakened Devs!'
+ItemName.SammyPants=Штаны пушистой лисы
+ItemTooltip.SammyPants='Поможет вам выдать себя за разработчика Ancients Awakened!'
 
-ItemName.SammySweater=Fluffy Fox Sweater
-ItemTooltip.SammySweater='Great for impersonating Ancients Awakened Contributors!'
+ItemName.SammySweater=Свитер пушистой лисы
+ItemTooltip.SammySweater='Поможет вам выдать себя за разработчика Ancients Awakened!' 
 
-ItemName.SammyWig=Fluffy Fox Wig
-ItemTooltip.SammyWig='Great for impersonating Ancients Awakened Devs!'
+ItemName.SammyWig=Парик пушистой лисы
+ItemTooltip.SammyWig='Поможет вам выдать себя за разработчика Ancients Awakened!'
 
-ItemName.WetFurrbag=Wet Furrbag
-ItemTooltip.WetFurrbag=<right> to open \n'All the essentials for impersonating the Funloving Fox!'
+ItemName.WetFurrbag=Мокрая фурр-сумка
+ItemTooltip.WetFurrbag=Нажмите правой кнопкой мыши, чтобы открыть \n'Все необходимое, чтобы выдать себя за лису, любящую повеселиться!'
 
 
 // AAMod.Items.Vanity.Gibs
@@ -4637,27 +4637,27 @@ ItemTooltip.ShinyHalTux=This tux was woven with pure class\n'Great for impersona
 // AAMod.Items.Vanity.Pluto
 
 
-ItemName.PlutoBag=Outer God's Bag
-ItemTooltip.PlutoBag=<right> to open \n'All the essentials for impersonating the Dwarf God!'
+ItemName.PlutoBag=Мешок Древнего Бога
+ItemTooltip.PlutoBag=Нажмите правой кнопкой мыши, чтобы открыть \n'Все необходимое, чтобы выдать себя за Бога Дворфов!'
 
-ItemName.PlutoBoots=Outer God's Greaves
-ItemTooltip.PlutoBoots='Great for impersonating Ancients Awakened Devs!'
+ItemName.PlutoBoots=Поножи Древнего Бога
+ItemTooltip.PlutoBoots='Поможет вам выдать себя за разработчика Ancients Awakened!'
 
-ItemName.PlutoMask=Outer God's Mask
-ItemTooltip.PlutoMask='Great for impersonating Ancients Awakened Devs!'
+ItemName.PlutoMask=Маска Древнего Бога
+ItemTooltip.PlutoMask='Поможет вам выдать себя за разработчика Ancients Awakened!'
 
-ItemName.PlutoPlate=Outer God's Chestplate
-ItemTooltip.PlutoPlate='Great for impersonating Ancients Awakened Devs!'
+ItemName.PlutoPlate=Нагрудник Древнего Бога
+ItemTooltip.PlutoPlate='Поможет вам выдать себя за разработчика Ancients Awakened!'
 
 
 // AAMod.Items.Vanity.Pluto.Shiny
 
 
-ItemName.ShinyPlutoMask=Outer God's Ancient Mask
-ItemTooltip.ShinyPlutoMask='Great for impersonating Ancients Awakened Devs!'
+ItemName.ShinyPlutoMask=Древняя Маска Древнего Бога
+ItemTooltip.ShinyPlutoMask='Поможет вам выдать себя за разработчика Ancients Awakened!'
 
-ItemName.ShinyPlutoPlate=Outer God's Ancient Chestplate
-ItemTooltip.ShinyPlutoPlate='Great for impersonating Ancients Awakened Devs!'
+ItemName.ShinyPlutoPlate=Древний Нагрудник Древнего Бога
+ItemTooltip.ShinyPlutoPlate='Поможет вам выдать себя за разработчика Ancients Awakened!'
 
 
 
@@ -5624,19 +5624,19 @@ NPCName.Samurai=
 // AAMod.Tiles.Altar
 
 
-NPCName.DBPortal=Bright Star
+NPCName.DBPortal=Яркая Звезда
 
-NPCName.NCPortal=Black Void
+NPCName.NCPortal=Черная Пустота
 
-NPCName.WormSpawn=Heavenly Voice
+NPCName.WormSpawn=Небесный Голос
 
 
 // AAMod.Items.Dev.DevTile.Tiles
 
 
-MapObject.CCMireBox=Cardboard Box
+MapObject.CCMireBox=Картонная коробка
 
-MapObject.CerberusKennel=Cerberus Kennel
+MapObject.CerberusKennel=Будка Цербера
 
 // AAMod.Items.Dev.Invoker
 

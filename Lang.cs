@@ -5533,31 +5533,31 @@ Fishy";
                 switch(Info)
                 {
                     case "BiomiteArmor1":
-                    return "Provide different setbonuses based on biome you're in";
+                    return "Дает различные бонусы полного комплекта в зависимости от биома, в котором вы находитесь";
                     case "BiomiteArmor2":
-                    return "\nIncreases maximum life by 20";
+                    return "\nIУвеличивает максимальное ХП на 20";
                     case "BiomiteArmor3":
-                    return "\nIncreases maximum mana by 20";
+                    return "\nУвеличивает максимальную ману на 20";
                     case "BiomiteArmor4":
-                    return "\nYou can detect the enemies around you";
+                    return "\nВы можете обнаруживать врагов вокруг себя";
                     case "BiomiteArmor5":
-                    return "\nYou immune to 'On fire!' debuff";
+                    return "\nИммунитет к дебаффу 'В огне!'";
                     case "BiomiteArmor6":
-                    return "\nYou immune to 'Poisoned' debuff";
+                    return "\nИммунитет к дебаффу 'Отравление'";
                     case "BiomiteArmor7":
-                    return "\nIncrease 5 defense";
+                    return "\nДобавляет 5 защиты";
                     case "BiomiteArmor8":
-                    return "\nIncrease your mana regenaration";
+                    return "\nУвеличивает регенерацию маны";
                     case "BiomiteArmor9":
-                    return "\nYou immune to 'Chilled' debuff";
+                    return "\nИммунитет к дебаффу 'Охлаждение'";
                     case "BiomiteArmor10":
-                    return "\nYou immune to 'Mighty Wind' debuff";
+                    return "\nИммунитет к дебаффу 'Могучий ветер'";
                     case "BiomiteArmor11":
-                    return "\nIncrease your life regenaration\nYou immune to Slow";
+                    return "\nУвеличивает регенерацию ХП\nИммунитет к замедлению";
                     case "BiomiteArmor12":
-                    return "\nIncrease 10% movespeed";
+                    return "\nНа 10% увеличивает скорость передвижения";
                     case "BiomiteArmor13":
-                    return "\nIncrease 5 armor penetration";
+                    return "\nАтаки игнорируют 5 единиц брони врага";
                 }
             }
             else
