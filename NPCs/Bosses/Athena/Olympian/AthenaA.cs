@@ -612,7 +612,12 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
             }
             else
             {
-                npc.DropLoot(mod.ItemType("GoddessFeather"), Main.rand.Next(20, 25));
+                if (Main.rand.Next(7) == 0)
+                {
+                    npc.DropLoot(mod.ItemType("AthenaAMask"));
+                }
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("GoddessFeather"), Main.rand.Next(20, 25));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SkyCrystal"), Main.rand.Next(25, 40));
                 string[] lootTable = { "HurricaneStone", "Olympia", "Windfury", "GaleForce" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
@@ -624,9 +629,11 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
             Texture2D tex = Main.npcTexture[npc.type];
+            Texture2D tex2 = mod.GetTexture("Glowmasks/AthenaA_Glow");
             Color lightColor = BaseDrawing.GetLightColor(npc.Center);
             BaseDrawing.DrawAfterimage(sb, tex, 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
             BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor);
+            BaseDrawing.DrawTexture(sb, tex2, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, AAColor.Flash);
             return false;
         }
     }

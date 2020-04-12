@@ -123,5 +123,15 @@ namespace AAMod.Items.Boss.Greed.WKG
                 return true;
             }
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "Miner", 1);
+            recipe.AddIngredient(null, "CovetiteBar", 10);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+        }
     }
 }

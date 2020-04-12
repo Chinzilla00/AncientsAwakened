@@ -20,7 +20,19 @@ namespace AAMod.Items.Materials
             item.useStyle = 1;
             item.consumable = true;
             item.createTile = mod.TileType("CovetiteBar");
-			
+            item.rare = 9;
+            AARarity = 12;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
 
         public override void SetStaticDefaults()
@@ -33,7 +45,7 @@ namespace AAMod.Items.Materials
         {                                                   
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(null, "CovetiteOre", 3);
-            recipe.AddTile(TileID.Furnaces);
+            recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this);
             recipe.AddRecipe();
         }

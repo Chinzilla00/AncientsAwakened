@@ -111,6 +111,22 @@ namespace AAMod.Items.Boss.Greed
 			{
 				return true;
 			}
-        }
-    }
+		}
+
+		public override void AddRecipes()
+		{
+			ModRecipe recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.GoldPickaxe, 1);
+			recipe.AddIngredient(null, "StoneShell", 10);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this, 1);
+			recipe.AddRecipe();
+			recipe = new ModRecipe(mod);
+			recipe.AddIngredient(ItemID.PlatinumPickaxe, 1);
+			recipe.AddIngredient(null, "StoneShell", 10);
+			recipe.AddTile(TileID.MythrilAnvil);
+			recipe.SetResult(this, 1);
+			recipe.AddRecipe();
+		}
+	}
 }

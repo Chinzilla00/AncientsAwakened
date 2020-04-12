@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Greed
 {
@@ -85,5 +86,20 @@ namespace AAMod.Items.Boss.Greed
                 }
             }
         }
-	}
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.GoldHammer, 1);
+            recipe.AddIngredient(null, "StoneShell", 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.PlatinumHammer, 1);
+            recipe.AddIngredient(null, "StoneShell", 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+        }
+    }
 }

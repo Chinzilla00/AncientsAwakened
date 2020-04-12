@@ -27,7 +27,9 @@ namespace AAMod.Items.Boss.Greed.WKG
 		}
 
 		public override void OpenBossBag(Player player)
-		{
+        {
+            player.QuickSpawnItem(mod.ItemType("StoneShell"), Main.rand.Next(25, 30));
+            player.QuickSpawnItem(mod.ItemType("CovetiteOre"), Main.rand.Next(30, 50));
             if (Main.rand.Next(7) == 0)
             {
                 player.QuickSpawnItem(mod.ItemType("WKGreedMask"));

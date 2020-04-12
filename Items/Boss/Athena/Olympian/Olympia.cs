@@ -33,5 +33,15 @@ namespace AAMod.Items.Boss.Athena.Olympian
                 }
             }
         }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "SkycutterKopis", 1);
+            recipe.AddIngredient(null, "StormSphere", 10);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+        }
     }
 }

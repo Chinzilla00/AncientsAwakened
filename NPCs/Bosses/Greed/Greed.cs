@@ -487,10 +487,10 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 if (!Main.expertMode)
                 {
-                    npc.DropLoot(mod.ItemType("CovetiteCoin"), 10, 15);
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("StoneShell"), Main.rand.Next(20, 25));
                     string[] lootTable = { "GildedGlock", "GoldDigger", "Miner" };
                     int loot = Main.rand.Next(lootTable.Length);
-                    //npc.DropLoot(Items.Vanity.Mask.GreedMask.type, 1f / 7);
+                    npc.DropLoot(Items.Vanity.Mask.GreedMask.type, 1f / 7);
                     npc.DropLoot(mod.ItemType(lootTable[loot]));
                 }
                 if (Main.expertMode)

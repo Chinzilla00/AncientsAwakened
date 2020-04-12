@@ -27,7 +27,8 @@ namespace AAMod.Items.Boss.Greed
 		}
 
 		public override void OpenBossBag(Player player)
-		{
+        {
+            player.QuickSpawnItem(mod.ItemType("StoneShell"), Main.rand.Next(25, 30));
             if (Main.rand.Next(7) == 0)
             {
                 player.QuickSpawnItem(mod.ItemType("GreedMask"));

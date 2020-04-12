@@ -19,7 +19,7 @@ namespace AAMod.Tiles.Altar
             npc.width = 46;
             npc.height = 46;
             npc.alpha = 255;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/WormSpawn");
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/Prequinox");
             npc.lifeMax = 1;
             npc.dontTakeDamage = true;
             npc.noGravity = true;

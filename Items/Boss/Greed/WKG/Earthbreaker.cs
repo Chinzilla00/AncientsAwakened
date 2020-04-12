@@ -110,5 +110,14 @@ If the enemy hits the ground after being hit, they will take damage");
                 }
             }
         }
-	}
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "StoneSlammer", 1);
+            recipe.AddIngredient(null, "CovetiteBar", 10);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+        }
+    }
 }

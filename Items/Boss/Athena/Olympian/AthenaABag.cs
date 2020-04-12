@@ -32,7 +32,7 @@ namespace AAMod.Items.Boss.Athena.Olympian
         {
             if (Main.rand.Next(7) == 0)
             {
-                player.QuickSpawnItem(mod.ItemType("AthenaMask"));
+                player.QuickSpawnItem(mod.ItemType("AthenaAMask"));
             }
             if (Main.rand.Next(20) == 0)
             {
@@ -40,7 +40,7 @@ namespace AAMod.Items.Boss.Athena.Olympian
                 modPlayer.PMLDevArmor();
             }
             player.QuickSpawnItem(mod.ItemType("GoddessHarp"));
-            player.QuickSpawnItem(mod.ItemType("GoddessFeather"), Main.rand.Next(20, 25));
+            player.QuickSpawnItem(mod.ItemType("GoddessFeather"), Main.rand.Next(25, 30));
             player.QuickSpawnItem(mod.ItemType("SkyCrystal"), Main.rand.Next(30, 50));
             string[] lootTable = { "HurricaneStone", "Olympia", "Windfury", "GaleForce" };
             int loot = Main.rand.Next(lootTable.Length);

@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Greed
 {
@@ -31,6 +32,22 @@ namespace AAMod.Items.Boss.Greed
             Tooltip.SetDefault(@"Fires a projectile that, upon collision with a tile, creates a fountain of coins
 Only 1 fountain may be active at once");
             Item.staff[item.type] = true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.GoldOre, 30);
+            recipe.AddIngredient(null, "StoneShell", 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.PlatinumOre, 30);
+            recipe.AddIngredient(null, "StoneShell", 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
         }
     }
 }

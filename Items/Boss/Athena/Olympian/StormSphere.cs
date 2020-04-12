@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Boss.Athena.Olympian
 {
@@ -43,6 +44,15 @@ namespace AAMod.Items.Boss.Athena.Olympian
         public override void PostUpdate()
         {
             Lighting.AddLight(item.Center, Color.SkyBlue.ToVector3() * 0.55f * Main.essScale);
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "SkyCrystal", 3);
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

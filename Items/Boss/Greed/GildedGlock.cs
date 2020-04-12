@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Greed
 {
@@ -32,6 +33,16 @@ namespace AAMod.Items.Boss.Greed
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-2, 0);
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(ItemID.FlintlockPistol, 1);
+            recipe.AddIngredient(null, "StoneShell", 10);
+            recipe.AddTile(TileID.MythrilAnvil);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
         }
     }
 }

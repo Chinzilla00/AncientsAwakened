@@ -571,6 +571,8 @@ namespace AAMod.NPCs.Bosses.Greed
                 string[] lootTable = { "OreCannon", "Unearther", "Earthbreaker", "OreStaff" };
                 int loot = Main.rand.Next(lootTable.Length);
                 npc.DropLoot(mod.ItemType(lootTable[loot]));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("StoneShell"), Main.rand.Next(20, 25));
+                Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("CovetiteOre"), Main.rand.Next(25, 40));
                 npc.DropLoot(mod.ItemType("GravitySphere"));
             }
             if (Main.expertMode)

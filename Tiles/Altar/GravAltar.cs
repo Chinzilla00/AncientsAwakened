@@ -82,5 +82,13 @@ namespace AAMod.Tiles.Altar
         {
             return false;
         }
+
+        public override void MouseOver(int i, int j)
+        {
+            Player player = Main.LocalPlayer;
+            player.noThrow = 2;
+            player.showItemIcon = true;
+            player.showItemIcon2 = mod.ItemType("GravitySphere");
+        }
     }
 }
