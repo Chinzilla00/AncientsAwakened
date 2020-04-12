@@ -182,7 +182,7 @@ namespace AAMod
 
         public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
 		{
-            if(NPC.downedMoonlord && npc.boss && ProjectileID.Sets.StardustDragon[projectile.type] && projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion)
+            if(NPC.downedMoonlord && (npc.boss || Main.npc[npc.realLife].boss) && ProjectileID.Sets.StardustDragon[projectile.type] && projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion)
             {
                 damage = (int) (damage * .69f);
             }
