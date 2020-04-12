@@ -5432,6 +5432,8 @@ ItemName.ZeroMask=零械面具
 
 // AAMod.Items.Walls
 
+ItemName.AbyssiumWall=潭渊砖墙
+
 ItemName.DarkmatterWall=暗物质砖墙
 
 ItemName.DaybreakWall=炙曦砖墙
