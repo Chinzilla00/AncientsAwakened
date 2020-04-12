@@ -850,13 +850,13 @@ namespace AAMod.Globals
                     },
                     new List<int>
                     {
-                        ModContent.ItemType<Items.Boss.Athena.AthenaABag>(),
-                        ModContent.ItemType<Items.Boss.Athena.GoddessHarp>(),
-                        ModContent.ItemType<Items.Boss.Athena.Olympia>(),
-                        ModContent.ItemType<Items.Boss.Athena.Windfury>(),
-                        ModContent.ItemType<Items.Boss.Athena.GaleForce>(),
-                        ModContent.ItemType<Items.Boss.Athena.HurricaneStone>(),
-                        ModContent.ItemType<Items.Boss.Athena.StarChart>()
+                        ModContent.ItemType<Items.Boss.Athena.Olympian.AthenaABag>(),
+                        ModContent.ItemType<Items.Boss.Athena.Olympian.GoddessHarp>(),
+                        ModContent.ItemType<Items.Boss.Athena.Olympian.Olympia>(),
+                        ModContent.ItemType<Items.Boss.Athena.Olympian.Windfury>(),
+                        ModContent.ItemType<Items.Boss.Athena.Olympian.GaleForce>(),
+                        ModContent.ItemType<Items.Boss.Athena.Olympian.HurricaneStone>(),
+                        ModContent.ItemType<Items.Boss.Athena.Olympian.StarChart>()
                     },
                     Lang.BossCheck("AthenaAInfo"),
                     null,
