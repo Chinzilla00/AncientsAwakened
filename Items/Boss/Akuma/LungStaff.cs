@@ -19,7 +19,7 @@ namespace AAMod.Items.Boss.Akuma
         public override void SetDefaults()
         {
             item.mana = 20;
-            item.damage = 120;
+            item.damage = 100;
             item.useStyle = 1;
             item.shootSpeed = 10f;
             item.shoot = mod.ProjectileType("LungHead");
