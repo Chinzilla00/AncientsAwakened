@@ -17,8 +17,12 @@ namespace AAMod.Tiles.Ore
             Main.tileBlendAll[Type] = false;
             soundType = 21;
             Main.tileLighted[Type] = true;
+            drop = mod.ItemType("SkyCrystal"); 
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("SkyCrystal");
             dustType = DustID.BlueCrystalShard;
             AddMapEntry(Color.SkyBlue);
+            minPick = 240;
         }
     }
 }

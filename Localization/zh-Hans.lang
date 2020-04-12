@@ -1635,7 +1635,7 @@ ItemName.GripsBox=八音盒(混沌之爪)
 ItemTooltip.GripsBox=播放 'Twin Terror' by Spectral Aves
 
 ItemName.HoardBox=八音盒(欲望金窟)
-ItemTooltip.HoardBox=播放 'Cavern of Coveted Treasures' by OmegaFerretMusic
+ItemTooltip.HoardBox=播放 'Cove' by Universe
 
 ItemName.HydraBox=八音盒(九头渊蛇)
 ItemTooltip.HydraBox=播放 'Abyssal Wrath' by Spectral Aves
@@ -1647,7 +1647,7 @@ ItemName.InfernoNightBox=八音盒(燎狱之夜)
 ItemTooltip.InfernoNightBox=播放 'Burnt to Ashes' by Quicksilvur
 
 ItemName.InfernoUBox=八音盒(燎狱地下)
-ItemTooltip.InfernoUBox=播放 'Smolder' by OmegaFerretMusic
+ItemTooltip.InfernoUBox=播放 'Superheated' by Quicksilvur
 
 ItemName.LakeBox=八音盒(升月之湖)
 ItemTooltip.LakeBox=播放 'Lake of Souls' by Rockwizard
@@ -1673,10 +1673,10 @@ ItemTooltip.RajahBox=播放 'JUSTICE' by Spectral Aves
 
 
 ItemName.SagBox=八音盒(虚空人马)
-ItemTooltip.SagBox=播放 'Zodiac' by OmegaFerretMusic
+ItemTooltip.SagBox=播放 'Event Horizon' by SpectralAves
 
 ItemName.SDBox=八音盒(深睡巨龙)
-ItemTooltip.SDBox=播放 'Sleeping Dragon' by OmegaFerretMusic
+ItemTooltip.SDBox=播放 'Sleeping Giants' by LordCakeSpy
 
 ItemName.SerpentBox=八音盒(绝零冰蛇)
 ItemTooltip.SerpentBox=播放 'Burrowing Down' by Charlie Debnam
@@ -1694,7 +1694,7 @@ ItemName.SistersBox=八音盒(混沌姐妹)
 ItemTooltip.SistersBox=播放 'Sisters of Anarchy' by Shadow Figure
 
 ItemName.StarBox=八音盒(漫天星辰)
-ItemTooltip.StarBox=播放 'Interstellar' by OmegaFerretMusic
+ItemTooltip.StarBox=播放 'Star's Serenade' by Charlie Debnam
 
 ItemName.TerrariumBox=八音盒(泰拉心球)
 ItemTooltip.TerrariumBox=播放 'Heart of the World' by Quicksilvur feat Charlie Debnam
@@ -1703,7 +1703,7 @@ ItemName.ToadBox=八音盒(松露蟾蜍)
 ItemTooltip.ToadBox=播放 'TODESTOOL' by Spectral Aves
 
 ItemName.VoidBox=八音盒(虚空)
-ItemTooltip.VoidBox=播放 'What Once Was' by OmegaFerretMusic
+ItemTooltip.VoidBox=播放 'Gaze into Darkness' by Charlie Debnam
 
 ItemName.YamataABox=八音盒(觉醒之八岐大蛇)
 ItemTooltip.YamataABox=播放 'Abyssal Nightmare' by Universe
@@ -1740,6 +1740,11 @@ ItemName.ChaosCrucible=混沌坩埚
 ItemTooltip.ChaosCrucible=混沌之力需要一双稳重的手和巨大的工作台来合作\n也可以当作所有的普通制作站
 
 ItemName.CorruptAltar=恶魔祭坛
+
+ItemName.CovetiteBrick=欲晶砖
+
+ItemName.CovetiteOre=欲晶矿
+ItemTooltip.CovetiteOre=只有脑瘫才想要这东西. 不懂为嘛金食饕餮想要这东西.
 
 ItemName.CrimsonAltar=猩红祭坛
 
@@ -1873,6 +1878,11 @@ ItemName.StormChest=风暴宝箱
 ItemName.SunAltar=酷煞之日祭坛
 
 ItemName.SunAltarA=觉醒之日祭坛
+
+ItemName.SkycrystalBrick=天晶砖
+
+ItemName.SkyCrystal=天晶
+ItemTooltip.SkyCrystal=非常美丽的晶体，据说是天空的一部分
 
 ItemName.TechneciumForge=闪锝熔炉
 
@@ -2163,7 +2173,6 @@ ItemTooltip.Verdict=击中敌人时释放附魔沙雨\n同时产生2个逝落幻
 
 //AAMod.Items.Boss.Athena
 
-
 ItemName.AthenaABag=宝藏袋
 
 ItemName.AthenaBag=宝藏袋
@@ -2172,6 +2181,9 @@ ItemName.AthenaTrophy=雅典娜纪念章
 
 ItemName.SeraphHarp=六翼天琴
 ItemTooltip.SeraphHarp=召唤一个六翼天使为你而战
+
+ItemName.StormSphere=天风球
+ItemTooltip.StormSphere=一个充满了女武神之力的超级蓄能球
 
 ItemName.GoddessHarp=神御天琴
 ItemTooltip.GoddessHarp=召唤六翼天使女王亲自为你而战
@@ -2438,8 +2450,6 @@ ItemName.BlazeGripTrophy=狱怒之爪纪念章
 
 BuffName.CharmBuff=强欲
 BuffDescription.CharmBuff=金钱即是力量！！！
-
-ItemName.CovetiteCoin=欲晶币
 
 ItemName.DesireCharm=贪欲挂饰
 ItemTooltip.DesireCharm=拾取硬币时增加1%伤害持续4秒\n再拾取时再增加1%伤害并重置计时\n伤害增加上限20%
@@ -3691,6 +3701,9 @@ ItemTooltip.FulguriteBar=静态-Y
 
 ItemName.CovetiteCrystal=贪欲晶石
 ItemTooltip.CovetiteCrystal=尽管你已经拥有了它, 然而你依旧对这个水晶有一种奇怪的欲望
+
+ItemName.CovetiteBar=欲晶锭
+ItemTooltip.CovetiteBar=有点亮但是并不同时. 金食饕餮怎么会堕落至此?
 
 ItemName.HeroShards=英雄裂片
 ItemTooltip.HeroShards=破碎的遗迹碎片
@@ -4964,6 +4977,8 @@ ItemTooltip.ShinyKipronWings=允许飞行和缓慢降落\n按住下和跳可以�
 
 // AAMod.Items.Vanity.Apawn
 
+ItemName.ApawnEgg=惊喜蛋
+ItemTooltip.ApawnEgg=右键打开\n一个塑料蛋，一个非非非非常大的蛋！
 
 ItemName.ApawnBoots=Apawn的护胫
 ItemTooltip.ApawnBoots=“非常适合冒充远古觉醒的开发者!”
@@ -6377,6 +6392,97 @@ MapObject.VoidCrate=虚空宝箱
 
 MapObject.RoyalBunnyCage=王冠兔兔笼
 
+// AAMod.Tiles.Boxes
+
+
+MapObject.AcropolisBox=八音盒
+
+MapObject.AkumaABox=八音盒
+
+MapObject.AkumaBox=八音盒
+
+MapObject.AnubisBox=八音盒
+
+MapObject.AnubisFBox=八音盒
+
+MapObject.AthenaABox=八音盒
+
+MapObject.AthenaBox=八音盒
+
+MapObject.BroodBox=八音盒
+
+MapObject.DjinnBox=八音盒
+
+MapObject.Equibox=八音盒
+
+MapObject.FateBox=八音盒
+
+MapObject.FungusBox=八音盒
+
+MapObject.GreedABox=八音盒
+
+MapObject.GreedBox=八音盒
+
+MapObject.GripsBox=八音盒
+
+MapObject.HoardBox=八音盒
+
+MapObject.HydraBox=八音盒
+
+MapObject.InfernoBox=八音盒
+
+MapObject.InfernoNightBox=八音盒
+
+MapObject.InfernoUBox=八音盒
+
+MapObject.LakeBox=八音盒
+
+MapObject.MireBox=八音盒
+
+MapObject.MireDayBox=八音盒
+
+MapObject.MireUBox=八音盒
+
+MapObject.MonarchBox=八音盒
+
+MapObject.MushBox=八音盒
+
+MapObject.PagodaBox=八音盒
+
+MapObject.RajahBox=八音盒
+
+MapObject.SagBox=八音盒
+
+MapObject.SDBox=八音盒
+
+MapObject.SerpentBox=八音盒
+
+MapObject.SGBox=八音盒
+
+MapObject.ShenABox=八音盒
+
+MapObject.ShenBox=八音盒
+
+MapObject.SistersBox=八音盒
+
+MapObject.SRajahBox=八音盒
+
+MapObject.StarBox=八音盒
+
+MapObject.TerrariumBox=八音盒
+
+MapObject.ToadBox=八音盒
+
+MapObject.VoidBox=八音盒
+
+MapObject.YamataABox=八音盒
+
+MapObject.YamataBox=八音盒
+
+MapObject.Zero2Box=八音盒
+
+MapObject.ZeroBox=八音盒
+
 
 // AAMod.Tiles
 
@@ -6387,17 +6493,11 @@ MapObject.ACS=任何古代工作台
 
 MapObject.AcropolisAltar=天鸮祭坛
 
-MapObject.AkumaABox=八音盒
-
-MapObject.AkumaBox=八音盒
-
-MapObject.AnubisBox=八音盒
-
-MapObject.AnubisFBox=八音盒
-
 MapObject.AncientForge=远古锻造炉
 
 MapObject.Apocalyptite=启示矿石
+
+MapObject.CovetiteOre=欲晶矿石
 
 MapObject.AvesInABox=盒子里的鸟
 
@@ -6408,8 +6508,6 @@ MapObject.BiomePrism=生态棱镜
 MapObject.BogPalmSapling=污泽棕榈书苗
 
 MapObject.BogwoodSapling=污泽木树苗
-
-MapObject.BroodBox=八音盒
 
 MapObject.ChaosAltar=混沌祭坛
 
@@ -6427,8 +6525,6 @@ MapObject.DevStatue=雕像
 
 MapObject.DiscordiumOre=冥昧矿
 
-MapObject.DjinnBox=八音盒
-
 MapObject.DoomsdayChest=末日宝箱
 
 Common.DoomsdayChest_Locked=上锁末日宝箱
@@ -6445,21 +6541,13 @@ MapObject.DreadAltarS=恐惧之月底座
 
 MapObject.DynaskullOre=王骨化石
 
-MapObject.Equibox=八音盒
-
 MapObject.EventideAbyssiumOre=渊宵矿石
 
 MapObject.EverleafRoots=常青根
 
 MapObject.EvilAltar=邪恶祭坛
 
-MapObject.FateBox=八音盒
-
 MapObject.FulguriteOre=雷熔碎石
-
-MapObject.FungusBox=八音盒
-
-MapObject.GripsBox=八音盒
 
 MapObject.GreedDoorClosed=藏宝门
 
@@ -6473,10 +6561,6 @@ Common.GreedChest_Locked=上锁贪婪宝箱
 
 MapObject.GreedAltar=原欲祭坛
 
-MapObject.GreedABox=八音盒
-
-MapObject.GreedBox=八音盒
-
 MapObject.HallowedAnvil=神圣砧
 
 MapObject.HallowedForge=神圣熔炉
@@ -6487,37 +6571,15 @@ MapObject.HaphestusForge=赫费斯特铁匠神熔炉
 
 MapObject.HellstoneAnvil=狱石砧
 
-MapObject.HydraBox=八音盒
-
 MapObject.HydraPod=九头蛇蒴荚
 
 MapObject.IncineriteOre=燎烬矿石
 
-MapObject.InfernoBox=八音盒
-
-MapObject.InfernoNightBox=八音盒
-
 MapObject.InfernoChest=燎狱宝箱
-
-MapObject.InfernoUBox=八音盒
-
-MapObject.LakeBox=八音盒
 
 MapObject.LuminiteOre=夜明矿石
 
-MapObject.MireBox=八音盒
-
-MapObject.MireDayBox=八音盒
-
 MapObject.MireChest=潭渊宝箱
-
-MapObject.MireUBox=八音盒
-
-MapObject.MonarchBox=八音盒
-
-MapObject.MushBox=八音盒
-
-MapObject.SistersBox=八音盒
 
 MapObject.OroborosChestC1=虚环木宝箱
 
@@ -6529,8 +6591,6 @@ MapObject.OroborosChestC4=虚环木宝箱
 
 MapObject.OroborosSapling=虚环木树苗
 
-MapObject.PagodaBox=八音盒
-
 MapObject.PaladinsSmeltery=圣骑士冶炼炉
 
 MapObject.PrismOre=镜棱矿
@@ -6541,33 +6601,15 @@ MapObject.RadiantArcanum=射线之奥秘
 
 MapObject.RadiumOre=天外来矿
 
-MapObject.RajahBox=八音盒
-
 MapObject.RazePalmSapling=燎火棕榈木树苗
 
 MapObject.RazewoodSapling=燎火木树苗
 
 MapObject.RelicOre=维京遗物
 
-MapObject.RoHBox=八音盒
-
-MapObject.SDBox=八音盒
-
-MapObject.SerpentBox=八音盒
-
-MapObject.SGBox=八音盒
-
-MapObject.SiegeBox=八音盒
-
-MapObject.ShenABox=八音盒
-
-MapObject.ShenBox=八音盒
+MapObject.SkyCrystal=天晶矿
 
 MapObject.Soul_Forge_Placed=精魂熔炉
-
-MapObject.SRajahBox=八音盒
-
-MapObject.StarBox=八音盒
 
 MapObject.StormChest=风暴宝箱
 
@@ -6581,10 +6623,6 @@ MapObject.TerraCore=泰拉核心
 
 MapObject.TerraPrism=无限核心
 
-MapObject.TerrariumBox=八音盒
-
-MapObject.ToadBox=八音盒
-
 MapObject.Transmuter=材料转化机
 
 MapObject.TruePaladinsSmeltery=真·圣骑士熔炉
@@ -6593,17 +6631,7 @@ MapObject.UraniumAnvil=铀绿砧
 
 MapObject.UraniumOre=铀绿矿石
 
-MapObject.VoidBox=八音盒
-
-MapObject.YamataABox=八音盒
-
-MapObject.YamataBox=八音盒
-
 MapObject.YtriumOre=钇土矿石
-
-MapObject.Zero2Box=八音盒
-
-MapObject.ZeroBox=八音盒
 
 
 // AAMod.Tiles.Oroboros
