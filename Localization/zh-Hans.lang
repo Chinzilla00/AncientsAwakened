@@ -2015,7 +2015,6 @@ ItemName.BogwoodWorkbench=污泽木工作台
 
 // AAMod.Items.Blocks.Bricks
 
-
 ItemName.AbyssiumBrick=潭渊砖
 
 ItemName.DarkmatterBrick=暗物质砖
@@ -2032,6 +2031,8 @@ ItemTooltip.EquinoxBrick=根据一天中的时间变换的砖
 ItemName.EventideBrick=渊宵砖
 
 ItemName.IncineriteBrick=燎烬砖
+
+ItemName.SkymarbleBrick=天理石砖
 
 ItemName.RadiumBrick=镭光砖
 
