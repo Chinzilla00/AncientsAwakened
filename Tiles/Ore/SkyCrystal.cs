@@ -22,7 +22,7 @@ namespace AAMod.Tiles.Ore
             name.SetDefault("SkyCrystal");
             dustType = DustID.BlueCrystalShard;
             AddMapEntry(Color.SkyBlue);
-            minPick = 180;
+            minPick = 240;
         }
     }
 }
