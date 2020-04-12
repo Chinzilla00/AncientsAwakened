@@ -30,7 +30,7 @@ namespace AAMod.Items.Blocks.Boxes
         {
             ModRecipe recipe = new ModRecipe(mod);
             recipe.AddIngredient(ItemID.MusicBox);
-            recipe.AddIngredient(null, "CovetiteCoin", 5);
+            recipe.AddIngredient(null, "StoneShell", 5);
             recipe.AddTile(TileID.Sawmill);
             recipe.SetResult(this);
             recipe.AddRecipe();
