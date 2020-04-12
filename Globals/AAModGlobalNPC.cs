@@ -180,6 +180,14 @@ namespace AAMod
             }
         }
 
+        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+		{
+            if(NPC.downedMoonlord && npc.boss && ProjectileID.Sets.StardustDragon[projectile.type] && projectile.GetGlobalProjectile<AAGlobalProjectile>().LongMinion)
+            {
+                damage = (int) (damage * .69f);
+            }
+		}
+
         public override bool PreAI(NPC npc)
         {
             if(npc.type != 395 && (npc.boss || npc.type == 13 || npc.type == 15))
