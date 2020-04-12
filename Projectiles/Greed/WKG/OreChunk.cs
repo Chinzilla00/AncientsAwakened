@@ -365,7 +365,7 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 
             }
-            else if(projectile.ai[1] >= 3930 && ItemLoader.GetItem((int) projectile.ai[1]).mod != null)
+            else if(projectile.ai[1] > 3930 && ItemLoader.GetItem((int) projectile.ai[1]).mod != null)
 			{
                 try
                 {
@@ -396,7 +396,7 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 spriteBatch.Draw(Main.itemTexture[(int)projectile.ai[1]], projectile.position, null, lightColor, projectile.rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
             }
-            else if(projectile.ai[1] >= 3930 && ItemLoader.GetItem((int) projectile.ai[1]).mod != null)
+            else if(projectile.ai[1] > 3930 && ItemLoader.GetItem((int) projectile.ai[1]).mod != null)
 			{
                 try
                 {
@@ -570,7 +570,7 @@ namespace AAMod.Projectiles.Greed.WKG
 					}
                 }
             }
-            else if(projectile.ai[1] >= 3930 && ItemLoader.GetItem((int)projectile.ai[1]).mod != null)
+            else if(projectile.ai[1] > 3930 && ItemLoader.GetItem((int)projectile.ai[1]).mod != null)
 			{
                 try
                 {
@@ -1122,7 +1122,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     };
                 }
             }
-            else if(k >= 3930 && Config.LuckyOre[k] > 650 && item.modItem.mod != ModLoader.GetMod("AAMod"))
+            else if(k > 3930 && Config.LuckyOre[k] > 650 && item.modItem.mod != ModLoader.GetMod("AAMod"))
             {
                 int dustid = DustID.Copper;
                 switch (WorldGen.genRand.Next(10))
