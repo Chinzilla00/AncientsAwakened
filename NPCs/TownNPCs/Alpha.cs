@@ -111,6 +111,11 @@ namespace AAMod.NPCs.TownNPCs
 		{
 			if (VanityShop)
 			{
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Apawn.ApawnEgg>());
+				shop.item[nextSlot].shopCustomPrice = new int?(5);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
+				nextSlot++;
+
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Fazer.WetFurrbag>());
 				shop.item[nextSlot].shopCustomPrice = new int?(10);
 				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;

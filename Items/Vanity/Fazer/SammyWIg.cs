@@ -11,7 +11,7 @@ namespace AAMod.Items.Vanity.Fazer
         {
             base.SetStaticDefaults();
             DisplayName.SetDefault("Fluffy Fox Wig");
-            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Devs!'");
+            Tooltip.SetDefault(@"'Great for impersonating Ancients Awakened Contributors!'");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

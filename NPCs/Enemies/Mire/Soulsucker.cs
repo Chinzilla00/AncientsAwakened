@@ -38,9 +38,9 @@ namespace AAMod.NPCs.Enemies.Mire
         {
             if (npc.frameCounter++ > 3)
             {
-                npc.frame.Y += 60;
+                npc.frame.Y += frameHeight;
                 npc.frameCounter = 0;
-                if (npc.frame.Y >= 76)
+                if (npc.frame.Y >= frameHeight * 2)
                 {
                     npc.frame.Y = 0;
                 }

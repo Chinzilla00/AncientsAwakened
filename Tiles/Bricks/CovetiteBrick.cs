@@ -1,10 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Tiles.Bricks
 {
-    class RadiumBrick : ModTile
+    class CovetiteBrick : ModTile
     {
         public override void SetDefaults()
         {
@@ -12,9 +13,9 @@ namespace AAMod.Tiles.Bricks
             Main.tileMergeDirt[Type] = true;
             Main.tileLighted[Type] = false;
             Main.tileBlockLight[Type] = true;
-            drop = mod.ItemType("RadiumBrick");   
-            AddMapEntry(Color.DarkGoldenrod);
-            dustType = ModContent.DustType<Dusts.RadiumDust>();
+            drop = mod.ItemType("CovetiteBrick");   
+            AddMapEntry(new Color(100, 51, 0));
+            dustType = DustID.Gold;
         }
     }
 }

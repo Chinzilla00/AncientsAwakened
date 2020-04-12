@@ -8,7 +8,7 @@ namespace AAMod.Items.Blocks.Boxes
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Hoard Music Box");
-            Tooltip.SetDefault(@"Plays 'Cavern of Coveted Treasures' by OmegaFerretMusic");
+            Tooltip.SetDefault(@"Plays 'Cove' by Universe");
         }
 
         public override void SetDefaults()

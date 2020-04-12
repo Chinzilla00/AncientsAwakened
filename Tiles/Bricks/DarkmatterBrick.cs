@@ -10,7 +10,7 @@ namespace AAMod.Tiles.Bricks
         {
             Main.tileSolid[Type] = true;
             Main.tileMergeDirt[Type] = true;
-            Main.tileLighted[Type] = true;
+            Main.tileLighted[Type] = false;
             Main.tileBlockLight[Type] = true;
             drop = mod.ItemType("DarkmatterBrick");   
             AddMapEntry(new Color(30, 30, 51));

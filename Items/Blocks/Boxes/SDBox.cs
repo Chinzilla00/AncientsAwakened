@@ -10,7 +10,7 @@ namespace AAMod.Items.Blocks.Boxes
 		{
 			DisplayName.SetDefault("Sleeping Dragon Music Box");
 
-            Tooltip.SetDefault(@"Plays 'Sleeping Dragon' by OmegaFerretMusic");
+            Tooltip.SetDefault(@"Plays 'Sleeping Giants' by LordCakeSpy");
         }
 
 		public override void SetDefaults()

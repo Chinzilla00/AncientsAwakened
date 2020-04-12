@@ -64,6 +64,7 @@ namespace AAMod.NPCs.Bosses.Greed
                     {
                         BaseUtility.Chat(Lang.BossChat("GreedTransition1"), Color.Goldenrod);
                     }
+                    music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/GreedA");
 
                     npc.netUpdate = true;
                 }
@@ -142,7 +143,8 @@ namespace AAMod.NPCs.Bosses.Greed
             if (++npc.frameCounter >= 4)
             {
                 npc.frameCounter = 0;
-                if (++npc.frame.Y >= frameHeight * 3)
+                npc.frame.Y += frameHeight;
+                if (npc.frame.Y >= frameHeight * 3)
                 {
                     npc.frame.Y = 0;
                 }

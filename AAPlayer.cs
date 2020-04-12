@@ -2864,10 +2864,7 @@ namespace AAMod
                         break;
 
                     case 18:
-                        player.QuickSpawnItem(mod.ItemType("ApawnHelm"));
-                        player.QuickSpawnItem(mod.ItemType("ApawnPlate"));
-                        player.QuickSpawnItem(mod.ItemType("ApawnBoots"));
-
+                        player.QuickSpawnItem(mod.ItemType("ApawnEgg"));
                         spawnedDevItems = true;
                         break;
 

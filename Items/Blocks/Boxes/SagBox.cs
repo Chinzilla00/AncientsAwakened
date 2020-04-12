@@ -10,7 +10,7 @@ namespace AAMod.Items.Blocks.Boxes
 		{
 			DisplayName.SetDefault("Sagittarius Music Box");
 
-            Tooltip.SetDefault(@"Plays 'Zodiac' by OmegaFerretMusic");
+            Tooltip.SetDefault(@"Plays 'Event Horizon' by SpectralAves");
         }
 
 		public override void SetDefaults()

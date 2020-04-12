@@ -12,7 +12,7 @@ namespace AAMod.Items.Vanity.Cerberus
             base.SetStaticDefaults();
             DisplayName.SetDefault("Invoker Boots");
             Tooltip.SetDefault(@"The enchanted boots of Aleister the 'Mega Therion'
-Great for impersonating Awakened Developers!");
+Great for impersonating Awakened Devs!");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)

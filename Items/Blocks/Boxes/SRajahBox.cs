@@ -6,7 +6,7 @@
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Champion of the Innocent Music Box");
-            Tooltip.SetDefault(@"Plays 'Supreme Justice' by OmegaFerretMusic");
+            Tooltip.SetDefault(@"Plays '' by ");
         }
 
         public override void ModifyTooltips(List<TooltipLine> list)
