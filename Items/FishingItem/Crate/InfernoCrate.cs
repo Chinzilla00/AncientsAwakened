@@ -33,37 +33,6 @@ namespace AAMod.Items.FishingItem.Crate
 
         public override void RightClick(Player player)
         {
-            if(Main.rand.Next(6) == 0)
-            {
-                int item = Main.rand.Next(4);
-
-                switch (item)
-                {
-                    case 0:
-                        item = mod.ItemType("ScorchDagger");
-                        break;
-                    case 1:
-                        item = mod.ItemType("DragonsBreath");
-                        break;
-                    case 2:
-                        item = mod.ItemType("Railjaw");
-                        break;
-                    default:
-                        item = mod.ItemType("BroodEgg");
-                        break;
-                }
-
-                int index = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, item, 1, false, -1, false, false);
-                int index1 = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("IncineriteBar"), Main.rand.Next(0, 12));
-
-                if (Main.netMode == NetmodeID.MultiplayerClient)
-                {
-                    NetMessage.SendData(21, -1, -1, null, index, 1f, 0f, 0f, 0, 0, 0);
-                    NetMessage.SendData(21, -1, -1, null, index1, 1f, 0f, 0f, 0, 0, 0);
-                }
-            }
-
-            //bypass all checks and spawn defaults
             AAModGlobalItem.OpenAACrate(player, 0);
         }
     }

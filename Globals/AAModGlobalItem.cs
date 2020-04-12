@@ -273,7 +273,14 @@ namespace AAMod
                             player.QuickSpawnItem(ItemID.FuzzyCarrot, 1);
                             break;
                         case 13:
-                            player.QuickSpawnItem(ItemID.FinWings, 1);
+                            if (Main.hardMode)
+                            {
+                                player.QuickSpawnItem(ItemID.FinWings, 1);
+                            }
+                            else
+                            {
+                                goto default;
+                            }
                             break;
                         case 14:
                             player.QuickSpawnItem(ItemID.BottomlessBucket, 1);
@@ -383,8 +390,66 @@ namespace AAMod
                 player.QuickSpawnItem(item, Main.rand.Next(2, 7));
             }
 
+            Mod mod = AAMod.instance;
+
             if (CrateType < 2)
             {
+                if (Main.rand.Next(6) == 0)
+                {
+                    if (CrateType == 0)
+                    {
+                        int item = Main.rand.Next(5);
+
+                        switch (item)
+                        {
+                            case 0:
+                                item = mod.ItemType("Pyrosphere");
+                                break;
+                            case 1:
+                                item = mod.ItemType("Firebuster");
+                                break;
+                            case 2:
+                                item = mod.ItemType("Volley");
+                                break;
+                            case 3:
+                                item = mod.ItemType("DragonsSoul");
+                                break;
+                            default:
+                                item = mod.ItemType("DragonsGuard");
+                                break;
+                        }
+                        player.QuickSpawnItem(item);
+                        player.QuickSpawnItem(mod.ItemType("IncineriteBar"), Main.rand.Next(1, 12));
+
+                    }
+                    if (CrateType == 1)
+                    {
+                        int item = Main.rand.Next(5);
+
+                        switch (item)
+                        {
+                            case 0:
+                                item = mod.ItemType("HydrasSpear");
+                                break;
+                            case 1:
+                                item = mod.ItemType("Mossket");
+                                break;
+                            case 2:
+                                item = mod.ItemType("GlowmossBall");
+                                break;
+                            case 3:
+                                item = mod.ItemType("ShadowBand");
+                                break;
+                            default:
+                                item = mod.ItemType("GunkWand");
+                                break;
+                        }
+
+                        player.QuickSpawnItem(item);
+                        player.QuickSpawnItem(mod.ItemType("AbyssiumBar"), Main.rand.Next(1, 12));
+
+                    }
+                }
                 if (Main.hardMode && Main.rand.Next(2) == 0)
                 {
                     int item = CrateType == 1 ? ModContent.ItemType<Items.Materials.SoulOfSpite>() : ModContent.ItemType<Items.Materials.SoulOfSmite>();
