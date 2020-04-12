@@ -17,7 +17,7 @@ namespace AAMod.Items.Dev.DevTile
                 {
                     if(AAWorld.downedEquinox)
                     {
-                        bool canplace = type == mod.TileType("MireGrass") && Main.tile[i + 1, j - 1].type == mod.TileType("MireGrass") && !Main.tile[i, j - 1].active() && !Main.tile[i + 1, j - 1].active() && j > Main.worldSurface + 200;
+                        bool canplace = (type == mod.TileType("MireGrass") || type == mod.TileType("Depthstone")) && (Main.tile[i + 1, j - 1].type == mod.TileType("MireGrass") || type == mod.TileType("Depthstone")) && !Main.tile[i, j - 1].active() && !Main.tile[i + 1, j - 1].active() && j > Main.worldSurface + 200;
                         if(canplace)
                         {
                             WorldGen.PlaceTile(i, j - 1, mod.TileType("CCMireBox"), true, false);
