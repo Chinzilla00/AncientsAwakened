@@ -6392,6 +6392,97 @@ MapObject.VoidCrate=虚空宝箱
 
 MapObject.RoyalBunnyCage=王冠兔兔笼
 
+// AAMod.Tiles.Boxes
+
+
+MapObject.AcropolisBox=八音盒
+
+MapObject.AkumaABox=八音盒
+
+MapObject.AkumaBox=八音盒
+
+MapObject.AnubisBox=八音盒
+
+MapObject.AnubisFBox=八音盒
+
+MapObject.AthenaABox=八音盒
+
+MapObject.AthenaBox=八音盒
+
+MapObject.BroodBox=八音盒
+
+MapObject.DjinnBox=八音盒
+
+MapObject.Equibox=八音盒
+
+MapObject.FateBox=八音盒
+
+MapObject.FungusBox=八音盒
+
+MapObject.GreedABox=八音盒
+
+MapObject.GreedBox=八音盒
+
+MapObject.GripsBox=八音盒
+
+MapObject.HoardBox=八音盒
+
+MapObject.HydraBox=八音盒
+
+MapObject.InfernoBox=八音盒
+
+MapObject.InfernoNightBox=八音盒
+
+MapObject.InfernoUBox=八音盒
+
+MapObject.LakeBox=八音盒
+
+MapObject.MireBox=八音盒
+
+MapObject.MireDayBox=八音盒
+
+MapObject.MireUBox=八音盒
+
+MapObject.MonarchBox=八音盒
+
+MapObject.MushBox=八音盒
+
+MapObject.PagodaBox=八音盒
+
+MapObject.RajahBox=八音盒
+
+MapObject.SagBox=八音盒
+
+MapObject.SDBox=八音盒
+
+MapObject.SerpentBox=八音盒
+
+MapObject.SGBox=八音盒
+
+MapObject.ShenABox=八音盒
+
+MapObject.ShenBox=八音盒
+
+MapObject.SistersBox=八音盒
+
+MapObject.SRajahBox=八音盒
+
+MapObject.StarBox=八音盒
+
+MapObject.TerrariumBox=八音盒
+
+MapObject.ToadBox=八音盒
+
+MapObject.VoidBox=八音盒
+
+MapObject.YamataABox=八音盒
+
+MapObject.YamataBox=八音盒
+
+MapObject.Zero2Box=八音盒
+
+MapObject.ZeroBox=八音盒
+
 
 // AAMod.Tiles
 
@@ -6402,19 +6493,11 @@ MapObject.ACS=任何古代工作台
 
 MapObject.AcropolisAltar=天鸮祭坛
 
-MapObject.AkumaABox=八音盒
-
-MapObject.AkumaBox=八音盒
-
-MapObject.AnubisBox=八音盒
-
-MapObject.AnubisFBox=八音盒
-
 MapObject.AncientForge=远古锻造炉
 
 MapObject.Apocalyptite=启示矿石
 
-MapObject.CovetiteOre=欲晶矿是
+MapObject.CovetiteOre=欲晶矿石
 
 MapObject.AvesInABox=盒子里的鸟
 
@@ -6425,8 +6508,6 @@ MapObject.BiomePrism=生态棱镜
 MapObject.BogPalmSapling=污泽棕榈书苗
 
 MapObject.BogwoodSapling=污泽木树苗
-
-MapObject.BroodBox=八音盒
 
 MapObject.ChaosAltar=混沌祭坛
 
@@ -6444,8 +6525,6 @@ MapObject.DevStatue=雕像
 
 MapObject.DiscordiumOre=冥昧矿
 
-MapObject.DjinnBox=八音盒
-
 MapObject.DoomsdayChest=末日宝箱
 
 Common.DoomsdayChest_Locked=上锁末日宝箱
@@ -6462,21 +6541,13 @@ MapObject.DreadAltarS=恐惧之月底座
 
 MapObject.DynaskullOre=王骨化石
 
-MapObject.Equibox=八音盒
-
 MapObject.EventideAbyssiumOre=渊宵矿石
 
 MapObject.EverleafRoots=常青根
 
 MapObject.EvilAltar=邪恶祭坛
 
-MapObject.FateBox=八音盒
-
 MapObject.FulguriteOre=雷熔碎石
-
-MapObject.FungusBox=八音盒
-
-MapObject.GripsBox=八音盒
 
 MapObject.GreedDoorClosed=藏宝门
 
@@ -6490,10 +6561,6 @@ Common.GreedChest_Locked=上锁贪婪宝箱
 
 MapObject.GreedAltar=原欲祭坛
 
-MapObject.GreedABox=八音盒
-
-MapObject.GreedBox=八音盒
-
 MapObject.HallowedAnvil=神圣砧
 
 MapObject.HallowedForge=神圣熔炉
@@ -6504,37 +6571,15 @@ MapObject.HaphestusForge=赫费斯特铁匠神熔炉
 
 MapObject.HellstoneAnvil=狱石砧
 
-MapObject.HydraBox=八音盒
-
 MapObject.HydraPod=九头蛇蒴荚
 
 MapObject.IncineriteOre=燎烬矿石
 
-MapObject.InfernoBox=八音盒
-
-MapObject.InfernoNightBox=八音盒
-
 MapObject.InfernoChest=燎狱宝箱
-
-MapObject.InfernoUBox=八音盒
-
-MapObject.LakeBox=八音盒
 
 MapObject.LuminiteOre=夜明矿石
 
-MapObject.MireBox=八音盒
-
-MapObject.MireDayBox=八音盒
-
 MapObject.MireChest=潭渊宝箱
-
-MapObject.MireUBox=八音盒
-
-MapObject.MonarchBox=八音盒
-
-MapObject.MushBox=八音盒
-
-MapObject.SistersBox=八音盒
 
 MapObject.OroborosChestC1=虚环木宝箱
 
@@ -6546,8 +6591,6 @@ MapObject.OroborosChestC4=虚环木宝箱
 
 MapObject.OroborosSapling=虚环木树苗
 
-MapObject.PagodaBox=八音盒
-
 MapObject.PaladinsSmeltery=圣骑士冶炼炉
 
 MapObject.PrismOre=镜棱矿
@@ -6558,33 +6601,15 @@ MapObject.RadiantArcanum=射线之奥秘
 
 MapObject.RadiumOre=天外来矿
 
-MapObject.RajahBox=八音盒
-
 MapObject.RazePalmSapling=燎火棕榈木树苗
 
 MapObject.RazewoodSapling=燎火木树苗
 
 MapObject.RelicOre=维京遗物
 
-MapObject.RoHBox=八音盒
-
-MapObject.SDBox=八音盒
-
-MapObject.SerpentBox=八音盒
-
-MapObject.SGBox=八音盒
-
-MapObject.SiegeBox=八音盒
-
-MapObject.ShenABox=八音盒
-
-MapObject.ShenBox=八音盒
+MapObject.SkyCrystal=天晶矿
 
 MapObject.Soul_Forge_Placed=精魂熔炉
-
-MapObject.SRajahBox=八音盒
-
-MapObject.StarBox=八音盒
 
 MapObject.StormChest=风暴宝箱
 
@@ -6598,10 +6623,6 @@ MapObject.TerraCore=泰拉核心
 
 MapObject.TerraPrism=无限核心
 
-MapObject.TerrariumBox=八音盒
-
-MapObject.ToadBox=八音盒
-
 MapObject.Transmuter=材料转化机
 
 MapObject.TruePaladinsSmeltery=真·圣骑士熔炉
@@ -6610,17 +6631,7 @@ MapObject.UraniumAnvil=铀绿砧
 
 MapObject.UraniumOre=铀绿矿石
 
-MapObject.VoidBox=八音盒
-
-MapObject.YamataABox=八音盒
-
-MapObject.YamataBox=八音盒
-
 MapObject.YtriumOre=钇土矿石
-
-MapObject.Zero2Box=八音盒
-
-MapObject.ZeroBox=八音盒
 
 
 // AAMod.Tiles.Oroboros

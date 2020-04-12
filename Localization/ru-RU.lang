@@ -5881,6 +5881,8 @@ MapObject.LuminiteOre=Luminite Ore
 
 MapObject.PrismOre=Prism Ore
 
+MapObject.SkyCrystal=Небесный Кристалл
+
 MapObject.RadiumOre=Celestial Ore
 
 MapObject.RelicOre=Viking Relic
