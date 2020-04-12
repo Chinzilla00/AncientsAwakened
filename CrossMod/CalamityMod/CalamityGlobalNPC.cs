@@ -50,8 +50,8 @@ namespace AAMod
                 if(npc.type == mod.NPCType("BlazeGrip")) CalamityDR = 0.5f;
                 if(npc.type == mod.NPCType("FuryAshe")) CalamityDR = 0.5f;
                 if(npc.type == mod.NPCType("WrathHaruka")) CalamityDR = 0.5f;
-                if(npc.type == mod.NPCType("Shen")) CalamityDR = 0.4f;
-                if(npc.type == mod.NPCType("ShenA")) CalamityDR = 0.4f;
+                if(npc.type == mod.NPCType("Shen")) CalamityDR = 0.35f;
+                if(npc.type == mod.NPCType("ShenA")) CalamityDR = 0.35f;
                 if(npc.type == mod.NPCType("FuryAsheOrbiter")) CalamityDR = 0.5f;
                 if(npc.type == mod.NPCType("Shenling")) CalamityDR = 0.3f;
 
