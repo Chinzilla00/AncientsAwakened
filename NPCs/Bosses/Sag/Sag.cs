@@ -38,7 +38,7 @@ namespace AAMod.NPCs.Bosses.Sag
             bossBag = mod.ItemType("SagBag");
         }
 
-        public float[] internalAI = new float[4];
+        public float[] internalAI = new float[3];
         Vector2 targetPos;
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -47,6 +47,7 @@ namespace AAMod.NPCs.Bosses.Sag
             {
                 writer.Write(internalAI[0]);
                 writer.Write(internalAI[1]);
+                writer.Write(internalAI[2]);
                 writer.Write(targetPos.X);
                 writer.Write(targetPos.Y);
             }
@@ -59,6 +60,7 @@ namespace AAMod.NPCs.Bosses.Sag
             {
                 internalAI[0] = reader.ReadFloat();
                 internalAI[1] = reader.ReadFloat();
+                internalAI[2] = reader.ReadFloat();
                 targetPos.X = reader.ReadFloat();
                 targetPos.Y = reader.ReadFloat();
             }
@@ -76,15 +78,6 @@ namespace AAMod.NPCs.Bosses.Sag
             Player player = Main.player[npc.target];
 
             #region Direction & Alpha
-
-            if (npc.alpha > 0)
-            {
-                npc.alpha -= 10;
-            }
-            if (npc.alpha <= 0)
-            {
-                npc.alpha = 0;
-            }
 
             if (npc.ai[0] != 2)
             {
@@ -189,6 +182,15 @@ namespace AAMod.NPCs.Bosses.Sag
                 default:
                     npc.ai[0] = 0;
                     goto case 0;
+            }
+
+            if (npc.alpha > 0)
+            {
+                npc.alpha -= 10;
+            }
+            if (npc.alpha <= 0)
+            {
+                npc.alpha = 0;
             }
 
             if (npc.life < npc.lifeMax / 3 && internalAI[1]++ % 90 == 0)
@@ -455,8 +457,8 @@ namespace AAMod.NPCs.Bosses.Sag
             {
                 BaseDrawing.DrawAfterimage(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 9, npc.frame, 1f, 1f, 7, true, 0, 0, Color.White);
             }
-            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 9, npc.frame, dColor, false);
-            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Sag_Glow"), 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 9, npc.frame, ColorUtils.COLOR_GLOWPULSE, false);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 9, npc.frame, npc.GetAlpha(dColor), false); ;
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Sag_Glow"), 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 9, npc.frame, npc.GetAlpha(ColorUtils.COLOR_GLOWPULSE), false);
             return false;
         }
 

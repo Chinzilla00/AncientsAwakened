@@ -34,7 +34,7 @@ namespace AAMod.Items.Boss.Athena
             {
                 player.QuickSpawnItem(mod.ItemType("AthenaMask"));
             }
-            if (Main.rand.Next(20) == 0)
+            if (Main.rand.Next(10) == 0)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PPDevArmor();

@@ -56,7 +56,7 @@ namespace AAMod.Items.Boss.Yamata
             {
                 player.QuickSpawnItem(mod.ItemType("YamataMask"));
             }
-            if (Main.rand.Next(20) == 0)
+            if (Main.rand.Next(10) == 0)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PMLDevArmor();

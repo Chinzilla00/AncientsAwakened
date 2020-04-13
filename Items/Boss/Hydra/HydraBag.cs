@@ -64,7 +64,7 @@ namespace AAMod.Items.Boss.Hydra
             {
                 player.QuickSpawnItem(mod.ItemType("HydraMask3"));
             }
-            if (Main.rand.Next(20) == 0)
+            if (Main.rand.Next(10) == 0)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PHMDevArmor();

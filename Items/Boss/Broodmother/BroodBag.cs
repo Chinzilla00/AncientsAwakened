@@ -58,7 +58,7 @@ namespace AAMod.Items.Boss.Broodmother
             {
                 player.QuickSpawnItem(mod.ItemType("BroodEgg"));
             }
-            if (Main.rand.Next(20) == 0)
+            if (Main.rand.Next(10) == 0)
             {
 
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();

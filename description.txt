@@ -34,9 +34,17 @@ A unique soundtrack.
 
 ~Update 1.0.0.3 Changelog~
 
-Governor Gibs & TheRedstoneBro's dev bags are now properly sold by Alphakip.
+1. Governor Gibs & TheRedstoneBro's dev bags are now properly sold by Alphakip.
 
-Alphakip will only spawn in Expert Mode now.
+2. Alphakip will only spawn in Expert Mode now.
+
+3. Fixed Sagittarius not despawning when the player leaves the void
+
+4. Buffed Desert Djinn's damage in expert mode
+
+5. Fixed the fog not appearing in the mire desert
+
+6. New Doomstone & Apocalyptite sprites
 
 ~Update 1.0 Changelog~
 

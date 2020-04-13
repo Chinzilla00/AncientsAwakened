@@ -34,7 +34,7 @@ namespace AAMod.Items.Boss.Toad
             {
                 player.QuickSpawnItem(mod.ItemType("ToadMask"));
             }
-            if (Main.rand.Next(20) == 0)
+            if (Main.rand.Next(10) == 0)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.PHMDevArmor();

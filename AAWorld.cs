@@ -186,8 +186,7 @@ namespace AAMod
             HallowedOre = NPC.downedMechBossAny;
             AMessage = NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
             Luminite = NPC.downedMoonlord;
-            DarkMatter = downedNC;
-            RadiumOre = downedDB;
+            RadiumOre = downedEquinox;
             DiscordOres = downedSisters;
             InfernoStripe = Main.hardMode;
             MireStripe = Main.hardMode;
@@ -1207,21 +1206,16 @@ namespace AAMod
                     if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedEquinoxInfo"), Color.Violet);
                     for (int i = 0; i < Main.maxTilesX / 25; ++i)
                     {
-                        int X = WorldGen.genRand.Next(50, Main.maxTilesX / 10 * 9);
+                        int X = WorldGen.genRand.Next(Main.maxTilesX / 10 * 2, Main.maxTilesX / 10 * 8);
                         int Y = WorldGen.genRand.Next(50, 150); //Y position, centre.
                         int radius = WorldGen.genRand.Next(2, 5); //Radius.
-                        bool NotEquinoxPos = X < Main.maxTilesX * .14f && X > Main.maxTilesX * .16f;
-                        bool NotCenter = X < Main.maxTilesX * .47f && X > Main.maxTilesX * .53f;
-                        if (NotEquinoxPos && NotCenter)
+                        for (int x = X - radius; x <= X + radius; x++)
                         {
-                            for (int x = X - radius; x <= X + radius; x++)
+                            for (int y = Y - radius; y <= Y + radius; y++)
                             {
-                                for (int y = Y - radius; y <= Y + radius; y++)
+                                if (Vector2.Distance(new Vector2(X, Y), new Vector2(x, y)) <= radius) //Checks if coords are within a circle position
                                 {
-                                    if (Vector2.Distance(new Vector2(X, Y), new Vector2(x, y)) <= radius) //Checks if coords are within a circle position
-                                    {
-                                        WorldGen.PlaceTile(x, y, ModContent.TileType<RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
-                                    }
+                                    WorldGen.PlaceTile(x, y, ModContent.TileType<RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
                                 }
                             }
                         }

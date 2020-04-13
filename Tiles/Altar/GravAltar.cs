@@ -88,7 +88,7 @@ namespace AAMod.Tiles.Altar
             Player player = Main.LocalPlayer;
             player.noThrow = 2;
             player.showItemIcon = true;
-            player.showItemIcon2 = mod.ItemType("GravitySphere");
+            player.showItemIcon2 = mod.ItemType("GS");
         }
     }
 }

@@ -56,7 +56,7 @@ namespace AAMod.Items.Boss.Anubis
             {
                 player.QuickSpawnItem(mod.ItemType("AnubisMask"));
             }
-            if (Main.rand.Next(20) == 0)
+            if (Main.rand.Next(10) == 0)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.HMDevArmor();

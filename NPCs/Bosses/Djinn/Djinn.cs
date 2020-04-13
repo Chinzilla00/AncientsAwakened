@@ -27,7 +27,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             npc.width = 70;
             npc.height = 80;
             npc.aiStyle = -1;
-            npc.damage = 30;
+            npc.damage = 40;
             npc.defense = 15;
             npc.lifeMax = 6000;
             npc.buffImmune[20] = true;
@@ -142,7 +142,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                     soundPlayed = true;
                     Main.PlaySound(15, (int)npc.position.X, (int)npc.position.Y, 0);
                 }
-                npc.damage = 200;
+                npc.damage = 200 * (Main.expertMode ? (int)(npc.damage * 1.6f) : 1);
                 npc.defense = 1000;
                 npc.ai[3]++;
                 BaseAI.AIFlier(npc, ref npc.ai, true, 0.3f, 0.3f, 16f, 16f, false, 300);
@@ -172,7 +172,7 @@ namespace AAMod.NPCs.Bosses.Djinn
 
             if (Main.netMode != 1)
             {
-                npc.damage = 30;
+                npc.damage = 30 * (Main.expertMode ? (int)(npc.damage * 1.6f) : 1); ;
                 internalAI[1]++;
                 if (internalAI[1] >= 300)
                 {
@@ -188,7 +188,7 @@ namespace AAMod.NPCs.Bosses.Djinn
 
             if (internalAI[0] == 0)
             {
-                npc.damage = 30;
+                npc.damage = 30 * (Main.expertMode ? (int)(npc.damage * 1.6f) : 1); ;
                 npc.ai[3]++;
                 npc.velocity.X = 0;
                 npc.velocity.Y = 0;
@@ -211,10 +211,15 @@ namespace AAMod.NPCs.Bosses.Djinn
             }
             else if (internalAI[0] == 1)
             {
-                npc.damage = 60;
+                npc.damage = 60 * (Main.expertMode ? (int)(npc.damage * 1.6f) : 1); ;
                 npc.ai[3]++;
                 BaseAI.AIFlier(npc, ref npc.ai, true, 0.1f, 0.1f, 6f, 6f, false, 300);
                 npc.damage = 40;
+
+                if (npc.ai[3] % 30 == 0)
+                {
+                    Projectile.NewProjectile(npc.position + new Vector2(Main.rand.Next(70), Main.rand.Next(80)), Vector2.Zero, ModContent.ProjectileType<Menacing>(), 0, 0, Main.myPlayer);
+                }
                 if (npc.ai[3] > 200 && Main.netMode != 1)
                 {
                     internalAI[0] = 10;
@@ -228,7 +233,7 @@ namespace AAMod.NPCs.Bosses.Djinn
             {
                 npc.ai[3]++;
 				
-                npc.damage = 50;
+                npc.damage = 50 * (Main.expertMode ? (int)(npc.damage * 1.6f) : 1); ;
                 if (npc.ai[3] < 120 && npc.ai[3] > 60)
                 {
                     if (Main.netMode != 1)
@@ -243,7 +248,7 @@ namespace AAMod.NPCs.Bosses.Djinn
                             selectPoint = false;
                             npc.netUpdate = true;
                         }
-                        npc.damage = 20;
+                        npc.damage = 20 * (Main.expertMode ? (int)(npc.damage * 1.6f) : 1); ;
                         npc.netUpdate = true;
                     }
                 }
@@ -259,7 +264,7 @@ namespace AAMod.NPCs.Bosses.Djinn
 							MoveToPoint(MovePoint, 10f);
                             npc.netUpdate = true;
                         }
-                        npc.damage = 40;
+                        npc.damage = 40 * (Main.expertMode ? (int)(npc.damage * 1.6f) : 1); ;
                         npc.netUpdate = true;
                     }
                 }

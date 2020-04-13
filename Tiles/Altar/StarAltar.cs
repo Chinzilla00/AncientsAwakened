@@ -121,7 +121,7 @@ namespace AAMod.Tiles.Altar
             Player player = Main.LocalPlayer;
             player.noThrow = 2;
             player.showItemIcon = true;
-            player.showItemIcon2 = mod.ItemType("StarChart");
+            player.showItemIcon2 = mod.ItemType("SC");
         }
     }
 }

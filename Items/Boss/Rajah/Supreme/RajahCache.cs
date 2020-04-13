@@ -32,7 +32,7 @@ namespace AAMod.Items.Boss.Rajah.Supreme
             {
                 player.QuickSpawnItem(mod.ItemType("RajahMask"));
             }
-            if (Main.rand.Next(20) == 0)
+            if (Main.rand.Next(10) == 0)
             {
                 AAPlayer modPlayer = player.GetModPlayer<AAPlayer>();
                 modPlayer.SADevArmor();
