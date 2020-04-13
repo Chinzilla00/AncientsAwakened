@@ -1073,6 +1073,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             bossBag = mod.ItemType("RajahCache");
             isSupreme = true;
             npc.value = Item.sellPrice(3, 0, 0, 0);
+            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/RajahTheme");
         }
         public override string BossHeadTexture => "AAMod/NPCs/Bosses/Rajah/SupremeRajah_Head_Boss";
     }

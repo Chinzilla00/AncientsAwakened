@@ -219,6 +219,11 @@ namespace AAMod
                 return false;
             }
 
+            if (Main.tile[i, j - 1].active() && (Main.tile[i, j - 1].type == ModContent.TileType<Tiles.Boss.GreedAltar>() || Main.tile[i, j - 1].type == ModContent.TileType<Tiles.Boss.AcropolisAltar>()) && (Main.tile[i, j].type != ModContent.TileType<Tiles.Boss.GreedAltar>() || Main.tile[i, j].type != ModContent.TileType<Tiles.Boss.AcropolisAltar>()))
+            {
+                return false;
+            }
+
             return base.Slope(i, j, type);
         }
 

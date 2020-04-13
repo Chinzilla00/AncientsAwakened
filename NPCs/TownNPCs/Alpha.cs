@@ -47,19 +47,15 @@ namespace AAMod.NPCs.TownNPCs
 
 		public override void HitEffect(int hitDirection, double damage)
 		{
+
 		}
-
-        private readonly bool spawnable = AAWorld.downedMonarch || AAWorld.downedFungus || AAWorld.downedGrips || AAWorld.downedBrood || AAWorld.downedHydra || AAWorld.downedSerpent || AAWorld.downedDjinn || AAWorld.downedSag ||
-        AAWorld.downedAnubis || AAWorld.downedGreed || AAWorld.downedAthena || AAWorld.downedRajah || AAWorld.downedAnubisA || AAWorld.downedGreedA || AAWorld.downedAthenaA || AAWorld.downedEquinox || AAWorld.downedSisters || 
-        AAWorld.downedAkuma || AAWorld.downedYamata || AAWorld.downedZero || AAWorld.downedRajah || AAWorld.downedShen;
-
 
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
 			for (int k = 0; k < 255; k++)
 			{
 				Player player = Main.player[k];
-				if (player.active && spawnable)
+				if (player.active && Main.expertMode)
 				{
 					return true;
 				}
