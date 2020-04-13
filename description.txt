@@ -32,6 +32,12 @@ Fargo's Mutant Mod support.
 
 A unique soundtrack.
 
+~Update 1.0.0.3 Changelog~
+
+Governor Gibs & TheRedstoneBro's dev bags are now properly sold by Alphakip.
+
+Alphakip will only spawn in Expert Mode now.
+
 ~Update 1.0 Changelog~
 
 1. Chaos is Unleashed

@@ -80,6 +80,14 @@ namespace AAMod.NPCs.TownNPCs
 			return chat;
 		}
 
+		public override void PostAI()
+		{
+			if (!Main.expertMode)
+			{
+				npc.life = 0;
+				npc.active = false;
+			}
+		}
 
 		public override void SetChatButtons(ref string button, ref string button2)
 		{
@@ -155,6 +163,14 @@ namespace AAMod.NPCs.TownNPCs
 				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Eliza.LizBag>());
+				shop.item[nextSlot].shopCustomPrice = new int?(25);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Moon.MoonBag>());
+				shop.item[nextSlot].shopCustomPrice = new int?(25);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Gibs.GibsBag>());
 				shop.item[nextSlot].shopCustomPrice = new int?(25);
 				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
 				nextSlot++;
