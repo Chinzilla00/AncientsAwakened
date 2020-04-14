@@ -2,9 +2,7 @@ The Ancients have Awakened. Chaos reigns, storms ravage, and reality tears at th
 
 **Don't forget to download Base Mod! It's required for this mod because I'm a shitty coder without it ;w; You can find it on the mod browser.**
 
-**NOTE 1: This mod is still in beta. I'm still doing my best to iron out bugs and add content.**
-
-**NOTE 2: Small worlds are heavilly discouraged with this mod. Things break because we have a lot of worldgen.**
+**NOTE: Small worlds are heavilly discouraged with this mod. Things break because we have a lot of worldgen.**
 
 This mod adds:
 
