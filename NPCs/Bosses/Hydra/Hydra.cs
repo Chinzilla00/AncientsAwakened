@@ -93,23 +93,46 @@ namespace AAMod.NPCs.Bosses.Hydra
 			{
 				if(!HeadsSpawned)
 				{
-					Head1 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead1"), 0)];
+                    headindex[0] = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead1"), 0);
+					Head1 = Main.npc[headindex[0]];
 					Head1.ai[0] = npc.whoAmI;
-					Head2 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead2"), 0)];
+
+                    headindex[1] = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead2"), 0);
+					Head2 = Main.npc[headindex[1]];
 					Head2.ai[0] = npc.whoAmI;
-					Head3 = Main.npc[NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead3"), 0)];
+
+                    headindex[2] = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("HydraHead3"), 0);
+					Head3 = Main.npc[headindex[2]];
 					Head3.ai[0] = npc.whoAmI;					
 
 					Head1.netUpdate = true;
 					Head2.netUpdate = true;
 					Head3.netUpdate = true;
 					HeadsSpawned = true;
+                    npc.netUpdate = true;
 				}
 			}
             else
 			{
 				if(!HeadsSpawned)
 				{
+                    if(headindex[0] != -1)
+                    {
+                        Head1 = Main.npc[headindex[0]];
+					    Head1.ai[0] = npc.whoAmI;
+                    }
+                    if(headindex[1] != -1)
+                    {
+                        Head2 = Main.npc[headindex[1]];
+					    Head1.ai[0] = npc.whoAmI;
+                    }
+                    if(headindex[2] != -1)
+                    {
+                        Head3 = Main.npc[headindex[2]];
+					    Head1.ai[0] = npc.whoAmI;
+                    }
+
+                    /*
 					int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default, 200f, null);
 					if (npcs != null && npcs.Length > 0)
 					{
@@ -133,6 +156,7 @@ namespace AAMod.NPCs.Bosses.Hydra
 							}
 						}
 					}
+                    */
 					if(Head1 != null && Head2 != null && Head3 != null)
 					{
 						HeadsSpawned = true;
@@ -242,12 +266,17 @@ namespace AAMod.NPCs.Bosses.Hydra
         }
 
         public float[] internalAI = new float[1];
+
+        public int[] headindex = {-1, -1, -1};
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
             if (Main.netMode == 2 || Main.dedServ)
             {
                 writer.Write(internalAI[0]);
+                writer.Write(headindex[0]);
+                writer.Write(headindex[1]);
+                writer.Write(headindex[2]);
             }
         }
 
@@ -257,6 +286,9 @@ namespace AAMod.NPCs.Bosses.Hydra
             if (Main.netMode == 1)
             {
                 internalAI[0] = reader.ReadFloat();
+                headindex[0] = reader.ReadInt();
+                headindex[1] = reader.ReadInt();
+                headindex[2] = reader.ReadInt();
             }
         }
 

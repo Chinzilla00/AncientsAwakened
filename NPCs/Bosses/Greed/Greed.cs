@@ -681,7 +681,14 @@ namespace AAMod.NPCs.Bosses.Greed
 
         public override bool StrikeNPC(ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
-            if(truehit) damage *= .05f; truehit = false;
+            if(!truehit)
+            {
+                damage *= .05f;
+            }
+            else
+            {
+                truehit = false;
+            }
             return true;
         }
 

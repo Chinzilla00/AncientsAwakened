@@ -5059,10 +5059,10 @@ ItemTooltip.CCRuneBookPage=根据你的召唤栏召唤符文\n玩家有1个召�
 // AAMod.Items.Vanity.CC.Shiny
 
 
-ItemName.ShinyCCHood=惧月教徒面具
+ItemName.ShinyCCHood=煞月教徒面具
 ItemTooltip.ShinyCCHood=一副蜥蜴狂徒的面具\n“非常适合冒充远古觉醒的开发者!”
 
-ItemName.ShinyCCRobe=惧月教徒长袍
+ItemName.ShinyCCRobe=煞月教徒长袍
 ItemTooltip.ShinyCCRobe=一套蜥蜴狂徒的长袍\n“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Charlie
@@ -6826,6 +6826,7 @@ Common.ChaosSigilFalse1=只有蓝色印迹在发光...
 Common.ChaosSigilFalse2=只有红色印迹在发光...
 Common.ChaosSigilFalse3=哈!我也希望有两个我能把你干翻!
 Common.ChaosSigilFalse4=混沌印迹发着光, 混沌神坛的图像在你的脑海中闪现
+Common.ChaosSigilFalse5=印迹没有生效
 Common.ChaosSigilTrue1=大错特错, 我的孩子...
 Common.ChaosSigilTrue2=哈? ...又来. . ? 好, 让我们把这事安排的明明白白
 
