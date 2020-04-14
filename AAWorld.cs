@@ -1215,7 +1215,7 @@ namespace AAMod
                             {
                                 if (Vector2.Distance(new Vector2(X, Y), new Vector2(x, y)) <= radius) //Checks if coords are within a circle position
                                 {
-                                    WorldGen.PlaceTile(x, y, ModContent.TileType<RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
+                                    WorldGen.PlaceTile(x, y, ModContent.TileType<Tiles.Ore.RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
                                 }
                             }
                         }
