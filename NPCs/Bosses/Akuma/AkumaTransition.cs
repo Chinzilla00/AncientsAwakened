@@ -11,7 +11,7 @@ namespace AAMod.NPCs.Bosses.Akuma
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Soul Of Fury");
-            Main.npcFrameCount[npc.type] = 6;
+            Main.npcFrameCount[npc.type] = 8;
             Terraria.ID.NPCID.Sets.TechnicallyABoss[npc.type] = true;
         }
         public override void SetDefaults()
@@ -63,7 +63,7 @@ namespace AAMod.NPCs.Bosses.Akuma
                         npc.frameCounter = 0;
                         npc.frame.Y += 52;
                     }
-                    if (npc.frame.Y > 52 * 5)
+                    if (npc.frame.Y > 52 * 7)
                     {
                         npc.frame.Y = 0;
                     }
