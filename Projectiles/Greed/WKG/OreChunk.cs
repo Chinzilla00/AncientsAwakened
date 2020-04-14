@@ -909,6 +909,7 @@ namespace AAMod.Projectiles.Greed.WKG
 						num16 *= num19;
 						int num20 = Projectile.NewProjectile(num13, num14, num15, num16, num18, projectile.damage, 5f, projectile.owner, 0f, 0f);
 						Main.projectile[num20].ranged = true;
+                        Main.projectile[num20].noDropItem = true;
 					}
                 }
                 else if(k == ModSupport.GetModItem("CalamityMod", "ChaoticOre").item.type)

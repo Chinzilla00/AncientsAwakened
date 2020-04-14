@@ -324,14 +324,20 @@ namespace AAMod.NPCs.Bosses.Equinox
                 npc.TargetClosest(false);
                 npc.velocity = new Vector2(internalAI[5], internalAI[6]);
                 
-                if(internalAI[2] < 90)
+                if(internalAI[2] < 120)
                 {
                     Vector2 newvelocity = npc.velocity + Vector2.Normalize(npc.velocity.RotatedBy((float)Math.PI/2)) * 0.58f;
                     npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
                     npc.velocity = Vector2.Normalize(newvelocity) * 16f;
                 }
+                else
+                {
+                    Vector2 newvelocity = npc.velocity + Vector2.Normalize(npc.velocity.RotatedBy((float)Math.PI/2)) * 0.03625f;
+                    npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
+                    npc.velocity = Vector2.Normalize(newvelocity) * 4f;
+                }
 
-                if (internalAI[2]++ == 120)
+                if (internalAI[2]++ == 90)
                 {
                     for (int i = 0; i < Main.maxNPCs; i+=2)
                     {
@@ -345,11 +351,8 @@ namespace AAMod.NPCs.Bosses.Equinox
                         }
                     }
                 }
-                if (internalAI[2] >= 120)
+                if (internalAI[2] >= 90)
                 {
-                    Vector2 newvelocity = npc.velocity + Vector2.Normalize(npc.velocity.RotatedBy((float)Math.PI/2)) * 0.039f;
-                    npc.rotation = (float)Math.Atan2(npc.velocity.Y, npc.velocity.X) + 1.57f;
-                    npc.velocity = Vector2.Normalize(newvelocity) * 4f;
                     for(int deathRay = 0; deathRay < Main.maxProjectiles; deathRay++)
                     {
                         if(Main.projectile[deathRay].active && Main.projectile[deathRay].type == mod.ProjectileType("NightclawerDeathraySmall") || Main.projectile[deathRay].type == mod.ProjectileType("NightclawerDeathray") && Main.projectile[deathRay].ai[1] == npc.whoAmI)

@@ -101,7 +101,7 @@ namespace AAMod.NPCs.Bosses.Equinox
             if (rotValue == -1f) rotValue = npc.ai[3];
             rotValue += 0.05f;
             while (rotValue > (float)Math.PI * 2f) rotValue -= (float)Math.PI * 2f;
-            npc.Center = BaseUtility.RotateVector(NC.Center, NC.Center + new Vector2(140f, 0f), rotValue);
+            npc.Center = BaseUtility.RotateVector(NC.position, NC.position + new Vector2(140f, 0f), rotValue);
 
             int aiTimerFire = 0;
 
