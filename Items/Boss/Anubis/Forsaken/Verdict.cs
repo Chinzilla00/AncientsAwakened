@@ -16,7 +16,7 @@ Creates 2 forsaken phantom blades which hit enemy horizontally as well");
 
 		public override void SetDefaults()
 		{
-			item.damage = 120;
+			item.damage = 80;
 			item.melee = true;
 			item.crit = 10;
 			item.width = 96;

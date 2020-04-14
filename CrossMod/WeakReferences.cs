@@ -451,6 +451,38 @@ namespace AAMod.Globals
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("ZeroProtocol"));
+
+                // Shen
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/ShenBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/ShenBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/ShenBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Purple,
+                    Color.Purple,
+                    Color.Purple);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Shen"));
+
+                //Shen Awakened
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/ShenABarHead"),
+                    AAMod.instance.GetTexture("Healthbars/ShenABarBody"),
+                    AAMod.instance.GetTexture("Healthbars/ShenABarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Silver,
+                    Color.Silver,
+                    Color.Silver);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("ShenA"));
             }
         }
 
