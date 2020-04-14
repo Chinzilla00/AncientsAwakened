@@ -52,4 +52,15 @@ namespace AAMod
             Filters.Scene["Shockwave"].Deactivate();
         }
     }
+
+    public class ShockwaveWorld : ModWorld
+    {
+        public override void PostUpdate()
+        {
+            if (Filters.Scene["Shockwave"].IsActive() && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<ShockwaveBoom>()))
+            {
+                Filters.Scene["Shockwave"].Deactivate();
+            }
+        }
+    }
 }
