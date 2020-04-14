@@ -2974,6 +2974,11 @@ ItemTooltip.OmegaVolley=发射一排极其快速而又精准的声波子弹\n每
 
 // AAMod.Items.BossSummons
 
+ItemName.GlowingMasshroom=发光蘑菇丛
+ItemTooltip.GlowingMasshroom=召唤大量真菌帝\n只能在发光蘑菇地中使用
+
+ItemName.Masshroom=蘑菇丛
+ItemTooltip.Masshroom=召唤大量赤孢皇\n只能在白天使用
 
 ItemName.ConfusingMushroom=困惑蘑菇
 ItemTooltip.ConfusingMushroom=召唤真菌帝\n只能在荧光蘑菇地中使用
@@ -5435,6 +5440,8 @@ ItemName.ZeroMask=零械面具
 // AAMod.Items.Walls
 
 ItemName.AbyssiumWall=潭渊砖墙
+
+ItemName.CovetiteBrickWall=欲晶砖墙
 
 ItemName.DarkmatterWall=暗物质砖墙
 

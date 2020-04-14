@@ -29,6 +29,10 @@ namespace AAMod.Projectiles.Greed
             {
                 projectile.magic = true;
             }
+            else if (projectile.ai[1] == 1)
+            {
+                projectile.ranged = true;
+            }
             else
             {
                 projectile.minion = true;

@@ -124,7 +124,7 @@ namespace AAMod.Projectiles.Greed.WKG
                         vector17 *= Main.rand.Next(70, 91) * 0.1f;
                         vector17.X += Main.rand.Next(-30, 31) * 0.04f;
                         vector17.Y += Main.rand.Next(-30, 31) * 0.03f;
-                        Projectile.NewProjectile(projectile.position.X, projectile.position.Y, vector17.X, vector17.Y, 523, projectile.damage, 0, Main.myPlayer, Main.rand.Next(20), 0f);
+                        NewProjectile(projectile.position.X, projectile.position.Y, vector17.X, vector17.Y, 523, projectile.damage, 0, Main.myPlayer, Main.rand.Next(20), 0f);
                     }
                 }
             }
@@ -149,7 +149,7 @@ namespace AAMod.Projectiles.Greed.WKG
                         num825 *= num826;
                         num824 *= 1f + Main.rand.Next(-30, 31) * 0.01f;
                         num825 *= 1f + Main.rand.Next(-30, 31) * 0.01f;
-                        int p = Projectile.NewProjectile(vector109.X, vector109.Y, num824, num825, Main.rand.Next(326, 329), projectile.damage, 0f, Main.myPlayer, 0f, 0f);
+                        int p = NewProjectile(vector109.X, vector109.Y, num824, num825, Main.rand.Next(326, 329), projectile.damage, 0f, Main.myPlayer, 0f, 0f);
                         Main.projectile[p].ranged = true;
                         Main.projectile[p].hostile = false;
                         Main.projectile[p].friendly = true;
@@ -233,7 +233,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     if(projectile.localAI[0]++ >= 15f)
                     {
                         projectile.localAI[0] = 0f;
-                        Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<DaybreakBlast>(), projectile.damage, projectile.knockBack * 3, Main.myPlayer, 0, 0);
+                        NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<DaybreakBlast>(), projectile.damage, projectile.knockBack * 3, Main.myPlayer, 0, 0);
                     }
                     else if(projectile.localAI[0] <= 0f)
                     {
@@ -295,7 +295,7 @@ namespace AAMod.Projectiles.Greed.WKG
                         float ai = Main.rand.Next(100);
                         Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(3.1415f * 2));
                         Vector2 vector84 = Vector2.Normalize(vector83.RotatedByRandom(0.8)) * 14f;
-                        int id = Projectile.NewProjectile(projectile.position.X + projectile.velocity.X, projectile.position.Y  + projectile.velocity.Y, vector84.X * 2, vector84.Y * 2, ModContent.ProjectileType<Zero.ZeroTaze>(), (int) (projectile.damage * .05f), 0f, Main.myPlayer, vector83.ToRotation(), ai);
+                        int id = NewProjectile(projectile.position.X + projectile.velocity.X, projectile.position.Y  + projectile.velocity.Y, vector84.X * 2, vector84.Y * 2, ModContent.ProjectileType<Zero.ZeroTaze>(), (int) (projectile.damage * .05f), 0f, Main.myPlayer, vector83.ToRotation(), ai);
                         Main.projectile[id].timeLeft = 30;
                     }
                 }
@@ -315,7 +315,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     if (Main.rand.Next(30) == 0)
                     {
                         int projtype = ModSupport.GetModProjectile("CalamityMod", "LavaChunk").projectile.type;
-                        int p = Projectile.NewProjectile(projectile.Center.X + projectile.velocity.X, projectile.Center.Y + projectile.velocity.Y, 0f, 0.1f, projtype, projectile.damage, 2f, projectile.owner, 0f, 0f);
+                        int p = NewProjectile(projectile.Center.X + projectile.velocity.X, projectile.Center.Y + projectile.velocity.Y, 0f, 0.1f, projtype, projectile.damage, 2f, projectile.owner, 0f, 0f);
                         Main.projectile[p].ranged = true;
                         Main.projectile[p].hostile = false;
                         Main.projectile[p].friendly = true;
@@ -355,7 +355,7 @@ namespace AAMod.Projectiles.Greed.WKG
                             num19 = num17 / num19;
                             num15 *= num19;
                             num16 *= num19;
-                            int num20 = Projectile.NewProjectile(num13, num14, num15, num16, num18, projectile.damage, 5f, projectile.owner, 0f, 0f);
+                            int num20 = NewProjectile(num13, num14, num15, num16, num18, projectile.damage, 5f, projectile.owner, 0f, 0f);
                             Main.projectile[num20].ranged = true;
                         }
                     }
@@ -451,7 +451,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     vector17 *= Main.rand.Next(70, 91) * 0.1f;
                     vector17.X += Main.rand.Next(-30, 31) * 0.04f;
                     vector17.Y += Main.rand.Next(-30, 31) * 0.03f;
-                    int id = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, vector17.X, vector17.Y, 523, projectile.damage, 0, Main.myPlayer, Main.rand.Next(20), 0f);
+                    int id = NewProjectile(projectile.position.X, projectile.position.Y, vector17.X, vector17.Y, 523, projectile.damage, 0, Main.myPlayer, Main.rand.Next(20), 0f);
                     Main.projectile[id].tileCollide = false;
                 }
             }
@@ -459,16 +459,16 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 for (int s = 0; s < 3; s++)
                 {
-                    Projectile.NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<OreSpores>(), projectile.damage, projectile.knockBack, Main.myPlayer, 0, s);
+                    NewProjectile(projectile.position, Vector2.Zero, ModContent.ProjectileType<OreSpores>(), projectile.damage, projectile.knockBack, Main.myPlayer, 0, s);
                 }
             }
             else if (projectile.ai[1] == ItemID.LunarOre)
             {
-                Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<LuminiteBlast>(), projectile.damage, projectile.knockBack, Main.myPlayer, 0, 0);
+                NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<LuminiteBlast>(), projectile.damage, projectile.knockBack, Main.myPlayer, 0, 0);
             }
             else if (projectile.ai[1] == mod.ItemType("DaybreakIncineriteOre"))
             {
-                Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<DaybreakBlast>(), projectile.damage, projectile.knockBack * 3, Main.myPlayer, 0, 0);
+                NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<DaybreakBlast>(), projectile.damage, projectile.knockBack * 3, Main.myPlayer, 0, 0);
             }
             else if (projectile.ai[1] == mod.ItemType("Apocalyptite"))
             {
@@ -476,7 +476,7 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     int x = Main.rand.Next(-6, 6);
                     int y = -Main.rand.Next(3, 5);
-                    int p = Projectile.NewProjectile(projectile.position, new Vector2(x, y), ModContent.ProjectileType<AFrag>(), projectile.damage, 0, projectile.owner, 0, Main.rand.Next(23));
+                    int p = NewProjectile(projectile.position, new Vector2(x, y), ModContent.ProjectileType<AFrag>(), projectile.damage, 0, projectile.owner, 0, Main.rand.Next(23));
                     Main.projectile[p].Center = projectile.Center;
                 }
             }
@@ -493,8 +493,8 @@ namespace AAMod.Projectiles.Greed.WKG
                         float num41 = Main.rand.Next(1, 7);
                         float num42 = Main.rand.Next(1, 7);
                         double num43 = num37 + num38 * (num40 + num40 * num40) / 2.0 + 32f * num40;
-                        int num44 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(num43) * 5.0), (float)(Math.Cos(num43) * 5.0) + num41, 90, projectile.damage, 1f, projectile.owner, 0f, 0f);
-                        int num45 = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-(float)Math.Sin(num43) * 5.0), (float)(-(float)Math.Cos(num43) * 5.0) + num42, 90, projectile.damage, 1f, projectile.owner, 0f, 0f);
+                        int num44 = NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(Math.Sin(num43) * 5.0), (float)(Math.Cos(num43) * 5.0) + num41, 90, projectile.damage, 1f, projectile.owner, 0f, 0f);
+                        int num45 = NewProjectile(projectile.Center.X, projectile.Center.Y, (float)(-(float)Math.Sin(num43) * 5.0), (float)(-(float)Math.Cos(num43) * 5.0) + num42, 90, projectile.damage, 1f, projectile.owner, 0f, 0f);
                         Main.projectile[num44].ranged = true;
                         Main.projectile[num45].ranged = true;
                     }
@@ -504,7 +504,7 @@ namespace AAMod.Projectiles.Greed.WKG
                 {
                     Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 74, 1f, 0f);
                     int projtype = ModSupport.GetModProjectile("CalamityMod", "ChaosBlaze").projectile.type;
-					int p = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, projtype, projectile.damage / 3, 1f, projectile.owner, 0f, 0f);
+					int p = NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, projtype, projectile.damage / 3, 1f, projectile.owner, 0f, 0f);
                     Main.projectile[p].ranged = true;
 					return;
                 }
@@ -517,7 +517,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     for (int m = 0; m < 6; m++)
                     {
                         Vector2 vector6 = Vector2.Normalize(new Vector2(num35 + Main.rand.Next(-4, 4), num37 + Main.rand.Next(-4, 4))) * Main.rand.Next(6, 12);
-                        int num41 = Projectile.NewProjectile(vector5.X, vector5.Y, vector6.X, vector6.Y, num40, projectile.damage, 0f, projectile.owner, 1f, 0f);
+                        int num41 = NewProjectile(vector5.X, vector5.Y, vector6.X, vector6.Y, num40, projectile.damage, 0f, projectile.owner, 1f, 0f);
                         Main.projectile[num41].timeLeft = 300;
                         Main.projectile[num41].tileCollide = false;
                         Main.projectile[num41].hostile = false;
@@ -533,8 +533,8 @@ namespace AAMod.Projectiles.Greed.WKG
                     {
                         int projtype = ModSupport.GetModProjectile("CalamityMod", "BrimstoneBarrage").projectile.type;
                         double num47 = num44 + num45 * (n + n * n) / 2.0 + 32f * n + 0.5f * Main.rand.NextDouble();
-                        int id1 = Projectile.NewProjectile(vector5.X, vector5.Y, (float)(Math.Sin(num47) * num46), (float)(Math.Cos(num47) * num46), projtype, projectile.damage, 0f, projectile.owner, 1f, 0f);
-                        int id2 = Projectile.NewProjectile(vector5.X, vector5.Y, (float)(-(float)Math.Sin(num47) * (double)num46), (float)(-(float)Math.Cos(num47) * (double)num46), projtype, projectile.damage, 0f, projectile.owner, 1f, 0f);
+                        int id1 = NewProjectile(vector5.X, vector5.Y, (float)(Math.Sin(num47) * num46), (float)(Math.Cos(num47) * num46), projtype, projectile.damage, 0f, projectile.owner, 1f, 0f);
+                        int id2 = NewProjectile(vector5.X, vector5.Y, (float)(-(float)Math.Sin(num47) * (double)num46), (float)(-(float)Math.Cos(num47) * (double)num46), projtype, projectile.damage, 0f, projectile.owner, 1f, 0f);
                         Main.projectile[id1].hostile = false;
                         Main.projectile[id1].friendly = true;
                         Main.projectile[id1].ranged = true;
@@ -547,7 +547,7 @@ namespace AAMod.Projectiles.Greed.WKG
                 else if(projectile.ai[1] == ModSupport.GetModItem("CalamityMod", "PerennialOre").item.type)
                 {
                     int projtype = ModSupport.GetModProjectile("CalamityMod", "ReaverBlast").projectile.type;
-                    int id = Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, projtype, projectile.damage, 0f, projectile.owner, 0f, 0f);
+                    int id = NewProjectile(projectile.Center.X, projectile.Center.Y, 0f, 0f, projtype, projectile.damage, 0f, projectile.owner, 0f, 0f);
                     Main.projectile[id].ranged = true;
                     return;
                 }
@@ -563,7 +563,7 @@ namespace AAMod.Projectiles.Greed.WKG
 						}
 						vector3.Normalize();
 						vector3 *= Main.rand.Next(70, 101) * 0.1f;
-						int num22 = Projectile.NewProjectile(projectile.position.X + projectile.width / 2, projectile.position.Y + projectile.height / 2, vector3.X, vector3.Y, 206, projectile.damage / 2, 0f, projectile.owner, 0f, 0f);
+						int num22 = NewProjectile(projectile.position.X + projectile.width / 2, projectile.position.Y + projectile.height / 2, vector3.X, vector3.Y, 206, projectile.damage / 2, 0f, projectile.owner, 0f, 0f);
 						Main.projectile[num22].magic = false;
                         Main.projectile[num22].ranged = true;
 						Main.projectile[num22].netUpdate = true;
@@ -682,7 +682,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     return;
                 }
                 Main.player[Main.myPlayer].lifeSteal -= (float)(damage * 0.02);
-                Projectile.NewProjectile(target.position.X, target.position.Y, 0f, 0f, 305, 0, 0f, projectile.owner, projectile.owner, (float)(damage * 0.02));
+                NewProjectile(target.position.X, target.position.Y, 0f, 0f, 305, 0, 0f, projectile.owner, projectile.owner, (float)(damage * 0.02));
                 if (Main.rand.Next(5) == 0)
                 {
                     target.AddBuff(BuffID.Confused, 180);
@@ -706,7 +706,7 @@ namespace AAMod.Projectiles.Greed.WKG
                         num825 *= num826;
                         num824 *= 1f + Main.rand.Next(-30, 31) * 0.01f;
                         num825 *= 1f + Main.rand.Next(-30, 31) * 0.01f;
-                        int p = Projectile.NewProjectile(vector109.X, vector109.Y, num824, num825, Main.rand.Next(326, 329), damage, 0f, Main.myPlayer, 0f, 0f);
+                        int p = NewProjectile(vector109.X, vector109.Y, num824, num825, Main.rand.Next(326, 329), damage, 0f, Main.myPlayer, 0f, 0f);
                         Main.projectile[p].ranged = true;
                         Main.projectile[p].hostile = false;
                         Main.projectile[p].friendly = true;
@@ -727,7 +727,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     {
                         shoot = new Vector2((float)Math.Sin(shootid * 0.125f * Math.PI), (float)Math.Cos(shootid * 0.125f * Math.PI));
                         shoot *= 10f;
-                        int p = Projectile.NewProjectile(projectile.position.X, projectile.position.Y, shoot.X, shoot.Y, projType, damage/2, 5, Main.myPlayer, 0, mod.ItemType("DynaskullOre"));
+                        int p = NewProjectile(projectile.position.X, projectile.position.Y, shoot.X, shoot.Y, projType, damage/2, 5, Main.myPlayer, 0, mod.ItemType("DynaskullOre"));
                         Main.projectile[p].ai[0] = 1f;
                         Main.projectile[p].scale /= 2;
                         Main.projectile[p].width /= 2;
@@ -751,7 +751,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     num825 *= num826;
                     num824 *= 1f + Main.rand.Next(-30, 31) * 0.01f;
                     num825 *= 1f + Main.rand.Next(-30, 31) * 0.01f;
-                    int p = Projectile.NewProjectile(vector109.X, vector109.Y, num824, num825, Main.rand.Next(326, 329), damage, 0f, Main.myPlayer, 0f, 0f);
+                    int p = NewProjectile(vector109.X, vector109.Y, num824, num825, Main.rand.Next(326, 329), damage, 0f, Main.myPlayer, 0f, 0f);
                     Main.projectile[p].ranged = true;
                     Main.projectile[p].hostile = false;
                     Main.projectile[p].friendly = true;
@@ -767,7 +767,7 @@ namespace AAMod.Projectiles.Greed.WKG
             else if(k == ItemID.PalladiumOre)
             {
                 if(projectile.damage / 2 > 100f)
-                Projectile.NewProjectile(projectile.position.X, projectile.position.Y, -projectile.velocity.X, -projectile.velocity.Y, mod.ProjectileType("OreChunk"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0f, ItemID.PalladiumOre);
+                NewProjectile(projectile.position.X, projectile.position.Y, -projectile.velocity.X, -projectile.velocity.Y, mod.ProjectileType("OreChunk"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0f, ItemID.PalladiumOre);
             }
             else if(k == ItemID.MythrilOre || k == ItemID.OrichalcumOre)
             {
@@ -802,14 +802,14 @@ namespace AAMod.Projectiles.Greed.WKG
                 Player player = Main.player[projectile.owner];
                 if(projectile.ai[0] < 2f)
                 {
-                    int p = Projectile.NewProjectile(player.Center.X, player.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("OreChunk"), projectile.damage, projectile.knockBack, projectile.owner, ++projectile.ai[0], mod.ItemType("HallowedOre"));
+                    int p = NewProjectile(player.Center.X, player.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("OreChunk"), projectile.damage, projectile.knockBack, projectile.owner, ++projectile.ai[0], mod.ItemType("HallowedOre"));
                 }
             }
             else if(k == ItemID.ChlorophyteOre)
             {
                 for(int shootid = 0; shootid < 4; shootid++)
                 {
-                    Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X * Main.rand.Next(-3, 3) * 0.1f, projectile.velocity.Y * Main.rand.Next(-3, 3) * 0.1f, 228, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
+                    NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X * Main.rand.Next(-3, 3) * 0.1f, projectile.velocity.Y * Main.rand.Next(-3, 3) * 0.1f, 228, projectile.damage, projectile.knockBack, projectile.owner, 0f, 0f);
                 }
                 target.AddBuff(BuffID.Poisoned, 240);
                 target.AddBuff(BuffID.Venom, 240);
@@ -822,14 +822,51 @@ namespace AAMod.Projectiles.Greed.WKG
                     vector = Vector2.Normalize(vector);
                     for(int newone = -1; newone <= 1; newone += 2)
                     {
-                        int p = Projectile.NewProjectile(projectile.Center.X + vector.X * 40f * newone, projectile.Center.Y + vector.Y * 40f * newone, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("OreChunk"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0f, ItemID.LunarOre);
+                        int p = NewProjectile(projectile.Center.X + vector.X * 40f * newone, projectile.Center.Y + vector.Y * 40f * newone, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("OreChunk"), projectile.damage / 2, projectile.knockBack, projectile.owner, 0f, ItemID.LunarOre);
                         Main.projectile[p].scale /= 2;
                         Main.projectile[p].width /= 2;
                         Main.projectile[p].height /= 2;
                         Main.projectile[p].ai[0] = 1f;
                     }
                 }
-                if(projectile.ai[0] != 1f) Projectile.NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<LuminiteBlast>(), (int)(projectile.damage / 2.5), projectile.knockBack, projectile.owner, 0, 0);
+                if(projectile.ai[0] != 1f) NewProjectile(projectile.Center, Vector2.Zero, ModContent.ProjectileType<LuminiteBlast>(), (int)(projectile.damage / 2.5), projectile.knockBack, projectile.owner, 0, 0);
+            }
+            else if(k == mod.ItemType("SkyCrystal"))
+            {
+                int num90 = 3;
+                if (Main.rand.Next(3) == 0)
+                {
+                    num90 ++;
+                }
+                for (int num91 = 0; num91 < num90; num91++)
+                {
+                    Vector2 vector2 = new Vector2(projectile.position.X + projectile.width * 0.5f + Main.rand.Next(201) * -(float)projectile.direction + (projectile.Center.X - projectile.position.X), projectile.Center.Y - 600f);
+                    vector2.X = (vector2.X * 10f + projectile.Center.X) / 11f + Main.rand.Next(-100, 101);
+                    vector2.Y -= 150 * num91;
+                    float num82 = projectile.Center.X - vector2.X;
+                    float num83 = projectile.Center.Y - vector2.Y;
+                    if (num83 < 0f)
+                    {
+                        num83 *= -1f;
+                    }
+                    if (num83 < 20f)
+                    {
+                        num83 = 20f;
+                    }
+                    float num92 = num82 + Main.rand.Next(-40, 41) * 0.03f;
+                    float speedY2 = num83 + Main.rand.Next(-40, 41) * 0.03f;
+                    num92 *= Main.rand.Next(75, 150) * 0.01f;
+                    vector2.X += Main.rand.Next(-50, 51);
+                    Vector2 speedfinal = Vector2.Normalize(new Vector2(num92, speedY2)) * projectile.velocity.Length();
+                    NewProjectile(vector2.X, vector2.Y, speedfinal.X, speedfinal.Y, mod.ProjectileType("SeraphFeather"), projectile.damage, 0, projectile.owner, 0f, 1f);
+                }
+            }
+            else if(k == mod.ItemType("CovetiteOre"))
+            {
+                for(int i = 0; i < 12; i++)
+                {
+                    NewProjectile(projectile.position.X + 30f, projectile.position.Y + 30f, Main.rand.Next(-3, 4), Main.rand.Next(-3, 10), ModContent.ProjectileType<Gold>(), projectile.damage / 2, 1, projectile.owner, 0, 1);
+                }
             }
             else if(k == mod.ItemType("DarkmatterOre"))
             {
@@ -838,7 +875,7 @@ namespace AAMod.Projectiles.Greed.WKG
             else if(k == mod.ItemType("DaybreakIncineriteOre"))
             {
                 target.AddBuff(BuffID.Daybreak, 400);
-                Projectile.NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("DaybreakBlast"), (int)(projectile.damage / 2.5), projectile.knockBack, projectile.owner, 0f, 0f);
+                NewProjectile(projectile.Center.X, projectile.Center.Y, projectile.velocity.X, projectile.velocity.Y, mod.ProjectileType("DaybreakBlast"), (int)(projectile.damage / 2.5), projectile.knockBack, projectile.owner, 0f, 0f);
                 projectile.ai[0] = 1f;
             }
             else if(k == mod.ItemType("EventideAbyssiumOre"))
@@ -867,7 +904,7 @@ namespace AAMod.Projectiles.Greed.WKG
 						num3 *= num6;
 						num4 *= num6;
                         int projtype = ModSupport.GetModProjectile("CalamityMod", "StickyFeatherAero").projectile.type;
-						Projectile.NewProjectile(num, num2, num3, num4, projtype, projectile.damage, 1f, projectile.owner, 0f, 0f);
+						NewProjectile(num, num2, num3, num4, projtype, projectile.damage, 1f, projectile.owner, 0f, 0f);
 					}
                 }
                 else if(k == ModSupport.GetModItem("CalamityMod", "CryonicOre").item.type)
@@ -907,7 +944,7 @@ namespace AAMod.Projectiles.Greed.WKG
 						num19 = num17 / num19;
 						num15 *= num19;
 						num16 *= num19;
-						int num20 = Projectile.NewProjectile(num13, num14, num15, num16, num18, projectile.damage, 5f, projectile.owner, 0f, 0f);
+						int num20 = NewProjectile(num13, num14, num15, num16, num18, projectile.damage, 5f, projectile.owner, 0f, 0f);
 						Main.projectile[num20].ranged = true;
                         Main.projectile[num20].noDropItem = true;
 					}
@@ -932,11 +969,11 @@ namespace AAMod.Projectiles.Greed.WKG
                         float x2 = Utils.NextBool(Main.rand, 2) ? (projectile.Center.X + 100f) : (projectile.Center.X - 100f);
                         Vector2 vector5 = new Vector2(x2, projectile.Center.Y + Main.rand.Next(-100, 101));
                         double num51 = num47 + num48 * (num50 + num50 * num50) / 2.0 + 32f * num50;
-                        int num52 = Projectile.NewProjectile(vector5.X, vector5.Y, (float)(Math.Sin(num51) * 5.0), (float)(Math.Cos(num51) * 5.0), 567, projectile.damage, 2f, projectile.owner, 0f, 0f);
+                        int num52 = NewProjectile(vector5.X, vector5.Y, (float)(Math.Sin(num51) * 5.0), (float)(Math.Cos(num51) * 5.0), 567, projectile.damage, 2f, projectile.owner, 0f, 0f);
                         Main.projectile[num52].ranged = true;
                         Main.projectile[num52].usesLocalNPCImmunity = true;
                         Main.projectile[num52].localNPCHitCooldown = 60;
-                        int num53 = Projectile.NewProjectile(vector5.X, vector5.Y, (float)(-(float)Math.Sin(num51) * 5.0), (float)(-(float)Math.Cos(num51) * 5.0), 568, projectile.damage, 2f, projectile.owner, 0f, 0f);
+                        int num53 = NewProjectile(vector5.X, vector5.Y, (float)(-(float)Math.Sin(num51) * 5.0), (float)(-(float)Math.Cos(num51) * 5.0), 568, projectile.damage, 2f, projectile.owner, 0f, 0f);
                         Main.projectile[num53].ranged = true;
                         Main.projectile[num53].usesLocalNPCImmunity = true;
                         Main.projectile[num53].localNPCHitCooldown = 60;
@@ -954,7 +991,7 @@ namespace AAMod.Projectiles.Greed.WKG
                         num7 = 14f / num7;
                         num5 *= num7;
                         num6 *= num7;
-                        int id = Projectile.NewProjectile(Main.player[projectile.owner].position.X, Main.player[projectile.owner].position.Y, num5, num6, 206, projectile.damage / 2, projectile.knockBack, projectile.owner, 0f, 0f);
+                        int id = NewProjectile(Main.player[projectile.owner].position.X, Main.player[projectile.owner].position.Y, num5, num6, 206, projectile.damage / 2, projectile.knockBack, projectile.owner, 0f, 0f);
                         Main.projectile[id].ranged = true;
                     }
                     if(!target.SpawnedFromStatue && (target.damage > 5 || target.boss) && target.lifeMax > 100 && Main.rand.Next(5) == 0)
@@ -1014,6 +1051,24 @@ namespace AAMod.Projectiles.Greed.WKG
                 }
                 else if(k == ModSupport.GetModItem("CalamityMod", "AuricOre").item.type)
                 {
+                    float num2 = (float)Main.rand.Next(22, 30);
+                    int num6 = 4;
+                    for (int i = 0; i < num6; i++)
+                    {
+                        Vector2 vector = projectile.Center;
+                        vector.X = (vector.X + projectile.Center.X) / 2f;
+                        vector.Y -= (float)(100 * i);
+                        float num3 = projectile.position.X - vector.X;
+                        float num4 = projectile.position.X - vector.Y;
+                        float num5 = (float)Math.Sqrt((double)(num3 * num3 + num4 * num4));
+                        num5 = num2 / num5;
+                        num3 *= num5;
+                        num4 *= num5;
+                        float num7 = num3 + (float)Main.rand.Next(-360, 361) * 0.02f;
+                        float num8 = num4 + (float)Main.rand.Next(-360, 361) * 0.02f;
+                        int projtype = ModSupport.GetModProjectile("CalamityMod", "ElementBall").projectile.type;
+                        NewProjectile(vector.X, vector.Y, num7, num8, projtype, projectile.damage / 2, projectile.knockBack, projectile.owner, 0f, (float)Main.rand.Next(3));
+                    }
                 }
             }
             else
@@ -1469,6 +1524,34 @@ namespace AAMod.Projectiles.Greed.WKG
                     goto case 0;
             }
 
+        }
+
+        private int NewProjectile(float X, float Y, float SpeedX, float SpeedY, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f)
+        {
+            int proj = Projectile.NewProjectile(X, Y, SpeedX, SpeedY, Type, Damage, KnockBack, Owner, ai0, ai1);
+            Main.projectile[proj].hostile = false;
+            Main.projectile[proj].friendly = true;
+            Main.projectile[proj].melee = false;
+            Main.projectile[proj].ranged = true;
+            Main.projectile[proj].magic = false;
+            Main.projectile[proj].minion = false;
+            Main.projectile[proj].thrown = false;
+            Main.projectile[proj].sentry = false;
+            return proj;
+        }
+
+        private int NewProjectile(Vector2 position, Vector2 velocity, int Type, int Damage, float KnockBack, int Owner = 255, float ai0 = 0f, float ai1 = 0f)
+		{
+            int proj = Projectile.NewProjectile(position, velocity, Type, Damage, KnockBack, Owner, ai0, ai1);
+            Main.projectile[proj].hostile = false;
+            Main.projectile[proj].friendly = true;
+            Main.projectile[proj].melee = false;
+            Main.projectile[proj].ranged = true;
+            Main.projectile[proj].magic = false;
+            Main.projectile[proj].minion = false;
+            Main.projectile[proj].thrown = false;
+            Main.projectile[proj].sentry = false;
+            return proj;
         }
         private int HomeOnTarget()
         {
