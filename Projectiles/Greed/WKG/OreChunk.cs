@@ -289,7 +289,7 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 if((projectile.ai[0] ++) % 40 == 20)
                 {
-                    for(int i = 0; i < 6; i++)
+                    for(int i = 0; i < 3; i++)
                     {
                         Vector2 vector82 = new Vector2(projectile.velocity.X, projectile.velocity.Y);
                         float ai = Main.rand.Next(100);
