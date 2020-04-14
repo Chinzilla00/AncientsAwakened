@@ -1204,18 +1204,34 @@ namespace AAMod
                 {
                     RadiumOre = true;
                     if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedEquinoxInfo"), Color.Violet);
-                    for (int i = 0; i < Main.maxTilesX / 25; ++i)
+                    for (int i = 0; i < Main.maxTilesX / 50; ++i)
                     {
-                        int X = WorldGen.genRand.Next(Main.maxTilesX / 10 * 2, Main.maxTilesX / 10 * 8);
+                        int X = WorldGen.genRand.Next(Main.maxTilesX / 10 * 2, (int)(Main.maxTilesX / 10 * 4.5f));
                         int Y = WorldGen.genRand.Next(50, 150); //Y position, centre.
-                        int radius = WorldGen.genRand.Next(2, 5); //Radius.
+                        int radius = WorldGen.genRand.Next(2, 6); //Radius.
                         for (int x = X - radius; x <= X + radius; x++)
                         {
                             for (int y = Y - radius; y <= Y + radius; y++)
                             {
                                 if (Vector2.Distance(new Vector2(X, Y), new Vector2(x, y)) <= radius) //Checks if coords are within a circle position
                                 {
-                                    WorldGen.PlaceTile(x, y, ModContent.TileType<Tiles.Ore.RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
+                                    WorldGen.PlaceTile(x, y, ModContent.TileType<RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
+                                }
+                            }
+                        }
+                    }
+                    for (int i = 0; i < Main.maxTilesX / 50; ++i)
+                    {
+                        int X = WorldGen.genRand.Next((int)(Main.maxTilesX / 10 * 5.5f), Main.maxTilesX / 10 * 8);
+                        int Y = WorldGen.genRand.Next(50, 150); //Y position, centre.
+                        int radius = WorldGen.genRand.Next(2, 6); //Radius.
+                        for (int x = X - radius; x <= X + radius; x++)
+                        {
+                            for (int y = Y - radius; y <= Y + radius; y++)
+                            {
+                                if (Vector2.Distance(new Vector2(X, Y), new Vector2(x, y)) <= radius) //Checks if coords are within a circle position
+                                {
+                                    WorldGen.PlaceTile(x, y, ModContent.TileType<RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
                                 }
                             }
                         }
