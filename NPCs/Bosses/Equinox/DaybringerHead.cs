@@ -780,11 +780,13 @@ namespace AAMod.NPCs.Bosses.Equinox
 
         public override void ModifyHitByItem(Player player, Item item, ref int damage, ref float knockback, ref bool crit)
         {
+            MakeSegmentsImmune(npc, player.whoAmI);
             ModifyCritArea(npc, ref crit);
         }
 
         public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
         {
+            MakeSegmentsImmune(npc, projectile.owner);
             ModifyCritArea(npc, ref crit);
             if (projectile.penetrate != 1)
             {
@@ -821,16 +823,6 @@ namespace AAMod.NPCs.Bosses.Equinox
                 damage = 0;
                 npc.lifeRegen = 0;
             }
-        }
-
-        public override void OnHitByProjectile(Projectile projectile, int damage, float knockback, bool crit)
-        {
-            MakeSegmentsImmune(npc, projectile.owner);
-        }
-
-        public override void OnHitByItem(Player player, Item item, int damage, float knockback, bool crit)
-        {
-            MakeSegmentsImmune(npc, player.whoAmI);
         }
 
         public void MakeSegmentsImmune(NPC npc, int id)
