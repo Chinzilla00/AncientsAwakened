@@ -11,7 +11,8 @@ namespace AAMod.Tiles.Ore
         {
             Main.tileSolid[Type] = true;
             Main.tileBlockLight[Type] = false;
-            Main.tileSolid[Type] = true;
+            Main.tileSpelunker[Type] = true;
+            Main.tileValue[Type] = 825; 
             Main.tileBlendAll[Type] = false;
             soundType = 21;
             Main.tileLighted[Type] = true;
