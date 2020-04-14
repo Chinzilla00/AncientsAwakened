@@ -1,4 +1,5 @@
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Tools
 {
@@ -24,12 +25,24 @@ namespace AAMod.Items.Tools
 			item.useStyle = 5;
 			item.knockBack = 6;
 			item.value = 550000;
-			item.rare = 10;
             item.UseSound = SoundID.Item23;
             item.autoReuse = true;
             item.shoot = mod.ProjectileType("DarkmatterJackhammerPro");
             item.shootSpeed = 40f;
             item.tileBoost += 1;
+            item.rare = 9;
+            AARarity = 12;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
     }
 }

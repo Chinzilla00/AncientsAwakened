@@ -23,8 +23,20 @@ Shines with the light of a starry night sky");
             item.width = 18;
             item.height = 14;
             item.value = 300000;
-            item.rare = 11;
             item.defense = 22;
+            item.rare = 9;
+            AARarity = 12;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
 
         public override void UpdateEquip(Player player)

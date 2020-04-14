@@ -19,10 +19,22 @@ namespace AAMod.Items.Tools
             item.useStyle = 1;
             item.knockBack = 6;
             item.value = 10;
-            item.rare = 11;
             item.UseSound = SoundID.Item1;
             item.autoReuse = true;
             item.useTurn = true;
+            item.rare = 9;
+            AARarity = 12;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
 
         public override void SetStaticDefaults()

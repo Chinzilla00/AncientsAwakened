@@ -244,7 +244,7 @@ namespace AAMod.NPCs.TownNPCs
                 button2 = SerpentT;
                 Serpent = true;
             }
-            else if (ChatNumber == 8 && NPC.downedPlantBoss)
+            else if (ChatNumber == 8 && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
             {
                 button2 = AnubisT;
                 AnubisB = true;
@@ -739,7 +739,7 @@ namespace AAMod.NPCs.TownNPCs
                 chat.Add(Lang.TownNPCAnubis("AnubisChat30") + Main.npc[ConfusedZombie].GivenName + Lang.TownNPCAnubis("AnubisChat31"));
             }
 
-            if (AAWorld.AMessage && !BasePlayer.HasItem(player, ModContent.ItemType<Items.BossSummons.Scepter>()))
+            if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3 && !BasePlayer.HasItem(player, ModContent.ItemType<Items.BossSummons.Scepter>()))
             {
                 if (!mPlayer.GivenAnuSummon)
                 {

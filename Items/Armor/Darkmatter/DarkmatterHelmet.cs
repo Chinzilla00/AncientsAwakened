@@ -15,11 +15,9 @@ namespace AAMod.Items.Armor.Darkmatter
         
         public override void SetStaticDefaults()
         {
-            
             DisplayName.SetDefault("Darkmatter Helmet");
 			Tooltip.SetDefault(@"10% increased melee damage
 Dark, yet still barely visible");
-
 		}
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
@@ -48,11 +46,23 @@ Dark, yet still barely visible");
 			item.width = 22;
 			item.height = 20;
 			item.value = 300000;
-			item.rare = 11;
 			item.defense = 34;
-		}
-		
-		public override void UpdateEquip(Player player)
+            item.rare = 9;
+            AARarity = 12;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
+
+        public override void UpdateEquip(Player player)
 		{
 			player.meleeDamage += 0.10f;
         }

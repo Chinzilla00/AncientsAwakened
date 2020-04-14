@@ -18,14 +18,25 @@ namespace AAMod.Items.Throwing
             item.noUseGraphic = true;
             item.useStyle = 1;
 			item.knockBack = 0;
-			item.value = 8;
-			item.rare = 11;
 			item.shootSpeed = 15f;
 			item.shoot = mod.ProjectileType ("DMK");
 			item.UseSound = SoundID.Item1;
 			item.autoReuse = true;
             item.consumable = true;
             item.noMelee = true;
+            item.rare = 9;
+            AARarity = 12;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
 
         public override void SetStaticDefaults()
