@@ -2400,6 +2400,8 @@ ItemTooltip.UltibladeTyphoon=发射3个快速回旋的剃刃风暴\n水刃龙卷
 
 // AAMod.Items.Boss.Equinox
 
+ItemName.StarIdol=群星祈愿
+ItemTooltip.StarIdol=释放你星球上星辰之力
 
 ItemName.DarkVoid=深空之星
 ItemTooltip.DarkVoid=晚上你的属性提升\n“漆黑而又怪异”

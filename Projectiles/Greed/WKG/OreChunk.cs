@@ -289,13 +289,13 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 if((projectile.ai[0] ++) % 40 == 20)
                 {
-                    for(int i = 0; i < 6; i++)
+                    for(int i = 0; i < 3; i++)
                     {
                         Vector2 vector82 = new Vector2(projectile.velocity.X, projectile.velocity.Y);
                         float ai = Main.rand.Next(100);
                         Vector2 vector83 = Vector2.Normalize(vector82.RotatedByRandom(3.1415f * 2));
                         Vector2 vector84 = Vector2.Normalize(vector83.RotatedByRandom(0.8)) * 14f;
-                        int id = Projectile.NewProjectile(projectile.position.X + projectile.velocity.X, projectile.position.Y  + projectile.velocity.Y, vector84.X * 2, vector84.Y * 2, ModContent.ProjectileType<Zero.ZeroTaze>(), projectile.damage / 2, 0f, Main.myPlayer, vector83.ToRotation(), ai);
+                        int id = Projectile.NewProjectile(projectile.position.X + projectile.velocity.X, projectile.position.Y  + projectile.velocity.Y, vector84.X * 2, vector84.Y * 2, ModContent.ProjectileType<Zero.ZeroTaze>(), (int) (projectile.damage * .05f), 0f, Main.myPlayer, vector83.ToRotation(), ai);
                         Main.projectile[id].timeLeft = 30;
                     }
                 }
