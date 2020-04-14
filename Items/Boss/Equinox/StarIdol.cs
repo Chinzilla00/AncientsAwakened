@@ -5,7 +5,7 @@ using AAMod.Tiles.Ore;
 using Terraria.Localization;
 using Microsoft.Xna.Framework;
 
-namespace AAMod.Items.Bosses.Equinox
+namespace AAMod.Items.Boss.Equinox
 {
 	public class StarIdol : BaseAAItem
 	{
