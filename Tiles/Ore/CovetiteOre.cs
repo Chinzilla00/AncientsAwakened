@@ -12,7 +12,7 @@ namespace AAMod.Tiles.Ore
             Main.tileSolid[Type] = true;
 			Main.tileMergeDirt[Type] = true;
             Main.tileSpelunker[Type] = true;
-            Main.tileValue[Type] = 880; 
+            Main.tileValue[Type] = 680; 
             Main.tileBlendAll[Type] = false;
             Main.tileBlockLight[Type] = true;  //true for block to emit light
             Main.tileLighted[Type] = true;
