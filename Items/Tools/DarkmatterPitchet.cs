@@ -19,25 +19,31 @@ namespace AAMod.Items.Tools
         {
             item.width = 48;
             item.height = 54;
-            item.value = Item.sellPrice(0, 3, 0, 0);
-            item.rare = 11;
 		    item.pick = 235;
             item.axe = 50;
             item.tileBoost += 4;
-
             item.damage = 60;
             item.knockBack = 4;
-
             item.useStyle = 1;
             item.useTime = 5;
             item.useAnimation = 19;
-
             item.melee = true;
             item.useTurn = true;
             item.autoReuse = true;
-
-            
             item.UseSound = SoundID.Item1;
+            item.rare = 9;
+            AARarity = 12;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {

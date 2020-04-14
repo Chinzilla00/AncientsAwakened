@@ -29,8 +29,20 @@ namespace AAMod.Items.Melee
 			item.value = 500000;
 			item.UseSound = new LegacySoundStyle(2, 15, Terraria.Audio.SoundType.Sound);
 			item.autoReuse = true;
-            item.rare = 11;
-		}
+            item.rare = 9;
+            AARarity = 12;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
 
 
         public override void AddRecipes()

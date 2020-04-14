@@ -27,9 +27,22 @@ namespace AAMod.Items.Melee
             item.useAnimation = 13;
             item.shoot = mod.ProjectileType("MS");
             item.shootSpeed = 25f;
-            item.rare = 2;
             item.value = 25000;
+            item.rare = 9;
+            AARarity = 12;
         }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
+        }
+
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);

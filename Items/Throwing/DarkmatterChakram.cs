@@ -20,18 +20,31 @@ namespace AAMod.Items.Throwing
             item.melee = true;
             item.width = 30;
             item.height = 30;
-	    item.useTime = 16;
-	    item.useAnimation = 16;
+	        item.useTime = 16;
+	        item.useAnimation = 16;
             item.noUseGraphic = true;
             item.useStyle = 1;
-	    item.knockBack = 0;
-	    item.value = 100000;
-	    item.rare = 11;
-	    item.shootSpeed = 12f;
-	    item.shoot = mod.ProjectileType ("DMC");
-	    item.UseSound = SoundID.Item1;
-	    item.autoReuse = true;
+	        item.knockBack = 0;
+	        item.value = 100000;
+	        item.rare = 11;
+	        item.shootSpeed = 12f;
+	        item.shoot = mod.ProjectileType ("DMC");
+	        item.UseSound = SoundID.Item1;
+	        item.autoReuse = true;
             item.noMelee = true;
+            item.rare = 9;
+            AARarity = 12;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
 
         public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)

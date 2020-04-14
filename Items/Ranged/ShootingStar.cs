@@ -22,10 +22,22 @@ namespace AAMod.Items.Ranged
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 5;
             item.value = 10000;
-            item.rare = 11;
             item.UseSound = SoundID.Item5;
             item.autoReuse = true;
             item.shootSpeed = 22f;
+            item.rare = 9;
+            AARarity = 12;
+        }
+
+        public override void ModifyTooltips(System.Collections.Generic.List<TooltipLine> list)
+        {
+            foreach (TooltipLine line2 in list)
+            {
+                if (line2.mod == "Terraria" && line2.Name == "ItemName")
+                {
+                    line2.overrideColor = AAColor.Rarity12;
+                }
+            }
         }
 
         public override bool Shoot(Player player, ref Microsoft.Xna.Framework.Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
