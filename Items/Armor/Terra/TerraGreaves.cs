@@ -31,7 +31,7 @@ namespace AAMod.Items.Armor.Terra
         public override void AddRecipes()
         {
             ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddRecipeGroup("AAMod:TerraPlates");
+            recipe.AddRecipeGroup("AAMod:TerraBoots");
             recipe.AddIngredient(null, "TerraCrystal");
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.SetResult(this);

@@ -18,7 +18,7 @@ namespace AAMod.Items.Armor.Terra.Projectiles
             projectile.width = 4;
             projectile.height = 4;
             projectile.aiStyle = 1;
-            projectile.hostile = true;
+            projectile.friendly = true;
             projectile.penetrate = -1;
             projectile.light = 0.3f;
             projectile.alpha = 255;
