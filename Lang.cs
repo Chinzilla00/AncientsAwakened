@@ -3256,7 +3256,7 @@ Fishy";
                         case "MushroomMonarch":
                         return "The Mushroom Monarch";
                         case "MushroomMonarchInfo":
-                        return " during the day in the Surface Mushroom Biome";
+                        return " during the day";
                         case "MushroomMonarchInfo2":
                         return "The Mushroom Monarch escapes into the sky";
                         case "FeudalFungus":
