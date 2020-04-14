@@ -30,7 +30,7 @@ namespace AAMod.Items.Boss.Equinox
             item.consumable = true;		
         }
 
-		public override bool UseItem(Player player)
+        public override bool CanUseItem(Player player)
         {
             int num = 0;
             float num2 = Main.maxTilesX / 4200;
@@ -45,12 +45,26 @@ namespace AAMod.Items.Boss.Equinox
                         num++;
                         if (num > num3)
                         {
+                            if (Main.dayTime)
+                            {
+                                if (Main.netMode != 1) BaseUtility.Chat("There are plenty of stars in the sky, child.", new Color(43, 178, 245));
+                            }
+                            else
+                            {
+                                if (Main.netMode != 1) BaseUtility.Chat("There are plenty of stars in the sky, child.", new Color(0, 255, 181));
+                            }
                             return false;
                         }
                     }
                     num4++;
                 }
             }
+            return true;
+        }
+
+        public override bool UseItem(Player player)
+        {
+            
             if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.downedEquinoxInfo"), Color.Violet);
             for (int i = 0; i < Main.maxTilesX / 50; ++i)
             {
