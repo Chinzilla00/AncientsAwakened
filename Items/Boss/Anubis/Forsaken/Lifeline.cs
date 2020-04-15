@@ -10,7 +10,7 @@ namespace AAMod.Items.Boss.Anubis.Forsaken
 
         public override void SetDefaults()
         {
-            item.damage = 182;
+            item.damage = 82;
             item.noMelee = true;
             item.ranged = true;
             item.width = 42;
