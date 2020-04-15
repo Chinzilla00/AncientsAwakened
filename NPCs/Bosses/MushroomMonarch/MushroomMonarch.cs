@@ -43,7 +43,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void SetDefaults()
         {
             npc.lifeMax = 1200;   //boss life
-            npc.damage = 12;  //boss damage
+            npc.damage = 24;  //boss damage
             npc.defense = 12;    //boss defense
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
             npc.value = Item.sellPrice(0, 0, 50, 0);
