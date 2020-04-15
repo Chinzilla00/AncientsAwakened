@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BaseMod;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Enums;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using BaseMod;
 
 namespace AAMod.Tiles.Altar
 {
@@ -17,6 +18,7 @@ namespace AAMod.Tiles.Altar
             dustType = mod.DustType("RadiumDust");
             Main.tileLavaDeath[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
+            TileObjectData.newTile.Direction = TileObjectDirection.None;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
             TileObjectData.newTile.CoordinateWidth = 16;
             TileObjectData.newTile.CoordinatePadding = 2;
