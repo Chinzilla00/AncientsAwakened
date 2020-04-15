@@ -67,22 +67,11 @@ namespace AAMod.Projectiles
             {
                 for (int e = 0; e < Targets.Length; e++)
                 {
-                    int pID;
-                    bool properSide = projectile.owner == Main.myPlayer;
-                    if (properSide)
+                    NPC target = Main.npc[e];
+                    if (!target.friendly)
                     {
-                        NPC target = Main.npc[Targets[e]];
-                        Vector2 targetCenter = projectile.position + new Vector2(target.width * 0.5f, target.height * 0.5f);
-                        projectile.ai[1]--;
-                        if (projectile.ai[1] <= 0)
-                        {
-                            Vector2 fireTarget = projectile.Center;
-                            float rot = BaseUtility.RotationTo(projectile.Center, targetCenter);
-                            fireTarget = BaseUtility.RotateVector(projectile.Center, fireTarget, rot);
-                            pID = BaseAI.FireProjectile(targetCenter, fireTarget, ModContent.ProjectileType<ArchwitchStar>(), projectile.damage, 0f, 10);
-                            Main.projectile[pID].ai[1] = target.whoAmI;
-                            projectile.ai[1] = 40;
-                        }
+                        int pID = BaseAI.ShootPeriodic(projectile, target.position, target.width, target.height, ModContent.ProjectileType<ArchwitchStar>(), ref projectile.ai[1], 40, projectile.damage, 4, true);
+                        Main.projectile[pID].ai[1] = target.whoAmI;
                     }
                 }
             }
