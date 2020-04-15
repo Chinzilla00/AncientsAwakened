@@ -83,7 +83,6 @@ WARNING: May permanently displace appendages until game restart. This is a featu
             }
             if (CodeCD > 300)
             {
-                CodeCD--;
                 if (CodeCD > 450)
                 {
                     player.immuneNoBlink = true;
@@ -117,6 +116,10 @@ WARNING: May permanently displace appendages until game restart. This is a featu
                     player.legPosition.Y -= 20f;
                     player.legPosition.X += 12f;
                 }
+            }
+            if (CodeCD > 0)
+            {
+                CodeCD --;
             }
             if (item.accessory)
             {
