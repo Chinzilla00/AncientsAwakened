@@ -613,6 +613,12 @@ namespace AAMod
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
             if(shiniesIndex2 > -1)
             {
+
+                tasks.Insert(shiniesIndex2, new PassLegacy("Ender", delegate (GenerationProgress progress)
+                {
+                    EnderShrine();
+                }));
+
                 tasks.Insert(shiniesIndex2 + 1, new PassLegacy("LivingBogwoodConvert", delegate (GenerationProgress progress)
                 {
                     BogwoodConvert(progress);
@@ -1512,6 +1518,17 @@ namespace AAMod
             progress.Message = Language.GetTextValue("Mods.AAMod.Common.AAWorldBuildEquinoxAlt");
             Point origin = new Point((int)(Main.maxTilesX * 0.15f), 100);
             Equinox biome = new Equinox();
+            biome.Place(origin, WorldGen.structures);
+        }
+
+        private void EnderShrine()
+        {
+            Point origin = new Point((int)(Main.maxTilesX * 0.2f), (int)(Main.maxTilesY * 0.75f));
+            if (Main.dungeonX > Main.maxTilesX / 2)
+            {
+                origin = new Point((int)(Main.maxTilesX * 0.8f), (int)(Main.maxTilesY * 0.75f));
+            }
+            Crystal biome = new Crystal();
             biome.Place(origin, WorldGen.structures);
         }
 

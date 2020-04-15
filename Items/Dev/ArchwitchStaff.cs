@@ -52,7 +52,7 @@ Right click to fire explosive magic bolts");
                 item.autoReuse = true;
                 item.useTime = 10;
                 item.useAnimation = 30;
-                item.UseSound = new LegacySoundStyle(2, 105, SoundType.Sound);
+                item.UseSound = new LegacySoundStyle(2, 105, Terraria.Audio.SoundType.Sound);
                 item.damage = 200;
             }
             else
