@@ -3439,8 +3439,10 @@ ItemTooltip.Z=扩散虚空
 
 // AAMod.Items.Hooks
 
+ItemName.GripsOfChaos=混沌爪钩
+ItemTooltip.GripsOfChaos=发射两个根据已有的不同爪钩\n红色爪更长\n蓝色伸缩更快
 
-ItemName.DragonsGrip=龙之握
+ItemName.DragonsGrip=龙之握钩
 
 
 // AAMod.Items

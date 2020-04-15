@@ -13,9 +13,9 @@ namespace AAMod.Tiles.Decoration
 		public override void SetDefaults()
 		{
 			Main.tileFrameImportant[Type] = true;
-            TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.Table | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x2);
-			TileObjectData.addTile(Type);
+            TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.Table | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
+            TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
 			name.SetDefault("Aves In A Box");
 			AddMapEntry(new Color(100, 200, 100), name);

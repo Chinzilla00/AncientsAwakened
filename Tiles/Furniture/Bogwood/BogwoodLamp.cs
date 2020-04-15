@@ -19,7 +19,7 @@ namespace AAMod.Tiles.Furniture.Bogwood
             Main.tileNoAttach[Type] = true;
             Main.tileWaterDeath[Type] = true;
 
-            TileObjectData.newTile.Width = 1;
+            TileObjectData.newTile.CopyFrom(TileObjectData.Style1xX);
             TileObjectData.newTile.Height = 3;
             TileObjectData.newTile.Origin = new Point16(0, 2);
             TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
@@ -33,7 +33,6 @@ namespace AAMod.Tiles.Furniture.Bogwood
             };
             TileObjectData.newTile.CoordinateWidth = 16;
             TileObjectData.newTile.CoordinatePadding = 2;
-            TileObjectData.newTile.CopyFrom(TileObjectData.Style1xX);
             TileObjectData.newTile.WaterDeath = true;
             TileObjectData.newTile.WaterPlacement = LiquidPlacement.NotAllowed;
             TileObjectData.newTile.LavaPlacement = LiquidPlacement.NotAllowed;
