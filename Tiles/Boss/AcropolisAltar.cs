@@ -1,13 +1,14 @@
-﻿using BaseMod;
+﻿using AAMod.NPCs.Bosses.Athena;
+using AAMod.NPCs.Bosses.Athena.Olympian;
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria.Localization;
-using AAMod.NPCs.Bosses.Athena;
-using AAMod.NPCs.Bosses.Athena.Olympian;
 
 namespace AAMod.Tiles.Boss
 {
@@ -21,6 +22,7 @@ namespace AAMod.Tiles.Boss
             dustType = DustID.BlueCrystalShard;
             Main.tileLavaDeath[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
+            TileObjectData.newTile.Direction = TileObjectDirection.None;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
             TileObjectData.newTile.CoordinateWidth = 16;
             TileObjectData.newTile.CoordinatePadding = 2;

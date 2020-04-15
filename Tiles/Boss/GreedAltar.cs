@@ -1,11 +1,12 @@
-﻿using BaseMod;
+﻿using AAMod.NPCs.Bosses.Greed;
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Enums;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using Terraria.Localization;
-using AAMod.NPCs.Bosses.Greed;
 
 namespace AAMod.Tiles.Boss
 {
@@ -19,6 +20,7 @@ namespace AAMod.Tiles.Boss
             dustType = DustID.Gold;
             Main.tileLavaDeath[Type] = false;
             TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3);
+            TileObjectData.newTile.Direction = TileObjectDirection.None;
             TileObjectData.newTile.CoordinateHeights = new int[] { 16, 16, 18 };
             TileObjectData.newTile.CoordinateWidth = 16;
             TileObjectData.newTile.CoordinatePadding = 2;
