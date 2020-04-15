@@ -783,8 +783,6 @@ namespace AAMod.Worldgeneration
                 new Actions.SetLiquid(0, 0)
             }));
 
-            WorldGen.PlaceObject(origin.X + 80, origin.Y + 88, mod.TileType("GreedAltar"));
-            NetMessage.SendObjectPlacment(-1, origin.X + 80, origin.Y + 88, mod.TileType("GreedAltar"), 0, 0, -1, -1);
             HoardChest(origin.X + 19, origin.Y + 55);
             HoardChest(origin.X + 38, origin.Y + 67, 1);
             HoardChest(origin.X + 25, origin.Y + 34);
@@ -799,6 +797,9 @@ namespace AAMod.Worldgeneration
             HoardChest(origin.X + 121, origin.Y + 33);
             HoardChest(origin.X + 131, origin.Y + 48, 3);
             HoardChest(origin.X + 130, origin.Y + 69);
+
+            WorldGen.PlaceObject(origin.X + 80, origin.Y + 88, mod.TileType("GreedAltar"));
+            NetMessage.SendObjectPlacment(-1, origin.X + 80, origin.Y + 88, mod.TileType("GreedAltar"), 0, 0, -1, -1);
 
             return true;
         }

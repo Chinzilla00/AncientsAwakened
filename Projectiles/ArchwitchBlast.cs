@@ -13,7 +13,6 @@ namespace AAMod.Projectiles
         {
             projectile.width = 8;
             projectile.height = 8;
-            projectile.friendly = true;
             projectile.melee = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = true;

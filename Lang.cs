@@ -18,6 +18,8 @@ namespace AAMod
                         return "你的世界获得了闪锝!";
                         case "downedEquinoxInfo":
                         return "上神之礼在天空中闪耀...";
+                        case "StarIdolInfo":
+                        return "天空上已经有一堆星星了, 孩子.";
                         case "downedMoonlordInfo1":
                         return "真正的远古觉醒!";
                         case "downedMoonlordInfo2":
@@ -63,6 +65,8 @@ namespace AAMod
                         return "Your world bursts with Technecium!";
                         case "downedEquinoxInfo":
                         return "The gift of the celestials sparkle in the atmosphere...";
+                        case "StarIdolInfo":
+                        return "There are plenty of stars in the sky, child.";
                         case "downedMoonlordInfo1":
                         return "The Ancients have Awakened!";
                         case "downedMoonlordInfo2":
@@ -365,6 +369,8 @@ Fishy";
                         return "拿钱, 送命";
                         case "SetChatButtons26":
                         return "战兔之怒";
+                        case "SetChatButtons27":
+                        return "我要求重比一场";
 
                         case "GetBookChat":
                         return @"你找到啦! 我的限量典藏版传记! 太感谢了, 哥们. 知道吗? 这书作为礼物, 就送给你了. 这, 我再给你签个名.
@@ -445,6 +451,12 @@ Fishy";
                         return "嘿, 那个烦人的小鸟妖找你了吗? 很抱歉向她透露了你的位置, 主要是她一直在我耳边嚷嚷. 不管怎么样, 雅典娜好像确实想重比一场. 保持警惕, 哥们. 我觉得这是个陷阱";
                         case "GreedACalamityMod":
                         return "你应该知道, 你和神明吞噬者的战斗让我有点想到了金食饕餮...我是说想象一下. 它们都可以虫洞穿越而且喜欢吃东西. 它们可能是...啊, 那可太不可思议了...或者..?";
+                        case "downedFAnubisY":
+                        return "做的不错, 伙计. 我印象非常深刻, 虽然我还在犹豫. 嗯哼? 我的全力..? 就像我之前所说, 为你自己好有些东西你还是不知道为妙.";
+                        case "downedFAnubisN1":
+                        return "我想再比一场, ";
+                        case "downedFAnubisN2":
+                        return ". 当然不只是为了我的名誉. 我必须要确信你能够面对即将发射的一些事情. 在沙漠见，和我再打一场. 准备好了.";
                         case "downedGreedAY":
                         return "所以它一直在隐藏它的真实实力. 我想知道为什么, 虽然...大概是, 它想躲着什么东西..?";
                         case "downedGreedAN":
@@ -623,6 +635,8 @@ Fishy";
                         return "Riches and R.I.P. you";
                         case "SetChatButtons26":
                         return "Wrath of the Wabbit";
+                        case "SetChatButtons27":
+                        return "I demand a rematch.";
 
                         case "GetBookChat":
                         return @"You got it! My limited edition copy of my esteemed biogrophy! Thanks, pal. You know what? As a gift, you can have it. Here, I'll even autograph it for you.
@@ -697,6 +711,12 @@ Fishy";
                         return "You bested Rajah? Pft, yeah right, I've seen him trounce supposed gods before, there is no way you beat him..!";
                         case "downedRajahN":
                         return "Hey, you know those bunnies that hop around all the time? I uh...I wouldn't harass them if I were you. There's a legend around here of a sort of 'Guardian' of sorts that prtotects them from danger. Why is it a legend? Because apparently nobody has ever fought this thing and lived. Neat story, eh?";
+                        case "downedFAnubisY":
+                        return "You did good, pal. I'm pretty impressed, even though I was still holding back. Huh? My full power..? Like I said earlier, some things should stay locked away for your own good.";
+                        case "downedFAnubisN1":
+                        return "I want a rematch, ";
+                        case "downedFAnubisN2":
+                        return ". Not because of my pride, either. I need to make sure you're ready for what's ahead. Meet me in the desert and fight me again. And be ready.";
                         case "downedAthenaAY":
                         return "Huh? What's a Varian you ask? That's something I haven't heard in years...so long ago that I barely even remember the name. Although I do recall something about another one kicking around somewhere...";
                         case "downedAthenaAN":

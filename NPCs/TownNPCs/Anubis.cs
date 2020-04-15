@@ -118,6 +118,7 @@ namespace AAMod.NPCs.TownNPCs
         public static bool Athena = false;
         public static bool Greed = false;
         public static bool Rajah = false;
+        public static bool AnubisF = false;
         public static bool AthenaA = false;
         public static bool GreedA = false;
         public static bool Equinox = false;
@@ -145,6 +146,7 @@ namespace AAMod.NPCs.TownNPCs
             Athena = false;
             Greed = false;
             Rajah = false;
+            AnubisF = false;
             AthenaA = false;
             GreedA = false;
             Equinox = false;
@@ -183,6 +185,8 @@ namespace AAMod.NPCs.TownNPCs
             string GreedT = Lang.TownNPCAnubis("SetChatButtons22");
 
             string RajahT = Lang.TownNPCAnubis("SetChatButtons23");
+
+            string AnubisFT = Lang.TownNPCAnubis("SetChatButtons27");
 
             string AthenaAT = Lang.TownNPCAnubis("SetChatButtons24");
 
@@ -264,50 +268,55 @@ namespace AAMod.NPCs.TownNPCs
                 button2 = RajahT;
                 Rajah = true;
             }
-            else if (ChatNumber == 12 && NPC.downedMoonlord && AAWorld.downedAnubis && AAWorld.downedAthena)
+            else if (ChatNumber == 12 && NPC.downedMoonlord && AAWorld.downedAnubis)
+            {
+                button2 = AnubisFT;
+                AnubisF = true;
+            }
+            else if (ChatNumber == 13 && NPC.downedMoonlord && AAWorld.downedAnubisA && AAWorld.downedAthena)
             {
                 button2 = AthenaAT;
                 AthenaA = true;
             }
-            else if (ChatNumber == 13 && NPC.downedMoonlord && AAWorld.downedAnubis && AAWorld.downedGreed)
+            else if (ChatNumber == 14 && NPC.downedMoonlord && AAWorld.downedAnubisA && AAWorld.downedGreed)
             {
                 button2 = GreedAT;
                 GreedA = true;
             }
-            else if (ChatNumber == 14 && AAWorld.downedGreedA && AAWorld.downedAthenaA)
+            else if (ChatNumber == 15 && AAWorld.downedGreedA && AAWorld.downedAthenaA)
             {
                 button2 = EquinoxT;
                 Equinox = true;
             }
-            else if (ChatNumber == 15 && NPC.downedMoonlord && AAWorld.downedEquinox)
+            else if (ChatNumber == 16 && NPC.downedMoonlord && AAWorld.downedEquinox)
             {
                 button2 = SistersT;
                 Sisters = true;
             }
-            else if (ChatNumber == 16 && NPC.downedMoonlord && AAWorld.downedSisters)
+            else if (ChatNumber == 17 && NPC.downedMoonlord && AAWorld.downedSisters)
             {
                 button2 = AkumaT;
                 Akuma = true;
             }
-            else if (ChatNumber == 17 && NPC.downedMoonlord && AAWorld.downedSisters)
+            else if (ChatNumber == 18 && NPC.downedMoonlord && AAWorld.downedSisters)
             {
                 button2 = YamataT;
                 Yamata = true;
             }
-            else if (ChatNumber == 18 && NPC.downedMoonlord && AAWorld.downedNC)
+            else if (ChatNumber == 19 && NPC.downedMoonlord && AAWorld.downedNC)
             {
                 button2 = ZeroT;
                 Zero = true;
-            }
-            else if (ChatNumber == 19 && AAWorld.downedAllAncients)
-            {
-                button2 = ShenT;
-                Shen = true;
             }
             else if (ChatNumber == 20 && AAWorld.downedRajahsRevenge)
             {
                 button2 = RajahCT;
                 RajahC = true;
+            }
+            else if (ChatNumber == 21 && AAWorld.downedAllAncients)
+            {
+                button2 = ShenT;
+                Shen = true;
             }
             else
             {
@@ -331,6 +340,7 @@ namespace AAMod.NPCs.TownNPCs
             Athena = false;
             Greed = false;
             Rajah = false;
+            AnubisF = false;
             AthenaA = false;
             GreedA = false;
             Equinox = false;
@@ -348,7 +358,7 @@ namespace AAMod.NPCs.TownNPCs
 			{
 				ResetBools();
 				ChatNumber += 1;
-				if (ChatNumber > 23)
+				if (ChatNumber > 21)
 				{
 					ChatNumber = 0;
 				}
@@ -556,6 +566,11 @@ namespace AAMod.NPCs.TownNPCs
             {
                 return AAWorld.downedRajah ? Lang.TownNPCAnubis("downedRajahY") :
                     Lang.TownNPCAnubis("downedRajahN");
+            }
+            else if (AnubisF)
+            {
+                return AAWorld.downedAnubisA ? Lang.TownNPCAnubis("downedFAnubisY") :
+                    Lang.TownNPCAnubis("downedFAnubisN1") + player.name + Lang.TownNPCAnubis("downedFAnubisN2");
             }
             else if (AthenaA)
             {

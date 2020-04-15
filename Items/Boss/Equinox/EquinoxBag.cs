@@ -156,6 +156,10 @@ Contained loot depends on the time of day");
                 player.QuickSpawnItem(mod.ItemType("Stardust"), Main.rand.Next(40, 90));
                 player.QuickSpawnItem(mod.ItemType("RadiantStar"));
             }
+            if (AAWorld.RadiumOre)
+            {
+                player.QuickSpawnItem(mod.ItemType("StarIdol"));
+            }
         }
 	}
 }

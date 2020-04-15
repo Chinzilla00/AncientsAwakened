@@ -768,6 +768,10 @@ namespace AAMod.NPCs.Bosses.Equinox
                 {
                     Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("DarkEnergy"), Main.rand.Next(30, 75));
                 }
+                if (AAWorld.RadiumOre)
+                {
+                    Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("StarIdol"));
+                }
 			}
         }
 

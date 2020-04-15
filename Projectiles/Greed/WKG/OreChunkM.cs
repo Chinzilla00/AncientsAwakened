@@ -27,6 +27,8 @@ namespace AAMod.Projectiles.Greed.WKG
             Main.projFrames[projectile.type] = 28;
         }
 
+        public float rotationspeed = 0.2f;
+
         public override void AI()
         {
             OreEffect();
@@ -38,7 +40,24 @@ namespace AAMod.Projectiles.Greed.WKG
             {
                 projectile.direction = -1;
             }
-            projectile.rotation += .2f * projectile.direction;
+
+            bool flag = false;
+            Vector2 velocity = Collision.TileCollision(projectile.position, projectile.velocity, projectile.width, projectile.height, true, true, 1);;
+            if (velocity != projectile.velocity)
+            {
+                flag = true;
+            }
+            if (flag && ProjectileLoader.OnTileCollide(projectile, projectile.velocity))
+            {
+                rotationspeed -= .021f;
+            }
+
+            if (rotationspeed <= 0)
+            {
+                rotationspeed = 0f;
+            }
+
+            projectile.rotation += rotationspeed * projectile.direction;
 
             for (int m = projectile.oldPos.Length - 1; m > 0; m--)
             {

@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using Terraria.ID;
 
 namespace AAMod.Items.Vanity.Eliza.Cat
 {
@@ -38,6 +39,15 @@ namespace AAMod.Items.Vanity.Eliza.Cat
         public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
         {
             drawHair = drawAltHair = true;  //this make so the player hair does not show when the vanity mask is equipped.  add true if you want to show the player hair.
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "LizHood");
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }
