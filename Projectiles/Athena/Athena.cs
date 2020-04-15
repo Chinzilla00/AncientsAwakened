@@ -297,8 +297,8 @@ namespace AAMod.Projectiles.Athena
                         Main.projectile[num659].minion = true;
 
                         Main.projectile[num659].timeLeft = 300;
-                        projectile.netUpdate = true;
                     }
+                    projectile.netUpdate = true;
                 }
             }
         }

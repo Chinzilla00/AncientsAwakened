@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using Terraria.ID;
 
 namespace AAMod.Items.Vanity.Eliza.Dragon
 
@@ -37,6 +38,15 @@ namespace AAMod.Items.Vanity.Eliza.Dragon
             item.height = 20;
             item.rare = 11;
             item.vanity = true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "LizShirt");
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

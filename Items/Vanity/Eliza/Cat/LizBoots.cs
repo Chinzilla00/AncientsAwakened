@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Items.Vanity.Eliza.Cat
@@ -36,6 +37,15 @@ namespace AAMod.Items.Vanity.Eliza.Cat
         public override bool DrawLegs()
         {
             return false;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "LizSkirt");
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

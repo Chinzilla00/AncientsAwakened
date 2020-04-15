@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
+using Terraria.ID;
 
 namespace AAMod.Items.Dev
 {
@@ -22,8 +23,8 @@ namespace AAMod.Items.Dev
             item.mana = 5;
             item.width = 56;
             item.height = 56;
-            item.useTime = 25;
-            item.useAnimation = 25;
+            item.useTime = 20;
+            item.useAnimation = 40;
             item.useStyle = 5;
             item.noMelee = true;
             item.knockBack = 2;
@@ -43,6 +44,15 @@ namespace AAMod.Items.Dev
                     line2.overrideColor = new Color(121, 21, 214);
                 }
             }
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "CatsEyeRifle");
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

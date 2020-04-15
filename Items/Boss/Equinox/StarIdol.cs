@@ -11,8 +11,8 @@ namespace AAMod.Items.Boss.Equinox
 	{
 		public override void SetStaticDefaults()
 		{
-			DisplayName.SetDefault("Blessing of the Stars");	
-            BaseMod.BaseUtility.AddTooltips(item, new string[] { "Unleashes the power of Grovite upon your world!" });	
+			DisplayName.SetDefault("Blessing of the Stars");
+            BaseUtility.AddTooltips(item, new string[] { "Unleashes the power of Grovite upon your world!" });	
 		}
 
         public override void SetDefaults()

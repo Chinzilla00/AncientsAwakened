@@ -1,6 +1,8 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.Audio;
+using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Dev
 {
@@ -39,7 +41,7 @@ Doesn't require ammo
             item.knockBack = 12;
             item.value = Item.sellPrice(0, 30, 0, 0);
             item.rare = 9; 
-            item.UseSound = new LegacySoundStyle(2, 40, SoundType.Sound);
+            item.UseSound = new LegacySoundStyle(2, 40, Terraria.Audio.SoundType.Sound);
             item.autoReuse = false; 
             item.shootSpeed = 20f;
             item.crit = 0;
@@ -53,6 +55,15 @@ Doesn't require ammo
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-10, 0);
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "ArchwitchWand");
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

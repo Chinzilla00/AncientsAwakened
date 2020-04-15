@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.Collections.Generic;
+using Terraria.ID;
 
 namespace AAMod.Items.Vanity.Eliza.Dragon
 {
@@ -36,6 +37,15 @@ namespace AAMod.Items.Vanity.Eliza.Dragon
         {
             drawHair = false;
             drawAltHair = true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "LizEars");
+            recipe.AddTile(TileID.Loom);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

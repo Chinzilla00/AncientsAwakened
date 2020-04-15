@@ -1,6 +1,7 @@
 using Terraria;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace AAMod.Items.Dev
 {
@@ -56,13 +57,16 @@ Cat's Eye Rifle EX");
 
         public override void AddRecipes()
         {
-            {
-                ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(null, "CatsEyeRifle");
-                recipe.AddIngredient(null, "EXSoul");
-                recipe.SetResult(this);
-                recipe.AddRecipe();
-            }
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "CatsEyeRifle");
+            recipe.AddIngredient(null, "EXSoul");
+            recipe.SetResult(this);
+            recipe.AddRecipe(); 
+            recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "ArchwitchStaff");
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }
