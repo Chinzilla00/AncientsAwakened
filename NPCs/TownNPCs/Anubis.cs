@@ -186,7 +186,7 @@ namespace AAMod.NPCs.TownNPCs
 
             string RajahT = Lang.TownNPCAnubis("SetChatButtons23");
 
-            string AnubisFT = "I demand a rematch.";
+            string AnubisFT = Lang.TownNPCAnubis("SetChatButtons27");
 
             string AthenaAT = Lang.TownNPCAnubis("SetChatButtons24");
 
@@ -569,8 +569,8 @@ namespace AAMod.NPCs.TownNPCs
             }
             else if (AnubisF)
             {
-                return AAWorld.downedAnubisA ? "You did good, pal. I'm pretty impressed, even though I was still holding back. Huh? My full power..? Like I said earlier, some things should stay locked away for your own good." :
-                    "I want a rematch, " + player.name + ". Not because of my pride, either. I need to make sure you're ready for what's ahead. Meet me in the desert and fight me again. And be ready.";
+                return AAWorld.downedAnubisA ? Lang.TownNPCAnubis("downedFAnubisY") :
+                    Lang.TownNPCAnubis("downedFAnubisN1") + player.name + Lang.TownNPCAnubis("downedFAnubisN2");
             }
             else if (AthenaA)
             {

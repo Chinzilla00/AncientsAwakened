@@ -40,18 +40,18 @@ namespace AAMod.Items.Boss.Equinox
                 int num4 = 5;
                 while (num4 < Main.worldSurface)
                 {
-                    if (Main.tile[j, num4].active() && Main.tile[j, num4].type == (ushort)ModContent.TileType<RadiumOre>())
+                    if (Main.tile[j, num4].active() && Main.tile[j, num4].type == (ushort)ModContent.TileType<Tiles.Ore.RadiumOre>())
                     {
                         num++;
                         if (num > num3)
                         {
                             if (Main.dayTime)
                             {
-                                if (Main.netMode != 1) BaseUtility.Chat("There are plenty of stars in the sky, child.", new Color(43, 178, 245));
+                                if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("StarIdolInfo"), new Color(43, 178, 245));
                             }
                             else
                             {
-                                if (Main.netMode != 1) BaseUtility.Chat("There are plenty of stars in the sky, child.", new Color(0, 255, 181));
+                                if (Main.netMode != 1) BaseUtility.Chat(Lang.Worldtext("StarIdolInfo"), new Color(0, 255, 181));
                             }
                             return false;
                         }
@@ -77,7 +77,7 @@ namespace AAMod.Items.Boss.Equinox
                     {
                         if (Vector2.Distance(new Vector2(X, Y), new Vector2(x, y)) <= radius) //Checks if coords are within a circle position
                         {
-                            WorldGen.PlaceTile(x, y, ModContent.TileType<RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
+                            WorldGen.PlaceTile(x, y, ModContent.TileType<Tiles.Ore.RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
                         }
                     }
                 }
@@ -93,7 +93,7 @@ namespace AAMod.Items.Boss.Equinox
                     {
                         if (Vector2.Distance(new Vector2(X, Y), new Vector2(x, y)) <= radius) //Checks if coords are within a circle position
                         {
-                            WorldGen.PlaceTile(x, y, ModContent.TileType<RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
+                            WorldGen.PlaceTile(x, y, ModContent.TileType<Tiles.Ore.RadiumOre>(), true); //Places tile of type InsertTypeHere at the specified coords
                         }
                     }
                 }
