@@ -27,7 +27,7 @@ namespace AAMod.Items.Boss.Athena.Olympian
             item.useAmmo = AmmoID.Arrow;
             item.knockBack = 0;
             item.UseSound = SoundID.Item5;
-            item.autoReuse = false;
+            item.autoReuse = true;
             item.shootSpeed = 10f;
             item.rare = 9;
             AARarity = 12;
