@@ -1101,6 +1101,10 @@ namespace AAMod.Worldgeneration
 
             WorldGen.PlaceObject(origin.X + 27, origin.Y + 26, (ushort)mod.TileType("EnderMemory"));
             NetMessage.SendObjectPlacment(-1, origin.X + 27, origin.Y + 26, (ushort)mod.TileType("EnderMemory"), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 16, origin.Y + 27, (ushort)mod.TileType("CrystalChandelier"));
+            NetMessage.SendObjectPlacment(-1, origin.X + 16, origin.Y + 27, (ushort)mod.TileType("CrystalChandelier"), 0, 0, -1, -1);
+            WorldGen.PlaceObject(origin.X + 41, origin.Y + 27, (ushort)mod.TileType("CrystalChandelier"));
+            NetMessage.SendObjectPlacment(-1, origin.X + 41, origin.Y + 27, (ushort)mod.TileType("CrystalChandelier"), 0, 0, -1, -1);
 
             return true;
         }

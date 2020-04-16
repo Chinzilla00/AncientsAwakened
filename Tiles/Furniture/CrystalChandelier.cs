@@ -5,7 +5,6 @@ using Terraria.Enums;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Tiles.Furniture
 {
