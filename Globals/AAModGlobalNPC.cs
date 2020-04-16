@@ -1053,9 +1053,9 @@ namespace AAMod
             {
                 ClearPoolWithExceptions(pool);
 
-                pool.Add(NPCID.GiantWormHead, .06f);
+                pool.Add(NPCID.GiantWormHead, .005f);
                 pool.Add(NPCID.GoldWorm, .001f);
-                pool.Add(NPCID.Worm, .01f);
+                pool.Add(NPCID.Worm, .005f);
 
                 if (NPC.downedPlantBoss)
                 {
