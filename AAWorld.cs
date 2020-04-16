@@ -110,6 +110,8 @@ namespace AAMod
         public static bool WormActive;
         public static bool StarActive;
         public static bool GravActive;
+
+        public static bool spawnGrips;
         //Points
         public static Point WHERESDAVOIDAT;
 
@@ -179,6 +181,8 @@ namespace AAMod
             WormActive = false;
             StarActive = false;
             GravActive = false;
+
+            spawnGrips = false;
             //World Changes
             TerrariumEnemies = NPC.downedBoss2;
             ChaosOres = downedGrips;
@@ -1199,10 +1203,69 @@ namespace AAMod
                 }
             }
 
-            if (TimeStopped)
+            if (!Main.dayTime)
             {
-                Main.fastForwardTime = false;
-                Main.time = PausedTime;
+                if (!Main.fastForwardTime)
+                {
+                    if (Main.time == 1 && !WorldGen.spawnEye)
+                    {
+                        if (!downedGrips && Main.netMode != 1)
+                        {
+                            bool flag3 = false;
+                            for (int n = 0; n < 255; n++)
+                            {
+                                if (Main.player[n].active && Main.player[n].statLifeMax >= 200 && Main.player[n].statDefense > 10)
+                                {
+                                    flag3 = true;
+                                    break;
+                                }
+                            }
+                            if (flag3 && Main.rand.Next(3) == 0)
+                            {
+                                int num8 = 0;
+                                for (int num9 = 0; num9 < 200; num9++)
+                                {
+                                    if (Main.npc[num9].active && Main.npc[num9].townNPC)
+                                    {
+                                        num8++;
+                                    }
+                                }
+                                if (num8 >= 4)
+                                {
+                                    spawnGrips = true;
+                                    if (Main.netMode == 0)
+                                    {
+                                        Main.NewText("The sound of scraping against the ground can be heard nearby...", 50, 255, 130, false);
+                                    }
+                                    else if (Main.netMode == 2)
+                                    {
+                                        NetMessage.SendData(25, -1, -1, null, 255, 50f, 255f, 130f, 0, 0, 0);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (spawnGrips && Main.netMode != 1 && Main.time > 4860.0)
+                    {
+                        for (int k = 0; k < 255; k++)
+                        {
+                            if (Main.player[k].active && !Main.player[k].dead && Main.player[k].position.Y < Main.worldSurface * 16.0)
+                            {
+                                if (Main.netMode == 0) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Grips.GripsofChaosAwoken"), 175, 75, 255, false); }
+                                else if (Main.netMode == 2)
+                                    if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Grips.GripsofChaosAwoken"), 175, 75, 255, false); }
+                                    else if (Main.netMode == NetmodeID.Server)
+                                    {
+                                        NetMessage.BroadcastChatMessage(NetworkText.FromLiteral(Language.GetTextValue("Mods.AAMod.Grips.GripsofChaosAwoken")), new Color(175, 75, 255), -1);
+                                    }
+                                AAModGlobalNPC.SpawnBoss(Main.player[k], mod.NPCType("GripOfChaosBlue"), false, 1, 0);
+                                AAModGlobalNPC.SpawnBoss(Main.player[k], mod.NPCType("GripOfChaosRed"), false, -1, 0);
+                                spawnGrips = false;
+                                break;
+                            }
+                        }
+                    }
+                }
             }
             if (downedEquinox)
             {

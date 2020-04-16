@@ -32,6 +32,7 @@ namespace AAMod.Items.Vanity.Moon
             {
                 player.QuickSpawnItem(ModContent.ItemType<MoonWings>());
             }
+            player.QuickSpawnItem(ModContent.ItemType<Pets.LunaminiJar>());
             if (player.GetModPlayer<AAPlayer>().ShinyCheck())
             {
                 player.QuickSpawnItem(ModContent.ItemType<ShinyMoonHood>());

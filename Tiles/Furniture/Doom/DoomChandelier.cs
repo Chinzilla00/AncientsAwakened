@@ -88,7 +88,6 @@ namespace AAMod.Tiles.Furniture.Doom
 		}
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
-            ulong randSeed = Main.TileFrameSeed ^ (ulong)(j<< 32 | (long)((ulong)i));
             Color color = new Color(100, 100, 100, 0);
             int frameX = Main.tile[i, j].frameX;
             int frameY = Main.tile[i, j].frameY;
@@ -103,9 +102,7 @@ namespace AAMod.Tiles.Furniture.Doom
             }
             for (int k = 0; k < 7; k++)
             {
-                float x = Utils.RandomInt(ref randSeed, -10, 11) * 0.15f;
-                float y = Utils.RandomInt(ref randSeed, -10, 1) * 0.35f;
-                Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/DoomChandelier_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X + offsetX - (width - 16f) / 2f + x, j * 16 - (int)Main.screenPosition.Y + offsetY + y) + zero, new Rectangle(frameX, frameY, width, height), color, 0f, default, 1f, SpriteEffects.None, 0f);
+                Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/DoomChandelier_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X + offsetX - (width - 16f) / 2f, j * 16 - (int)Main.screenPosition.Y + offsetY) + zero, new Rectangle(frameX, frameY, width, height), color, 0f, default, 1f, SpriteEffects.None, 0f);
             }
         }
     }

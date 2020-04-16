@@ -75,7 +75,7 @@ namespace AAMod.Tiles.Boss
                     if (item != null && item.type == type && item.stack >= 1)
                     {
                         item.stack--;
-                        SpawnBoss(player, ModContent.NPCType<Athena>(), true, player.Center, 0, -1, Language.GetTextValue("Mods.AAMod.Common.Athena"), false);
+                        SpawnBoss(player, ModContent.NPCType<Athena>(), player.Center, Language.GetTextValue("Mods.AAMod.Common.Athena"));
                     }
                 }
             }
@@ -83,18 +83,47 @@ namespace AAMod.Tiles.Boss
         }
 
         // SpawnBoss(player, mod.NPCType("MyBoss"), true, 0, 0, "DerpyBoi 2", false);
-        public static void SpawnBoss(Player player, int bossType, bool spawnMessage = true, Vector2 Pos = default, int overrideDirection = 0, int overrideDirectionY = 0, string overrideDisplayName = "", bool namePlural = false)
+        public static void SpawnBoss(Player player, int bossType, Vector2 Pos = default, string name = "", bool seen = true)
         {
-            if (overrideDirection == 0)
-                overrideDirection = Main.rand.Next(2) == 0 ? -1 : 1;
-            if (overrideDirectionY == 0)
-                overrideDirectionY = -1;
-            Vector2 npcCenter = Pos + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * overrideDirection, 800f * overrideDirectionY);
+            Vector2 npcCenter = Pos + new Vector2(MathHelper.Lerp(500f, 800f, (float)Main.rand.NextDouble()) * Main.rand.Next(2) == 0 ? -1 : 1, -800f);
             for (int a = 0; a < 8; a++)
             {
                 Dust.NewDust(npcCenter, 152, 114, ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
             }
-            AAModGlobalNPC.SpawnBoss(player, bossType, spawnMessage, npcCenter, overrideDisplayName, namePlural);
+
+            if (Main.netMode != 1)
+            {
+                if (NPC.AnyNPCs(bossType))
+                {
+                    return;
+                }
+
+                int npcID = NPC.NewNPC((int)npcCenter.X, (int)npcCenter.Y, bossType);
+                Main.npc[npcID].Center = npcCenter;
+                Main.npc[npcID].netUpdate = true;
+
+                ((Athena)Main.npc[npcID].modNPC).Seen = seen;
+
+                if (Main.netMode == NetmodeID.SinglePlayer)
+                {
+                    if (Main.netMode != NetmodeID.MultiplayerClient)
+                    {
+                        BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", name), 175, 75, 255, false);
+                    }
+                }
+                else if (Main.netMode == NetmodeID.Server)
+                {
+                    NetMessage.BroadcastChatMessage(
+                        NetworkText.FromKey("Announcement.HasAwoken", new object[] { NetworkText.FromLiteral(name) }),
+                        new Color(175, 75, 255)
+                    );
+                }
+            }
+            else
+            {
+                //I have no idea how to convert this to the standard system so im gonna post this method too lol
+                AANet.SendNetMessage(AANet.SummonNPCFromClient, (byte)player.whoAmI, (short)bossType, true, (int)npcCenter.X, (int)npcCenter.Y, name, false);
+            }
         }
 
 

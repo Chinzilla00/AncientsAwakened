@@ -49,9 +49,10 @@ namespace AAMod.NPCs.Bosses.Athena
             npc.damage = (int)(npc.damage * 0.6f);
         }
 
-        public float[] internalAI = new float[4];
+        public float[] internalAI = new float[5];
         public float[] FlyAI = new float[2];
         public Vector2 MoveVector2;
+        public bool Seen = false;
 
         public override void SendExtraAI(BinaryWriter writer)
         {
@@ -62,10 +63,12 @@ namespace AAMod.NPCs.Bosses.Athena
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
+                writer.Write(internalAI[4]);
                 writer.Write(FlyAI[0]);
                 writer.Write(FlyAI[1]);
                 writer.Write(MoveVector2.X);
                 writer.Write(MoveVector2.Y);
+                writer.Write(Seen);
             }
         }
 
@@ -78,10 +81,12 @@ namespace AAMod.NPCs.Bosses.Athena
                 internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
+                internalAI[4] = reader.ReadFloat();
                 FlyAI[0] = reader.ReadFloat();
                 FlyAI[1] = reader.ReadFloat();
                 MoveVector2.X = reader.ReadFloat();
                 MoveVector2.Y = reader.ReadFloat();
+                Seen = reader.ReadBool();
             }
         }
         public override void AI()
@@ -109,12 +114,40 @@ namespace AAMod.NPCs.Bosses.Athena
                 if (Vector2.Distance(npc.Center, Acropolis) < 10)
                 {
                     npc.velocity *= 0;
+
+                    if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height) && internalAI[3] < 180)
+                    {
+                        Seen = true;
+                        npc.netUpdate = true;
+                    }
+
                     if (Main.netMode != 1)
                     {
-                        if (internalAI[3]++ < 420)
+                        if (!Seen)
+                        {
+                            internalAI[4]++; 
+                            if (internalAI[3] == 60)
+                            {
+                                if (Main.netMode != 1) BaseUtility.Chat("...", Color.CornflowerBlue);
+                            }
+
+                            if (internalAI[3] >= 180)
+                            {
+                                if (Main.netMode != 1) BaseUtility.Chat("...ugh...those little whiny brats...", Color.CornflowerBlue);
+                                npc.active = false;
+                                int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaFlee>());
+                                Main.npc[p].Center = npc.Center;
+                            }
+                            return;
+                        }
+
+                        internalAI[3]++;
+
+                        if (internalAI[3] < 420)
                         {
                             if (!AAWorld.downedAthena)
                             {
+
                                 if (internalAI[3] == 60)
                                 {
                                     if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena1"), Color.CornflowerBlue);

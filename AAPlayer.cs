@@ -312,6 +312,7 @@ namespace AAMod
         public bool Glowmoss = false;
         public bool Cerberus = false;
         public bool K9 = false;
+        public bool Lunamini = false;
         #endregion
 
         //NPCcount
@@ -600,6 +601,7 @@ namespace AAMod
             Glowmoss = false;
             Cerberus = false;
             K9 = false;
+            Lunamini = false;
         }
 
         public override void Initialize()
@@ -2807,14 +2809,7 @@ namespace AAMod
                         break;
 
                     case 14:
-                        player.QuickSpawnItem(mod.ItemType("MoonHood"));
-                        player.QuickSpawnItem(mod.ItemType("MoonRobe"));
-                        player.QuickSpawnItem(mod.ItemType("MoonBoots"));
-
-                        if (dropType >= 1)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("MoonWings"));
-                        }
+                        player.QuickSpawnItem(mod.ItemType("MoonBag"));
 
                         if (dropType >= 3)
                         {

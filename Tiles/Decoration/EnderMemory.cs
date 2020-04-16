@@ -40,5 +40,11 @@ namespace AAMod.Tiles.Decoration
             BaseUtility.Chat("In memory of a long lost friend still in our hearts.", Color.Goldenrod);
             return true;
         }
+
+        public override void KillMultiTile(int i, int j, int frameX, int frameY)
+        {
+            Item.NewItem(i * 16, j * 16, 32, 32, mod.ItemType("EnderMemory"));
+        }
+
     }
 }

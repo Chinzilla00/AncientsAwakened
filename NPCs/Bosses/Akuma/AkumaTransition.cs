@@ -37,7 +37,7 @@ namespace AAMod.NPCs.Bosses.Akuma
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 6, npc.frame, npc.GetAlpha(new Color(RVal, 125, BVal)), true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 8, npc.frame, npc.GetAlpha(new Color(RVal, 125, BVal)), true);
             return false;
         }
 

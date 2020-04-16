@@ -21,7 +21,7 @@ namespace AAMod.Projectiles.Athena
 			projectile.aiStyle = -1;
 			projectile.friendly = true;
 			projectile.ranged = true;
-			projectile.penetrate = 1;
+			projectile.penetrate = -1;
 			projectile.alpha = 100;
 			projectile.ignoreWater = true;
 			projectile.tileCollide = false;

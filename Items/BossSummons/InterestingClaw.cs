@@ -59,6 +59,7 @@ Can only be used at night");
 
         public override bool UseItem(Player player)
         {
+            AAWorld.spawnGrips = false;
             if (Main.netMode == 0) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Grips.GripsofChaosAwoken"), 175, 75, 255, false); }
             else if (Main.netMode == 2)
             if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Grips.GripsofChaosAwoken"), 175, 75, 255, false); }
@@ -68,7 +69,7 @@ Can only be used at night");
             }
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosBlue"), false, 1, 0);
             AAModGlobalNPC.SpawnBoss(player, mod.NPCType("GripOfChaosRed"), false, -1, 0);
-            Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
+            Main.PlaySound(SoundID.Roar, player.position, 0);
             return true;
         }
     }

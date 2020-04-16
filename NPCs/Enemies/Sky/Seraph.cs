@@ -53,33 +53,13 @@ namespace AAMod.NPCs.Enemies.Sky
 
 		public override void AI()
 		{
-            Player player = Main.player[npc.target];
 
             if (!npc.HasPlayerTarget)
             {
                 npc.TargetClosest();
             }
 
-            if (!player.GetModPlayer<AAPlayer>().ZoneAcropolis || player.dead || !player.active)
-            {
-                npc.TargetClosest();
-                if (!player.GetModPlayer<AAPlayer>().ZoneAcropolis || player.dead || !player.active)
-                {
-                    if (!player.GetModPlayer<AAPlayer>().ZoneAcropolis || !player.active)
-                    {
-                        CombatText.NewText(npc.Hitbox, Color.CadetBlue, SeraphBitching(), true);
-                    }
-                    else if (player.dead)
-                    {
-                        CombatText.NewText(npc.Hitbox, Color.CadetBlue, SeraphBitchingKill(), true);
-                    }
-                    for (int a = 0; a < 8; a++)
-                    {
-                        Dust.NewDust(npc.Center, 60, 40, ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
-                    }
-                    BaseAI.KillNPC(npc);
-                }
-            }
+            Player player = Main.player[npc.target];
 
             BaseAI.AIFlier(npc, ref npc.ai, true, 0.15f, 0.08f, 8f, 7f, false, 300);
 
@@ -108,6 +88,27 @@ namespace AAMod.NPCs.Enemies.Sky
                 }
                 npc.ai[3] = 0;
                 npc.netUpdate = true;
+            }
+
+            if (!player.GetModPlayer<AAPlayer>().ZoneAcropolis || player.dead)
+            {
+                npc.TargetClosest();
+                if (!player.GetModPlayer<AAPlayer>().ZoneAcropolis || player.dead)
+                {
+                    if (!player.GetModPlayer<AAPlayer>().ZoneAcropolis)
+                    {
+                        CombatText.NewText(npc.Hitbox, Color.CadetBlue, SeraphBitching(), true);
+                    }
+                    else if (player.dead)
+                    {
+                        CombatText.NewText(npc.Hitbox, Color.CadetBlue, SeraphBitchingKill(), true);
+                    }
+                    for (int a = 0; a < 8; a++)
+                    {
+                        Dust.NewDust(npc.Center, 60, 40, ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                    }
+                    BaseAI.KillNPC(npc);
+                }
             }
 
             npc.spriteDirection = npc.direction;

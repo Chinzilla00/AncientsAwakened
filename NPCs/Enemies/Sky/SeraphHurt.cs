@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Enemies.Sky
 			npc.noGravity = false;
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.noTileCollide = true;
+            npc.noTileCollide = false;
             banner = npc.type;
 			bannerItem = mod.ItemType("SeraphBanner");
             npc.dontTakeDamage = true;
@@ -52,7 +52,6 @@ namespace AAMod.NPCs.Enemies.Sky
 
             if (npc.ai[0] == 120 && Main.netMode != 1)
             {
-                npc.noGravity = true;
                 npc.netUpdate = true;
             }
             if (npc.ai[0] == 180)
@@ -66,24 +65,26 @@ namespace AAMod.NPCs.Enemies.Sky
                 npc.netUpdate = true;
             }
 
-            if (npc.ai[0] >= 120 && npc.ai[1] < 240)
+            if (npc.ai[0] >= 120 && npc.ai[0] < 240)
             {
                 npc.velocity *= .97f;
             }
             else if (npc.ai[0] >= 240)
             {
+                npc.noTileCollide = true;
+                npc.noGravity = true;
                 npc.dontTakeDamage = false;
                 npc.velocity.Y -= 0.5f;
-                if (npc.velocity.Y > 15f) npc.velocity.Y = 8f;
+                if (npc.velocity.Y < -8f) npc.velocity.Y = -8f;
 
                 if (player.Center.X > npc.Center.X)
                 {
-                    npc.velocity.X -= 0.5f;
+                    npc.velocity.X -= 0.2f;
                     if (npc.velocity.X < -8f) npc.velocity.Y = -8f;
                 }
                 else
                 {
-                    npc.velocity.X += 0.5f;
+                    npc.velocity.X += 0.2f;
                     if (npc.velocity.X > 8f) npc.velocity.Y = 8f;
                 }
 
@@ -95,7 +96,10 @@ namespace AAMod.NPCs.Enemies.Sky
                     {
                         Dust.NewDust(npc.Center, 60, 40, ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
                     }
-                    Tiles.Boss.AcropolisAltar.SpawnBoss(player, ModContent.NPCType<Athena>(), true, player.Center, 0, -1, Language.GetTextValue("Mods.AAMod.Common.Athena"), false);
+                    if (player.GetModPlayer<AAPlayer>().ZoneAcropolis)
+                    {
+                        Tiles.Boss.AcropolisAltar.SpawnBoss(player, ModContent.NPCType<Athena>(), player.Center, Language.GetTextValue("Mods.AAMod.Common.Athena"), false);
+                    }
                     BaseAI.KillNPC(npc); 
                     npc.netUpdate = true; 
                 }
@@ -149,7 +153,7 @@ namespace AAMod.NPCs.Enemies.Sky
                 }
                 if (npc.frame.Y >= frameHeight * Main.npcFrameCount[npc.type])
                 {
-                    npc.frame.Y = 1;
+                    npc.frame.Y = frameHeight;
                 }
             }
         }

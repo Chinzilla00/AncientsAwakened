@@ -59,6 +59,7 @@ Can only be used at night");
 
         public override bool UseItem(Player player)
         {
+            AAWorld.spawnGrips = false;
             if (Main.netMode == 0) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Grips.GripsofChaosAwoken"), 175, 75, 255, false); }
             else if (Main.netMode == 2)
             if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Grips.GripsofChaosAwoken"), 175, 75, 255, false); }
