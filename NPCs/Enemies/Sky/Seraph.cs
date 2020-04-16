@@ -53,6 +53,34 @@ namespace AAMod.NPCs.Enemies.Sky
 
 		public override void AI()
 		{
+            Player player = Main.player[npc.target];
+
+            if (!npc.HasPlayerTarget)
+            {
+                npc.TargetClosest();
+            }
+
+            if (!player.GetModPlayer<AAPlayer>().ZoneAcropolis || player.dead || !player.active)
+            {
+                npc.TargetClosest();
+                if (!player.GetModPlayer<AAPlayer>().ZoneAcropolis || player.dead || !player.active)
+                {
+                    if (!player.GetModPlayer<AAPlayer>().ZoneAcropolis || !player.active)
+                    {
+                        CombatText.NewText(npc.Hitbox, Color.CadetBlue, SeraphBitching(), true);
+                    }
+                    else if (player.dead)
+                    {
+                        CombatText.NewText(npc.Hitbox, Color.CadetBlue, SeraphBitchingKill(), true);
+                    }
+                    for (int a = 0; a < 8; a++)
+                    {
+                        Dust.NewDust(npc.Center, 60, 40, ModContent.DustType<Feather>(), Main.rand.Next(-1, 2), 1, 0);
+                    }
+                    BaseAI.KillNPC(npc);
+                }
+            }
+
             BaseAI.AIFlier(npc, ref npc.ai, true, 0.15f, 0.08f, 8f, 7f, false, 300);
 
             if (npc.alpha > 0)
@@ -63,8 +91,6 @@ namespace AAMod.NPCs.Enemies.Sky
             {
                 npc.alpha = 0;
             }
-
-            Player player = Main.player[npc.target];
 
             if (npc.ai[3]++ > 30 && Main.netMode != 1)
             {
@@ -113,7 +139,35 @@ namespace AAMod.NPCs.Enemies.Sky
 
         public override void NPCLoot()
         {
+            if (Main.rand.Next(30) == 0 && !NPC.AnyNPCs(ModContent.NPCType<SeraphHurt>()))
+            {
+                int a = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<SeraphHurt>());
+                Main.npc[a].velocity = npc.velocity;
+            }
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SeraphFeather"));
+        }
+
+        public string SeraphBitching()
+        {
+            switch (Main.rand.Next(5))
+            {
+                case 0: return "Aww you're no fun! Sissy..!";
+                case 1: return "Hahahah! Running away like the spineless earthwalker you are!";
+                case 2: return "I'm bored now.";
+                case 3: return "Come back! I was having fun kicking you around..!";
+                default: return "Aww the wittle earthwalker is weaving. Gonna go cry?";
+            }
+        }
+        public string SeraphBitchingKill()
+        {
+            switch (Main.rand.Next(5))
+            {
+                case 0: return "Whoops. They died. Oh well..!";
+                case 1: return "Hah! I win!";
+                case 2: return "That was fun! Come back when you don't suck!, twerp!";
+                case 3: return "And STAY away..!";
+                default: return "Well that was anticlimactic. Piece of cake!";
+            }
         }
     }
 }

@@ -100,10 +100,6 @@ namespace AAMod.NPCs.Bosses.Athena
 
             Vector2 Acropolis = new Vector2(Origin.X + (80 * 16), Origin.Y + (79 * 16));
 
-            /*if (Main.netMode != 0) //Dont do Preamble in multiplayer
-            {
-                internalAI[2] = 1;
-            }*/
             //Preamble Shite 
 
             if (internalAI[2] != 1)
