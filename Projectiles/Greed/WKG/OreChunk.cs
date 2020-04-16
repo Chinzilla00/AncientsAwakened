@@ -287,7 +287,7 @@ namespace AAMod.Projectiles.Greed.WKG
             }
             else if(k == mod.ItemType("Apocalyptite"))
             {
-                if((projectile.ai[0] ++) % 40 == 20)
+                if((projectile.ai[0] ++) % 40 == 20 && projectile.localAI[0] < 3)
                 {
                     for(int i = 0; i < 3; i++)
                     {
@@ -298,6 +298,7 @@ namespace AAMod.Projectiles.Greed.WKG
                         int id = NewProjectile(projectile.position.X + projectile.velocity.X, projectile.position.Y  + projectile.velocity.Y, vector84.X * 2, vector84.Y * 2, ModContent.ProjectileType<Zero.ZeroTaze>(), (int) (projectile.damage * .05f), 0f, Main.myPlayer, vector83.ToRotation(), ai);
                         Main.projectile[id].timeLeft = 30;
                     }
+                    projectile.localAI[0] ++;
                 }
                 if(projectile.ai[0] > 800)
                 {

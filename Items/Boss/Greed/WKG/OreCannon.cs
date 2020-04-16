@@ -3,6 +3,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria.ModLoader;
+using BaseMod;
 
 namespace AAMod.Items.Boss.Greed.WKG
 {
@@ -11,7 +12,7 @@ namespace AAMod.Items.Boss.Greed.WKG
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Ore Cannon");
-            Tooltip.SetDefault(@"Uses Ore as Ammunition
+            Tooltip.SetDefault(@"Uses Some Ores as Ammunition
 Certain ores have special effects when shot");
         }
 
@@ -53,139 +54,100 @@ Certain ores have special effects when shot");
             return new Vector2(-4, -3);
         }
 
+        readonly int[] Ores = new int[]
+        {
+            ItemID.CopperOre,
+            ItemID.TinOre,
+            ItemID.IronOre,
+            ItemID.LeadOre,
+            ItemID.SilverOre,
+            ItemID.TungstenOre,
+            ItemID.GoldOre,
+            ItemID.PlatinumOre,
+            ItemID.Meteorite,
+            ItemID.DemoniteOre,
+            ItemID.CrimtaneOre,
+            AAMod.instance.ItemType("Abyssium"),
+            AAMod.instance.ItemType("Incinerite"),
+            ItemID.Hellstone,
+            ItemID.CobaltOre,
+            ItemID.PalladiumOre,
+            ItemID.MythrilOre,
+            ItemID.OrichalcumOre,
+            ItemID.AdamantiteOre,
+            ItemID.TitaniumOre,
+            AAMod.instance.ItemType("HallowedOre"),
+            ItemID.ChlorophyteOre,
+            ItemID.LunarOre,
+            AAMod.instance.ItemType("DarkmatterOre"),
+            AAMod.instance.ItemType("RadiumOre"),
+            AAMod.instance.ItemType("DaybreakIncineriteOre"),
+            AAMod.instance.ItemType("EventideAbyssiumOre"),
+            AAMod.instance.ItemType("Apocalyptite"),
+        };
         public int projType = -1;
 
         public override bool CanUseItem(Player player)
         {
-			if (player.itemAnimation == 0)
-			{
-                bool flag = false;
-                int oreindex = -1;
-                for (int m = 0; m < 50; m++)
+            int itemIndex = -1;
+            if (player.itemAnimation == 0)
+            {
+                if (BasePlayer.HasItem(player, Ores, ref itemIndex, default, false, false))
                 {
-                    Item item = player.inventory[m];
-                    
-                    if (item != null && (Config.LuckyOre.TryGetValue(item.type, out oreindex) || item.type == ItemID.Hellstone) && item.stack > 0) 
-                    {
-                        oreindex = m;
-                        projType = item.type;
-                        flag = true;
-                        break;
-                    }
-                }
-				if (flag)
-				{
-					player.inventory[oreindex].stack -= 1;
-                    if (player.inventory[oreindex].stack <= 0)
-                    {
-                        player.inventory[oreindex].TurnToAir();
-                    }
+ 					Item itemFired = player.inventory[itemIndex];
+ 					BasePlayer.ReduceSlot(player, itemIndex, 1);
+                    if (itemFired.type == ItemID.CopperOre) projType = 0;
+ 					if (itemFired.type == ItemID.TinOre) projType = 1;
+ 					if (itemFired.type == ItemID.IronOre) projType = 2;
+					if (itemFired.type == ItemID.LeadOre) projType = 3;
+					if (itemFired.type == ItemID.SilverOre) projType = 4;
+					if (itemFired.type == ItemID.TungstenOre) projType = 5;
+					if (itemFired.type == ItemID.GoldOre) projType = 6;
+					if (itemFired.type == ItemID.PlatinumOre) projType = 7;
+					if (itemFired.type == ItemID.Meteorite) projType = 8;
+					if (itemFired.type == ItemID.DemoniteOre) projType = 9;
+					if (itemFired.type == ItemID.CrimtaneOre) projType = 10;
+					if (itemFired.type == mod.ItemType("Abyssium")) projType = 11;
+					if (itemFired.type == mod.ItemType("Incinerite")) projType = 12;
+					if (itemFired.type == ItemID.Hellstone) projType = 13;
+					if (itemFired.type == ItemID.CobaltOre) projType = 14;
+					if (itemFired.type == ItemID.PalladiumOre) projType = 15;
+					if (itemFired.type == ItemID.MythrilOre) projType = 16;
+					if (itemFired.type == ItemID.OrichalcumOre) projType = 17;
+					if (itemFired.type == ItemID.AdamantiteOre) projType = 18;
+					if (itemFired.type == ItemID.TitaniumOre) projType = 19;
+					if (itemFired.type == mod.ItemType("HallowedOre")) projType = 20;
+					if (itemFired.type == ItemID.ChlorophyteOre) projType = 21;
+					if (itemFired.type == ItemID.LunarOre) projType = 22;
+                    if (itemFired.type == mod.ItemType("DarkmatterOre")) projType = 23;
+                    if (itemFired.type == mod.ItemType("RadiumOre")) projType = 24;
+                    if (itemFired.type == mod.ItemType("DaybreakIncineriteOre")) projType = 25;
+                    if (itemFired.type == mod.ItemType("EventideAbyssiumOre")) projType = 26;
+                    if (itemFired.type == mod.ItemType("Apocalyptite")) projType = 27;
                     return true;
-				}
-			}
+ 				}
+ 			}
             return false;
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-		{
-            int p = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("OreChunk"), damage + Damage(), knockBack, player.whoAmI);
-            Main.projectile[p].ai[1] = projType;
-            if (Main.projectile[p].ai[1] == ItemID.TinOre || Main.projectile[p].ai[1] == ItemID.CopperOre)
+ 		{
+            int p = Projectile.NewProjectile(position.X, position.Y, speedX, speedY, mod.ProjectileType("OreChunkHM"), damage, knockBack, player.whoAmI, 0, projType);
+            if (Main.projectile[p].ai[1] == 10)
             {
-                Main.projectile[p].velocity *= .5f;
-                if (Main.projectile[p].ai[1] == ItemID.TinOre)
-                {
-                    Main.projectile[p].knockBack *= 1.3f;
-                }
+                 Main.projectile[p].knockBack *= 1.5f;
             }
-            else if(Main.projectile[p].ai[1] == ItemID.SilverOre)
-            {
-                Main.projectile[p].penetrate = 2;
-            }
-            else if (Main.projectile[p].ai[1] == ItemID.CrimtaneOre)
-            {
-                Main.projectile[p].knockBack *= 1.5f;
-            }
-            else if (Main.projectile[p].ai[1] == ItemID.Meteorite)
-            {
-                int num90 = 3;
-                if (Main.rand.Next(3) == 0)
-                {
-                    num90 ++;
-                }
-                for (int num91 = 0; num91 < num90; num91++)
-                {
-                    Vector2 vector2 = new Vector2(player.position.X + player.width * 0.5f + Main.rand.Next(201) * -(float)player.direction + (Main.mouseX + Main.screenPosition.X - player.position.X), player.MountedCenter.Y - 600f);
-                    vector2.X = (vector2.X * 10f + player.Center.X) / 11f + Main.rand.Next(-100, 101);
-                    vector2.Y -= 150 * num91;
-                    float num82 = Main.mouseX + Main.screenPosition.X - vector2.X;
-                    float num83 = Main.mouseY + Main.screenPosition.Y - vector2.Y;
-                    if (num83 < 0f)
-                    {
-                        num83 *= -1f;
-                    }
-                    if (num83 < 20f)
-                    {
-                        num83 = 20f;
-                    }
-                    float num92 = num82 + Main.rand.Next(-40, 41) * 0.03f;
-                    float speedY2 = num83 + Main.rand.Next(-40, 41) * 0.03f;
-                    num92 *= Main.rand.Next(75, 150) * 0.01f;
-                    vector2.X += Main.rand.Next(-50, 51);
-                    Vector2 speedfinal = Vector2.Normalize(new Vector2(num92, speedY2)) * (new Vector2(speedX, speedY)).Length();
-                    Projectile.NewProjectile(vector2.X, vector2.Y, speedfinal.X, speedfinal.Y, mod.ProjectileType("OreChunk"), damage + Damage(), knockBack, player.whoAmI, 0f, ItemID.Meteorite);
-                }
-            }
-            else if (Main.projectile[p].ai[1] == ItemID.CobaltOre)
-            {
-                Main.projectile[p].velocity *= 1.5f;
-            }
-            else if (Main.projectile[p].ai[1] == ItemID.PalladiumOre)
-            {
-                Main.projectile[p].velocity *= 1.3f;
-            }
-            else if (Main.projectile[p].ai[1] == ItemID.AdamantiteOre)
-            {
-                Main.projectile[p].scale *= 1.5f;
-                Main.projectile[p].width *= 2;
-                Main.projectile[p].height *= 2;
-                Main.projectile[p].damage = (int)(Main.projectile[p].damage * 1.3);
-            }
-            else if (Main.projectile[p].ai[1] == ItemID.TitaniumOre)
+            if (Main.projectile[p].ai[1] == 19)
             {
                 for (int i = 0; i < 2; i++)
                 {
                     Vector2 perturbedSpeed = new Vector2(speedX, speedY).RotatedByRandom(MathHelper.ToRadians(20));
-                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, mod.ProjectileType("OreChunk"), damage + (int)(Damage() * 0.8), knockBack, player.whoAmI, 0, ItemID.TitaniumOre);
+                    Projectile.NewProjectile(position.X, position.Y, perturbedSpeed.X, perturbedSpeed.Y, type, damage, knockBack, player.whoAmI, 0, Main.projectile[p].ai[1]);
                 }
             }
-            else if(Main.projectile[p].ai[1] == ItemID.LunarOre)
-            {
-                Main.projectile[p].velocity *= 2;
-            }
-            else if(Main.projectile[p].ai[1] == mod.ItemType("RadiumOre"))
-            {
-                Main.projectile[p].damage = (int)(Main.projectile[p].damage / 1.3);
-                Main.projectile[p].velocity /= 2;
-            }
+            Main.projectile[p].magic = false;
+            Main.projectile[p].ranged = true;
             return false;
-		}
-
-        public int Damage()
-        {
-            int orevalue = 0;
-            if(Config.LuckyOre.TryGetValue(projType, out orevalue))
-            {
-                return (int)Math.Exp(orevalue * 0.94/100);
-            }
-            else if(projType == ItemID.Hellstone)
-            {
-                return (int)Math.Exp(500 * 0.94/100);
-            }
-            else
-            {
-                return (int)Math.Exp(100 * 0.94/100);
-            }
         }
 
         public override void AddRecipes()
