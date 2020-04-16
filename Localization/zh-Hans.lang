@@ -1928,6 +1928,46 @@ ItemName.VoidUnit=虚空机械单元
 ItemName.YtriumOre=钇土矿
 ItemTooltip.YtriumOre=(破坏燎狱/潭渊祭坛后,地下洞穴层,土黄色)
 
+// AAMod.Items.Blocks.Doom
+
+ItemName.DoomBathtub=厄劫浴缸
+
+ItemName.DoomBed=厄劫床
+
+ItemName.DoomBookshelf=厄劫书架
+
+ItemName.DoomCandelabra=厄劫烛台
+
+ItemName.DoomCandle=厄劫蜡烛
+
+ItemName.DoomChair=厄劫椅
+
+ItemName.DoomChandelier=厄劫吊灯
+
+ItemName.DoomChest=厄劫宝箱
+
+ItemName.DoomClock=厄劫倒计时钟
+
+ItemName.DoomCouch=厄劫沙发
+
+ItemName.DoomDoor=厄劫门
+
+ItemName.DoomDresser=厄劫梳妆台
+
+ItemName.DoomLamp=厄劫灯
+
+ItemName.DoomLantern=厄劫灯笼
+
+ItemName.DoomPiano=厄劫钢琴
+
+ItemName.DoomSink=厄劫水池
+
+ItemName.DoomTable=厄劫桌
+
+ItemName.DoomWorkbench=厄劫工作台
+
+ItemName.DoomPlatform=厄劫平台
+
 // AAMod.Items.Blocks.RazewoodF
 
 ItemName.RazewoodBed=燎火木床
@@ -1935,8 +1975,6 @@ ItemName.RazewoodBed=燎火木床
 ItemName.RazewoodBookshelf=燎火木书架
 
 ItemName.RazewoodCandelabra=燎火木烛台
-
-ItemName.RazewoodCandle=燎火木烛台
 
 ItemName.RazewoodCandle=燎火木蜡烛
 
@@ -6284,6 +6322,46 @@ NPCName.WormSpawn=天堂之声
 MapObject.CCMireBox=卡片箱
 
 MapObject.CerberusKennel=刻尔伯洛斯的狗屋
+
+// AAMod.Tiles.Doom
+
+MapObject.DoomBathtub=厄劫浴缸
+
+MapObject.DoomBed=厄劫床
+
+MapObject.DoomBookshelf=厄劫书架
+
+MapObject.DoomCandelabra=厄劫烛台
+
+MapObject.DoomCandle=厄劫蜡烛
+
+MapObject.DoomChair=厄劫椅
+
+MapObject.DoomChandelier=厄劫吊灯
+
+MapObject.DoomChest=厄劫宝箱
+
+MapObject.DoomClock=厄劫倒计时钟
+
+MapObject.DoomCouch=厄劫沙发
+
+MapObject.DoomDoor=厄劫门
+
+MapObject.DoomDresser=厄劫梳妆台
+
+MapObject.DoomLamp=厄劫灯
+
+MapObject.DoomLantern=厄劫灯笼
+
+MapObject.DoomPiano=厄劫钢琴
+
+MapObject.DoomSink=厄劫水池
+
+MapObject.DoomTable=厄劫桌
+
+MapObject.DoomWorkbench=厄劫工作台
+
+MapObject.DoomPlatform=厄劫平台
 
 
 // AAMod.Tiles.BogwoodF
