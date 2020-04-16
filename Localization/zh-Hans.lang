@@ -1791,6 +1791,9 @@ ItemTooltip.EventideAbyssiumOre=又冷又湿, 如同遍布泥潭的沼泽中的�
 
 ItemName.EventideTorch=渊宵火把
 
+ItemName.EnderMemory=永恒之记忆
+ItemTooltip.EnderMemory=纪念某人的巨大雕像\n底座上刻有一幅阴沉的版画
+
 ItemName.FurnitureDynamo=家居集铸点
 ItemTooltip.FurnitureDynamo=将所有的家具铸造位点合成为一个\n现在你不需要在你家里摆7个家具制作点了
 
@@ -6389,6 +6392,10 @@ MapObject.RazewoodTable=燎火木桌
 MapObject.RazewoodTub=燎火木浴缸
 
 MapObject.RazewoodWorkbench=燎火木工作台
+
+// AAMod.Tiles.Doom
+
+
 
 
 // AAMod.Tiles.Crates
