@@ -288,7 +288,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
             npc.dontCountMe = true;
             npc.alpha = 255;
             banner = mod.NPCType("Wyrmling");
-			bannerItem = mod.ItemType("WyrmBanner");
+			bannerItem = mod.ItemType("WyrmlingBanner");
         }
 
         public override bool? DrawHealthBar(byte hbPosition, ref float scale, ref Vector2 position)
@@ -395,7 +395,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 
             npc.alpha = 255;
             banner = mod.NPCType("Wyrmling");
-			bannerItem = mod.ItemType("WyrmBanner");
+			bannerItem = mod.ItemType("WyrmlingBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)
@@ -502,7 +502,7 @@ namespace AAMod.NPCs.Bosses.Wyrmling
 
             npc.alpha = 255;
             banner = mod.NPCType("Wyrmling");
-			bannerItem = mod.ItemType("WyrmBanner");
+			bannerItem = mod.ItemType("WyrmlingBanner");
         }
 
         public override void HitEffect(int hitDirection, double damage)

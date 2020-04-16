@@ -6,26 +6,28 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AAMod.Tiles.Furniture.Oroboros
+namespace AAMod.Tiles.Furniture.Doom
 {
-    public class OroborosLantern : ModTile
+    public class DoomLantern : ModTile
 	{
 		public override void SetDefaults()
 		{
             Main.tileLighted[Type] = true;
             Main.tileFrameImportant[Type] = true;
             Main.tileLavaDeath[Type] = true;
+
             TileObjectData.newTile.CopyFrom(TileObjectData.Style1x2Top);
             TileObjectData.newSubTile.CopyFrom(TileObjectData.newTile);
             TileObjectData.newSubTile.LavaDeath = false;
             TileObjectData.newSubTile.LavaPlacement = LiquidPlacement.Allowed;
             TileObjectData.addTile(Type);
 			ModTranslation name = CreateMapEntryName();
-			name.SetDefault("Oroboros Latern");
-            AddMapEntry(new Color(205, 62, 12), name);
+			name.SetDefault("Doom Latern");
+            AddMapEntry(new Color(200, 0, 0), name);
             dustType = mod.DustType("DoomDust");
             adjTiles = new int[] { TileID.HangingLanterns };
             AddToArray(ref TileID.Sets.RoomNeeds.CountsAsTorch);
+
         }
         public override void HitWire(int i, int j)
         {
@@ -65,24 +67,23 @@ namespace AAMod.Tiles.Furniture.Oroboros
             if (tile.frameX < 18)
             {
                 r = 0.9f;
-                g = 0.2f;
-                b = 0.2f;
+                g = 0.9f;
+                b = 0.9f;
             }
         }
 
         public override void KillMultiTile(int i, int j, int frameX, int frameY)
 		{
-			Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType("OroborosLantern"));
+			Item.NewItem(i * 16, j * 16, 48, 32, mod.ItemType("DoomLantern"));
 			Chest.DestroyChest(i, j);
-        }
-
+		}
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
-            Color color = new Color(255, 50, 50, 0);
+            Color color = Color.White;
             int frameX = Main.tile[i, j].frameX;
             int frameY = Main.tile[i, j].frameY;
             int width = 20;
-            int offsetY = -2;
+            int offsetY = 2;
             int height = 20;
             int offsetX = 2;
             Vector2 zero = new Vector2(Main.offScreenRange, Main.offScreenRange);
@@ -92,7 +93,7 @@ namespace AAMod.Tiles.Furniture.Oroboros
             }
             for (int k = 0; k < 7; k++)
             {
-                Main.spriteBatch.Draw(mod.GetTexture("Tiles/Furniture/Oroboros/OroborosLantern_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X + offsetX - (width - 16f) / 2f, j * 16 - (int)Main.screenPosition.Y + offsetY) + zero, new Rectangle(frameX, frameY, width, height), color, 0f, default, 1f, SpriteEffects.None, 0f);
+                Main.spriteBatch.Draw(mod.GetTexture("Glowmasks/DoomLantern_Glow"), new Vector2(i * 16 - (int)Main.screenPosition.X + offsetX - (width - 16f) / 2f, j * 16 - (int)Main.screenPosition.Y + offsetY) + zero, new Rectangle(frameX, frameY, width, height), color, 0f, default, 1f, SpriteEffects.None, 0f);
             }
         }
     }

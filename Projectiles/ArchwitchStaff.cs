@@ -61,19 +61,11 @@ namespace AAMod.Projectiles
             int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, DustID.Shadowflame);
             Main.dust[dust].velocity /= 1f;
 
-            int[] Targets = GetNPCs(projectile.Center, -1, 600f);
-
-            if (Targets.Length != 0)
+            int Target = BaseAI.GetNPC(projectile.Center, -1, 500);
+            if (Target != -1)
             {
-                for (int e = 0; e < Targets.Length; e++)
-                {
-                    NPC target = Main.npc[e];
-                    if (!target.friendly)
-                    {
-                        int pID = BaseAI.ShootPeriodic(projectile, target.position, target.width, target.height, ModContent.ProjectileType<ArchwitchStar>(), ref projectile.ai[1], 40, projectile.damage, 4, true);
-                        Main.projectile[pID].ai[1] = target.whoAmI;
-                    }
-                }
+                NPC target = Main.npc[Target];
+                BaseAI.ShootPeriodic(projectile, target.position, target.width, target.height, ModContent.ProjectileType<ArchwitchStar>(), ref projectile.ai[1], 40, projectile.damage, 4, true);
             }
         }
 

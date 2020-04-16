@@ -30,19 +30,29 @@ Fargo's Mutant Mod support.
 
 A unique soundtrack.
 
-~Update 1.0.0.3 Changelog~
+~Update 1.0.0.5 Changelog~
 
-1. Governor Gibs & TheRedstoneBro's dev bags are now properly sold by Alphakip.
+1. fixed the Broken Code only being able to be used one time.
 
-2. Alphakip will only spawn in Expert Mode now.
+2. fixed Hydra's Fury disappearing even with Thorium enabled.
 
-3. Fixed Sagittarius not despawning when the player leaves the void
+3. fixed the ore staff's ores on the ground spinning continuously.
 
-4. Buffed Desert Djinn's damage in expert mode
+4. HARD nerf to the FA stuffs to make them suitable for early post-ML.
 
-5. Fixed the fog not appearing in the mire desert
+5. Tweaked WindFury to make it autouse.
 
-6. New Doomstone & Apocalyptite sprites
+6. Fixed the altars crashing worldgen in AA (thanks Ozzatron)
+
+6. Fixed SRaj leaving damages the player
+
+7. Nerfed the Archwitch's Scepter
+
+8. Devs with 2 vanities &/or weapons can now interchange the two at a Loom/Ancient Manipulator respectively
+
+9. Doubled Mushroom Monarch's damage
+
+10. A new structure underground commemorating an old friend.
 
 ~Update 1.0 Changelog~
 

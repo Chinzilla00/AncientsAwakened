@@ -53,7 +53,6 @@ Right click to fire explosive magic bolts");
                 item.useTime = 10;
                 item.useAnimation = 30;
                 item.UseSound = new LegacySoundStyle(2, 105, Terraria.Audio.SoundType.Sound);
-                item.damage = 200;
             }
             else
             {
@@ -66,7 +65,6 @@ Right click to fire explosive magic bolts");
                 item.useTime = 6;
                 item.useAnimation = 6;
                 item.UseSound = SoundID.Item1;
-                item.damage = 300;
             }
             return base.CanUseItem(player);
         }
@@ -79,7 +77,7 @@ Right click to fire explosive magic bolts");
             recipe.SetResult(this);
             recipe.AddRecipe(); 
             recipe = new ModRecipe(mod);
-            recipe.AddIngredient(null, "CatsEyeRifle");
+            recipe.AddIngredient(null, "CatsEyeRifleEX");
             recipe.AddTile(TileID.LunarCraftingStation);
             recipe.SetResult(this);
             recipe.AddRecipe();

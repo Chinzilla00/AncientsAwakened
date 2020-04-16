@@ -40,7 +40,7 @@ namespace AAMod.Tiles.Furniture.Oroboros
 
         public override void PostDraw(int i, int j, SpriteBatch spriteBatch)
         {
-            Color color = new Color(100, 100, 100, 0);
+            Color color = new Color(255, 50, 50, 0);
             int frameX = Main.tile[i, j].frameX;
             int frameY = Main.tile[i, j].frameY;
             int width = 20;
