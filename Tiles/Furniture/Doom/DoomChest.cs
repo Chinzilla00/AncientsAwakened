@@ -1,4 +1,5 @@
 using System;
+using BaseMod;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
@@ -198,6 +199,24 @@ namespace AAMod.Tiles.Furniture.Doom
                 player.showItemIcon = false;
                 player.showItemIcon2 = 0;
             }
+        }
+
+        public Color GetColor(Color color)
+        {
+            Color glowColor = Color.White;
+            return glowColor;
+        }
+
+        public override void PostDraw(int x, int y, SpriteBatch sb)
+        {
+            Tile tile = Main.tile[x, y];
+
+            Texture2D glowTex = mod.GetTexture("Glowmasks/DoomChest_Glow");
+
+            int frameX = tile != null && tile.active() ? tile.frameX + (Main.tileFrame[Type] * 36) : 0;
+            int frameY = tile != null && tile.active() ? tile.frameY + (Main.tileFrame[Type] * 38) : 0;
+
+            BaseDrawing.DrawTileTexture(sb, glowTex, x, y, 16, 16, frameX, frameY, false, false, false, null, GetColor);
         }
 
 
