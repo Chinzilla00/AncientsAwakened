@@ -23,7 +23,7 @@ namespace AAMod.Items.Tools
             item.autoReuse = true;
             item.useTurn = true;
             item.damage = 60;
-            item.pick = 215;
+            item.pick = 205;
         }
 
         public override void SetStaticDefaults()

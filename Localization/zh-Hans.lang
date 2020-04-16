@@ -1791,6 +1791,9 @@ ItemTooltip.EventideAbyssiumOre=又冷又湿, 如同遍布泥潭的沼泽中的�
 
 ItemName.EventideTorch=渊宵火把
 
+ItemName.EnderMemory=永恒之记忆
+ItemTooltip.EnderMemory=纪念某人的巨大雕像\n底座上刻有一幅阴沉的版画
+
 ItemName.FurnitureDynamo=家居集铸点
 ItemTooltip.FurnitureDynamo=将所有的家具铸造位点合成为一个\n现在你不需要在你家里摆7个家具制作点了
 
@@ -2506,7 +2509,10 @@ BuffName.TalismanBuff=冷酷金欲
 BuffDescription.TalismanBuff=钱！好多的钱！大量的钱！
 
 ItemName.OreCannon=加里有矿
-ItemTooltip.OreCannon=用矿石做炮弹
+ItemTooltip.OreCannon=用部分矿石做炮弹\n部分矿石有特殊效果
+
+ItemName.OreCannonEX=最终矿石加农
+ItemTooltip.OreCannon=用任何矿石做炮弹\n部分矿石有特殊效果\n传说武器\n加里有矿EX
 
 ItemName.Unearther=发掘者
 ItemTooltip.Unearther=挖矿更快！
@@ -3031,7 +3037,7 @@ ItemTooltip.EquinoxWorm=使用天界材料制作的蠕虫\n召唤昼夜双虫\n�
 ItemName.FlamesOfAnarchy=原初之焰
 ItemTooltip.FlamesOfAnarchy=在这个古老的瓷器中燃烧着冥昧之焰\n呼唤混沌姐妹\n无消耗
 
-ItemName.GoldenCarrot=十克拉胡罗卜
+ItemName.GoldenCarrot=十克拉胡萝卜
 ItemTooltip.GoldenCarrot=召唤一个凶猛的惩罚者
 
 ItemName.GoldenGrub=金欲诱饵
@@ -3055,7 +3061,7 @@ ItemTooltip.Owl=召唤雅典娜\n只能在天穹卫城上的天鸮祭坛处使�
 ItemName.PlanteraFlower=丛林兰
 ItemTooltip.PlanteraFlower=召唤世纪之花\n只能在丛林地下召唤
 
-ItemName.PlatinumCarrot=十克拉胡罗卜
+ItemName.PlatinumCarrot=十克拉胡萝卜
 ItemTooltip.PlatinumCarrot=召唤一个凶猛的惩罚者
 
 ItemName.Scepter=拉的神杖
@@ -6389,6 +6395,10 @@ MapObject.RazewoodTable=燎火木桌
 MapObject.RazewoodTub=燎火木浴缸
 
 MapObject.RazewoodWorkbench=燎火木工作台
+
+// AAMod.Tiles.Doom
+
+
 
 
 // AAMod.Tiles.Crates
