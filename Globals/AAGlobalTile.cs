@@ -125,6 +125,23 @@ namespace AAMod
                 }
             }
 
+            if (Main.player[Main.myPlayer].GetModPlayer<AAPlayer>().StripeManOre)
+            {
+                if(TileID.Sets.Conversion.Stone[type])
+                {
+                    int k = DropOreMethod(i, j, type);
+                    if(k != 0) Item.NewItem(i * 16, j * 16, 32, 32, k, 1, false, 0, false, false);
+                }
+            }
+
+            if (Main.player[Main.myPlayer].GetModPlayer<AAPlayer>().AncientGoldBody)
+            {
+                if(TileID.Sets.Conversion.Stone[type] && Main.rand.Next(50) == 0)
+                {
+                    Item.NewItem(i * 16, j * 16, 32, 32, ItemID.GoldCoin, 1, false, 0, false, false);
+                }
+            }
+
             return base.Drop(i, j, type);
         }
 
@@ -180,26 +197,6 @@ namespace AAMod
             }
 
             return base.CanKillTile(i, j, type, ref blockDamaged);
-        }
-
-        public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
-        {
-            if (Main.player[Main.myPlayer].GetModPlayer<AAPlayer>().StripeManOre)
-            {
-                if(TileID.Sets.Conversion.Stone[type])
-                {
-                    int k = DropOreMethod(i, j, type);
-                    if(k != 0) Item.NewItem(i * 16, j * 16, 32, 32, k, 1, false, 0, false, false);
-                }
-            }
-
-            if (Main.player[Main.myPlayer].GetModPlayer<AAPlayer>().AncientGoldBody)
-            {
-                if(TileID.Sets.Conversion.Stone[type] && Main.rand.Next(50) == 0)
-                {
-                    Item.NewItem(i * 16, j * 16, 32, 32, ItemID.GoldCoin, 1, false, 0, false, false);
-                }
-            }
         }
 
         public override bool CanExplode(int i, int j, int type)
