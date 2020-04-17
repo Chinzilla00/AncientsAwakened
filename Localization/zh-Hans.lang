@@ -179,6 +179,9 @@ BuffDescription.K9=汪！
 BuffName.LungMinion=古龙
 BuffDescription.LungMinion=召唤一条古龙为你而战
 
+BuffName.Lunamini=小月亮
+BuffDescription.Lunamini=一个月光蜂跟随着你
+
 BuffName.MadnessElemental=癫狂元素
 BuffDescription.MadnessElemental=召唤一个癫狂元素为你而战
 
@@ -4267,6 +4270,9 @@ ItemTooltip.K9Collar=召唤一只机械小奶狗
 ItemName.MudkipBall=沼跃鱼精灵球
 ItemTooltip.MudkipBall=似乎里面已经有东西了
 
+ItemName.LunaminiJar=月光罐
+ItemTooltip.LunaminiJar=召唤小月光蜂
+
 ItemName.MudkipBallS=闪耀沼跃鱼精灵球
 ItemTooltip.MudkipBallS=似乎里面已经有东西了
 
@@ -5684,6 +5690,8 @@ NPCName.OwlRune=天鸮符文
 NPCName.OwlRuneCharged=蓄能天鸮符文
 
 NPCName.Seraph=六翼鸟妖
+
+NPCName.SeraphHurt=受伤的六翼鸟妖
 
 NPCName.SeraphA=六翼鸟妖
 

@@ -1235,7 +1235,7 @@ namespace AAMod
                                     spawnGrips = true;
                                     if (Main.netMode == 0)
                                     {
-                                        Main.NewText("The sound of scraping against the ground can be heard nearby...", 50, 255, 130, false);
+                                        Main.NewText(Lang.BossSummonsInfo("GripsAwoken"), 50, 255, 130, false);
                                     }
                                     else if (Main.netMode == 2)
                                     {
