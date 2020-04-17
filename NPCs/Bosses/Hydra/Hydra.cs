@@ -386,7 +386,24 @@ namespace AAMod.NPCs.Bosses.Hydra
                 Gore.NewGore(npc.position, npc.velocity * 0.2f, mod.GetGoreSlot("Gores/HydraGoreTail"), 1f);
             }
         }
-
+        private static float X(float t,
+        float x0, float x1, float x2)
+        {
+            return (float)(
+                x0 * Math.Pow((1 - t), 2) +
+                x1 * 2 * t * Math.Pow((1 - t), 1) +
+                x2 * Math.Pow(t, 2)
+            );
+        }
+        private static float Y(float t,
+            float y0, float y1, float y2)
+        {
+            return (float)(
+                 y0 * Math.Pow((1 - t), 2) +
+                 y1 * 2 * t * Math.Pow((1 - t), 1) +
+                 y2 * Math.Pow(t, 2)
+             );
+        }
         public void DrawHead(SpriteBatch spriteBatch, string headTexture, string glowMaskTexture, NPC head, Color drawColor)
         {
             if (head != null && head.active && head.modNPC != null && head.modNPC is HydraHead1)
@@ -395,7 +412,23 @@ namespace AAMod.NPCs.Bosses.Hydra
                 Texture2D neckTex2D = mod.GetTexture(neckTex);
                 Vector2 neckOrigin = new Vector2(npc.Center.X, npc.Center.Y - 30);
                 Vector2 connector = head.Center;
-                BaseDrawing.DrawChain(spriteBatch, new Texture2D[] { null, neckTex2D, null }, 0, neckOrigin, connector, neckTex2D.Height - 10f, drawColor, 1f, false, null);
+                float chainsPerUse = 0.05f;
+                for (float i = 0; i <= 1; i += chainsPerUse)
+                {
+                    Vector2 distBetween;
+                    float projTrueRotation;
+                    if (i != 0)
+                    {
+                        distBetween = new Vector2(X(i, neckOrigin.X, (neckOrigin.X + connector.X) / 2, connector.X) -
+                        X(i - chainsPerUse, neckOrigin.X, (neckOrigin.X + connector.X) / 2, connector.X),
+                        Y(i, neckOrigin.Y, (neckOrigin.Y + 50), connector.Y) -
+                        Y(i - chainsPerUse, neckOrigin.Y, (neckOrigin.Y + 50), connector.Y));
+                        projTrueRotation = distBetween.ToRotation() - (float)Math.PI / 2;
+                        spriteBatch.Draw(neckTex2D, new Vector2(X(i, neckOrigin.X, (neckOrigin.X + connector.X) / 2, connector.X) - Main.screenPosition.X, Y(i, neckOrigin.Y, (neckOrigin.Y + 50), connector.Y) - Main.screenPosition.Y),
+                        new Rectangle(0, 0, neckTex2D.Width, neckTex2D.Height), drawColor, projTrueRotation,
+                        new Vector2(neckTex2D.Width * 0.5f, neckTex2D.Height * 0.5f), 1f, SpriteEffects.None, 0f);
+                    }
+                }
                 spriteBatch.Draw(mod.GetTexture(headTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, drawColor, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
                 spriteBatch.Draw(mod.GetTexture(glowMaskTexture), new Vector2(head.Center.X - Main.screenPosition.X, head.Center.Y - Main.screenPosition.Y), head.frame, Color.White, head.rotation, new Vector2(36 * 0.5f, 32 * 0.5f), 1f, SpriteEffects.None, 0f);
             }
