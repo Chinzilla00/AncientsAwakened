@@ -2553,7 +2553,7 @@ ItemName.OreCannon=加里有矿
 ItemTooltip.OreCannon=用部分矿石做炮弹\n部分矿石有特殊效果
 
 ItemName.OreCannonEX=最终矿石加农
-ItemTooltip.OreCannon=用任何矿石做炮弹\n部分矿石有特殊效果\n传说武器\n加里有矿EX
+ItemTooltip.OreCannonEX=用任何矿石做炮弹\n部分矿石有特殊效果\n传说武器\n加里有矿EX
 
 ItemName.Unearther=发掘者
 ItemTooltip.Unearther=挖矿更快！
