@@ -148,7 +148,7 @@ namespace AAMod.NPCs.Bosses.Athena
                                 CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.EnemyChat("AthenaChat1"));
                             }
 
-                            if (internalAI[3] >= 300)
+                            if (internalAI[4] >= 300)
                             {
                                 CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.EnemyChat("AthenaChat2"));
                                 npc.active = false;
