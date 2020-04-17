@@ -11,11 +11,11 @@ namespace AAMod.Projectiles
         {
             projectile.CloneDefaults(ProjectileID.LightBeam);
             projectile.penetrate = 1;  
-            projectile.width = 14;
+            projectile.width = 18;
             projectile.height = 18;
 			projectile.friendly = true;
 			projectile.hostile = false;
-            projectile.timeLeft = 900;
+            projectile.timeLeft = 300;
         }
 		
 		public override void AI()
@@ -28,7 +28,8 @@ namespace AAMod.Projectiles
 				dust = Main.dust[Dust.NewDust(position, 30, 30, ModContent.DustType<Dusts.SnowDust>(), 0f, 0f, 0, default, 1)];
 				dust.noGravity = true;
 			}
-		}
+            projectile.timeLeft--;
+        }
 
         public override void Kill(int timeleft)
         {

@@ -115,6 +115,18 @@ namespace AAMod.NPCs.Bosses.Athena
                 {
                     npc.velocity *= 0;
 
+                    if (Seen)
+                    {
+                        if (player.Center.X < npc.Center.X + 32)
+                        {
+                            npc.direction = -1;
+                        }
+                        else
+                        {
+                            npc.direction = 1;
+                        }
+                    }
+
                     if (Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height) && internalAI[3] < 180)
                     {
                         Seen = true;
@@ -126,14 +138,19 @@ namespace AAMod.NPCs.Bosses.Athena
                         if (!Seen)
                         {
                             internalAI[4]++; 
-                            if (internalAI[3] == 60)
+                            if (internalAI[4] == 60)
                             {
-                                if (Main.netMode != 1) BaseUtility.Chat("...", Color.CornflowerBlue);
+                                CombatText.NewText(npc.Hitbox, Color.CadetBlue, "...");
                             }
 
-                            if (internalAI[3] >= 180)
+                            if (internalAI[4] == 180)
                             {
-                                if (Main.netMode != 1) BaseUtility.Chat("...ugh...those little whiny brats...", Color.CornflowerBlue);
+                                CombatText.NewText(npc.Hitbox, Color.CadetBlue, "...ugh...those little whiny--");
+                            }
+
+                            if (internalAI[3] >= 300)
+                            {
+                                CombatText.NewText(npc.Hitbox, Color.CadetBlue, "I dont have time for this..!");
                                 npc.active = false;
                                 int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaFlee>());
                                 Main.npc[p].Center = npc.Center;
@@ -141,16 +158,14 @@ namespace AAMod.NPCs.Bosses.Athena
                             return;
                         }
 
-                        internalAI[3]++;
-
-                        if (internalAI[3] < 420)
+                        if (internalAI[3]++ < 420)
                         {
                             if (!AAWorld.downedAthena)
                             {
 
                                 if (internalAI[3] == 60)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena1"), Color.CornflowerBlue);
+                                    CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena1"));
                                 }
 
                                 if (internalAI[3] == 180)
@@ -160,22 +175,22 @@ namespace AAMod.NPCs.Bosses.Athena
                                     {
                                         s = Lang.BossChat("Athena2");
                                     }
-                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena3") + s + "!", Color.CornflowerBlue);
+                                    CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena3") + s + "!");
                                 }
 
                                 if (internalAI[3] == 300)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena4"), Color.CornflowerBlue);
+                                    CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena4"));
                                 }
 
                                 if (internalAI[3] == 420)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena5"), Color.CornflowerBlue);
+                                    CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena5"));
                                 }
 
                                 if (internalAI[3] >= 420)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena6"), Color.CornflowerBlue);
+                                    CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena6"));
                                     internalAI[2] = 1;
 
                                     npc.netUpdate = true;
@@ -185,17 +200,17 @@ namespace AAMod.NPCs.Bosses.Athena
                             {
                                 if (internalAI[3] == 60)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena12"), Color.CornflowerBlue);
+                                    CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena12"));
                                 }
 
                                 if (internalAI[3] == 180)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena13"), Color.CornflowerBlue);
+                                    CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena13"));
                                 }
 
                                 if (internalAI[3] == 300)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena14"), Color.CornflowerBlue);
+                                    CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena14"));
                                     internalAI[2] = 1;
                                     npc.netUpdate = true;
                                 }
@@ -204,12 +219,12 @@ namespace AAMod.NPCs.Bosses.Athena
                             {
                                 if (internalAI[3] == 60)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena7"), Color.CornflowerBlue);
+                                    CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena7"));
                                 }
 
                                 if (internalAI[3] >= 180)
                                 {
-                                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena8"), Color.CornflowerBlue);
+                                    CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena8"));
                                     internalAI[2] = 1;
                                     npc.netUpdate = true;
                                 }
@@ -219,18 +234,28 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
                 else
                 {
+                    npc.spriteDirection = npc.direction = npc.velocity.X > 0 ? 1 : -1;
                     MoveToVector2(Acropolis);
                 }
             }
             else
             {
+                if (player.Center.X < npc.Center.X + 32)
+                {
+                    npc.direction = -1;
+                }
+                else
+                {
+                    npc.direction = 1;
+                }
+
                 npc.dontTakeDamage = false;
                 if (player.dead || !player.active || Vector2.Distance(npc.position, player.position) > 5000 || !modPlayer.ZoneAcropolis)
                 {
                     npc.TargetClosest();
                     if (player.dead || !player.active || Math.Abs(Vector2.Distance(npc.position, player.position)) > 5000 || !modPlayer.ZoneAcropolis)
                     {
-                        if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena9"), Color.CornflowerBlue);
+                        CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena9"));
                         int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaFlee>());
                         Main.npc[p].Center = npc.Center;
                         npc.active = false;
@@ -374,15 +399,6 @@ namespace AAMod.NPCs.Bosses.Athena
                         MoveToVector2(MoveVector2);
                     }
                 }
-            }
-
-            if (player.Center.X < npc.Center.X + 32)
-            {
-                npc.direction = -1;
-            }
-            else
-            {
-                npc.direction = 1;
             }
 
             npc.rotation = 0;
@@ -539,7 +555,7 @@ namespace AAMod.NPCs.Bosses.Athena
                     Main.npc[a].Center = npc.Center;
                     int b = Projectile.NewProjectile(npc.Center.X, npc.Center.Y, 0f, 0f, mod.ProjectileType("ShockwaveBoom"), 0, 1, Main.myPlayer, 0, 0);
                     Main.projectile[b].Center = npc.Center;
-                    if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena10"), Color.Cyan);
+                    CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena10"));
 
                     Main.projectile[b].netUpdate = true;
                 }
@@ -563,7 +579,7 @@ namespace AAMod.NPCs.Bosses.Athena
             }
 
 
-            if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("Athena11"), Color.CornflowerBlue);
+            CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.BossChat("Athena11"));
             int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaFlee>());
             Main.npc[p].Center = npc.Center;
         }
@@ -575,7 +591,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
             if (npc.ai[2] == 1)
             {
-                BaseDrawing.DrawAfterimage(sb, tex, 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
+                BaseDrawing.DrawAfterimage(sb, tex, 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f);
             }
             BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, lightColor);
             return false;
@@ -618,12 +634,12 @@ namespace AAMod.NPCs.Bosses.Athena
                 }
                 else if (npc.ai[0] == 130)
                 {
-                    npc.velocity.Y = -6f;
                     npc.netUpdate = true;
                 }
-                else if (npc.ai[0] > 130)
+                else if (npc.ai[0] >= 130)
                 {
-                    npc.velocity.Y -= 6f;
+                    npc.velocity.Y -= 0.5f;
+                    if (npc.velocity.Y < -8f) npc.velocity.Y = -8f;
                 }
                 if (npc.position.Y + npc.velocity.Y <= 0f && Main.netMode != 1) { BaseAI.KillNPC(npc); npc.netUpdate = true; }
             }
@@ -645,7 +661,7 @@ namespace AAMod.NPCs.Bosses.Athena
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            BaseDrawing.DrawAfterimage(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f, Color.CornflowerBlue);
+            BaseDrawing.DrawAfterimage(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.oldPos, npc.scale, npc.rotation, npc.direction, 7, npc.frame, 1f, 1f, 5, false, 0f, 0f);
             BaseDrawing.DrawTexture(spriteBatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 7, npc.frame, npc.GetAlpha(lightColor), false);
             return false;
         }

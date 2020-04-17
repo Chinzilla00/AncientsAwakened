@@ -34,7 +34,7 @@ namespace AAMod.NPCs.Enemies.Sky
 
         public override void AI()
         {
-            BaseAI.AIFlier(npc, ref npc.ai, true, 0.4f, 0.04f, 5f, 4f, false, 300);
+            BaseAI.AIFlier(npc, ref npc.ai, true, 0.8f, 0.04f, 8f, 7f, false, 300);
             Player player = Main.player[npc.target];
             if (player.Center.X > npc.Center.X)
             {

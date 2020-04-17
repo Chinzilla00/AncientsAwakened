@@ -5,7 +5,6 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 using AAMod.NPCs.Bosses.Athena;
-using AAMod.NPCs.Bosses.Athena.Olympian;
 using Terraria.Localization;
 
 namespace AAMod.NPCs.Enemies.Sky
@@ -81,11 +80,13 @@ namespace AAMod.NPCs.Enemies.Sky
                 {
                     npc.velocity.X -= 0.2f;
                     if (npc.velocity.X < -8f) npc.velocity.Y = -8f;
+                    npc.spriteDirection = 1;
                 }
                 else
                 {
                     npc.velocity.X += 0.2f;
                     if (npc.velocity.X > 8f) npc.velocity.Y = 8f;
+                    npc.spriteDirection = -1;
                 }
 
                 Vector2 Acropolis = new Vector2(Origin.X + (80 * 16), Origin.Y + (79 * 16));

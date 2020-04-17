@@ -140,11 +140,13 @@ namespace AAMod.NPCs.Enemies.Sky
 
         public override void NPCLoot()
         {
-            if (Main.rand.Next(30) == 0 && !NPC.AnyNPCs(ModContent.NPCType<SeraphHurt>()))
+            if (Main.rand.Next(30) <= SeraphChance.SeraphKills && !NPC.AnyNPCs(ModContent.NPCType<SeraphHurt>()))
             {
+                SeraphChance.SeraphKills = 0;
                 int a = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<SeraphHurt>());
                 Main.npc[a].velocity = npc.velocity;
             }
+            SeraphChance.SeraphKills++;
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("SeraphFeather"));
         }
 
@@ -168,6 +170,24 @@ namespace AAMod.NPCs.Enemies.Sky
                 case 2: return "That was fun! Come back when you don't suck!, twerp!";
                 case 3: return "And STAY away..!";
                 default: return "Well that was anticlimactic. Piece of cake!";
+            }
+        }
+    }
+
+    public class SeraphChance : ModWorld
+    {
+        public static int SeraphKills = 0;
+
+        public override void Initialize()
+        {
+            SeraphKills = 0;
+        }
+
+        public override void PostUpdate()
+        {
+            if (SeraphKills > 30)
+            {
+                SeraphKills = 30;
             }
         }
     }
