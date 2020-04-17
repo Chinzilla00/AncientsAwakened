@@ -3633,6 +3633,11 @@ Fishy";
                     return "疼疼疼..! 哇哇哇哇 雅典娜娜娜娜娜 这条地面虫子欺负我!";
                     case "SeraphHurtChat5":
                     return "*喘*! 你弄脏了我的裙子..! 我要去叫雅典娜..!";
+
+                    case "AthenaChat1":
+                    return "...啊哈...那些小笨蛋--";
+                    case "AthenaChat2":
+                    return "我没时间管这个..!";
                 }
             }
             else
@@ -3669,6 +3674,10 @@ Fishy";
                     return "THAT HURT..! WAAAAAAAAAAH ATHENAAAAAA THE EARTHWALKER IS BEING MEAN!";
                     case "SeraphHurtChat5":
                     return "*GASP*! You scuffed up my dress..! I'm getting Athena..!";
+                    case "AthenaChat1":
+                    return "...ugh...those little whiny--";
+                    case "AthenaChat2":
+                    return "I dont have time for this..!";
                 }
             }
             return"";

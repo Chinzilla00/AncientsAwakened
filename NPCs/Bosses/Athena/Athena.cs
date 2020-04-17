@@ -145,12 +145,12 @@ namespace AAMod.NPCs.Bosses.Athena
 
                             if (internalAI[4] == 180)
                             {
-                                CombatText.NewText(npc.Hitbox, Color.CadetBlue, "...ugh...those little whiny--");
+                                CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.EnemyChat("AthenaChat1"));
                             }
 
                             if (internalAI[3] >= 300)
                             {
-                                CombatText.NewText(npc.Hitbox, Color.CadetBlue, "I dont have time for this..!");
+                                CombatText.NewText(npc.Hitbox, Color.CadetBlue, Lang.EnemyChat("AthenaChat2"));
                                 npc.active = false;
                                 int p = NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<AthenaFlee>());
                                 Main.npc[p].Center = npc.Center;
