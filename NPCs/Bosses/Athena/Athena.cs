@@ -148,7 +148,7 @@ namespace AAMod.NPCs.Bosses.Athena
                                 CombatText.NewText(npc.Hitbox, Color.CadetBlue, "...ugh...those little whiny--");
                             }
 
-                            if (internalAI[3] >= 300)
+                            if (internalAI[4] >= 300)
                             {
                                 CombatText.NewText(npc.Hitbox, Color.CadetBlue, "I dont have time for this..!");
                                 npc.active = false;
