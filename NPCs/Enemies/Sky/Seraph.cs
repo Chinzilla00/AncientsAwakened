@@ -152,22 +152,22 @@ namespace AAMod.NPCs.Enemies.Sky
         {
             switch (Main.rand.Next(5))
             {
-                case 0: return "Aww you're no fun! Sissy..!";
-                case 1: return "Hahahah! Running away like the spineless earthwalker you are!";
-                case 2: return "I'm bored now.";
-                case 3: return "Come back! I was having fun kicking you around..!";
-                default: return "Aww the wittle earthwalker is weaving. Gonna go cry?";
+                case 0: return Lang.EnemyChat("SeraphChat1");
+                case 1: return Lang.EnemyChat("SeraphChat2");
+                case 2: return Lang.EnemyChat("SeraphChat3");
+                case 3: return Lang.EnemyChat("SeraphChat4");
+                default: return Lang.EnemyChat("SeraphChat5");
             }
         }
         public string SeraphBitchingKill()
         {
             switch (Main.rand.Next(5))
             {
-                case 0: return "Whoops. They died. Oh well..!";
-                case 1: return "Hah! I win!";
-                case 2: return "That was fun! Come back when you don't suck!, twerp!";
-                case 3: return "And STAY away..!";
-                default: return "Well that was anticlimactic. Piece of cake!";
+                case 0: return Lang.EnemyChat("SeraphKillChat1");
+                case 1: return Lang.EnemyChat("SeraphKillChat2");
+                case 2: return Lang.EnemyChat("SeraphKillChat3");
+                case 3: return Lang.EnemyChat("SeraphKillChat4");
+                default: return Lang.EnemyChat("SeraphKillChat5");
             }
         }
     }

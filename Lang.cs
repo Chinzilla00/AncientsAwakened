@@ -2751,6 +2751,8 @@ Fishy";
                     {
                         case "BossAwoken":
                         return "已经苏醒!";
+                        case "GripsAwoken":
+                        return "附近可以听到刮擦地面的声音...";
                         case "EquinoxWormawoken":
                         return "昼夜双虫已经苏醒!";
                         case "ChaosRuneYamataFalse":
@@ -2921,6 +2923,8 @@ Fishy";
                     {
                         case "BossAwoken":
                         return " have awoken!";
+                        case "GripsAwoken":
+                        return "The sound of scraping against the ground can be heard nearby...";
                         case "EquinoxWormawoken":
                         return "The Equinox Worms have awoken!";
                         case "ChaosRuneYamataFalse":
@@ -3590,6 +3594,83 @@ Fishy";
 
                     }
                 }
+            return"";
+        }
+
+        public static string EnemyChat(string Info)
+        {
+            if(Language.ActiveCulture == GameCulture.Chinese)
+            {
+                switch(Info)
+                {
+                    case "SeraphChat1":
+                    return "啊哦，你一点也不好玩! 娘娘腔..!";
+                    case "SeraphChat2":
+                    return "哈哈哈哈! 你真像一条没脊梁骨的臭虫!";
+                    case "SeraphChat3":
+                    return "我现在很无聊.";
+                    case "SeraphChat4":
+                    return "来呀! 我很乐意把你打的满地找牙..!";
+                    case "SeraphChat5":
+                    return "哎哟哟，小地面爬行动物不高兴了. 要不一边哭去?";
+                    case "SeraphKillChat1":
+                    return "哦呀. 死了. 爽..!";
+                    case "SeraphKillChat2":
+                    return "哈! 我赢了!";
+                    case "SeraphKillChat3":
+                    return "爽到! 等你学会断奶了再来吧! 臭弟弟!";
+                    case "SeraphKillChat4":
+                    return "滚远点..!";
+                    case "SeraphKillChat5":
+                    return "我还没用全力. 小菜一碟!";
+                    case "SeraphHurtChat1":
+                    return "哦啊..! 真野蛮! 雅典娜娜娜娜娜娜娜!!!";
+                    case "SeraphHurtChat2":
+                    return "嘿! 我就是玩玩! 你给我等着看雅典娜听到了怎么说!";
+                    case "SeraphHurtChat3":
+                    return "现在你出tm大事了! 哦 雅典娜娜娜娜娜娜娜!!!!";
+                    case "SeraphHurtChat4":
+                    return "疼疼疼..! 哇哇哇哇 雅典娜娜娜娜娜 这条地面虫子欺负我!";
+                    case "SeraphHurtChat5":
+                    return "*喘*! 你弄脏了我的裙子..! 我要去叫雅典娜..!";
+                }
+            }
+            else
+            {
+                switch(Info)
+                {
+                    case "SeraphChat1":
+                    return "Aww you're no fun! Sissy..!";
+                    case "SeraphChat2":
+                    return "Hahahah! Running away like the spineless earthwalker you are!";
+                    case "SeraphChat3":
+                    return "I'm bored now.";
+                    case "SeraphChat4":
+                    return "Come back! I was having fun kicking you around..!";
+                    case "SeraphChat5":
+                    return "Aww the wittle earthwalker is weaving. Gonna go cry?";
+                    case "SeraphKillChat1":
+                    return "Whoops. They died. Oh well..!";
+                    case "SeraphKillChat2":
+                    return "Hah! I win!";
+                    case "SeraphKillChat3":
+                    return "That was fun! Come back when you don't suck!, twerp!";
+                    case "SeraphKillChat4":
+                    return "And STAY away..!";
+                    case "SeraphKillChat5":
+                    return "Well that was anticlimactic. Piece of cake!";
+                    case "SeraphHurtChat1":
+                    return "OUCH..! How RUDE! ATHENAAAAAAAAAAAAAAA!!!";
+                    case "SeraphHurtChat2":
+                    return "HEY! I was only playing! Wait till Athena hears about THIS!";
+                    case "SeraphHurtChat3":
+                    return "NOW You've done it! Oh ATHEEEEENAAAAAAAA";
+                    case "SeraphHurtChat4":
+                    return "THAT HURT..! WAAAAAAAAAAH ATHENAAAAAA THE EARTHWALKER IS BEING MEAN!";
+                    case "SeraphHurtChat5":
+                    return "*GASP*! You scuffed up my dress..! I'm getting Athena..!";
+                }
+            }
             return"";
         }
 

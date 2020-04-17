@@ -120,11 +120,11 @@ namespace AAMod.NPCs.Enemies.Sky
         {
             switch (Main.rand.Next(5))
             {
-                case 0: return "OUCH..! How RUDE! ATHENAAAAAAAAAAAAAAA!!!";
-                case 1: return "HEY! I was only playing! Wait till Athena hears about THIS!";
-                case 2: return "NOW You've done it! Oh ATHEEEEENAAAAAAAA";
-                case 3: return "THAT HURT..! WAAAAAAAAAAH ATHENAAAAAA THE EARTHWALKER IS BEING MEAN!";
-                default: return "*GASP*! You scuffed up my dress..! I'm getting Athena..!";
+                case 0: return Lang.EnemyChat("SeraphHurtChat1");
+                case 1: return Lang.EnemyChat("SeraphHurtChat2");
+                case 2: return Lang.EnemyChat("SeraphHurtChat3");
+                case 3: return Lang.EnemyChat("SeraphHurtChat4");
+                default: return Lang.EnemyChat("SeraphHurtChat5");
             }
         }
 
