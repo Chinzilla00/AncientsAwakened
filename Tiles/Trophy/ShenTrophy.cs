@@ -15,7 +15,10 @@ namespace AAMod.Tiles.Trophy
 			TileObjectData.newTile.CopyFrom(TileObjectData.Style3x3Wall);
             TileObjectData.newTile.StyleHorizontal = true;
             TileObjectData.newTile.StyleWrapLimit = 36;
+			TileObjectData.newTile.Direction = TileObjectDirection.PlaceLeft;
+			TileObjectData.newAlternate.CopyFrom(TileObjectData.newTile);
             TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight;
+			TileObjectData.addAlternate(1);
             TileObjectData.addTile(Type);
             dustType = 7;
 			disableSmartCursor = true;
