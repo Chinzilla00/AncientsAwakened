@@ -1197,7 +1197,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             if(internalAI[4] == 4f || internalAI[4] == 2f || internalAI[4] == 1f)
             {
                 target.wingTime = 0;
-                target.velocity.Y = -1f;
+                target.velocity.Y = 1f;
             }
         }
     }
