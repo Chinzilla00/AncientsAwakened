@@ -54,6 +54,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
+                writer.Write(internalAI[4]);
                 writer.Write(isSupreme);
             }
         }
@@ -67,6 +68,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 internalAI[1] = reader.ReadFloat(); //Is Flying
                 internalAI[2] = reader.ReadFloat(); //Is Jumping
                 internalAI[3] = reader.ReadFloat(); //Minion/Rocket Timer
+                internalAI[4] = reader.ReadFloat(); //JumpFlyControl and Vertical dash
                 isSupreme = reader.ReadBool();
             }
         }
@@ -262,19 +264,88 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 npc.direction = -1;
             }
-            if (player.Center.Y < npc.position.Y - 30f || TileBelowEmpty() ||
-                !Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height) ||
-                Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 2000 || isDashing)
+
+            if (internalAI[4] == 0)
             {
+                if((player.Center.Y + player.height / 2 < npc.Center.Y + npc.height / 2 - 30f || Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 2000 || isDashing))
+                {
+                    npc.noTileCollide = true;
+                    npc.noGravity = true;
+                    internalAI[4] = 2f;
+                    npc.ai[0] = 0;
+                    return;
+                }
+                else
+                {
+                    npc.noTileCollide = true;
+                    npc.noGravity = false;
+                    isDashing = false;
+                    JumpAI();
+                }
+            }
+            else if(internalAI[4] == 1f)
+            {
+                npc.noTileCollide = true;
+                npc.noGravity = true;
+                isDashing = false;
+                if (player.Center.Y + player.height / 2 <= npc.Center.Y + npc.height / 2 + 20f) 
+                {
+                    if(npc.collideY && npc.velocity.Y > 0)
+                    {
+                        internalAI[4] = 1f;
+                        Main.PlaySound(SoundID.Item14, npc.position);
+                        for (int num622 = (int)npc.position.X - 20; num622 < (int)npc.position.X + npc.width + 40; num622 += 20)
+                        {
+                            for (int num623 = 0; num623 < 4; num623++)
+                            {
+                                int num624 = Dust.NewDust(new Vector2(npc.position.X - 20f, npc.position.Y + npc.height), npc.width + 20, 4, 31, 0f, 0f, 100);
+                                Main.dust[num624].velocity *= 0.2f;
+                            }
+                            int num625 = Gore.NewGore(new Vector2(num622 - 20, npc.position.Y + npc.height - 8f), default, Main.rand.Next(61, 64), 1f);
+                            Main.gore[num625].velocity *= 0.4f;
+                        }
+                    }
+                    npc.noTileCollide = false;
+                    npc.velocity.X *= .2f;
+                    npc.velocity.Y = -2f;
+                    internalAI[4] = 0f;
+                    npc.ai[0] = 0;
+                    npc.netUpdate = true;
+                    return;
+                }
+            }
+            else if(internalAI[4] == 2f)
+            {
+                npc.noTileCollide = true;
                 npc.noGravity = true;
                 FlyAI();
+                if(Math.Abs(npc.Center.X - player.Center.X) < 50f && player.position.Y > npc.Center.Y + npc.height / 2)
+                {
+                    internalAI[4] = 3f;
+                    npc.netUpdate = true;
+                }
             }
-            else
+            else if(internalAI[4] == 3f)
             {
-                npc.noTileCollide = false;
+                npc.noTileCollide = true;
+                npc.noGravity = true;
+                isDashing = true;
+                npc.velocity = (player.Center - npc.Center) * .06f;
+                npc.velocity = Vector2.Normalize(npc.velocity) * 22f;
+                if(npc.velocity.X > 10f) npc.velocity.X = 10f;
+                internalAI[0] = 0f;
+                internalAI[4] = 1f;
+            }
+            else if(internalAI[4] == 4f)
+            {
+                npc.noTileCollide = true;
                 npc.noGravity = false;
                 isDashing = false;
-                JumpAI();
+                if (player.Center.Y + player.height / 2 <= npc.Center.Y + npc.height / 2 + 20f) 
+                {
+                    internalAI[0] = 0f;
+                    internalAI[4] = 1f;
+                }
             }
 
             if (npc.target <= 0 || npc.target == 255 || Main.player[npc.target].dead)
@@ -408,7 +479,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         internalAI[3] = 0;
                         for (int i = 0; i < carrots; i++)
                         {
-                            double offsetAngle = startAngle + (deltaAngle * i);
+                            double offsetAngle = startAngle + deltaAngle * (i - (int)(carrots * .5f));
                             Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, baseSpeed * (float)Math.Sin(offsetAngle), baseSpeed * (float)Math.Cos(offsetAngle), carrotType, damage, 5, Main.myPlayer, 0);
                         }
                         npc.netUpdate = true;
@@ -419,7 +490,8 @@ namespace AAMod.NPCs.Bosses.Rajah
                     int Javelin = isSupreme ? ModContent.ProjectileType<BaneTEXR>() : ModContent.ProjectileType<BaneR>();
                     if (internalAI[3] == (isSupreme ? 40 : 60))
                     {
-                        Vector2 dir = Vector2.Normalize(player.position - WeaponPos);
+                        float time = (float)((player.Center - WeaponPos).Length() / ProjSpeed());
+                        Vector2 dir = Vector2.Normalize(player.Center + (isSupreme? player.velocity * time : Vector2.Zero) - WeaponPos);
                         dir *= ProjSpeed();
                         Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, Javelin, damage, 5, Main.myPlayer);
                     }
@@ -431,11 +503,11 @@ namespace AAMod.NPCs.Bosses.Rajah
                 }
                 else if (npc.ai[3] == 4) //Excalihare
                 {
-                    if (internalAI[3] > 40)
+                    if (internalAI[3] > 20)
                     {
                         internalAI[3] = 0;
                         Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
-                        dir *= ProjSpeed();
+                        dir *= ProjSpeed() + 3f;
                         Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, ModContent.ProjectileType<ExcalihareR>(), damage, 5, Main.myPlayer);
                         npc.netUpdate = true;
                     }
@@ -444,12 +516,14 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     int Arrows = Main.rand.Next(2, 4);
                     float spread = 45f * 0.0174f;
-                    Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
-                    dir *= ProjSpeed();
+                    float time = (float)((player.Center - WeaponPos).Length() / ProjSpeed());
+                    Vector2 dir = Vector2.Normalize(player.Center + (isSupreme? player.velocity * time : Vector2.Zero) - WeaponPos);
+                    dir *= ProjSpeed() + isSupreme? 9 : 0;
                     float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
                     double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
                     double deltaAngle = spread / (Arrows * 2);
-                    if (internalAI[3] > 50)
+                    float delay = isSupreme? 15 : 50;
+                    if (internalAI[3] > delay)
                     {
                         internalAI[3] = 0;
                         for (int i = 0; i < Arrows; i++)
@@ -628,6 +702,10 @@ namespace AAMod.NPCs.Bosses.Rajah
                             internalAI[2] += 2;
                         }
                     }
+                    if (Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) > 800f)
+                    {
+                        internalAI[2] = -1f;
+                    }
                     if (internalAI[2] >= 250f)
                     {
                         internalAI[2] = -20f;
@@ -635,8 +713,9 @@ namespace AAMod.NPCs.Bosses.Rajah
                     else if (internalAI[2] == -1f)
                     {
                         npc.TargetClosest(true);
-                        npc.velocity.X = 6 * npc.direction;
-                        npc.velocity.Y = -12.1f;
+                        float longth = Math.Abs(npc.Center.X - Main.player[npc.target].Center.X);
+                        npc.velocity.X = (6 + (isSupreme? longth * .005f : 0)) * npc.direction;
+                        npc.velocity.Y = -12.1f - (isSupreme? longth * .005f : 0);
                         npc.ai[0] = 1f;
                         internalAI[2] = 0f;
                         npc.netUpdate = true;
@@ -670,6 +749,16 @@ namespace AAMod.NPCs.Bosses.Rajah
                     }
                     else
                     {
+                        
+                        float num626 = 3f;
+                        float longth = Math.Abs(npc.Center.X - Main.player[npc.target].Center.X);
+                        num626 = 3f + longth * .05f;
+                        
+                        if (Main.player[npc.target].velocity.X != 0)
+                        {
+                            num626 += Math.Abs(Main.player[npc.target].velocity.X) * (isSupreme? 2f : 1.3f);
+                        }
+
                         if (npc.direction < 0)
                         {
                             npc.velocity.X = npc.velocity.X - 0.2f;
@@ -678,19 +767,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         {
                             npc.velocity.X = npc.velocity.X + 0.2f;
                         }
-                        float num626 = 3f;
-                        if (npc.life < npc.lifeMax)
-                        {
-                            num626 += 1f;
-                        }
-                        if (npc.life < npc.lifeMax / 2)
-                        {
-                            num626 += 1f;
-                        }
-                        if (npc.life < npc.lifeMax / 4)
-                        {
-                            num626 += 1f;
-                        }
+
                         if (npc.velocity.X < -num626)
                         {
                             npc.velocity.X = -num626;
@@ -701,20 +778,28 @@ namespace AAMod.NPCs.Bosses.Rajah
                         }
                     }
                 }
+
+                Player player = Main.player[npc.target];
+                if(player.Center.Y + player.height / 2 <= npc.Center.Y + npc.height / 2 + 20f)
+                {
+                    internalAI[4] = 4f;
+                    npc.ai[0] = 0;
+                    npc.netUpdate = true;
+                    return;
+                }
+                else if(Math.Abs(npc.Center.X - player.Center.X) < 50f && player.position.Y > npc.Center.Y + npc.height / 2)
+                {
+                    internalAI[4] = 3f;
+                    npc.ai[0] = 0;
+                    npc.netUpdate = true;
+                    return;
+                }
             }
         }
 
         bool isDashing = false;
         public void FlyAI()
         {
-            if (!Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height))
-            {
-                npc.noTileCollide = true;
-            }
-            else
-            {
-                npc.noTileCollide = false;
-            }
             float speed = 10f;
             if (isSupreme)
             {
@@ -753,8 +838,65 @@ namespace AAMod.NPCs.Bosses.Rajah
             {
                 speed = 16f;
             }
-            BaseAI.AISpaceOctopus(npc, ref internalAI, .25f, speed, 300, 0, null);
+            AISpaceOctopus(npc, Main.player[npc.target].Center, .35f, speed, 300);
             internalAI[1] = 0;
+        }
+
+        public static void AISpaceOctopus(NPC npc, Vector2 targetCenter = default(Vector2), float moveSpeed = 0.15f, float velMax = 5f, float hoverDistance = 250f)
+		{
+			Vector2 wantedVelocity = targetCenter - npc.Center + new Vector2(0f, -hoverDistance);
+			float dist = (float)Math.Sqrt(wantedVelocity.X * wantedVelocity.X + wantedVelocity.Y * wantedVelocity.Y);
+			if (dist < 20f)
+			{
+				wantedVelocity = npc.velocity;
+			}
+			else if (dist < 40f)
+			{
+				wantedVelocity.Normalize();
+				wantedVelocity *= velMax * 0.35f;
+			}
+			else if (dist < 80f)
+			{
+				wantedVelocity.Normalize();
+				wantedVelocity *= velMax * 0.65f;
+			}
+			else
+			{
+				wantedVelocity.Normalize();
+				wantedVelocity *= velMax;
+			}
+			if (npc.velocity.X < wantedVelocity.X)
+			{
+				npc.velocity.X = npc.velocity.X + moveSpeed;
+				if (npc.velocity.X < 0f && wantedVelocity.X > 0f)
+				{
+					npc.velocity.X = npc.velocity.X + moveSpeed;
+				}
+			}
+			else if (npc.velocity.X > wantedVelocity.X)
+			{
+				npc.velocity.X = npc.velocity.X - moveSpeed;
+				if (npc.velocity.X > 0f && wantedVelocity.X < 0f)
+				{
+					npc.velocity.X = npc.velocity.X - moveSpeed;
+				}
+			}
+			if (npc.velocity.Y < wantedVelocity.Y)
+			{
+				npc.velocity.Y = npc.velocity.Y + moveSpeed;
+				if (npc.velocity.Y < 0f && wantedVelocity.Y > 0f)
+				{
+					npc.velocity.Y = npc.velocity.Y + moveSpeed;
+				}
+			}
+			else if (npc.velocity.Y > wantedVelocity.Y)
+			{
+				npc.velocity.Y = npc.velocity.Y - moveSpeed;
+				if (npc.velocity.Y > 0f && wantedVelocity.Y < 0f)
+				{
+					npc.velocity.Y = npc.velocity.Y - moveSpeed;
+				}
+			}
         }
 
         public int ChangeRate()
@@ -860,7 +1002,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                         {
                             if (npc.frameCounter > 7.5f)
                             {
-                        npc.frameCounter = 0;
+                                npc.frameCounter = 0;
                                 npc.frame.Y += frameHeight;
                                 if (npc.frame.Y > frameHeight * 2)
                                 {
@@ -1048,6 +1190,15 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.velocity = length == 0f ? Vector2.Zero : Vector2.Normalize(dist);
             npc.velocity *= moveSpeed;
             npc.velocity *= velMultiplier;
+        }
+
+        public override void ModifyHitPlayer(Player target, ref int damage, ref bool crit)
+        {
+            if(internalAI[4] == 4f || internalAI[4] == 2f || internalAI[4] == 1f)
+            {
+                target.wingTime = 0;
+                target.velocity.Y = -1f;
+            }
         }
     }
 
