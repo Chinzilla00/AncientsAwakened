@@ -518,7 +518,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     float spread = 45f * 0.0174f;
                     float time = (float)((player.Center - WeaponPos).Length() / ProjSpeed());
                     Vector2 dir = Vector2.Normalize(player.Center + (isSupreme? player.velocity * time : Vector2.Zero) - WeaponPos);
-                    dir *= ProjSpeed() + isSupreme? 9 : 0;
+                    dir *= ProjSpeed() + (isSupreme? 9 : 1);
                     float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
                     double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
                     double deltaAngle = spread / (Arrows * 2);
