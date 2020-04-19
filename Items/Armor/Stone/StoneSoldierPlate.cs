@@ -24,7 +24,7 @@ namespace AAMod.Items.Armor.Stone
 		
 		public override void UpdateEquip(Player player)
 		{
-            player.pickSpeed += 0.15f;
+            player.pickSpeed -= 0.15f;
 		}
 		
 		public override void AddRecipes()
