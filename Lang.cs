@@ -1576,7 +1576,7 @@ Fishy";
                         case "Rajah6":
                         return "!我 会 和 你 打 到 最 后!";
                         case "Rajah7":
-                        return "给我趴下. ";
+                        return "给我跪下. ";
                         case "Rajah8":
                         return "打得不错, ";
                         case "Rajah9":

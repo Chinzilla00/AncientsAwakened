@@ -28,7 +28,7 @@ Provides light & spelunker effect when worn");
 		public override void UpdateEquip(Player player)
 		{
 			player.findTreasure = true;
-			player.pickSpeed += 0.15f;
+			player.pickSpeed -= 0.15f;
 
 			Lighting.AddLight((int)player.Center.X, (int)player.Center.Y, 1f, 0.95f, .8f);
 		}
