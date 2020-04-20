@@ -23,11 +23,11 @@ namespace AAMod.Projectiles.Athena
             projectile.height = 132;
             projectile.friendly = true;
             projectile.minion = true;
-            projectile.minionSlots = 1;
             projectile.penetrate = -1;
             projectile.timeLeft = 18000;
             projectile.tileCollide = false;
             projectile.ignoreWater = true;
+            projectile.minionSlots = 0;
         }
 
         int dust = 3;
