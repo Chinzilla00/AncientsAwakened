@@ -31,7 +31,7 @@ namespace AAMod.NPCs.Bosses.Rajah
             npc.aiStyle = -1;
             npc.damage = 130;
             npc.defense = 90;
-            npc.lifeMax = 50000;
+            npc.lifeMax = 65000;
             npc.knockBackResist = 0f;
             npc.npcSlots = 1000f;
             npc.HitSound = SoundID.NPCHit1;
@@ -267,7 +267,7 @@ namespace AAMod.NPCs.Bosses.Rajah
 
             if (internalAI[4] == 0)
             {
-                if((player.Center.Y + player.height / 2 < npc.Center.Y + npc.height / 2 - 30f || Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 2000 || isDashing))
+                if(player.Center.Y + player.height / 2 < npc.Center.Y + npc.height / 2 - 30f || Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 2000 || isDashing)
                 {
                     npc.noTileCollide = true;
                     npc.noGravity = true;
@@ -292,7 +292,6 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     if(npc.collideY && npc.velocity.Y > 0)
                     {
-                        internalAI[4] = 1f;
                         Main.PlaySound(SoundID.Item14, npc.position);
                         for (int num622 = (int)npc.position.X - 20; num622 < (int)npc.position.X + npc.width + 40; num622 += 20)
                         {
@@ -301,6 +300,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                                 int num624 = Dust.NewDust(new Vector2(npc.position.X - 20f, npc.position.Y + npc.height), npc.width + 20, 4, 31, 0f, 0f, 100);
                                 Main.dust[num624].velocity *= 0.2f;
                             }
+                            Projectile.NewProjectile(num622 - 20, npc.position.Y + npc.height - 8f, 0, 0, ModContent.ProjectileType<RajahStomp>(), damage, 6, Main.myPlayer, 0, 0);
                             int num625 = Gore.NewGore(new Vector2(num622 - 20, npc.position.Y + npc.height - 8f), default, Main.rand.Next(61, 64), 1f);
                             Main.gore[num625].velocity *= 0.4f;
                         }
@@ -312,6 +312,13 @@ namespace AAMod.NPCs.Bosses.Rajah
                     npc.ai[0] = 0;
                     npc.netUpdate = true;
                     return;
+                }
+                if(Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 1000)
+                {
+                    npc.noTileCollide = true;
+                    npc.noGravity = true;
+                    internalAI[4] = 2f;
+                    npc.ai[0] = 0;
                 }
             }
             else if(internalAI[4] == 2f)
@@ -330,8 +337,15 @@ namespace AAMod.NPCs.Bosses.Rajah
                 npc.noTileCollide = true;
                 npc.noGravity = true;
                 isDashing = true;
-                npc.velocity = (player.Center - npc.Center) * .06f;
-                npc.velocity = Vector2.Normalize(npc.velocity) * 22f;
+                if(player.velocity.X == 0)
+                {
+                    npc.velocity = (player.Center - npc.Center) * .06f;
+                }
+                else
+                {
+                    npc.velocity = (player.Center + new Vector2(100f * (player.velocity.X > 0? 1 : -1), 0) - npc.Center) * .06f;
+                }
+                npc.velocity = Vector2.Normalize(npc.velocity) * 26f;
                 if(npc.velocity.X > 10f) npc.velocity.X = 10f;
                 internalAI[0] = 0f;
                 internalAI[4] = 1f;
@@ -468,9 +482,9 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     int carrots = isSupreme ? 5 : 3;
                     int carrotType = isSupreme ? mod.ProjectileType("CarrotEXR") : mod.ProjectileType("CarrotHostile");
-                    float spread = 45f * 0.0174f;
+                    float spread = 45f * 0.0174f * .5f;
                     Vector2 dir = Vector2.Normalize(player.Center - WeaponPos);
-                    dir *= ProjSpeed();
+                    dir *= ProjSpeed() + (isSupreme? 3 : 1);
                     float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));
                     double startAngle = Math.Atan2(dir.X, dir.Y) - .1d;
                     double deltaAngle = spread / carrots * 2;
@@ -515,7 +529,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 else if (npc.ai[3] == 5) //Fluffy Fury
                 {
                     int Arrows = Main.rand.Next(2, 4);
-                    float spread = 45f * 0.0174f;
+                    float spread = 45f * 0.0174f * .3f;
                     float time = (float)((player.Center - WeaponPos).Length() / ProjSpeed());
                     Vector2 dir = Vector2.Normalize(player.Center + (isSupreme? player.velocity * time : Vector2.Zero) - WeaponPos);
                     dir *= ProjSpeed() + (isSupreme? 9 : 1);
@@ -714,8 +728,8 @@ namespace AAMod.NPCs.Bosses.Rajah
                     {
                         npc.TargetClosest(true);
                         float longth = Math.Abs(npc.Center.X - Main.player[npc.target].Center.X);
-                        npc.velocity.X = (6 + (isSupreme? longth * .005f : 0)) * npc.direction;
-                        npc.velocity.Y = -12.1f - (isSupreme? longth * .005f : 0);
+                        npc.velocity.X = (6 + longth * .01f) * npc.direction;
+                        npc.velocity.Y = -12.1f;
                         npc.ai[0] = 1f;
                         internalAI[2] = 0f;
                         npc.netUpdate = true;
@@ -752,11 +766,11 @@ namespace AAMod.NPCs.Bosses.Rajah
                         
                         float num626 = 3f;
                         float longth = Math.Abs(npc.Center.X - Main.player[npc.target].Center.X);
-                        num626 = 3f + longth * .05f;
+                        num626 = 3f + longth * .056f;
                         
                         if (Main.player[npc.target].velocity.X != 0)
                         {
-                            num626 += Math.Abs(Main.player[npc.target].velocity.X) * (isSupreme? 2f : 1.3f);
+                            num626 += Math.Abs(Main.player[npc.target].velocity.X);
                         }
 
                         if (npc.direction < 0)
@@ -780,7 +794,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 }
 
                 Player player = Main.player[npc.target];
-                if(player.Center.Y + player.height / 2 <= npc.Center.Y + npc.height / 2 + 20f)
+                if(player.Center.Y + player.height / 2 <= npc.Center.Y + npc.height / 2 + 20f && npc.velocity.Y > 0)
                 {
                     internalAI[4] = 4f;
                     npc.ai[0] = 0;
@@ -800,7 +814,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         bool isDashing = false;
         public void FlyAI()
         {
-            float speed = 10f;
+            float speed = 14f;
             if (isSupreme)
             {
                 if (Math.Abs(npc.Center.X - Main.player[npc.target].Center.X) + Math.Abs(npc.Center.Y - Main.player[npc.target].Center.Y) > 1000)
@@ -810,33 +824,33 @@ namespace AAMod.NPCs.Bosses.Rajah
                 }
                 else
                 {
-                    speed = 16f;
+                    speed = 20f;
                     isDashing = false;
                 }
             }
             else if (npc.life < (npc.lifeMax * .85f)) //The lower the health, the more damage is done
             {
-                speed = 11f;
+                speed = 15f;
             }
             else if (npc.life < (npc.lifeMax * .7f))
             {
-                speed = 12f;
+                speed = 16f;
             }
             else if (npc.life < (npc.lifeMax * .65f))
             {
-                speed = 13f;
+                speed = 17f;
             }
             else if (npc.life < (npc.lifeMax * .4f))
             {
-                speed = 14f;
+                speed = 18f;
             }
             else if (npc.life < (npc.lifeMax * .25f))
             {
-                speed = 15f;
+                speed = 19f;
             }
             else if (npc.life < (npc.lifeMax * .1f))
             {
-                speed = 16f;
+                speed = 20f;
             }
             AISpaceOctopus(npc, Main.player[npc.target].Center, .35f, speed, 300);
             internalAI[1] = 0;
@@ -844,7 +858,16 @@ namespace AAMod.NPCs.Bosses.Rajah
 
         public static void AISpaceOctopus(NPC npc, Vector2 targetCenter = default(Vector2), float moveSpeed = 0.15f, float velMax = 5f, float hoverDistance = 250f)
 		{
-			Vector2 wantedVelocity = targetCenter - npc.Center + new Vector2(0f, -hoverDistance);
+            float pos = 200f;
+            if(Main.player[npc.target].velocity.X == 0)
+            {
+                pos = 0;
+            }
+            else
+            {
+                pos = (Main.player[npc.target].velocity.X > 0? 1f: -1f) * 200f;
+            }
+			Vector2 wantedVelocity = targetCenter - npc.Center + new Vector2(pos, -hoverDistance);
 			float dist = (float)Math.Sqrt(wantedVelocity.X * wantedVelocity.X + wantedVelocity.Y * wantedVelocity.Y);
 			if (dist < 20f)
 			{
@@ -1216,7 +1239,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         public override void SetDefaults()
         {
             base.SetDefaults();
-            npc.damage = 310;
+            npc.damage = 150;
             npc.defense = 0;
             npc.lifeMax = 1200000;
             npc.life = 1200000;

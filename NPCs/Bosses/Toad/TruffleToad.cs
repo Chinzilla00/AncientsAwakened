@@ -24,6 +24,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
+                writer.Write(internalAI[4]);
 
                 writer.Write(Minion[0]);
                 writer.Write(Minion[1]);
@@ -40,6 +41,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
+                internalAI[4] = reader.ReadFloat();
 
                 Minion[0] = reader.ReadBool();
                 Minion[1] = reader.ReadBool();
@@ -80,7 +82,7 @@ namespace AAMod.NPCs.Bosses.Toad
         }
 
         public static int AISTATE_JUMP = 0, AISTATE_BARF = 1, AISTATE_JUMPALOT = 2, AISTATE_BUBBLES = 3, AISTATE_SEED = 4, AISTATE_STOMP = 5, AISTATE_TOADS = 6, AISTATE_BUBBLES2 = 7;
-        public float[] internalAI = new float[4];
+        public float[] internalAI = new float[5];
         public bool[] Minion = new bool[3];
         public bool tonguespawned = false;
         public bool TongueAttack = false;
@@ -101,6 +103,34 @@ namespace AAMod.NPCs.Bosses.Toad
             Player player = Main.player[npc.target]; // makes it so you can reference the player the npc is targetting
             AAModGlobalNPC.Toad = npc.whoAmI;
 
+            Vector2 tile = new Vector2(npc.Center.X,npc.Center.Y + npc.height / 2);
+            bool tileCheck = TileID.Sets.Platforms[Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].type];
+            if (player.Center.Y + player.height / 2 >= npc.Center.Y + npc.height / 2 + 20f && tileCheck) 
+            {
+                npc.noTileCollide = true;
+                internalAI[4] = 1f;
+            }
+            if (internalAI[4] == 1f)
+            {
+                npc.noTileCollide = true;
+                npc.noGravity = false;
+                if (player.Center.Y + player.height / 2 <= npc.Center.Y + npc.height / 2 + 20f) 
+                {
+                    npc.noTileCollide = false;
+                    internalAI[4] = 2f;
+                }
+            }
+            else if (internalAI[4] == 2f)
+            {
+                npc.noTileCollide = false;
+                if(npc.collideY && npc.velocity.Y > 0)
+                {
+                    npc.velocity.X *= .2f;
+                    npc.velocity.Y = -2f;
+                    internalAI[4] = 0;
+                }
+            }
+
             if (player.dead || !player.active || !player.ZoneGlowshroom)
             {
                 npc.TargetClosest();
@@ -118,7 +148,7 @@ namespace AAMod.NPCs.Bosses.Toad
             if (player != null)
             {
                 float dist = npc.Distance(player.Center);
-                if (dist > 800)
+                if (dist > 800 || (npc.collideY && npc.velocity.Y < 0) || npc.collideX)
                 {
                     npc.alpha += 3;
                     if (npc.alpha >= 255)

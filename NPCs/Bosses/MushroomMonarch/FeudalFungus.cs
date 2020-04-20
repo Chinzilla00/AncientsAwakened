@@ -23,6 +23,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 				writer.Write(internalAI[1]);
                 writer.Write(internalAI[2]);
                 writer.Write(internalAI[3]);
+                writer.Write(internalAI[4]);
             }
 		}
 
@@ -35,6 +36,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 				internalAI[1] = reader.ReadFloat();
                 internalAI[2] = reader.ReadFloat();
                 internalAI[3] = reader.ReadFloat();
+                internalAI[4] = reader.ReadFloat();
             }	
 		}	
 
@@ -47,7 +49,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         public override void SetDefaults()
         {
             npc.lifeMax = 1200;   //boss life
-            npc.damage = 12;  //boss damage
+            npc.damage = 24;  //boss damage
             npc.defense = 12;    //boss defense
             npc.knockBackResist = 0f;   //this boss will behavior like the DemonEye  //boss frame/animation 
             npc.value = Item.sellPrice(0, 0, 50, 0);
@@ -76,7 +78,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         }
 
         public static int AISTATE_HOVER = 0, AISTATE_FLIER = 1, AISTATE_SHOOT = 2;
-		public float[] internalAI = new float[4];
+		public float[] internalAI = new float[5];
 		
         public override void AI()
         {
@@ -167,6 +169,16 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             }
 
             npc.rotation = 0;
+
+            if (internalAI[4] ++ > 90 && Main.expertMode)
+            {
+                internalAI[4] = 0;
+                Vector2 pos = new Vector2(player.Center.X + Main.rand.Next(70, 150) * (Main.rand.Next(2) == 0? 1: -1), player.Center.Y + Main.rand.Next(70, 150) * (Main.rand.Next(2) == 0? 1: -1));
+                Vector2 velocity = Vector2.Normalize(player.Center - pos) * .1f;
+                int proj = Projectile.NewProjectile(pos.X, pos.Y, velocity.X, velocity.Y, mod.ProjectileType("FungusCloud"), damage, 0, Main.myPlayer, 0f, 0f);
+                Main.projectile[proj].timeLeft = 360;
+                Main.projectile[proj].alpha = 255;
+            }
         }
 
 
@@ -240,7 +252,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
                 {
                     offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
-                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("FungusCloud"), damage, 0, Main.myPlayer, 0f, 0f);
+                    Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("FungusCloud"), damage, 0, Main.myPlayer, 0f, 1f);
                 }
             }
             else

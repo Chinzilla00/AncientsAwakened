@@ -16,30 +16,52 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
     	
         public override void SetDefaults()
         {
-            projectile.width = 10;
-            projectile.height = 10;
+            projectile.width = 28;
+            projectile.height = 28;
             projectile.friendly = false;
             projectile.hostile = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
-            projectile.penetrate = -11;
+            projectile.penetrate = -1;
             projectile.extraUpdates = 1;
             projectile.scale = 1.1f;
-            projectile.penetrate = -1;
+            projectile.aiStyle = -1;
         }
 
         public override Color? GetAlpha(Color lightColor)
         {
-            return AAColor.Glow;
+            if(projectile.ai[1] == 1f)
+            {
+                return AAColor.Glow;
+            }
+            return base.GetAlpha(lightColor);
         }
 
         public override void AI()
         {
-            projectile.velocity *= 0.98f;
-            projectile.alpha += 2;
-            if (projectile.alpha > 255)
+            if(projectile.ai[1] == 1f)
             {
-                projectile.Kill();
+                projectile.velocity *= 0.98f;
+                projectile.alpha += 2;
+                if (projectile.alpha > 255)
+                {
+                    projectile.Kill();
+                }
+            }
+            else
+            {
+                if(projectile.timeLeft < 120)
+                {
+                    projectile.alpha += 2;
+                    if (projectile.alpha > 255)
+                    {
+                        projectile.Kill();
+                    }
+                }
+                if(projectile.ai[0] ++ < 50)
+                {
+                    projectile.alpha -= 5;
+                }
             }
         }
 
