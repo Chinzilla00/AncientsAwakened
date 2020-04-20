@@ -109,7 +109,6 @@ namespace AAMod
                 {
                     if (item.type > 3930 && item.modItem.mod == ModLoader.GetMod("CalamityMod"))
                     {
-                        damage = (int)(damage * .5f);
                         damage = (int)(damage * CalamityDR);
                     }
                 }
@@ -131,7 +130,6 @@ namespace AAMod
                 {
                     if (projectile.type > 714 && projectile.modProjectile.mod == ModLoader.GetMod("CalamityMod"))
                     {
-                        damage = (int)(damage * .5f);
                         damage = (int)(damage * CalamityDR);
                     }
                 }
