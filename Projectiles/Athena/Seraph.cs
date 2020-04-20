@@ -25,7 +25,7 @@ namespace AAMod.Projectiles.Athena
             projectile.friendly = true;
             Main.projPet[projectile.type] = true;
             projectile.minion = true;
-            projectile.minionSlots = 1;
+            projectile.minionSlots = 0;
             projectile.penetrate = -1;
             projectile.timeLeft = 18000;
             projectile.tileCollide = false;
