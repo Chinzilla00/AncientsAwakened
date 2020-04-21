@@ -377,7 +377,9 @@ Fishy";
 ...哎呀，我不小心用了我的符文羽毛笔签了名。哦，没事，这东西有魔力.";
                         case "GetSummonItemChat":
                         return "嘿，感谢你回来找我. 我想试试你的能力. 你打败那些机械怪物之后，我想看看是不是有实力和像我一样的人战斗. 拿着这把权杖，准备好了就去沙漠里用. 我时刻准备就绪.";
-
+                        case "GetSummonItemChat2":
+                        return "拿着这个. 这个老工艺品很快会派上用场. 它会指引你去一个...这个世界上特殊的地方. 读一下那里的提示. 他们会告诉你应该做什么. 如果要清除这个世界上的邪恶，我们还有很多事情要做.";
+                        
                         case "CombatTextChat":
                         return "我回家了. 真安静.";
 
@@ -643,6 +645,8 @@ Fishy";
 ...Whoops, I accidentally used my runic quill to sign it. Oh well, now it's magic.";
                         case "GetSummonItemChat":
                         return "Hey, thanks for getting back to me. I wanna test your strength. After you thrashed those mechanical meatheads, I'm interested in seeing how you fair against someone like me. Here, take this scepter and go use it in the desert on the surface whenever you're ready. I'm ready whenever.";
+                        case "GetSummonItemChat2":
+                        return "Take this. It's an old artifact that will come in handy soon. It should direct you towards a...special place to the people of this world. read the plaques there. They'll tell you what to do. We got some work to do if we want to clear out some of the major evils in the world.";
 
                         case "CombatTextChat":
                         return "I'm headed home. Peace.";
