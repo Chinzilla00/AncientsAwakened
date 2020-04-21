@@ -996,6 +996,37 @@ namespace AAMod.Worldgeneration
         }
     }
 
+    public class Pit : MicroBiome
+    {
+        public override bool Place(Point origin, StructureMap structures)
+        {
+            Mod mod = AAMod.instance;
+
+            Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
+            {
+                [new Color(128, 128, 128)] = mod.TileType("Pitstone"),
+                [new Color(0, 0, 255)] = mod.TileType("PitBars"),
+                [new Color(0, 255, 0)] = mod.TileType("PitBridge"),
+                [new Color(255, 255, 255)] = -2, //turn into air
+                [Color.Black] = -1 //don't touch when genning		
+            };
+
+            Dictionary<Color, int> colorToWall = new Dictionary<Color, int>
+            {
+                [new Color(128, 128, 128)] = mod.TileType("PitstoneWall"),
+                [new Color(0, 255, 255)] = mod.WallType("PitBarWall"),
+                [new Color(255, 255, 255)] = -2,
+                [Color.Black] = -1
+            };
+
+            TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Pit"), colorToTile, mod.GetTexture("Worldgeneration/PitWall"), colorToWall, mod.GetTexture("Worldgeneration/PitLava"), mod.GetTexture("Worldgeneration/PitSlope"));
+
+            gen.Generate(origin.X, origin.Y, true, true);
+
+            return true;
+        }
+    }
+
     public class Parthenan : MicroBiome
     {
         public override bool Place(Point origin, StructureMap structures)
