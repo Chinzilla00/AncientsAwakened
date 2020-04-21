@@ -59,7 +59,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public int damage = 0;
 
-        public int[] internalAI = new int[9];
+        public int[] internalAI = new int[10];
 
         public int[] ShadowNPC = new int[3];
         
@@ -89,6 +89,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 writer.Write(internalAI[6]); //Haruka skill counter
                 writer.Write(internalAI[7]); //Haruka Shadow Dash Counter
                 writer.Write(internalAI[8]); //Shadowkilling colddown
+                writer.Write(internalAI[9]); //Noticing Ashe is dead
                 writer.Write(ShadowNPC[0]);
                 writer.Write(ShadowNPC[1]);
                 writer.Write(ShadowNPC[2]);
@@ -118,6 +119,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 internalAI[6] = reader.ReadInt();
                 internalAI[7] = reader.ReadInt();
                 internalAI[8] = reader.ReadInt();
+                internalAI[9] = reader.ReadInt();
                 ShadowNPC[0] = reader.ReadInt();
                 ShadowNPC[1] = reader.ReadInt();
                 ShadowNPC[2] = reader.ReadInt();
@@ -162,7 +164,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             }
             if (!Main.expertMode)
             {
-
                 string[] lootTableH = { "HarukaKunai", "Masamune", "MizuArashi", "HarukaBox" };
                 int lootH = Main.rand.Next(lootTableH.Length);
                 npc.DropLoot(mod.ItemType(lootTableH[lootH]));
@@ -171,10 +172,9 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             {
                 Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HarukaTrophy"));
             }
-            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HarukaVanish>());
             if (Main.netMode != 1) BaseUtility.Chat(Lang.BossChat("HarukaDowned"), new Color(72, 78, 117));
-            npc.value = 0f;
-            npc.boss = false;
+            NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HarukaVanish>());
+
         }
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
@@ -186,7 +186,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
         public int Shadowdashcounter = 0;
 
-        public static int AISTATE_PROJ = 0, AISTATE_SLASH = 1, AISTATE_SPIN = 2, AISTATE_IDLE = 3, AISTATE_Shadowkilling = 4; 
+        public static int AISTATE_PROJ = 0, AISTATE_SLASH = 1, AISTATE_SPIN = 2, AISTATE_IDLE = 3, AISTATE_Shadowkilling = 4, AISTATE_ASHEGAG = 5;
 
         public override void AI()
         {
@@ -200,25 +200,86 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 damage = npc.damage / 2;
             }
 
-            Vector2 wantedVelocity = player.Center - new Vector2(pos, 0);
-            npc.direction = npc.spriteDirection = npc.position.X < player.position.X ? 1 : -1;
             int Ashe = NPC.CountNPCS(mod.NPCType("Ashe"));
             bool flag = player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f;
-            if (Ashe == 0 && flag)
+            if (Ashe == 0)
             {
-                npc.TargetClosest(false);
-                if (Main.netMode != 1)
+                if (internalAI[9]++ >= 480 && AAWorld.downedSisters)
                 {
-                    int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HarukaVanish>(), 0);
-                    Main.npc[DeathAnim].velocity = npc.velocity;
-                    Main.npc[DeathAnim].netUpdate = true;
-                    npc.active = false;
-                    npc.netUpdate = true;
+                    internalAI[0] = AISTATE_ASHEGAG;
+                    npc.dontTakeDamage = true;
+                    music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
+                    npc.velocity *= .96f;
+
+                    if (internalAI[9] == 540)
+                    {
+                        CombatText.NewText(npc.Hitbox, new Color(72, 78, 117), "..?");
+                    }
+
+                    if (internalAI[9] == 600)
+                    {
+                        npc.direction = npc.spriteDirection = -1;
+                    }
+                    if (internalAI[9] == 660)
+                    {
+                        CombatText.NewText(npc.Hitbox, new Color(72, 78, 117), "...Ashe?");
+                        npc.direction = npc.spriteDirection = 1;
+                    }
+                    if (internalAI[9] == 720)
+                    {
+                        npc.direction = npc.spriteDirection = -1;
+                    }
+
+                    if (internalAI[9] == 780)
+                    {
+                        npc.direction = npc.spriteDirection = npc.position.X < player.position.X ? 1 : -1;
+                    }
+
+                    if (internalAI[9] == 800)
+                    {
+                        CombatText.NewText(npc.Hitbox, new Color(72, 78, 117), "...thanks.");
+
+                        if (Main.expertMode)
+                        {
+                            npc.DropBossBags();
+                        }
+
+                        if (!Main.expertMode)
+                        {
+                            string[] lootTableH = { "HarukaKunai", "Masamune", "MizuArashi", "HarukaBox" };
+                            int lootH = Main.rand.Next(lootTableH.Length);
+                            npc.DropLoot(mod.ItemType(lootTableH[lootH]));
+                        }
+
+                        if (Main.rand.Next(10) == 0)
+                        {
+                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HarukaTrophy"));
+                        }
+
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HarukaVanish>());
+                        npc.active = false;
+                        npc.netUpdate = true;
+                    }
+                    return;
                 }
-                return;
+                if (flag)
+                {
+                    npc.TargetClosest(false);
+                    if (Main.netMode != 1)
+                    {
+                        int DeathAnim = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HarukaVanish>(), 0);
+                        Main.npc[DeathAnim].velocity = npc.velocity;
+                        Main.npc[DeathAnim].netUpdate = true;
+                        npc.active = false;
+                        npc.netUpdate = true;
+                    }
+                    return;
+                }
             }
 
-            if(SHADOWCONTER <= 0)
+            npc.direction = npc.spriteDirection = npc.position.X < player.position.X ? 1 : -1;
+
+            if (SHADOWCONTER <= 0)
             {
                 npc.dontTakeDamage = false;
                 SHADOWCONTER = 0;
@@ -773,6 +834,10 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public override void PostAI()
         {
             Player player = Main.player[npc.target];
+            if (internalAI[0] == AISTATE_ASHEGAG || internalAI[9] >= 480)
+            {
+                return;
+            }
             if (internalAI[0] != AISTATE_SPIN && internalAI[0] != AISTATE_Shadowkilling)
             {
                 if (player.Center.X > npc.Center.X) //If NPC's X position is higher than the player's
@@ -801,7 +866,15 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
-            if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN)
+            if (internalAI[0] == AISTATE_ASHEGAG)
+            {
+                if (npc.frameCounter > 12)
+                {
+                    npc.frameCounter = 0;
+                    Frame++;
+                }
+            }
+            else if (ProjectileShoot == 0 || internalAI[0] == AISTATE_SLASH || internalAI[0] == AISTATE_SPIN)
             {
                 if (npc.frameCounter > 4)
                 {
@@ -817,7 +890,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                     Frame++;
                 }
             }
-            if (internalAI[0] == AISTATE_IDLE)
+            if (internalAI[0] == AISTATE_IDLE || internalAI[0] == AISTATE_ASHEGAG)
             {
                 if (Frame > 3)
                 {
@@ -1195,8 +1268,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             
             BaseDrawing.DrawTexture(spritebatch, Slash, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 28, npc.frame, dColor, false);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 28, npc.frame, Color.White, false);
-
-            BaseDrawing.DrawAfterimage(spritebatch, glowTex, 0, npc, 1f, 1f, 7, true, 0f, 0f, AAColor.YamataA);
             return false;
         }
     }

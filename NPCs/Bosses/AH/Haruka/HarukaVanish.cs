@@ -46,7 +46,22 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 {
                     npc.ai[0] = 0;
                     npc.ai[1] += 1;
-                    if (npc.frame.Y > (92 * 12))
+                    if (!npc.collideY)
+                    {
+                        if (npc.ai[1] > 3)
+                        {
+                            npc.ai[1] = 0;
+                        }
+                        return;
+                    }
+                    else
+                    {
+                        if (npc.ai[1] < 4)
+                        {
+                            npc.ai[1] = 4;
+                        }
+                    }
+                    if (npc.frame.Y >= (92 * 12))
                     {
                         npc.ai[2] = 1;
                         Main.PlaySound(SoundID.Item14, npc.position);
@@ -120,9 +135,9 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/HarukaVanish_Glow");
 
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, npc.GetAlpha(dColor), true);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 27, npc.frame, Color.White, true);
-            BaseDrawing.DrawAfterimage(spritebatch, glowTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 27);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 17, npc.frame, npc.GetAlpha(dColor), true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.spriteDirection, 17, npc.frame, Color.White, true);
+            BaseDrawing.DrawAfterimage(spritebatch, glowTex, 0, npc, 0.8f, 1f, 4, true, 0f, 0f, Color.White, npc.frame, 17);
             return false;
         }
     }
