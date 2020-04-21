@@ -90,7 +90,7 @@ namespace AAMod.NPCs.Bosses.Hydra
             BaseDrawing.DrawTexture(sb, tex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 3, npc.frame, npc.GetAlpha(dColor));
             if (npc.ai[1] >= 60 && npc.ai[1] < 240)
             {
-                Lighting.AddLight(npc.Center, Color.MediumVioletRed.R / 120, Color.MediumVioletRed.G / 120, Color.MediumVioletRed.B / 120);
+                Lighting.AddLight(npc.Center, Color.MediumVioletRed.R / 180, Color.MediumVioletRed.G / 180, Color.MediumVioletRed.B / 180);
                 BaseDrawing.DrawTexture(sb, tex2, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, npc.direction, 3, npc.frame, Color.White);
             }
             return false;
