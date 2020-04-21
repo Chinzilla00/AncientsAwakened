@@ -58,6 +58,10 @@ namespace AAMod.NPCs.Bosses.Hydra
 
         public override void NPCLoot()
         {
+            if (!AAWorld.downedHydra)
+            {
+                NPC.NewNPC((int)npc.position.X + (Main.rand.Next(2) == 0 ? 200 : -200), (int)npc.position.Y - 200, ModContent.NPCType<HarukaShade>());
+            }
             AAWorld.downedHydra = true;
             if (Main.rand.Next(10) == 0)
             {
@@ -132,31 +136,6 @@ namespace AAMod.NPCs.Bosses.Hydra
 					    Head1.ai[0] = npc.whoAmI;
                     }
 
-                    /*
-					int[] npcs = BaseAI.GetNPCs(npc.Center, -1, default, 200f, null);
-					if (npcs != null && npcs.Length > 0)
-					{
-						foreach (int npcID in npcs)
-						{
-							NPC npc2 = Main.npc[npcID];
-							if (npc2 != null)
-							{
-								if(Head1 == null && npc2.type == mod.NPCType("HydraHead1") && npc2.ai[0] == npc.whoAmI)
-								{
-									Head1 = npc2;
-								}else
-								if(Head2 == null && npc2.type == mod.NPCType("HydraHead2") && npc2.ai[0] == npc.whoAmI)
-								{
-									Head2 = npc2;
-								}else
-								if(Head3 == null && npc2.type == mod.NPCType("HydraHead3") && npc2.ai[0] == npc.whoAmI)
-								{
-									Head3 = npc2;
-								}						
-							}
-						}
-					}
-                    */
 					if(Head1 != null && Head2 != null && Head3 != null)
 					{
 						HeadsSpawned = true;
