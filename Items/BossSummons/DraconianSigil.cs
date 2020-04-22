@@ -71,13 +71,14 @@ Non-Consumable");
                     if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.DraconianSigilFalse"), new Color(0, 191, 255), false);
                     return false;
                 }
-                for (int m = 0; m < Main.maxProjectiles; m++)
+                if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Shen.Shen>()) || NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Shen.ShenA>()) || NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Shen.ShenSpawn>()) ||
+                    NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Shen.ShenTransition>()) || NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Shen.ShenDeath>()) || || NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.Shen.ShenDefeat>()))
                 {
-                    Projectile p = Main.projectile[m];
-                    if (p != null && p.active && p.type == mod.ProjectileType("AkumaTransition"))
-                    {
-                        return false;
-                    }
+                    return false;
+                }
+                if (NPC.AnyNPCs(mod.NPCType("AkumaTransition")))
+                {
+                    return false;
                 }
                 return true;
             }

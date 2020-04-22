@@ -972,6 +972,9 @@ namespace AAMod
                 {
                     pool.Add(mod.NPCType("Soulsucker"), .01f);
                 }
+
+                if (!AAWorld.downedSisters && AAWorld.downedHydra && !NPC.AnyNPCs(mod.NPCType("HarukaShadow")))
+                pool.Add(mod.NPCType("HarukaShadow"), .00005f);
             }
 
             if (spawnInfo.player.GetModPlayer<AAPlayer>().ZoneVoid)

@@ -159,9 +159,9 @@ namespace AAMod.Globals
 
                 yabhb.Call("hbStart");
                 yabhb.Call("hbSetTexture",
-                    AAMod.instance.GetTexture("Healthbars/ZeroBarHead"),
-                    AAMod.instance.GetTexture("Healthbars/ZeroBarBody"),
-                    AAMod.instance.GetTexture("Healthbars/ZeroBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/SagBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/SagBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/SagBarTail"),
                     AAMod.instance.GetTexture("Healthbars/BarFill"));
                 yabhb.Call("hbSetColours",
                     Color.Red,
@@ -205,9 +205,6 @@ namespace AAMod.Globals
                 yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Greed"));
 
                 // Rajah
-                string[] rajahTypes = new string[] { "Rajah", "SupremeRajah" };
-                foreach (string rajahType in rajahTypes)
-                {
                     yabhb.Call("hbStart");
                     yabhb.Call("hbSetTexture",
                         AAMod.instance.GetTexture("Healthbars/RajahBarHead"),
@@ -221,8 +218,7 @@ namespace AAMod.Globals
                     yabhb.Call("hbSetMidBarOffset", -30, 10);
                     yabhb.Call("hbSetBossHeadCentre", 50, 32);
                     yabhb.Call("hbSetFillDecoOffsetSmall", 16);
-                    yabhb.Call("hbFinishSingle", AAMod.instance.NPCType(rajahType));
-                }
+                    yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("Rajah"));
                 
                 //Forsaken Anubis
                 yabhb.Call("hbStart");
@@ -451,6 +447,21 @@ namespace AAMod.Globals
                 yabhb.Call("hbSetBossHeadCentre", 50, 32);
                 yabhb.Call("hbSetFillDecoOffsetSmall", 16);
                 yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("ZeroProtocol"));
+
+                yabhb.Call("hbStart");
+                yabhb.Call("hbSetTexture",
+                    AAMod.instance.GetTexture("Healthbars/SRajahBarHead"),
+                    AAMod.instance.GetTexture("Healthbars/SRajahBarBody"),
+                    AAMod.instance.GetTexture("Healthbars/SRajahBarTail"),
+                    AAMod.instance.GetTexture("Healthbars/BarFill"));
+                yabhb.Call("hbSetColours",
+                    Color.Gold,
+                    Color.Gold,
+                    Color.Gold);
+                yabhb.Call("hbSetMidBarOffset", -30, 10);
+                yabhb.Call("hbSetBossHeadCentre", 50, 32);
+                yabhb.Call("hbSetFillDecoOffsetSmall", 16);
+                yabhb.Call("hbFinishSingle", AAMod.instance.NPCType("SupremeRajah"));
 
                 // Shen
                 yabhb.Call("hbStart");
