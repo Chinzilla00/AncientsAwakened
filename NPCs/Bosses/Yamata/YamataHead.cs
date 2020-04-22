@@ -150,6 +150,8 @@ namespace AAMod.NPCs.Bosses.Yamata
                 npc.damage = attackpower;
             }
 
+            Laugh();
+
             int roarSound = mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar");
 
             Vector2 PlayerDistance = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -296,6 +298,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (!QuoteSaid && sayQuote)
                 {
+                    laughTimer = 120;
                     if (Main.netMode != 1) AAMod.Chat((!Quote1) ? Lang.BossChat("YamataHead1") : Lang.BossChat("YamataHead2"), new Color(45, 46, 70));
                     QuoteSaid = true;
                     Quote1 = true;
@@ -306,6 +309,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (!QuoteSaid && sayQuote)
                 {
+                    laughTimer = 120;
                     if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("YamataHead3") : Lang.BossChat("YamataHead4"), new Color(45, 46, 70));
                     QuoteSaid = true;
                     Quote3 = true;
@@ -316,6 +320,7 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (!QuoteSaid && sayQuote)
                 {
+                    laughTimer = 120;
                     if (Main.netMode != 1) AAMod.Chat((!Quote3) ? Lang.BossChat("YamataHead5") : Lang.BossChat("YamataHead6"), new Color(45, 46, 70));
                     QuoteSaid = true;
                     Quote3 = true;
@@ -326,11 +331,36 @@ namespace AAMod.NPCs.Bosses.Yamata
             {
                 if (!QuoteSaid && sayQuote)
                 {
+                    laughTimer = 120;
                     if (Main.netMode != 1) AAMod.Chat((!Quote4) ? (Lang.BossChat("YamataHead7") + (player.Male ? Lang.BossChat("male2") : Lang.BossChat("fimale2")) + Lang.BossChat("YamataHead8")) : Lang.BossChat("YamataHead9"), new Color(45, 46, 70));
                     QuoteSaid = true;
                     Quote4 = true;
                 }
                 EATTHELITTLEMAGGOT = true;
+            }
+        }
+
+        int laughTimer = 0;
+        bool Laughing = false;
+
+        public void Laugh()
+        {
+            if (laughTimer > 0 && !Laughing)
+            {
+                CombatText.NewText(npc.getRect(), new Color(45, 46, 70), "NYEH", true, true);
+                Laughing = true;
+            }
+            else if (laughTimer <= 0)
+            {
+                Laughing = false;
+            }
+            if (Laughing)
+            {
+                laughTimer--;
+                if (laughTimer % 20 == 0 && laughTimer != 120)
+                {
+                    CombatText.NewText(npc.getRect(), new Color(45, 46, 70), "HEH", true, true);
+                }
             }
         }
 

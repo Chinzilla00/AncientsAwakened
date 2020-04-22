@@ -116,6 +116,8 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 return;
             }
 
+            Laugh();
+
             int roarSound = mod.GetSoundSlot(SoundType.Item, "Sounds/Sounds/YamataRoar");
 
             if (!player.active || player.dead || !Body.npc.active)
@@ -171,6 +173,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     }*/
                     if (++internalAI[1] > 180)
                     {
+                        if (laughTimer <= 0)
+                        {
+                            laughTimer = 120;
+                        }
                         internalAI[0]++;
                         internalAI[1] = 0;
                         internalAI[2] = 0;
@@ -213,6 +219,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     }
                     if (++internalAI[1] > 180)
                     {
+                        if (laughTimer <= 0)
+                        {
+                            laughTimer = 120;
+                        }
                         internalAI[0]++;
                         internalAI[1] = 0;
                         internalAI[2] = 0;
@@ -247,6 +257,10 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                     }
                     if (++internalAI[1] > 420)
                     {
+                        if (laughTimer <= 0)
+                        {
+                            laughTimer = 120;
+                        }
                         internalAI[0]++;
                         internalAI[1] = 0;
                         internalAI[2] = 0;
@@ -296,6 +310,30 @@ namespace AAMod.NPCs.Bosses.Yamata.Awakened
                 YamataA.TeleportMeBitch = false;
                 npc.Center = Body.npc.Center;
                 return;
+            }
+        }
+
+        int laughTimer = 0;
+        bool Laughing = false;
+
+        public void Laugh()
+        {
+            if (laughTimer > 0 && !Laughing)
+            {
+                CombatText.NewText(npc.getRect(), new Color(146, 30, 68), "NYEH", true, true);
+                Laughing = true;
+            }
+            else if (laughTimer <= 0)
+            {
+                Laughing = false;
+            }
+            if (Laughing)
+            {
+                laughTimer--;
+                if (laughTimer % 20 == 0 && laughTimer != 120)
+                {
+                    CombatText.NewText(npc.getRect(), new Color(146, 30, 68), "HEH", true, true);
+                }
             }
         }
     }
