@@ -1022,6 +1022,8 @@ namespace AAMod.Worldgeneration
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Pit"), colorToTile, mod.GetTexture("Worldgeneration/PitWall"), colorToWall, mod.GetTexture("Worldgeneration/PitLava"), mod.GetTexture("Worldgeneration/PitSlope"));
 
             gen.Generate(origin.X, origin.Y, true, true);
+            WorldGen.PlaceObject(origin.X + 281, origin.Y + 52, mod.TileType("WormAltar"));
+            NetMessage.SendObjectPlacment(-1, origin.X + 281, origin.Y + 52, mod.TileType("WormAltar"), 0, 0, -1, -1);
 
             return true;
         }

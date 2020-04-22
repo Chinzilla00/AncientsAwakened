@@ -7,7 +7,7 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 
 
-namespace Redemption.Tiles.SlayerShip
+namespace AAMod.Tiles.Boss
 {
 	public class Throne : ModTile
 	{

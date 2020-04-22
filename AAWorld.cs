@@ -609,6 +609,10 @@ namespace AAMod
                 {
                     MireAndInferno(progress);
                 }));
+                tasks.Insert(ChaosIndex + 2, new PassLegacy("The Pit", delegate (GenerationProgress progress)
+                {
+                    ThePit(progress);
+                }));
             }
 
 
@@ -1592,6 +1596,14 @@ namespace AAMod
                 origin = new Point((int)(Main.maxTilesX * 0.8f), (int)(Main.maxTilesY * 0.75f));
             }
             Crystal biome = new Crystal();
+            biome.Place(origin, WorldGen.structures);
+        }
+
+        private void ThePit(GenerationProgress progress)
+        {
+            progress.Message = "Sinking the Pit";
+            Point origin = new Point(Main.maxTilesX - 500, Main.maxTilesY - 200);
+            Pit biome = new Pit();
             biome.Place(origin, WorldGen.structures);
         }
 
