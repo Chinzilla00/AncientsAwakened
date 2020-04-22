@@ -609,14 +609,18 @@ namespace AAMod
                 {
                     MireAndInferno(progress);
                 }));
+            }
+
+
+            int shiniesIndex1 = tasks.FindIndex(genpass => genpass.Name.Equals("Larva"));
+
+            if (shiniesIndex1 > -1)
+            {
                 tasks.Insert(ChaosIndex + 2, new PassLegacy("The Pit", delegate (GenerationProgress progress)
                 {
                     ThePit(progress);
                 }));
             }
-
-
-            int shiniesIndex1 = tasks.FindIndex(genpass => genpass.Name.Equals("Larva"));
             
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
             if(shiniesIndex2 > -1)

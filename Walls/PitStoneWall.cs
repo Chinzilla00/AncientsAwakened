@@ -1,10 +1,11 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod.Walls
 {
-    public class PitstoneWalls : ModWall
+    public class PitStoneWall : ModWall
 	{
 		public override void SetDefaults()
 		{

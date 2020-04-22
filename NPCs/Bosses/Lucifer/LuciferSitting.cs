@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace AAMod.NPCs.Bosses.Lucifer
 {
-    public class KS3Sitting : ModNPC
+    public class LuciferSitting : ModNPC
     {
         public override void SetDefaults()
         {
@@ -57,9 +57,9 @@ namespace AAMod.NPCs.Bosses.Lucifer
             if (npc.frameCounter >= 8)
             {
                 npc.frame.Y += frameHeight;
+                npc.frameCounter = 0;
                 if (npc.frame.Y > frameHeight * 8)
                 {
-                    npc.frameCounter = 0;
                     npc.frame.Y = 0;
                 }
             }
@@ -102,6 +102,11 @@ Huh? What am I doin'?! I'm supervising.");
 
 Who am I kiddin'. You know who I am. Alpha wouldn't have made you a tester if you didn't.");
             return chat;
+        }
+
+        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
+        {
+            
         }
     }
 }

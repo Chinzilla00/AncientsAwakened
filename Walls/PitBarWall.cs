@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -10,7 +11,8 @@ namespace AAMod.Walls
 		{
             dustType = DustID.Fire;
 			AddMapEntry(new Color(50, 34, 0));
-		}
+            Main.tileBlockLight[Type] = false;
+        }
 
         public override void NumDust(int i, int j, bool fail, ref int num)
 		{

@@ -1004,7 +1004,7 @@ namespace AAMod.Worldgeneration
 
             Dictionary<Color, int> colorToTile = new Dictionary<Color, int>
             {
-                [new Color(128, 128, 128)] = mod.TileType("Pitstone"),
+                [new Color(128, 128, 128)] = mod.TileType("PitStone"),
                 [new Color(0, 0, 255)] = mod.TileType("PitBars"),
                 [new Color(0, 255, 0)] = mod.TileType("PitBridge"),
                 [new Color(255, 255, 255)] = -2, //turn into air
@@ -1013,17 +1013,25 @@ namespace AAMod.Worldgeneration
 
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>
             {
-                [new Color(128, 128, 128)] = mod.TileType("PitstoneWall"),
-                [new Color(0, 255, 255)] = mod.WallType("PitBarWall"),
+                [new Color(0, 0, 255)] = mod.WallType("PitBarWall"),
+                [new Color(255, 0, 0)] = mod.TileType("PitStoneWall"),
                 [new Color(255, 255, 255)] = -2,
                 [Color.Black] = -1
             };
 
+            WorldUtils.Gen(origin, new Shapes.Rectangle(336, 145), Actions.Chain(new GenAction[] //remove all fluids in sphere...
+			{
+                new InWorld(),
+                new Actions.SetLiquid(0, 0),
+                new Actions.SetSlope(0)
+            }));
+
             TexGen gen = BaseWorldGenTex.GetTexGenerator(mod.GetTexture("Worldgeneration/Pit"), colorToTile, mod.GetTexture("Worldgeneration/PitWall"), colorToWall, mod.GetTexture("Worldgeneration/PitLava"), mod.GetTexture("Worldgeneration/PitSlope"));
 
             gen.Generate(origin.X, origin.Y, true, true);
-            WorldGen.PlaceObject(origin.X + 281, origin.Y + 52, mod.TileType("WormAltar"));
-            NetMessage.SendObjectPlacment(-1, origin.X + 281, origin.Y + 52, mod.TileType("WormAltar"), 0, 0, -1, -1);
+
+            WorldGen.PlaceObject(origin.X + 281, origin.Y + 52, mod.TileType("Throne"));
+            NetMessage.SendObjectPlacment(-1, origin.X + 281, origin.Y + 52, mod.TileType("Throne"), 0, 0, -1, -1);
 
             return true;
         }
