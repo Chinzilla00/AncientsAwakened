@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Lucifer
 {
@@ -102,11 +103,6 @@ Huh? What am I doin'?! I'm supervising.");
 
 Who am I kiddin'. You know who I am. Alpha wouldn't have made you a tester if you didn't.");
             return chat;
-        }
-
-        public override void PostDraw(SpriteBatch spriteBatch, Color drawColor)
-        {
-            
         }
     }
 }
