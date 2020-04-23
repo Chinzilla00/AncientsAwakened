@@ -616,10 +616,10 @@ namespace AAMod
 
             if (shiniesIndex1 > -1)
             {
-                tasks.Insert(ChaosIndex + 2, new PassLegacy("The Pit", delegate (GenerationProgress progress)
+                /*tasks.Insert(ChaosIndex + 2, new PassLegacy("The Pit", delegate (GenerationProgress progress)
                 {
                     ThePit(progress);
-                }));
+                }));*/
             }
             
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));

@@ -1,10 +1,10 @@
 author = Alphakip
-version = 1.0.0.5
+version = 1.0.1.0
 displayName = Ancients Awakened
 includePDB = true
 buildIgnore = *.csproj, *.user, obj\*, bin\*, lib\*, .vs\*, *.gif, *.piskel, Unused\*
 hideCode = true
-hideResources = true
+hideResources = false
 includeSource = false
 modReferences = BaseMod
 homepage = https://discord.gg/MmpCpj4

@@ -227,6 +227,11 @@ namespace AAMod
                 npc.DropLoot(mod.ItemType("DevilSilk"), Main.rand.Next(2, 3));
             }
 
+            if (npc.type == NPCID.RedDevil && Main.rand.Next(3) == 0)
+            {
+                npc.DropLoot(mod.ItemType("PureEvil"));
+            }
+
             if (npc.type == NPCID.Demon)
             {
                 npc.DropLoot(mod.ItemType("DevilSilk"), Main.rand.Next(4, 5));

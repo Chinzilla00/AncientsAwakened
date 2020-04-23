@@ -18,9 +18,9 @@ namespace AAMod.NPCs.Enemies.Mushroom
             npc.width = 30;
             npc.height = 28;
             npc.aiStyle = -1;
-            npc.damage = 20;
-            npc.defense = 10;
-            npc.lifeMax = 100;
+            npc.damage = 8;
+            npc.defense = 6;
+            npc.lifeMax = 50;
             npc.knockBackResist = 0f;
             npc.npcSlots = 0f;
             npc.HitSound = SoundID.NPCHit1;
@@ -79,7 +79,7 @@ namespace AAMod.NPCs.Enemies.Mushroom
                 }
             }
             if (npc.ai[0] < -10) npc.ai[0] = -10;
-            BaseAI.AISlime(npc, ref npc.ai, false, 30, 6f, -6f, 6f, -8f);
+            BaseAI.AISlime(npc, ref npc.ai, false, 60, 3f, -2f, 6f, -4f);
         }
 
         public override void FindFrame(int frameHeight)
