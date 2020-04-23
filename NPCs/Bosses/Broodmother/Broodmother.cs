@@ -311,11 +311,46 @@ namespace AAMod.NPCs.Bosses.Broodmother
                 if (Main.netMode != 1)
                 {
                     internalAI[2]++;
-                    if (internalAI[2] > 30f)
+                    if (internalAI[2] > 10f)
                     {
-                        BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<BroodBreath>(), ref internalAI[3], 5, damage, 12, true, new Vector2(0, 40f));
+                        if(Collision.CanHit(npc.position, npc.width, npc.height, player.position, player.width, player.height))
+                        {
+                            BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<BroodBreath>(), ref internalAI[3], 5, damage, 12, true, new Vector2(0, 40f));
+                        }
+                        else
+                        {
+                            int j = (int) npc.position.Y / 16;
+                            int i = (int) player.position.Y / 16;
+                            if(i > j && internalAI[2] % 90 == 0 && Main.netMode != 1)
+                            {
+                                for(int index = -2; index < 2; index++)
+                                {
+                                    for(int loop = i; loop > j; loop--)
+                                    {
+                                        if(Main.tile[(int) player.position.X / 16 + index * 20, loop].active() && Main.tileSolid[Main.tile[(int) player.position.X / 16 + index * 10, loop].type] && (Main.tile[(int) player.position.X / 16 + index * 20, loop + 1].active() || !Main.tileSolid[Main.tile[(int) player.position.X / 16 + index * 20, loop + 1].type]))
+                                        {
+                                            int id = Projectile.NewProjectile(player.position.X + index * 320, loop * 16, 0, 12f, 654, damage, 0, Main.myPlayer, 0f, 0f);
+                                            Main.projectile[id].hostile = true;
+                                            Main.projectile[id].friendly = false;
+                                            break;
+                                        }
+                                    }
+                                    for(int loop = i + 20; loop > j; loop--)
+                                    {
+                                        if(Main.tile[(int) player.position.X / 16 + index * 20 - 10, loop].active() && Main.tileSolid[Main.tile[(int) player.position.X / 16 + index * 10 - 10, loop].type] && (Main.tile[(int) player.position.X / 16 + index * 20 - 10, loop - 1].active() || !Main.tileSolid[Main.tile[(int) player.position.X / 16 + index * 20 - 10, loop - 1].type]))
+                                        {
+                                            int id = Projectile.NewProjectile(player.position.X + index * 320 - 160, loop * 16, 0, -12f, 654, damage, 0, Main.myPlayer, 0f, 0f);
+                                            Main.projectile[id].hostile = true;
+                                            Main.projectile[id].friendly = false;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
                     }
-                    if (internalAI[2] > 90)
+                    if (internalAI[2] > 180)
                     {
                         internalAI[0] = 0;
                         internalAI[1] = 0;
