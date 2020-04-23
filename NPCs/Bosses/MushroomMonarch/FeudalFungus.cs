@@ -222,8 +222,6 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
         public void FungusAttack(int Attack)
         {
-            Player player = Main.player[npc.target];
-
             if (Attack == 0)
             {
                 if (NPC.CountNPCS(ModContent.NPCType<Mushling>()) < 4)
@@ -234,7 +232,17 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                     }
                 }
                 else
-                { Attack = 2; }
+                {
+                    float spread = 12f * 0.0174f;
+                    double startAngle = Math.Atan2(npc.velocity.X, npc.velocity.Y) - spread / 2;
+                    double deltaAngle = spread / (Main.expertMode ? 5 : 4);
+                    double offsetAngle;
+                    for (int i = 0; i < (Main.expertMode ? 5 : 4); i++)
+                    {
+                        offsetAngle = startAngle + deltaAngle * (i + i * i) / 2f + 32f * i;
+                        Projectile.NewProjectile(npc.Center.X, npc.Center.Y, (float)(Math.Sin(offsetAngle) * 6f), (float)(Math.Cos(offsetAngle) * 6f), mod.ProjectileType("FungusCloud"), damage, 0, Main.myPlayer, 0f, 1f);
+                    }
+                }
             }
             else if (Attack == 1)
             {

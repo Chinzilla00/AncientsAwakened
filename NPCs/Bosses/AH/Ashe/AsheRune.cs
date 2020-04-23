@@ -37,6 +37,8 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 writer.Write(count);
                 writer.Write(Control);
+                writer.Write(spinLeft);
+                writer.Write(SpinCheck);
             }
         }
 
@@ -47,18 +49,33 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             {
                 count = reader.ReadInt();
                 Control = reader.ReadInt();
+                spinLeft = reader.ReadBool();
+                SpinCheck = reader.ReadBool();
             }
         }
 
         public int count = 0;
         public int Control = 0;
 
+        public bool spinLeft = false;
+        public bool SpinCheck = false;
+
         public Vector2 Runeshootspeed = new Vector2();
 
         public override void AI()
         {
+            if (!SpinCheck && Main.netMode != 1)
+            {
+                if (Main.rand.Next(2) == 0)
+                {
+                    spinLeft = true;
+                }
+                SpinCheck = true;
+                npc.netUpdate = true;
+            }
             if (Control == 1)
             {
+                npc.rotation += spinLeft ? .02f : -.02f;
                 if (count == 0)
                 {
                     if(Main.player[Main.npc[(int)npc.ai[3]].target].position - new Vector2(npc.ai[0], npc.ai[1]) == new Vector2(0f, 0f))
@@ -86,6 +103,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else if (Control == 2)
             {
+                npc.rotation -= spinLeft ? .02f : -.02f;
                 if (npc.alpha < 255)
                 {
                     npc.alpha += 5;
@@ -101,6 +119,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
             }
             else
             {
+                npc.rotation += spinLeft ? .04f : -.04f;
                 if (npc.alpha > 0)
                 {
                     npc.alpha -= 5;

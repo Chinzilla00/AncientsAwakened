@@ -96,7 +96,7 @@ namespace AAMod.NPCs.Bosses.AH
 
             if (npc.ai[1] == 550)
             {
-                NPC.NewNPC((int)npc.position.X - 300, (int)npc.position.Y - 450, mod.NPCType("AsheSpawn"), 0, npc.whoAmI);
+                NPC.NewNPC((int)npc.position.X - 200, (int)npc.position.Y - 150, mod.NPCType("AsheSpawn"), 0, npc.whoAmI);
             }
 
             if (npc.ai[1] == 700)
@@ -106,7 +106,7 @@ namespace AAMod.NPCs.Bosses.AH
 
             if (npc.ai[1] == 550)
             {
-                NPC.NewNPC((int)npc.position.X + 300, (int)npc.position.Y - 450, mod.NPCType("HarukaSpawn"), 0, npc.whoAmI);
+                NPC.NewNPC((int)npc.position.X + 200, (int)npc.position.Y - 150, mod.NPCType("HarukaSpawn"), 0, npc.whoAmI);
             }
 
             if (npc.ai[1] == 820)

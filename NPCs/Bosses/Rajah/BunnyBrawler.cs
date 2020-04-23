@@ -138,7 +138,7 @@ namespace AAMod.NPCs.Bosses.Rajah
         {
             if (NPC.AnyNPCs(ModContent.NPCType<SupremeRajah>()))
             {
-                BaseDrawing.DrawAfterimage(spriteBatch, Main.npcTexture[npc.type], 0, npc, 1f, 1f, 10, true, 0f, 0f, AAColor.DiscoAlt1());
+                BaseDrawing.DrawAfterimage(spriteBatch, Main.npcTexture[npc.type], 0, npc, 1f, 1f, 10, true, 0f, 0f, AAColor.Rainbow3);
             }
             return false;
         }

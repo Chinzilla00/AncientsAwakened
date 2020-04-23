@@ -741,7 +741,7 @@ namespace AAMod.NPCs.Bosses.AH.Ashe
         private void RingEffects()
         {
             RingRotation += 0.02f;
-            RingRotation2 -= 0.02;
+            RingRotation2 -= 0.02f;
             if (npc.ai[0] == 12 || NPC.AnyNPCs(ModContent.NPCType<AsheOrbiter>()))
             {
                 if (scale >= 1f)
