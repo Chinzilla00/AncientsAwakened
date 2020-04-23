@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AAMod.NPCs.Bosses.Hydra
+namespace AAMod.NPCs.Enemies.Mire
 { 
     public class HarukaShadow : ModNPC
     {
@@ -27,13 +27,9 @@ namespace AAMod.NPCs.Bosses.Hydra
             npc.damage = 0;
             npc.value = 0;
             npc.alpha = 50;
-            music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/ChaosSissy");
             npc.width = 38;
             npc.height = 58;
         }
-
-        //npc.ai[0] = has been seen
-        //npc.ai[1] = alpha co-timer
 
         public override void AI()
         {
