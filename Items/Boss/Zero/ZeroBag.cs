@@ -54,6 +54,10 @@ namespace AAMod.Items.Boss.Zero
 
 		public override void OpenBossBag(Player player)
         {
+            if (Main.rand.Next(10) == 0)
+            {
+                player.QuickSpawnItem(mod.ItemType("ZeroCore"));
+            }
             if (Main.rand.Next(7) == 0)
             {
                 player.QuickSpawnItem(mod.ItemType("ZeroMask"));
