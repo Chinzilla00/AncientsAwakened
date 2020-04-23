@@ -41,11 +41,6 @@ Can only be used during the day");
 
         public override bool CanUseItem(Player player)
         {
-            if (!Main.dayTime)
-            {
-                if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.IntimidatingMushroomFalse1"), new Color(216, 110, 40), false);
-                return false;
-            }
             if (NPC.AnyNPCs(ModContent.NPCType<MushroomMonarch>()))
             {
                 if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.IntimidatingMushroomFalse2"), new Color(216, 110, 40), false);

@@ -37,7 +37,7 @@ Can only be used in glowing mushroom biomes");
 
             for (int i = 0; i < 10; i++)
             {
-                int boss = NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), mod.NPCType("Feudal Fungus"));
+                NPC.NewNPC((int)player.position.X + Main.rand.Next(-1000, 1000), (int)player.position.Y + Main.rand.Next(-1000, -400), mod.NPCType("Feudal Fungus"));
             }
 
             Main.PlaySound(15, (int)player.position.X, (int)player.position.Y, 0);
