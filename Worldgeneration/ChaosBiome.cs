@@ -1014,7 +1014,7 @@ namespace AAMod.Worldgeneration
             Dictionary<Color, int> colorToWall = new Dictionary<Color, int>
             {
                 [new Color(0, 0, 255)] = mod.WallType("PitBarWall"),
-                [new Color(255, 0, 0)] = mod.TileType("PitStoneWall"),
+                [new Color(255, 0, 0)] = mod.WallType("PitStoneWall"),
                 [new Color(255, 255, 255)] = -2,
                 [Color.Black] = -1
             };

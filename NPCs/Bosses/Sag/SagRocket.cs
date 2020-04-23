@@ -69,7 +69,7 @@ namespace AAMod.NPCs.Bosses.Sag
                 if (target)
                 {
                     AdjustMagnitude(ref move);
-                    projectile.velocity = (10 * projectile.velocity + move) / 11f;
+                    projectile.velocity = (4 * projectile.velocity + move) / 11f;
                     AdjustMagnitude(ref projectile.velocity);
                 }
             }

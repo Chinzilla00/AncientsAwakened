@@ -65,7 +65,8 @@ namespace AAMod.Projectiles
             if (Target != -1)
             {
                 NPC target = Main.npc[Target];
-                BaseAI.ShootPeriodic(projectile, target.position, target.width, target.height, ModContent.ProjectileType<ArchwitchStar>(), ref projectile.ai[1], 40, projectile.damage, 4, true);
+                int p = BaseAI.ShootPeriodic(projectile, target.position, target.width, target.height, ModContent.ProjectileType<ArchwitchStar>(), ref projectile.ai[0], 40, projectile.damage, 4, true);
+                Main.projectile[p].ai[1] = target.whoAmI;
             }
         }
 
