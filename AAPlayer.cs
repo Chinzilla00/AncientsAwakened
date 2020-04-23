@@ -313,6 +313,7 @@ namespace AAMod
         public bool Cerberus = false;
         public bool K9 = false;
         public bool Lunamini = false;
+        public bool ZeroBab = false;
         #endregion
 
         //NPCcount
@@ -602,6 +603,7 @@ namespace AAMod
             Cerberus = false;
             K9 = false;
             Lunamini = false;
+            ZeroBab = false;
         }
 
         public override void Initialize()

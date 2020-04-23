@@ -196,12 +196,6 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             
 			if(Main.netMode != 1)
 			{
-                if (!Main.dayTime)
-                {
-                    Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
-                    npc.active = false;
-                    return;
-                }
                 if (internalAI[1] != AISTATE_FLY)
                 {
                     internalAI[0]++;
@@ -288,13 +282,6 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 			{
                 BaseAI.AICharger(npc, ref npc.ai, 0.07f, 10f, false, 30);				
 			}
-
-            if (!Main.dayTime)
-            {
-                Projectile.NewProjectile(npc.Center, new Vector2(0f, 0f), mod.ProjectileType("MonarchRUNAWAY"), 0, 0);
-                npc.active = false;
-                return;
-            }
         }
 
         public override void ModifyHitByProjectile(Projectile projectile, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
