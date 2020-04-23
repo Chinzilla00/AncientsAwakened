@@ -29,6 +29,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.damage = 0;
             npc.value = 0;
             music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
+            bossBag = mod.ItemType("AHBag");
         }
 
         public override void AI()
@@ -37,16 +38,18 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
 
             if (npc.collideY)
             {
+                npc.ai[0]++;
                 if (npc.frame.Y < 78 * 4)
                 {
                     npc.frameCounter = 0;
-                    npc.ai[1] = 78 * 4;
+                    npc.frame.Y = 78 * 4;
                 }
 
                 if (npc.frame.Y < 78 * 6)
                 {
                     if (npc.frameCounter++ > 5)
                     {
+                        npc.frame.Y += 78;
                         npc.frameCounter = 0;
                     }
                 }
@@ -101,6 +104,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                 if (npc.frameCounter++ > 6)
                 {
                     npc.frameCounter = 0;
+                    npc.frame.Y += 78;
                     if (npc.frame.Y > 78 * 3)
                     {
                         npc.frame.Y = 0;

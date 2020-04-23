@@ -20,7 +20,7 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             npc.dontTakeDamage = true;
             npc.lifeMax = 1;
             npc.width = 90;
-            npc.height = 78;
+            npc.height = 72;
             npc.friendly = false;
             npc.lifeMax = 1;
             npc.dontTakeDamage = true;
@@ -61,8 +61,9 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                             npc.ai[1] = 4;
                         }
                     }
-                    if (npc.frame.Y == (92 * 11))
+                    if (npc.frame.Y >= (92 * 12))
                     {
+                        npc.ai[2] = 1;
                         Main.PlaySound(SoundID.Item14, npc.position);
                         Vector2 position = npc.Center + (Vector2.One * -20f);
                         int num84 = 40;
@@ -106,10 +107,6 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
                             Main.dust[num92].velocity *= 3f;
                             Main.dust[num92].velocity += npc.DirectionTo(Main.dust[num92].position) * 3f;
                         }
-                    }
-                    if (npc.frame.Y >= (92 * 12))
-                    {
-                        npc.ai[2] = 1;
                     }
                 }
             }
