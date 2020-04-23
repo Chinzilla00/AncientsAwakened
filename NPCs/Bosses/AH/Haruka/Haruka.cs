@@ -204,63 +204,15 @@ namespace AAMod.NPCs.Bosses.AH.Haruka
             bool flag = player.dead || !player.active || Math.Abs(npc.position.X - Main.player[npc.target].position.X) > 6000f || Math.Abs(npc.position.Y - Main.player[npc.target].position.Y) > 6000f;
             if (Ashe == 0)
             {
-                if (internalAI[9]++ >= 480 && AAWorld.downedSisters)
+                if (npc.life < npc.lifeMax / 4)
                 {
-                    internalAI[0] = AISTATE_ASHEGAG;
-                    npc.dontTakeDamage = true;
-                    music = mod.GetSoundSlot(SoundType.Music, "Sounds/Music/silence");
-                    npc.velocity *= .96f;
-
-                    if (internalAI[9] == 540)
+                    if (internalAI[9]++ >= 480 && AAWorld.downedSisters)
                     {
-                        CombatText.NewText(npc.Hitbox, new Color(72, 78, 117), "..?");
-                    }
-
-                    if (internalAI[9] == 600)
-                    {
-                        npc.direction = npc.spriteDirection = -1;
-                    }
-                    if (internalAI[9] == 660)
-                    {
-                        CombatText.NewText(npc.Hitbox, new Color(72, 78, 117), "...Ashe?");
-                        npc.direction = npc.spriteDirection = 1;
-                    }
-                    if (internalAI[9] == 720)
-                    {
-                        npc.direction = npc.spriteDirection = -1;
-                    }
-
-                    if (internalAI[9] == 780)
-                    {
-                        npc.direction = npc.spriteDirection = npc.position.X < player.position.X ? 1 : -1;
-                    }
-
-                    if (internalAI[9] == 800)
-                    {
-                        CombatText.NewText(npc.Hitbox, new Color(72, 78, 117), "...thanks.");
-
-                        if (Main.expertMode)
-                        {
-                            npc.DropBossBags();
-                        }
-
-                        if (!Main.expertMode)
-                        {
-                            string[] lootTableH = { "HarukaKunai", "Masamune", "MizuArashi", "HarukaBox" };
-                            int lootH = Main.rand.Next(lootTableH.Length);
-                            npc.DropLoot(mod.ItemType(lootTableH[lootH]));
-                        }
-
-                        if (Main.rand.Next(10) == 0)
-                        {
-                            Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("HarukaTrophy"));
-                        }
-
-                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HarukaVanish>());
+                        NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, ModContent.NPCType<HarukaFall>());
                         npc.active = false;
                         npc.netUpdate = true;
+                        return;
                     }
-                    return;
                 }
                 if (flag)
                 {
