@@ -1,6 +1,8 @@
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
+using System;
 
 namespace AAMod.NPCs.Bosses.Broodmother
 {
@@ -17,18 +19,45 @@ namespace AAMod.NPCs.Bosses.Broodmother
             projectile.width = 22;
             projectile.penetrate = -1;
             projectile.hostile = true;
+            projectile.timeLeft = 600;
         }
 
         public override void AI()
         {
 			projectile.rotation += projectile.velocity.Length() * 0.025f;
             projectile.velocity.Y += .15f;
+
+            bool explode = false;
+            for(int i = 0; i < 255 && !explode; i++)
+            {
+                if(Main.player[i].active && Math.Abs(Main.player[i].Center.X - projectile.Center.X) + Math.Abs(Main.player[i].Center.Y - projectile.Center.Y) < 66)
+                {
+                    explode = true;
+                }
+            }
+
+            Vector2 tile = new Vector2(projectile.Center.X, projectile.Center.Y + projectile.height / 2);
+            bool tileCheck = TileID.Sets.Platforms[Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].type];
+            if (tileCheck) 
+            {
+                projectile.velocity.X = 0f;
+                projectile.velocity.Y = 0f;
+                if(explode) projectile.Kill();
+            }
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
-            projectile.Kill();
-            return true;
+            bool explode = false;
+            for(int i = 0; i < 255 && !explode; i++)
+            {
+                if(Main.player[i].active && Math.Abs(Main.player[i].Center.X - projectile.Center.X) + Math.Abs(Main.player[i].Center.Y - projectile.Center.Y) < 66)
+                {
+                    explode = true;
+                }
+            }
+            if(explode) projectile.Kill();
+            return explode;
         }
 		
         public override void Kill(int timeLeft)

@@ -6,6 +6,7 @@ using BaseMod;
 using Terraria.ID;
 using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace AAMod.NPCs.Bosses.Toad
 {
@@ -104,7 +105,7 @@ namespace AAMod.NPCs.Bosses.Toad
             AAModGlobalNPC.Toad = npc.whoAmI;
 
             Vector2 tile = new Vector2(npc.Center.X,npc.Center.Y + npc.height / 2);
-            bool tileCheck = TileID.Sets.Platforms[Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].type];
+            bool tileCheck = TileID.Sets.Platforms[Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].type] || Main.tileSolid[Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].type];
             if (player.Center.Y + player.height / 2 >= npc.Center.Y + npc.height / 2 + 20f && tileCheck) 
             {
                 npc.noTileCollide = true;
@@ -148,13 +149,17 @@ namespace AAMod.NPCs.Bosses.Toad
             if (player != null)
             {
                 float dist = npc.Distance(player.Center);
-                if (dist > 800 || (npc.collideY && npc.velocity.Y < 0) || npc.collideX)
+                if (dist > 400)
                 {
                     npc.alpha += 3;
                     if (npc.alpha >= 255)
                     {
-                        Vector2 tele = new Vector2(player.Center.X + (Main.rand.Next(2) == 0 ? 300 : -300), player.Center.Y - 16);
+                        Vector2 tele = new Vector2(player.Center.X, player.Center.Y - 150);
                         npc.Center = tele;
+                        for (int m = 0; m < 6; m++)
+                        {
+                            Dust.NewDust(npc.Center, npc.width, npc.height, DustID.Blood, npc.velocity.RotatedBy(Main.rand.NextFloat() * 3.1415926f).X * 0.2f, npc.velocity.RotatedBy(Main.rand.NextFloat() * 3.1415926f).Y * 0.2f, ModContent.DustType<Dusts.ShroomDust>(), default, 1.5f);
+                        }
                         npc.netUpdate = true;
                     }
                 }
@@ -174,6 +179,11 @@ namespace AAMod.NPCs.Bosses.Toad
                 float ShroomCount = 1 + (Shrooms.Length / 10);
                 npc.damage = (int)(npc.defDamage * ShroomCount);
                 npc.defense = (int)(npc.defDefense * ShroomCount);
+                if(internalAI[3] ++ > 20)
+                {
+                    npc.life += (int)Shrooms.Length;
+                    internalAI[3] = 0;
+                }
                 AIChangeRate = 120;
                 JumpX = 8f; JumpY = -10f; JumpX2 = 10f; JumpY2 = -14f;
                 if (Main.netMode != 2 && Main.LocalPlayer.miscCounter % 2 == 0)
@@ -225,7 +235,8 @@ namespace AAMod.NPCs.Bosses.Toad
             if (internalAI[0] == AISTATE_JUMP)
             {
                 npc.wet = false;
-                BaseAI.AISlime(npc, ref npc.ai, false, 20, JumpX, JumpY, JumpX2, JumpY2);
+                AITortoise();
+                //BaseAI.AISlime(npc, ref npc.ai, false, 20, JumpX, JumpY, JumpX2, JumpY2);
                 internalAI[1]++;
                 if (internalAI[1] == 179)
                 {
@@ -256,13 +267,14 @@ namespace AAMod.NPCs.Bosses.Toad
                     if (internalAI[2] > 5)
                     {
                         internalAI[2] = 0;
+                        float directionY = player.Center.Y - npc.Center.Y > 0? 1:-1;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("ToadBomb"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("ToadBomb"), damage, 3);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("ToadBomb"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("ToadBomb"), damage, 3);
                         }
                         npc.netUpdate = true;
                     }
@@ -277,9 +289,10 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             else if (internalAI[0] == AISTATE_JUMPALOT)
             {
-                internalAI[1]++; if (npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
+                internalAI[1]++;// if (npc.ai[0] < -10) npc.ai[0] = -10; //force rapid jumping
+                AITortoise();
                 npc.wet = false;
-                BaseAI.AISlime(npc, ref npc.ai, false, -10, JumpX, JumpY, JumpX2, JumpY2);
+                //BaseAI.AISlime(npc, ref npc.ai, false, -10, JumpX, JumpY, JumpX2, JumpY2);
                 if (Main.netMode != 1)
                 {
                     internalAI[1]++;
@@ -309,13 +322,14 @@ namespace AAMod.NPCs.Bosses.Toad
                     if (internalAI[2] > 8)
                     {
                         internalAI[2] = 0;
+                        float directionY = player.Center.Y - npc.Center.Y > 0? 1:-1;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("FungusBubble"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("FungusBubble"), damage, 3);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("FungusBubble"), damage, 3); //Originally 35 damage
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("FungusBubble"), damage, 3); //Originally 35 damage
                         }
                         npc.netUpdate = true;
                     }
@@ -345,13 +359,14 @@ namespace AAMod.NPCs.Bosses.Toad
                     if (internalAI[2] > 25)
                     {
                         internalAI[2] = 0;
+                        float directionY = player.Center.Y - npc.Center.Y > 0? 1:-1;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("Seed"), 0, 0);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("Seed"), 0, 0);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("Seed"), 0, 0);
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("Seed"), 0, 0);
                         }
                         npc.netUpdate = true;
                     }
@@ -463,13 +478,14 @@ namespace AAMod.NPCs.Bosses.Toad
                     if (internalAI[2] > 20)
                     {
                         internalAI[2] = 0;
+                        float directionY = player.Center.Y - npc.Center.Y > 0? 1:-1;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-1, 0)), mod.ProjectileType("ToadBubble"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("ToadBubble"), damage, 3);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-1, 0)), mod.ProjectileType("ToadBubble"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("ToadBubble"), damage, 3);
                         }
                         npc.netUpdate = true;
                     }
@@ -581,6 +597,296 @@ namespace AAMod.NPCs.Bosses.Toad
             BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor, true);
             BaseDrawing.DrawTexture(sb, GlowTex, 0, npc, ColorUtils.COLOR_GLOWPULSE, true);
             return false;
+        }
+
+        private void AITortoise()
+        {
+            npc.TargetClosest(true);
+            bool flag31 = true;
+            int num513 = 0;
+            if (npc.velocity.X < 0f)
+            {
+                num513 = -1;
+            }
+            if (npc.velocity.X > 0f)
+            {
+                num513 = 1;
+            }
+            Vector2 position = npc.position;
+            position.X += npc.velocity.X;
+            int num514 = (int)((position.X + (float)(npc.width / 2) + (float)((npc.width / 2 + 1) * num513)) / 16f);
+            int num515 = (int)((position.Y + (float)npc.height - 1f) / 16f);
+            if ((float)(num514 * 16) < position.X + (float)npc.width && (float)(num514 * 16 + 16) > position.X && ((Main.tile[num514, num515].nactive() && !Main.tile[num514, num515].topSlope() && !Main.tile[num514, num515 - 1].topSlope() && ((Main.tileSolid[(int)Main.tile[num514, num515].type] && !Main.tileSolidTop[(int)Main.tile[num514, num515].type]) || (flag31 && Main.tileSolidTop[(int)Main.tile[num514, num515].type] && (!Main.tileSolid[(int)Main.tile[num514, num515 - 1].type] || !Main.tile[num514, num515 - 1].nactive()) && Main.tile[num514, num515].type != 16 && Main.tile[num514, num515].type != 18 && Main.tile[num514, num515].type != 134))) || (Main.tile[num514, num515 - 1].halfBrick() && Main.tile[num514, num515 - 1].nactive())) && (!Main.tile[num514, num515 - 1].nactive() || !Main.tileSolid[(int)Main.tile[num514, num515 - 1].type] || Main.tileSolidTop[(int)Main.tile[num514, num515 - 1].type] || (Main.tile[num514, num515 - 1].halfBrick() && (!Main.tile[num514, num515 - 4].nactive() || !Main.tileSolid[(int)Main.tile[num514, num515 - 4].type] || Main.tileSolidTop[(int)Main.tile[num514, num515 - 4].type]))) && (!Main.tile[num514, num515 - 2].nactive() || !Main.tileSolid[(int)Main.tile[num514, num515 - 2].type] || Main.tileSolidTop[(int)Main.tile[num514, num515 - 2].type]) && (!Main.tile[num514, num515 - 3].nactive() || !Main.tileSolid[(int)Main.tile[num514, num515 - 3].type] || Main.tileSolidTop[(int)Main.tile[num514, num515 - 3].type]) && (!Main.tile[num514 - num513, num515 - 3].nactive() || !Main.tileSolid[(int)Main.tile[num514 - num513, num515 - 3].type] || Main.tileSolidTop[(int)Main.tile[num514 - num513, num515 - 3].type]))
+            {
+                float num516 = (float)(num515 * 16);
+                if (Main.tile[num514, num515].halfBrick())
+                {
+                    num516 += 8f;
+                }
+                if (Main.tile[num514, num515 - 1].halfBrick())
+                {
+                    num516 -= 8f;
+                }
+                if (num516 < position.Y + (float)npc.height)
+                {
+                    float num517 = position.Y + (float)npc.height - num516;
+                    if ((double)num517 <= 16.1)
+                    {
+                        npc.gfxOffY += npc.position.Y + (float)npc.height - num516;
+                        npc.position.Y = num516 - (float)npc.height;
+                        if (num517 < 9f)
+                        {
+                            npc.stepSpeed = 0.75f;
+                        }
+                        else
+                        {
+                            npc.stepSpeed = 1.5f;
+                        }
+                    }
+                }
+            }
+            if (npc.justHit)
+            {
+                npc.ai[0] = 0f;
+                npc.ai[1] = 0f;
+                npc.TargetClosest(true);
+            }
+            if (npc.ai[0] == 0f)
+            {
+                npc.velocity.X = npc.velocity.X * 0.5f;
+                npc.ai[1] += 1f;
+                if (npc.ai[1] >= 30f)
+                {
+                    npc.netUpdate = true;
+                    npc.TargetClosest(true);
+                    npc.ai[1] = 0f;
+                    npc.ai[2] = 0f;
+                    npc.ai[0] = 2f;
+                }
+            }
+            else
+            {
+                if (npc.ai[0] == 2f)
+                {
+                    if (Main.expertMode)
+                    {
+                        npc.damage = (int)((double)(npc.defDamage * 2) * 0.9);
+                    }
+                    else
+                    {
+                        npc.damage = npc.defDamage * 2;
+                    }
+                    npc.defense = npc.defDefense * 2;
+                    npc.ai[1] += 1f;
+                    if (npc.ai[1] == 1f)
+                    {
+                        npc.netUpdate = true;
+                        npc.TargetClosest(true);
+                        npc.ai[2] += 0.3f;
+                        npc.ai[1] += 1f;
+                        bool flag34 = Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height);
+                        float num531 = 10f;
+                        if (!flag34)
+                        {
+                            num531 = 6f;
+                        }
+                        Vector2 vector67 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                        float num532 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector67.X;
+                        float num533 = Math.Abs(num532) * 0.2f;
+                        if (npc.directionY > 0)
+                        {
+                            num533 = 0f;
+                        }
+                        float num534 = Main.player[npc.target].position.Y - vector67.Y - num533;
+                        float num535 = (float)Math.Sqrt((double)(num532 * num532 + num534 * num534));
+                        npc.netUpdate = true;
+                        num535 = num531 / num535;
+                        num532 *= num535;
+                        num534 *= num535;
+                        if (!flag34)
+                        {
+                            num534 = -10f;
+                        }
+                        npc.velocity.X = num532;
+                        npc.velocity.Y = num534;
+                        npc.ai[3] = npc.velocity.X;
+                    }
+                    else
+                    {
+                        if (npc.position.X + (float)npc.width > Main.player[npc.target].position.X && npc.position.X < Main.player[npc.target].position.X + (float)Main.player[npc.target].width && npc.position.Y < Main.player[npc.target].position.Y + (float)Main.player[npc.target].height)
+                        {
+                            npc.velocity.X = npc.velocity.X * 0.8f;
+                            npc.ai[3] = 0f;
+                            if (npc.velocity.Y < 0f)
+                            {
+                                npc.velocity.Y = npc.velocity.Y + 0.2f;
+                            }
+                        }
+                        if (npc.ai[3] != 0f)
+                        {
+                            npc.velocity.X = npc.ai[3];
+                            npc.velocity.Y = npc.velocity.Y - 0.22f;
+                        }
+                        if (npc.ai[1] >= 90f)
+                        {
+                            npc.noGravity = false;
+                            npc.ai[1] = 0f;
+                            npc.ai[0] = 3f;
+                        }
+                    }
+                    if (npc.wet && npc.directionY < 0)
+                    {
+                        npc.velocity.Y = npc.velocity.Y - 0.3f;
+                    }
+                    return;
+                }
+                if (npc.ai[0] == 3f)
+                {
+                    if (npc.wet && npc.directionY < 0)
+                    {
+                        npc.velocity.Y = npc.velocity.Y - 0.3f;
+                    }
+                    npc.velocity.X = npc.velocity.X * 0.96f;
+                    if (npc.ai[2] > 0f)
+                    {
+                        npc.ai[2] -= 0.01f;
+                    }
+                    if (npc.ai[2] <= 0f && (npc.velocity.Y == 0f || npc.wet))
+                    {
+                        npc.netUpdate = true;
+                        npc.ai[2] = 0f;
+                        npc.ai[1] = 0f;
+                        npc.ai[0] = 4f;
+                        return;
+                    }
+                }
+                else
+                {
+                    if (npc.ai[0] == 5f)
+                    {
+                        npc.damage = (int)((float)npc.defDamage * (Main.expertMode ? 1.4f : 1.8f));
+                        npc.defense = npc.defDefense * 2;
+                        npc.knockBackResist = 0f;
+                        if (Main.rand.Next(3) < 2)
+                        {
+                            int num536 = Dust.NewDust(npc.Center - new Vector2(30f), 60, 60, 6, npc.velocity.X * 0.5f, npc.velocity.Y * 0.5f, 90, default(Color), 1.5f);
+                            Main.dust[num536].noGravity = true;
+                            Dust dust3 = Main.dust[num536];
+                            dust3.velocity *= 0.2f;
+                            Main.dust[num536].fadeIn = 1f;
+                        }
+                        npc.ai[1] += 1f;
+                        if (npc.ai[3] > 0f)
+                        {
+                            int num;
+                            if (npc.ai[3] == 1f)
+                            {
+                                Vector2 vector68 = npc.Center - new Vector2(50f);
+                                for (int num537 = 0; num537 < 32; num537 = num + 1)
+                                {
+                                    int num538 = Dust.NewDust(vector68, 100, 100, 6, 0f, 0f, 100, default(Color), 2.5f);
+                                    Main.dust[num538].noGravity = true;
+                                    Dust dust3 = Main.dust[num538];
+                                    dust3.velocity *= 3f;
+                                    num538 = Dust.NewDust(vector68, 100, 100, 6, 0f, 0f, 100, default(Color), 1.5f);
+                                    dust3 = Main.dust[num538];
+                                    dust3.velocity *= 2f;
+                                    Main.dust[num538].noGravity = true;
+                                    num = num537;
+                                }
+                                for (int num539 = 0; num539 < 4; num539 = num + 1)
+                                {
+                                    int num540 = Gore.NewGore(vector68 + new Vector2((float)(50 * Main.rand.Next(100)) / 100f, (float)(50 * Main.rand.Next(100)) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
+                                    Gore gore = Main.gore[num540];
+                                    gore.velocity *= 0.3f;
+                                    Gore gore2 = Main.gore[num540];
+                                    gore2.velocity.X = gore2.velocity.X + (float)Main.rand.Next(-10, 11) * 0.05f;
+                                    Gore gore3 = Main.gore[num540];
+                                    gore3.velocity.Y = gore3.velocity.Y + (float)Main.rand.Next(-10, 11) * 0.05f;
+                                    num = num539;
+                                }
+                            }
+                            for (int num541 = 0; num541 < 5; num541 = num + 1)
+                            {
+                                int num542 = Dust.NewDust(npc.position, npc.width, npc.height, 31, 0f, 0f, 100, default(Color), 1.5f);
+                                Main.dust[num542].velocity = Main.dust[num542].velocity * Main.rand.NextFloat();
+                                num = num541;
+                            }
+                            npc.ai[3] += 1f;
+                            if (npc.ai[3] >= 10f)
+                            {
+                                npc.ai[3] = 0f;
+                            }
+                        }
+                        if (npc.ai[1] == 1f)
+                        {
+                            npc.netUpdate = true;
+                            npc.TargetClosest(true);
+                            bool flag35 = Collision.CanHit(npc.position, npc.width, npc.height, Main.player[npc.target].position, Main.player[npc.target].width, Main.player[npc.target].height);
+                            float num543 = 16f;
+                            if (!flag35)
+                            {
+                                num543 = 10f;
+                            }
+                            Vector2 vector69 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
+                            float num544 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector69.X;
+                            float num545 = Math.Abs(num544) * 0.2f;
+                            if (npc.directionY > 0)
+                            {
+                                num545 = 0f;
+                            }
+                            float num546 = Main.player[npc.target].position.Y - vector69.Y - num545;
+                            float num547 = (float)Math.Sqrt((double)(num544 * num544 + num546 * num546));
+                            npc.netUpdate = true;
+                            num547 = num543 / num547;
+                            num544 *= num547;
+                            num546 *= num547;
+                            if (!flag35)
+                            {
+                                num546 = -12f;
+                            }
+                            npc.velocity.X = num544;
+                            npc.velocity.Y = num546;
+                        }
+                        else
+                        {
+                            npc.velocity.X = npc.velocity.X * 0.9f;
+                            if (npc.velocity.Y < 0f)
+                            {
+                                npc.velocity.Y = npc.velocity.Y + 0.2f;
+                            }
+                            if (npc.ai[2] == 0f || npc.ai[1] >= 1200f)
+                            {
+                                npc.ai[1] = 0f;
+                                npc.ai[0] = 4f;
+                            }
+                        }
+                        if (npc.wet && npc.directionY < 0)
+                        {
+                            npc.velocity.Y = npc.velocity.Y - 0.3f;
+                        }
+                        return;
+                    }
+                    if (npc.ai[0] == 4f)
+                    {
+                        npc.velocity.X = 0f;
+                        npc.ai[1] += 1f;
+                        if (npc.ai[1] >= 30f)
+                        {
+                            npc.TargetClosest(true);
+                            npc.netUpdate = true;
+                            npc.ai[1] = 0f;
+                            npc.ai[0] = 0f;
+                        }
+                        if (npc.wet)
+                        {
+                            npc.ai[0] = 2f;
+                            npc.ai[1] = 0f;
+                            return;
+                        }
+                    }
+                }
+            }
         }
     }
 }

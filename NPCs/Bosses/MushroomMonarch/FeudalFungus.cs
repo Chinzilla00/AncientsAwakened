@@ -170,13 +170,13 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
             npc.rotation = 0;
 
-            if (internalAI[4] ++ > 90 && Main.expertMode)
+            if (internalAI[4] ++ > 90 && Main.expertMode && Main.netMode != 1)
             {
                 internalAI[4] = 0;
                 Vector2 pos = new Vector2(player.Center.X + Main.rand.Next(70, 150) * (Main.rand.Next(2) == 0? 1: -1), player.Center.Y + Main.rand.Next(70, 150) * (Main.rand.Next(2) == 0? 1: -1));
                 Vector2 velocity = Vector2.Normalize(player.Center - pos) * .1f;
                 int proj = Projectile.NewProjectile(pos.X, pos.Y, velocity.X, velocity.Y, mod.ProjectileType("FungusCloud"), damage, 0, Main.myPlayer, 0f, 0f);
-                Main.projectile[proj].timeLeft = 360;
+                Main.projectile[proj].timeLeft = 720;
                 Main.projectile[proj].alpha = 255;
             }
         }
