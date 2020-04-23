@@ -14,8 +14,7 @@ namespace AAMod.Items.BossSummons.Swarm
         {
             DisplayName.SetDefault("Masshroom");
             ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
-            Tooltip.SetDefault(@"Summons a lot of Mushroom Monarchs
-Can only be used during the day");
+            Tooltip.SetDefault(@"Summons a lot of Mushroom Monarchs");
         }
 
         public override void SetDefaults()
@@ -65,7 +64,7 @@ Can only be used during the day");
             if (fargos != null)
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ModContent.ItemType<IntimidatingMushroom>(), 10);
+                recipe.AddIngredient(ModContent.ItemType<IntimidatingMushroom>(), 1);
                 recipe.AddIngredient(fargos, "Overloader", 1);
                 recipe.AddTile(TileID.WorkBenches);
                 recipe.SetResult(this, 1);

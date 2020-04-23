@@ -13,6 +13,7 @@ namespace AAMod.NPCs.Enemies.Void
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Void Scout");
+			Main.npcFrameCount[npc.type] = 4;
 		}
 
 		public override void SetDefaults()
@@ -71,17 +72,31 @@ namespace AAMod.NPCs.Enemies.Void
 			}
 		}
 
+		public override void FindFrame(int frameHeight)
+		{
+			if (npc.frameCounter++ > 5)
+			{
+				npc.frameCounter = 0;
+				npc.frame.Y += frameHeight;
+				if (npc.frame.Y > frameHeight * 3)
+				{
+					npc.frame.Y = 0;
+				}
+			}
+		}
 
-        public override void NPCLoot()
+		public override void NPCLoot()
         {
             Item.NewItem((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height, mod.ItemType("VoidEnergy"), Main.rand.Next(1, 4));
         }
 
-        public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
+        public override bool PreDraw(SpriteBatch spriteBatch, Color drawColor)
         {
-            Texture2D glowTex = mod.GetTexture("Glowmasks/Scout_Glow");
-            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, AAColor.ZeroShield);
+            Texture2D texture2D13 = Main.npcTexture[npc.type];
+            Texture2D GlowTex = mod.GetTexture("Glowmasks/Scout_Glow");
+
+            BaseDrawing.DrawTexture(spriteBatch, texture2D13, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 4, npc.frame, drawColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, GlowTex, 0, npc.position, npc.width, npc.height, npc.scale, npc.rotation, 0, 4, npc.frame, AAColor.ZeroShield, true);
             return false;
         }
     }

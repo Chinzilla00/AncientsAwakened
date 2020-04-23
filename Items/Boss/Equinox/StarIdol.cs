@@ -1,18 +1,18 @@
 using Terraria;
 using Terraria.ModLoader;
 using BaseMod;
-using AAMod.Tiles.Ore;
 using Terraria.Localization;
 using Microsoft.Xna.Framework;
 
 namespace AAMod.Items.Boss.Equinox
 {
-	public class StarIdol : BaseAAItem
+    public class StarIdol : BaseAAItem
 	{
 		public override void SetStaticDefaults()
 		{
 			DisplayName.SetDefault("Blessing of the Stars");
-            BaseUtility.AddTooltips(item, new string[] { "Unleashes the power of Grovite upon your world!" });	
+            Tooltip.SetDefault(@"It sparkles like the stars in the sky
+Can only be used if there arent many radium stars in the world.");	
 		}
 
         public override void SetDefaults()

@@ -2632,7 +2632,7 @@ namespace AAMod
             bool spawnedDevItems = false; //this prevents it from not dropping anything if the chance lands on something it cannot drop yet (for prehm/hm) as by this point it's past the 10% chance and thus should drop.
             while (!spawnedDevItems)
             {
-                int choice = Main.rand.Next(30);
+                int choice = Main.rand.Next(40);
 
                 switch (choice)
                 {
@@ -2764,11 +2764,6 @@ namespace AAMod
 
                     case 11:
 
-                        if (dropType >= 4)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("LizTerratool"));
-                        }
-
                         player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Eliza.LizBag>());
 
                         if (dropType >= 3)
@@ -2780,6 +2775,11 @@ namespace AAMod
                             else
                             {
                                 player.QuickSpawnItem(mod.ItemType(dropType == 4 ? "ArchwitchStaff" : "ArchwitchWand"));
+                            }
+
+                            if (dropType >= 4)
+                            {
+                                player.QuickSpawnItem(mod.ItemType("LizTerratool"));
                             }
                         }
 
@@ -2887,9 +2887,7 @@ namespace AAMod
                         break;
 
                     case 21:
-                        player.QuickSpawnItem(mod.ItemType("FargoHat"));
-                        player.QuickSpawnItem(mod.ItemType("FargoSuit"));
-                        player.QuickSpawnItem(mod.ItemType("FargoPants"));
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Fargo.TopHat>());
 
                         if (dropType >= 3)
                         {
@@ -2963,6 +2961,16 @@ namespace AAMod
                     case 28:
                         player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Pluto.PlutoBag>());
                         break;
+                    case 29:
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.VoidEye.VoidBag>());
+                        break;
+                    case 30:
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Anarchy.AnarchyBag>());
+                        break;
+                    case 31:
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Maskano.MaskBag>());
+                        break;
+
                     default:
                         spawnedDevItems = false;
                         break;
@@ -3086,6 +3094,8 @@ namespace AAMod
                     if (player.inventory[m].type == ModContent.ItemType<Items.Usable.RiftMirror>())
                     {
                         Main.PlaySound(new LegacySoundStyle(2, 6), player.position);
+                        LeaveDust(player);
+                        player.velocity = Vector2.Zero;
                         player.position = RiftPos;
                     }
                 }
@@ -3169,6 +3179,14 @@ namespace AAMod
             {
                 AbilityCD--;
             }
+        }
+
+        private static void LeaveDust(Player player)
+        {
+            for (int index = 0; index < 70; ++index)
+                Main.dust[Dust.NewDust(player.position, player.width, player.height, 15, player.velocity.X * 0.2f, player.velocity.Y * 0.2f, 150, Color.Cyan, 1.2f)].velocity *= 0.5f;
+            Main.TeleportEffect(player.getRect(), 1);
+            Main.TeleportEffect(player.getRect(), 3);
         }
 
         public bool ShinyCheck()

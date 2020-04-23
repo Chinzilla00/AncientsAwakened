@@ -1079,6 +1079,10 @@ namespace AAMod
                 AAMod.instance.ItemType("GibsBag"),
                 AAMod.instance.ItemType("GroviteSeaChest"),
                 AAMod.instance.ItemType("PlutoBag"),
+                AAMod.instance.ItemType("VoidBag"),
+                AAMod.instance.ItemType("AnarchyBag"),
+                AAMod.instance.ItemType("MaskBag"),
+                AAMod.instance.ItemType("TopHat"),
                 AAMod.instance.ItemType("ApawnEgg")
             });
             RecipeGroup.RegisterGroup("AAMod:DevBag", group23);

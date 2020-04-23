@@ -16,7 +16,7 @@ namespace AAMod.Projectiles.Zero
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
-            Main.projFrames[projectile.type] = 4;
+            Main.projFrames[projectile.type] = 6;
         }
 
         public override void SetDefaults()
@@ -107,7 +107,7 @@ namespace AAMod.Projectiles.Zero
                     projectile.frame++;
                     projectile.frameCounter = 0;
                 }
-                if (projectile.frame > 2)
+                if (projectile.frame > 6)
                 {
                     projectile.frame = 0;
                 }
@@ -297,8 +297,8 @@ namespace AAMod.Projectiles.Zero
 
             Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
 
-            BaseDrawing.DrawTexture(spritebatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 4, frame, dColor, true);
-            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 4, frame, color1, true);
+            BaseDrawing.DrawTexture(spritebatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 7, frame, dColor, true);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 7, frame, color1, true);
             return false;
         }
     }

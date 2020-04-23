@@ -30,8 +30,8 @@ namespace AAMod.NPCs.Bosses.Toad
 
         public override void AI()
         {
-            const int homingDelay = 60;
-            const float desiredFlySpeedInPixelsPerFrame = 2;
+            const int homingDelay = 45;
+            const float desiredFlySpeedInPixelsPerFrame = 3;
             const float amountOfFramesToLerpBy = 30;
 
             projectile.ai[0]++;

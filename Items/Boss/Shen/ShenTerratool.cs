@@ -1,5 +1,6 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace AAMod.Items.Boss.Shen
 {
@@ -76,6 +77,18 @@ You may only have a maximum of 2 tool types active");
                 return false;
             }
             return true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(null, "AkumaTerratool", 1);
+            recipe.AddIngredient(null, "YamataTerratool", 1);
+            recipe.AddIngredient(null, "ChaosScale", 5);
+            recipe.AddIngredient(null, "Discordium", 5);
+            recipe.AddTile(null, "ACS");
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }

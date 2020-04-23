@@ -15,8 +15,7 @@ namespace AAMod.Items.BossSummons
         {
             DisplayName.SetDefault("Intimidating Looking Mushroom");
             ItemID.Sets.SortingPriorityBossSpawns[item.type] = 13; // This helps sort inventory know this is a boss summoning item.
-            Tooltip.SetDefault(@"Summons the Mushroom Monarch
-Can only be used during the day");
+            Tooltip.SetDefault(@"Summons the Mushroom Monarch");
         }
 
         public override void SetDefaults()

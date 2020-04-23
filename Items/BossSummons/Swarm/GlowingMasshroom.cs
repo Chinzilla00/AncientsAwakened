@@ -71,7 +71,7 @@ Can only be used in glowing mushroom biomes");
             if (fargos != null)
             {
                 ModRecipe recipe = new ModRecipe(mod);
-                recipe.AddIngredient(ModContent.ItemType<ConfusingMushroom>(), 10);
+                recipe.AddIngredient(ModContent.ItemType<ConfusingMushroom>(), 1);
                 recipe.AddIngredient(fargos, "Overloader", 1);
                 recipe.AddTile(TileID.WorkBenches);
                 recipe.SetResult(this, 1);

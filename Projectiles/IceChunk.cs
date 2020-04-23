@@ -7,49 +7,45 @@ namespace AAMod.Projectiles
 {
     public class IceChunk : ModProjectile
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Ice Chunk");
+        }
         public override void SetDefaults()
         {
-            projectile.CloneDefaults(ProjectileID.LightBeam);
-            projectile.penetrate = 1;  
-            projectile.width = 18;
-            projectile.height = 18;
-			projectile.friendly = true;
-			projectile.hostile = false;
-            projectile.timeLeft = 300;
-        }
-		
-		public override void AI()
-		{
-            projectile.alpha = 0;
-			if (Main.rand.NextFloat() < 0.9210526f)
-			{
-				Dust dust;
-				Vector2 position = projectile.position;
-				dust = Main.dust[Dust.NewDust(position, 30, 30, ModContent.DustType<Dusts.SnowDust>(), 0f, 0f, 0, default, 1)];
-				dust.noGravity = true;
-			}
-            projectile.timeLeft--;
+            projectile.width = 14;
+            projectile.height = 14;
+            projectile.melee = true;
+            projectile.penetrate = 1;
+            projectile.hostile = false;
+            projectile.friendly = true;
+            projectile.tileCollide = true;
+            projectile.ignoreWater = true;
+            projectile.timeLeft = 200;
         }
 
-        public override void Kill(int timeleft)
+        public override void AI()
         {
-            for (int num468 = 0; num468 < 10; num468++)
+            projectile.localAI[0]++;
+            projectile.rotation += 0.06f;
+            projectile.velocity.Y += 0.2f;
+
+            if (projectile.localAI[0] > 130f) //projectile time left before disappears
             {
-                int num469 = Dust.NewDust(projectile.Center, projectile.width, projectile.height, ModContent.DustType<Dusts.SnowDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 0);
-                Main.dust[num469].noGravity = true;
-                Main.dust[num469].velocity *= 2f;
-                num469 = Dust.NewDust(projectile.Center, projectile.width, projectile.height, ModContent.DustType<Dusts.IceDust>(), -projectile.velocity.X * 0.2f,
-                    -projectile.velocity.Y * 0.2f, 0);
-                Main.dust[num469].velocity *= 2f;
+                projectile.Kill();
             }
         }
 
-        public override void SetStaticDefaults()
-		{
-		    DisplayName.SetDefault("Ice Chunk");
-		}
+        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            target.AddBuff(BuffID.Frostburn, 90);
+        }
 
-
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            Collision.HitTiles(projectile.position, oldVelocity, projectile.width, projectile.height);
+            Main.PlaySound(2, (int)projectile.position.X, (int)projectile.position.Y, 50);
+            return true;
+        }
     }
 }

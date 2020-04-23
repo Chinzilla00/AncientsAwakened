@@ -1,6 +1,3 @@
-using Terraria.ModLoader;
-using Terraria.ID;
-
 namespace AAMod.Items.Blocks
 {
     public class EnderMemory : BaseAAItem

@@ -1,4 +1,3 @@
-using System;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
@@ -9,7 +8,7 @@ using Terraria.Localization;
 
 namespace AAMod.NPCs.Enemies.Sky
 {
-	public class SeraphHurt : ModNPC
+    public class SeraphHurt : ModNPC
 	{
         public override void SetStaticDefaults()
 		{
