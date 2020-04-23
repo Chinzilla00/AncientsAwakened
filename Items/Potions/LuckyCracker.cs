@@ -31,7 +31,7 @@ namespace AAMod.Items.Potions
 
 		public override bool UseItem(Player player)
         {
-            player.AddBuff(mod.BuffType("CrasyLucky"), 180);
+            player.AddBuff(mod.BuffType("CrasyLucky"), 3600);
             return base.UseItem(player);
         }
 	}
