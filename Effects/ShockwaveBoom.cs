@@ -1,5 +1,6 @@
 using Terraria.ModLoader;
 using Terraria.Graphics.Effects;
+using Terraria;
 
 namespace AAMod
 {
@@ -37,19 +38,25 @@ namespace AAMod
             {
                 speed = projectile.ai[1];
             }
-            Filters.Scene["Shockwave"].GetShader().UseProgress(progress).UseOpacity(100f * (1 - progress / 3f));
-            projectile.localAI[1]++;
-            if (projectile.localAI[1] >= 0 && projectile.localAI[1] <= 60)
+            if (!Main.dedServ)
             {
-                if (!Filters.Scene["Shockwave"].IsActive())
-                {                                                             //pulseCount rippleSize speed
-                    Filters.Scene.Activate("Shockwave", projectile.Center).GetShader().UseColor(pulseCount, rippleSize, speed).UseTargetPosition(projectile.Center);
+                Filters.Scene["Shockwave"].GetShader().UseProgress(progress).UseOpacity(100f * (1 - progress / 3f));
+                projectile.localAI[1]++;
+                if (projectile.localAI[1] >= 0 && projectile.localAI[1] <= 60)
+                {
+                    if (!Filters.Scene["Shockwave"].IsActive())
+                    {                                                             //pulseCount rippleSize speed
+                        Filters.Scene.Activate("Shockwave", projectile.Center).GetShader().UseColor(pulseCount, rippleSize, speed).UseTargetPosition(projectile.Center);
+                    }
                 }
             }
         }
         public override void Kill(int timeLeft)
         {
-            Filters.Scene["Shockwave"].Deactivate();
+            if (!Main.dedServ)
+            {
+                Filters.Scene["Shockwave"].Deactivate();
+            }
         }
     }
 
@@ -57,7 +64,7 @@ namespace AAMod
     {
         public override void PostUpdate()
         {
-            if (Filters.Scene["Shockwave"].IsActive() && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<ShockwaveBoom>()))
+            if (!Main.dedServ && Filters.Scene["Shockwave"].IsActive() && !AAGlobalProjectile.AnyProjectiles(ModContent.ProjectileType<ShockwaveBoom>()))
             {
                 Filters.Scene["Shockwave"].Deactivate();
             }

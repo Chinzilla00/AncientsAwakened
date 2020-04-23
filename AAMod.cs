@@ -235,7 +235,6 @@ namespace AAMod
 
         public override void Load()
         {
-            Config.Load();
             Logger.InfoFormat("{0} AA log", Name);
 
             instance = this;
@@ -271,6 +270,7 @@ namespace AAMod
 
             if (!Main.dedServ)
             {
+                Config.Load();
                 LoadClient();
             }
         }
