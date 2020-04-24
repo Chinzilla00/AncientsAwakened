@@ -101,10 +101,18 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                         break;
                     targetPos = player.Center;
                     targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y -= 200;
+                    
+                    for(int pos = -200; pos < 200; pos += 50)
+                    {
+                        targetPos.Y = player.Center.Y - pos;
+                        if(Collision.CanHit(targetPos, npc.width, npc.height, player.position, player.width, player.height))
+                        {
+                            break;
+                        }
+                    }
                     MoveToVector2(targetPos);
 
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<AthenaMagic>(), ref npc.ai[1], 50, npc.damage / 2, 10, true);
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<AthenaMagic>(), ref npc.ai[1], 50, npc.damage / 3, 10, true);
 
                     if (internalAI[3]++ >= 250 && Main.netMode != 1)
                     {
@@ -149,10 +157,19 @@ namespace AAMod.NPCs.Bosses.Athena.Olympian
                         break;
                     targetPos = player.Center;
                     targetPos.X += 500 * (npc.Center.X < targetPos.X ? -1 : 1);
-                    targetPos.Y -= 200;
-                        MoveToVector2(targetPos);
 
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<SwiftwindStrikeSpear>(), ref npc.ai[1], 100, npc.damage / 2, 10, true);
+                    for(int pos = -200; pos < 200; pos += 50)
+                    {
+                        targetPos.Y = player.Center.Y - pos;
+                        if(Collision.CanHit(targetPos, npc.width, npc.height, player.position, player.width, player.height))
+                        {
+                            break;
+                        }
+                    }
+
+                    MoveToVector2(targetPos);
+
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<SwiftwindStrikeSpear>(), ref npc.ai[1], 100, npc.damage / 3, 10, true);
 
                     if (npc.ai[2]++ > 400)
                     {

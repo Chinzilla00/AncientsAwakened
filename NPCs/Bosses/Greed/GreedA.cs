@@ -129,7 +129,7 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 if (internalAI[5] == 0)
                 {
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<GreedCoin>(), ref internalAI[4], 30, npc.damage / 4, 10, true);
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<GreedCoin>(), ref internalAI[4], 30, npc.damage / 4, 10, false);
                 }
                 else
                 {
@@ -283,7 +283,7 @@ namespace AAMod.NPCs.Bosses.Greed
             else
             {
                 speed = 18f;
-                acceleration = 0.08f;
+                acceleration = 0.12f;
             }
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -506,6 +506,7 @@ namespace AAMod.NPCs.Bosses.Greed
                 int i = 0;
                 while (parent.ai[0] > 0 || last)
                 {
+                    if (i++ > 200) { return; }
                     parent.immune[id] = npc.immune[id];
                     for (int j = 0; j < npc.buffType.Length; j++)
                     {
@@ -518,7 +519,6 @@ namespace AAMod.NPCs.Bosses.Greed
                     if (last) { break; }
                     parent = Main.npc[(int)parent.ai[0]];
                     if (parent.ai[0] == 0) { last = true; }
-                    if (i++ > 200) { throw new InvalidOperationException("Recursion detected"); } // Just in case
                 }
             }
         }
@@ -813,7 +813,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             if(!truehit)
             {
-                damage *= .05f;
+                damage *= .15f;
             }
             else
             {

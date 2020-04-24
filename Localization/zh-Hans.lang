@@ -319,6 +319,9 @@ BuffDescription.YamataGravity=“别 想 远 离 我,臭 小 子!”
 BuffName.Yanked=猛拽
 BuffDescription.Yanked=“小 弟 弟,你 哪 也 去 不 了!”
 
+BuffName.ZeroBab=便携零械
+BuffDescription.ZeroBab=生命探测系统启动
+
 // AAMod.Items.Armor.Champion.Baron
 
 
@@ -2445,7 +2448,7 @@ ItemTooltip.UltibladeTyphoon=发射3个快速回旋的剃刃风暴\n水刃龙卷
 // AAMod.Items.Boss.Equinox
 
 ItemName.StarIdol=群星祈愿
-ItemTooltip.StarIdol=释放你星球上星辰之力
+ItemTooltip.StarIdol=释放你星球上星辰之力\n只能在你的世界里没有任何星星的时候使用
 
 ItemName.DarkVoid=深空之星
 ItemTooltip.DarkVoid=晚上你的属性提升\n“漆黑而又怪异”
@@ -2585,7 +2588,7 @@ ItemName.EXArmor=EX装甲碎片
 ItemTooltip.EXArmor=用于制作EX装甲
 
 ItemName.EXSoul=EX之魂
-ItemTooltip.EXSoul=远古神秘魔法的精华\n(远古三王掉落)
+ItemTooltip.EXSoul=远古神秘魔法的精华
 
 ItemName.FireFrostMedallion=冰与火之勋环
 ItemTooltip.FireFrostMedallion=在沙尘暴或者暴风雪期间，你的所有属性翻倍
@@ -3025,7 +3028,7 @@ ItemName.GlowingMasshroom=发光蘑菇丛
 ItemTooltip.GlowingMasshroom=召唤大量真菌帝\n只能在发光蘑菇地中使用
 
 ItemName.Masshroom=蘑菇丛
-ItemTooltip.Masshroom=召唤大量赤孢皇\n只能在白天使用
+ItemTooltip.Masshroom=召唤大量赤孢皇
 
 ItemName.ConfusingMushroom=困惑蘑菇
 ItemTooltip.ConfusingMushroom=召唤真菌帝\n只能在荧光蘑菇地中使用
@@ -3091,7 +3094,7 @@ ItemName.InterestingClaw=有趣的爪子
 ItemTooltip.InterestingClaw=奇怪的湿冷\n只能在晚上使用
 
 ItemName.IntimidatingMushroom=战栗蘑菇
-ItemTooltip.IntimidatingMushroom=召唤赤孢皇\n只能在白天使用
+ItemTooltip.IntimidatingMushroom=召唤赤孢皇
 
 ItemName.Lifescanner=生命扫描仪
 ItemTooltip.Lifescanner=召唤射手座-虚空人马\n只能在浮岛虚空使用
@@ -3808,7 +3811,7 @@ ItemName.PrimevalSkull=始源之头骨
 ItemTooltip.PrimevalSkull=那个时代的能量从这个古老的化石中辐射出来
 
 ItemName.PureEvil=纯净之恶
-ItemTooltip.PureEvil=太邪恶了，你看着他就会有罪恶感\n(世花后,地狱红恶魔掉落)
+ItemTooltip.PureEvil=太邪恶了，你看着他就会有罪恶感
 
 ItemName.RadiantIncinerite=焚射锭
 ItemTooltip.RadiantIncinerite=亮的你都看不见了
@@ -4291,6 +4294,9 @@ ItemTooltip.Seashroom=闻起来像鱼的味道
 ItemName.CerberusWhistle=冥界哨
 ItemTooltip.CerberusWhistle=召唤冥王的护卫犬
 
+ItemName.ZeroCore=零械原核
+ItemTooltip.ZeroCore=召唤一个能探测生命的便携零械
+
 
 // AAMod.Items.Potions
 
@@ -4661,7 +4667,7 @@ ItemName.ProbeControlUnit=虚空探头控制单元
 ItemTooltip.ProbeControlUnit=召唤一个虚空探头为你而战
 
 ItemName.SkullStaff=骷髅魔杖
-ItemTooltip.SkullStaff=召唤一个地牢骷髅为你而战\n(地牢骷髅掉落)
+ItemTooltip.SkullStaff=召唤一个地牢骷髅为你而战
 
 ItemName.TerraStaff=泰拉权杖
 ItemTooltip.TerraStaff=召唤一个泰拉邪恶女巫为你而战
@@ -5038,6 +5044,20 @@ ItemTooltip.ShinyFishDiverMask=我听说你喜欢宝可梦沼跃鱼\n“非常�
 ItemName.ShinyKipronWings=闪耀Kipron之翼
 ItemTooltip.ShinyKipronWings=允许飞行和缓慢降落\n按住下和跳可以悬停一段时间\n“非常适合冒充远古觉醒的开发者!”
 
+// AAMod.Items.Vanity.Anarchy
+
+ItemName.AnarchyBag=崭新的宝藏袋
+ItemTooltip.AnarchyBag=右键打开\n内含冒充Anarchy的所有物品\n为了纪念Anarchy自己画的
+
+ItemName.PristineChestplate=崭新的胸甲
+ItemTooltip.PristineChestplate=“非常适合冒充远古觉醒的开发者!”\n为了纪念Anarchy自己画的
+
+ItemName.PristineHelmet=崭新的头盔
+ItemTooltip.PristineHelmet=“非常适合冒充远古觉醒的开发者!”\n为了纪念Anarchy自己画的
+
+ItemName.PristineLeggings=崭新的护腿
+ItemTooltip.PristineLeggings=“非常适合冒充远古觉醒的开发者!”\n为了纪念Anarchy自己画的
+
 
 // AAMod.Items.Vanity.Apawn
 
@@ -5192,6 +5212,8 @@ ItemTooltip.NightingaleWings=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Fargo
 
+ItemName.TopHat=松鼠的顶帽
+ItemTooltip.TopHat=右键打开\n“非常适合冒充一个表情包松鼠!”
 
 ItemName.FargoHat=小松鼠高帽
 ItemTooltip.FargoHat=soonTM\n“非常适合冒充远古觉醒的开发者!”
@@ -5317,6 +5339,20 @@ ItemTooltip.ShinyMoonHood=传说中的月亮魔法面罩\n“非常适合冒充�
 ItemName.ShinyMoonRobe=明月袍
 ItemTooltip.ShinyMoonRobe=传说中的月亮魔法长袍\n“非常适合冒充远古觉醒的开发者!”
 
+// AAMod.Items.Vanity.Maskano
+
+ItemName.MaskBag=面具宝藏袋
+ItemTooltip.MaskBag=右键打开\n内含冒充面具领主的所有物品
+
+ItemName.Mask=面具领主的面具
+ItemTooltip.Mask=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.MaskBoots=面具领主的靴子
+ItemTooltip.MaskBoots=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.MaskPlate=面具领主的胸甲
+ItemTooltip.MaskPlate=“非常适合冒充远古觉醒的开发者!”
+
 // AAMod.Items.Vanity.Mikpin
 
 ItemName.MikpinCloak=狐皮着装
@@ -5409,6 +5445,20 @@ ItemTooltip.ShinyPlutoMask=“非常适合冒充远古觉醒的开发者!”
 
 ItemName.ShinyPlutoPlate=外神远古胸甲
 ItemTooltip.ShinyPlutoPlate=“非常适合冒充远古觉醒的开发者!”
+
+// AAMod.Items.Vanity.VoidEye
+
+ItemName.VoidBag=虚空之眼宝藏袋
+ItemTooltip.VoidBag=右键打开\n内含冒充虚空之眼的所有物品
+
+ItemName.VoidEyeBoots=虚空之眼护胫
+ItemTooltip.VoidEyeBoots=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.VoidEyeHelm=虚空之眼面具
+ItemTooltip.VoidEyeHelm=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.VoidEyePlate=虚空之眼胸甲
+ItemTooltip.VoidEyePlate=“非常适合冒充远古觉醒的开发者!”
 
 
 // AAMod.Items.Vanity.Ohno
@@ -5613,6 +5663,10 @@ NPCName.HarukaClone=潭渊妖女 八歧遥香
 
 NPCName.HarukaVanish=潭渊妖女 八歧遥香
 
+NPCName.HarukaShade=潭渊妖女 八歧遥香
+
+NPCName.HarukaFall=潭渊妖女 八歧遥香
+
 
 // AAMod.NPCs.Bosses.AH
 
@@ -5625,6 +5679,8 @@ NPCName.AHSpawn=混沌双胞胎姐妹
 // AAMod.NPCs.Bosses.Akuma.Awakened
 
 NPCName.Sun=酷煞之日
+
+NPCName.SunA=豪鬼烈阳
 
 NPCName.AkumaA=觉醒之邪鬼巨龙 狂煞魔豪鬼
 
@@ -5786,6 +5842,8 @@ NPCName.HydraHead7=潭渊蛇头
 NPCName.HydraHead8=潭渊蛇头
 NPCName.HydraHead9=潭渊蛇头
 
+NPCName.HarukaShadow=...
+
 
 // AAMod.NPCs.Bosses.MushroomMonarch
 
@@ -5801,6 +5859,14 @@ NPCName.Mushling=荧菌精
 NPCName.MushroomMonarch=赤孢皇
 
 NPCName.RedMushling=红孢精
+
+NPCName.MonarchSlep=一个超大的红蘑菇
+
+NPCName.MonarchWake=一个超大的红蘑菇...?
+
+NPCName.FungusSlep=一个超大的发光蘑菇
+
+NPCName.FungusWake=一个超大的发光蘑菇...?
 
 
 // AAMod.NPCs.Bosses.Orthrus

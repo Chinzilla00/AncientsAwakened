@@ -136,7 +136,7 @@ namespace AAMod.NPCs.Bosses.Greed
             {
                 if (internalAI[5] == 0)
                 {
-                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<GreedCoin>(), ref internalAI[4], 30, npc.damage / 4, 10, true);
+                    BaseAI.ShootPeriodic(npc, player.position, player.width, player.height, ModContent.ProjectileType<GreedCoin>(), ref internalAI[4], 30, npc.damage / 4, 10, false);
                 }
                 else
                 {
@@ -195,7 +195,7 @@ namespace AAMod.NPCs.Bosses.Greed
             bool collision = true;
 
             float speed = 16f;
-            float acceleration = 0.08f;
+            float acceleration = 0.12f;
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
             float targetXPos = Main.player[npc.target].position.X + (Main.player[npc.target].width / 2);
@@ -683,7 +683,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             if(!truehit)
             {
-                damage *= .05f;
+                damage *= .3f;
             }
             else
             {

@@ -523,7 +523,7 @@ namespace AAMod.Globals
                         ModContent.ItemType<Items.Boss.MushroomMonarch.Mushium>(),
                         ModContent.ItemType<SporeSac>()
                     },
-                    Lang.BossCheck("Usean") + "[i: " + ModContent.ItemType<IntimidatingMushroom>() + "]" + Lang.BossCheck("MushroomMonarchInfo"),
+                    Lang.BossCheck("Usean") + "[i: " + ModContent.ItemType<IntimidatingMushroom>() + "]",
                     Lang.BossCheck("MushroomMonarchInfo2"),
                     "AAMod/CrossMod/BossChecklist/Monarch",
                     "AAMod/NPCs/Bosses/MushroomMonarch/MushroomMonarch_Head_Boss");
