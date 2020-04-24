@@ -803,6 +803,10 @@ namespace AAMod.NPCs.Bosses.Equinox
                 }
                 damage = (int)(damage * .44f);
             }
+            if (npc.type != mod.NPCType("DaybringerHead") && npc.type != mod.NPCType("NightcrawlerHead"))
+            {
+                damage = (int)(damage * .76f);
+            }
         }
 
         private void ModifyCritArea(NPC npc, ref bool crit)

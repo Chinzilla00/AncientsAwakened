@@ -119,7 +119,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
 
                 if(Main.player[i].active && (Main.player[i].Center - projectile.Center).Length() < 10)
                 {
-                    Main.PlaySound(SoundID.Item6, projectile.position);
+                    Main.PlaySound(SoundID.Item2, projectile.position);
                     Main.player[i].HealEffect(-15, false);
                     Main.player[i].statLife -= 15;
                     NetMessage.SendData(66, -1, -1, null, i, -15, 0f, 0f, 0, 0, 0);

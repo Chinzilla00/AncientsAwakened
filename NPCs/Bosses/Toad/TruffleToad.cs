@@ -16,6 +16,7 @@ namespace AAMod.NPCs.Bosses.Toad
         public float bossLife;
         public int damage = 0;
 
+        public int TeleCooldown = 300;
         public override void SendExtraAI(BinaryWriter writer)
         {
             base.SendExtraAI(writer);
@@ -30,6 +31,8 @@ namespace AAMod.NPCs.Bosses.Toad
                 writer.Write(Minion[0]);
                 writer.Write(Minion[1]);
                 writer.Write(Minion[2]);
+
+                writer.Write(TeleCooldown);
             }
         }
 
@@ -47,6 +50,8 @@ namespace AAMod.NPCs.Bosses.Toad
                 Minion[0] = reader.ReadBool();
                 Minion[1] = reader.ReadBool();
                 Minion[2] = reader.ReadBool();
+
+                TeleCooldown = reader.ReadInt();
             }
         }
 
@@ -105,7 +110,7 @@ namespace AAMod.NPCs.Bosses.Toad
             AAModGlobalNPC.Toad = npc.whoAmI;
 
             Vector2 tile = new Vector2(npc.Center.X,npc.Center.Y + npc.height / 2);
-            bool tileCheck = TileID.Sets.Platforms[Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].type] || Main.tileSolid[Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].type];
+            bool tileCheck = Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].active() && (TileID.Sets.Platforms[Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].type] || Main.tileSolid[Main.tile[(int)(tile.X / 16), (int)(tile.Y / 16)].type]);
             if (player.Center.Y + player.height / 2 >= npc.Center.Y + npc.height / 2 + 20f && tileCheck) 
             {
                 npc.noTileCollide = true;
@@ -115,19 +120,24 @@ namespace AAMod.NPCs.Bosses.Toad
             {
                 npc.noTileCollide = true;
                 npc.noGravity = false;
-                if (player.Center.Y + player.height / 2 <= npc.Center.Y + npc.height / 2 + 20f) 
+                if (player.Center.Y + player.height / 2 <= npc.Center.Y + npc.height / 2) 
                 {
                     npc.noTileCollide = false;
+                    if(tileCheck)
+                    {
+                        npc.velocity.X *= .2f;
+                        npc.velocity.Y = 0f;
+                    }
                     internalAI[4] = 2f;
                 }
             }
             else if (internalAI[4] == 2f)
             {
                 npc.noTileCollide = false;
-                if(npc.collideY && npc.velocity.Y > 0)
+                if(tileCheck)
                 {
                     npc.velocity.X *= .2f;
-                    npc.velocity.Y = -2f;
+                    npc.velocity.Y = 0f;
                     internalAI[4] = 0;
                 }
             }
@@ -148,14 +158,30 @@ namespace AAMod.NPCs.Bosses.Toad
 
             if (player != null)
             {
+                if(TeleCooldown > 0)
+                {
+                    TeleCooldown --;
+                }
                 float dist = npc.Distance(player.Center);
-                if (dist > 400)
+                Vector2 tileabove = new Vector2(npc.Center.X,npc.Center.Y - npc.height / 2);
+                Vector2 tileleft = new Vector2(npc.Center.X - npc.width / 2,npc.Center.Y);
+                Vector2 tileright = new Vector2(npc.Center.X + npc.width / 2,npc.Center.Y);
+                Vector2 tile1 = new Vector2(npc.Center.X - npc.width / 2,npc.Center.Y - npc.height / 2);
+                Vector2 tile2 = new Vector2(npc.Center.X + npc.width / 2,npc.Center.Y - npc.height / 2);
+                bool tileCheckabove = Main.tile[(int)(tileabove.X / 16), (int)(tileabove.Y / 16)].active() && Main.tileSolid[Main.tile[(int)(tileabove.X / 16), (int)(tileabove.Y / 16)].type];
+                bool tileCheckleft = Main.tile[(int)(tileleft.X / 16), (int)(tileleft.Y / 16)].active() && Main.tileSolid[Main.tile[(int)(tileleft.X / 16), (int)(tileleft.Y / 16)].type];
+                bool tileCheckright = Main.tile[(int)(tileright.X / 16), (int)(tileright.Y / 16)].active() && Main.tileSolid[Main.tile[(int)(tileright.X / 16), (int)(tileright.Y / 16)].type];
+                bool tileCheck1 = Main.tile[(int)(tile1.X / 16), (int)(tile1.Y / 16)].active() && Main.tileSolid[Main.tile[(int)(tile1.X / 16), (int)(tile1.Y / 16)].type];
+                bool tileCheck2 = Main.tile[(int)(tile2.X / 16), (int)(tile2.Y / 16)].active() && Main.tileSolid[Main.tile[(int)(tile2.X / 16), (int)(tile2.Y / 16)].type];
+                bool tiletele = TeleCooldown == 0 && !npc.noTileCollide && ((tileCheckabove && npc.collideY) || (tileCheckleft && npc.collideX) || (tileCheckright && npc.collideX) || ((tileCheck1 || tileCheck2) && (npc.collideX || npc.collideY)));
+                if (dist > 400 || tiletele)
                 {
                     npc.alpha += 3;
                     if (npc.alpha >= 255)
                     {
-                        Vector2 tele = new Vector2(player.Center.X, player.Center.Y - 150);
+                        Vector2 tele = new Vector2(player.Center.X, player.Center.Y - 350);
                         npc.Center = tele;
+                        if(tiletele) TeleCooldown = 300;
                         for (int m = 0; m < 6; m++)
                         {
                             Dust.NewDust(npc.Center, npc.width, npc.height, DustID.Blood, npc.velocity.RotatedBy(Main.rand.NextFloat() * 3.1415926f).X * 0.2f, npc.velocity.RotatedBy(Main.rand.NextFloat() * 3.1415926f).Y * 0.2f, ModContent.DustType<Dusts.ShroomDust>(), default, 1.5f);
@@ -181,7 +207,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 npc.defense = (int)(npc.defDefense * ShroomCount);
                 if(internalAI[3] ++ > 20)
                 {
-                    npc.life += (int)Shrooms.Length;
+                    if(npc.life < npc.lifeMax) npc.life += (int)Shrooms.Length;
                     internalAI[3] = 0;
                 }
                 AIChangeRate = 120;
@@ -244,6 +270,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 }
                 if (internalAI[1] >= AIChangeRate && Main.netMode != 1)
                 {
+                    npc.velocity.X = 0f;
                     internalAI[1] = 0;
                     internalAI[0] = Main.rand.Next(Main.expertMode ? 8 : 7);
                     internalAI[2] = 0;
@@ -267,14 +294,13 @@ namespace AAMod.NPCs.Bosses.Toad
                     if (internalAI[2] > 5)
                     {
                         internalAI[2] = 0;
-                        float directionY = player.Center.Y - npc.Center.Y > 0? 1:-1;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("ToadBomb"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("ToadBomb"), damage, 3);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("ToadBomb"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("ToadBomb"), damage, 3);
                         }
                         npc.netUpdate = true;
                     }
@@ -299,6 +325,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 }
                 if (internalAI[1] >= 300)
                 {
+                    npc.velocity.X = 0f;
                     internalAI[1] = 0;
                     internalAI[0] = 0;
                     internalAI[2] = 0;
@@ -322,14 +349,13 @@ namespace AAMod.NPCs.Bosses.Toad
                     if (internalAI[2] > 8)
                     {
                         internalAI[2] = 0;
-                        float directionY = player.Center.Y - npc.Center.Y > 0? 1:-1;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("FungusBubble"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("FungusBubble"), damage, 3);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("FungusBubble"), damage, 3); //Originally 35 damage
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("FungusBubble"), damage, 3); //Originally 35 damage
                         }
                         npc.netUpdate = true;
                     }
@@ -359,14 +385,13 @@ namespace AAMod.NPCs.Bosses.Toad
                     if (internalAI[2] > 25)
                     {
                         internalAI[2] = 0;
-                        float directionY = player.Center.Y - npc.Center.Y > 0? 1:-1;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("Seed"), 0, 0);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("Seed"), 0, 0);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("Seed"), 0, 0);
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("Seed"), 0, 0);
                         }
                         npc.netUpdate = true;
                     }
@@ -478,14 +503,13 @@ namespace AAMod.NPCs.Bosses.Toad
                     if (internalAI[2] > 20)
                     {
                         internalAI[2] = 0;
-                        float directionY = player.Center.Y - npc.Center.Y > 0? 1:-1;
                         if (npc.direction == -1)
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("ToadBubble"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(-6 + Main.rand.Next(0, 6), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("ToadBubble"), damage, 3);
                         }
                         else
                         {
-                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -(-4 + Main.rand.Next(-2, 0)) * directionY), mod.ProjectileType("ToadBubble"), damage, 3);
+                            Projectile.NewProjectile(npc.Center, new Vector2(6 + Main.rand.Next(-6, 0), -4 + Main.rand.Next(-2, 0)), mod.ProjectileType("ToadBubble"), damage, 3);
                         }
                         npc.netUpdate = true;
                     }
@@ -524,7 +548,7 @@ namespace AAMod.NPCs.Bosses.Toad
         public override void FindFrame(int frameHeight)
         {
             npc.frameCounter++;
-            if (npc.velocity.Y == 0)
+            if (npc.velocity.Y == 0 && internalAI[0] != AISTATE_JUMP)
             {
                 if (internalAI[0] == AISTATE_BARF || internalAI[0] == AISTATE_BUBBLES || internalAI[0] == AISTATE_BUBBLES2)
                 {
@@ -644,12 +668,6 @@ namespace AAMod.NPCs.Bosses.Toad
                         }
                     }
                 }
-            }
-            if (npc.justHit)
-            {
-                npc.ai[0] = 0f;
-                npc.ai[1] = 0f;
-                npc.TargetClosest(true);
             }
             if (npc.ai[0] == 0f)
             {

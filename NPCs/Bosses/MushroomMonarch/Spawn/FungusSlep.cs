@@ -62,9 +62,9 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch.Spawn
             }
             if (npc.life <= 0)
             {
-                if (Main.netMode != 1 && (NPC.CountNPCS(mod.NPCType("FungusSlep")) + NPC.CountNPCS(mod.NPCType("FungusWake")) + NPC.CountNPCS(mod.NPCType("FeudalFungus"))) < 1)
+                if (Main.netMode != 1 && (NPC.CountNPCS(mod.NPCType("FungusWake")) + NPC.CountNPCS(mod.NPCType("FeudalFungus"))) < 1)
                 {
-                    NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, mod.NPCType("FungusWake"));
+                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("FungusWake"));
                 }
             }
         }

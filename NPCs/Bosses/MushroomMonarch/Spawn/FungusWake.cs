@@ -57,11 +57,11 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch.Spawn
                 frame += 1;
             }
 
-            npc.frame.Y = 78 * frame;
+            npc.frame.Y = 80 * frame;
 
             if (npc.ai[0] == 160 && Main.netMode != 1)
             {
-                NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<MushroomMonarch>());
+                NPC.NewNPC((int)npc.position.X, (int)npc.position.Y, ModContent.NPCType<FeudalFungus>());
                 npc.active = false;
                 npc.netUpdate = true;
             }

@@ -54,7 +54,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch.Spawn
                 frame += 1;
             }
 
-            npc.frame.Y = 78 * frame;
+            npc.frame.Y = 70 * frame;
 
             if (npc.ai[0] == 160 && Main.netMode != 1)
             {

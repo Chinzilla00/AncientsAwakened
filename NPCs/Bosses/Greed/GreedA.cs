@@ -283,7 +283,7 @@ namespace AAMod.NPCs.Bosses.Greed
             else
             {
                 speed = 18f;
-                acceleration = 0.08f;
+                acceleration = 0.12f;
             }
 
             Vector2 npcCenter = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
@@ -813,7 +813,7 @@ namespace AAMod.NPCs.Bosses.Greed
         {
             if(!truehit)
             {
-                damage *= .05f;
+                damage *= .15f;
             }
             else
             {
