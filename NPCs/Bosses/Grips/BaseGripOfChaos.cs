@@ -192,41 +192,10 @@ namespace AAMod.NPCs.Bosses.Grips
             else
 			if(npc.ai[0] == 2) //dive down
 			{
-                Player player = Main.player[npc.target];
+                
                 moveSpeed = 9f;
 				Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);
-                Rectangle rectangle1 = new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height);
-                Rectangle rectangle2 = new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height);
-                if (rectangle1.Intersects(rectangle2) && canGrab)
-                {
-                    canGrab = false;
-                    internalAI[1]++;
-                }
-
-                if(internalAI[1] != 0)
-                {
-                    targetPlayer.Center = npc.Center + new Vector2 (Main.rand.NextFloat(-4,4), Main.rand.NextFloat(-4, 4));
-                  internalAI[1]++;
-                    if(npc.type == mod.NPCType("GripOfChaosRed"))
-                    npc.rotation -= 0.1f - (internalAI[1] / 600f);
-                    if (npc.type == mod.NPCType("GripOfChaosBlue"))
-                    npc.rotation += 0.1f - (internalAI[1] / 600f);
-                    if (internalAI[1] == 120)
-                    {
-                      player.invis = true;
-                      targetPlayer.velocity = new Vector2((float)Math.Cos(npc.rotation + (Math.PI *0.5f)) * 20, (float)Math.Sin(npc.rotation + (Math.PI * 0.5f)) * 20);
-                      internalAI[2] = 1;
-                      internalAI[1] = 0;
-                    }
-                }
-                if (internalAI[2] != 0)
-                {
-                    if (npc.type == mod.NPCType("GripOfChaosRed"))
-                        npc.rotation += 0.1f - (internalAI[2] / 600);
-                    if (npc.type == mod.NPCType("GripOfChaosBlue"))
-                        npc.rotation -= 0.1f - (internalAI[2] / 600);
-                    internalAI[2]++;
-                }
+                
                     Vector2 point = targetCenter - offsetBasePoint + new Vector2(0f, 250f);
 				MoveToPoint(point);
 				if(Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f && internalAI[1] == 0 && internalAI[2] == 0 || (internalAI[2] >= 60))
@@ -238,17 +207,49 @@ namespace AAMod.NPCs.Bosses.Grips
                     npc.ai[3] = 0;
 					npc.netUpdate = true;
 				}
-                if(internalAI[1]<20 && internalAI[2] == 0)
-				BaseAI.Look(npc, 0, 0f, 0.1f, false);
+                
 			}else
 			if(npc.ai[0] == 3) //dive up
 			{
+                Player player = Main.player[npc.target];
+                Rectangle rectangle1 = new Rectangle((int)player.position.X, (int)player.position.Y, player.width, player.height);
+                Rectangle rectangle2 = new Rectangle((int)npc.position.X, (int)npc.position.Y, npc.width, npc.height);
+                if (rectangle1.Intersects(rectangle2) && canGrab)
+                {
+                    canGrab = false;
+                    internalAI[1]++;
+                }
+
+                if (internalAI[1] != 0)
+                {
+                    targetPlayer.Center = npc.Center + new Vector2(Main.rand.NextFloat(-4, 4), Main.rand.NextFloat(-4, 4));
+                    internalAI[1]++;
+                    if (npc.type == mod.NPCType("GripOfChaosRed"))
+                        npc.rotation += 0.1f - (internalAI[1] / 600f);
+                    if (npc.type == mod.NPCType("GripOfChaosBlue"))
+                        npc.rotation -= 0.1f - (internalAI[1] / 600f);
+                    if (internalAI[1] == 120)
+                    {
+                        player.invis = true;
+                        targetPlayer.velocity = new Vector2((float)Math.Cos(npc.rotation + (Math.PI * 0.5f)) * 20, (float)Math.Sin(npc.rotation + (Math.PI * 0.5f)) * 20);
+                        internalAI[2] = 1;
+                        internalAI[1] = 0;
+                    }
+                }
+                if (internalAI[2] != 0)
+                {
+                    if (npc.type == mod.NPCType("GripOfChaosRed"))
+                        npc.rotation -= 0.1f - (internalAI[2] / 600);
+                    if (npc.type == mod.NPCType("GripOfChaosBlue"))
+                        npc.rotation += 0.1f - (internalAI[2] / 600);
+                    internalAI[2]++;
+                }
                 npc.ai[3] = 0;
                 moveSpeed = 9f;
 				Vector2 targetCenter = new Vector2(npc.ai[1], npc.ai[2]);
 				Vector2 point = targetCenter + offsetBasePoint + new Vector2(0f, -250f);
 				MoveToPoint(point);
-				if(Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f)
+				if(Main.netMode != 1 && Vector2.Distance(npc.Center, point) < 10f && internalAI[1] == 0 && internalAI[2] == 0 || (internalAI[2] >= 60))
 				{
                     npc.ai[0] = 0;
                     npc.ai[1] = 0;
@@ -256,8 +257,10 @@ namespace AAMod.NPCs.Bosses.Grips
                     npc.ai[3] = 0;
 					npc.netUpdate = true;
 				}
-				BaseAI.Look(npc, 0, 0f, 0.1f, false);
-			}else
+                if (internalAI[1] < 20 && internalAI[2] == 0)
+                    BaseAI.Look(npc, 0, 0f, 0.1f, false);
+            }
+            else
             if (npc.ai[0] == 4) //dive back down
             {
                 npc.ai[3] = 0;
