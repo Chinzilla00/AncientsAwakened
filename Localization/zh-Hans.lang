@@ -2588,7 +2588,7 @@ ItemName.EXArmor=EX装甲碎片
 ItemTooltip.EXArmor=用于制作EX装甲
 
 ItemName.EXSoul=EX之魂
-ItemTooltip.EXSoul=远古神秘魔法的精华\n(远古三王掉落)
+ItemTooltip.EXSoul=远古神秘魔法的精华
 
 ItemName.FireFrostMedallion=冰与火之勋环
 ItemTooltip.FireFrostMedallion=在沙尘暴或者暴风雪期间，你的所有属性翻倍
@@ -3811,7 +3811,7 @@ ItemName.PrimevalSkull=始源之头骨
 ItemTooltip.PrimevalSkull=那个时代的能量从这个古老的化石中辐射出来
 
 ItemName.PureEvil=纯净之恶
-ItemTooltip.PureEvil=太邪恶了，你看着他就会有罪恶感\n(世花后,地狱红恶魔掉落)
+ItemTooltip.PureEvil=太邪恶了，你看着他就会有罪恶感
 
 ItemName.RadiantIncinerite=焚射锭
 ItemTooltip.RadiantIncinerite=亮的你都看不见了
@@ -4667,7 +4667,7 @@ ItemName.ProbeControlUnit=虚空探头控制单元
 ItemTooltip.ProbeControlUnit=召唤一个虚空探头为你而战
 
 ItemName.SkullStaff=骷髅魔杖
-ItemTooltip.SkullStaff=召唤一个地牢骷髅为你而战\n(地牢骷髅掉落)
+ItemTooltip.SkullStaff=召唤一个地牢骷髅为你而战
 
 ItemName.TerraStaff=泰拉权杖
 ItemTooltip.TerraStaff=召唤一个泰拉邪恶女巫为你而战
@@ -5679,6 +5679,8 @@ NPCName.AHSpawn=混沌双胞胎姐妹
 // AAMod.NPCs.Bosses.Akuma.Awakened
 
 NPCName.Sun=酷煞之日
+
+NPCName.SunA=豪鬼烈阳
 
 NPCName.AkumaA=觉醒之邪鬼巨龙 狂煞魔豪鬼
 
