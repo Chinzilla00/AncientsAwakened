@@ -319,6 +319,9 @@ BuffDescription.YamataGravity=“别 想 远 离 我,臭 小 子!”
 BuffName.Yanked=猛拽
 BuffDescription.Yanked=“小 弟 弟,你 哪 也 去 不 了!”
 
+BuffName.ZeroBab=便携零械
+BuffDescription.ZeroBab=生命探测系统启动
+
 // AAMod.Items.Armor.Champion.Baron
 
 
@@ -4291,6 +4294,9 @@ ItemTooltip.Seashroom=闻起来像鱼的味道
 ItemName.CerberusWhistle=冥界哨
 ItemTooltip.CerberusWhistle=召唤冥王的护卫犬
 
+ItemName.ZeroCore=零械原核
+ItemTooltip.ZeroCore=召唤一个能探测生命的便携零械
+
 
 // AAMod.Items.Potions
 
@@ -5613,6 +5619,10 @@ NPCName.HarukaClone=潭渊妖女 八歧遥香
 
 NPCName.HarukaVanish=潭渊妖女 八歧遥香
 
+NPCName.HarukaShade=潭渊妖女 八歧遥香
+
+NPCName.HarukaFall=潭渊妖女 八歧遥香
+
 
 // AAMod.NPCs.Bosses.AH
 
@@ -5786,6 +5796,8 @@ NPCName.HydraHead7=潭渊蛇头
 NPCName.HydraHead8=潭渊蛇头
 NPCName.HydraHead9=潭渊蛇头
 
+NPCName.HarukaShadow=...
+
 
 // AAMod.NPCs.Bosses.MushroomMonarch
 
@@ -5801,6 +5813,14 @@ NPCName.Mushling=荧菌精
 NPCName.MushroomMonarch=赤孢皇
 
 NPCName.RedMushling=红孢精
+
+NPCName.MonarchSlep=一个超大的红蘑菇
+
+NPCName.MonarchWake=一个超大的红蘑菇...?
+
+NPCName.FungusSlep=一个超大的发光蘑菇
+
+NPCName.FungusWake=一个超大的发光蘑菇...?
 
 
 // AAMod.NPCs.Bosses.Orthrus

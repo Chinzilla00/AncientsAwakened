@@ -27,6 +27,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch.Spawn
             npc.noTileCollide = false;
             npc.noGravity = false;
             npc.value = 0;
+            npc.rarity = 1;
         }
 
         public override bool PreAI()
