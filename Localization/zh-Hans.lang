@@ -2448,7 +2448,7 @@ ItemTooltip.UltibladeTyphoon=发射3个快速回旋的剃刃风暴\n水刃龙卷
 // AAMod.Items.Boss.Equinox
 
 ItemName.StarIdol=群星祈愿
-ItemTooltip.StarIdol=释放你星球上星辰之力
+ItemTooltip.StarIdol=释放你星球上星辰之力\n只能在你的世界里没有任何星星的时候使用
 
 ItemName.DarkVoid=深空之星
 ItemTooltip.DarkVoid=晚上你的属性提升\n“漆黑而又怪异”
@@ -3028,7 +3028,7 @@ ItemName.GlowingMasshroom=发光蘑菇丛
 ItemTooltip.GlowingMasshroom=召唤大量真菌帝\n只能在发光蘑菇地中使用
 
 ItemName.Masshroom=蘑菇丛
-ItemTooltip.Masshroom=召唤大量赤孢皇\n只能在白天使用
+ItemTooltip.Masshroom=召唤大量赤孢皇
 
 ItemName.ConfusingMushroom=困惑蘑菇
 ItemTooltip.ConfusingMushroom=召唤真菌帝\n只能在荧光蘑菇地中使用
@@ -3094,7 +3094,7 @@ ItemName.InterestingClaw=有趣的爪子
 ItemTooltip.InterestingClaw=奇怪的湿冷\n只能在晚上使用
 
 ItemName.IntimidatingMushroom=战栗蘑菇
-ItemTooltip.IntimidatingMushroom=召唤赤孢皇\n只能在白天使用
+ItemTooltip.IntimidatingMushroom=召唤赤孢皇
 
 ItemName.Lifescanner=生命扫描仪
 ItemTooltip.Lifescanner=召唤射手座-虚空人马\n只能在浮岛虚空使用
@@ -5044,6 +5044,20 @@ ItemTooltip.ShinyFishDiverMask=我听说你喜欢宝可梦沼跃鱼\n“非常�
 ItemName.ShinyKipronWings=闪耀Kipron之翼
 ItemTooltip.ShinyKipronWings=允许飞行和缓慢降落\n按住下和跳可以悬停一段时间\n“非常适合冒充远古觉醒的开发者!”
 
+// AAMod.Items.Vanity.Anarchy
+
+ItemName.AnarchyBag=崭新的宝藏袋
+ItemTooltip.AnarchyBag=右键打开\n内含冒充Anarchy的所有物品\n为了纪念Anarchy自己画的
+
+ItemName.PristineChestplate=崭新的胸甲
+ItemTooltip.PristineChestplate=“非常适合冒充远古觉醒的开发者!”\n为了纪念Anarchy自己画的
+
+ItemName.PristineHelmet=崭新的头盔
+ItemTooltip.PristineHelmet=“非常适合冒充远古觉醒的开发者!”\n为了纪念Anarchy自己画的
+
+ItemName.PristineLeggings=崭新的护腿
+ItemTooltip.PristineLeggings=“非常适合冒充远古觉醒的开发者!”\n为了纪念Anarchy自己画的
+
 
 // AAMod.Items.Vanity.Apawn
 
@@ -5198,6 +5212,8 @@ ItemTooltip.NightingaleWings=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Fargo
 
+ItemName.TopHat=松鼠的顶帽
+ItemTooltip.TopHat=右键打开\n“非常适合冒充一个表情包松鼠!”
 
 ItemName.FargoHat=小松鼠高帽
 ItemTooltip.FargoHat=soonTM\n“非常适合冒充远古觉醒的开发者!”
@@ -5323,6 +5339,20 @@ ItemTooltip.ShinyMoonHood=传说中的月亮魔法面罩\n“非常适合冒充�
 ItemName.ShinyMoonRobe=明月袍
 ItemTooltip.ShinyMoonRobe=传说中的月亮魔法长袍\n“非常适合冒充远古觉醒的开发者!”
 
+// AAMod.Items.Vanity.Maskano
+
+ItemName.MaskBag=面具宝藏袋
+ItemTooltip.MaskBag=右键打开\n内含冒充面具领主的所有物品
+
+ItemName.Mask=面具领主的面具
+ItemTooltip.Mask=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.MaskBoots=面具领主的靴子
+ItemTooltip.MaskBoots=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.MaskPlate=面具领主的胸甲
+ItemTooltip.MaskPlate=“非常适合冒充远古觉醒的开发者!”
+
 // AAMod.Items.Vanity.Mikpin
 
 ItemName.MikpinCloak=狐皮着装
@@ -5415,6 +5445,20 @@ ItemTooltip.ShinyPlutoMask=“非常适合冒充远古觉醒的开发者!”
 
 ItemName.ShinyPlutoPlate=外神远古胸甲
 ItemTooltip.ShinyPlutoPlate=“非常适合冒充远古觉醒的开发者!”
+
+// AAMod.Items.Vanity.VoidEye
+
+ItemName.VoidBag=虚空之眼宝藏袋
+ItemTooltip.VoidBag=右键打开\n内含冒充虚空之眼的所有物品
+
+ItemName.VoidEyeBoots=虚空之眼护胫
+ItemTooltip.VoidEyeBoots=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.VoidEyeHelm=虚空之眼面具
+ItemTooltip.VoidEyeHelm=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.VoidEyePlate=虚空之眼胸甲
+ItemTooltip.VoidEyePlate=“非常适合冒充远古觉醒的开发者!”
 
 
 // AAMod.Items.Vanity.Ohno
