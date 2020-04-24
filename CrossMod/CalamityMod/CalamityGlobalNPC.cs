@@ -107,7 +107,7 @@ namespace AAMod
                     }
                     else
                     {
-                        damage = (int)(damage * (1.5f + (revenge? 0.4f:0f) + (Death? 0.6f:0f)));
+                        damage = (int)(damage * (1.2f + (revenge? 0.4f:0f) + (Death? 0.6f:0f)));
                     }
                 }
             }
