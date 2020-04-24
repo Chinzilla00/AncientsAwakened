@@ -843,6 +843,7 @@ namespace AAMod.NPCs.Bosses.Equinox
                 int i = 0;
                 while (parent.ai[0] > 0 || last)
                 {
+                    if (i++ > 200) { return; }
                     parent.immune[id] = npc.immune[id];
                     for (int j = 0; j < npc.buffType.Length; j++)
                     {
@@ -855,7 +856,6 @@ namespace AAMod.NPCs.Bosses.Equinox
                     if (last) { break; }
                     parent = Main.npc[(int)parent.ai[0]];
                     if (parent.ai[0] == 0) { last = true; }
-                    if (i++ > 200) { throw new InvalidOperationException("Recursion detected"); } // Just in case
                 }
             }
         }
