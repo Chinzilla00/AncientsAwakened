@@ -17,6 +17,7 @@ namespace AAMod.Projectiles.Sag
             projectile.hostile = false;
             projectile.tileCollide = false;
 	        projectile.penetrate = -1;
+            projectile.melee = true;
         }
         public float[] internalAI = new float[1];
         public float[] shootAI = new float[1];
@@ -29,7 +30,9 @@ namespace AAMod.Projectiles.Sag
             if (Target != -1 && !Main.npc[Target].friendly)
             {
                 NPC target = Main.npc[Target];
-                BaseAI.ShootPeriodic(projectile, target.position, 14, 14, ModContent.ProjectileType<Darkray>(), ref internalAI[0], 30, projectile.damage, 7, true);
+                int id = BaseAI.ShootPeriodic(projectile, target.position, 14, 14, ModContent.ProjectileType<Darkray>(), ref internalAI[0], 30, projectile.damage, 7, true);
+                Main.projectile[id].melee = true;
+                Main.projectile[id].ranged = false;
             }
         }
 

@@ -100,7 +100,9 @@ namespace AAMod.Projectiles.Sag
             }
             if (flag25)
             {
-                BaseAI.ShootPeriodic(projectile, vector46, Width, Height, Terraria.ModLoader.ModContent.ProjectileType<Darkray>(), ref projectile.ai[1], 120, (int)projectile.ai[0], 11, true);
+                int id = BaseAI.ShootPeriodic(projectile, vector46, Width, Height, Terraria.ModLoader.ModContent.ProjectileType<Darkray>(), ref projectile.ai[1], 120, (int)projectile.ai[0], 11, true);
+                Main.projectile[id].ranged = false;
+                Main.projectile[id].minion = true;
             }
 			
             if (projectile.active) { SetRot(); }
