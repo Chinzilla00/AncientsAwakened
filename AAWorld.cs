@@ -249,9 +249,6 @@ namespace AAMod
             if (downedGrips) downed.Add("GrabbyHands");
             if (downedHydra) downed.Add("Hydra");
             if (downedBrood) downed.Add("Nacho");
-            if (NPC.downedBoss3) downed.Add("Dynaskull");
-            if (NPC.downedMechBossAny) downed.Add("MechBoss");
-            if (NPC.downedMoonlord) downed.Add("MoonLord");
             if (AMessage) downed.Add("AMessage");
             if (downedEquinox) downed.Add("Equinox");
             if (Ancients) downed.Add("AA");
