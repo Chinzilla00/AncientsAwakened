@@ -60,13 +60,13 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch.Spawn
             {
                 Dust.NewDust(npc.position, npc.width, npc.height, ModContent.DustType<Dusts.MushDust>(), hitDirection, -1f, 0, default, 1f);
             }
-            if (npc.life <= 0)
+            if (Main.netMode != 1 && (NPC.CountNPCS(mod.NPCType("FungusWake")) + NPC.CountNPCS(mod.NPCType("FeudalFungus"))) < 1)
             {
-                if (Main.netMode != 1 && (NPC.CountNPCS(mod.NPCType("FungusWake")) + NPC.CountNPCS(mod.NPCType("FeudalFungus"))) < 1)
-                {
-                    NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("FungusWake"));
-                }
+                int id = NPC.NewNPC((int)npc.Center.X, (int)npc.Center.Y, mod.NPCType("FungusWake"));
+                Main.npc[id].position = npc.position;
             }
+            npc.active = false;
+            npc.life = 0;
         }
 
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
