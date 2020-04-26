@@ -191,6 +191,9 @@ BuffDescription.Irradiated=Ваше здоровье потихоньку сго
 BuffName.K9=Юнит К9
 BuffDescription.K9=Гав
 
+BuffName.Lunamini=Лунамини
+BuffDescription.Lunamini=Маленькая Лунная пчела следует за вами
+
 BuffName.LungMinion=Древний Змий
 BuffDescription.LungMinion=Призывает древнего дракона сражаться за вас
 
@@ -337,6 +340,9 @@ BuffDescription.YamataGravity='ТЫ ОТ МЕНЯ НЕ СБЕЖИШЬ, ЗАСР�
 
 BuffName.Yanked=Дернутый
 BuffDescription.Yanked='ТЫ НИКУДА НЕ УЙДЕШЬ, МАЛЕНЬКАЯ НЕЖЕНКА!'
+
+BuffName.ZeroBab=ЗИР0 мини
+BuffDescription.ZeroBab=СИСТЕМЫ ПОИСКА ЖИЗНИ ЗАПУЩЕНЫ
 
 
 // AAMod.Items.Armor.Assassin
@@ -1342,8 +1348,8 @@ ItemTooltip.BroodBox=Проигрывает 'Blazing Fury' by Spectral Aves
 ItemName.DjinnBox=Музыкальная шкатулка "Пустынный Джинн"
 ItemTooltip.DjinnBox=Проигрывает 'The Dust Bowl' by Universe
 
-ItemName.Equibox=Equinox Worms Music Box
-ItemTooltip.Equibox=Проигрывает 'Orbittal Equilibrium' by Charlie Debnam
+ItemName.Equibox=Музыкальная шкатулка 'Черви Равноденствия'
+ItemTooltip.Equibox=Проигрывает 'Orbittal Equilibrium' Charlie Debnam
 
 ItemName.FateBox=Музыкальная шкатулка Истинной Пустоты
 ItemTooltip.FateBox=Проигрывает 'Nihil' by Charlie Debnam
@@ -2102,6 +2108,9 @@ ItemName.NCTrophy=Трофей Ночного Ползуна
 ItemName.RadiantStar=Лучезарная Звезда
 ItemTooltip.RadiantStar=Чрезвычайно повышает характеристики днем\n'Блестяшка'
 
+ItemName.StarIdol=Благословление Звезд
+ItemTooltip.StarIdol=Блестит как звезды на небе\nМожет быть использована только при маленьком количестве звезд радиума в мире.
+
 
 // AAMod.Items.Boss.Greed
 
@@ -2144,8 +2153,11 @@ ItemTooltip.Earthbreaker=Удары по врагам в воздухе всег
 ItemName.GreedABag=Мешок с сокровищами
 ItemTooltip.GreedABag={$CommonItemTooltip.RightClickToOpen}
 
-ItemName.OreCannon=Руд-Пушка 
-ItemTooltip.OreCannon=Использует руды что бы стрелять\nНекоторые руды обладают особым эффектом
+ItemName.OreCannon=Руд-Пушка
+ItemTooltip.OreCannon=Использует руды в качестве боеприпасов\nУ рун могут быть особые эффекты
+
+ItemName.OreCannonEX=Ультимативная Руд-Пушка
+ItemTooltip.OreCannonEX=Использует руды в качестве боеприпасов\nУ рун могут быть особые эффекты\nЛегендарное Оружие\nРуд-Пушка EX
 
 ItemName.OreStaff=Посох руд
 
@@ -2608,7 +2620,7 @@ ItemName.InterestingClaw=Инетерсно выглядещий коготь
 ItemTooltip.InterestingClaw=Он по-странному липкий и мокрый\nМожет быть использован только ночью
 
 ItemName.IntimidatingMushroom=Устрашающе выглядящий гриб
-ItemTooltip.IntimidatingMushroom=Призывает Грибного Монарха\nМожет быть использован только днем
+ItemTooltip.IntimidatingMushroom=Призывает Грибного Монарха
 
 ItemName.Lifescanner=Сканнер живых существ
 ItemTooltip.Lifescanner=Призывает Саггитариуса\nМожет быть использован только в Пустоте
@@ -3011,6 +3023,10 @@ ItemTooltip.Z=Распространяет Пустоту
 
 
 ItemName.DragonsGrip=Хватка Дракона
+
+ItemName.GripsOfChaos=The Grips of Chaos
+ItemTooltip.GripsOfChaos=Fires 2 different hooks depending on which one is already out\nRed has a longer range\nBlue pulls in/retracts quicker
+
 
 
 // AAMod.Items
@@ -3616,6 +3632,9 @@ ItemTooltip.RoyalStar=Призывает милого котенка
 
 ItemName.Seashroom=Морской Гриб
 ItemTooltip.Seashroom=Пахнет как рыба
+
+ItemName.ZeroCore=Ядро Зир0
+ItemTooltip.ZeroCore=Призывает Зир0 мини, который обнаруживает существ
 
 
 // AAMod.Items.Potions
@@ -4235,9 +4254,25 @@ ItemTooltip.ShinyFishDiverMask=Я слышал, что тебе нравятся
 ItemName.ShinyKipronWings=Блестящие Крылья Кипрона
 ItemTooltip.ShinyKipronWings=Позволяют вам летать и поглощают урон от падения\nДержите вниз и прыжок, что бы продолжительно лететь над землей\n'Великолепны для подражания разработчикам Ancients Awakened!'
 
+// AAMod.Items.Vanity.Anarchy
+
+
+ItemName.AnarchyBag=Мешок Пристина
+ItemTooltip.AnarchyBag=<right>, что бы открыть\n'Предметы первой необходимости для подражания Анархии!'
+
+ItemName.PristineChestplate=Нагрудник Пристина
+ItemTooltip.PristineChestplate='Великолепна для подражания контрибьюторов Ancients Awakened!'\nАнархия сам сделал этот спрайт
+
+ItemName.PristineHelmet=Шлем Пристина
+ItemTooltip.PristineHelmet='Великолепна для подражания контрибьюторов Ancients Awakened!'\nАнархия сам сделал этот спрайт
+
+ItemName.PristineLeggings=Штаны Пристина
+ItemTooltip.PristineLeggings='Великолепна для подражания контрибьюторов Ancients Awakened!'\nАнархия сам сделал этот спрайт
 
 // AAMod.Items.Vanity.Apawn
 
+ItemName.ApawnEgg=Яйцо с сюпризом
+ItemTooltip.ApawnEgg=<right>, что бы открыть\n'ЭТО ОГРООООМНОЕ пластиковое яйцо'
 
 ItemName.ApawnBoots=Ботинки Апавна
 ItemTooltip.ApawnBoots='Великолепна для подражания тестерам Ancients Awakened!'
@@ -4270,6 +4305,8 @@ ItemTooltip.DuckstepWings=Позволяют вам летать и поглощ
 
 // AAMod.Items.Vanity.Beg
 
+ItemName.BegBag=Мешок Странной Лошади
+ItemTooltip.BegBag=<right>, что бы открыть\n'Предметы первой необходимости для подражания Странной Лошади!'
 
 ItemName.PonyBody=Костюм Странной Лошади
 ItemTooltip.PonyBody='Великолепна для подражания разработчикам Ancients Awakened!'
@@ -4330,6 +4367,8 @@ ItemTooltip.InvokerRobe=Заколдованная роба Алейстера '
 
 // AAMod.Items.Vanity.Charlie
 
+ItemName.CharlieBag=Мешок Жнеца
+ItemTooltip.CharlieBag=<right>, что бы открыть\n'Предметы первой необходимости для подражания Темному Жнецу!'
 
 ItemName.CharlieBoots=Ботинки Призрака
 ItemTooltip.CharlieBoots='Великолепны для подражания разработчикам Ancients Awakened!'
@@ -4340,6 +4379,8 @@ ItemTooltip.CharlieCloak='Великолепны для подражания р�
 ItemName.CharlieCowl=Капюшон Призрака
 ItemTooltip.CharlieCowl='Великолепны для подражания разработчикам Ancients Awakened!'
 
+ItemName.CharlieWings=Темные крылья Кошмара
+ItemTooltip.CharlieWings=Позволяют вам летать и поглощают урон от падения\nДержите вниз и прыжок, что бы продолжительно лететь над землей\n'Великолепны для подражания разработчикам Ancients Awakened!'
 
 // AAMod.Items.Vanity.Dallin
 
@@ -4417,6 +4458,24 @@ ItemTooltip.FargoPants=скороTM\n'Великолепны для подраж
 
 ItemName.FargoSuit=Костюм Белки в цилиндре
 ItemTooltip.FargoSuit=скороTM\n'Великолепны для подражания разработчикам Ancients Awakened!'
+
+ItemName.TopHat=Цилиндр Белки
+ItemTooltip.TopHat=<right>, что бы открыть\n'Предметы первой необходимости для подражания Мемной Белки!'
+
+// AAMod.Items.Vanity.Fazer
+
+
+ItemName.SammyPants=Штаны Пушистого лиса
+ItemTooltip.SammyPants='Великолепна для подражания контрибьюторов Ancients Awakened!'
+
+ItemName.SammySweater=Свитер Пушистого лиса
+ItemTooltip.SammySweater='Великолепна для подражания контрибьюторов Ancients Awakened!'
+
+ItemName.SammyWig=Парик Пушистого лиса
+ItemTooltip.SammyWig='Великолепна для подражания контрибьюторов Ancients Awakened!'
+
+ItemName.WetFurrbag=Wet Furrbag
+ItemTooltip.WetFurrbag=<right> to open \n'All the essentials for impersonating the Funloving Fox!'
 
 
 // AAMod.Items.Vanity.Gibs
@@ -4551,9 +4610,25 @@ ItemName.YamataMask=Маска Яматы
 
 ItemName.ZeroMask=Маска Зир0
 
+// AAMod.Items.Vanity.Maskano
+
+
+ItemName.Mask=Маска
+ItemTooltip.Mask='Великолепна для подражания контрибьюторов Ancients Awakened!'
+
+ItemName.MaskBag=Мешок с масками
+ItemTooltip.MaskBag=<right>, что бы открыть\n'Предметы первой необходимости для подражания Лорду Масок!'
+
+ItemName.MaskBoots=Штаны Лорда масок
+ItemTooltip.MaskBoots='Great for impersonating Ancients Awakened Contributors!'
+
+ItemName.MaskPlate=Нагрудник Лорда Масок
+ItemTooltip.MaskPlate='Great for impersonating Ancients Awakened Contributors!'
 
 // AAMod.Items.Vanity.Mikpin
 
+ItemName.MikBag=Мешок Китсуна
+ItemTooltip.MikBag=<right>, что бы открыть\n'Предметы первой необходимости для подражания Лису-Анимешнику!'
 
 ItemName.MikpinCloak=Платье Китсуна
 ItemTooltip.MikpinCloak='Великолепен для подражания тестерам Ancients Awakened!'
@@ -4596,6 +4671,19 @@ ItemTooltip.ShinyMoonHood=Капюшон лунного мага\n'Велико�
 ItemName.ShinyMoonRobe=Лунная Роба
 ItemTooltip.ShinyMoonRobe=Позволяют вам летать и поглощают урон от падения\n'Великолепны для подражания разработчикам Ancients Awakened!'
 
+// AAMod.Items.Vanity.Shox
+
+ItemName.ShoxBag=Заряженный мешок Шока
+ItemTooltip.ShoxBag=<right>, что бы открыть\n'Предметы первой необходимости для подражания Лорду Шока!'
+
+ItemName.ShoxPants=Ботинки Лорда Шока
+ItemTooltip.ShoxPants='Великолепны для подражания контрибьюторов Ancients Awakened!'
+
+ItemName.ShoxPlate=Пластина Лорда Шока
+ItemTooltip.ShoxPlate='Великолепны для подражания контрибьюторов Ancients Awakened!'
+
+ItemName.ShoxVisor=Визор Лорда Шока
+ItemTooltip.ShoxVisor='Великолепны для подражания контрибьюторов Ancients Awakened!'
 
 // AAMod.Items.Vanity.Ohno
 
@@ -4605,6 +4693,8 @@ ItemTooltip.ono=онет
 
 // AAMod.Items.Vanity.Tails
 
+ItemName.TailsToolbox=Ящик с инструментами Тэйлза
+ItemTooltip.TailsToolbox=<right>, что бы открыть\n'Предметы первой необходимости для подражания Лису-Путешественнику!'
 
 ItemName.TailsBody=Костюм Тэйлза
 ItemTooltip.TailsBody=Костюм, напоминающий лиса с 2 хвостами\n'Великолепен для подражания разработчикам Ancients Awakened!'
@@ -4644,9 +4734,25 @@ ItemTooltip.CursedPants='Великолепны для подражания ра
 ItemName.CursedRobe=Проклятая Роба Жнеца
 ItemTooltip.CursedRobe='Великолепна для подражания разработчикам Ancients Awakened!'
 
+// AAMod.Items.Vanity.VoidEye
+
+
+ItemName.VoidBag=Мешок Глаза Пустоты
+ItemTooltip.VoidBag=<right>, что бы открыть\n'Предметы первой необходимости для подражания Темному Смотрителю!'
+
+ItemName.VoidEyeBoots=Штаны Глаза Пустоты
+ItemTooltip.VoidEyeBoots='Великолепны для подражания контрибьюторов Ancients Awakened!'
+
+ItemName.VoidEyeHelm=Маска Глаза Пустоты 
+ItemTooltip.VoidEyeHelm='Великолепна для подражания контрибьюторов Ancients Awakened!'
+
+ItemName.VoidEyePlate=Нагрудник Глаза Пустоты 
+ItemTooltip.VoidEyePlate='Великолепен для подражания контрибьюторов Ancients Awakened!'
+
 
 // AAMod.Items.Walls
 
+ItemName.CovetiteBrickWall=Стена из Каветитовых кирпичей
 
 ItemName.DarkmatterWall=Стена кирпичей из темной материи
 
@@ -4719,6 +4825,8 @@ NPCName.AsheVanish=Аши Акума
 NPCName.Haruka=Харука Ямата
 
 NPCName.HarukaClone=Харука Ямата
+
+NPCName.HarukaFall=Харука Ямата
 
 NPCName.HarukaSpawn=Харука Ямата
 
@@ -4924,6 +5032,7 @@ NPCName.HydraClawM=Коготь Гидры
 
 // AAMod.NPCs.Bosses.Hydra
 
+NPCName.HarukaShade=...
 
 NPCName.Hydra=Гидра
 
@@ -4953,6 +5062,16 @@ NPCName.HydraHead8=Гидра
 ===UNKNWN===
 NPCName.HydraHead9=Гидра
 
+// AAMod.NPCs.Bosses.MushroomMonarch.Spawn
+
+
+NPCName.FungusSlep=Огромный светящийся гриб
+
+NPCName.FungusWake=Огромный светящийся гриб...?
+
+NPCName.MonarchSlep=Огромный гриб
+
+NPCName.MonarchWake=Огромный гриб...?
 
 // AAMod.NPCs.Bosses.MushroomMonarch
 
@@ -5181,6 +5300,8 @@ NPCName.ZeroMini=САМООРГАНИЗАЦИЯ ЗИР0
 
 NPCName.ZeroProtocol=ЗИР0 ПР0Т0К0Л
 
+NPCName.ZeroTransition=Сломанный Разрыв
+
 
 // AAMod.NPCs.Critters
 
@@ -5260,6 +5381,8 @@ NPCName.ChaoticTwilight=Хаотичные Сумерки
 
 NPCName.FogAngler=Рыбак тумана
 
+NPCName.HarukaShadow=...
+
 NPCName.Kappa=Каппа
 
 NPCName.MireGhoul=Теневой Гуль
@@ -5336,6 +5459,8 @@ NPCName.ElderDragon=Старейший Дракон
 
 ===UNKNWN===
 NPCName.Seraph=Серафим
+
+NPCName.SeraphHurt=Серафим
 
 
 // AAMod.NPCs.Enemies.Snow
@@ -5654,6 +5779,8 @@ MapObject.AvesInABox=Утка В Коробке
 
 MapObject.DevStatue=Статуя
 
+MapObject.EnderMemory=Вечная память
+
 MapObject.GreedLantern=Каменный Фонарь
 
 MapObject.MoonBeeJar=Банка с Лунным Шмелем
@@ -5701,6 +5828,51 @@ MapObject.BogwoodSink=Раковина из дерева Трясины
 MapObject.BogwoodTable=Стол из дерева Трясины
 
 MapObject.BogwoodWorkbench=Верстак из дерева Трясины
+
+// AAMod.Tiles.Furniture.Doom
+
+
+MapObject.DoomBathtub=Ванна Рока
+
+MapObject.DoomBed=Кровать Рока
+
+MapObject.DoomBookshelf=Книжный шкаф Рока
+
+MapObject.DoomCandelabra=Канделябра Рока
+
+MapObject.DoomCandle=Свеча Рока
+
+MapObject.DoomChair=Стул Рока
+
+MapObject.DoomChandelier=Люстра Рока
+
+MapObject.DoomChest=Сундук Рока
+
+MapObject.DoomCouch=Лавка Рока
+
+MapObject.DoomDoorClosed=Дверь Рока
+
+MapObject.DoomDoorOpen=Дверь Рока
+
+MapObject.DoomDresser=Тумбочка Рока
+
+MapObject.DoomLamp=Лампа Рока
+
+MapObject.DoomLantern=Фонарь Рока
+
+MapObject.DoomPiano=Пианино Рока
+
+MapObject.DoomSink=Раковина Рока
+
+MapObject.DoomTable=Стол Рока
+
+MapObject.DoomWorkbench=Верстак Рока
+
+
+// AAMod.Tiles.Furniture
+
+
+MapObject.CrystalChandelier=Кристальная Люстра
 
 
 // AAMod.Tiles.Furniture.Oroboros
@@ -5801,6 +5973,8 @@ MapObject.PrismOre=Призма
 MapObject.RadiumOre=Небесная руда
 
 MapObject.RelicOre=Реликвия викингов
+
+MapObject.SkyCrystal=SkyCrystal
 
 
 // AAMod.Tiles.Plants

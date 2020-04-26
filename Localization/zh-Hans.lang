@@ -2448,7 +2448,7 @@ ItemTooltip.UltibladeTyphoon=发射3个快速回旋的剃刃风暴\n水刃龙卷
 // AAMod.Items.Boss.Equinox
 
 ItemName.StarIdol=群星祈愿
-ItemTooltip.StarIdol=释放你星球上星辰之力\n只能在你的世界里没有任何星星的时候使用
+ItemTooltip.StarIdol=它如天上的群星般闪耀\n只能在你的世界里没有任何星星的时候使用
 
 ItemName.DarkVoid=深空之星
 ItemTooltip.DarkVoid=晚上你的属性提升\n“漆黑而又怪异”
@@ -5094,6 +5094,8 @@ ItemTooltip.DuckstepWings=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Beg
 
+ItemName.BegBag=怪马袋
+ItemTooltip.BegBag=右键打开\n内含冒充怪马小子的所有物品
 
 ItemName.PonyBody=奇怪的马衬衫
 ItemTooltip.PonyBody=“非常适合冒充远古觉醒的开发者!”
@@ -5146,6 +5148,9 @@ ItemTooltip.ShinyCCRobe=一套蜥蜴狂徒的长袍\n“非常适合冒充远古
 
 // AAMod.Items.Vanity.Charlie
 
+ItemName.CharlieBag=收割者袋
+ItemTooltip.CharlieBag=右键打开\n内含冒充阴冷怪客的所有物品
+
 ItemName.CharlieCowl=魅影风帽
 ItemTooltip.CharlieCowl=“非常适合冒充远古觉醒的开发者!”
 
@@ -5154,6 +5159,9 @@ ItemTooltip.CharlieCloak=“非常适合冒充远古觉醒的开发者!”
 
 ItemName.CharlieBoots=魅影幽靴
 ItemTooltip.CharlieBoots=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.CharlieWings=魅影之翼
+ItemTooltip.CharlieWings=允许飞行和滑翔\n按住下和跳跃键悬停一段时间\n“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Dallin
 
@@ -5339,6 +5347,20 @@ ItemTooltip.ShinyMoonHood=传说中的月亮魔法面罩\n“非常适合冒充�
 ItemName.ShinyMoonRobe=明月袍
 ItemTooltip.ShinyMoonRobe=传说中的月亮魔法长袍\n“非常适合冒充远古觉醒的开发者!”
 
+// AAMod.Items.Vanity.Shox
+
+ItemName.ShoxBag=充能震颤宝藏袋
+ItemTooltip.ShoxBag=右键打开\n内含冒充震颤领主的所有物品
+
+ItemName.ShoxPants=震颤领主护胫
+ItemTooltip.ShoxPants=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.ShoxPlate=震颤领主胸甲
+ItemTooltip.ShoxPlate=“非常适合冒充远古觉醒的开发者!”
+
+ItemName.ShoxVisor=震颤领主视镜
+ItemTooltip.ShoxVisor=“非常适合冒充远古觉醒的开发者!”
+
 // AAMod.Items.Vanity.Maskano
 
 ItemName.MaskBag=面具宝藏袋
@@ -5354,6 +5376,9 @@ ItemName.MaskPlate=面具领主的胸甲
 ItemTooltip.MaskPlate=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.Mikpin
+
+ItemName.MikBag=狐皮包
+ItemTooltip.MikBag=右键打开\n内含冒充网络狐狸的所有物品
 
 ItemName.MikpinCloak=狐皮着装
 ItemTooltip.MikpinCloak=“非常适合冒充远古觉醒的开发者!”
@@ -5383,6 +5408,9 @@ ItemTooltip.BlazenPlate=“非常适合冒充远古觉醒的开发者!”
 
 
 // AAMod.Items.Vanity.Tails
+
+ItemName.TailsToolbox=狐尾工具箱
+ItemTooltip.TailsToolbox=右键打开\n内含冒充惊奇狐狸的所有物品
 
 ItemName.TailsBody=狐尾衣襟
 ItemTooltip.TailsBody=一个做的类似于某只两尾狐的服饰\n“非常适合冒充远古觉醒的开发者!”
@@ -6119,6 +6147,8 @@ NPCName.ZeroProtocol=零械汇编器 零.之.始.约.协.议
 NPCName.ZeroEcho=戒木零0-回音
 
 NPCName.ZeroMini=零械自组织源 零.之.自.组.织.协.议
+
+NPCName.ZeroTransition=破损裂隙
 
 
 // AAMod.NPCs.Critters
