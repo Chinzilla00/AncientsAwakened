@@ -394,8 +394,6 @@ namespace AAMod
 
             Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.High);
             SkyManager.Instance["AAMod:MireSky"] = new MireSky();
-            MireSky.PlanetTexture = GetTexture("Backgrounds/Moon");
-            MireSky.SkyTexture = GetTexture("Backgrounds/MireSky");
 
             VoidSky vSky = new VoidSky();
             Filters.Scene["AAMod:VoidSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.High);
@@ -415,9 +413,6 @@ namespace AAMod
 
             Filters.Scene["AAMod:YamataSky"] = new Filter(new YamataSkyData("FilterMiniTower").UseColor(.7f, 0f, 0f).UseOpacity(0.5f), EffectPriority.VeryHigh);
             SkyManager.Instance["AAMod:YamataSky"] = new YamataSky();
-            YamataSky.PlanetTexture = GetTexture("Backgrounds/YamataMoon");
-            YamataSky.SkyTex = GetTexture("Backgrounds/YamataStars");
-            YamataSky.BeamTexture = GetTexture("Backgrounds/YamataBeam");
 
             AnubisSky anSky = new AnubisSky();
             Filters.Scene["AAMod:AnubisSky"] = new Filter(new AnubisSkyData("FilterMiniTower").UseColor(.2f, .5f, .2f).UseOpacity(0.5f), EffectPriority.VeryHigh);
@@ -614,16 +609,6 @@ namespace AAMod
             if (Main.netMode != 2) //handle clearing all static texture arrays
             {
                 precachedTextures.Clear();
-
-                MireSky.PlanetTexture = null;
-                MireSky.SkyTexture = null;
-                MireSky.BGTexture = null;
-
-                YamataSky.BeamTexture = null;
-                YamataSky.BGTexture = null;
-                YamataSky.PlanetTexture = null;
-                YamataSky.RockTextures = null;
-                YamataSky.SkyTex = null;
 
                 BlockBarier = null;
             }
