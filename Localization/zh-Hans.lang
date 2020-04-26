@@ -5476,7 +5476,7 @@ ItemTooltip.ShinyPlutoPlate=“非常适合冒充远古觉醒的开发者!”
 
 // AAMod.Items.Vanity.VoidEye
 
-ItemName.VoidBag=虚空之眼宝藏袋
+ItemName.VoidBag=虚空之门
 ItemTooltip.VoidBag=右键打开\n内含冒充虚空之眼的所有物品
 
 ItemName.VoidEyeBoots=虚空之眼护胫
