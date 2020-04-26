@@ -387,7 +387,6 @@ namespace AAMod
 
             Filters.Scene["AAMod:ShenSky"] = new Filter(new ShenSkyData("FilterMiniTower").UseColor(.5f, 0f, .5f).UseOpacity(0.2f), EffectPriority.VeryHigh);
             SkyManager.Instance["AAMod:ShenSky"] = new ShenSky();
-            ShenSky.SkyTex = GetTexture("Backgrounds/ShenBg");
 
             Filters.Scene["AAMod:ShenASky"] = new Filter(new ShenASkyData("FilterMiniTower").UseColor(.7f, 0f, .7f).UseOpacity(0.2f), EffectPriority.VeryHigh);
             SkyManager.Instance["AAMod:ShenASky"] = new ShenASky();

@@ -98,7 +98,7 @@ namespace AAMod.NPCs.Bosses.Lucifer
             }
             else
             {
-                button = null;
+                button = "";
             }
         }
 

@@ -92,7 +92,6 @@ namespace AAMod.Items.Melee
     {
         public static Texture2D specialSlash;
         public static int specialProjFrames = 7;
-        readonly bool sndOnce = true;
         readonly int chargeSlashDirection = 1;
 
 

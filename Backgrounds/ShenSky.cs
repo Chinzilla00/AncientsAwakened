@@ -11,9 +11,6 @@ namespace AAMod.Backgrounds
 {
     public class ShenSky : CustomSky
     {
-        public static Texture2D BGTexture;
-        public static Texture2D SkyTex;
-        public static Texture2D MeteorTexture;
         public bool Active;
         public float Intensity;
         private readonly UnifiedRandom _random = new UnifiedRandom();
@@ -70,8 +67,8 @@ namespace AAMod.Backgrounds
 
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
-            MeteorTexture = mod.GetTexture("Backgrounds/ShenMeteor");
-            SkyTex = mod.GetTexture("Backgrounds/ShenBg");
+            Texture2D MeteorTexture = mod.GetTexture("Backgrounds/ShenMeteor");
+            Texture2D SkyTex = mod.GetTexture("Backgrounds/ShenBg");
 
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {

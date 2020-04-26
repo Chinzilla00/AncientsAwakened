@@ -74,14 +74,6 @@ namespace AAMod
             }
         }*/
 
-        public static bool forceBlackMapBG = false;
-        public static Texture2D forceBlackMapTexture = null;
-
-        public static Texture2D GetMapBackgroundImage()
-        {
-            return forceBlackMapBG ? Main.mapTexture : null;
-        }
-
         public static Mod GetMod(string modname)
 		{
             if(ModLoader.GetMod(modname) != null)
