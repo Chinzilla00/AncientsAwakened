@@ -29,7 +29,6 @@ namespace AAMod.NPCs.Enemies.Mire
             npc.alpha = 50;
             npc.width = 38;
             npc.height = 58;
-            npc.rarity = 1;
         }
 
         public override void AI()
