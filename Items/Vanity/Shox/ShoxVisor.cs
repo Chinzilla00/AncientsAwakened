@@ -35,7 +35,7 @@ namespace AAMod.Items.Vanity.Shox
 
         public override void DrawHair(ref bool drawHair, ref bool drawAltHair)
         {
-            drawhair = true;
+            drawHair = true;
         }
     }
 }

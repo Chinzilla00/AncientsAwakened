@@ -98,7 +98,7 @@ namespace AAMod.NPCs.Bosses.Lucifer
             }
             else
             {
-                button = null;
+                button = "";
             }
         }
 
@@ -106,7 +106,6 @@ namespace AAMod.NPCs.Bosses.Lucifer
         {
             if (firstButton)
             {
-                chatNumber++;
                 if (chatNumber == 0)
                 {
                     Main.npcChatText = @"Who am I?! I'm-- Who am I kiddin'. You know who I am. Now skedaddle, I got an arena to get built.";
@@ -123,6 +122,7 @@ namespace AAMod.NPCs.Bosses.Lucifer
                 {
                     Main.npcChatText = @"See you around. Come back when I finish, I'd love to see you get gored! BWAHAHAHAHAHAHAHAHAH!!!";
                 }
+                chatNumber++;
                 Main.PlaySound(12, -1, -1, 1);
             }
         }

@@ -11,16 +11,11 @@ namespace AAMod.Backgrounds
 {
     public class MireSky : CustomSky
     {
-        public static Texture2D PlanetTexture;
-        public static Texture2D SkyTexture;
-        public static Texture2D BGTexture;
         public bool Active;
         public float Intensity;
 
         public override void OnLoad()
         {
-            PlanetTexture = AAMod.instance.GetTexture("Backgrounds/Moon");
-            SkyTexture = AAMod.instance.GetTexture("Backgrounds/MireSky");
         }
 
         public override void Update(GameTime gameTime)
@@ -46,8 +41,12 @@ namespace AAMod.Backgrounds
             return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
 
+        readonly AAMod mod = AAMod.instance;
+
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
+            Texture2D PlanetTexture = mod.GetTexture("Backgrounds/Moon");
+            Texture2D SkyTexture = mod.GetTexture("Backgrounds/MireSky");
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
                 if (!Main.dayTime)

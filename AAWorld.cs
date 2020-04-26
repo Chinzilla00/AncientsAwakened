@@ -1620,7 +1620,7 @@ namespace AAMod
         private void ThePitTeaser(GenerationProgress progress)
         {
             progress.Message = "Sinking the Pit";
-            Point origin = new Point(Main.maxTilesX - 500, Main.maxTilesY - 200);
+            Point origin = new Point(Main.maxTilesX - 500, Main.maxTilesY - 100);
             PitTeaser biome = new PitTeaser();
             biome.Place(origin, WorldGen.structures);
         }

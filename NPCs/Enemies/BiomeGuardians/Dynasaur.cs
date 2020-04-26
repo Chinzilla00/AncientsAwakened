@@ -36,8 +36,6 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
 		public static int[] velocitiesX = new int[] { -6, -3, 0, 3, 6, 3, 0, -3 };
 		public static int[] velocitiesY = new int[] { 0, 3, 6, 3, 0, -3, -6, -3 };
 
-		public static Texture2D bodyTex;
-
 		public override void NPCLoot()
 		{
 			if (Main.netMode != 1)
@@ -267,7 +265,7 @@ namespace AAMod.NPCs.Enemies.BiomeGuardians
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
 		{
-			BaseDrawing.DrawAfterimage(sb, bodyTex, 0, npc, 2.5f, 0.9F, 3, true, 0f, 0f, dColor);
+			BaseDrawing.DrawAfterimage(sb, Main.npcTexture[npc.type], 0, npc, 2.5f, 0.9F, 3, true, 0f, 0f, dColor);
 			BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
             BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/Dynasaur_Glow"), 0, npc, Color.White);
             return false;
