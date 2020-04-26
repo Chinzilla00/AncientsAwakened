@@ -504,7 +504,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                     int Javelin = isSupreme ? ModContent.ProjectileType<BaneTEXR>() : ModContent.ProjectileType<BaneR>();
                     if (internalAI[3] == (isSupreme ? 40 : 60))
                     {
-                        float time = (float)((player.Center - WeaponPos).Length() / ProjSpeed());
+                        float time = (player.Center - WeaponPos).Length() / ProjSpeed();
                         Vector2 dir = Vector2.Normalize(player.Center + (isSupreme? player.velocity * time : Vector2.Zero) - WeaponPos);
                         dir *= ProjSpeed();
                         Projectile.NewProjectile(WeaponPos.X, WeaponPos.Y, dir.X, dir.Y, Javelin, damage, 5, Main.myPlayer);
@@ -530,7 +530,7 @@ namespace AAMod.NPCs.Bosses.Rajah
                 {
                     int Arrows = Main.rand.Next(2, 4);
                     float spread = 45f * 0.0174f * .3f;
-                    float time = (float)((player.Center - WeaponPos).Length() / ProjSpeed());
+                    float time = (player.Center - WeaponPos).Length() / ProjSpeed();
                     Vector2 dir = Vector2.Normalize(player.Center + (isSupreme? player.velocity * time : Vector2.Zero) - WeaponPos);
                     dir *= ProjSpeed() + (isSupreme? 3 : 1);
                     float baseSpeed = (float)Math.Sqrt((dir.X * dir.X) + (dir.Y * dir.Y));

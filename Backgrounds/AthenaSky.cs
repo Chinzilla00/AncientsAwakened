@@ -28,18 +28,10 @@ namespace AAMod.Backgrounds
             public bool IsAlive;
         }
 
-        public static Texture2D boltTexture;
-        public static Texture2D flashTexture;
         private Bolt[] bolts;
         public bool Active;
         public int ticksUntilNextBolt;
         public float Intensity;
-
-        public override void OnLoad()
-        {
-            boltTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AthenaBolt");
-            flashTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AthenaFlash");
-        }
 
         public override void Update(GameTime gameTime)
         {
@@ -86,19 +78,6 @@ namespace AAMod.Backgrounds
             Vector4 value = inColor.ToVector4();
             return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
-        public float asteroidPercent1 = 0f;
-        public float asteroidPercent2 = 0f;
-        public float asteroidPercent3 = 0f;
-        public float Rotation = 0;
-        public float LBRotation = 0;
-        public NPC IZ;
-
-
-        public Color infinityGlowRed = new Color(233, 53, 53);
-        public Color GetGlowAlpha(bool aura)
-        {
-            return (aura ? infinityGlowRed : Color.White) * (Main.mouseTextColor / 255f);
-        }
 
         public Color GetAlpha(Color newColor, float alph)
         {
@@ -113,15 +92,19 @@ namespace AAMod.Backgrounds
             return new Color(newR, newG, newB, newA);
         }
 
-
         readonly AthenaClouds clouds = new AthenaClouds(false);
+
+        readonly AAMod mod = AAMod.instance;
 
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
+            Texture2D boltTexture = mod.GetTexture("Backgrounds/AthenaBolt");
+            Texture2D flashTexture = mod.GetTexture("Backgrounds/AthenaFlash");
+
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
-                clouds.Update(AAMod.instance.GetTexture("Backgrounds/FogTex"));
-                clouds.Draw(AAMod.instance.GetTexture("Backgrounds/FogTex"), false, Color.CornflowerBlue, true);
+                clouds.Update(mod.GetTexture("Backgrounds/FogTex"));
+                clouds.Draw(mod.GetTexture("Backgrounds/FogTex"), false, Color.CornflowerBlue, true);
             }
             float scale = Math.Min(1f, (Main.screenPosition.Y - 1000f) / 1000f);
             Vector2 value3 = Main.screenPosition + new Vector2(Main.screenWidth >> 1, Main.screenHeight >> 1);

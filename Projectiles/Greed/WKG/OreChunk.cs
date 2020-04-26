@@ -1052,23 +1052,23 @@ namespace AAMod.Projectiles.Greed.WKG
                 }
                 else if(k == ModSupport.GetModItem("CalamityMod", "AuricOre").item.type)
                 {
-                    float num2 = (float)Main.rand.Next(22, 30);
+                    float num2 = Main.rand.Next(22, 30);
                     int num6 = 4;
                     for (int i = 0; i < num6; i++)
                     {
                         Vector2 vector = projectile.Center;
                         vector.X = (vector.X + projectile.Center.X) / 2f;
-                        vector.Y -= (float)(100 * i);
+                        vector.Y -= 100 * i;
                         float num3 = projectile.position.X - vector.X;
                         float num4 = projectile.position.X - vector.Y;
-                        float num5 = (float)Math.Sqrt((double)(num3 * num3 + num4 * num4));
+                        float num5 = (float)Math.Sqrt(num3 * num3 + num4 * num4);
                         num5 = num2 / num5;
                         num3 *= num5;
                         num4 *= num5;
-                        float num7 = num3 + (float)Main.rand.Next(-360, 361) * 0.02f;
-                        float num8 = num4 + (float)Main.rand.Next(-360, 361) * 0.02f;
+                        float num7 = num3 + Main.rand.Next(-360, 361) * 0.02f;
+                        float num8 = num4 + Main.rand.Next(-360, 361) * 0.02f;
                         int projtype = ModSupport.GetModProjectile("CalamityMod", "ElementBall").projectile.type;
-                        NewProjectile(vector.X, vector.Y, num7, num8, projtype, projectile.damage / 2, projectile.knockBack, projectile.owner, 0f, (float)Main.rand.Next(3));
+                        NewProjectile(vector.X, vector.Y, num7, num8, projtype, projectile.damage / 2, projectile.knockBack, projectile.owner, 0f, Main.rand.Next(3));
                     }
                 }
             }
@@ -1179,7 +1179,7 @@ namespace AAMod.Projectiles.Greed.WKG
                     };
                 }
             }
-            else if(k > 3930 && Config.LuckyOre[k] > 650 && item.modItem.mod != ModLoader.GetMod("AAMod"))
+            else if(k > 3930 && Config.LuckyOre[k] > 650 && item.modItem.mod != AAMod.instance)
             {
                 int dustid = DustID.Copper;
                 switch (WorldGen.genRand.Next(10))

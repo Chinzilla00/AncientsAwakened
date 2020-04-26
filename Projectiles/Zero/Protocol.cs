@@ -16,7 +16,7 @@ namespace AAMod.Projectiles.Zero
             ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
             ProjectileID.Sets.Homing[projectile.type] = true;
             ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
-            Main.projFrames[projectile.type] = 6;
+            Main.projFrames[projectile.type] = 7;
         }
 
         public override void SetDefaults()
@@ -33,8 +33,6 @@ namespace AAMod.Projectiles.Zero
             projectile.netImportant = true;
             projectile.minionSlots = 1;
         }
-
-
 
         public override void AI()
         {
@@ -295,7 +293,7 @@ namespace AAMod.Projectiles.Zero
             float Pie = 1f * (float)Math.Sin(Eggroll);
             Color color1 = Color.Lerp(Color.Red, Color.Black, Pie);
 
-            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 4, 0, 0);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 7, 0, 0);
 
             BaseDrawing.DrawTexture(spritebatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 7, frame, dColor, true);
             BaseDrawing.DrawTexture(spritebatch, glowTex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 7, frame, color1, true);

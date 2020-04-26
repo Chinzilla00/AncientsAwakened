@@ -19,8 +19,8 @@ namespace AAMod.Backgrounds
 
         public override void OnLoad()
         {
-            PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Moon");
-            SkyTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/MireSky");
+            PlanetTexture = AAMod.instance.GetTexture("Backgrounds/Moon");
+            SkyTexture = AAMod.instance.GetTexture("Backgrounds/MireSky");
         }
 
         public override void Update(GameTime gameTime)

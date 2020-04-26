@@ -5,7 +5,7 @@ namespace AAMod.Tiles
 {
     class BogwoodTree : ModTree
     {
-        private Mod Mod => ModLoader.GetMod("AAMod");
+        private Mod Mod => AAMod.instance;
 
         public override int DropWood()
         {

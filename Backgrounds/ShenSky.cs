@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
@@ -15,7 +16,7 @@ namespace AAMod.Backgrounds
         public static Texture2D MeteorTexture;
         public bool Active;
         public float Intensity;
-        private UnifiedRandom _random = new UnifiedRandom();
+        private readonly UnifiedRandom _random = new UnifiedRandom();
         private struct Meteor
         {
             public Vector2 Position;
@@ -32,8 +33,6 @@ namespace AAMod.Backgrounds
 
         public override void OnLoad()
         {
-            MeteorTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/ShenMeteor");
-            SkyTex = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/ShenBg");
         }
         public override void Update(GameTime gameTime)
         {
@@ -61,23 +60,25 @@ namespace AAMod.Backgrounds
             }
         }
 
-        
-
         public override Color OnTileColor(Color inColor)
         {
             Vector4 value = inColor.ToVector4();
             return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
 
+        readonly AAMod mod = AAMod.instance;
+
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
+            MeteorTexture = mod.GetTexture("Backgrounds/ShenMeteor");
+            SkyTex = mod.GetTexture("Backgrounds/ShenBg");
+
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
                 spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
-                Vector2 SunPos = new Vector2(Main.screenWidth * .75f, Main.screenHeight / 4);
-                Vector2 MoonPos = new Vector2(Main.screenWidth * .25f, Main.screenHeight / 4);
                 spriteBatch.Draw(SkyTex, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.White);
             }
+
             int num = -1;
             int num2 = 0;
 
@@ -160,6 +161,43 @@ namespace AAMod.Backgrounds
         public override bool IsActive()
         {
             return Active || Intensity > 0.001f;
+        }
+    }
+
+    public class ShenSkyData : ScreenShaderData
+    {
+        private int ShenIndex;
+
+        public ShenSkyData(string passName) : base(passName)
+        {
+        }
+
+        private void UpdateShenIndex()
+        {
+            int ShenType = AAMod.instance.NPCType("Shen");
+            if (ShenIndex >= 0 && Main.npc[ShenIndex].active && Main.npc[ShenIndex].type == ShenType)
+            {
+                return;
+            }
+            ShenIndex = -1;
+            for (int i = 0; i < Main.npc.Length; i++)
+            {
+                if (Main.npc[i].active && Main.npc[i].type == ShenType)
+                {
+                    ShenIndex = i;
+                    break;
+                }
+            }
+        }
+
+        public override void Apply()
+        {
+            UpdateShenIndex();
+            if (ShenIndex != -1)
+            {
+                UseTargetPosition(Main.npc[ShenIndex].Center);
+            }
+            base.Apply();
         }
     }
 }

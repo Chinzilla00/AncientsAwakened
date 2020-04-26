@@ -387,61 +387,41 @@ namespace AAMod
 
             Filters.Scene["AAMod:ShenSky"] = new Filter(new ShenSkyData("FilterMiniTower").UseColor(.5f, 0f, .5f).UseOpacity(0.2f), EffectPriority.VeryHigh);
             SkyManager.Instance["AAMod:ShenSky"] = new ShenSky();
-            ShenSky.SkyTex = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/ShenBg");
+            ShenSky.SkyTex = GetTexture("Backgrounds/ShenBg");
 
             Filters.Scene["AAMod:ShenASky"] = new Filter(new ShenASkyData("FilterMiniTower").UseColor(.7f, 0f, .7f).UseOpacity(0.2f), EffectPriority.VeryHigh);
             SkyManager.Instance["AAMod:ShenASky"] = new ShenASky();
-            ShenASky.SkyTex = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/ShenSky");
-            ShenASky.MeteorTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/ShenMeteor");
 
             Filters.Scene["AAMod:MireSky"] = new Filter(new MireSkyData("FilterMiniTower").UseColor(0f, 0.20f, 1f).UseOpacity(0.3f), EffectPriority.High);
             SkyManager.Instance["AAMod:MireSky"] = new MireSky();
-            MireSky.PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Moon");
-            MireSky.SkyTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/MireSky");
+            MireSky.PlanetTexture = GetTexture("Backgrounds/Moon");
+            MireSky.SkyTexture = GetTexture("Backgrounds/MireSky");
 
+            VoidSky vSky = new VoidSky();
             Filters.Scene["AAMod:VoidSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0.15f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.High);
-            SkyManager.Instance["AAMod:VoidSky"] = new VoidSky();
-            VoidSky.PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/VoidBH");
-            VoidSky.Asteroids1 = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Asteroids1");
-            VoidSky.Asteroids2 = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Asteroids2");
-            VoidSky.Asteroids3 = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Asteroids3");
-            VoidSky.Echo = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Echo");
-            VoidSky.LB = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/LB");
-            VoidSky.boltTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/VoidBolt");
-            VoidSky.flashTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/VoidFlash");
-            VoidSky.Stars = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Void_Starfield");
-            VoidSky.SkyTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/SkyTex");
+            SkyManager.Instance["AAMod:VoidSky"] = vSky;
 
+            AthenaSky aSky = new AthenaSky();
             Filters.Scene["AAMod:AthenaSky"] = new Filter(new VoidSkyData("FilterMiniTower").UseColor(0f, 0.1f, 0.1f).UseOpacity(0.3f), EffectPriority.High);
-            SkyManager.Instance["AAMod:AthenaSky"] = new AthenaSky();
-            AthenaSky.boltTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AthenaBolt");
-            AthenaSky.flashTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AthenaFlash");
+            SkyManager.Instance["AAMod:AthenaSky"] = aSky;
 
+            InfernoSky iSky = new InfernoSky();
             Filters.Scene["AAMod:InfernoSky"] = new Filter(new InfernoSkyData("FilterMiniTower").UseColor(1f, 0.20f, 0f).UseOpacity(0.3f), EffectPriority.High);
-            SkyManager.Instance["AAMod:InfernoSky"] = new InfernoSky();
-            InfernoSky.PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Sun");
-            InfernoSky.SkyTex = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/SkyTex");
-            InfernoSky.MeteorTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AkumaMeteor");
+            SkyManager.Instance["AAMod:InfernoSky"] = iSky;
 
+            AkumaSky akSky = new AkumaSky();
             Filters.Scene["AAMod:AkumaSky"] = new Filter(new AkumaSkyData("FilterMiniTower").UseColor(0f, 0.3f, 0.4f).UseOpacity(0.5f), EffectPriority.VeryHigh);
-            SkyManager.Instance["AAMod:AkumaSky"] = new AkumaSky();
-            AkumaSky.PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AkumaSun");
-            AkumaSky.SkyTex = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/SkyTex");
-            AkumaSky.MeteorTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AkumaAMeteor");
+            SkyManager.Instance["AAMod:AkumaSky"] = akSky;
 
             Filters.Scene["AAMod:YamataSky"] = new Filter(new YamataSkyData("FilterMiniTower").UseColor(.7f, 0f, 0f).UseOpacity(0.5f), EffectPriority.VeryHigh);
             SkyManager.Instance["AAMod:YamataSky"] = new YamataSky();
-            YamataSky.PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/YamataMoon");
-            YamataSky.SkyTex = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/YamataStars");
-            YamataSky.BeamTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/YamataBeam");
+            YamataSky.PlanetTexture = GetTexture("Backgrounds/YamataMoon");
+            YamataSky.SkyTex = GetTexture("Backgrounds/YamataStars");
+            YamataSky.BeamTexture = GetTexture("Backgrounds/YamataBeam");
 
+            AnubisSky anSky = new AnubisSky();
             Filters.Scene["AAMod:AnubisSky"] = new Filter(new AnubisSkyData("FilterMiniTower").UseColor(.2f, .5f, .2f).UseOpacity(0.5f), EffectPriority.VeryHigh);
-            SkyManager.Instance["AAMod:AnubisSky"] = new AnubisSky();
-            AnubisSky.BeamTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AnubisBeam");
-            for (int a = 0; a < 8; a++)
-            {
-                AnubisSky.RuneTextures[a] = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Runes/Rune" + a);
-            }
+            SkyManager.Instance["AAMod:AnubisSky"] = anSky;
 
             ReplaceItemTexture(3460, "Resprites/Luminite");
             ReplaceItemTexture(512, "Resprites/SoulOfNight");
@@ -635,27 +615,9 @@ namespace AAMod
             {
                 precachedTextures.Clear();
 
-                AkumaSky.PlanetTexture = null;
-                AkumaSky.BGTexture = null;
-                AkumaSky.SkyTex = null;
-
-                InfernoSky.PlanetTexture = null;
-                InfernoSky.BGTexture = null;
-                InfernoSky.SkyTex = null;
-
                 MireSky.PlanetTexture = null;
                 MireSky.SkyTexture = null;
                 MireSky.BGTexture = null;
-
-                VoidSky.PlanetTexture = null;
-                VoidSky.BGTexture = null;
-                VoidSky.Echo = null;
-                VoidSky.Asteroids1 = null;
-                VoidSky.Asteroids2 = null;
-                VoidSky.Asteroids3 = null;
-                VoidSky.LB = null;
-                VoidSky.boltTexture = null;
-                VoidSky.flashTexture = null;
 
                 YamataSky.BeamTexture = null;
                 YamataSky.BGTexture = null;

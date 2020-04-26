@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
 using Terraria.ModLoader;
 using Terraria.Utilities;
 
@@ -10,9 +11,6 @@ namespace AAMod.Backgrounds
 {
     public class InfernoSky : CustomSky
     {
-        public static Texture2D demonSun;
-        public static Texture2D PlanetTexture;
-        public static Texture2D BGTexture;
         public bool Active;
         public float Intensity;
         private struct Meteor
@@ -28,17 +26,8 @@ namespace AAMod.Backgrounds
             public float StartX;
         }
         private Meteor[] Meteors;
-        public static Texture2D MeteorTexture;
-        public static Texture2D SkyTex;
-        private readonly UnifiedRandom _random = new UnifiedRandom();
 
-        public override void OnLoad()
-        {
-            PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Sun");
-            demonSun = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/DemonSun");
-            MeteorTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AkumaMeteor");
-            SkyTex = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/SkyTex");
-        }
+        private readonly UnifiedRandom _random = new UnifiedRandom();
 
         public override void Update(GameTime gameTime)
         {
@@ -58,8 +47,15 @@ namespace AAMod.Backgrounds
             return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
 
+        readonly AAMod mod = AAMod.instance;
+
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
+            Texture2D PlanetTexture = mod.GetTexture("Backgrounds/Sun");
+            Texture2D demonSun = mod.GetTexture("Backgrounds/DemonSun");
+            Texture2D MeteorTexture = mod.GetTexture("Backgrounds/AkumaMeteor");
+            Texture2D SkyTex = mod.GetTexture("Backgrounds/SkyTex");
+
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
                 if (Main.dayTime)
@@ -188,6 +184,29 @@ namespace AAMod.Backgrounds
         public override bool IsActive()
         {
             return Active || Intensity > 0.001f;
+        }
+    }
+
+    public class InfernoSkyData : ScreenShaderData
+    {
+        public InfernoSkyData(string passName) : base(passName)
+        {
+
+        }
+
+        private void UpdateInfernoSky()
+        {
+            AAPlayer modPlayer = Main.LocalPlayer.GetModPlayer<AAPlayer>();
+            if (AAWorld.infernoTiles < 100)
+            {
+                return;
+            }
+        }
+
+        public override void Apply()
+        {
+            UpdateInfernoSky();
+            base.Apply();
         }
     }
 }

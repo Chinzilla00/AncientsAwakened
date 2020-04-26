@@ -207,7 +207,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 npc.defense = (int)(npc.defDefense * ShroomCount);
                 if(internalAI[3] ++ > 20)
                 {
-                    if(npc.life < npc.lifeMax) npc.life += (int)Shrooms.Length;
+                    if(npc.life < npc.lifeMax) npc.life += Shrooms.Length;
                     internalAI[3] = 0;
                 }
                 AIChangeRate = 120;
@@ -638,11 +638,11 @@ namespace AAMod.NPCs.Bosses.Toad
             }
             Vector2 position = npc.position;
             position.X += npc.velocity.X;
-            int num514 = (int)((position.X + (float)(npc.width / 2) + (float)((npc.width / 2 + 1) * num513)) / 16f);
-            int num515 = (int)((position.Y + (float)npc.height - 1f) / 16f);
-            if ((float)(num514 * 16) < position.X + (float)npc.width && (float)(num514 * 16 + 16) > position.X && ((Main.tile[num514, num515].nactive() && !Main.tile[num514, num515].topSlope() && !Main.tile[num514, num515 - 1].topSlope() && ((Main.tileSolid[(int)Main.tile[num514, num515].type] && !Main.tileSolidTop[(int)Main.tile[num514, num515].type]) || (flag31 && Main.tileSolidTop[(int)Main.tile[num514, num515].type] && (!Main.tileSolid[(int)Main.tile[num514, num515 - 1].type] || !Main.tile[num514, num515 - 1].nactive()) && Main.tile[num514, num515].type != 16 && Main.tile[num514, num515].type != 18 && Main.tile[num514, num515].type != 134))) || (Main.tile[num514, num515 - 1].halfBrick() && Main.tile[num514, num515 - 1].nactive())) && (!Main.tile[num514, num515 - 1].nactive() || !Main.tileSolid[(int)Main.tile[num514, num515 - 1].type] || Main.tileSolidTop[(int)Main.tile[num514, num515 - 1].type] || (Main.tile[num514, num515 - 1].halfBrick() && (!Main.tile[num514, num515 - 4].nactive() || !Main.tileSolid[(int)Main.tile[num514, num515 - 4].type] || Main.tileSolidTop[(int)Main.tile[num514, num515 - 4].type]))) && (!Main.tile[num514, num515 - 2].nactive() || !Main.tileSolid[(int)Main.tile[num514, num515 - 2].type] || Main.tileSolidTop[(int)Main.tile[num514, num515 - 2].type]) && (!Main.tile[num514, num515 - 3].nactive() || !Main.tileSolid[(int)Main.tile[num514, num515 - 3].type] || Main.tileSolidTop[(int)Main.tile[num514, num515 - 3].type]) && (!Main.tile[num514 - num513, num515 - 3].nactive() || !Main.tileSolid[(int)Main.tile[num514 - num513, num515 - 3].type] || Main.tileSolidTop[(int)Main.tile[num514 - num513, num515 - 3].type]))
+            int num514 = (int)((position.X + npc.width / 2 + (npc.width / 2 + 1) * num513) / 16f);
+            int num515 = (int)((position.Y + npc.height - 1f) / 16f);
+            if (num514 * 16 < position.X + npc.width && num514 * 16 + 16 > position.X && ((Main.tile[num514, num515].nactive() && !Main.tile[num514, num515].topSlope() && !Main.tile[num514, num515 - 1].topSlope() && ((Main.tileSolid[Main.tile[num514, num515].type] && !Main.tileSolidTop[Main.tile[num514, num515].type]) || (flag31 && Main.tileSolidTop[Main.tile[num514, num515].type] && (!Main.tileSolid[Main.tile[num514, num515 - 1].type] || !Main.tile[num514, num515 - 1].nactive()) && Main.tile[num514, num515].type != 16 && Main.tile[num514, num515].type != 18 && Main.tile[num514, num515].type != 134))) || (Main.tile[num514, num515 - 1].halfBrick() && Main.tile[num514, num515 - 1].nactive())) && (!Main.tile[num514, num515 - 1].nactive() || !Main.tileSolid[Main.tile[num514, num515 - 1].type] || Main.tileSolidTop[Main.tile[num514, num515 - 1].type] || (Main.tile[num514, num515 - 1].halfBrick() && (!Main.tile[num514, num515 - 4].nactive() || !Main.tileSolid[Main.tile[num514, num515 - 4].type] || Main.tileSolidTop[Main.tile[num514, num515 - 4].type]))) && (!Main.tile[num514, num515 - 2].nactive() || !Main.tileSolid[Main.tile[num514, num515 - 2].type] || Main.tileSolidTop[Main.tile[num514, num515 - 2].type]) && (!Main.tile[num514, num515 - 3].nactive() || !Main.tileSolid[Main.tile[num514, num515 - 3].type] || Main.tileSolidTop[Main.tile[num514, num515 - 3].type]) && (!Main.tile[num514 - num513, num515 - 3].nactive() || !Main.tileSolid[Main.tile[num514 - num513, num515 - 3].type] || Main.tileSolidTop[Main.tile[num514 - num513, num515 - 3].type]))
             {
-                float num516 = (float)(num515 * 16);
+                float num516 = num515 * 16;
                 if (Main.tile[num514, num515].halfBrick())
                 {
                     num516 += 8f;
@@ -651,13 +651,13 @@ namespace AAMod.NPCs.Bosses.Toad
                 {
                     num516 -= 8f;
                 }
-                if (num516 < position.Y + (float)npc.height)
+                if (num516 < position.Y + npc.height)
                 {
-                    float num517 = position.Y + (float)npc.height - num516;
-                    if ((double)num517 <= 16.1)
+                    float num517 = position.Y + npc.height - num516;
+                    if (num517 <= 16.1)
                     {
-                        npc.gfxOffY += npc.position.Y + (float)npc.height - num516;
-                        npc.position.Y = num516 - (float)npc.height;
+                        npc.gfxOffY += npc.position.Y + npc.height - num516;
+                        npc.position.Y = num516 - npc.height;
                         if (num517 < 9f)
                         {
                             npc.stepSpeed = 0.75f;
@@ -688,7 +688,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 {
                     if (Main.expertMode)
                     {
-                        npc.damage = (int)((double)(npc.defDamage * 2) * 0.9);
+                        npc.damage = (int)(npc.defDamage * 2 * 0.9);
                     }
                     else
                     {
@@ -708,15 +708,15 @@ namespace AAMod.NPCs.Bosses.Toad
                         {
                             num531 = 6f;
                         }
-                        Vector2 vector67 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                        float num532 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector67.X;
+                        Vector2 vector67 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                        float num532 = Main.player[npc.target].position.X + Main.player[npc.target].width * 0.5f - vector67.X;
                         float num533 = Math.Abs(num532) * 0.2f;
                         if (npc.directionY > 0)
                         {
                             num533 = 0f;
                         }
                         float num534 = Main.player[npc.target].position.Y - vector67.Y - num533;
-                        float num535 = (float)Math.Sqrt((double)(num532 * num532 + num534 * num534));
+                        float num535 = (float)Math.Sqrt(num532 * num532 + num534 * num534);
                         npc.netUpdate = true;
                         num535 = num531 / num535;
                         num532 *= num535;
@@ -731,7 +731,7 @@ namespace AAMod.NPCs.Bosses.Toad
                     }
                     else
                     {
-                        if (npc.position.X + (float)npc.width > Main.player[npc.target].position.X && npc.position.X < Main.player[npc.target].position.X + (float)Main.player[npc.target].width && npc.position.Y < Main.player[npc.target].position.Y + (float)Main.player[npc.target].height)
+                        if (npc.position.X + npc.width > Main.player[npc.target].position.X && npc.position.X < Main.player[npc.target].position.X + Main.player[npc.target].width && npc.position.Y < Main.player[npc.target].position.Y + Main.player[npc.target].height)
                         {
                             npc.velocity.X = npc.velocity.X * 0.8f;
                             npc.ai[3] = 0f;
@@ -782,7 +782,7 @@ namespace AAMod.NPCs.Bosses.Toad
                 {
                     if (npc.ai[0] == 5f)
                     {
-                        npc.damage = (int)((float)npc.defDamage * (Main.expertMode ? 1.4f : 1.8f));
+                        npc.damage = (int)(npc.defDamage * (Main.expertMode ? 1.4f : 1.8f));
                         npc.defense = npc.defDefense * 2;
                         npc.knockBackResist = 0f;
                         if (Main.rand.Next(3) < 2)
@@ -814,13 +814,13 @@ namespace AAMod.NPCs.Bosses.Toad
                                 }
                                 for (int num539 = 0; num539 < 4; num539 = num + 1)
                                 {
-                                    int num540 = Gore.NewGore(vector68 + new Vector2((float)(50 * Main.rand.Next(100)) / 100f, (float)(50 * Main.rand.Next(100)) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
+                                    int num540 = Gore.NewGore(vector68 + new Vector2(50 * Main.rand.Next(100) / 100f, 50 * Main.rand.Next(100) / 100f) - Vector2.One * 10f, default(Vector2), Main.rand.Next(61, 64), 1f);
                                     Gore gore = Main.gore[num540];
                                     gore.velocity *= 0.3f;
                                     Gore gore2 = Main.gore[num540];
-                                    gore2.velocity.X = gore2.velocity.X + (float)Main.rand.Next(-10, 11) * 0.05f;
+                                    gore2.velocity.X = gore2.velocity.X + Main.rand.Next(-10, 11) * 0.05f;
                                     Gore gore3 = Main.gore[num540];
-                                    gore3.velocity.Y = gore3.velocity.Y + (float)Main.rand.Next(-10, 11) * 0.05f;
+                                    gore3.velocity.Y = gore3.velocity.Y + Main.rand.Next(-10, 11) * 0.05f;
                                     num = num539;
                                 }
                             }
@@ -846,15 +846,15 @@ namespace AAMod.NPCs.Bosses.Toad
                             {
                                 num543 = 10f;
                             }
-                            Vector2 vector69 = new Vector2(npc.position.X + (float)npc.width * 0.5f, npc.position.Y + (float)npc.height * 0.5f);
-                            float num544 = Main.player[npc.target].position.X + (float)Main.player[npc.target].width * 0.5f - vector69.X;
+                            Vector2 vector69 = new Vector2(npc.position.X + npc.width * 0.5f, npc.position.Y + npc.height * 0.5f);
+                            float num544 = Main.player[npc.target].position.X + Main.player[npc.target].width * 0.5f - vector69.X;
                             float num545 = Math.Abs(num544) * 0.2f;
                             if (npc.directionY > 0)
                             {
                                 num545 = 0f;
                             }
                             float num546 = Main.player[npc.target].position.Y - vector69.Y - num545;
-                            float num547 = (float)Math.Sqrt((double)(num544 * num544 + num546 * num546));
+                            float num547 = (float)Math.Sqrt(num544 * num544 + num546 * num546);
                             npc.netUpdate = true;
                             num547 = num543 / num547;
                             num544 *= num547;

@@ -5,7 +5,7 @@ namespace AAMod.Tiles.Trees
 {
     public class Bogtus : ModCactus
 	{
-        private Mod mod => ModLoader.GetMod("AAMod");
+        private Mod mod => AAMod.instance;
 
         public override Texture2D GetTexture()
 		{

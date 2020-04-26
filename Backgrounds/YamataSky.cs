@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics.Effects;
+using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Utilities;
@@ -11,14 +12,8 @@ namespace AAMod.Backgrounds
 {
     public class YamataSky : CustomSky
     {
-        
-        public static Texture2D PlanetTexture;
-        public static Texture2D BGTexture;
-        public static Texture2D SkyTex;
         public bool Active;
         public float Intensity;
-        public static Texture2D BeamTexture;
-        public static Texture2D[] RockTextures;
         private struct LightPillar
         {
             public Vector2 Position;
@@ -28,20 +23,7 @@ namespace AAMod.Backgrounds
 
         private LightPillar[] _pillars;
 
-        private UnifiedRandom _random = new UnifiedRandom();
-
-        public override void OnLoad()
-        {
-            PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/YamataMoon");
-            BeamTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/YamataBeam");
-            RockTextures = new Texture2D[3];
-            for (int i = 0; i < RockTextures.Length; i++)
-            {
-                RockTextures[i] = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/YamataRock" + i);
-            }
-
-            SkyTex = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/YamataStars");
-        }
+        private readonly UnifiedRandom _random = new UnifiedRandom();
 
         public override void Update(GameTime gameTime)
         {
@@ -55,16 +37,26 @@ namespace AAMod.Backgrounds
             }
         }
 
-        
-
         public override Color OnTileColor(Color inColor)
         {
             Vector4 value = inColor.ToVector4();
             return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
 
+        readonly AAMod mod = AAMod.instance;
+
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
+            Texture2D PlanetTexture = mod.GetTexture("Backgrounds/YamataMoon");
+            Texture2D BeamTexture = mod.GetTexture("Backgrounds/YamataBeam");
+            Texture2D[] RockTextures = new Texture2D[3];
+            for (int i = 0; i < RockTextures.Length; i++)
+            {
+                RockTextures[i] = mod.GetTexture("Backgrounds/YamataRock" + i);
+            }
+
+            Texture2D SkyTex = mod.GetTexture("Backgrounds/YamataStars");
+
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
                 if (!Main.dayTime)
@@ -150,8 +142,6 @@ namespace AAMod.Backgrounds
             }
         }
 
-
-
         public override float GetCloudAlpha()
         {
             return 1f - Intensity;
@@ -189,6 +179,44 @@ namespace AAMod.Backgrounds
         public override bool IsActive()
         {
             return Active || Intensity > 0.001f;
+        }
+    }
+
+
+    public class YamataSkyData : ScreenShaderData
+    {
+        private int YamataIndex;
+
+        public YamataSkyData(string passName) : base(passName)
+        {
+        }
+
+        private void UpdateYamataIndex()
+        {
+            int YamataType = AAMod.instance.NPCType("YamataA");
+            if (YamataIndex >= 0 && Main.npc[YamataIndex].active && Main.npc[YamataIndex].type == YamataType)
+            {
+                return;
+            }
+            YamataIndex = -1;
+            for (int i = 0; i < Main.npc.Length; i++)
+            {
+                if (Main.npc[i].active && Main.npc[i].type == YamataType)
+                {
+                    YamataIndex = i;
+                    break;
+                }
+            }
+        }
+
+        public override void Apply()
+        {
+            UpdateYamataIndex();
+            if (YamataIndex != -1)
+            {
+                UseTargetPosition(Main.npc[YamataIndex].Center);
+            }
+            base.Apply();
         }
     }
 }

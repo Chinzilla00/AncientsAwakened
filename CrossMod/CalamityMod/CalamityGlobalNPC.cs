@@ -97,7 +97,7 @@ namespace AAMod
 		{
             if (ModSupport.GetMod("CalamityMod") != null)
 			{
-                if (npc.type > 580 && npc.modNPC.mod == ModLoader.GetMod("AAMod") && npc.boss)
+                if (npc.type > 580 && npc.modNPC.mod == AAMod.instance && npc.boss)
                 {
                     bool revenge = (bool)ModSupport.GetModWorldConditions("CalamityMod", "CalamityWorld", "revenge", false, true);
                     bool Death = (bool)ModSupport.GetModWorldConditions("CalamityMod", "CalamityWorld", "death", false, true);
@@ -117,7 +117,7 @@ namespace AAMod
         {
             if (ModSupport.GetMod("CalamityMod") != null)
 			{
-                if (npc.type > 580 && npc.boss && npc.modNPC.mod == ModLoader.GetMod("AAMod"))
+                if (npc.type > 580 && npc.boss && npc.modNPC.mod == AAMod.instance)
                 {
                     if (item.type > 3930 && item.modItem.mod == ModLoader.GetMod("CalamityMod"))
                     {
@@ -126,7 +126,7 @@ namespace AAMod
                 }
                 if (npc.type > 580 && npc.boss && npc.modNPC.mod == ModLoader.GetMod("CalamityMod"))
                 {
-                    if (item.type > 3930 && item.modItem.mod == ModLoader.GetMod("AAMod"))
+                    if (item.type > 3930 && item.modItem.mod == AAMod.instance)
                     {
                         damage = (int)(damage * (NPC.downedPlantBoss? 1.25f : 1f) * (NPC.downedMoonlord? 1.42f : 1f));
                     }
@@ -138,7 +138,7 @@ namespace AAMod
 		{
             if (ModSupport.GetMod("CalamityMod") != null)
 			{
-                if (npc.type > 580 && npc.boss && npc.modNPC.mod == ModLoader.GetMod("AAMod"))
+                if (npc.type > 580 && npc.boss && npc.modNPC.mod == AAMod.instance)
                 {
                     if (projectile.type > 714 && projectile.modProjectile.mod == ModLoader.GetMod("CalamityMod"))
                     {
@@ -147,7 +147,7 @@ namespace AAMod
                 }
                 if (npc.type > 580 && npc.boss && npc.modNPC.mod == ModLoader.GetMod("CalamityMod"))
                 {
-                    if (projectile.type > 714 && projectile.modProjectile.mod == ModLoader.GetMod("AAMod"))
+                    if (projectile.type > 714 && projectile.modProjectile.mod == AAMod.instance)
                     {
                         damage = (int)(damage * (NPC.downedPlantBoss? 1.25f : 1f) * (NPC.downedMoonlord? 1.42f : 1f));
                     }
@@ -162,7 +162,7 @@ namespace AAMod
 		{
             if (ModSupport.GetMod("CalamityMod") != null)
 			{
-                if (projectile.hostile && !projectile.friendly && projectile.type > 714 && projectile.modProjectile.mod == ModLoader.GetMod("AAMod"))
+                if (projectile.hostile && !projectile.friendly && projectile.type > 714 && projectile.modProjectile.mod == AAMod.instance)
                 {
                     bool revenge = (bool)ModSupport.GetModWorldConditions("CalamityMod", "CalamityWorld", "revenge", false, true);
                     bool Death = (bool)ModSupport.GetModWorldConditions("CalamityMod", "CalamityWorld", "death", false, true);

@@ -3,16 +3,13 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics.Effects;
-using Terraria.ModLoader;
+using Terraria.Graphics.Shaders;
 using Terraria.Utilities;
 
 namespace AAMod.Backgrounds
 {
     public class AkumaSky : CustomSky
     {
-        
-        public static Texture2D PlanetTexture;
-        public static Texture2D BGTexture;
         private struct Meteor
         {
             public Vector2 Position;
@@ -25,19 +22,12 @@ namespace AAMod.Backgrounds
 
             public float StartX;
         }
+
         private Meteor[] Meteors;
-        public static Texture2D MeteorTexture;
-        public static Texture2D SkyTex;
+
         public bool Active;
         public float Intensity;
         private readonly UnifiedRandom _random = new UnifiedRandom();
-
-        public override void OnLoad()
-        {
-            PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AkumaSun");
-            MeteorTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AkumaAMeteor");
-            SkyTex = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/SkyTex");
-        }
 
         private readonly float num = 1200f;
 
@@ -73,8 +63,14 @@ namespace AAMod.Backgrounds
             return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
 
+        readonly AAMod mod = AAMod.instance;
+
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
+            Texture2D PlanetTexture = mod.GetTexture("Backgrounds/AkumaSun");
+            Texture2D MeteorTexture = mod.GetTexture("Backgrounds/AkumaAMeteor");
+            Texture2D SkyTex = mod.GetTexture("Backgrounds/SkyTex");
+
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
                 if (Main.dayTime)
@@ -208,6 +204,43 @@ namespace AAMod.Backgrounds
         public override bool IsActive()
         {
             return Active || Intensity > 0.001f;
+        }
+    }
+
+    public class AkumaSkyData : ScreenShaderData
+    {
+        private int AkumaIndex;
+
+        public AkumaSkyData(string passName) : base(passName)
+        {
+        }
+
+        private void UpdateAkumaIndex()
+        {
+            int AkumaType = AAMod.instance.NPCType("AkumaA");
+            if (AkumaIndex >= 0 && Main.npc[AkumaIndex].active && Main.npc[AkumaIndex].type == AkumaType)
+            {
+                return;
+            }
+            AkumaIndex = -1;
+            for (int i = 0; i < Main.npc.Length; i++)
+            {
+                if (Main.npc[i].active && Main.npc[i].type == AkumaType)
+                {
+                    AkumaIndex = i;
+                    break;
+                }
+            }
+        }
+
+        public override void Apply()
+        {
+            UpdateAkumaIndex();
+            if (AkumaIndex != -1)
+            {
+                UseTargetPosition(Main.npc[AkumaIndex].Center);
+            }
+            base.Apply();
         }
     }
 }

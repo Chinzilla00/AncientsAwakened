@@ -4393,20 +4393,43 @@ namespace AAMod
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("ShroomPants")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ShroomPants_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.legFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/ShroomPants_Legs_Glow"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.Glow, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("DoomiteGreaves")) && modPlayer.doomite)
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomiteGreaves_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.legFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/DoomiteGreaves_Legs_Glow"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.ZeroShield, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("BlazenBoots")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/BlazenBoots_Legs"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.legFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/BlazenBoots_Legs"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.legFrame);
             }
             else if (HasAndCanDraw(drawPlayer, mod.ItemType("CursedPants")))
             {
-                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/CursedPants_Legs_Glow"), edi.bodyArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.legFrame);
+                BaseDrawing.DrawPlayerTexture(Main.playerDrawData, mod.GetTexture("Glowmasks/CursedPants_Legs_Glow"), edi.legArmorShader, drawPlayer, edi.position, 1, 0f, 0f, drawPlayer.GetImmuneAlphaPure(AAColor.COLOR_WHITEFADE1, edi.shadow), drawPlayer.legFrame);
             }
+            /*else if (HasAndCanDraw(drawPlayer, mod.ItemType("ShoxCurse")))
+            {
+                if (!drawPlayer.invis && !drawPlayer.mount.Active)
+                {
+                    Color color14 = drawPlayer.GetImmuneAlphaPure(Lighting.GetColor((int)(edi.position.X + drawPlayer.width * 0.5) / 16, (int)(edi.position.Y + drawPlayer.height * 0.75) / 16, Color.White), 0f);
+                    Texture2D texture2 = mod.GetTexture("Items/Vanity/Shox/ShoxCurse_Pants");
+                    bool flag10 = drawPlayer.legFrame.Y == 0;
+                    int num65 = drawPlayer.miscCounter / 3 % 8;
+                    if (flag10)
+                    {
+                        num65 = drawPlayer.miscCounter / 4 % 8;
+                    }
+                    Rectangle rectangle3 = new Rectangle(18 * flag10.ToInt(), num65 * 26, 16, 24);
+                    float num66 = 12f - Main.OffsetsPlayerHeadgear[drawPlayer.bodyFrame.Y / drawPlayer.bodyFrame.Height].Y;
+                    Vector2 arg_6147_0 = edi.position + drawPlayer.Size * new Vector2(0.5f, 0.5f + 0.5f * drawPlayer.gravDir);
+                    int arg_6135_0 = drawPlayer.direction;
+                    Vector2 vector7 = arg_6147_0 + new Vector2(0, -num66 * drawPlayer.gravDir) - Main.screenPosition + drawPlayer.legPosition;
+                    vector7 = vector7.Floor();
+                    DrawData value = new DrawData(texture2, vector7, new Rectangle?(rectangle3), color14, drawPlayer.legRotation, rectangle3.Size() * new Vector2(0.5f, 0.5f - drawPlayer.gravDir / 2), 1f, SpriteEffects.None, 0);
+                    value.shader = edi.legArmorShader;
+                    Main.playerDrawData.Add(value);
+                }
+            }*/
         });
 
         #region Grovite Layers

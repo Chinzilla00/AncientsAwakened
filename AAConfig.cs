@@ -41,7 +41,7 @@ namespace AAMod
 		}
 
         private static readonly string ConfigPath = Path.Combine(Main.SavePath, "Mod Configs", "AAConfig.json");
-		private static Preferences Configuration = new Preferences(ConfigPath, false, false);
+		private static readonly Preferences Configuration = new Preferences(ConfigPath, false, false);
 
         public static void SetDefaults()
 		{

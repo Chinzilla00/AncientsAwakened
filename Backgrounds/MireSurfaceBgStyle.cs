@@ -8,7 +8,7 @@ namespace AAMod.Backgrounds
 {
     public class MireSurfaceBgStyle : ModSurfaceBgStyle
     {
-		ScreenFog mireBGFog = new ScreenFog(true);
+        readonly ScreenFog mireBGFog = new ScreenFog(true);
 
         public override bool ChooseBgStyle()
         {
@@ -62,5 +62,72 @@ namespace AAMod.Backgrounds
 			mireBGFog.Draw(mod.GetTexture("Backgrounds/FogTex"), true, YamataA ? YamataFog : DefaultFog);
             return Main.dayTime ? false : true;
 		}
+    }
+
+    public class MireUgBgStyle : ModUgBgStyle
+    {
+        public override bool ChooseBgStyle()
+        {
+            return !Main.gameMenu && Main.LocalPlayer.GetModPlayer<AAPlayer>().ZoneMire;
+        }
+
+        public override void FillTextureArray(int[] textureSlots)
+        {
+            textureSlots[0] = mod.GetBackgroundSlot("Backgrounds/MireUnderground1");
+            textureSlots[1] = mod.GetBackgroundSlot("Backgrounds/MireUnderground");
+            textureSlots[2] = mod.GetBackgroundSlot("Backgrounds/MireCavern1");
+            textureSlots[3] = mod.GetBackgroundSlot("Backgrounds/MireCavern");
+        }
+    }
+
+    class MireDesertBgStyle : ModSurfaceBgStyle
+    {
+        readonly ScreenFog mireBGFog = new ScreenFog(true);
+
+        public override bool ChooseBgStyle()
+        {
+            return !Main.gameMenu && Main.LocalPlayer.GetModPlayer<AAPlayer>().ZoneMire && Main.LocalPlayer.ZoneDesert;
+        }
+
+        public override void ModifyFarFades(float[] fades, float transitionSpeed)
+        {
+            for (int i = 0; i < fades.Length; i++)
+            {
+                if (i == Slot)
+                {
+                    fades[i] += transitionSpeed;
+                    if (fades[i] > 1f)
+                    {
+                        fades[i] = 1f;
+                    }
+                }
+                else
+                {
+                    fades[i] -= transitionSpeed;
+                    if (fades[i] < 0f)
+                    {
+                        fades[i] = 0f;
+                    }
+                }
+            }
+        }
+
+        public override int ChooseFarTexture()
+        {
+            return mod.GetBackgroundSlot("Backgrounds/MireDesertBG");
+        }
+
+        public override bool PreDrawCloseBackground(SpriteBatch spriteBatch)
+        {
+            Color DefaultFog = new Color(120, 120, 200);
+            Color YamataFog = new Color(200, 100, 100);
+
+            bool YamataA = NPC.AnyNPCs(ModContent.NPCType<YamataA>());
+
+            mireBGFog.Update(mod.GetTexture("Backgrounds/FogTex"));
+            mireBGFog.Draw(mod.GetTexture("Backgrounds/FogTex"), true, YamataA ? YamataFog : DefaultFog);
+            return Main.dayTime ? false : true;
+        }
+
     }
 }

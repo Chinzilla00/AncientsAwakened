@@ -53,7 +53,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                 projectile.velocity.Y = num2;
             }
             projectile.velocity.X = projectile.velocity.X * 0.95f;
-            if ((double)projectile.velocity.X < 0.1 && (double)projectile.velocity.X > -0.1)
+            if (projectile.velocity.X < 0.1 && projectile.velocity.X > -0.1)
             {
                 projectile.velocity.X = 0f;
             }
@@ -70,7 +70,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
             {
                 if(Main.player[i].active && (Main.player[i].Center - projectile.Center).Length() < 88)
                 {
-                    if ((double)Main.player[i].position.X + (double)Main.player[i].width * 0.5 > (double)projectile.position.X + (double)projectile.width * 0.5)
+                    if (Main.player[i].position.X + Main.player[i].width * 0.5 > projectile.position.X + projectile.width * 0.5)
                     {
                         if (projectile.velocity.X < 4f + Main.player[i].velocity.X)
                         {
@@ -92,7 +92,7 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
                             projectile.velocity.X = projectile.velocity.X - 0.45f * 0.75f;
                         }
                     }
-                    if ((double)Main.player[i].position.Y + (double)Main.player[i].height * 0.5 > (double)projectile.position.Y + (double)projectile.height * 0.5)
+                    if (Main.player[i].position.Y + Main.player[i].height * 0.5 > projectile.position.Y + projectile.height * 0.5)
                     {
                         if (projectile.velocity.Y < 4f)
                         {

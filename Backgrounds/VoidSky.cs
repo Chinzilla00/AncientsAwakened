@@ -6,6 +6,7 @@ using Terraria.Graphics.Effects;
 using Terraria.Utilities;
 using BaseMod;
 using Terraria.ModLoader;
+using Terraria.Graphics.Shaders;
 //using AAMod.NPCs.Bosses.Infinity;
 
 namespace AAMod.Backgrounds
@@ -25,35 +26,12 @@ namespace AAMod.Backgrounds
             public bool IsAlive;
         }
 
-        public static Texture2D PlanetTexture;
-        public static Texture2D Echo;
-        public static Texture2D Asteroids1;
-        public static Texture2D Asteroids2;
-        public static Texture2D Asteroids3;
-        public static Texture2D BGTexture;
-        public static Texture2D LB;
-        public static Texture2D boltTexture;
-        public static Texture2D flashTexture;
-        public static Texture2D Stars;
-        public static Texture2D SkyTexture;
         private Bolt[] bolts;
         public bool Active;
         public int ticksUntilNextBolt;
         public float Intensity;
         public float Alpha = 0;
 
-        public override void OnLoad()
-        {
-            PlanetTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/VoidBH");
-            Asteroids1 = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Asteroids1");
-            Asteroids2 = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Asteroids2");
-            Asteroids3 = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Asteroids3");
-            Echo = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Echo");
-            LB = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/LB");
-            boltTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/VoidBolt");
-            flashTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/VoidFlash");
-            Stars = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Void_Starfield");
-        }
 
         public override void Update(GameTime gameTime)
         {
@@ -138,8 +116,20 @@ namespace AAMod.Backgrounds
             return new Color(newR, newG, newB, newA);
         }
 
+        readonly AAMod mod = AAMod.instance;
+
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
+            Texture2D PlanetTexture = mod.GetTexture("Backgrounds/VoidBH");
+            Texture2D Asteroids1 = mod.GetTexture("Backgrounds/Asteroids1");
+            Texture2D Asteroids2 = mod.GetTexture("Backgrounds/Asteroids2");
+            Texture2D Asteroids3 = mod.GetTexture("Backgrounds/Asteroids3");
+            Texture2D Echo = mod.GetTexture("Backgrounds/Echo");
+            Texture2D LB = mod.GetTexture("Backgrounds/LB");
+            Texture2D boltTexture = mod.GetTexture("Backgrounds/VoidBolt");
+            Texture2D flashTexture = mod.GetTexture("Backgrounds/VoidFlash");
+            Texture2D Stars = mod.GetTexture("Backgrounds/Void_Starfield");
+
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
                 var planetPos = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
@@ -233,6 +223,28 @@ namespace AAMod.Backgrounds
         public override bool IsActive()
         {
             return Active || Intensity > 0.001f;
+        }
+    }
+
+    public class VoidSkyData : ScreenShaderData
+    {
+        public VoidSkyData(string passName) : base(passName)
+        {
+        }
+
+        private void UpdateVoidSky()
+        {
+            AAPlayer modPlayer = Main.LocalPlayer.GetModPlayer<AAPlayer>();
+            if (AAWorld.voidTiles < 100)
+            {
+                return;
+            }
+        }
+
+        public override void Apply()
+        {
+            UpdateVoidSky();
+            base.Apply();
         }
     }
 }

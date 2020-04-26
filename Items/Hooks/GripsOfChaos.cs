@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using static Terraria.ModLoader.ModContent;
 
 namespace AAMod.Items.Hooks
 {
@@ -20,20 +19,20 @@ Blue pulls in/retracts quicker");
 		public override void SetDefaults() 
 		{
 			item.CloneDefaults(ItemID.SkeletronHand);
-			item.shoot = ProjectileType<GripRed>();
+			item.shoot = ModContent.ProjectileType<GripRed>();
 		}
 
 		public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
 		{
 			for (int l = 0; l < 1000; l++)
 			{
-				if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && Main.projectile[l].type == ProjectileType<GripRed>())
+				if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && Main.projectile[l].type == ModContent.ProjectileType<GripRed>())
 				{
-					item.shoot = ProjectileType<GripBlue>();
+					item.shoot = ModContent.ProjectileType<GripBlue>();
 				}
-				if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && Main.projectile[l].type == ProjectileType<GripBlue>())
+				if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && Main.projectile[l].type == ModContent.ProjectileType<GripBlue>())
 				{
-					item.shoot = ProjectileType<GripRed>();
+					item.shoot = ModContent.ProjectileType<GripRed>();
 				}
 			}
 			return true;
@@ -42,10 +41,10 @@ Blue pulls in/retracts quicker");
 		public override void AddRecipes()
 		{
 			ModRecipe recipe = new ModRecipe(mod);
-			recipe.AddIngredient(ItemType<Materials.DragonClaw>(), 5);
-			recipe.AddIngredient(ItemType<Materials.HydraClaw>(), 5);
-			recipe.AddIngredient(ItemType<Materials.IncineriteBar>(), 5);
-			recipe.AddIngredient(ItemType<Materials.AbyssiumBar>(), 5);
+			recipe.AddIngredient(ModContent.ItemType<Materials.DragonClaw>(), 5);
+			recipe.AddIngredient(ModContent.ItemType<Materials.HydraClaw>(), 5);
+			recipe.AddIngredient(ModContent.ItemType<Materials.IncineriteBar>(), 5);
+			recipe.AddIngredient(ModContent.ItemType<Materials.AbyssiumBar>(), 5);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this, 1);
 			recipe.AddRecipe();
@@ -70,7 +69,7 @@ Blue pulls in/retracts quicker");
 			int hooksOut = 0;
 			for (int l = 0; l < 1000; l++)
 			{
-				if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && (Main.projectile[l].type == ProjectileType<GripRed>() || Main.projectile[l].type == ProjectileType<GripBlue>()))
+				if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && (Main.projectile[l].type == ModContent.ProjectileType<GripRed>() || Main.projectile[l].type == ModContent.ProjectileType<GripBlue>()))
 				{
 					hooksOut++;
 				}
@@ -169,7 +168,7 @@ Blue pulls in/retracts quicker");
 			int hooksOut = 0;
 			for (int l = 0; l < 1000; l++)
 			{
-				if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && (Main.projectile[l].type == ProjectileType<GripRed>() || Main.projectile[l].type == ProjectileType<GripBlue>()))
+				if (Main.projectile[l].active && Main.projectile[l].owner == Main.myPlayer && (Main.projectile[l].type == ModContent.ProjectileType<GripRed>() || Main.projectile[l].type == ModContent.ProjectileType<GripBlue>()))
 				{
 					hooksOut++;
 				}

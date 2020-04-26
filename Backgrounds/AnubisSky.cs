@@ -13,8 +13,6 @@ namespace AAMod.Backgrounds
     {
         public bool Active;
         public float Intensity;
-        public static Texture2D BeamTexture;
-        public static Texture2D[] RuneTextures;
         private struct LightPillar
         {
             public Vector2 Position;
@@ -24,17 +22,7 @@ namespace AAMod.Backgrounds
 
         private LightPillar[] _pillars;
 
-        private UnifiedRandom _random = new UnifiedRandom();
-
-        public override void OnLoad()
-        {
-            BeamTexture = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/AnubisBeam");
-            RuneTextures = new Texture2D[8];
-            for (int i = 0; i < RuneTextures.Length; i++)
-            {
-                RuneTextures[i] = ModLoader.GetMod("AAMod").GetTexture("Backgrounds/Runes/Rune" + i);
-            }
-        }
+        private readonly UnifiedRandom _random = new UnifiedRandom();
 
         public override void Update(GameTime gameTime)
         {
@@ -54,8 +42,16 @@ namespace AAMod.Backgrounds
             return new Color(Vector4.Lerp(value, Vector4.One, Intensity * 0.5f));
         }
 
+        readonly AAMod mod = AAMod.instance;
+
         public override void Draw(SpriteBatch spriteBatch, float minDepth, float maxDepth)
         {
+            Texture2D BeamTexture = mod.GetTexture("Backgrounds/AnubisBeam");
+            Texture2D[] RuneTextures = new Texture2D[8];
+            for (int i = 0; i < RuneTextures.Length; i++)
+            {
+                RuneTextures[i] = mod.GetTexture("Backgrounds/Runes/Rune" + i);
+            }
             if (maxDepth >= 3.40282347E+38f && minDepth < 3.40282347E+38f)
             {
                 spriteBatch.Draw(Main.blackTileTexture, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Black * Intensity);
@@ -152,7 +148,7 @@ namespace AAMod.Backgrounds
 
         private void UpdateAnuIndex()
         {
-            int anubis = ModLoader.GetMod("AAMod").NPCType("ForsakenAnubis");
+            int anubis = AAMod.instance.NPCType("ForsakenAnubis");
             if (anuIndex >= 0 && Main.npc[anuIndex].active && Main.npc[anuIndex].type == anubis)
             {
                 return;

@@ -14,8 +14,8 @@ namespace AAMod.Backgrounds
     public class FogOverlay : Overlay
     {
         private readonly Ref<Texture2D> texture;
-        private ScreenShaderData shader;
-        Mod mod = AAMod.instance;
+        private readonly ScreenShaderData shader;
+        readonly Mod mod = AAMod.instance;
 
         public int fogOffsetX = 0;
         public float fadeOpacity = 0f;

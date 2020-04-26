@@ -132,6 +132,6 @@ namespace AAMod
 		private const int MZ = 0;
 		private int inext;
 		private int inextp;
-		private int[] SeedArray = new int[56];
+		private readonly int[] SeedArray = new int[56];
     }
 }

@@ -5,7 +5,7 @@ namespace AAMod.Tiles.Trees
 {
     class OroborosTree : ModTree
     {
-        private Mod mod => ModLoader.GetMod("AAMod");
+        private Mod mod => AAMod.instance;
 
         public override int DropWood()
         {

@@ -45,7 +45,7 @@ Right click to detonate fireballs");
         }
 
         
-        private List<int> AshRainFire = new List<int>();
+        private readonly List<int> AshRainFire = new List<int>();
         public override bool CanUseItem(Player player)
         {
             if(player.altFunctionUse != 2)

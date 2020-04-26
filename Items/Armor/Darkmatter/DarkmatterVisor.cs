@@ -132,7 +132,7 @@ Dark, yet still barely visible");
         {
 
             Player drawPlayer = drawInfo.drawPlayer;
-            Mod mod = ModLoader.GetMod("AAMod");
+            Mod mod = AAMod.instance;
             Texture2D texture = mod.GetTexture("Items/Armor/Darkmatter/DarkPortal");
             if(drawPlayer.GetModPlayer<VisorEffects>().sunPortal)
             {
