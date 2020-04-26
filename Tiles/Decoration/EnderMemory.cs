@@ -37,7 +37,7 @@ namespace AAMod.Tiles.Decoration
 
         public override bool NewRightClick(int i, int j)
         {
-            BaseUtility.Chat(Lang.TilesInfo("EnderMemoryInfo") , Color.Goldenrod);\
+            BaseUtility.Chat(Lang.TilesInfo("EnderMemoryInfo"), Color.Goldenrod);
             return true;
         }
 
