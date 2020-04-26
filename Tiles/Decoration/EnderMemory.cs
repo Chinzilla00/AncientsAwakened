@@ -37,7 +37,7 @@ namespace AAMod.Tiles.Decoration
 
         public override bool NewRightClick(int i, int j)
         {
-            BaseUtility.Chat("In memory of a long lost friend still in our hearts.", Color.Goldenrod);
+            BaseUtility.Chat(Lang.TilesInfo("EnderMemoryInfo"), Color.Goldenrod);
             return true;
         }
 

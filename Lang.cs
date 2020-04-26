@@ -5243,6 +5243,10 @@ Fishy";
                         return "出生点移除!";
                         case "Spawnpointset":
                         return "出生点设置!";
+
+                        case "EnderMemoryInfo": 
+                        return "用于纪念我们心中的一位早已逝去的朋友"; 
+
                         case "DracoAltar1":
                         return "臭小子. 龙不睡觉吗? 明天再来. ";
                         case "DracoAltar2":
@@ -5281,6 +5285,10 @@ Fishy";
                         return "Точка возрождения задан!!";
                         case "Spawnpointset":
                         return "Точка возраждения задана!";
+
+                        case "EnderMemoryInfo": 
+                        return "В память о нашем друге.";
+
                         case "DracoAltar1":
                         return "Боже, сопляк. Может дракон поспать немного? Возвращайся утром. ";
                         case "DracoAltar2":
@@ -5319,6 +5327,11 @@ Fishy";
                         return "Spawn point removed!";
                         case "Spawnpointset":
                         return "Spawn point set!";
+
+
+                        case "EnderMemoryInfo": 
+                        return "In memory of a long lost friend still in our hearts."; 
+
                         case "DracoAltar1":
                         return "Geez, kid. Can't a dragon get a little shut-eye? Come back in the morning.";
                         case "DracoAltar2":
