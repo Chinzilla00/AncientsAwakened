@@ -7,7 +7,7 @@ namespace AAMod.Items.Vanity.VoidEye
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Void Eye Bag");
+            DisplayName.SetDefault("Void Gate");
             Tooltip.SetDefault(@"<right> to open
 'All the essentials for impersonating the Dark Watcher!'");
         }
