@@ -30,29 +30,35 @@ Fargo's Mutant Mod support.
 
 A unique soundtrack.
 
-~Update 1.0.0.5 Changelog~
+~Update 1.0.1.1 Changelog~
 
-1. fixed the Broken Code only being able to be used one time.
+1. Fixed the grips dragging you underground
 
-2. fixed Hydra's Fury disappearing even with Thorium enabled.
+2. Fixed the wonky frames of the protocol unit
 
-3. fixed the ore staff's ores on the ground spinning continuously.
+3. Fixed Rajah's dialogue misspellings
 
-4. HARD nerf to the FA stuffs to make them suitable for early post-ML.
+4. Optimized how skies are loaded so the mod shouldnt run out of memory as often when reloading
 
-5. Tweaked WindFury to make it autouse.
+5. Fixed issues involving Mushroom Monarch and Feudal Fungus
 
-6. Fixed the altars crashing worldgen in AA (thanks Ozzatron)
+6. Nerfed Greed's segment damage resistance.
 
-6. Fixed SRaj leaving damages the player
+7. Increased Greed's turning speed to prevent it from moving far away from you and despawning.
 
-7. Nerfed the Archwitch's Scepter
+8. fixed an isue with Truffle Toad.
 
-8. Devs with 2 vanities &/or weapons can now interchange the two at a Loom/Ancient Manipulator respectively
+9. Increase the Equinox Worms' segments defense.
 
-9. Doubled Mushroom Monarch's damage
+10. Fixed damage with Calamity installed being too high.
 
-10. A new structure underground commemorating an old friend.
+11. increase the Lucky Cracker's buff time.
+
+12. Tweaked Athena's AI & nerfed her proj damage.
+
+13. Dallin's bag now drops the Shroomite Hover Board as his dev wings.
+
+14. Added the Russian Translation.
 
 ~Update 1.0 Changelog~
 
