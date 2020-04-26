@@ -1,14 +1,15 @@
 using Terraria;
 using Terraria.ID;
+using Terraria.ModLoader;
 
-namespace AAMod.Items.Vanity.Dallin
+namespace AAMod.Items.Vanity.Tails
 {
-    public class FezLordsBag : BaseAAItem
+    public class TailsToolbox : BaseAAItem
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Fez Lord's Bag");
-            Tooltip.SetDefault("<right> to open \n'All the essentials for impersonating the Fez Lord!'");
+            DisplayName.SetDefault("Tails' Toolbox");
+            Tooltip.SetDefault("<right> to open \n'All the essentials for impersonating the Fox Wonder!'");
         }
 
         public override void SetDefaults()
@@ -27,15 +28,13 @@ namespace AAMod.Items.Vanity.Dallin
 
  		public override void RightClick(Player player)
 		{
-			player.QuickSpawnItem(ItemID.Fez);	
-			player.QuickSpawnItem(ItemID.TheDoctorsShirt);		
-			player.QuickSpawnItem(ItemID.TheDoctorsPants);
-			player.QuickSpawnItem(ItemID.ReflectiveDye, 3);
+			player.QuickSpawnItem(ModContent.ItemType<TailsHead>());
+            player.QuickSpawnItem(ModContent.ItemType<TailsBody>());
+            player.QuickSpawnItem(ModContent.ItemType<TailsLegs>());
             if (Main.hardMode)
             {
-                player.QuickSpawnItem(ItemID.Hoverboard);
+                player.QuickSpawnItem(ItemID.Jetpack);
             }
-            player.QuickSpawnItem(mod.ItemType("K9Collar"));
         }
     }
 }

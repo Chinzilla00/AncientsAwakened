@@ -622,10 +622,10 @@ namespace AAMod
 
             if (shiniesIndex1 > -1)
             {
-                /*tasks.Insert(ChaosIndex + 2, new PassLegacy("The Pit", delegate (GenerationProgress progress)
+                tasks.Insert(ChaosIndex + 2, new PassLegacy("The Pit", delegate (GenerationProgress progress)
                 {
-                    ThePit(progress);
-                }));*/
+                    ThePitTeaser(progress);
+                }));
             }
             
             int shiniesIndex2 = tasks.FindIndex(genpass => genpass.Name.Equals("Final Cleanup"));
@@ -1616,6 +1616,15 @@ namespace AAMod
             Pit biome = new Pit();
             biome.Place(origin, WorldGen.structures);
         }
+
+        private void ThePitTeaser(GenerationProgress progress)
+        {
+            progress.Message = "Sinking the Pit";
+            Point origin = new Point(Main.maxTilesX - 500, Main.maxTilesY - 200);
+            PitTeaser biome = new PitTeaser();
+            biome.Place(origin, WorldGen.structures);
+        }
+
 
         public static int GetWorldSize()
         {

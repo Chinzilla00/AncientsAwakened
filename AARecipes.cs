@@ -1083,6 +1083,11 @@ namespace AAMod
                 AAMod.instance.ItemType("AnarchyBag"),
                 AAMod.instance.ItemType("MaskBag"),
                 AAMod.instance.ItemType("TopHat"),
+                AAMod.instance.ItemType("BegBag"),
+                AAMod.instance.ItemType("CharlieBag"),
+                AAMod.instance.ItemType("MikBag"),
+                AAMod.instance.ItemType("TailsToolbox"),
+                AAMod.instance.ItemType("ShoxBag"),
                 AAMod.instance.ItemType("ApawnEgg")
             });
             RecipeGroup.RegisterGroup("AAMod:DevBag", group23);

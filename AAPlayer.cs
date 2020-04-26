@@ -2665,9 +2665,7 @@ namespace AAMod
                         break;
 
                     case 2:
-                        player.QuickSpawnItem(mod.ItemType("PonyMask"));
-                        player.QuickSpawnItem(mod.ItemType("PonyBody"));
-                        player.QuickSpawnItem(mod.ItemType("PonyHoofs"));
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Beg.BegBag>());
 
                         if (dropType >= 1)
                         {
@@ -2683,22 +2681,13 @@ namespace AAMod
                         break;
 
                     case 3:
-                        player.QuickSpawnItem(mod.ItemType("GlitchesHat"));
-                        player.QuickSpawnItem(mod.ItemType("GlitchesBreastplate"));
-                        player.QuickSpawnItem(mod.ItemType("GlitchesGreaves"));
-
-                        if (dropType >= 3)
-                        {
-                            player.QuickSpawnItem(mod.ItemType("UmbreonSP" + addonEX));
-                        }
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Maskano.MaskBag>());
 
                         spawnedDevItems = true;
                         break;
 
                     case 4:
-                        player.QuickSpawnItem(mod.ItemType("CharlieCowl"));
-                        player.QuickSpawnItem(mod.ItemType("CharlieCloak"));
-                        player.QuickSpawnItem(mod.ItemType("CharlieBoots"));
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Charlie.CharlieBag>());
 
                         if (dropType >= 3)
                         {
@@ -2811,7 +2800,7 @@ namespace AAMod
                         break;
 
                     case 14:
-                        player.QuickSpawnItem(mod.ItemType("MoonBag"));
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Moon.MoonBag>());
 
                         if (dropType >= 3)
                         {
@@ -2822,7 +2811,7 @@ namespace AAMod
                         break;
 
                     case 15:
-                        player.QuickSpawnItem(mod.ItemType("GroviteSeaChest"));
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Grox.GroviteSeaChest>());
 
                         if (dropType >= 3)
                         {
@@ -2850,7 +2839,7 @@ namespace AAMod
                         break;
 
                     case 17:
-                        player.QuickSpawnItem(mod.ItemType("GibsBag"));
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Gibs.GibsBag>());
 
                         if (dropType >= 3)
                         {
@@ -2879,9 +2868,7 @@ namespace AAMod
                         break;
 
                     case 20:
-                        player.QuickSpawnItem(mod.ItemType("MikpinWig"));
-                        player.QuickSpawnItem(mod.ItemType("MikpinCloak"));
-                        player.QuickSpawnItem(mod.ItemType("MikpinPants"));
+                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Mikpin.MikBag>());
 
                         spawnedDevItems = true;
                         break;
@@ -2968,7 +2955,13 @@ namespace AAMod
                         player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Anarchy.AnarchyBag>());
                         break;
                     case 31:
-                        player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Maskano.MaskBag>());
+                        if (dropType >= 3)
+                        {
+                            player.QuickSpawnItem(mod.ItemType("UmbreonSP" + addonEX));
+                        }
+                        break;
+                    case 32:
+                            player.QuickSpawnItem(ModContent.ItemType<Items.Vanity.Shox.ShoxBag>());
                         break;
 
                     default:

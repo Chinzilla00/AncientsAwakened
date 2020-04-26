@@ -124,6 +124,14 @@ namespace AAMod.NPCs.TownNPCs
 				shop.item[nextSlot].shopCustomPrice = new int?(10);
 				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
 				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Shox.ShoxBag>());
+				shop.item[nextSlot].shopCustomPrice = new int?(10);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Beg.BegBag>());
+				shop.item[nextSlot].shopCustomPrice = new int?(10);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
+				nextSlot++;
 
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.CC.CCBox>());
 				shop.item[nextSlot].shopCustomPrice = new int?(15);
@@ -153,6 +161,10 @@ namespace AAMod.NPCs.TownNPCs
 				shop.item[nextSlot].shopCustomPrice = new int?(15);
 				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
 				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Tails.TailsToolbox>());
+				shop.item[nextSlot].shopCustomPrice = new int?(15);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
+				nextSlot++;
 
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Alphakip.AlphaBag>());
 				shop.item[nextSlot].shopCustomPrice = new int?(25);
@@ -171,6 +183,10 @@ namespace AAMod.NPCs.TownNPCs
 				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
 				nextSlot++;
 				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Gibs.GibsBag>());
+				shop.item[nextSlot].shopCustomPrice = new int?(25);
+				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
+				nextSlot++;
+				shop.item[nextSlot].SetDefaults(ModContent.ItemType<Items.Vanity.Charlie.CharlieBag>());
 				shop.item[nextSlot].shopCustomPrice = new int?(25);
 				shop.item[nextSlot].shopSpecialCurrency = AAMod.Coin;
 				nextSlot++;
