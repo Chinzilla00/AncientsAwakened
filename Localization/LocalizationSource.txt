@@ -188,6 +188,9 @@ BuffDescription.Irradiated=Your health is burning away
 BuffName.K9=K9 Unit
 BuffDescription.K9=Bork.
 
+BuffName.Lunamini=Lunamini
+BuffDescription.Lunamini=A small lunar bee follows you
+
 BuffName.LungMinion=Ancient Lung
 BuffDescription.LungMinion=Summons an ancient dragon to fight for you
 
@@ -321,6 +324,9 @@ BuffDescription.YamataGravity='YOU AIN'T GETTIN' AWAY FROM ME, PUNK!'
 
 BuffName.Yanked=Yanked
 BuffDescription.Yanked='YOU AREN'T GOING ANYWHERE, YOU LITTLE SISSY!'
+
+BuffName.ZeroBab=ZER0 lite
+BuffDescription.ZeroBab=LIFE DETECTION SYSTEMS ENGAGED
 
 
 // AAMod.Items.Armor.Assassin
@@ -456,7 +462,7 @@ ItemName.DemonGauntlet=Demon Gauntlet
 ItemTooltip.DemonGauntlet=Enemies are more likely to target you\n14% Increased Melee Damage\n10% Increased melee speed\nIncreased Melee Knockback\nMelee Attacks Inflict a different debuff depending on your world evil\nInflicts Ichor in Crimson Worlds/Cursed Flame in Corruption worlds
 
 ItemName.DragonsGuard=Dragon's Guard
-ItemTooltip.DragonsGuard=Enemies that you strike are set ablaze
+ItemTooltip.DragonsGuard=Enemies that strike you are set ablaze
 
 ItemName.DragonstrideBoots=Dragonstride Boots
 ItemTooltip.DragonstrideBoots=Allows flight, super fast running, and extra mobility on ice\n12% increased movement speed\nProvides the ability to walk on water and lava\nGrants immunity to fire blocks and 10 seconds of immunity to lava\nGrants the ability to swim\nAllows the ability to climb walls
@@ -1201,6 +1207,9 @@ ItemName.MiregronBanner=
 ItemName.MireSandSharkBanner=
 
 ===UNKNWN===
+ItemName.MireSkulkerBanner=
+
+===UNKNWN===
 ItemName.MireSlimeBanner=
 
 ===UNKNWN===
@@ -1238,6 +1247,9 @@ ItemName.PuritySquidBanner=
 
 ===UNKNWN===
 ItemName.PurityWeaverBanner=
+
+===UNKNWN===
+ItemName.ScavengerBanner=
 
 ===UNKNWN===
 ItemName.SearcherBanner=
@@ -1410,7 +1422,7 @@ ItemName.GripsBox=Grips of Chaos Music Box
 ItemTooltip.GripsBox=Plays 'Twin Terror' by Spectral Aves
 
 ItemName.HoardBox=Hoard Music Box
-ItemTooltip.HoardBox=Plays 'Cavern of Coveted Treasures' by OmegaFerretMusic
+ItemTooltip.HoardBox=Plays 'Cove' by Universe
 
 ItemName.HydraBox=Hydra Music Box
 ItemTooltip.HydraBox=Plays 'Abyssal Wrath' by Spectral Aves
@@ -1422,7 +1434,7 @@ ItemName.InfernoNightBox=Inferno Night Music Box
 ItemTooltip.InfernoNightBox=Plays 'Burnt to Ashes' by Quicksilvur
 
 ItemName.InfernoUBox=Inferno Underground Music Box
-ItemTooltip.InfernoUBox=Plays 'Smolder' by OmegaFerretMusic
+ItemTooltip.InfernoUBox=Plays 'Superheated' by Quicksilvur
 
 ItemName.LakeBox=Lake of the Rising Moon Music Box
 ItemTooltip.LakeBox=Plays 'Lake of Souls' by Rockwizard
@@ -1446,10 +1458,10 @@ ItemName.RajahBox=Rajah Rabbit Music Box
 ItemTooltip.RajahBox=Plays 'JUSTICE' by Spectral Aves
 
 ItemName.SagBox=Sagittarius Music Box
-ItemTooltip.SagBox=Plays 'Zodiac' by OmegaFerretMusic
+ItemTooltip.SagBox=Plays 'Event Horizon' by SpectralAves
 
 ItemName.SDBox=Sleeping Dragon Music Box
-ItemTooltip.SDBox=Plays 'Sleeping Dragon' by OmegaFerretMusic
+ItemTooltip.SDBox=Plays 'Sleeping Giants' by LordCakeSpy
 
 ItemName.SerpentBox=Subzero Serpent Music Box
 ItemTooltip.SerpentBox=Plays 'Burrowing Down' by Charlie Debnam
@@ -1467,7 +1479,7 @@ ItemName.SistersBox=Sisters of Discord Music Box
 ItemTooltip.SistersBox=Plays 'Sisters of Anarchy' by Shadow Figure
 
 ItemName.StarBox=Celestial Stars Box
-ItemTooltip.StarBox=Plays 'Interstellar' by OmegaFerretMusic
+ItemTooltip.StarBox=Plays 'Star's Serenade' by Charlie Debnam
 
 ItemName.TerrariumBox=Terrarium Music Box
 ItemTooltip.TerrariumBox=Plays 'Heart of the World' by Quicksilvur feat Charlie Debnam
@@ -1476,7 +1488,7 @@ ItemName.ToadBox=Truffle Toad Music Box
 ItemTooltip.ToadBox=Plays 'TODESTOOL' by Spectral Aves
 
 ItemName.VoidBox=Void Music Box
-ItemTooltip.VoidBox=Plays 'What Once Was' by OmegaFerretMusic
+ItemTooltip.VoidBox=Plays 'Gaze into Darkness' by Charlie Debnam
 
 ItemName.YamataABox=Yamata Awakened Music Box
 ItemTooltip.YamataABox=Plays 'Abyssal Nightmare' by Universe
@@ -1496,6 +1508,8 @@ ItemTooltip.ZeroBox=Plays 'Entropy's Envoy' by Charlie Debnam
 
 ItemName.AbyssiumBrick=Abyssium Brick
 
+ItemName.CovetiteBrick=Covetite Brick
+
 ItemName.DarkmatterBrick=Darkmatter Brick
 
 ItemName.DaybreakBrick=Daybreak Brick
@@ -1514,6 +1528,52 @@ ItemName.IncineriteBrick=Incinerite Brick
 ItemName.RadiumBrick=Radium Brick
 
 ItemName.RelicBrick=Relic Brick
+
+ItemName.SkycrystalBrick=Skycrystal Brick
+
+ItemName.SkymarbleBrick=Skymarble Brick
+
+
+// AAMod.Items.Blocks.Doom
+
+
+ItemName.DoomBathtub=Doom Bathtub
+
+ItemName.DoomBed=Doom Bed
+
+ItemName.DoomBookshelf=Doom Bookcase
+
+ItemName.DoomCandelabra=Doom Candelabra
+
+ItemName.DoomCandle=Doom Candle
+
+ItemName.DoomChair=Doom Chair
+
+ItemName.DoomChandelier=Doom Chandelier
+
+ItemName.DoomChest=Doom Chest
+
+ItemName.DoomClock=Countdown Clock
+
+ItemName.DoomCouch=Doom Couch
+
+ItemName.DoomDoor=Doom Door
+
+ItemName.DoomDresser=Doom Dresser
+
+ItemName.DoomLamp=Doom Lamp
+
+ItemName.DoomLantern=Doom Lantern
+
+ItemName.DoomPiano=Doom Piano
+
+ItemName.DoomPlatform=Doom Platform
+
+ItemName.DoomSink=Doom Sink
+
+ItemName.DoomTable=Doom Table
+
+ItemName.DoomWorkbench=Doom Workbench
 
 
 // AAMod.Items.Blocks
@@ -1567,6 +1627,9 @@ ItemName.DragonfireTorch=Dragonfire Torch
 
 ItemName.DynaskullOre=Dynaskull Fossil
 ItemTooltip.DynaskullOre=The energy of millions of years pulsates through this ancient fossil
+
+ItemName.EnderMemory=Eternal Memory
+ItemTooltip.EnderMemory=An immense statue made to commemorate somebody\nA somber engraving is etched into the base.
 
 ItemName.EventideAbyssiumOre=Eventide Abyssium Ore
 ItemTooltip.EventideAbyssiumOre=It's cold and wet, like an evening in a swampy marsh
@@ -1968,9 +2031,6 @@ ItemTooltip.SentryOfTheEye=Summons an eye sentry
 // AAMod.Items.Boss.Athena
 
 
-ItemName.AthenaABag=Treasure Bag
-ItemTooltip.AthenaABag={$CommonItemTooltip.RightClickToOpen}
-
 ItemName.AthenaBag=Treasure Bag
 ItemTooltip.AthenaBag={$CommonItemTooltip.RightClickToOpen}
 
@@ -1979,11 +2039,28 @@ ItemName.AthenaTrophy=Athena Trophy
 ItemName.DivineWindCharm=Divine Wind Stone
 ItemTooltip.DivineWindCharm=Summons an owl rune sentry
 
-ItemName.GaleForce=Gale Force
-
 ItemName.GaleOfWings=Gale of Wings
 
 ItemName.GoddessFeather=Goddess Feather
+
+ItemName.RazorwindLongbow=Razorwind Longbow
+ItemTooltip.RazorwindLongbow=Replaces wooden arrows with wind arrows with high knockback
+
+ItemName.SeraphHarp=Seraph Harp
+ItemTooltip.SeraphHarp=Summons a seraph to fight for you\nSeraph is boosted by minion damage
+
+ItemName.SkycutterKopis=Skycutter Kopis
+
+
+// AAMod.Items.Boss.Athena.Olympian
+
+
+ItemName.AthenaABag=Treasure Bag
+ItemTooltip.AthenaABag={$CommonItemTooltip.RightClickToOpen}
+
+ItemName.AthenaATrophy=Olympian Athena Trophy
+
+ItemName.GaleForce=Gale Force
 
 ItemName.GoddessHarp=Goddess Harp
 ItemTooltip.GoddessHarp=Summons the seraph queen herself to fight with you\nAthena is boosted by minion damage
@@ -1994,16 +2071,14 @@ ItemTooltip.HurricaneStone=Summons a charged owl rune sentry
 ===UNKNWN===
 ItemName.Olympia=
 
-ItemName.RazorwindLongbow=Razorwind Longbow
-ItemTooltip.RazorwindLongbow=Replaces wooden arrows with wind arrows with high knockback
-
-ItemName.SeraphHarp=Seraph Harp
-ItemTooltip.SeraphHarp=Summons a seraph to fight for you\nSeraph is boosted by minion damage
-
-ItemName.SkycutterKopis=Skycutter Kopis
+ItemName.SkyCrystal=Sky Crystal
+ItemTooltip.SkyCrystal=A beautiful crystal, said to contain a piece of the sky
 
 ItemName.StarChart=Star Chart
 ItemTooltip.StarChart=A map of the solar system up to this planet.
+
+ItemName.StormSphere=Storm Sphere
+ItemTooltip.StormSphere=A supercharged crystal sphere of Varian Energy
 
 ItemName.Windfury=Windfury
 ItemTooltip.Windfury=Replaces wooden arrows with gale arrows with high knockback and infinite piercing
@@ -2093,11 +2168,12 @@ ItemName.NCTrophy=Nightcrawler Trophy
 ItemName.RadiantStar=Radiant Star
 ItemTooltip.RadiantStar=Gives immensely increased stats during the day\n'It's Shiny'
 
+ItemName.StarIdol=Blessing of the Stars
+ItemTooltip.StarIdol=It sparkles like the stars in the sky\nCan only be used if there arent many radium stars in the world.
+
 
 // AAMod.Items.Boss.Greed
 
-
-ItemName.CovetiteCoin=Covetite Coin
 
 ItemName.DesireCharm=Charm of Desire
 ItemTooltip.DesireCharm=Grabbing coins boosts your damage by 1% for 4 seconds\nGrabbing another coin increases the damage by 1% and resets the countdown\nCaps out at 20% damage
@@ -2126,6 +2202,12 @@ ItemTooltip.StoneSlammer=Hitting an airborne always crits and sends the target f
 // AAMod.Items.Boss.Greed.WKG
 
 
+ItemName.CovetiteBar=Covetite Bar
+ItemTooltip.CovetiteBar=It's somehow shiny but not at the same time. How did greed fall for this?
+
+ItemName.CovetiteOre=Covetite Ore
+ItemTooltip.CovetiteOre=Only a fool would want this. Makes sense why greed has it.
+
 ItemName.DesireTalisman=Talisman of Desire
 ItemTooltip.DesireTalisman=Grabbing coins boosts your damage by 1% for 4 seconds\nGrabbing another coin increases the damage by 1% and resets the countdown\nCaps out at 20% damage\nIncreases coin pickup range \nShops have lower prices\nHitting enemies will sometimes drop extra coins
 
@@ -2139,7 +2221,10 @@ ItemName.GreedABag=Treasure Bag
 ItemTooltip.GreedABag={$CommonItemTooltip.RightClickToOpen}
 
 ItemName.OreCannon=Ore Cannon
-ItemTooltip.OreCannon=Uses Ore as Ammunition\nCertain ores have special effects when shot
+ItemTooltip.OreCannon=Uses Some Ores as Ammunition\nCertain ores have special effects when shot
+
+ItemName.OreCannonEX=Ultimate Ore Cannon
+ItemTooltip.OreCannonEX=Uses Any Ore as Ammunition\nCertain ores have special effects when shot\nLegendary Weapon\nOreCannonEX
 
 ItemName.OreStaff=Ore Staff
 
@@ -2601,7 +2686,7 @@ ItemName.InterestingClaw=Interesting Looking Claw
 ItemTooltip.InterestingClaw=It's oddly Clammy\nCan only be used at night
 
 ItemName.IntimidatingMushroom=Intimidating Looking Mushroom
-ItemTooltip.IntimidatingMushroom=Summons the Mushroom Monarch\nCan only be used during the day
+ItemTooltip.IntimidatingMushroom=Summons the Mushroom Monarch
 
 ItemName.Lifescanner=Lifescanner
 ItemTooltip.Lifescanner=Summons Sagittarius\nCan only be used in the Void
@@ -2632,6 +2717,16 @@ ItemTooltip.ZeroRune=ACTIVATES THE GR0UND ZER0 C0DE F0R THE NEAREST ZER0 UNIT\nN
 
 ItemName.ZeroTesseract=Doomsday Tesseract
 ItemTooltip.ZeroTesseract=DESCRIPTI0NHERE\nUNSTABLE. C0NTAINS C0DE T0 ACTIVATE THE BRINGER 0F DEATH\nN0N-C0NSUMABLE
+
+
+// AAMod.Items.BossSummons.Swarm
+
+
+ItemName.GlowingMasshroom=Glowing Masshroom
+ItemTooltip.GlowingMasshroom=Summons a lot of Feudal Fungi\nCan only be used in glowing mushroom biomes
+
+ItemName.Masshroom=Masshroom
+ItemTooltip.Masshroom=Summons a lot of Mushroom Monarchs
 
 
 // AAMod.Items.Currency
@@ -3016,6 +3111,8 @@ ItemTooltip.Z=Spreads the Void
 
 ItemName.DragonsGrip=Dragon's Grip
 
+ItemName.GripsOfChaos=Руки Хаоса
+ItemTooltip.GripsOfChaos=Стреляет 2 крюками, в зависимости от того, какой уже выпущенt\nКрасный длиннее\nСиний притягивается быстрее
 
 // AAMod.Items
 
@@ -3611,6 +3708,9 @@ ItemTooltip.GlowmossBall=Summons a glowmoss ball\nDon�t ask what makes it glow
 ItemName.K9Collar=K9 Collar
 ItemTooltip.K9Collar=Summons a robotic buddy
 
+ItemName.LunaminiJar=Moon Bee in a Jar
+ItemTooltip.LunaminiJar=Summons a Lunamini
+
 ItemName.MudkipBall=Mud Fish Ball
 ItemTooltip.MudkipBall=It seems to have something in it already
 
@@ -3625,6 +3725,9 @@ ItemTooltip.RoyalStar=Summons a very pretty kitty
 
 ItemName.Seashroom=Seashroom
 ItemTooltip.Seashroom=It smells like fish
+
+ItemName.ZeroCore=Zero Core
+ItemTooltip.ZeroCore=Summons a creature-detecting ZER0 lite
 
 
 // AAMod.Items.Potions
@@ -4243,11 +4346,30 @@ ItemName.ShinyKipronWings=Shiny Kipron Wings
 ItemTooltip.ShinyKipronWings=Allows flight and slow fall\nHold down and jump to hover for an extended period of time\n'Great for impersonating Ancients Awakened Devs!'
 
 
+// AAMod.Items.Vanity.Anarchy
+
+
+ItemName.AnarchyBag=Pristine Bag
+ItemTooltip.AnarchyBag=<right> to open\n'All the essentials for impersonating Anarchy! No really it's just Anarchy.'\nFor the record, Anarchy sprited this himself.
+
+ItemName.PristineChestplate=Pristine Chestplate
+ItemTooltip.PristineChestplate='Great for impersonating Ancients Awakened Contributors!'\nFor the record, Anarchy sprited this himself.
+
+ItemName.PristineHelmet=Pristine Helmet
+ItemTooltip.PristineHelmet='Great for impersonating Ancients Awakened Contributors!'\nFor the record, Anarchy sprited this himself.
+
+ItemName.PristineLeggings=Pristine Leggings
+ItemTooltip.PristineLeggings='Great for impersonating Ancients Awakened Contributors!'\nFor the record, Anarchy sprited this himself.
+
+
 // AAMod.Items.Vanity.Apawn
 
 
 ItemName.ApawnBoots=Apawn's Greaves
 ItemTooltip.ApawnBoots='Great for impersonating Ancients Awakened Testers!'
+
+ItemName.ApawnEgg=Surprise Egg
+ItemTooltip.ApawnEgg=<right> to open \n'Its a plastic egg. A REEEEEEEALLY big one.!'
 
 ItemName.ApawnHelm=Apawn's Visor
 ItemTooltip.ApawnHelm='Great for impersonating Ancients Awakened Testers!'
@@ -4337,13 +4459,13 @@ ItemName.InvokerBag=Pup Cerberus' Kennel
 ItemTooltip.InvokerBag=<right> to open \n'All the essentials for impersonating the Invoker of Pups!'
 
 ItemName.InvokerHood=Invoker Hood
-ItemTooltip.InvokerHood=The enchanted hood of Aleister the 'Mega Therion'\nGreat for impersonating Awakened Developers!
+ItemTooltip.InvokerHood=The enchanted hood of Aleister the 'Mega Therion'\nGreat for impersonating Awakened Devs!
 
 ItemName.InvokerPants=Invoker Boots
-ItemTooltip.InvokerPants=The enchanted boots of Aleister the 'Mega Therion'\nGreat for impersonating Awakened Developers!
+ItemTooltip.InvokerPants=The enchanted boots of Aleister the 'Mega Therion'\nGreat for impersonating Awakened Devs!
 
 ItemName.InvokerRobe=Invoker Robe
-ItemTooltip.InvokerRobe=The enchanted robe of Aleister the 'Mega Therion'\nGreat for impersonating Awakened Developers!
+ItemTooltip.InvokerRobe=The enchanted robe of Aleister the 'Mega Therion'\nGreat for impersonating Awakened Devs!
 
 
 // AAMod.Items.Vanity.Charlie
@@ -4436,18 +4558,21 @@ ItemTooltip.FargoPants=soonTM\n'Great for impersonating Ancients Awakened Devs!'
 ItemName.FargoSuit=Dapper Squirrel Suit
 ItemTooltip.FargoSuit=soonTM\n'Great for impersonating Ancients Awakened Devs!'
 
+ItemName.TopHat=Squirrelly Top Hat
+ItemTooltip.TopHat=<right> to open \n'All the essentials for impersonating the Meme Squirrel!'
+
 
 // AAMod.Items.Vanity.Fazer
 
 
 ItemName.SammyPants=Fluffy Fox Pants
-ItemTooltip.SammyPants='Great for impersonating Ancients Awakened Devs!'
+ItemTooltip.SammyPants='Great for impersonating Ancients Awakened Contributors!'
 
 ItemName.SammySweater=Fluffy Fox Sweater
 ItemTooltip.SammySweater='Great for impersonating Ancients Awakened Contributors!'
 
 ItemName.SammyWig=Fluffy Fox Wig
-ItemTooltip.SammyWig='Great for impersonating Ancients Awakened Devs!'
+ItemTooltip.SammyWig='Great for impersonating Ancients Awakened Contributors!'
 
 ItemName.WetFurrbag=Wet Furrbag
 ItemTooltip.WetFurrbag=<right> to open \n'All the essentials for impersonating the Funloving Fox!'
@@ -4456,8 +4581,8 @@ ItemTooltip.WetFurrbag=<right> to open \n'All the essentials for impersonating t
 // AAMod.Items.Vanity.Gibs
 
 
-ItemName.GibsBag=Angry Revnant's Sarcophagus
-ItemTooltip.GibsBag=<right> to open \n'All the essentials for impersonating the Raging Revnant!'
+ItemName.GibsBag=Angry Revenant's Sarcophagus
+ItemTooltip.GibsBag=<right> to open \n'All the essentials for impersonating the Raging Revenant!'
 
 ItemName.GibsJet=Revenant's Jet Booster
 ItemTooltip.GibsJet=Allows flight and slow fall\nHold down and jump to hover for an extended period of time\n'Great for impersonating Ancients Awakened Developers!'
@@ -4536,6 +4661,8 @@ ItemName.AkumaMask=Akuma Mask
 
 ItemName.AnubisMask=Anubis Mask
 
+ItemName.AthenaAMask=Olympian Athena Mask
+
 ItemName.AthenaMask=Athena Mask
 
 ItemName.BroodmotherMask=Broodmother Mask
@@ -4585,6 +4712,22 @@ ItemName.YamataMask=Yamata Mask
 ItemName.ZeroMask=Zero Mask
 
 
+// AAMod.Items.Vanity.Maskano
+
+
+ItemName.Mask=The Mask
+ItemTooltip.Mask='Great for impersonating Ancients Awakened Contributors!'
+
+ItemName.MaskBag=Mask Bag
+ItemTooltip.MaskBag=<right> to open\n'All the essentials for impersonating the Mask Lord.'
+
+ItemName.MaskBoots=Mask Lord's Boots
+ItemTooltip.MaskBoots='Great for impersonating Ancients Awakened Contributors!'
+
+ItemName.MaskPlate=Mask Lord's Chestplate
+ItemTooltip.MaskPlate='Great for impersonating Ancients Awakened Contributors!'
+
+
 // AAMod.Items.Vanity.Mikpin
 
 
@@ -4614,7 +4757,7 @@ ItemName.MoonRobe=Lunar Robe
 ItemTooltip.MoonRobe=The Robe of a legendary lunar mage\n'Great for impersonating Ancients Awakened Devs!'
 
 ItemName.MoonWings=Lunar Wasp Wings
-ItemTooltip.MoonWings=Allows flight and slow fall\n'Great for impersonating Ancients Awakened Devs!'
+ItemTooltip.MoonWings=Allows flight and slow fall\nHold down and jump to hover for an extended period of time\n'Great for impersonating Ancients Awakened Devs!'
 
 
 // AAMod.Items.Vanity.Moon.Shiny
@@ -4705,8 +4848,26 @@ ItemName.CursedRobe=Cursed Reaper Robe
 ItemTooltip.CursedRobe='Great for impersonating Ancients Awakened Devs!'
 
 
+// AAMod.Items.Vanity.VoidEye
+
+
+ItemName.VoidBag=Void Eye Bag
+ItemTooltip.VoidBag=<right> to open\n'All the essentials for impersonating the Dark Watcher!'
+
+ItemName.VoidEyeBoots=Void Eye's Boots
+ItemTooltip.VoidEyeBoots='Great for impersonating Ancients Awakened Contributors!'
+
+ItemName.VoidEyeHelm=Void Eye's Mask
+ItemTooltip.VoidEyeHelm='Great for impersonating Ancients Awakened Contributors!'
+
+ItemName.VoidEyePlate=Void Eye's Chestplate
+ItemTooltip.VoidEyePlate='Great for impersonating Ancients Awakened Contributors!'
+
+
 // AAMod.Items.Walls
 
+
+ItemName.CovetiteBrickWall=Covetite Brick Wall
 
 ItemName.DarkmatterWall=Darkmatter Brick Wall
 
@@ -4746,6 +4907,16 @@ ItemName.MonochromeApple=Monochromatic Apple
 ItemTooltip.MonochromeApple=Will attract an equestrian friend
 
 
+// AAMod.Tiles.Altar
+
+
+===UNKNWN===
+ItemName.GS=
+
+===UNKNWN===
+ItemName.SC=
+
+
 // AAMod.NPCs.Bosses.AH.Ashe
 
 
@@ -4779,6 +4950,8 @@ NPCName.AsheVanish=Ashe Akuma
 NPCName.Haruka=Haruka Yamata
 
 NPCName.HarukaClone=Haruka Yamata
+
+NPCName.HarukaFall=Haruka Yamata
 
 NPCName.HarukaSpawn=Haruka Yamata
 
@@ -4984,6 +5157,8 @@ NPCName.HydraClawM=Hydra Claw
 // AAMod.NPCs.Bosses.Hydra
 
 
+NPCName.HarukaShade=...
+
 NPCName.Hydra=Hydra
 
 NPCName.HydraHead1=Hydra
@@ -5027,6 +5202,18 @@ NPCName.Mushling=Mushling
 NPCName.MushroomMonarch=Mushroom Monarch
 
 NPCName.RedMushling=Mushling
+
+
+// AAMod.NPCs.Bosses.MushroomMonarch.Spawn
+
+
+NPCName.FungusSlep=Very Large Glowing Mushroom
+
+NPCName.FungusWake=Very Large Glowing Mushroom...?
+
+NPCName.MonarchSlep=Very Large Mushroom
+
+NPCName.MonarchWake=Very Large Mushroom...?
 
 
 // AAMod.NPCs.Bosses.Rajah
@@ -5309,6 +5496,8 @@ NPCName.ChaoticTwilight=Chaotic Twilight
 
 NPCName.FogAngler=Fog Angler
 
+NPCName.HarukaShadow=...
+
 NPCName.Kappa=Kappa
 
 NPCName.MireGhoul=Shadow Ghoul
@@ -5385,6 +5574,9 @@ NPCName.ElderDragon=Elder Dragon
 
 ===UNKNWN===
 NPCName.Seraph=
+
+===UNKNWN===
+NPCName.SeraphHurt=
 
 
 // AAMod.NPCs.Enemies.Snow
@@ -5733,6 +5925,8 @@ MapObject.AvesInABox=Aves In A Box
 
 MapObject.DevStatue=Statue
 
+MapObject.EnderMemory=Eternal Memory
+
 MapObject.GreedLantern=Stone Lantern
 
 MapObject.MoonBeeJar=Lunar Hornet Jar
@@ -5780,6 +5974,52 @@ MapObject.BogwoodSink=Bogwood Sink
 MapObject.BogwoodTable=Bogwood Table
 
 MapObject.BogwoodWorkbench=Bogwood Workbench
+
+
+// AAMod.Tiles.Furniture.Doom
+
+
+MapObject.DoomBathtub=Doomsday Bathtub
+
+MapObject.DoomBed=Doom Bed
+
+MapObject.DoomBookshelf=Doom Bookcase
+
+MapObject.DoomCandelabra=Doom Candelabra
+
+MapObject.DoomCandle=Doom Candle
+
+MapObject.DoomChair=Doom Chair
+
+MapObject.DoomChandelier=Doom Chandelier
+
+MapObject.DoomChest=Doom Chest
+
+MapObject.DoomCouch=Doom Couch
+
+MapObject.DoomDoorClosed=Doom Door
+
+MapObject.DoomDoorOpen=Doom Door
+
+MapObject.DoomDresser=Doom Dresser
+
+MapObject.DoomLamp=Doom Lamp
+
+MapObject.DoomLantern=Doom Latern
+
+MapObject.DoomPiano=Doom Piano
+
+MapObject.DoomSink=Doom Sink
+
+MapObject.DoomTable=Doom Table
+
+MapObject.DoomWorkbench=Doom Workbench
+
+
+// AAMod.Tiles.Furniture
+
+
+MapObject.CrystalChandelier=Crystal Chandelier
 
 
 // AAMod.Tiles.Furniture.Oroboros
@@ -5880,6 +6120,8 @@ MapObject.PrismOre=Prism Ore
 MapObject.RadiumOre=Celestial Ore
 
 MapObject.RelicOre=Viking Relic
+
+MapObject.SkyCrystal=SkyCrystal
 
 
 // AAMod.Tiles.Plants
