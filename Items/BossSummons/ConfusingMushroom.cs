@@ -49,7 +49,7 @@ Can only be used in a glowing mushroom biome");
                 if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ConfusingMushroomFalse1"), Color.SkyBlue, false);
                 return false;
             }
-            if (NPC.AnyNPCs(ModContent.NPCType<FeudalFungus>()))
+            if (NPC.AnyNPCs(ModContent.NPCType<NPCs.Bosses.FeudalFungus.FeudalFungus>()))
             {
                 if (player.whoAmI == Main.myPlayer && player.itemTime == 0 && player.controlUseItem && player.releaseUseItem) if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.ConfusingMushroomFalse2"), Color.SkyBlue, false);
                 return false;
