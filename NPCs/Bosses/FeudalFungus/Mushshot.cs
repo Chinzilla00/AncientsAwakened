@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.MushroomMonarch
+namespace AAMod.NPCs.Bosses.FeudalFungus
 {
     internal class Mushshot : ModProjectile
     {

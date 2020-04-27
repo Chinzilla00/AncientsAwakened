@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
-namespace AAMod.NPCs.Bosses.MushroomMonarch.Spawn
+namespace AAMod.NPCs.Bosses.MushroomMonarch
 {
     public class MonarchSlep : ModNPC
     {

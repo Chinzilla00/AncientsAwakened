@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.MushroomMonarch.Spawn
+namespace AAMod.NPCs.Bosses.MushroomMonarch
 {
     public class MonarchWake : ModNPC
     {

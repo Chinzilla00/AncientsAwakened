@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using BaseMod;
 
-namespace AAMod.NPCs.Bosses.MushroomMonarch
+namespace AAMod.NPCs.Bosses.FeudalFungus
 {
     public class FungusSpore : ModNPC
     {

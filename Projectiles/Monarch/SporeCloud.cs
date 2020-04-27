@@ -3,9 +3,9 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 
-namespace AAMod.NPCs.Bosses.MushroomMonarch
+namespace AAMod.Projectiles.Monarch
 {
-    public class FungusCloud : ModProjectile
+    public class SporeCloud : ModProjectile
     {
     	
     	public override void SetStaticDefaults()
@@ -18,50 +18,22 @@ namespace AAMod.NPCs.Bosses.MushroomMonarch
         {
             projectile.width = 28;
             projectile.height = 28;
-            projectile.friendly = false;
-            projectile.hostile = true;
+            projectile.friendly = true;
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
             projectile.penetrate = -1;
             projectile.extraUpdates = 1;
-            projectile.scale = 1.1f;
+            projectile.scale = .8f;
             projectile.aiStyle = -1;
-        }
-
-        public override Color? GetAlpha(Color lightColor)
-        {
-            if(projectile.ai[1] == 1f)
-            {
-                return AAColor.Glow;
-            }
-            return base.GetAlpha(lightColor);
         }
 
         public override void AI()
         {
-            if(projectile.ai[1] == 1f)
+            projectile.velocity *= 0;
+            projectile.alpha += 3;
+            if (projectile.alpha > 255)
             {
-                projectile.velocity *= 0.98f;
-                projectile.alpha += 2;
-                if (projectile.alpha > 255)
-                {
-                    projectile.Kill();
-                }
-            }
-            else
-            {
-                if(projectile.timeLeft < 120)
-                {
-                    projectile.alpha += 2;
-                    if (projectile.alpha > 255)
-                    {
-                        projectile.Kill();
-                    }
-                }
-                if(projectile.ai[0] ++ < 50)
-                {
-                    projectile.alpha -= 5;
-                }
+                projectile.Kill();
             }
         }
 

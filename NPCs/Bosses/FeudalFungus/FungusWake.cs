@@ -5,7 +5,7 @@ using Terraria.ModLoader;
 using BaseMod;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AAMod.NPCs.Bosses.MushroomMonarch.Spawn
+namespace AAMod.NPCs.Bosses.FeudalFungus
 {
     public class FungusWake : ModNPC
     {
