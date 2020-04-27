@@ -7,17 +7,13 @@ using Terraria;
 using Terraria.UI.Chat;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.UI;
 using Terraria.ModLoader;
 using Terraria.Graphics.Shaders;
-using Terraria.Localization;
-using Terraria.GameContent.UI;
-using AAMod;
 
 namespace AAMod
 {
-	public class DrawAnimationPrecise : DrawAnimation
+    public class DrawAnimationPrecise : DrawAnimation
 	{
 		int Width = 0, Height = 0, offsetX = 0, offsetY = 2;
 		bool vertical = true;

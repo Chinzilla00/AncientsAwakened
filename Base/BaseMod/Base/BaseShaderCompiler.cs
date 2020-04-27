@@ -1,17 +1,6 @@
-using System;
-using System.IO;
-using System.Windows.Forms;
-
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-
-using Terraria;
-using Terraria.ModLoader;
-using AAMod;
-
 namespace AAMod
 {
-	public class BaseShaderCompiler
+    public class BaseShaderCompiler
 	{
 		/*public static string appDir = null;
 		public static ContentManager manager = null;

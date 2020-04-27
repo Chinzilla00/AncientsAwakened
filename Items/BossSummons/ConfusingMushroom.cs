@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
-using AAMod.NPCs.Bosses.MushroomMonarch;
 using Terraria.ModLoader;
 using Terraria.Localization;
 

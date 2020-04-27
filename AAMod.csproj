@@ -11,7 +11,7 @@
     <Exec Command="&quot;$(tMLBuildServerPath)&quot; -build $(ProjectDir) -eac $(TargetPath) -define $(DefineConstants) -unsafe $(AllowUnsafeBlocks)" />
   </Target>
   <ItemGroup>
-    <Reference Include="BaseMod">
+    <Reference Include="AAMod">
       <HintPath>lib\dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xna.Framework">

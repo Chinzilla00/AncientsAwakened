@@ -1,16 +1,11 @@
-using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace AAMod
 {
-	public class MProjectile : GlobalProjectile
+    public class MProjectile : GlobalProjectile
 	{
 		public override bool PreDrawExtras(Projectile projectile, SpriteBatch spriteBatch)
 		{

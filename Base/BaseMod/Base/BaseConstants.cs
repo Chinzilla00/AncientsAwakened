@@ -1,16 +1,11 @@
-using System;
 using System.IO;
-using System.Reflection;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.Audio;
 using Terraria.ModLoader;
-using AAMod;
 
 namespace AAMod
 {

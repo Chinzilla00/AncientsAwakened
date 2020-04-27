@@ -1,10 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using System.IO;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.ModLoader.IO;
 using Terraria.Utilities;
 
 namespace AAMod.NPCs.Bosses.Lucifer
