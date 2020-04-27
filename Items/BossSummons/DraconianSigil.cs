@@ -5,7 +5,7 @@ using Terraria.Localization;
 using AAMod.NPCs.Bosses.Akuma;
 using AAMod.NPCs.Bosses.Akuma.Awakened;
 using System.Collections.Generic;
-using BaseMod;
+
 using Terraria.ID;
 
 namespace AAMod.Items.BossSummons

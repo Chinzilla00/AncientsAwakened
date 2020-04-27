@@ -12,7 +12,6 @@ using Terraria.ModLoader.IO;
 using AAMod.Tiles.Ore;
 using AAMod.Tiles;
 using AAMod.Tiles.Crafters;
-using BaseMod;
 using AAMod.Worldgeneration;
 using AAMod.Worldgen;
 using Terraria.Utilities;

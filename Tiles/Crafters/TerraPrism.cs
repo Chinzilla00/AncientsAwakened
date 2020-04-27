@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using BaseMod;
+
 using Terraria.ID;
 
 namespace AAMod.Tiles.Crafters

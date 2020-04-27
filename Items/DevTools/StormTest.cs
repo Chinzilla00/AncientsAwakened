@@ -10,7 +10,7 @@ namespace AAMod.Items.DevTools
 		public override void SetStaticDefaults()
 		{	
 			DisplayName.SetDefault("[DEV] Feather Test");
-            BaseMod.BaseUtility.AddTooltips(item, new string[] { "Feathers" });					
+            BaseUtility.AddTooltips(item, new string[] { "Feathers" });					
 		}			
 		
         public override void SetDefaults()

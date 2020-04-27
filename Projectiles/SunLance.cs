@@ -50,7 +50,7 @@ namespace AAMod.Projectiles
 
 		public override bool PreDraw(SpriteBatch sb, Color dColor)
 		{
-			BaseMod.BaseDrawing.DrawProjectileSpear(sb, Main.projectileTexture[projectile.type], 0, projectile, null, 0f, 0f);
+			BaseDrawing.DrawProjectileSpear(sb, Main.projectileTexture[projectile.type], 0, projectile, null, 0f, 0f);
 			return false;
 		}
 
@@ -62,7 +62,7 @@ namespace AAMod.Projectiles
             Main.player[p.owner].heldProj = p.whoAmI;
             Main.player[p.owner].itemTime = Main.player[p.owner].itemAnimation;
 			Vector2 gfxOffset = new Vector2(0, plr.gfxOffY);
-            AIArcStabSpear(p, ref ai, plr.Center + gfxOffset, BaseMod.BaseUtility.RotationTo(p.Center, p.Center + p.velocity), plr.direction, plr.itemAnimation, plr.itemAnimationMax, overrideKill, plr.frozen);
+            AIArcStabSpear(p, ref ai, plr.Center + gfxOffset, BaseUtility.RotationTo(p.Center, p.Center + p.velocity), plr.direction, plr.itemAnimation, plr.itemAnimationMax, overrideKill, plr.frozen);
         }
 
         public static void AIArcStabSpear(Projectile p, ref float[] ai, Vector2 center, float itemRot, int ownerDirection, int itemAnimation, int itemAnimationMax, bool overrideKill = false, bool frozen = false)
@@ -72,9 +72,9 @@ namespace AAMod.Projectiles
 			Vector2 oldCenter = p.Center;
             p.position.X = center.X - p.width * 0.5f;
             p.position.Y = center.Y - p.height * 0.5f;
-			p.position += BaseMod.BaseUtility.RotateVector(default, BaseMod.BaseUtility.MultiLerpVector(1f - itemAnimation / (float)itemAnimationMax, spearPos), itemRot);		
+			p.position += BaseUtility.RotateVector(default, BaseUtility.MultiLerpVector(1f - itemAnimation / (float)itemAnimationMax, spearPos), itemRot);		
             if (!overrideKill && Main.player[p.owner].itemAnimation == 0){ p.Kill(); }
-            p.rotation = BaseMod.BaseUtility.RotationTo(center, oldCenter) + 2.355f;				
+            p.rotation = BaseUtility.RotationTo(center, oldCenter) + 2.355f;				
 			if (p.direction == -1) { p.rotation -= 0f; }else
 			if (p.direction == 1) { p.rotation -= 1.57f; }		
 		}

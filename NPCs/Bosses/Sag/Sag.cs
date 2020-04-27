@@ -4,7 +4,7 @@ using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
+
 using System.IO;
 using Terraria.Graphics.Shaders;
 

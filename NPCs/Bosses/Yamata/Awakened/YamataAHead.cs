@@ -4,7 +4,7 @@ using System;
 using Microsoft.Xna.Framework;
 using System.IO;
 using Terraria.ID;
-using BaseMod;
+
 
 namespace AAMod.NPCs.Bosses.Yamata.Awakened
 {

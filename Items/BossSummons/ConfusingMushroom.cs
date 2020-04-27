@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using AAMod.NPCs.Bosses.MushroomMonarch;
 using Terraria.ModLoader;
 using Terraria.Localization;
-using BaseMod;
+
 
 namespace AAMod.Items.BossSummons
 {

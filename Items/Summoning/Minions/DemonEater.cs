@@ -236,7 +236,7 @@ namespace AAMod.Items.Summoning.Minions
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
-			BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, Color.White, true);
+			BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, Color.White, true);
 			return false;
 		}
 	}

@@ -34,8 +34,8 @@ namespace AAMod.NPCs.Bosses.Grips
         public override bool PreDraw(SpriteBatch spritebatch, Color dColor)
         {
             Texture2D glowTex = mod.GetTexture("Glowmasks/GripOfChaosRed_Glow");
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseMod.BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, Color.White);
+            BaseDrawing.DrawTexture(spritebatch, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseDrawing.DrawTexture(spritebatch, glowTex, 0, npc, Color.White);
             return false;
         }
 

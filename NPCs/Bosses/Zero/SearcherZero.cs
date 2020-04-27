@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
 using Terraria.ModLoader;
-using BaseMod;
+
 using Terraria.Audio;
 
 namespace AAMod.NPCs.Bosses.Zero

@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
+
 using AAMod.Dusts;
 
 namespace AAMod.NPCs.Enemies.Void

@@ -42,7 +42,7 @@ namespace AAMod.Tiles
 
         public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
         {
-            Color color = BaseMod.BaseUtility.ColorMult(AAColor.TerraGlow, 1.4f);
+            Color color = BaseUtility.ColorMult(AAColor.TerraGlow, 1.4f);
             r = color.R / 255f; g = color.G / 255f; b = color.B / 255f;
         }
     }

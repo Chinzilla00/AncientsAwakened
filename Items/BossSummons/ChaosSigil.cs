@@ -4,7 +4,7 @@ using Terraria.ModLoader;
 using Terraria.Localization;
 using AAMod.NPCs.Bosses.Shen;
 using System.Collections.Generic;
-using BaseMod;
+
 using Terraria.ID;
 
 namespace AAMod.Items.BossSummons

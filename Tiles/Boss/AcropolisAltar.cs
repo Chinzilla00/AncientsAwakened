@@ -1,6 +1,6 @@
 ﻿using AAMod.NPCs.Bosses.Athena;
 using AAMod.NPCs.Bosses.Athena.Olympian;
-using BaseMod;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;

@@ -41,13 +41,13 @@ namespace AAMod.Tiles
                 zero = Vector2.Zero;
             }
             int height = tile.frameY == 36 ? 18 : 16;
-            BaseMod.BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/TerraWood"), i, j, true, false, false, null, AAGlobalTile.GetTerraColorDim);
+            BaseDrawing.DrawTileTexture(spriteBatch, mod.GetTexture("Tiles/TerraWood"), i, j, true, false, false, null, AAGlobalTile.GetTerraColorDim);
         }
 
         public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
         {
             if (!glow) return;
-            Color color = BaseMod.BaseUtility.ColorMult(Color.LimeGreen, 1.4f);
+            Color color = BaseUtility.ColorMult(Color.LimeGreen, 1.4f);
             r = color.R / 255f; g = color.G / 255f; b = color.B / 255f;
         }
     }

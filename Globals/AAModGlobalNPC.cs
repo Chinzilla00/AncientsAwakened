@@ -545,7 +545,7 @@ namespace AAMod
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.RajahGlobalInfo1"), 107, 137, 179);
+                        BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.RajahGlobalInfo1"), 107, 137, 179);
                     }
 
                     Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
@@ -557,7 +557,7 @@ namespace AAMod
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.RajahGlobalInfo2") + player.name.ToUpper() + "!", 107, 137, 179);
+                        BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.RajahGlobalInfo2") + player.name.ToUpper() + "!", 107, 137, 179);
                     }
 
                     Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
@@ -568,7 +568,7 @@ namespace AAMod
                 {
                     if (Main.netMode != 1)
                     {
-                        BaseMod.BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.RajahGlobalInfo3"), 107, 137, 179);
+                        BaseUtility.Chat(Language.GetTextValue("Mods.AAMod.Common.RajahGlobalInfo3"), 107, 137, 179);
                     }
                 }
             }
@@ -852,7 +852,7 @@ namespace AAMod
             {
                 if (Main.netMode != 1)
                 {
-                    BaseMod.BaseUtility.Chat(e.StackTrace);
+                    BaseUtility.Chat(e.StackTrace);
                 }
             }
         }
@@ -1371,7 +1371,7 @@ namespace AAMod
                         {
                             if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
-                                BaseMod.BaseUtility.Chat(npcName + " " + Language.GetTextValue("Mods.AAMod.Common.NPCarrive"), 175, 75, 255, false);
+                                BaseUtility.Chat(npcName + " " + Language.GetTextValue("Mods.AAMod.Common.NPCarrive"), 175, 75, 255, false);
                             }
                         }
                         else if (Main.netMode == NetmodeID.Server)
@@ -1385,7 +1385,7 @@ namespace AAMod
                         {
                             if (Main.netMode != NetmodeID.MultiplayerClient)
                             {
-                                BaseMod.BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false);
+                                BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false);
                             }
                         }
                         else if (Main.netMode == NetmodeID.Server)

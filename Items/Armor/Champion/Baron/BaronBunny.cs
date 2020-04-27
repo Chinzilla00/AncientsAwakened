@@ -288,30 +288,30 @@ namespace AAMod.Items.Armor.Champion.Baron
             Texture2D Meter = mod.GetTexture("Items/Armor/Champion/Baron/BaronBunnyMeter");
             Texture2D MeterGlow = mod.GetTexture("Items/Armor/Champion/Baron/BaronBunnyMeter_Glow");
 
-            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, tex.Width, tex.Height / 8, 0, 0);
-            Rectangle MeterFrame = BaseMod.BaseDrawing.GetFrame(MeterF, Meter.Width, Meter.Height / 5, 0, 0);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, tex.Width, tex.Height / 8, 0, 0);
+            Rectangle MeterFrame = BaseDrawing.GetFrame(MeterF, Meter.Width, Meter.Height / 5, 0, 0);
 
             if (player.statLife < player.statLifeMax2 * (1 / 5))
             {
                 int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingRainbowDye);
-                BaseMod.BaseDrawing.DrawTexture(spriteBatch, MeterGlow, shader, projectile.position - new Vector2(44, 0), projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 5, MeterFrame, Color.White, true);
-                BaseMod.BaseDrawing.DrawTexture(spriteBatch, Eyes, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 8, frame, Main.DiscoColor, true);
+                BaseDrawing.DrawTexture(spriteBatch, MeterGlow, shader, projectile.position - new Vector2(44, 0), projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 5, MeterFrame, Color.White, true);
+                BaseDrawing.DrawTexture(spriteBatch, Eyes, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 8, frame, Main.DiscoColor, true);
             }
 
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Meter, 0, projectile.position - new Vector2(44, 0), projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 5, MeterFrame, Color.White, true);
+            BaseDrawing.DrawTexture(spriteBatch, Meter, 0, projectile.position - new Vector2(44, 0), projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 5, MeterFrame, Color.White, true);
 
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 8, frame, lightColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 8, frame, lightColor, true);
 
             if (player.statLife < player.statLifeMax2 * (3 / 5))
             {
-                BaseMod.BaseDrawing.DrawTexture(spriteBatch, Mad, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 8, frame, lightColor, true);
+                BaseDrawing.DrawTexture(spriteBatch, Mad, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 8, frame, lightColor, true);
             }
 
             if (player.statLife < player.statLifeMax2 * (1 / 5))
             {
                 int shader = GameShaders.Armor.GetShaderIdFromItemId(ItemID.LivingRainbowDye);
-                BaseMod.BaseDrawing.DrawTexture(spriteBatch, MeterGlow, shader, projectile.position - new Vector2(44, 0), projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 5, MeterFrame, Color.White, true);
-                BaseMod.BaseDrawing.DrawTexture(spriteBatch, Eyes, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 8, frame, Main.DiscoColor, true);
+                BaseDrawing.DrawTexture(spriteBatch, MeterGlow, shader, projectile.position - new Vector2(44, 0), projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 5, MeterFrame, Color.White, true);
+                BaseDrawing.DrawTexture(spriteBatch, Eyes, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 8, frame, Main.DiscoColor, true);
             }
             return false;
         }

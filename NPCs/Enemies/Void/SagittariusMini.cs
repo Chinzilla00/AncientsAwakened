@@ -46,7 +46,7 @@ namespace AAMod.NPCs.Enemies.Void
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIElemental(npc, ref npc.ai, ref IdleTimer, null, 1, false, true, 800f, 600f, 180, 2f);
+            BaseAI.AIElemental(npc, ref npc.ai, ref IdleTimer, null, 1, false, true, 800f, 600f, 180, 2f);
         }
 
         public override void FindFrame(int frameHeight)
@@ -82,8 +82,8 @@ namespace AAMod.NPCs.Enemies.Void
 
         public override bool PreDraw(SpriteBatch sb, Color dColor)
         {
-            BaseMod.BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
-            BaseMod.BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagittariusMini_Glow"), 0, npc, AAColor.ZeroShield);
+            BaseDrawing.DrawTexture(sb, Main.npcTexture[npc.type], 0, npc, dColor);
+            BaseDrawing.DrawTexture(sb, mod.GetTexture("Glowmasks/SagittariusMini_Glow"), 0, npc, AAColor.ZeroShield);
             return false;
         }
 

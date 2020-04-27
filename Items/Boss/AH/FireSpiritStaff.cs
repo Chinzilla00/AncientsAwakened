@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using BaseMod;
+
 
 namespace AAMod.Items.Boss.AH
 {

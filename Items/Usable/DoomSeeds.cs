@@ -18,7 +18,7 @@ namespace AAMod.Items.Usable
             item.height = 16;
             item.maxStack = 999;
             item.rare = 8;
-            item.value = BaseMod.BaseUtility.CalcValue(0, 0, 0, 5);
+            item.value = BaseUtility.CalcValue(0, 0, 0, 5);
 
             item.useStyle = 1;
             item.useAnimation = 15;

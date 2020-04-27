@@ -8,7 +8,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.World.Generation;
-using BaseMod;
+
 using AAMod.Tiles;
 using AAMod.Walls;
 using Terraria.Utilities;

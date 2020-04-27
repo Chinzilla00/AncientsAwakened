@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using BaseMod;
+
 using Terraria.ID;
 using Terraria.Audio;
 using System.IO;

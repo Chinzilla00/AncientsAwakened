@@ -4,7 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using AAMod.Dusts;
 using Microsoft.Xna.Framework.Graphics;
-using BaseMod;
+
 
 namespace AAMod.Projectiles.Greed.WKG
 {

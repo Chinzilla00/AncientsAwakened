@@ -300,9 +300,9 @@ namespace AAMod.Items.Armor.Witch
         {
             glowColor = new Color(glowColorR, glowColorG, glowColorB);
 
-            glowColorR = BaseMod.BaseUtility.MultiLerp(player.statLife / player.statLifeMax, glowColor.R, glowColor2.R);
-            glowColorG = BaseMod.BaseUtility.MultiLerp(player.statLife / player.statLifeMax, glowColor.G, glowColor2.G);
-            glowColorB = BaseMod.BaseUtility.MultiLerp(player.statLife / player.statLifeMax, glowColor.B, glowColor2.B);
+            glowColorR = BaseUtility.MultiLerp(player.statLife / player.statLifeMax, glowColor.R, glowColor2.R);
+            glowColorG = BaseUtility.MultiLerp(player.statLife / player.statLifeMax, glowColor.G, glowColor2.G);
+            glowColorB = BaseUtility.MultiLerp(player.statLife / player.statLifeMax, glowColor.B, glowColor2.B);
 
             projectile.scale = (1f-(player.statLife/(float)player.statLifeMax))+0.1f;
             if(projectile.scale>1f)

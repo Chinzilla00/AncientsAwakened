@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using AAMod.NPCs.Bosses.Anubis;
 using AAMod.NPCs.Bosses.Anubis.Forsaken;
 using Terraria.ModLoader;
-using BaseMod;
+
 using Terraria.ID;
 
 namespace AAMod.Items.BossSummons

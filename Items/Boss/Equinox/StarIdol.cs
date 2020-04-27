@@ -1,6 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
-using BaseMod;
+
 using Terraria.Localization;
 using Microsoft.Xna.Framework;
 

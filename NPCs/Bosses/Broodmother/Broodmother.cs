@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
+
 using System.IO;
 
 namespace AAMod.NPCs.Bosses.Broodmother

@@ -2,7 +2,7 @@
 using Terraria;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
-using BaseMod;
+
 
 namespace AAMod.Projectiles.Zero
 {

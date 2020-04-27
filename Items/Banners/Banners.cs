@@ -32,7 +32,7 @@ namespace AAMod.Items.Banners
 			if(dName != null)
 			{
 				DisplayName.SetDefault(dName + " Banner");
-				BaseMod.BaseUtility.AddTooltips(item, new string[] { "Nearby players get a bonus against: " + dName });	
+				BaseUtility.AddTooltips(item, new string[] { "Nearby players get a bonus against: " + dName });	
 			}
 		}
 
@@ -48,7 +48,7 @@ namespace AAMod.Items.Banners
             item.height = 16;
             item.maxStack = 99;
             item.rare = 1;
-            item.value = BaseMod.BaseUtility.CalcValue(0, 0, 10, 0);
+            item.value = BaseUtility.CalcValue(0, 0, 10, 0);
 
             item.useStyle = 1;
             item.useAnimation = 15;

@@ -28,7 +28,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIFlail(projectile, ref projectile.ai, false, 230);
+            BaseAI.AIFlail(projectile, ref projectile.ai, false, 230);
             projectile.direction = projectile.spriteDirection = Main.player[projectile.owner].direction;
             if ((Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y)) / 2f > 0.52f)
             {
@@ -40,7 +40,7 @@ namespace AAMod.Projectiles
 
         public override bool OnTileCollide(Vector2 value2)
         {
-            BaseMod.BaseAI.TileCollideFlail(projectile, ref value2);
+            BaseAI.TileCollideFlail(projectile, ref value2);
             return false;
         }
 
@@ -49,8 +49,8 @@ namespace AAMod.Projectiles
             Texture2D chainTex = mod.GetTexture("Chains/IllumantBall_Chain");
             if (Main.instance.IsActive)
                 for (int m = 0; m < 2; m++)
-                    BaseMod.BaseDrawing.DrawChain(spriteBatch, chainTex, 0, projectile.Center, Main.player[projectile.owner].Center);
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, dColor, true);
+                    BaseDrawing.DrawChain(spriteBatch, chainTex, 0, projectile.Center, Main.player[projectile.owner].Center);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, dColor, true);
             return true;
         }
     }

@@ -57,8 +57,8 @@ namespace AAMod.NPCs.Bosses.Zero.Protocol
             npc.noTileCollide = true;
             for (int m = 0; m < 2; m++)
             {
-                BaseMod.BaseAI.AIEye(npc, ref npc.ai, false, true, 0.13f, 0.08f, 2f, 1.1f, 1.2f, 1.2f);
-                BaseMod.BaseAI.Look(npc, 1);
+                BaseAI.AIEye(npc, ref npc.ai, false, true, 0.13f, 0.08f, 2f, 1.1f, 1.2f, 1.2f);
+                BaseAI.Look(npc, 1);
             }
         }
 

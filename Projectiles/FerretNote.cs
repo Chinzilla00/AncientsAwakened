@@ -51,7 +51,7 @@ namespace AAMod.Projectiles
 			if (target != -1)
 			{
 				Entity ent = Main.npc[target];
-				projectile.velocity += BaseMod.BaseUtility.RotateVector(default, new Vector2(maxSpeed, 0f), BaseMod.BaseUtility.RotationTo(projectile.Center, ent.Center)) * rotScalar;
+				projectile.velocity += BaseUtility.RotateVector(default, new Vector2(maxSpeed, 0f), BaseUtility.RotationTo(projectile.Center, ent.Center)) * rotScalar;
 				if(Math.Abs(projectile.velocity.X) + Math.Abs(projectile.velocity.Y) > maxSpeed){ projectile.velocity.Normalize(); projectile.velocity *= maxSpeed; }
 				projectile.position += ent.velocity * entVelScalar;
 			}	
@@ -64,7 +64,7 @@ namespace AAMod.Projectiles
 			if (target == -1 && targetDelay == 0 && projectile.timeLeft % 20 == 0)
 			{
 				Vector2 startPos = projectile.Center;
-				int[] npcs = BaseMod.BaseAI.GetNPCs(startPos, -1, maxDistToAttack);
+				int[] npcs = BaseAI.GetNPCs(startPos, -1, maxDistToAttack);
 				if (npcs.Length > 0)
 				{
 					float prevDist = maxDistToAttack;

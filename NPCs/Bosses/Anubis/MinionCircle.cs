@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using BaseMod;
+
 using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Anubis

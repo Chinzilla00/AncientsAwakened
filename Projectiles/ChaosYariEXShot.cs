@@ -37,7 +37,7 @@ namespace AAMod.Projectiles
         public override void AI()
         {
 
-            BaseMod.BaseAI.AIVilethorn(projectile, 70, 4, 30);
+            BaseAI.AIVilethorn(projectile, 70, 4, 30);
             spineEnd = projectile.ai[1] == 30;
             if (spineEnd)
             {
@@ -64,9 +64,9 @@ namespace AAMod.Projectiles
         public override bool PreDraw(SpriteBatch sb, Color drawColor)
         {
             Color newLightColor = new Color(Math.Max(0, Color.Purple.R + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.Purple.G + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.Purple.B + Math.Min(0, -projectile.alpha + 20)));
-            BaseMod.BaseDrawing.AddLight(projectile.Center, newLightColor);
-            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 3, 0, 2);
-            BaseMod.BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, projectile.GetAlpha(Color.White), true);
+            BaseDrawing.AddLight(projectile.Center, newLightColor);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 3, 0, 2);
+            BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 4, frame, projectile.GetAlpha(Color.White), true);
             return false;
         }
     }

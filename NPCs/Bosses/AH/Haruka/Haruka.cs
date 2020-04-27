@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework.Graphics;
 using System.IO;
-using BaseMod;
+
 
 namespace AAMod.NPCs.Bosses.AH.Haruka
 {

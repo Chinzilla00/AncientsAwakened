@@ -78,16 +78,16 @@ namespace AAMod.Tiles.Boss
             if (AAWorld.SmashHydraPod == 2)
             {
                 AAWorld.SmashHydraPod--;
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.TilesInfo("HydraPod1"), Color.Blue);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.TilesInfo("HydraPod1"), Color.Blue);
             }
             else if (AAWorld.SmashHydraPod == 1)
             {
                 AAWorld.SmashHydraPod--;
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.TilesInfo("HydraPod2"), Color.Blue);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.TilesInfo("HydraPod2"), Color.Blue);
             }
             else
             {
-                Player player = Main.player[BaseMod.BaseAI.GetPlayer(new Vector2(i, j), -1)];
+                Player player = Main.player[BaseAI.GetPlayer(new Vector2(i, j), -1)];
                 AAWorld.SmashHydraPod = 2;
                 if (!Main.dayTime)
                 {
@@ -95,7 +95,7 @@ namespace AAMod.Tiles.Boss
                 }
                 else
                 {
-                    if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.TilesInfo("HydraPod3"), Color.Blue);
+                    if (Main.netMode != 1) BaseUtility.Chat(Lang.TilesInfo("HydraPod3"), Color.Blue);
                 }
             }
         }

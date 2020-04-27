@@ -2,7 +2,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
+
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Graphics.Shaders;
 using System.IO;

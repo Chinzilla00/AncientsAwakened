@@ -23,7 +23,7 @@ namespace AAMod.Tiles.Bricks
 
         public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
         {
-            Color color = BaseMod.BaseUtility.ColorMult(AAPlayer.ZeroColor, 0.7f);
+            Color color = BaseUtility.ColorMult(AAPlayer.ZeroColor, 0.7f);
             r = color.R / 255f; g = color.G / 255f; b = color.B / 255f;
         }
 
@@ -33,7 +33,7 @@ namespace AAMod.Tiles.Bricks
             if (tile != null && tile.active() && tile.type == Type)
             {
                 Texture2D glowTex = mod.GetTexture("Glowmasks/ApocalyptiteTile_Glow");
-                BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetZeroColorDim);
+                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetZeroColorDim);
             }
         }
 

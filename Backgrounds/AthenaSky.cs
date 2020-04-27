@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Graphics.Effects;
 using Terraria.Utilities;
-using BaseMod;
+
 using AAMod.NPCs.Bosses.Athena;
 using AAMod.NPCs.Bosses.Athena.Olympian;
 using Terraria.Graphics.Shaders;

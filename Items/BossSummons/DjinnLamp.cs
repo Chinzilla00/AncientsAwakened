@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using BaseMod;
+
 using Terraria.Localization;
 
 namespace AAMod.Items.BossSummons

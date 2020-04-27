@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using BaseMod;
+
 
 namespace AAMod.Items.Armor.Champion.Drone
 {

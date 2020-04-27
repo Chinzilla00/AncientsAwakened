@@ -9,7 +9,7 @@ namespace AAMod.Items.DevTools
 		public override void SetStaticDefaults()
 		{	
 			DisplayName.SetDefault("[DEV] Chaos Converter");
-            BaseMod.BaseUtility.AddTooltips(item, new string[] { "Converts a strand of Mire or Inferno down below you." });					
+            BaseUtility.AddTooltips(item, new string[] { "Converts a strand of Mire or Inferno down below you." });					
 		}			
 		
         public override void SetDefaults()

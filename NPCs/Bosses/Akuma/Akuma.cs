@@ -4,7 +4,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
-using BaseMod;
+
 using System.IO;
 
 namespace AAMod.NPCs.Bosses.Akuma

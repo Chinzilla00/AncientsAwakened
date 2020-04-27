@@ -458,7 +458,7 @@ namespace AAMod.NPCs.TownNPCs
                 }
                 else
                 {
-                    if (!BaseMod.BasePlayer.HasItem(player, ModContent.ItemType<Items.Flasks.SquidList>()))
+                    if (!BasePlayer.HasItem(player, ModContent.ItemType<Items.Flasks.SquidList>()))
                     {
                         Main.npcChatText = Lang.TownNPCLovecraftian("SquidListChat");
                         int itemID = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType("SquidList"), 1, false, 0, false, false);

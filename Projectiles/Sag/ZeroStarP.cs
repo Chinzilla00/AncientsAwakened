@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using BaseMod;
+
 
 namespace AAMod.Projectiles.Sag
 {

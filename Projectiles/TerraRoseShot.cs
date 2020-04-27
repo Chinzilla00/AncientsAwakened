@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using BaseMod;
+
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
 

@@ -1,7 +1,7 @@
 using Microsoft.Xna.Framework;
 using System.IO;
 using Terraria;
-using BaseMod;
+
 using Terraria.ModLoader;
 using Terraria.ID;
 

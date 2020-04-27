@@ -3,7 +3,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using BaseMod;
+
 using AAMod.NPCs.Bosses.Toad;
 
 namespace AAMod.Items.BossSummons

@@ -3,7 +3,6 @@ using AAMod.Globals;
 using AAMod.UI;
 using AAMod.UI.Core;
 using AAMod.Items.Dev.Invoker;
-using BaseMod;
 using log4net;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -1080,6 +1079,51 @@ namespace AAMod
         public override void HandlePacket(BinaryReader bb, int whoAmI)
         {
             AANet.HandlePacket(bb, whoAmI);
+
+            MsgType msg = (MsgType)bb.ReadByte();
+            if (msg == MsgType.ProjectileHostility) //projectile hostility and ownership
+            {
+                int owner = bb.ReadInt32();
+                int projID = bb.ReadInt32();
+                bool friendly = bb.ReadBoolean();
+                bool hostile = bb.ReadBoolean();
+                if (Main.projectile[projID] != null)
+                {
+                    Main.projectile[projID].owner = owner;
+                    Main.projectile[projID].friendly = friendly;
+                    Main.projectile[projID].hostile = hostile;
+                }
+                if (Main.netMode == 2) MNet.SendBaseNetMessage(0, owner, projID, friendly, hostile);
+            }
+            else
+            if (msg == MsgType.SyncAI) //sync AI array
+            {
+                int classID = (int)bb.ReadByte();
+                int id = (int)bb.ReadInt16();
+                int aitype = (int)bb.ReadByte();
+                int arrayLength = (int)bb.ReadByte();
+                float[] newAI = new float[arrayLength];
+                for (int m = 0; m < arrayLength; m++)
+                {
+                    newAI[m] = bb.ReadSingle();
+                }
+                if (classID == 0 && Main.npc[id] != null && Main.npc[id].active && Main.npc[id].modNPC != null && Main.npc[id].modNPC is ParentNPC)
+                {
+                    ((ParentNPC)Main.npc[id].modNPC).SetAI(newAI, aitype);
+                }
+                else
+                if (classID == 1 && Main.projectile[id] != null && Main.projectile[id].active && Main.projectile[id].modProjectile != null && Main.projectile[id].modProjectile is ParentProjectile)
+                {
+                    ((ParentProjectile)Main.projectile[id].modProjectile).SetAI(newAI, aitype);
+                }
+                if (Main.netMode == 2) BaseNet.SyncAI(classID, id, newAI, aitype);
+            }
         }
+    }
+
+    enum MsgType : byte
+    {
+        ProjectileHostility,
+        SyncAI
     }
 }

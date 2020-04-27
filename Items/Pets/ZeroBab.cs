@@ -58,10 +58,10 @@ namespace AAMod.Items.Pets
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 5, 0, 0);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 5, 0, 0);
 
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 5, frame, lightColor, true);
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Glowmasks/ZeroBab_Glow"), 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 5, frame, AAColor.COLOR_WHITEFADE1, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 5, frame, lightColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, mod.GetTexture("Glowmasks/ZeroBab_Glow"), 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.direction, 5, frame, AAColor.COLOR_WHITEFADE1, true);
             return false;
         }
     }

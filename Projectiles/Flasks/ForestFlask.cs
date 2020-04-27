@@ -30,8 +30,8 @@ namespace AAMod.Projectiles.Flasks
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
             Texture2D tex = mod.GetTexture("Projectiles/Flasks/ForestFlask");
-            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, tex.Width, tex.Height, 0, 2);
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 7, frame, lightColor, true);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, tex.Width, tex.Height, 0, 2);
+            BaseDrawing.DrawTexture(spriteBatch, tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 7, frame, lightColor, true);
             return false;
         }
 
@@ -46,14 +46,14 @@ namespace AAMod.Projectiles.Flasks
             for (int m = 0; m < 20; m++)
             {
                 int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, FlaskDust, 0f, 0f, 100, Color.White, 1.6f);
-                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / 20 * 6.28f);
+                Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / 20 * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
             }
             for (int m = 0; m < 20; m++)
             {
                 int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, FlaskDust, 0f, 0f, 100, Color.White, 2f);
-                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / 20 * 6.28f);
+                Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / 20 * 6.28f);
                 Main.dust[dustID].noLight = false;
                 Main.dust[dustID].noGravity = true;
             }

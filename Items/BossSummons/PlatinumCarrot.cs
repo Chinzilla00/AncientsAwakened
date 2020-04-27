@@ -74,7 +74,7 @@ namespace AAMod.Items.BossSummons
                         npcName = Main.npc[npcID].modNPC.DisplayName.GetDefault();
                     if (namePlural)
                     {
-                        if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(npcName + Language.GetTextValue("Mods.AAMod.Common.BosshasAwoken"), 175, 75, 255, false); }
+                        if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseUtility.Chat(npcName + Language.GetTextValue("Mods.AAMod.Common.BosshasAwoken"), 175, 75, 255, false); }
                         else
                         if (Main.netMode == NetmodeID.Server)
                         {
@@ -83,7 +83,7 @@ namespace AAMod.Items.BossSummons
                     }
                     else
                     {
-                        if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
+                        if (Main.netMode == NetmodeID.SinglePlayer) { if (Main.netMode != 1) BaseUtility.Chat(Language.GetTextValue("Announcement.HasAwoken", npcName), 175, 75, 255, false); }
                         else
                         if (Main.netMode == NetmodeID.Server)
                         {

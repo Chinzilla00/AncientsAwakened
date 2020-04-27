@@ -148,7 +148,7 @@ namespace AAMod.Projectiles
         {
             Texture2D texture = mod.GetTexture("Chains/ChaosChain_Chain");
 
-            BaseMod.BaseDrawing.DrawChain(spriteBatch, texture, 0, projectile.Center, Main.player[projectile.owner].Center, 0f, lightColor, 1f, true);
+            BaseDrawing.DrawChain(spriteBatch, texture, 0, projectile.Center, Main.player[projectile.owner].Center, 0f, lightColor, 1f, true);
             return true;
         }
     }

@@ -32,7 +32,7 @@ namespace AAMod.Projectiles
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIVilethorn(projectile, 80, 4, 20);
+            BaseAI.AIVilethorn(projectile, 80, 4, 20);
         }
 
         public override void PostAI()
@@ -50,9 +50,9 @@ namespace AAMod.Projectiles
         {
             Color newLightColor = new Color(Math.Max(0, Color.Orange.R + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.Orange.G + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.Orange.B + Math.Min(0, -projectile.alpha + 20)));
             Color newLightColor2 = new Color(Math.Max(0, Color.Indigo.R + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.Indigo.G + Math.Min(0, -projectile.alpha + 20)), Math.Max(0, Color.Indigo.B + Math.Min(0, -projectile.alpha + 20)));
-            BaseMod.BaseDrawing.AddLight(projectile.Center, newLightColor);
-            BaseMod.BaseDrawing.AddLight(projectile.Center, newLightColor2);
-            BaseMod.BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile);
+            BaseDrawing.AddLight(projectile.Center, newLightColor);
+            BaseDrawing.AddLight(projectile.Center, newLightColor2);
+            BaseDrawing.DrawTexture(sb, Main.projectileTexture[projectile.type], 0, projectile);
             return false;
         }
     }

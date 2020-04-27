@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ModLoader;
-using BaseMod;
+
 
 namespace AAMod.NPCs.Enemies.Void
 {

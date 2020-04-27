@@ -6,7 +6,7 @@ using Terraria.Graphics.Shaders;
 using Terraria.Graphics;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
 using Terraria.ModLoader;
-using BaseMod;
+
 using Terraria.ID;
 
 namespace AAMod.Backgrounds

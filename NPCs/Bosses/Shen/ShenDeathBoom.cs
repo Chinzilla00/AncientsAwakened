@@ -67,7 +67,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 return false;
             }
-            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 7, 0, 2);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 7, 0, 2);
 
             Texture2D Tex = Main.projectileTexture[projectile.type];
             if (projectile.ai[0] == 1)
@@ -79,7 +79,7 @@ namespace AAMod.NPCs.Bosses.Shen
             {
                 Tex = mod.GetTexture("NPCs/Bosses/Shen/ShenDeathBoomB");
             }
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 7, frame, projectile.GetAlpha(Color.White), true);
+            BaseDrawing.DrawTexture(spriteBatch, Tex, 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, 0, 7, frame, projectile.GetAlpha(Color.White), true);
             return false;
         }
     }

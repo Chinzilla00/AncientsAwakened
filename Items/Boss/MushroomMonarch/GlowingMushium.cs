@@ -1,4 +1,4 @@
-using BaseMod;
+
 using Microsoft.Xna.Framework;
 using Terraria;
 

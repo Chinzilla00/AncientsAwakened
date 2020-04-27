@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
+
 using AAMod.NPCs.Bosses.Athena;
 using AAMod.NPCs.Bosses.Athena.Olympian;
 

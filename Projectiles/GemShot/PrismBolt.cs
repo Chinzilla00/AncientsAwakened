@@ -55,7 +55,7 @@ namespace AAMod.Projectiles.GemShot
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
         {
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, Main.DiscoColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile, Main.DiscoColor, true);
             return false;
         }
     }

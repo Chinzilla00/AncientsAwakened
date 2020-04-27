@@ -1,7 +1,7 @@
 
 using Terraria;
 using Terraria.ID;
-using BaseMod;
+
 
 namespace AAMod.Items.Boss.Sagittarius
 {

@@ -40,13 +40,13 @@ namespace AAMod.NPCs.Critters
             int bunnyKills = NPC.killCount[Item.NPCtoBanner(NPCID.Bunny)];
             if (bunnyKills % 100 == 0 && bunnyKills < 1000)
             {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossSummonsInfo("RoyalRabbit1"), 107, 137, 179);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("RoyalRabbit1"), 107, 137, 179);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
                 AAModGlobalNPC.SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), Language.GetTextValue("Mods.AAMod.Common.RajahRabbit"));
             }
             if (bunnyKills % 100 == 0 && bunnyKills >= 1000)
             {
-                if (Main.netMode != 1) BaseMod.BaseUtility.Chat(Lang.BossSummonsInfo("RoyalRabbit2") + player.name.ToUpper() + "!!!", 107, 137, 179);
+                if (Main.netMode != 1) BaseUtility.Chat(Lang.BossSummonsInfo("RoyalRabbit2") + player.name.ToUpper() + "!!!", 107, 137, 179);
                 Main.PlaySound(mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Sounds/Rajah"), npc.Center);
                 AAModGlobalNPC.SpawnRajah(player, true, new Vector2(npc.Center.X, npc.Center.Y - 2000), Language.GetTextValue("Mods.AAMod.Common.RajahRabbit"));
             }

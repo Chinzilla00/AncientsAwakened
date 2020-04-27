@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using BaseMod;
+
 using System;
 
 namespace AAMod

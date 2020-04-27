@@ -5,7 +5,7 @@ using Microsoft.Xna.Framework;
 //using AAMod.NPCs.Bosses.Infinity;
 using Terraria;
 using Terraria.ModLoader;
-using BaseMod;
+
 using Terraria.Localization;
 using Terraria.ID;
 

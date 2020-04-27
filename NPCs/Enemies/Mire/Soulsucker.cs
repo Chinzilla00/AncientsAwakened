@@ -1,7 +1,7 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
+
 using Microsoft.Xna.Framework;
 
 namespace AAMod.NPCs.Enemies.Mire

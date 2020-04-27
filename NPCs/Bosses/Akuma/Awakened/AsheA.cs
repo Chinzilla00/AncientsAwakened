@@ -70,14 +70,14 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
                 for (int m = 0; m < pieCut; m++)
                 {
                     int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, Color.White, 1.6f);
-                    Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / (float)pieCut * 6.28f);
+                    Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / (float)pieCut * 6.28f);
                     Main.dust[dustID].noLight = false;
                     Main.dust[dustID].noGravity = true;
                 }
                 for (int m = 0; m < pieCut; m++)
                 {
                     int dustID = Dust.NewDust(new Vector2(projectile.Center.X - 1, projectile.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.AkumaDust>(), 0f, 0f, 100, Color.White, 2f);
-                    Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)pieCut * 6.28f);
+                    Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(9f, 0f), m / (float)pieCut * 6.28f);
                     Main.dust[dustID].noLight = false;
                     Main.dust[dustID].noGravity = true;
                 }
@@ -138,9 +138,9 @@ namespace AAMod.NPCs.Bosses.Akuma.Awakened
         public override bool PreDraw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, Color lightColor)
         {
 
-            Rectangle frame = BaseMod.BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 12, 0, 0);
+            Rectangle frame = BaseDrawing.GetFrame(projectile.frame, Main.projectileTexture[projectile.type].Width, Main.projectileTexture[projectile.type].Height / 12, 0, 0);
 
-            BaseMod.BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 12, frame, lightColor, true);
+            BaseDrawing.DrawTexture(spriteBatch, Main.projectileTexture[projectile.type], 0, projectile.position, projectile.width, projectile.height, projectile.scale, projectile.rotation, projectile.spriteDirection, 12, frame, lightColor, true);
             return false;
         }
 

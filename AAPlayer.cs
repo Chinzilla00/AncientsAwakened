@@ -11,7 +11,7 @@ using AAMod.NPCs.Bosses.Zero;
 using AAMod.NPCs.Bosses.Zero.Protocol;
 using AAMod.NPCs.Bosses.Anubis.Forsaken;
 using AAMod.Items.FishingItem;
-using BaseMod;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;

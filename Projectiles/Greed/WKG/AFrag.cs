@@ -1,6 +1,6 @@
 using Microsoft.Xna.Framework;
 using Terraria;
-using BaseMod;
+
 using Terraria.ModLoader;
 using AAMod.Dusts;
 using Microsoft.Xna.Framework.Graphics;

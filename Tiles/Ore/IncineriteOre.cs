@@ -35,7 +35,7 @@ namespace AAMod.Tiles.Ore
 
         public override void ModifyLight(int x, int y, ref float r, ref float g, ref float b)
         {
-            Color color = BaseMod.BaseUtility.ColorMult(AAPlayer.IncineriteColor, 0.7f);
+            Color color = BaseUtility.ColorMult(AAPlayer.IncineriteColor, 0.7f);
             r = color.R / 255f; g = color.G / 255f; b = color.B / 255f;
         }
 
@@ -45,7 +45,7 @@ namespace AAMod.Tiles.Ore
             if (tile != null && tile.active() && tile.type == Type)
             {
                 if (glowTex == null) glowTex = mod.GetTexture("Glowmasks/IncineriteOre_glow");
-                BaseMod.BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetIncineriteColorDim);
+                BaseDrawing.DrawTileTexture(sb, glowTex, x, y, true, false, false, null, AAGlobalTile.GetIncineriteColorDim);
             }
         }
     }

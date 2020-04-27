@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using BaseMod;
+
 using System.IO;
 using AAMod.Items.Boss.Rajah;
 using Terraria.Graphics.Shaders;

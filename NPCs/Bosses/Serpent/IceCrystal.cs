@@ -35,7 +35,7 @@ namespace AAMod.NPCs.Bosses.Serpent
             }
             else
             {
-                BaseMod.BaseAI.ShootPeriodic(npc, npc.position, npc.width, npc.height, ModContent.ProjectileType<IceSpike>(), ref npc.ai[0], 180, npc.damage / 2, 7, true);
+                BaseAI.ShootPeriodic(npc, npc.position, npc.width, npc.height, ModContent.ProjectileType<IceSpike>(), ref npc.ai[0], 180, npc.damage / 2, 7, true);
                 npc.alpha = 40;
             }
         }
@@ -47,12 +47,12 @@ namespace AAMod.NPCs.Bosses.Serpent
             for (int m = 0; m < pieCut; m++)
             {
                 int dustID = Dust.NewDust(new Vector2(npc.Center.X - 1, npc.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.SnowDust>(), 0f, 0f, 100, Color.White, 1.6f);
-                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / pieCut * 6.28f);
+                Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(6f, 0f), m / pieCut * 6.28f);
             }
             for (int m = 0; m < pieCut; m++)
             {
                 int dustID = Dust.NewDust(new Vector2(npc.Center.X - 1, npc.Center.Y - 1), 2, 2, ModContent.DustType<Dusts.SnowDust>(), 0f, 0f, 100, Color.White, 2f);
-                Main.dust[dustID].velocity = BaseMod.BaseUtility.RotateVector(default, new Vector2(9f, 0f), m /pieCut * 6.28f);
+                Main.dust[dustID].velocity = BaseUtility.RotateVector(default, new Vector2(9f, 0f), m /pieCut * 6.28f);
                 Main.dust[dustID].noLight = false;
             }
         }

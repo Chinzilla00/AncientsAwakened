@@ -27,7 +27,7 @@ namespace AAMod.Items.Dev.Minions
 
         public override void AI()
         {
-            BaseMod.BaseAI.AIThrownWeapon(projectile, ref projectile.ai, false, 60);
+            BaseAI.AIThrownWeapon(projectile, ref projectile.ai, false, 60);
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

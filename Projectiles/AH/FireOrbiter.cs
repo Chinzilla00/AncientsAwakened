@@ -1,7 +1,7 @@
 using System;
 
 using Terraria;
-using BaseMod;
+
 
 namespace AAMod.Projectiles.AH
 {

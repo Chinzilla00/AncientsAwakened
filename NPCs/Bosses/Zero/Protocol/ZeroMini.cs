@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ModLoader;
-using BaseMod;
+
 using Terraria.Graphics.Shaders;
 
 namespace AAMod.NPCs.Bosses.Zero.Protocol

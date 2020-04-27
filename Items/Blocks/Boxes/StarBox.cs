@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
-using BaseMod;
+
 using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.Items.Blocks.Boxes

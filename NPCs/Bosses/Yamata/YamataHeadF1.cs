@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework;
 using AAMod.NPCs.Bosses.Yamata.Awakened;
-using BaseMod;
+
 using System.IO;
 using Terraria.ID;
 using Microsoft.Xna.Framework.Graphics;

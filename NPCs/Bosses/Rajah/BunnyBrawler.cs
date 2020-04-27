@@ -3,7 +3,7 @@ using Terraria.ID;
 using Microsoft.Xna.Framework;
 using Terraria.ModLoader;
 using System.IO;
-using BaseMod;
+
 using Microsoft.Xna.Framework.Graphics;
 
 namespace AAMod.NPCs.Bosses.Rajah
